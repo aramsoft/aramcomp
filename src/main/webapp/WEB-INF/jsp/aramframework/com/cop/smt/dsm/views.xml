@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/cop/smt/dsm/DiaryList" extends="default">
+    <put-attribute name="title" value="일지관리" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/smt/dsm/DiaryList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/cop/smt/dsm/DiaryDetail" extends="default">
+    <put-attribute name="title" value="일지 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/smt/dsm/DiaryDetail.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/cop/smt/dsm/DiaryRegist" extends="default">
+    <put-attribute name="title" value="일지 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/smt/dsm/DiaryRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/cop/smt/dsm/DiaryEdit" extends="default">
+    <put-attribute name="title" value="일지 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/smt/dsm/DiaryEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

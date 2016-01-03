@@ -1,0 +1,107 @@
+package aramframework.com.uss.olh.awm.service.impl;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.uss.olh.awm.service.AdministrationWordVO;
+import aramframework.com.uss.olh.awm.service.AdministrationWordService;
+import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import egovframework.rte.fdl.cmmn.exception.FdlException;
+import egovframework.rte.fdl.idgnr.EgovIdGnrService;
+import egovframework.rte.psl.dataaccess.util.EgovMap;
+
+/**
+ * 행정전문용어사전관리를 처리하는 ServiceImpl Class 구현
+ * 
+ * @author 아람컴포넌트 조헌철
+ * @since 2014.11.11
+ * @version 1.0
+ * @see
+ *
+ * <pre>
+ * 
+ * << 개정이력(Modification Information) >>
+ *   
+ *   수정일            수정자          수정내용
+ *   -------     ------   ---------------------------
+ *   2014.11.11  조헌철         최초 생성
+ * 
+ * </pre>
+ */
+
+@Service("administrationWordService")
+public class AdministrationWordServiceImpl extends EgovAbstractServiceImpl implements AdministrationWordService {
+
+	@Resource(name = "administrationWordMapper")
+	private AdministrationWordMapper administrationWordMapper;	
+
+	@Resource(name = "administrationWordIdGnrService")
+	private EgovIdGnrService idgenService;
+
+	/**
+	 * 행정전문용어사전관리를(을) 목록을 조회 한다.
+	 * 
+	 * @param administrationWordVO
+	 */
+	public List<EgovMap> selectAdministrationWordList(AdministrationWordVO administrationWordVO) {
+		return administrationWordMapper.selectAdministrationWordList(administrationWordVO);
+	}
+
+	/**
+	 * 행정전문용어사전관리를(을) 목록 전체 건수를(을) 조회한다.
+	 * 
+	 * @param administrationWordVO
+	 */
+	public int selectAdministrationWordListCnt(AdministrationWordVO administrationWordVO) {
+		return (Integer) administrationWordMapper.selectAdministrationWordListCnt(administrationWordVO);
+	}
+
+	/**
+	 * 행정전문용어사전관리를(을) 상세조회 한다.
+	 * 
+	 * @param administrationWordVO
+	 */
+	public AdministrationWordVO selectAdministrationWordDetail(AdministrationWordVO administrationWordVO) {
+		AdministrationWordVO resultVo = administrationWordMapper.selectAdministrationWordDetail(administrationWordVO);
+		// deep copy
+		BeanUtil.copyPropertiesCore(resultVo, administrationWordVO); 
+		return resultVo;
+	}
+
+	/**
+	 * 행정전문용어사전관리를(을) 등록한다.
+	 * 
+	 * @param administrationWordVO
+	 */
+	public void insertAdministrationWord(AdministrationWordVO administrationWordVO) {
+		try {
+			administrationWordVO.setAdministWordId(idgenService.getNextStringId());
+		} catch (FdlException e) {
+			throw new RuntimeException(e);
+		}
+		administrationWordMapper.insertAdministrationWord(administrationWordVO);
+	}
+
+	/**
+	 * 행정전문용어사전관리를(을) 수정한다.
+	 * 
+	 * @param administrationWordVO
+	 */
+	public void updateAdministrationWord(AdministrationWordVO administrationWordVO) {
+		administrationWordMapper.updateAdministrationWord(administrationWordVO);
+	}
+
+	/**
+	 * 행정전문용어사전관리를(을) 삭제한다.
+	 * 
+	 * @param administrationWordVO
+	 */
+	public void deleteAdministrationWord(AdministrationWordVO administrationWordVO) {
+		administrationWordMapper.deleteAdministrationWord(administrationWordVO);
+	}
+
+}

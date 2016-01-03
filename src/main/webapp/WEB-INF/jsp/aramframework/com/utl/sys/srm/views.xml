@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/utl/sys/srm/ServerResrceMntrngList" extends="default">
+    <put-attribute name="title" value="서버자원모니터링 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/utl/sys/srm/ServerResrceMntrngList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/utl/sys/srm/ServerResrceMntrngDetail" extends="default">
+    <put-attribute name="title" value="서버자원모니터링 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/utl/sys/srm/ServerResrceMntrngDetail.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/utl/sys/srm/MntrngServerList" extends="default">
+    <put-attribute name="title" value="서버자원모니터링 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/utl/sys/srm/MntrngServerList.jsp" />
+  </definition>
+  
+</tiles-definitions>

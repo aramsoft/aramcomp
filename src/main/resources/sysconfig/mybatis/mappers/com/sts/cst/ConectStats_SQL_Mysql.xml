@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.sts.cst.service.impl.ConectStatsMapper">
+
+	<!-- 접속통계 조회 -->
+	<select id="selectConectStats" resultType="statsVO">
+	    <choose>
+	     	<when test='statsKind == "SERVICE"'>
+			<!-- 서비스별 통계 -->
+			SELECT METHOD_NM 				AS conectMethod
+			     , IFNULL(SUM(CREAT_CO),0) 	AS creatCo
+			     , IFNULL(SUM(UPDT_CO),0) 		AS updtCo
+			     , IFNULL(SUM(RDCNT),0) 		AS inqireCo
+			     , IFNULL(SUM(DELETE_CO),0) 	AS deleteCo
+			     , IFNULL(SUM(OUTPT_CO),0) 	AS outptCo
+			     , IFNULL(SUM(ERROR_CO),0) 	AS errorCo
+	    	<choose>
+	     		<when test='pdKind == "Y"'>
+			     <!-- 기간검색(년) -->
+			     , SUBSTR(OCCRRNC_DE, 1, 4) AS statsDate
+	        	</when>
+	        	<when test='pdKind == "M"'>
+			     <!-- 기간검색(월) -->
+			     , SUBSTR(OCCRRNC_DE, 1, 4) || '-' || SUBSTR(OCCRRNC_DE, 5, 2) AS statsDate
+	        	</when>
+	        	<when test='pdKind == "D"'>
+			     <!-- 기간검색(일) -->
+			     , SUBSTR(OCCRRNC_DE, 1, 4) || '-' || SUBSTR(OCCRRNC_DE, 5, 2) || '-' || SUBSTR(OCCRRNC_DE, 7, 2) AS statsDate
+	        	</when>
+	    	</choose>
+			     , 0 AS statsCo
+			  FROM COMTS_SYS_LOG_SUMMARY
+		 	 WHERE OCCRRNC_DE BETWEEN #{fromDate} AND #{toDate}
+  	   		<if test='detailStatsKind != null and detailStatsKind != ""'>
+		 	   AND SVC_NM LIKE '%' || #{detailStatsKind} || '%'
+			</if>
+	    	<choose>
+	     		<when test='pdKind == "Y"'>
+			 GROUP BY METHOD_NM, SUBSTR(OCCRRNC_DE, 1, 4)
+			 ORDER BY SUBSTR(OCCRRNC_DE, 1, 4)
+	        	</when>
+	        	<when test='pdKind == "M"'>
+			 GROUP BY METHOD_NM, SUBSTR(OCCRRNC_DE, 1, 4) || '-' || SUBSTR(OCCRRNC_DE, 5, 2)
+			 ORDER BY SUBSTR(OCCRRNC_DE, 1, 4) || '-' || SUBSTR(OCCRRNC_DE, 5, 2)
+	        	</when>
+	        	<when test='pdKind == "D"'>
+			 GROUP BY METHOD_NM, SUBSTR(OCCRRNC_DE, 1, 4) || '-' || SUBSTR(OCCRRNC_DE, 5, 2) || '-' || SUBSTR(OCCRRNC_DE, 7, 2)
+			 ORDER BY SUBSTR(OCCRRNC_DE, 1, 4) || '-' || SUBSTR(OCCRRNC_DE, 5, 2) || '-' || SUBSTR(OCCRRNC_DE, 7, 2)
+	        	</when>
+	    	</choose>
+	    </when>
+	    <when test='statsKind == "PRSONAL"'>
+		<!-- 개인별 통계 -->
+			SELECT COUNT(CONECT_ID) 		AS statsCo
+	    	<choose>
+	     		<when test='pdKind == "Y"'>
+			     <!-- 기간검색(년) -->
+			     , SUBSTR(DATE_FORMAT(CREAT_DT, '%Y%m%d'), 1, 4) AS statsDate
+	        	</when>
+	        	<when test='pdKind == "M"'>
+			     <!-- 기간검색(월) -->
+			     , SUBSTR(DATE_FORMAT(CREAT_DT, '%Y%m%d'), 1, 4) || '-' || SUBSTR(DATE_FORMAT(CREAT_DT, '%Y%m%d'), 5, 2) AS statsDate
+	        	</when>
+	        	<when test='pdKind == "D"'>
+			     <!-- 기간검색(일) -->
+			     , SUBSTR(DATE_FORMAT(CREAT_DT, '%Y%m%d'), 1, 4) || '-' || SUBSTR(DATE_FORMAT(CREAT_DT, '%Y%m%d'), 5, 2) || '-' || SUBSTR(DATE_FORMAT(CREAT_DT, '%Y%m%d'), 7, 2) AS statsDate
+	        	</when>
+	    	</choose>
+			     , '' 						AS conectMethod
+			     , 0 						AS creatCo
+			     , 0 						AS updtCo
+			     , 0 						AS inqireCo
+			     , 0 						AS deleteCo
+			     , 0 						AS outptCo
+			     , 0 						AS errorCo
+			  FROM COMTH_LOGIN_LOG
+		 	 WHERE CONECT_ID = #{detailStatsKind}
+			   <!-- 시작일자~종료일자 기간제한 -->
+			   AND DATE_FORMAT(CREAT_DT, '%Y%m%d') BETWEEN #{fromDate} AND #{toDate}
+	    	<choose>
+	     		<when test='pdKind == "Y"'>
+			 GROUP BY SUBSTR(DATE_FORMAT(CREAT_DT, '%Y%m%d'), 1, 4)
+			 ORDER BY SUBSTR(DATE_FORMAT(CREAT_DT, '%Y%m%d'), 1, 4)
+	        	</when>
+	        	<when test='pdKind == "M"'>
+			 GROUP BY SUBSTR(DATE_FORMAT(CREAT_DT, '%Y%m%d'), 1, 4) || '-' || SUBSTR(DATE_FORMAT(CREAT_DT, '%Y%m%d'), 5, 2)
+			 ORDER BY SUBSTR(DATE_FORMAT(CREAT_DT, '%Y%m%d'), 1, 4) || '-' || SUBSTR(DATE_FORMAT(CREAT_DT, '%Y%m%d'), 5, 2)
+	        	</when>
+	        	<when test='pdKind == "D"'>
+			 GROUP BY SUBSTR(DATE_FORMAT(CREAT_DT, '%Y%m%d'), 1, 4) || '-' || SUBSTR(DATE_FORMAT(CREAT_DT, '%Y%m%d'), 5, 2) || '-' || SUBSTR(DATE_FORMAT(CREAT_DT, '%Y%m%d'), 7, 2)
+			 ORDER BY SUBSTR(DATE_FORMAT(CREAT_DT, '%Y%m%d'), 1, 4) || '-' || SUBSTR(DATE_FORMAT(CREAT_DT, '%Y%m%d'), 5, 2) || '-' || SUBSTR(DATE_FORMAT(CREAT_DT, '%Y%m%d'), 7, 2)
+	        	</when>
+	    	</choose>
+	        </when>
+	    </choose>
+	</select>
+
+</mapper>

@@ -1,0 +1,247 @@
+/* ----------------------------------------------------------------------------
+   EgovMobile Style Sheet
+   Description :  UX grid view component
+   Modification Information
+   수정일           수정자      수정내용
+   -------------    --------    ---------------------
+   2011.08.05		 구지연     			 최초 생성
+ 
+   author   : 모바일 실행환경 개발팀 구지연
+   since    : 2011.08.05
+---------------------------------------------------------------------------- */
+@import url("../cop/egovBoard.css");
+
+dl, dt, dd, ol, ul, li { list-style:none }
+input { border:0 none; }
+.ui-li-aside { float: right; width: 40%; text-align: right; margin: 0.85em -2.188em 0 0; }
+.ui-header .ui-title { margin: .6em 0 .8em;}
+.ui-footer .ui-title { font-size: 0.650em; margin: .6em 0 .8em}
+
+.com-ussContent { background:#fff; margin:0; padding:0 0.625em;}
+.com-ussContent .uss-regist { clear:both; padding:0.313em 0}
+.com-ussContent .uss-regist label { font-size:87.5%;}
+.com-siteContent { background:#fff; margin:0; padding:0; }
+
+/* 검색부분 */
+#searchview { margin:-0.313em 0 0; padding:0; }
+.uss-Search { position: relative; margin:0 0.313em; padding:1.875em 0 1.750em; overflow:hidden;}
+.uss-Search select { position: absolute; top:0; width:95px; }
+.uss-Search .uss-SearchBox { position: absolute; top:0; left:100px; width: 100%; background-color: white; border: 3px solid #8ed7ee; height:25px; }
+.uss-Search .uss-SearchBox input.type-text {
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    color: #444444;
+    font-size: 0.875em;
+    height: 1.250em;
+    padding: 4px 2px 0;
+    width: 90%;
+}
+.uss-Search .uss-SearchBtn { position: absolute; right:0; top:0px; border:0 none; width: 57px; height:31px;
+		background:url('../../../../../images/egovframework/mbl/uss/btn_search.png') 0 0 no-repeat;
+		cursor: pointer; text-indent: -1000em;}
+
+/* 상세화면 */
+.uss-date { font-size:11px;}
+
+.uss-hpcDetail { clear:both; border-bottom:solid 2px #ddd; padding:0.625em 0; overflow:hidden }
+.uss-hpcDetail li { font-size:75%; text-align:left; padding:0.625em; overflow:hidden; vertical-align:top; line-height:150%; border-bottom:1px dashed #cccccc; }
+.uss-hpcDetail li span { dispaly:block; float:left; text-align:left; }
+.uss-hpcDetail li span.uss-tit { width:28%; }
+.uss-hpcDetail li span.uss-con { width:68%; color:#333; float:right; text-align:left; }
+.uss-hpcDetail li.uss-contentsView { clear:both; padding:0.625em; border-bottom:1px dashed #5b97c1; color:#777; }
+.uss-hpcDetail li.uss-dateHit { clear:both; color:#999; }
+.uss-hpcDetail li.uss-dateHit span { padding-right:0.625em;}
+.uss-hpcDetail li.reply { border-top:1px dashed #c1995b;}
+.uss-hpcDetail li.progress { border-bottom:0 none; border-top:1px solid #ccc; }
+.uss-hpcDetail li:last-child {  border-bottom:none}
+.uss-hpcDetail li span.uss-contents { width:68%; color:#777; float:right; text-align:left;  }
+.uss-hpcDetail li pre { font-size:120%; color:#333; line-height:150% }
+
+/* text-color */
+.uss-darkgray { color:#666; text-shadow:0 none; padding:0.125em 0 0}
+.uss-gray { color:#999; }
+.uss-txtBlue { color:#47bef2; background:url('../../../../../images/egovframework/mbl/uss/bul_line.gif') center right no-repeat; padding-right:0.438em; margin-right:0.438em; }
+.uss-txtBlack { color:#222; background:url('../../../../../images/egovframework/mbl/uss/bul_line.gif') center right no-repeat; padding-right:0.438em; }
+.uss-txtCommon { color:#222; padding-right:0.438em; }
+.uss-txtDate { color:#999; margin-left:0.438em; }
+.uss-txtAddress { background:url('../../../../../images/egovframework/mbl/uss/bul_line.gif') center right no-repeat; padding-right:0.438em; margin:0 0.438em; font-size:0.75em; }
+.uss-graySmall { color:#666; font-size:0.75em; font-weight:normal; text-shadow:0 none; }
+
+
+/* text-background */
+.uss-Eng { background:url('../../../../../images/egovframework/mbl/uss/ic_eng.png')left no-repeat; padding:0.313em 0 0.313em 1.250em; font-size:0.875em;}
+	
+/* input box */
+.uss-phone { width:63.5%;}
+.uss-phone div { float:left; }
+.uss-phone div.uss-wid2 { width:25%;}
+.uss-phone div.uss-wid3 { width:35%;}
+.uss-phone div.uss-wid2 input, .uss-phone div.uss-wid3 input { width:100%}
+
+/* qna View */
+.qus {	margin:0; padding:1.063em 0.625em 0.563em; border-bottom-color: rgb(229, 229, 229); border-bottom-width: 1px; border-bottom-style: solid; font-size:95%; line-height:150%; }
+.qus .time {	color: rgb(144, 144, 144); font-size: 87.5%; display: block;}
+.qus .time label { margin-right:0.938em;}
+.qus p { font-size: 0.875em; }
+.qusDetail { border-top:1px dashed #cccccc; padding:0.500em 0 0; margin-top:0.313em; }
+.qusDetail li { font-size: 0.875em; line-height:150%; color: rgb(94, 94, 94); }
+
+.ic_qa { background: url("../../../../../images/egovframework/mbl/uss/ico_help.png") no-repeat 0px -54px; margin:0.188em 0.625em 0px 0px; width: 28px; height: 34px; text-indent: -1000px; overflow: hidden; float: left; display: inline-block; }
+.pos {	background-position: 0px 0px; }
+
+.ans {	margin:0; padding: 0.938em; font-size: 0.93em; line-height:150%; border-bottom:2px solid #dbdbdb; background:#f5f5f5}
+.ans .time {	color: rgb(144, 144, 144); font-size: 0.875em; display: block;}
+.ansDetail {  color:#333; clear:both; border-top:1px dashed #cccccc; padding:0.500em 0 0; margin-top:0.313em;}
+.ansDetail li { font-size: 0.875em;  line-height:150%; color: rgb(94, 94, 94);}
+.ansDetail li label { margin-right:0.938em;}
+
+/* 마이페이지 */
+.uss-myList { padding:0 0.625em; border-top:1px solid #ccc; border-bottom:1px solid #ccc; background:#fff }
+.uss-myList a { text-decoration:none; color:#333; }
+.uss-mylistView { }
+.uss-mylistView dt { clear:both; border-bottom:1px solid #ccc; padding:0.313em 0; color:#000; font-size: 87.5%; }
+.uss-mylistView dd { clear:both; color:#666; padding:0.313em 0; font-size: 75%; text-shadow:none; font-weight:normal; line-height:150%; }
+
+/* 사이트맵 */
+.uss-sitemap { clear:both; padding:0; }
+.uss-sitemap p { clear:both; font-size: 87.5%; font-weight:bold; border-top:1px solid #ccc; border-bottom:1px solid #ccc; padding:0.625em 0; overflow:hidden; background:#f5f5f5}
+.uss-sitemap p span { padding:0 0.625em }
+
+.uss-sitemap dl { float:left; display:inline-block; width:45%; padding:0.625em 0 0.625em 0; margin:0 0 0 0.938em;}
+.uss-sitemap dt { font-size:0.875em; padding:0.313em 0.250em; font-weight:bold; overflow:hidden; }
+.uss-sitemap dt.link { background:#f1f1f1; }
+.uss-sitemap dt a { color:#333; text-decoration:none; cursor:pointer; }
+.uss-sitemap dt a:hover { text-decoration:underline; cursor:pointer; }
+.uss-sitemap dd { font-size:0.75em; padding:0.313em 0.625em; background:#f2f2f2; border-top:1px dashed #dcdada; border-bottom:1px dashed #dcdada; }
+.uss-sitemap dd a { color:#666; text-decoration:none; text-shadow:none; }
+.uss-sitemap dd a:hover { cursor:pointer; }
+
+/* 약관내용확인 */
+.uss-stpDetail { margin:0; padding:0.625em 0.625em 0; border-bottom:2px solid #ccc; }
+.uss-stpDetail dt { padding:0.313em 0 0.313em 0.625em; border-bottom:1px solid #ccc; background: url("../../../../../images/egovframework/mbl/uss/bul_blue.gif") no-repeat left center;}
+.uss-stpDetail dd { padding:0.313em 0.625em; font-size:0.8em; border-bottom:1px dashed #ccc; line-height:150%; overflow:hidden}
+.uss-stpDetail dd.uss-stpBtn { padding:0.313em 0; border-bottom:0; }
+
+/* 공통 등록하기 화면 */
+.uss-registOk { padding:0.625em 0}
+.uss-registOk dt { padding:0.625em 0 0; clear:both; overflow:hidden;}
+.uss-registOk dd {  clear:both; padding:0.313em 0 0.625em; border-bottom:1px dashed #ccc; overflow:hidden; }
+.uss-registOk dd.department { overflow:hidden; padding:0.313em 0;}
+.uss-registOk dd:last-child { overflow:hidden; border-bottom:1px solid #ccc;}
+
+.uss-typ1 { float:left; }
+.uss-typ2 { float:left; padding:0.625em 0 0 1.250em; text-align:left;}
+.uss-typ3 { float:left; width:90%;}
+.uss-typ3 input { width:95% !important;}
+.uss-typ4 { float:left; width:10%;}
+.uss-typ5 { float:left; width:30%; text-align:left; padding:0 0 0.625em}
+.uss-typ6 { float:left; width:70%; text-align:left; padding:0 0 0.625em}
+.uss-restBtn { max-width:60%; }
+.uss-restBtn2 { max-width:90%; }
+.uss-clear { clear:both}
+
+/* 패딩간격조절 */
+.paddT5 { padding-top:0.313em; }
+.paddT10 { padding-top:0.625em; }
+.paddT15 { padding-top:0.938em; }
+
+/* 온라인Poll */
+.uss-poll { padding:0 0.625em; border-bottom:2px solid #ccc;}
+.uss-statistics { clear:both; margin:0; padding:0.625em 0; border-bottom:2px solid #ccc; }
+.uss-statistics dl { padding:0 0.938em;}
+.uss-statistics dl dt { line-height:150%; font-size:0.8em; padding:0.313em 0; font-weight:bold}
+.uss-statistics dl dd { padding:2px 0.313em 0.313em; font-size:0.75em; border-bottom:1px solid #ddd; color:#5e9bc4; }
+
+/* 주소록 */
+.memberList { clear:both; margin:0; padding:0; background:#f5f5f5; }
+.memberList li { overflow:hidden; padding:0.625em; border-bottom:1px solid #ccc; line-height:150%; font-size:0.8em;}
+.memLeft { float:left; width:90%}
+.memRight { float:right; display:inline-block; width:10%; text-align:left; }
+
+.addBtn { clear:both; }
+.uss-txtId { color:#1c79d8; padding-right:0.438em;  }
+.uss-txtName { color:#888; padding-right:0.438em; }
+.uss-txtEmail { color:#888; }
+.uss-txtPhone { float:left; width:50%; color:#555; }
+.uss-txtHome { float:left; width:50%; color:#555; }
+.uss-listView { line-height:120%; margin:0; padding:0.438em 0 0 }
+
+/* 일정관리 */
+.uss-time { clear:both; padding-top:0.313em }
+.uss-dataBox { float:left; width:45%; }
+.uss-btnBack { text-decoration:none; font-size:0.75em; padding:0.625em; border:1px solid #ccc; background:#fff; color:#666 }
+.uss-btnNext { text-decoration:none; font-size:0.75em; padding:0.625em; border:1px solid #ccc; background:#fff; color:#666 }
+.uss-calpadd { padding:1.250em 0 2.500em;}
+.uss-calendar { font-size:0.875em; font-weight:bold }
+.uss-calSearch { border-bottom:1px solid #ccc;padding:0 0 0.625em;  }
+.uss-daySearch { margin:0; padding:0; }
+.ui-input-datebox input {width: 60% !important; padding: .5em 0 .6em; font-size:15px; letter-spacing:-0.08em}
+
+/* 일정관리 팝업 */
+.uss-ManagePop { background:#fff; border:2px solid #333; padding:0; margin:0 1.250em 0 0; overflow:hidden;
+	-moz-border-radius: 0.313em;
+    -webkit-border-radius: 0.313em;
+    border-radius: 0.313em;
+    -moz-box-shadow: 0 0.125em 0.313em #888;
+    -webkit-box-shadow: 0 0.125em 0.313em #888;
+    box-shadow: 0 0.125em 0.313em #888; }
+.uss-popHeader { background:#000; paddding:0; margin:0; height:2.500em; overflow:hidden; position: relative; text-align:center; }
+.uss-popHeader h1 { color:#fff; text-align:center; font-size:1.0em; font-weight:normal; padding:0.625em 0 0}
+.uss-popListView { padding:0; margin:0; }
+.uss-popListView li { font-size:0.875em; line-height:150%; color:#555; padding:0.625em 0; overflow:hidden; border-bottom:1px solid #ccc; }
+.uss-popListView li:first-child { border-top:1px solid #ccc;}
+.uss-popListView li a { color:#555; text-decoration:none; }
+.uss-popContents { clear:both; padding:1.250em 0 0 }
+
+/* 팝업 닫기버튼 */
+.uss-btnClosed-pop {  position: absolute; top:7px; right:10px; background: url("../../../../../images/egovframework/mbl/uss/btn_closed_off.png") no-repeat left center; width:28px; height:28px; }
+.uss-btnClosed-pop:hover { background: url("../../../../../images/egovframework/mbl/uss/btn_closed_on.png") no-repeat left center; }
+
+/* 설문조사 */
+.uss-qustnRes { clear:both; padding:0.625em 0;}
+.uss-qustnRes dt { font-size:0.875em; font-weight:bold; padding:0.625em 0 0.313em }
+.uss-qustnRes dd { font-size:0.813em }
+.uss-hitRed { color:red; padding-left:0.938em }
+
+.uss-qustnStatis { clear:both; padding:0.625em}
+.uss-qustnStatis dt { font-size:0.875em; font-weight:bold; padding:0.625em 0 0.313em; color:#336699; border-bottom:1px solid #ddd;}
+.uss-qustnStatis dd { margin:0; padding:0; }
+.uss-qusAnswer { clear:both; margin:0; padding:0 0 0 0.625em; }
+.uss-qusAnswer dt { font-size:0.813em; color:#333; padding:0.313em 0 0.188em 0; border-bottom:0 none; }
+.uss-qusAnswer dd { font-size:0.75em; line-height:130%; }
+.uss-paddT5 { padding-top:0.313em; }
+
+/* 커뮤니티 타이틀 */
+.uss-commTitle { padding:0.625em 0; text-align:center; height:25px; }
+
+/* 가입승인 */
+.com-msgContent { margin:0; padding:4.375em 1.250em; text-align:center; background:white; color:#000; }
+
+/* 바로가기 버튼 */
+.uss-btnG { padding:0.5em }
+.uss-btnG a { display:block; text-decoration:none; }
+.btnGogo { 
+	width:100%;
+	padding:0.8em 0;
+	text-align:center; 
+	border: 1px solid 		#456f9a;
+	background: 			#5e87b0;
+	color: 					#fff;
+	font-weight: bold;
+	text-shadow: 0 -1px 1px #254f7a;
+	text-decoration: none;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#81a8ce), to(#5e87b0)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(top, #81a8ce, #5e87b0); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient(top, #81a8ce, #5e87b0); /* FF3.6 */
+	background-image:     -ms-linear-gradient(top, #81a8ce, #5e87b0); /* IE10 */
+	background-image:      -o-linear-gradient(top, #81a8ce, #5e87b0); /* Opera 11.10+ */
+	background-image:         linear-gradient(top, #81a8ce, #5e87b0); 
+	-moz-border-radius: 				   .6em;
+	-webkit-border-radius: 				   .6em;
+	-o-border-radius: 				   	   .6em;
+	border-radius: 						  .6em;}
+	
+/* 상담관리 상세화면 */
+span.txtDeRight { float:right;width:60% }
+.ic_result { background: url("../../../../../images/egovframework/mbl/uss/ico_result.png") no-repeat 0px -54px; margin:0.188em 0.625em 0px 0px; width: 28px; height: 34px; text-indent: -1000px; overflow: hidden; float: left; display: inline-block; }
+.result_ans {	background-position: 0px 0px; }

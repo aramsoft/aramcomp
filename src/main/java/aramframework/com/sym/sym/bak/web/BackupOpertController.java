@@ -1,0 +1,279 @@
+package aramframework.com.sym.sym.bak.web;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springmodules.validation.commons.DefaultBeanValidator;
+
+import aramframework.com.cmm.LoginVO;
+import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.util.MessageHelper;
+import aramframework.com.cmm.service.CmmUseService;
+import aramframework.com.cmm.util.UserDetailsHelper;
+import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.sym.sym.bak.service.BackupOpertVO;
+import aramframework.com.sym.sym.bak.service.BackupScheduler;
+import aramframework.com.sym.sym.bak.service.BackupOpertService;
+import aramframework.com.sym.sym.bak.validation.BackupOpertValidator;
+import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+
+/**
+ * 백업작업관리에 대한 controller 클래스를 정의한다.
+ * 
+ * 백업작업관리에 대한 등록, 수정, 삭제, 조회 기능을 제공한다. 
+ * 백업작업관리의 조회기능은 목록조회, 상세조회로 구분된다.
+ * 
+ * @author 아람컴포넌트 조헌철
+ * @since 2014.11.11
+ * @version 1.0
+ * @see
+ *
+ * <pre>
+ * 
+ * << 개정이력(Modification Information) >>
+ *   
+ *   수정일            수정자          수정내용
+ *   -------     ------   ---------------------------
+ *   2014.11.11  조헌철         최초 생성
+ * 
+ * </pre>
+ */
+
+@Controller
+public class BackupOpertController {
+
+	@Resource(name = "backupOpertService")
+	private BackupOpertService backupOpertService;
+
+	@Resource(name = "backupOpertValidator")
+	private BackupOpertValidator backupOpertValidator;
+
+	@Resource(name = "cmmUseService")
+	private CmmUseService cmmUseService;
+
+	@Autowired
+	private DefaultBeanValidator beanValidator;
+
+	/**
+	 * 백업스케줄러 서비스
+	 */
+	@Resource(name = "backupScheduler")
+	private BackupScheduler backupScheduler;
+
+	/**
+	 * 백업작업 목록을 조회한다.
+	 * 
+	 * @param backupOpertVO
+	 */
+	@IncludedInfo(name = "백업작업관리", order = 6230, gid = 60)
+	@RequestMapping("/sym/sym/bak/listBackupOpert.do")
+	@Secured("ROLE_ADMIN")
+	public String listBackupOpert(
+			@ModelAttribute BackupOpertVO backupOpertVO, 
+			ModelMap model) {
+
+		PaginationInfo paginationInfo = new PaginationInfo();
+		backupOpertVO.fillPageInfo(paginationInfo);
+
+		model.addAttribute("resultList", backupOpertService.selectBackupOpertList(backupOpertVO));
+
+		int totCnt = backupOpertService.selectBackupOpertListCnt(backupOpertVO);
+		backupOpertVO.setTotalRecordCount(totCnt);
+
+		paginationInfo.setTotalRecordCount(totCnt);
+		model.addAttribute("paginationInfo", paginationInfo);
+
+		return WebUtil.adjustViewName("/sym/sym/bak/BackupOpertList");
+	}
+
+	/**
+	 * 백업작업정보을 상세조회한다.
+	 * 
+	 * @param backupOpertVO
+	 */
+	@RequestMapping("/sym/sym/bak/detailBackupOpert.do")
+	@Secured("ROLE_ADMIN")
+	public String detailBackupOpert(
+			@ModelAttribute BackupOpertVO backupOpertVO) {
+		
+		backupOpertService.selectBackupOpert(backupOpertVO);
+
+		return WebUtil.adjustViewName("/sym/sym/bak/BackupOpertDetail");
+	}
+
+	/**
+	 * 백업작업 등록화면으로 이동한다.
+	 * 
+	 * @param backupOpertVO
+	 */
+	@RequestMapping("/sym/sym/bak/registBackupOpert.do")
+	@Secured("ROLE_ADMIN")
+	public String registBackupOpert(
+			@ModelAttribute BackupOpertVO backupOpertVO, 
+			ModelMap model) {
+
+		referenceData(model);
+
+		return WebUtil.adjustViewName("/sym/sym/bak/BackupOpertRegist");
+	}
+
+	/**
+	 * 백업작업을 등록한다.
+	 * 
+	 * @param backupOpertVO
+	 */
+	@RequestMapping("/sym/sym/bak/insertBackupOpert.do")
+	@Secured("ROLE_ADMIN")
+	public String insertBackupOpert(
+			@ModelAttribute BackupOpertVO backupOpertVO, 
+			BindingResult bindingResult, 
+			ModelMap model) {
+
+		beanValidator.validate(backupOpertVO, bindingResult);
+		backupOpertValidator.validate(backupOpertVO, bindingResult);
+		if (bindingResult.hasErrors()) {
+			referenceData(model);
+			return WebUtil.adjustViewName("/sym/sym/bak/BackupOpertRegist");
+		} 
+		
+		// 로그인 객체 선언
+		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
+		backupOpertVO.setFrstRegisterId(loginVO.getUniqId());
+
+		backupOpertService.insertBackupOpert(backupOpertVO);
+
+		// 배치스케줄러에 스케줄정보반영
+		backupOpertService.selectBackupOpert(backupOpertVO);
+		backupScheduler.insertBackupOpert(backupOpertVO);
+
+		// Exception 없이 진행시 등록성공메시지
+		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
+		return WebUtil.redirectJsp(model, "/sym/sym/bak/listBackupOpert.do");
+	}
+
+	/**
+	 * 백업작업 수정화면으로 이동한다.
+	 * 
+	 * @param backupOpertVO
+	 */
+	@RequestMapping("/sym/sym/bak/editBackupOpert.do")
+	@Secured("ROLE_ADMIN")
+	public String editBackupOpert(
+			@ModelAttribute BackupOpertVO backupOpertVO, 
+			ModelMap model) {
+
+		referenceData(model);
+
+		backupOpertService.selectBackupOpert(backupOpertVO);
+
+		return WebUtil.adjustViewName("/sym/sym/bak/BackupOpertEdit");
+	}
+
+	/**
+	 * 백업작업을 수정한다.
+	 * 
+	 * @param backupOpertVO
+	 */
+	@RequestMapping("/sym/sym/bak/updateBackupOpert.do")
+	@Secured("ROLE_ADMIN")
+	public String updateBackupOpert(
+			@ModelAttribute BackupOpertVO backupOpertVO, 
+			BindingResult bindingResult, 
+			ModelMap model) {
+
+		beanValidator.validate(backupOpertVO, bindingResult);
+		backupOpertValidator.validate(backupOpertVO, bindingResult);
+		if (bindingResult.hasErrors()) {
+			referenceData(model);
+			return WebUtil.adjustViewName("/sym/sym/bak/BackupOpertEdit");
+		}
+
+		// 로그인 객체 선언
+		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
+		backupOpertVO.setLastUpdusrId(loginVO.getUniqId());
+
+		backupOpertService.updateBackupOpert(backupOpertVO);
+
+		// 백업스케줄러에 스케줄정보반영
+		backupOpertService.selectBackupOpert(backupOpertVO);
+		backupScheduler.updateBackupOpert(backupOpertVO);
+
+		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
+        return WebUtil.redirectJsp(model, "/sym/sym/bak/listBackupOpert.do");
+	}
+
+	/**
+	 * 백업작업을 삭제한다.
+	 * 
+	 * @param backupOpertVO
+	 */
+	@RequestMapping("/sym/sym/bak/deleteBackupOpert.do")
+	@Secured("ROLE_ADMIN")
+	public String deleteBackupOpert(
+			@ModelAttribute BackupOpertVO backupOpertVO, 
+			ModelMap model) {
+
+		// 백업스케줄러에 스케줄정보반영
+		backupScheduler.deleteBackupOpert(backupOpertVO);
+		backupOpertService.deleteBackupOpert(backupOpertVO);
+
+		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
+        return WebUtil.redirectJsp(model, "/sym/sym/bak/listBackupOpert.do");
+	}
+
+	/**
+	 * Reference Data 를 설정한다.
+	 * 
+	 * @param model
+	 */
+	private void referenceData(ModelMap model) {
+
+		// 실행주기구분 코드목록을 코드정보로부터 조회
+		cmmUseService.populateCmmCodeList("COM047", "COM047_executCycle");
+		// 압축구분코드목록을 코드정보로부터 조회
+		cmmUseService.populateCmmCodeList("COM049", "COM049_cmprsSe");
+		// 요일구분코드목록을 코드정보로부터 조회
+		cmmUseService.populateCmmCodeList("COM074", "COM074_executSchdulDfkSe");
+
+		// 실행스케줄 시, 분, 초 값 설정.
+		Map<String, String> executSchdulHourList = new LinkedHashMap<String, String>();
+		for (int i = 0; i < 24; i++) {
+			if (i < 10) {
+				executSchdulHourList.put("0" + Integer.toString(i), "0" + Integer.toString(i));
+			} else {
+				executSchdulHourList.put(Integer.toString(i), Integer.toString(i));
+			}
+		}
+		model.addAttribute("executSchdulHourList", executSchdulHourList);
+
+		Map<String, String> executSchdulMntList = new LinkedHashMap<String, String>();
+		for (int i = 0; i < 60; i++) {
+			if (i < 10) {
+				executSchdulMntList.put("0" + Integer.toString(i), "0" + Integer.toString(i));
+			} else {
+				executSchdulMntList.put(Integer.toString(i), Integer.toString(i));
+			}
+		}
+		model.addAttribute("executSchdulMntList", executSchdulMntList);
+
+		Map<String, String> executSchdulSecndList = new LinkedHashMap<String, String>();
+		for (int i = 0; i < 60; i++) {
+			if (i < 10) {
+				executSchdulSecndList.put("0" + Integer.toString(i), "0" + Integer.toString(i));
+			} else {
+				executSchdulSecndList.put(Integer.toString(i), Integer.toString(i));
+			}
+		}
+		model.addAttribute("executSchdulSecndList", executSchdulSecndList);
+	}
+
+}

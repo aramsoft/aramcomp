@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/cop/smt/lsm/LeaderSchdulList" extends="default">
+    <put-attribute name="title" value="간부일정관리" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/smt/lsm/LeaderSchdulList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/cop/smt/lsm/LeaderSchdulDetail" extends="default">
+    <put-attribute name="title" value="간부일정 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/smt/lsm/LeaderSchdulDetail.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/cop/smt/lsm/LeaderSchdulRegist" extends="default">
+    <put-attribute name="title" value="간부일정 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/smt/lsm/LeaderSchdulRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/cop/smt/lsm/LeaderSchdulEdit" extends="default">
+    <put-attribute name="title" value="간부일정 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/smt/lsm/LeaderSchdulEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.uss.ion.ctn.service.impl.CtsnnManageMapper">
+
+    <select id="selectCtsnnManageList" resultType="egovMap">
+		<![CDATA[
+            SELECT *
+              FROM (
+            SELECT ROWNUM RNUM, ALL_LIST.*
+              FROM (
+        ]]>
+        /* 구현 Sql */
+       <![CDATA[
+            SELECT A.CTSNN_ID             	AS "ctsnnId"          
+                 , A.CTSNN_NM             	AS "ctsnnNm"        
+                 , A.REQST_DE            	AS "reqstDe"         
+                 , A.OCCRRNC_DE           	AS "occrrDe"        
+                 , A.CONFM_AT             	AS "confmAt"        
+                 , A.SANCTN_DT            	AS "sanctnDt"       
+                 , C.USER_NM              	AS "usNm"            
+                 , (select mst.USER_NM 
+                      from COMVN_USER_MASTER mst 
+                     where mst.ESNTL_ID = SANCTNER_ID
+                   ) 						AS "sanctnerNm"  
+                 , (select code_nm 
+                      from COMTC_CMMN_DETAIL_CODE 
+                     where code_id ='COM054' 
+                       and code = A.CTSNN_CODE
+                   ) 						AS "ctsnnCdNm"   
+                 , (select info.ORGNZT_NM 
+                      from COMTN_ORGNZT_INFO info 
+                     where info.ORGNZT_ID = C.ORGNZT_ID 
+                   ) 						AS "orgnztNm"
+              FROM COMTN_CTSNN_MANAGE A
+				   LEFT OUTER JOIN COMVN_USER_MASTER C
+			   		    ON A.USER_ID = C.ESNTL_ID 
+             WHERE 1=1 
+        ]]>
+   	    <if test='searchKeyword != null and searchKeyword != ""'>
+        		<![CDATA[ AND A.CTSNN_CODE = #{searchKeyword} ]]>
+		</if>
+    	<if test='searchFromDate != null and searchFromDate != ""'>
+        		<![CDATA[ AND A.OCCRRNC_DE BETWEEN #{searchFromDate} AND #{searchToDate} ]]>
+		</if>
+   	    <if test='searchNm != null and searchNm != ""'>
+        		<![CDATA[ AND C.USER_NM like '%'||#{searchNm}||'%' ]]>
+		</if>
+  	    <if test='searchConfmAt != null and searchConfmAt != ""'>
+        		<![CDATA[ AND A.CONFM_AT like '%'||#{searchConfmAt}||'%' ]]>
+		</if>
+        <![CDATA[
+             ORDER BY FRST_REGIST_PNTTM DESC
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+                   ) ALL_LIST
+                   )
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+        ]]>			
+    </select>
+
+    <select id="selectCtsnnManageListCnt" resultType="int">
+        <![CDATA[
+            SELECT COUNT(*) totcnt
+              FROM COMTN_CTSNN_MANAGE A
+                 , COMVN_USER_MASTER C
+             WHERE 1=1 
+               AND A.USER_ID = C.ESNTL_ID  
+        ]]>
+   	    <if test='searchKeyword != null and searchKeyword != ""'>
+        		<![CDATA[ AND A.CTSNN_CODE = #{searchKeyword} ]]>
+		</if>
+    	<if test='searchFromDate != null and searchFromDate != ""'>
+        		<![CDATA[ AND A.OCCRRNC_DE BETWEEN #{searchFromDate} AND #{searchToDate} ]]>
+		</if>
+   	    <if test='searchNm != null and searchNm != ""'>
+        		<![CDATA[ AND C.USER_NM like '%'||#{searchNm}||'%' ]]>
+		</if>
+  	    <if test='searchConfmAt != null and searchConfmAt != ""'>
+        		<![CDATA[ AND A.CONFM_AT like '%'||#{searchConfmAt}||'%' ]]>
+		</if>
+    </select>
+    
+    <select id="selectCtsnnManage" resultType="ctsnnManageVO">
+        <![CDATA[
+            SELECT ctn.CTSNN_ID            	AS "ctsnnId"          
+                 , ctn.USER_ID             	AS "usid"            
+                 , ctn.CTSNN_CODE          	AS "ctsnnCd"         
+                 , ctn.REQST_DE            	AS "reqstDe"         
+                 , ctn.CTSNN_NM            	AS "ctsnnNm"         
+                 , ctn.TRGTER_NM           	AS "trgterNm"        
+                 , ctn.BRTHDY              	AS "brth"            
+                 , ctn.OCCRRNC_DE          	AS "occrrDe"         
+                 , ctn.RELATE              	AS "relate"          
+                 , ctn.RM              	   	AS "remark"          
+                 , ctn.SANCTNER_ID         	AS "sanctnerId"      
+                 , ctn.CONFM_AT            	AS "confmAt"        
+                 , ctn.SANCTN_DT           	AS "sanctnDt"        
+                 , ctn.RETURN_RESN         	AS "returnResn"     
+                 , ctn.INFRML_SANCTN_ID    	AS "infrmlSanctnId"  
+                 , mst.USER_NM             	AS "usNm"            
+                 , (select org.ORGNZT_NM 
+                      from COMTN_ORGNZT_INFO org 
+                     where org.ORGNZT_ID = mst.ORGNZT_ID
+                   ) 						AS "orgnztNm"    
+                 , (select mst1.USER_NM 
+                      from COMVN_USER_MASTER mst1 
+                     where mst1.ESNTL_ID = SANCTNER_ID
+                   ) 						AS "sanctnerNm"  
+                 , (select code_nm 
+                      from COMTC_CMMN_DETAIL_CODE 
+                     where code_id ='COM054' 
+                       and code = ctn.CTSNN_CODE
+                   )  						AS "ctsnnCdNm"   
+                 , (select code_nm 
+                      from COMTC_CMMN_DETAIL_CODE 
+                     where code_id ='COM073' 
+                       and code = ctn.RELATE  
+                   )  						AS "relateNm"    
+                 , (select info.ORGNZT_NM 
+                      from COMVN_USER_MASTER mst_b
+                         , COMTN_ORGNZT_INFO info 
+                     where info.ORGNZT_ID = mst_b.ORGNZT_ID 
+                       and mst_b.esntl_id= ctn.SANCTNER_ID 
+                   ) 						AS "sanctnerOrgnztNm"
+              FROM COMTN_CTSNN_MANAGE ctn
+				   LEFT OUTER JOIN COMVN_USER_MASTER mst
+			   		    ON ctn.USER_ID = mst.ESNTL_ID
+         	 WHERE ctn.CTSNN_ID     = #{ctsnnId} 
+        ]]>
+    </select>
+
+    <insert id="insertCtsnnManage" >
+        <![CDATA[
+            INSERT INTO COMTN_CTSNN_MANAGE (
+            		CTSNN_ID           
+            	  , USER_ID               
+            	  , CTSNN_CODE           
+            	  , REQST_DE           
+            	  , CTSNN_NM           
+            	  , TRGTER_NM          
+            	  , BRTHDY               
+            	  , OCCRRNC_DE           
+            	  , RELATE             
+            	  , RM             
+            	  , SANCTNER_ID        
+            	  , CONFM_AT           
+            	  , INFRML_SANCTN_ID   
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+            ) VALUES (
+            		#{ctsnnId}       
+            	  , #{usid}           
+            	  , #{ctsnnCd}        
+            	  , #{reqstDe}        
+            	  , #{ctsnnNm}        
+            	  , #{trgterNm}       
+            	  , #{brth}           
+            	  , #{occrrDe}        
+            	  , #{relate}         
+            	  , #{remark}         
+            	  , #{sanctnerId}     
+            	  , #{confmAt}        
+            	  , #{infrmlSanctnId} 
+				  , #{frstRegisterId}
+				  , SYSDATE
+				  , #{frstRegisterId} 
+				  , SYSDATE
+            ) 
+        ]]>
+    </insert>     
+
+    <update id="updateCtsnnManage" >
+        <![CDATA[
+            UPDATE COMTN_CTSNN_MANAGE
+               SET CTSNN_NM         	= #{ctsnnNm}   
+               	 , CTSNN_CODE         	= #{ctsnnCd}     
+                 , REQST_DE           	= #{reqstDe}     
+                 , TRGTER_NM         	= #{trgterNm}    
+                 , BRTHDY              	= #{brth}        
+                 , OCCRRNC_DE          	= #{occrrDe}    
+                 , RELATE            	= #{relate}      
+                 , RM            		= #{remark}      
+                 , LAST_UPDUSR_ID    	= #{lastUpdusrId}
+                 , LAST_UPDT_PNTTM 		= SYSDATE    
+             WHERE CTSNN_ID          	= #{ctsnnId}
+        ]]>
+    </update>    
+    
+    <delete id="deleteCtsnnManage" >
+        <![CDATA[
+            DELETE  
+              FROM COMTN_CTSNN_MANAGE
+             WHERE CTSNN_ID          = #{ctsnnId} 
+        ]]>
+    </delete>  
+
+<!--  경조 승인관련  -->
+    <select id="selectCtsnnManageConfmList" resultType="egovMap">
+		<![CDATA[
+            SELECT *
+              FROM (
+            SELECT ROWNUM RNUM, ALL_LIST.*
+              FROM (
+        ]]>
+        /* 구현 Sql */
+       <![CDATA[
+            SELECT A.CTSNN_ID             	AS "ctsnnId"          
+                 , A.REQST_DE             	AS "reqstDe"        
+                 , A.CTSNN_NM             	AS "ctsnnNm"        
+                 , A.OCCRRNC_DE             AS "occrrDe"        
+                 , A.CONFM_AT             	AS "confmAt"        
+                 , A.SANCTN_DT            	AS "sanctnDt"       
+                 , A.INFRML_SANCTN_ID     	AS "infrmlSanctnId" 
+                 , C.USER_NM              	AS "usNm"            
+                 , (select code_nm 
+                      from COMTC_CMMN_DETAIL_CODE 
+                     where code_id ='COM054' 
+                       and code = A.CTSNN_CODE
+                   ) 						AS "ctsnnCdNm"   
+                 , (select info.ORGNZT_NM 
+                      from COMTN_ORGNZT_INFO info 
+                     where  info.ORGNZT_ID = C.ORGNZT_ID 
+                   ) 						AS "orgnztNm"
+              FROM COMTN_CTSNN_MANAGE A
+				   LEFT OUTER JOIN COMVN_USER_MASTER C
+			   		    ON A.USER_ID = C.ESNTL_ID 
+             WHERE A.SANCTNER_ID = #{sanctnerId}
+        ]]>
+   	    <if test='searchKeyword != null and searchKeyword != ""'>
+        		<![CDATA[ AND A.CTSNN_CODE = #{searchKeyword} ]]>
+		</if>
+    	<if test='searchFromDate != null and searchFromDate != ""'>
+        		<![CDATA[ AND A.OCCRRNC_DE BETWEEN #{searchFromDate} AND #{searchToDate} ]]>
+		</if>
+   	    <if test='searchNm != null and searchNm != ""'>
+        		<![CDATA[ AND C.USER_NM like '%'||#{searchNm}||'%' ]]>
+		</if>
+  	    <if test='searchConfmAt != null and searchConfmAt != ""'>
+        		<![CDATA[ AND A.CONFM_AT like '%'||#{searchConfmAt}||'%' ]]>
+		</if>
+        <![CDATA[
+        	 ORDER BY FRST_REGIST_PNTTM DESC
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+                   ) ALL_LIST
+                   )
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+        ]]>			
+    </select> 
+
+    <select id="selectCtsnnManageConfmListCnt" resultType="int">
+        <![CDATA[
+            SELECT COUNT(*) totcnt
+              FROM COMTN_CTSNN_MANAGE A
+                 , COMVN_USER_MASTER C
+             WHERE 1=1 
+               AND A.SANCTNER_ID = #{sanctnerId}
+               AND A.USER_ID = C.ESNTL_ID  
+        ]]>
+   	    <if test='searchKeyword != null and searchKeyword != ""'>
+        		<![CDATA[ AND A.CTSNN_CODE = #{searchKeyword} ]]>
+		</if>
+    	<if test='searchFromDate != null and searchFromDate != ""'>
+        		<![CDATA[ AND A.OCCRRNC_DE BETWEEN #{searchFromDate} AND #{searchToDate} ]]>
+		</if>
+   	    <if test='searchNm != null and searchNm != ""'>
+        		<![CDATA[ AND C.USER_NM like '%'||#{searchNm}||'%' ]]>
+		</if>
+  	    <if test='searchConfmAt != null and searchConfmAt != ""'>
+        		<![CDATA[ AND A.CONFM_AT like '%'||#{searchConfmAt}||'%' ]]>
+		</if>
+    </select>
+
+    <update id="updtCtsnnManageConfm" >
+        <![CDATA[
+            UPDATE COMTN_CTSNN_MANAGE
+               SET CONFM_AT           = #{confmAt}     
+                 , SANCTN_DT          = TO_DATE(#{sanctnDt}, 'YYYY-MM-DD HH24:MI:SS')
+                 , RETURN_RESN        = #{returnResn}  
+                 , LAST_UPDUSR_ID     = #{lastUpdusrId}
+                 , LAST_UPDT_PNTTM    = SYSDATE    
+             WHERE CTSNN_ID           = #{ctsnnId}
+        ]]>
+    </update>
+
+</mapper>

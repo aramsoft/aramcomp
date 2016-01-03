@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.cop.com.service.impl.ConfirmMapper">
+
+	<!-- 목록조회  -->
+	<select id="selectConfirmRequestList" resultType="egovMap" >
+        /* 구현 Sql */
+		<![CDATA[
+			SELECT a.CONFM_NO				AS "confmNumber"
+			     , a.CONFM_RQESTER_ID		AS "confmRqesterId"
+			     , b.USER_NM 				AS "confmRqesterNm"
+			     , a.CONFM_DE				AS "confmDe"
+			     , d.CODE_NM 				AS "confmTyCodeNm"
+			     , a.CONFM_STTUS_CODE		AS "confmSttusCode"
+			     , e.CODE_NM 				AS "confmSttusCodeNm"
+			     , g.CODE_NM 				AS "opertTyCodeNm"
+			  FROM COMTN_CONFM_HISTORY a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+						ON  a.CONFM_RQESTER_ID = b.ESNTL_ID
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM006') d
+				       	ON a.CONFM_TY_CODE = d.CODE
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM007') e
+				       	ON a.CONFM_STTUS_CODE = e.CODE
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM032') g
+				       	ON a.OPERT_TY_CODE = g.CODE
+			 WHERE a.CONFMER_ID = #{confmerId}
+		]]>
+     	<if test='trgetJobId != null and trgetJobId != ""'>
+				<![CDATA[ AND a.TRGET_JOB_ID = #{trgetJobId}		]]>
+		</if>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "CONFM_TY_CODE"'>
+                 <![CDATA[ AND d.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "CONFM_STTUS_CODE"'>
+                 <![CDATA[ AND e.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[
+			 ORDER BY a.CONFM_NO DESC
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+	</select>	
+	
+	<!-- 목록조회_게시물 총갯수  -->
+	<select id="selectConfirmRequestListCnt" resultType="int" >
+		<![CDATA[
+			SELECT COUNT(a.CONFM_NO)
+			  FROM COMTN_CONFM_HISTORY a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+						ON  a.CONFM_RQESTER_ID = b.ESNTL_ID
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM006') d
+				       	ON a.CONFM_TY_CODE = d.CODE
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM007') e
+				       	ON a.CONFM_STTUS_CODE = e.CODE
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM032') g
+				       	ON a.OPERT_TY_CODE = g.CODE
+			 WHERE a.CONFMER_ID = #{confmerId}
+		]]>
+     	<if test='trgetJobId != null and trgetJobId != ""'>
+				<![CDATA[ AND a.TRGET_JOB_ID = #{trgetJobId}		]]>
+		</if>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "CONFM_TY_CODE"'>
+                 <![CDATA[ AND d.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "CONFM_STTUS_CODE"'>
+                 <![CDATA[ AND e.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>	
+ 
+	<!-- 상세보기 -->
+	<select id="selectSingleConfirmRequest" resultType="confirmHistoryVO" >
+		<![CDATA[
+			SELECT a.CONFM_NO				AS "confmNumber"
+				 , a.CONFM_RQESTER_ID		AS "confmRqesterId" 
+				 , b.USER_NM 				AS "confmRqesterNm"
+				 , a.CONFM_DE				AS "confmDe"
+				 , a.CONFM_TY_CODE			AS "confmTyCode"
+				 , d.CODE_NM 				AS "confmTyCodeNm"
+				 , a.CONFM_STTUS_CODE		AS "confmSttusCode"
+				 , e.CODE_NM 				AS "confmSttusCodeNm"
+				 , a.OPERT_TY_CODE			AS "opertTyCode"
+				 , g.CODE_NM 				AS "opertTyCodeNm"
+				 , a.TRGET_JOB_TY_CODE		AS "trgetJobTyCode"
+				 , f.CODE_NM 				AS "trgetJobTyNm"
+				 , a.TRGET_JOB_ID			AS "trgetJobId"
+				 , a.OPERT_ID				AS "opertId"
+			  FROM COMTN_CONFM_HISTORY a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+						ON  a.CONFM_RQESTER_ID = b.ESNTL_ID
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM006') d
+				       	ON a.CONFM_TY_CODE = d.CODE
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM007') e
+				       	ON a.CONFM_STTUS_CODE = e.CODE
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM003') f
+				       	ON a.TRGET_JOB_TY_CODE = f.CODE
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM032') g
+				       	ON a.OPERT_TY_CODE = g.CODE
+				  WHERE a.CONFMER_ID = #{confmerId}
+				    AND a.CONFM_NO = #{confmNumber}
+		]]>
+	</select>
+	
+	<select id="countConfirmRequest" resultType="int" >
+		<![CDATA[
+			SELECT COUNT(a.CONFM_NO)
+			  FROM COMTN_CONFM_HISTORY a	
+			 WHERE a.CONFM_RQESTER_ID 	= #{confmRqesterId}
+			   AND a.CONFM_TY_CODE 		= #{confmTyCode}
+			   AND a.CONFM_STTUS_CODE 	= #{confmSttusCode}
+			   AND a.OPERT_TY_CODE 		= #{opertTyCode}
+			   AND a.TRGET_JOB_TY_CODE 	= #{trgetJobTyCode}
+			   AND a.TRGET_JOB_ID 		= #{trgetJobId}
+		]]>		
+	</select>	
+
+	<!-- 입력 -->
+	<insert id="insertConfirmRequest"  >
+		<selectKey resultType="int" keyProperty="confmNumber" order="BEFORE">
+			SELECT  IFNULL(MAX(CONFM_NO),0)+1 AS CONFM_NO  
+			  FROM COMTN_CONFM_HISTORY
+	    </selectKey>
+		<![CDATA[
+			INSERT INTO COMTN_CONFM_HISTORY (
+					CONFM_NO
+				  ,	CONFM_RQESTER_ID
+				  ,	CONFMER_ID
+				  ,	CONFM_TY_CODE
+				  ,	CONFM_STTUS_CODE
+				  ,	OPERT_TY_CODE
+				  ,	OPERT_ID
+				  ,	TRGET_JOB_TY_CODE
+				  ,	TRGET_JOB_ID 
+			) VALUES ( 
+					#{confmNumber}
+				  ,	#{confmRqesterId}
+				  ,	#{confmerId}
+				  ,	#{confmTyCode}
+				  ,	#{confmSttusCode}
+				  ,	#{opertTyCode}
+				  ,	#{opertId}
+				  ,	#{trgetJobTyCode}
+				  ,	#{trgetJobId} 
+			)
+		]]>
+	</insert>
+	
+	<!-- 수정 -->
+ 	<update id="updateConfirmRequest" >
+ 		<![CDATA[
+			UPDATE COMTN_CONFM_HISTORY 
+			   SET CONFM_DE 		= #{confmDe}
+			     , CONFM_STTUS_CODE = #{confmSttusCode}
+			 WHERE CONFM_NO = #{confmNumber}
+ 		]]>
+ 	</update>
+
+</mapper>

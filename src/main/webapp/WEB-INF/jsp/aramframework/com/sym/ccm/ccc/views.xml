@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/sym/ccm/ccc/CmmnClCodeList" extends="default">
+    <put-attribute name="title" value="공통분류코드 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sym/ccm/ccc/CmmnClCodeList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/sym/ccm/ccc/CmmnClCodeDetail" extends="default">
+    <put-attribute name="title" value="공통분류코드 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sym/ccm/ccc/CmmnClCodeDetail.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/sym/ccm/ccc/CmmnClCodeRegist" extends="default">
+    <put-attribute name="title" value="공통분류코드  등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sym/ccm/ccc/CmmnClCodeRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/sym/ccm/ccc/CmmnClCodeEdit" extends="default">
+    <put-attribute name="title" value="공통분류코드  수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sym/ccm/ccc/CmmnClCodeEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

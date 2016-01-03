@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/uss/olh/qna/QnaList" extends="default">
+    <put-attribute name="title" value="QA 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olh/qna/QnaList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/olh/qna/QnaDetail" extends="default">
+    <put-attribute name="title" value="QA 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olh/qna/QnaDetail.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/olh/qna/QnaRegist" extends="default">
+    <put-attribute name="title" value="QA 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olh/qna/QnaRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/olh/qna/QnaEdit" extends="default">
+    <put-attribute name="title" value="QA 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olh/qna/QnaEdit.jsp" />
+  </definition>
+
+  <definition name="aramframework/com/uss/olh/qna/QnaAnswerList" extends="default">
+    <put-attribute name="title" value="QA답변 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olh/qna/QnaAnswerList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/olh/qna/QnaAnswerDetail" extends="default">
+    <put-attribute name="title" value="QA답변 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olh/qna/QnaAnswerDetail.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/olh/qna/QnaAnswerEdit" extends="default">
+    <put-attribute name="title" value="QA답변 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olh/qna/QnaAnswerEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

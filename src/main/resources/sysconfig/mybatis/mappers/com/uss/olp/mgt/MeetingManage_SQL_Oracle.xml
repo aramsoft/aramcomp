@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.uss.olp.mgt.service.impl.MeetingManageMapper">
+
+    <!-- 회의관리::부서검색  -->
+	<select id="selectDeptListPopup" resultType="egovMap">
+	 	<![CDATA[
+			SELECT ORGNZT_ID					AS "orgnztId"
+			     , ORGNZT_NM					AS "orgnztNm"
+			     , ORGNZT_DC					AS "orgnztDc"
+			  FROM COMTN_ORGNZT_INFO
+			 WHERE 1=1
+	 	]]>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "ORGNZT_NM"'>
+                <![CDATA[ AND ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "ORGNZT_DC"'>
+                <![CDATA[ AND ORGNZT_DC LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+	
+    <!-- 회의관리::아이디 검색  -->
+	<select id="selectEmpLyrListPopup" resultType="egovMap">
+	 	<![CDATA[
+		 	SELECT * 
+		      FROM (
+			SELECT ROWNUM RNUM
+			     , EMPLYR_ID				AS "emplyrId"
+			     , USER_NM					AS "userNm"
+			     , ESNTL_ID					AS "uniqId"
+			     , HOUSE_ADRES				AS "houseAdres"
+			     , DETAIL_ADRES				AS "detailAdres"
+			     , OFFM_TELNO				AS "offmTelno"
+			  FROM COMTN_EMPLYR_INFO
+			 WHERE 1=1
+	 	]]>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "USER_NM"'>
+                <![CDATA[ AND USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "EMPLYR_ID"'>
+                <![CDATA[ AND EMPLYR_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "OFFM_TELNO"'>
+                <![CDATA[ AND OFFM_TELNO LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	 	<![CDATA[
+	 			   }	
+	 		 WHERE RNUM <= 100
+	 	]]>
+	</select>
+
+	<!-- 회의관리::목록조회_게시물정보 -->
+	<select id="selectMeetingManageList" resultType="egovMap">
+		<![CDATA[
+            SELECT *
+              FROM (
+            SELECT ROWNUM RNUM, ALL_LIST.*
+              FROM (
+        ]]>
+        /* 구현 Sql */
+       	<![CDATA[
+		    SELECT A.MTG_ID					AS "mtgId"
+		         , A.MTG_NM					AS "mtgNm"
+		         , A.MTG_DE                 AS "mtgDe" 
+		         , A.MTG_PLACE				AS "mtgPlace"
+		         , A.MTG_BEGIN_TM			AS "mtgBeginTime"
+		         , A.MTG_END_TM				AS "mtgEndTime"
+		         , A.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
+		         , (SELECT USER_NM 
+		              FROM COMTN_EMPLYR_INFO 
+		             WHERE ESNTL_ID = A.FRST_REGISTER_ID
+		           ) 						AS "frstRegisterNm" 
+		      FROM COMTN_MTG_INFO A
+		     WHERE 1=1
+	 	]]>
+    	<if test='trgetId != null and trgetId != ""'>
+		   		<![CDATA[ AND A.TRGET_ID = #{trgetId} ]]>
+		</if>
+     	    <if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "MTG_NM"'>
+                <![CDATA[ AND A.MTG_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "MTG_MTR_CN"'>
+                <![CDATA[ AND A.MTG_MTR_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	 	<![CDATA[
+		     ORDER BY A.FRST_REGIST_PNTTM DESC
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+                   ) ALL_LIST
+                   )
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+        ]]>			
+	</select>
+	
+	<!-- 회의관리::목록조회_게시물 총갯수  -->
+	<select id="selectMeetingManageListCnt" resultType="int">
+		<![CDATA[
+ 			SELECT COUNT(*) totcnt
+			  FROM COMTN_MTG_INFO A
+			 WHERE 1=1
+        ]]>
+    	<if test='trgetId != null and trgetId != ""'>
+		   		<![CDATA[ AND A.TRGET_ID = #{trgetId} ]]>
+		</if>
+     	    <if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "MTG_NM"'>
+                <![CDATA[ AND A.MTG_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "MTG_MTR_CN"'>
+                <![CDATA[ AND A.MTG_MTR_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+	
+	<!-- 회의관리::상세보기 -->
+	<select id="selectMeetingManageDetail" resultType="meetingManageVO">
+		<![CDATA[
+			SELECT A.MTG_ID
+			     , A.MTG_NM
+			     , A.MTG_MTR_CN
+			     , A.MTG_SN
+			     , A.MTG_CO
+			     , A.MTG_DE
+			     , A.MTG_PLACE
+			     , A.MTG_BEGIN_TM			AS "mtgBeginTime"
+			     , A.MTG_END_TM				AS "mtgEndTime"
+			     , A.CLSDR_MTG_AT
+			     , A.READNG_BGNDE			AS "readngBeginDe"
+			     , A.READNG_AT
+			     , A.MTG_RESULT_CN
+			     , A.MTG_RESULT_ENNC
+			     , A.ETC_MATTER
+			     , A.MNGT_DEPT_ID
+			     , (SELECT ORGNZT_NM 
+			          FROM COMTN_ORGNZT_INFO 
+			         WHERE ORGNZT_ID = A.MNGT_DEPT_ID
+			       ) 						AS "mngtDeptNm" 
+			     , A.MNAER_ID
+			     , (SELECT EMPLYR_ID 
+			          FROM COMTN_EMPLYR_INFO 
+			         WHERE ESNTL_ID = A.MNAER_ID
+			       ) 						AS "mnaerIds"
+			     , (SELECT USER_NM 
+			          FROM COMTN_EMPLYR_INFO 
+			         WHERE ESNTL_ID = A.MNAER_ID
+			       ) 						AS "mnaerNm"
+			     , A.MNAER_DEPT_ID
+			     , (SELECT ORGNZT_NM 
+			          FROM COMTN_ORGNZT_INFO 
+			         WHERE ORGNZT_ID = A.MNAER_DEPT_ID
+			       ) 						AS "mnaerDeptNm" 
+			     , A.MTG_AT
+			     , A.NONATDRN_CO
+			     , A.ATDRN_CO
+			     , A.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
+			     , A.FRST_REGISTER_ID
+			  FROM COMTN_MTG_INFO A
+			 WHERE A.MTG_ID = #{mtgId}
+        ]]>
+	</select>
+	
+	<!-- 회의관리::입력  -->
+	<insert id="insertMeetingManage">
+	 	<![CDATA[
+			INSERT INTO COMTN_MTG_INFO (
+					MTG_ID
+				  , MTG_NM
+				  ,	MTG_MTR_CN
+				  ,	MTG_SN
+				  ,	MTG_CO
+				  ,	MTG_DE
+				  ,	MTG_PLACE
+				  ,	MTG_BEGIN_TM
+				  ,	MTG_END_TM
+				  ,	CLSDR_MTG_AT
+				  ,	READNG_BGNDE
+				  ,	READNG_AT
+				  ,	MTG_RESULT_CN
+				  ,	MTG_RESULT_ENNC
+				  ,	ETC_MATTER
+				  ,	MNGT_DEPT_ID
+				  ,	MNAER_ID
+				  ,	MNAER_DEPT_ID
+				  ,	MTG_AT
+				  ,	NONATDRN_CO
+				  ,	ATDRN_CO
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+			  	  ,	TRGET_ID
+			) VALUES (
+					#{mtgId}
+				  ,	#{mtgNm}
+				  ,	#{mtgMtrCn}
+				  ,	#{mtgSn}
+				  ,	#{mtgCo}
+				  ,	#{mtgDe}
+				  ,	#{mtgPlace}
+				  ,	#{mtgBeginTime}
+				  ,	#{mtgEndTime}
+				  , #{clsdrMtgAt}
+				  ,	#{readngBeginDe}
+				  ,	#{readngAt}
+				  ,	#{mtgResultCn}
+				  ,	#{mtgResultEnnc}
+				  ,	#{etcMatter}
+				  ,	#{mngtDeptId}
+				  ,	#{mnaerId}
+				  , #{mnaerDeptId}
+				  ,	#{mtnAt}
+				  ,	#{nonatdrnCo}
+				  ,	#{atdrnCo}
+				  , #{frstRegisterId}
+				  , SYSDATE
+				  , #{frstRegisterId}
+				  , SYSDATE
+			  	  ,	#{trgetId}
+			)
+		]]>
+	</insert>
+  
+	<!-- 회의관리::수정  -->
+	<update id="updateMeetingManage">
+		<![CDATA[
+			UPDATE COMTN_MTG_INFO
+			   SET MTG_NM			= #{mtgNm}
+			     , MTG_MTR_CN		= #{mtgMtrCn}
+			     , MTG_SN			= #{mtgSn}
+			     , MTG_CO			= #{mtgCo}
+			     , MTG_DE			= #{mtgDe}
+			     , MTG_PLACE		= #{mtgPlace}
+			     , MTG_BEGIN_TM		= #{mtgBeginTime}
+			     , MTG_END_TM		= #{mtgEndTime}
+			     , CLSDR_MTG_AT		= #{clsdrMtgAt}
+			     , READNG_BGNDE		= #{readngBeginDe}
+			     , READNG_AT		= #{readngAt}
+			     , MTG_RESULT_CN	= #{mtgResultCn}
+			     , MTG_RESULT_ENNC	= #{mtgResultEnnc}
+			     , ETC_MATTER		= #{etcMatter}
+			     , MNGT_DEPT_ID		= #{mngtDeptId}
+			     , MNAER_ID			= #{mnaerId}
+			     , MNAER_DEPT_ID	= #{mnaerDeptId}
+			     , MTG_AT			= #{mtnAt}
+			     , NONATDRN_CO		= #{nonatdrnCo}
+			     , ATDRN_CO			= #{atdrnCo}
+				 , LAST_UPDUSR_ID	= #{lastUpdusrId}
+				 , LAST_UPDT_PNTTM	= SYSDATE
+			 WHERE MTG_ID = #{mtgId}
+		]]>
+	</update>
+
+     <!-- 회의관리::삭제  -->
+	<delete id="deleteMeetingManage">
+		<![CDATA[
+			DELETE 
+			  FROM COMTN_MTG_INFO
+			 WHERE MTG_ID = #{mtgId}
+		]]>
+	</delete>
+
+</mapper>

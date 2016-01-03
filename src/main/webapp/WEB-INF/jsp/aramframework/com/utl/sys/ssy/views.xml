@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/utl/sys/ssy/SynchrnServerList" extends="default">
+    <put-attribute name="title" value="동기화대상 서버 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/utl/sys/ssy/SynchrnServerList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/utl/sys/ssy/SynchrnServerDetail" extends="default">
+    <put-attribute name="title" value="동기화대상 서버 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/utl/sys/ssy/SynchrnServerDetail.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/utl/sys/ssy/SynchrnServerRegist" extends="default">
+    <put-attribute name="title" value="동기화대상 서버 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/utl/sys/ssy/SynchrnServerRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/utl/sys/ssy/SynchrnServerEdit" extends="default">
+    <put-attribute name="title" value="동기화대상 서버 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/utl/sys/ssy/SynchrnServerEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

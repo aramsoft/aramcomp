@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.uss.olh.wor.service.impl.WordDicaryMapper">
+
+	<!-- 용어사전::목록조회  -->
+	<select id="selectWordDicaryList" resultType="egovMap">
+       /* 구현 Sql */
+       <![CDATA[
+   		    SELECT A.WORD_ID				AS "wordId"
+   		         , A.WORD_NM				AS "wordNm"
+   		         , A.ENG_NM					AS "engNm"
+   		         , A.SYNONM					AS "synonm"
+   		         , B.USER_NM				AS "emplyrNm"	
+   				 , A.FRST_REGIST_PNTTM		AS "frstRegisterPnttm" 
+		      FROM COMTN_WORD_DICARY_INFO A
+				   LEFT OUTER JOIN COMVN_USER_MASTER B     
+				   		ON A.FRST_REGISTER_ID = B.ESNTL_ID
+		     WHERE 1=1
+		]]>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "WORD_NM"'>
+                <![CDATA[ AND A.WORD_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "ENG_NM"'>
+                <![CDATA[ AND A.ENG_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[
+			 ORDER BY A.WORD_ID DESC
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+	</select>
+
+	<select id="selectWordDicaryListCnt" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) totcnt
+		      FROM COMTN_WORD_DICARY_INFO A
+				   LEFT OUTER JOIN COMVN_USER_MASTER B     
+				   		ON A.FRST_REGISTER_ID = B.ESNTL_ID
+		     WHERE 1=1
+		]]>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "WORD_NM"'>
+                <![CDATA[ AND A.WORD_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "ENG_NM"'>
+                <![CDATA[ AND A.ENG_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+
+	<!-- 용어사전::상세조회  -->
+	<select id="selectWordDicaryDetail" resultType="wordDicaryVO">
+		<![CDATA[
+			SELECT A.WORD_ID
+			     , A.WORD_NM
+			     , A.ENG_NM
+			     , A.WORD_DC
+			     , A.SYNONM
+			     , B.USER_NM			AS "emplyrNm"
+			     , A.FRST_REGIST_PNTTM 	AS "frstRegisterPnttm"
+			     , A.FRST_REGISTER_ID
+			     , A.LAST_UPDT_PNTTM   	AS "lastUpdusrPnttm"
+			     , A.LAST_UPDUSR_ID
+		      FROM COMTN_WORD_DICARY_INFO A
+				   LEFT OUTER JOIN COMVN_USER_MASTER B     
+				   		ON A.FRST_REGISTER_ID = B.ESNTL_ID
+		     WHERE A.WORD_ID = #{wordId}	
+		]]>
+	</select>
+
+	<insert id="insertWordDicary">
+		<![CDATA[
+			INSERT INTO COMTN_WORD_DICARY_INFO ( 
+					WORD_ID
+				  , WORD_NM
+				  , ENG_NM
+				  , WORD_DC
+				  , SYNONM
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+			) VALUES ( 
+					#{wordId}
+				  , #{wordNm}
+				  , #{engNm}
+				  , #{wordDc}
+				  , #{synonm}
+				  , #{frstRegisterId}
+				  , sysdate()
+				  , #{frstRegisterId} 
+				  , sysdate()
+ 			)
+		]]>
+	</insert>
+
+	<update id="updateWordDicary">
+		<![CDATA[
+			UPDATE COMTN_WORD_DICARY_INFO	
+			   SET WORD_NM			= #{wordNm}
+				 , ENG_NM			= #{engNm}
+				 , WORD_DC			= #{wordDc}
+				 , SYNONM			= #{synonm}
+				 , LAST_UPDUSR_ID	= #{lastUpdusrId}
+				 , LAST_UPDT_PNTTM	= sysdate()
+			 WHERE WORD_ID = #{wordId}
+		]]>
+	</update>
+
+	<delete id="deleteWordDicary">
+		<![CDATA[
+			DELETE 
+			  FROM COMTN_WORD_DICARY_INFO
+			 WHERE WORD_ID = #{wordId}
+		]]>
+	</delete>
+
+</mapper>

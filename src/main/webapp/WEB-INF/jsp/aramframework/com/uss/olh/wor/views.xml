@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/uss/olh/wor/WordDicaryList" extends="default">
+    <put-attribute name="title" value="용어사전 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olh/wor/WordDicaryList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/olh/wor/WordDicaryDetail" extends="default">
+    <put-attribute name="title" value="용어사전 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olh/wor/WordDicaryDetail.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/olh/wor/WordDicaryRegist" extends="default">
+    <put-attribute name="title" value="용어사전 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olh/wor/WordDicaryRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/olh/wor/WordDicaryEdit" extends="default">
+    <put-attribute name="title" value="용어사전 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olh/wor/WordDicaryEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

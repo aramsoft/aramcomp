@@ -1,0 +1,39 @@
+<!--  
+   블로그사용자  : 아래 소스를 복사해서 블로그에 붙여넣으세요.  
+                  (소스를 붙여넣으실때 HTML을 사용하도록 체크하셔야 정상동작됩니다.)  
+                  네이버블로그는 네이버의 보안정책상 정상동작하지 않습니다.  
+   홈페이지사용자 : 아래 소스를 복사하여 홈페이지에 업로드하여 주세요.  
+-->  
+
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset="utf-8"> 
+<title>국가공간정보통합체계 OPEN API WIZARD</title> 
+<script type="text/javascript" src="http://www.nsdi.go.kr/use/openapi/key/certifyKey.do?oap_key=100fa549d29952386f03f851f59e6783" charset="utf-8"></script> 
+</head> 
+<body> 
+
+<div id="map" style="width:500px;height:500px;border:1px solid #ccc"></div> 
+<script type="text/javascript"> 
+
+    var map = null; 
+    NSDIMapLoader.init("map", function() { 
+        map = this.nmap; 
+        map.setBaseLayer(map.nsdiBaseMap); 
+        map.addToolbarButton("init"); 
+        map.addToolbarButton("zoomin"); 
+        map.addToolbarButton("zoomout"); 
+        map.addToolbarButton("pan"); 
+        map.addToolbarButton("prev"); 
+        map.addToolbarButton("next"); 
+        map.addToolbarButton("fullext"); 
+        map.setToolbarPosition("ne"); 
+        map.setCenterAndZoom(14132804, 4494179, 15); 
+        var marker = new NSDIMarker(14132804,4494179,"",""); 
+        marker.setIconImage("/marker.png"); 
+        map.addMarker(marker); 
+    }); 
+
+</script> 
+</body> 
+</html> 

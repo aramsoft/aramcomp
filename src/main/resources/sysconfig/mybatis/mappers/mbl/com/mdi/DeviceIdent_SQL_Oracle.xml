@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.mbl.com.mdi.service.impl.DeviceIdentMapper">
+
+	<select id="selectDeviceIdentList" resultType="egovMap">
+		<![CDATA[
+            SELECT *
+              FROM (
+            SELECT ROWNUM RNUM, ALL_LIST.*
+              FROM (
+        ]]>
+        /* 구현 Sql */
+       	<![CDATA[
+			SELECT A.SN
+			     , A.MBER_ID
+			     , A.UAGENT_INFO
+			     , A.BROWSER_CODE
+			     , B.CODE_NM AS BROWSER_NM
+			     , A.OS_CODE
+			     , C.CODE_NM AS OS_NM
+			     , A.RECENT_CODE
+			     , D.CODE_NM AS RECENT_NM
+			     , A.CREAT_DT
+			     , A.UPDT_DT
+			  FROM MBLTN_DEVICE A
+ 				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM083') B
+				       	ON A.BROWSER_CODE = B.CODE  
+ 				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM084') C
+				       	ON A.OS_CODE = C.CODE   
+ 				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM085') D
+				       	ON A.RECENT_CODE = D.CODE   
+			 WHERE 1=1
+		]]>
+ 	    <if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "BROWSER_CODE"'>
+             	<![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "OS_CODE"'>
+             	<![CDATA[ AND C.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "RECENT_CODE"'>
+             	<![CDATA[ AND D.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[
+			 ORDER BY SN DESC			
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+                   ) ALL_LIST
+                   )
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+        ]]>			
+	</select>
+	
+	<select id="selectDeviceIdentListCnt" resultType="int">
+		<![CDATA[
+			SELECT COUNT(A.SN)
+			  FROM MBLTN_DEVICE A
+ 				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM083') B
+				       	ON A.BROWSER_CODE = B.CODE  
+ 				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM084') C
+				       	ON A.OS_CODE = C.CODE   
+ 				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM085') D
+				       	ON A.RECENT_CODE = D.CODE   
+			 WHERE 1=1
+		]]>
+ 	    <if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "BROWSER_CODE"'>
+             	<![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "OS_CODE"'>
+             	<![CDATA[ AND C.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "RECENT_CODE"'>
+             	<![CDATA[ AND D.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+	
+	<select id="selectDeviceIdent" resultType="deviceIdentVO">
+		<![CDATA[		
+			SELECT SN
+			     , MBER_ID
+			     , UAGENT_INFO
+			     , BROWSER_CODE
+			     , (SELECT CODE_NM 
+					  FROM COMTC_CMMN_DETAIL_CODE 
+					 WHERE CODE_ID = 'COM083' 
+					   AND CODE = BROWSER_CODE ) AS BROWSER_NM
+				 , OS_CODE
+				 , (SELECT CODE_NM 
+					  FROM COMTC_CMMN_DETAIL_CODE 
+					 WHERE CODE_ID = 'COM084' 
+					   AND CODE = OS_CODE ) AS OS_NM
+				 , RECENT_CODE
+				 , (SELECT CODE_NM 
+					  FROM COMTC_CMMN_DETAIL_CODE 
+					 WHERE CODE_ID = 'COM085' 
+					   AND CODE = RECENT_CODE ) AS RECENT_NM
+				 , CREAT_DT
+				 , UPDT_DT 
+			  FROM MBLTN_DEVICE
+			 WHERE SN = #{sn}
+		]]>
+	</select>
+
+	<insert id="insertDeviceIdent">
+		<![CDATA[	
+			INSERT INTO MBLTN_DEVICE (
+					SN
+				  , MBER_ID
+				  , UAGENT_INFO
+				  , BROWSER_CODE
+				  , OS_CODE
+				  , RECENT_CODE
+				  , CREAT_DT
+				  , UPDT_DT
+			) VALUES ( 
+					#{sn}
+				  , #{mberId}
+				  , #{uagentInfo}
+				  , #{browserCode}
+				  , #{osCode}
+				  , #{recentCode}
+				  , SYSDATE
+				  , SYSDATE 
+			)
+		]]>
+	</insert>
+
+	<update id="updateDeviceIdent">
+		<![CDATA[
+			UPDATE MBLTN_DEVICE 
+			   SET SN			= #{sn} 
+				 , UAGENT_INFO	= #{uagentInfo}
+				 , BROWSER_CODE	= #{browserCode}
+				 , OS_CODE		= #{osCode}
+				 , RECENT_CODE	= #{recentCode}
+				 , UPDT_DT		= SYSDATE
+ 			 WHERE SN = #{sn}
+		]]>
+	</update>
+	
+	<delete id="deleteDeviceIdent">
+		<![CDATA[
+			DELETE 
+			  FROM MBLTN_DEVICE 
+			 WHERE SN = #{sn}
+		]]>
+	</delete>
+
+</mapper>

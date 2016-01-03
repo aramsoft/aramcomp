@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+						http://www.springframework.org/schema/aop 
+						http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+ 
+	<aop:config>
+		<aop:pointcut id="controlMethod" 
+			expression="execution(* aramframework..web.*Controller.*(..))
+						and !execution(* aramframework.com.cmm.web.ComIndexController.*(..))" />
+
+		<aop:aspect ref="exceptionTransferWeb">
+			<aop:after-throwing throwing="exception"
+				pointcut-ref="controlMethod" 
+				method="transfer" />
+		</aop:aspect>
+	</aop:config>
+
+	<bean id="exceptionTransferWeb" class="egovframework.rte.fdl.cmmn.aspect.ExceptionTransfer">
+		<property name="exceptionHandlerService">
+			<list>
+				<ref bean="controllerExceptionHandleManager" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="controllerExceptionHandleManager"
+		class="egovframework.rte.fdl.cmmn.exception.manager.DefaultExceptionHandleManager">
+		<property name="reqExpMatcher">
+			<ref bean="antPathMatcher"/>
+		</property>
+		<property name="patterns">
+			<list>
+				<value>**web.*</value>
+			</list>
+		</property>
+		<property name="handlers">
+			<list>
+				<ref bean="egovWebHandler" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="egovWebHandler" class="aramframework.com.cmm.handler.ComWebExcepHndlr" />
+	
+</beans>

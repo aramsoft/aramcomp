@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.dam.map.tea.service.impl.MapTeamMapper">
+
+	<select id="selectMapTeamList" resultType="egovMap" >
+		<![CDATA[
+            SELECT *
+              FROM (
+            SELECT ROWNUM RNUM, ALL_LIST.*
+              FROM (
+        ]]>
+        /* 구현 Sql */
+		<![CDATA[
+			SELECT ORGNZT_ID				AS "orgnztId"
+			     , ORGNZT_NM				AS "orgnztNm"
+                 , CL_DE					AS "clYmd"
+			     , KNWLDG_URL				AS "knoUrl"
+			  FROM COMTN_DAM_MAP_TEAM
+			 WHERE 1 = 1
+		]]>
+  	   	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "ORGNZT_NM"'>
+                 <![CDATA[ AND ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "ORGNZT_ID"'>
+                 <![CDATA[ AND ORGNZT_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+        /* 구현 Sql */
+        <![CDATA[
+                   ) ALL_LIST
+                   )
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+        ]]>			
+	</select>
+
+	<select id="selectMapTeamListCnt" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) as totcnt 
+			  FROM COMTN_DAM_MAP_TEAM
+			 WHERE 1 = 1
+		]]>
+  	   	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "ORGNZT_NM"'>
+                 <![CDATA[ AND ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "ORGNZT_ID"'>
+                 <![CDATA[ AND ORGNZT_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+
+	<select id="selectMapTeamDetail" resultType="mapTeamVO">
+		<![CDATA[
+            SELECT ORGNZT_ID			AS "orgnztId"
+			     , ORGNZT_NM			AS "orgnztNm"
+                 , CL_DE				AS "clYmd"
+                 , KNWLDG_URL			AS "knoUrl"
+              FROM COMTN_DAM_MAP_TEAM
+             WHERE ORGNZT_ID = #{orgnztId}
+		]]>
+	</select>
+
+	<insert id="insertMapTeam">
+		<![CDATA[
+		    INSERT INTO COMTN_DAM_MAP_TEAM ( 
+		    	   ORGNZT_ID
+		         , ORGNZT_NM
+		         , CL_DE
+		         , KNWLDG_URL
+				 , FRST_REGISTER_ID 
+				 , FRST_REGIST_PNTTM 
+				 , LAST_UPDUSR_ID
+				 , LAST_UPDT_PNTTM 
+		    ) VALUES  ( 
+		    	   TRIM(#{orgnztId})
+		         , #{orgnztNm}
+		         , #{clYmd}
+		         , #{knoUrl}
+				 , #{frstRegisterId}
+				 , SYSDATE
+				 , #{frstRegisterId} 
+				 , SYSDATE
+		    ) 
+		]]>
+	</insert>
+
+	<update id="updateMapTeam">
+		<![CDATA[
+            UPDATE COMTN_DAM_MAP_TEAM 
+               SET ORGNZT_ID        = #{orgnztId}
+                 , ORGNZT_NM        = #{orgnztNm}
+                 , CL_DE  		  	= #{clYmd}
+                 , KNWLDG_URL       = #{knoUrl}
+                 , LAST_UPDUSR_ID   = #{lastUpdusrId}
+                 , LAST_UPDT_PNTTM 	= SYSDATE
+             WHERE ORGNZT_ID        = #{orgnztId} 
+		]]>
+	</update>
+
+	<delete id="deleteMapTeam">
+		<![CDATA[
+            DELETE 
+              FROM COMTN_DAM_MAP_TEAM 
+             WHERE ORGNZT_ID = #{orgnztId}
+		]]>
+	</delete>
+
+</mapper>
+          

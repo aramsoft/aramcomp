@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/uss/ion/ans/AnnvrsryList" extends="default">
+    <put-attribute name="title" value="기념일관리 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/ion/ans/AnnvrsryList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/ion/ans/AnnvrsryDetail" extends="default">
+    <put-attribute name="title" value="기념일관리 상세조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/ion/ans/AnnvrsryDetail.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/ion/ans/AnnvrsryRegist" extends="default">
+    <put-attribute name="title" value="기념일관리 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/ion/ans/AnnvrsryRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/ion/ans/AnnvrsryEdit" extends="default">
+    <put-attribute name="title" value="기념일관리 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/ion/ans/AnnvrsryEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

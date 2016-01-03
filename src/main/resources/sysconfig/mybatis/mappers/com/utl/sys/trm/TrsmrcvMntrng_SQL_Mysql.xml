@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.utl.sys.trm.service.impl.TrsmrcvMntrngMapper">
+
+	<select id="selectTrsmrcvMntrngList" resultType="egovMap">
+        /* 구현 Sql */
+       <![CDATA[
+			SELECT A.CNTC_ID
+				 , A.TEST_CLASS_NM
+				 , A.MNGR_NM
+				 , A.MNGR_EMAIL_ADRES		MNGR_EMAIL_ADDR
+				 , A.MNTRNG_STTUS
+				 , A.LAST_UPDT_PNTTM 		AS "lastUpdusrPnttm"
+				 , A.LAST_UPDUSR_ID
+				 , A.FRST_REGISTER_ID
+				 , A.FRST_REGIST_PNTTM 		AS "frstRegisterPnttm" 
+				 , DATE_FORMAT(A.CREAT_DT, '%Y-%m-%d %H:%i:%S') AS CREAT_DT
+				 , B.CODE_NM 				MNTRNG_STTUS_NM
+				 , C.CNTC_NM
+				 , D.INSTT_NM 				PROVD_INSTT_NM
+				 , E.SYS_NM 				PROVD_SYS_NM
+				 , F.SVC_NM 				PROVD_SVC_NM
+				 , G.INSTT_NM 				REQUST_INSTT_NM
+				 , H.SYS_NM 				REQUST_SYS_NM
+              FROM COMTN_TRSMRCV_MNTRNG A
+ 				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM046') B
+				       	ON A.MNTRNG_STTUS = B.CODE
+ 				   LEFT OUTER JOIN COMTN_SYSTEM_CNTC C 
+					    ON  A.CNTC_ID = C.CNTC_ID
+				   LEFT OUTER JOIN COMTN_CNTC_INSTT D
+					    ON  C.PROVD_INSTT_ID = D.INSTT_ID
+				   LEFT OUTER JOIN COMTN_CNTC_SYSTEM E
+					    ON  C.PROVD_INSTT_ID = E.INSTT_ID  
+					    AND C.PROVD_SYS_ID   = E.SYS_ID 
+				   LEFT OUTER JOIN COMTN_CNTC_SERVICE F
+					    ON  C.PROVD_INSTT_ID = F.INSTT_ID  
+					    AND C.PROVD_SYS_ID   = F.SYS_ID  
+					    AND C.PROVD_SVC_ID   = F.SVC_ID  
+				   LEFT OUTER JOIN COMTN_CNTC_INSTT G
+					    ON  C.REQUST_INSTT_ID = G.INSTT_ID  
+				   LEFT OUTER JOIN COMTN_CNTC_SYSTEM H
+					    ON  C.REQUST_INSTT_ID = H.INSTT_ID 
+					    AND C.REQUST_SYS_ID   = H.SYS_ID  
+             WHERE 1=1
+		]]>
+      	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "CNTC_NM"'>
+                <![CDATA[ AND C.CNTC_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "MNGR_NM"'>
+                <![CDATA[ AND A.MNGR_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "MNTRNG_STTUS"'>
+                <![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[
+             ORDER BY A.CNTC_ID ASC
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+	</select>
+
+	<select id="selectTrsmrcvMntrngListCnt" resultType="int" >
+		<![CDATA[
+			SELECT COUNT(*) totcnt
+              FROM COMTN_TRSMRCV_MNTRNG A
+ 				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM046') B
+				       	ON A.MNTRNG_STTUS = B.CODE
+ 				   LEFT OUTER JOIN COMTN_SYSTEM_CNTC C 
+					    ON  A.CNTC_ID = C.CNTC_ID
+				   LEFT OUTER JOIN COMTN_CNTC_INSTT D
+					    ON  C.PROVD_INSTT_ID = D.INSTT_ID
+				   LEFT OUTER JOIN COMTN_CNTC_SYSTEM E
+					    ON  C.PROVD_INSTT_ID = E.INSTT_ID  
+					    AND C.PROVD_SYS_ID   = E.SYS_ID 
+				   LEFT OUTER JOIN COMTN_CNTC_SERVICE F
+					    ON  C.PROVD_INSTT_ID = F.INSTT_ID  
+					    AND C.PROVD_SYS_ID   = F.SYS_ID  
+					    AND C.PROVD_SVC_ID   = F.SVC_ID  
+				   LEFT OUTER JOIN COMTN_CNTC_INSTT G
+					    ON  C.REQUST_INSTT_ID = G.INSTT_ID  
+				   LEFT OUTER JOIN COMTN_CNTC_SYSTEM H
+					    ON  C.REQUST_INSTT_ID = H.INSTT_ID 
+					    AND C.REQUST_SYS_ID   = H.SYS_ID  
+             WHERE 1=1
+        ]]>
+      	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "CNTC_NM"'>
+                <![CDATA[ AND C.CNTC_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "MNGR_NM"'>
+                <![CDATA[ AND A.MNGR_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "MNTRNG_STTUS"'>
+                <![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+	
+	<select id="selectTrsmrcvMntrng" resultType="trsmrcvMntrngVO">
+		<![CDATA[
+			SELECT A.CNTC_ID
+			     , A.TEST_CLASS_NM
+			     , A.MNGR_NM
+			     , A.MNGR_EMAIL_ADRES		MNGR_EMAIL_ADDR
+			     , A.MNTRNG_STTUS
+			     , A.LAST_UPDT_PNTTM 		AS "lastUpdusrPnttm" 
+			     , A.LAST_UPDUSR_ID
+			     , A.FRST_REGISTER_ID
+			     , A.FRST_REGIST_PNTTM 		AS "frstRegisterPnttm" 
+			     , DATE_FORMAT(A.CREAT_DT, '%Y-%m-%d %H:%i:%S') AS CREAT_DT
+			     , B.CODE_NM 				MNTRNG_STTUS_NM
+			     , C.CNTC_NM
+			     , D.INSTT_NM 				PROVD_INSTT_NM
+			     , E.SYS_NM 				PROVD_SYS_NM
+			     , F.SVC_NM 				PROVD_SVC_NM
+			     , G.INSTT_NM 				REQUST_INSTT_NM
+			     , H.SYS_NM 				REQUST_SYS_NM
+              FROM COMTN_TRSMRCV_MNTRNG A
+ 				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM046') B
+				       	ON A.MNTRNG_STTUS = B.CODE
+ 				   LEFT OUTER JOIN COMTN_SYSTEM_CNTC C 
+					    ON  A.CNTC_ID = C.CNTC_ID
+				   LEFT OUTER JOIN COMTN_CNTC_INSTT D
+					    ON  C.PROVD_INSTT_ID = D.INSTT_ID
+				   LEFT OUTER JOIN COMTN_CNTC_SYSTEM E
+					    ON  C.PROVD_INSTT_ID = E.INSTT_ID  
+					    AND C.PROVD_SYS_ID   = E.SYS_ID 
+				   LEFT OUTER JOIN COMTN_CNTC_SERVICE F
+					    ON  C.PROVD_INSTT_ID = F.INSTT_ID  
+					    AND C.PROVD_SYS_ID   = F.SYS_ID  
+					    AND C.PROVD_SVC_ID   = F.SVC_ID  
+				   LEFT OUTER JOIN COMTN_CNTC_INSTT G
+					    ON  C.REQUST_INSTT_ID = G.INSTT_ID  
+				   LEFT OUTER JOIN COMTN_CNTC_SYSTEM H
+					    ON  C.REQUST_INSTT_ID = H.INSTT_ID 
+					    AND C.REQUST_SYS_ID   = H.SYS_ID  
+             WHERE A.CNTC_ID = #{cntcId}
+		]]>
+	</select>
+
+	<insert id="insertTrsmrcvMntrng" >
+		<![CDATA[
+			INSERT INTO COMTN_TRSMRCV_MNTRNG (
+					CNTC_ID
+				  , TEST_CLASS_NM
+				  ,	MNGR_NM
+				  ,	MNGR_EMAIL_ADRES
+				  ,	MNTRNG_STTUS
+				  ,	CREAT_DT
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+			) VALUES (
+		    		#{cntcId}
+		    	  ,	#{testClassNm}
+		    	  , #{mngrNm}
+		    	  , #{mngrEmailAddr}
+		    	  , #{mntrngSttus}
+		    	  , sysdate()
+				  , #{frstRegisterId}
+				  , sysdate()
+				  , #{frstRegisterId} 
+				  , sysdate()
+		    ) 
+		]]>
+	</insert>
+
+ 	<update id="updateTrsmrcvMntrng" >
+ 		<![CDATA[
+			UPDATE COMTN_TRSMRCV_MNTRNG 
+			   SET TEST_CLASS_NM = #{testClassNm}
+			     , MNGR_NM = #{mngrNm}
+			     , MNGR_EMAIL_ADRES = #{mngrEmailAddr}
+			     , MNTRNG_STTUS = #{mntrngSttus}
+			     , CREAT_DT = sysdate()
+			     , LAST_UPDUSR_ID = #{lastUpdusrId}
+			     , LAST_UPDT_PNTTM = sysdate()
+			 WHERE CNTC_ID = #cntcId# 
+ 		]]>
+ 	</update>
+ 	
+	<delete id="deleteTrsmrcvMntrng" >
+		<![CDATA[
+            DELETE  
+              FROM COMTN_TRSMRCV_MNTRNG 
+             WHERE CNTC_ID = #{cntcId}
+		]]>
+	</delete>
+
+    <select id="selectTrsmrcvMntrngLogList" resultType="egovMap">
+        /* 구현 Sql */
+       	<![CDATA[
+            SELECT A.LOG_ID
+            	 , A.CNTC_ID
+            	 , A.TEST_CLASS_NM
+            	 , A.MNGR_NM
+            	 , A.MNGR_EMAIL_ADRES		MNGR_EMAIL_ADDR
+            	 , A.MNTRNG_STTUS
+            	 , A.LAST_UPDT_PNTTM		AS "lastUpdusrPnttm" 
+            	 , A.LAST_UPDUSR_ID
+            	 , A.FRST_REGISTER_ID
+            	 , A.FRST_REGIST_PNTTM 		AS "frstRegisterPnttm"
+            	 , DATE_FORMAT(A.CREAT_DT, '%Y-%m-%d %H:%i:%S') AS CREAT_DT
+            	 , A.LOG_INFO
+            	 , B.CODE_NM 				MNTRNG_STTUS_NM
+            	 , C.CNTC_NM
+            	 , D.INSTT_NM 				PROVD_INSTT_NM
+            	 , E.SYS_NM 				PROVD_SYS_NM
+            	 , F.SVC_NM 				PROVD_SVC_NM
+            	 , G.INSTT_NM 				REQUST_INSTT_NM
+            	 , H.SYS_NM 				REQUST_SYS_NM
+              FROM COMTN_TRSMRCV_MNTRNG_LOG A
+ 				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM046') B
+				       	ON A.MNTRNG_STTUS = B.CODE
+ 				   LEFT OUTER JOIN COMTN_SYSTEM_CNTC C 
+					    ON  A.CNTC_ID = C.CNTC_ID
+				   LEFT OUTER JOIN COMTN_CNTC_INSTT D
+					    ON  C.PROVD_INSTT_ID = D.INSTT_ID
+				   LEFT OUTER JOIN COMTN_CNTC_SYSTEM E
+					    ON  C.PROVD_INSTT_ID = E.INSTT_ID  
+					    AND C.PROVD_SYS_ID   = E.SYS_ID 
+				   LEFT OUTER JOIN COMTN_CNTC_SERVICE F
+					    ON  C.PROVD_INSTT_ID = F.INSTT_ID  
+					    AND C.PROVD_SYS_ID   = F.SYS_ID  
+					    AND C.PROVD_SVC_ID   = F.SVC_ID  
+				   LEFT OUTER JOIN COMTN_CNTC_INSTT G
+					    ON  C.REQUST_INSTT_ID = G.INSTT_ID  
+				   LEFT OUTER JOIN COMTN_CNTC_SYSTEM H
+					    ON  C.REQUST_INSTT_ID = H.INSTT_ID 
+					    AND C.REQUST_SYS_ID   = H.SYS_ID  
+             WHERE 1=1
+       ]]>
+        <if test='searchKeywordFrom != null and searchKeywordFrom != ""'>
+				<![CDATA[ AND DATE_FORMAT(A.CREAT_DT, '%Y%m%d') >= #{searchKeywordFrom}  ]]>
+		</if>
+       	<if test='searchKeywordTo != null and searchKeywordTo != ""'>
+				<![CDATA[ AND DATE_FORMAT(A.CREAT_DT, '%Y%m%d') <= #{searchKeywordTo} ]]>
+		</if>
+       	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "CNTC_NM"'>
+                <![CDATA[ AND C.CNTC_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "MNGR_NM"'>
+                <![CDATA[ AND A.MNGR_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+        <![CDATA[
+             ORDER BY A.LOG_ID DESC
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+    </select>
+
+    <select id="selectTrsmrcvMntrngLogListCnt" resultType="int" >
+        <![CDATA[
+            SELECT COUNT(*) totcnt
+              FROM COMTN_TRSMRCV_MNTRNG_LOG A
+ 				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM046') B
+				       	ON A.MNTRNG_STTUS = B.CODE
+ 				   LEFT OUTER JOIN COMTN_SYSTEM_CNTC C 
+					    ON  A.CNTC_ID = C.CNTC_ID
+				   LEFT OUTER JOIN COMTN_CNTC_INSTT D
+					    ON  C.PROVD_INSTT_ID = D.INSTT_ID
+				   LEFT OUTER JOIN COMTN_CNTC_SYSTEM E
+					    ON  C.PROVD_INSTT_ID = E.INSTT_ID  
+					    AND C.PROVD_SYS_ID   = E.SYS_ID 
+				   LEFT OUTER JOIN COMTN_CNTC_SERVICE F
+					    ON  C.PROVD_INSTT_ID = F.INSTT_ID  
+					    AND C.PROVD_SYS_ID   = F.SYS_ID  
+					    AND C.PROVD_SVC_ID   = F.SVC_ID  
+				   LEFT OUTER JOIN COMTN_CNTC_INSTT G
+					    ON  C.REQUST_INSTT_ID = G.INSTT_ID  
+				   LEFT OUTER JOIN COMTN_CNTC_SYSTEM H
+					    ON  C.REQUST_INSTT_ID = H.INSTT_ID 
+					    AND C.REQUST_SYS_ID   = H.SYS_ID  
+             WHERE 1=1
+        ]]>
+        <if test='searchKeywordFrom != null and searchKeywordFrom != ""'>
+				<![CDATA[ AND DATE_FORMAT(A.CREAT_DT, '%Y%m%d') >= #{searchKeywordFrom}  ]]>
+		</if>
+       	<if test='searchKeywordTo != null and searchKeywordTo != ""'>
+				<![CDATA[ AND DATE_FORMAT(A.CREAT_DT, '%Y%m%d') <= #{searchKeywordTo} ]]>
+		</if>
+       	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "CNTC_NM"'>
+                <![CDATA[ AND C.CNTC_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "MNGR_NM"'>
+                <![CDATA[ AND A.MNGR_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+    </select>
+
+    <select id="selectTrsmrcvMntrngLog" resultType="trsmrcvMntrngLogVO">
+        <![CDATA[
+            SELECT A.LOG_ID
+            	 , A.CNTC_ID
+            	 , A.TEST_CLASS_NM
+            	 , A.MNGR_NM
+            	 , A.MNGR_EMAIL_ADRES		MNGR_EMAIL_ADDR
+            	 , A.MNTRNG_STTUS
+            	 , A.LAST_UPDT_PNTTM 		AS "lastUpdusrPnttm"
+            	 , A.LAST_UPDUSR_ID
+            	 , A.FRST_REGISTER_ID
+            	 , A.FRST_REGIST_PNTTM 		AS "frstRegisterPnttm"
+            	 , DATE_FORMAT(A.CREAT_DT, '%Y-%m-%d %H:%i:%S') AS CREAT_DT
+            	 , A.LOG_INFO
+            	 , B.CODE_NM 				MNTRNG_STTUS_NM
+            	 , C.CNTC_NM
+            	 , D.INSTT_NM 				PROVD_INSTT_NM
+            	 , E.SYS_NM 				PROVD_SYS_NM
+            	 , F.SVC_NM 				PROVD_SVC_NM
+            	 , G.INSTT_NM 				REQUST_INSTT_NM
+            	 , H.SYS_NM 				REQUST_SYS_NM
+              FROM COMTN_TRSMRCV_MNTRNG_LOG A
+ 				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM046') B
+				       	ON A.MNTRNG_STTUS = B.CODE
+ 				   LEFT OUTER JOIN COMTN_SYSTEM_CNTC C 
+					    ON  A.CNTC_ID = C.CNTC_ID
+				   LEFT OUTER JOIN COMTN_CNTC_INSTT D
+					    ON  C.PROVD_INSTT_ID = D.INSTT_ID
+				   LEFT OUTER JOIN COMTN_CNTC_SYSTEM E
+					    ON  C.PROVD_INSTT_ID = E.INSTT_ID  
+					    AND C.PROVD_SYS_ID   = E.SYS_ID 
+				   LEFT OUTER JOIN COMTN_CNTC_SERVICE F
+					    ON  C.PROVD_INSTT_ID = F.INSTT_ID  
+					    AND C.PROVD_SYS_ID   = F.SYS_ID  
+					    AND C.PROVD_SVC_ID   = F.SVC_ID  
+				   LEFT OUTER JOIN COMTN_CNTC_INSTT G
+					    ON  C.REQUST_INSTT_ID = G.INSTT_ID  
+				   LEFT OUTER JOIN COMTN_CNTC_SYSTEM H
+					    ON  C.REQUST_INSTT_ID = H.INSTT_ID 
+					    AND C.REQUST_SYS_ID   = H.SYS_ID  
+             WHERE A.LOG_ID = #{logId}
+        ]]>
+    </select>
+
+    <insert id="insertTrsmrcvMntrngLog" >
+        <![CDATA[
+            INSERT INTO COMTN_TRSMRCV_MNTRNG_LOG (
+                	LOG_ID
+                  ,	CNTC_ID
+                  ,	TEST_CLASS_NM
+                  ,	MNGR_NM
+                  ,	MNGR_EMAIL_ADRES
+                  ,	MNTRNG_STTUS
+                  ,	CREAT_DT
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+                  ,	LOG_INFO
+           ) VALUES (
+                    #{logId}
+                  , #{cntcId}
+                  , #{testClassNm}
+                  , #{mngrNm#
+                  , #{mngrEmailAddr}
+                  , #{mntrngSttus}
+                  , sysdate()
+				  , #{frstRegisterId}
+				  , sysdate()
+				  , #{frstRegisterId}
+				  , sysdate()
+                  , #{logInfo, jdbcType=VARCHAR}
+            ) 
+        ]]>
+    </insert>
+
+    <select id="selectCntcList" resultType="egovMap" >
+        /* 구현 Sql */
+       	<![CDATA[
+            SELECT A.CNTC_ID           
+                 , A.CNTC_NM           
+                 , A.CNTC_TY         
+                 , A.PROVD_INSTT_ID    
+                 , A.PROVD_SYS_ID      
+                 , A.PROVD_SVC_ID      
+                 , A.REQUST_INSTT_ID   
+                 , A.REQUST_SYS_ID     
+                 , C1.INSTT_NM         		PROVD_INSTT_NM 
+                 , D1.SYS_NM           		PROVD_SYS_NM   
+                 , E.SVC_NM            		PROVD_SVC_NM   
+                 , C2.INSTT_NM         		REQUST_INSTT_NM
+                 , D2.SYS_NM           		REQUST_SYS_NM
+              FROM COMTN_SYSTEM_CNTC A
+				   LEFT OUTER JOIN COMTN_CNTC_INSTT   C1 
+					    ON  A.PROVD_INSTT_ID  = C1.INSTT_ID
+				   LEFT OUTER JOIN COMTN_CNTC_SYSTEM  D1
+					    ON  A.PROVD_INSTT_ID  = D1.INSTT_ID
+					    AND A.PROVD_SYS_ID    = D1.SYS_ID
+				   LEFT OUTER JOIN COMTN_CNTC_SERVICE E
+		                ON  A.PROVD_INSTT_ID  = E.INSTT_ID
+		                AND A.PROVD_SYS_ID    = E.SYS_ID
+		                AND A.PROVD_SVC_ID    = E.SVC_ID
+ 				   LEFT OUTER JOIN COMTN_CNTC_INSTT   C2 
+					    ON  A.REQUST_INSTT_ID = C2.INSTT_ID
+				   LEFT OUTER JOIN COMTN_CNTC_SYSTEM  D2
+					    ON  A.REQUST_INSTT_ID = D2.INSTT_ID
+					    AND A.REQUST_SYS_ID   = D2.SYS_ID
+             WHERE 1=1
+        ]]>
+       	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "CNTC_NM"'>
+                <![CDATA[ AND A.CNTC_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+       	<![CDATA[
+             ORDER BY A.CNTC_ID ASC
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+    </select>
+
+    <select id="selectCntcListCnt" resultType="int" >
+        <![CDATA[
+            SELECT COUNT(*) totcnt
+              FROM COMTN_SYSTEM_CNTC A
+				   LEFT OUTER JOIN COMTN_CNTC_INSTT   C1 
+					    ON  A.PROVD_INSTT_ID  = C1.INSTT_ID
+				   LEFT OUTER JOIN COMTN_CNTC_SYSTEM  D1
+					    ON  A.PROVD_INSTT_ID  = D1.INSTT_ID
+					    AND A.PROVD_SYS_ID    = D1.SYS_ID
+				   LEFT OUTER JOIN COMTN_CNTC_SERVICE E
+		                ON  A.PROVD_INSTT_ID  = E.INSTT_ID
+		                AND A.PROVD_SYS_ID    = E.SYS_ID
+		                AND A.PROVD_SVC_ID    = E.SVC_ID
+ 				   LEFT OUTER JOIN COMTN_CNTC_INSTT   C2 
+					    ON  A.REQUST_INSTT_ID = C2.INSTT_ID
+				   LEFT OUTER JOIN COMTN_CNTC_SYSTEM  D2
+					    ON  A.REQUST_INSTT_ID = D2.INSTT_ID
+					    AND A.REQUST_SYS_ID   = D2.SYS_ID
+             WHERE 1=1
+        ]]>
+       	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "CNTC_NM"'>
+                <![CDATA[ AND A.CNTC_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+    </select>
+
+</mapper>            

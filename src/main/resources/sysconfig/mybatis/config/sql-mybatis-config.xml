@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    
+	<settings>
+   		<setting name="logImpl" value="NO_LOGGING"/>
+     	<setting name="mapUnderscoreToCamelCase" value="true"/>
+  	</settings>
+  
+   	<typeAliases>
+ 		<typeAlias alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+ 
+  		<typeAlias alias="cacheVO" 				type="aramframework.com.cmm.service.CacheVO"/>
+  		<typeAlias alias="fileVO" 				type="aramframework.com.cmm.service.FileVO"/>
+  		<typeAlias alias="comCodeVO" 			type="aramframework.com.cmm.service.ComCodeVO"/>
+ 		<typeAlias alias="adressBookVO" 		type="aramframework.com.cop.adb.service.AdressBookVO"/>
+  		<typeAlias alias="adressBookUserVO" 	type="aramframework.com.cop.adb.service.AdressBookUserVO"/>
+  		<typeAlias alias="boardVO" 				type="aramframework.com.cop.bbs.service.BoardVO"/>
+  		<typeAlias alias="boardMasterVO" 		type="aramframework.com.cop.bbs.service.BoardMasterVO"/>
+  		<typeAlias alias="boardUseInfVO" 		type="aramframework.com.cop.bbs.service.BoardUseInfVO"/>
+  		<typeAlias alias="commentVO" 			type="aramframework.com.cop.bbs.service.CommentVO"/>
+  		<typeAlias alias="satisfactionVO" 		type="aramframework.com.cop.bbs.service.SatisfactionVO"/>
+  		<typeAlias alias="clubVO" 				type="aramframework.com.cop.clb.service.ClubVO"/>
+  		<typeAlias alias="clubUserVO" 			type="aramframework.com.cop.clb.service.ClubUserVO"/>
+   		<typeAlias alias="communityVO" 			type="aramframework.com.cop.cmy.service.CommunityVO"/>
+  		<typeAlias alias="communityUserVO"		type="aramframework.com.cop.cmy.service.CommunityUserVO"/>
+  		<typeAlias alias="communityMenuVO"		type="aramframework.com.cop.cmy.service.CommunityMenuVO"/>
+  		<typeAlias alias="confirmHistoryVO"		type="aramframework.com.cop.com.service.ConfirmHistoryVO"/>
+   		<typeAlias alias="sndngMailVO"			type="aramframework.com.cop.ems.service.SndngMailVO"/>
+  		<typeAlias alias="atchmnFileVO"			type="aramframework.com.cop.ems.service.AtchmnFileVO"/>
+  		<typeAlias alias="nameCardVO"			type="aramframework.com.cop.ncm.service.NameCardVO"/>
+  		<typeAlias alias="nameCardUseVO"		type="aramframework.com.cop.ncm.service.NameCardUseVO"/>
+ 		<typeAlias alias="scrapVO"				type="aramframework.com.cop.scp.service.ScrapVO"/>
+ 		<typeAlias alias="smsVO"				type="aramframework.com.cop.sms.service.SmsVO"/>
+ 		<typeAlias alias="deptJobVO"			type="aramframework.com.cop.smt.djm.service.DeptJobVO"/>
+ 		<typeAlias alias="deptJobBxVO"			type="aramframework.com.cop.smt.djm.service.DeptJobBxVO"/>
+ 		<typeAlias alias="diaryManageVO"		type="aramframework.com.cop.smt.dsm.service.DiaryManageVO"/>
+ 		<typeAlias alias="leaderSchdulVO"		type="aramframework.com.cop.smt.lsm.service.LeaderSchdulVO"/>
+ 		<typeAlias alias="leaderSttusVO"		type="aramframework.com.cop.smt.lsm.service.LeaderSttusVO"/>
+ 		<typeAlias alias="memoReprtVO"			type="aramframework.com.cop.smt.mrm.service.MemoReprtVO"/>
+ 		<typeAlias alias="memoTodoVO"			type="aramframework.com.cop.smt.mtm.service.MemoTodoVO"/>
+ 		<typeAlias alias="schdulManageVO"		type="aramframework.com.cop.smt.sim.service.SchdulManageVO"/>
+ 		<typeAlias alias="wikMnthngReprtVO"		type="aramframework.com.cop.smt.wmr.service.WikMnthngReprtVO"/>
+ 		<typeAlias alias="templateInfVO"		type="aramframework.com.cop.tpl.service.TemplateInfVO"/>
+
+ 		<typeAlias alias="knoAppraisalVO"		type="aramframework.com.dam.app.service.KnoAppraisalVO"/>
+ 		<typeAlias alias="mapMaterialVO"		type="aramframework.com.dam.map.mat.service.MapMaterialVO"/>
+ 		<typeAlias alias="mapTeamVO"			type="aramframework.com.dam.map.tea.service.MapTeamVO"/>
+ 		<typeAlias alias="knoManagementVO"		type="aramframework.com.dam.mgm.service.KnoManagementVO"/>
+ 		<typeAlias alias="knoPersonalVO"		type="aramframework.com.dam.per.service.KnoPersonalVO"/>
+ 		<typeAlias alias="requestOfferVO"		type="aramframework.com.dam.spe.req.service.RequestOfferVO"/>
+ 		<typeAlias alias="knoSpecialistVO"		type="aramframework.com.dam.spe.spe.service.KnoSpecialistVO"/>
+ 		
+ 		<typeAlias alias="authorVO"				type="aramframework.com.sec.arm.service.AuthorVO"/>
+ 		<typeAlias alias="authorResourceVO"		type="aramframework.com.sec.arm.service.AuthorResourceVO"/>
+ 		<typeAlias alias="deptVO"				type="aramframework.com.sec.dpt.service.DeptVO"/>
+ 		<typeAlias alias="deptAuthorVO"			type="aramframework.com.sec.dpt.service.DeptAuthorVO"/>
+ 		<typeAlias alias="groupVO"				type="aramframework.com.sec.grp.service.GroupVO"/>
+ 		<typeAlias alias="groupAuthorVO"		type="aramframework.com.sec.grp.service.GroupAuthorVO"/>
+ 		<typeAlias alias="resourceVO"			type="aramframework.com.sec.rmt.service.ResourceVO"/>
+
+ 		<typeAlias alias="cntcInsttVO"			type="aramframework.com.ssi.syi.iis.service.CntcInsttVO"/>
+ 		<typeAlias alias="cntcServiceVO"		type="aramframework.com.ssi.syi.iis.service.CntcServiceVO"/>
+ 		<typeAlias alias="cntcSystemVO"			type="aramframework.com.ssi.syi.iis.service.CntcSystemVO"/>
+ 		<typeAlias alias="cntcMessageVO"		type="aramframework.com.ssi.syi.ims.service.CntcMessageVO"/>
+ 		<typeAlias alias="cntcMessageItemVO"	type="aramframework.com.ssi.syi.ims.service.CntcMessageItemVO"/>
+ 		<typeAlias alias="cntcSttusVO"			type="aramframework.com.ssi.syi.ist.service.CntcSttusVO"/>
+ 		<typeAlias alias="systemCntcVO"			type="aramframework.com.ssi.syi.sim.service.SystemCntcVO"/>
+
+ 		<typeAlias alias="statsVO"				type="aramframework.com.sts.com.StatsVO"/>
+ 		<typeAlias alias="dtaUseStatsVO"		type="aramframework.com.sts.dst.service.DtaUseStatsVO"/>
+		<typeAlias alias="reprtStatsVO"			type="aramframework.com.sts.rst.service.ReprtStatsVO"/>
+
+		<typeAlias alias="batchOpertVO"			type="aramframework.com.sym.bat.service.BatchOpertVO"/>
+		<typeAlias alias="batchSchdulVO"		type="aramframework.com.sym.bat.service.BatchSchdulVO"/>
+		<typeAlias alias="batchSchdulDfkVO"		type="aramframework.com.sym.bat.service.BatchSchdulDfkVO"/>
+		<typeAlias alias="batchResultVO"		type="aramframework.com.sym.bat.service.BatchResultVO"/>
+ 		<typeAlias alias="restdeVO"				type="aramframework.com.sym.cal.service.RestdeVO"/>
+ 		<typeAlias alias="administCodeRecptnVO"	type="aramframework.com.sym.ccm.acr.service.AdministCodeRecptnVO"/>
+		<typeAlias alias="administCodeVO"		type="aramframework.com.sym.ccm.adc.service.AdministCodeVO"/>
+		<typeAlias alias="cmmnCodeVO"			type="aramframework.com.sym.ccm.cca.service.CmmnCodeVO"/>
+		<typeAlias alias="cmmnClCodeVO"			type="aramframework.com.sym.ccm.ccc.service.CmmnClCodeVO"/>
+		<typeAlias alias="cmmnDetailCodeVO"		type="aramframework.com.sym.ccm.cde.service.CmmnDetailCodeVO"/>
+		<typeAlias alias="insttCodeRecptnVO"	type="aramframework.com.sym.ccm.icr.service.InsttCodeRecptnVO"/>
+		<typeAlias alias="zipVO"				type="aramframework.com.sym.ccm.zip.service.ZipVO"/>
+		<typeAlias alias="loginLogVO"			type="aramframework.com.sym.log.clg.service.LoginLogVO"/>
+		<typeAlias alias="sysLogVO"				type="aramframework.com.sym.log.lgm.service.SysLogVO"/>
+		<typeAlias alias="sysHistoryVO"			type="aramframework.com.sym.log.slg.service.SysHistoryVO"/>
+		<typeAlias alias="trsmrcvLogVO"			type="aramframework.com.sym.log.tlg.service.TrsmrcvLogVO"/>
+		<typeAlias alias="userLogVO"			type="aramframework.com.sym.log.ulg.service.UserLogVO"/>
+		<typeAlias alias="webLogVO"				type="aramframework.com.sym.log.wlg.service.WebLogVO"/>
+		<typeAlias alias="bkmkMenuManageVO"		type="aramframework.com.sym.mnu.bmm.service.BkmkMenuManageVO"/>
+		<typeAlias alias="menuCreateVO"			type="aramframework.com.sym.mnu.mcm.service.MenuCreateVO"/>
+		<typeAlias alias="menuManageVO"			type="aramframework.com.sym.mnu.mpm.service.MenuManageVO"/>
+		<typeAlias alias="siteMapngVO"			type="aramframework.com.sym.mnu.stm.service.SiteMapngVO"/>
+		<typeAlias alias="progrmManageVO"		type="aramframework.com.sym.prm.service.ProgrmManageVO"/>
+		<typeAlias alias="progrmManageDtlVO"	type="aramframework.com.sym.prm.service.ProgrmManageDtlVO"/>
+		<typeAlias alias="backupOpertVO"		type="aramframework.com.sym.sym.bak.service.BackupOpertVO"/>
+		<typeAlias alias="backupSchdulDfkVO"	type="aramframework.com.sym.sym.bak.service.BackupSchdulDfkVO"/>
+		<typeAlias alias="backupResultVO"		type="aramframework.com.sym.sym.bak.service.BackupResultVO"/>
+		<typeAlias alias="ntwrkVO"				type="aramframework.com.sym.sym.nwk.service.NtwrkVO"/>
+		<typeAlias alias="serverVO"				type="aramframework.com.sym.sym.srv.service.ServerVO"/>
+		<typeAlias alias="serverEqpmnVO"		type="aramframework.com.sym.sym.srv.service.ServerEqpmnVO"/>
+		<typeAlias alias="troblProcessVO"		type="aramframework.com.sym.tbm.tbp.service.TroblProcessVO"/>
+		<typeAlias alias="troblReqstVO"			type="aramframework.com.sym.tbm.tbr.service.TroblReqstVO"/>
+		
+		<typeAlias alias="loginPolicyVO"		type="aramframework.com.uat.uap.service.LoginPolicyVO"/>
+		<typeAlias alias="loginVO"				type="aramframework.com.cmm.LoginVO"/>
+
+		<typeAlias alias="annvrsryManageVO"		type="aramframework.com.uss.ion.ans.service.AnnvrsryManageVO"/>
+		<typeAlias alias="bannerVO"				type="aramframework.com.uss.ion.bnr.service.BannerVO"/>
+		<typeAlias alias="bndtManageVO"			type="aramframework.com.uss.ion.bnt.service.BndtManageVO"/>
+		<typeAlias alias="bndtCeckManageVO"		type="aramframework.com.uss.ion.bnt.service.BndtCeckManageVO"/>
+		<typeAlias alias="bndtDiaryVO"			type="aramframework.com.uss.ion.bnt.service.BndtDiaryVO"/>
+		<typeAlias alias="ctsnnManageVO"		type="aramframework.com.uss.ion.ctn.service.CtsnnManageVO"/>
+		<typeAlias alias="eventCmpgnVO"			type="aramframework.com.uss.ion.ecc.service.EventCmpgnVO"/>
+		<typeAlias alias="tnextrlHrInfoVO"		type="aramframework.com.uss.ion.ecc.service.TnextrlHrInfoVO"/>
+		<typeAlias alias="eventManageVO"		type="aramframework.com.uss.ion.evt.service.EventManageVO"/>
+		<typeAlias alias="eventAtdrnVO"			type="aramframework.com.uss.ion.evt.service.EventAtdrnVO"/>
+		<typeAlias alias="intnetSvcGuidanceVO"	type="aramframework.com.uss.ion.isg.service.IntnetSvcGuidanceVO"/>
+		<typeAlias alias="infrmlSanctnVO"		type="aramframework.com.uss.ion.ism.service.InfrmlSanctnVO"/>
+		<typeAlias alias="loginScrinImageVO"	type="aramframework.com.uss.ion.lsi.service.LoginScrinImageVO"/>
+		<typeAlias alias="mainImageVO"			type="aramframework.com.uss.ion.msi.service.MainImageVO"/>
+		<typeAlias alias="mtgPlaceManageVO"		type="aramframework.com.uss.ion.mtg.service.MtgPlaceManageVO"/>
+		<typeAlias alias="mtgPlaceResveVO"		type="aramframework.com.uss.ion.mtg.service.MtgPlaceResveVO"/>
+		<typeAlias alias="mtgPlaceFxtrsVO"		type="aramframework.com.uss.ion.mtg.service.MtgPlaceFxtrsVO"/>
+		<typeAlias alias="notificationVO"		type="aramframework.com.uss.ion.noi.service.NotificationVO"/>
+		<typeAlias alias="newsManageVO"			type="aramframework.com.uss.ion.nws.service.NewsManageVO"/>
+		<typeAlias alias="popupManageVO"		type="aramframework.com.uss.ion.pwm.service.PopupManageVO"/>
+		<typeAlias alias="recomendSiteVO"		type="aramframework.com.uss.ion.rec.service.RecomendSiteVO"/>
+		<typeAlias alias="rssInfoVO"			type="aramframework.com.uss.ion.rsn.service.RssInfoVO"/>
+		<typeAlias alias="rssManageVO"			type="aramframework.com.uss.ion.rss.service.RssManageVO"/>
+		<typeAlias alias="rwardManageVO"		type="aramframework.com.uss.ion.rwd.service.RwardManageVO"/>
+		<typeAlias alias="siteManageVO"			type="aramframework.com.uss.ion.sit.service.SiteManageVO"/>
+		<typeAlias alias="userAbsnceVO"			type="aramframework.com.uss.ion.uas.service.UserAbsnceVO"/>
+		<typeAlias alias="unityLinkVO"			type="aramframework.com.uss.ion.ulm.service.UnityLinkVO"/>
+		<typeAlias alias="vcatnManageVO"		type="aramframework.com.uss.ion.vct.service.VcatnManageVO"/>
+		<typeAlias alias="indvdlYrycManageVO"	type="aramframework.com.uss.ion.vct.service.IndvdlYrycManageVO"/>
+		<typeAlias alias="indvdlPgeConfVO"		type="aramframework.com.uss.mpe.service.IndvdlPgeConfVO"/>
+		<typeAlias alias="indvdlPgeCntntsVO"	type="aramframework.com.uss.mpe.service.IndvdlPgeCntntsVO"/>
+		<typeAlias alias="administrationWordVO"	type="aramframework.com.uss.olh.awm.service.AdministrationWordVO"/>
+		<typeAlias alias="faqManageVO"			type="aramframework.com.uss.olh.faq.service.FaqManageVO"/>
+		<typeAlias alias="hpcmManageVO"			type="aramframework.com.uss.olh.hpc.service.HpcmManageVO"/>
+		<typeAlias alias="onlineManualVO"		type="aramframework.com.uss.olh.omm.service.OnlineManualVO"/>
+		<typeAlias alias="qnaManageVO"			type="aramframework.com.uss.olh.qna.service.QnaManageVO"/>
+		<typeAlias alias="wordDicaryVO"			type="aramframework.com.uss.olh.wor.service.WordDicaryVO"/>
+		<typeAlias alias="cnsltManageVO"		type="aramframework.com.uss.olp.cns.service.CnsltManageVO"/>
+		<typeAlias alias="meetingManageVO"		type="aramframework.com.uss.olp.mgt.service.MeetingManageVO"/>
+		<typeAlias alias="onlinePollManageVO"	type="aramframework.com.uss.olp.opm.service.OnlinePollManageVO"/>
+		<typeAlias alias="onlinePollItemVO"		type="aramframework.com.uss.olp.opm.service.OnlinePollItemVO"/>
+		<typeAlias alias="onlinePollPartcptnVO"	type="aramframework.com.uss.olp.opp.service.OnlinePollPartcptnVO"/>
+		<typeAlias alias="qustnrItemManageVO"	type="aramframework.com.uss.olp.qim.service.QustnrItemManageVO"/>
+		<typeAlias alias="qustnrManageVO"		type="aramframework.com.uss.olp.qmc.service.QustnrManageVO"/>
+		<typeAlias alias="qustnrQestnManageVO"	type="aramframework.com.uss.olp.qqm.service.QustnrQestnManageVO"/>
+		<typeAlias alias="qustnrRespondInfoVO"	type="aramframework.com.uss.olp.qri.service.QustnrRespondInfoVO"/>
+		<typeAlias alias="qustnrRespondManageVO" type="aramframework.com.uss.olp.qrm.service.QustnrRespondManageVO"/>
+		<typeAlias alias="qustnrTmplatManageVO" type="aramframework.com.uss.olp.qtm.service.QustnrTmplatManageVO"/>
+		<typeAlias alias="cpyrhtPrtcPolicyVO" 	type="aramframework.com.uss.sam.cpy.service.CpyrhtPrtcPolicyVO"/>
+		<typeAlias alias="indvdlInfoPolicyVO" 	type="aramframework.com.uss.sam.ipm.service.IndvdlInfoPolicyVO"/>
+		<typeAlias alias="stplatManageVO" 		type="aramframework.com.uss.sam.stp.service.StplatManageVO"/>
+		<typeAlias alias="entrprsManageVO" 		type="aramframework.com.uss.umt.service.EntrprsManageVO"/>
+		<typeAlias alias="mberManageVO" 		type="aramframework.com.uss.umt.service.MberManageVO"/>
+		<typeAlias alias="userManageVO" 		type="aramframework.com.uss.umt.service.UserManageVO"/>
+		<typeAlias alias="stplatVO" 			type="aramframework.com.uss.umt.service.StplatVO"/>
+
+		<typeAlias alias="prntngOutptVO" 		type="aramframework.com.utl.pao.service.PrntngOutptVO"/>
+		<typeAlias alias="dbMntrngVO" 			type="aramframework.com.utl.sys.dbm.service.DbMntrngVO"/>
+		<typeAlias alias="dbMntrngLogVO"		type="aramframework.com.utl.sys.dbm.service.DbMntrngLogVO"/>
+		<typeAlias alias="fileSysMntrngVO" 		type="aramframework.com.utl.sys.fsm.service.FileSysMntrngVO"/>
+		<typeAlias alias="fileSysMntrngLogVO"	type="aramframework.com.utl.sys.fsm.service.FileSysMntrngLogVO"/>
+		<typeAlias alias="httpMntrngVO" 		type="aramframework.com.utl.sys.htm.service.HttpMntrngVO"/>
+		<typeAlias alias="httpMntrngLogVO" 		type="aramframework.com.utl.sys.htm.service.HttpMntrngLogVO"/>
+		<typeAlias alias="ntwrkSvcMntrngVO" 	type="aramframework.com.utl.sys.nsm.service.NtwrkSvcMntrngVO"/>
+		<typeAlias alias="ntwrkSvcMntrngLogVO" 	type="aramframework.com.utl.sys.nsm.service.NtwrkSvcMntrngLogVO"/>
+		<typeAlias alias="processMonVO" 		type="aramframework.com.utl.sys.prm.service.ProcessMonVO"/>
+		<typeAlias alias="processMonLogVO" 		type="aramframework.com.utl.sys.prm.service.ProcessMonLogVO"/>
+		<typeAlias alias="proxySvcVO" 			type="aramframework.com.utl.sys.pxy.service.ProxySvcVO"/>
+		<typeAlias alias="proxySvcLogVO" 		type="aramframework.com.utl.sys.pxy.service.ProxySvcLogVO"/>
+		<typeAlias alias="serverResrceMntrngVO" type="aramframework.com.utl.sys.srm.service.ServerResrceMntrngVO"/>
+		<typeAlias alias="synchrnServerVO" 		type="aramframework.com.utl.sys.ssy.service.SynchrnServerVO"/>
+		<typeAlias alias="trsmrcvMntrngVO" 		type="aramframework.com.utl.sys.trm.service.TrsmrcvMntrngVO"/>
+		<typeAlias alias="trsmrcvMntrngLogVO"	type="aramframework.com.utl.sys.trm.service.TrsmrcvMntrngLogVO"/>
+		
+		<typeAlias alias="geoLocationVO"		type="aramframework.mbl.com.geo.service.GeoLocationVO"/>
+		<typeAlias alias="chartGraphVO"			type="aramframework.mbl.com.mcg.service.ChartGraphVO"/>
+		<typeAlias alias="deviceIdentVO"		type="aramframework.mbl.com.mdi.service.DeviceIdentVO"/>
+		<typeAlias alias="multimediaVO"			type="aramframework.mbl.com.mlt.service.MultimediaVO"/>
+		<typeAlias alias="multimediaFileInfoVO"	type="aramframework.mbl.com.mlt.service.MultimediaFileInfoVO"/>
+		<typeAlias alias="mmsTransInfoVO"		type="aramframework.mbl.com.mms.service.MmsTransInfoVO"/>
+		<typeAlias alias="attachFileVO"			type="aramframework.mbl.com.mms.service.AttachFileVO"/>
+		<typeAlias alias="photoVO"				type="aramframework.mbl.com.mpa.service.PhotoVO"/>
+		<typeAlias alias="openApiVO"			type="aramframework.mbl.com.oas.service.OpenApiVO"/>
+		<typeAlias alias="offlineWebVO"			type="aramframework.mbl.com.ows.service.OfflineWebVO"/>
+		<typeAlias alias="realtimeNoticeVO"		type="aramframework.mbl.com.rns.service.RealtimeNoticeVO"/>
+		<typeAlias alias="syncVO"				type="aramframework.mbl.com.syn.service.SyncVO"/>
+<!-- 
+ 		<package name="aramframework"/>
+-->		
+    </typeAliases>
+    
+</configuration>

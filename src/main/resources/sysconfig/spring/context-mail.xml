@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:c="http://www.springframework.org/schema/c"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      					http://www.springframework.org/schema/beans/spring-beans-3.2.xsd"> 
+     
+	<!-- 
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"
+	  	p:host="#{mailProperties.host}"
+	   	p:port="465" 
+	   	p:username="horanghi@gmail.com" 
+	   	p:password="*" />
+	-->
+	
+    <!-- 메일 연동 인터페이스에서 첨부파일 미사용 -->
+    <bean id="EMSMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl" 
+        p:host		="#{mailProperties.host}" 
+        p:port		="#{mailProperties.port}"  
+        p:protocol	="smtps" 
+        p:username	="#{mailProperties.mailId}" 
+        p:password	="#{mailProperties.mailPass}"> 
+        <property name="javaMailProperties"> 
+            <props> 
+                <prop key="mail.smtps.auth">true</prop> 
+                <prop key="mail.smtps.startls.enable">true</prop> 
+                <prop key="mail.smtps.debug">true</prop> 
+            </props> 
+        </property> 
+    </bean>
+      
+    <!-- 메일 연동 인터페이스에서 첨부파일 사용 -->
+	<bean id="egovMultiPartEmail" class="aramframework.com.cop.ems.service.EgovMultiPartEmail" 
+		c:host		="#{mailProperties.host}"
+		c:port		="#{mailProperties.port}" 
+		c:mailId	="#{mailProperties.mailId}" 
+		c:mailPass	="#{mailProperties.mailPass}"
+		c:mailName	="#{mailProperties.mailName}"
+		c:emailAddress="#{mailProperties.emailAddress}" />
+	  
+    <!-- 모니터링 서비스에서 사용 gmail, hanmail 용 -->
+    <bean id="mntrngMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl" 
+        p:host		="#{mailProperties.host}" 
+        p:port		="#{mailProperties.port}"  
+        p:protocol	="smtps" 
+        p:username	="#{mailProperties.mailId}" 
+        p:password	="#{mailProperties.mailPass}"> 
+        <property name="javaMailProperties"> 
+            <props> 
+                <prop key="mail.smtps.auth">true</prop> 
+                <prop key="mail.smtps.startls.enable">true</prop> 
+                <prop key="mail.smtps.debug">true</prop> 
+            </props> 
+        </property> 
+    </bean>
+    
+    <bean id="mntrngMessage" class="org.springframework.mail.SimpleMailMessage" 
+        p:from="SYSTEM &lt; hnccho@gmail.com &gt;"   
+        p:subject="{MonitorType} status report." 
+        p:text="* {MonitorType} status report.&#13;{content}"/> 
+
+</beans> 

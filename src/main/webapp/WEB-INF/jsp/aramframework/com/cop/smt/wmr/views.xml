@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/cop/smt/wmr/WikMnthngReprtList" extends="default">
+    <put-attribute name="title" value="주간/월간보고 목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/smt/wmr/WikMnthngReprtList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/cop/smt/wmr/WikMnthngReprtDetail" extends="default">
+    <put-attribute name="title" value="주간/월간보고 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/smt/wmr/WikMnthngReprtDetail.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/cop/smt/wmr/WikMnthngReprtRegist" extends="default">
+    <put-attribute name="title" value="주간/월간보고 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/smt/wmr/WikMnthngReprtRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/cop/smt/wmr/WikMnthngReprtEdit" extends="default">
+    <put-attribute name="title" value="주간/월간보고 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/smt/wmr/WikMnthngReprtEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

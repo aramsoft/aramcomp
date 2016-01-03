@@ -1,0 +1,89 @@
+<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+-->
+<html>
+  <head>
+    <title>Test of ObjectInspector</title>
+    <script type="text/javascript">
+      _editor_url = "../../";
+    </script>
+
+    <!-- load the main HTMLArea files -->
+    <script type="text/javascript" src="../../htmlarea.js"></script>
+    <script type="text/javascript" src="../../lang/en.js"></script>
+    <script type="text/javascript" src="../../dialog.js"></script>
+
+    <!-- <script type="text/javascript" src="popupdiv.js"></script> -->
+    <script type="text/javascript" src="../../popupwin.js"></script>
+
+    <script type="text/javascript">
+      HTMLArea.loadPlugin("ObjectInspector");
+      HTMLArea.loadPlugin("TableOperations");
+      HTMLArea.loadPlugin("SpellChecker");
+      HTMLArea.loadPlugin("FullPage");
+      HTMLArea.loadPlugin("ContextMenu");
+
+      function initDocument() {
+        var editor = new HTMLArea("editor");
+        editor.registerPlugin(ObjectInspector, {
+          parent: 'object-inspector',
+          layout: 'H'
+        });
+        editor.registerPlugin(FullPage);
+        editor.registerPlugin(TableOperations);
+        editor.registerPlugin(SpellChecker);
+        editor.registerPlugin(ContextMenu);
+        editor.generate();
+      }
+
+      HTMLArea.onload = initDocument;
+    </script>
+
+    <style type="text/css">
+      @import url(../../htmlarea.css);
+      @import url(object-inspector.css);
+      .htmlarea-object-inspector {
+
+      }
+    </style>
+
+  </head>
+
+  <body onload="HTMLArea.init()">
+    <h1>Test of ObjectInspector</h1>
+
+    <p>
+      This was sponsored by Fabio Rotondo of <a
+      href="http://www.os3.it/">OS3.it</a>.  I'm not sure it ended up what
+      Fabio wanted, but nonetheless it's pretty nice.  Enjoy!
+    </p>
+		<p>
+		Return to the <a href="http://Inferior-Products.com/htmlarea/">HTMLarea page</a>,
+		or the HTMLarea page <a href="http://htmlarea.sourceforge.net/">hosted
+		on SourceForge</a>.
+		</p>
+
+    <textarea id="editor" style="height: 20em; width: 100%;">
+    &lt;h1 style="border-style: solid; border-color: rgb(0, 102, 51) rgb(204,
+      0, 0) rgb(204, 0, 204) rgb(255, 255, 0); padding: 5px;
+      background-color: rgb(0, 204, 255); color: rgb(0, 51, 153);"&gt;The
+      code&lt;/h1&gt;
+
+    &lt;p&gt;HTML &lt;span style="border-style: solid; border-color: rgb(0, 0, 0);
+        border-width: 1px 1px 1px 3px; padding: 2px; font-weight: bold;
+        background-color: rgb(255, 204, 0); color: rgb(255, 0,
+        0);"&gt;here&lt;/span&gt; ;-)&lt;br /&gt;this is a great editor..&lt;br /&gt;&lt;/p&gt;
+    </textarea>
+    <div id="object-inspector" class="htmlarea-object-inspector">
+    </div>
+
+    <hr />
+    <address><a href="https://sourceforge.net/users/sf_chris">SF_chris</a></address>
+<!-- Created: Wed Oct  1 19:55:37 EEST 2003 -->
+<!-- hhmts start -->
+Last modified: 2013-07-29 19:32:00
+<!-- hhmts end -->
+<!-- doc-lang: English -->
+  </body>
+</html>

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.cmm.service.impl.FileMngMapper">
+
+	<!-- 목록조회  -->
+ 	<select id="selectFileListByFileNm" resultType="fileVO" >
+        /* 구현 Sql */
+ 		<![CDATA[
+ 			SELECT a.ATCH_FILE_ID
+				 , b.FILE_CN
+				 , b.FILE_SN
+				 , b.FILE_STRE_COURS
+				 , b.STRE_FILE_NM
+				 , b.FILE_EXTSN
+				 , b.FILE_TYPE
+				 , b.ORIGNL_FILE_NM
+				 , b.FILE_SIZE				
+				 , a.CREAT_DT
+			  FROM COMTN_FILE a
+				   INNER JOIN COMTN_FILE_DETAIL b
+						 ON a.ATCH_FILE_ID = b.ATCH_FILE_ID		
+			 WHERE a.USE_AT = 'Y'
+ 		]]>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "STRE_FILE_NM"'>
+             	<![CDATA[ AND b.STRE_FILE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "ORIGNL_FILE_NM"'>
+             	<![CDATA[ AND b.ORIGNL_FILE_NM  LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[			
+			 ORDER BY a.ATCH_FILE_ID, b.FILE_SN	
+		]]>		 		
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+ 	</select>
+
+	<!-- 목록조회_게시물 총갯수  -->
+ 	<select id="selectFileListCntByFileNm" resultType="int" >
+ 		<![CDATA[
+			SELECT COUNT(a.ATCH_FILE_ID)
+			  FROM COMTN_FILE a
+				   INNER JOIN COMTN_FILE_DETAIL b
+						 ON a.ATCH_FILE_ID = b.ATCH_FILE_ID		
+			 WHERE a.USE_AT = 'Y'
+ 		]]>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "STRE_FILE_NM"'>
+             	<![CDATA[ AND b.STRE_FILE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "ORIGNL_FILE_NM"'>
+             	<![CDATA[ AND b.ORIGNL_FILE_NM  LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+ 	</select>
+ 	
+	<!-- 파일리스트  -->
+ 	<select id="selectFileList" resultType="fileVO" >
+ 		<![CDATA[
+			SELECT a.ATCH_FILE_ID
+				 , b.FILE_CN
+				 , b.FILE_SN
+				 , b.FILE_STRE_COURS
+				 , b.STRE_FILE_NM
+				 , b.FILE_EXTSN
+				 , b.FILE_TYPE
+				 , b.ORIGNL_FILE_NM
+				 , b.FILE_SIZE				
+				 , a.CREAT_DT
+			  FROM COMTN_FILE a
+				   INNER JOIN COMTN_FILE_DETAIL b
+						 ON a.ATCH_FILE_ID = b.ATCH_FILE_ID		
+			 WHERE a.ATCH_FILE_ID = #{atchFileId}
+			   AND a.USE_AT = 'Y'				
+			 ORDER BY b.FILE_SN	
+ 		]]>
+ 	</select>
+ 	
+	<!-- 이미지리스트  -->
+  	<select id="selectImageFileList" resultType="fileVO" >
+ 		<![CDATA[
+			SELECT a.ATCH_FILE_ID
+				 , b.FILE_CN
+				 , b.FILE_SN
+				 , b.FILE_STRE_COURS
+				 , b.STRE_FILE_NM
+				 , b.FILE_EXTSN
+				 , b.FILE_TYPE
+				 , b.ORIGNL_FILE_NM
+				 , b.FILE_SIZE				
+				 , a.CREAT_DT
+			  FROM COMTN_FILE a
+				   INNER JOIN COMTN_FILE_DETAIL b
+						 ON  UPPER(b.FILE_EXTSN) IN ('GIF','JPG','BMP','PNG')
+						 AND a.ATCH_FILE_ID = b.ATCH_FILE_ID		
+			 WHERE a.ATCH_FILE_ID = #{atchFileId}
+			   AND a.USE_AT = 'Y'				
+			 ORDER BY b.FILE_SN	
+ 		]]>
+ 	</select>	
+
+	<!-- 상세보기 -->
+ 	<select id="selectFileInf" resultType="fileVO" >
+ 		<![CDATA[
+			SELECT ATCH_FILE_ID
+				 , FILE_CN
+				 , FILE_SN
+				 , FILE_STRE_COURS
+				 , STRE_FILE_NM
+				 , FILE_EXTSN
+				 , FILE_TYPE
+				 , ORIGNL_FILE_NM
+				 , FILE_SIZE				
+			  FROM COMTN_FILE_DETAIL
+			 WHERE ATCH_FILE_ID = #{atchFileId}
+			   AND FILE_SN = #{fileSn}	
+ 		]]>
+ 	</select>
+
+	<!-- 입력 -->
+	<insert id="insertFileMaster" >
+		<![CDATA[
+			INSERT INTO COMTN_FILE (
+					ATCH_FILE_ID
+				  , CREAT_DT
+				  ,	USE_AT
+			) VALUES ( 
+					#{atchFileId}
+				  , sysdate()
+				  ,	'Y'
+			)			
+		]]>
+	</insert>
+	
+	<select id="getMaxFileSN" resultType="int">
+		<![CDATA[
+			SELECT IFNULL(MAX(FILE_SN),0)+1 AS FILE_SN
+			  FROM COMTN_FILE_DETAIL
+			 WHERE ATCH_FILE_ID =  #{atchFileId}		
+		]]>
+	</select>
+
+	<!-- 입력 -->
+	<insert id="insertFileDetail" >
+		<![CDATA[
+			INSERT INTO COMTN_FILE_DETAIL ( 
+					ATCH_FILE_ID
+				  ,	FILE_SN
+				  ,	FILE_STRE_COURS
+				  ,	STRE_FILE_NM
+				  ,	ORIGNL_FILE_NM
+				  ,	FILE_EXTSN
+				  ,	FILE_TYPE
+				  ,	FILE_SIZE
+				  ,	FILE_CN 
+			) VALUES ( 
+					#{atchFileId}
+				  ,	#{fileSn}
+				  ,	#{fileStreCours}
+				  ,	#{streFileNm}
+				  ,	#{orignlFileNm}
+				  ,	#{fileExtsn}
+				  ,	#{fileType}
+				  ,	#{fileSize}
+				  ,	#{fileCn}
+			)			
+		]]>
+	</insert>	
+	
+	<!-- 삭제 -->
+	<update id="deleteFile" >
+		<![CDATA[
+			UPDATE COMTN_FILE
+			   SET USE_AT = 'N'
+			 WHERE ATCH_FILE_ID = #{atchFileId, jdbcType=VARCHAR}
+		]]>
+	</update>
+<!-- 
+	<delete id="deleteFile" >
+		<![CDATA[
+			DELETE
+			  FROM COMTN_FILE
+			 WHERE ATCH_FILE_ID = #{atchFileId}
+		]]>
+	</delete>
+-->
+	<!-- 삭제 -->
+	<delete id="deleteFileDetail" >
+		<![CDATA[
+			DELETE 
+			  FROM COMTN_FILE_DETAIL
+			 WHERE ATCH_FILE_ID = #{atchFileId}
+			   AND FILE_SN = #{fileSn}			
+		]]>	
+	</delete>
+ 	
+	<delete id="deleteFileDetailList" >
+		<![CDATA[
+			DELETE
+			  FROM COMTN_FILE_DETAIL
+			 WHERE ATCH_FILE_ID = #{atchFileId}
+		]]>
+	</delete>
+	
+</mapper>

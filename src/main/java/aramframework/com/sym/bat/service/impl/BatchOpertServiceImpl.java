@@ -1,0 +1,111 @@
+package aramframework.com.sym.bat.service.impl;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.sym.bat.service.BatchOpertVO;
+import aramframework.com.sym.bat.service.BatchOpertService;
+import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import egovframework.rte.fdl.cmmn.exception.FdlException;
+import egovframework.rte.fdl.idgnr.EgovIdGnrService;
+import egovframework.rte.psl.dataaccess.util.EgovMap;
+
+/**
+ * 배치작업관리에 대한 ServiceImpl 클래스를 정의한다.
+ * 
+ * @author 아람컴포넌트 조헌철
+ * @since 2014.11.11
+ * @version 1.0
+ * @see
+ *
+ * <pre>
+ * 
+ * << 개정이력(Modification Information) >>
+ *   
+ *   수정일            수정자          수정내용
+ *   -------     ------   ---------------------------
+ *   2014.11.11  조헌철         최초 생성
+ * 
+ * </pre>
+ */
+
+@Service("batchOpertService")
+public class BatchOpertServiceImpl extends EgovAbstractServiceImpl implements BatchOpertService {
+
+	/**
+	 * 배치작업DAO
+	 */
+	@Resource(name = "batchOpertMapper")
+	private BatchOpertMapper batchOpertMapper;	
+
+	/** ID Generation */
+	@Resource(name = "batchOpertIdGnrService")
+	private EgovIdGnrService idgenService;
+
+	/**
+	 * 배치작업의 목록을 조회 한다.
+	 * 
+	 * @param batchOpertVO
+	 */
+	public List<EgovMap> selectBatchOpertList(BatchOpertVO batchOpertVO) {
+		return batchOpertMapper.selectBatchOpertList(batchOpertVO);
+	}
+
+	/**
+	 * 배치작업 목록 전체 건수를(을) 조회한다.
+	 * 
+	 * @param batchOpertVO
+	 */
+	public int selectBatchOpertListCnt(BatchOpertVO batchOpertVO) {
+		return batchOpertMapper.selectBatchOpertListCnt(batchOpertVO);
+	}
+
+	/**
+	 * 배치작업을 상세조회 한다.
+	 * 
+	 * @param batchOpertVO
+	 */
+	public BatchOpertVO selectBatchOpert(BatchOpertVO batchOpertVO) {
+		BatchOpertVO resultVo = batchOpertMapper.selectBatchOpert(batchOpertVO);
+		// deep copy
+		BeanUtil.copyPropertiesCore(resultVo, batchOpertVO); 
+		return resultVo;
+	}
+
+	/**
+	 * 배치작업을 등록한다.
+	 * 
+	 * @param batchOpertVO
+	 */
+	public void insertBatchOpert(BatchOpertVO batchOpertVO) {
+		try {
+			batchOpertVO.setBatchOpertId(idgenService.getNextStringId());
+		} catch (FdlException e) {
+			throw new RuntimeException(e);
+		}
+		batchOpertMapper.insertBatchOpert(batchOpertVO);
+	}
+
+	/**
+	 * 배치작업정보를 수정한다.
+	 * 
+	 * @param batchOpertVO
+	 */
+	public void updateBatchOpert(BatchOpertVO batchOpertVO) {
+		batchOpertMapper.updateBatchOpert(batchOpertVO);
+	}
+
+	/**
+	 * 배치작업을 삭제한다.
+	 * 
+	 * @param batchOpertVO
+	 */
+	public void deleteBatchOpert(BatchOpertVO batchOpertVO) {
+		batchOpertMapper.deleteBatchOpert(batchOpertVO);
+	}
+
+}

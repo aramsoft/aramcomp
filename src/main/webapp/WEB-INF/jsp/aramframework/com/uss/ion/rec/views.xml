@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/uss/ion/rec/RecomendSiteList" extends="default">
+    <put-attribute name="title" value="추천사이트 목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/ion/rec/RecomendSiteList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/ion/rec/RecomendSiteDetail" extends="default">
+    <put-attribute name="title" value="추천사이트 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/ion/rec/RecomendSiteDetail.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/ion/rec/RecomendSiteRegist" extends="default">
+    <put-attribute name="title" value="추천사이트 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/ion/rec/RecomendSiteRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/ion/rec/RecomendSiteEdit" extends="default">
+    <put-attribute name="title" value="추천사이트 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/ion/rec/RecomendSiteEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.uss.olp.opm.service.impl.OnlinePollManageMapper">
+
+	<!-- 온라인POLL관리 -->
+	<!-- 온라인POLL관리::목록조회 게시물정보 -->
+	<select id="selectOnlinePollManageList" resultType="egovMap">
+		<![CDATA[
+            SELECT *
+              FROM (
+            SELECT ROWNUM RNUM, ALL_LIST.*
+              FROM (
+        ]]>
+        /* 구현 Sql */
+       	<![CDATA[
+			SELECT A.POLL_ID				AS "pollId"
+			     , A.POLL_NM				AS "pollNm"
+			     , A.POLL_BGNDE				AS "pollBeginDe" 
+			     , A.POLL_ENDDE				AS "pollEndDe" 
+			     , A.FRST_REGIST_PNTTM		AS "frstRegisterPnttm" 
+			     , (SELECT USER_NM 
+			          FROM COMVN_USER_MASTER 
+			         WHERE ESNTL_ID = A.FRST_REGISTER_ID
+			       ) 						AS "frstRegisterNm" 
+			  FROM COMTN_ONLINE_POLL_MANAGE A
+			 WHERE 1=1
+		]]>
+    	<if test='trgetId != null and trgetId != ""'>
+		   		<![CDATA[ AND A.TRGET_ID = #{trgetId} ]]>
+		</if>
+     	    <if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "POLL_NM"'>
+                <![CDATA[ AND A.POLL_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[
+			 ORDER BY A.FRST_REGIST_PNTTM DESC
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+                   ) ALL_LIST
+                   )
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+        ]]>			
+	</select>
+	
+	<!-- 온라인POLL관리::목록조회_게시물 총갯수  -->
+	<select id="selectOnlinePollManageListCnt" resultType="int">
+       	<![CDATA[
+		  	SELECT COUNT(*) totcnt
+			  FROM COMTN_ONLINE_POLL_MANAGE A
+			 WHERE 1=1
+		]]>				
+    	<if test='trgetId != null and trgetId != ""'>
+		   		<![CDATA[ AND A.TRGET_ID = #{trgetId} ]]>
+		</if>
+     	    <if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "POLL_NM"'>
+                <![CDATA[ AND A.POLL_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+	
+	<!-- 온라인POLL관리::상세보기 -->
+	<select id="selectOnlinePollManageDetail" resultType="onlinePollManageVO">
+       	<![CDATA[
+			 SELECT A.POLL_ID				AS "pollId" 
+			      ,	A.POLL_NM				AS "pollNm" 
+			      ,	A.POLL_BGNDE			AS "pollBeginDe" 
+			      ,	A.POLL_ENDDE			AS "pollEndDe" 
+			      ,	A.POLL_KND				AS "pollKindCode" 
+			      ,	A.POLL_DSUSE_ENNC		AS "pollDsuseYn" 
+			      ,	A.POLL_ATMC_DSUSE_ENNC	AS "pollAutoDsuseYn" 
+			      ,	A.FRST_REGIST_PNTTM		AS "frstRegisterPnttm" 
+			      ,	A.FRST_REGISTER_ID		AS "frstRegisterId" 
+			      ,	A.LAST_UPDT_PNTTM		AS "lastUpdusrPnttm" 
+			      ,	A.LAST_UPDUSR_ID  		AS "lastUpdusrId" 
+			   FROM COMTN_ONLINE_POLL_MANAGE A
+			  WHERE A.POLL_ID = #{pollId} 
+		]]>				
+	</select>
+
+	<!-- 온라인POLL관리::입력  -->
+	<insert id="insertOnlinePollManage">	     
+		<![CDATA[
+			INSERT INTO COMTN_ONLINE_POLL_MANAGE ( 
+					POLL_ID
+				  ,	POLL_NM
+				  ,	POLL_BGNDE
+				  ,	POLL_ENDDE
+				  ,	POLL_KND
+				  ,	POLL_DSUSE_ENNC
+				  ,	POLL_ATMC_DSUSE_ENNC
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+			  	  ,	TRGET_ID
+			) VALUES ( 
+					#{pollId}
+				  ,	#{pollNm}
+				  ,	#{pollBeginDe}
+				  ,	#{pollEndDe}
+				  ,	#{pollKindCode}
+				  ,	#{pollDsuseYn}
+				  ,	#{pollAutoDsuseYn}
+				  , #{frstRegisterId}
+				  , SYSDATE
+				  , #{frstRegisterId} 
+				  , SYSDATE
+			  	  ,	#{trgetId}
+			)
+		]]>
+	</insert>
+	
+	<!-- 온라인POLL관리::수정  -->
+	<update id="updateOnlinePollManage">
+		<![CDATA[
+			UPDATE COMTN_ONLINE_POLL_MANAGE 
+			   SET POLL_NM				= #{pollNm}
+			     , POLL_BGNDE			= #{pollBeginDe}
+			     , POLL_ENDDE			= #{pollEndDe}
+			     , POLL_KND				= #{pollKindCode}
+			     , POLL_DSUSE_ENNC		= #{pollDsuseYn}
+			     , POLL_ATMC_DSUSE_ENNC	= #{pollAutoDsuseYn}
+			     , LAST_UPDUSR_ID 		= #{lastUpdusrId}
+			     , LAST_UPDT_PNTTM 		= SYSDATE
+			 WHERE POLL_ID = #{pollId}
+		]]>
+	</update>
+	
+	<!-- 온라인POLL결과::온라인POLL ID별  삭제  -->
+	<delete id="deleteOnlinePollResultAll">
+		<![CDATA[
+			DELETE 
+			  FROM COMTN_ONLINE_POLL_RESULT 
+			 WHERE POLL_ID = #{pollId}
+		]]>
+	</delete>
+    
+    <!-- 온라인POLL항목::온라인POLL ID별  삭제  -->
+	<delete id="deleteOnlinePollItemAll">
+		<![CDATA[
+			DELETE 
+			  FROM COMTN_ONLINE_POLL_IEM 
+			 WHERE POLL_ID = #{pollId}
+		]]>
+	</delete>
+    
+    <!-- 온라인POLL관리::삭제  -->
+	<delete id="deleteOnlinePollManage">
+		<![CDATA[
+			DELETE 
+			  FROM COMTN_ONLINE_POLL_MANAGE 
+			 WHERE POLL_ID = #{pollId}
+		]]>
+	</delete>
+	
+	<!-- 온라인POLL항목 -->
+	<!-- 온라인POLL항목::목록조회 게시물정보 -->
+	<select id="selectOnlinePollItemList" resultType="egovMap">
+		<![CDATA[
+			SELECT POLL_IEM_ID				AS "pollIemId"
+			     , POLL_IEM_NM				AS "pollIemNm"
+			  FROM COMTN_ONLINE_POLL_IEM
+			 WHERE 1=1
+			   AND POLL_ID = #{pollId} 
+			 ORDER BY POLL_IEM_NM DESC
+		]]> 
+	</select>
+
+	<!-- 온라인POLL항목::등록  --> 
+	<insert id="insertOnlinePollItem">	     
+		<![CDATA[
+			INSERT INTO COMTN_ONLINE_POLL_IEM ( 
+					POLL_ID
+				  ,	POLL_IEM_ID
+				  ,	POLL_IEM_NM
+				  ,	FRST_REGISTER_ID
+				  ,	FRST_REGIST_PNTTM
+				  ,	LAST_UPDUSR_ID
+				  ,	LAST_UPDT_PNTTM
+			) VALUES ( 
+					#{pollId}
+				  , #{pollIemId}
+				  ,	#{pollIemNm}
+				  , #{frstRegisterId}
+				  , SYSDATE
+				  , #{frstRegisterId} 
+				  , SYSDATE
+			)
+		]]>
+	</insert>
+	
+	<!-- 온라인POLL항목::수정  -->
+	<update id="updateOnlinePollItem">
+		<![CDATA[
+			UPDATE COMTN_ONLINE_POLL_IEM 
+			   SET POLL_IEM_NM = #{pollIemNm}  
+			 WHERE POLL_IEM_ID = #{pollIemId} 
+		]]>
+	</update>
+	
+ 	<!-- 온라인POLL결과::온라인POLL IEM ID별  삭제  -->
+	<delete id="deleteOnlinePollResultIemid">
+		<![CDATA[
+			DELETE 
+			  FROM COMTN_ONLINE_POLL_RESULT 
+			 WHERE POLL_ID 		= #{pollId} 
+			   AND POLL_IEM_ID  = #{pollIemId}
+		]]>
+	</delete>
+	
+    <!-- 온라인POLL항목::삭제  -->
+	<delete id="deleteOnlinePollItem">
+		<![CDATA[
+			DELETE 
+			  FROM COMTN_ONLINE_POLL_IEM 
+			 WHERE POLL_IEM_ID = #{pollIemId}
+		]]>
+	</delete>
+
+</mapper>

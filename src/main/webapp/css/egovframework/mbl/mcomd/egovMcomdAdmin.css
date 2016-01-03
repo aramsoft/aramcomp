@@ -1,0 +1,47 @@
+/* ----------------------------------------------------------------------------
+   EgovMobile Style Sheet
+   Description :  신규공통  component
+   Modification Information
+   수정일           수정자      수정내용
+   -------------    --------    ---------------------
+   2011.09.07       구지연      최초 생성
+ 
+   author   : 모바일 신규공통컴포넌트 개발팀 구지연
+   since    : 2011.09.07
+---------------------------------------------------------------------------- */
+
+body, ul, dl, li, ol, dt, dd, p { margin: 0; padding: 0; }
+h1, h2, h3, h4, h5, h6 { margin:0; padding:0; }
+img { border:0; }
+
+/* footer fixed */
+html, body { height: 100%; width:100%; }
+body #footer { position: absolute; bottom: 0; }
+body > #footer { position:fixed;}
+*>#footer { position: fixed }
+/*Make position:fixed work in IE6!*/
+.fixed-top    /* position fixed Top    */{position:fixed;bottom:auto;top:0px;}
+.fixed-bottom /* position fixed Bottom */{position:fixed;bottom:0px;top:auto;}
+.fixed-left   /* position fixed Left   */{position:fixed;right:auto;left:0px;}
+.fixed-right  /* position fixed right  */{position:fixed;right:0px;left:auto;}
+* html,* html body   /* IE6 Fixed Position Jitter Fix */{background-image:url(about:blank);background-attachment:fixed;}
+* html .fixed-top    /* IE6 position fixed Top        */{position:absolute;bottom:auto;top:expression(eval(document.documentElement.scrollTop));}
+* html .fixed-right  /* IE6 position fixed right      */{position:absolute;right:auto;left:expression(eval(document.documentElement.scrollLeft+document.documentElement.clientWidth-this.offsetWidth)-(parseInt(this.currentStyle.marginLeft,10)||0)-(parseInt(this.currentStyle.marginRight,10)||0));}
+* html .fixed-bottom /* IE6 position fixed Bottom     */{position:absolute;bottom:auto;top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));}
+* html .fixed-left   /* IE6 position fixed Left       */{position:absolute;right:auto;left:expression(eval(document.documentElement.scrollLeft));}
+
+/* layout */
+#header { position: relative; background: url('../../../../images/egovframework/mbl/mcomd/bg_header.png') repeat-x; height:52px; }
+#header h1 { text-align:center; padding:8px 0 0}
+#footer { position: fixed;  left:auto;  bottom:auto; width:100%; background: url('../../../../images/egovframework/mbl/mcomd/bg_footer.png') repeat-x; height:43px; }
+#footer h4 { font-size:0.85em; text-align:center; color:#fff; font-weight:normal; padding:14px 0 0}
+#footer2 { position: relative; clear:both; width:100%; background: url('../../../../images/egovframework/mbl/mcomd/bg_footer.png') repeat-x; height:43px; }
+#footer2 h4 { font-size:0.85em; text-align:center; color:#fff; font-weight:normal; padding:14px 0 0}
+.contents { position: relative;  clear:both; width:700px; margin:0 auto; }
+.contents2 { position: relative;  clear:both; width:730px; margin:0 auto; padding:0 0 30px; overflow:hidden; }
+
+/* 탑 버튼 */
+#header .btnHome { display:block; position: absolute; top:8px; left:10px; background: url('../../../../images/egovframework/mbl/mcomd/btn_home.png') no-repeat; width:65px; height:30px; }
+#header .btnBack { display:block; position: absolute; top:8px; right:10px; background: url('../../../../images/egovframework/mbl/mcomd/btn_back.png') no-repeat; width:65px; height:30px; }
+
+.mcomd-photo { max-width:100%; width:100%; height:auto}

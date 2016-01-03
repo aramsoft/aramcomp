@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.sym.ccm.zip.service.impl.ZipManageMapper">
+
+	<!-- 목록조회  -->
+	<select id="selectZipList" resultType="egovMap">
+		<![CDATA[
+            SELECT *
+              FROM (
+            SELECT ROWNUM RNUM, ALL_LIST.*
+              FROM (
+        ]]>
+        /* 구현 Sql */
+		<![CDATA[
+			SELECT ZIP						AS "zip"
+			     , SN						AS "sn"
+			     , CTPRVN_NM				AS "ctprvnNm"
+			     , SIGNGU_NM				AS "signguNm"
+			     , EMD_NM					AS "emdNm"
+			     , LI_BULD_NM				AS "liBuldNm"
+			     , LNBR_DONG_HO				AS "lnbrDongHo"
+			  FROM COMTC_ZIP
+			 WHERE 1 = 1
+		]]>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "ZIP"'>
+                 <![CDATA[ AND ZIP LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "CTPRVN_NM"'>
+                 <![CDATA[ AND CTPRVN_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "SIGNGU_NM"'>
+                 <![CDATA[ AND SIGNGU_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "EMD_NM"'>
+                 <![CDATA[ AND EMD_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "LI_BULD_NM"'>
+                 <![CDATA[ AND LI_BULD_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+        </if>
+        /* 구현 Sql */
+        <![CDATA[
+                   ) ALL_LIST
+                   )
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+        ]]>			
+	</select>
+
+	<!-- 목록조회_게시물 총갯수  -->
+	<select id="selectZipListCnt" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) totcnt
+			  FROM COMTC_ZIP
+			 WHERE 1 = 1
+		]]>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "ZIP"'>
+                 <![CDATA[ AND ZIP LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "CTPRVN_NM"'>
+                 <![CDATA[ AND CTPRVN_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "SIGNGU_NM"'>
+                 <![CDATA[ AND SIGNGU_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "EMD_NM"'>
+                 <![CDATA[ AND EMD_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "LI_BULD_NM"'>
+                 <![CDATA[ AND LI_BULD_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+        </if>
+	</select>
+
+	<!-- 상세보기 -->
+	<select id="selectZipDetail" resultType="zipVO">
+		<![CDATA[
+			SELECT ZIP           			AS "zip"
+			     , SN            			AS "sn"
+			     , CTPRVN_NM     			AS "ctprvnNm"
+			     , SIGNGU_NM     			AS "signguNm"
+			     , EMD_NM        			AS "emdNm"
+			     , LI_BULD_NM    			AS "liBuldNm"
+			     , LNBR_DONG_HO  			AS "lnbrDongHo"
+			  FROM COMTC_ZIP
+             WHERE ZIP = #{zip}
+               AND SN  = #{sn}
+		]]>
+	</select>
+
+	<!-- 입력 -->
+	<insert id="insertZip">
+		<selectKey resultType="int" keyProperty="sn" order="BEFORE">
+			SELECT MAX(SN)+1	sn
+			  FROM COMTC_ZIP
+	    </selectKey>
+
+		<![CDATA[
+			INSERT INTO  COMTC_ZIP (  
+				   ZIP
+			     , SN
+			     , CTPRVN_NM
+			     , SIGNGU_NM
+			     , EMD_NM
+			     , LI_BULD_NM
+			     , LNBR_DONG_HO
+				 , FRST_REGISTER_ID 
+				 , FRST_REGIST_PNTTM 
+				 , LAST_UPDUSR_ID
+				 , LAST_UPDT_PNTTM 
+			) VALUES (  
+				   #{zip}
+			     , #{sn}
+			     , #{ctprvnNm}
+			     , #{signguNm}
+			     , #{emdNm}
+			     , #{liBuldNm}
+			     , #{lnbrDongHo}
+				 , #{frstRegisterId}
+				 , SYSDATE
+				 , #{frstRegisterId} 
+				 , SYSDATE
+			)
+		]]>
+	</insert>
+
+	<!-- 수정 -->
+	<update id="updateZip">
+		<![CDATA[
+            UPDATE COMTC_ZIP
+               SET CTPRVN_NM         = #{ctprvnNm}
+                 , SIGNGU_NM         = #{signguNm}
+                 , EMD_NM            = #{emdNm}
+                 , LI_BULD_NM        = #{liBuldNm}
+                 , LNBR_DONG_HO      = #{lnbrDongHo}
+                 , LAST_UPDUSR_ID    = #{lastUpdusrId}
+                 , LAST_UPDT_PNTTM   = SYSDATE
+             WHERE ZIP               = #{zip}
+               AND SN                = #{sn}
+		]]>
+	</update>
+
+	<!-- 삭제 -->
+	<delete id="deleteZip">
+		<![CDATA[
+            DELETE
+              FROM COMTC_ZIP
+             WHERE ZIP = #{zip}
+		]]>
+	</delete>
+
+	<!-- 엑셀입력 -->
+	<insert id="insertExcelZip">
+		<![CDATA[
+			INSERT INTO  COMTC_ZIP (  
+				   ZIP
+			     , SN
+			     , CTPRVN_NM
+			     , SIGNGU_NM
+			     , EMD_NM
+			     , LI_BULD_NM
+			     , LNBR_DONG_HO
+				 , FRST_REGISTER_ID 
+				 , FRST_REGIST_PNTTM 
+				 , LAST_UPDUSR_ID
+				 , LAST_UPDT_PNTTM 
+			) VALUES (  
+				   #{zip}
+			     , #{sn}
+			     , #{ctprvnNm}
+			     , #{signguNm}
+			     , #{emdNm}
+			     , #{liBuldNm}
+			     , #{lnbrDongHo}
+				 , #{frstRegisterId}
+				 , SYSDATE
+				 , #{frstRegisterId} 
+				 , SYSDATE
+			)
+		]]>
+	</insert>
+
+	<!-- 전체삭제 -->
+	<delete id="deleteAllZip">
+		<![CDATA[
+            DELETE
+              FROM COMTC_ZIP
+		]]>
+	</delete>
+
+	<!-- 엑셀입력(아람) -->
+	<insert id="insertExcelZipAram">
+		<![CDATA[
+			INSERT INTO  COMTC_ZIP_ARAM (  
+				   ZIP
+			     , SN
+			     , CTPRVN_NM
+			     , SIGNGU_NM
+			     , EMD_NM
+			     , LI_NM
+			     , DOSEO_NM
+			     , SAN_YN
+			     , ST_BUNJI_M
+			     , ST_BUNJI_S
+			     , ED_BUNJI_M
+			     , ED_BUNJI_S
+			     , BULD_NM
+			     , ST_DONG
+			     , ED_DONG
+			     , FIX_DATE
+			     , ADDRESS
+			) VALUES (  
+				   #{zip}
+			     , #{sn}
+			     , #{ctprvnNm}
+			     , #{signguNm}
+			     , #{emdNm}
+			     , #{liNm}
+			     , #{doseoNm}
+			     , #{sanYn}
+			     , #{stBunjiM}
+			     , #{stBunjiS}
+			     , #{edBunjiM}
+			     , #{edBunjiS}
+			     , #{buldNm}
+			     , #{stDong}
+			     , #{edDong}
+			     , #{fixDate}
+			     , #{address}
+			)
+		]]>
+	</insert>
+
+	<!-- 전체삭제(아람) -->
+	<delete id="deleteAllZipAram">
+		<![CDATA[
+            DELETE
+              FROM COMTC_ZIP_ARAM
+		]]>
+	</delete>
+
+</mapper>

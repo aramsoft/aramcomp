@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/cop/clb/ClubList" extends="default">
+    <put-attribute name="title" value="동호회 목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/clb/ClubList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/cop/clb/ClubDetail" extends="default">
+    <put-attribute name="title" value="동호회 상세조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/clb/ClubDetail.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/cop/clb/ClubRegist" extends="default">
+    <put-attribute name="title" value="동호회 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/clb/ClubRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/cop/clb/ClubEdit" extends="default">
+    <put-attribute name="title" value="동호회 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/clb/ClubEdit.jsp" />
+  </definition>
+
+  <definition name="aramframework/com/cop/clb/ClubMainContents" extends="default">
+    <put-attribute name="title" value="동호회 기본  컨텐츠" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/clb/ClubMainContents.jsp" />
+  </definition>
+  
+</tiles-definitions>

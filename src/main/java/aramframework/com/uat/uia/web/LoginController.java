@@ -1,0 +1,324 @@
+package aramframework.com.uat.uia.web;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.session.SessionInformation;
+import org.springframework.security.core.session.SessionRegistry;
+import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
+import org.springframework.security.web.savedrequest.RequestCache;
+import org.springframework.security.web.savedrequest.SavedRequest;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import aramframework.com.cmm.LoginVO;
+import aramframework.com.cmm.util.MessageHelper;
+import aramframework.com.cmm.constant.Globals;
+import aramframework.com.cmm.handler.SimpleUrlAuthenticationSuccessHandler;
+import aramframework.com.cmm.service.CmmUseService;
+import aramframework.com.cmm.util.ComponentChecker;
+import aramframework.com.cmm.util.UserDetailsHelper;
+import aramframework.com.uat.uia.service.LoginService;
+
+/**
+ * 일반 로그인, 인증서 로그인을 처리하는 컨트롤러 클래스
+ * 
+ * @author 아람컴포넌트 조헌철
+ * @since 2014.11.11
+ * @version 1.0
+ * @see
+ *
+ * <pre>
+ * 
+ * << 개정이력(Modification Information) >>
+ *   
+ *   수정일            수정자          수정내용
+ *   -------     ------   ---------------------------
+ *   2014.11.11  조헌철         최초 생성
+ * 
+ * </pre>
+ */
+
+@Controller
+public class LoginController {
+
+	@Resource(name = "loginService")
+	private LoginService loginService;
+
+	@Resource(name = "cmmUseService")
+	private CmmUseService cmmUseService;
+
+	@Autowired
+	SessionRegistry sessionRegistry;
+	
+	@Resource(name="simpleUrlAuthenticationSuccessHandler")
+	SimpleUrlAuthenticationSuccessHandler authenticationSuccessHandler;
+	
+    /** log */
+	protected static final Logger LOG = LoggerFactory.getLogger(LoginController.class);
+    private RequestCache requestCache = new HttpSessionRequestCache();
+
+	/**
+	 * 로그인 화면으로 들어간다
+	 * 
+	 * @param targetUrl
+	 * @param loginVO
+	 */ 
+	@RequestMapping(value = "/uat/uia/loginUsr.do")
+	public String loginUsrView(
+			HttpServletRequest request, 
+			@RequestParam(value="targetUrl", required=false) String targetUrl,
+			@ModelAttribute LoginVO loginVO, 
+			HttpServletResponse response,
+			ModelMap model) {
+
+		if (ComponentChecker.hasComponent("mberManageService")) {
+			model.addAttribute("useMemberManage", "true");
+		}
+
+		// 접속 기기에 따라서 모바일용/일반웹용 처음 페이지를 다르게 호출한다.
+		String requestUrl = null;
+		SavedRequest savedRequest = requestCache.getRequest(request, response);
+		if ( targetUrl != null ) {
+    		model.addAttribute("targetUrl", targetUrl);
+    		LOG.debug("targetUrl = " + targetUrl);
+    		
+        	requestUrl = targetUrl;
+        } else if( savedRequest != null ) {
+        	requestUrl = savedRequest.getRedirectUrl();
+        	LOG.debug("savedRequestUrl = " + requestUrl);
+
+        } else  {
+        	requestUrl = request.getRequestURI();
+        }
+        
+		if( requestUrl.startsWith("http://m.aramsoft.co.kr") 
+			|| 	requestUrl.indexOf(".mdo") != -1 ) {
+    		return "aramframework/mbl/uat/uia/LoginUsr";
+    	} else {
+        	return "aramframework/com/uat/uia/LoginUsr";
+    	}
+	}
+
+	/**
+	 * 일반(세션) 로그인을 처리한다
+	 * 
+	 * @param loginVO
+	 */
+	@RequestMapping(value = "/uat/uia/actionLogin.do")
+	public String actionLogin(
+			@ModelAttribute LoginVO loginVO, 
+			ModelMap model) {
+
+		LOG.debug("execute actionLogin !!!" );
+		if( loginVO.getId() == null || loginVO.getId().equals("") ) {
+			throw new RuntimeException("userId not found");
+		}
+		if( loginVO.getPassword() == null || loginVO.getPassword().equals("") ) {
+			throw new RuntimeException("password not found");
+		}
+		
+		// 1. 일반 로그인 처리
+		LoginVO resultVO = loginService.actionLogin(loginVO);
+		if (resultVO != null && resultVO.getId() != null && !resultVO.getId().equals("")) {
+			return "forward:/uat/uia/actionMain.do";
+		} else {
+			model.addAttribute("message", MessageHelper.getMessage("fail.common.login"));
+			return "aramframework/com/uat/uia/LoginUsr";
+		}
+	}
+
+	/**
+	 * 로그인 후 메인화면으로 들어간다
+	 * 
+	 */
+	@RequestMapping(value = "/uat/uia/actionMain.do")
+	public String actionMain(
+			HttpServletRequest request, 
+			HttpServletResponse response,
+			ModelMap model) {
+
+		LOG.debug("start action Main");
+        // 1. Spring Security 사용자권한 처리
+		Boolean isAuthenticated = UserDetailsHelper.isAuthenticated();
+		if (!isAuthenticated) {
+			model.addAttribute("message", MessageHelper.getMessage("fail.common.login"));
+			return "aramframework/com/uat/uia/LoginUsr";
+		}
+		
+		String requestUrl = null;
+
+		String targetUrlParameter = authenticationSuccessHandler.getTargetUrlParameter();
+        if (targetUrlParameter != null  ) {
+        	requestUrl = request.getParameter(targetUrlParameter);
+
+            if (StringUtils.hasText(requestUrl)) {
+            	LOG.debug("Found targetUrlParameter in request: " + requestUrl);
+               	return "redirect:" + requestUrl;
+            }
+        }
+        
+		SavedRequest savedRequest = requestCache.getRequest(request, response);
+        if( savedRequest != null ) {
+        	requestUrl = savedRequest.getRedirectUrl();
+            if (StringUtils.hasText(requestUrl)) {
+            	LOG.debug("savedRequestUrl = " + requestUrl);
+            	return "redirect:" + requestUrl;
+            }
+       } 
+
+        String main_page = null; 
+        requestUrl = request.getRequestURL().toString();
+		if( requestUrl.startsWith("http://localhost") ) {
+			main_page = Globals.LOCAL_PAGE;
+		} else if( requestUrl.startsWith("http://m.aramsoft.co.kr/") ) {
+			main_page = Globals.MOBILE_PAGE;
+		} else {
+			main_page = Globals.MAIN_PAGE;
+		}
+
+		LOG.debug("main_page > " + main_page);
+
+		if (main_page.startsWith("http")) {
+			return "redirect:" + main_page;
+		} else {
+			return main_page;
+		}
+
+	}
+
+	/**
+	 * 로그아웃한다.
+	 * 
+	 * @return targetUrl
+	 */
+	@RequestMapping(value = "/uat/uia/actionLogout.do")
+	public String actionLogout(
+			HttpServletRequest request, 
+			@RequestParam(value="targetUrl", required=false) String targetUrl,
+			ModelMap model) {
+		
+	   	request.getSession().setAttribute("loginVO", null);
+
+	   	String logout_url = "redirect:/j_spring_security_logout"; 
+	   	if( targetUrl != null ) {
+	   		logout_url += "?targetUrl="+targetUrl;
+	   	}
+	   	return logout_url;
+	}
+
+	/**
+	 * 로그아웃 성공 후 처리한다.
+	 * 
+	 */
+	@RequestMapping(value = "/uat/uia/actionLogoutSuccess.do")
+	public String actionLogoutSuccess() {
+    	return "redirect:/index.jsp";
+	}
+
+	/**
+	 * 아이디/비밀번호 찾기 화면으로 들어간다
+	 * 
+	 */
+	@RequestMapping(value = "/uat/uia/searchIdPassword.do")
+	public String searchIdPassword() {
+
+		// 1. 비밀번호 힌트 공통코드 조회
+		cmmUseService.populateCmmCodeList("COM022", "COM022_passwordHint");
+
+		return "aramframework/com/uat/uia/IdPasswordSearch";
+	}
+
+	/**
+	 * 아이디를 찾는다.
+	 * 
+	 * @param loginVO
+	 */
+	@RequestMapping(value = "/uat/uia/searchId.do")
+	public String searchId(
+			@ModelAttribute LoginVO loginVO, 
+			ModelMap model) {
+
+		if (loginVO == null 
+				|| loginVO.getName() == null || loginVO.getName().equals("") 
+				&& loginVO.getEmail() == null || loginVO.getEmail().equals("")
+				&& loginVO.getUserSe() == null || loginVO.getUserSe().equals("")) {
+			return "aramframework/com/cmm/egovError";
+		}
+
+		// 1. 아이디 찾기
+		loginVO.setName(loginVO.getName().replaceAll(" ", ""));
+		LoginVO resultVO = loginService.searchId(loginVO);
+
+		if (resultVO != null && resultVO.getId() != null && !resultVO.getId().equals("")) {
+			model.addAttribute("resultInfo", "아이디는 " + resultVO.getId() + " 입니다.");
+		} else {
+			model.addAttribute("resultInfo", MessageHelper.getMessage("fail.common.idsearch"));
+		}
+		return "aramframework/com/uat/uia/IdPasswordResult";
+	}
+
+	/**
+	 * 비밀번호를 찾는다.
+	 * 
+	 * @param loginVO
+	 */
+	@RequestMapping(value = "/uat/uia/searchPassword.do")
+	public String searchPassword(
+			@ModelAttribute LoginVO loginVO, 
+			ModelMap model) {
+
+		if (loginVO == null 
+				|| loginVO.getId() == null 
+				|| loginVO.getId().equals("") 
+				&& loginVO.getName() == null || loginVO.getName().equals("")
+				&& loginVO.getEmail() == null || loginVO.getEmail().equals("") 
+				&& loginVO.getPasswordHint() == null || loginVO.getPasswordHint().equals("")
+				&& loginVO.getPasswordCnsr() == null || loginVO.getPasswordCnsr().equals("") 
+				&& loginVO.getUserSe() == null || loginVO.getUserSe().equals("")) {
+			return "aramframework/com/cmm/egovError";
+		}
+
+		// 1. 비밀번호 찾기
+		boolean result = loginService.searchPassword(loginVO);
+
+		// 2. 결과 리턴
+		if (result) {
+			model.addAttribute("resultInfo", "임시 비밀번호를 발송하였습니다.");
+		} else {
+			model.addAttribute("resultInfo", MessageHelper.getMessage("fail.common.pwsearch"));
+		}
+		return "aramframework/com/uat/uia/IdPasswordResult";
+	}
+
+	/**
+	 * 활성화돤 사용자를 찾는다
+	 * 
+	 */
+	@RequestMapping(value = "/uat/uia/listActiveUsers.do")
+	@Secured("ROLE_ADMIN")
+	public String listActiveUsers(ModelMap model) {
+		Map<Object, Date> lastActivityDates = new HashMap<Object, Date>();
+		for(Object principal: sessionRegistry.getAllPrincipals()) {
+			for(SessionInformation session: sessionRegistry.getAllSessions(principal, true)) {
+				lastActivityDates.put(principal, session.getLastRequest());
+			}
+		}
+		model.addAttribute("activeUsers", lastActivityDates);
+		return "aramframework/com/uat/uia/ListActiveUsers";
+	}
+	
+}

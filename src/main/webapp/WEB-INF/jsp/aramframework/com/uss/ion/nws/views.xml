@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/uss/ion/nws/NewsInfoList" extends="default">
+    <put-attribute name="title" value="뉴스정보 목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/ion/nws/NewsInfoList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/ion/nws/NewsInfoDetail" extends="default">
+    <put-attribute name="title" value="뉴스정보 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/ion/nws/NewsInfoDetail.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/ion/nws/NewsInfoRegist" extends="default">
+    <put-attribute name="title" value="뉴스정보 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/ion/nws/NewsInfoRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/ion/nws/NewsInfoEdit" extends="default">
+    <put-attribute name="title" value="뉴스정보 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/ion/nws/NewsInfoEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

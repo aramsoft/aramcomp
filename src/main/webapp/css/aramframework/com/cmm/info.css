@@ -1,0 +1,24 @@
+/*
+  Css Name : info.css
+  Description : information page CSS
+  Modification Information
+*/
+
+#wrap { text-align:center; height:100%; }
+#content { 	
+	display: inline-block; width:500px;
+	margin-top: 100px; padding:10px;
+ 	text-aligh:center;  
+	border:#DDDDDD 9px solid; 
+}
+
+.content_main { 
+	display: inline-block; width:50%;
+	margin-top: 20px;  
+	overflow: hidden;  
+}
+.icon { float:left }
+
+.buttons { text-aligh:center; margin-top: 20px; }
+.buttons > a { display: inline-block; }
+

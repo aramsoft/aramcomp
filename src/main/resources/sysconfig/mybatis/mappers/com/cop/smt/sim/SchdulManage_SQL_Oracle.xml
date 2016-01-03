@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.cop.smt.sim.service.impl.SchdulManageMapper">
+
+	<select id="selectEmplyrList" resultType="egovMap" >
+		<![CDATA[
+            SELECT *
+              FROM (
+            SELECT ROWNUM RNUM, ALL_LIST.*
+              FROM (
+        ]]>
+        /* 구현 Sql */
+		<![CDATA[
+			SELECT b.ORGNZT_NM				AS "orgnztNm"
+				 , a.ESNTL_ID 				AS "uniqId" 
+				 , a.USER_NM  				AS "emplyrNm" 
+				 , a.EMPL_NO				AS "emplNo"
+				 , a.OFCPS_NM				AS "ofcpsNm"
+			  FROM COMTN_EMPLYR_INFO a
+				   LEFT OUTER JOIN COMTN_ORGNZT_INFO b
+						ON a.ORGNZT_ID = b.ORGNZT_ID
+			 WHERE 1=1
+		]]>
+   	    <if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "ORGNZT_NM"'>
+             	<![CDATA[ AND NVL(b.ORGNZT_NM, ' ')  LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "USER_NM"'>
+            	<![CDATA[ AND NVL(a.USER_NM, ' ') LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[
+			 ORDER BY b.ORGNZT_NM, a.USER_NM ASC
+		]]>		
+        /* 구현 Sql */
+        <![CDATA[
+                   ) ALL_LIST
+                   )
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+        ]]>			
+	</select>		
+	
+	<select id="selectEmplyrListCnt" resultType="int" >
+		<![CDATA[
+			SELECT COUNT(EMPLYR_ID) 		as cnt
+			  FROM COMTN_EMPLYR_INFO a
+				   LEFT OUTER JOIN COMTN_ORGNZT_INFO b
+						ON a.ORGNZT_ID = b.ORGNZT_ID
+			 WHERE 1=1
+		]]>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "ORGNZT_NM"'>
+             	<![CDATA[ AND NVL(b.ORGNZT_NM, ' ')  LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "USER_NM"'>
+             	<![CDATA[ AND NVL(a.USER_NM, ' ') LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+	
+	<!-- 메인페이지/일정관리조회 -->  
+	<select id="selectSchdulManageMainList" resultType="egovMap">
+		<![CDATA[
+			SELECT MAIN.* 
+			  FROM (
+			SELECT TO_CHAR(sysdate, 'YYYY-MM-DD') AS "toDay" 
+				 , A.SCHDUL_ID				AS "schdulId"
+				 , A.SCHDUL_NM				AS "schdulNm"
+			 	 , A.OTHBC_SCOPE 			AS "othbcScope" 
+			  FROM COMTN_SCHDUL_INFO A
+			 WHERE (a.OTHBC_SCOPE = 'G'
+					OR (a.OTHBC_SCOPE = 'C' AND a.TRGET_ID = #{trgetId})			
+				    OR (a.OTHBC_SCOPE = 'P' AND (A.SCHDUL_CHARGER_ID = #{uniqId} OR A.FRST_REGISTER_ID = #{uniqId}))
+				   )   
+			   AND ( 
+				 	( SUBSTR(A.SCHDUL_BGNDE,1,8) > TO_CHAR(sysdate, 'YYYYMMDD') AND SUBSTR(A.SCHDUL_ENDDE,1,8) <= TO_CHAR(sysdate, 'YYYYMMDD') )
+				   ) 
+			 ORDER BY A.FRST_REGIST_PNTTM DESC
+		           ) MAIN 
+		     WHERE ROWNUM < 5 
+		 ]]>
+	</select>
+	
+	<!-- 개인일정정보::목록조회 -->
+	<select id="selectSchdulManageRetrieve" resultType="egovMap">
+	 	<![CDATA[
+			SELECT A.SCHDUL_ID					AS "schdulId"
+				 , A.SCHDUL_SE					AS "schdulSe"
+				 , A.OTHBC_SCOPE 				AS "othbcScope" 
+				 , A.SCHDUL_BGNDE				AS "schdulBgnde"
+				 , A.SCHDUL_ENDDE				AS "schdulEndde"
+				 , A.SCHDUL_NM					AS "schdulNm"
+				 , A.SCHDUL_IPCR_CODE			AS "schdulIpcrCode"
+				 , A.SCHDUL_CHARGER_ID			AS "schdulChargerId"
+				 , (SELECT USER_NM 
+				      FROM COMTN_EMPLYR_INFO 
+				     WHERE ESNTL_ID = A.SCHDUL_CHARGER_ID
+				   )	     					AS "schdulChargerName" 
+				 , A.REPTIT_SE_CODE 			AS "reptitSeCode"
+			  FROM COMTN_SCHDUL_INFO A
+			 WHERE (a.OTHBC_SCOPE = 'G'
+					OR (a.OTHBC_SCOPE = 'C' AND a.TRGET_ID = #{trgetId})			
+				    OR (a.OTHBC_SCOPE = 'P' AND (A.SCHDUL_CHARGER_ID = #{uniqId, jdbcType=VARCHAR} OR A.FRST_REGISTER_ID = #{uniqId, jdbcType=VARCHAR}))
+				   )   
+	 	]]>
+   	    <if test='searchMode != null and searchMode != ""'>
+        <choose>
+            <when test='searchMode == "MONTH"'>
+				<![CDATA[ 
+			 	 	AND (#{searchMonth} BETWEEN SUBSTR(A.SCHDUL_BGNDE, 1, 6)  AND SUBSTR(A.SCHDUL_ENDDE, 1, 6) ) 
+				]]>
+            </when>
+            <when test='searchMode == "WEEK"'>
+				<![CDATA[ 
+				    AND (  
+						 ( SUBSTR(A.SCHDUL_BGNDE,1,8) > #{searchBgnde} AND SUBSTR(A.SCHDUL_BGNDE,1,8) <= #{searchEndde})
+						OR
+						 ( SUBSTR(A.SCHDUL_ENDDE,1,8) > #{searchBgnde} AND SUBSTR(A.SCHDUL_ENDDE,1,8) <= #{searchEndde})
+					   )
+				]]>
+            </when>
+            <when test='searchMode == "DAILY"'>
+				<![CDATA[
+				 	  AND (#{searchDay} BETWEEN SUBSTR(A.SCHDUL_BGNDE, 1, 8)  AND SUBSTR(A.SCHDUL_ENDDE, 1, 8) )
+				]]> 
+            </when>
+        </choose>
+		</if>
+     	<if test='searchSchdulSe != null and searchSchdulSe != ""'>
+	  			<![CDATA[ AND A.SCHDUL_SE = #{searchSchdulSe} ]]> 
+		</if>
+	</select>
+	
+	<!-- 개인일정정보::목록조회_게시물정보 (Popup)-->
+	<select id="selectSchdulManageList" resultType="egovMap">
+		<![CDATA[
+            SELECT *
+              FROM (
+            SELECT ROWNUM RNUM, ALL_LIST.*
+              FROM (
+        ]]>
+        /* 구현 Sql */
+		<![CDATA[
+			SELECT A.SCHDUL_ID				AS "schdulId"	
+				 , A.SCHDUL_NM				AS "schdulNm"
+			 	 , A.SCHDUL_BGNDE			AS "schdulBgnde" 
+			 	 , A.SCHDUL_ENDDE			AS "schdulEndde"
+				 , A.OTHBC_SCOPE 			AS "othbcScope"
+			  FROM COMTN_SCHDUL_INFO A
+			 WHERE 1=1 
+		]]>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+		   	   	<![CDATA[AND A.SCHDUL_NM LIKE '%' || #{searchKeyword} || '%' ]]>
+		</if>
+		<![CDATA[
+			 ORDER BY A.FRST_REGIST_PNTTM DESC
+		]]>
+        /* 구현 Sql */
+        <![CDATA[
+                   ) ALL_LIST
+                   )
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+        ]]>			
+	</select>
+	
+	<!-- 개인일정정보::목록조회_게시물 총갯수  -->
+	<select id="selectSchdulManageListCnt" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) totcnt
+			  FROM COMTN_SCHDUL_INFO A
+			 WHERE 1=1 
+         ]]>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+		   	   	<![CDATA[AND A.SCHDUL_NM LIKE '%' || #{searchKeyword} || '%' ]]>
+		</if>
+	</select>
+	
+	<!-- 개인일정정보::상세보기 -->
+	<select id="selectSchdulManageDetail" resultType="schdulManageVO">
+		<![CDATA[
+			SELECT A.SCHDUL_ID
+				 , A.SCHDUL_SE
+				 , A.OTHBC_SCOPE
+				 , A.SCHDUL_BGNDE
+				 , A.SCHDUL_ENDDE
+				 , A.SCHDUL_NM
+				 , A.SCHDUL_CN
+				 , A.SCHDUL_PLACE
+				 , A.SCHDUL_IPCR_CODE
+				 , A.SCHDUL_CHARGER_ID
+				 , (SELECT USER_NM 
+				 	  FROM COMTN_EMPLYR_INFO 
+				 	 WHERE ESNTL_ID = A.SCHDUL_CHARGER_ID) AS "schdulChargerName" 
+				 , A.ATCH_FILE_ID
+				 , A.REPTIT_SE_CODE
+				 , A.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
+				 , A.FRST_REGISTER_ID
+				 , A.LAST_UPDT_PNTTM		AS "lastUpdusrPnttm"
+				 , A.LAST_UPDUSR_ID 
+			  FROM COMTN_SCHDUL_INFO A
+			 WHERE SCHDUL_ID = #{schdulId}
+         ]]>
+	</select>
+	
+	<!-- 개인일정정보::입력  -->
+	<insert id="insertSchdulManage">
+	 	<![CDATA[
+			INSERT INTO COMTN_SCHDUL_INFO ( 
+					SCHDUL_ID
+				  , SCHDUL_SE
+				  , TRGET_ID
+				  ,	OTHBC_SCOPE
+				  ,	SCHDUL_BGNDE
+				  ,	SCHDUL_ENDDE
+				  ,	SCHDUL_NM
+				  ,	SCHDUL_CN
+				  ,	SCHDUL_PLACE
+				  ,	SCHDUL_IPCR_CODE
+				  ,	SCHDUL_CHARGER_ID
+				  ,	ATCH_FILE_ID
+				  ,	REPTIT_SE_CODE
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+			)VALUES( 
+					#{schdulId}
+				  ,	#{schdulSe}
+				  ,	#{trgetId}
+				  ,	#{othbcScope}
+				  ,	#{schdulBgnde}
+				  ,	#{schdulEndde}
+				  ,	#{schdulNm}
+				  ,	#{schdulCn}
+				  ,	#{schdulPlace, jdbcType=VARCHAR}
+				  ,	#{schdulIpcrCode}
+				  ,	#{schdulChargerId}
+				  ,	#{atchFileId, jdbcType=VARCHAR}
+				  ,	#{reptitSeCode}
+				  , #{frstRegisterId}
+				  , SYSDATE
+				  , #{frstRegisterId} 
+				  , SYSDATE
+			)
+	 	]]>
+	</insert>
+
+	<!-- 개인일정정보::수정  -->
+	<update id="updateSchdulManage"> 
+	 	<![CDATA[
+			UPDATE COMTN_SCHDUL_INFO 
+			   SET SCHDUL_SE			= #{schdulSe}
+			     , OTHBC_SCOPE			= #{othbcScope}
+			     , SCHDUL_BGNDE			= #{schdulBgnde}
+			     , SCHDUL_ENDDE			= #{schdulEndde}
+			     , SCHDUL_NM			= #{schdulNm}
+			     , SCHDUL_CN			= #{schdulCn}
+			     , SCHDUL_PLACE			= #{schdulPlace, jdbcType=VARCHAR}
+			     , SCHDUL_IPCR_CODE		= #{schdulIpcrCode}
+			     , SCHDUL_CHARGER_ID	= #{schdulChargerId}
+			     , ATCH_FILE_ID			= #{atchFileId, jdbcType=VARCHAR}
+			     , REPTIT_SE_CODE		= #{reptitSeCode}
+			     , LAST_UPDUSR_ID 		= #{lastUpdusrId}
+			     , LAST_UPDT_PNTTM = SYSDATE
+			 WHERE SCHDUL_ID = #{schdulId}
+	 	]]>
+	</update>
+	
+	<!-- 개인일정정보::삭제  -->
+	<!-- 일지 삭제 -->
+	<delete id="deleteDiaryManage">
+		<![CDATA[
+			DELETE 
+			  FROM COMTN_DIARY_INFO 
+			 WHERE SCHDUL_ID = #{schdulId}
+		]]>
+	</delete>
+	<!-- 일정 삭제 -->
+	<delete id="deleteSchdulManage">
+		<![CDATA[
+			DELETE 
+			  FROM COMTN_SCHDUL_INFO 
+			 WHERE SCHDUL_ID = #{schdulId} 
+		]]>
+	</delete>
+
+</mapper>

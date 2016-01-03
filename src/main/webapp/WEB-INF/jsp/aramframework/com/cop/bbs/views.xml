@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/cop/bbs/NoticeList" extends="default">
+    <put-attribute name="title" value="게시물 목록조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/bbs/NoticeList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/cop/bbs/NoticeDetail" extends="default">
+    <put-attribute name="title" value="게시물 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/bbs/NoticeDetail.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/cop/bbs/NoticeRegist" extends="default">
+    <put-attribute name="title" value="게시물 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/bbs/NoticeRegist.jsp" />
+  </definition>
+ 
+  <definition name="aramframework/com/cop/bbs/NoticeEdit" extends="default">
+    <put-attribute name="title" value="게시물 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/bbs/NoticeEdit.jsp" />
+  </definition>
+
+  <definition name="aramframework/com/cop/bbs/NoticeReply" extends="default">
+    <put-attribute name="title" value="게시물 답변" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/bbs/NoticeReply.jsp" />
+  </definition>
+
+  <definition name="aramframework/com/cop/bbs/NoticeView" extends="default">
+    <put-attribute name="title" value="게시물 상세보기" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/bbs/NoticeView.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/cop/bbs/BoardMasterList" extends="default">
+    <put-attribute name="title" value="게시판 목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/bbs/BoardMasterList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/cop/bbs/BoardMasterRegist" extends="default">
+    <put-attribute name="title" value="게시판 정보등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/bbs/BoardMasterRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/cop/bbs/BoardMasterEdit" extends="default">
+    <put-attribute name="title" value="게시판 정보수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/bbs/BoardMasterEdit.jsp" />
+  </definition>
+
+  <definition name="aramframework/com/cop/bbs/BoardUseInfList" extends="default">
+    <put-attribute name="title" value="게시판 사용목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/bbs/BoardUseInfList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/cop/bbs/BoardUseInfRegist" extends="default">
+    <put-attribute name="title" value="게시판 사용정보등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/bbs/BoardUseInfRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/cop/bbs/BoardUseInfEdit" extends="default">
+    <put-attribute name="title" value="게시판 사용정보수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/bbs/BoardUseInfEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

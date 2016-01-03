@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        				http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<!-- The controllers are autodetected POJOs labeled with the @Controller annotation. -->
+	<context:component-scan base-package="aramframework">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+	</context:component-scan>
+ 	
+	<bean id="cnManager"
+		  class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+		<property name="favorPathExtension" value="true"/>
+		<property name="ignoreAcceptHeader" value="true" />
+		<property name="defaultContentType" value="text/html" />
+		<property name="useJaf" value="false"/>
+
+		<property name="mediaTypes">
+		  <map>
+			<entry key="html" value="text/html" />
+			<entry key="json" value="application/json" />
+			<entry key="xml" value="application/xml" />
+		  </map>
+		</property>
+	</bean>
+
+	<!--
+		- The form-based controllers within this application provide @RequestMapping
+		- annotations at the type level for path mapping URLs and @RequestMapping
+		- at the method level for request type mappings (e.g., GET and POST).
+		- In contrast, ClinicController - which is not form-based - provides
+		- @RequestMapping only at the method level for path mapping URLs.
+		-
+		- DefaultAnnotationHandlerMapping is driven by these annotations and is
+		- enabled by default with Java 5+.
+	-->
+
+    <bean id="handlerMapping" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" >
+   		<property name="alwaysUseFullPath" value="true" />
+   		<property name="contentNegotiationManager" ref="cnManager" />
+		<property name="interceptors">
+			<list>
+				<ref bean="tilesInterceptor" />
+				<ref bean="webLogInterceptor" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- Tiles 인터셉터 -->
+	<bean id="tilesInterceptor" class="aramframework.com.cmm.interceptor.TilesInterceptor" /> 
+
+	<!-- 웹로그 인터셉터 -->
+	<bean id="webLogInterceptor" class="aramframework.com.cmm.interceptor.WebLogInterceptor"> 
+	<!-- 웹로그가 필요 없는 URL 리스트  -->
+ 		<property name="passURL">
+			<set>
+				<value>/index.do</value>
+				<value>/UnitMain.do</value>
+				<value>/UnitLeft.do</value>
+				<value>/UnitContent.do</value>
+				<value>/PageLink.do</value>
+				<value>/validator.do</value>
+				<value>/uat/uia/[a-zA-Z]+\.do</value>
+				<value>/WEB-INF/jsp/.*\.jsp.*</value>
+			</set>
+		</property>
+	</bean>
+
+	<!--
+		- This bean processes annotated handler methods, applying Application-specific PropertyEditors
+		- for request parameter binding. It overrides the default AnnotationMethodHandlerAdapter.
+	-->
+	<bean class="egovframework.rte.ptl.mvc.bind.annotation.EgovRequestMappingHandlerAdapter">
+		<property name="webBindingInitializer">
+			<bean class="aramframework.com.cmm.util.BindingInitializer"/>
+		</property>
+		<property name="customArgumentResolvers">
+			<list>
+                <bean class="egovframework.rte.ptl.mvc.bind.AnnotationCommandMapArgumentResolver" />
+			</list>
+		</property>
+        <property name="messageConverters">
+			<list>
+				<bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
+				<bean class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+
+</beans>

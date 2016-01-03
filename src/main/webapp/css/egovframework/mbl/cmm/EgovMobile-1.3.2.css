@@ -1,0 +1,881 @@
+﻿/*
+    Copyright 2011, jQuery Project
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+    
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+    
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+ */
+ 
+/* ------------------------------------------------------------------------------------------------
+	EgovMobile Style Sheet
+	Description :  UX grid view component
+	Modification Information
+	수정일		수정자		수정내용
+	----------	------		-----------------------------------------------------------------------
+	2011.07.14	구지연 		최초 생성
+	2011.07.19	황민희		Dialog theme b~f 임시 추가	
+	2012.09.05	박지민		Ios5 Iframe내에서 data-native-menu를 통한
+							popup 효과 적용시 사라지는 문제 개선
+	2012.09.07	박지민		opera mobile에서 border-radius 속성이 들어갈 경우
+							이미지를 표시하지 못하는 문제로 적용   
+	2012.09.20	박지민		모바일 브라우저에서 폰트를 인식할 수 있도록 font-face 추가
+	2012.09.24	박지민		Firefox, Opera 색상 Vendor 수정
+	2012.10.05	박지민		FieldSet - W3C Validate CheckList Error 사항 개선
+	2012.10.26	박지민		A negative indent of -99999em can cause native Android 4.x to freak out,
+							since its so absurdly high. Switched to -9999px.
+	2013.12.18	옥찬우		jQueryMobile 제공 이미지를 분할처리(Icon, CheckBox, Radio Button)
+ 
+	author   : 모바일 실행환경 개발팀 구지연
+	since    : 2011.07.14
+------------------------------------------------------------------------------------------------- */
+
+@import url("./theme-1.1.1.css");
+
+/* -----------------------------------------------------------------------------------
+	수정일		수정자		수정내용
+	----------	------		---------------------
+	2012.09.20	박지민		모바일 브라우저에서 폰트를 인식할 수 있도록 font-face 추가
+----------------------------------------------------------------------------------- */
+@font-face { font-family: Verdana; src: url(../../../../fonts/verdana.ttf); }
+@font-face { font-family: Tahoma; src: url(../../../../fonts/tahoma.ttf);}
+@font-face { font-family: Helvetica; src: url(../../../../fonts/helvetica.ttf); }
+
+
+
+/* = Button Component
+	 직각 버튼과 작은 버튼
+---------------------------------------------------------------------------- */
+.egov-btn-rectangle { border-radius: 0 0 0 0; }
+.egov-btn-small { height: 28px; }
+.egov-btn-small-span { height: 10px; top: -5px; }
+
+
+
+/* = Panel Component
+---------------------------------------------------------------------------- */
+.egov-panel-pattern-a { background: #222222 url(../../../../images/egovframework/mbl/cmm/pattern.png) repeat; }
+.egov-panel-pattern-b { background: #CCCCCC url(../../../../images/egovframework/mbl/cmm/pattern.png) repeat; }
+.egov-panel-pattern-c { background: #F0F0F0 url(../../../../images/egovframework/mbl/cmm/pattern.png) repeat; }
+.egov-panel-pattern-d { background: #ffffff url(../../../../images/egovframework/mbl/cmm/pattern.png) repeat; }
+.egov-panel-pattern-e { background: #FAEB9E url(../../../../images/egovframework/mbl/cmm/pattern.png) repeat; }
+.egov-panel-pattern-f { background: #FCF0EE url(../../../../images/egovframework/mbl/cmm/pattern.png) repeat; }
+.egov-panel-pattern-g { background: #DDE9A9 url(../../../../images/egovframework/mbl/cmm/pattern.png) repeat; }
+	
+	
+	
+
+/* = Internal/External Link Component
+---------------------------------------------------------------------------- */
+
+
+
+/* = Label/Text Component
+---------------------------------------------------------------------------- */
+.egov-color-red		{ color: red }
+.egov-color-blue	{ color: blue; }
+.egov-color-green	{ color: green; }
+
+.egov-align-left	{ text-align: left;}
+.egov-align-right	{ text-align: right; }
+.egov-align-center	{ text-align: center; }
+
+.egov-font-helvetica	{ font-family: Helvetica; }
+.egov-font-verdana		{ font-family: Verdana; }
+.egov-font-tahoma		{ font-family: Tahoma; }
+
+.egov-font-size30 { font-size: 1.875em; }
+.egov-font-size25 { font-size: 1.563em; }
+.egov-font-size15 { font-size: 0.938em; }
+
+
+
+/* = Tabs Component
+---------------------------------------------------------------------------- */
+.ui-tabs-content { display: none;  margin-top: -0.938em; }
+.ui-tabs-content-active {  display: block; }
+
+.egov-btn-corner-tl {
+	-moz-border-radius-topleft: 		1.5em;
+	-webkit-border-top-left-radius: 	1.5em;
+	-o-border-top-left-radius: 			1.5em;
+	border-top-left-radius: 			1.5em;
+}
+.egov-btn-corner-tr {
+	-moz-border-radius-topright: 		1.5em;
+	-webkit-border-top-right-radius: 	1.5em;
+	-o-border-top-right-radius: 		1.5em;
+	border-top-right-radius: 			1.5em;
+}
+
+/* = Form Component
+---------------------------------------------------------------------------- */
+
+
+
+/* = Menu Component
+---------------------------------------------------------------------------- */
+
+
+
+/* = Dialog Component
+---------------------------------------------------------------------------- */
+/*
+    jQuery Alert Dialogs Plugin
+    Version 1.1
+    Cory S.N. LaViska
+    14 May 2009
+ */
+#popup_container {
+	font-family: Arial, sans-serif;
+	font-size: 1.250em;
+	min-width: 230px; /* Dialog will be no smaller than this */
+	max-width: 230px; /* Dialog will wrap after this width */
+	-moz-border-radius: 0.313em;
+	-webkit-border-radius: 0.313em;
+	-o-border-radius: 0.313em;
+	border-radius: 0.313em;
+	-moz-box-shadow: 0 0.125em 0.313em #888;
+	-webkit-box-shadow: 0 0.125em 0.313em #888;
+	-o-box-shadow: 0 0.125em 0.313em #888;
+	box-shadow: 0 0.125em 0.313em #888;
+}
+#popup_title {
+	font-size: 1em;
+	font-weight: bold;
+	text-align: center;
+	cursor: default;
+	padding: 0.5em 0;
+	margin: 0em;
+}
+#popup_content {
+	background: 16px 16px no-repeat;
+	padding: 0.5em 1em;
+	margin: 0em;
+}
+#popup_panel { text-align: center; }
+#popup_panel input {
+	width:100%; padding: 0.625em;	margin-bottom:5px; font-size:0.813em; 
+	-moz-border-radius: 0.313em; 
+	-webkit-border-radius: 0.313em;  
+	-o-border-radius: 0.313em; 
+	border-radius: 0.313em;  
+	-moz-box-shadow: 0 1px 2px #888;
+	-webkit-box-shadow: 1px 0 2px #888; 
+	-o-box-shadow: 1px 0 2px #888;
+	box-shadow: 0 1px 2px #888;
+ }
+
+#popup_message { font-size: 0.875em; line-height: 110%; }
+#popup_prompt {
+	padding: 0.313em 0;
+	margin: 1em 0 0;
+	background: #fff;
+	color: #666;
+	font-size: 0.750em;
+	font-family:"Dotum";
+	text-shadow: none;
+}
+.ui-dialog-msg { margin-bottom:12px }
+
+/* Dialog Theme a~g */
+.ui-dialog-theme-a {
+	background: #fff;
+	color: #000;
+	text-align: center;
+	border: solid 0.200em #000;
+}
+.ui-dialog-theme-a h1 {
+	color: #fff;
+	text-shadow: 0 -1px 1px #000000;
+	background: #111111; 
+    background-image: -webkit-gradient(linear,left top,left bottom, color-stop(0,   #3c3c3c), color-stop(1, #111111)); /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient(top, #3c3c3c, #111111); /* Chrome 10+, Saf5.1+ */
+    background-image: -moz-linear-gradient(top, #3c3c3c, #111111);
+    background-image: -o-linear-gradient(top, #3c3c3c, #111111);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#3c3c3c', EndColorStr='#111111')";
+}
+.ui-dialog-theme-a input {
+	color: #fff;
+	text-shadow: 0 -1px 1px #000000;
+	border: solid 1px #333;
+	background: #111111; 
+    background-image: -webkit-gradient(linear,left top,left bottom, color-stop(0, #3c3c3c), color-stop(1, #111111));/* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient(top, #3c3c3c, #111111); /* Chrome 10+, Saf5.1+ */
+    background-image: -moz-linear-gradient(top, #3c3c3c, #111111);
+    background-image: -o-linear-gradient(top, #3c3c3c, #111111);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#3c3c3c', EndColorStr='#111111')";
+}
+.ui-dialog-theme-a #popup_cancel {
+	background: #6a0202;
+	border: solid 1px #560202;
+	font-weight: bold;
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #a51212),color-stop(1, #6a0202)); /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient(top, #a51212, #6a0202); /* Chrome 10+, Saf5.1+ */
+    background-image: -moz-linear-gradient(top, #a51212, #6a0202);
+    background-image: -o-linear-gradient(top, #a51212, #6a0202);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#a51212', EndColorStr='#6a0202')";
+}
+
+/* --------------------------------------------------------
+	수정일		수정자		수정내용
+	----------	------		---------------------
+	2011.07.19	황민희		Dialog theme b~f 임시 추가	
+	2012.09.24	박지민		Firefox, Opera 색상 Vendor 수정
+-------------------------------------------------------- */
+/* Dialog Theme B */      
+.ui-dialog-theme-b {
+	background: #fff;
+	color: #000;
+	text-align: center;
+	border: solid 0.2em #305A81;
+}
+.ui-dialog-theme-b h1 {
+	color: #fff;
+	text-shadow: 0 -1px 1px #000000;
+	redirect: EgovIntro.jsp; background: #111111; 
+    background-image:        -webkit-gradient(linear,left top,left bottom, color-stop(0, #3E72A2), color-stop(1, #5F9AC4));
+    background-image: -webkit-linear-gradient(top, #3E72A2, #5F9AC4);
+    background-image:    -moz-linear-gradient(top, #3E72A2, #5F9AC4);
+    background-image:      -o-linear-gradient(top, #3E72A2, #5F9AC4);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#3E72A2', EndColorStr='#5F9AC4')";
+}
+.ui-dialog-theme-b input {
+	color:#fff;
+	text-shadow: 0 -1px 1px #145072;
+	font-weight: bold;
+	border: solid 1px #333;
+	background: #111111; 
+    background-image: -webkit-gradient(linear,left top,left bottom, color-stop(0, #3E72A2), color-stop(1, #5F9AC4));
+    background-image: -webkit-linear-gradient(top, #3E72A2, #5F9AC4);
+    background-image: -moz-linear-gradient(top, #3E72A2, #5F9AC4);
+    background-image: -o-linear-gradient(top, #3E72A2, #5F9AC4);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#3E72A2', EndColorStr='#5F9AC4')"; }
+.ui-dialog-theme-b #popup_cancel {
+	background: #EF8383;
+	font-weight: bold;
+    background-image:        -webkit-gradient(linear,left top,left bottom,color-stop(0, #A73E3E),color-stop(1, #6E1818));
+    background-image: -webkit-linear-gradient(top, #a51212, #6a0202);
+    background-image:    -moz-linear-gradient(top, #a51212, #6a0202);
+    background-image:      -o-linear-gradient(top, #a51212, #6a0202);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#a51212', EndColorStr='#6a0202')";
+}
+    
+/* Dialog Theme C */   
+.ui-dialog-theme-c { background: #fff; color: #000; text-align:center; border: solid 0.2em #7C7B7B;}
+.ui-dialog-theme-c h1 {
+	color:#444;
+	text-shadow: 0 -1px 1px #fff;
+	background: #111111; 
+    background-image:        -webkit-gradient(linear,left top,left bottom, color-stop(0, #DEDEDE), color-stop(1, #B2B2B2));
+    background-image: -webkit-linear-gradient(top, #DEDEDE, #B2B2B2);
+    background-image:    -moz-linear-gradient(top, #DEDEDE, #B2B2B2);
+    background-image:      -o-linear-gradient(top, #DEDEDE, #B2B2B2);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#DEDEDE', EndColorStr='#B2B2B2')";
+}
+.ui-dialog-theme-c input {
+	color:#444;
+	text-shadow: 0 -1px 1px #F6F6F6;
+	font-weight: bold;
+	border:solid 1px #7C7B7B;
+	background: #111111; 
+    background-image:        -webkit-gradient(linear,left top,left bottom, color-stop(0, #DEDEDE), color-stop(1, #B2B2B2));
+    background-image: -webkit-linear-gradient(top, #DEDEDE, #B2B2B2);
+    background-image:    -moz-linear-gradient(top, #DEDEDE, #B2B2B2);
+    background-image:      -o-linear-gradient(top, #DEDEDE, #B2B2B2);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#DEDEDE', EndColorStr='#B2B2B2')";
+}
+.ui-dialog-theme-c #popup_cancel {
+	color: #F8E9E9;
+	text-shadow: 0 -1px 1px #CD8080;
+	background: #EF8383;
+	font-weight:bold;
+    background-image:        -webkit-gradient(linear,left top,left bottom,color-stop(0, #A73E3E),color-stop(1, #6E1818));
+    background-image: -webkit-linear-gradient(top, #a51212, #6a0202);
+    background-image:    -moz-linear-gradient(top, #a51212, #6a0202);
+    background-image:      -o-linear-gradient(top, #a51212, #6a0202);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#a51212', EndColorStr='#6a0202')";
+}
+
+/* Dialog Theme D */   
+.ui-dialog-theme-d {
+	background: #fff;
+	color: #000;
+	text-align: center;
+	border: solid 0.2em #EFEFEF;
+}
+.ui-dialog-theme-d h1 {
+	color:#444;
+	text-shadow: 0 -1px 1px #fff;
+	background: #111111; 
+    background-image: -moz-linear-gradient(top, #EFEFEF, #DDD);    
+    background-image:     -webkit-gradient(linear,left top,left bottom, color-stop(0,#EFEFEF),color-stop(1,#DDD));
+    background-image: -moz-linear-gradient(linear,left top,left bottom, color-stop(0,#EFEFEF),color-stop(1,#DDD));
+    background-image:   -o-linear-gradient(top, #EFEFEF, #DDD);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#3c3c3c', EndColorStr='#111111')";
+}
+.ui-dialog-theme-d input {
+	color:#444;
+	text-shadow: 0 -1px 1px #FFFFFF;
+	font-weight: bold;
+	border:solid 1px #CCC;
+	background: #FFFFFF; 
+    background-image: -moz-linear-gradient(top, #3c3c3c, #111111);
+    background-image:     -webkit-gradient(linear,left top,left bottom,color-stop(0,#FFFFFF),color-stop(1,#FFFFFF));
+    background-image: -moz-linear-gradient(top, #FFFFFF, #FFFFFF);
+    background-image:   -o-linear-gradient(linear,left top,left bottom,color-stop(0,#FFFFFF),color-stop(1,#FFFFFF));
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#3c3c3c', EndColorStr='#111111')";
+}
+.ui-dialog-theme-d #popup_cancel {
+	color: #F8E9E9;
+	text-shadow: 0 -1px 1px #CD8080;
+	background: #EF8383;
+	font-weight:bold;
+	background-image:    -moz-linear-gradient(top, #a51212, #6a0202);
+    background-image:        -webkit-gradient(linear,left top,left bottom,color-stop(0, #A73E3E),color-stop(1, #6E1818));
+    background-image: -webkit-linear-gradient(top, #A73E3E, #6E1818);
+    background-image:    -moz-linear-gradient(top, #A73E3E, #6E1818);
+    background-image:      -o-linear-gradient(top, #A73E3E, #6E1818);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#A73E3E', EndColorStr='#6E1818')";
+}
+
+/* Dialog Theme E */   
+.ui-dialog-theme-e {
+	background: #fff;
+	color: #000;
+	text-align: center;
+	border: solid 0.2em #F7C942;
+}
+.ui-dialog-theme-e h1 {
+	color: #282828;
+	text-shadow: 0 -1px 1px #fff;
+	background: #111111; 
+    background-image:        -webkit-gradient(linear,left top,left bottom,color-stop(0,#FADD58),color-stop(1,#FCECA4));
+    background-image: -webkit-linear-gradient(top, #FADD58, #FCECA4);
+    background-image:    -moz-linear-gradient(top, #FADD58, #FCECA4);
+    background-image:      -o-linear-gradient(top, #FADD58, #FCECA4);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#FADD58', EndColorStr='#FCECA4')";
+}
+.ui-dialog-theme-e input {
+	color:#333;
+	text-shadow: 0 -1px 1px #FFFFFF;
+	font-weight: bold;
+	border: solid 1px #F7C942;
+	background: #111111; 
+    background-image: -moz-linear-gradient(top, #3c3c3c, #111111);
+    background-image:     -webkit-gradient(linear,left top,left bottom,color-stop(0,#FADD58),color-stop(1,#FCECA4));
+    background-image: -moz-linear-gradient(top, #FADD58, #FCECA4);
+    background-image:   -o-linear-gradient(top, #FADD58, #FCECA4);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#3c3c3c', EndColorStr='#111111')";
+}
+.ui-dialog-theme-e #popup_cancel {
+	color: #F8E9E9;
+	text-shadow: 0 -1px 1px #CD8080;
+	background: #EF8383;
+	font-weight: bold;
+	background-image: -moz-linear-gradient(top, #a51212, #6a0202);
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #A73E3E),color-stop(1, #6E1818));
+    background-image: -webkit-linear-gradient(top, #A73E3E, #6E1818);
+    background-image: -moz-linear-gradient(top, #A73E3E, #6E1818);
+    background-image: -o-linear-gradient(top, #A73E3E, #6E1818);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#a51212', EndColorStr='#6a0202')"; 
+    
+    background-image: -webkit-gradient(linear, left top, left bottom, from( #A73E3E /*{d-bar-background-start}*/), to( #6E1818 /*{d-bar-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( #A73E3E /*{d-bar-background-start}*/, #6E1818 /*{d-bar-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #A73E3E /*{d-bar-background-start}*/, #6E1818 /*{d-bar-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #A73E3E /*{d-bar-background-start}*/, #6E1818 /*{d-bar-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient( #A73E3E /*{d-bar-background-start}*/, #6E1818 /*{d-bar-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient( #A73E3E /*{d-bar-background-start}*/, #6E1818 /*{d-bar-background-end}*/);
+}
+ 
+ /* Dialog Theme F */   
+.ui-dialog-theme-f {
+	background: #fff;
+	color: #000;
+	text-align:center;
+	border: solid 0.200em #690B14;
+}
+.ui-dialog-theme-f h1 {
+	color:#fff;
+	text-shadow: 0 -1px 1px #fff;
+	background: #111111; 
+    background-image: -moz-linear-gradient(top, #3c3c3c, #111111);
+    background-image:     -webkit-gradient(linear,left top,left bottom,color-stop(0,#A05052),color-stop(1,#CA0202));
+    background-image: -moz-linear-gradient(top, #A05052, #CA0202);
+    background-image:   -o-linear-gradient(top, #A05052, #CA0202);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#A05052', EndColorStr='#CA0202')";
+}
+.ui-dialog-theme-f input {
+	color:#fff;
+	text-shadow: 0 -1px 1px #000000;
+	border:solid 1px #333;
+	background: #111111; 
+    background-image: -moz-linear-gradient(top, #3c3c3c, #111111);
+    background-image:     -webkit-gradient(linear,left top,left bottom,color-stop(0,#A05052),color-stop(1,#CA0202));
+    background-image: -moz-linear-gradient(top, #A05052, #CA0202);
+    background-image:   -o-linear-gradient(top, #A05052, #CA0202);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#3c3c3c', EndColorStr='#111111')";
+}
+.ui-dialog-theme-f #popup_cancel {
+	color: #F8E9E9;
+	text-shadow: 0 -1px 1px #CD8080;
+	background: #EF8383;
+	font-weight: bold;
+	background-image:    -moz-linear-gradient(top, #a51212, #6a0202);
+    background-image:        -webkit-gradient(linear,left top,left bottom,color-stop(0, #A73E3E),color-stop(1, #6E1818));
+    background-image: -webkit-linear-gradient(top, #A73E3E, #6E1818);
+    background-image:    -moz-linear-gradient(top, #A73E3E, #6E1818);
+    background-image:      -o-linear-gradient(top, #A73E3E, #6E1818);    
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#a51212', EndColorStr='#6a0202')"; 
+    
+    background-image: -webkit-gradient(linear, left top, left bottom, from( #A73E3E /*{d-bar-background-start}*/), to( #6E1818 /*{d-bar-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( #A73E3E /*{d-bar-background-start}*/, #6E1818 /*{d-bar-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #A73E3E /*{d-bar-background-start}*/, #6E1818 /*{d-bar-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #A73E3E /*{d-bar-background-start}*/, #6E1818 /*{d-bar-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient( #A73E3E /*{d-bar-background-start}*/, #6E1818 /*{d-bar-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient( #A73E3E /*{d-bar-background-start}*/, #6E1818 /*{d-bar-background-end}*/);
+}
+    
+ /* Dialog Theme G */   
+.ui-dialog-theme-g { background: #fff; color: #000; text-align:center; border: solid 0.200em #4B7404;}
+.ui-dialog-theme-g h1 {
+	color: #fff;
+	text-shadow: 0 -1px 1px #000000;
+	background: #111111; 
+    background-image: -moz-linear-gradient(top, #3c3c3c, #111111);
+    background-image:     -webkit-gradient(linear,left top,left bottom, color-stop(0,#8AB939),color-stop(1,#5A8909));
+    background-image: -moz-linear-gradient(top, #8AB939, #5A8909);
+    background-image:   -o-linear-gradient(top, #8AB939, #5A8909);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#8AB939', EndColorStr='#5A8909')";
+}
+.ui-dialog-theme-g input {
+	color:#fff;
+	text-shadow: 0 -1px 1px #000000;
+	font-weight: bold;
+	border: solid 1px #4D6228;
+	background: #4B7404; 
+    background-image: -moz-linear-gradient(top, #3c3c3c, #111111);
+    background-image:     -webkit-gradient(linear,left top,left bottom,color-stop(0,#8AB939), color-stop(1,#5A8909));
+    background-image: -moz-linear-gradient(top, #8AB939, #5A8909);
+    background-image:   -o-linear-gradient(top, #8AB939, #5A8909);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#3c3c3c', EndColorStr='#111111')";
+}
+.ui-dialog-theme-g #popup_cancel {
+	color: #F8E9E9;
+	text-shadow: 0 -1px 1px #CD8080;
+	background: #EF8383;
+	font-weight:bold;
+	background-image:    -moz-linear-gradient(top, #a51212, #6a0202);
+    background-image:        -webkit-gradient(linear,left top,left bottom,color-stop(0, #A73E3E),color-stop(1, #6E1818));
+    background-image: -webkit-linear-gradient(top, #A73E3E, #6E1818);
+    background-image:    -moz-linear-gradient(top, #A73E3E, #6E1818);
+    background-image:      -o-linear-gradient(top, #A73E3E, #6E1818);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#a51212', EndColorStr='#6a0202')"; 
+    
+    background-image: -webkit-gradient(linear, left top, left bottom, from( #A73E3E /*{d-bar-background-start}*/), to( #6E1818 /*{d-bar-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( #A73E3E /*{d-bar-background-start}*/, #6E1818 /*{d-bar-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #A73E3E /*{d-bar-background-start}*/, #6E1818 /*{d-bar-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #A73E3E /*{d-bar-background-start}*/, #6E1818 /*{d-bar-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient( #A73E3E /*{d-bar-background-start}*/, #6E1818 /*{d-bar-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient( #A73E3E /*{d-bar-background-start}*/, #6E1818 /*{d-bar-background-end}*/);
+}      
+
+
+
+/* = Grid View Component
+---------------------------------------------------------------------------- */     
+.egov-grid .alpha { clear: both; }
+
+.egov-wid1, .egov-wid2, .egov-wid3, .egov-wid4, .egov-wid5,
+.egov-wid6, .egov-wid7, .egov-wid8, .egov-wid9, .egov-wid10,
+.egov-wid11, .egov-wid12 {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	float: left;
+}
+
+.egov-grid { overflow: hidden; }
+
+.egov-grid .egov-wid1	{ width: 8.333333333333334%; }
+.egov-grid .egov-wid2	{ width: 16.666666666666668%; }
+.egov-grid .egov-wid3	{ width: 25%; }
+.egov-grid .egov-wid4	{ width: 33.333333333333336%; }
+.egov-grid .egov-wid5	{ width: 41.66666666666667%; }
+.egov-grid .egov-wid6	{ width: 50%; }
+.egov-grid .egov-wid7	{ width: 58.333333333333336%; }
+.egov-grid .egov-wid8	{ width: 66.66666666666667%; }
+.egov-grid .egov-wid9	{ width: 75%; }
+.egov-grid .egov-wid10	{ width: 83.33333333333334%; }
+.egov-grid .egov-wid11	{ width: 91.66666666666667%; }
+.egov-grid .egov-wid12	{ width: 100%; }
+
+
+
+/* = List View Component
+---------------------------------------------------------------------------- */
+
+
+
+/* = Date/Time Picker Component
+---------------------------------------------------------------------------- */
+
+
+
+/* = Icon Component
+---------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------
+	수정일		수정자		수정내용
+	----------	------		---------------------------------------------------
+	2013.12.17	옥찬우		Icon Radio 이미지 조정
+							jQueryMobile 제공 이미지를 분할처리
+---------------------------------------------------------------------------- */
+.ui-icon {
+	background: 						#666;
+	background: 						rgba(0,0,0,.4);
+    /* background-image: url(../../../../images/egovframework/mbl/cmm/icons-18-white.png); */
+	background-repeat: no-repeat;
+	-o-border-radius: 					9px;
+	-moz-border-radius: 				9px;
+	-webkit-border-radius: 				9px;
+	border-radius: 						9px;
+}
+
+.ui-icon-arrow-l {
+	background-image: url(../../../../images/egovframework/mbl/cmm/ic-arrow-l.png);
+	background-repeat: no-repeat;
+	background-size: 18px 18px;
+	background-position: 0.5px -0.5px;
+}
+.ui-icon-arrow-r {
+	background-image: url(../../../../images/egovframework/mbl/cmm/ic-arrow-r.png);
+	background-repeat: no-repeat;
+	background-size: 18px 18px;
+	background-position: 0.5px -0.5px;
+}
+.ui-icon-arrow-u {
+	background-image: url(../../../../images/egovframework/mbl/cmm/ic-arrow-u.png);
+	background-repeat: no-repeat;
+	background-size: 18px 18px;
+	background-position: 0.5px -0.5px;
+}
+.ui-icon-arrow-d {
+	background-image: url(../../../../images/egovframework/mbl/cmm/ic-arrow-d.png);
+	background-repeat: no-repeat;
+	background-size: 18px 18px;
+	background-position: 0.5px -0.5px;
+}
+.ui-icon-delete {
+	background-image: url(../../../../images/egovframework/mbl/cmm/ic-delete.png);
+	background-repeat: no-repeat;
+		background-size: 18px 18px;  
+	background-position: 0.5px -0.5px;
+}
+.ui-icon-plus {
+	background-image: url(../../../../images/egovframework/mbl/cmm/ic-plus.png);
+	background-repeat: no-repeat;
+	background-size: 18px 18px;  
+	background-position: 0.5px -0.5px;
+}
+.ui-icon-minus {
+	background-image: url(../../../../images/egovframework/mbl/cmm/ic-minus.png);
+	background-repeat: no-repeat;
+	background-size: 18px 18px;
+	background-position: 0.5px -0.5px;
+}
+.ui-icon-check {
+	background-image: url(../../../../images/egovframework/mbl/cmm/ic-check.png);
+	background-repeat: no-repeat;
+	background-size: 18px 18px;
+	background-position: 0.5px -0.5px;
+}
+.ui-icon-gear {
+	background-image: url(../../../../images/egovframework/mbl/cmm/ic-gear.png);
+	background-repeat: no-repeat;
+	background-size: 18px 18px;
+	background-position: 0.5px -0.5px;
+}
+.ui-icon-refresh {
+	background-image: url(../../../../images/egovframework/mbl/cmm/ic-refresh.png);
+	background-repeat: no-repeat;
+	background-size: 18px 18px;
+	background-position: 0.5px -0.5px;
+}
+.ui-icon-forward {
+	background-image: url(../../../../images/egovframework/mbl/cmm/ic-forward.png);
+	background-repeat: no-repeat;
+	background-size: 18px 18px;
+	background-position: 0.5px -0.5px;
+}
+.ui-icon-back {
+	background-image: url(../../../../images/egovframework/mbl/cmm/ic-back.png);
+	background-repeat: no-repeat;
+	background-size: 18px 18px;
+	background-position: 0.5px -0.5px;
+}
+.ui-icon-grid {
+	background-image: url(../../../../images/egovframework/mbl/cmm/ic-grid.png);
+	background-repeat: no-repeat;
+	background-size: 18px 18px;
+	background-position: 0.5px -0.5px;
+}
+.ui-icon-star {
+	background-image: url(../../../../images/egovframework/mbl/cmm/ic-star.png);
+	background-repeat: no-repeat;
+	background-size: 18px 18px;
+	background-position: 0.5px -0.5px;
+}
+.ui-icon-alert {
+	background-image: url(../../../../images/egovframework/mbl/cmm/ic-alert.png);
+	background-repeat: no-repeat;
+	background-size: 18px 18px;
+	background-position: 0.5px -0.5px;
+}
+.ui-icon-info {
+	background-image: url(../../../../images/egovframework/mbl/cmm/ic-info.png);
+	background-repeat: no-repeat;
+	background-size: 18px 18px;
+	background-position: 0.5px -0.5px;
+}
+.ui-icon-home {
+	background-image: url(../../../../images/egovframework/mbl/cmm/ic-home.png);
+	background-repeat: no-repeat;
+	background-size: 18px 18px;
+	background-position: 0.5px -0.5px;
+}
+.ui-icon-search,
+.ui-icon-searchfield:after {
+	background-image: url(../../../../images/egovframework/mbl/cmm/ic-search.png);
+	background-repeat: no-repeat;
+	background-size: 18px 18px;
+	background-position: 0.5px -0.5px;
+}
+
+/* Custom Icons */
+.ui-icon-phone {
+    background-image: url(../../../../images/egovframework/mbl/cmm/ic-phone.png);
+    background-repeat: no-repeat;   
+}
+.ui-icon-mail {
+    background-image: url(../../../../images/egovframework/mbl/cmm/ic-mail.png);
+    background-repeat: no-repeat;
+}
+.ui-icon-alt {
+    background: #fff;
+    background: rgba(255,255,255,.3);
+    background-image: url(../../../../images/egovframework/mbl/cmm/icons-18-black.png);
+    background-repeat: no-repeat;
+}
+.ui-icon-gps {
+    background-image: url(../../../../images/egovframework/mbl/cmm/ic-gps.png);
+    background-repeat: no-repeat;
+}
+.ui-icon-audio {
+    background-image: url(../../../../images/egovframework/mbl/cmm/ic-audio.png);
+    background-repeat: no-repeat;
+}
+.ui-icon-camera {
+    background-image: url(../../../../images/egovframework/mbl/cmm/ic-camera.png);
+    background-repeat: no-repeat;
+}
+.ui-icon-file {
+    background-image: url(../../../../images/egovframework/mbl/cmm/ic-file.png);
+    background-repeat: no-repeat;
+}
+.ui-icon-mic {
+    background-image: url(../../../../images/egovframework/mbl/cmm/ic-mic.png);
+    background-repeat: no-repeat;
+}
+.ui-icon-explorer {
+    background-image: url(../../../../images/egovframework/mbl/cmm/ic-explorer.png);
+    background-repeat: no-repeat;
+}
+
+
+
+/* = Check Box Component
+----------------------------------------------------------------------------- */
+/* -----------------------------------------------------------------------------
+	수정일		수정자		수정내용
+	----------	------		----------------------------------------------------
+	2013.12.18	옥찬우		Input CheckBox 이미지 조정
+							jQueryMobile 제공 이미지를 분할처리 
+----------------------------------------------------------------------------- */
+.ui-icon-checkbox-off{
+	background-image: url(../../../../images/egovframework/mbl/cmm/ic-checkbox-off.png);
+		background-size: 18px 18px;
+	/* background-position: -684px -0.955px */
+}
+.ui-icon-checkbox-on {
+	background-image: url(../../../../images/egovframework/mbl/cmm/ic-checkbox-on.png);
+	background-size: 18px 18px;
+	/* background-position: -647px -0.955px */
+}
+
+
+
+/* = Radio Button Component
+----------------------------------------------------------------------------- */
+/* -----------------------------------------------------------------------------
+	수정일		수정자		수정내용
+	----------	------		----------------------------------------------------
+	2013.12.18	옥찬우		Input Radio 이미지 조정 
+							jQueryMobile 제공 이미지를 분할처리
+----------------------------------------------------------------------------- */
+.ui-icon-radio-off {
+	background-image: url(../../../../images/egovframework/mbl/cmm/ic-radio-off.png);
+	background-size: 18px 18px;
+	/* background-position: -756px -0.955px */
+}
+.ui-icon-radio-on {
+	background-image: url(../../../../images/egovframework/mbl/cmm/ic-radio-on.png);
+	background-size: 18px 18px;
+	/* background-position: -717.5px -0.955px */
+}
+
+/* Check Box, Radio Button Component 공통사항 처리  */
+.ui-checkbox .ui-icon {
+	-o-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.ui-icon-checkbox-off, .ui-icon-radio-off {
+	background-color: transparent;	
+}
+
+/* NOTE: this hex should match the active state color. It's repeated here for cascade */
+.ui-icon-checkbox-on, .ui-checkbox-on .ui-icon, .ui-radio-on .ui-icon {
+	background-color: #4596ce;
+}
+
+
+/* -----------------------------------------------------------------------------
+	수정일		수정자		수정내용
+	----------	------		----------------------------------------------------
+	2013.12.18	옥찬우		jQueryMobile 제공 이미지를 분할처리
+----------------------------------------------------------------------------- */
+/* HD retina" sprite */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (min--moz-device-pixel-ratio: 1.5),
+       only screen and (min--o-device-pixel-ratio: 1.5),
+       only screen and (min-resolution: 240dpi) {
+        .ui-icon-plus, .ui-icon-minus, .ui-icon-delete, .ui-icon-arrow-r, .ui-icon-arrow-l,
+        .ui-icon-arrow-u, .ui-icon-arrow-d, .ui-icon-check,.ui-icon-gear, .ui-icon-refresh,
+        .ui-icon-forward, .ui-icon-back, .ui-icon-grid, .ui-icon-star, .ui-icon-alert,
+        .ui-icon-info, .ui-icon-home, .ui-icon-search, .ui-icon-checkbox-off, .ui-icon-checkbox-on,
+		.ui-icon-radio-off, .ui-icon-radio-on, .ui-icon-num1, .ui-icon-num2 {
+           	-moz-background-size: 18px 18px;
+        	-o-background-size: 18px 18px;
+        	-webkit-background-size: 18px 18px;
+        	background-size: 18px 18px;
+    	}
+		/* .ui-icon-plus, .ui-icon-minus, .ui-icon-delete, .ui-icon-arrow-r, .ui-icon-arrow-l,
+        .ui-icon-arrow-u, .ui-icon-arrow-d, .ui-icon-check,.ui-icon-gear, .ui-icon-refresh,
+        .ui-icon-forward, .ui-icon-back, .ui-icon-grid, .ui-icon-star, .ui-icon-alert,
+        .ui-icon-info, .ui-icon-home, .ui-icon-search, .ui-icon-checkbox-off, .ui-icon-checkbox-on,
+		.ui-icon-radio-off, .ui-icon-radio-on, .ui-icon-num1, .ui-icon-num2 {
+		{	background-image: url(../../../../images/egovframework/mbl/cmm/icons-36-white.png);
+			-moz-background-size: 776px 18px;
+        	-o-background-size: 776px 18px;
+        	-webkit-background-size: 776px 18px;
+        	background-size: 776px 18px;
+		} */
+    .ui-icon-alt {  background-image: url(../../../../images/egovframework/mbl/cmm/icons-36-black.png) }
+}
+
+
+
+/* = Loader Widget Component
+---------------------------------------------------------------------------- */
+.ui-icon-loading {  
+    background: url('../../../../images/egovframework/mbl/cmm/ajax-loader.gif');
+}
+
+
+
+/* = Selector/Switch Component
+---------------------------------------------------------------------------- */
+
+
+
+/* = Datapicker Component
+---------------------------------------------------------------------------- */
+
+
+
+
+
+/* --------------------------------------------------------------------------
+	수정일		수정자		수정내용
+	----------	------		---------------------
+	2012.10.05	박지민		FieldSet - W3C Validate CheckList Error 사항 개선
+-------------------------------------------------------------------------- */
+.checkList {}
+.checkList li {
+	position: relative;
+	padding: 0 !important;
+	margin: 0 !important;
+	overflow: hidden !important;
+}
+.checkList li.notxtno {
+	position: relative;
+	height: 26px;
+}
+.detailBtn {
+	position: absolute;
+	top:0;
+	right:0;
+	z-index:99;
+}
+
+
+
+/* ------------------------------------------------------------------
+	수정일		수정자		수정내용
+	----------	------		---------------------
+	2012.09.05	박지민		Ios5 Iframe내에서 data-native-menu를 통한
+							popup 효과 적용시 사라지는 문제 개선
+------------------------------------------------------------------ */
+.ui-selectmenu-hidden { top: -9999px !important; left: -9999px; }
+
+
+
+/* --------------------------------------------------------------------------
+	수정일		수정자		수정내용
+	----------	------		-------------------------------------------------
+	2012.09.07	박지민		opera mobile에서 border-radius 속성이 들어갈 경우
+							이미지를 표시하지 못하는 문제로 적용
+-------------------------------------------------------------------------- */
+.ui-operacorner-mode { 
+	border-top-right-radius: 0px !important;
+	border-bottom-right-radius: 0px !important; 
+	border-top-left-radius: 0px !important;
+	border-bottom-left-radius: 0px !important;
+	border-radius: 0px !important;	
+}
+
+
+
+/* -------------------------------------------------------------------------------------------------
+	수정일		수정자		수정내용
+	----------	------		------------------------------------------------------------------------
+	2012.10.26	박지민		A negative indent of -99999em can cause native Android 4.x to freak out,
+							since its so absurdly high. Switched to -9999px.
+------------------------------------------------------------------------------------------------- */
+.ui-page-header-fullscreen .ui-fixed-hidden, .ui-page-footer-fullscreen .ui-fixed-hidden {
+	left: -9999px;
+}

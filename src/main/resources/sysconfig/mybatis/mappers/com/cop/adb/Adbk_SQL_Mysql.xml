@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.cop.adb.service.impl.AdressBookMapper">
+	
+	<!-- 목록조회  -->
+	<select id="selectAdressBookList" resultType="egovMap" >
+        /* 구현 Sql */
+       <![CDATA[
+			SELECT ADBK_ID					AS "adbkId"
+				 , ADBK_NM					AS "adbkNm"
+				 , OTHBC_SCOPE				AS "othbcScope"
+				 , USE_AT					AS "useAt"
+				 , WRTER_ID					AS "wrterId"
+				 , FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
+			  FROM COMTN_ADBK_MANAGE		
+			 WHERE USE_AT = 'Y'		
+			   AND (OTHBC_SCOPE = '전체'
+					OR (OTHBC_SCOPE = '부서' AND TRGET_ORGNZT_ID = #{trgetOrgnztId})			
+					OR (OTHBC_SCOPE = '개인' AND WRTER_ID = #{wrterId})	
+				   )		
+		]]>		
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "ADBK_NM"'>
+             	<![CDATA[ AND ADBK_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "OTHBC_SCOPE"'>
+             	<![CDATA[ AND OTHBC_SCOPE LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "WRTER_ID"'>
+             	<![CDATA[ AND WRTER_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[			
+			ORDER BY ADBK_NM 
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+	</select>	
+
+	<!-- 목록조회_게시물 총갯수  -->
+	<select id="selectAdressBookListCnt" resultType="int">
+		<![CDATA[
+			SELECT COUNT(ADBK_ID)
+			  FROM COMTN_ADBK_MANAGE		
+			 WHERE USE_AT = 'Y'
+			   AND (OTHBC_SCOPE = '전체'
+					OR (OTHBC_SCOPE = '부서' AND TRGET_ORGNZT_ID = #trgetOrgnztId#)			
+					OR (OTHBC_SCOPE = '개인' AND WRTER_ID = #wrterId#)	
+				   )		
+		]]>	
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "ADBK_NM"'>
+             	<![CDATA[ AND ADBK_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "OTHBC_SCOPE"'>
+             	<![CDATA[ AND OTHBC_SCOPE LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "WRTER_ID"'>
+             	<![CDATA[ AND WRTER_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>	
+	
+	<!-- 상세보기 -->
+	<select id="selectAdressBook" resultType="adressBookVO">
+		<![CDATA[
+			SELECT ADBK_ID
+				 , ADBK_NM
+				 , USE_AT
+				 , WRTER_ID        
+				 , OTHBC_SCOPE
+				 , TRGET_ORGNZT_ID
+			  FROM COMTN_ADBK_MANAGE
+			 WHERE ADBK_ID = #{adbkId}
+		]]>
+	</select>	
+	
+	<!-- 입력 -->
+	<insert id="insertAdressBook" >
+		<![CDATA[
+			INSERT INTO COMTN_ADBK_MANAGE (
+					ADBK_ID
+				  ,	ADBK_NM
+				  ,	USE_AT
+				  ,	WRTER_ID
+				  ,	OTHBC_SCOPE
+				  ,	TRGET_ORGNZT_ID
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+			) VALUES ( 
+					#{adbkId}
+				  ,	#{adbkNm}
+				  ,	#{useAt}
+				  ,	#{wrterId}
+				  ,	#{othbcScope}
+				  ,	#{trgetOrgnztId}
+				  , #{frstRegisterId}
+				  , sysdate()
+				  , #{frstRegisterId} 
+				  , sysdate()
+			)		
+		]]>
+	</insert>
+	
+	<!-- 수정 -->
+	<update id="updateAdressBook" >
+		<![CDATA[
+			UPDATE COMTN_ADBK_MANAGE 
+			   SET ADBK_NM = #{adbkNm}
+			     , USE_AT = #{useAt}
+			     , OTHBC_SCOPE = #{othbcScope}
+				 , TRGET_ORGNZT_ID = #{trgetOrgnztId} 
+			     , LAST_UPDUSR_ID = #{lastUpdusrId}
+			     , LAST_UPDT_PNTTM = sysdate()
+			 WHERE ADBK_ID = #{adbkId}			
+		]]>
+	</update>
+
+	<!-- 목록조회(주소록 대상자)  -->
+ 	<select id="selectUserList" resultType ="adressBookUserVO" >
+      	<![CDATA[
+			 SELECT ADBK_USER_ID 			As "adbkUserId"
+			 	  ,	ADBK_ID 				As "adbkId"
+			 	  ,	IFNULL(EMPLYR_ID,'') 		As "emplyrId"
+			 	  ,	IFNULL(NCRD_ID,'') 		As "ncrdId"
+			 	  , NM 						As "nm"
+			 	  ,	EMAIL_ADRES 			As "emailAdres"
+			 	  ,	HOUSE_TELNO 			As "homeTelno"
+			 	  ,	MBTLNUM 				As "moblphonNo"
+			 	  , OFFM_TELNO 				As "offmTelno"
+			 	  ,	FXNUM 					As "fxnum"
+			   FROM COMTN_ADBK
+			  WHERE	ADBK_ID = #{adbkId}
+			  ORDER BY NM ASC					
+ 		]]>					
+ 	</select>
+ 	
+	<!-- 입력 -->
+	<insert id="insertAdressBookUser" >
+		<![CDATA[
+			INSERT INTO COMTN_ADBK (
+					ADBK_USER_ID
+				  , ADBK_ID
+				  ,	EMPLYR_ID
+				  ,	NCRD_ID
+				  ,	NM 
+				  ,	EMAIL_ADRES
+				  ,	HOUSE_TELNO
+				  ,	MBTLNUM
+				  ,	OFFM_TELNO
+				  ,	FXNUM
+			) VALUES ( 
+					#{adbkUserId}
+				  ,	#{adbkId}
+				  ,	#{emplyrId}
+				  ,	#{ncrdId}
+				  ,	#{nm}
+				  ,	#{emailAdres}
+				  ,	#{homeTelno}
+				  ,	#{moblphonNo}
+				  ,	#{offmTelno}
+				  ,	#{fxnum}
+			)		
+		]]>
+	</insert>
+	
+	<!-- 삭제 -->
+	<delete id="deleteAdressBookUser" >
+		<![CDATA[
+			DELETE 
+			  FROM COMTN_ADBK 
+			 WHERE (EMPLYR_ID = #{emplyrId} AND ADBK_ID = #{adbkId} )
+			       OR (NCRD_ID = #{ncrdId} AND ADBK_ID = #{adbkId} )
+		]]>
+	</delete>	
+	
+	<!-- 목록조회(사용자)  -->
+	<select id="selectManList" resultType="egovMap"  >
+        /* 구현 Sql */
+         <![CDATA[
+			SELECT EMPLYR_ID				AS "emplyrId"
+			     , USER_NM					AS "nm"
+			     , EMAIL_ADRES				AS "emailAdres"
+			     , (AREA_NO || '-' || HOUSE_MIDDLE_TELNO || '-' || HOUSE_END_TELNO) AS "homeTelno"
+			     , MBTLNUM					AS "moblphonNo"
+			     , OFFM_TELNO				AS "offmTelno"
+			     , FXNUM					AS "fxnum"
+			  FROM COMTN_EMPLYR_INFO
+			 WHERE USER_NM LIKE '%' || #{searchKeyword} || '%' 
+			UNION
+			SELECT ENTRPRS_MBER_ID 			AS "emplyrId"
+			     , CMPNY_NM 				AS "nm"
+			     , APPLCNT_EMAIL_ADRES 		AS "emailAdres"
+			     , '' 						AS "homeTelno"
+			     , '' 						AS "moblphonNo"
+			     , (AREA_NO ||'-' || ENTRPRS_MIDDLE_TELNO || '-' || ENTRPRS_END_TELNO) AS "offmTelno"
+			     , FXNUM					AS "fxnum"
+			  FROM COMTN_ENTRPRS_MBER
+			 WHERE ENTRPRS_MBER_ID LIKE '%' || #{searchKeyword} || '%'
+			UNION	
+			SELECT MBER_ID  				AS "emplyrId"
+			     , MBER_NM 					AS "nm"
+			     , MBER_EMAIL_ADRES 		AS "emailAdres"
+			     , (AREA_NO || '-' || MIDDLE_TELNO || '-' || END_TELNO) AS "homeTelno"
+			     , MBTLNUM					AS "moblphonNo"
+			     , '' 						AS "offmTelno"
+			     , MBER_FXNUM 				AS "fxnum" 
+			  FROM COMTN_GNRL_MBER			
+			 WHERE MBER_ID LIKE '%' || #{searchKeyword} || '%'
+ 		]]>
+		<![CDATA[			
+			 ORDER BY "nm" 
+		]]>						
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+ 	</select>
+ 	
+	<!-- 목록조회(사용자)_게시물 총갯수  -->
+	<select id="selectManListCnt" resultType="int" >
+		<![CDATA[
+			SELECT (
+				SELECT COUNT(USER_NM)
+				  FROM COMTN_EMPLYR_INFO
+				 WHERE USER_NM LIKE '%' || #{searchKeyword} || '%' ) 
+			    + (
+				SELECT COUNT(CMPNY_NM)
+				  FROM COMTN_ENTRPRS_MBER 
+				 WHERE CMPNY_NM LIKE '%' || #{searchKeyword} || '%' )
+				+ (
+				SELECT COUNT(MBER_NM)
+				  FROM COMTN_GNRL_MBER
+				 WHERE MBER_NM LIKE '%' || #{searchKeyword} || '%' )
+			FROM DUAL
+		]]>
+	</select>	
+	
+	<!-- 상세보기(사용자) -->
+	<select id="selectManUser" resultType="adressBookUserVO">
+		<![CDATA[
+			SELECT EMPLYR_ID				AS "emplyrId"
+			     , USER_NM					AS "nm"
+			     , EMAIL_ADRES				AS "emailAdres"
+			     , (AREA_NO || '-' || HOUSE_MIDDLE_TELNO || '-' || HOUSE_END_TELNO) AS "homeTelno"
+			     , MBTLNUM					AS "moblphonNo"
+			     , OFFM_TELNO				AS "offmTelno" 
+			     , FXNUM 					AS "fxnum"
+			  FROM COMTN_EMPLYR_INFO
+			 WHERE EMPLYR_ID = #{id}
+			UNION
+			SELECT ENTRPRS_MBER_ID 			AS "emplyrId"
+			     , CMPNY_NM 				AS "nm"
+			     , APPLCNT_EMAIL_ADRES 		AS "emailAdres"
+			     , '' 						AS "homeTelno"
+			     , '' 						AS "moblphonNo"
+			     , (AREA_NO || '-' || ENTRPRS_MIDDLE_TELNO || '-' || ENTRPRS_END_TELNO) AS "offmTelno" 
+			     , FXNUM					AS "fxnum"
+			  FROM COMTN_ENTRPRS_MBER
+			 WHERE ENTRPRS_MBER_ID = #{id}
+			UNION	
+			SELECT MBER_ID 					AS "emplyrId"
+			     , MBER_NM 					AS "nm"
+			     , MBER_EMAIL_ADRES 		AS "emailAdres"
+			     , (AREA_NO || '-' || MIDDLE_TELNO || '-' ||END_TELNO) AS "homeTelno"
+			     , MBTLNUM					AS "moblphonNo"
+			     , '' 						AS "offmTelno"
+			     , MBER_FXNUM 				AS "fxnum"
+			  FROM COMTN_GNRL_MBER			
+			 WHERE MBER_ID = #{id}
+		]]>
+	</select>	
+	
+	<!-- 목록조회(명함)  -->
+ 	<select id="selectCardList" resultType="egovMap"  >
+        /* 구현 Sql */
+     	<![CDATA[
+			SELECT NCRD_ID					AS "ncrdId" 
+				 , NM						AS "nm"
+				 , EMAIL_ADRES				AS "emailAdres"
+				 , TELNO					AS "homeTelno"
+				 , MBTLNUM					AS "moblphonNo"
+			  FROM COMTN_NCRD
+			 WHERE 1=1 
+			   AND NM LIKE '%' || #{searchKeyword} || '%'
+ 		]]>
+		<![CDATA[			
+			 ORDER BY NM 
+		]]>							
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+ 	</select>
+ 	
+	<!-- 목록조회(명함)_게시물 총갯수  -->
+	<select id="selectCardListCnt" resultType="int" >
+		<![CDATA[
+			SELECT COUNT(NM)
+			  FROM COMTN_NCRD
+			 WHERE 1=1 
+			   AND NM LIKE '%' || #{searchKeyword} || '%' 
+		]]>
+	</select>
+
+	<!-- 상세보기(명함) -->
+	<select id="selectCardUser" resultType="adressBookUserVO">
+		<![CDATA[
+			SELECT NCRD_ID				AS "ncrdId"
+				 , NM					AS "nm"
+				 , EMAIL_ADRES			AS "emailAdres"
+				 , TELNO				AS "homeTelno"
+				 , MBTLNUM     			AS "moblphonNo"   
+			  FROM COMTN_NCRD
+			 WHERE NCRD_ID = #{id}
+		]]>
+	</select>	
+
+</mapper>

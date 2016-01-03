@@ -1,0 +1,197 @@
+<?xml version="1.0"?>
+
+<project name="aramscomp"  default="publish">
+
+	<property name="tomcat.manager.url" value="http://localhost:6060/manager" />
+	<property name="hudson.jobs.dir" value="/home/hudson/jobs" />
+	<property name="tomcat.home" value="/Server/Tomcat-6.0.29" />
+<!--
+	<property name="tomcat.home" value="/home/egov/server/apache-tomcat-6.0.29" />
+-->
+	<property name="proj.name" value="${ant.project.name}"/>
+    <property name="web.path" value="/"/>
+    <property environment="env"/>
+       
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Locations of generated artifacts
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <property name="deployDir" location="dist"/>      <!-- passed in by Anthill -->
+    <property name="dist.dir" location="${deployDir}"/>
+    <property name="deploy.dir" location="."/>
+    
+	<property name="src.dir" location="${hudson.jobs.dir}/${proj.name}/workspace/${proj.name}/src/main/webapp"/>
+	<property name="work.dir" location="${hudson.jobs.dir}/${proj.name}/workspace/${proj.name}/target/aramcomp-webapp"/>
+	<property name="publish.home" location="/var/webapps"/>
+	<property name="publish.dir" location="${publish.home}/${proj.name}"/>
+
+	<path id="tomcat.lib.classpath"> 
+		<fileset dir="${tomcat.home}/bin"> 
+			<include name="*.jar"/> 
+		</fileset> 
+		<fileset dir="${tomcat.home}/lib"> 
+			<include name="*.jar"/> 
+		</fileset> 
+	</path> 
+
+<!-- ============================================== -->
+<!--                                                -->
+<!-- publish webapps	                            -->
+<!--                                                -->
+<!-- ============================================== -->
+    <target name="sync-webapp">
+
+    	<echo message="sync work webapps/WEB-INF/jsp..."/>
+		<sync todir="${work.dir}/WEB-INF/jsp/">
+	    	<fileset dir="${src.dir}/WEB-INF/jsp">
+	    		<include name="**/*"/>
+	    	</fileset>
+		</sync>
+    	<echo message="sync work webapps/WEB-INF/layouts..."/>
+		<sync todir="${work.dir}/WEB-INF/layouts/">
+	    	<fileset dir="${src.dir}/WEB-INF/layouts">
+	    		<include name="**/*"/>
+	    	</fileset>
+		</sync>
+    	
+    	<echo message="sync work webapps/css..."/>
+		<sync todir="${work.dir}/css/">
+	    	<fileset dir="${src.dir}/css">
+	    		<include name="**/*"/>
+	    	</fileset>
+		</sync>
+    	<echo message="sync work webapps/html..."/>
+		<sync todir="${work.dir}/html/">
+	    	<fileset dir="${src.dir}/html">
+	    		<include name="**/*"/>
+	    	</fileset>
+		</sync>
+    	<echo message="sync work webapps/images..."/>
+		<sync todir="${work.dir}/images/">
+	    	<fileset dir="${src.dir}/images">
+	    		<include name="**/*"/>
+	    	</fileset>
+		</sync>
+    	<echo message="sync work webapps/js..."/>
+		<sync todir="${work.dir}/js/">
+	    	<fileset dir="${src.dir}/js">
+	    		<include name="**/*"/>
+	    	</fileset>
+		</sync>
+
+    	<echo message="sync work webapps/lucene..."/>
+		<sync todir="${work.dir}/lucene/">
+	    	<fileset dir="${src.dir}/lucene">
+	    		<include name="**/*"/>
+	    	</fileset>
+		</sync>
+    	
+   	    <echo message="copy work /*.jsp..."/>
+		<copy todir="${work.dir}/">
+	    	<fileset dir="${src.dir}">
+	    		<include name="*.jsp"/>
+	    	</fileset>
+		</copy>
+<!--   	
+  		<echo message="move multimedia to home"/>
+   		<move todir="${publish.home}/multimedia">
+    	   <fileset dir="${publish.dir}/multimedia"/>
+    	</move>
+-->
+  		<echo message="sync deploy webapps..."/>
+		<sync todir="${publish.dir}/">
+	    	<fileset dir="${work.dir}">
+	    		<include name="**/*"/>
+	    	</fileset>
+		</sync>
+ 
+<!--   	
+   		<echo message="move multimedia to origin"/>
+   		<move todir="${publish.dir}/multimedia">
+    	   <fileset dir="${publish.home}/multimedia"/>
+    	</move>
+-->
+
+    </target>
+
+<!-- ============================================== -->
+<!--                                                -->
+<!-- publish by manager		                            -->
+<!--                                                -->
+<!-- ============================================== -->
+    <target name="publish-manager">
+ 	    <taskdef name="start" classname="org.apache.catalina.ant.StartTask"  > 
+			<classpath refid="tomcat.lib.classpath" /> 
+		</taskdef> 
+ 	    <taskdef name="stop" classname="org.apache.catalina.ant.StopTask"  > 
+			<classpath refid="tomcat.lib.classpath" /> 
+		</taskdef> 
+ 	    <taskdef name="list" classname="org.apache.catalina.ant.ListTask"  > 
+			<classpath refid="tomcat.lib.classpath" /> 
+		</taskdef> 
+
+    	<stop 	url="${tomcat.manager.url}" 
+        		username="${tomcat.manager.username}" 
+        		password="${tomcat.manager.password}"
+                   path="${web.path}" />
+
+    	<antcall target="sync-webapp" />
+
+    	<start 	url="${tomcat.manager.url}" 
+        		username="${tomcat.manager.username}" 
+        		password="${tomcat.manager.password}"
+                   path="${web.path}" />
+
+    </target>
+
+<!-- ============================================== -->
+<!--                                                -->
+<!-- tomcat restart by shell program		                            -->
+<!--                                                -->
+<!-- ============================================== -->
+
+    <target name="stop-tomcat">
+
+		<echo message="shutdown tomcat server..." />
+	    <exec executable="${tomcat.home}/bin/shutdown.sh" 
+	       	failonerror ="true" >
+			<arg value="-force" />
+		</exec>
+		<echo message="stopped tomcat server..." />
+
+    </target>
+	
+    <target name="start-tomcat">
+
+		<echo message="startup tomcat server..." />
+	    	<exec executable="${tomcat.home}/bin/startup.sh" 
+	        	failonerror ="true" />
+		<echo message="started tomcat server..." />
+
+    </target>
+
+    <target name="publish-restart">
+
+    	<antcall target="stop-tomcat" />
+
+		<echo message="sleep for 10 second... " />
+      	<sleep seconds="10" />
+
+    	<antcall target="sync-webapp" />
+
+    	<antcall target="start-tomcat" />
+
+    </target>
+
+<!-- ============================================== -->
+<!--                                                -->
+<!-- Deploy	Webapp		                            -->
+<!--                                                -->
+<!-- ============================================== -->
+
+    <target name="publish">
+    	<antcall target="sync-webapp" />
+    	<!--antcall target="publish-manager" /-->
+    	<!--antcall target="publish-restart" /-->
+    </target>
+
+</project>

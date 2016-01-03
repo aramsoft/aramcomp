@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<browserInfo>
+	<video extension="ogv" type="video/ogv">
+		<browser>Chrome</browser>
+		<browser>Firefox</browser>
+	</video>
+	<video extension="ogg" type="video/ogg">
+		<browser>Chrome</browser>
+		<browser>Firefox</browser>
+	</video>
+	<video extension="mp4" type="video/mp4">
+		<browser>Chrome</browser>
+		<browser>Safari</browser>
+		<browser>Android</browser>
+		<browser>Opera</browser>
+	</video>
+	<video extension="webm" type="video/webm">
+		<browser>Chrome</browser>
+		<browser>Android</browser>
+		<browser>Opera</browser>
+		<browser>Firefox</browser>
+	</video>
+	<audio extension="ogg" type="audio/ogg">
+		<browser>Chrome</browser>
+		<browser>Android</browser>
+		<browser>Opera</browser>
+		<browser>Firefox</browser>		
+	</audio>
+	<audio extension="mp3" type="audio/mpeg">
+		<browser>Chrome</browser>
+		<browser>Safari</browser>
+		<browser>Android</browser>
+		<browser>Opera</browser>
+	</audio>
+</browserInfo>

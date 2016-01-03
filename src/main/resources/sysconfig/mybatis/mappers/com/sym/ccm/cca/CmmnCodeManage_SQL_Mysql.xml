@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.sym.ccm.cca.service.impl.CmmnCodeManageMapper">
+
+	<!-- 목록조회  -->
+	<select id="selectCmmnCodeList" resultType="egovMap">
+        /* 구현 Sql */
+		<![CDATA[
+			SELECT B.CL_CODE_NM				AS "clCodeNm"
+			     , A.CODE_ID				AS "codeId"
+			     , A.CODE_ID_NM				AS "codeIdNm"
+			     , A.USE_AT					AS "useAt"
+			  FROM COMTC_CMMN_CODE   A
+			       LEFT OUTER JOIN COMTC_CMMN_CL_CODE B
+					   	ON A.CL_CODE = B.CL_CODE
+			 WHERE 1=1
+		]]>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "CODE_ID"'>
+				<![CDATA[ AND A.CODE_ID LIKE '%' || #{searchKeyword} || '%']]>
+            </when>
+            <when test='searchCondition == "CODE_ID_NM"'>
+				<![CDATA[ AND A.CODE_ID_NM LIKE '%' || #{searchKeyword} || '%']]>
+            </when>
+            <when test='searchCondition == "clCode"'>
+				<![CDATA[ AND A.USE_AT = 'Y']]>
+				<![CDATA[ AND A.CL_CODE LIKE '%' || #{searchKeyword} || '%']]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[			
+			 ORDER BY A.CODE_ID ASC
+        ]]>			
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+
+	</select>
+
+	<!-- 목록조회_게시물 총갯수  -->
+	<select id="selectCmmnCodeListCnt" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) totcnt
+			  FROM COMTC_CMMN_CODE   A
+			       LEFT OUTER JOIN COMTC_CMMN_CL_CODE B
+					   	ON A.CL_CODE = B.CL_CODE
+			 WHERE 1=1
+		]]>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "CODE_ID"'>
+				<![CDATA[ AND A.CODE_ID LIKE '%' || #{searchKeyword} || '%']]>
+            </when>
+            <when test='searchCondition == "CODE_ID_NM"'>
+				<![CDATA[ AND A.CODE_ID_NM LIKE '%' || #{searchKeyword} || '%']]>
+            </when>
+            <when test='searchCondition == "clCode"'>
+				<![CDATA[ AND A.USE_AT = 'Y']]>
+				<![CDATA[ AND A.CL_CODE LIKE '%' || #{searchKeyword} || '%']]>
+            </when>
+        </choose>
+		</if>
+	</select>
+
+	<!-- 상세보기 -->
+	<select id="selectCmmnCodeDetail" resultType="cmmnCodeVO">
+		<![CDATA[
+            SELECT B.CL_CODE_NM 			AS "clCodeNm"
+                 , A.CL_CODE    			AS "clCode"
+                 , A.CODE_ID    			AS "codeId"
+			     , A.CODE_ID_NM 			AS "codeIdNm"
+                 , A.CODE_ID_DC 			AS "codeIdDc"
+                 , A.USE_AT     			AS "useAt"
+			  FROM COMTC_CMMN_CODE   A
+			       LEFT OUTER JOIN COMTC_CMMN_CL_CODE B
+					   	ON A.CL_CODE = B.CL_CODE
+			 WHERE A.CODE_ID = #{codeId}
+		]]>
+	</select>
+
+	<!-- 입력 -->
+	<insert id="insertCmmnCode">
+		<![CDATA[
+		    INSERT INTO  COMTC_CMMN_CODE (  
+		    	   CODE_ID
+		         , CODE_ID_NM
+		         , CODE_ID_DC
+		         , CL_CODE
+		         , USE_AT
+				 , FRST_REGISTER_ID 
+				 , FRST_REGIST_PNTTM 
+				 , LAST_UPDUSR_ID
+				 , LAST_UPDT_PNTTM 
+		    ) VALUES (  
+		    	   #{codeId}
+		         , #{codeIdNm}
+		         , #{codeIdDc}
+		         , #{clCode}
+		         , #{useAt}
+				 , #{frstRegisterId}
+				 , sysdate()
+				 , #{frstRegisterId}
+				 , sysdate()
+		    )
+		]]>
+	</insert>
+
+	<!-- 수정 -->
+	<update id="updateCmmnCode">
+		<![CDATA[
+            UPDATE COMTC_CMMN_CODE
+               SET CODE_ID_NM        = #{codeIdNm}
+                 , CODE_ID_DC        = #{codeIdDc}
+                 , USE_AT            = #{useAt}
+                 , LAST_UPDUSR_ID    = #{lastUpdusrId}
+                 , LAST_UPDT_PNTTM 	 = sysdate()
+             WHERE CODE_ID           = #{codeId}
+		]]>
+	</update>
+
+	<!-- 삭제 -->
+	<delete id="deleteCmmnCode">
+		<![CDATA[
+            UPDATE COMTC_CMMN_CODE
+               SET USE_AT  = 'N'
+             WHERE CODE_ID = #{codeId}
+		]]>
+	</delete>
+
+</mapper>

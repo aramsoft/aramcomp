@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.uss.ion.isg.service.impl.IntnetSvcGuidanceMapper">
+
+    <select id="selectIntnetSvcGuidanceList" resultType="egovMap">
+        /* 구현 Sql */
+       	<![CDATA[
+            SELECT INTNET_SVC_ID			AS "intnetSvcId"
+            	 , INTNET_SVC_NM			AS "intnetSvcNm"
+            	 , REFLCT_AT				AS "reflctAt"
+            	 , LAST_UPDT_PNTTM			AS "regDate"
+              FROM COMTN_INTNET_SVC
+             WHERE 1=1
+        ]]>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+	    		<![CDATA[ AND INTNET_SVC_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+		</if>
+        <![CDATA[
+             ORDER BY FRST_REGIST_PNTTM DESC
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+    </select>
+
+    <select id="selectIntnetSvcGuidanceListCnt" resultType="int">
+        <![CDATA[
+            SELECT COUNT(*) totcnt
+              FROM COMTN_INTNET_SVC
+             WHERE 1=1
+        ]]>			
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+	    		<![CDATA[ AND INTNET_SVC_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+		</if>
+    </select>
+
+    <select id="selectIntnetSvcGuidance" resultType="intnetSvcGuidanceVO">
+        <![CDATA[
+            SELECT INTNET_SVC_ID
+                 , INTNET_SVC_NM
+                 , INTNET_SVC_DC
+                 , REFLCT_AT
+                 , LAST_UPDUSR_ID			AS "userId"
+                 , LAST_UPDT_PNTTM			AS "regDate"
+              FROM COMTN_INTNET_SVC
+             WHERE INTNET_SVC_ID = #{intnetSvcId}
+        ]]>
+    </select>
+
+    <insert id="insertIntnetSvcGuidance" >
+        <![CDATA[
+            INSERT INTO COMTN_INTNET_SVC (
+            		INTNET_SVC_ID
+            	  , INTNET_SVC_NM
+            	  , INTNET_SVC_DC
+            	  , REFLCT_AT
+            	  , FRST_REGISTER_ID
+            	  , FRST_REGIST_PNTTM
+            	  , LAST_UPDUSR_ID
+            	  , LAST_UPDT_PNTTM
+            ) VALUES (
+            		#{intnetSvcId}
+            	  , #{intnetSvcNm}
+            	  , #{intnetSvcDc}
+            	  , #{reflctAt}
+            	  , #{userId}
+            	  , sysdate()
+            	  , #{userId}
+            	  , sysdate()
+            )
+        ]]>
+    </insert>
+
+    <update id="updateIntnetSvcGuidance" >
+        <![CDATA[
+            UPDATE COMTN_INTNET_SVC
+               SET INTNET_SVC_NM 	= #{intnetSvcNm}
+                 , INTNET_SVC_DC 	= #{intnetSvcDc}
+                 , REFLCT_AT 		= #{reflctAt}
+                 , LAST_UPDUSR_ID 	= #{userId}
+                 , LAST_UPDT_PNTTM 	= sysdate()
+             WHERE INTNET_SVC_ID 	= #{intnetSvcId}
+        ]]>
+    </update>
+
+    <delete id="deleteIntnetSvcGuidance" >
+        <![CDATA[
+            DELETE 
+              FROM COMTN_INTNET_SVC
+             WHERE INTNET_SVC_ID = #{intnetSvcId}
+        ]]>
+    </delete>
+
+    <select id="selectIntnetSvcGuidanceResult" resultType="egovMap">
+        <![CDATA[
+            SELECT INTNET_SVC_ID			AS "intnetSvcId"
+            	 , INTNET_SVC_NM			AS "intnetSvcNm"
+                 , INTNET_SVC_DC			AS "intnetSvcDc"
+              FROM COMTN_INTNET_SVC
+             WHERE REFLCT_AT = 'Y'
+        ]]>
+    </select>
+
+</mapper>

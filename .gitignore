@@ -1,0 +1,25 @@
+
+# Created by https://www.gitignore.io/api/windows,eclipse,java
+
+
+### Eclipse ###
+.metadata
+target/
+
+# Eclipse Core
+.project
+.settings/
+
+# External tool builders
+.externalToolBuilders/
+
+
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
+
+# STS (Spring Tool Suite)
+.springBeans
+
+# PMD
+.pmd

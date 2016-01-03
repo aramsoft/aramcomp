@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.cop.clb.service.impl.ClubManageMapper">
+
+	<select id="selectClubListPortletByTrget" resultType="egovMap"  >
+		<![CDATA[
+			SELECT CLB_ID					AS "clbId"
+			     , CLB_NM					AS "clbNm"
+			  FROM COMTN_CLUB
+			 WHERE USE_AT = 'Y' 
+			   AND CMMNTY_ID = #{cmmntyId}
+		]]>
+	</select>				
+
+	<select id="selectClubListPortlet" resultType="egovMap"  >
+		<![CDATA[
+			SELECT a.CLB_ID					AS "clbId"
+			     , a.CLB_NM					AS "clbNm"
+			     , a.CMMNTY_ID				AS "cmmntyId"
+			  FROM COMTN_CLUB a
+				   LEFT OUTER JOIN COMTN_CMMNTY b
+				   		ON a.CMMNTY_ID = b.CMMNTY_ID		
+			 WHERE a.USE_AT = 'Y' 
+		]]>
+	</select>	
+
+	<!-- 목록조회  -->
+	<select id="selectClubInfs" resultType="egovMap"  >
+		<![CDATA[
+            SELECT *
+              FROM (
+            SELECT ROWNUM RNUM, ALL_LIST.*
+              FROM (
+        ]]>
+        /* 구현 Sql */
+		<![CDATA[
+			SELECT a.CLB_ID					AS "clbId"
+				 , a.CMMNTY_ID				AS "cmmntyId"
+				 , a.CLB_NM					AS "clbNm"
+				 , c.CMMNTY_NM				AS "cmmntyNm"
+				 , a.USE_AT					AS "useAt"
+				 , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
+				 , a.FRST_REGISTER_ID		AS "frstRegisterId"
+				 , b.USER_NM 				AS "frstRegisterNm"
+			  FROM COMTN_CLUB a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+						ON a.FRST_REGISTER_ID = b.ESNTL_ID
+				   LEFT OUTER JOIN COMTN_CMMNTY c
+						ON a.CMMNTY_ID = c.CMMNTY_ID
+			 WHERE 1=1
+		]]>
+   	    <if test='useAt != null and useAt != ""'>
+			   	<![CDATA[ 	AND a.USE_AT = #{useAt} ]]>
+		</if>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "CLB_NM"'>
+             	<![CDATA[ AND a.CLB_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "CMMNTY_NM"'>
+             	<![CDATA[ AND c.CMMNTY_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[			
+			 ORDER BY a.FRST_REGIST_PNTTM DESC 
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+                   ) ALL_LIST
+                   )
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+        ]]>			
+	</select>	
+	
+	<!-- 목록조회_게시물 총갯수  -->
+	<select id="selectClubInfsCnt" resultType="java.lang.Integer" >
+		<![CDATA[
+			SELECT COUNT(a.CLB_ID)
+			  FROM COMTN_CLUB a
+			  	   LEFT OUTER JOIN COMVN_USER_MASTER b
+						ON a.FRST_REGISTER_ID = b.ESNTL_ID
+				   LEFT OUTER JOIN COMTN_CMMNTY c
+						ON a.CMMNTY_ID = c.CMMNTY_ID
+			 WHERE 1=1
+		]]>
+   	    <if test='useAt != null and useAt != ""'>
+		   	 	<![CDATA[ 	AND a.USE_AT = #{useAt} ]]>
+		</if>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "CLB_NM"'>
+             	<![CDATA[ AND a.CLB_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "CMMNTY_NM"'>
+             	<![CDATA[ AND c.CMMNTY_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>	
+
+	<select id="selectClubInfsByTrgetId" resultType="egovMap"  >
+		<![CDATA[
+            SELECT *
+              FROM (
+            SELECT ROWNUM RNUM, ALL_LIST.*
+              FROM (
+        ]]>
+        /* 구현 Sql */
+		<![CDATA[
+			SELECT a.CLB_ID					AS "clbId"
+			     , a.CMMNTY_ID				AS "cmmntyId"
+			     , a.CLB_NM					AS "clbNm"
+			     , c.CMMNTY_NM				AS "cmmntyNm"
+			     , a.USE_AT					AS "useAt"
+			     , a.FRST_REGISTER_ID		AS "frstRegisterId"
+			     , b.USER_NM 				AS "frstRegisterNm"
+			     , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
+			  FROM COMTN_CLUB a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+						ON a.FRST_REGISTER_ID = b.ESNTL_ID
+				   LEFT OUTER JOIN COMTN_CMMNTY c
+						ON a.CMMNTY_ID = c.CMMNTY_ID
+			 WHERE a.CMMNTY_ID = #{trgetId}
+		]]>
+   	    <if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "CLB_NM"'>
+             	<![CDATA[ AND a.CLB_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[			
+			 ORDER BY a.FRST_REGIST_PNTTM DESC 
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+                   ) ALL_LIST
+                   )
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+		]]>				
+	</select>	
+	
+	<select id="selectClubInfsCntByTrgetId" resultType="int" >
+		<![CDATA[
+			SELECT COUNT(a.CLB_ID)
+			  FROM COMTN_CLUB a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+						ON a.FRST_REGISTER_ID = b.ESNTL_ID
+				   LEFT OUTER JOIN COMTN_CMMNTY c
+						ON a.CMMNTY_ID = c.CMMNTY_ID
+			 WHERE a.CMMNTY_ID = #{trgetId}
+		]]>
+   	    <if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "CLB_NM"'>
+             	<![CDATA[ AND a.CLB_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>	
+			
+	<select id="selectClubInfsByCmmntyId" resultType="egovMap"  >
+		<![CDATA[
+			SELECT a.CLB_ID					AS "clbId"
+			     , a.CMMNTY_ID				AS "cmmntyId"
+			     , a.CLB_NM					AS "clbNm"
+			     , c.CMMNTY_NM				AS "cmmntyNm"
+			     , a.USE_AT					AS "useAt"
+			     , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
+			     , a.FRST_REGISTER_ID		AS "frstRegisterId"
+			     , b.USER_NM 				AS "frstRegisterNm"
+			  FROM COMTN_CLUB a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+						ON a.FRST_REGISTER_ID = b.ESNTL_ID
+				   LEFT OUTER JOIN COMTN_CMMNTY c
+						ON a.CMMNTY_ID = c.CMMNTY_ID
+			 WHERE a.CMMNTY_ID = #{cmmntyId}
+			 ORDER BY a.FRST_REGIST_PNTTM DESC 
+		]]>				
+	</select>		
+
+	<select id="selectClubInfsCntByCmmntyId" resultType="int" >
+		<![CDATA[
+			SELECT COUNT(a.CLB_ID)
+			  FROM COMTN_CLUB a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+						ON a.FRST_REGISTER_ID = b.ESNTL_ID
+				   LEFT OUTER JOIN COMTN_CMMNTY c
+						ON a.CMMNTY_ID = c.CMMNTY_ID
+			 WHERE a.CMMNTY_ID = #{cmmntyId}
+		]]>
+	</select>
+				
+	<!-- 상세보기 -->
+	<select id="selectClubInf" resultType="clubVO">
+		<![CDATA[
+			SELECT a.CLB_ID
+			     , a.CMMNTY_ID
+			     , a.CLB_NM
+			     , e.CMMNTY_NM
+			     , a.CLB_INTRCN
+			     , a.USE_AT
+			     , c.TMPLAT_ID
+			     , c.TMPLAT_NM
+			     , a.FRST_REGISTER_ID		
+			     , b.USER_NM 				AS "frstRegisterNm"
+			     , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
+			  FROM COMTN_CLUB a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+				 		ON a.FRST_REGISTER_ID = b.ESNTL_ID
+				   LEFT OUTER JOIN COMTN_TMPLAT_INFO c
+						ON a.TMPLAT_ID = c.TMPLAT_ID
+				   LEFT OUTER JOIN COMTN_CMMNTY e
+						ON a.CMMNTY_ID = e.CMMNTY_ID
+			 WHERE a.CLB_ID = #{clbId}	
+		]]>	
+	</select>
+	
+	<!-- 입력 -->
+	<insert id="insertClubInf" >
+		<![CDATA[
+			INSERT INTO COMTN_CLUB (
+					CLB_ID
+				  ,	CMMNTY_ID
+				  ,	CLB_NM
+				  , CLB_INTRCN
+				  ,	REGIST_SE_CODE
+				  ,	TMPLAT_ID
+				  ,	USE_AT
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+			) VALUES (
+					#{clbId}
+				  ,	#{cmmntyId}
+				  ,	#{clbNm}
+				  , #{clbIntrcn}
+				  ,	#{registSeCode}
+				  ,	#{tmplatId}
+				  , #{useAt}
+				  , #{frstRegisterId}
+				  , SYSDATE
+				  , #{frstRegisterId} 
+				  , SYSDATE
+			)
+		]]>
+	</insert>
+
+	<!-- 수정 -->
+	<update id="updateClubInf" >
+		<![CDATA[
+			UPDATE COMTN_CLUB
+			   SET CLB_NM = #{clbNm}
+			     , CLB_INTRCN = #{clbIntrcn}
+			     , TMPLAT_ID = #{tmplatId}
+			     , USE_AT = #{useAt}
+			     , LAST_UPDUSR_ID = #{lastUpdusrId}
+			     , LAST_UPDT_PNTTM = SYSDATE
+			 WHERE CLB_ID = #{clbId}		
+		]]>
+	</update>
+	
+	<!-- 삭제 -->
+	<update id="deleteClubInf" >
+		<![CDATA[
+			UPDATE COMTN_CLUB
+			   SET USE_AT = 'N'
+				 , LAST_UPDUSR_ID = #lastUpdusrId#
+				 , LAST_UPDT_PNTTM = SYSDATE
+			 WHERE CLB_ID = #{clbId}
+		]]>
+	</update>		
+	
+	<select id="selectClubUseBBSInfs" resultType="egovMap" >
+		<![CDATA[
+			SELECT b.BBS_ID				AS "bbsId"
+			     , b.BBS_NM				AS "bbsNm"
+			  FROM COMTN_BBS_USE a
+		    	   LEFT OUTER JOIN COMTN_BBS_MASTER  b
+						ON a.BBS_ID = b.BBS_ID
+			 WHERE a.TRGET_ID = #{clbId}
+			   AND a.USE_AT = 'Y'	
+		]]>
+	</select>
+
+	<select id="selectCmmntyInfByClbId" resultType="clubVO" >
+		<![CDATA[
+			SELECT CMMNTY_ID
+			     , CMMNTY_NM
+			  FROM COMTN_CMMNTY
+			 WHERE CMMNTY_ID = #{trgetId}
+		]]>	
+	</select>				
+
+	<select id="selectClubUserInf"  resultType="clubUserVO" >
+		<![CDATA[			
+			SELECT OPRTR_AT
+			     , USE_AT 
+			  FROM COMTN_CLUB_USER
+			 WHERE EMPLYR_ID = #{emplyrId} 
+			   AND CLB_ID =  #{clbId}
+		]]>
+	</select>
+	
+	<select id="checkExistUser"  resultType="int">
+		<![CDATA[
+			SELECT COUNT(CLB_ID)
+			  FROM COMTN_CLUB_USER
+			 WHERE EMPLYR_ID = #{emplyrId} 
+			   AND CLB_ID = #{clbId}
+		]]>
+	</select>				
+
+	<insert id="insertClubUserInf" >
+		<![CDATA[
+			INSERT INTO COMTN_CLUB_USER	(
+					CLB_ID
+				  , CMMNTY_ID
+				  ,	EMPLYR_ID
+				  ,	SBSCRB_DE
+				  ,	OPRTR_AT
+				  ,	USE_AT
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+			) VALUES (
+					#{clbId}
+				  ,	#{cmmntyId}
+				  ,	#{emplyrId}
+				  ,	SYSDATE
+				  ,	#{oprtrAt}
+				  ,	#{useAt}
+				  , #{frstRegisterId}
+				  , SYSDATE
+				  , #{frstRegisterId} 
+				  , SYSDATE
+			)		
+		]]>
+	</insert>
+
+	<update id="updateClubUserInf" >
+		<![CDATA[
+			UPDATE COMTN_CLUB_USER
+			   SET OPRTR_AT = #{oprtrAt}
+			     , USE_AT = #{useAt}
+			     , SECSN_DE = #{secsnDe}
+			     , LAST_UPDUSR_ID = #{lastUpdusrId}
+			     , LAST_UPDT_PNTTM = SYSDATE
+			 WHERE CLB_ID = #{clbId}	
+			   AND EMPLYR_ID = #{emplyrId}
+		]]>
+	</update>	
+		
+	<update id="deleteClubUserInf" >
+		<![CDATA[
+			UPDATE COMTN_CLUB_USER
+			   SET USE_AT = 'N'
+			     , OPRTR_AT = 'N'
+			     , SECSN_DE = #{secsnDe}
+			     , LAST_UPDUSR_ID = #{lastUpdusrId}
+			     , LAST_UPDT_PNTTM = SYSDATE
+			 WHERE CLB_ID = #{clbId}		
+			   AND EMPLYR_ID = #{emplyrId}
+		]]>
+	</update>
+
+	<!-- 제거 -->
+	<update id="eraseClubUserInf" >
+		<![CDATA[
+			DELETE 
+			  FROM COMTN_CLUB_USER
+			 WHERE CLB_ID = #{clbId}	
+			   AND EMPLYR_ID = #{emplyrId}
+		]]>
+	</update>	
+		
+	<update id="deleteAllClubUserInf" >
+		<![CDATA[
+			UPDATE COMTN_CLUB_USER
+			   SET USE_AT = 'N'
+			     , OPRTR_AT = 'N'
+			     , SECSN_DE = #{secsnDe}
+			     , LAST_UPDUSR_ID = #{lastUpdusrId}
+			     , LAST_UPDT_PNTTM = SYSDATE
+			 WHERE CLB_ID = #{clbId}		
+			   AND USE_AT = 'Y'
+		]]>
+	</update>
+
+</mapper>
+

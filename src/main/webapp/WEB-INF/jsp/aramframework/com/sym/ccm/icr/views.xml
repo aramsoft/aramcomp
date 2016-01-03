@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/sym/ccm/icr/InsttCodeRecptnList" extends="default">
+    <put-attribute name="title" value="기관코드수신 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sym/ccm/icr/InsttCodeRecptnList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/sym/ccm/icr/InsttCodeRecptnDetail" extends="default">
+    <put-attribute name="title" value="기관코드수신 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sym/ccm/icr/InsttCodeRecptnDetail.jsp" />
+  </definition>
+
+  <definition name="aramframework/com/sym/ccm/icr/InsttCodeRecptnRegist" extends="default">
+    <put-attribute name="title" value="기관코드수신 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sym/ccm/icr/InsttCodeRecptnRegist.jsp" />
+  </definition>
+  
+</tiles-definitions>

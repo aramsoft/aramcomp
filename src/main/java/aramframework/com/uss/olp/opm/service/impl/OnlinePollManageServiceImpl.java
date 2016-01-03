@@ -1,0 +1,155 @@
+package aramframework.com.uss.olp.opm.service.impl;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.uss.olp.opm.service.OnlinePollManageService;
+import aramframework.com.uss.olp.opm.service.OnlinePollItemVO;
+import aramframework.com.uss.olp.opm.service.OnlinePollManageVO;
+import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import egovframework.rte.fdl.cmmn.exception.FdlException;
+import egovframework.rte.fdl.idgnr.EgovIdGnrService;
+import egovframework.rte.psl.dataaccess.util.EgovMap;
+
+/**
+ * 온라인POLL관리를 처리하는 ServiceImpl Class 구현
+ * 
+ * @author 아람컴포넌트 조헌철
+ * @since 2014.11.11
+ * @version 1.0
+ * @see
+ *
+ * <pre>
+ * 
+ * << 개정이력(Modification Information) >>
+ *   
+ *   수정일            수정자          수정내용
+ *   -------     ------   ---------------------------
+ *   2014.11.11  조헌철         최초 생성
+ * 
+ * </pre>
+ */
+
+@Service("onlinePollManageService")
+public class OnlinePollManageServiceImpl extends EgovAbstractServiceImpl implements OnlinePollManageService {
+
+	@Resource(name = "onlinePollManageMapper")
+	private OnlinePollManageMapper onlinePollManageMapper;	
+
+	@Resource(name = "onlinePollManageIdGnrService")
+	private EgovIdGnrService idgenService;
+
+	@Resource(name = "onlinePollItemIdGnrService")
+	private EgovIdGnrService idgenServiceOnlinePollItem;
+
+	/**
+	 * 온라인POLL관리를(을) 목록을 조회 한다.
+	 * 
+	 * @param onlinePollManageVO
+	 */
+	public List<EgovMap> selectOnlinePollManageList(OnlinePollManageVO onlinePollManageVO) {
+		return onlinePollManageMapper.selectOnlinePollManageList(onlinePollManageVO);
+	}
+
+	/**
+	 * 온라인POLL관리를(을) 목록 전체 건수를(을) 조회한다.
+	 * 
+	 * @param onlinePollManageVO
+	 */
+	public int selectOnlinePollManageListCnt(OnlinePollManageVO onlinePollManageVO) {
+		return (Integer) onlinePollManageMapper.selectOnlinePollManageListCnt(onlinePollManageVO);
+	}
+
+	/**
+	 * 온라인POLL관리를(을) 상세조회 한다.
+	 * 
+	 * @param onlinePollManageVO
+	 */
+	public OnlinePollManageVO selectOnlinePollManageDetail(OnlinePollManageVO onlinePollManageVO) {
+		OnlinePollManageVO resultVo = onlinePollManageMapper.selectOnlinePollManageDetail(onlinePollManageVO);
+		// deep copy
+		BeanUtil.copyPropertiesCore(resultVo, onlinePollManageVO); 
+		return resultVo;
+	}
+
+	/**
+	 * 온라인POLL관리를(을) 등록한다.
+	 * 
+	 * @param onlinePollManageVO
+	 */
+	public void insertOnlinePollManage(OnlinePollManageVO onlinePollManageVO) {
+		try {
+			onlinePollManageVO.setPollId(idgenService.getNextStringId());
+		} catch (FdlException e) {
+			throw new RuntimeException(e);
+		}
+		onlinePollManageMapper.insertOnlinePollManage(onlinePollManageVO);
+	}
+
+	/**
+	 * 온라인POLL관리를(을) 수정한다.
+	 * 
+	 * @param onlinePollManageVO
+	 */
+	public void updateOnlinePollManage(OnlinePollManageVO onlinePollManageVO) {
+		onlinePollManageMapper.updateOnlinePollManage(onlinePollManageVO);
+	}
+
+	/**
+	 * 온라인POLL관리를(을) 삭제한다.
+	 * 
+	 * @param onlinePollManageVO
+	 */
+	public void deleteOnlinePollManage(OnlinePollManageVO onlinePollManageVO) {
+		onlinePollManageMapper.deleteOnlinePollResultAll(onlinePollManageVO);
+		onlinePollManageMapper.deleteOnlinePollItemAll(onlinePollManageVO);
+		onlinePollManageMapper.deleteOnlinePollManage(onlinePollManageVO);
+	}
+
+	/**
+	 * 온라인POLL항목를(을) 조회한다.
+	 * 
+	 * @param onlinePollItemVO
+	 */
+	public List<EgovMap> selectOnlinePollItemList(OnlinePollItemVO onlinePollItemVO) {
+		return onlinePollManageMapper.selectOnlinePollItemList(onlinePollItemVO);
+	}
+
+	/**
+	 * 온라인POLL항목를(을) 등록한다.
+	 * 
+	 * @param onlinePollItemVO
+	 */
+	public void insertOnlinePollItem(OnlinePollItemVO onlinePollItemVO) {
+		try {
+			onlinePollItemVO.setPollIemId(idgenServiceOnlinePollItem.getNextStringId());
+		} catch (FdlException e) {
+			throw new RuntimeException(e);
+		}
+		onlinePollManageMapper.insertOnlinePollItem(onlinePollItemVO);
+	}
+
+	/**
+	 * 온라인POLL항목를(을) 수정한다.
+	 * 
+	 * @param onlinePollItemVO
+	 */
+	public void updateOnlinePollItem(OnlinePollItemVO onlinePollItemVO) {
+		onlinePollManageMapper.updateOnlinePollItem(onlinePollItemVO);
+	}
+
+	/**
+	 * 온라인POLL항목를(을) 삭제한다.
+	 * 
+	 * @param onlinePollItemVO
+	 */
+	public void deleteOnlinePollItem(OnlinePollItemVO onlinePollItemVO) {
+		onlinePollManageMapper.deleteOnlinePollResultIemid(onlinePollItemVO);
+		onlinePollManageMapper.deleteOnlinePollItem(onlinePollItemVO);
+	}
+	
+}

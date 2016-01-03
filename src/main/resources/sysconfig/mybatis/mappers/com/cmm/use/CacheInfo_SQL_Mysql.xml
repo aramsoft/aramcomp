@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.cmm.service.impl.CacheInfoMapper">
+
+	<!-- 상세보기 -->
+	<select id="selectCacheInfo" resultType="cacheVO" >
+		<![CDATA[ 
+			SELECT CACHE_GROUP
+				 , CACHE_KEY
+				 , CACHE_VALUE
+			  FROM ARMTN_CACHE_INFO
+			 WHERE CACHE_GROUP = #{cacheGroup}
+			   AND CACHE_KEY   = #{cacheKey}
+		]]>
+	</select>
+	
+	<!-- 입력 -->
+	<insert id="insertCacheInfo" >
+		<![CDATA[
+			INSERT INTO ARMTN_CACHE_INFO (
+					CACHE_GROUP
+				  , CACHE_KEY
+				  ,	CACHE_VALUE
+			) VALUES ( 
+					#{cacheGroup}
+				  , #{cacheKey}
+				  ,	#{cacheValue}
+			)			
+		]]>
+	</insert>
+	
+	<!-- 수정 -->
+	<update id="updateCacheInfo" >
+		<![CDATA[
+			UPDATE ARMTN_CACHE_INFO
+			   SET USE_AT = #{cacheValue}
+			 WHERE CACHE_GROUP = #{cacheGroup}
+			   AND CACHE_KEY   = #{cacheKey}
+		]]>
+	</update>
+	
+</mapper>            

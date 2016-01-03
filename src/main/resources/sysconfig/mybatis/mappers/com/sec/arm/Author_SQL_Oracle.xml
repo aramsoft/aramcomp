@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.sec.arm.service.impl.AuthorMapper">
+
+	<!-- 전체조회  -->
+    <select id="selectAuthorAllList" resultType="egovMap">
+		<![CDATA[
+            SELECT AUTHOR_CODE				
+            	 , AUTHOR_NM				
+            	 , AUTHOR_DC				
+            	 , AUTHOR_CREAT_DE			
+              FROM COMTN_AUTHOR_INFO
+        ]]>
+    </select>
+    
+	<!-- 목록조회  -->
+    <select id="selectAuthorList" resultType="egovMap">
+		<![CDATA[
+            SELECT *
+              FROM (
+            SELECT ROWNUM RNUM, ALL_LIST.*
+              FROM (
+        ]]>
+        /* 구현 Sql */
+        <![CDATA[
+            SELECT AUTHOR_CODE				
+            	 , AUTHOR_NM				
+            	 , AUTHOR_DC				
+            	 , AUTHOR_CREAT_DE			
+              FROM COMTN_AUTHOR_INFO
+             WHERE 1=1
+        ]]>              
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+        		<![CDATA[ AND AUTHOR_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+		</if>
+        <![CDATA[            
+            ORDER BY AUTHOR_CREAT_DE DESC
+        ]]>                 
+        /* 구현 Sql */
+        <![CDATA[
+                   ) ALL_LIST
+                   )
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+        ]]>			
+    </select>
+
+	<!-- 목록조회_게시물 총갯수  -->
+    <select id="selectAuthorListCnt" resultType="int">
+		<![CDATA[
+            SELECT COUNT(*) totcnt
+              FROM COMTN_AUTHOR_INFO
+             WHERE 1=1
+        ]]>			
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+        		<![CDATA[ AND AUTHOR_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+		</if>
+    </select>
+    
+	<!-- 상세보기 -->
+    <select id="selectAuthor" resultType="authorVO">
+        <![CDATA[
+            SELECT AUTHOR_CODE				
+            	 , AUTHOR_NM				
+            	 , AUTHOR_DC				
+            	 , AUTHOR_CREAT_DE			
+              FROM COMTN_AUTHOR_INFO 
+             WHERE AUTHOR_CODE=#{authorCode}
+        ]]>
+    </select>
+    
+	<!-- 입력 -->
+    <insert id="insertAuthor" >
+        <![CDATA[
+            INSERT INTO COMTN_AUTHOR_INFO ( 
+            		AUTHOR_CODE
+            	  ,	AUTHOR_NM
+            	  ,	AUTHOR_DC
+            	  ,	AUTHOR_CREAT_DE 
+            ) VALUES ( 
+            		#{authorCode}
+            	  ,	#{authorNm}
+            	  ,	#{authorDc}
+            	  ,	SYSDATE
+            )
+        ]]>  
+    </insert>
+
+	<!-- 수정 -->
+    <update id="updateAuthor" >
+        <![CDATA[
+            UPDATE COMTN_AUTHOR_INFO 
+               SET AUTHOR_NM=#{authorNm}
+                 , AUTHOR_DC=#{authorDc}
+             WHERE AUTHOR_CODE=#{authorCode}
+        ]]>
+    </update>
+    
+	<!-- 삭제 -->
+    <delete id="deleteAuthor">
+        <![CDATA[
+            DELETE 
+              FROM COMTN_AUTHOR_INFO 
+             WHERE AUTHOR_CODE=#{authorCode}
+        ]]>
+    </delete>
+    
+</mapper>

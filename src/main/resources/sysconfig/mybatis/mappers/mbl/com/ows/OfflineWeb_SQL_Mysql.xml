@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.mbl.com.ows.service.impl.OfflineWebMapper">
+
+	<!-- 오프라인  서비스 목록 조회 -->
+	<select id="selectOfflineWebList" resultType="egovMap">
+        /* 구현 Sql */
+       <![CDATA[
+			SELECT A.SN
+			     , A.MBER_ID
+			     , A.OFFLINE_SJ
+			     , A.OFFLINE_CN
+			     , DATE_FORMAT(A.CREAT_DT, '%Y%m%d') AS CREAT_DT
+			     , DATE_FORMAT(A.UPDT_DT, '%Y%m%d') AS UPDT_DT
+			  FROM MBLTN_OFFLINE_WEB A
+			 WHERE 1 = 1
+		]]>
+   	    <if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "MBER_ID"'>
+             	<![CDATA[ AND A.MBER_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "OFFLINE_SJ"'>
+             	<![CDATA[ AND A.OFFLINE_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "OFFLINE_ALL"'>
+             	<![CDATA[ AND ((A.MBER_ID LIKE '%' || #{searchKeyword} || '%') 
+		       			    OR (A.OFFLINE_SJ LIKE '%' || #{searchKeyword} || '%') 
+		      		        OR (A.OFFLINE_CN LIKE '%' || #{searchKeyword} || '%'))	]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[
+		     ORDER BY SN DESC
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+	</select>
+	
+	<!-- 오프라인 서비스 글 목록 Total count -->
+	<select id="selectOfflineWebListCnt" resultType="int">
+		<![CDATA[
+			SELECT COUNT(A.SN) AS TOT_CNT
+			  FROM MBLTN_OFFLINE_WEB A
+			 WHERE 1 = 1		   
+		]]>
+   	    <if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "MBER_ID"'>
+             	<![CDATA[ AND A.MBER_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "OFFLINE_SJ"'>
+             	<![CDATA[ AND A.OFFLINE_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "OFFLINE_ALL"'>
+             	<![CDATA[ AND ((A.MBER_ID LIKE '%' || #{searchKeyword} || '%') 
+		       			    OR (A.OFFLINE_SJ LIKE '%' || #{searchKeyword} || '%') 
+		      		        OR (A.OFFLINE_CN LIKE '%' || #{searchKeyword} || '%'))	]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+	
+	<!-- 오프라인  서비스 글 상세 조회 -->
+	<select id="selectOfflineWeb" resultType="offlineWebVO">
+		<![CDATA[		
+			SELECT A.SN
+			     , A.MBER_ID
+			     , A.OFFLINE_SJ			AS "offlineWebSj"
+			     , A.OFFLINE_CN			AS "offlineWebCn"
+			     , DATE_FORMAT(A.CREAT_DT, '%Y%m%d') 	AS "creatDt"
+			     , DATE_FORMAT(A.UPDT_DT, '%Y%m%d') 	AS "updtDt"
+			  FROM MBLTN_OFFLINE_WEB A
+			 WHERE 1 = 1
+			   AND A.SN = #{sn}
+		]]>
+	</select>
+	
+	<!-- 오프라인  서비스 신규 일련번호 -->
+	<select id="selectOfflineWebNewSn" resultType="int">
+		<![CDATA[
+		    SELECT CASE WHEN A.CNT = 0 THEN 1
+                        ELSE (SELECT MAX(A.SN) + 1 
+                                FROM MBLTN_OFFLINE_WEB A
+                              )
+                   END AS SN 
+  		      FROM (
+  		            SELECT COUNT(SN) AS CNT
+		              FROM MBLTN_OFFLINE_WEB
+                   ) A
+		]]>
+	</select>	
+
+	<!-- 오프라인  서비스 글 등록 -->
+	<insert id="insertOfflineWeb">
+		<![CDATA[	
+			INSERT INTO MBLTN_OFFLINE_WEB (
+					SN
+				  , MBER_ID
+				  , OFFLINE_SJ
+				  ,	OFFLINE_CN
+				  ,	CREAT_DT
+				  ,	UPDT_DT
+			) VALUES (
+					#{sn}
+				  ,	#{mberId}
+				  ,	#{offlineWebSj}
+				  ,	#{offlineWebCn}
+				  ,	sysdate()
+				  ,	sysdate()
+			)
+		]]>
+	</insert>
+	
+	<!-- 오프라인 서비스 글 수정 -->
+	<update id="updateOfflineWeb">
+		<![CDATA[
+			UPDATE MBLTN_OFFLINE_WEB
+			   SET MBER_ID 		= #{mberId}
+			     , OFFLINE_SJ 	= #{offlineWebSj}
+			     , OFFLINE_CN 	= #{offlineWebCn}
+			     , UPDT_DT 		= sysdate()
+			 WHERE SN=#{sn}	   
+		]]>
+      	<if test='mberId != null and mberId != ""'>
+ 			   <![CDATA[ AND MBER_ID = #{mberId} ]]>
+		</if>
+	</update>		
+
+	<!-- 오프라인 서비스 글 삭제 -->
+	<delete id="deleteOfflineWeb">
+		<![CDATA[
+			DELETE 
+			  FROM MBLTN_OFFLINE_WEB
+			 WHERE SN = #{sn}
+		]]>
+      	<if test='mberId != null and mberId != ""'>
+ 			   <![CDATA[ AND MBER_ID = #{mberId} ]]>
+		</if>
+	</delete>		
+	
+</mapper>

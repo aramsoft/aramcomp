@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/mbl/com/syn/SyncList" extends="default">
+    <put-attribute name="title" value="동기화서비스 목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/mbl/com/syn/SyncList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/mbl/com/syn/SyncDetail" extends="default">
+    <put-attribute name="title" value="동기화서비스 상세화면" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/mbl/com/syn/SyncDetail.jsp" />
+  </definition>
+  
+  <definition name="aramframework/mbl/com/syn/SyncRegist" extends="default">
+    <put-attribute name="title" value="동기화서비스 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/mbl/com/syn/SyncRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/mbl/com/syn/SyncEdit" extends="default">
+    <put-attribute name="title" value="동기화서비스 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/mbl/com/syn/SyncEdit.jsp" />
+  </definition>
+  
+</tiles-definitions>

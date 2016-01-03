@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.dam.mgm.service.impl.KnoManagementMapper">
+
+	<select id="selectKnoManagementList" resultType="egovMap">
+        /* 구현 Sql */
+		<![CDATA[
+			SELECT A.KNWLDG_ID				AS "knoId" 	     		
+				 , A.KNWLDG_NM				AS "knoNm" 
+				 , C.ORGNZT_NM				AS "orgnztNm" 
+				 , B.KNWLDG_TY_NM			AS "knoTypeNm" 			 
+			     , D.USER_NM				AS "userNm" 
+			     , A.EVL_DE					AS "appYmd" 
+			  FROM COMTN_DAM_KNOIFM A
+				   LEFT OUTER JOIN COMTN_DAM_MAP_KNO B
+						ON A.KNWLDG_TY_CODE = B.KNWLDG_TY_CODE
+				   LEFT OUTER JOIN COMTN_DAM_MAP_TEAM C
+						ON B.ORGNZT_ID = C.ORGNZT_ID
+				   LEFT OUTER JOIN COMVN_USER_MASTER D
+						ON A.FRST_REGISTER_ID = D.ESNTL_ID
+			 WHERE A.OTHBC_AT = 'Y'
+			   AND A.KNWLDG_EVL = '1'
+		]]>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "KNWLDG_NM"'>
+                 <![CDATA[ AND A.KNWLDG_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "USER_NM"'>
+                 <![CDATA[ AND D.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+	</select>
+
+	<select id="selectKnoManagementListCnt" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) as totcnt 
+			  FROM COMTN_DAM_KNOIFM A
+				   LEFT OUTER JOIN COMTN_DAM_MAP_KNO B
+						ON A.KNWLDG_TY_CODE = B.KNWLDG_TY_CODE
+				   LEFT OUTER JOIN COMTN_DAM_MAP_TEAM C
+						ON B.ORGNZT_ID = C.ORGNZT_ID
+				   LEFT OUTER JOIN COMVN_USER_MASTER D
+						ON A.FRST_REGISTER_ID = D.ESNTL_ID
+			 WHERE A.OTHBC_AT = 'Y'
+			   AND A.KNWLDG_EVL = '1'
+		]]>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "KNWLDG_NM"'>
+                 <![CDATA[ AND A.KNWLDG_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "USER_NM"'>
+                 <![CDATA[ AND D.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+
+	<select id="selectKnoManagement" resultType="knoManagementVO">
+		<![CDATA[
+			SELECT C.ORGNZT_NM				AS "orgnztNm"
+			     , C.ORGNZT_ID				AS "orgnztId"
+			     , B.KNWLDG_TY_NM			AS "knoTypeNm"			     			
+			     , B.KNWLDG_TY_CODE			AS "knoTypeCd"
+				 , A.KNWLDG_ID				AS "knoId"			     
+				 , A.KNWLDG_NM				AS "knoNm"			     
+			     , A.KNWLDG_CN				AS "knoCn"
+			     , D.USER_NM    			AS "userNm"
+                 , A.OTHBC_AT				AS "othbcAt"              
+                 , A.ATCH_FILE_ID			AS "atchFileId"
+                 , A.EVL_DE					AS "appYmd"
+                 , (select a.user_nm 
+                      from COMVN_USER_MASTER a
+                         , COMTN_DAM_KNOIFM b 
+                     where a.ESNTL_ID = b.EXPERT_ID 
+                       and b.KNWLDG_ID = #{knoId})   AS "speNm"
+				 , A.DSUSE_DE				AS "junkYmd"
+			     , A.KNWLDG_EVL				AS "knoAps"
+			     , A.FRST_REGISTER_ID		AS "frstRegisterId"
+			     , A.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
+			     , A.LAST_UPDUSR_ID			AS "lastUpdusrId"
+			     , A.LAST_UPDT_PNTTM		AS "lastUpdusrPnttm"			     
+			  FROM COMTN_DAM_KNOIFM A
+				   LEFT OUTER JOIN COMTN_DAM_MAP_KNO B
+						ON A.KNWLDG_TY_CODE = B.KNWLDG_TY_CODE
+				   LEFT OUTER JOIN COMTN_DAM_MAP_TEAM C
+						ON B.ORGNZT_ID = C.ORGNZT_ID
+				   LEFT OUTER JOIN COMVN_USER_MASTER D
+						ON A.FRST_REGISTER_ID = D.ESNTL_ID
+			 WHERE A.OTHBC_AT = 'Y'				
+     		   AND A.KNWLDG_ID = #{knoId}		
+		]]>
+	</select>
+
+	<update id="updateKnoManagement">
+		<![CDATA[
+            UPDATE COMTN_DAM_KNOIFM 
+               SET DSUSE_DE          	= #{junkYmd}
+                 , KNWLDG_EVL           = #{knoAps}            
+                 , LAST_UPDUSR_ID    	= #{lastUpdusrId}               
+                 , LAST_UPDT_PNTTM 		= sysdate()
+             WHERE OTHBC_AT 		  	= 'Y'	
+               AND KNWLDG_ID       	  	= #{knoId} 
+		]]>
+	</update>
+
+</mapper>
+          

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/utl/sys/dbm/DbMntrngList" extends="default">
+    <put-attribute name="title" value="DB서비스모니터링 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/utl/sys/dbm/DbMntrngList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/utl/sys/dbm/DbMntrngDetail" extends="default">
+    <put-attribute name="title" value="DB서비스모니터링 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/utl/sys/dbm/DbMntrngDetail.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/utl/sys/dbm/DbMntrngRegist" extends="default">
+    <put-attribute name="title" value="DB서비스모니터링 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/utl/sys/dbm/DbMntrngRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/utl/sys/dbm/DbMntrngEdit" extends="default">
+    <put-attribute name="title" value="DB서비스모니터링 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/utl/sys/dbm/DbMntrngEdit.jsp" />
+  </definition>
+
+  <definition name="aramframework/com/utl/sys/dbm/DbMntrngLogList" extends="default">
+    <put-attribute name="title" value="DB서비스모니터링로그 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/utl/sys/dbm/DbMntrngLogList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/utl/sys/dbm/DbMntrngLogDetail" extends="default">
+    <put-attribute name="title" value="DB서비스모니터링로그 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/utl/sys/dbm/DbMntrngLogDetail.jsp" />
+  </definition>
+  
+</tiles-definitions>

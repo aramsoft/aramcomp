@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.utl.sys.htm.service.impl.HttpMntrngMapper">
+
+	<select id="selectHttpMntrngList" resultType="httpMntrngVO">
+        /* 구현 Sql */
+       	<![CDATA[
+			SELECT A.SYS_ID
+			     , A.WEBSVC_KND				WEB_KIND
+				 , A.SITE_URL
+				 , B.CODE_NM 				HTTP_STTUS_CD
+			     , DATE_FORMAT(A.CREAT_DT, '%Y-%m-%d %H:%i:%S') CREAT_DT				 
+			     , A.MNGR_NM
+			     , A.MNGR_EMAIL_ADRES		MNGR_EMAIL_ADDR
+		 	  FROM COMTN_HTTP_MON A
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM072') B
+				       	ON A.HTTP_STTUS_CODE = B.CODE
+			 WHERE 1 = 1
+		]]>
+      	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "MNGR_NM"'>
+                <![CDATA[ AND A.MNGR_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "HTTP_STTUS"'>
+                <![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[
+			 ORDER BY A.FRST_REGIST_PNTTM DESC
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+	</select>	
+
+	<select id="selectHttpMntrngListCnt" resultType="int">
+		<![CDATA[
+			SELECT COUNT(A.SYS_ID) as totcnt 
+			  FROM COMTN_HTTP_MON A
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM072') B
+				       	ON A.HTTP_STTUS_CODE = B.CODE
+			 WHERE 1 = 1
+		]]>
+      	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "MNGR_NM"'>
+                <![CDATA[ AND A.MNGR_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "HTTP_STTUS"'>
+                <![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+
+	<select id="selectHttpMntrngDetail" resultType="httpMntrngVO">
+		<![CDATA[
+            SELECT SYS_ID
+            	 , WEBSVC_KND			WEB_KIND
+            	 , SITE_URL
+				 , DATE_FORMAT(CREAT_DT, '%Y-%m-%d %H:%i:%S') CREAT_DT				           	 
+			     , MNGR_NM
+                 , MNGR_EMAIL_ADRES		MNGR_EMAIL_ADDR
+            	 , FRST_REGISTER_ID
+			     , FRST_REGIST_PNTTM
+            	 , LAST_UPDUSR_ID
+			     , LAST_UPDT_PNTTM
+              FROM COMTN_HTTP_MON
+             WHERE SYS_ID = #{sysId}
+		]]>
+	</select>
+
+	<insert id="insertHttpMntrng">
+		<![CDATA[
+		    INSERT INTO  COMTN_HTTP_MON (  
+		    	   SYS_ID
+		         , WEBSVC_KND
+		         , SITE_URL
+		         , HTTP_STTUS_CODE
+		         , CREAT_DT		         
+		         , MNGR_NM
+		         , MNGR_EMAIL_ADRES
+			     , FRST_REGISTER_ID
+			     , FRST_REGIST_PNTTM
+		         , LAST_UPDUSR_ID			     	         
+		         , LAST_UPDT_PNTTM
+		    ) VALUES (  
+		    	   #{sysId}
+		         , #{webKind}
+		         , #{siteUrl}
+		         , '01'
+		         , sysdate()		         
+		         , #{mngrNm}
+		         , #{mngrEmailAddr}
+				 , #{frstRegisterId}
+				 , sysdate()
+				 , #{frstRegisterId}
+				 , sysdate()
+		    ) 
+		]]>
+	</insert>
+
+	<update id="updateHttpMntrng">
+		<![CDATA[
+            UPDATE COMTN_HTTP_MON 
+               SET WEBSVC_KND         = #{webKind}
+                 , SITE_URL           = #{siteUrl}
+               	 , MNGR_NM        	  = #{mngrNm}
+                 , MNGR_EMAIL_ADRES   = #{mngrEmailAddr}
+                 , LAST_UPDUSR_ID     = #{lastUpdusrId}
+                 , LAST_UPDT_PNTTM    = sysdate()
+             WHERE SYS_ID             = #{sysId}
+		]]>
+	</update>
+
+	<delete id="deleteHttpMntrng">
+		<![CDATA[
+            DELETE 
+              FROM COMTN_HTTP_MON 
+             WHERE SYS_ID = #{sysId} 
+		]]>
+	</delete>	
+	
+	<update id="updateHttpMntrngSttus" >
+		<![CDATA[
+            UPDATE COMTN_HTTP_MON 
+               SET HTTP_STTUS_CODE   = #{httpSttusCd}
+                 , CREAT_DT          = STR_TO_DATE(#{creatDt}, '%Y%m%d%H%i%S')
+                 , LAST_UPDUSR_ID    = #{lastUpdusrId}
+                 , LAST_UPDT_PNTTM 	 = sysdate()
+             WHERE SYS_ID            = #{sysId}
+		]]>
+	</update>	
+
+	<select id="selectHttpMntrngLogList" resultType="httpMntrngLogVO">
+        /* 구현 Sql */
+       	<![CDATA[
+			SELECT A.LOG_ID
+			     , A.SYS_ID
+				 , A.WEBSVC_KND	 			WEB_KIND
+				 , B.SITE_URL
+				 , C.CODE_NM 				HTTP_STTUS_CD
+			     , DATE_FORMAT(A.CREAT_DT, '%Y-%m-%d %H:%i:%S') CREAT_DT
+				 , A.LOG_INFO
+			     , A.MNGR_NM
+			     , A.MNGR_EMAIL_ADRES		MNGR_EMAIL_ADDR    
+			  FROM COMTN_HTTP_MON_LOG A
+				   LEFT OUTER JOIN COMTN_HTTP_MON B 
+					    ON  A.SYS_ID = B.SYS_ID
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM072') C
+				       	ON A.HTTP_STTUS_CODE = C.CODE
+			 WHERE 1=1
+		]]>
+        <if test='searchBgnDt != null and searchBgnDt != ""'>
+				<![CDATA[ AND DATE_FORMAT(CREAT_DT, '%Y-%m-%d %H%i%S') BETWEEN #{searchBgnDt} AND #{searchEndDt} ]]>			
+		</if>
+      	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "WEBSVC_KND"'>
+                <![CDATA[ AND A.WEBSVC_KND LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "HTTP_STTUS"'>
+                <![CDATA[ AND C.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[
+			 ORDER BY A.CREAT_DT DESC
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+	</select>	
+
+	<select id="selectHttpMntrngLogListCnt" resultType="int">
+		<![CDATA[
+			SELECT COUNT(A.SYS_ID) as totcnt 
+			  FROM COMTN_HTTP_MON_LOG A
+				   LEFT OUTER JOIN COMTN_HTTP_MON B 
+					    ON  A.SYS_ID = B.SYS_ID
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM072') C
+				       	ON A.HTTP_STTUS_CODE = C.CODE
+			 WHERE 1=1
+		]]>
+        <if test='searchBgnDt != null and searchBgnDt != ""'>
+				<![CDATA[ AND DATE_FORMAT(CREAT_DT, '%Y-%m-%d %H%i%S') BETWEEN #{searchBgnDt} AND #{searchEndDt} ]]>			
+		</if>
+      	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "WEBSVC_KND"'>
+                <![CDATA[ AND A.WEBSVC_KND LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "HTTP_STTUS"'>
+                <![CDATA[ AND C.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+	
+	<select id="selectHttpMntrngDetailLog" resultType="httpMntrngLogVO">
+		<![CDATA[
+            SELECT A.LOG_ID
+                 , A.SYS_ID
+            	 , A.WEBSVC_KND				WEB_KIND
+            	 , A.SITE_URL
+				 , B.CODE_NM 				HTTP_STTUS_CODE
+				 , DATE_FORMAT(A.CREAT_DT, '%Y-%m-%d %H:%i:%S') CREAT_DT
+				 , A.LOG_INFO				           	 
+			     , A.MNGR_NM
+                 , A.MNGR_EMAIL_ADRES		MNGR_EMAIL_ADDR
+            	 , A.FRST_REGISTER_ID
+			     , A.FRST_REGIST_PNTTM
+            	 , A.LAST_UPDUSR_ID
+			     , A.LAST_UPDT_PNTTM
+              FROM COMTN_HTTP_MON_LOG A
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM072') B
+				       	ON A.HTTP_STTUS_CODE = B.CODE
+             WHERE A.WEBSVC_KND    = #{webKind}
+			   AND A.LOG_ID        = #{logId}             
+		]]>
+	</select>
+	
+	<insert id="insertHttpMntrngLog" >
+		<![CDATA[
+		    INSERT INTO  COMTN_HTTP_MON_LOG (  
+		    	   LOG_ID
+		         , SYS_ID
+		         , WEBSVC_KND
+		         , SITE_URL
+		         , HTTP_STTUS_CODE
+		         , CREAT_DT
+		         , LOG_INFO		         
+		         , MNGR_NM
+		         , MNGR_EMAIL_ADRES
+				 , FRST_REGISTER_ID 
+				 , FRST_REGIST_PNTTM 
+				 , LAST_UPDUSR_ID
+				 , LAST_UPDT_PNTTM 
+		    ) VALUES (  
+		    	   #{logId}
+		         , #{sysId}
+		         , #{webKind}
+		         , #{siteUrl}
+		         , #{httpSttusCd}		         
+		         , STR_TO_DATE(#{creatDt}, '%Y%m%d%H%i%S')
+		         , #{logInfo, jdbcType=VARCHAR}		         
+		         , #{mngrNm}
+		         , #{mngrEmailAddr}
+				 , #{frstRegisterId}
+				 , sysdate()
+				 , #{frstRegisterId}
+				 , sysdate()
+		    )
+		]]>
+	</insert>
+	
+</mapper>            

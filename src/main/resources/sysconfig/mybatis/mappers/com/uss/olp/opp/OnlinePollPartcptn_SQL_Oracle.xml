@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.uss.olp.opp.service.impl.OnlinePollPartcptnMapper">
+
+	<!-- 온라인POLL참여::목록조회 게시물정보 -->
+	<select id="selectOnlinePollManageList" resultType="egovMap">
+		<![CDATA[
+            SELECT *
+              FROM (
+            SELECT ROWNUM RNUM, ALL_LIST.*
+              FROM (
+        ]]>
+        /* 구현 Sql */
+       	<![CDATA[
+			SELECT A.POLL_ID				AS "pollId"
+			     , A.POLL_NM				AS "pollNm"
+			     , A.POLL_BGNDE				AS "pollBeginDe"	
+			     , A.POLL_ENDDE				AS "pollEndDe"	
+			     , A.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
+			     , (SELECT USER_NM 
+			          FROM COMVN_USER_MASTER 
+			         WHERE ESNTL_ID = A.FRST_REGISTER_ID
+			       ) 						AS "frstRegisterNm"		
+			  FROM COMTN_ONLINE_POLL_MANAGE A
+			 WHERE 1=1
+		]]>
+    	<if test='trgetId != null and trgetId != ""'>
+		   		<![CDATA[ AND A.TRGET_ID = #{trgetId} ]]>
+		</if>
+     	    <if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "POLL_NM"'>
+                <![CDATA[ AND POLL_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[
+			 ORDER BY A.FRST_REGIST_PNTTM DESC
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+                   ) ALL_LIST
+                   )
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+        ]]>			
+	</select>
+	
+	<!-- 온라인POLL참여::목록조회_게시물 총갯수  -->
+	<select id="selectOnlinePollManageListCnt" resultType="int">
+        <![CDATA[
+			SELECT COUNT(*) totcnt
+			  FROM COMTN_ONLINE_POLL_MANAGE A
+			 WHERE 1=1
+        ]]>			
+    	<if test='trgetId != null and trgetId != ""'>
+		   		<![CDATA[ AND A.TRGET_ID = #{trgetId} ]]>
+		</if>
+     	    <if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "POLL_NM"'>
+                <![CDATA[ AND POLL_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+	
+	<!-- 온라인POLL참여::상세보기 -->
+	<select id="selectOnlinePollManageDetail" resultType="onlinePollPartcptnVO">
+        <![CDATA[
+			 SELECT A.POLL_ID				AS "pollId" 
+			      ,	A.POLL_NM				AS "pollNm" 
+			      ,	A.POLL_BGNDE			AS "pollBeginDe" 
+			      ,	A.POLL_ENDDE			AS "pollEndDe" 
+			      ,	A.POLL_KND				AS "pollKindCode" 
+			      ,	A.POLL_DSUSE_ENNC		AS "pollDsuseYn" 
+			      ,	A.POLL_ATMC_DSUSE_ENNC	AS "pollAutoDsuseYn" 
+			      ,	A.FRST_REGIST_PNTTM		AS "frstRegisterPnttm" 
+			      ,	A.FRST_REGISTER_ID		AS "frstRegisterId" 
+			      ,	A.LAST_UPDT_PNTTM		AS "lastUpdusrPnttm" 
+			      ,	A.LAST_UPDUSR_ID  		AS "lastUpdusrId" 
+			  FROM COMTN_ONLINE_POLL_MANAGE A
+			 WHERE A.POLL_ID = #{pollId} 
+        ]]>			
+	</select>
+
+	<!-- 온라인POLL항목::목록조회 게시물정보 -->
+	<select id="selectOnlinePollItemList" resultType="egovMap">
+	 	<![CDATA[
+			SELECT POLL_IEM_ID				AS "pollIemId"
+			     , POLL_IEM_NM				AS "pollIemNm"
+			  FROM COMTN_ONLINE_POLL_IEM
+			 WHERE POLL_ID = #{pollId} 
+			 ORDER BY POLL_IEM_NM DESC
+		]]> 
+	</select>
+
+	<!-- 온라인POLL참여::온라인POLL참여 횟수 조회(참여 여부 판단을 위해서) -->
+	<select id="selectOnlinePollResult" resultType="int">
+	 	<![CDATA[
+		 	SELECT COUNT(*)
+		 	  FROM COMTN_ONLINE_POLL_RESULT
+		     WHERE POLL_ID 			= #{pollId}
+		       AND FRST_REGISTER_ID = #{frstRegisterId}
+	 	]]>
+	</select>
+
+	<!-- 온라인POLL참여::온라인POLL결과 입력 -->
+	<insert id="insertOnlinePollResult">	     
+	 	<![CDATA[
+			INSERT INTO COMTN_ONLINE_POLL_RESULT ( 
+					POLL_ID
+				  ,	POLL_IEM_ID
+				  ,	POLL_RESULT_ID
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+			)VALUES( 
+					#{pollId}
+				  ,	#{pollIemId}
+				  ,	#{pollResultId}
+				  , #{frstRegisterId}
+				  , SYSDATE
+				  , #{frstRegisterId} 
+				  , SYSDATE
+			)
+	 	]]>
+	</insert>
+	
+	<!-- 온라인POLL참여::온라인POLL통계를 조회한다.  -->
+	<select id="selectOnlinePollManageStatistics" resultType="egovMap">
+	 	<![CDATA[
+			SELECT A.POLL_IEM_ID			AS "pollIemId"
+			     , COUNT(A.POLL_IEM_ID) 	AS "pollIemIdCnt" 
+			     , ROUND((100/ (SELECT COUNT(*) CNT 
+			                      FROM COMTN_ONLINE_POLL_RESULT 
+			                     WHERE POLL_ID = A.POLL_ID) ) * COUNT(A.POLL_IEM_ID)
+			       ) 						AS "pollIemPercent" 
+			  FROM COMTN_ONLINE_POLL_RESULT A
+			 WHERE A.POLL_ID = #{pollId} 
+			 GROUP BY A.POLL_ID, A.POLL_IEM_ID
+	 	]]>
+	</select>
+	
+</mapper>

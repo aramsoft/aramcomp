@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+						http://www.springframework.org/schema/util  
+						http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+	<util:map id="forwardMap" map-class="java.util.HashMap" >
+    	<entry key="registBoardArticle" value="/cop/bbs/registBoardArticle" />
+    	<entry key="insertBoardArticle" value="/cop/bbs/insertBoardArticle" />
+    	<entry key="editBoardArticle"   value="/cop/bbs/editBoardArticle" />
+    	<entry key="updateBoardArticle" value="/cop/bbs/updateBoardArticle" />
+    	<entry key="replyBoardArticle"  value="/cop/bbs/replyBoardArticle" />
+    	<entry key="deleteBoardArticle" value="/cop/bbs/deleteBoardArticle" />
+
+    	<entry key="listTemplate" 		value="/cop/tpl/listTemplate" />
+    	<entry key="listBoardMaster" 	value="/cop/bbs/listBoardMaster" />
+    	<entry key="listBoardUseInf" 	value="/cop/bbs/listBoardUseInf" />
+
+    	<entry key="listSchdulMonth" 	value="/cop/smt/sim/listSchdulMonth" />
+    	<entry key="listSchdulWeek" 	value="/cop/smt/sim/listSchdulWeek" />
+    	<entry key="listSchdulDaily" 	value="/cop/smt/sim/listSchdulDaily" />
+    </util:map>
+		
+</beans>

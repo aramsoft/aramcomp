@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE form-validation PUBLIC 
+    "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1//EN" 
+    "http://jakarta.apache.org/commons/dtds/validator_1_1.dtd">
+
+<form-validation>
+    <formset>
+		<form name="newsManageVO">
+
+			<field property="newsSj" depends="required, maxlength">
+        		<arg0 key="newsManageVO.newsSj" resource="true"/>
+        		<arg1 key="100" resource="false"/>
+				<var>
+				<var-name>maxlength</var-name>
+				<var-value>100</var-value>
+				</var>
+			</field> 
+
+			<field property="newsCn" depends="required, maxlength">
+        		<arg0 key="newsManageVO.newsCn" resource="true"/>
+        		<arg1 key="1000" resource="true"/>
+				<var>
+				<var-name>maxlength</var-name>
+				<var-value>1000</var-value>
+				</var>
+			</field> 
+			
+      		<field property="ntceDe" depends="date">
+        		<arg0 key="newsManageVO.ntceDe" resource="true"/>
+				<var>
+				<var-name>datePatternStrict</var-name>
+				<var-value>yyyyMMdd</var-value> 
+				</var>
+			</field>
+									
+		</form>
+    </formset>
+</form-validation>

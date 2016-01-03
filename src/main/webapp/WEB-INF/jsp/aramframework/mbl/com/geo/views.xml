@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/mbl/com/geo/BuildingLocationInfoList" extends="default">
+    <put-attribute name="title" value="건물위치정보 목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/mbl/com/geo/BuildingLocationInfoList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/mbl/com/geo/BuildingLocationInfoDetail" extends="default">
+    <put-attribute name="title" value="건물위치정보 상세화면" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/mbl/com/geo/BuildingLocationInfoDetail.jsp" />
+  </definition>
+  
+  <definition name="aramframework/mbl/com/geo/BuildingLocationInfoRegist" extends="default">
+    <put-attribute name="title" value="건물위치정보 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/mbl/com/geo/BuildingLocationInfoRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/mbl/com/geo/BuildingLocationInfoEdit" extends="default">
+    <put-attribute name="title" value="건물위치정보 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/mbl/com/geo/BuildingLocationInfoEdit.jsp" />
+  </definition>
+  
+</tiles-definitions>

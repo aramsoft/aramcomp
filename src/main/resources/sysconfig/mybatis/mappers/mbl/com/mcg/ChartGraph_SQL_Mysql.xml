@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.mbl.com.mcg.service.impl.ChartGraphMapper">
+	
+	<select id="selectChartGraphList" resultType="egovMap">
+        /* 구현 Sql */
+       	<![CDATA[
+			SELECT SN
+			     , MBER_ID
+			     , XAXIS
+			     , YAXIS
+			     , LGD_NM
+			     , CREAT_DT
+			     , UPDT_DT		 
+			  FROM MBLTN_CHART_GRAPH
+			 WHERE 1=1
+		]]>
+   	    <if test='searchKeyword != null and searchKeyword != ""'>
+	    <choose>
+        	<when test='searchCondition == "MBER_ID"'>
+             	<![CDATA[ AND MBER_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "XAXIS"'>
+             	<![CDATA[ AND XAXIS LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "YAXIS"'>
+             	<![CDATA[ AND YAXIS LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "LGD_NM"'>
+             	<![CDATA[ AND LGD_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[  
+			 ORDER BY SN DESC
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+	</select>
+	
+	<select id="selectChartGraphListCnt" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) totcnt
+			  FROM MBLTN_CHART_GRAPH
+			 WHERE 1=1
+		]]>		
+   	    <if test='searchKeyword != null and searchKeyword != ""'>
+	    <choose>
+        	<when test='searchCondition == "MBER_ID"'>
+             	<![CDATA[ AND MBER_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "XAXIS"'>
+             	<![CDATA[ AND XAXIS LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "YAXIS"'>
+             	<![CDATA[ AND YAXIS LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "LGD_NM"'>
+             	<![CDATA[ AND LGD_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+	
+	<select id="selectChartGraph" resultType="ChartGraphVO">
+		<![CDATA[		
+			SELECT SN
+			     , MBER_ID
+			     , XAXIS
+			     , YAXIS
+			     , LGD_NM
+			     , CREAT_DT
+			     , UPDT_DT	 			  			 			  
+			  FROM MBLTN_CHART_GRAPH
+			 WHERE SN = #{sn}					
+		]]>
+	</select>
+	
+	<insert id="insertChartGraph">
+		<![CDATA[	
+			INSERT INTO MBLTN_CHART_GRAPH (
+					SN
+				  , MBER_ID
+				  , XAXIS
+				  , YAXIS
+				  , LGD_NM
+				  , CREAT_DT
+				  , UPDT_DT
+			) VALUES ( 
+					#{sn}
+				  , #{mberId}
+				  , #{xaxis}
+				  , #{yaxis}
+				  , #{lgdNm}
+				  , sysdate()
+				  , sysdate() 
+			)
+		]]>
+	</insert>
+
+	<update id="updateChartGraph">
+		<![CDATA[
+			UPDATE MBLTN_CHART_GRAPH 
+			   SET SN      = #{sn} 
+				 , XAXIS   = #{xaxis}
+				 , YAXIS   = #{yaxis}
+				 , LGD_NM  = #{lgdNm}
+				 , UPDT_DT = sysdate()
+ 			 WHERE SN = #{sn}
+		]]>
+      	<if test='mberId != null and mberId != ""'>
+ 				<![CDATA[ AND MBER_ID = #{mberId} ]]>
+		</if>
+	</update>
+	
+	<delete id="deleteChartGraph">
+		<![CDATA[
+			DELETE 
+			  FROM MBLTN_CHART_GRAPH 
+			 WHERE SN = #{sn}
+		]]>
+      	<if test='mberId != null and mberId != ""'>
+ 				<![CDATA[ AND MBER_ID = #{mberId} ]]>
+		</if>
+	</delete>
+	
+</mapper>

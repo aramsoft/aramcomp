@@ -1,0 +1,44 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>HTMLArea 3.0 core test</title>
+    <script type="text/javascript">
+      _editor_url = "../../";
+      _editor_lang = "en";
+    </script>
+    <script type="text/javascript" src="../../htmlarea.js"></script>
+    <script type="text/javascript" src="break-quote.js"></script>
+    <script type="text/javascript">
+      HTMLArea.loadPlugin("ContextMenu");
+      HTMLArea.onload = function() {
+        var editor = new HTMLArea("editor");
+        editor.config.pageStyle = "div.quote { padding-left: 5px; border-left: 1px solid #080; color: #080; }";
+        editor.registerPlugin(BreakQuote);
+        editor.registerPlugin(ContextMenu);
+        editor.generate();
+      };
+      HTMLArea.init();
+    </script>
+  </head>
+  <body>
+    <h1>BreakQuote plugin</h1>
+    <p>
+      The purpose is to allow replying to emails, or something, where the
+      original text is enclosed in a DIV with class "quote".  Whenever you
+      type ENTER in this field it will actually break the element.  Try it
+      above.
+    </p>
+<p>
+		Return to the <a href="http://Inferior-Products.com/htmlarea/">HTMLarea page</a>,
+		or the HTMLarea page <a href="http://htmlarea.sourceforge.net/">hosted
+		on SourceForge</a>.
+		</p>
+    <textarea id="editor" rows="20" cols="80" style="width: 100%">
+    <div class="attribution">At blah blah, foobar wrote:</div>
+    <div class="quote"><p>Foo bar</p><p>Foo, I said</p>
+    <div class="quote"><p>Foo bar</p><p>Foo, I said</p>
+    </div>
+    <p>buzz</p>
+    </div>
+    </textarea>
+  </body>
+</html>

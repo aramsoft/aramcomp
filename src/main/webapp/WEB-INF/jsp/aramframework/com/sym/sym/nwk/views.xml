@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/sym/sym/nwk/NtwrkList" extends="default">
+    <put-attribute name="title" value="네트워크 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sym/sym/nwk/NtwrkList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/sym/sym/nwk/NtwrkDetail" extends="default">
+    <put-attribute name="title" value="네트워크 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sym/sym/nwk/NtwrkDetail.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/sym/sym/nwk/NtwrkRegist" extends="default">
+    <put-attribute name="title" value="네트워크 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sym/sym/nwk/NtwrkRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/sym/sym/nwk/NtwrkEdit" extends="default">
+    <put-attribute name="title" value="네트워크 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sym/sym/nwk/NtwrkEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

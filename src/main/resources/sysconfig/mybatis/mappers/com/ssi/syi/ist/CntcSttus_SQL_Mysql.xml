@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.ssi.syi.ist.service.impl.CntcSttusMapper">
+
+    <select id="selectCntcSttusList" resultType="egovMap">
+        /* 구현 Sql */
+        <![CDATA[
+            SELECT A.CNTC_ID           		"cntcId"
+                 , A.CNTC_NM           		"cntcNm"
+                 , A.CNTC_TY	        	"cntcType"
+                 , B.CNT_ALL           		"cntAll"
+                 , B.CNT_SUCCESS       		"cntSuccess"
+                 , B.CNT_FAIL          		"cntFail"
+                 , A.PROVD_INSTT_ID    		"provdInsttId"
+                 , A.PROVD_SYS_ID      		"provdSysId"
+                 , A.PROVD_SVC_ID      		"provdSvcId"
+                 , A.REQUST_INSTT_ID   		"requstInsttId"
+                 , A.REQUST_SYS_ID     		"requstSysId"
+                 , C1.INSTT_NM         		"provdInsttNm"
+                 , D1.SYS_NM           		"provdSysNm"
+                 , E.SVC_NM            		"provdSvcNm"
+                 , C2.INSTT_NM         		"requstInsttNm"
+                 , D2.SYS_NM           		"requstSysNm"
+              FROM COMTN_SYSTEM_CNTC A
+                   LEFT OUTER JOIN ( SELECT CNTC_ID CNTC_ID
+                         			      , SUM( CASE TRSMRCV_SE_CODE
+				                                       WHEN 'S01' THEN 1
+				                                       WHEN 'S04' THEN 1
+				                                       ELSE 0
+				                                  END
+				                            ) CNT_ALL
+				                          , SUM( CASE TRSMRCV_SE_CODE
+				                                       WHEN 'S02' THEN 1
+				                                       WHEN 'S05' THEN 1
+				                                       ELSE 0
+				                                  END
+				                            ) CNT_SUCCESS
+				                          , SUM( CASE TRSMRCV_SE_CODE
+				                                       WHEN 'S03' THEN 1
+				                                       WHEN 'S06' THEN 1
+				                                       ELSE 0
+				                                  END
+				                            ) CNT_FAIL
+				                       FROM COMTH_TRSMRCV_LOG
+				                      GROUP BY CNTC_ID
+                   					) B
+                		ON A.CNTC_ID = B.CNTC_ID
+                   LEFT OUTER JOIN COMTN_CNTC_INSTT C1
+                   	    ON  A.PROVD_INSTT_ID = C1.INSTT_ID
+                   LEFT OUTER JOIN COMTN_CNTC_SYSTEM D1
+                   	    ON  A.PROVD_INSTT_ID = D1.INSTT_ID
+                   	    AND A.PROVD_SYS_ID   = D1.SYS_ID
+                   LEFT OUTER JOIN COMTN_CNTC_SERVICE E
+                   	    ON  A.PROVD_INSTT_ID = E.INSTT_ID
+                   	    AND A.PROVD_SYS_ID   = E.SYS_ID
+                   	    AND A.PROVD_SVC_ID   = E.SVC_ID
+                   LEFT OUTER JOIN COMTN_CNTC_INSTT C2
+                   	    ON  A.REQUST_INSTT_ID = C2.INSTT_ID
+                   LEFT OUTER JOIN COMTN_CNTC_SYSTEM D2
+                   	    ON  A.REQUST_INSTT_ID = D2.INSTT_ID
+                   	    AND A.REQUST_SYS_ID   = D2.SYS_ID
+             WHERE 1=1
+        ]]>
+      	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "CNTC_NM"'>
+                 <![CDATA[ AND A.CNTC_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+    </select>
+
+    <select id="selectCntcSttusListCnt" resultType="int">
+        <![CDATA[
+            SELECT COUNT(*) totcnt
+              FROM COMTN_SYSTEM_CNTC A
+                   LEFT OUTER JOIN ( SELECT CNTC_ID CNTC_ID
+                         			      , SUM( CASE TRSMRCV_SE_CODE
+				                                       WHEN 'S01' THEN 1
+				                                       WHEN 'S04' THEN 1
+				                                       ELSE 0
+				                                  END
+				                            ) CNT_ALL
+				                          , SUM( CASE TRSMRCV_SE_CODE
+				                                       WHEN 'S02' THEN 1
+				                                       WHEN 'S05' THEN 1
+				                                       ELSE 0
+				                                  END
+				                            ) CNT_SUCCESS
+				                          , SUM( CASE TRSMRCV_SE_CODE
+				                                       WHEN 'S03' THEN 1
+				                                       WHEN 'S06' THEN 1
+				                                       ELSE 0
+				                                  END
+				                            ) CNT_FAIL
+				                       FROM COMTH_TRSMRCV_LOG
+				                      GROUP BY CNTC_ID
+                   					) B
+                		ON A.CNTC_ID = B.CNTC_ID
+                   LEFT OUTER JOIN COMTN_CNTC_INSTT C1
+                   	    ON  A.PROVD_INSTT_ID = C1.INSTT_ID
+                   LEFT OUTER JOIN COMTN_CNTC_SYSTEM D1
+                   	    ON  A.PROVD_INSTT_ID = D1.INSTT_ID
+                   	    AND A.PROVD_SYS_ID   = D1.SYS_ID
+                   LEFT OUTER JOIN COMTN_CNTC_SERVICE E
+                   	    ON  A.PROVD_INSTT_ID = E.INSTT_ID
+                   	    AND A.PROVD_SYS_ID   = E.SYS_ID
+                   	    AND A.PROVD_SVC_ID   = E.SVC_ID
+                   LEFT OUTER JOIN COMTN_CNTC_INSTT C2
+                   	    ON  A.REQUST_INSTT_ID = C2.INSTT_ID
+                   LEFT OUTER JOIN COMTN_CNTC_SYSTEM D2
+                   	    ON  A.REQUST_INSTT_ID = D2.INSTT_ID
+                   	    AND A.REQUST_SYS_ID   = D2.SYS_ID
+             WHERE 1=1
+        ]]>
+      	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "CNTC_NM"'>
+                 <![CDATA[ AND A.CNTC_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+    </select>
+
+    <select id="selectCntcSttusDetail" resultType="cntcSttusVO">
+        <![CDATA[
+            SELECT A.CNTC_ID           		"cntcId"
+                 , A.CNTC_NM           		"cntcNm"
+                 , A.CNTC_TY	        	"cntcType"
+                 , B.CNT_ALL           		"cntAll"
+                 , B.CNT_SUCCESS       		"cntSuccess"
+                 , B.CNT_FAIL          		"cntFail"
+                 , A.PROVD_INSTT_ID    		"provdInsttId"
+                 , A.PROVD_SYS_ID      		"provdSysId"
+                 , A.PROVD_SVC_ID      		"provdSvcId"
+                 , A.REQUST_INSTT_ID   		"requstInsttId"
+                 , A.REQUST_SYS_ID     		"requstSysId"
+                 , C1.INSTT_NM         		"provdInsttNm"
+                 , D1.SYS_NM           		"provdSysNm"
+                 , E.SVC_NM            		"provdSvcNm"
+                 , C2.INSTT_NM         		"requstInsttNm"
+                 , D2.SYS_NM           		"requstSysNm"
+              FROM COMTN_SYSTEM_CNTC A
+                   LEFT OUTER JOIN ( SELECT CNTC_ID CNTC_ID
+                         			      , SUM( CASE TRSMRCV_SE_CODE
+				                                       WHEN 'S01' THEN 1
+				                                       WHEN 'S04' THEN 1
+				                                       ELSE 0
+				                                  END
+				                            ) CNT_ALL
+				                          , SUM( CASE TRSMRCV_SE_CODE
+				                                       WHEN 'S02' THEN 1
+				                                       WHEN 'S05' THEN 1
+				                                       ELSE 0
+				                                  END
+				                            ) CNT_SUCCESS
+				                          , SUM( CASE TRSMRCV_SE_CODE
+				                                       WHEN 'S03' THEN 1
+				                                       WHEN 'S06' THEN 1
+				                                       ELSE 0
+				                                  END
+				                            ) CNT_FAIL
+				                       FROM COMTH_TRSMRCV_LOG
+				                      GROUP BY CNTC_ID
+                   					) B
+                		ON A.CNTC_ID = B.CNTC_ID
+                   LEFT OUTER JOIN COMTN_CNTC_INSTT C1
+                   	    ON  A.PROVD_INSTT_ID = C1.INSTT_ID
+                   LEFT OUTER JOIN COMTN_CNTC_SYSTEM D1
+                   	    ON  A.PROVD_INSTT_ID = D1.INSTT_ID
+                   	    AND A.PROVD_SYS_ID   = D1.SYS_ID
+                   LEFT OUTER JOIN COMTN_CNTC_SERVICE E
+                   	    ON  A.PROVD_INSTT_ID = E.INSTT_ID
+                   	    AND A.PROVD_SYS_ID   = E.SYS_ID
+                   	    AND A.PROVD_SVC_ID   = E.SVC_ID
+                   LEFT OUTER JOIN COMTN_CNTC_INSTT C2
+                   	    ON  A.REQUST_INSTT_ID = C2.INSTT_ID
+                   LEFT OUTER JOIN COMTN_CNTC_SYSTEM D2
+                   	    ON  A.REQUST_INSTT_ID = D2.INSTT_ID
+                   	    AND A.REQUST_SYS_ID   = D2.SYS_ID
+             WHERE A.CNTC_ID = #{cntcId}
+        ]]>
+     </select>
+
+</mapper>

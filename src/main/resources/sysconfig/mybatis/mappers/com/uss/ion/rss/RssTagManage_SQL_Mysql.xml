@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.uss.ion.rss.service.impl.RssManageMapper">
+
+	<!-- RSS관리::목록조회 게시물정보 -->
+	<select id="selectRssManageList" resultType="egovMap">
+        /* 구현 Sql */
+       	<![CDATA[
+			SELECT A.RSS_ID					AS "rssId"
+			     , A.TRGET_SVC_NM			AS "trgetSvcNm"
+			     , A.TRGET_SVC_TABLE		AS "trgetSvcTable"
+			     , A.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
+			     , (SELECT USER_NM 
+			          FROM COMTN_EMPLYR_INFO 
+			         WHERE ESNTL_ID = A.FRST_REGISTER_ID
+			       ) 						AS "frstRegisterNm"
+			  FROM COMTN_RSS A
+			 WHERE 1=1
+		]]>
+   	    <if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "TRGET_SVC_NM"'>
+               	<![CDATA[ AND A.TRGET_SVC_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "TRGET_SVC_TABLE"'>
+                <![CDATA[ AND A.TRGET_SVC_TABLE LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "HDER_TITLE"'>
+                <![CDATA[ AND A.HDER_TITLE LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "HDER_LINK"'>
+                <![CDATA[ AND A.HDER_LINK LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "HDER_DC"'>
+                <![CDATA[ AND A.HDER_DC LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "HDER_TAG"'>
+                <![CDATA[ AND A.HDER_TAG LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "HDER_ETC"'>
+                <![CDATA[ AND A.HDER_ETC LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "BDT_LINK"'>
+                <![CDATA[ AND A.BDT_LINK LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "BDT_DC"'>
+                <![CDATA[ AND A.BDT_DC LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "BDT_TAG"'>
+                <![CDATA[ AND A.BDT_TAG LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "BDT_ETC_TAG"'>
+                <![CDATA[ AND A.BDT_ETC_TAG LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[
+			 ORDER BY A.FRST_REGIST_PNTTM DESC
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+	</select>
+	
+	<!-- RSS관리::목록조회_게시물 총갯수  -->
+	<select id="selectRssManageListCnt" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) totcnt
+			  FROM COMTN_RSS A
+			 WHERE 1=1
+        ]]>			
+   	    <if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "TRGET_SVC_NM"'>
+               	<![CDATA[ AND A.TRGET_SVC_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "TRGET_SVC_TABLE"'>
+                <![CDATA[ AND A.TRGET_SVC_TABLE LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "HDER_TITLE"'>
+                <![CDATA[ AND A.HDER_TITLE LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "HDER_LINK"'>
+                <![CDATA[ AND A.HDER_LINK LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "HDER_DC"'>
+                <![CDATA[ AND A.HDER_DC LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "HDER_TAG"'>
+                <![CDATA[ AND A.HDER_TAG LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "HDER_ETC"'>
+                <![CDATA[ AND A.HDER_ETC LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "BDT_LINK"'>
+                <![CDATA[ AND A.BDT_LINK LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "BDT_DC"'>
+                <![CDATA[ AND A.BDT_DC LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "BDT_TAG"'>
+                <![CDATA[ AND A.BDT_TAG LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "BDT_ETC_TAG"'>
+                <![CDATA[ AND A.BDT_ETC_TAG LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+	
+	<!-- RSS관리::상세보기 -->
+	<select id="selectRssManageDetail" resultType="rssManageVO">
+		<![CDATA[
+			SELECT A.RSS_ID
+			     , A.TRGET_SVC_NM
+			     , A.TRGET_SVC_TABLE
+			     , A.TRGET_SVC_LIST_CO
+			     , A.HDER_TITLE
+			     , A.HDER_LINK
+			     , A.HDER_DC				AS "hderDescription"
+			     , A.HDER_TAG
+			     , A.HDER_ETC
+			     , A.BDT_TITLE
+			     , A.BDT_LINK
+			     , A.BDT_DC					AS "bdtDescription"
+			     , A.BDT_TAG
+			     , A.BDT_ETC_TAG			AS "bdtEtc"
+			     , A.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
+			     , A.FRST_REGISTER_ID
+			     , A.LAST_UPDT_PNTTM		AS "lastUpdusrPnttm" 
+			     , A.LAST_UPDUSR_ID  
+			  FROM COMTN_RSS A
+			 WHERE A.RSS_ID = #{rssId} 
+        ]]>			
+	</select>
+
+	<!-- RSS관리::입력  -->
+	<insert id="insertRssManage">	     
+	 	<![CDATA[
+			INSERT INTO COMTN_RSS ( 
+					RSS_ID
+				  ,	TRGET_SVC_NM
+				  ,	TRGET_SVC_TABLE
+				  ,	TRGET_SVC_LIST_CO
+				  ,	HDER_TITLE
+				  ,	HDER_LINK
+				  ,	HDER_DC
+				  ,	HDER_TAG
+				  ,	HDER_ETC
+				  ,	BDT_TITLE
+				  ,	BDT_LINK
+				  ,	BDT_DC
+				  ,	BDT_TAG
+				  ,	BDT_ETC_TAG
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+			)VALUES( 
+					#{rssId}
+				  ,	#{trgetSvcNm}
+				  ,	#{trgetSvcTable}
+				  ,	#{trgetSvcListCo}
+				  ,	#{hderTitle}
+				  ,	#{hderLink}
+				  ,	#{hderDescription}
+				  ,	#{hderTag}
+				  ,	#{hderEtc}
+				  ,	#{bdtTitle}
+				  ,	#{bdtLink}
+				  ,	#{bdtDescription}
+				  ,	#{bdtTag}
+				  ,	#{bdtEtc}
+				  , #{frstRegisterId}
+				  , sysdate()
+				  , #{frstRegisterId}
+				  , sysdate()
+			)
+	 	]]>
+	</insert>
+
+	<!-- RSS관리::수정  -->
+	<update id="updateRssManage">
+	 	<![CDATA[
+			UPDATE COMTN_RSS 
+			   SET TRGET_SVC_NM 		= #{trgetSvcNm}
+			     , TRGET_SVC_TABLE 		= #{trgetSvcTable}
+			     , TRGET_SVC_LIST_CO 	= #{trgetSvcListCo}
+			     , HDER_TITLE 			= #{hderTitle}
+			     , HDER_LINK 			= #{hderLink}
+			     , HDER_DC 				= #{hderDescription}
+			     , HDER_TAG 			= #{hderTag}
+			     , HDER_ETC 			= #{hderEtc}
+			     , BDT_TITLE 			= #{bdtTitle}
+			     , BDT_LINK 			= #{bdtLink}
+			     , BDT_DC 				= #{bdtDescription}
+			     , BDT_TAG 				= #{bdtTag}
+			     , BDT_ETC_TAG 			= #{bdtEtc}
+			     , LAST_UPDUSR_ID 		= #{lastUpdusrId}
+			     , LAST_UPDT_PNTTM 		= sysdate()
+			 WHERE RSS_ID = #{rssId} 
+	 	]]>
+	</update>
+	
+    <!-- RSS관리::삭제  -->
+	<delete id="deleteRssManage">
+		<![CDATA[
+			DELETE 
+			  FROM COMTN_RSS 
+			 WHERE RSS_ID = #{rssId} 
+		]]>
+	</delete>
+
+</mapper>

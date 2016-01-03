@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE form-validation PUBLIC 
+    "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1//EN" 
+    "http://jakarta.apache.org/commons/dtds/validator_1_1.dtd">
+
+<form-validation>
+    <formset>
+        <form name="restdeVO">
+        
+			<field property="restdeDe" depends="required, maxlength">
+        		<arg0 key="휴일일자" resource="false"/>
+        		<arg1 key="8" resource="false"/>
+				<var>
+				<var-name>maxlength</var-name>
+				<var-value>8</var-value>
+				</var>
+			</field> 
+			
+			<field property="restdeNm" depends="required, maxlength">
+        		<arg0 key="휴일명" resource="false"/>
+        		<arg1 key="50" resource="false"/>
+				<var>
+				<var-name>maxlength</var-name>
+				<var-value>50</var-value>
+				</var>
+			</field> 
+			
+			<field property="restdeDc" depends="required, maxlength">
+        		<arg0 key="휴일설명" resource="false"/>
+        		<arg1 key="200" resource="false"/>
+				<var>
+				<var-name>maxlength</var-name>
+				<var-value>200</var-value>
+				</var>
+			</field> 
+			
+			<field property="restdeSeCode" depends="required">
+        		<arg0 key="휴일구분코드" resource="false"/>
+			</field>
+<!-- 
+			<field property="year" depends="integer">
+        		<arg0 key="년" resource="false"/>
+			</field>
+			
+			<field property="month" depends="integer">
+        		<arg0 key="월" resource="false"/>
+			</field>
+			
+			<field property="day" depends="integer">
+        		<arg0 key="일" resource="false"/>
+			</field>
+			
+			<field property="week" depends="integer">
+        		<arg0 key="요일" resource="false"/>
+			</field>
+			
+			<field property="weeks" depends="integer">
+        		<arg0 key="월별 주순위" resource="false"/>
+			</field> 
+			 
+			<field property="maxWeeks" depends="integer">
+        		<arg0 key="월주수" resource="false"/>
+			</field>
+			
+			<field property="lastDayMonth" depends="integer">
+        		<arg0 key="마지막일자" resource="false"/>
+			</field>
+-->
+		</form>
+    </formset>
+</form-validation>

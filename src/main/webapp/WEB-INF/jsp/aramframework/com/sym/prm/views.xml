@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/sym/prm/ProgramList" extends="default">
+    <put-attribute name="title" value="프로그램관리 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sym/prm/ProgramList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/sym/prm/ProgramRegist" extends="default">
+    <put-attribute name="title" value="프로그램 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sym/prm/ProgramRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/sym/prm/ProgramEdit" extends="default">
+    <put-attribute name="title" value="프로그램 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sym/prm/ProgramEdit.jsp" />
+  </definition>
+
+  <definition name="aramframework/com/sym/prm/ProgramChangeRequstList" extends="default">
+    <put-attribute name="title" value="프로그램변경요청 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sym/prm/ProgramChangeRequstList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/sym/prm/ProgramChangeRequstRegist" extends="default">
+    <put-attribute name="title" value="프로그램변경요청 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sym/prm/ProgramChangeRequstRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/sym/prm/ProgramChangeRequstEdit" extends="default">
+    <put-attribute name="title" value="프로그램변경요청 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sym/prm/ProgramChangeRequstEdit.jsp" />
+  </definition>
+
+  <definition name="aramframework/com/sym/prm/ProgramChangeProcessList" extends="default">
+    <put-attribute name="title" value="프로그램변경요청처리 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sym/prm/ProgramChangeProcessList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/sym/prm/ProgramChangeProcessEdit" extends="default">
+    <put-attribute name="title" value="프로그램변경요청처리 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sym/prm/ProgramChangeProcessEdit.jsp" />
+  </definition>
+
+  <definition name="aramframework/com/sym/prm/ProgramChgHstList" extends="default">
+    <put-attribute name="title" value="프로그램변경이력 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sym/prm/ProgramChgHstList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/sym/prm/ProgramChgHstDetail" extends="default">
+    <put-attribute name="title" value="프로그램변경이력 상세조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sym/prm/ProgramChgHstDetail.jsp" />
+  </definition>
+
+</tiles-definitions>

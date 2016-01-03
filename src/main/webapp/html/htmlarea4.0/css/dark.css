@@ -1,0 +1,271 @@
+/**************************************************
+ * xHTMLarea DARK Theme
+ * Copyright 1998-2013 the Inferior Products Corporation
+ * http://Inferior-Products.com
+ **************************************************/
+html, body {
+ color: #8ac;
+ background: url(dark-fade-3.gif) repeat-y #345;
+}
+:link { color: #0cf; background: transparent }
+a:visited { color: #0cf; background: transparent /* 98fb98 */ }
+a:active { color: #f80; background: transparent }
+div a:active { color: #f80; border-color: #fff; background: transparent }
+.hide { display: none }
+@media screen {  /* hide from IE3 */
+ a:hover { color: #f80; background: transparent }
+ a:hover span.underline { color: #ffc; }
+}
+h1 {
+ color: #fff;
+ border-top: 2px solid #08A;
+ border-left: 2px solid #08A;
+ border-right: 2px solid #000;
+ border-bottom: 2px solid #000;
+ background-image: url(dark-fade-1.jpg);
+}
+h2, h3, h4 {
+ color: #fff;
+ border-color: #b97;
+}
+h4 {
+ color: #ccc;
+ border-color: #975;
+}
+em {
+ color: #ba4;
+}
+.note { border-color: #ba4; background: #234; }
+.note .title { background: #ba4; color: #fff; }
+/*
+ BEGIN: NEWS */
+.news-pager { background: #234; color: #89a; border: 1px solid #05a; }
+.brief { background: #204; border-color: #88b; }
+.brief .item { border-color: #88b; }
+.brief .time { color: #4a0; }
+.brief .subj { color: #fea; }
+.brief .text { color: #99b; }
+.brief .stamp { background: #035; }
+.brief a { color: #0c3; }
+.brief a:visited { color: #0c3; }
+.brief a:hover { color: #0f4; }
+.brief a:active { color: #fa6; }
+#buzzbar { background: #356; border-color: #689; }
+#buzzbar .title {
+  color: #acd;
+  font-weight: bold;
+  background: #134;
+  border-color: #689;
+}
+#buzzbar .stamp { background: #245; }
+#buzzbar .name { color: #ace; }
+.newsstart {
+ background: #204;
+ border: 1px solid #88b;
+}
+.newsstart .cmd {
+ background: #024;
+ border-color: #77a;
+}
+.newsstart .cat {
+ background: #204;
+ border-color: #77a;
+}
+.newsstart .cmd a { color: #0c3; }
+.newsstart .cmd a:visited { color: #0c3; }
+.newsstart .cmd a:hover { color: #0f4; }
+.newsstart .cmd a:active { color: #fa6; }
+.newsstart .subject {
+ background: #436;
+ border-bottom: 1px dashed #77a;
+ -moz-border-radius: 6px 6px 0px 0px;
+ color: #a0ccdd;
+}
+/*
+ END: NEWS */
+#footer, #header, #employ {
+ background: #123;
+ border-color: #97c;
+ color: #abc;
+}
+#counter { color: #789; }
+#footer a, #header a {
+ color: #cba;
+}
+#header a:hover, #footer a:hover {
+ color: #f80;
+}
+#pagecontent { border-color: #97c; }
+.cventry {
+ background: #156;
+ border-color: #8ac;
+}
+.cvtag {
+ background: #000;
+ border-color: #8ac;
+}
+.cvtaghl {
+ background: #000;
+ color: #fff;
+ border-color: #8ac;
+}
+.gbhead {
+ background: #234;
+ color: #89d;
+ border-color: #567;
+ padding: 2px;
+}
+.gbname {
+ color: #ea3;
+}
+/*
+** FORMS ***/
+select, select:hover, select:active { background: #ccf; color: #000; }
+input[type="text"], textarea { border-color: #05a; background: #89b; -moz-border-radius: 6px; }
+button, input[type="button"] {
+  background: #678; border: 1px solid; border-color: #89a #234 #234 #89a;
+}
+button:hover, input[type="button"]:hover { background: #89a; }
+button:active, input[type="button"]:active { border-color: #234 #89a #89a #234; }
+/*
+** GENERIC ***/
+.new0 {
+ color: #f80;
+ font-weight: bold;
+}
+.new1 {
+ color: #ab0;
+ font-weight: bold;
+}
+.error {
+ background: #000;
+ color: #f00;
+}
+.required { color: #f00; font-weight: bold; }
+/*
+** TOC ***/
+#conttoc {
+  color: #f84;
+  background: #240;
+  border-color: #fd8;
+}
+#conttoc .level1 { background: #130; }
+#conttoc .level1 a { font-variant: small-caps; color: #fff; }
+#conttoc .level2 a { color: #efe; }
+#conttoc .level3 a { color: #cfc; }
+#conttoc .level4 a { color: #ada; }
+#conttoc .level5 a { color: #8a8; }
+#conttoc .level6 a { color: #686; }
+#conttoc a:hover { color: #ffc; }
+/*
+** SYNTAX HIGHLIGHTING ***/
+pre.code { border: 1px solid #567; }
+.code {
+  color: #f5deb3;
+  background-color: #234;
+} /* default */
+.string {
+  color: #00ffff;
+  background-color: #234;
+} /* font-lock-string-face */
+.comment {
+  color: #8fbc8f;
+  background-color: #234;
+} /* font-lock-comment-face */
+.variable-name {
+  color: #fa8072;
+  background-color: #234;
+} /* font-lock-variable-name-face */
+.type {
+  color: #90ee90;
+  background-color: #234;
+  font-weight: bold;
+} /* font-lock-type-face */
+.reference {
+  color: #ee82ee;
+  background-color: #234;
+} /* font-lock-reference-face */
+.preprocessor {
+  color: #faf;
+  background-color: #234;
+} /* font-lock-preprocessor-face */
+.keyword {
+  color: #ffffff;
+  background-color: #234;
+  font-weight: bold;
+} /* font-lock-keyword-face */
+.function-name {
+  color: #ace;
+  background-color: #234;
+} /* font-lock-function-name-face */
+.html-tag {
+  background-color: #234;
+  font-weight: bold;
+} /* html-tag-face */
+.html-helper-italic {
+  background-color: #234;
+  font-style: italic;
+} /* html-helper-italic-face */
+.warning {
+  color: #ffa500;
+  background-color: #234;
+  font-weight: bold;
+} /* font-lock-warning-face */
+.html-helper-bold {
+  background-color: #234;
+  font-weight: bold;
+} /* html-helper-bold-face */
+.hilited { background: #789 }
+/*
+ BEGIN: navigation */
+.menuholder {
+  background: #123;
+  color: #8ac;
+  border-color: #97c;
+}
+.menubar {
+  border-color: #97c;
+}
+.menubar .space { margin-bottom: 2px; }
+.menubar .control { background-color: #102; }
+.menubar .control td.hilite { background-color: #42a; }
+.menubar .section { margin: 0px 5px 0px 10px; position: relative; top: -1px; }
+.menubar .section .body {
+  -moz-border-radius: 0px 0px 12px 0px;
+  background: #243;
+  border-color: #486;
+}
+.menubar .title {
+  -moz-border-radius: 0px 12px 0px 0px;
+  background: #203040;
+  color: #9b9;
+  border-color: #486;
+}
+.menubar .title-hilite {
+  background: #132;
+  color: #ced;
+  border-color: #9c9;
+}
+.menubar .section .body .item {
+  color: #9a8;
+}
+.menubar .section .body .item-disabled .image { color: #cfa; }
+.menubar .section .body .item-disabled .link {
+  background: #021;
+  color: #acb;
+}
+.menubar .section .body-hilite {
+  background: #354;
+  border-color: #7b9;
+}
+.menubar .section .body-hilite .link {
+  color: #ad9;
+}
+.menubar .section .body .item-hilite .image { color: #f84; }
+.menubar .section .body .item-hilite .link {
+  border-color: #bca;
+  background: #000;
+  color: #ced;
+}
+/*
+ END: navigation */

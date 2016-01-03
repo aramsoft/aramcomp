@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.cop.smt.mtm.service.impl.MemoTodoMapper">
+
+	<!-- 메모할일::오늘의 할일 목록조회 -->
+	<select id="selectMemoTodoListToday" resultType="egovMap">
+	 	<![CDATA[
+			SELECT A.TODO_ID				"todoId"
+				 , A.TODO_SJ				"todoNm" 
+				 , A.TODO_BEGIN_TIME		"todoBeginTime" 
+				 , A.TODO_END_TIME			"todoEndTime" 
+				 , B.USER_NM 				"wrterNm" 	
+				 , A.FRST_REGIST_PNTTM		"frstRegisterPnttm"
+			  FROM COMTN_MEMO_TODO A
+				   LEFT OUTER JOIN COMTN_EMPLYR_INFO B
+						ON A.WRTER_ID = B.ESNTL_ID
+			 WHERE A.WRTER_ID = #{searchId}
+		  	   AND (A.TODO_BEGIN_TIME BETWEEN #{searchBgnDe} AND #{searchEndDe}		
+		 	       OR A.TODO_END_TIME BETWEEN #{searchBgnDe} AND #{searchEndDe} )
+			 ORDER BY A.FRST_REGIST_PNTTM DESC
+	 	]]>	
+	</select>
+	
+	<!-- 메모할일::목록조회 -->
+	<select id="selectMemoTodoList" resultType="egovMap">
+		<![CDATA[
+            SELECT *
+              FROM (
+            SELECT ROWNUM RNUM, ALL_LIST.*
+              FROM (
+        ]]>
+        /* 구현 Sql */
+		 <![CDATA[
+			SELECT A.TODO_ID				"todoId"
+				 , A.TODO_SJ				"todoNm" 
+				 , A.TODO_BEGIN_TIME		"todoBeginTime" 
+				 , A.TODO_END_TIME			"todoEndTime" 
+				 , B.USER_NM 				"wrterNm" 	
+				 , A.FRST_REGIST_PNTTM		"frstRegisterPnttm"
+			  FROM COMTN_MEMO_TODO A
+				   LEFT OUTER JOIN COMTN_EMPLYR_INFO B
+						ON A.WRTER_ID = B.ESNTL_ID
+			 WHERE A.WRTER_ID = #{searchId}
+		]]>
+  	    <if test='searchDe != null and searchDe != ""'>
+        <choose>
+            <when test='searchDe == "0"'>
+		 		<![CDATA[	
+		 			AND (SUBSTR(A.TODO_BEGIN_TIME, 1, 8) BETWEEN #{searchBgnDe} AND #{searchEndDe}		
+		 			     OR	SUBSTR(A.TODO_END_TIME, 1, 8) BETWEEN #{searchBgnDe} AND #{searchEndDe}	)
+		 		]]>
+            </when>
+            <when test='searchDe == "1"'>
+	 			<![CDATA[ AND TO_CHAR(A.FRST_REGIST_PNTTM, 'YYYYMMDD') BETWEEN #{searchBgnDe} AND #{searchEndDe}		]]>
+            </when>
+        </choose>
+		</if>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "TODO_SJ"'>
+             	<![CDATA[ AND A.TODO_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "TODO_CN"'>
+             	<![CDATA[ AND A.TODO_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[
+			ORDER BY A.TODO_BEGIN_TIME DESC
+		]]>	
+        /* 구현 Sql */
+        <![CDATA[
+                   ) ALL_LIST
+                   )
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+        ]]>			
+	</select>
+	
+	<!-- 메모할일::목록조회 Count -->
+	<select id="selectMemoTodoListCnt" resultType="int" >
+	 	<![CDATA[
+			SELECT COUNT(A.TODO_ID) as cnt
+			  FROM COMTN_MEMO_TODO A
+				   LEFT OUTER JOIN COMTN_EMPLYR_INFO B
+						ON A.WRTER_ID = B.ESNTL_ID
+			 WHERE A.WRTER_ID = #{searchId}
+	 	]]>
+  	    <if test='searchDe != null and searchDe != ""'>
+        <choose>
+            <when test='searchDe == "0"'>
+		 		<![CDATA[	
+		 			AND (SUBSTR(A.TODO_BEGIN_TIME, 1, 8) BETWEEN #{searchBgnDe} AND #{searchEndDe}		
+		 			     OR	SUBSTR(A.TODO_END_TIME, 1, 8) BETWEEN #{searchBgnDe} AND #{searchEndDe}	)
+		 		]]>
+            </when>
+            <when test='searchDe == "1"'>
+	 			<![CDATA[ AND TO_CHAR(A.FRST_REGIST_PNTTM, 'YYYYMMDD') BETWEEN #{searchBgnDe} AND #{searchEndDe}		]]>
+            </when>
+        </choose>
+		</if>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "TODO_SJ"'>
+             	<![CDATA[ AND A.TODO_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "TODO_CN"'>
+             	<![CDATA[ AND A.TODO_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+	
+	<!-- 메모할일::상세보기 -->
+	<select id="selectMemoTodo" resultType="memoTodoVO" >
+	 	<![CDATA[
+			SELECT A.TODO_ID
+				 , A.TODO_SJ				AS "todoNm" 
+				 , A.TODO_BEGIN_TIME
+				 , A.TODO_END_TIME
+				 , A.WRTER_ID
+				 , B.USER_NM 				AS "wrterNm"
+				 , A.TODO_CN
+				 , A.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
+				 , A.FRST_REGISTER_ID
+				 , A.LAST_UPDT_PNTTM		AS "lastUpdusrPnttm"
+				 , A.LAST_UPDUSR_ID 
+			  FROM COMTN_MEMO_TODO A
+				   LEFT OUTER JOIN COMTN_EMPLYR_INFO B
+						ON A.WRTER_ID = B.ESNTL_ID
+			 WHERE A.TODO_ID = #{todoId}
+	 	]]>
+	</select>
+	
+	<!-- 메모할일::입력  -->
+	<insert id="insertMemoTodo" >
+	 	<![CDATA[
+			INSERT INTO COMTN_MEMO_TODO ( 
+					TODO_ID
+				  ,	TODO_SJ
+				  ,	TODO_BEGIN_TIME
+				  ,	TODO_END_TIME
+				  ,	WRTER_ID
+				  ,	TODO_CN
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+			)VALUES( 
+					#{todoId}
+				  ,	#{todoNm}
+				  ,	#{todoBeginTime}
+				  ,	#{todoEndTime}
+				  ,	#{wrterId}
+				  ,	#{todoCn}
+				  , #{frstRegisterId}
+				  , SYSDATE
+				  , #{frstRegisterId} 
+				  , SYSDATE
+			)
+	 	]]>
+	</insert>
+	
+	<!-- 메모할일::수정  -->
+	<update id="updateMemoTodo" > 
+	 	<![CDATA[
+			UPDATE COMTN_MEMO_TODO 
+			   SET TODO_SJ			= #{todoNm}
+			   	 , TODO_BEGIN_TIME	= #{todoBeginTime}
+			   	 , TODO_END_TIME	= #{todoEndTime}
+			   	 , TODO_CN			= #{todoCn}
+			   	 , LAST_UPDUSR_ID 	= #{lastUpdusrId}
+			   	 , LAST_UPDT_PNTTM = SYSDATE
+			 WHERE TODO_ID = #{todoId}
+	 	]]>
+	</update>
+	
+	<!-- 메모할일::삭제  -->
+	<delete id="deleteMemoTodo" > 
+		<![CDATA[
+			DELETE 
+			  FROM COMTN_MEMO_TODO 
+			 WHERE TODO_ID = #{todoId}
+		]]>
+	</delete>
+	
+</mapper>

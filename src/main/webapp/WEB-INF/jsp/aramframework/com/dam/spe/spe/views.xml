@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/dam/spe/spe/KnoSpecialistList" extends="default">
+    <put-attribute name="title" value="지식전문가 목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/dam/spe/spe/KnoSpecialistList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/dam/spe/spe/KnoSpecialistDetail" extends="default">
+    <put-attribute name="title" value="지식전문가 상세조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/dam/spe/spe/KnoSpecialistDetail.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/dam/spe/spe/KnoSpecialistRegist" extends="default">
+    <put-attribute name="title" value="지식전문가 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/dam/spe/spe/KnoSpecialistRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/dam/spe/spe/KnoSpecialistEdit" extends="default">
+    <put-attribute name="title" value="지식전문가 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/dam/spe/spe/KnoSpecialistEdit.jsp" />
+  </definition>
+  
+</tiles-definitions>

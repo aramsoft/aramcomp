@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.sym.mnu.stm.service.impl.SiteMapngMapper">
+
+	<select id="selectSiteMapngByMapCreatID" resultType="String">
+		<![CDATA[
+			SELECT trim(MAPNG_CREAT_ID) 	AS "mapCreatId"
+			  FROM COMTN_MENU_CREAT_DTLS
+			 WHERE AUTHOR_CODE = ( SELECT AUTHOR_CODE 
+				   					 FROM COMTN_EMPLYR_SCRTY_ESTBS
+				   					WHERE SCRTY_DTRMN_TRGET_ID = #{searchKeyword} )
+			 group by MAPNG_CREAT_ID
+		 ]]>
+	</select> 
+
+	<select id="selectSiteMapng" resultType="siteMapngVO">
+		<![CDATA[
+			SELECT CONCAT(MAPNG_FILE_PATH, MAPNG_FILE_NM) AS "bndeFileNm"
+			  FROM COMTN_SITE_MAP
+			 WHERE trim(MAPNG_CREAT_ID) = #{searchKeyword}
+		 ]]>
+	</select>
+	 
+</mapper>

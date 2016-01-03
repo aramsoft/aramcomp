@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/utl/sys/trm/TrsmrcvMntrngList" extends="default">
+    <put-attribute name="title" value="송수신모니터링 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/utl/sys/trm/TrsmrcvMntrngList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/utl/sys/trm/TrsmrcvMntrngDetail" extends="default">
+    <put-attribute name="title" value="송수신모니터링 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/utl/sys/trm/TrsmrcvMntrngDetail.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/utl/sys/trm/TrsmrcvMntrngRegist" extends="default">
+    <put-attribute name="title" value="송수신모니터링 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/utl/sys/trm/TrsmrcvMntrngRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/utl/sys/trm/TrsmrcvMntrngEdit" extends="default">
+    <put-attribute name="title" value="송수신모니터링 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/utl/sys/trm/TrsmrcvMntrngEdit.jsp" />
+  </definition>
+
+  <definition name="aramframework/com/utl/sys/trm/TrsmrcvMntrngLogList" extends="default">
+    <put-attribute name="title" value="송수신모니터링로그 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/utl/sys/trm/TrsmrcvMntrngLogList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/utl/sys/trm/TrsmrcvMntrngLogDetail" extends="default">
+    <put-attribute name="title" value="송수신모니터링로그 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/utl/sys/trm/TrsmrcvMntrngLogDetail.jsp" />
+  </definition>
+  
+</tiles-definitions>

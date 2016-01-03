@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/uss/olp/cns/CnsltList" extends="default">
+    <put-attribute name="title" value="상담 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olp/cns/CnsltList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/olp/cns/CnsltDetail" extends="default">
+    <put-attribute name="title" value="상담 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olp/cns/CnsltDetail.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/olp/cns/CnsltRegist" extends="default">
+    <put-attribute name="title" value="상담 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olp/cns/CnsltRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/olp/cns/CnsltEdit" extends="default">
+    <put-attribute name="title" value="상담 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olp/cns/CnsltEdit.jsp" />
+  </definition>
+
+  <definition name="aramframework/com/uss/olp/cns/CnsltAnswerList" extends="default">
+    <put-attribute name="title" value="상담답변 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olp/cns/CnsltAnswerList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/olp/cns/CnsltAnswerDetail" extends="default">
+    <put-attribute name="title" value="상담답변 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olp/cns/CnsltAnswerDetail.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/olp/cns/CnsltAnswerEdit" extends="default">
+    <put-attribute name="title" value="상담답변 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olp/cns/CnsltAnswerEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

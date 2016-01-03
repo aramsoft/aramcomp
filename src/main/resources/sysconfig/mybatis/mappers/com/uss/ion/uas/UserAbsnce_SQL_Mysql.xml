@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.uss.ion.uas.service.impl.UserAbsnceMapper">
+
+    <select id="selectUserAbsnceList" resultType="egovMap">
+        /* 구현 Sql */
+        <![CDATA[                 
+            SELECT X.EMPLYR_ID				AS "userId"
+                 , X.USER_NM				AS "userNm"
+                 , X.USER_ABSNCE_AT			AS "userAbsnceAt" 
+                 , X.REG_YN					AS "regYn" 
+                 , X.LAST_UPDT_PNTTM		AS "lastUpdusrPnttm"
+              FROM (SELECT A.EMPLYR_ID 
+                         , A.USER_NM
+                         , (CASE WHEN B.USER_ABSNCE_AT IS NULL THEN 'N'
+                                 ELSE B.USER_ABSNCE_AT 
+                             END) 			AS USER_ABSNCE_AT
+                         , (CASE WHEN B.USER_ABSNCE_AT IS NULL THEN 'N'
+                                 ELSE 'Y' 
+                             END) 			AS REG_YN  
+                         , LAST_UPDT_PNTTM
+                      FROM COMTN_EMPLYR_INFO A 
+                      	   LEFT OUTER JOIN COMTN_USER_ABSNCE B
+                        		ON A.EMPLYR_ID = B.EMPLYR_ID
+                   ) X
+             WHERE 1 = 1
+        ]]>              
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+	    		<![CDATA[ AND X.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>  
+		</if>
+   	    <if test='selAbsnceAt != null and selAbsnceAt != "A"'>
+                <![CDATA[ AND X.USER_ABSNCE_AT = #{selAbsnceAt} ]]>  
+		</if>
+        <![CDATA[                 
+             ORDER BY LAST_UPDT_PNTTM DESC
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+    </select>
+
+    <select id="selectUserAbsnceListCnt" resultType="int">
+        <![CDATA[                 
+            SELECT COUNT(*) totcnt
+              FROM (SELECT A.EMPLYR_ID 
+                         , A.USER_NM
+                         , (CASE WHEN B.USER_ABSNCE_AT IS NULL THEN 'N'
+                                 ELSE B.USER_ABSNCE_AT 
+                             END) AS USER_ABSNCE_AT
+                         , (CASE WHEN B.USER_ABSNCE_AT IS NULL THEN 'N'
+                                 ELSE 'Y' 
+                             END) AS REG_YN  
+                         ,  LAST_UPDUSR_ID
+                         ,  LAST_UPDT_PNTTM
+                      FROM COMTN_EMPLYR_INFO A 
+                      	   LEFT OUTER JOIN COMTN_USER_ABSNCE B
+                        		ON A.EMPLYR_ID = B.EMPLYR_ID
+                   ) X
+             WHERE 1 = 1
+        ]]>			
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+	    		<![CDATA[ AND X.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>  
+		</if>
+   	    <if test='selAbsnceAt != null and selAbsnceAt != "A"'>
+                <![CDATA[ AND X.USER_ABSNCE_AT = #{selAbsnceAt} ]]>  
+		</if>
+    </select>
+    
+    <select id="selectUserAbsnce" resultType="userAbsnceVO">
+        <![CDATA[                 
+            SELECT A.EMPLYR_ID 				AS "userId"	
+                 , A.USER_NM
+                 , (CASE WHEN B.USER_ABSNCE_AT IS NULL THEN 'N'
+                         ELSE B.USER_ABSNCE_AT 
+                     END) 					AS "userAbsnceAt"
+                 , (CASE WHEN B.USER_ABSNCE_AT IS NULL THEN 'N'
+                         ELSE 'Y' 
+                     END) 					AS "regYn"                    
+                 , LAST_UPDUSR_ID
+                 , LAST_UPDT_PNTTM			AS "lastUpdusrPnttm"
+              FROM COMTN_EMPLYR_INFO A 
+                   LEFT OUTER JOIN COMTN_USER_ABSNCE B
+                		ON A.EMPLYR_ID = B.EMPLYR_ID
+             WHERE A.EMPLYR_ID = #{userId}
+        ]]>			
+    </select>
+    
+    <insert id="insertUserAbsnce" >
+        <![CDATA[                 
+           	INSERT INTO COMTN_USER_ABSNCE (
+           			EMPLYR_ID
+           		  , USER_ABSNCE_AT
+           		  , FRST_REGISTER_ID
+           		  , FRST_REGIST_PNTTM
+           		  , LAST_UPDUSR_ID
+           		  , LAST_UPDT_PNTTM 
+           	) VALUES (
+           			#{userId}
+           		  , #{userAbsnceAt}
+				  , #{frstRegisterId}
+				  , sysdate()
+				  , #{frstRegisterId} 
+				  , sysdate()
+           	)
+        ]]>			
+    </insert>    
+    
+    <update id="updateUserAbsnce" >
+        <![CDATA[                 
+            UPDATE COMTN_USER_ABSNCE
+               SET USER_ABSNCE_AT 	= #{userAbsnceAt}
+                 , LAST_UPDUSR_ID 	= #{lastUpdusrId}
+                 , LAST_UPDT_PNTTM 	= sysdate()
+             WHERE EMPLYR_ID = #{userId}
+        ]]>			
+    </update>    
+    
+    <delete id="deleteUserAbsnce" >
+        <![CDATA[
+            DELETE 
+              FROM COMTN_USER_ABSNCE 
+             WHERE EMPLYR_ID = #{userId}  
+        ]]>
+    </delete>  
+        
+</mapper>

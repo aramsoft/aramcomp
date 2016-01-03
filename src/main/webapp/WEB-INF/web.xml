@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+    <display-name>aramframework default</display-name>
+
+	<!--  character encoding filter -->
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>utf-8</param-value>
+        </init-param>
+	    <init-param>
+	        <param-name>forceEncoding</param-name>
+	        <param-value>true</param-value>
+	    </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+ 		
+   	<!-- 3. EgovSSO 로그인 설정을 위한 필터 설정 -->
+    <!--
+    <filter>
+    	<filter-name>SSOLoginFilter</filter-name>
+    	<filter-class>aramframework.com.cmm.filter.SSOLoginFilter</filter-class>
+  	</filter>
+  	<filter-mapping>
+    	<filter-name>SSOLoginFilter</filter-name>
+    	<url-pattern>/j_spring_security_check</url-pattern>
+  	</filter-mapping>
+  	-->
+
+  	<!-- 3. EgovSSO 로그아웃 설정을 위한 필터 설정 -->
+    <!--
+    <filter>
+    	<filter-name>SSOLogoutFilter</filter-name>
+    	<filter-class>aramframework.com.cmm.filter.SSOLogoutFilter</filter-class>
+		<init-param>
+			<description>SSO Global Logout 처리후 반환되는 페이지 설정</description>
+			<param-name>returnURL</param-name>
+			<param-value>/j_spring_security_logout</param-value>
+		</init-param>
+  	</filter>
+  	<filter-mapping>
+    	<filter-name>SSOLogoutFilter</filter-name>
+    	<url-pattern>/uat/uia/actionLogout.do</url-pattern>
+  	</filter-mapping>
+  	-->
+
+  	<!-- 스프링 시큐리티 설정 -->
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <listener>
+        <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
+    </listener>
+    
+	<!-- 스프링 리스너 설정 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath*:sysconfig/spring/context-*.xml</param-value>
+    </context-param>
+
+	<!-- 스프링 servlet Dispatcher 설정 -->
+    <servlet>
+        <servlet-name>action</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/webconfig/springmvc/context-*.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>action</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>action</servlet-name>
+        <url-pattern>*.mdo</url-pattern>
+    </servlet-mapping>
+ 	<servlet-mapping> 
+ 		<servlet-name>action</servlet-name> 
+ 		<url-pattern>/content/*</url-pattern> 
+ 	</servlet-mapping> 
+ 	<servlet-mapping> 
+ 		<servlet-name>action</servlet-name> 
+ 		<url-pattern>/apps/*</url-pattern> 
+ 	</servlet-mapping> 
+ 	<servlet-mapping> 
+ 		<servlet-name>action</servlet-name> 
+ 		<url-pattern>/home/*</url-pattern> 
+ 	</servlet-mapping> 
+ 	
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <session-config>
+        <session-timeout>600</session-timeout>
+    </session-config>
+
+    <error-page>
+      <error-code>404</error-code>
+      <location>/code404.jsp</location>
+    </error-page>
+    <error-page>
+      <error-code>500</error-code>
+      <location>/code500.jsp</location>
+    </error-page>
+
+	<!-- 모바일 신규공통컴포넌트  -->
+	<mime-mapping>
+		<extension>manifest</extension>
+		<mime-type>text/cache-manifest</mime-type>
+	</mime-mapping>
+	<!-- 모바일 신규공통컴포넌트 끝 -->
+	
+</web-app>

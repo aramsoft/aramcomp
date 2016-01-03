@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+   		<constructor-arg ref="sqlSession" />
+ 	</bean>
+ 
+ 	<!-- SqlSession setup for MyBatis Database Layer -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="egov.dataSource" />
+		<property name="configLocation" value="classpath:/sysconfig/mybatis/config/sql-mybatis-config.xml" />
+		<property name="mapperLocations" value="classpath:/sysconfig/mybatis/mappers/**/*_${Globals.DbType}.xml" />
+	</bean>
+	
+	<!-- MapperConfigurer setup for MyBatis Database Layer with @Mapper-->	
+ 	<bean class="egovframework.rte.psl.dataaccess.mapper.MapperConfigurer">
+		<property name="basePackage" value="aramframework" />
+	</bean>  
+	
+</beans>

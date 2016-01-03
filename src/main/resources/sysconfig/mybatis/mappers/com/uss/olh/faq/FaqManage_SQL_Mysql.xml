@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.uss.olh.faq.service.impl.FaqManageMapper">
+
+	<select id="selectFaqList" resultType="egovMap">
+        /* 구현 Sql */
+       	<![CDATA[
+			SELECT FAQ_ID					AS "faqId"
+			     , QESTN_SJ					AS "qestnSj"
+			     , RDCNT					AS "inqireCo" 
+			     , LAST_UPDT_PNTTM			AS "lastUpdusrPnttm" 
+		      FROM COMTN_FAQ_INFO
+		     WHERE 1=1   			
+		]]>					
+   	    <if test='trgetId != null and trgetId != ""'>
+		   		<![CDATA[ AND TRGET_ID = #{trgetId} ]]>	
+		</if>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "QESTN_SJ"'>
+                <![CDATA[ AND QESTN_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>	
+            </when>
+        </choose>
+		</if>
+		<![CDATA[			
+		     ORDER BY FAQ_ID DESC								   
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+	</select>
+	
+	<select id="selectFaqListCnt" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) totcnt
+			  FROM COMTN_FAQ_INFO
+			 WHERE 1=1
+		]]>			
+   	    <if test='trgetId != null and trgetId != ""'>
+		   		<![CDATA[ AND TRGET_ID = #{trgetId} ]]>	
+		</if>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "QESTN_SJ"'>
+                <![CDATA[ AND QESTN_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>	
+            </when>
+        </choose>
+		</if>
+ 	</select>
+	
+	<select id="selectFaqListDetail" resultType="faqManageVO">
+		<![CDATA[		
+			SELECT FAQ_ID
+			     , QESTN_SJ
+			     , QESTN_CN
+			     , ANSWER_CN
+			     , RDCNT				AS "inqireCo" 
+			     , ATCH_FILE_ID
+			     , FRST_REGIST_PNTTM 	AS "frstRegisterPnttm"
+			     , FRST_REGISTER_ID
+			     , LAST_UPDT_PNTTM   	AS "lastUpdusrPnttm"
+			     , LAST_UPDUSR_ID			 			  			 			  
+			  FROM COMTN_FAQ_INFO				
+			 WHERE FAQ_ID = #{faqId}				
+		]]>
+	</select>
+	
+	<insert id="insertFaqCn">	
+		<![CDATA[	
+			INSERT INTO COMTN_FAQ_INFO (
+			   		FAQ_ID
+				  , QESTN_SJ
+				  , QESTN_CN
+				  , ANSWER_CN
+				  , RDCNT
+				  , ATCH_FILE_ID
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+			  	  ,	TRGET_ID
+			) VALUES ( 
+					#{faqId}
+				  , #{qestnSj}
+				  , #{qestnCn}
+				  , #{answerCn}
+				  , 0
+				  , #{atchFileId, jdbcType=VARCHAR}
+				  , #{frstRegisterId}
+				  , sysdate()
+				  , #{frstRegisterId} 
+				  , sysdate()
+			  	  ,	#{trgetId}
+			)
+		]]>
+	</insert>
+	
+	<update id="updateFaqInqireCo">
+		<![CDATA[		
+			UPDATE COMTN_FAQ_INFO	
+			   SET RDCNT= IFNULL(RDCNT,0) + 1				  			
+ 			 WHERE FAQ_ID = #{faqId}
+		]]>
+	</update>
+
+	<update id="updateFaqCn">
+		<![CDATA[
+			UPDATE COMTN_FAQ_INFO	
+			   SET FAQ_ID			= #{faqId} 
+				 , QESTN_SJ			= #{qestnSj}
+				 , QESTN_CN			= #{qestnCn}
+				 , ANSWER_CN		= #{answerCn}
+				 , ATCH_FILE_ID		= #{atchFileId, jdbcType=VARCHAR}				  			
+				 , LAST_UPDUSR_ID	= #{lastUpdusrId}
+				 , LAST_UPDT_PNTTM	=sysdate()
+ 			 WHERE FAQ_ID = #{faqId}
+		]]>
+	</update>
+	
+	<delete id="deleteFaqCn">
+		<![CDATA[
+			DELETE 
+			  FROM COMTN_FAQ_INFO 
+			 WHERE FAQ_ID = #{faqId}
+		]]>
+	</delete>
+	
+</mapper>

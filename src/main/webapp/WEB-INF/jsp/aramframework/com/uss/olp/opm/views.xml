@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/uss/olp/opm/OnlinePollList" extends="default">
+    <put-attribute name="title" value="온라인POLL 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olp/opm/OnlinePollList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/olp/opm/OnlinePollDetail" extends="default">
+    <put-attribute name="title" value="온라인POLL 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olp/opm/OnlinePollDetail.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/olp/opm/OnlinePollRegist" extends="default">
+    <put-attribute name="title" value="온라인POLL 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olp/opm/OnlinePollRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/olp/opm/OnlinePollEdit" extends="default">
+    <put-attribute name="title" value="온라인POLL수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olp/opm/OnlinePollEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

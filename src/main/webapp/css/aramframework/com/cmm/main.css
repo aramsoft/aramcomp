@@ -1,0 +1,91 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* 공통선언 ▼*/
+body {
+	margin:0px 0px 0px 0px;
+	padding:0px;
+	background-color:#fff;
+	font-family:돋움;
+	font-size:12px;
+	color:#000000;
+	line-height:1.4em;
+}
+th, td, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, form, fieldset, p, blockquote, iframe { margin:0;	padding:0; }
+ol, ul, li { list-style:none; padding:0; margin:0; }
+hr, h1, h2, h3, h4 { display: none; }
+img { border:none; vertical-align:top; }
+fieldset { border:none;}
+legend { display:none; margin:0; padding:0;}
+form   { padding:0px 0px; }
+
+#leftmenu { float:left; width:20%; overflow-x:hidden; overflow-y:scroll; }
+#content { float:left; width:80%; }
+
+/* 상단 ▼*/
+#gnb { width:100%; height:65px; }
+#gnb #top_logo   { width:236px; height:65px; float:left; }
+#gnb #use_descri { 
+	height:22px; float:right; margin:22px 0 0 0; font-size:12px; color:#4f4f4f; font-weight:bold; letter-spacing:-1px; 
+	background:url(../../../images/aramframework/com/yellow_bull.gif) no-repeat; padding:4px 0 0 22px; 
+}
+#gnb #use_descri li { display:inline; }
+#gnb #use_descri li img { margin:-3px 0 0px 5px; }
+/* 상단 ▲*/
+
+/* 상단메뉴 ▼*/
+#new_topnavi { 
+	width:98%; height:33px; padding:14px 0 0 20px;
+	background:url(../../../../images/aramframework/com/navi_bg.gif); 
+}
+#new_topnavi li { display:inline; padding:12px 0 0 2px; }
+#new_topnavi li.gap { color:#a8d7f2; font-size:11px; padding:0 6px }
+#new_topnavi li a   { font-size:12px; color:#fff; font-weight:bold; text-decoration:none; }
+#new_topnavi li a:hover { font-weight:bold; color:#c9e2f7; text-decoration:none; }
+/* 상단메뉴 ▲*/
+
+/* 하단 ▼*/
+#new_footer { 
+	width:95%; height:60px; clear:both; padding:4px 0 0 20px;
+	background:url(../../../../images/aramframework/com/bottom_bg.gif) repeat-x; 
+}
+#new_footer li { display:inline; }
+#new_footer li.gap { padding:0 0 0 0px; }
+/* 하단 ▲*/
+
+/* main page */
+#main_home {
+	text-align:center;
+	width:100%;
+	overflow:hidden;
+}
+
+#main_home .wrap {
+	display:inline-block;
+}
+
+#main_home .side {
+	margin:10px;
+	width:450px;
+	float:left;
+}
+
+#main_home .section {
+	padding:10px;
+}
+	
+.section_title { 
+	font-family:"돋움"; font-size:10pt; color:#000000;  
+	vertical-align:middle; text-align:left; height:16px; padding-left:20px;  
+	background:url('/images/aramframework/com/cmm/icon/tit_icon.gif') no-repeat left center transparent; 
+}
+.section_title h2 {
+	vertical-align:middle; text-align:left; display:inline; 
+	font-family:"돋움"; font-size:10pt; 	font-weight:bold; color:#000000;  
+}
+
+.section_body {
+	width:430px; height:120px;
+	border:#B6D58F 10px solid;
+	text-align:left;
+}

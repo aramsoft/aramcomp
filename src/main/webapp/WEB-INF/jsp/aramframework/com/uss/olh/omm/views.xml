@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/uss/olh/omm/OnlineManualList" extends="default">
+    <put-attribute name="title" value="온라인메뉴얼 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olh/omm/OnlineManualList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/olh/omm/OnlineManualDetail" extends="default">
+    <put-attribute name="title" value="온라인메뉴얼 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olh/omm/OnlineManualDetail.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/olh/omm/OnlineManualRegist" extends="default">
+    <put-attribute name="title" value="온라인메뉴얼 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olh/omm/OnlineManualRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/olh/omm/OnlineManualEdit" extends="default">
+    <put-attribute name="title" value="온라인메뉴얼 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olh/omm/OnlineManualEdit.jsp" />
+  </definition>
+
+  <definition name="aramframework/com/uss/olh/omm/OnlineManualUserList" extends="default">
+    <put-attribute name="title" value="온라인메뉴얼 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olh/omm/OnlineManualUserList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/olh/omm/OnlineManualUserDetail" extends="default">
+    <put-attribute name="title" value="온라인메뉴얼 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olh/omm/OnlineManualUserDetail.jsp" />
+  </definition>
+  
+</tiles-definitions>

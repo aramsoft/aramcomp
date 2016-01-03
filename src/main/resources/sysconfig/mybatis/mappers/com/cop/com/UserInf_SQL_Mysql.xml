@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.cop.com.service.impl.UserInfMapper">
+
+	<!-- 목록조회  -->
+ 	<select id="selectUserList" resultType="egovMap" >
+        /* 구현 Sql */
+ 		<![CDATA[
+			SELECT ESNTL_ID 				AS "uniqId"
+			     , USER_ID					AS "userId"
+			     , USER_NM					AS "userNm"
+			     , USER_ADRES				AS "userAdres"
+			     , USER_EMAIL				AS "userEmail"
+			     , 'Y'						AS "useAt"
+			  FROM COMVN_USER_MASTER
+			 WHERE 1=1 
+ 		]]>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "USER_NM"'>
+				<![CDATA[ AND USER_NM LIKE '%' || #{searchKeyword} || '%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[			
+			 ORDER BY USER_NM 
+		]]>					
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+ 	</select>
+ 	
+	<!-- 목록조회_게시물 총갯수  -->
+	<select id="selectUserListCnt" resultType="int" >
+		<![CDATA[
+			SELECT COUNT(ESNTL_ID)
+			  FROM COMVN_USER_MASTER
+			 WHERE 1=1 
+		]]>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "USER_NM"'>
+				<![CDATA[ AND USER_NM LIKE '%' || #{searchKeyword} || '%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>	
+ 
+	<!-- 전체조회(커뮤니티 사용자)  -->
+	<select id="selectAllCmmntyUser" resultType="egovMap" >
+		<![CDATA[
+			SELECT EMPLYR_ID 				AS "uniqId"
+			     , CMMNTY_ID 				AS "trgetId" 
+			  FROM COMTN_CMMNTY_USER 
+			 WHERE USE_AT = 'Y'
+			   AND CMMNTY_ID =  #{trgetId}	
+		]]>
+	</select>	
+
+	<!-- 목록조회(커뮤니티 사용자)  -->
+	<select id="selectCmmntyUserList" resultType="egovMap" >
+        /* 구현 Sql */
+ 		<![CDATA[
+			SELECT b.ESNTL_ID 				AS "uniqId"
+			     , b.USER_ID				AS "userId"
+			     , b.USER_NM				AS "userNm"
+			     , b.USER_ADRES				AS "userAdres"
+			     , b.USER_EMAIL				AS "userEmail"
+			     , a.USE_AT					AS "useAt"
+			     , a.MNGR_AT				AS "oprtrAt"
+			     , (SELECT USE_AT FROM COMTN_CMMNTY WHERE CMMNTY_ID = #{trgetId}) AS "deletedAt"
+			  FROM COMTN_CMMNTY_USER a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+				   		ON  a.EMPLYR_ID	= b.ESNTL_ID  	
+			 WHERE a.CMMNTY_ID = #{trgetId}
+ 		]]>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "USER_NM"'>
+				<![CDATA[ AND b.USER_NM LIKE '%' || #{searchKeyword} || '%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[			
+			 ORDER BY b.USER_NM 
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+ 	</select>
+ 	
+	<!-- 목록조회(커뮤니티 사용자)_게시물 총갯수  -->
+	<select id="selectCmmntyUserListCnt" resultType="int" >
+		<![CDATA[
+			SELECT COUNT(a.EMPLYR_ID)
+			  FROM COMTN_CMMNTY_USER a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+				   		ON  a.EMPLYR_ID	= b.ESNTL_ID  	
+			 WHERE a.CMMNTY_ID = #{trgetId}
+		]]>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "USER_NM"'>
+				<![CDATA[ AND b.USER_NM LIKE '%' || #{searchKeyword} || '%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+ 
+	<!-- 목록조회(커뮤니티 관리자)  -->
+	<select id="selectCmmntyMngrList" resultType="egovMap" >
+        /* 구현 Sql */
+ 		<![CDATA[
+			SELECT b.ESNTL_ID 				AS "uniqId"
+			     , b.USER_ID				AS "userId"
+			     , b.USER_NM				AS "userNm"
+			     , b.USER_ADRES				AS "userAdres"
+			     , b.USER_EMAIL				AS "userEmail"
+			     , a.USE_AT					AS "useAt"
+			     , (SELECT USE_AT from COMTN_CMMNTY WHERE CMMNTY_ID = #{trgetId}) AS "deletedAt"
+			  FROM COMTN_CMMNTY_USER a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+				   		ON  a.EMPLYR_ID	= b.ESNTL_ID  	
+			 WHERE a.CMMNTY_ID = #{trgetId}
+  			   AND a.MNGR_AT = 'Y'
+ 		]]>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "USER_NM"'>
+				<![CDATA[ AND b.USER_NM LIKE '%' || #{searchKeyword} || '%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[			
+			 ORDER BY b.USER_NM 
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+ 	</select>
+ 	
+	<!-- 목록조회(커뮤니티  관리자)_게시물 총갯수  -->
+	<select id="selectCmmntyMngrListCnt" resultType="int" >
+		<![CDATA[
+			SELECT COUNT(a.EMPLYR_ID)
+			  FROM COMTN_CMMNTY_USER a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+				   		ON  a.EMPLYR_ID	= b.ESNTL_ID  	
+			 WHERE a.CMMNTY_ID = #{trgetId}
+  			   AND a.MNGR_AT = 'Y'
+		]]>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "USER_NM"'>
+				<![CDATA[ AND b.USER_NM LIKE '%' || #{searchKeyword} || '%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+	
+	<!-- 전체조회(동호회 사용자)  -->
+	<select id="selectAllClubUser" resultType="egovMap" >
+		<![CDATA[
+			SELECT EMPLYR_ID 				AS "uniqId"
+			     , CLB_ID 					AS "trgetId" 
+			  FROM COMTN_CLUB_USER 
+			 WHERE USE_AT = 'Y'
+			   AND CLB_ID = #{trgetId}			
+		]]>
+	</select>
+	
+	<!-- 목록조회(동호회 사용자)  -->
+	<select id="selectClubUserList" resultType="egovMap" >
+        /* 구현 Sql */
+ 		<![CDATA[
+			SELECT b.ESNTL_ID 				AS "uniqId"
+			     , b.USER_ID				AS "userId"
+			     , b.USER_NM				AS "userNm"
+			     , b.USER_ADRES				AS "userAdres"
+			     , b.USER_EMAIL				AS "userEmail"
+			     , a.USE_AT					AS "useAt"
+			     , a.OPRTR_AT				AS "oprtrAt"
+			     , (SELECT USE_AT from COMTN_CLUB WHERE CLB_ID = #{trgetId}) AS "deletedAt"
+			  FROM COMTN_CLUB_USER a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+				   		ON  a.EMPLYR_ID	= b.ESNTL_ID  	
+			 WHERE a.CLB_ID = #{trgetId}
+ 		]]>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "USER_NM"'>
+				<![CDATA[ AND b.USER_NM LIKE '%' || #{searchKeyword} || '%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[			
+			 ORDER BY b.USER_NM 
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+ 	</select>
+ 	
+	<!-- 목록조회(동호회 사용자)_게시물 총갯수  -->
+	<select id="selectClubUserListCnt" resultType="int" >
+		<![CDATA[
+			SELECT COUNT(a.EMPLYR_ID)
+			  FROM COMTN_CLUB_USER a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+				   		ON  a.EMPLYR_ID	= b.ESNTL_ID  	
+			 WHERE a.CLB_ID = #{trgetId}
+		]]>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "USER_NM"'>
+				<![CDATA[ AND a.USER_NM LIKE '%' || #{searchKeyword} || '%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+
+	<!-- 목록조회(동호회 운영자)  -->
+	<select id="selectClubOprtrList" resultType="egovMap" >
+        /* 구현 Sql */
+ 		<![CDATA[
+			SELECT b.ESNTL_ID 				AS "uniqId"
+			     , b.USER_ID				AS "userId"
+			     , b.USER_NM				AS "userNm"
+			     , b.USER_ADRES				AS "userAdres"
+			     , b.USER_EMAIL				AS "userEmail"
+			     , a.USE_AT					AS "useAt"
+			     , (SELECT USE_AT from COMTN_CLUB WHERE CLB_ID = #trgetId#) AS "deletedAt"
+			  FROM COMTN_CLUB_USER a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+				   		ON  a.EMPLYR_ID	= b.ESNTL_ID  	
+			 WHERE a.CLB_ID = #{trgetId}
+ 			   AND a.OPRTR_AT = 'Y'
+ 		]]>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "USER_NM"'>
+				<![CDATA[ AND b.USER_NM LIKE '%' || #{searchKeyword} || '%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[			
+			 ORDER BY b.USER_NM 
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+ 	</select>
+ 	
+	<!-- 목록조회(동호회 운영자)_게시물 총갯수  -->
+	<select id="selectClubOprtrListCnt" resultType="int" >
+		<![CDATA[
+			SELECT COUNT(a.EMPLYR_ID)
+			  FROM COMTN_CLUB_USER a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+				   		ON  a.EMPLYR_ID	= b.ESNTL_ID  	
+			 WHERE a.CLB_ID = #{trgetId}
+ 			   AND a.OPRTR_AT = 'Y'
+		]]>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "USER_NM"'>
+				<![CDATA[ AND b.USER_NM LIKE '%' || #{searchKeyword} || '%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+
+</mapper>

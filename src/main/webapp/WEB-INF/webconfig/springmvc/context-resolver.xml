@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	수정일                 수정자                          수정내용
+  =========     =======    =================================================
+  2011.09.07   	서준식     	 	로그인 체크 인터셉터 추가
+  2011.09.29	이기하			에러페이지 경로수정
+-->
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+ 
+    <!-- MULTIPART RESOLVERS -->
+    <!-- regular spring resolver -->
+    <bean id="spring.RegularCommonsMultipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="100000000" />
+        <property name="maxInMemorySize" value="100000000" />
+    </bean>
+
+    <!-- custom multi file resolver -->
+    <bean id="local.MultiCommonsMultipartResolver" class="aramframework.com.cmm.util.MultipartResolver">
+        <property name="maxUploadSize" value="100000000" />
+        <property name="maxInMemorySize" value="100000000" />
+    </bean>
+
+    <!-- choose one from above and alias it to the name Spring expects -->
+    <!-- alias name="local.MultiCommonsMultipartResolver" alias="multipartResolver" /-->
+    <alias name="spring.RegularCommonsMultipartResolver" alias="multipartResolver" />
+
+	<!-- For Pagination Tag -->
+	<bean id="paginationManager" class="egovframework.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationManager">
+		<property name="rendererType">
+			<map>
+				<entry key="image" value-ref="imageRenderer"/>
+				<entry key="mblImage" value-ref="mblImageRenderer"/>  
+			</map>
+		</property>
+	</bean>
+	<bean id="imageRenderer"    class="aramframework.com.cmm.web.ImagePaginationRenderer"/>
+	<bean id="mblImageRenderer" class="aramframework.mbl.cmm.web.ImgPaginationRenderer"/>
+
+	<!--
+        View resolver that delegates to other view resolvers based on the content type
+    -->
+    <bean id="beanViewResolver"  class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="1" />
+    <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />				
+
+    <bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="2"  >
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
+	</bean>
+    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer" >
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/layouts/layouts.xml</value>
+				<!-- Scan views directory for Tiles configurations -->
+				<value>/WEB-INF/jsp/**/views.xml</value>
+			</list>
+		</property>
+	</bean>
+
+    <!--
+		- This bean configures the 'prefix' and 'suffix' properties of
+		- InternalResourceViewResolver, which resolves logical view names
+		- returned by Controllers. For example, a logical view name of "vets"
+		- will be mapped to "/WEB-INF/jsp/vets.jsp". no order(last call)
+	-->
+    <bean id="urlViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" 
+		  p:viewClass="org.springframework.web.servlet.view.JstlView"
+		  p:prefix="/WEB-INF/jsp/" p:suffix=".jsp"/>
+ 	
+ 	<!--
+		- This bean resolves specific types of exceptions to corresponding logical
+		- view names for error views. The default behaviour of DispatcherServlet
+		- is to propagate all exceptions to the servlet container: this will happen
+		- here with all other types of exceptions.
+	-->
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="defaultErrorView" value="aramframework/com/cmm/error/egovError"/>
+		<property name="excludedExceptions">
+			<list>
+				<value>org.springframework.security.access.AccessDeniedException</value>
+			</list>
+		</property>
+		<property name="exceptionMappings">
+			<props>
+				<prop key="org.springframework.dao.DataAccessException">aramframework/com/cmm/error/dataAccessFailure</prop>
+				<prop key="org.springframework.transaction.TransactionException">aramframework/com/cmm/error/dataAccessFailure</prop>
+				<prop key="egovframework.rte.fdl.cmmn.exception.EgovBizException">aramframework/com/cmm/error/egovBizException</prop>
+				<prop key="org.springframework.web.HttpSessionRequiredException">aramframework/com/cmm/error/egovHttpSessionException</prop>
+			</props>
+		</property>
+	</bean>
+
+</beans>

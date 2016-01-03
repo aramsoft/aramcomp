@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.sym.prm.service.impl.ProgrmManageMapper">
+
+	<select id="selectProgrmList" resultType="egovMap">
+        /* 구현 Sql */
+		<![CDATA[
+		    SELECT PROGRM_FILE_NM   		AS "progrmFileNm"	
+			 	 , PROGRM_KOREAN_NM  		AS "progrmKoreanNm"
+				 , URL           			AS "URL"   
+			  FROM COMTN_PROGRM_LIST
+			 WHERE (PROGRM_FILE_NM like  '%'|| #{searchKeyword}||'%'
+			 	    OR PROGRM_KOREAN_NM like  '%'|| #{searchKeyword}||'%')
+        ]]>
+     	<if test='searchUseAt != null and searchUseAt != ""'>
+				<![CDATA[ AND CMMNTY_USE_AT = #{searchUseAt} ]]>
+		</if>
+		<![CDATA[
+			 ORDER BY URL ASC
+		 ]]>
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+	</select> 
+
+	<!-- 총건수 조회  	-->
+	<select id="selectProgrmListCnt" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) AS "totcnt"
+			  FROM COMTN_PROGRM_LIST
+			 WHERE (PROGRM_FILE_NM like  '%'|| #{searchKeyword}||'%'
+			 	    OR PROGRM_KOREAN_NM like  '%'|| #{searchKeyword}||'%')
+        ]]>
+      	<if test='searchUseAt != null and searchUseAt != ""'>
+				<![CDATA[ AND CMMNTY_USE_AT = #{searchUseAt} ]]>
+		</if>
+	</select>
+
+	<!-- 파일명존재여부 조회 -->
+	<select id="selectProgrmNMTotCnt" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) 				AS "totcnt"
+			  FROM COMTN_PROGRM_LIST
+			 WHERE PROGRM_FILE_NM = #{progrmFileNm}
+		]]>
+	</select>
+
+	<!-- 프로그램정보 총건수 조회 -->
+	<select id="selectProgrmListCntAll" resultType="int">
+		<![CDATA[
+			SELECT COUNT(PROGRM_FILE_NM) 	AS "totcnt" 
+			  FROM COMTN_PROGRM_LIST
+		]]>
+	</select>
+	
+	<!-- 상세보기 -->
+	<select id="selectProgrm" resultType="progrmManageVO">
+		<![CDATA[
+		    SELECT PROGRM_FILE_NM    
+			 	 , PROGRM_STRE_PATH  
+				 , PROGRM_KOREAN_NM   
+				 , PROGRM_DC         
+				 , URL              
+				 , CMMNTY_USE_AT              
+			  FROM COMTN_PROGRM_LIST
+			 WHERE PROGRM_FILE_NM = #{progrmFileNm}
+		]]>
+	</select>
+	
+	<insert id="insertProgrm">
+		<![CDATA[
+			INSERT INTO COMTN_PROGRM_LIST ( 
+				    PROGRM_FILE_NM
+				  , PROGRM_STRE_PATH
+				  , PROGRM_KOREAN_NM
+				  , PROGRM_DC
+				  , URL 
+				  , CMMNTY_USE_AT              
+			) VALUES ( 
+					#{progrmFileNm}
+				  , #{progrmStrePath}
+				  , #{progrmKoreanNm}
+				  , #{progrmDc}
+				  , #{URL} 
+				  , #{cmmntyUseAt} 
+			)
+		]]>
+	</insert>
+
+	<update id="updateProgrm">
+		<![CDATA[
+		   UPDATE COMTN_PROGRM_LIST 
+			  SET PROGRM_STRE_PATH = #{progrmStrePath}
+				, PROGRM_KOREAN_NM = #{progrmKoreanNm}
+				, PROGRM_DC        = #{progrmDc}
+				, URL              = #{URL}
+				, CMMNTY_USE_AT    = #{cmmntyUseAt}
+		 	WHERE PROGRM_FILE_NM   = #{progrmFileNm}
+		]]>
+	</update>
+
+	<delete id="deleteProgrm">
+		<![CDATA[                          
+		   DELETE 
+		     FROM COMTN_PROGRM_LIST              
+			WHERE PROGRM_FILE_NM = #{progrmFileNm}                 
+		]]>                                
+	</delete> 
+
+	<delete id="deleteAllProgrm">
+		<![CDATA[                          
+			DELETE 
+			  FROM COMTN_PROGRM_LIST              
+		]]>                                
+	</delete> 
+
+</mapper>                            

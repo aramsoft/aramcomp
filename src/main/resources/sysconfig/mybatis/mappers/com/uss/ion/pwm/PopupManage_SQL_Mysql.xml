@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.uss.ion.pwm.service.impl.PopupManageMapper">
+
+	<!-- 팝업창관리:: 메인 게시물정보 -->
+	<select id="selectPopupMainList" resultType="egovMap">
+		<![CDATA[
+			SELECT A.POPUP_ID				AS "popupId"
+			     , A.POPUP_SJ_NM		    AS "popupTitleNm" 
+			     , A.FILE_URL				AS "fileUrl"
+			     , A.NTCE_BGNDE				AS "ntceBgnde"
+			     , A.NTCE_ENDDE				AS "ntceEndde"
+			     , A.NTCE_AT				AS "ntceAt"
+			  FROM COMTN_POPUP_MANAGE A
+			 WHERE A.NTCE_AT = 'Y'
+			   AND DATE_FORMAT(sysdate(),'%Y%m%d%H%i%S') >= NTCE_BGNDE
+			   AND DATE_FORMAT(sysdate(),'%Y%m%d%H%i%S') <=  NTCE_ENDDE
+	 	]]>
+	</select>
+
+	<!-- 팝업창관리::목록조회 게시물정보 -->
+	<select id="selectPopupList" resultType="egovMap">
+        /* 구현 Sql */
+       	<![CDATA[
+			SELECT A.POPUP_ID				AS "popupId"
+			     , A.POPUP_SJ_NM		    AS "popupTitleNm" 
+			     , A.FILE_URL				AS "fileUrl"
+			     , A.NTCE_BGNDE				AS "ntceBgnde"
+			     , A.NTCE_ENDDE				AS "ntceEndde"
+			     , A.NTCE_AT				AS "ntceAt"
+			  FROM COMTN_POPUP_MANAGE A
+			 WHERE 1=1
+		]]>
+   	    <if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "POPUP_SJ_NM"'>
+                <![CDATA[ AND POPUP_SJ_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "FILE_URL"'>
+                <![CDATA[ AND FILE_URL LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[
+			 ORDER BY A.FRST_REGIST_PNTTM DESC
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+	</select>
+	
+	<!-- 팝업창관리::목록조회_게시물 총갯수  -->
+	<select id="selectPopupListCnt" resultType="int">
+        <![CDATA[
+			SELECT COUNT(*) totcnt
+			  FROM COMTN_POPUP_MANAGE
+			 WHERE 1=1
+        ]]>			
+   	    <if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "POPUP_SJ_NM"'>
+                <![CDATA[ AND POPUP_SJ_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "FILE_URL"'>
+                <![CDATA[ AND FILE_URL LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+
+	<!-- 팝업창관리::상세보기 -->
+	<select id="selectPopupDetail" resultType="popupManageVO">
+        <![CDATA[
+			SELECT A.POPUP_ID
+			     , A.POPUP_SJ_NM			AS "popupTitleNm"
+			     , A.FILE_URL
+			     , A.POPUP_VRTICL_LC		AS "popupHlc"
+			     , A.POPUP_WIDTH_LC			AS "popupWlc"
+			     , A.POPUP_VRTICL_SIZE		AS "popupHSize"
+			     , A.POPUP_WIDTH_SIZE		AS "popupWSize"
+			     , A.NTCE_BGNDE
+			     , A.NTCE_ENDDE
+			     , A.STOPVEW_SETUP_AT		AS "stopVewAt"
+			     , A.NTCE_AT
+			     , A.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
+			     , A.FRST_REGISTER_ID
+			     , A.LAST_UPDT_PNTTM		AS "lastUpdusrPnttm" 
+			     , A.LAST_UPDUSR_ID
+			  FROM COMTN_POPUP_MANAGE A
+			 WHERE A.POPUP_ID = #{popupId}
+        ]]>			
+	</select>
+
+	<!-- 팝업창관리::입력  -->
+	<insert id="insertPopup">
+	 	<![CDATA[
+			INSERT INTO COMTN_POPUP_MANAGE (
+					POPUP_ID
+				  ,	POPUP_SJ_NM
+				  ,	FILE_URL
+				  ,	POPUP_VRTICL_LC
+				  ,	POPUP_WIDTH_LC
+				  ,	POPUP_VRTICL_SIZE
+				  ,	POPUP_WIDTH_SIZE
+				  ,	NTCE_BGNDE
+				  ,	NTCE_ENDDE
+				  ,	STOPVEW_SETUP_AT
+				  ,	NTCE_AT
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+			) VALUES (
+					#{popupId}
+				  ,	#{popupTitleNm}
+				  ,	#{fileUrl}
+				  ,	#{popupHlc}
+				  ,	#{popupWlc}
+				  ,	#{popupHSize}
+				  ,	#{popupWSize}
+				  ,	#{ntceBgnde}
+				  ,	#{ntceEndde}
+				  ,	#{stopVewAt}
+				  ,	#{ntceAt}
+				  , #{frstRegisterId}
+				  , sysdate()
+				  , #{frstRegisterId} 
+				  , sysdate()
+			)
+	 	]]>
+	</insert>
+
+	<!-- 팝업창관리::수정  -->
+	<update id="updatePopup">
+	 	<![CDATA[
+			UPDATE COMTN_POPUP_MANAGE
+			   SET POPUP_SJ_NM			= #{popupTitleNm}
+			     , FILE_URL				= #{fileUrl}
+			     , POPUP_VRTICL_LC		= #{popupHlc}
+			     , POPUP_WIDTH_LC		= #{popupWlc}
+			     , POPUP_VRTICL_SIZE	= #{popupHSize}
+			     , POPUP_WIDTH_SIZE		= #{popupWSize}
+			     , NTCE_BGNDE			= #{ntceBgnde}
+			     , NTCE_ENDDE			= #{ntceEndde}
+			     , STOPVEW_SETUP_AT		= #{stopVewAt}
+			     , NTCE_AT				= #{ntceAt}
+			     , LAST_UPDUSR_ID		= #{lastUpdusrId}
+			     , LAST_UPDT_PNTTM		= sysdate()
+			 WHERE POPUP_ID = #{popupId}
+	 	]]>
+	</update>
+
+    <!-- 팝업창관리::삭제  -->
+	<delete id="deletePopup">
+		<![CDATA[
+			DELETE 
+			  FROM COMTN_POPUP_MANAGE
+			 WHERE POPUP_ID = #{popupId}
+		]]>
+	</delete>
+
+</mapper>

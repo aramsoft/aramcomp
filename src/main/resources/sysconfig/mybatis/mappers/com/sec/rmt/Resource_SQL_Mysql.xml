@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.sec.rmt.service.impl.ResourceMapper">
+
+	<!-- 전체조회  -->
+    <select id="selectResourceAllList" resultType="egovMap">
+        <![CDATA[
+            SELECT RESOURCE_CODE				
+            	 , RESOURCE_NM					
+            	 , RESOURCE_DC					
+            	 , RESOURCE_TY					
+            	 , RESOURCE_SORT				
+            	 , RESOURCE_CREAT_DE			
+              FROM COMTN_RESOURCE_INFO
+        ]]>             
+    </select>
+
+	<!-- 목록조회  -->
+    <select id="selectResourceList" resultType="egovMap">
+        /* 구현 Sql */
+        <![CDATA[
+            SELECT RESOURCE_CODE 				AS "resourceCode"
+                 , RESOURCE_NM 					AS "resourceNm"
+                 , RESOURCE_DC 					AS "resourceDc"
+                 , (SELECT CODE_NM 
+                      FROM COMTC_CMMN_DETAIL_CODE 
+                     WHERE CODE_ID = 'COM029' 
+                       AND CODE = RESOURCE_TY
+                   ) 							AS "resourceTy" 
+                 , RESOURCE_SORT 				AS "resourceSort"
+                 , RESOURCE_CREAT_DE			AS "resourceCreatDe"
+              FROM COMTN_RESOURCE_INFO
+             WHERE 1=1
+        ]]>             
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+                <![CDATA[ AND RESOURCE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+		</if>
+        <![CDATA[            
+            ORDER BY RESOURCE_CREAT_DE DESC 
+        ]]> 
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+    </select>
+
+	<!-- 목록조회_게시물 총갯수  -->
+    <select id="selectResourceListCnt" resultType="int">
+        <![CDATA[            
+            SELECT COUNT(*) totcnt
+              FROM COMTN_RESOURCE_INFO
+             WHERE 1=1
+        ]]> 
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+                <![CDATA[ AND RESOURCE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+		</if>
+    </select>
+
+	<!-- 상세보기 -->
+    <select id="selectResource" resultType="resourceVO">
+        <![CDATA[
+            SELECT RESOURCE_CODE 			
+                 , RESOURCE_NM 				
+                 , RESOURCE_PTTRN 			
+                 , RESOURCE_DC				
+                 , RESOURCE_TY 				
+                 , RESOURCE_SORT 			
+                 , RESOURCE_CREAT_DE		
+              FROM COMTN_RESOURCE_INFO
+             WHERE RESOURCE_CODE = #{resourceCode}                
+        ]]>
+    </select>
+
+	<!-- 입력 -->
+    <insert id="insertResource" >
+        <![CDATA[
+            INSERT INTO COMTN_RESOURCE_INFO ( 
+            		RESOURCE_CODE
+            	  ,	RESOURCE_NM
+            	  ,	RESOURCE_PTTRN
+            	  ,	RESOURCE_DC
+            	  ,	RESOURCE_TY
+            	  , RESOURCE_SORT
+            	  ,	RESOURCE_CREAT_DE 
+           ) VALUES ( 
+           			#{resourceCode}
+           		  ,	#{resourceNm}
+           		  ,	#{resourcePttrn}
+           		  ,	#{resourceDc}
+           		  , #{resourceTy}
+           		  ,	#{resourceSort}
+           		  , sysdate()
+           )
+        ]]>
+    </insert>
+
+	<!-- 수정 -->
+    <update id="updateResource" >
+        <![CDATA[
+            UPDATE COMTN_RESOURCE_INFO 
+               SET RESOURCE_NM		= #{resourceNm}
+                 , RESOURCE_PTTRN	= #{resourcePttrn}
+                 , RESOURCE_DC		= #{resourceDc}
+                 , RESOURCE_TY		= #{resourceTy}
+                 , RESOURCE_SORT	= #{resourceSort}
+                 , RESOURCE_CREAT_DE= SYSDATE
+             WHERE RESOURCE_CODE	= #{resourceCode}
+        ]]>
+    </update>
+
+	<!-- 삭제 -->
+    <delete id="deleteResource">
+        <![CDATA[
+            DELETE 
+              FROM COMTN_RESOURCE_INFO 
+             WHERE RESOURCE_CODE=#{resourceCode}
+        ]]>
+    </delete>
+
+</mapper>

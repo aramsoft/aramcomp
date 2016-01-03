@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.utl.sys.prm.service.impl.ProcessMonMapper">
+	
+	<select id="selectProcessMonList" resultType="processMonVO">
+        /* 구현 Sql */
+       	<![CDATA[
+ 			SELECT A.PROCS_ID				PROCESS_ID
+				 , A.PROCS_NM				PROCESS_NM
+				 , B.CODE_NM 				PROCS_STTUS
+				 ,  CREAT_DT				 
+			     , A.MNGR_NM
+			     , A.MNGR_EMAIL_ADRES		MNGR_EMAIL_ADDR     
+			  FROM COMTN_PROCESS_MON A
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM072') B
+				       	ON A.PROCS_STTUS = B.CODE
+			 WHERE 1 = 1
+		]]>
+      	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "PROCS_NM"'>
+                <![CDATA[ AND A.PROCS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "PROCS_STTUS"'>
+                <![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[
+			 ORDER BY A.FRST_REGIST_PNTTM DESC
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+	</select>
+	
+	<select id="selectProcessMonListCnt" resultType="int">
+		<![CDATA[
+			SELECT COUNT(A.PROCS_ID) as totcnt 
+			  FROM COMTN_PROCESS_MON A
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM072') B
+				       	ON A.PROCS_STTUS = B.CODE
+			 WHERE 1 = 1
+		]]>
+      	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "PROCS_NM"'>
+                <![CDATA[ AND A.PROCS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "PROCS_STTUS"'>
+                <![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+	
+	<select id="selectProcessMon" resultType="processMonVO" >
+		<![CDATA[
+ 			SELECT A.PROCS_ID				PROCESS_ID
+				 , A.PROCS_NM				PROCESS_NM
+			     , B.CODE_NM 				PROCS_STTUS
+            	 , DATE_FORMAT(A.CREAT_DT, '%Y-%m-%d %H:%i:%S') CREAT_DT
+			     , A.MNGR_NM
+                 , A.MNGR_EMAIL_ADRES	  	MNGR_EMAIL_ADDR  
+            	 , A.FRST_REGISTER_ID
+			     , A.FRST_REGIST_PNTTM
+            	 , A.LAST_UPDUSR_ID
+			     , A.LAST_UPDT_PNTTM						     			     			     
+              FROM COMTN_PROCESS_MON A
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM072') B
+				       	ON A.PROCS_STTUS = B.CODE
+             WHERE A.PROCS_ID = #{processId}
+		]]>
+	</select>
+	
+	<insert id="insertProcessMon">
+		<![CDATA[
+		    INSERT INTO  COMTN_PROCESS_MON (  
+		    	   PROCS_ID
+		         , PROCS_NM
+		         , PROCS_STTUS
+		         , CREAT_DT
+		         , MNGR_NM
+		         , MNGR_EMAIL_ADRES
+			     , FRST_REGISTER_ID
+			     , FRST_REGIST_PNTTM
+		         , LAST_UPDUSR_ID			     	         
+		         , LAST_UPDT_PNTTM
+		    ) VALUES (  
+		    	   #{processId}
+		         , #{processNm}
+		         , '01'
+		         , sysdate()
+		         , #{mngrNm}
+		         , #{mngrEmailAddr}
+				 , #{frstRegisterId}
+				 , sysdate()
+				 , #{frstRegisterId}
+				 , sysdate()
+		    ) 
+		]]>
+	</insert>
+	
+	<update id="updateProcessMon" >
+		<![CDATA[
+            UPDATE COMTN_PROCESS_MON 
+               SET PROCS_NM		      = #{processNm}
+               	 , MNGR_NM        	  = #{mngrNm}
+                 , MNGR_EMAIL_ADRES   = #{mngrEmailAddr}
+                 , LAST_UPDUSR_ID     = #{lastUpdusrId}
+                 , LAST_UPDT_PNTTM    = sysdate()
+             WHERE PROCS_ID           = #{processId} 
+		]]>
+	</update>
+	
+	<delete id="deleteProcessMon" >
+		<![CDATA[
+            DELETE 
+              FROM COMTN_PROCESS_MON 
+             WHERE PROCS_ID = #{processId} 
+		]]>
+	</delete>
+	
+	<update id="updateProcessMonSttus" >
+		<![CDATA[
+            UPDATE COMTN_PROCESS_MON 
+               SET PROCS_STTUS       = #{procsSttus}
+                 , CREAT_DT          = STR_TO_DATE(#{creatDt}, '%Y%m%d%H%i%S')
+                 , LAST_UPDUSR_ID    = #{lastUpdusrId}
+                 , LAST_UPDT_PNTTM   = sysdate()
+             WHERE PROCS_ID = #{processId} 
+		]]>
+	</update>					
+	
+	<select id="selectProcessMonLogList" resultType="processMonLogVO" >
+        /* 구현 Sql */
+       	<![CDATA[
+			SELECT A.LOG_ID
+ 				 , A.PROCS_ID				PROCESS_ID
+				 , A.PROCS_NM				PROCESS_NM
+				 , C.CODE_NM 				PROCS_STTUS			 				 
+				 , DATE_FORMAT(A.CREAT_DT, '%Y-%m-%d %H:%i:%S') CREAT_DT
+				 , A.LOG_INFO				 
+			     , A.MNGR_NM
+			     , A.MNGR_EMAIL_ADRES		MNGR_EMAIL_ADDR    
+			  FROM COMTN_PROCESS_MON_LOG A
+				   LEFT OUTER JOIN COMTN_PROCESS_MON B
+				 		ON  A.PROCS_ID = B.PROCS_ID
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM072') C
+				       	ON A.PROCS_STTUS = C.CODE
+			 WHERE 1 = 1
+		]]>
+        <if test='searchBgnDt != null and searchBgnDt != ""'>
+				<![CDATA[ AND DATE_FORMAT(CREAT_DT, '%Y-%m-%d %H%i%S') BETWEEN #{searchBgnDt} AND #{searchEndDt} ]]>			
+		</if>
+      	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "PROCS_NM"'>
+                <![CDATA[ AND A.PROCS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "PROCS_STTUS"'>
+                <![CDATA[ AND C.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[
+			 ORDER BY A.CREAT_DT DESC
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+        ]]>			
+	</select>	
+	
+	<select id="selectProcessMonLogListCnt" resultType="int">
+		<![CDATA[
+			SELECT COUNT(A.PROCS_ID) as totcnt 
+			  FROM COMTN_PROCESS_MON_LOG A
+				   LEFT OUTER JOIN COMTN_PROCESS_MON B
+				   		ON  A.PROCS_ID = B.PROCS_ID
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM072') C
+				       	ON A.PROCS_STTUS = C.CODE
+			 WHERE 1 = 1
+		]]>
+        <if test='searchBgnDt != null and searchBgnDt != ""'>
+				<![CDATA[ AND DATE_FORMAT(CREAT_DT, '%Y-%m-%d %H%i%S') BETWEEN #{searchBgnDt} AND #{searchEndDt} ]]>			
+		</if>
+      	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "PROCS_NM"'>
+                <![CDATA[ AND A.PROCS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "PROCS_STTUS"'>
+                <![CDATA[ AND C.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>	
+	
+	<select id="selectProcessMonLog" resultType="processMonLogVO" >
+		<![CDATA[
+            SELECT A.LOG_ID 				
+ 				 , A.PROCS_ID				PROCESS_ID
+				 , A.PROCS_NM				PROCESS_NM
+			     , B.CODE_NM 				PROCS_STTUS
+            	 , DATE_FORMAT(A.CREAT_DT, '%Y-%m-%d %H:%i:%S') CREAT_DT				
+				 , A.LOG_INFO	                        	 
+			     , A.MNGR_NM  				
+                 , A.MNGR_EMAIL_ADRES 		MNGR_EMAIL_ADDR		     
+            	 , A.FRST_REGISTER_ID	  	
+			     , A.FRST_REGIST_PNTTM
+            	 , A.LAST_UPDUSR_ID
+			     , A.LAST_UPDT_PNTTM                                  
+              FROM COMTN_PROCESS_MON_LOG A
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM072') B
+				       	ON A.PROCS_STTUS = B.CODE
+             WHERE A.PROCS_ID  = #{processId}
+			   AND A.LOG_ID    = #{logId}          
+		]]>
+	</select>
+	
+	<insert id="insertProcessMonLog" >
+		<![CDATA[
+		    INSERT INTO  COMTN_PROCESS_MON_LOG (  
+		    	   LOG_ID
+		         , PROCS_ID
+		         , PROCS_NM
+		         , PROCS_STTUS
+		         , CREAT_DT
+		         , LOG_INFO
+		         , MNGR_NM
+		         , MNGR_EMAIL_ADRES
+			     , FRST_REGISTER_ID
+			     , FRST_REGIST_PNTTM
+		         , LAST_UPDUSR_ID			     	         
+		         , LAST_UPDT_PNTTM
+		    ) VALUES  (  
+		    	   #{logId}
+		         , #{processId}
+		         , #{processNm}
+		         , #{procsSttus}
+		         , STR_TO_DATE(#{creatDt}, '%Y%m%d%H%i%S')
+		         , #{logInfo, jdbcType=VARCHAR}
+		         , #{mngrNm}
+		         , #{mngrEmailAddr}
+				 , #{frstRegisterId}
+				 , sysdate()
+				 , #{frstRegisterId} 
+				 , sysdate()
+		    ) 
+		]]>
+	</insert>	
+
+</mapper>            

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/cop/com/BdMstrListByTrget" extends="default">
+    <put-attribute name="title" value="게시판 목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/com/BdMstrListByTrget.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/cop/com/BdMstrRegistByTrget" extends="default">
+    <put-attribute name="title" value="게시판 정보등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/com/BdMstrRegistByTrget.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/cop/com/BdMstrEditByTrget" extends="default">
+    <put-attribute name="title" value="게시판 정보수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/com/BdMstrEditByTrget.jsp" />
+  </definition>
+
+  <definition name="aramframework/com/cop/com/UserList" extends="default">
+    <put-attribute name="title" value="사용자 목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/com/UserList.jsp" />
+  </definition>
+
+  <definition name="aramframework/com/cop/com/ConfirmList" extends="default">
+    <put-attribute name="title" value="승인 목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/com/ConfirmList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/cop/com/ConfirmEdit" extends="default">
+    <put-attribute name="title" value="승인정보 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/com/ConfirmEdit.jsp" />
+  </definition>
+  
+</tiles-definitions>

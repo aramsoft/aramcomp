@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/sec/dpt/DeptList" extends="default">
+    <put-attribute name="title" value="부서 목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sec/dpt/DeptList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/sec/dpt/DeptRegist" extends="default">
+    <put-attribute name="title" value="부서 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sec/dpt/DeptRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/sec/dpt/DeptEdit" extends="default">
+    <put-attribute name="title" value="부서 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sec/dpt/DeptEdit.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/sec/dpt/DeptAuthor" extends="default">
+    <put-attribute name="title" value="부서사용자별 권한 목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sec/dpt/DeptAuthor.jsp" />
+  </definition>
+  
+</tiles-definitions>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/cop/smt/djm/DeptJobList" extends="default">
+    <put-attribute name="title" value="부서업무 관리" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/smt/djm/DeptJobList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/cop/smt/djm/DeptJobDetail" extends="default">
+    <put-attribute name="title" value="부서업무 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/smt/djm/DeptJobDetail.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/cop/smt/djm/DeptJobRegist" extends="default">
+    <put-attribute name="title" value="부서업무  등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/smt/djm/DeptJobRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/cop/smt/djm/DeptJobEdit" extends="default">
+    <put-attribute name="title" value="부서업무  수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/smt/djm/DeptJobEdit.jsp" />
+  </definition>
+
+  <definition name="aramframework/com/cop/smt/djm/DeptJobBxList" extends="default">
+    <put-attribute name="title" value="부서업무함 관리" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/smt/djm/DeptJobBxList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/cop/smt/djm/DeptJobBxRegist" extends="default">
+    <put-attribute name="title" value="부서업무함  등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/smt/djm/DeptJobBxRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/cop/smt/djm/DeptJobBxEdit" extends="default">
+    <put-attribute name="title" value="부서업무함  수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/smt/djm/DeptJobBxEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

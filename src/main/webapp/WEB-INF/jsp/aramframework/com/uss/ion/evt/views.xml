@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/uss/ion/evt/EventReqstList" extends="default">
+    <put-attribute name="title" value="행사관리 목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/ion/evt/EventReqstList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/ion/evt/EventReqstDetail" extends="default">
+    <put-attribute name="title" value="행사관리 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/ion/evt/EventReqstDetail.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/ion/evt/EventReqstRegist" extends="default">
+    <put-attribute name="title" value="행사관리 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/ion/evt/EventReqstRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/ion/evt/EventReqstEdit" extends="default">
+    <put-attribute name="title" value="행사관리 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/ion/evt/EventReqstEdit.jsp" />
+  </definition>
+
+  <definition name="aramframework/com/uss/ion/evt/EventRceptList" extends="default">
+    <put-attribute name="title" value="행사접수관리 목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/ion/evt/EventRceptList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/ion/evt/EventRceptDetail" extends="default">
+    <put-attribute name="title" value="행사접수관리 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/ion/evt/EventRceptDetail.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/ion/evt/EventRceptRegist" extends="default">
+    <put-attribute name="title" value="행사접수관리 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/ion/evt/EventRceptRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/ion/evt/EventRceptConfm" extends="default">
+    <put-attribute name="title" value="행사접수승인 목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/ion/evt/EventRceptConfm.jsp" />
+  </definition>
+  
+</tiles-definitions>

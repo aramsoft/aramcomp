@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d %5p [%c] %m%n" />
+        </Console>
+		<RollingRandomAccessFile name="file" fileName="/var/log/webapps/aramcomp/aramcomp.log"
+		                 filePattern="/var/log/webapps/aramcomp/aramcomp.log.%d{yyyy-MM-dd}">
+		      <PatternLayout>
+		        <Pattern>%-5p [%d{MM/dd HH:mm:ss,SSS}] %c(%L) :%m%n</Pattern>
+		      </PatternLayout>
+		      <Policies>
+		        <TimeBasedTriggeringPolicy />
+		      </Policies>
+		</RollingRandomAccessFile>		
+    </Appenders>
+    <Loggers>
+        <Logger name="aramframework" level="DEBUG" additivity="false">
+            <AppenderRef ref="file" />
+        </Logger>
+        
+		<!-- log SQL with timing information, post execution -->
+        <Logger name="java.sql" level="ERROR" additivity="false">
+            <AppenderRef ref="file" />
+        </Logger>
+	    <logger name="org.springframework.security" level="ERROR" additivity="false">
+	        <AppenderRef ref="file" />
+	    </logger>
+	    <logger name="org.springframework" level="ERROR" additivity="false">
+	        <AppenderRef ref="file" />
+	    </logger>
+        <Logger name="egovframework" level="ERROR" additivity="false">
+            <AppenderRef ref="file" />
+        </Logger>
+        
+        <Root level="ERROR">
+            <AppenderRef ref="console" />
+	        <AppenderRef ref="file" />
+        </Root>
+    </Loggers>
+</Configuration>

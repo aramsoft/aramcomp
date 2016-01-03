@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/sec/rmt/ResourceList" extends="default">
+    <put-attribute name="title" value="접근자원 목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sec/rmt/ResourceList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/sec/rmt/ResourceRegist" extends="default">
+    <put-attribute name="title" value="접근자원 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sec/rmt/ResourceRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/sec/rmt/ResourceEdit" extends="default">
+    <put-attribute name="title" value="접근자원 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/sec/rmt/ResourceEdit.jsp" />
+  </definition>
+  
+</tiles-definitions>

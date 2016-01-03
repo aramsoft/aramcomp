@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.uss.sam.cpy.service.impl.CpyrhtPrtcPolicyMapper">
+
+	<select id="selectCpyrhtPrtcPolicyList" resultType="EgovMap">
+		<![CDATA[
+            SELECT *
+              FROM (
+            SELECT ROWNUM RNUM, ALL_LIST.*
+              FROM (
+        ]]>
+        /* 구현 Sql */
+		<![CDATA[
+   		    SELECT CPYRHT_ID				AS "cpyrhtId"
+   		         , CPYRHT_PRTC_POLICY_CN	AS "cpyrhtPrtcPolicyCn"
+   		         , FRST_REGIST_PNTTM		AS "frstRegisterPnttm" 
+		      FROM COMTN_CPYRHT_INFO                               			
+		     WHERE 1=1    			
+		]]>					
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "CPYRHT_PRTC_POLICY_CN"'>
+                <![CDATA[ AND CPYRHT_PRTC_POLICY_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>		
+            </when>
+        </choose>
+		</if>
+		<![CDATA[					
+			 ORDER BY CPYRHT_ID DESC								   
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+                   ) ALL_LIST
+                   )
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+        ]]>			
+	</select>
+	
+	<select id="selectCpyrhtPrtcPolicyListCnt" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) totcnt
+			  FROM COMTN_CPYRHT_INFO
+			 WHERE 1=1
+		]]>			
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "CPYRHT_PRTC_POLICY_CN"'>
+                <![CDATA[ AND CPYRHT_PRTC_POLICY_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>		
+            </when>
+        </choose>
+		</if>
+	</select>
+	
+	<select id="selectCpyrhtPrtcPolicyDetail" resultType="cpyrhtPrtcPolicyVO">
+		<![CDATA[		
+			SELECT CPYRHT_ID				AS "cpyrhtId"
+			     , CPYRHT_PRTC_POLICY_CN	AS "cpyrhtPrtcPolicyCn"
+			     , FRST_REGIST_PNTTM 		AS "frstRegisterPnttm"
+			     , FRST_REGISTER_ID			AS "frstRegisterId"
+			     , LAST_UPDT_PNTTM  		AS "lastUpdusrPnttm"
+			     , LAST_UPDUSR_ID			AS "lastUpdusrId"				  			 			  
+			  FROM COMTN_CPYRHT_INFO		
+			 WHERE CPYRHT_ID = #{cpyrhtId}				
+		]]>
+	</select>
+	
+	<insert id="insertCpyrhtPrtcPolicy">	
+		<![CDATA[	
+			INSERT INTO COMTN_CPYRHT_INFO (
+					CPYRHT_ID
+				  , CPYRHT_PRTC_POLICY_CN				   
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+			) VALUES ( 
+					#{cpyrhtId}
+				  , #{cpyrhtPrtcPolicyCn}			
+				  , #{frstRegisterId}
+				  , SYSDATE
+				  , #{frstRegisterId} 
+				  , SYSDATE
+			)
+		]]>
+	</insert>
+	
+	<update id="updateCpyrhtPrtcPolicy">
+		<![CDATA[
+			UPDATE COMTN_CPYRHT_INFO	
+			   SET CPYRHT_PRTC_POLICY_CN	= #{cpyrhtPrtcPolicyCn}
+				 , LAST_UPDUSR_ID			= #{lastUpdusrId}
+				 , LAST_UPDT_PNTTM			= SYSDATE
+ 			 WHERE CPYRHT_ID = #{cpyrhtId}
+		]]>
+	</update>
+	
+	<delete id="deleteCpyrhtPrtcPolicy">
+		<![CDATA[
+			DELETE 
+			  FROM COMTN_CPYRHT_INFO 
+ 			 WHERE CPYRHT_ID = #{cpyrhtId}
+		]]>
+	</delete>
+	
+</mapper>

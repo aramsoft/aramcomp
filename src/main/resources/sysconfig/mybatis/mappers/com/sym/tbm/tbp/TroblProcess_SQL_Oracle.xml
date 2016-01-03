@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.sym.tbm.tbp.service.impl.TroblProcessMapper">
+
+    <select id="selectTroblProcessList" resultType="egovMap">
+		<![CDATA[
+            SELECT *
+              FROM (
+            SELECT ROWNUM RNUM, ALL_LIST.*
+              FROM (
+        ]]>
+        /* 구현 Sql */
+        <![CDATA[ 
+            SELECT TROBL_ID					AS "troblId"
+                 , TROBL_NM					AS "troblNm"
+                 , (SELECT CODE_NM 
+                      FROM COMTC_CMMN_DETAIL_CODE
+                     WHERE CODE_ID = 'COM065'
+                       AND CODE = TROBL_KND
+                   ) 						AS "troblKndNm"
+                 , TO_CHAR(TO_DATE(TROBL_OCCRRNC_TIME, 'YYYYMMDDHH24MISS'), 'YYYY-MM-DD HH24:MI:SS') AS "troblOccrrncTime"
+                 , TROBL_RQESTER_NM			AS "troblRqesterNm"
+                 , (SELECT CODE_NM 
+                      FROM COMTC_CMMN_DETAIL_CODE
+                     WHERE CODE_ID = 'COM068'
+                       AND CODE = PROCESS_STTUS
+                   ) 						AS "processSttusNm"
+              FROM COMTN_TROBL_INFO
+             WHERE 1 = 1
+               AND PROCESS_STTUS IN ('R','C')
+        ]]>                    
+      	<if test='strTroblNm != null and strTroblNm != ""'>
+        		<![CDATA[ AND TROBL_NM LIKE '%'||#{strTroblNm}||'%' ]]>   
+		</if>
+      	<if test='strTroblKnd != null and strTroblKnd != "00"'>
+                <![CDATA[ AND TROBL_KND = #{strTroblKnd} ]]>   
+		</if>
+      	<if test='strProcessSttus != null and strProcessSttus != "00"'>
+                <![CDATA[ AND PROCESS_STTUS = #{strProcessSttus} ]]>   
+		</if>
+        <![CDATA[               
+             ORDER BY TROBL_ID
+        ]]>             
+        /* 구현 Sql */
+        <![CDATA[
+                   ) ALL_LIST
+                   )
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+        ]]>			
+    </select>
+
+    <select id="selectTroblProcessListCnt" resultType="int">
+        <![CDATA[               
+            SELECT COUNT(*) totcnt
+              FROM COMTN_TROBL_INFO
+             WHERE 1 = 1
+               AND PROCESS_STTUS IN ('R','C')
+        ]]>             
+      	<if test='strTroblNm != null and strTroblNm != ""'>
+        		<![CDATA[ AND TROBL_NM LIKE '%'||#{strTroblNm}||'%' ]]>   
+		</if>
+      	<if test='strTroblKnd != null and strTroblKnd != "00"'>
+                <![CDATA[ AND TROBL_KND = #{strTroblKnd} ]]>   
+		</if>
+      	<if test='strProcessSttus != null and strProcessSttus != "00"'>
+                <![CDATA[ AND PROCESS_STTUS = #{strProcessSttus} ]]>   
+		</if>
+    </select>
+
+    <select id="selectTroblProcess" resultType="troblProcessVO">
+        <![CDATA[
+            SELECT TROBL_ID
+                 , TROBL_NM
+                 , TROBL_KND
+                 , (SELECT CODE_NM 
+                      FROM COMTC_CMMN_DETAIL_CODE
+                     WHERE CODE_ID = 'COM065'
+                       AND CODE = TROBL_KND
+                   ) 						AS TROBL_KND_NM
+                 , TROBL_DC
+                 , TO_CHAR(TO_DATE(TROBL_OCCRRNC_TIME, 'YYYYMMDDHH24MISS'), 'YYYY-MM-DD HH24:MI:SS') AS TROBL_OCCRRNC_TIME
+                 , TROBL_RQESTER_NM
+                 , TO_CHAR(TO_DATE(TROBL_REQUST_TIME, 'YYYYMMDDHH24MISS'), 'YYYY-MM-DD HH24:MI:SS') AS TROBL_REQUST_TIME
+                 , TROBL_PROCESS_RESULT
+                 , TROBL_OPETR_NM
+                 , TO_CHAR(TO_DATE(TROBL_PROCESS_TIME, 'YYYYMMDDHH24MISS'), 'YYYY-MM-DD HH24:MI:SS') AS TROBL_PROCESS_TIME
+                 , PROCESS_STTUS
+                 , (SELECT CODE_NM 
+                      FROM COMTC_CMMN_DETAIL_CODE
+                     WHERE CODE_ID = 'COM068'
+                       AND CODE = PROCESS_STTUS
+                   ) 						AS PROCESS_STTUS_NM
+                 , FRST_REGIST_PNTTM 		AS "frstRegisterPnttm"
+                 , FRST_REGISTER_ID
+                 , LAST_UPDT_PNTTM   		AS "lastUpdusrPnttm"
+                 , LAST_UPDUSR_ID
+               FROM COMTN_TROBL_INFO
+             WHERE 1 = 1
+               AND TROBL_ID = #{troblId}
+        ]]>
+    </select>
+
+    <update id="insertTroblProcess" >
+        <![CDATA[
+             UPDATE COMTN_TROBL_INFO
+                SET TROBL_PROCESS_RESULT = #{troblProcessResult}
+                  , TROBL_OPETR_NM = #{troblOpetrNm}
+                  , TROBL_PROCESS_TIME = #{troblProcessTime}
+                  , PROCESS_STTUS = #{processSttus}
+                  , LAST_UPDUSR_ID = #{lastUpdusrId}
+                  , LAST_UPDT_PNTTM = SYSDATE
+              WHERE TROBL_ID = #{troblId}
+        ]]>
+    </update>     
+
+    <update id="deleteTroblProcess" >
+        <![CDATA[
+             UPDATE COMTN_TROBL_INFO
+                SET TROBL_PROCESS_RESULT = NULL
+                  , TROBL_OPETR_NM = NULL
+                  , TROBL_PROCESS_TIME = NULL
+                  , PROCESS_STTUS = #{processSttus}
+                  , LAST_UPDUSR_ID = #{lastUpdusrId}
+                  , LAST_UPDT_PNTTM = SYSDATE
+              WHERE TROBL_ID = #{troblId}
+        ]]>
+    </update>
+
+</mapper>

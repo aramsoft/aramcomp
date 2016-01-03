@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.sym.bat.service.impl.BatchOpertMapper">
+
+    <select id="selectBatchOpertList" resultType="egovMap" >
+		<![CDATA[
+            SELECT *
+              FROM (
+            SELECT ROWNUM RNUM, ALL_LIST.*
+              FROM (
+        ]]>
+        /* 구현 Sql */
+        <![CDATA[ 
+            SELECT A.BATCH_OPERT_ID			AS "batchOpertId"
+            	 , A.BATCH_OPERT_NM			AS "batchOpertNm"
+            	 , A.BATCH_PROGRM			AS "batchProgrm"
+            	 , A.PARAMTR				AS "paramtr"
+            	 , A.BATCH_OBJECT			AS "batchObject"
+            	 , A.BATCH_METHOD			AS "batchMethod"
+            	 , A.BATCH_BEAN				AS "batchBean"
+              FROM COMTN_BATCH_OPERT A
+             WHERE USE_AT = 'Y'
+        ]]>
+       	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "BATCH_OPERT_NM"'>
+                 <![CDATA[ AND A.BATCH_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "BATCH_PROGRM"'>
+                 <![CDATA[ AND A.BATCH_PROGRM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+        <![CDATA[
+             ORDER BY A.BATCH_OPERT_ID ASC
+        ]]>             
+        /* 구현 Sql */
+        <![CDATA[
+                   ) ALL_LIST
+                   )
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+        ]]>			
+    </select>
+
+    <select id="selectBatchOpertListCnt" resultType="int" >
+        <![CDATA[
+            SELECT COUNT(*) totcnt
+              FROM COMTN_BATCH_OPERT A
+             WHERE USE_AT = 'Y'
+        ]]>
+       	<if test='searchKeyword != null and searchKeyword != ""'>
+        <choose>
+            <when test='searchCondition == "BATCH_OPERT_NM"'>
+                 <![CDATA[ AND A.BATCH_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchCondition == "BATCH_PROGRM"'>
+                 <![CDATA[ AND A.BATCH_PROGRM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+    </select>
+    
+    <select id="selectBatchOpert" resultType="batchOpertVO">
+        <![CDATA[
+            SELECT A.BATCH_OPERT_ID
+            	 , A.BATCH_OPERT_NM
+            	 , A.BATCH_PROGRM
+            	 , A.PARAMTR
+            	 , A.BATCH_OBJECT
+            	 , A.BATCH_METHOD
+            	 , A.BATCH_BEAN
+            	 , A.LAST_UPDT_PNTTM 		AS "lastUpdusrPnttm"
+            	 , A.LAST_UPDUSR_ID
+            	 , A.FRST_REGISTER_ID
+            	 , A.FRST_REGIST_PNTTM	 	AS "frstRegisterPnttm"
+              FROM COMTN_BATCH_OPERT A
+             WHERE A.BATCH_OPERT_ID = #{batchOpertId}
+        ]]>
+    </select>
+
+    <insert id="insertBatchOpert" >
+        <![CDATA[
+            INSERT INTO COMTN_BATCH_OPERT (
+	                BATCH_OPERT_ID 
+	              , BATCH_OPERT_NM
+	              , BATCH_PROGRM
+	              , PARAMTR
+	              , BATCH_OBJECT
+	              , BATCH_METHOD
+	              , BATCH_BEAN
+	              , USE_AT
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+            ) VALUES (
+	                #{batchOpertId}
+	              , #{batchOpertNm}
+	              , #{batchProgrm}
+	              , #{paramtr}
+	              , #{batchObject}
+	              , #{batchMethod}
+	              , #{batchBean}
+	              , 'Y'
+				  , #{frstRegisterId}
+				  , SYSDATE
+				  , #{frstRegisterId} 
+				  , SYSDATE
+            ) 
+        ]]>
+    </insert>
+
+     <update id="updateBatchOpert" >
+        <![CDATA[
+            UPDATE COMTN_BATCH_OPERT 
+               SET BATCH_OPERT_NM 	= #{batchOpertNm}
+                 , BATCH_PROGRM 	= #{batchProgrm}
+                 , PARAMTR 			= #{paramtr}
+                 , BATCH_OBJECT 	= #{batchObject}
+                 , BATCH_METHOD 	= #{batchMethod}
+                 , BATCH_BEAN 		= #{batchBean}
+                 , LAST_UPDUSR_ID 	= #{lastUpdusrId}
+                 , LAST_UPDT_PNTTM 	= SYSDATE
+             WHERE BATCH_OPERT_ID 	= #{batchOpertId} 
+        ]]>
+    </update>
+    
+    <delete id="deleteBatchOpert" >
+        <![CDATA[
+            UPDATE COMTN_BATCH_OPERT 
+               SET USE_AT = 'N'
+             WHERE BATCH_OPERT_ID = #{batchOpertId} 
+        ]]>
+    </delete>
+
+</mapper>            

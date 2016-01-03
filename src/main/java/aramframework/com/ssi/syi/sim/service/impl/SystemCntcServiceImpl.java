@@ -1,0 +1,117 @@
+package aramframework.com.ssi.syi.sim.service.impl;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.ssi.syi.sim.service.SystemCntcService;
+import aramframework.com.ssi.syi.sim.service.SystemCntcVO;
+import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import egovframework.rte.fdl.cmmn.exception.FdlException;
+import egovframework.rte.fdl.idgnr.EgovIdGnrService;
+import egovframework.rte.psl.dataaccess.util.EgovMap;
+
+/**
+ * 시스템연계에 대한 서비스 구현클래스를 정의한다.
+ * 
+ * @author 아람컴포넌트 조헌철
+ * @since 2014.11.11
+ * @version 1.0
+ * @see
+ *
+ * <pre>
+ * 
+ * << 개정이력(Modification Information) >>
+ *   
+ *   수정일            수정자          수정내용
+ *   -------     ------   ---------------------------
+ *   2014.11.11  조헌철         최초 생성
+ * 
+ * </pre>
+ */
+
+@Service("systemCntcService")
+public class SystemCntcServiceImpl extends EgovAbstractServiceImpl implements SystemCntcService {
+
+	@Resource(name = "systemCntcMapper")
+	private SystemCntcMapper systemCntcMapper;
+	
+	/** EgovIdGnrService */
+	@Resource(name = "systemCntcIdGnrService")
+	private EgovIdGnrService idgenService;
+	
+	/**
+	 * 시스템연계 목록을 조회한다.
+	 * 
+	 * @param systemCntcVO
+	 */
+	public List<EgovMap> selectSystemCntcList(SystemCntcVO systemCntcVO) {
+		return systemCntcMapper.selectSystemCntcList(systemCntcVO);
+	}
+
+	/**
+	 * 시스템연계 총 갯수를 조회한다.
+	 * 
+	 * @param systemCntcVO
+	 */
+	public int selectSystemCntcListCnt(SystemCntcVO systemCntcVO) {
+		return systemCntcMapper.selectSystemCntcListCnt(systemCntcVO);
+	}
+
+	/**
+	 * 시스템연계 상세항목을 조회한다.
+	 * 
+	 * @param systemCntcVO
+	 */
+	public SystemCntcVO selectSystemCntcDetail(SystemCntcVO systemCntcVO) {
+		SystemCntcVO resultVo = systemCntcMapper.selectSystemCntcDetail(systemCntcVO);
+		// deep copy
+		BeanUtil.copyPropertiesCore(resultVo, systemCntcVO); 
+		return resultVo;
+	}
+
+	/**
+	 * 시스템연계를 등록한다.
+	 * 
+	 * @param systemCntcVO
+	 */
+	public void insertSystemCntc(SystemCntcVO systemCntcVO) {
+		try {
+			systemCntcVO.setCntcId(idgenService.getNextStringId());
+		} catch (FdlException e) {
+			throw new RuntimeException(e);
+		}
+		systemCntcMapper.insertSystemCntc(systemCntcVO);
+	}
+
+	/**
+	 * 시스템연계를 수정한다.
+	 * 
+	 * @param systemCntcVO
+	 */
+	public void updateSystemCntc(SystemCntcVO systemCntcVO) {
+		systemCntcMapper.updateSystemCntc(systemCntcVO);
+	}
+
+	/**
+	 * 시스템연계를 삭제한다.
+	 * 
+	 * @param systemCntcVO
+	 */
+	public void deleteSystemCntc(SystemCntcVO systemCntcVO) {
+		systemCntcMapper.deleteSystemCntc(systemCntcVO);
+	}
+
+	/**
+	 * 시스템연계 승인/승인취소한다.
+	 * 
+	 * @param systemCntcVO
+	 */
+	public void confirmSystemCntc(SystemCntcVO systemCntcVO) {
+		systemCntcMapper.confirmSystemCntc(systemCntcVO);
+	}
+
+}

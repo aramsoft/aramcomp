@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>Test of the HTMLArea ContextMenu plugin</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+      _editor_url = "../";
+      _editor_lang = "en";
+    </script>
+<!-- load the main HTMLArea file -->
+    <script type="text/javascript" src="../htmlarea.js"></script>
+
+    <script type="text/javascript">
+      HTMLArea.loadPlugin("ContextMenu");
+      HTMLArea.loadPlugin("TableOperations");
+
+      function initDocument() {
+        var editor = new HTMLArea("editor");
+        editor.registerPlugin(ContextMenu);
+        editor.registerPlugin(TableOperations);
+        editor.generate();
+      };
+
+      HTMLArea.onload = initDocument;
+    </script>
+		<style type="text/css">
+		hr {height:1px;background:#bdbdbd;color:#bdbdbd;border:0}
+		</style>
+  </head>
+  <body onload="HTMLArea.init()">
+    <h1>Test of the ContextMenu plugin</h1>
+<p>
+Return to the <a href="http://Inferior-Products.com/htmlarea/">HTMLarea page</a>,
+or the HTMLarea page <a href="http://htmlarea.sourceforge.net/">hosted
+on SourceForge</a>.</p>
+<textarea id="editor" style="height:30em;width:100%;">
+&lt;table style="border: 1px dotted rgb(0, 102, 255); width:
+100%; background-color: rgb(255, 206, 142); background-image: none; float:
+none; text-align: left; vertical-align: top; border-collapse:collapse;"
+summary="" cellspacing="0" cellpadding="0" frame="box"
+rules="all"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td style="border: 1px solid
+rgb(255, 0, 0); background-color: rgb(255, 255, 255);background-image:none;
+text-align:left;vertical-align:top;"&gt;&lt;a
+href="http://Inferior-Products.com/"&gt;&lt;img
+src="http://Inferior-Products.com/htmlarea/examples/htmlarea.png" alt=""
+style="border:0;padding:0 2em" /&gt;&lt;/a&gt;&lt;/td&gt;&lt;td
+style="border: 1px solid rgb(255, 0, 0); background-color: rgb(93, 234, 170);
+background-image: none; text-align: left; vertical-align: top;"&gt;The
+article linked on the left image presents a script that allows Internet
+Explorer to use PNG images.  We hope to be able to implement IE PNG support
+in HTMLArea soon.&lt;br /&gt; &lt;br /&gt; Go on, right-click everywhere and
+test our new context menus.  And be thankful to &lt;a
+href="http://www.americanbible.org/"&gt;American Bible Society&lt;/a&gt; who
+sponsored the development, &lt;a
+href="http://http://Inferior-Products.com"&gt;Inferior-Products&lt;/a&gt; who
+maintains it, and God, who keeps me alive. ;-)&lt;br /&gt; &lt;br /&gt;&lt;span
+style="font-style: italic;"&gt;P.S.&lt;/span&gt; No animals were harmed
+while producing this movie.&lt;br /&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style="border-style: none;
+background-color: rgb(131, 234, 187); background-image: none; text-align:
+left; vertical-align: top;"&gt;Welcome to HTMLArea, the best online
+editor.&lt;br /&gt;&lt;/td&gt;&lt;td&gt;HTMLArea is a project initiated by
+&lt;a href="http://interactivetools.com/"&gt;InteractiveTools.com&lt;/a&gt;.
+Other companies contributed largely by sponsoring the development of
+additional extensions. Many thanks to:&lt;br /&gt; &lt;br
+style="font-family: courier new,courier,monospace;" /&gt; &lt;div
+style="margin-left: 40px;"&gt;&lt;a href="http://www.zapatec.com/"
+style="font-family: courier
+new,courier,monospace;"&gt;http://www.zapatec.com&lt;/a&gt;&lt;br
+style="font-family: courier new,courier,monospace;" /&gt; &lt;a
+href="http://www.americanbible.org/" style="font-family: courier
+new,courier,monospace;"&gt;http://www.americanbible.org&lt;/a&gt;&lt;br
+style="font-family: courier new,courier,monospace;" /&gt; &lt;a
+href="http://www.neomedia.ro/" style="font-family: courier
+new,courier,monospace;"&gt;http://www.neomedia.ro&lt;/a&gt;&lt;br
+style="font-family: courier new,courier,monospace;" /&gt; &lt;a
+href="http://www.os3.it/" style="font-family: courier
+new,courier,monospace;"&gt;http://www.os3.it&lt;/a&gt;&lt;br
+style="font-family: courier new,courier,monospace;" /&gt; &lt;a
+href="http://www.miro.com.au/" style="font-family: courier
+new,courier,monospace;"&gt;http://www.miro.com.au&lt;/a&gt;&lt;br
+style="font-family: courier new,courier,monospace;" /&gt; &lt;a
+href="http://www.thycotic.com/" style="font-family: courier
+new,courier,monospace;"&gt;http://www.thycotic.com&lt;/a&gt;&lt;br /&gt;
+&lt;/div&gt; &lt;br /&gt; and to all the posters at the InteractiveTools
+HTMLArea forums, whose feedback an integral part in it's development. Thanks
+also to all those who continue to make contributions to HTMLArea.&lt;br /&gt;
+&lt;br /&gt;&lt;div style="text-align: right;"&gt;-- developers and maintainers of version 3,
+&lt;a href="http://dynarch.com/"&gt;dynarch.com&lt;/a&gt;.&lt;br
+/&gt;-- developers and maintainers of version 4,
+&lt;a href="http://Inferior-Products.com/"&gt;Inferior-Products.com&lt;/a&gt;.&lt;br
+/&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+</textarea>
+
+<hr />
+<address><a href="http://http://Inferior-Products.com/htmlarea">&#60;HTMLArea&#62;</a></address>
+<!-- Created: Wed Oct  1 19:55:37 EEST 2003 -->
+<!-- hhmts start --> Last modified: 2013-08-28 08:48:37 <!-- hhmts end -->
+<!-- doc-lang: English -->
+  </body>
+</html>

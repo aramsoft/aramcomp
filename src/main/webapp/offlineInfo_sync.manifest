@@ -1,0 +1,26 @@
+CACHE MANIFEST
+# version 1.0.01
+# 2011.09.21
+
+# Explicitly cached
+CACHE:
+./css/egovframework/mbl/cmm/jquery.mobile-1.3.2.css
+./css/egovframework/mbl/cmm/EgovMobile-1.3.2.css
+./css/egovframework/mbl/mcomd/egovMcomd.css
+
+./js/egovframework/mbl/cmm/jquery-1.9.1.js
+./js/egovframework/mbl/cmm/jquery.mobile-1.3.2.js
+./js/egovframework/mbl/cmm/EgovMobile-1.3.2.js
+./js/egovframework/mbl/com/syn/syn.js
+
+./mbl/com/syn/listMobileSync.mdo
+./mbl/com/syn/detailMobileSync.mdo
+./mbl/com/syn/registMobileSync.mdo
+./mbl/com/syn/editMobileSync.mdo
+
+# Display fallback.html for all uncached pages
+FALLBACK:
+
+# Following resources require network connection.
+NETWORK:
+*

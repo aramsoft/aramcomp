@@ -1,0 +1,21 @@
+<IfModule mod_mime.c>
+# To use CGI scripts:
+	AddHandler cgi-script .pl
+	AddHandler cgi-script .cgi
+# To use server-parsed HTML files
+	AddType text/html .shtml
+	AddHandler server-parsed .shtml
+# And for PHP
+	AddType application/x-httpd-php .php4
+	AddType application/x-httpd-php .php
+	AddType application/x-httpd-php-source .phps
+	AddType application/x-httpd-php .phtml
+	AddType application/x-httpd-php .inc
+	AddType application/x-httpd-php .tpl
+	AddType application/x-httpd-php .tmpl
+# And for (x)HTML
+	AddType application/xhtml+xml .xhtml
+</IfModule>
+<IfModule mod_dir.c>
+	DirectoryIndex index.phtml index.php index.shtml index.xhtml index.html index.pl index.cgi index.htm
+</IfModule>

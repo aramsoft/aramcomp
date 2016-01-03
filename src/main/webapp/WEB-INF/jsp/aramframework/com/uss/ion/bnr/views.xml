@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="aramframework/com/uss/ion/bnr/BannerList" extends="default">
+    <put-attribute name="title" value="배너 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/ion/bnr/BannerList.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/ion/bnr/BannerRegist" extends="default">
+    <put-attribute name="title" value="배너 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/ion/bnr/BannerRegist.jsp" />
+  </definition>
+  
+  <definition name="aramframework/com/uss/ion/bnr/BannerEdit" extends="default">
+    <put-attribute name="title" value="배너 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/ion/bnr/BannerEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<project name="aramscomp"  default="publish">
+<project name="aramcomp"  default="publish">
 
 	<property name="tomcat.manager.url" value="http://localhost:6060/manager" />
 	<property name="hudson.jobs.dir" value="/home/hudson/jobs" />

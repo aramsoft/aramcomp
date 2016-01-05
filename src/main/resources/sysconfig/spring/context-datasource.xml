@@ -10,10 +10,10 @@
 	<!-- DataSource -->
 	
 	<!-- Datasource는 jndi lookup을 사용: container에 위임 -->	
-	<jee:jndi-lookup id="egov.dataSource" jndi-name="jdbc/EgovCmmDS"/>
+	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/EgovCmmDS"/>
 
 	<!-- 
-	<alias name="dataSource-${Globals.DbType}" alias="egov.dataSource" />
+	<alias name="dataSource-${Globals.DbType}" alias="dataSource" />
 	-->
 	
 	<!-- MySQL -->

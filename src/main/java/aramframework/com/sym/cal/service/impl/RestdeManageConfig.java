@@ -12,7 +12,7 @@ import egovframework.rte.fdl.idgnr.impl.EgovTableIdGnrServiceImpl;
 @Configuration
 public class RestdeManageConfig {
 
-	@Resource(name = "egov.dataSource")
+	@Resource(name = "dataSource")
 	DataSource dataSource;
 	
 	@Bean(destroyMethod="destroy")

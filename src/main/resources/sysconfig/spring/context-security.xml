@@ -102,7 +102,7 @@
                    FROM COMTN_EMPLYR_SCRTY_ESTBS A, COMVN_USER_MASTER B 
                   WHERE A.SCRTY_DTRMN_TRGET_ID = B.ESNTL_ID AND B.USER_ID = ? "/>
         <beans:property name="roleHierarchy" ref="roleHierarchy"/>
-        <beans:property name="dataSource" ref="egov.dataSource"/>
+        <beans:property name="dataSource" ref="dataSource"/>
         <beans:property name="mapClass" value="aramframework.com.cmm.userdetails.SessionMapping"/> 
     </beans:bean>
     
@@ -125,7 +125,7 @@
 
     <beans:bean id="securedObjectDAO" 
     	class="egovframework.rte.fdl.security.securedobject.impl.SecuredObjectDAO" >
-        <beans:property name="dataSource" ref="egov.dataSource"/>
+        <beans:property name="dataSource" ref="dataSource"/>
        	<beans:property name="sqlRolesAndUrl" value=
 	       		"SELECT a.RESOURCE_PTTRN url, b.AUTHOR_CODE authority 
 				   FROM COMTN_RESOURCE_INFO a, COMTN_AUTHOR_RESOURCE b     

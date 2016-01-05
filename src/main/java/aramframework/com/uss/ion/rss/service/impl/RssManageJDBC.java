@@ -38,7 +38,7 @@ import aramframework.com.cmm.service.ComCodeVO;
 @Repository("rssManageJDBC")
 public class RssManageJDBC {
 
-	@Resource(name = "egov.dataSource")
+	@Resource(name = "dataSource")
 	DataSource dataSource;
 	
 	/**

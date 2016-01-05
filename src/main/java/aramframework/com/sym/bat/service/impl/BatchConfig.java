@@ -13,7 +13,7 @@ import egovframework.rte.fdl.idgnr.impl.strategy.EgovIdGnrStrategyImpl;
 @Configuration
 public class BatchConfig {
 
-	@Resource(name = "egov.dataSource")
+	@Resource(name = "dataSource")
 	DataSource dataSource;
 	
 /*	

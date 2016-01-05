@@ -12,7 +12,7 @@ import egovframework.rte.fdl.idgnr.impl.EgovTableIdGnrServiceImpl;
 @Configuration
 public class GeoLocationConfig {
 
-	@Resource(name = "egov.dataSource")
+	@Resource(name = "dataSource")
 	DataSource dataSource;
 	
 	@Bean(destroyMethod="destroy")

@@ -13,7 +13,7 @@ import egovframework.rte.fdl.idgnr.impl.strategy.EgovIdGnrStrategyImpl;
 @Configuration
 public class TrsmrcvLogConfig {
 
-	@Resource(name = "egov.dataSource")
+	@Resource(name = "dataSource")
 	DataSource dataSource;
 /*	
 	@Bean

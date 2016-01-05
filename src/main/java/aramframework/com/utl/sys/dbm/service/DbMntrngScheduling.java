@@ -48,7 +48,7 @@ public class DbMntrngScheduling {
 	@Resource(name = "mntrngMessage")
 	private SimpleMailMessage mntrngMessage;
 
-	@Resource(name = "egov.dataSource")
+	@Resource(name = "dataSource")
 	DataSource dataSource;
 	
 	/** ID Generation */

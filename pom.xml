@@ -218,16 +218,6 @@
 		            <groupId>egovframework.rte</groupId>
 		            <artifactId>egovframework.rte.fdl.filehandling</artifactId>
 		        </exclusion>
-<!-- 
-		        <exclusion>
-		            <groupId>net.sf.jxls</groupId>
-		            <artifactId>jxls-core</artifactId>
-		        </exclusion>
-		        <exclusion>
-		            <groupId>net.sf.jxls</groupId>
-		            <artifactId>jxls-reader</artifactId>
-		        </exclusion>
--->
 		    </exclusions> 
 		</dependency>
 		
@@ -534,7 +524,6 @@
 		</dependency>
 		-->
 		<!-- database driver 끝 -->
-
 
 		<!-- 테스트 모듈 시작 -->
 		<!-- 				 

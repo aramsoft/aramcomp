@@ -7,27 +7,18 @@
 						http://www.springframework.org/schema/jee 
 						http://www.springframework.org/schema/jee/spring-jee-3.2.xsd">
 
+	<!-- DataSource -->
+	
+	<!-- Datasource는 jndi lookup을 사용: container에 위임 -->	
 	<jee:jndi-lookup id="egov.dataSource" jndi-name="jdbc/EgovCmmDS"/>
 
-<!-- Datasource는 jndi lookup을 사용: container에 위임 -->	
-<!-- 
-	<bean id="egov.propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="locations">
-            <list>
-                <value>classpath:/sysconfig/egovProps/globals.properties</value>
-                <!- value>file:/product/jeus/egovProps/globals.properties</value->
-            </list>
-        </property>
-    </bean>
--->
-	<!-- DataSource -->
 	<!-- 
 	<alias name="dataSource-${Globals.DbType}" alias="egov.dataSource" />
 	-->
 	
 	<!-- MySQL -->
 	<!-- 
-	<bean id="dataSource-mysql" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	<bean id="dataSource-Mysql" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${Globals.DriverClassName}"/>
 		<property name="url" value="${Globals.Url}" />
 		<property name="username" value="${Globals.UserName}"/>
@@ -37,7 +28,7 @@
 	
 	<!-- Oracle -->
 	<!-- 
-	<bean id="dataSource-oracle" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	<bean id="dataSource-Oracle" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${Globals.DriverClassName}"/>
 		<property name="url" value="${Globals.Url}" />
 		<property name="username" value="${Globals.UserName}"/>
@@ -45,23 +36,4 @@
 	</bean>
 	-->
 	
-	<!-- Altibase -->
-	<!-- 
-	<bean id="dataSource-altibase" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<property name="driverClassName" value="${Globals.DriverClassName}"/>
-		<property name="url" value="${Globals.Url}" />
-		<property name="username" value="${Globals.UserName}"/>
-		<property name="password" value="${Globals.Password}"/>
-	</bean>
-	-->
-
-	<!-- Tibero -->
-	<!-- 
-	<bean id="dataSource-tibero" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<property name="driverClassName" value="${Globals.DriverClassName}"/>
-		<property name="url" value="${Globals.Url}" />
-		<property name="username" value="${Globals.UserName}"/>
-		<property name="password" value="${Globals.Password}"/>
-	</bean>
-	-->
 </beans>

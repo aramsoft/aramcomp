@@ -1250,7 +1250,7 @@
 				}
 			} else {
 				if ( o.blackDatesRec !== false ) {
-					for ( i=0; i<o.blackDatesRec.length; i++ ) {
+					for (var i=0; i<o.blackDatesRec.length; i++ ) {
 						if ( 
 							( o.blackDatesRec[i][0] === -1 || o.blackDatesRec[i][0] === year ) &&
 							( o.blackDatesRec[i][1] === -1 || o.blackDatesRec[i][1] === month ) &&

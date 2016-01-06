@@ -60,7 +60,7 @@ function createTree(arrName ) {
 * 노드위치 확인
 */
 function getTreeArrayId(node) {
-	for (i=0; i<treeNodes.length; i++) {
+	for (var i=0; i<treeNodes.length; i++) {
 		var nodeValues = treeNodes[i].split("|");
 		if (nodeValues[0]==node) return i;
 	}
@@ -70,7 +70,7 @@ function getTreeArrayId(node) {
 * 트리 노드 열기
 */
 function setOpenTreeNodes(openNode) {
-	for (i=0; i<treeNodes.length; i++) {
+	for (var i=0; i<treeNodes.length; i++) {
 		var nodeValues = treeNodes[i].split("|");
 		if (nodeValues[0]==openNode) {
 			openTreeNodes.push(nodeValues[0]);
@@ -83,7 +83,7 @@ function setOpenTreeNodes(openNode) {
 * 하위 트리노드 존재여부 확인
 */
 function hasChildTreeNode(parentNode) {
-	for (i=0; i< treeNodes.length; i++) {
+	for (var i=0; i< treeNodes.length; i++) {
 		var nodeValues = treeNodes[i].split("|");
 		if (nodeValues[1] == parentNode) return true;
 	}
@@ -95,7 +95,7 @@ function hasChildTreeNode(parentNode) {
 */
 function lastTreeSibling (node, parentNode) {
 	var lastChild = 0;
-	for (i=0; i< treeNodes.length; i++) {
+	for (var i=0; i< treeNodes.length; i++) {
 		var nodeValues = treeNodes[i].split("|");
 		if (nodeValues[1] == parentNode) lastChild = nodeValues[0];
 	}
@@ -114,7 +114,7 @@ function addTreeNode(parentNode, recursedNodes) {
 
 			var lastSibling	= lastTreeSibling(nodeValues[0], nodeValues[1]);
 			var hasChildNode	= hasChildTreeNode(nodeValues[0]);
-			for (g=0; g<recursedNodes.length; g++) {
+			for (var g=0; g<recursedNodes.length; g++) {
 				vHtmlCode +="<img src='"+imgpath+"menu_empty.gif' border='0' align='absbottom' alt='' >";
 			}
 			if (lastSibling) recursedNodes.push(0);

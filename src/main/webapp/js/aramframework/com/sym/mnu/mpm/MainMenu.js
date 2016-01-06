@@ -57,9 +57,9 @@ function createTree(arrName, vYeobu, checkValue) {
 		if (startNode == null) startNode = 0;
 		if (openNode != 0 || openNode != null) setOpenTreeNodes(openNode);
 		if (startNode !=0) {
-			var _getTreeArrayId = getTreeArrayId(startNode)
+			var getTreeArrayId = getTreeArrayId(startNode);
 			var nodeValues = treeNodes[getTreeArrayId(startNode)].split("|");
-			vHtmlCode +="<div class='LeftMenuTitle'><font color='#ffffff'>" + nodeValues[2] + "</font></div></td></tr>"
+			vHtmlCode +="<div class='LeftMenuTitle'><font color='#ffffff'>" + nodeValues[2] + "</font></div></td></tr>";
 		} else vHtmlCode +="<img src='"+imgpath+"menu_base.gif' border='0' align='absbottom' alt='' >메뉴목록<br></td></tr>";
 		var recursedNodes = new Array();
 		addTreeNode(startNode, recursedNodes);
@@ -71,7 +71,7 @@ function createTree(arrName, vYeobu, checkValue) {
 * 노드위치 확인
 */
 function getTreeArrayId(node) {
-	for (i=0; i<treeNodes.length; i++) {
+	for (var i=0; i<treeNodes.length; i++) {
 		var nodeValues = treeNodes[i].split("|");
 		if (nodeValues[0]==node) return i;
 	}
@@ -81,7 +81,7 @@ function getTreeArrayId(node) {
 * 트리 노드 열기
 */
 function setOpenTreeNodes(openNode) {
-	for (i=0; i<treeNodes.length; i++) {
+	for (var i=0; i<treeNodes.length; i++) {
 		var nodeValues = treeNodes[i].split("|");
 		if (nodeValues[0]==openNode) {
 			openTreeNodes.push(nodeValues[0]);
@@ -94,7 +94,7 @@ function setOpenTreeNodes(openNode) {
 */
 function isTreeNodeOpen(node) {
    if (treeYeobu){ return true; }
-   for (i=0; i<openTreeNodes.length; i++){
+   for (var i=0; i<openTreeNodes.length; i++){
 	   if (openTreeNodes[i]==node){ return true; }
    }
    return false;
@@ -103,7 +103,7 @@ function isTreeNodeOpen(node) {
 * 하위 트리노드 존재여부 확인
 */
 function hasChildTreeNode(parentNode) {
-	for (i=0; i< treeNodes.length; i++) {
+	for (var i=0; i< treeNodes.length; i++) {
 		var nodeValues = treeNodes[i].split("|");
 		if (nodeValues[1] == parentNode) return true;
 	}
@@ -114,7 +114,7 @@ function hasChildTreeNode(parentNode) {
 */
 function lastTreeSibling (node, parentNode) {
 	var lastChild = 0;
-	for (i=0; i< treeNodes.length; i++) {
+	for (var i=0; i< treeNodes.length; i++) {
 		var nodeValues = treeNodes[i].split("|");
 		if (nodeValues[1] == parentNode)
 			lastChild = nodeValues[0];
@@ -139,7 +139,7 @@ function addTreeNode(parentNode, recursedNodes) {
 
 			vHtmlCodeEmpty = "";
 			// Write out line | empty treeIcons
-			for (g=0; g<recursedNodes.length; g++) {
+			for (var g=0; g<recursedNodes.length; g++) {
 				vHtmlCodeEmpty +="<img src='"+imgpath+"menu_empty.gif' border='0' align='absbottom' alt='' >";
 			}
 

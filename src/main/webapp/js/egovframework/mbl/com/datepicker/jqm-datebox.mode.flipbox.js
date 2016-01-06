@@ -60,7 +60,7 @@
 			});
 			
 			w.d.headerText = ((w._grabLabel() !== false)?w._grabLabel():((o.mode==='flipbox')?w.__('titleDateDialogLabel'):w.__('titleTimeDialogLabel')));
-			w.d.intHTML = $('<span>')
+			w.d.intHTML = $('<span>');
 			
 			w.fldOrder = ((o.mode==='flipbox')?w.__('dateFieldOrder'):w.__('timeFieldOrder'));
 			w._check();

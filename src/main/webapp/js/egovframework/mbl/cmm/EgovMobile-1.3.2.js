@@ -299,19 +299,19 @@
 			}
 		}
 		
-	}
+	};
 	
 	jAlert = function(message, title, theme , callback) {
 		$.alerts.alert(message, title, theme, callback);
-	}
+	};
 	
 	jActionSheet = function(message, title, theme, btmItem, callback) {	
 		$.alerts.ActionSheet(message, title, theme, btmItem, callback);
-	}
+	};
 	
 	jOverlay = function(message, title, theme, callback) {
 		$.alerts.Overlay(message, title, theme, callback);
-	}
+	};
 	
 	jConfirm = function(message, title, theme, callback) {
 		$.alerts.confirm(message, title, theme, callback);

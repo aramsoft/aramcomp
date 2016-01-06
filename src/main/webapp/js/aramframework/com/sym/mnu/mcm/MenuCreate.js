@@ -57,7 +57,7 @@ function createTree(arrName ) {
 * 노드위치 확인
 */
 function getTreeArrayId(node) {
-	for (i=0; i<treeNodes.length; i++) {
+	for (var i=0; i<treeNodes.length; i++) {
 		var nodeValues = treeNodes[i].split("|");
 		if (nodeValues[0]==node) return i;
 	}
@@ -125,7 +125,7 @@ function addTreeNode(parentNode, recursedNodes) {
 			if(nodeValues[4] == 1){ document.write(" checked "); }
 			document.write("onclick='javascript:fCheckDir(this.name, this.value,"+i+");' value=" + nodeValues[0] + ">");
 			if (hasChildNode) {
-				document.write("<img id='icon" + nodeValues[0] + "' src='"+imgpath+"menu_folder")
+				document.write("<img id='icon" + nodeValues[0] + "' src='"+imgpath+"menu_folder");
 					if (isNodeOpen) document.write("open");
 				document.write(".gif' border='0' alt='Folder' >");
 			} else document.write("<img id='icon" + nodeValues[0] + "' src='"+imgpath+"menu_page.gif' border='0' align='absbottom' alt='Page'>");

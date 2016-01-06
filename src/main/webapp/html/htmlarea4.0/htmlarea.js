@@ -1016,13 +1016,13 @@ HTMLArea.prototype.focusEditor = function() {
 	switch (this._editMode) {
 	case "wysiwyg":
 		try {
-			this._iframe.contentWindow.focus()
+			this._iframe.contentWindow.focus();
 		} catch (e) {
 		}
 		break;
 	case "textmode":
 		try {
-			this._textArea.focus()
+			this._textArea.focus();
 		} catch (e) {
 		}
 		break;

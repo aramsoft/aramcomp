@@ -37,9 +37,9 @@ function fn_egov_initl_mobilemultimedialist() {
 		var fileList = json.fileList;
 
 		if(resultList[index].mltmdCode == "MLT01"){
-			detail_html += "<video controls=\"true\" style=\"width:100%;max-width:100%;\">"
+			detail_html += "<video controls=\"true\" style=\"width:100%;max-width:100%;\">";
 		}else if(resultList[index].mltmdCode == "MLT02"){
-			detail_html += "<audio controls=\"true\">"
+			detail_html += "<audio controls=\"true\">";
 		}
 
 		for (var i = 0; i < fileList.length; i++) {
@@ -50,9 +50,9 @@ function fn_egov_initl_mobilemultimedialist() {
 		detail_html += "<p>지원 안함</p>";
 
 		if(resultList[index].mltmdCode == "MLT01"){
-			detail_html += "</video>"
+			detail_html += "</video>";
 		}else if(resultList[index].mltmdCode == "MLT02"){
-			detail_html += "</audio>"
+			detail_html += "</audio>";
 		}
 		
 		$('div[id="playview"]').html(detail_html);

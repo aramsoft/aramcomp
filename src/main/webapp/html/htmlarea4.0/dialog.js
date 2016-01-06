@@ -23,7 +23,7 @@ function Dialog(url, action, init) {
 Dialog._parentEvent = function(ev) {
 	setTimeout(function() {
 		if (Dialog._modal && !Dialog._modal.closed) {
-			Dialog._modal.focus()
+			Dialog._modal.focus();
 		}
 	}, 50);
 	if (Dialog._modal && !Dialog._modal.closed) {

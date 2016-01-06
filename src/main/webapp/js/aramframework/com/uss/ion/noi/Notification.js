@@ -57,7 +57,7 @@ function cfXmlHttpStatus(sendType, url, commType, parameters) {
             else
             	cfHttpException(request);                       // 예외 처리
         }
-    }
+    };
     request.send(parameters);                                   // 서버로 요청
 }
 

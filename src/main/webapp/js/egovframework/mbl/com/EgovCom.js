@@ -192,7 +192,7 @@
 			}
 		}
 
-	}
+	};
 
 	jPassword = function(message, title, theme,  callback) {
 		$.password.password(message, title, theme, callback);

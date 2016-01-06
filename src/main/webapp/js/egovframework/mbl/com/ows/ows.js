@@ -49,7 +49,7 @@
 	
 		if(window.navigator.onLine == true) {
 			// 1. 오프라인 서비스 상세조회 					
-			location.href = contextPath + "/mbl/com/ows/goMobileOfflineWeb.mdo?sn="+offlineSn
+			location.href = contextPath + "/mbl/com/ows/goMobileOfflineWeb.mdo?sn="+offlineSn;
 	
 		} else {
 			// 2. [오프라인 ]오프라인 서비스 상세조회내용 webstorage에 적재 					

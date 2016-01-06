@@ -45,7 +45,7 @@
 				ctrl = $("<div>", {"class":uid+'slide'});
 			
 			if ( typeof w.d.intHTML !== 'boolean' ) {
-				w.d.intHTML.empty().remove()
+				w.d.intHTML.empty().remove();
 			}
 			
 			w.d.input.on('datebox', function (e,p) {
@@ -53,7 +53,7 @@
 			});
 			
 			w.d.headerText = ((w._grabLabel() !== false)?w._grabLabel():w.__('titleDateDialogLabel'));
-			w.d.intHTML = $('<span>')
+			w.d.intHTML = $('<span>');
 			
 			w.fldOrder = w.__('slideFieldOrder');
 			w._check();

@@ -184,7 +184,7 @@ function fn_delete() {
 			testConnection();
 			if(onLine == true) {
 				// 1. 온라인
-				location.href = contextPath + "/mbl/com/syn/deleteMobileSync.mdo?sn="+syncSn
+				location.href = contextPath + "/mbl/com/syn/deleteMobileSync.mdo?sn="+syncSn;
 			} else {
 				// 2. 오프라인
 				var data = "D" + seperator + rowData[1] + seperator + rowData[2] + seperator + rowData[3] + seperator + rowData[4];
@@ -293,7 +293,7 @@ function leadingZeros(n, digits) {
 	n = n.toString();
 	
 	if (n.length < digits) {
-		for (i = 0; i < digits - n.length; i++)
+		for (var i = 0; i < digits - n.length; i++)
 		zero += '0';
 	}
 	return zero + n;

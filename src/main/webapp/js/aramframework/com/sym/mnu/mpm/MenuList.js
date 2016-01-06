@@ -60,7 +60,7 @@ function createTree(arrName, vYeobu) {
 * 노드위치 확인
 */
 function getTreeArrayId(node) {
-	for (i=0; i<treeNodes.length; i++) {
+	for (var i=0; i<treeNodes.length; i++) {
 		var nodeValues = treeNodes[i].split("|");
 		if (nodeValues[0]==node) return i;
 	}
@@ -70,7 +70,7 @@ function getTreeArrayId(node) {
 * 트리 노드 열기
 */
 function setOpenTreeNodes(openNode) {
-	for (i=0; i<treeNodes.length; i++) {
+	for (var i=0; i<treeNodes.length; i++) {
 		var nodeValues = treeNodes[i].split("|");
 		if (nodeValues[0]==openNode) {
 			openTreeNodes.push(nodeValues[0]);
@@ -83,7 +83,7 @@ function setOpenTreeNodes(openNode) {
 */
 function isTreeNodeOpen(node) {
    if (treeYeobu){ return true; }
-   for (i=0; i<openTreeNodes.length; i++){
+   for (var i=0; i<openTreeNodes.length; i++){
 	   if (openTreeNodes[i]==node){ return true; }
    }
    return false;
@@ -92,7 +92,7 @@ function isTreeNodeOpen(node) {
 * 하위 트리노드 존재여부 확인
 */
 function hasChildTreeNode(parentNode) {
-	for (i=0; i< treeNodes.length; i++) {
+	for (var i=0; i< treeNodes.length; i++) {
 		var nodeValues = treeNodes[i].split("|");
 		if (nodeValues[1] == parentNode) return true;
 	}
@@ -103,7 +103,7 @@ function hasChildTreeNode(parentNode) {
 */
 function lastTreeSibling (node, parentNode) {
 	var lastChild = 0;
-	for (i=0; i< treeNodes.length; i++) {
+	for (var i=0; i< treeNodes.length; i++) {
 		var nodeValues = treeNodes[i].split("|");
 		if (nodeValues[1] == parentNode)
 			lastChild = nodeValues[0];
@@ -123,7 +123,7 @@ function addTreeNode(parentNode, recursedNodes) {
 			var lastSibling	= lastTreeSibling(nodeValues[0], nodeValues[1]);
 			var hasChildNode	= hasChildTreeNode(nodeValues[0]);
 			var isNodeOpen = isTreeNodeOpen(nodeValues[0]);
-			for (g=0; g<recursedNodes.length; g++) {
+			for (var g=0; g<recursedNodes.length; g++) {
 				if (recursedNodes[g] == 1) document.write("<img src='"+imgpath+"menu_line.gif' border='0' align='absbottom' alt='' >");
 				else  document.write("<img src='"+imgpath+"menu_empty.gif' border='0' align='absbottom' alt='' >");
 			}
@@ -147,7 +147,7 @@ function addTreeNode(parentNode, recursedNodes) {
 			}
 			document.write("<a href=javascript:choiceNodes('" + i + "');>");
 			if (hasChildNode) {
-				document.write("<img id='icon" + nodeValues[0] + "' src='"+imgpath+"menu_folder")
+				document.write("<img id='icon" + nodeValues[0] + "' src='"+imgpath+"menu_folder");
 					if (isNodeOpen) document.write("open");
 				document.write(".gif' border='0' alt='Folder' >");
 			} else document.write("<img id='icon" + nodeValues[0] + "' src='"+imgpath+"menu_page.gif' border='0' align='absbottom' alt='Page'>");

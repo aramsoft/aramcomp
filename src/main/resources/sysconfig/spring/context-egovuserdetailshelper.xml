@@ -26,11 +26,6 @@
         </property>
     </bean>
 
-    <!-- 0. 세션/시큐리티를 제외한 테스트위한 인증(더미)을 사용하는 빈 -->
-	<!--
-    <bean id="testUserDetailsService" class="aramframework.com.cmm.service.impl.TestUserDetailsServiceImpl"/>
-	-->
-	
     <!-- 1. 세션을 이용한 인증을 사용하는 빈 -->
     <!--
     <bean id="userDetailsSessionService" class="aramframework.com.cmm.service.impl.UserDetailsSessionServiceImpl"/>

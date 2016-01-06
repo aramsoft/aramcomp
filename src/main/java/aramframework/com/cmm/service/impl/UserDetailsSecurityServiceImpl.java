@@ -59,9 +59,7 @@ public class UserDetailsSecurityServiceImpl extends EgovAbstractServiceImpl impl
         }
 
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-
         Iterator<? extends GrantedAuthority> iter = authorities.iterator();
-
         while(iter.hasNext()) {
         	GrantedAuthority auth = iter.next();
         	listAuth.add(auth.getAuthority());

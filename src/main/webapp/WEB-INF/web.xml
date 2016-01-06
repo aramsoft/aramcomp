@@ -23,35 +23,6 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
  		
-   	<!-- 3. EgovSSO 로그인 설정을 위한 필터 설정 -->
-    <!--
-    <filter>
-    	<filter-name>SSOLoginFilter</filter-name>
-    	<filter-class>aramframework.com.cmm.filter.SSOLoginFilter</filter-class>
-  	</filter>
-  	<filter-mapping>
-    	<filter-name>SSOLoginFilter</filter-name>
-    	<url-pattern>/j_spring_security_check</url-pattern>
-  	</filter-mapping>
-  	-->
-
-  	<!-- 3. EgovSSO 로그아웃 설정을 위한 필터 설정 -->
-    <!--
-    <filter>
-    	<filter-name>SSOLogoutFilter</filter-name>
-    	<filter-class>aramframework.com.cmm.filter.SSOLogoutFilter</filter-class>
-		<init-param>
-			<description>SSO Global Logout 처리후 반환되는 페이지 설정</description>
-			<param-name>returnURL</param-name>
-			<param-value>/j_spring_security_logout</param-value>
-		</init-param>
-  	</filter>
-  	<filter-mapping>
-    	<filter-name>SSOLogoutFilter</filter-name>
-    	<url-pattern>/uat/uia/actionLogout.do</url-pattern>
-  	</filter-mapping>
-  	-->
-
   	<!-- 스프링 시큐리티 설정 -->
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>

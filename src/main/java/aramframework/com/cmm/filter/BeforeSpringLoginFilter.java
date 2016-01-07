@@ -85,6 +85,7 @@ public class BeforeSpringLoginFilter extends OncePerRequestFilter {
 				loginVO = loginService.actionLogin(loginVO);
 
 				if (loginVO != null && loginVO.getId() != null && !loginVO.getId().equals("")) {
+					// login이 성공해서 사용자 정보가 있는 경우
 					// 세션 로그인
 					session.setAttribute("loginVO", loginVO);
 
@@ -92,25 +93,20 @@ public class BeforeSpringLoginFilter extends OncePerRequestFilter {
 			        springRequest.setUsername(loginVO.getUserSe() + loginVO.getId());
 			        springRequest.setPassword(loginVO.getUniqId());
 			        chain.doFilter((HttpServletRequestWrapper)springRequest, response);
-
 					return;
 				} else {
-
 					// 사용자 정보가 없는 경우 로그인 화면으로 redirect 시킴
 					request.setAttribute("message", MessageHelper.getMessage("fail.common.login"));
 					RequestDispatcher dispatcher = request.getRequestDispatcher(getLoginURL());
 					dispatcher.forward(request, response);
-
 					return;
 				}
 			} catch (Exception ex) {
-
 				// DB인증 예외가 발생할 경우 로그인 화면으로 redirect 시킴
 				LOG.error("Login Exception : " + ex.getCause());
 				request.setAttribute("message", MessageHelper.getMessage("fail.common.login"));
 				RequestDispatcher dispatcher = request.getRequestDispatcher(getLoginURL());
 				dispatcher.forward(request, response);
-
 				return;
 			}
 		}

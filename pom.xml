@@ -73,20 +73,6 @@
 			<artifactId>spring-jdbc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-<!--
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-orm</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
- 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<version>${spring.version}</version>
-			<scope>test</scope>
-		</dependency>
--->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
@@ -102,13 +88,6 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-<!--
-		<dependency>
-			<groupId>org.springframework.webflow</groupId>
-			<artifactId>org.springframework.webflow</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
--->		
 
 		<!-- spring 라이브러리 끝 -->
 		
@@ -162,25 +141,10 @@
 			<version>${egovframework.rte.version}</version>
 		</dependency>
 
-		<!--
-		JBoss의 경우는 <body-context>부분을 empty로 수정하여 적용하시면 되며,
-		pom.xml을 아래와 같이 적용하시면 수정된 jar를 참조하실 수 있습니다.
-		(기존 egovframework.rte.ptl.mvc dependency에 내부적으로 참조되고 있어,
-		해당 부분을 exclude 처리해야 함)
-		아래 주석을 해제하시면 됩니다.
-		-->
 		<dependency>
 			<groupId>egovframework.rte</groupId>
 			<artifactId>egovframework.rte.ptl.mvc</artifactId>
 			<version>${egovframework.rte.version}</version>
-			<!-- 
-			<exclusions>
-		        <exclusion>
-		            <groupId>org.springmodules</groupId>
-		            <artifactId>spring-modules-validation</artifactId>
-		        </exclusion>
-		    <exclusions> 
-			-->
 		</dependency>
 		<dependency>
 			<groupId>egovframework.rte</groupId>

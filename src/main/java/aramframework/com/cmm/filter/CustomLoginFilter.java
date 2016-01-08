@@ -39,11 +39,11 @@ import aramframework.com.uat.uia.service.LoginService;
  * </pre>
  */
 
-public class BeforeSpringLoginFilter extends OncePerRequestFilter {
+public class CustomLoginFilter extends OncePerRequestFilter {
 
 	private String loginURL;
 
-	protected final static Logger LOG = LoggerFactory.getLogger(BeforeSpringLoginFilter.class);
+	protected final static Logger LOG = LoggerFactory.getLogger(CustomLoginFilter.class);
 
 	public String getLoginURL() {
 		return loginURL;

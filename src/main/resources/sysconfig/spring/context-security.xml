@@ -53,7 +53,7 @@
 	</beans:bean>
 	
 	<beans:bean id="customLoginFilter"
-	    class="aramframework.com.cmm.filter.BeforeSpringLoginFilter">
+	    class="aramframework.com.cmm.filter.CustomLoginFilter">
 	    <beans:property name="loginURL" value="/uat/uia/loginUsr.do" />
 	</beans:bean>
 	

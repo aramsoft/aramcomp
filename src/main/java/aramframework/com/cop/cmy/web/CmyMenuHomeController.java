@@ -31,7 +31,6 @@ import aramframework.com.cop.bbs.service.BoardMasterVO;
 import aramframework.com.cop.bbs.service.BoardVO;
 import aramframework.com.cop.bbs.service.BBSMasterService;
 import aramframework.com.cop.bbs.service.BBSBoardService;
-import aramframework.com.cop.clb.service.ClubVO;
 import aramframework.com.cop.cmy.service.CmyMenuManageService;
 import aramframework.com.cop.cmy.service.CommunityUserVO;
 import aramframework.com.cop.cmy.service.CommunityVO;
@@ -466,18 +465,6 @@ public class CmyMenuHomeController {
 		bbsList.add(boardMasterVO);
 
 		model.addAttribute("bbsList", bbsList);
-		// //------------------------------
-
-		// --------------------------------
-		// 동호회 목록 정보
-		// --------------------------------
-		List<ClubVO> clubList = new ArrayList<ClubVO>();
-
-		ClubVO clubVO = new ClubVO();
-		clubVO.setClbNm("미리보기 동호회");
-		clubList.add(clubVO);
-
-		model.addAttribute("clubList", clubList);
 		// //------------------------------
 
 		Boolean isAuthenticated = UserDetailsHelper.isAuthenticated();

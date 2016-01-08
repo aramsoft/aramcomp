@@ -77,39 +77,4 @@ public interface UserInfMapper {
 	 */
 	public int selectCmmntyMngrListCnt(UserInfVO userInfVO);
 
-	/**
-	 * 동호회에 대한 모든 사용자 목록을 조회한다.
-	 * 
-	 * @param userInfVO
-	 */
-	public List<EgovMap> selectAllClubUser(UserInfVO userInfVO);
-
-	/**
-	 * 동호회 사용자 목록을 조회한다.
-	 * 
-	 * @param userInfVO
-	 */
-	public List<EgovMap> selectClubUserList(UserInfVO userInfVO);
-
-	/**
-	 * 동호회 사용자 목록에 대한 전체 건수를 조회한다.
-	 * 
-	 * @param userInfVO
-	 */
-	public int selectClubUserListCnt(UserInfVO userInfVO);
-
-	/**
-	 * 동호회 운영자 목록을 조회한다.
-	 * 
-	 * @param userInfVO
-	 */
-	public List<EgovMap> selectClubOprtrList(UserInfVO userInfVO);
-
-	/**
-	 * 동호회 운영자 목록에 대한 전체 건수를 조회한다.
-	 * 
-	 * @param userInfVO
-	 */
-	public int selectClubOprtrListCnt(UserInfVO userInfVO);
-
 }

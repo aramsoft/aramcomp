@@ -147,44 +147,12 @@ public class BBSUseInfoServiceImpl extends EgovAbstractServiceImpl implements BB
 	}
 
 	/**
-	 * 동호회에 사용되는 게시판 사용정보를 삭제한다.
-	 * 
-	 * @param boardUseInfVO
-	 */
-	public void deleteBBSUseInfByClub(BoardUseInfVO boardUseInfVO) {
-		List<EgovMap> result = bbsUseInfoMapper.selectBBSUseInfByClub(boardUseInfVO);
-
-		BoardUseInfVO bdUseInf = new BoardUseInfVO();
-		Iterator<EgovMap> iter = result.iterator();
-		EgovMap vo = null;
-		while (iter.hasNext()) {
-			vo = (EgovMap) iter.next();
-
-			bdUseInf.setBbsId(vo.get("bbsId").toString());
-			bdUseInf.setLastUpdusrId(boardUseInfVO.getLastUpdusrId());
-			// bdUseInf.setTrgetId(bdUseVO.getClbId()); // 사용자 ID를 넘겨야 함..
-			bdUseInf.setTrgetId(boardUseInfVO.getTrgetId());
-
-			bbsUseInfoMapper.deleteBBSUseInf(bdUseInf);
-		}
-	}
-
-	/**
 	 * 커뮤니티에 사용되는 모든 게시판 사용정보를 삭제한다.
 	 * 
 	 * @param boardUseInfVO
 	 */
 	public void deleteAllBBSUseInfByCmmnty(BoardUseInfVO boardUseInfVO) {
 		bbsUseInfoMapper.deleteAllBBSUseInfByCmmnty(boardUseInfVO);
-	}
-
-	/**
-	 * 동호회에 사용되는 모든 게시판 사용정보를 삭제한다.
-	 * 
-	 * @param boardUseInfVO
-	 */
-	public void deleteAllBBSUseInfByClub(BoardUseInfVO boardUseInfVO) {
-		bbsUseInfoMapper.deleteAllBBSUseInfByClub(boardUseInfVO);
 	}
 
 }

@@ -21,8 +21,6 @@ import aramframework.com.cop.bbs.service.BoardUseInfVO;
 import aramframework.com.cop.bbs.service.BBSMasterService;
 import aramframework.com.cop.bbs.service.BBSBoardService;
 import aramframework.com.cop.bbs.service.BBSUseInfoService;
-import aramframework.com.cop.clb.service.ClubManageService;
-import aramframework.com.cop.clb.service.ClubVO;
 import aramframework.com.cop.cmy.service.CommunityMenuVO;
 import aramframework.com.cop.cmy.service.CommunityUserVO;
 import aramframework.com.cop.cmy.service.CommunityVO;
@@ -57,9 +55,6 @@ public class CommunityManageServiceImpl extends EgovAbstractServiceImpl implemen
 
 	@Resource(name = "cacheDictionary")
 	private Map<String, Object> cacheDictionary;
-
-	@Resource(name = "clubManageService")
-	private ClubManageService clubService;
 
 	@Resource(name = "bbsMasterService")
 	private BBSMasterService bbsMasterService;
@@ -560,18 +555,6 @@ public class CommunityManageServiceImpl extends EgovAbstractServiceImpl implemen
     		selectCommunityInf(communityVO);
     		
         	cacheMap.put(CacheKey.CMY_HOME, communityVO);
-        }
-
-		// --------------------------------
-		// 동호회 목록 정보
-		// --------------------------------
-		List<EgovMap> clubList = communityVO.getClubList();
-        if( clubList == null ) {
-            ClubVO clubVo = new ClubVO();
-    		clubVo.setCmmntyId(communityVO.getCmmntyId());
-
-    		clubList = clubService.selectClubListPortletByTrget(clubVo);
-    		communityVO.setClubList(clubList);
         }
 
 		// --------------------------------

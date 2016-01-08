@@ -64,13 +64,6 @@ public interface BBSUseInfoMapper {
 	public List<EgovMap> selectBBSUseInfByCmmnty(BoardUseInfVO boardUseInfVO);
 
 	/**
-	 * 동호회에 사용되는 게시판 사용정보 목록을 조회한다.
-	 * 
-	 * @param boardUseInfVO
-	 */
-	public List<EgovMap> selectBBSUseInfByClub(BoardUseInfVO boardUseInfVO);
-
-	/**
 	 * 게시판 사용정보에 대한 상세정보를 조회한다.
 	 * 
 	 * @param boardUseInfVO
@@ -112,11 +105,4 @@ public interface BBSUseInfoMapper {
 	 */
 	public void deleteAllBBSUseInfByCmmnty(BoardUseInfVO boardUseInfVO);
 
-	/**
-	 * 동호회에 사용되는 모든 게시판 사용정보를 삭제한다.
-	 * 
-	 * @param boardUseInfVO
-	 */
-	public void deleteAllBBSUseInfByClub(BoardUseInfVO boardUseInfVO);
-	
 }

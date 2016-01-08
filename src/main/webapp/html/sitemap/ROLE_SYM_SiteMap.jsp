@@ -110,7 +110,6 @@
 <img src='/images/aramframework/com/cmm/utl/menu_empty.gif' border='0' alt=''><img src='/images/aramframework/com/cmm/utl/menu_empty.gif' border='0' alt=''>+<img src='/images/aramframework/com/cmm/utl/menu_empty.gif' border='0' alt=''><font size=2><b>▶ 커뮤니티/동호회</b></font><br> 
 <div id='div5020000'> 
 <img src='/images/aramframework/com/cmm/utl/menu_empty.gif' border='0' alt=''><img src='/images/aramframework/com/cmm/utl/menu_empty.gif' border='0' alt=''><img src='/images/aramframework/com/cmm/utl/menu_empty.gif' border='0' alt=''><img src='/images/aramframework/com/cmm/utl/menu_empty.gif' border='0' alt=''><font size=2 class='.location'><a href="javascript:fCallUrl('/cop/cmy/selectCmmntyInfs.do');">― 커뮤니티목록조회</a></font><br> 
-<img src='/images/aramframework/com/cmm/utl/menu_empty.gif' border='0' alt=''><img src='/images/aramframework/com/cmm/utl/menu_empty.gif' border='0' alt=''><img src='/images/aramframework/com/cmm/utl/menu_empty.gif' border='0' alt=''><img src='/images/aramframework/com/cmm/utl/menu_empty.gif' border='0' alt=''><font size=2 class='.location'><a href="javascript:fCallUrl('/cop/clb/selectClubInfs.do');">― 동호회목록조회</a></font><br> 
 </div> 
 <img src='/images/aramframework/com/cmm/utl/menu_empty.gif' border='0' alt=''><img src='/images/aramframework/com/cmm/utl/menu_empty.gif' border='0' alt=''>+<img src='/images/aramframework/com/cmm/utl/menu_empty.gif' border='0' alt=''><font size=2><b>▶ 공통관리</b></font><br> 
 <div id='div5030000'> 

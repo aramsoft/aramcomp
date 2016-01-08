@@ -562,46 +562,6 @@ CREATE TABLE COMTN_CMMNTY_USER
 
 CREATE INDEX COMTN_CMMNTY_USER_i01 ON COMTN_CMMNTY_USER (CMMNTY_ID ASC);
 
-------------------------------------------------
-
-CREATE TABLE COMTN_CLUB
-(
-	CLB_ID                	char(20)  		NOT NULL,
-	CMMNTY_ID             	char(20)  		NOT NULL,
-	CLB_NM                	varchar(255)  	NOT NULL,
-	CLB_INTRCN            	varchar(2400)   NULL,
-	USE_AT                	char(1)  		NOT NULL,
-	REGIST_SE_CODE        	char(6)  		NULL,
-	TMPLAT_ID             	char(20)  		NULL,
-	FRST_REGISTER_ID      	varchar(20)  	NOT NULL,
-	FRST_REGIST_PNTTM     	datetime  		NOT	NULL,
-	LAST_UPDUSR_ID        	varchar(20)  	NULL,
-	LAST_UPDT_PNTTM       	datetime  		NULL,
-	CONSTRAINT  COMTN_CLUB_PK PRIMARY KEY (CLB_ID, CMMNTY_ID)
-);
-INSERT INTO COMTE_COPSEQ ( TABLE_NAME, NEXT_ID ) VALUES ('CLB_ID', 1);
-
--------------------------------------------
-
-CREATE TABLE COMTN_CLUB_USER
-(
-	CLB_ID                	char(20)  		NOT NULL,
-	CMMNTY_ID             	char(20)  		NOT NULL,
-	OPRTR_AT              	char(1)  		NOT NULL,
-	SBSCRB_DE             	datetime  		NULL,
-	SECSN_DE              	char(20)  		NULL,
-	USE_AT                	char(1)  		NOT NULL,
-	FRST_REGISTER_ID      	varchar(20)  	NOT NULL,
-	FRST_REGIST_PNTTM     	datetime  		NOT	NULL,
-	LAST_UPDUSR_ID        	varchar(20)  	NULL,
-	LAST_UPDT_PNTTM       	datetime  		NULL,
-	EMPLYR_ID             	varchar(20)  	NOT NULL,
-	CONSTRAINT  COMTN_CLUB_USER_PK PRIMARY KEY (CLB_ID, CMMNTY_ID, EMPLYR_ID),
-	CONSTRAINT  COMTN_CLUB_USER_FK1 FOREIGN KEY (CLB_ID, CMMNTY_ID) REFERENCES COMTN_CLUB(CLB_ID, CMMNTY_ID)
-);
-
-CREATE INDEX COMTN_CLUB_USER_i01 ON COMTN_CLUB_USER (CLB_ID ASC, CMMNTY_ID ASC);
-
 ----------------------------------------------
 
 CREATE TABLE COMTN_CONFM_HISTORY

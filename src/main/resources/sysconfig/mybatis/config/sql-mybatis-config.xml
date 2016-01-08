@@ -21,8 +21,6 @@
   		<typeAlias alias="boardUseInfVO" 		type="aramframework.com.cop.bbs.service.BoardUseInfVO"/>
   		<typeAlias alias="commentVO" 			type="aramframework.com.cop.bbs.service.CommentVO"/>
   		<typeAlias alias="satisfactionVO" 		type="aramframework.com.cop.bbs.service.SatisfactionVO"/>
-  		<typeAlias alias="clubVO" 				type="aramframework.com.cop.clb.service.ClubVO"/>
-  		<typeAlias alias="clubUserVO" 			type="aramframework.com.cop.clb.service.ClubUserVO"/>
    		<typeAlias alias="communityVO" 			type="aramframework.com.cop.cmy.service.CommunityVO"/>
   		<typeAlias alias="communityUserVO"		type="aramframework.com.cop.cmy.service.CommunityUserVO"/>
   		<typeAlias alias="communityMenuVO"		type="aramframework.com.cop.cmy.service.CommunityMenuVO"/>

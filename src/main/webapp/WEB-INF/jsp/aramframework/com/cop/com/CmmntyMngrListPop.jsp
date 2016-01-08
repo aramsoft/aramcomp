@@ -104,11 +104,7 @@ function fn_aram_linkPage(pageNo) {
 	var _target = varForm.targetMethod.value;
 	var actionUrl;
 
-	if (_target == 'selectClubOprtrList') {
-		actionUrl = "${pageContext.request.contextPath}/cop/com/listClubOprtr.do";
-	} else if (_target == 'selectClubUserList') {
-		actionUrl = "${pageContext.request.contextPath}/cop/com/listClubUser.do";
-	} else if (_target == 'selectCmmntyMngrList') {
+    if (_target == 'selectCmmntyMngrList') {
 		actionUrl = "${pageContext.request.contextPath}/cop/com/listCmmntyMngr.do";
 	} else if (_target == 'selectCmmntyUserList') {
 		actionUrl = "${pageContext.request.contextPath}/cop/com/listCmmntyUser.do";

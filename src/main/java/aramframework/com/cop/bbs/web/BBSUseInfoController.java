@@ -77,9 +77,6 @@ public class BBSUseInfoController {
 		if (ComponentChecker.hasComponent("communityManageService")) {// 2011.09.15
 			model.addAttribute("useCommunity", "true");
 		}
-		if (ComponentChecker.hasComponent("clubManageService")) {// 2011.09.15
-			model.addAttribute("useClub", "true");
-		}
 
 		return WebUtil.adjustViewName("/cop/bbs/BoardUseInfList");
 	}
@@ -97,9 +94,6 @@ public class BBSUseInfoController {
 
 		if (ComponentChecker.hasComponent("communityManageService")) {// 2011.09.15
 			model.addAttribute("useCommunity", "true");
-		}
-		if (ComponentChecker.hasComponent("clubManageService")) {// 2011.09.15
-			model.addAttribute("useClub", "true");
 		}
 
 		return WebUtil.adjustViewName("/cop/bbs/BoardUseInfRegist");
@@ -126,8 +120,6 @@ public class BBSUseInfoController {
 		String registSeCode = "";
 		if ("CMMNTY".equals(trgetType)) {
 			registSeCode = "REGC06";	// Community
-		} else if ("CLUB".equals(trgetType)) {
-			registSeCode = "REGC05"; 	// Club
 		} else {
 			registSeCode = "REGC01";	// 시스템
 		}

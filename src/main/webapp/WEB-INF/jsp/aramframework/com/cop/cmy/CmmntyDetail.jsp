@@ -162,10 +162,6 @@
 
 <div style="margin-top:10px; width:100%"></div>
 
-<c:import url="/cop/clb/listClubByCmmntyId.do" charEncoding="utf-8">
-	<c:param name="param_cmmntyId" value="${communityVO.cmmntyId}" />
-</c:import>
-
 </DIV>
 
 <script type="text/javascript">

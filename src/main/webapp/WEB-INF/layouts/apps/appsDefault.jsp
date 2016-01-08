@@ -171,29 +171,6 @@
 			<!-- 데모 프로그램 부분 : End -->
 			</c:if>
 
-			<c:if test="${fn:length(targetVO.clubList) != 0}">
-			<!-- 동호회 목록 부분 : Start -->
-			<nav class="menubox">
-       		<ul>
-	       		<li class="leftmenu_dept01">
-	       			<span class="leftbar"></span>
-	                <span class="menubar">동호회 목록</span>	
-	       			<span class="rightbar"></span>
-      			</li>
-
-				<c:forEach var="club" items="${targetVO.clubList}" varStatus="status">
-	      			<li class="leftmenu_dept02">
-	          			<span class="menubar"></span>
-                 		<a href="#" onclick="javascript:fn_aram_loadClub('<c:out value="${club.clbId}"/>'); return false;">
-                 			<c:out value="${club.clbNm}"/>
-                 		</a>
-	      			</li>
-				</c:forEach>
-			</ul>	
-	       	</nav>
-			<!-- 동호회 목록 부분 : End -->
-			</c:if>
-
 		    <c:if test="${targetVO.memberAt == 'Y'}">
 			<c:if test="${loginVO != null}">
 			<!-- 회원관련 부분 : Start -->
@@ -313,9 +290,6 @@ function fn_aram_deleteUser(cmmntyId){
 	window.open("${pageContext.request.contextPath}/cop/com/listCmmntyMngr.do?trgetId="+cmmntyId+"&PopFlag=S", "userDelete","width=800, height=400");
 }
 
-function fn_aram_loadClub(clbId){
-	window.open("${pageContext.request.contextPath}/cop/clb/ClubMainPage.do?clbId="+clbId, "loadClub");
-}
 </script>
 </c:if>
 

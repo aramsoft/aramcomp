@@ -19,7 +19,6 @@ import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.bbs.service.BBSBoardService;
 import aramframework.com.cop.bbs.service.BoardMasterVO;
 import aramframework.com.cop.bbs.service.BBSMasterService;
-import aramframework.com.cop.clb.service.ClubManageService;
 import aramframework.com.cop.cmy.service.CommunityVO;
 import aramframework.com.cop.cmy.service.CommunityManageService;
 import aramframework.com.cop.com.service.ConfirmService;
@@ -54,9 +53,6 @@ public class MblCmyMenuHomeController {
     
     @Resource(name = "communityManageService")
     private CommunityManageService cmmntyService;
-
-    @Resource(name = "clubManageService")
-    private ClubManageService clubService;
 
     @Resource(name = "confirmService")
     private ConfirmService confmService;

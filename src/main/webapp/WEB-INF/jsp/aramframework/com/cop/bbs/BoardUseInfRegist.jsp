@@ -64,9 +64,6 @@
 			   <c:if test="${useCommunity == 'true'}">
 			   <option value="CMMNTY">커뮤니티</option>
 			   </c:if>
-			   <c:if test="${useClub == 'true'}">
-			   <option value="CLUB">동호회</option>
-			   </c:if>
 			   <option value="SYSTEM">시스템</option>
 		   	</select>
 			<form:hidden path="trgetId" />
@@ -110,8 +107,6 @@ function fn_aram_select_targetType(obj) {
 	var _strType = obj.value;
 	if (_strType == 'CMMNTY') {
 		fn_aram_get_cmmnty();
-	} else if (_strType == 'CLUB') {
-		fn_aram_get_club();
 	} else {
 		varForm.trgetId.value = "SYSTEM_DEFAULT_BOARD";
 		varForm.trgetNm.value = "시스템 활용";
@@ -141,16 +136,6 @@ function fn_aram_get_cmmnty(){
 	var url = "/cop/cmy/listCommunityPopup.do";
 
 	window.open(url, "p_cmmntyInqire", "width=850px,height=480px,top=100px,left=100px,location=no");
-}
-
-function fn_aram_get_club(){
-    var varForm = document.getElementById("boardUseInfVO");
-	gArguments["trgetId"] = varForm.trgetId;
-	gArguments["trgetNm"] = varForm.trgetNm;
-	
-	var url = "/cop/clb/listClubPopup.do";
-
-	window.open(url, "p_clubInqire", "width=850px,height=480px,top=100px,left=100px,location=no");
 }
 
 </script>

@@ -10,8 +10,6 @@ import org.springframework.web.context.request.RequestContextHolder;
 
 import aramframework.com.cmm.LoginVO;
 import aramframework.com.cmm.util.UserDetailsHelper;
-import aramframework.com.cop.clb.service.ClubUserVO;
-import aramframework.com.cop.clb.service.ClubManageService;
 import aramframework.com.cop.cmy.service.CommunityUserVO;
 import aramframework.com.cop.cmy.service.CommunityManageService;
 import aramframework.com.cop.com.service.UserInfService;
@@ -43,9 +41,6 @@ public class UserInfServiceImpl extends EgovAbstractServiceImpl implements UserI
 
 	@Resource(name = "userInfMapper")
 	private UserInfMapper userInfMapper;	
-
-	@Resource(name = "clubManageService")
-	private ClubManageService clbService; // 동호회 운영자 권한 확인
 
 	@Resource(name = "communityManageService")
 	private CommunityManageService cmmntyService; // 커뮤니티 관리자 권한 확인
@@ -79,17 +74,6 @@ public class UserInfServiceImpl extends EgovAbstractServiceImpl implements UserI
 			} else {
 				return "N";
 			}
-		} else if (trgetId.startsWith("CLB_")) {
-			ClubUserVO clubUserVO = new ClubUserVO();
-
-			clubUserVO.setClbId(trgetId);
-			clubUserVO.setEmplyrId(loginVO.getUniqId());
-
-			if (clbService.checkClubUserInf(clubUserVO).equals("EXIST")) {
-				return "Y";
-			} else {
-				return "N";
-			}
 		}
 		return defaultYN;
 	}
@@ -119,15 +103,6 @@ public class UserInfServiceImpl extends EgovAbstractServiceImpl implements UserI
 			communityUserVO.setEmplyrId(loginVO.getUniqId());
 
 			if (cmmntyService.isManager(communityUserVO)) {
-				return "Y";
-			}
-		} else if (trgetId.startsWith("CLB_")) {
-			ClubUserVO clubUserVO = new ClubUserVO();
-
-			clubUserVO.setClbId(trgetId);
-			clubUserVO.setEmplyrId(loginVO.getUniqId());
-
-			if (clbService.isOperator(clubUserVO)) {
 				return "Y";
 			}
 		} 			
@@ -196,51 +171,6 @@ public class UserInfServiceImpl extends EgovAbstractServiceImpl implements UserI
 	 */
 	public int selectCmmntyMngrListCnt(UserInfVO userInfVO) {
 		return userInfMapper.selectCmmntyMngrListCnt(userInfVO);
-	}
-
-	/**
-	 * 동호회에 대한 모든 사용자 목록을 조회한다.
-	 * 
-	 * @param userInfVO
-	 */
-	public List<EgovMap> selectAllClubUser(UserInfVO userInfVO) {
-		return userInfMapper.selectAllClubUser(userInfVO);
-	}
-
-	/**
-	 * 동호회 사용자 목록을 조회한다.
-	 * 
-	 * @param userInfVO
-	 */
-	public List<EgovMap> selectClubUserList(UserInfVO userInfVO) {
-		return userInfMapper.selectClubUserList(userInfVO);
-	}
-
-	/**
-	 * 동호회 사용자 목록을 조회한다.
-	 * 
-	 * @param userInfVO
-	 */
-	public int selectClubUserListCnt(UserInfVO userInfVO) {
-		return userInfMapper.selectClubUserListCnt(userInfVO);
-	}
-	
-	/**
-	 * 동호회 운영자 목록을 조회한다.
-	 * 
-	 * @param userInfVO
-	 */
-	public List<EgovMap> selectClubOprtrList(UserInfVO userInfVO) {
-		return userInfMapper.selectClubOprtrList(userInfVO);
-	}
-	
-	/**
-	 * 동호회 운영자 목록을 조회한다.
-	 * 
-	 * @param userInfVO
-	 */
-	public int selectClubOprtrListCnt(UserInfVO userInfVO) {
-		return userInfMapper.selectClubOprtrListCnt(userInfVO);
 	}
 
 }

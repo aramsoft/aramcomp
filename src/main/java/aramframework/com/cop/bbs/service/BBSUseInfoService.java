@@ -96,24 +96,10 @@ public interface BBSUseInfoService {
 	public void deleteBBSUseInfByCmmnty(BoardUseInfVO boardUseInfVO);
 
 	/**
-	 * 동호회에 사용되는 게시판 사용정보를 삭제한다.
-	 * 
-	 * @param boardUseInfVO
-	 */
-	public void deleteBBSUseInfByClub(BoardUseInfVO boardUseInfVO);
-
-	/**
 	 * 커뮤니티에 사용되는 모든 게시판 사용정보를 삭제한다.
 	 * 
 	 * @param boardUseInfVO
 	 */
 	public void deleteAllBBSUseInfByCmmnty(BoardUseInfVO boardUseInfVO);
-
-	/**
-	 * 동호회에 사용되는 모든 게시판 사용정보를 삭제한다.
-	 * 
-	 * @param boardUseInfVO
-	 */
-	public void deleteAllBBSUseInfByClub(BoardUseInfVO boardUseInfVO);
 
 }

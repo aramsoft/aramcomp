@@ -138,11 +138,7 @@ function fn_aram_linkPage(pageIndex) {
 	var _target = varForm.targetMethod.value;
 
 	varForm.pageIndex.value = pageIndex;
-	if (_target == 'selectClubOprtrList') {
-		varForm.action = "${pageContext.request.contextPath}/cop/com/listClubOprtr.do";
-	} else if (_target == 'selectClubUserList') {
-		varForm.action = "${pageContext.request.contextPath}/cop/com/listClubUser.do";
-	} else if (_target == 'selectCmmntyMngrList') {
+	if (_target == 'selectCmmntyMngrList') {
 		varForm.action = "${pageContext.request.contextPath}/cop/com/listCmmntyMngr.do";
 	} else if (_target == 'selectCmmntyUserList') {
 		varForm.action = "${pageContext.request.contextPath}/cop/com/listCmmntyUser.do";
@@ -157,11 +153,7 @@ function fn_aram_search() {
 	var _target = varForm.targetMethod.value;
 
 	varForm.pageIndex.value = '1';
-	if (_target == 'selectClubOprtrList') {
-		varForm.action = "${pageContext.request.contextPath}/cop/com/listClubOprtr.do";
-	} else if (_target == 'selectClubUserList') {
-		varForm.action = "${pageContext.request.contextPath}/cop/com/listClubUser.do";
-	} else if (_target == 'selectCmmntyMngrList') {
+	if (_target == 'selectCmmntyMngrList') {
 		varForm.action = "${pageContext.request.contextPath}/cop/com/listCmmntyMngr.do";
 	} else if (_target == 'selectCmmntyUserList') {
 		varForm.action = "${pageContext.request.contextPath}/cop/com/listCmmntyUser.do";
@@ -180,10 +172,7 @@ function fn_aram_delete_user(emplyrId) {
 		if (_target == 'selectCmmntyUserList') {
 			varForm.param_cmmntyId.value = varForm.trgetId.value;
 			varForm.action = "${pageContext.request.contextPath}/cop/com/deleteCmmntyUser.do";
-		} else if (_target == 'selectClubUserList') {
-			varForm.param_clbId.value = varForm.trgetId.value;
-			varForm.action = "${pageContext.request.contextPath}/cop/com/deleteClbUser.do";
-		}
+		} 
 		varForm.submit();
 	}
 }
@@ -197,10 +186,7 @@ function fn_aram_erase_user(emplyrId) {
 		if (_target == 'selectCmmntyUserList') {
 			varForm.param_cmmntyId.value = varForm.trgetId.value;
 			varForm.action = "${pageContext.request.contextPath}/cop/com/eraseCmmntyUser.do";
-		} else if (_target == 'selectClubUserList') {
-			varForm.param_clbId.value = varForm.trgetId.value;
-			varForm.action = "${pageContext.request.contextPath}/cop/com/eraseClbUser.do";
-		}
+		} 
 		varForm.submit();
 	}
 }
@@ -214,10 +200,7 @@ function fn_aram_reRegist_user(emplyrId){
 		if (_target == 'selectCmmntyUserList') {
 			varForm.param_cmmntyId.value = varForm.trgetId.value;
 			varForm.action = "${pageContext.request.contextPath}/cop/com/reRegistCmmntyUser.do";
-		} else if (_target == 'selectClubUserList') {
-			varForm.param_clbId.value = varForm.trgetId.value;
-			varForm.action = "${pageContext.request.contextPath}/cop/com/reRegistClbUser.do";
-		}
+		} 
 		varForm.submit();
 	}
 }
@@ -231,10 +214,7 @@ function fn_aram_regist_manager(emplyrId) {
 		if (_target == 'selectCmmntyUserList') {
 			varForm.param_cmmntyId.value = varForm.trgetId.value;
 			varForm.action = "${pageContext.request.contextPath}/cop/com/registCmmntyManager.do";
-		} else if (_target == 'selectClubUserList') {
-			varForm.param_clbId.value = varForm.trgetId.value;
-			varForm.action  = "${pageContext.request.contextPath}/cop/com/registClbOprtr.do";
-		}
+		} 
 		varForm.submit();
 	}
 }
@@ -248,10 +228,7 @@ function fn_aram_delete_manager(emplyrId) {
 		if (_target == 'selectCmmntyUserList') {
 			varForm.param_cmmntyId.value = varForm.trgetId.value;
 			varForm.action = "${pageContext.request.contextPath}/cop/com/deleteCmmntyManager.do";
-		} else if (_target == 'selectClubUserList') {
-			varForm.param_clbId.value = varForm.trgetId.value;
-			varForm.action  = "${pageContext.request.contextPath}/cop/com/deleteClbOprtr.do";
-		}
+		} 
 		varForm.submit();
 	}
 }

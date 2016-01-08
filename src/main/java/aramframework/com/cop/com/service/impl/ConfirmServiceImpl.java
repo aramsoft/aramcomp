@@ -7,9 +7,6 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
-import aramframework.com.cop.clb.service.ClubUserVO;
-import aramframework.com.cop.clb.service.ClubVO;
-import aramframework.com.cop.clb.service.ClubManageService;
 import aramframework.com.cop.cmy.service.CommunityUserVO;
 import aramframework.com.cop.cmy.service.CommunityVO;
 import aramframework.com.cop.cmy.service.CommunityManageService;
@@ -44,9 +41,6 @@ public class ConfirmServiceImpl extends EgovAbstractServiceImpl implements Confi
 	@Resource(name = "confirmMapper")
 	private ConfirmMapper confirmMapper;
 	
-	@Resource(name = "clubManageService")
-	private ClubManageService clubService;
-
 	@Resource(name = "communityManageService")
 	private CommunityManageService cmmntyService;
 
@@ -117,18 +111,6 @@ public class ConfirmServiceImpl extends EgovAbstractServiceImpl implements Confi
 
 				cmmntyService.deleteCommunityUserInf(communityUserVO);
 
-			} else if ("CF14".equals(confirmHistoryVO.getConfmTyCode())) {
-				// 동호회 사용자 탈퇴처리
-				ClubUserVO clubUserVO = new ClubUserVO();
-
-				clubUserVO.setLastUpdusrId(confirmHistoryVO.getConfmerId());
-				clubUserVO.setClbId(confirmHistoryVO.getTrgetJobId());
-				clubUserVO.setEmplyrId(confirmHistoryVO.getConfmRqesterId());
-				clubUserVO.setSecsnDe(DateUtil.getToday());
-				clubUserVO.setOprtrAt("N"); // 동호회 운영자가 아닌 것으로 강제 설정(2011.9.7 추가 사항)
-
-				clubService.deleteClubUserInf(clubUserVO);
-
 			} else if ("CF02".equals(confirmHistoryVO.getConfmTyCode())) {
 				// 커뮤니티 삭제
 				CommunityVO communityVO = new CommunityVO();
@@ -137,15 +119,6 @@ public class ConfirmServiceImpl extends EgovAbstractServiceImpl implements Confi
 				communityVO.setCmmntyId(confirmHistoryVO.getTrgetJobId());
 
 				cmmntyService.deleteCommunityInf(communityVO);
-
-			} else if ("CF04".equals(confirmHistoryVO.getConfmTyCode())) {
-				// 동호회 삭제
-				ClubVO clubVO = new ClubVO();
-
-				clubVO.setLastUpdusrId(confirmHistoryVO.getConfmerId());
-				clubVO.setClbId(confirmHistoryVO.getTrgetJobId());
-
-				clubService.deleteClubInf(clubVO);
 
 			} else if ("CF11".equals(confirmHistoryVO.getConfmTyCode())) {
 				// 커뮤니티 가입
@@ -159,18 +132,6 @@ public class ConfirmServiceImpl extends EgovAbstractServiceImpl implements Confi
 
 				cmmntyService.insertCommunityUserInf(communityUserVO);
 
-			} else if ("CF13".equals(confirmHistoryVO.getConfmTyCode())) {
-				// 동호회 가입
-				ClubUserVO clubUserVO = new ClubUserVO();
-
-				clubUserVO.setClbId(confirmHistoryVO.getTrgetJobId());
-				clubUserVO.setCmmntyId(confirmHistoryVO.getOpertId());
-				clubUserVO.setEmplyrId(confirmHistoryVO.getConfmRqesterId());
-				clubUserVO.setOprtrAt("N");
-				clubUserVO.setUseAt("Y");
-				clubUserVO.setFrstRegisterId(confirmHistoryVO.getConfmRqesterId());
-
-				clubService.insertClubUserInf(clubUserVO);
 			}
 		}
 

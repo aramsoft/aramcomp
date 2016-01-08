@@ -77,7 +77,6 @@ public class CommunityVO extends SearchVO {
 	private String emplyrId = "";
 	
 	/* for jsp only */
-	private List<EgovMap> clubList = null;	
 	private List<EgovMap> topMenuList = null;
 	private List<EgovMap> mgrMenuList = null;
 	private List<EgovMap> subMenuList = null;
@@ -205,13 +204,6 @@ public class CommunityVO extends SearchVO {
 	}
 
 	// for jsp only
-	/** clubList 	 */ 
-	public List<EgovMap> getClubList() {
-		return clubList;
-	}
-	public void setClubList(List<EgovMap> clubList) {
-		this.clubList = clubList;
-	}
 
 	/** topMenuList 	 */ 
 	public List<EgovMap> getTopMenuList() {

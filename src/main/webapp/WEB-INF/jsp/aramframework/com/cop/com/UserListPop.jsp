@@ -127,11 +127,7 @@ function fn_aram_linkPage(pageIndex){
 	var _target = varForm.targetMethod.value;
 
 	varForm.pageIndex.value = pageIndex;
-	if(_target == 'selectClubOprtrList'){
-		varForm.action = "${pageContext.request.contextPath}/cop/com/listClubOprtr.do";
-	}else if(_target == 'selectClubUserList'){
-		varForm.action = "${pageContext.request.contextPath}/cop/com/listClubUser.do";
-	}else if(_target == 'selectCmmntyMngrList'){
+	if(_target == 'selectCmmntyMngrList'){
 		varForm.action = "${pageContext.request.contextPath}/cop/com/listCmmntyMngr.do";
 	}else if(_target == 'selectCmmntyUserList'){
 		varForm.action = "${pageContext.request.contextPath}/cop/com/listCmmntyUser.do";
@@ -146,11 +142,7 @@ function fn_aram_search(){
 	var _target = varForm.targetMethod.value;
 
 	varForm.pageIndex.value = '1';
-	if(_target == 'selectClubOprtrList'){
-		varForm.action = "${pageContext.request.contextPath}/cop/com/listClubOprtr.do";
-	}else if(_target == 'selectClubUserList'){
-		varForm.action = "${pageContext.request.contextPath}/cop/com/listClubUser.do";
-	}else if(_target == 'selectCmmntyMngrList'){
+	if(_target == 'selectCmmntyMngrList'){
 		varForm.action = "${pageContext.request.contextPath}/cop/com/listCmmntyMngr.do";
 	}else if(_target == 'selectCmmntyUserList'){
 		varForm.action = "${pageContext.request.contextPath}/cop/com/listCmmntyUser.do";

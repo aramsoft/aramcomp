@@ -169,50 +169,6 @@ public class BBSMasterServiceImpl extends EgovAbstractServiceImpl implements BBS
 			boardUseInfVO.setPublicAt("Y");
 
 			bbsUseInfoMapper.insertBBSUseInf(boardUseInfVO);  // 커뮤니티 또는 동호회 Target
-/*
-			if(boardMasterVO.getBbsTyCode().equals(BBSBoardService.BBS_TYPE_ANONYMOUS)) {
-				boardUseInfVO.setBbsId(bbsId);
-				boardUseInfVO.setTrgetId("ANONYMOUS");
-				boardUseInfVO.setRegistSeCode("REGC07");
-				boardUseInfVO.setUseAt("Y");
-				boardUseInfVO.setFrstRegisterId(boardMasterVO.getFrstRegisterId());
-	
-				bbsUseDAO.insertBBSUseInf(boardUseInfVO);	// 익명 게시판 
-			}
-
-			// 커뮤니티 클럽인 경우 사용자 등록
-			UserInfVO userVO = new UserInfVO();
-			userVO.setTrgetId(boardMasterVO.getTrgetId());
-
-			List<UserInfVO> tmpList = null;
-			Iterator<UserInfVO> iter = null;
-
-			if ("REGC05".equals(boardMasterVO.getRegistSeCode())) { // Club 인 경우 
-				tmpList = userService.selectAllClubUser(userVO);
-				iter = tmpList.iterator();
-				while (iter.hasNext()) {
-					boardUseInfVO.setBbsId(bbsId);
-					boardUseInfVO.setTrgetId(((UserInfVO) iter.next()).getUniqId());
-					boardUseInfVO.setRegistSeCode("REGC07");
-					boardUseInfVO.setUseAt("Y");
-					boardUseInfVO.setFrstRegisterId(boardMasterVO.getFrstRegisterId());
-
-					bbsUseDAO.insertBBSUseInf(boardUseInfVO);
-				}
-			} else if ("REGC06".equals(boardMasterVO.getRegistSeCode())) {// 커뮤니티 인 경우 
-				tmpList = userService.selectAllCmmntyUser(userVO);
-				iter = tmpList.iterator();
-				while (iter.hasNext()) {
-					boardUseInfVO.setBbsId(bbsId);
-					boardUseInfVO.setTrgetId(((UserInfVO) iter.next()).getUniqId());
-					boardUseInfVO.setRegistSeCode("REGC07");
-					boardUseInfVO.setUseAt("Y");
-					boardUseInfVO.setFrstRegisterId(boardMasterVO.getFrstRegisterId());
-
-					bbsUseDAO.insertBBSUseInf(boardUseInfVO);
-				}
-			}
-*/
 		}
 		return bbsId;
 	}

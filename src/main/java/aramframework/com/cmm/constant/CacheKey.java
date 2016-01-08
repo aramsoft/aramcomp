@@ -8,7 +8,6 @@ public interface CacheKey {
 	String CMY_LOGOIMAGE 	= "LogoImage";
 	String CMY_TEMPLET   	= "Templet";
 	String CMY_BBSLIST   	= "BbsList";
-	String CMY_CLUBLIST  	= "ClubList";
 	String CMY_TOPLIST   	= "TopList";
 	String CMY_MGRLIST   	= "MgrList";
 	String CMY_SUBLIST   	= "SubList";

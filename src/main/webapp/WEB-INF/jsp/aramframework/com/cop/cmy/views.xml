@@ -50,24 +50,4 @@
     <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/cmy/CmyMenuExcelRegist.jsp" />
   </definition>
   
-  <definition name="aramframework/com/cop/cmy/ClubListByTrget" extends="default">
-    <put-attribute name="title" value="동호회 목록" />
-    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/cmy/ClubListByTrget.jsp" />
-  </definition>
-  
-  <definition name="aramframework/com/cop/cmy/ClubDetailByTrget" extends="default">
-    <put-attribute name="title" value="동호회 조회" />
-    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/cmy/ClubDetailByTrget.jsp" />
-  </definition>
-  
-  <definition name="aramframework/com/cop/cmy/ClubRegistByTrget" extends="default">
-    <put-attribute name="title" value="동호회 등록" />
-    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/cmy/ClubRegistByTrget.jsp" />
-  </definition>
-
-  <definition name="aramframework/com/cop/cmy/ClubEditByTrget" extends="default">
-    <put-attribute name="title" value="동호회 수정" />
-    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/cop/cmy/ClubEditByTrget.jsp" />
-  </definition>
-  
 </tiles-definitions>

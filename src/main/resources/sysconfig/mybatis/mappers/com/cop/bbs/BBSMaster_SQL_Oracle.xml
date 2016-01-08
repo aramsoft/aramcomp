@@ -24,8 +24,6 @@
 			     , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
 				 , e.CMMNTY_ID				AS "cmmntyId"
 				 , e.CMMNTY_NM				AS "cmmntyNm"
-				 , f.CLB_ID					AS "clbId"
-				 , f.CLB_NM					AS "clbNm"
 				 , g.CMMNTY_ID				AS "clbCmmntyId"
 				 , g.CMMNTY_NM				AS "clbCmmntyNm"
 			  FROM COMTN_BBS_MASTER a
@@ -41,8 +39,6 @@
 				   		ON a.BBS_ID = d.BBS_ID		
 				   LEFT OUTER JOIN COMTN_CMMNTY e
 						ON d.TRGET_ID = e.CMMNTY_ID
-				   LEFT OUTER JOIN COMTN_CLUB f
-						ON d.TRGET_ID = f.CLB_ID
 				   LEFT OUTER JOIN COMTN_CMMNTY g
 						ON f.CMMNTY_ID = g.CMMNTY_ID
 			 WHERE 1=1	
@@ -85,8 +81,6 @@
 				   		ON  a.BBS_ID = d.BBS_ID		
 				   LEFT OUTER JOIN COMTN_CMMNTY e
 						ON  d.TRGET_ID = e.CMMNTY_ID
-				   LEFT OUTER JOIN COMTN_CLUB f
-						ON  d.TRGET_ID = f.CLB_ID
 				   LEFT OUTER JOIN COMTN_CMMNTY g
 						ON  f.CMMNTY_ID = g.CMMNTY_ID
 			 WHERE 1=1	

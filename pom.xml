@@ -427,22 +427,6 @@
 			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/smeapi-2.3.jar</systemPath>
 		</dependency>
 
-		<!-- GPKI인증서 로그인처리 라이브러리 -->
-		<dependency>
-			<groupId>kr.go.gpki</groupId>
-			<artifactId>gpkisecureweb</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/gpkisecureweb-1.0.jar</systemPath>
-		</dependency>
-		<dependency>
-			<groupId>kr.go.gpki</groupId>
-			<artifactId>libgpkiapi_jni</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/libgpkiapi_jni-1.0.jar</systemPath>
-		</dependency>
-		
 		<!-- 3rd party 라이브러리로 별도의 설치 필요 끝 -->
 
 		<!-- database driver 시작 -->

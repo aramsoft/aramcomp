@@ -569,39 +569,11 @@
                         <encoding>UTF-8</encoding>
 					</configuration>
 				</plugin>
-			<!-- 	
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>hibernate3-maven-plugin</artifactId>
-					<version>2.1</version>
-					<configuration>
-						<components>
-							<component>
-								<name>hbm2ddl</name>
-								<implementation>annotationconfiguration</implementation>
-							</component>
-						</components>
-					</configuration>
-					<dependencies>
-						<dependency>
-							<groupId>hsqldb</groupId>
-							<artifactId>hsqldb</artifactId>
-							<version>1.8.0.7</version>
-						</dependency>
-					</dependencies>
-				</plugin>
-			-->
 				<!-- EMMA   -->
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>emma-maven-plugin</artifactId>
 					<version>1.0-alpha-1</version>
-				</plugin>
-				<!-- PMD manven plugin -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-pmd-plugin</artifactId>
-					<version>2.4</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -676,30 +648,6 @@
 					</reportSet>
 				</reportSets>
 			</plugin>
-			<!-- PMD manven plugin -->
-			<!--
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-pmd-plugin</artifactId>
-				<version>2.4</version>
-				<configuration>
-					<rulesets>
-						<ruleset>./Ruleset.xml</ruleset>
-					</rulesets>
-					<linkXref>true</linkXref>
-					<sourceEncoding>${encoding}</sourceEncoding>
-					<minimumTokens>100</minimumTokens>
-					<targetJdk>${compileSource}</targetJdk>
-				</configuration>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>pmd</report>
-						</reports>
-					</reportSet>
-				</reportSets>
-			</plugin>
-			-->
 			<!-- Generating JavaDoc Report -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

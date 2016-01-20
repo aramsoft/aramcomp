@@ -20,7 +20,7 @@ aramsoft common library
 ##3. 설치방법
 
 ##4. 문의사항
-   아래 게시판을 이용해 주세요.
+   아래 게시판을 이용해 주세요.  
    <http://aramcomp.aramsoft.co.kr/apps/opensource/bugissue>
 
 ##5. 향후추진방향

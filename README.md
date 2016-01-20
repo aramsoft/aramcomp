@@ -7,12 +7,24 @@ aramsoft common library
    <http://blog.aramsoft.co.kr/>  
   
 ##2. Demo화면  
-  웹 : <http://aramcomp.aramsoft.co.kr>  
+  웹 :   
+  <http://aramcomp.aramsoft.co.kr>   
   (관리자 ID : 업무/TEST1/rhdxhd12)    
-  모바일 : <http://maramcomp.aramsoft.co.kr>  
-  CI : <http://hudson.aramsoft.co.kr>     
+  커뮤니티 :   
+  <http://aramcomp.aramsoft.co.kr/apps/opensource>  
+  모바일 :   
+  <http://maramcomp.aramsoft.co.kr>  
+  CI :   
+  <http://hudson.aramsoft.co.kr>     
 
 ##3. 설치방법
 
-##4. Licence 
-   Apache 2.0
+##4. 문의사항
+   아래 게시판을 이용해 주세요.
+   <http://aramcomp.aramsoft.co.kr/apps/opensource/bugissue>
+
+##5. 향후추진방향
+   Spring Boot로 전환 예정임.
+   
+##6. Licence 
+   Apache Licence 2.0

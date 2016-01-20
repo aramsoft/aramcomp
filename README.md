@@ -17,13 +17,13 @@ aramsoft common library
   CI :   
   <http://hudson.aramsoft.co.kr>     
 
-##3. 설치방법
+##3. 설치 방법
 
-##4. 문의사항
+##4. 문의 사항
    아래 게시판을 이용해 주세요.  
    <http://aramcomp.aramsoft.co.kr/apps/opensource/bugissue>
 
-##5. 향후추진방향
+##5. 향후 추진 방향
    Spring Boot로 전환 예정임.
    
 ##6. Licence 

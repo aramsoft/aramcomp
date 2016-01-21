@@ -127,13 +127,6 @@
     </tr>
     <tr>
       <td valign="top">&nbsp;-&nbsp;
-      	<a href="${pageContext.request.contextPath}/home/sample/main.do" target="_new">
-      		샘플 홈페이지
-      	</a>
-      </td>
-    </tr>
-    <tr>
-      <td valign="top">&nbsp;-&nbsp;
       	<a href="${pageContext.request.contextPath}/UnitMain.mdo" target="_new">
       		모바일 페이지
       	</a>
@@ -142,29 +135,5 @@
 </table>
 
 <div style="margin-top:10px; width:100%"></div>
-<!-- 
-<table>
-    <tr>
-      <td class="title_left">
-      	<img src="${pageContext.request.contextPath}/images/aramframework/com/cmm/icon/tit_icon.gif" width="16" height="16" hspace="3" align="middle" alt="gpki_icon">
-      	트위터
-      </td>
-    </tr>
-    <tr> 
-      <td valign="top">&nbsp;-&nbsp;
-      	<a href="${pageContext.request.contextPath}/PageLink.do?link=aramframework/com/uss/ion/tir/TwitterNormalAuth">
-      		트위터 수신 목록(전자정부)
-      	</a>
-      </td>
-    </tr>
-    <tr> 
-      <td valign="top">&nbsp;-&nbsp;
-      	<a href="${pageContext.request.contextPath}/PageLink.do?link=aramframework/com/uss/ion/tir/TwitterNormalAuth&twitter_id=hchcho">
-      		트위터 수신 목록(아람소프트)
-      	</a>
-      </td>
-    </tr>
-</table>
--->
 </DIV>
 

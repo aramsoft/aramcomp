@@ -11,7 +11,6 @@
    	<typeAliases>
  		<typeAlias alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
  
-  		<typeAlias alias="cacheVO" 				type="aramframework.com.cmm.service.CacheVO"/>
   		<typeAlias alias="fileVO" 				type="aramframework.com.cmm.service.FileVO"/>
   		<typeAlias alias="comCodeVO" 			type="aramframework.com.cmm.service.ComCodeVO"/>
  		<typeAlias alias="adressBookVO" 		type="aramframework.com.cop.adb.service.AdressBookVO"/>

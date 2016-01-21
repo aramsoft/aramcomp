@@ -68,7 +68,6 @@
  	   	<th scope="col"            >게시판명</th>
     	<c:if test="${useCommunity == 'true'}">
 			<th scope="col" width="10%">커뮤니티명</th>
-			<th scope="col" width="10%">동호회명</th>
     	</c:if>
     	<th scope="col" width="10%">게시판유형</th>
     	<th scope="col" width="10%">게시판속성</th>
@@ -81,7 +80,7 @@
   	<tr>
     	<c:set var="colNo" value="7" />
     	<c:if test="${useCommunity == 'true'}">
-    	<c:set var="colNo" value="${colNo + 2}" />
+    	<c:set var="colNo" value="${colNo + 1}" />
   		</c:if>
  		<td class="lt_text3" colspan="${colNo}"><spring:message code="common.nodata.msg" /></td>
   	</tr>
@@ -98,11 +97,7 @@
     	<td class="lt_text3"><c:out value="${result.bbsId}"/></td>
     	<td class="lt_text3"><c:out value="${result.bbsNm}"/></td>
     	<c:if test="${useCommunity == 'true'}">
-			<td class="lt_text3">
-				<c:out value="${result.cmmntyNm}"/>
-				<c:out value="${result.clbCmmntyNm}"/>
-			</td>
-			<td class="lt_text3"><c:out value="${result.clbNm}"/></td>
+			<td class="lt_text3"><c:out value="${result.cmmntyNm}"/></td>
     	</c:if>
     	<td class="lt_text3"><c:out value="${result.bbsTyCodeNm}"/></td>
     	<td class="lt_text3"><c:out value="${result.bbsAttrbCodeNm}"/></td>

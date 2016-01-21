@@ -164,7 +164,7 @@
 	<tr>
 	    <th>
 	    	<span class="norequired_icon"></span>
-	    	커뮤니티/동호회명
+	    	커뮤니티명
 	    </th>
 	    <td colspan="3">
 	    	<c:choose>

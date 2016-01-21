@@ -78,13 +78,6 @@
 	    	</fileset>
 		</sync>
 
-    	<echo message="sync work webapps/lucene..."/>
-		<sync todir="${work.dir}/lucene/">
-	    	<fileset dir="${src.dir}/lucene">
-	    		<include name="**/*"/>
-	    	</fileset>
-		</sync>
-    	
    	    <echo message="copy work /*.jsp..."/>
 		<copy todir="${work.dir}/">
 	    	<fileset dir="${src.dir}">

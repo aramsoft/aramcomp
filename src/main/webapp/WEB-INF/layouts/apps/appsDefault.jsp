@@ -207,7 +207,7 @@
 </div> <!-- middle -->
 
 <footer id="footer">
-	<div id="copyright">Copyright(c) 2012-2015 Aram High-Tech.</div>
+	<div id="copyright">Copyright(c) 2012-2016 Aram High-Tech.</div>
 </footer>
 
 </div> <!-- wrap -->

@@ -7,19 +7,19 @@ CACHE:
 ./css/egovframework/mbl/cmm/jquery.mobile-1.3.2.css
 ./css/egovframework/mbl/cmm/EgovMobile-1.3.2.css
 ./css/egovframework/mbl/cmm/theme-1.1.1.css
-./css/egovframework/mbl/com/datepicker/jqm-datebox.css
 ./css/egovframework/mbl/cmm/swipebutton/jquery-mobile-custom.css
+./css/egovframework/mbl/com/datepicker/jqm-datebox.css
 ./css/egovframework/mbl/mcomd/egovMcomd.css
 
 ./js/egovframework/mbl/cmm/jquery-1.9.1.js
 ./js/egovframework/mbl/cmm/jquery.mobile-1.3.2.js
 ./js/egovframework/mbl/cmm/EgovMobile-1.3.2.js
+./js/egovframework/mbl/cmm/swipebutton/jquery-mobile-custom.js
 ./js/egovframework/mbl/com/datepicker/jqm-datebox.core.js
 ./js/egovframework/mbl/com/datepicker/jqm-datebox.mode.calbox.js
 ./js/egovframework/mbl/com/datepicker/jqm-datebox.mode.datebox.js
 ./js/egovframework/mbl/com/datepicker/jqm-datebox.mode.flipbox.js
 ./js/egovframework/mbl/com/datepicker/jquery.mobile.datebox.i18n.ko.utf8.js
-./js/egovframework/mbl/cmm/swipebutton/jquery-mobile-custom.js
 
 ./mbl/com/ows/listMobileOfflineWeb.mdo
 ./mbl/com/ows/goMobileOfflineWeb.mdo

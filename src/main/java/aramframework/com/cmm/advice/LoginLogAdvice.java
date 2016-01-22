@@ -1,9 +1,8 @@
 package aramframework.com.cmm.advice;
 
-import javax.annotation.Resource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import aramframework.com.cmm.LoginVO;
 import aramframework.com.cmm.util.UserDetailsHelper;
@@ -33,7 +32,7 @@ public class LoginLogAdvice {
 
 	protected static final Logger LOG = LoggerFactory.getLogger(LoginLogAdvice.class);
 
-	@Resource(name = "loginLogService")
+	@Autowired 
 	private LoginLogService loginLogService;
 
 	/**

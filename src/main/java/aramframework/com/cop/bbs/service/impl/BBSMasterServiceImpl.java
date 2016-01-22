@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.SearchVO;
@@ -38,25 +39,25 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("bbsMasterService")
+@Service
 public class BBSMasterServiceImpl extends EgovAbstractServiceImpl implements BBSMasterService {
 
 	@Resource(name = "cacheDictionary")
 	private Map<String, Object> cacheDictionary;
 
-	@Resource(name = "bbsMasterMapper")
+	@Autowired 
 	private BBSMasterMapper bbsMasterMapper;		
 
-	@Resource(name = "bbsUseInfoMapper")
+	@Autowired 
 	private BBSUseInfoMapper bbsUseInfoMapper;	
 
-	@Resource(name = "bbsMasterIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired 
+	private EgovIdGnrService bbsMasterIdGnrService; 
 
 	// ---------------------------------
 	// 2009.06.26 : 2단계 기능 추가
 	// ---------------------------------
-	@Resource(name = "bbsAddedOptionsMapper")
+	@Autowired 
 	private BBSAddedOptionsMapper bbsAddedOptionsMapper;	
 
 	// //-------------------------------
@@ -141,7 +142,7 @@ public class BBSMasterServiceImpl extends EgovAbstractServiceImpl implements BBS
 
 		String bbsId = null;
 		try {
-			bbsId = idgenService.getNextStringId();
+			bbsId = bbsMasterIdGnrService.getNextStringId();
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

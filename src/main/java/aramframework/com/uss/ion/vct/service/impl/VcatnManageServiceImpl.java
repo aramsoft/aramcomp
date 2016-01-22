@@ -3,8 +3,7 @@ package aramframework.com.uss.ion.vct.service.impl;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.LoginVO;
@@ -37,13 +36,13 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("vcatnManageService")
+@Service
 public class VcatnManageServiceImpl extends EgovAbstractServiceImpl implements VcatnManageService {
 
-	@Resource(name = "vcatnManageMapper")
+	@Autowired
 	private VcatnManageMapper vcatnManageMapper;	
 
-	@Resource(name = "infrmlSanctnService")
+	@Autowired
 	protected InfrmlSanctnService infrmlSanctnService;
 
 	/**

@@ -29,7 +29,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Mapper("communityManageMapper")
+@Mapper
 public interface CommunityManageMapper {
 
 	/**

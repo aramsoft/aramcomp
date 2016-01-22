@@ -2,8 +2,7 @@ package aramframework.mbl.com.rns.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.mbl.com.rns.service.RealtimeNoticeService;
@@ -35,14 +34,10 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("realtimeNoticeService")
+@Service
 public class RealtimeNoticeServiceImpl extends EgovAbstractServiceImpl implements RealtimeNoticeService{
 	
-	/** ID Generation */    
-	//@Resource(name="egovRealtimeNoticeIdGnrService")
-	//private EgovIdGnrService idgenService;
-	
-	@Resource(name="realtimeNoticeMapper")
+	@Autowired
     private RealtimeNoticeMapper realtimeNoticeMapper;	
 
 	/**

@@ -2,8 +2,7 @@ package aramframework.com.uss.olh.hpc.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,15 +32,15 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("hpcmManageService")
+@Service
 public class HpcmManageServiceImpl extends EgovAbstractServiceImpl implements HpcmManageService {
 
-	@Resource(name = "hpcmManageMapper")
+	@Autowired
 	private HpcmManageMapper hpcmManageMapper;	
 
 	/** ID Generation */
-	@Resource(name = "hpcmManageIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService hpcmManageIdGnrService; 
 
 	/**
 	 * 도움말 글 목록을 조회한다.
@@ -80,7 +79,7 @@ public class HpcmManageServiceImpl extends EgovAbstractServiceImpl implements Hp
 	 */
 	public void insertHpcmCn(HpcmManageVO hpcmManageVO) {
 		try {
-			hpcmManageVO.setHpcmId(idgenService.getNextStringId());
+			hpcmManageVO.setHpcmId(hpcmManageIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

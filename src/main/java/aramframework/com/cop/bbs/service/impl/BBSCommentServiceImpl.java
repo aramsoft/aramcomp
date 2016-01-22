@@ -2,8 +2,7 @@ package aramframework.com.cop.bbs.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -34,17 +33,17 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("bbsCommentService")
+@Service
 public class BBSCommentServiceImpl extends EgovAbstractServiceImpl implements BBSCommentService {
 
-	@Resource(name = "bbsAddedOptionsMapper")
+	@Autowired 
 	private BBSAddedOptionsMapper bbsAddedOptionsMapper;	
 
-	@Resource(name = "bbsCommentMapper")
+	@Autowired 
 	private BBSCommentMapper bbsCommentMapper;	
 
-	@Resource(name = "answerNoGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired 
+	private EgovIdGnrService answerNoGnrService; 
 		
 	/**
 	 * 댓글 사용 가능 여부를 확인한다.
@@ -99,7 +98,7 @@ public class BBSCommentServiceImpl extends EgovAbstractServiceImpl implements BB
 	 */
 	public void insertComment(CommentVO commentVO) {
 		try {
-			commentVO.setCommentNo(idgenService.getNextLongId() + "");
+			commentVO.setCommentNo(answerNoGnrService.getNextLongId() + "");
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

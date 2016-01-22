@@ -1,7 +1,5 @@
 package aramframework.mbl.uss.olp.cns.web;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -41,7 +39,7 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class MblCnsltManageController {
 	
-    @Resource(name = "cnsltManageService")
+	@Autowired
     private CnsltManageService cnsltManageService;
     
 	@Autowired

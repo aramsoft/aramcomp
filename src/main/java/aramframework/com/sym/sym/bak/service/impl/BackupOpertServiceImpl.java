@@ -2,8 +2,7 @@ package aramframework.com.sym.sym.bak.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -36,21 +35,15 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 @Service("backupOpertService")
 public class BackupOpertServiceImpl extends EgovAbstractServiceImpl implements BackupOpertService {
 
-	/**
-	 * 백업작업DAO
-	 */
-	@Resource(name = "backupOpertMapper")
+	@Autowired
 	private BackupOpertMapper backupOpertMapper;
 	
-	/**
-	 * 백업결과DAO
-	 */
-	@Resource(name = "backupResultMapper")
+	@Autowired
 	private BackupResultMapper backupResultMapper;	
 
 	/** ID Generation */
-	@Resource(name = "backupOpertIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService backupOpertIdGnrService; 
 
 	/**
 	 * 백업작업의 목록을 조회 한다.
@@ -89,7 +82,7 @@ public class BackupOpertServiceImpl extends EgovAbstractServiceImpl implements B
 	 */
 	public void insertBackupOpert(BackupOpertVO backupOpertVO) {
 		try {
-			backupOpertVO.setBackupOpertId(idgenService.getNextStringId());
+			backupOpertVO.setBackupOpertId(backupOpertIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

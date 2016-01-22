@@ -2,8 +2,7 @@ package aramframework.mbl.com.mpa.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -39,18 +38,18 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("photoService")
+@Service
 public class PhotoServiceImpl extends EgovAbstractServiceImpl implements PhotoService {
 
     /** PhotoMapper  */
-    @Resource(name = "photoMapper")
+	@Autowired
     private PhotoMapper photoMapper;    
 
     /** ID Generation */
-    @Resource(name = "photoIdGnrService")
-    private EgovIdGnrService idgenService;
+	@Autowired
+    private EgovIdGnrService photoIdGnrService; 
 
-	@Resource(name="fileMngUtil")
+	@Autowired
 	private FileMngUtil fileUtil;
 
     /**
@@ -90,7 +89,7 @@ public class PhotoServiceImpl extends EgovAbstractServiceImpl implements PhotoSe
      */
     public void insertPhoto(PhotoVO photoVO) {
     	try {
-			photoVO.setSn(idgenService.getNextIntegerId());
+			photoVO.setSn(photoIdGnrService.getNextIntegerId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

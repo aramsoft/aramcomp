@@ -2,8 +2,7 @@ package aramframework.com.uss.umt.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -34,24 +33,21 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
  * </pre>
  */
 
-@Service("entrprsManageService")
+@Service
 public class EntrprsManageServiceImpl extends EgovAbstractServiceImpl implements EntrprsManageService {
 
-	/** userManageDAO */
-	@Resource(name = "userManageMapper")
+	@Autowired
 	private UserManageMapper userManageMapper;
 	
-	/** mberManageDAO */
-	@Resource(name = "mberManageMapper")
+	@Autowired
 	private MberManageMapper mberManageMapper;
 	
-	/** entrprsManageDAO */
-	@Resource(name = "entrprsManageMapper")
+	@Autowired
 	private EntrprsManageMapper entrprsManageMapper;
 	
 	/** egovUsrCnfrmIdGnrService */
-	@Resource(name = "usrCnfrmIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService usrCnfrmIdGnrService; 
 
 	/**
 	 * 기 등록된기업 회원 중 검색조건에 맞는 회원들의 정보를 데이터베이스에서 읽어와 화면에 출력
@@ -91,7 +87,7 @@ public class EntrprsManageServiceImpl extends EgovAbstractServiceImpl implements
 	public void insertEntrprsMber(EntrprsManageVO entrprsManageVO) {
 		// 고유아이디 셋팅
 		try {
-			entrprsManageVO.setUniqId(idgenService.getNextStringId());
+			entrprsManageVO.setUniqId(usrCnfrmIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

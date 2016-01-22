@@ -7,8 +7,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -36,10 +35,10 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("notificationService")
+@Service
 public class NotificationServiceImpl extends EgovAbstractServiceImpl implements NotificationService {
 
-	@Resource(name = "notificationMapper")
+	@Autowired
 	private NotificationMapper notificationMapper;	
 
 	/**

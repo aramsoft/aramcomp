@@ -1,6 +1,5 @@
 package aramframework.mbl.com.mdi.web;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,10 +51,10 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class DeviceIdentController {
 
-    @Resource(name = "deviceIdentService")
+	@Autowired
     private DeviceIdentService deviceIdentService;
 
-    @Resource(name = "cmmUseService")
+	@Autowired
     private CmmUseService cmmUseService;
 
     @Autowired

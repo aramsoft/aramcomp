@@ -1,7 +1,5 @@
 package aramframework.com.uss.ion.evt.web;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -48,10 +46,10 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class EventManageController {
 
-	@Resource(name = "eventManageService")
+	@Autowired
 	private EventManageService eventManageService;
 
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 
 	@Autowired

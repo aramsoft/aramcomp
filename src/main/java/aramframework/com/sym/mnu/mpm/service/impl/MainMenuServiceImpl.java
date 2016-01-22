@@ -2,8 +2,7 @@ package aramframework.com.sym.mnu.mpm.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.sym.mnu.mpm.service.MainMenuService;
@@ -30,10 +29,10 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("mainMeunService")
+@Service
 public class MainMenuServiceImpl extends EgovAbstractServiceImpl implements MainMenuService {
 
-	@Resource(name = "mainMenuMapper")
+	@Autowired
 	private MainMenuMapper mainMenuMapper;	
 
 	/* ### 메뉴관련 프로세스 ### */

@@ -2,8 +2,7 @@ package aramframework.com.uss.sam.cpy.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,15 +32,15 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("cpyrhtPrtcPolicyService")
+@Service
 public class CpyrhtPrtcPolicyServiceImpl extends EgovAbstractServiceImpl implements CpyrhtPrtcPolicyService {
 
-	@Resource(name = "cpyrhtPrtcPolicyMapper")
+	@Autowired
 	private CpyrhtPrtcPolicyMapper cpyrhtPrtcPolicyMapper;	
 
 	/** ID Generation */
-	@Resource(name = "cpyrhtPrtcPolicyIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService cpyrhtPrtcPolicyIdGnrService; 
 
 	/**
 	 * 저작권보호정책 글 목록을 조회한다.
@@ -80,7 +79,7 @@ public class CpyrhtPrtcPolicyServiceImpl extends EgovAbstractServiceImpl impleme
 	 */
 	public void insertCpyrhtPrtcPolicy(CpyrhtPrtcPolicyVO cpyrhtPrtcPolicyVO) {
 		try {
-			cpyrhtPrtcPolicyVO.setCpyrhtId(idgenService.getNextStringId());
+			cpyrhtPrtcPolicyVO.setCpyrhtId(cpyrhtPrtcPolicyIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

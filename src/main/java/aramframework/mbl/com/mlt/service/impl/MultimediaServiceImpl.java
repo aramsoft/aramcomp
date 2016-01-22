@@ -7,12 +7,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileCopyUtils;
 
@@ -51,19 +50,16 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("multimediaService")
+@Service
 public class MultimediaServiceImpl extends EgovAbstractServiceImpl implements MultimediaService {
 
-    /**
-     * MultimediaDAO
-     */
-    @Resource(name = "multimediaMapper")
+	@Autowired
     private MultimediaMapper multimediaMapper;    
 
     /** ID Generation */
-    @Resource(name = "multimediaIdGnrService")
-    private EgovIdGnrService idgenService;
-
+	@Autowired
+    private EgovIdGnrService multimediaIdGnrService;
+ 
     /**
      * 멀티미디어 목록을 조회 관련 비즈니스 구현 메서드
      * 
@@ -101,7 +97,7 @@ public class MultimediaServiceImpl extends EgovAbstractServiceImpl implements Mu
      */
     public void insertMultimedia(MultimediaVO multimediaVO) {
         try {
-			multimediaVO.setSn(idgenService.getNextIntegerId());
+			multimediaVO.setSn(multimediaIdGnrService.getNextIntegerId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

@@ -28,7 +28,7 @@ import egovframework.rte.psl.dataaccess.mapper.Mapper;
  * </pre>
  */
 
-@Mapper("fileSysMntrngMapper")
+@Mapper
 public interface FileSysMntrngMapper {
 
 	/**

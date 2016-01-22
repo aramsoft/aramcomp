@@ -2,10 +2,9 @@ package aramframework.com.uss.ion.wik.bmk.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.uss.ion.wik.bmk.service.WikiBookmarkService;
@@ -34,16 +33,16 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("wikiBookmarkService")
+@Service
 public class WikiBookmarkServiceImpl extends EgovAbstractServiceImpl implements WikiBookmarkService {
 
 	/* 위키북마크 DAO */
-	@Resource(name = "wikiBookmarkMapper")
+	@Autowired
 	private WikiBookmarkMapper wikiBookmarkMapper;	
 
 	/* WIKI_BKMK_ID Generator Service */
-	@Resource(name = "wikiBookmarkIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService wikiBookmarkIdGnrService; 
 
 	protected Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -90,7 +89,7 @@ public class WikiBookmarkServiceImpl extends EgovAbstractServiceImpl implements 
 		if (sUsid != null) {
 			// 위키북마크 키 설정
 			try {
-				wikiBookmarkVO.setWikiBkmkId((String) idgenService.getNextStringId());
+				wikiBookmarkVO.setWikiBkmkId((String) wikiBookmarkIdGnrService.getNextStringId());
 			} catch (FdlException e) {
 				throw new RuntimeException(e);
 			}

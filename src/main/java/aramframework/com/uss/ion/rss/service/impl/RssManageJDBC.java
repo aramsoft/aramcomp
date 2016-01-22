@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import aramframework.com.cmm.service.ComCodeVO;
@@ -38,7 +38,7 @@ import aramframework.com.cmm.service.ComCodeVO;
 @Repository("rssManageJDBC")
 public class RssManageJDBC {
 
-	@Resource(name = "dataSource")
+	@Autowired
 	DataSource dataSource;
 	
 	/**

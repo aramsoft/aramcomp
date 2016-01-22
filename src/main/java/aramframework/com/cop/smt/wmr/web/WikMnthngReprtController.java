@@ -1,7 +1,5 @@
 package aramframework.com.cop.smt.wmr.web;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -49,17 +47,17 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class WikMnthngReprtController {
 
-	@Resource(name = "wikMnthngReprtService")
+	@Autowired 
 	private WikMnthngReprtService wikMnthngReprtService;
 
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 
 	@Autowired
 	private DefaultBeanValidator beanValidator;
 
 	// 첨부파일 관련
-	@Resource(name = "fileMngUtil")
+	@Autowired 
 	private FileMngUtil fileUtil;
 
 	/**

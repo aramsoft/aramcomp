@@ -2,8 +2,7 @@ package aramframework.com.utl.sys.srm.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -34,15 +33,15 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
  * </pre>
  */
 
-@Service("serverResrceMntrngService")
+@Service
 public class ServerResrceMntrngServiceImpl extends EgovAbstractServiceImpl implements ServerResrceMntrngService {
 
-	@Resource(name = "serverResrceMntrngMapper")
+	@Autowired
 	private ServerResrceMntrngMapper serverResrceMntrngMapper;
 
 	/** ID Generation */
-	@Resource(name = "serverResrceMntrngLogIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService serverResrceMntrngLogIdGnrService; 
 
 	/**
 	 * 서버자원모티너링 대상서버의 목록을 조회한다.
@@ -99,7 +98,7 @@ public class ServerResrceMntrngServiceImpl extends EgovAbstractServiceImpl imple
 	 */
 	public void insertServerResrceMntrng(ServerResrceMntrngVO serverResrceMntrngVO) {
 		try {
-			serverResrceMntrngVO.setLogId(idgenService.getNextStringId());
+			serverResrceMntrngVO.setLogId(serverResrceMntrngLogIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

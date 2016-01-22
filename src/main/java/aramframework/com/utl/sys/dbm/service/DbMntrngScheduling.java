@@ -3,11 +3,11 @@ package aramframework.com.utl.sys.dbm.service;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.sql.DataSource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
@@ -36,24 +36,24 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("dbMntrngScheduling")
+@Service
 public class DbMntrngScheduling {
 
-	@Resource(name = "dbMntrngService")
+	@Autowired
 	private DbMntrngService dbMntrngService;
 
-	@Resource(name = "mntrngMailSender")
+	@Autowired
 	private MailSender mntrngMailSender;
 
-	@Resource(name = "mntrngMessage")
+	@Autowired
 	private SimpleMailMessage mntrngMessage;
 
-	@Resource(name = "dataSource")
+	@Autowired
 	DataSource dataSource;
 	
 	/** ID Generation */
-	@Resource(name = "dbMntrngLogIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService dbMntrngLogIdGnrService;
 
 	protected static final Logger LOG = LoggerFactory.getLogger(DbMntrngScheduling.class);
 
@@ -116,7 +116,7 @@ public class DbMntrngScheduling {
 
 			// 로그테이블 추가저장.
 			dbMntrngLog = new DbMntrngLogVO();
-			dbMntrngLog.setLogId(idgenService.getNextStringId());
+			dbMntrngLog.setLogId(dbMntrngLogIdGnrService.getNextStringId());
 			dbMntrngLog.setDataSourcNm(dbMntrng.getDataSourcNm());
 			dbMntrngLog.setServerNm(dbMntrng.getServerNm());
 			dbMntrngLog.setDbmsKind(dbMntrng.getDbmsKind());

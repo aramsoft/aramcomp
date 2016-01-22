@@ -25,7 +25,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Mapper("resourceMapper")
+@Mapper
 public interface ResourceMapper {
 
 	/**

@@ -6,12 +6,11 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -44,13 +43,13 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("bndtManageService")
+@Service
 public class BndtManageServiceImpl extends EgovAbstractServiceImpl implements BndtManageService {
 
 //	@Resource(name = "excelZipService")
 	private EgovExcelService excelZipService;
 
-	@Resource(name = "bndtManageMapper")
+	@Autowired
 	private BndtManageMapper bndtManageMapper;	
 
 	/**

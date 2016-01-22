@@ -7,12 +7,12 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 
-import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,7 +44,7 @@ import aramframework.com.cmm.util.WebUtil;
 @Controller
 public class MblImageProcessController {
 
-    @Resource(name = "fileMngService")
+	@Autowired
     private FileMngService fileService;
 
 	protected static final Logger LOG = LoggerFactory.getLogger(MblImageProcessController.class);

@@ -13,10 +13,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -50,15 +49,15 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
  * </pre>
  */
 
-@Service("synchrnServerService")
+@Service
 public class SynchrnServerServiceImpl extends EgovAbstractServiceImpl implements SynchrnServerService {
 
-	@Resource(name = "synchrnServerMapper")
+	@Autowired
 	private SynchrnServerMapper synchrnServerMapper;
 	
 	/** ID Generation */
-	@Resource(name = "synchrnServerIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService synchrnServerIdGnrService; 
 
 	/**
 	 * 동기화대상 서버를 관리하기 위해 등록된 동기화대상 서버목록을 조회한다.
@@ -97,7 +96,7 @@ public class SynchrnServerServiceImpl extends EgovAbstractServiceImpl implements
 	 */
 	public void insertSynchrnServer(SynchrnServerVO synchrnServerVO) {
 		try {
-			synchrnServerVO.setServerId(idgenService.getNextStringId());
+			synchrnServerVO.setServerId(synchrnServerIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

@@ -2,8 +2,7 @@ package aramframework.com.uss.umt.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,24 +32,21 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
  * </pre>
  */
 
-@Service("userManageService")
+@Service
 public class UserManageServiceImpl extends EgovAbstractServiceImpl implements UserManageService {
 
-	/** userManageDAO */
-	@Resource(name = "userManageMapper")
+	@Autowired
 	private UserManageMapper userManageMapper;	
 
-	/** mberManageDAO */
-	@Resource(name = "mberManageMapper")
+	@Autowired
 	private MberManageMapper mberManageMapper;	
 
-	/** entrprsManageDAO */
-	@Resource(name = "entrprsManageMapper")
+	@Autowired
 	private EntrprsManageMapper entrprsManageMapper;	
 
 	/** egovUsrCnfrmIdGnrService */
-	@Resource(name = "usrCnfrmIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService usrCnfrmIdGnrService;
 
 	/**
 	 * 기 등록된 특정 사용자의 정보를 데이터베이스에서 읽어와 화면에 출력
@@ -90,7 +86,7 @@ public class UserManageServiceImpl extends EgovAbstractServiceImpl implements Us
 	public void insertUser(UserManageVO userManageVO) {
 		// 고유아이디 셋팅
 		try {
-			userManageVO.setUniqId(idgenService.getNextStringId());
+			userManageVO.setUniqId(usrCnfrmIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

@@ -28,7 +28,7 @@ import aramframework.com.utl.sys.pxy.service.ProxySvcVO;
  * </pre>
  */
 
-@Mapper("proxySvcMapper")
+@Mapper
 public interface ProxySvcMapper  {
 
 	/**

@@ -2,8 +2,7 @@ package aramframework.com.uss.ion.nws.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -34,17 +33,17 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("newsManageService")
+@Service
 public class NewsManageServiceImpl extends EgovAbstractServiceImpl implements NewsManageService {
 
-	@Resource(name = "newsManageMapper")
+	@Autowired
 	private NewsManageMapper newsManageMapper;	
 
 	/** ID Generation */
-	@Resource(name = "newsManageIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService newsManageIdGnrService; 
 
-	@Resource(name="fileMngUtil")
+	@Autowired
 	private FileMngUtil fileUtil;
 
 	/**
@@ -84,7 +83,7 @@ public class NewsManageServiceImpl extends EgovAbstractServiceImpl implements Ne
 	 */
 	public void insertNewsInfo(NewsManageVO newsManageVO) {
 		try {
-			newsManageVO.setNewsId(idgenService.getNextStringId());
+			newsManageVO.setNewsId(newsManageIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

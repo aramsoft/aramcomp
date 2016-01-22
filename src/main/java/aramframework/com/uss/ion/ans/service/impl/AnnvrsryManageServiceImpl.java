@@ -4,12 +4,11 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -42,18 +41,18 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("annvrsryManageService")
+@Service
 public class AnnvrsryManageServiceImpl extends EgovAbstractServiceImpl implements AnnvrsryManageService {
 
-	@Resource(name = "annvrsryManageMapper")
+	@Autowired
 	private AnnvrsryManageMapper annvrsryManageMapper;	
 
 //	@Resource(name = "excelZipService")
 	private EgovExcelService excelZipService;
 
 	/** ID Generation */
-	@Resource(name = "annvrsryManageIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService annvrsryManageIdGnrService; 
 
 	/**
 	 * 기념일관리정보를 관리하기 위해 등록된 기념일관리 목록을 조회한다.
@@ -92,7 +91,7 @@ public class AnnvrsryManageServiceImpl extends EgovAbstractServiceImpl implement
 	 */
 	public void insertAnnvrsryManage(AnnvrsryManageVO annvrsryManageVO) {
 		try {
-			annvrsryManageVO.setAnnId(idgenService.getNextStringId());
+			annvrsryManageVO.setAnnId(annvrsryManageIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}
@@ -292,7 +291,7 @@ public class AnnvrsryManageServiceImpl extends EgovAbstractServiceImpl implement
 				annvrsryManage.setMemo("기념일 일괄등록");
 
 				try {
-					annvrsryManage.setAnnId(idgenService.getNextStringId());
+					annvrsryManage.setAnnId(annvrsryManageIdGnrService.getNextStringId());
 				} catch (FdlException e) {
 					throw new RuntimeException(e);
 				}

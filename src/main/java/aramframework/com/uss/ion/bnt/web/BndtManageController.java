@@ -1,6 +1,5 @@
 package aramframework.com.uss.ion.bnt.web;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,10 +51,10 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class BndtManageController {
 
-	@Resource(name = "bndtManageService")
+	@Autowired
 	private BndtManageService bndtManageService;
 
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 
 	@Autowired

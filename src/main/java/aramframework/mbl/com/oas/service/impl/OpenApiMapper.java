@@ -29,7 +29,7 @@ import aramframework.mbl.com.oas.service.OpenApiVO;
  * </pre>
  */
 
-@Mapper("openApiMapper")
+@Mapper
 public interface OpenApiMapper {
 
     /**

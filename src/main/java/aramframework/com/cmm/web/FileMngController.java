@@ -2,9 +2,9 @@ package aramframework.com.cmm.web;
 
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -38,8 +38,8 @@ import aramframework.com.cmm.service.FileVO;
 @Controller
 public class FileMngController {
 
-	@Resource(name = "fileMngService")
-	private FileMngService fileService;
+	@Autowired 
+	private FileMngService fileMngService; 
 
 	/**
 	 * 첨부파일에 대한 목록을 조회한다.
@@ -58,7 +58,7 @@ public class FileMngController {
 	throws Exception {
 
 		fileVO.setAtchFileId(fileId);
-		List<FileVO> result = fileService.selectFileList(fileVO);
+		List<FileVO> result = fileMngService.selectFileList(fileVO);
 
 		model.addAttribute("fileList", result);
 		model.addAttribute("updateFlag", "N");
@@ -84,7 +84,7 @@ public class FileMngController {
 	throws Exception {
 
 		fileVO.setAtchFileId(fileId);
-		List<FileVO> result = fileService.selectFileList(fileVO);
+		List<FileVO> result = fileMngService.selectFileList(fileVO);
 
 		model.addAttribute("fileList", result);
 		model.addAttribute("updateFlag", "Y");
@@ -110,7 +110,7 @@ public class FileMngController {
 	throws Exception {
 
 		fileVO.setAtchFileId(fileId);
-		List<FileVO> result = fileService.selectImageFileList(fileVO);
+		List<FileVO> result = fileMngService.selectImageFileList(fileVO);
 
 		model.addAttribute("fileList", result);
 
@@ -134,7 +134,7 @@ public class FileMngController {
 			HttpServletRequest request) 
 	throws Exception {
 
-		fileService.deleteFileInf(fileVO);
+		fileMngService.deleteFileInf(fileVO);
 
 		// --------------------------------------------
 		// contextRoot가 있는 경우 제외 시켜야 함

@@ -10,8 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.LoginVO;
@@ -43,15 +42,15 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("administCodeRecptnService")
+@Service
 public class AdministCodeRecptnServiceImpl extends EgovAbstractServiceImpl implements AdministCodeRecptnService {
 
-	@Resource(name = "administCodeRecptnMapper")
+	@Autowired
 	private AdministCodeRecptnMapper administCodeRecptnMapper;	
 
 	/** EgovIdGnrService */
-	@Resource(name = "administCodeRecptnIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService administCodeRecptnIdGnrService; 
 
 	/**
 	 * 법정동코드수신 목록을 조회한다.
@@ -394,7 +393,7 @@ public class AdministCodeRecptnServiceImpl extends EgovAbstractServiceImpl imple
 							administCodeRecptnVO.setUpperAdministZoneCode(upperCode);
 
 							// 작업일련번호 확인 Generation
-							int iOpertSn = idgenService.getNextIntegerId();
+							int iOpertSn = administCodeRecptnIdGnrService.getNextIntegerId();
 							administCodeRecptnVO.setOpertSn(iOpertSn);
 
 							buf += "\n-all--------------\n";

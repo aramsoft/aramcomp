@@ -3,9 +3,8 @@ package aramframework.com.utl.sys.fsm.service.impl;
 import java.io.IOException;
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.apache.commons.io.FileSystemUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -38,17 +37,17 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
  * </pre>
  */
 
-@Service("fileSysMntrngService")
+@Service
 public class FileSysMntrngServiceImpl extends EgovAbstractServiceImpl implements FileSysMntrngService {
 
-	@Resource(name = "fileSysMntrngMapper")
+	@Autowired
 	private FileSysMntrngMapper fileSysMntrngMapper;
 	
-	@Resource(name = "fileSysMntrngIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService fileSysMntrngIdGnrService; 
 
-	@Resource(name = "fileSysMntrngLogIdGnrService")
-	private EgovIdGnrService idgenServiceLog;
+	@Autowired
+	private EgovIdGnrService fileSysMntrngLogIdGnrService; 
 
 	/**
 	 * 파일시스템 모니터링대상 목록을 조회 한다.
@@ -87,7 +86,7 @@ public class FileSysMntrngServiceImpl extends EgovAbstractServiceImpl implements
 	 */
 	public void insertFileSysMntrng(FileSysMntrngVO fileSysMntrngVO) {
 		try {
-			fileSysMntrngVO.setFileSysId(idgenService.getNextStringId());
+			fileSysMntrngVO.setFileSysId(fileSysMntrngIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}
@@ -136,7 +135,7 @@ public class FileSysMntrngServiceImpl extends EgovAbstractServiceImpl implements
 
 		FileSysMntrngLogVO fileSysMntrngLogVO = new FileSysMntrngLogVO();
 		try {
-			fileSysMntrngLogVO.setLogId(idgenServiceLog.getNextStringId());
+			fileSysMntrngLogVO.setLogId(fileSysMntrngLogIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

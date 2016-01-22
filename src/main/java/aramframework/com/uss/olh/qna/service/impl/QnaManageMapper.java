@@ -25,7 +25,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Mapper("qnaManageMapper")
+@Mapper
 public interface QnaManageMapper {
 
 	/**

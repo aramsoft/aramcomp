@@ -28,9 +28,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ComUtlController {
 
-	// @Resource(name = "userManageService")
-	// private UserManageService userManageService;
-
     /**
 	 * JSP 호출작업만 처리하는 공통 함수
 	 */

@@ -2,10 +2,9 @@ package aramframework.com.uss.ion.nts.web;
 
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -44,7 +43,7 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class NoteTrnsmitController {
 
-	@Resource(name = "noteTrnsmitService")
+	@Autowired
 	private NoteTrnsmitService noteTrnsmitService;
 
 	protected Logger log = LoggerFactory.getLogger(this.getClass());

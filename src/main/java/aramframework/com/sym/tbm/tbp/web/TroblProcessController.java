@@ -1,7 +1,5 @@
 package aramframework.com.sym.tbm.tbp.web;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -47,10 +45,10 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class TroblProcessController {
 
-	@Resource(name = "troblProcessService")
+	@Autowired
 	private TroblProcessService troblProcessService;
 
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 	
 	@Autowired

@@ -2,8 +2,7 @@ package aramframework.com.utl.sys.dbm.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -32,13 +31,13 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("dbMntrngService")
+@Service
 public class DbMntrngServiceImpl extends EgovAbstractServiceImpl implements DbMntrngService {
 
 	/**
 	 * DB서비스모니터링DAO
 	 */
-	@Resource(name = "dbMntrngMapper")
+	@Autowired
 	private DbMntrngMapper dbMntrngMapper;	
 
 	/**

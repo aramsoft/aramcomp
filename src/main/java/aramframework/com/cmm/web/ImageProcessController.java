@@ -7,12 +7,12 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 
-import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,8 +45,8 @@ import aramframework.com.utl.sim.service.FileCmprs;
 @Controller
 public class ImageProcessController {
 
-	@Resource(name = "fileMngService")
-	private FileMngService fileService;
+	@Autowired 
+	private FileMngService fileMngService; 
 
 	protected static final Logger LOG = LoggerFactory.getLogger(ImageProcessController.class);
 
@@ -73,7 +73,7 @@ public class ImageProcessController {
 		fileVO.setAtchFileId(fileId);
 		fileVO.setFileSn(fileSn);
 		
-		fileService.selectFileInf(fileVO);
+		fileMngService.selectFileInf(fileVO);
 
 		// 2011.10.10 보안점검 후속조치
 		String source = fileVO.getFileStreCours() +  fileVO.getStreFileNm();
@@ -172,7 +172,7 @@ public class ImageProcessController {
 			FileVO fileVO) 
 	throws Exception {
 
-		fileService.selectFileInf(fileVO);
+		fileMngService.selectFileInf(fileVO);
 		String source = fileVO.getFileStreCours() +  fileVO.getStreFileNm();
 		String target = fileVO.getFileStreCours() +  "test.jpg";
 		FileCmprs.cmprsJpeg(source, target);
@@ -193,7 +193,7 @@ public class ImageProcessController {
 			FileVO fileVO) 
 	throws Exception {
 
-		fileService.selectFileInf(fileVO);
+		fileMngService.selectFileInf(fileVO);
 		String source = fileVO.getFileStreCours() +  fileVO.getStreFileNm();
 		String target = fileVO.getFileStreCours() +  "test.jpg";
 		FileCmprs.resizeJpeg(source, target, width);

@@ -2,8 +2,7 @@ package aramframework.com.uss.olp.opr.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.uss.olp.opr.service.OnlinePollResultService;
@@ -30,10 +29,10 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("onlinePollResultService")
+@Service
 public class OnlinePollResultServiceImpl extends EgovAbstractServiceImpl implements OnlinePollResultService {
 
-	@Resource(name = "onlinePollResultMapper")
+	@Autowired
 	private OnlinePollResultMapper onlinePollResultMapper;	
 
 	/**

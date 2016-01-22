@@ -25,7 +25,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Mapper("bbsCommentMapper")
+@Mapper
 public interface BBSCommentMapper {
 
 	/**

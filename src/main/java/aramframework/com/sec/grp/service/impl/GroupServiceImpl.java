@@ -2,8 +2,7 @@ package aramframework.com.sec.grp.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,15 +32,15 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("groupService")
+@Service
 public class GroupServiceImpl extends EgovAbstractServiceImpl implements GroupService {
 
-	@Resource(name = "groupMapper")
+	@Autowired
 	private GroupMapper groupMapper;
 	
 	/** Message ID Generation */
-	@Resource(name = "groupIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService groupIdGnrService; 
 	
 	/**
 	 * 시스템사용 목적별 그룹 목록 조회
@@ -80,7 +79,7 @@ public class GroupServiceImpl extends EgovAbstractServiceImpl implements GroupSe
 	 */
 	public void insertGroup(GroupVO groupVO) {
 		try {
-			groupVO.setGroupId(idgenService.getNextStringId());
+			groupVO.setGroupId(groupIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

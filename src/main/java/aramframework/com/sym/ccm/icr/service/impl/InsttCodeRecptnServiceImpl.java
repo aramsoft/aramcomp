@@ -9,8 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.LoginVO;
@@ -42,15 +41,15 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("insttCodeRecptnService")
+@Service
 public class InsttCodeRecptnServiceImpl extends EgovAbstractServiceImpl implements InsttCodeRecptnService {
 
-	@Resource(name = "insttCodeRecptnMapper")
+	@Autowired
 	private InsttCodeRecptnMapper insttCodeRecptnMapper;
 
 	/** EgovIdGnrService */
-	@Resource(name = "insttCodeRecptnIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService insttCodeRecptnIdGnrService; 
 
 	/**
 	 * 기관코드수신 목록을 조회한다.
@@ -363,7 +362,7 @@ public class InsttCodeRecptnServiceImpl extends EgovAbstractServiceImpl implemen
 							}
 
 							// 작업일련번호 확인 Generation
-							int iOpertSn = idgenService.getNextIntegerId();
+							int iOpertSn = insttCodeRecptnIdGnrService.getNextIntegerId();
 							insttCodeRecptnVO.setOpertSn(iOpertSn);
 
 							buf += "\n-all--------------\n";

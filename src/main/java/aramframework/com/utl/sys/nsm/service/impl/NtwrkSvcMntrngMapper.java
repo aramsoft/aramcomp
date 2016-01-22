@@ -29,7 +29,7 @@ import aramframework.com.utl.sys.nsm.service.NtwrkSvcMntrngVO;
  * </pre>
  */
 
-@Mapper("ntwrkSvcMntrngMapper")
+@Mapper
 public interface NtwrkSvcMntrngMapper {
 
 	/**

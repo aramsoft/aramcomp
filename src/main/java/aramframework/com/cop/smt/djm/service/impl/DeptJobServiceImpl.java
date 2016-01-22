@@ -2,8 +2,7 @@ package aramframework.com.cop.smt.djm.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.SearchVO;
@@ -36,20 +35,20 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("deptJobService")
+@Service
 public class DeptJobServiceImpl extends EgovAbstractServiceImpl implements DeptJobService {
 
-	@Resource(name = "deptJobMapper")
+	@Autowired 
 	private DeptJobMapper deptJobMapper;	
 
-	@Resource(name = "deptJobIdGnrService")
-	private EgovIdGnrService idgenServiceDeptJob;
+	@Autowired 
+	private EgovIdGnrService deptJobIdGnrService; 
 
-	@Resource(name = "deptJobBxIdGnrService")
-	private EgovIdGnrService idgenServiceDeptJobBx;
+	@Autowired 
+	private EgovIdGnrService deptJobBxIdGnrService; 
 
-	@Resource(name="fileMngUtil")
-	private FileMngUtil fileUtil;
+	@Autowired 
+	private FileMngUtil fileMngUtil; 
 
 	/**
 	 * 담당자 목록을 조회한다.
@@ -159,7 +158,7 @@ public class DeptJobServiceImpl extends EgovAbstractServiceImpl implements DeptJ
 	 */
 	public void insertDeptJobBx(DeptJobBxVO deptJobBxVO) {
 		try {
-			deptJobBxVO.setDeptJobBxId(idgenServiceDeptJobBx.getNextStringId());
+			deptJobBxVO.setDeptJobBxId(deptJobBxIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}
@@ -256,7 +255,7 @@ public class DeptJobServiceImpl extends EgovAbstractServiceImpl implements DeptJ
 	 */
 	public void insertDeptJob(DeptJobVO deptJobVO) {
 		try {
-			deptJobVO.setDeptJobId(idgenServiceDeptJob.getNextStringId());
+			deptJobVO.setDeptJobId(deptJobIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}
@@ -279,7 +278,7 @@ public class DeptJobServiceImpl extends EgovAbstractServiceImpl implements DeptJ
 	 */
 	public void deleteDeptJob(DeptJobVO deptJobVO) {
 		// 첨부파일 삭제 ....
-		fileUtil.deleteMultiFile(deptJobVO.getAtchFileId());
+		fileMngUtil.deleteMultiFile(deptJobVO.getAtchFileId());
 
 		deptJobMapper.deleteDeptJob(deptJobVO);
 	}

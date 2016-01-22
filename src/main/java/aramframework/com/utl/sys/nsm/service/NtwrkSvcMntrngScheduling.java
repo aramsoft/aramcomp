@@ -3,10 +3,9 @@ package aramframework.com.utl.sys.nsm.service;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
@@ -37,16 +36,16 @@ import aramframework.com.utl.sys.nsm.service.impl.NtwrkSvcMntrngChecker;
  * </pre>
  */
 
-@Service("ntwrkSvcMntrngScheduling")
+@Service
 public class NtwrkSvcMntrngScheduling {
 
-	@Resource(name = "ntwrkSvcMntrngService")
+	@Autowired
 	private NtwrkSvcMntrngService ntwrkSvcMntrngService;
 
-	@Resource(name = "mntrngMailSender")
+	@Autowired
 	private MailSender mntrngMailSender;
 
-	@Resource(name = "mntrngMessage")
+	@Autowired
 	private SimpleMailMessage mntrngMessage;
 
 	protected static final Logger LOG = LoggerFactory.getLogger(NtwrkSvcMntrngScheduling.class);

@@ -2,8 +2,7 @@ package aramframework.com.uss.ion.evt.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -36,17 +35,17 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("eventManageService")
+@Service
 public class EventManageServiceImpl extends EgovAbstractServiceImpl implements EventManageService {
 
-	@Resource(name = "eventManageMapper")
+	@Autowired
 	private EventManageMapper eventManageMapper;
 	
 	/** ID Generation */
-	@Resource(name = "eventManageIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService eventManageIdGnrService; 
 
-	@Resource(name = "infrmlSanctnService")
+	@Autowired
 	protected InfrmlSanctnService infrmlSanctnService;
 
 	/**
@@ -86,7 +85,7 @@ public class EventManageServiceImpl extends EgovAbstractServiceImpl implements E
 	 */
 	public void insertEventManage(EventManageVO eventManageVO) {
 		try {
-			eventManageVO.setEventId(idgenService.getNextStringId());
+			eventManageVO.setEventId(eventManageIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

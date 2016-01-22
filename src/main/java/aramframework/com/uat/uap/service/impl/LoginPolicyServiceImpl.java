@@ -2,8 +2,7 @@ package aramframework.com.uat.uap.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -32,10 +31,10 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("loginPolicyService")
+@Service
 public class LoginPolicyServiceImpl extends EgovAbstractServiceImpl implements LoginPolicyService {
 
-	@Resource(name = "loginPolicyMapper")
+	@Autowired
 	LoginPolicyMapper loginPolicyMapper;
 	
 	/**

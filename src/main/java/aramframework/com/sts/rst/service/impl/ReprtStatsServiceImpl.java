@@ -2,8 +2,7 @@ package aramframework.com.sts.rst.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.sts.rst.service.ReprtStatsService;
@@ -32,15 +31,15 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
  * </pre>
  */
 
-@Service("ReprtStatsService")
+@Service
 public class ReprtStatsServiceImpl extends EgovAbstractServiceImpl implements ReprtStatsService {
 
-	@Resource(name = "reprtStatsMapper")
+	@Autowired
 	private ReprtStatsMapper reprtStatsMapper;	
 
 	/** Message ID Generation */
-	@Resource(name = "reprtStatsIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService reprtStatsIdGnrService; 
 
 	/**
 	 * 보고서 통계정보의 대상목록을 조회한다.
@@ -112,7 +111,7 @@ public class ReprtStatsServiceImpl extends EgovAbstractServiceImpl implements Re
 	 */
 	public void insertReprtStats(ReprtStatsVO reprtStatsVO) {
 		try {
-			reprtStatsVO.setReprtId(idgenService.getNextStringId());
+			reprtStatsVO.setReprtId(reprtStatsIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

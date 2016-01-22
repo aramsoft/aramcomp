@@ -26,7 +26,7 @@ import aramframework.com.cmm.service.FileVO;
  * </pre>
  */
 
-@Repository("fileMngMapper")
+@Repository
 public class FileMngMapper extends EgovAbstractMapper {
 
 	final static String NAMESPACE = "aramframework.com.cmm.service.impl.FileMngMapper";

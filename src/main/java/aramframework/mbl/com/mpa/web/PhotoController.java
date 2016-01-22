@@ -1,7 +1,5 @@
 package aramframework.mbl.com.mpa.web;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -51,10 +49,10 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class PhotoController {
 
-    @Resource(name = "photoService")
+	@Autowired
     private PhotoService photoService;
 
-    @Resource(name = "fileMngUtil")
+	@Autowired
     private FileMngUtil fileUtil;
 
     @Autowired

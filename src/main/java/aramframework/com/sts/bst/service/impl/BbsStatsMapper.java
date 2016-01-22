@@ -27,7 +27,7 @@ import aramframework.com.sts.com.StatsVO;
  * </pre>
  */
 
-@Repository("bbsStatsMapper")
+@Repository
 public class BbsStatsMapper extends EgovAbstractMapper {
 
 	final static String NAMESPACE = "aramframework.com.sts.bst.service.impl.BbsStatsMapper";

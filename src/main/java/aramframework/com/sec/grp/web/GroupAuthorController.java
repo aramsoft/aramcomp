@@ -1,7 +1,6 @@
 package aramframework.com.sec.grp.web;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -40,10 +39,10 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class GroupAuthorController {
 
-	@Resource(name = "groupAuthorService")
+	@Autowired
 	private GroupAuthorService groupAuthorService;
 	
-	@Resource(name = "authorService")
+	@Autowired
 	private AuthorService authorService;
 		
 	/**

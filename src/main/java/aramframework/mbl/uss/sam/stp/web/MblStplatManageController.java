@@ -1,7 +1,6 @@
 package aramframework.mbl.uss.sam.stp.web;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,7 +33,7 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class MblStplatManageController {
 
-    @Resource(name = "stplatManageService")
+	@Autowired
     private StplatManageService stplatManageService;
     
     /**

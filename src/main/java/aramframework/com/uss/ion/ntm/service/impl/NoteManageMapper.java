@@ -26,7 +26,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Mapper("noteManageMapper")
+@Mapper
 public interface NoteManageMapper {
 
 	/**

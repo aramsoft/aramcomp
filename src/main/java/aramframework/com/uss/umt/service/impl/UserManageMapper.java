@@ -24,7 +24,7 @@ import aramframework.com.uss.umt.service.UserManageVO;
  * </pre>
  */
 
-@Mapper("userManageMapper")
+@Mapper
 public interface UserManageMapper {
 
 	/**

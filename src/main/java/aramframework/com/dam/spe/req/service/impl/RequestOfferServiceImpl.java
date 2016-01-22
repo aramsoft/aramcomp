@@ -2,8 +2,7 @@ package aramframework.com.dam.spe.req.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -34,17 +33,17 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("requestOffeService")
+@Service
 public class RequestOfferServiceImpl extends EgovAbstractServiceImpl implements RequestOfferService {
 
-	@Resource(name = "requestOfferMapper")
+	@Autowired
 	private RequestOfferMapper requestOfferMapper;
 
 	/* RSS ID Generator Service */
-	@Resource(name = "requestOfferIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService requestOfferIdGnrService; 
 
-	@Resource(name="fileMngUtil")
+	@Autowired
 	private FileMngUtil fileUtil;
 
 	/**
@@ -103,7 +102,7 @@ public class RequestOfferServiceImpl extends EgovAbstractServiceImpl implements 
 	 */
 	public void insertRequestOffer(RequestOfferVO requestOfferVO) {
 		try {
-			requestOfferVO.setKnoId(idgenService.getNextStringId());
+			requestOfferVO.setKnoId(requestOfferIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}
@@ -118,7 +117,7 @@ public class RequestOfferServiceImpl extends EgovAbstractServiceImpl implements 
 	 */
 	public void replyRequestOffer(RequestOfferVO requestOfferVO) {
 		try {
-			requestOfferVO.setKnoId(idgenService.getNextStringId());
+			requestOfferVO.setKnoId(requestOfferIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

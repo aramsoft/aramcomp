@@ -2,8 +2,7 @@ package aramframework.com.uss.olh.wor.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,15 +32,15 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("wordDicaryService")
+@Service
 public class WordDicaryServiceImpl extends EgovAbstractServiceImpl implements WordDicaryService {
 
-	@Resource(name = "wordDicaryMapper")
+	@Autowired
 	private WordDicaryMapper wordDicaryMapper;	
 
 	/** ID Generation */
-	@Resource(name = "wordDicaryIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService wordDicaryIdGnrService; 
 
 	/**
 	 * 글 목록을 조회한다.
@@ -80,7 +79,7 @@ public class WordDicaryServiceImpl extends EgovAbstractServiceImpl implements Wo
 	 */
 	public void insertWordDicary(WordDicaryVO wordDicaryVO) {
 		try {
-			wordDicaryVO.setWordId(idgenService.getNextStringId());
+			wordDicaryVO.setWordId(wordDicaryIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

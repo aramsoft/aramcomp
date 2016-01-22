@@ -1,7 +1,5 @@
 package aramframework.com.uss.ion.vct.web;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -49,10 +47,10 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class VcatnManageController {
 
-	@Resource(name = "vcatnManageService")
+	@Autowired
 	private VcatnManageService vcatnManageService;
 
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 
 	@Autowired

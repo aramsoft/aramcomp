@@ -1,6 +1,5 @@
 package aramframework.com.uss.olh.omm.web;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,10 +43,10 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class OnlineManualController {
 
-	@Resource(name = "onlineManualService")
+	@Autowired
 	private OnlineManualService onlineManualService;
 
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 
 	@Autowired

@@ -1,7 +1,6 @@
 package aramframework.com.sts.bst.service;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -23,11 +22,10 @@ import org.springframework.stereotype.Service;
  * </pre>
  */
 
-@Service("bbsStatsScheduling")
+@Service
 public class BbsStatsScheduling {
 
-	/** BbsStatsService */
-	@Resource(name = "bbsStatsService")
+	@Autowired
 	private BbsStatsService bbsStatsService;
 
 	/**

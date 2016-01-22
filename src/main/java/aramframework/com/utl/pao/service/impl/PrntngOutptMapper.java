@@ -22,7 +22,7 @@ import aramframework.com.utl.pao.service.PrntngOutptVO;
  * </pre>
  */
 
-@Mapper("prntngOutptMapper")
+@Mapper
 public interface PrntngOutptMapper  {
 
 	/**

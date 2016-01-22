@@ -1,7 +1,6 @@
 package aramframework.com.cop.com.web;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -42,10 +41,10 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class UserInfController {
 
-	@Resource(name = "communityManageService")
+	@Autowired 
 	private CommunityManageService cmmntyService; // 커뮤니티 관리자 권한 확인
 
-	@Resource(name = "userInfService")
+	@Autowired 
 	private UserInfService userInfService;
 
 	/**

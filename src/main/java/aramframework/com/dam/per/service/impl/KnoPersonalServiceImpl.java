@@ -2,8 +2,7 @@ package aramframework.com.dam.per.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -34,17 +33,17 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("knoPersonalService")
+@Service
 public class KnoPersonalServiceImpl extends EgovAbstractServiceImpl implements KnoPersonalService {
 
-	@Resource(name = "knoPersonalMapper")
+	@Autowired
 	private KnoPersonalMapper knoPersonalMapper;
 
 	/** ID Generation */
-	@Resource(name = "damManageIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService damManageIdGnrService; 
 
-	@Resource(name="fileMngUtil")
+	@Autowired
 	private FileMngUtil fileUtil;
 
 	/**
@@ -83,7 +82,7 @@ public class KnoPersonalServiceImpl extends EgovAbstractServiceImpl implements K
 	 */
 	public void insertKnoPersonal(KnoPersonalVO knoPersonalVO) {
 		try {
-			knoPersonalVO.setKnoId(idgenService.getNextStringId());
+			knoPersonalVO.setKnoId(damManageIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

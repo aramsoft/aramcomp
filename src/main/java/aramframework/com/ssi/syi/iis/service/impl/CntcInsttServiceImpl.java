@@ -2,8 +2,7 @@ package aramframework.com.ssi.syi.iis.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -34,23 +33,23 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
  * </pre>
  */
 
-@Service("cntcInsttService")
+@Service
 public class CntcInsttServiceImpl extends EgovAbstractServiceImpl implements CntcInsttService {
 
-	@Resource(name = "cntcInsttMapper")
+	@Autowired
 	private CntcInsttMapper cntcInsttMapper;
 
 	/** EgovIdGnrService */
-	@Resource(name = "cntcInsttIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService cntcInsttIdGnrService; 
 
 	/** EgovIdGnrService */
-	@Resource(name = "cntcSystemIdGnrService")
-	private EgovIdGnrService idgenServiceSys;
+	@Autowired
+	private EgovIdGnrService cntcSystemIdGnrService; 
 
 	/** EgovIdGnrService */
-	@Resource(name = "cntcServiceIdGnrService")
-	private EgovIdGnrService idgenServiceSvc;
+	@Autowired
+	private EgovIdGnrService cntcServiceIdGnrService; 
 
 	/**
 	 * 연계기관 목록을 조회한다.
@@ -89,7 +88,7 @@ public class CntcInsttServiceImpl extends EgovAbstractServiceImpl implements Cnt
 	 */
 	public void insertCntcInstt(CntcInsttVO cntcInsttVO) {
 		try {
-			cntcInsttVO.setInsttId(idgenService.getNextStringId());
+			cntcInsttVO.setInsttId(cntcInsttIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}
@@ -151,7 +150,7 @@ public class CntcInsttServiceImpl extends EgovAbstractServiceImpl implements Cnt
 	 */
 	public void insertCntcSystem(CntcSystemVO cntcSystemVO) {
 		try {
-			cntcSystemVO.setSysId(idgenServiceSys.getNextStringId());
+			cntcSystemVO.setSysId(cntcSystemIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}
@@ -213,7 +212,7 @@ public class CntcInsttServiceImpl extends EgovAbstractServiceImpl implements Cnt
 	 */
 	public void insertCntcService(CntcServiceVO cntcServiceVO) {
 		try {
-			cntcServiceVO.setSvcId(idgenServiceSvc.getNextStringId());
+			cntcServiceVO.setSvcId(cntcServiceIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

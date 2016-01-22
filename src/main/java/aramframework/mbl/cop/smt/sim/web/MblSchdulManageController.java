@@ -6,9 +6,9 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -47,10 +47,10 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class MblSchdulManageController {
 
-	@Resource(name = "schdulManageService")
+	@Autowired
 	private SchdulManageService schdulManageService;
 		
-	@Resource(name="cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 	
 	/**

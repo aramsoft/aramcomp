@@ -1,7 +1,5 @@
 package aramframework.com.uss.olh.qna.web;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -44,10 +42,10 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class QnaManageController {
 
-	@Resource(name = "qnaManageService")
+	@Autowired
 	private QnaManageService qnaManageService;
 
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 
 	@Autowired

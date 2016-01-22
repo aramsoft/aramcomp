@@ -2,10 +2,10 @@ package aramframework.mbl.com.rns.web;
 
 import java.net.URLEncoder;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -45,7 +45,7 @@ import aramframework.mbl.com.rns.service.RealtimeNoticeVO;
 @Controller
 public class RealtimeNoticeController {
 	
-	@Resource(name = "realtimeNoticeService")
+	@Autowired
 	private RealtimeNoticeService realtimeNoticeService;
 	
 	/**

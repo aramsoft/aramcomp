@@ -2,8 +2,7 @@ package aramframework.com.sym.sym.bak.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -30,13 +29,10 @@ import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
  * </pre>
  */
 
-@Service("backupResultService")
+@Service
 public class BackupResultServiceImpl extends EgovAbstractServiceImpl implements BackupResultService {
 
-	/**
-	 * 백업결과DAO
-	 */
-	@Resource(name = "backupResultMapper")
+	@Autowired
 	private BackupResultMapper backupResultMapper;
 	
 	/**

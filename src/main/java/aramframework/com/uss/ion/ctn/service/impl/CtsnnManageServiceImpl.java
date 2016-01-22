@@ -2,8 +2,7 @@ package aramframework.com.uss.ion.ctn.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -35,17 +34,17 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("ctsnnManageService")
+@Service
 public class CtsnnManageServiceImpl extends EgovAbstractServiceImpl implements CtsnnManageService {
 
-	@Resource(name = "ctsnnManageMapper")
+	@Autowired
 	private CtsnnManageMapper ctsnnManageMapper;
 	
 	/** ID Generation */
-	@Resource(name = "ctsnnManageIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService ctsnnManageIdGnrService;
 
-	@Resource(name = "infrmlSanctnService")
+	@Autowired
 	protected InfrmlSanctnService infrmlSanctnService;
 
 	/**
@@ -105,7 +104,7 @@ public class CtsnnManageServiceImpl extends EgovAbstractServiceImpl implements C
 		ctsnnManageVO.setConfmAt(infrmlSanctn.getConfmAt());
 
 		try {
-			ctsnnManageVO.setCtsnnId(idgenService.getNextStringId());
+			ctsnnManageVO.setCtsnnId(ctsnnManageIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

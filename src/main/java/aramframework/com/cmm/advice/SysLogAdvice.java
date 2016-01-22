@@ -1,8 +1,7 @@
 package aramframework.com.cmm.advice;
 
-import javax.annotation.Resource;
-
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StopWatch;
 
 import aramframework.com.cmm.LoginVO;
@@ -31,7 +30,7 @@ import aramframework.com.sym.log.lgm.service.SysLogVO;
 
 public class SysLogAdvice {
 
-	@Resource(name = "EgovSysLogService")
+	@Autowired 
 	private SysLogService sysLogService;
 
 	/**

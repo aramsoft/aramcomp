@@ -26,7 +26,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Mapper("indvdlPgeMapper")
+@Mapper
 public interface IndvdlPgeMapper {
 
 	// 마이페이지 콘텐츠 목록

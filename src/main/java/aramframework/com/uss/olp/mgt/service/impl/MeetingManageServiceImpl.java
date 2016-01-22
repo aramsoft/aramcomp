@@ -2,8 +2,7 @@ package aramframework.com.uss.olp.mgt.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.SearchVO;
@@ -34,14 +33,14 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("meetingManageService")
+@Service
 public class MeetingManageServiceImpl extends EgovAbstractServiceImpl implements MeetingManageService {
 
-	@Resource(name = "meetingManageMapper")
+	@Autowired
 	private MeetingManageMapper meetingManageMapper;	
 
-	@Resource(name = "meetingIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService meetingIdGnrService; 
 
 	/**
 	 * 부서 목록을 조회한다.
@@ -98,7 +97,7 @@ public class MeetingManageServiceImpl extends EgovAbstractServiceImpl implements
 	 */
 	public void insertMeetingManage(MeetingManageVO meetingManageVO) {
 		try {
-			meetingManageVO.setMtgId(idgenService.getNextStringId());
+			meetingManageVO.setMtgId(meetingIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

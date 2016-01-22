@@ -2,8 +2,7 @@ package aramframework.mbl.com.mcg.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -38,18 +37,15 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("chartGraphService")
+@Service
 public class ChartGraphServiceImpl extends EgovAbstractServiceImpl implements ChartGraphService {
 
-    /**
-     * ChartGraphDAO
-     */
-    @Resource(name = "chartGraphMapper")
+	@Autowired
     private ChartGraphMapper chartGraphMapper;
     
     /** ID Generation */
-    @Resource(name = "chartGraphIdGnrService")
-    private EgovIdGnrService idgenService;
+	@Autowired
+    private EgovIdGnrService chartGraphIdGnrService; 
 
     /**
      * 차트/그래프 데이터 목록 조회 관련 비즈니스 구현 메서드
@@ -88,7 +84,7 @@ public class ChartGraphServiceImpl extends EgovAbstractServiceImpl implements Ch
      */
     public void insertChartGraph(ChartGraphVO chartGraphVO) {
         try {
-			chartGraphVO.setSn(idgenService.getNextIntegerId());
+			chartGraphVO.setSn(chartGraphIdGnrService.getNextIntegerId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

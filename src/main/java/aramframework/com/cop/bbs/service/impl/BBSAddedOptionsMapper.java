@@ -22,7 +22,7 @@ import aramframework.com.cop.bbs.service.BoardMasterVO;
  * </pre>
  */
 
-@Mapper("bbsAddedOptionsMapper")
+@Mapper
 public interface BBSAddedOptionsMapper  {
 
 	/**

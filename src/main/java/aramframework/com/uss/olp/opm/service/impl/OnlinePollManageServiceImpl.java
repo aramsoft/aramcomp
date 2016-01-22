@@ -2,8 +2,7 @@ package aramframework.com.uss.olp.opm.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -34,18 +33,18 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("onlinePollManageService")
+@Service
 public class OnlinePollManageServiceImpl extends EgovAbstractServiceImpl implements OnlinePollManageService {
 
-	@Resource(name = "onlinePollManageMapper")
+	@Autowired
 	private OnlinePollManageMapper onlinePollManageMapper;	
 
-	@Resource(name = "onlinePollManageIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService onlinePollManageIdGnrService; 
 
-	@Resource(name = "onlinePollItemIdGnrService")
-	private EgovIdGnrService idgenServiceOnlinePollItem;
-
+	@Autowired
+	private EgovIdGnrService onlinePollItemIdGnrService;
+ 
 	/**
 	 * 온라인POLL관리를(을) 목록을 조회 한다.
 	 * 
@@ -83,7 +82,7 @@ public class OnlinePollManageServiceImpl extends EgovAbstractServiceImpl impleme
 	 */
 	public void insertOnlinePollManage(OnlinePollManageVO onlinePollManageVO) {
 		try {
-			onlinePollManageVO.setPollId(idgenService.getNextStringId());
+			onlinePollManageVO.setPollId(onlinePollManageIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}
@@ -126,7 +125,7 @@ public class OnlinePollManageServiceImpl extends EgovAbstractServiceImpl impleme
 	 */
 	public void insertOnlinePollItem(OnlinePollItemVO onlinePollItemVO) {
 		try {
-			onlinePollItemVO.setPollIemId(idgenServiceOnlinePollItem.getNextStringId());
+			onlinePollItemVO.setPollIemId(onlinePollItemIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

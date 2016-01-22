@@ -1,7 +1,5 @@
 package aramframework.com.sym.log.slg.web;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -45,14 +43,14 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class SysHistoryController {
 
-	@Resource(name = "sysHistoryService")
+	@Autowired
 	private SysHistoryService sysHistoryService;
 
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 
-	@Resource(name = "fileMngUtil")
-	private FileMngUtil fileUtil;
+	@Autowired
+	private FileMngUtil fileMngUtil; 
 
 	@Autowired
 	private DefaultBeanValidator beanValidator;
@@ -134,7 +132,7 @@ public class SysHistoryController {
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
-		sysHistoryVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "SHF_"));
+		sysHistoryVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "SHF_"));
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		sysHistoryVO.setFrstRegisterId(loginVO.getUniqId());
@@ -184,7 +182,7 @@ public class SysHistoryController {
 
 		// 첨부파일 관련 ID 생성 start....
 		String atchFileId = sysHistoryVO.getAtchFileId();
-		sysHistoryVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "SHF_", atchFileId));
+		sysHistoryVO.setAtchFileId(fileMngUtil.updateMultiFile(multiRequest, "SHF_", atchFileId));
 
 		sysHistoryService.updateSysHistory(sysHistoryVO);
 

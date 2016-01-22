@@ -5,8 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.constant.AramProperties;
@@ -38,14 +37,14 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("smsInfoService")
+@Service
 public class SmsInfoServiceImpl extends EgovAbstractServiceImpl implements SmsInfoService {
 
-	@Resource(name = "smsMapper")
+	@Autowired 
 	private SmsMapper smsMapper;	
 
-	@Resource(name = "smsIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired 
+	private EgovIdGnrService smsIdGnrService; 
 
 	private String smeConfigPath = null;
 
@@ -159,7 +158,7 @@ public class SmsInfoServiceImpl extends EgovAbstractServiceImpl implements SmsIn
 
 		HashMap<String, SmsRecptnVO> check = new HashMap<String, SmsRecptnVO>();
 
-		String smsId = idgenService.getNextStringId();
+		String smsId = smsIdGnrService.getNextStringId();
 
 		smsVO.setSmsId(smsId);
 		smsVO.setTrnsmitTelno(getPhoneNumber(smsVO.getTrnsmitTelno()));

@@ -5,12 +5,12 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -42,7 +42,7 @@ public class WebLogInterceptor extends HandlerInterceptorAdapter {
 
 	protected static final Logger LOG = LoggerFactory.getLogger(WebLogInterceptor.class);
 	
-	@Resource(name = "webLogService")
+	@Autowired 
 	private WebLogService webLogService;
 
 	private Set<String> passURL;

@@ -25,7 +25,7 @@ import aramframework.com.uss.umt.service.StplatVO;
  * </pre>
  */
 
-@Mapper("mberManageMapper")
+@Mapper
 public interface MberManageMapper {
 
 	/**

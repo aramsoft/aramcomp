@@ -1,7 +1,5 @@
 package aramframework.com.uss.olp.qqm.web;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -43,10 +41,10 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class QustnrQestnManageController {
 
-	@Resource(name = "qustnrQestnManageService")
+	@Autowired
 	private QustnrQestnManageService qustnrQestnManageService;
 
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 
 	@Autowired

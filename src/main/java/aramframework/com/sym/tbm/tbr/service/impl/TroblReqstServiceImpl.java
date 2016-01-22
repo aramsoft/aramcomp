@@ -3,8 +3,7 @@ package aramframework.com.sym.tbm.tbr.service.impl;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -34,15 +33,15 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("troblReqstService")
+@Service
 public class TroblReqstServiceImpl extends EgovAbstractServiceImpl implements TroblReqstService {
 
-	@Resource(name = "troblReqstMapper")
+	@Autowired
 	private TroblReqstMapper troblReqstMapper;	
 
 	/** ID Generation */
-	@Resource(name = "troblIdGnrService")
-	private EgovIdGnrService idegenService;
+	@Autowired
+	private EgovIdGnrService troblIdGnrService; 
 
 	/**
 	 * 장애요청을 관리하기 위해 등록된 장애요청목록을 조회한다.
@@ -82,7 +81,7 @@ public class TroblReqstServiceImpl extends EgovAbstractServiceImpl implements Tr
 	 */
 	public void insertTroblReqst(TroblReqstVO troblReqstVO) {
 		try {
-			troblReqstVO.setTroblId(idegenService.getNextStringId());
+			troblReqstVO.setTroblId(troblIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

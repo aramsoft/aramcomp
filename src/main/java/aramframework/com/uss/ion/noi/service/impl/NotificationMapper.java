@@ -25,7 +25,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Mapper("notificationMapper")
+@Mapper
 public interface NotificationMapper {
 	/**
 	 * 정보알림이 목록을 조회한다.

@@ -2,8 +2,7 @@ package aramframework.com.sym.log.wlg.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,15 +32,15 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("webLogService")
+@Service
 public class WebLogServiceImpl extends EgovAbstractServiceImpl implements WebLogService {
 
-	@Resource(name = "webLogMapper")
+	@Autowired
 	private WebLogMapper webLogMapper;	
 
 	/** ID Generation */
-	@Resource(name = "webLogIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService webLogIdGnrService; 
 
 	/**
 	 * 웹 로그 목록을 조회한다.
@@ -80,7 +79,7 @@ public class WebLogServiceImpl extends EgovAbstractServiceImpl implements WebLog
 	 */
 	public void logInsertWebLog(WebLogVO webLogVO) {
 		try {
-			webLogVO.setRequstId(idgenService.getNextStringId());
+			webLogVO.setRequstId(webLogIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

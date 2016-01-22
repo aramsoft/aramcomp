@@ -2,8 +2,7 @@ package aramframework.com.ssi.syi.sim.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,15 +32,15 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("systemCntcService")
+@Service
 public class SystemCntcServiceImpl extends EgovAbstractServiceImpl implements SystemCntcService {
 
-	@Resource(name = "systemCntcMapper")
+	@Autowired
 	private SystemCntcMapper systemCntcMapper;
 	
 	/** EgovIdGnrService */
-	@Resource(name = "systemCntcIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService systemCntcIdGnrService; 
 	
 	/**
 	 * 시스템연계 목록을 조회한다.
@@ -80,7 +79,7 @@ public class SystemCntcServiceImpl extends EgovAbstractServiceImpl implements Sy
 	 */
 	public void insertSystemCntc(SystemCntcVO systemCntcVO) {
 		try {
-			systemCntcVO.setCntcId(idgenService.getNextStringId());
+			systemCntcVO.setCntcId(systemCntcIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

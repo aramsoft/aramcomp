@@ -2,8 +2,7 @@ package aramframework.com.uss.olp.opp.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,14 +32,14 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("onlinePollPartcptnService")
+@Service
 public class OnlinePollPartcptnServiceImpl extends EgovAbstractServiceImpl implements OnlinePollPartcptnService {
 
-	@Resource(name = "onlinePollPartcptnMapper")
+	@Autowired
 	private OnlinePollPartcptnMapper onlinePollPartcptnMapper;	
 
-	@Resource(name = "onlinePollResultIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService onlinePollResultIdGnrService; 
 
 	/**
 	 * 온라인POLL관리를(을) 목록을 한다.
@@ -97,7 +96,7 @@ public class OnlinePollPartcptnServiceImpl extends EgovAbstractServiceImpl imple
 	 */
 	public void insertOnlinePollResult(OnlinePollPartcptnVO onlinePollPartcptnVO) {
 		try {
-			onlinePollPartcptnVO.setPollResultId(idgenService.getNextStringId());
+			onlinePollPartcptnVO.setPollResultId(onlinePollResultIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

@@ -2,8 +2,7 @@ package aramframework.com.uss.ion.rec.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,15 +32,15 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("recomendSiteService")
+@Service
 public class RecomendSiteServiceImpl extends EgovAbstractServiceImpl implements RecomendSiteService {
 
-	@Resource(name = "recomendSiteMapper")
+	@Autowired
 	private RecomendSiteMapper recomendSiteMapper;		
 
 	/** ID Generation */
-	@Resource(name = "recomendSiteIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService recomendSiteIdGnrService; 
 
 	/**
 	 * 추천사이트 목록을 조회한다.
@@ -80,7 +79,7 @@ public class RecomendSiteServiceImpl extends EgovAbstractServiceImpl implements 
 	 */
 	public void insertRecomendSiteInfo(RecomendSiteVO recomendSiteVO) {
 		try {
-			recomendSiteVO.setRecomendSiteId(idgenService.getNextStringId());
+			recomendSiteVO.setRecomendSiteId(recomendSiteIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

@@ -3,12 +3,11 @@ package aramframework.com.sym.mnu.mpm.service.impl;
 import java.io.InputStream;
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -40,16 +39,16 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("meunManageService")
+@Service
 public class MenuManageServiceImpl extends EgovAbstractServiceImpl implements MenuManageService {
 
-	@Resource(name = "menuManageMapper")
+	@Autowired
 	private MenuManageMapper menuManageMapper;
 	
-	@Resource(name = "progrmManageMapper")
+	@Autowired
 	private ProgrmManageMapper progrmManageMapper;
 
-	@Resource(name = "progrmManageDtlMapper")
+	@Autowired
 	private ProgrmManageDtlMapper progrmManageDtlMapper;
 	
 	//	@Resource(name = "excelZipService")

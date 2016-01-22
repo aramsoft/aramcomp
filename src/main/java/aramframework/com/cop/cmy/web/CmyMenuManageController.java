@@ -53,13 +53,13 @@ public class CmyMenuManageController {
 	@Resource(name = "cacheDictionary")
 	private Map<String, Object> cacheDictionary;
 
-	@Resource(name = "cmyMeunManageService")
+	@Autowired 
 	private CmyMenuManageService cmyMenuManageService;
 
-	@Resource(name = "progrmManageService")
+	@Autowired 
 	private ProgrmManageService progrmManageService;
 
-	@Resource(name = "userInfService")
+	@Autowired 
 	private UserInfService userInfService; // 커뮤니티 사용자 확인
 
 	@Autowired

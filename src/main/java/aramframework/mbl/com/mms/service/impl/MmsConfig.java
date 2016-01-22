@@ -1,8 +1,8 @@
 package aramframework.mbl.com.mms.service.impl;
 
-import javax.annotation.Resource;
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,7 +12,7 @@ import egovframework.rte.fdl.idgnr.impl.EgovTableIdGnrServiceImpl;
 @Configuration
 public class MmsConfig {
 
-	@Resource(name = "dataSource")
+	@Autowired
 	DataSource dataSource;
 	
 	@Bean(destroyMethod="destroy")

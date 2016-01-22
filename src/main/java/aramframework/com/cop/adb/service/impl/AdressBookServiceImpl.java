@@ -2,8 +2,7 @@ package aramframework.com.cop.adb.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.SearchVO;
@@ -35,17 +34,17 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("adressBookService")
+@Service
 public class AdressBookServiceImpl extends EgovAbstractServiceImpl implements AdressBookService {
 
-	@Resource(name = "adressBookMapper")
+	@Autowired
 	private AdressBookMapper adressBookMapper;
 		
-	@Resource(name = "adbkIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService adbkIdGnrService; 
 
-	@Resource(name = "adbkUserIdGnrService")
-	private EgovIdGnrService idgenService2;
+	@Autowired
+	private EgovIdGnrService adbkUserIdGnrService; 
 
 	/**
 	 * 주소록 목록을 조회한다.
@@ -86,7 +85,7 @@ public class AdressBookServiceImpl extends EgovAbstractServiceImpl implements Ad
 	public void insertAdressBook(AdressBookVO adressBookVO){
 
 		try {
-			adressBookVO.setAdbkId(idgenService.getNextStringId());
+			adressBookVO.setAdbkId(adbkIdGnrService.getNextStringId());
 			adressBookVO.setUseAt("Y");
 	
 			adressBookMapper.insertAdressBook(adressBookVO);
@@ -94,7 +93,7 @@ public class AdressBookServiceImpl extends EgovAbstractServiceImpl implements Ad
 			AdressBookUserVO adbkUserVO = new AdressBookUserVO();
 			for (int i = 0; i < adressBookVO.getAdbkMan().size(); i++) {
 				adbkUserVO = adressBookVO.getAdbkMan().get(i);
-				adbkUserVO.setAdbkUserId(idgenService2.getNextStringId());
+				adbkUserVO.setAdbkUserId(adbkUserIdGnrService.getNextStringId());
 				adbkUserVO.setAdbkId(adressBookVO.getAdbkId());
 				adressBookMapper.insertAdressBookUser(adbkUserVO);
 			}
@@ -148,7 +147,7 @@ public class AdressBookServiceImpl extends EgovAbstractServiceImpl implements Ad
 				}
 				
 				if (!check) {
-					adbkUserVO.setAdbkUserId(idgenService2.getNextStringId());
+					adbkUserVO.setAdbkUserId(adbkUserIdGnrService.getNextStringId());
 					adbkUserVO.setAdbkId(adressBookVO.getAdbkId());
 					adressBookMapper.insertAdressBookUser(adbkUserVO);
 				}

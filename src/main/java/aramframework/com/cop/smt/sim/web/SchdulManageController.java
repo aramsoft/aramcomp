@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -55,17 +53,17 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class SchdulManageController {
 
-	@Resource(name = "restdeManageService")
+	@Autowired 
 	private RestdeManageService restdeManageService;
 
-	@Resource(name = "schdulManageService")
+	@Autowired 
 	private SchdulManageService schdulManageService;
 
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 
-	@Resource(name = "fileMngUtil")
-	private FileMngUtil fileUtil;
+	@Autowired
+	private FileMngUtil fileMngUtil; 
 
 	@Autowired
 	private DefaultBeanValidator beanValidator;
@@ -483,7 +481,7 @@ public class SchdulManageController {
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
-		schdulManageVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "DSCH_"));
+		schdulManageVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "DSCH_"));
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -569,7 +567,7 @@ public class SchdulManageController {
 
 		// 첨부파일 관련 ID 생성 start....
 		String atchFileId = schdulManageVO.getAtchFileId();
-		schdulManageVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "DSCH_", atchFileId));
+		schdulManageVO.setAtchFileId(fileMngUtil.updateMultiFile(multiRequest, "DSCH_", atchFileId));
 
 		/* *****************************************************************
 		 * // 일정관리정보 업데이트 처리

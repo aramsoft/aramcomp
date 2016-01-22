@@ -24,7 +24,7 @@ import aramframework.com.sts.com.StatsVO;
  * </pre>
  */
 
-@Mapper("conectStatsMapper")
+@Mapper
 public interface ConectStatsMapper {
 
 	/**

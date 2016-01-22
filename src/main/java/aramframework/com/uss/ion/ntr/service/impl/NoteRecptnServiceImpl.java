@@ -2,8 +2,7 @@ package aramframework.com.uss.ion.ntr.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.uss.ion.ntr.service.NoteRecptnService;
@@ -30,10 +29,10 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("noteRecptnService")
+@Service
 public class NoteRecptnServiceImpl extends EgovAbstractServiceImpl implements NoteRecptnService {
 
-	@Resource(name = "noteRecptnMapper")
+	@Autowired
 	private NoteRecptnMapper noteRecptnMapper;	
 
 	/**

@@ -2,8 +2,7 @@ package aramframework.com.cop.ncm.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -34,14 +33,14 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("ncrdManageService")
+@Service
 public class NcrdManageServiceImpl extends EgovAbstractServiceImpl implements NcrdManageService {
 
-	@Resource(name = "ncrdManageMapper")
+	@Autowired 
 	private NcrdManageMapper ncrdManageMapper;	
 
-	@Resource(name = "ncrdIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired 
+	private EgovIdGnrService ncrdIdGnrService; 
 
 	/**
 	 * 내가 소유한 명함 정보에 대한 목록을 조회한다.
@@ -81,7 +80,7 @@ public class NcrdManageServiceImpl extends EgovAbstractServiceImpl implements Nc
 	public void insertNcrdItem(NameCardVO nameCardVO) {
 
 		try {
-			nameCardVO.setNcrdId(idgenService.getNextStringId());
+			nameCardVO.setNcrdId(ncrdIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

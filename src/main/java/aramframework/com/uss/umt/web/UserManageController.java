@@ -1,6 +1,5 @@
 package aramframework.com.uss.umt.web;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,10 +47,10 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class UserManageController {
 
-	@Resource(name = "userManageService")
+	@Autowired
 	private UserManageService userManageService;
 
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 
 	@Autowired

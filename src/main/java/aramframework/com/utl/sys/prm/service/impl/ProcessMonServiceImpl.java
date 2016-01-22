@@ -2,8 +2,7 @@ package aramframework.com.utl.sys.prm.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -36,17 +35,17 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
  * </pre>
  */
 
-@Service("processMonService")
+@Service
 public class ProcessMonServiceImpl extends EgovAbstractServiceImpl implements ProcessMonService {
 
-	@Resource(name = "processMonMapper")
+	@Autowired
 	private ProcessMonMapper processMonMapper;	
 
-	@Resource(name = "processMonIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService processMonIdGnrService; 
 
-	@Resource(name = "processMonLogIdGnrService")
-	private EgovIdGnrService idgenServiceLog;
+	@Autowired
+	private EgovIdGnrService processMonLogIdGnrService; 
 
 	/**
 	 * 등록된 PROCESS모니터링 목록을 조회한다.
@@ -92,7 +91,7 @@ public class ProcessMonServiceImpl extends EgovAbstractServiceImpl implements Pr
 	 */
 	public void insertProcessMon(ProcessMonVO processMonVO) {
 		try {
-			processMonVO.setProcessId(idgenService.getNextStringId());
+			processMonVO.setProcessId(processMonIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}
@@ -131,7 +130,7 @@ public class ProcessMonServiceImpl extends EgovAbstractServiceImpl implements Pr
 		ProcessMonLogVO processMonLogVO = new ProcessMonLogVO();
 		processMonLogVO.setProcessId(processMonVO.getProcessId());
 		try {
-			processMonLogVO.setLogId(idgenServiceLog.getNextStringId());
+			processMonLogVO.setLogId(processMonLogIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

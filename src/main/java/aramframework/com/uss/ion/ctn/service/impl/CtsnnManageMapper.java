@@ -25,7 +25,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Mapper("ctsnnManageMapper")
+@Mapper
 public interface CtsnnManageMapper {
 
 	/**

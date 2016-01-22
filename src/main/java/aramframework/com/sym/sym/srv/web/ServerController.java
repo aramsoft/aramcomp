@@ -1,8 +1,6 @@
 package aramframework.com.sym.sym.srv.web;
 
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -50,10 +48,10 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class ServerController {
 
-	@Resource(name = "serverService")
+	@Autowired
 	private ServerService serverService;
 
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 	
 	@Autowired

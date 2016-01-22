@@ -2,8 +2,7 @@ package aramframework.com.uss.olh.qna.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,15 +32,15 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("qnaManageService")
+@Service
 public class QnaManageServiceImpl extends EgovAbstractServiceImpl implements QnaManageService {
 
-	@Resource(name = "qnaManageMapper")
+	@Autowired
 	private QnaManageMapper qnaManageMapper;	
 
 	/** ID Generation */
-	@Resource(name = "qnaManageIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService qnaManageIdGnrService;
 
 	/**
 	 * Q&A 글 목록을 조회한다.
@@ -89,7 +88,7 @@ public class QnaManageServiceImpl extends EgovAbstractServiceImpl implements Qna
 	 */
 	public void insertQnaCn(QnaManageVO qnaManageVO) {
 		try {
-			qnaManageVO.setQaId(idgenService.getNextStringId());
+			qnaManageVO.setQaId(qnaManageIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

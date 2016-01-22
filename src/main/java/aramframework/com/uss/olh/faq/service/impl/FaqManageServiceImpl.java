@@ -2,8 +2,7 @@ package aramframework.com.uss.olh.faq.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -34,17 +33,17 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("faqManageService")
+@Service
 public class FaqManageServiceImpl extends EgovAbstractServiceImpl implements FaqManageService {
 
-	@Resource(name = "faqManageMapper")
+	@Autowired
 	private FaqManageMapper faqManageMapper;	
 
 	/** ID Generation */
-	@Resource(name = "faqManageIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService faqManageIdGnrService; 
 
-	@Resource(name="fileMngUtil")
+	@Autowired
 	private FileMngUtil fileUtil;
 
 	/**
@@ -84,7 +83,7 @@ public class FaqManageServiceImpl extends EgovAbstractServiceImpl implements Faq
 	 */
 	public void insertFaqCn(FaqManageVO faqManageVO) {
 		try {
-			faqManageVO.setFaqId(idgenService.getNextStringId());
+			faqManageVO.setFaqId(faqManageIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

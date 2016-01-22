@@ -27,7 +27,7 @@ import aramframework.com.cmm.util.UserDetailsHelper;
  * </pre>
  */
 
-@Service("egovLoginSesionCeckUtil")
+@Service
 public class LoginSesionCeckUtil {
 
 	/**

@@ -2,8 +2,7 @@ package aramframework.com.sts.bst.web;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -37,10 +36,10 @@ import aramframework.com.sts.com.StatsVO;
 @Controller
 public class BbsStatsController {
 
-	@Resource(name = "bbsStatsService")
+	@Autowired
 	private BbsStatsService bbsStatsService;
 
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 
 	/**

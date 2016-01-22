@@ -25,7 +25,7 @@ import org.springframework.stereotype.Service;
  * </pre>
  */
 
-@Service("componentChecker")
+@Service
 public class ComponentChecker implements ApplicationContextAware {
 
 	public static ApplicationContext context;

@@ -2,8 +2,7 @@ package aramframework.com.uss.ion.pwm.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,14 +32,14 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("popupManageService")
+@Service
 public class PopupManageServiceImpl extends EgovAbstractServiceImpl implements PopupManageService {
 
-	@Resource(name = "popupManageMapper")
+	@Autowired
 	public PopupManageMapper popupManageMapper;	
 
-	@Resource(name = "popupManageIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService popupManageIdGnrService; 
 
 	/**
 	 * 팝업창를 사용하기위해 위해 등록된 팝업창목록을 조회한다.
@@ -88,7 +87,7 @@ public class PopupManageServiceImpl extends EgovAbstractServiceImpl implements P
 	 */
 	public void insertPopup(PopupManageVO popupManageVO) {
 		try {
-			popupManageVO.setPopupId(idgenService.getNextStringId());
+			popupManageVO.setPopupId(popupManageIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

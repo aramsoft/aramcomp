@@ -2,8 +2,7 @@ package aramframework.com.utl.sys.trm.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.SearchVO;
@@ -33,13 +32,13 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("trsmrcvMntrngService")
+@Service
 public class TrsmrcvMntrngServiceImpl extends EgovAbstractServiceImpl implements TrsmrcvMntrngService {
 
 	/**
 	 * 송수신모니터링DAO
 	 */
-	@Resource(name = "trsmrcvMntrngMapper")
+	@Autowired
 	private TrsmrcvMntrngMapper trsmrcvMntrngMapper;	
 
 	/**

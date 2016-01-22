@@ -23,7 +23,7 @@ import aramframework.com.sym.mnu.stm.service.SiteMapngVO;
  * </pre>
  */
 
-@Mapper("siteMapngMapper")
+@Mapper
 public interface SiteMapngMapper {
 
 	/**

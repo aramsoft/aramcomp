@@ -2,8 +2,7 @@ package aramframework.com.sym.bat.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -36,21 +35,15 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 @Service("batchSchdulService")
 public class BatchSchdulServiceImpl extends EgovAbstractServiceImpl implements BatchSchdulService {
 
-	/**
-	 * 배치스케줄DAO
-	 */
-	@Resource(name = "batchSchdulMapper")
+	@Autowired
 	private BatchSchdulMapper batchSchdulMapper;	
 
-	/**
-	 * 배치결과DAO
-	 */
-	@Resource(name = "batchResultMapper")
+	@Autowired
 	private BatchResultMapper batchResultMapper;	
 
 	/** ID Generation */
-	@Resource(name = "batchSchdulIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService batchSchdulIdGnrService; 
 
 	/**
 	 * 배치스케줄의 목록을 조회 한다.
@@ -89,7 +82,7 @@ public class BatchSchdulServiceImpl extends EgovAbstractServiceImpl implements B
 	 */
 	public void insertBatchSchdul(BatchSchdulVO batchSchdulVO) {
 		try {
-			batchSchdulVO.setBatchSchdulId(idgenService.getNextStringId());
+			batchSchdulVO.setBatchSchdulId(batchSchdulIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

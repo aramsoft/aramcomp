@@ -2,8 +2,7 @@ package aramframework.mbl.com.geo.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -38,16 +37,15 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("geoLocationService")
+@Service
 public class GeoLocationServiceImpl extends EgovAbstractServiceImpl implements GeoLocationService {
 
-    /** GeoLocationDAO */
-    @Resource(name="geoLocationMapper")
+	@Autowired
     private GeoLocationMapper geoLocationMapper;    
     
     /** ID Generation */    
-    @Resource(name="geoLocationIdGnrService")
-    private EgovIdGnrService idgenService;
+	@Autowired
+    private EgovIdGnrService geoLocationIdGnrService; 
 
     /**
      * 건물의 위치정보 목록을 조회한다.
@@ -86,7 +84,7 @@ public class GeoLocationServiceImpl extends EgovAbstractServiceImpl implements G
      */
     public void insertBuildingLocationInfo(GeoLocationVO geoLocationVO) {
         try {
-			geoLocationVO.setSn(idgenService.getNextIntegerId());
+			geoLocationVO.setSn(geoLocationIdGnrService.getNextIntegerId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

@@ -3,8 +3,6 @@ package aramframework.com.uss.ion.mtg.web;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -56,17 +54,17 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class MtgPlaceManageController {
 
-	@Resource(name = "mtgPlaceManageService")
+	@Autowired
 	private MtgPlaceManageService mtgPlaceManageService;
 
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 
-	@Resource(name = "fileMngService")
+	@Autowired
 	private FileMngService fileMngService;
 
-	@Resource(name = "fileMngUtil")
-	private FileMngUtil fileUtil;
+	@Autowired
+	private FileMngUtil fileMngUtil; 
 
 	@Autowired
 	private DefaultBeanValidator beanValidator;
@@ -162,7 +160,7 @@ public class MtgPlaceManageController {
 		}
 		
 		// 첨부파일 관련 첨부파일ID 생성
-		mtgPlaceManageVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "MTG_"));
+		mtgPlaceManageVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "MTG_"));
 
 		mtgPlaceManageService.insertMtgPlaceManage(mtgPlaceManageVO, checkedMtgPlacesForInsert);
 
@@ -215,7 +213,7 @@ public class MtgPlaceManageController {
 
 		// 첨부파일 관련 ID 생성 start....
 		String atchFileId = mtgPlaceManageVO.getAtchFileId();
-		mtgPlaceManageVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "MTG_", atchFileId));
+		mtgPlaceManageVO.setAtchFileId(fileMngUtil.updateMultiFile(multiRequest, "MTG_", atchFileId));
 
 		mtgPlaceManageService.updateMtgPlaceManage(mtgPlaceManageVO, checkedMtgPlacesForInsert);
 

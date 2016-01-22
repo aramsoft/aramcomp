@@ -34,7 +34,7 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 public class ProxyServer extends Thread {
 
 	ProxySvcMapper proxySvcDAO;
-	EgovIdGnrService egovProxyLogIdGnrService;
+	EgovIdGnrService proxyLogIdGnrService;
 
 	ServerSocket serverSocket = null;
 	Socket client = null;
@@ -55,7 +55,7 @@ public class ProxyServer extends Thread {
 	ProxySvcLogVO proxyLogVO = null;
 
 	public ProxyServer(String svcHost, String localIp, int localPort, int remotePort, String threadName, ProxySvcMapper proxySvcDAO,
-			EgovIdGnrService egovProxyLogIdGnrService) {
+			EgovIdGnrService proxyLogIdGnrService) {
 
 		try {
 			setSvcIp(svcHost);
@@ -65,7 +65,7 @@ public class ProxyServer extends Thread {
 			setThreadName(threadName);
 
 			this.proxySvcDAO = proxySvcDAO;
-			this.egovProxyLogIdGnrService = egovProxyLogIdGnrService;
+			this.proxyLogIdGnrService = proxyLogIdGnrService;
 
 			serverSocket = new ServerSocket(localPort);
 
@@ -166,7 +166,7 @@ public class ProxyServer extends Thread {
 
 			proxyLogVO = new ProxySvcLogVO();
 			proxyLogVO.setProxyId(getThreadName());
-			proxyLogVO.setLogId(egovProxyLogIdGnrService.getNextStringId());
+			proxyLogVO.setLogId(proxyLogIdGnrService.getNextStringId());
 			if (!WebUtil.isIPAddress((client.getInetAddress().getHostAddress()))) { // 2011.10.25 보안점검 후속조치
 				throw new RuntimeException("IP is needed. (" + client.getInetAddress().getHostAddress() + ")");
 			}

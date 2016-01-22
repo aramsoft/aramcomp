@@ -27,7 +27,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Mapper("deptJobMapper")
+@Mapper
 public interface DeptJobMapper {
 
 	/**

@@ -2,8 +2,6 @@ package aramframework.com.uss.olp.qri.web;
 
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -49,13 +47,13 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class QustnrRespondInfoController {
 
-	@Resource(name = "qustnrRespondManageService")
+	@Autowired
 	private QustnrRespondManageService qustnrRespondManageService;
 
-	@Resource(name = "qustnrRespondInfoService")
+	@Autowired
 	private QustnrRespondInfoService qustnrRespondInfoService;
 
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 
 	@Autowired

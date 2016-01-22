@@ -25,7 +25,7 @@ import aramframework.com.sts.rst.service.ReprtStatsVO;
  * </pre>
  */
 
-@Mapper("reprtStatsMapper")
+@Mapper
 public interface ReprtStatsMapper {
 
 	/**

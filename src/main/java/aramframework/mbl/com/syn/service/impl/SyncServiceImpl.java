@@ -2,8 +2,7 @@ package aramframework.mbl.com.syn.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -11,7 +10,6 @@ import aramframework.mbl.com.syn.service.SyncService;
 import aramframework.mbl.com.syn.service.SyncVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
-//import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 
 /**
  * 개요
@@ -37,14 +35,10 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("syncService")
+@Service
 public class SyncServiceImpl extends EgovAbstractServiceImpl implements SyncService{
 	
-	/** ID Generation */    
-	//@Resource(name="egovRealtimeNoticeIdGnrService")
-	//private EgovIdGnrService idgenService;
-	
-	@Resource(name="syncMapper")
+	@Autowired
     private SyncMapper syncMapper;	
 	
 	/**

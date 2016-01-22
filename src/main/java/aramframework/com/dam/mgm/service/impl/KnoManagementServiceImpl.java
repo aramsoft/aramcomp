@@ -2,8 +2,7 @@ package aramframework.com.dam.mgm.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -31,10 +30,10 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("knoManagementService")
+@Service
 public class KnoManagementServiceImpl extends EgovAbstractServiceImpl implements KnoManagementService {
 
-	@Resource(name = "knoManagementMapper")
+	@Autowired
 	private KnoManagementMapper knoManagementMapper;
 
 	/**

@@ -27,7 +27,7 @@ import aramframework.com.sym.bat.service.BatchSchdulDfkVO;
  * </pre>
  */
 
-@Repository("batchSchdulMapper")
+@Repository
 public class BatchSchdulMapper extends EgovAbstractMapper {
 
 	final static String NAMESPACE = "aramframework.com.sym.bat.service.impl.BatchSchdulMapper";

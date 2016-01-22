@@ -1,7 +1,6 @@
 package aramframework.com.uat.uia.service.impl;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.LoginVO;
@@ -32,14 +31,14 @@ import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
  * </pre>
  */
 
-@Service("loginService")
+@Service
 public class LoginServiceImpl extends EgovAbstractServiceImpl implements LoginService {
 
-	@Resource(name = "loginMapper")
+	@Autowired
 	private LoginMapper loginMapper;	
 
 	/** EgovSndngMailService */
-	@Resource(name = "sndngMailService")
+	@Autowired
 	private SndngMailService sndngMailService;
 
 	/**

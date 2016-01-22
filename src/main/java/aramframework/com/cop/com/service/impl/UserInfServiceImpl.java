@@ -2,8 +2,7 @@ package aramframework.com.cop.com.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -36,13 +35,13 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("userInfService")
+@Service
 public class UserInfServiceImpl extends EgovAbstractServiceImpl implements UserInfService {
 
-	@Resource(name = "userInfMapper")
+	@Autowired 
 	private UserInfMapper userInfMapper;	
 
-	@Resource(name = "communityManageService")
+	@Autowired 
 	private CommunityManageService cmmntyService; // 커뮤니티 관리자 권한 확인
 
 	/**

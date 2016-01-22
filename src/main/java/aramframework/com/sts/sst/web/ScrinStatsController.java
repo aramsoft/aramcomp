@@ -2,8 +2,7 @@ package aramframework.com.sts.sst.web;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -37,10 +36,10 @@ import aramframework.com.sym.mnu.mpm.service.MenuManageService;
 @Controller
 public class ScrinStatsController {
 
-	@Resource(name = "scrinStatsService")
+	@Autowired
 	private ScrinStatsService scrinStatsService;
 
-	@Resource(name = "meunManageService")
+	@Autowired
 	private MenuManageService menuManageService;
 
 	/**

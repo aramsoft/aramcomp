@@ -2,8 +2,7 @@ package aramframework.com.utl.sys.htm.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -36,19 +35,19 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
  * </pre>
  */
 
-@Service("httpMntrngService")
+@Service
 public class HttpMntrngServiceImpl extends EgovAbstractServiceImpl implements HttpMntrngService {
 
-	@Resource(name = "httpMntrngMapper")
+	@Autowired
 	private HttpMntrngMapper httpMntrngMapper;		
 	
 	/** ID Generation */
-	@Resource(name = "httpMntrngIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService httpMntrngIdGnrService; 
 
 	/** ID Generation */
-	@Resource(name = "httpMntrngLogIdGnrService")
-	private EgovIdGnrService idgenServiceLog;
+	@Autowired
+	private EgovIdGnrService httpMntrngLogIdGnrService; 
 
 	/**
 	 * 등록된 HTTP서비스모니터링 목록을 조회한다.
@@ -94,7 +93,7 @@ public class HttpMntrngServiceImpl extends EgovAbstractServiceImpl implements Ht
 	 */
 	public void insertHttpMntrng(HttpMntrngVO httpMntrngVO) {
 		try {
-			httpMntrngVO.setSysId(idgenService.getNextStringId());
+			httpMntrngVO.setSysId(httpMntrngIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}
@@ -133,7 +132,7 @@ public class HttpMntrngServiceImpl extends EgovAbstractServiceImpl implements Ht
 		HttpMntrngLogVO httpMntrngLogVO = new HttpMntrngLogVO();
 		httpMntrngLogVO.setSysId(httpMntrngVO.getSysId());
 		try {
-			httpMntrngLogVO.setLogId(idgenServiceLog.getNextStringId());
+			httpMntrngLogVO.setLogId(httpMntrngLogIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

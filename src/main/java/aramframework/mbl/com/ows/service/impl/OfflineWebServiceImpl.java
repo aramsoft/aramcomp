@@ -2,15 +2,13 @@ package aramframework.mbl.com.ows.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.mbl.com.ows.service.OfflineWebService;
 import aramframework.mbl.com.ows.service.OfflineWebVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
-// import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 
 /**
  * 개요
@@ -36,13 +34,10 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("offlineWebService")
+@Service
 public class OfflineWebServiceImpl extends EgovAbstractServiceImpl implements OfflineWebService{
-	/** ID Generation */    
-	//@Resource(name="egovRealtimeNoticeIdGnrService")
-	//private EgovIdGnrService idgenService;
 	
-	@Resource(name="offlineWebMapper")
+	@Autowired
     private OfflineWebMapper offlineWebMapper;
 		
 	/**

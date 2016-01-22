@@ -2,8 +2,7 @@ package aramframework.com.sym.bat.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -30,13 +29,13 @@ import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
  * </pre>
  */
 
-@Service("batchResultService")
+@Service
 public class BatchResultServiceImpl extends EgovAbstractServiceImpl implements BatchResultService {
 
 	/**
 	 * 배치결과DAO
 	 */
-	@Resource(name = "batchResultMapper")
+	@Autowired
 	private BatchResultMapper batchResultMapper;	
 
 	/**

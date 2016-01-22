@@ -5,7 +5,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,12 +34,13 @@ import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
  * </pre>
  */
 
-@Service("cmmUseService")
+@Service
 public class CmmUseServiceImpl extends EgovAbstractServiceImpl implements CmmUseService {
 
-	@Autowired ServletContext servletContext;
+	@Autowired 
+	ServletContext servletContext;
 
-	@Resource(name = "cmmUseMapper")
+	@Autowired 
 	private CmmUseMapper cmmUseMapper;	
 
 	/**

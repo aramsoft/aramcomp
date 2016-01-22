@@ -1,7 +1,6 @@
 package aramframework.mbl.uss.olh.hpc.web;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,7 +32,7 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class MblHpcmManageController {
 	 
-    @Resource(name = "hpcmManageService")
+	@Autowired
     private HpcmManageService hpcmManageService;
     
     /**

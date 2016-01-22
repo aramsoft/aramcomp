@@ -2,8 +2,7 @@ package aramframework.com.cop.smt.dsm.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -34,16 +33,16 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("diaryManageService")
+@Service
 public class DiaryManageServiceImpl extends EgovAbstractServiceImpl implements DiaryManageService {
 
-	@Resource(name = "diaryManageMapper")
+	@Autowired 
 	private DiaryManageMapper diaryManageMapper;	
 
-	@Resource(name = "diaryManageIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired 
+	private EgovIdGnrService diaryManageIdGnrService; 
 
-	@Resource(name="fileMngUtil")
+	@Autowired 
 	private FileMngUtil fileUtil;
 
 	/**
@@ -83,7 +82,7 @@ public class DiaryManageServiceImpl extends EgovAbstractServiceImpl implements D
 	 */
 	public void insertDiaryManage(DiaryManageVO diaryManageVO) {
 		try {
-			diaryManageVO.setDiaryId(idgenService.getNextStringId());
+			diaryManageVO.setDiaryId(diaryManageIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

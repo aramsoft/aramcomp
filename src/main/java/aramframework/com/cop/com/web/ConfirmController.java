@@ -1,7 +1,6 @@
 package aramframework.com.cop.com.web;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -39,13 +38,13 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class ConfirmController {
 
-	@Resource(name = "confirmService")
+	@Autowired 
 	private ConfirmService confirmService;
 
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 
-	@Resource(name = "userInfService")
+	@Autowired 
 	private UserInfService userInfService; // 커뮤니티 사용자 확인
 
 	/**

@@ -10,10 +10,9 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import javax.annotation.Resource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -47,10 +46,10 @@ public class FileMngUtil {
 
 	public static final int BUFF_SIZE = 2048;
 
-	@Resource(name = "fileIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired 
+	private EgovIdGnrService fileIdGnrService; 
 
-	@Resource(name = "fileMngService")
+	@Autowired 
 	private FileMngService fileMngService;
 
 	protected static final Logger LOG = LoggerFactory.getLogger(FileMngUtil.class);
@@ -135,7 +134,7 @@ public class FileMngUtil {
 		}
 
 		if (atchFileId == null || "".equals(atchFileId) ) {
-			atchFileIdString = idgenService.getNextStringId();
+			atchFileIdString = fileIdGnrService.getNextStringId();
 		} else {
 			atchFileIdString = atchFileId;
 		}

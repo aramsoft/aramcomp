@@ -3,8 +3,7 @@ package aramframework.com.uss.ion.bnr.service.impl;
 import java.io.File;
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.service.FileVO;
@@ -36,15 +35,15 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("bannerService")
+@Service
 public class BannerServiceImpl extends EgovAbstractServiceImpl implements BannerService {
 
-	@Resource(name = "bannerMapper")
+	@Autowired
 	private BannerMapper bannerMapper;
 	
 	/** Message ID Generation */
-	@Resource(name = "bannerIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService bannerIdGnrService;
 
 	/**
 	 * 배너를 관리하기 위해 등록된 배너목록을 조회한다.
@@ -83,7 +82,7 @@ public class BannerServiceImpl extends EgovAbstractServiceImpl implements Banner
 	 */
 	public void insertBanner(BannerVO bannerVO) {
 		try {
-			bannerVO.setBannerId(idgenService.getNextStringId());
+			bannerVO.setBannerId(bannerIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

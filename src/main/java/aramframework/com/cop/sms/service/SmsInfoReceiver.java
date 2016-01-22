@@ -1,9 +1,8 @@
 package aramframework.com.cop.sms.service;
 
-import javax.annotation.Resource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import x3.client.smeapi.SMEConnection;
@@ -40,10 +39,10 @@ import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
  * </pre>
  */
 
-@Service("smsInfoReceiver")
+@Service
 public class SmsInfoReceiver extends EgovAbstractServiceImpl implements SMEListener {
 
-	@Resource(name = "smsMapper")
+	@Autowired 
 	private SmsMapper smsMapper;
 	
 	private String smeConfigPath = null;

@@ -1,7 +1,6 @@
 package aramframework.com.utl.pao.service.impl;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -28,10 +27,10 @@ import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
  * </pre>
  */
 
-@Service("prntngOutpt")
+@Service
 public class PrntngOutptImpl extends EgovAbstractServiceImpl implements PrntngOutpt {
 
-	@Resource(name = "prntngOutptMapper")
+	@Autowired
 	private PrntngOutptMapper prntngOutptMapper;
 
 	/**

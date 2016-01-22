@@ -8,12 +8,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
@@ -46,8 +46,8 @@ import aramframework.com.cmm.util.WebUtil;
 @Controller
 public class FileDownloadController {
 
-	@Resource(name = "fileMngService")
-	private FileMngService fileService;
+	@Autowired 
+	private FileMngService fileMngService; 
 
 	protected static final Logger LOG = LoggerFactory.getLogger(FileDownloadController.class);
 
@@ -139,7 +139,7 @@ public class FileDownloadController {
 		fileVO.setAtchFileId(fileId);
 		fileVO.setFileSn(fileSn);
 		
-		fileService.selectFileInf(fileVO);
+		fileMngService.selectFileInf(fileVO);
 
 		File uFile = new File(fileVO.getFileStreCours(), fileVO.getStreFileNm());
 		int fSize = (int) uFile.length();

@@ -2,8 +2,7 @@ package aramframework.com.utl.sys.nsm.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -36,15 +35,15 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
  * </pre>
  */
 
-@Service("ntwrkSvcMntrngService")
+@Service
 public class NtwrkSvcMntrngServiceImpl extends EgovAbstractServiceImpl implements NtwrkSvcMntrngService {
 
-	@Resource(name = "ntwrkSvcMntrngMapper")
+	@Autowired
 	private NtwrkSvcMntrngMapper ntwrkSvcMntrngMapper;	
 
-	@Resource(name = "ntwrkSvcMntrngLogIdGnrService")
-	private EgovIdGnrService idgenService;
-
+	@Autowired
+	private EgovIdGnrService ntwrkSvcMntrngLogIdGnrService;
+ 
 	/**
 	 * 네트워크서비스 모니터링대상 목록을 조회한다.
 	 * 
@@ -122,7 +121,7 @@ public class NtwrkSvcMntrngServiceImpl extends EgovAbstractServiceImpl implement
 
 		NtwrkSvcMntrngLogVO ntwrkSvcMntrngLogVO = new NtwrkSvcMntrngLogVO();
 		try {
-			ntwrkSvcMntrngLogVO.setLogId(idgenService.getNextStringId());
+			ntwrkSvcMntrngLogVO.setLogId(ntwrkSvcMntrngLogIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

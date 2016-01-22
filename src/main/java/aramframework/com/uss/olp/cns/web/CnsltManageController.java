@@ -1,7 +1,5 @@
 package aramframework.com.uss.olp.cns.web;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -46,14 +44,14 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class CnsltManageController {
 
-	@Resource(name = "cnsltManageService")
+	@Autowired
 	private CnsltManageService cnsltManageService;
 
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 
-	@Resource(name = "fileMngUtil")
-	private FileMngUtil fileUtil;
+	@Autowired
+	private FileMngUtil fileMngUtil; 
 
 	@Autowired
 	private DefaultBeanValidator beanValidator;
@@ -169,7 +167,7 @@ public class CnsltManageController {
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
-		cnsltManageVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "CNSLT_"));
+		cnsltManageVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "CNSLT_"));
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -280,7 +278,7 @@ public class CnsltManageController {
 
 		// 첨부파일 관련 ID 생성 start....
 		String atchFileId = cnsltManageVO.getAtchFileId();
-		cnsltManageVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "CNSLT_", atchFileId));
+		cnsltManageVO.setAtchFileId(fileMngUtil.updateMultiFile(multiRequest, "CNSLT_", atchFileId));
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();

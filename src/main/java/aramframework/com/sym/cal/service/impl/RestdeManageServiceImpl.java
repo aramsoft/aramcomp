@@ -2,8 +2,7 @@ package aramframework.com.sym.cal.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,14 +32,14 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("restdeManageService")
+@Service
 public class RestdeManageServiceImpl extends EgovAbstractServiceImpl implements RestdeManageService {
 
-	@Resource(name = "restdeManageMapper")
+	@Autowired
 	private RestdeManageMapper restdeManageMapper;
 	
-	@Resource(name = "restDeIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService restDeIdGnrService; 
 
 	/**
 	 * 휴일 목록을 조회한다.
@@ -79,7 +78,7 @@ public class RestdeManageServiceImpl extends EgovAbstractServiceImpl implements 
 	 */
 	public void insertRestde(RestdeVO restdeVO) {
 		try {
-			restdeVO.setRestdeNo(idgenService.getNextIntegerId() % 1000000);
+			restdeVO.setRestdeNo(restDeIdGnrService.getNextIntegerId() % 1000000);
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -56,13 +54,13 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class LeaderSchdulController {
 
-	@Resource(name = "restdeManageService")
+	@Autowired 
 	private RestdeManageService restdeManageService;
 
-	@Resource(name = "leaderSchdulService")
+	@Autowired 
 	private LeaderSchdulService leaderSchdulService;
 
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 
 	@Autowired

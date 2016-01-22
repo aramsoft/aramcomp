@@ -2,8 +2,7 @@ package aramframework.com.cop.smt.sim.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.SearchVO;
@@ -35,16 +34,16 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("schdulManageService")
+@Service
 public class SchdulManageServiceImpl extends EgovAbstractServiceImpl implements SchdulManageService {
 
-	@Resource(name = "schdulManageMapper")
+	@Autowired 
 	private SchdulManageMapper schdulManageMapper;	
 
-	@Resource(name = "schdulManageIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired 
+	private EgovIdGnrService schdulManageIdGnrService; 
 
-	@Resource(name="fileMngUtil")
+	@Autowired 
 	private FileMngUtil fileUtil;
 
 	/**
@@ -122,7 +121,7 @@ public class SchdulManageServiceImpl extends EgovAbstractServiceImpl implements 
 	 */
 	public void insertSchdulManage(SchdulManageVO schdulManageVO) {
 		try {
-			schdulManageVO.setSchdulId(idgenService.getNextStringId());
+			schdulManageVO.setSchdulId(schdulManageIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

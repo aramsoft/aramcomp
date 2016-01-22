@@ -3,8 +3,6 @@ package aramframework.com.sym.bat.web;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -47,13 +45,13 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class BatchSchdulController {
 
-	@Resource(name = "batchSchdulService")
+	@Autowired
 	private BatchSchdulService batchSchdulService;
 	
-	@Resource(name = "batchScheduler")
+	@Autowired
 	private BatchScheduler batchScheduler;
 
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 
 	@Autowired

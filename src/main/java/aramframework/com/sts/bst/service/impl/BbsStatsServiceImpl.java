@@ -2,8 +2,7 @@ package aramframework.com.sts.bst.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.sts.bst.service.BbsStatsService;
@@ -29,10 +28,10 @@ import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
  * </pre>
  */
 
-@Service("bbsStatsService")
+@Service
 public class BbsStatsServiceImpl extends EgovAbstractServiceImpl implements BbsStatsService {
 
-	@Resource(name = "bbsStatsMapper")
+	@Autowired
 	private BbsStatsMapper bbsStatsMapper;
 	
 	/**

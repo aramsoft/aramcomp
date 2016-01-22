@@ -2,8 +2,7 @@ package aramframework.com.uss.olh.omm.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,14 +32,14 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("onlineManualService")
+@Service
 public class OnlineManualServiceImpl extends EgovAbstractServiceImpl implements OnlineManualService {
 
-	@Resource(name = "onlineManualMapper")
+	@Autowired
 	private OnlineManualMapper onlineManualMapper;	
 
-	@Resource(name = "onlineManualIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService onlineManualIdGnrService; 
 
 	/**
 	 * 온라인메뉴얼를(을) 목록을 조회 한다.
@@ -79,7 +78,7 @@ public class OnlineManualServiceImpl extends EgovAbstractServiceImpl implements 
 	 */
 	public void insertOnlineManual(OnlineManualVO onlineManualVO) {
 		try {
-			onlineManualVO.setOnlineMnlId(idgenService.getNextStringId());
+			onlineManualVO.setOnlineMnlId(onlineManualIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

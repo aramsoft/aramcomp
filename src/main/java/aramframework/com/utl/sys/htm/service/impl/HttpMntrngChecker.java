@@ -3,7 +3,7 @@ package aramframework.com.utl.sys.htm.service.impl;
 import java.io.File;
 import java.net.URL;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import aramframework.com.utl.sys.htm.service.HttpMntrngService;
 
@@ -28,7 +28,7 @@ import aramframework.com.utl.sys.htm.service.HttpMntrngService;
 
 public class HttpMntrngChecker {
 
-	@Resource(name = "HttpMntrngService")
+	@Autowired
 	private HttpMntrngService httpMntrngService;
 	
 	// 파일구분자

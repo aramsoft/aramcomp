@@ -30,7 +30,7 @@ import aramframework.mbl.com.mms.service.MmsTransInfoVO;
  * </pre>
  */
 
-@Mapper("mmsMapper")
+@Mapper
 public interface MmsMapper {
 
     /**

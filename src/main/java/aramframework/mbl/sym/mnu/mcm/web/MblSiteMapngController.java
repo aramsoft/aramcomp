@@ -1,7 +1,6 @@
 package aramframework.mbl.sym.mnu.mcm.web;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,7 +33,7 @@ import aramframework.com.sym.mnu.mcm.service.MenuSiteMapVO;
 @Controller
 public class MblSiteMapngController {
 	
-	@Resource(name = "meunCreateService")
+	@Autowired
     private MenuCreateService menuCreateService;	
 
     /**

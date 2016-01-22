@@ -1,7 +1,5 @@
 package aramframework.com.sym.mnu.mpm.web;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -45,22 +43,21 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 public class MenuManageController {
 
 	/** EgovMenuManageService */
-	@Resource(name = "meunManageService")
+	@Autowired
 	private MenuManageService menuManageService;
 
 	/** EgovMenuManageService */
-	@Resource(name = "progrmManageService")
+	@Autowired
 	private ProgrmManageService progrmManageService;
 
 	/** FileMngService */
-	// @Resource(name="fileMngService")
+//	@Autowired
 	// private FileMngService fileMngService;
 
 	/** FileMngUtil */
-	// @Resource(name="fileMngUtil")
+//	@Autowired
 	// private FileMngUtil fileUtil;
 
-	/* Validator */
 	@Autowired
 	private DefaultBeanValidator beanValidator;
 	/**

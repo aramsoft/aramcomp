@@ -27,7 +27,7 @@ import aramframework.com.utl.sys.ssy.service.SynchrnServerVO;
  * </pre>
  */
 
-@Mapper("synchrnServerMapper")
+@Mapper
 public interface SynchrnServerMapper {
 
 	/**

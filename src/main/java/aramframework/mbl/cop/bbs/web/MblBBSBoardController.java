@@ -59,16 +59,16 @@ public class MblBBSBoardController {
 	@Resource(name = "cacheDictionary")
 	private Map<String, Object> cacheDictionary;
 
-    @Resource(name = "bbsBoardService")
+	@Autowired
     private BBSBoardService boardService;
  
-    @Resource(name = "bbsMasterService")
+	@Autowired
     private BBSMasterService bbsMasterService;
     
-    @Resource(name = "fileMngUtil")
+	@Autowired
     private FileMngUtil fileUtil;
 
-	@Resource(name = "userInfService")
+	@Autowired
 	private UserInfService userInfService; // 커뮤니티 사용자 확인
 
     //---------------------------------

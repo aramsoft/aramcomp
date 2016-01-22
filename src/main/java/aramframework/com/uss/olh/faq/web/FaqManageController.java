@@ -1,7 +1,5 @@
 package aramframework.com.uss.olh.faq.web;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -44,10 +42,10 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class FaqManageController {
 
-	@Resource(name = "faqManageService")
+	@Autowired
 	private FaqManageService faqManageService;
 
-	@Resource(name = "fileMngUtil")
+	@Autowired
 	private FileMngUtil fileUtil;
 
 	@Autowired

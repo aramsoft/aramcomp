@@ -2,8 +2,7 @@ package aramframework.com.cop.smt.wmr.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.SearchVO;
@@ -35,16 +34,16 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("wikMnthngReprtService")
+@Service
 public class WikMnthngReprtServiceImpl extends EgovAbstractServiceImpl implements WikMnthngReprtService {
 
-	@Resource(name = "wikMnthngReprtMapper")
+	@Autowired 
 	private WikMnthngReprtMapper wikMnthngReprtMapper;	
 
-	@Resource(name = "wikMnthngReprtIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired 
+	private EgovIdGnrService wikMnthngReprtIdGnrService; 
 
-	@Resource(name="fileMngUtil")
+	@Autowired 
 	private FileMngUtil fileUtil;
 
 	/**
@@ -134,7 +133,7 @@ public class WikMnthngReprtServiceImpl extends EgovAbstractServiceImpl implement
 	 */
 	public void insertWikMnthngReprt(WikMnthngReprtVO wikMnthngReprtVO) {
 		try {
-			wikMnthngReprtVO.setReprtId(idgenService.getNextStringId());
+			wikMnthngReprtVO.setReprtId(wikMnthngReprtIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

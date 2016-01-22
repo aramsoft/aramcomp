@@ -1,7 +1,6 @@
 package aramframework.mbl.uss.umt.web;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -37,7 +36,7 @@ import aramframework.com.uss.umt.service.MberManageVO;
 public class MblMberManageController {
 
     /** mberManageService */
-    @Resource(name = "mberManageService")
+	@Autowired
     private MberManageService mberManageService;
     
     /**

@@ -24,7 +24,7 @@ import aramframework.com.sts.com.StatsVO;
  * </pre>
  */
 
-@Mapper("scrinStatsMapper")
+@Mapper
 public interface ScrinStatsMapper {
 
 	/**

@@ -27,7 +27,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Mapper("mainImageMapper")
+@Mapper
 public interface MainImageMapper {
 
 	/**

@@ -3,8 +3,7 @@ package aramframework.com.uss.ion.mtg.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -39,21 +38,21 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("mtgPlaceManageService")
+@Service
 public class MtgPlaceManageServiceImpl extends EgovAbstractServiceImpl implements MtgPlaceManageService {
 
-	@Resource(name = "mtgPlaceManageMapper")
+	@Autowired
 	private MtgPlaceManageMapper mtgPlaceManageMapper;	
 
 	/** ID Generation */
-	@Resource(name = "mtgPlaceManageIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService mtgPlaceManageIdGnrService; 
 
 	/** ID Generation */
-	@Resource(name = "mtgPlaceResveIdGnrService")
-	private EgovIdGnrService idgenResveService;
+	@Autowired
+	private EgovIdGnrService mtgPlaceResveIdGnrService; 
 
-	@Resource(name="fileMngUtil")
+	@Autowired
 	private FileMngUtil fileUtil;
 
 	/**
@@ -96,7 +95,7 @@ public class MtgPlaceManageServiceImpl extends EgovAbstractServiceImpl implement
 
 		String mtgPlaceId;
 		try {
-			mtgPlaceId = idgenService.getNextStringId();
+			mtgPlaceId = mtgPlaceManageIdGnrService.getNextStringId();
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}
@@ -217,7 +216,7 @@ public class MtgPlaceManageServiceImpl extends EgovAbstractServiceImpl implement
 	 */
 	public void insertMtgPlaceResve(MtgPlaceResveVO mtgPlaceResveVO) {
 		try {
-			mtgPlaceResveVO.setResveId(idgenResveService.getNextStringId());
+			mtgPlaceResveVO.setResveId(mtgPlaceResveIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

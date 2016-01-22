@@ -2,8 +2,7 @@ package aramframework.com.dam.app.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -31,10 +30,10 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("knoAppraisalService")
+@Service
 public class KnoAppraisalServiceImpl extends EgovAbstractServiceImpl implements KnoAppraisalService {
 
-	@Resource(name = "knoAppraisalMapper")
+	@Autowired
 	private KnoAppraisalMapper knoAppraisalMapper;
 
 	/**

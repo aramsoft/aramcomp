@@ -2,8 +2,7 @@ package aramframework.com.sec.dpt.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.sec.dpt.service.DeptAuthorService;
@@ -30,10 +29,10 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("deptAuthorService")
+@Service
 public class DeptAuthorServiceImpl extends EgovAbstractServiceImpl implements DeptAuthorService {
 
-	@Resource(name = "deptAuthorMapper")
+	@Autowired
 	private DeptAuthorMapper deptAuthorMapper;
 
 	/**

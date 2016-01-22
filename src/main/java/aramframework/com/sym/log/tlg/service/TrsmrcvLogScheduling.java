@@ -1,7 +1,6 @@
 package aramframework.com.sym.log.tlg.service;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -23,10 +22,10 @@ import org.springframework.stereotype.Service;
  * </pre>
  */
 
-@Service("trsmrcvLogScheduling")
+@Service
 public class TrsmrcvLogScheduling {
 
-	@Resource(name = "trsmrcvLogService")
+	@Autowired
 	private TrsmrcvLogService trsmrcvLogService;
 
 	/**

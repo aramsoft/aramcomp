@@ -1,7 +1,5 @@
 package aramframework.com.sym.prm.web;
 
-import javax.annotation.Resource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +41,7 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class ProgrmManageController {
 
-	@Resource(name = "progrmManageService")
+	@Autowired
 	private ProgrmManageService progrmManageService;
 
 	@Autowired

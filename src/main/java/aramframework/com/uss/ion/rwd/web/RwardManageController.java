@@ -1,7 +1,5 @@
 package aramframework.com.uss.ion.rwd.web;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -49,14 +47,14 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class RwardManageController {
 
-	@Resource(name = "rwardManageService")
+	@Autowired
 	private RwardManageService rwardManageService;
 
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 
-	@Resource(name = "fileMngUtil")
-	private FileMngUtil fileUtil;
+	@Autowired
+	private FileMngUtil fileMngUtil; 
 
 	@Autowired
 	private DefaultBeanValidator beanValidator;
@@ -139,7 +137,7 @@ public class RwardManageController {
 		} 
 		
 		// 첨부파일 관련 첨부파일ID 생성
-		rwardManageVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "RWD_"));
+		rwardManageVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "RWD_"));
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		rwardManageVO.setFrstRegisterId(loginVO.getUniqId()); // 최초등록자ID
@@ -189,7 +187,7 @@ public class RwardManageController {
 		
 		// 첨부파일 관련 ID 생성 start....
 		String atchFileId = rwardManageVO.getAtchFileId();
-		rwardManageVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "RWD_", atchFileId));
+		rwardManageVO.setAtchFileId(fileMngUtil.updateMultiFile(multiRequest, "RWD_", atchFileId));
 		
 		rwardManageVO.setRwardDe(StringUtil.removeMinusChar(rwardManageVO.getRwardDe()));
 

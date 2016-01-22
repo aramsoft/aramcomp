@@ -2,8 +2,6 @@ package aramframework.com.uss.ion.ntm.web;
 
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -48,10 +46,10 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class NoteManageController {
 
-	@Resource(name = "noteManageService")
+	@Autowired
 	private NoteManageService noteManageService;
 
-	@Resource(name = "fileMngUtil")
+	@Autowired
 	private FileMngUtil fileUtil;
 
 	@Autowired

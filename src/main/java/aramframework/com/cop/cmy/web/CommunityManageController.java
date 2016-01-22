@@ -1,6 +1,5 @@
 package aramframework.com.cop.cmy.web;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,13 +51,13 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class CommunityManageController {
 
-	@Resource(name = "communityManageService")
+	@Autowired 
 	private CommunityManageService cmmntyService;
 
-	@Resource(name = "confirmService")
+	@Autowired 
 	private ConfirmService confirmService;
 
-	@Resource(name = "userInfService")
+	@Autowired 
 	private UserInfService userInfService; // 커뮤니티 사용자 확인
 
 	@Autowired

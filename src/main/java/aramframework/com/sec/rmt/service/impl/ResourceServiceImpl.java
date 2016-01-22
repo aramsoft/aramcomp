@@ -2,8 +2,7 @@ package aramframework.com.sec.rmt.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,15 +32,15 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("resourceService")
+@Service
 public class ResourceServiceImpl extends EgovAbstractServiceImpl implements ResourceService {
 
-	@Resource(name = "resourceMapper")
+	@Autowired
 	public ResourceMapper resourceMapper;
 	
 	/** Message ID Generation */
-	@Resource(name = "resourceIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService resourceIdGnrService; 
 	
 	/**
 	 * 등록된 모든 롤 정보 목록 조회
@@ -96,7 +95,7 @@ public class ResourceServiceImpl extends EgovAbstractServiceImpl implements Reso
 		else
 			resourceTy = "web";
 		try {
-			resourceVO.setResourceCode(resourceTy.concat("-").concat(idgenService.getNextStringId()));
+			resourceVO.setResourceCode(resourceTy.concat("-").concat(resourceIdGnrService.getNextStringId()));
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

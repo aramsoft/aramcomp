@@ -1,9 +1,8 @@
 package aramframework.com.cmm.listener;
 
-import javax.annotation.Resource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.security.core.Authentication;
@@ -18,7 +17,7 @@ public class LoginLogListener implements ApplicationListener<ApplicationEvent> {
 
 	protected static final Logger LOG = LoggerFactory.getLogger(LoginLogListener.class);
 
-	@Resource(name = "loginLogService")
+	@Autowired 
 	private LoginLogService loginLogService;
 
 	public void onApplicationEvent(ApplicationEvent event) {

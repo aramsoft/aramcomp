@@ -3,8 +3,7 @@ package aramframework.com.cop.bbs.service.impl;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -36,17 +35,17 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("bbsBoardService")
+@Service
 public class BBSBoardServiceImpl extends EgovAbstractServiceImpl implements BBSBoardService {
 
-	@Resource(name = "bbsBoardMapper")
+	@Autowired 
 	private BBSBoardMapper bbsBoardMapper;	
 
-	@Resource(name = "fileMngUtil")
+	@Autowired 
 	private FileMngUtil fileUtil;
 
-	@Resource(name = "nttNoGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired 
+	private EgovIdGnrService nttNoGnrService; 
 
 	/**
 	 * 조건에 맞는 게시물 목록을 조회 한다.
@@ -105,7 +104,7 @@ public class BBSBoardServiceImpl extends EgovAbstractServiceImpl implements BBSB
 	public void insertBoardArticle(BoardVO boardVO){
 		// SORT_ORDR는 부모글의 소트 오더와 같게, NTT_NO는 순서대로 부여
 		try {
-			boardVO.setNttId(idgenService.getNextIntegerId());		// 2011.09.22
+			boardVO.setNttId(nttNoGnrService.getNextIntegerId());		// 2011.09.22
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

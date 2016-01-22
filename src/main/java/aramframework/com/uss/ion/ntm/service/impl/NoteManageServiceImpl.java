@@ -3,8 +3,7 @@ package aramframework.com.uss.ion.ntm.service.impl;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.SearchVO;
@@ -34,23 +33,23 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("noteManageService")
+@Service
 public class NoteManageServiceImpl extends EgovAbstractServiceImpl implements NoteManageService {
 
-	@Resource(name = "noteManageMapper")
+	@Autowired
 	private NoteManageMapper noteManageMapper;
 	
 	/* 쪽지관리 ID Generator Service */
-	@Resource(name = "noteManageIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService noteManageIdGnrService; 
 
 	/* 보낸쪽지함관리 ID Generator Service */
-	@Resource(name = "noteTrnsmitIdGnrService")
-	private EgovIdGnrService idgenServiceTransmit;
+	@Autowired
+	private EgovIdGnrService noteTrnsmitIdGnrService; 
 
 	/* 받은쪽지함관리 ID Generator Service */
-	@Resource(name = "noteRecptnIdGnrService")
-	private EgovIdGnrService idgenServiceRecptn;
+	@Autowired
+	private EgovIdGnrService noteRecptnIdGnrService; 
 
 	/**
 	 * 쪽지관리 정보를 조회한다.
@@ -75,7 +74,7 @@ public class NoteManageServiceImpl extends EgovAbstractServiceImpl implements No
 		 */
 		// 쪽지 ID설정
 		try {
-			noteManageVO.setNoteId(idgenService.getNextStringId());
+			noteManageVO.setNoteId(noteManageIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}
@@ -88,7 +87,7 @@ public class NoteManageServiceImpl extends EgovAbstractServiceImpl implements No
 		 */
 		// 보낸쪽지함 ID설정
 		try {
-			noteManageVO.setNoteTrnsmitId(idgenServiceTransmit.getNextStringId());
+			noteManageVO.setNoteTrnsmitId(noteTrnsmitIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}
@@ -114,7 +113,7 @@ public class NoteManageServiceImpl extends EgovAbstractServiceImpl implements No
 
 			// 받은쪽지함 ID설정
 			try {
-				noteManageVO.setNoteRecptnId(idgenServiceRecptn.getNextStringId());
+				noteManageVO.setNoteRecptnId(noteRecptnIdGnrService.getNextStringId());
 			} catch (FdlException e) {
 				throw new RuntimeException(e);
 			}

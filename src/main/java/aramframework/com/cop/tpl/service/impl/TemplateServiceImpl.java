@@ -2,8 +2,7 @@ package aramframework.com.cop.tpl.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,14 +32,14 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("templateService")
+@Service
 public class TemplateServiceImpl extends EgovAbstractServiceImpl implements TemplateService {
 
-	@Resource(name = "templateMapper")
+	@Autowired 
 	private TemplateMapper templateMapper;
 	
-	@Resource(name = "tmplatIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired 
+	private EgovIdGnrService tmplatIdGnrService; 
 
 	/**
 	 * 템플릿에 대한 목록를 조회한다.
@@ -88,7 +87,7 @@ public class TemplateServiceImpl extends EgovAbstractServiceImpl implements Temp
 	 */
 	public void insertTemplateInf(TemplateInfVO templateInfVO) {
 		try {
-			templateInfVO.setTmplatId(idgenService.getNextStringId());
+			templateInfVO.setTmplatId(tmplatIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

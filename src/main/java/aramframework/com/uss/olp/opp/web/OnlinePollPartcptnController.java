@@ -1,8 +1,8 @@
 package aramframework.com.uss.olp.opp.web;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -41,10 +41,10 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class OnlinePollPartcptnController {
 
-	@Resource(name = "onlinePollPartcptnService")
+	@Autowired
 	private OnlinePollPartcptnService onlinePollPartcptnService;
 
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 
 	/**

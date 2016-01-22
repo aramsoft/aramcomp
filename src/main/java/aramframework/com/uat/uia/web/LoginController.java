@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -55,16 +54,16 @@ import aramframework.com.uat.uia.service.LoginService;
 @Controller
 public class LoginController {
 
-	@Resource(name = "loginService")
+	@Autowired
 	private LoginService loginService;
 
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 
 	@Autowired
 	SessionRegistry sessionRegistry;
 	
-	@Resource(name="simpleUrlAuthenticationSuccessHandler")
+	@Autowired
 	SimpleUrlAuthenticationSuccessHandler authenticationSuccessHandler;
 	
     /** log */

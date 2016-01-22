@@ -24,7 +24,7 @@ import aramframework.com.sym.bat.service.BatchResultVO;
  * </pre>
  */
 
-@Mapper("batchResultMapper")
+@Mapper
 public interface BatchResultMapper {
 
 	/**

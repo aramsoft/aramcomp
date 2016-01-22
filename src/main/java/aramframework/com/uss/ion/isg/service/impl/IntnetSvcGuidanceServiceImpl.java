@@ -2,8 +2,7 @@ package aramframework.com.uss.ion.isg.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -34,16 +33,16 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("intnetSvcGuidanceService")
+@Service
 public class IntnetSvcGuidanceServiceImpl extends EgovAbstractServiceImpl implements IntnetSvcGuidanceService {
 
-	@Resource(name = "intnetSvcGuidanceMapper")
+	@Autowired
 	private IntnetSvcGuidanceMapper intnetSvcGuidanceMapper;	
 
 	/** Message ID Generation */
-	@Resource(name = "intnetSvcGuidanceIdGnrService")
-	private EgovIdGnrService idgenService;
-
+	@Autowired
+	private EgovIdGnrService intnetSvcGuidanceIdGnrService;
+ 
 	/**
 	 * 인터넷서비스안내정보를 관리하기 위해 등록된 인터넷서비스안내 목록을 조회한다.
 	 * 
@@ -81,7 +80,7 @@ public class IntnetSvcGuidanceServiceImpl extends EgovAbstractServiceImpl implem
 	 */
 	public void insertIntnetSvcGuidance(IntnetSvcGuidanceVO intnetSvcGuidanceVO) {
 		try {
-			intnetSvcGuidanceVO.setIntnetSvcId(idgenService.getNextStringId());
+			intnetSvcGuidanceVO.setIntnetSvcId(intnetSvcGuidanceIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

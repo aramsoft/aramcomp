@@ -2,8 +2,7 @@ package aramframework.com.uss.sam.ipm.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,14 +32,14 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("indvdlInfoPolicyService")
+@Service
 public class IndvdlInfoPolicyServiceImpl extends EgovAbstractServiceImpl implements IndvdlInfoPolicyService {
 
-	@Resource(name = "indvdlInfoPolicyMapper")
+	@Autowired
 	private IndvdlInfoPolicyMapper indvdlInfoPolicyMapper;
 	
-	@Resource(name = "indvdlInfoPolicyIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService indvdlInfoPolicyIdGnrService; 
 
 	/**
 	 * 개인정보보호정책를(을) 목록을 조회 한다.
@@ -79,7 +78,7 @@ public class IndvdlInfoPolicyServiceImpl extends EgovAbstractServiceImpl impleme
 	 */
 	public void insertIndvdlInfoPolicy(IndvdlInfoPolicyVO indvdlInfoPolicyVO) {
 		try {
-			indvdlInfoPolicyVO.setIndvdlInfoId(idgenService.getNextStringId());
+			indvdlInfoPolicyVO.setIndvdlInfoId(indvdlInfoPolicyIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

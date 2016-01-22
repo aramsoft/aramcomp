@@ -2,8 +2,7 @@ package aramframework.com.sym.log.tlg.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,15 +32,15 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("trsmrcvLogService")
+@Service
 public class TrsmrcvLogServiceImpl extends EgovAbstractServiceImpl implements TrsmrcvLogService {
 
-	@Resource(name = "trsmrcvLogMapper")
+	@Autowired
 	private TrsmrcvLogMapper trsmrcvLogMapper;	
 
 	/** ID Generation */
-	@Resource(name = "trsmrcvLogIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService trsmrcvLogIdGnrService; 
 
 	/**
 	 * 송수신 로그정보 목록을 조회한다.
@@ -80,7 +79,7 @@ public class TrsmrcvLogServiceImpl extends EgovAbstractServiceImpl implements Tr
 	 */
 	public void logInsertTrsmrcvLog(TrsmrcvLogVO trsmrcvLogVO) {
 		try {
-			trsmrcvLogVO.setRequstId(idgenService.getNextStringId());
+			trsmrcvLogVO.setRequstId(trsmrcvLogIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

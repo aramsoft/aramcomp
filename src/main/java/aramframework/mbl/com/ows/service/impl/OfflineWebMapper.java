@@ -30,7 +30,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Mapper("offlineWebMapper")
+@Mapper
 public interface OfflineWebMapper {
 	
 	/**

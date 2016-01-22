@@ -1,7 +1,6 @@
 package aramframework.com.uss.olp.opr.web;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,7 +33,7 @@ import aramframework.com.uss.olp.opr.service.OnlinePollResultVO;
 @Controller
 public class OnlinePollResultController {
 
-	@Resource(name = "onlinePollResultService")
+	@Autowired
 	private OnlinePollResultService onlinePollResultService;
 
 	/**

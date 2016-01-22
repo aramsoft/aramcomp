@@ -27,7 +27,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Mapper("leaderSchdulMapper")
+@Mapper
 public interface LeaderSchdulMapper {
 
 	/**

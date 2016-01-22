@@ -2,8 +2,7 @@ package aramframework.com.sym.log.lgm.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,15 +32,15 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("sysLogService")
+@Service
 public class SysLogServiceImpl extends EgovAbstractServiceImpl implements SysLogService {
 
-	@Resource(name = "sysLogMapper")
+	@Autowired
 	private SysLogMapper sysLogMapper;	
 
 	/** ID Generation */
-	@Resource(name = "sysLogIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService sysLogIdGnrService; 
 
 	/**
 	 * 시스템 로그정보 목록을 조회한다.
@@ -80,7 +79,7 @@ public class SysLogServiceImpl extends EgovAbstractServiceImpl implements SysLog
 	 */
 	public void logInsertSysLog(SysLogVO sysLogVO) {
 		try {
-			sysLogVO.setRequstId(idgenService.getNextStringId());
+			sysLogVO.setRequstId(sysLogIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

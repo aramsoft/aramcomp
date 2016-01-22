@@ -2,8 +2,7 @@ package aramframework.com.sym.log.clg.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,15 +32,15 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("loginLogService")
+@Service
 public class LoginLogServiceImpl extends EgovAbstractServiceImpl implements LoginLogService {
 
-	@Resource(name = "loginLogMapper")
+	@Autowired
 	private LoginLogMapper loginLogMapper;	
 
 	/** ID Generation */
-	@Resource(name = "loginLogIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService loginLogIdGnrService; 
 	
 	/**
 	 * 로그인 로그 목록을 조회한다.
@@ -80,7 +79,7 @@ public class LoginLogServiceImpl extends EgovAbstractServiceImpl implements Logi
 	 */
 	public void logInsertLoginLog(LoginLogVO loginLogVO) {
 		try {
-			loginLogVO.setLogId(idgenService.getNextStringId());
+			loginLogVO.setLogId(loginLogIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

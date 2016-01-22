@@ -3,7 +3,6 @@ package aramframework.com.cop.ems.service.impl;
 import java.io.File;
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.mail.internet.MimeUtility;
 
 import noNamespace.SndngMailDocument;
@@ -11,6 +10,7 @@ import noNamespace.SndngMailDocument;
 import org.apache.commons.mail.EmailAttachment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailAuthenticationException;
 import org.springframework.mail.MailParseException;
 import org.springframework.mail.MailSendException;
@@ -51,28 +51,28 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("sndngMailService")
+@Service
 public class SndngMailServiceImpl extends EgovAbstractServiceImpl implements SndngMailService {
 	
 	// 파일구분자
 	static final char FILE_SEPARATOR = File.separatorChar;
 
 //	첨부파일 미사용시
-//	@Resource(name="EMSMailSender")
+//	@Autowired 
 //    private MailSender emsMailSender;
 	
-	@Resource(name="egovMultiPartEmail")
+	@Autowired 
     private EgovMultiPartEmail email;
 	
-	@Resource(name = "sndngMailMapper")
+	@Autowired 
 	private SndngMailMapper sndngMailMapper;
 		
    /** Message ID Generation */
-    @Resource(name="mailMsgIdGnrService")    
-    private EgovIdGnrService idgenService;
+	@Autowired 
+    private EgovIdGnrService mailMsgIdGnrService; 
     
-	@Resource(name="fileMngUtil")
-	private FileMngUtil fileUtil;
+	@Autowired 
+	private FileMngUtil fileMngUtil; 
 
 	protected static final Logger LOG = LoggerFactory.getLogger(SndngMailServiceImpl.class);
 
@@ -137,7 +137,7 @@ public class SndngMailServiceImpl extends EgovAbstractServiceImpl implements Snd
 		FileTool.deleteFile(xmlFile);
 
 		// 3. 첨부파일 삭제 ....
-		fileUtil.deleteMultiFile(sndngMailVO.getAtchFileId());
+		fileMngUtil.deleteMultiFile(sndngMailVO.getAtchFileId());
 	}
 
     /**
@@ -155,7 +155,7 @@ public class SndngMailServiceImpl extends EgovAbstractServiceImpl implements Snd
     		// 1-0.메세지ID를 생성한다.
         	String mssageId = null;
 			try {
-				mssageId = idgenService.getNextStringId();
+				mssageId = mailMsgIdGnrService.getNextStringId();
 			} catch (FdlException e) {
 				throw new RuntimeException(e);
 			}

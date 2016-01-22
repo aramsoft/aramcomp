@@ -5,8 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -34,10 +33,10 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("rssService")
+@Service
 public class RssServiceImpl extends EgovAbstractServiceImpl implements RssService {
 
-	@Resource(name = "rssMapper")
+	@Autowired
 	private RssMapper rssMapper;	
 
 	/**

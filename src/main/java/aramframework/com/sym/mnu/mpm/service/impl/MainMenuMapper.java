@@ -25,7 +25,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Mapper("mainMenuMapper")
+@Mapper
 public interface MainMenuMapper {
 
 	/* ### 메뉴관련 프로세스 ### */

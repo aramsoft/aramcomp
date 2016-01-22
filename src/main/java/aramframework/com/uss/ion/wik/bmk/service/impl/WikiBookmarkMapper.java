@@ -25,7 +25,7 @@ import aramframework.com.uss.ion.wik.bmk.service.WikiBookmarkVO;
  * </pre>
  */
 
-@Mapper("wikiBookmarkMapper")
+@Mapper
 public interface WikiBookmarkMapper {
 
 	/**

@@ -3,9 +3,8 @@ package aramframework.com.sts.dst.service.impl;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.aspectj.lang.JoinPoint;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.LoginVO;
@@ -44,11 +43,11 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 @Service("dtaUseStatsService")
 public class DtaUseStatsServiceImpl extends EgovAbstractServiceImpl implements DtaUseStatsService {
 
-	@Resource(name = "dtaUseStatsMapper")
+	@Autowired
 	private DtaUseStatsMapper dtaUseStatsMapper;	
 
-	@Resource(name = "dtaUseStatsIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService dtaUseStatsIdGnrService; 
 
 	/**
 	 * 자료이용현황 통계정보의 대상목록을 조회한다.
@@ -133,7 +132,7 @@ public class DtaUseStatsServiceImpl extends EgovAbstractServiceImpl implements D
 		if (dtaUseStats != null) {
 			DtaUseStatsVO vo = new DtaUseStatsVO(); // 2011.08.23 수정 부분
 			try {
-				vo.setDtaUseStatsId(idgenService.getNextStringId());
+				vo.setDtaUseStatsId(dtaUseStatsIdGnrService.getNextStringId());
 			} catch (FdlException e) {
 				throw new RuntimeException(e);
 			}

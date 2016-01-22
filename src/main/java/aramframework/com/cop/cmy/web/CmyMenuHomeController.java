@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,6 +13,7 @@ import org.apache.tiles.TilesContainer;
 import org.apache.tiles.servlet.context.ServletUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -59,16 +59,16 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
 @Controller
 public class CmyMenuHomeController {
 
-	@Resource(name = "communityManageService")
+	@Autowired 
 	private CommunityManageService cmmntyService;
 
-	@Resource(name = "cmyMeunManageService")
+	@Autowired 
 	private CmyMenuManageService cmyMeunService;
 
-	@Resource(name = "bbsMasterService")
+	@Autowired 
 	private BBSMasterService bbsMasterService;
 
-	@Resource(name = "bbsBoardService")
+	@Autowired 
 	private BBSBoardService boardService;
 
 	protected static final Logger LOG = LoggerFactory.getLogger(CmyMenuHomeController.class);

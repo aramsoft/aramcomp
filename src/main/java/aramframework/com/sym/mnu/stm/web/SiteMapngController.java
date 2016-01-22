@@ -1,7 +1,6 @@
 package aramframework.com.sym.mnu.stm.web;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -36,7 +35,7 @@ import aramframework.com.sym.mnu.stm.service.SiteMapngVO;
 @Controller
 public class SiteMapngController {
 
-	@Resource(name = "siteMapngService")
+	@Autowired
 	private SiteMapngService siteMapngService;
 
 	/* 사이트맵조회 */

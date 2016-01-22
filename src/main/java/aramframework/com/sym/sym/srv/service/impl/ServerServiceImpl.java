@@ -2,8 +2,7 @@ package aramframework.com.sym.sym.srv.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -35,19 +34,19 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("serverService")
+@Service
 public class ServerServiceImpl extends EgovAbstractServiceImpl implements ServerService {
 
-	@Resource(name = "serverMapper")
+	@Autowired
 	private ServerMapper serverMapper;
 	
 	/** ID Generation */
-	@Resource(name = "serverEqpmnIdGnrService")
-	private EgovIdGnrService idgenServiceServerEqpmn;
-
+	@Autowired
+	private EgovIdGnrService serverEqpmnIdGnrService;
+ 
 	/** ID Generation */
-	@Resource(name = "serverIdGnrService")
-	private EgovIdGnrService idegenServiceServer;
+	@Autowired
+	private EgovIdGnrService serverIdGnrService; 
 
 	/**
 	 * 서버장비를 관리하기 위해 등록된 서버장비목록을 조회한다.
@@ -86,7 +85,7 @@ public class ServerServiceImpl extends EgovAbstractServiceImpl implements Server
 	 */
 	public void insertServerEqpmn(ServerEqpmnVO serverEqpmnVO) {
 		try {
-			serverEqpmnVO.setServerEqpmnId(idgenServiceServerEqpmn.getNextStringId());
+			serverEqpmnVO.setServerEqpmnId(serverEqpmnIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}
@@ -166,7 +165,7 @@ public class ServerServiceImpl extends EgovAbstractServiceImpl implements Server
 	 */
 	public void insertServer(ServerVO serverVO) {
 		try {
-			serverVO.setServerId(idegenServiceServer.getNextStringId());
+			serverVO.setServerId(serverIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

@@ -26,7 +26,7 @@ import aramframework.com.utl.sys.srm.service.ServerResrceMntrngVO;
  * </pre>
  */
 
-@Mapper("serverResrceMntrngMapper")
+@Mapper
 public interface ServerResrceMntrngMapper {
 
 	/**

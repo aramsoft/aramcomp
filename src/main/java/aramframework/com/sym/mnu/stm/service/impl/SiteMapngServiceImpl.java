@@ -1,11 +1,9 @@
 package aramframework.com.sym.mnu.stm.service.impl;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-
 import aramframework.com.cmm.SearchVO;
 import aramframework.com.sym.mnu.stm.service.SiteMapngService;
 import aramframework.com.sym.mnu.stm.service.SiteMapngVO;
@@ -29,10 +27,10 @@ import aramframework.com.sym.mnu.stm.service.SiteMapngVO;
  * </pre>
  */
 
-@Service("siteMapngService")
+@Service
 public class SiteMapngServiceImpl extends EgovAbstractServiceImpl implements SiteMapngService {
 
-	@Resource(name = "siteMapngMapper")
+	@Autowired
 	private SiteMapngMapper siteMapngMapper;
 	
 	/**

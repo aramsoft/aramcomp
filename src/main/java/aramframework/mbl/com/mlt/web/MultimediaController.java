@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -60,16 +58,16 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class MultimediaController {
 
-    @Resource(name = "multimediaService")
+	@Autowired
     private MultimediaService multimediaService;
 
-    @Resource(name = "fileMngService")
+	@Autowired
     private FileMngService fileMngService;
 
-    @Resource(name = "fileMngUtil")
+	@Autowired
     private FileMngUtil fileUtil;
 
-    @Resource(name = "cmmUseService")
+	@Autowired
     private CmmUseService cmmUseService;
     
     @Autowired

@@ -2,8 +2,6 @@ package aramframework.com.sym.ccm.cde.web;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -52,13 +50,13 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class CmmnDetailCodeManageController {
 
-	@Resource(name = "cmmnDetailCodeManageService")
+	@Autowired
 	private CmmnDetailCodeManageService cmmnDetailCodeManageService;
 
-	@Resource(name = "cmmnClCodeManageService")
+	@Autowired
 	private CmmnClCodeManageService cmmnClCodeManageService;
 
-	@Resource(name = "cmmnCodeManageService")
+	@Autowired
 	private CmmnCodeManageService cmmnCodeManageService;
 
 	@Autowired

@@ -1,9 +1,8 @@
 package aramframework.com.sym.log.wlg.service;
 
-import javax.annotation.Resource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -25,10 +24,10 @@ import org.springframework.stereotype.Service;
  * </pre>
  */
 
-@Service("webLogScheduling")
+@Service
 public class WebLogScheduling {
 
-	@Resource(name = "webLogService")
+	@Autowired
 	private WebLogService webLogService;
 
 	protected static final Logger LOG = LoggerFactory.getLogger(WebLogScheduling.class);

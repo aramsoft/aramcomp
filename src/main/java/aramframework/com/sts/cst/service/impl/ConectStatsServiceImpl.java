@@ -2,8 +2,7 @@ package aramframework.com.sts.cst.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.sts.com.StatsVO;
@@ -29,10 +28,10 @@ import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
  * </pre>
  */
 
-@Service("conectStatsService")
+@Service
 public class ConectStatsServiceImpl extends EgovAbstractServiceImpl implements ConectStatsService {
 
-	@Resource(name = "conectStatsMapper")
+	@Autowired
 	private ConectStatsMapper conectStatsMapper;
 	
 	/**

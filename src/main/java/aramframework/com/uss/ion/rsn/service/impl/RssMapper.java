@@ -26,7 +26,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Mapper("rssMapper")
+@Mapper
 public interface RssMapper {
 
 	/**

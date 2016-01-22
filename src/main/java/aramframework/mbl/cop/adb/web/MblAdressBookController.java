@@ -2,8 +2,7 @@ package aramframework.mbl.cop.adb.web;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -44,10 +43,10 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class MblAdressBookController {
 
-    @Resource(name = "adressBookService")
+	@Autowired
     private AdressBookService adressBookService;
     
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 
     /**

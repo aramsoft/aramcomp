@@ -6,8 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -36,10 +35,10 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("meunCreateService")
+@Service
 public class MenuCreateServiceImpl extends EgovAbstractServiceImpl implements MenuCreateService {
 
-	@Resource(name = "menuCreateMapper")
+	@Autowired
 	private MenuCreateMapper menuCreateMapper;	
 	
 	/**

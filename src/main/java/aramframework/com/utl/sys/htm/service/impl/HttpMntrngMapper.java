@@ -28,7 +28,7 @@ import aramframework.com.utl.sys.htm.service.HttpMntrngVO;
  * </pre>
  */
 
-@Mapper("httpMntrngMapper")
+@Mapper
 public interface HttpMntrngMapper {
 
 	/**

@@ -1,7 +1,6 @@
 package aramframework.com.sym.log.lgm.web;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -36,7 +35,7 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class SysLogController {
 
-	@Resource(name = "sysLogService")
+	@Autowired
 	private SysLogService sysLogService;
 
 	/**

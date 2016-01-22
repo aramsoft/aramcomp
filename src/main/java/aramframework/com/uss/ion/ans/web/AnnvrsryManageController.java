@@ -2,7 +2,6 @@ package aramframework.com.uss.ion.ans.web;
 
 import java.util.Calendar;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,10 +52,10 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class AnnvrsryManageController {
 
-	@Resource(name = "annvrsryManageService")
+	@Autowired
 	private AnnvrsryManageService annvrsryManageService;
 
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 
 	@Autowired

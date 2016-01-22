@@ -2,8 +2,7 @@ package aramframework.com.uss.ion.ecc.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -34,17 +33,17 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("eventCmpgnService")
+@Service
 public class EventCmpgnServiceImpl extends EgovAbstractServiceImpl implements EventCmpgnService {
 
-	@Resource(name = "eventCmpgnMapper")
+	@Autowired
 	private EventCmpgnMapper eventCmpgnMapper;	
 
-	@Resource(name = "eventInfoIdGnrService")
-	private EgovIdGnrService idgenService1;
+	@Autowired
+	private EgovIdGnrService eventInfoIdGnrService; 
 
-	@Resource(name = "extrlhrInfoIdGnrService")
-	private EgovIdGnrService idgenService2;
+	@Autowired
+	private EgovIdGnrService extrlhrInfoIdGnrService; 
 
 	/**
 	 * 행사/이벤트/캠페인를(을) 목록을 조회한다.
@@ -83,7 +82,7 @@ public class EventCmpgnServiceImpl extends EgovAbstractServiceImpl implements Ev
 	 */
 	public void insertEventCmpgn(EventCmpgnVO eventCmpgnVO) {
 		try {
-			eventCmpgnVO.setEventId(idgenService1.getNextStringId());
+			eventCmpgnVO.setEventId(eventInfoIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}
@@ -146,7 +145,7 @@ public class EventCmpgnServiceImpl extends EgovAbstractServiceImpl implements Ev
 	 */
 	public void insertTnextrlHrInfo(TnextrlHrInfoVO tnextrlHrInfoVO) {
 		try {
-			tnextrlHrInfoVO.setExtrlHrId(idgenService2.getNextStringId());
+			tnextrlHrInfoVO.setExtrlHrId(extrlhrInfoIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

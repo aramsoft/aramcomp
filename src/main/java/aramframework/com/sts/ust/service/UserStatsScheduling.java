@@ -1,7 +1,6 @@
 package aramframework.com.sts.ust.service;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -23,11 +22,11 @@ import org.springframework.stereotype.Service;
  * </pre>
  */
 
-@Service("userStatsScheduling")
+@Service
 public class UserStatsScheduling {
 
 	/** UserStatsService */
-	@Resource(name = "userStatsService")
+	@Autowired
 	private UserStatsService userStatsService;
 
 	/**

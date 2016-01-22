@@ -2,8 +2,7 @@ package aramframework.com.uss.sam.stp.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,15 +32,15 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("stplatManageService")
+@Service
 public class StplatManageServiceImpl extends EgovAbstractServiceImpl implements StplatManageService {
 
-	@Resource(name = "stplatManageMapper")
+	@Autowired
 	private StplatManageMapper stplatManageMapper;
 	
 	/** ID Generation */
-	@Resource(name = "stplatManageIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService stplatManageIdGnrService; 
 
 	/**
 	 * 약관정보 글 목록을 조회한다.
@@ -80,7 +79,7 @@ public class StplatManageServiceImpl extends EgovAbstractServiceImpl implements 
 	 */
 	public void insertStplat(StplatManageVO stplatManageVO) {
 		try {
-			stplatManageVO.setUseStplatId(idgenService.getNextStringId());
+			stplatManageVO.setUseStplatId(stplatManageIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

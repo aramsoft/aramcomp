@@ -1,6 +1,5 @@
 package aramframework.com.cop.bbs.web;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +44,7 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class BBSUseInfoController {
 
-	@Resource(name = "bbsUseInfoService")
+	@Autowired 
 	private BBSUseInfoService bbsUseService;
 
 	@Autowired

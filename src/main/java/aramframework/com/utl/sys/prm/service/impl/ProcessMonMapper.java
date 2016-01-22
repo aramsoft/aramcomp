@@ -28,7 +28,7 @@ import aramframework.com.utl.sys.prm.service.ProcessMonVO;
  * </pre>
  */
 
-@Mapper("processMonMapper")
+@Mapper
 public interface ProcessMonMapper {
 
 	/**

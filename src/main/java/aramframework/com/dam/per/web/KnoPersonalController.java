@@ -2,8 +2,6 @@ package aramframework.com.dam.per.web;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -54,16 +52,16 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class KnoPersonalController {
 
-	@Resource(name = "knoPersonalService")
+	@Autowired
 	private KnoPersonalService knoPersonalService;
 
-	@Resource(name = "mapTeamService")
+	@Autowired
 	private MapTeamService mapTeamService;
 
-	@Resource(name = "mapMaterialService")
+	@Autowired
 	private MapMaterialService mapMaterialService;
 
-	@Resource(name = "fileMngUtil")
+	@Autowired
 	private FileMngUtil fileUtil;
 
 	@Autowired

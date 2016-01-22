@@ -22,7 +22,7 @@ import aramframework.com.cmm.LoginVO;
  * </pre>
  */
 
-@Mapper("loginMapper")
+@Mapper
 public interface LoginMapper {
 
 	/**

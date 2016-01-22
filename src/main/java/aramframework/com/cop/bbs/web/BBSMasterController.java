@@ -1,6 +1,5 @@
 package aramframework.com.cop.bbs.web;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,13 +48,13 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class BBSMasterController {
 
-	@Resource(name = "bbsMasterService")
+	@Autowired
 	private BBSMasterService bbsMasterService;
 
-	@Resource(name = "bbsUseInfoService")
-	private BBSUseInfoService bbsUseService;
-
-	@Resource(name = "cmmUseService")
+	@Autowired
+	private BBSUseInfoService bbsUseInfoService;
+	
+	@Autowired
 	private CmmUseService cmmUseService;
 
 	@Autowired
@@ -215,8 +214,8 @@ public class BBSMasterController {
 			model.addAttribute("useSatisfaction", "true");
 		}
 
-		if ( bbsUseService.existBBSUseInf(boardUseInfVO) != 0 ) {
-			bbsUseService.selectBBSUseInf(boardUseInfVO);
+		if ( bbsUseInfoService.existBBSUseInf(boardUseInfVO) != 0 ) {
+			bbsUseInfoService.selectBBSUseInf(boardUseInfVO);
 	
 			// 시스템 사용 게시판의 경우 URL 표시
 			if ("SYSTEM_DEFAULT_BOARD".equals(boardUseInfVO.getTrgetId())) {

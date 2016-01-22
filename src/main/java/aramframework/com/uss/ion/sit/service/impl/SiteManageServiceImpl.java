@@ -2,8 +2,7 @@ package aramframework.com.uss.ion.sit.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,15 +32,15 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("siteManageService")
+@Service
 public class SiteManageServiceImpl extends EgovAbstractServiceImpl implements SiteManageService {
 
-	@Resource(name = "siteManageMapper")
+	@Autowired
 	private SiteManageMapper siteManageMapper;	
 
 	/** ID Generation */
-	@Resource(name = "siteManageIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService siteManageIdGnrService; 
 
 	/**
 	 * 사이트정보 목록을 조회한다.
@@ -80,7 +79,7 @@ public class SiteManageServiceImpl extends EgovAbstractServiceImpl implements Si
 	 */
 	public void insertSiteInfo(SiteManageVO siteManageVO) {
 		try {
-			siteManageVO.setSiteId(idgenService.getNextStringId());
+			siteManageVO.setSiteId(siteManageIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

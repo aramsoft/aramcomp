@@ -3,8 +3,6 @@ package aramframework.com.sym.sym.bak.web;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -51,22 +49,19 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class BackupOpertController {
 
-	@Resource(name = "backupOpertService")
+	@Autowired
 	private BackupOpertService backupOpertService;
 
-	@Resource(name = "backupOpertValidator")
+	@Autowired
 	private BackupOpertValidator backupOpertValidator;
 
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 
 	@Autowired
 	private DefaultBeanValidator beanValidator;
 
-	/**
-	 * 백업스케줄러 서비스
-	 */
-	@Resource(name = "backupScheduler")
+	@Autowired
 	private BackupScheduler backupScheduler;
 
 	/**

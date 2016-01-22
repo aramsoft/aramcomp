@@ -3,8 +3,7 @@ package aramframework.com.uss.ion.lsi.service.impl;
 import java.io.File;
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.service.FileVO;
@@ -36,15 +35,15 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("loginScrinImageService")
+@Service
 public class LoginScrinImageServiceImpl extends EgovAbstractServiceImpl implements LoginScrinImageService {
 
-	@Resource(name = "loginScrinImageMapper")
+	@Autowired
 	private LoginScrinImageMapper loginScrinImageMapper;	
 
 	/** Message ID Generation */
-	@Resource(name = "loginScrinImageIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService loginScrinImageIdGnrService; 
 
 	/**
 	 * 로그인화면이미지정보를 관리하기 위해 등록된 로그인화면이미지 목록을 조회한다.
@@ -83,7 +82,7 @@ public class LoginScrinImageServiceImpl extends EgovAbstractServiceImpl implemen
 	 */
 	public void insertLoginScrinImage(LoginScrinImageVO loginScrinImageVO) {
 		try {
-			loginScrinImageVO.setImageId(idgenService.getNextStringId());
+			loginScrinImageVO.setImageId(loginScrinImageIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

@@ -2,8 +2,7 @@ package aramframework.com.uss.olp.cns.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -34,17 +33,17 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("cnsltManageService")
+@Service
 public class CnsltManageServiceImpl extends EgovAbstractServiceImpl implements CnsltManageService {
 
-	@Resource(name = "cnsltManageMapper")
+	@Autowired
 	private CnsltManageMapper cnsltManageMapper;	
 
 	/** ID Generation */
-	@Resource(name = "cnsltManageIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService cnsltManageIdGnrService; 
 
-	@Resource(name="fileMngUtil")
+	@Autowired
 	private FileMngUtil fileUtil;
 
 	/**
@@ -93,7 +92,7 @@ public class CnsltManageServiceImpl extends EgovAbstractServiceImpl implements C
 	 */
 	public void insertCnsltDtls(CnsltManageVO cnsltManageVO) {
 		try {
-			cnsltManageVO.setCnsltId(idgenService.getNextStringId());
+			cnsltManageVO.setCnsltId(cnsltManageIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

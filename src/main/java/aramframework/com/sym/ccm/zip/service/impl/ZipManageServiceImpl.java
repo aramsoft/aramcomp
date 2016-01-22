@@ -8,8 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
@@ -23,6 +21,7 @@ import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.constant.AramProperties;
@@ -52,13 +51,13 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("zipManageService")
+@Service
 public class ZipManageServiceImpl extends EgovAbstractServiceImpl implements ZipManageService {
 
-	@Resource(name = "zipManageMapper")
+	@Autowired
 	private ZipManageMapper zipManageMapper;	
 
-	@Resource(name = "excelZipService")
+	@Autowired
 	private EgovExcelService excelZipService;
 
 	protected final static Logger LOG = LoggerFactory.getLogger(ZipManageServiceImpl.class);

@@ -26,7 +26,7 @@ import aramframework.com.ssi.syi.iis.service.CntcSystemVO;
  * </pre>
  */
 
-@Mapper("cntcInsttMapper")
+@Mapper
 public interface CntcInsttMapper {
 
 	/**

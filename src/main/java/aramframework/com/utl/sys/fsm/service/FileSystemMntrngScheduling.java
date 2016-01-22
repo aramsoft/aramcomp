@@ -4,10 +4,9 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
@@ -38,16 +37,16 @@ import aramframework.com.utl.sys.fsm.service.impl.FileSystemChecker;
  * </pre>
  */
 
-@Service("fileSysMntrngScheduling")
+@Service
 public class FileSystemMntrngScheduling {
 
-	@Resource(name = "fileSysMntrngService")
+	@Autowired
 	private FileSysMntrngService fileSysMntrngService;
 
-	@Resource(name = "mntrngMailSender")
+	@Autowired
 	private MailSender mntrngMailSender;
 
-	@Resource(name = "mntrngMessage")
+	@Autowired
 	private SimpleMailMessage mntrngMessage;
 
 	protected static final Logger LOG = LoggerFactory.getLogger(FileSystemMntrngScheduling.class);

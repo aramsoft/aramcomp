@@ -3,8 +3,7 @@ package aramframework.com.uss.ion.msi.service.impl;
 import java.io.File;
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.service.FileVO;
@@ -36,15 +35,15 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("mainImageService")
+@Service
 public class MainImageServiceImpl extends EgovAbstractServiceImpl implements MainImageService {
 
-	@Resource(name = "mainImageMapper")
+	@Autowired
 	private MainImageMapper mainImageMapper;	
 
 	/** Message ID Generation */
-	@Resource(name = "mainImageIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService mainImageIdGnrService; 
 
 	/**
 	 * 메인화면이미지정보를 관리하기 위해 등록된 메인화면이미지 목록을 조회한다.
@@ -83,7 +82,7 @@ public class MainImageServiceImpl extends EgovAbstractServiceImpl implements Mai
 	 */
 	public void insertMainImage(MainImageVO mainImageVO) {
 		try {
-			mainImageVO.setImageId(idgenService.getNextStringId());
+			mainImageVO.setImageId(mainImageIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

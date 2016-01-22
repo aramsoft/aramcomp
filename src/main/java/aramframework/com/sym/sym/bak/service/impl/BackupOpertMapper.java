@@ -27,7 +27,7 @@ import aramframework.com.sym.sym.bak.service.BackupSchdulDfkVO;
  * </pre>
  */
 
-@Repository("backupOpertMapper")
+@Repository
 public class BackupOpertMapper extends EgovAbstractMapper {
 
 	final static String NAMESPACE = "aramframework.com.sym.sym.bak.service.impl.BackupOpertMapper";

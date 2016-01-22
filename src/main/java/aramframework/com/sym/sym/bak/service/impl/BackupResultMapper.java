@@ -24,7 +24,7 @@ import aramframework.com.sym.sym.bak.service.BackupResultVO;
  * </pre>
  */
 
-@Mapper("backupResultMapper")
+@Mapper
 public interface BackupResultMapper {
 
 	/**

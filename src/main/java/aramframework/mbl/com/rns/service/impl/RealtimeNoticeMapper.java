@@ -30,7 +30,7 @@ import aramframework.mbl.com.rns.service.RealtimeNoticeVO;
  * </pre>
  */
 
-@Mapper("realtimeNoticeMapper")
+@Mapper
 public interface RealtimeNoticeMapper {
 
 	/**

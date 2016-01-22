@@ -3,8 +3,7 @@ package aramframework.com.cmm.service.impl;
 import java.io.File;
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -31,10 +30,10 @@ import aramframework.com.cmm.util.BeanUtil;
  * </pre>
  */
 
-@Service("fileMngService")
+@Service
 public class FileMngServiceImpl extends EgovAbstractServiceImpl implements FileMngService {
 
-	@Resource(name = "fileMngMapper")
+	@Autowired 
 	private FileMngMapper fileMngMapper;	
 
 	/**

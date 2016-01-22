@@ -2,8 +2,7 @@ package aramframework.com.uss.mpe.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -34,15 +33,15 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("indvdlPgeService")
+@Service
 public class IndvdlPgeServiceImpl extends EgovAbstractServiceImpl implements IndvdlPgeService {
 
-	@Resource(name = "indvdlPgeMapper")
+	@Autowired
 	private IndvdlPgeMapper indvdlPgeMapper;
 	
 	/** ID Generation */
-	@Resource(name = "indvdlPgeIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService indvdlPgeIdGnrService; 
 
 	// 마이페이지 콘텐츠 목록
 	
@@ -178,7 +177,7 @@ public class IndvdlPgeServiceImpl extends EgovAbstractServiceImpl implements Ind
 	 */
 	public void insertIndvdlpgeCntnts(IndvdlPgeCntntsVO indvdlPgeCntntsVO) {
 		try {
-			indvdlPgeCntntsVO.setCntntsId(idgenService.getNextStringId());
+			indvdlPgeCntntsVO.setCntntsId(indvdlPgeIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

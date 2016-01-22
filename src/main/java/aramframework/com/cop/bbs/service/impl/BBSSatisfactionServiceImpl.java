@@ -2,8 +2,7 @@ package aramframework.com.cop.bbs.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -34,17 +33,17 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("bbsSatisfactionService")
+@Service
 public class BBSSatisfactionServiceImpl extends EgovAbstractServiceImpl implements BBSSatisfactionService {
 
-	@Resource(name = "bbsAddedOptionsMapper")
+	@Autowired 
 	private BBSAddedOptionsMapper bbsAddedOptionsMapper;	
 
-	@Resource(name = "bbsSatisfactionMapper")
+	@Autowired 
 	private BBSSatisfactionMapper bbsSatisfactionMapper;	
 
-	@Resource(name = "stsfdgNoGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired 
+	private EgovIdGnrService stsfdgNoGnrService; 
 	
 	/**
 	 * 만족도조사 사용 가능 여부를 확인한다.
@@ -108,7 +107,7 @@ public class BBSSatisfactionServiceImpl extends EgovAbstractServiceImpl implemen
 	 */
 	public void insertSatisfaction(SatisfactionVO satisfactionVO) {
 		try {
-			satisfactionVO.setStsfdgNo(idgenService.getNextLongId() + "");
+			satisfactionVO.setStsfdgNo(stsfdgNoGnrService.getNextLongId() + "");
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

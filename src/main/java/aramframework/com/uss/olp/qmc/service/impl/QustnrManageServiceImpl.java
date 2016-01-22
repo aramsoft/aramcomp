@@ -2,8 +2,7 @@ package aramframework.com.uss.olp.qmc.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,14 +32,14 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("qustnrManageService")
+@Service
 public class QustnrManageServiceImpl extends EgovAbstractServiceImpl implements QustnrManageService {
 
-	@Resource(name = "qustnrManageMapper")
+	@Autowired
 	private QustnrManageMapper qustnrManageMapper;	
 
-	@Resource(name = "qustnrManageIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService qustnrManageIdGnrService; 
 
 	/**
 	 * 설문템플릿 목록을 조회한다.
@@ -88,7 +87,7 @@ public class QustnrManageServiceImpl extends EgovAbstractServiceImpl implements 
 	 */
 	public void insertQustnrManage(QustnrManageVO qustnrManageVO) {
 		try {
-			qustnrManageVO.setQestnrId(idgenService.getNextStringId());
+			qustnrManageVO.setQestnrId(qustnrManageIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

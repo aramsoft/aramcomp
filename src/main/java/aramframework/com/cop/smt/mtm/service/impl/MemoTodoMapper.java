@@ -25,7 +25,7 @@ import aramframework.com.cop.smt.mtm.service.MemoTodoVO;
  * </pre>
  */
 
-@Mapper("memoTodoMapper")
+@Mapper
 public interface MemoTodoMapper {
 
 	/**

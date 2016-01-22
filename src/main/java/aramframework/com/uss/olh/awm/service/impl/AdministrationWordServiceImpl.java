@@ -2,8 +2,7 @@ package aramframework.com.uss.olh.awm.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,14 +32,14 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("administrationWordService")
+@Service
 public class AdministrationWordServiceImpl extends EgovAbstractServiceImpl implements AdministrationWordService {
 
-	@Resource(name = "administrationWordMapper")
+	@Autowired
 	private AdministrationWordMapper administrationWordMapper;	
 
-	@Resource(name = "administrationWordIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService administrationWordIdGnrService; 
 
 	/**
 	 * 행정전문용어사전관리를(을) 목록을 조회 한다.
@@ -79,7 +78,7 @@ public class AdministrationWordServiceImpl extends EgovAbstractServiceImpl imple
 	 */
 	public void insertAdministrationWord(AdministrationWordVO administrationWordVO) {
 		try {
-			administrationWordVO.setAdministWordId(idgenService.getNextStringId());
+			administrationWordVO.setAdministWordId(administrationWordIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

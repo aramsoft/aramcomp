@@ -2,8 +2,7 @@ package aramframework.com.sym.bat.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,18 +32,18 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("batchOpertService")
+@Service
 public class BatchOpertServiceImpl extends EgovAbstractServiceImpl implements BatchOpertService {
 
 	/**
 	 * 배치작업DAO
 	 */
-	@Resource(name = "batchOpertMapper")
+	@Autowired
 	private BatchOpertMapper batchOpertMapper;	
 
 	/** ID Generation */
-	@Resource(name = "batchOpertIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService batchOpertIdGnrService; 
 
 	/**
 	 * 배치작업의 목록을 조회 한다.
@@ -83,7 +82,7 @@ public class BatchOpertServiceImpl extends EgovAbstractServiceImpl implements Ba
 	 */
 	public void insertBatchOpert(BatchOpertVO batchOpertVO) {
 		try {
-			batchOpertVO.setBatchOpertId(idgenService.getNextStringId());
+			batchOpertVO.setBatchOpertId(batchOpertIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

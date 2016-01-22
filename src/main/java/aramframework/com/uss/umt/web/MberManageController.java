@@ -1,6 +1,5 @@
 package aramframework.com.uss.umt.web;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -50,13 +49,13 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class MberManageController {
 
-	@Resource(name = "mberManageService")
+	@Autowired
 	private MberManageService mberManageService;
 
-	@Resource(name = "groupAuthorService")
+	@Autowired
 	private GroupAuthorService groupAuthorService;
 
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 
 	@Autowired

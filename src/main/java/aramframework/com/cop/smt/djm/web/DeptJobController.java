@@ -2,7 +2,6 @@ package aramframework.com.cop.smt.djm.web;
 
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,14 +54,14 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class DeptJobController {
 
-	@Resource(name = "deptJobService")
+	@Autowired 
 	private DeptJobService deptJobService;
 
 	// 첨부파일 관련
-	@Resource(name = "fileMngUtil")
+	@Autowired
 	private FileMngUtil fileUtil;
 
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 
 	@Autowired

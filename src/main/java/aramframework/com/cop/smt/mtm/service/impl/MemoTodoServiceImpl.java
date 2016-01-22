@@ -2,8 +2,7 @@ package aramframework.com.cop.smt.mtm.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,14 +32,14 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("memoTodoService")
+@Service
 public class MemoTodoServiceImpl extends EgovAbstractServiceImpl implements MemoTodoService {
 
-	@Resource(name = "memoTodoMapper")
+	@Autowired 
 	private MemoTodoMapper memoTodoMapper;	
 
-	@Resource(name = "memoTodoIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired 
+	private EgovIdGnrService memoTodoIdGnrService; 
 
 	/**
 	 * 메모할일 목록 중 오늘의 할일을 조회한다.
@@ -88,7 +87,7 @@ public class MemoTodoServiceImpl extends EgovAbstractServiceImpl implements Memo
 	 */
 	public void insertMemoTodo(MemoTodoVO memoTodoVO) {
 		try {
-			memoTodoVO.setTodoId(idgenService.getNextStringId());
+			memoTodoVO.setTodoId(memoTodoIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

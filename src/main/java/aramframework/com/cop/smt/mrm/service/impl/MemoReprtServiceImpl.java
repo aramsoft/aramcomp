@@ -2,8 +2,7 @@ package aramframework.com.cop.smt.mrm.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.SearchVO;
@@ -35,16 +34,16 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("memoReprtService")
+@Service
 public class MemoReprtServiceImpl extends EgovAbstractServiceImpl implements MemoReprtService {
 
-	@Resource(name = "memoReprtMapper")
+	@Autowired 
 	private MemoReprtMapper memoReprtMapper;	
 
-	@Resource(name = "memoReprtIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired 
+	private EgovIdGnrService memoReprtIdGnrService; 
 
-	@Resource(name="fileMngUtil")
+	@Autowired 
 	private FileMngUtil fileUtil;
 
 	/**
@@ -125,7 +124,7 @@ public class MemoReprtServiceImpl extends EgovAbstractServiceImpl implements Mem
 	 */
 	public void insertMemoReprt(MemoReprtVO memoReprtVO) {
 		try {
-			memoReprtVO.setReprtId(idgenService.getNextStringId());
+			memoReprtVO.setReprtId(memoReprtIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

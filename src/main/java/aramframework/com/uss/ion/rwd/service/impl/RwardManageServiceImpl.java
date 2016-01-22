@@ -2,8 +2,7 @@ package aramframework.com.uss.ion.rwd.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -36,20 +35,20 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("rwardManageService")
+@Service
 public class RwardManageServiceImpl extends EgovAbstractServiceImpl implements RwardManageService {
 
-	@Resource(name = "rwardManageMapper")
+	@Autowired
 	private RwardManageMapper rwardManageMapper;	
 
 	/** ID Generation */
-	@Resource(name = "rwardManageIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService rwardManageIdGnrService; 
 
-	@Resource(name = "infrmlSanctnService")
+	@Autowired
 	protected InfrmlSanctnService infrmlSanctnService;
 
-	@Resource(name="fileMngUtil")
+	@Autowired
 	private FileMngUtil fileUtil;
 
 	/**
@@ -98,7 +97,7 @@ public class RwardManageServiceImpl extends EgovAbstractServiceImpl implements R
 		rwardManageVO.setConfmAt(infrmlSanctn.getConfmAt());
 
 		try {
-			rwardManageVO.setRwardId(idgenService.getNextStringId());
+			rwardManageVO.setRwardId(rwardManageIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

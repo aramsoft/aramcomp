@@ -64,16 +64,16 @@ public class BBSBoardController {
 	@Resource(name = "cacheDictionary")
 	private Map<String, Object> cacheDictionary;
 
-	@Resource(name = "bbsBoardService")
+	@Autowired
 	private BBSBoardService boardService;
 
-	@Resource(name = "bbsMasterService")
+	@Autowired
 	private BBSMasterService bbsMasterService;
 
-	@Resource(name = "fileMngUtil")
-	private FileMngUtil fileUtil;
+	@Autowired
+	private FileMngUtil fileMngUtil; 
 
-	@Resource(name = "userInfService")
+	@Autowired 
 	private UserInfService userInfService; // 커뮤니티 사용자 확인
 
 	// ---------------------------------
@@ -378,7 +378,7 @@ public class BBSBoardController {
 			return WebUtil.adjustViewName("/cop/bbs/NoticeRegist");
 		}
 
-		boardVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "BBS_"));
+		boardVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "BBS_"));
 
 		boardVO.setNtcrNm(""); // 익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨
 		boardVO.setPassword(""); // 익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨
@@ -452,7 +452,7 @@ public class BBSBoardController {
 			return WebUtil.adjustViewName("/cop/bbs/NoticeReply");
 		}
 
-		boardVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "BBS_"));
+		boardVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "BBS_"));
 
 		boardVO.setNtcrNm(""); // 익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨
 		boardVO.setPassword(""); // 익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨
@@ -532,7 +532,7 @@ public class BBSBoardController {
 
 		// 첨부파일 관련 ID 생성 start....
 		String atchFileId = boardVO.getAtchFileId();
-		boardVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "BBS_", atchFileId));
+		boardVO.setAtchFileId(fileMngUtil.updateMultiFile(multiRequest, "BBS_", atchFileId));
 
 		boardVO.setNtcrNm(""); // 익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨
 		boardVO.setPassword(""); // 익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨
@@ -786,7 +786,7 @@ public class BBSBoardController {
 			return WebUtil.adjustViewName("/cop/bbs/NoticeRegist");
 		}
 
-		boardVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "BBS_"));
+		boardVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "BBS_"));
 		
 		boardVO.setFrstRegisterId("ANONYMOUS");
 		// 익명게시판 관련
@@ -852,7 +852,7 @@ public class BBSBoardController {
 			return WebUtil.adjustViewName("/cop/bbs/NoticeReply");
 		}
 
-		boardVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "BBS_"));
+		boardVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "BBS_"));
 
 		boardVO.setAnswerAt("Y");
 		boardVO.setFrstRegisterId("ANONYMOUS");
@@ -938,7 +938,7 @@ public class BBSBoardController {
 		}
 
 		String atchFileId = boardVO.getAtchFileId();
-		boardVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "BBS_", atchFileId));
+		boardVO.setAtchFileId(fileMngUtil.updateMultiFile(multiRequest, "BBS_", atchFileId));
 
 		boardVO.setLastUpdusrId("ANONYMOUS");
 

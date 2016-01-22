@@ -2,12 +2,12 @@ package aramframework.com.cmm.handler;
 
 import java.io.IOException;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.util.UrlUtils;
 import org.springframework.util.StringUtils;
@@ -20,7 +20,7 @@ import org.springframework.util.StringUtils;
  */
 public class TargetRedirectStrategy implements RedirectStrategy {
 
-	@Resource(name="simpleUrlAuthenticationSuccessHandler")
+	@Autowired
 	SimpleUrlAuthenticationSuccessHandler authenticationSuccessHandler;
 	
     protected final Logger LOG = LoggerFactory.getLogger(getClass());

@@ -2,8 +2,7 @@ package aramframework.com.ssi.syi.ims.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -34,19 +33,19 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("cntcMessageService")
+@Service
 public class CntcMessageServiceImpl extends EgovAbstractServiceImpl implements CntcMessageService {
 
-	@Resource(name = "cntcMessageMapper")
+	@Autowired
 	private CntcMessageMapper cntcMessageMapper;
 	
 	/** EgovIdGnrService */
-	@Resource(name = "cntcMessageIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService cntcMessageIdGnrService; 
 
 	/** EgovIdGnrService */
-	@Resource(name = "cntcMessageItemIdGnrService")
-	private EgovIdGnrService idgenServiceItem;
+	@Autowired
+	private EgovIdGnrService cntcMessageItemIdGnrService; 
 
 	/**
 	 * 연계메시지 목록을 조회한다.
@@ -85,7 +84,7 @@ public class CntcMessageServiceImpl extends EgovAbstractServiceImpl implements C
 	 */
 	public void insertCntcMessage(CntcMessageVO cntcMessageVO) {
 		try {
-			cntcMessageVO.setCntcMessageId(idgenService.getNextStringId());
+			cntcMessageVO.setCntcMessageId(cntcMessageIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}
@@ -147,7 +146,7 @@ public class CntcMessageServiceImpl extends EgovAbstractServiceImpl implements C
 	 */
 	public void insertCntcMessageItem(CntcMessageItemVO cntcMessageItemVO) {
 		try {
-			cntcMessageItemVO.setItemId(idgenServiceItem.getNextStringId());
+			cntcMessageItemVO.setItemId(cntcMessageItemIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

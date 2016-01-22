@@ -3,8 +3,7 @@ package aramframework.com.uss.ion.rss.service.impl;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.service.ComCodeVO;
@@ -35,19 +34,19 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("rssManageService")
+@Service
 public class RssManageServiceImpl extends EgovAbstractServiceImpl implements RssManageService {
 
 	/* RSS관리 DAO */
-	@Resource(name = "rssManageJDBC")
+	@Autowired
 	private RssManageJDBC rssManageJDBC;	
 	
-	@Resource(name = "rssManageMapper")
+	@Autowired
 	private RssManageMapper rssManageMapper;		
 
 	/* RSS ID Generator Service */
-	@Resource(name = "rssManageIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService rssManageIdGnrService;
 
 	/**
 	 * JDBC 테이블 목록을조회한다.
@@ -103,7 +102,7 @@ public class RssManageServiceImpl extends EgovAbstractServiceImpl implements Rss
 	 */
 	public void insertRssManage(RssManageVO rssManageVO) {
 		try {
-			rssManageVO.setRssId((String) idgenService.getNextStringId());
+			rssManageVO.setRssId((String) rssManageIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

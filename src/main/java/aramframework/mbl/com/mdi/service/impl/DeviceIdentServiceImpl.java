@@ -8,14 +8,13 @@ import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.constant.AramProperties;
@@ -51,18 +50,15 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("deviceIdentService")
+@Service
 public class DeviceIdentServiceImpl extends EgovAbstractServiceImpl implements DeviceIdentService {
 
-	/**
-     * DeviceIdentDAO
-     */
-    @Resource(name = "deviceIdentMapper")
+	@Autowired
     private DeviceIdentMapper deviceIdentMapper;    
 
     /** ID Generation */
-    @Resource(name = "deviceIdentIdGnrService")
-    private EgovIdGnrService idgenService;
+	@Autowired
+    private EgovIdGnrService deviceIdentIdGnrService; 
 
     /**
      * 모바일 기기 정보 목록을 조회한다.
@@ -101,7 +97,7 @@ public class DeviceIdentServiceImpl extends EgovAbstractServiceImpl implements D
      */
     public void insertDeviceIdent(DeviceIdentVO deviceIdentVO) {
     	try {
-			deviceIdentVO.setSn(idgenService.getNextIntegerId());
+			deviceIdentVO.setSn(deviceIdentIdGnrService.getNextIntegerId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

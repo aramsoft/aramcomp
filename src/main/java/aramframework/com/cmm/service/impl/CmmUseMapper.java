@@ -25,7 +25,7 @@ import aramframework.com.cmm.service.ComCodeVO;
  * </pre>
  */
 
-@Mapper("cmmUseMapper")
+@Mapper
 public interface CmmUseMapper {
 
 	/**

@@ -28,7 +28,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Mapper("mtgPlaceManageMapper")
+@Mapper
 public interface MtgPlaceManageMapper {
 
 	/**

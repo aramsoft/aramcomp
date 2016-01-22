@@ -3,8 +3,7 @@ package aramframework.com.cop.cmy.service.impl;
 import java.io.InputStream;
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,13 +32,13 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("cmyMeunManageService")
+@Service
 public class CmyMenuManageServiceImpl extends EgovAbstractServiceImpl implements CmyMenuManageService {
 
-	@Resource(name = "cmyMenuManageMapper")
+	@Autowired 
 	private CmyMenuManageMapper cmyMenuManageMapper;	
 
-	@Resource(name = "excelCmyMenuService")
+	@Autowired 
 	private EgovExcelService excelCmyMenuService;
 
 	/**

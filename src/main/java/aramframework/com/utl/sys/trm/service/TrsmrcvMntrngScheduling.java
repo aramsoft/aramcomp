@@ -3,10 +3,9 @@ package aramframework.com.utl.sys.trm.service;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
@@ -34,21 +33,21 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
  * </pre>
  */
 
-@Service("trsmrcvMntrngScheduling")
+@Service
 public class TrsmrcvMntrngScheduling {
 
-	@Resource(name = "trsmrcvMntrngService")
+	@Autowired
 	private TrsmrcvMntrngService trsmrcvMntrngService;
 
-	@Resource(name = "mntrngMailSender")
+	@Autowired
 	private MailSender mntrngMailSender;
 
-	@Resource(name = "mntrngMessage")
+	@Autowired
 	private SimpleMailMessage mntrngMessage;
 
 	/** ID Generation */
-	@Resource(name = "trsmrcvMntrngLogIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService trsmrcvMntrngLogIdGnrService; 
 
 	protected static final Logger LOG = LoggerFactory.getLogger(TrsmrcvMntrngScheduling.class);
 
@@ -117,7 +116,7 @@ public class TrsmrcvMntrngScheduling {
 			
 			// 로그테이블 추가저장.
 			trsmrcvMntrngLog = new TrsmrcvMntrngLogVO();
-			trsmrcvMntrngLogId = idgenService.getNextStringId();
+			trsmrcvMntrngLogId = trsmrcvMntrngLogIdGnrService.getNextStringId();
 			trsmrcvMntrngLog.setLogId(trsmrcvMntrngLogId);
 			trsmrcvMntrngLog.setCntcId(target.getCntcId());
 			trsmrcvMntrngLog.setTestClassNm(target.getTestClassNm());

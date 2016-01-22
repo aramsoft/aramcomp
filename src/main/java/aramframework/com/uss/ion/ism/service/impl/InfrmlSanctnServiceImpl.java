@@ -2,8 +2,7 @@ package aramframework.com.uss.ion.ism.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -34,14 +33,14 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("infrmlSanctnService")
+@Service
 public class InfrmlSanctnServiceImpl extends EgovAbstractServiceImpl implements InfrmlSanctnService {
 
-	@Resource(name = "infrmlSanctnMapper")
+	@Autowired
 	private InfrmlSanctnMapper infrmlSanctnMapper;	
 
-	@Resource(name = "infrmlSanctnIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService infrmlSanctnIdGnrService; 
 
 	/**
 	 * 결재자 목록을 조회한다.
@@ -117,7 +116,7 @@ public class InfrmlSanctnServiceImpl extends EgovAbstractServiceImpl implements 
 	 */
 	public InfrmlSanctnVO insertInfrmlSanctn(InfrmlSanctnVO infrmlSanctnVO) {
 		try {
-			infrmlSanctnVO.setInfrmlSanctnId(idgenService.getNextStringId());
+			infrmlSanctnVO.setInfrmlSanctnId(infrmlSanctnIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

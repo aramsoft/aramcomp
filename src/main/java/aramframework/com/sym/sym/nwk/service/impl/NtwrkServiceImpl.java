@@ -2,8 +2,7 @@ package aramframework.com.sym.sym.nwk.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,15 +32,15 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("ntwrkService")
+@Service
 public class NtwrkServiceImpl extends EgovAbstractServiceImpl implements NtwrkService {
 
-	@Resource(name = "ntwrkMapper")
+	@Autowired
 	private NtwrkMapper ntwrkMapper;
 	
 	/** Message ID Generation */
-	@Resource(name = "ntwrkIdGnrService")
-	private EgovIdGnrService idegenService;
+	@Autowired
+	private EgovIdGnrService ntwrkIdGnrService; 
 
 	/**
 	 * 네트워크를 관리하기 위해 등록된 네트워크목록을 조회한다.
@@ -80,7 +79,7 @@ public class NtwrkServiceImpl extends EgovAbstractServiceImpl implements NtwrkSe
 	 */
 	public void insertNtwrk(NtwrkVO ntwrkVO) {
 		try {
-			ntwrkVO.setNtwrkId(idegenService.getNextStringId());
+			ntwrkVO.setNtwrkId(ntwrkIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

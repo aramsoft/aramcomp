@@ -6,7 +6,6 @@ import java.net.InetAddress;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.management.MBeanAttributeInfo;
 import javax.management.MBeanInfo;
 import javax.management.MBeanServerConnection;
@@ -15,6 +14,7 @@ import javax.management.remote.JMXConnector;
 import javax.management.remote.JMXConnectorFactory;
 import javax.management.remote.JMXServiceURL;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
@@ -45,19 +45,19 @@ import aramframework.com.utl.fcc.service.StringUtil;
  * </pre>
  */
 
-@Service("serverResrceMntrngScheduling")
+@Service
 public class ServerResrceMntrngScheduling {
 
-	@Resource(name = "serverResrceMntrngService")
+	@Autowired
 	private ServerResrceMntrngService serverResrceMntrngService;
 
-	@Resource(name = "smsInfoService")
+	@Autowired
 	private SmsInfoService smsInfoService; 
 	 
-	@Resource(name = "mntrngMessage")
+	@Autowired
 	private SimpleMailMessage mntrngMessage;
 
-	@Resource(name = "mntrngMailSender")
+	@Autowired
 	private MailSender mntrngMailSender;
 
 	Process process;

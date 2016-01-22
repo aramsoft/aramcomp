@@ -2,8 +2,7 @@ package aramframework.com.sec.dpt.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,18 +32,15 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("deptService")
+@Service
 public class DeptServiceImpl extends EgovAbstractServiceImpl implements DeptService {
 
-//	@Resource(name = "deptDAO")
-//	private DeptDAO deptDAO;
-	
-	@Resource(name = "deptMapper")
+	@Autowired
 	private DeptMapper deptMapper;
 	
 	/** Message ID Generation */
-	@Resource(name = "deptIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired
+	private EgovIdGnrService deptIdGnrService; 
 
 	/**
 	 * 부서를 관리하기 위해 등록된 부서목록을 조회한다.
@@ -84,7 +80,7 @@ public class DeptServiceImpl extends EgovAbstractServiceImpl implements DeptServ
 	 */
 	public void insertDept(DeptVO deptVO) {
 		try {
-			deptVO.setOrgnztId(idgenService.getNextStringId());
+			deptVO.setOrgnztId(deptIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

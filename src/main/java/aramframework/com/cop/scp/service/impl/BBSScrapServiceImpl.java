@@ -2,8 +2,7 @@ package aramframework.com.cop.scp.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -33,14 +32,14 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("bbsScrapService")
+@Service
 public class BBSScrapServiceImpl extends EgovAbstractServiceImpl implements BBSScrapService {
 
-	@Resource(name = "bbsScrapMapper")
+	@Autowired 
 	private BBSScrapMapper bbsScrapMapper;
 	
-	@Resource(name = "scrapIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired 
+	private EgovIdGnrService scrapIdGnrService; 
 
 	/**
 	 * 스크랩에 대한 목록을 조회 한다.
@@ -92,7 +91,7 @@ public class BBSScrapServiceImpl extends EgovAbstractServiceImpl implements BBSS
 	 */
 	public void insertScrap(ScrapVO scrapVO) {
 		try {
-			scrapVO.setScrapId(idgenService.getNextStringId());
+			scrapVO.setScrapId(scrapIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

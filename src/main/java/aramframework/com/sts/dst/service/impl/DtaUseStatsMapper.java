@@ -24,7 +24,7 @@ import aramframework.com.sts.dst.service.DtaUseStatsVO;
  * </pre>
  */
 
-@Mapper("dtaUseStatsMapper")
+@Mapper
 public interface DtaUseStatsMapper  {
 
 	/**

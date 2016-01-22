@@ -12,8 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import aramframework.com.cmm.LoginVO;
@@ -41,6 +40,9 @@ import aramframework.com.uat.uia.service.LoginService;
 
 public class CustomLoginFilter extends OncePerRequestFilter {
 
+	@Autowired 
+	private LoginService loginService;
+
 	private String loginURL;
 
 	protected final static Logger LOG = LoggerFactory.getLogger(CustomLoginFilter.class);
@@ -61,8 +63,6 @@ public class CustomLoginFilter extends OncePerRequestFilter {
 		if (requestURL.contains("/j_spring_security_check")) {
 
 			LOG.debug("Login Filter start!!!");
-			ApplicationContext act = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
-			LoginService loginService = (LoginService) act.getBean("loginService");
 
 			HttpSession session = request.getSession();
 			String password = request.getParameter("password");

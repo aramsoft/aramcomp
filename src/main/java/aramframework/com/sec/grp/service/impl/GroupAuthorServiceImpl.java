@@ -2,8 +2,7 @@ package aramframework.com.sec.grp.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.sec.grp.service.GroupAuthorService;
@@ -30,10 +29,10 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("groupAuthorService")
+@Service
 public class GroupAuthorServiceImpl extends EgovAbstractServiceImpl implements GroupAuthorService {
 
-	@Resource(name = "groupAuthorMapper")
+	@Autowired
 	private GroupAuthorMapper groupAuthorMapper;
 
 	/**

@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.LoginVO;
@@ -50,25 +51,25 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("communityManageService")
+@Service
 public class CommunityManageServiceImpl extends EgovAbstractServiceImpl implements CommunityManageService {
 
 	@Resource(name = "cacheDictionary")
 	private Map<String, Object> cacheDictionary;
 
-	@Resource(name = "bbsMasterService")
+	@Autowired 
 	private BBSMasterService bbsMasterService;
 
-	@Resource(name = "bbsUseInfoService")
+	@Autowired 
 	private BBSUseInfoService bbsUseService;
 
-	@Resource(name = "communityManageMapper")
+	@Autowired 
 	private CommunityManageMapper communityManageMapper;	
 
-	@Resource(name = "cmmntyIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired 
+	private EgovIdGnrService cmmntyIdGnrService; 
 
-	@Resource(name = "cmyMenuManageMapper")
+	@Autowired 
 	private CmyMenuManageMapper cmyMenuManageMapper;	
 
 	/**
@@ -183,7 +184,7 @@ public class CommunityManageServiceImpl extends EgovAbstractServiceImpl implemen
 		 */
 
 		try {
-			communityVO.setCmmntyId(idgenService.getNextStringId());
+			communityVO.setCmmntyId(cmmntyIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

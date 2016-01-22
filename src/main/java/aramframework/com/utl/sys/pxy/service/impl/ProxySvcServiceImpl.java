@@ -3,8 +3,7 @@ package aramframework.com.utl.sys.pxy.service.impl;
 import java.io.File;
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -37,23 +36,23 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
  * </pre>
  */
 
-@Service("proxySvcService")
+@Service
 public class ProxySvcServiceImpl extends EgovAbstractServiceImpl implements ProxySvcService {
 
 	// 파일구분자
 	static final char FILE_SEPARATOR = File.separatorChar;
 
-	/** ID Generation */
-	@Resource(name = "proxySvcIdGnrService")
-	private EgovIdGnrService idgenService;
-
-	/** ID Generation */
-	@Resource(name = "proxyLogIdGnrService")
-	private EgovIdGnrService idgenServiceLog;
-
-	@Resource(name = "proxySvcMapper")
+	@Autowired
 	private ProxySvcMapper proxySvcMapper;
 	
+	/** ID Generation */
+	@Autowired
+	private EgovIdGnrService proxySvcIdGnrService; 
+
+	/** ID Generation */
+	@Autowired
+	private EgovIdGnrService proxyLogIdGnrService; 
+
 	/**
 	 * 프록시서비스를 관리하기 위해 등록된 프록시정보 목록을 조회한다.
 	 * 
@@ -91,7 +90,7 @@ public class ProxySvcServiceImpl extends EgovAbstractServiceImpl implements Prox
 	 */
 	public ProxySvcVO insertProxySvc(ProxySvcVO proxySvcVO) {
 		try {
-			proxySvcVO.setProxyId(idgenService.getNextStringId());
+			proxySvcVO.setProxyId(proxySvcIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}
@@ -160,7 +159,7 @@ public class ProxySvcServiceImpl extends EgovAbstractServiceImpl implements Prox
 			if (!proxySvcVO.getStrPreSvcSttus().equals("01") 
 					&& proxySvcVO.getSvcSttus().equals("01")) {
 				ProxyServer proxyServer = new ProxyServer(proxySvcVO.getSvcIp(), proxySvcVO.getProxyIp(), Integer.parseInt(proxySvcVO.getProxyPort()),
-						Integer.parseInt(proxySvcVO.getSvcPort()), proxySvcVO.getProxyId(), proxySvcMapper, idgenServiceLog);
+						Integer.parseInt(proxySvcVO.getSvcPort()), proxySvcVO.getProxyId(), proxySvcMapper, proxyLogIdGnrService);
 				proxyServer.start();
 			} else if (proxySvcVO.getStrPreSvcSttus().equals("01") 
 					&& !proxySvcVO.getSvcSttus().equals("01")) {

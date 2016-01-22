@@ -2,8 +2,7 @@ package aramframework.com.cop.smt.lsm.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
@@ -34,14 +33,14 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service("leaderSchdulService")
+@Service
 public class LeaderSchdulServiceImpl extends EgovAbstractServiceImpl implements LeaderSchdulService {
 
-	@Resource(name = "leaderSchdulMapper")
+	@Autowired 
 	private LeaderSchdulMapper leaderSchdulMapper;	
 
-	@Resource(name = "leaderSchdulIdGnrService")
-	private EgovIdGnrService idgenService;
+	@Autowired 
+	private EgovIdGnrService leaderSchdulIdGnrService; 
 
 	/**
 	 * 월별 간부일정 목록을 조회한다.
@@ -80,7 +79,7 @@ public class LeaderSchdulServiceImpl extends EgovAbstractServiceImpl implements 
 	 */
 	public void insertLeaderSchdul(LeaderSchdulVO leaderSchdulVo) {
 		try {
-			leaderSchdulVo.setSchdulId(idgenService.getNextStringId());
+			leaderSchdulVo.setSchdulId(leaderSchdulIdGnrService.getNextStringId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

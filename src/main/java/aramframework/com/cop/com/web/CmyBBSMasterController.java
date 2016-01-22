@@ -1,6 +1,5 @@
 package aramframework.com.cop.com.web;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,16 +47,16 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class CmyBBSMasterController {
 
-	@Resource(name = "bbsMasterService")
+	@Autowired
 	private BBSMasterService bbsMasterService;
 
-	@Resource(name = "bbsUseInfoService")
-	private BBSUseInfoService bbsUseService;
+	@Autowired
+	private BBSUseInfoService bbsUseInfoService; 
 
-	@Resource(name = "cmmUseService")
+	@Autowired
 	private CmmUseService cmmUseService;
 
-	@Resource(name = "userInfService")
+	@Autowired 
 	private UserInfService userInfService; // 커뮤니티 사용자 확인
 
 	@Autowired
@@ -202,7 +201,7 @@ public class CmyBBSMasterController {
 			model.addAttribute("useSatisfaction", "true");
 		}
 
-		bbsUseService.selectBBSUseInf(boardUseInfVO);
+		bbsUseInfoService.selectBBSUseInf(boardUseInfVO);
 
 		// 시스템 사용 게시판의 경우 URL 표시
 	    String bbsId = boardUseInfVO.getBbsId();
@@ -280,7 +279,7 @@ public class CmyBBSMasterController {
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		boardUseInfVO.setLastUpdusrId(loginVO.getUniqId());
 
-		bbsUseService.updateBBSUseInf(boardUseInfVO);
+		bbsUseInfoService.updateBBSUseInf(boardUseInfVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		return WebUtil.redirectJsp(model, "/cop/com/listBdMstrByTrget.do");

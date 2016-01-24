@@ -11,8 +11,8 @@
         		<arg0 key="지식정제" resource="false"/>
         		<arg1 key="1" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>1</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>1</var-value>
 				</var>
 			</field>																						 						
 

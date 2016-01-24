@@ -11,8 +11,8 @@
         		<arg0 key="통합링크명" resource="false"/>
         		<arg1 key="255" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>255</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
 				</var>
 			</field>
 			
@@ -24,8 +24,8 @@
         		<arg0 key="통합링크URL" resource="false"/>
         		<arg1 key="255" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>255</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
 				</var>
 			</field>
 			
@@ -33,8 +33,8 @@
         		<arg0 key="통합링크설명" resource="false"/>
         		<arg1 key="2500" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>2500</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>2500</var-value>
 				</var>
 			</field>
 						

@@ -19,8 +19,8 @@
         		<arg0 key="지식명" resource="false"/>
         		<arg1 key="100" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>100</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
 				</var>
 			</field>
 			
@@ -28,8 +28,8 @@
         		<arg0 key="지식내용" resource="false"/>
         		<arg1 key="2500" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>2500</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>2500</var-value>
 				</var>
 			</field>	
 																				 						

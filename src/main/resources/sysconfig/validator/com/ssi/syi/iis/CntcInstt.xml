@@ -11,8 +11,8 @@
         		<arg0 key="기관명" resource="false"/>
         		<arg1 key="60" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>60</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>60</var-value>
 				</var>
 			</field> 
 			
@@ -24,8 +24,8 @@
         		<arg0 key="기관ID" resource="false"/>
         		<arg1 key="20" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>20</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
 				</var>
 			</field> 
 			
@@ -33,8 +33,8 @@
         		<arg0 key="시스템명" resource="false"/>
         		<arg1 key="60" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>60</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>60</var-value>
 				</var>
 			</field> 
 			
@@ -46,8 +46,8 @@
         		<arg0 key="기관ID" resource="false"/>
         		<arg1 key="20" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>20</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
 				</var>
 			</field> 
 			
@@ -55,8 +55,8 @@
         		<arg0 key="시스템ID" resource="false"/>
         		<arg1 key="20" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>20</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
 				</var>
 			</field> 
 			
@@ -64,8 +64,8 @@
         		<arg0 key="서비스명" resource="false"/>
         		<arg1 key="60" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>60</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>60</var-value>
 				</var>
 			</field> 
 			

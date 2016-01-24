@@ -11,8 +11,8 @@
                 <arg0 key="일반회원아이디" resource="false"/>
                 <arg1 key="20" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>20</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>20</var-value>
                 </var>
             </field>
            
@@ -20,8 +20,8 @@
                 <arg0 key="일반회원이름" resource="false"/>
                 <arg1 key="50" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>50</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>50</var-value>
                 </var>
             </field>
             
@@ -37,8 +37,8 @@
                 <arg0 key="비밀번호정답" resource="false"/>
                 <arg1 key="100" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>100</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>100</var-value>
                 </var>
             </field>
  
@@ -46,8 +46,8 @@
                 <arg0 key="집지역번호" resource="false"/>
                 <arg1 key="4" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>4</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>4</var-value>
                 </var>
             </field> 
             
@@ -55,8 +55,8 @@
                 <arg0 key="집중간전화번호" resource="false"/>
                 <arg1 key="4" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>4</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>4</var-value>
                 </var>
             </field>
             
@@ -64,8 +64,8 @@
                 <arg0 key="집마지막전화번호" resource="false"/>
                 <arg1 key="4" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>4</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>4</var-value>
                 </var>
             </field>
             
@@ -73,8 +73,8 @@
                 <arg0 key="팩스번호" resource="false"/>
                 <arg1 key="15" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>15</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>15</var-value>
                 </var>
             </field>
             
@@ -82,8 +82,8 @@
                 <arg0 key="핸드폰번호" resource="false"/>
                 <arg1 key="15" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>15</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>15</var-value>
                 </var>
             </field>
            
@@ -100,8 +100,8 @@
                 <arg0 key="주소" resource="false"/>
                 <arg1 key="100" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>100</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>100</var-value>
                 </var>
             </field>
            

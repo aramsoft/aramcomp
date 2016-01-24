@@ -11,8 +11,8 @@
         		<arg0 key="설문제목" resource="false"/>
         		<arg1 key="100" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>250</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>250</var-value>
 				</var>
 			</field>
 			
@@ -20,8 +20,8 @@
         		<arg0 key="설문목적" resource="false"/>
         		<arg1 key="1000" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>1000</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>1000</var-value>
 				</var>
 			</field>
 			
@@ -29,8 +29,8 @@
         		<arg0 key="설문작성안내 내용" resource="false"/>
         		<arg1 key="2000" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>2000</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>2000</var-value>
 				</var>
 			</field>
 			
@@ -41,16 +41,16 @@
         	<field property="qestnrBeginDe" depends="required, date">
         		<arg0 key="설문기간  시작일자" resource="false"/>
 				<var>
-				<var-name>datePatternStrict</var-name>
-				<var-value>yyyyMMdd</var-value> 
+					<var-name>datePatternStrict</var-name>
+					<var-value>yyyyMMdd</var-value> 
 				</var>
 			</field>
 			
         	<field property="qestnrEndDe" depends="required, date">
         		<arg0 key="설문기간  종료일자" resource="false"/>
 				<var>
-				<var-name>datePatternStrict</var-name>
-				<var-value>yyyyMMdd</var-value>
+					<var-name>datePatternStrict</var-name>
+					<var-value>yyyyMMdd</var-value>
 				</var>
 			</field>
 			

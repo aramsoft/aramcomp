@@ -11,8 +11,8 @@
                 <arg0 key="배너 명" resource="false"/>     
                 <arg1 key="30" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>30</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>30</var-value>
                 </var>                       
             </field>
             
@@ -24,8 +24,8 @@
                 <arg0 key="정렬순서" resource="false"/>
                 <arg1 key="100" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>100</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>100</var-value>
                 </var>                
             </field>   
                  

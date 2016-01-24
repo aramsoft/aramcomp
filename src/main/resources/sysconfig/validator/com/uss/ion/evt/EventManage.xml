@@ -15,8 +15,8 @@
                 <arg0 key="행사명" resource="false"/>     
                 <arg1 key="60" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>60</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>60</var-value>
                 </var>                       
             </field>
             
@@ -24,8 +24,8 @@
                 <arg0 key="행사목적" resource="false"/>
                 <arg1 key="200" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>200</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>200</var-value>
                 </var>
             </field>
             
@@ -41,8 +41,8 @@
                 <arg0 key="행사주최기관명" resource="false"/>
                 <arg1 key="60" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>60</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>60</var-value>
                 </var>
             </field>
             
@@ -50,8 +50,8 @@
                 <arg0 key="행사주관기관명" resource="false"/>
                 <arg1 key="60" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>60</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>60</var-value>
                 </var>
             </field>
             
@@ -59,8 +59,8 @@
                 <arg0 key="행사장소" resource="false"/>
                 <arg1 key="200" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>30</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>30</var-value>
                 </var>
             </field>
             
@@ -68,8 +68,8 @@
                 <arg0 key="행사내용" resource="false"/>
                 <arg1 key="1000" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>1000</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>1000</var-value>
                 </var>
             </field>
             

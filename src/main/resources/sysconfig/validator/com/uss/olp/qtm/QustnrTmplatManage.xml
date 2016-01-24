@@ -11,8 +11,8 @@
         		<arg0 key="템플릿유형" resource="false"/>
         		<arg1 key="100" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>100</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
 				</var>
 			</field> 
 			
@@ -20,8 +20,8 @@
         		<arg0 key="템플릿설명" resource="false"/>
         		<arg1 key="1000" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>1000</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>1000</var-value>
 				</var>
 			</field>
 			
@@ -29,8 +29,8 @@
         		<arg0 key="템플릿파일(경로)" resource="false"/>
         		<arg1 key="100" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>100</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
 				</var>
 			</field>
 

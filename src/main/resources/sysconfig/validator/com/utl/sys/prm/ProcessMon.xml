@@ -11,8 +11,8 @@
         		<arg0 key="프로세스명" resource="false"/>
         		<arg1 key="30" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>30</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>30</var-value>
 				</var>
 			</field>	
 				
@@ -20,8 +20,8 @@
         		<arg0 key="관리자명" resource="false"/>
         		<arg1 key="60" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>60</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>60</var-value>
 				</var>
 			</field> 
 			
@@ -29,8 +29,8 @@
         		<arg0 key="관리자이메일주소" resource="false"/>
         		<arg1 key="60" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>60</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>60</var-value>
 				</var>
 			</field> 
 			

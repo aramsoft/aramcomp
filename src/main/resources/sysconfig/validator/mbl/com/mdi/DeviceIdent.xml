@@ -19,8 +19,8 @@
         		<arg0 key="User-Agent" resource="true"/>
         		<arg1 key="1000" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>1000</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>1000</var-value>
 				</var>        		
 			</field>
 			

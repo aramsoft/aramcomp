@@ -11,8 +11,8 @@
                 <arg0 key="당직ID" resource="false"/>     
                 <arg1 key="20" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>20</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>20</var-value>
                 </var>                       
             </field>
             
@@ -20,8 +20,8 @@
                 <arg0 key="당직일자" resource="false"/>
                 <arg1 key="8" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>8</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>8</var-value>
                 </var> 
             </field>
             
@@ -29,8 +29,8 @@
                 <arg0 key="당직체크구분" resource="false"/>
                 <arg1 key="10" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>10</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>10</var-value>
                 </var>                
             </field>    
                 
@@ -38,8 +38,8 @@
                 <arg0 key="당직체크코드" resource="false"/>
                 <arg1 key="10" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>10</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>10</var-value>
                 </var>                
             </field> 
             
@@ -47,8 +47,8 @@
                 <arg0 key="점검상태" resource="false"/>
                 <arg1 key="2000" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>2000</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>2000</var-value>
                 </var>                
             </field>
             

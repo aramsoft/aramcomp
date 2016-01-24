@@ -11,8 +11,8 @@
                 <arg0 key="당직ID" resource="false"/>     
                 <arg1 key="20" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>20</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>20</var-value>
                 </var>                       
             </field>
             
@@ -24,8 +24,8 @@
                 <arg0 key="비고" resource="false"/>
                 <arg1 key="2500" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>2500</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>2500</var-value>
                 </var>                
             </field>    
                 

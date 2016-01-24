@@ -11,8 +11,8 @@
                 <arg0 key="인터넷서비스명" resource="false"/>
                 <arg1 key="20" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>20</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>20</var-value>
                 </var>
             </field>
             
@@ -20,8 +20,8 @@
                 <arg0 key="인터넷서비스설명" resource="false"/>
                 <arg1 key="200" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>200</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>200</var-value>
                 </var>
             </field>
 

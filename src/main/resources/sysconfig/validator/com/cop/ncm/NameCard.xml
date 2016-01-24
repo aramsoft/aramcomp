@@ -56,8 +56,8 @@
         		<arg0 key="지역번호" resource="true"/>
         		<arg1 key="4" resource="true"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>4</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>4</var-value>
 				</var>
 			</field>
 			
@@ -65,8 +65,8 @@
         		<arg0 key="국번4자리" resource="true"/>
         		<arg1 key="4" resource="true"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>4</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>4</var-value>
 				</var>
 			</field>			
 
@@ -74,8 +74,8 @@
         		<arg0 key="전화번호끝4자리" resource="true"/>
         		<arg1 key="4" resource="true"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>4</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>4</var-value>
 				</var>
 			</field>
 			
@@ -83,8 +83,8 @@
         		<arg0 key="휴대전화앞4자리" resource="true"/>
         		<arg1 key="4" resource="true"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>4</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>4</var-value>
 				</var>
 			</field>			
 
@@ -92,8 +92,8 @@
         		<arg0 key="휴대전화번호끝4자리" resource="true"/>
         		<arg1 key="4" resource="true"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>4</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>4</var-value>
 				</var>
 			</field>
 						

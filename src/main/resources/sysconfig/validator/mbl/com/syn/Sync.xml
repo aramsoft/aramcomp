@@ -11,8 +11,8 @@
         		<arg0 key="제목" resource="true"/>
         		<arg1 key="100" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>100</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
 				</var>        		
 			</field>
 			
@@ -20,8 +20,8 @@
         		<arg0 key="내용" resource="true"/>
         		<arg1 key="512" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>512</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>512</var-value>
 				</var>        		
 			</field>
 			

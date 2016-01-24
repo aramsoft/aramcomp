@@ -11,8 +11,8 @@
         		<arg0 key="대상서비스명" resource="false"/>
         		<arg1 key="255" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>255</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
 				</var>
 			</field> 
 
@@ -20,8 +20,8 @@
         		<arg0 key="대상서비스TABLE" resource="false"/>
         		<arg1 key="255" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>255</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
 				</var>
 			</field>
 			
@@ -29,8 +29,8 @@
         		<arg0 key="대상서비스목록갯수" resource="false"/>
         		<arg1 key="5" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>5</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>5</var-value>
 				</var>
 			</field>
 			
@@ -38,8 +38,8 @@
         		<arg0 key="헤더TITLE" resource="false"/>
         		<arg1 key="255" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>255</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
 				</var>
 			</field>
 			
@@ -47,8 +47,8 @@
         		<arg0 key="헤더LINK" resource="false"/>
         		<arg1 key="255" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>255</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
 				</var>				
 			</field>
 			
@@ -56,8 +56,8 @@
         		<arg0 key="헤더DSCRIPTION" resource="false"/>
         		<arg1 key="4000" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>4000</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>4000</var-value>
 				</var>
 			</field>
 			
@@ -65,8 +65,8 @@
         		<arg0 key="헤더TAG" resource="false"/>
         		<arg1 key="255" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>255</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
 				</var>
 			</field>
 			
@@ -74,8 +74,8 @@
         		<arg0 key="헤더ETC" resource="false"/>
         		<arg1 key="255" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>255</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
 				</var>
 			</field>
 			
@@ -83,8 +83,8 @@
         		<arg0 key="본문TITLE" resource="false"/>
         		<arg1 key="255" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>255</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
 				</var>
 			</field>
 			
@@ -92,8 +92,8 @@
         		<arg0 key="본문LINK" resource="false"/>
         		<arg1 key="255" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>255</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
 				</var>
 			</field>
 			
@@ -101,8 +101,8 @@
         		<arg0 key="본문DESCRIPTION" resource="false"/>
         		<arg1 key="4000" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>4000</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>4000</var-value>
 				</var>
 			</field>
 						
@@ -110,8 +110,8 @@
         		<arg0 key="본문TAG" resource="false"/>
         		<arg1 key="255" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>255</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
 				</var>
 			</field>
 			
@@ -119,8 +119,8 @@
         		<arg0 key="본문ETC" resource="false"/>
         		<arg1 key="255" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>255</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
 				</var>
 			</field>
 			

@@ -11,8 +11,8 @@
         		<arg0 key="온라인메뉴얼명" resource="false"/>
         		<arg1 key="255" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>255</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
 				</var>
 			</field>
 			

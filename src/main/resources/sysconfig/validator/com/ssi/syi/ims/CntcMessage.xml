@@ -11,8 +11,8 @@
         		<arg0 key="연계메시지명" resource="false"/>
         		<arg1 key="60" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>60</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>60</var-value>
 				</var>
 			</field> 
 			
@@ -24,8 +24,8 @@
         		<arg0 key="연계메시지ID" resource="false"/>
         		<arg1 key="20" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>20</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
 				</var>
 			</field> 
 			
@@ -33,8 +33,8 @@
         		<arg0 key="항목명" resource="false"/>
         		<arg1 key="100" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>60</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>60</var-value>
 				</var>
 			</field> 
 			
@@ -42,8 +42,8 @@
         		<arg0 key="항목타입" resource="false"/>
         		<arg1 key="20" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>60</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>60</var-value>
 				</var>
 			</field> 
 			

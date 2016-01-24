@@ -11,8 +11,8 @@
                 <arg0 key="처리결과" resource="false"/>
                 <arg1 key="1000" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>1000</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>1000</var-value>
                 </var>                       
             </field>
             
@@ -24,8 +24,8 @@
                 <arg0 key="처리자" resource="false"/>     
                 <arg1 key="30" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>30</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>30</var-value>
                 </var>                       
             </field>
             

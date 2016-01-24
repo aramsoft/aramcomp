@@ -11,8 +11,8 @@
         		<arg0 key="멀티미디어 제목" resource="true"/>
         		<arg1 key="100" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>100</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
 				</var>        		
 			</field>
 			

@@ -11,8 +11,8 @@
         		<arg0 key="wordDicaryVO.wordNm" resource="true"/>
         		<arg1 key="250" resource="false"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>250</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>250</var-value>
 				</var>
 			</field>
 			
@@ -20,8 +20,8 @@
         		<arg0 key="wordDicaryVO.engNm" resource="true"/>
         		<arg1 key="60" resource="true"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>60</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>60</var-value>
 				</var>
 			</field> 
 			
@@ -29,8 +29,8 @@
         		<arg0 key="wordDicaryVO.wordDc" resource="true"/>
         		<arg1 key="2500" resource="true"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>2500</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>2500</var-value>
 				</var>
 			</field> 
 			
@@ -38,8 +38,8 @@
         		<arg0 key="wordDicaryVO.synonm" resource="true"/>
         		<arg1 key="100" resource="true"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>100</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
 				</var>
 			</field>
 						

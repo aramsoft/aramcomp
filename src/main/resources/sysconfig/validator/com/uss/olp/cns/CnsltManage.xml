@@ -11,8 +11,8 @@
         		<arg0 key="cnsltManageVO.wrterNm" resource="true"/>
         		<arg1 key="20" resource="true"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>20</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
 				</var>
 			</field>
 
@@ -20,8 +20,8 @@
         		<arg0 key="cnsltManageVO.writngPassword" resource="true"/>
         		<arg1 key="20" resource="true"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>20</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
 				</var>
 			</field> 
 
@@ -29,8 +29,8 @@
         		<arg0 key="cnsltManageVO.areaNo" resource="true"/>
         		<arg1 key="4" resource="true"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>4</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>4</var-value>
 				</var>
 			</field>
 			
@@ -38,8 +38,8 @@
         		<arg0 key="cnsltManageVO.middleTelno" resource="true"/>
         		<arg1 key="4" resource="true"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>4</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>4</var-value>
 				</var>
 			</field>			
 
@@ -47,8 +47,8 @@
         		<arg0 key="cnsltManageVO.endTelno" resource="true"/>
         		<arg1 key="4" resource="true"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>4</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>4</var-value>
 				</var>
 			</field>
 			
@@ -56,8 +56,8 @@
         		<arg0 key="cop.mbtlNum" resource="true"/>
         		<arg1 key="4" resource="true"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>4</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>4</var-value>
 				</var>
 			</field>
 			
@@ -65,8 +65,8 @@
         		<arg0 key="cop.mbtlNum" resource="true"/>
         		<arg1 key="4" resource="true"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>4</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>4</var-value>
 				</var>
 			</field>			
 
@@ -74,8 +74,8 @@
         		<arg0 key="cop.mbtlNum" resource="true"/>
         		<arg1 key="4" resource="true"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>4</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>4</var-value>
 				</var>
 			</field>			
 			
@@ -92,8 +92,8 @@
         		<arg0 key="cnsltManageVO.cnsltSj" resource="true"/>
         		<arg1 key="250" resource="true"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>250</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>250</var-value>
 				</var>
 			</field>
 			
@@ -101,8 +101,8 @@
         		<arg0 key="cnsltManageVO.cnsltCn" resource="true"/>
         		<arg1 key="2500" resource="true"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>2500</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>2500</var-value>
 				</var>
 			</field> 
 
@@ -110,8 +110,8 @@
         		<arg0 key="cnsltManageVO.managtCn" resource="true"/>
         		<arg1 key="2500" resource="true"/>
 				<var>
-				<var-name>maxlength</var-name>
-				<var-value>2500</var-value>
+					<var-name>maxlength</var-name>
+					<var-value>2500</var-value>
 				</var>
 			</field> 
 											

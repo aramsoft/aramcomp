@@ -11,8 +11,8 @@
                 <arg0 key="IP" resource="false"/>     
                 <arg1 key="23" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>23</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>23</var-value>
                 </var>                       
             </field>
             
@@ -20,8 +20,8 @@
                 <arg0 key="게이트웨이" resource="false"/>     
                 <arg1 key="23" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>23</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>23</var-value>
                 </var>                       
             </field>
             
@@ -29,8 +29,8 @@
                 <arg0 key="서브넷" resource="false"/>     
                 <arg1 key="23" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>23</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>23</var-value>
                 </var>                       
             </field>
             
@@ -38,8 +38,8 @@
                 <arg0 key="DNS" resource="false"/>     
                 <arg1 key="23" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>23</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>23</var-value>
                 </var>                       
             </field>
             
@@ -47,8 +47,8 @@
                 <arg0 key="사용자명" resource="false"/>     
                 <arg1 key="30" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>30</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>30</var-value>
                 </var>                       
             </field> 
                   

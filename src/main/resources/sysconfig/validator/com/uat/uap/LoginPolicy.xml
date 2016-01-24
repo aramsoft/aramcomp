@@ -11,8 +11,8 @@
                 <arg0 key="IP정보" resource="false"/>   
                 <arg1 key="23" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>23</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>23</var-value>
                 </var>                     
             </field>
             

@@ -11,8 +11,8 @@
                 <arg0 key="서버명" resource="false"/>     
                 <arg1 key="30" resource="false"/>
                 <var>
-                <var-name>maxlength</var-name>
-                <var-value>30</var-value>
+	                <var-name>maxlength</var-name>
+	                <var-value>30</var-value>
                 </var>                       
             </field>
             

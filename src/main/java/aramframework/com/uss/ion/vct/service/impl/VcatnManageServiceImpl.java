@@ -36,7 +36,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("vcatnManageService")
 public class VcatnManageServiceImpl extends EgovAbstractServiceImpl implements VcatnManageService {
 
 	@Autowired

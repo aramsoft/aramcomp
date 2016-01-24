@@ -32,7 +32,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("onlineManualService")
 public class OnlineManualServiceImpl extends EgovAbstractServiceImpl implements OnlineManualService {
 
 	@Autowired

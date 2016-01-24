@@ -32,7 +32,7 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
  * </pre>
  */
 
-@Service
+@Service("userManageService")
 public class UserManageServiceImpl extends EgovAbstractServiceImpl implements UserManageService {
 
 	@Autowired

@@ -30,7 +30,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("bkmkMenuManageservice")
 public class BkmkMenuManageServiceImpl extends EgovAbstractServiceImpl implements BkmkMenuManageservice {
 
 	@Autowired

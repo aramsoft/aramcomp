@@ -29,7 +29,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("noteRecptnService")
 public class NoteRecptnServiceImpl extends EgovAbstractServiceImpl implements NoteRecptnService {
 
 	@Autowired

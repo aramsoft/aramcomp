@@ -33,7 +33,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("rssService")
 public class RssServiceImpl extends EgovAbstractServiceImpl implements RssService {
 
 	@Autowired

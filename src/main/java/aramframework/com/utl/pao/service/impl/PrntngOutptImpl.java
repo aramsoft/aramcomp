@@ -27,7 +27,7 @@ import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
  * </pre>
  */
 
-@Service
+@Service("prntngOutpt")
 public class PrntngOutptImpl extends EgovAbstractServiceImpl implements PrntngOutpt {
 
 	@Autowired

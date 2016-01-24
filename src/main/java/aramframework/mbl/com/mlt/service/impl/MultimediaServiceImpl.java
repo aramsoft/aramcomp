@@ -50,7 +50,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("multimediaService")
 public class MultimediaServiceImpl extends EgovAbstractServiceImpl implements MultimediaService {
 
 	@Autowired

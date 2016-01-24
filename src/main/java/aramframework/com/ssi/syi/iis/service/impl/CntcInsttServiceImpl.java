@@ -33,7 +33,7 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
  * </pre>
  */
 
-@Service
+@Service("cntcInsttService")
 public class CntcInsttServiceImpl extends EgovAbstractServiceImpl implements CntcInsttService {
 
 	@Autowired

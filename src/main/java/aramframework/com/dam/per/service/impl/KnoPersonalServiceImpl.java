@@ -33,7 +33,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("knoPersonalService")
 public class KnoPersonalServiceImpl extends EgovAbstractServiceImpl implements KnoPersonalService {
 
 	@Autowired

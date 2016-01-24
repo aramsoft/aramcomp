@@ -36,7 +36,7 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
  * </pre>
  */
 
-@Service
+@Service("proxySvcService")
 public class ProxySvcServiceImpl extends EgovAbstractServiceImpl implements ProxySvcService {
 
 	// 파일구분자

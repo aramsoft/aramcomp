@@ -1,7 +1,7 @@
 package aramframework.com.sts.ust.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 /**
  * 사용자 통계 집계를 위한 스케줄링 클래스
@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
  * </pre>
  */
 
-@Service
+@Component("userStatsScheduling")
 public class UserStatsScheduling {
 
 	/** UserStatsService */

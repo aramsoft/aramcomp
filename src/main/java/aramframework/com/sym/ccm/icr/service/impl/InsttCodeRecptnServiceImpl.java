@@ -41,7 +41,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("insttCodeRecptnService")
 public class InsttCodeRecptnServiceImpl extends EgovAbstractServiceImpl implements InsttCodeRecptnService {
 
 	@Autowired

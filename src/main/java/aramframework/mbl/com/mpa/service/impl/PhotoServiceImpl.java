@@ -38,7 +38,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("photoService")
 public class PhotoServiceImpl extends EgovAbstractServiceImpl implements PhotoService {
 
     /** PhotoMapper  */

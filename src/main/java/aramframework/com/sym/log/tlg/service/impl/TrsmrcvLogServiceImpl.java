@@ -32,7 +32,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("trsmrcvLogService")
 public class TrsmrcvLogServiceImpl extends EgovAbstractServiceImpl implements TrsmrcvLogService {
 
 	@Autowired

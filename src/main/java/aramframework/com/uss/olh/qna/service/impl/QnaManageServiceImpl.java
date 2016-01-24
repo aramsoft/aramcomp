@@ -32,7 +32,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("qnaManageService")
 public class QnaManageServiceImpl extends EgovAbstractServiceImpl implements QnaManageService {
 
 	@Autowired

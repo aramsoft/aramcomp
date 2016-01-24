@@ -49,7 +49,7 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
  * </pre>
  */
 
-@Service
+@Service("synchrnServerService")
 public class SynchrnServerServiceImpl extends EgovAbstractServiceImpl implements SynchrnServerService {
 
 	@Autowired

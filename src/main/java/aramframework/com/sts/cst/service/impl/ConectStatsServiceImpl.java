@@ -28,7 +28,7 @@ import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
  * </pre>
  */
 
-@Service
+@Service("conectStatsService")
 public class ConectStatsServiceImpl extends EgovAbstractServiceImpl implements ConectStatsService {
 
 	@Autowired

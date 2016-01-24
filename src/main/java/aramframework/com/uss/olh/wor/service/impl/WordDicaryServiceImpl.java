@@ -32,7 +32,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("wordDicaryService")
 public class WordDicaryServiceImpl extends EgovAbstractServiceImpl implements WordDicaryService {
 
 	@Autowired

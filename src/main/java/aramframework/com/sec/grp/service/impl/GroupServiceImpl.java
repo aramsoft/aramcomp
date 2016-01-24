@@ -32,7 +32,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("groupService")
 public class GroupServiceImpl extends EgovAbstractServiceImpl implements GroupService {
 
 	@Autowired

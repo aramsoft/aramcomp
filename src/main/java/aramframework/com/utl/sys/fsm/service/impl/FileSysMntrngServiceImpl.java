@@ -37,7 +37,7 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
  * </pre>
  */
 
-@Service
+@Service("fileSysMntrngService")
 public class FileSysMntrngServiceImpl extends EgovAbstractServiceImpl implements FileSysMntrngService {
 
 	@Autowired

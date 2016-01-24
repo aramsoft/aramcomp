@@ -33,7 +33,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("faqManageService")
 public class FaqManageServiceImpl extends EgovAbstractServiceImpl implements FaqManageService {
 
 	@Autowired

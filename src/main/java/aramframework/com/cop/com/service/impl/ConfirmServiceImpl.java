@@ -34,7 +34,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("confirmService")
 public class ConfirmServiceImpl extends EgovAbstractServiceImpl implements ConfirmService {
 
 	@Autowired 

@@ -31,7 +31,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("bbsUseInfoService")
 public class BBSUseInfoServiceImpl extends EgovAbstractServiceImpl implements BBSUseInfoService {
 
 	@Autowired 

@@ -32,7 +32,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("bbsScrapService")
 public class BBSScrapServiceImpl extends EgovAbstractServiceImpl implements BBSScrapService {
 
 	@Autowired 

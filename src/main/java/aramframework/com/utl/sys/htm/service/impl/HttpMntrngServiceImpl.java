@@ -35,7 +35,7 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
  * </pre>
  */
 
-@Service
+@Service("httpMntrngService")
 public class HttpMntrngServiceImpl extends EgovAbstractServiceImpl implements HttpMntrngService {
 
 	@Autowired

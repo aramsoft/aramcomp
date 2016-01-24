@@ -32,7 +32,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("templateService")
 public class TemplateServiceImpl extends EgovAbstractServiceImpl implements TemplateService {
 
 	@Autowired 

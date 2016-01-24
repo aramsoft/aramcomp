@@ -35,7 +35,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("syncService")
 public class SyncServiceImpl extends EgovAbstractServiceImpl implements SyncService{
 	
 	@Autowired

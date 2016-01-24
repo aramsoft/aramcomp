@@ -33,7 +33,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("infrmlSanctnService")
 public class InfrmlSanctnServiceImpl extends EgovAbstractServiceImpl implements InfrmlSanctnService {
 
 	@Autowired

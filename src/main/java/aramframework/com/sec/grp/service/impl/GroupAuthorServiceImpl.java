@@ -29,7 +29,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("groupAuthorService")
 public class GroupAuthorServiceImpl extends EgovAbstractServiceImpl implements GroupAuthorService {
 
 	@Autowired

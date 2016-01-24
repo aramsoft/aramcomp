@@ -34,7 +34,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("offlineWebService")
 public class OfflineWebServiceImpl extends EgovAbstractServiceImpl implements OfflineWebService{
 	
 	@Autowired

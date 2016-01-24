@@ -31,7 +31,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("loginPolicyService")
 public class LoginPolicyServiceImpl extends EgovAbstractServiceImpl implements LoginPolicyService {
 
 	@Autowired

@@ -35,7 +35,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("deptJobService")
 public class DeptJobServiceImpl extends EgovAbstractServiceImpl implements DeptJobService {
 
 	@Autowired 

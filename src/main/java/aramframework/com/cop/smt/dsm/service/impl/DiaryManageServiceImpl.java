@@ -33,7 +33,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("diaryManageService")
 public class DiaryManageServiceImpl extends EgovAbstractServiceImpl implements DiaryManageService {
 
 	@Autowired 

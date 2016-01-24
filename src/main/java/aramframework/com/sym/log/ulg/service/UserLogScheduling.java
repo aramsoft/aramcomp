@@ -3,7 +3,7 @@ package aramframework.com.sym.log.ulg.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 /**
  * 사용자 로그요약을 위한 스케쥴링 클래스
@@ -24,7 +24,7 @@ import org.springframework.stereotype.Service;
  * </pre>
  */
 
-@Service
+@Component("userLogScheduling")
 public class UserLogScheduling {
 
 	@Autowired

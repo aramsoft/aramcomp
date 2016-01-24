@@ -30,7 +30,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("cmmnCodeManageService")
 public class CmmnCodeManageServiceImpl extends EgovAbstractServiceImpl implements CmmnCodeManageService {
 
 	@Autowired

@@ -29,7 +29,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("mainMenuService")
 public class MainMenuServiceImpl extends EgovAbstractServiceImpl implements MainMenuService {
 
 	@Autowired

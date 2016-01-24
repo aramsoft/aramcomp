@@ -35,7 +35,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("mainImageService")
 public class MainImageServiceImpl extends EgovAbstractServiceImpl implements MainImageService {
 
 	@Autowired

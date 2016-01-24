@@ -34,7 +34,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("adressBookService")
 public class AdressBookServiceImpl extends EgovAbstractServiceImpl implements AdressBookService {
 
 	@Autowired

@@ -33,7 +33,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("meetingManageService")
 public class MeetingManageServiceImpl extends EgovAbstractServiceImpl implements MeetingManageService {
 
 	@Autowired

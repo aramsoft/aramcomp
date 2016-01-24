@@ -34,7 +34,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("realtimeNoticeService")
 public class RealtimeNoticeServiceImpl extends EgovAbstractServiceImpl implements RealtimeNoticeService{
 	
 	@Autowired

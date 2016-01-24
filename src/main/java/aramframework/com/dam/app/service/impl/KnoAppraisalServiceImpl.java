@@ -30,7 +30,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("knoAppraisalService")
 public class KnoAppraisalServiceImpl extends EgovAbstractServiceImpl implements KnoAppraisalService {
 
 	@Autowired

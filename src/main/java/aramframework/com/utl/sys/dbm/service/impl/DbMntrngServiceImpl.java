@@ -31,7 +31,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("dbMntrngService")
 public class DbMntrngServiceImpl extends EgovAbstractServiceImpl implements DbMntrngService {
 
 	/**

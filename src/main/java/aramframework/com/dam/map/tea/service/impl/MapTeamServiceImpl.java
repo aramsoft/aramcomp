@@ -30,7 +30,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("mapTeamService")
 public class MapTeamServiceImpl extends EgovAbstractServiceImpl implements MapTeamService {
 
 	@Autowired

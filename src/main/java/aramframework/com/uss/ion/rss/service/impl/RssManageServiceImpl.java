@@ -34,7 +34,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("rssManageService")
 public class RssManageServiceImpl extends EgovAbstractServiceImpl implements RssManageService {
 
 	/* RSS관리 DAO */

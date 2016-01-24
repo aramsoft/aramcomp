@@ -35,7 +35,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("rwardManageService")
 public class RwardManageServiceImpl extends EgovAbstractServiceImpl implements RwardManageService {
 
 	@Autowired

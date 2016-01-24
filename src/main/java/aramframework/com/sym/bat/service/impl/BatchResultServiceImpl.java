@@ -29,7 +29,7 @@ import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
  * </pre>
  */
 
-@Service
+@Service("batchResultService")
 public class BatchResultServiceImpl extends EgovAbstractServiceImpl implements BatchResultService {
 
 	/**

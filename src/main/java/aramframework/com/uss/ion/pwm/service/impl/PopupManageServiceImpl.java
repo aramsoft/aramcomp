@@ -32,7 +32,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("popupManageService")
 public class PopupManageServiceImpl extends EgovAbstractServiceImpl implements PopupManageService {
 
 	@Autowired

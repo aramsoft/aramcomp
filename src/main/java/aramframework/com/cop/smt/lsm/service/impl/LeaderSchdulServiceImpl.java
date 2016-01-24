@@ -33,7 +33,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("leaderSchdulService")
 public class LeaderSchdulServiceImpl extends EgovAbstractServiceImpl implements LeaderSchdulService {
 
 	@Autowired 

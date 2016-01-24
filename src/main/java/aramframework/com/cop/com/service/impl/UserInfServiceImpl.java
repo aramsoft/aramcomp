@@ -35,7 +35,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("userInfService")
 public class UserInfServiceImpl extends EgovAbstractServiceImpl implements UserInfService {
 
 	@Autowired 

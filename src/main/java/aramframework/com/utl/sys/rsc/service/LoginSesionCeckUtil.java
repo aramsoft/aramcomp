@@ -1,6 +1,6 @@
 package aramframework.com.utl.sys.rsc.service;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import egovframework.rte.fdl.security.userdetails.EgovUserDetails;
 import aramframework.com.cmm.LoginVO;
@@ -27,7 +27,7 @@ import aramframework.com.cmm.util.UserDetailsHelper;
  * </pre>
  */
 
-@Service
+@Component("loginSesionCeckUtil")
 public class LoginSesionCeckUtil {
 
 	/**

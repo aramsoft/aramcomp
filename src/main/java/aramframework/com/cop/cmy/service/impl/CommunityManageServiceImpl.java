@@ -51,7 +51,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("communityManageService")
 public class CommunityManageServiceImpl extends EgovAbstractServiceImpl implements CommunityManageService {
 
 	@Resource(name = "cacheDictionary")

@@ -33,7 +33,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("bbsSatisfactionService")
 public class BBSSatisfactionServiceImpl extends EgovAbstractServiceImpl implements BBSSatisfactionService {
 
 	@Autowired 

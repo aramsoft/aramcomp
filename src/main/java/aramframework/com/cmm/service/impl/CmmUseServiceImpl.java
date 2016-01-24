@@ -34,7 +34,7 @@ import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
  * </pre>
  */
 
-@Service
+@Service("cmmUseService")
 public class CmmUseServiceImpl extends EgovAbstractServiceImpl implements CmmUseService {
 
 	@Autowired 

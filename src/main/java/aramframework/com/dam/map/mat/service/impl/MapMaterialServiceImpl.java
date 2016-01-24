@@ -30,7 +30,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("mapMaterialService")
 public class MapMaterialServiceImpl extends EgovAbstractServiceImpl implements MapMaterialService {
 
 	@Autowired

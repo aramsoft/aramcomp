@@ -32,7 +32,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("restdeManageService")
 public class RestdeManageServiceImpl extends EgovAbstractServiceImpl implements RestdeManageService {
 
 	@Autowired

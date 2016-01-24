@@ -39,7 +39,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("bbsMasterService")
 public class BBSMasterServiceImpl extends EgovAbstractServiceImpl implements BBSMasterService {
 
 	@Resource(name = "cacheDictionary")

@@ -33,7 +33,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("wikiBookmarkService")
 public class WikiBookmarkServiceImpl extends EgovAbstractServiceImpl implements WikiBookmarkService {
 
 	/* 위키북마크 DAO */

@@ -35,7 +35,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("loginScrinImageService")
 public class LoginScrinImageServiceImpl extends EgovAbstractServiceImpl implements LoginScrinImageService {
 
 	@Autowired

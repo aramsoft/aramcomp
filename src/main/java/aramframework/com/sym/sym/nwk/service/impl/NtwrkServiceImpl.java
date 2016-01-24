@@ -32,7 +32,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("ntwrkService")
 public class NtwrkServiceImpl extends EgovAbstractServiceImpl implements NtwrkService {
 
 	@Autowired

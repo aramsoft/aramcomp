@@ -32,7 +32,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("qustnrTmplatManageService")
 public class QustnrTmplatManageServiceImpl extends EgovAbstractServiceImpl implements QustnrTmplatManageService {
 
 	@Autowired

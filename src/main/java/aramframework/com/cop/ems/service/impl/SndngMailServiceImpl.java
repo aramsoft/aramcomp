@@ -51,7 +51,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("sndngMailService")
 public class SndngMailServiceImpl extends EgovAbstractServiceImpl implements SndngMailService {
 	
 	// 파일구분자

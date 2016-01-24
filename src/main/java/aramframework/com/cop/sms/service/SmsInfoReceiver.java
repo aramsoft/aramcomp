@@ -3,7 +3,7 @@ package aramframework.com.cop.sms.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import x3.client.smeapi.SMEConnection;
 import x3.client.smeapi.SMEConnectionFactory;
@@ -39,7 +39,7 @@ import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
  * </pre>
  */
 
-@Service
+@Component("smsInfoReceiver")
 public class SmsInfoReceiver extends EgovAbstractServiceImpl implements SMEListener {
 
 	@Autowired 

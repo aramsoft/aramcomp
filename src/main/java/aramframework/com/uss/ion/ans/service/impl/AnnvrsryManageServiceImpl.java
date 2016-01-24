@@ -41,7 +41,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("annvrsryManageService")
 public class AnnvrsryManageServiceImpl extends EgovAbstractServiceImpl implements AnnvrsryManageService {
 
 	@Autowired

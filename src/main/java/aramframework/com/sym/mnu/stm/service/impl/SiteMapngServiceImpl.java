@@ -27,7 +27,7 @@ import aramframework.com.sym.mnu.stm.service.SiteMapngVO;
  * </pre>
  */
 
-@Service
+@Service("siteMapngService")
 public class SiteMapngServiceImpl extends EgovAbstractServiceImpl implements SiteMapngService {
 
 	@Autowired

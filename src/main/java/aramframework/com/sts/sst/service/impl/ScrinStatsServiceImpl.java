@@ -28,7 +28,7 @@ import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
  * </pre>
  */
 
-@Service
+@Service("scrinStatsService")
 public class ScrinStatsServiceImpl extends EgovAbstractServiceImpl implements ScrinStatsService {
 
 	@Autowired

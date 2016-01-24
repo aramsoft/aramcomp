@@ -32,7 +32,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("trsmrcvMntrngService")
 public class TrsmrcvMntrngServiceImpl extends EgovAbstractServiceImpl implements TrsmrcvMntrngService {
 
 	/**

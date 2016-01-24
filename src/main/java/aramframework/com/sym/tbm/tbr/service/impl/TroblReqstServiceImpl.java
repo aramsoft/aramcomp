@@ -33,7 +33,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("troblReqstService")
 public class TroblReqstServiceImpl extends EgovAbstractServiceImpl implements TroblReqstService {
 
 	@Autowired

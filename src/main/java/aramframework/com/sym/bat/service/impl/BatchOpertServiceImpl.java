@@ -32,7 +32,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("batchOpertService")
 public class BatchOpertServiceImpl extends EgovAbstractServiceImpl implements BatchOpertService {
 
 	/**

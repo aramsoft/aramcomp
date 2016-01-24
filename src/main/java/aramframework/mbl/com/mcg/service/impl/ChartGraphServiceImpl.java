@@ -37,7 +37,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("chartGraphService")
 public class ChartGraphServiceImpl extends EgovAbstractServiceImpl implements ChartGraphService {
 
 	@Autowired

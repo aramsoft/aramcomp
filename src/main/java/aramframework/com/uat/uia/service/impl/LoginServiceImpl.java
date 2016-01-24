@@ -31,7 +31,7 @@ import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
  * </pre>
  */
 
-@Service
+@Service("loginService")
 public class LoginServiceImpl extends EgovAbstractServiceImpl implements LoginService {
 
 	@Autowired

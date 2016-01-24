@@ -32,7 +32,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("sysLogService")
 public class SysLogServiceImpl extends EgovAbstractServiceImpl implements SysLogService {
 
 	@Autowired

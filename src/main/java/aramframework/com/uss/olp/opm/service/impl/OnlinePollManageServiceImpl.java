@@ -33,7 +33,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("onlinePollManageService")
 public class OnlinePollManageServiceImpl extends EgovAbstractServiceImpl implements OnlinePollManageService {
 
 	@Autowired

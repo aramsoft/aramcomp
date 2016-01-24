@@ -34,7 +34,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("schdulManageService")
 public class SchdulManageServiceImpl extends EgovAbstractServiceImpl implements SchdulManageService {
 
 	@Autowired 

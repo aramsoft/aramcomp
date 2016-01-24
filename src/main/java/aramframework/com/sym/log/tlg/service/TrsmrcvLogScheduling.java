@@ -1,7 +1,7 @@
 package aramframework.com.sym.log.tlg.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 /**
  * 송수신 로그 요약을 위한 스케쥴링 클래스
@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
  * </pre>
  */
 
-@Service
+@Component("trsmrcvLogScheduling")
 public class TrsmrcvLogScheduling {
 
 	@Autowired

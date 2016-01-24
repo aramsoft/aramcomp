@@ -32,7 +32,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("administrationWordService")
 public class AdministrationWordServiceImpl extends EgovAbstractServiceImpl implements AdministrationWordService {
 
 	@Autowired

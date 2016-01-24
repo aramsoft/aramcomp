@@ -29,7 +29,7 @@ import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
  * </pre>
  */
 
-@Service
+@Service("backupResultService")
 public class BackupResultServiceImpl extends EgovAbstractServiceImpl implements BackupResultService {
 
 	@Autowired

@@ -35,7 +35,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("notificationService")
 public class NotificationServiceImpl extends EgovAbstractServiceImpl implements NotificationService {
 
 	@Autowired

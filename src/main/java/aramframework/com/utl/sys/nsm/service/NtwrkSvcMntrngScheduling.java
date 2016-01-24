@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import aramframework.com.utl.fcc.service.DateUtil;
 import aramframework.com.utl.fcc.service.StringUtil;
@@ -36,7 +36,7 @@ import aramframework.com.utl.sys.nsm.service.impl.NtwrkSvcMntrngChecker;
  * </pre>
  */
 
-@Service
+@Component("ntwrkSvcMntrngScheduling")
 public class NtwrkSvcMntrngScheduling {
 
 	@Autowired

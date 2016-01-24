@@ -34,7 +34,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("memoReprtService")
 public class MemoReprtServiceImpl extends EgovAbstractServiceImpl implements MemoReprtService {
 
 	@Autowired 

@@ -32,7 +32,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("sysHistoryService")
 public class SysHistoryServiceImpl extends EgovAbstractServiceImpl implements SysHistoryService {
 
 	@Autowired

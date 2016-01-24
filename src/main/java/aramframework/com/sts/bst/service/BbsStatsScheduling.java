@@ -1,7 +1,7 @@
 package aramframework.com.sts.bst.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 /**
  * 게시물 통계 집계를 위한 스케줄링 클래스
@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
  * </pre>
  */
 
-@Service
+@Component("bbsStatsScheduling")
 public class BbsStatsScheduling {
 
 	@Autowired

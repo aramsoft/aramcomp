@@ -35,7 +35,7 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
  * </pre>
  */
 
-@Service
+@Service("processMonService")
 public class ProcessMonServiceImpl extends EgovAbstractServiceImpl implements ProcessMonService {
 
 	@Autowired

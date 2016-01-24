@@ -33,7 +33,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("cnsltManageService")
 public class CnsltManageServiceImpl extends EgovAbstractServiceImpl implements CnsltManageService {
 
 	@Autowired

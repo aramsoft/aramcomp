@@ -32,7 +32,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("cmyMenuManageService")
 public class CmyMenuManageServiceImpl extends EgovAbstractServiceImpl implements CmyMenuManageService {
 
 	@Autowired 

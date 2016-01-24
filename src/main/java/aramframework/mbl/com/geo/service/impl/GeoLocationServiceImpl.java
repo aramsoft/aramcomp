@@ -37,7 +37,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("geoLocationService")
 public class GeoLocationServiceImpl extends EgovAbstractServiceImpl implements GeoLocationService {
 
 	@Autowired

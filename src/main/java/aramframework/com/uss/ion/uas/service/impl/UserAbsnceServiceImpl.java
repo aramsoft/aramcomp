@@ -31,7 +31,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("userAbsnceService")
 public class UserAbsnceServiceImpl extends EgovAbstractServiceImpl implements UserAbsnceService {
 
 	@Autowired

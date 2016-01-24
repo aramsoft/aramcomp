@@ -25,7 +25,7 @@ import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
  * </pre>
  */
 
-@Service
+@Service("rlnmManageService")
 public class RlnmManageServiceImpl extends EgovAbstractServiceImpl implements RlnmManageService {
 
 	/**

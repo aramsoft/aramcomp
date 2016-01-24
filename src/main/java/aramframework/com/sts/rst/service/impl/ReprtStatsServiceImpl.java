@@ -31,7 +31,7 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
  * </pre>
  */
 
-@Service
+@Service("reprtStatsService")
 public class ReprtStatsServiceImpl extends EgovAbstractServiceImpl implements ReprtStatsService {
 
 	@Autowired

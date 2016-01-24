@@ -35,7 +35,7 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
  * </pre>
  */
 
-@Service
+@Service("ntwrkSvcMntrngService")
 public class NtwrkSvcMntrngServiceImpl extends EgovAbstractServiceImpl implements NtwrkSvcMntrngService {
 
 	@Autowired

@@ -30,7 +30,7 @@ import aramframework.com.cmm.util.BeanUtil;
  * </pre>
  */
 
-@Service
+@Service("fileMngService")
 public class FileMngServiceImpl extends EgovAbstractServiceImpl implements FileMngService {
 
 	@Autowired 

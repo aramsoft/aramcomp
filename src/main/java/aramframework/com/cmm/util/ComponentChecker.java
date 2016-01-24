@@ -4,7 +4,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 /**
  * 컴포넌트 설치 유무 확인 클래스
@@ -25,7 +25,7 @@ import org.springframework.stereotype.Service;
  * </pre>
  */
 
-@Service
+@Component("componentChecker")
 public class ComponentChecker implements ApplicationContextAware {
 
 	public static ApplicationContext context;

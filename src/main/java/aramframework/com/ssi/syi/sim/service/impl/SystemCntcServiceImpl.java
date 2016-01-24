@@ -32,7 +32,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("systemCntcService")
 public class SystemCntcServiceImpl extends EgovAbstractServiceImpl implements SystemCntcService {
 
 	@Autowired

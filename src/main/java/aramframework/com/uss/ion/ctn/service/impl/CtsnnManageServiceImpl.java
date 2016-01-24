@@ -34,7 +34,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("ctsnnManageService")
 public class CtsnnManageServiceImpl extends EgovAbstractServiceImpl implements CtsnnManageService {
 
 	@Autowired

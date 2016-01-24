@@ -17,7 +17,7 @@ import javax.management.remote.JMXServiceURL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import aramframework.com.cop.sms.service.SmsInfoService;
 import aramframework.com.cop.sms.service.SmsVO;
@@ -45,7 +45,7 @@ import aramframework.com.utl.fcc.service.StringUtil;
  * </pre>
  */
 
-@Service
+@Component("serverResrceMntrngScheduling")
 public class ServerResrceMntrngScheduling {
 
 	@Autowired

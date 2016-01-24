@@ -33,7 +33,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("requestOfferService")
 public class RequestOfferServiceImpl extends EgovAbstractServiceImpl implements RequestOfferService {
 
 	@Autowired

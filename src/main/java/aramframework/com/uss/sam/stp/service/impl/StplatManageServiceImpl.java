@@ -32,7 +32,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("stplatManageService")
 public class StplatManageServiceImpl extends EgovAbstractServiceImpl implements StplatManageService {
 
 	@Autowired

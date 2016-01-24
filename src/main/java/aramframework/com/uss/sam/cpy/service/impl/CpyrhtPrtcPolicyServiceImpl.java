@@ -32,7 +32,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("cpyrhtPrtcPolicyService")
 public class CpyrhtPrtcPolicyServiceImpl extends EgovAbstractServiceImpl implements CpyrhtPrtcPolicyService {
 
 	@Autowired

@@ -32,7 +32,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("hpcmManageService")
 public class HpcmManageServiceImpl extends EgovAbstractServiceImpl implements HpcmManageService {
 
 	@Autowired

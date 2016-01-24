@@ -37,7 +37,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("smsInfoService")
 public class SmsInfoServiceImpl extends EgovAbstractServiceImpl implements SmsInfoService {
 
 	@Autowired 

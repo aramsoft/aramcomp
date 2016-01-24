@@ -33,7 +33,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("indvdlPgeService")
 public class IndvdlPgeServiceImpl extends EgovAbstractServiceImpl implements IndvdlPgeService {
 
 	@Autowired

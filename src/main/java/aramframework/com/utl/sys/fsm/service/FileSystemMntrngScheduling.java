@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import aramframework.com.utl.fcc.service.DateUtil;
 import aramframework.com.utl.fcc.service.StringUtil;
@@ -37,7 +37,7 @@ import aramframework.com.utl.sys.fsm.service.impl.FileSystemChecker;
  * </pre>
  */
 
-@Service
+@Component("fileSystemMntrngScheduling")
 public class FileSystemMntrngScheduling {
 
 	@Autowired

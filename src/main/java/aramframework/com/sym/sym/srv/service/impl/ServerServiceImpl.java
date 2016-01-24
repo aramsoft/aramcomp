@@ -34,7 +34,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("serverService")
 public class ServerServiceImpl extends EgovAbstractServiceImpl implements ServerService {
 
 	@Autowired

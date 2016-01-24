@@ -30,7 +30,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("progrmManageDtlService")
 public class ProgrmManageDtlServiceImpl extends EgovAbstractServiceImpl implements ProgrmManageDtlService {
 
 	@Autowired

@@ -51,7 +51,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Service
+@Service("zipManageService")
 public class ZipManageServiceImpl extends EgovAbstractServiceImpl implements ZipManageService {
 
 	@Autowired

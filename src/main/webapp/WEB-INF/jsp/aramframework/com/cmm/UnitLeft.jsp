@@ -11,7 +11,6 @@
 <c:set var="isDam" value="false"/>
 <c:set var="isCom" value="false"/>
 <c:set var="isMbl" value="false"/>
-<c:set var="isHyb" value="false"/>
 <c:set var="isEtc" value="false"/>
 <table >
 	<c:forEach var="result" items="${resultList}" varStatus="status">
@@ -102,14 +101,6 @@
 				</td>
 			</tr>
 			<c:set var="isMbl" value="true"/>
-		</c:if>
-		<c:if test="${isHyb == 'false' && result.gid == '110'}">
-			<tr height = "16">
-			    <td align="left" width="100%">
-			    	<br><h1>하이브리드</h1>
-				</td>
-			</tr>
-			<c:set var="isHyb" value="true"/>
 		</c:if>
 		<c:if test="${isEtc == 'false' && result.gid == '120'}">
 			<tr height = "16">

@@ -6,7 +6,6 @@
 <c:if test="${loginVO == null}">
 	 아람소프트 컴포넌트에 오신 것을 환영합니다. !!!<br/>
     <a href="${pageContext.request.contextPath}/uat/uia/loginUsr.do?targetUrl=/UnitContent.do"><b>로그인</b></a>
-    <!-- a href="https://localhost:8443/uat/uia/loginUsr.do"><b>로그인</b></a-->
     <br/><br/>
 </c:if>
 

@@ -3,6 +3,10 @@
 <%@ page import	= "aramframework.com.cmm.util.Log4Jsp" %>
 <%
 	Log4Jsp.error("[code500.jsp] HTTP 500 Error - Internal Server error");
+	Log4Jsp.debugRequest(request);
+	Log4Jsp.debugParameters(request);
+	Log4Jsp.debugHeaders(request);
+//	Log4Jsp.debugCookies(request);
 %>
 <html lang="ko">
 <head>

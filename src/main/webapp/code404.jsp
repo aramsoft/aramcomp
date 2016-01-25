@@ -3,8 +3,8 @@
 <%@ page import	= "aramframework.com.cmm.util.Log4Jsp" %>
 <%
 	Log4Jsp.error("[code404.jsp] HTTP 404 Error - File not found ");
-//	Log4Jsp.debugRequest(request);
-//	Log4Jsp.debugParameters(request);
+	Log4Jsp.debugRequest(request);
+	Log4Jsp.debugParameters(request);
 	Log4Jsp.debugHeaders(request);
 //	Log4Jsp.debugCookies(request);
 %>

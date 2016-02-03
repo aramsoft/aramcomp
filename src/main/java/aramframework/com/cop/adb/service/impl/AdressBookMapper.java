@@ -38,18 +38,18 @@ public interface AdressBookMapper {
 	public List<EgovMap> selectAdressBookList(AdressBookVO adressBookVO);
 
 	/**
-	 * 주어진 조건에 맞는 주소록을 불러온다.
-	 * 
-	 * @param adressBookVO
-	 */
-	public AdressBookVO selectAdressBook(AdressBookVO adressBookVO);
-
-	/**
 	 * 주소록 목록에 대한 전체 건수를 조회한다.
 	 * 
 	 * @param adressBookVO
 	 */
 	public int selectAdressBookListCnt(AdressBookVO adressBookVO);
+
+	/**
+	 * 주어진 조건에 맞는 주소록을 불러온다.
+	 * 
+	 * @param adressBookVO
+	 */
+	public AdressBookVO selectAdressBook(AdressBookVO adressBookVO);
 
 	/**
 	 * 주소록 정보를 등록한다.

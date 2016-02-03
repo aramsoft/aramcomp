@@ -2,6 +2,7 @@ package aramframework.com.uss.ion.nws.service;
 
 import java.util.List;
 
+import aramframework.com.uss.ion.nws.domain.NewsManageVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

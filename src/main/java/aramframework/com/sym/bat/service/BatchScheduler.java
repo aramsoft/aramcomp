@@ -18,6 +18,7 @@ import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean;
 import org.springframework.util.Assert;
 
+import aramframework.com.sym.bat.domain.BatchSchdulVO;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 
 /**

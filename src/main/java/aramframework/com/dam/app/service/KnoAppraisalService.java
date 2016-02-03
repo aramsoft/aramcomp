@@ -2,6 +2,7 @@ package aramframework.com.dam.app.service;
 
 import java.util.List;
 
+import aramframework.com.dam.app.domain.KnoAppraisalVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

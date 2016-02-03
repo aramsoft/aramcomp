@@ -2,9 +2,9 @@ package aramframework.com.uss.ion.mtg.service.impl;
 
 import java.util.List;
 
-import aramframework.com.uss.ion.mtg.service.MtgPlaceFxtrsVO;
-import aramframework.com.uss.ion.mtg.service.MtgPlaceManageVO;
-import aramframework.com.uss.ion.mtg.service.MtgPlaceResveVO;
+import aramframework.com.uss.ion.mtg.domain.MtgPlaceFxtrsVO;
+import aramframework.com.uss.ion.mtg.domain.MtgPlaceManageVO;
+import aramframework.com.uss.ion.mtg.domain.MtgPlaceResveVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

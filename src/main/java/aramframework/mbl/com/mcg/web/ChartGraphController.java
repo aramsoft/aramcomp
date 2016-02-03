@@ -17,7 +17,7 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
-import aramframework.mbl.com.mcg.service.ChartGraphVO;
+import aramframework.mbl.com.mcg.domain.ChartGraphVO;
 import aramframework.mbl.com.mcg.service.ChartGraphService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 

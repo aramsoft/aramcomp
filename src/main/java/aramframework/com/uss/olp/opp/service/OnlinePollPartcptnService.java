@@ -2,6 +2,7 @@ package aramframework.com.uss.olp.opp.service;
 
 import java.util.List;
 
+import aramframework.com.uss.olp.opp.domain.OnlinePollPartcptnVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

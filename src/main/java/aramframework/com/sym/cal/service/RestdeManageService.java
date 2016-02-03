@@ -2,6 +2,7 @@ package aramframework.com.sym.cal.service;
 
 import java.util.List;
 
+import aramframework.com.sym.cal.domain.RestdeVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

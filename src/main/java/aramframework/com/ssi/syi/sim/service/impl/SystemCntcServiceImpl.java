@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.ssi.syi.sim.domain.SystemCntcVO;
 import aramframework.com.ssi.syi.sim.service.SystemCntcService;
-import aramframework.com.ssi.syi.sim.service.SystemCntcVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.cmmn.exception.FdlException;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;

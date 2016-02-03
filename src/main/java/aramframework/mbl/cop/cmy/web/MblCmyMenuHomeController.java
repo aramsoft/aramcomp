@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import aramframework.com.cmm.constant.CacheKey;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.cop.bbs.domain.BoardMasterVO;
 import aramframework.com.cop.bbs.service.BBSBoardService;
-import aramframework.com.cop.bbs.service.BoardMasterVO;
 import aramframework.com.cop.bbs.service.BBSMasterService;
-import aramframework.com.cop.cmy.service.CommunityVO;
+import aramframework.com.cop.cmy.domain.CommunityVO;
 import aramframework.com.cop.cmy.service.CommunityManageService;
 import aramframework.com.cop.com.service.ConfirmService;
 

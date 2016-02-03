@@ -2,7 +2,7 @@ package aramframework.com.uss.sam.ipm.service.impl;
 
 import java.util.List;
 
-import aramframework.com.uss.sam.ipm.service.IndvdlInfoPolicyVO;
+import aramframework.com.uss.sam.ipm.domain.IndvdlInfoPolicyVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

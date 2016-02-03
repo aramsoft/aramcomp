@@ -2,7 +2,7 @@ package aramframework.mbl.com.mcg.service.impl;
 
 import java.util.List;
 
-import aramframework.mbl.com.mcg.service.ChartGraphVO;
+import aramframework.mbl.com.mcg.domain.ChartGraphVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

@@ -14,8 +14,8 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.uss.ion.noi.domain.NotificationVO;
 import aramframework.com.uss.ion.noi.service.NotificationService;
-import aramframework.com.uss.ion.noi.service.NotificationVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**

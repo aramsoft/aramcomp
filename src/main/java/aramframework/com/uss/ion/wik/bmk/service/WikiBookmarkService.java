@@ -2,6 +2,7 @@ package aramframework.com.uss.ion.wik.bmk.service;
 
 import java.util.List;
 
+import aramframework.com.uss.ion.wik.bmk.domain.WikiBookmarkVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

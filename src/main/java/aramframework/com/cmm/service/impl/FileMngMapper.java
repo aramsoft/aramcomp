@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import egovframework.rte.psl.dataaccess.EgovAbstractMapper;
-import aramframework.com.cmm.service.FileVO;
+import aramframework.com.cmm.domain.FileVO;
 
 /**
  * 파일정보 관리를 위한 데이터 처리 클래스

@@ -17,9 +17,9 @@ import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.utl.fcc.service.DateUtil;
 import aramframework.com.utl.fcc.service.StringUtil;
+import aramframework.com.utl.sys.pxy.domain.ProxySvcLogVO;
+import aramframework.com.utl.sys.pxy.domain.ProxySvcVO;
 import aramframework.com.utl.sys.pxy.service.ProxySvcService;
-import aramframework.com.utl.sys.pxy.service.ProxySvcLogVO;
-import aramframework.com.utl.sys.pxy.service.ProxySvcVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**

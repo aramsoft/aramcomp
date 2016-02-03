@@ -2,6 +2,8 @@ package aramframework.com.sts.rst.service;
 
 import java.util.List;
 
+import aramframework.com.sts.rst.domain.ReprtStatsVO;
+
 /**
  * 개요
  * - 보고서통계에 대한 Service Interface를 정의한다.

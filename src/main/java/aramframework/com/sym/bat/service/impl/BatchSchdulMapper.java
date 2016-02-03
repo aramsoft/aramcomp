@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import egovframework.rte.psl.dataaccess.EgovAbstractMapper;
-import aramframework.com.sym.bat.service.BatchSchdulVO;
-import aramframework.com.sym.bat.service.BatchSchdulDfkVO;
+import aramframework.com.sym.bat.domain.BatchSchdulDfkVO;
+import aramframework.com.sym.bat.domain.BatchSchdulVO;
 
 /**
  * 배치스케줄관리에 대한 DAO 클래스를 정의한다.

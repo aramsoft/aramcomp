@@ -2,8 +2,8 @@ package aramframework.com.utl.sys.fsm.service.impl;
 
 import java.util.List;
 
-import aramframework.com.utl.sys.fsm.service.FileSysMntrngLogVO;
-import aramframework.com.utl.sys.fsm.service.FileSysMntrngVO;
+import aramframework.com.utl.sys.fsm.domain.FileSysMntrngLogVO;
+import aramframework.com.utl.sys.fsm.domain.FileSysMntrngVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 
 /**

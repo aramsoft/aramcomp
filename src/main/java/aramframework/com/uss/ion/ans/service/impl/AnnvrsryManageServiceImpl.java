@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
-import aramframework.com.uss.ion.ans.service.AnnvrsryManageVO;
+import aramframework.com.uss.ion.ans.domain.AnnvrsryManageVO;
 import aramframework.com.uss.ion.ans.service.AnnvrsryManageService;
 import aramframework.com.utl.fcc.service.DateUtil;
 import aramframework.com.utl.fcc.service.StringUtil;

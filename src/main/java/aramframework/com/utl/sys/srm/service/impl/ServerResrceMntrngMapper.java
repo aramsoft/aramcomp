@@ -3,7 +3,7 @@ package aramframework.com.utl.sys.srm.service.impl;
 import java.util.List;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import aramframework.com.utl.sys.srm.service.ServerResrceMntrngVO;
+import aramframework.com.utl.sys.srm.domain.ServerResrceMntrngVO;
 
 /**
  * 개요 - 서버자원모니터링에 대한 DAO 클래스를 정의한다.

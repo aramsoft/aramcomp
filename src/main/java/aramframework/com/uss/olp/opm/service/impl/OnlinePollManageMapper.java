@@ -3,8 +3,8 @@ package aramframework.com.uss.olp.opm.service.impl;
 import java.util.List;
 
 import aramframework.com.cmm.SearchVO;
-import aramframework.com.uss.olp.opm.service.OnlinePollItemVO;
-import aramframework.com.uss.olp.opm.service.OnlinePollManageVO;
+import aramframework.com.uss.olp.opm.domain.OnlinePollItemVO;
+import aramframework.com.uss.olp.opm.domain.OnlinePollManageVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

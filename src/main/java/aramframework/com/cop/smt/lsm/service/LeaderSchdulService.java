@@ -2,6 +2,8 @@ package aramframework.com.cop.smt.lsm.service;
 
 import java.util.List;
 
+import aramframework.com.cop.smt.lsm.domain.LeaderSchdulVO;
+import aramframework.com.cop.smt.lsm.domain.LeaderSttusVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

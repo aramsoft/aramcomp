@@ -2,7 +2,7 @@ package aramframework.com.uat.uap.service.impl;
 
 import java.util.List;
 
-import aramframework.com.uat.uap.service.LoginPolicyVO;
+import aramframework.com.uat.uap.domain.LoginPolicyVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

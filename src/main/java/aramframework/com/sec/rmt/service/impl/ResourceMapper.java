@@ -2,7 +2,7 @@ package aramframework.com.sec.rmt.service.impl;
 
 import java.util.List;
 
-import aramframework.com.sec.rmt.service.ResourceVO;
+import aramframework.com.sec.rmt.domain.ResourceVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

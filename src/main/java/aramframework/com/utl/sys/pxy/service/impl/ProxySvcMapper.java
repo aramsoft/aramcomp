@@ -3,8 +3,8 @@ package aramframework.com.utl.sys.pxy.service.impl;
 import java.util.List;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import aramframework.com.utl.sys.pxy.service.ProxySvcLogVO;
-import aramframework.com.utl.sys.pxy.service.ProxySvcVO;
+import aramframework.com.utl.sys.pxy.domain.ProxySvcLogVO;
+import aramframework.com.utl.sys.pxy.domain.ProxySvcVO;
 
 /**
  * 개요 - 프록시서비스정보 및 프록시로그정보에 대한 DAO 클래스를 정의한다.

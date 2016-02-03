@@ -3,7 +3,7 @@ package aramframework.com.uss.ion.rsn.service.impl;
 import java.util.HashMap;
 import java.util.List;
 
-import aramframework.com.uss.ion.rsn.service.RssInfoVO;
+import aramframework.com.uss.ion.rsn.domain.RssInfoVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

@@ -15,8 +15,8 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import aramframework.com.cmm.util.MessageHelper;
+import aramframework.com.uat.uap.domain.LoginPolicyVO;
 import aramframework.com.uat.uap.service.LoginPolicyService;
-import aramframework.com.uat.uap.service.LoginPolicyVO;
 import aramframework.com.utl.sim.service.ClntInfo;
 
 /**

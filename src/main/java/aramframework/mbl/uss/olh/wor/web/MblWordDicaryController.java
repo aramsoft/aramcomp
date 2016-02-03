@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import aramframework.com.uss.olh.wor.domain.WordDicaryVO;
 import aramframework.com.uss.olh.wor.service.WordDicaryService;
-import aramframework.com.uss.olh.wor.service.WordDicaryVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**

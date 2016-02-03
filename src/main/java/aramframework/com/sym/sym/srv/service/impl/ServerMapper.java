@@ -2,9 +2,9 @@ package aramframework.com.sym.sym.srv.service.impl;
 
 import java.util.List;
 
+import aramframework.com.sym.sym.srv.domain.ServerEqpmnVO;
+import aramframework.com.sym.sym.srv.domain.ServerVO;
 import aramframework.com.sym.sym.srv.service.ServerEqpmnRelateVO;
-import aramframework.com.sym.sym.srv.service.ServerEqpmnVO;
-import aramframework.com.sym.sym.srv.service.ServerVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

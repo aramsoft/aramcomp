@@ -3,7 +3,7 @@ package aramframework.com.utl.sys.ssy.service.impl;
 import java.util.List;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import aramframework.com.utl.sys.ssy.service.SynchrnServerVO;
+import aramframework.com.utl.sys.ssy.domain.SynchrnServerVO;
 
 /**
  * 개요 - 동기화대상 서버에 대한 DAO 클래스를 정의한다.

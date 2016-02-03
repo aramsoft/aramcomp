@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.sym.prm.domain.ProgrmManageVO;
 import aramframework.com.sym.prm.service.ProgrmManageService;
-import aramframework.com.sym.prm.service.ProgrmManageVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

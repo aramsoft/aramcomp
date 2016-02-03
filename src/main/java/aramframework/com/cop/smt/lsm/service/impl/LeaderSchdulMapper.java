@@ -3,8 +3,8 @@ package aramframework.com.cop.smt.lsm.service.impl;
 import java.util.List;
 
 import aramframework.com.cmm.SearchVO;
-import aramframework.com.cop.smt.lsm.service.LeaderSchdulVO;
-import aramframework.com.cop.smt.lsm.service.LeaderSttusVO;
+import aramframework.com.cop.smt.lsm.domain.LeaderSchdulVO;
+import aramframework.com.cop.smt.lsm.domain.LeaderSttusVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
-import aramframework.com.sym.bat.service.BatchResultVO;
-import aramframework.com.sym.bat.service.BatchSchdulVO;
+import aramframework.com.sym.bat.domain.BatchResultVO;
+import aramframework.com.sym.bat.domain.BatchSchdulVO;
 import aramframework.com.sym.bat.service.BatchSchdulService;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.cmmn.exception.FdlException;

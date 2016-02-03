@@ -2,8 +2,8 @@ package aramframework.com.uss.ion.evt.service.impl;
 
 import java.util.List;
 
-import aramframework.com.uss.ion.evt.service.EventAtdrnVO;
-import aramframework.com.uss.ion.evt.service.EventManageVO;
+import aramframework.com.uss.ion.evt.domain.EventAtdrnVO;
+import aramframework.com.uss.ion.evt.domain.EventManageVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

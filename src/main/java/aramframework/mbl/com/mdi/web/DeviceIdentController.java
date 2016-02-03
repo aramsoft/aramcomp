@@ -20,7 +20,7 @@ import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
-import aramframework.mbl.com.mdi.service.DeviceIdentVO;
+import aramframework.mbl.com.mdi.domain.DeviceIdentVO;
 import aramframework.mbl.com.mdi.service.DeviceIdentService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 

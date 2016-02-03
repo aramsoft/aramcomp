@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.LoginVO;
 import aramframework.com.cmm.util.UserDetailsHelper;
+import aramframework.com.uss.umt.domain.MberManageVO;
 import aramframework.com.uss.umt.service.MberManageService;
-import aramframework.com.uss.umt.service.MberManageVO;
 
 /**
  * 일반회원관련 요청을  비지니스 클래스로 전달하고 

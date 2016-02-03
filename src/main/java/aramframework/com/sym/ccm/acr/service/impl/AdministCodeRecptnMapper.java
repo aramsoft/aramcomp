@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import aramframework.com.sym.ccm.acr.service.AdministCodeRecptnVO;
+import aramframework.com.sym.ccm.acr.domain.AdministCodeRecptnVO;
 import egovframework.rte.psl.dataaccess.EgovAbstractMapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

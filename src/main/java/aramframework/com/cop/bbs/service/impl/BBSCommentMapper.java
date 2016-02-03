@@ -2,7 +2,7 @@ package aramframework.com.cop.bbs.service.impl;
 
 import java.util.List;
 
-import aramframework.com.cop.bbs.service.CommentVO;
+import aramframework.com.cop.bbs.domain.CommentVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

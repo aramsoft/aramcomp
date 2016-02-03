@@ -14,7 +14,7 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
-import aramframework.com.sym.ccm.ccc.service.CmmnClCodeVO;
+import aramframework.com.sym.ccm.ccc.domain.CmmnClCodeVO;
 import aramframework.com.sym.ccm.ccc.service.CmmnClCodeManageService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 

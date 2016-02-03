@@ -2,7 +2,7 @@ package aramframework.com.uss.olh.hpc.service.impl;
 
 import java.util.List;
 
-import aramframework.com.uss.olh.hpc.service.HpcmManageVO;
+import aramframework.com.uss.olh.hpc.domain.HpcmManageVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

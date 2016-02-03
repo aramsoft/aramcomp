@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.sym.ccm.icr.domain.InsttCodeRecptnVO;
 import aramframework.com.sym.ccm.icr.service.InsttCodeRecptnService;
-import aramframework.com.sym.ccm.icr.service.InsttCodeRecptnVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**

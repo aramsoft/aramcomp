@@ -3,8 +3,8 @@ package aramframework.mbl.com.mms.service.impl;
 import java.util.List;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import aramframework.mbl.com.mms.service.AttachFileVO;
-import aramframework.mbl.com.mms.service.MmsTransInfoVO;
+import aramframework.mbl.com.mms.domain.AttachFileVO;
+import aramframework.mbl.com.mms.domain.MmsTransInfoVO;
 
 /**
  * 개요

@@ -2,6 +2,10 @@ package aramframework.com.ssi.syi.iis.service;
 
 import java.util.List;
 
+import aramframework.com.ssi.syi.iis.domain.CntcInsttVO;
+import aramframework.com.ssi.syi.iis.domain.CntcServiceVO;
+import aramframework.com.ssi.syi.iis.domain.CntcSystemVO;
+
 /**
  * 연계기관에 관한 서비스 인터페이스 클래스를 정의한다
  * 

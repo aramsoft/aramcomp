@@ -2,7 +2,7 @@ package aramframework.com.ssi.syi.ist.service.impl;
 
 import java.util.List;
 
-import aramframework.com.ssi.syi.ist.service.CntcSttusVO;
+import aramframework.com.ssi.syi.ist.domain.CntcSttusVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

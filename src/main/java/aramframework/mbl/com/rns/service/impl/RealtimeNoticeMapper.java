@@ -4,7 +4,7 @@ import java.util.List;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
-import aramframework.mbl.com.rns.service.RealtimeNoticeVO;
+import aramframework.mbl.com.rns.domain.RealtimeNoticeVO;
 
 /**
  * 개요

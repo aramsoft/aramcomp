@@ -2,6 +2,9 @@ package aramframework.com.sym.sym.bak.service;
 
 import java.util.List;
 
+import aramframework.com.sym.sym.bak.domain.BackupOpertVO;
+import aramframework.com.sym.sym.bak.domain.BackupResultVO;
+
 /**
  * 백업작업관리에 대한 Service Interface를 정의한다.
  * 

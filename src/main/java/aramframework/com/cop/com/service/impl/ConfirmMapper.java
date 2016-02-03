@@ -2,7 +2,7 @@ package aramframework.com.cop.com.service.impl;
 
 import java.util.List;
 
-import aramframework.com.cop.com.service.ConfirmHistoryVO;
+import aramframework.com.cop.com.domain.ConfirmHistoryVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

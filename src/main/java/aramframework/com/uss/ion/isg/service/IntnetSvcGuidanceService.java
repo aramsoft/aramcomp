@@ -2,6 +2,7 @@ package aramframework.com.uss.ion.isg.service;
 
 import java.util.List;
 
+import aramframework.com.uss.ion.isg.domain.IntnetSvcGuidanceVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

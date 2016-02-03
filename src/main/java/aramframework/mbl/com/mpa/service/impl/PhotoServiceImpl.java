@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cmm.util.FileMngUtil;
+import aramframework.mbl.com.mpa.domain.PhotoVO;
 import aramframework.mbl.com.mpa.service.PhotoService;
-import aramframework.mbl.com.mpa.service.PhotoVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.cmmn.exception.FdlException;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;

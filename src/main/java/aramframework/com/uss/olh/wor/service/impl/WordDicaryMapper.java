@@ -2,7 +2,7 @@ package aramframework.com.uss.olh.wor.service.impl;
 
 import java.util.List;
 
-import aramframework.com.uss.olh.wor.service.WordDicaryVO;
+import aramframework.com.uss.olh.wor.domain.WordDicaryVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

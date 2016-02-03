@@ -17,10 +17,10 @@ import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.sym.sym.srv.domain.ServerEqpmnVO;
+import aramframework.com.sym.sym.srv.domain.ServerVO;
 import aramframework.com.sym.sym.srv.service.ServerService;
 import aramframework.com.sym.sym.srv.service.ServerEqpmnRelateVO;
-import aramframework.com.sym.sym.srv.service.ServerEqpmnVO;
-import aramframework.com.sym.sym.srv.service.ServerVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**

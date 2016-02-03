@@ -17,7 +17,7 @@ import aramframework.com.cmm.util.ComponentChecker;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
-import aramframework.com.cop.bbs.service.BoardUseInfVO;
+import aramframework.com.cop.bbs.domain.BoardUseInfVO;
 import aramframework.com.cop.bbs.service.BBSBoardService;
 import aramframework.com.cop.bbs.service.BBSUseInfoService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;

@@ -2,6 +2,7 @@ package aramframework.com.uss.sam.cpy.service;
 
 import java.util.List;
 
+import aramframework.com.uss.sam.cpy.domain.CpyrhtPrtcPolicyVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

@@ -3,7 +3,7 @@ package aramframework.com.sts.dst.service.impl;
 import java.util.List;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import aramframework.com.sts.dst.service.DtaUseStatsVO;
+import aramframework.com.sts.dst.domain.DtaUseStatsVO;
 
 /**
  * - 자료이용현황 통계에 대한 DAO 클래스를 정의한다.

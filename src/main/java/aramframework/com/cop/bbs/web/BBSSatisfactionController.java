@@ -14,8 +14,8 @@ import aramframework.com.cmm.LoginVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.cop.bbs.domain.SatisfactionVO;
 import aramframework.com.cop.bbs.service.BBSSatisfactionService;
-import aramframework.com.cop.bbs.service.SatisfactionVO;
 import aramframework.com.utl.sim.service.FileScrty;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 

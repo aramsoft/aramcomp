@@ -3,7 +3,7 @@ package aramframework.com.sts.rst.service.impl;
 import java.util.List;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import aramframework.com.sts.rst.service.ReprtStatsVO;
+import aramframework.com.sts.rst.domain.ReprtStatsVO;
 
 /**
  * 개요

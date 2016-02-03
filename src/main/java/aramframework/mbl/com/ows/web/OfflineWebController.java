@@ -12,8 +12,8 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.LoginVO;
 import aramframework.com.cmm.util.UserDetailsHelper;
+import aramframework.mbl.com.ows.domain.OfflineWebVO;
 import aramframework.mbl.com.ows.service.OfflineWebService;
-import aramframework.mbl.com.ows.service.OfflineWebVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**

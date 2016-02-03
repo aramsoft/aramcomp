@@ -6,7 +6,7 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.Calendar"%>
 <%@ page import="egovframework.rte.psl.dataaccess.util.EgovMap"%>
-<%@ page import="aramframework.com.cop.smt.sim.service.SchdulManageVO"%>
+<%@ page import="aramframework.com.cop.smt.sim.domain.SchdulManageVO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>

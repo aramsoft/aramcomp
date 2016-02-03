@@ -3,7 +3,7 @@ package aramframework.com.sym.sym.bak.service.impl;
 import java.util.List;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import aramframework.com.sym.sym.bak.service.BackupResultVO;
+import aramframework.com.sym.sym.bak.domain.BackupResultVO;
 
 /**
  * 백업결과관리에 대한 DAO 클래스를 정의한다.

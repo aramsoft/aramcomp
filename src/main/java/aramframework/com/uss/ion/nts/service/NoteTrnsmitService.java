@@ -2,6 +2,7 @@ package aramframework.com.uss.ion.nts.service;
 
 import java.util.List;
 
+import aramframework.com.uss.ion.nts.domain.NoteTrnsmitVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

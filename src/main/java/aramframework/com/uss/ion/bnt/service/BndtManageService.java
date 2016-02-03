@@ -3,6 +3,9 @@ package aramframework.com.uss.ion.bnt.service;
 import java.io.InputStream;
 import java.util.List;
 
+import aramframework.com.uss.ion.bnt.domain.BndtCeckManageVO;
+import aramframework.com.uss.ion.bnt.domain.BndtDiaryVO;
+import aramframework.com.uss.ion.bnt.domain.BndtManageVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

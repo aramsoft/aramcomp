@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.uss.sam.stp.domain.StplatManageVO;
 import aramframework.com.uss.sam.stp.service.StplatManageService;
-import aramframework.com.uss.sam.stp.service.StplatManageVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.cmmn.exception.FdlException;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;

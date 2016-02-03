@@ -2,6 +2,7 @@ package aramframework.com.uss.ion.bnr.service;
 
 import java.util.List;
 
+import aramframework.com.uss.ion.bnr.domain.BannerVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

@@ -2,6 +2,7 @@ package aramframework.com.uss.ion.rsn.service;
 
 import java.util.List;
 
+import aramframework.com.uss.ion.rsn.domain.RssInfoVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

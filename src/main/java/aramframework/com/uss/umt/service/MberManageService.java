@@ -2,6 +2,9 @@ package aramframework.com.uss.umt.service;
 
 import java.util.List;
 
+import aramframework.com.uss.umt.domain.MberManageVO;
+import aramframework.com.uss.umt.domain.StplatVO;
+
 /**
  * 일반회원관리에 관한 인터페이스클래스를 정의한다.
  * 

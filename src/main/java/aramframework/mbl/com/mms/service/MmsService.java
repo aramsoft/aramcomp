@@ -4,6 +4,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import aramframework.mbl.com.mms.domain.AttachFileVO;
+import aramframework.mbl.com.mms.domain.MmsTransInfoVO;
+
 /**
  * 개요
  * - MMS서비스연계에 대한 Service Interface를 정의한다.

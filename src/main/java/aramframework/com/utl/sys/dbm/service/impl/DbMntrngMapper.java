@@ -2,8 +2,8 @@ package aramframework.com.utl.sys.dbm.service.impl;
 
 import java.util.List;
 
-import aramframework.com.utl.sys.dbm.service.DbMntrngVO;
-import aramframework.com.utl.sys.dbm.service.DbMntrngLogVO;
+import aramframework.com.utl.sys.dbm.domain.DbMntrngLogVO;
+import aramframework.com.utl.sys.dbm.domain.DbMntrngVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

@@ -16,8 +16,8 @@ import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.uss.ion.nws.domain.NewsManageVO;
 import aramframework.com.uss.ion.nws.service.NewsManageService;
-import aramframework.com.uss.ion.nws.service.NewsManageVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**

@@ -1,7 +1,7 @@
 package aramframework.com.utl.pao.service.impl;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import aramframework.com.utl.pao.service.PrntngOutptVO;
+import aramframework.com.utl.pao.domain.PrntngOutptVO;
 
 /**
  * 전자관인에서 사용해야 하는 서비스를 정의하기위한 데이터 접근 클래스

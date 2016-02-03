@@ -1,7 +1,7 @@
 package aramframework.com.cop.bbs.service.impl;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import aramframework.com.cop.bbs.service.BoardMasterVO;
+import aramframework.com.cop.bbs.domain.BoardMasterVO;
 
 /**
  * 2단계 기능 추가 (댓글관리, 만족도조사) 관리를 위한 데이터 접근 클래스

@@ -3,7 +3,8 @@ package aramframework.com.uss.ion.rss.service;
 import java.util.List;
 import java.util.Map;
 
-import aramframework.com.cmm.service.ComCodeVO;
+import aramframework.com.cmm.domain.ComCodeVO;
+import aramframework.com.uss.ion.rss.domain.RssManageVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

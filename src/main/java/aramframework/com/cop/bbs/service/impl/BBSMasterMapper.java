@@ -3,7 +3,7 @@ package aramframework.com.cop.bbs.service.impl;
 import java.util.List;
 
 import aramframework.com.cmm.SearchVO;
-import aramframework.com.cop.bbs.service.BoardMasterVO;
+import aramframework.com.cop.bbs.domain.BoardMasterVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

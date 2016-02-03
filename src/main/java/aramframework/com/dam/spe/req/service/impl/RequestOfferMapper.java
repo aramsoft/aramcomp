@@ -2,7 +2,7 @@ package aramframework.com.dam.spe.req.service.impl;
 
 import java.util.List;
 
-import aramframework.com.dam.spe.req.service.RequestOfferVO;
+import aramframework.com.dam.spe.req.domain.RequestOfferVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

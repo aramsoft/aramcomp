@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.sec.arm.domain.AuthorResourceVO;
 import aramframework.com.sec.arm.service.AuthorResourceService;
-import aramframework.com.sec.arm.service.AuthorResourceVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**

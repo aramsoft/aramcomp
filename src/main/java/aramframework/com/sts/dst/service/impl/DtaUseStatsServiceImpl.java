@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.LoginVO;
 import aramframework.com.cmm.util.UserDetailsHelper;
-import aramframework.com.sts.dst.service.DtaUseStatsVO;
+import aramframework.com.sts.dst.domain.DtaUseStatsVO;
 import aramframework.com.sts.dst.service.DtaUseStatsService;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.cmmn.exception.FdlException;

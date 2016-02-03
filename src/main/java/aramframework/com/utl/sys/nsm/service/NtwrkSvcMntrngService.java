@@ -2,6 +2,9 @@ package aramframework.com.utl.sys.nsm.service;
 
 import java.util.List;
 
+import aramframework.com.utl.sys.nsm.domain.NtwrkSvcMntrngLogVO;
+import aramframework.com.utl.sys.nsm.domain.NtwrkSvcMntrngVO;
+
 /**
  * 개요 - 네트워크서비스 모니터링대상에 대한 Service Interface를 정의한다.
  * 

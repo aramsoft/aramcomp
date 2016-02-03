@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cmm.util.FileMngUtil;
+import aramframework.com.uss.ion.mtg.domain.MtgPlaceFxtrsVO;
+import aramframework.com.uss.ion.mtg.domain.MtgPlaceManageVO;
+import aramframework.com.uss.ion.mtg.domain.MtgPlaceResveVO;
 import aramframework.com.uss.ion.mtg.service.MtgPlaceManageService;
-import aramframework.com.uss.ion.mtg.service.MtgPlaceFxtrsVO;
-import aramframework.com.uss.ion.mtg.service.MtgPlaceManageVO;
-import aramframework.com.uss.ion.mtg.service.MtgPlaceResveVO;
 import aramframework.com.utl.fcc.service.StringUtil;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.cmmn.exception.FdlException;

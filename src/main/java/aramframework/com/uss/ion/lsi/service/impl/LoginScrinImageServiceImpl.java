@@ -6,10 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.service.FileVO;
+import aramframework.com.cmm.domain.FileVO;
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.uss.ion.lsi.domain.LoginScrinImageVO;
 import aramframework.com.uss.ion.lsi.service.LoginScrinImageService;
-import aramframework.com.uss.ion.lsi.service.LoginScrinImageVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.cmmn.exception.FdlException;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;

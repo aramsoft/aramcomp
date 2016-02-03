@@ -15,8 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import aramframework.com.utl.pao.domain.PrntngOutptVO;
 import aramframework.com.utl.pao.service.PrntngOutpt;
-import aramframework.com.utl.pao.service.PrntngOutptVO;
 
 /**
  * 전자관인에 관한 Util 테스트를 위한 화면 Controller

@@ -3,6 +3,7 @@ package aramframework.com.cop.cmy.service;
 import java.io.InputStream;
 import java.util.List;
 
+import aramframework.com.cop.cmy.domain.CommunityMenuVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

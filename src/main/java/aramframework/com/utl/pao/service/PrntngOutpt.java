@@ -1,5 +1,7 @@
 package aramframework.com.utl.pao.service;
 
+import aramframework.com.utl.pao.domain.PrntngOutptVO;
+
 /**
  * 관인 처리 Util 클래스
  * 

@@ -20,8 +20,8 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import aramframework.com.cmm.domain.FileVO;
 import aramframework.com.cmm.service.FileMngService;
-import aramframework.com.cmm.service.FileVO;
 import aramframework.com.cmm.util.WebUtil;
 
 /**

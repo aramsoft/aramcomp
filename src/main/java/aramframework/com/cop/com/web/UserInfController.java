@@ -12,10 +12,10 @@ import aramframework.com.cmm.LoginVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
-import aramframework.com.cop.cmy.service.CommunityUserVO;
+import aramframework.com.cop.cmy.domain.CommunityUserVO;
 import aramframework.com.cop.cmy.service.CommunityManageService;
+import aramframework.com.cop.com.domain.UserInfVO;
 import aramframework.com.cop.com.service.UserInfService;
-import aramframework.com.cop.com.service.UserInfVO;
 import aramframework.com.utl.fcc.service.DateUtil;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 

@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cmm.util.FileMngUtil;
+import aramframework.com.sym.log.slg.domain.SysHistoryVO;
 import aramframework.com.sym.log.slg.service.SysHistoryService;
-import aramframework.com.sym.log.slg.service.SysHistoryVO;
 import aramframework.com.utl.fcc.service.StringUtil;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.psl.dataaccess.util.EgovMap;

@@ -2,8 +2,8 @@ package aramframework.com.uss.ion.bnr.service.impl;
 
 import java.util.List;
 
-import aramframework.com.cmm.service.FileVO;
-import aramframework.com.uss.ion.bnr.service.BannerVO;
+import aramframework.com.cmm.domain.FileVO;
+import aramframework.com.uss.ion.bnr.domain.BannerVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.SearchVO;
 import aramframework.com.cmm.util.BeanUtil;
-import aramframework.com.cop.adb.service.AdressBookUserVO;
-import aramframework.com.cop.adb.service.AdressBookVO;
+import aramframework.com.cop.adb.domain.AdressBookUserVO;
+import aramframework.com.cop.adb.domain.AdressBookVO;
 import aramframework.com.cop.adb.service.AdressBookService;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.cmmn.exception.FdlException;

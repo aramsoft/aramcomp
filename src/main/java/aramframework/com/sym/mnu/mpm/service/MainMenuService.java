@@ -2,6 +2,7 @@ package aramframework.com.sym.mnu.mpm.service;
 
 import java.util.List;
 
+import aramframework.com.sym.mnu.mpm.domain.MenuManageVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

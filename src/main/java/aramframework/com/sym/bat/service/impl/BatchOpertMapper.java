@@ -2,7 +2,7 @@ package aramframework.com.sym.bat.service.impl;
 
 import java.util.List;
 
-import aramframework.com.sym.bat.service.BatchOpertVO;
+import aramframework.com.sym.bat.domain.BatchOpertVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

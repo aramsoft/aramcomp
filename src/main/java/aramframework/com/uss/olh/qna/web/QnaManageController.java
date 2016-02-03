@@ -15,8 +15,8 @@ import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.uss.olh.qna.domain.QnaManageVO;
 import aramframework.com.uss.olh.qna.service.QnaManageService;
-import aramframework.com.uss.olh.qna.service.QnaManageVO;
 import aramframework.com.utl.sim.service.FileScrty;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 

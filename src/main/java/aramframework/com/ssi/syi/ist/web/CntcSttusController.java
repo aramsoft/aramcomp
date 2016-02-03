@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.util.WebUtil;
-import aramframework.com.ssi.syi.ist.service.CntcSttusVO;
+import aramframework.com.ssi.syi.ist.domain.CntcSttusVO;
 import aramframework.com.ssi.syi.ist.service.CntcSttusService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 

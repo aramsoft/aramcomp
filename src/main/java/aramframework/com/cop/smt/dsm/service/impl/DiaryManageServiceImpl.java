@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cmm.util.FileMngUtil;
-import aramframework.com.cop.smt.dsm.service.DiaryManageVO;
+import aramframework.com.cop.smt.dsm.domain.DiaryManageVO;
 import aramframework.com.cop.smt.dsm.service.DiaryManageService;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.cmmn.exception.FdlException;

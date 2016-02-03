@@ -4,7 +4,7 @@ import java.util.List;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
-import aramframework.com.cop.smt.mtm.service.MemoTodoVO;
+import aramframework.com.cop.smt.mtm.domain.MemoTodoVO;
 
 /**
  * 개요 - 메모할일에 대한 DAO 클래스를 정의한다.

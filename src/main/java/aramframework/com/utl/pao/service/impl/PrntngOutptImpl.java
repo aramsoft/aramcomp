@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.utl.pao.domain.PrntngOutptVO;
 import aramframework.com.utl.pao.service.PrntngOutpt;
-import aramframework.com.utl.pao.service.PrntngOutptVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 
 /**

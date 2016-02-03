@@ -17,7 +17,7 @@ import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
-import aramframework.com.uss.olp.cns.service.CnsltManageVO;
+import aramframework.com.uss.olp.cns.domain.CnsltManageVO;
 import aramframework.com.uss.olp.cns.service.CnsltManageService;
 import aramframework.com.utl.sim.service.FileScrty;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;

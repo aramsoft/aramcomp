@@ -16,8 +16,8 @@ import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
-import aramframework.com.utl.sys.dbm.service.DbMntrngVO;
-import aramframework.com.utl.sys.dbm.service.DbMntrngLogVO;
+import aramframework.com.utl.sys.dbm.domain.DbMntrngLogVO;
+import aramframework.com.utl.sys.dbm.domain.DbMntrngVO;
 import aramframework.com.utl.sys.dbm.service.DbMntrngService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 

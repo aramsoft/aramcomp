@@ -2,8 +2,8 @@ package aramframework.com.sym.mnu.mcm.service.impl;
 
 import java.util.List;
 
-import aramframework.com.sym.mnu.mcm.service.MenuCreateVO;
-import aramframework.com.sym.mnu.mcm.service.MenuSiteMapVO;
+import aramframework.com.sym.mnu.mcm.domain.MenuCreateVO;
+import aramframework.com.sym.mnu.mcm.domain.MenuSiteMapVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

@@ -2,7 +2,9 @@ package aramframework.mbl.com.mlt.service;
 
 import java.util.List;
 
-import aramframework.com.cmm.service.FileVO;
+import aramframework.com.cmm.domain.FileVO;
+import aramframework.mbl.com.mlt.domain.MultimediaFileInfoVO;
+import aramframework.mbl.com.mlt.domain.MultimediaVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

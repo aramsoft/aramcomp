@@ -3,7 +3,7 @@ package aramframework.com.sym.ccm.zip.service.impl;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
-import aramframework.com.sym.ccm.zip.service.ZipVO;
+import aramframework.com.sym.ccm.zip.domain.ZipVO;
 import egovframework.rte.fdl.excel.EgovExcelMapping;
 import egovframework.rte.fdl.excel.util.EgovExcelUtil;
 

@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.SearchCodeVO;
-import aramframework.com.cmm.service.ComCodeVO;
+import aramframework.com.cmm.domain.ComCodeVO;
 import aramframework.com.cmm.service.CmmUseService;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 

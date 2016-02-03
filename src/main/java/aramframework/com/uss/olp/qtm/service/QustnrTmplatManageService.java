@@ -2,6 +2,7 @@ package aramframework.com.uss.olp.qtm.service;
 
 import java.util.List;
 
+import aramframework.com.uss.olp.qtm.domain.QustnrTmplatManageVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

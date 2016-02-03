@@ -2,6 +2,7 @@ package aramframework.com.uss.ion.noi.service;
 
 import java.util.List;
 
+import aramframework.com.uss.ion.noi.domain.NotificationVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

@@ -9,10 +9,10 @@ import org.springframework.web.context.request.RequestContextHolder;
 
 import aramframework.com.cmm.LoginVO;
 import aramframework.com.cmm.util.UserDetailsHelper;
-import aramframework.com.cop.cmy.service.CommunityUserVO;
+import aramframework.com.cop.cmy.domain.CommunityUserVO;
 import aramframework.com.cop.cmy.service.CommunityManageService;
+import aramframework.com.cop.com.domain.UserInfVO;
 import aramframework.com.cop.com.service.UserInfService;
-import aramframework.com.cop.com.service.UserInfVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

@@ -2,6 +2,9 @@ package aramframework.com.utl.sys.pxy.service;
 
 import java.util.List;
 
+import aramframework.com.utl.sys.pxy.domain.ProxySvcLogVO;
+import aramframework.com.utl.sys.pxy.domain.ProxySvcVO;
+
 /**
  * 개요 - 프록시서비스정보에 대한 Service Interface를 정의한다.
  * 

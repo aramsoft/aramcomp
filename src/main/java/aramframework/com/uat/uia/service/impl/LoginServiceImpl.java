@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.LoginVO;
+import aramframework.com.cop.ems.domain.SndngMailVO;
 import aramframework.com.cop.ems.service.SndngMailService;
-import aramframework.com.cop.ems.service.SndngMailVO;
 import aramframework.com.uat.uia.service.LoginService;
 import aramframework.com.utl.fcc.service.NumberUtil;
 import aramframework.com.utl.fcc.service.StringUtil;

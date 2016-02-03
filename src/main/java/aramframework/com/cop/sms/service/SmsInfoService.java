@@ -2,6 +2,8 @@ package aramframework.com.cop.sms.service;
 
 import java.util.List;
 
+import aramframework.com.cop.sms.domain.SmsMessageVO;
+import aramframework.com.cop.sms.domain.SmsVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import aramframework.com.uss.ion.rec.domain.RecomendSiteVO;
 import aramframework.com.uss.ion.rec.service.RecomendSiteService;
-import aramframework.com.uss.ion.rec.service.RecomendSiteVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**

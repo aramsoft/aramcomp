@@ -2,6 +2,7 @@ package aramframework.com.sym.log.slg.service;
 
 import java.util.List;
 
+import aramframework.com.sym.log.slg.domain.SysHistoryVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

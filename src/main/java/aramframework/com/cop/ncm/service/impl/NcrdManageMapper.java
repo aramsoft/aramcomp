@@ -2,8 +2,8 @@ package aramframework.com.cop.ncm.service.impl;
 
 import java.util.List;
 
-import aramframework.com.cop.ncm.service.NameCardUseVO;
-import aramframework.com.cop.ncm.service.NameCardVO;
+import aramframework.com.cop.ncm.domain.NameCardUseVO;
+import aramframework.com.cop.ncm.domain.NameCardVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

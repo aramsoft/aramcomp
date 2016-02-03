@@ -2,6 +2,9 @@ package aramframework.com.utl.sys.prm.service;
 
 import java.util.List;
 
+import aramframework.com.utl.sys.prm.domain.ProcessMonLogVO;
+import aramframework.com.utl.sys.prm.domain.ProcessMonVO;
+
 /**
  * 개요 - PROCESS모니터링에 대한 Service Interface를 정의한다.
  * 

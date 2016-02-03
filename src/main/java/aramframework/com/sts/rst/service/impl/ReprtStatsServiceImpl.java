@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import aramframework.com.sts.rst.domain.ReprtStatsVO;
 import aramframework.com.sts.rst.service.ReprtStatsService;
-import aramframework.com.sts.rst.service.ReprtStatsVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.cmmn.exception.FdlException;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;

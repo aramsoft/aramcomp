@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import aramframework.com.sym.bat.service.BatchOpertVO;
+import aramframework.com.sym.bat.domain.BatchOpertVO;
 
 /**
  * BatchOpert클래스에대한 validator 클래스. 

@@ -3,7 +3,7 @@ package aramframework.com.uss.umt.service.impl;
 import java.util.List;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import aramframework.com.uss.umt.service.UserManageVO;
+import aramframework.com.uss.umt.domain.UserManageVO;
 
 /**
  * 사용자관리에 관한 데이터 접근 클래스를 정의한다.

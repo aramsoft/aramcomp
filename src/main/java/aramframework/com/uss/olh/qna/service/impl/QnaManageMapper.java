@@ -2,7 +2,7 @@ package aramframework.com.uss.olh.qna.service.impl;
 
 import java.util.List;
 
-import aramframework.com.uss.olh.qna.service.QnaManageVO;
+import aramframework.com.uss.olh.qna.domain.QnaManageVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

@@ -4,6 +4,7 @@ import java.util.List;
 
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 import aramframework.com.cmm.SearchVO;
+import aramframework.com.cop.smt.wmr.domain.WikMnthngReprtVO;
 
 /**
  * 개요 - 주간월간보고에 대한 Service Interface를 정의한다.

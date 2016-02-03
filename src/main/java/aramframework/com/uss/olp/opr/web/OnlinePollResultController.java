@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.uss.olp.opr.domain.OnlinePollResultVO;
 import aramframework.com.uss.olp.opr.service.OnlinePollResultService;
-import aramframework.com.uss.olp.opr.service.OnlinePollResultVO;
 
 /**
  * 온라인POLL결과를 처리하는 Controller Class 구현

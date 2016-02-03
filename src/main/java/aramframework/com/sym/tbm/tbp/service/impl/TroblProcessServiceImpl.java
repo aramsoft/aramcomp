@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.sym.tbm.tbp.domain.TroblProcessVO;
 import aramframework.com.sym.tbm.tbp.service.TroblProcessService;
-import aramframework.com.sym.tbm.tbp.service.TroblProcessVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

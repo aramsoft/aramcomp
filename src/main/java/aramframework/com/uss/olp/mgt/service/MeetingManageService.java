@@ -3,6 +3,7 @@ package aramframework.com.uss.olp.mgt.service;
 import java.util.List;
 
 import aramframework.com.cmm.SearchVO;
+import aramframework.com.uss.olp.mgt.domain.MeetingManageVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

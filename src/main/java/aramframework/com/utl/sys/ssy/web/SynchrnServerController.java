@@ -21,8 +21,8 @@ import aramframework.com.cmm.constant.AramProperties;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.utl.sys.ssy.domain.SynchrnServerVO;
 import aramframework.com.utl.sys.ssy.service.SynchrnServerService;
-import aramframework.com.utl.sys.ssy.service.SynchrnServerVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**

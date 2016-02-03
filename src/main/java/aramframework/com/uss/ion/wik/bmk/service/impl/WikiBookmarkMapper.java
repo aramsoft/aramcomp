@@ -4,7 +4,7 @@ import java.util.List;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
-import aramframework.com.uss.ion.wik.bmk.service.WikiBookmarkVO;
+import aramframework.com.uss.ion.wik.bmk.domain.WikiBookmarkVO;
 
 /**
  * 위키북마크를 처리하는 Dao Class 구현

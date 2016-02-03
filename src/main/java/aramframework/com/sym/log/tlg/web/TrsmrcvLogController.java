@@ -12,8 +12,8 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.sym.log.tlg.domain.TrsmrcvLogVO;
 import aramframework.com.sym.log.tlg.service.TrsmrcvLogService;
-import aramframework.com.sym.log.tlg.service.TrsmrcvLogVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**

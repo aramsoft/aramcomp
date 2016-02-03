@@ -2,7 +2,7 @@ package aramframework.com.cop.tpl.service.impl;
 
 import java.util.List;
 
-import aramframework.com.cop.tpl.service.TemplateInfVO;
+import aramframework.com.cop.tpl.domain.TemplateInfVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

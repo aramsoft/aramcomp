@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import aramframework.com.cmm.domain.FileVO;
 import aramframework.com.cmm.service.FileMngService;
-import aramframework.com.cmm.service.FileVO;
 import aramframework.com.cmm.util.BeanUtil;
 
 /**

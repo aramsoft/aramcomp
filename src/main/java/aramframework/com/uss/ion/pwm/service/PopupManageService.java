@@ -2,6 +2,7 @@ package aramframework.com.uss.ion.pwm.service;
 
 import java.util.List;
 
+import aramframework.com.uss.ion.pwm.domain.PopupManageVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

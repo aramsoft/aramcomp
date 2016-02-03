@@ -6,8 +6,8 @@ import org.springframework.util.StopWatch;
 
 import aramframework.com.cmm.LoginVO;
 import aramframework.com.cmm.util.UserDetailsHelper;
+import aramframework.com.sym.log.lgm.domain.SysLogVO;
 import aramframework.com.sym.log.lgm.service.SysLogService;
-import aramframework.com.sym.log.lgm.service.SysLogVO;
 
 /**
  * 시스템 로그생성을 위한 Advice 클래스

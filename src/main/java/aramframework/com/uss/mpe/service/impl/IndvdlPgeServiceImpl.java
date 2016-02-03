@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.uss.mpe.domain.IndvdlPgeCntntsVO;
+import aramframework.com.uss.mpe.domain.IndvdlPgeConfVO;
 import aramframework.com.uss.mpe.service.IndvdlPgeService;
-import aramframework.com.uss.mpe.service.IndvdlPgeCntntsVO;
-import aramframework.com.uss.mpe.service.IndvdlPgeConfVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.cmmn.exception.FdlException;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;

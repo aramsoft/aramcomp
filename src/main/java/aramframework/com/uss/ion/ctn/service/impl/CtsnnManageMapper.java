@@ -2,7 +2,7 @@ package aramframework.com.uss.ion.ctn.service.impl;
 
 import java.util.List;
 
-import aramframework.com.uss.ion.ctn.service.CtsnnManageVO;
+import aramframework.com.uss.ion.ctn.domain.CtsnnManageVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

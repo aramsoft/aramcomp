@@ -2,7 +2,7 @@ package aramframework.com.uss.ion.ulm.service.impl;
 
 import java.util.List;
 
-import aramframework.com.uss.ion.ulm.service.UnityLinkVO;
+import aramframework.com.uss.ion.ulm.domain.UnityLinkVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

@@ -2,6 +2,7 @@ package aramframework.com.uss.ion.msi.service;
 
 import java.util.List;
 
+import aramframework.com.uss.ion.msi.domain.MainImageVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

@@ -14,8 +14,8 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.uss.sam.ipm.domain.IndvdlInfoPolicyVO;
 import aramframework.com.uss.sam.ipm.service.IndvdlInfoPolicyService;
-import aramframework.com.uss.sam.ipm.service.IndvdlInfoPolicyVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**

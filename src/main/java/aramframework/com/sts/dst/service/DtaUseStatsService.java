@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.aspectj.lang.JoinPoint;
 
+import aramframework.com.sts.dst.domain.DtaUseStatsVO;
+
 /**
  * - 자료이용현황 통계에 대한 Service Interface를 정의한다.
  * 

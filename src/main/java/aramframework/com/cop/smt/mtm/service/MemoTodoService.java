@@ -2,6 +2,7 @@ package aramframework.com.cop.smt.mtm.service;
 
 import java.util.List;
 
+import aramframework.com.cop.smt.mtm.domain.MemoTodoVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

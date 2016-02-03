@@ -2,6 +2,8 @@ package aramframework.com.cmm.service;
 
 import java.util.List;
 
+import aramframework.com.cmm.domain.FileVO;
+
 /**
  * 파일정보의 관리를 위한 서비스 인터페이스
  * 

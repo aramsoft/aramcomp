@@ -2,6 +2,7 @@ package aramframework.mbl.com.rns.service;
 
 import java.util.List;
 
+import aramframework.mbl.com.rns.domain.RealtimeNoticeVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

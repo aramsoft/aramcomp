@@ -3,6 +3,7 @@ package aramframework.com.uss.ion.ans.service;
 import java.io.InputStream;
 import java.util.List;
 
+import aramframework.com.uss.ion.ans.domain.AnnvrsryManageVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import egovframework.rte.psl.dataaccess.EgovAbstractMapper;
-import aramframework.com.sym.sym.bak.service.BackupOpertVO;
-import aramframework.com.sym.sym.bak.service.BackupSchdulDfkVO;
+import aramframework.com.sym.sym.bak.domain.BackupOpertVO;
+import aramframework.com.sym.sym.bak.domain.BackupSchdulDfkVO;
 
 /**
  * 백업작업관리에 대한 DAO 클래스를 정의한다.

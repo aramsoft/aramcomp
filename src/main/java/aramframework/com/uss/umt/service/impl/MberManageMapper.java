@@ -3,8 +3,8 @@ package aramframework.com.uss.umt.service.impl;
 import java.util.List;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import aramframework.com.uss.umt.service.MberManageVO;
-import aramframework.com.uss.umt.service.StplatVO;
+import aramframework.com.uss.umt.domain.MberManageVO;
+import aramframework.com.uss.umt.domain.StplatVO;
 
 /**
  * 일반회원관리에 관한 데이터 접근 클래스를 정의한다.

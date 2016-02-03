@@ -2,6 +2,7 @@ package aramframework.com.uss.olh.faq.service;
 
 import java.util.List;
 
+import aramframework.com.uss.olh.faq.domain.FaqManageVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

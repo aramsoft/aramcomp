@@ -3,10 +3,10 @@ package aramframework.com.cop.cmy.service.impl;
 import java.util.List;
 
 import aramframework.com.cmm.SearchVO;
-import aramframework.com.cop.bbs.service.BoardUseInfVO;
-import aramframework.com.cop.cmy.service.CommunityMenuVO;
-import aramframework.com.cop.cmy.service.CommunityUserVO;
-import aramframework.com.cop.cmy.service.CommunityVO;
+import aramframework.com.cop.bbs.domain.BoardUseInfVO;
+import aramframework.com.cop.cmy.domain.CommunityMenuVO;
+import aramframework.com.cop.cmy.domain.CommunityUserVO;
+import aramframework.com.cop.cmy.domain.CommunityVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

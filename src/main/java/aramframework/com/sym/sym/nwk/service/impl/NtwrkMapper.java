@@ -2,7 +2,7 @@ package aramframework.com.sym.sym.nwk.service.impl;
 
 import java.util.List;
 
-import aramframework.com.sym.sym.nwk.service.NtwrkVO;
+import aramframework.com.sym.sym.nwk.domain.NtwrkVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

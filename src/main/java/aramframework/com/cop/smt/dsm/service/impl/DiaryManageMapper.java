@@ -2,7 +2,7 @@ package aramframework.com.cop.smt.dsm.service.impl;
 
 import java.util.List;
 
-import aramframework.com.cop.smt.dsm.service.DiaryManageVO;
+import aramframework.com.cop.smt.dsm.domain.DiaryManageVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

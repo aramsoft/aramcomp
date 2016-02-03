@@ -2,7 +2,7 @@ package aramframework.com.sym.log.clg.service.impl;
 
 import java.util.List;
 
-import aramframework.com.sym.log.clg.service.LoginLogVO;
+import aramframework.com.sym.log.clg.domain.LoginLogVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

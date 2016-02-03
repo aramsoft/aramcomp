@@ -11,8 +11,8 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.LoginVO;
 import aramframework.com.cmm.util.UserDetailsHelper;
+import aramframework.com.uss.olh.qna.domain.QnaManageVO;
 import aramframework.com.uss.olh.qna.service.QnaManageService;
-import aramframework.com.uss.olh.qna.service.QnaManageVO;
 import aramframework.com.utl.sim.service.FileScrty;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 

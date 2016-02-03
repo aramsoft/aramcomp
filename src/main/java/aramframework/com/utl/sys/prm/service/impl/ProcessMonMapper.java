@@ -3,8 +3,8 @@ package aramframework.com.utl.sys.prm.service.impl;
 import java.util.List;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import aramframework.com.utl.sys.prm.service.ProcessMonLogVO;
-import aramframework.com.utl.sys.prm.service.ProcessMonVO;
+import aramframework.com.utl.sys.prm.domain.ProcessMonLogVO;
+import aramframework.com.utl.sys.prm.domain.ProcessMonVO;
 
 /**
  * 개요 - PROCESS모니터링에 대한 DAO 클래스를 정의한다.

@@ -2,6 +2,7 @@ package aramframework.com.uss.ion.uas.service;
 
 import java.util.List;
 
+import aramframework.com.uss.ion.uas.domain.UserAbsnceVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

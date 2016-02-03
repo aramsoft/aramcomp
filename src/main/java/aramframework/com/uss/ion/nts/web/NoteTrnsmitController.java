@@ -16,8 +16,8 @@ import aramframework.com.cmm.LoginVO;
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.uss.ion.nts.domain.NoteTrnsmitVO;
 import aramframework.com.uss.ion.nts.service.NoteTrnsmitService;
-import aramframework.com.uss.ion.nts.service.NoteTrnsmitVO;
 import egovframework.rte.ptl.mvc.bind.annotation.CommandMap;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 

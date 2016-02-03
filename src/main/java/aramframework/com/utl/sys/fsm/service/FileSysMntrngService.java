@@ -2,6 +2,9 @@ package aramframework.com.utl.sys.fsm.service;
 
 import java.util.List;
 
+import aramframework.com.utl.sys.fsm.domain.FileSysMntrngLogVO;
+import aramframework.com.utl.sys.fsm.domain.FileSysMntrngVO;
+
 /**
  * 개요 - 파일시스템 모니터링대상에 대한 Service Interface를 정의한다.
  * 

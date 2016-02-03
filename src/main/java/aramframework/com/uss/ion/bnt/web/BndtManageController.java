@@ -20,9 +20,9 @@ import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
-import aramframework.com.uss.ion.bnt.service.BndtCeckManageVO;
-import aramframework.com.uss.ion.bnt.service.BndtDiaryVO;
-import aramframework.com.uss.ion.bnt.service.BndtManageVO;
+import aramframework.com.uss.ion.bnt.domain.BndtCeckManageVO;
+import aramframework.com.uss.ion.bnt.domain.BndtDiaryVO;
+import aramframework.com.uss.ion.bnt.domain.BndtManageVO;
 import aramframework.com.uss.ion.bnt.service.BndtManageService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 

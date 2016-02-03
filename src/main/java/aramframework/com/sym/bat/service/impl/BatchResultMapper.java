@@ -3,7 +3,7 @@ package aramframework.com.sym.bat.service.impl;
 import java.util.List;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import aramframework.com.sym.bat.service.BatchResultVO;
+import aramframework.com.sym.bat.domain.BatchResultVO;
 
 /**
  * 배치결과관리에 대한 DAO 클래스를 정의한다.

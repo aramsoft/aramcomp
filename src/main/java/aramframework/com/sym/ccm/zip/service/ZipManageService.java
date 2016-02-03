@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
+import aramframework.com.sym.ccm.zip.domain.ZipVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

@@ -4,6 +4,8 @@ import java.util.Map;
 
 import org.apache.xmlbeans.XmlObject;
 
+import aramframework.mbl.com.oas.domain.OpenApiVO;
+
 /**
  * 개요
  * - OpenAPI연계에 대한 Service Interface를 정의한다.

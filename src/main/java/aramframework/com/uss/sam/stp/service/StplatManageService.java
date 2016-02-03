@@ -2,6 +2,7 @@ package aramframework.com.uss.sam.stp.service;
 
 import java.util.List;
 
+import aramframework.com.uss.sam.stp.domain.StplatManageVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

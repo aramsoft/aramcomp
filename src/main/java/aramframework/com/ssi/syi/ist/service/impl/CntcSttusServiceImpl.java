@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
-import aramframework.com.ssi.syi.ist.service.CntcSttusVO;
+import aramframework.com.ssi.syi.ist.domain.CntcSttusVO;
 import aramframework.com.ssi.syi.ist.service.CntcSttusService;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.psl.dataaccess.util.EgovMap;

@@ -6,9 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.service.FileVO;
+import aramframework.com.cmm.domain.FileVO;
 import aramframework.com.cmm.util.BeanUtil;
-import aramframework.com.uss.ion.bnr.service.BannerVO;
+import aramframework.com.uss.ion.bnr.domain.BannerVO;
 import aramframework.com.uss.ion.bnr.service.BannerService;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.cmmn.exception.FdlException;

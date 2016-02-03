@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cmm.util.FileMngUtil;
+import aramframework.com.dam.spe.req.domain.RequestOfferVO;
 import aramframework.com.dam.spe.req.service.RequestOfferService;
-import aramframework.com.dam.spe.req.service.RequestOfferVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.cmmn.exception.FdlException;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;

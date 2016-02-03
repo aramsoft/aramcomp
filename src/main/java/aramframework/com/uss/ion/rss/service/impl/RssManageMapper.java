@@ -2,7 +2,7 @@ package aramframework.com.uss.ion.rss.service.impl;
 
 import java.util.List;
 
-import aramframework.com.uss.ion.rss.service.RssManageVO;
+import aramframework.com.uss.ion.rss.domain.RssManageVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

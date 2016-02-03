@@ -2,7 +2,7 @@ package aramframework.mbl.com.mpa.service.impl;
 
 import java.util.List;
 
-import aramframework.mbl.com.mpa.service.PhotoVO;
+import aramframework.mbl.com.mpa.domain.PhotoVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

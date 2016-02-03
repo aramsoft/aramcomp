@@ -3,6 +3,8 @@ package aramframework.com.cop.smt.djm.service;
 import java.util.List;
 
 import aramframework.com.cmm.SearchVO;
+import aramframework.com.cop.smt.djm.domain.DeptJobBxVO;
+import aramframework.com.cop.smt.djm.domain.DeptJobVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

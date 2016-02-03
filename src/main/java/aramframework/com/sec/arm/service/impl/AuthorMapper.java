@@ -2,7 +2,7 @@ package aramframework.com.sec.arm.service.impl;
 
 import java.util.List;
 
-import aramframework.com.sec.arm.service.AuthorVO;
+import aramframework.com.sec.arm.domain.AuthorVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

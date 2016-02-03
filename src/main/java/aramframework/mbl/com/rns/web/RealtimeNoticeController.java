@@ -16,8 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import aramframework.com.cmm.LoginVO;
 import aramframework.com.cmm.util.UserDetailsHelper;
+import aramframework.mbl.com.rns.domain.RealtimeNoticeVO;
 import aramframework.mbl.com.rns.service.RealtimeNoticeService;
-import aramframework.mbl.com.rns.service.RealtimeNoticeVO;
 
 /**
  * 개요

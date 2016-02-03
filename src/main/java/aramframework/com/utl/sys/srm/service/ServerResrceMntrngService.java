@@ -2,6 +2,8 @@ package aramframework.com.utl.sys.srm.service;
 
 import java.util.List;
 
+import aramframework.com.utl.sys.srm.domain.ServerResrceMntrngVO;
+
 /**
  * 개요 - 서버자원모니터링에 대한 Service Interface를 정의한다.
  * 

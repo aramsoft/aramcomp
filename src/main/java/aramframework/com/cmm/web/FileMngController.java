@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import aramframework.com.cmm.domain.FileVO;
 import aramframework.com.cmm.service.FileMngService;
-import aramframework.com.cmm.service.FileVO;
 
 /**
  * 파일 조회, 삭제처리를 위한 컨트롤러 클래스

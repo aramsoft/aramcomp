@@ -11,9 +11,9 @@ import org.springframework.web.servlet.ModelAndView;
 import aramframework.com.cmm.LoginVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.UserDetailsHelper;
+import aramframework.com.uss.mpe.domain.IndvdlPgeCntntsVO;
+import aramframework.com.uss.mpe.domain.IndvdlPgeConfVO;
 import aramframework.com.uss.mpe.service.IndvdlPgeService;
-import aramframework.com.uss.mpe.service.IndvdlPgeCntntsVO;
-import aramframework.com.uss.mpe.service.IndvdlPgeConfVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**

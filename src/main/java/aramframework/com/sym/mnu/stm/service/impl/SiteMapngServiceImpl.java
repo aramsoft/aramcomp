@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import aramframework.com.cmm.SearchVO;
+import aramframework.com.sym.mnu.stm.domain.SiteMapngVO;
 import aramframework.com.sym.mnu.stm.service.SiteMapngService;
-import aramframework.com.sym.mnu.stm.service.SiteMapngVO;
 
 /**
  * 사이트맵 조회를 처리하는 비즈니스 구현 클래스를 정의한다.

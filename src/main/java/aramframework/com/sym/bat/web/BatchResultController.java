@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
-import aramframework.com.sym.bat.service.BatchResultVO;
+import aramframework.com.sym.bat.domain.BatchResultVO;
 import aramframework.com.sym.bat.service.BatchResultService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 

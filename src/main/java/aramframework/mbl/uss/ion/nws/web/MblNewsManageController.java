@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import aramframework.com.uss.ion.nws.domain.NewsManageVO;
 import aramframework.com.uss.ion.nws.service.NewsManageService;
-import aramframework.com.uss.ion.nws.service.NewsManageVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**

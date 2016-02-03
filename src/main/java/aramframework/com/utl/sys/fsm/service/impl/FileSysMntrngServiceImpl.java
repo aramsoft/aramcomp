@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.utl.sys.fsm.domain.FileSysMntrngLogVO;
+import aramframework.com.utl.sys.fsm.domain.FileSysMntrngVO;
 import aramframework.com.utl.sys.fsm.service.FileSysMntrngService;
-import aramframework.com.utl.sys.fsm.service.FileSysMntrngLogVO;
-import aramframework.com.utl.sys.fsm.service.FileSysMntrngVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.cmmn.exception.FdlException;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;

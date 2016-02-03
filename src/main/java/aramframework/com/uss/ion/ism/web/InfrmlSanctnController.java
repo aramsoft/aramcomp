@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.uss.ion.ism.domain.InfrmlSanctnVO;
+import aramframework.com.uss.ion.ism.domain.SanctnerVO;
 import aramframework.com.uss.ion.ism.service.InfrmlSanctnService;
-import aramframework.com.uss.ion.ism.service.InfrmlSanctnVO;
-import aramframework.com.uss.ion.ism.service.SanctnerVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**

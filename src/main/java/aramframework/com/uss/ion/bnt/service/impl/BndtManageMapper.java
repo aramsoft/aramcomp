@@ -2,9 +2,9 @@ package aramframework.com.uss.ion.bnt.service.impl;
 
 import java.util.List;
 
-import aramframework.com.uss.ion.bnt.service.BndtCeckManageVO;
-import aramframework.com.uss.ion.bnt.service.BndtDiaryVO;
-import aramframework.com.uss.ion.bnt.service.BndtManageVO;
+import aramframework.com.uss.ion.bnt.domain.BndtCeckManageVO;
+import aramframework.com.uss.ion.bnt.domain.BndtDiaryVO;
+import aramframework.com.uss.ion.bnt.domain.BndtManageVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

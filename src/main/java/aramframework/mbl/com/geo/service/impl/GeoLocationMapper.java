@@ -2,7 +2,7 @@ package aramframework.mbl.com.geo.service.impl;
 
 import java.util.List;
 
-import aramframework.mbl.com.geo.service.GeoLocationVO;
+import aramframework.mbl.com.geo.domain.GeoLocationVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

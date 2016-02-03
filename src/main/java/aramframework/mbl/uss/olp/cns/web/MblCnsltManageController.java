@@ -12,7 +12,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.LoginVO;
 import aramframework.com.cmm.util.UserDetailsHelper;
-import aramframework.com.uss.olp.cns.service.CnsltManageVO;
+import aramframework.com.uss.olp.cns.domain.CnsltManageVO;
 import aramframework.com.uss.olp.cns.service.CnsltManageService;
 import aramframework.com.utl.sim.service.FileScrty;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;

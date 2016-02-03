@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import aramframework.com.uss.olp.opr.domain.OnlinePollResultVO;
 import aramframework.com.uss.olp.opr.service.OnlinePollResultService;
-import aramframework.com.uss.olp.opr.service.OnlinePollResultVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

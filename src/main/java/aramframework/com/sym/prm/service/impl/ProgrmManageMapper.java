@@ -2,7 +2,7 @@ package aramframework.com.sym.prm.service.impl;
 
 import java.util.List;
 
-import aramframework.com.sym.prm.service.ProgrmManageVO;
+import aramframework.com.sym.prm.domain.ProgrmManageVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

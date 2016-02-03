@@ -2,6 +2,7 @@ package aramframework.com.sym.ccm.acr.service;
 
 import java.util.List;
 
+import aramframework.com.sym.ccm.acr.domain.AdministCodeRecptnVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

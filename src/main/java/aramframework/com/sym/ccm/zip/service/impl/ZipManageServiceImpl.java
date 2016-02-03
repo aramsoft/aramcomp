@@ -26,8 +26,8 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.constant.AramProperties;
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.sym.ccm.zip.domain.ZipVO;
 import aramframework.com.sym.ccm.zip.service.ZipManageService;
-import aramframework.com.sym.ccm.zip.service.ZipVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.excel.EgovExcelService;
 import egovframework.rte.psl.dataaccess.util.EgovMap;

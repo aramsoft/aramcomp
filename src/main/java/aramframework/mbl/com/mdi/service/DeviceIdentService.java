@@ -2,6 +2,7 @@ package aramframework.mbl.com.mdi.service;
 
 import java.util.List;
 
+import aramframework.mbl.com.mdi.domain.DeviceIdentVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

@@ -14,12 +14,12 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
-import aramframework.com.ssi.syi.iis.service.CntcInsttVO;
-import aramframework.com.ssi.syi.iis.service.CntcServiceVO;
-import aramframework.com.ssi.syi.iis.service.CntcSystemVO;
+import aramframework.com.ssi.syi.iis.domain.CntcInsttVO;
+import aramframework.com.ssi.syi.iis.domain.CntcServiceVO;
+import aramframework.com.ssi.syi.iis.domain.CntcSystemVO;
 import aramframework.com.ssi.syi.iis.service.CntcInsttService;
+import aramframework.com.ssi.syi.sim.domain.SystemCntcVO;
 import aramframework.com.ssi.syi.sim.service.SystemCntcService;
-import aramframework.com.ssi.syi.sim.service.SystemCntcVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**

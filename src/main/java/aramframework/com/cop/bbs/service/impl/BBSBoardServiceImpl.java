@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cmm.util.FileMngUtil;
-import aramframework.com.cop.bbs.service.BoardVO;
+import aramframework.com.cop.bbs.domain.BoardVO;
 import aramframework.com.cop.bbs.service.BBSBoardService;
 import aramframework.com.utl.fcc.service.DateUtil;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;

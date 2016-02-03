@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
-import aramframework.com.cop.bbs.service.BoardMasterVO;
-import aramframework.com.cop.bbs.service.CommentVO;
+import aramframework.com.cop.bbs.domain.BoardMasterVO;
+import aramframework.com.cop.bbs.domain.CommentVO;
 import aramframework.com.cop.bbs.service.BBSCommentService;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.cmmn.exception.FdlException;

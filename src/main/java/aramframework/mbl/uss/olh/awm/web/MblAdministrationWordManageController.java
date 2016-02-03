@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import aramframework.com.uss.olh.awm.service.AdministrationWordVO;
+import aramframework.com.uss.olh.awm.domain.AdministrationWordVO;
 import aramframework.com.uss.olh.awm.service.AdministrationWordService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 

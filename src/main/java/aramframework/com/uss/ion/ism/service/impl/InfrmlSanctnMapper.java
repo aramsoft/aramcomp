@@ -2,8 +2,8 @@ package aramframework.com.uss.ion.ism.service.impl;
 
 import java.util.List;
 
-import aramframework.com.uss.ion.ism.service.InfrmlSanctnVO;
-import aramframework.com.uss.ion.ism.service.SanctnerVO;
+import aramframework.com.uss.ion.ism.domain.InfrmlSanctnVO;
+import aramframework.com.uss.ion.ism.domain.SanctnerVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

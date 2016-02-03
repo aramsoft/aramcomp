@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.uss.ion.rsn.domain.RssInfoVO;
 import aramframework.com.uss.ion.rsn.service.RssService;
-import aramframework.com.uss.ion.rsn.service.RssInfoVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**

@@ -2,8 +2,8 @@ package aramframework.com.uss.mpe.service.impl;
 
 import java.util.List;
 
-import aramframework.com.uss.mpe.service.IndvdlPgeCntntsVO;
-import aramframework.com.uss.mpe.service.IndvdlPgeConfVO;
+import aramframework.com.uss.mpe.domain.IndvdlPgeCntntsVO;
+import aramframework.com.uss.mpe.domain.IndvdlPgeConfVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

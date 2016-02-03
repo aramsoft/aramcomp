@@ -3,7 +3,7 @@ package aramframework.mbl.com.oas.service.impl;
 import java.util.List;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import aramframework.mbl.com.oas.service.OpenApiVO;
+import aramframework.mbl.com.oas.domain.OpenApiVO;
 
 /**
  * 개요

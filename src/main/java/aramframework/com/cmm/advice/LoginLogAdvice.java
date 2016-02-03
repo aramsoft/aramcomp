@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import aramframework.com.cmm.LoginVO;
 import aramframework.com.cmm.util.UserDetailsHelper;
+import aramframework.com.sym.log.clg.domain.LoginLogVO;
 import aramframework.com.sym.log.clg.service.LoginLogService;
-import aramframework.com.sym.log.clg.service.LoginLogVO;
 
 /**
  * 로그인 로그생성을 위한 Advice 클래스

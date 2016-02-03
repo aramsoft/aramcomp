@@ -16,9 +16,9 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.uss.mpe.domain.IndvdlPgeCntntsVO;
+import aramframework.com.uss.mpe.domain.IndvdlPgeConfVO;
 import aramframework.com.uss.mpe.service.IndvdlPgeService;
-import aramframework.com.uss.mpe.service.IndvdlPgeCntntsVO;
-import aramframework.com.uss.mpe.service.IndvdlPgeConfVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 

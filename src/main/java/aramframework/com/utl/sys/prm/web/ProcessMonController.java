@@ -13,13 +13,13 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.LoginVO;
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.ComCodeVO;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.service.ComCodeVO;
 import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.utl.sys.prm.domain.ProcessMonLogVO;
+import aramframework.com.utl.sys.prm.domain.ProcessMonVO;
 import aramframework.com.utl.sys.prm.service.ProcessMonService;
-import aramframework.com.utl.sys.prm.service.ProcessMonLogVO;
-import aramframework.com.utl.sys.prm.service.ProcessMonVO;
 import aramframework.com.utl.sys.prm.service.impl.ProcessMonChecker;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 

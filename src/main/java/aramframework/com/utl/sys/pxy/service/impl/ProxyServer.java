@@ -9,7 +9,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 import aramframework.com.cmm.util.WebUtil;
-import aramframework.com.utl.sys.pxy.service.ProxySvcLogVO;
+import aramframework.com.utl.sys.pxy.domain.ProxySvcLogVO;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 
 /**

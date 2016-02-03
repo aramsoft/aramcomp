@@ -2,7 +2,7 @@ package aramframework.mbl.com.ows.service.impl;
 
 import java.util.List;
 
-import aramframework.mbl.com.ows.service.OfflineWebVO;
+import aramframework.mbl.com.ows.domain.OfflineWebVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

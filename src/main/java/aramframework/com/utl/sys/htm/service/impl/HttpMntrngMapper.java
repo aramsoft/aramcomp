@@ -3,8 +3,8 @@ package aramframework.com.utl.sys.htm.service.impl;
 import java.util.List;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import aramframework.com.utl.sys.htm.service.HttpMntrngLogVO;
-import aramframework.com.utl.sys.htm.service.HttpMntrngVO;
+import aramframework.com.utl.sys.htm.domain.HttpMntrngLogVO;
+import aramframework.com.utl.sys.htm.domain.HttpMntrngVO;
 
 /**
  * 개요 - HTTP서비스모니터링에 대한 DAO 클래스를 정의한다.

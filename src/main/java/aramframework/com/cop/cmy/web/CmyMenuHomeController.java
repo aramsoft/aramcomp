@@ -27,13 +27,13 @@ import org.springframework.web.context.request.RequestContextHolder;
 import aramframework.com.cmm.LoginVO;
 import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
-import aramframework.com.cop.bbs.service.BoardMasterVO;
-import aramframework.com.cop.bbs.service.BoardVO;
+import aramframework.com.cop.bbs.domain.BoardMasterVO;
+import aramframework.com.cop.bbs.domain.BoardVO;
 import aramframework.com.cop.bbs.service.BBSMasterService;
 import aramframework.com.cop.bbs.service.BBSBoardService;
+import aramframework.com.cop.cmy.domain.CommunityUserVO;
+import aramframework.com.cop.cmy.domain.CommunityVO;
 import aramframework.com.cop.cmy.service.CmyMenuManageService;
-import aramframework.com.cop.cmy.service.CommunityUserVO;
-import aramframework.com.cop.cmy.service.CommunityVO;
 import aramframework.com.cop.cmy.service.CommunityManageService;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

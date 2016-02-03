@@ -6,10 +6,10 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.service.ComCodeVO;
+import aramframework.com.cmm.domain.ComCodeVO;
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.uss.ion.rss.domain.RssManageVO;
 import aramframework.com.uss.ion.rss.service.RssManageService;
-import aramframework.com.uss.ion.rss.service.RssManageVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.cmmn.exception.FdlException;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;

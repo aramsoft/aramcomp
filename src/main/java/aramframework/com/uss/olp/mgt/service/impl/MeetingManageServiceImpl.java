@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.SearchVO;
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.uss.olp.mgt.domain.MeetingManageVO;
 import aramframework.com.uss.olp.mgt.service.MeetingManageService;
-import aramframework.com.uss.olp.mgt.service.MeetingManageVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.cmmn.exception.FdlException;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;

@@ -11,6 +11,8 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Component;
 
 import aramframework.com.utl.fcc.service.StringUtil;
+import aramframework.com.utl.sys.trm.domain.TrsmrcvMntrngLogVO;
+import aramframework.com.utl.sys.trm.domain.TrsmrcvMntrngVO;
 import aramframework.com.utl.sys.trm.service.impl.TrsmrcvMntrngChecker;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 

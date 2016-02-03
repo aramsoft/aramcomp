@@ -2,6 +2,7 @@ package aramframework.com.uss.olp.cns.service;
 
 import java.util.List;
 
+import aramframework.com.uss.olp.cns.domain.CnsltManageVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

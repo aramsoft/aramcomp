@@ -2,7 +2,7 @@ package aramframework.com.uss.ion.nts.service.impl;
 
 import java.util.List;
 
-import aramframework.com.uss.ion.nts.service.NoteTrnsmitVO;
+import aramframework.com.uss.ion.nts.domain.NoteTrnsmitVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

@@ -2,6 +2,7 @@ package aramframework.com.uss.olp.qri.service;
 
 import java.util.List;
 
+import aramframework.com.uss.olp.qri.domain.QustnrRespondInfoVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

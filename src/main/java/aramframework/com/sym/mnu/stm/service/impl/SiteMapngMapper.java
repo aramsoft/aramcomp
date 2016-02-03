@@ -2,7 +2,7 @@ package aramframework.com.sym.mnu.stm.service.impl;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import aramframework.com.cmm.SearchVO;
-import aramframework.com.sym.mnu.stm.service.SiteMapngVO;
+import aramframework.com.sym.mnu.stm.domain.SiteMapngVO;
 
 /**
  * 사이트맵 조회에 대한 DAO 클래스를 정의한다.

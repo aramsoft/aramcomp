@@ -10,8 +10,8 @@ import org.springframework.security.authentication.event.AuthenticationSuccessEv
 
 import egovframework.rte.fdl.security.userdetails.EgovUserDetails;
 import aramframework.com.cmm.LoginVO;
+import aramframework.com.sym.log.clg.domain.LoginLogVO;
 import aramframework.com.sym.log.clg.service.LoginLogService;
-import aramframework.com.sym.log.clg.service.LoginLogVO;
 
 public class LoginLogListener implements ApplicationListener<ApplicationEvent> {
 

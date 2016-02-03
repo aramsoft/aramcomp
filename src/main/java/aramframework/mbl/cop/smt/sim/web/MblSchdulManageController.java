@@ -20,8 +20,8 @@ import aramframework.com.cmm.LoginVO;
 import aramframework.com.cmm.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.util.UserDetailsHelper;
+import aramframework.com.cop.smt.sim.domain.SchdulManageVO;
 import aramframework.com.cop.smt.sim.service.SchdulManageService;
-import aramframework.com.cop.smt.sim.service.SchdulManageVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 

@@ -2,7 +2,7 @@ package aramframework.com.dam.mgm.service.impl;
 
 import java.util.List;
 
-import aramframework.com.dam.mgm.service.KnoManagementVO;
+import aramframework.com.dam.mgm.domain.KnoManagementVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

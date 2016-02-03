@@ -2,7 +2,7 @@ package aramframework.com.sym.tbm.tbp.service.impl;
 
 import java.util.List;
 
-import aramframework.com.sym.tbm.tbp.service.TroblProcessVO;
+import aramframework.com.sym.tbm.tbp.domain.TroblProcessVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

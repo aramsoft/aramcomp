@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import aramframework.com.cmm.service.ComCodeVO;
+import aramframework.com.cmm.domain.ComCodeVO;
 
 /**
  * RSS태그관리를 처리하는 Dao Class 구현

@@ -2,6 +2,9 @@ package aramframework.com.sym.bat.service;
 
 import java.util.List;
 
+import aramframework.com.sym.bat.domain.BatchResultVO;
+import aramframework.com.sym.bat.domain.BatchSchdulVO;
+
 /**
  * 배치스케줄관리에 대한 Service Interface를 정의한다.
  * 

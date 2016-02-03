@@ -16,9 +16,9 @@ import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.uss.ion.evt.domain.EventAtdrnVO;
+import aramframework.com.uss.ion.evt.domain.EventManageVO;
 import aramframework.com.uss.ion.evt.service.EventManageService;
-import aramframework.com.uss.ion.evt.service.EventAtdrnVO;
-import aramframework.com.uss.ion.evt.service.EventManageVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**

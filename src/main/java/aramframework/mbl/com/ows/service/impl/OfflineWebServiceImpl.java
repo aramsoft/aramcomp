@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import aramframework.mbl.com.ows.domain.OfflineWebVO;
 import aramframework.mbl.com.ows.service.OfflineWebService;
-import aramframework.mbl.com.ows.service.OfflineWebVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

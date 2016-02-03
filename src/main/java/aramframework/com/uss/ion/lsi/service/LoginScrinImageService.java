@@ -2,6 +2,7 @@ package aramframework.com.uss.ion.lsi.service;
 
 import java.util.List;
 
+import aramframework.com.uss.ion.lsi.domain.LoginScrinImageVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

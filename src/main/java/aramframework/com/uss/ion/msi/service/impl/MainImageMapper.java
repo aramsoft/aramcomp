@@ -2,8 +2,8 @@ package aramframework.com.uss.ion.msi.service.impl;
 
 import java.util.List;
 
-import aramframework.com.cmm.service.FileVO;
-import aramframework.com.uss.ion.msi.service.MainImageVO;
+import aramframework.com.cmm.domain.FileVO;
+import aramframework.com.uss.ion.msi.domain.MainImageVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

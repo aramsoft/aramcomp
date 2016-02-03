@@ -2,10 +2,9 @@ package aramframework.com.utl.sys.nsm.service.impl;
 
 import java.util.List;
 
-
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import aramframework.com.utl.sys.nsm.service.NtwrkSvcMntrngLogVO;
-import aramframework.com.utl.sys.nsm.service.NtwrkSvcMntrngVO;
+import aramframework.com.utl.sys.nsm.domain.NtwrkSvcMntrngLogVO;
+import aramframework.com.utl.sys.nsm.domain.NtwrkSvcMntrngVO;
 
 /**
  * 개요 - 네트워크서비스 모니터링대상에 대한 DAO 클래스를 정의한다.

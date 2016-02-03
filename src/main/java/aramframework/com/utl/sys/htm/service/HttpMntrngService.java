@@ -2,6 +2,9 @@ package aramframework.com.utl.sys.htm.service;
 
 import java.util.List;
 
+import aramframework.com.utl.sys.htm.domain.HttpMntrngLogVO;
+import aramframework.com.utl.sys.htm.domain.HttpMntrngVO;
+
 /**
  * 개요 - HTTP서비스 모니터링에 대한 Service Interface를 정의한다.
  * 

@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.cop.ncm.domain.NameCardUseVO;
+import aramframework.com.cop.ncm.domain.NameCardVO;
 import aramframework.com.cop.ncm.service.NcrdManageService;
-import aramframework.com.cop.ncm.service.NameCardUseVO;
-import aramframework.com.cop.ncm.service.NameCardVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.cmmn.exception.FdlException;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;

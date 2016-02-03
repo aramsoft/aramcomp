@@ -5,7 +5,7 @@
 <%@ page import="java.util.HashMap"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="egovframework.rte.psl.dataaccess.util.EgovMap"%>
-<%@ page import="aramframework.com.uss.ion.bnt.service.BndtManageVO"%>
+<%@ page import="aramframework.com.uss.ion.bnt.domain.BndtManageVO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>

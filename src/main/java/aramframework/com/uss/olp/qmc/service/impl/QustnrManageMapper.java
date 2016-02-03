@@ -2,7 +2,7 @@ package aramframework.com.uss.olp.qmc.service.impl;
 
 import java.util.List;
 
-import aramframework.com.uss.olp.qmc.service.QustnrManageVO;
+import aramframework.com.uss.olp.qmc.domain.QustnrManageVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

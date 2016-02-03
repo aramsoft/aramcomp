@@ -2,6 +2,8 @@ package aramframework.com.ssi.syi.ims.service;
 
 import java.util.List;
 
+import aramframework.com.ssi.syi.ims.domain.CntcMessageItemVO;
+import aramframework.com.ssi.syi.ims.domain.CntcMessageVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

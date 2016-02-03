@@ -1,6 +1,7 @@
 package aramframework.com.sym.mnu.stm.service;
 
 import aramframework.com.cmm.SearchVO;
+import aramframework.com.sym.mnu.stm.domain.SiteMapngVO;
 
 /**
  * 메뉴사이트맵에 관한 서비스 인터페이스 클래스를 정의한다.

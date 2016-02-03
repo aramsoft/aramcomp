@@ -13,10 +13,10 @@ import org.springframework.web.servlet.ModelAndView;
 import aramframework.com.cmm.LoginVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.util.UserDetailsHelper;
+import aramframework.com.uss.olp.qri.domain.QustnrRespondInfoVO;
 import aramframework.com.uss.olp.qri.service.QustnrRespondInfoService;
-import aramframework.com.uss.olp.qri.service.QustnrRespondInfoVO;
+import aramframework.com.uss.olp.qrm.domain.QustnrRespondManageVO;
 import aramframework.com.uss.olp.qrm.service.QustnrRespondManageService;
-import aramframework.com.uss.olp.qrm.service.QustnrRespondManageVO;
 import egovframework.rte.ptl.mvc.bind.annotation.CommandMap;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 

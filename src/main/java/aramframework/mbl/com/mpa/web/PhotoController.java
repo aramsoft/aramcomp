@@ -19,8 +19,8 @@ import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.mbl.com.mpa.domain.PhotoVO;
 import aramframework.mbl.com.mpa.service.PhotoService;
-import aramframework.mbl.com.mpa.service.PhotoVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**

@@ -2,6 +2,7 @@ package aramframework.com.uss.ion.rwd.service;
 
 import java.util.List;
 
+import aramframework.com.uss.ion.rwd.domain.RwardManageVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

@@ -16,7 +16,7 @@ import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
-import aramframework.com.cop.smt.dsm.service.DiaryManageVO;
+import aramframework.com.cop.smt.dsm.domain.DiaryManageVO;
 import aramframework.com.cop.smt.dsm.service.DiaryManageService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 

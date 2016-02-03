@@ -2,6 +2,7 @@ package aramframework.com.cop.scp.service;
 
 import java.util.List;
 
+import aramframework.com.cop.scp.domain.ScrapVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

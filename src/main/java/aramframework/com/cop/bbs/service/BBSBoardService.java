@@ -1,6 +1,8 @@
 package aramframework.com.cop.bbs.service;
 
 import java.util.List;
+
+import aramframework.com.cop.bbs.domain.BoardVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

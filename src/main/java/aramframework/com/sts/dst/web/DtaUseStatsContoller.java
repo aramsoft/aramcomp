@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.util.WebUtil;
-import aramframework.com.sts.dst.service.DtaUseStatsVO;
+import aramframework.com.sts.dst.domain.DtaUseStatsVO;
 import aramframework.com.sts.dst.service.DtaUseStatsService;
 import aramframework.com.utl.fcc.service.DateUtil;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;

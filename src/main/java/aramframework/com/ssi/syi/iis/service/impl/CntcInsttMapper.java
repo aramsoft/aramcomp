@@ -3,9 +3,9 @@ package aramframework.com.ssi.syi.iis.service.impl;
 import java.util.List;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import aramframework.com.ssi.syi.iis.service.CntcInsttVO;
-import aramframework.com.ssi.syi.iis.service.CntcServiceVO;
-import aramframework.com.ssi.syi.iis.service.CntcSystemVO;
+import aramframework.com.ssi.syi.iis.domain.CntcInsttVO;
+import aramframework.com.ssi.syi.iis.domain.CntcServiceVO;
+import aramframework.com.ssi.syi.iis.domain.CntcSystemVO;
 
 /**
  * 연계기관에 대한 데이터 접근 클래스를 정의한다

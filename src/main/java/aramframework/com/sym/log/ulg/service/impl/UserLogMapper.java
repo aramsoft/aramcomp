@@ -2,7 +2,7 @@ package aramframework.com.sym.log.ulg.service.impl;
 
 import java.util.List;
 
-import aramframework.com.sym.log.ulg.service.UserLogVO;
+import aramframework.com.sym.log.ulg.domain.UserLogVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

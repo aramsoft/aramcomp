@@ -5,7 +5,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
-import aramframework.com.cop.cmy.service.CommunityMenuVO;
+import aramframework.com.cop.cmy.domain.CommunityMenuVO;
 import egovframework.rte.fdl.excel.EgovExcelMapping;
 
 /**

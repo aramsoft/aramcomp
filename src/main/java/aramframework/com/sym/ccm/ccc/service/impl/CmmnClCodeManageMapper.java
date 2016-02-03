@@ -2,7 +2,7 @@ package aramframework.com.sym.ccm.ccc.service.impl;
 
 import java.util.List;
 
-import aramframework.com.sym.ccm.ccc.service.CmmnClCodeVO;
+import aramframework.com.sym.ccm.ccc.domain.CmmnClCodeVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

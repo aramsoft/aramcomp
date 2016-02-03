@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import aramframework.com.cmm.LoginVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.util.UserDetailsHelper;
+import aramframework.com.uss.olp.opp.domain.OnlinePollPartcptnVO;
 import aramframework.com.uss.olp.opp.service.OnlinePollPartcptnService;
-import aramframework.com.uss.olp.opp.service.OnlinePollPartcptnVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**

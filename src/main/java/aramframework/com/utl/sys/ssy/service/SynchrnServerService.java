@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import aramframework.com.utl.sys.ssy.domain.SynchrnServerVO;
+
 /**
  * 개요 - 동기화대상 서버에 대한 Service Interface를 정의한다.
  * 

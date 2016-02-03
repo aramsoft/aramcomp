@@ -2,8 +2,8 @@ package aramframework.com.cop.ems.service.impl;
 
 import java.util.List;
 
-import aramframework.com.cop.ems.service.AtchmnFileVO;
-import aramframework.com.cop.ems.service.SndngMailVO;
+import aramframework.com.cop.ems.domain.AtchmnFileVO;
+import aramframework.com.cop.ems.domain.SndngMailVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

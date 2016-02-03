@@ -2,6 +2,8 @@ package aramframework.com.uss.umt.service;
 
 import java.util.List;
 
+import aramframework.com.uss.umt.domain.UserManageVO;
+
 /**
  * 사용자관리에 관한 인터페이스클래스를 정의한다.
  * 

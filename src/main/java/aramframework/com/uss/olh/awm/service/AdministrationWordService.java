@@ -2,6 +2,7 @@ package aramframework.com.uss.olh.awm.service;
 
 import java.util.List;
 
+import aramframework.com.uss.olh.awm.domain.AdministrationWordVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import aramframework.com.cmm.LoginVO;
 import aramframework.com.cmm.util.UserDetailsHelper;
+import aramframework.com.sym.mnu.mpm.domain.MenuManageVO;
 import aramframework.com.sym.mnu.mpm.service.MainMenuService;
-import aramframework.com.sym.mnu.mpm.service.MenuManageVO;
 
 /**
  * 메인메뉴 해당링크 처리를 하는 비즈니스 구현 클래스

@@ -10,7 +10,7 @@ import x3.client.smeapi.SMESession;
 import x3.client.smeapi.impl.SMEConfig;
 import x3.client.smeapi.impl.SMEConnectionFactoryImpl;
 import x3.client.smeapi.impl.SMELogger;
-import aramframework.com.cop.sms.service.SmsMessageVO;
+import aramframework.com.cop.sms.domain.SmsMessageVO;
 
 /**
  * 문자메시지 연동 처리를 위한 클래스

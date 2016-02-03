@@ -11,9 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.sym.mnu.mpm.domain.MenuManageVO;
 import aramframework.com.sym.mnu.mpm.service.MenuManageService;
-import aramframework.com.sym.mnu.mpm.service.MenuManageVO;
-import aramframework.com.sym.prm.service.ProgrmManageVO;
+import aramframework.com.sym.prm.domain.ProgrmManageVO;
 import aramframework.com.sym.prm.service.impl.ProgrmManageMapper;
 import aramframework.com.sym.prm.service.impl.ProgrmManageDtlMapper;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;

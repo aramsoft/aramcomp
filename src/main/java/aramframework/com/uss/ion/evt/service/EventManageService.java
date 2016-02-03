@@ -2,6 +2,8 @@ package aramframework.com.uss.ion.evt.service;
 
 import java.util.List;
 
+import aramframework.com.uss.ion.evt.domain.EventAtdrnVO;
+import aramframework.com.uss.ion.evt.domain.EventManageVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

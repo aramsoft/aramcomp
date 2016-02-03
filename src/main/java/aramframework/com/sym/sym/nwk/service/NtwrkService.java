@@ -2,6 +2,7 @@ package aramframework.com.sym.sym.nwk.service;
 
 import java.util.List;
 
+import aramframework.com.sym.sym.nwk.domain.NtwrkVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

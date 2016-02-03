@@ -2,6 +2,7 @@ package aramframework.com.cop.ems.service;
 
 import java.util.List;
 
+import aramframework.com.cop.ems.domain.SndngMailVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

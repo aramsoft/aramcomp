@@ -2,6 +2,7 @@ package aramframework.mbl.com.syn.service;
 
 import java.util.List;
 
+import aramframework.mbl.com.syn.domain.SyncVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

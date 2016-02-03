@@ -4,7 +4,7 @@ import java.util.List;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import aramframework.com.cmm.SearchCodeVO;
-import aramframework.com.cmm.service.ComCodeVO;
+import aramframework.com.cmm.domain.ComCodeVO;
 
 /**
  * 공통코드등 전체 업무에서 공용해서 사용해야 하는 서비스를 정의하기위한 데이터 접근 클래스

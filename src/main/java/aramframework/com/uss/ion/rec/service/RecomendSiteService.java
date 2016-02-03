@@ -2,6 +2,7 @@ package aramframework.com.uss.ion.rec.service;
 
 import java.util.List;
 
+import aramframework.com.uss.ion.rec.domain.RecomendSiteVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

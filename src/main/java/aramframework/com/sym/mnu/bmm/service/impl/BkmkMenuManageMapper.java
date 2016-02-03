@@ -2,7 +2,7 @@ package aramframework.com.sym.mnu.bmm.service.impl;
 
 import java.util.List;
 
-import aramframework.com.sym.mnu.bmm.service.BkmkMenuManageVO;
+import aramframework.com.sym.mnu.bmm.domain.BkmkMenuManageVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

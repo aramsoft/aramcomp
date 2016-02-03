@@ -2,7 +2,7 @@ package aramframework.com.dam.map.tea.service.impl;
 
 import java.util.List;
 
-import aramframework.com.dam.map.tea.service.MapTeamVO;
+import aramframework.com.dam.map.tea.domain.MapTeamVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

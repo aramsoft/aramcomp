@@ -17,8 +17,8 @@ import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.cop.smt.mrm.domain.MemoReprtVO;
 import aramframework.com.cop.smt.mrm.service.MemoReprtService;
-import aramframework.com.cop.smt.mrm.service.MemoReprtVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**

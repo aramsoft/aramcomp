@@ -16,11 +16,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.FileCopyUtils;
 
 import aramframework.com.cmm.constant.AramProperties;
-import aramframework.com.cmm.service.FileVO;
+import aramframework.com.cmm.domain.FileVO;
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.mbl.com.mlt.domain.MultimediaFileInfoVO;
+import aramframework.mbl.com.mlt.domain.MultimediaVO;
 import aramframework.mbl.com.mlt.service.MultimediaService;
-import aramframework.mbl.com.mlt.service.MultimediaFileInfoVO;
-import aramframework.mbl.com.mlt.service.MultimediaVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.cmmn.exception.FdlException;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;

@@ -1,4 +1,4 @@
-package aramframework.com.cmm.util;
+package aramframework.com.cmm.config.web;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

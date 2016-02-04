@@ -25,9 +25,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
+import aramframework.com.cmm.config.security.SimpleUrlAuthenticationSuccessHandler;
 import aramframework.com.cmm.constant.Globals;
 import aramframework.com.cmm.domain.LoginVO;
-import aramframework.com.cmm.handler.SimpleUrlAuthenticationSuccessHandler;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.util.ComponentChecker;
 import aramframework.com.uat.uia.service.LoginService;

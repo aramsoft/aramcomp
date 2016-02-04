@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.FileMngService;
-import aramframework.com.cmm.util.FileMngUtil;
+import aramframework.com.cmm.service.FileMngUtil;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uss.ion.bnr.domain.BannerVO;
 import aramframework.com.uss.ion.bnr.service.BannerService;

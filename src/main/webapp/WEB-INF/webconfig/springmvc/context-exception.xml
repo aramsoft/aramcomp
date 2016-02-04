@@ -44,6 +44,6 @@
 		</property>
 	</bean>
 
-	<bean id="egovWebHandler" class="aramframework.com.cmm.handler.ComWebExcepHndlr" />
+	<bean id="egovWebHandler" class="aramframework.com.cmm.config.handler.ComWebExcepHndlr" />
 	
 </beans>

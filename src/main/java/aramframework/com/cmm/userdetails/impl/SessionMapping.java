@@ -1,4 +1,4 @@
-package aramframework.com.cmm.userdetails;
+package aramframework.com.cmm.userdetails.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

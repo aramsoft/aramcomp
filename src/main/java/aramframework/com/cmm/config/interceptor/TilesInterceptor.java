@@ -1,4 +1,4 @@
-package aramframework.com.cmm.interceptor;
+package aramframework.com.cmm.config.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

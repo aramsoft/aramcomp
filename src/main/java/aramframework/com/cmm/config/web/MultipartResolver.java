@@ -1,4 +1,4 @@
-package aramframework.com.cmm.util;
+package aramframework.com.cmm.config.web;
 
 /*
  * Copyright 2001-2006 The Apache Software Foundation.

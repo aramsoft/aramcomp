@@ -1,4 +1,4 @@
-package aramframework.com.cmm.web;
+package aramframework.com.cmm.config.web;
 
 import javax.servlet.ServletContext;
 

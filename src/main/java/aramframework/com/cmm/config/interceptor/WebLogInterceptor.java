@@ -1,4 +1,4 @@
-package aramframework.com.cmm.interceptor;
+package aramframework.com.cmm.config.interceptor;
 
 import java.net.URLDecoder;
 import java.util.Iterator;

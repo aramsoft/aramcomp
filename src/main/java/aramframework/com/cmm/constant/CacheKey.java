@@ -12,7 +12,4 @@ public interface CacheKey {
 	String CMY_MGRLIST   	= "MgrList";
 	String CMY_SUBLIST   	= "SubList";
 	
-	String LTO_PREFIX	 	= "LTO_";
-	String LTO_LOTTOARRAY	= "LottoArray";
-	
 }

@@ -45,33 +45,33 @@
     </http>
     
 	<beans:bean id="logAuditFilter"
-	    class="aramframework.com.cmm.filter.LogAuditFilter">
+	    class="aramframework.com.cmm.config.filter.LogAuditFilter">
 	</beans:bean>
 	
 	<beans:bean id="htmlTagFilter"
-	    class="aramframework.com.cmm.filter.HTMLTagFilter">
+	    class="aramframework.com.cmm.config.filter.HTMLTagFilter">
 	</beans:bean>
 	
 	<beans:bean id="customLoginFilter"
-	    class="aramframework.com.cmm.filter.CustomLoginFilter">
+	    class="aramframework.com.cmm.config.filter.CustomLoginFilter">
 	    <beans:property name="loginURL" value="/uat/uia/loginUsr.do" />
 	</beans:bean>
 	
 	<beans:bean id="loginPolicyFilter"
-	    class="aramframework.com.cmm.filter.LoginPolicyFilter">
+	    class="aramframework.com.cmm.config.filter.LoginPolicyFilter">
 	</beans:bean>
 	
 	<beans:bean id="httpsSessionFilter"
-	    class="aramframework.com.cmm.filter.HttpsSessionFilter">
+	    class="aramframework.com.cmm.config.filter.HttpsSessionFilter">
 	</beans:bean>
 	
 	<beans:bean id="targetRedirectStrategy"
-	    class="aramframework.com.cmm.handler.TargetRedirectStrategy">
+	    class="aramframework.com.cmm.config.security.TargetRedirectStrategy">
     	<beans:property name="contextRelative" value="true" />
 	</beans:bean>    
 	
 	<beans:bean id="simpleUrlAuthenticationSuccessHandler"
-	    class="aramframework.com.cmm.handler.SimpleUrlAuthenticationSuccessHandler">
+	    class="aramframework.com.cmm.config.security.SimpleUrlAuthenticationSuccessHandler">
     	<beans:property name="alwaysUseDefaultTargetUrl" value="true" />
 	    <beans:property name="defaultTargetUrl" value="/uat/uia/actionMain.do"/>
 	    <beans:property name="targetUrlParameter" value="targetUrl"/>
@@ -103,7 +103,7 @@
                   WHERE A.SCRTY_DTRMN_TRGET_ID = B.ESNTL_ID AND B.USER_ID = ? "/>
         <beans:property name="roleHierarchy" ref="roleHierarchy"/>
         <beans:property name="dataSource" ref="dataSource"/>
-        <beans:property name="mapClass" value="aramframework.com.cmm.userdetails.SessionMapping"/> 
+        <beans:property name="mapClass" value="aramframework.com.cmm.userdetails.impl.SessionMapping"/> 
     </beans:bean>
     
     <beans:bean id="roleHierarchy" 

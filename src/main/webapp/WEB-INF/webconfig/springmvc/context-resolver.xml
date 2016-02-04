@@ -19,7 +19,7 @@
     </bean>
 
     <!-- custom multi file resolver -->
-    <bean id="local.MultiCommonsMultipartResolver" class="aramframework.com.cmm.util.MultipartResolver">
+    <bean id="local.MultiCommonsMultipartResolver" class="aramframework.com.cmm.config.web.MultipartResolver">
         <property name="maxUploadSize" value="100000000" />
         <property name="maxInMemorySize" value="100000000" />
     </bean>
@@ -37,7 +37,7 @@
 			</map>
 		</property>
 	</bean>
-	<bean id="imageRenderer"    class="aramframework.com.cmm.web.ImagePaginationRenderer"/>
+	<bean id="imageRenderer"    class="aramframework.com.cmm.config.web.ImagePaginationRenderer"/>
 	<bean id="mblImageRenderer" class="aramframework.mbl.cmm.web.ImgPaginationRenderer"/>
 
 	<!--

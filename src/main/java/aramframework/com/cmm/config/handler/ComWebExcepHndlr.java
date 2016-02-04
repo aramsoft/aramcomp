@@ -1,4 +1,4 @@
-package aramframework.com.cmm.handler;
+package aramframework.com.cmm.config.handler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

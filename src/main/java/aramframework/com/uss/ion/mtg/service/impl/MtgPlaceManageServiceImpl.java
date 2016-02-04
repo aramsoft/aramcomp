@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import aramframework.com.cmm.service.FileMngUtil;
 import aramframework.com.cmm.util.BeanUtil;
-import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.uss.ion.mtg.domain.MtgPlaceFxtrsVO;
 import aramframework.com.uss.ion.mtg.domain.MtgPlaceManageVO;
 import aramframework.com.uss.ion.mtg.domain.MtgPlaceResveVO;

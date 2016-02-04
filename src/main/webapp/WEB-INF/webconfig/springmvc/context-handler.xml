@@ -53,10 +53,10 @@
 	</bean>
 
 	<!-- Tiles 인터셉터 -->
-	<bean id="tilesInterceptor" class="aramframework.com.cmm.interceptor.TilesInterceptor" /> 
+	<bean id="tilesInterceptor" class="aramframework.com.cmm.config.interceptor.TilesInterceptor" /> 
 
 	<!-- 웹로그 인터셉터 -->
-	<bean id="webLogInterceptor" class="aramframework.com.cmm.interceptor.WebLogInterceptor"> 
+	<bean id="webLogInterceptor" class="aramframework.com.cmm.config.interceptor.WebLogInterceptor"> 
 	<!-- 웹로그가 필요 없는 URL 리스트  -->
  		<property name="passURL">
 			<set>
@@ -78,7 +78,7 @@
 	-->
 	<bean class="egovframework.rte.ptl.mvc.bind.annotation.EgovRequestMappingHandlerAdapter">
 		<property name="webBindingInitializer">
-			<bean class="aramframework.com.cmm.util.BindingInitializer"/>
+			<bean class="aramframework.com.cmm.config.web.BindingInitializer"/>
 		</property>
 		<property name="customArgumentResolvers">
 			<list>

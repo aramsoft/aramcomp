@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import aramframework.com.cmm.service.FileMngUtil;
 import aramframework.com.cmm.util.BeanUtil;
-import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cop.bbs.domain.BoardVO;
 import aramframework.com.cop.bbs.service.BBSBoardService;
 import aramframework.com.utl.fcc.service.DateUtil;

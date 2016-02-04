@@ -1,4 +1,4 @@
-package aramframework.com.cmm.advice;
+package aramframework.com.cmm.config.advice;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.beans.factory.annotation.Autowired;

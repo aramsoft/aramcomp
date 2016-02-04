@@ -314,7 +314,7 @@ visibility.
         Like &lt;%= ... &gt;, but for expressions.
     </description> 
     <name>out</name>
-    <tag-class>aramframework.com.cmm.web.ComCrossSiteHndlr</tag-class>
+    <tag-class>aramframework.com.cmm.taglib.ComCrossSiteHndlr</tag-class>
     <body-content>JSP</body-content>
     <attribute>
         <description>

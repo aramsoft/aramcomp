@@ -1,6 +1,6 @@
 package aramframework.com.uss.olh.hpc.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 도움말 처리를 위한 VO 클래스

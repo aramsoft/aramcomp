@@ -2,7 +2,7 @@ package aramframework.com.cop.adb.service.impl;
 
 import java.util.List;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cop.adb.domain.AdressBookUserVO;
 import aramframework.com.cop.adb.domain.AdressBookVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;

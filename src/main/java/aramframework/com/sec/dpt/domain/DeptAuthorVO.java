@@ -1,6 +1,6 @@
 package aramframework.com.sec.dpt.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 부서권한에 대한 model 클래스를 정의한다.

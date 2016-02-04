@@ -1,6 +1,6 @@
 package aramframework.com.utl.sys.nsm.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 개요 - 네트워크서비스 모니터링 로그에 대한 Vo 클래스를 정의한다.

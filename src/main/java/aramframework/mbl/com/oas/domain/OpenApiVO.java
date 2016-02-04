@@ -2,7 +2,7 @@ package aramframework.mbl.com.oas.domain;
 
 import java.util.Date;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 개요

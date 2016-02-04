@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
-import aramframework.com.cmm.LoginVO;
+import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.UserDetailsHelper;
+import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.uss.ion.ecc.domain.EventCmpgnVO;
 import aramframework.com.uss.ion.ecc.service.EventCmpgnService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;

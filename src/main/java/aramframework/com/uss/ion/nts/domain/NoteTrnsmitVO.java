@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.nts.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 보낸쪽지함관리 Model and VO Class 구현

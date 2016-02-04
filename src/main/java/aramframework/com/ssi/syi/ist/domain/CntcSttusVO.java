@@ -1,6 +1,6 @@
 package aramframework.com.ssi.syi.ist.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 연계현황 VO 클래스

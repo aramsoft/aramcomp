@@ -1,6 +1,6 @@
 package aramframework.com.sym.prm.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 프로그램목록 처리를 위한 VO 클래스르를 정의한다

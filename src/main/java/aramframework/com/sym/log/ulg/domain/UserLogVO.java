@@ -2,7 +2,7 @@ package aramframework.com.sym.log.ulg.domain;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 사용자 로그관리를 위한 VO 클래스

@@ -2,7 +2,7 @@ package aramframework.com.uss.ion.noi.domain;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 정보알림이 서비스를 위한 VO 클래스

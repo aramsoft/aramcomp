@@ -2,7 +2,7 @@ package aramframework.com.uss.olp.mgt.service.impl;
 
 import java.util.List;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.uss.olp.mgt.domain.MeetingManageVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;

@@ -3,7 +3,7 @@ package aramframework.com.uss.ion.ntm.service;
 import java.util.List;
 import java.util.Map;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.uss.ion.ntm.domain.NoteManageVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

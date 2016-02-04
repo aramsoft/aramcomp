@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.nws.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 뉴스정보를 처리하는 VO 클래스

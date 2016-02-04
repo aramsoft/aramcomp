@@ -1,7 +1,7 @@
 package aramframework.com.sym.ccm.adc.domain;
 
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 행정코드 모델 클래스

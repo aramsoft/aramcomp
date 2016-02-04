@@ -2,7 +2,7 @@ package aramframework.com.cop.smt.wmr.domain;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 개요 - 주간월간보고에 대한 Vo 클래스를 정의한다.

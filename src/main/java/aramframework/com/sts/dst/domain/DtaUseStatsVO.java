@@ -1,6 +1,6 @@
 package aramframework.com.sts.dst.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * -자료이용현황 통계에 대한 Vo 클래스를 정의한다.

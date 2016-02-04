@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import aramframework.com.cmm.LoginVO;
-import aramframework.com.cmm.util.UserDetailsHelper;
+import aramframework.com.cmm.domain.LoginVO;
+import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.mbl.com.rns.domain.RealtimeNoticeVO;
 import aramframework.mbl.com.rns.service.RealtimeNoticeService;
 

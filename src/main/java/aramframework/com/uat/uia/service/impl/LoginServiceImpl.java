@@ -3,7 +3,7 @@ package aramframework.com.uat.uia.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.LoginVO;
+import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.cop.ems.domain.SndngMailVO;
 import aramframework.com.cop.ems.service.SndngMailService;
 import aramframework.com.uat.uia.service.LoginService;

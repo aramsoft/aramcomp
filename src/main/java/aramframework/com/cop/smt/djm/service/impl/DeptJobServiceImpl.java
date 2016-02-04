@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cop.smt.djm.domain.DeptJobBxVO;

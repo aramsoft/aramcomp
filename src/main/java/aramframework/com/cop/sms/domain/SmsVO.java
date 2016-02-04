@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**

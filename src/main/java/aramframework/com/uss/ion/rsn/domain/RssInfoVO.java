@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.rsn.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * RSS서비스 Model and VO Class 구현

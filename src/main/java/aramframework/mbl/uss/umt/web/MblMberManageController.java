@@ -7,8 +7,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import aramframework.com.cmm.LoginVO;
-import aramframework.com.cmm.util.UserDetailsHelper;
+import aramframework.com.cmm.domain.LoginVO;
+import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.uss.umt.domain.MberManageVO;
 import aramframework.com.uss.umt.service.MberManageService;
 

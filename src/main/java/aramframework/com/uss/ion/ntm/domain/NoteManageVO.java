@@ -2,7 +2,7 @@ package aramframework.com.uss.ion.ntm.domain;
 
 import java.io.Serializable;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 쪽지 관리(보내기) Model and VO Class 구현

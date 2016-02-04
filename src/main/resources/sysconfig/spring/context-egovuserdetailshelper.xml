@@ -19,7 +19,7 @@
  ************************************************************************************************
 -->
 	<!--인증된 유저의 LoginVO, 권한, 인증 여부를 확인 할 수있는 서비스 클래스-->
-	<bean id="egovUserDetailsHelper" class="aramframework.com.cmm.util.UserDetailsHelper">
+	<bean id="egovUserDetailsHelper" class="aramframework.com.cmm.userdetails.UserDetailsHelper">
         <property name="userDetailsService">
             <ref bean="userDetailsSecurityService" />
         </property>
@@ -31,6 +31,6 @@
 	-->
 
     <!-- 2. 스프링 시큐리티를 이용한 인증을 사용할 빈 -->
-    <bean id="userDetailsSecurityService" class="aramframework.com.cmm.service.impl.UserDetailsSecurityServiceImpl"/>
+    <bean id="userDetailsSecurityService" class="aramframework.com.cmm.userdetails.impl.UserDetailsSecurityServiceImpl"/>
 
 </beans>

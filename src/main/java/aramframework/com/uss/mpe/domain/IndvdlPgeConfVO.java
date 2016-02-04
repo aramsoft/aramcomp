@@ -1,6 +1,6 @@
 package aramframework.com.uss.mpe.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 개요 - 마이페이지에 대한 VO 클래스를 정의한다.

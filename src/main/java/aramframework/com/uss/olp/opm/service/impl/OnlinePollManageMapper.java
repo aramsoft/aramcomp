@@ -2,7 +2,7 @@ package aramframework.com.uss.olp.opm.service.impl;
 
 import java.util.List;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.uss.olp.opm.domain.OnlinePollItemVO;
 import aramframework.com.uss.olp.opm.domain.OnlinePollManageVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;

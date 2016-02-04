@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.ulm.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 통합링크관리 VO Class 구현

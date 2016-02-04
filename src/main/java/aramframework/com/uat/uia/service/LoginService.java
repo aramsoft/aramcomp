@@ -1,6 +1,6 @@
 package aramframework.com.uat.uia.service;
 
-import aramframework.com.cmm.LoginVO;
+import aramframework.com.cmm.domain.LoginVO;
 
 /**
  * 일반 로그인, 인증서 로그인을 처리하는 비즈니스 인터페이스 클래스

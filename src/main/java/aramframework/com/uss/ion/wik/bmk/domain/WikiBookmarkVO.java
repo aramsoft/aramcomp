@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.wik.bmk.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 위키북마크 Model and VO Class 구현

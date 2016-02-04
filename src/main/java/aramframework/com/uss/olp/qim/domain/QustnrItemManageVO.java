@@ -1,6 +1,6 @@
 package aramframework.com.uss.olp.qim.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 설문항목관리 VO Class 구현

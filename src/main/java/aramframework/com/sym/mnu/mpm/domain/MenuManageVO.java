@@ -1,6 +1,6 @@
 package aramframework.com.sym.mnu.mpm.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 메뉴목록관리 처리를 위한 VO 클래스르를 정의한다

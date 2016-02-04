@@ -12,8 +12,8 @@ import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.AbstractAuthenticationTargetUrlRequestHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
-import aramframework.com.cmm.LoginVO;
-import aramframework.com.cmm.util.UserDetailsHelper;
+import aramframework.com.cmm.domain.LoginVO;
+import aramframework.com.cmm.userdetails.UserDetailsHelper;
 
 /**
  * <tt>AuthenticationSuccessHandler</tt> which can be configured with a default URL which users should be

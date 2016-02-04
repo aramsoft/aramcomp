@@ -14,8 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import aramframework.com.cmm.LoginVO;
-import aramframework.com.cmm.util.UserDetailsHelper;
+import aramframework.com.cmm.domain.LoginVO;
+import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.sym.log.wlg.domain.WebLogVO;
 import aramframework.com.sym.log.wlg.service.WebLogService;
 

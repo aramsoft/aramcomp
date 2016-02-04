@@ -7,7 +7,7 @@ import javax.sql.DataSource;
 
 import egovframework.rte.fdl.security.userdetails.EgovUserDetails;
 import egovframework.rte.fdl.security.userdetails.jdbc.EgovUsersByUsernameMapping;
-import aramframework.com.cmm.LoginVO;
+import aramframework.com.cmm.domain.LoginVO;
 
 /**
  * mapRow 결과를 사용자 EgovUserDetails Object 에 정의한다.

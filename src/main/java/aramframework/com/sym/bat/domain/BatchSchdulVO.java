@@ -3,7 +3,7 @@ package aramframework.com.sym.bat.domain;
 import java.io.Serializable;
 import java.util.List;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 배치스케줄관리에 대한 model 클래스

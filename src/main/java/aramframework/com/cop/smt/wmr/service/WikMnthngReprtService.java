@@ -3,7 +3,7 @@ package aramframework.com.cop.smt.wmr.service;
 import java.util.List;
 
 import egovframework.rte.psl.dataaccess.util.EgovMap;
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cop.smt.wmr.domain.WikMnthngReprtVO;
 
 /**

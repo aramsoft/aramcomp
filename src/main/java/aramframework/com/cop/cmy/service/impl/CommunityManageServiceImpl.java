@@ -12,11 +12,11 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.LoginVO;
-import aramframework.com.cmm.SearchVO;
 import aramframework.com.cmm.constant.CacheKey;
+import aramframework.com.cmm.domain.LoginVO;
+import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.BeanUtil;
-import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cop.bbs.domain.BoardMasterVO;
 import aramframework.com.cop.bbs.domain.BoardUseInfVO;
 import aramframework.com.cop.bbs.service.BBSMasterService;

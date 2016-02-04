@@ -1,6 +1,6 @@
 package aramframework.com.sym.cal.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 휴일 VO 클래스

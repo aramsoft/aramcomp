@@ -1,6 +1,6 @@
 package aramframework.com.cop.smt.sim.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 일정관리 VO Class 구현

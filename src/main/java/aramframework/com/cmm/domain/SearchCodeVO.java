@@ -1,4 +1,4 @@
-package aramframework.com.cmm;
+package aramframework.com.cmm.domain;
 
 import java.io.Serializable;
 

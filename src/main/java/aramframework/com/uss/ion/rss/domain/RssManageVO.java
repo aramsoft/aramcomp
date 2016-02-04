@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.rss.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * RSS태그관리 Model and VO Class 구현

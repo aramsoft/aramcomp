@@ -35,8 +35,8 @@
 
  <%
  	// 세션 정보를 가져온다. LoginVO 
-        aramframework.com.cmm.LoginVO user = (aramframework.com.cmm.LoginVO)aramframework.com.cmm.util.UserDetailsHelper.getAuthenticatedUser();
-        if(user.getUrl() == null || user.getUrl().equals("")) user.setUrl("/sym/mnu/mpm/MainMenuHome.do");
+          aramframework.com.cmm.domain.LoginVO user = (aramframework.com.cmm.domain.LoginVO)aramframework.com.cmm.userdetails.UserDetailsHelper.getAuthenticatedUser();
+          if(user.getUrl() == null || user.getUrl().equals("")) user.setUrl("/sym/mnu/mpm/MainMenuHome.do");
  %>
 <body>
 <noscript class="noScriptTitle">자바스크립트를 지원하지 않는 브라우저에서는 일부 기능을 사용하실 수 없습니다.</noscript>

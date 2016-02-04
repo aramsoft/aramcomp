@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.bnt.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 개요 - 당직체크관리에 대한 Vo 클래스를 정의한다.

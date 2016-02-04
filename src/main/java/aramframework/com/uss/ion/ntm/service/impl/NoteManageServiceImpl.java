@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.uss.ion.ntm.domain.NoteManageVO;
 import aramframework.com.uss.ion.ntm.service.NoteManageService;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;

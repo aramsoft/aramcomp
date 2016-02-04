@@ -1,7 +1,7 @@
 package aramframework.com.sym.mnu.stm.service.impl;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.sym.mnu.stm.domain.SiteMapngVO;
 
 /**

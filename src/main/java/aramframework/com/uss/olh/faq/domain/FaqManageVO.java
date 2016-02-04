@@ -1,6 +1,6 @@
 package aramframework.com.uss.olh.faq.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * FAQ를 처리하는 VO 클래스

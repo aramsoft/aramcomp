@@ -2,7 +2,7 @@ package aramframework.com.cop.bbs.service;
 
 import java.util.List;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cop.bbs.domain.BoardMasterVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

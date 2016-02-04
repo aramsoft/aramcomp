@@ -1,6 +1,6 @@
 package aramframework.com.utl.sys.htm.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 개요 - HTTP서비스모니터링에 대한 Vo 클래스를 정의한다.

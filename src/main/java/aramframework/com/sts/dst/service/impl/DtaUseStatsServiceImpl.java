@@ -7,8 +7,8 @@ import org.aspectj.lang.JoinPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.LoginVO;
-import aramframework.com.cmm.util.UserDetailsHelper;
+import aramframework.com.cmm.domain.LoginVO;
+import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.sts.dst.domain.DtaUseStatsVO;
 import aramframework.com.sts.dst.service.DtaUseStatsService;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;

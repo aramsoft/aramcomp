@@ -2,7 +2,7 @@ package aramframework.com.cop.smt.mtm.domain;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 개요 - 메모할일에 대한 Vo 클래스를 정의한다.

@@ -1,6 +1,6 @@
 package aramframework.com.sym.mnu.bmm.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 바로가기메뉴관리를 위한 VO 모델 클래스

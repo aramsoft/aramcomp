@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.ecc.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 행사/이벤트/캠페인 VO Class 구현

@@ -2,7 +2,7 @@ package aramframework.com.cop.smt.lsm.service.impl;
 
 import java.util.List;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cop.smt.lsm.domain.LeaderSchdulVO;
 import aramframework.com.cop.smt.lsm.domain.LeaderSttusVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;

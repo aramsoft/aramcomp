@@ -2,7 +2,7 @@ package aramframework.com.cop.smt.sim.service;
 
 import java.util.List;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cop.smt.sim.domain.SchdulManageVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 

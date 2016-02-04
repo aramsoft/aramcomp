@@ -1,4 +1,4 @@
-package aramframework.com.cmm.service.impl;
+package aramframework.com.cmm.userdetails.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
-import aramframework.com.cmm.service.UserDetailsService;
+import aramframework.com.cmm.userdetails.UserDetailsService;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 
 /**

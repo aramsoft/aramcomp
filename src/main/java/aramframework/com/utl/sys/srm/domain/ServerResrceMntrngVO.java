@@ -1,6 +1,6 @@
 package aramframework.com.utl.sys.srm.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 개요 - 서버자원모니터링에 대한 model 클래스를 정의한다.

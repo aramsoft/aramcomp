@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import aramframework.com.cmm.service.People;
-import aramframework.com.cmm.service.Person;
+import aramframework.com.cmm.domain.People;
+import aramframework.com.cmm.domain.Person;
 
 @Controller
 public class PersonController {

@@ -1,6 +1,6 @@
 package aramframework.com.dam.spe.req.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 지식정보제공/지식정보요청 Model and VO Class 구현

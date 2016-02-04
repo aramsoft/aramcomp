@@ -1,6 +1,6 @@
 package aramframework.com.utl.sys.dbm.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * DB서비스모니터링에 대한 model 클래스

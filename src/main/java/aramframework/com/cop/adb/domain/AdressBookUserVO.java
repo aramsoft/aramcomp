@@ -1,6 +1,6 @@
 package aramframework.com.cop.adb.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 주소록구성원 관리를 위한 VO 모델 클래스

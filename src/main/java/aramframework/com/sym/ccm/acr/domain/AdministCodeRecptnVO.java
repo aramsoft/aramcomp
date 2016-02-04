@@ -1,6 +1,6 @@
 package aramframework.com.sym.ccm.acr.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 법정동코드수신로그 모델 클래스

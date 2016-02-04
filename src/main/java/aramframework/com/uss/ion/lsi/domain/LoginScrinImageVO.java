@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.lsi.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 개요

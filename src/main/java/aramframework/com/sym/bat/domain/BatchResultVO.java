@@ -1,6 +1,6 @@
 package aramframework.com.sym.bat.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 배치결과관리에 대한 model 클래스

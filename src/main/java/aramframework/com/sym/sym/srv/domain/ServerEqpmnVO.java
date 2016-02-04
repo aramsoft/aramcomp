@@ -1,6 +1,6 @@
 package aramframework.com.sym.sym.srv.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 개요 - 서버장비에 대한 Vo 클래스를 정의한다.

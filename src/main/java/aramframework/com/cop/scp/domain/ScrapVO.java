@@ -2,7 +2,7 @@ package aramframework.com.cop.scp.domain;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 스크랩 서비스를 위한 VO 클래스

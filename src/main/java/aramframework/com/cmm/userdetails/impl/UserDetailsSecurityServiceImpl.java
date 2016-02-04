@@ -1,4 +1,4 @@
-package aramframework.com.cmm.service.impl;
+package aramframework.com.cmm.userdetails.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,7 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import aramframework.com.cmm.service.UserDetailsService;
+import aramframework.com.cmm.userdetails.UserDetailsService;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.security.userdetails.EgovUserDetails;
 import egovframework.rte.fdl.string.EgovObjectUtil;

@@ -1,6 +1,6 @@
 package aramframework.com.utl.sys.trm.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 송수신모니터링관리에 대한 model 클래스

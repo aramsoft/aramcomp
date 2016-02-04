@@ -2,7 +2,7 @@ package aramframework.com.dam.map.tea.domain;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 개요 - 지식맵(조직별)에 대한 Vo 클래스를 정의한다.

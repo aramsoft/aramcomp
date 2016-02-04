@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
-import aramframework.com.cmm.SearchVO;
-import aramframework.com.cmm.LoginVO;
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.LoginVO;
+import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uss.olp.mgt.domain.MeetingManageVO;
 import aramframework.com.uss.olp.mgt.service.MeetingManageService;

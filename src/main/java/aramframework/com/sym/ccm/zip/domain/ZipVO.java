@@ -1,6 +1,6 @@
 package aramframework.com.sym.ccm.zip.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 우편번호 모델 클래스

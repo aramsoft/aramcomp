@@ -2,7 +2,7 @@ package aramframework.com.cop.com.domain;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 사용자 정보 조회를 위한 VO 클래스

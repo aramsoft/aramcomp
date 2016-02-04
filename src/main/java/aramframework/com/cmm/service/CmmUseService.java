@@ -3,8 +3,8 @@ package aramframework.com.cmm.service;
 import java.util.List;
 import java.util.Map;
 
-import aramframework.com.cmm.SearchCodeVO;
 import aramframework.com.cmm.domain.ComCodeVO;
+import aramframework.com.cmm.domain.SearchCodeVO;
 
 /**
  * 공통코드등 전체 업무에서 공용해서 사용해야 하는 서비스를 정의하기 위한 서비스 인터페이스

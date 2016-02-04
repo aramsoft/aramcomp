@@ -1,6 +1,6 @@
 package aramframework.com.sym.mnu.stm.service;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.sym.mnu.stm.domain.SiteMapngVO;
 
 /**

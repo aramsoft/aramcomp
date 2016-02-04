@@ -1,6 +1,6 @@
 package aramframework.com.uss.olp.opm.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 온라인POLL관리 VO Class 구현

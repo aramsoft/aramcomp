@@ -1,6 +1,6 @@
 package aramframework.com.uss.olh.awm.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 행정전문용어사전관리 VO Class 구현

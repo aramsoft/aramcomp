@@ -1,6 +1,6 @@
 package aramframework.com.uss.olh.omm.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 온라인메뉴얼 VO Class 구현

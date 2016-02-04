@@ -1,6 +1,6 @@
 package aramframework.com.uss.olp.cns.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 상담내용을 처리하는 VO 클래스

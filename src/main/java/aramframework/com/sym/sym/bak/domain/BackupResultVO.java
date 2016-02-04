@@ -1,6 +1,6 @@
 package aramframework.com.sym.sym.bak.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 백업결과관리에 대한 model 클래스

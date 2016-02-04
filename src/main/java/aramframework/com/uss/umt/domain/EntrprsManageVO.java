@@ -1,6 +1,6 @@
 package aramframework.com.uss.umt.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 기업회원VO클래스로서 기업회원관리 비지니스로직 처리용 항목을 구성한다.

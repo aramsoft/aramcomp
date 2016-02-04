@@ -1,6 +1,6 @@
 package aramframework.com.sym.ccm.ccc.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 공통분류코드 모델 클래스

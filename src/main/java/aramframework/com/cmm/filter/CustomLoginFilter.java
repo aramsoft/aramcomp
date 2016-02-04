@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import aramframework.com.cmm.LoginVO;
+import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.uat.uia.service.LoginService;
 

@@ -1,6 +1,6 @@
 package aramframework.com.sym.log.tlg.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 송수신 로그관리를 위한 VO 클래스를 정의한다.

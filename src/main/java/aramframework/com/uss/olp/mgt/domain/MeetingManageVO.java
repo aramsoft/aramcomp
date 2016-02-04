@@ -1,6 +1,6 @@
 package aramframework.com.uss.olp.mgt.domain;
 
-import aramframework.com.cmm.SearchVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 회의관리 Vo Class 구현

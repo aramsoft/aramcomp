@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.sym.mnu.mpm.domain.MenuManageVO;
 import aramframework.com.sym.mnu.mpm.service.MainMenuService;
+import aramframework.com.uat.uia.domain.LoginVO;
 
 /**
  * 메인메뉴 해당링크 처리를 하는 비즈니스 구현 클래스
@@ -40,7 +40,7 @@ public class MainMenuController {
 	@Autowired
 	private MainMenuService mainMenuService;
 	
-	protected Logger log = LoggerFactory.getLogger(this.getClass());
+	protected final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	/* ### 메인작업 ### */
 	/**

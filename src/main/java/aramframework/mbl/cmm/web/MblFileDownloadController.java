@@ -48,7 +48,7 @@ public class MblFileDownloadController {
 	@Autowired
 	private FileMngService fileService;
 
-	protected static final Logger LOG = LoggerFactory.getLogger(MblFileDownloadController.class);
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * 브라우저 구분 얻기.

@@ -7,14 +7,14 @@
 
 	<bean id="excelZipService"	class="egovframework.rte.fdl.excel.impl.EgovExcelServiceImpl">
 <!-- 
-		<property name="mapClass" value="aramframework.com.sym.ccm.zip.service.impl.ExcelZipMapping" />
+		<property name="mapClass" value="aramframework.com.sym.ccm.zip.service.ExcelZipMapping" />
 -->
-		<property name="mapClass" value="aramframework.com.sym.ccm.zip.service.impl.ExcelZipAramMapping" />
+		<property name="mapClass" value="aramframework.com.sym.ccm.zip.service.ExcelZipAramMapping" />
 		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
 	</bean>
 
 	<bean id="excelCmyMenuService"	class="egovframework.rte.fdl.excel.impl.EgovExcelServiceImpl">
-		<property name="mapClass" value="aramframework.com.cop.cmy.service.impl.ExcelCmyMenuMapping" />
+		<property name="mapClass" value="aramframework.com.cop.cmy.service.ExcelCmyMenuMapping" />
 		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
 	</bean>
 	

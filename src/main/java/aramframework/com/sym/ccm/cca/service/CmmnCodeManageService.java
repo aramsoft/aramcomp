@@ -2,11 +2,16 @@ package aramframework.com.sym.ccm.cca.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.sym.ccm.cca.domain.CmmnCodeVO;
+import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**
- * 공통코드에 관한 서비스 인터페이스 클래스를 정의한다
+ * 공통코드에 대한 서비스 구현클래스를 정의한다
  * 
  * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
@@ -24,48 +29,67 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-public interface CmmnCodeManageService {
+@Service
+public class CmmnCodeManageService extends EgovAbstractServiceImpl {
+
+	@Autowired
+	private CmmnCodeManageMapper cmmnCodeManageMapper;
 
 	/**
 	 * 공통코드 목록을 조회한다.
 	 * 
 	 * @param cmmnCodeVO
 	 */
-	List<EgovMap> selectCmmnCodeList(CmmnCodeVO cmmnCodeVO);
+	public List<EgovMap> selectCmmnCodeList(CmmnCodeVO cmmnCodeVO) {
+		return cmmnCodeManageMapper.selectCmmnCodeList(cmmnCodeVO);
+	}
 
 	/**
 	 * 공통코드 총 갯수를 조회한다.
 	 * 
 	 * @param cmmnCodeVO
 	 */
-	int selectCmmnCodeListCnt(CmmnCodeVO cmmnCodeVO);
+	public int selectCmmnCodeListCnt(CmmnCodeVO cmmnCodeVO) {
+		return cmmnCodeManageMapper.selectCmmnCodeListCnt(cmmnCodeVO);
+	}
 
 	/**
 	 * 공통코드 상세항목을 조회한다.
 	 * 
 	 * @param cmmnCodeVO
 	 */
-	CmmnCodeVO selectCmmnCodeDetail(CmmnCodeVO cmmnCodeVO);
+	public CmmnCodeVO selectCmmnCodeDetail(CmmnCodeVO cmmnCodeVO) {
+		CmmnCodeVO resultVo = cmmnCodeManageMapper.selectCmmnCodeDetail(cmmnCodeVO);
+		// deep copy
+		BeanUtil.copyPropertiesCore(resultVo, cmmnCodeVO); 
+		return resultVo;
+	}
 
 	/**
 	 * 공통코드를 등록한다.
 	 * 
 	 * @param cmmnCodeVO
 	 */
-	void insertCmmnCode(CmmnCodeVO cmmnCodeVO);
+	public void insertCmmnCode(CmmnCodeVO cmmnCodeVO) {
+		cmmnCodeManageMapper.insertCmmnCode(cmmnCodeVO);
+	}
 
 	/**
 	 * 공통코드를 수정한다.
 	 * 
 	 * @param cmmnCodeVO
 	 */
-	void updateCmmnCode(CmmnCodeVO cmmnCodeVO);
+	public void updateCmmnCode(CmmnCodeVO cmmnCodeVO) {
+		cmmnCodeManageMapper.updateCmmnCode(cmmnCodeVO);
+	}
 
 	/**
 	 * 공통코드를 삭제한다.
 	 * 
 	 * @param cmmnCodeVO
 	 */
-	void deleteCmmnCode(CmmnCodeVO cmmnCodeVO);
+	public void deleteCmmnCode(CmmnCodeVO cmmnCodeVO) {
+		cmmnCodeManageMapper.deleteCmmnCode(cmmnCodeVO);
+	}
 
 }

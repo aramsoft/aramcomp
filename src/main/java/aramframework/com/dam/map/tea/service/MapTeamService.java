@@ -2,11 +2,16 @@ package aramframework.com.dam.map.tea.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.dam.map.tea.domain.MapTeamVO;
+import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**
- * 개요 - 지식맵(조직별)에 대한 Service Interface를 정의한다.
+ * 개요 - 지식맵(조직별)에 대한 ServiceImpl 클래스를 정의한다.
  * 
  * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
@@ -24,48 +29,66 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-public interface MapTeamService {
+@Service
+public class MapTeamService extends EgovAbstractServiceImpl {
+
+	@Autowired
+	private MapTeamMapper mapTeamMapper;
 
 	/**
 	 * 등록된 지식맵(조직별) 목록을 조회 한다.
 	 * 
 	 * @param mapTeamVO
 	 */
-	List<EgovMap> selectMapTeamList(MapTeamVO mapTeamVO);
+	public List<EgovMap> selectMapTeamList(MapTeamVO mapTeamVO) {
+		return mapTeamMapper.selectMapTeamList(mapTeamVO);
+	}
 
 	/**
 	 * 지식맵(조직별) 목록 총 갯수를 조회한다.
 	 * 
 	 * @param mapTeamVO
 	 */
-	int selectMapTeamListCnt(MapTeamVO mapTeamVO);
+	public int selectMapTeamListCnt(MapTeamVO mapTeamVO) {
+		return mapTeamMapper.selectMapTeamListCnt(mapTeamVO);
+	}
 
 	/**
 	 * 지식맵(조직별)상세 정보를 조회 한다.
 	 * 
 	 * @param mapTeamVO
 	 */
-	void selectMapTeamDetail(MapTeamVO mapTeamVO);
+	public void selectMapTeamDetail(MapTeamVO mapTeamVO) {
+		MapTeamVO resultVo = mapTeamMapper.selectMapTeamDetail(mapTeamVO);
+		// deep copy
+		BeanUtil.copyPropertiesCore(resultVo, mapTeamVO); 
+	}
 
 	/**
 	 * 지식맵(조직별) 정보를 신규로 등록한다.
 	 * 
 	 * @param mapTeamVO
 	 */
-	void insertMapTeam(MapTeamVO mapTeamVO);
+	public void insertMapTeam(MapTeamVO mapTeamVO) {
+		mapTeamMapper.insertMapTeam(mapTeamVO);
+	}
 
 	/**
 	 * 기 등록 된 지식맵(조직별) 정보를 수정 한다.
 	 * 
 	 * @param mapTeamVO
 	 */
-	void updateMapTeam(MapTeamVO mapTeamVO);
+	public void updateMapTeam(MapTeamVO mapTeamVO) {
+		mapTeamMapper.updateMapTeam(mapTeamVO);
+	}
 
 	/**
 	 * 기 등록된 지식맵(조직별) 정보를 삭제한다.
 	 * 
 	 * @param mapTeamVO
 	 */
-	void deleteMapTeam(MapTeamVO mapTeamVO);
+	public void deleteMapTeam(MapTeamVO mapTeamVO) {
+		mapTeamMapper.deleteMapTeam(mapTeamVO);
+	}
 
 }

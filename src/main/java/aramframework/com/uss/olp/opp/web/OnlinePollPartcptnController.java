@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.olp.opp.domain.OnlinePollPartcptnVO;
 import aramframework.com.uss.olp.opp.service.OnlinePollPartcptnService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;

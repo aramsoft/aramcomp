@@ -62,7 +62,7 @@ public class MberManageController {
 	private DefaultBeanValidator beanValidator;
 
 	/** Log Info */
-	protected Logger log = LoggerFactory.getLogger(this.getClass());
+	protected final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * 일반회원목록을 조회한다. (pageing)

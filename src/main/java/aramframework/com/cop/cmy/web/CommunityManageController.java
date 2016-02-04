@@ -15,7 +15,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
@@ -26,6 +25,7 @@ import aramframework.com.cop.cmy.service.CommunityManageService;
 import aramframework.com.cop.com.domain.ConfirmHistoryVO;
 import aramframework.com.cop.com.service.ConfirmService;
 import aramframework.com.cop.com.service.UserInfService;
+import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.utl.fcc.service.DateUtil;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 

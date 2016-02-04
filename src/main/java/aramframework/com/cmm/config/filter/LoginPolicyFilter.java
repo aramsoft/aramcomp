@@ -42,7 +42,7 @@ public class LoginPolicyFilter extends OncePerRequestFilter {
 
 	private String loginURL;
 
-	protected final static Logger LOG = LoggerFactory.getLogger(LoginPolicyFilter.class);
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	public String getLoginURL() {
 		return loginURL;

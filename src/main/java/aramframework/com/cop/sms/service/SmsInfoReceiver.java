@@ -18,7 +18,6 @@ import x3.client.smeapi.impl.SMEConnectionFactoryImpl;
 import x3.client.smeapi.impl.SMELogger;
 import aramframework.com.cmm.constant.AramProperties;
 import aramframework.com.cop.sms.domain.SmsRecptnVO;
-import aramframework.com.cop.sms.service.impl.SmsMapper;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 
 /**
@@ -67,7 +66,7 @@ public class SmsInfoReceiver extends EgovAbstractServiceImpl implements SMEListe
 	/** 연결 여부 */
 	private boolean isConnected = false;
 
-	private static final Logger LOG = LoggerFactory.getLogger(SmsInfoReceiver.class.getClass());
+	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * SMS 결과 수신을 위한 Connection 및 Session 생성한다.
@@ -306,6 +305,7 @@ public class SmsInfoReceiver extends EgovAbstractServiceImpl implements SMEListe
 	 * 
 	 * @param args
 	 */
+/*
 	public static void main(String[] args) {
 
 		if (args.length < 1) {
@@ -353,7 +353,7 @@ public class SmsInfoReceiver extends EgovAbstractServiceImpl implements SMEListe
 			receiver.close();
 		}
 	}
-
+*/
 	/**
 	 * Scheduler 등을 통해 호출되는 처리를 담당한다. Spring(Quartz)에서 제공하는
 	 * MethodInvokingJobDetailFactoryBean 사용으로 호출된다. 관련 설정은 context-schedule.xml

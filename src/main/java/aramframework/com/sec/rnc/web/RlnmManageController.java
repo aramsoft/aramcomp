@@ -40,7 +40,7 @@ public class RlnmManageController {
 	private RlnmManageService rlnmManageService;
 
 	/** Log Info */
-	protected Logger log = LoggerFactory.getLogger(this.getClass());
+	protected final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * 실명인증확인화면 호출(주민번호)

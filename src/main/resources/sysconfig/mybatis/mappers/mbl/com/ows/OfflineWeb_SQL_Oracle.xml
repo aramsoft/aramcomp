@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="aramframework.mbl.com.ows.service.impl.OfflineWebMapper">
+<mapper namespace="aramframework.mbl.com.ows.service.OfflineWebMapper">
 	
 	<!-- 오프라인  서비스 목록 조회 -->
 	<select id="selectOfflineWebList" resultType="egovMap">

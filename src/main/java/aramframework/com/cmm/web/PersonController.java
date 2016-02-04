@@ -19,7 +19,7 @@ import aramframework.com.cmm.domain.Person;
 @Controller
 public class PersonController {
 
-	protected static final Logger LOG = LoggerFactory.getLogger(PersonController.class);
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 	private static List<Person> personList;
 
 	static {

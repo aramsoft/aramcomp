@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="aramframework.com.cop.ncm.service.impl.NcrdManageMapper">
+<mapper namespace="aramframework.com.cop.ncm.service.NcrdManageMapper">
 
 	<!-- 내명함목록 조회 -->
 	<select id="selectNcrdListMine"  resultType="egovMap">

@@ -3,8 +3,8 @@ package aramframework.com.utl.sys.rsc.service;
 import org.springframework.stereotype.Component;
 
 import egovframework.rte.fdl.security.userdetails.EgovUserDetails;
-import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
+import aramframework.com.uat.uia.domain.LoginVO;
 
 /**
  * 개요 - 로그인 세션정보체크 컴포넌트에 대한 util 클래스를 정의한다.

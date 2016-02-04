@@ -2,11 +2,19 @@ package aramframework.com.uss.ion.nws.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import aramframework.com.cmm.service.FileMngUtil;
+import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.ion.nws.domain.NewsManageVO;
+import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import egovframework.rte.fdl.cmmn.exception.FdlException;
+import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**
- * 뉴스정보를 처리하는 서비스 클래스
+ * 뉴스정보를 처리하는 비즈니스 구현 클래스
  * 
  * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
@@ -24,48 +32,82 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-public interface NewsManageService {
+@Service
+public class NewsManageService extends EgovAbstractServiceImpl {
+
+	@Autowired
+	private NewsManageMapper newsManageMapper;	
+
+	/** ID Generation */
+	@Autowired
+	private EgovIdGnrService newsManageIdGnrService; 
+
+	@Autowired
+	private FileMngUtil fileUtil;
 
 	/**
-	 * 뉴스목록을 조회한다.
+	 * 뉴스정보 목록을 조회한다.
 	 * 
 	 * @param newsManageVO
 	 */
-	List<EgovMap> selectNewsList(NewsManageVO newsManageVO);
+	public List<EgovMap> selectNewsList(NewsManageVO newsManageVO) {
+		return newsManageMapper.selectNewsList(newsManageVO);
+	}
 
 	/**
 	 * 뉴스정보 총 갯수를 조회한다.
 	 * 
 	 * @param newsManageVO
 	 */
-	int selectNewsListCnt(NewsManageVO newsManageVO);
+	public int selectNewsListCnt(NewsManageVO newsManageVO) {
+		return newsManageMapper.selectNewsListCnt(newsManageVO);
+	}
 
 	/**
-	 * 뉴스 상세조회를 한다.
+	 * 뉴스정보 상세조회한다.
 	 * 
 	 * @param newsManageVO
 	 */
-	NewsManageVO selectNewsDetail(NewsManageVO newsManageVO);
+	public NewsManageVO selectNewsDetail(NewsManageVO newsManageVO) {
+		NewsManageVO resultVo = newsManageMapper.selectNewsDetail(newsManageVO);
+		// deep copy
+		BeanUtil.copyPropertiesCore(resultVo, newsManageVO); 
+		return resultVo;
+	}
 
 	/**
 	 * 뉴스정보를 등록한다.
 	 * 
 	 * @param newsManageVO
 	 */
-	void insertNewsInfo(NewsManageVO newsManageVO);
+	public void insertNewsInfo(NewsManageVO newsManageVO) {
+		try {
+			newsManageVO.setNewsId(newsManageIdGnrService.getNextStringId());
+		} catch (FdlException e) {
+			throw new RuntimeException(e);
+		}
+		newsManageMapper.insertNewsInfo(newsManageVO);
+	}
 
 	/**
 	 * 뉴스정보를 수정한다.
 	 * 
 	 * @param newsManageVO
 	 */
-	void updateNewsInfo(NewsManageVO newsManageVO);
+	public void updateNewsInfo(NewsManageVO newsManageVO) {
+		newsManageMapper.updateNewsInfo(newsManageVO);
+	}
 
 	/**
 	 * 뉴스정보를 삭제한다.
 	 * 
 	 * @param newsManageVO
 	 */
-	void deleteNewsInfo(NewsManageVO newsManageVO);
+	public void deleteNewsInfo(NewsManageVO newsManageVO) {
+		// 첨부파일 삭제 ....
+		fileUtil.deleteMultiFile(newsManageVO.getAtchFileId());
+
+		newsManageMapper.deleteNewsInfo(newsManageVO);
+	}
 
 }

@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 import aramframework.com.utl.fcc.service.DateUtil;
 import aramframework.com.utl.fcc.service.StringUtil;
 import aramframework.com.utl.sys.htm.domain.HttpMntrngVO;
-import aramframework.com.utl.sys.htm.service.impl.HttpMntrngChecker;
 
 /**
  * 개요 - HTTP서비스모니터링을 위한 스케쥴링 클래스
@@ -46,7 +45,7 @@ public class HttpMntrngScheduling {
 	@Autowired
 	private SimpleMailMessage mntrngMessage;
 
-	protected static final Logger LOG = LoggerFactory.getLogger(HttpMntrngScheduling.class);
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	// 모니터링 대상을 읽기위한 페이지 크기
 	private static final int RECORD_COUNT_PER_PAGE = 10000;

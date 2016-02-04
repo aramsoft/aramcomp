@@ -20,13 +20,13 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.constant.AramProperties;
-import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.cmm.service.FileMngUtil;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.ems.domain.SndngMailVO;
 import aramframework.com.cop.ems.service.SndngMailService;
+import aramframework.com.uat.uia.domain.LoginVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
@@ -60,7 +60,7 @@ public class SndngMailController {
     /** 파일구분자 */
     static final char FILE_SEPARATOR = File.separatorChar;
 
-	protected static final Logger LOG = LoggerFactory.getLogger(SndngMailController.class);
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * 발송메일 내역을 조회한다

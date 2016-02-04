@@ -16,10 +16,10 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.olp.qtm.domain.QustnrTmplatManageVO;
 import aramframework.com.uss.olp.qtm.service.QustnrTmplatManageService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -52,7 +52,7 @@ public class QustnrTmplatManageController {
 	@Autowired
 	private DefaultBeanValidator beanValidator;
 
-	protected Logger log = LoggerFactory.getLogger(this.getClass());
+	protected final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * 설문템플릿 목록을 조회한다.

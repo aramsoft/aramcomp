@@ -47,7 +47,7 @@ public class MblImageProcessController {
 	@Autowired
     private FileMngService fileService;
 
-	protected static final Logger LOG = LoggerFactory.getLogger(MblImageProcessController.class);
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	@RequestMapping(value = "/content/mbl/imagefiles/{filePathId}/file/{fileSn}")
 	public void getImage(

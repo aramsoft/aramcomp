@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.tbm.tbp.domain.TroblProcessVO;
 import aramframework.com.sym.tbm.tbp.service.TroblProcessService;
+import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.utl.fcc.service.StringUtil;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 

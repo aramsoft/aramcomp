@@ -9,13 +9,13 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.authentication.event.AuthenticationSuccessEvent;
 
 import egovframework.rte.fdl.security.userdetails.EgovUserDetails;
-import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.sym.log.clg.domain.LoginLogVO;
 import aramframework.com.sym.log.clg.service.LoginLogService;
+import aramframework.com.uat.uia.domain.LoginVO;
 
 public class LoginLogListener implements ApplicationListener<ApplicationEvent> {
 
-	protected static final Logger LOG = LoggerFactory.getLogger(LoginLogListener.class);
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired 
 	private LoginLogService loginLogService;

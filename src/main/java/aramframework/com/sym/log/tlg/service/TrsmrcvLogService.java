@@ -2,11 +2,18 @@ package aramframework.com.sym.log.tlg.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.sym.log.tlg.domain.TrsmrcvLogVO;
+import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import egovframework.rte.fdl.cmmn.exception.FdlException;
+import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**
- * 송수신 로그관리를 위한 서비스 인터페이스
+ * 송수신 로그관리를 위한 서비스 구현 클래스
  * 
  * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
@@ -24,40 +31,67 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-public interface TrsmrcvLogService {
+@Service
+public class TrsmrcvLogService extends EgovAbstractServiceImpl {
+
+	@Autowired
+	private TrsmrcvLogMapper trsmrcvLogMapper;	
+
+	/** ID Generation */
+	@Autowired
+	private EgovIdGnrService trsmrcvLogIdGnrService; 
 
 	/**
-	 * 송수신 로그 목록을 조회한다.
+	 * 송수신 로그정보 목록을 조회한다.
 	 * 
 	 * @param trsmrcvLogVO
 	 */
-	public List<EgovMap> selectTrsmrcvLogInf(TrsmrcvLogVO trsmrcvLogVO);
+	public List<EgovMap> selectTrsmrcvLogInf(TrsmrcvLogVO trsmrcvLogVO) {
+		return trsmrcvLogMapper.selectTrsmrcvLogInf(trsmrcvLogVO);
+	}
 
 	/**
 	 * 송수신 로그정보 총 갯수를 조회한다.
 	 * 
 	 * @param trsmrcvLogVO
 	 */
-	public int selectTrsmrcvLogInfCnt(TrsmrcvLogVO trsmrcvLogVO);
+	public int selectTrsmrcvLogInfCnt(TrsmrcvLogVO trsmrcvLogVO) {
+		return trsmrcvLogMapper.selectTrsmrcvLogInfCnt(trsmrcvLogVO);
+	}
 
 	/**
-	 * 송수신 로그를 조회한다.
+	 * 송수신 로그정보를 조회한다.
 	 * 
 	 * @param trsmrcvLogVO
 	 */
-	public TrsmrcvLogVO selectTrsmrcvLog(TrsmrcvLogVO trsmrcvLogVO);
+	public TrsmrcvLogVO selectTrsmrcvLog(TrsmrcvLogVO trsmrcvLogVO) {
+		TrsmrcvLogVO resultVo = trsmrcvLogMapper.selectTrsmrcvLog(trsmrcvLogVO);
+		// deep copy
+		BeanUtil.copyPropertiesCore(resultVo, trsmrcvLogVO); 
+		return resultVo;
+	}
 
 	/**
 	 * 송수신 로그정보를 생성한다.
 	 * 
 	 * @param trsmrcvLogVO
 	 */
-	public void logInsertTrsmrcvLog(TrsmrcvLogVO trsmrcvLogVO);
+	public void logInsertTrsmrcvLog(TrsmrcvLogVO trsmrcvLogVO) {
+		try {
+			trsmrcvLogVO.setRequstId(trsmrcvLogIdGnrService.getNextStringId());
+		} catch (FdlException e) {
+			throw new RuntimeException(e);
+		}
+		trsmrcvLogMapper.logInsertTrsmrcvLog(trsmrcvLogVO);
+	}
 
 	/**
 	 * 송수신 로그정보를 요약한다.
 	 * 
 	 */
-	public void logInsertTrsmrcvLogSummary();
+	public void logInsertTrsmrcvLogSummary() {
+		trsmrcvLogMapper.logInsertTrsmrcvLogSummary();
+		trsmrcvLogMapper.logDeleteTrsmrcvLogSummary();
+	}
 
 }

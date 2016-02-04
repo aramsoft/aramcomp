@@ -11,9 +11,8 @@
    	<typeAliases>
  		<typeAlias alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
  
-		<typeAlias alias="loginVO"				type="aramframework.com.cmm.domain.LoginVO"/>
-  		<typeAlias alias="fileVO" 				type="aramframework.com.cmm.domain.FileVO"/>
   		<typeAlias alias="comCodeVO" 			type="aramframework.com.cmm.domain.ComCodeVO"/>
+  		<typeAlias alias="fileVO" 				type="aramframework.com.cmm.domain.FileVO"/>
   		
  		<typeAlias alias="adressBookVO" 		type="aramframework.com.cop.adb.domain.AdressBookVO"/>
   		<typeAlias alias="adressBookUserVO" 	type="aramframework.com.cop.adb.domain.AdressBookUserVO"/>
@@ -105,6 +104,7 @@
 		<typeAlias alias="troblReqstVO"			type="aramframework.com.sym.tbm.tbr.domain.TroblReqstVO"/>
 		
 		<typeAlias alias="loginPolicyVO"		type="aramframework.com.uat.uap.domain.LoginPolicyVO"/>
+		<typeAlias alias="loginVO"				type="aramframework.com.uat.uia.domain.LoginVO"/>
 
 		<typeAlias alias="annvrsryManageVO"		type="aramframework.com.uss.ion.ans.domain.AnnvrsryManageVO"/>
 		<typeAlias alias="bannerVO"				type="aramframework.com.uss.ion.bnr.domain.BannerVO"/>

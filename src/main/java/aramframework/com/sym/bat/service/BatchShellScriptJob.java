@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
 
 public class BatchShellScriptJob implements Job {
 
-	protected static final Logger LOG = LoggerFactory.getLogger(BatchShellScriptJob.class);
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * (non-Javadoc)

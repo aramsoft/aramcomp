@@ -1,10 +1,14 @@
 package aramframework.com.sym.mnu.stm.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.sym.mnu.stm.domain.SiteMapngVO;
 
 /**
- * 메뉴사이트맵에 관한 서비스 인터페이스 클래스를 정의한다.
+ * 사이트맵 조회를 처리하는 비즈니스 구현 클래스를 정의한다.
  * 
  * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
@@ -22,13 +26,21 @@ import aramframework.com.sym.mnu.stm.domain.SiteMapngVO;
  * </pre>
  */
 
-public interface SiteMapngService {
+@Service
+public class SiteMapngService extends EgovAbstractServiceImpl {
 
+	@Autowired
+	private SiteMapngMapper siteMapngMapper;
+	
 	/**
 	 * 사이트맵 조회
 	 * 
 	 * @param searchVO
 	 */
-	SiteMapngVO selectSiteMapng(SearchVO searchVO);
+
+	public SiteMapngVO selectSiteMapng(SearchVO searchVO) {
+		searchVO.setSearchKeyword(siteMapngMapper.selectSiteMapngByMapCreatID(searchVO));
+		return siteMapngMapper.selectSiteMapng(searchVO);
+	}
 	
 }

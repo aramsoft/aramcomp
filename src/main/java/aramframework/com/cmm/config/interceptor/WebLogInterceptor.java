@@ -14,10 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.sym.log.wlg.domain.WebLogVO;
 import aramframework.com.sym.log.wlg.service.WebLogService;
+import aramframework.com.uat.uia.domain.LoginVO;
 
 /**
  * 웹 로그 생성을 위한 인터셉터 클래스
@@ -40,7 +40,7 @@ import aramframework.com.sym.log.wlg.service.WebLogService;
 
 public class WebLogInterceptor extends HandlerInterceptorAdapter {
 
-	protected static final Logger LOG = LoggerFactory.getLogger(WebLogInterceptor.class);
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired 
 	private WebLogService webLogService;

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -22,6 +21,7 @@ import aramframework.com.dam.map.tea.domain.MapTeamVO;
 import aramframework.com.dam.map.tea.service.MapTeamService;
 import aramframework.com.dam.spe.spe.domain.KnoSpecialistVO;
 import aramframework.com.dam.spe.spe.service.KnoSpecialistService;
+import aramframework.com.uat.uia.domain.LoginVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 

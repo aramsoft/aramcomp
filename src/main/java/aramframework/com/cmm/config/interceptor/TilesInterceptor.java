@@ -28,7 +28,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 public class TilesInterceptor extends HandlerInterceptorAdapter {
 
-	protected static final Logger LOG = LoggerFactory.getLogger(TilesInterceptor.class);
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 	
 	/**
 	 * 웹 로그정보를 생성한다.

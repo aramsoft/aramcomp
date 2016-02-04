@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="aramframework.com.uss.ion.ulm.service.impl.UnityLinkMapper">
+<mapper namespace="aramframework.com.uss.ion.ulm.service.UnityLinkMapper">
 
 	<!-- 통합링크:: 메인 셈플 목록 -->
 	<select id="selectUnityLinkSample" resultType="egovMap">

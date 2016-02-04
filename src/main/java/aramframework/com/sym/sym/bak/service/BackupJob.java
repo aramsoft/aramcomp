@@ -46,7 +46,7 @@ import aramframework.com.utl.sim.service.FileTool;
 
 public class BackupJob implements Job {
 
-	protected static final Logger LOG = LoggerFactory.getLogger(BackupJob.class);
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * (non-Javadoc)

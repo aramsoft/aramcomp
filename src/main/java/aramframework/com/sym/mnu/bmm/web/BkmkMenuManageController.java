@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.mnu.bmm.domain.BkmkMenuManageVO;
-import aramframework.com.sym.mnu.bmm.service.BkmkMenuManageservice;
+import aramframework.com.sym.mnu.bmm.service.BkmkMenuManageService;
+import aramframework.com.uat.uia.domain.LoginVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
@@ -42,7 +42,7 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 public class BkmkMenuManageController {
 
 	@Autowired
-	private BkmkMenuManageservice bkmkMenuManageService;
+	private BkmkMenuManageService bkmkMenuManageService;
 
 	@Autowired
 	private DefaultBeanValidator beanValidator;

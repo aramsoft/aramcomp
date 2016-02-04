@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -16,6 +15,7 @@ import aramframework.com.cop.cmy.domain.CommunityUserVO;
 import aramframework.com.cop.cmy.service.CommunityManageService;
 import aramframework.com.cop.com.domain.UserInfVO;
 import aramframework.com.cop.com.service.UserInfService;
+import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.utl.fcc.service.DateUtil;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 

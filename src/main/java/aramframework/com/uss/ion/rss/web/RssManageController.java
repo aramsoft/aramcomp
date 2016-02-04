@@ -15,10 +15,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.rss.domain.RssManageVO;
 import aramframework.com.uss.ion.rss.service.RssManageService;
 import egovframework.rte.ptl.mvc.bind.annotation.CommandMap;

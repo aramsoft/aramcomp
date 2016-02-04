@@ -4,10 +4,10 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StopWatch;
 
-import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.sym.log.lgm.domain.SysLogVO;
 import aramframework.com.sym.log.lgm.service.SysLogService;
+import aramframework.com.uat.uia.domain.LoginVO;
 
 /**
  * 시스템 로그생성을 위한 Advice 클래스

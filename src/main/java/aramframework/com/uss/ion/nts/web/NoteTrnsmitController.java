@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.nts.domain.NoteTrnsmitVO;
 import aramframework.com.uss.ion.nts.service.NoteTrnsmitService;
 import egovframework.rte.ptl.mvc.bind.annotation.CommandMap;
@@ -46,7 +46,7 @@ public class NoteTrnsmitController {
 	@Autowired
 	private NoteTrnsmitService noteTrnsmitService;
 
-	protected Logger log = LoggerFactory.getLogger(this.getClass());
+	protected final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * 보낸쪽지함관리 목록을 조회한다.

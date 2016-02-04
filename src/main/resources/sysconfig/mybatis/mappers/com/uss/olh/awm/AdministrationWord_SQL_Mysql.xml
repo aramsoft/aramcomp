@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="aramframework.com.uss.olh.awm.service.impl.AdministrationWordMapper">
+<mapper namespace="aramframework.com.uss.olh.awm.service.AdministrationWordMapper">
 
 	<!-- 행정전문용어사전::목록조회 게시물정보 -->
 	<select id="selectAdministrationWordList" resultType="egovMap" >

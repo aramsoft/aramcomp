@@ -29,13 +29,13 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import aramframework.com.cmm.domain.LoginVO;
+import aramframework.com.uat.uia.domain.LoginVO;
 
 public class LogAuditFilter implements Filter {
 
 	@SuppressWarnings("unused")
 	private FilterConfig config;
-	protected final static Logger LOG = LoggerFactory.getLogger(LogAuditFilter.class);
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) 
 	throws IOException, ServletException {

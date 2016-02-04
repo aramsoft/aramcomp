@@ -16,7 +16,6 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.ComCodeVO;
-import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.service.FileMngUtil;
@@ -28,6 +27,7 @@ import aramframework.com.cop.smt.sim.domain.SchdulManageVO;
 import aramframework.com.cop.smt.sim.service.SchdulManageService;
 import aramframework.com.sym.cal.domain.RestdeVO;
 import aramframework.com.sym.cal.service.RestdeManageService;
+import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.utl.fcc.service.StringUtil;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 

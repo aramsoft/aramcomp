@@ -47,7 +47,7 @@ public class ProgrmManageController {
 	@Autowired
 	private DefaultBeanValidator beanValidator;
 
-	protected Logger log = LoggerFactory.getLogger(this.getClass());
+	protected final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * 프로그램파일명을 조회한다.(팝업화면)

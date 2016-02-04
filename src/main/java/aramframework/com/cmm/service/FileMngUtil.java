@@ -52,7 +52,7 @@ public class FileMngUtil {
 	@Autowired 
 	private FileMngService fileMngService;
 
-	protected static final Logger LOG = LoggerFactory.getLogger(FileMngUtil.class);
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * 첨부파일을 새로 저장한다.
@@ -206,7 +206,7 @@ public class FileMngUtil {
 	 * @exception MyException
 	 * @see
 	 */
-	private static String getTimeStamp() {
+	private String getTimeStamp() {
 
 		String rtnStr = null;
 

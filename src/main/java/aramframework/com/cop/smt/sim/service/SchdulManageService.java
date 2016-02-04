@@ -2,12 +2,20 @@ package aramframework.com.cop.smt.sim.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.service.FileMngUtil;
+import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cop.smt.sim.domain.SchdulManageVO;
+import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import egovframework.rte.fdl.cmmn.exception.FdlException;
+import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**
- * 일정관리를 처리하는 Service Class 구현
+ * 일정관리를 처리하는 ServiceImpl Class 구현
  * 
  * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
@@ -25,76 +33,120 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-public interface SchdulManageService {
+@Service
+public class SchdulManageService extends EgovAbstractServiceImpl {
+
+	@Autowired 
+	private SchdulManageMapper schdulManageMapper;	
+
+	@Autowired 
+	private EgovIdGnrService schdulManageIdGnrService; 
+
+	@Autowired 
+	private FileMngUtil fileUtil;
 
 	/**
 	 * 사용자 목록을 조회한다.
 	 * 
 	 * @param searchVO
+	 * 
 	 */
-	public List<EgovMap> selectEmplyrList(SearchVO searchVO);
+	public List<EgovMap> selectEmplyrList(SearchVO searchVO) {
+		return schdulManageMapper.selectEmplyrList(searchVO);
+	}
 
 	/**
 	 * 사용자 총횟수를 조회한다.
 	 * 
 	 * @param searchVO
+	 * 
 	 */
-	public int selectEmplyrListCnt(SearchVO searchVO);
+	public int selectEmplyrListCnt(SearchVO searchVO) {
+		return schdulManageMapper.selectEmplyrListCnt(searchVO);
+	}
 
 	/**
 	 * 메인페이지/일정관리조회
 	 * 
 	 * @param schdulManageVO
 	 */
-	public List<EgovMap> selectSchdulManageMainList(SchdulManageVO schdulManageVO);
+	public List<EgovMap> selectSchdulManageMainList(SchdulManageVO schdulManageVO) {
+		return schdulManageMapper.selectSchdulManageMainList(schdulManageVO);
+	}
 
 	/**
 	 * 일정 목록을 Map(map)형식으로 조회한다.
 	 * 
 	 * @param schdulManageVO
 	 */
-	public List<EgovMap> selectSchdulManageRetrieve(SchdulManageVO schdulManageVO);
+	public List<EgovMap> selectSchdulManageRetrieve(SchdulManageVO schdulManageVO) {
+		return schdulManageMapper.selectSchdulManageRetrieve(schdulManageVO);
+	}
 
 	/**
 	 * 일정 목록을 조회한다.
 	 * 
 	 * @param searchVO
 	 */
-	public List<EgovMap> selectSchdulManageList(SearchVO searchVO);
+	public List<EgovMap> selectSchdulManageList(SearchVO searchVO) {
+		return schdulManageMapper.selectSchdulManageList(searchVO);
+	}
 
 	/**
 	 * 일정를(을) 목록 전체 건수를(을) 조회한다.
 	 * 
 	 * @param searchVO
 	 */
-	public int selectSchdulManageListCnt(SearchVO searchVO);
+	public int selectSchdulManageListCnt(SearchVO searchVO) {
+		return (Integer) schdulManageMapper.selectSchdulManageListCnt(searchVO);
+	}
 
 	/**
 	 * 일정를(을) 상세조회 한다.
 	 * 
 	 * @param schdulManageVO
 	 */
-	public SchdulManageVO selectSchdulManageDetail(SchdulManageVO schdulManageVO);
+	public SchdulManageVO selectSchdulManageDetail(SchdulManageVO schdulManageVO) {
+		SchdulManageVO resultVo =schdulManageMapper.selectSchdulManageDetail(schdulManageVO);
+		// deep copy
+		BeanUtil.copyPropertiesCore(resultVo, schdulManageVO); 
+		return resultVo;
+	}
 
 	/**
 	 * 일정를(을) 등록한다.
 	 * 
 	 * @param schdulManageVO
 	 */
-	void insertSchdulManage(SchdulManageVO schdulManageVO);
+	public void insertSchdulManage(SchdulManageVO schdulManageVO) {
+		try {
+			schdulManageVO.setSchdulId(schdulManageIdGnrService.getNextStringId());
+		} catch (FdlException e) {
+			throw new RuntimeException(e);
+		}
+		schdulManageMapper.insertSchdulManage(schdulManageVO);
+	}
 
 	/**
 	 * 일정를(을) 수정한다.
 	 * 
 	 * @param schdulManageVO
 	 */
-	void updateSchdulManage(SchdulManageVO schdulManageVO);
+	public void updateSchdulManage(SchdulManageVO schdulManageVO) {
+		schdulManageMapper.updateSchdulManage(schdulManageVO);
+	}
 
 	/**
 	 * 일정를(을) 삭제한다.
 	 * 
 	 * @param schdulManageVO
 	 */
-	void deleteSchdulManage(SchdulManageVO schdulManageVO);
+	public void deleteSchdulManage(SchdulManageVO schdulManageVO) {
 
+		// 첨부파일 삭제 ....
+		fileUtil.deleteMultiFile(schdulManageVO.getAtchFileId());
+
+		schdulManageMapper.deleteDiaryManage(schdulManageVO);
+		schdulManageMapper.deleteSchdulManage(schdulManageVO);
+	}
 }

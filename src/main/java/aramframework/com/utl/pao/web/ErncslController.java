@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import aramframework.com.utl.pao.domain.PrntngOutptVO;
-import aramframework.com.utl.pao.service.PrntngOutpt;
+import aramframework.com.utl.pao.service.PrntngOutptService;
 
 /**
  * 전자관인에 관한 Util 테스트를 위한 화면 Controller
@@ -43,7 +43,7 @@ public class ErncslController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Autowired
-	private PrntngOutpt prntngOutpt;
+	private PrntngOutptService prntngOutptService; 
 
 	protected final Logger LOG = LoggerFactory.getLogger(getClass());
 
@@ -79,7 +79,7 @@ public class ErncslController extends HttpServlet {
 		prntngOutptVO.setErncslSe(erncslSe);
 
 		try {
-			prntngOutpt.selectErncsl(prntngOutptVO);
+			prntngOutptService.selectErncsl(prntngOutptVO);
 		} catch (Exception e) {
 			// e.printStackTrace();
 			LOG.error(e.getMessage()); // 2011.10.10 보안점검 후속조치

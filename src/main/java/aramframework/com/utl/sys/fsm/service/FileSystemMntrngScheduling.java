@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
 import aramframework.com.utl.fcc.service.DateUtil;
 import aramframework.com.utl.fcc.service.StringUtil;
 import aramframework.com.utl.sys.fsm.domain.FileSysMntrngVO;
-import aramframework.com.utl.sys.fsm.service.impl.FileSystemChecker;
 
 /**
  * 개요 - 네트워크서비스 모니터링을 위한 스케쥴링클래스를 정의한다.
@@ -50,7 +49,7 @@ public class FileSystemMntrngScheduling {
 	@Autowired
 	private SimpleMailMessage mntrngMessage;
 
-	protected static final Logger LOG = LoggerFactory.getLogger(FileSystemMntrngScheduling.class);
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	// 모니터링 대상을 읽기위한 페이지 크기
 	private static final int RECORD_COUNT_PER_PAGE = 10000;

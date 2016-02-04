@@ -13,14 +13,14 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.ComCodeVO;
-import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.utl.sys.htm.domain.HttpMntrngLogVO;
 import aramframework.com.utl.sys.htm.domain.HttpMntrngVO;
+import aramframework.com.utl.sys.htm.service.HttpMntrngChecker;
 import aramframework.com.utl.sys.htm.service.HttpMntrngService;
-import aramframework.com.utl.sys.htm.service.impl.HttpMntrngChecker;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**

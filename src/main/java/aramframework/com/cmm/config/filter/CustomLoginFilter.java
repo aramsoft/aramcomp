@@ -15,8 +15,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.cmm.util.MessageHelper;
+import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uat.uia.service.LoginService;
 
 /**
@@ -45,7 +45,7 @@ public class CustomLoginFilter extends OncePerRequestFilter {
 
 	private String loginURL;
 
-	protected final static Logger LOG = LoggerFactory.getLogger(CustomLoginFilter.class);
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	public String getLoginURL() {
 		return loginURL;

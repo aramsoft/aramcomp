@@ -2,12 +2,19 @@ package aramframework.com.ssi.syi.ims.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.ssi.syi.ims.domain.CntcMessageItemVO;
 import aramframework.com.ssi.syi.ims.domain.CntcMessageVO;
+import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import egovframework.rte.fdl.cmmn.exception.FdlException;
+import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**
- * 연계메시지에 관한 서비스 인터페이스 클래스를 정의한다
+ * 연계메시지에 대한 서비스 구현클래스를 정의한다.
  * 
  * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
@@ -25,90 +32,142 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-public interface CntcMessageService {
+@Service
+public class CntcMessageService extends EgovAbstractServiceImpl {
+
+	@Autowired
+	private CntcMessageMapper cntcMessageMapper;
+	
+	/** EgovIdGnrService */
+	@Autowired
+	private EgovIdGnrService cntcMessageIdGnrService; 
+
+	/** EgovIdGnrService */
+	@Autowired
+	private EgovIdGnrService cntcMessageItemIdGnrService; 
 
 	/**
 	 * 연계메시지 목록을 조회한다.
 	 * 
 	 * @param cntcMessageVO
 	 */
-	List<CntcMessageVO> selectCntcMessageList(CntcMessageVO cntcMessageVO);
+	public List<CntcMessageVO> selectCntcMessageList(CntcMessageVO cntcMessageVO) {
+		return cntcMessageMapper.selectCntcMessageList(cntcMessageVO);
+	}
 
 	/**
 	 * 연계메시지 총 갯수를 조회한다.
 	 * 
 	 * @param cntcMessageVO
 	 */
-	int selectCntcMessageListCnt(CntcMessageVO cntcMessageVO);
+	public int selectCntcMessageListCnt(CntcMessageVO cntcMessageVO) {
+		return cntcMessageMapper.selectCntcMessageListCnt(cntcMessageVO);
+	}
 
 	/**
 	 * 연계메시지 상세항목을 조회한다.
 	 * 
 	 * @param cntcMessageVO
 	 */
-	CntcMessageVO selectCntcMessageDetail(CntcMessageVO cntcMessageVO);
+	public CntcMessageVO selectCntcMessageDetail(CntcMessageVO cntcMessageVO) {
+		CntcMessageVO resultVo = cntcMessageMapper.selectCntcMessageDetail(cntcMessageVO);
+		// deep copy
+		BeanUtil.copyPropertiesCore(resultVo, cntcMessageVO); 
+		return resultVo;
+	}
 
 	/**
 	 * 연계메시지를 등록한다.
 	 * 
 	 * @param cntcMessageVO
 	 */
-	void insertCntcMessage(CntcMessageVO cntcMessageVO);
+	public void insertCntcMessage(CntcMessageVO cntcMessageVO) {
+		try {
+			cntcMessageVO.setCntcMessageId(cntcMessageIdGnrService.getNextStringId());
+		} catch (FdlException e) {
+			throw new RuntimeException(e);
+		}
+		cntcMessageMapper.insertCntcMessage(cntcMessageVO);
+	}
 
 	/**
 	 * 연계메시지를 수정한다.
 	 * 
 	 * @param cntcMessageVO
 	 */
-	void updateCntcMessage(CntcMessageVO cntcMessageVO);
+	public void updateCntcMessage(CntcMessageVO cntcMessageVO) {
+		cntcMessageMapper.updateCntcMessage(cntcMessageVO);
+	}
 
 	/**
 	 * 연계메시지를 삭제한다.
 	 * 
 	 * @param cntcMessageVO
 	 */
-	void deleteCntcMessage(CntcMessageVO cntcMessageVO);
+	public void deleteCntcMessage(CntcMessageVO cntcMessageVO) {
+		cntcMessageMapper.deleteCntcMessage(cntcMessageVO);
+	}
 
 	/**
 	 * 연계메시지항목 목록을 조회한다.
 	 * 
 	 * @param cntcMessageItemVO
 	 */
-	List<EgovMap> selectCntcMessageItemList(CntcMessageItemVO cntcMessageItemVO);
+	public List<EgovMap> selectCntcMessageItemList(CntcMessageItemVO cntcMessageItemVO) {
+		return cntcMessageMapper.selectCntcMessageItemList(cntcMessageItemVO);
+	}
 
 	/**
 	 * 연계메시지항목 총 갯수를 조회한다.
 	 * 
 	 * @param cntcMessageItemVO
 	 */
-	int selectCntcMessageItemListCnt(CntcMessageItemVO cntcMessageItemVO);
+	public int selectCntcMessageItemListCnt(CntcMessageItemVO cntcMessageItemVO) {
+		return cntcMessageMapper.selectCntcMessageItemListCnt(cntcMessageItemVO);
+	}
 
 	/**
 	 * 연계메시지항목 상세항목을 조회한다.
 	 * 
 	 * @param cntcMessageItemVO
 	 */
-	CntcMessageItemVO selectCntcMessageItemDetail(CntcMessageItemVO cntcMessageItemVO);
+	public CntcMessageItemVO selectCntcMessageItemDetail(CntcMessageItemVO cntcMessageItemVO) {
+		CntcMessageItemVO resultVo = cntcMessageMapper.selectCntcMessageItemDetail(cntcMessageItemVO);
+		// deep copy
+		BeanUtil.copyPropertiesCore(resultVo, cntcMessageItemVO); 
+		return resultVo;
+	}
 
 	/**
 	 * 연계메시지 항목을 등록한다.
 	 * 
 	 * @param cntcMessageItemVO
 	 */
-	void insertCntcMessageItem(CntcMessageItemVO cntcMessageItemVO);
+	public void insertCntcMessageItem(CntcMessageItemVO cntcMessageItemVO) {
+		try {
+			cntcMessageItemVO.setItemId(cntcMessageItemIdGnrService.getNextStringId());
+		} catch (FdlException e) {
+			throw new RuntimeException(e);
+		}
+		cntcMessageMapper.insertCntcMessageItem(cntcMessageItemVO);
+	}
 
 	/**
 	 * 연계메시지 항목을 수정한다.
 	 * 
 	 * @param cntcMessageItemVO
 	 */
-	void updateCntcMessageItem(CntcMessageItemVO cntcMessageItemVO);
+	public void updateCntcMessageItem(CntcMessageItemVO cntcMessageItemVO) {
+		cntcMessageMapper.updateCntcMessageItem(cntcMessageItemVO);
+	}
 
 	/**
 	 * 연계메시지 항목을 삭제한다.
 	 * 
 	 * @param cntcMessageItemVO
 	 */
-	void deleteCntcMessageItem(CntcMessageItemVO cntcMessageItemVO);
+	public void deleteCntcMessageItem(CntcMessageItemVO cntcMessageItemVO) {
+		cntcMessageMapper.deleteCntcMessageItem(cntcMessageItemVO);
+	}
 
 }

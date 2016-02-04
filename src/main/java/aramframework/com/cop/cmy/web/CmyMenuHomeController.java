@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
-import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.bbs.domain.BoardMasterVO;
@@ -35,6 +34,7 @@ import aramframework.com.cop.cmy.domain.CommunityUserVO;
 import aramframework.com.cop.cmy.domain.CommunityVO;
 import aramframework.com.cop.cmy.service.CmyMenuManageService;
 import aramframework.com.cop.cmy.service.CommunityManageService;
+import aramframework.com.uat.uia.domain.LoginVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**
@@ -71,7 +71,7 @@ public class CmyMenuHomeController {
 	@Autowired 
 	private BBSBoardService boardService;
 
-	protected static final Logger LOG = LoggerFactory.getLogger(CmyMenuHomeController.class);
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 	
 	/**
 	 * 커뮤니티 홈페이지를 조회한다.

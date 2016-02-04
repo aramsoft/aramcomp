@@ -48,7 +48,7 @@ public class ImageProcessController {
 	@Autowired 
 	private FileMngService fileMngService; 
 
-	protected static final Logger LOG = LoggerFactory.getLogger(ImageProcessController.class);
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * 첨부된 이미지에 대한 미리보기 기능을 제공한다.

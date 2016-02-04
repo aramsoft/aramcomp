@@ -48,7 +48,7 @@ public class BackupScheduler {
 	 */
 	private Scheduler sched;
 
-	protected static final Logger LOG = LoggerFactory.getLogger(BackupScheduler.class);
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	// 실행 대상을 읽기위한 페이지 크기
 	private static final int RECORD_COUNT_PER_PAGE = 10000;

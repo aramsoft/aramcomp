@@ -43,7 +43,7 @@ public class BackupJobListener implements JobListener {
 	/** ID Generation */
 	private EgovIdGnrService idgenService;
 
-	protected static final Logger LOG = LoggerFactory.getLogger(BackupJobListener.class);
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * 백업작업 서비스를 설정한다.

@@ -16,13 +16,13 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.FileVO;
-import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.service.FileMngService;
 import aramframework.com.cmm.service.FileMngUtil;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.mtg.domain.MtgPlaceFxtrsVO;
 import aramframework.com.uss.ion.mtg.domain.MtgPlaceManageVO;
 import aramframework.com.uss.ion.mtg.domain.MtgPlaceResveVO;

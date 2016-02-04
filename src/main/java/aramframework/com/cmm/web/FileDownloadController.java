@@ -49,7 +49,7 @@ public class FileDownloadController {
 	@Autowired 
 	private FileMngService fileMngService; 
 
-	protected static final Logger LOG = LoggerFactory.getLogger(FileDownloadController.class);
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * 브라우저 구분 얻기.

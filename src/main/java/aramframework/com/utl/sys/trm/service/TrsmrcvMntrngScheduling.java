@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 import aramframework.com.utl.fcc.service.StringUtil;
 import aramframework.com.utl.sys.trm.domain.TrsmrcvMntrngLogVO;
 import aramframework.com.utl.sys.trm.domain.TrsmrcvMntrngVO;
-import aramframework.com.utl.sys.trm.service.impl.TrsmrcvMntrngChecker;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 
 /**
@@ -51,7 +50,7 @@ public class TrsmrcvMntrngScheduling {
 	@Autowired
 	private EgovIdGnrService trsmrcvMntrngLogIdGnrService; 
 
-	protected static final Logger LOG = LoggerFactory.getLogger(TrsmrcvMntrngScheduling.class);
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	// 모니터링 대상을 읽기위한 페이지 크기
 	private static final int RECORD_COUNT_PER_PAGE = 10000;

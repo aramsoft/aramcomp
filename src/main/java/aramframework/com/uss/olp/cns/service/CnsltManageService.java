@@ -2,11 +2,19 @@ package aramframework.com.uss.olp.cns.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import aramframework.com.cmm.service.FileMngUtil;
+import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.olp.cns.domain.CnsltManageVO;
+import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import egovframework.rte.fdl.cmmn.exception.FdlException;
+import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**
- * 상담내용을 처리하는 비즈니스 구현 클래스
+ * 상담내용을 처리하는 구현 클래스
  * 
  * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
@@ -24,91 +32,139 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-public interface CnsltManageService {
+@Service
+public class CnsltManageService extends EgovAbstractServiceImpl {
 
+	@Autowired
+	private CnsltManageMapper cnsltManageMapper;	
+
+	/** ID Generation */
+	@Autowired
+	private EgovIdGnrService cnsltManageIdGnrService; 
+
+	@Autowired
+	private FileMngUtil fileUtil;
 
 	/**
 	 * 상담내용 글 목록을 조회한다.
 	 * 
 	 * @param cnsltManageVO
 	 */
-	List<EgovMap> selectCnsltList(CnsltManageVO cnsltManageVO);
+	public List<EgovMap> selectCnsltList(CnsltManageVO cnsltManageVO) {
+		return cnsltManageMapper.selectCnsltList(cnsltManageVO);
+	}
 
 	/**
 	 * 상담내용 글 총 갯수를 조회한다.
 	 * 
 	 * @param cnsltManageVO
 	 */
-	int selectCnsltListCnt(CnsltManageVO cnsltManageVO);
+	public int selectCnsltListCnt(CnsltManageVO cnsltManageVO) {
+		return cnsltManageMapper.selectCnsltListCnt(cnsltManageVO);
+	}
 
 	/**
 	 * 상담내용 글을 조회한다.
 	 * 
 	 * @param cnsltManageVO
 	 */
-	CnsltManageVO selectCnsltListDetail(CnsltManageVO cnsltManageVO);
+	public CnsltManageVO selectCnsltListDetail(CnsltManageVO cnsltManageVO) {
+		CnsltManageVO resultVo = cnsltManageMapper.selectCnsltListDetail(cnsltManageVO);
+		// deep copy
+		BeanUtil.copyPropertiesCore(resultVo, cnsltManageVO); 
+		return resultVo;
+	}
 
 	/**
 	 * 상담내용 글을 수정한다.(조회수를 수정)
 	 * 
 	 * @param cnsltManageVO
 	 */
-	void updateCnsltInqireCo(CnsltManageVO cnsltManageVO);
+	public void updateCnsltInqireCo(CnsltManageVO cnsltManageVO) {
+		cnsltManageMapper.updateCnsltInqireCo(cnsltManageVO);
+	}
 
 	/**
 	 * 상담내용 글을 등록한다.
 	 * 
 	 * @param cnsltManageVO
 	 */
-	void insertCnsltDtls(CnsltManageVO cnsltManageVO);
+	public void insertCnsltDtls(CnsltManageVO cnsltManageVO) {
+		try {
+			cnsltManageVO.setCnsltId(cnsltManageIdGnrService.getNextStringId());
+		} catch (FdlException e) {
+			throw new RuntimeException(e);
+		}
+		cnsltManageMapper.insertCnsltDtls(cnsltManageVO);
+	}
 
 	/**
 	 * 작성비밀번호를 확인한다.
 	 * 
 	 * @param cnsltManageVO
 	 */
-	int selectCnsltPasswordConfirmCnt(CnsltManageVO cnsltManageVO);
+	public int selectCnsltPasswordConfirmCnt(CnsltManageVO cnsltManageVO) {
+		return cnsltManageMapper.selectCnsltPasswordConfirmCnt(cnsltManageVO);
+	}
 
 	/**
 	 * 상담내용 글을 수정한다.
 	 * 
 	 * @param cnsltManageVO
 	 */
-	void updateCnsltDtls(CnsltManageVO cnsltManageVO);
+	public void updateCnsltDtls(CnsltManageVO cnsltManageVO) {
+		cnsltManageMapper.updateCnsltDtls(cnsltManageVO);
+	}
 
 	/**
 	 * 상담내용 글을 삭제한다.
 	 * 
 	 * @param cnsltManageVO
 	 */
-	void deleteCnsltDtls(CnsltManageVO cnsltManageVO);
+	public void deleteCnsltDtls(CnsltManageVO cnsltManageVO) {
+		// 첨부파일 삭제 ....
+		fileUtil.deleteMultiFile(cnsltManageVO.getAtchFileId());
+
+		cnsltManageMapper.deleteCnsltDtls(cnsltManageVO);
+	}
 
 	/**
 	 * 상담답변 글 목록을 조회한다.
 	 * 
 	 * @param cnsltManageVO
 	 */
-	List<EgovMap> selectCnsltAnswerList(CnsltManageVO cnsltManageVO);
+	public List<EgovMap> selectCnsltAnswerList(CnsltManageVO cnsltManageVO) {
+		return cnsltManageMapper.selectCnsltAnswerList(cnsltManageVO);
+	}
 
 	/**
 	 * 상담답변 글 총 갯수를 조회한다.
 	 * 
 	 * @param cnsltManageVO
 	 */
-	int selectCnsltAnswerListCnt(CnsltManageVO cnsltManageVO);
+	public int selectCnsltAnswerListCnt(CnsltManageVO cnsltManageVO) {
+		return cnsltManageMapper.selectCnsltListCnt(cnsltManageVO);
+	}
 
 	/**
 	 * 상담답변 글을 조회한다.
 	 * 
 	 * @param cnsltManageVO
 	 */
-	CnsltManageVO selectCnsltAnswerDetail(CnsltManageVO cnsltManageVO);
+	public CnsltManageVO selectCnsltAnswerDetail(CnsltManageVO cnsltManageVO) {
+		CnsltManageVO resultVo = cnsltManageMapper.selectCnsltAnswerDetail(cnsltManageVO);
+		// deep copy
+		BeanUtil.copyPropertiesCore(resultVo, cnsltManageVO); 
+		return resultVo;
+	}
 
 	/**
 	 * 상담답변 글을 수정한다.
 	 * 
 	 * @param cnsltManageVO
 	 */
-	void updateCnsltDtlsAnswer(CnsltManageVO cnsltManageVO);
+	public void updateCnsltDtlsAnswer(CnsltManageVO cnsltManageVO) {
+		cnsltManageMapper.updateCnsltDtlsAnswer(cnsltManageVO);
+	}
 
 }

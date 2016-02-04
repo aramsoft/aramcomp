@@ -30,7 +30,7 @@ public class UserLogScheduling {
 	@Autowired
 	private UserLogService userLogService;
 
-	protected static final Logger LOG = LoggerFactory.getLogger(UserLogScheduling.class);
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 	/**
 	 * 사용자 로그정보를 생성한다.
 	 * 

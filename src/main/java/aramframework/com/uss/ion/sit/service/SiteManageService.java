@@ -2,11 +2,18 @@ package aramframework.com.uss.ion.sit.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.ion.sit.domain.SiteManageVO;
+import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import egovframework.rte.fdl.cmmn.exception.FdlException;
+import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**
- * 사이트정보를 처리하는 클래스
+ * 사이트정보를 처리하는 구현 클래스
  * 
  * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
@@ -24,48 +31,76 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-public interface SiteManageService {
+@Service
+public class SiteManageService extends EgovAbstractServiceImpl {
+
+	@Autowired
+	private SiteManageMapper siteManageMapper;	
+
+	/** ID Generation */
+	@Autowired
+	private EgovIdGnrService siteManageIdGnrService; 
 
 	/**
-	 * 사이트목록을 조회한다.
+	 * 사이트정보 목록을 조회한다.
 	 * 
 	 * @param siteManageVO
 	 */
-	List<EgovMap> selectSiteList(SiteManageVO siteManageVO);
+	public List<EgovMap> selectSiteList(SiteManageVO siteManageVO) {
+		return siteManageMapper.selectSiteList(siteManageVO);
+	}
 
 	/**
 	 * 사이트정보 총 갯수를 조회한다.
 	 * 
 	 * @param siteManageVO
 	 */
-	int selectSiteListCnt(SiteManageVO siteManageVO);
+	public int selectSiteListCnt(SiteManageVO siteManageVO) {
+		return siteManageMapper.selectSiteListCnt(siteManageVO);
+	}
 
 	/**
-	 * 사이트정보를 상세조회한다.
+	 * 사이트상세정보를 조회한다.
 	 * 
 	 * @param siteManageVO
 	 */
-	SiteManageVO selectSiteDetail(SiteManageVO siteManageVO);
+	public SiteManageVO selectSiteDetail(SiteManageVO siteManageVO) {
+		SiteManageVO resultVo = siteManageMapper.selectSiteDetail(siteManageVO);
+		// deep copy
+		BeanUtil.copyPropertiesCore(resultVo, siteManageVO); 
+		return resultVo;
+	}
 
 	/**
 	 * 사이트정보를 등록한다.
 	 * 
 	 * @param siteManageVO
 	 */
-	void insertSiteInfo(SiteManageVO siteManageVO);
+	public void insertSiteInfo(SiteManageVO siteManageVO) {
+		try {
+			siteManageVO.setSiteId(siteManageIdGnrService.getNextStringId());
+		} catch (FdlException e) {
+			throw new RuntimeException(e);
+		}
+		siteManageMapper.insertSiteInfo(siteManageVO);
+	}
 
 	/**
 	 * 사이트정보를 수정한다.
 	 * 
 	 * @param siteManageVO
 	 */
-	void updateSiteInfo(SiteManageVO siteManageVO);
+	public void updateSiteInfo(SiteManageVO siteManageVO) {
+		siteManageMapper.updateSiteInfo(siteManageVO);
+	}
 
 	/**
 	 * 사이트정보를 삭제한다.
 	 * 
 	 * @param siteManageVO
 	 */
-	void deleteSiteInfo(SiteManageVO siteManageVO);
+	public void deleteSiteInfo(SiteManageVO siteManageVO) {
+		siteManageMapper.deleteSiteInfo(siteManageVO);
+	}
 
 }

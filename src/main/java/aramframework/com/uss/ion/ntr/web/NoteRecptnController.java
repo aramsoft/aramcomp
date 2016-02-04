@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.ntr.domain.NoteRecptnVO;
 import aramframework.com.uss.ion.ntr.service.NoteRecptnService;
 import aramframework.com.uss.ion.nts.domain.NoteTrnsmitVO;
@@ -51,7 +51,7 @@ public class NoteRecptnController {
 	@Autowired
 	private NoteRecptnService noteRecptnService;
 
-	protected Logger log = LoggerFactory.getLogger(this.getClass());
+	protected final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * 받은쪽지함관리 목록을 조회한다.

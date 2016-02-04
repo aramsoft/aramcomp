@@ -15,11 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.mbl.com.mdi.domain.DeviceIdentVO;
 import aramframework.mbl.com.mdi.service.DeviceIdentService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;

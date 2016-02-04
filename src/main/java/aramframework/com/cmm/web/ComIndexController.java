@@ -48,7 +48,7 @@ public class ComIndexController {
 
 	@Autowired ApplicationContext applicationContext;
 
-	protected static final Logger LOG = LoggerFactory.getLogger(ComIndexController.class);
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	private Map<Integer, Object> map;
 

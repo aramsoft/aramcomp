@@ -34,7 +34,7 @@ public class EgovSocketClient {
 	private BufferedInputStream inStream = null;
 	private BufferedOutputStream outStream = null;
 
-	final private Logger LOG = LoggerFactory.getLogger(this.getClass());
+	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/** log */
 //  protected static final Log log = LogFactory.getLog(EgovSocketClient.class);

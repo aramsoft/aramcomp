@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.constant.Globals;
-import aramframework.com.cmm.domain.LoginVO;
+import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uat.uia.service.LoginService;
 
 /*
@@ -59,7 +59,7 @@ public class MblLoginController {
     private LoginService loginService;
 	
 	/** log */
-    protected static final Logger LOG = LoggerFactory.getLogger(MblLoginController.class);
+    protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
     
 	/**
 	 * 로그인 화면으로 들어간다

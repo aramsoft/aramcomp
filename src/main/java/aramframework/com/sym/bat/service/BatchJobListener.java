@@ -43,7 +43,7 @@ public class BatchJobListener implements JobListener {
 	/** ID Generation */
 	private EgovIdGnrService idgenService;
 
-	protected static final Logger LOG = LoggerFactory.getLogger(BatchJobListener.class);
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * 배치스케줄 서비스를 설정한다.

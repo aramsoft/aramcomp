@@ -5,11 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.sym.mnu.mcm.domain.MenuCreateVO;
 import aramframework.com.sym.mnu.mcm.domain.MenuSiteMapVO;
 import aramframework.com.sym.mnu.mcm.service.MenuCreateService;
+import aramframework.com.uat.uia.domain.LoginVO;
 
 /**
  * 모바일 사이트맵 조회 처리를 하는 비즈니스 구현 클래스

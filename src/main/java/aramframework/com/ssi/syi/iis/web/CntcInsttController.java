@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.LoginVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -22,6 +21,7 @@ import aramframework.com.ssi.syi.iis.domain.CntcSystemVO;
 import aramframework.com.ssi.syi.iis.service.CntcInsttService;
 import aramframework.com.ssi.syi.ims.domain.CntcMessageVO;
 import aramframework.com.ssi.syi.ims.service.CntcMessageService;
+import aramframework.com.uat.uia.domain.LoginVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**

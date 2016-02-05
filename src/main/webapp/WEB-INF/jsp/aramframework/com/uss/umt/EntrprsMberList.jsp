@@ -53,6 +53,7 @@
             <form:option value="P" label="승인" />
         </form:select>
         <form:select path="searchCondition" title="검색조건선택2">
+			<form:option value="" label="--선택하세요--" />
             <form:option value="ENTRPRS_MBER_ID" label="ID" />
             <form:option value="APPLCNT_NM" label="Name" />
         </form:select>

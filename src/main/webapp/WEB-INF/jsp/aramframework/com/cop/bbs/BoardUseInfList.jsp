@@ -44,10 +44,10 @@
     	<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;"><spring:message code="button.create" /></a></span>
 	</div>
 	<div class="keyword_area">
-   		<form:select path="searchCondition" class="select" title="선택">
+   		<form:select path="searchCondition" class="select" title="검색조건선택">
+			<form:option value="" label="--선택하세요--" />
 	   		<form:option value="BBS_NM" label="게시판명" />
 	   		<form:option value="CMMNTY_NM" label="사용 커뮤니티명" />
-	   		<form:option value="CLB_NM" label="사용 동호회명" />
    		</form:select>
    		<form:input path="searchKeyword" size="35" title="검색단어입력" maxlength="35" onkeypress="javascript:press(event);" />
 		<form:select path="recordPerPage" class="select" onchange="javascript:fn_aram_search(); return false;" title="recordPerPage">

@@ -49,6 +49,7 @@
 	</div>
 	<div class="keyword_area">
 		<form:select path="searchCondition" title="searchCondition">
+			<form:option value="" label="--선택하세요--" />
 	   		<form:option value='EMD_NM' label="읍면동명" />
 	   		<form:option value='ZIP' label="우편번호" />
 	   		<form:option value='CTPRVN_NM' label="시도명" />

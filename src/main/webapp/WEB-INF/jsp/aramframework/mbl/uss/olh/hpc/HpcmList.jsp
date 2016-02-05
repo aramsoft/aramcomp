@@ -39,6 +39,7 @@
 		<form:form commandName="hpcmManageVO" method="post" data-role="none">
  			<div class="uss-Search">
                	<form:select path="searchCondition" data-role="none">
+					<form:option value="" label="--선택하세요--" />
 	   				<form:option value="HPCM_DFN" label="도움말정의" />			   
               	</form:select>
 	        	<div class="uss-SearchBox">

@@ -54,7 +54,7 @@
 	</div>
 	<div class="keyword_area">
 		<label for="searchCondition"> </label>
-     		<form:select path="searchCondition" title="조회조건 선택" class="select" >
+     	<form:select path="searchCondition" title="조회조건 선택" class="select" >
 	   		<form:option value='' label="--선택하세요--" />
 	   		<form:option value="TRGET_SVC_NM" label="대상서비스명" />			   
 	   		<form:option value="TRGET_SVC_TABLE" label="대상테이블명" />			   

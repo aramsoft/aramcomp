@@ -42,6 +42,7 @@
 
  			<div class="uss-Search">
                	<form:select path="searchCondition" data-role="none">
+					<form:option value="" label="--선택하세요--" />
 			   		<form:option value="ADBK_NM" label="주소록명" />
 			   		<form:option value="OTHBC_SCOPE" label="공개범위" />
 			   		<form:option value="WRTER_ID" label="등록자" />

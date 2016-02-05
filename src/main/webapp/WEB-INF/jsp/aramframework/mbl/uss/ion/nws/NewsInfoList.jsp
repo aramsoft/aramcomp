@@ -40,6 +40,7 @@
 		<form:form commandName="newsManageVO" method="post" data-role="none">
  			<div class="uss-Search">
                	<form:select path="searchCondition" data-role="none">
+					<form:option value="" label="--선택하세요--" />
 			   		<form:option value="NEWS_SJ" label="뉴스제목" />			   
 			   		<form:option value="NEWS_ORIGIN" label="뉴스출처" />			   
               	</form:select>

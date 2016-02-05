@@ -42,6 +42,7 @@
 
 			<div class="uss-Search">
 			    <form:select path="searchCondition" data-role="none">
+					<form:option value="" label="--선택하세요--" />
  					<form:option value="SCRAP_NM" label="스크랩명" />
  				</form:select>
                	<div class="uss-SearchBox">

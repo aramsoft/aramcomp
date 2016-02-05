@@ -51,6 +51,7 @@
 	</div>
 	<div class="keyword_area">
    		<form:select path="searchCondition" class="select" title="검색조건선택">
+			<form:option value="" label="--선택하세요--" />
 		   	<form:option value="CMMNTY_NM" label="커뮤니티명" />
 	   	</form:select>
    		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색단어입력" />

@@ -70,8 +70,8 @@
 			<form:option value="0" label="미등록" />
 			<form:option value="1" label="등록" />
    		</form:select>
-  			<form:select path="searchCondition" class="select" title="조회조건 선택">
-			<form:option value='' label="--제목/내용/작성자 조회조건--" />
+  		<form:select path="searchCondition" class="select" title="조회조건 선택">
+			<form:option value="" label="--선택하세요--" />
 			<form:option value="REPRT_SJ" label="보고제목" />
 			<form:option value="REPORT_CN" label="보고내용" />
 			<form:option value="USER_NM" label="작성자" />

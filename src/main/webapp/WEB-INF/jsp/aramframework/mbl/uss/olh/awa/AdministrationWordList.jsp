@@ -41,6 +41,7 @@
 
 			<div class="uss-Search">
                	<form:select path="searchCondition" data-role="none">
+					<form:option value="" label="--선택하세요--" />
               		<form:option value="ADMINIST_WORD_NM" label="행정용어명" />
                		<form:option value="ADMINIST_WORD_ENG_NM" label="행정용어영문명" />
               		<form:option value="ADMINIST_WORD_ABRV_NM" label="행정용어약어명" />

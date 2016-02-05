@@ -44,8 +44,9 @@
 	</div>
 	<div class="keyword_area">
    		<form:select path="searchCondition" class="select" title="검색조건선택">
-		   <form:option value="TMPLAT_NM" label="템플릿명" />
-		   <form:option value="TMPLAT_SE_CODE" label="템플릿구분" />
+			<form:option value="" label="--선택하세요--" />
+		   	<form:option value="TMPLAT_NM" label="템플릿명" />
+		   	<form:option value="TMPLAT_SE_CODE" label="템플릿구분" />
 	   	</form:select>
    		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
 		<form:select path="recordPerPage" class="select" onchange="javascript:fn_aram_search(); return false;" title="recordPerPage">

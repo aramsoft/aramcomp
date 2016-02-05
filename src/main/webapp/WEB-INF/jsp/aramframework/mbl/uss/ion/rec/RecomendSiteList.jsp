@@ -39,6 +39,7 @@
 		<form:form commandName="recomendSiteVO" method="post" data-role="none">
  			<div class="uss-Search">
                	<form:select path="searchCondition" data-role="none">
+					<form:option value="" label="--선택하세요--" />
 			   		<form:option value="RECOMEND_SITE_NM" label="추천사이트명" />			   
 			   		<form:option value="RECOMEND_SITE_URL" label="추천사이트 URL" />			   
 		        </form:select>

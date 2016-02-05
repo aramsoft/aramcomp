@@ -39,6 +39,7 @@
 	</div>
 	<div class="keyword_area">
      	<form:select path="searchCondition" class="select" title="조회조건 선택">
+			<form:option value="" label="--선택하세요--" />
 	   		<form:option value="KNWLDG_NM" label="지식명" />			   
 	   		<form:option value="USER_NM" label="등록자명" />			   
    		</form:select>

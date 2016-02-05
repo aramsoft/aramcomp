@@ -38,6 +38,7 @@
 		<form:form commandName="stplatManageVO" action ="" method="post">
 			<div class="uss-Search">
 				<form:select path="searchCondition"  data-role="none">
+					<form:option value="" label="--선택하세요--" />
 			   		<form:option value="USE_STPLAT_NM" label="이용약관명" />
 			   		<form:option value="USE_STPLAT_CN" label="이용약관내용" />
 		   		</form:select>

@@ -50,6 +50,7 @@
 
   			<div class="uss-Search">
                	<form:select path="searchCondition" data-role="none">
+					<form:option value="" label="--선택하세요--" />
 					<form:option value='QUSTNR_SJ' label="설문제목" />
                 </form:select>
                 <div class="uss-SearchBox">

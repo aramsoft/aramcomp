@@ -183,7 +183,7 @@ function onSearchCondition() {
 	}
 }
 
-function fn_aram_insertList_groupAuthor() {
+function fn_aram_insertList() {
     var varForm = document.getElementById("groupAuthorVO");
 	if(!fncManageChecked()) return;
 
@@ -193,7 +193,7 @@ function fn_aram_insertList_groupAuthor() {
     }
 }
 
-function fn_aram_deleteList_groupAuthor() {
+function fn_aram_deleteList() {
     var varForm = document.getElementById("groupAuthorVO");
 	if(!fncManageChecked()) return;
 

@@ -49,6 +49,7 @@
 	</div>
 	<div class="keyword_area">
 		<form:select path="searchCondition" class="select" title="검색조건선택">
+			<form:option value="" label="--선택하세요--" />
 	   		<form:option value="NTT_SJ" label="제목" />
 	   		<form:option value="NTT_CN" label="내용" />
 	   		<c:if test="${anonymous != 'true'}">

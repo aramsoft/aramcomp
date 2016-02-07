@@ -41,6 +41,7 @@
 	</div>
 	<div class="keyword_area">
    		<form:select path="searchCondition" class="select" title="검색조건선택">
+			<form:option value="" label="--선택하세요--" />
 		   	<form:option value="CONFM_TY_CODE" label="승인유형" />
 		   	<form:option value="CONFM_STTUS_CODE" label="승인상태" />
 	   	</form:select>

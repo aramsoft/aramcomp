@@ -72,7 +72,7 @@
        	</a>
        	
 		<label for="searchCondition"> </label>
-    		<form:select path="searchCondition" title="조회조건 선택">
+    	<form:select path="searchCondition" title="조회조건 선택">
 	   		<form:option value='' label="--선택하세요--" />
 	   		<form:option value="NOTE_SJ" label="쪽지제목" />			   
 	   		<form:option value="NOTE_CN" label="쪽지내용" />			   

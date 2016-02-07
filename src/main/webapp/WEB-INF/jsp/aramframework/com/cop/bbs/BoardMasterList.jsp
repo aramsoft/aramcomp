@@ -44,6 +44,7 @@
 	</div>
 	<div class="keyword_area">
    		<form:select path="searchCondition" class="select" title="검색유형선력">
+			<form:option value="" label="--선택하세요--" />
 		   	<form:option value="BBS_NM" label="게시판명" />
 		   	<form:option value="BBS_TY_CODE" label="게시판유형" />
 	   	</form:select>

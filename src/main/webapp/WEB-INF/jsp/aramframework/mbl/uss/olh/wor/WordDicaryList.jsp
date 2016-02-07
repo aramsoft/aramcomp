@@ -39,6 +39,7 @@
 		<form:form commandName="wordDicaryVO" method="post" data-role="none">
  			<div class="uss-Search">
                	<form:select path="searchCondition" data-role="none">
+					<form:option value="" label="--선택하세요--" />
 			   		<form:option value="WORD_NM" label="용어명" />			   
 			   		<form:option value="ENG_NM" label="영문명" />			   
               	</form:select>

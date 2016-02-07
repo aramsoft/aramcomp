@@ -44,6 +44,7 @@
 	</div>
 	<div class="keyword_area">
   		<form:select path="searchCondition" class="select" title="검색조건선택">
+			<form:option value="" label="--선택하세요--" />
 	   		<form:option value="NM" label="이름" />
 	   		<form:option value="CMPNY_NM" label="회사명" />
 	   		<form:option value="DEPT_NM" label="부서명" />

@@ -46,6 +46,7 @@
 	</div>
 	<div class="keyword_area">
   		<form:select path="searchCondition" class="select" tabindex="1" title="검색조건선택">
+			<form:option value="" label="--선택하세요--" />
 	   		<form:option value="SJ" label="제목" />
 	   		<form:option value="EMAIL_CN" label="내용" />
 	   		<form:option value="SNDR" label="보낸이" />

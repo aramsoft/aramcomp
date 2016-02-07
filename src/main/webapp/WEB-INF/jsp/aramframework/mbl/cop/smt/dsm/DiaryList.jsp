@@ -44,6 +44,7 @@
 		
 			<div class="uss-Search">
 				<form:select path="searchCondition"  data-role="none">
+					<form:option value="" label="--선택하세요--" />
 			   		<form:option value='DIARY_NM' label="일지명" />
 			   		<form:option value='DRCT_MATTER' label="지시사항" />
 			   		<form:option value='PARTCLR_MATTER' label="특이사항" />

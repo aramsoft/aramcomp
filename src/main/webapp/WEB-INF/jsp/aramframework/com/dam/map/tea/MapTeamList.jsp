@@ -40,6 +40,7 @@
 	</div>
 	<div class="keyword_area">
     	<form:select path="searchCondition" class="select" title="조회조건 선택">
+			<form:option value="" label="--선택하세요--" />
 	   		<form:option value="ORGNZT_NM" label="조직명" />			   
    		</form:select>
   			<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" /> 

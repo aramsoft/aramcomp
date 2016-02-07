@@ -51,6 +51,7 @@
 	<div class="keyword_area">
 		<label for="searchCondition">조회조건 : </label>
    		<form:select path="searchCondition" class="select" title="검색조건선택">
+			<form:option value="" label="--선택하세요--" />
 		   	<form:option value="ORGNZT_NM" label="부서명" />
 		   	<form:option value="USER_NM" label="사원명 " />
 	   	</form:select>

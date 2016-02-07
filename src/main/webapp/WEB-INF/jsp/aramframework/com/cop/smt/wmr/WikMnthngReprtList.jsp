@@ -74,7 +74,8 @@
 			<form:option value="1" label="주간보고" />
 			<form:option value="2" label="월간보고" />
    		</form:select>
-  			<form:select path="searchCondition" class="select" title="제목 또는 작성자 조회조건 선택">
+  		<form:select path="searchCondition" class="select" title="조회조건선택">
+			<form:option value="" label="--선택하세요--" />
 			<form:option value="REPRT_SJ" label="제목" />
 			<form:option value="USER_NM" label="작성자" />
    		</form:select>

@@ -44,6 +44,7 @@
 
 			<div class="uss-Search">
                	<form:select path="searchCondition" data-role="none">
+					<form:option value="" label="--선택하세요--" />
 			   		<form:option value="WRTER_NM" label="작성자명" />			   
 			   		<form:option value="CNSLT_SJ" label="상담제목" />			   
 		        </form:select>

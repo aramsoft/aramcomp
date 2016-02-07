@@ -39,7 +39,7 @@
         <if test='searchCondition == "CodeList"'>
 				<![CDATA[
                    	AND ADMINIST_ZONE_SE     = #{administZoneSe}
-                  	 AND ADMINIST_ZONE_CODE   = #{administZoneCode}
+                  	AND ADMINIST_ZONE_CODE   = #{administZoneCode}
                	]]>    
         </if>        
         /* 구현 Sql */

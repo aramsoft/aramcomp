@@ -39,6 +39,7 @@
 		<form:form commandName="onlineManualVO" method="post" data-role="none">
  			<div class="uss-Search">
                	<form:select path="searchCondition" data-role="none">
+					<form:option value="" label="--선택하세요--" />
               		<form:option value="ONLINE_MNL_NM" label="온라인매뉴얼명" />
               		<form:option value="ONLINE_MNL_DFN" label="온라인매뉴얼정의" />
               		<form:option value="ONLINE_MNL_DC" label="온라인매뉴얼설명" />

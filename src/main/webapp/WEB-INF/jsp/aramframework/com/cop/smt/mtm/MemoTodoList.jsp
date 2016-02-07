@@ -73,6 +73,7 @@
 	</div>
 	<div class="keyword_area2">
  		<form:select path="searchCondition" class="select" title="조회조건 선택">
+			<form:option value="" label="--선택하세요--" />
 			<form:option value="TODO_SJ" label="할일제목" />
 			<form:option value="TODO_CN" label="할일내용" />
    		</form:select>

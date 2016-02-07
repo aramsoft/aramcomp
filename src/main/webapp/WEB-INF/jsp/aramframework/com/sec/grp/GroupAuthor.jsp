@@ -48,6 +48,7 @@
 	<div class="keyword_area">
  		조회조건 : 
  		<form:select path="searchCondition" class="select" onchange="onSearchCondition()" title="조회조건선택">
+			<form:option value="" label="--선택하세요--" />
        		<form:option value="USER_ID" label="사용자 ID" />
             <form:option value="USER_NM" label="사용자 명" />
             <form:option value="GROUP_ID" label="그룹" />

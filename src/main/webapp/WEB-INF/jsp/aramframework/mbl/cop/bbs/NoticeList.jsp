@@ -100,6 +100,7 @@ function fn_aram_regist_notice() {
 
 			<div class="uss-Search">
 				<form:select path="searchCondition" title="검색조건선택" data-role="none">
+					<form:option value="" label="--선택하세요--" />
 			   		<form:option value="NTT_SJ" label="제목" />
 			   		<form:option value="NTT_CN" label="내용" />
 			   		<c:if test="${anonymous != 'true'}">

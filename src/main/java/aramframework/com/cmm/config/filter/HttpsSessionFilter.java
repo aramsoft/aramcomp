@@ -46,12 +46,12 @@ public class HttpsSessionFilter implements Filter {
 
 	}
 
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) 
+	throws IOException, ServletException {
 
 		HttpsRequestWrapper httpsRequest = new HttpsRequestWrapper((HttpServletRequest)request);
 		httpsRequest.setResponse((HttpServletResponse)response);
 		chain.doFilter(httpsRequest, response);
-
 	}
 
 	public class HttpsRequestWrapper extends HttpServletRequestWrapper {

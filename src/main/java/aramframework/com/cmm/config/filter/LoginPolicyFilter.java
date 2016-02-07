@@ -10,8 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import aramframework.com.cmm.util.MessageHelper;
@@ -40,6 +39,9 @@ import aramframework.com.utl.sim.service.ClntInfo;
 
 public class LoginPolicyFilter extends OncePerRequestFilter {
 
+	@Autowired 
+	private LoginPolicyService loginPolicyService;
+	
 	private String loginURL;
 
 	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
@@ -64,21 +66,18 @@ public class LoginPolicyFilter extends OncePerRequestFilter {
 	 */
 	@Override
 	public void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) 
-			throws IOException, ServletException {
+	throws IOException, ServletException {
 
 		// get access Information
 		String requestURL = request.getRequestURI();
 		if (requestURL.contains("/j_spring_security_check")) {
 
-			ApplicationContext act = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
-			LoginPolicyService egovLoginPolicyService = (LoginPolicyService) act.getBean("egovLoginPolicyService");
-	
 			String id = request.getParameter("id");
 			String userSe = request.getParameter("userSe");
 			String userIp = "";
 	
 			if (id == null || userSe == null) {
-				request.setAttribute("message", MessageHelper.getMessage("fail.common.login.password"));
+				request.setAttribute("message", MessageHelper.getMessage("fail.common.login.policy"));
 				RequestDispatcher dispatcher = request.getRequestDispatcher(getLoginURL());
 				dispatcher.forward(request, response);
 				return;
@@ -93,7 +92,7 @@ public class LoginPolicyFilter extends OncePerRequestFilter {
 	
 				LoginPolicyVO loginPolicyVO = new LoginPolicyVO();
 				loginPolicyVO.setEmplyrId(id);
-				loginPolicyVO = egovLoginPolicyService.selectLoginPolicy(loginPolicyVO);
+				loginPolicyVO = loginPolicyService.selectLoginPolicy(loginPolicyVO);
 	
 				if (loginPolicyVO == null) {
 					loginPolicyYn = true;
@@ -109,14 +108,14 @@ public class LoginPolicyFilter extends OncePerRequestFilter {
 					chain.doFilter(request, response);
 	
 				} else {
-					request.setAttribute("message", MessageHelper.getMessage("fail.common.login.password"));
+					request.setAttribute("message", MessageHelper.getMessage("fail.common.login.policy"));
 					RequestDispatcher dispatcher = request.getRequestDispatcher(getLoginURL());
 					dispatcher.forward(request, response);
 					return;
 				}
 	
 			} catch (Exception e) {
-				request.setAttribute("message", MessageHelper.getMessage("fail.common.login.password"));
+				request.setAttribute("message", MessageHelper.getMessage("fail.common.login.policy"));
 				RequestDispatcher dispatcher = request.getRequestDispatcher(getLoginURL());
 				dispatcher.forward(request, response);
 				return;

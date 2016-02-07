@@ -56,7 +56,7 @@ public class CustomLoginFilter extends OncePerRequestFilter {
 
 	@Override
 	public void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) 
-			throws IOException, ServletException {
+	throws IOException, ServletException {
 
 		String requestURL = request.getRequestURI();
 		if (requestURL.contains("/j_spring_security_check")) {

@@ -93,11 +93,11 @@ public class EntrprsManageService extends EgovAbstractServiceImpl {
 		// 패스워드 암호화
 		String pass;
 		try {
-			pass = FileScrty.encryptPassword(entrprsManageVO.getEntrprsMberPassword());
+			pass = FileScrty.encryptPassword(entrprsManageVO.getPassword());
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
-		entrprsManageVO.setEntrprsMberPassword(pass);
+		entrprsManageVO.setPassword(pass);
 
 		entrprsManageMapper.insertEntrprsMber(entrprsManageVO);
 	}
@@ -111,11 +111,11 @@ public class EntrprsManageService extends EgovAbstractServiceImpl {
 		// 패스워드 암호화
 		String pass;
 		try {
-			pass = FileScrty.encryptPassword(entrprsManageVO.getEntrprsMberPassword());
+			pass = FileScrty.encryptPassword(entrprsManageVO.getPassword());
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
-		entrprsManageVO.setEntrprsMberPassword(pass);
+		entrprsManageVO.setPassword(pass);
 		entrprsManageMapper.updateEntrprsMber(entrprsManageVO);
 	}
 
@@ -124,23 +124,8 @@ public class EntrprsManageService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param checkedIdForDel
 	 */
-	public void deleteEntrprsMber(String checkedIdForDel) {
-		// log.debug("jjyser_delete-->"+checkedIdForDel);
-		String[] delId = checkedIdForDel.split(",");
-		for (int i = 0; i < delId.length; i++) {
-			String[] id = delId[i].split(":");
-			// log.debug("id[0]:"+id[0]);
-			if (id[0].equals("USR03")) {
-				// 업무사용자(직원)삭제
-				userManageMapper.deleteUser(id[1]);
-			} else if (id[0].equals("USR01")) {
-				// 일반회원삭제
-				mberManageMapper.deleteMber(id[1]);
-			} else if (id[0].equals("USR02")) {
-				// 기업회원삭제
-				entrprsManageMapper.deleteEntrprsMber(id[1]);
-			}
-		}
+	public void deleteEntrprsMber(EntrprsManageVO entrprsManageVO) {
+		entrprsManageMapper.deleteEntrprsMber(entrprsManageVO.getUniqId());
 	}
 
 	/**

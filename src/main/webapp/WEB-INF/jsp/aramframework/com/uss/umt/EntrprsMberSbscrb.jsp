@@ -66,20 +66,20 @@
     <tr>
         <th>
 			<span class="required_icon"></span>
-			<label for="entrprsMberPassword">비밀번호</label>
+			<label for="password">비밀번호</label>
         </th>
         <td>
-            <form:password path="entrprsMberPassword" size="20" maxlength="20" /> (8자이상 20자 미만으로 입력하여주시기 바랍니다.)
-            <form:errors path="entrprsMberPassword" cssClass="error"/>
+            <form:password path="password" size="20" maxlength="20" /> (8자이상 20자 미만으로 입력하여주시기 바랍니다.)
+            <form:errors path="password" cssClass="error"/>
         </td>
     </tr>
     <tr>
         <th>
 			<span class="required_icon"></span>
-			<label for="entrprsMberPassword2">비밀번호확인</label>
+			<label for="password2">비밀번호확인</label>
         </th>
         <td>
-            <input name="entrprsMberPassword2" id="entrprsMberPassword2" type="password" size="20" value=""  maxlength="100" title="비밀번호확인입력">
+            <input name="password2" id="password2" type="password" size="20" value=""  maxlength="100" title="비밀번호확인입력">
         </td>
     </tr>
     <tr>
@@ -88,21 +88,21 @@
 			비밀번호힌트
         </th>
         <td>
-            <form:select path="entrprsMberPasswordHint">
+            <form:select path="passwordHint">
                 <form:option value="" label="--선택하세요--"/>
                 <form:options items="${COM022_passwordHint}" itemValue="code" itemLabel="codeNm"/>
             </form:select>
-            <form:errors path="entrprsMberPasswordHint" cssClass="error"/>
+            <form:errors path="passwordHint" cssClass="error"/>
         </td>
     </tr>
     <tr>
         <th>
 			<span class="required_icon"></span>
-			<label for="entrprsMberPasswordCnsr">비밀번호정답</label>
+			<label for="passwordCnsr">비밀번호정답</label>
         </th>
         <td>
-            <form:input path="entrprsMberPasswordCnsr" size="50" maxlength="100" />
-            <form:errors path="entrprsMberPasswordCnsr" cssClass="error"/>
+            <form:input path="passwordCnsr" size="50" maxlength="100" />
+            <form:errors path="passwordCnsr" cssClass="error"/>
         </td>
     </tr>
     <tr>
@@ -309,7 +309,7 @@ function fn_aram_sbscrb(){
     	return;
     }
 
-	if(varForm.entrprsMberPassword.value != varForm.entrprsMberPassword2.value){
+	if(varForm.password.value != varForm.password2.value){
         alert("<spring:message code="fail.user.passwordUpdate2" />");
         return;
     }

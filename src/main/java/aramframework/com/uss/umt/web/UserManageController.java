@@ -302,16 +302,34 @@ public class UserManageController {
 	@RequestMapping("/uss/umt/deleteUser.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteUser(
-			@RequestParam String checkedIdForDel, 
 			@ModelAttribute UserManageVO userManageVO,
 			ModelMap model) {
 
-		userManageService.deleteUser(checkedIdForDel);
+		userManageService.deleteUser(userManageVO);
 	
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 	    return WebUtil.redirectJsp(model, "/uss/umt/listUser.do");
 	}
 
+	/**
+	 * 사용자정보삭제후 목록조회 화면으로 이동한다.
+	 * 
+	 * @param checkedIdForDel
+	 * @param userManageVO
+	 */
+	@RequestMapping("/uss/umt/deleteIdsAll.do")
+	@Secured("ROLE_ADMIN")
+	public String deleteIdsAll(
+			@RequestParam String returnUrl, 
+			@RequestParam String checkedIdForDel, 
+			ModelMap model) {
+
+		userManageService.deleteIdsAll(checkedIdForDel);
+	
+		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
+		
+		return WebUtil.redirectJsp(model, returnUrl);
+	}
 	private void fill_common_code(ModelMap model)  {
 
 		// 패스워드힌트목록을 코드정보로부터 조회

@@ -31,7 +31,7 @@
 	<div class="button_area">
 		<span class="button"><a href="#" onclick="javascript:fn_aram_update(); return false;"><spring:message code="button.save" /></a></span>
 		<c:if test="${isAdmin=='true'}">
-			<span class="button"><a href="#" onclick="javascript:fn_aram_delete('<c:out value='${mberManageVO.userTy}'/>:<c:out value='${mberManageVO.uniqId}'/>'); return false;"><spring:message code="button.delete" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_delete(); return false;"><spring:message code="button.delete" /></a></span>
 			<span class="button"><a href="#" onclick="javascript:fn_aram_list(); return false;"><spring:message code="button.list" /></a></span>
 		</c:if>
 		<span class="button"><a href="#" onclick="javascript:fn_aram_edit_password(); return false;"><spring:message code="button.passwordUpdate" /></a></span>
@@ -299,11 +299,10 @@ function fn_aram_update(){
     }
 }
 
-function fn_aram_delete(checkedIds) {
+function fn_aram_delete() {
     var varForm = document.getElementById("mberManageVO");
     
 	if(confirm("<spring:message code='common.delete.msg' />")){
-		varForm.checkedIdForDel.value=checkedIds;
 		varForm.action = "${pageContext.request.contextPath}/uss/umt/deleteMber.do";
 		varForm.submit();
 	}

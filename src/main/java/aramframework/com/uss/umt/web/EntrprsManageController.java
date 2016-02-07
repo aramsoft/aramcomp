@@ -304,7 +304,7 @@ public class EntrprsManageController {
 		EntrprsManageVO resultVO = entrprsManageService.selectPassword(uniqId);
 		// 패스워드 암호화
 		String encryptPass = FileScrty.encryptPassword(oldPassword);
-		if (encryptPass.equals(resultVO.getEntrprsMberPassword())) {
+		if (encryptPass.equals(resultVO.getPassword())) {
 			if (newPassword.equals(newPassword2)) {
 				isCorrectPassword = true;
 			} else {
@@ -317,7 +317,7 @@ public class EntrprsManageController {
 		}
 
 		if (isCorrectPassword) {
-			entrprsManageVO.setEntrprsMberPassword(FileScrty.encryptPassword(newPassword));
+			entrprsManageVO.setPassword(FileScrty.encryptPassword(newPassword));
 			entrprsManageService.updatePassword(entrprsManageVO);
 			message = "success.common.update";
 		} 
@@ -334,12 +334,11 @@ public class EntrprsManageController {
 	 */
 	@RequestMapping("/uss/umt/deleteEntrprsMber.do")
 	@Secured("ROLE_ADMIN")
-	public String deleteEntrprsMber(
-			@RequestParam String checkedIdForDel, 
+	public String deleteEntrprsMber( 
 			@ModelAttribute EntrprsManageVO entrprsManageVO, 
 			ModelMap model) {
 
-		entrprsManageService.deleteEntrprsMber(checkedIdForDel);
+		entrprsManageService.deleteEntrprsMber(entrprsManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 	    return WebUtil.redirectJsp(model, "/uss/umt/listEntrprsMber.do");

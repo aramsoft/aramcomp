@@ -125,21 +125,9 @@ public class MberManageService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param checkedIdForDel
 	 */
-	public void deleteMber(String checkedIdForDel) {
-		String[] delId = checkedIdForDel.split(",");
-		for (int i = 0; i < delId.length; i++) {
-			String[] id = delId[i].split(":");
-			if (id[0].equals("USR03")) {
-				// 업무사용자(직원)삭제
-				userManageMapper.deleteUser(id[1]);
-			} else if (id[0].equals("USR01")) {
-				// 일반회원삭제
-				mberManageMapper.deleteMber(id[1]);
-			} else if (id[0].equals("USR02")) {
-				// 기업회원삭제
-				entrprsManageMapper.deleteEntrprsMber(id[1]);
-			}
-		}
+	public void deleteMber(MberManageVO mberManageVO) {
+		// 일반회원삭제
+		mberManageMapper.deleteMber(mberManageVO.getUniqId());
 	}
 
 	/**

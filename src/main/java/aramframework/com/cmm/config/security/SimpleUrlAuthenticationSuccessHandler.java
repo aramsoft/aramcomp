@@ -47,6 +47,10 @@ public class SimpleUrlAuthenticationSuccessHandler extends AbstractAuthenticatio
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		loginVO.setIp(request.getRemoteAddr());
+
+		// 세션 로그인
+        HttpSession session = request.getSession(false);
+		session.setAttribute("loginVO", loginVO);
 		
         handle(request, response, authentication);
         clearAuthenticationAttributes(request);

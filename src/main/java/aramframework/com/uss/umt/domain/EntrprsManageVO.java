@@ -64,13 +64,13 @@ public class EntrprsManageVO extends SearchVO {
 	private String entrprsmberId;
 	
 	/** 기업 회원 비밀번호 */
-	private String entrprsMberPassword;
+	private String password;
 	
 	/** 기업 회원 비밀번호 정답 */
-	private String entrprsMberPasswordCnsr;
+	private String passwordCnsr;
 	
 	/** 기업 회원 비밀번호 힌트 */
-	private String entrprsMberPasswordHint;
+	private String passwordHint;
 	
 	/** 기업 회원 상태 */
 	private String entrprsMberSttus;
@@ -326,57 +326,57 @@ public class EntrprsManageVO extends SearchVO {
 	}
 
 	/**
-	 * entrprsMberPassword attribute 값을 리턴한다.
+	 * password attribute 값을 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getEntrprsMberPassword() {
-		return entrprsMberPassword;
+	public String getPassword() {
+		return password;
 	}
 	/**
-	 * entrprsMberPassword attribute 값을 설정한다.
+	 * password attribute 값을 설정한다.
 	 * 
-	 * @param entrprsMberPassword
+	 * @param password
 	 *            String
 	 */
-	public void setEntrprsMberPassword(String entrprsMberPassword) {
-		this.entrprsMberPassword = entrprsMberPassword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	/**
-	 * entrprsMberPasswordCnsr attribute 값을 리턴한다.
+	 * passwordCnsr attribute 값을 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getEntrprsMberPasswordCnsr() {
-		return entrprsMberPasswordCnsr;
+	public String getPasswordCnsr() {
+		return passwordCnsr;
 	}
 	/**
-	 * entrprsMberPasswordCnsr attribute 값을 설정한다.
+	 * passwordCnsr attribute 값을 설정한다.
 	 * 
-	 * @param entrprsMberPasswordCnsr
+	 * @param passwordCnsr
 	 *            String
 	 */
-	public void setEntrprsMberPasswordCnsr(String entrprsMberPasswordCnsr) {
-		this.entrprsMberPasswordCnsr = entrprsMberPasswordCnsr;
+	public void setPasswordCnsr(String passwordCnsr) {
+		this.passwordCnsr = passwordCnsr;
 	}
 
 	/**
-	 * entrprsMberPasswordHint attribute 값을 리턴한다.
+	 * passwordHint attribute 값을 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getEntrprsMberPasswordHint() {
-		return entrprsMberPasswordHint;
+	public String getPasswordHint() {
+		return passwordHint;
 	}
 	/**
-	 * entrprsMberPasswordHint attribute 값을 설정한다.
+	 * passwordHint attribute 값을 설정한다.
 	 * 
-	 * @param entrprsMberPasswordHint
+	 * @param passwordHint
 	 *            String
 	 */
-	public void setEntrprsMberPasswordHint(String entrprsMberPasswordHint) {
-		this.entrprsMberPasswordHint = entrprsMberPasswordHint;
+	public void setPasswordHint(String passwordHint) {
+		this.passwordHint = passwordHint;
 	}
 
 	/**

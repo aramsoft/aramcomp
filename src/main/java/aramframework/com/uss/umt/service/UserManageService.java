@@ -122,7 +122,17 @@ public class UserManageService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param checkedIdForDel
 	 */
-	public void deleteUser(String checkedIdForDel) {
+	public void deleteUser(UserManageVO userManageVO) {
+		userManageMapper.deleteUserHistory(userManageVO.getUniqId());
+		userManageMapper.deleteUser(userManageVO.getUniqId());
+	}
+
+	/**
+	 * 화면에 조회된 사용자의 정보를 데이터베이스에서 삭제
+	 * 
+	 * @param checkedIdForDel
+	 */
+	public void deleteIdsAll(String checkedIdForDel) {
 		String[] delId = checkedIdForDel.split(",");
 		for (int i = 0; i < delId.length; i++) {
 			String[] id = delId[i].split(":");
@@ -139,7 +149,7 @@ public class UserManageService extends EgovAbstractServiceImpl {
 			}
 		}
 	}
-
+	
 	/**
 	 * 사용자정보 수정시 히스토리 정보를 추가
 	 * 

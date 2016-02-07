@@ -332,11 +332,10 @@ public class MberManageController {
 	@RequestMapping("/uss/umt/deleteMber.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteMber(
-			@RequestParam String checkedIdForDel, 
 			@ModelAttribute MberManageVO mberManageVO, 
 			ModelMap model) {
 
-		mberManageService.deleteMber(checkedIdForDel);
+		mberManageService.deleteMber(mberManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 	    return WebUtil.redirectJsp(model, "/uss/umt/listMber.do");

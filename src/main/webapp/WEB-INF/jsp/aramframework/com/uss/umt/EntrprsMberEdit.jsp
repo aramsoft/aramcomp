@@ -32,7 +32,7 @@
 	<div class="button_area">
 		<span class="button"><a href="#" onclick="javascript:fn_aram_update(); return false;"><spring:message code="button.save" /></a></span>
 		<c:if test="${isAdmin=='true'}">
-			<span class="button"><a href="#" onclick="javascript:fn_aram_delete('<c:out value='${entrprsManageVO.userTy}'/>:<c:out value='${entrprsManageVO.uniqId}'/>'); return false;"><spring:message code="button.delete" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_delete(); return false;"><spring:message code="button.delete" /></a></span>
 			<span class="button"><a href="#" onclick="javascript:fn_aram_list(); return false;"><spring:message code="button.list" /></a></span>
 		</c:if>
 		<span class="button"><a href="#" onclick="javascript:fn_aram_edit_password(); return false;"><spring:message code="button.passwordUpdate" /></a></span>
@@ -54,7 +54,7 @@
 <form:hidden path="recordPerPage" />
 
 <form:hidden path="userTy" />
-<input name="entrprsMberPassword" type="hidden" value="dummyPassword"/>
+<input name="password" type="hidden" value="dummyPassword"/>
 
 <table class="table-register">
     <tr>
@@ -84,21 +84,21 @@
 			비밀번호힌트
         </th>
         <td>
-            <form:select path="entrprsMberPasswordHint">
+            <form:select path="passwordHint">
                 <form:option value="" label="--선택하세요--"/>
                 <form:options items="${COM022_passwordHint}" itemValue="code" itemLabel="codeNm"/>
             </form:select>
-            <form:errors path="entrprsMberPasswordHint" cssClass="error"/>
+            <form:errors path="passwordHint" cssClass="error"/>
         </td>
     </tr>
     <tr>
         <th>
 			<span class="required_icon"></span>
-			<label for="entrprsMberPasswordCnsr">비밀번호정답</label>
+			<label for="passwordCnsr">비밀번호정답</label>
         </th>
         <td>
-            <form:input path="entrprsMberPasswordCnsr" size="50" maxlength="100" />
-            <form:errors path="entrprsMberPasswordCnsr" cssClass="error"/>
+            <form:input path="passwordCnsr" size="50" maxlength="100" />
+            <form:errors path="passwordCnsr" cssClass="error"/>
         </td>
     </tr>
     <tr>
@@ -323,7 +323,6 @@ function fn_aram_list(){
  ******************************************************** */
 function fn_aram_update(){
     var varForm = document.getElementById("entrprsManageVO");
-
     // 전화번호 조정
 	if( varForm.fxnum1.value != "" ) {
 		varForm.fxnum.value = varForm.fxnum1.value + "-" 
@@ -336,22 +335,21 @@ function fn_aram_update(){
 							 + varForm.bizrno2.value + "-" 
 							 + varForm.bizrno3.value;
 	}
-    
+   
     if(!validateEntrprsManageVO(varForm)){
         return;
     }
-    
+   
 	if(confirm("<spring:message code='common.update.msg'/>")){
         varForm.action = "${pageContext.request.contextPath}/uss/umt/updateEntrprsMber.do.do";
         varForm.submit();
     }
 }
 
-function fn_aram_delete(checkedIds) {
+function fn_aram_delete() {
     var varForm = document.getElementById("entrprsManageVO");
     
 	if(confirm("<spring:message code='common.delete.msg' />")){
-		varForm.checkedIdForDel.value=checkedIds;
 		varForm.action = "${pageContext.request.contextPath}/uss/umt/deleteEntrprsMber.do";
 		varForm.submit();
 	}

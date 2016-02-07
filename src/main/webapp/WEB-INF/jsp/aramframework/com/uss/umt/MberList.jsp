@@ -38,6 +38,7 @@
 
 <input type="hidden" name="uniqId"/>
 <input type="hidden" name="checkedIdForDel" />
+<input type="hidden" name="returnUrl" />
 
 <div id="search_area">
 	<div class="button_area">
@@ -202,7 +203,8 @@ function fn_aram_deleteList() {
     	//alert(checkedIds);
         if(confirm("<spring:message code="common.delete.msg" />")){
         	varForm.checkedIdForDel.value=checkedIds;
-        	varForm.action = "${pageContext.request.contextPath}/uss/umt/deleteMber.do";
+        	varForm.returnUrl.value="/uss/umt/listMber.do";
+        	varForm.action = "${pageContext.request.contextPath}/uss/umt/deleteIdsAll.do";
         	varForm.submit();
         }
     }

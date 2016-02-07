@@ -92,9 +92,9 @@
                 , APPLCNT_NM                AS "applcntNm"
                 , SBSCRB_DE                 AS "sbscrbDe"
                 , ENTRPRS_MBER_STTUS        AS "entrprsMberSttus"
-                , ENTRPRS_MBER_PASSWORD     AS "entrprsMberPassword"
-                , ENTRPRS_MBER_PASSWORD_HINT AS "entrprsMberPasswordHint"
-                , ENTRPRS_MBER_PASSWORD_CNSR AS "entrprsMberPasswordCnsr"
+                , ENTRPRS_MBER_PASSWORD     AS "password"
+                , ENTRPRS_MBER_PASSWORD_HINT AS "passwordHint"
+                , ENTRPRS_MBER_PASSWORD_CNSR AS "passwordCnsr"
                 , DETAIL_ADRES              AS "detailAdres"
                 , ENTRPRS_END_TELNO         AS "entrprsEndTelno"
                 , AREA_NO                   AS "areaNo"
@@ -149,9 +149,9 @@
                   , #{applcntNm, jdbcType=VARCHAR}
                   , sysdate
                   , #{entrprsMberSttus, jdbcType=VARCHAR}
-                  , #{entrprsMberPassword, jdbcType=VARCHAR}
-                  , #{entrprsMberPasswordHint, jdbcType=VARCHAR}
-                  , #{entrprsMberPasswordCnsr, jdbcType=VARCHAR}
+                  , #{password, jdbcType=VARCHAR}
+                  , #{passwordHint, jdbcType=VARCHAR}
+                  , #{passwordCnsr, jdbcType=VARCHAR}
                   , #{detailAdres, jdbcType=VARCHAR}
                   , #{entrprsEndTelno, jdbcType=VARCHAR}
                   , #{areaNo, jdbcType=VARCHAR}
@@ -178,8 +178,8 @@
                  , INDUTY_CODE                  = #{indutyCode, jdbcType=VARCHAR}
                  , APPLCNT_NM                   = #{applcntNm, jdbcType=VARCHAR}
                  , ENTRPRS_MBER_STTUS           = #{entrprsMberSttus, jdbcType=VARCHAR}
-                 , ENTRPRS_MBER_PASSWORD_HINT   = #{entrprsMberPasswordHint, jdbcType=VARCHAR}
-                 , ENTRPRS_MBER_PASSWORD_CNSR   = #{entrprsMberPasswordCnsr, jdbcType=VARCHAR}
+                 , ENTRPRS_MBER_PASSWORD_HINT   = #{passwordHint, jdbcType=VARCHAR}
+                 , ENTRPRS_MBER_PASSWORD_CNSR   = #{passwordCnsr, jdbcType=VARCHAR}
                  , DETAIL_ADRES                 = #{detailAdres, jdbcType=VARCHAR}
                  , ENTRPRS_END_TELNO            = #{entrprsEndTelno, jdbcType=VARCHAR}
                  , AREA_NO                      = #{areaNo, jdbcType=VARCHAR}
@@ -200,7 +200,7 @@
 	<!-- 비밀번호가져오기 -->
     <select id="selectPassword" resultType="entrprsManageVO">
         <![CDATA[
-            SELECT ENTRPRS_MBER_PASSWORD    entrprsMberPassword 
+            SELECT ENTRPRS_MBER_PASSWORD    password 
               FROM COMTN_ENTRPRS_MBER
              WHERE ESNTL_ID = #{uniqId}
         ]]>
@@ -210,7 +210,7 @@
     <update id="updatePassword" >
         <![CDATA[
             UPDATE COMTN_ENTRPRS_MBER 
-               SET ENTRPRS_MBER_PASSWORD = #{entrprsMberPassword}
+               SET ENTRPRS_MBER_PASSWORD = #{password}
              WHERE ESNTL_ID  = #{uniqId}
         ]]>
     </update>

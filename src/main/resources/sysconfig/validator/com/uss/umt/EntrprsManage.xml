@@ -25,15 +25,15 @@
                 </var>
             </field>
             
-            <field property="entrprsMberPassword" depends="required, password1, password2, password3, password4">
+            <field property="password" depends="required, password1, password2, password3, password4">
                 <arg0 key="비밀번호" resource="false"/>
             </field>
             
-            <field property="entrprsMberPasswordHint" depends="required">
+            <field property="passwordHint" depends="required">
                 <arg0 key="비밀번호힌트" resource="false"/>
             </field>
             
-            <field property="entrprsMberPasswordCnsr" depends="required, maxlength">
+            <field property="passwordCnsr" depends="required, maxlength">
                 <arg0 key="비밀번호정답" resource="false"/>
                 <arg1 key="100" resource="false"/>
                 <var>

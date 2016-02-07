@@ -80,7 +80,6 @@ public class SysLogAdvice {
 				sysLogService.logInsertSysLog(sysLogVO);
 			}	
 		}
-
 	}
 
 	/**
@@ -130,7 +129,6 @@ public class SysLogAdvice {
 				sysLogService.logInsertSysLog(sysLog);
 			}
 		}
-
 	}
 
 	/**
@@ -180,7 +178,6 @@ public class SysLogAdvice {
 				sysLogService.logInsertSysLog(sysLog);
 			}	
 		}
-
 	}
 
 	/**
@@ -230,7 +227,6 @@ public class SysLogAdvice {
 				sysLogService.logInsertSysLog(sysLog);
 			}	
 		}
-
 	}
 
 }

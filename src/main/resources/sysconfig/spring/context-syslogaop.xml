@@ -13,10 +13,10 @@
  
 	<aop:config>
 		<aop:aspect id="sysLogAspect" ref="sysLogAdvice">
-			<aop:around pointcut="execution(public * aramframework..impl.*Impl.insert*(..))" method="logInsert" />
-			<aop:around pointcut="execution(public * aramframework..impl.*Impl.update*(..))" method="logUpdate" />
-			<aop:around pointcut="execution(public * aramframework..impl.*Impl.delete*(..))" method="logDelete" />
-			<aop:around pointcut="execution(public * aramframework..impl.*Impl.select*(..))" method="logSelect" />
+			<aop:around pointcut="execution(public * aramframework..service.*Service.insert*(..))" method="logInsert" />
+			<aop:around pointcut="execution(public * aramframework..service.*Service.update*(..))" method="logUpdate" />
+			<aop:around pointcut="execution(public * aramframework..service.*Service.delete*(..))" method="logDelete" />
+			<aop:around pointcut="execution(public * aramframework..service.*Service.select*(..))" method="logSelect" />
 		</aop:aspect>
 	</aop:config>
 -->

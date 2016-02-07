@@ -8,7 +8,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -64,7 +63,6 @@ public class CustomLoginFilter extends OncePerRequestFilter {
 
 			LOG.debug("Login Filter start!!!");
 
-			HttpSession session = request.getSession();
 			String password = request.getParameter("password");
 			// 2011.10.11 보안점검 후속 조치(Password 검증)
 			if (password == null || password.equals("") || password.length() < 8 || password.length() > 20) {
@@ -86,9 +84,6 @@ public class CustomLoginFilter extends OncePerRequestFilter {
 
 				if (loginVO != null && loginVO.getId() != null && !loginVO.getId().equals("")) {
 					// login이 성공해서 사용자 정보가 있는 경우
-					// 세션 로그인
-					session.setAttribute("loginVO", loginVO);
-
 			        SpringRequestWrapper springRequest = new SpringRequestWrapper((HttpServletRequest)request);
 			        springRequest.setUsername(loginVO.getUserSe() + loginVO.getId());
 			        springRequest.setPassword(loginVO.getUniqId());

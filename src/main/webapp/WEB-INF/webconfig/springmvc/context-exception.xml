@@ -8,26 +8,26 @@
 						http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
  
 	<aop:config>
-		<aop:pointcut id="controlMethod" 
+		<aop:pointcut id="web.controlMethod" 
 			expression="execution(* aramframework..web.*Controller.*(..))
 						and !execution(* aramframework.com.cmm.web.ComIndexController.*(..))" />
 
-		<aop:aspect ref="exceptionTransferWeb">
+		<aop:aspect ref="web.exceptionTransfer">
 			<aop:after-throwing throwing="exception"
-				pointcut-ref="controlMethod" 
+				pointcut-ref="web.controlMethod" 
 				method="transfer" />
 		</aop:aspect>
 	</aop:config>
 
-	<bean id="exceptionTransferWeb" class="egovframework.rte.fdl.cmmn.aspect.ExceptionTransfer">
+	<bean id="web.exceptionTransfer" class="egovframework.rte.fdl.cmmn.aspect.ExceptionTransfer">
 		<property name="exceptionHandlerService">
 			<list>
-				<ref bean="controllerExceptionHandleManager" />
+				<ref bean="web.ExceptionHandleManager" />
 			</list>
 		</property>
 	</bean>
 
-	<bean id="controllerExceptionHandleManager"
+	<bean id="web.ExceptionHandleManager"
 		class="egovframework.rte.fdl.cmmn.exception.manager.DefaultExceptionHandleManager">
 		<property name="reqExpMatcher">
 			<ref bean="antPathMatcher"/>
@@ -39,11 +39,11 @@
 		</property>
 		<property name="handlers">
 			<list>
-				<ref bean="egovWebHandler" />
+				<ref bean="web.exceptionHandler" />
 			</list>
 		</property>
 	</bean>
 
-	<bean id="egovWebHandler" class="aramframework.com.cmm.config.handler.ComWebExcepHndlr" />
+	<bean id="web.exceptionHandler" class="aramframework.com.cmm.config.advice.WebExcepHndlr" />
 	
 </beans>

@@ -7,47 +7,6 @@
 						http://www.springframework.org/schema/aop 
 						http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
 
-<!-- Controller에 위임... -->
-<!-- 
- 	<aop:config>
-		<aop:pointcut id="serviceMethod"
-			expression="execution(* aramframework..impl.*Impl.*(..))" />
-
-		<aop:aspect ref="exceptionTransfer">
-			<aop:after-throwing throwing="exception"
-				pointcut-ref="serviceMethod" method="transfer" />
-		</aop:aspect>
-	</aop:config>
-	
-	<bean id="exceptionTransfer" 
-		class="egovframework.rte.fdl.cmmn.aspect.ExceptionTransfer">
-		<property name="exceptionHandlerService">
-			<list>
-				<ref bean="defaultExceptionHandleManager" />
-			</list>
-		</property>
-	</bean>
-
-	<bean id="defaultExceptionHandleManager"
-		class="egovframework.rte.fdl.cmmn.exception.manager.DefaultExceptionHandleManager">
-		<property name="reqExpMatcher">
-			<ref bean="antPathMatcher" />
-		</property>
-		<property name="patterns">
-			<list>
-				<value>**service.impl.*</value>
-			</list>
-		</property>
-		<property name="handlers">
-			<list>
-				<ref bean="egovHandler" />
-			</list>
-		</property>
-	</bean>
-	<bean id="egovHandler" class="aramframework.com.cmm.handler.ComExcepHndlr" />
--->
-<!-- Controller에 위임... -->
- 	
 	<!-- 실행환경에서 빈 이름 참조(AbstractServiceImpl) -->
 	<!-- leaveatrace -->
 	<bean id="leaveaTrace" class="egovframework.rte.fdl.cmmn.trace.LeaveaTrace">

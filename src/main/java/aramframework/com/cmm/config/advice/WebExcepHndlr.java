@@ -1,4 +1,4 @@
-package aramframework.com.cmm.config.handler;
+package aramframework.com.cmm.config.advice;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +25,7 @@ import egovframework.rte.fdl.cmmn.exception.handler.ExceptionHandler;
  * </pre>
  */
 
-public class ComWebExcepHndlr implements ExceptionHandler {
+public class WebExcepHndlr implements ExceptionHandler {
 
 	protected Logger LOG = LoggerFactory.getLogger(this.getClass());
 

@@ -18,14 +18,6 @@
         <property name="maxInMemorySize" value="100000000" />
     </bean>
 
-    <!-- custom multi file resolver -->
-    <bean id="local.MultiCommonsMultipartResolver" class="aramframework.com.cmm.config.web.MultipartResolver">
-        <property name="maxUploadSize" value="100000000" />
-        <property name="maxInMemorySize" value="100000000" />
-    </bean>
-
-    <!-- choose one from above and alias it to the name Spring expects -->
-    <!-- alias name="local.MultiCommonsMultipartResolver" alias="multipartResolver" /-->
     <alias name="spring.RegularCommonsMultipartResolver" alias="multipartResolver" />
 
 	<!-- For Pagination Tag -->

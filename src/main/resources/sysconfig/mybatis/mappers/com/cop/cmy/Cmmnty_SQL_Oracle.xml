@@ -163,7 +163,7 @@
 				  , #{frstRegisterId} 
 				  , SYSDATE
 				  , #{cmmntyLogoImage, jdbcType=BLOB}
-				  , #{additionalInfo}
+				  , #{additionalInfo, jdbcType=VARCHAR}
 			)
 		]]>
 	</insert>

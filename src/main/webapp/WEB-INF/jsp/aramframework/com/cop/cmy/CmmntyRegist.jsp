@@ -176,7 +176,7 @@ function fn_aram_get_cmmntyAdmin(cmmntyId){
 	gArguments["uniqId"] = varForm.emplyrId;
 	gArguments["userNm"] = varForm.emplyrNm;
 
-	var url = "/cop/com/listCmmntyUser.do?trgetId="+cmmntyId+"&PopFlag=Y";
+	var url = "/cop/com/listUser.do?PopFlag=Y";
 
 	window.open(url, "p_userInqire", "width=850px,height=480px,top=100px,left=100px,location=no");
 }

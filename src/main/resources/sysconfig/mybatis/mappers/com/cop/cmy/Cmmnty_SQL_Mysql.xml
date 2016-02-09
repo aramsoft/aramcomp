@@ -155,7 +155,7 @@
 				  , #{frstRegisterId} 
 				  , sysdate()
 				  , #{cmmntyLogoImage, jdbcType=BLOB}
-				  , #{additionalInfo}
+				  , #{additionalInfo, jdbcType=VARCHAR}
 			)
 		]]>
 	</insert>

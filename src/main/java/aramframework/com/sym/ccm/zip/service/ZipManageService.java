@@ -19,6 +19,7 @@ import org.apache.lucene.search.Query;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.sym.ccm.zip.dao.ZipManageMapper;
 import aramframework.com.sym.ccm.zip.domain.ZipVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.fdl.excel.EgovExcelService;
+import egovframework.rte.fdl.excel.impl.EgovExcelServiceImpl;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**
@@ -57,8 +58,8 @@ public class ZipManageService extends EgovAbstractServiceImpl {
 	@Autowired
 	private ZipManageMapper zipManageMapper;	
 
-	@Autowired
-	private EgovExcelService excelZipService;
+	@Autowired 
+	private SqlSessionTemplate sqlSessionTemplate;
 
 	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
@@ -107,10 +108,16 @@ public class ZipManageService extends EgovAbstractServiceImpl {
 	 * @param file
 	 */
 	public void insertExcelZip(InputStream file) {
-//		zipManageDAO.deleteAllZip();
+		String mapClass = "aramframework.com.sym.ccm.zip.excel.ExcelZipMapping";
+		String sqlId = "aramframework.com.sym.ccm.zip.dao.ZipManageMapper.insertExcelZip";
+
+		zipManageMapper.deleteAllZip();
 		try {
-			String sqlId = "aramframework.com.sym.ccm.zip.dao.ZipManageMapper.insertExcelZip";
-			excelZipService.uploadExcel(sqlId, file, 1, (long) 5000);
+			EgovExcelServiceImpl excelService = new EgovExcelServiceImpl();
+			excelService.setMapClass(mapClass);
+			excelService.setSqlSessionTemplate(sqlSessionTemplate);
+
+			excelService.uploadExcel(sqlId, file, 1, (long) 5000);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		} 
@@ -122,9 +129,16 @@ public class ZipManageService extends EgovAbstractServiceImpl {
 	 * @param file
 	 */
 	public void insertExcelZipAram(InputStream file) {
-//		zipManageDAO.deleteAllZipAram();
+		String mapClass = "aramframework.com.sym.ccm.zip.excel.ExcelZipAramMapping";
+		String sqlId = "aramframework.com.sym.ccm.zip.dao.ZipManageMapper.insertExcelZipAram";
+
+		zipManageMapper.deleteAllZipAram();
 		try {
-			excelZipService.uploadExcel("ZipManageDAO.insertExcelZipAram", file, 1, (long) 5000);
+			EgovExcelServiceImpl excelService = new EgovExcelServiceImpl();
+			excelService.setMapClass(mapClass);
+			excelService.setSqlSessionTemplate(sqlSessionTemplate);
+
+			excelService.uploadExcel(sqlId, file, 1, (long) 5000);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		} 

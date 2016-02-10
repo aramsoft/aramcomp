@@ -3,6 +3,7 @@ package aramframework.com.cop.cmy.service;
 import java.io.InputStream;
 import java.util.List;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,7 @@ import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cop.cmy.dao.CmyMenuManageMapper;
 import aramframework.com.cop.cmy.domain.CommunityMenuVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.fdl.excel.EgovExcelService;
+import egovframework.rte.fdl.excel.impl.EgovExcelServiceImpl;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**
@@ -39,7 +40,7 @@ public class CmyMenuManageService extends EgovAbstractServiceImpl {
 	private CmyMenuManageMapper cmyMenuManageMapper;	
 
 	@Autowired 
-	private EgovExcelService excelCmyMenuService;
+	private SqlSessionTemplate sqlSessionTemplate;
 
 	/**
 	 * 메뉴 목록을 조회
@@ -173,10 +174,16 @@ public class CmyMenuManageService extends EgovAbstractServiceImpl {
 	 * @param cmmntyId
 	 */
 	public void insertExcelMenu(InputStream file, String cmmntyId) {
+		String mapClass = "aramframework.com.cop.cmy.excel.ExcelCmyMenuMapping";
+		String sqlId = "aramframework.com.cop.cmy.dao.CmyMenuManageMapper.insertMenuManage";
+
 		cmyMenuManageMapper.deleteMenuManageTrget(cmmntyId);
 		try {
-			String sqlId = "aramframework.com.cop.cmy.dao.CmyMenuManageMapper.insertMenuManage";
-			excelCmyMenuService.uploadExcel(sqlId, file, 1, (long) 5000);
+			EgovExcelServiceImpl excelService = new EgovExcelServiceImpl();
+			excelService.setMapClass(mapClass);
+			excelService.setSqlSessionTemplate(sqlSessionTemplate);
+			
+			excelService.uploadExcel(sqlId, file, 1, (long) 5000);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		} 

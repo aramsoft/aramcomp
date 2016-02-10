@@ -1,4 +1,4 @@
-package aramframework.com.utl.sys.prm.service;
+package aramframework.com.utl.sys.prm.schedule;
 
 import java.util.Iterator;
 import java.util.List;
@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
 import aramframework.com.utl.fcc.service.DateUtil;
 import aramframework.com.utl.fcc.service.StringUtil;
 import aramframework.com.utl.sys.prm.domain.ProcessMonVO;
+import aramframework.com.utl.sys.prm.service.ProcessMonChecker;
+import aramframework.com.utl.sys.prm.service.ProcessMonService;
 
 /**
  * 개요 - 프로세스 모니터링을 위한 스케쥴링 클래스를 정의한다.

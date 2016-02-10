@@ -1,7 +1,9 @@
-package aramframework.com.sts.bst.service;
+package aramframework.com.sts.bst.schedule;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import aramframework.com.sts.bst.service.BbsStatsService;
 
 /**
  * 게시물 통계 집계를 위한 스케줄링 클래스

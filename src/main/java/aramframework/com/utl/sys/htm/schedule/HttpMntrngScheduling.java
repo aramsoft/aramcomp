@@ -1,4 +1,4 @@
-package aramframework.com.utl.sys.htm.service;
+package aramframework.com.utl.sys.htm.schedule;
 
 import java.util.Iterator;
 import java.util.List;
@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
 import aramframework.com.utl.fcc.service.DateUtil;
 import aramframework.com.utl.fcc.service.StringUtil;
 import aramframework.com.utl.sys.htm.domain.HttpMntrngVO;
+import aramframework.com.utl.sys.htm.service.HttpMntrngChecker;
+import aramframework.com.utl.sys.htm.service.HttpMntrngService;
 
 /**
  * 개요 - HTTP서비스모니터링을 위한 스케쥴링 클래스

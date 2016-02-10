@@ -20,7 +20,7 @@ import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.utl.sys.fsm.domain.FileSysMntrngLogVO;
 import aramframework.com.utl.sys.fsm.domain.FileSysMntrngVO;
 import aramframework.com.utl.sys.fsm.service.FileSysMntrngService;
-import aramframework.com.utl.sys.fsm.service.FileSystemChecker;
+import aramframework.com.utl.sys.fsm.service.FileSysChecker;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
@@ -221,7 +221,7 @@ public class FileSysMntrngController {
 
 		int totalSpaceFileSys = 0;
 		try {
-			totalSpaceFileSys = FileSystemChecker.totalSpaceGb(fileSysMntrngVO.getFileSysNm());
+			totalSpaceFileSys = FileSysChecker.totalSpaceGb(fileSysMntrngVO.getFileSysNm());
 		} catch (Exception e) {
 			model.addAttribute("notApplicableFileSys", "true");
 		}

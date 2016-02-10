@@ -51,10 +51,10 @@ import org.apache.commons.io.IOUtils;
  * @since Commons IO 1.1
  */
 
-public class FileSystemUtils {
+public class FileSysUtils {
 
 	/** Singleton instance, used mainly for testing. */
-	private static final FileSystemUtils INSTANCE = new FileSystemUtils();
+	private static final FileSysUtils INSTANCE = new FileSysUtils();
 
 	/** Operating system state flag for error. */
 	private static final int INIT_PROBLEM = -1;
@@ -99,7 +99,7 @@ public class FileSystemUtils {
 	/**
 	 * Instances should NOT be constructed in standard programming.
 	 */
-	public FileSystemUtils() {
+	public FileSysUtils() {
 		super();
 	}
 

@@ -34,9 +34,9 @@ import aramframework.com.cmm.constant.Globals;
  * </pre>
  */
 
-public class FileSystemChecker {
+public class FileSysChecker {
 
-	private static final FileSystemChecker INSTANCE = new FileSystemChecker();
+	private static final FileSysChecker INSTANCE = new FileSysChecker();
 
 	/**
 	 * 파일시스템의 여유크기를 계산한다. (GB 단위)
@@ -48,7 +48,7 @@ public class FileSystemChecker {
 	 * @param path
 	 */
 	public static int freeSpaceGb(String path) throws IOException {
-		return (int) (FileSystemUtils.freeSpaceKb(path) / 1024 / 1024);
+		return (int) (FileSysUtils.freeSpaceKb(path) / 1024 / 1024);
 	}
 
 	/**

@@ -1,4 +1,4 @@
-package aramframework.com.utl.sys.srm.service;
+package aramframework.com.utl.sys.srm.schedule;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -24,6 +24,7 @@ import aramframework.com.cop.sms.service.SmsInfoService;
 import aramframework.com.utl.fcc.service.DateUtil;
 import aramframework.com.utl.fcc.service.StringUtil;
 import aramframework.com.utl.sys.srm.domain.ServerResrceMntrngVO;
+import aramframework.com.utl.sys.srm.service.ServerResrceMntrngService;
 
 /**
  * 개요 - 서버자원모니터링 Service Interface를 invoke 할 수 있는 클래스를 정의한다.

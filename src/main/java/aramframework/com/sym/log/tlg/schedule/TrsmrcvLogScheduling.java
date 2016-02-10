@@ -1,7 +1,9 @@
-package aramframework.com.sym.log.tlg.service;
+package aramframework.com.sym.log.tlg.schedule;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import aramframework.com.sym.log.tlg.service.TrsmrcvLogService;
 
 /**
  * 송수신 로그 요약을 위한 스케쥴링 클래스

@@ -1,9 +1,11 @@
-package aramframework.com.sym.log.wlg.service;
+package aramframework.com.sym.log.wlg.schedule;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import aramframework.com.sym.log.wlg.service.WebLogService;
 
 /**
  * 웹 로그 요약을 위한 스케쥴링 클래스

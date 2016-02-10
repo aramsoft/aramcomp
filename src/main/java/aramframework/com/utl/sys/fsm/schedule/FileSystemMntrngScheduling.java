@@ -1,4 +1,4 @@
-package aramframework.com.utl.sys.fsm.service;
+package aramframework.com.utl.sys.fsm.schedule;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -14,6 +14,8 @@ import org.springframework.stereotype.Component;
 import aramframework.com.utl.fcc.service.DateUtil;
 import aramframework.com.utl.fcc.service.StringUtil;
 import aramframework.com.utl.sys.fsm.domain.FileSysMntrngVO;
+import aramframework.com.utl.sys.fsm.service.FileSysMntrngService;
+import aramframework.com.utl.sys.fsm.service.FileSysChecker;
 
 /**
  * 개요 - 네트워크서비스 모니터링을 위한 스케쥴링클래스를 정의한다.
@@ -109,8 +111,8 @@ public class FileSystemMntrngScheduling {
 			fileSysNm = fileSysMntrng.getFileSysNm();
 			fileSysThrhld = fileSysMntrng.getFileSysThrhld();
 			try {
-				fileSysMg = (int) FileSystemChecker.totalSpaceGb(fileSysNm);
-				fileSysUsgQty = (int) (fileSysMg - FileSystemChecker.freeSpaceGb(fileSysNm));
+				fileSysMg = (int) FileSysChecker.totalSpaceGb(fileSysNm);
+				fileSysUsgQty = (int) (fileSysMg - FileSysChecker.freeSpaceGb(fileSysNm));
 
 				fileSysMntrng.setFileSysMg(fileSysMg);
 				fileSysMntrng.setFileSysUsgQty(fileSysUsgQty);

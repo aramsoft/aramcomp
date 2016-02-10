@@ -21,6 +21,8 @@ import aramframework.com.cop.bbs.domain.BoardUseInfVO;
 import aramframework.com.cop.bbs.service.BBSMasterService;
 import aramframework.com.cop.bbs.service.BBSBoardService;
 import aramframework.com.cop.bbs.service.BBSUseInfoService;
+import aramframework.com.cop.cmy.dao.CmyMenuManageMapper;
+import aramframework.com.cop.cmy.dao.CommunityManageMapper;
 import aramframework.com.cop.cmy.domain.CommunityMenuVO;
 import aramframework.com.cop.cmy.domain.CommunityUserVO;
 import aramframework.com.cop.cmy.domain.CommunityVO;

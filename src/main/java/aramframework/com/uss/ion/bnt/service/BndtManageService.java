@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.uss.ion.bnt.dao.BndtManageMapper;
 import aramframework.com.uss.ion.bnt.domain.BndtCeckManageVO;
 import aramframework.com.uss.ion.bnt.domain.BndtDiaryVO;
 import aramframework.com.uss.ion.bnt.domain.BndtManageVO;

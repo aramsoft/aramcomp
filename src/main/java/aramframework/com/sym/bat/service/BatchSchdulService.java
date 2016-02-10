@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.sym.bat.dao.BatchResultMapper;
+import aramframework.com.sym.bat.dao.BatchSchdulMapper;
 import aramframework.com.sym.bat.domain.BatchResultVO;
 import aramframework.com.sym.bat.domain.BatchSchdulVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;

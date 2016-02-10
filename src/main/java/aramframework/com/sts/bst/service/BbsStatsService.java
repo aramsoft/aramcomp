@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import aramframework.com.sts.bst.dao.BbsStatsMapper;
 import aramframework.com.sts.com.StatsVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 

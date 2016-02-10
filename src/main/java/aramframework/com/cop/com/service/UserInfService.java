@@ -10,6 +10,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cop.cmy.domain.CommunityUserVO;
 import aramframework.com.cop.cmy.service.CommunityManageService;
+import aramframework.com.cop.com.dao.UserInfMapper;
 import aramframework.com.cop.com.domain.UserInfVO;
 import aramframework.com.uat.uia.domain.LoginVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;

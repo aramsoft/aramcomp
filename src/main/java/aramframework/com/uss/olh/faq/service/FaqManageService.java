@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.service.FileMngUtil;
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.uss.olh.faq.dao.FaqManageMapper;
 import aramframework.com.uss.olh.faq.domain.FaqManageVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.cmmn.exception.FdlException;

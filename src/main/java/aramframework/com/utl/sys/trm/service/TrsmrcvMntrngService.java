@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.utl.sys.trm.dao.TrsmrcvMntrngMapper;
 import aramframework.com.utl.sys.trm.domain.TrsmrcvMntrngLogVO;
 import aramframework.com.utl.sys.trm.domain.TrsmrcvMntrngVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;

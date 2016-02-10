@@ -10,6 +10,7 @@ import javax.servlet.ServletContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import aramframework.com.cmm.dao.CmmUseMapper;
 import aramframework.com.cmm.domain.ComCodeVO;
 import aramframework.com.cmm.domain.SearchCodeVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;

@@ -26,6 +26,7 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.constant.AramProperties;
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.sym.ccm.zip.dao.ZipManageMapper;
 import aramframework.com.sym.ccm.zip.domain.ZipVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.excel.EgovExcelService;
@@ -108,7 +109,7 @@ public class ZipManageService extends EgovAbstractServiceImpl {
 	public void insertExcelZip(InputStream file) {
 //		zipManageDAO.deleteAllZip();
 		try {
-			String sqlId = "aramframework.com.sym.ccm.zip.service.ZipManageMapper.insertExcelZip";
+			String sqlId = "aramframework.com.sym.ccm.zip.dao.ZipManageMapper.insertExcelZip";
 			excelZipService.uploadExcel(sqlId, file, 1, (long) 5000);
 		} catch (Exception e) {
 			throw new RuntimeException(e);

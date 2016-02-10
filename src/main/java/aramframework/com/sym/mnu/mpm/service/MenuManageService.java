@@ -11,10 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.sym.mnu.mpm.dao.MenuManageMapper;
 import aramframework.com.sym.mnu.mpm.domain.MenuManageVO;
+import aramframework.com.sym.prm.dao.ProgrmManageDtlMapper;
+import aramframework.com.sym.prm.dao.ProgrmManageMapper;
 import aramframework.com.sym.prm.domain.ProgrmManageVO;
-import aramframework.com.sym.prm.service.ProgrmManageDtlMapper;
-import aramframework.com.sym.prm.service.ProgrmManageMapper;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.excel.EgovExcelService;
 import egovframework.rte.psl.dataaccess.util.EgovMap;

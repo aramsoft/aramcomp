@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.sts.com.StatsVO;
+import aramframework.com.sts.ust.dao.UserStatsMapper;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 
 /**

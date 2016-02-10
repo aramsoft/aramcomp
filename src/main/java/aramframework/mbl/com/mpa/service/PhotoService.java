@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.service.FileMngUtil;
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.mbl.com.mpa.dao.PhotoMapper;
 import aramframework.mbl.com.mpa.domain.PhotoVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.cmmn.exception.FdlException;

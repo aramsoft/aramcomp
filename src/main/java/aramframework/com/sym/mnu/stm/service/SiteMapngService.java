@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.sym.mnu.stm.dao.SiteMapngMapper;
 import aramframework.com.sym.mnu.stm.domain.SiteMapngVO;
 
 /**

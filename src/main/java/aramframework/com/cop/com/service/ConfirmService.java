@@ -9,6 +9,7 @@ import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cop.cmy.domain.CommunityUserVO;
 import aramframework.com.cop.cmy.domain.CommunityVO;
 import aramframework.com.cop.cmy.service.CommunityManageService;
+import aramframework.com.cop.com.dao.ConfirmMapper;
 import aramframework.com.cop.com.domain.ConfirmHistoryVO;
 import aramframework.com.utl.fcc.service.DateUtil;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="aramframework.com.sym.cal.service.RestdeManageMapper">
+<mapper namespace="aramframework.com.sym.cal.dao.RestdeManageMapper">
 
 	<select id="selectRestdeList" resultType="egovMap">
         /* 구현 Sql */

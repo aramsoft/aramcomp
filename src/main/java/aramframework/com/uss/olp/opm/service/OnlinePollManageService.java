@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.uss.olp.opm.dao.OnlinePollManageMapper;
 import aramframework.com.uss.olp.opm.domain.OnlinePollItemVO;
 import aramframework.com.uss.olp.opm.domain.OnlinePollManageVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;

@@ -20,6 +20,7 @@ import aramframework.com.cmm.constant.AramProperties;
 import aramframework.com.cmm.constant.Globals;
 import aramframework.com.cmm.service.FileMngUtil;
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.cop.ems.dao.SndngMailMapper;
 import aramframework.com.cop.ems.domain.AtchmnFileVO;
 import aramframework.com.cop.ems.domain.SndngMailVO;
 import aramframework.com.utl.fcc.service.StringUtil;

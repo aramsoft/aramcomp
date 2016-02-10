@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.constant.AramProperties;
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.cop.sms.dao.SmsMapper;
 import aramframework.com.cop.sms.domain.SmsMessageVO;
 import aramframework.com.cop.sms.domain.SmsRecptnVO;
 import aramframework.com.cop.sms.domain.SmsVO;

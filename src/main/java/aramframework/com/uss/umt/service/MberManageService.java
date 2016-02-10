@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.uss.umt.dao.EntrprsManageMapper;
+import aramframework.com.uss.umt.dao.MberManageMapper;
+import aramframework.com.uss.umt.dao.UserManageMapper;
 import aramframework.com.uss.umt.domain.MberManageVO;
 import aramframework.com.uss.umt.domain.StplatVO;
 import aramframework.com.utl.sim.service.FileScrty;

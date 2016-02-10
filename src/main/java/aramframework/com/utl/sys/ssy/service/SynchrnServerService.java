@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.utl.sys.ssy.dao.SynchrnServerMapper;
 import aramframework.com.utl.sys.ssy.domain.SynchrnServerVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.cmmn.exception.FdlException;

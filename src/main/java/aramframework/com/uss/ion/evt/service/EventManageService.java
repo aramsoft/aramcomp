@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.uss.ion.evt.dao.EventManageMapper;
 import aramframework.com.uss.ion.evt.domain.EventAtdrnVO;
 import aramframework.com.uss.ion.evt.domain.EventManageVO;
 import aramframework.com.uss.ion.ism.domain.InfrmlSanctnVO;

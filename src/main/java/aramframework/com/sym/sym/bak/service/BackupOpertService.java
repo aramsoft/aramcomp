@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.sym.sym.bak.dao.BackupOpertMapper;
+import aramframework.com.sym.sym.bak.dao.BackupResultMapper;
 import aramframework.com.sym.sym.bak.domain.BackupOpertVO;
 import aramframework.com.sym.sym.bak.domain.BackupResultVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;

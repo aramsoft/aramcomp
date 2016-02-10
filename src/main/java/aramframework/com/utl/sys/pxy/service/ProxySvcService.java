@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.utl.sys.pxy.dao.ProxySvcMapper;
 import aramframework.com.utl.sys.pxy.domain.ProxySvcLogVO;
 import aramframework.com.utl.sys.pxy.domain.ProxySvcVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;

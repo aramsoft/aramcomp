@@ -22,6 +22,7 @@ import aramframework.com.sym.ccm.cca.service.CmmnCodeManageService;
 import aramframework.com.sym.ccm.ccc.domain.CmmnClCodeVO;
 import aramframework.com.sym.ccm.ccc.service.CmmnClCodeManageService;
 import aramframework.com.sym.ccm.cde.domain.CmmnDetailCodeVO;
+import aramframework.com.sym.ccm.cde.excel.ExcelCmmnDetailView;
 import aramframework.com.sym.ccm.cde.service.CmmnDetailCodeManageService;
 import aramframework.com.uat.uia.domain.LoginVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
@@ -235,7 +236,7 @@ public class CmmnDetailCodeManageController {
 	public ModelAndView excelCmmnDetailCode(
 			@ModelAttribute CmmnDetailCodeVO cmmnDetailCodeVO) {
 
-		ModelAndView modelAndView = new ModelAndView(new CmmnDetailExcelView());
+		ModelAndView modelAndView = new ModelAndView(new ExcelCmmnDetailView());
 
 		modelAndView.addObject("resultList", cmmnDetailCodeManageService.selectCmmnDetailCodeListExcel(cmmnDetailCodeVO));
 

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.uss.ion.ctn.dao.CtsnnManageMapper;
 import aramframework.com.uss.ion.ctn.domain.CtsnnManageVO;
 import aramframework.com.uss.ion.ism.domain.InfrmlSanctnVO;
 import aramframework.com.uss.ion.ism.service.InfrmlSanctnService;

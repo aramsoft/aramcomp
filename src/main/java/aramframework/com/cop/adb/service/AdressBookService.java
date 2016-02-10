@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.cop.adb.dao.AdressBookMapper;
 import aramframework.com.cop.adb.domain.AdressBookUserVO;
 import aramframework.com.cop.adb.domain.AdressBookVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;

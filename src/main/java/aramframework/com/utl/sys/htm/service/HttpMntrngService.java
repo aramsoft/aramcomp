@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.utl.sys.htm.dao.HttpMntrngMapper;
 import aramframework.com.utl.sys.htm.domain.HttpMntrngLogVO;
 import aramframework.com.utl.sys.htm.domain.HttpMntrngVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;

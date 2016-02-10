@@ -18,6 +18,7 @@ import org.springframework.util.FileCopyUtils;
 import aramframework.com.cmm.constant.AramProperties;
 import aramframework.com.cmm.domain.FileVO;
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.mbl.com.mlt.dao.MultimediaMapper;
 import aramframework.mbl.com.mlt.domain.MultimediaFileInfoVO;
 import aramframework.mbl.com.mlt.domain.MultimediaVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;

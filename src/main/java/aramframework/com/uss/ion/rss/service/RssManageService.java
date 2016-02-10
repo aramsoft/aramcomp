@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.domain.ComCodeVO;
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.uss.ion.rss.dao.RssManageJDBC;
+import aramframework.com.uss.ion.rss.dao.RssManageMapper;
 import aramframework.com.uss.ion.rss.domain.RssManageVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.cmmn.exception.FdlException;

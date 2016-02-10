@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="aramframework.com.utl.sys.nsm.service.NtwrkSvcMntrngMapper">
+<mapper namespace="aramframework.com.utl.sys.nsm.dao.NtwrkSvcMntrngMapper">
 
 	<!-- 네트워크서비스모니터링관리::목록조회 -->
 	<select id="selectNtwrkSvcMntrngList" resultType="ntwrkSvcMntrngVO">

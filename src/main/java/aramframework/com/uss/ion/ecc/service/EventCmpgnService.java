@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.uss.ion.ecc.dao.EventCmpgnMapper;
 import aramframework.com.uss.ion.ecc.domain.EventCmpgnVO;
 import aramframework.com.uss.ion.ecc.domain.TnextrlHrInfoVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;

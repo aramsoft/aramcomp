@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.cop.cmy.dao.CmyMenuManageMapper;
 import aramframework.com.cop.cmy.domain.CommunityMenuVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.excel.EgovExcelService;
@@ -174,7 +175,7 @@ public class CmyMenuManageService extends EgovAbstractServiceImpl {
 	public void insertExcelMenu(InputStream file, String cmmntyId) {
 		cmyMenuManageMapper.deleteMenuManageTrget(cmmntyId);
 		try {
-			String sqlId = "aramframework.com.cop.cmy.service.CmyMenuManageMapper.insertMenuManage";
+			String sqlId = "aramframework.com.cop.cmy.dao.CmyMenuManageMapper.insertMenuManage";
 			excelCmyMenuService.uploadExcel(sqlId, file, 1, (long) 5000);
 		} catch (Exception e) {
 			throw new RuntimeException(e);

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.domain.FileVO;
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.uss.ion.lsi.dao.LoginScrinImageMapper;
 import aramframework.com.uss.ion.lsi.domain.LoginScrinImageVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.cmmn.exception.FdlException;

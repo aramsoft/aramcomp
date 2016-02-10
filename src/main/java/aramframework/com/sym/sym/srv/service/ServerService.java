@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.sym.sym.srv.dao.ServerMapper;
 import aramframework.com.sym.sym.srv.domain.ServerEqpmnRelateVO;
 import aramframework.com.sym.sym.srv.domain.ServerEqpmnVO;
 import aramframework.com.sym.sym.srv.domain.ServerVO;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="aramframework.com.uss.olp.qqm.service.QustnrQestnManageMapper">
+<mapper namespace="aramframework.com.uss.olp.qqm.dao.QustnrQestnManageMapper">
 
 	<!-- 설문문항::목록조회_게시물정보 -->
 	<select id="selectQustnrQestnManageList" resultType="egovMap">

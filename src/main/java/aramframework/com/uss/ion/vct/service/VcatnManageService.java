@@ -11,6 +11,7 @@ import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.ism.domain.InfrmlSanctnVO;
 import aramframework.com.uss.ion.ism.service.InfrmlSanctnService;
+import aramframework.com.uss.ion.vct.dao.VcatnManageMapper;
 import aramframework.com.uss.ion.vct.domain.IndvdlYrycManageVO;
 import aramframework.com.uss.ion.vct.domain.VcatnManageVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;

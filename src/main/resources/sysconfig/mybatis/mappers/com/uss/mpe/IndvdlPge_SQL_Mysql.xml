@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="aramframework.com.uss.mpe.service.IndvdlPgeMapper">
+<mapper namespace="aramframework.com.uss.mpe.dao.IndvdlPgeMapper">
 
    	<!-- 마이페이지 콘텐츠 목록 -->
 

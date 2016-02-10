@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.utl.sys.fsm.dao.FileSysMntrngMapper;
 import aramframework.com.utl.sys.fsm.domain.FileSysMntrngLogVO;
 import aramframework.com.utl.sys.fsm.domain.FileSysMntrngVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;

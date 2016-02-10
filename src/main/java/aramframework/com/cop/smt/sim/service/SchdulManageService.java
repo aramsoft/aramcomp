@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.FileMngUtil;
 import aramframework.com.cmm.util.BeanUtil;
+import aramframework.com.cop.smt.sim.dao.SchdulManageMapper;
 import aramframework.com.cop.smt.sim.domain.SchdulManageVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.cmmn.exception.FdlException;

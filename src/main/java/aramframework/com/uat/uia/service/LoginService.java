@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.cop.ems.domain.SndngMailVO;
 import aramframework.com.cop.ems.service.SndngMailService;
+import aramframework.com.uat.uia.dao.LoginMapper;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.utl.fcc.service.NumberUtil;
 import aramframework.com.utl.fcc.service.StringUtil;

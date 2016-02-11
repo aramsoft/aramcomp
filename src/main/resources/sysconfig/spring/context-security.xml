@@ -117,7 +117,7 @@
         <beans:property name="securedObjectService" ref="securedObjectService"/>
     </beans:bean>
 
-	<!-- authorization -->
+	<!-- sql string provider -->
     <beans:bean id="securedObjectService"
         class="egovframework.rte.fdl.security.securedobject.impl.SecuredObjectServiceImpl">
         <beans:property name="securedObjectDAO" ref="securedObjectDAO"/>
@@ -126,6 +126,10 @@
     <beans:bean id="securedObjectDAO" 
     	class="egovframework.rte.fdl.security.securedobject.impl.SecuredObjectDAO" >
         <beans:property name="dataSource" ref="dataSource"/>
+       	<beans:property name="sqlHierarchicalRoles" value=
+				"SELECT a.CHLDRN_ROLE child, a.PARNTS_ROLE parent 
+				   FROM COMTN_ROLES_HIERARCHY a 
+				        LEFT JOIN COMTN_ROLES_HIERARCHY b on (a.CHLDRN_ROLE = b.PARNTS_ROLE) " />
        	<beans:property name="sqlRolesAndUrl" value=
 	       		"SELECT a.RESOURCE_PTTRN url, b.AUTHOR_CODE authority 
 				   FROM COMTN_RESOURCE_INFO a, COMTN_AUTHOR_RESOURCE b     
@@ -141,12 +145,9 @@
 				   FROM COMTN_RESOURCE_INFO a, COMTN_AUTHOR_RESOURCE b     
 				  WHERE a.RESOURCE_CODE = b.RESOURCE_CODE                   
 				    AND a.RESOURCE_TY = 'pointcut'  ORDER BY a.RESOURCE_SORT " />
-       	<beans:property name="sqlHierarchicalRoles" value=
-				"SELECT a.CHLDRN_ROLE child, a.PARNTS_ROLE parent 
-				   FROM COMTN_ROLES_HIERARCHY a 
-				        LEFT JOIN COMTN_ROLES_HIERARCHY b on (a.CHLDRN_ROLE = b.PARNTS_ROLE) " />
     </beans:bean>
     
+ 	<!-- authorization -->
     <beans:bean id="accessDecisionManager" 
     	class="org.springframework.security.access.vote.AffirmativeBased">
         <beans:property name="allowIfAllAbstainDecisions" value="false" />

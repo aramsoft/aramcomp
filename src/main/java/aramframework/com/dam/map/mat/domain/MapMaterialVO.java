@@ -25,16 +25,12 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class MapMaterialVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-	
+	// domain
 	/** 지식유형코드 */
 	private String knoTypeCd = "";
 	
 	/** 조직ID */
 	private String orgnztId = "";
-	
-	/** 조직명 */
-	private String orgnztNm = "";
 	
 	/** 전문가ID */
 	private String speId = "";
@@ -48,6 +44,11 @@ public class MapMaterialVO extends SearchVO {
 	/** 지식URL */
 	private String knoUrl = "";
 	
+	// helper
+	/** 조직명 */
+	private String orgnztNm = "";
+	
+	// domain
 	/**
 	 * @return the knoTypeCd
 	 */
@@ -74,20 +75,6 @@ public class MapMaterialVO extends SearchVO {
 	 */
 	public void setOrgnztId(String orgnztId) {
 		this.orgnztId = orgnztId;
-	}
-
-	/**
-	 * @return the orgnztNm
-	 */
-	public String getOrgnztNm() {
-		return orgnztNm;
-	}
-	/**
-	 * @param orgnztNm
-	 *            the orgnztNm to set
-	 */
-	public void setOrgnztNm(String orgnztNm) {
-		this.orgnztNm = orgnztNm;
 	}
 
 	/**
@@ -144,6 +131,21 @@ public class MapMaterialVO extends SearchVO {
 	 */
 	public void setKnoUrl(String knoUrl) {
 		this.knoUrl = knoUrl;
+	}
+
+	// helper
+	/**
+	 * @return the orgnztNm
+	 */
+	public String getOrgnztNm() {
+		return orgnztNm;
+	}
+	/**
+	 * @param orgnztNm
+	 *            the orgnztNm to set
+	 */
+	public void setOrgnztNm(String orgnztNm) {
+		this.orgnztNm = orgnztNm;
 	}
 
 	/**

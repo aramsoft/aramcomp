@@ -23,22 +23,12 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class LoginLogVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 검색시작일 */
-	private String searchBgnDe = "";
-	
-	/** 검색종료일 */
-	private String searchEndDe = "";
-
+	// domain
 	/** 로그ID */
 	private String logId;
 
 	/** 사용자ID */
 	private String loginId;
-
-	/** 사용자명 */
-	private String loginNm;
 
 	/** 접속IP */
 	private String loginIp;
@@ -55,20 +45,17 @@ public class LoginLogVO extends SearchVO {
 	/** 생성일시 */
 	private String creatDt;
 
-	public String getSearchBgnDe() {
-		return searchBgnDe;
-	}
-	public void setSearchBgnDe(String searchBgnDe) {
-		this.searchBgnDe = searchBgnDe;
-	}
+	// helper
+	/** 사용자명 */
+	private String loginNm;
 
-	public String getSearchEndDe() {
-		return searchEndDe;
-	}
-	public void setSearchEndDe(String searchEndDe) {
-		this.searchEndDe = searchEndDe;
-	}
+	/** 검색시작일 */
+	private String searchBgnDe = "";
+	
+	/** 검색종료일 */
+	private String searchEndDe = "";
 
+	// domain
 	public String getLogId() {
 		return logId;
 	}
@@ -81,13 +68,6 @@ public class LoginLogVO extends SearchVO {
 	}
 	public void setLoginId(String loginId) {
 		this.loginId = loginId;
-	}
-
-	public String getLoginNm() {
-		return loginNm;
-	}
-	public void setLoginNm(String loginNm) {
-		this.loginNm = loginNm;
 	}
 
 	public String getLoginIp() {
@@ -123,6 +103,28 @@ public class LoginLogVO extends SearchVO {
 	}
 	public void setCreatDt(String creatDt) {
 		this.creatDt = creatDt;
+	}
+
+	// helper
+	public String getLoginNm() {
+		return loginNm;
+	}
+	public void setLoginNm(String loginNm) {
+		this.loginNm = loginNm;
+	}
+
+	public String getSearchBgnDe() {
+		return searchBgnDe;
+	}
+	public void setSearchBgnDe(String searchBgnDe) {
+		this.searchBgnDe = searchBgnDe;
+	}
+
+	public String getSearchEndDe() {
+		return searchEndDe;
+	}
+	public void setSearchEndDe(String searchEndDe) {
+		this.searchEndDe = searchEndDe;
 	}
 
 }

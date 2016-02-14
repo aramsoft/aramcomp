@@ -26,24 +26,39 @@ import aramframework.com.cmm.util.WebUtil;
 
 public class BoardVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	// Board Master 정보
-	private BoardMasterVO boardMasterVO = null;
-	
-	/** 유효여부   */
-	private String isExpired = "N";
-	/** 수정 처리 여부 */
-	private boolean isGuestModified = false;
+	// domain
+	/** 게시물 아이디   */
+	private long nttId = 0L;
 
 	/** 게시판 아이디	 */
 	private String bbsId = "";
 
-	/** 게시물 아이디   */
-	private long nttId = 0L;
+	/** 게시물 쓰레드 번호  */
+	private int threadNo = 0;
 
 	/** 게시물 제목  */
 	private String nttSj = "";
+
+	/** 게시물 내용  */
+	private String nttCn = "";
+
+	/** 답장여부  */
+	private String answerAt = "";
+
+	/** 부모글번호  */
+	private long parntsNttId = 0L;
+
+	/** 답장위치 */
+	private int threadDepth = 0;
+
+	/** 정렬순서   */
+	private long threadGroupNo = 0L;
+
+	/** 조회수  */
+	private int rdcnt = 0;
+
+	/** 사용여부 	 */
+	private String useAt = "";
 
 	/** 게시시작일  */
 	private String ntceBgnde = "";
@@ -57,88 +72,38 @@ public class BoardVO extends SearchVO {
 	/** 게시자명   */
 	private String ntcrNm = "";
 
-	/** 게시물 내용  */
-	private String nttCn = "";
-
-	/** 게시물 쓰레드 번호  */
-	private int threadNo = 0;
-
-	/** 부모글번호  */
-	private long parntsNttId = 0L;
-
 	/** 패스워드	*/
 	private String password = "";
-
-	/** 조회수  */
-	private int rdcnt = 0;
-
-	/** 답장여부  */
-	private String answerAt = "";
-
-	/** 답장위치 */
-	private int threadDepth = 0;
-
-	/** 정렬순서   */
-	private long threadGroupNo = 0L;
-
-	/** 사용여부 	 */
-	private String useAt = "";
 
 	/** 게시물 첨부파일 아이디  */
 	private String atchFileId = "";
 
-	/**
-	 * boardMasterVO attribute를 리턴한다.
-	 * 
-	 * @return the boardMasterVO
-	 */
-	public BoardMasterVO getBoardMasterVO() {
-		return boardMasterVO;
-	}
-	/**
-	 * boardMasterVO attribute 값을 설정한다.
-	 * 
-	 * @param boardMasterVO
-	 *            the boardMasterVO to set
-	 */
-	public void setBoardMasterVO(BoardMasterVO boardMasterVO) {
-		this.boardMasterVO = boardMasterVO;
-	}
+	// helper
+	// Board Master 정보
+	private BoardMasterVO boardMasterVO = null;
+	
+	/** 유효여부   */
+	private String isExpired = "N";
+	/** 수정 처리 여부 */
+	private boolean isGuestModified = false;
 
+	// domain
 	/**
-	 * isExpired attribute를 리턴한다.
+	 * nttId attribute를 리턴한다.
 	 * 
-	 * @return the isExpired
+	 * @return the nttId
 	 */
-	public String getIsExpired() {
-		return isExpired;
+	public long getNttId() {
+		return nttId;
 	}
 	/**
-	 * isExpired attribute 값을 설정한다.
+	 * nttId attribute 값을 설정한다.
 	 * 
-	 * @param isExpired
-	 *            the isExpired to set
+	 * @param nttId
+	 *            the nttId to set
 	 */
-	public void setIsExpired(String isExpired) {
-		this.isExpired = isExpired;
-	}
-
-	/**
-	 * isModified attribute를 리턴한다.
-	 * 
-	 * @return the isModified
-	 */
-	public boolean isGuestModified() {
-		return isGuestModified;
-	}
-	/**
-	 * isModified attribute 값을 설정한다.
-	 * 
-	 * @param isModified
-	 *            the isModified to set
-	 */
-	public void setGuestModified(boolean isGuestModified) {
-		this.isGuestModified = isGuestModified;
+	public void setNttId(long nttId) {
+		this.nttId = nttId;
 	}
 
 	/**
@@ -162,21 +127,21 @@ public class BoardVO extends SearchVO {
 	}
 
 	/**
-	 * nttId attribute를 리턴한다.
+	 * threadNo attribute를 리턴한다.
 	 * 
-	 * @return the nttId
+	 * @return the threadNo
 	 */
-	public long getNttId() {
-		return nttId;
+	public int getThreadNo() {
+		return threadNo;
 	}
 	/**
-	 * nttId attribute 값을 설정한다.
+	 * threadNo attribute 값을 설정한다.
 	 * 
-	 * @param nttId
-	 *            the nttId to set
+	 * @param threadNo
+	 *            the threadNo to set
 	 */
-	public void setNttId(long nttId) {
-		this.nttId = nttId;
+	public void setThreadNo(int threadNo) {
+		this.threadNo = threadNo;
 	}
 
 	/**
@@ -195,6 +160,132 @@ public class BoardVO extends SearchVO {
 	 */
 	public void setNttSj(String nttSj) {
 		this.nttSj = nttSj;
+	}
+
+	/**
+	 * nttCn attribute를 리턴한다.
+	 * 
+	 * @return the nttCn
+	 */
+	public String getNttCn() {
+		return nttCn;
+	}
+	/**
+	 * nttCn attribute 값을 설정한다.
+	 * 
+	 * @param nttCn
+	 *            the nttCn to set
+	 */
+	public void setNttCn(String nttCn) {
+		this.nttCn = nttCn;
+	}
+
+	/**
+	 * answerAt attribute를 리턴한다.
+	 * 
+	 * @return the answerAt
+	 */
+	public String getAnswerAt() {
+		return answerAt;
+	}
+	/**
+	 * answerAt attribute 값을 설정한다.
+	 * 
+	 * @param answerAt
+	 *            the answerAt to set
+	 */
+	public void setAnswerAt(String answerAt) {
+		this.answerAt = answerAt;
+	}
+
+	/**
+	 * parntsNttId attribute를 리턴한다.
+	 * 
+	 * @return the parntsNttId
+	 */
+	public long getParntsNttId() {
+		return parntsNttId;
+	}
+	/**
+	 * parntsNttId attribute 값을 설정한다.
+	 * 
+	 * @param parnts
+	 *            the parntsNttId to set
+	 */
+	public void setParntsNttId(long parntsNttId) {
+		this.parntsNttId = parntsNttId;
+	}
+
+	/**
+	 * threadDepth attribute를 리턴한다.
+	 * 
+	 * @return the threadDepth
+	 */
+	public int getThreadDepth() {
+		return threadDepth;
+	}
+	/**
+	 * threadDepth attribute 값을 설정한다.
+	 * 
+	 * @param threadDepth
+	 *            the threadDepth to set
+	 */
+	public void setThreadDepth(int threadDepth) {
+		this.threadDepth = threadDepth;
+	}
+
+	/**
+	 * threadGroupNo attribute를 리턴한다.
+	 * 
+	 * @return the threadGroupNo
+	 */
+	public long getThreadGroupNo() {
+		return threadGroupNo;
+	}
+	/**
+	 * threadGroupNo attribute 값을 설정한다.
+	 * 
+	 * @param threadGroupNo
+	 *            the threadGroupNo to set
+	 */
+	public void setThreadGroupNo(long threadGroupNo) {
+		this.threadGroupNo = threadGroupNo;
+	}
+
+	/**
+	 * rdcnt attribute를 리턴한다.
+	 * 
+	 * @return the rdcnt
+	 */
+	public int getRdcnt() {
+		return rdcnt;
+	}
+	/**
+	 * rdcnt attribute 값을 설정한다.
+	 * 
+	 * @param rdcnt
+	 *            the rdcnt to set
+	 */
+	public void setRdcnt(int rdcnt) {
+		this.rdcnt = rdcnt;
+	}
+
+	/**
+	 * useAt attribute를 리턴한다.
+	 * 
+	 * @return the useAt
+	 */
+	public String getUseAt() {
+		return useAt;
+	}
+	/**
+	 * useAt attribute 값을 설정한다.
+	 * 
+	 * @param useAt
+	 *            the useAt to set
+	 */
+	public void setUseAt(String useAt) {
+		this.useAt = useAt;
 	}
 
 	/**
@@ -270,60 +361,6 @@ public class BoardVO extends SearchVO {
 	}
 
 	/**
-	 * nttCn attribute를 리턴한다.
-	 * 
-	 * @return the nttCn
-	 */
-	public String getNttCn() {
-		return nttCn;
-	}
-	/**
-	 * nttCn attribute 값을 설정한다.
-	 * 
-	 * @param nttCn
-	 *            the nttCn to set
-	 */
-	public void setNttCn(String nttCn) {
-		this.nttCn = nttCn;
-	}
-
-	/**
-	 * threadNo attribute를 리턴한다.
-	 * 
-	 * @return the threadNo
-	 */
-	public int getThreadNo() {
-		return threadNo;
-	}
-	/**
-	 * threadNo attribute 값을 설정한다.
-	 * 
-	 * @param threadNo
-	 *            the threadNo to set
-	 */
-	public void setThreadNo(int threadNo) {
-		this.threadNo = threadNo;
-	}
-
-	/**
-	 * parntsNttId attribute를 리턴한다.
-	 * 
-	 * @return the parntsNttId
-	 */
-	public long getParntsNttId() {
-		return parntsNttId;
-	}
-	/**
-	 * parntsNttId attribute 값을 설정한다.
-	 * 
-	 * @param parnts
-	 *            the parntsNttId to set
-	 */
-	public void setParntsNttId(long parntsNttId) {
-		this.parntsNttId = parntsNttId;
-	}
-
-	/**
 	 * password attribute를 리턴한다.
 	 * 
 	 * @return the password
@@ -342,96 +379,6 @@ public class BoardVO extends SearchVO {
 	}
 
 	/**
-	 * rdcnt attribute를 리턴한다.
-	 * 
-	 * @return the rdcnt
-	 */
-	public int getRdcnt() {
-		return rdcnt;
-	}
-	/**
-	 * rdcnt attribute 값을 설정한다.
-	 * 
-	 * @param rdcnt
-	 *            the rdcnt to set
-	 */
-	public void setRdcnt(int rdcnt) {
-		this.rdcnt = rdcnt;
-	}
-
-	/**
-	 * answerAt attribute를 리턴한다.
-	 * 
-	 * @return the answerAt
-	 */
-	public String getAnswerAt() {
-		return answerAt;
-	}
-	/**
-	 * answerAt attribute 값을 설정한다.
-	 * 
-	 * @param answerAt
-	 *            the answerAt to set
-	 */
-	public void setAnswerAt(String answerAt) {
-		this.answerAt = answerAt;
-	}
-
-	/**
-	 * threadDepth attribute를 리턴한다.
-	 * 
-	 * @return the threadDepth
-	 */
-	public int getThreadDepth() {
-		return threadDepth;
-	}
-	/**
-	 * threadDepth attribute 값을 설정한다.
-	 * 
-	 * @param threadDepth
-	 *            the threadDepth to set
-	 */
-	public void setThreadDepth(int threadDepth) {
-		this.threadDepth = threadDepth;
-	}
-
-	/**
-	 * threadGroupNo attribute를 리턴한다.
-	 * 
-	 * @return the threadGroupNo
-	 */
-	public long getThreadGroupNo() {
-		return threadGroupNo;
-	}
-	/**
-	 * threadGroupNo attribute 값을 설정한다.
-	 * 
-	 * @param threadGroupNo
-	 *            the threadGroupNo to set
-	 */
-	public void setThreadGroupNo(long threadGroupNo) {
-		this.threadGroupNo = threadGroupNo;
-	}
-
-	/**
-	 * useAt attribute를 리턴한다.
-	 * 
-	 * @return the useAt
-	 */
-	public String getUseAt() {
-		return useAt;
-	}
-	/**
-	 * useAt attribute 값을 설정한다.
-	 * 
-	 * @param useAt
-	 *            the useAt to set
-	 */
-	public void setUseAt(String useAt) {
-		this.useAt = useAt;
-	}
-
-	/**
 	 * atchFileId attribute를 리턴한다.
 	 * 
 	 * @return the atchFileId
@@ -447,6 +394,61 @@ public class BoardVO extends SearchVO {
 	 */
 	public void setAtchFileId(String atchFileId) {
 		this.atchFileId = atchFileId;
+	}
+
+	// helper
+	/**
+	 * boardMasterVO attribute를 리턴한다.
+	 * 
+	 * @return the boardMasterVO
+	 */
+	public BoardMasterVO getBoardMasterVO() {
+		return boardMasterVO;
+	}
+	/**
+	 * boardMasterVO attribute 값을 설정한다.
+	 * 
+	 * @param boardMasterVO
+	 *            the boardMasterVO to set
+	 */
+	public void setBoardMasterVO(BoardMasterVO boardMasterVO) {
+		this.boardMasterVO = boardMasterVO;
+	}
+
+	/**
+	 * isExpired attribute를 리턴한다.
+	 * 
+	 * @return the isExpired
+	 */
+	public String getIsExpired() {
+		return isExpired;
+	}
+	/**
+	 * isExpired attribute 값을 설정한다.
+	 * 
+	 * @param isExpired
+	 *            the isExpired to set
+	 */
+	public void setIsExpired(String isExpired) {
+		this.isExpired = isExpired;
+	}
+
+	/**
+	 * isModified attribute를 리턴한다.
+	 * 
+	 * @return the isModified
+	 */
+	public boolean isGuestModified() {
+		return isGuestModified;
+	}
+	/**
+	 * isModified attribute 값을 설정한다.
+	 * 
+	 * @param isModified
+	 *            the isModified to set
+	 */
+	public void setGuestModified(boolean isGuestModified) {
+		this.isGuestModified = isGuestModified;
 	}
 
 	/**

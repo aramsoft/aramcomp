@@ -1,7 +1,5 @@
 package aramframework.com.cop.sms.domain;
 
-import java.io.Serializable;
-
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 /**
@@ -23,9 +21,9 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  * </pre>
  */
 
-@SuppressWarnings("serial")
-public class SmsRecptnVO implements Serializable {
+public class SmsRecptnVO {
 
+	// domain
 	/** 문자메시지 ID */
 	private String smsId = "";
 

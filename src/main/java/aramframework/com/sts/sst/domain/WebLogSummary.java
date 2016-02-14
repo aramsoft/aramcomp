@@ -21,33 +21,17 @@ package aramframework.com.sts.sst.domain;
 
 public class WebLogSummary {
 
-	/** 횟수	 */
-	private int rdCnt;
-	
+	// domain
 	/** 발생일자 */
 	private String occrrncDe;
 	
 	/** URL */
 	private String url;
 
-	/**
-	 * rdCnt attribute 를 리턴한다.
-	 * 
-	 * @return int
-	 */
-	public int getRdCnt() {
-		return rdCnt;
-	}
-	/**
-	 * rdCnt attribute 값을 설정한다.
-	 * 
-	 * @param rdCnt
-	 *            int
-	 */
-	public void setRdCnt(int rdCnt) {
-		this.rdCnt = rdCnt;
-	}
+	/** 횟수	 */
+	private int rdCnt;
 	
+	// domain
 	/**
 	 * occrrncDe attribute 를 리턴한다.
 	 * 
@@ -82,6 +66,24 @@ public class WebLogSummary {
 	 */
 	public void setUrl(String url) {
 		this.url = url;
+	}
+	
+	/**
+	 * rdCnt attribute 를 리턴한다.
+	 * 
+	 * @return int
+	 */
+	public int getRdCnt() {
+		return rdCnt;
+	}
+	/**
+	 * rdCnt attribute 값을 설정한다.
+	 * 
+	 * @param rdCnt
+	 *            int
+	 */
+	public void setRdCnt(int rdCnt) {
+		this.rdCnt = rdCnt;
 	}
 	
 }

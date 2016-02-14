@@ -25,8 +25,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class MapTeamVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 조직ID */
 	private String orgnztId;
 	
@@ -39,6 +38,7 @@ public class MapTeamVO extends SearchVO {
 	/** 지식URL */
 	private String knoUrl;
 	
+	// domain
 	public String getOrgnztId() {
 		return orgnztId;
 	}

@@ -24,14 +24,15 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class AdministCodeVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	// 도메인 정보
+	// domain
 	/** 행정구역구분 */
 	private String administZoneSe = "";
 
 	/** 행정구역코드 */
 	private String administZoneCode = "";
+
+	/** 사용여부 */
+	private String useAt = "";
 
 	/** 행정구역명 */
 	private String administZoneNm = "";
@@ -39,18 +40,17 @@ public class AdministCodeVO extends SearchVO {
 	/** 상위행정구역코드 */
 	private String upperAdministZoneCode = "";
 
-	/** 상위행정구역명 */
-	private String upperAdministZoneNm = "";
-
 	/** 생성일자 */
 	private String creatDe = "";
 
 	/** 폐기일자 */
 	private String ablDe = "";
 
-	/** 사용여부 */
-	private String useAt = "";
+	// helper
+	/** 상위행정구역명 */
+	private String upperAdministZoneNm = "";
 
+	// domain
 	/**
 	 * administZoneSe attribute 를 리턴한다.
 	 * 
@@ -85,6 +85,24 @@ public class AdministCodeVO extends SearchVO {
 	 */
 	public void setAdministZoneCode(String administZoneCode) {
 		this.administZoneCode = administZoneCode;
+	}
+
+	/**
+	 * useAt attribute 를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getUseAt() {
+		return useAt;
+	}
+	/**
+	 * useAt attribute 값을 설정한다.
+	 * 
+	 * @param useAt
+	 *            String
+	 */
+	public void setUseAt(String useAt) {
+		this.useAt = useAt;
 	}
 
 	/**
@@ -124,24 +142,6 @@ public class AdministCodeVO extends SearchVO {
 	}
 
 	/**
-	 * upperAdministZoneNm attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getUpperAdministZoneNm() {
-		return upperAdministZoneNm;
-	}
-	/**
-	 * upperAdministZoneNm attribute 값을 설정한다.
-	 * 
-	 * @param upperAdministZoneNm
-	 *            String
-	 */
-	public void setUpperAdministZoneNm(String upperAdministZoneNm) {
-		this.upperAdministZoneNm = upperAdministZoneNm;
-	}
-
-	/**
 	 * creatDe attribute 를 리턴한다.
 	 * 
 	 * @return String
@@ -177,22 +177,23 @@ public class AdministCodeVO extends SearchVO {
 		this.ablDe = ablDe;
 	}
 
+	// helper
 	/**
-	 * useAt attribute 를 리턴한다.
+	 * upperAdministZoneNm attribute 를 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getUseAt() {
-		return useAt;
+	public String getUpperAdministZoneNm() {
+		return upperAdministZoneNm;
 	}
 	/**
-	 * useAt attribute 값을 설정한다.
+	 * upperAdministZoneNm attribute 값을 설정한다.
 	 * 
-	 * @param useAt
+	 * @param upperAdministZoneNm
 	 *            String
 	 */
-	public void setUseAt(String useAt) {
-		this.useAt = useAt;
+	public void setUpperAdministZoneNm(String upperAdministZoneNm) {
+		this.upperAdministZoneNm = upperAdministZoneNm;
 	}
 
 }

@@ -23,25 +23,17 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class AuthorResourceVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	// 추가 검색 설정
-	/** 검색조건 */
-	private String saveSearchCondition = "";
-
-	/** 검색Keyword */
-	private String saveSearchKeyword = "";
-
-	/** 현재페이지 */
-	private int savePageIndex = 1;
-	
-	// DOMAIN 설정
+	// domain
 	/** 권한코드 */
 	private String authorCode;
 	
 	/** 롤코드 */
 	private String resourceCode;
 	
+	/** 등록일자 */
+	private String creatDt;
+
+	// helper
 	/** 롤명 */
 	private String resourceNm;
 	
@@ -60,63 +52,17 @@ public class AuthorResourceVO extends SearchVO {
 	/** 롤 등록여부 */
 	private String regYn;
 	
-	/** 등록일자 */
-	private String creatDt;
+	// 추가 검색 설정
+	/** 검색조건 */
+	private String saveSearchCondition = "";
 
-	/**
-	 * searchCondition attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getSaveSearchCondition() {
-		return saveSearchCondition;
-	}
-	/**
-	 * searchCondition attribute 값을 설정한다.
-	 * 
-	 * @param searchCondition
-	 *            String
-	 */
-	public void setSaveSearchCondition(String saveSearchCondition) {
-		this.saveSearchCondition = saveSearchCondition;
-	}
+	/** 검색Keyword */
+	private String saveSearchKeyword = "";
 
-	/**
-	 * searchKeyword attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getSaveSearchKeyword() {
-		return saveSearchKeyword;
-	}
-	/**
-	 * searchKeyword attribute 값을 설정한다.
-	 * 
-	 * @param searchKeyword
-	 *            String
-	 */
-	public void setSaveSearchKeyword(String saveSearchKeyword) {
-		this.saveSearchKeyword = saveSearchKeyword;
-	}
-
-	/**
-	 * pageIndex attribute 값을 리턴한다.
-	 * 
-	 * @return int
-	 */
-	public int getSavePageIndex() {
-		return savePageIndex;
-	}
-	/**
-	 * pageIndex attribute 값을 설정한다.
-	 * 
-	 * @param pageIndex
-	 *            int
-	 */
-	public void setSavePageIndex(int savePageIndex) {
-		this.savePageIndex = savePageIndex;
-	}
-
+	/** 현재페이지 */
+	private int savePageIndex = 1;
+	
+	// domain
 	/**
 	 * authorCode attribute 를 리턴한다.
 	 * 
@@ -153,6 +99,25 @@ public class AuthorResourceVO extends SearchVO {
 		this.resourceCode = resourceCode;
 	}
 
+	/**
+	 * creatDt attribute 를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getCreatDt() {
+		return creatDt;
+	}
+	/**
+	 * creatDt attribute 값을 설정한다.
+	 * 
+	 * @param creatDt
+	 *            String
+	 */
+	public void setCreatDt(String creatDt) {
+		this.creatDt = creatDt;
+	}
+
+	// helper
 	/**
 	 * resourceNm attribute 를 리턴한다.
 	 * 
@@ -262,21 +227,57 @@ public class AuthorResourceVO extends SearchVO {
 	}
 
 	/**
-	 * creatDt attribute 를 리턴한다.
+	 * searchCondition attribute 값을 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getCreatDt() {
-		return creatDt;
+	public String getSaveSearchCondition() {
+		return saveSearchCondition;
 	}
 	/**
-	 * creatDt attribute 값을 설정한다.
+	 * searchCondition attribute 값을 설정한다.
 	 * 
-	 * @param creatDt
+	 * @param searchCondition
 	 *            String
 	 */
-	public void setCreatDt(String creatDt) {
-		this.creatDt = creatDt;
+	public void setSaveSearchCondition(String saveSearchCondition) {
+		this.saveSearchCondition = saveSearchCondition;
+	}
+
+	/**
+	 * searchKeyword attribute 값을 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getSaveSearchKeyword() {
+		return saveSearchKeyword;
+	}
+	/**
+	 * searchKeyword attribute 값을 설정한다.
+	 * 
+	 * @param searchKeyword
+	 *            String
+	 */
+	public void setSaveSearchKeyword(String saveSearchKeyword) {
+		this.saveSearchKeyword = saveSearchKeyword;
+	}
+
+	/**
+	 * pageIndex attribute 값을 리턴한다.
+	 * 
+	 * @return int
+	 */
+	public int getSavePageIndex() {
+		return savePageIndex;
+	}
+	/**
+	 * pageIndex attribute 값을 설정한다.
+	 * 
+	 * @param pageIndex
+	 *            int
+	 */
+	public void setSavePageIndex(int savePageIndex) {
+		this.savePageIndex = savePageIndex;
 	}
 
 }

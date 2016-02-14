@@ -26,14 +26,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class AdressBookVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 주소록구성원 */
-	private List<AdressBookUserVO> adbkMan = new ArrayList<AdressBookUserVO>();
-
-	/** 사용자 아이디 */
-	private String userIds = "";
-
+	// domain
 	/** 주소록 아이디 */
 	private String adbkId = "";
 
@@ -43,51 +36,23 @@ public class AdressBookVO extends SearchVO {
 	/** 주소록 공개범위 */
 	private String othbcScope = "";
 
-	/** 최초등록자 부서 */
-	private String trgetOrgnztId = "";
-
 	/** 주소록 사용여부 */
 	private String useAt = "";
 
 	/** 주소록 등록자 아이디 */
 	private String wrterId = "";
+	
+	/** 최초등록자 부서 */
+	private String trgetOrgnztId = "";
 
-	/**
-	 * adbkMan attribute를 리턴한다.
-	 * 
-	 * @return the adbkMan
-	 */
-	public List<AdressBookUserVO> getAdbkMan() {
-		return adbkMan;
-	}
-	/**
-	 * adbkMan attribute 값을 설정한다.
-	 * 
-	 * @param adbkMan
-	 *            the adbkMan to set
-	 */
-	public void setAdbkMan(List<AdressBookUserVO> adbkMan) {
-		this.adbkMan = adbkMan;
-	}
+	// helper
+	/** 사용자 아이디(for list) */
+	private String userIds = "";
 
-	/**
-	 * userIds attribute를 리턴한다.
-	 * 
-	 * @return the userIds
-	 */
-	public String getUserIds() {
-		return userIds;
-	}
-	/**
-	 * userIds attribute 값을 설정한다.
-	 * 
-	 * @param userIds
-	 *            the userIds to set
-	 */
-	public void setUserIds(String userIds) {
-		this.userIds = userIds;
-	}
+	/** 주소록구성원 */
+	private List<AdressBookUserVO> adbkMan = new ArrayList<AdressBookUserVO>();
 
+	// domain
 	/**
 	 * AdbkId attribute를 리턴한다.
 	 * 
@@ -143,24 +108,6 @@ public class AdressBookVO extends SearchVO {
 	}
 
 	/**
-	 * trgetOrgnztId attribute를 리턴한다.
-	 * 
-	 * @return the trgetOrgnztId
-	 */
-	public String getTrgetOrgnztId() {
-		return trgetOrgnztId;
-	}
-	/**
-	 * trgetOrgnztId attribute 값을 설정한다.
-	 * 
-	 * @param trgetOrgnztId
-	 *            the trgetOrgnztId to set
-	 */
-	public void setTrgetOrgnztId(String trgetOrgnztId) {
-		this.trgetOrgnztId = trgetOrgnztId;
-	}
-
-	/**
 	 * useAt attribute를 리턴한다.
 	 * 
 	 * @return the useAt
@@ -194,6 +141,61 @@ public class AdressBookVO extends SearchVO {
 	 */
 	public void setWrterId(String wrterId) {
 		this.wrterId = wrterId;
+	}
+
+	/**
+	 * trgetOrgnztId attribute를 리턴한다.
+	 * 
+	 * @return the trgetOrgnztId
+	 */
+	public String getTrgetOrgnztId() {
+		return trgetOrgnztId;
+	}
+	/**
+	 * trgetOrgnztId attribute 값을 설정한다.
+	 * 
+	 * @param trgetOrgnztId
+	 *            the trgetOrgnztId to set
+	 */
+	public void setTrgetOrgnztId(String trgetOrgnztId) {
+		this.trgetOrgnztId = trgetOrgnztId;
+	}
+
+	// helper
+	/**
+	 * userIds attribute를 리턴한다.
+	 * 
+	 * @return the userIds
+	 */
+	public String getUserIds() {
+		return userIds;
+	}
+	/**
+	 * userIds attribute 값을 설정한다.
+	 * 
+	 * @param userIds
+	 *            the userIds to set
+	 */
+	public void setUserIds(String userIds) {
+		this.userIds = userIds;
+	}
+
+	/**
+	 * adbkMan attribute를 리턴한다.
+	 * 
+	 * @return the adbkMan
+	 */
+	public List<AdressBookUserVO> getAdbkMan() {
+		return adbkMan;
+	}
+	/**
+	 * adbkMan attribute 값을 설정한다.
+	 * 
+	 * @param adbkMan
+	 *            the adbkMan to set
+	 */
+	public void setAdbkMan(List<AdressBookUserVO> adbkMan) {
+		this.adbkMan = adbkMan;
 	}
 
 }

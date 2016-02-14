@@ -1,6 +1,5 @@
 package aramframework.com.sym.bat.domain;
 
-import java.io.Serializable;
 import java.util.List;
 
 import aramframework.com.cmm.domain.SearchVO;
@@ -24,9 +23,9 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-@SuppressWarnings("serial")
-public class BatchSchdulVO extends SearchVO implements Serializable {
+public class BatchSchdulVO extends SearchVO {
 
+	// domain
 	/** 배치스케줄ID */
 	private String batchSchdulId;
 
@@ -42,12 +41,9 @@ public class BatchSchdulVO extends SearchVO implements Serializable {
 	/** 실행주기 */
 	private String executCycle;
 	
-	/** 실행주기명 */
-	private String executCycleNm;
+	/** 실행스케줄일자 */
+	private String executSchdulDe;
 	
-	/** 실행스케줄 */
-	private String executSchdul;
-
 	/** 실행스케줄시 */
 	private String executSchdulHour;
 	
@@ -57,9 +53,13 @@ public class BatchSchdulVO extends SearchVO implements Serializable {
 	/** 실행스케줄초 */
 	private String executSchdulSecnd;
 	
-	/** 실행스케줄일자 */
-	private String executSchdulDe;
+	// helper
+	/** 실행주기명 */
+	private String executCycleNm;
 	
+	/** 실행스케줄 */
+	private String executSchdul;
+
 	/** 실행스케줄요일 */
 	private String[] executSchdulDfkSes;
 
@@ -81,6 +81,7 @@ public class BatchSchdulVO extends SearchVO implements Serializable {
 	/** 배치빈이름 */
 	private String batchBean;
 	
+	// domain
 	/**
 	 * @return the batchSchdulId
 	 */
@@ -152,31 +153,17 @@ public class BatchSchdulVO extends SearchVO implements Serializable {
 	}
 
 	/**
-	 * @return the executCycleNm
+	 * @return the executSchdulDe
 	 */
-	public String getExecutCycleNm() {
-		return executCycleNm;
+	public String getExecutSchdulDe() {
+		return executSchdulDe;
 	}
 	/**
-	 * @param executCycleNm
-	 *            the executCycleNm to set
+	 * @param executSchdulDe
+	 *            the executSchdulDe to set
 	 */
-	public void setExecutCycleNm(String executCycleNm) {
-		this.executCycleNm = executCycleNm;
-	}
-
-	/**
-	 * @return the executSchdul
-	 */
-	public String getExecutSchdul() {
-		return executSchdul;
-	}
-	/**
-	 * @param executSchdul
-	 *            the executSchdul to set
-	 */
-	public void setExecutSchdul(String executSchdul) {
-		this.executSchdul = executSchdul;
+	public void setExecutSchdulDe(String executSchdulDe) {
+		this.executSchdulDe = executSchdulDe;
 	}
 
 	/**
@@ -221,18 +208,33 @@ public class BatchSchdulVO extends SearchVO implements Serializable {
 		this.executSchdulSecnd = executSchdulSecnd;
 	}
 
+	// helper
 	/**
-	 * @return the executSchdulDe
+	 * @return the executCycleNm
 	 */
-	public String getExecutSchdulDe() {
-		return executSchdulDe;
+	public String getExecutCycleNm() {
+		return executCycleNm;
 	}
 	/**
-	 * @param executSchdulDe
-	 *            the executSchdulDe to set
+	 * @param executCycleNm
+	 *            the executCycleNm to set
 	 */
-	public void setExecutSchdulDe(String executSchdulDe) {
-		this.executSchdulDe = executSchdulDe;
+	public void setExecutCycleNm(String executCycleNm) {
+		this.executCycleNm = executCycleNm;
+	}
+
+	/**
+	 * @return the executSchdul
+	 */
+	public String getExecutSchdul() {
+		return executSchdul;
+	}
+	/**
+	 * @param executSchdul
+	 *            the executSchdul to set
+	 */
+	public void setExecutSchdul(String executSchdul) {
+		this.executSchdul = executSchdul;
 	}
 
 	/**

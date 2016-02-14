@@ -21,16 +21,12 @@ package aramframework.com.sym.mnu.stm.domain;
 
 public class SiteMapngVO {
 
-	/** 메뉴생성내역 */
-	/** 보안설정대상ID */
-	private String scrtyEstbstrgetId;
-
-	/** 사이트맵 */
-	/** 생성자ID **/
-	private String creatPersonId;
-	
+	// domain
 	/** 맵생성ID */
 	private String mapCreatId;
+	
+	/** 생성자ID **/
+	private String creatPersonId;
 	
 	/** 맵파일명 */
 	private String bndeFileNm;
@@ -38,22 +34,27 @@ public class SiteMapngVO {
 	/** 맵파일경로 */
 	private String bndeFilePath;
 
+	// helper
+	/** 보안설정대상ID */
+	private String scrtyEstbstrgetId;
+
+	// domain
 	/**
-	 * scrtyEstbstrgetId attribute를 리턴한다.
+	 * mapCreatId attribute를 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getScrtyEstbstrgetId() {
-		return scrtyEstbstrgetId;
+	public String getMapCreatId() {
+		return mapCreatId;
 	}
 	/**
-	 * scrtyEstbstrgetId attribute 값을 설정한다.
+	 * mapCreatId attribute 값을 설정한다.
 	 * 
-	 * @param scrtyEstbstrgetId
+	 * @param mapCreatId
 	 *            String
 	 */
-	public void setScrtyEstbstrgetId(String scrtyEstbstrgetId) {
-		this.scrtyEstbstrgetId = scrtyEstbstrgetId;
+	public void setMapCreatId(String mapCreatId) {
+		this.mapCreatId = mapCreatId;
 	}
 
 	/**
@@ -72,24 +73,6 @@ public class SiteMapngVO {
 	 */
 	public void setCreatPersonId(String creatPersonId) {
 		this.creatPersonId = creatPersonId;
-	}
-
-	/**
-	 * mapCreatId attribute를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getMapCreatId() {
-		return mapCreatId;
-	}
-	/**
-	 * mapCreatId attribute 값을 설정한다.
-	 * 
-	 * @param mapCreatId
-	 *            String
-	 */
-	public void setMapCreatId(String mapCreatId) {
-		this.mapCreatId = mapCreatId;
 	}
 
 	/**
@@ -126,6 +109,25 @@ public class SiteMapngVO {
 	 */
 	public void setBndeFilePath(String bndeFilePath) {
 		this.bndeFilePath = bndeFilePath;
+	}
+
+	// helper
+	/**
+	 * scrtyEstbstrgetId attribute를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getScrtyEstbstrgetId() {
+		return scrtyEstbstrgetId;
+	}
+	/**
+	 * scrtyEstbstrgetId attribute 값을 설정한다.
+	 * 
+	 * @param scrtyEstbstrgetId
+	 *            String
+	 */
+	public void setScrtyEstbstrgetId(String scrtyEstbstrgetId) {
+		this.scrtyEstbstrgetId = scrtyEstbstrgetId;
 	}
 
 }

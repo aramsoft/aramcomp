@@ -25,11 +25,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class UserInfVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 대상 아이디 */
-	private String trgetId = "";
-
+	// domain
 	/** 유일 아이디 */
 	private String uniqId = "";
 
@@ -48,30 +44,17 @@ public class UserInfVO extends SearchVO {
 	/** 사용자 이메일 */
 	private String userEmail = "";
 
+	// helper
 	/** 사용여부 */
 	private String useAt = "Y";
 
 	/** 대상 중지 여부 (커뮤니티 또는 동호회) */
 	private String deletedAt = "N";
 
-	/**
-	 * trgetId attribute를 리턴한다.
-	 * 
-	 * @return the trgetId
-	 */
-	public String getTrgetId() {
-		return trgetId;
-	}
-	/**
-	 * trgetId attribute 값을 설정한다.
-	 * 
-	 * @param trgetId
-	 *            the trgetId to set
-	 */
-	public void setTrgetId(String trgetId) {
-		this.trgetId = trgetId;
-	}
+	/** 대상 아이디 */
+	private String trgetId = "";
 
+	// domain
 	/**
 	 * uniqId attribute를 리턴한다.
 	 * 
@@ -180,6 +163,7 @@ public class UserInfVO extends SearchVO {
 		this.userEmail = userEmail;
 	}
 
+	// helper
 	/**
 	 * useAt attribute를 리턴한다.
 	 * 
@@ -214,6 +198,24 @@ public class UserInfVO extends SearchVO {
 	 */
 	public void setDeletedAt(String deletedAt) {
 		this.deletedAt = deletedAt;
+	}
+
+	/**
+	 * trgetId attribute를 리턴한다.
+	 * 
+	 * @return the trgetId
+	 */
+	public String getTrgetId() {
+		return trgetId;
+	}
+	/**
+	 * trgetId attribute 값을 설정한다.
+	 * 
+	 * @param trgetId
+	 *            the trgetId to set
+	 */
+	public void setTrgetId(String trgetId) {
+		this.trgetId = trgetId;
 	}
 
 	/**

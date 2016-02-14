@@ -23,11 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class ServerVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 서버명 조회조건 */
-	private String strServerNm;
-
+	// domain
 	/** 서버 ID */
 	private String serverId;
 	
@@ -37,26 +33,17 @@ public class ServerVO extends SearchVO {
 	/** 서버 종류 */
 	private String serverKnd;
 	
-	/** 서버 종류명 */
-	private String serverKndNm;
-	
 	/** 등록일자 */
 	private String regstYmd;
 	
-	/**
-	 * @return the strServerNm
-	 */
-	public String getStrServerNm() {
-		return strServerNm;
-	}
-	/**
-	 * @param strServerNm
-	 *            the strServerNm to set
-	 */
-	public void setStrServerNm(String strServerNm) {
-		this.strServerNm = strServerNm;
-	}
+	// helper
+	/** 서버명 조회조건 */
+	private String strServerNm;
 
+	/** 서버 종류명 */
+	private String serverKndNm;
+	
+	// domain
 	/**
 	 * @return the serverId
 	 */
@@ -100,20 +87,6 @@ public class ServerVO extends SearchVO {
 	}
 
 	/**
-	 * @return the serverKndNm
-	 */
-	public String getServerKndNm() {
-		return serverKndNm;
-	}
-	/**
-	 * @param serverKndNm
-	 *            the serverKndNm to set
-	 */
-	public void setServerKndNm(String serverKndNm) {
-		this.serverKndNm = serverKndNm;
-	}
-
-	/**
 	 * @return the regstYmd
 	 */
 	public String getRegstYmd() {
@@ -125,6 +98,35 @@ public class ServerVO extends SearchVO {
 	 */
 	public void setRegstYmd(String regstYmd) {
 		this.regstYmd = regstYmd;
+	}
+
+	// helper
+	/**
+	 * @return the strServerNm
+	 */
+	public String getStrServerNm() {
+		return strServerNm;
+	}
+	/**
+	 * @param strServerNm
+	 *            the strServerNm to set
+	 */
+	public void setStrServerNm(String strServerNm) {
+		this.strServerNm = strServerNm;
+	}
+
+	/**
+	 * @return the serverKndNm
+	 */
+	public String getServerKndNm() {
+		return serverKndNm;
+	}
+	/**
+	 * @param serverKndNm
+	 *            the serverKndNm to set
+	 */
+	public void setServerKndNm(String serverKndNm) {
+		this.serverKndNm = serverKndNm;
 	}
 
 }

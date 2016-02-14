@@ -24,16 +24,9 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class LoginPolicyVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 사용자 ID */
 	private String emplyrId;
-	
-	/** 사용자 명 */
-	private String emplyrNm;
-	
-	/** 사용자 구분 */
-	private String emplyrSe;
 	
 	/** IP정보 */
 	private String ipInfo;
@@ -44,6 +37,13 @@ public class LoginPolicyVO extends SearchVO {
 	/** 제한여부 */
 	private String lmttAt;
 	
+	// helper
+	/** 사용자 명 */
+	private String emplyrNm;
+	
+	/** 사용자 구분 */
+	private String emplyrSe;
+	
 	/** 등록자 ID */
 	private String userId;
 	
@@ -53,6 +53,7 @@ public class LoginPolicyVO extends SearchVO {
 	/** 등록여부 */
 	private String regYn;
 
+	// domain
 	/**
 	 * @return the emplyrId
 	 */
@@ -65,34 +66,6 @@ public class LoginPolicyVO extends SearchVO {
 	 */
 	public void setEmplyrId(String emplyrId) {
 		this.emplyrId = emplyrId;
-	}
-
-	/**
-	 * @return the emplyrNm
-	 */
-	public String getEmplyrNm() {
-		return emplyrNm;
-	}
-	/**
-	 * @param emplyrNm
-	 *            the emplyrNm to set
-	 */
-	public void setEmplyrNm(String emplyrNm) {
-		this.emplyrNm = emplyrNm;
-	}
-
-	/**
-	 * @return the emplyrSe
-	 */
-	public String getEmplyrSe() {
-		return emplyrSe;
-	}
-	/**
-	 * @param emplyrSe
-	 *            the emplyrSe to set
-	 */
-	public void setEmplyrSe(String emplyrSe) {
-		this.emplyrSe = emplyrSe;
 	}
 
 	/**
@@ -135,6 +108,35 @@ public class LoginPolicyVO extends SearchVO {
 	 */
 	public void setLmttAt(String lmttAt) {
 		this.lmttAt = lmttAt;
+	}
+
+	// helper
+	/**
+	 * @return the emplyrNm
+	 */
+	public String getEmplyrNm() {
+		return emplyrNm;
+	}
+	/**
+	 * @param emplyrNm
+	 *            the emplyrNm to set
+	 */
+	public void setEmplyrNm(String emplyrNm) {
+		this.emplyrNm = emplyrNm;
+	}
+
+	/**
+	 * @return the emplyrSe
+	 */
+	public String getEmplyrSe() {
+		return emplyrSe;
+	}
+	/**
+	 * @param emplyrSe
+	 *            the emplyrSe to set
+	 */
+	public void setEmplyrSe(String emplyrSe) {
+		this.emplyrSe = emplyrSe;
 	}
 
 	/**

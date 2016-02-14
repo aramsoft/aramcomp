@@ -25,8 +25,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class ScrapVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 스크랩 ID */
 	private String scrapId = "";
 
@@ -42,9 +41,11 @@ public class ScrapVO extends SearchVO {
 	/** 사용 여부 */
 	private String useAt = "";
 
+	// helper
 	/** 유일 아이디 */
 	private String uniqId = "";
 
+	// domain
 	/**
 	 * scrapId attribute를 리턴한다.
 	 * 
@@ -135,6 +136,7 @@ public class ScrapVO extends SearchVO {
 		this.useAt = useAt;
 	}
 
+	// helper
 	/**
 	 * uniqId attribute를 리턴한다.
 	 * 

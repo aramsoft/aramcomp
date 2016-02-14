@@ -23,8 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class SystemCntcVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 연계ID */
 	private String cntcId = "";
 

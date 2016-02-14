@@ -1,7 +1,5 @@
 package aramframework.com.cmm.domain;
 
-import java.io.Serializable;
-
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 import aramframework.com.cmm.util.WebUtil;
@@ -25,30 +23,14 @@ import aramframework.com.cmm.util.WebUtil;
  * </pre>
  */
 
-@SuppressWarnings("serial")
-public class FileVO implements Serializable {
+public class FileVO {
 
-	// rest 관련
-	// path id for rest
-	private String pathId = "";
-	
+	// domain
 	/** 첨부파일 아이디 */
 	private String atchFileId = "";
 
 	/** 생성일자	 */
 	private String creatDt = "";
-
-	/** 파일내용	 */
-	private String fileCn = "";
-
-	/** 파일확장자 */
-	private String fileExtsn = "";
-
-	/** 파일콘텐트타입 */
-	private String fileType = "";
-
-	/** 파일크기	 */
-	private String fileSize = "";
 
 	/** 파일연번  */
 	private String fileSn = "";
@@ -56,31 +38,29 @@ public class FileVO implements Serializable {
 	/** 파일저장경로 */
 	private String fileStreCours = "";
 
-	/** 원파일명	 */
-	private String orignlFileNm = "";
-
 	/** 저장파일명 */
 	private String streFileNm = "";
 
-	/**
-	 * pathId attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getPathId() {
-		return pathId;
-	}
-	/**
-	 * pathId attribute 값을 설정한다.
-	 * 
-	 * @param pathId
-	 *            String
-	 */
-/*
-	public void setPathId(String pathId) {
-		this.pathId = pathId;
-	}
-*/
+	/** 원파일명	 */
+	private String orignlFileNm = "";
+
+	/** 파일확장자 */
+	private String fileExtsn = "";
+
+	/** 파일콘텐트타입 */
+	private String fileType = "";
+
+	/** 파일내용	 */
+	private String fileCn = "";
+
+	/** 파일크기	 */
+	private String fileSize = "";
+
+	// helper
+	// path id for rest
+	private String pathId = "";
+	
+	// domain
 	/**
 	 * atchFileId attribute를 리턴한다.
 	 * 
@@ -120,21 +100,75 @@ public class FileVO implements Serializable {
 	}
 
 	/**
-	 * fileCn attribute를 리턴한다.
+	 * fileSn attribute를 리턴한다.
 	 * 
-	 * @return the fileCn
+	 * @return the fileSn
 	 */
-	public String getFileCn() {
-		return fileCn;
+	public String getFileSn() {
+		return fileSn;
 	}
 	/**
-	 * fileCn attribute 값을 설정한다.
+	 * fileSn attribute 값을 설정한다.
 	 * 
-	 * @param fileCn
-	 *            the fileCn to set
+	 * @param fileSn
+	 *            the fileSn to set
 	 */
-	public void setFileCn(String fileCn) {
-		this.fileCn = fileCn;
+	public void setFileSn(String fileSn) {
+		this.fileSn = fileSn;
+	}
+
+	/**
+	 * fileStreCours attribute를 리턴한다.
+	 * 
+	 * @return the fileStreCours
+	 */
+	public String getFileStreCours() {
+		return fileStreCours;
+	}
+	/**
+	 * fileStreCours attribute 값을 설정한다.
+	 * 
+	 * @param fileStreCours
+	 *            the fileStreCours to set
+	 */
+	public void setFileStreCours(String fileStreCours) {
+		this.fileStreCours = fileStreCours;
+	}
+
+	/**
+	 * streFileNm attribute를 리턴한다.
+	 * 
+	 * @return the streFileNm
+	 */
+	public String getStreFileNm() {
+		return streFileNm;
+	}
+	/**
+	 * streFileNm attribute 값을 설정한다.
+	 * 
+	 * @param streFileNm
+	 *            the streFileNm to set
+	 */
+	public void setStreFileNm(String streFileNm) {
+		this.streFileNm = streFileNm;
+	}
+
+	/**
+	 * orignlFileNm attribute를 리턴한다.
+	 * 
+	 * @return the orignlFileNm
+	 */
+	public String getOrignlFileNm() {
+		return orignlFileNm;
+	}
+	/**
+	 * orignlFileNm attribute 값을 설정한다.
+	 * 
+	 * @param orignlFileNm
+	 *            the orignlFileNm to set
+	 */
+	public void setOrignlFileNm(String orignlFileNm) {
+		this.orignlFileNm = orignlFileNm;
 	}
 
 	/**
@@ -174,6 +208,24 @@ public class FileVO implements Serializable {
 	}
 
 	/**
+	 * fileCn attribute를 리턴한다.
+	 * 
+	 * @return the fileCn
+	 */
+	public String getFileCn() {
+		return fileCn;
+	}
+	/**
+	 * fileCn attribute 값을 설정한다.
+	 * 
+	 * @param fileCn
+	 *            the fileCn to set
+	 */
+	public void setFileCn(String fileCn) {
+		this.fileCn = fileCn;
+	}
+
+	/**
 	 * fileSize attribute를 리턴한다.
 	 * 
 	 * @return the fileSize
@@ -191,78 +243,26 @@ public class FileVO implements Serializable {
 		this.fileSize = fileSize;
 	}
 
+	// helper
 	/**
-	 * fileSn attribute를 리턴한다.
+	 * pathId attribute 값을 리턴한다.
 	 * 
-	 * @return the fileSn
+	 * @return String
 	 */
-	public String getFileSn() {
-		return fileSn;
+	public String getPathId() {
+		return pathId;
 	}
 	/**
-	 * fileSn attribute 값을 설정한다.
+	 * pathId attribute 값을 설정한다.
 	 * 
-	 * @param fileSn
-	 *            the fileSn to set
+	 * @param pathId
+	 *            String
 	 */
-	public void setFileSn(String fileSn) {
-		this.fileSn = fileSn;
+/*
+	public void setPathId(String pathId) {
+		this.pathId = pathId;
 	}
-
-	/**
-	 * fileStreCours attribute를 리턴한다.
-	 * 
-	 * @return the fileStreCours
-	 */
-	public String getFileStreCours() {
-		return fileStreCours;
-	}
-	/**
-	 * fileStreCours attribute 값을 설정한다.
-	 * 
-	 * @param fileStreCours
-	 *            the fileStreCours to set
-	 */
-	public void setFileStreCours(String fileStreCours) {
-		this.fileStreCours = fileStreCours;
-	}
-
-	/**
-	 * orignlFileNm attribute를 리턴한다.
-	 * 
-	 * @return the orignlFileNm
-	 */
-	public String getOrignlFileNm() {
-		return orignlFileNm;
-	}
-	/**
-	 * orignlFileNm attribute 값을 설정한다.
-	 * 
-	 * @param orignlFileNm
-	 *            the orignlFileNm to set
-	 */
-	public void setOrignlFileNm(String orignlFileNm) {
-		this.orignlFileNm = orignlFileNm;
-	}
-
-	/**
-	 * streFileNm attribute를 리턴한다.
-	 * 
-	 * @return the streFileNm
-	 */
-	public String getStreFileNm() {
-		return streFileNm;
-	}
-	/**
-	 * streFileNm attribute 값을 설정한다.
-	 * 
-	 * @param streFileNm
-	 *            the streFileNm to set
-	 */
-	public void setStreFileNm(String streFileNm) {
-		this.streFileNm = streFileNm;
-	}
-
+*/
 	/**
 	 * toString 메소드를 대치한다.
 	 */

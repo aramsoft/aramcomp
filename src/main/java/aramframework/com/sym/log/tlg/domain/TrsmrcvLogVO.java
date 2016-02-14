@@ -23,15 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class TrsmrcvLogVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 검색시작일 */
-	private String searchBgnDe = "";
-	
-	/** 검색종료일 */
-	private String searchEndDe = "";
-
-
+	// domain
 	/** 요청아이디 */
 	private String requstId = "";
 
@@ -40,9 +32,6 @@ public class TrsmrcvLogVO extends SearchVO {
 
 	/** 송수신구분코드 */
 	private String trsmrcvSeCode = "";
-
-	/** 송수신구분코드 명 */
-	private String trsmrcvSeCodeNm = "";
 
 	/** 연계ID */
 	private String cntcId;
@@ -83,23 +72,20 @@ public class TrsmrcvLogVO extends SearchVO {
 	/** 요청자아이디 */
 	private String rqesterId = "";
 
+	// helper
+	/** 송수신구분코드 명 */
+	private String trsmrcvSeCodeNm = "";
+
 	/** 요청자 이름 */
 	private String rqesterNm = "";
 
-	public String getSearchBgnDe() {
-		return searchBgnDe;
-	}
-	public void setSearchBgnDe(String searchBgnDe) {
-		this.searchBgnDe = searchBgnDe;
-	}
+	/** 검색시작일 */
+	private String searchBgnDe = "";
+	
+	/** 검색종료일 */
+	private String searchEndDe = "";
 
-	public String getSearchEndDe() {
-		return searchEndDe;
-	}
-	public void setSearchEndDe(String searchEndDe) {
-		this.searchEndDe = searchEndDe;
-	}
-
+	// domain
 	public String getRequstId() {
 		return requstId;
 	}
@@ -119,13 +105,6 @@ public class TrsmrcvLogVO extends SearchVO {
 	}
 	public void setTrsmrcvSeCode(String trsmrcvSeCode) {
 		this.trsmrcvSeCode = trsmrcvSeCode;
-	}
-
-	public String getTrsmrcvSeCodeNm() {
-		return trsmrcvSeCodeNm;
-	}
-	public void setTrsmrcvSeCodeNm(String trsmrcvSeCodeNm) {
-		this.trsmrcvSeCodeNm = trsmrcvSeCodeNm;
 	}
 
 	public String getcntcId() {
@@ -219,11 +198,33 @@ public class TrsmrcvLogVO extends SearchVO {
 		this.rqesterId = rqesterId;
 	}
 
+	// helper
+	public String getTrsmrcvSeCodeNm() {
+		return trsmrcvSeCodeNm;
+	}
+	public void setTrsmrcvSeCodeNm(String trsmrcvSeCodeNm) {
+		this.trsmrcvSeCodeNm = trsmrcvSeCodeNm;
+	}
+
 	public String getRqesterNm() {
 		return rqesterNm;
 	}
 	public void setRqesterNm(String rqesterNm) {
 		this.rqesterNm = rqesterNm;
+	}
+
+	public String getSearchBgnDe() {
+		return searchBgnDe;
+	}
+	public void setSearchBgnDe(String searchBgnDe) {
+		this.searchBgnDe = searchBgnDe;
+	}
+
+	public String getSearchEndDe() {
+		return searchEndDe;
+	}
+	public void setSearchEndDe(String searchEndDe) {
+		this.searchEndDe = searchEndDe;
 	}
 
 }

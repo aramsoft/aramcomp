@@ -25,19 +25,15 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class SysHistoryVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 등록 구분코드 명 */
-	private String histSeCodeNm = "";
-
+	// domain
 	/** 생성일시 */
 	private String histId = "";
 	
-	/** 이력내용 */
-	private String histCn = "";
-	
 	/** 이력구분코드 */
 	private String histSeCode = "";
+	
+	/** 이력내용 */
+	private String histCn = "";
 	
 	/** 시스템명 */
 	private String sysNm = "";
@@ -45,29 +41,20 @@ public class SysHistoryVO extends SearchVO {
 	/** 첨부파일ID */
 	private String atchFileId = "";
 
-	/**
-	 * @return the histSeCodeNm
-	 */
-	public String getHistSeCodeNm() {
-		return histSeCodeNm;
-	}
-	/**
-	 * @param histSeCodeNm
-	 *            the histSeCodeNm to set
-	 */
-	public void setHistSeCodeNm(String histSeCodeNm) {
-		this.histSeCodeNm = histSeCodeNm;
-	}
+	// helper
+	/** 등록 구분코드 명 */
+	private String histSeCodeNm = "";
 
+	// domain
 	/**
-	 * @return the creatDt
+	 * @return the histId
 	 */
 	public String getHistId() {
 		return histId;
 	}
 	/**
-	 * @param creatDt
-	 *            the creatDt to set
+	 * @param histId
+	 *            the histId to set
 	 */
 	public void setHistId(String histId) {
 		this.histId = histId;
@@ -122,9 +109,21 @@ public class SysHistoryVO extends SearchVO {
 		this.atchFileId = atchFileId;
 	}
 
+	// helper
 	/**
-	 * 
+	 * @return the histSeCodeNm
 	 */
+	public String getHistSeCodeNm() {
+		return histSeCodeNm;
+	}
+	/**
+	 * @param histSeCodeNm
+	 *            the histSeCodeNm to set
+	 */
+	public void setHistSeCodeNm(String histSeCodeNm) {
+		this.histSeCodeNm = histSeCodeNm;
+	}
+
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);
 	}

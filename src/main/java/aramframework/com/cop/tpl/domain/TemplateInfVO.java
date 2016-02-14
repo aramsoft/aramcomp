@@ -26,8 +26,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class TemplateInfVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 템플릿 아이디 */
 	private String tmplatId = "";
 
@@ -37,36 +36,20 @@ public class TemplateInfVO extends SearchVO {
 	/** 템플릿 경로 */
 	private String tmplatCours = "";
 
+	/** 사용여부 */
+	private String useAt = "";
+
 	/** 탬플릿 구분코드 */
 	private String tmplatSeCode = "";
 
+	// helper
 	/** 템플릿 구분 코드명 */
 	private String tmplatSeCodeNm = "";
 
 	/** 구분 유형 */
 	private String typeFlag = "";
 
-	/** 사용여부 */
-	private String useAt = "";
-
-	/**
-	 * tmplatCours attribute를 리턴한다.
-	 * 
-	 * @return the tmplatCours
-	 */
-	public String getTmplatCours() {
-		return tmplatCours;
-	}
-	/**
-	 * tmplatCours attribute 값을 설정한다.
-	 * 
-	 * @param tmplatCours
-	 *            the tmplatCours to set
-	 */
-	public void setTmplatCours(String tmplatCours) {
-		this.tmplatCours = tmplatCours;
-	}
-
+	// domain
 	/**
 	 * tmplatId attribute를 리턴한다.
 	 * 
@@ -139,6 +122,25 @@ public class TemplateInfVO extends SearchVO {
 		this.useAt = useAt;
 	}
 
+	/**
+	 * tmplatCours attribute를 리턴한다.
+	 * 
+	 * @return the tmplatCours
+	 */
+	public String getTmplatCours() {
+		return tmplatCours;
+	}
+	/**
+	 * tmplatCours attribute 값을 설정한다.
+	 * 
+	 * @param tmplatCours
+	 *            the tmplatCours to set
+	 */
+	public void setTmplatCours(String tmplatCours) {
+		this.tmplatCours = tmplatCours;
+	}
+
+	// helper
 	/**
 	 * tmplatSeCodeNm attribute를 리턴한다.
 	 * 

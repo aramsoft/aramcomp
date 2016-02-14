@@ -23,8 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class BackupResultVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 백업결과ID */
 	private String backupResultId;
 	
@@ -37,15 +36,16 @@ public class BackupResultVO extends SearchVO {
 	/** 상태 */
 	private String sttus;
 	
+	/** 에러정보 */
+	private String errorInfo;
+
 	/** 실행시작시각 */
 	private String executBeginTime;
 	
 	/** 실행종료시각 */
 	private String executEndTime;
 	
-	/** 에러정보 */
-	private String errorInfo;
-
+	// helper
 	/** 백업작업명 */
 	private String backupOpertNm;
 	
@@ -58,6 +58,7 @@ public class BackupResultVO extends SearchVO {
 	/** 백업저장디렉토리 */
 	private String backupStreDrctry;
 
+	// domain
 	/**
 	 * @return the backupResultId
 	 */
@@ -115,6 +116,20 @@ public class BackupResultVO extends SearchVO {
 	}
 
 	/**
+	 * @return the errorInfo
+	 */
+	public String getErrorInfo() {
+		return errorInfo;
+	}
+	/**
+	 * @param errorInfo
+	 *            the errorInfo to set
+	 */
+	public void setErrorInfo(String errorInfo) {
+		this.errorInfo = errorInfo;
+	}
+
+	/**
 	 * @return the executBeginTime
 	 */
 	public String getExecutBeginTime() {
@@ -142,20 +157,7 @@ public class BackupResultVO extends SearchVO {
 		this.executEndTime = executEndTime;
 	}
 
-	/**
-	 * @return the errorInfo
-	 */
-	public String getErrorInfo() {
-		return errorInfo;
-	}
-	/**
-	 * @param errorInfo
-	 *            the errorInfo to set
-	 */
-	public void setErrorInfo(String errorInfo) {
-		this.errorInfo = errorInfo;
-	}
-
+	// helper
 	/**
 	 * @return the backupOpertNm
 	 */

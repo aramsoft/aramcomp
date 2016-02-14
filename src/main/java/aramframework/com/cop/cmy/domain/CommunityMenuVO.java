@@ -23,22 +23,18 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class CommunityMenuVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 대상 아이디 */
 	private String trgetId = "";
 
 	/** 메뉴번호 */
 	private int menuNo;
 
-	/** 새메뉴번호 */
-	private int newMenuNo;
-	
-	/** 메뉴별명 */
-	private String menuAlias;
-
 	/** 메뉴한글명 */
 	private String menuNm;
+
+	/** 프로그램파일명 */
+	private String progrmFileNm;
 
 	/** 메뉴설명 */
 	private String menuDc;
@@ -49,15 +45,20 @@ public class CommunityMenuVO extends SearchVO {
 	/** 관리자메뉴여부 */
 	private String mgrAt;
 
-	/** 프로그램파일명 */
-	private String progrmFileNm;
-
 	/** 바로가기 URL */
 	private String directUrl;
 
 	/** 상위메뉴여부 */
 	private String topMenuAt;
 
+	/** 메뉴별명 */
+	private String menuAlias;
+
+	// helper
+	/** 새메뉴번호 */
+	private int newMenuNo;
+	
+	// domain
 	/**
 	 * trgetId attribute를 리턴한다.
 	 * 
@@ -74,24 +75,6 @@ public class CommunityMenuVO extends SearchVO {
 	 */
 	public void setTrgetId(String trgetId) {
 		this.trgetId = trgetId;
-	}
-
-	/**
-	 * newMenuNo attribute를 리턴한다.
-	 * 
-	 * @return int
-	 */
-	public int getNewMenuNo() {
-		return newMenuNo;
-	}
-	/**
-	 * newMenuNo attribute 값을 설정한다.
-	 * 
-	 * @param newMenuNo
-	 *            int
-	 */
-	public void setNewMenuNo(int newMenuNo) {
-		this.newMenuNo = newMenuNo;
 	}
 
 	/**
@@ -113,24 +96,6 @@ public class CommunityMenuVO extends SearchVO {
 	}
 
 	/**
-	 * menuAlias attribute를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getMenuAlias() {
-		return menuAlias;
-	}
-	/**
-	 * menuAlias attribute 값을 설정한다.
-	 * 
-	 * @param menuAlias
-	 *            String
-	 */
-	public void setMenuAlias(String menuAlias) {
-		this.menuAlias = menuAlias;
-	}
-
-	/**
 	 * menuNm attribute를 리턴한다.
 	 * 
 	 * @return String
@@ -146,6 +111,24 @@ public class CommunityMenuVO extends SearchVO {
 	 */
 	public void setMenuNm(String menuNm) {
 		this.menuNm = menuNm;
+	}
+
+	/**
+	 * progrmFileNm attribute를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getProgrmFileNm() {
+		return progrmFileNm;
+	}
+	/**
+	 * progrmFileNm attribute 값을 설정한다.
+	 * 
+	 * @param progrmFileNm
+	 *            String
+	 */
+	public void setProgrmFileNm(String progrmFileNm) {
+		this.progrmFileNm = progrmFileNm;
 	}
 
 	/**
@@ -203,24 +186,6 @@ public class CommunityMenuVO extends SearchVO {
 	}
 
 	/**
-	 * progrmFileNm attribute를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getProgrmFileNm() {
-		return progrmFileNm;
-	}
-	/**
-	 * progrmFileNm attribute 값을 설정한다.
-	 * 
-	 * @param progrmFileNm
-	 *            String
-	 */
-	public void setProgrmFileNm(String progrmFileNm) {
-		this.progrmFileNm = progrmFileNm;
-	}
-
-	/**
 	 * directUrl attribute를 리턴한다.
 	 * 
 	 * @return String
@@ -254,6 +219,43 @@ public class CommunityMenuVO extends SearchVO {
 	 */
 	public void setTopMenuAt(String topMenuAt) {
 		this.topMenuAt = topMenuAt;
+	}
+
+	/**
+	 * menuAlias attribute를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getMenuAlias() {
+		return menuAlias;
+	}
+	/**
+	 * menuAlias attribute 값을 설정한다.
+	 * 
+	 * @param menuAlias
+	 *            String
+	 */
+	public void setMenuAlias(String menuAlias) {
+		this.menuAlias = menuAlias;
+	}
+
+	// helper
+	/**
+	 * newMenuNo attribute를 리턴한다.
+	 * 
+	 * @return int
+	 */
+	public int getNewMenuNo() {
+		return newMenuNo;
+	}
+	/**
+	 * newMenuNo attribute 값을 설정한다.
+	 * 
+	 * @param newMenuNo
+	 *            int
+	 */
+	public void setNewMenuNo(int newMenuNo) {
+		this.newMenuNo = newMenuNo;
 	}
 
 }

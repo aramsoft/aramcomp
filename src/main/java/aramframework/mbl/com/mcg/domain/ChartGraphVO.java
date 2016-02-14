@@ -27,36 +27,29 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class ChartGraphVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-	/**
-     * 순번
-     */
+	// domain
+	/** 순번    */
     int sn;
-    /**
-     * 회원 ID
-     */
+    
+    /** 회원 ID     */
     String mberId;
-    /**
-     * x축 값
-     */
+    
+    /** x축 값     */
     String xaxis;
-    /**
-     * y축 값
-     */
+    
+    /** y축 값     */
     int yaxis;
-    /**
-     * 범례명
-     */
+    
+    /** 범례명     */
     String lgdNm;
-    /**
-     * 생성 일시
-     */
+
+    /** 생성 일시    */
     String creatDt;
-    /**
-     * 수정 일시
-     */
+    
+    /** 수정 일시    */
     String updtDt;
 
+	// domain
     /**
      * 순번을 가져온다.
      * @return int 순번

@@ -23,17 +23,12 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class MenuSiteMapVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 메뉴번호 */
-	private int menuNo;
-
-	/* 사이트맵 */
-	/** 생성자ID **/
-	private String creatPersonId;
-
+	// domain
 	/** 맵생성ID */
 	private String mapCreatId;
+	
+	/** 생성자ID **/
+	private String creatPersonId;
 
 	/** 맵파일명 */
 	private String bndeFileNm;
@@ -41,7 +36,10 @@ public class MenuSiteMapVO extends SearchVO {
 	/** 맵파일경로 */
 	private String bndeFilePath;
 
-	/* 권한정보설정 */
+	// helper	
+	/** 메뉴번호 */
+	private int menuNo;
+
 	/** 권한코드 */
 	private String authorCode;
 
@@ -82,22 +80,23 @@ public class MenuSiteMapVO extends SearchVO {
 	/** tmp_Cmd */
 	private String tmpCmd;
 
+	// domain
 	/**
-	 * menuNo attribute를 리턴한다.
+	 * mapCreatId attribute를 리턴한다.
 	 * 
-	 * @return int
+	 * @return String
 	 */
-	public int getMenuNo() {
-		return menuNo;
+	public String getMapCreatId() {
+		return mapCreatId;
 	}
 	/**
-	 * menuNo attribute 값을 설정한다.
+	 * mapCreatId attribute 값을 설정한다.
 	 * 
-	 * @param menuNo
-	 *            int
+	 * @param mapCreatId
+	 *            String
 	 */
-	public void setMenuNo(int menuNo) {
-		this.menuNo = menuNo;
+	public void setMapCreatId(String mapCreatId) {
+		this.mapCreatId = mapCreatId;
 	}
 
 	/**
@@ -116,24 +115,6 @@ public class MenuSiteMapVO extends SearchVO {
 	 */
 	public void setCreatPersonId(String creatPersonId) {
 		this.creatPersonId = creatPersonId;
-	}
-
-	/**
-	 * mapCreatId attribute를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getMapCreatId() {
-		return mapCreatId;
-	}
-	/**
-	 * mapCreatId attribute 값을 설정한다.
-	 * 
-	 * @param mapCreatId
-	 *            String
-	 */
-	public void setMapCreatId(String mapCreatId) {
-		this.mapCreatId = mapCreatId;
 	}
 
 	/**
@@ -170,6 +151,25 @@ public class MenuSiteMapVO extends SearchVO {
 	 */
 	public void setBndeFilePath(String bndeFilePath) {
 		this.bndeFilePath = bndeFilePath;
+	}
+
+	// helper
+	/**
+	 * menuNo attribute를 리턴한다.
+	 * 
+	 * @return int
+	 */
+	public int getMenuNo() {
+		return menuNo;
+	}
+	/**
+	 * menuNo attribute 값을 설정한다.
+	 * 
+	 * @param menuNo
+	 *            int
+	 */
+	public void setMenuNo(int menuNo) {
+		this.menuNo = menuNo;
 	}
 
 	/**

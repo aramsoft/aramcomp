@@ -25,16 +25,15 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class KnoAppraisalVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 지식ID */
 	private String knoId;
 	
+	/** 지식유형코드 */
+	private String knoTypeCd;
+	
 	/** 소속조직ID */
 	private String orgnztId;
-	
-	/** 소속조직명 */
-	private String orgnztNm;
 	
 	/** 평가자ID */
 	private String speId;
@@ -42,39 +41,41 @@ public class KnoAppraisalVO extends SearchVO {
 	/** 사용자ID */
 	private String emplyrId;
 	
-	/** 사용자명 */
-	private String userNm;
-	
-	/** 지식유형코드 */
-	private String knoTypeCd;
-	
-	/** 지식유형명 */
-	private String knoTypeNm;
-	
 	/** 지식명 */
 	private String knoNm;
 	
 	/** 지식내용 */
 	private String knoCn;
 	
-	/** 지식평가 */
-	private String knoAps;
-	
-	/** 평가일자 */
-	private String appYmd = "";
-	
 	/** 개인지식공개여부 */
 	private String othbcAt;
 	
-	/** 등록자명 */
-	private String regstNm;
+	/** 지식평가 */
+	private String knoAps;
 	
 	/** 수집일자 */
 	private String colYmd = "";
 	
+	/** 평가일자 */
+	private String appYmd = "";
+	
 	/** 첨부파일ID */
 	private String atchFileId;
 	
+	// helper
+	/** 소속조직명 */
+	private String orgnztNm;
+	
+	/** 사용자명 */
+	private String userNm;
+	
+	/** 지식유형명 */
+	private String knoTypeNm;
+	
+	/** 등록자명 */
+	private String regstNm;
+	
+	// domain
 	/**
 	 * @return the knoId
 	 */
@@ -87,62 +88,6 @@ public class KnoAppraisalVO extends SearchVO {
 	 */
 	public void setKnoId(String knoId) {
 		this.knoId = knoId;
-	}
-
-	/**
-	 * @return the orgnztId
-	 */
-	public String getOrgnztId() {
-		return orgnztId;
-	}
-	/**
-	 * @param orgnztId
-	 *            the orgnztId to set
-	 */
-	public void setOrgnztId(String orgnztId) {
-		this.orgnztId = orgnztId;
-	}
-
-	/**
-	 * @return the orgnztNm
-	 */
-	public String getOrgnztNm() {
-		return orgnztNm;
-	}
-	/**
-	 * @param orgnztNm
-	 *            the orgnztNm to set
-	 */
-	public void setOrgnztNm(String orgnztNm) {
-		this.orgnztNm = orgnztNm;
-	}
-
-	/**
-	 * @return the emplyrId
-	 */
-	public String getEmplyrId() {
-		return emplyrId;
-	}
-	/**
-	 * @param emplyrId
-	 *            the emplyrId to set
-	 */
-	public void setEmplyrId(String emplyrId) {
-		this.emplyrId = emplyrId;
-	}
-
-	/**
-	 * @return the userNm
-	 */
-	public String getUserNm() {
-		return userNm;
-	}
-	/**
-	 * @param userNm
-	 *            the userNm to set
-	 */
-	public void setUserNm(String userNm) {
-		this.userNm = userNm;
 	}
 
 	/**
@@ -160,17 +105,45 @@ public class KnoAppraisalVO extends SearchVO {
 	}
 
 	/**
-	 * @return the knoTypeNm
+	 * @return the orgnztId
 	 */
-	public String getKnoTypeNm() {
-		return knoTypeNm;
+	public String getOrgnztId() {
+		return orgnztId;
 	}
 	/**
-	 * @param knoTypeNm
-	 *            the knoTypeNm to set
+	 * @param orgnztId
+	 *            the orgnztId to set
 	 */
-	public void setKnoTypeNm(String knoTypeNm) {
-		this.knoTypeNm = knoTypeNm;
+	public void setOrgnztId(String orgnztId) {
+		this.orgnztId = orgnztId;
+	}
+
+	/**
+	 * @return the speId
+	 */
+	public String getSpeId() {
+		return speId;
+	}
+	/**
+	 * @param speId
+	 *            the speId to set
+	 */
+	public void setSpeId(String speId) {
+		this.speId = speId;
+	}
+
+	/**
+	 * @return the emplyrId
+	 */
+	public String getEmplyrId() {
+		return emplyrId;
+	}
+	/**
+	 * @param emplyrId
+	 *            the emplyrId to set
+	 */
+	public void setEmplyrId(String emplyrId) {
+		this.emplyrId = emplyrId;
 	}
 
 	/**
@@ -202,34 +175,6 @@ public class KnoAppraisalVO extends SearchVO {
 	}
 
 	/**
-	 * @return the knoAps
-	 */
-	public String getKnoAps() {
-		return knoAps;
-	}
-	/**
-	 * @param knoAps
-	 *            the knoAps to set
-	 */
-	public void setKnoAps(String knoAps) {
-		this.knoAps = knoAps;
-	}
-
-	/**
-	 * @return the appYmd
-	 */
-	public String getAppYmd() {
-		return appYmd;
-	}
-	/**
-	 * @param appYmd
-	 *            the appYmd to set
-	 */
-	public void setAppYmd(String appYmd) {
-		this.appYmd = appYmd;
-	}
-
-	/**
 	 * @return the othbcAt
 	 */
 	public String getOthbcAt() {
@@ -244,17 +189,17 @@ public class KnoAppraisalVO extends SearchVO {
 	}
 
 	/**
-	 * @return the regstNm
+	 * @return the knoAps
 	 */
-	public String getRegstNm() {
-		return regstNm;
+	public String getKnoAps() {
+		return knoAps;
 	}
 	/**
-	 * @param regstNm
-	 *            the regstNm to set
+	 * @param knoAps
+	 *            the knoAps to set
 	 */
-	public void setRegstNm(String regstNm) {
-		this.regstNm = regstNm;
+	public void setKnoAps(String knoAps) {
+		this.knoAps = knoAps;
 	}
 
 	/**
@@ -272,6 +217,20 @@ public class KnoAppraisalVO extends SearchVO {
 	}
 
 	/**
+	 * @return the appYmd
+	 */
+	public String getAppYmd() {
+		return appYmd;
+	}
+	/**
+	 * @param appYmd
+	 *            the appYmd to set
+	 */
+	public void setAppYmd(String appYmd) {
+		this.appYmd = appYmd;
+	}
+
+	/**
 	 * @return the atchFileId
 	 */
 	public String getAtchFileId() {
@@ -285,18 +244,61 @@ public class KnoAppraisalVO extends SearchVO {
 		this.atchFileId = atchFileId;
 	}
 
+	// helper
 	/**
-	 * @return the speId
+	 * @return the orgnztNm
 	 */
-	public String getSpeId() {
-		return speId;
+	public String getOrgnztNm() {
+		return orgnztNm;
 	}
 	/**
-	 * @param speId
-	 *            the speId to set
+	 * @param orgnztNm
+	 *            the orgnztNm to set
 	 */
-	public void setSpeId(String speId) {
-		this.speId = speId;
+	public void setOrgnztNm(String orgnztNm) {
+		this.orgnztNm = orgnztNm;
+	}
+
+	/**
+	 * @return the userNm
+	 */
+	public String getUserNm() {
+		return userNm;
+	}
+	/**
+	 * @param userNm
+	 *            the userNm to set
+	 */
+	public void setUserNm(String userNm) {
+		this.userNm = userNm;
+	}
+
+	/**
+	 * @return the knoTypeNm
+	 */
+	public String getKnoTypeNm() {
+		return knoTypeNm;
+	}
+	/**
+	 * @param knoTypeNm
+	 *            the knoTypeNm to set
+	 */
+	public void setKnoTypeNm(String knoTypeNm) {
+		this.knoTypeNm = knoTypeNm;
+	}
+
+	/**
+	 * @return the regstNm
+	 */
+	public String getRegstNm() {
+		return regstNm;
+	}
+	/**
+	 * @param regstNm
+	 *            the regstNm to set
+	 */
+	public void setRegstNm(String regstNm) {
+		this.regstNm = regstNm;
 	}
 
 	/**

@@ -23,14 +23,14 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class CntcInsttVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 기관ID */
 	private String insttId = "";
 
 	/** 기관명 */
 	private String insttNm = "";
 
+	// domain
 	/**
 	 * insttId attribute 를 리턴한다.
 	 * 

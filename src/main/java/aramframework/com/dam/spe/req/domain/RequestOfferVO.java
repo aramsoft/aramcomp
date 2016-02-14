@@ -23,16 +23,12 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class RequestOfferVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 지식ID */
 	private String knoId;
 
 	/** 조직ID */
 	private String orgnztId;
-
-	/** 소속조직명 */
-	private String orgnztNm;
 
 	/** 전문가ID */
 	private String speId;
@@ -40,9 +36,6 @@ public class RequestOfferVO extends SearchVO {
 	/** 지식유형코드 */
 	private String knoTypeCd;
 	
-	/** 지식유형명 */
-	private String knoTypeNm;
-
 	/** 사용자ID */
 	private String emplyrId;
 
@@ -67,6 +60,14 @@ public class RequestOfferVO extends SearchVO {
 	/** 답변그룹번호 */
 	private int threadGroupNo = 0;
 
+	// helper
+	/** 소속조직명 */
+	private String orgnztNm;
+
+	/** 지식유형명 */
+	private String knoTypeNm;
+
+	// domain
 	/**
 	 * @return the knoId
 	 */
@@ -96,20 +97,6 @@ public class RequestOfferVO extends SearchVO {
 	}
 
 	/**
-	 * @return the orgnztNm
-	 */
-	public String getOrgnztNm() {
-		return orgnztNm;
-	}
-	/**
-	 * @param orgnztNm
-	 *            the orgnztNm to set
-	 */
-	public void setOrgnztNm(String orgnztNm) {
-		this.orgnztNm = orgnztNm;
-	}
-	
-	/**
 	 * @return the speId
 	 */
 	public String getSpeId() {
@@ -135,20 +122,6 @@ public class RequestOfferVO extends SearchVO {
 	 */
 	public void setKnoTypeCd(String knoTypeCd) {
 		this.knoTypeCd = knoTypeCd;
-	}
-
-	/**
-	 * @return the knoTypeNm
-	 */
-	public String getKnoTypeNm() {
-		return knoTypeNm;
-	}
-	/**
-	 * @param knoTypeNm
-	 *            the knoTypeNm to set
-	 */
-	public void setKnoTypeNm(String knoTypeNm) {
-		this.knoTypeNm = knoTypeNm;
 	}
 
 	/**
@@ -261,6 +234,35 @@ public class RequestOfferVO extends SearchVO {
 	 */
 	public void setThreadGroupNo(int threadGroupNo) {
 		this.threadGroupNo = threadGroupNo;
+	}
+
+	// helper
+	/**
+	 * @return the orgnztNm
+	 */
+	public String getOrgnztNm() {
+		return orgnztNm;
+	}
+	/**
+	 * @param orgnztNm
+	 *            the orgnztNm to set
+	 */
+	public void setOrgnztNm(String orgnztNm) {
+		this.orgnztNm = orgnztNm;
+	}
+	
+	/**
+	 * @return the knoTypeNm
+	 */
+	public String getKnoTypeNm() {
+		return knoTypeNm;
+	}
+	/**
+	 * @param knoTypeNm
+	 *            the knoTypeNm to set
+	 */
+	public void setKnoTypeNm(String knoTypeNm) {
+		this.knoTypeNm = knoTypeNm;
 	}
 
 }

@@ -27,8 +27,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class MmsTransInfoVO extends SearchVO {
     
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 순번 */
     private int sn;
 
@@ -41,9 +40,6 @@ public class MmsTransInfoVO extends SearchVO {
     /** 수신번호 */
     private String recptnNo;
 
-    /** 전송일시 */
-    private String trnsmisDt;
-    
     /** 메시지 제목 */
     private String mssageSj;
     
@@ -59,12 +55,16 @@ public class MmsTransInfoVO extends SearchVO {
     /** 전송결과명 */
     private String trnsmisResultNm;
 
+    /** 전송일시 */
+    private String trnsmisDt;
+    
     /** 전송확인일시 */
     private String trnsmisConfirmDt;
     
     /** 첨부파일 */
     private AttachFileVO attachFile = new AttachFileVO();
     
+    // domain
     /**
      * 순번을 가져온다.
      * @return int 순번
@@ -127,22 +127,6 @@ public class MmsTransInfoVO extends SearchVO {
      */
     public void setRecptnNo(String recptnNo) {
         this.recptnNo = recptnNo;
-    }
-
-    /**
-     * 전송일시를 가져온다.
-     * @return String 전송일시
-     */
-    public String getTrnsmisDt() {
-        return trnsmisDt;
-    }
-    /**
-     * 전송일시를 저장한다.
-     * 
-     * @param trnsmisDt
-     */
-    public void setTrnsmisDt(String trnsmisDt) {
-        this.trnsmisDt = trnsmisDt;
     }
 
     /**
@@ -223,6 +207,22 @@ public class MmsTransInfoVO extends SearchVO {
      */
     public void setTrnsmisResultNm(String trnsmisResultNm) {
         this.trnsmisResultNm = trnsmisResultNm;
+    }
+
+    /**
+     * 전송일시를 가져온다.
+     * @return String 전송일시
+     */
+    public String getTrnsmisDt() {
+        return trnsmisDt;
+    }
+    /**
+     * 전송일시를 저장한다.
+     * 
+     * @param trnsmisDt
+     */
+    public void setTrnsmisDt(String trnsmisDt) {
+        this.trnsmisDt = trnsmisDt;
     }
 
     /**

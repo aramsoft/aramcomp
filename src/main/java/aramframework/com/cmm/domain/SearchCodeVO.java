@@ -1,7 +1,5 @@
 package aramframework.com.cmm.domain;
 
-import java.io.Serializable;
-
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 /**
@@ -23,8 +21,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  * </pre>
  */
 
-@SuppressWarnings("serial")
-public class SearchCodeVO implements Serializable {
+public class SearchCodeVO {
 
 	/** 코드 ID */
 	private String codeId = "";

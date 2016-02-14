@@ -23,23 +23,20 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class AuthorVO extends SearchVO {
 
-	/**
-	 * serialVersionUID
-	 */
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 권한코드 */
 	private String authorCode;
-	
-	/** 권한등록일자 */
-	private String authorCreatDe;
-	
-	/** 권한코드설명 */
-	private String authorDc;
 	
 	/** 권한 명 */
 	private String authorNm;
 
+	/** 권한코드설명 */
+	private String authorDc;
+	
+	/** 권한등록일자 */
+	private String authorCreatDe;
+	
+	// domain	
 	/**
 	 * authorCode attribute 를 리턴한다.
 	 * 
@@ -59,21 +56,21 @@ public class AuthorVO extends SearchVO {
 	}
 
 	/**
-	 * authorCreatDe attribute 를 리턴한다.
+	 * authorNm attribute 를 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getAuthorCreatDe() {
-		return authorCreatDe;
+	public String getAuthorNm() {
+		return authorNm;
 	}
 	/**
-	 * authorCreatDe attribute 값을 설정한다.
+	 * authorNm attribute 값을 설정한다.
 	 * 
-	 * @param authorCreatDe
+	 * @param authorNm
 	 *            String
 	 */
-	public void setAuthorCreatDe(String authorCreatDe) {
-		this.authorCreatDe = authorCreatDe;
+	public void setAuthorNm(String authorNm) {
+		this.authorNm = authorNm;
 	}
 
 	/**
@@ -95,21 +92,21 @@ public class AuthorVO extends SearchVO {
 	}
 
 	/**
-	 * authorNm attribute 를 리턴한다.
+	 * authorCreatDe attribute 를 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getAuthorNm() {
-		return authorNm;
+	public String getAuthorCreatDe() {
+		return authorCreatDe;
 	}
 	/**
-	 * authorNm attribute 값을 설정한다.
+	 * authorCreatDe attribute 값을 설정한다.
 	 * 
-	 * @param authorNm
+	 * @param authorCreatDe
 	 *            String
 	 */
-	public void setAuthorNm(String authorNm) {
-		this.authorNm = authorNm;
+	public void setAuthorCreatDe(String authorCreatDe) {
+		this.authorCreatDe = authorCreatDe;
 	}
 
 }

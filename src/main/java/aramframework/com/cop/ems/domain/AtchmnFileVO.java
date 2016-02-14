@@ -27,14 +27,14 @@ public class AtchmnFileVO {
 	/** 파일연번 */
 	private String fileSn;
 
-	/** 원파일명 */
-	private String orignlFileNm;
+	/** 파일저장경로 */
+	private String fileStreCours;
 
 	/** 저장파일명 */
 	private String streFileNm;
 
-	/** 파일저장경로 */
-	private String fileStreCours;
+	/** 원파일명 */
+	private String orignlFileNm;
 
 	/** 파일확장자 */
 	private String fileExtsn;
@@ -82,21 +82,21 @@ public class AtchmnFileVO {
 	}
 
 	/**
-	 * orignlFileNm attribute 를 리턴한다.
+	 * fileStreCours attribute 를 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getOrignlFileNm() {
-		return orignlFileNm;
+	public String getFileStreCours() {
+		return fileStreCours;
 	}
 	/**
-	 * orignlFileNm attribute 값을 설정한다.
+	 * fileStreCours attribute 값을 설정한다.
 	 * 
-	 * @param orignlFileNm
+	 * @param fileStreCours
 	 *            String
 	 */
-	public void setOrignlFileNm(String orignlFileNm) {
-		this.orignlFileNm = orignlFileNm;
+	public void setFileStreCours(String fileStreCours) {
+		this.fileStreCours = fileStreCours;
 	}
 
 	/**
@@ -118,21 +118,21 @@ public class AtchmnFileVO {
 	}
 
 	/**
-	 * fileStreCours attribute 를 리턴한다.
+	 * orignlFileNm attribute 를 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getFileStreCours() {
-		return fileStreCours;
+	public String getOrignlFileNm() {
+		return orignlFileNm;
 	}
 	/**
-	 * fileStreCours attribute 값을 설정한다.
+	 * orignlFileNm attribute 값을 설정한다.
 	 * 
-	 * @param fileStreCours
+	 * @param orignlFileNm
 	 *            String
 	 */
-	public void setFileStreCours(String fileStreCours) {
-		this.fileStreCours = fileStreCours;
+	public void setOrignlFileNm(String orignlFileNm) {
+		this.orignlFileNm = orignlFileNm;
 	}
 
 	/**

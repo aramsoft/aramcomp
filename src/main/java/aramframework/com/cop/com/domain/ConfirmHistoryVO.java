@@ -25,38 +25,38 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class ConfirmHistoryVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 승인일 */
-	private String confmDe = "";
-
-	/** 승인자 아이디 */
-	private String confmerId = "";
-
+	// domain
 	/** 확인구분코드 */
 	private int confmNumber = 0;
 
 	/** 승인요청자 아이디 */
 	private String confmRqesterId = "";
 
-	/** 승인상태코드 */
-	private String confmSttusCode = "";
+	/** 승인자 아이디 */
+	private String confmerId = "";
+
+	/** 승인일 */
+	private String confmDe = "";
 
 	/** 승인유형코드 */
 	private String confmTyCode = "";
 
-	/** 작업 아이디 */
-	private String opertId = "";
+	/** 승인상태코드 */
+	private String confmSttusCode = "";
 
 	/** 작업유형코드 */
 	private String opertTyCode = "";
 
-	/** 대상업무 아이디 */
-	private String trgetJobId = "";
+	/** 작업 아이디 */
+	private String opertId = "";
 
 	/** 대상업무유형코드 */
 	private String trgetJobTyCode = "";
 
+	/** 대상업무 아이디 */
+	private String trgetJobId = "";
+
+	// helper
 	/** 확인요청자명 */
 	private String confmRqesterNm = "";
 
@@ -72,42 +72,7 @@ public class ConfirmHistoryVO extends SearchVO {
 	/** 처리구분 코드명 */
 	private String opertTyCodeNm = "";
 
-	/**
-	 * confmDe attribute를 리턴한다.
-	 * 
-	 * @return the confmDe
-	 */
-	public String getConfmDe() {
-		return confmDe;
-	}
-	/**
-	 * confmDe attribute 값을 설정한다.
-	 * 
-	 * @param confmDe
-	 *            the confmDe to set
-	 */
-	public void setConfmDe(String confmDe) {
-		this.confmDe = confmDe;
-	}
-
-	/**
-	 * confmerId attribute를 리턴한다.
-	 * 
-	 * @return the confmerId
-	 */
-	public String getConfmerId() {
-		return confmerId;
-	}
-	/**
-	 * confmerId attribute 값을 설정한다.
-	 * 
-	 * @param confmerId
-	 *            the confmerId to set
-	 */
-	public void setConfmerId(String confmerId) {
-		this.confmerId = confmerId;
-	}
-
+	// domain
 	/**
 	 * confmNumber attribute를 리턴한다.
 	 * 
@@ -145,21 +110,39 @@ public class ConfirmHistoryVO extends SearchVO {
 	}
 
 	/**
-	 * confmSttusCode attribute를 리턴한다.
+	 * confmerId attribute를 리턴한다.
 	 * 
-	 * @return the confmSttusCode
+	 * @return the confmerId
 	 */
-	public String getConfmSttusCode() {
-		return confmSttusCode;
+	public String getConfmerId() {
+		return confmerId;
 	}
 	/**
-	 * confmSttusCode attribute 값을 설정한다.
+	 * confmerId attribute 값을 설정한다.
 	 * 
-	 * @param confmSttusCode
-	 *            the confmSttusCode to set
+	 * @param confmerId
+	 *            the confmerId to set
 	 */
-	public void setConfmSttusCode(String confmSttusCode) {
-		this.confmSttusCode = confmSttusCode;
+	public void setConfmerId(String confmerId) {
+		this.confmerId = confmerId;
+	}
+
+	/**
+	 * confmDe attribute를 리턴한다.
+	 * 
+	 * @return the confmDe
+	 */
+	public String getConfmDe() {
+		return confmDe;
+	}
+	/**
+	 * confmDe attribute 값을 설정한다.
+	 * 
+	 * @param confmDe
+	 *            the confmDe to set
+	 */
+	public void setConfmDe(String confmDe) {
+		this.confmDe = confmDe;
 	}
 
 	/**
@@ -181,21 +164,21 @@ public class ConfirmHistoryVO extends SearchVO {
 	}
 
 	/**
-	 * opertId attribute를 리턴한다.
+	 * confmSttusCode attribute를 리턴한다.
 	 * 
-	 * @return the opertId
+	 * @return the confmSttusCode
 	 */
-	public String getOpertId() {
-		return opertId;
+	public String getConfmSttusCode() {
+		return confmSttusCode;
 	}
 	/**
-	 * opertId attribute 값을 설정한다.
+	 * confmSttusCode attribute 값을 설정한다.
 	 * 
-	 * @param opertId
-	 *            the opertId to set
+	 * @param confmSttusCode
+	 *            the confmSttusCode to set
 	 */
-	public void setOpertId(String opertId) {
-		this.opertId = opertId;
+	public void setConfmSttusCode(String confmSttusCode) {
+		this.confmSttusCode = confmSttusCode;
 	}
 
 	/**
@@ -217,21 +200,21 @@ public class ConfirmHistoryVO extends SearchVO {
 	}
 
 	/**
-	 * trgetJobId attribute를 리턴한다.
+	 * opertId attribute를 리턴한다.
 	 * 
-	 * @return the trgetJobId
+	 * @return the opertId
 	 */
-	public String getTrgetJobId() {
-		return trgetJobId;
+	public String getOpertId() {
+		return opertId;
 	}
 	/**
-	 * trgetJobId attribute 값을 설정한다.
+	 * opertId attribute 값을 설정한다.
 	 * 
-	 * @param trgetJobId
-	 *            the trgetJobId to set
+	 * @param opertId
+	 *            the opertId to set
 	 */
-	public void setTrgetJobId(String trgetJobId) {
-		this.trgetJobId = trgetJobId;
+	public void setOpertId(String opertId) {
+		this.opertId = opertId;
 	}
 
 	/**
@@ -252,6 +235,25 @@ public class ConfirmHistoryVO extends SearchVO {
 		this.trgetJobTyCode = trgetJobTyCode;
 	}
 
+	/**
+	 * trgetJobId attribute를 리턴한다.
+	 * 
+	 * @return the trgetJobId
+	 */
+	public String getTrgetJobId() {
+		return trgetJobId;
+	}
+	/**
+	 * trgetJobId attribute 값을 설정한다.
+	 * 
+	 * @param trgetJobId
+	 *            the trgetJobId to set
+	 */
+	public void setTrgetJobId(String trgetJobId) {
+		this.trgetJobId = trgetJobId;
+	}
+
+	// helper
 	/**
 	 * confmRqesterNm attribute를 리턴한다.
 	 * 

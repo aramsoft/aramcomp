@@ -23,10 +23,12 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class SndngMailVO extends SearchVO {
 	
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 메세지ID */
 	private String mssageId;
+
+	/** 메일내용 */
+	private String emailCn;
 
 	/** 발신자 */
 	private String dsptchPerson;
@@ -40,15 +42,13 @@ public class SndngMailVO extends SearchVO {
 	/** 발송결과코드 */
 	private String sndngResultCode;
 
-	/** 메일내용 */
-	private String emailCn;
+	/** 발신일자 */
+	private String sndngDe;
 
 	/** 첨부파일ID */
 	private String atchFileId;
 
-	/** 발신일자 */
-	private String sndngDe;
-
+	// helper
 	/** 메세지ID 리스트 */
 	private String messageIdList;
 
@@ -61,6 +61,7 @@ public class SndngMailVO extends SearchVO {
 	/** 팝업링크여부(Y/N) */
 	private String link;
 
+	// domain
 	/**
 	 * mssageId attribute 를 리턴한다.
 	 * @return String
@@ -74,6 +75,21 @@ public class SndngMailVO extends SearchVO {
 	 */
 	public void setMssageId(String mssageId) {
 		this.mssageId = mssageId;
+	}
+
+	/**
+	 * emailCn attribute 를 리턴한다.
+	 * @return String
+	 */
+	public String getEmailCn() {
+		return emailCn;
+	}
+	/**
+	 * emailCn attribute 값을 설정한다.
+	 * @param emailCn String
+	 */
+	public void setEmailCn(String emailCn) {
+		this.emailCn = emailCn;
 	}
 
 	/**
@@ -137,18 +153,18 @@ public class SndngMailVO extends SearchVO {
 	}
 
 	/**
-	 * emailCn attribute 를 리턴한다.
+	 * sndngDe attribute 를 리턴한다.
 	 * @return String
 	 */
-	public String getEmailCn() {
-		return emailCn;
+	public String getSndngDe() {
+		return sndngDe;
 	}
 	/**
-	 * emailCn attribute 값을 설정한다.
-	 * @param emailCn String
+	 * sndngDe attribute 값을 설정한다.
+	 * @param sndngDe String
 	 */
-	public void setEmailCn(String emailCn) {
-		this.emailCn = emailCn;
+	public void setSndngDe(String sndngDe) {
+		this.sndngDe = sndngDe;
 	}
 
 	/**
@@ -166,21 +182,7 @@ public class SndngMailVO extends SearchVO {
 		this.atchFileId = atchFileId;
 	}
 
-	/**
-	 * sndngDe attribute 를 리턴한다.
-	 * @return String
-	 */
-	public String getSndngDe() {
-		return sndngDe;
-	}
-	/**
-	 * sndngDe attribute 값을 설정한다.
-	 * @param sndngDe String
-	 */
-	public void setSndngDe(String sndngDe) {
-		this.sndngDe = sndngDe;
-	}
-
+	// helper
 	/**
 	 * messageIdList attribute 를 리턴한다.
 	 * @return String

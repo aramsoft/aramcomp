@@ -28,8 +28,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 public class SmsVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 문자메시지 ID */
 	private String smsId = "";
 
@@ -39,11 +38,12 @@ public class SmsVO extends SearchVO {
 	/** 전송 내용 */
 	private String trnsmitCn = "";
 
-	/** 수신 전화번호 개수 */
-	private int recptnCnt = 0;
-
+	// helper
 	/** 유일 아이디 */
 	private String uniqId = "";
+
+	/** 수신 전화번호 개수 */
+	private int recptnCnt = 0;
 
 	/** 수신 정보 List */
 	private List<EgovMap> recptn = null;
@@ -51,6 +51,7 @@ public class SmsVO extends SearchVO {
 	/** 수전 전화번호 배열 */
 	private String[] recptnTelno = null;
 
+	// domain
 	/**
 	 * smsId attribute를 리턴한다.
 	 * 
@@ -105,24 +106,7 @@ public class SmsVO extends SearchVO {
 		this.trnsmitCn = trnsmitCn;
 	}
 
-	/**
-	 * recptn attribute를 리턴한다.
-	 * 
-	 * @return the recptn
-	 */
-	public List<EgovMap> getRecptn() {
-		return recptn;
-	}
-	/**
-	 * recptn attribute 값을 설정한다.
-	 * 
-	 * @param recptn
-	 *            the recptn to set
-	 */
-	public void setRecptn(List<EgovMap> recptn) {
-		this.recptn = recptn;
-	}
-
+	// helper
 	/**
 	 * uniqId attribute를 리턴한다.
 	 * 
@@ -157,6 +141,24 @@ public class SmsVO extends SearchVO {
 	 */
 	public void setRecptnCnt(int recptnCnt) {
 		this.recptnCnt = recptnCnt;
+	}
+
+	/**
+	 * recptn attribute를 리턴한다.
+	 * 
+	 * @return the recptn
+	 */
+	public List<EgovMap> getRecptn() {
+		return recptn;
+	}
+	/**
+	 * recptn attribute 값을 설정한다.
+	 * 
+	 * @param recptn
+	 *            the recptn to set
+	 */
+	public void setRecptn(List<EgovMap> recptn) {
+		this.recptn = recptn;
 	}
 
 	/**

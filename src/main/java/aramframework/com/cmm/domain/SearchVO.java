@@ -1,11 +1,8 @@
 package aramframework.com.cmm.domain;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlTransient;
-
-import org.apache.commons.lang.builder.ToStringBuilder;
 
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
@@ -28,14 +25,8 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
  * </pre>
  */
 
-public class SearchVO implements Serializable {
+public class SearchVO {
 
-	private static final long serialVersionUID = -6062858939907510631L;
-
-	// rest 관련
-	// path id for rest
-	protected String pathId = "";
-	
 	// search 관련
 	/** 검색조건 */
 	private String searchCondition = "";
@@ -70,7 +61,11 @@ public class SearchVO implements Serializable {
 	/** 검색KeywordTo */
 	private String searchKeywordTo = "";
 
-	// DB table 관련
+	// rest 관련
+	// path id for rest
+	protected String pathId = "";
+	
+	// DB 공통
 	/** 최초등록자 아이디 */
 	private String frstRegisterId = "";
 
@@ -99,26 +94,6 @@ public class SearchVO implements Serializable {
 		this.lastIndex = paginationInfo.getLastRecordIndex();
 	}
 	
-	/**
-	 * pathId attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getPathId() {
-		return pathId;
-	}
-	/**
-	 * pathId attribute 값을 설정한다.
-	 * 
-	 * @param pathId
-	 *            String
-	 */
-/*
-	@XmlTransient 
-	public void setPathId(String pathId) {
-		this.pathId = pathId;
-	}
-*/
 	/**
 	 * searchCondition attribute 값을 리턴한다.
 	 * 
@@ -328,6 +303,27 @@ public class SearchVO implements Serializable {
 		this.searchKeywordTo = searchKeywordTo;
 	}
 
+	// common
+	/**
+	 * pathId attribute 값을 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getPathId() {
+		return pathId;
+	}
+	/**
+	 * pathId attribute 값을 설정한다.
+	 * 
+	 * @param pathId
+	 *            String
+	 */
+/*
+	@XmlTransient 
+	public void setPathId(String pathId) {
+		this.pathId = pathId;
+	}
+*/
 	/**
 	 * frstRegisterId attribute를 리턴한다.
 	 * 
@@ -434,10 +430,6 @@ public class SearchVO implements Serializable {
 	 */
 	public void setLastUpdusrPnttm(Date lastUpdusrPnttm) {
 		this.lastUpdusrPnttm = lastUpdusrPnttm;
-	}
-
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
 	}
 
 }

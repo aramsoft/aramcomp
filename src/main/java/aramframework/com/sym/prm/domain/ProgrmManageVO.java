@@ -23,8 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class ProgrmManageVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 프로그램파일명 */
 	private String progrmFileNm;
 	
@@ -34,18 +33,20 @@ public class ProgrmManageVO extends SearchVO {
 	/** 프로그램한글명 */
 	private String progrmKoreanNm;
 	
-	/** URL */
-	private String url;
-	
 	/** 프로그램설명 */
 	private String progrmDc;
+	
+	/** URL */
+	private String url;
 	
 	/** 커뮤니티 사용 여부 */
 	private String cmmntyUseAt;
 
+	// helper
 	/** 커뮤니티 사용 여부 검색 */
 	private String searchUseAt;
 
+	// domain
 	/**
 	 * progrmFileNm attribute를 리턴한다.
 	 * 
@@ -101,24 +102,6 @@ public class ProgrmManageVO extends SearchVO {
 	}
 
 	/**
-	 * url attribute를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getURL() {
-		return url;
-	}
-	/**
-	 * URL attribute 값을 설정한다.
-	 * 
-	 * @param URL
-	 *            String
-	 */
-	public void setURL(String URL) {
-		this.url = URL;
-	}
-
-	/**
 	 * progrmDc attribute를 리턴한다.
 	 * 
 	 * @return String
@@ -134,6 +117,24 @@ public class ProgrmManageVO extends SearchVO {
 	 */
 	public void setProgrmDc(String progrmDc) {
 		this.progrmDc = progrmDc;
+	}
+
+	/**
+	 * url attribute를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getURL() {
+		return url;
+	}
+	/**
+	 * URL attribute 값을 설정한다.
+	 * 
+	 * @param URL
+	 *            String
+	 */
+	public void setURL(String URL) {
+		this.url = URL;
 	}
 
 	/**
@@ -154,6 +155,7 @@ public class ProgrmManageVO extends SearchVO {
 		this.cmmntyUseAt = cmmntyUseAt;
 	}
 
+	// helper
 	/**
 	 * searchUseAt attribute를 리턴한다.
 	 * 

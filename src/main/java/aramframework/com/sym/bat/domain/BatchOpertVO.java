@@ -23,8 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class BatchOpertVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 배치작업ID */
 	private String batchOpertId;
 	
@@ -49,6 +48,7 @@ public class BatchOpertVO extends SearchVO {
 	/** 사용여부 */
 	private String useAt;
 	
+	// domain
 	/**
 	 * 배치작업ID를 리턴한다.
 	 * 

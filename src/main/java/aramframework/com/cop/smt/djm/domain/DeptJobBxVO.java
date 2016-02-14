@@ -25,16 +25,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class DeptJobBxVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 표시순서 변경 조건 */
-	private String ordrCnd = "";
-
-	/** 팝업 조건 */
-	private String popupCnd = "";
-
-	//  Domain
-	
+	//  domain
 	/** 부서업무함 ID	 */
 	private String deptJobBxId;
 
@@ -44,26 +35,20 @@ public class DeptJobBxVO extends SearchVO {
 	/** 부서 ID	 */
 	private String deptId;
 
-	/** 부서명	 */
-	private String deptNm;
-
 	/** 표시순서	 */
 	private int indictOrdr;
 
-	public String getOrdrCnd() {
-		return ordrCnd;
-	}
-	public void setOrdrCnd(String ordrCnd) {
-		this.ordrCnd = ordrCnd;
-	}
+	// helper
+	/** 부서명	 */
+	private String deptNm;
 
-	public String getPopupCnd() {
-		return popupCnd;
-	}
-	public void setPopupCnd(String popupCnd) {
-		this.popupCnd = popupCnd;
-	}
+	/** 표시순서 변경 조건 */
+	private String ordrCnd = "";
 
+	/** 팝업 조건 */
+	private String popupCnd = "";
+
+	// domain
 	public String getDeptJobBxId() {
 		return deptJobBxId;
 	}
@@ -85,6 +70,14 @@ public class DeptJobBxVO extends SearchVO {
 		this.deptId = deptId;
 	}
 
+	public int getIndictOrdr() {
+		return indictOrdr;
+	}
+	public void setIndictOrdr(int indictOrdr) {
+		this.indictOrdr = indictOrdr;
+	}
+
+	// helper
 	public String getDeptNm() {
 		return deptNm;
 	}
@@ -92,11 +85,18 @@ public class DeptJobBxVO extends SearchVO {
 		this.deptNm = deptNm;
 	}
 
-	public int getIndictOrdr() {
-		return indictOrdr;
+	public String getOrdrCnd() {
+		return ordrCnd;
 	}
-	public void setIndictOrdr(int indictOrdr) {
-		this.indictOrdr = indictOrdr;
+	public void setOrdrCnd(String ordrCnd) {
+		this.ordrCnd = ordrCnd;
+	}
+
+	public String getPopupCnd() {
+		return popupCnd;
+	}
+	public void setPopupCnd(String popupCnd) {
+		this.popupCnd = popupCnd;
 	}
 
 	/**

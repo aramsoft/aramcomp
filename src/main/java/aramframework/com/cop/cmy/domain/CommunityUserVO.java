@@ -25,32 +25,33 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class CommunityUserVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 커뮤니티아이디 */
 	private String cmmntyId = "";
-
-	/** 관리자여부 */
-	private String mngrAt = "";
-
-	/** 탈퇴일 */
-	private String secsnDe = "";
-
-	/** 가입일 */
-	private String sbscrbDe = "";
-
-	/** 사용여부 */
-	private String useAt = "";
-
-	/** 인증여부 */
-	private String authenticatedAt = "";
 
 	/** 사용자 아이디 */
 	private String emplyrId = "";
 
+	/** 관리자여부 */
+	private String mngrAt = "";
+
+	/** 가입일 */
+	private String sbscrbDe = "";
+
+	/** 탈퇴일 */
+	private String secsnDe = "";
+
+	/** 사용여부 */
+	private String useAt = "";
+
+	// helper
+	/** 인증여부 */
+	private String authenticatedAt = "";
+
 	/** 사용자명 */
 	private String emplyrNm = "";
 
+	// domain
 	/**
 	 * cmmntyId attribute를 리턴한다.
 	 * 
@@ -67,6 +68,24 @@ public class CommunityUserVO extends SearchVO {
 	 */
 	public void setCmmntyId(String cmmntyId) {
 		this.cmmntyId = cmmntyId;
+	}
+
+	/**
+	 * emplyrId attribute를 리턴한다.
+	 * 
+	 * @return the emplyrId
+	 */
+	public String getEmplyrId() {
+		return emplyrId;
+	}
+	/**
+	 * emplyrId attribute 값을 설정한다.
+	 * 
+	 * @param emplyrId
+	 *            the emplyrId to set
+	 */
+	public void setEmplyrId(String emplyrId) {
+		this.emplyrId = emplyrId;
 	}
 
 	/**
@@ -88,24 +107,6 @@ public class CommunityUserVO extends SearchVO {
 	}
 
 	/**
-	 * secsnDe attribute를 리턴한다.
-	 * 
-	 * @return the secsnDe
-	 */
-	public String getSecsnDe() {
-		return secsnDe;
-	}
-	/**
-	 * secsnDe attribute 값을 설정한다.
-	 * 
-	 * @param secsnDe
-	 *            the secsnDe to set
-	 */
-	public void setSecsnDe(String secsnDe) {
-		this.secsnDe = secsnDe;
-	}
-
-	/**
 	 * sbscrbDe attribute를 리턴한다.
 	 * 
 	 * @return the sbscrbDe
@@ -121,6 +122,24 @@ public class CommunityUserVO extends SearchVO {
 	 */
 	public void setSbscrbDe(String sbscrbDe) {
 		this.sbscrbDe = sbscrbDe;
+	}
+
+	/**
+	 * secsnDe attribute를 리턴한다.
+	 * 
+	 * @return the secsnDe
+	 */
+	public String getSecsnDe() {
+		return secsnDe;
+	}
+	/**
+	 * secsnDe attribute 값을 설정한다.
+	 * 
+	 * @param secsnDe
+	 *            the secsnDe to set
+	 */
+	public void setSecsnDe(String secsnDe) {
+		this.secsnDe = secsnDe;
 	}
 
 	/**
@@ -141,6 +160,7 @@ public class CommunityUserVO extends SearchVO {
 		this.useAt = useAt;
 	}
 
+	// helper
 	/**
 	 * authenticatedAt attribute를 리턴한다.
 	 * 
@@ -157,24 +177,6 @@ public class CommunityUserVO extends SearchVO {
 	 */
 	public void setAuthenticatedAt(String authenticatedAt) {
 		this.authenticatedAt = authenticatedAt;
-	}
-
-	/**
-	 * emplyrId attribute를 리턴한다.
-	 * 
-	 * @return the emplyrId
-	 */
-	public String getEmplyrId() {
-		return emplyrId;
-	}
-	/**
-	 * emplyrId attribute 값을 설정한다.
-	 * 
-	 * @param emplyrId
-	 *            the emplyrId to set
-	 */
-	public void setEmplyrId(String emplyrId) {
-		this.emplyrId = emplyrId;
 	}
 
 	/**

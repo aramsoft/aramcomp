@@ -27,52 +27,41 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class DeviceIdentVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-	/**
-     * 순번
-     */
+	// domain
+	/** 순번     */
     private int sn;
-    /**
-     * 회원ID
-     */
+    
+    /** 회원ID    */
     private String mberId;
-    /**
-     * User-Agent 정보
-     */
+    
+    /** User-Agent 정보     */
     private String uagentInfo;
-    /**
-     * 브라우저코드
-     */
+ 
+    /** 브라우저코드     */
     private String browserCode;
-    /**
-     * 브라우저명
-     */
+    
+   /** 브라우저명     */
     private String browserNm;
-    /**
-     * 운영체제코드
-     */
+    
+   /** 운영체제코드     */
     private String osCode;
-    /**
-     * 운영체제명
-     */
+    
+    /** 운영체제명     */
     private String osNm;
-    /**
-     * 최신구분코드
-     */
+    
+    /** 최신구분코드     */
     private String recentCode;
-    /**
-     * 최신구분명
-     */
+    
+    /** 최신구분명     */
     private String recentNm;
-    /**
-     * 생성 일시
-     */
+    
+    /** 생성 일시     */
     private String creatDt;
-    /**
-     * 수정일시
-     */
+    
+    /** 수정일시     */
     private String updtDt;
 
+	// domain
     /**
      * 순번을 가져온다.
      * @return int 순번

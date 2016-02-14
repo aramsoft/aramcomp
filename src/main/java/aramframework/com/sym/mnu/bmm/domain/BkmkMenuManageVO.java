@@ -23,10 +23,12 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class BkmkMenuManageVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 메뉴 아이디 */
 	private String menuId = "";
+
+	/** 등록자 아이디 */
+	private String userId = "";
 
 	/** 메뉴명 */
 	private String menuNm = "";
@@ -34,12 +36,11 @@ public class BkmkMenuManageVO extends SearchVO {
 	/** 메뉴 URL */
 	private String progrmStrePath = "";
 
-	/** 등록자 아이디 */
-	private String userId = "";
-
+	// helper
 	/** 메뉴 설명 */
 	private String menuDc = "";
 
+	// domain
 	/**
 	 * menuId attribute를 리턴한다.
 	 * 
@@ -56,6 +57,24 @@ public class BkmkMenuManageVO extends SearchVO {
 	 */
 	public void setMenuId(String menuId) {
 		this.menuId = menuId;
+	}
+
+	/**
+	 * userId attribute를 리턴한다.
+	 * 
+	 * @return the userId
+	 */
+	public String getUserId() {
+		return userId;
+	}
+	/**
+	 * userId attribute 값을 설정한다.
+	 * 
+	 * @param userId
+	 *            the userId to set
+	 */
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	/**
@@ -94,24 +113,7 @@ public class BkmkMenuManageVO extends SearchVO {
 		this.progrmStrePath = progrmStrePath;
 	}
 
-	/**
-	 * userId attribute를 리턴한다.
-	 * 
-	 * @return the userId
-	 */
-	public String getUserId() {
-		return userId;
-	}
-	/**
-	 * userId attribute 값을 설정한다.
-	 * 
-	 * @param userId
-	 *            the userId to set
-	 */
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
+	// helper
 	/**
 	 * menuDc attribute를 리턴한다.
 	 * 

@@ -25,26 +25,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class WikMnthngReprtVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 사용자ID조회조건 */
-	private String searchId = "";
-
-	/** 일자 조회조건 */
-	private String searchDe = "";
-
-	/** 시작일자 조회조건 */
-	private String searchBgnDe = "";
-
-	/** 종료일자 조회조건 */
-	private String searchEndDe = "";
-
-	/** 주간/월간보고서 상태 조회조건 */
-	private String searchSttus = "";
-
-	/** 보고유형 조회조건 */
-	private String searchSe = "";
-
+	// domain
 	/** 보고서ID */
 	private String reprtId;
 
@@ -60,20 +41,8 @@ public class WikMnthngReprtVO extends SearchVO {
 	/** 작성자ID */
 	private String wrterId;
 
-	/** 작성자명 */
-	private String wrterNm;
-	
-	/*** 작성자직급명  */
-	private String wrterClsfNm;
-
 	/** 보고자ID */
 	private String reportrId;
-
-	/** 보고자명 */
-	private String reportrNm;
-
-	/** 보고자직급명 */
-	private String reportrClsfNm;
 
 	/** 보고시작일자 */
 	private String reprtBgnDe = "";
@@ -96,51 +65,42 @@ public class WikMnthngReprtVO extends SearchVO {
 	/** 승인일시 */
 	private String confmDt;
 
+	// helper
+	/** 작성자명 */
+	private String wrterNm;
+	
+	/*** 작성자직급명  */
+	private String wrterClsfNm;
+
+	/** 보고자명 */
+	private String reportrNm;
+
+	/** 보고자직급명 */
+	private String reportrClsfNm;
+
 	/*** 보고서상태 */
 	private String reprtSttus;
 
-	public String getSearchId() {
-		return searchId;
-	}
-	public void setSearchId(String searchId) {
-		this.searchId = searchId;
-	}
+	// 검색조건
+	/** 사용자ID조회조건 */
+	private String searchId = "";
 
-	public String getSearchDe() {
-		return searchDe;
-	}
-	public void setSearchDe(String searchDe) {
-		this.searchDe = searchDe;
-	}
+	/** 일자 조회조건 */
+	private String searchDe = "";
 
-	public String getSearchBgnDe() {
-		return searchBgnDe;
-	}
-	public void setSearchBgnDe(String searchBgnDe) {
-		this.searchBgnDe = searchBgnDe;
-	}
+	/** 시작일자 조회조건 */
+	private String searchBgnDe = "";
 
-	public String getSearchEndDe() {
-		return searchEndDe;
-	}
-	public void setSearchEndDe(String searchEndDe) {
-		this.searchEndDe = searchEndDe;
-	}
+	/** 종료일자 조회조건 */
+	private String searchEndDe = "";
 
-	public String getSearchSttus() {
-		return searchSttus;
-	}
-	public void setSearchSttus(String searchSttus) {
-		this.searchSttus = searchSttus;
-	}
+	/** 주간/월간보고서 상태 조회조건 */
+	private String searchSttus = "";
 
-	public String getSearchSe() {
-		return searchSe;
-	}
-	public void setSearchSe(String searchSe) {
-		this.searchSe = searchSe;
-	}
+	/** 보고유형 조회조건 */
+	private String searchSe = "";
 
+	// domain
 	public String getReprtId() {
 		return reprtId;
 	}
@@ -176,39 +136,11 @@ public class WikMnthngReprtVO extends SearchVO {
 		this.wrterId = wrterId;
 	}
 
-	public String getWrterNm() {
-		return wrterNm;
-	}
-	public void setWrterNm(String wrterNm) {
-		this.wrterNm = wrterNm;
-	}
-
-	public String getWrterClsfNm() {
-		return wrterClsfNm;
-	}
-	public void setWrterClsfNm(String wrterClsfNm) {
-		this.wrterClsfNm = wrterClsfNm;
-	}
-
 	public String getReportrId() {
 		return reportrId;
 	}
 	public void setReportrId(String reportrId) {
 		this.reportrId = reportrId;
-	}
-
-	public String getReportrNm() {
-		return reportrNm;
-	}
-	public void setReportrNm(String reportrNm) {
-		this.reportrNm = reportrNm;
-	}
-
-	public String getReportrClsfNm() {
-		return reportrClsfNm;
-	}
-	public void setReportrClsfNm(String reportrClsfNm) {
-		this.reportrClsfNm = reportrClsfNm;
 	}
 
 	public String getReprtBgnDe() {
@@ -260,11 +192,82 @@ public class WikMnthngReprtVO extends SearchVO {
 		this.confmDt = confmDt;
 	}
 
+	// helper
+	public String getWrterNm() {
+		return wrterNm;
+	}
+	public void setWrterNm(String wrterNm) {
+		this.wrterNm = wrterNm;
+	}
+
+	public String getWrterClsfNm() {
+		return wrterClsfNm;
+	}
+	public void setWrterClsfNm(String wrterClsfNm) {
+		this.wrterClsfNm = wrterClsfNm;
+	}
+
+	public String getReportrNm() {
+		return reportrNm;
+	}
+	public void setReportrNm(String reportrNm) {
+		this.reportrNm = reportrNm;
+	}
+
+	public String getReportrClsfNm() {
+		return reportrClsfNm;
+	}
+	public void setReportrClsfNm(String reportrClsfNm) {
+		this.reportrClsfNm = reportrClsfNm;
+	}
+
 	public String getReprtSttus() {
 		return reprtSttus;
 	}
 	public void setReprtSttus(String reprtSttus) {
 		this.reprtSttus = reprtSttus;
+	}
+
+	public String getSearchId() {
+		return searchId;
+	}
+	public void setSearchId(String searchId) {
+		this.searchId = searchId;
+	}
+
+	public String getSearchDe() {
+		return searchDe;
+	}
+	public void setSearchDe(String searchDe) {
+		this.searchDe = searchDe;
+	}
+
+	public String getSearchBgnDe() {
+		return searchBgnDe;
+	}
+	public void setSearchBgnDe(String searchBgnDe) {
+		this.searchBgnDe = searchBgnDe;
+	}
+
+	public String getSearchEndDe() {
+		return searchEndDe;
+	}
+	public void setSearchEndDe(String searchEndDe) {
+		this.searchEndDe = searchEndDe;
+	}
+
+	public String getSearchSttus() {
+		return searchSttus;
+	}
+	public void setSearchSttus(String searchSttus) {
+		this.searchSttus = searchSttus;
+	}
+
+	public String getSearchSe() {
+		return searchSe;
+	}
+	public void setSearchSe(String searchSe) {
+		this.searchSe = searchSe;
 	}
 
 	/**

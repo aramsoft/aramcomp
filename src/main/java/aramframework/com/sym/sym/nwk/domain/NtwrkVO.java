@@ -23,16 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class NtwrkVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	// 추가 검색 정보
-	/** 관리항목 */
-	private String strManageIem;
-	
-	/** 사용자명 */
-	private String strUserNm;
-
-	// 도메인 정보
+	// domain
 	/** 네트워크ID */
 	private String ntwrkId;
 	
@@ -60,34 +51,16 @@ public class NtwrkVO extends SearchVO {
 	/** 등록일자 */
 	private String regstYmd;
 	
-	/**
-	 * @return the strManageIem
-	 */
-	public String getStrManageIem() {
-		return strManageIem;
-	}
-	/**
-	 * @param strManageIem
-	 *            the strManageIem to set
-	 */
-	public void setStrManageIem(String strManageIem) {
-		this.strManageIem = strManageIem;
-	}
+	// helper
+	
+	// 추가 검색 정보
+	/** 관리항목 */
+	private String strManageIem;
+	
+	/** 사용자명 */
+	private String strUserNm;
 
-	/**
-	 * @return the strUserNm
-	 */
-	public String getStrUserNm() {
-		return strUserNm;
-	}
-	/**
-	 * @param strUserNm
-	 *            the strUserNm to set
-	 */
-	public void setStrUserNm(String strUserNm) {
-		this.strUserNm = strUserNm;
-	}
-
+	// domain
 	/**
 	 * @return the ntwrkId
 	 */
@@ -214,4 +187,33 @@ public class NtwrkVO extends SearchVO {
 		this.regstYmd = regstYmd;
 	}
 	
+	// helper
+	/**
+	 * @return the strManageIem
+	 */
+	public String getStrManageIem() {
+		return strManageIem;
+	}
+	/**
+	 * @param strManageIem
+	 *            the strManageIem to set
+	 */
+	public void setStrManageIem(String strManageIem) {
+		this.strManageIem = strManageIem;
+	}
+
+	/**
+	 * @return the strUserNm
+	 */
+	public String getStrUserNm() {
+		return strUserNm;
+	}
+	/**
+	 * @param strUserNm
+	 *            the strUserNm to set
+	 */
+	public void setStrUserNm(String strUserNm) {
+		this.strUserNm = strUserNm;
+	}
+
 }

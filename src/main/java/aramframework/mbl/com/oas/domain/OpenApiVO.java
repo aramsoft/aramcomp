@@ -29,36 +29,23 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class OpenApiVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/**
-     * 순번
-     */
+	// domain
+	/** 순번     */
     private int sn;
 
-    /**
-     * 회원ID
-     */
+    /** 회원ID     */
     private String mberId;
 
-    /**
-     * OpenAPI서비스명
-     */
+    /** OpenAPI서비스명     */
     private String openApiSvcNm;
 
-    /**
-     * OpenAPI 제공 기관명
-     */
-    private String openApiProvdInsttNm;
-
-    /**
-     * 서비스내용
-     */
+    /** 서비스내용     */
     private String openApiSvcCn;
 
-    /**
-     * 수집일시
-     */
+    /** OpenAPI 제공 기관명     */
+    private String openApiProvdInsttNm;
+
+    /** 수집일시     */
     private Date collectDt;
 
     /**
@@ -110,22 +97,6 @@ public class OpenApiVO extends SearchVO {
     }
 
     /**
-     * OpenAPI 제공 기관명을 가져온다.
-     * @return String OpenAPI 제공 기관명
-     */
-    public String getOpenApiProvdInsttNm(){
-        return openApiProvdInsttNm;
-    }
-    /**
-     * OpenAPI 제공 기관명을 저장한다.
-     * 
-     * @param openApiProvdInsttNm
-     */
-    public void setOpenApiProvdInsttNm(String openApiProvdInsttNm){
-        this.openApiProvdInsttNm = openApiProvdInsttNm;
-    }
-
-    /**
      * 서비스 내용을 가져온다.
      * @return String 서비스 내용
      */
@@ -139,6 +110,22 @@ public class OpenApiVO extends SearchVO {
      */
     public void setOpenApiSvcCn(String openApiSvcCn){
         this.openApiSvcCn = openApiSvcCn;
+    }
+
+    /**
+     * OpenAPI 제공 기관명을 가져온다.
+     * @return String OpenAPI 제공 기관명
+     */
+    public String getOpenApiProvdInsttNm(){
+        return openApiProvdInsttNm;
+    }
+    /**
+     * OpenAPI 제공 기관명을 저장한다.
+     * 
+     * @param openApiProvdInsttNm
+     */
+    public void setOpenApiProvdInsttNm(String openApiProvdInsttNm){
+        this.openApiProvdInsttNm = openApiProvdInsttNm;
     }
 
     /**

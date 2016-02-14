@@ -23,11 +23,23 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class DtaUseStatsVO extends SearchVO {
 
-	/**
-	 * serialVersionUID
-	 */
-	private static final long serialVersionUID = 1L;
-
+	// domain
+	/** 자료이용현황ID */
+	private String dtaUseStatsId;
+	
+	/** 게시판ID */
+	private String bbsId;
+	
+	/** 게시글ID */
+	private String nttId;
+	
+	/** 첨부파일ID */
+	private String atchFileId;
+	
+	/** 파일연번 */
+	private String fileSn;
+	
+	// helper
 	/** 기간구분	 */
 	private String pmDateTy;
 	
@@ -40,26 +52,11 @@ public class DtaUseStatsVO extends SearchVO {
 	/** 등록일자별 통계 그래프 사이즈 단위 */
 	float maxUnit = 50.0f;
 	
-	/** 자료이용현황ID */
-	private String dtaUseStatsId;
-	
-	/** 게시판ID */
-	private String bbsId;
-	
 	/** 게시판명 */
 	private String bbsNm;
 	
-	/** 게시글ID */
-	private String nttId;
-	
 	/** 게시글 제목 */
 	private String nttSj;
-	
-	/** 첨부파일ID */
-	private String atchFileId;
-	
-	/** 파일연번 */
-	private String fileSn;
 	
 	/** 다운횟수 */
 	private String downCnt;
@@ -82,6 +79,78 @@ public class DtaUseStatsVO extends SearchVO {
 	/** 그래프용 등록일자 카운트 */
 	private String grpCnt;
 
+	// domain
+	/**
+	 * @return the dtaUseStatsId
+	 */
+	public String getDtaUseStatsId() {
+		return dtaUseStatsId;
+	}
+	/**
+	 * @param dtaUseStatsId
+	 *            the dtaUseStatsId to set
+	 */
+	public void setDtaUseStatsId(String dtaUseStatsId) {
+		this.dtaUseStatsId = dtaUseStatsId;
+	}
+
+	/**
+	 * @return the bbsId
+	 */
+	public String getBbsId() {
+		return bbsId;
+	}
+	/**
+	 * @param bbsId
+	 *            the bbsId to set
+	 */
+	public void setBbsId(String bbsId) {
+		this.bbsId = bbsId;
+	}
+
+	/**
+	 * @return the nttId
+	 */
+	public String getNttId() {
+		return nttId;
+	}
+	/**
+	 * @param nttId
+	 *            the nttId to set
+	 */
+	public void setNttId(String nttId) {
+		this.nttId = nttId;
+	}
+
+	/**
+	 * @return the atchFileId
+	 */
+	public String getAtchFileId() {
+		return atchFileId;
+	}
+	/**
+	 * @param atchFileId
+	 *            the atchFileId to set
+	 */
+	public void setAtchFileId(String atchFileId) {
+		this.atchFileId = atchFileId;
+	}
+
+	/**
+	 * @return the fileSn
+	 */
+	public String getFileSn() {
+		return fileSn;
+	}
+	/**
+	 * @param fileSn
+	 *            the fileSn to set
+	 */
+	public void setFileSn(String fileSn) {
+		this.fileSn = fileSn;
+	}
+
+	// helper
 	/**
 	 * @return the pmDateTy
 	 */
@@ -139,34 +208,6 @@ public class DtaUseStatsVO extends SearchVO {
 	}
 
 	/**
-	 * @return the dtaUseStatsId
-	 */
-	public String getDtaUseStatsId() {
-		return dtaUseStatsId;
-	}
-	/**
-	 * @param dtaUseStatsId
-	 *            the dtaUseStatsId to set
-	 */
-	public void setDtaUseStatsId(String dtaUseStatsId) {
-		this.dtaUseStatsId = dtaUseStatsId;
-	}
-
-	/**
-	 * @return the bbsId
-	 */
-	public String getBbsId() {
-		return bbsId;
-	}
-	/**
-	 * @param bbsId
-	 *            the bbsId to set
-	 */
-	public void setBbsId(String bbsId) {
-		this.bbsId = bbsId;
-	}
-
-	/**
 	 * @return the bbsNm
 	 */
 	public String getBbsNm() {
@@ -181,20 +222,6 @@ public class DtaUseStatsVO extends SearchVO {
 	}
 
 	/**
-	 * @return the nttId
-	 */
-	public String getNttId() {
-		return nttId;
-	}
-	/**
-	 * @param nttId
-	 *            the nttId to set
-	 */
-	public void setNttId(String nttId) {
-		this.nttId = nttId;
-	}
-
-	/**
 	 * @return the nttSj
 	 */
 	public String getNttSj() {
@@ -206,34 +233,6 @@ public class DtaUseStatsVO extends SearchVO {
 	 */
 	public void setNttSj(String nttSj) {
 		this.nttSj = nttSj;
-	}
-
-	/**
-	 * @return the atchFileId
-	 */
-	public String getAtchFileId() {
-		return atchFileId;
-	}
-	/**
-	 * @param atchFileId
-	 *            the atchFileId to set
-	 */
-	public void setAtchFileId(String atchFileId) {
-		this.atchFileId = atchFileId;
-	}
-
-	/**
-	 * @return the fileSn
-	 */
-	public String getFileSn() {
-		return fileSn;
-	}
-	/**
-	 * @param fileSn
-	 *            the fileSn to set
-	 */
-	public void setFileSn(String fileSn) {
-		this.fileSn = fileSn;
 	}
 
 	/**

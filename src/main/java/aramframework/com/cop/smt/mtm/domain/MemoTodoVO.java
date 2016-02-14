@@ -25,20 +25,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class MemoTodoVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 사용자ID조회조건 */
-	private String searchId = "";
-
-	/** 일자 조회조건 */
-	private String searchDe = "";
-
-	/** 시작일자 조회조건 */
-	private String searchBgnDe = "";
-
-	/** 종료일자 조회조건 */
-	private String searchEndDe = "";
-
+	// domain
 	/** 할일ID */
 	private String todoId;
 
@@ -51,6 +38,13 @@ public class MemoTodoVO extends SearchVO {
 	/** 할일종료시간 */
 	private String todoEndTime;
 
+	/** 작성자ID	 */
+	private String wrterId;
+
+	/** 할일내용 */
+	private String todoCn;
+
+	// helper
 	/** 할일일자 */
 	private String todoDe;
 
@@ -66,43 +60,23 @@ public class MemoTodoVO extends SearchVO {
 	/** 할일종료분 */
 	private String todoEndMin;
 
-	/** 작성자ID	 */
-	private String wrterId;
-
 	/** 작성자명 */
 	private String wrterNm;
 
-	/** 할일내용 */
-	private String todoCn;
+	// 검색조건
+	/** 사용자ID조회조건 */
+	private String searchId = "";
 
-	public String getSearchId() {
-		return searchId;
-	}
-	public void setSearchId(String searchId) {
-		this.searchId = searchId;
-	}
+	/** 일자 조회조건 */
+	private String searchDe = "";
 
-	public String getSearchDe() {
-		return searchDe;
-	}
-	public void setSearchDe(String searchDe) {
-		this.searchDe = searchDe;
-	}
+	/** 시작일자 조회조건 */
+	private String searchBgnDe = "";
 
-	public String getSearchBgnDe() {
-		return searchBgnDe;
-	}
-	public void setSearchBgnDe(String searchBgnDe) {
-		this.searchBgnDe = searchBgnDe;
-	}
+	/** 종료일자 조회조건 */
+	private String searchEndDe = "";
 
-	public String getSearchEndDe() {
-		return searchEndDe;
-	}
-	public void setSearchEndDe(String searchEndDe) {
-		this.searchEndDe = searchEndDe;
-	}
-
+	// domain
 	public String getTodoId() {
 		return todoId;
 	}
@@ -131,6 +105,21 @@ public class MemoTodoVO extends SearchVO {
 		this.todoEndTime = todoEndTime;
 	}
 
+	public String getWrterId() {
+		return wrterId;
+	}
+	public void setWrterId(String wrterId) {
+		this.wrterId = wrterId;
+	}
+
+	public String getTodoCn() {
+		return todoCn;
+	}
+	public void setTodoCn(String todoCn) {
+		this.todoCn = todoCn;
+	}
+
+	// helper
 	public String getTodoDe() {
 		return todoDe;
 	}
@@ -166,13 +155,6 @@ public class MemoTodoVO extends SearchVO {
 		this.todoEndMin = todoEndMin;
 	}
 
-	public String getWrterId() {
-		return wrterId;
-	}
-	public void setWrterId(String wrterId) {
-		this.wrterId = wrterId;
-	}
-
 	public String getWrterNm() {
 		return wrterNm;
 	}
@@ -180,11 +162,33 @@ public class MemoTodoVO extends SearchVO {
 		this.wrterNm = wrterNm;
 	}
 
-	public String getTodoCn() {
-		return todoCn;
+	// search
+	public String getSearchId() {
+		return searchId;
 	}
-	public void setTodoCn(String todoCn) {
-		this.todoCn = todoCn;
+	public void setSearchId(String searchId) {
+		this.searchId = searchId;
+	}
+
+	public String getSearchDe() {
+		return searchDe;
+	}
+	public void setSearchDe(String searchDe) {
+		this.searchDe = searchDe;
+	}
+
+	public String getSearchBgnDe() {
+		return searchBgnDe;
+	}
+	public void setSearchBgnDe(String searchBgnDe) {
+		this.searchBgnDe = searchBgnDe;
+	}
+
+	public String getSearchEndDe() {
+		return searchEndDe;
+	}
+	public void setSearchEndDe(String searchEndDe) {
+		this.searchEndDe = searchEndDe;
 	}
 
 	/**

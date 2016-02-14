@@ -23,26 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class AdressBookUserVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 사용자 아이디 */
-	private String userId = "";
-
-	/** 사용자 명 */
-	private String userNm = "";
-
-	/** 사용자 이메일 */
-	private String userEmail = "";
-
-	/** 사용자 접전화 처음 */
-	private String areaNo = "";
-
-	/** 사용자 집전화 가운데 */
-	private String homemiddleTelno = "";
-
-	/** 사용자 집전화 마지막 */
-	private String homeendTelno = "";
-
+	// domain
 	/** 주소록구성원 아이디 */
 	private String adbkUserId = "";
 
@@ -61,126 +42,38 @@ public class AdressBookUserVO extends SearchVO {
 	/** 이메일 주소 */
 	private String emailAdres = "";
 
-	/** 집 전화번호 */
-	private String homeTelno = "";
-
 	/** 폰 번호 */
 	private String moblphonNo = "";
-
-	/** 회사 번호 */
-	private String offmTelno = "";
 
 	/** 팩스 번호 */
 	private String fxnum = "";
 
-	/**
-	 * userId attribute를 리턴한다.
-	 * 
-	 * @return the userId
-	 */
-	public String getUserId() {
-		return userId;
-	}
-	/**
-	 * userId attribute 값을 설정한다.
-	 * 
-	 * @param userId
-	 *            the userId to set
-	 */
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+	/** 회사 번호 */
+	private String offmTelno = "";
 
-	/**
-	 * userNm attribute를 리턴한다.
-	 * 
-	 * @return the userNm
-	 */
-	public String getUserNm() {
-		return userNm;
-	}
-	/**
-	 * userNm attribute 값을 설정한다.
-	 * 
-	 * @param userNm
-	 *            the userNm to set
-	 */
-	public void setUserNm(String userNm) {
-		this.userNm = userNm;
-	}
+	/** 집 전화번호 */
+	private String homeTelno = "";
 
-	/**
-	 * userEmail attribute를 리턴한다.
-	 * 
-	 * @return the userEmail
-	 */
-	public String getUserEmail() {
-		return userEmail;
-	}
-	/**
-	 * userEmail attribute 값을 설정한다.
-	 * 
-	 * @param userEmail
-	 *            the userEmail to set
-	 */
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
-	}
+	// helper
+	/** 사용자 아이디 */
+	private String userId = "";
 
-	/**
-	 * userEmail attribute를 리턴한다.
-	 * 
-	 * @return the userEmail
-	 */
-	public String getAreaNo() {
-		return areaNo;
-	}
-	/**
-	 * userEmail attribute 값을 설정한다.
-	 * 
-	 * @param userEmail
-	 *            the userEmail to set
-	 */
-	public void setAreaNo(String areaNo) {
-		this.areaNo = areaNo;
-	}
+	/** 사용자 명 */
+	private String userNm = "";
 
-	/**
-	 * userEmail attribute를 리턴한다.
-	 * 
-	 * @return the userEmail
-	 */
-	public String getHomemiddleTelno() {
-		return homemiddleTelno;
-	}
-	/**
-	 * userEmail attribute 값을 설정한다.
-	 * 
-	 * @param userEmail
-	 *            the userEmail to set
-	 */
-	public void setHomemiddleTelno(String homemiddleTelno) {
-		this.homemiddleTelno = homemiddleTelno;
-	}
+	/** 사용자 이메일 */
+	private String userEmail = "";
 
-	/**
-	 * homeendTelno attribute를 리턴한다.
-	 * 
-	 * @return the homeendTelno
-	 */
-	public String getHomeendTelno() {
-		return homeendTelno;
-	}
-	/**
-	 * homeendTelno attribute 값을 설정한다.
-	 * 
-	 * @param homeendTelno
-	 *            the homeendTelno to set
-	 */
-	public void setHomeendTelno(String homeendTelno) {
-		this.homeendTelno = homeendTelno;
-	}
+	/** 사용자 접전화 처음 */
+	private String areaNo = "";
 
+	/** 사용자 집전화 가운데 */
+	private String homemiddleTelno = "";
+
+	/** 사용자 집전화 마지막 */
+	private String homeendTelno = "";
+
+	// domain
 	/**
 	 * adbkUserId attribute를 리턴한다.
 	 * 
@@ -290,24 +183,6 @@ public class AdressBookUserVO extends SearchVO {
 	}
 
 	/**
-	 * homeTelno attribute를 리턴한다.
-	 * 
-	 * @return the homeTelno
-	 */
-	public String getHomeTelno() {
-		return homeTelno;
-	}
-	/**
-	 * homeTelno attribute 값을 설정한다.
-	 * 
-	 * @param homeTelno
-	 *            the homeTelno to set
-	 */
-	public void setHomeTelno(String homeTelno) {
-		this.homeTelno = homeTelno;
-	}
-
-	/**
 	 * moblphonNo attribute를 리턴한다.
 	 * 
 	 * @return the moblphonNo
@@ -323,6 +198,24 @@ public class AdressBookUserVO extends SearchVO {
 	 */
 	public void setMoblphonNo(String moblphonNo) {
 		this.moblphonNo = moblphonNo;
+	}
+
+	/**
+	 * fxnum attribute를 리턴한다.
+	 * 
+	 * @return the fxnum
+	 */
+	public String getFxnum() {
+		return fxnum;
+	}
+	/**
+	 * fxnum attribute 값을 설정한다.
+	 * 
+	 * @param fxnum
+	 *            the fxnum to set
+	 */
+	public void setFxnum(String fxnum) {
+		this.fxnum = fxnum;
 	}
 
 	/**
@@ -344,21 +237,130 @@ public class AdressBookUserVO extends SearchVO {
 	}
 
 	/**
-	 * fxnum attribute를 리턴한다.
+	 * homeTelno attribute를 리턴한다.
 	 * 
-	 * @return the fxnum
+	 * @return the homeTelno
 	 */
-	public String getFxnum() {
-		return fxnum;
+	public String getHomeTelno() {
+		return homeTelno;
 	}
 	/**
-	 * fxnum attribute 값을 설정한다.
+	 * homeTelno attribute 값을 설정한다.
 	 * 
-	 * @param fxnum
-	 *            the fxnum to set
+	 * @param homeTelno
+	 *            the homeTelno to set
 	 */
-	public void setFxnum(String fxnum) {
-		this.fxnum = fxnum;
+	public void setHomeTelno(String homeTelno) {
+		this.homeTelno = homeTelno;
 	}
-	
+
+	// helper
+	/**
+	 * userId attribute를 리턴한다.
+	 * 
+	 * @return the userId
+	 */
+	public String getUserId() {
+		return userId;
+	}
+	/**
+	 * userId attribute 값을 설정한다.
+	 * 
+	 * @param userId
+	 *            the userId to set
+	 */
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	/**
+	 * userNm attribute를 리턴한다.
+	 * 
+	 * @return the userNm
+	 */
+	public String getUserNm() {
+		return userNm;
+	}
+	/**
+	 * userNm attribute 값을 설정한다.
+	 * 
+	 * @param userNm
+	 *            the userNm to set
+	 */
+	public void setUserNm(String userNm) {
+		this.userNm = userNm;
+	}
+
+	/**
+	 * userEmail attribute를 리턴한다.
+	 * 
+	 * @return the userEmail
+	 */
+	public String getUserEmail() {
+		return userEmail;
+	}
+	/**
+	 * userEmail attribute 값을 설정한다.
+	 * 
+	 * @param userEmail
+	 *            the userEmail to set
+	 */
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
+
+	/**
+	 * userEmail attribute를 리턴한다.
+	 * 
+	 * @return the userEmail
+	 */
+	public String getAreaNo() {
+		return areaNo;
+	}
+	/**
+	 * userEmail attribute 값을 설정한다.
+	 * 
+	 * @param userEmail
+	 *            the userEmail to set
+	 */
+	public void setAreaNo(String areaNo) {
+		this.areaNo = areaNo;
+	}
+
+	/**
+	 * userEmail attribute를 리턴한다.
+	 * 
+	 * @return the userEmail
+	 */
+	public String getHomemiddleTelno() {
+		return homemiddleTelno;
+	}
+	/**
+	 * userEmail attribute 값을 설정한다.
+	 * 
+	 * @param userEmail
+	 *            the userEmail to set
+	 */
+	public void setHomemiddleTelno(String homemiddleTelno) {
+		this.homemiddleTelno = homemiddleTelno;
+	}
+
+	/**
+	 * homeendTelno attribute를 리턴한다.
+	 * 
+	 * @return the homeendTelno
+	 */
+	public String getHomeendTelno() {
+		return homeendTelno;
+	}
+	/**
+	 * homeendTelno attribute 값을 설정한다.
+	 * 
+	 * @param homeendTelno
+	 *            the homeendTelno to set
+	 */
+	public void setHomeendTelno(String homeendTelno) {
+		this.homeendTelno = homeendTelno;
+	}
+
 }

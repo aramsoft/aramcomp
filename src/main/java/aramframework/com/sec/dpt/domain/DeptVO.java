@@ -23,12 +23,12 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class DeptVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-	
+	// domain
 	private String orgnztId;
 	private String orgnztNm;
 	private String orgnztDc;
 
+	// domain
 	/**
 	 * @return the orgnztId
 	 */

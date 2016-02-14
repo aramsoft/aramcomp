@@ -22,11 +22,8 @@ import aramframework.com.cmm.domain.SearchVO;
  */
 
 public class ResourceVO extends SearchVO {
-	/**
-	 * serialVersionUID
-	 */
-	private static final long serialVersionUID = 1L;
-	
+
+	// domain
 	/** 롤코드 */
 	private String resourceCode;
 	
@@ -48,9 +45,11 @@ public class ResourceVO extends SearchVO {
 	/** 롤 등록일시 */
 	private String resourceCreatDe;
 	
+	// helper
 	/** 권한 코드 */
 	private String authorCode;
 
+	// domain
 	/**
 	 * resourceCode attribute 를 리턴한다.
 	 * 
@@ -177,6 +176,7 @@ public class ResourceVO extends SearchVO {
 		this.resourceCreatDe = resourceCreatDe;
 	}
 
+	// helper
 	/**
 	 * authorCode attribute 를 리턴한다.
 	 * 

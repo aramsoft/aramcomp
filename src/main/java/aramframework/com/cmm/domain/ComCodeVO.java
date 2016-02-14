@@ -1,7 +1,5 @@
 package aramframework.com.cmm.domain;
 
-import java.io.Serializable;
-
 /**
  * 공통상세코드 모델 클래스
  * 
@@ -21,10 +19,9 @@ import java.io.Serializable;
  * </pre>
  */
 
-public class ComCodeVO implements Serializable {
+public class ComCodeVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 코드ID */
 	private String codeId = "";
 

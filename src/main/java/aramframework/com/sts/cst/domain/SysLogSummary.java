@@ -21,123 +21,35 @@ package aramframework.com.sts.cst.domain;
 
 public class SysLogSummary {
 
-	/** 생성횟수 */
-	private int creatCo;
-	
-	/** 삭제횟수 */
-	private int deleteCo;
-	
-	/** 에러횟수 */
-	private int errorCo;
-	
-	/** 조회횟수 */
-	private int rdCnt;
-	
-	/** 메소드명 */
-	private String methodNm;
-	
+	// domain
 	/** 발생일자 */
 	private String occrrncDe;
-	
-	/** 출력횟수 */
-	private int outptCo;
 	
 	/** 서비스명 */
 	private String srvcNm;
 	
+	/** 메소드명 */
+	private String methodNm;
+	
+	/** 생성횟수 */
+	private int creatCo;
+	
 	/** 수정횟수 */
 	private int updtCo;
 
-	/**
-	 * creatCo attribute 를 리턴한다.
-	 * 
-	 * @return int
-	 */
-	public int getCreatCo() {
-		return creatCo;
-	}
-	/**
-	 * creatCo attribute 값을 설정한다.
-	 * 
-	 * @param creatCo
-	 *            int
-	 */
-	public void setCreatCo(int creatCo) {
-		this.creatCo = creatCo;
-	}
-
-	/**
-	 * deleteCo attribute 를 리턴한다.
-	 * 
-	 * @return int
-	 */
-	public int getDeleteCo() {
-		return deleteCo;
-	}
-	/**
-	 * deleteCo attribute 값을 설정한다.
-	 * 
-	 * @param deleteCo
-	 *            int
-	 */
-	public void setDeleteCo(int deleteCo) {
-		this.deleteCo = deleteCo;
-	}
-
-	/**
-	 * errorCo attribute 를 리턴한다.
-	 * 
-	 * @return int
-	 */
-	public int getErrorCo() {
-		return errorCo;
-	}
-	/**
-	 * errorCo attribute 값을 설정한다.
-	 * 
-	 * @param errorCo
-	 *            int
-	 */
-	public void setErrorCo(int errorCo) {
-		this.errorCo = errorCo;
-	}
-
-	/**
-	 * rdCnt attribute 를 리턴한다.
-	 * 
-	 * @return int
-	 */
-	public int getRdCnt() {
-		return rdCnt;
-	}
-	/**
-	 * rdCnt attribute 값을 설정한다.
-	 * 
-	 * @param rdCnt
-	 *            int
-	 */
-	public void setRdCnt(int rdCnt) {
-		this.rdCnt = rdCnt;
-	}
-
-	/**
-	 * methodNm attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getMethodNm() {
-		return methodNm;
-	}
-	/**
-	 * methodNm attribute 값을 설정한다.
-	 * 
-	 * @param methodNm
-	 *            String
-	 */
-	public void setMethodNm(String methodNm) {
-		this.methodNm = methodNm;
-	}
-
+	/** 조회횟수 */
+	private int rdCnt;
+	
+	/** 삭제횟수 */
+	private int deleteCo;
+	
+	/** 출력횟수 */
+	private int outptCo;
+	
+	/** 에러횟수 */
+	private int errorCo;
+	
+	// domain
 	/**
 	 * occrrncDe attribute 를 리턴한다.
 	 * 
@@ -154,24 +66,6 @@ public class SysLogSummary {
 	 */
 	public void setOccrrncDe(String occrrncDe) {
 		this.occrrncDe = occrrncDe;
-	}
-
-	/**
-	 * outptCo attribute 를 리턴한다.
-	 * 
-	 * @return int
-	 */
-	public int getOutptCo() {
-		return outptCo;
-	}
-	/**
-	 * outptCo attribute 값을 설정한다.
-	 * 
-	 * @param outptCo
-	 *            int
-	 */
-	public void setOutptCo(int outptCo) {
-		this.outptCo = outptCo;
 	}
 
 	/**
@@ -193,6 +87,42 @@ public class SysLogSummary {
 	}
 
 	/**
+	 * methodNm attribute 를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getMethodNm() {
+		return methodNm;
+	}
+	/**
+	 * methodNm attribute 값을 설정한다.
+	 * 
+	 * @param methodNm
+	 *            String
+	 */
+	public void setMethodNm(String methodNm) {
+		this.methodNm = methodNm;
+	}
+
+	/**
+	 * creatCo attribute 를 리턴한다.
+	 * 
+	 * @return int
+	 */
+	public int getCreatCo() {
+		return creatCo;
+	}
+	/**
+	 * creatCo attribute 값을 설정한다.
+	 * 
+	 * @param creatCo
+	 *            int
+	 */
+	public void setCreatCo(int creatCo) {
+		this.creatCo = creatCo;
+	}
+
+	/**
 	 * updtCo attribute 를 리턴한다.
 	 * 
 	 * @return int
@@ -210,4 +140,76 @@ public class SysLogSummary {
 		this.updtCo = updtCo;
 	}
 	
+	/**
+	 * rdCnt attribute 를 리턴한다.
+	 * 
+	 * @return int
+	 */
+	public int getRdCnt() {
+		return rdCnt;
+	}
+	/**
+	 * rdCnt attribute 값을 설정한다.
+	 * 
+	 * @param rdCnt
+	 *            int
+	 */
+	public void setRdCnt(int rdCnt) {
+		this.rdCnt = rdCnt;
+	}
+
+	/**
+	 * deleteCo attribute 를 리턴한다.
+	 * 
+	 * @return int
+	 */
+	public int getDeleteCo() {
+		return deleteCo;
+	}
+	/**
+	 * deleteCo attribute 값을 설정한다.
+	 * 
+	 * @param deleteCo
+	 *            int
+	 */
+	public void setDeleteCo(int deleteCo) {
+		this.deleteCo = deleteCo;
+	}
+
+	/**
+	 * outptCo attribute 를 리턴한다.
+	 * 
+	 * @return int
+	 */
+	public int getOutptCo() {
+		return outptCo;
+	}
+	/**
+	 * outptCo attribute 값을 설정한다.
+	 * 
+	 * @param outptCo
+	 *            int
+	 */
+	public void setOutptCo(int outptCo) {
+		this.outptCo = outptCo;
+	}
+
+	/**
+	 * errorCo attribute 를 리턴한다.
+	 * 
+	 * @return int
+	 */
+	public int getErrorCo() {
+		return errorCo;
+	}
+	/**
+	 * errorCo attribute 값을 설정한다.
+	 * 
+	 * @param errorCo
+	 *            int
+	 */
+	public void setErrorCo(int errorCo) {
+		this.errorCo = errorCo;
+	}
+
 }

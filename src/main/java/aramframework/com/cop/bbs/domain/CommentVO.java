@@ -25,13 +25,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class CommentVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 수정 처리 여부 */
-	private boolean isModified = false;
-
-	// 도메인 정보
-	
+	// domain
 	/** 댓글번호 */
 	private String commentNo = "";
 
@@ -50,33 +44,20 @@ public class CommentVO extends SearchVO {
 	/** 패스워드 */
 	private String commentPassword = "";
 
-	/** 확인 패스워드 */
-	private String confirmPassword = "";
-
 	/** 댓글 내용 */
 	private String commentCn = "";
 
 	/** 사용 여부 */
 	private String useAt = "";
 
-	/**
-	 * isModified attribute를 리턴한다.
-	 * 
-	 * @return the isModified
-	 */
-	public boolean isModified() {
-		return isModified;
-	}
-	/**
-	 * isModified attribute 값을 설정한다.
-	 * 
-	 * @param isModified
-	 *            the isModified to set
-	 */
-	public void setModified(boolean isModified) {
-		this.isModified = isModified;
-	}
+	// helper
+	/** 수정 처리 여부 */
+	private boolean isModified = false;
 
+	/** 확인 패스워드 */
+	private String confirmPassword = "";
+
+	// domain
 	/**
 	 * commentNo attribute를 리턴한다.
 	 * 
@@ -186,24 +167,6 @@ public class CommentVO extends SearchVO {
 	}
 
 	/**
-	 * confirmPassword attribute를 리턴한다.
-	 * 
-	 * @return the confirmPassword
-	 */
-	public String getConfirmPassword() {
-		return confirmPassword;
-	}
-	/**
-	 * confirmPassword attribute 값을 설정한다.
-	 * 
-	 * @param confirmPassword
-	 *            the confirmPassword to set
-	 */
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = confirmPassword;
-	}
-
-	/**
 	 * commentCn attribute를 리턴한다.
 	 * 
 	 * @return the commentCn
@@ -237,6 +200,43 @@ public class CommentVO extends SearchVO {
 	 */
 	public void setUseAt(String useAt) {
 		this.useAt = useAt;
+	}
+
+	// helper
+	/**
+	 * isModified attribute를 리턴한다.
+	 * 
+	 * @return the isModified
+	 */
+	public boolean isModified() {
+		return isModified;
+	}
+	/**
+	 * isModified attribute 값을 설정한다.
+	 * 
+	 * @param isModified
+	 *            the isModified to set
+	 */
+	public void setModified(boolean isModified) {
+		this.isModified = isModified;
+	}
+
+	/**
+	 * confirmPassword attribute를 리턴한다.
+	 * 
+	 * @return the confirmPassword
+	 */
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	/**
+	 * confirmPassword attribute 값을 설정한다.
+	 * 
+	 * @param confirmPassword
+	 *            the confirmPassword to set
+	 */
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 
 	/**

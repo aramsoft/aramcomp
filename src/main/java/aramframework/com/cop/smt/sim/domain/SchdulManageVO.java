@@ -23,47 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class SchdulManageVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
-
-	// 페이지간 검색유지
-	
-	/** 검색일정구분 */
-	private String searchSchdulSe = "";
-
-	/** 년 */
-	private String  year = "";
-
-	/** 월 */
-	private String  month = "";
-
-	/** 주 */ 
-	private String  week = "";
-	
-	/** 일 */
-	private String  day = "";
-
-	// IBatis 검색용
-	
-	/** 검색모드(월/주/일) */
-	private String searchMode = "";
-	
-	/** 검색월 */
-	private String searchMonth = "";
-
-	/** 검색일 */
-	private String searchDay = "";
-	
-	/** 검색시작일 */
-	private String searchBgnde = "";
-	
-	/** 검색종료일 */
-	private String searchEndde = "";
-	
-	// 도메인 정보
-	
-	/** 유저ID */
-	private String uniqId;
-	
+	// domain
 	/** 일정ID */
 	private String schdulId;
 
@@ -94,14 +54,21 @@ public class SchdulManageVO extends SearchVO  {
 	/** 일정담담자ID */
 	private String schdulChargerId;
 
-	/** 담당자명 */
-	private String schdulChargerName = "";
-
 	/** 첨부파일ID */
 	private String atchFileId;
 
 	/** 반복구분(반복, 연속, 요일반복) */
 	private String reptitSeCode;
+
+	/** 대상 아이디 */
+	private String trgetId = "";
+
+	// helper
+	/** 유저ID */
+	private String uniqId;
+	
+	/** 담당자명 */
+	private String schdulChargerName = "";
 
 	/** 일정시작일자(시간) */
 	private String schdulBgndeHH = "";
@@ -121,174 +88,39 @@ public class SchdulManageVO extends SearchVO  {
 	/** 일정종료일자(Year/Month/Day) */
 	private String schdulEnddeYYYMMDD = "";
 
-	/** 대상 아이디 */
-	private String trgetId = "";
+	// 페이지간 검색유지
+	/** 검색일정구분 */
+	private String searchSchdulSe = "";
 
-	/**
-	 * trgetId attribute를 리턴한다.
-	 * 
-	 * @return the trgetId
-	 */
-	public String getTrgetId() {
-		return trgetId;
-	}
-	/**
-	 * trgetId attribute 값을 설정한다.
-	 * 
-	 * @param trgetId
-	 *            the trgetId to set
-	 */
-	public void setTrgetId(String trgetId) {
-		this.trgetId = trgetId;
-	}
+	/** 년 */
+	private String  year = "";
 
-	/**
-	 * @return the searchSchdulSe
-	 */
-	public String getSearchSchdulSe() {
-		return searchSchdulSe;
-	}
-	/**
-	 * @param searchSchdulSe the searchSchdulSe to set
-	 */
-	public void setSearchSchdulSe(String searchSchdulSe) {
-		this.searchSchdulSe = searchSchdulSe;
-	}
+	/** 월 */
+	private String  month = "";
 
-	/**
-	 * @return the year
-	 */
-	public String getYear() {
-		return year;
-	}
-	/**
-	 * @param year the year to set
-	 */
-	public void setYear(String year) {
-		this.year = year;
-	}
+	/** 주 */ 
+	private String  week = "";
+	
+	/** 일 */
+	private String  day = "";
 
-	/**
-	 * @return the month
-	 */
-	public String getMonth() {
-		return month;
-	}
-	/**
-	 * @param month the month to set
-	 */
-	public void setMonth(String month) {
-		this.month = month;
-	}
+	// IBatis 검색용
+	/** 검색모드(월/주/일) */
+	private String searchMode = "";
+	
+	/** 검색월 */
+	private String searchMonth = "";
 
-	/**
-	 * @return the week
-	 */
-	public String getWeek() {
-		return week;
-	}
-	/**
-	 * @param week the month to set
-	 */
-	public void setWeek(String week) {
-		this.week = week;
-	}
-
-	/**
-	 * @return the day
-	 */
-	public String getDay() {
-		return day;
-	}
-	/**
-	 * @param day the day to set
-	 */
-	public void setDay(String day) {
-		this.day = day;
-	}
-
-	/**
-	 * @return the searchMode
-	 */
-	public String getSearchMode() {
-		return searchMode;
-	}
-	/**
-	 * @param searchMode the searchMode to set
-	 */
-	public void setSearchMode(String searchMode) {
-		this.searchMode = searchMode;
-	}
-
-	/**
-	 * @return the searchMonth
-	 */
-	public String getSearchMonth() {
-		return searchMonth;
-	}
-	/**
-	 * @param searchMonth the searchMonth to set
-	 */
-	public void setSearchMonth(String searchMonth) {
-		this.searchMonth = searchMonth;
-	}
-
-	/**
-	 * @return the searchBgnde
-	 */
-	public String getSearchBgnde() {
-		return searchBgnde;
-	}
-	/**
-	 * @param searchBgnde the searchBgnde to set
-	 */
-	public void setSearchBgnde(String searchBgnde) {
-		this.searchBgnde = searchBgnde;
-	}
-
-	/**
-	 * @return the searchEndde
-	 */
-	public String getSearchEndde() {
-		return searchEndde;
-	}
-	/**
-	 * @param searchEndde the searchEndde to set
-	 */
-	public void setSearchEndde(String searchEndde) {
-		this.searchEndde = searchEndde;
-	}
-
-	/**
-	 * @return the searchDay
-	 */
-	public String getSearchDay() {
-		return searchDay;
-	}
-	/**
-	 * @param searchDay the searchDay to set
-	 */
-	public void setSearchDay(String searchDay) {
-		this.searchDay = searchDay;
-	}
-
-	/**
-	 * uniqId attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getUniqId() {
-		return uniqId;
-	}
-	/**
-	 * uniqId attribute 값을 설정한다.
-	 * 
-	 * @return uniqId String
-	 */
-	public void setUniqId(String uniqId) {
-		this.uniqId = uniqId;
-	}
-
+	/** 검색일 */
+	private String searchDay = "";
+	
+	/** 검색시작일 */
+	private String searchBgnde = "";
+	
+	/** 검색종료일 */
+	private String searchEndde = "";
+	
+	// domain
 	/**
 	 * schdulId attribute 를 리턴한다.
 	 * 
@@ -461,23 +293,6 @@ public class SchdulManageVO extends SearchVO  {
 	}
 
 	/**
-	 * schdulChargerName attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getSchdulChargerName() {
-		return schdulChargerName;
-	}
-	/**
-	 * schdulChargerName attribute 값을 설정한다.
-	 * 
-	 * @return schdulChargerName String
-	 */
-	public void setSchdulChargerName(String schdulChargerName) {
-		this.schdulChargerName = schdulChargerName;
-	}
-
-	/**
 	 * atchFileId attribute 를 리턴한다.
 	 * 
 	 * @return the String
@@ -509,6 +324,59 @@ public class SchdulManageVO extends SearchVO  {
 	 */
 	public void setReptitSeCode(String reptitSeCode) {
 		this.reptitSeCode = reptitSeCode;
+	}
+
+	/**
+	 * trgetId attribute를 리턴한다.
+	 * 
+	 * @return the trgetId
+	 */
+	public String getTrgetId() {
+		return trgetId;
+	}
+	/**
+	 * trgetId attribute 값을 설정한다.
+	 * 
+	 * @param trgetId
+	 *            the trgetId to set
+	 */
+	public void setTrgetId(String trgetId) {
+		this.trgetId = trgetId;
+	}
+
+	// helper
+	/**
+	 * uniqId attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getUniqId() {
+		return uniqId;
+	}
+	/**
+	 * uniqId attribute 값을 설정한다.
+	 * 
+	 * @return uniqId String
+	 */
+	public void setUniqId(String uniqId) {
+		this.uniqId = uniqId;
+	}
+
+	/**
+	 * schdulChargerName attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getSchdulChargerName() {
+		return schdulChargerName;
+	}
+	/**
+	 * schdulChargerName attribute 값을 설정한다.
+	 * 
+	 * @return schdulChargerName String
+	 */
+	public void setSchdulChargerName(String schdulChargerName) {
+		this.schdulChargerName = schdulChargerName;
 	}
 
 	/**
@@ -611,6 +479,136 @@ public class SchdulManageVO extends SearchVO  {
 	 */
 	public void setSchdulEnddeYYYMMDD(String schdulEnddeYYYMMDD) {
 		this.schdulEnddeYYYMMDD = schdulEnddeYYYMMDD;
+	}
+
+	/**
+	 * @return the searchSchdulSe
+	 */
+	public String getSearchSchdulSe() {
+		return searchSchdulSe;
+	}
+	/**
+	 * @param searchSchdulSe the searchSchdulSe to set
+	 */
+	public void setSearchSchdulSe(String searchSchdulSe) {
+		this.searchSchdulSe = searchSchdulSe;
+	}
+
+	/**
+	 * @return the year
+	 */
+	public String getYear() {
+		return year;
+	}
+	/**
+	 * @param year the year to set
+	 */
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	/**
+	 * @return the month
+	 */
+	public String getMonth() {
+		return month;
+	}
+	/**
+	 * @param month the month to set
+	 */
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
+	/**
+	 * @return the week
+	 */
+	public String getWeek() {
+		return week;
+	}
+	/**
+	 * @param week the month to set
+	 */
+	public void setWeek(String week) {
+		this.week = week;
+	}
+
+	/**
+	 * @return the day
+	 */
+	public String getDay() {
+		return day;
+	}
+	/**
+	 * @param day the day to set
+	 */
+	public void setDay(String day) {
+		this.day = day;
+	}
+
+	/**
+	 * @return the searchMode
+	 */
+	public String getSearchMode() {
+		return searchMode;
+	}
+	/**
+	 * @param searchMode the searchMode to set
+	 */
+	public void setSearchMode(String searchMode) {
+		this.searchMode = searchMode;
+	}
+
+	/**
+	 * @return the searchMonth
+	 */
+	public String getSearchMonth() {
+		return searchMonth;
+	}
+	/**
+	 * @param searchMonth the searchMonth to set
+	 */
+	public void setSearchMonth(String searchMonth) {
+		this.searchMonth = searchMonth;
+	}
+
+	/**
+	 * @return the searchBgnde
+	 */
+	public String getSearchBgnde() {
+		return searchBgnde;
+	}
+	/**
+	 * @param searchBgnde the searchBgnde to set
+	 */
+	public void setSearchBgnde(String searchBgnde) {
+		this.searchBgnde = searchBgnde;
+	}
+
+	/**
+	 * @return the searchEndde
+	 */
+	public String getSearchEndde() {
+		return searchEndde;
+	}
+	/**
+	 * @param searchEndde the searchEndde to set
+	 */
+	public void setSearchEndde(String searchEndde) {
+		this.searchEndde = searchEndde;
+	}
+
+	/**
+	 * @return the searchDay
+	 */
+	public String getSearchDay() {
+		return searchDay;
+	}
+	/**
+	 * @param searchDay the searchDay to set
+	 */
+	public void setSearchDay(String searchDay) {
+		this.searchDay = searchDay;
 	}
 
 }

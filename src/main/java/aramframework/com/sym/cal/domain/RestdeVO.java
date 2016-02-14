@@ -23,8 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class RestdeVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 휴일번호 */
 	private int restdeNo = 0;
 
@@ -37,11 +36,12 @@ public class RestdeVO extends SearchVO {
 	/** 휴일설명 */
 	private String restdeDc = "";
 
-	/** 휴일구분 */
-	private String restdeSe = "";
-
 	/** 휴일구분코드 */
 	private String restdeSeCode = "";
+
+	// helper
+	/** 휴일구분 */
+	private String restdeSe = "";
 
 	/** 년 */
 	private String year = "";
@@ -73,6 +73,7 @@ public class RestdeVO extends SearchVO {
 	/** 마지막 일자 */
 	private int lastDayMonth = 0;
 
+	// domain
 	/**
 	 * restdeNo attribute 를 리턴한다.
 	 * 
@@ -146,24 +147,6 @@ public class RestdeVO extends SearchVO {
 	}
 
 	/**
-	 * restdeSe attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getRestdeSe() {
-		return restdeSe;
-	}
-	/**
-	 * restdeSe attribute 값을 설정한다.
-	 * 
-	 * @param restdeSe
-	 *            String
-	 */
-	public void setRestdeSe(String restdeSe) {
-		this.restdeSe = restdeSe;
-	}
-
-	/**
 	 * restdeSeCode attribute 를 리턴한다.
 	 * 
 	 * @return String
@@ -179,6 +162,25 @@ public class RestdeVO extends SearchVO {
 	 */
 	public void setRestdeSeCode(String restdeSeCode) {
 		this.restdeSeCode = restdeSeCode;
+	}
+
+	// helper
+	/**
+	 * restdeSe attribute 를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getRestdeSe() {
+		return restdeSe;
+	}
+	/**
+	 * restdeSe attribute 값을 설정한다.
+	 * 
+	 * @param restdeSe
+	 *            String
+	 */
+	public void setRestdeSe(String restdeSe) {
+		this.restdeSe = restdeSe;
 	}
 
 	/**

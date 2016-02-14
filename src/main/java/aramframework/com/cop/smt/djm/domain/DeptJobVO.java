@@ -25,19 +25,29 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class DeptJobVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
+	// domain
+	/** 부서업무 ID	 */
+	private String deptJobId;
 
-	/** 부서ID조회조건 */
-	private String searchDeptId = "";
-
-	/** 부서업무함ID조회조건 */
-	private String searchDeptJobBxId = "";
-
-	// Domain
-	
 	/** 부서업무함 ID	 */
 	private String deptJobBxId;
 
+	/** 부서업무명	 */
+	private String deptJobNm;
+
+	/** 부서업무내용	 */
+	private String deptJobCn;
+
+	/** 첨부파일 ID */
+	private String atchFileId;
+
+	/** 업무담당자 ID	 */
+	private String chargerId;
+
+	/** 우선순위	 */
+	private String priort;
+
+	// helper
 	/** 부서업무함명	 */
 	private String deptJobBxNm;
 
@@ -47,39 +57,21 @@ public class DeptJobVO extends SearchVO {
 	/** 부서명	 */
 	private String deptNm;
 
-	/** 부서업무 ID	 */
-	private String deptJobId;
-
-	/** 부서업무명	 */
-	private String deptJobNm;
-
-	/** 부서업무내용	 */
-	private String deptJobCn;
-
-	/** 업무담당자 ID	 */
-	private String chargerId;
-
 	/** 업무담당자명	 */
 	private String chargerNm;
 
-	/** 우선순위	 */
-	private String priort;
+	/** 부서ID조회조건 */
+	private String searchDeptId = "";
 
-	/** 첨부파일 ID */
-	private String atchFileId;
+	/** 부서업무함ID조회조건 */
+	private String searchDeptJobBxId = "";
 
-	public String getSearchDeptId() {
-		return searchDeptId;
+	// domain
+	public String getDeptJobId() {
+		return deptJobId;
 	}
-	public void setSearchDeptId(String searchDeptId) {
-		this.searchDeptId = searchDeptId;
-	}
-
-	public String getSearchDeptJobBxId() {
-		return searchDeptJobBxId;
-	}
-	public void setSearchDeptJobBxId(String searchDeptJobBxId) {
-		this.searchDeptJobBxId = searchDeptJobBxId;
+	public void setDeptJobId(String deptJobId) {
+		this.deptJobId = deptJobId;
 	}
 
 	public String getDeptJobBxId() {
@@ -89,6 +81,42 @@ public class DeptJobVO extends SearchVO {
 		this.deptJobBxId = deptJobBxId;
 	}
 
+	public String getDeptJobNm() {
+		return deptJobNm;
+	}
+	public void setDeptJobNm(String deptJobNm) {
+		this.deptJobNm = deptJobNm;
+	}
+
+	public String getDeptJobCn() {
+		return deptJobCn;
+	}
+	public void setDeptJobCn(String deptJobCn) {
+		this.deptJobCn = deptJobCn;
+	}
+
+	public String getAtchFileId() {
+		return atchFileId;
+	}
+	public void setAtchFileId(String atchFileId) {
+		this.atchFileId = atchFileId;
+	}
+
+	public String getChargerId() {
+		return chargerId;
+	}
+	public void setChargerId(String chargerId) {
+		this.chargerId = chargerId;
+	}
+
+	public String getPriort() {
+		return priort;
+	}
+	public void setPriort(String priort) {
+		this.priort = priort;
+	}
+
+	// helper
 	public String getDeptJobBxNm() {
 		return deptJobBxNm;
 	}
@@ -110,34 +138,6 @@ public class DeptJobVO extends SearchVO {
 		this.deptNm = deptNm;
 	}
 
-	public String getDeptJobId() {
-		return deptJobId;
-	}
-	public void setDeptJobId(String deptJobId) {
-		this.deptJobId = deptJobId;
-	}
-
-	public String getDeptJobNm() {
-		return deptJobNm;
-	}
-	public void setDeptJobNm(String deptJobNm) {
-		this.deptJobNm = deptJobNm;
-	}
-
-	public String getDeptJobCn() {
-		return deptJobCn;
-	}
-	public void setDeptJobCn(String deptJobCn) {
-		this.deptJobCn = deptJobCn;
-	}
-
-	public String getChargerId() {
-		return chargerId;
-	}
-	public void setChargerId(String chargerId) {
-		this.chargerId = chargerId;
-	}
-
 	public String getChargerNm() {
 		return chargerNm;
 	}
@@ -145,18 +145,18 @@ public class DeptJobVO extends SearchVO {
 		this.chargerNm = chargerNm;
 	}
 
-	public String getPriort() {
-		return priort;
+	public String getSearchDeptId() {
+		return searchDeptId;
 	}
-	public void setPriort(String priort) {
-		this.priort = priort;
+	public void setSearchDeptId(String searchDeptId) {
+		this.searchDeptId = searchDeptId;
 	}
 
-	public String getAtchFileId() {
-		return atchFileId;
+	public String getSearchDeptJobBxId() {
+		return searchDeptJobBxId;
 	}
-	public void setAtchFileId(String atchFileId) {
-		this.atchFileId = atchFileId;
+	public void setSearchDeptJobBxId(String searchDeptJobBxId) {
+		this.searchDeptJobBxId = searchDeptJobBxId;
 	}
 
 	/**

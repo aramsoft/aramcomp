@@ -23,8 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class CntcSttusVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 연계ID */
 	private String cntcId = "";
 
@@ -33,6 +32,37 @@ public class CntcSttusVO extends SearchVO  {
 
 	/** 연계유형 */
 	private String cntcType = "";
+
+	/** 제공기관ID */
+	private String provdInsttId = "";
+
+	/** 제공시스템ID */
+	private String provdSysId = "";
+
+	/** 제공서비스ID */
+	private String provdSvcId = "";
+
+	/** 요청기관ID */
+	private String requstInsttId = "";
+
+	/** 요청시스템ID */
+	private String requstSysId = "";
+
+	// helper
+	/** 제공기관명 */
+	private String provdInsttNm = "";
+
+	/** 제공시스템명 */
+	private String provdSysNm = "";
+
+	/** 제공서비스명 */
+	private String provdSvcNm = "";
+
+	/** 요청기관명 */
+	private String requstInsttNm = "";
+
+	/** 요청시스템명 */
+	private String requstSysNm = "";
 
 	/** 총연계건수 */
 	private int cntAll = 0;
@@ -43,36 +73,7 @@ public class CntcSttusVO extends SearchVO  {
 	/** 실패연계수 */
 	private int cntFail = 0;
 
-	/** 제공기관ID */
-	private String provdInsttId = "";
-
-	/** 제공기관명 */
-	private String provdInsttNm = "";
-
-	/** 제공시스템ID */
-	private String provdSysId = "";
-
-	/** 제공시스템명 */
-	private String provdSysNm = "";
-
-	/** 제공서비스ID */
-	private String provdSvcId = "";
-
-	/** 제공서비스명 */
-	private String provdSvcNm = "";
-
-	/** 요청기관ID */
-	private String requstInsttId = "";
-
-	/** 요청기관명 */
-	private String requstInsttNm = "";
-
-	/** 요청시스템ID */
-	private String requstSysId = "";
-
-	/** 요청시스템명 */
-	private String requstSysNm = "";
-
+	// domain
 	/**
 	 * cntcId attribute 를 리턴한다.
 	 * 
@@ -128,6 +129,187 @@ public class CntcSttusVO extends SearchVO  {
 	}
 
 	/**
+	 * provdInsttId attribute 를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getProvdInsttId() {
+		return provdInsttId;
+	}
+	/**
+	 * provdInsttId attribute 값을 설정한다.
+	 * 
+	 * @param provdInsttId
+	 *            String
+	 */
+	public void setProvdInsttId(String provdInsttId) {
+		this.provdInsttId = provdInsttId;
+	}
+
+	/**
+	 * provdSysId attribute 를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getProvdSysId() {
+		return provdSysId;
+	}
+	/**
+	 * provdSysId attribute 값을 설정한다.
+	 * 
+	 * @param provdSysId
+	 *            String
+	 */
+	public void setProvdSysId(String provdSysId) {
+		this.provdSysId = provdSysId;
+	}
+
+	/**
+	 * provdSvcId attribute 를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getProvdSvcId() {
+		return provdSvcId;
+	}
+	/**
+	 * provdSvcId attribute 값을 설정한다.
+	 * 
+	 * @param provdSvcId
+	 *            String
+	 */
+	public void setProvdSvcId(String provdSvcId) {
+		this.provdSvcId = provdSvcId;
+	}
+
+	/**
+	 * requstInsttId attribute 를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getRequstInsttId() {
+		return requstInsttId;
+	}
+	/**
+	 * requstInsttId attribute 값을 설정한다.
+	 * 
+	 * @param requstInsttId
+	 *            String
+	 */
+	public void setRequstInsttId(String requstInsttId) {
+		this.requstInsttId = requstInsttId;
+	}
+
+	/**
+	 * requstSysId attribute 를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getRequstSysId() {
+		return requstSysId;
+	}
+	/**
+	 * requstSysId attribute 값을 설정한다.
+	 * 
+	 * @param requstSysId
+	 *            String
+	 */
+	public void setRequstSysId(String requstSysId) {
+		this.requstSysId = requstSysId;
+	}
+
+	// helper
+	/**
+	 * provdInsttNm attribute 를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getProvdInsttNm() {
+		return provdInsttNm;
+	}
+	/**
+	 * provdInsttNm attribute 값을 설정한다.
+	 * 
+	 * @param provdInsttNm
+	 *            String
+	 */
+	public void setProvdInsttNm(String provdInsttNm) {
+		this.provdInsttNm = provdInsttNm;
+	}
+
+	/**
+	 * provdSysNm attribute 를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getProvdSysNm() {
+		return provdSysNm;
+	}
+	/**
+	 * provdSysNm attribute 값을 설정한다.
+	 * 
+	 * @param provdSysNm
+	 *            String
+	 */
+	public void setProvdSysNm(String provdSysNm) {
+		this.provdSysNm = provdSysNm;
+	}
+
+	/**
+	 * provdSvcNm attribute 를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getProvdSvcNm() {
+		return provdSvcNm;
+	}
+	/**
+	 * provdSvcNm attribute 값을 설정한다.
+	 * 
+	 * @param provdSvcNm
+	 *            String
+	 */
+	public void setProvdSvcNm(String provdSvcNm) {
+		this.provdSvcNm = provdSvcNm;
+	}
+
+	/**
+	 * requstInsttNm attribute 를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getRequstInsttNm() {
+		return requstInsttNm;
+	}
+	/**
+	 * requstInsttNm attribute 값을 설정한다.
+	 * 
+	 * @param requstInsttNm
+	 *            String
+	 */
+	public void setRequstInsttNm(String requstInsttNm) {
+		this.requstInsttNm = requstInsttNm;
+	}
+
+	/**
+	 * requstSysNm attribute 를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getRequstSysNm() {
+		return requstSysNm;
+	}
+	/**
+	 * requstSysNm attribute 값을 설정한다.
+	 * 
+	 * @param requstSysNm
+	 *            String
+	 */
+	public void setRequstSysNm(String requstSysNm) {
+		this.requstSysNm = requstSysNm;
+	}
+
+	/**
 	 * cntAll attribute 를 리턴한다.
 	 * 
 	 * @return int
@@ -179,186 +361,6 @@ public class CntcSttusVO extends SearchVO  {
 	 */
 	public void setCntFail(int cntFail) {
 		this.cntFail = cntFail;
-	}
-
-	/**
-	 * provdInsttId attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getProvdInsttId() {
-		return provdInsttId;
-	}
-	/**
-	 * provdInsttId attribute 값을 설정한다.
-	 * 
-	 * @param provdInsttId
-	 *            String
-	 */
-	public void setProvdInsttId(String provdInsttId) {
-		this.provdInsttId = provdInsttId;
-	}
-
-	/**
-	 * provdInsttNm attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getProvdInsttNm() {
-		return provdInsttNm;
-	}
-	/**
-	 * provdInsttNm attribute 값을 설정한다.
-	 * 
-	 * @param provdInsttNm
-	 *            String
-	 */
-	public void setProvdInsttNm(String provdInsttNm) {
-		this.provdInsttNm = provdInsttNm;
-	}
-
-	/**
-	 * provdSysId attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getProvdSysId() {
-		return provdSysId;
-	}
-	/**
-	 * provdSysId attribute 값을 설정한다.
-	 * 
-	 * @param provdSysId
-	 *            String
-	 */
-	public void setProvdSysId(String provdSysId) {
-		this.provdSysId = provdSysId;
-	}
-
-	/**
-	 * provdSysNm attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getProvdSysNm() {
-		return provdSysNm;
-	}
-	/**
-	 * provdSysNm attribute 값을 설정한다.
-	 * 
-	 * @param provdSysNm
-	 *            String
-	 */
-	public void setProvdSysNm(String provdSysNm) {
-		this.provdSysNm = provdSysNm;
-	}
-
-	/**
-	 * provdSvcId attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getProvdSvcId() {
-		return provdSvcId;
-	}
-	/**
-	 * provdSvcId attribute 값을 설정한다.
-	 * 
-	 * @param provdSvcId
-	 *            String
-	 */
-	public void setProvdSvcId(String provdSvcId) {
-		this.provdSvcId = provdSvcId;
-	}
-
-	/**
-	 * provdSvcNm attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getProvdSvcNm() {
-		return provdSvcNm;
-	}
-	/**
-	 * provdSvcNm attribute 값을 설정한다.
-	 * 
-	 * @param provdSvcNm
-	 *            String
-	 */
-	public void setProvdSvcNm(String provdSvcNm) {
-		this.provdSvcNm = provdSvcNm;
-	}
-
-	/**
-	 * requstInsttId attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getRequstInsttId() {
-		return requstInsttId;
-	}
-	/**
-	 * requstInsttId attribute 값을 설정한다.
-	 * 
-	 * @param requstInsttId
-	 *            String
-	 */
-	public void setRequstInsttId(String requstInsttId) {
-		this.requstInsttId = requstInsttId;
-	}
-
-	/**
-	 * requstInsttNm attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getRequstInsttNm() {
-		return requstInsttNm;
-	}
-	/**
-	 * requstInsttNm attribute 값을 설정한다.
-	 * 
-	 * @param requstInsttNm
-	 *            String
-	 */
-	public void setRequstInsttNm(String requstInsttNm) {
-		this.requstInsttNm = requstInsttNm;
-	}
-
-	/**
-	 * requstSysId attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getRequstSysId() {
-		return requstSysId;
-	}
-	/**
-	 * requstSysId attribute 값을 설정한다.
-	 * 
-	 * @param requstSysId
-	 *            String
-	 */
-	public void setRequstSysId(String requstSysId) {
-		this.requstSysId = requstSysId;
-	}
-
-	/**
-	 * requstSysNm attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getRequstSysNm() {
-		return requstSysNm;
-	}
-	/**
-	 * requstSysNm attribute 값을 설정한다.
-	 * 
-	 * @param requstSysNm
-	 *            String
-	 */
-	public void setRequstSysNm(String requstSysNm) {
-		this.requstSysNm = requstSysNm;
 	}
 
 }

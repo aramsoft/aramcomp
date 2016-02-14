@@ -25,73 +25,49 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-@SuppressWarnings("serial")
 public class RealtimeNoticeVO extends SearchVO  {
-	/**
-	 * 실시간 공지 서비스 일련번호
-	 */
+
+	/** 실시간 공지 서비스 일련번호	 */
 	private int sn = 0;
 	
-	/**
-	 * 일련번호
-	 */	
-	private String searchSn = "";
-	
-	/**
-	 * 목록 조회 갯수
-	 */
-	private int fetchRow = 0;
-
-	/**
-	 * 회원ID
-	 */
+	/** 회원ID	 */
 	private String mberId = "";
 	
-	/**
-	 * 실시간 공지 제목
-	 */
+	/** 실시간 공지 제목	 */
 	private String noticeSj = "";
 	
-	/**
-	 * 실시간 공지 내용 
-	 */
+	/** 실시간 공지 내용 	 */
 	private String noticeCn = "";
 	
-	/**
-	 * 최신구분명
-	 */
-	private String recentNm = "";
-	
-	/**
-	 * 실시간 공지 시작일시
-	 */
-	private String noticeBgnDt = "";
-	
-	/**
-	 * 실시간 공지 종료일시
-	 */
-	private String noticeEndDt = "";
-	
-	/**
-	 * 실시간 공지 생성일시
-	 */
-	private String creatDt = "";
-	
-	/**
-	 * 실시간 공지 수정일시
-	 */
-	private String updtDt = "";
-	
-	/**
-	 * 최신구분 코드 ID
-	 */
+	/** 최신구분 코드 ID	 */
 	private String recentCodeId = "";
 	
-	/**
-	 * 최신구분 코드 
-	 */
+	/** 최신구분 코드 	 */
 	private String recentCode = "";
 	
+	/** 실시간 공지 시작일시	 */
+	private String noticeBgnDt = "";
+	
+	/** 실시간 공지 종료일시	 */
+	private String noticeEndDt = "";
+	
+	/** 실시간 공지 생성일시	 */
+	private String creatDt = "";
+	
+	/** 실시간 공지 수정일시	 */
+	private String updtDt = "";
+	
+	// helper
+	/** 최신구분명	 */
+	private String recentNm = "";
+	
+	/** 일련번호	 */	
+	private String searchSn = "";
+	
+	/** 목록 조회 갯수	 */
+	private int fetchRow = 0;
+
+	// domain
 	/**
 	 * 실시간 공지 서비스 일련번호를 획득한다.
 	 * 
@@ -109,39 +85,6 @@ public class RealtimeNoticeVO extends SearchVO  {
 		this.sn = sn;
 	}
 	
-	/**
-	 * 실시간 공지 서비스 목록 조회 갯수를 획득한다.
-	 * 
-	 * @return int
-	 */
-	public int getFetchRow() {
-		return fetchRow;
-	}
-	/**
-	 * 실시간 공지 서비스 목록 조회 갯수를 할당한다.
-	 * 
-	 * @param fetchRow
-	 */
-	public void setFetchRow(int fetchRow) {
-		this.fetchRow = fetchRow;
-	}
-
-	/**
-	 * 실시간 공지 서비스 일련번호를 획득한다.
-	 * 
-	 * @return String 일련번호
-	 */
-	public String getSearchSn() {
-		return searchSn;
-	}
-	/**
-	 * 실시간 공지 서비스 일변로호를 할당한다.
-	 * 
-	 * @param searchSn
-	 */
-	public void setSsearchSn(String searchSn) {
-		this.searchSn = searchSn;
-	}
 	/**
 	 * 실시간 공지 회원ID를 획득한다.
 	 * 
@@ -194,20 +137,37 @@ public class RealtimeNoticeVO extends SearchVO  {
 	}
 	
 	/**
-	 * 실시간 공지 최신구분명을 획득한다.
+	 * 실시간 공지 서비스 최신구분 코드ID를 획득한다.
 	 * 
-	 * @return the recentNm
+	 * @return the recentCodeId
 	 */
-	public String getRecentNm() {
-		return recentNm;
+	public String getRecentCodeId() {
+		return recentCodeId;
 	}
 	/**
-	 * 실시간 공지 최신구분명을 할당한다.
+	 * 실시간 공지 서비스 최신구분 코드ID를 할당한다.
 	 * 
-	 * @param recentNm the recentNm to set
+	 * @param updtDt the updtDt to set
 	 */
-	public void setRecentNm(String recentNm) {
-		this.recentNm = recentNm;
+	public void setRecentCodeId(String recentCodeId) {
+		this.recentCodeId = recentCodeId;
+	}
+
+	/**
+	 * 실시간 공지 서비스 최신구분 코드를 획득한다.
+	 * 
+	 * @return the recentCode
+	 */
+	public String getRecentCode() {
+		return recentCode;
+	}
+	/**
+	 * 실시간 공지 서비스 최신구분 코드를 할당한다.
+	 * 
+	 * @param updtDt the updtDt to set
+	 */
+	public void setRecentCode(String recentCode) {
+		this.recentCode = recentCode;
 	}
 	
 	/**
@@ -279,38 +239,55 @@ public class RealtimeNoticeVO extends SearchVO  {
 		this.updtDt = updtDt;
 	}
 	
+	// helper
 	/**
-	 * 실시간 공지 서비스 최신구분 코드ID를 획득한다.
+	 * 실시간 공지 최신구분명을 획득한다.
 	 * 
-	 * @return the recentCodeId
+	 * @return the recentNm
 	 */
-	public String getRecentCodeId() {
-		return recentCodeId;
+	public String getRecentNm() {
+		return recentNm;
 	}
 	/**
-	 * 실시간 공지 서비스 최신구분 코드ID를 할당한다.
+	 * 실시간 공지 최신구분명을 할당한다.
 	 * 
-	 * @param updtDt the updtDt to set
+	 * @param recentNm the recentNm to set
 	 */
-	public void setRecentCodeId(String recentCodeId) {
-		this.recentCodeId = recentCodeId;
+	public void setRecentNm(String recentNm) {
+		this.recentNm = recentNm;
+	}
+	
+	/**
+	 * 실시간 공지 서비스 목록 조회 갯수를 획득한다.
+	 * 
+	 * @return int
+	 */
+	public int getFetchRow() {
+		return fetchRow;
+	}
+	/**
+	 * 실시간 공지 서비스 목록 조회 갯수를 할당한다.
+	 * 
+	 * @param fetchRow
+	 */
+	public void setFetchRow(int fetchRow) {
+		this.fetchRow = fetchRow;
 	}
 
 	/**
-	 * 실시간 공지 서비스 최신구분 코드를 획득한다.
+	 * 실시간 공지 서비스 일련번호를 획득한다.
 	 * 
-	 * @return the recentCode
+	 * @return String 일련번호
 	 */
-	public String getRecentCode() {
-		return recentCode;
+	public String getSearchSn() {
+		return searchSn;
 	}
 	/**
-	 * 실시간 공지 서비스 최신구분 코드를 할당한다.
+	 * 실시간 공지 서비스 일변로호를 할당한다.
 	 * 
-	 * @param updtDt the updtDt to set
+	 * @param searchSn
 	 */
-	public void setRecentCode(String recentCode) {
-		this.recentCode = recentCode;
+	public void setSsearchSn(String searchSn) {
+		this.searchSn = searchSn;
 	}
-	
 }

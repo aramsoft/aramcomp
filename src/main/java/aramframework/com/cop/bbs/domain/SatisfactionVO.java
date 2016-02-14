@@ -25,13 +25,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class SatisfactionVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 수정 처리 여부 */
-	private boolean isModified = false;
-
-	// 도메인 정보
-	
+	// domain
 	/** 만족도 번호 */
 	private String stsfdgNo = "";
 
@@ -50,36 +44,23 @@ public class SatisfactionVO extends SearchVO {
 	/** 패스워드 */
 	private String stsfdgPassword = "";
 
-	/** 확인 패스워드 */
-	private String confirmPassword = "";
+	/** 만족도 */
+	private int stsfdg = 0;
 
 	/** 만족도 내용 */
 	private String stsfdgCn = "";
 
-	/** 만족도 */
-	private int stsfdg = 0;
-
 	/** 사용 여부 */
 	private String useAt = "";
 
-	/**
-	 * isModified attribute를 리턴한다.
-	 * 
-	 * @return the isModified
-	 */
-	public boolean isModified() {
-		return isModified;
-	}
-	/**
-	 * isModified attribute 값을 설정한다.
-	 * 
-	 * @param isModified
-	 *            the isModified to set
-	 */
-	public void setModified(boolean isModified) {
-		this.isModified = isModified;
-	}
+	// helper
+	/** 수정 처리 여부 */
+	private boolean isModified = false;
 
+	/** 확인 패스워드 */
+	private String confirmPassword = "";
+
+	// domain
 	/**
 	 * stsfdgNo attribute를 리턴한다.
 	 * 
@@ -189,21 +170,21 @@ public class SatisfactionVO extends SearchVO {
 	}
 
 	/**
-	 * confirmPassword attribute를 리턴한다.
+	 * stsfdg attribute를 리턴한다.
 	 * 
-	 * @return the confirmPassword
+	 * @return the stsfdg
 	 */
-	public String getConfirmPassword() {
-		return confirmPassword;
+	public int getStsfdg() {
+		return stsfdg;
 	}
 	/**
-	 * confirmPassword attribute 값을 설정한다.
+	 * stsfdg attribute 값을 설정한다.
 	 * 
-	 * @param confirmPassword
-	 *            the confirmPassword to set
+	 * @param stsfdg
+	 *            the stsfdg to set
 	 */
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = confirmPassword;
+	public void setStsfdg(int stsfdg) {
+		this.stsfdg = stsfdg;
 	}
 
 	/**
@@ -225,24 +206,6 @@ public class SatisfactionVO extends SearchVO {
 	}
 
 	/**
-	 * stsfdg attribute를 리턴한다.
-	 * 
-	 * @return the stsfdg
-	 */
-	public int getStsfdg() {
-		return stsfdg;
-	}
-	/**
-	 * stsfdg attribute 값을 설정한다.
-	 * 
-	 * @param stsfdg
-	 *            the stsfdg to set
-	 */
-	public void setStsfdg(int stsfdg) {
-		this.stsfdg = stsfdg;
-	}
-
-	/**
 	 * useAt attribute를 리턴한다.
 	 * 
 	 * @return the useAt
@@ -258,6 +221,43 @@ public class SatisfactionVO extends SearchVO {
 	 */
 	public void setUseAt(String useAt) {
 		this.useAt = useAt;
+	}
+
+	// helper
+	/**
+	 * isModified attribute를 리턴한다.
+	 * 
+	 * @return the isModified
+	 */
+	public boolean isModified() {
+		return isModified;
+	}
+	/**
+	 * isModified attribute 값을 설정한다.
+	 * 
+	 * @param isModified
+	 *            the isModified to set
+	 */
+	public void setModified(boolean isModified) {
+		this.isModified = isModified;
+	}
+
+	/**
+	 * confirmPassword attribute를 리턴한다.
+	 * 
+	 * @return the confirmPassword
+	 */
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	/**
+	 * confirmPassword attribute 값을 설정한다.
+	 * 
+	 * @param confirmPassword
+	 *            the confirmPassword to set
+	 */
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 
 	/**

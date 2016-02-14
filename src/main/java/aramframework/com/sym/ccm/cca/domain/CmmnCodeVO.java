@@ -23,8 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class CmmnCodeVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 코드ID */
 	private String codeId = "";
 
@@ -34,15 +33,17 @@ public class CmmnCodeVO extends SearchVO {
 	/** 코드ID설명 */
 	private String codeIdDc = "";
 
-	/** 분류코드 */
-	private String clCode = "";
-
-	/** 분류코드명 */
-	private String clCodeNm = "";
-
 	/** 사용여부 */
 	private String useAt = "";
 
+	/** 분류코드 */
+	private String clCode = "";
+
+	// helper
+	/** 분류코드명 */
+	private String clCodeNm = "";
+
+	// domain
 	/**
 	 * codeId attribute 를 리턴한다.
 	 * 
@@ -98,6 +99,24 @@ public class CmmnCodeVO extends SearchVO {
 	}
 
 	/**
+	 * useAt attribute 를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getUseAt() {
+		return useAt;
+	}
+	/**
+	 * useAt attribute 값을 설정한다.
+	 * 
+	 * @param useAt
+	 *            String
+	 */
+	public void setUseAt(String useAt) {
+		this.useAt = useAt;
+	}
+
+	/**
 	 * clCode attribute 를 리턴한다.
 	 * 
 	 * @return String
@@ -115,6 +134,7 @@ public class CmmnCodeVO extends SearchVO {
 		this.clCode = clCode;
 	}
 
+	// helper
 	/**
 	 * clCodeNm attribute 를 리턴한다.
 	 * 
@@ -131,24 +151,6 @@ public class CmmnCodeVO extends SearchVO {
 	 */
 	public void setClCodeNm(String clCodeNm) {
 		this.clCodeNm = clCodeNm;
-	}
-
-	/**
-	 * useAt attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getUseAt() {
-		return useAt;
-	}
-	/**
-	 * useAt attribute 값을 설정한다.
-	 * 
-	 * @param useAt
-	 *            String
-	 */
-	public void setUseAt(String useAt) {
-		this.useAt = useAt;
 	}
 
 }

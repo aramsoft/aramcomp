@@ -23,9 +23,6 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class DeptAuthorVO extends SearchVO {
 
-	/** serialVersionUID */
-	private static final long serialVersionUID = 1L;
-
 	/** 부서코드 */
 	private String deptCode;
 	

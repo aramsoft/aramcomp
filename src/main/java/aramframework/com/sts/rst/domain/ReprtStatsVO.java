@@ -24,11 +24,20 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class ReprtStatsVO extends SearchVO {
 
-	/**
-	 * serialVersionUID
-	 */
-	private static final long serialVersionUID = 1L;
-
+	// domain
+	/** 보고서ID */
+	private String reprtId;
+	
+	/** 보고서명 */
+	private String reprtNm;
+	
+	/** 보고서유형 */
+	private String reprtTy;
+	
+	/** 보고서현황 */
+	private String reprtSttus;
+	
+	// helper
 	/** 보고서유형 */
 	private String pmReprtTy;
 	
@@ -44,20 +53,8 @@ public class ReprtStatsVO extends SearchVO {
 	/** 보고서통계 그래프 사이즈 단위 */
 	float maxUnit = 50.0f;
 
-	/** 보고서ID */
-	private String reprtId;
-	
-	/** 보고서명 */
-	private String reprtNm;
-	
-	/** 보고서유형 */
-	private String reprtTy;
-	
 	/** 보고서유형명 */
 	private String reprtTyNm;
-	
-	/** 보고서현황 */
-	private String reprtSttus;
 	
 	/** 보고서현황명 */
 	private String reprtSttusNm;
@@ -95,6 +92,64 @@ public class ReprtStatsVO extends SearchVO {
 	/** 그래프용 진행상태 카운트 */
 	private String grpReprtSttusCnt;
 
+	// domain
+	/**
+	 * @return the reprtId
+	 */
+	public String getReprtId() {
+		return reprtId;
+	}
+	/**
+	 * @param reprtId
+	 *            the reprtId to set
+	 */
+	public void setReprtId(String reprtId) {
+		this.reprtId = reprtId;
+	}
+
+	/**
+	 * @return the reprtNm
+	 */
+	public String getReprtNm() {
+		return reprtNm;
+	}
+	/**
+	 * @param reprtNm
+	 *            the reprtNm to set
+	 */
+	public void setReprtNm(String reprtNm) {
+		this.reprtNm = reprtNm;
+	}
+
+	/**
+	 * @return the reprtTy
+	 */
+	public String getReprtTy() {
+		return reprtTy;
+	}
+	/**
+	 * @param reprtTy
+	 *            the reprtTy to set
+	 */
+	public void setReprtTy(String reprtTy) {
+		this.reprtTy = reprtTy;
+	}
+
+	/**
+	 * @return the reprtSttus
+	 */
+	public String getReprtSttus() {
+		return reprtSttus;
+	}
+	/**
+	 * @param reprtSttus
+	 *            the reprtSttus to set
+	 */
+	public void setReprtSttus(String reprtSttus) {
+		this.reprtSttus = reprtSttus;
+	}
+
+	// helper
 	/**
 	 * @return the pmReprtTy
 	 */
@@ -166,48 +221,6 @@ public class ReprtStatsVO extends SearchVO {
 	}
 
 	/**
-	 * @return the reprtId
-	 */
-	public String getReprtId() {
-		return reprtId;
-	}
-	/**
-	 * @param reprtId
-	 *            the reprtId to set
-	 */
-	public void setReprtId(String reprtId) {
-		this.reprtId = reprtId;
-	}
-
-	/**
-	 * @return the reprtNm
-	 */
-	public String getReprtNm() {
-		return reprtNm;
-	}
-	/**
-	 * @param reprtNm
-	 *            the reprtNm to set
-	 */
-	public void setReprtNm(String reprtNm) {
-		this.reprtNm = reprtNm;
-	}
-
-	/**
-	 * @return the reprtTy
-	 */
-	public String getReprtTy() {
-		return reprtTy;
-	}
-	/**
-	 * @param reprtTy
-	 *            the reprtTy to set
-	 */
-	public void setReprtTy(String reprtTy) {
-		this.reprtTy = reprtTy;
-	}
-
-	/**
 	 * @return the reprtTyNm
 	 */
 	public String getReprtTyNm() {
@@ -219,20 +232,6 @@ public class ReprtStatsVO extends SearchVO {
 	 */
 	public void setReprtTyNm(String reprtTyNm) {
 		this.reprtTyNm = reprtTyNm;
-	}
-
-	/**
-	 * @return the reprtSttus
-	 */
-	public String getReprtSttus() {
-		return reprtSttus;
-	}
-	/**
-	 * @param reprtSttus
-	 *            the reprtSttus to set
-	 */
-	public void setReprtSttus(String reprtSttus) {
-		this.reprtSttus = reprtSttus;
 	}
 
 	/**

@@ -22,11 +22,8 @@ import aramframework.com.cmm.domain.SearchVO;
  */
 
 public class GroupVO extends SearchVO {
-	/**
-	 * serialVersionUID
-	 */
-	private static final long serialVersionUID = 1L;
 	
+	// domain
 	/** 그룹 ID */
 	private String groupId;
 	
@@ -39,6 +36,7 @@ public class GroupVO extends SearchVO {
 	/** 그룹설명  */
 	private String groupDc;
 
+	// domain
 	/**
 	 * groupId attribute 를 리턴한다.
 	 * 

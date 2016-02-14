@@ -23,11 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class ServerEqpmnVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 서버장비명 조회조건 */
-	private String strServerEqpmnNm;
-
+	// domain
 	/** 서버 장비 ID */
 	private String serverEqpmnId;
 	
@@ -61,20 +57,11 @@ public class ServerEqpmnVO extends SearchVO {
 	/** 등록일자 */
 	private String regstYmd;
 	
-	/**
-	 * @return the strServerEqpmnNm
-	 */
-	public String getStrServerEqpmnNm() {
-		return strServerEqpmnNm;
-	}
-	/**
-	 * @param strServerEqpmnNm
-	 *            the strServerEqpmnNm to set
-	 */
-	public void setStrServerEqpmnNm(String strServerEqpmnNm) {
-		this.strServerEqpmnNm = strServerEqpmnNm;
-	}
+	// helper
+	/** 서버장비명 조회조건 */
+	private String strServerEqpmnNm;
 
+	// domain
 	/**
 	 * @return the serverEqpmnId
 	 */
@@ -227,6 +214,21 @@ public class ServerEqpmnVO extends SearchVO {
 	 */
 	public void setRegstYmd(String regstYmd) {
 		this.regstYmd = regstYmd;
+	}
+
+	// helper
+	/**
+	 * @return the strServerEqpmnNm
+	 */
+	public String getStrServerEqpmnNm() {
+		return strServerEqpmnNm;
+	}
+	/**
+	 * @param strServerEqpmnNm
+	 *            the strServerEqpmnNm to set
+	 */
+	public void setStrServerEqpmnNm(String strServerEqpmnNm) {
+		this.strServerEqpmnNm = strServerEqpmnNm;
 	}
 
 }

@@ -26,19 +26,28 @@ import aramframework.com.cmm.util.WebUtil;
 
 public class BoardUseInfVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domin
 	/** 게시판 아이디 */
 	private String bbsId = "";
 
+	/** 대상 아이디 */
+	private String trgetId = "";
+
+	/** 사용여부 */
+	private String useAt = "";
+
+	/** 등록구분코드 */
+	private String registSeCode = "";
+
+	/** 공개여부 */
+	private String publicAt = "";
+
+	// helper
 	/** 게시판 명 */
 	private String bbsNm = "";
 
 	/** 게시판 유형코드 */
 	private String bbsTyCode = "";
-
-	/** 대상 아이디 */
-	private String trgetId = "";
 
 	/** 대상 구분 (커뮤니티, 동호회) */
 	private String trgetType = "";
@@ -49,29 +58,8 @@ public class BoardUseInfVO extends SearchVO {
 	/** 커뮤니티 명 */
 	private String cmmntyNm = "";
 
-	/** 동호회 아이디 */
-	private String clbId = "";
-
-	/** 동호회 명 */
-	private String clbNm = "";
-
-	/** 동호회커뮤니티 아이디 */
-	private String clbCmmntyId = "";
-
-	/** 동호회커뮤니티 명 */
-	private String clbCmmntyNm = "";
-
-	/** 등록구분코드 */
-	private String registSeCode = "";
-
 	/** 등록구분 코드명 */
 	private String registSeCodeNm = "";
-
-	/** 사용여부 */
-	private String useAt = "";
-
-	/** 공개여부 */
-	private String publicAt = "";
 
 	/** 제공 URL */
 	private String provdUrl = "";
@@ -79,6 +67,7 @@ public class BoardUseInfVO extends SearchVO {
 	/** 제공 URL2 */
 	private String provdUrl2 = "";
 	
+	// domain
 	/**
 	 * bbsId attribute를 리턴한다.
 	 * 
@@ -99,6 +88,79 @@ public class BoardUseInfVO extends SearchVO {
 			this.pathId = WebUtil.getPathId(bbsId);
 	}
 
+	/**
+	 * trgetId attribute를 리턴한다.
+	 * 
+	 * @return the trgetId
+	 */
+	public String getTrgetId() {
+		return trgetId;
+	}
+	/**
+	 * trgetId attribute 값을 설정한다.
+	 * 
+	 * @param trgetId
+	 *            the trgetId to set
+	 */
+	public void setTrgetId(String trgetId) {
+		this.trgetId = trgetId;
+	}
+
+	/**
+	 * useAt attribute를 리턴한다.
+	 * 
+	 * @return the useAt
+	 */
+	public String getUseAt() {
+		return useAt;
+	}
+	/**
+	 * useAt attribute 값을 설정한다.
+	 * 
+	 * @param useAt
+	 *            the useAt to set
+	 */
+	public void setUseAt(String useAt) {
+		this.useAt = useAt;
+	}
+
+	/**
+	 * registSeCode attribute를 리턴한다.
+	 * 
+	 * @return the registSeCode
+	 */
+	public String getRegistSeCode() {
+		return registSeCode;
+	}
+	/**
+	 * registSeCode attribute 값을 설정한다.
+	 * 
+	 * @param registSeCode
+	 *            the registSeCode to set
+	 */
+	public void setRegistSeCode(String registSeCode) {
+		this.registSeCode = registSeCode;
+	}
+
+	/**
+	 * publicAt attribute를 리턴한다.
+	 * 
+	 * @return the publicAt
+	 */
+	public String getPublicAt() {
+		return publicAt;
+	}
+	/**
+	 * publicAt attribute 값을 설정한다.
+	 * 
+	 * @param publicAt
+	 *            the publicAt to set
+	 */
+	public void setPublicAt(String publicAt) {
+		this.publicAt = publicAt;
+	}
+
+	// helper
 	/**
 	 * bbsNm attribute를 리턴한다.
 	 * 
@@ -133,24 +195,6 @@ public class BoardUseInfVO extends SearchVO {
 	 */
 	public void setBbsTyCode(String bbsTyCode) {
 		this.bbsTyCode = bbsTyCode;
-	}
-
-	/**
-	 * trgetId attribute를 리턴한다.
-	 * 
-	 * @return the trgetId
-	 */
-	public String getTrgetId() {
-		return trgetId;
-	}
-	/**
-	 * trgetId attribute 값을 설정한다.
-	 * 
-	 * @param trgetId
-	 *            the trgetId to set
-	 */
-	public void setTrgetId(String trgetId) {
-		this.trgetId = trgetId;
 	}
 
 	/**
@@ -208,96 +252,6 @@ public class BoardUseInfVO extends SearchVO {
 	}
 
 	/**
-	 * clbId attribute를 리턴한다.
-	 * 
-	 * @return the clbId
-	 */
-	public String getClbId() {
-		return clbId;
-	}
-	/**
-	 * clbId attribute 값을 설정한다.
-	 * 
-	 * @param clbId
-	 *            the clbId to set
-	 */
-	public void setClbId(String clbId) {
-		this.clbId = clbId;
-	}
-
-	/**
-	 * clbNm attribute를 리턴한다.
-	 * 
-	 * @return the clbNm
-	 */
-	public String getClbNm() {
-		return clbNm;
-	}
-	/**
-	 * clbNm attribute 값을 설정한다.
-	 * 
-	 * @param clbNm
-	 *            the clbNm to set
-	 */
-	public void setClbNm(String clbNm) {
-		this.clbNm = clbNm;
-	}
-
-	/**
-	 * clbCmmntyId attribute를 리턴한다.
-	 * 
-	 * @return the cmmntyId
-	 */
-	public String getClbCmmntyId() {
-		return clbCmmntyId;
-	}
-	/**
-	 * clbCmmntyId attribute 값을 설정한다.
-	 * 
-	 * @param clbCmmntyId
-	 *            the clbCmmntyId to set
-	 */
-	public void setClbCmmntyId(String clbCmmntyId) {
-		this.clbCmmntyId = clbCmmntyId;
-	}
-
-	/**
-	 * clbCmmntyNm attribute를 리턴한다.
-	 * 
-	 * @return the clbCmmntyNm
-	 */
-	public String getClbCmmntyNm() {
-		return clbCmmntyNm;
-	}
-	/**
-	 * clbCmmntyNm attribute 값을 설정한다.
-	 * 
-	 * @param clbCmmntyNm
-	 *            the clbCmmntyNm to set
-	 */
-	public void setClbCmmntyNm(String clbCmmntyNm) {
-		this.clbCmmntyNm = clbCmmntyNm;
-	}
-
-	/**
-	 * registSeCode attribute를 리턴한다.
-	 * 
-	 * @return the registSeCode
-	 */
-	public String getRegistSeCode() {
-		return registSeCode;
-	}
-	/**
-	 * registSeCode attribute 값을 설정한다.
-	 * 
-	 * @param registSeCode
-	 *            the registSeCode to set
-	 */
-	public void setRegistSeCode(String registSeCode) {
-		this.registSeCode = registSeCode;
-	}
-
-	/**
 	 * registSeCodeNm attribute를 리턴한다.
 	 * 
 	 * @return the registSeCodeNm
@@ -313,42 +267,6 @@ public class BoardUseInfVO extends SearchVO {
 	 */
 	public void setRegistSeCodeNm(String registSeCodeNm) {
 		this.registSeCodeNm = registSeCodeNm;
-	}
-
-	/**
-	 * useAt attribute를 리턴한다.
-	 * 
-	 * @return the useAt
-	 */
-	public String getUseAt() {
-		return useAt;
-	}
-	/**
-	 * useAt attribute 값을 설정한다.
-	 * 
-	 * @param useAt
-	 *            the useAt to set
-	 */
-	public void setUseAt(String useAt) {
-		this.useAt = useAt;
-	}
-
-	/**
-	 * publicAt attribute를 리턴한다.
-	 * 
-	 * @return the publicAt
-	 */
-	public String getPublicAt() {
-		return publicAt;
-	}
-	/**
-	 * publicAt attribute 값을 설정한다.
-	 * 
-	 * @param publicAt
-	 *            the publicAt to set
-	 */
-	public void setPublicAt(String publicAt) {
-		this.publicAt = publicAt;
 	}
 
 	/**

@@ -1,7 +1,5 @@
 package aramframework.com.sym.bat.domain;
 
-import java.io.Serializable;
-
 /**
  * 배치스케줄요일에 대한 model 클래스
  * 
@@ -21,19 +19,20 @@ import java.io.Serializable;
  * </pre>
  */
 
-public class BatchSchdulDfkVO implements Serializable {
+public class BatchSchdulDfkVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 배치스케줄ID */
 	private String batchSchdulId;
 
 	/** 실행스케줄요일 */
 	private String executSchdulDfkSe;
 
+	// helper
 	/** 실행스케줄요일명 */
 	private String executSchdulDfkSeNm;
 
+	// domain
 	/**
 	 * @return the batchSchdulId
 	 */
@@ -62,6 +61,7 @@ public class BatchSchdulDfkVO implements Serializable {
 		this.executSchdulDfkSe = executSchdulDfkSe;
 	}
 
+	// helper
 	/**
 	 * @return the executSchdulDfkSeNm
 	 */

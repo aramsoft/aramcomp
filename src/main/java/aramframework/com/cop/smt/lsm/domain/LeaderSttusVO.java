@@ -25,8 +25,6 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class LeaderSttusVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
 	/** 간부ID */
 	private String leaderId;
 

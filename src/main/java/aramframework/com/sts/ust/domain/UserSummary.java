@@ -21,18 +21,20 @@ package aramframework.com.sts.ust.domain;
 
 public class UserSummary {
 
+	// domain
 	/** 발생일자	*/
 	private String occrrncDe;
-	
-	/** 세부통계구분 */
-	private String statsDetailSe;
 	
 	/** 통계구분 */
 	private String statsSe;
 	
+	/** 세부통계구분 */
+	private String statsDetailSe;
+	
 	/** 사용자수 */
 	private int userCo;
 
+	// domain
 	/**
 	 * occrrncDe attribute 를 리턴한다.
 	 * 
@@ -52,24 +54,6 @@ public class UserSummary {
 	}
 
 	/**
-	 * statsDetailSe attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getStatsDetailSe() {
-		return statsDetailSe;
-	}
-	/**
-	 * statsDetailSe attribute 값을 설정한다.
-	 * 
-	 * @param statsDetailSe
-	 *            String
-	 */
-	public void setStatsDetailSe(String statsDetailSe) {
-		this.statsDetailSe = statsDetailSe;
-	}
-
-	/**
 	 * statsSe attribute 를 리턴한다.
 	 * 
 	 * @return String
@@ -85,6 +69,24 @@ public class UserSummary {
 	 */
 	public void setStatsSe(String statsSe) {
 		this.statsSe = statsSe;
+	}
+
+	/**
+	 * statsDetailSe attribute 를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getStatsDetailSe() {
+		return statsDetailSe;
+	}
+	/**
+	 * statsDetailSe attribute 값을 설정한다.
+	 * 
+	 * @param statsDetailSe
+	 *            String
+	 */
+	public void setStatsDetailSe(String statsDetailSe) {
+		this.statsDetailSe = statsDetailSe;
 	}
 
 	/**

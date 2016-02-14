@@ -27,32 +27,26 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class PhotoVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-	/**
-     * 순번
-     */
+	// domain
+	/** 순번     */
     private int sn;
-    /**
-     * 회원 아이디
-     */
+    
+    /** 회원 아이디     */
     private String mberId;
-    /**
-     * 사진 제목
-     */
+    
+    /** 사진 제목     */
     private String photoSj;
-    /**
-     * 사진 파일 아이디
-     */
+    
+    /** 사진 파일 아이디     */
     private String atchFileId;
-    /**
-     * 생성일시
-     */
+    
+    /** 생성일시     */
     private String creatDt;
-    /**
-     * 수정일시
-     */
+    
+    /** 수정일시     */
     private String updtDt;
 
+	// domain
     /**
      * 순번을 가져온다.
      * @return int 순번

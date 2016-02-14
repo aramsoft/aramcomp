@@ -23,8 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class InsttCodeRecptnVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 발생일자 */
 	private String occrrDe = "";
 
@@ -61,11 +60,11 @@ public class InsttCodeRecptnVO extends SearchVO {
 	/** 기관차수 */
 	private String insttOdr = "";
 
-	/** 최상위기관코드 */
-	private String bestInsttCode = "";
-
 	/** 상위기관코드 */
 	private String upperInsttCode = "";
+
+	/** 최상위기관코드 */
+	private String bestInsttCode = "";
 
 	/** 대표기관코드 */
 	private String reprsntInsttCode = "";
@@ -106,6 +105,7 @@ public class InsttCodeRecptnVO extends SearchVO {
 	/** 정렬순서 */
 	private int sortOrdr = 0;
 
+	// domain
 	/**
 	 * occrrDe attribute 를 리턴한다.
 	 * 

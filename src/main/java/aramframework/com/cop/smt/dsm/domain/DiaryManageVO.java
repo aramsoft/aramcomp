@@ -23,16 +23,12 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class DiaryManageVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 일지ID */
 	private String diaryId;
 
 	/** 일정ID */
 	private String schdulId;
-
-	/** 일정명 */
-	private String schdulNm;
 
 	/** 진척율 */
 	private String diaryProcsPte;
@@ -49,6 +45,11 @@ public class DiaryManageVO extends SearchVO  {
 	/** 첨부파일 */
 	private String atchFileId;
 
+	// helper
+	/** 일정명 */
+	private String schdulNm;
+
+	// domain
 	/**
 	 * diaryId attribute 를 리턴한다.
 	 * 
@@ -81,23 +82,6 @@ public class DiaryManageVO extends SearchVO  {
 	 */
 	public void setSchdulId(String schdulId) {
 		this.schdulId = schdulId;
-	}
-
-	/**
-	 * schdulNm attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getSchdulNm() {
-		return schdulNm;
-	}
-	/**
-	 * schdulNm attribute 값을 설정한다.
-	 * 
-	 * @return schdulCn String
-	 */
-	public void setSchdulNm(String schdulNm) {
-		this.schdulNm = schdulNm;
 	}
 
 	/**
@@ -183,6 +167,24 @@ public class DiaryManageVO extends SearchVO  {
 	 */
 	public void setAtchFileId(String atchFileId) {
 		this.atchFileId = atchFileId;
+	}
+
+	// helper
+	/**
+	 * schdulNm attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getSchdulNm() {
+		return schdulNm;
+	}
+	/**
+	 * schdulNm attribute 값을 설정한다.
+	 * 
+	 * @return schdulCn String
+	 */
+	public void setSchdulNm(String schdulNm) {
+		this.schdulNm = schdulNm;
 	}
 
 }

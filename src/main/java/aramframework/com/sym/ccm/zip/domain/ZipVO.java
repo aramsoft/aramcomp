@@ -23,8 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class ZipVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 우편번호 */
 	private String zip = "";
 
@@ -46,6 +45,7 @@ public class ZipVO extends SearchVO {
     /** 번지동호 */
 	private String lnbrDongHo = "";
 
+	// domain
 	/**
 	 * zip attribute 를 리턴한다.
 	 * 

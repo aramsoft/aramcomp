@@ -25,29 +25,18 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class UserLogVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 검색시작일 */
-	private String searchBgnDe = "";
-	
-	/** 검색종료일 */
-	private String searchEndDe = "";
-
-
+	// domain
 	/** 발생일자 */
 	private String occrrncDe = "";
 	
 	/** 요청자아이디 */
 	private String rqesterId = "";
 	
-	/** 요청자 이름 */
-	private String rqesterNm = "";
+	/** 서비스명 */
+	private String srvcNm = "";
 	
 	/** 메서드명 */
 	private String methodNm = "";
-	
-	/** 서비스명 */
-	private String srvcNm = "";
 	
 	/** 생성횟수 */
 	private String creatCo = "";
@@ -67,20 +56,17 @@ public class UserLogVO extends SearchVO {
 	/** 에러횟수 */
 	private String errorCo = "";
 
-	public String getSearchBgnDe() {
-		return searchBgnDe;
-	}
-	public void setSearchBgnDe(String searchBgnDe) {
-		this.searchBgnDe = searchBgnDe;
-	}
+	// helper	
+	/** 요청자 이름 */
+	private String rqesterNm = "";
+	
+	/** 검색시작일 */
+	private String searchBgnDe = "";
+	
+	/** 검색종료일 */
+	private String searchEndDe = "";
 
-	public String getSearchEndDe() {
-		return searchEndDe;
-	}
-	public void setSearchEndDe(String searchEndDe) {
-		this.searchEndDe = searchEndDe;
-	}
-
+	// domain
 	public String getOccrrncDe() {
 		return occrrncDe;
 	}
@@ -95,11 +81,11 @@ public class UserLogVO extends SearchVO {
 		this.rqesterId = rqesterId;
 	}
 
-	public String getRqesterNm() {
-		return rqesterNm;
+	public String getSrvcNm() {
+		return srvcNm;
 	}
-	public void setRqesterNm(String rqesterNm) {
-		this.rqesterNm = rqesterNm;
+	public void setSrvcNm(String srvcNm) {
+		this.srvcNm = srvcNm;
 	}
 
 	public String getMethodNm() {
@@ -109,13 +95,6 @@ public class UserLogVO extends SearchVO {
 		this.methodNm = methodNm;
 	}
 	
-	public String getSrvcNm() {
-		return srvcNm;
-	}
-	public void setSrvcNm(String srvcNm) {
-		this.srvcNm = srvcNm;
-	}
-
 	public String getCreatCo() {
 		return creatCo;
 	}
@@ -156,6 +135,28 @@ public class UserLogVO extends SearchVO {
 	}
 	public void setErrorCo(String errorCo) {
 		this.errorCo = errorCo;
+	}
+
+	// helper
+	public String getRqesterNm() {
+		return rqesterNm;
+	}
+	public void setRqesterNm(String rqesterNm) {
+		this.rqesterNm = rqesterNm;
+	}
+
+	public String getSearchBgnDe() {
+		return searchBgnDe;
+	}
+	public void setSearchBgnDe(String searchBgnDe) {
+		this.searchBgnDe = searchBgnDe;
+	}
+
+	public String getSearchEndDe() {
+		return searchEndDe;
+	}
+	public void setSearchEndDe(String searchEndDe) {
+		this.searchEndDe = searchEndDe;
 	}
 
 	public String toString() {

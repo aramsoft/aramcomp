@@ -25,46 +25,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class LeaderSchdulVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
-	// 페이지간 검색유지
-	
-	/** 검색일정구분 */
-	private String searchSchdulSe = "";
-
-	/** 검색대상자 */
-	private String searchUser = "";
-
-	/** 년 */
-	private String  year = "";
-
-	/** 월 */
-	private String  month = "";
-
-	/** 주 */ 
-	private String  week = "";
-	
-	/** 일 */
-	private String  day = "";
-
-	// IBatis 검색용
-	
-	/** 검색모드(월/주/일) */
-	private String searchMode = "";
-	
-	/** 검색월 */
-	private String searchMonth = "";
-
-	/** 검색시작일 */
-	private String searchBgnde = "";
-	
-	/** 검색종료일 */
-	private String searchEndde = "";
-	
-	/** 검색일 */
-	private String searchDay = "";
-	
-	// 도메인 정보
-	
+	// domain
 	/** 일정ID	 */
 	private String schdulId;
 
@@ -83,9 +44,6 @@ public class LeaderSchdulVO extends SearchVO  {
 	/** 간부ID */
 	private String leaderId;
 
-	/** 간부명	 */
-	private String leaderName;
-
 	/** 반복구분코드	 */
 	private String reptitSeCode;
 
@@ -97,6 +55,10 @@ public class LeaderSchdulVO extends SearchVO  {
 
 	/** 일정담당자ID	 */
 	private String schdulChargerId;
+
+	// helper
+	/** 간부명	 */
+	private String leaderName;
 
 	/** 일정담당자명	 */
 	private String schdulChargerName;
@@ -118,6 +80,169 @@ public class LeaderSchdulVO extends SearchVO  {
 
 	/** 일정종료일자(Year/Month/Day) */
 	private String schdulEnddeYYYMMDD = "";
+
+	// 페이지간 검색유지
+	/** 검색일정구분 */
+	private String searchSchdulSe = "";
+
+	/** 검색대상자 */
+	private String searchUser = "";
+
+	/** 년 */
+	private String  year = "";
+
+	/** 월 */
+	private String  month = "";
+
+	/** 주 */ 
+	private String  week = "";
+	
+	/** 일 */
+	private String  day = "";
+
+	// IBatis 검색용
+	/** 검색모드(월/주/일) */
+	private String searchMode = "";
+	
+	/** 검색월 */
+	private String searchMonth = "";
+
+	/** 검색시작일 */
+	private String searchBgnde = "";
+	
+	/** 검색종료일 */
+	private String searchEndde = "";
+	
+	/** 검색일 */
+	private String searchDay = "";
+	
+	// domain
+	public String getSchdulId() {
+		return schdulId;
+	}
+	public void setSchdulId(String schdulId) {
+		this.schdulId = schdulId;
+	}
+
+	public String getSchdulSe() {
+		return schdulSe;
+	}
+	public void setSchdulSe(String schdulSe) {
+		this.schdulSe = schdulSe;
+	}
+
+	public String getSchdulNm() {
+		return schdulNm;
+	}
+	public void setSchdulNm(String schdulNm) {
+		this.schdulNm = schdulNm;
+	}
+
+	public String getSchdulCn() {
+		return schdulCn;
+	}
+	public void setSchdulCn(String schdulCn) {
+		this.schdulCn = schdulCn;
+	}
+
+	public String getSchdulPlace() {
+		return schdulPlace;
+	}
+	public void setSchdulPlace(String schdulPlace) {
+		this.schdulPlace = schdulPlace;
+	}
+
+	public String getLeaderId() {
+		return leaderId;
+	}
+	public void setLeaderId(String leaderId) {
+		this.leaderId = leaderId;
+	}
+
+	public String getReptitSeCode() {
+		return reptitSeCode;
+	}
+	public void setReptitSeCode(String reptitSeCode) {
+		this.reptitSeCode = reptitSeCode;
+	}
+
+	public String getSchdulBgnde() {
+		return schdulBgnde;
+	}
+	public void setSchdulBgnde(String schdulBgnde) {
+		this.schdulBgnde = schdulBgnde;
+	}
+
+	public String getSchdulEndde() {
+		return schdulEndde;
+	}
+	public void setSchdulEndde(String schdulEndde) {
+		this.schdulEndde = schdulEndde;
+	}
+
+	public String getSchdulChargerId() {
+		return schdulChargerId;
+	}
+	public void setSchdulChargerId(String schdulChargerId) {
+		this.schdulChargerId = schdulChargerId;
+	}
+
+	// helper
+	public String getLeaderName() {
+		return leaderName;
+	}
+	public void setLeaderName(String leaderName) {
+		this.leaderName = leaderName;
+	}
+
+	public String getSchdulChargerName() {
+		return schdulChargerName;
+	}
+	public void setSchdulChargerName(String schdulChargerName) {
+		this.schdulChargerName = schdulChargerName;
+	}
+
+	public String getSchdulBgndeHH() {
+		return schdulBgndeHH;
+	}
+	public void setSchdulBgndeHH(String schdulBgndeHH) {
+		this.schdulBgndeHH = schdulBgndeHH;
+	}
+
+	public String getSchdulBgndeMM() {
+		return schdulBgndeMM;
+	}
+	public void setSchdulBgndeMM(String schdulBgndeMM) {
+		this.schdulBgndeMM = schdulBgndeMM;
+	}
+
+	public String getSchdulEnddeHH() {
+		return schdulEnddeHH;
+	}
+	public void setSchdulEnddeHH(String schdulEnddeHH) {
+		this.schdulEnddeHH = schdulEnddeHH;
+	}
+
+	public String getSchdulEnddeMM() {
+		return schdulEnddeMM;
+	}
+	public void setSchdulEnddeMM(String schdulEnddeMM) {
+		this.schdulEnddeMM = schdulEnddeMM;
+	}
+
+	public String getSchdulBgndeYYYMMDD() {
+		return schdulBgndeYYYMMDD;
+	}
+	public void setSchdulBgndeYYYMMDD(String schdulBgndeYYYMMDD) {
+		this.schdulBgndeYYYMMDD = schdulBgndeYYYMMDD;
+	}
+
+	public String getSchdulEnddeYYYMMDD() {
+		return schdulEnddeYYYMMDD;
+	}
+	public void setSchdulEnddeYYYMMDD(String schdulEnddeYYYMMDD) {
+		this.schdulEnddeYYYMMDD = schdulEnddeYYYMMDD;
+	}
 
 	/**
 	 * @return the searchSchdulSe
@@ -260,132 +385,6 @@ public class LeaderSchdulVO extends SearchVO  {
 	 */
 	public void setSearchDay(String searchDay) {
 		this.searchDay = searchDay;
-	}
-
-	public String getSchdulId() {
-		return schdulId;
-	}
-	public void setSchdulId(String schdulId) {
-		this.schdulId = schdulId;
-	}
-
-	public String getSchdulSe() {
-		return schdulSe;
-	}
-	public void setSchdulSe(String schdulSe) {
-		this.schdulSe = schdulSe;
-	}
-
-	public String getSchdulNm() {
-		return schdulNm;
-	}
-	public void setSchdulNm(String schdulNm) {
-		this.schdulNm = schdulNm;
-	}
-
-	public String getSchdulCn() {
-		return schdulCn;
-	}
-	public void setSchdulCn(String schdulCn) {
-		this.schdulCn = schdulCn;
-	}
-
-	public String getSchdulPlace() {
-		return schdulPlace;
-	}
-	public void setSchdulPlace(String schdulPlace) {
-		this.schdulPlace = schdulPlace;
-	}
-
-	public String getLeaderId() {
-		return leaderId;
-	}
-	public void setLeaderId(String leaderId) {
-		this.leaderId = leaderId;
-	}
-
-	public String getLeaderName() {
-		return leaderName;
-	}
-	public void setLeaderName(String leaderName) {
-		this.leaderName = leaderName;
-	}
-
-	public String getReptitSeCode() {
-		return reptitSeCode;
-	}
-	public void setReptitSeCode(String reptitSeCode) {
-		this.reptitSeCode = reptitSeCode;
-	}
-
-	public String getSchdulBgnde() {
-		return schdulBgnde;
-	}
-	public void setSchdulBgnde(String schdulBgnde) {
-		this.schdulBgnde = schdulBgnde;
-	}
-
-	public String getSchdulEndde() {
-		return schdulEndde;
-	}
-	public void setSchdulEndde(String schdulEndde) {
-		this.schdulEndde = schdulEndde;
-	}
-
-	public String getSchdulChargerId() {
-		return schdulChargerId;
-	}
-	public void setSchdulChargerId(String schdulChargerId) {
-		this.schdulChargerId = schdulChargerId;
-	}
-
-	public String getSchdulChargerName() {
-		return schdulChargerName;
-	}
-	public void setSchdulChargerName(String schdulChargerName) {
-		this.schdulChargerName = schdulChargerName;
-	}
-
-	public String getSchdulBgndeHH() {
-		return schdulBgndeHH;
-	}
-	public void setSchdulBgndeHH(String schdulBgndeHH) {
-		this.schdulBgndeHH = schdulBgndeHH;
-	}
-
-	public String getSchdulBgndeMM() {
-		return schdulBgndeMM;
-	}
-	public void setSchdulBgndeMM(String schdulBgndeMM) {
-		this.schdulBgndeMM = schdulBgndeMM;
-	}
-
-	public String getSchdulEnddeHH() {
-		return schdulEnddeHH;
-	}
-	public void setSchdulEnddeHH(String schdulEnddeHH) {
-		this.schdulEnddeHH = schdulEnddeHH;
-	}
-
-	public String getSchdulEnddeMM() {
-		return schdulEnddeMM;
-	}
-	public void setSchdulEnddeMM(String schdulEnddeMM) {
-		this.schdulEnddeMM = schdulEnddeMM;
-	}
-
-	public String getSchdulBgndeYYYMMDD() {
-		return schdulBgndeYYYMMDD;
-	}
-	public void setSchdulBgndeYYYMMDD(String schdulBgndeYYYMMDD) {
-		this.schdulBgndeYYYMMDD = schdulBgndeYYYMMDD;
-	}
-
-	public String getSchdulEnddeYYYMMDD() {
-		return schdulEnddeYYYMMDD;
-	}
-	public void setSchdulEnddeYYYMMDD(String schdulEnddeYYYMMDD) {
-		this.schdulEnddeYYYMMDD = schdulEnddeYYYMMDD;
 	}
 
 	/**

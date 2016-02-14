@@ -27,85 +27,36 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class SyncVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/**
-	 * 조회건수
-	 */
-	private int fetchRow = 0;
-	
-	/**
-	 * 접근 기기에 따른 조회 페이징 처리 정보
-	 */
-	private String deviceType = "";
-	
-	/**
-	 * 동기화 서비스 일련번호
-	 */
+	// domain
+	/** 동기화 서비스 일련번호	 */
 	private int sn = 0;
 	
-	/**
-	 * 동기화 서비스 회원ID
-	 */
+	/** 동기화 서비스 회원ID	 */
 	private String mberId = "";
 	
-	/**
-	 * 동기화 서비스 제목
-	 */
+	/** 동기화 서비스 제목	 */
 	private String syncSj = "";
 	
-	/**
-	 * 동기화 서비스 내용
-	 */
+	/** 동기화 서비스 내용	 */
 	private String syncCn = "";
 	
-	/**
-	 * 동기화 서비스 동기일시 
-	 */
+	/** 동기화 서비스 동기일시	 */
 	private String syncDt = "";
 	
-	/**
-	 * 동기화 서비스 생성일시 
-	 */	
+	/** 동기화 서비스 생성일시	 */	
 	private String creatDt = "";
 	
-	/**
-	 * 동기화 서비스 수정일시 
-	 */
+	/** 동기화 서비스 수정일시	 */
 	private String updtDt = "";	
 	
-	/**
-	 * 조회 건수를 가져온다.
-	 * @return int 조회 건수
-	 */	
-	public int getFetchRow() {
-		return fetchRow;
-	}
-	/**
-	 * 조회 건수를 저장한다.
-	 * 
-	 * @param fetchRow 조회건수
-	 */
-	public void setFetchRow(int fetchRow) {
-		this.fetchRow = fetchRow;
-	}
+	// helper
+	/** 조회건수	 */
+	private int fetchRow = 0;
 	
-	/**
-	 * 접속 장비타입을 가져온다.
-	 * @return String 장비타입
-	 */
-	public String getDeviceType() {
-		return deviceType;
-	}
-	/**
-	 * 조회 건수를 저장한다.
-	 * 
-	 * @param deviceType 접속 장비타입
-	 */
-	public void setDeviceType(String deviceType) {
-		this.deviceType = deviceType;
-	}
-
+	/** 접근 기기에 따른 조회 페이징 처리 정보	 */
+	private String deviceType = "";
+	
+	// domain
 	/**
 	 * 동기화 서비스 일련번호를 획득한다.
 	 * 
@@ -224,5 +175,38 @@ public class SyncVO extends SearchVO {
 	public void setUpdtDt(String updtDt) {
 		this.updtDt = updtDt;
 	}	
+
+	// helper
+	/**
+	 * 조회 건수를 가져온다.
+	 * @return int 조회 건수
+	 */	
+	public int getFetchRow() {
+		return fetchRow;
+	}
+	/**
+	 * 조회 건수를 저장한다.
+	 * 
+	 * @param fetchRow 조회건수
+	 */
+	public void setFetchRow(int fetchRow) {
+		this.fetchRow = fetchRow;
+	}
+	
+	/**
+	 * 접속 장비타입을 가져온다.
+	 * @return String 장비타입
+	 */
+	public String getDeviceType() {
+		return deviceType;
+	}
+	/**
+	 * 조회 건수를 저장한다.
+	 * 
+	 * @param deviceType 접속 장비타입
+	 */
+	public void setDeviceType(String deviceType) {
+		this.deviceType = deviceType;
+	}
 
 }

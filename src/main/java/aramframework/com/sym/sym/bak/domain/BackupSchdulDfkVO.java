@@ -1,7 +1,5 @@
 package aramframework.com.sym.sym.bak.domain;
 
-import java.io.Serializable;
-
 /**
  * 백업스케줄요일에 대한 model 클래스
  * 
@@ -21,19 +19,20 @@ import java.io.Serializable;
  * </pre>
  */
 
-public class BackupSchdulDfkVO implements Serializable {
+public class BackupSchdulDfkVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 백업작업ID */
 	private String backupOpertId;
 
 	/** 실행스케줄요일 */
 	private String executSchdulDfkSe;
 
+	// helper
 	/** 실행스케줄요일명 */
 	private String executSchdulDfkSeNm;
 
+	// domain
 	/**
 	 * @return the backupOpertId
 	 */
@@ -62,6 +61,7 @@ public class BackupSchdulDfkVO implements Serializable {
 		this.executSchdulDfkSe = executSchdulDfkSe;
 	}
 
+	// helper
 	/**
 	 * @return the executSchdulDfkSeNm
 	 */

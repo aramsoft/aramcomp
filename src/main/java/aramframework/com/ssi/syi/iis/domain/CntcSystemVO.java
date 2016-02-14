@@ -23,8 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class CntcSystemVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 기관ID */
 	private String insttId = "";
 
@@ -37,6 +36,7 @@ public class CntcSystemVO extends SearchVO {
 	/** 시스템IP */
 	private String sysIp = "";
 
+	// domain
 	/**
 	 * insttId attribute 를 리턴한다.
 	 * 

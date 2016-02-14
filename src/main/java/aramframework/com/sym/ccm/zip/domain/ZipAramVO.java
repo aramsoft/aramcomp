@@ -23,8 +23,6 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class ZipAramVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
 	private String zip;
 	private String sn;
 	private String ctprvnNm;

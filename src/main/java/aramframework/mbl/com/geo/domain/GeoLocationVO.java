@@ -27,22 +27,21 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class GeoLocationVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain	
 	/** 순번 */
     private int sn ;
 
     /** 회원ID */
     private String mberId ;
     
+    /** 건물명 */
+    private String buldNm ;
+
     /** 위도 */
     private String la ;
 
     /** 경도 */
     private String lo ;
-
-    /** 건물명 */
-    private String buldNm ;
 
     /** 전화번호 */
     private String telno ;
@@ -50,6 +49,7 @@ public class GeoLocationVO extends SearchVO {
     /** 주소 */
     private String adres ;
 
+    // domain
     /**
      * 순번을 가져온다.
      * @return int 순번
@@ -83,6 +83,22 @@ public class GeoLocationVO extends SearchVO {
     }
    
     /**
+     * 건물명을 가져온다.
+     * @return String 건물명
+     */
+    public String getBuldNm() {
+        return buldNm;
+    }
+    /**
+     * 건물명을 저장한다.
+     * 
+     * @param buldNm
+     */
+    public void setBuldNm(String buldNm) {
+        this.buldNm = buldNm;
+    }
+
+    /**
      * 위도를 가져온다.
      * @return String 위도
      */
@@ -112,22 +128,6 @@ public class GeoLocationVO extends SearchVO {
      */
     public void setLo(String lo) {
         this.lo = lo;
-    }
-
-    /**
-     * 건물명을 가져온다.
-     * @return String 건물명
-     */
-    public String getBuldNm() {
-        return buldNm;
-    }
-    /**
-     * 건물명을 저장한다.
-     * 
-     * @param buldNm
-     */
-    public void setBuldNm(String buldNm) {
-        this.buldNm = buldNm;
     }
 
     /**

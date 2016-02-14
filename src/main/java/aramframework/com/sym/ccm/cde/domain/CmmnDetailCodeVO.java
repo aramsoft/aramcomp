@@ -23,13 +23,9 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class CmmnDetailCodeVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 코드ID */
 	private String codeId = "";
-
-	/** 코드ID명 */
-	private String codeIdNm = "";
 
 	/** 코드 */
 	private String code = "";
@@ -43,6 +39,11 @@ public class CmmnDetailCodeVO extends SearchVO {
 	/** 사용여부 */
 	private String useAt = "";
 
+	// helper
+	/** 코드ID명 */
+	private String codeIdNm = "";
+
+	// domain
 	/**
 	 * codeId attribute 를 리턴한다.
 	 * 
@@ -59,24 +60,6 @@ public class CmmnDetailCodeVO extends SearchVO {
 	 */
 	public void setCodeId(String codeId) {
 		this.codeId = codeId;
-	}
-
-	/**
-	 * codeIdNm attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getCodeIdNm() {
-		return codeIdNm;
-	}
-	/**
-	 * codeIdNm attribute 값을 설정한다.
-	 * 
-	 * @param codeIdNm
-	 *            String
-	 */
-	public void setCodeIdNm(String codeIdNm) {
-		this.codeIdNm = codeIdNm;
 	}
 
 	/**
@@ -149,6 +132,25 @@ public class CmmnDetailCodeVO extends SearchVO {
 	 */
 	public void setUseAt(String useAt) {
 		this.useAt = useAt;
+	}
+
+	// helper
+	/**
+	 * codeIdNm attribute 를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getCodeIdNm() {
+		return codeIdNm;
+	}
+	/**
+	 * codeIdNm attribute 값을 설정한다.
+	 * 
+	 * @param codeIdNm
+	 *            String
+	 */
+	public void setCodeIdNm(String codeIdNm) {
+		this.codeIdNm = codeIdNm;
 	}
 
 }

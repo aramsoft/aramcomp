@@ -23,18 +23,17 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class MenuCreateVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 메뉴번호 */
 	private int menuNo;
-
-	/** 맵생성ID */
-	private String mapCreatId;
 
 	/** 권한코드 */
 	private String authorCode;
 
-	/** 권한정보설정 */
+	/** 맵생성ID */
+	private String mapCreatId;
+
+	// helper
 	/** 권한명 */
 	private String authorNm;
 
@@ -44,10 +43,10 @@ public class MenuCreateVO extends SearchVO {
 	/** 권한생성일자 */
 	private String authorCreatDe;
 
-	/** 기타VO변수 */
 	/** 생성자ID **/
 	private String creatPersonId;
 
+	// domain
 	/**
 	 * menuNo attribute를 리턴한다.
 	 * 
@@ -64,24 +63,6 @@ public class MenuCreateVO extends SearchVO {
 	 */
 	public void setMenuNo(int menuNo) {
 		this.menuNo = menuNo;
-	}
-
-	/**
-	 * mapCreatId attribute를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getMapCreatId() {
-		return mapCreatId;
-	}
-	/**
-	 * mapCreatId attribute 값을 설정한다.
-	 * 
-	 * @param mapCreatId
-	 *            String
-	 */
-	public void setMapCreatId(String mapCreatId) {
-		this.mapCreatId = mapCreatId;
 	}
 
 	/**
@@ -102,6 +83,25 @@ public class MenuCreateVO extends SearchVO {
 		this.authorCode = authorCode;
 	}
 
+	/**
+	 * mapCreatId attribute를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getMapCreatId() {
+		return mapCreatId;
+	}
+	/**
+	 * mapCreatId attribute 값을 설정한다.
+	 * 
+	 * @param mapCreatId
+	 *            String
+	 */
+	public void setMapCreatId(String mapCreatId) {
+		this.mapCreatId = mapCreatId;
+	}
+
+	// helper
 	/**
 	 * authorNm attribute를 리턴한다.
 	 * 

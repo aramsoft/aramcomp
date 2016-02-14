@@ -23,19 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class AdministCodeRecptnVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	// 추가 정보
-	/** 상위행정구역코드 */
-	private String upperAdministZoneCode = "";
-
-	/** 상위행정구역명 */
-	private String upperAdministZoneNm = "";
-
-	/** 사용여부 */
-	private String useAt = "";
-
-	// Domain 정보
+	// domain
 	/** 발생일자 */
 	private String occrrDe = "";
 
@@ -81,6 +69,17 @@ public class AdministCodeRecptnVO extends SearchVO {
 	/** 폐지유무 */
 	private String ablEnnc = "";
 
+	// helper
+	/** 상위행정구역코드 */
+	private String upperAdministZoneCode = "";
+
+	/** 상위행정구역명 */
+	private String upperAdministZoneNm = "";
+
+	/** 사용여부 */
+	private String useAt = "";
+
+	// domain
 	/**
 	 * occrrDe attribute 를 리턴한다.
 	 * 
@@ -351,6 +350,7 @@ public class AdministCodeRecptnVO extends SearchVO {
 		this.ablEnnc = ablEnnc;
 	}
 
+	// helper
 	/**
 	 * upperAdministZoneCode attribute 를 리턴한다.
 	 * 

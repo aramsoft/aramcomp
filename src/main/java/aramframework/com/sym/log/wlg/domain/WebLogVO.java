@@ -23,14 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class WebLogVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 검색시작일 */
-	private String searchBgnDe = "";
-
-	/** 검색종료일 */
-	private String searchEndDe = "";
-
+	// domain
 	/** 요청아이디 */
 	private String requstId = "";
 
@@ -43,26 +36,20 @@ public class WebLogVO extends SearchVO {
 	/** 요청자아이디 */
 	private String rqesterId = "";
 
-	/** 요청자 이름 */
-	private String rqesterNm = "";
-
 	/** 요청아이피 */
 	private String rqesterIp = "";
 
-	public String getSearchBgnDe() {
-		return searchBgnDe;
-	}
-	public void setSearchBgnDe(String searchBgnDe) {
-		this.searchBgnDe = searchBgnDe;
-	}
-	
-	public String getSearchEndDe() {
-		return searchEndDe;
-	}
-	public void setSearchEndDe(String searchEndDe) {
-		this.searchEndDe = searchEndDe;
-	}
+	// helper
+	/** 요청자 이름 */
+	private String rqesterNm = "";
 
+	/** 검색시작일 */
+	private String searchBgnDe = "";
+
+	/** 검색종료일 */
+	private String searchEndDe = "";
+
+	// domain
 	public String getRequstId() {
 		return requstId;
 	}
@@ -91,6 +78,14 @@ public class WebLogVO extends SearchVO {
 		this.rqesterId = rqesterId;
 	}
 
+	public String getRqesterIp() {
+		return rqesterIp;
+	}
+	public void setRqesterIp(String rqesterIp) {
+		this.rqesterIp = rqesterIp;
+	}
+
+	// helper
 	public String getRqesterNm() {
 		return rqesterNm;
 	}
@@ -98,11 +93,18 @@ public class WebLogVO extends SearchVO {
 		this.rqesterNm = rqesterNm;
 	}
 
-	public String getRqesterIp() {
-		return rqesterIp;
+	public String getSearchBgnDe() {
+		return searchBgnDe;
 	}
-	public void setRqesterIp(String rqesterIp) {
-		this.rqesterIp = rqesterIp;
+	public void setSearchBgnDe(String searchBgnDe) {
+		this.searchBgnDe = searchBgnDe;
+	}
+	
+	public String getSearchEndDe() {
+		return searchEndDe;
+	}
+	public void setSearchEndDe(String searchEndDe) {
+		this.searchEndDe = searchEndDe;
 	}
 
 }

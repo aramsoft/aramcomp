@@ -23,20 +23,21 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class MenuManageVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 메뉴정보 */
+	// domain
 	/** 메뉴번호 */
 	private int menuNo;
 
-	/** 메뉴순서 */
-	private int menuOrdr;
+	/** 상위메뉴번호 */
+	private int upperMenuId;
 
 	/** 메뉴명 */
 	private String menuNm;
 
-	/** 상위메뉴번호 */
-	private int upperMenuId;
+	/** 프로그램파일명 */
+	private String progrmFileNm;
+
+	/** 메뉴순서 */
+	private int menuOrdr;
 
 	/** 메뉴설명 */
 	private String menuDc;
@@ -47,9 +48,7 @@ public class MenuManageVO extends SearchVO {
 	/** 관련이미지명 */
 	private String relateImageNm;
 
-	/** 프로그램파일명 */
-	private String progrmFileNm;
-
+	// helper
 	/** 사이트맵 */
 	/** 생성자ID **/
 	private String creatPersonId;
@@ -65,6 +64,7 @@ public class MenuManageVO extends SearchVO {
 	/** tmp_Cmd */
 	private String tmpCmd;
 
+	// domain
 	/**
 	 * menuNo attribute를 리턴한다.
 	 * 
@@ -84,21 +84,21 @@ public class MenuManageVO extends SearchVO {
 	}
 
 	/**
-	 * menuOrdr attribute를 리턴한다.
+	 * upperMenuId attribute를 리턴한다.
 	 * 
 	 * @return int
 	 */
-	public int getMenuOrdr() {
-		return menuOrdr;
+	public int getUpperMenuId() {
+		return upperMenuId;
 	}
 	/**
-	 * menuOrdr attribute 값을 설정한다.
+	 * upperMenuId attribute 값을 설정한다.
 	 * 
-	 * @param menuOrdr
+	 * @param upperMenuId
 	 *            int
 	 */
-	public void setMenuOrdr(int menuOrdr) {
-		this.menuOrdr = menuOrdr;
+	public void setUpperMenuId(int upperMenuId) {
+		this.upperMenuId = upperMenuId;
 	}
 
 	/**
@@ -120,21 +120,39 @@ public class MenuManageVO extends SearchVO {
 	}
 
 	/**
-	 * upperMenuId attribute를 리턴한다.
+	 * progrmFileNm attribute를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getProgrmFileNm() {
+		return progrmFileNm;
+	}
+	/**
+	 * progrmFileNm attribute 값을 설정한다.
+	 * 
+	 * @param progrmFileNm
+	 *            String
+	 */
+	public void setProgrmFileNm(String progrmFileNm) {
+		this.progrmFileNm = progrmFileNm;
+	}
+
+	/**
+	 * menuOrdr attribute를 리턴한다.
 	 * 
 	 * @return int
 	 */
-	public int getUpperMenuId() {
-		return upperMenuId;
+	public int getMenuOrdr() {
+		return menuOrdr;
 	}
 	/**
-	 * upperMenuId attribute 값을 설정한다.
+	 * menuOrdr attribute 값을 설정한다.
 	 * 
-	 * @param upperMenuId
+	 * @param menuOrdr
 	 *            int
 	 */
-	public void setUpperMenuId(int upperMenuId) {
-		this.upperMenuId = upperMenuId;
+	public void setMenuOrdr(int menuOrdr) {
+		this.menuOrdr = menuOrdr;
 	}
 
 	/**
@@ -191,24 +209,7 @@ public class MenuManageVO extends SearchVO {
 		this.relateImageNm = relateImageNm;
 	}
 
-	/**
-	 * progrmFileNm attribute를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getProgrmFileNm() {
-		return progrmFileNm;
-	}
-	/**
-	 * progrmFileNm attribute 값을 설정한다.
-	 * 
-	 * @param progrmFileNm
-	 *            String
-	 */
-	public void setProgrmFileNm(String progrmFileNm) {
-		this.progrmFileNm = progrmFileNm;
-	}
-
+	// helper
 	/**
 	 * creatPersonId attribute를 리턴한다.
 	 * 

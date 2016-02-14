@@ -23,26 +23,22 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class ProgrmManageDtlVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 프로그램파일명 */
 	private String progrmFileNm;
 	
 	/** 요청번호 */
 	private int rqestNo;
 	
-	/** 요청제목 */
-	private String rqestSj;
-	
 	/** 요청자ID */
 	private String rqestPersonId;
-	
-	/** 요청일자 */
-	private String rqestDe;
 	
 	/** 변경요청내용 */
 	private String changeRqestCn;
 	
+	/** 요청처리내용 */
+	private String rqestProcessCn;
+
 	/** 처리자ID */
 	private String opetrId;
 	
@@ -52,15 +48,20 @@ public class ProgrmManageDtlVO extends SearchVO {
 	/** 처리일자 */
 	private String processDe;
 	
-	/** 요청처리내용 */
-	private String rqestProcessCn;
-
+	/** 요청일자 */
+	private String rqestDe;
+	
+	/** 요청제목 */
+	private String rqestSj;
+	
+	// helper
 	/** 요청시작일자 */
 	private String rqestDeBegin;
 	
 	/** 요청종료일자 */
 	private String rqestDeEnd;
 
+	// domain
 	/**
 	 * progrmFileNm attribute를 리턴한다.
 	 * 
@@ -98,24 +99,6 @@ public class ProgrmManageDtlVO extends SearchVO {
 	}
 
 	/**
-	 * rqestSj attribute를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getRqestSj() {
-		return rqestSj;
-	}
-	/**
-	 * rqesteSj attribute 값을 설정한다.
-	 * 
-	 * @param rqestSj
-	 *            String
-	 */
-	public void setRqestSj(String rqestSj) {
-		this.rqestSj = rqestSj;
-	}
-
-	/**
 	 * rqestPersonId attribute를 리턴한다.
 	 * 
 	 * @return String
@@ -134,24 +117,6 @@ public class ProgrmManageDtlVO extends SearchVO {
 	}
 
 	/**
-	 * rqestDe attribute를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getRqestDe() {
-		return rqestDe;
-	}
-	/**
-	 * rqestDe attribute 값을 설정한다.
-	 * 
-	 * @param rqestDe
-	 *            String
-	 */
-	public void setRqestDe(String rqestDe) {
-		this.rqestDe = rqestDe;
-	}
-
-	/**
 	 * changeRqestCn attribute를 리턴한다.
 	 * 
 	 * @return String
@@ -167,6 +132,24 @@ public class ProgrmManageDtlVO extends SearchVO {
 	 */
 	public void setChangeRqestCn(String changeRqestCn) {
 		this.changeRqestCn = changeRqestCn;
+	}
+
+	/**
+	 * rqestProcessCn attribute를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getRqestProcessCn() {
+		return rqestProcessCn;
+	}
+	/**
+	 * rqestProcessCn attribute 값을 설정한다.
+	 * 
+	 * @param rqesterProcessCn
+	 *            String
+	 */
+	public void setRqestProcessCn(String rqestProcessCn) {
+		this.rqestProcessCn = rqestProcessCn;
 	}
 
 	/**
@@ -224,23 +207,42 @@ public class ProgrmManageDtlVO extends SearchVO {
 	}
 
 	/**
-	 * rqestProcessCn attribute를 리턴한다.
+	 * rqestDe attribute를 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getRqestProcessCn() {
-		return rqestProcessCn;
+	public String getRqestDe() {
+		return rqestDe;
 	}
 	/**
-	 * rqestProcessCn attribute 값을 설정한다.
+	 * rqestDe attribute 값을 설정한다.
 	 * 
-	 * @param rqesterProcessCn
+	 * @param rqestDe
 	 *            String
 	 */
-	public void setRqestProcessCn(String rqestProcessCn) {
-		this.rqestProcessCn = rqestProcessCn;
+	public void setRqestDe(String rqestDe) {
+		this.rqestDe = rqestDe;
 	}
 
+	/**
+	 * rqestSj attribute를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getRqestSj() {
+		return rqestSj;
+	}
+	/**
+	 * rqesteSj attribute 값을 설정한다.
+	 * 
+	 * @param rqestSj
+	 *            String
+	 */
+	public void setRqestSj(String rqestSj) {
+		this.rqestSj = rqestSj;
+	}
+
+	// helper
 	/**
 	 * rqestDeBegin attribute를 리턴한다.
 	 * 

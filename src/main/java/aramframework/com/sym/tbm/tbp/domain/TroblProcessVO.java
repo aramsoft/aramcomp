@@ -23,19 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class TroblProcessVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	// 추가 검색 조건
-	/** 장애명 조회조건 */
-	private String strTroblNm;
-	
-	/** 장애종류 조회조건 */
-	private String strTroblKnd;
-	
-	/** 처리상태 조회조건 */
-	private String strProcessSttus;
-	
-	// 도메인 정보
+	// domain
 	/** 장애 ID */
 	private String troblId;
 	
@@ -44,9 +32,6 @@ public class TroblProcessVO extends SearchVO {
 	
 	/** 장애 종류 */
 	private String troblKnd;
-	
-	/** 장애 종류 명 */
-	private String troblKndNm;
 	
 	/** 장애 설명 */
 	private String troblDc;
@@ -72,51 +57,24 @@ public class TroblProcessVO extends SearchVO {
 	/** 처리 상태 */
 	private String processSttus;
 	
+	// helper
+	/** 장애 종류 명 */
+	private String troblKndNm;
+	
 	/** 처리 상태명 */
 	private String processSttusNm;
 	
-	/**
-	 * @return the strTroblNm
-	 */
-	public String getStrTroblNm() {
-		return strTroblNm;
-	}
-	/**
-	 * @param strTroblNm
-	 *            the strTroblNm to set
-	 */
-	public void setStrTroblNm(String strTroblNm) {
-		this.strTroblNm = strTroblNm;
-	}
-
-	/**
-	 * @return the strTroblKnd
-	 */
-	public String getStrTroblKnd() {
-		return strTroblKnd;
-	}
-	/**
-	 * @param strTroblKnd
-	 *            the strTroblKnd to set
-	 */
-	public void setStrTroblKnd(String strTroblKnd) {
-		this.strTroblKnd = strTroblKnd;
-	}
-
-	/**
-	 * @return the strProcessSttus
-	 */
-	public String getStrProcessSttus() {
-		return strProcessSttus;
-	}
-	/**
-	 * @param strProcessSttus
-	 *            the strProcessSttus to set
-	 */
-	public void setStrProcessSttus(String strProcessSttus) {
-		this.strProcessSttus = strProcessSttus;
-	}
-
+	// 추가 검색 조건
+	/** 장애명 조회조건 */
+	private String strTroblNm;
+	
+	/** 장애종류 조회조건 */
+	private String strTroblKnd;
+	
+	/** 처리상태 조회조건 */
+	private String strProcessSttus;
+	
+	// domain
 	/**
 	 * @return the troblId
 	 */
@@ -157,20 +115,6 @@ public class TroblProcessVO extends SearchVO {
 	 */
 	public void setTroblKnd(String troblKnd) {
 		this.troblKnd = troblKnd;
-	}
-
-	/**
-	 * @return the troblKndNm
-	 */
-	public String getTroblKndNm() {
-		return troblKndNm;
-	}
-	/**
-	 * @param troblKndNm
-	 *            the troblKndNm to set
-	 */
-	public void setTroblKndNm(String troblKndNm) {
-		this.troblKndNm = troblKndNm;
 	}
 
 	/**
@@ -285,6 +229,21 @@ public class TroblProcessVO extends SearchVO {
 		this.processSttus = processSttus;
 	}
 
+	// helper
+	/**
+	 * @return the troblKndNm
+	 */
+	public String getTroblKndNm() {
+		return troblKndNm;
+	}
+	/**
+	 * @param troblKndNm
+	 *            the troblKndNm to set
+	 */
+	public void setTroblKndNm(String troblKndNm) {
+		this.troblKndNm = troblKndNm;
+	}
+
 	/**
 	 * @return the processSttusNm
 	 */
@@ -297,6 +256,48 @@ public class TroblProcessVO extends SearchVO {
 	 */
 	public void setProcessSttusNm(String processSttusNm) {
 		this.processSttusNm = processSttusNm;
+	}
+
+	/**
+	 * @return the strTroblNm
+	 */
+	public String getStrTroblNm() {
+		return strTroblNm;
+	}
+	/**
+	 * @param strTroblNm
+	 *            the strTroblNm to set
+	 */
+	public void setStrTroblNm(String strTroblNm) {
+		this.strTroblNm = strTroblNm;
+	}
+
+	/**
+	 * @return the strTroblKnd
+	 */
+	public String getStrTroblKnd() {
+		return strTroblKnd;
+	}
+	/**
+	 * @param strTroblKnd
+	 *            the strTroblKnd to set
+	 */
+	public void setStrTroblKnd(String strTroblKnd) {
+		this.strTroblKnd = strTroblKnd;
+	}
+
+	/**
+	 * @return the strProcessSttus
+	 */
+	public String getStrProcessSttus() {
+		return strProcessSttus;
+	}
+	/**
+	 * @param strProcessSttus
+	 *            the strProcessSttus to set
+	 */
+	public void setStrProcessSttus(String strProcessSttus) {
+		this.strProcessSttus = strProcessSttus;
 	}
 
 }

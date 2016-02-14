@@ -23,8 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class CmmnClCodeVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 분류코드 */
 	private String clCode = "";
 
@@ -37,6 +36,7 @@ public class CmmnClCodeVO extends SearchVO {
 	/** 사용여부 */
 	private String useAt = "";
 
+	// domain
 	/**
 	 * clCode attribute 를 리턴한다.
 	 * 

@@ -23,8 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class BatchResultVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 배치결과ID */
 	private String batchResultId;
 	
@@ -34,11 +33,14 @@ public class BatchResultVO extends SearchVO {
 	/** 배치작업ID */
 	private String batchOpertId;
 	
+	/** 파라미터 */
+	private String paramtr;
+	
 	/** 상태 */
 	private String sttus;
 	
-	/** 상태명 */
-	private String sttusNm;
+	/** 에러정보 */
+	private String errorInfo;
 
 	/** 실행시작시각 */
 	private String executBeginTime;
@@ -46,17 +48,15 @@ public class BatchResultVO extends SearchVO {
 	/** 실행종료시각 */
 	private String executEndTime;
 	
-	/** 에러정보 */
-	private String errorInfo;
+	// helper
+	/** 상태명 */
+	private String sttusNm;
 
 	/** 배치작업명 */
 	private String batchOpertNm;
 	
 	/** 배치프로그램 */
 	private String batchProgrm;
-	
-	/** 파라미터 */
-	private String paramtr;
 	
 	/** 배치클래스 */
 	private String batchObject;
@@ -67,6 +67,7 @@ public class BatchResultVO extends SearchVO {
 	/** 배치빈 */
 	private String batchBean;
 	
+	// domain
 	/**
 	 * @return the batchResultId
 	 */
@@ -110,6 +111,20 @@ public class BatchResultVO extends SearchVO {
 	}
 
 	/**
+	 * @return the paramtr
+	 */
+	public String getParamtr() {
+		return paramtr;
+	}
+	/**
+	 * @param paramtr
+	 *            the paramtr to set
+	 */
+	public void setParamtr(String paramtr) {
+		this.paramtr = paramtr;
+	}
+
+	/**
 	 * @return the sttus
 	 */
 	public String getSttus() {
@@ -124,17 +139,17 @@ public class BatchResultVO extends SearchVO {
 	}
 
 	/**
-	 * @return the sttusNm
+	 * @return the errorInfo
 	 */
-	public String getSttusNm() {
-		return sttusNm;
+	public String getErrorInfo() {
+		return errorInfo;
 	}
 	/**
-	 * @param sttusNm
-	 *            the sttusNm to set
+	 * @param errorInfo
+	 *            the errorInfo to set
 	 */
-	public void setSttusNm(String sttusNm) {
-		this.sttusNm = sttusNm;
+	public void setErrorInfo(String errorInfo) {
+		this.errorInfo = errorInfo;
 	}
 
 	/**
@@ -165,18 +180,19 @@ public class BatchResultVO extends SearchVO {
 		this.executEndTime = executEndTime;
 	}
 
+	// helper
 	/**
-	 * @return the errorInfo
+	 * @return the sttusNm
 	 */
-	public String getErrorInfo() {
-		return errorInfo;
+	public String getSttusNm() {
+		return sttusNm;
 	}
 	/**
-	 * @param errorInfo
-	 *            the errorInfo to set
+	 * @param sttusNm
+	 *            the sttusNm to set
 	 */
-	public void setErrorInfo(String errorInfo) {
-		this.errorInfo = errorInfo;
+	public void setSttusNm(String sttusNm) {
+		this.sttusNm = sttusNm;
 	}
 
 	/**
@@ -205,20 +221,6 @@ public class BatchResultVO extends SearchVO {
 	 */
 	public void setBatchProgrm(String batchProgrm) {
 		this.batchProgrm = batchProgrm;
-	}
-
-	/**
-	 * @return the paramtr
-	 */
-	public String getParamtr() {
-		return paramtr;
-	}
-	/**
-	 * @param paramtr
-	 *            the paramtr to set
-	 */
-	public void setParamtr(String paramtr) {
-		this.paramtr = paramtr;
 	}
 
 	/**

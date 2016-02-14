@@ -22,11 +22,7 @@ import aramframework.com.cmm.domain.SearchVO;
  */
 
 public class GroupAuthorVO extends SearchVO {
-	/**
-	 * serialVersionUID
-	 */
-	private static final long serialVersionUID = 1L;
-
+	
 	/** 설정대상 사용자 ID	 */
 	private String userId;
 	

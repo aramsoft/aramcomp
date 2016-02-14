@@ -25,8 +25,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class BackupOpertVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 백업작업ID */
 	private String backupOpertId;
 	
@@ -57,12 +56,13 @@ public class BackupOpertVO extends SearchVO {
 	/** 실행스케줄초 */
 	private String executSchdulSecnd;
 	
-	/** 실행스케줄요일 */
-	private String[] executSchdulDfkSes;
-	
 	/** 사용여부 */
 	private String useAt;
 
+	// helper
+	/** 실행스케줄요일 */
+	private String[] executSchdulDfkSes;
+	
 	/** 실행주기명 */
 	private String executCycleNm;
 	
@@ -72,6 +72,7 @@ public class BackupOpertVO extends SearchVO {
 	/** 압축구분명 */
 	private String cmprsSeNm;
 
+	// domain
 	/**
 	 * @return the backupOpertId
 	 */
@@ -213,6 +214,21 @@ public class BackupOpertVO extends SearchVO {
 	}
 
 	/**
+	 * @return the useAt
+	 */
+	public String getUseAt() {
+		return useAt;
+	}
+	/**
+	 * @param useAt
+	 *            the useAt to set
+	 */
+	public void setUseAt(String useAt) {
+		this.useAt = useAt;
+	}
+
+	// helper
+	/**
 	 * @return the executSchdulDfkSes
 	 */
 	public String[] getExecutSchdulDfkSes() {
@@ -237,20 +253,6 @@ public class BackupOpertVO extends SearchVO {
 		for (int i = 0; i < executSchdulDfkSes.length; ++i) {
 			this.executSchdulDfkSes[i] = executSchdulDfkSes[i];
 		}
-	}
-
-	/**
-	 * @return the useAt
-	 */
-	public String getUseAt() {
-		return useAt;
-	}
-	/**
-	 * @param useAt
-	 *            the useAt to set
-	 */
-	public void setUseAt(String useAt) {
-		this.useAt = useAt;
 	}
 
 	/**

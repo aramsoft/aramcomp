@@ -25,23 +25,23 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class NameCardUseVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 생성일시 */
-	private String creatDt = "";
-
+	// domain
 	/** 명함아이디 */
 	private String ncrdId = "";
 
 	/** 등록구분코드 */
 	private String registSeCode = "";
 
-	/** 사용여부 */
-	private String useAt = "";
-
 	/** 사용자 아이디 */
 	private String emplyrId = "";
 
+	/** 사용여부 */
+	private String useAt = "";
+
+	/** 생성일시 */
+	private String creatDt = "";
+
+	// helper
 	/** 사용자 명 */
 	private String userNm = "";
 
@@ -54,24 +54,7 @@ public class NameCardUseVO extends SearchVO {
 	/** 부서명 */
 	private String deptNm = "";
 
-	/**
-	 * creatDt attribute를 리턴한다.
-	 * 
-	 * @return the creatDt
-	 */
-	public String getCreatDt() {
-		return creatDt;
-	}
-	/**
-	 * creatDt attribute 값을 설정한다.
-	 * 
-	 * @param creatDt
-	 *            the creatDt to set
-	 */
-	public void setCreatDt(String creatDt) {
-		this.creatDt = creatDt;
-	}
-
+	// domain
 	/**
 	 * ncrdId attribute를 리턴한다.
 	 * 
@@ -109,6 +92,24 @@ public class NameCardUseVO extends SearchVO {
 	}
 
 	/**
+	 * emplyrId attribute를 리턴한다.
+	 * 
+	 * @return the emplyrId
+	 */
+	public String getEmplyrId() {
+		return emplyrId;
+	}
+	/**
+	 * emplyrId attribute 값을 설정한다.
+	 * 
+	 * @param emplyrId
+	 *            the emplyrId to set
+	 */
+	public void setEmplyrId(String emplyrId) {
+		this.emplyrId = emplyrId;
+	}
+
+	/**
 	 * useAt attribute를 리턴한다.
 	 * 
 	 * @return the useAt
@@ -127,23 +128,24 @@ public class NameCardUseVO extends SearchVO {
 	}
 
 	/**
-	 * emplyrId attribute를 리턴한다.
+	 * creatDt attribute를 리턴한다.
 	 * 
-	 * @return the emplyrId
+	 * @return the creatDt
 	 */
-	public String getEmplyrId() {
-		return emplyrId;
+	public String getCreatDt() {
+		return creatDt;
 	}
 	/**
-	 * emplyrId attribute 값을 설정한다.
+	 * creatDt attribute 값을 설정한다.
 	 * 
-	 * @param emplyrId
-	 *            the emplyrId to set
+	 * @param creatDt
+	 *            the creatDt to set
 	 */
-	public void setEmplyrId(String emplyrId) {
-		this.emplyrId = emplyrId;
+	public void setCreatDt(String creatDt) {
+		this.creatDt = creatDt;
 	}
 
+	// helper
 	/**
 	 * userNm attribute를 리턴한다.
 	 * 

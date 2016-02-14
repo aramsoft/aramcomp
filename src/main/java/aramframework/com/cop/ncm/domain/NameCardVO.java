@@ -25,19 +25,45 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class NameCardVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
+	// domain
+	/** 명함아이디 */
+	private String ncrdId = "";
 
 	/** 대상 아이디 */
 	private String trgetId = "";
 
-	/** 주소 */
-	private String adres = "";
+	/** 이름 */
+	private String ncrdNm = "";
+
+	/** 전화번호 */
+	private String telNo = "";
+
+	/** 국가번호 */
+	private String nationNo = "";
 
 	/** 지역번호 */
 	private String areaNo = "";
 
-	/** 직급명 */
-	private String clsfNm = "";
+	/** 중간전화번호 */
+	private String middleTelNo = "";
+
+	/** 끝전화번호 */
+	private String endTelNo = "";
+
+	/** 휴대폰번호 */
+	private String mbtlNum = "";
+
+	/** 식별번호 */
+	private String idntfcNo = "";
+
+	/** 중간휴대폰번호 */
+	private String middleMbtlNum = "";
+
+	/** 끝휴대폰번호 */
+	private String endMbtlNum = "";
+
+	/** 이메일주소 */
+	private String emailAdres = "";
 
 	/** 회사명 */
 	private String cmpnyNm = "";
@@ -45,38 +71,20 @@ public class NameCardVO extends SearchVO {
 	/** 부서명 */
 	private String deptNm = "";
 
-	/** 이메일주소 */
-	private String emailAdres = "";
+	/** 우편번호 */
+	private String zip = "";
 
-	/** 끝휴대폰번호 */
-	private String endMbtlNum = "";
+	/** 주소 */
+	private String adres = "";
 
-	/** 끝전화번호 */
-	private String endTelNo = "";
-
-	/** 식별번호 */
-	private String idntfcNo = "";
-
-	/** 휴대폰번호 */
-	private String mbtlNum = "";
-
-	/** 중간휴대폰번호 */
-	private String middleMbtlNum = "";
-
-	/** 중간전화번호 */
-	private String middleTelNo = "";
-
-	/** 국가번호 */
-	private String nationNo = "";
-
-	/** 명함아이디 */
-	private String ncrdId = "";
-
-	/** 이름 */
-	private String ncrdNm = "";
+	/** 상세주소 */
+	private String detailAdres = "";
 
 	/** 직위명 */
 	private String ofcpsNm = "";
+
+	/** 직급명 */
+	private String clsfNm = "";
 
 	/** 공개여부 */
 	private String othbcScope = "";
@@ -84,20 +92,31 @@ public class NameCardVO extends SearchVO {
 	/** 비고 */
 	private String remark = "";
 
-	/** 전화번호 */
-	private String telNo = "";
-
-	/** 상세주소 */
-	private String detailAdres = "";
-
-	/** 우편번호 */
-	private String zip = "";
-
+	// helper
 	/** 템플릿 구분 코드명 */
 	private String tmplatSeCodeNm = "";
 
 	/** 사용자 아이디 */
 	private String emplyrId = "";
+
+	// domain
+	/**
+	 * ncrdId attribute를 리턴한다.
+	 * 
+	 * @return the ncrdId
+	 */
+	public String getNcrdId() {
+		return ncrdId;
+	}
+	/**
+	 * ncrdId attribute 값을 설정한다.
+	 * 
+	 * @param ncrdId
+	 *            the ncrdId to set
+	 */
+	public void setNcrdId(String ncrdId) {
+		this.ncrdId = ncrdId;
+	}
 
 	/**
 	 * trgetId attribute를 리턴한다.
@@ -118,21 +137,57 @@ public class NameCardVO extends SearchVO {
 	}
 
 	/**
-	 * adres attribute를 리턴한다.
+	 * ncrdNm attribute를 리턴한다.
 	 * 
-	 * @return the adres
+	 * @return the ncrdNm
 	 */
-	public String getAdres() {
-		return adres;
+	public String getNcrdNm() {
+		return ncrdNm;
 	}
 	/**
-	 * adres attribute 값을 설정한다.
+	 * ncrdNm attribute 값을 설정한다.
 	 * 
-	 * @param adres
-	 *            the adres to set
+	 * @param ncrdNm
+	 *            the ncrdNm to set
 	 */
-	public void setAdres(String adres) {
-		this.adres = adres;
+	public void setNcrdNm(String ncrdNm) {
+		this.ncrdNm = ncrdNm;
+	}
+
+	/**
+	 * telNo attribute를 리턴한다.
+	 * 
+	 * @return the telNo
+	 */
+	public String getTelNo() {
+		return telNo;
+	}
+	/**
+	 * telNo attribute 값을 설정한다.
+	 * 
+	 * @param telNo
+	 *            the telNo to set
+	 */
+	public void setTelNo(String telNo) {
+		this.telNo = telNo;
+	}
+
+	/**
+	 * nationNo attribute를 리턴한다.
+	 * 
+	 * @return the nationNo
+	 */
+	public String getNationNo() {
+		return nationNo;
+	}
+	/**
+	 * nationNo attribute 값을 설정한다.
+	 * 
+	 * @param nationNo
+	 *            the nationNo to set
+	 */
+	public void setNationNo(String nationNo) {
+		this.nationNo = nationNo;
 	}
 
 	/**
@@ -154,21 +209,129 @@ public class NameCardVO extends SearchVO {
 	}
 
 	/**
-	 * clsfNm attribute를 리턴한다.
+	 * middleTelNo attribute를 리턴한다.
 	 * 
-	 * @return the clsfNm
+	 * @return the middleTelNo
 	 */
-	public String getClsfNm() {
-		return clsfNm;
+	public String getMiddleTelNo() {
+		return middleTelNo;
 	}
 	/**
-	 * clsfNm attribute 값을 설정한다.
+	 * middleTelNo attribute 값을 설정한다.
 	 * 
-	 * @param clsfNm
-	 *            the clsfNm to set
+	 * @param middleTelNo
+	 *            the middleTelNo to set
 	 */
-	public void setClsfNm(String clsfNm) {
-		this.clsfNm = clsfNm;
+	public void setMiddleTelNo(String middleTelNo) {
+		this.middleTelNo = middleTelNo;
+	}
+
+	/**
+	 * endTelNo attribute를 리턴한다.
+	 * 
+	 * @return the endTelNo
+	 */
+	public String getEndTelNo() {
+		return endTelNo;
+	}
+	/**
+	 * endTelNo attribute 값을 설정한다.
+	 * 
+	 * @param endTelNo
+	 *            the endTelNo to set
+	 */
+	public void setEndTelNo(String endTelNo) {
+		this.endTelNo = endTelNo;
+	}
+
+	/**
+	 * mbtlNum attribute를 리턴한다.
+	 * 
+	 * @return the mbtlNum
+	 */
+	public String getMbtlNum() {
+		return mbtlNum;
+	}
+	/**
+	 * mbtlNum attribute 값을 설정한다.
+	 * 
+	 * @param mbtlNum
+	 *            the mbtlNum to set
+	 */
+	public void setMbtlNum(String mbtlNum) {
+		this.mbtlNum = mbtlNum;
+	}
+
+	/**
+	 * idntfcNo attribute를 리턴한다.
+	 * 
+	 * @return the idntfcNo
+	 */
+	public String getIdntfcNo() {
+		return idntfcNo;
+	}
+	/**
+	 * idntfcNo attribute 값을 설정한다.
+	 * 
+	 * @param idntfcNo
+	 *            the idntfcNo to set
+	 */
+	public void setIdntfcNo(String idntfcNo) {
+		this.idntfcNo = idntfcNo;
+	}
+
+	/**
+	 * middleMbtlNum attribute를 리턴한다.
+	 * 
+	 * @return the middleMbtlNum
+	 */
+	public String getMiddleMbtlNum() {
+		return middleMbtlNum;
+	}
+	/**
+	 * middleMbtlNum attribute 값을 설정한다.
+	 * 
+	 * @param middleMbtlNum
+	 *            the middleMbtlNum to set
+	 */
+	public void setMiddleMbtlNum(String middleMbtlNum) {
+		this.middleMbtlNum = middleMbtlNum;
+	}
+
+	/**
+	 * endMbtlNum attribute를 리턴한다.
+	 * 
+	 * @return the endMbtlNum
+	 */
+	public String getEndMbtlNum() {
+		return endMbtlNum;
+	}
+	/**
+	 * endMbtlNum attribute 값을 설정한다.
+	 * 
+	 * @param endMbtlNum
+	 *            the endMbtlNum to set
+	 */
+	public void setEndMbtlNum(String endMbtlNum) {
+		this.endMbtlNum = endMbtlNum;
+	}
+
+	/**
+	 * emailAdres attribute를 리턴한다.
+	 * 
+	 * @return the emailAdres
+	 */
+	public String getEmailAdres() {
+		return emailAdres;
+	}
+	/**
+	 * emailAdres attribute 값을 설정한다.
+	 * 
+	 * @param emailAdres
+	 *            the emailAdres to set
+	 */
+	public void setEmailAdres(String emailAdres) {
+		this.emailAdres = emailAdres;
 	}
 
 	/**
@@ -208,183 +371,57 @@ public class NameCardVO extends SearchVO {
 	}
 
 	/**
-	 * emailAdres attribute를 리턴한다.
+	 * zip attribute를 리턴한다.
 	 * 
-	 * @return the emailAdres
+	 * @return the zip
 	 */
-	public String getEmailAdres() {
-		return emailAdres;
+	public String getZip() {
+		return zip;
 	}
 	/**
-	 * emailAdres attribute 값을 설정한다.
+	 * zip attribute 값을 설정한다.
 	 * 
-	 * @param emailAdres
-	 *            the emailAdres to set
+	 * @param zip
+	 *            the zipCode to set
 	 */
-	public void setEmailAdres(String emailAdres) {
-		this.emailAdres = emailAdres;
-	}
-
-	/**
-	 * endMbtlNum attribute를 리턴한다.
-	 * 
-	 * @return the endMbtlNum
-	 */
-	public String getEndMbtlNum() {
-		return endMbtlNum;
-	}
-	/**
-	 * endMbtlNum attribute 값을 설정한다.
-	 * 
-	 * @param endMbtlNum
-	 *            the endMbtlNum to set
-	 */
-	public void setEndMbtlNum(String endMbtlNum) {
-		this.endMbtlNum = endMbtlNum;
+	public void setZip(String zip) {
+		this.zip = zip;
 	}
 
 	/**
-	 * endTelNo attribute를 리턴한다.
+	 * adres attribute를 리턴한다.
 	 * 
-	 * @return the endTelNo
+	 * @return the adres
 	 */
-	public String getEndTelNo() {
-		return endTelNo;
+	public String getAdres() {
+		return adres;
 	}
 	/**
-	 * endTelNo attribute 값을 설정한다.
+	 * adres attribute 값을 설정한다.
 	 * 
-	 * @param endTelNo
-	 *            the endTelNo to set
+	 * @param adres
+	 *            the adres to set
 	 */
-	public void setEndTelNo(String endTelNo) {
-		this.endTelNo = endTelNo;
-	}
-
-	/**
-	 * idntfcNo attribute를 리턴한다.
-	 * 
-	 * @return the idntfcNo
-	 */
-	public String getIdntfcNo() {
-		return idntfcNo;
-	}
-	/**
-	 * idntfcNo attribute 값을 설정한다.
-	 * 
-	 * @param idntfcNo
-	 *            the idntfcNo to set
-	 */
-	public void setIdntfcNo(String idntfcNo) {
-		this.idntfcNo = idntfcNo;
+	public void setAdres(String adres) {
+		this.adres = adres;
 	}
 
 	/**
-	 * mbtlNum attribute를 리턴한다.
+	 * detailAdres attribute를 리턴한다.
 	 * 
-	 * @return the mbtlNum
+	 * @return the detailAdres
 	 */
-	public String getMbtlNum() {
-		return mbtlNum;
+	public String getDetailAdres() {
+		return detailAdres;
 	}
 	/**
-	 * mbtlNum attribute 값을 설정한다.
+	 * detailAdres attribute 값을 설정한다.
 	 * 
-	 * @param mbtlNum
-	 *            the mbtlNum to set
+	 * @param detailAdres
+	 *            the detailAdres to set
 	 */
-	public void setMbtlNum(String mbtlNum) {
-		this.mbtlNum = mbtlNum;
-	}
-
-	/**
-	 * middleMbtlNum attribute를 리턴한다.
-	 * 
-	 * @return the middleMbtlNum
-	 */
-	public String getMiddleMbtlNum() {
-		return middleMbtlNum;
-	}
-	/**
-	 * middleMbtlNum attribute 값을 설정한다.
-	 * 
-	 * @param middleMbtlNum
-	 *            the middleMbtlNum to set
-	 */
-	public void setMiddleMbtlNum(String middleMbtlNum) {
-		this.middleMbtlNum = middleMbtlNum;
-	}
-
-	/**
-	 * middleTelNo attribute를 리턴한다.
-	 * 
-	 * @return the middleTelNo
-	 */
-	public String getMiddleTelNo() {
-		return middleTelNo;
-	}
-	/**
-	 * middleTelNo attribute 값을 설정한다.
-	 * 
-	 * @param middleTelNo
-	 *            the middleTelNo to set
-	 */
-	public void setMiddleTelNo(String middleTelNo) {
-		this.middleTelNo = middleTelNo;
-	}
-
-	/**
-	 * nationNo attribute를 리턴한다.
-	 * 
-	 * @return the nationNo
-	 */
-	public String getNationNo() {
-		return nationNo;
-	}
-	/**
-	 * nationNo attribute 값을 설정한다.
-	 * 
-	 * @param nationNo
-	 *            the nationNo to set
-	 */
-	public void setNationNo(String nationNo) {
-		this.nationNo = nationNo;
-	}
-
-	/**
-	 * ncrdId attribute를 리턴한다.
-	 * 
-	 * @return the ncrdId
-	 */
-	public String getNcrdId() {
-		return ncrdId;
-	}
-	/**
-	 * ncrdId attribute 값을 설정한다.
-	 * 
-	 * @param ncrdId
-	 *            the ncrdId to set
-	 */
-	public void setNcrdId(String ncrdId) {
-		this.ncrdId = ncrdId;
-	}
-
-	/**
-	 * ncrdNm attribute를 리턴한다.
-	 * 
-	 * @return the ncrdNm
-	 */
-	public String getNcrdNm() {
-		return ncrdNm;
-	}
-	/**
-	 * ncrdNm attribute 값을 설정한다.
-	 * 
-	 * @param ncrdNm
-	 *            the ncrdNm to set
-	 */
-	public void setNcrdNm(String ncrdNm) {
-		this.ncrdNm = ncrdNm;
+	public void setDetailAdres(String detailAdres) {
+		this.detailAdres = detailAdres;
 	}
 
 	/**
@@ -403,6 +440,24 @@ public class NameCardVO extends SearchVO {
 	 */
 	public void setOfcpsNm(String ofcpsNm) {
 		this.ofcpsNm = ofcpsNm;
+	}
+	
+	/**
+	 * clsfNm attribute를 리턴한다.
+	 * 
+	 * @return the clsfNm
+	 */
+	public String getClsfNm() {
+		return clsfNm;
+	}
+	/**
+	 * clsfNm attribute 값을 설정한다.
+	 * 
+	 * @param clsfNm
+	 *            the clsfNm to set
+	 */
+	public void setClsfNm(String clsfNm) {
+		this.clsfNm = clsfNm;
 	}
 
 	/**
@@ -441,60 +496,7 @@ public class NameCardVO extends SearchVO {
 		this.remark = remark;
 	}
 
-	/**
-	 * telNo attribute를 리턴한다.
-	 * 
-	 * @return the telNo
-	 */
-	public String getTelNo() {
-		return telNo;
-	}
-	/**
-	 * telNo attribute 값을 설정한다.
-	 * 
-	 * @param telNo
-	 *            the telNo to set
-	 */
-	public void setTelNo(String telNo) {
-		this.telNo = telNo;
-	}
-
-	/**
-	 * detailAdres attribute를 리턴한다.
-	 * 
-	 * @return the detailAdres
-	 */
-	public String getDetailAdres() {
-		return detailAdres;
-	}
-	/**
-	 * detailAdres attribute 값을 설정한다.
-	 * 
-	 * @param detailAdres
-	 *            the detailAdres to set
-	 */
-	public void setDetailAdres(String detailAdres) {
-		this.detailAdres = detailAdres;
-	}
-
-	/**
-	 * zip attribute를 리턴한다.
-	 * 
-	 * @return the zip
-	 */
-	public String getZip() {
-		return zip;
-	}
-	/**
-	 * zip attribute 값을 설정한다.
-	 * 
-	 * @param zip
-	 *            the zipCode to set
-	 */
-	public void setZip(String zip) {
-		this.zip = zip;
-	}
-
+	// helper
 	/**
 	 * tmplatSeCodeNm attribute를 리턴한다.
 	 * 

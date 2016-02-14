@@ -27,11 +27,7 @@ import aramframework.com.cmm.util.WebUtil;
 
 public class BoardMasterVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 대상 아이디 */
-	private String trgetId = "";
-
+	// domain
 	/** 게시판 아이디 */
 	private String bbsId = "";
 
@@ -41,17 +37,14 @@ public class BoardMasterVO extends SearchVO {
 	/** 게시판 소개 */
 	private String bbsIntrcn = "";
 
-	/** 게시판 속성코드 */
-	private String bbsAttrbCode = "";
-
-	/** 게시판속성 코드명 */
-	private String bbsAttrbCodeNm = "";
-
 	/** 게시판 유형코드 */
 	private String bbsTyCode = "";
 
-	/** 게시판유형 코드명 */
-	private String bbsTyCodeNm = "";
+	/** 게시판 속성코드 */
+	private String bbsAttrbCode = "";
+
+	/** 답장가능여부 */
+	private String replyPosblAt = "";
 
 	/** 파일첨부가능여부 */
 	private String fileAtchPosblAt = "";
@@ -62,26 +55,11 @@ public class BoardMasterVO extends SearchVO {
 	/** 첨부가능파일사이즈 */
 	private String posblAtchFileSize = null;
 
-	/** 템플릿 아이디 */
-	private String tmplatId = "";
-
-	/** 템플릿 명 */
-	private String tmplatNm = "";
-
-	/** 템플릿경로 */
-	private String tmplatCours = "";
-
-	/** 답장가능여부 */
-	private String replyPosblAt = "";
-
 	/** 사용여부 */
 	private String useAt = "";
 
-	/** 사용플래그 */
-	private String bbsUseFlag = "";
-
-	/** 등록구분코드 */
-	private String registSeCode = "";
+	/** 템플릿 아이디 */
+	private String tmplatId = "";
 
 	// ---------------------------------
 	// 2009.06.26 : 2단계 기능 추가
@@ -95,24 +73,29 @@ public class BoardMasterVO extends SearchVO {
 	/** 만족도조사 */
 	private String stsfdgAt = "";
 
-	/**
-	 * trgetId attribute를 리턴한다.
-	 * 
-	 * @return the trgetId
-	 */
-	public String getTrgetId() {
-		return trgetId;
-	}
-	/**
-	 * trgetId attribute 값을 설정한다.
-	 * 
-	 * @param trgetId
-	 *            the trgetId to set
-	 */
-	public void setTrgetId(String trgetId) {
-		this.trgetId = trgetId;
-	}
+	// helper
+	/** 게시판유형 코드명 */
+	private String bbsTyCodeNm = "";
 
+	/** 게시판속성 코드명 */
+	private String bbsAttrbCodeNm = "";
+
+	/** 템플릿 명 */
+	private String tmplatNm = "";
+
+	/** 템플릿경로 */
+	private String tmplatCours = "";
+
+	/** 사용플래그 */
+	private String bbsUseFlag = "";
+
+	/** 등록구분코드 */
+	private String registSeCode = "";
+
+	/** 대상 아이디 */
+	private String trgetId = "";
+
+	// domain
 	/**
 	 * bbsId attribute를 리턴한다.
 	 * 
@@ -170,42 +153,6 @@ public class BoardMasterVO extends SearchVO {
 	}
 
 	/**
-	 * bbsAttrbCode attribute를 리턴한다.
-	 * 
-	 * @return the bbsAttrbCode
-	 */
-	public String getBbsAttrbCode() {
-		return bbsAttrbCode;
-	}
-	/**
-	 * bbsAttrbCode attribute 값을 설정한다.
-	 * 
-	 * @param bbsAttrbCode
-	 *            the bbsAttrbCode to set
-	 */
-	public void setBbsAttrbCode(String bbsAttrbCode) {
-		this.bbsAttrbCode = bbsAttrbCode;
-	}
-
-	/**
-	 * bbsAttrbCodeNm attribute를 리턴한다.
-	 * 
-	 * @return the bbsAttrbCodeNm
-	 */
-	public String getBbsAttrbCodeNm() {
-		return bbsAttrbCodeNm;
-	}
-	/**
-	 * bbsAttrbCodeNm attribute 값을 설정한다.
-	 * 
-	 * @param bbsAttrbCodeNm
-	 *            the bbsAttrbCodeNm to set
-	 */
-	public void setBbsAttrbCodeNm(String bbsAttrbCodeNm) {
-		this.bbsAttrbCodeNm = bbsAttrbCodeNm;
-	}
-
-	/**
 	 * bbsTyCode attribute를 리턴한다.
 	 * 
 	 * @return the bbsTyCode
@@ -224,21 +171,39 @@ public class BoardMasterVO extends SearchVO {
 	}
 
 	/**
-	 * bbsTyCodeNm attribute를 리턴한다.
+	 * bbsAttrbCode attribute를 리턴한다.
 	 * 
-	 * @return the bbsTyCodeNm
+	 * @return the bbsAttrbCode
 	 */
-	public String getBbsTyCodeNm() {
-		return bbsTyCodeNm;
+	public String getBbsAttrbCode() {
+		return bbsAttrbCode;
 	}
 	/**
-	 * bbsTyCodeNm attribute 값을 설정한다.
+	 * bbsAttrbCode attribute 값을 설정한다.
 	 * 
-	 * @param bbsTyCodeNm
-	 *            the bbsTyCodeNm to set
+	 * @param bbsAttrbCode
+	 *            the bbsAttrbCode to set
 	 */
-	public void setBbsTyCodeNm(String bbsTyCodeNm) {
-		this.bbsTyCodeNm = bbsTyCodeNm;
+	public void setBbsAttrbCode(String bbsAttrbCode) {
+		this.bbsAttrbCode = bbsAttrbCode;
+	}
+
+	/**
+	 * replyPosblAt attribute를 리턴한다.
+	 * 
+	 * @return the replyPosblAt
+	 */
+	public String getReplyPosblAt() {
+		return replyPosblAt;
+	}
+	/**
+	 * replyPosblAt attribute 값을 설정한다.
+	 * 
+	 * @param replyPosblAt
+	 *            the replyPosblAt to set
+	 */
+	public void setReplyPosblAt(String replyPosblAt) {
+		this.replyPosblAt = replyPosblAt;
 	}
 
 	/**
@@ -296,78 +261,6 @@ public class BoardMasterVO extends SearchVO {
 	}
 
 	/**
-	 * replyPosblAt attribute를 리턴한다.
-	 * 
-	 * @return the replyPosblAt
-	 */
-	public String getReplyPosblAt() {
-		return replyPosblAt;
-	}
-	/**
-	 * replyPosblAt attribute 값을 설정한다.
-	 * 
-	 * @param replyPosblAt
-	 *            the replyPosblAt to set
-	 */
-	public void setReplyPosblAt(String replyPosblAt) {
-		this.replyPosblAt = replyPosblAt;
-	}
-
-	/**
-	 * tmplatId attribute를 리턴한다.
-	 * 
-	 * @return the tmplatId
-	 */
-	public String getTmplatId() {
-		return tmplatId;
-	}
-	/**
-	 * tmplatId attribute 값을 설정한다.
-	 * 
-	 * @param tmplatId
-	 *            the tmplatId to set
-	 */
-	public void setTmplatId(String tmplatId) {
-		this.tmplatId = tmplatId;
-	}
-
-	/**
-	 * tmplatNm attribute를 리턴한다.
-	 * 
-	 * @return the tmplatNm
-	 */
-	public String getTmplatNm() {
-		return tmplatNm;
-	}
-	/**
-	 * tmplatNm attribute 값을 설정한다.
-	 * 
-	 * @param tmplatNm
-	 *            the tmplatNm to set
-	 */
-	public void setTmplatNm(String tmplatNm) {
-		this.tmplatNm = tmplatNm;
-	}
-
-	/**
-	 * tmplatCours attribute를 리턴한다.
-	 * 
-	 * @return the tmplatCours
-	 */
-	public String getTmplatCours() {
-		return tmplatCours;
-	}
-	/**
-	 * tmplatCours attribute 값을 설정한다.
-	 * 
-	 * @param tmplatCours
-	 *            the tmplatCours to set
-	 */
-	public void setTmplatCours(String tmplatCours) {
-		this.tmplatCours = tmplatCours;
-	}
-
-	/**
 	 * useAt attribute를 리턴한다.
 	 * 
 	 * @return the useAt
@@ -386,39 +279,21 @@ public class BoardMasterVO extends SearchVO {
 	}
 
 	/**
-	 * bbsUseFlag attribute를 리턴한다.
+	 * tmplatId attribute를 리턴한다.
 	 * 
-	 * @return the bbsUseFlag
+	 * @return the tmplatId
 	 */
-	public String getBbsUseFlag() {
-		return bbsUseFlag;
+	public String getTmplatId() {
+		return tmplatId;
 	}
 	/**
-	 * bbsUseFlag attribute 값을 설정한다.
+	 * tmplatId attribute 값을 설정한다.
 	 * 
-	 * @param bbsUseFlag
-	 *            the bbsUseFlag to set
+	 * @param tmplatId
+	 *            the tmplatId to set
 	 */
-	public void setBbsUseFlag(String bbsUseFlag) {
-		this.bbsUseFlag = bbsUseFlag;
-	}
-
-	/**
-	 * registSeCode attribute를 리턴한다.
-	 * 
-	 * @return the registSeCode
-	 */
-	public String getRegistSeCode() {
-		return registSeCode;
-	}
-	/**
-	 * registSeCode attribute 값을 설정한다.
-	 * 
-	 * @param registSeCode
-	 *            the registSeCode to set
-	 */
-	public void setRegistSeCode(String registSeCode) {
-		this.registSeCode = registSeCode;
+	public void setTmplatId(String tmplatId) {
+		this.tmplatId = tmplatId;
 	}
 
 	/**
@@ -473,6 +348,133 @@ public class BoardMasterVO extends SearchVO {
 	 */
 	public void setStsfdgAt(String stsfdgAt) {
 		this.stsfdgAt = stsfdgAt;
+	}
+
+	// helper
+	/**
+	 * bbsTyCodeNm attribute를 리턴한다.
+	 * 
+	 * @return the bbsTyCodeNm
+	 */
+	public String getBbsTyCodeNm() {
+		return bbsTyCodeNm;
+	}
+	/**
+	 * bbsTyCodeNm attribute 값을 설정한다.
+	 * 
+	 * @param bbsTyCodeNm
+	 *            the bbsTyCodeNm to set
+	 */
+	public void setBbsTyCodeNm(String bbsTyCodeNm) {
+		this.bbsTyCodeNm = bbsTyCodeNm;
+	}
+
+	/**
+	 * bbsAttrbCodeNm attribute를 리턴한다.
+	 * 
+	 * @return the bbsAttrbCodeNm
+	 */
+	public String getBbsAttrbCodeNm() {
+		return bbsAttrbCodeNm;
+	}
+	/**
+	 * bbsAttrbCodeNm attribute 값을 설정한다.
+	 * 
+	 * @param bbsAttrbCodeNm
+	 *            the bbsAttrbCodeNm to set
+	 */
+	public void setBbsAttrbCodeNm(String bbsAttrbCodeNm) {
+		this.bbsAttrbCodeNm = bbsAttrbCodeNm;
+	}
+
+	/**
+	 * tmplatNm attribute를 리턴한다.
+	 * 
+	 * @return the tmplatNm
+	 */
+	public String getTmplatNm() {
+		return tmplatNm;
+	}
+	/**
+	 * tmplatNm attribute 값을 설정한다.
+	 * 
+	 * @param tmplatNm
+	 *            the tmplatNm to set
+	 */
+	public void setTmplatNm(String tmplatNm) {
+		this.tmplatNm = tmplatNm;
+	}
+
+	/**
+	 * tmplatCours attribute를 리턴한다.
+	 * 
+	 * @return the tmplatCours
+	 */
+	public String getTmplatCours() {
+		return tmplatCours;
+	}
+	/**
+	 * tmplatCours attribute 값을 설정한다.
+	 * 
+	 * @param tmplatCours
+	 *            the tmplatCours to set
+	 */
+	public void setTmplatCours(String tmplatCours) {
+		this.tmplatCours = tmplatCours;
+	}
+
+	/**
+	 * bbsUseFlag attribute를 리턴한다.
+	 * 
+	 * @return the bbsUseFlag
+	 */
+	public String getBbsUseFlag() {
+		return bbsUseFlag;
+	}
+	/**
+	 * bbsUseFlag attribute 값을 설정한다.
+	 * 
+	 * @param bbsUseFlag
+	 *            the bbsUseFlag to set
+	 */
+	public void setBbsUseFlag(String bbsUseFlag) {
+		this.bbsUseFlag = bbsUseFlag;
+	}
+
+	/**
+	 * registSeCode attribute를 리턴한다.
+	 * 
+	 * @return the registSeCode
+	 */
+	public String getRegistSeCode() {
+		return registSeCode;
+	}
+	/**
+	 * registSeCode attribute 값을 설정한다.
+	 * 
+	 * @param registSeCode
+	 *            the registSeCode to set
+	 */
+	public void setRegistSeCode(String registSeCode) {
+		this.registSeCode = registSeCode;
+	}
+
+	/**
+	 * trgetId attribute를 리턴한다.
+	 * 
+	 * @return the trgetId
+	 */
+	public String getTrgetId() {
+		return trgetId;
+	}
+	/**
+	 * trgetId attribute 값을 설정한다.
+	 * 
+	 * @param trgetId
+	 *            the trgetId to set
+	 */
+	public void setTrgetId(String trgetId) {
+		this.trgetId = trgetId;
 	}
 
 	/**

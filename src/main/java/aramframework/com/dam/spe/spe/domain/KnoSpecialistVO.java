@@ -23,11 +23,22 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class KnoSpecialistVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-	
 	/** 전문가ID	 */
 	private String speId;
 	
+	/** 지식유형코드 */
+	private String knoTypeCd;
+	
+	/** 승인유형코드 */
+	private String appTypeCd;
+	
+	/** 전문가승인일 */
+	private String speConfmDe = "";
+	
+	/** 전문가설명 */
+	private String speExpCn;
+	
+	// helper
 	/** 전문가명 */
 	private String userNm;
 	
@@ -37,24 +48,13 @@ public class KnoSpecialistVO extends SearchVO {
 	/** 소속조직명 */
 	private String orgnztNm;
 	
-	/** 지식유형코드 */
-	private String knoTypeCd;
-	
-	/** 승인유형코드 */
-	private String appTypeCd;
-	
 	/** 승인유형명 */
 	private String appTypeNm;
 	
 	/** 지식유형명 */
 	private String knoTypeNm;
 	
-	/** 전문가설명 */
-	private String speExpCn;
-	
-	/** 전문가승인일 */
-	private String speConfmDe = "";
-	
+	// domain
 	/**
 	 * @return the speId
 	 */
@@ -69,6 +69,63 @@ public class KnoSpecialistVO extends SearchVO {
 		this.speId = speId;
 	}
 
+	/**
+	 * @return the knoTypeCd
+	 */
+	public String getKnoTypeCd() {
+		return knoTypeCd;
+	}
+	/**
+	 * @param knoTypeCd
+	 *            the knoTypeCd to set
+	 */
+	public void setKnoTypeCd(String knoTypeCd) {
+		this.knoTypeCd = knoTypeCd;
+	}
+
+	/**
+	 * @return the appTypeCd
+	 */
+	public String getAppTypeCd() {
+		return appTypeCd;
+	}
+	/**
+	 * @param appTypeCd
+	 *            the appTypeCd to set
+	 */
+	public void setAppTypeCd(String appTypeCd) {
+		this.appTypeCd = appTypeCd;
+	}
+
+	/**
+	 * @return the speConfmDe
+	 */
+	public String getSpeConfmDe() {
+		return speConfmDe;
+	}
+	/**
+	 * @param speConfmDe
+	 *            the speConfmDe to set
+	 */
+	public void setSpeConfmDe(String speConfmDe) {
+		this.speConfmDe = speConfmDe;
+	}
+
+	/**
+	 * @return the speExpCn
+	 */
+	public String getSpeExpCn() {
+		return speExpCn;
+	}
+	/**
+	 * @param speExpCn
+	 *            the speExpCn to set
+	 */
+	public void setSpeExpCn(String speExpCn) {
+		this.speExpCn = speExpCn;
+	}
+
+	// helper
 	/**
 	 * @return the userNm
 	 */
@@ -112,20 +169,6 @@ public class KnoSpecialistVO extends SearchVO {
 	}
 
 	/**
-	 * @return the knoTypeCd
-	 */
-	public String getKnoTypeCd() {
-		return knoTypeCd;
-	}
-	/**
-	 * @param knoTypeCd
-	 *            the knoTypeCd to set
-	 */
-	public void setKnoTypeCd(String knoTypeCd) {
-		this.knoTypeCd = knoTypeCd;
-	}
-
-	/**
 	 * @return the knoTypeNm
 	 */
 	public String getKnoTypeNm() {
@@ -140,20 +183,6 @@ public class KnoSpecialistVO extends SearchVO {
 	}
 
 	/**
-	 * @return the appTypeCd
-	 */
-	public String getAppTypeCd() {
-		return appTypeCd;
-	}
-	/**
-	 * @param appTypeCd
-	 *            the appTypeCd to set
-	 */
-	public void setAppTypeCd(String appTypeCd) {
-		this.appTypeCd = appTypeCd;
-	}
-
-	/**
 	 * @return the appTypeNm
 	 */
 	public String getAppTypeNm() {
@@ -165,34 +194,6 @@ public class KnoSpecialistVO extends SearchVO {
 	 */
 	public void setAppTypeNm(String appTypeNm) {
 		this.appTypeNm = appTypeNm;
-	}
-
-	/**
-	 * @return the speConfmDe
-	 */
-	public String getSpeConfmDe() {
-		return speConfmDe;
-	}
-	/**
-	 * @param speConfmDe
-	 *            the speConfmDe to set
-	 */
-	public void setSpeConfmDe(String speConfmDe) {
-		this.speConfmDe = speConfmDe;
-	}
-
-	/**
-	 * @return the speExpCn
-	 */
-	public String getSpeExpCn() {
-		return speExpCn;
-	}
-	/**
-	 * @param speExpCn
-	 *            the speExpCn to set
-	 */
-	public void setSpeExpCn(String speExpCn) {
-		this.speExpCn = speExpCn;
 	}
 
 }

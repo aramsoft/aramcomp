@@ -27,44 +27,35 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class MultimediaVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-	/**
-     * 순번
-     */
+	// domain
+	/** 순번     */
     private int sn;
-    /**
-     * 회원ID
-     */
+    
+    /** 회원ID     */
     private String mberId;
-    /**
-     * 멀티미디어파일(첨부파일) 구분 코드
-     */
-    private String mltmdCode;
-    /**
-     * 멀티미디어파일(첨부파일) 구분명 - 동영상파일, 음악파일..
-     */
-    private String mltmdNm;
-    /**
-     * 멀티미디어 제목
-     */
-    private String mltmdSj;
-    /**
-     * 멀티미디어파일(첨부파일)ID
-     */
+    
+    /** 멀티미디어파일(첨부파일)ID     */
     private String atchFileId;
-    /**
-     * 멀티미디어 지원 브라우저명
-     */
+    
+   /** 멀티미디어파일(첨부파일) 구분 코드     */
+    private String mltmdCode;
+    
+    /** 멀티미디어파일(첨부파일) 구분명 - 동영상파일, 음악파일..     */
+    private String mltmdNm;
+    
+    /** 멀티미디어 제목     */
+    private String mltmdSj;
+    
+    /** 멀티미디어 지원 브라우저명     */
     private String browserNm;
-    /**
-     * 생성일시
-     */
+    
+    /** 생성일시     */
     private String creatDt;
-    /**
-     * 수정일시
-     */
+    
+    /** 수정일시     */
     private String updtDt;
 
+    // domain
     /**
      * 순번을 가져온다.
      * @return int 순번
@@ -96,6 +87,20 @@ public class MultimediaVO extends SearchVO {
     }
 
     /**
+     * 멀티미디어파일(첨부파일)ID를 획득한다. * @return String 첨부파일 ID
+     */
+    public String getAtchFileId() {
+        return atchFileId;
+    }
+    /**
+     * 멀티미디어파일(첨부파일)ID를 할당한다.
+     * @param atchFileId
+     */
+    public void setAtchFileId(String atchFileId) {
+        this.atchFileId = atchFileId;
+    }
+
+   /**
      * 멀티미디어 첨부파일 코드를 획득한다.
      */
     public String getMltmdCode() {
@@ -136,20 +141,6 @@ public class MultimediaVO extends SearchVO {
      */
     public void setMltmdSj(String mltmdSj) {
         this.mltmdSj = mltmdSj;
-    }
-
-    /**
-     * 멀티미디어파일(첨부파일)ID를 획득한다. * @return String 첨부파일 ID
-     */
-    public String getAtchFileId() {
-        return atchFileId;
-    }
-    /**
-     * 멀티미디어파일(첨부파일)ID를 할당한다.
-     * @param atchFileId
-     */
-    public void setAtchFileId(String atchFileId) {
-        this.atchFileId = atchFileId;
     }
 
     /**

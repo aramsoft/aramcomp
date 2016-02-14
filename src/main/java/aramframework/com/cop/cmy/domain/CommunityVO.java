@@ -29,8 +29,7 @@ import aramframework.com.cmm.util.WebUtil;
 
 public class CommunityVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 커뮤니티 아이디 */
 	private String cmmntyId = "";
 
@@ -40,20 +39,14 @@ public class CommunityVO extends SearchVO {
 	/** 커뮤니티 소개 */
 	private String cmmntyIntrcn = "";
 
+	/** 사용 여부 */
+	private String useAt = "";
+
 	/** 등록구분코드 */
 	private String registSeCode = "";
 
-	/** 등록구분 코드명 */
-	private String registSeCodeNm = "";
-
 	/** 템플릿 아이디 */
 	private String tmplatId = "";
-
-	/** 템플릿 이름 */
-	private String tmplatNm = "";
-
-	/** 사용 여부 */
-	private String useAt = "";
 
 	/** 회원인증 여부 */
 	private String memberAt = "";
@@ -61,18 +54,25 @@ public class CommunityVO extends SearchVO {
 	/** Home URL */
 	private String homeUrl = "";
 
-	/** 제공 URL */
-	private String provdUrl = "";
-
-	/** 제공 URL2 */
-	private String provdUrl2 = "";
-
 	/** 커뮤니티 로고 이미지 */
 	private byte[] cmmntyLogoImage;
 
 	/**  */
 	private String additionalInfo;
 	
+	// helper
+	/** 등록구분 코드명 */
+	private String registSeCodeNm = "";
+
+	/** 템플릿 이름 */
+	private String tmplatNm = "";
+
+	/** 제공 URL */
+	private String provdUrl = "";
+
+	/** 제공 URL2 */
+	private String provdUrl2 = "";
+
 	/* temp */
 	private String emplyrId = "";
 	
@@ -81,6 +81,7 @@ public class CommunityVO extends SearchVO {
 	private List<EgovMap> mgrMenuList = null;
 	private List<EgovMap> subMenuList = null;
 	
+	// domain
 	/** cmmntyId 	 */ 
 	public String getCmmntyId() {
 		return cmmntyId;
@@ -91,6 +92,14 @@ public class CommunityVO extends SearchVO {
 			this.pathId = WebUtil.getPathId(cmmntyId);
 	}
 
+	/** cmmntyNm 	 */ 
+	public String getCmmntyNm() {
+		return cmmntyNm;
+	}
+	public void setCmmntyNm(String cmmntyNm) {
+		this.cmmntyNm = cmmntyNm;
+	}
+
 	/** cmmntyIntrcn 	 */ 
 	public String getCmmntyIntrcn() {
 		return cmmntyIntrcn;
@@ -99,12 +108,12 @@ public class CommunityVO extends SearchVO {
 		this.cmmntyIntrcn = cmmntyIntrcn;
 	}
 
-	/** cmmntyNm 	 */ 
-	public String getCmmntyNm() {
-		return cmmntyNm;
+	/** useAt 	 */ 
+	public String getUseAt() {
+		return useAt;
 	}
-	public void setCmmntyNm(String cmmntyNm) {
-		this.cmmntyNm = cmmntyNm;
+	public void setUseAt(String useAt) {
+		this.useAt = useAt;
 	}
 
 	/** registSeCode 	 */ 
@@ -115,36 +124,12 @@ public class CommunityVO extends SearchVO {
 		this.registSeCode = registSeCode;
 	}
 
-	/** registSeCodeNm 	 */ 
-	public String getRegistSeCodeNm() {
-		return registSeCodeNm;
-	}
-	public void setRegistSeCodeNm(String registSeCodeNm) {
-		this.registSeCodeNm = registSeCodeNm;
-	}
-
 	/** tmplatId 	 */ 
 	public String getTmplatId() {
 		return tmplatId;
 	}
 	public void setTmplatId(String tmplatId) {
 		this.tmplatId = tmplatId;
-	}
-
-	/** tmplatNm 	 */ 
-	public String getTmplatNm() {
-		return tmplatNm;
-	}
-	public void setTmplatNm(String tmplatNm) {
-		this.tmplatNm = tmplatNm;
-	}
-
-	/** useAt 	 */ 
-	public String getUseAt() {
-		return useAt;
-	}
-	public void setUseAt(String useAt) {
-		this.useAt = useAt;
 	}
 
 	/** memberAt 	 */ 
@@ -163,22 +148,6 @@ public class CommunityVO extends SearchVO {
 		this.homeUrl = homeUrl;
 	}
 
-	/** provdUrl 	 */ 
-	public String getProvdUrl() {
-		return provdUrl;
-	}
-	public void setProvdUrl(String provdUrl) {
-		this.provdUrl = provdUrl;
-	}
-
-	/** provdUrl2 	 */ 
-	public String getProvdUrl2() {
-		return provdUrl2;
-	}
-	public void setProvdUrl2(String provdUrl2) {
-		this.provdUrl2 = provdUrl2;
-	}
-
 	/** cmmntyLogoImage 	 */ 
 	public byte[] getCmmntyLogoImage() {
 		return cmmntyLogoImage;
@@ -193,6 +162,39 @@ public class CommunityVO extends SearchVO {
 	}
 	public void setAdditionalInfo(String additionalInfo) {
 		this.additionalInfo = additionalInfo;
+	}
+
+	// helper
+	/** registSeCodeNm 	 */ 
+	public String getRegistSeCodeNm() {
+		return registSeCodeNm;
+	}
+	public void setRegistSeCodeNm(String registSeCodeNm) {
+		this.registSeCodeNm = registSeCodeNm;
+	}
+
+	/** tmplatNm 	 */ 
+	public String getTmplatNm() {
+		return tmplatNm;
+	}
+	public void setTmplatNm(String tmplatNm) {
+		this.tmplatNm = tmplatNm;
+	}
+
+	/** provdUrl 	 */ 
+	public String getProvdUrl() {
+		return provdUrl;
+	}
+	public void setProvdUrl(String provdUrl) {
+		this.provdUrl = provdUrl;
+	}
+
+	/** provdUrl2 	 */ 
+	public String getProvdUrl2() {
+		return provdUrl2;
+	}
+	public void setProvdUrl2(String provdUrl2) {
+		this.provdUrl2 = provdUrl2;
 	}
 
 	/** EmplyrId 	 */ 

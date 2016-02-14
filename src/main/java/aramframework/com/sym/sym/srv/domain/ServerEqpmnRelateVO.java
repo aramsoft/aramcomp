@@ -23,94 +23,39 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class ServerEqpmnRelateVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-	/**
-	 * 서버ID 조회조건
-	 */
-	private String strServerId;
-
-	/**
-	 * 서버명 조회조건
-	 */
-	private String strServerNm;
-
-	/**
-	 * 서버ID
-	 */
-	private String serverId;
-	/**
-	 * 서버장비ID
-	 */
+	// domain
+	/** 서버장비ID	 */
 	private String serverEqpmnId;
-	/**
-	 * 서버장비명
-	 */
+	
+	/** 서버ID	 */
+	private String serverId;
+	
+	// helper
+	/** 서버장비명  */
 	private String serverEqpmnNm;
-	/**
-	 * 서버장비IP
-	 */
+	
+	/** 서버장비IP	 */
 	private String serverEqpmnIp;
-	/**
-	 * 서버장비관리자
-	 */
+	
+	/** 서버장비관리자 */
 	private String serverEqpmnMngrNm;
-	/**
-	 * 등록여부
-	 */
+	
+	/** 등록여부	 */
 	private String regYn;
 
-	/**
-	 * @return the strServerId
-	 */
-	public String getStrServerId() {
-		return strServerId;
-	}
+	/** 서버ID 조회조건	 */
+	private String strServerId;
 
-	/**
-	 * @param strServerId
-	 *            the strServerId to set
-	 */
-	public void setStrServerId(String strServerId) {
-		this.strServerId = strServerId;
-	}
+	/** 서버명 조회조건    */
+	private String strServerNm;
 
-	/**
-	 * @return the strServerNm
-	 */
-	public String getStrServerNm() {
-		return strServerNm;
-	}
-
-	/**
-	 * @param strServerNm
-	 *            the strServerNm to set
-	 */
-	public void setStrServerNm(String strServerNm) {
-		this.strServerNm = strServerNm;
-	}
-
-	/**
-	 * @return the serverId
-	 */
-	public String getServerId() {
-		return serverId;
-	}
-
-	/**
-	 * @param serverId
-	 *            the serverId to set
-	 */
-	public void setServerId(String serverId) {
-		this.serverId = serverId;
-	}
-
+	// domain
 	/**
 	 * @return the serverEqpmnId
 	 */
 	public String getServerEqpmnId() {
 		return serverEqpmnId;
 	}
-
 	/**
 	 * @param serverEqpmnId
 	 *            the serverEqpmnId to set
@@ -120,12 +65,26 @@ public class ServerEqpmnRelateVO extends SearchVO {
 	}
 
 	/**
+	 * @return the serverId
+	 */
+	public String getServerId() {
+		return serverId;
+	}
+	/**
+	 * @param serverId
+	 *            the serverId to set
+	 */
+	public void setServerId(String serverId) {
+		this.serverId = serverId;
+	}
+
+	// helper
+	/**
 	 * @return the serverEqpmnNm
 	 */
 	public String getServerEqpmnNm() {
 		return serverEqpmnNm;
 	}
-
 	/**
 	 * @param serverEqpmnNm
 	 *            the serverEqpmnNm to set
@@ -140,7 +99,6 @@ public class ServerEqpmnRelateVO extends SearchVO {
 	public String getServerEqpmnIp() {
 		return serverEqpmnIp;
 	}
-
 	/**
 	 * @param serverEqpmnIp
 	 *            the serverEqpmnIp to set
@@ -155,7 +113,6 @@ public class ServerEqpmnRelateVO extends SearchVO {
 	public String getServerEqpmnMngrNm() {
 		return serverEqpmnMngrNm;
 	}
-
 	/**
 	 * @param serverEqpmnMngrNm
 	 *            the serverEqpmnMngrNm to set
@@ -170,13 +127,40 @@ public class ServerEqpmnRelateVO extends SearchVO {
 	public String getRegYn() {
 		return regYn;
 	}
-
 	/**
 	 * @param regYn
 	 *            the regYn to set
 	 */
 	public void setRegYn(String regYn) {
 		this.regYn = regYn;
+	}
+
+	/**
+	 * @return the strServerId
+	 */
+	public String getStrServerId() {
+		return strServerId;
+	}
+	/**
+	 * @param strServerId
+	 *            the strServerId to set
+	 */
+	public void setStrServerId(String strServerId) {
+		this.strServerId = strServerId;
+	}
+
+	/**
+	 * @return the strServerNm
+	 */
+	public String getStrServerNm() {
+		return strServerNm;
+	}
+	/**
+	 * @param strServerNm
+	 *            the strServerNm to set
+	 */
+	public void setStrServerNm(String strServerNm) {
+		this.strServerNm = strServerNm;
 	}
 
 }

@@ -25,31 +25,18 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class KnoPersonalVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 세션ID */
-	private String uniqId;
-	
+	// domain
 	/** 지식ID */
 	private String knoId;
-	
-	/** 소속조직ID */
-	private String orgnztId;
-	
-	/** 소속조직명 */
-	private String orgnztNm;
-	
-	/** 사용자ID */
-	private String emplyrId;
-	
-	/** 사용자명 */
-	private String userNm;
 	
 	/** 지식유형코드 */
 	private String knoTypeCd;
 	
-	/** 지식유형명 */
-	private String knoTypeNm;
+	/** 소속조직ID */
+	private String orgnztId;
+	
+	/** 사용자ID */
+	private String emplyrId;
 	
 	/** 지식명 */
 	private String knoNm;
@@ -60,29 +47,29 @@ public class KnoPersonalVO extends SearchVO {
 	/** 개인지식공개여부 */
 	private String othbcAt;
 	
-	/** 등록자명 */
-	private String regstNm;
-	
 	/** 수집일자 */
 	private String colYmd = "";
 	
 	/** 첨부파일ID */
 	private String atchFileId;
 	
-	/**
-	 * @return the uniqId
-	 */
-	public String getUniqId() {
-		return uniqId;
-	}
-	/**
-	 * @param uniqId
-	 *            the uniqId to set
-	 */
-	public void setUniqId(String uniqId) {
-		this.uniqId = uniqId;
-	}
-
+	// helper
+	/** 세션ID */
+	private String uniqId;
+	
+	/** 소속조직명 */
+	private String orgnztNm;
+	
+	/** 사용자명 */
+	private String userNm;
+	
+	/** 지식유형명 */
+	private String knoTypeNm;
+	
+	/** 등록자명 */
+	private String regstNm;
+	
+	// domain
 	/**
 	 * @return the knoId
 	 */
@@ -95,62 +82,6 @@ public class KnoPersonalVO extends SearchVO {
 	 */
 	public void setKnoId(String knoId) {
 		this.knoId = knoId;
-	}
-
-	/**
-	 * @return the orgnztId
-	 */
-	public String getOrgnztId() {
-		return orgnztId;
-	}
-	/**
-	 * @param orgnztId
-	 *            the orgnztId to set
-	 */
-	public void setOrgnztId(String orgnztId) {
-		this.orgnztId = orgnztId;
-	}
-
-	/**
-	 * @return the orgnztNm
-	 */
-	public String getOrgnztNm() {
-		return orgnztNm;
-	}
-	/**
-	 * @param orgnztNm
-	 *            the orgnztNm to set
-	 */
-	public void setOrgnztNm(String orgnztNm) {
-		this.orgnztNm = orgnztNm;
-	}
-
-	/**
-	 * @return the emplyrId
-	 */
-	public String getEmplyrId() {
-		return emplyrId;
-	}
-	/**
-	 * @param emplyrId
-	 *            the emplyrId to set
-	 */
-	public void setEmplyrId(String emplyrId) {
-		this.emplyrId = emplyrId;
-	}
-
-	/**
-	 * @return the userNm
-	 */
-	public String getUserNm() {
-		return userNm;
-	}
-	/**
-	 * @param userNm
-	 *            the userNm to set
-	 */
-	public void setUserNm(String userNm) {
-		this.userNm = userNm;
 	}
 
 	/**
@@ -168,17 +99,31 @@ public class KnoPersonalVO extends SearchVO {
 	}
 
 	/**
-	 * @return the knoTypeNm
+	 * @return the orgnztId
 	 */
-	public String getKnoTypeNm() {
-		return knoTypeNm;
+	public String getOrgnztId() {
+		return orgnztId;
 	}
 	/**
-	 * @param knoTypeNm
-	 *            the knoTypeNm to set
+	 * @param orgnztId
+	 *            the orgnztId to set
 	 */
-	public void setKnoTypeNm(String knoTypeNm) {
-		this.knoTypeNm = knoTypeNm;
+	public void setOrgnztId(String orgnztId) {
+		this.orgnztId = orgnztId;
+	}
+
+	/**
+	 * @return the emplyrId
+	 */
+	public String getEmplyrId() {
+		return emplyrId;
+	}
+	/**
+	 * @param emplyrId
+	 *            the emplyrId to set
+	 */
+	public void setEmplyrId(String emplyrId) {
+		this.emplyrId = emplyrId;
 	}
 
 	/**
@@ -249,6 +194,63 @@ public class KnoPersonalVO extends SearchVO {
 	 */
 	public void setAtchFileId(String atchFileId) {
 		this.atchFileId = atchFileId;
+	}
+
+	// helper
+	/**
+	 * @return the uniqId
+	 */
+	public String getUniqId() {
+		return uniqId;
+	}
+	/**
+	 * @param uniqId
+	 *            the uniqId to set
+	 */
+	public void setUniqId(String uniqId) {
+		this.uniqId = uniqId;
+	}
+
+	/**
+	 * @return the orgnztNm
+	 */
+	public String getOrgnztNm() {
+		return orgnztNm;
+	}
+	/**
+	 * @param orgnztNm
+	 *            the orgnztNm to set
+	 */
+	public void setOrgnztNm(String orgnztNm) {
+		this.orgnztNm = orgnztNm;
+	}
+
+	/**
+	 * @return the userNm
+	 */
+	public String getUserNm() {
+		return userNm;
+	}
+	/**
+	 * @param userNm
+	 *            the userNm to set
+	 */
+	public void setUserNm(String userNm) {
+		this.userNm = userNm;
+	}
+
+	/**
+	 * @return the knoTypeNm
+	 */
+	public String getKnoTypeNm() {
+		return knoTypeNm;
+	}
+	/**
+	 * @param knoTypeNm
+	 *            the knoTypeNm to set
+	 */
+	public void setKnoTypeNm(String knoTypeNm) {
+		this.knoTypeNm = knoTypeNm;
 	}
 
 	/**

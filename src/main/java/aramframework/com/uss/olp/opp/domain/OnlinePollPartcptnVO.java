@@ -23,14 +23,17 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class OnlinePollPartcptnVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 대상 아이디 */
-	private String trgetId = "";
+	// domain
+	/** 온라인POLL 결과 아이디 */
+	private String pollResultId;
 
 	/** 온라인POLL 아이디 */
 	private String pollId;
 
+	/** 온라인POLL 항목 아이디 */
+	private String pollIemId;
+
+	// helper
 	/** 온라인POLL 이름 */
 	private String pollNm;
 
@@ -49,31 +52,29 @@ public class OnlinePollPartcptnVO extends SearchVO  {
 	/** 온라인POLL 자동페기 */
 	private String pollAutoDsuseYn;
 
-	/** 온라인POLL 항목 아이디 */
-	private String pollIemId;
-
 	/** 온라인POLL 항목명 */
 	private String pollIemNm;
 
-	/** 온라인POLL 결과 아이디 */
-	private String pollResultId;
+	/** 대상 아이디 */
+	private String trgetId = "";
 
+	// domain
 	/**
-	 * trgetId attribute를 리턴한다.
+	 * pollResultId 리턴
 	 * 
-	 * @return the trgetId
+	 * @return the pollResultId
 	 */
-	public String getTrgetId() {
-		return trgetId;
+	public String getPollResultId() {
+		return pollResultId;
 	}
 	/**
-	 * trgetId attribute 값을 설정한다.
+	 * pollResultId 설정
 	 * 
-	 * @param trgetId
-	 *            the trgetId to set
+	 * @param pollResultId
+	 *            the pollResultId to set
 	 */
-	public void setTrgetId(String trgetId) {
-		this.trgetId = trgetId;
+	public void setPollResultId(String pollResultId) {
+		this.pollResultId = pollResultId;
 	}
 
 	/**
@@ -94,6 +95,25 @@ public class OnlinePollPartcptnVO extends SearchVO  {
 		this.pollId = pollId;
 	}
 
+	/**
+	 * pollIemId 리턴
+	 * 
+	 * @return the pollIemId
+	 */
+	public String getPollIemId() {
+		return pollIemId;
+	}
+	/**
+	 * pollIemId 설정
+	 * 
+	 * @param pollIemId
+	 *            the pollIemId to set
+	 */
+	public void setPollIemId(String pollIemId) {
+		this.pollIemId = pollIemId;
+	}
+
+	// helper
 	/**
 	 * pollNm 리턴
 	 * 
@@ -203,24 +223,6 @@ public class OnlinePollPartcptnVO extends SearchVO  {
 	}
 
 	/**
-	 * pollIemId 리턴
-	 * 
-	 * @return the pollIemId
-	 */
-	public String getPollIemId() {
-		return pollIemId;
-	}
-	/**
-	 * pollIemId 설정
-	 * 
-	 * @param pollIemId
-	 *            the pollIemId to set
-	 */
-	public void setPollIemId(String pollIemId) {
-		this.pollIemId = pollIemId;
-	}
-
-	/**
 	 * pollIemNm 리턴
 	 * 
 	 * @return the pollIemNm
@@ -239,21 +241,21 @@ public class OnlinePollPartcptnVO extends SearchVO  {
 	}
 
 	/**
-	 * pollResultId 리턴
+	 * trgetId attribute를 리턴한다.
 	 * 
-	 * @return the pollResultId
+	 * @return the trgetId
 	 */
-	public String getPollResultId() {
-		return pollResultId;
+	public String getTrgetId() {
+		return trgetId;
 	}
 	/**
-	 * pollResultId 설정
+	 * trgetId attribute 값을 설정한다.
 	 * 
-	 * @param pollResultId
-	 *            the pollResultId to set
+	 * @param trgetId
+	 *            the trgetId to set
 	 */
-	public void setPollResultId(String pollResultId) {
-		this.pollResultId = pollResultId;
+	public void setTrgetId(String trgetId) {
+		this.trgetId = trgetId;
 	}
 
 }

@@ -24,21 +24,27 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class MberManageVO extends SearchVO {
 
-	private static final long serialVersionUID = 4490771584910839357L;
-
-	// 추가 검색 조건
-	/** 이전비밀번호 - 비밀번호 변경시 사용 */
-	private String oldPassword = "";
-
-	/** 검색조건-회원상태 (0, A, D, P) */
-	private String sbscrbSttus = "0";
-
-	// Domain 정보
-	/** 사용자고유아이디 */
-	private String uniqId = "";
+	// domain
+	/** 회원 ID */
+	private String mberId;
 	
-	/** 사용자 유형 */
-	private String userTy;
+	/** 비밀번호 */
+	private String password;
+	
+	/** 비밀번호 힌트 */
+	private String passwordHint;
+	
+	/** 비밀번호 정답 */
+	private String passwordCnsr;
+	
+	/** 주민등록번호 */
+	private String ihidnum;
+	
+	/** 회원명 */
+	private String mberNm;
+	
+	/** 우편번호 */
+	private String zip;
 	
 	/** 주소 */
 	private String adres;
@@ -46,128 +52,175 @@ public class MberManageVO extends SearchVO {
 	/** 상세주소 */
 	private String detailAdres;
 	
-	/** 끝전화번호 */
-	private String endTelno;
-	
-	/** 팩스번호 */
-	private String mberFxnum;
-	
-	/** 주민등록번호 */
-	private String ihidnum;
-	
-	/** 성별코드 */
-	private String sexdstnCode;
-	
-	/** 회원 ID */
-	private String mberId;
-	
-	/** 회원명 */
-	private String mberNm;
-	
-	/** 회원상태 */
-	private String mberSttus;
-	
 	/** 지역번호 */
 	private String areaNo;
 	
 	/** 중간전화번호 */
 	private String middleTelno;
 	
+	/** 끝전화번호 */
+	private String endTelno;
+	
 	/** 핸드폰번호 */
 	private String moblphonNo;
 	
-	/** 비밀번호 */
-	private String password;
+	/** 회원상태 */
+	private String mberSttus;
 	
-	/** 비밀번호 정답 */
-	private String passwordCnsr;
-	
-	/** 비밀번호 힌트 */
-	private String passwordHint;
-	
-	/** 가입 일자 */
-	private String sbscrbDe;
-	
-	/** 우편번호 */
-	private String zip;
+	/** 팩스번호 */
+	private String mberFxnum;
 	
 	/** 이메일주소 */
 	private String mberEmailAdres;
 
+	/** 가입 일자 */
+	private String sbscrbDe;
+	
+	/** 성별코드 */
+	private String sexdstnCode;
+	
+	/** 사용자고유아이디 */
+	private String uniqId = "";
+	
 	/** 구글 계정 */
 	private String googleAccount;
 
+	// helper
+	/** 사용자 유형 */
+	private String userTy;
+	
+	// 추가 검색 조건
+	/** 이전비밀번호 - 비밀번호 변경시 사용 */
+	private String oldPassword = "";
+
+	/** 검색조건-회원상태 (0, A, D, P) */
+	private String sbscrbSttus = "0";
+
+	// domain
 	/**
-	 * oldPassword attribute 값을 리턴한다.
+	 * mberId attribute 값을 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getOldPassword() {
-		return oldPassword;
+	public String getMberId() {
+		return mberId;
 	}
 	/**
-	 * oldPassword attribute 값을 설정한다.
+	 * mberId attribute 값을 설정한다.
 	 * 
-	 * @param oldPassword
+	 * @param mberId
 	 *            String
 	 */
-	public void setOldPassword(String oldPassword) {
-		this.oldPassword = oldPassword;
+	public void setMberId(String mberId) {
+		this.mberId = mberId;
 	}
 
 	/**
-	 * sbscrbSttus attribute 값을 리턴한다.
+	 * password attribute 값을 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getSbscrbSttus() {
-		return sbscrbSttus;
+	public String getPassword() {
+		return password;
 	}
 	/**
-	 * sbscrbSttus attribute 값을 설정한다.
+	 * password attribute 값을 설정한다.
 	 * 
-	 * @param sbscrbSttus
+	 * @param password
 	 *            String
 	 */
-	public void setSbscrbSttus(String sbscrbSttus) {
-		this.sbscrbSttus = sbscrbSttus;
-	}
-
-	// 도메인 정보
-	/**
-	 * uniqId attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getUniqId() {
-		return uniqId;
-	}
-	/**
-	 * uniqId attribute 값을 설정한다.
-	 * 
-	 * @param uniqId
-	 *            String
-	 */
-	public void setUniqId(String uniqId) {
-		this.uniqId = uniqId;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	/**
-	 * userTy attribute 값을 리턴한다.
+	 * passwordHint attribute 값을 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getUserTy() {
-		return userTy;
+	public String getPasswordHint() {
+		return passwordHint;
 	}
 	/**
-	 * userTy attribute 값을 설정한다.
+	 * passwordHint attribute 값을 설정한다.
 	 * 
-	 * @param userTy
+	 * @param passwordHint
 	 *            String
 	 */
-	public void setUserTy(String userTy) {
-		this.userTy = userTy;
+	public void setPasswordHint(String passwordHint) {
+		this.passwordHint = passwordHint;
+	}
+
+	/**
+	 * passwordCnsr attribute 값을 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getPasswordCnsr() {
+		return passwordCnsr;
+	}
+	/**
+	 * passwordCnsr attribute 값을 설정한다.
+	 * 
+	 * @param passwordCnsr
+	 *            String
+	 */
+	public void setPasswordCnsr(String passwordCnsr) {
+		this.passwordCnsr = passwordCnsr;
+	}
+
+	/**
+	 * ihidnum attribute 값을 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getIhidnum() {
+		return ihidnum;
+	}
+	/**
+	 * ihidnum attribute 값을 설정한다.
+	 * 
+	 * @param ihidnum
+	 *            String
+	 */
+	public void setIhidnum(String ihidnum) {
+		this.ihidnum = ihidnum;
+	}
+
+	/**
+	 * mberNm attribute 값을 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getMberNm() {
+		return mberNm;
+	}
+	/**
+	 * mberNm attribute 값을 설정한다.
+	 * 
+	 * @param mberNm
+	 *            String
+	 */
+	public void setMberNm(String mberNm) {
+		this.mberNm = mberNm;
+	}
+
+	/**
+	 * zip attribute 값을 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getZip() {
+		return zip;
+	}
+	/**
+	 * zip attribute 값을 설정한다.
+	 * 
+	 * @param zip
+	 *            String
+	 */
+	public void setZip(String zip) {
+		this.zip = zip;
 	}
 
 	/**
@@ -207,132 +260,6 @@ public class MberManageVO extends SearchVO {
 	}
 
 	/**
-	 * endTelno attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getEndTelno() {
-		return endTelno;
-	}
-	/**
-	 * endTelno attribute 값을 설정한다.
-	 * 
-	 * @param endTelno
-	 *            String
-	 */
-	public void setEndTelno(String endTelno) {
-		this.endTelno = endTelno;
-	}
-
-	/**
-	 * mberFxnum attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getMberFxnum() {
-		return mberFxnum;
-	}
-	/**
-	 * mberFxnum attribute 값을 설정한다.
-	 * 
-	 * @param mberFxnum
-	 *            String
-	 */
-	public void setMberFxnum(String mberFxnum) {
-		this.mberFxnum = mberFxnum;
-	}
-
-	/**
-	 * ihidnum attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getIhidnum() {
-		return ihidnum;
-	}
-	/**
-	 * ihidnum attribute 값을 설정한다.
-	 * 
-	 * @param ihidnum
-	 *            String
-	 */
-	public void setIhidnum(String ihidnum) {
-		this.ihidnum = ihidnum;
-	}
-
-	/**
-	 * sexdstnCode attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getSexdstnCode() {
-		return sexdstnCode;
-	}
-	/**
-	 * sexdstnCode attribute 값을 설정한다.
-	 * 
-	 * @param sexdstnCode
-	 *            String
-	 */
-	public void setSexdstnCode(String sexdstnCode) {
-		this.sexdstnCode = sexdstnCode;
-	}
-
-	/**
-	 * mberId attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getMberId() {
-		return mberId;
-	}
-	/**
-	 * mberId attribute 값을 설정한다.
-	 * 
-	 * @param mberId
-	 *            String
-	 */
-	public void setMberId(String mberId) {
-		this.mberId = mberId;
-	}
-
-	/**
-	 * mberNm attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getMberNm() {
-		return mberNm;
-	}
-	/**
-	 * mberNm attribute 값을 설정한다.
-	 * 
-	 * @param mberNm
-	 *            String
-	 */
-	public void setMberNm(String mberNm) {
-		this.mberNm = mberNm;
-	}
-
-	/**
-	 * mberSttus attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getMberSttus() {
-		return mberSttus;
-	}
-	/**
-	 * mberSttus attribute 값을 설정한다.
-	 * 
-	 * @param mberSttus
-	 *            String
-	 */
-	public void setMberSttus(String mberSttus) {
-		this.mberSttus = mberSttus;
-	}
-
-	/**
 	 * areaNo attribute 값을 리턴한다.
 	 * 
 	 * @return String
@@ -369,6 +296,24 @@ public class MberManageVO extends SearchVO {
 	}
 
 	/**
+	 * endTelno attribute 값을 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getEndTelno() {
+		return endTelno;
+	}
+	/**
+	 * endTelno attribute 값을 설정한다.
+	 * 
+	 * @param endTelno
+	 *            String
+	 */
+	public void setEndTelno(String endTelno) {
+		this.endTelno = endTelno;
+	}
+
+	/**
 	 * moblphonNo attribute 값을 리턴한다.
 	 * 
 	 * @return String
@@ -387,93 +332,39 @@ public class MberManageVO extends SearchVO {
 	}
 
 	/**
-	 * password attribute 값을 리턴한다.
+	 * mberSttus attribute 값을 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getPassword() {
-		return password;
+	public String getMberSttus() {
+		return mberSttus;
 	}
 	/**
-	 * password attribute 값을 설정한다.
+	 * mberSttus attribute 값을 설정한다.
 	 * 
-	 * @param password
+	 * @param mberSttus
 	 *            String
 	 */
-	public void setPassword(String password) {
-		this.password = password;
+	public void setMberSttus(String mberSttus) {
+		this.mberSttus = mberSttus;
 	}
 
 	/**
-	 * passwordCnsr attribute 값을 리턴한다.
+	 * mberFxnum attribute 값을 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getPasswordCnsr() {
-		return passwordCnsr;
+	public String getMberFxnum() {
+		return mberFxnum;
 	}
 	/**
-	 * passwordCnsr attribute 값을 설정한다.
+	 * mberFxnum attribute 값을 설정한다.
 	 * 
-	 * @param passwordCnsr
+	 * @param mberFxnum
 	 *            String
 	 */
-	public void setPasswordCnsr(String passwordCnsr) {
-		this.passwordCnsr = passwordCnsr;
-	}
-
-	/**
-	 * passwordHint attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getPasswordHint() {
-		return passwordHint;
-	}
-	/**
-	 * passwordHint attribute 값을 설정한다.
-	 * 
-	 * @param passwordHint
-	 *            String
-	 */
-	public void setPasswordHint(String passwordHint) {
-		this.passwordHint = passwordHint;
-	}
-
-	/**
-	 * sbscrbDe attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getSbscrbDe() {
-		return sbscrbDe;
-	}
-	/**
-	 * sbscrbDe attribute 값을 설정한다.
-	 * 
-	 * @param sbscrbDe
-	 *            String
-	 */
-	public void setSbscrbDe(String sbscrbDe) {
-		this.sbscrbDe = sbscrbDe;
-	}
-
-	/**
-	 * zip attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getZip() {
-		return zip;
-	}
-	/**
-	 * zip attribute 값을 설정한다.
-	 * 
-	 * @param zip
-	 *            String
-	 */
-	public void setZip(String zip) {
-		this.zip = zip;
+	public void setMberFxnum(String mberFxnum) {
+		this.mberFxnum = mberFxnum;
 	}
 
 	/**
@@ -495,6 +386,60 @@ public class MberManageVO extends SearchVO {
 	}
 
 	/**
+	 * sbscrbDe attribute 값을 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getSbscrbDe() {
+		return sbscrbDe;
+	}
+	/**
+	 * sbscrbDe attribute 값을 설정한다.
+	 * 
+	 * @param sbscrbDe
+	 *            String
+	 */
+	public void setSbscrbDe(String sbscrbDe) {
+		this.sbscrbDe = sbscrbDe;
+	}
+
+	/**
+	 * sexdstnCode attribute 값을 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getSexdstnCode() {
+		return sexdstnCode;
+	}
+	/**
+	 * sexdstnCode attribute 값을 설정한다.
+	 * 
+	 * @param sexdstnCode
+	 *            String
+	 */
+	public void setSexdstnCode(String sexdstnCode) {
+		this.sexdstnCode = sexdstnCode;
+	}
+
+	/**
+	 * uniqId attribute 값을 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getUniqId() {
+		return uniqId;
+	}
+	/**
+	 * uniqId attribute 값을 설정한다.
+	 * 
+	 * @param uniqId
+	 *            String
+	 */
+	public void setUniqId(String uniqId) {
+		this.uniqId = uniqId;
+	}
+
+	/**
 	 * googleAccount attribute 값을 리턴한다.
 	 * 
 	 * @return String
@@ -510,6 +455,61 @@ public class MberManageVO extends SearchVO {
 	 */
 	public void setGoogleAccount(String googleAccount) {
 		this.googleAccount = googleAccount;
+	}
+
+	// helper
+	/**
+	 * userTy attribute 값을 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getUserTy() {
+		return userTy;
+	}
+	/**
+	 * userTy attribute 값을 설정한다.
+	 * 
+	 * @param userTy
+	 *            String
+	 */
+	public void setUserTy(String userTy) {
+		this.userTy = userTy;
+	}
+
+	/**
+	 * oldPassword attribute 값을 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getOldPassword() {
+		return oldPassword;
+	}
+	/**
+	 * oldPassword attribute 값을 설정한다.
+	 * 
+	 * @param oldPassword
+	 *            String
+	 */
+	public void setOldPassword(String oldPassword) {
+		this.oldPassword = oldPassword;
+	}
+
+	/**
+	 * sbscrbSttus attribute 값을 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getSbscrbSttus() {
+		return sbscrbSttus;
+	}
+	/**
+	 * sbscrbSttus attribute 값을 설정한다.
+	 * 
+	 * @param sbscrbSttus
+	 *            String
+	 */
+	public void setSbscrbSttus(String sbscrbSttus) {
+		this.sbscrbSttus = sbscrbSttus;
 	}
 
 }

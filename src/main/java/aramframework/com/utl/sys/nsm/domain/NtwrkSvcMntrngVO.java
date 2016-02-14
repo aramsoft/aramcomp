@@ -25,31 +25,12 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class NtwrkSvcMntrngVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-	
+	// domain
 	/** 시스템IP */
 	private String sysIp;
 	
-	/** 시스템IP 1 */
-	private String sysIp1;
-	
-	/** 시스템IP 2 */
-	private String sysIp2;
-	
-	/** 시스템IP 3 */
-	private String sysIp3;
-	
-	/** 시스템IP 4 */
-	private String sysIp4;
-	
-	/** 구시스템IP */
-	private String oldSysIp;
-	
 	/** 시스템포트 */
 	private String sysPort;
-	
-	/** 구시스템포트 */
-	private String oldSysPort;
 	
 	/** 시스템명 */
 	private String sysNm;
@@ -66,9 +47,29 @@ public class NtwrkSvcMntrngVO extends SearchVO {
 	/** 생성일시 */
 	private String creatDt;
 	
+	// helper
+	/** 시스템IP 1 */
+	private String sysIp1;
+	
+	/** 시스템IP 2 */
+	private String sysIp2;
+	
+	/** 시스템IP 3 */
+	private String sysIp3;
+	
+	/** 시스템IP 4 */
+	private String sysIp4;
+	
+	/** 구시스템IP */
+	private String oldSysIp;
+	
+	/** 구시스템포트 */
+	private String oldSysPort;
+	
 	/** 로그정보 */
 	private String logInfo;
 	
+	// domain
 	public String getSysIp() {
 		return sysIp;
 	}
@@ -76,53 +77,11 @@ public class NtwrkSvcMntrngVO extends SearchVO {
 		this.sysIp = sysIp;
 	}
 
-	public String getSysIp1() {
-		return sysIp1;
-	}
-	public void setSysIp1(String sysIp1) {
-		this.sysIp1 = sysIp1;
-	}
-
-	public String getSysIp2() {
-		return sysIp2;
-	}
-	public void setSysIp2(String sysIp2) {
-		this.sysIp2 = sysIp2;
-	}
-
-	public String getSysIp3() {
-		return sysIp3;
-	}
-	public void setSysIp3(String sysIp3) {
-		this.sysIp3 = sysIp3;
-	}
-
-	public String getSysIp4() {
-		return sysIp4;
-	}
-	public void setSysIp4(String sysIp4) {
-		this.sysIp4 = sysIp4;
-	}
-
-	public String getOldSysIp() {
-		return oldSysIp;
-	}
-	public void setOldSysIp(String oldSysIp) {
-		this.oldSysIp = oldSysIp;
-	}
-
 	public String getSysPort() {
 		return sysPort;
 	}
 	public void setSysPort(String sysPort) {
 		this.sysPort = sysPort;
-	}
-
-	public String getOldSysPort() {
-		return oldSysPort;
-	}
-	public void setOldSysPort(String oldSysPort) {
-		this.oldSysPort = oldSysPort;
 	}
 
 	public String getSysNm() {
@@ -158,6 +117,49 @@ public class NtwrkSvcMntrngVO extends SearchVO {
 	}
 	public void setCreatDt(String creatDt) {
 		this.creatDt = creatDt;
+	}
+
+	// helper
+	public String getSysIp1() {
+		return sysIp1;
+	}
+	public void setSysIp1(String sysIp1) {
+		this.sysIp1 = sysIp1;
+	}
+
+	public String getSysIp2() {
+		return sysIp2;
+	}
+	public void setSysIp2(String sysIp2) {
+		this.sysIp2 = sysIp2;
+	}
+
+	public String getSysIp3() {
+		return sysIp3;
+	}
+	public void setSysIp3(String sysIp3) {
+		this.sysIp3 = sysIp3;
+	}
+
+	public String getSysIp4() {
+		return sysIp4;
+	}
+	public void setSysIp4(String sysIp4) {
+		this.sysIp4 = sysIp4;
+	}
+
+	public String getOldSysIp() {
+		return oldSysIp;
+	}
+	public void setOldSysIp(String oldSysIp) {
+		this.oldSysIp = oldSysIp;
+	}
+
+	public String getOldSysPort() {
+		return oldSysPort;
+	}
+	public void setOldSysPort(String oldSysPort) {
+		this.oldSysPort = oldSysPort;
 	}
 
 	public String getLogInfo() {

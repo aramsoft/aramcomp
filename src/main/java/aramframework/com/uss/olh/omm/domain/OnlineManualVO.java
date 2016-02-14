@@ -23,12 +23,11 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class OnlineManualVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 온라인메뉴얼 아이디 */
 	private String onlineMnlId;
 
-	/* 온라인메뉴얼 명 */
+	/** 온라인메뉴얼 명 */
 	private String onlineMnlNm;
 
 	/** 온라인메뉴얼 구분코드 */

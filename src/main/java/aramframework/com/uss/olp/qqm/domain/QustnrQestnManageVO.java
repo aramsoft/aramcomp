@@ -23,19 +23,12 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class QustnrQestnManageVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 검색모드설정 */
-	private String searchMode = "";
-
-	/** 설문제목 */
-	private String qestnrSj = "";
+	// domain
+	/** 설문지 ID */
+	private String qestnrId = "";
 
 	/** 설문문항 ID */
 	private String qestnrQesitmId = "";
-
-	/** 설문지 ID */
-	private String qestnrId = "";
 
 	/** 질문순번 */
 	private String qestnSn = "";
@@ -49,38 +42,29 @@ public class QustnrQestnManageVO extends SearchVO  {
 	/** 초대선택건수 */
 	private String mxmmChoiseCo = "";
 
-	/**
-	 * searchMode attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getSearchMode() {
-		return searchMode;
-	}
-	/**
-	 * searchMode attribute 값을 설정한다.
-	 * 
-	 * @return searchMode String
-	 */
-	public void setSearchMode(String searchMode) {
-		this.searchMode = searchMode;
-	}
+	// helper
+	/** 설문제목 */
+	private String qestnrSj = "";
 
+	/** 검색모드설정 */
+	private String searchMode = "";
+
+	// domain
 	/**
-	 * qestnrSj attribute 를 리턴한다.
+	 * qestnrId attribute 를 리턴한다.
 	 * 
 	 * @return the String
 	 */
-	public String getQestnrSj() {
-		return qestnrSj;
+	public String getQestnrId() {
+		return qestnrId;
 	}
 	/**
-	 * qestnrSj attribute 값을 설정한다.
+	 * qestnrId attribute 값을 설정한다.
 	 * 
-	 * @return qestnrSj String
+	 * @return qestnrId String
 	 */
-	public void setQestnrSj(String qestnrSj) {
-		this.qestnrSj = qestnrSj;
+	public void setQestnrId(String qestnrId) {
+		this.qestnrId = qestnrId;
 	}
 
 	/**
@@ -98,23 +82,6 @@ public class QustnrQestnManageVO extends SearchVO  {
 	 */
 	public void setQestnrQesitmId(String qestnrQesitmId) {
 		this.qestnrQesitmId = qestnrQesitmId;
-	}
-
-	/**
-	 * qestnrId attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getQestnrId() {
-		return qestnrId;
-	}
-	/**
-	 * qestnrId attribute 값을 설정한다.
-	 * 
-	 * @return qestnrId String
-	 */
-	public void setQestnrId(String qestnrId) {
-		this.qestnrId = qestnrId;
 	}
 
 	/**
@@ -183,6 +150,41 @@ public class QustnrQestnManageVO extends SearchVO  {
 	 */
 	public void setMxmmChoiseCo(String mxmmChoiseCo) {
 		this.mxmmChoiseCo = mxmmChoiseCo;
+	}
+	
+	// helper
+	/**
+	 * qestnrSj attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getQestnrSj() {
+		return qestnrSj;
+	}
+	/**
+	 * qestnrSj attribute 값을 설정한다.
+	 * 
+	 * @return qestnrSj String
+	 */
+	public void setQestnrSj(String qestnrSj) {
+		this.qestnrSj = qestnrSj;
+	}
+
+	/**
+	 * searchMode attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getSearchMode() {
+		return searchMode;
+	}
+	/**
+	 * searchMode attribute 값을 설정한다.
+	 * 
+	 * @return searchMode String
+	 */
+	public void setSearchMode(String searchMode) {
+		this.searchMode = searchMode;
 	}
 
 }

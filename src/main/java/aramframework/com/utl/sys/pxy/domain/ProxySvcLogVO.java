@@ -25,22 +25,12 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class ProxySvcLogVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 프록시서비스접속 시작일자 조회조건 */
-	public String strStartDate;
-	
-	/** 프록시서비스접속 종료일자 조회조건 */
-	public String strEndDate;
-
-	/** 프록시 ID */
-	private String proxyId;
-	
-	/** 프록시 명 */
-	private String proxyNm;
-	
+	// domain
 	/** 로그 ID */
 	private String logId;
+	
+	/** 프록시 ID */
+	private String proxyId;
 	
 	/** 클라이언트 IP */
 	private String clntIp;
@@ -51,32 +41,29 @@ public class ProxySvcLogVO extends SearchVO {
 	/** 접속시간 */
 	private String conectTime;
 	
-	/**
-	 * @return the strStartDate
-	 */
-	public String getStrStartDate() {
-		return strStartDate;
-	}
-	/**
-	 * @param strStartDate
-	 *            the strStartDate to set
-	 */
-	public void setStrStartDate(String strStartDate) {
-		this.strStartDate = strStartDate;
-	}
+	// helper
+	/** 프록시 명 */
+	private String proxyNm;
+	
+	/** 프록시서비스접속 시작일자 조회조건 */
+	public String strStartDate;
+	
+	/** 프록시서비스접속 종료일자 조회조건 */
+	public String strEndDate;
 
+	// domain
 	/**
-	 * @return the strEndDate
+	 * @return the logId
 	 */
-	public String getStrEndDate() {
-		return strEndDate;
+	public String getLogId() {
+		return logId;
 	}
 	/**
-	 * @param strEndDate
-	 *            the strEndDate to set
+	 * @param logId
+	 *            the logId to set
 	 */
-	public void setStrEndDate(String strEndDate) {
-		this.strEndDate = strEndDate;
+	public void setLogId(String logId) {
+		this.logId = logId;
 	}
 
 	/**
@@ -91,34 +78,6 @@ public class ProxySvcLogVO extends SearchVO {
 	 */
 	public void setProxyId(String proxyId) {
 		this.proxyId = proxyId;
-	}
-
-	/**
-	 * @return the proxyNm
-	 */
-	public String getProxyNm() {
-		return proxyNm;
-	}
-	/**
-	 * @param proxyNm
-	 *            the proxyNm to set
-	 */
-	public void setProxyNm(String proxyNm) {
-		this.proxyNm = proxyNm;
-	}
-
-	/**
-	 * @return the logId
-	 */
-	public String getLogId() {
-		return logId;
-	}
-	/**
-	 * @param logId
-	 *            the logId to set
-	 */
-	public void setLogId(String logId) {
-		this.logId = logId;
 	}
 
 	/**
@@ -161,6 +120,49 @@ public class ProxySvcLogVO extends SearchVO {
 	 */
 	public void setConectTime(String conectTime) {
 		this.conectTime = conectTime;
+	}
+
+	// helper
+	/**
+	 * @return the proxyNm
+	 */
+	public String getProxyNm() {
+		return proxyNm;
+	}
+	/**
+	 * @param proxyNm
+	 *            the proxyNm to set
+	 */
+	public void setProxyNm(String proxyNm) {
+		this.proxyNm = proxyNm;
+	}
+
+	/**
+	 * @return the strStartDate
+	 */
+	public String getStrStartDate() {
+		return strStartDate;
+	}
+	/**
+	 * @param strStartDate
+	 *            the strStartDate to set
+	 */
+	public void setStrStartDate(String strStartDate) {
+		this.strStartDate = strStartDate;
+	}
+
+	/**
+	 * @return the strEndDate
+	 */
+	public String getStrEndDate() {
+		return strEndDate;
+	}
+	/**
+	 * @param strEndDate
+	 *            the strEndDate to set
+	 */
+	public void setStrEndDate(String strEndDate) {
+		this.strEndDate = strEndDate;
 	}
 
 }

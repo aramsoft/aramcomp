@@ -23,8 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class FileSysMntrngVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 파일시스템ID */
 	private String fileSysId;
 	
@@ -40,14 +39,8 @@ public class FileSysMntrngVO extends SearchVO {
 	/** 파일시스템임계치 */
 	private int fileSysThrhld;
 	
-	/** 파일시스템임계치율 */
-	private int fileSysThrhldRt;
-	
 	/** 파일시스템사용량 */
 	private int fileSysUsgQty;
-	
-	/** 파일시스템사용률 */
-	private double fileSysUsgRt;
 	
 	/** 관리자명 */
 	private String mngrNm;
@@ -55,15 +48,23 @@ public class FileSysMntrngVO extends SearchVO {
 	/** 관리자이메일주소 */
 	private String mngrEmailAddr;
 	
-	/** 로그정보 */
-	private String logInfo;
-	
 	/** 모니터링상태 */
 	private String mntrngSttus;
 	
 	/** 생성일시 */
 	private String creatDt;
 	
+	// helper
+	/** 로그정보 */
+	private String logInfo;
+	
+	/** 파일시스템임계치율 */
+	private int fileSysThrhldRt;
+	
+	/** 파일시스템사용률 */
+	private double fileSysUsgRt;
+	
+	// domain
 	public String getFileSysId() {
 		return fileSysId;
 	}
@@ -99,25 +100,11 @@ public class FileSysMntrngVO extends SearchVO {
 		this.fileSysThrhld = fileSysThrhld;
 	}
 	
-	public int getFileSysThrhldRt() {
-		return fileSysThrhldRt;
-	}
-	public void setFileSysThrhldRt(int fileSysThrhldRt) {
-		this.fileSysThrhldRt = fileSysThrhldRt;
-	}
-
 	public int getFileSysUsgQty() {
 		return fileSysUsgQty;
 	}
 	public void setFileSysUsgQty(int fileSysUsgQty) {
 		this.fileSysUsgQty = fileSysUsgQty;
-	}
-
-	public double getFileSysUsgRt() {
-		return fileSysUsgRt;
-	}
-	public void setFileSysUsgRt(double fileSysUsgRt) {
-		this.fileSysUsgRt = fileSysUsgRt;
 	}
 
 	public String getMngrNm() {
@@ -134,13 +121,6 @@ public class FileSysMntrngVO extends SearchVO {
 		this.mngrEmailAddr = mngrEmailAddr;
 	}
 
-	public String getLogInfo() {
-		return logInfo;
-	}
-	public void setLogInfo(String logInfo) {
-		this.logInfo = logInfo;
-	}
-
 	public String getMntrngSttus() {
 		return mntrngSttus;
 	}
@@ -153,6 +133,28 @@ public class FileSysMntrngVO extends SearchVO {
 	}
 	public void setCreatDt(String creatDt) {
 		this.creatDt = creatDt;
+	}
+
+	// helper
+	public String getLogInfo() {
+		return logInfo;
+	}
+	public void setLogInfo(String logInfo) {
+		this.logInfo = logInfo;
+	}
+
+	public int getFileSysThrhldRt() {
+		return fileSysThrhldRt;
+	}
+	public void setFileSysThrhldRt(int fileSysThrhldRt) {
+		this.fileSysThrhldRt = fileSysThrhldRt;
+	}
+
+	public double getFileSysUsgRt() {
+		return fileSysUsgRt;
+	}
+	public void setFileSysUsgRt(double fileSysUsgRt) {
+		this.fileSysUsgRt = fileSysUsgRt;
 	}
 
 }

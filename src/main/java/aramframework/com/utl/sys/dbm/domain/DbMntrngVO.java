@@ -23,8 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class DbMntrngVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 데이터소스명 */
 	private String dataSourcNm;
 	
@@ -49,12 +48,14 @@ public class DbMntrngVO extends SearchVO {
 	/** 생성일시 */
 	private String creatDt;
 
+	// helper
 	/** 모니터링상태명 */
 	private String mntrngSttusNm;
 	
 	/** DBMS종류명 */
 	private String dbmsKindNm;
 
+	// domain
 	/**
 	 * @return the dataSourcNm
 	 */
@@ -154,6 +155,21 @@ public class DbMntrngVO extends SearchVO {
 	}
 
 	/**
+	 * @return the creatDt
+	 */
+	public String getCreatDt() {
+		return creatDt;
+	}
+	/**
+	 * @param creatDt
+	 *            the creatDt to set
+	 */
+	public void setCreatDt(String creatDt) {
+		this.creatDt = creatDt;
+	}
+
+	// helper
+	/**
 	 * @return the mntrngSttusNm
 	 */
 	public String getMntrngSttusNm() {
@@ -179,20 +195,6 @@ public class DbMntrngVO extends SearchVO {
 	 */
 	public void setDbmsKindNm(String dbmsKindNm) {
 		this.dbmsKindNm = dbmsKindNm;
-	}
-
-	/**
-	 * @return the creatDt
-	 */
-	public String getCreatDt() {
-		return creatDt;
-	}
-	/**
-	 * @param creatDt
-	 *            the creatDt to set
-	 */
-	public void setCreatDt(String creatDt) {
-		this.creatDt = creatDt;
 	}
 
 }

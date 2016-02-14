@@ -27,23 +27,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class SynchrnServerVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 동기화대상 서버명 조회조건 */
-	private String strSynchrnServerNm;
-	
-	/** 동기화 대상 파일 */
-	private File synchrnFile;
-	
-	/** 삭제 대상 파일 */
-	private String deleteFileNm;
-	
-	/** 업로드 위치 */
-	private String filePath;
-	
-	/** 반영여부 */
-	private String strReflctAt;
-	
+	// domain
 	/** 서버 ID */
 	private String serverId;
 	
@@ -68,76 +52,23 @@ public class SynchrnServerVO extends SearchVO {
 	/** 반영 여부 */
 	private String reflctAt;
 	
-	/**
-	 * @return the strSynchrnServerNm
-	 */
-	public String getStrSynchrnServerNm() {
-		return strSynchrnServerNm;
-	}
-	/**
-	 * @param strSynchrnServerNm
-	 *            the strSynchrnServerNm to set
-	 */
-	public void setStrSynchrnServerNm(String strSynchrnServerNm) {
-		this.strSynchrnServerNm = strSynchrnServerNm;
-	}
+	// helper
+	/** 동기화 대상 파일 */
+	private File synchrnFile;
+	
+	/** 삭제 대상 파일 */
+	private String deleteFileNm;
+	
+	/** 업로드 위치 */
+	private String filePath;
+	
+	/** 반영여부 */
+	private String strReflctAt;
+	
+	/** 동기화대상 서버명 조회조건 */
+	private String strSynchrnServerNm;
 
-	/**
-	 * @return the synchrnFile
-	 */
-	public File getSynchrnFile() {
-		return synchrnFile;
-	}
-	/**
-	 * @param synchrnFile
-	 *            the synchrnFile to set
-	 */
-	public void setSynchrnFile(File synchrnFile) {
-		this.synchrnFile = synchrnFile;
-	}
-
-	/**
-	 * @return the deleteFileNm
-	 */
-	public String getDeleteFileNm() {
-		return deleteFileNm;
-	}
-	/**
-	 * @param deleteFileNm
-	 *            the deleteFileNm to set
-	 */
-	public void setDeleteFileNm(String deleteFileNm) {
-		this.deleteFileNm = deleteFileNm;
-	}
-
-	/**
-	 * @return the filePath
-	 */
-	public String getFilePath() {
-		return filePath;
-	}
-	/**
-	 * @param filePath
-	 *            the filePath to set
-	 */
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
-	}
-
-	/**
-	 * @return the strReflctAt
-	 */
-	public String getStrReflctAt() {
-		return strReflctAt;
-	}
-	/**
-	 * @param strReflctAt
-	 *            the strReflctAt to set
-	 */
-	public void setStrReflctAt(String strReflctAt) {
-		this.strReflctAt = strReflctAt;
-	}
-
+	// domain
 	/**
 	 * @return the serverId
 	 */
@@ -248,6 +179,77 @@ public class SynchrnServerVO extends SearchVO {
 	 */
 	public void setReflctAt(String reflctAt) {
 		this.reflctAt = reflctAt;
+	}
+
+	// helper	
+	/**
+	 * @return the synchrnFile
+	 */
+	public File getSynchrnFile() {
+		return synchrnFile;
+	}
+	/**
+	 * @param synchrnFile
+	 *            the synchrnFile to set
+	 */
+	public void setSynchrnFile(File synchrnFile) {
+		this.synchrnFile = synchrnFile;
+	}
+
+	/**
+	 * @return the deleteFileNm
+	 */
+	public String getDeleteFileNm() {
+		return deleteFileNm;
+	}
+	/**
+	 * @param deleteFileNm
+	 *            the deleteFileNm to set
+	 */
+	public void setDeleteFileNm(String deleteFileNm) {
+		this.deleteFileNm = deleteFileNm;
+	}
+
+	/**
+	 * @return the filePath
+	 */
+	public String getFilePath() {
+		return filePath;
+	}
+	/**
+	 * @param filePath
+	 *            the filePath to set
+	 */
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
+	/**
+	 * @return the strReflctAt
+	 */
+	public String getStrReflctAt() {
+		return strReflctAt;
+	}
+	/**
+	 * @param strReflctAt
+	 *            the strReflctAt to set
+	 */
+	public void setStrReflctAt(String strReflctAt) {
+		this.strReflctAt = strReflctAt;
+	}
+
+	/**
+	 * @return the strSynchrnServerNm
+	 */
+	public String getStrSynchrnServerNm() {
+		return strSynchrnServerNm;
+	}
+	/**
+	 * @param strSynchrnServerNm
+	 *            the strSynchrnServerNm to set
+	 */
+	public void setStrSynchrnServerNm(String strSynchrnServerNm) {
+		this.strSynchrnServerNm = strSynchrnServerNm;
 	}
 
 }

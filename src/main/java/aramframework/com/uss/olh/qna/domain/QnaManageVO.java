@@ -23,12 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class QnaManageVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 대상 아이디 */
-	private String trgetId = "";
-
-	// 도메인 정보
+	// domain
 	/** QA ID */
 	private String qaId;
 
@@ -38,8 +33,32 @@ public class QnaManageVO extends SearchVO  {
 	/** 질문내용 */
 	private String qestnCn;
 
+	/** 작성일자 */
+	private String writngDe;
+
+	/** 조회횟수 */
+	private String inqireCo;
+
+	/** 이메일 주소 */
+	private String emailAdres;
+
+	/** 질의응답처리상태코드 */
+	private String qnaProcessSttusCode;
+
+	/** 작성자 명 */
+	private String wrterNm;
+
+	/** 답변내용 */
+	private String answerCn;
+
 	/** 작성비밀번호 */
 	private String writngPassword;
+
+	/** 답변일자 */
+	private String answerDe;
+
+	/** 이메일 답변여부 */
+	private String emailAnswerAt;
 
 	/** 지역번호 */
 	private String areaNo;
@@ -50,63 +69,26 @@ public class QnaManageVO extends SearchVO  {
 	/** 끝전화번호 */
 	private String endTelno;
 
-	/** 이메일 주소 */
-	private String emailAdres;
+	/** 대상 아이디 */
+	private String trgetId = "";
 
-	/** 이메일 답변여부 */
-	private String emailAnswerAt;
-
-	/** 작성자 명 */
-	private String wrterNm;
-
-	/** 작성일자 */
-	private String writngDe;
-
-	/** 조회횟수 */
-	private String inqireCo;
-
-	/** 질의응답처리상태코드 */
-	private String qnaProcessSttusCode;
-
-	/* 질의응답처리상태코드명 */
+	// helper
+	/** 질의응답처리상태코드명 */
 	private String qnaProcessSttusCodeNm;
 
-	/** 답변내용 */
-	private String answerCn;
-
-	/** 답변일자 */
-	private String answerDe;
-
-	/* 답변자명 */
+	/** 답변자명 */
 	private String emplyrNm;
 
-	/* 사무실전화번호 */
+	/** 사무실전화번호 */
 	private String offmTelno;
 
-	/* 답변자 EMAIL 주소 */
+	/** 답변자 EMAIL 주소 */
 	private String aemailAdres;
 
-	/* 부서명 */
+	/** 부서명 */
 	private String orgnztNm;
 
-	/**
-	 * trgetId attribute를 리턴한다.
-	 * 
-	 * @return the trgetId
-	 */
-	public String getTrgetId() {
-		return trgetId;
-	}
-	/**
-	 * trgetId attribute 값을 설정한다.
-	 * 
-	 * @param trgetId
-	 *            the trgetId to set
-	 */
-	public void setTrgetId(String trgetId) {
-		this.trgetId = trgetId;
-	}
-
+	// domain
 	/**
 	 * qaId attribute 를 리턴한다.
 	 * 
@@ -159,6 +141,108 @@ public class QnaManageVO extends SearchVO  {
 	}
 
 	/**
+	 * writngDe attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getWritngDe() {
+		return writngDe;
+	}
+	/**
+	 * writngDe attribute 값을 설정한다.
+	 * 
+	 * @return writngDe String
+	 */
+	public void setWritngDe(String writngDe) {
+		this.writngDe = writngDe;
+	}
+
+	/**
+	 * inqireCo attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getInqireCo() {
+		return inqireCo;
+	}
+	/**
+	 * inqireCo attribute 값을 설정한다.
+	 * 
+	 * @return inqireCo String
+	 */
+	public void setInqireCo(String inqireCo) {
+		this.inqireCo = inqireCo;
+	}
+
+	/**
+	 * emailAdres attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getEmailAdres() {
+		return emailAdres;
+	}
+	/**
+	 * emailAdres attribute 값을 설정한다.
+	 * 
+	 * @return emailAdres String
+	 */
+	public void setEmailAdres(String emailAdres) {
+		this.emailAdres = emailAdres;
+	}
+
+	/**
+	 * qnaProcessSttusCode attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getQnaProcessSttusCode() {
+		return qnaProcessSttusCode;
+	}
+	/**
+	 * qnaProcessSttusCode attribute 값을 설정한다.
+	 * 
+	 * @return qnaProcessSttusCode String
+	 */
+	public void setQnaProcessSttusCode(String qnaProcessSttusCode) {
+		this.qnaProcessSttusCode = qnaProcessSttusCode;
+	}
+
+	/**
+	 * wrterNm attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getWrterNm() {
+		return wrterNm;
+	}
+	/**
+	 * wrterNm attribute 값을 설정한다.
+	 * 
+	 * @return wrterNm String
+	 */
+	public void setWrterNm(String wrterNm) {
+		this.wrterNm = wrterNm;
+	}
+
+	/**
+	 * answerCn attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getAnswerCn() {
+		return answerCn;
+	}
+	/**
+	 * answerCn attribute 값을 설정한다.
+	 * 
+	 * @return answerCn String
+	 */
+	public void setAnswerCn(String answerCn) {
+		this.answerCn = answerCn;
+	}
+
+	/**
 	 * writngPassword attribute 를 리턴한다.
 	 * 
 	 * @return the String
@@ -173,6 +257,40 @@ public class QnaManageVO extends SearchVO  {
 	 */
 	public void setWritngPassword(String writngPassword) {
 		this.writngPassword = writngPassword;
+	}
+
+	/**
+	 * answerDe attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getAnswerDe() {
+		return answerDe;
+	}
+	/**
+	 * answerDe attribute 값을 설정한다.
+	 * 
+	 * @return answerDe String
+	 */
+	public void setAnswerDe(String answerDe) {
+		this.answerDe = answerDe;
+	}
+
+	/**
+	 * emailAnswerAt attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getEmailAnswerAt() {
+		return emailAnswerAt;
+	}
+	/**
+	 * emailAnswerAt attribute 값을 설정한다.
+	 * 
+	 * @return emailAnswerAt String
+	 */
+	public void setEmailAnswerAt(String emailAnswerAt) {
+		this.emailAnswerAt = emailAnswerAt;
 	}
 
 	/**
@@ -227,107 +345,24 @@ public class QnaManageVO extends SearchVO  {
 	}
 
 	/**
-	 * emailAdres attribute 를 리턴한다.
+	 * trgetId attribute를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return the trgetId
 	 */
-	public String getEmailAdres() {
-		return emailAdres;
+	public String getTrgetId() {
+		return trgetId;
 	}
 	/**
-	 * emailAdres attribute 값을 설정한다.
+	 * trgetId attribute 값을 설정한다.
 	 * 
-	 * @return emailAdres String
+	 * @param trgetId
+	 *            the trgetId to set
 	 */
-	public void setEmailAdres(String emailAdres) {
-		this.emailAdres = emailAdres;
+	public void setTrgetId(String trgetId) {
+		this.trgetId = trgetId;
 	}
 
-	/**
-	 * emailAnswerAt attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getEmailAnswerAt() {
-		return emailAnswerAt;
-	}
-	/**
-	 * emailAnswerAt attribute 값을 설정한다.
-	 * 
-	 * @return emailAnswerAt String
-	 */
-	public void setEmailAnswerAt(String emailAnswerAt) {
-		this.emailAnswerAt = emailAnswerAt;
-	}
-
-	/**
-	 * wrterNm attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getWrterNm() {
-		return wrterNm;
-	}
-	/**
-	 * wrterNm attribute 값을 설정한다.
-	 * 
-	 * @return wrterNm String
-	 */
-	public void setWrterNm(String wrterNm) {
-		this.wrterNm = wrterNm;
-	}
-
-	/**
-	 * writngDe attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getWritngDe() {
-		return writngDe;
-	}
-	/**
-	 * writngDe attribute 값을 설정한다.
-	 * 
-	 * @return writngDe String
-	 */
-	public void setWritngDe(String writngDe) {
-		this.writngDe = writngDe;
-	}
-
-	/**
-	 * inqireCo attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getInqireCo() {
-		return inqireCo;
-	}
-	/**
-	 * inqireCo attribute 값을 설정한다.
-	 * 
-	 * @return inqireCo String
-	 */
-	public void setInqireCo(String inqireCo) {
-		this.inqireCo = inqireCo;
-	}
-
-	/**
-	 * qnaProcessSttusCode attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getQnaProcessSttusCode() {
-		return qnaProcessSttusCode;
-	}
-	/**
-	 * qnaProcessSttusCode attribute 값을 설정한다.
-	 * 
-	 * @return qnaProcessSttusCode String
-	 */
-	public void setQnaProcessSttusCode(String qnaProcessSttusCode) {
-		this.qnaProcessSttusCode = qnaProcessSttusCode;
-	}
-
+	// helper
 	/**
 	 * qnaProcessSttusCodeNm attribute 를 리턴한다.
 	 * 
@@ -343,40 +378,6 @@ public class QnaManageVO extends SearchVO  {
 	 */
 	public void setQnaProcessSttusCodeNm(String qnaProcessSttusCodeNm) {
 		this.qnaProcessSttusCodeNm = qnaProcessSttusCodeNm;
-	}
-
-	/**
-	 * answerCn attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getAnswerCn() {
-		return answerCn;
-	}
-	/**
-	 * answerCn attribute 값을 설정한다.
-	 * 
-	 * @return answerCn String
-	 */
-	public void setAnswerCn(String answerCn) {
-		this.answerCn = answerCn;
-	}
-
-	/**
-	 * answerDe attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getAnswerDe() {
-		return answerDe;
-	}
-	/**
-	 * answerDe attribute 값을 설정한다.
-	 * 
-	 * @return answerDe String
-	 */
-	public void setAnswerDe(String answerDe) {
-		this.answerDe = answerDe;
 	}
 
 	/**

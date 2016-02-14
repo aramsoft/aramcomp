@@ -23,36 +23,30 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class EntrprsManageVO extends SearchVO {
 
-	private static final long serialVersionUID = -2735655127625182304L;
-
-	// 추가 검색 조건
-	/** 이전비밀번호 - 비밀번호 변경시 사용 */
-	private String oldPassword = "";
-
-	/** 검색조건-회원상태 (0, A, D, P) */
-	private String sbscrbSttus = "0";
-
-	// Domain 정보
-	/** 사용자고유아이디 */
-	private String uniqId = "";
+	// domain
+	/** 기업 회원 ID */
+	private String entrprsmberId;
 	
-	/** 사용자 유형 */
-	private String userTy;
+	/** 기업구분코드 */
+	private String entrprsSeCode;
 	
-	/** 주소 */
-	private String adres;
+	/** 기업 회원 상태 */
+	private String entrprsMberSttus;
 	
-	/** 상세주소 */
-	private String detailAdres;
+	/** 기업 회원 비밀번호 */
+	private String password;
 	
-	/** 신청자 주민등록번호*/
-	private String applcntIhidnum;
+	/** 기업 회원 비밀번호 힌트 */
+	private String passwordHint;
 	
-	/** 신청자 명 */
-	private String applcntNm;
+	/** 기업 회원 비밀번호 정답 */
+	private String passwordCnsr;
 	
 	/** 사업자번호 */
 	private String bizrno;
+	
+	/** 법인등록번호 */
+	private String jurirno;
 	
 	/** 회사명 */
 	private String cmpnyNm;
@@ -60,23 +54,23 @@ public class EntrprsManageVO extends SearchVO {
 	/** 대표이사 */
 	private String cxfc;
 	
-	/** 기업 회원 ID */
-	private String entrprsmberId;
+	/** 우편번호 */
+	private String zip;
 	
-	/** 기업 회원 비밀번호 */
-	private String password;
+	/** 주소 */
+	private String adres;
 	
-	/** 기업 회원 비밀번호 정답 */
-	private String passwordCnsr;
+	/** 상세주소 */
+	private String detailAdres;
 	
-	/** 기업 회원 비밀번호 힌트 */
-	private String passwordHint;
+	/** 지역번호 */
+	private String areaNo;
 	
-	/** 기업 회원 상태 */
-	private String entrprsMberSttus;
+	/** 회사중간전화번호 */
+	private String entrprsMiddleTelno;
 	
-	/** 기업구분코드 */
-	private String entrprsSeCode;
+	/** 회사끝전화번호 */
+	private String entrprsEndTelno;
 	
 	/** 팩스번호 */
 	private String fxnum;
@@ -84,173 +78,142 @@ public class EntrprsManageVO extends SearchVO {
 	/** 업종코드 */
 	private String indutyCode;
 	
-	/** 법인등록번호 */
-	private String jurirno;
+	/** 신청자 명 */
+	private String applcntNm;
 	
-	/** 지역번호 */
-	private String areaNo;
-	
-	/** 회사끝전화번호 */
-	private String entrprsEndTelno;
-	
-	/** 회사중간전화번호 */
-	private String entrprsMiddleTelno;
+	/** 신청자 주민등록번호*/
+	private String applcntIhidnum;
 	
 	/** 가입 일자 */
 	private String sbscrbDe;
 	
-	/** 우편번호 */
-	private String zip;
-	
 	/** 신청자 이메일주소 */
 	private String applcntEmailAdres;
 
+	/** 사용자고유아이디 */
+	private String uniqId = "";
+	
 	/** 구글 계정 */
 	private String googleAccount;
 
+	// helper
+	/** 사용자 유형 */
+	private String userTy;
+	
+	// 추가 검색 조건
+	/** 이전비밀번호 - 비밀번호 변경시 사용 */
+	private String oldPassword = "";
+
+	/** 검색조건-회원상태 (0, A, D, P) */
+	private String sbscrbSttus = "0";
+
+	// domain
 	/**
-	 * oldPassword attribute 값을 리턴한다.
+	 * entrprsmberId attribute 값을 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getOldPassword() {
-		return oldPassword;
+	public String getEntrprsmberId() {
+		return entrprsmberId;
 	}
 	/**
-	 * oldPassword attribute 값을 설정한다.
+	 * entrprsmberId attribute 값을 설정한다.
 	 * 
-	 * @param oldPassword
+	 * @param entrprsmberId
 	 *            String
 	 */
-	public void setOldPassword(String oldPassword) {
-		this.oldPassword = oldPassword;
+	public void setEntrprsmberId(String entrprsmberId) {
+		this.entrprsmberId = entrprsmberId;
 	}
 
 	/**
-	 * sbscrbSttus attribute 값을 리턴한다.
+	 * entrprsSeCode attribute 값을 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getSbscrbSttus() {
-		return sbscrbSttus;
+	public String getEntrprsSeCode() {
+		return entrprsSeCode;
 	}
 	/**
-	 * sbscrbSttus attribute 값을 설정한다.
+	 * entrprsSeCode attribute 값을 설정한다.
 	 * 
-	 * @param sbscrbSttus
+	 * @param entrprsSeCode
 	 *            String
 	 */
-	public void setSbscrbSttus(String sbscrbSttus) {
-		this.sbscrbSttus = sbscrbSttus;
-	}
-
-	// 도메인 정보
-	/**
-	 * uniqId attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getUniqId() {
-		return uniqId;
-	}
-	/**
-	 * uniqId attribute 값을 설정한다.
-	 * 
-	 * @param uniqId
-	 *            String
-	 */
-	public void setUniqId(String uniqId) {
-		this.uniqId = uniqId;
+	public void setEntrprsSeCode(String entrprsSeCode) {
+		this.entrprsSeCode = entrprsSeCode;
 	}
 
 	/**
-	 * userTy attribute 값을 리턴한다.
+	 * entrprsMberSttus attribute 값을 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getUserTy() {
-		return userTy;
+	public String getEntrprsMberSttus() {
+		return entrprsMberSttus;
 	}
 	/**
-	 * userTy attribute 값을 설정한다.
+	 * entrprsMberSttus attribute 값을 설정한다.
 	 * 
-	 * @param userTy
+	 * @param entrprsMberSttus
 	 *            String
 	 */
-	public void setUserTy(String userTy) {
-		this.userTy = userTy;
+	public void setEntrprsMberSttus(String entrprsMberSttus) {
+		this.entrprsMberSttus = entrprsMberSttus;
 	}
 
 	/**
-	 * adres attribute 값을 리턴한다.
+	 * password attribute 값을 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getAdres() {
-		return adres;
+	public String getPassword() {
+		return password;
 	}
 	/**
-	 * adres attribute 값을 설정한다.
+	 * password attribute 값을 설정한다.
 	 * 
-	 * @param adres
+	 * @param password
 	 *            String
 	 */
-	public void setAdres(String adres) {
-		this.adres = adres;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	/**
-	 * detailAdres attribute 값을 리턴한다.
+	 * passwordHint attribute 값을 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getDetailAdres() {
-		return detailAdres;
+	public String getPasswordHint() {
+		return passwordHint;
 	}
 	/**
-	 * detailAdres attribute 값을 설정한다.
+	 * passwordHint attribute 값을 설정한다.
 	 * 
-	 * @param detailAdres
+	 * @param passwordHint
 	 *            String
 	 */
-	public void setDetailAdres(String detailAdres) {
-		this.detailAdres = detailAdres;
+	public void setPasswordHint(String passwordHint) {
+		this.passwordHint = passwordHint;
 	}
 
 	/**
-	 * applcntIhidnum attribute 값을 리턴한다.
+	 * passwordCnsr attribute 값을 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getApplcntIhidnum() {
-		return applcntIhidnum;
+	public String getPasswordCnsr() {
+		return passwordCnsr;
 	}
 	/**
-	 * applcntIhidnum attribute 값을 설정한다.
+	 * passwordCnsr attribute 값을 설정한다.
 	 * 
-	 * @param applcntIhidnum
+	 * @param passwordCnsr
 	 *            String
 	 */
-	public void setApplcntIhidnum(String applcntIhidnum) {
-		this.applcntIhidnum = applcntIhidnum;
-	}
-
-	/**
-	 * applcntNm attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getApplcntNm() {
-		return applcntNm;
-	}
-	/**
-	 * applcntNm attribute 값을 설정한다.
-	 * 
-	 * @param applcntNm
-	 *            String
-	 */
-	public void setApplcntNm(String applcntNm) {
-		this.applcntNm = applcntNm;
+	public void setPasswordCnsr(String passwordCnsr) {
+		this.passwordCnsr = passwordCnsr;
 	}
 
 	/**
@@ -269,6 +232,24 @@ public class EntrprsManageVO extends SearchVO {
 	 */
 	public void setBizrno(String bizrno) {
 		this.bizrno = bizrno;
+	}
+
+	/**
+	 * jurirno attribute 값을 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getJurirno() {
+		return jurirno;
+	}
+	/**
+	 * jurirno attribute 값을 설정한다.
+	 * 
+	 * @param jurirno
+	 *            String
+	 */
+	public void setJurirno(String jurirno) {
+		this.jurirno = jurirno;
 	}
 
 	/**
@@ -308,111 +289,111 @@ public class EntrprsManageVO extends SearchVO {
 	}
 
 	/**
-	 * entrprsmberId attribute 값을 리턴한다.
+	 * zip attribute 값을 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getEntrprsmberId() {
-		return entrprsmberId;
+	public String getZip() {
+		return zip;
 	}
 	/**
-	 * entrprsmberId attribute 값을 설정한다.
+	 * zip attribute 값을 설정한다.
 	 * 
-	 * @param entrprsmberId
+	 * @param zip
 	 *            String
 	 */
-	public void setEntrprsmberId(String entrprsmberId) {
-		this.entrprsmberId = entrprsmberId;
+	public void setZip(String zip) {
+		this.zip = zip;
 	}
 
 	/**
-	 * password attribute 값을 리턴한다.
+	 * adres attribute 값을 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getPassword() {
-		return password;
+	public String getAdres() {
+		return adres;
 	}
 	/**
-	 * password attribute 값을 설정한다.
+	 * adres attribute 값을 설정한다.
 	 * 
-	 * @param password
+	 * @param adres
 	 *            String
 	 */
-	public void setPassword(String password) {
-		this.password = password;
+	public void setAdres(String adres) {
+		this.adres = adres;
 	}
 
 	/**
-	 * passwordCnsr attribute 값을 리턴한다.
+	 * detailAdres attribute 값을 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getPasswordCnsr() {
-		return passwordCnsr;
+	public String getDetailAdres() {
+		return detailAdres;
 	}
 	/**
-	 * passwordCnsr attribute 값을 설정한다.
+	 * detailAdres attribute 값을 설정한다.
 	 * 
-	 * @param passwordCnsr
+	 * @param detailAdres
 	 *            String
 	 */
-	public void setPasswordCnsr(String passwordCnsr) {
-		this.passwordCnsr = passwordCnsr;
+	public void setDetailAdres(String detailAdres) {
+		this.detailAdres = detailAdres;
 	}
 
 	/**
-	 * passwordHint attribute 값을 리턴한다.
+	 * areaNo attribute 값을 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getPasswordHint() {
-		return passwordHint;
+	public String getAreaNo() {
+		return areaNo;
 	}
 	/**
-	 * passwordHint attribute 값을 설정한다.
+	 * areaNo attribute 값을 설정한다.
 	 * 
-	 * @param passwordHint
+	 * @param areaNo
 	 *            String
 	 */
-	public void setPasswordHint(String passwordHint) {
-		this.passwordHint = passwordHint;
+	public void setAreaNo(String areaNo) {
+		this.areaNo = areaNo;
 	}
 
 	/**
-	 * entrprsMberSttus attribute 값을 리턴한다.
+	 * entrprsMiddleTelno attribute 값을 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getEntrprsMberSttus() {
-		return entrprsMberSttus;
+	public String getEntrprsMiddleTelno() {
+		return entrprsMiddleTelno;
 	}
 	/**
-	 * entrprsMberSttus attribute 값을 설정한다.
+	 * entrprsMiddleTelno attribute 값을 설정한다.
 	 * 
-	 * @param entrprsMberSttus
+	 * @param entrprsMiddleTelno
 	 *            String
 	 */
-	public void setEntrprsMberSttus(String entrprsMberSttus) {
-		this.entrprsMberSttus = entrprsMberSttus;
+	public void setEntrprsMiddleTelno(String entrprsMiddleTelno) {
+		this.entrprsMiddleTelno = entrprsMiddleTelno;
 	}
 
 	/**
-	 * entrprsSeCode attribute 값을 리턴한다.
+	 * entrprsEndTelno attribute 값을 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getEntrprsSeCode() {
-		return entrprsSeCode;
+	public String getEntrprsEndTelno() {
+		return entrprsEndTelno;
 	}
 	/**
-	 * entrprsSeCode attribute 값을 설정한다.
+	 * entrprsEndTelno attribute 값을 설정한다.
 	 * 
-	 * @param entrprsSeCode
+	 * @param entrprsEndTelno
 	 *            String
 	 */
-	public void setEntrprsSeCode(String entrprsSeCode) {
-		this.entrprsSeCode = entrprsSeCode;
+	public void setEntrprsEndTelno(String entrprsEndTelno) {
+		this.entrprsEndTelno = entrprsEndTelno;
 	}
 
 	/**
@@ -452,75 +433,39 @@ public class EntrprsManageVO extends SearchVO {
 	}
 
 	/**
-	 * jurirno attribute 값을 리턴한다.
+	 * applcntNm attribute 값을 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getJurirno() {
-		return jurirno;
+	public String getApplcntNm() {
+		return applcntNm;
 	}
 	/**
-	 * jurirno attribute 값을 설정한다.
+	 * applcntNm attribute 값을 설정한다.
 	 * 
-	 * @param jurirno
+	 * @param applcntNm
 	 *            String
 	 */
-	public void setJurirno(String jurirno) {
-		this.jurirno = jurirno;
+	public void setApplcntNm(String applcntNm) {
+		this.applcntNm = applcntNm;
 	}
 
 	/**
-	 * areaNo attribute 값을 리턴한다.
+	 * applcntIhidnum attribute 값을 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getAreaNo() {
-		return areaNo;
+	public String getApplcntIhidnum() {
+		return applcntIhidnum;
 	}
 	/**
-	 * areaNo attribute 값을 설정한다.
+	 * applcntIhidnum attribute 값을 설정한다.
 	 * 
-	 * @param areaNo
+	 * @param applcntIhidnum
 	 *            String
 	 */
-	public void setAreaNo(String areaNo) {
-		this.areaNo = areaNo;
-	}
-
-	/**
-	 * entrprsEndTelno attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getEntrprsEndTelno() {
-		return entrprsEndTelno;
-	}
-	/**
-	 * entrprsEndTelno attribute 값을 설정한다.
-	 * 
-	 * @param entrprsEndTelno
-	 *            String
-	 */
-	public void setEntrprsEndTelno(String entrprsEndTelno) {
-		this.entrprsEndTelno = entrprsEndTelno;
-	}
-
-	/**
-	 * entrprsMiddleTelno attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getEntrprsMiddleTelno() {
-		return entrprsMiddleTelno;
-	}
-	/**
-	 * entrprsMiddleTelno attribute 값을 설정한다.
-	 * 
-	 * @param entrprsMiddleTelno
-	 *            String
-	 */
-	public void setEntrprsMiddleTelno(String entrprsMiddleTelno) {
-		this.entrprsMiddleTelno = entrprsMiddleTelno;
+	public void setApplcntIhidnum(String applcntIhidnum) {
+		this.applcntIhidnum = applcntIhidnum;
 	}
 
 	/**
@@ -542,24 +487,6 @@ public class EntrprsManageVO extends SearchVO {
 	}
 
 	/**
-	 * zip attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getZip() {
-		return zip;
-	}
-	/**
-	 * zip attribute 값을 설정한다.
-	 * 
-	 * @param zip
-	 *            String
-	 */
-	public void setZip(String zip) {
-		this.zip = zip;
-	}
-
-	/**
 	 * applcntEmailAdres attribute 값을 리턴한다.
 	 * 
 	 * @return String
@@ -578,6 +505,24 @@ public class EntrprsManageVO extends SearchVO {
 	}
 
 	/**
+	 * uniqId attribute 값을 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getUniqId() {
+		return uniqId;
+	}
+	/**
+	 * uniqId attribute 값을 설정한다.
+	 * 
+	 * @param uniqId
+	 *            String
+	 */
+	public void setUniqId(String uniqId) {
+		this.uniqId = uniqId;
+	}
+
+	/**
 	 * googleAccount attribute 값을 리턴한다.
 	 * 
 	 * @return String
@@ -593,6 +538,61 @@ public class EntrprsManageVO extends SearchVO {
 	 */
 	public void setGoogleAccount(String googleAccount) {
 		this.googleAccount = googleAccount;
+	}
+
+	// helper
+	/**
+	 * userTy attribute 값을 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getUserTy() {
+		return userTy;
+	}
+	/**
+	 * userTy attribute 값을 설정한다.
+	 * 
+	 * @param userTy
+	 *            String
+	 */
+	public void setUserTy(String userTy) {
+		this.userTy = userTy;
+	}
+
+	/**
+	 * oldPassword attribute 값을 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getOldPassword() {
+		return oldPassword;
+	}
+	/**
+	 * oldPassword attribute 값을 설정한다.
+	 * 
+	 * @param oldPassword
+	 *            String
+	 */
+	public void setOldPassword(String oldPassword) {
+		this.oldPassword = oldPassword;
+	}
+
+	/**
+	 * sbscrbSttus attribute 값을 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getSbscrbSttus() {
+		return sbscrbSttus;
+	}
+	/**
+	 * sbscrbSttus attribute 값을 설정한다.
+	 * 
+	 * @param sbscrbSttus
+	 *            String
+	 */
+	public void setSbscrbSttus(String sbscrbSttus) {
+		this.sbscrbSttus = sbscrbSttus;
 	}
 
 }

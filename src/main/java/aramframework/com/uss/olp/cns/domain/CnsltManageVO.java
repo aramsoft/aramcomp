@@ -23,26 +23,33 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class CnsltManageVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 대상 아이디 */
-	private String trgetId = "";
-
-	// 도메인 VO
+	// domain
 	/** 상담 ID */
 	private String cnsltId;
 
 	/** 상담제목 */
 	private String cnsltSj;
 
-	/** 상담내용 */
-	private String cnsltCn;
-
 	/** 공개여부 */
 	private String othbcAt;
 
-	/** 작성비밀번호 */
-	private String writngPassword;
+	/** 이메일 주소 */
+	private String emailAdres;
+
+	/** 상담내용 */
+	private String cnsltCn;
+
+	/** 조치내용 */
+	private String managtCn;
+
+	/** 조치일자 */
+	private String managtDe;
+
+	/** 조회횟수 */
+	private String inqireCo;
+
+	/** 첨부파일 ID */
+	private String atchFileId;
 
 	/** 지역번호 */
 	private String areaNo;
@@ -62,35 +69,27 @@ public class CnsltManageVO extends SearchVO  {
 	/** 끝휴대폰번호 */
 	private String endMbtlnum;
 
-	/** 이메일 주소 */
-	private String emailAdres;
-
-	/** 이메일 답변여부 */
-	private String emailAnswerAt;
-
-	/** 첨부파일 ID */
-	private String atchFileId;
+	/** 작성일자 */
+	private String writngDe;
 
 	/** 작성자 명 */
 	private String wrterNm;
 
-	/** 작성일자 */
-	private String writngDe;
-
-	/** 조회횟수 */
-	private String inqireCo;
+	/** 이메일 답변여부 */
+	private String emailAnswerAt;
 
 	/** 질의응답처리상태코드 */
 	private String qnaProcessSttusCode;
 
+	/** 작성비밀번호 */
+	private String writngPassword;
+
+	/** 대상 아이디 */
+	private String trgetId = "";
+
+	// helper
 	/** 질의응답처리상태코드명 */
 	private String qnaProcessSttusCodeNm;
-
-	/** 조치내용 */
-	private String managtCn;
-
-	/** 조치일자 */
-	private String managtDe;
 
 	/** 답변자명 */
 	private String emplyrNm;
@@ -104,24 +103,7 @@ public class CnsltManageVO extends SearchVO  {
 	/** 부서명 */
 	private String orgnztNm;
 
-	/**
-	 * trgetId attribute를 리턴한다.
-	 * 
-	 * @return the trgetId
-	 */
-	public String getTrgetId() {
-		return trgetId;
-	}
-	/**
-	 * trgetId attribute 값을 설정한다.
-	 * 
-	 * @param trgetId
-	 *            the trgetId to set
-	 */
-	public void setTrgetId(String trgetId) {
-		this.trgetId = trgetId;
-	}
-
+	// domain
 	/**
 	 * cnsltId attribute 를 리턴한다.
 	 * 
@@ -155,6 +137,40 @@ public class CnsltManageVO extends SearchVO  {
 	public void setCnsltSj(String cnsltSj) {
 		this.cnsltSj = cnsltSj;
 	}
+	
+	/**
+	 * othbcAt attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getOthbcAt() {
+		return othbcAt;
+	}
+	/**
+	 * othbcAt attribute 값을 설정한다.
+	 * 
+	 * @return othbcAt String
+	 */
+	public void setOthbcAt(String othbcAt) {
+		this.othbcAt = othbcAt;
+	}
+
+	/**
+	 * emailAdres attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getEmailAdres() {
+		return emailAdres;
+	}
+	/**
+	 * emailAdres attribute 값을 설정한다.
+	 * 
+	 * @return emailAdres String
+	 */
+	public void setEmailAdres(String emailAdres) {
+		this.emailAdres = emailAdres;
+	}
 
 	/**
 	 * cnsltCn attribute 를 리턴한다.
@@ -174,37 +190,71 @@ public class CnsltManageVO extends SearchVO  {
 	}
 
 	/**
-	 * othbcAt attribute 를 리턴한다.
+	 * managtCn attribute 를 리턴한다.
 	 * 
 	 * @return the String
 	 */
-	public String getOthbcAt() {
-		return othbcAt;
+	public String getManagtCn() {
+		return managtCn;
 	}
 	/**
-	 * othbcAt attribute 값을 설정한다.
+	 * managtCn attribute 값을 설정한다.
 	 * 
-	 * @return othbcAt String
+	 * @return managtCn String
 	 */
-	public void setOthbcAt(String othbcAt) {
-		this.othbcAt = othbcAt;
+	public void setManagtCn(String managtCn) {
+		this.managtCn = managtCn;
 	}
 
 	/**
-	 * writngPassword attribute 를 리턴한다.
+	 * managtDe attribute 를 리턴한다.
 	 * 
 	 * @return the String
 	 */
-	public String getWritngPassword() {
-		return writngPassword;
+	public String getManagtDe() {
+		return managtDe;
 	}
 	/**
-	 * writngPassword attribute 값을 설정한다.
+	 * managtDe attribute 값을 설정한다.
 	 * 
-	 * @return writngPassword String
+	 * @return managtDe String
 	 */
-	public void setWritngPassword(String writngPassword) {
-		this.writngPassword = writngPassword;
+	public void setManagtDe(String managtDe) {
+		this.managtDe = managtDe;
+	}
+
+	/**
+	 * inqireCo attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getInqireCo() {
+		return inqireCo;
+	}
+	/**
+	 * inqireCo attribute 값을 설정한다.
+	 * 
+	 * @return inqireCo String
+	 */
+	public void setInqireCo(String inqireCo) {
+		this.inqireCo = inqireCo;
+	}
+
+	/**
+	 * atchFileId attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getAtchFileId() {
+		return atchFileId;
+	}
+	/**
+	 * atchFileId attribute 값을 설정한다.
+	 * 
+	 * @return atchFileId String
+	 */
+	public void setAtchFileId(String atchFileId) {
+		this.atchFileId = atchFileId;
 	}
 
 	/**
@@ -257,7 +307,7 @@ public class CnsltManageVO extends SearchVO  {
 	public void setEndTelno(String endTelno) {
 		this.endTelno = endTelno;
 	}
-
+	
 	/**
 	 * firstMoblphonNo attribute 를 리턴한다.
 	 * 
@@ -310,54 +360,20 @@ public class CnsltManageVO extends SearchVO  {
 	}
 
 	/**
-	 * emailAdres attribute 를 리턴한다.
+	 * writngDe attribute 를 리턴한다.
 	 * 
 	 * @return the String
 	 */
-	public String getEmailAdres() {
-		return emailAdres;
+	public String getWritngDe() {
+		return writngDe;
 	}
 	/**
-	 * emailAdres attribute 값을 설정한다.
+	 * writngDe attribute 값을 설정한다.
 	 * 
-	 * @return emailAdres String
+	 * @return writngDe String
 	 */
-	public void setEmailAdres(String emailAdres) {
-		this.emailAdres = emailAdres;
-	}
-
-	/**
-	 * emailAnswerAt attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getEmailAnswerAt() {
-		return emailAnswerAt;
-	}
-	/**
-	 * emailAnswerAt attribute 값을 설정한다.
-	 * 
-	 * @return emailAnswerAt String
-	 */
-	public void setEmailAnswerAt(String emailAnswerAt) {
-		this.emailAnswerAt = emailAnswerAt;
-	}
-
-	/**
-	 * atchFileId attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getAtchFileId() {
-		return atchFileId;
-	}
-	/**
-	 * atchFileId attribute 값을 설정한다.
-	 * 
-	 * @return atchFileId String
-	 */
-	public void setAtchFileId(String atchFileId) {
-		this.atchFileId = atchFileId;
+	public void setWritngDe(String writngDe) {
+		this.writngDe = writngDe;
 	}
 
 	/**
@@ -378,37 +394,20 @@ public class CnsltManageVO extends SearchVO  {
 	}
 
 	/**
-	 * writngDe attribute 를 리턴한다.
+	 * emailAnswerAt attribute 를 리턴한다.
 	 * 
 	 * @return the String
 	 */
-	public String getWritngDe() {
-		return writngDe;
+	public String getEmailAnswerAt() {
+		return emailAnswerAt;
 	}
 	/**
-	 * writngDe attribute 값을 설정한다.
+	 * emailAnswerAt attribute 값을 설정한다.
 	 * 
-	 * @return writngDe String
+	 * @return emailAnswerAt String
 	 */
-	public void setWritngDe(String writngDe) {
-		this.writngDe = writngDe;
-	}
-
-	/**
-	 * inqireCo attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getInqireCo() {
-		return inqireCo;
-	}
-	/**
-	 * inqireCo attribute 값을 설정한다.
-	 * 
-	 * @return inqireCo String
-	 */
-	public void setInqireCo(String inqireCo) {
-		this.inqireCo = inqireCo;
+	public void setEmailAnswerAt(String emailAnswerAt) {
+		this.emailAnswerAt = emailAnswerAt;
 	}
 
 	/**
@@ -429,6 +428,42 @@ public class CnsltManageVO extends SearchVO  {
 	}
 
 	/**
+	 * writngPassword attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getWritngPassword() {
+		return writngPassword;
+	}
+	/**
+	 * writngPassword attribute 값을 설정한다.
+	 * 
+	 * @return writngPassword String
+	 */
+	public void setWritngPassword(String writngPassword) {
+		this.writngPassword = writngPassword;
+	}
+
+	/**
+	 * trgetId attribute를 리턴한다.
+	 * 
+	 * @return the trgetId
+	 */
+	public String getTrgetId() {
+		return trgetId;
+	}
+	/**
+	 * trgetId attribute 값을 설정한다.
+	 * 
+	 * @param trgetId
+	 *            the trgetId to set
+	 */
+	public void setTrgetId(String trgetId) {
+		this.trgetId = trgetId;
+	}
+
+	// helper
+	/**
 	 * qnaProcessSttusCodeNm attribute 를 리턴한다.
 	 * 
 	 * @return the String
@@ -443,40 +478,6 @@ public class CnsltManageVO extends SearchVO  {
 	 */
 	public void setQnaProcessSttusCodeNm(String qnaProcessSttusCodeNm) {
 		this.qnaProcessSttusCodeNm = qnaProcessSttusCodeNm;
-	}
-
-	/**
-	 * managtCn attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getManagtCn() {
-		return managtCn;
-	}
-	/**
-	 * managtCn attribute 값을 설정한다.
-	 * 
-	 * @return managtCn String
-	 */
-	public void setManagtCn(String managtCn) {
-		this.managtCn = managtCn;
-	}
-
-	/**
-	 * managtDe attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getManagtDe() {
-		return managtDe;
-	}
-	/**
-	 * managtDe attribute 값을 설정한다.
-	 * 
-	 * @return managtDe String
-	 */
-	public void setManagtDe(String managtDe) {
-		this.managtDe = managtDe;
 	}
 
 	/**

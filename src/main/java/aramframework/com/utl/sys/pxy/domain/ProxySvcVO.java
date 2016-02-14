@@ -25,14 +25,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class ProxySvcVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 프록시 명 조회조건 */
-	private String strProxyNm;
-	
-	/** 이전 서비스 상태 */
-	private String strPreSvcSttus;
-
+	// domain
 	/** 프록시 ID */
 	private String proxyId;
 	
@@ -60,37 +53,17 @@ public class ProxySvcVO extends SearchVO {
 	/** 서비스 상태 */
 	private String svcSttus;
 	
+	// helper
 	/** 서비스 상태 */
 	private String svcSttusNm;
 	
-	/**
-	 * @return the strProxyNm
-	 */
-	public String getStrProxyNm() {
-		return strProxyNm;
-	}
-	/**
-	 * @param strProxyNm
-	 *            the strProxyNm to set
-	 */
-	public void setStrProxyNm(String strProxyNm) {
-		this.strProxyNm = strProxyNm;
-	}
+	/** 프록시 명 조회조건 */
+	private String strProxyNm;
+	
+	/** 이전 서비스 상태 */
+	private String strPreSvcSttus;
 
-	/**
-	 * @return the strPreSvcSttus
-	 */
-	public String getStrPreSvcSttus() {
-		return strPreSvcSttus;
-	}
-	/**
-	 * @param strPreSvcSttus
-	 *            the strPreSvcSttus to set
-	 */
-	public void setStrPreSvcSttus(String strPreSvcSttus) {
-		this.strPreSvcSttus = strPreSvcSttus;
-	}
-
+	// domain
 	/**
 	 * @return the proxyId
 	 */
@@ -217,6 +190,7 @@ public class ProxySvcVO extends SearchVO {
 		this.svcSttus = svcSttus;
 	}
 
+	// helper
 	/**
 	 * @return the svcSttusNm
 	 */
@@ -229,6 +203,34 @@ public class ProxySvcVO extends SearchVO {
 	 */
 	public void setSvcSttusNm(String svcSttusNm) {
 		this.svcSttusNm = svcSttusNm;
+	}
+
+	/**
+	 * @return the strProxyNm
+	 */
+	public String getStrProxyNm() {
+		return strProxyNm;
+	}
+	/**
+	 * @param strProxyNm
+	 *            the strProxyNm to set
+	 */
+	public void setStrProxyNm(String strProxyNm) {
+		this.strProxyNm = strProxyNm;
+	}
+
+	/**
+	 * @return the strPreSvcSttus
+	 */
+	public String getStrPreSvcSttus() {
+		return strPreSvcSttus;
+	}
+	/**
+	 * @param strPreSvcSttus
+	 *            the strPreSvcSttus to set
+	 */
+	public void setStrPreSvcSttus(String strPreSvcSttus) {
+		this.strPreSvcSttus = strPreSvcSttus;
 	}
 
 }

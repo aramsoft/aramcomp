@@ -23,25 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class MeetingManageVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 대상 아이디 */
-	private String trgetId = "";
-
-	// 추가검색조건
-	/** 회의시작 시간 */
-	private String mtgBeginHH = "";
-
-	/** 회의시작 분 */
-	private String mtgBeginMM = "";
-
-	/** 회의종료 시간 */
-	private String mtgEndHH = "";
-
-	/** 회의종료 분 */
-	private String mtgEndMM = "";
-
-	// 도메인정보
+	// domain
 	/** 회의ID */
 	private String mtgId = "";
 
@@ -90,26 +72,11 @@ public class MeetingManageVO extends SearchVO  {
 	/** 주관부서ID */
 	private String mngtDeptId = "";
 
-	/* 주관부서명 */
-	private String mngtDeptNm = "";
-
 	/** 주관자ID */
 	private String mnaerId = "";
 
-	/** 주관자ID */
-	private String mnaerIds = "";
-
-	/** 주관자명 */
-	private String mnaerNm = "";
-
 	/** 주관자부서ID */
 	private String mnaerDeptId = "";
-
-	/** 주관자부서명 */
-	private String mnaerDeptNm = "";
-
-	/** 주관자직위직급코드 */
-	private String mnaerOfcpsClsfCode = "";
 
 	/** 회의여부 */
 	private String mtnAt = "";
@@ -120,92 +87,39 @@ public class MeetingManageVO extends SearchVO  {
 	/** 참석자수 */
 	private String atdrnCo = "";
 
-	/**
-	 * trgetId attribute를 리턴한다.
-	 * 
-	 * @return the trgetId
-	 */
-	public String getTrgetId() {
-		return trgetId;
-	}
-	/**
-	 * trgetId attribute 값을 설정한다.
-	 * 
-	 * @param trgetId
-	 *            the trgetId to set
-	 */
-	public void setTrgetId(String trgetId) {
-		this.trgetId = trgetId;
-	}
+	/** 대상 아이디 */
+	private String trgetId = "";
 
-	/**
-	 * mtgBeginHH attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getMtgBeginHH() {
-		return mtgBeginHH;
-	}
-	/**
-	 * mtgBeginHH attribute 값을 설정한다.
-	 * 
-	 * @return mtgBeginHH String
-	 */
-	public void setMtgBeginHH(String mtgBeginHH) {
-		this.mtgBeginHH = mtgBeginHH;
-	}
+	// helper
+	/** 주관부서명 */
+	private String mngtDeptNm = "";
 
-	/**
-	 * mtgBeginMM attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getMtgBeginMM() {
-		return mtgBeginMM;
-	}
-	/**
-	 * mtgBeginMM attribute 값을 설정한다.
-	 * 
-	 * @return mtgBeginMM String
-	 */
-	public void setMtgBeginMM(String mtgBeginMM) {
-		this.mtgBeginMM = mtgBeginMM;
-	}
+	/** 주관자ID */
+	private String mnaerIds = "";
 
-	/**
-	 * mtgEndHH attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getMtgEndHH() {
-		return mtgEndHH;
-	}
-	/**
-	 * mtgEndHH attribute 값을 설정한다.
-	 * 
-	 * @return mtgEndHH String
-	 */
-	public void setMtgEndHH(String mtgEndHH) {
-		this.mtgEndHH = mtgEndHH;
-	}
+	/** 주관자명 */
+	private String mnaerNm = "";
 
-	/**
-	 * mtgEndMM attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getMtgEndMM() {
-		return mtgEndMM;
-	}
-	/**
-	 * mtgEndMM attribute 값을 설정한다.
-	 * 
-	 * @return mtgEndMM String
-	 */
-	public void setMtgEndMM(String mtgEndMM) {
-		this.mtgEndMM = mtgEndMM;
-	}
+	/** 주관자부서명 */
+	private String mnaerDeptNm = "";
+	
+	/** 주관자직위직급코드 */
+	private String mnaerOfcpsClsfCode = "";
 
+	// 추가검색조건
+	/** 회의시작 시간 */
+	private String mtgBeginHH = "";
+
+	/** 회의시작 분 */
+	private String mtgBeginMM = "";
+
+	/** 회의종료 시간 */
+	private String mtgEndHH = "";
+
+	/** 회의종료 분 */
+	private String mtgEndMM = "";
+
+	// domain
 	/**
 	 * mtgId attribute 를 리턴한다.
 	 * 
@@ -479,23 +393,6 @@ public class MeetingManageVO extends SearchVO  {
 	}
 
 	/**
-	 * mngtDeptNm attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getMngtDeptNm() {
-		return mngtDeptNm;
-	}
-	/**
-	 * mngtDeptNm attribute 값을 설정한다.
-	 * 
-	 * @return mngtDeptNm String
-	 */
-	public void setMngtDeptNm(String mngtDeptNm) {
-		this.mngtDeptNm = mngtDeptNm;
-	}
-
-	/**
 	 * mnaerId attribute 를 리턴한다.
 	 * 
 	 * @return the String
@@ -513,40 +410,6 @@ public class MeetingManageVO extends SearchVO  {
 	}
 
 	/**
-	 * mnaerIds attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getMnaerIds() {
-		return mnaerIds;
-	}
-	/**
-	 * mnaerIds attribute 값을 설정한다.
-	 * 
-	 * @return mnaerId String
-	 */
-	public void setMnaerIds(String mnaerIds) {
-		this.mnaerIds = mnaerIds;
-	}
-
-	/**
-	 * mnaerNm attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getMnaerNm() {
-		return mnaerNm;
-	}
-	/**
-	 * mnaerNm attribute 값을 설정한다.
-	 * 
-	 * @return mnaerNm String
-	 */
-	public void setMnaerNm(String mnaerNm) {
-		this.mnaerNm = mnaerNm;
-	}
-
-	/**
 	 * mnaerDeptId attribute 를 리턴한다.
 	 * 
 	 * @return the String
@@ -561,40 +424,6 @@ public class MeetingManageVO extends SearchVO  {
 	 */
 	public void setMnaerDeptId(String mnaerDeptId) {
 		this.mnaerDeptId = mnaerDeptId;
-	}
-
-	/**
-	 * mnaerDeptNm attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getMnaerDeptNm() {
-		return mnaerDeptNm;
-	}
-	/**
-	 * mnaerDeptNm attribute 값을 설정한다.
-	 * 
-	 * @return mnaerDeptNm String
-	 */
-	public void setMnaerDeptNm(String mnaerDeptNm) {
-		this.mnaerDeptNm = mnaerDeptNm;
-	}
-
-	/**
-	 * mnaerOfcpsClsfCode attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getMnaerOfcpsClsfCode() {
-		return mnaerOfcpsClsfCode;
-	}
-	/**
-	 * mnaerOfcpsClsfCode attribute 값을 설정한다.
-	 * 
-	 * @return mnaerOfcpsClsfCode String
-	 */
-	public void setMnaerOfcpsClsfCode(String mnaerOfcpsClsfCode) {
-		this.mnaerOfcpsClsfCode = mnaerOfcpsClsfCode;
 	}
 
 	/**
@@ -646,6 +475,178 @@ public class MeetingManageVO extends SearchVO  {
 	 */
 	public void setAtdrnCo(String atdrnCo) {
 		this.atdrnCo = atdrnCo;
+	}
+
+	/**
+	 * trgetId attribute를 리턴한다.
+	 * 
+	 * @return the trgetId
+	 */
+	public String getTrgetId() {
+		return trgetId;
+	}
+	/**
+	 * trgetId attribute 값을 설정한다.
+	 * 
+	 * @param trgetId
+	 *            the trgetId to set
+	 */
+	public void setTrgetId(String trgetId) {
+		this.trgetId = trgetId;
+	}
+
+	// helper
+	/**
+	 * mngtDeptNm attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getMngtDeptNm() {
+		return mngtDeptNm;
+	}
+	/**
+	 * mngtDeptNm attribute 값을 설정한다.
+	 * 
+	 * @return mngtDeptNm String
+	 */
+	public void setMngtDeptNm(String mngtDeptNm) {
+		this.mngtDeptNm = mngtDeptNm;
+	}
+
+	/**
+	 * mnaerIds attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getMnaerIds() {
+		return mnaerIds;
+	}
+	/**
+	 * mnaerIds attribute 값을 설정한다.
+	 * 
+	 * @return mnaerId String
+	 */
+	public void setMnaerIds(String mnaerIds) {
+		this.mnaerIds = mnaerIds;
+	}
+
+	/**
+	 * mnaerNm attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getMnaerNm() {
+		return mnaerNm;
+	}
+	/**
+	 * mnaerNm attribute 값을 설정한다.
+	 * 
+	 * @return mnaerNm String
+	 */
+	public void setMnaerNm(String mnaerNm) {
+		this.mnaerNm = mnaerNm;
+	}
+
+	/**
+	 * mnaerOfcpsClsfCode attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getMnaerOfcpsClsfCode() {
+		return mnaerOfcpsClsfCode;
+	}
+	/**
+	 * mnaerOfcpsClsfCode attribute 값을 설정한다.
+	 * 
+	 * @return mnaerOfcpsClsfCode String
+	 */
+	public void setMnaerOfcpsClsfCode(String mnaerOfcpsClsfCode) {
+		this.mnaerOfcpsClsfCode = mnaerOfcpsClsfCode;
+	}
+
+	/**
+	 * mnaerDeptNm attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getMnaerDeptNm() {
+		return mnaerDeptNm;
+	}
+	/**
+	 * mnaerDeptNm attribute 값을 설정한다.
+	 * 
+	 * @return mnaerDeptNm String
+	 */
+	public void setMnaerDeptNm(String mnaerDeptNm) {
+		this.mnaerDeptNm = mnaerDeptNm;
+	}
+
+	/**
+	 * mtgBeginHH attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getMtgBeginHH() {
+		return mtgBeginHH;
+	}
+	/**
+	 * mtgBeginHH attribute 값을 설정한다.
+	 * 
+	 * @return mtgBeginHH String
+	 */
+	public void setMtgBeginHH(String mtgBeginHH) {
+		this.mtgBeginHH = mtgBeginHH;
+	}
+
+	/**
+	 * mtgBeginMM attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getMtgBeginMM() {
+		return mtgBeginMM;
+	}
+	/**
+	 * mtgBeginMM attribute 값을 설정한다.
+	 * 
+	 * @return mtgBeginMM String
+	 */
+	public void setMtgBeginMM(String mtgBeginMM) {
+		this.mtgBeginMM = mtgBeginMM;
+	}
+
+	/**
+	 * mtgEndHH attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getMtgEndHH() {
+		return mtgEndHH;
+	}
+	/**
+	 * mtgEndHH attribute 값을 설정한다.
+	 * 
+	 * @return mtgEndHH String
+	 */
+	public void setMtgEndHH(String mtgEndHH) {
+		this.mtgEndHH = mtgEndHH;
+	}
+
+	/**
+	 * mtgEndMM attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getMtgEndMM() {
+		return mtgEndMM;
+	}
+	/**
+	 * mtgEndMM attribute 값을 설정한다.
+	 * 
+	 * @return mtgEndMM String
+	 */
+	public void setMtgEndMM(String mtgEndMM) {
+		this.mtgEndMM = mtgEndMM;
 	}
 
 }

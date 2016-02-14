@@ -23,13 +23,12 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class QustnrManageVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 대상 아이디 */
-	private String trgetId = "";
-
+	// domain
 	/** 설문지ID */
 	private String qestnrId = "";
+
+	/** 설문템플릿 */
+	private String qestnrTmplatId = "";
 
 	/** 설문제목 */
 	private String qestnrSj = "";
@@ -40,39 +39,23 @@ public class QustnrManageVO extends SearchVO  {
 	/** 설문작성안내내용 */
 	private String qestnrWritngGuidanceCn = "";
 
+	/** 설문대상 */
+	private String qestnrTrget = "";
+
 	/** 설문시작일자 */
 	private String qestnrBeginDe = "";
 
 	/** 설문종료일자 */
 	private String qestnrEndDe = "";
 
-	/** 설문대상 */
-	private String qestnrTrget = "";
+	/** 대상 아이디 */
+	private String trgetId = "";
 
-	/** 설문시작일자 */
-	private String qestnrTmplatId = "";
-
+	// helper
 	/** 설문템플릿유형 */
 	private String qestnrTmplatTy = "";
 
-	/**
-	 * trgetId attribute를 리턴한다.
-	 * 
-	 * @return the trgetId
-	 */
-	public String getTrgetId() {
-		return trgetId;
-	}
-	/**
-	 * trgetId attribute 값을 설정한다.
-	 * 
-	 * @param trgetId
-	 *            the trgetId to set
-	 */
-	public void setTrgetId(String trgetId) {
-		this.trgetId = trgetId;
-	}
-
+	// domain
 	/**
 	 * qestnrId attribute 를 리턴한다.
 	 * 
@@ -88,6 +71,23 @@ public class QustnrManageVO extends SearchVO  {
 	 */
 	public void setQestnrId(String qestnrId) {
 		this.qestnrId = qestnrId;
+	}
+
+	/**
+	 * qestnrTmplatId attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getQestnrTmplatId() {
+		return qestnrTmplatId;
+	}
+	/**
+	 * qestnrTmplatId attribute 값을 설정한다.
+	 * 
+	 * @return qestnrTmplatId String
+	 */
+	public void setQestnrTmplatId(String qestnrTmplatId) {
+		this.qestnrTmplatId = qestnrTmplatId;
 	}
 
 	/**
@@ -142,6 +142,23 @@ public class QustnrManageVO extends SearchVO  {
 	}
 
 	/**
+	 * qestnrTrget attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getQestnrTrget() {
+		return qestnrTrget;
+	}
+	/**
+	 * qestnrTrget attribute 값을 설정한다.
+	 * 
+	 * @return qestnrTrget String
+	 */
+	public void setQestnrTrget(String qestnrTrget) {
+		this.qestnrTrget = qestnrTrget;
+	}
+
+	/**
 	 * qestnrBeginDe attribute 를 리턴한다.
 	 * 
 	 * @return the String
@@ -176,39 +193,24 @@ public class QustnrManageVO extends SearchVO  {
 	}
 
 	/**
-	 * qestnrTrget attribute 를 리턴한다.
+	 * trgetId attribute를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return the trgetId
 	 */
-	public String getQestnrTrget() {
-		return qestnrTrget;
+	public String getTrgetId() {
+		return trgetId;
 	}
 	/**
-	 * qestnrTrget attribute 값을 설정한다.
+	 * trgetId attribute 값을 설정한다.
 	 * 
-	 * @return qestnrTrget String
+	 * @param trgetId
+	 *            the trgetId to set
 	 */
-	public void setQestnrTrget(String qestnrTrget) {
-		this.qestnrTrget = qestnrTrget;
+	public void setTrgetId(String trgetId) {
+		this.trgetId = trgetId;
 	}
 
-	/**
-	 * qestnrTmplatId attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getQestnrTmplatId() {
-		return qestnrTmplatId;
-	}
-	/**
-	 * qestnrTmplatId attribute 값을 설정한다.
-	 * 
-	 * @return qestnrTmplatId String
-	 */
-	public void setQestnrTmplatId(String qestnrTmplatId) {
-		this.qestnrTmplatId = qestnrTmplatId;
-	}
-
+	// helper
 	/**
 	 * qestnrTmplatTy attribute 를 리턴한다.
 	 * 

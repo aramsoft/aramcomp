@@ -23,8 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class DbMntrngLogVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 로그ID */
 	private String logId;
 
@@ -49,17 +48,33 @@ public class DbMntrngLogVO extends SearchVO {
 	/** 모니터링상태 */
 	private String mntrngSttus;
 
-	/** 생성일시 */
-	private String creatDt;
-	
 	/** 로그정보 */
 	private String logInfo;
 
+	/** 생성일시 */
+	private String creatDt;
+	
+	// helper
 	/** 모니터링상태명 */
 	private String mntrngSttusNm;
 	
 	/** DBMS종류명 */
 	private String dbmsKindNm;
+
+	// domain
+	/**
+	 * @return the logId
+	 */
+	public String getLogId() {
+		return logId;
+	}
+	/**
+	 * @param logId
+	 *            the logId to set
+	 */
+	public void setLogId(String logId) {
+		this.logId = logId;
+	}
 
 	/**
 	 * @return the dataSourcNm
@@ -160,6 +175,35 @@ public class DbMntrngLogVO extends SearchVO {
 	}
 
 	/**
+	 * @return the logInfo
+	 */
+	public String getLogInfo() {
+		return logInfo;
+	}
+	/**
+	 * @param logInfo
+	 *            the logInfo to set
+	 */
+	public void setLogInfo(String logInfo) {
+		this.logInfo = logInfo;
+	}
+
+	/**
+	 * @return the creatDt
+	 */
+	public String getCreatDt() {
+		return creatDt;
+	}
+	/**
+	 * @param creatDt
+	 *            the creatDt to set
+	 */
+	public void setCreatDt(String creatDt) {
+		this.creatDt = creatDt;
+	}
+	
+	// helper
+	/**
 	 * @return the mntrngSttusNm
 	 */
 	public String getMntrngSttusNm() {
@@ -185,48 +229,6 @@ public class DbMntrngLogVO extends SearchVO {
 	 */
 	public void setDbmsKindNm(String dbmsKindNm) {
 		this.dbmsKindNm = dbmsKindNm;
-	}
-
-	/**
-	 * @return the creatDt
-	 */
-	public String getCreatDt() {
-		return creatDt;
-	}
-	/**
-	 * @param creatDt
-	 *            the creatDt to set
-	 */
-	public void setCreatDt(String creatDt) {
-		this.creatDt = creatDt;
-	}
-
-	/**
-	 * @return the logInfo
-	 */
-	public String getLogInfo() {
-		return logInfo;
-	}
-	/**
-	 * @param logInfo
-	 *            the logInfo to set
-	 */
-	public void setLogInfo(String logInfo) {
-		this.logInfo = logInfo;
-	}
-
-	/**
-	 * @return the logId
-	 */
-	public String getLogId() {
-		return logId;
-	}
-	/**
-	 * @param logId
-	 *            the logId to set
-	 */
-	public void setLogId(String logId) {
-		this.logId = logId;
 	}
 
 }

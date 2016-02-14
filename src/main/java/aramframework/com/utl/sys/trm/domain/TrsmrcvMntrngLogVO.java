@@ -23,8 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class TrsmrcvMntrngLogVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-	
+	// domain
 	/** 로그ID */
 	private String logId;
 	
@@ -43,12 +42,13 @@ public class TrsmrcvMntrngLogVO extends SearchVO {
 	/** 모니터링상태 */
 	private String mntrngSttus;
 	
-	/** 생성일시 */
-	private String creatDt;
-	
 	/** 로그정보 */
 	private String logInfo;
 
+	/** 생성일시 */
+	private String creatDt;
+	
+	// helper
 	/** 연계명 */
 	private String cntcNm;
 	
@@ -69,6 +69,21 @@ public class TrsmrcvMntrngLogVO extends SearchVO {
 	
 	/** 모니터링상태명 */
 	private String mntrngSttusNm;
+
+	// domain
+	/**
+	 * @return the logId
+	 */
+	public String getLogId() {
+		return logId;
+	}
+	/**
+	 * @param logId
+	 *            the logId to set
+	 */
+	public void setLogId(String logId) {
+		this.logId = logId;
+	}
 
 	/**
 	 * @return the cntcId
@@ -140,6 +155,35 @@ public class TrsmrcvMntrngLogVO extends SearchVO {
 		this.mntrngSttus = mntrngSttus;
 	}
 
+	/**
+	 * @return the logInfo
+	 */
+	public String getLogInfo() {
+		return logInfo;
+	}
+	/**
+	 * @param logInfo
+	 *            the logInfo to set
+	 */
+	public void setLogInfo(String logInfo) {
+		this.logInfo = logInfo;
+	}
+
+	/**
+	 * @return the creatDt
+	 */
+	public String getCreatDt() {
+		return creatDt;
+	}
+	/**
+	 * @param creatDt
+	 *            the creatDt to set
+	 */
+	public void setCreatDt(String creatDt) {
+		this.creatDt = creatDt;
+	}
+
+	// helper
 	/**
 	 * @return the cntcNm
 	 */
@@ -236,48 +280,6 @@ public class TrsmrcvMntrngLogVO extends SearchVO {
 	 */
 	public void setMntrngSttusNm(String mntrngSttusNm) {
 		this.mntrngSttusNm = mntrngSttusNm;
-	}
-
-	/**
-	 * @return the logId
-	 */
-	public String getLogId() {
-		return logId;
-	}
-	/**
-	 * @param logId
-	 *            the logId to set
-	 */
-	public void setLogId(String logId) {
-		this.logId = logId;
-	}
-
-	/**
-	 * @return the creatDt
-	 */
-	public String getCreatDt() {
-		return creatDt;
-	}
-	/**
-	 * @param creatDt
-	 *            the creatDt to set
-	 */
-	public void setCreatDt(String creatDt) {
-		this.creatDt = creatDt;
-	}
-
-	/**
-	 * @return the logInfo
-	 */
-	public String getLogInfo() {
-		return logInfo;
-	}
-	/**
-	 * @param logInfo
-	 *            the logInfo to set
-	 */
-	public void setLogInfo(String logInfo) {
-		this.logInfo = logInfo;
 	}
 
 }

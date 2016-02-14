@@ -25,19 +25,12 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class ProcessMonVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-	
-	/** 프로세스 명 */
-	private String processNm;
-	
+	// domain
 	/** 프로세스아이디 */	
 	private String processId;
 	
-	/** 로그ID */
-	private String logId;
-	
-	/** 로그정보 */
-	private String logInfo;
+	/** 프로세스 명 */
+	private String processNm;
 	
 	/** 프로세스 상태 */
 	private String procsSttus;
@@ -51,20 +44,11 @@ public class ProcessMonVO extends SearchVO {
 	/** 관리자 이메일 주소 */
 	private String mngrEmailAddr;
 	
-	/**
-	 * @return the processNm
-	 */
-	public String getProcessNm() {
-		return processNm;
-	}
-	/**
-	 * @param processNm
-	 *            the processNm to set
-	 */
-	public void setProcessNm(String processNm) {
-		this.processNm = processNm;
-	}
-
+	// helper
+	/** 로그정보 */
+	private String logInfo;
+	
+	// domain
 	/**
 	 * @return the processId
 	 */
@@ -80,31 +64,17 @@ public class ProcessMonVO extends SearchVO {
 	}
 
 	/**
-	 * @return the logId
+	 * @return the processNm
 	 */
-	public String getLogId() {
-		return logId;
+	public String getProcessNm() {
+		return processNm;
 	}
 	/**
-	 * @param logId
-	 *            the logId to set
+	 * @param processNm
+	 *            the processNm to set
 	 */
-	public void setLogId(String logId) {
-		this.logId = logId;
-	}
-
-	/**
-	 * @return the logInfo
-	 */
-	public String getLogInfo() {
-		return logInfo;
-	}
-	/**
-	 * @param logInfo
-	 *            the logInfo to set
-	 */
-	public void setLogInfo(String logInfo) {
-		this.logInfo = logInfo;
+	public void setProcessNm(String processNm) {
+		this.processNm = processNm;
 	}
 
 	/**
@@ -161,6 +131,21 @@ public class ProcessMonVO extends SearchVO {
 	 */
 	public void setMngrEmailAddr(String mngrEmailAddr) {
 		this.mngrEmailAddr = mngrEmailAddr;
+	}
+
+	// helper
+	/**
+	 * @return the logInfo
+	 */
+	public String getLogInfo() {
+		return logInfo;
+	}
+	/**
+	 * @param logInfo
+	 *            the logInfo to set
+	 */
+	public void setLogInfo(String logInfo) {
+		this.logInfo = logInfo;
 	}
 
 }

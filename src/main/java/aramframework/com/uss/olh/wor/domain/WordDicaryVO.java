@@ -23,8 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class WordDicaryVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 용어ID */
 	private String wordId;
 
@@ -40,9 +39,11 @@ public class WordDicaryVO extends SearchVO  {
 	/** 동의어 */
 	private String synonm;
 
-	/* 등록자명 */
+	// helper
+	/** 등록자명 */
 	private String emplyrNm;
 
+	// domain
 	/**
 	 * wordId attribute 를 리턴한다.
 	 * 
@@ -128,6 +129,7 @@ public class WordDicaryVO extends SearchVO  {
 		this.synonm = synonm;
 	}
 
+	// helper
 	/**
 	 * emplyrNm attribute 를 리턴한다.
 	 * 

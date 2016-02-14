@@ -23,16 +23,9 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class QustnrRespondManageVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 검색모드설정 */
-	private String searchMode = "";
-
+	// domain
 	/** 설문지ID */
 	private String qestnrId = "";
-
-	/** 설문제목 */
-	private String qestnrSj = "";
 
 	/** 설문응답자아이디 */
 	private String qestnrRespondId = "";
@@ -58,23 +51,14 @@ public class QustnrRespondManageVO extends SearchVO  {
 	/** 마지막전화번호 */
 	private String endTelno = "";
 
-	/**
-	 * searchMode attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getSearchMode() {
-		return searchMode;
-	}
-	/**
-	 * searchMode attribute 값을 설정한다.
-	 * 
-	 * @return searchMode String
-	 */
-	public void setSearchMode(String searchMode) {
-		this.searchMode = searchMode;
-	}
+	// helper
+	/** 설문제목 */
+	private String qestnrSj = "";
 
+	/** 검색모드설정 */
+	private String searchMode = "";
+
+	// domain
 	/**
 	 * qestnrId attribute 를 리턴한다.
 	 * 
@@ -90,23 +74,6 @@ public class QustnrRespondManageVO extends SearchVO  {
 	 */
 	public void setQestnrId(String qestnrId) {
 		this.qestnrId = qestnrId;
-	}
-
-	/**
-	 * qestnrSj attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getQestnrSj() {
-		return qestnrSj;
-	}
-	/**
-	 * qestnrSj attribute 값을 설정한다.
-	 * 
-	 * @return qestnrSj String
-	 */
-	public void setQestnrSj(String qestnrSj) {
-		this.qestnrSj = qestnrSj;
 	}
 
 	/**
@@ -243,6 +210,41 @@ public class QustnrRespondManageVO extends SearchVO  {
 	 */
 	public void setEndTelno(String endTelno) {
 		this.endTelno = endTelno;
+	}
+
+	// helper
+	/**
+	 * qestnrSj attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getQestnrSj() {
+		return qestnrSj;
+	}
+	/**
+	 * qestnrSj attribute 값을 설정한다.
+	 * 
+	 * @return qestnrSj String
+	 */
+	public void setQestnrSj(String qestnrSj) {
+		this.qestnrSj = qestnrSj;
+	}
+
+	/**
+	 * searchMode attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getSearchMode() {
+		return searchMode;
+	}
+	/**
+	 * searchMode attribute 값을 설정한다.
+	 * 
+	 * @return searchMode String
+	 */
+	public void setSearchMode(String searchMode) {
+		this.searchMode = searchMode;
 	}
 
 }

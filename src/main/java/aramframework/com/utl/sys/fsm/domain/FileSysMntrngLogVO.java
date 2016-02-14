@@ -23,26 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class FileSysMntrngLogVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 시작일자 조회조건 */
-	private String searchBgnDe = "";
-
-	/** 시작시간 조회조건 */
-	private String searchBgnHour = "";
-
-	/** 시작일시 조회조건 */
-	private String searchBgnDt = "";
-
-	/** 종료일자 조회조건 */
-	private String searchEndDe = "";
-
-	/** 종료시간 조회조건 */
-	private String searchEndHour = "";
-
-	/** 종료일시 조회조건 */
-	private String searchEndDt = "";
-
+	// domain
 	/** 로그ID */
 	private String logId;
 	
@@ -67,9 +48,6 @@ public class FileSysMntrngLogVO extends SearchVO {
 	/** 파일시스템사용량 */
 	private int fileSysUsgQty;
 	
-	/** 파일시스템사용률 */
-	private double fileSysUsgRt;
-	
 	/** 모니터링상태 */
 	private String mntrngSttus;
 	
@@ -79,48 +57,29 @@ public class FileSysMntrngLogVO extends SearchVO {
 	/** 생성일시 */
 	private String creatDt;
 	
-	public String getSearchBgnDe() {
-		return searchBgnDe;
-	}
-	public void setSearchBgnDe(String searchBgnDe) {
-		this.searchBgnDe = searchBgnDe;
-	}
+	// helper
+	/** 파일시스템사용률 */
+	private double fileSysUsgRt;
+	
+	/** 시작일자 조회조건 */
+	private String searchBgnDe = "";
 
-	public String getSearchBgnHour() {
-		return searchBgnHour;
-	}
-	public void setSearchBgnHour(String searchBgnHour) {
-		this.searchBgnHour = searchBgnHour;
-	}
+	/** 시작시간 조회조건 */
+	private String searchBgnHour = "";
 
-	public String getSearchBgnDt() {
-		return searchBgnDt;
-	}
-	public void setSearchBgnDt(String searchBgnDt) {
-		this.searchBgnDt = searchBgnDt;
-	}
+	/** 시작일시 조회조건 */
+	private String searchBgnDt = "";
 
-	public String getSearchEndDe() {
-		return searchEndDe;
-	}
-	public void setSearchEndDe(String searchEndDe) {
-		this.searchEndDe = searchEndDe;
-	}
+	/** 종료일자 조회조건 */
+	private String searchEndDe = "";
 
-	public String getSearchEndHour() {
-		return searchEndHour;
-	}
-	public void setSearchEndHour(String searchEndHour) {
-		this.searchEndHour = searchEndHour;
-	}
+	/** 종료시간 조회조건 */
+	private String searchEndHour = "";
 
-	public String getSearchEndDt() {
-		return searchEndDt;
-	}
-	public void setSearchEndDt(String searchEndDt) {
-		this.searchEndDt = searchEndDt;
-	}
+	/** 종료일시 조회조건 */
+	private String searchEndDt = "";
 
+	// domain
 	public String getLogId() {
 		return logId;
 	}
@@ -177,13 +136,6 @@ public class FileSysMntrngLogVO extends SearchVO {
 		this.fileSysUsgQty = fileSysUsgQty;
 	}
 
-	public double getFileSysUsgRt() {
-		return fileSysUsgRt;
-	}
-	public void setFileSysUsgRt(double fileSysUsgRt) {
-		this.fileSysUsgRt = fileSysUsgRt;
-	}
-
 	public String getMntrngSttus() {
 		return mntrngSttus;
 	}
@@ -203,6 +155,56 @@ public class FileSysMntrngLogVO extends SearchVO {
 	}
 	public void setCreatDt(String creatDt) {
 		this.creatDt = creatDt;
+	}
+
+	// helper
+	public double getFileSysUsgRt() {
+		return fileSysUsgRt;
+	}
+	public void setFileSysUsgRt(double fileSysUsgRt) {
+		this.fileSysUsgRt = fileSysUsgRt;
+	}
+
+	public String getSearchBgnDe() {
+		return searchBgnDe;
+	}
+	public void setSearchBgnDe(String searchBgnDe) {
+		this.searchBgnDe = searchBgnDe;
+	}
+
+	public String getSearchBgnHour() {
+		return searchBgnHour;
+	}
+	public void setSearchBgnHour(String searchBgnHour) {
+		this.searchBgnHour = searchBgnHour;
+	}
+
+	public String getSearchBgnDt() {
+		return searchBgnDt;
+	}
+	public void setSearchBgnDt(String searchBgnDt) {
+		this.searchBgnDt = searchBgnDt;
+	}
+
+	public String getSearchEndDe() {
+		return searchEndDe;
+	}
+	public void setSearchEndDe(String searchEndDe) {
+		this.searchEndDe = searchEndDe;
+	}
+
+	public String getSearchEndHour() {
+		return searchEndHour;
+	}
+	public void setSearchEndHour(String searchEndHour) {
+		this.searchEndHour = searchEndHour;
+	}
+
+	public String getSearchEndDt() {
+		return searchEndDt;
+	}
+	public void setSearchEndDt(String searchEndDt) {
+		this.searchEndDt = searchEndDt;
 	}
 
 }

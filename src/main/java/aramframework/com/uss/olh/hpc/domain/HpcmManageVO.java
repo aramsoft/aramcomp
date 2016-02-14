@@ -23,16 +23,12 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class HpcmManageVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 도움말 ID */
 	private String hpcmId;
 
 	/** 도움말구분코드 */
 	private String hpcmSeCode;
-
-	/* 도움말구분코드명 */
-	private String hpcmSeCodeNm;
 
 	/** 도움말정의 */
 	private String hpcmDfn;
@@ -40,6 +36,11 @@ public class HpcmManageVO extends SearchVO  {
 	/** 도움말 설명 */
 	private String hpcmDc;
 
+	// helper
+	/** 도움말구분코드명 */
+	private String hpcmSeCodeNm;
+
+	//domain
 	/**
 	 * hpcmId attribute 를 리턴한다.
 	 * 
@@ -75,23 +76,6 @@ public class HpcmManageVO extends SearchVO  {
 	}
 
 	/**
-	 * hpcmSeCodeNm attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getHpcmSeCodeNm() {
-		return hpcmSeCodeNm;
-	}
-	/**
-	 * hpcmSeCodeNm attribute 값을 설정한다.
-	 * 
-	 * @return hpcmSeCodeNm String
-	 */
-	public void setHpcmSeCodeNm(String hpcmSeCodeNm) {
-		this.hpcmSeCodeNm = hpcmSeCodeNm;
-	}
-
-	/**
 	 * hpcmDfn attribute 를 리턴한다.
 	 * 
 	 * @return the String
@@ -123,6 +107,24 @@ public class HpcmManageVO extends SearchVO  {
 	 */
 	public void setHpcmDc(String hpcmDc) {
 		this.hpcmDc = hpcmDc;
+	}
+
+	// helper
+	/**
+	 * hpcmSeCodeNm attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getHpcmSeCodeNm() {
+		return hpcmSeCodeNm;
+	}
+	/**
+	 * hpcmSeCodeNm attribute 값을 설정한다.
+	 * 
+	 * @return hpcmSeCodeNm String
+	 */
+	public void setHpcmSeCodeNm(String hpcmSeCodeNm) {
+		this.hpcmSeCodeNm = hpcmSeCodeNm;
 	}
 
 }

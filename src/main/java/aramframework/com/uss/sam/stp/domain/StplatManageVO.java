@@ -23,8 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class StplatManageVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 이용약관 ID */
 	private String useStplatId;
 

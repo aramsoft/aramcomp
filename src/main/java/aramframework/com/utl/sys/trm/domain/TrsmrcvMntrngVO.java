@@ -23,8 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class TrsmrcvMntrngVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-	
+	// domain
 	/** 연계ID */
 	private String cntcId;
 	
@@ -43,6 +42,7 @@ public class TrsmrcvMntrngVO extends SearchVO {
 	/** 생성일시 */
 	private String creatDt;
 
+	// helper
 	/** 연계명 */
 	private String cntcNm;
 	
@@ -64,6 +64,7 @@ public class TrsmrcvMntrngVO extends SearchVO {
 	/** 모니터링상태명 */
 	private String mntrngSttusNm;
 
+	// domain
 	/**
 	 * @return the cntcId
 	 */
@@ -134,6 +135,21 @@ public class TrsmrcvMntrngVO extends SearchVO {
 		this.mntrngSttus = mntrngSttus;
 	}
 
+	/**
+	 * @return the creatDt
+	 */
+	public String getCreatDt() {
+		return creatDt;
+	}
+	/**
+	 * @param creatDt
+	 *            the creatDt to set
+	 */
+	public void setCreatDt(String creatDt) {
+		this.creatDt = creatDt;
+	}
+
+	// helper
 	/**
 	 * @return the cntcNm
 	 */
@@ -230,20 +246,6 @@ public class TrsmrcvMntrngVO extends SearchVO {
 	 */
 	public void setMntrngSttusNm(String mntrngSttusNm) {
 		this.mntrngSttusNm = mntrngSttusNm;
-	}
-
-	/**
-	 * @return the creatDt
-	 */
-	public String getCreatDt() {
-		return creatDt;
-	}
-	/**
-	 * @param creatDt
-	 *            the creatDt to set
-	 */
-	public void setCreatDt(String creatDt) {
-		this.creatDt = creatDt;
 	}
 
 }

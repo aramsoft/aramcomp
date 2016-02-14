@@ -23,28 +23,18 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class QustnrItemManageVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 검색모드설정 */
-	private String searchMode = "";
+	// domain
+	/** 설문지 아이디 */
+	private String qestnrId = "";
 
 	/** 설문문항 아이디 */
 	private String qestnrQesitmId = "";
 
-	/** 질문내용 */
-	private String qestnCn = "";
-
-	/** 설문지 아이디 */
-	private String qestnrId = "";
-
-	/** 설문제목 */
-	private String qestnrSj = "";
+	/** 설문항목아이디 */
+	private String qustnrIemId = "";
 
 	/** 항목순번 */
 	private String qustnrIemSn = "";
-
-	/** 설문항목아이디 */
-	private String qustnrIemId = "";
 
 	/** 항목내용 */
 	private String qustnrIemCn = "";
@@ -52,21 +42,32 @@ public class QustnrItemManageVO extends SearchVO  {
 	/** 키타답변여부 */
 	private String etcAnswerAt = "";
 
+	// helper
+	/** 질문내용 */
+	private String qestnCn = "";
+
+	/** 설문제목 */
+	private String qestnrSj = "";
+
+	/** 검색모드설정 */
+	private String searchMode = "";
+
+	// domain
 	/**
-	 * searchMode attribute 를 리턴한다.
+	 * qestnrId attribute 를 리턴한다.
 	 * 
 	 * @return the String
 	 */
-	public String getSearchMode() {
-		return searchMode;
+	public String getQestnrId() {
+		return qestnrId;
 	}
 	/**
-	 * searchMode attribute 값을 설정한다.
+	 * qestnrId attribute 값을 설정한다.
 	 * 
-	 * @return searchMode String
+	 * @return qestnrId String
 	 */
-	public void setSearchMode(String searchMode) {
-		this.searchMode = searchMode;
+	public void setQestnrId(String qestnrId) {
+		this.qestnrId = qestnrId;
 	}
 
 	/**
@@ -87,54 +88,20 @@ public class QustnrItemManageVO extends SearchVO  {
 	}
 
 	/**
-	 * qestnCn attribute 를 리턴한다.
+	 * qustnrIemId attribute 를 리턴한다.
 	 * 
 	 * @return the String
 	 */
-	public String getQestnCn() {
-		return qestnCn;
+	public String getQustnrIemId() {
+		return qustnrIemId;
 	}
 	/**
-	 * qestnCn attribute 값을 설정한다.
+	 * qustnrIemId attribute 값을 설정한다.
 	 * 
-	 * @return qestnCn String
+	 * @return qustnrIemId String
 	 */
-	public void setQestnCn(String qestnCn) {
-		this.qestnCn = qestnCn;
-	}
-
-	/**
-	 * qestnrId attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getQestnrId() {
-		return qestnrId;
-	}
-	/**
-	 * qestnrId attribute 값을 설정한다.
-	 * 
-	 * @return qestnrId String
-	 */
-	public void setQestnrId(String qestnrId) {
-		this.qestnrId = qestnrId;
-	}
-
-	/**
-	 * qestnrSj attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getQestnrSj() {
-		return qestnrSj;
-	}
-	/**
-	 * qestnrSj attribute 값을 설정한다.
-	 * 
-	 * @return qestnrSj String
-	 */
-	public void setQestnrSj(String qestnrSj) {
-		this.qestnrSj = qestnrSj;
+	public void setQustnrIemId(String qustnrIemId) {
+		this.qustnrIemId = qustnrIemId;
 	}
 
 	/**
@@ -152,23 +119,6 @@ public class QustnrItemManageVO extends SearchVO  {
 	 */
 	public void setQustnrIemSn(String qustnrIemSn) {
 		this.qustnrIemSn = qustnrIemSn;
-	}
-
-	/**
-	 * qustnrIemId attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getQustnrIemId() {
-		return qustnrIemId;
-	}
-	/**
-	 * qustnrIemId attribute 값을 설정한다.
-	 * 
-	 * @return qustnrIemId String
-	 */
-	public void setQustnrIemId(String qustnrIemId) {
-		this.qustnrIemId = qustnrIemId;
 	}
 
 	/**
@@ -203,6 +153,58 @@ public class QustnrItemManageVO extends SearchVO  {
 	 */
 	public void setEtcAnswerAt(String etcAnswerAt) {
 		this.etcAnswerAt = etcAnswerAt;
+	}
+
+	// helper
+	/**
+	 * qestnCn attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getQestnCn() {
+		return qestnCn;
+	}
+	/**
+	 * qestnCn attribute 값을 설정한다.
+	 * 
+	 * @return qestnCn String
+	 */
+	public void setQestnCn(String qestnCn) {
+		this.qestnCn = qestnCn;
+	}
+
+	/**
+	 * qestnrSj attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getQestnrSj() {
+		return qestnrSj;
+	}
+	/**
+	 * qestnrSj attribute 값을 설정한다.
+	 * 
+	 * @return qestnrSj String
+	 */
+	public void setQestnrSj(String qestnrSj) {
+		this.qestnrSj = qestnrSj;
+	}
+
+	/**
+	 * searchMode attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getSearchMode() {
+		return searchMode;
+	}
+	/**
+	 * searchMode attribute 값을 설정한다.
+	 * 
+	 * @return searchMode String
+	 */
+	public void setSearchMode(String searchMode) {
+		this.searchMode = searchMode;
 	}
 
 }

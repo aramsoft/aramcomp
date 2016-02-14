@@ -23,8 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class CpyrhtPrtcPolicyVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 저작권 ID */
 	private String cpyrhtId;
 

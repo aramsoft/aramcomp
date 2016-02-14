@@ -25,25 +25,15 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class HttpMntrngVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 로그ID */
-	private String logId;
-	
-	/** 로그정보 */
-	private String logInfo;
+	// domain
+	/** 시스템ID */
+	private String sysId;
 	
 	/** 사이트URL */
 	private String siteUrl;
 	
-	/** 시스템ID */
-	private String sysId;
-	
 	/** 웹서비스종류 */
 	private String webKind;
-	
-	/** 웹서비스종류 */
-	private String webKindNm;
 	
 	/** 웹서비스상태 */
 	private String httpSttusCd;
@@ -57,37 +47,17 @@ public class HttpMntrngVO extends SearchVO {
 	/** 관리자이메일주소 */
 	private String mngrEmailAddr;
 	
+	// helper
+	/** 로그정보 */
+	private String logInfo;
+	
+	/** 웹서비스종류 */
+	private String webKindNm;
+	
 	/** 모니터링상태 */
 	private String mntrngSttus;
 	
-	/**
-	 * @return the siteUrl
-	 */
-	public String getSiteUrl() {
-		return siteUrl;
-	}
-	/**
-	 * @param siteUrl
-	 *            the siteUrl to set
-	 */
-	public void setSiteUrl(String siteUrl) {
-		this.siteUrl = siteUrl;
-	}
-
-	/**
-	 * @return the logInfo
-	 */
-	public String getLogInfo() {
-		return logInfo;
-	}
-	/**
-	 * @param logInfo
-	 *            the logInfo to set
-	 */
-	public void setLogInfo(String logInfo) {
-		this.logInfo = logInfo;
-	}
-
+	// domain
 	/**
 	 * @return the sysId
 	 */
@@ -100,6 +70,20 @@ public class HttpMntrngVO extends SearchVO {
 	 */
 	public void setSysId(String sysId) {
 		this.sysId = sysId;
+	}
+
+	/**
+	 * @return the siteUrl
+	 */
+	public String getSiteUrl() {
+		return siteUrl;
+	}
+	/**
+	 * @param siteUrl
+	 *            the siteUrl to set
+	 */
+	public void setSiteUrl(String siteUrl) {
+		this.siteUrl = siteUrl;
 	}
 
 	/**
@@ -117,20 +101,6 @@ public class HttpMntrngVO extends SearchVO {
 	}
 
 	/**
-	 * @return the webKindNm
-	 */
-	public String getWebKindNm() {
-		return webKindNm;
-	}
-	/**
-	 * @param webKindNm
-	 *            the webKindNm to set
-	 */
-	public void setWebKindNm(String webKindNm) {
-		this.webKindNm = webKindNm;
-	}
-
-	/**
 	 * @return the httpSttusCd
 	 */
 	public String getHttpSttusCd() {
@@ -142,6 +112,20 @@ public class HttpMntrngVO extends SearchVO {
 	 */
 	public void setHttpSttusCd(String httpSttusCd) {
 		this.httpSttusCd = httpSttusCd;
+	}
+
+	/**
+	 * @return the creatDt
+	 */
+	public String getCreatDt() {
+		return creatDt;
+	}
+	/**
+	 * @param creatDt
+	 *            the creatDt to set
+	 */
+	public void setCreatDt(String creatDt) {
+		this.creatDt = creatDt;
 	}
 
 	/**
@@ -171,33 +155,34 @@ public class HttpMntrngVO extends SearchVO {
 	public void setMngrEmailAddr(String mngrEmailAddr) {
 		this.mngrEmailAddr = mngrEmailAddr;
 	}
+	
+	// helper
+	/**
+	 * @return the logInfo
+	 */
+	public String getLogInfo() {
+		return logInfo;
+	}
+	/**
+	 * @param logInfo
+	 *            the logInfo to set
+	 */
+	public void setLogInfo(String logInfo) {
+		this.logInfo = logInfo;
+	}
 
 	/**
-	 * @return the logId
+	 * @return the webKindNm
 	 */
-	public String getLogId() {
-		return logId;
+	public String getWebKindNm() {
+		return webKindNm;
 	}
 	/**
-	 * @param logId
-	 *            the logId to set
+	 * @param webKindNm
+	 *            the webKindNm to set
 	 */
-	public void setLogId(String logId) {
-		this.logId = logId;
-	}
-
-	/**
-	 * @return the creatDt
-	 */
-	public String getCreatDt() {
-		return creatDt;
-	}
-	/**
-	 * @param creatDt
-	 *            the creatDt to set
-	 */
-	public void setCreatDt(String creatDt) {
-		this.creatDt = creatDt;
+	public void setWebKindNm(String webKindNm) {
+		this.webKindNm = webKindNm;
 	}
 
 	/**

@@ -23,13 +23,9 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class OnlinePollItemVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 온라인POLL 아이디 */
 	private String pollId;
-
-	/** 온라인POLL 이름 */
-	private String pollNm;
 
 	/** 온라인POLL항목 아이디 */
 	private String pollIemId;
@@ -37,6 +33,11 @@ public class OnlinePollItemVO extends SearchVO  {
 	/** 온라인POLL항목 이름 */
 	private String pollIemNm;
 
+	// helper
+	/** 온라인POLL 이름 */
+	private String pollNm;
+
+	// domain
 	/**
 	 * pollId 리턴
 	 * 
@@ -53,24 +54,6 @@ public class OnlinePollItemVO extends SearchVO  {
 	 */
 	public void setPollId(String pollId) {
 		this.pollId = pollId;
-	}
-
-	/**
-	 * pollNm 리턴
-	 * 
-	 * @return the pollNm
-	 */
-	public String getPollNm() {
-		return pollNm;
-	}
-	/**
-	 * pollNm 설정
-	 * 
-	 * @param pollNm
-	 *            the pollNm to set
-	 */
-	public void setPollNm(String pollNm) {
-		this.pollNm = pollNm;
 	}
 
 	/**
@@ -107,6 +90,25 @@ public class OnlinePollItemVO extends SearchVO  {
 	 */
 	public void setPollIemNm(String pollIemNm) {
 		this.pollIemNm = pollIemNm;
+	}
+
+	// helper
+	/**
+	 * pollNm 리턴
+	 * 
+	 * @return the pollNm
+	 */
+	public String getPollNm() {
+		return pollNm;
+	}
+	/**
+	 * pollNm 설정
+	 * 
+	 * @param pollNm
+	 *            the pollNm to set
+	 */
+	public void setPollNm(String pollNm) {
+		this.pollNm = pollNm;
 	}
 
 }

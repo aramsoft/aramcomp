@@ -23,11 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class OnlinePollManageVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 대상 아이디 */
-	private String trgetId = "";
-
+	// domain
 	/** 온라인POLL 아이디 */
 	private String pollId;
 
@@ -49,23 +45,8 @@ public class OnlinePollManageVO extends SearchVO  {
 	/** 온라인POLL 자동페기 */
 	private String pollAutoDsuseYn;
 
-	/**
-	 * trgetId attribute를 리턴한다.
-	 * 
-	 * @return the trgetId
-	 */
-	public String getTrgetId() {
-		return trgetId;
-	}
-	/**
-	 * trgetId attribute 값을 설정한다.
-	 * 
-	 * @param trgetId
-	 *            the trgetId to set
-	 */
-	public void setTrgetId(String trgetId) {
-		this.trgetId = trgetId;
-	}
+	/** 대상 아이디 */
+	private String trgetId = "";
 
 	/**
 	 * pollId 리턴
@@ -191,6 +172,24 @@ public class OnlinePollManageVO extends SearchVO  {
 	 */
 	public void setPollAutoDsuseYn(String pollAutoDsuseYn) {
 		this.pollAutoDsuseYn = pollAutoDsuseYn;
+	}
+
+	/**
+	 * trgetId attribute를 리턴한다.
+	 * 
+	 * @return the trgetId
+	 */
+	public String getTrgetId() {
+		return trgetId;
+	}
+	/**
+	 * trgetId attribute 값을 설정한다.
+	 * 
+	 * @param trgetId
+	 *            the trgetId to set
+	 */
+	public void setTrgetId(String trgetId) {
+		this.trgetId = trgetId;
 	}
 
 }

@@ -25,31 +25,15 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class ServerResrceMntrngVO extends SearchVO {
 	
-	private static final long serialVersionUID = 1L;
-
-	/** 서버자원모니터링 서버명 조회조건 */
-	private String strServerNm;
-	
-	/** 시작일자 검색조건 */
-	private String strStartDt;
-	
-	/** 종료일자 검색조건 */
-	private String strEndDt;
-
-	/** 서버 ID */
-	private String serverId;
+	// domain
+	/** 로그ID */
+	private String logId;
 	
 	/** 서버 ID */
 	private String serverEqpmnId;
 	
-	/** 로그ID */
-	private String logId;
-	
-	/** 서버 명 */
-	private String serverNm;
-	
-	/** 서버 IP */
-	private String serverEqpmnIp;
+	/** 서버 ID */
+	private String serverId;
 	
 	/** CPU 사용률 */
 	private String cpuUseRt;
@@ -60,72 +44,47 @@ public class ServerResrceMntrngVO extends SearchVO {
 	/** 서비스상태 */
 	private String svcSttus;
 	
-	/** 서비스상태명 */
-	private String svcSttusNm;
-	
 	/** 로그정보 */
 	private String logInfo;
-	
-	/** 관리자이메일 */
-	private String mngrEamilAddr;
 	
 	/** 생성일시 */
 	private String creatDt;
 	
-	/**
-	 * @return the strServerNm
-	 */
-	public String getStrServerNm() {
-		return strServerNm;
-	}
-	/**
-	 * @param strServerNm
-	 *            the strServerNm to set
-	 */
-	public void setStrServerNm(String strServerNm) {
-		this.strServerNm = strServerNm;
-	}
+	// helper
+	/** 서버 명 */
+	private String serverNm;
+	
+	/** 서버 IP */
+	private String serverEqpmnIp;
+	
+	/** 서비스상태명 */
+	private String svcSttusNm;
+	
+	/** 관리자이메일 */
+	private String mngrEamilAddr;
+	
+	/** 서버자원모니터링 서버명 조회조건 */
+	private String strServerNm;
+	
+	/** 시작일자 검색조건 */
+	private String strStartDt;
+	
+	/** 종료일자 검색조건 */
+	private String strEndDt;
 
+	// domain
 	/**
-	 * @return the strStartDt
+	 * @return the logId
 	 */
-	public String getStrStartDt() {
-		return strStartDt;
+	public String getLogId() {
+		return logId;
 	}
 	/**
-	 * @param strStartDt
-	 *            the strStartDt to set
+	 * @param logId
+	 *            the logId to set
 	 */
-	public void setStrStartDt(String strStartDt) {
-		this.strStartDt = strStartDt;
-	}
-
-	/**
-	 * @return the strEndDt
-	 */
-	public String getStrEndDt() {
-		return strEndDt;
-	}
-	/**
-	 * @param strEndDt
-	 *            the strEndDt to set
-	 */
-	public void setStrEndDt(String strEndDt) {
-		this.strEndDt = strEndDt;
-	}
-
-	/**
-	 * @return the serverId
-	 */
-	public String getServerId() {
-		return serverId;
-	}
-	/**
-	 * @param serverId
-	 *            the serverId to set
-	 */
-	public void setServerId(String serverId) {
-		this.serverId = serverId;
+	public void setLogId(String logId) {
+		this.logId = logId;
 	}
 
 	/**
@@ -143,45 +102,17 @@ public class ServerResrceMntrngVO extends SearchVO {
 	}
 
 	/**
-	 * @return the logId
+	 * @return the serverId
 	 */
-	public String getLogId() {
-		return logId;
+	public String getServerId() {
+		return serverId;
 	}
 	/**
-	 * @param logId
-	 *            the logId to set
+	 * @param serverId
+	 *            the serverId to set
 	 */
-	public void setLogId(String logId) {
-		this.logId = logId;
-	}
-
-	/**
-	 * @return the serverNm
-	 */
-	public String getServerNm() {
-		return serverNm;
-	}
-	/**
-	 * @param serverNm
-	 *            the serverNm to set
-	 */
-	public void setServerNm(String serverNm) {
-		this.serverNm = serverNm;
-	}
-
-	/**
-	 * @return the serverEqpmnIp
-	 */
-	public String getServerEqpmnIp() {
-		return serverEqpmnIp;
-	}
-	/**
-	 * @param serverEqpmnIp
-	 *            the serverEqpmnIp to set
-	 */
-	public void setServerEqpmnIp(String serverEqpmnIp) {
-		this.serverEqpmnIp = serverEqpmnIp;
+	public void setServerId(String serverId) {
+		this.serverId = serverId;
 	}
 
 	/**
@@ -227,20 +158,6 @@ public class ServerResrceMntrngVO extends SearchVO {
 	}
 
 	/**
-	 * @return the svcSttusNm
-	 */
-	public String getSvcSttusNm() {
-		return svcSttusNm;
-	}
-	/**
-	 * @param svcSttusNm
-	 *            the svcSttusNm to set
-	 */
-	public void setSvcSttusNm(String svcSttusNm) {
-		this.svcSttusNm = svcSttusNm;
-	}
-
-	/**
 	 * @return the logInfo
 	 */
 	public String getLogInfo() {
@@ -252,6 +169,63 @@ public class ServerResrceMntrngVO extends SearchVO {
 	 */
 	public void setLogInfo(String logInfo) {
 		this.logInfo = logInfo;
+	}
+
+	/**
+	 * @return the creatDt
+	 */
+	public String getCreatDt() {
+		return creatDt;
+	}
+	/**
+	 * @param creatDt
+	 *            the creatDt to set
+	 */
+	public void setCreatDt(String creatDt) {
+		this.creatDt = creatDt;
+	}
+
+	// helper
+	/**
+	 * @return the serverNm
+	 */
+	public String getServerNm() {
+		return serverNm;
+	}
+	/**
+	 * @param serverNm
+	 *            the serverNm to set
+	 */
+	public void setServerNm(String serverNm) {
+		this.serverNm = serverNm;
+	}
+
+	/**
+	 * @return the serverEqpmnIp
+	 */
+	public String getServerEqpmnIp() {
+		return serverEqpmnIp;
+	}
+	/**
+	 * @param serverEqpmnIp
+	 *            the serverEqpmnIp to set
+	 */
+	public void setServerEqpmnIp(String serverEqpmnIp) {
+		this.serverEqpmnIp = serverEqpmnIp;
+	}
+
+	/**
+	 * @return the svcSttusNm
+	 */
+	public String getSvcSttusNm() {
+		return svcSttusNm;
+	}
+	/**
+	 * @param svcSttusNm
+	 *            the svcSttusNm to set
+	 */
+	public void setSvcSttusNm(String svcSttusNm) {
+		this.svcSttusNm = svcSttusNm;
 	}
 
 	/**
@@ -269,17 +243,45 @@ public class ServerResrceMntrngVO extends SearchVO {
 	}
 
 	/**
-	 * @return the creatDt
+	 * @return the strServerNm
 	 */
-	public String getCreatDt() {
-		return creatDt;
+	public String getStrServerNm() {
+		return strServerNm;
 	}
 	/**
-	 * @param creatDt
-	 *            the creatDt to set
+	 * @param strServerNm
+	 *            the strServerNm to set
 	 */
-	public void setCreatDt(String creatDt) {
-		this.creatDt = creatDt;
+	public void setStrServerNm(String strServerNm) {
+		this.strServerNm = strServerNm;
+	}
+
+	/**
+	 * @return the strStartDt
+	 */
+	public String getStrStartDt() {
+		return strStartDt;
+	}
+	/**
+	 * @param strStartDt
+	 *            the strStartDt to set
+	 */
+	public void setStrStartDt(String strStartDt) {
+		this.strStartDt = strStartDt;
+	}
+
+	/**
+	 * @return the strEndDt
+	 */
+	public String getStrEndDt() {
+		return strEndDt;
+	}
+	/**
+	 * @param strEndDt
+	 *            the strEndDt to set
+	 */
+	public void setStrEndDt(String strEndDt) {
+		this.strEndDt = strEndDt;
 	}
 
 }

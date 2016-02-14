@@ -23,8 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class IndvdlPgeConfVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/**	사용자아이디 */
 	private String userId;
 	
@@ -37,6 +36,7 @@ public class IndvdlPgeConfVO extends SearchVO {
 	/** 정렬개수 */
 	private int sortCnt;
 
+	// helper
 	/** 정렬별 라인 카운트 */
 	private int sortLineCnt;
 
@@ -68,6 +68,7 @@ public class IndvdlPgeConfVO extends SearchVO {
 		this.sortCnt = sortCnt;
 	}
 
+	// helper
 	public int getSortLineCnt() {
 		return sortLineCnt;
 	}

@@ -23,22 +23,41 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class OnlinePollResultVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
+	// domain
+	/** 온라인POLL 결과 아이디 */
+	private String pollResultId;
 
 	/** 온라인POLL 아이디 */
 	private String pollId;
 
-	/** 온라인POLL 이름 */
-	private String pollNm;
-
 	/** 온라인POLL 항목 아이디 */
 	private String pollIemId;
+
+	// helper
+	/** 온라인POLL 이름 */
+	private String pollNm;
 
 	/** 온라인POLL 항목명 */
 	private String pollIemNm;
 
-	/** 온라인POLL 결과 아이디 */
-	private String pollResultId;
+	// domain
+	/**
+	 * pollResultId 리턴
+	 * 
+	 * @return the pollResultId
+	 */
+	public String getPollResultId() {
+		return pollResultId;
+	}
+	/**
+	 * pollResultId 설정
+	 * 
+	 * @param pollResultId
+	 *            the pollResultId to set
+	 */
+	public void setPollResultId(String pollResultId) {
+		this.pollResultId = pollResultId;
+	}
 
 	/**
 	 * pollId 리턴
@@ -59,6 +78,25 @@ public class OnlinePollResultVO extends SearchVO  {
 	}
 
 	/**
+	 * pollIemId 리턴
+	 * 
+	 * @return the pollIemId
+	 */
+	public String getPollIemId() {
+		return pollIemId;
+	}
+	/**
+	 * pollIemId 설정
+	 * 
+	 * @param pollIemId
+	 *            the pollIemId to set
+	 */
+	public void setPollIemId(String pollIemId) {
+		this.pollIemId = pollIemId;
+	}
+
+	// helper	
+	/**
 	 * pollNm 리턴
 	 * 
 	 * @return the pollNm
@@ -77,24 +115,6 @@ public class OnlinePollResultVO extends SearchVO  {
 	}
 
 	/**
-	 * pollIemId 리턴
-	 * 
-	 * @return the pollIemId
-	 */
-	public String getPollIemId() {
-		return pollIemId;
-	}
-	/**
-	 * pollIemId 설정
-	 * 
-	 * @param pollIemId
-	 *            the pollIemId to set
-	 */
-	public void setPollIemId(String pollIemId) {
-		this.pollIemId = pollIemId;
-	}
-
-	/**
 	 * pollIemNm 리턴
 	 * 
 	 * @return the pollIemNm
@@ -110,24 +130,6 @@ public class OnlinePollResultVO extends SearchVO  {
 	 */
 	public void setPollIemNm(String pollIemNm) {
 		this.pollIemNm = pollIemNm;
-	}
-
-	/**
-	 * pollResultId 리턴
-	 * 
-	 * @return the pollResultId
-	 */
-	public String getPollResultId() {
-		return pollResultId;
-	}
-	/**
-	 * pollResultId 설정
-	 * 
-	 * @param pollResultId
-	 *            the pollResultId to set
-	 */
-	public void setPollResultId(String pollResultId) {
-		this.pollResultId = pollResultId;
 	}
 
 }

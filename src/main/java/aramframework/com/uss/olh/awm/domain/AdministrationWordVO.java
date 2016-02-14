@@ -23,19 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class AdministrationWordVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
-
-	// 추가검색
-	/** 초성검색 */
-	private String choseongA;
-
-	/** 초성검색 */
-	private String choseongB;
-
-	/** 초성검색 (구분) */
-	private String choseongSe;
-	
-	// 도메인 정보
+	// domain
 	/** 행정용어사전 아이디 */
 	private String administWordId;
 
@@ -63,62 +51,18 @@ public class AdministrationWordVO extends SearchVO  {
 	/** 행정용어사전 설명 */
 	private String administWordDc;
 
-	// 추가 검색
-	/**
-	 * choseongA 리턴
-	 * 
-	 * @return the choseongA
-	 */
-	public String getChoseongA() {
-		return choseongA;
-	}
-	/**
-	 * choseongA 설정
-	 * 
-	 * @param choseongA
-	 *            the choseongA to set
-	 */
-	public void setChoseongA(String choseongA) {
-		this.choseongA = choseongA;
-	}
+	// helper
+	// 추가검색
+	/** 초성검색 */
+	private String choseongA;
 
-	/**
-	 * choseongB 리턴
-	 * 
-	 * @return the choseongB
-	 */
-	public String getChoseongB() {
-		return choseongB;
-	}
-	/**
-	 * choseongB 설정
-	 * 
-	 * @param choseongB
-	 *            the choseongB to set
-	 */
-	public void setChoseongB(String choseongB) {
-		this.choseongB = choseongB;
-	}
+	/** 초성검색 */
+	private String choseongB;
 
-	/**
-	 * choseongSe 리턴
-	 * 
-	 * @return the choseongSe
-	 */
-	public String getChoseongSe() {
-		return choseongSe;
-	}
-	/**
-	 * choseongSe 설정
-	 * 
-	 * @param choseongSe
-	 *            the choseongSe to set
-	 */
-	public void setChoseongSe(String choseongSe) {
-		this.choseongSe = choseongSe;
-	}
+	/** 초성검색 (구분) */
+	private String choseongSe;
 	
-	// 도메인 정보
+	// domain
 	/**
 	 * administWordId 리턴
 	 * 
@@ -281,4 +225,60 @@ public class AdministrationWordVO extends SearchVO  {
 		this.administWordDc = administWordDc;
 	}
 
+	// helper
+	// 추가 검색
+	/**
+	 * choseongA 리턴
+	 * 
+	 * @return the choseongA
+	 */
+	public String getChoseongA() {
+		return choseongA;
+	}
+	/**
+	 * choseongA 설정
+	 * 
+	 * @param choseongA
+	 *            the choseongA to set
+	 */
+	public void setChoseongA(String choseongA) {
+		this.choseongA = choseongA;
+	}
+
+	/**
+	 * choseongB 리턴
+	 * 
+	 * @return the choseongB
+	 */
+	public String getChoseongB() {
+		return choseongB;
+	}
+	/**
+	 * choseongB 설정
+	 * 
+	 * @param choseongB
+	 *            the choseongB to set
+	 */
+	public void setChoseongB(String choseongB) {
+		this.choseongB = choseongB;
+	}
+
+	/**
+	 * choseongSe 리턴
+	 * 
+	 * @return the choseongSe
+	 */
+	public String getChoseongSe() {
+		return choseongSe;
+	}
+	/**
+	 * choseongSe 설정
+	 * 
+	 * @param choseongSe
+	 *            the choseongSe to set
+	 */
+	public void setChoseongSe(String choseongSe) {
+		this.choseongSe = choseongSe;
+	}
+	
 }

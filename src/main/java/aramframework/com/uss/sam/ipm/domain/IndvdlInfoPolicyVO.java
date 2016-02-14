@@ -23,8 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class IndvdlInfoPolicyVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 개인정보보호정책 아이디 */
 	private String indvdlInfoId;
 

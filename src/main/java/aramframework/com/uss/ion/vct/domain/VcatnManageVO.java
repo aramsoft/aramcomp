@@ -23,25 +23,15 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class VcatnManageVO extends SearchVO {
 
-	/**
-	 * serialVersionUID
-	 */
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 신청자ID */
 	private String applcntId;
-
-	/** 신청자명 */
-	private String applcntNm;
-
-	/** orgnztNm */
-	private String orgnztNm;
 
 	/** 휴가구분 */
 	private String vcatnSe;
 
-	/** 휴가구분명 */
-	private String vcatnSeNm;
+	/** 정오구분 */
+	private String noonSe;
 
 	/** 시작일자 */
 	private String bgnde;
@@ -49,26 +39,17 @@ public class VcatnManageVO extends SearchVO {
 	/** 종료일자 */
 	private String endde;
 
-	/** 신청일자 */
-	private String reqstDe;
-
 	/** 휴가사유 */
 	private String vcatnResn;
+
+	/** 신청일자 */
+	private String reqstDe;
 
 	/** 발생연도 */
 	private String occrrncYear;
 
-	/** 정오구분 */
-	private String noonSe;
-
 	/** 결재자ID */
 	private String sanctnerId;
-
-	/** 승인자명 */
-	private String sanctnerNm;
-
-	/** 승인자 소속명 */
-	private String sanctnerOrgnztNm;
 
 	/** 승인여부 */
 	private String confmAt;
@@ -76,14 +57,30 @@ public class VcatnManageVO extends SearchVO {
 	/** 결재일시 */
 	private String sanctnDt;
 
-	/** sanctnDtNm */
-	private String sanctnDtNm;
-
 	/** 반려사유 */
 	private String returnResn;
 
 	/** 약식결재ID */
 	private String infrmlSanctnId;
+
+	// helper
+	/** 신청자명 */
+	private String applcntNm;
+
+	/** orgnztNm */
+	private String orgnztNm;
+
+	/** 휴가구분명 */
+	private String vcatnSeNm;
+
+	/** 승인자명 */
+	private String sanctnerNm;
+
+	/** 승인자 소속명 */
+	private String sanctnerOrgnztNm;
+
+	/** sanctnDtNm */
+	private String sanctnDtNm;
 
 	/** 사용자ID */
 	private String usid;
@@ -103,34 +100,7 @@ public class VcatnManageVO extends SearchVO {
 	/** 검색 진행구분 */
 	private String searchConfmAt;
 
-	/**
-	 * @return the sanctnDtNm
-	 */
-	public String getSanctnDtNm() {
-		return sanctnDtNm;
-	}
-	/**
-	 * @param sanctnDtNm
-	 *            the sanctnDtNm to set
-	 */
-	public void setSanctnDtNm(String sanctnDtNm) {
-		this.sanctnDtNm = sanctnDtNm;
-	}
-
-	/**
-	 * @return the orgnztNm
-	 */
-	public String getOrgnztNm() {
-		return orgnztNm;
-	}
-	/**
-	 * @param orgnztNm
-	 *            the orgnztNm to set
-	 */
-	public void setOrgnztNm(String orgnztNm) {
-		this.orgnztNm = orgnztNm;
-	}
-
+	// domain
 	/**
 	 * @return the applcntId
 	 */
@@ -157,6 +127,20 @@ public class VcatnManageVO extends SearchVO {
 	 */
 	public void setVcatnSe(String vcatnSe) {
 		this.vcatnSe = vcatnSe;
+	}
+
+	/**
+	 * @return the noonSe
+	 */
+	public String getNoonSe() {
+		return noonSe;
+	}
+	/**
+	 * @param noonSe
+	 *            the noonSe to set
+	 */
+	public void setNoonSe(String noonSe) {
+		this.noonSe = noonSe;
 	}
 
 	/**
@@ -188,20 +172,6 @@ public class VcatnManageVO extends SearchVO {
 	}
 
 	/**
-	 * @return the reqstDe
-	 */
-	public String getReqstDe() {
-		return reqstDe;
-	}
-	/**
-	 * @param reqstDe
-	 *            the reqstDe to set
-	 */
-	public void setReqstDe(String reqstDe) {
-		this.reqstDe = reqstDe;
-	}
-
-	/**
 	 * @return the vcatnResn
 	 */
 	public String getVcatnResn() {
@@ -213,6 +183,20 @@ public class VcatnManageVO extends SearchVO {
 	 */
 	public void setVcatnResn(String vcatnResn) {
 		this.vcatnResn = vcatnResn;
+	}
+
+	/**
+	 * @return the reqstDe
+	 */
+	public String getReqstDe() {
+		return reqstDe;
+	}
+	/**
+	 * @param reqstDe
+	 *            the reqstDe to set
+	 */
+	public void setReqstDe(String reqstDe) {
+		this.reqstDe = reqstDe;
 	}
 
 	/**
@@ -299,20 +283,7 @@ public class VcatnManageVO extends SearchVO {
 		this.infrmlSanctnId = infrmlSanctnId;
 	}
 
-	/**
-	 * @return the noonSe
-	 */
-	public String getNoonSe() {
-		return noonSe;
-	}
-	/**
-	 * @param noonSe
-	 *            the noonSe to set
-	 */
-	public void setNoonSe(String noonSe) {
-		this.noonSe = noonSe;
-	}
-
+	// helper
 	/**
 	 * @return the applcntNm
 	 */
@@ -328,6 +299,20 @@ public class VcatnManageVO extends SearchVO {
 	}
 
 	/**
+	 * @return the orgnztNm
+	 */
+	public String getOrgnztNm() {
+		return orgnztNm;
+	}
+	/**
+	 * @param orgnztNm
+	 *            the orgnztNm to set
+	 */
+	public void setOrgnztNm(String orgnztNm) {
+		this.orgnztNm = orgnztNm;
+	}
+
+	/**
 	 * @return the sanctnerNm
 	 */
 	public String getSanctnerNm() {
@@ -339,6 +324,20 @@ public class VcatnManageVO extends SearchVO {
 	 */
 	public void setSanctnerNm(String sanctnerNm) {
 		this.sanctnerNm = sanctnerNm;
+	}
+
+	/**
+	 * @return the sanctnDtNm
+	 */
+	public String getSanctnDtNm() {
+		return sanctnDtNm;
+	}
+	/**
+	 * @param sanctnDtNm
+	 *            the sanctnDtNm to set
+	 */
+	public void setSanctnDtNm(String sanctnDtNm) {
+		this.sanctnDtNm = sanctnDtNm;
 	}
 
 	/**

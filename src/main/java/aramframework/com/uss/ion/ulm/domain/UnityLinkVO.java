@@ -23,8 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class UnityLinkVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 통합링크 아이디 */
 	private String unityLinkId;
 
@@ -40,6 +39,7 @@ public class UnityLinkVO extends SearchVO {
 	/** 통합링크 설명 */
 	private String unityLinkDc;
 
+	// domain
 	/**
 	 * unityLinkId 리턴
 	 * 

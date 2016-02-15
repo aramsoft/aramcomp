@@ -23,19 +23,15 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class RecomendSiteVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 대상 아이디 */
-	private String trgetId = "";
-
+	// domain
 	/** 추천사이트 ID */
 	private String recomendSiteId;
 
-	/** 추천사이트 URL */
-	private String recomendSiteUrl;
-
 	/** 추천사이트명 */
 	private String recomendSiteNm;
+
+	/** 추천사이트 URL */
+	private String recomendSiteUrl;
 
 	/** 추천사이트설명 */
 	private String recomendSiteDc;
@@ -49,24 +45,10 @@ public class RecomendSiteVO extends SearchVO  {
 	/** 승인일자 */
 	private String confmDe;
 
-	/**
-	 * trgetId attribute를 리턴한다.
-	 * 
-	 * @return the trgetId
-	 */
-	public String getTrgetId() {
-		return trgetId;
-	}
-	/**
-	 * trgetId attribute 값을 설정한다.
-	 * 
-	 * @param trgetId
-	 *            the trgetId to set
-	 */
-	public void setTrgetId(String trgetId) {
-		this.trgetId = trgetId;
-	}
+	/** 대상 아이디 */
+	private String trgetId = "";
 
+	// domain
 	/**
 	 * recomendSiteId attribute 를 리턴한다.
 	 * 
@@ -85,23 +67,6 @@ public class RecomendSiteVO extends SearchVO  {
 	}
 
 	/**
-	 * recomendSiteUrl attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getRecomendSiteUrl() {
-		return recomendSiteUrl;
-	}
-	/**
-	 * recomendSiteUrl attribute 값을 설정한다.
-	 * 
-	 * @return recomendSiteUrl String
-	 */
-	public void setRecomendSiteUrl(String recomendSiteUrl) {
-		this.recomendSiteUrl = recomendSiteUrl;
-	}
-
-	/**
 	 * recomendSiteNm attribute 를 리턴한다.
 	 * 
 	 * @return the String
@@ -116,6 +81,23 @@ public class RecomendSiteVO extends SearchVO  {
 	 */
 	public void setRecomendSiteNm(String recomendSiteNm) {
 		this.recomendSiteNm = recomendSiteNm;
+	}
+
+	/**
+	 * recomendSiteUrl attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getRecomendSiteUrl() {
+		return recomendSiteUrl;
+	}
+	/**
+	 * recomendSiteUrl attribute 값을 설정한다.
+	 * 
+	 * @return recomendSiteUrl String
+	 */
+	public void setRecomendSiteUrl(String recomendSiteUrl) {
+		this.recomendSiteUrl = recomendSiteUrl;
 	}
 
 	/**
@@ -184,6 +166,24 @@ public class RecomendSiteVO extends SearchVO  {
 	 */
 	public void setConfmDe(String confmDe) {
 		this.confmDe = confmDe;
+	}
+
+	/**
+	 * trgetId attribute를 리턴한다.
+	 * 
+	 * @return the trgetId
+	 */
+	public String getTrgetId() {
+		return trgetId;
+	}
+	/**
+	 * trgetId attribute 값을 설정한다.
+	 * 
+	 * @param trgetId
+	 *            the trgetId to set
+	 */
+	public void setTrgetId(String trgetId) {
+		this.trgetId = trgetId;
 	}
 
 }

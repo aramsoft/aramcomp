@@ -23,11 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class NewsManageVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 대상 아이디 */
-	private String trgetId = "";
-
+	// domain
 	/** 뉴스 ID */
 	private String newsId;
 
@@ -46,24 +42,10 @@ public class NewsManageVO extends SearchVO  {
 	/** 첨부파일ID */
 	private String atchFileId;
 
-	/**
-	 * trgetId attribute를 리턴한다.
-	 * 
-	 * @return the trgetId
-	 */
-	public String getTrgetId() {
-		return trgetId;
-	}
-	/**
-	 * trgetId attribute 값을 설정한다.
-	 * 
-	 * @param trgetId
-	 *            the trgetId to set
-	 */
-	public void setTrgetId(String trgetId) {
-		this.trgetId = trgetId;
-	}
+	/** 대상 아이디 */
+	private String trgetId = "";
 
+	// domain
 	/**
 	 * newsId attribute 를 리턴한다.
 	 * 
@@ -164,6 +146,24 @@ public class NewsManageVO extends SearchVO  {
 	 */
 	public void setAtchFileId(String atchFileId) {
 		this.atchFileId = atchFileId;
+	}
+
+	/**
+	 * trgetId attribute를 리턴한다.
+	 * 
+	 * @return the trgetId
+	 */
+	public String getTrgetId() {
+		return trgetId;
+	}
+	/**
+	 * trgetId attribute 값을 설정한다.
+	 * 
+	 * @param trgetId
+	 *            the trgetId to set
+	 */
+	public void setTrgetId(String trgetId) {
+		this.trgetId = trgetId;
 	}
 
 }

@@ -23,8 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class RssManageVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** RSS태그관리 아이디 */
 	private String rssId;
 
@@ -67,6 +66,7 @@ public class RssManageVO extends SearchVO {
 	/** 본문 ETC */
 	private String bdtEtc;
 
+	// domain
 	/**
 	 * @return the rssId
 	 */

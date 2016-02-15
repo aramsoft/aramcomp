@@ -23,11 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class MtgPlaceManageVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 대상 아이디 */
-	private String trgetId = "";
-
+	// domain
 	/** 회의실ID */
 	private String mtgPlaceId;
 
@@ -46,33 +42,20 @@ public class MtgPlaceManageVO extends SearchVO {
 	/** 위치구분 */
 	private String lcSe;
 
-	/** 위치구분이름 */
-	private String lcSeNm;
-	
 	/** 위치상세 */
 	private String lcDetail;
 
 	/** 첨부파일 */
 	private String atchFileId;
 
-	/**
-	 * trgetId attribute를 리턴한다.
-	 * 
-	 * @return the trgetId
-	 */
-	public String getTrgetId() {
-		return trgetId;
-	}
-	/**
-	 * trgetId attribute 값을 설정한다.
-	 * 
-	 * @param trgetId
-	 *            the trgetId to set
-	 */
-	public void setTrgetId(String trgetId) {
-		this.trgetId = trgetId;
-	}
+	/** 대상 아이디 */
+	private String trgetId = "";
 
+	// helper
+	/** 위치구분이름 */
+	private String lcSeNm;
+	
+	// domain
 	/**
 	 * @return the mtgPlaceCd
 	 */
@@ -158,20 +141,6 @@ public class MtgPlaceManageVO extends SearchVO {
 	}
 
 	/**
-	 * @return the lcSeNm
-	 */
-	public String getLcSeNm() {
-		return lcSeNm;
-	}
-	/**
-	 * @param lcSeNm
-	 *            the lcSeNm to set
-	 */
-	public void setLcSeNm(String lcSeNm) {
-		this.lcSeNm = lcSeNm;
-	}
-
-	/**
 	 * @return the lcDetail
 	 */
 	public String getLcDetail() {
@@ -199,4 +168,37 @@ public class MtgPlaceManageVO extends SearchVO {
 		this.atchFileId = atchFileId;
 	}
 	
+	/**
+	 * trgetId attribute를 리턴한다.
+	 * 
+	 * @return the trgetId
+	 */
+	public String getTrgetId() {
+		return trgetId;
+	}
+	/**
+	 * trgetId attribute 값을 설정한다.
+	 * 
+	 * @param trgetId
+	 *            the trgetId to set
+	 */
+	public void setTrgetId(String trgetId) {
+		this.trgetId = trgetId;
+	}
+
+	// helper
+	/**
+	 * @return the lcSeNm
+	 */
+	public String getLcSeNm() {
+		return lcSeNm;
+	}
+	/**
+	 * @param lcSeNm
+	 *            the lcSeNm to set
+	 */
+	public void setLcSeNm(String lcSeNm) {
+		this.lcSeNm = lcSeNm;
+	}
+
 }

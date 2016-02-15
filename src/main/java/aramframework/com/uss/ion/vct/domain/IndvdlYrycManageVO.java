@@ -23,13 +23,12 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class IndvdlYrycManageVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
+	// domain
+	/** 사용자ID */
+	private String usid;
 
 	/** 발생연도 */
 	private String occrrncYear;
-
-	/** 사용자ID */
-	private String usid;
 
 	/** 발생연차갯수 */
 	private double occrncYrycCo;
@@ -39,6 +38,21 @@ public class IndvdlYrycManageVO extends SearchVO {
 
 	/** 잔여연차갯수 */
 	private double remndrYrycCo;
+
+	// domain
+	/**
+	 * @return the usid
+	 */
+	public String getUsid() {
+		return usid;
+	}
+	/**
+	 * @param usid
+	 *            the usid to set
+	 */
+	public void setUsid(String usid) {
+		this.usid = usid;
+	}
 
 	/**
 	 * @return the occrrncYear
@@ -52,20 +66,6 @@ public class IndvdlYrycManageVO extends SearchVO {
 	 */
 	public void setOccrrncYear(String occrrncYear) {
 		this.occrrncYear = occrrncYear;
-	}
-
-	/**
-	 * @return the usid
-	 */
-	public String getUsid() {
-		return usid;
-	}
-	/**
-	 * @param usid
-	 *            the usid to set
-	 */
-	public void setUsid(String usid) {
-		this.usid = usid;
 	}
 
 	/**

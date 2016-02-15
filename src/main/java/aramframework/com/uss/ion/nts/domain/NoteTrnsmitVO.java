@@ -23,22 +23,22 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class NoteTrnsmitVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 쪽지 ID */
-	private String noteId;
-
+	// domain
 	/** 쪽지 송신 ID */
 	private String noteTrnsmitId;
 
-	/** 쪽지 수신 ID */
-	private String noteRecptnId;
+	/** 쪽지 ID */
+	private String noteId;
 
 	/** 쪽지 송신자 ID */
 	private String trnsmiterId;
 
 	/** 개봉여부 */
 	private String openYn;
+
+	// helper
+	/** 쪽지 수신 ID */
+	private String noteRecptnId;
 
 	/** 쪽지 제목 */
 	private String noteSj;
@@ -55,20 +55,7 @@ public class NoteTrnsmitVO extends SearchVO {
 	/** 보낸 종료날짜 */
 	private String searchToDate;
 
-	/**
-	 * @return the noteId
-	 */
-	public String getNoteId() {
-		return noteId;
-	}
-	/**
-	 * @param noteId
-	 *            the noteId to set
-	 */
-	public void setNoteId(String noteId) {
-		this.noteId = noteId;
-	}
-
+	// domain
 	/**
 	 * @return the noteTrnsmitId
 	 */
@@ -84,17 +71,17 @@ public class NoteTrnsmitVO extends SearchVO {
 	}
 
 	/**
-	 * @return the noteRecptnId
+	 * @return the noteId
 	 */
-	public String getNoteRecptnId() {
-		return noteRecptnId;
+	public String getNoteId() {
+		return noteId;
 	}
 	/**
-	 * @param noteRecptnId
-	 *            the noteRecptnId to set
+	 * @param noteId
+	 *            the noteId to set
 	 */
-	public void setNoteRecptnId(String noteRecptnId) {
-		this.noteRecptnId = noteRecptnId;
+	public void setNoteId(String noteId) {
+		this.noteId = noteId;
 	}
 
 	/**
@@ -123,6 +110,21 @@ public class NoteTrnsmitVO extends SearchVO {
 	 */
 	public void setOpenYn(String openYn) {
 		this.openYn = openYn;
+	}
+
+	// helper
+	/**
+	 * @return the noteRecptnId
+	 */
+	public String getNoteRecptnId() {
+		return noteRecptnId;
+	}
+	/**
+	 * @param noteRecptnId
+	 *            the noteRecptnId to set
+	 */
+	public void setNoteRecptnId(String noteRecptnId) {
+		this.noteRecptnId = noteRecptnId;
 	}
 
 	/**

@@ -25,14 +25,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class NotificationVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 정보알림이 표시를 위한 시작일 및 시작시간 */
-	private String startDateTime = "";
-
-	/** 정보알림이 표시를 위한 종료일 및 종료시간 */
-	private String endDateTime = "";
-
+	// domain
 	/** 알림 번호 */
 	private String ntfcNo = "";
 
@@ -43,16 +36,17 @@ public class NotificationVO extends SearchVO {
 	private String ntfcCn = "";
 
 	/** 알림 시간 */
-	private String ntfcDate = "";
-
-	/** 알림 시간 */
 	private String ntfcTime = "";
-
-	/** 사전 알림 간격 */
-	private String[] bhNtfcIntrvl = new String[0];
 
 	/** 사전 알림 간격 문자열 */
 	private String bhNtfcIntrvlString = "";
+
+	// helper
+	/** 알림 시간 */
+	private String ntfcDate = "";
+
+	/** 사전 알림 간격 */
+	private String[] bhNtfcIntrvl = new String[0];
 
 	/** 유일 아이디 */
 	private String uniqId = "";
@@ -63,42 +57,13 @@ public class NotificationVO extends SearchVO {
 	/** 알림 시간 */
 	private String ntfcMM = "";
 
-	/**
-	 * startDateTime attribute를 리턴한다.
-	 * 
-	 * @return the startDateTime
-	 */
-	public String getStartDateTime() {
-		return startDateTime;
-	}
-	/**
-	 * startDateTime attribute 값을 설정한다.
-	 * 
-	 * @param startDateTime
-	 *            the startDateTime to set
-	 */
-	public void setStartDateTime(String startDateTime) {
-		this.startDateTime = startDateTime;
-	}
+	/** 정보알림이 표시를 위한 시작일 및 시작시간 */
+	private String startDateTime = "";
 
-	/**
-	 * endDateTime attribute를 리턴한다.
-	 * 
-	 * @return the endDateTime
-	 */
-	public String getEndDateTime() {
-		return endDateTime;
-	}
-	/**
-	 * endDateTime attribute 값을 설정한다.
-	 * 
-	 * @param endDateTime
-	 *            the endDateTime to set
-	 */
-	public void setEndDateTime(String endDateTime) {
-		this.endDateTime = endDateTime;
-	}
+	/** 정보알림이 표시를 위한 종료일 및 종료시간 */
+	private String endDateTime = "";
 
+	// domain
 	/**
 	 * ntfcNo attribute를 리턴한다.
 	 * 
@@ -171,6 +136,25 @@ public class NotificationVO extends SearchVO {
 		this.ntfcTime = ntfcTime;
 	}
 
+	/**
+	 * bhNtfcIntrvlString attribute를 리턴한다.
+	 * 
+	 * @return the bhNtfcIntrvlString
+	 */
+	public String getBhNtfcIntrvlString() {
+		return bhNtfcIntrvlString;
+	}
+	/**
+	 * bhNtfcIntrvlString attribute 값을 설정한다.
+	 * 
+	 * @param bhNtfcIntrvlString
+	 *            the bhNtfcIntrvlString to set
+	 */
+	public void setBhNtfcIntrvlString(String bhNtfcIntrvlString) {
+		this.bhNtfcIntrvlString = bhNtfcIntrvlString;
+	}
+
+	// helper
 	/**
 	 * bhNtfcIntrvl attribute를 리턴한다.
 	 * 
@@ -281,21 +265,39 @@ public class NotificationVO extends SearchVO {
 	}
 
 	/**
-	 * bhNtfcIntrvlString attribute를 리턴한다.
+	 * startDateTime attribute를 리턴한다.
 	 * 
-	 * @return the bhNtfcIntrvlString
+	 * @return the startDateTime
 	 */
-	public String getBhNtfcIntrvlString() {
-		return bhNtfcIntrvlString;
+	public String getStartDateTime() {
+		return startDateTime;
 	}
 	/**
-	 * bhNtfcIntrvlString attribute 값을 설정한다.
+	 * startDateTime attribute 값을 설정한다.
 	 * 
-	 * @param bhNtfcIntrvlString
-	 *            the bhNtfcIntrvlString to set
+	 * @param startDateTime
+	 *            the startDateTime to set
 	 */
-	public void setBhNtfcIntrvlString(String bhNtfcIntrvlString) {
-		this.bhNtfcIntrvlString = bhNtfcIntrvlString;
+	public void setStartDateTime(String startDateTime) {
+		this.startDateTime = startDateTime;
+	}
+
+	/**
+	 * endDateTime attribute를 리턴한다.
+	 * 
+	 * @return the endDateTime
+	 */
+	public String getEndDateTime() {
+		return endDateTime;
+	}
+	/**
+	 * endDateTime attribute 값을 설정한다.
+	 * 
+	 * @param endDateTime
+	 *            the endDateTime to set
+	 */
+	public void setEndDateTime(String endDateTime) {
+		this.endDateTime = endDateTime;
 	}
 
 	/**

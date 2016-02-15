@@ -23,14 +23,17 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class MtgPlaceFxtrsVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 회의실코드 */
 	private String mtgPlaceId;
 
 	/** 비품코드 */
 	private String fxtrsCd;
 
+	/** 수량 */
+	private int quantity;
+
+	// helper
 	/** 비품명 */
 	private String fxtrsNm;
 
@@ -40,9 +43,7 @@ public class MtgPlaceFxtrsVO extends SearchVO {
 	/** 가격 */
 	private int price;
 
-	/** 수량 */
-	private int quantity;
-
+	// domain
 	/**
 	 * @return the mtgPlaceCd
 	 */
@@ -71,6 +72,21 @@ public class MtgPlaceFxtrsVO extends SearchVO {
 		this.fxtrsCd = fxtrsCd;
 	}
 
+	/**
+	 * @return the quantity
+	 */
+	public int getQuantity() {
+		return quantity;
+	}
+	/**
+	 * @param quantity
+	 *            the quantity to set
+	 */
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	// helper
 	/**
 	 * @return the fxtrsNm
 	 */
@@ -111,20 +127,6 @@ public class MtgPlaceFxtrsVO extends SearchVO {
 	 */
 	public void setPrice(int price) {
 		this.price = price;
-	}
-
-	/**
-	 * @return the quantity
-	 */
-	public int getQuantity() {
-		return quantity;
-	}
-	/**
-	 * @param quantity
-	 *            the quantity to set
-	 */
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
 	}
 
 }

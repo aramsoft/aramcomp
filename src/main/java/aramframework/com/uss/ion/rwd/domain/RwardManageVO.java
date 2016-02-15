@@ -23,39 +23,15 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class RwardManageVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
-
-	// 추가 검색 정보
-	/** 검색시작일자 */
-	private String searchFromDate;
-
-	/** 검색종료일자 */
-	private String searchToDate;
-
-	/** 검색 성명	 */
-	private String searchNm;
-
-	/** 검색 진행구분 */
-	private String searchConfmAt;
-
-	// 도메인 정보
+	// domain
 	/** 포상ID */
 	private String rwardId;
 
 	/** 포상자ID */
 	private String rwardManId;
 
-	/** 포상자명 */
-	private String rwardManNm;
-
-	/** 사용자 소속명 */
-	private String orgnztNm;
-
 	/** 포상코드 */
 	private String rwardCd;
-
-	/** 포상코드명 */
-	private String rwardCdNm;
 
 	/** 포상일자 */
 	private String rwardDe;
@@ -68,12 +44,6 @@ public class RwardManageVO extends SearchVO  {
 
 	/** 결재자ID */
 	private String sanctnerId;
-
-	/** 승인자명 */
-	private String sanctnerNm;
-
-	/** 승인자 소속명 */
-	private String sanctnerOrgnztNm;
 
 	/** 승인여부 */
 	private String confmAt;
@@ -90,63 +60,36 @@ public class RwardManageVO extends SearchVO  {
 	/** 약식결재ID */
 	private String infrmlSanctnId;
 
-	/**
-	 * @return the searchFromDate
-	 */
-	public String getSearchFromDate() {
-		return searchFromDate;
-	}
-	/**
-	 * @param searchFromDate
-	 *            the searchFromDate to set
-	 */
-	public void setSearchFromDate(String searchFromDate) {
-		this.searchFromDate = searchFromDate;
-	}
+	// helper
+	/** 포상자명 */
+	private String rwardManNm;
 
-	/**
-	 * @return the searchToDate
-	 */
-	public String getSearchToDate() {
-		return searchToDate;
-	}
-	/**
-	 * @param searchToDate
-	 *            the searchToDate to set
-	 */
-	public void setSearchToDate(String searchToDate) {
-		this.searchToDate = searchToDate;
-	}
+	/** 사용자 소속명 */
+	private String orgnztNm;
 
-	/**
-	 * @return the searchNm
-	 */
-	public String getSearchNm() {
-		return searchNm;
-	}
-	/**
-	 * @param searchNm
-	 *            the searchNm to set
-	 */
-	public void setSearchNm(String searchNm) {
-		this.searchNm = searchNm;
-	}
+	/** 포상코드명 */
+	private String rwardCdNm;
 
-	/**
-	 * @return the searchConfmAt
-	 */
-	public String getSearchConfmAt() {
-		return searchConfmAt;
-	}
-	/**
-	 * @param searchConfmAt
-	 *            the searchConfmAt to set
-	 */
-	public void setSearchConfmAt(String searchConfmAt) {
-		this.searchConfmAt = searchConfmAt;
-	}
+	/** 승인자명 */
+	private String sanctnerNm;
 
-	// 도메인 정보
+	/** 승인자 소속명 */
+	private String sanctnerOrgnztNm;
+
+	// 추가 검색 정보
+	/** 검색시작일자 */
+	private String searchFromDate;
+
+	/** 검색종료일자 */
+	private String searchToDate;
+
+	/** 검색 성명	 */
+	private String searchNm;
+
+	/** 검색 진행구분 */
+	private String searchConfmAt;
+
+	// domain
 	/**
 	 * @return the rwardId
 	 */
@@ -176,34 +119,6 @@ public class RwardManageVO extends SearchVO  {
 	}
 
 	/**
-	 * @return the rwardManNm
-	 */
-	public String getRwardManNm() {
-		return rwardManNm;
-	}
-	/**
-	 * @param rwardManNm
-	 *            the rwardManNm to set
-	 */
-	public void setRwardManNm(String rwardManNm) {
-		this.rwardManNm = rwardManNm;
-	}
-
-	/**
-	 * @return the orgnztNm
-	 */
-	public String getOrgnztNm() {
-		return orgnztNm;
-	}
-	/**
-	 * @param orgnztNm
-	 *            the orgnztNm to set
-	 */
-	public void setOrgnztNm(String orgnztNm) {
-		this.orgnztNm = orgnztNm;
-	}
-
-	/**
 	 * @return the rwardCd
 	 */
 	public String getRwardCd() {
@@ -215,20 +130,6 @@ public class RwardManageVO extends SearchVO  {
 	 */
 	public void setRwardCd(String rwardCd) {
 		this.rwardCd = rwardCd;
-	}
-
-	/**
-	 * @return the rwardCdNm
-	 */
-	public String getRwardCdNm() {
-		return rwardCdNm;
-	}
-	/**
-	 * @param rwardCdNm
-	 *            the rwardCdNm to set
-	 */
-	public void setRwardCdNm(String rwardCdNm) {
-		this.rwardCdNm = rwardCdNm;
 	}
 
 	/**
@@ -285,34 +186,6 @@ public class RwardManageVO extends SearchVO  {
 	 */
 	public void setSanctnerId(String sanctnerId) {
 		this.sanctnerId = sanctnerId;
-	}
-
-	/**
-	 * @return the sanctnerNm
-	 */
-	public String getSanctnerNm() {
-		return sanctnerNm;
-	}
-	/**
-	 * @param sanctnerNm
-	 *            the sanctnerNm to set
-	 */
-	public void setSanctnerNm(String sanctnerNm) {
-		this.sanctnerNm = sanctnerNm;
-	}
-
-	/**
-	 * @return the sanctnerOrgnztNm
-	 */
-	public String getSanctnerOrgnztNm() {
-		return sanctnerOrgnztNm;
-	}
-	/**
-	 * @param sanctnerOrgnztNm
-	 *            the sanctnerOrgnztNm to set
-	 */
-	public void setSanctnerOrgnztNm(String sanctnerOrgnztNm) {
-		this.sanctnerOrgnztNm = sanctnerOrgnztNm;
 	}
 
 	/**
@@ -383,6 +256,133 @@ public class RwardManageVO extends SearchVO  {
 	 */
 	public void setInfrmlSanctnId(String infrmlSanctnId) {
 		this.infrmlSanctnId = infrmlSanctnId;
+	}
+
+	// helper
+	/**
+	 * @return the rwardManNm
+	 */
+	public String getRwardManNm() {
+		return rwardManNm;
+	}
+	/**
+	 * @param rwardManNm
+	 *            the rwardManNm to set
+	 */
+	public void setRwardManNm(String rwardManNm) {
+		this.rwardManNm = rwardManNm;
+	}
+
+	/**
+	 * @return the orgnztNm
+	 */
+	public String getOrgnztNm() {
+		return orgnztNm;
+	}
+	/**
+	 * @param orgnztNm
+	 *            the orgnztNm to set
+	 */
+	public void setOrgnztNm(String orgnztNm) {
+		this.orgnztNm = orgnztNm;
+	}
+
+	/**
+	 * @return the rwardCdNm
+	 */
+	public String getRwardCdNm() {
+		return rwardCdNm;
+	}
+	/**
+	 * @param rwardCdNm
+	 *            the rwardCdNm to set
+	 */
+	public void setRwardCdNm(String rwardCdNm) {
+		this.rwardCdNm = rwardCdNm;
+	}
+
+	/**
+	 * @return the sanctnerNm
+	 */
+	public String getSanctnerNm() {
+		return sanctnerNm;
+	}
+	/**
+	 * @param sanctnerNm
+	 *            the sanctnerNm to set
+	 */
+	public void setSanctnerNm(String sanctnerNm) {
+		this.sanctnerNm = sanctnerNm;
+	}
+
+	/**
+	 * @return the sanctnerOrgnztNm
+	 */
+	public String getSanctnerOrgnztNm() {
+		return sanctnerOrgnztNm;
+	}
+	/**
+	 * @param sanctnerOrgnztNm
+	 *            the sanctnerOrgnztNm to set
+	 */
+	public void setSanctnerOrgnztNm(String sanctnerOrgnztNm) {
+		this.sanctnerOrgnztNm = sanctnerOrgnztNm;
+	}
+
+	/**
+	 * @return the searchFromDate
+	 */
+	public String getSearchFromDate() {
+		return searchFromDate;
+	}
+	/**
+	 * @param searchFromDate
+	 *            the searchFromDate to set
+	 */
+	public void setSearchFromDate(String searchFromDate) {
+		this.searchFromDate = searchFromDate;
+	}
+
+	/**
+	 * @return the searchToDate
+	 */
+	public String getSearchToDate() {
+		return searchToDate;
+	}
+	/**
+	 * @param searchToDate
+	 *            the searchToDate to set
+	 */
+	public void setSearchToDate(String searchToDate) {
+		this.searchToDate = searchToDate;
+	}
+
+	/**
+	 * @return the searchNm
+	 */
+	public String getSearchNm() {
+		return searchNm;
+	}
+	/**
+	 * @param searchNm
+	 *            the searchNm to set
+	 */
+	public void setSearchNm(String searchNm) {
+		this.searchNm = searchNm;
+	}
+
+	/**
+	 * @return the searchConfmAt
+	 */
+	public String getSearchConfmAt() {
+		return searchConfmAt;
+	}
+	/**
+	 * @param searchConfmAt
+	 *            the searchConfmAt to set
+	 */
+	public void setSearchConfmAt(String searchConfmAt) {
+		this.searchConfmAt = searchConfmAt;
 	}
 
 }

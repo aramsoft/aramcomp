@@ -1,7 +1,5 @@
 package aramframework.com.uss.ion.ntm.domain;
 
-import java.io.Serializable;
-
 import aramframework.com.cmm.domain.SearchVO;
 
 /**
@@ -23,12 +21,22 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-@SuppressWarnings("serial")
-public class NoteManageVO extends SearchVO implements Serializable {
+public class NoteManageVO extends SearchVO {
 
+	// domain
 	/** 쪽지 ID */
 	private String noteId;
 
+	/** 쪽지 제목 */
+	private String noteSj;
+
+	/** 쪽지 내용 */
+	private String noteCn;
+
+	/** 쪽지 첨부파일 아이디 */
+	private String atchFileId;
+
+	// helper
 	/** 쪽지 송신 ID */
 	private String noteTrnsmitId;
 
@@ -44,24 +52,16 @@ public class NoteManageVO extends SearchVO implements Serializable {
 	/** 수신구분 */
 	private String recptnSe;
 
-	/** 쪽지 내용 */
-	private String noteCn;
-
-	/** 쪽지 제목 */
-	private String noteSj;
-
 	/** 쪽지 발신자 */
 	private String trnsmiterId;
 
 	/** 쪽지 수신자 목록 */
 	private String recptnEmpList;
 
-	/** 쪽지 첨부파일 아이디 */
-	private String atchFileId;
-
 	/** 쪽지 첨부파일 */
 	private byte[] atchFile;
 
+	// domain
 	/**
 	 * @return the noteId
 	 */
@@ -76,6 +76,49 @@ public class NoteManageVO extends SearchVO implements Serializable {
 		this.noteId = noteId;
 	}
 
+	/**
+	 * @return the noteSj
+	 */
+	public String getNoteSj() {
+		return noteSj;
+	}
+	/**
+	 * @param noteSj
+	 *            the noteSj to set
+	 */
+	public void setNoteSj(String noteSj) {
+		this.noteSj = noteSj;
+	}
+
+	/**
+	 * @return the noteCn
+	 */
+	public String getNoteCn() {
+		return noteCn;
+	}
+	/**
+	 * @param noteCn
+	 *            the noteCn to set
+	 */
+	public void setNoteCn(String noteCn) {
+		this.noteCn = noteCn;
+	}
+
+	/**
+	 * @return the atchFileId
+	 */
+	public String getAtchFileId() {
+		return atchFileId;
+	}
+	/**
+	 * @param atchFileId
+	 *            the atchFileId to set
+	 */
+	public void setAtchFileId(String atchFileId) {
+		this.atchFileId = atchFileId;
+	}
+
+	// helper
 	/**
 	 * @return the noteTrnsmitId
 	 */
@@ -147,34 +190,6 @@ public class NoteManageVO extends SearchVO implements Serializable {
 	}
 
 	/**
-	 * @return the noteCn
-	 */
-	public String getNoteCn() {
-		return noteCn;
-	}
-	/**
-	 * @param noteCn
-	 *            the noteCn to set
-	 */
-	public void setNoteCn(String noteCn) {
-		this.noteCn = noteCn;
-	}
-
-	/**
-	 * @return the noteSj
-	 */
-	public String getNoteSj() {
-		return noteSj;
-	}
-	/**
-	 * @param noteSj
-	 *            the noteSj to set
-	 */
-	public void setNoteSj(String noteSj) {
-		this.noteSj = noteSj;
-	}
-
-	/**
 	 * @return the trnsmiterId
 	 */
 	public String getTrnsmiterId() {
@@ -200,20 +215,6 @@ public class NoteManageVO extends SearchVO implements Serializable {
 	 */
 	public void setRecptnEmpList(String recptnEmpList) {
 		this.recptnEmpList = recptnEmpList;
-	}
-
-	/**
-	 * @return the atchFileId
-	 */
-	public String getAtchFileId() {
-		return atchFileId;
-	}
-	/**
-	 * @param atchFileId
-	 *            the atchFileId to set
-	 */
-	public void setAtchFileId(String atchFileId) {
-		this.atchFileId = atchFileId;
 	}
 
 	/**

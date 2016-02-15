@@ -23,8 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class PopupManageVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 팝업창아이디 */
 	private String popupId;
 	
@@ -37,14 +36,14 @@ public class PopupManageVO extends SearchVO {
 	/** 팝업창이 화면에 보여지는 가로 위치정보 */
 	private String popupWlc;
 
+	/** 팝업창의 넚이 */
+	private String popupWSize;
+
 	/** 팝업창이 화면에 보여지는 세로 위치정보 */
 	private String popupHlc;
 
 	/** 팝업창의 높이 */
 	private String popupHSize;
-
-	/** 팝업창의 넚이 */
-	private String popupWSize;
 
 	/** 게시시작일 */
 	private String ntceBgnde;
@@ -52,6 +51,13 @@ public class PopupManageVO extends SearchVO {
 	/** 게시종료일 */
 	private String ntceEndde;
 
+	/** 그만보기 설정 여부 */
+	private String stopVewAt;
+	
+	/** 게시여부 */
+	private String ntceAt;
+
+	// helper
 	/** 게시시작일(시간) */
 	private String ntceBgndeHH;
 
@@ -64,12 +70,7 @@ public class PopupManageVO extends SearchVO {
 	/** 게시종료일(분) */
 	private String ntceEnddeMM;
 
-	/** 그만보기 설정 여부 */
-	private String stopVewAt;
-	
-	/** 게시여부 */
-	private String ntceAt;
-
+	// domain
 	/**
 	 * popupId 리턴
 	 * 
@@ -143,6 +144,24 @@ public class PopupManageVO extends SearchVO {
 	}
 
 	/**
+	 * popupWSize 리턴
+	 * 
+	 * @return the popupWSize
+	 */
+	public String getPopupWSize() {
+		return popupWSize;
+	}
+	/**
+	 * popupWSize 설정
+	 * 
+	 * @param popupWSize
+	 *            the popupWSize to set
+	 */
+	public void setPopupWSize(String popupWSize) {
+		this.popupWSize = popupWSize;
+	}
+
+	/**
 	 * popupHlc 리턴
 	 * 
 	 * @return the popupHlc
@@ -176,24 +195,6 @@ public class PopupManageVO extends SearchVO {
 	 */
 	public void setPopupHSize(String popupHSize) {
 		this.popupHSize = popupHSize;
-	}
-
-	/**
-	 * popupWSize 리턴
-	 * 
-	 * @return the popupWSize
-	 */
-	public String getPopupWSize() {
-		return popupWSize;
-	}
-	/**
-	 * popupWSize 설정
-	 * 
-	 * @param popupWSize
-	 *            the popupWSize to set
-	 */
-	public void setPopupWSize(String popupWSize) {
-		this.popupWSize = popupWSize;
 	}
 
 	/**
@@ -232,6 +233,43 @@ public class PopupManageVO extends SearchVO {
 		this.ntceEndde = ntceEndde;
 	}
 
+	/**
+	 * stopVewAt 리턴
+	 * 
+	 * @return the stopVewAt
+	 */
+	public String getStopVewAt() {
+		return stopVewAt;
+	}
+	/**
+	 * stopVewAt 설정
+	 * 
+	 * @param stopVewAt
+	 *            the stopVewAt to set
+	 */
+	public void setStopVewAt(String stopVewAt) {
+		this.stopVewAt = stopVewAt;
+	}
+
+	/**
+	 * ntceAt 리턴
+	 * 
+	 * @return the ntceAt
+	 */
+	public String getNtceAt() {
+		return ntceAt;
+	}
+	/**
+	 * ntceAt 설정
+	 * 
+	 * @param ntceAt
+	 *            the ntceAt to set
+	 */
+	public void setNtceAt(String ntceAt) {
+		this.ntceAt = ntceAt;
+	}
+
+	// helper
 	/**
 	 * ntceBgndeHH 리턴
 	 * 
@@ -302,42 +340,6 @@ public class PopupManageVO extends SearchVO {
 	 */
 	public void setNtceEnddeMM(String ntceEnddeMM) {
 		this.ntceEnddeMM = ntceEnddeMM;
-	}
-
-	/**
-	 * stopVewAt 리턴
-	 * 
-	 * @return the stopVewAt
-	 */
-	public String getStopVewAt() {
-		return stopVewAt;
-	}
-	/**
-	 * stopVewAt 설정
-	 * 
-	 * @param stopVewAt
-	 *            the stopVewAt to set
-	 */
-	public void setStopVewAt(String stopVewAt) {
-		this.stopVewAt = stopVewAt;
-	}
-
-	/**
-	 * ntceAt 리턴
-	 * 
-	 * @return the ntceAt
-	 */
-	public String getNtceAt() {
-		return ntceAt;
-	}
-	/**
-	 * ntceAt 설정
-	 * 
-	 * @param ntceAt
-	 *            the ntceAt to set
-	 */
-	public void setNtceAt(String ntceAt) {
-		this.ntceAt = ntceAt;
 	}
 
 }

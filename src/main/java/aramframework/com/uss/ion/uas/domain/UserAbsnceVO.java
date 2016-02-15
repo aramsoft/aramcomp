@@ -24,37 +24,24 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class UserAbsnceVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 부재여부 조회조건 */
-	private String selAbsnceAt;
-
+	// domain
 	/** 사용자ID */
 	private String userId;
-	
-	/** 사용자명 */
-	private String userNm;
 	
 	/** 사용자부재여부 */
 	private String userAbsnceAt;
 	
+	// helper
+	/** 사용자명 */
+	private String userNm;
+	
 	/** 등록여부 */
 	private String regYn;
 
-	/**
-	 * @return the selAbsnceAt
-	 */
-	public String getSelAbsnceAt() {
-		return selAbsnceAt;
-	}
-	/**
-	 * @param selAbsnceAt
-	 *            the selAbsnceAt to set
-	 */
-	public void setSelAbsnceAt(String selAbsnceAt) {
-		this.selAbsnceAt = selAbsnceAt;
-	}
+	/** 부재여부 조회조건 */
+	private String selAbsnceAt;
 
+	// domain
 	/**
 	 * @return the userId
 	 */
@@ -67,20 +54,6 @@ public class UserAbsnceVO extends SearchVO {
 	 */
 	public void setUserId(String userId) {
 		this.userId = userId;
-	}
-
-	/**
-	 * @return the userNm
-	 */
-	public String getUserNm() {
-		return userNm;
-	}
-	/**
-	 * @param userNm
-	 *            the userNm to set
-	 */
-	public void setUserNm(String userNm) {
-		this.userNm = userNm;
 	}
 
 	/**
@@ -97,6 +70,21 @@ public class UserAbsnceVO extends SearchVO {
 		this.userAbsnceAt = userAbsnceAt;
 	}
 
+	// helper
+	/**
+	 * @return the userNm
+	 */
+	public String getUserNm() {
+		return userNm;
+	}
+	/**
+	 * @param userNm
+	 *            the userNm to set
+	 */
+	public void setUserNm(String userNm) {
+		this.userNm = userNm;
+	}
+
 	/**
 	 * @return the regYn
 	 */
@@ -111,4 +99,18 @@ public class UserAbsnceVO extends SearchVO {
 		this.regYn = regYn;
 	}
 	
+	/**
+	 * @return the selAbsnceAt
+	 */
+	public String getSelAbsnceAt() {
+		return selAbsnceAt;
+	}
+	/**
+	 * @param selAbsnceAt
+	 *            the selAbsnceAt to set
+	 */
+	public void setSelAbsnceAt(String selAbsnceAt) {
+		this.selAbsnceAt = selAbsnceAt;
+	}
+
 }

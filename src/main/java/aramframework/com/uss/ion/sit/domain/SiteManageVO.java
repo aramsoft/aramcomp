@@ -23,16 +23,15 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class SiteManageVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 사이트 ID */
 	private String siteId;
 
-	/** 사이트 URL */
-	private String siteUrl;
-
 	/** 사이트명 */
 	private String siteNm;
+
+	/** 사이트 URL */
+	private String siteUrl;
 
 	/** 사이트설명 */
 	private String siteDc;
@@ -40,17 +39,18 @@ public class SiteManageVO extends SearchVO  {
 	/** 사이트주제분류코드 */
 	private String siteThemaClCode;
 
-	/** 사이트주제분류명 */
-	private String siteThemaClNm;
-
 	/** 활성여부 */
 	private String actvtyAt;
 
-	/** 활성여부명 */
-	private String actvtyAtNm;
-
 	/** 사용여부 */
 	private String useAt;
+
+	// helper
+	/** 사이트주제분류명 */
+	private String siteThemaClNm;
+
+	/** 활성여부명 */
+	private String actvtyAtNm;
 
 	/** 사용여부명 */
 	private String useAtNm;
@@ -58,6 +58,7 @@ public class SiteManageVO extends SearchVO  {
 	/** 등록자명 */
 	private String emplyrNm;
 
+	// domain	
 	/**
 	 * siteId attribute 를 리턴한다.
 	 * 
@@ -76,23 +77,6 @@ public class SiteManageVO extends SearchVO  {
 	}
 
 	/**
-	 * siteUrl attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getSiteUrl() {
-		return siteUrl;
-	}
-	/**
-	 * siteUrl attribute 값을 설정한다.
-	 * 
-	 * @return siteUrl String
-	 */
-	public void setSiteUrl(String siteUrl) {
-		this.siteUrl = siteUrl;
-	}
-
-	/**
 	 * siteNm attribute 를 리턴한다.
 	 * 
 	 * @return the String
@@ -107,6 +91,23 @@ public class SiteManageVO extends SearchVO  {
 	 */
 	public void setSiteNm(String siteNm) {
 		this.siteNm = siteNm;
+	}
+
+	/**
+	 * siteUrl attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getSiteUrl() {
+		return siteUrl;
+	}
+	/**
+	 * siteUrl attribute 값을 설정한다.
+	 * 
+	 * @return siteUrl String
+	 */
+	public void setSiteUrl(String siteUrl) {
+		this.siteUrl = siteUrl;
 	}
 
 	/**
@@ -144,23 +145,6 @@ public class SiteManageVO extends SearchVO  {
 	}
 
 	/**
-	 * siteThemaClNm attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getSiteThemaClNm() {
-		return siteThemaClNm;
-	}
-	/**
-	 * siteThemaClNm attribute 값을 설정한다.
-	 * 
-	 * @return siteThemaClNm String
-	 */
-	public void setSiteThemaClNm(String siteThemaClNm) {
-		this.siteThemaClNm = siteThemaClNm;
-	}
-
-	/**
 	 * actvtyAt attribute 를 리턴한다.
 	 * 
 	 * @return the String
@@ -178,23 +162,6 @@ public class SiteManageVO extends SearchVO  {
 	}
 
 	/**
-	 * actvtyAtNm attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getActvtyAtNm() {
-		return actvtyAtNm;
-	}
-	/**
-	 * actvtyAtNm attribute 값을 설정한다.
-	 * 
-	 * @return actvtyAtNm String
-	 */
-	public void setActvtyAtNm(String actvtyAtNm) {
-		this.actvtyAtNm = actvtyAtNm;
-	}
-
-	/**
 	 * useAt attribute 를 리턴한다.
 	 * 
 	 * @return the String
@@ -209,6 +176,41 @@ public class SiteManageVO extends SearchVO  {
 	 */
 	public void setUseAt(String useAt) {
 		this.useAt = useAt;
+	}
+
+	// helper
+	/**
+	 * siteThemaClNm attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getSiteThemaClNm() {
+		return siteThemaClNm;
+	}
+	/**
+	 * siteThemaClNm attribute 값을 설정한다.
+	 * 
+	 * @return siteThemaClNm String
+	 */
+	public void setSiteThemaClNm(String siteThemaClNm) {
+		this.siteThemaClNm = siteThemaClNm;
+	}
+
+	/**
+	 * actvtyAtNm attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getActvtyAtNm() {
+		return actvtyAtNm;
+	}
+	/**
+	 * actvtyAtNm attribute 값을 설정한다.
+	 * 
+	 * @return actvtyAtNm String
+	 */
+	public void setActvtyAtNm(String actvtyAtNm) {
+		this.actvtyAtNm = actvtyAtNm;
 	}
 
 	/**

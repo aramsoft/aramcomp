@@ -23,20 +23,21 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class WikiBookmarkVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 위키 북마크 아이디 */
 	private String wikiBkmkId;
 
 	/** 사용자ID */
 	private String usid;
 
-	/** 사용자이름 */
-	private String usnm;
-
 	/** 북마크명 */
 	private String wikiBkmkNm;
 
+	// helper
+	/** 사용자이름 */
+	private String usnm;
+
+	// domain
 	/**
 	 * @return the wikiBookMarkId
 	 */
@@ -66,20 +67,6 @@ public class WikiBookmarkVO extends SearchVO {
 	}
 
 	/**
-	 * @return the usnm
-	 */
-	public String getUsnm() {
-		return usnm;
-	}
-	/**
-	 * @param usnm
-	 *            the usnm to set
-	 */
-	public void setUsnm(String usnm) {
-		this.usnm = usnm;
-	}
-
-	/**
 	 * @return the bookMark
 	 */
 	public String getWikiBkmkNm() {
@@ -91,6 +78,21 @@ public class WikiBookmarkVO extends SearchVO {
 	 */
 	public void setWikiBkmkNm(String bookMark) {
 		this.wikiBkmkNm = bookMark;
+	}
+
+	// helper
+	/**
+	 * @return the usnm
+	 */
+	public String getUsnm() {
+		return usnm;
+	}
+	/**
+	 * @param usnm
+	 *            the usnm to set
+	 */
+	public void setUsnm(String usnm) {
+		this.usnm = usnm;
 	}
 
 }

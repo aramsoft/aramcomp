@@ -86,12 +86,12 @@ public class BBSCommentController {
 		}
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		commentVO.fillPageInfo(paginationInfo);
+		commentVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", bbsCommentService.selectCommentList(commentVO));
 
 		int totCnt = bbsCommentService.selectCommentListCnt(commentVO);
-		commentVO.setTotalRecordCount(totCnt);
+		commentVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -216,12 +216,12 @@ public class BBSCommentController {
 		}
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		commentVO.fillPageInfo(paginationInfo);
+		commentVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", bbsCommentService.selectCommentList(commentVO));
 
 		int totCnt = bbsCommentService.selectCommentListCnt(commentVO);
-		commentVO.setTotalRecordCount(totCnt);
+		commentVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

@@ -58,12 +58,12 @@ public class WordDicaryController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		wordDicaryVO.fillPageInfo(paginationInfo);
+		wordDicaryVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", wordDicaryService.selectWordDicaryList(wordDicaryVO));
 
 		int totCnt = wordDicaryService.selectWordDicaryListCnt(wordDicaryVO);
-		wordDicaryVO.setTotalRecordCount(totCnt);
+		wordDicaryVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

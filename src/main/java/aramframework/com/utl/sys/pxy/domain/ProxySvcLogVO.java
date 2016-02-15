@@ -1,6 +1,6 @@
 package aramframework.com.utl.sys.pxy.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요 - 프록시로그정보에 대한 model 클래스를 정의한다.
@@ -23,7 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class ProxySvcLogVO extends SearchVO {
+public class ProxySvcLogVO extends BaseVO {
 
 	// domain
 	/** 로그 ID */

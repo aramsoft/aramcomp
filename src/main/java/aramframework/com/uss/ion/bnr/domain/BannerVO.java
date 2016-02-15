@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.bnr.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요
@@ -22,7 +22,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class BannerVO extends SearchVO {
+public class BannerVO extends BaseVO {
 
 	// domain
 	/** 배너 ID */

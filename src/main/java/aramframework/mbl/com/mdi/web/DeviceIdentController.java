@@ -133,12 +133,12 @@ public class DeviceIdentController {
             ModelMap model) {
     	
         PaginationInfo paginationInfo = new PaginationInfo();
-        deviceIdentVO.fillPageInfo(paginationInfo);
+        deviceIdentVO.getSearchVO().fillPageInfo(paginationInfo);
 
         model.addAttribute("resultList", deviceIdentService.selectDeviceIdentList(deviceIdentVO));
 
         int totCnt = deviceIdentService.selectDeviceIdentListCnt(deviceIdentVO);
-        deviceIdentVO.setTotalRecordCount(totCnt);
+        deviceIdentVO.getSearchVO().setTotalRecordCount(totCnt);
 
         paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);

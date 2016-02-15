@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.vct.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요 - 포상관리에 대한 Vo 클래스를 정의한다.
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class VcatnManageVO extends SearchVO {
+public class VcatnManageVO extends BaseVO {
 
 	// domain
 	/** 신청자ID */

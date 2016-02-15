@@ -57,8 +57,8 @@ public class OnlinePollPartcptnController {
 			@ModelAttribute OnlinePollPartcptnVO onlinePollPartcptnVO, 
 			ModelMap model) {
 
-		onlinePollPartcptnVO.setRecordPerPage(5);
-		onlinePollPartcptnVO.setFirstIndex(0);
+		onlinePollPartcptnVO.getSearchVO().setRecordPerPage(5);
+		onlinePollPartcptnVO.getSearchVO().setFirstIndex(0);
 
 		model.addAttribute("resultList", onlinePollPartcptnService.selectOnlinePollManageList(onlinePollPartcptnVO));
 
@@ -77,12 +77,12 @@ public class OnlinePollPartcptnController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		onlinePollPartcptnVO.fillPageInfo(paginationInfo);
+		onlinePollPartcptnVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", onlinePollPartcptnService.selectOnlinePollManageList(onlinePollPartcptnVO));
 
 		int totCnt = (Integer) onlinePollPartcptnService.selectOnlinePollManageListCnt(onlinePollPartcptnVO);
-		onlinePollPartcptnVO.setTotalRecordCount(totCnt);
+		onlinePollPartcptnVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

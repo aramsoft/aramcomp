@@ -64,12 +64,12 @@ public class UserAbsnceController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		userAbsnceVO.fillPageInfo(paginationInfo);
+		userAbsnceVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", userAbsnceService.selectUserAbsnceList(userAbsnceVO));
 
 		int totCnt = userAbsnceService.selectUserAbsnceListCnt(userAbsnceVO);
-		userAbsnceVO.setTotalRecordCount(totCnt);
+		userAbsnceVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -194,8 +194,8 @@ public class UserAbsnceController {
 
 		userAbsnceVO.setSelAbsnceAt("A");
 
-		userAbsnceVO.setRecordPerPage(5);
-		userAbsnceVO.setFirstIndex(0);
+		userAbsnceVO.getSearchVO().setRecordPerPage(5);
+		userAbsnceVO.getSearchVO().setFirstIndex(0);
 
 		model.addAttribute("resultList", userAbsnceService.selectUserAbsnceList(userAbsnceVO));
 

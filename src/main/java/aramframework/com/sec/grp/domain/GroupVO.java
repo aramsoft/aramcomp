@@ -1,6 +1,6 @@
 package aramframework.com.sec.grp.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 그룹관리에 대한 model 클래스를 정의한다.
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class GroupVO extends SearchVO {
+public class GroupVO extends BaseVO {
 	
 	// domain
 	/** 그룹 ID */

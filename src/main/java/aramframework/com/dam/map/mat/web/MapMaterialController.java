@@ -67,12 +67,12 @@ public class MapMaterialController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		mapMaterialVO.fillPageInfo(paginationInfo);
+		mapMaterialVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList",  mapMaterialService.selectMapMaterialList(mapMaterialVO));
 
 		int totCnt = mapMaterialService.selectMapMaterialListCnt(mapMaterialVO);
-		mapMaterialVO.setTotalRecordCount(totCnt);
+		mapMaterialVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -105,8 +105,8 @@ public class MapMaterialController {
 			ModelMap model) {
 
 		MapTeamVO searchVO = new MapTeamVO();
-		searchVO.setRecordPerPage(999999);
-		searchVO.setFirstIndex(0);
+		searchVO.getSearchVO().setRecordPerPage(999999);
+		searchVO.getSearchVO().setFirstIndex(0);
 		model.addAttribute("mapTeam", mapTeamService.selectMapTeamList(searchVO));
 
 		return WebUtil.adjustViewName("/dam/map/mat/MapMaterialRegist");
@@ -127,8 +127,8 @@ public class MapMaterialController {
 		if (bindingResult.hasErrors()) {
 
 			MapTeamVO searchVO = new MapTeamVO();
-			searchVO.setRecordPerPage(999999);
-			searchVO.setFirstIndex(0);
+			searchVO.getSearchVO().setRecordPerPage(999999);
+			searchVO.getSearchVO().setFirstIndex(0);
 			model.addAttribute("mapTeam", mapTeamService.selectMapTeamList(searchVO));
 
 			return WebUtil.adjustViewName("/dam/map/mat/MapMaterialRegist");

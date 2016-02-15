@@ -62,12 +62,12 @@ public class MapTeamController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		mapTeamVO.fillPageInfo(paginationInfo);
+		mapTeamVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", mapTeamService.selectMapTeamList(mapTeamVO));
 
 		int totCnt = mapTeamService.selectMapTeamListCnt(mapTeamVO);
-		mapTeamVO.setTotalRecordCount(totCnt);
+		mapTeamVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

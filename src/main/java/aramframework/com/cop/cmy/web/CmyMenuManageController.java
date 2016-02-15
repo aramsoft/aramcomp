@@ -97,12 +97,12 @@ public class CmyMenuManageController {
 		
 		// 내역 조회
 		PaginationInfo paginationInfo = new PaginationInfo();
-		communityMenuVO.fillPageInfo(paginationInfo);
+		communityMenuVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", cmyMenuManageService.selectMenuManageList(communityMenuVO));
 
 		int totCnt = cmyMenuManageService.selectMenuManageListCnt(communityMenuVO);
-		communityMenuVO.setTotalRecordCount(totCnt);
+		communityMenuVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

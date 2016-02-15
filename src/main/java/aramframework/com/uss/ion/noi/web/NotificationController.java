@@ -59,7 +59,7 @@ public class NotificationController {
 			ModelMap model) {
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
-		notificationVO.fillPageInfo(paginationInfo);
+		notificationVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		notificationVO.setUniqId(loginVO.getUniqId());
@@ -67,7 +67,7 @@ public class NotificationController {
 		model.addAttribute("resultList", notificationService.selectNotificationInfs(notificationVO));
 
 		int totCnt = notificationService.selectNotificationInfsCnt(notificationVO);
-		notificationVO.setTotalRecordCount(totCnt);
+		notificationVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

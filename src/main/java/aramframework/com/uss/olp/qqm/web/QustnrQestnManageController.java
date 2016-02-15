@@ -62,17 +62,17 @@ public class QustnrQestnManageController {
 
 		// 설문지정보에서 넘어오면 자동검색 설정
 		if (qustnrQestnManageVO.getSearchMode().equals("Y")) {
-			qustnrQestnManageVO.setSearchCondition("QESTNR_ID");
-			qustnrQestnManageVO.setSearchKeyword(qustnrQestnManageVO.getQestnrId());
+			qustnrQestnManageVO.getSearchVO().setSearchCondition("QESTNR_ID");
+			qustnrQestnManageVO.getSearchVO().setSearchKeyword(qustnrQestnManageVO.getQestnrId());
 		}
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		qustnrQestnManageVO.fillPageInfo(paginationInfo);
+		qustnrQestnManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", qustnrQestnManageService.selectQustnrQestnManageList(qustnrQestnManageVO));
 
 		int totCnt = (Integer) qustnrQestnManageService.selectQustnrQestnManageListCnt(qustnrQestnManageVO);
-		qustnrQestnManageVO.setTotalRecordCount(totCnt);
+		qustnrQestnManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -94,17 +94,17 @@ public class QustnrQestnManageController {
 
 		// 설문지정보에서 넘어오면 자동검색 설정
 		if (qustnrQestnManageVO.getSearchMode().equals("Y")) {
-			qustnrQestnManageVO.setSearchCondition("QESTNR_ID");
-			qustnrQestnManageVO.setSearchKeyword(qustnrQestnManageVO.getQestnrId());
+			qustnrQestnManageVO.getSearchVO().setSearchCondition("QESTNR_ID");
+			qustnrQestnManageVO.getSearchVO().setSearchKeyword(qustnrQestnManageVO.getQestnrId());
 		}
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		qustnrQestnManageVO.fillPageInfo(paginationInfo);
+		qustnrQestnManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", qustnrQestnManageService.selectQustnrQestnManageList(qustnrQestnManageVO));
 
 		int totCnt = (Integer) qustnrQestnManageService.selectQustnrQestnManageListCnt(qustnrQestnManageVO);
-		qustnrQestnManageVO.setTotalRecordCount(totCnt);
+		qustnrQestnManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

@@ -66,12 +66,12 @@ public class KnoAppraisalController {
 		knoAppraisalVO.setEmplyrId(loginVO.getUniqId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		knoAppraisalVO.fillPageInfo(paginationInfo);
+		knoAppraisalVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", knoAppraisalService.selectKnoAppraisalList(knoAppraisalVO));
 
 		int totCnt = knoAppraisalService.selectKnoAppraisalListCnt(knoAppraisalVO);
-		knoAppraisalVO.setTotalRecordCount(totCnt);
+		knoAppraisalVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

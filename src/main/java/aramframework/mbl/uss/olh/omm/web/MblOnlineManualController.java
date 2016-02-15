@@ -65,12 +65,12 @@ public class MblOnlineManualController {
     	
         /** pageing */
         PaginationInfo paginationInfo = new PaginationInfo();
-        onlineManualVO.fillPageInfo(paginationInfo);
+        onlineManualVO.getSearchVO().fillPageInfo(paginationInfo);
 
         modelAndView.addObject("reusltList", onlineManualService.selectOnlineManualList(onlineManualVO));
 		
         int totCnt = (Integer) onlineManualService.selectOnlineManualListCnt(onlineManualVO);
-        onlineManualVO.setTotalRecordCount(totCnt);
+        onlineManualVO.getSearchVO().setTotalRecordCount(totCnt);
 
         paginationInfo.setTotalRecordCount(totCnt);
         modelAndView.addObject("paginationInfo", paginationInfo);

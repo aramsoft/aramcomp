@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.wik.bmk.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 위키북마크 Model and VO Class 구현
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class WikiBookmarkVO extends SearchVO {
+public class WikiBookmarkVO extends BaseVO {
 
 	// domain
 	/** 위키 북마크 아이디 */

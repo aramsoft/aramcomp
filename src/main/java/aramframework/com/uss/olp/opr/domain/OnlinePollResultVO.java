@@ -1,6 +1,6 @@
 package aramframework.com.uss.olp.opr.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 온라인POLL결과 VO Class 구현
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class OnlinePollResultVO extends SearchVO  {
+public class OnlinePollResultVO extends BaseVO  {
 
 	// domain
 	/** 온라인POLL 결과 아이디 */

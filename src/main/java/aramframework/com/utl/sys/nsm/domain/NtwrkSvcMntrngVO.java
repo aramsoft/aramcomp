@@ -1,6 +1,6 @@
 package aramframework.com.utl.sys.nsm.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요 - 네트워크서비스 모니터링대상에 대한 Vo 클래스를 정의한다.
@@ -23,7 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class NtwrkSvcMntrngVO extends SearchVO {
+public class NtwrkSvcMntrngVO extends BaseVO {
 
 	// domain
 	/** 시스템IP */

@@ -71,12 +71,12 @@ public class QustnrRespondInfoController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		qustnrRespondInfoVO.fillPageInfo(paginationInfo);
+		qustnrRespondInfoVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", qustnrRespondInfoService.selectQustnrRespondInfoManageList(qustnrRespondInfoVO));
 
 		int totCnt = (Integer) qustnrRespondInfoService.selectQustnrRespondInfoManageListCnt(qustnrRespondInfoVO);
-		qustnrRespondInfoVO.setTotalRecordCount(totCnt);
+		qustnrRespondInfoVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -306,17 +306,17 @@ public class QustnrRespondInfoController {
 
 		// 설문지정보에서 넘어오면 자동검색 설정
 		if (qustnrRespondInfoVO.getSearchMode().equals("Y")) {
-			qustnrRespondInfoVO.setSearchCondition("QESTNR_ID");
-			qustnrRespondInfoVO.setSearchKeyword(qustnrRespondInfoVO.getQestnrId());
+			qustnrRespondInfoVO.getSearchVO().setSearchCondition("QESTNR_ID");
+			qustnrRespondInfoVO.getSearchVO().setSearchKeyword(qustnrRespondInfoVO.getQestnrId());
 		}
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		qustnrRespondInfoVO.fillPageInfo(paginationInfo);
+		qustnrRespondInfoVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", qustnrRespondInfoService.selectQustnrRespondInfoList(qustnrRespondInfoVO));
 
 		int totCnt = (Integer) qustnrRespondInfoService.selectQustnrRespondInfoListCnt(qustnrRespondInfoVO);
-		qustnrRespondInfoVO.setTotalRecordCount(totCnt);
+		qustnrRespondInfoVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

@@ -1,6 +1,6 @@
 package aramframework.com.utl.sys.fsm.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요 - 파일시스템 모니터링대상에 대한 Vo 클래스를 정의한다.
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class FileSysMntrngVO extends SearchVO {
+public class FileSysMntrngVO extends BaseVO {
 
 	// domain
 	/** 파일시스템ID */

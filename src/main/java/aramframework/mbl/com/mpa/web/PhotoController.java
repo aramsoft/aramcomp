@@ -79,8 +79,8 @@ public class PhotoController {
 
         PhotoVO photoVO = new PhotoVO();
 
-        photoVO.setFirstIndex(0);
-        photoVO.setRecordPerPage(1000);
+        photoVO.getSearchVO().setFirstIndex(0);
+        photoVO.getSearchVO().setRecordPerPage(1000);
 
         modelAndView.addObject("resultList", photoService.selectPhotoList(photoVO));
 
@@ -103,12 +103,12 @@ public class PhotoController {
             ModelMap model) {
     	
         PaginationInfo paginationInfo = new PaginationInfo();
-        photoVO.fillPageInfo(paginationInfo);
+        photoVO.getSearchVO().fillPageInfo(paginationInfo);
 
         model.addAttribute("resultList", photoService.selectPhotoList(photoVO));
 
         int totCnt = photoService.selectPhotoListCnt(photoVO);
-        photoVO.setTotalRecordCount(totCnt);
+        photoVO.getSearchVO().setTotalRecordCount(totCnt);
 
         paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);

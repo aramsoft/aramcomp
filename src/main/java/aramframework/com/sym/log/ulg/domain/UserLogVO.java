@@ -1,8 +1,6 @@
 package aramframework.com.sym.log.ulg.domain;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 사용자 로그관리를 위한 VO 클래스
@@ -23,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class UserLogVO extends SearchVO {
+public class UserLogVO extends BaseVO {
 
 	// domain
 	/** 발생일자 */
@@ -157,10 +155,6 @@ public class UserLogVO extends SearchVO {
 	}
 	public void setSearchEndDe(String searchEndDe) {
 		this.searchEndDe = searchEndDe;
-	}
-
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
 	}
 
 }

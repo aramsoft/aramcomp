@@ -1,8 +1,6 @@
 package aramframework.com.cop.com.domain;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 사용자 정보 조회를 위한 VO 클래스
@@ -23,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class UserInfVO extends SearchVO {
+public class UserInfVO extends BaseVO {
 
 	// domain
 	/** 유일 아이디 */
@@ -218,11 +216,4 @@ public class UserInfVO extends SearchVO {
 		this.trgetId = trgetId;
 	}
 
-	/**
-	 * toString 메소드를 대치한다.
-	 */
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
-	}
-	
 }

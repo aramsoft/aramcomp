@@ -80,12 +80,12 @@ public class MblAdressBookController {
         modelAndView.addObject("userId", loginVO.getId());
        
         PaginationInfo paginationInfo = new PaginationInfo();
-        adressBookVO.fillPageInfo(paginationInfo);
+        adressBookVO.getSearchVO().fillPageInfo(paginationInfo);
 
         modelAndView.addObject("resultList", adressBookService.selectAdressBookList(adressBookVO));        
  
         int totCnt = adressBookService.selectAdressBookListCnt(adressBookVO);  
-        adressBookVO.setTotalRecordCount(totCnt);
+        adressBookVO.getSearchVO().setTotalRecordCount(totCnt);
 
         paginationInfo.setTotalRecordCount(totCnt);
         modelAndView.addObject("paginationInfo", paginationInfo);
@@ -273,27 +273,27 @@ public class MblAdressBookController {
         
         ModelAndView modelAndView = new ModelAndView("jsonView");
         
-        if(adressBookUserVO.getSearchCondition() == null 
-        		|| adressBookUserVO.getSearchCondition().equals("")){
-        	adressBookUserVO.setSearchCondition("0");
+        if(adressBookUserVO.getSearchVO().getSearchCondition() == null 
+        		|| adressBookUserVO.getSearchVO().getSearchCondition().equals("")){
+        	adressBookUserVO.getSearchVO().setSearchCondition("0");
         }
         
         PaginationInfo paginationInfo = new PaginationInfo();
-        adressBookUserVO.fillPageInfo(paginationInfo);
+        adressBookUserVO.getSearchVO().fillPageInfo(paginationInfo);
       
 		List<EgovMap> resultList = null;
 		int totCnt = 0;
-		if (adressBookUserVO.getSearchCondition().equals("0")) {
-			resultList = adressBookService.selectManList(adressBookUserVO);
-			totCnt = adressBookService.selectManListCnt(adressBookUserVO);
+		if (adressBookUserVO.getSearchVO().getSearchCondition().equals("0")) {
+			resultList = adressBookService.selectManList(adressBookUserVO.getSearchVO());
+			totCnt = adressBookService.selectManListCnt(adressBookUserVO.getSearchVO());
 		} else {
-			resultList = adressBookService.selectCardList(adressBookUserVO);
-			totCnt = adressBookService.selectCardListCnt(adressBookUserVO);
+			resultList = adressBookService.selectCardList(adressBookUserVO.getSearchVO());
+			totCnt = adressBookService.selectCardListCnt(adressBookUserVO.getSearchVO());
 		}
 
         modelAndView.addObject("resultList", resultList);
 
-		adressBookUserVO.setTotalRecordCount(totCnt); 
+		adressBookUserVO.getSearchVO().setTotalRecordCount(totCnt); 
 
         paginationInfo.setTotalRecordCount(totCnt); 
         modelAndView.addObject("paginationInfo", paginationInfo);

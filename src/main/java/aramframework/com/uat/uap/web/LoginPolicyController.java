@@ -64,12 +64,12 @@ public class LoginPolicyController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		loginPolicyVO.fillPageInfo(paginationInfo);
+		loginPolicyVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", loginPolicyService.selectLoginPolicyList(loginPolicyVO));
 
 		int totCnt = loginPolicyService.selectLoginPolicyListCnt(loginPolicyVO);
-		loginPolicyVO.setTotalRecordCount(totCnt);
+		loginPolicyVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

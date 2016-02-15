@@ -74,12 +74,12 @@ public class MenuManageController {
 
 		// 내역 조회
 		PaginationInfo paginationInfo = new PaginationInfo();
-		menuManageVO.fillPageInfo(paginationInfo);
+		menuManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", menuManageService.selectMenuManageList(menuManageVO));
 
 		int totCnt = menuManageService.selectMenuManageListCnt(menuManageVO);
-		menuManageVO.setTotalRecordCount(totCnt);
+		menuManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

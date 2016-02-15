@@ -60,12 +60,12 @@ public class MblHpcmManageController {
     	
     	/** pageing */
     	PaginationInfo paginationInfo = new PaginationInfo();
-    	hpcmManageVO.fillPageInfo(paginationInfo);
+    	hpcmManageVO.getSearchVO().fillPageInfo(paginationInfo);
 		
 		modelAndView.addObject("reusltList", hpcmManageService.selectHpcmList(hpcmManageVO));
         
         int totCnt = hpcmManageService.selectHpcmListCnt(hpcmManageVO);
-        hpcmManageVO.setTotalRecordCount(totCnt);
+        hpcmManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
         modelAndView.addObject("paginationInfo", paginationInfo);

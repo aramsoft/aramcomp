@@ -84,12 +84,12 @@ public class KnoPersonalController {
 		knoPersonalVO.setFrstRegisterId(loginVO.getUniqId());
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
-		knoPersonalVO.fillPageInfo(paginationInfo);
+		knoPersonalVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", knoPersonalService.selectKnoPersonalList(knoPersonalVO));
 
 		int totCnt = knoPersonalService.selectKnoPersonalListCnt(knoPersonalVO);
-		knoPersonalVO.setTotalRecordCount(totCnt);
+		knoPersonalVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -122,23 +122,23 @@ public class KnoPersonalController {
 			ModelMap model) {
 
 		MapTeamVO mapTeamVO = new MapTeamVO();
-		mapTeamVO.setRecordPerPage(999999);
-		mapTeamVO.setFirstIndex(0);
+		mapTeamVO.getSearchVO().setRecordPerPage(999999);
+		mapTeamVO.getSearchVO().setFirstIndex(0);
 		List<EgovMap> mapTeamList = mapTeamService.selectMapTeamList(mapTeamVO);
 		model.addAttribute("mapTeamList", mapTeamList);
 
 		MapMaterialVO mapMaterialVO = new MapMaterialVO();
-		mapMaterialVO.setRecordPerPage(999999);
-		mapMaterialVO.setFirstIndex(0);
-		mapMaterialVO.setSearchCondition("ORGNZT_ID");
+		mapMaterialVO.getSearchVO().setRecordPerPage(999999);
+		mapMaterialVO.getSearchVO().setFirstIndex(0);
+		mapMaterialVO.getSearchVO().setSearchCondition("ORGNZT_ID");
 
 		EgovMap vo = new EgovMap();
 		if (knoPersonalVO.getOrgnztId() == null 
 				|| knoPersonalVO.getOrgnztId().equals("")) {
 			vo = mapTeamList.get(0);
-			mapMaterialVO.setSearchKeyword(vo.get("orgnztId").toString());
+			mapMaterialVO.getSearchVO().setSearchKeyword(vo.get("orgnztId").toString());
 		} else {
-			mapMaterialVO.setSearchKeyword(knoPersonalVO.getOrgnztId());
+			mapMaterialVO.getSearchVO().setSearchKeyword(knoPersonalVO.getOrgnztId());
 		}
 		model.addAttribute("mapMaterialList", mapMaterialService.selectMapMaterialList(mapMaterialVO));
 

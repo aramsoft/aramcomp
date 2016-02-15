@@ -2,6 +2,8 @@ package aramframework.com.cmm.domain;
 
 import java.util.Date;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 /**
  * 조회 base VO 클래스
  * 
@@ -23,6 +25,10 @@ import java.util.Date;
 
 public class BaseVO {
 
+	// search
+	/** 검색 객체 */
+	SearchVO searchVO = null;
+	
 	// rest 관련
 	// path id for rest
 	protected String pathId = "";
@@ -45,6 +51,26 @@ public class BaseVO {
 
 	/** 최종수정시점 */
 	private Date lastUpdusrPnttm = null;
+
+	// search
+	/**
+	 * searchVO attribute 를 리턴한다.
+	 * 
+	 * @return SearchVO
+	 */
+	public SearchVO getSearchVO() {
+		if( searchVO == null ) searchVO = new SearchVO();
+		return searchVO;
+	}
+	/**
+	 * searchVO attribute 값을 설정한다.
+	 * 
+	 * @param searchVO
+	 *            SearchVO
+	 */
+	public void setSearchVO(SearchVO searchVO) {
+		this.searchVO = searchVO;
+	}
 
 	// common
 	/**
@@ -174,4 +200,11 @@ public class BaseVO {
 		this.lastUpdusrPnttm = lastUpdusrPnttm;
 	}
 
+	/**
+	 * toString 메소드를 대치한다.
+	 */
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this);
+	}
+	
 }

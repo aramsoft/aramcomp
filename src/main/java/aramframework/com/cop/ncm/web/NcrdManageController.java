@@ -78,12 +78,12 @@ public class NcrdManageController {
 		model.addAttribute("uniqId", loginVO.getUniqId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		nameCardVO.fillPageInfo(paginationInfo);
+		nameCardVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", ncrdService.selectNcrdListMine(nameCardVO));
 
 		int totCnt = ncrdService.selectNcrdListMineCnt(nameCardVO);
-		nameCardVO.setTotalRecordCount(totCnt);
+		nameCardVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -217,12 +217,12 @@ public class NcrdManageController {
 		model.addAttribute("uniqId", loginVO.getUniqId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		nameCardVO.fillPageInfo(paginationInfo);
+		nameCardVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", ncrdService.selectNcrdListPublic(nameCardVO));
 
 		int totCnt = ncrdService.selectNcrdListPublicCnt(nameCardVO);
-		nameCardVO.setTotalRecordCount(totCnt);
+		nameCardVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

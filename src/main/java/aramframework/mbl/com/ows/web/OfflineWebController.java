@@ -120,12 +120,12 @@ public class OfflineWebController {
 			ModelMap model) {
 		
     	PaginationInfo paginationInfo = new PaginationInfo();
-    	offlineWebVO.fillPageInfo(paginationInfo);
+    	offlineWebVO.getSearchVO().fillPageInfo(paginationInfo);
 		
 		model.addAttribute("resultList",  offlineWebService.selectOfflineWebList(offlineWebVO));
         
         int totCnt = offlineWebService.selectOfflineWebListCnt(offlineWebVO);
-        offlineWebVO.setTotalRecordCount(totCnt);
+        offlineWebVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);

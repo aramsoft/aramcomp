@@ -89,12 +89,12 @@ public class RssManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		rssManageVO.fillPageInfo(paginationInfo);
+		rssManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", rssManageService.selectRssManageList(rssManageVO));
 
 		int totCnt = (Integer) rssManageService.selectRssManageListCnt(rssManageVO);
-		rssManageVO.setTotalRecordCount(totCnt);
+		rssManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

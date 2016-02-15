@@ -1,9 +1,7 @@
 package aramframework.com.cop.tpl.domain;
 
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 템플릿 정보 관리를 위한 VO 클래스
@@ -24,7 +22,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class TemplateInfVO extends SearchVO {
+public class TemplateInfVO extends BaseVO {
 
 	// domain
 	/** 템플릿 아이디 */
@@ -177,11 +175,4 @@ public class TemplateInfVO extends SearchVO {
 		this.typeFlag = typeFlag;
 	}
 
-	/**
-	 * toString 메소드를 대치한다.
-	 */
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
-	}
-	
 }

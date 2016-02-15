@@ -59,12 +59,12 @@ public class IndvdlInfoPolicyController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		indvdlInfoPolicyVO.fillPageInfo(paginationInfo);
+		indvdlInfoPolicyVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", indvdlInfoPolicyService.selectIndvdlInfoPolicyList(indvdlInfoPolicyVO));
 
 		int totCnt = (Integer) indvdlInfoPolicyService.selectIndvdlInfoPolicyListCnt(indvdlInfoPolicyVO);
-		indvdlInfoPolicyVO.setTotalRecordCount(totCnt);
+		indvdlInfoPolicyVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

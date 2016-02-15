@@ -1,6 +1,6 @@
 package aramframework.com.uss.olh.awm.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 행정전문용어사전관리 VO Class 구현
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class AdministrationWordVO extends SearchVO  {
+public class AdministrationWordVO extends BaseVO  {
 
 	// domain
 	/** 행정용어사전 아이디 */

@@ -1,6 +1,6 @@
 package aramframework.com.uss.olp.qqm.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 설문문항 VO Class 구현
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class QustnrQestnManageVO extends SearchVO  {
+public class QustnrQestnManageVO extends BaseVO  {
 
 	// domain
 	/** 설문지 ID */

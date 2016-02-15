@@ -69,12 +69,12 @@ public class UserManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		userManageVO.fillPageInfo(paginationInfo);
+		userManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", userManageService.selectUserList(userManageVO));
 
 		int totCnt = userManageService.selectUserListCnt(userManageVO);
-		userManageVO.setTotalRecordCount(totCnt);
+		userManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

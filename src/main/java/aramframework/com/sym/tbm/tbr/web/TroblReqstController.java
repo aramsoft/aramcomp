@@ -72,12 +72,12 @@ public class TroblReqstController {
 			troblReqstVO.setStrProcessSttus("00");
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		troblReqstVO.fillPageInfo(paginationInfo);
+		troblReqstVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", troblReqstService.selectTroblReqstList(troblReqstVO));
 
 		int totCnt = troblReqstService.selectTroblReqstListCnt(troblReqstVO);
-		troblReqstVO.setTotalRecordCount(totCnt);
+		troblReqstVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

@@ -111,12 +111,12 @@ public class BndtManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		bndtManageVO.fillPageInfo(paginationInfo);
+		bndtManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("bndtManageList", bndtManageService.selectBndtManageList(bndtManageVO));
 
 		int totCnt = bndtManageService.selectBndtManageListCnt(bndtManageVO);
-		bndtManageVO.setTotalRecordCount(totCnt);
+		bndtManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -250,12 +250,12 @@ public class BndtManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		bndtCeckManageVO.fillPageInfo(paginationInfo);
+		bndtCeckManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", bndtManageService.selectBndtCeckManageList(bndtCeckManageVO));
 
 		int totCnt = bndtManageService.selectBndtCeckManageListCnt(bndtCeckManageVO);
-		bndtCeckManageVO.setTotalRecordCount(totCnt);
+		bndtCeckManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

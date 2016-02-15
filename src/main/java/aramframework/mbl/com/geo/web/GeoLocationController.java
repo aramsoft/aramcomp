@@ -82,7 +82,7 @@ public class GeoLocationController {
     	
         ModelAndView modelAndView = new ModelAndView("jsonView");
 
-        geoLocationVO.setSearchUseYn("Y");
+        geoLocationVO.getSearchVO().setSearchUseYn("Y");
         modelAndView.addObject("resultList", geoLocationService.selectBuildingLocationInfoList(geoLocationVO));
          
         return modelAndView;
@@ -104,12 +104,12 @@ public class GeoLocationController {
     		ModelMap model) {
     	
         PaginationInfo paginationInfo = new PaginationInfo();
-        geoLocationVO.fillPageInfo(paginationInfo);
+        geoLocationVO.getSearchVO().fillPageInfo(paginationInfo);
         
         model.addAttribute("resultList", geoLocationService.selectBuildingLocationInfoList(geoLocationVO));
  
         int totCnt =  geoLocationService.selectBuildingLocationInfoListCnt(geoLocationVO);
-        geoLocationVO.setTotalRecordCount(totCnt);
+        geoLocationVO.getSearchVO().setTotalRecordCount(totCnt);
 
         paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);

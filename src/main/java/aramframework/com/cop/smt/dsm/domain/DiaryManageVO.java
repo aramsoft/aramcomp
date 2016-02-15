@@ -1,6 +1,6 @@
 package aramframework.com.cop.smt.dsm.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 일지관리 VO Class 구현
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class DiaryManageVO extends SearchVO  {
+public class DiaryManageVO extends BaseVO  {
 
 	// domain
 	/** 일지ID */

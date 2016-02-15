@@ -1,6 +1,6 @@
 package aramframework.com.uss.olp.qri.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 설문조사 VO Class 구현
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class QustnrRespondInfoVO extends SearchVO  {
+public class QustnrRespondInfoVO extends BaseVO  {
 
 	// domain
 	/** 설문응답ID */

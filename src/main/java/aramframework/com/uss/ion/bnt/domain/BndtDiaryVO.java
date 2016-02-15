@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.bnt.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요 - 당직일지에 대한 Vo 클래스를 정의한다.
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class BndtDiaryVO extends SearchVO  {
+public class BndtDiaryVO extends BaseVO  {
 
 	// domain
 	/** 당직ID */

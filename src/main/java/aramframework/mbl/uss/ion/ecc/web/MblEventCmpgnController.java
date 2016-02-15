@@ -59,12 +59,12 @@ public class MblEventCmpgnController {
 		
     	/** pageing */
     	PaginationInfo paginationInfo = new PaginationInfo();
-    	eventCmpgnVO.fillPageInfo(paginationInfo);
+    	eventCmpgnVO.getSearchVO().fillPageInfo(paginationInfo);
 		
 		model.addAttribute("resultList", eventCmpgnService.selectEventCmpgnList(eventCmpgnVO));
         
         int totCnt = (Integer)eventCmpgnService.selectEventCmpgnListCnt(eventCmpgnVO);
-        eventCmpgnVO.setTotalRecordCount(totCnt);
+        eventCmpgnVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
@@ -87,12 +87,12 @@ public class MblEventCmpgnController {
 		
     	/** pageing */
     	PaginationInfo paginationInfo = new PaginationInfo();
-    	eventCmpgnVO.fillPageInfo(paginationInfo);
+    	eventCmpgnVO.getSearchVO().fillPageInfo(paginationInfo);
 		
 		model.addAttribute("resultList", eventCmpgnService.selectEventCmpgnList(eventCmpgnVO));
         
         int totCnt = (Integer)eventCmpgnService.selectEventCmpgnListCnt(eventCmpgnVO);
-        eventCmpgnVO.setTotalRecordCount(totCnt);
+        eventCmpgnVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);

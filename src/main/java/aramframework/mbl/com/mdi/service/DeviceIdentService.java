@@ -133,8 +133,8 @@ public class DeviceIdentService extends EgovAbstractServiceImpl {
 
         // 모바일 기기 정보 목록 읽기
         DeviceIdentVO deviceIdentVO = new DeviceIdentVO();
-        deviceIdentVO.setFirstIndex(0);
-        deviceIdentVO.setRecordPerPage(1000);
+        deviceIdentVO.getSearchVO().setFirstIndex(0);
+        deviceIdentVO.getSearchVO().setRecordPerPage(1000);
         List<EgovMap> deviceIdentList = selectDeviceIdentList(deviceIdentVO);
 
         // 모바일 기기 정보를 Document 변환

@@ -1,7 +1,7 @@
 package aramframework.com.sym.ccm.adc.domain;
 
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 행정코드 모델 클래스
@@ -22,7 +22,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class AdministCodeVO extends SearchVO {
+public class AdministCodeVO extends BaseVO {
 
 	// domain
 	/** 행정구역구분 */

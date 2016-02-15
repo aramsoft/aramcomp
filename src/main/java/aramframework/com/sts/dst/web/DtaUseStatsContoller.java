@@ -60,15 +60,15 @@ public class DtaUseStatsContoller {
 			@ModelAttribute DtaUseStatsVO dtaUseStatsVO,
 			ModelMap model) {
 
-		dtaUseStatsVO.setRecordPerPage(5);
+		dtaUseStatsVO.getSearchVO().setRecordPerPage(5);
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		dtaUseStatsVO.fillPageInfo(paginationInfo);
+		dtaUseStatsVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", dtaUseStatsService.selectDtaUseStatsList(dtaUseStatsVO));
 
 		int totPageCnt = dtaUseStatsService.selectDtaUseStatsListCnt(dtaUseStatsVO);
-		dtaUseStatsVO.setTotalRecordCount(totPageCnt);
+		dtaUseStatsVO.getSearchVO().setTotalRecordCount(totPageCnt);
 
 		paginationInfo.setTotalRecordCount(totPageCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

@@ -1,6 +1,6 @@
 package aramframework.com.uss.olh.wor.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 용어사전정보 VO 클래스
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class WordDicaryVO extends SearchVO  {
+public class WordDicaryVO extends BaseVO  {
 
 	// domain
 	/** 용어ID */

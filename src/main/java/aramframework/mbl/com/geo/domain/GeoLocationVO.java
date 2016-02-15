@@ -1,6 +1,6 @@
 package aramframework.mbl.com.geo.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요
@@ -25,7 +25,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class GeoLocationVO extends SearchVO {
+public class GeoLocationVO extends BaseVO {
 
 	// domain	
 	/** 순번 */

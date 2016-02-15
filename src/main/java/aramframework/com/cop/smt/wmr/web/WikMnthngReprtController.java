@@ -101,12 +101,12 @@ public class WikMnthngReprtController {
 		wikMnthngReprtVO.setSearchId(loginVO.getUniqId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		wikMnthngReprtVO.fillPageInfo(paginationInfo);
+		wikMnthngReprtVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", wikMnthngReprtService.selectWikMnthngReprtList(wikMnthngReprtVO));
 
 		int totCnt = wikMnthngReprtService.selectWikMnthngReprtListCnt(wikMnthngReprtVO);
-		wikMnthngReprtVO.setTotalRecordCount(totCnt);
+		wikMnthngReprtVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

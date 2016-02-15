@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.ulm.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 통합링크관리 VO Class 구현
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class UnityLinkVO extends SearchVO {
+public class UnityLinkVO extends BaseVO {
 
 	// domain
 	/** 통합링크 아이디 */

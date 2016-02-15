@@ -1,6 +1,6 @@
 package aramframework.com.sym.prm.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 프로그램변경관리 처리를 위한 VO 클래스르를 정의한다
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class ProgrmManageDtlVO extends SearchVO {
+public class ProgrmManageDtlVO extends BaseVO {
 
 	// domain
 	/** 프로그램파일명 */

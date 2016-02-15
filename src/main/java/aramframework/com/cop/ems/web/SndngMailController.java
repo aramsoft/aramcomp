@@ -75,12 +75,12 @@ public class SndngMailController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		sndngMailVO.fillPageInfo(paginationInfo);
+		sndngMailVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", sndngMailService.selectSndngMailList(sndngMailVO));
 
 		int totCnt = sndngMailService.selectSndngMailListCnt(sndngMailVO);
-		sndngMailVO.setTotalRecordCount(totCnt);
+		sndngMailVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

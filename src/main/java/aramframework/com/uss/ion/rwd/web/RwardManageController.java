@@ -72,12 +72,12 @@ public class RwardManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		rwardManageVO.fillPageInfo(paginationInfo);
+		rwardManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", rwardManageService.selectRwardManageList(rwardManageVO));
 
 		int totCnt = rwardManageService.selectRwardManageListCnt(rwardManageVO);
-		rwardManageVO.setTotalRecordCount(totCnt);
+		rwardManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -233,12 +233,12 @@ public class RwardManageController {
 		rwardManageVO.setSanctnerId(loginVO.getUniqId()); // 사용자가 승인권자인지 조건값 setting selectRwardManageList
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		rwardManageVO.fillPageInfo(paginationInfo);
+		rwardManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", rwardManageService.selectRwardManageConfmList(rwardManageVO));
 
 		int totCnt = rwardManageService.selectRwardManageConfmListCnt(rwardManageVO);
-		rwardManageVO.setTotalRecordCount(totCnt);
+		rwardManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

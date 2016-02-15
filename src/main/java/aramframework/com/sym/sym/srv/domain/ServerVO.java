@@ -1,6 +1,6 @@
 package aramframework.com.sym.sym.srv.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요 - 서버정보에 대한 Vo 클래스를 정의한다.
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class ServerVO extends SearchVO {
+public class ServerVO extends BaseVO {
 
 	// domain
 	/** 서버 ID */

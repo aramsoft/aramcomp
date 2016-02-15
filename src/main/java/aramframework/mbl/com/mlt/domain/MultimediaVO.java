@@ -1,6 +1,6 @@
 package aramframework.mbl.com.mlt.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요
@@ -25,7 +25,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class MultimediaVO extends SearchVO {
+public class MultimediaVO extends BaseVO {
 
 	// domain
 	/** 순번     */

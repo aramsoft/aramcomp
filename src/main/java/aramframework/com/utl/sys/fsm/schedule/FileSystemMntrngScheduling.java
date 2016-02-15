@@ -70,9 +70,9 @@ public class FileSystemMntrngScheduling {
 		List<FileSysMntrngVO> targetList = null;
 		FileSysMntrngVO fileSysMntrngVO = new FileSysMntrngVO();
 		// 모니터링 대상 검색 조건 초기화
-		fileSysMntrngVO.setPageIndex(1);
-		fileSysMntrngVO.setFirstIndex(0);
-		fileSysMntrngVO.setRecordPerPage(RECORD_COUNT_PER_PAGE);
+		fileSysMntrngVO.getSearchVO().setPageIndex(1);
+		fileSysMntrngVO.getSearchVO().setFirstIndex(0);
+		fileSysMntrngVO.getSearchVO().setRecordPerPage(RECORD_COUNT_PER_PAGE);
 
 		targetList = fileSysMntrngService.selectFileSysMntrngList(fileSysMntrngVO);
 		LOG.debug("조회조건 " + fileSysMntrngVO);

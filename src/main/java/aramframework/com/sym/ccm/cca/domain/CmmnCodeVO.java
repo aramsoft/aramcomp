@@ -1,6 +1,6 @@
 package aramframework.com.sym.ccm.cca.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 공통코드 모델 클래스
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class CmmnCodeVO extends SearchVO {
+public class CmmnCodeVO extends BaseVO {
 
 	// domain
 	/** 코드ID */

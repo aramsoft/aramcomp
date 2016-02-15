@@ -1,8 +1,6 @@
 package aramframework.com.cop.com.domain;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 승인정보를 관리하기 위한 VO 클래스
@@ -23,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class ConfirmHistoryVO extends SearchVO {
+public class ConfirmHistoryVO extends BaseVO {
 
 	// domain
 	/** 확인구분코드 */
@@ -344,11 +342,4 @@ public class ConfirmHistoryVO extends SearchVO {
 		this.opertTyCodeNm = opertTyCodeNm;
 	}
 
-	/**
-	 * toString 메소드를 대치한다.
-	 */
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
-	}
-	
 }

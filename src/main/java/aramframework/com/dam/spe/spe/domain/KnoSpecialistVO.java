@@ -1,6 +1,6 @@
 package aramframework.com.dam.spe.spe.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요 - 지식전문가에 대한 Vo 클래스를 정의한다.
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class KnoSpecialistVO extends SearchVO {
+public class KnoSpecialistVO extends BaseVO {
 
 	/** 전문가ID	 */
 	private String speId;

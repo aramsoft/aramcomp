@@ -81,12 +81,12 @@ public class RestdeManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		restdeVO.fillPageInfo(paginationInfo);
+		restdeVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", restdeManageService.selectRestdeList(restdeVO));
 
 		int totCnt = restdeManageService.selectRestdeListCnt(restdeVO);
-		restdeVO.setTotalRecordCount(totCnt);
+		restdeVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

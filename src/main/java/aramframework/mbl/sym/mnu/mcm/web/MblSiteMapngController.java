@@ -57,7 +57,7 @@ public class MblSiteMapngController {
     	MenuCreateVO menuCreteVO = new MenuCreateVO();
     	
     	LoginVO loginVO = (LoginVO)UserDetailsHelper.getAuthenticatedUser();   
-    	menuCreteVO.setSearchKeyword(loginVO.getId()); 	
+    	menuCreteVO.getSearchVO().setSearchKeyword(loginVO.getId()); 	
 
     	MenuCreateVO vo = menuCreateService.selectAuthorByUsr(menuCreteVO);
 

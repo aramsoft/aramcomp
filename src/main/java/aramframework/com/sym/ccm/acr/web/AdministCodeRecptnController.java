@@ -53,8 +53,8 @@ public class AdministCodeRecptnController {
 			@ModelAttribute AdministCodeRecptnVO administCodeRecptnVO, 
 			ModelMap model) {
 
-		administCodeRecptnVO.setFirstIndex(0);
-		administCodeRecptnVO.setRecordPerPage(5);
+		administCodeRecptnVO.getSearchVO().setFirstIndex(0);
+		administCodeRecptnVO.getSearchVO().setRecordPerPage(5);
 
 		model.addAttribute("resultList", administCodeManageService.selectAdministCodeRecptnList(administCodeRecptnVO));
 
@@ -74,12 +74,12 @@ public class AdministCodeRecptnController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		administCodeRecptnVO.fillPageInfo(paginationInfo);
+		administCodeRecptnVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", administCodeManageService.selectAdministCodeRecptnList(administCodeRecptnVO));
 
 		int totCnt = administCodeManageService.selectAdministCodeRecptnListCnt(administCodeRecptnVO);
-		administCodeRecptnVO.setTotalRecordCount(totCnt);
+		administCodeRecptnVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -109,9 +109,9 @@ public class AdministCodeRecptnController {
 		AdministCodeRecptnVO vo = new AdministCodeRecptnVO();
 		vo.setAdministZoneSe(administCodeRecptnVO.getAdministZoneSe());
 		vo.setAdministZoneCode(administCodeRecptnVO.getAdministZoneCode());
-		vo.setRecordPerPage(9999999);
-		vo.setFirstIndex(0);
-		vo.setSearchCondition("CodeList");
+		vo.getSearchVO().setRecordPerPage(9999999);
+		vo.getSearchVO().setFirstIndex(0);
+		vo.getSearchVO().setSearchCondition("CodeList");
 
 		model.addAttribute("administCodeRecptnList", administCodeManageService.selectAdministCodeRecptnList(vo));
 

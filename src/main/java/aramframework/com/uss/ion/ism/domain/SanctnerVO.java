@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.ism.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요 - 결재자에 대한 Vo 클래스를 정의한다.
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class SanctnerVO extends SearchVO {
+public class SanctnerVO extends BaseVO {
 
 	/** 조직명	 */
 	private String orgnztNm;

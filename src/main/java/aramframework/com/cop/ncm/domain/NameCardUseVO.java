@@ -1,8 +1,6 @@
 package aramframework.com.cop.ncm.domain;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 명함사용자 정보를 관리하기 위한 모델 클래스
@@ -23,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class NameCardUseVO extends SearchVO {
+public class NameCardUseVO extends BaseVO {
 
 	// domain
 	/** 명함아이디 */
@@ -218,11 +216,4 @@ public class NameCardUseVO extends SearchVO {
 		this.deptNm = deptNm;
 	}
 
-	/**
-	 * toString 메소드를 대치한다.
-	 */
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
-	}
-	
 }

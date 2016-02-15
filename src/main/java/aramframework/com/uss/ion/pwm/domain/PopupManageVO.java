@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.pwm.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요 - 팝업창에 대한 model 클래스를 정의한다.
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class PopupManageVO extends SearchVO {
+public class PopupManageVO extends BaseVO {
 
 	// domain
 	/** 팝업창아이디 */

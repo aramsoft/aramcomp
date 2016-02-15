@@ -61,12 +61,12 @@ public class QustnrManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		qustnrManageVO.fillPageInfo(paginationInfo);
+		qustnrManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", qustnrManageService.selectQustnrManageList(qustnrManageVO));
 
 		int totCnt = (Integer) qustnrManageService.selectQustnrManageListCnt(qustnrManageVO);
-		qustnrManageVO.setTotalRecordCount(totCnt);
+		qustnrManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -87,12 +87,12 @@ public class QustnrManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		qustnrManageVO.fillPageInfo(paginationInfo);
+		qustnrManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", qustnrManageService.selectQustnrManageList(qustnrManageVO));
 
 		int totCnt = (Integer) qustnrManageService.selectQustnrManageListCnt(qustnrManageVO);
-		qustnrManageVO.setTotalRecordCount(totCnt);
+		qustnrManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

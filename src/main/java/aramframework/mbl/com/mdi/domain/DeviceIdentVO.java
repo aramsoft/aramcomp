@@ -1,6 +1,6 @@
 package aramframework.mbl.com.mdi.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요
@@ -25,7 +25,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class DeviceIdentVO extends SearchVO {
+public class DeviceIdentVO extends BaseVO {
 
 	// domain
 	/** 순번     */

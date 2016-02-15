@@ -1,8 +1,6 @@
 package aramframework.com.cop.bbs.domain;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.cmm.util.WebUtil;
 
 /**
@@ -24,7 +22,7 @@ import aramframework.com.cmm.util.WebUtil;
  * </pre>
  */
 
-public class BoardVO extends SearchVO {
+public class BoardVO extends BaseVO {
 
 	// domain
 	/** 게시물 아이디   */
@@ -451,11 +449,4 @@ public class BoardVO extends SearchVO {
 		this.isGuestModified = isGuestModified;
 	}
 
-	/**
-	 * toString 메소드를 대치한다.
-	 */
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
-	}
-	
 }

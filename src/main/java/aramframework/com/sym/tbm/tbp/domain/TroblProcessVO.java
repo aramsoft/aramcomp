@@ -1,6 +1,6 @@
 package aramframework.com.sym.tbm.tbp.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요 - 장애처리결과정보에 대한 Vo 클래스를 정의한다.
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class TroblProcessVO extends SearchVO {
+public class TroblProcessVO extends BaseVO {
 
 	// domain
 	/** 장애 ID */

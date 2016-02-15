@@ -1,6 +1,6 @@
 package aramframework.mbl.com.syn.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요
@@ -25,7 +25,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class SyncVO extends SearchVO {
+public class SyncVO extends BaseVO {
 
 	// domain
 	/** 동기화 서비스 일련번호	 */

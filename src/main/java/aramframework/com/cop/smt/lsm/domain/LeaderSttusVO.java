@@ -1,8 +1,6 @@
 package aramframework.com.cop.smt.lsm.domain;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요 - 간부상태에 대한 Vo 클래스를 정의한다.
@@ -23,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class LeaderSttusVO extends SearchVO {
+public class LeaderSttusVO extends BaseVO {
 
 	/** 간부ID */
 	private String leaderId;
@@ -73,13 +71,6 @@ public class LeaderSttusVO extends SearchVO {
 	}
 	public void setLeaderSttusNm(String leaderSttusNm) {
 		this.leaderSttusNm = leaderSttusNm;
-	}
-
-	/**
-	 * toString 메소드를 대치한다.
-	 */
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
 	}
 
 }

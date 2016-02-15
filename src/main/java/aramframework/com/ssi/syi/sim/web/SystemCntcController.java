@@ -67,12 +67,12 @@ public class SystemCntcController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		systemCntcVO.fillPageInfo(paginationInfo);
+		systemCntcVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", systemCntcService.selectSystemCntcList(systemCntcVO));
 
 		int totCnt = systemCntcService.selectSystemCntcListCnt(systemCntcVO);
-		systemCntcVO.setTotalRecordCount(totCnt);
+		systemCntcVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -95,16 +95,16 @@ public class SystemCntcController {
 
 		// 연계기관 리스트박스 데이터
 		CntcInsttVO cntcInsttVO = new CntcInsttVO();
-		cntcInsttVO.setRecordPerPage(999999);
-		cntcInsttVO.setFirstIndex(0);
-		cntcInsttVO.setSearchCondition("CodeList");
+		cntcInsttVO.getSearchVO().setRecordPerPage(999999);
+		cntcInsttVO.getSearchVO().setFirstIndex(0);
+		cntcInsttVO.getSearchVO().setSearchCondition("CodeList");
 		model.addAttribute("cntcInsttList", cntcInsttService.selectCntcInsttList(cntcInsttVO));
 
 		// 연계시스템 리스트박스 데이터
 		CntcSystemVO cntcSystemVO = new CntcSystemVO();
-		cntcSystemVO.setRecordPerPage(999999);
-		cntcSystemVO.setFirstIndex(0);
-		cntcSystemVO.setSearchCondition("CodeList");
+		cntcSystemVO.getSearchVO().setRecordPerPage(999999);
+		cntcSystemVO.getSearchVO().setFirstIndex(0);
+		cntcSystemVO.getSearchVO().setSearchCondition("CodeList");
 		cntcSystemVO.setInsttId(systemCntcVO.getProvdInsttId());
 		model.addAttribute("cntcProvdSystemList", cntcInsttService.selectCntcSystemList(cntcSystemVO));
 
@@ -113,9 +113,9 @@ public class SystemCntcController {
 
 		// 연계서비스 리스트박스 데이터
 		CntcServiceVO cntcServiceVO = new CntcServiceVO();
-		cntcServiceVO.setRecordPerPage(999999);
-		cntcServiceVO.setFirstIndex(0);
-		cntcServiceVO.setSearchCondition("CodeList");
+		cntcServiceVO.getSearchVO().setRecordPerPage(999999);
+		cntcServiceVO.getSearchVO().setFirstIndex(0);
+		cntcServiceVO.getSearchVO().setSearchCondition("CodeList");
 		cntcServiceVO.setInsttId(systemCntcVO.getProvdInsttId());
 		cntcServiceVO.setSysId(systemCntcVO.getProvdSysId());
 		model.addAttribute("cntcProvdServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));
@@ -136,16 +136,16 @@ public class SystemCntcController {
 
 		// 연계기관 리스트박스 데이터
 		CntcInsttVO cntcInsttVO = new CntcInsttVO();
-		cntcInsttVO.setRecordPerPage(999999);
-		cntcInsttVO.setFirstIndex(0);
-		cntcInsttVO.setSearchCondition("CodeList");
+		cntcInsttVO.getSearchVO().setRecordPerPage(999999);
+		cntcInsttVO.getSearchVO().setFirstIndex(0);
+		cntcInsttVO.getSearchVO().setSearchCondition("CodeList");
 		model.addAttribute("cntcInsttList", cntcInsttService.selectCntcInsttList(cntcInsttVO));
 
 		// 연계시스템 리스트박스 데이터
 		CntcSystemVO cntcSystemVO = new CntcSystemVO();
-		cntcSystemVO.setRecordPerPage(999999);
-		cntcSystemVO.setFirstIndex(0);
-		cntcSystemVO.setSearchCondition("CodeList");
+		cntcSystemVO.getSearchVO().setRecordPerPage(999999);
+		cntcSystemVO.getSearchVO().setFirstIndex(0);
+		cntcSystemVO.getSearchVO().setSearchCondition("CodeList");
 		cntcSystemVO.setInsttId(systemCntcVO.getProvdInsttId());
 		model.addAttribute("cntcProvdSystemList", cntcInsttService.selectCntcSystemList(cntcSystemVO));
 
@@ -154,9 +154,9 @@ public class SystemCntcController {
 
 		// 연계서비스 리스트박스 데이터
 		CntcServiceVO cntcServiceVO = new CntcServiceVO();
-		cntcServiceVO.setRecordPerPage(999999);
-		cntcServiceVO.setFirstIndex(0);
-		cntcServiceVO.setSearchCondition("CodeList");
+		cntcServiceVO.getSearchVO().setRecordPerPage(999999);
+		cntcServiceVO.getSearchVO().setFirstIndex(0);
+		cntcServiceVO.getSearchVO().setSearchCondition("CodeList");
 		cntcServiceVO.setInsttId(systemCntcVO.getProvdInsttId());
 		cntcServiceVO.setSysId(systemCntcVO.getProvdSysId());
 		model.addAttribute("cntcProvdServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));
@@ -181,16 +181,16 @@ public class SystemCntcController {
 
 			// 연계기관 리스트박스 데이터
 			CntcInsttVO cntcInsttVO = new CntcInsttVO();
-			cntcInsttVO.setRecordPerPage(999999);
-			cntcInsttVO.setFirstIndex(0);
-			cntcInsttVO.setSearchCondition("CodeList");
+			cntcInsttVO.getSearchVO().setRecordPerPage(999999);
+			cntcInsttVO.getSearchVO().setFirstIndex(0);
+			cntcInsttVO.getSearchVO().setSearchCondition("CodeList");
 			model.addAttribute("cntcInsttList", cntcInsttService.selectCntcInsttList(cntcInsttVO));
 
 			// 연계시스템 리스트박스 데이터
 			CntcSystemVO cntcSystemVO = new CntcSystemVO();
-			cntcSystemVO.setRecordPerPage(999999);
-			cntcSystemVO.setFirstIndex(0);
-			cntcSystemVO.setSearchCondition("CodeList");
+			cntcSystemVO.getSearchVO().setRecordPerPage(999999);
+			cntcSystemVO.getSearchVO().setFirstIndex(0);
+			cntcSystemVO.getSearchVO().setSearchCondition("CodeList");
 			cntcSystemVO.setInsttId(systemCntcVO.getProvdInsttId());
 			model.addAttribute("cntcProvdSystemList", cntcInsttService.selectCntcSystemList(cntcSystemVO));
 
@@ -199,9 +199,9 @@ public class SystemCntcController {
 
 			// 연계서비스 리스트박스 데이터
 			CntcServiceVO cntcServiceVO = new CntcServiceVO();
-			cntcServiceVO.setRecordPerPage(999999);
-			cntcServiceVO.setFirstIndex(0);
-			cntcServiceVO.setSearchCondition("CodeList");
+			cntcServiceVO.getSearchVO().setRecordPerPage(999999);
+			cntcServiceVO.getSearchVO().setFirstIndex(0);
+			cntcServiceVO.getSearchVO().setSearchCondition("CodeList");
 			cntcServiceVO.setInsttId(systemCntcVO.getProvdInsttId());
 			cntcServiceVO.setSysId(systemCntcVO.getProvdSysId());
 			model.addAttribute("cntcProvdServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));
@@ -234,17 +234,17 @@ public class SystemCntcController {
 
 		// 연계기관 리스트박스 데이터
 		CntcInsttVO cntcInsttVO = new CntcInsttVO();
-		cntcInsttVO.setRecordPerPage(999999);
-		cntcInsttVO.setFirstIndex(0);
-		cntcInsttVO.setSearchCondition("CodeList");
+		cntcInsttVO.getSearchVO().setRecordPerPage(999999);
+		cntcInsttVO.getSearchVO().setFirstIndex(0);
+		cntcInsttVO.getSearchVO().setSearchCondition("CodeList");
 		model.addAttribute("cntcInsttList", cntcInsttService.selectCntcInsttList(cntcInsttVO));
 
 		// 연계시스템 리스트박스 데이터
 		CntcSystemVO cntcSystemVO;
 		cntcSystemVO = new CntcSystemVO();
-		cntcSystemVO.setRecordPerPage(999999);
-		cntcSystemVO.setFirstIndex(0);
-		cntcSystemVO.setSearchCondition("CodeList");
+		cntcSystemVO.getSearchVO().setRecordPerPage(999999);
+		cntcSystemVO.getSearchVO().setFirstIndex(0);
+		cntcSystemVO.getSearchVO().setSearchCondition("CodeList");
 		cntcSystemVO.setInsttId(systemCntcVO.getProvdInsttId());
 		model.addAttribute("cntcProvdSystemList", cntcInsttService.selectCntcSystemList(cntcSystemVO));
 
@@ -253,9 +253,9 @@ public class SystemCntcController {
 
 		// 연계서비스 리스트박스 데이터
 		CntcServiceVO cntcServiceVO = new CntcServiceVO();
-		cntcServiceVO.setRecordPerPage(999999);
-		cntcServiceVO.setFirstIndex(0);
-		cntcServiceVO.setSearchCondition("CodeList");
+		cntcServiceVO.getSearchVO().setRecordPerPage(999999);
+		cntcServiceVO.getSearchVO().setFirstIndex(0);
+		cntcServiceVO.getSearchVO().setSearchCondition("CodeList");
 		cntcServiceVO.setInsttId(systemCntcVO.getProvdInsttId());
 		cntcServiceVO.setSysId(systemCntcVO.getProvdSysId());
 		model.addAttribute("cntcProvdServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));
@@ -280,16 +280,16 @@ public class SystemCntcController {
 
 			// 연계기관 리스트박스 데이터
 			CntcInsttVO cntcInsttVO = new CntcInsttVO();
-			cntcInsttVO.setRecordPerPage(999999);
-			cntcInsttVO.setFirstIndex(0);
-			cntcInsttVO.setSearchCondition("CodeList");
+			cntcInsttVO.getSearchVO().setRecordPerPage(999999);
+			cntcInsttVO.getSearchVO().setFirstIndex(0);
+			cntcInsttVO.getSearchVO().setSearchCondition("CodeList");
 			model.addAttribute("cntcInsttList", cntcInsttService.selectCntcInsttList(cntcInsttVO));
 
 			// 연계시스템 리스트박스 데이터
 			CntcSystemVO cntcSystemVO = new CntcSystemVO();
-			cntcSystemVO.setRecordPerPage(999999);
-			cntcSystemVO.setFirstIndex(0);
-			cntcSystemVO.setSearchCondition("CodeList");
+			cntcSystemVO.getSearchVO().setRecordPerPage(999999);
+			cntcSystemVO.getSearchVO().setFirstIndex(0);
+			cntcSystemVO.getSearchVO().setSearchCondition("CodeList");
 			cntcSystemVO.setInsttId(systemCntcVO.getProvdInsttId());
 			model.addAttribute("cntcProvdSystemList", cntcInsttService.selectCntcSystemList(cntcSystemVO));
 
@@ -298,9 +298,9 @@ public class SystemCntcController {
 
 			// 연계서비스 리스트박스 데이터
 			CntcServiceVO cntcServiceVO = new CntcServiceVO();
-			cntcServiceVO.setRecordPerPage(999999);
-			cntcServiceVO.setFirstIndex(0);
-			cntcServiceVO.setSearchCondition("CodeList");
+			cntcServiceVO.getSearchVO().setRecordPerPage(999999);
+			cntcServiceVO.getSearchVO().setFirstIndex(0);
+			cntcServiceVO.getSearchVO().setSearchCondition("CodeList");
 			cntcServiceVO.setInsttId(systemCntcVO.getProvdInsttId());
 			cntcServiceVO.setSysId(systemCntcVO.getProvdSysId());
 			model.addAttribute("cntcProvdServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));
@@ -348,12 +348,12 @@ public class SystemCntcController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		systemCntcVO.fillPageInfo(paginationInfo);
+		systemCntcVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", systemCntcService.selectSystemCntcList(systemCntcVO));
 
 		int totCnt = systemCntcService.selectSystemCntcListCnt(systemCntcVO);
-		systemCntcVO.setTotalRecordCount(totCnt);
+		systemCntcVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -376,16 +376,16 @@ public class SystemCntcController {
 
 		// 연계기관 리스트박스 데이터
 		CntcInsttVO cntcInsttVO = new CntcInsttVO();
-		cntcInsttVO.setRecordPerPage(999999);
-		cntcInsttVO.setFirstIndex(0);
-		cntcInsttVO.setSearchCondition("CodeList");
+		cntcInsttVO.getSearchVO().setRecordPerPage(999999);
+		cntcInsttVO.getSearchVO().setFirstIndex(0);
+		cntcInsttVO.getSearchVO().setSearchCondition("CodeList");
 		model.addAttribute("cntcInsttList", cntcInsttService.selectCntcInsttList(cntcInsttVO));
 
 		// 연계시스템 리스트박스 데이터
 		CntcSystemVO cntcSystemVO = new CntcSystemVO();
-		cntcSystemVO.setRecordPerPage(999999);
-		cntcSystemVO.setFirstIndex(0);
-		cntcSystemVO.setSearchCondition("CodeList");
+		cntcSystemVO.getSearchVO().setRecordPerPage(999999);
+		cntcSystemVO.getSearchVO().setFirstIndex(0);
+		cntcSystemVO.getSearchVO().setSearchCondition("CodeList");
 		cntcSystemVO.setInsttId(systemCntcVO.getProvdInsttId());
 		model.addAttribute("cntcProvdSystemList", cntcInsttService.selectCntcSystemList(cntcSystemVO));
 
@@ -394,9 +394,9 @@ public class SystemCntcController {
 
 		// 연계서비스 리스트박스 데이터
 		CntcServiceVO cntcServiceVO = new CntcServiceVO();
-		cntcServiceVO.setRecordPerPage(999999);
-		cntcServiceVO.setFirstIndex(0);
-		cntcServiceVO.setSearchCondition("CodeList");
+		cntcServiceVO.getSearchVO().setRecordPerPage(999999);
+		cntcServiceVO.getSearchVO().setFirstIndex(0);
+		cntcServiceVO.getSearchVO().setSearchCondition("CodeList");
 		cntcServiceVO.setInsttId(systemCntcVO.getProvdInsttId());
 		cntcServiceVO.setSysId(systemCntcVO.getProvdSysId());
 		model.addAttribute("cntcProvdServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));

@@ -1,6 +1,6 @@
 package aramframework.com.sym.cal.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 휴일 VO 클래스
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class RestdeVO extends SearchVO {
+public class RestdeVO extends BaseVO {
 
 	// domain
 	/** 휴일번호 */

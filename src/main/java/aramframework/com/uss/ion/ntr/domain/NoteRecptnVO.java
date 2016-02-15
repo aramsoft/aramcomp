@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.ntr.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 받은쪽지함관리 Model and VO Class 구현
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class NoteRecptnVO extends SearchVO {
+public class NoteRecptnVO extends BaseVO {
 
 	// domain
 	/** 쪽지 수신 ID */

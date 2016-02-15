@@ -190,12 +190,12 @@ public class BBSBoardController {
 		}
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		boardVO.fillPageInfo(paginationInfo);
+		boardVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", boardService.selectBoardArticleList(boardVO));
 
 		int totCnt = boardService.selectBoardArticleListCnt(boardVO);
-		boardVO.setTotalRecordCount(totCnt);
+		boardVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -626,12 +626,12 @@ public class BBSBoardController {
 		}
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		boardVO.fillPageInfo(paginationInfo);
+		boardVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", boardService.selectBoardArticleList(boardVO));
 
 		int totCnt = boardService.selectBoardArticleListCnt(boardVO);
-		boardVO.setTotalRecordCount(totCnt);
+		boardVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -1023,12 +1023,12 @@ public class BBSBoardController {
 		model.addAttribute("sessionUniqId", loginVO.getUniqId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		boardVO.fillPageInfo(paginationInfo);
+		boardVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", boardService.selectGuestList(boardVO));
 
 		int totCnt = boardService.selectGuestListCnt(boardVO);
-		boardVO.setTotalRecordCount(totCnt);
+		boardVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -1082,12 +1082,12 @@ public class BBSBoardController {
 		boardService.selectBoardArticle(boardVO);
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		boardVO.fillPageInfo(paginationInfo);
+		boardVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", boardService.selectGuestList(boardVO));
 
 		int totCnt = boardService.selectGuestListCnt(boardVO);
-		boardVO.setTotalRecordCount(totCnt);
+		boardVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -1145,13 +1145,13 @@ public class BBSBoardController {
 			@ModelAttribute BoardVO boardVO, 
 			ModelMap model) {
 
-		String template = boardVO.getSearchKeyword(); // 템플릿 URL
+		String template = boardVO.getSearchVO().getSearchKeyword(); // 템플릿 URL
 
 		BoardMasterVO masterVo = new BoardMasterVO();
 		masterVo.setBbsNm("미리보기 게시판");
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		boardVO.fillPageInfo(paginationInfo);
+		boardVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		EgovMap target = null;
 		List<EgovMap> list = new ArrayList<EgovMap>();
@@ -1180,12 +1180,12 @@ public class BBSBoardController {
 
 		list.add(target);
 
-		boardVO.setSearchKeyword("");
+		boardVO.getSearchVO().setSearchKeyword("");
 
 		model.addAttribute("resultList", list);
 
 		int totCnt = list.size();
-		boardVO.setTotalRecordCount(totCnt);
+		boardVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

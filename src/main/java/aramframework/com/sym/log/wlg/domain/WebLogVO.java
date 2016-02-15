@@ -1,6 +1,6 @@
 package aramframework.com.sym.log.wlg.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 웹 로그관리를 위한 VO 클래스
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class WebLogVO extends SearchVO {
+public class WebLogVO extends BaseVO {
 
 	// domain
 	/** 요청아이디 */

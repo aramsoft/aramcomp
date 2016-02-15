@@ -2,7 +2,7 @@ package aramframework.com.sym.sym.bak.domain;
 
 import java.util.List;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 백업작업관리에 대한 model 클래스
@@ -23,7 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class BackupOpertVO extends SearchVO {
+public class BackupOpertVO extends BaseVO {
 
 	// domain
 	/** 백업작업ID */

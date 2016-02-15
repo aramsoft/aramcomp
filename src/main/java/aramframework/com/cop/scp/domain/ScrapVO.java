@@ -1,8 +1,6 @@
 package aramframework.com.cop.scp.domain;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 스크랩 서비스를 위한 VO 클래스
@@ -23,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class ScrapVO extends SearchVO {
+public class ScrapVO extends BaseVO {
 
 	// domain
 	/** 스크랩 ID */
@@ -153,13 +151,6 @@ public class ScrapVO extends SearchVO {
 	 */
 	public void setUniqId(String uniqId) {
 		this.uniqId = uniqId;
-	}
-
-	/**
-	 * toString 메소드를 대치한다.
-	 */
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
 	}
 
 }

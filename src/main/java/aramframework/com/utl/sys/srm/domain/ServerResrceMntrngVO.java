@@ -1,6 +1,6 @@
 package aramframework.com.utl.sys.srm.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요 - 서버자원모니터링에 대한 model 클래스를 정의한다.
@@ -23,7 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class ServerResrceMntrngVO extends SearchVO {
+public class ServerResrceMntrngVO extends BaseVO {
 	
 	// domain
 	/** 로그ID */

@@ -61,12 +61,12 @@ public class MblAdministrationWordManageController {
 
         /** pageing */
         PaginationInfo paginationInfo = new PaginationInfo();
-        administrationWordVO.fillPageInfo(paginationInfo);
+        administrationWordVO.getSearchVO().fillPageInfo(paginationInfo);
         
         modelAndView.addObject("resultList", administrationWordService.selectAdministrationWordList(administrationWordVO));
 
         int totCnt = (Integer) administrationWordService.selectAdministrationWordListCnt(administrationWordVO);
-        administrationWordVO.setTotalRecordCount(totCnt);
+        administrationWordVO.getSearchVO().setTotalRecordCount(totCnt);
 
         paginationInfo.setTotalRecordCount(totCnt);
         modelAndView.addObject("paginationInfo", paginationInfo);
@@ -100,12 +100,12 @@ public class MblAdministrationWordManageController {
 
         /** pageing */
         PaginationInfo paginationInfo = new PaginationInfo();
-        administrationWordVO.fillPageInfo(paginationInfo);
+        administrationWordVO.getSearchVO().fillPageInfo(paginationInfo);
         
         model.addAttribute("resultList", administrationWordService.selectAdministrationWordList(administrationWordVO));
 
         int totCnt = (Integer) administrationWordService.selectAdministrationWordListCnt(administrationWordVO);
-        administrationWordVO.setTotalRecordCount(totCnt);
+        administrationWordVO.getSearchVO().setTotalRecordCount(totCnt);
 
         paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);

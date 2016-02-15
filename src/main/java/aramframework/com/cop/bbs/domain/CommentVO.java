@@ -1,8 +1,6 @@
 package aramframework.com.cop.bbs.domain;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 게시물 관리를 위한 VO 클래스
@@ -23,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class CommentVO extends SearchVO {
+public class CommentVO extends BaseVO {
 
 	// domain
 	/** 댓글번호 */
@@ -239,11 +237,4 @@ public class CommentVO extends SearchVO {
 		this.confirmPassword = confirmPassword;
 	}
 
-	/**
-	 * toString 메소드를 대치한다.
-	 */
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
-	}
-	
 }

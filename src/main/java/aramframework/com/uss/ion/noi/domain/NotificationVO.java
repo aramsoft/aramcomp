@@ -1,8 +1,6 @@
 package aramframework.com.uss.ion.noi.domain;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 정보알림이 서비스를 위한 VO 클래스
@@ -23,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class NotificationVO extends SearchVO {
+public class NotificationVO extends BaseVO {
 
 	// domain
 	/** 알림 번호 */
@@ -300,11 +298,4 @@ public class NotificationVO extends SearchVO {
 		this.endDateTime = endDateTime;
 	}
 
-	/**
-	 * toString 메소드를 대치한다.
-	 */
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
-	}
-	
 }

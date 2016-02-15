@@ -1,6 +1,6 @@
 package aramframework.com.sym.mnu.mcm.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 메뉴생성 처리를 위한 VO 클래스르를 정의한다
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class MenuCreateVO extends SearchVO {
+public class MenuCreateVO extends BaseVO {
 
 	// domain
 	/** 메뉴번호 */

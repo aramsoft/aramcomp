@@ -58,12 +58,12 @@ public class DeptAuthorController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		deptAuthorVO.fillPageInfo(paginationInfo);
+		deptAuthorVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", deptAuthorService.selectDeptAuthorList(deptAuthorVO));
 
 		int totCnt = deptAuthorService.selectDeptAuthorListCnt(deptAuthorVO);
-		deptAuthorVO.setTotalRecordCount(totCnt);
+		deptAuthorVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -141,12 +141,12 @@ public class DeptAuthorController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		deptAuthorVO.fillPageInfo(paginationInfo);
+		deptAuthorVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", deptAuthorService.selectDeptList(deptAuthorVO));
 
 		int totCnt = deptAuthorService.selectDeptListCnt(deptAuthorVO);
-		deptAuthorVO.setTotalRecordCount(totCnt);
+		deptAuthorVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

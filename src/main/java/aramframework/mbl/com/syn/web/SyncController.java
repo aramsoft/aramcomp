@@ -241,12 +241,12 @@ public class SyncController {
 			ModelMap model) {
 		
     	PaginationInfo paginationInfo = new PaginationInfo();
-    	syncVO.fillPageInfo(paginationInfo);
+    	syncVO.getSearchVO().fillPageInfo(paginationInfo);
 		
 		model.addAttribute("resultList", syncService.selectSyncList(syncVO));
         
         int totCnt = syncService.selectSyncListCnt(syncVO);
-        syncVO.setTotalRecordCount(totCnt);
+        syncVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);

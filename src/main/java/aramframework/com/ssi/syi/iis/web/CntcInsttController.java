@@ -69,12 +69,12 @@ public class CntcInsttController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		cntcInsttVO.fillPageInfo(paginationInfo);
+		cntcInsttVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", cntcInsttService.selectCntcInsttList(cntcInsttVO));
 
 		int totCnt = cntcInsttService.selectCntcInsttListCnt(cntcInsttVO);
-		cntcInsttVO.setTotalRecordCount(totCnt);
+		cntcInsttVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -99,24 +99,24 @@ public class CntcInsttController {
 
 		// 연계메시지 리스트박스 데이터
 		CntcMessageVO cntcMessageVO = new CntcMessageVO();
-		cntcMessageVO.setRecordPerPage(999999);
-		cntcMessageVO.setFirstIndex(0);
-		cntcMessageVO.setSearchCondition("CodeList");
+		cntcMessageVO.getSearchVO().setRecordPerPage(999999);
+		cntcMessageVO.getSearchVO().setFirstIndex(0);
+		cntcMessageVO.getSearchVO().setSearchCondition("CodeList");
 		model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(cntcMessageVO));
 
 		/* 연계기관 상세 */
 		cntcInsttService.selectCntcInsttDetail(cntcInsttVO);
 
 		/* 연계시스템 리스트 */
-		cntcSystemVO.setRecordPerPage(999999);
-		cntcSystemVO.setFirstIndex(0);
-		cntcSystemVO.setSearchCondition("CodeList");
+		cntcSystemVO.getSearchVO().setRecordPerPage(999999);
+		cntcSystemVO.getSearchVO().setFirstIndex(0);
+		cntcSystemVO.getSearchVO().setSearchCondition("CodeList");
 		model.addAttribute("cntcSystemList", cntcInsttService.selectCntcSystemList(cntcSystemVO));
 
 		/* 연계서비스 리스트 */
-		cntcServiceVO.setRecordPerPage(999999);
-		cntcServiceVO.setFirstIndex(0);
-		cntcServiceVO.setSearchCondition("CodeList_InsttId");
+		cntcServiceVO.getSearchVO().setRecordPerPage(999999);
+		cntcServiceVO.getSearchVO().setFirstIndex(0);
+		cntcServiceVO.getSearchVO().setSearchCondition("CodeList_InsttId");
 		model.addAttribute("cntcServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));
 
 		return WebUtil.adjustViewName("/ssi/syi/iis/CntcInsttDetail");
@@ -234,9 +234,9 @@ public class CntcInsttController {
 
 		// 연계기관 리스트박스 데이터
 		CntcInsttVO cntcInsttVO = new CntcInsttVO();
-		cntcInsttVO.setRecordPerPage(999999);
-		cntcInsttVO.setFirstIndex(0);
-		cntcInsttVO.setSearchCondition("CodeList");
+		cntcInsttVO.getSearchVO().setRecordPerPage(999999);
+		cntcInsttVO.getSearchVO().setFirstIndex(0);
+		cntcInsttVO.getSearchVO().setSearchCondition("CodeList");
 		model.addAttribute("cntcInsttList", cntcInsttService.selectCntcInsttList(cntcInsttVO));
 
 		return WebUtil.adjustViewName("/ssi/syi/iis/CntcSystemRegist");
@@ -259,9 +259,9 @@ public class CntcInsttController {
 
 			// 연계기관 리스트박스 데이터
 			CntcInsttVO cntcInsttVO = new CntcInsttVO();
-			cntcInsttVO.setRecordPerPage(999999);
-			cntcInsttVO.setFirstIndex(0);
-			cntcInsttVO.setSearchCondition("CodeList");
+			cntcInsttVO.getSearchVO().setRecordPerPage(999999);
+			cntcInsttVO.getSearchVO().setFirstIndex(0);
+			cntcInsttVO.getSearchVO().setSearchCondition("CodeList");
 			model.addAttribute("cntcInsttList", cntcInsttService.selectCntcInsttList(cntcInsttVO));
 
 			return WebUtil.adjustViewName("/ssi/syi/iis/CntcSystemRegist");
@@ -290,16 +290,16 @@ public class CntcInsttController {
 
 		// 연계기관 리스트박스 데이터
 		CntcInsttVO cntcInsttVO = new CntcInsttVO();
-		cntcInsttVO.setRecordPerPage(999999);
-		cntcInsttVO.setFirstIndex(0);
-		cntcInsttVO.setSearchCondition("CodeList");
+		cntcInsttVO.getSearchVO().setRecordPerPage(999999);
+		cntcInsttVO.getSearchVO().setFirstIndex(0);
+		cntcInsttVO.getSearchVO().setSearchCondition("CodeList");
 		model.addAttribute("cntcInsttList", cntcInsttService.selectCntcInsttList(cntcInsttVO));
 
 		// 연계메시지 리스트박스 데이터 2011.09.14
 		CntcMessageVO cntcMessageVO = new CntcMessageVO();
-		cntcMessageVO.setRecordPerPage(999999);
-		cntcMessageVO.setFirstIndex(0);
-		cntcMessageVO.setSearchCondition("CodeList");
+		cntcMessageVO.getSearchVO().setRecordPerPage(999999);
+		cntcMessageVO.getSearchVO().setFirstIndex(0);
+		cntcMessageVO.getSearchVO().setSearchCondition("CodeList");
 		model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(cntcMessageVO));
 
 		cntcInsttService.selectCntcSystemDetail(cntcSystemVO);
@@ -324,16 +324,16 @@ public class CntcInsttController {
 
 			// 연계기관 리스트박스 데이터
 			CntcInsttVO cntcInsttVO = new CntcInsttVO();
-			cntcInsttVO.setRecordPerPage(999999);
-			cntcInsttVO.setFirstIndex(0);
-			cntcInsttVO.setSearchCondition("CodeList");
+			cntcInsttVO.getSearchVO().setRecordPerPage(999999);
+			cntcInsttVO.getSearchVO().setFirstIndex(0);
+			cntcInsttVO.getSearchVO().setSearchCondition("CodeList");
 			model.addAttribute("cntcInsttList", cntcInsttService.selectCntcInsttList(cntcInsttVO));
 
 			// 연계메시지 리스트박스 데이터 2011.09.14
 			CntcMessageVO cntcMessageVO = new CntcMessageVO();
-			cntcMessageVO.setRecordPerPage(999999);
-			cntcMessageVO.setFirstIndex(0);
-			cntcMessageVO.setSearchCondition("CodeList");
+			cntcMessageVO.getSearchVO().setRecordPerPage(999999);
+			cntcMessageVO.getSearchVO().setFirstIndex(0);
+			cntcMessageVO.getSearchVO().setSearchCondition("CodeList");
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(cntcMessageVO));
 
 			return WebUtil.adjustViewName("/ssi/syi/iis/CntcSystemEdit");
@@ -377,17 +377,17 @@ public class CntcInsttController {
 
 		// 연계기관 리스트박스 데이터
 		CntcInsttVO cntcInsttVO = new CntcInsttVO();
-		cntcInsttVO.setRecordPerPage(999999);
-		cntcInsttVO.setFirstIndex(0);
-		cntcInsttVO.setSearchCondition("CodeList");
+		cntcInsttVO.getSearchVO().setRecordPerPage(999999);
+		cntcInsttVO.getSearchVO().setFirstIndex(0);
+		cntcInsttVO.getSearchVO().setSearchCondition("CodeList");
 		List<CntcInsttVO> cntcInsttList = cntcInsttService.selectCntcInsttList(cntcInsttVO);
 		model.addAttribute("cntcInsttList", cntcInsttList);
 
 		// 연계시스템 리스트박스 데이터
 		CntcSystemVO cntcSystemVO = new CntcSystemVO();
-		cntcSystemVO.setRecordPerPage(999999);
-		cntcSystemVO.setFirstIndex(0);
-		cntcSystemVO.setSearchCondition("CodeList");
+		cntcSystemVO.getSearchVO().setRecordPerPage(999999);
+		cntcSystemVO.getSearchVO().setFirstIndex(0);
+		cntcSystemVO.getSearchVO().setSearchCondition("CodeList");
 		if (cntcServiceVO.getInsttId().equals("")) {
 			if (cntcInsttList.size() > 0) {
 				cntcInsttVO = cntcInsttList.get(0);
@@ -400,9 +400,9 @@ public class CntcInsttController {
 		// 연계메시지 리스트박스 데이터
 		CntcMessageVO searchCntcMessageVO;
 		searchCntcMessageVO = new CntcMessageVO();
-		searchCntcMessageVO.setRecordPerPage(999999);
-		searchCntcMessageVO.setFirstIndex(0);
-		searchCntcMessageVO.setSearchCondition("CodeList");
+		searchCntcMessageVO.getSearchVO().setRecordPerPage(999999);
+		searchCntcMessageVO.getSearchVO().setFirstIndex(0);
+		searchCntcMessageVO.getSearchVO().setSearchCondition("CodeList");
 		model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
 		return WebUtil.adjustViewName("/ssi/syi/iis/CntcServiceRegist");
@@ -425,17 +425,17 @@ public class CntcInsttController {
 
 			// 연계기관 리스트박스 데이터
 			CntcInsttVO cntcInsttVO = new CntcInsttVO();
-			cntcInsttVO.setRecordPerPage(999999);
-			cntcInsttVO.setFirstIndex(0);
-			cntcInsttVO.setSearchCondition("CodeList");
+			cntcInsttVO.getSearchVO().setRecordPerPage(999999);
+			cntcInsttVO.getSearchVO().setFirstIndex(0);
+			cntcInsttVO.getSearchVO().setSearchCondition("CodeList");
 			List<CntcInsttVO> cntcInsttList = cntcInsttService.selectCntcInsttList(cntcInsttVO);
 			model.addAttribute("cntcInsttList", cntcInsttList);
 
 			// 연계시스템 리스트박스 데이터
 			CntcSystemVO cntcSystemVO = new CntcSystemVO();
-			cntcSystemVO.setRecordPerPage(999999);
-			cntcSystemVO.setFirstIndex(0);
-			cntcSystemVO.setSearchCondition("CodeList");
+			cntcSystemVO.getSearchVO().setRecordPerPage(999999);
+			cntcSystemVO.getSearchVO().setFirstIndex(0);
+			cntcSystemVO.getSearchVO().setSearchCondition("CodeList");
 			if (cntcServiceVO.getInsttId().equals("")) {
 				if (cntcInsttList.size() > 0) {
 					cntcInsttVO = cntcInsttList.get(0);
@@ -447,9 +447,9 @@ public class CntcInsttController {
 
 			// 연계메시지 리스트박스 데이터
 			CntcMessageVO cntcMessageVO = new CntcMessageVO();
-			cntcMessageVO.setRecordPerPage(999999);
-			cntcMessageVO.setFirstIndex(0);
-			cntcMessageVO.setSearchCondition("CodeList");
+			cntcMessageVO.getSearchVO().setRecordPerPage(999999);
+			cntcMessageVO.getSearchVO().setFirstIndex(0);
+			cntcMessageVO.getSearchVO().setSearchCondition("CodeList");
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(cntcMessageVO));
 
 			return WebUtil.adjustViewName("/ssi/syi/iis/CntcServiceRegist");
@@ -478,17 +478,17 @@ public class CntcInsttController {
 
 		// 연계기관 리스트박스 데이터
 		CntcInsttVO cntcInsttVO = new CntcInsttVO();
-		cntcInsttVO.setRecordPerPage(999999);
-		cntcInsttVO.setFirstIndex(0);
-		cntcInsttVO.setSearchCondition("CodeList");
+		cntcInsttVO.getSearchVO().setRecordPerPage(999999);
+		cntcInsttVO.getSearchVO().setFirstIndex(0);
+		cntcInsttVO.getSearchVO().setSearchCondition("CodeList");
 		List<CntcInsttVO> cntcInsttList = cntcInsttService.selectCntcInsttList(cntcInsttVO);
 		model.addAttribute("cntcInsttList", cntcInsttList);
 
 		// 연계시스템 리스트박스 데이터
 		CntcSystemVO cntcSystemVO = new CntcSystemVO();
-		cntcSystemVO.setRecordPerPage(999999);
-		cntcSystemVO.setFirstIndex(0);
-		cntcSystemVO.setSearchCondition("CodeList");
+		cntcSystemVO.getSearchVO().setRecordPerPage(999999);
+		cntcSystemVO.getSearchVO().setFirstIndex(0);
+		cntcSystemVO.getSearchVO().setSearchCondition("CodeList");
 		if (cntcServiceVO.getInsttId().equals("")) {
 			if (cntcInsttList.size() > 0) {
 				cntcInsttVO = cntcInsttList.get(0);
@@ -500,9 +500,9 @@ public class CntcInsttController {
 
 		// 연계메시지 리스트박스 데이터
 		CntcMessageVO cntcMessageVO = new CntcMessageVO();
-		cntcMessageVO.setRecordPerPage(999999);
-		cntcMessageVO.setFirstIndex(0);
-		cntcMessageVO.setSearchCondition("CodeList");
+		cntcMessageVO.getSearchVO().setRecordPerPage(999999);
+		cntcMessageVO.getSearchVO().setFirstIndex(0);
+		cntcMessageVO.getSearchVO().setSearchCondition("CodeList");
 		model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(cntcMessageVO));
 
 		cntcInsttService.selectCntcServiceDetail(cntcServiceVO);
@@ -527,17 +527,17 @@ public class CntcInsttController {
 
 			// 연계기관 리스트박스 데이터
 			CntcInsttVO cntcInsttVO = new CntcInsttVO();
-			cntcInsttVO.setRecordPerPage(999999);
-			cntcInsttVO.setFirstIndex(0);
-			cntcInsttVO.setSearchCondition("CodeList");
+			cntcInsttVO.getSearchVO().setRecordPerPage(999999);
+			cntcInsttVO.getSearchVO().setFirstIndex(0);
+			cntcInsttVO.getSearchVO().setSearchCondition("CodeList");
 			List<CntcInsttVO> cntcInsttList = cntcInsttService.selectCntcInsttList(cntcInsttVO);
 			model.addAttribute("cntcInsttList", cntcInsttList);
 
 			// 연계시스템 리스트박스 데이터
 			CntcSystemVO cntcSystemVO = new CntcSystemVO();
-			cntcSystemVO.setRecordPerPage(999999);
-			cntcSystemVO.setFirstIndex(0);
-			cntcSystemVO.setSearchCondition("CodeList");
+			cntcSystemVO.getSearchVO().setRecordPerPage(999999);
+			cntcSystemVO.getSearchVO().setFirstIndex(0);
+			cntcSystemVO.getSearchVO().setSearchCondition("CodeList");
 			if (cntcServiceVO.getInsttId().equals("")) {
 				if (cntcInsttList.size() > 0) {
 					cntcInsttVO = cntcInsttList.get(0);
@@ -549,9 +549,9 @@ public class CntcInsttController {
 
 			// 연계메시지 리스트박스 데이터
 			CntcMessageVO cntcMessageVO = new CntcMessageVO();
-			cntcMessageVO.setRecordPerPage(999999);
-			cntcMessageVO.setFirstIndex(0);
-			cntcMessageVO.setSearchCondition("CodeList");
+			cntcMessageVO.getSearchVO().setRecordPerPage(999999);
+			cntcMessageVO.getSearchVO().setFirstIndex(0);
+			cntcMessageVO.getSearchVO().setSearchCondition("CodeList");
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(cntcMessageVO));
 
 			return WebUtil.adjustViewName("/ssi/syi/iis/CntcServiceEdit");

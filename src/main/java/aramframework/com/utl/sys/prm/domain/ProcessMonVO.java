@@ -1,6 +1,6 @@
 package aramframework.com.utl.sys.prm.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요 - PROCESS모니터링에 대한 Vo 클래스를 정의한다.
@@ -23,7 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class ProcessMonVO extends SearchVO {
+public class ProcessMonVO extends BaseVO {
 
 	// domain
 	/** 프로세스아이디 */	

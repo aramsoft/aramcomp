@@ -1,6 +1,6 @@
 package aramframework.com.sym.bat.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 배치결과관리에 대한 model 클래스
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class BatchResultVO extends SearchVO {
+public class BatchResultVO extends BaseVO {
 
 	// domain
 	/** 배치결과ID */

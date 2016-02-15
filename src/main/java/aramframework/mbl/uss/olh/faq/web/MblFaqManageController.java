@@ -60,12 +60,12 @@ public class MblFaqManageController {
     	
     	/** pageing */
     	PaginationInfo paginationInfo = new PaginationInfo();
-    	faqManageVO.fillPageInfo(paginationInfo);
+    	faqManageVO.getSearchVO().fillPageInfo(paginationInfo);
 		
 		modelAndView.addObject("FaqList", faqManageService.selectFaqList(faqManageVO));
 		
         int totCnt = faqManageService.selectFaqListCnt(faqManageVO);
-        faqManageVO.setTotalRecordCount(totCnt);
+        faqManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		modelAndView.addObject("paginationInfo", paginationInfo);

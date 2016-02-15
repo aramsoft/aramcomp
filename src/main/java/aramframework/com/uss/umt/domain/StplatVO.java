@@ -1,6 +1,6 @@
 package aramframework.com.uss.umt.domain;
 
-import java.io.Serializable;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 가입약관VO클래스로서가입약관확인시 비지니스로직 처리용 항목을 구성한다.
@@ -21,9 +21,7 @@ import java.io.Serializable;
  * </pre>
  */
 
-public class StplatVO implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+public class StplatVO extends BaseVO {
 
 	/** 약관아이디 */
 	private String useStplatId;

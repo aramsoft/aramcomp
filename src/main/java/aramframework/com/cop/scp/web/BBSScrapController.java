@@ -72,12 +72,12 @@ public class BBSScrapController {
 		scrapVO.setUniqId(loginVO.getUniqId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		scrapVO.fillPageInfo(paginationInfo);
+		scrapVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", bbsScrapService.selectScrapList(scrapVO));
 
 		int totCnt = bbsScrapService.selectScrapListCnt(scrapVO);
-		scrapVO.setTotalRecordCount(totCnt);
+		scrapVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -263,8 +263,8 @@ public class BBSScrapController {
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		scrapVO.setUniqId(loginVO.getUniqId());
 
-		scrapVO.setFirstIndex(0);
-		scrapVO.setRecordPerPage(5);
+		scrapVO.getSearchVO().setFirstIndex(0);
+		scrapVO.getSearchVO().setRecordPerPage(5);
 
 		model.addAttribute("resultList", bbsScrapService.selectScrapList(scrapVO));
 

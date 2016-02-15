@@ -77,12 +77,12 @@ public class EntrprsManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		entrprsManageVO.fillPageInfo(paginationInfo);
+		entrprsManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", entrprsManageService.selectEntrprsMberList(entrprsManageVO));
 
 		int totCnt = entrprsManageService.selectEntrprsMberListCnt(entrprsManageVO);
-		entrprsManageVO.setTotalRecordCount(totCnt);
+		entrprsManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

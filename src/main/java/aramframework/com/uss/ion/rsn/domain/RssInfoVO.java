@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.rsn.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * RSS서비스 Model and VO Class 구현
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class RssInfoVO extends SearchVO {
+public class RssInfoVO extends BaseVO {
 
 	// domain
 	/** RSS태그관리 아이디 */

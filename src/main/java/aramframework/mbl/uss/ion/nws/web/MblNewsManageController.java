@@ -60,12 +60,12 @@ public class MblNewsManageController {
     	
     	/** pageing */
     	PaginationInfo paginationInfo = new PaginationInfo();
-    	newsManageVO.fillPageInfo(paginationInfo);
+    	newsManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		modelAndView.addObject("NewsList", newsManageService.selectNewsList(newsManageVO));
 
         int totCnt = newsManageService.selectNewsListCnt(newsManageVO);
-        newsManageVO.setTotalRecordCount(totCnt);
+        newsManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		modelAndView.addObject("paginationInfo", paginationInfo);

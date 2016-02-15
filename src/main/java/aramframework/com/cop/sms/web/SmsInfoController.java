@@ -63,12 +63,12 @@ public class SmsInfoController {
 		smsVO.setUniqId(loginVO.getUniqId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		smsVO.fillPageInfo(paginationInfo);
+		smsVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", smsInfoService.selectSmsInfs(smsVO));
 
 		int totCnt = smsInfoService.selectSmsInfsCnt(smsVO);
-		smsVO.setTotalRecordCount(totCnt);
+		smsVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

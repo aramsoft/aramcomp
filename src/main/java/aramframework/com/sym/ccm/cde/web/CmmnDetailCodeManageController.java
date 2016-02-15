@@ -116,22 +116,22 @@ public class CmmnDetailCodeManageController {
 			ModelMap model) {
 
 		CmmnClCodeVO cmmnClCodeVO = new CmmnClCodeVO();
-		cmmnClCodeVO.setRecordPerPage(999999);
-		cmmnClCodeVO.setFirstIndex(0);
-		cmmnClCodeVO.setSearchCondition("CodeList");
+		cmmnClCodeVO.getSearchVO().setRecordPerPage(999999);
+		cmmnClCodeVO.getSearchVO().setFirstIndex(0);
+		cmmnClCodeVO.getSearchVO().setSearchCondition("CodeList");
 		List<EgovMap> CmmnClCodeList = cmmnClCodeManageService.selectCmmnClCodeList(cmmnClCodeVO);
 
 		model.addAttribute("cmmnClCodeList", cmmnClCodeManageService.selectCmmnClCodeList(cmmnClCodeVO));
 
 		CmmnCodeVO cmmnCodeVO = new CmmnCodeVO();
-		cmmnCodeVO.setRecordPerPage(999999);
-		cmmnCodeVO.setFirstIndex(0);
-		cmmnCodeVO.setSearchCondition("clCode");
+		cmmnCodeVO.getSearchVO().setRecordPerPage(999999);
+		cmmnCodeVO.getSearchVO().setFirstIndex(0);
+		cmmnCodeVO.getSearchVO().setSearchCondition("clCode");
 
 		if ( clCode.equals("") ) {
 			clCode = CmmnClCodeList.get(0).get("clCode").toString();
 		}	
-		cmmnCodeVO.setSearchKeyword(clCode);
+		cmmnCodeVO.getSearchVO().setSearchKeyword(clCode);
 
 		model.addAttribute("cmmnCodeList", cmmnCodeManageService.selectCmmnCodeList(cmmnCodeVO));
 

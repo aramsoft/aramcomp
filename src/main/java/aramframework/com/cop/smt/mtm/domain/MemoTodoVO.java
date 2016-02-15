@@ -1,8 +1,6 @@
 package aramframework.com.cop.smt.mtm.domain;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요 - 메모할일에 대한 Vo 클래스를 정의한다.
@@ -23,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class MemoTodoVO extends SearchVO {
+public class MemoTodoVO extends BaseVO {
 
 	// domain
 	/** 할일ID */
@@ -189,13 +187,6 @@ public class MemoTodoVO extends SearchVO {
 	}
 	public void setSearchEndDe(String searchEndDe) {
 		this.searchEndDe = searchEndDe;
-	}
-
-	/**
-	 * toString 메소드를 대치한다.
-	 */
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
 	}
 
 }

@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.mtg.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요 - 회의실예약에 대한 Vo 클래스를 정의한다.
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class MtgPlaceResveVO extends SearchVO  {
+public class MtgPlaceResveVO extends BaseVO  {
 
 	// domain
 	/** 예약ID	 */

@@ -57,22 +57,22 @@ public class MenuCreateController {
 
 		// 내역 조회
 		PaginationInfo paginationInfo = new PaginationInfo();
-		menuCreateVO.fillPageInfo(paginationInfo);
+		menuCreateVO.getSearchVO().fillPageInfo(paginationInfo);
 
-		if (menuCreateVO.getSearchKeyword() != null && !menuCreateVO.getSearchKeyword().equals("")) {
+		if (menuCreateVO.getSearchVO().getSearchKeyword() != null && !menuCreateVO.getSearchVO().getSearchKeyword().equals("")) {
 			int IDcnt = menuCreateService.selectUsrByPk(menuCreateVO);
 			if (IDcnt == 0) {
 				model.addAttribute("message", MessageHelper.getMessage("info.nodata.msg"));
 			} else {
 				/* AuthorCode 검색 */
 				menuCreateService.selectAuthorByUsr(menuCreateVO);
-				menuCreateVO.setSearchKeyword(menuCreateVO.getAuthorCode());
+				menuCreateVO.getSearchVO().setSearchKeyword(menuCreateVO.getAuthorCode());
 			}
 		}
 		model.addAttribute("resultList", menuCreateService.selectMenuCreateList(menuCreateVO));
 
 		int totCnt = menuCreateService.selectMenuCreateListCnt(menuCreateVO);
-		menuCreateVO.setTotalRecordCount(totCnt);
+		menuCreateVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

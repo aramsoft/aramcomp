@@ -112,19 +112,19 @@ public class NoteRecptnController {
 				}
 			}
 			// 삭제후 페이지 인덱스 설정
-			noteRecptnVO.setPageIndex(1);
+			noteRecptnVO.getSearchVO().setPageIndex(1);
 		}
 
 		// 수신자설정
 		noteRecptnVO.setRcverId(loginVO.getUniqId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		noteRecptnVO.fillPageInfo(paginationInfo);
+		noteRecptnVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", noteRecptnService.selectNoteRecptnList(noteRecptnVO));
 
 		int totCnt = (Integer) noteRecptnService.selectNoteRecptnListCnt(noteRecptnVO);
-		noteRecptnVO.setTotalRecordCount(totCnt);
+		noteRecptnVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

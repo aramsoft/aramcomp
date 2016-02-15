@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.lsi.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요
@@ -22,7 +22,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class LoginScrinImageVO extends SearchVO {
+public class LoginScrinImageVO extends BaseVO {
 
 	// domain
 	/** 이미지 ID */

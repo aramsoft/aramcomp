@@ -66,12 +66,12 @@ public class NtwrkSvcMntrngController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		ntwrkSvcMntrngVO.fillPageInfo(paginationInfo);
+		ntwrkSvcMntrngVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", ntwrkSvcMntrngService.selectNtwrkSvcMntrngList(ntwrkSvcMntrngVO));
 
 		int totCnt = ntwrkSvcMntrngService.selectNtwrkSvcMntrngListCnt(ntwrkSvcMntrngVO);
-		ntwrkSvcMntrngVO.setTotalRecordCount(totCnt);
+		ntwrkSvcMntrngVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -266,7 +266,7 @@ public class NtwrkSvcMntrngController {
 		}
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		ntwrkSvcMntrngLogVO.fillPageInfo(paginationInfo);
+		ntwrkSvcMntrngLogVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		List<NtwrkSvcMntrngLogVO> list = ntwrkSvcMntrngService.selectNtwrkSvcMntrngLogList(ntwrkSvcMntrngLogVO);
 		for (int k = 0; k < list.size(); k++) {
@@ -284,7 +284,7 @@ public class NtwrkSvcMntrngController {
 		model.addAttribute("resultList", list);
 
 		int totCnt = ntwrkSvcMntrngService.selectNtwrkSvcMntrngLogListCnt(ntwrkSvcMntrngLogVO);
-		ntwrkSvcMntrngLogVO.setTotalRecordCount(totCnt);
+		ntwrkSvcMntrngLogVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

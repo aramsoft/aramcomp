@@ -1,6 +1,6 @@
 package aramframework.com.uss.olh.hpc.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 도움말 처리를 위한 VO 클래스
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class HpcmManageVO extends SearchVO  {
+public class HpcmManageVO extends BaseVO  {
 
 	// domain
 	/** 도움말 ID */

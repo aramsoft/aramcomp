@@ -68,12 +68,12 @@ public class DbMntrngController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		dbMntrngVO.fillPageInfo(paginationInfo);
+		dbMntrngVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", dbMntrngService.selectDbMntrngList(dbMntrngVO));
 
 		int totCnt = dbMntrngService.selectDbMntrngListCnt(dbMntrngVO);
-		dbMntrngVO.setTotalRecordCount(totCnt);
+		dbMntrngVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -232,12 +232,12 @@ public class DbMntrngController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		dbMntrngLogVO.fillPageInfo(paginationInfo);
+		dbMntrngLogVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", dbMntrngService.selectDbMntrngLogList(dbMntrngLogVO));
 
 		int totCnt = dbMntrngService.selectDbMntrngLogListCnt(dbMntrngLogVO);
-		dbMntrngLogVO.setTotalRecordCount(totCnt);
+		dbMntrngLogVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

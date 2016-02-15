@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.rec.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 추천사이트정보를 처리하는 VO 클래스
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class RecomendSiteVO extends SearchVO  {
+public class RecomendSiteVO extends BaseVO  {
 
 	// domain
 	/** 추천사이트 ID */

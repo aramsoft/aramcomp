@@ -1,6 +1,6 @@
 package aramframework.com.uss.olp.mgt.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 회의관리 Vo Class 구현
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class MeetingManageVO extends SearchVO  {
+public class MeetingManageVO extends BaseVO  {
 
 	// domain
 	/** 회의ID */

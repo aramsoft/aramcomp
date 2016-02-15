@@ -66,12 +66,12 @@ public class CtsnnManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		ctsnnManageVO.fillPageInfo(paginationInfo);
+		ctsnnManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", ctsnnManageService.selectCtsnnManageList(ctsnnManageVO));
 
 		int totCnt = ctsnnManageService.selectCtsnnManageListCnt(ctsnnManageVO);
-		ctsnnManageVO.setTotalRecordCount(totCnt);
+		ctsnnManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -209,12 +209,12 @@ public class CtsnnManageController {
 		ctsnnManageVO.setSanctnerId(loginVO.getUniqId()); // 사용자가 승인권자인지 조건값 setting selectCtsnnManageList
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		ctsnnManageVO.fillPageInfo(paginationInfo);
+		ctsnnManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", ctsnnManageService.selectCtsnnManageConfmList(ctsnnManageVO));
 
 		int totCnt = ctsnnManageService.selectCtsnnManageConfmListCnt(ctsnnManageVO);
-		ctsnnManageVO.setTotalRecordCount(totCnt);
+		ctsnnManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

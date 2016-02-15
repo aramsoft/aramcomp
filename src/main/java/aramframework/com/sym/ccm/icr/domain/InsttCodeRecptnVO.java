@@ -1,6 +1,6 @@
 package aramframework.com.sym.ccm.icr.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 기관코드수신로그 모델 클래스
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class InsttCodeRecptnVO extends SearchVO {
+public class InsttCodeRecptnVO extends BaseVO {
 
 	// domain
 	/** 발생일자 */

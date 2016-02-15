@@ -72,12 +72,12 @@ public class TroblProcessController {
 			troblProcessVO.setStrProcessSttus("00");
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		troblProcessVO.fillPageInfo(paginationInfo);
+		troblProcessVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", troblProcessService.selectTroblProcessList(troblProcessVO));
 
 		int totCnt = troblProcessService.selectTroblProcessListCnt(troblProcessVO);
-		troblProcessVO.setTotalRecordCount(totCnt);
+		troblProcessVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.ans.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요 - 기념일관리에 대한 Vo 클래스를 정의한다.
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class AnnvrsryManageVO extends SearchVO  {
+public class AnnvrsryManageVO extends BaseVO  {
 
 	// domain
 	/** 기념일ID */

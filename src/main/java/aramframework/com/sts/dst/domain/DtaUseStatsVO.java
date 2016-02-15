@@ -1,6 +1,6 @@
 package aramframework.com.sts.dst.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * -자료이용현황 통계에 대한 Vo 클래스를 정의한다.
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class DtaUseStatsVO extends SearchVO {
+public class DtaUseStatsVO extends BaseVO {
 
 	// domain
 	/** 자료이용현황ID */

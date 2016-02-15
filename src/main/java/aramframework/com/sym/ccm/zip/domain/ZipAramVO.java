@@ -1,6 +1,6 @@
 package aramframework.com.sym.ccm.zip.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 우편번호 모델 클래스
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class ZipAramVO extends SearchVO {
+public class ZipAramVO extends BaseVO {
 
 	private String zip;
 	private String sn;

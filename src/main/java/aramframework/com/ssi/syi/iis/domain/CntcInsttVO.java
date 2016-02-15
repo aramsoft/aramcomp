@@ -1,6 +1,6 @@
 package aramframework.com.ssi.syi.iis.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 연계기관 VO 클래스
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class CntcInsttVO extends SearchVO  {
+public class CntcInsttVO extends BaseVO  {
 
 	// domain
 	/** 기관ID */

@@ -1,8 +1,6 @@
 package aramframework.com.dam.mgm.domain;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요 - 지식정보에 대한 Vo 클래스를 정의한다.
@@ -23,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class KnoManagementVO extends SearchVO {
+public class KnoManagementVO extends BaseVO {
 
 	// domain
 	/** 지식ID */
@@ -335,11 +333,4 @@ public class KnoManagementVO extends SearchVO {
 		this.speNm = speNm;
 	}
 
-	/**
-	 * toString 메소드를 대치한다.
-	 */
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
-	}
-	
 }

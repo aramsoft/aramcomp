@@ -51,12 +51,12 @@ public class InfrmlSanctnController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		sanctnerVO.fillPageInfo(paginationInfo);
+		sanctnerVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", infrmlSanctnService.selectSanctnerList(sanctnerVO));
 
 		int totCnt = infrmlSanctnService.selectSanctnerListCnt(sanctnerVO);
-		sanctnerVO.setTotalRecordCount(totCnt);
+		sanctnerVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

@@ -1,8 +1,6 @@
 package aramframework.com.cop.smt.mrm.domain;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요 - 메모보고에 대한 Vo 클래스를 정의한다.
@@ -23,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class MemoReprtVO extends SearchVO {
+public class MemoReprtVO extends BaseVO {
 
 	// domain
 	/** 보고서ID	 */
@@ -229,13 +227,6 @@ public class MemoReprtVO extends SearchVO {
 	}
 	public void setSearchDrctMatter(String searchDrctMatter) {
 		this.searchDrctMatter = searchDrctMatter;
-	}
-
-	/**
-	 * toString 메소드를 대치한다.
-	 */
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
 	}
 
 }

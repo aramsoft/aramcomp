@@ -73,8 +73,8 @@ public class ChartGraphController {
         ModelAndView modelAndView = new ModelAndView("jsonView");
 
         ChartGraphVO chartGraphVO = new ChartGraphVO();
-        chartGraphVO.setFirstIndex(0);
-        chartGraphVO.setRecordPerPage(1000);
+        chartGraphVO.getSearchVO().setFirstIndex(0);
+        chartGraphVO.getSearchVO().setRecordPerPage(1000);
 
         modelAndView.addObject("resultList", chartGraphService.selectChartGraphList(chartGraphVO));
 
@@ -98,12 +98,12 @@ public class ChartGraphController {
             ModelMap model) {
     	
         PaginationInfo paginationInfo = new PaginationInfo();
-        chartGraphVO.fillPageInfo(paginationInfo);
+        chartGraphVO.getSearchVO().fillPageInfo(paginationInfo);
 
         model.addAttribute("resultList", chartGraphService.selectChartGraphList(chartGraphVO));
 
         int totCnt = chartGraphService.selectChartGraphListCnt(chartGraphVO);
-        chartGraphVO.setTotalRecordCount(totCnt);
+        chartGraphVO.getSearchVO().setTotalRecordCount(totCnt);
 
         paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);

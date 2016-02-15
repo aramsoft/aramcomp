@@ -55,12 +55,12 @@ public class MblDiaryManageController {
     		ModelMap model) {
 
     	PaginationInfo paginationInfo = new PaginationInfo();
-    	diaryManageVO.fillPageInfo(paginationInfo);
+    	diaryManageVO.getSearchVO().fillPageInfo(paginationInfo);
 		
 		model.addAttribute("resultList", diaryManageService.selectDiaryManageList(diaryManageVO));
         
         int totCnt = (Integer)diaryManageService.selectDiaryManageListCnt(diaryManageVO);
-        diaryManageVO.setTotalRecordCount(totCnt);
+        diaryManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);

@@ -51,12 +51,12 @@ public class UserLogController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		userLogVO.fillPageInfo(paginationInfo);
+		userLogVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", userLogService.selectUserLogInf(userLogVO));
 
 		int totCnt = userLogService.selectUserLogInfCnt(userLogVO);
-		userLogVO.setTotalRecordCount(totCnt);
+		userLogVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

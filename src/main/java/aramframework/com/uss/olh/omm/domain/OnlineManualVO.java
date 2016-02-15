@@ -1,6 +1,6 @@
 package aramframework.com.uss.olh.omm.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 온라인메뉴얼 VO Class 구현
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class OnlineManualVO extends SearchVO  {
+public class OnlineManualVO extends BaseVO  {
 
 	// domain
 	/** 온라인메뉴얼 아이디 */

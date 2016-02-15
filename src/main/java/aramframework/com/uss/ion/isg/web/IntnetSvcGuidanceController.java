@@ -69,12 +69,12 @@ public class IntnetSvcGuidanceController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		intnetSvcGuidanceVO.fillPageInfo(paginationInfo);
+		intnetSvcGuidanceVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", intnetSvcGuidanceService.selectIntnetSvcGuidanceList(intnetSvcGuidanceVO));
 
 		int totCnt = intnetSvcGuidanceService.selectIntnetSvcGuidanceListCnt(intnetSvcGuidanceVO);
-		intnetSvcGuidanceVO.setTotalRecordCount(totCnt);
+		intnetSvcGuidanceVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

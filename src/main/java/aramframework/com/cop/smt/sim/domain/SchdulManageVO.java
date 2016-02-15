@@ -1,6 +1,6 @@
 package aramframework.com.cop.smt.sim.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 일정관리 VO Class 구현
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class SchdulManageVO extends SearchVO  {
+public class SchdulManageVO extends BaseVO  {
 
 	// domain
 	/** 일정ID */

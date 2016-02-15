@@ -65,12 +65,12 @@ public class TemplateController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		templateInfVO.fillPageInfo(paginationInfo);
+		templateInfVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", tmplatService.selectTemplateInfs(templateInfVO));
 
 		int totCnt = tmplatService.selectTemplateInfsCnt(templateInfVO);
-		templateInfVO.setTotalRecordCount(totCnt);
+		templateInfVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -210,12 +210,12 @@ public class TemplateController {
 		model.addAttribute("typeFlag", typeFlag);
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		templateInfVO.fillPageInfo(paginationInfo);
+		templateInfVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", tmplatService.selectTemplateInfs(templateInfVO));
 
 		int totCnt = tmplatService.selectTemplateInfsCnt(templateInfVO);
-		templateInfVO.setTotalRecordCount(totCnt);
+		templateInfVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

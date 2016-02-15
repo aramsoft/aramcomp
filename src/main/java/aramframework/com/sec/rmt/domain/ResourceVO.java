@@ -1,6 +1,6 @@
 package aramframework.com.sec.rmt.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 롤관리에 대한 model 클래스를 정의한다.
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class ResourceVO extends SearchVO {
+public class ResourceVO extends BaseVO {
 
 	// domain
 	/** 롤코드 */

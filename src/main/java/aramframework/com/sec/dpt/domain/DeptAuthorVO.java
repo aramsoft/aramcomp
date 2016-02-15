@@ -1,6 +1,6 @@
 package aramframework.com.sec.dpt.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 부서권한에 대한 model 클래스를 정의한다.
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class DeptAuthorVO extends SearchVO {
+public class DeptAuthorVO extends BaseVO {
 
 	/** 부서코드 */
 	private String deptCode;

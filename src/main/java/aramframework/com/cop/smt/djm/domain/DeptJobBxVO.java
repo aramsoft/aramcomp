@@ -1,8 +1,6 @@
 package aramframework.com.cop.smt.djm.domain;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요 - 부서업무함에 대한 Vo 클래스를 정의한다.
@@ -23,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class DeptJobBxVO extends SearchVO {
+public class DeptJobBxVO extends BaseVO {
 
 	//  domain
 	/** 부서업무함 ID	 */
@@ -97,13 +95,6 @@ public class DeptJobBxVO extends SearchVO {
 	}
 	public void setPopupCnd(String popupCnd) {
 		this.popupCnd = popupCnd;
-	}
-
-	/**
-	 * toString 메소드를 대치한다.
-	 */
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
 	}
 
 }

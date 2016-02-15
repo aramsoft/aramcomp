@@ -2,9 +2,7 @@ package aramframework.com.cop.sms.domain;
 
 import java.util.List;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**
@@ -26,7 +24,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-public class SmsVO extends SearchVO {
+public class SmsVO extends BaseVO {
 
 	// domain
 	/** 문자메시지 ID */
@@ -199,11 +197,4 @@ public class SmsVO extends SearchVO {
 			this.recptnTelno[i] = recptnTelno[i];
 	}
 
-	/**
-	 * toString 메소드를 대치한다.
-	 */
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
-	}
-	
 }

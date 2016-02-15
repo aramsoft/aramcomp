@@ -1,6 +1,6 @@
 package aramframework.com.dam.spe.req.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 지식정보제공/지식정보요청 Model and VO Class 구현
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class RequestOfferVO extends SearchVO {
+public class RequestOfferVO extends BaseVO {
 
 	// domain
 	/** 지식ID */

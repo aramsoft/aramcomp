@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.sit.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 사이트정보를 처리하는 VO 클래스
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class SiteManageVO extends SearchVO  {
+public class SiteManageVO extends BaseVO  {
 
 	// domain
 	/** 사이트 ID */

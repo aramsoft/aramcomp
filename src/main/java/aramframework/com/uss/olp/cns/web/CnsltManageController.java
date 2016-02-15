@@ -68,12 +68,12 @@ public class CnsltManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		cnsltManageVO.fillPageInfo(paginationInfo);
+		cnsltManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", cnsltManageService.selectCnsltList(cnsltManageVO));
 
 		int totCnt = cnsltManageService.selectCnsltListCnt(cnsltManageVO);
-		cnsltManageVO.setTotalRecordCount(totCnt);
+		cnsltManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -362,12 +362,12 @@ public class CnsltManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		cnsltManageVO.fillPageInfo(paginationInfo);
+		cnsltManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", cnsltManageService.selectCnsltAnswerList(cnsltManageVO));
 
 		int totCnt = cnsltManageService.selectCnsltAnswerListCnt(cnsltManageVO);
-		cnsltManageVO.setTotalRecordCount(totCnt);
+		cnsltManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

@@ -1,6 +1,6 @@
 package aramframework.com.sec.dpt.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 부서관리VO클래스.
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class DeptVO extends SearchVO {
+public class DeptVO extends BaseVO {
 
 	// domain
 	private String orgnztId;

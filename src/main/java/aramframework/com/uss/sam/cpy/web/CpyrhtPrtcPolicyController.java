@@ -59,12 +59,12 @@ public class CpyrhtPrtcPolicyController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		cpyrhtPrtcPolicyVO.fillPageInfo(paginationInfo);
+		cpyrhtPrtcPolicyVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", cpyrhtPrtcPolicyService.selectCpyrhtPrtcPolicyList(cpyrhtPrtcPolicyVO));
 
 		int totCnt = cpyrhtPrtcPolicyService.selectCpyrhtPrtcPolicyListCnt(cpyrhtPrtcPolicyVO);
-		cpyrhtPrtcPolicyVO.setTotalRecordCount(totCnt);
+		cpyrhtPrtcPolicyVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

@@ -1,6 +1,6 @@
 package aramframework.com.sts.rst.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요
@@ -22,7 +22,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class ReprtStatsVO extends SearchVO {
+public class ReprtStatsVO extends BaseVO {
 
 	// domain
 	/** 보고서ID */

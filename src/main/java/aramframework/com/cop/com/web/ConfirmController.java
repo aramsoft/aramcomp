@@ -75,12 +75,12 @@ public class ConfirmController {
 		confirmHistoryVO.setConfmerId(loginVO.getUniqId());
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
-		confirmHistoryVO.fillPageInfo(paginationInfo);
+		confirmHistoryVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", confirmService.selectConfirmRequestList(confirmHistoryVO));
 
 		int totCnt = confirmService.selectConfirmRequestListCnt(confirmHistoryVO);
-		confirmHistoryVO.setTotalRecordCount(totCnt);
+		confirmHistoryVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

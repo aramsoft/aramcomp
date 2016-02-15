@@ -54,13 +54,13 @@ public class MblIndvdlPgeController {
 		
     	/** paging */
     	PaginationInfo paginationInfo = new PaginationInfo();
-		paginationInfo.setCurrentPageNo(indvdlPgeConfVO.getPageIndex());
+		paginationInfo.setCurrentPageNo(indvdlPgeConfVO.getSearchVO().getPageIndex());
         paginationInfo.setRecordCountPerPage(10);
         paginationInfo.setPageSize(1);
 				
-        indvdlPgeConfVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
-        indvdlPgeConfVO.setLastIndex(paginationInfo.getLastRecordIndex());
-        indvdlPgeConfVO.setRecordPerPage(paginationInfo.getRecordCountPerPage());
+        indvdlPgeConfVO.getSearchVO().setFirstIndex(paginationInfo.getFirstRecordIndex());
+        indvdlPgeConfVO.getSearchVO().setLastIndex(paginationInfo.getLastRecordIndex());
+        indvdlPgeConfVO.getSearchVO().setRecordPerPage(paginationInfo.getRecordCountPerPage());
 		
 		LoginVO loginVO = (LoginVO)UserDetailsHelper.getAuthenticatedUser();
 		indvdlPgeConfVO.setUserId(loginVO.getId());
@@ -135,14 +135,14 @@ public class MblIndvdlPgeController {
 		
     	/** paging */
     	PaginationInfo paginationInfo = new PaginationInfo();
-    	indvdlPgeCntntsVO.fillPageInfo(paginationInfo);
+    	indvdlPgeCntntsVO.getSearchVO().fillPageInfo(paginationInfo);
 		
 		// 사용자가 마이페이지에 컨텐츠를 추가하기 위해 등록되어 있는 마이페이지 목록을 조회한다.
 		modelAndView.addObject("indvdlCntntsList", indvdlPgeService.addIndvdlpgeCntntsList(indvdlPgeCntntsVO));
         
         // 목록의 페이징을 위해 등록되어 있는 마이페이지 개수를 조회한다.
         int totCnt = indvdlPgeService.addIndvdlpgeCntntsListCnt(indvdlPgeCntntsVO);
-        indvdlPgeCntntsVO.setTotalRecordCount(totCnt);
+        indvdlPgeCntntsVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		modelAndView.addObject("paginationInfo", paginationInfo);

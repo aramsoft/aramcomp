@@ -1,6 +1,6 @@
 package aramframework.com.sym.mnu.bmm.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 바로가기메뉴관리를 위한 VO 모델 클래스
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class BkmkMenuManageVO extends SearchVO {
+public class BkmkMenuManageVO extends BaseVO {
 
 	// domain
 	/** 메뉴 아이디 */

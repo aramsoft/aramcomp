@@ -79,12 +79,12 @@ public class VcatnManageController {
 		vcatnManageVO.setApplcntId(loginVO.getUniqId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		vcatnManageVO.fillPageInfo(paginationInfo);
+		vcatnManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", vcatnManageService.selectVcatnManageList(vcatnManageVO));
 
 		int totCnt = vcatnManageService.selectVcatnManageListCnt(vcatnManageVO);
-		vcatnManageVO.setTotalRecordCount(totCnt);
+		vcatnManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -162,10 +162,10 @@ public class VcatnManageController {
 		String resultMessage = null;
 
 		// 시작일자 포함여부
-		vcatnManageVO.setSearchKeyword(StringUtil.removeMinusChar(vcatnManageVO.getBgnde()));
+		vcatnManageVO.getSearchVO().setSearchKeyword(StringUtil.removeMinusChar(vcatnManageVO.getBgnde()));
 		iTemp = vcatnManageService.selectVcatnManageDplctAt(vcatnManageVO);
 		// 종료일자 포함여부
-		vcatnManageVO.setSearchKeyword(StringUtil.removeMinusChar(vcatnManageVO.getEndde()));
+		vcatnManageVO.getSearchVO().setSearchKeyword(StringUtil.removeMinusChar(vcatnManageVO.getEndde()));
 		iTemp += vcatnManageService.selectVcatnManageDplctAt(vcatnManageVO);
 
 		if (iTemp != 0) {
@@ -290,15 +290,15 @@ public class VcatnManageController {
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		vcatnManageVO.setSanctnerId(loginVO.getUniqId()); // 사용자가 승인권자인지 조건값  setting
 
-		vcatnManageVO.setSearchKeyword(vcatnManageVO.getSearchYear() + vcatnManageVO.getSearchMonth());
+		vcatnManageVO.getSearchVO().setSearchKeyword(vcatnManageVO.getSearchYear() + vcatnManageVO.getSearchMonth());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		vcatnManageVO.fillPageInfo(paginationInfo);
+		vcatnManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", vcatnManageService.selectVcatnManageConfmList(vcatnManageVO));
 
 		int totCnt = vcatnManageService.selectVcatnManageConfmListCnt(vcatnManageVO);
-		vcatnManageVO.setTotalRecordCount(totCnt);
+		vcatnManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

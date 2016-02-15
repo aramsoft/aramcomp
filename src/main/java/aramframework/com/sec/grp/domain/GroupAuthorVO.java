@@ -1,6 +1,6 @@
 package aramframework.com.sec.grp.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 권한그룹에 대한 model 클래스를 정의한다.
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class GroupAuthorVO extends SearchVO {
+public class GroupAuthorVO extends BaseVO {
 	
 	/** 설정대상 사용자 ID	 */
 	private String userId;

@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.nws.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 뉴스정보를 처리하는 VO 클래스
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class NewsManageVO extends SearchVO  {
+public class NewsManageVO extends BaseVO  {
 
 	// domain
 	/** 뉴스 ID */

@@ -402,9 +402,9 @@ public class CmyMenuHomeController {
 			boardVO.setBbsId(boardMasterVO.getBbsId());
 			boardVO.setBoardMasterVO(boardMasterVO);
 
-			boardVO.setPageSize(5);
-			boardVO.setFirstIndex(0);
-			boardVO.setRecordPerPage(5);
+			boardVO.getSearchVO().setPageSize(5);
+			boardVO.getSearchVO().setFirstIndex(0);
+			boardVO.getSearchVO().setRecordPerPage(5);
 
 			target.add(boardService.selectBoardArticleList(boardVO));
 		}
@@ -478,7 +478,7 @@ public class CmyMenuHomeController {
 		
 		model.addAttribute("contentUrl", "/cop/cmy/previewCmmntyMainContents.do");
 		
-		String tmplatCours = communityVO.getSearchKeyword();
+		String tmplatCours = communityVO.getSearchVO().getSearchKeyword();
 		return tmplatCours;
 	}
 

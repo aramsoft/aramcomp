@@ -92,12 +92,12 @@ public class CmyBBSMasterController {
 		}
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
-		boardMasterVO.fillPageInfo(paginationInfo);
+		boardMasterVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", bbsMasterService.selectBdMstrListByTrget(boardMasterVO));
 
 		int totCnt = bbsMasterService.selectBdMstrListCntByTrget(boardMasterVO);
-		boardMasterVO.setTotalRecordCount(totCnt);
+		boardMasterVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

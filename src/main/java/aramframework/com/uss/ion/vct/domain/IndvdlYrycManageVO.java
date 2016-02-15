@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.vct.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요 - 개인별 연차관리에 대한 model 클래스를 정의한다.
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class IndvdlYrycManageVO extends SearchVO {
+public class IndvdlYrycManageVO extends BaseVO {
 
 	// domain
 	/** 사용자ID */

@@ -1,9 +1,7 @@
 package aramframework.com.cop.bbs.domain;
 
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.cmm.util.WebUtil;
 
 /**
@@ -25,7 +23,7 @@ import aramframework.com.cmm.util.WebUtil;
  * </pre>
  */
 
-public class BoardMasterVO extends SearchVO {
+public class BoardMasterVO extends BaseVO {
 
 	// domain
 	/** 게시판 아이디 */
@@ -477,11 +475,4 @@ public class BoardMasterVO extends SearchVO {
 		this.trgetId = trgetId;
 	}
 
-	/**
-	 * toString 메소드를 대치한다.
-	 */
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
-	}
-	
 }

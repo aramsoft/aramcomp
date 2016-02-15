@@ -61,12 +61,12 @@ public class KnoManagementController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		knoManagementVO.fillPageInfo(paginationInfo);
+		knoManagementVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", knoManagementService.selectKnoManagementList(knoManagementVO));
 
 		int totCnt = knoManagementService.selectKnoManagementListCnt(knoManagementVO);
-		knoManagementVO.setTotalRecordCount(totCnt);
+		knoManagementVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

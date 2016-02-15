@@ -1,6 +1,6 @@
 package aramframework.com.uat.uap.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요
@@ -22,7 +22,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class LoginPolicyVO extends SearchVO {
+public class LoginPolicyVO extends BaseVO {
 
 	// domain
 	/** 사용자 ID */

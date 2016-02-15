@@ -69,15 +69,15 @@ public class ReprtStatsController {
 			ModelMap model) {
 
 //		reprtStatsVO.setPageSize(propertyService.getInt("pageSize"));
-		reprtStatsVO.setRecordPerPage(5);
+		reprtStatsVO.getSearchVO().setRecordPerPage(5);
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		reprtStatsVO.fillPageInfo(paginationInfo);
+		reprtStatsVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", reprtStatsService.selectReprtStatsList(reprtStatsVO));
 
 		int totPageCnt = reprtStatsService.selectReprtStatsListCnt(reprtStatsVO);
-		reprtStatsVO.setTotalRecordCount(totPageCnt);
+		reprtStatsVO.getSearchVO().setTotalRecordCount(totPageCnt);
 
 		paginationInfo.setTotalRecordCount(totPageCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

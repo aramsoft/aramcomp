@@ -1,6 +1,6 @@
 package aramframework.com.uss.mpe.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요 - 마이페이지 컨텐츠에 대한 VO 클래스를 정의한다.
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class IndvdlPgeCntntsVO extends SearchVO {
+public class IndvdlPgeCntntsVO extends BaseVO {
 
 	// domain
 	/** 컨텐츠 아이디 */

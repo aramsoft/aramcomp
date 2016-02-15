@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.ecc.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 행사/이벤트/캠페인 VO Class 구현
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class EventCmpgnVO extends SearchVO {
+public class EventCmpgnVO extends BaseVO {
 
 	// domain
 	/** 행사/이벤트/캠페인ID */

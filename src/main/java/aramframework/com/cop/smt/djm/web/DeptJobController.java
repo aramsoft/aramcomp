@@ -129,7 +129,7 @@ public class DeptJobController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		deptJobBxVO.fillPageInfo(paginationInfo);
+		deptJobBxVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		List<EgovMap> list = deptJobService.selectDeptJobBxList(deptJobBxVO);
 
@@ -137,7 +137,7 @@ public class DeptJobController {
 		model.addAttribute("resultNum", list.size());
 
 		int totCnt = deptJobService.selectDeptJobBxListCnt(deptJobBxVO);
-		deptJobBxVO.setTotalRecordCount(totCnt);
+		deptJobBxVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -337,12 +337,12 @@ public class DeptJobController {
 		}
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		deptJobVO.fillPageInfo(paginationInfo);
+		deptJobVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", deptJobService.selectDeptJobList(deptJobVO));
 
 		int totCnt = deptJobService.selectDeptJobListCnt(deptJobVO);
-		deptJobVO.setTotalRecordCount(totCnt);
+		deptJobVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

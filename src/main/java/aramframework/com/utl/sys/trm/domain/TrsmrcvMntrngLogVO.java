@@ -1,6 +1,6 @@
 package aramframework.com.utl.sys.trm.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 송수신모니터링Log에 대한 model 클래스
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class TrsmrcvMntrngLogVO extends SearchVO {
+public class TrsmrcvMntrngLogVO extends BaseVO {
 
 	// domain
 	/** 로그ID */

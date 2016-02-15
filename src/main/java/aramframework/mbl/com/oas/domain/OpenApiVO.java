@@ -2,7 +2,7 @@ package aramframework.mbl.com.oas.domain;
 
 import java.util.Date;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요
@@ -27,7 +27,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class OpenApiVO extends SearchVO {
+public class OpenApiVO extends BaseVO {
 
 	// domain
 	/** 순번     */

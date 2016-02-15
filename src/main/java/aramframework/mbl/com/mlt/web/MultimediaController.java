@@ -94,8 +94,8 @@ public class MultimediaController {
 
         MultimediaVO multimediaVO = new MultimediaVO();
 
-        multimediaVO.setFirstIndex(0);
-        multimediaVO.setRecordPerPage(1000);
+        multimediaVO.getSearchVO().setFirstIndex(0);
+        multimediaVO.getSearchVO().setRecordPerPage(1000);
 
         modelAndView.addObject("resultList", multimediaService.selectMultimediaList(multimediaVO));
         modelAndView.addObject("fileInfoList", multimediaService.getMultimediaFileInfoFromXML());
@@ -139,12 +139,12 @@ public class MultimediaController {
             ModelMap model) {
     	
         PaginationInfo paginationInfo = new PaginationInfo();
-        multimediaVO.fillPageInfo(paginationInfo);
+        multimediaVO.getSearchVO().fillPageInfo(paginationInfo);
 
         model.addAttribute("resultList", multimediaService.selectMultimediaList(multimediaVO));
 
         int totCnt = multimediaService.selectMultimediaListCnt(multimediaVO);
-        multimediaVO.setTotalRecordCount(totCnt);
+        multimediaVO.getSearchVO().setTotalRecordCount(totCnt);
 
         paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);

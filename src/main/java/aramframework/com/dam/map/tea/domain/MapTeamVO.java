@@ -1,8 +1,6 @@
 package aramframework.com.dam.map.tea.domain;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요 - 지식맵(조직별)에 대한 Vo 클래스를 정의한다.
@@ -23,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class MapTeamVO extends SearchVO {
+public class MapTeamVO extends BaseVO {
 
 	// domain
 	/** 조직ID */
@@ -67,11 +65,4 @@ public class MapTeamVO extends SearchVO {
 		this.knoUrl = knoUrl;
 	}
 
-	/**
-	 * toString 메소드를 대치한다.
-	 */
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
-	}
-	
 }

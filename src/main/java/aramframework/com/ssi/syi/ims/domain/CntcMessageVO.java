@@ -1,6 +1,6 @@
 package aramframework.com.ssi.syi.ims.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 연계메시지 VO 클래스
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class CntcMessageVO extends SearchVO  {
+public class CntcMessageVO extends BaseVO  {
 
 	// domain
 	/** 연계메시지ID */

@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.ecc.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 외부인사관리 VO Class 구현
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class TnextrlHrInfoVO extends SearchVO {
+public class TnextrlHrInfoVO extends BaseVO {
 
 	// domain
 	/** 행사/이벤트/캠페인 아이디 */

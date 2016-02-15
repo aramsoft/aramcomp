@@ -57,13 +57,13 @@ public class MblCnsltManageController {
     	
     	/** paging setting */
     	PaginationInfo paginationInfo = new PaginationInfo();
-    	cnsltManageVO.fillPageInfo(paginationInfo);
+    	cnsltManageVO.getSearchVO().fillPageInfo(paginationInfo);
 		
 		model.addAttribute("cnsltManageList", cnsltManageService.selectCnsltList(cnsltManageVO));
         
         /** paging */
         int totCnt = cnsltManageService.selectCnsltListCnt(cnsltManageVO);
-        cnsltManageVO.setTotalRecordCount(totCnt);
+        cnsltManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

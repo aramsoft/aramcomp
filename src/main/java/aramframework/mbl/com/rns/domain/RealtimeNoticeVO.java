@@ -1,6 +1,6 @@
 package aramframework.mbl.com.rns.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요
@@ -25,7 +25,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class RealtimeNoticeVO extends SearchVO  {
+public class RealtimeNoticeVO extends BaseVO  {
 
 	/** 실시간 공지 서비스 일련번호	 */
 	private int sn = 0;

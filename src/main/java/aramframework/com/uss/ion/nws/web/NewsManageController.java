@@ -63,12 +63,12 @@ public class NewsManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		newsManageVO.fillPageInfo(paginationInfo);
+		newsManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", newsManageService.selectNewsList(newsManageVO));
 
 		int totCnt = newsManageService.selectNewsListCnt(newsManageVO);
-		newsManageVO.setTotalRecordCount(totCnt);
+		newsManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

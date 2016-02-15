@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.evt.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요 - 행사참석자에 대한 Vo 클래스를 정의한다.
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class EventAtdrnVO  extends SearchVO  {
+public class EventAtdrnVO  extends BaseVO  {
 
 	// domain
 	/** 신청자ID */

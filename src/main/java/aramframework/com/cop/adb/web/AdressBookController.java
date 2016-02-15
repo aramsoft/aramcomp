@@ -75,12 +75,12 @@ public class AdressBookController {
 		model.addAttribute("userId", loginVO.getId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		adressBookVO.fillPageInfo(paginationInfo);
+		adressBookVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", adressBookService.selectAdressBookList(adressBookVO));
 
 		int totCnt = adressBookService.selectAdressBookListCnt(adressBookVO);
-		adressBookVO.setTotalRecordCount(totCnt);
+		adressBookVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -378,11 +378,11 @@ public class AdressBookController {
 		adressBookVO.setWrterId(loginVO.getId());
 		adressBookVO.setTrgetOrgnztId(loginVO.getOrgnztId());
 
-		adressBookVO.setFirstIndex(0);
-		adressBookVO.setRecordPerPage(5);
+		adressBookVO.getSearchVO().setFirstIndex(0);
+		adressBookVO.getSearchVO().setRecordPerPage(5);
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		adressBookVO.fillPageInfo(paginationInfo);
+		adressBookVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", adressBookService.selectAdressBookList(adressBookVO));
 

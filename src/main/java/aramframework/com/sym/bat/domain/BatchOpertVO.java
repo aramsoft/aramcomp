@@ -1,6 +1,6 @@
 package aramframework.com.sym.bat.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 배치작업관리에 대한 model 클래스
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class BatchOpertVO extends SearchVO {
+public class BatchOpertVO extends BaseVO {
 
 	// domain
 	/** 배치작업ID */

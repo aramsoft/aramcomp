@@ -64,12 +64,12 @@ public class TrsmrcvMntrngController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		trsmrcvMntrngVO.fillPageInfo(paginationInfo);
+		trsmrcvMntrngVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", trsmrcvMntrngService.selectTrsmrcvMntrngList(trsmrcvMntrngVO));
 
 		int totCnt = trsmrcvMntrngService.selectTrsmrcvMntrngListCnt(trsmrcvMntrngVO);
-		trsmrcvMntrngVO.setTotalRecordCount(totCnt);
+		trsmrcvMntrngVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -221,12 +221,12 @@ public class TrsmrcvMntrngController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		trsmrcvMntrngLogVO.fillPageInfo(paginationInfo);
+		trsmrcvMntrngLogVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", trsmrcvMntrngService.selectTrsmrcvMntrngLogList(trsmrcvMntrngLogVO));
 
 		int totCnt = trsmrcvMntrngService.selectTrsmrcvMntrngLogListCnt(trsmrcvMntrngLogVO);
-		trsmrcvMntrngLogVO.setTotalRecordCount(totCnt);
+		trsmrcvMntrngLogVO.getSearchVO().setTotalRecordCount(totCnt);
 	
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

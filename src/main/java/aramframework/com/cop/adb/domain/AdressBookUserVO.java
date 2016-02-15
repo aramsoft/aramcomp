@@ -1,6 +1,6 @@
 package aramframework.com.cop.adb.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 주소록구성원 관리를 위한 VO 모델 클래스
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class AdressBookUserVO extends SearchVO {
+public class AdressBookUserVO extends BaseVO {
 
 	// domain
 	/** 주소록구성원 아이디 */

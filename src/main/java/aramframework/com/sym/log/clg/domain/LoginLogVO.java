@@ -1,6 +1,6 @@
 package aramframework.com.sym.log.clg.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 로그인 로그관리를 위한 VO 클래스
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class LoginLogVO extends SearchVO {
+public class LoginLogVO extends BaseVO {
 
 	// domain
 	/** 로그ID */

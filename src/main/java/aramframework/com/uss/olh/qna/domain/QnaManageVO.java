@@ -1,6 +1,6 @@
 package aramframework.com.uss.olh.qna.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * Q&A를 처리하는 VO 클래스
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class QnaManageVO extends SearchVO  {
+public class QnaManageVO extends BaseVO  {
 
 	// domain
 	/** QA ID */

@@ -70,12 +70,12 @@ public class ServerController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		serverEqpmnVO.fillPageInfo(paginationInfo);
+		serverEqpmnVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", serverService.selectServerEqpmnList(serverEqpmnVO));
 
 		int totCnt = serverService.selectServerEqpmnListCnt(serverEqpmnVO);
-		serverEqpmnVO.setTotalRecordCount(totCnt);
+		serverEqpmnVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -208,12 +208,12 @@ public class ServerController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		serverVO.fillPageInfo(paginationInfo);
+		serverVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", serverService.selectServerList(serverVO));
 
 		int totCnt = serverService.selectServerListCnt(serverVO);
-		serverVO.setTotalRecordCount(totCnt);
+		serverVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -353,12 +353,12 @@ public class ServerController {
 			ModelMap model)  {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		serverEqpmnRelateVO.fillPageInfo(paginationInfo);
+		serverEqpmnRelateVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", serverService.selectServerEqpmnRelateList(serverEqpmnRelateVO));
 
 		int totCnt = serverService.selectServerEqpmnRelateListCnt(serverEqpmnRelateVO);
-		serverEqpmnRelateVO.setTotalRecordCount(totCnt);
+		serverEqpmnRelateVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

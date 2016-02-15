@@ -56,12 +56,12 @@ public class MblOnlinePollPartcptnController {
 
         /** pageing */
         PaginationInfo paginationInfo = new PaginationInfo();
-        onlinePollPartcptnVO.fillPageInfo(paginationInfo);
+        onlinePollPartcptnVO.getSearchVO().fillPageInfo(paginationInfo);
 
         model.addAttribute("resultList", onlinePollPartcptnService.selectOnlinePollManageList(onlinePollPartcptnVO));
 
         int totCnt = (Integer) onlinePollPartcptnService.selectOnlinePollManageListCnt(onlinePollPartcptnVO);
-        onlinePollPartcptnVO.setTotalRecordCount(totCnt);
+        onlinePollPartcptnVO.getSearchVO().setTotalRecordCount(totCnt);
  
         paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
@@ -174,7 +174,7 @@ public class MblOnlinePollPartcptnController {
 
         /** pageing */
         PaginationInfo paginationInfo = new PaginationInfo();
-        onlinePollPartcptnVO.fillPageInfo(paginationInfo);
+        onlinePollPartcptnVO.getSearchVO().fillPageInfo(paginationInfo);
 
         model.addAttribute("resultList", onlinePollPartcptnService.selectOnlinePollManageList(onlinePollPartcptnVO));
         model.addAttribute("paginationInfo", paginationInfo);

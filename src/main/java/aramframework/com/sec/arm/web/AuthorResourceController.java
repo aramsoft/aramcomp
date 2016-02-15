@@ -52,23 +52,23 @@ public class AuthorResourceController {
 			ModelMap model) {
 
 		if ( !(authorCodeForResources == null || authorCodeForResources.equals("")) ) {
-			authorResourceVO.setSaveSearchKeyword(authorResourceVO.getSearchKeyword());
-			authorResourceVO.setSaveSearchCondition(authorResourceVO.getSearchCondition());
+			authorResourceVO.setSaveSearchKeyword(authorResourceVO.getSearchVO().getSearchKeyword());
+			authorResourceVO.setSaveSearchCondition(authorResourceVO.getSearchVO().getSearchCondition());
 			authorResourceVO.setSavePageIndex(authorResourceVO.getSavePageIndex());
 			
-			authorResourceVO.setSearchKeyword(authorCodeForResources);
-			authorResourceVO.setSearchCondition("1");
-			authorResourceVO.setPageIndex(1);
+			authorResourceVO.getSearchVO().setSearchKeyword(authorCodeForResources);
+			authorResourceVO.getSearchVO().setSearchCondition("1");
+			authorResourceVO.getSearchVO().setPageIndex(1);
 			authorResourceVO.setAuthorCode(authorCodeForResources);
 		}
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
-		authorResourceVO.fillPageInfo(paginationInfo);
+		authorResourceVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", authorResourceService.selectAuthorResourceList(authorResourceVO));
 
 		int totCnt = authorResourceService.selectAuthorResourceListCnt(authorResourceVO);
-		authorResourceVO.setTotalRecordCount(totCnt);
+		authorResourceVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

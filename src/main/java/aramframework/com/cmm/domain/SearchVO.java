@@ -1,9 +1,5 @@
 package aramframework.com.cmm.domain;
 
-import java.util.Date;
-
-import javax.xml.bind.annotation.XmlTransient;
-
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
@@ -31,12 +27,19 @@ public class SearchVO {
 	/** 검색조건 */
 	private String searchCondition = "";
 
-	/** 검색Keyword */
-	private String searchKeyword = "";
-
 	/** 검색사용여부 */
 	private String searchUseYn = "";
 
+	/** 검색Keyword */
+	private String searchKeyword = "";
+
+	/** 검색KeywordFrom */
+	private String searchKeywordFrom = "";
+
+	/** 검색KeywordTo */
+	private String searchKeywordTo = "";
+
+	// page 관련
 	/** 현재페이지 */
 	private int pageIndex = 1;
 
@@ -54,35 +57,6 @@ public class SearchVO {
 
 	/** totalRecordCount */
 	private int totalRecordCount = 0;
-
-	/** 검색KeywordFrom */
-	private String searchKeywordFrom = "";
-
-	/** 검색KeywordTo */
-	private String searchKeywordTo = "";
-
-	// rest 관련
-	// path id for rest
-	protected String pathId = "";
-	
-	// DB 공통
-	/** 최초등록자 아이디 */
-	private String frstRegisterId = "";
-
-	/** 최초 등록자명 */
-	private String frstRegisterNm = "";
-
-	/** 최초등록시점 */
-	private Date frstRegisterPnttm = null;
-
-	/** 최종수정자 아이디 */
-	private String lastUpdusrId = "";
-
-	/** 최종 수정자명 */
-	private String lastUpdusrNm = "";
-
-	/** 최종수정시점 */
-	private Date lastUpdusrPnttm = null;
 
 	// PaginationInfo 값을 채운다.
 	public void fillPageInfo(PaginationInfo paginationInfo) {
@@ -108,28 +82,8 @@ public class SearchVO {
 	 * @param searchCondition
 	 *            String
 	 */
-	@XmlTransient 
 	public void setSearchCondition(String searchCondition) {
 		this.searchCondition = searchCondition;
-	}
-
-	/**
-	 * searchKeyword attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getSearchKeyword() {
-		return searchKeyword;
-	}
-	/**
-	 * searchKeyword attribute 값을 설정한다.
-	 * 
-	 * @param searchKeyword
-	 *            String
-	 */
-	@XmlTransient 
-	public void setSearchKeyword(String searchKeyword) {
-		this.searchKeyword = searchKeyword;
 	}
 
 	/**
@@ -146,123 +100,26 @@ public class SearchVO {
 	 * @param searchUseYn
 	 *            String
 	 */
-	@XmlTransient 
 	public void setSearchUseYn(String searchUseYn) {
 		this.searchUseYn = searchUseYn;
 	}
 
 	/**
-	 * pageIndex attribute 값을 리턴한다.
+	 * searchKeyword attribute 값을 리턴한다.
 	 * 
-	 * @return int
+	 * @return String
 	 */
-	public int getPageIndex() {
-		return pageIndex;
+	public String getSearchKeyword() {
+		return searchKeyword;
 	}
 	/**
-	 * pageIndex attribute 값을 설정한다.
+	 * searchKeyword attribute 값을 설정한다.
 	 * 
-	 * @param pageIndex
-	 *            int
+	 * @param searchKeyword
+	 *            String
 	 */
-	@XmlTransient 
-	public void setPageIndex(int pageIndex) {
-		this.pageIndex = pageIndex;
-	}
-
-	/**
-	 * pageSize attribute 값을 리턴한다.
-	 * 
-	 * @return int
-	 */
-	public int getPageSize() {
-		return pageSize;
-	}
-	/**
-	 * pageSize attribute 값을 설정한다.
-	 * 
-	 * @param pageSize
-	 *            int
-	 */
-	@XmlTransient 
-	public void setPageSize(int pageSize) {
-		this.pageSize = pageSize;
-	}
-
-	/**
-	 * firstIndex attribute 값을 리턴한다.
-	 * 
-	 * @return int
-	 */
-	public int getFirstIndex() {
-		return firstIndex;
-	}
-	/**
-	 * firstIndex attribute 값을 설정한다.
-	 * 
-	 * @param firstIndex
-	 *            int
-	 */
-	@XmlTransient 
-	public void setFirstIndex(int firstIndex) {
-		this.firstIndex = firstIndex;
-	}
-
-	/**
-	 * lastIndex attribute 값을 리턴한다.
-	 * 
-	 * @return int
-	 */
-	public int getLastIndex() {
-		return lastIndex;
-	}
-	/**
-	 * lastIndex attribute 값을 설정한다.
-	 * 
-	 * @param lastIndex
-	 *            int
-	 */
-	@XmlTransient 
-	public void setLastIndex(int lastIndex) {
-		this.lastIndex = lastIndex;
-	}
-
-	/**
-	 * recordPerPage attribute 값을 리턴한다.
-	 * 
-	 * @return int
-	 */
-	public int getRecordPerPage() {
-		return recordPerPage;
-	}
-	/**
-	 * recordPerPage attribute 값을 설정한다.
-	 * 
-	 * @param recordPerPage
-	 *            int
-	 */
-	@XmlTransient 
-	public void setRecordPerPage(int recordPerPage) {
-		this.recordPerPage = recordPerPage;
-	}
-	
-	/**
-	 * totalRecordCount attribute 값을 리턴한다.
-	 * 
-	 * @return int
-	 */
-	public int getTotalRecordCount() {
-		return totalRecordCount;
-	}
-	/**
-	 * totalRecordCount attribute 값을 설정한다.
-	 * 
-	 * @param totalRecordCount
-	 *            int
-	 */
-	@XmlTransient 
-	public void setTotalRecordCount(int totalRecordCount) {
-		this.totalRecordCount = totalRecordCount;
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
 	}
 
 	/**
@@ -279,7 +136,6 @@ public class SearchVO {
 	 * @param searchKeywordFrom
 	 *            String
 	 */
-	@XmlTransient 
 	public void setSearchKeywordFrom(String searchKeywordFrom) {
 		this.searchKeywordFrom = searchKeywordFrom;
 	}
@@ -298,138 +154,116 @@ public class SearchVO {
 	 * @param searchKeywordTo
 	 *            String
 	 */
-	@XmlTransient 
 	public void setSearchKeywordTo(String searchKeywordTo) {
 		this.searchKeywordTo = searchKeywordTo;
 	}
 
-	// common
 	/**
-	 * pathId attribute 값을 리턴한다.
+	 * pageIndex attribute 값을 리턴한다.
 	 * 
-	 * @return String
+	 * @return int
 	 */
-	public String getPathId() {
-		return pathId;
+	public int getPageIndex() {
+		return pageIndex;
 	}
 	/**
-	 * pathId attribute 값을 설정한다.
+	 * pageIndex attribute 값을 설정한다.
 	 * 
-	 * @param pathId
-	 *            String
+	 * @param pageIndex
+	 *            int
 	 */
-/*
-	@XmlTransient 
-	public void setPathId(String pathId) {
-		this.pathId = pathId;
-	}
-*/
-	/**
-	 * frstRegisterId attribute를 리턴한다.
-	 * 
-	 * @return the frstRegisterId
-	 */
-	public String getFrstRegisterId() {
-		return frstRegisterId;
-	}
-	/**
-	 * frstRegisterId attribute 값을 설정한다.
-	 * 
-	 * @param frstRegisterId
-	 *            the frstRegisterId to set
-	 */
-	public void setFrstRegisterId(String frstRegisterId) {
-		this.frstRegisterId = frstRegisterId;
+	public void setPageIndex(int pageIndex) {
+		this.pageIndex = pageIndex;
 	}
 
 	/**
-	 * frstRegisterNm attribute를 리턴한다.
+	 * pageSize attribute 값을 리턴한다.
 	 * 
-	 * @return the frstRegisterNm
+	 * @return int
 	 */
-	public String getFrstRegisterNm() {
-		return frstRegisterNm;
+	public int getPageSize() {
+		return pageSize;
 	}
 	/**
-	 * frstRegisterNm attribute 값을 설정한다.
+	 * pageSize attribute 값을 설정한다.
 	 * 
-	 * @param frstRegisterNm
-	 *            the frstRegisterNm to set
+	 * @param pageSize
+	 *            int
 	 */
-	public void setFrstRegisterNm(String frstRegisterNm) {
-		this.frstRegisterNm = frstRegisterNm;
-	}
-
-	/**
-	 * frstRegisterPnttm attribute를 리턴한다.
-	 * 
-	 * @return the frstRegisterPnttm
-	 */
-	public Date getFrstRegisterPnttm() {
-		return frstRegisterPnttm;
-	}
-	/**
-	 * frstRegisterPnttm attribute 값을 설정한다.
-	 * 
-	 * @param frstRegisterPnttm
-	 *            the frstRegisterPnttm to set
-	 */
-	public void setFrstRegisterPnttm(Date frstRegisterPnttm) {
-		this.frstRegisterPnttm = frstRegisterPnttm;
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
 	}
 
 	/**
-	 * lastUpdusrId attribute를 리턴한다.
+	 * firstIndex attribute 값을 리턴한다.
 	 * 
-	 * @return the lastUpdusrId
+	 * @return int
 	 */
-	public String getLastUpdusrId() {
-		return lastUpdusrId;
+	public int getFirstIndex() {
+		return firstIndex;
 	}
 	/**
-	 * lastUpdusrId attribute 값을 설정한다.
+	 * firstIndex attribute 값을 설정한다.
 	 * 
-	 * @param AdbkNm
-	 *            the lastUpdusrId to set
+	 * @param firstIndex
+	 *            int
 	 */
-	public void setLastUpdusrId(String lastUpdusrId) {
-		this.lastUpdusrId = lastUpdusrId;
-	}
-
-	/**
-	 * lastUpdusrNm attribute를 리턴한다.
-	 * 
-	 * @return the lastUpdusrNm
-	 */
-	public String getLastUpdusrNm() {
-		return lastUpdusrNm;
-	}
-	/**
-	 * lastUpdusrNm attribute 값을 설정한다.
-	 * 
-	 * @param lastUpdusrNm
-	 *            the lastUpdusrNm to set
-	 */
-	public void setLastUpdusrNm(String lastUpdusrNm) {
-		this.lastUpdusrNm = lastUpdusrNm;
+	public void setFirstIndex(int firstIndex) {
+		this.firstIndex = firstIndex;
 	}
 
 	/**
-	 * lastUpdusrPnttm attribute를 리턴한다.
+	 * lastIndex attribute 값을 리턴한다.
 	 * 
-	 * @return the lastUpdusrPnttm
+	 * @return int
 	 */
-	public Date getLastUpdusrPnttm() {
-		return lastUpdusrPnttm;
+	public int getLastIndex() {
+		return lastIndex;
 	}
 	/**
-	 * lastUpdusrPnttm attribute 값을 설정한다.
+	 * lastIndex attribute 값을 설정한다.
 	 * 
-	 * @param lastUpdusrPnttm
-	 *            the lastUpdusrPnttm to set
+	 * @param lastIndex
+	 *            int
 	 */
-	public void setLastUpdusrPnttm(Date lastUpdusrPnttm) {
-		this.lastUpdusrPnttm = lastUpdusrPnttm;
+	public void setLastIndex(int lastIndex) {
+		this.lastIndex = lastIndex;
+	}
+
+	/**
+	 * recordPerPage attribute 값을 리턴한다.
+	 * 
+	 * @return int
+	 */
+	public int getRecordPerPage() {
+		return recordPerPage;
+	}
+	/**
+	 * recordPerPage attribute 값을 설정한다.
+	 * 
+	 * @param recordPerPage
+	 *            int
+	 */
+	public void setRecordPerPage(int recordPerPage) {
+		this.recordPerPage = recordPerPage;
+	}
+	
+	/**
+	 * totalRecordCount attribute 값을 리턴한다.
+	 * 
+	 * @return int
+	 */
+	public int getTotalRecordCount() {
+		return totalRecordCount;
+	}
+	/**
+	 * totalRecordCount attribute 값을 설정한다.
+	 * 
+	 * @param totalRecordCount
+	 *            int
+	 */
+	public void setTotalRecordCount(int totalRecordCount) {
+		this.totalRecordCount = totalRecordCount;
 	}
 
 }

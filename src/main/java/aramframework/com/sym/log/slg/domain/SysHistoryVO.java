@@ -2,7 +2,7 @@ package aramframework.com.sym.log.slg.domain;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 시스템 처리 이력관리를 위한 데이터 객체
@@ -23,7 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class SysHistoryVO extends SearchVO {
+public class SysHistoryVO extends BaseVO {
 
 	// domain
 	/** 생성일시 */

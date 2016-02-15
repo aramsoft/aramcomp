@@ -56,13 +56,13 @@ public class MblQnaManageController {
 
     	/** pageing */
     	PaginationInfo paginationInfo = new PaginationInfo();
-    	qnaManageVO.fillPageInfo(paginationInfo);
+    	qnaManageVO.getSearchVO().fillPageInfo(paginationInfo);
 		
 		model.addAttribute("qnaManageList", qnaManageService.selectQnaList(qnaManageVO));
         
         /** paging */
         int totCnt = qnaManageService.selectQnaListCnt(qnaManageVO);
-        qnaManageVO.setTotalRecordCount(totCnt);
+        qnaManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

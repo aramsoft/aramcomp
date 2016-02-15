@@ -1,6 +1,6 @@
 package aramframework.com.uss.olp.cns.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 상담내용을 처리하는 VO 클래스
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class CnsltManageVO extends SearchVO  {
+public class CnsltManageVO extends BaseVO  {
 
 	// domain
 	/** 상담 ID */

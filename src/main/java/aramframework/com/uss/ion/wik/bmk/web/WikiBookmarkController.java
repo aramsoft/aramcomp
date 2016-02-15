@@ -60,12 +60,12 @@ public class WikiBookmarkController {
 		wikiBookmarkVO.setFrstRegisterId(loginVO.getUniqId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		wikiBookmarkVO.fillPageInfo(paginationInfo);
+		wikiBookmarkVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", wikiBookmarkService.selectWikiBookmarkList(wikiBookmarkVO));
 
 		int totCnt = (Integer) wikiBookmarkService.selectWikiBookmarkListCnt(wikiBookmarkVO);
-		wikiBookmarkVO.setTotalRecordCount(totCnt);
+		wikiBookmarkVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -104,7 +104,7 @@ public class WikiBookmarkController {
 		}
 
 		// 페이지 인텍스 설정
-		wikiBookmarkVO.setPageIndex(1);
+		wikiBookmarkVO.getSearchVO().setPageIndex(1);
 
 		return WebUtil.adjustViewName("/uss/ion/wik/bmk/WikiBookmarkList");
 	}

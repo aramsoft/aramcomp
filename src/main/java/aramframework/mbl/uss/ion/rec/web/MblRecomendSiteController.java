@@ -61,12 +61,12 @@ public class MblRecomendSiteController {
     	
 		/** paging */
 		PaginationInfo paginationInfo = new PaginationInfo();
-		recomendSiteVO.fillPageInfo(paginationInfo);
+		recomendSiteVO.getSearchVO().fillPageInfo(paginationInfo);
 		
 		modelAndView.addObject("resultList", recomendSiteService.selectRecomendSiteList(recomendSiteVO));
         
         int totCnt = recomendSiteService.selectRecomendSiteListCnt(recomendSiteVO);
-        recomendSiteVO.setTotalRecordCount(totCnt);
+        recomendSiteVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		modelAndView.addObject("paginationInfo", paginationInfo);
@@ -100,12 +100,12 @@ public class MblRecomendSiteController {
     	
 		/** paging */
 		PaginationInfo paginationInfo = new PaginationInfo();
-		recomendSiteVO.fillPageInfo(paginationInfo);
+		recomendSiteVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", recomendSiteService.selectRecomendSiteList(recomendSiteVO));
         
         int totCnt = recomendSiteService.selectRecomendSiteListCnt(recomendSiteVO);
-        recomendSiteVO.setTotalRecordCount(totCnt);
+        recomendSiteVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

@@ -1,6 +1,6 @@
 package aramframework.com.uss.sam.stp.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 약관내용을 처리하는 VO 클래스
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class StplatManageVO extends SearchVO {
+public class StplatManageVO extends BaseVO {
 
 	// domain
 	/** 이용약관 ID */

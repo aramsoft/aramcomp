@@ -1,6 +1,6 @@
 package aramframework.mbl.com.ows.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요
@@ -25,7 +25,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class OfflineWebVO extends SearchVO {
+public class OfflineWebVO extends BaseVO {
 
 	// domain
 	/** 오프라인웹 서비스 일련번호	 */

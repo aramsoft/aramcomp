@@ -1,6 +1,6 @@
 package aramframework.com.utl.sys.dbm.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * DB서비스모니터링로그에 대한 model 클래스
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class DbMntrngLogVO extends SearchVO {
+public class DbMntrngLogVO extends BaseVO {
 
 	// domain
 	/** 로그ID */

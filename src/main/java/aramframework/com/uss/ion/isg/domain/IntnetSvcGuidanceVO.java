@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.isg.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요
@@ -22,7 +22,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class IntnetSvcGuidanceVO extends SearchVO {
+public class IntnetSvcGuidanceVO extends BaseVO {
 
 	// domain
 	/** 인터넷서비스ID */

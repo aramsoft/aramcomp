@@ -63,12 +63,12 @@ public class FaqManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		faqManageVO.fillPageInfo(paginationInfo);
+		faqManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", faqManageService.selectFaqList(faqManageVO));
 
 		int totCnt = faqManageService.selectFaqListCnt(faqManageVO);
-		faqManageVO.setTotalRecordCount(totCnt);
+		faqManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

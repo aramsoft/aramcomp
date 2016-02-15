@@ -1,6 +1,6 @@
 package aramframework.com.sym.sym.nwk.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요 - 네트워크에 대한 Vo 클래스를 정의한다.
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class NtwrkVO extends SearchVO {
+public class NtwrkVO extends BaseVO {
 
 	// domain
 	/** 네트워크ID */

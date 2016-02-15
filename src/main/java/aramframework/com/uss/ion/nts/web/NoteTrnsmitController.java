@@ -107,19 +107,19 @@ public class NoteTrnsmitController {
 			}
 
 			// 삭제후 페이지 인덱스 설정
-			noteTrnsmitVO.setPageIndex(1);
+			noteTrnsmitVO.getSearchVO().setPageIndex(1);
 		}
 
 		// 발신자설정
 		noteTrnsmitVO.setTrnsmiterId(loginVO.getUniqId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		noteTrnsmitVO.fillPageInfo(paginationInfo);
+		noteTrnsmitVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", noteTrnsmitService.selectNoteTrnsmitList(noteTrnsmitVO));
 
 		int totCnt = (Integer) noteTrnsmitService.selectNoteTrnsmitListCnt(noteTrnsmitVO);
-		noteTrnsmitVO.setTotalRecordCount(totCnt);
+		noteTrnsmitVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

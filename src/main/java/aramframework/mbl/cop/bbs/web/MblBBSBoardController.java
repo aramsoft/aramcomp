@@ -180,12 +180,12 @@ public class MblBBSBoardController {
 		}
 	
 		PaginationInfo paginationInfo = new PaginationInfo();
-		boardVO.fillPageInfo(paginationInfo);
+		boardVO.getSearchVO().fillPageInfo(paginationInfo);
 		
 		model.addAttribute("resultList", boardService.selectBoardArticleList(boardVO));
 
 		int totCnt = boardService.selectBoardArticleListCnt(boardVO);
-		boardVO.setTotalRecordCount(totCnt);
+		boardVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -553,12 +553,12 @@ public class MblBBSBoardController {
 		}
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		boardVO.fillPageInfo(paginationInfo);
+		boardVO.getSearchVO().fillPageInfo(paginationInfo);
 	
 		model.addAttribute("resultList", boardService.selectBoardArticleList(boardVO));
 
 		int totCnt = boardService.selectBoardArticleListCnt(boardVO);
-		boardVO.setTotalRecordCount(totCnt);
+		boardVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -936,12 +936,12 @@ public class MblBBSBoardController {
 		model.addAttribute("sessionUniqId", loginVO.getUniqId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		boardVO.fillPageInfo(paginationInfo);
+		boardVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", boardService.selectGuestList(boardVO));
 
 		int totCnt = boardService.selectGuestListCnt(boardVO);
-		boardVO.setTotalRecordCount(totCnt);
+		boardVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -988,12 +988,12 @@ public class MblBBSBoardController {
     	boardService.selectBoardArticle(boardVO);
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		boardVO.fillPageInfo(paginationInfo);
+		boardVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", boardService.selectGuestList(boardVO));
 
 		int totCnt = boardService.selectGuestListCnt(boardVO);
-		boardVO.setTotalRecordCount(totCnt);
+		boardVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

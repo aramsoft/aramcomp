@@ -2,7 +2,7 @@ package aramframework.com.utl.sys.ssy.domain;
 
 import java.io.File;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요 - 동기화대상 서버에 대한 model 클래스를 정의한다.
@@ -25,7 +25,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class SynchrnServerVO extends SearchVO {
+public class SynchrnServerVO extends BaseVO {
 
 	// domain
 	/** 서버 ID */

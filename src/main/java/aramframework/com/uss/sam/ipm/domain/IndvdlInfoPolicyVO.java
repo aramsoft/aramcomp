@@ -1,6 +1,6 @@
 package aramframework.com.uss.sam.ipm.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개인정보보호정책 VO Class 구현
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class IndvdlInfoPolicyVO extends SearchVO {
+public class IndvdlInfoPolicyVO extends BaseVO {
 
 	// domain
 	/** 개인정보보호정책 아이디 */

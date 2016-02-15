@@ -3,7 +3,7 @@ package aramframework.com.cop.adb.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 주소록관리를 위한 VO 모델 클래스
@@ -24,7 +24,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class AdressBookVO extends SearchVO {
+public class AdressBookVO extends BaseVO {
 
 	// domain
 	/** 주소록 아이디 */

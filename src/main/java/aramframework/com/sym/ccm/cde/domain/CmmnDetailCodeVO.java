@@ -1,7 +1,6 @@
 package aramframework.com.sym.ccm.cde.domain;
 
 import aramframework.com.cmm.domain.BaseVO;
-import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 공통상세코드 모델 클래스
@@ -24,9 +23,6 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class CmmnDetailCodeVO extends BaseVO {
 
-	// search
-	SearchVO searchVO = null;
-	
 	// domain
 	/** 코드ID */
 	private String codeId = "";
@@ -46,26 +42,6 @@ public class CmmnDetailCodeVO extends BaseVO {
 	// helper
 	/** 코드ID명 */
 	private String codeIdNm = "";
-
-	// searchVO
-	/**
-	 * searchVO attribute 를 리턴한다.
-	 * 
-	 * @return SearchVO
-	 */
-	public SearchVO getSearchVO() {
-		if( searchVO == null ) searchVO = new SearchVO();
-		return searchVO;
-	}
-	/**
-	 * searchVO attribute 값을 설정한다.
-	 * 
-	 * @param searchVO
-	 *            SearchVO
-	 */
-	public void setSearchVO(SearchVO searchVO) {
-		this.searchVO = searchVO;
-	}
 
 	// domain
 	/**

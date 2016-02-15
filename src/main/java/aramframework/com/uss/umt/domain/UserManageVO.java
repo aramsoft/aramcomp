@@ -1,6 +1,6 @@
 package aramframework.com.uss.umt.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 업무사용자VO클래스로서 업무사용자관리 비지니스로직 처리용 항목을 구성한다.
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class UserManageVO extends SearchVO {
+public class UserManageVO extends BaseVO {
 
 	// domain
 	/** 사용자 ID */

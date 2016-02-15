@@ -1,6 +1,6 @@
 package aramframework.com.sec.arm.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 권한관리에 대한 model 클래스를 정의한다.
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class AuthorVO extends SearchVO {
+public class AuthorVO extends BaseVO {
 
 	// domain
 	/** 권한코드 */

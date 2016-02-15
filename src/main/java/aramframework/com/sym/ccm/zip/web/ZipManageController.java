@@ -65,13 +65,13 @@ public class ZipManageController {
 			ModelMap model) {
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
-		zipVO.fillPageInfo(paginationInfo);
+		zipVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		int totCnt = 0; 
 		model.addAttribute("resultList", zipManageService.selectZipList(zipVO));
 
 		totCnt = zipManageService.selectZipListCnt(zipVO);
-		zipVO.setTotalRecordCount(totCnt);
+		zipVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -260,12 +260,12 @@ public class ZipManageController {
 			ModelMap model) {
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
-		zipVO.fillPageInfo(paginationInfo);
+		zipVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", zipManageService.selectZipList(zipVO));
  
 		int totCnt = zipManageService.selectZipListCnt(zipVO);
-		zipVO.setTotalRecordCount(totCnt);
+		zipVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -284,13 +284,13 @@ public class ZipManageController {
 			ModelMap model) {
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
-		zipVO.fillPageInfo(paginationInfo);
+		zipVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		Map<String, Object> map = zipManageService.selectRdNmList(zipVO);
 		model.addAttribute("resultList", map.get("resultList"));
 
 		int totCnt = Integer.parseInt((String) map.get("resultCnt"));
-		zipVO.setTotalRecordCount(totCnt);
+		zipVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

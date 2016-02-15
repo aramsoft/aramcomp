@@ -1,8 +1,6 @@
 package aramframework.com.cop.cmy.domain;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 커뮤티니 사용자 관리를 위한 VO 클래스
@@ -23,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class CommunityUserVO extends SearchVO {
+public class CommunityUserVO extends BaseVO {
 
 	// domain
 	/** 커뮤니티아이디 */
@@ -197,11 +195,4 @@ public class CommunityUserVO extends SearchVO {
 		this.emplyrNm = emplyrNm;
 	}
 
-	/**
-	 * toString 메소드를 대치한다.
-	 */
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
-	}
-	
 }

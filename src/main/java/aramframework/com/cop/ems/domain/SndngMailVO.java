@@ -1,6 +1,6 @@
 package aramframework.com.cop.ems.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 발송메일 VO 클래스
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class SndngMailVO extends SearchVO {
+public class SndngMailVO extends BaseVO {
 	
 	// domain
 	/** 메세지ID */

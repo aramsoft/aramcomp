@@ -80,20 +80,20 @@ public class AnnvrsryManageController {
 		}
 		model.addAttribute("yearList", yearList);
 
-		if (annvrsryManageVO.getSearchKeyword() == null || annvrsryManageVO.getSearchKeyword().equals(""))
-			annvrsryManageVO.setSearchKeyword(Integer.toString(cal.get(java.util.Calendar.YEAR)));
+		if (annvrsryManageVO.getSearchVO().getSearchKeyword() == null || annvrsryManageVO.getSearchVO().getSearchKeyword().equals(""))
+			annvrsryManageVO.getSearchVO().setSearchKeyword(Integer.toString(cal.get(java.util.Calendar.YEAR)));
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		annvrsryManageVO.setUsid(loginVO.getUniqId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		annvrsryManageVO.fillPageInfo(paginationInfo);
+		annvrsryManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", annvrsryManageService.selectAnnvrsryManageList(annvrsryManageVO));
 
 		int totCnt = annvrsryManageService.selectAnnvrsryManageListCnt(annvrsryManageVO);
-		annvrsryManageVO.setTotalRecordCount(totCnt);
+		annvrsryManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -256,8 +256,8 @@ public class AnnvrsryManageController {
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		annvrsryManageVO.setUsid(loginVO.getUniqId());
 
-		annvrsryManageVO.setRecordPerPage(5);
-		annvrsryManageVO.setFirstIndex(0);
+		annvrsryManageVO.getSearchVO().setRecordPerPage(5);
+		annvrsryManageVO.getSearchVO().setFirstIndex(0);
 
 		model.addAttribute("resultList", annvrsryManageService.selectAnnvrsryGdcc(annvrsryManageVO));
 

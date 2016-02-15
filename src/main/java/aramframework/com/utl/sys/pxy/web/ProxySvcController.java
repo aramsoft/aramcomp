@@ -69,12 +69,12 @@ public class ProxySvcController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		proxySvcVO.fillPageInfo(paginationInfo);
+		proxySvcVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", proxySvcService.selectProxySvcList(proxySvcVO));
 
 		int totCnt = proxySvcService.selectProxySvcListCnt(proxySvcVO);
-		proxySvcVO.setTotalRecordCount(totCnt);
+		proxySvcVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -218,12 +218,12 @@ public class ProxySvcController {
 		}
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		proxySvcLogVO.fillPageInfo(paginationInfo);
+		proxySvcLogVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", proxySvcService.selectProxySvcLogList(proxySvcLogVO));
 
 		int totCnt = proxySvcService.selectProxySvcLogListCnt(proxySvcLogVO);
-		proxySvcLogVO.setTotalRecordCount(totCnt);
+		proxySvcLogVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

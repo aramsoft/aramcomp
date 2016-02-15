@@ -1,6 +1,6 @@
 package aramframework.com.sym.sym.bak.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 백업결과관리에 대한 model 클래스
@@ -21,7 +21,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class BackupResultVO extends SearchVO {
+public class BackupResultVO extends BaseVO {
 
 	// domain
 	/** 백업결과ID */

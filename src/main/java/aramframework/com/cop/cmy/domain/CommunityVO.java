@@ -2,10 +2,8 @@ package aramframework.com.cop.cmy.domain;
 
 import java.util.List;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-
 import egovframework.rte.psl.dataaccess.util.EgovMap;
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.cmm.util.WebUtil;
 
 /**
@@ -27,7 +25,7 @@ import aramframework.com.cmm.util.WebUtil;
  * </pre>
  */
 
-public class CommunityVO extends SearchVO {
+public class CommunityVO extends BaseVO {
 
 	// domain
 	/** 커뮤니티 아이디 */
@@ -231,11 +229,4 @@ public class CommunityVO extends SearchVO {
 		this.subMenuList = subMenuList;
 	}
 
-	/**
-	 * toString 메소드를 대치한다.
-	 */
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
-	}
-	
 }

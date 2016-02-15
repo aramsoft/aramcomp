@@ -1,6 +1,6 @@
 package aramframework.com.utl.sys.htm.domain;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 개요 - HTTP서비스 모니터링 로그에 대한 Vo 클래스를 정의한다.
@@ -23,7 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class HttpMntrngLogVO extends SearchVO {
+public class HttpMntrngLogVO extends BaseVO {
 
 	// domain
 	/** 로그ID */

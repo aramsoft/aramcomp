@@ -60,12 +60,12 @@ public class ProgrmManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		progrmManageVO.fillPageInfo(paginationInfo);
+		progrmManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", progrmManageService.selectProgrmList(progrmManageVO));
 
 		int totCnt = progrmManageService.selectProgrmListCnt(progrmManageVO);
-		progrmManageVO.setTotalRecordCount(totCnt);
+		progrmManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -86,12 +86,12 @@ public class ProgrmManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		progrmManageVO.fillPageInfo(paginationInfo);
+		progrmManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", progrmManageService.selectProgrmList(progrmManageVO));
 
 		int totCnt = progrmManageService.selectProgrmListCnt(progrmManageVO);
-		progrmManageVO.setTotalRecordCount(totCnt);
+		progrmManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

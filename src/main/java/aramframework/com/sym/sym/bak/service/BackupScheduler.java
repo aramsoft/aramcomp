@@ -35,17 +35,13 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 
 public class BackupScheduler {
 
-	/**
-	 * egovBackupOpertService
-	 */
+	/** BackupOpertService	 */
 	private BackupOpertService backupOpertService;
 
 	/** ID Generation */
 	private EgovIdGnrService idgenService;
 
-	/**
-	 * Quartz 스케줄러
-	 */
+	/** Quartz 스케줄러 */
 	private Scheduler sched;
 
 	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
@@ -162,13 +158,12 @@ public class BackupScheduler {
 	public void init() throws Exception {
 		// 모니터링 대상 정보 읽어들이기~~~
 		List<BackupOpertVO> targetList = null;
-		BackupOpertVO searchVO = new BackupOpertVO();
+		BackupOpertVO backupOpertVO = new BackupOpertVO();
 		// 모니터링 대상 검색 조건 초기화
-		searchVO.getSearchVO().setPageIndex(1);
-		searchVO.getSearchVO().setFirstIndex(0);
-		searchVO.getSearchVO().setRecordPerPage(RECORD_COUNT_PER_PAGE);
-		targetList = backupOpertService.selectBackupOpertList(searchVO);
-		LOG.debug("조회조건 " + searchVO);
+		backupOpertVO.getSearchVO().setPageIndex(1);
+		backupOpertVO.getSearchVO().setFirstIndex(0);
+		backupOpertVO.getSearchVO().setRecordPerPage(RECORD_COUNT_PER_PAGE);
+		targetList = backupOpertService.selectBackupOpertList(backupOpertVO);
 		if (LOG.isDebugEnabled()) {
 			LOG.debug("Result 건수 : " + targetList.size());
 		}

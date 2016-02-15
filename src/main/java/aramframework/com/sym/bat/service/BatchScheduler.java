@@ -42,20 +42,17 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 
 public class BatchScheduler implements BeanFactoryAware {
 
-
 	private BeanFactory beanFactory;
-	/**
-	 * egovBatchSchdulService
-	 */
+
+	/** egovBatchSchdulService	 */
 	private BatchSchdulService batchSchdulService;
 
 	/** ID Generation */
 	private EgovIdGnrService idgenService;
 
 	private MethodInvokingJobDetailFactoryBean factory;
-	/*
-	 * Quartz 스케줄러
-	 */
+
+	/** Quartz 스케줄러 */
 	private Scheduler sched;
 
 	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
@@ -254,12 +251,12 @@ public class BatchScheduler implements BeanFactoryAware {
 	public void init() throws Exception {
 		// 모니터링 대상 정보 읽어들이기~~~
 		List<BatchSchdulVO> targetList = null;
-		BatchSchdulVO searchVO = new BatchSchdulVO();
+		BatchSchdulVO batchSchdulVO = new BatchSchdulVO();
 		// 모니터링 대상 검색 조건 초기화
-		searchVO.getSearchVO().setPageIndex(1);
-		searchVO.getSearchVO().setFirstIndex(0);
-		searchVO.getSearchVO().setRecordPerPage(RECORD_COUNT_PER_PAGE);
-		targetList = batchSchdulService.selectBatchSchdulList(searchVO);
+		batchSchdulVO.getSearchVO().setPageIndex(1);
+		batchSchdulVO.getSearchVO().setFirstIndex(0);
+		batchSchdulVO.getSearchVO().setRecordPerPage(RECORD_COUNT_PER_PAGE);
+		targetList = batchSchdulService.selectBatchSchdulList(batchSchdulVO);
 //		log.debug("조회조건 " + searchVO);
 		if (LOG.isDebugEnabled()) {
 			LOG.debug("Result 건수 : " + targetList.size());
@@ -317,7 +314,6 @@ public class BatchScheduler implements BeanFactoryAware {
 	public BatchSchdulService getBatchSchdulService() {
 		return batchSchdulService;
 	}
-
 	/**
 	 * 배치스케줄 서비스 저장.
 	 * 
@@ -336,7 +332,6 @@ public class BatchScheduler implements BeanFactoryAware {
 	public EgovIdGnrService getIdgenService() {
 		return idgenService;
 	}
-
 	/**
 	 * 배치결과ID 생성서비스 저장.
 	 * 

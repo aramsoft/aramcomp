@@ -23,8 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class EventCmpgnVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 행사/이벤트/캠페인ID */
 	private String eventId = "";
 
@@ -33,6 +32,9 @@ public class EventCmpgnVO extends SearchVO {
 
 	/** 사업코드 */
 	private String bsnsCode = "";
+
+	/** 행사내용 */
+	private String eventCn = "";
 
 	/** 행사시작일자 */
 	private String eventSvcBeginDe = "";
@@ -43,8 +45,8 @@ public class EventCmpgnVO extends SearchVO {
 	/** 담당자명 */
 	private String chargerNm = "";
 
-	/** 행사내용 */
-	private String eventCn = "";
+	/** 준비물내용 */
+	private String prparetgCn = "";
 
 	/** 행사종료일자 */
 	private String eventSvcEndDe = "";
@@ -52,49 +54,13 @@ public class EventCmpgnVO extends SearchVO {
 	/** 행사유형코드 */
 	private String eventTyCode = "";
 
-	/** 준비물내용 */
-	private String prparetgCn = "";
-
 	/** 행사/이벤트 승인여부 */
 	private String eventConfmAt = "";
 
 	/** 행사/이벤트 승인일 */
 	private String eventConfmDe = "";
 
-	/**
-	 * eventConfmDe attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getEventConfmDe() {
-		return eventConfmDe;
-	}
-	/**
-	 * eventConfmDe attribute 값을 설정한다.
-	 * 
-	 * @return eventId String
-	 */
-	public void setEventConfmDe(String eventConfmDe) {
-		this.eventConfmDe = eventConfmDe;
-	}
-
-	/**
-	 * eventConfmAt attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getEventConfmAt() {
-		return eventConfmAt;
-	}
-	/**
-	 * eventConfmAt attribute 값을 설정한다.
-	 * 
-	 * @return eventId String
-	 */
-	public void setEventConfmAt(String eventConfmAt) {
-		this.eventConfmAt = eventConfmAt;
-	}
-
+	// domain
 	/**
 	 * eventId attribute 를 리턴한다.
 	 * 
@@ -144,6 +110,23 @@ public class EventCmpgnVO extends SearchVO {
 	 */
 	public void setBsnsCode(String bsnsCode) {
 		this.bsnsCode = bsnsCode;
+	}
+
+	/**
+	 * eventCn attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getEventCn() {
+		return eventCn;
+	}
+	/**
+	 * eventCn attribute 값을 설정한다.
+	 * 
+	 * @return eventCn String
+	 */
+	public void setEventCn(String eventCn) {
+		this.eventCn = eventCn;
 	}
 
 	/**
@@ -198,20 +181,20 @@ public class EventCmpgnVO extends SearchVO {
 	}
 
 	/**
-	 * eventCn attribute 를 리턴한다.
+	 * prparetgCn attribute 를 리턴한다.
 	 * 
 	 * @return the String
 	 */
-	public String getEventCn() {
-		return eventCn;
+	public String getPrparetgCn() {
+		return prparetgCn;
 	}
 	/**
-	 * eventCn attribute 값을 설정한다.
+	 * prparetgCn attribute 값을 설정한다.
 	 * 
-	 * @return eventCn String
+	 * @return prparetgCn String
 	 */
-	public void setEventCn(String eventCn) {
-		this.eventCn = eventCn;
+	public void setPrparetgCn(String prparetgCn) {
+		this.prparetgCn = prparetgCn;
 	}
 
 	/**
@@ -249,20 +232,37 @@ public class EventCmpgnVO extends SearchVO {
 	}
 
 	/**
-	 * prparetgCn attribute 를 리턴한다.
+	 * eventConfmAt attribute 를 리턴한다.
 	 * 
 	 * @return the String
 	 */
-	public String getPrparetgCn() {
-		return prparetgCn;
+	public String getEventConfmAt() {
+		return eventConfmAt;
 	}
 	/**
-	 * prparetgCn attribute 값을 설정한다.
+	 * eventConfmAt attribute 값을 설정한다.
 	 * 
-	 * @return prparetgCn String
+	 * @return eventId String
 	 */
-	public void setPrparetgCn(String prparetgCn) {
-		this.prparetgCn = prparetgCn;
+	public void setEventConfmAt(String eventConfmAt) {
+		this.eventConfmAt = eventConfmAt;
+	}
+
+	/**
+	 * eventConfmDe attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getEventConfmDe() {
+		return eventConfmDe;
+	}
+	/**
+	 * eventConfmDe attribute 값을 설정한다.
+	 * 
+	 * @return eventId String
+	 */
+	public void setEventConfmDe(String eventConfmDe) {
+		this.eventConfmDe = eventConfmDe;
 	}
 
 }

@@ -23,10 +23,12 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class TnextrlHrInfoVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
+	// domain
+	/** 행사/이벤트/캠페인 아이디 */
+	private String eventId = "";
 
-	/** 검색모드설정 */
-	private String searchMode = "";
+	/** 외부인사ID */
+	private String extrlHrId = "";
 
 	/** 성별코드 */
 	private String sexdstnCode = "";
@@ -34,23 +36,11 @@ public class TnextrlHrInfoVO extends SearchVO {
 	/** 외부인사명 */
 	private String extrlHrNm = "";
 
-	/** 이메일주소 */
-	private String emailAdres = "";
-
 	/** 직업유형코드 */
 	private String occpTyCode = "";
 
 	/** 소속기관명 */
 	private String psitnInsttNm = "";
-
-	/** 외부인사ID */
-	private String extrlHrId = "";
-
-	/** 행사/이벤트/캠페인 아이디 */
-	private String eventId = "";
-
-	/** 행사/이벤트/캠페인 아이디 */
-	private String eventCn = "";
 
 	/** 생년월일 */
 	private String brth = "";
@@ -64,6 +54,13 @@ public class TnextrlHrInfoVO extends SearchVO {
 	/** 끝전화번호 */
 	private String endTelno = "";
 
+	/** 이메일주소 */
+	private String emailAdres = "";
+
+	// helper
+	/** 행사/이벤트/캠페인 아이디 */
+	private String eventCn = "";
+
 	/** 생년월일(년) */
 	private String brthYYYY = "";
 
@@ -73,21 +70,42 @@ public class TnextrlHrInfoVO extends SearchVO {
 	/** 생년월일(일) */
 	private String brthDD = "";
 
+	/** 검색모드설정 */
+	private String searchMode = "";
+
+	// domain
 	/**
-	 * searchMode attribute 를 리턴한다.
+	 * eventId attribute 를 리턴한다.
 	 * 
 	 * @return the String
 	 */
-	public String getSearchMode() {
-		return searchMode;
+	public String getEventId() {
+		return eventId;
 	}
 	/**
-	 * searchMode attribute 값을 설정한다.
+	 * eventId attribute 값을 설정한다.
 	 * 
-	 * @return searchMode String
+	 * @return eventId String
 	 */
-	public void setSearchMode(String searchMode) {
-		this.searchMode = searchMode;
+	public void setEventId(String eventId) {
+		this.eventId = eventId;
+	}
+
+	/**
+	 * extrlHrId attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getExtrlHrId() {
+		return extrlHrId;
+	}
+	/**
+	 * extrlHrId attribute 값을 설정한다.
+	 * 
+	 * @return extrlHrId String
+	 */
+	public void setExtrlHrId(String extrlHrId) {
+		this.extrlHrId = extrlHrId;
 	}
 
 	/**
@@ -125,23 +143,6 @@ public class TnextrlHrInfoVO extends SearchVO {
 	}
 
 	/**
-	 * emailAdres attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getEmailAdres() {
-		return emailAdres;
-	}
-	/**
-	 * emailAdres attribute 값을 설정한다.
-	 * 
-	 * @return emailAdres String
-	 */
-	public void setEmailAdres(String emailAdres) {
-		this.emailAdres = emailAdres;
-	}
-
-	/**
 	 * occpTyCode attribute 를 리턴한다.
 	 * 
 	 * @return the String
@@ -173,57 +174,6 @@ public class TnextrlHrInfoVO extends SearchVO {
 	 */
 	public void setPsitnInsttNm(String psitnInsttNm) {
 		this.psitnInsttNm = psitnInsttNm;
-	}
-
-	/**
-	 * extrlHrId attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getExtrlHrId() {
-		return extrlHrId;
-	}
-	/**
-	 * extrlHrId attribute 값을 설정한다.
-	 * 
-	 * @return extrlHrId String
-	 */
-	public void setExtrlHrId(String extrlHrId) {
-		this.extrlHrId = extrlHrId;
-	}
-
-	/**
-	 * eventId attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getEventId() {
-		return eventId;
-	}
-	/**
-	 * eventId attribute 값을 설정한다.
-	 * 
-	 * @return eventId String
-	 */
-	public void setEventId(String eventId) {
-		this.eventId = eventId;
-	}
-
-	/**
-	 * eventCn attribute 를 리턴한다.
-	 * 
-	 * @return the String
-	 */
-	public String getEventCn() {
-		return eventCn;
-	}
-	/**
-	 * eventId attribute 값을 설정한다.
-	 * 
-	 * @return eventCn String
-	 */
-	public void setEventCn(String eventCn) {
-		this.eventCn = eventCn;
 	}
 
 	/**
@@ -295,6 +245,41 @@ public class TnextrlHrInfoVO extends SearchVO {
 	}
 
 	/**
+	 * emailAdres attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getEmailAdres() {
+		return emailAdres;
+	}
+	/**
+	 * emailAdres attribute 값을 설정한다.
+	 * 
+	 * @return emailAdres String
+	 */
+	public void setEmailAdres(String emailAdres) {
+		this.emailAdres = emailAdres;
+	}
+
+	// helper
+	/**
+	 * eventCn attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getEventCn() {
+		return eventCn;
+	}
+	/**
+	 * eventId attribute 값을 설정한다.
+	 * 
+	 * @return eventCn String
+	 */
+	public void setEventCn(String eventCn) {
+		this.eventCn = eventCn;
+	}
+
+	/**
 	 * brthYYYY attribute 를 리턴한다.
 	 * 
 	 * @return the String
@@ -343,6 +328,23 @@ public class TnextrlHrInfoVO extends SearchVO {
 	 */
 	public void setBrthDD(String brthDD) {
 		this.brthDD = brthDD;
+	}
+
+	/**
+	 * searchMode attribute 를 리턴한다.
+	 * 
+	 * @return the String
+	 */
+	public String getSearchMode() {
+		return searchMode;
+	}
+	/**
+	 * searchMode attribute 값을 설정한다.
+	 * 
+	 * @return searchMode String
+	 */
+	public void setSearchMode(String searchMode) {
+		this.searchMode = searchMode;
 	}
 
 }

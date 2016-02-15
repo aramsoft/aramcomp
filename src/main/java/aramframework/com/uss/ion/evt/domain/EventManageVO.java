@@ -23,42 +23,12 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class EventManageVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	// 추가 검색 조건
-	/** 검색 승인여부 */
-	private String searchConfmAt;
-
-	/** 검색 연도 */
-	private String searchYear;
-
-	/** 검색 월 */
-	private String searchMonth;
-
-	/** 검색 명 */
-	private String searchNm;
-
-	/** 검색 구분명 */
-	private String searchSe;
-
-	// 도메인 정보
-	/** 행사기간 일수 */
-	private int eventDayCount;
-	
-	/** 행사접수기간 일수 */
-	private int eventAtdrnDayCount;
-
-	/** 행사참여인원 */
-	private int eventAtdrnCount;
-
+	// domain
 	/** 행사ID */
 	private String eventId;
 
 	/** 행사구분 */
 	private String eventSe;
-
-	/** 행사구분명 */
-	private String eventSeNm;
 
 	/** 행사명 */
 	private String eventNm;
@@ -102,120 +72,36 @@ public class EventManageVO extends SearchVO {
 	/** 접수종료일자 */
 	private String rceptEndDe;
 
-	// 추가 검색
-	/**
-	 * @return the searchConfmAt
-	 */
-	public String getSearchConfmAt() {
-		return searchConfmAt;
-	}
-	/**
-	 * @param searchConfmAt
-	 *            the searchConfmAt to set
-	 */
-	public void setSearchConfmAt(String searchConfmAt) {
-		this.searchConfmAt = searchConfmAt;
-	}
+	// helper
+	/** 행사기간 일수 */
+	private int eventDayCount;
+	
+	/** 행사접수기간 일수 */
+	private int eventAtdrnDayCount;
 
-	/**
-	 * @return the searchYear
-	 */
-	public String getSearchYear() {
-		return searchYear;
-	}
-	/**
-	 * @param searchYear
-	 *            the searchYear to set
-	 */
-	public void setSearchYear(String searchYear) {
-		this.searchYear = searchYear;
-	}
+	/** 행사참여인원 */
+	private int eventAtdrnCount;
 
-	/**
-	 * @return the searchMonth
-	 */
-	public String getSearchMonth() {
-		return searchMonth;
-	}
-	/**
-	 * @param searchMonth
-	 *            the searchMonth to set
-	 */
-	public void setSearchMonth(String searchMonth) {
-		this.searchMonth = searchMonth;
-	}
+	/** 행사구분명 */
+	private String eventSeNm;
 
-	/**
-	 * @return the searchNm
-	 */
-	public String getSearchNm() {
-		return searchNm;
-	}
-	/**
-	 * @param searchNm
-	 *            the searchNm to set
-	 */
-	public void setSearchNm(String searchNm) {
-		this.searchNm = searchNm;
-	}
+	// 추가 검색 조건
+	/** 검색 승인여부 */
+	private String searchConfmAt;
 
-	/**
-	 * @return the searchSe
-	 */
-	public String getSearchSe() {
-		return searchSe;
-	}
-	/**
-	 * @param searchSe
-	 *            the searchSe to set
-	 */
-	public void setSearchSe(String searchSe) {
-		this.searchSe = searchSe;
-	}
+	/** 검색 연도 */
+	private String searchYear;
 
-	// 도메인 정보
-	/**
-	 * @return the eventDayCount
-	 */
-	public int getEventDayCount() {
-		return eventDayCount;
-	}
-	/**
-	 * @param eventDayCount
-	 *            the eventDayCount to set
-	 */
-	public void setEventDayCount(int eventDayCount) {
-		this.eventDayCount = eventDayCount;
-	}
+	/** 검색 월 */
+	private String searchMonth;
 
-	/**
-	 * @return the eventDayCount
-	 */
-	public int getEventAtdrnDayCount() {
-		return eventAtdrnDayCount;
-	}
-	/**
-	 * @param eventDayCount
-	 *            the eventDayCount to set
-	 */
-	public void setEventAtdrnDayCount(int eventAtdrnDayCount) {
-		this.eventAtdrnDayCount = eventAtdrnDayCount;
-	}
+	/** 검색 명 */
+	private String searchNm;
 
-	/**
-	 * @return the eventAtdrnCount
-	 */
-	public int getEventAtdrnCount() {
-		return eventAtdrnCount;
-	}
-	/**
-	 * @param eventAtdrnCount
-	 *            the eventAtdrnCount to set
-	 */
-	public void setEventAtdrnCount(int eventAtdrnCount) {
-		this.eventAtdrnCount = eventAtdrnCount;
-	}
+	/** 검색 구분명 */
+	private String searchSe;
 
+	// domain
 	/**
 	 * @return the eventId
 	 */
@@ -242,20 +128,6 @@ public class EventManageVO extends SearchVO {
 	 */
 	public void setEventSe(String eventSe) {
 		this.eventSe = eventSe;
-	}
-
-	/**
-	 * @return the eventSeNm
-	 */
-	public String getEventSeNm() {
-		return eventSeNm;
-	}
-	/**
-	 * @param eventSeNm
-	 *            the eventSeNm to set
-	 */
-	public void setEventSeNm(String eventSeNm) {
-		this.eventSeNm = eventSeNm;
 	}
 
 	/**
@@ -452,6 +324,134 @@ public class EventManageVO extends SearchVO {
 	 */
 	public void setRceptEndDe(String rceptEndDe) {
 		this.rceptEndDe = rceptEndDe;
+	}
+
+	// helper
+	/**
+	 * @return the eventDayCount
+	 */
+	public int getEventDayCount() {
+		return eventDayCount;
+	}
+	/**
+	 * @param eventDayCount
+	 *            the eventDayCount to set
+	 */
+	public void setEventDayCount(int eventDayCount) {
+		this.eventDayCount = eventDayCount;
+	}
+
+	/**
+	 * @return the eventDayCount
+	 */
+	public int getEventAtdrnDayCount() {
+		return eventAtdrnDayCount;
+	}
+	/**
+	 * @param eventDayCount
+	 *            the eventDayCount to set
+	 */
+	public void setEventAtdrnDayCount(int eventAtdrnDayCount) {
+		this.eventAtdrnDayCount = eventAtdrnDayCount;
+	}
+
+	/**
+	 * @return the eventAtdrnCount
+	 */
+	public int getEventAtdrnCount() {
+		return eventAtdrnCount;
+	}
+	/**
+	 * @param eventAtdrnCount
+	 *            the eventAtdrnCount to set
+	 */
+	public void setEventAtdrnCount(int eventAtdrnCount) {
+		this.eventAtdrnCount = eventAtdrnCount;
+	}
+
+	/**
+	 * @return the eventSeNm
+	 */
+	public String getEventSeNm() {
+		return eventSeNm;
+	}
+	/**
+	 * @param eventSeNm
+	 *            the eventSeNm to set
+	 */
+	public void setEventSeNm(String eventSeNm) {
+		this.eventSeNm = eventSeNm;
+	}
+
+	// 추가 검색
+	/**
+	 * @return the searchConfmAt
+	 */
+	public String getSearchConfmAt() {
+		return searchConfmAt;
+	}
+	/**
+	 * @param searchConfmAt
+	 *            the searchConfmAt to set
+	 */
+	public void setSearchConfmAt(String searchConfmAt) {
+		this.searchConfmAt = searchConfmAt;
+	}
+
+	/**
+	 * @return the searchYear
+	 */
+	public String getSearchYear() {
+		return searchYear;
+	}
+	/**
+	 * @param searchYear
+	 *            the searchYear to set
+	 */
+	public void setSearchYear(String searchYear) {
+		this.searchYear = searchYear;
+	}
+
+	/**
+	 * @return the searchMonth
+	 */
+	public String getSearchMonth() {
+		return searchMonth;
+	}
+	/**
+	 * @param searchMonth
+	 *            the searchMonth to set
+	 */
+	public void setSearchMonth(String searchMonth) {
+		this.searchMonth = searchMonth;
+	}
+
+	/**
+	 * @return the searchNm
+	 */
+	public String getSearchNm() {
+		return searchNm;
+	}
+	/**
+	 * @param searchNm
+	 *            the searchNm to set
+	 */
+	public void setSearchNm(String searchNm) {
+		this.searchNm = searchNm;
+	}
+
+	/**
+	 * @return the searchSe
+	 */
+	public String getSearchSe() {
+		return searchSe;
+	}
+	/**
+	 * @param searchSe
+	 *            the searchSe to set
+	 */
+	public void setSearchSe(String searchSe) {
+		this.searchSe = searchSe;
 	}
 
 }

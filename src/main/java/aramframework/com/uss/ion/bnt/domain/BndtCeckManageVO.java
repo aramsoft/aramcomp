@@ -23,7 +23,32 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class BndtCeckManageVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
+	// domain
+	/**
+	 * 당직체크코드
+	 */
+	private String bndtCeckCd;
+
+	/**
+	 * 당직체크코드명
+	 */
+	private String bndtCeckCdNm;
+
+	/**
+	 * 당직체크구분
+	 */
+	private String bndtCeckSe;
+
+	/**
+	 * 사용여부
+	 */
+	private String useAt;
+
+	// helper
+	/**
+	 * 당직체크리스트 Temp변수 1
+	 */
+	private String bndtCeckSeNm;
 
 	/**
 	 * 당직체크리스트 당직체크구분 조회조건 변수
@@ -40,53 +65,13 @@ public class BndtCeckManageVO extends SearchVO  {
 	 */
 	private String searchUseAt;
 
-	/**
-	 * 당직체크구분
-	 */
-	private String bndtCeckSe;
-
-	/**
-	 * 당직체크리스트 Temp변수 1
-	 */
-	private String bndtCeckSeNm;
-
-	/**
-	 * 당직체크코드
-	 */
-	private String bndtCeckCd;
-
-	/**
-	 * 당직체크코드명
-	 */
-	private String bndtCeckCdNm;
-
-	/**
-	 * 사용여부
-	 */
-	private String useAt;
-
-	/**
-	 * @return the bndtCeckSe
-	 */
-	public String getBndtCeckSe() {
-		return bndtCeckSe;
-	}
-
-	/**
-	 * @param bndtCeckSe
-	 *            the bndtCeckSe to set
-	 */
-	public void setBndtCeckSe(String bndtCeckSe) {
-		this.bndtCeckSe = bndtCeckSe;
-	}
-
+	// domain
 	/**
 	 * @return the bndtCeckCd
 	 */
 	public String getBndtCeckCd() {
 		return bndtCeckCd;
 	}
-
 	/**
 	 * @param bndtCeckCd
 	 *            the bndtCeckCd to set
@@ -101,7 +86,6 @@ public class BndtCeckManageVO extends SearchVO  {
 	public String getBndtCeckCdNm() {
 		return bndtCeckCdNm;
 	}
-
 	/**
 	 * @param bndtCeckCdNm
 	 *            the bndtCeckCdNm to set
@@ -111,12 +95,25 @@ public class BndtCeckManageVO extends SearchVO  {
 	}
 
 	/**
+	 * @return the bndtCeckSe
+	 */
+	public String getBndtCeckSe() {
+		return bndtCeckSe;
+	}
+	/**
+	 * @param bndtCeckSe
+	 *            the bndtCeckSe to set
+	 */
+	public void setBndtCeckSe(String bndtCeckSe) {
+		this.bndtCeckSe = bndtCeckSe;
+	}
+
+	/**
 	 * @return the useAt
 	 */
 	public String getUseAt() {
 		return useAt;
 	}
-
 	/**
 	 * @param useAt
 	 *            the useAt to set
@@ -125,28 +122,13 @@ public class BndtCeckManageVO extends SearchVO  {
 		this.useAt = useAt;
 	}
 
-	/**
-	 * @return the searchUseAt
-	 */
-	public String getSearchUseAt() {
-		return searchUseAt;
-	}
-
-	/**
-	 * @param searchUseAt
-	 *            the searchUseAt to set
-	 */
-	public void setSearchUseAt(String searchUseAt) {
-		this.searchUseAt = searchUseAt;
-	}
-
+	// helper
 	/**
 	 * @return the bndtCeckSeNm
 	 */
 	public String getBndtCeckSeNm() {
 		return bndtCeckSeNm;
 	}
-
 	/**
 	 * @param bndtCeckSeNm
 	 *            the bndtCeckSeNm to set
@@ -156,12 +138,25 @@ public class BndtCeckManageVO extends SearchVO  {
 	}
 
 	/**
+	 * @return the searchUseAt
+	 */
+	public String getSearchUseAt() {
+		return searchUseAt;
+	}
+	/**
+	 * @param searchUseAt
+	 *            the searchUseAt to set
+	 */
+	public void setSearchUseAt(String searchUseAt) {
+		this.searchUseAt = searchUseAt;
+	}
+
+	/**
 	 * @return the searchBndtCeckSe
 	 */
 	public String getSearchBndtCeckSe() {
 		return searchBndtCeckSe;
 	}
-
 	/**
 	 * @param searchBndtCeckSe
 	 *            the searchBndtCeckSe to set
@@ -176,7 +171,6 @@ public class BndtCeckManageVO extends SearchVO  {
 	public String getSearchBndtCeckCd() {
 		return searchBndtCeckCd;
 	}
-
 	/**
 	 * @param searchBndtCeckCd
 	 *            the searchBndtCeckCd to set

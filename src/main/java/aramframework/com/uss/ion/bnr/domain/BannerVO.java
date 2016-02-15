@@ -24,11 +24,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class BannerVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 결과 반영 타입 vertical : 세로 horizontal : 가로 */
-	String resultType = "horizontal";
-
+	// domain
 	/** 배너 ID */
 	private String bannerId;
 	
@@ -41,18 +37,19 @@ public class BannerVO extends SearchVO {
 	/** 배너 이미지 */
 	private String bannerImage;
 	
-	/** 배너 이미지 파일 */
-	private String bannerImageFile;
-	
 	/** 배너 설명 */
 	private String bannerDc;
-	
-	/** 정렬 순서 */
-	private String sortOrdr;
 	
 	/** 반영여부 */
 	private String reflctAt;
 	
+	/** 배너 이미지 파일 */
+	private String bannerImageFile;
+	
+	/** 정렬 순서 */
+	private String sortOrdr;
+	
+	// helper
 	/** 사용자 ID */
 	private String userId;
 	
@@ -62,20 +59,10 @@ public class BannerVO extends SearchVO {
 	/** 파일첨부여부 */
 	private boolean isAtchFile;
 
-	/**
-	 * @return the resultType
-	 */
-	public String getResultType() {
-		return resultType;
-	}
-	/**
-	 * @param resultType
-	 *            the resultType to set
-	 */
-	public void setResultType(String resultType) {
-		this.resultType = resultType;
-	}
+	/** 결과 반영 타입 vertical : 세로 horizontal : 가로 */
+	String resultType = "horizontal";
 
+	// domain
 	/**
 	 * @return the bannerId
 	 */
@@ -133,20 +120,6 @@ public class BannerVO extends SearchVO {
 	}
 
 	/**
-	 * @return the bannerImageFile
-	 */
-	public String getBannerImageFile() {
-		return bannerImageFile;
-	}
-	/**
-	 * @param bannerImageFile
-	 *            the bannerImageFile to set
-	 */
-	public void setBannerImageFile(String bannerImageFile) {
-		this.bannerImageFile = bannerImageFile;
-	}
-
-	/**
 	 * @return the bannerDc
 	 */
 	public String getBannerDc() {
@@ -158,20 +131,6 @@ public class BannerVO extends SearchVO {
 	 */
 	public void setBannerDc(String bannerDc) {
 		this.bannerDc = bannerDc;
-	}
-
-	/**
-	 * @return the sortOrdr
-	 */
-	public String getSortOrdr() {
-		return sortOrdr;
-	}
-	/**
-	 * @param sortOrdr
-	 *            the sortOrdr to set
-	 */
-	public void setSortOrdr(String sortOrdr) {
-		this.sortOrdr = sortOrdr;
 	}
 
 	/**
@@ -188,6 +147,35 @@ public class BannerVO extends SearchVO {
 		this.reflctAt = reflctAt;
 	}
 
+	/**
+	 * @return the bannerImageFile
+	 */
+	public String getBannerImageFile() {
+		return bannerImageFile;
+	}
+	/**
+	 * @param bannerImageFile
+	 *            the bannerImageFile to set
+	 */
+	public void setBannerImageFile(String bannerImageFile) {
+		this.bannerImageFile = bannerImageFile;
+	}
+
+	/**
+	 * @return the sortOrdr
+	 */
+	public String getSortOrdr() {
+		return sortOrdr;
+	}
+	/**
+	 * @param sortOrdr
+	 *            the sortOrdr to set
+	 */
+	public void setSortOrdr(String sortOrdr) {
+		this.sortOrdr = sortOrdr;
+	}
+
+	// helper
 	/**
 	 * @return the userId
 	 */
@@ -228,6 +216,20 @@ public class BannerVO extends SearchVO {
 	 */
 	public void setAtchFile(boolean isAtchFile) {
 		this.isAtchFile = isAtchFile;
+	}
+
+	/**
+	 * @return the resultType
+	 */
+	public String getResultType() {
+		return resultType;
+	}
+	/**
+	 * @param resultType
+	 *            the resultType to set
+	 */
+	public void setResultType(String resultType) {
+		this.resultType = resultType;
 	}
 
 }

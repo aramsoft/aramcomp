@@ -23,28 +23,22 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class BndtManageVO extends SearchVO   {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 당직 year */
-	private String year;
-
-	/** 당직 month */
-	private String month;
-
+	// domain
 	/** 당직ID */
 	private String bndtId;
-
-	/** 당직 bndtUserNm */
-	private String bndtUserNm;
-
-	/** 당직 bndtOrgnztNm */
-	private String bndtOrgnztNm;
 
 	/** 당직일자 */
 	private String bndtDe;
 
 	/** 비고 */
 	private String remark;
+
+	// helper
+	/** 당직 bndtUserNm */
+	private String bndtUserNm;
+
+	/** 당직 bndtOrgnztNm */
+	private String bndtOrgnztNm;
 
 	/** 당직 bndtDiaryCnt */
 	private int bndtDiaryCnt;
@@ -68,32 +62,13 @@ public class BndtManageVO extends SearchVO   {
 	/** 당직 tempCount */
 	private int tempCount;
 
-	/**
-	 * @param year the year to set
-	 */
-	public void setYear(String year) {
-		this.year = year;
-	}
-	/**
-	 * @return the year
-	 */
-	public String getYear() {
-		return year;
-	}
+	/** 당직 year */
+	private String year;
 
-	/**
-	 * @param month the month to set
-	 */
-	public void setMonth(String month) {
-		this.month = month;
-	}
-	/**
-	 * @return the month
-	 */
-	public String getMonth() {
-		return month;
-	}
+	/** 당직 month */
+	private String month;
 
+	// domain
 	/**
 	 * @return the bndtId
 	 */
@@ -106,34 +81,6 @@ public class BndtManageVO extends SearchVO   {
 	 */
 	public void setBndtId(String bndtId) {
 		this.bndtId = bndtId;
-	}
-
-	/**
-	 * @return the bndtUserNm
-	 */
-	public String getBndtUserNm() {
-		return bndtUserNm;
-	}
-	/**
-	 * @param bndtUserNm
-	 *            the bndtUserNm to set
-	 */
-	public void setBndtUserNm(String bndtUserNm) {
-		this.bndtUserNm = bndtUserNm;
-	}
-
-	/**
-	 * @return the bndtOrgnztNm
-	 */
-	public String getBndtOrgnztNm() {
-		return bndtOrgnztNm;
-	}
-	/**
-	 * @param bndtOrgnztNm
-	 *            the bndtOrgnztNm to set
-	 */
-	public void setBndtOrgnztNm(String bndtOrgnztNm) {
-		this.bndtOrgnztNm =bndtOrgnztNm;
 	}
 
 	/**
@@ -164,6 +111,35 @@ public class BndtManageVO extends SearchVO   {
 		this.remark = remark;
 	}
 	
+	// helper
+	/**
+	 * @return the bndtUserNm
+	 */
+	public String getBndtUserNm() {
+		return bndtUserNm;
+	}
+	/**
+	 * @param bndtUserNm
+	 *            the bndtUserNm to set
+	 */
+	public void setBndtUserNm(String bndtUserNm) {
+		this.bndtUserNm = bndtUserNm;
+	}
+
+	/**
+	 * @return the bndtOrgnztNm
+	 */
+	public String getBndtOrgnztNm() {
+		return bndtOrgnztNm;
+	}
+	/**
+	 * @param bndtOrgnztNm
+	 *            the bndtOrgnztNm to set
+	 */
+	public void setBndtOrgnztNm(String bndtOrgnztNm) {
+		this.bndtOrgnztNm =bndtOrgnztNm;
+	}
+
 	/**
 	 * @return the bndtDiaryCnt
 	 */
@@ -260,6 +236,32 @@ public class BndtManageVO extends SearchVO   {
 	 */
 	public void setTempCount(int tempCount) {
 		this.tempCount = tempCount;
+	}
+
+	/**
+	 * @param year the year to set
+	 */
+	public void setYear(String year) {
+		this.year = year;
+	}
+	/**
+	 * @return the year
+	 */
+	public String getYear() {
+		return year;
+	}
+
+	/**
+	 * @param month the month to set
+	 */
+	public void setMonth(String month) {
+		this.month = month;
+	}
+	/**
+	 * @return the month
+	 */
+	public String getMonth() {
+		return month;
 	}
 
 }

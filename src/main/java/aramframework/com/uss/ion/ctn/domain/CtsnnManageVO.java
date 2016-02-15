@@ -23,39 +23,15 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class CtsnnManageVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	// 추가 검색 조건
-	/** 검색시작일자 */
-	private String searchFromDate;
-
-	/** 검색종료일자 */
-	private String searchToDate;
-
-	/** 검색 성명 */
-	private String searchNm;
-
-	/** 검색 진행구분 */
-	private String searchConfmAt;
-
-	// 도메인 정보
+	// domain
 	/** 경조ID */
 	private String ctsnnId;
 
 	/** 사용자ID */
 	private String usid;
 
-	/** 신청자명 */
-	private String usNm;
-
-	/** 사용자 소속명 */
-	private String orgnztNm;
-
 	/** 경조코드 */
 	private String ctsnnCd;
-
-	/** 경조코드명 */
-	private String ctsnnCdNm;
 
 	/** 신청일자 */
 	private String reqstDe;
@@ -75,20 +51,11 @@ public class CtsnnManageVO extends SearchVO {
 	/** 관계 */
 	private String relate;
 
-	/** 가족관계명 */
-	private String relateNm;
-
 	/** 비고 */
 	private String remark;
 
 	/** 결재자ID */
 	private String sanctnerId;
-
-	/** 승인자명 */
-	private String sanctnerNm;
-
-	/** 승인자 소속명 */
-	private String sanctnerOrgnztNm;
 
 	/** 승인여부 */
 	private String confmAt;
@@ -102,64 +69,39 @@ public class CtsnnManageVO extends SearchVO {
 	/** 약식결재ID */
 	private String infrmlSanctnId;
 
+	// helper
+	/** 신청자명 */
+	private String usNm;
+
+	/** 사용자 소속명 */
+	private String orgnztNm;
+
+	/** 경조코드명 */
+	private String ctsnnCdNm;
+
+	/** 가족관계명 */
+	private String relateNm;
+
+	/** 승인자명 */
+	private String sanctnerNm;
+
+	/** 승인자 소속명 */
+	private String sanctnerOrgnztNm;
+
 	// 추가 검색 조건
-	/**
-	 * @return the searchFromDate
-	 */
-	public String getSearchFromDate() {
-		return searchFromDate;
-	}
-	/**
-	 * @param searchFromDate
-	 *            the searchFromDate to set
-	 */
-	public void setSearchFromDate(String searchFromDate) {
-		this.searchFromDate = searchFromDate;
-	}
+	/** 검색시작일자 */
+	private String searchFromDate;
 
-	/**
-	 * @return the searchToDate
-	 */
-	public String getSearchToDate() {
-		return searchToDate;
-	}
-	/**
-	 * @param searchToDate
-	 *            the searchToDate to set
-	 */
-	public void setSearchToDate(String searchToDate) {
-		this.searchToDate = searchToDate;
-	}
+	/** 검색종료일자 */
+	private String searchToDate;
 
-	/**
-	 * @return the searchNm
-	 */
-	public String getSearchNm() {
-		return searchNm;
-	}
-	/**
-	 * @param searchNm
-	 *            the searchNm to set
-	 */
-	public void setSearchNm(String searchNm) {
-		this.searchNm = searchNm;
-	}
+	/** 검색 성명 */
+	private String searchNm;
 
-	/**
-	 * @return the searchConfmAt
-	 */
-	public String getSearchConfmAt() {
-		return searchConfmAt;
-	}
-	/**
-	 * @param searchConfmAt
-	 *            the searchConfmAt to set
-	 */
-	public void setSearchConfmAt(String searchConfmAt) {
-		this.searchConfmAt = searchConfmAt;
-	}
+	/** 검색 진행구분 */
+	private String searchConfmAt;
 
-	// 도메인 정보
+	// domain
 	/**
 	 * @return the ctsnnId
 	 */
@@ -189,34 +131,6 @@ public class CtsnnManageVO extends SearchVO {
 	}
 
 	/**
-	 * @return the usNm
-	 */
-	public String getUsNm() {
-		return usNm;
-	}
-	/**
-	 * @param usNm
-	 *            the usNm to set
-	 */
-	public void setUsNm(String usNm) {
-		this.usNm = usNm;
-	}
-
-	/**
-	 * @return the orgnztNm
-	 */
-	public String getOrgnztNm() {
-		return orgnztNm;
-	}
-	/**
-	 * @param orgnztNm
-	 *            the orgnztNm to set
-	 */
-	public void setOrgnztNm(String orgnztNm) {
-		this.orgnztNm = orgnztNm;
-	}
-
-	/**
 	 * @return the ctsnnCd
 	 */
 	public String getCtsnnCd() {
@@ -228,20 +142,6 @@ public class CtsnnManageVO extends SearchVO {
 	 */
 	public void setCtsnnCd(String ctsnnCd) {
 		this.ctsnnCd = ctsnnCd;
-	}
-
-	/**
-	 * @return the ctsnnCdNm
-	 */
-	public String getCtsnnCdNm() {
-		return ctsnnCdNm;
-	}
-	/**
-	 * @param ctsnnCdNm
-	 *            the ctsnnCdNm to set
-	 */
-	public void setCtsnnCdNm(String ctsnnCdNm) {
-		this.ctsnnCdNm = ctsnnCdNm;
 	}
 
 	/**
@@ -329,20 +229,6 @@ public class CtsnnManageVO extends SearchVO {
 	}
 
 	/**
-	 * @return the relateNm
-	 */
-	public String getRelateNm() {
-		return relateNm;
-	}
-	/**
-	 * @param relateNm
-	 *            the relateNm to set
-	 */
-	public void setRelateNm(String relateNm) {
-		this.relateNm = relateNm;
-	}
-
-	/**
 	 * @return the remark
 	 */
 	public String getRemark() {
@@ -368,34 +254,6 @@ public class CtsnnManageVO extends SearchVO {
 	 */
 	public void setSanctnerId(String sanctnerId) {
 		this.sanctnerId = sanctnerId;
-	}
-
-	/**
-	 * @return the sanctnerNm
-	 */
-	public String getSanctnerNm() {
-		return sanctnerNm;
-	}
-	/**
-	 * @param sanctnerNm
-	 *            the sanctnerNm to set
-	 */
-	public void setSanctnerNm(String sanctnerNm) {
-		this.sanctnerNm = sanctnerNm;
-	}
-
-	/**
-	 * @return the sanctnerOrgnztNm
-	 */
-	public String getSanctnerOrgnztNm() {
-		return sanctnerOrgnztNm;
-	}
-	/**
-	 * @param sanctnerOrgnztNm
-	 *            the sanctnerOrgnztNm to set
-	 */
-	public void setSanctnerOrgnztNm(String sanctnerOrgnztNm) {
-		this.sanctnerOrgnztNm = sanctnerOrgnztNm;
 	}
 
 	/**
@@ -452,6 +310,148 @@ public class CtsnnManageVO extends SearchVO {
 	 */
 	public void setInfrmlSanctnId(String infrmlSanctnId) {
 		this.infrmlSanctnId = infrmlSanctnId;
+	}
+
+	// helper
+	/**
+	 * @return the usNm
+	 */
+	public String getUsNm() {
+		return usNm;
+	}
+	/**
+	 * @param usNm
+	 *            the usNm to set
+	 */
+	public void setUsNm(String usNm) {
+		this.usNm = usNm;
+	}
+
+	/**
+	 * @return the orgnztNm
+	 */
+	public String getOrgnztNm() {
+		return orgnztNm;
+	}
+	/**
+	 * @param orgnztNm
+	 *            the orgnztNm to set
+	 */
+	public void setOrgnztNm(String orgnztNm) {
+		this.orgnztNm = orgnztNm;
+	}
+
+	/**
+	 * @return the ctsnnCdNm
+	 */
+	public String getCtsnnCdNm() {
+		return ctsnnCdNm;
+	}
+	/**
+	 * @param ctsnnCdNm
+	 *            the ctsnnCdNm to set
+	 */
+	public void setCtsnnCdNm(String ctsnnCdNm) {
+		this.ctsnnCdNm = ctsnnCdNm;
+	}
+
+	/**
+	 * @return the relateNm
+	 */
+	public String getRelateNm() {
+		return relateNm;
+	}
+	/**
+	 * @param relateNm
+	 *            the relateNm to set
+	 */
+	public void setRelateNm(String relateNm) {
+		this.relateNm = relateNm;
+	}
+
+	/**
+	 * @return the sanctnerNm
+	 */
+	public String getSanctnerNm() {
+		return sanctnerNm;
+	}
+	/**
+	 * @param sanctnerNm
+	 *            the sanctnerNm to set
+	 */
+	public void setSanctnerNm(String sanctnerNm) {
+		this.sanctnerNm = sanctnerNm;
+	}
+
+	/**
+	 * @return the sanctnerOrgnztNm
+	 */
+	public String getSanctnerOrgnztNm() {
+		return sanctnerOrgnztNm;
+	}
+	/**
+	 * @param sanctnerOrgnztNm
+	 *            the sanctnerOrgnztNm to set
+	 */
+	public void setSanctnerOrgnztNm(String sanctnerOrgnztNm) {
+		this.sanctnerOrgnztNm = sanctnerOrgnztNm;
+	}
+
+	// 추가 검색 조건
+	/**
+	 * @return the searchFromDate
+	 */
+	public String getSearchFromDate() {
+		return searchFromDate;
+	}
+	/**
+	 * @param searchFromDate
+	 *            the searchFromDate to set
+	 */
+	public void setSearchFromDate(String searchFromDate) {
+		this.searchFromDate = searchFromDate;
+	}
+
+	/**
+	 * @return the searchToDate
+	 */
+	public String getSearchToDate() {
+		return searchToDate;
+	}
+	/**
+	 * @param searchToDate
+	 *            the searchToDate to set
+	 */
+	public void setSearchToDate(String searchToDate) {
+		this.searchToDate = searchToDate;
+	}
+
+	/**
+	 * @return the searchNm
+	 */
+	public String getSearchNm() {
+		return searchNm;
+	}
+	/**
+	 * @param searchNm
+	 *            the searchNm to set
+	 */
+	public void setSearchNm(String searchNm) {
+		this.searchNm = searchNm;
+	}
+
+	/**
+	 * @return the searchConfmAt
+	 */
+	public String getSearchConfmAt() {
+		return searchConfmAt;
+	}
+	/**
+	 * @param searchConfmAt
+	 *            the searchConfmAt to set
+	 */
+	public void setSearchConfmAt(String searchConfmAt) {
+		this.searchConfmAt = searchConfmAt;
 	}
 
 }

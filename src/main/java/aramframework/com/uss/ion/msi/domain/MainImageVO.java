@@ -24,26 +24,26 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class MainImageVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 이미지 ID */
 	private String imageId;
 	
 	/** 이미지명 */
 	private String imageNm;
 	
+	/** 반영여부 */
+	private String reflctAt;
+	
 	/** 메인 이미지 */
 	private String image;
-	
-	/** 메인 이미지 파일 */
-	private String imageFile;
 	
 	/** 이미지 설명 */
 	private String imageDc;
 	
-	/** 반영여부 */
-	private String reflctAt;
+	/** 메인 이미지 파일 */
+	private String imageFile;
 	
+	// helper
 	/** 사용자 ID */
 	private String userId;
 	
@@ -53,13 +53,13 @@ public class MainImageVO extends SearchVO {
 	/** 파일첨부여부 */
 	private boolean isAtchFile;
 
+	// domain
 	/**
 	 * @return the imageId
 	 */
 	public String getImageId() {
 		return imageId;
 	}
-
 	/**
 	 * @param imageId
 	 *            the imageId to set
@@ -67,13 +67,13 @@ public class MainImageVO extends SearchVO {
 	public void setImageId(String imageId) {
 		this.imageId = imageId;
 	}
+	
 	/**
 	 * @return the imageNm
 	 */
 	public String getImageNm() {
 		return imageNm;
 	}
-
 	/**
 	 * @param imageNm
 	 *            the imageNm to set
@@ -81,6 +81,21 @@ public class MainImageVO extends SearchVO {
 	public void setImageNm(String imageNm) {
 		this.imageNm = imageNm;
 	}
+	
+	/**
+	 * @return the reflctAt
+	 */
+	public String getReflctAt() {
+		return reflctAt;
+	}
+	/**
+	 * @param reflctAt
+	 *            the reflctAt to set
+	 */
+	public void setReflctAt(String reflctAt) {
+		this.reflctAt = reflctAt;
+	}
+
 	/**
 	 * @return the image
 	 */
@@ -93,20 +108,6 @@ public class MainImageVO extends SearchVO {
 	 */
 	public void setImage(String image) {
 		this.image = image;
-	}
-
-	/**
-	 * @return the imageFile
-	 */
-	public String getImageFile() {
-		return imageFile;
-	}
-	/**
-	 * @param imageFile
-	 *            the imageFile to set
-	 */
-	public void setImageFile(String imageFile) {
-		this.imageFile = imageFile;
 	}
 
 	/**
@@ -124,19 +125,20 @@ public class MainImageVO extends SearchVO {
 	}
 
 	/**
-	 * @return the reflctAt
+	 * @return the imageFile
 	 */
-	public String getReflctAt() {
-		return reflctAt;
+	public String getImageFile() {
+		return imageFile;
 	}
 	/**
-	 * @param reflctAt
-	 *            the reflctAt to set
+	 * @param imageFile
+	 *            the imageFile to set
 	 */
-	public void setReflctAt(String reflctAt) {
-		this.reflctAt = reflctAt;
+	public void setImageFile(String imageFile) {
+		this.imageFile = imageFile;
 	}
 
+	// helper
 	/**
 	 * @return the userId
 	 */

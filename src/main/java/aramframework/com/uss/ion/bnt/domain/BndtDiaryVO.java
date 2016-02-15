@@ -23,14 +23,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class BndtDiaryVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
-
-	/** 당직 year */
-	private String year;
-
-	/** 당직 month */
-	private String month;
-
+	// domain
 	/** 당직ID */
 	private String bndtId;
 
@@ -43,38 +36,20 @@ public class BndtDiaryVO extends SearchVO  {
 	/** 당직체크코드 */
 	private String bndtCeckCd;
 
-	/** 당직체크코드명 */
-	private String bndtCeckCdNm;
-
 	/** 당직점검상태 */
 	private String chckSttus;
 
-	/**
-	 * @param year the year to set
-	 */
-	public void setYear(String year) {
-		this.year = year;
-	}
-	/**
-	 * @return the year
-	 */
-	public String getYear() {
-		return year;
-	}
+	// helper
+	/** 당직체크코드명 */
+	private String bndtCeckCdNm;
 
-	/**
-	 * @param month the month to set
-	 */
-	public void setMonth(String month) {
-		this.month = month;
-	}
-	/**
-	 * @return the month
-	 */
-	public String getMonth() {
-		return month;
-	}
+	/** 당직 year */
+	private String year;
 
+	/** 당직 month */
+	private String month;
+
+	// domain
 	/**
 	 * @return the bndtId
 	 */
@@ -145,6 +120,7 @@ public class BndtDiaryVO extends SearchVO  {
 		this.chckSttus = chckSttus;
 	}
 
+	// helper
 	/**
 	 * @return the bndtCeckCdNm
 	 */
@@ -157,6 +133,32 @@ public class BndtDiaryVO extends SearchVO  {
 	 */
 	public void setBndtCeckCdNm(String bndtCeckCdNm) {
 		this.bndtCeckCdNm = bndtCeckCdNm;
+	}
+
+	/**
+	 * @param year the year to set
+	 */
+	public void setYear(String year) {
+		this.year = year;
+	}
+	/**
+	 * @return the year
+	 */
+	public String getYear() {
+		return year;
+	}
+
+	/**
+	 * @param month the month to set
+	 */
+	public void setMonth(String month) {
+		this.month = month;
+	}
+	/**
+	 * @return the month
+	 */
+	public String getMonth() {
+		return month;
 	}
 
 }

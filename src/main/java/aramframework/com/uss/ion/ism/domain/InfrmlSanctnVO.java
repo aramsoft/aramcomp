@@ -23,34 +23,21 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class InfrmlSanctnVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 약식결재ID */
 	private String infrmlSanctnId;
 	
 	/** 업무구분코드 */
 	private String jobSeCode;
 	
-	/** 업무구분명 */
-	private String jobSeNm;
-	
 	/** 신청자ID */
 	private String applcntId;
-	
-	/** 신청자명 */
-	private String applcntNm;
 	
 	/** 신청일자 */
 	private String reqstDe = "";
 	
 	/** 결재자ID */
 	private String sanctnerId;
-	
-	/** 결재자명 */
-	private String sanctnerNm;
-	
-	/** 결재자소속 */
-	private String sanctnerOrgnztNm;
 	
 	/** 승인여부 */
 	private String confmAt = "";
@@ -61,6 +48,20 @@ public class InfrmlSanctnVO extends SearchVO {
 	/** 반려사유 */
 	private String returnResn = "";
 	
+	// helper
+	/** 업무구분명 */
+	private String jobSeNm;
+	
+	/** 신청자명 */
+	private String applcntNm;
+	
+	/** 결재자명 */
+	private String sanctnerNm;
+	
+	/** 결재자소속 */
+	private String sanctnerOrgnztNm;
+	
+	// domain
 	public String getInfrmlSanctnId() {
 		return infrmlSanctnId;
 	}
@@ -75,25 +76,11 @@ public class InfrmlSanctnVO extends SearchVO {
 		this.jobSeCode = jobSeCode;
 	}
 
-	public String getJobSeNm() {
-		return jobSeNm;
-	}
-	public void setJobSeNm(String jobSeNm) {
-		this.jobSeNm = jobSeNm;
-	}
-
 	public String getApplcntId() {
 		return applcntId;
 	}
 	public void setApplcntId(String applcntId) {
 		this.applcntId = applcntId;
-	}
-
-	public String getApplcntNm() {
-		return applcntNm;
-	}
-	public void setApplcntNm(String applcntNm) {
-		this.applcntNm = applcntNm;
 	}
 
 	public String getReqstDe() {
@@ -108,20 +95,6 @@ public class InfrmlSanctnVO extends SearchVO {
 	}
 	public void setSanctnerId(String sanctnerId) {
 		this.sanctnerId = sanctnerId;
-	}
-
-	public String getSanctnerNm() {
-		return sanctnerNm;
-	}
-	public void setSanctnerNm(String sanctnerNm) {
-		this.sanctnerNm = sanctnerNm;
-	}
-
-	public String getSanctnerOrgnztNm() {
-		return sanctnerOrgnztNm;
-	}
-	public void setSanctnerOrgnztNm(String sanctnerOrgnztNm) {
-		this.sanctnerOrgnztNm = sanctnerOrgnztNm;
 	}
 
 	public String getConfmAt() {
@@ -143,6 +116,35 @@ public class InfrmlSanctnVO extends SearchVO {
 	}
 	public void setReturnResn(String returnResn) {
 		this.returnResn = returnResn;
+	}
+
+	// helper
+	public String getJobSeNm() {
+		return jobSeNm;
+	}
+	public void setJobSeNm(String jobSeNm) {
+		this.jobSeNm = jobSeNm;
+	}
+
+	public String getApplcntNm() {
+		return applcntNm;
+	}
+	public void setApplcntNm(String applcntNm) {
+		this.applcntNm = applcntNm;
+	}
+
+	public String getSanctnerNm() {
+		return sanctnerNm;
+	}
+	public void setSanctnerNm(String sanctnerNm) {
+		this.sanctnerNm = sanctnerNm;
+	}
+
+	public String getSanctnerOrgnztNm() {
+		return sanctnerOrgnztNm;
+	}
+	public void setSanctnerOrgnztNm(String sanctnerOrgnztNm) {
+		this.sanctnerOrgnztNm = sanctnerOrgnztNm;
 	}
 
 }

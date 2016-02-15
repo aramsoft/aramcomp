@@ -23,27 +23,19 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class SanctnerVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-
-	/**
-	 * 조직명
-	 */
+	/** 조직명	 */
 	private String orgnztNm;
-	/**
-	 * 직위명
-	 */
+	
+	/** 직위명	 */
 	private String ofcpsNm;
-	/**
-	 * 사용자명
-	 */
+	
+	/** 사용자명	 */
 	private String emplyrNm;
-	/**
-	 * 사용자ID
-	 */
+	
+	/** 사용자ID	 */
 	private String uniqId;
-	/**
-	 * 사원번호
-	 */
+	
+	/** 사원번호	 */
 	private String emplNo;
 
 	public String getOrgnztNm() {

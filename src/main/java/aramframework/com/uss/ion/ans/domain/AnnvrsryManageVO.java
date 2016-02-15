@@ -23,25 +23,15 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class AnnvrsryManageVO extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
-
+	// domain
 	/** 기념일ID */
 	private String annId;
 
 	/** 사용자ID */
 	private String usid;
 
-	/** 사용자ID */
-	private String usNm;
-
-	/** 사용자조직 */
-	private String orgnztNm;
-
 	/** 기념일구분 */
 	private String annvrsrySe;
-
-	/** 기념일구분 */
-	private String annvrsrySeNm;
 
 	/** 기념일명 */
 	private String annvrsryNm;
@@ -49,27 +39,38 @@ public class AnnvrsryManageVO extends SearchVO  {
 	/** 기념일자 */
 	private String annvrsryDe;
 
-	/** 기념일자 */
-	private String annvrsryDeNm;
-
 	/** 달력구분 */
 	private String cldrSe;
-
-	/** 반복구분 */
-	private String reptitSe;
 
 	/** 알림설정 */
 	private String annvrsrySetup;
 
-	/** 알림설정 */
-	private String annvrsrySetupNm;
-	
 	/** 알림시작일자 */
 	private String annvrsryBeginDe;
 
 	/** 메모 */
 	private String memo;
 
+	/** 반복구분 */
+	private String reptitSe;
+
+	// helper
+	/** 사용자ID */
+	private String usNm;
+
+	/** 사용자조직 */
+	private String orgnztNm;
+
+	/** 기념일구분 */
+	private String annvrsrySeNm;
+
+	/** 기념일자 */
+	private String annvrsryDeNm;
+
+	/** 알림설정 */
+	private String annvrsrySetupNm;
+	
+	// domain
 	/**
 	 * @return the annId
 	 */
@@ -99,34 +100,6 @@ public class AnnvrsryManageVO extends SearchVO  {
 	}
 
 	/**
-	 * @return the usNm
-	 */
-	public String getUsNm() {
-		return usNm;
-	}
-	/**
-	 * @param usNm
-	 *            the usNm to set
-	 */
-	public void setUsNm(String usNm) {
-		this.usNm = usNm;
-	}
-
-	/**
-	 * @return the orgnztNm
-	 */
-	public String getOrgnztNm() {
-		return orgnztNm;
-	}
-	/**
-	 * @param orgnztNm
-	 *            the orgnztNm to set
-	 */
-	public void setOrgnztNm(String orgnztNm) {
-		this.orgnztNm = orgnztNm;
-	}
-
-	/**
 	 * @return the annvrsrySe
 	 */
 	public String getAnnvrsrySe() {
@@ -138,20 +111,6 @@ public class AnnvrsryManageVO extends SearchVO  {
 	 */
 	public void setAnnvrsrySe(String annvrsrySe) {
 		this.annvrsrySe = annvrsrySe;
-	}
-
-	/**
-	 * @return the annvrsrySeNm
-	 */
-	public String getAnnvrsrySeNm() {
-		return annvrsrySeNm;
-	}
-	/**
-	 * @param annvrsrySeNm
-	 *            the annvrsrySeNm to set
-	 */
-	public void setAnnvrsrySeNm(String annvrsrySeNm) {
-		this.annvrsrySeNm = annvrsrySeNm;
 	}
 
 	/**
@@ -183,20 +142,6 @@ public class AnnvrsryManageVO extends SearchVO  {
 	}
 
 	/**
-	 * @return the annvrsryDeNm
-	 */
-	public String getAnnvrsryDeNm() {
-		return annvrsryDeNm;
-	}
-	/**
-	 * @param annvrsryDeNm
-	 *            the annvrsryDeNm to set
-	 */
-	public void setAnnvrsryDeNm(String annvrsryDeNm) {
-		this.annvrsryDeNm = annvrsryDeNm;
-	}
-
-	/**
 	 * @return the cldrSe
 	 */
 	public String getCldrSe() {
@@ -222,20 +167,6 @@ public class AnnvrsryManageVO extends SearchVO  {
 	 */
 	public void setAnnvrsrySetup(String annvrsrySetup) {
 		this.annvrsrySetup = annvrsrySetup;
-	}
-
-	/**
-	 * @return the annvrsrySetupNm
-	 */
-	public String getAnnvrsrySetupNm() {
-		return annvrsrySetupNm;
-	}
-	/**
-	 * @param annvrsrySetupNm
-	 *            the annvrsrySetupNm to set
-	 */
-	public void setAnnvrsrySetupNm(String annvrsrySetupNm) {
-		this.annvrsrySetupNm = annvrsrySetupNm;
 	}
 
 	/**
@@ -278,6 +209,77 @@ public class AnnvrsryManageVO extends SearchVO  {
 	 */
 	public void setReptitSe(String reptitSe) {
 		this.reptitSe = reptitSe;
+	}
+
+	// helper
+	/**
+	 * @return the usNm
+	 */
+	public String getUsNm() {
+		return usNm;
+	}
+	/**
+	 * @param usNm
+	 *            the usNm to set
+	 */
+	public void setUsNm(String usNm) {
+		this.usNm = usNm;
+	}
+
+	/**
+	 * @return the orgnztNm
+	 */
+	public String getOrgnztNm() {
+		return orgnztNm;
+	}
+	/**
+	 * @param orgnztNm
+	 *            the orgnztNm to set
+	 */
+	public void setOrgnztNm(String orgnztNm) {
+		this.orgnztNm = orgnztNm;
+	}
+
+	/**
+	 * @return the annvrsrySeNm
+	 */
+	public String getAnnvrsrySeNm() {
+		return annvrsrySeNm;
+	}
+	/**
+	 * @param annvrsrySeNm
+	 *            the annvrsrySeNm to set
+	 */
+	public void setAnnvrsrySeNm(String annvrsrySeNm) {
+		this.annvrsrySeNm = annvrsrySeNm;
+	}
+
+	/**
+	 * @return the annvrsryDeNm
+	 */
+	public String getAnnvrsryDeNm() {
+		return annvrsryDeNm;
+	}
+	/**
+	 * @param annvrsryDeNm
+	 *            the annvrsryDeNm to set
+	 */
+	public void setAnnvrsryDeNm(String annvrsryDeNm) {
+		this.annvrsryDeNm = annvrsryDeNm;
+	}
+
+	/**
+	 * @return the annvrsrySetupNm
+	 */
+	public String getAnnvrsrySetupNm() {
+		return annvrsrySetupNm;
+	}
+	/**
+	 * @param annvrsrySetupNm
+	 *            the annvrsrySetupNm to set
+	 */
+	public void setAnnvrsrySetupNm(String annvrsrySetupNm) {
+		this.annvrsrySetupNm = annvrsrySetupNm;
 	}
 
 }

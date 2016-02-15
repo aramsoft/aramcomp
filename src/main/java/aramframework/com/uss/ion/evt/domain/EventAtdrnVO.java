@@ -23,7 +23,40 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class EventAtdrnVO  extends SearchVO  {
 
-	private static final long serialVersionUID = 1L;
+	// domain
+	/** 신청자ID */
+	private String applcntId;
+
+	/** 행사ID */
+	private String eventId;
+
+	/** 신청일자 */
+	private String reqstDe;
+
+	/** 결재자ID */
+	private String sanctnerId;
+
+	/** 승인여부 */
+	private String confmAt;
+
+	/** 결재일시 */
+	private String sanctnDt;
+
+	/** 반려사유 */
+	private String returnResn;
+
+	/** 약식결재ID */
+	private String infrmlSanctnId;
+
+	// helper
+	/** 신청자명 */
+	private String applcntNm;
+
+	/** 신청자부서 */
+	private String orgnztNm;
+
+	/** 결재자명 */
+	private String sanctnerNm;
 
 	// 추가 검색 조건
 	/** 검색 승인여부 */
@@ -41,39 +74,161 @@ public class EventAtdrnVO  extends SearchVO  {
 	/** 검색 구분명 */
 	private String searchSe;
 
-	// 도메인 정보
-	/** 신청자ID */
-	private String applcntId;
+	// domain
+	/**
+	 * @return the applcntId
+	 */
+	public String getApplcntId() {
+		return applcntId;
+	}
+	/**
+	 * @param applcntId
+	 *            the applcntId to set
+	 */
+	public void setApplcntId(String applcntId) {
+		this.applcntId = applcntId;
+	}
 
-	/** 신청자명 */
-	private String applcntNm;
+	/**
+	 * @return the eventId
+	 */
+	public String getEventId() {
+		return eventId;
+	}
+	/**
+	 * @param eventId
+	 *            the eventId to set
+	 */
+	public void setEventId(String eventId) {
+		this.eventId = eventId;
+	}
 
-	/** 신청자부서 */
-	private String orgnztNm;
+	/**
+	 * @return the reqstDe
+	 */
+	public String getReqstDe() {
+		return reqstDe;
+	}
+	/**
+	 * @param reqstDe
+	 *            the reqstDe to set
+	 */
+	public void setReqstDe(String reqstDe) {
+		this.reqstDe = reqstDe;
+	}
 
-	/** 행사ID */
-	private String eventId;
+	/**
+	 * @return the sanctnerId
+	 */
+	public String getSanctnerId() {
+		return sanctnerId;
+	}
+	/**
+	 * @param sanctnerId
+	 *            the sanctnerId to set
+	 */
+	public void setSanctnerId(String sanctnerId) {
+		this.sanctnerId = sanctnerId;
+	}
 
-	/** 신청일자 */
-	private String reqstDe;
+	/**
+	 * @return the confmAt
+	 */
+	public String getConfmAt() {
+		return confmAt;
+	}
+	/**
+	 * @param confmAt
+	 *            the confmAt to set
+	 */
+	public void setConfmAt(String confmAt) {
+		this.confmAt = confmAt;
+	}
 
-	/** 결재자ID */
-	private String sanctnerId;
+	/**
+	 * @return the sanctnDt
+	 */
+	public String getSanctnDt() {
+		return sanctnDt;
+	}
+	/**
+	 * @param sanctnDt
+	 *            the sanctnDt to set
+	 */
+	public void setSanctnDt(String sanctnDt) {
+		this.sanctnDt = sanctnDt;
+	}
 
-	/** 결재자명 */
-	private String sanctnerNm;
+	/**
+	 * @return the returnResn
+	 */
+	public String getReturnResn() {
+		return returnResn;
+	}
+	/**
+	 * @param returnResn
+	 *            the returnResn to set
+	 */
+	public void setReturnResn(String returnResn) {
+		this.returnResn = returnResn;
+	}
 
-	/** 승인여부 */
-	private String confmAt;
+	/**
+	 * @return the infrmlSanctnId
+	 */
+	public String getInfrmlSanctnId() {
+		return infrmlSanctnId;
+	}
+	/**
+	 * @param infrmlSanctnId
+	 *            the infrmlSanctnId to set
+	 */
+	public void setInfrmlSanctnId(String infrmlSanctnId) {
+		this.infrmlSanctnId = infrmlSanctnId;
+	}
 
-	/** 결재일시 */
-	private String sanctnDt;
+	// helper
+	/**
+	 * @return the applcntNm
+	 */
+	public String getApplcntNm() {
+		return applcntNm;
+	}
+	/**
+	 * @param applcntNm
+	 *            the applcntNm to set
+	 */
+	public void setApplcntNm(String applcntNm) {
+		this.applcntNm = applcntNm;
+	}
 
-	/** 반려사유 */
-	private String returnResn;
+	/**
+	 * @return the orgnztNm
+	 */
+	public String getOrgnztNm() {
+		return orgnztNm;
+	}
+	/**
+	 * @param orgnztNm
+	 *            the orgnztNm to set
+	 */
+	public void setOrgnztNm(String orgnztNm) {
+		this.orgnztNm = orgnztNm;
+	}
 
-	/** 약식결재ID */
-	private String infrmlSanctnId;
+	/**
+	 * @return the sanctnerNm
+	 */
+	public String getSanctnerNm() {
+		return sanctnerNm;
+	}
+	/**
+	 * @param sanctnerNm
+	 *            the sanctnerNm to set
+	 */
+	public void setSanctnerNm(String sanctnerNm) {
+		this.sanctnerNm = sanctnerNm;
+	}
 
 	// 추가 검색
 	/**
@@ -144,160 +299,6 @@ public class EventAtdrnVO  extends SearchVO  {
 	 */
 	public void setSearchSe(String searchSe) {
 		this.searchSe = searchSe;
-	}
-
-	/**
-	 * @return the applcntId
-	 */
-	public String getApplcntId() {
-		return applcntId;
-	}
-	/**
-	 * @param applcntId
-	 *            the applcntId to set
-	 */
-	public void setApplcntId(String applcntId) {
-		this.applcntId = applcntId;
-	}
-
-	/**
-	 * @return the applcntNm
-	 */
-	public String getApplcntNm() {
-		return applcntNm;
-	}
-	/**
-	 * @param applcntNm
-	 *            the applcntNm to set
-	 */
-	public void setApplcntNm(String applcntNm) {
-		this.applcntNm = applcntNm;
-	}
-
-	/**
-	 * @return the orgnztNm
-	 */
-	public String getOrgnztNm() {
-		return orgnztNm;
-	}
-	/**
-	 * @param orgnztNm
-	 *            the orgnztNm to set
-	 */
-	public void setOrgnztNm(String orgnztNm) {
-		this.orgnztNm = orgnztNm;
-	}
-
-	/**
-	 * @return the eventId
-	 */
-	public String getEventId() {
-		return eventId;
-	}
-	/**
-	 * @param eventId
-	 *            the eventId to set
-	 */
-	public void setEventId(String eventId) {
-		this.eventId = eventId;
-	}
-
-	/**
-	 * @return the reqstDe
-	 */
-	public String getReqstDe() {
-		return reqstDe;
-	}
-	/**
-	 * @param reqstDe
-	 *            the reqstDe to set
-	 */
-	public void setReqstDe(String reqstDe) {
-		this.reqstDe = reqstDe;
-	}
-
-	/**
-	 * @return the sanctnerId
-	 */
-	public String getSanctnerId() {
-		return sanctnerId;
-	}
-	/**
-	 * @param sanctnerId
-	 *            the sanctnerId to set
-	 */
-	public void setSanctnerId(String sanctnerId) {
-		this.sanctnerId = sanctnerId;
-	}
-
-	/**
-	 * @return the sanctnerNm
-	 */
-	public String getSanctnerNm() {
-		return sanctnerNm;
-	}
-	/**
-	 * @param sanctnerNm
-	 *            the sanctnerNm to set
-	 */
-	public void setSanctnerNm(String sanctnerNm) {
-		this.sanctnerNm = sanctnerNm;
-	}
-
-	/**
-	 * @return the confmAt
-	 */
-	public String getConfmAt() {
-		return confmAt;
-	}
-	/**
-	 * @param confmAt
-	 *            the confmAt to set
-	 */
-	public void setConfmAt(String confmAt) {
-		this.confmAt = confmAt;
-	}
-
-	/**
-	 * @return the sanctnDt
-	 */
-	public String getSanctnDt() {
-		return sanctnDt;
-	}
-	/**
-	 * @param sanctnDt
-	 *            the sanctnDt to set
-	 */
-	public void setSanctnDt(String sanctnDt) {
-		this.sanctnDt = sanctnDt;
-	}
-
-	/**
-	 * @return the returnResn
-	 */
-	public String getReturnResn() {
-		return returnResn;
-	}
-	/**
-	 * @param returnResn
-	 *            the returnResn to set
-	 */
-	public void setReturnResn(String returnResn) {
-		this.returnResn = returnResn;
-	}
-
-	/**
-	 * @return the infrmlSanctnId
-	 */
-	public String getInfrmlSanctnId() {
-		return infrmlSanctnId;
-	}
-	/**
-	 * @param infrmlSanctnId
-	 *            the infrmlSanctnId to set
-	 */
-	public void setInfrmlSanctnId(String infrmlSanctnId) {
-		this.infrmlSanctnId = infrmlSanctnId;
 	}
 
 }

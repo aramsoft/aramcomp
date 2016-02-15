@@ -24,8 +24,7 @@ import aramframework.com.cmm.domain.SearchVO;
 
 public class IntnetSvcGuidanceVO extends SearchVO {
 
-	private static final long serialVersionUID = 1L;
-	
+	// domain
 	/** 인터넷서비스ID */
 	private String intnetSvcId;
 	
@@ -38,19 +37,20 @@ public class IntnetSvcGuidanceVO extends SearchVO {
 	/** 반영여부 */
 	private String reflctAt;
 	
+	// helper
 	/** 사용자 ID */
 	private String userId;
 	
 	/** 등록일자 */
 	private String regDate;
 
+	// domain
 	/**
 	 * @return the intnetSvcId
 	 */
 	public String getIntnetSvcId() {
 		return intnetSvcId;
 	}
-
 	/**
 	 * @param intnetSvcId
 	 *            the intnetSvcId to set
@@ -58,13 +58,13 @@ public class IntnetSvcGuidanceVO extends SearchVO {
 	public void setIntnetSvcId(String intnetSvcId) {
 		this.intnetSvcId = intnetSvcId;
 	}
+	
 	/**
 	 * @return the intnetSvcNm
 	 */
 	public String getIntnetSvcNm() {
 		return intnetSvcNm;
 	}
-
 	/**
 	 * @param intnetSvcNm
 	 *            the intnetSvcNm to set
@@ -72,13 +72,13 @@ public class IntnetSvcGuidanceVO extends SearchVO {
 	public void setIntnetSvcNm(String intnetSvcNm) {
 		this.intnetSvcNm = intnetSvcNm;
 	}
+	
 	/**
 	 * @return the intnetSvcDc
 	 */
 	public String getIntnetSvcDc() {
 		return intnetSvcDc;
 	}
-
 	/**
 	 * @param intnetSvcDc
 	 *            the intnetSvcDc to set
@@ -86,13 +86,13 @@ public class IntnetSvcGuidanceVO extends SearchVO {
 	public void setIntnetSvcDc(String intnetSvcDc) {
 		this.intnetSvcDc = intnetSvcDc;
 	}
+	
 	/**
 	 * @return the reflctAt
 	 */
 	public String getReflctAt() {
 		return reflctAt;
 	}
-
 	/**
 	 * @param reflctAt
 	 *            the reflctAt to set
@@ -100,6 +100,8 @@ public class IntnetSvcGuidanceVO extends SearchVO {
 	public void setReflctAt(String reflctAt) {
 		this.reflctAt = reflctAt;
 	}
+	
+	// helper
 	/**
 	 * @return the userId
 	 */

@@ -17,16 +17,16 @@
 					    ON A.CODE_ID = B.CODE_ID
 			 WHERE 1=1
 		]]>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "CODE_ID"'>
-				<![CDATA[ AND A.CODE_ID = #{searchKeyword} ]]>
+            <when test='searchVO.searchCondition == "CODE_ID"'>
+				<![CDATA[ AND A.CODE_ID = #{searchVO.searchKeyword} ]]>
             </when>
-            <when test='searchCondition == "CODE"'>
-				<![CDATA[ AND A.CODE = #{searchKeyword} ]]>
+            <when test='searchVO.searchCondition == "CODE"'>
+				<![CDATA[ AND A.CODE = #{searchVO.searchKeyword} ]]>
             </when>
-            <when test='searchCondition == "CODE_NM"'>
-				<![CDATA[ AND A.CODE_NM LIKE '%'||#{searchKeyword}||'%']]>
+            <when test='searchVO.searchCondition == "CODE_NM"'>
+				<![CDATA[ AND A.CODE_NM LIKE '%'||#{searchVO.searchKeyword}||'%']]>
             </when>
         </choose>
 		</if>
@@ -35,7 +35,7 @@
         ]]>			
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
 	</select>
 
@@ -48,16 +48,16 @@
 					    ON A.CODE_ID = B.CODE_ID
 			 WHERE 1=1
 		]]>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "CODE_ID"'>
-				<![CDATA[ AND A.CODE_ID = #{searchKeyword} ]]>
+            <when test='searchVO.searchCondition == "CODE_ID"'>
+				<![CDATA[ AND A.CODE_ID = #{searchVO.searchKeyword} ]]>
             </when>
-            <when test='searchCondition == "CODE"'>
-				<![CDATA[ AND A.CODE = #{searchKeyword} ]]>
+            <when test='searchVO.searchCondition == "CODE"'>
+				<![CDATA[ AND A.CODE = #{searchVO.searchKeyword} ]]>
             </when>
-            <when test='searchCondition == "CODE_NM"'>
-				<![CDATA[ AND A.CODE_NM LIKE '%'||#{searchKeyword}||'%']]>
+            <when test='searchVO.searchCondition == "CODE_NM"'>
+				<![CDATA[ AND A.CODE_NM LIKE '%'||#{searchVO.searchKeyword}||'%']]>
             </when>
         </choose>
 		</if>
@@ -76,16 +76,16 @@
 					    ON A.CODE_ID = B.CODE_ID
 			 WHERE 1=1
 		]]>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "CODE_ID"'>
-				<![CDATA[ AND A.CODE_ID = #{searchKeyword} ]]>
+            <when test='searchVO.searchCondition == "CODE_ID"'>
+				<![CDATA[ AND A.CODE_ID = #{searchVO.searchKeyword} ]]>
             </when>
-            <when test='searchCondition == "CODE"'>
-				<![CDATA[ AND A.CODE = #{searchKeyword} ]]>
+            <when test='searchVO.searchCondition == "CODE"'>
+				<![CDATA[ AND A.CODE = #{searchVO.searchKeyword} ]]>
             </when>
-            <when test='searchCondition == "CODE_NM"'>
-				<![CDATA[ AND A.CODE_NM LIKE '%'||#{searchKeyword}||'%']]>
+            <when test='searchVO.searchCondition == "CODE_NM"'>
+				<![CDATA[ AND A.CODE_NM LIKE '%'||#{searchVO.searchKeyword}||'%']]>
             </when>
         </choose>
 		</if>

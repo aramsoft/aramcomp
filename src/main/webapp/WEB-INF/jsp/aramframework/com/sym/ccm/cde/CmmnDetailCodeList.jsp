@@ -45,14 +45,14 @@
 		<span class="button"><a href="#" onclick="javascript:fn_aram_excel(); return false;">엑셀다운로드</a></span>
 	</div>
 	<div class="keyword_area">
-  		<form:select path="searchCondition">
+  		<form:select path="searchVO.searchCondition">
 	   		<form:option value='' label="--선택하세요--" />
 	   		<form:option value='CODE_ID' label="코드ID" />
 	   		<form:option value='CODE' label="코드" />
 	   		<form:option value='CODE_NM' label="코드명" />
    		</form:select>	   
-   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
+   		<form:input path="searchVO.searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+		<form:select path="searchVO.recordPerPage" class="select" onchange="fn_aram_search();" >
 	   		<form:option value="10" label="10" />
 	   		<form:option value="20" label="20" />
 	   		<form:option value="30" label="30" />
@@ -61,7 +61,7 @@
 	</div>
 </div>
 
-<form:hidden path="pageIndex" />
+<form:hidden path="searchVO.pageIndex" />
 </form:form>
 
 <table class="table-list" summary="코드ID, 코드, 코드명, 사용여부를 나타내는 공통상세코드 목록 테이블이다.">
@@ -83,12 +83,12 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="startIndex" value="${(cmmnDetailCodeVO.pageIndex-1) * cmmnDetailCodeVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(cmmnDetailCodeVO.searchVO.pageIndex-1) * cmmnDetailCodeVO.searchVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
 	<tr class="link"  onclick="javascript:fn_aram_detail('${result.codeId}','${result.code}'); return false;">
 	
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${cmmnDetailCodeVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${cmmnDetailCodeVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<td class="lt_text3">${result.codeId}</td>
@@ -123,7 +123,7 @@ function press(event) {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("cmmnDetailCodeVO");
-    varForm.pageIndex.value = pageNo;
+    varForm["searchVO.pageIndex"].value =  pageNo;
     varForm.action = "${pageContext.request.contextPath}/sym/ccm/cde/listCmmnDetailCode.do";
     varForm.submit();
 }
@@ -133,7 +133,7 @@ function fn_aram_linkPage(pageNo){
  ******************************************************** */
 function fn_aram_search(){
     var varForm = document.getElementById("cmmnDetailCodeVO");
-    varForm.pageIndex.value = 1;
+    varForm["searchVO.pageIndex"].value = 1;
     varForm.action = "${pageContext.request.contextPath}/sym/ccm/cde/listCmmnDetailCode.do";
     varForm.submit();
 }

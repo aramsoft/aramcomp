@@ -1,5 +1,6 @@
 package aramframework.com.sym.ccm.cde.domain;
 
+import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.cmm.domain.SearchVO;
 
 /**
@@ -21,8 +22,11 @@ import aramframework.com.cmm.domain.SearchVO;
  * </pre>
  */
 
-public class CmmnDetailCodeVO extends SearchVO {
+public class CmmnDetailCodeVO extends BaseVO {
 
+	// search
+	SearchVO searchVO = null;
+	
 	// domain
 	/** 코드ID */
 	private String codeId = "";
@@ -42,6 +46,26 @@ public class CmmnDetailCodeVO extends SearchVO {
 	// helper
 	/** 코드ID명 */
 	private String codeIdNm = "";
+
+	// searchVO
+	/**
+	 * searchVO attribute 를 리턴한다.
+	 * 
+	 * @return SearchVO
+	 */
+	public SearchVO getSearchVO() {
+		if( searchVO == null ) searchVO = new SearchVO();
+		return searchVO;
+	}
+	/**
+	 * searchVO attribute 값을 설정한다.
+	 * 
+	 * @param searchVO
+	 *            SearchVO
+	 */
+	public void setSearchVO(SearchVO searchVO) {
+		this.searchVO = searchVO;
+	}
 
 	// domain
 	/**
@@ -152,5 +176,4 @@ public class CmmnDetailCodeVO extends SearchVO {
 	public void setCodeIdNm(String codeIdNm) {
 		this.codeIdNm = codeIdNm;
 	}
-
 }

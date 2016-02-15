@@ -75,12 +75,12 @@ public class CmmnDetailCodeManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		cmmnDetailCodeVO.fillPageInfo(paginationInfo);
+		cmmnDetailCodeVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", cmmnDetailCodeManageService.selectCmmnDetailCodeList(cmmnDetailCodeVO));
 
 		int totCnt = cmmnDetailCodeManageService.selectCmmnDetailCodeListCnt(cmmnDetailCodeVO);
-		cmmnDetailCodeVO.setTotalRecordCount(totCnt);
+		cmmnDetailCodeVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -95,9 +95,10 @@ public class CmmnDetailCodeManageController {
 	 */
 	@RequestMapping(value = "/sym/ccm/cde/detailCmmnDetailCode.do")
 	public String detailCmmnDetailCode(
-			@ModelAttribute CmmnDetailCodeVO cmmnDetailCodeVO) {
+			CmmnDetailCodeVO cmmnDetailCodeVO,
+			ModelMap model) {
 		
-		cmmnDetailCodeManageService.selectCmmnDetailCodeDetail(cmmnDetailCodeVO);
+		model.addAttribute(cmmnDetailCodeManageService.selectCmmnDetailCodeDetail(cmmnDetailCodeVO));
 
 		return WebUtil.adjustViewName("/sym/ccm/cde/CmmnDetailCodeDetail");
 	}
@@ -177,9 +178,10 @@ public class CmmnDetailCodeManageController {
 	@RequestMapping(value = "/sym/ccm/cde/editCmmnDetailCode.do")
 	@Secured("ROLE_ADMIN")
 	public String editCmmnDetailCode(
-			@ModelAttribute CmmnDetailCodeVO cmmnDetailCodeVO) {
+			CmmnDetailCodeVO cmmnDetailCodeVO,
+			ModelMap model) {
 		
-		cmmnDetailCodeManageService.selectCmmnDetailCodeDetail(cmmnDetailCodeVO);
+		model.addAttribute(cmmnDetailCodeManageService.selectCmmnDetailCodeDetail(cmmnDetailCodeVO));
 
 		return WebUtil.adjustViewName("/sym/ccm/cde/CmmnDetailCodeEdit");
 	}

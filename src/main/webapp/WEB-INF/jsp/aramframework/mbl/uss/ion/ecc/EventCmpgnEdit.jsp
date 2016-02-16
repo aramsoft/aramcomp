@@ -44,8 +44,8 @@
 		<form:form commandName="eventCmpgnVO" method="post">
 			<form:hidden path="eventId" />
 			
-			<form:hidden path="searchCondition" />
-			<form:hidden path="searchKeyword"  />
+			<form:hidden path="searchVO.searchCondition" />
+			<form:hidden path="searchVO.searchKeyword"  />
 			<form:hidden path="pageIndex"  />
 
 			<dl class="uss-registOk">

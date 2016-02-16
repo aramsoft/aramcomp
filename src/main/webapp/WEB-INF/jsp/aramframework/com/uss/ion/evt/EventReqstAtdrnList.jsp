@@ -52,8 +52,8 @@
 	</div>
 </div>
 
-<form:hidden path="searchCondition" value="1" />
-<form:hidden path="pageIndex" />
+<form:hidden path="searchVO.searchCondition" value="1" />
+<form:hidden path="searchVO.pageIndex" />
 </form:form>
 
 <table class="table-list" summary="행사 참석자 목록 순번,참석자명,소속,E-Mail,구분 구성">
@@ -107,7 +107,7 @@
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("eventAtdmVO");
-	varForm.pageIndex.value    = pageNo;
+	varForm["searchVO.pageIndex"].value    = pageNo;
 	varForm.action             = "${pageContext.request.contextPath}/uss/ion/evt/listEventReqst.do";
 	varForm.submit();
 }

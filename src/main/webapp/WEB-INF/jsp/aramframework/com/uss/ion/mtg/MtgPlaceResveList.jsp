@@ -87,8 +87,8 @@
   	</tr> 
 </table>
 <br>
-<form:hidden path="searchCondition" value="1"/>
-<form:hidden path="pageIndex" />
+<form:hidden path="searchVO.searchCondition" value="1"/>
+<form:hidden path="searchVO.pageIndex" />
 </form:form>
   
 <table>
@@ -689,7 +689,7 @@
 /*설명 : 회의실  예약목록 조회 */
 function fn_aram_list(){
     var varForm = document.getElementById("mtgPlaceResveVO");
-    varForm.pageIndex.value = "1";
+    varForm["searchVO.pageIndex"].value = "1";
     varForm.action = "${pageContext.request.contextPath}/uss/ion/mtg/listMtgPlaceResve.do";
     varForm.submit();
 }

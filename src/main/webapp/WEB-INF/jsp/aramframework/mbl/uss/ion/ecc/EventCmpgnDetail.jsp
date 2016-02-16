@@ -42,9 +42,9 @@
 			<form:hidden path="eventId" value="" />
 
 			<!-- searchVO start -->
-			<form:hidden path="searchCondition" />
-			<form:hidden path="searchKeyword" />
-			<form:hidden path="pageIndex" />
+			<form:hidden path="searchVO.searchCondition" />
+			<form:hidden path="searchVO.searchKeyword" />
+			<form:hidden path="searchVO.pageIndex" />
 			<!-- searchVO end -->	
 			
 			<ul class="uss-hpcDetail">

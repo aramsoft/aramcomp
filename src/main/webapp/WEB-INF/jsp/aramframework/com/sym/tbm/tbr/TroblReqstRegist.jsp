@@ -142,7 +142,7 @@
  ******************************************************** */
 function fn_aram_list(){
     var varForm = document.getElementById("troblReqstVO");
-    varForm.pageIndex.value = '1';
+    varForm["searchVO.pageIndex"].value = '1';
     varForm.action = "${pageContext.request.contextPath}/sym/tbm/tbr/listTroblReqst.do";
     varForm.submit();
 }

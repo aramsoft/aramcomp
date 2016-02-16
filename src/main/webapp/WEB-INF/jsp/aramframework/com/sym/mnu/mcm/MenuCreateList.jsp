@@ -56,11 +56,11 @@
 	</div>
 	<div class="keyword_area">
    		<label for="searchKeyword">보안설정대상ID</label>
-   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+   		<form:input path="searchVO.searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
 	</div>
 </div>
 
-<form:hidden path="pageIndex" />
+<form:hidden path="searchVO.pageIndex" />
 </form:form>
 
 <table class="table-list" summary="메뉴생성관리  목록화면으로 권한코드, 권한명, 권한설명, 메뉴생성여부, 메뉴생성으로 구성됨">
@@ -134,7 +134,7 @@ function press(event) {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("menuCreateVO");
-    varForm.pageIndex.value = pageNo;
+    varForm["searchVO.pageIndex"].value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/sym/mnu/mcm/listMenuCreate.do";
     varForm.submit();
 }
@@ -144,7 +144,7 @@ function fn_aram_linkPage(pageNo){
  ******************************************************** */
 function fn_aram_search() {
     var varForm = document.getElementById("menuCreateVO");
-    varForm.pageIndex.value = 1;
+    varForm["searchVO.pageIndex"].value = 1;
     varForm.action = "${pageContext.request.contextPath}/sym/mnu/mcm/listMenuCreate.do";
     varForm.submit();
 }

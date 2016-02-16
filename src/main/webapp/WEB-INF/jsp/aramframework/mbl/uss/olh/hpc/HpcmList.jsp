@@ -38,17 +38,17 @@
 	
 		<form:form commandName="hpcmManageVO" method="post" data-role="none">
  			<div class="uss-Search">
-               	<form:select path="searchCondition" data-role="none">
+               	<form:select path="searchVO.searchCondition" data-role="none">
 					<form:option value="" label="--선택하세요--" />
 	   				<form:option value="HPCM_DFN" label="도움말정의" />			   
               	</form:select>
 	        	<div class="uss-SearchBox">
-               		<form:input path="searchKeyword" class="type-text" data-role="none" />
+               		<form:input path="searchVO.searchKeyword" class="type-text" data-role="none" />
 	         	</div>
 	          	<input type="button" value="조회" class="uss-SearchBtn" onclick="javascript:fn_aram_linkPage(1); return false;" data-role="none" />
 			</div>
 			
-			<form:hidden path="pageIndex" />
+			<form:hidden path="searchVO.pageIndex" />
  		</form:form>
 		
 		<ul data-role="listview">

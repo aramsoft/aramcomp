@@ -52,18 +52,18 @@
 			<input type="hidden" id="eventId" name="eventId" />
 
 			<div class="uss-Search">
-				<form:select path="searchCondition" data-role="none">
+				<form:select path="searchVO.searchCondition" data-role="none">
 					<form:option value="" label="--선택하세요--" />
 				   	<form:option value='EVENT_CN' label="행사내용" />
 				   	<form:option value='FRST_REGISTER_ID' label="작성자" />
 			    </form:select>
                	<div class="uss-SearchBox">
-	                <form:input path="searchKeyword" class="type-text" data-role="none" />
+	                <form:input path="searchVO.searchKeyword" class="type-text" data-role="none" />
 				</div>
 	            <input type="button" value="조회" class="uss-SearchBtn" onclick="javascript:fn_aram_search(); return false;" data-role="none" />
 			</div>
 			
-			<form:hidden path="pageIndex" />
+			<form:hidden path="searchVO.pageIndex" />
 		</form:form>
 		
 		<ul data-role="listview">
@@ -135,7 +135,7 @@ function fn_aram_linkPage(pageNo){
  ******************************************************** */
 function fn_aram_search(){
     var varForm = document.getElementById("eventCmpgnVO");
-    varForm.pageIndex.value = 1;
+    varForm["searchVO.pageIndex"].value = 1;
     varForm.action = "${pageContext.request.contextPath}/uss/ion/ecc/listEventCmpgn.mdo";
     varForm.submit();
 }

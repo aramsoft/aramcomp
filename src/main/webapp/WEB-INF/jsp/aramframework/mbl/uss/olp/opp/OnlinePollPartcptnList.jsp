@@ -44,17 +44,17 @@
 			<input type="hidden" id="pollId" name="pollId" />
 
 			<div class="uss-Search">
-				<form:select path="searchCondition" data-role="none">
+				<form:select path="searchVO.searchCondition" data-role="none">
 					<form:option value="" label="--선택하세요--" />
 				   	<form:option value='POLL_NM' label="POLL명" />
 			    </form:select>
                	<div class="uss-SearchBox">
-	                <form:input path="searchKeyword" class="type-text" data-role="none" />
+	                <form:input path="searchVO.searchKeyword" class="type-text" data-role="none" />
 				</div>
 	            <input type="button" value="조회" class="uss-SearchBtn" onclick="javascript:fn_aram_search(); return false;" data-role="none" />
 			</div>
 			
-			<form:hidden path="pageIndex" />
+			<form:hidden path="searchVO.pageIndex" />
 		</form:form>
 		
 		<ul data-role="listview" data-split-icon="search">
@@ -105,7 +105,7 @@ function fn_list_page() {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("onlinePollPartcptnVO");
-    varForm.pageIndex.value = pageNo;
+    varForm["searchVO.pageIndex"].value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/uss/olp/opp/listOnlinePollPartcptn.mdo";
     varForm.submit();
 }
@@ -135,7 +135,7 @@ function fn_aram_insert(pollId,sDate,eDate){
  ******************************************************** */
 function fn_aram_search(pageIndex){
     var varForm = document.getElementById("onlinePollPartcptnVO");
-    varForm.pageIndex.value = pageIndex;
+    varForm["searchVO.pageIndex"].value = pageIndex;
     varForm.action = "${pageContext.request.contextPath}/uss/olp/opp/listOnlinePollPartcptn.mdo";
     varForm.submit();
 }

@@ -55,7 +55,7 @@
 	</div>
 </div>
 
-<form:hidden path="pageIndex" />
+<form:hidden path="searchVO.pageIndex" />
 </form:form>
 
 <table class="table-list">
@@ -111,7 +111,7 @@ function fn_aram_linkPage(pageNo) {
 	} else {
 		actionUrl = "${pageContext.request.contextPath}/cop/com/listUser.do";
 	}
-	varForm.pageIndex.value = pageNo;
+	varForm["searchVO.pageIndex"].value = pageNo;
 	varForm.action = actionUrl;
 	varForm.submit();
 }

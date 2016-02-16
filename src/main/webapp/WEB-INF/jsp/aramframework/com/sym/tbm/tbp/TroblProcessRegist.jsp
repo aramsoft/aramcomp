@@ -187,8 +187,8 @@
 <form:hidden path="strProcessSttus" />
 <form:hidden path="strTroblKnd" />
 <form:hidden path="strTroblNm" />
-<form:hidden path="pageIndex" />
-<form:hidden path="recordPerPage" />
+<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="searchVO.recordPerPage" />
 <!-- 검색조건 유지 -->
 </form:form>
 
@@ -202,7 +202,7 @@
 
 function fn_aram_list(){
     var varForm = document.getElementById("troblProcessVO");
-    varForm.pageIndex.value = '1';
+    varForm["searchVO.pageIndex"].value = '1';
     varForm.action = "${pageContext.request.contextPath}/sym/tbm/tbp/listTroblProcess.do";
     varForm.submit();
 }

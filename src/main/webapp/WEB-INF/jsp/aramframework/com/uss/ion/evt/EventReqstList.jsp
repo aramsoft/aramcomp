@@ -91,8 +91,8 @@
   	</tr> 
 </table>
 
-<form:hidden path="searchCondition" value="1" />
-<form:hidden path="pageIndex" />
+<form:hidden path="searchVO.searchCondition" value="1" />
+<form:hidden path="searchVO.pageIndex" />
 </form:form>
 
 <div style="margin-top:10px; width:100%"></div>
@@ -170,7 +170,7 @@
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("eventManageVO");
-	varForm.pageIndex.value    = pageNo;
+	varForm["searchVO.pageIndex"].value    = pageNo;
 	varForm.action             = "${pageContext.request.contextPath}/uss/ion/evt/listEventReqst.do";
 	varForm.submit();
 }
@@ -187,7 +187,7 @@ function fn_aram_search(){
 			return;
 		} 
 	}
-	varForm.pageIndex.value = '1';
+	varForm["searchVO.pageIndex"].value = '1';
 	varForm.action = "${pageContext.request.contextPath}/uss/ion/evt/listEventReqst.do";
 	varForm.submit();
 }

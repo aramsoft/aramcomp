@@ -44,7 +44,7 @@
 		<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;"><spring:message code="button.create" /></a></span>
 	</div>
 	<div class="keyword_area">
-    	<form:select path="searchCondition" title="조회조건 선택">
+    	<form:select path="searchVO.searchCondition" title="조회조건 선택">
 	   		<form:option value='' label="--선택하세요--" />
 	   		<form:option value="ADMINIST_WORD_NM" label="행정용어명" />			   
 	   		<form:option value="ADMINIST_WORD_ENG_NM" label="행정용어영문명" />			   
@@ -52,8 +52,8 @@
 	   		<form:option value="ADMINIST_WORD_DFN" label="행정용어정의" />			   
 	   		<form:option value="ADMINIST_WORD_DC" label="행정용어설명" />			   
    		</form:select>
-   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
+   		<form:input path="searchVO.searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+		<form:select path="searchVO.recordPerPage" class="select" onchange="fn_aram_search();" >
 	   		<form:option value="10" label="10" />
 	   		<form:option value="20" label="20" />
 	   		<form:option value="30" label="30" />
@@ -65,7 +65,7 @@
 <form:hidden path="choseongSe" />
 <form:hidden path="choseongA" />
 <form:hidden path="choseongB" />
-<form:hidden path="pageIndex" />
+<form:hidden path="searchVO.pageIndex" />
 </form:form>
 
 <!--  검색버튼 -->
@@ -183,7 +183,7 @@ function press(event) {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("administrationWordVO");
-    varForm.pageIndex.value = pageNo;
+    varForm["searchVO.pageIndex"].value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/uss/olh/awm/listAdministrationWord.do";
     varForm.submit();
 }
@@ -196,7 +196,7 @@ function fn_aram_search(){
     varForm.choseongA.value = '';
     varForm.choseongB.value = '';
     varForm.choseongSe.value = '';
-    varForm.pageIndex.value = '1';
+    varForm["searchVO.pageIndex"].value = '1';
     varForm.action = "${pageContext.request.contextPath}/uss/olh/awm/listAdministrationWord.do";
     varForm.submit();
 }
@@ -209,7 +209,7 @@ function fn_aram_choseong(choseongA, choseongB, choseongSe){
     varForm.choseongA.value = choseongA;
     varForm.choseongB.value = choseongB;
     varForm.choseongSe.value = choseongSe;
-    varForm.pageIndex.value = '1';
+    varForm["searchVO.pageIndex"].value = '1';
     varForm.action = "${pageContext.request.contextPath}/uss/olh/awm/listAdministrationWord.do";
     varForm.submit();
 }

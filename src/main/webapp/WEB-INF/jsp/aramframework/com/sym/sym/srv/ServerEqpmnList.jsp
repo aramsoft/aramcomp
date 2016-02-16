@@ -41,7 +41,7 @@
 	<div class="keyword_area">
  		<label for="strServerEqpmnNm">서버H/W 명 : </label>
     	<form:input path="strServerEqpmnNm" size="30" maxlength="30" title="검색어 입력" onkeypress="press();"/> 
-		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
+		<form:select path="searchVO.recordPerPage" class="select" onchange="fn_aram_search();" >
 	   		<form:option value="10" label="10" />
 	   		<form:option value="20" label="20" />
 	   		<form:option value="30" label="30" />
@@ -50,7 +50,7 @@
 	</div>
 </div>
 
-<form:hidden path="pageIndex" />
+<form:hidden path="searchVO.pageIndex" />
 </form:form>
 
 <table class="table-list" summary="서버장비에 대한 목록을 제공한다.">
@@ -112,14 +112,14 @@ function press() {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("serverEqpmnVO");
-    varForm.pageIndex.value = pageNo;
+    varForm["searchVO.pageIndex"].value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/sym/sym/srv/listServerEqpmn.do";
     varForm.submit();
 }
 
 function fn_aram_search(){
     var varForm = document.getElementById("serverEqpmnVO");
-    varForm.pageIndex.value = '1';
+    varForm["searchVO.pageIndex"].value = '1';
     varForm.action = "${pageContext.request.contextPath}/sym/sym/srv/listServerEqpmn.do";
     varForm.submit();
 }

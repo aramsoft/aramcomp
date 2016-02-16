@@ -52,8 +52,8 @@
 	<div class="keyword_area">
   		<label for="searchKeyword">메뉴명</label>
    		<span class="required_icon"></span>
-   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" title="recordPerPage">
+   		<form:input path="searchVO.searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+		<form:select path="searchVO.recordPerPage" class="select" onchange="fn_aram_search();" title="recordPerPage">
 	   		<form:option value="10" label="10" />
 	   		<form:option value="20" label="20" />
 	   		<form:option value="30" label="30" />
@@ -92,8 +92,8 @@
 </tbody>
 </table>
 
-<form:hidden path="searchCondition" value="0" />
-<form:hidden path="pageIndex" />
+<form:hidden path="searchVO.searchCondition" value="0" />
+<form:hidden path="searchVO.pageIndex" />
 </form:form>
 
 <div id="page_navigation">
@@ -112,14 +112,14 @@ function press(event) {
 
 function fn_aram_linkPage(pageIndex){
     var varForm = document.getElementById("bkmkMenuManageVO");
-    varForm.pageIndex.value = pageIndex;
+    varForm["searchVO.pageIndex"].value = pageIndex;
     varForm.action = "${pageContext.request.contextPath}/sym/mnu/bmm/listBkmkMenuPopup.do";
     varForm.submit();
 }
 
 function fn_aram_search(){
     var varForm = document.getElementById("bkmkMenuManageVO");
-    varForm.pageIndex.value = '1';
+    varForm["searchVO.pageIndex"].value = '1';
     varForm.action = "${pageContext.request.contextPath}/sym/mnu/bmm/listBkmkMenuPopup.do";
     varForm.submit();
 }

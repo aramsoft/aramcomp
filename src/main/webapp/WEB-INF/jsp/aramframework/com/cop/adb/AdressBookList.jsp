@@ -43,14 +43,14 @@
     	<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;"><spring:message code="button.create" /></a></span>
 	</div>
 	<div class="keyword_area">
-	 	<form:select path="searchCondition" class="select" title="검색조건선택">
+	 	<form:select path="searchVO.searchCondition" class="select" title="검색조건선택">
 	   		<form:option value="" label="--선택하세요--" />
 	   		<form:option value="ADBK_NM" label="주소록명" />
 	   		<form:option value="OTHBC_SCOPE" label="공개범위" />
 	   		<form:option value="WRTER_ID" label="등록자" />
 	  	</form:select>
-	  	<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-		<form:select path="recordPerPage" class="select" onchange="javascript:fn_aram_search(); return false;" title="recordPerPage">
+	  	<form:input path="searchVO.searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+		<form:select path="searchVO.recordPerPage" class="select" onchange="javascript:fn_aram_search(); return false;" title="recordPerPage">
 	   		<form:option value="10" label="10" />
 	   		<form:option value="20" label="20" />
 	   		<form:option value="30" label="30" />
@@ -59,7 +59,7 @@
 	</div>
 </div>
 
-<form:hidden path="pageIndex" />
+<form:hidden path="searchVO.pageIndex" />
 </form:form>
 
 <table class="table-list" summary="주소록에 대한 목록을 제공한다.">
@@ -130,14 +130,14 @@ function press(event) {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("adressBookVO");
-    varForm.pageIndex.value = pageNo;
+    varForm["searchVO.pageIndex"].value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/cop/adb/listAdressBook.do";
     varForm.submit();
 }
 
 function fn_aram_search(){
     var varForm = document.getElementById("adressBookVO");
-    varForm.pageIndex.value = '1';
+    varForm["searchVO.pageIndex"].value = '1';
     varForm.action = "${pageContext.request.contextPath}/cop/adb/listAdressBook.do";
     varForm.submit();
 }

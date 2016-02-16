@@ -34,8 +34,8 @@
 		<form:form commandName="qnaManageVO" method="post">
 			<form:hidden path="qaId" />
 			
-			<form:hidden path="searchCondition" />
-			<form:hidden path="searchKeyword"  />
+			<form:hidden path="searchVO.searchCondition" />
+			<form:hidden path="searchVO.searchKeyword"  />
 			<form:hidden path="pageIndex"  />
 
 			<div data-inline="true">

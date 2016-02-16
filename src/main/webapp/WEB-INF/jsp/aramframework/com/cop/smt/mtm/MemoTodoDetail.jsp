@@ -92,10 +92,10 @@
 <form:hidden path="searchDe" />
 <form:hidden path="searchBgnDe" />
 <form:hidden path="searchEndDe" />
-<form:hidden path="searchCondition" />
-<form:hidden path="searchKeyword" />
-<form:hidden path="pageIndex" />
-<form:hidden path="recordPerPage" />
+<form:hidden path="searchVO.searchCondition" />
+<form:hidden path="searchVO.searchKeyword" />
+<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="searchVO.recordPerPage" />
 <!-- 검색조건 유지 -->
 </form:form>
 

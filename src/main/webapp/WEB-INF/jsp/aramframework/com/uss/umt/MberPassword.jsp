@@ -44,10 +44,10 @@
 
 <!-- 검색조건 유지 -->
 <form:hidden path="sbscrbSttus" />
-<form:hidden path="searchCondition" />
-<form:hidden path="searchKeyword" />
-<form:hidden path="pageIndex" />
-<form:hidden path="recordPerPage" />
+<form:hidden path="searchVO.searchCondition" />
+<form:hidden path="searchVO.searchKeyword" />
+<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="searchVO.recordPerPage" />
 
 <table class="table-register">
     <tr>

@@ -41,18 +41,18 @@
 			<input type="hidden" id="adbkId" name="adbkId" value=""/>
 
  			<div class="uss-Search">
-               	<form:select path="searchCondition" data-role="none">
+               	<form:select path="searchVO.searchCondition" data-role="none">
 					<form:option value="" label="--선택하세요--" />
 			   		<form:option value="ADBK_NM" label="주소록명" />
 			   		<form:option value="OTHBC_SCOPE" label="공개범위" />
 			   		<form:option value="WRTER_ID" label="등록자" />
                	</form:select>
                	<div class="uss-SearchBox">
-               		<form:input path="searchKeyword" class="type-text" data-role="none" />
+               		<form:input path="searchVO.searchKeyword" class="type-text" data-role="none" />
                	</div>
                	<input type="button" value="조회" class="uss-SearchBtn" onclick="javascript:fn_aram_search(); return false;" data-role="none" />
 			</div>
-			<form:hidden path="pageIndex" />
+			<form:hidden path="searchVO.pageIndex" />
 		</form:form>
 		
 		<ul data-role="listview" data-split-icon="delete">

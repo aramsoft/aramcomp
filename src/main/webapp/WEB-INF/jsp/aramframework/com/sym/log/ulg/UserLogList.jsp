@@ -77,8 +77,8 @@
      		<img name="calendarImg" src="${pageContext.request.contextPath}/images/aramframework/com/cmm/icon/bu_icon_carlendar.gif"  align="middle" style="border:0px" alt="달력창팝업버튼이미지">
      	</a>
   		&nbsp;사용자 : &nbsp;
-   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
+   		<form:input path="searchVO.searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+		<form:select path="searchVO.recordPerPage" class="select" onchange="fn_aram_search();" >
 	   		<form:option value="10" label="10" />
 	   		<form:option value="20" label="20" />
 	   		<form:option value="30" label="30" />
@@ -87,7 +87,7 @@
 	</div>
 </div>
 
-<form:hidden path="pageIndex" />
+<form:hidden path="searchVO.pageIndex" />
 </form:form>
 
 <table class="table-list">
@@ -152,7 +152,7 @@ function press() {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("userLogVO");
-	varForm.pageIndex.value = pageNo;
+	varForm["searchVO.pageIndex"].value = pageNo;
 	varForm.action = "${pageContext.request.contextPath}/sym/log/ulg/listUserLog.do";
 	varForm.submit();
 }
@@ -182,7 +182,7 @@ function fn_aram_search(){
 		}
 	}
 
-	varForm.pageIndex.value = '1';
+	varForm["searchVO.pageIndex"].value = '1';
 	varForm.action = "${pageContext.request.contextPath}/sym/log/ulg/listUserLog.do";
 	varForm.submit();
 }

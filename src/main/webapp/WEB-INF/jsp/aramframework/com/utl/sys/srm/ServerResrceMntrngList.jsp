@@ -55,7 +55,7 @@
 	</div>
 </div>
 
-<form:hidden path="pageIndex" />
+<form:hidden path="searchVO.pageIndex" />
 </form:form>
 
 <table class="table-list" summary="서버자원모니터링 결과정보에 대한 목록을 제공한다.">
@@ -120,7 +120,7 @@ function press() {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("serverResrceMntrngVO");
-    varForm.pageIndex.value = pageNo;
+    varForm["searchVO.pageIndex"].value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/utl/sys/srm/listServerResrceMntrng.do";
     varForm.submit();
 }
@@ -158,7 +158,7 @@ function fn_aram_search() {
         }
     }
 
-    varForm.pageIndex.value = '1';
+    varForm["searchVO.pageIndex"].value = '1';
     varForm.action = "${pageContext.request.contextPath}/utl/sys/srm/listServerResrceMntrng.do";
     varForm.submit();
 }

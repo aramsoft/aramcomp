@@ -43,19 +43,19 @@
 			<input name="diaryId" type="hidden" value="">
 		
 			<div class="uss-Search">
-				<form:select path="searchCondition"  data-role="none">
+				<form:select path="searchVO.searchCondition"  data-role="none">
 					<form:option value="" label="--선택하세요--" />
 			   		<form:option value='DIARY_NM' label="일지명" />
 			   		<form:option value='DRCT_MATTER' label="지시사항" />
 			   		<form:option value='PARTCLR_MATTER' label="특이사항" />
 		   		</form:select>
                	<div class="uss-SearchBox">
-	                <form:input path="searchKeyword"  class="type-text" data-role="none" />
+	                <form:input path="searchVO.searchKeyword"  class="type-text" data-role="none" />
 				</div>
 	            <input type="button" value="조회" class="uss-SearchBtn" onclick="javascript:fn_aram_search(); return false;" data-role="none" />
 			</div>
 			
-			<form:hidden path="pageIndex" />
+			<form:hidden path="searchVO.pageIndex" />
 		</form:form>
 		
 		<ul data-role="listview">
@@ -104,7 +104,7 @@
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("diaryManageVO");
-	varForm.pageIndex.value = pageNo;
+	varForm["searchVO.pageIndex"].value = pageNo;
 	varForm.action = "${pageContext.request.contextPath}/cop/smt/dsm/listDiary.mdo";
 	varForm.submit();
 }
@@ -114,7 +114,7 @@ function fn_aram_linkPage(pageNo){
  ******************************************************** */
 function fn_aram_search(){
     var varForm = document.getElementById("diaryManageVO");
-    varForm.pageIndex.value = '1';
+    varForm["searchVO.pageIndex"].value = '1';
     varForm.action = "${pageContext.request.contextPath}/cop/smt/dsm/listDiary.mdo";
     varForm.submit();
 }

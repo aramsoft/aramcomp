@@ -81,8 +81,8 @@
 
 <!-- 검색조건 유지 -->
 <form:hidden path="strServerNm" />
-<form:hidden path="pageIndex" />
-<form:hidden path="recordPerPage" />
+<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="searchVO.recordPerPage" />
 <!-- 검색조건 유지 -->
 </form:form>
 

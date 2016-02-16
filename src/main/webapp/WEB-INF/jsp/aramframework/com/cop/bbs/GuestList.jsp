@@ -130,7 +130,7 @@
 	</tr>
 </table>
 
-<form:hidden path="pageIndex" />
+<form:hidden path="searchVO.pageIndex" />
 </form:form>
 
 </DIV>
@@ -145,14 +145,14 @@
  ******************************************************** */
 function fn_aram_linkPage(pageNo) {
     var varForm = document.getElementById("boardVO");
-    varForm.pageIndex.value = pageNo;
+    varForm["searchVO.pageIndex"].value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/cop/bbs/selectGuestList.do";
     varForm.submit();
 }
 
 function fn_aram_reset_guestList(pageNo) {
     var varForm = document.getElementById("boardVO");
-    varForm.pageIndex.value = '1';
+    varForm["searchVO.pageIndex"].value = '1';
     varForm.action = "${pageContext.request.contextPath}/cop/bbs/selectGuestList.do";
     varForm.submit();
 }

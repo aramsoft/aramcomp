@@ -41,17 +41,17 @@
 			<input type="hidden" name="scrapId">			
 
 			<div class="uss-Search">
-			    <form:select path="searchCondition" data-role="none">
+			    <form:select path="searchVO.searchCondition" data-role="none">
 					<form:option value="" label="--선택하세요--" />
  					<form:option value="SCRAP_NM" label="스크랩명" />
  				</form:select>
                	<div class="uss-SearchBox">
-	                <form:input path="searchKeyword" class="type-text" data-role="none" />
+	                <form:input path="searchVO.searchKeyword" class="type-text" data-role="none" />
 				</div>
 	            <input type="button" value="조회" class="uss-SearchBtn" onclick="javascript:fn_aram_search(); return false;" data-role="none" />
 			</div>
 			
-			<form:hidden path="pageIndex" />
+			<form:hidden path="searchVO.pageIndex" />
 		</form:form>
 		
 		<ul data-role="listview" style="clear:both;">
@@ -119,14 +119,14 @@ function press(event) {
  ******************************************************** */
 function fn_aram_linkPage(pageNo) {
     var varForm = document.getElementById("scrapVO");
-	varForm.pageIndex.value = pageNo;
+	varForm["searchVO.pageIndex"].value = pageNo;
 	varForm.action = "${pageContext.request.contextPath}/cop/scp/listScrap.mdo";
 	varForm.submit();	
 }
 
 function fn_aram_search() {
     var varForm = document.getElementById("scrapVO");
-	varForm.pageIndex.value = '1';
+	varForm["searchVO.pageIndex"].value = '1';
 	varForm.action = "${pageContext.request.contextPath}/cop/scp/listScrap.mdo";
 	varForm.submit();	
 }

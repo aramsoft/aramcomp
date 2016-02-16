@@ -56,7 +56,7 @@
 	</c:forEach>		 
 </tbody>  	
 </table>		
-<form:hidden path="searchCondition" value="1" />
+<form:hidden path="searchVO.searchCondition" value="1" />
 </form:form>
 
 </DIV>

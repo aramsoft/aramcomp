@@ -84,7 +84,7 @@
 </tbody>
 </table>
 
-<form:hidden path="pageIndex" />
+<form:hidden path="searchVO.pageIndex" />
 </form:form>
 
 <div id="page_navigation">
@@ -144,14 +144,14 @@ function press() {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("serverEqpmnRelateVO");
-    varForm.pageIndex.value = pageNo;
+    varForm["searchVO.pageIndex"].value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/sym/sym/srv/listServerEqpmnRelate.do";
     varForm.submit();
 }
 
 function fn_aram_search(){
     var varForm = document.getElementById("serverEqpmnRelateVO");
-    varForm.pageIndex.value = '1';
+    varForm["searchVO.pageIndex"].value = '1';
     varForm.action = "${pageContext.request.contextPath}/sym/sym/srv/listServerEqpmnRelate.do";
     varForm.submit();
 }

@@ -43,18 +43,18 @@
 			<input name="cnsltId" type="hidden" value="">
 
 			<div class="uss-Search">
-               	<form:select path="searchCondition" data-role="none">
+               	<form:select path="searchVO.searchCondition" data-role="none">
 					<form:option value="" label="--선택하세요--" />
 			   		<form:option value="WRTER_NM" label="작성자명" />			   
 			   		<form:option value="CNSLT_SJ" label="상담제목" />			   
 		        </form:select>
               	<div class="uss-SearchBox">
-                	<form:input path="searchKeyword" class="type-text" data-role="none" />
+                	<form:input path="searchVO.searchKeyword" class="type-text" data-role="none" />
 				</div>
             	<input type="button" value="조회" class="uss-SearchBtn" onclick="javascript:fn_aram_search(); return false;" data-role="none" />
 			</div>
 			
-			<form:hidden path="pageIndex" />
+			<form:hidden path="searchVO.pageIndex" />
 		</form:form>
 		
 		<ul data-role="listview" data-count-theme="d"> 
@@ -131,14 +131,14 @@ function fn_aram_detail(cnsltId, othbcAtConfirm) {
 
 function fn_aram_linkPage(pageIndex) {
     var varForm = document.getElementById("cnsltManageVO");
-    varForm.pageIndex.value = pageIndex;
+    varForm["searchVO.pageIndex"].value = pageIndex;
     varForm.action = "${pageContext.request.contextPath}/uss/olp/cns/listCnslt.mdo";					         
     varForm.submit();
 }
 
 function fn_aram_search() {
     var varForm = document.getElementById("cnsltManageVO");
-    varForm.pageIndex.value = '1';
+    varForm["searchVO.pageIndex"].value = '1';
     varForm.action = "${pageContext.request.contextPath}/uss/olp/cns/listCnslt.mdo";					         
     varForm.submit();
 }

@@ -58,8 +58,8 @@
 <form:hidden path="pmDateTy" />
 <form:hidden path="pmFromDate" />
 <form:hidden path="pmToDate" />
-<form:hidden path="searchCondition" />
-<form:hidden path="pageIndex" />
+<form:hidden path="searchVO.searchCondition" />
+<form:hidden path="searchVO.pageIndex" />
 <!-- 검색조건 유지 -->
 </form:form>
 

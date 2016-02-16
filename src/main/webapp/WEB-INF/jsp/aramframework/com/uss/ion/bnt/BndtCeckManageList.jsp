@@ -73,7 +73,7 @@
 	    	<label for="searchKeyword">당직체크코드명</label>
 	    </th>          
 	    <td width="30%">
-   			<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+   			<form:input path="searchVO.searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
         </td>
 	</tr> 
 	<tr>
@@ -91,8 +91,8 @@
 	</tr> 
 </table>
 
-<form:hidden path="searchCondition" value="1" />
-<form:hidden path="pageIndex" />
+<form:hidden path="searchVO.searchCondition" value="1" />
+<form:hidden path="searchVO.pageIndex" />
 </form:form>
 
 <div style="margin-top:3px; width:100%"></div>
@@ -154,7 +154,7 @@ function press(event) {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
 	var varForm = document.getElementById("bndtCeckManageVO");
-	varForm.pageIndex.value = pageNo;
+	varForm["searchVO.pageIndex"].value = pageNo;
 	varForm.action = "${pageContext.request.contextPath}/uss/ion/bnt/listBndtCeckManage.do";
 	varForm.submit();
 }

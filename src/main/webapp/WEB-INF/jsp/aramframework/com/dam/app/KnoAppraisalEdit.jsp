@@ -123,10 +123,10 @@ summary="이 표는 지식평가관리 대상 정보를 제공하며 조직명, 
 </table>
 
 <!-- 검색조건 유지 -->
-<form:hidden path="searchCondition" />
-<form:hidden path="searchKeyword" />
-<form:hidden path="pageIndex" />
-<form:hidden path="recordPerPage" />
+<form:hidden path="searchVO.searchCondition" />
+<form:hidden path="searchVO.searchKeyword" />
+<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="searchVO.recordPerPage" />
 <!-- 검색조건 유지 -->
 </form:form>
 

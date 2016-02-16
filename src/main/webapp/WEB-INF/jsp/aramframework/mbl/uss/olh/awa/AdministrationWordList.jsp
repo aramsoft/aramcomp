@@ -40,7 +40,7 @@
 		<form:form commandName="administrationWordVO" method="post" data-role="none">
 
 			<div class="uss-Search">
-               	<form:select path="searchCondition" data-role="none">
+               	<form:select path="searchVO.searchCondition" data-role="none">
 					<form:option value="" label="--선택하세요--" />
               		<form:option value="ADMINIST_WORD_NM" label="행정용어명" />
                		<form:option value="ADMINIST_WORD_ENG_NM" label="행정용어영문명" />
@@ -49,7 +49,7 @@
                		<form:option value="ADMINIST_WORD_DC" label="행정용어설명" />
               	</form:select>
 	        	<div class="uss-SearchBox">
-               		<form:input path="searchKeyword" class="type-text" data-role="none" />
+               		<form:input path="searchVO.searchKeyword" class="type-text" data-role="none" />
 	         	</div>
 	          	<input type="button" value="조회" class="uss-SearchBtn" onclick="javascript:fn_aram_search('', '', ''); return false;" data-role="none" />
 			</div>
@@ -57,7 +57,7 @@
 			<form:hidden path="choseongA" />
 			<form:hidden path="choseongB" />
 			<form:hidden path="choseongSe" />
- 			<form:hidden path="pageIndex" />
+ 			<form:hidden path="searchVO.pageIndex" />
  		</form:form>
 		
 		<ul data-role="listview">

@@ -49,7 +49,7 @@
     		<label for="searchKeyword">경조구분</label>
     	</th>
     	<td width="30%">
-        	<form:select path="searchKeyword" title="경조구분">
+        	<form:select path="searchVO.searchKeyword" title="경조구분">
                 <form:option value="" label="전체"/>
                 <form:options items="${COM054_ctsnn}" itemValue="code" itemLabel="codeNm"/>
       		</form:select>
@@ -101,8 +101,8 @@
   	</tr>
 </table>
 
-<form:hidden path="searchCondition" value="1" />
-<form:hidden path="pageIndex" />
+<form:hidden path="searchVO.searchCondition" value="1" />
+<form:hidden path="searchVO.pageIndex" />
 </form:form>
 
 <div style="margin-top:10px; width:100%"></div>
@@ -176,7 +176,7 @@
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("ctsnnManageVO");
-	varForm.pageIndex.value = pageNo;
+	varForm["searchVO.pageIndex"].value = pageNo;
 	varForm.action = "${pageContext.request.contextPath}/uss/ion/ctn/listCtsnnConfm.do";
 	varForm.submit();
 }

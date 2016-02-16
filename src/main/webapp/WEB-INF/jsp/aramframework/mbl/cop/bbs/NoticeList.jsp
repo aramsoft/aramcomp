@@ -42,7 +42,7 @@ function fn_aram_linkPage(pageNo) {
     var varForm = document.getElementById("boardVO");
 	var bbsId = fn_aram_get_idString(varForm.bbsId.value);
 
-	varForm.pageIndex.value = pageNo;
+	varForm["searchVO.pageIndex"].value = pageNo;
 	varForm.action = "${pageContext.request.contextPath}/content/mbl/board${prefix}/" + bbsId + "/articles";
 	varForm.submit();	
 }
@@ -51,7 +51,7 @@ function fn_aram_search_notice() {
     var varForm = document.getElementById("boardVO");
 	var bbsId = fn_aram_get_idString(varForm.bbsId.value);
 	
-	varForm.pageIndex.value = '1';
+	varForm["searchVO.pageIndex"].value = '1';
 	varForm.action = "${pageContext.request.contextPath}/content/mbl/board${prefix}/" + bbsId + "/articles";
 	varForm.submit();	
 }
@@ -96,10 +96,10 @@ function fn_aram_regist_notice() {
 		<form:form commandName="boardVO" action ="" method="post">
 
 			<form:hidden path="bbsId" />
-			<form:hidden path="pageIndex" />
+			<form:hidden path="searchVO.pageIndex" />
 
 			<div class="uss-Search">
-				<form:select path="searchCondition" title="검색조건선택" data-role="none">
+				<form:select path="searchVO.searchCondition" title="검색조건선택" data-role="none">
 					<form:option value="" label="--선택하세요--" />
 			   		<form:option value="NTT_SJ" label="제목" />
 			   		<form:option value="NTT_CN" label="내용" />
@@ -108,7 +108,7 @@ function fn_aram_regist_notice() {
 			   		</c:if>
 				</form:select>
 	            <div class="uss-SearchBox">
-  					<form:input path="searchKeyword" class="type-text" data-role="none"  />
+  					<form:input path="searchVO.searchKeyword" class="type-text" data-role="none"  />
 				</div>
 	            <input type="button" value="조회" class="uss-SearchBtn" onclick="javascript:fn_aram_search_notice(); return false;" data-role="none" />
 			</div>

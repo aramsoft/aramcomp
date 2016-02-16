@@ -109,9 +109,9 @@
 </table>
 
 <!-- 검색조건 유지 -->
-<form:hidden path="searchCondition" />
-<form:hidden path="searchKeyword" />
-<form:hidden path="pageIndex" />
+<form:hidden path="searchVO.searchCondition" />
+<form:hidden path="searchVO.searchKeyword" />
+<form:hidden path="searchVO.pageIndex" />
 <!-- 검색조건 유지 -->
 </form:form>
 

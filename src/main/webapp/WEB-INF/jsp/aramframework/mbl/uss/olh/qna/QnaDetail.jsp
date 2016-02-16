@@ -46,8 +46,8 @@
 			<form:hidden path="writngPassword"  />
 					
 			<!-- searchVO start -->
-			<form:hidden path="searchCondition" />
-			<form:hidden path="searchKeyword"  />
+			<form:hidden path="searchVO.searchCondition" />
+			<form:hidden path="searchVO.searchKeyword"  />
 			<form:hidden path="pageIndex"  />
 			<!-- searchVO end -->
 			

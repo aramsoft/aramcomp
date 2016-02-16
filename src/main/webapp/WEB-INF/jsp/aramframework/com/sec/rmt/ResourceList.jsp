@@ -45,8 +45,8 @@
 	</div>
 	<div class="keyword_area">
   		접근자원 명 : 
-   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
+   		<form:input path="searchVO.searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+		<form:select path="searchVO.recordPerPage" class="select" onchange="fn_aram_search();" >
 	   		<form:option value="10" label="10" />
 	   		<form:option value="20" label="20" />
 	   		<form:option value="30" label="30" />
@@ -55,8 +55,8 @@
 	</div>
 </div>
 
-<form:hidden path="searchCondition" />
-<form:hidden path="pageIndex" />
+<form:hidden path="searchVO.searchCondition" />
+<form:hidden path="searchVO.pageIndex" />
 
 <table class="table-list" summary="접근자원 관리 테이블입니다.접근자원  코드,접근자원 명,접근자원 타입,접근자원 Sort,접근자원 설명,등록일자의 정보를 담고 있습니다.">
 <thead>
@@ -129,14 +129,14 @@ function press() {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("resourceVO");
-    varForm.pageIndex.value = pageNo;
+    varForm["searchVO.pageIndex"].value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/sec/rmt/listResource.do";
     varForm.submit();
 }
 
 function fn_aram_search(){
     var varForm = document.getElementById("resourceVO");
-    varForm.pageIndex.value = "1";
+    varForm["searchVO.pageIndex"].value = "1";
     varForm.action = "${pageContext.request.contextPath}/sec/rmt/listResource.do";
     varForm.submit();
 }

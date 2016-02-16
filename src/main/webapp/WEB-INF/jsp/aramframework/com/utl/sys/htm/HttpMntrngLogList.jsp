@@ -59,13 +59,13 @@
         		<option value="<c:out value="${endHour.code}"/>"><c:out value="${endHour.codeNm}"/></option>
         	</c:forEach>
     	</select>
-  		<form:select path="searchCondition" title="조회조건 선택">
+  		<form:select path="searchVO.searchCondition" title="조회조건 선택">
 	   		<form:option value='' label="--선택하세요--" />
 	   		<form:option value="WEBSVC_KND" label="웹서비스종류" />			   
 	   		<form:option value="HTTP_STTUS" label="상태" />			   
    		</form:select>
-   		<form:input path="searchKeyword" size="25" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
+   		<form:input path="searchVO.searchKeyword" size="25" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+		<form:select path="searchVO.recordPerPage" class="select" onchange="fn_aram_search();" >
 	   		<form:option value="10" label="10" />
 	   		<form:option value="20" label="20" />
 	   		<form:option value="30" label="30" />
@@ -74,7 +74,7 @@
 	</div>
 </div>
 
-<form:hidden path="pageIndex" />
+<form:hidden path="searchVO.pageIndex" />
 </form:form>
 
 <table class="table-list" summary="이 표는 HTTP모니터링 로그 정보를 제공하며, 순번, 로그ID, 웹서비스종류, 시스템URL, 상태, 생성일시 정보로 구성되어 있습니다 .">
@@ -140,7 +140,7 @@ function press(event) {
  ******************************************************** */
 function fn_aram_linkPage(pageNo) {
     var varForm = document.getElementById("httpMntrngLogVO");
-    varForm.pageIndex.value = pageNo;
+    varForm["searchVO.pageIndex"].value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/utl/sys/htm/listHttpMntrngLog.do";
     varForm.submit();
 }
@@ -185,7 +185,7 @@ function fn_aram_search() {
 			return;
 		}
 	}
-    varForm.pageIndex.value = '1';
+    varForm["searchVO.pageIndex"].value = '1';
     varForm.action = "${pageContext.request.contextPath}/utl/sys/htm/listHttpMntrngLog.do";
 	varForm.submit();
 }

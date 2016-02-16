@@ -173,7 +173,7 @@ function fn_check_length() {
 
 </c:if>
 
-<form:hidden path="pageIndex" />
+<form:hidden path="searchVO.pageIndex" />
 </form:form>
 
 <c:if test="${not empty subMsg}">
@@ -194,7 +194,7 @@ function fn_check_length() {
  ******************************************************** */
 function fn_aram_linkPage(pageNo) {
     var varForm = document.getElementById("commentVO");
-	varForm.pageIndex.value = pageNo;
+	varForm["searchVO.pageIndex"].value = pageNo;
 	varForm.commentNo.value = '';
 	varForm.action = "${pageContext.request.contextPath}/cop/bbs${prefix}/listComment.do";
 	varForm.submit();
@@ -202,7 +202,7 @@ function fn_aram_linkPage(pageNo) {
 
 function fn_aram_reset_comment() {
     var varForm = document.getElementById("commentVO");
-	varForm.pageIndex.value = '1';
+	varForm["searchVO.pageIndex"].value = '1';
 	varForm.commentNo.value = '';
 	varForm.action = "${pageContext.request.contextPath}/cop/bbs${prefix}/listComment.do";
 	varForm.submit();

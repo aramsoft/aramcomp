@@ -25,16 +25,16 @@
 		      FROM COMTN_EVENT_INFO A
 		     WHERE 1=1
 	 	]]>
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
 	    <choose>
-	        <when test='searchCondition == "EVENT_CN"'>
-	            <![CDATA[ AND EVENT_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
+	        <when test='searchVO.searchCondition == "EVENT_CN"'>
+	            <![CDATA[ AND EVENT_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
 	        </when>
-	        <when test='searchCondition == "FRST_REGISTER_ID"'>
+	        <when test='searchVO.searchCondition == "FRST_REGISTER_ID"'>
        			<![CDATA[
 		 		   	AND FRST_REGISTER_ID IN (SELECT ESNTL_ID 
 		 		                               FROM COMTN_EMPLYR_INFO 
-		 		                              WHERE USER_NM LIKE '%' || #{searchKeyword} || '%' )
+		 		                              WHERE USER_NM LIKE '%' || #{searchVO.searchKeyword} || '%' )
 	 			]]>
 	        </when>
 	    </choose>
@@ -46,7 +46,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
 	</select>
 
@@ -56,16 +56,16 @@
 			  FROM COMTN_EVENT_INFO
 			 WHERE 1=1
         ]]>			
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
 	    <choose>
-	        <when test='searchCondition == "EVENT_CN"'>
-	            <![CDATA[ AND EVENT_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
+	        <when test='searchVO.searchCondition == "EVENT_CN"'>
+	            <![CDATA[ AND EVENT_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
 	        </when>
-	        <when test='searchCondition == "FRST_REGISTER_ID"'>
+	        <when test='searchVO.searchCondition == "FRST_REGISTER_ID"'>
        			<![CDATA[
 		 		   	AND FRST_REGISTER_ID IN (SELECT ESNTL_ID 
 		 		                               FROM COMTN_EMPLYR_INFO 
-		 		                              WHERE USER_NM LIKE '%' || #{searchKeyword} || '%' )
+		 		                              WHERE USER_NM LIKE '%' || #{searchVO.searchKeyword} || '%' )
 	 			]]>
 	        </when>
 	    </choose>
@@ -176,13 +176,13 @@
 		      FROM COMTN_EXTRL_HR_INFO A
 		     WHERE 1=1
 	 	]]>
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "EXTRL_HR_NM"'>
-                <![CDATA[ AND EXTRL_HR_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "EXTRL_HR_NM"'>
+                <![CDATA[ AND EXTRL_HR_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "PSITN_INSTT_NM"'>
-                <![CDATA[ AND PSITN_INSTT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "PSITN_INSTT_NM"'>
+                <![CDATA[ AND PSITN_INSTT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -193,7 +193,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
 	</select>
 
@@ -203,13 +203,13 @@
 			  FROM COMTN_EXTRL_HR_INFO
 			 WHERE 1=1
         ]]>			
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "EXTRL_HR_NM"'>
-                <![CDATA[ AND EXTRL_HR_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "EXTRL_HR_NM"'>
+                <![CDATA[ AND EXTRL_HR_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "PSITN_INSTT_NM"'>
-                <![CDATA[ AND PSITN_INSTT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "PSITN_INSTT_NM"'>
+                <![CDATA[ AND PSITN_INSTT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

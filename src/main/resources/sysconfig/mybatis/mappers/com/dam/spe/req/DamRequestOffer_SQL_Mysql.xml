@@ -46,13 +46,13 @@
 			  FROM COMTN_DAM_CALRES A
 			 WHERE 1=1
 		]]>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "KNWLDG_NM"'>
-                 <![CDATA[ AND A.KNWLDG_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "KNWLDG_NM"'>
+                 <![CDATA[ AND A.KNWLDG_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "KNWLDG_CN"'>
-                 <![CDATA[ AND A.KNWLDG_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "KNWLDG_CN"'>
+                 <![CDATA[ AND A.KNWLDG_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -61,7 +61,7 @@
 		]]>
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
 	</select>
 	
@@ -72,13 +72,13 @@
 			  FROM COMTN_DAM_CALRES A
 			 WHERE 1=1
         ]]>			
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "KNWLDG_NM"'>
-                 <![CDATA[ AND A.KNWLDG_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "KNWLDG_NM"'>
+                 <![CDATA[ AND A.KNWLDG_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "KNWLDG_CN"'>
-                 <![CDATA[ AND A.KNWLDG_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "KNWLDG_CN"'>
+                 <![CDATA[ AND A.KNWLDG_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

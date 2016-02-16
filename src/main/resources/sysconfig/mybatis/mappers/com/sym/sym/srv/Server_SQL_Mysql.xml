@@ -22,7 +22,7 @@
         ]]>             
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
     </select>
 
@@ -147,7 +147,7 @@
         ]]>             
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
     </select>
 
@@ -274,7 +274,7 @@
         ]]>             
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
     </select>
 

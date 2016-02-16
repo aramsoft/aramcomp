@@ -138,16 +138,16 @@
 		      FROM COMTN_EMPLYR_INFO 
 		     WHERE 1=1 
 	 	]]>
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "USER_NM"'>
-               	<![CDATA[ AND USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "USER_NM"'>
+               	<![CDATA[ AND USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "EMPLYR_ID"'>
-               	<![CDATA[ AND EMPLYR_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "EMPLYR_ID"'>
+               	<![CDATA[ AND EMPLYR_ID LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "OFFM_TELNO"'>
-               	<![CDATA[ AND OFFM_TELNO LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "OFFM_TELNO"'>
+               	<![CDATA[ AND OFFM_TELNO LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -158,7 +158,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
 	</select>
 
@@ -168,16 +168,16 @@
 			  FROM COMTN_EMPLYR_INFO
 			 WHERE 1=1 
         ]]>			
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "USER_NM"'>
-               	<![CDATA[ AND USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "USER_NM"'>
+               	<![CDATA[ AND USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "EMPLYR_ID"'>
-               	<![CDATA[ AND EMPLYR_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "EMPLYR_ID"'>
+               	<![CDATA[ AND EMPLYR_ID LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "OFFM_TELNO"'>
-               	<![CDATA[ AND OFFM_TELNO LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "OFFM_TELNO"'>
+               	<![CDATA[ AND OFFM_TELNO LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

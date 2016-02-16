@@ -32,10 +32,10 @@
                    ) X
              WHERE 1 = 1
         ]]>              
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "USER_NM"'>
-                <![CDATA[ AND X.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "USER_NM"'>
+                <![CDATA[ AND X.USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -49,7 +49,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
     </select>
 
@@ -72,10 +72,10 @@
                    ) X
              WHERE 1 = 1
         ]]>			
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "USER_NM"'>
-                <![CDATA[ AND X.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "USER_NM"'>
+                <![CDATA[ AND X.USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

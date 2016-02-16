@@ -32,13 +32,13 @@
 			  FROM COMTN_POPUP_MANAGE A
 			 WHERE 1=1
 		]]>
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "POPUP_SJ_NM"'>
-                <![CDATA[ AND POPUP_SJ_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "POPUP_SJ_NM"'>
+                <![CDATA[ AND POPUP_SJ_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "FILE_URL"'>
-                <![CDATA[ AND FILE_URL LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "FILE_URL"'>
+                <![CDATA[ AND FILE_URL LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -47,7 +47,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
 	</select>
 	
@@ -58,13 +58,13 @@
 			  FROM COMTN_POPUP_MANAGE
 			 WHERE 1=1
         ]]>			
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "POPUP_SJ_NM"'>
-                <![CDATA[ AND POPUP_SJ_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "POPUP_SJ_NM"'>
+                <![CDATA[ AND POPUP_SJ_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "FILE_URL"'>
-                <![CDATA[ AND FILE_URL LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "FILE_URL"'>
+                <![CDATA[ AND FILE_URL LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

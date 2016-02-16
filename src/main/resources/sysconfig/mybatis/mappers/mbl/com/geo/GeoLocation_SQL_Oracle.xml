@@ -21,16 +21,16 @@
 			  FROM MBLTN_GEO_LOCATION
 			 WHERE 1 = 1
 		]]>
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "BULD_NM"'>
-             	<![CDATA[ AND BULD_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "BULD_NM"'>
+             	<![CDATA[ AND BULD_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "TELNO"'>
-             	<![CDATA[ AND TELNO LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "TELNO"'>
+             	<![CDATA[ AND TELNO LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "ADRES"'>
-             	<![CDATA[ AND ADRES LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "ADRES"'>
+             	<![CDATA[ AND ADRES LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -41,7 +41,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>
 			
 	</select>	
@@ -52,16 +52,16 @@
 			  FROM MBLTN_GEO_LOCATION
 			 WHERE 1 = 1
 		]]>
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "BULD_NM"'>
-             	<![CDATA[ AND BULD_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "BULD_NM"'>
+             	<![CDATA[ AND BULD_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "TELNO"'>
-             	<![CDATA[ AND TELNO LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "TELNO"'>
+             	<![CDATA[ AND TELNO LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "ADRES"'>
-             	<![CDATA[ AND ADRES LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "ADRES"'>
+             	<![CDATA[ AND ADRES LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

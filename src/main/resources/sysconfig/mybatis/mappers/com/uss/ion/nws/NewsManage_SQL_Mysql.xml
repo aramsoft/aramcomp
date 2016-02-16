@@ -17,13 +17,13 @@
    	    <if test='trgetId != null and trgetId != ""'>
 				<![CDATA[ AND TRGET_ID = #{trgetId} ]]>		
 		</if>
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "NEWS_SJ"'>
-                 <![CDATA[ AND NEWS_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>	
+            <when test='searchVO.searchCondition == "NEWS_SJ"'>
+                 <![CDATA[ AND NEWS_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>	
             </when>
-            <when test='searchCondition == "NEWS_ORIGIN"'>
-                 <![CDATA[ AND NEWS_ORIGIN LIKE '%'|| #{searchKeyword} ||'%' ]]>	
+            <when test='searchVO.searchCondition == "NEWS_ORIGIN"'>
+                 <![CDATA[ AND NEWS_ORIGIN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>	
             </when>
         </choose>
 		</if>
@@ -32,7 +32,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
 	</select>
 	
@@ -45,13 +45,13 @@
    	    <if test='trgetId != null and trgetId != ""'>
 				<![CDATA[ AND TRGET_ID = #{trgetId} ]]>		
 		</if>
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "NEWS_SJ"'>
-                 <![CDATA[ AND NEWS_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>	
+            <when test='searchVO.searchCondition == "NEWS_SJ"'>
+                 <![CDATA[ AND NEWS_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>	
             </when>
-            <when test='searchCondition == "NEWS_ORIGIN"'>
-                 <![CDATA[ AND NEWS_ORIGIN LIKE '%'|| #{searchKeyword} ||'%' ]]>	
+            <when test='searchVO.searchCondition == "NEWS_ORIGIN"'>
+                 <![CDATA[ AND NEWS_ORIGIN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>	
             </when>
         </choose>
 		</if>

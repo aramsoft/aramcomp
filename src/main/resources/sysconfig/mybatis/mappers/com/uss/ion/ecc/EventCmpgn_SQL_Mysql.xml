@@ -19,16 +19,16 @@
 		      FROM COMTN_EVENT_INFO A
 		     WHERE 1=1
 	 	]]>
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "EVENT_CN"'>
-               	<![CDATA[ AND EVENT_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "EVENT_CN"'>
+               	<![CDATA[ AND EVENT_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "FRST_REGISTER_ID"'>
+            <when test='searchVO.searchCondition == "FRST_REGISTER_ID"'>
 	 		   	<![CDATA[ 
 	 		   		AND FRST_REGISTER_ID IN (SELECT ESNTL_ID 
 	 		                              	   FROM COMTN_EMPLYR_INFO 
-	 		                             	  WHERE USER_NM LIKE '%' || #{searchKeyword} || '%' )
+	 		                             	  WHERE USER_NM LIKE '%' || #{searchVO.searchKeyword} || '%' )
  				]]>
             </when>
         </choose>
@@ -38,7 +38,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
 	</select>
 
@@ -48,16 +48,16 @@
 			  FROM COMTN_EVENT_INFO
 			 WHERE 1=1
         ]]>			
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "EVENT_CN"'>
-               	<![CDATA[ AND EVENT_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "EVENT_CN"'>
+               	<![CDATA[ AND EVENT_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "FRST_REGISTER_ID"'>
+            <when test='searchVO.searchCondition == "FRST_REGISTER_ID"'>
 	 		   	<![CDATA[ 
 	 		   		AND FRST_REGISTER_ID IN (SELECT ESNTL_ID 
 	 		                              	   FROM COMTN_EMPLYR_INFO 
-	 		                             	  WHERE USER_NM LIKE '%' || #{searchKeyword} || '%' )
+	 		                             	  WHERE USER_NM LIKE '%' || #{searchVO.searchKeyword} || '%' )
  				]]>
             </when>
         </choose>
@@ -162,13 +162,13 @@
 		      FROM COMTN_EXTRL_HR_INFO A
 		     WHERE 1=1
 	 	]]>
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
 	    <choose>
-	        <when test='searchCondition == "EXTRL_HR_NM"'>
-	        	<![CDATA[ AND EXTRL_HR_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+	        <when test='searchVO.searchCondition == "EXTRL_HR_NM"'>
+	        	<![CDATA[ AND EXTRL_HR_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
 	        </when>
-	        <when test='searchCondition == "PSITN_INSTT_NM"'>
-	            <![CDATA[ AND PSITN_INSTT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+	        <when test='searchVO.searchCondition == "PSITN_INSTT_NM"'>
+	            <![CDATA[ AND PSITN_INSTT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
 	        </when>
 	    </choose>
 		</if>
@@ -177,7 +177,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
 	</select>
 
@@ -187,13 +187,13 @@
 			  FROM COMTN_EXTRL_HR_INFO
 			 WHERE 1=1
         ]]>			
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
 	    <choose>
-	        <when test='searchCondition == "EXTRL_HR_NM"'>
-	        	<![CDATA[ AND EXTRL_HR_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+	        <when test='searchVO.searchCondition == "EXTRL_HR_NM"'>
+	        	<![CDATA[ AND EXTRL_HR_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
 	        </when>
-	        <when test='searchCondition == "PSITN_INSTT_NM"'>
-	            <![CDATA[ AND PSITN_INSTT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+	        <when test='searchVO.searchCondition == "PSITN_INSTT_NM"'>
+	            <![CDATA[ AND PSITN_INSTT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
 	        </when>
 	    </choose>
 		</if>

@@ -27,19 +27,19 @@
 				       	ON A.MNTRNG_STTUS = C.CODE
              WHERE 1=1
         ]]>
-      	<if test='searchKeyword != null and searchKeyword != ""'>
+      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "DATA_SOURC_NM"'>
-                <![CDATA[ AND A.DATA_SOURC_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "DATA_SOURC_NM"'>
+                <![CDATA[ AND A.DATA_SOURC_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "SERVER_NM"'>
-                <![CDATA[ AND A.SERVER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "SERVER_NM"'>
+                <![CDATA[ AND A.SERVER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "MNGR_NM"'>
-                <![CDATA[ AND A.MNGR_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "MNGR_NM"'>
+                <![CDATA[ AND A.MNGR_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "CODE_NM"'>
-                <![CDATA[ AND C.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "CODE_NM"'>
+                <![CDATA[ AND C.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -48,7 +48,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
     </select>
 
@@ -66,19 +66,19 @@
 				       	ON A.MNTRNG_STTUS = C.CODE
              WHERE 1=1
         ]]>
-      	<if test='searchKeyword != null and searchKeyword != ""'>
+      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "DATA_SOURC_NM"'>
-                <![CDATA[ AND A.DATA_SOURC_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "DATA_SOURC_NM"'>
+                <![CDATA[ AND A.DATA_SOURC_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "SERVER_NM"'>
-                <![CDATA[ AND A.SERVER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "SERVER_NM"'>
+                <![CDATA[ AND A.SERVER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "MNGR_NM"'>
-                <![CDATA[ AND A.MNGR_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "MNGR_NM"'>
+                <![CDATA[ AND A.MNGR_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "CODE_NM"'>
-                <![CDATA[ AND C.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "CODE_NM"'>
+                <![CDATA[ AND C.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -191,22 +191,22 @@
 				       	ON A.MNTRNG_STTUS = C.CODE
              WHERE 1=1
         ]]>
-        <if test='searchKeywordFrom != null and searchKeywordFrom != ""'>
+        <if test='searchVO.searchKeywordFrom != null and searchKeywordFrom != ""'>
 				<![CDATA[ AND DATE_FORMAT(A.CREAT_DT, '%Y%m%d') >= #{searchKeywordFrom}  ]]>
 		</if>
-       	<if test='searchKeywordTo != null and searchKeywordTo != ""'>
+       	<if test='searchVO.searchKeywordTo != null and searchKeywordTo != ""'>
 				<![CDATA[ AND DATE_FORMAT(A.CREAT_DT, '%Y%m%d') <= #{searchKeywordTo}	]]>
 		</if>
-       	<if test='searchKeyword != null and searchKeyword != ""'>
+       	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "DATA_SOURC_NM"'>
-                <![CDATA[ AND A.DATA_SOURC_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "DATA_SOURC_NM"'>
+                <![CDATA[ AND A.DATA_SOURC_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "SERVER_NM"'>
-                <![CDATA[ AND A.SERVER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "SERVER_NM"'>
+                <![CDATA[ AND A.SERVER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "MNGR_NM"'>
-                <![CDATA[ AND A.MNGR_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "MNGR_NM"'>
+                <![CDATA[ AND A.MNGR_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -215,7 +215,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
     </select>
 
@@ -233,22 +233,22 @@
 				       	ON A.MNTRNG_STTUS = C.CODE
              WHERE 1=1
         ]]>
-        <if test='searchKeywordFrom != null and searchKeywordFrom != ""'>
+        <if test='searchVO.searchKeywordFrom != null and searchKeywordFrom != ""'>
 				<![CDATA[ AND DATE_FORMAT(A.CREAT_DT, '%Y%m%d') >= #{searchKeywordFrom}  ]]>
 		</if>
-       	<if test='searchKeywordTo != null and searchKeywordTo != ""'>
+       	<if test='searchVO.searchKeywordTo != null and searchKeywordTo != ""'>
 				<![CDATA[ AND DATE_FORMAT(A.CREAT_DT, '%Y%m%d') <= #{searchKeywordTo}	]]>
 		</if>
-       	<if test='searchKeyword != null and searchKeyword != ""'>
+       	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "DATA_SOURC_NM"'>
-                <![CDATA[ AND A.DATA_SOURC_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "DATA_SOURC_NM"'>
+                <![CDATA[ AND A.DATA_SOURC_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "SERVER_NM"'>
-                <![CDATA[ AND A.SERVER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "SERVER_NM"'>
+                <![CDATA[ AND A.SERVER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "MNGR_NM"'>
-                <![CDATA[ AND A.MNGR_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "MNGR_NM"'>
+                <![CDATA[ AND A.MNGR_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

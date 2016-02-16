@@ -16,13 +16,13 @@
 		      FROM COMTN_STPLAT_INFO A                              			
 		     WHERE 1=1   			
 		]]>					
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "USE_STPLAT_NM"'>
-                <![CDATA[ AND USE_STPLAT_NM  LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "USE_STPLAT_NM"'>
+                <![CDATA[ AND USE_STPLAT_NM  LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "USE_STPLAT_CN"'>
-                <![CDATA[ AND USE_STPLAT_CN  LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "USE_STPLAT_CN"'>
+                <![CDATA[ AND USE_STPLAT_CN  LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -31,7 +31,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
 	</select>
 	
@@ -41,13 +41,13 @@
 			  FROM COMTN_STPLAT_INFO
 			 WHERE 1=1
 		]]>			
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "USE_STPLAT_NM"'>
-                <![CDATA[ AND USE_STPLAT_NM  LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "USE_STPLAT_NM"'>
+                <![CDATA[ AND USE_STPLAT_NM  LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "USE_STPLAT_CN"'>
-                <![CDATA[ AND USE_STPLAT_CN  LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "USE_STPLAT_CN"'>
+                <![CDATA[ AND USE_STPLAT_CN  LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

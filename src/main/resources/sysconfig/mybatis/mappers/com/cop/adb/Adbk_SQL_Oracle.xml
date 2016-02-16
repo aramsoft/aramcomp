@@ -26,16 +26,16 @@
 					OR (OTHBC_SCOPE = '개인' AND WRTER_ID = #{wrterId})	
 				   )		
 		]]>		
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "ADBK_NM"'>
-             	<![CDATA[ AND ADBK_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "ADBK_NM"'>
+             	<![CDATA[ AND ADBK_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "OTHBC_SCOPE"'>
-             	<![CDATA[ AND OTHBC_SCOPE LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "OTHBC_SCOPE"'>
+             	<![CDATA[ AND OTHBC_SCOPE LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "WRTER_ID"'>
-             	<![CDATA[ AND WRTER_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "WRTER_ID"'>
+             	<![CDATA[ AND WRTER_ID LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -46,7 +46,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
 	</select>	
 
@@ -61,16 +61,16 @@
 					OR (OTHBC_SCOPE = '개인' AND WRTER_ID = #{wrterId})	
 				   )		
 		]]>	
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "ADBK_NM"'>
-             	<![CDATA[ AND ADBK_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "ADBK_NM"'>
+             	<![CDATA[ AND ADBK_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "OTHBC_SCOPE"'>
-             	<![CDATA[ AND OTHBC_SCOPE LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "OTHBC_SCOPE"'>
+             	<![CDATA[ AND OTHBC_SCOPE LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "WRTER_ID"'>
-             	<![CDATA[ AND WRTER_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "WRTER_ID"'>
+             	<![CDATA[ AND WRTER_ID LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -209,7 +209,7 @@
 			     , OFFM_TELNO				AS "offmTelno"
 			     , FXNUM					AS "fxnum"
 			  FROM COMTN_EMPLYR_INFO
-			 WHERE USER_NM LIKE '%' || #{searchKeyword} || '%' 
+			 WHERE USER_NM LIKE '%' || #{searchVO.searchKeyword} || '%' 
 			UNION
 			SELECT ENTRPRS_MBER_ID 			AS "emplyrId"
 			     , CMPNY_NM 				AS "nm"
@@ -219,7 +219,7 @@
 			     , (AREA_NO ||'-' || ENTRPRS_MIDDLE_TELNO || '-' || ENTRPRS_END_TELNO) AS "offmTelno"
 			     , FXNUM					AS "fxnum"
 			  FROM COMTN_ENTRPRS_MBER
-			 WHERE ENTRPRS_MBER_ID LIKE '%' || #{searchKeyword} || '%'
+			 WHERE ENTRPRS_MBER_ID LIKE '%' || #{searchVO.searchKeyword} || '%'
 			UNION	
 			SELECT MBER_ID  				AS "emplyrId"
 			     , MBER_NM 					AS "nm"
@@ -229,7 +229,7 @@
 			     , '' 						AS "offmTelno"
 			     , MBER_FXNUM 				AS "fxnum" 
 			  FROM COMTN_GNRL_MBER			
-			 WHERE MBER_ID LIKE '%' || #{searchKeyword} || '%'
+			 WHERE MBER_ID LIKE '%' || #{searchVO.searchKeyword} || '%'
  		]]>
 		<![CDATA[			
 			 ORDER BY "nm" 
@@ -238,7 +238,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
  	</select>
  	
@@ -248,15 +248,15 @@
 			SELECT (
 				SELECT COUNT(USER_NM)
 				  FROM COMTN_EMPLYR_INFO
-				 WHERE USER_NM LIKE '%' || #{searchKeyword} || '%' ) 
+				 WHERE USER_NM LIKE '%' || #{searchVO.searchKeyword} || '%' ) 
 			    + (
 				SELECT COUNT(CMPNY_NM)
 				  FROM COMTN_ENTRPRS_MBER 
-				 WHERE CMPNY_NM LIKE '%' || #{searchKeyword} || '%' )
+				 WHERE CMPNY_NM LIKE '%' || #{searchVO.searchKeyword} || '%' )
 				+ (
 				SELECT COUNT(MBER_NM)
 				  FROM COMTN_GNRL_MBER
-				 WHERE MBER_NM LIKE '%' || #{searchKeyword} || '%' )
+				 WHERE MBER_NM LIKE '%' || #{searchVO.searchKeyword} || '%' )
 			FROM DUAL
 		]]>
 	</select>	
@@ -313,7 +313,7 @@
 				 , MBTLNUM					AS "moblphonNo"
 			  FROM COMTN_NCRD
 			 WHERE 1=1 
-			   AND NM LIKE '%' || #{searchKeyword} || '%'
+			   AND NM LIKE '%' || #{searchVO.searchKeyword} || '%'
  		]]>
 		<![CDATA[			
 			 ORDER BY NM 
@@ -322,7 +322,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
  	</select>
  	
@@ -332,7 +332,7 @@
 			SELECT COUNT(NM)
 			  FROM COMTN_NCRD
 			 WHERE 1=1 
-			   AND NM LIKE '%' || #{searchKeyword} || '%' 
+			   AND NM LIKE '%' || #{searchVO.searchKeyword} || '%' 
 		]]>
 	</select>
 

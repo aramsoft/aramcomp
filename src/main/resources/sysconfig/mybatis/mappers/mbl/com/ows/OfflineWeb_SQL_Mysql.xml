@@ -16,18 +16,18 @@
 			  FROM MBLTN_OFFLINE_WEB A
 			 WHERE 1 = 1
 		]]>
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "MBER_ID"'>
-             	<![CDATA[ AND A.MBER_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "MBER_ID"'>
+             	<![CDATA[ AND A.MBER_ID LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "OFFLINE_SJ"'>
-             	<![CDATA[ AND A.OFFLINE_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "OFFLINE_SJ"'>
+             	<![CDATA[ AND A.OFFLINE_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "OFFLINE_ALL"'>
-             	<![CDATA[ AND ((A.MBER_ID LIKE '%' || #{searchKeyword} || '%') 
-		       			    OR (A.OFFLINE_SJ LIKE '%' || #{searchKeyword} || '%') 
-		      		        OR (A.OFFLINE_CN LIKE '%' || #{searchKeyword} || '%'))	]]>
+            <when test='searchVO.searchCondition == "OFFLINE_ALL"'>
+             	<![CDATA[ AND ((A.MBER_ID LIKE '%' || #{searchVO.searchKeyword} || '%') 
+		       			    OR (A.OFFLINE_SJ LIKE '%' || #{searchVO.searchKeyword} || '%') 
+		      		        OR (A.OFFLINE_CN LIKE '%' || #{searchVO.searchKeyword} || '%'))	]]>
             </when>
         </choose>
 		</if>
@@ -36,7 +36,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
 	</select>
 	
@@ -47,18 +47,18 @@
 			  FROM MBLTN_OFFLINE_WEB A
 			 WHERE 1 = 1		   
 		]]>
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "MBER_ID"'>
-             	<![CDATA[ AND A.MBER_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "MBER_ID"'>
+             	<![CDATA[ AND A.MBER_ID LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "OFFLINE_SJ"'>
-             	<![CDATA[ AND A.OFFLINE_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "OFFLINE_SJ"'>
+             	<![CDATA[ AND A.OFFLINE_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "OFFLINE_ALL"'>
-             	<![CDATA[ AND ((A.MBER_ID LIKE '%' || #{searchKeyword} || '%') 
-		       			    OR (A.OFFLINE_SJ LIKE '%' || #{searchKeyword} || '%') 
-		      		        OR (A.OFFLINE_CN LIKE '%' || #{searchKeyword} || '%'))	]]>
+            <when test='searchVO.searchCondition == "OFFLINE_ALL"'>
+             	<![CDATA[ AND ((A.MBER_ID LIKE '%' || #{searchVO.searchKeyword} || '%') 
+		       			    OR (A.OFFLINE_SJ LIKE '%' || #{searchVO.searchKeyword} || '%') 
+		      		        OR (A.OFFLINE_CN LIKE '%' || #{searchVO.searchKeyword} || '%'))	]]>
             </when>
         </choose>
 		</if>

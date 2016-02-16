@@ -39,13 +39,13 @@
 						ON d.TRGET_ID = e.CMMNTY_ID
 			 WHERE 1=1	
 		]]>
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "BBS_NM"'>
-             	<![CDATA[ AND a.BBS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "BBS_NM"'>
+             	<![CDATA[ AND a.BBS_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "BBS_TY_CODE"'>
-             	<![CDATA[ AND b.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "BBS_TY_CODE"'>
+             	<![CDATA[ AND b.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -56,7 +56,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
 	</select>	
 	
@@ -79,13 +79,13 @@
 						ON  d.TRGET_ID = e.CMMNTY_ID
 			 WHERE 1=1	
 		]]>
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "BBS_NM"'>
-             	<![CDATA[ AND a.BBS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "BBS_NM"'>
+             	<![CDATA[ AND a.BBS_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "BBS_TY_CODE"'>
-             	<![CDATA[ AND b.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "BBS_TY_CODE"'>
+             	<![CDATA[ AND b.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -249,13 +249,13 @@
 				       	ON b.BBS_ATTRB_CODE = d.CODE
 			 WHERE a.TRGET_ID = #{trgetId}
 		]]>
- 	    <if test='searchKeyword != null and searchKeyword != ""'>
+ 	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "BBS_NM"'>
-             	<![CDATA[ AND b.BBS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "BBS_NM"'>
+             	<![CDATA[ AND b.BBS_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "BBS_TY_CODE"'>
-             	<![CDATA[ AND c.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "BBS_TY_CODE"'>
+             	<![CDATA[ AND c.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -266,7 +266,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
 	</select>
 
@@ -287,13 +287,13 @@
 				       	ON b.BBS_ATTRB_CODE = d.CODE
 			 WHERE a.TRGET_ID = #{trgetId}
 		]]>
- 	    <if test='searchKeyword != null and searchKeyword != ""'>
+ 	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "BBS_NM"'>
-             	<![CDATA[ AND b.BBS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "BBS_NM"'>
+             	<![CDATA[ AND b.BBS_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "BBS_TY_CODE"'>
-             	<![CDATA[ AND c.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "BBS_TY_CODE"'>
+             	<![CDATA[ AND c.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -330,13 +330,13 @@
 			 WHERE a.USE_AT = 'Y'
 			   AND a.BBS_ID NOT IN (SELECT BBS_ID FROM COMTN_BBS_USE WHERE USE_AT = 'Y')
 		]]>
- 	    <if test='searchKeyword != null and searchKeyword != ""'>
+ 	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "BBS_NM"'>
-             	<![CDATA[ AND a.BBS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "BBS_NM"'>
+             	<![CDATA[ AND a.BBS_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "BBS_TY_CODE"'>
-             	<![CDATA[ AND b.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "BBS_TY_CODE"'>
+             	<![CDATA[ AND b.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -347,7 +347,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
 	</select>	
 	
@@ -367,13 +367,13 @@
 			 WHERE a.USE_AT = 'Y'
 			   AND a.BBS_ID NOT IN (SELECT BBS_ID FROM COMTN_BBS_USE WHERE USE_AT = 'Y')
 		]]>
- 	    <if test='searchKeyword != null and searchKeyword != ""'>
+ 	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "BBS_NM"'>
-             	<![CDATA[ AND a.BBS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "BBS_NM"'>
+             	<![CDATA[ AND a.BBS_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "BBS_TY_CODE"'>
-             	<![CDATA[ AND b.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "BBS_TY_CODE"'>
+             	<![CDATA[ AND b.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

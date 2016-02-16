@@ -23,16 +23,16 @@
 			  FROM COMTN_WIKI_BKMK A
 			 WHERE A.FRST_REGISTER_ID = #{frstRegisterId}
 		]]>
-  	    <if test='searchKeyword != null and searchKeyword != ""'>
+  	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "WIKI_BKMK_NM"'>
-                <![CDATA[ AND A.WIKI_BKMK_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "WIKI_BKMK_NM"'>
+                <![CDATA[ AND A.WIKI_BKMK_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "USER_ID"'>
+            <when test='searchVO.searchCondition == "USER_ID"'>
 	       		<![CDATA[ 
 	       			AND A.FRST_REGISTER_ID = (SELECT ESNTL_ID 
 	       	                                FROM COMTN_EMPLYR_INFO 
-	       	                               WHERE EMPLYR_ID LIKE '%' || #{searchKeyword} || '%')
+	       	                               WHERE EMPLYR_ID LIKE '%' || #{searchVO.searchKeyword} || '%')
  				]]>
             </when>
         </choose>
@@ -42,7 +42,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
 	</select>
 	
@@ -53,16 +53,16 @@
 			  FROM COMTN_WIKI_BKMK A
 			 WHERE A.FRST_REGISTER_ID = #{frstRegisterId}
         ]]>			
-  	    <if test='searchKeyword != null and searchKeyword != ""'>
+  	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "WIKI_BKMK_NM"'>
-                <![CDATA[ AND A.WIKI_BKMK_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "WIKI_BKMK_NM"'>
+                <![CDATA[ AND A.WIKI_BKMK_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "USER_ID"'>
+            <when test='searchVO.searchCondition == "USER_ID"'>
 	       		<![CDATA[ 
 	       			AND A.FRST_REGISTER_ID = (SELECT ESNTL_ID 
 	       	                                FROM COMTN_EMPLYR_INFO 
-	       	                               WHERE EMPLYR_ID LIKE '%' || #{searchKeyword} || '%')
+	       	                               WHERE EMPLYR_ID LIKE '%' || #{searchVO.searchKeyword} || '%')
  				]]>
             </when>
         </choose>

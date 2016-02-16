@@ -12,19 +12,19 @@
               FROM COMTN_CNTC_MESSAGE
              WHERE USE_AT = 'Y'
         ]]>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "CNTC_MSSAGE_NM"'>
-                 <![CDATA[ AND CNTC_MSSAGE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "CNTC_MSSAGE_NM"'>
+                 <![CDATA[ AND CNTC_MSSAGE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "CodeList"'>
+            <when test='searchVO.searchCondition == "CodeList"'>
                  <![CDATA[ AND 1 = 1 ]]>
             </when>
         </choose>
 		</if>
          /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
     </select>
 
@@ -34,12 +34,12 @@
               FROM COMTN_CNTC_MESSAGE
              WHERE USE_AT = 'Y'
         ]]>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "CNTC_MSSAGE_NM"'>
-                 <![CDATA[ AND CNTC_MSSAGE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "CNTC_MSSAGE_NM"'>
+                 <![CDATA[ AND CNTC_MSSAGE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "CodeList"'>
+            <when test='searchVO.searchCondition == "CodeList"'>
                  <![CDATA[ AND 1 = 1 ]]>
             </when>
         </choose>
@@ -113,16 +113,16 @@
               FROM COMTN_CNTC_MESSAGE_ITEM
              WHERE USE_AT = 'Y'
         ]]>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "CodeList"'>
+            <when test='searchVO.searchCondition == "CodeList"'>
                  <![CDATA[ AND CNTC_MSSAGE_ID = #{cntcMessageId} ]]>
             </when>
         </choose>
 		</if>
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
     </select>
 
@@ -132,9 +132,9 @@
               FROM COMTN_CNTC_MESSAGE_ITEM
              WHERE USE_AT = 'Y'
         ]]>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "CodeList"'>
+            <when test='searchVO.searchCondition == "CodeList"'>
                  <![CDATA[ AND CNTC_MSSAGE_ID = #{cntcMessageId} ]]>
             </when>
         </choose>

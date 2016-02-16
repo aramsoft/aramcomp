@@ -23,13 +23,13 @@
   	    <if test='trgetId != null and trgetId != ""'>
 		   		<![CDATA[ AND TRGET_ID = #{trgetId} ]]>		
 		</if>
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "NEWS_SJ"'>
-                <![CDATA[ AND NEWS_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>		
+            <when test='searchVO.searchCondition == "NEWS_SJ"'>
+                <![CDATA[ AND NEWS_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>		
             </when>
-            <when test='searchCondition == "NEWS_ORIGIN"'>
-                <![CDATA[ AND NEWS_ORIGIN LIKE '%'|| #{searchKeyword} ||'%' ]]>		
+            <when test='searchVO.searchCondition == "NEWS_ORIGIN"'>
+                <![CDATA[ AND NEWS_ORIGIN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>		
             </when>
         </choose>
 		</if>
@@ -40,7 +40,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
 	</select>
 	
@@ -53,13 +53,13 @@
   	    <if test='trgetId != null and trgetId != ""'>
 		   		<![CDATA[ AND TRGET_ID = #{trgetId} ]]>		
 		</if>
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "NEWS_SJ"'>
-                <![CDATA[ AND NEWS_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>		
+            <when test='searchVO.searchCondition == "NEWS_SJ"'>
+                <![CDATA[ AND NEWS_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>		
             </when>
-            <when test='searchCondition == "NEWS_ORIGIN"'>
-                <![CDATA[ AND NEWS_ORIGIN LIKE '%'|| #{searchKeyword} ||'%' ]]>		
+            <when test='searchVO.searchCondition == "NEWS_ORIGIN"'>
+                <![CDATA[ AND NEWS_ORIGIN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>		
             </when>
         </choose>
 		</if>

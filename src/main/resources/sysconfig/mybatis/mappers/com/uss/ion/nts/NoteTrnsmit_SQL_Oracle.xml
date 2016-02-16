@@ -50,13 +50,13 @@
 			   AND NOTE_TNS.DELETE_AT = 'N' 
 			   AND NOTE_TNS.TRNSMITER_ID = #{trnsmiterId}
 		]]>
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "NOTE_SJ"'>
-               	<![CDATA[ AND NOTE.NOTE_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]> 
+            <when test='searchVO.searchCondition == "NOTE_SJ"'>
+               	<![CDATA[ AND NOTE.NOTE_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]> 
             </when>
-            <when test='searchCondition == "NOTE_CN"'>
-               	<![CDATA[ AND NOTE.NOTE_CN LIKE '%'|| #{searchKeyword} ||'%' ]]> 
+            <when test='searchVO.searchCondition == "NOTE_CN"'>
+               	<![CDATA[ AND NOTE.NOTE_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]> 
             </when>
         </choose>
 		</if>
@@ -75,7 +75,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
 	</select>
 
@@ -89,13 +89,13 @@
 			   AND NOTE_TNS.DELETE_AT = 'N' 
 			   AND NOTE_TNS.TRNSMITER_ID = #{trnsmiterId}
  		]]>				
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "NOTE_SJ"'>
-               	<![CDATA[ AND NOTE.NOTE_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]> 
+            <when test='searchVO.searchCondition == "NOTE_SJ"'>
+               	<![CDATA[ AND NOTE.NOTE_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]> 
             </when>
-            <when test='searchCondition == "NOTE_CN"'>
-               	<![CDATA[ AND NOTE.NOTE_CN LIKE '%'|| #{searchKeyword} ||'%' ]]> 
+            <when test='searchVO.searchCondition == "NOTE_CN"'>
+               	<![CDATA[ AND NOTE.NOTE_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]> 
             </when>
         </choose>
 		</if>

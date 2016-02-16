@@ -16,19 +16,19 @@
 			  FROM MBLTN_CHART_GRAPH
 			 WHERE 1=1
 		]]>
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
 	    <choose>
-        	<when test='searchCondition == "MBER_ID"'>
-             	<![CDATA[ AND MBER_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
+        	<when test='searchVO.searchCondition == "MBER_ID"'>
+             	<![CDATA[ AND MBER_ID LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "XAXIS"'>
-             	<![CDATA[ AND XAXIS LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "XAXIS"'>
+             	<![CDATA[ AND XAXIS LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "YAXIS"'>
-             	<![CDATA[ AND YAXIS LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "YAXIS"'>
+             	<![CDATA[ AND YAXIS LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "LGD_NM"'>
-             	<![CDATA[ AND LGD_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "LGD_NM"'>
+             	<![CDATA[ AND LGD_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -37,7 +37,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
 	</select>
 	
@@ -47,19 +47,19 @@
 			  FROM MBLTN_CHART_GRAPH
 			 WHERE 1=1
 		]]>		
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
 	    <choose>
-        	<when test='searchCondition == "MBER_ID"'>
-             	<![CDATA[ AND MBER_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
+        	<when test='searchVO.searchCondition == "MBER_ID"'>
+             	<![CDATA[ AND MBER_ID LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "XAXIS"'>
-             	<![CDATA[ AND XAXIS LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "XAXIS"'>
+             	<![CDATA[ AND XAXIS LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "YAXIS"'>
-             	<![CDATA[ AND YAXIS LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "YAXIS"'>
+             	<![CDATA[ AND YAXIS LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "LGD_NM"'>
-             	<![CDATA[ AND LGD_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "LGD_NM"'>
+             	<![CDATA[ AND LGD_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

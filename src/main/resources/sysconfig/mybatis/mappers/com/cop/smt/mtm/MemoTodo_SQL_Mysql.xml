@@ -50,13 +50,13 @@
 	        </when>
 	    </choose>
 		</if>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
 	    <choose>
-            <when test='searchCondition == "TODO_SJ"'>
-             	<![CDATA[ AND A.TODO_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "TODO_SJ"'>
+             	<![CDATA[ AND A.TODO_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "TODO_CN"'>
-             	<![CDATA[ AND A.TODO_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "TODO_CN"'>
+             	<![CDATA[ AND A.TODO_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -65,7 +65,7 @@
 		]]>	
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
 	</select>
 	
@@ -91,13 +91,13 @@
 	        </when>
 	    </choose>
 		</if>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
 	    <choose>
-            <when test='searchCondition == "TODO_SJ"'>
-             	<![CDATA[ AND A.TODO_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "TODO_SJ"'>
+             	<![CDATA[ AND A.TODO_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "TODO_CN"'>
-             	<![CDATA[ AND A.TODO_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "TODO_CN"'>
+             	<![CDATA[ AND A.TODO_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

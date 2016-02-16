@@ -18,13 +18,13 @@
 			  FROM COMTN_INDVDL_INFO_POLICY A
 			 WHERE 1=1
 	 	]]>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "INDVDL_INFO_POLICY_NM"'>
-                <![CDATA[ AND INDVDL_INFO_POLICY_NM  LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "INDVDL_INFO_POLICY_NM"'>
+                <![CDATA[ AND INDVDL_INFO_POLICY_NM  LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "INDVDL_INFO_POLICY_CN"'>
-                <![CDATA[ AND INDVDL_INFO_POLICY_CN  LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "INDVDL_INFO_POLICY_CN"'>
+                <![CDATA[ AND INDVDL_INFO_POLICY_CN  LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -33,7 +33,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
 	</select>
 
@@ -44,13 +44,13 @@
 			  FROM COMTN_INDVDL_INFO_POLICY
 			 WHERE 1=1
         ]]>			
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "INDVDL_INFO_POLICY_NM"'>
-                <![CDATA[ AND INDVDL_INFO_POLICY_NM  LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "INDVDL_INFO_POLICY_NM"'>
+                <![CDATA[ AND INDVDL_INFO_POLICY_NM  LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "INDVDL_INFO_POLICY_CN"'>
-                <![CDATA[ AND INDVDL_INFO_POLICY_CN  LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "INDVDL_INFO_POLICY_CN"'>
+                <![CDATA[ AND INDVDL_INFO_POLICY_CN  LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

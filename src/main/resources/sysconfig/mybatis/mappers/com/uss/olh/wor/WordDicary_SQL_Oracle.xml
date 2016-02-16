@@ -24,13 +24,13 @@
 				   		ON A.FRST_REGISTER_ID = B.ESNTL_ID
 		     WHERE 1=1
 		]]>
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "WORD_NM"'>
-                <![CDATA[ AND A.WORD_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "WORD_NM"'>
+                <![CDATA[ AND A.WORD_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "ENG_NM"'>
-                <![CDATA[ AND A.ENG_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "ENG_NM"'>
+                <![CDATA[ AND A.ENG_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -41,7 +41,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
 	</select>
 
@@ -53,13 +53,13 @@
 				   		ON A.FRST_REGISTER_ID = B.ESNTL_ID
 		     WHERE 1=1
 		]]>
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "WORD_NM"'>
-                <![CDATA[ AND A.WORD_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "WORD_NM"'>
+                <![CDATA[ AND A.WORD_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "ENG_NM"'>
-                <![CDATA[ AND A.ENG_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "ENG_NM"'>
+                <![CDATA[ AND A.ENG_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

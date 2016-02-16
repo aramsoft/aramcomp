@@ -17,10 +17,10 @@
 			 WHERE a.USE_AT = 'Y'
 			   AND a.FRST_REGISTER_ID = #{uniqId}
 		]]>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "SCRAP_NM"'>
-                <![CDATA[ AND a.SCRAP_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "SCRAP_NM"'>
+                <![CDATA[ AND a.SCRAP_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
         </if>
@@ -29,7 +29,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
 	</select>	
 	
@@ -43,10 +43,10 @@
 			 WHERE a.USE_AT = 'Y'
 			   AND a.FRST_REGISTER_ID = #{uniqId}
 		]]>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "SCRAP_NM"'>
-                <![CDATA[ AND a.SCRAP_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "SCRAP_NM"'>
+                <![CDATA[ AND a.SCRAP_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
         </if>

@@ -26,13 +26,13 @@
 					   	ON a.HIST_SE_CODE = c.CODE
 			 WHERE 1=1
 		]]>
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "SYS_NM"'>
-                 <![CDATA[ AND a.SYS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "SYS_NM"'>
+                 <![CDATA[ AND a.SYS_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "CODE_NM"'>
-                 <![CDATA[ AND c.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "CODE_NM"'>
+                 <![CDATA[ AND c.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
 	        </choose>
 		</if>
@@ -43,7 +43,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
 	</select>
 
@@ -59,13 +59,13 @@
 					   	ON a.HIST_SE_CODE = c.CODE
 			 WHERE 1=1
 		]]>
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "SYS_NM"'>
-                 <![CDATA[ AND a.SYS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "SYS_NM"'>
+                 <![CDATA[ AND a.SYS_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "CODE_NM"'>
-                 <![CDATA[ AND c.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "CODE_NM"'>
+                 <![CDATA[ AND c.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
 	        </choose>
 		</if>

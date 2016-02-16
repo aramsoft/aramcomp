@@ -18,12 +18,12 @@
               FROM COMTN_CNTC_MESSAGE
              WHERE USE_AT = 'Y'
         ]]>
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "CNTC_MSSAGE_NM"'>
-                 <![CDATA[ AND CNTC_MSSAGE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "CNTC_MSSAGE_NM"'>
+                 <![CDATA[ AND CNTC_MSSAGE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "CodeList"'>
+            <when test='searchVO.searchCondition == "CodeList"'>
                  <![CDATA[ AND 1 = 1 ]]>
             </when>
         </choose>
@@ -32,7 +32,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
     </select>
 
@@ -42,12 +42,12 @@
               FROM COMTN_CNTC_MESSAGE
              WHERE USE_AT = 'Y'
         ]]>
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "CNTC_MSSAGE_NM"'>
-                 <![CDATA[ AND CNTC_MSSAGE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "CNTC_MSSAGE_NM"'>
+                 <![CDATA[ AND CNTC_MSSAGE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "CodeList"'>
+            <when test='searchVO.searchCondition == "CodeList"'>
                  <![CDATA[ AND 1 = 1 ]]>
             </when>
         </choose>
@@ -127,12 +127,12 @@
               FROM COMTN_CNTC_MESSAGE_ITEM
              WHERE USE_AT = 'Y'
         ]]>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "IEM_NM"'>
-                 <![CDATA[ AND IEM_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "IEM_NM"'>
+                 <![CDATA[ AND IEM_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "CodeList"'>
+            <when test='searchVO.searchCondition == "CodeList"'>
                  <![CDATA[ AND CNTC_MSSAGE_ID = #{cntcMessageId} ]]>
             </when>
         </choose>
@@ -141,7 +141,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
     </select>
 
@@ -151,12 +151,12 @@
               FROM COMTN_CNTC_MESSAGE_ITEM
              WHERE USE_AT = 'Y'
         ]]>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "IEM_NM"'>
-                 <![CDATA[ AND IEM_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "IEM_NM"'>
+                 <![CDATA[ AND IEM_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "CodeList"'>
+            <when test='searchVO.searchCondition == "CodeList"'>
                  <![CDATA[ AND CNTC_MSSAGE_ID = #{cntcMessageId} ]]>
             </when>
         </choose>

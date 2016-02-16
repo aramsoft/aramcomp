@@ -118,15 +118,15 @@
      	<if test='searchUseAt != null and searchUseAt != ""'>
            		<![CDATA[ AND USE_AT like  '%'||#{searchUseAt}||'%'  ]]>
 		</if>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
-           		<![CDATA[ AND BNDT_CECK_CODE_NM like  '%'||#{searchKeyword}||'%'  ]]>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+           		<![CDATA[ AND BNDT_CECK_CODE_NM like  '%'||#{searchVO.searchKeyword}||'%'  ]]>
 		</if>
         <![CDATA[ 
         	 ORDER BY FRST_REGIST_PNTTM DESC
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
     </select>
 
@@ -142,8 +142,8 @@
      	<if test='searchUseAt != null and searchUseAt != ""'>
            		<![CDATA[ AND USE_AT like  '%'||#{searchUseAt}||'%'  ]]>
 		</if>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
-           		<![CDATA[ AND BNDT_CECK_CODE_NM like  '%'||#{searchKeyword}||'%'  ]]>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+           		<![CDATA[ AND BNDT_CECK_CODE_NM like  '%'||#{searchVO.searchKeyword}||'%'  ]]>
 		</if>
     </select>
     
@@ -319,7 +319,7 @@
         <![CDATA[
              SELECT count(BNDT_ID) 
                FROM COMTN_BNDT_MANAGE
-              WHERE BNDT_DE like  '%'||#{searchKeyword}||'%'
+              WHERE BNDT_DE like  '%'||#{searchVO.searchKeyword}||'%'
         ]]>
     </select>
     

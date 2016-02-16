@@ -17,13 +17,13 @@
 					   	ON A.RESTDE_SE_CODE = B.CODE
 			 WHERE 1=1
 		]]>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "RESTDE"'>
-				<![CDATA[ AND A.RESTDE = #{searchKeyword}]]>
+            <when test='searchVO.searchCondition == "RESTDE"'>
+				<![CDATA[ AND A.RESTDE = #{searchVO.searchKeyword}]]>
             </when>
-            <when test='searchCondition == "RESTDE_NM"'>
-				<![CDATA[ AND A.RESTDE_NM LIKE '%' || #{searchKeyword} || '%']]>
+            <when test='searchVO.searchCondition == "RESTDE_NM"'>
+				<![CDATA[ AND A.RESTDE_NM LIKE '%' || #{searchVO.searchKeyword} || '%']]>
             </when>
         </choose>
 		</if>
@@ -32,7 +32,7 @@
 		]]>
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
 	</select>
 
@@ -46,13 +46,13 @@
 					   	ON A.RESTDE_SE_CODE = B.CODE
 			 WHERE 1=1
 		]]>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "RESTDE"'>
-				<![CDATA[ AND A.RESTDE = #{searchKeyword}]]>
+            <when test='searchVO.searchCondition == "RESTDE"'>
+				<![CDATA[ AND A.RESTDE = #{searchVO.searchKeyword}]]>
             </when>
-            <when test='searchCondition == "RESTDE_NM"'>
-				<![CDATA[ AND A.RESTDE_NM LIKE '%' || #{searchKeyword} || '%']]>
+            <when test='searchVO.searchCondition == "RESTDE_NM"'>
+				<![CDATA[ AND A.RESTDE_NM LIKE '%' || #{searchVO.searchKeyword} || '%']]>
             </when>
         </choose>
 		</if>

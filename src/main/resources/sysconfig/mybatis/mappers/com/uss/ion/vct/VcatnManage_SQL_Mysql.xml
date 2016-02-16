@@ -23,13 +23,13 @@
 			           and code = A.VCATN_SE
 			       ) 						AS "vcatnSeNm"
 			  FROM COMTN_VCATN_MANAGE A  
-			 WHERE BGNDE like  '%'||#{searchKeyword}||'%'
+			 WHERE BGNDE like  '%'||#{searchVO.searchKeyword}||'%'
 			   AND APPLCNT_ID = #{applcntId}
 			 ORDER BY FRST_REGIST_PNTTM DESC
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
     </select> 
 
@@ -38,7 +38,7 @@
             SELECT COUNT(*) totcnt
               FROM COMTN_VCATN_MANAGE
              WHERE 1=1
-			   AND BGNDE like  '%'||#{searchKeyword}||'%'
+			   AND BGNDE like  '%'||#{searchVO.searchKeyword}||'%'
 			   AND APPLCNT_ID = #{applcntId}
         ]]>
     </select>
@@ -156,7 +156,7 @@
               FROM COMTN_VCATN_MANAGE
              WHERE CONFM_AT !='R'
                AND APPLCNT_ID = #{applcntId}
-               AND #{searchKeyword} BETWEEN BGNDE and ENDDE
+               AND #{searchVO.searchKeyword} BETWEEN BGNDE and ENDDE
         ]]>
     </select>
 
@@ -193,11 +193,11 @@
 		</if>
 	    <choose>
             <when test='searchMonth != null and searchMonth != ""'>
-	   			<![CDATA[ AND #{searchKeyword} BETWEEN SUBSTR(A.BGNDE,0,6) AND SUBSTR(A.ENDDE,0,6)  ]]>
+	   			<![CDATA[ AND #{searchVO.searchKeyword} BETWEEN SUBSTR(A.BGNDE,0,6) AND SUBSTR(A.ENDDE,0,6)  ]]>
             </when>
             <otherwise>
 	     	    <if test='searchYear != null and searchYear != ""'>
-			    <![CDATA[ AND A.BGNDE like '%'||#{searchKeyword}||'%'    ]]>
+			    <![CDATA[ AND A.BGNDE like '%'||#{searchVO.searchKeyword}||'%'    ]]>
 	 			</if>
             </otherwise>
         </choose>
@@ -206,7 +206,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
     </select> 
 
@@ -226,11 +226,11 @@
 		</if>
 	    <choose>
             <when test='searchMonth != null and searchMonth != ""'>
-	   			<![CDATA[ AND #{searchKeyword} BETWEEN SUBSTR(A.BGNDE,0,6) AND SUBSTR(A.ENDDE,0,6)  ]]>
+	   			<![CDATA[ AND #{searchVO.searchKeyword} BETWEEN SUBSTR(A.BGNDE,0,6) AND SUBSTR(A.ENDDE,0,6)  ]]>
             </when>
             <otherwise>
 	     	    <if test='searchYear != null and searchYear != ""'>
-			    <![CDATA[ AND A.BGNDE like '%'||#{searchKeyword}||'%'    ]]>
+			    <![CDATA[ AND A.BGNDE like '%'||#{searchVO.searchKeyword}||'%'    ]]>
 	 			</if>
             </otherwise>
         </choose>

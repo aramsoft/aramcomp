@@ -28,13 +28,13 @@
 						 ON a.ATCH_FILE_ID = b.ATCH_FILE_ID		
 			 WHERE a.USE_AT = 'Y'
  		]]>
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "STRE_FILE_NM"'>
-             	<![CDATA[ AND b.STRE_FILE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "STRE_FILE_NM"'>
+             	<![CDATA[ AND b.STRE_FILE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "ORIGNL_FILE_NM"'>
-             	<![CDATA[ AND b.ORIGNL_FILE_NM  LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "ORIGNL_FILE_NM"'>
+             	<![CDATA[ AND b.ORIGNL_FILE_NM  LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -45,7 +45,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
  	</select>
 
@@ -58,13 +58,13 @@
 						 ON a.ATCH_FILE_ID = b.ATCH_FILE_ID		
 			 WHERE a.USE_AT = 'Y'				
  		]]>
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "STRE_FILE_NM"'>
-             	<![CDATA[ AND b.STRE_FILE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "STRE_FILE_NM"'>
+             	<![CDATA[ AND b.STRE_FILE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "ORIGNL_FILE_NM"'>
-             	<![CDATA[ AND b.ORIGNL_FILE_NM  LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "ORIGNL_FILE_NM"'>
+             	<![CDATA[ AND b.ORIGNL_FILE_NM  LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

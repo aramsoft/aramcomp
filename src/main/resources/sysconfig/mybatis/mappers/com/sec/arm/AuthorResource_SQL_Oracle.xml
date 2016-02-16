@@ -23,14 +23,14 @@
               FROM COMTN_RESOURCE_INFO A 
                    LEFT OUTER JOIN (SELECT RESOURCE_CODE, CREAT_DT 
                    				      FROM COMTN_AUTHOR_RESOURCE 
-                   					 WHERE AUTHOR_CODE = #{searchKeyword}) B
+                   					 WHERE AUTHOR_CODE = #{searchVO.searchKeyword}) B
                 		ON A.RESOURCE_CODE = B.RESOURCE_CODE        
         ]]>
         /* 구현 Sql */
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
     </select>
 
@@ -41,7 +41,7 @@
               FROM COMTN_RESOURCE_INFO A 
                    LEFT OUTER JOIN (SELECT RESOURCE_CODE, CREAT_DT 
                    					  FROM COMTN_AUTHOR_RESOURCE 
-                   					 WHERE AUTHOR_CODE = #{searchKeyword}) B
+                   					 WHERE AUTHOR_CODE = #{searchVO.searchKeyword}) B
                 		ON A.RESOURCE_CODE = B.RESOURCE_CODE
         ]]>			
     </select>

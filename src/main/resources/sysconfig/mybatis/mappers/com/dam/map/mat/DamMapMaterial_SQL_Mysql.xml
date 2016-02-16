@@ -16,16 +16,16 @@
 						ON A.ORGNZT_ID = B.ORGNZT_ID
 			 WHERE 1=1
 		]]>
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "ORGNZT_NM"'>
-                 <![CDATA[ AND B.ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "ORGNZT_NM"'>
+                 <![CDATA[ AND B.ORGNZT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "KNWLDG_TY_NM"'>
-                 <![CDATA[ AND A.KNWLDG_TY_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "KNWLDG_TY_NM"'>
+                 <![CDATA[ AND A.KNWLDG_TY_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "ORGNZT_ID"'>
-                 <![CDATA[ AND A.ORGNZT_ID = #{searchKeyword} ]]>
+            <when test='searchVO.searchCondition == "ORGNZT_ID"'>
+                 <![CDATA[ AND A.ORGNZT_ID = #{searchVO.searchKeyword} ]]>
             </when>
         </choose>
 		</if>
@@ -43,16 +43,16 @@
 						ON A.ORGNZT_ID = B.ORGNZT_ID
 			 WHERE 1=1
 		]]>
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "ORGNZT_NM"'>
-                 <![CDATA[ AND B.ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "ORGNZT_NM"'>
+                 <![CDATA[ AND B.ORGNZT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "KNWLDG_TY_NM"'>
-                 <![CDATA[ AND A.KNWLDG_TY_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "KNWLDG_TY_NM"'>
+                 <![CDATA[ AND A.KNWLDG_TY_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "ORGNZT_ID"'>
-                 <![CDATA[ AND A.ORGNZT_ID = #{searchKeyword} ]]>
+            <when test='searchVO.searchCondition == "ORGNZT_ID"'>
+                 <![CDATA[ AND A.ORGNZT_ID = #{searchVO.searchKeyword} ]]>
             </when>
         </choose>
 		</if>

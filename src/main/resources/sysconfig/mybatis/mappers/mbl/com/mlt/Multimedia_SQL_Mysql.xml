@@ -22,19 +22,19 @@
 				       	ON A.MLTMD_CODE = B.CODE  
 			 WHERE 1=1
 		]]>
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "MBER_ID"'>
-             	<![CDATA[ AND A.MBER_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "MBER_ID"'>
+             	<![CDATA[ AND A.MBER_ID LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "MLTMD_CODE"'>
-             	<![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "MLTMD_CODE"'>
+             	<![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "MLTMD_SJ"'>
-             	<![CDATA[ AND A.MLTMD_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "MLTMD_SJ"'>
+             	<![CDATA[ AND A.MLTMD_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "BROWSER_NM"'>
-             	<![CDATA[ AND A.BROWSER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "BROWSER_NM"'>
+             	<![CDATA[ AND A.BROWSER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -43,7 +43,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
 	</select>
 	
@@ -57,19 +57,19 @@
 				       	ON A.MLTMD_CODE = B.CODE  
 			 WHERE 1=1
 		]]>
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "MBER_ID"'>
-             	<![CDATA[ AND A.MBER_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "MBER_ID"'>
+             	<![CDATA[ AND A.MBER_ID LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "MLTMD_CODE"'>
-             	<![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "MLTMD_CODE"'>
+             	<![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "MLTMD_SJ"'>
-             	<![CDATA[ AND A.MLTMD_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "MLTMD_SJ"'>
+             	<![CDATA[ AND A.MLTMD_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "BROWSER_NM"'>
-             	<![CDATA[ AND A.BROWSER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "BROWSER_NM"'>
+             	<![CDATA[ AND A.BROWSER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

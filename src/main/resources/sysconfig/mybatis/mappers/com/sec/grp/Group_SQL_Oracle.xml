@@ -20,8 +20,8 @@
               FROM COMTN_AUTHOR_GROUP_INFO
              WHERE 1=1
         ]]>                
-     	<if test='searchKeyword != null and searchKeyword != ""'>
-            	 <![CDATA[ AND GROUP_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>   
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+            	 <![CDATA[ AND GROUP_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>   
 		</if>
         <![CDATA[            
              ORDER BY GROUP_CREAT_DE DESC
@@ -30,7 +30,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
     </select>
 
@@ -41,8 +41,8 @@
               FROM COMTN_AUTHOR_GROUP_INFO
              WHERE 1=1
         ]]>			
-     	<if test='searchKeyword != null and searchKeyword != ""'>
-            	 <![CDATA[ AND GROUP_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>   
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+            	 <![CDATA[ AND GROUP_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>   
 		</if>
     </select>
 

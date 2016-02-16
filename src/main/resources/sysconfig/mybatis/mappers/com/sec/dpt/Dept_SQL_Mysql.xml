@@ -13,15 +13,15 @@
               FROM COMTN_ORGNZT_INFO 
              WHERE 1=1
         ]]>                     
-     	<if test='searchKeyword != null and searchKeyword != ""'>
-                <![CDATA[ AND ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]> 
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+                <![CDATA[ AND ORGNZT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]> 
 		</if>
         <![CDATA[                  
              ORDER BY ORGNZT_ID DESC
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
     </select>
 
@@ -32,8 +32,8 @@
               FROM COMTN_ORGNZT_INFO
              WHERE 1=1
         ]]>			
-     	<if test='searchKeyword != null and searchKeyword != ""'>
-                <![CDATA[ AND ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]> 
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+                <![CDATA[ AND ORGNZT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]> 
 		</if>
     </select>
     

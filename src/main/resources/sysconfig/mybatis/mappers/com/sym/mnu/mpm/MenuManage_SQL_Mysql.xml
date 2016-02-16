@@ -12,11 +12,11 @@
 				 , MENU_DC           		AS "menuDc"
 				 , PROGRM_FILE_NM    		AS "progrmFileNm"
 		 	  FROM COMTN_MENU_INFO 
-			 WHERE MENU_NM like '%'||#{searchKeyword}||'%'
+			 WHERE MENU_NM like '%'||#{searchVO.searchKeyword}||'%'
 		 ]]>
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
 	</select> 
 
@@ -25,7 +25,7 @@
 		<![CDATA[
 			SELECT COUNT(MENU_NO) AS "totcnt"
 			  FROM COMTN_MENU_INFO
-			 WHERE MENU_NM like '%'||#{searchKeyword}||'%'
+			 WHERE MENU_NM like '%'||#{searchVO.searchKeyword}||'%'
 		]]>
 	</select>
 

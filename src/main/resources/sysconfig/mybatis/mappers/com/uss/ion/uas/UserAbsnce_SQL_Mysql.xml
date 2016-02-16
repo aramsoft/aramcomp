@@ -26,8 +26,8 @@
                    ) X
              WHERE 1 = 1
         ]]>              
-    	<if test='searchKeyword != null and searchKeyword != ""'>
-	    		<![CDATA[ AND X.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>  
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+	    		<![CDATA[ AND X.USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>  
 		</if>
    	    <if test='selAbsnceAt != null and selAbsnceAt != "A"'>
                 <![CDATA[ AND X.USER_ABSNCE_AT = #{selAbsnceAt} ]]>  
@@ -37,7 +37,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
     </select>
 
@@ -60,8 +60,8 @@
                    ) X
              WHERE 1 = 1
         ]]>			
-    	<if test='searchKeyword != null and searchKeyword != ""'>
-	    		<![CDATA[ AND X.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>  
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+	    		<![CDATA[ AND X.USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>  
 		</if>
    	    <if test='selAbsnceAt != null and selAbsnceAt != "A"'>
                 <![CDATA[ AND X.USER_ABSNCE_AT = #{selAbsnceAt} ]]>  

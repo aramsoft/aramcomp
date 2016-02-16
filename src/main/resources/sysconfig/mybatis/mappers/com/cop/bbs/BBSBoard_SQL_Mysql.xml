@@ -24,16 +24,16 @@
 						ON a.FRST_REGISTER_ID = b.ESNTL_ID 
 			 WHERE a.BBS_ID = #{bbsId}
 		]]>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "NTT_SJ"'>
-             	<![CDATA[ AND a.NTT_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "NTT_SJ"'>
+             	<![CDATA[ AND a.NTT_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "NTT_CN"'>
-             	<![CDATA[ AND a.NTT_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "NTT_CN"'>
+             	<![CDATA[ AND a.NTT_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "USER_NM"'>
-             	<![CDATA[ AND b.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "USER_NM"'>
+             	<![CDATA[ AND b.USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -42,7 +42,7 @@
         ]]>			
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
 	</select>	
 	
@@ -55,16 +55,16 @@
 						ON a.FRST_REGISTER_ID = b.ESNTL_ID 
 			 WHERE a.BBS_ID = #{bbsId}
 		]]>
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "NTT_SJ"'>
-             	<![CDATA[ AND a.NTT_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "NTT_SJ"'>
+             	<![CDATA[ AND a.NTT_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "NTT_CN"'>
-             	<![CDATA[ AND a.NTT_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "NTT_CN"'>
+             	<![CDATA[ AND a.NTT_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "USER_NM"'>
-             	<![CDATA[ AND b.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "USER_NM"'>
+             	<![CDATA[ AND b.USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -334,13 +334,13 @@
 			  FROM COMTN_BBS a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
 						ON a.FRST_REGISTER_ID = b.ESNTL_ID 
-			 WHERE a.BBS_ID = #bbsId#
+			 WHERE a.BBS_ID = #{bbsId}
 			   AND a.USE_AT = 'Y'
 			 ORDER BY a.SORT_ORDR DESC, a.NTT_NO ASC
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
 	</select>	
 	

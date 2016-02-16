@@ -14,15 +14,15 @@
               FROM COMTN_BANNER
              WHERE 1=1
         ]]>
-      	<if test='searchKeyword != null and searchKeyword != ""'>
-	            <![CDATA[ AND BANNER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+	            <![CDATA[ AND BANNER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
 		</if>
         <![CDATA[
              ORDER BY FRST_REGIST_PNTTM DESC
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
     </select>
 
@@ -32,8 +32,8 @@
               FROM COMTN_BANNER
              WHERE 1=1
  		]]>				
-      	<if test='searchKeyword != null and searchKeyword != ""'>
-	            <![CDATA[ AND BANNER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+	            <![CDATA[ AND BANNER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
 		</if>
     </select>
 

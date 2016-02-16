@@ -23,13 +23,13 @@
 			  FROM COMTN_QUSTNR_TMPLAT A
 		     WHERE 1=1
 	 	]]>
-  	    <if test='searchKeyword != null and searchKeyword != ""'>
+  	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "QUSTNR_TMPLAT_DC"'>
-               	<![CDATA[ AND A.QUSTNR_TMPLAT_DC LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "QUSTNR_TMPLAT_DC"'>
+               	<![CDATA[ AND A.QUSTNR_TMPLAT_DC LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "QUSTNR_TMPLAT_TY"'>
-               	<![CDATA[ AND A.QUSTNR_TMPLAT_TY LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "QUSTNR_TMPLAT_TY"'>
+               	<![CDATA[ AND A.QUSTNR_TMPLAT_TY LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
 	    </choose>
 		</if>
@@ -37,7 +37,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
 	</select>
 
@@ -47,13 +47,13 @@
 			  FROM COMTN_QUSTNR_TMPLAT
 			 WHERE 1=1
         ]]>			
-  	    <if test='searchKeyword != null and searchKeyword != ""'>
+  	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "QUSTNR_TMPLAT_DC"'>
-               	<![CDATA[ AND A.QUSTNR_TMPLAT_DC LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "QUSTNR_TMPLAT_DC"'>
+               	<![CDATA[ AND A.QUSTNR_TMPLAT_DC LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "QUSTNR_TMPLAT_TY"'>
-               	<![CDATA[ AND A.QUSTNR_TMPLAT_TY LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "QUSTNR_TMPLAT_TY"'>
+               	<![CDATA[ AND A.QUSTNR_TMPLAT_TY LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
 	    </choose>
 		</if>

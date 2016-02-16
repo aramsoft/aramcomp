@@ -30,13 +30,13 @@
 			 WHERE A.OTHBC_AT = 'Y'
 			   AND NVL(A.KNWLDG_EVL,0) NOT IN ('3')
 		]]>
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "KNWLDG_NM"'>
-                 <![CDATA[ AND A.KNWLDG_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "KNWLDG_NM"'>
+                 <![CDATA[ AND A.KNWLDG_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "USER_NM"'>
-                 <![CDATA[ AND D.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "USER_NM"'>
+                 <![CDATA[ AND D.USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
 	        </choose>
 		</if>
@@ -44,7 +44,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
 	</select>
 
@@ -63,13 +63,13 @@
 			 WHERE A.OTHBC_AT = 'Y'
 			   AND NVL(A.KNWLDG_EVL,0) NOT IN ('3')
 		]]>
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "KNWLDG_NM"'>
-                 <![CDATA[ AND A.KNWLDG_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "KNWLDG_NM"'>
+                 <![CDATA[ AND A.KNWLDG_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "USER_NM"'>
-                 <![CDATA[ AND D.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "USER_NM"'>
+                 <![CDATA[ AND D.USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
 	        </choose>
 		</if>

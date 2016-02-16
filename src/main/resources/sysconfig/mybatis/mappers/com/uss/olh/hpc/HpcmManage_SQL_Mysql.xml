@@ -17,13 +17,13 @@
 				       	ON A.HPCM_SE_CODE = B.CODE
 		     WHERE 1=1
 		]]>
-  	    <if test='searchKeyword != null and searchKeyword != ""'>
+  	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "HPCM_SE_CODE"'>
-                <![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "HPCM_SE_CODE"'>
+                <![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "HPCM_DFN"'>
-                <![CDATA[ AND A.HPCM_DFN LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "HPCM_DFN"'>
+                <![CDATA[ AND A.HPCM_DFN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -32,7 +32,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
 	</select>
 
@@ -46,13 +46,13 @@
 				       	ON A.HPCM_SE_CODE = B.CODE
 		     WHERE 1=1
 		]]>
-  	    <if test='searchKeyword != null and searchKeyword != ""'>
+  	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "HPCM_SE_CODE"'>
-                <![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "HPCM_SE_CODE"'>
+                <![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "HPCM_DFN"'>
-                <![CDATA[ AND A.HPCM_DFN LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "HPCM_DFN"'>
+                <![CDATA[ AND A.HPCM_DFN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

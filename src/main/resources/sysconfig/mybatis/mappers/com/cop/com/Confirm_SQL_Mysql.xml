@@ -35,13 +35,13 @@
      	<if test='trgetJobId != null and trgetJobId != ""'>
 				<![CDATA[ AND a.TRGET_JOB_ID = #{trgetJobId}		]]>
 		</if>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "CONFM_TY_CODE"'>
-                 <![CDATA[ AND d.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "CONFM_TY_CODE"'>
+                 <![CDATA[ AND d.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "CONFM_STTUS_CODE"'>
-                 <![CDATA[ AND e.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "CONFM_STTUS_CODE"'>
+                 <![CDATA[ AND e.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -50,7 +50,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
+ 			 LIMIT #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
 	</select>	
 	
@@ -78,13 +78,13 @@
      	<if test='trgetJobId != null and trgetJobId != ""'>
 				<![CDATA[ AND a.TRGET_JOB_ID = #{trgetJobId}		]]>
 		</if>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "CONFM_TY_CODE"'>
-                 <![CDATA[ AND d.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "CONFM_TY_CODE"'>
+                 <![CDATA[ AND d.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "CONFM_STTUS_CODE"'>
-                 <![CDATA[ AND e.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "CONFM_STTUS_CODE"'>
+                 <![CDATA[ AND e.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

@@ -19,14 +19,14 @@
 				 , TOPMENU_AT    			AS "topMenuAt"
 		 	  FROM COMTN_CMMNTY_MENU 
 			 WHERE TRGET_ID = #{trgetId}
-			   AND MENU_NM like '%'|| #{searchKeyword}||'%'
+			   AND MENU_NM like '%'|| #{searchVO.searchKeyword}||'%'
 			 ORDER BY MENU_NO ASC 
 		 ]]>
         /* 구현 Sql */
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
 	</select> 
 
@@ -36,7 +36,7 @@
 			SELECT COUNT(MENU_NO) AS "totcnt"
 			  FROM COMTN_CMMNTY_MENU
 			 WHERE TRGET_ID = #{trgetId}
-			   AND MENU_NM like '%'|| #{searchKeyword}||'%'
+			   AND MENU_NM like '%'|| #{searchVO.searchKeyword}||'%'
 		]]>
 	</select>
 

@@ -20,15 +20,15 @@
 			  FROM COMTC_ADMINIST_CODE
 			 WHERE 1 = 1
 		]]>
-      	<if test='searchKeyword != null and searchKeyword != ""'>
+      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
 				<![CDATA[ AND ADMINIST_ZONE_SE = #{searchCondition}]]>
-				<![CDATA[ AND ADMINIST_ZONE_NM LIKE '%'||#{searchKeyword}||'%']]>
+				<![CDATA[ AND ADMINIST_ZONE_NM LIKE '%'||#{searchVO.searchKeyword}||'%']]>
 		</if>
        	/* 구현 Sql */
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
 	</select>
 
@@ -39,9 +39,9 @@
 			  FROM COMTC_ADMINIST_CODE
 			 WHERE 1 = 1
 		]]>
-      	<if test='searchKeyword != null and searchKeyword != ""'>
+      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
 				<![CDATA[ AND ADMINIST_ZONE_SE = #{searchCondition}]]>
-				<![CDATA[ AND ADMINIST_ZONE_NM LIKE '%'||#{searchKeyword}||'%']]>
+				<![CDATA[ AND ADMINIST_ZONE_NM LIKE '%'||#{searchVO.searchKeyword}||'%']]>
 		</if>
 	</select>
 

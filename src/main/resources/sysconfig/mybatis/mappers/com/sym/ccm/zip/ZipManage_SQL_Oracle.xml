@@ -23,22 +23,22 @@
 			  FROM COMTC_ZIP
 			 WHERE 1 = 1
 		]]>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "ZIP"'>
-                 <![CDATA[ AND ZIP LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "ZIP"'>
+                 <![CDATA[ AND ZIP LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "CTPRVN_NM"'>
-                 <![CDATA[ AND CTPRVN_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "CTPRVN_NM"'>
+                 <![CDATA[ AND CTPRVN_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "SIGNGU_NM"'>
-                 <![CDATA[ AND SIGNGU_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "SIGNGU_NM"'>
+                 <![CDATA[ AND SIGNGU_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "EMD_NM"'>
-                 <![CDATA[ AND EMD_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "EMD_NM"'>
+                 <![CDATA[ AND EMD_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "LI_BULD_NM"'>
-                 <![CDATA[ AND LI_BULD_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "LI_BULD_NM"'>
+                 <![CDATA[ AND LI_BULD_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
         </if>
@@ -46,7 +46,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
 	</select>
 
@@ -57,22 +57,22 @@
 			  FROM COMTC_ZIP
 			 WHERE 1 = 1
 		]]>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "ZIP"'>
-                 <![CDATA[ AND ZIP LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "ZIP"'>
+                 <![CDATA[ AND ZIP LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "CTPRVN_NM"'>
-                 <![CDATA[ AND CTPRVN_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "CTPRVN_NM"'>
+                 <![CDATA[ AND CTPRVN_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "SIGNGU_NM"'>
-                 <![CDATA[ AND SIGNGU_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "SIGNGU_NM"'>
+                 <![CDATA[ AND SIGNGU_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "EMD_NM"'>
-                 <![CDATA[ AND EMD_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "EMD_NM"'>
+                 <![CDATA[ AND EMD_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "LI_BULD_NM"'>
-                 <![CDATA[ AND LI_BULD_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "LI_BULD_NM"'>
+                 <![CDATA[ AND LI_BULD_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
         </if>

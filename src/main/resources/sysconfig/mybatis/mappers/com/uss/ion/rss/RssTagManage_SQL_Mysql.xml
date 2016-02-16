@@ -18,40 +18,40 @@
 			  FROM COMTN_RSS A
 			 WHERE 1=1
 		]]>
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "TRGET_SVC_NM"'>
-               	<![CDATA[ AND A.TRGET_SVC_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "TRGET_SVC_NM"'>
+               	<![CDATA[ AND A.TRGET_SVC_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "TRGET_SVC_TABLE"'>
-                <![CDATA[ AND A.TRGET_SVC_TABLE LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "TRGET_SVC_TABLE"'>
+                <![CDATA[ AND A.TRGET_SVC_TABLE LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "HDER_TITLE"'>
-                <![CDATA[ AND A.HDER_TITLE LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "HDER_TITLE"'>
+                <![CDATA[ AND A.HDER_TITLE LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "HDER_LINK"'>
-                <![CDATA[ AND A.HDER_LINK LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "HDER_LINK"'>
+                <![CDATA[ AND A.HDER_LINK LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "HDER_DC"'>
-                <![CDATA[ AND A.HDER_DC LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "HDER_DC"'>
+                <![CDATA[ AND A.HDER_DC LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "HDER_TAG"'>
-                <![CDATA[ AND A.HDER_TAG LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "HDER_TAG"'>
+                <![CDATA[ AND A.HDER_TAG LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "HDER_ETC"'>
-                <![CDATA[ AND A.HDER_ETC LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "HDER_ETC"'>
+                <![CDATA[ AND A.HDER_ETC LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "BDT_LINK"'>
-                <![CDATA[ AND A.BDT_LINK LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "BDT_LINK"'>
+                <![CDATA[ AND A.BDT_LINK LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "BDT_DC"'>
-                <![CDATA[ AND A.BDT_DC LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "BDT_DC"'>
+                <![CDATA[ AND A.BDT_DC LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "BDT_TAG"'>
-                <![CDATA[ AND A.BDT_TAG LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "BDT_TAG"'>
+                <![CDATA[ AND A.BDT_TAG LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "BDT_ETC_TAG"'>
-                <![CDATA[ AND A.BDT_ETC_TAG LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "BDT_ETC_TAG"'>
+                <![CDATA[ AND A.BDT_ETC_TAG LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -60,7 +60,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
 	</select>
 	
@@ -71,40 +71,40 @@
 			  FROM COMTN_RSS A
 			 WHERE 1=1
         ]]>			
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "TRGET_SVC_NM"'>
-               	<![CDATA[ AND A.TRGET_SVC_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "TRGET_SVC_NM"'>
+               	<![CDATA[ AND A.TRGET_SVC_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "TRGET_SVC_TABLE"'>
-                <![CDATA[ AND A.TRGET_SVC_TABLE LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "TRGET_SVC_TABLE"'>
+                <![CDATA[ AND A.TRGET_SVC_TABLE LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "HDER_TITLE"'>
-                <![CDATA[ AND A.HDER_TITLE LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "HDER_TITLE"'>
+                <![CDATA[ AND A.HDER_TITLE LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "HDER_LINK"'>
-                <![CDATA[ AND A.HDER_LINK LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "HDER_LINK"'>
+                <![CDATA[ AND A.HDER_LINK LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "HDER_DC"'>
-                <![CDATA[ AND A.HDER_DC LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "HDER_DC"'>
+                <![CDATA[ AND A.HDER_DC LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "HDER_TAG"'>
-                <![CDATA[ AND A.HDER_TAG LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "HDER_TAG"'>
+                <![CDATA[ AND A.HDER_TAG LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "HDER_ETC"'>
-                <![CDATA[ AND A.HDER_ETC LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "HDER_ETC"'>
+                <![CDATA[ AND A.HDER_ETC LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "BDT_LINK"'>
-                <![CDATA[ AND A.BDT_LINK LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "BDT_LINK"'>
+                <![CDATA[ AND A.BDT_LINK LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "BDT_DC"'>
-                <![CDATA[ AND A.BDT_DC LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "BDT_DC"'>
+                <![CDATA[ AND A.BDT_DC LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "BDT_TAG"'>
-                <![CDATA[ AND A.BDT_TAG LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "BDT_TAG"'>
+                <![CDATA[ AND A.BDT_TAG LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "BDT_ETC_TAG"'>
-                <![CDATA[ AND A.BDT_ETC_TAG LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "BDT_ETC_TAG"'>
+                <![CDATA[ AND A.BDT_ETC_TAG LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

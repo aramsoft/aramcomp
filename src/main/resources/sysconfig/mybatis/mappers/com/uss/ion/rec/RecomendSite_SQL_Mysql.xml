@@ -18,13 +18,13 @@
    	    <if test='trgetId != null and trgetId != ""'>
 		   		<![CDATA[ AND TRGET_ID = #{trgetId} ]]>
 		</if>
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "RECOMEND_SITE_NM"'>
-                <![CDATA[ AND RECOMEND_SITE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "RECOMEND_SITE_NM"'>
+                <![CDATA[ AND RECOMEND_SITE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "RECOMEND_SITE_URL"'>
-                <![CDATA[ AND RECOMEND_SITE_URL LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "RECOMEND_SITE_URL"'>
+                <![CDATA[ AND RECOMEND_SITE_URL LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -33,7 +33,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
 	</select>
 
@@ -46,13 +46,13 @@
    	    <if test='trgetId != null and trgetId != ""'>
 		   		<![CDATA[ AND TRGET_ID = #{trgetId} ]]>
 		</if>
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "RECOMEND_SITE_NM"'>
-                <![CDATA[ AND RECOMEND_SITE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "RECOMEND_SITE_NM"'>
+                <![CDATA[ AND RECOMEND_SITE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "RECOMEND_SITE_URL"'>
-                <![CDATA[ AND RECOMEND_SITE_URL LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "RECOMEND_SITE_URL"'>
+                <![CDATA[ AND RECOMEND_SITE_URL LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

@@ -29,13 +29,13 @@
      	<if test='typeFlag != null and typeFlag != ""'>
 		 		<![CDATA[ AND a.TMPLAT_SE_CODE = #{tmplatSeCode} ]]>
         </if>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "TMPLAT_NM"'>
-            	<![CDATA[ AND a.TMPLAT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "TMPLAT_NM"'>
+            	<![CDATA[ AND a.TMPLAT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "TMPLAT_SE_CODE"'>
-            	<![CDATA[ AND c.CODE_NM LIKE '%'|| #{searchKeyword} ||'%']]>
+            <when test='searchVO.searchCondition == "TMPLAT_SE_CODE"'>
+            	<![CDATA[ AND c.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%']]>
             </when>
         </choose>
         </if>
@@ -46,7 +46,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
 	</select>	
 	
@@ -64,13 +64,13 @@
      	<if test='typeFlag != null and typeFlag != ""'>
 		 		<![CDATA[ AND a.TMPLAT_SE_CODE = #{tmplatSeCode} ]]>
         </if>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "TMPLAT_NM"'>
-            	<![CDATA[ AND a.TMPLAT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "TMPLAT_NM"'>
+            	<![CDATA[ AND a.TMPLAT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "TMPLAT_SE_CODE"'>
-            	<![CDATA[ AND c.CODE_NM LIKE '%'|| #{searchKeyword} ||'%']]>
+            <when test='searchVO.searchCondition == "TMPLAT_SE_CODE"'>
+            	<![CDATA[ AND c.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%']]>
             </when>
         </choose>
         </if>

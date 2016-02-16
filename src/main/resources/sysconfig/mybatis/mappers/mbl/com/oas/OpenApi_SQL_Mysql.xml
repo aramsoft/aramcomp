@@ -19,13 +19,13 @@
 						AND a.OPENAPI_PROVD_INSTT_CODE = c.CODE
 			 WHERE 1=1
 		]]>
-  	    <if test='searchKeyword != null and searchKeyword != ""'>
+  	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "OPENAPI_PROVD_INSTT_CODE"'>
-             	<![CDATA[ AND c.OPENAPI_PROVD_INSTT_CODE LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "OPENAPI_PROVD_INSTT_CODE"'>
+             	<![CDATA[ AND c.OPENAPI_PROVD_INSTT_CODE LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "OPEN_API_SVC_CODE"'>
-             	<![CDATA[ AND B.OPEN_API_SVC_CODE LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "OPEN_API_SVC_CODE"'>
+             	<![CDATA[ AND B.OPEN_API_SVC_CODE LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -34,7 +34,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
 	</select>	
 	
@@ -50,13 +50,13 @@
 						AND a.OPENAPI_PROVD_INSTT_CODE = c.CODE
 			 WHERE 1=1
 		]]>
-  	    <if test='searchKeyword != null and searchKeyword != ""'>
+  	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "OPENAPI_PROVD_INSTT_CODE"'>
-             	<![CDATA[ AND c.OPENAPI_PROVD_INSTT_CODE LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "OPENAPI_PROVD_INSTT_CODE"'>
+             	<![CDATA[ AND c.OPENAPI_PROVD_INSTT_CODE LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "OPEN_API_SVC_CODE"'>
-             	<![CDATA[ AND B.OPEN_API_SVC_CODE LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "OPEN_API_SVC_CODE"'>
+             	<![CDATA[ AND B.OPEN_API_SVC_CODE LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

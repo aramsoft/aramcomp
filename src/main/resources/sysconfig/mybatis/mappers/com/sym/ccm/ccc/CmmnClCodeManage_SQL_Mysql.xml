@@ -13,22 +13,22 @@
 			  FROM COMTC_CMMN_CL_CODE
 			 WHERE 1 = 1
 		]]>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "CL_CODE"'>
-				<![CDATA[ AND CL_CODE LIKE '%' || #{searchKeyword} || '%']]>
+            <when test='searchVO.searchCondition == "CL_CODE"'>
+				<![CDATA[ AND CL_CODE LIKE '%' || #{searchVO.searchKeyword} || '%']]>
             </when>
-            <when test='searchCondition == "CL_CODE_NM"'>
-				<![CDATA[ AND CL_CODE_NM LIKE '%' || #{searchKeyword} || '%']]>
+            <when test='searchVO.searchCondition == "CL_CODE_NM"'>
+				<![CDATA[ AND CL_CODE_NM LIKE '%' || #{searchVO.searchKeyword} || '%']]>
             </when>
         </choose>
 		</if>
-        <if test='searchCondition == "CodeList"'>
+        <if test='searchVO.searchCondition == "CodeList"'>
 				<![CDATA[ AND USE_AT = 'Y']]>
         </if>
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
 	</select>
 
@@ -39,17 +39,17 @@
 			  FROM COMTC_CMMN_CL_CODE
 			 WHERE 1 = 1
 		]]>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "CL_CODE"'>
-				<![CDATA[ AND CL_CODE LIKE '%' || #{searchKeyword} || '%']]>
+            <when test='searchVO.searchCondition == "CL_CODE"'>
+				<![CDATA[ AND CL_CODE LIKE '%' || #{searchVO.searchKeyword} || '%']]>
             </when>
-            <when test='searchCondition == "CL_CODE_NM"'>
-				<![CDATA[ AND CL_CODE_NM LIKE '%' || #{searchKeyword} || '%']]>
+            <when test='searchVO.searchCondition == "CL_CODE_NM"'>
+				<![CDATA[ AND CL_CODE_NM LIKE '%' || #{searchVO.searchKeyword} || '%']]>
             </when>
         </choose>
 		</if>
-        <if test='searchCondition == "CodeList"'>
+        <if test='searchVO.searchCondition == "CodeList"'>
 				<![CDATA[ AND USE_AT = 'Y']]>
         </if>
 	</select>

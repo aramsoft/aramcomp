@@ -32,16 +32,16 @@
 				       	ON A.RECENT_CODE = D.CODE   
 			 WHERE 1=1
 		]]>
-  	    <if test='searchKeyword != null and searchKeyword != ""'>
+  	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "BROWSER_CODE"'>
-             	<![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "BROWSER_CODE"'>
+             	<![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "OS_CODE"'>
-             	<![CDATA[ AND C.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "OS_CODE"'>
+             	<![CDATA[ AND C.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "RECENT_CODE"'>
-             	<![CDATA[ AND D.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "RECENT_CODE"'>
+             	<![CDATA[ AND D.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -50,7 +50,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
 	</select>
 	
@@ -72,16 +72,16 @@
 				       	ON A.RECENT_CODE = D.CODE   
 			 WHERE 1=1
 		]]>
-  	    <if test='searchKeyword != null and searchKeyword != ""'>
+  	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "BROWSER_CODE"'>
-             	<![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "BROWSER_CODE"'>
+             	<![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "OS_CODE"'>
-             	<![CDATA[ AND C.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "OS_CODE"'>
+             	<![CDATA[ AND C.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "RECENT_CODE"'>
-             	<![CDATA[ AND D.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "RECENT_CODE"'>
+             	<![CDATA[ AND D.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

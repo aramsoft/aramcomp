@@ -29,19 +29,19 @@
 						AND a.RQESTER_RESULT_CODE = c.CODE
 			 WHERE 1 = 1
 		]]>
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "TRNSMIS_NO"'>
-             	<![CDATA[ AND A.TRNSMIS_NO LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "TRNSMIS_NO"'>
+             	<![CDATA[ AND A.TRNSMIS_NO LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "RECPTN_NO"'>
-             	<![CDATA[ AND A.RECPTN_NO LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "RECPTN_NO"'>
+             	<![CDATA[ AND A.RECPTN_NO LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "CODE_NM"'>
-             	<![CDATA[ AND B.TRNSMIS_RESULT_CODE LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "CODE_NM"'>
+             	<![CDATA[ AND B.TRNSMIS_RESULT_CODE LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "CODE_NM"'>
-             	<![CDATA[ AND C.RQESTER_RESULT_CODE LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "CODE_NM"'>
+             	<![CDATA[ AND C.RQESTER_RESULT_CODE LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -52,7 +52,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
 	</select>	
 	
@@ -68,19 +68,19 @@
 						AND a.RQESTER_RESULT_CODE = c.CODE
 			 WHERE 1 = 1
 		]]>
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "TRNSMIS_NO"'>
-             	<![CDATA[ AND A.TRNSMIS_NO LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "TRNSMIS_NO"'>
+             	<![CDATA[ AND A.TRNSMIS_NO LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "RECPTN_NO"'>
-             	<![CDATA[ AND A.RECPTN_NO LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "RECPTN_NO"'>
+             	<![CDATA[ AND A.RECPTN_NO LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "CODE_NM"'>
-             	<![CDATA[ AND B.TRNSMIS_RESULT_CODE LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "CODE_NM"'>
+             	<![CDATA[ AND B.TRNSMIS_RESULT_CODE LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "CODE_NM"'>
-             	<![CDATA[ AND C.RQESTER_RESULT_CODE LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "CODE_NM"'>
+             	<![CDATA[ AND C.RQESTER_RESULT_CODE LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -150,13 +150,13 @@
 				   NATURAL JOIN COMTN_FILE_DETAIL
 			 WHERE 1 = 1
 		]]>
-  	    <if test='searchKeyword != null and searchKeyword != ""'>
+  	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "MMS_ATCH_FILE_SJ"'>
-             	<![CDATA[ AND MMS_ATCH_FILE_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "MMS_ATCH_FILE_SJ"'>
+             	<![CDATA[ AND MMS_ATCH_FILE_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "ORIGNL_FILE_NM"'>
-             	<![CDATA[ AND ORIGNL_FILE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "ORIGNL_FILE_NM"'>
+             	<![CDATA[ AND ORIGNL_FILE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -167,7 +167,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
 	</select>	
 	
@@ -178,13 +178,13 @@
 				   NATURAL JOIN COMTN_FILE_DETAIL 
 			 WHERE 1 = 1
 		]]>
-  	    <if test='searchKeyword != null and searchKeyword != ""'>
+  	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "MMS_ATCH_FILE_SJ"'>
-             	<![CDATA[ AND MMS_ATCH_FILE_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "MMS_ATCH_FILE_SJ"'>
+             	<![CDATA[ AND MMS_ATCH_FILE_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "ORIGNL_FILE_NM"'>
-             	<![CDATA[ AND ORIGNL_FILE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "ORIGNL_FILE_NM"'>
+             	<![CDATA[ AND ORIGNL_FILE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

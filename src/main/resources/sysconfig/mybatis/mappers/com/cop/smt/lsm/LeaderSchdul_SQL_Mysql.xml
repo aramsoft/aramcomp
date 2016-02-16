@@ -165,13 +165,13 @@
 				       	ON A.LEADER_STTUS = E.CODE
 			 WHERE 1=1
 	 	]]>
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "USER_NM"'>
-             	<![CDATA[ AND B.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "USER_NM"'>
+             	<![CDATA[ AND B.USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "LEADER_STTUS"'>
-             	<![CDATA[ AND E.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "LEADER_STTUS"'>
+             	<![CDATA[ AND E.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -180,7 +180,7 @@
 	 	]]>	
        	/* 구현 Sql */
        	<![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
        	]]>			
 	</select>
 	
@@ -199,13 +199,13 @@
 				       	ON A.LEADER_STTUS = E.CODE
 			 WHERE 1=1
 		]]>
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "USER_NM"'>
-             	<![CDATA[ AND B.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "USER_NM"'>
+             	<![CDATA[ AND B.USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "LEADER_STTUS"'>
-             	<![CDATA[ AND E.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "LEADER_STTUS"'>
+             	<![CDATA[ AND E.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

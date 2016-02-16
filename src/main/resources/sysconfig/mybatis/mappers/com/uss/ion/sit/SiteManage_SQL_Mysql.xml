@@ -23,13 +23,13 @@
 		   		   		ON A.LAST_UPDUSR_ID = C.ESNTL_ID  									   
 		     WHERE 1=1 								
 		]]>					
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "SITE_NM"'>
-                <![CDATA[ AND A.SITE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>	
+            <when test='searchVO.searchCondition == "SITE_NM"'>
+                <![CDATA[ AND A.SITE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>	
             </when>
-            <when test='searchCondition == "SITE_URL"'>
-                <![CDATA[ AND A.SITE_URL LIKE '%'|| #{searchKeyword} ||'%' ]]>	
+            <when test='searchVO.searchCondition == "SITE_URL"'>
+                <![CDATA[ AND A.SITE_URL LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>	
             </when>
         </choose>
 		</if>
@@ -38,7 +38,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
 	</select>
 	
@@ -54,13 +54,13 @@
 		   		   		ON A.LAST_UPDUSR_ID = C.ESNTL_ID  									   
 		     WHERE 1=1 								
 		]]>					
-   	    <if test='searchKeyword != null and searchKeyword != ""'>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "SITE_NM"'>
-                <![CDATA[ AND A.SITE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>	
+            <when test='searchVO.searchCondition == "SITE_NM"'>
+                <![CDATA[ AND A.SITE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>	
             </when>
-            <when test='searchCondition == "SITE_URL"'>
-                <![CDATA[ AND A.SITE_URL LIKE '%'|| #{searchKeyword} ||'%' ]]>	
+            <when test='searchVO.searchCondition == "SITE_URL"'>
+                <![CDATA[ AND A.SITE_URL LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>	
             </when>
         </choose>
 		</if>

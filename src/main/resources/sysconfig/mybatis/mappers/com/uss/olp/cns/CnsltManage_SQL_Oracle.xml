@@ -28,13 +28,13 @@
     	<if test='trgetId != null and trgetId != ""'>
 		   		<![CDATA[ AND C.TRGET_ID = #{trgetId} ]]>
 		</if>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "WRTER_NM"'>
-                <![CDATA[ AND C.WRTER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "WRTER_NM"'>
+                <![CDATA[ AND C.WRTER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "CNSLT_SJ"'>
-                <![CDATA[ AND C.CNSLT_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "CNSLT_SJ"'>
+                <![CDATA[ AND C.CNSLT_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -45,7 +45,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
 	</select>
 
@@ -62,13 +62,13 @@
     	<if test='trgetId != null and trgetId != ""'>
 		   		<![CDATA[ AND C.TRGET_ID = #{trgetId} ]]>
 		</if>
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "WRTER_NM"'>
-                <![CDATA[ AND C.WRTER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "WRTER_NM"'>
+                <![CDATA[ AND C.WRTER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "CNSLT_SJ"'>
-                <![CDATA[ AND C.CNSLT_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "CNSLT_SJ"'>
+                <![CDATA[ AND C.CNSLT_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -249,13 +249,13 @@
     	<if test='trgetId != null and trgetId != ""'>
 		   		<![CDATA[ AND C.TRGET_ID = #{trgetId} ]]>
 		</if>
-     	    <if test='searchKeyword != null and searchKeyword != ""'>
+     	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "WRTER_NM"'>
-                <![CDATA[ AND C.WRTER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "WRTER_NM"'>
+                <![CDATA[ AND C.WRTER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "QNA_PROCESS_STTUS"'>
-                <![CDATA[ AND D.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "QNA_PROCESS_STTUS"'>
+                <![CDATA[ AND D.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -266,7 +266,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
 	</select>
 
@@ -283,13 +283,13 @@
     	<if test='trgetId != null and trgetId != ""'>
 		   		<![CDATA[ AND C.TRGET_ID = #{trgetId} ]]>
 		</if>
-     	    <if test='searchKeyword != null and searchKeyword != ""'>
+     	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "WRTER_NM"'>
-                <![CDATA[ AND C.WRTER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "WRTER_NM"'>
+                <![CDATA[ AND C.WRTER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "QNA_PROCESS_STTUS"'>
-                <![CDATA[ AND D.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "QNA_PROCESS_STTUS"'>
+                <![CDATA[ AND D.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

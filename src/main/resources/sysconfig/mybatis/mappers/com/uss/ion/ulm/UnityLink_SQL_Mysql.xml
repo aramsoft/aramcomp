@@ -30,13 +30,13 @@
 			  FROM COMTN_UNITY_LINK A
 			 WHERE 1=1
 		]]>
-  	    <if test='searchKeyword != null and searchKeyword != ""'>
+  	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "UNITY_LINK_NM"'>
-                <![CDATA[ AND UNITY_LINK_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "UNITY_LINK_NM"'>
+                <![CDATA[ AND UNITY_LINK_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "UNITY_LINK_DC"'>
-                <![CDATA[ AND UNITY_LINK_DC LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "UNITY_LINK_DC"'>
+                <![CDATA[ AND UNITY_LINK_DC LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -45,7 +45,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
 	</select>
 	<!-- 통합링크::목록조회_게시물 총갯수  -->
@@ -55,13 +55,13 @@
 			  FROM COMTN_UNITY_LINK
 			 WHERE 1=1
         ]]>			
-  	    <if test='searchKeyword != null and searchKeyword != ""'>
+  	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "UNITY_LINK_NM"'>
-                <![CDATA[ AND UNITY_LINK_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "UNITY_LINK_NM"'>
+                <![CDATA[ AND UNITY_LINK_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "UNITY_LINK_DC"'>
-                <![CDATA[ AND UNITY_LINK_DC LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "UNITY_LINK_DC"'>
+                <![CDATA[ AND UNITY_LINK_DC LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

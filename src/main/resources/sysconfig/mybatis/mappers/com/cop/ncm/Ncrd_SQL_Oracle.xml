@@ -27,16 +27,16 @@
 			 WHERE a.USE_AT = 'Y'
 			   AND a.EMPLYR_ID = #{emplyrId}
 		]]>
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "NM"'>
-                <![CDATA[ AND NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "NM"'>
+                <![CDATA[ AND NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "CMPNY_NM"'>
-                <![CDATA[ AND CMPNY_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "CMPNY_NM"'>
+                <![CDATA[ AND CMPNY_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "DEPT_NM"'>
-                <![CDATA[ AND DEPT_NM LIKE '%'|| #{searchKeyword} ||'%'  ]]>
+            <when test='searchVO.searchCondition == "DEPT_NM"'>
+                <![CDATA[ AND DEPT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%'  ]]>
             </when>
         </choose>
 		</if>
@@ -47,7 +47,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
 	</select>
 
@@ -63,16 +63,16 @@
 			 WHERE a.USE_AT = 'Y'
 			   AND a.EMPLYR_ID = #{emplyrId}
 		]]>
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "NM"'>
-                <![CDATA[ AND NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "NM"'>
+                <![CDATA[ AND NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "CMPNY_NM"'>
-                <![CDATA[ AND CMPNY_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "CMPNY_NM"'>
+                <![CDATA[ AND CMPNY_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "DEPT_NM"'>
-                <![CDATA[ AND DEPT_NM LIKE '%'|| #{searchKeyword} ||'%'  ]]>
+            <when test='searchVO.searchCondition == "DEPT_NM"'>
+                <![CDATA[ AND DEPT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%'  ]]>
             </when>
         </choose>
 		</if>
@@ -234,16 +234,16 @@
 					OR (a.OTHBC_SCOPE = 'C' AND a.TRGET_ID = #{trgetId})			
 				   )
 		]]>	
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "NM"'>
-                <![CDATA[ AND a.NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "NM"'>
+                <![CDATA[ AND a.NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "CMPNY_NM"'>
-                <![CDATA[ AND a.CMPNY_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "CMPNY_NM"'>
+                <![CDATA[ AND a.CMPNY_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "DEPT_NM"'>
-                <![CDATA[ AND a.DEPT_NM LIKE '%'|| #{searchKeyword} ||'%'  ]]>
+            <when test='searchVO.searchCondition == "DEPT_NM"'>
+                <![CDATA[ AND a.DEPT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%'  ]]>
             </when>
         </choose>
 		</if>
@@ -254,7 +254,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
+             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
         ]]>			
 	</select>	
 
@@ -271,16 +271,16 @@
 					OR (a.OTHBC_SCOPE = 'C' AND a.TRGET_ID = #{trgetId})			
 				   )
 		]]>	
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "NM"'>
-                <![CDATA[ AND a.NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "NM"'>
+                <![CDATA[ AND a.NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "CMPNY_NM"'>
-                <![CDATA[ AND a.CMPNY_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+            <when test='searchVO.searchCondition == "CMPNY_NM"'>
+                <![CDATA[ AND a.CMPNY_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchCondition == "DEPT_NM"'>
-                <![CDATA[ AND a.DEPT_NM LIKE '%'|| #{searchKeyword} ||'%'  ]]>
+            <when test='searchVO.searchCondition == "DEPT_NM"'>
+                <![CDATA[ AND a.DEPT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%'  ]]>
             </when>
         </choose>
 		</if>

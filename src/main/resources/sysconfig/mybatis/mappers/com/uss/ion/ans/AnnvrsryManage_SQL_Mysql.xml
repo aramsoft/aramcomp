@@ -17,7 +17,7 @@
                  , REPTIT_AT            as "reptitSe"          
               FROM COMTN_ANNVRSRY_MANAGE  
              WHERE REPTIT_AT IS NULL
-               AND ANNVRSRY like  '%'||#{searchKeyword}||'%'
+               AND ANNVRSRY like  '%'||#{searchVO.searchKeyword}||'%'
                   AND USER_ID = #{usid}
 	         union all
             SELECT ANNVRSRY_ID          as "annId"             
@@ -33,7 +33,7 @@
                AND USER_ID = #{usid}
                    ) A
              ORDER BY A.annvrsryDe DESC
-			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
+			 LIMIT #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>
     </select>
     
@@ -42,7 +42,7 @@
            	SELECT COUNT(*) totcnt
            	  FROM (SELECT *
 	            	  FROM COMTN_ANNVRSRY_MANAGE
-	            	 WHERE ANNVRSRY like  '%'||#{searchKeyword}||'%'
+	            	 WHERE ANNVRSRY like  '%'||#{searchVO.searchKeyword}||'%'
 					   AND USER_ID = #{usid}
 		             union all
 	            	SELECT *

@@ -43,22 +43,22 @@
                 		ON A.ESNTL_ID = B.SCRTY_DTRMN_TRGET_ID
              WHERE 1 = 1    
         ]]> 
-      	<if test='searchKeyword != null and searchKeyword != ""'>
+      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "USER_ID"'>
-                 <![CDATA[ AND A.USER_ID LIKE '%'|| #{searchKeyword} ||'%' ]]> 
+            <when test='searchVO.searchCondition == "USER_ID"'>
+                 <![CDATA[ AND A.USER_ID LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]> 
             </when>
-            <when test='searchCondition == "USER_NM"'>
-                 <![CDATA[ AND A.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]> 
+            <when test='searchVO.searchCondition == "USER_NM"'>
+                 <![CDATA[ AND A.USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]> 
             </when>
-            <when test='searchCondition == "GROUP_ID"'>
-                 <![CDATA[ AND A.GROUP_ID = #{searchKeyword} ]]> 
+            <when test='searchVO.searchCondition == "GROUP_ID"'>
+                 <![CDATA[ AND A.GROUP_ID = #{searchVO.searchKeyword} ]]> 
             </when>
         </choose>
 		</if>
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>			
     </select>
 
@@ -91,16 +91,16 @@
                 		ON A.ESNTL_ID = B.SCRTY_DTRMN_TRGET_ID
              WHERE 1 = 1   
         ]]>			
-      	<if test='searchKeyword != null and searchKeyword != ""'>
+      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
-            <when test='searchCondition == "USER_ID"'>
-                 <![CDATA[ AND A.USER_ID LIKE '%'|| #{searchKeyword} ||'%' ]]> 
+            <when test='searchVO.searchCondition == "USER_ID"'>
+                 <![CDATA[ AND A.USER_ID LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]> 
             </when>
-            <when test='searchCondition == "USER_NM"'>
-                 <![CDATA[ AND A.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]> 
+            <when test='searchVO.searchCondition == "USER_NM"'>
+                 <![CDATA[ AND A.USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]> 
             </when>
-            <when test='searchCondition == "GROUP_ID"'>
-                 <![CDATA[ AND A.GROUP_ID = #{searchKeyword} ]]> 
+            <when test='searchVO.searchCondition == "GROUP_ID"'>
+                 <![CDATA[ AND A.GROUP_ID = #{searchVO.searchKeyword} ]]> 
             </when>
         </choose>
 		</if>

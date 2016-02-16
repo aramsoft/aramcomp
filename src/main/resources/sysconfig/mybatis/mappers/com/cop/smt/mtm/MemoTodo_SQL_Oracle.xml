@@ -52,7 +52,9 @@
 		 		]]>
             </when>
             <when test='searchDe == "1"'>
-	 			<![CDATA[ AND TO_CHAR(A.FRST_REGIST_PNTTM, 'YYYYMMDD') BETWEEN #{searchBgnDe} AND #{searchEndDe}		]]>
+	 			<![CDATA[ 
+	 				AND TO_CHAR(A.FRST_REGIST_PNTTM, 'YYYYMMDD') BETWEEN #{searchBgnDe} AND #{searchEndDe}	
+	 			]]>
             </when>
         </choose>
 		</if>
@@ -95,7 +97,9 @@
 		 		]]>
             </when>
             <when test='searchDe == "1"'>
-	 			<![CDATA[ AND TO_CHAR(A.FRST_REGIST_PNTTM, 'YYYYMMDD') BETWEEN #{searchBgnDe} AND #{searchEndDe}		]]>
+	 			<![CDATA[ 
+	 				AND TO_CHAR(A.FRST_REGIST_PNTTM, 'YYYYMMDD') BETWEEN #{searchBgnDe} AND #{searchEndDe}
+	 			]]>
             </when>
         </choose>
 		</if>

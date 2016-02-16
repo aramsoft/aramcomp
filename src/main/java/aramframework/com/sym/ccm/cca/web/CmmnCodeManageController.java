@@ -67,12 +67,12 @@ public class CmmnCodeManageController {
 		cmmnCodeVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", cmmnCodeManageService.selectCmmnCodeList(cmmnCodeVO));
-
 		int totCnt = cmmnCodeManageService.selectCmmnCodeListCnt(cmmnCodeVO);
-		cmmnCodeVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		cmmnCodeVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/ccm/cca/CmmnCodeList");
 	}
@@ -84,9 +84,10 @@ public class CmmnCodeManageController {
 	 */
 	@RequestMapping(value = "/sym/ccm/cca/detailCmmnCode.do")
 	public String detailCmmnCode(
-			@ModelAttribute CmmnCodeVO cmmnCodeVO) {
+			CmmnCodeVO cmmnCodeVO,
+			ModelMap model) {
 
-		cmmnCodeManageService.selectCmmnCodeDetail(cmmnCodeVO);
+		model.addAttribute(cmmnCodeManageService.selectCmmnCodeDetail(cmmnCodeVO));
 
 		return WebUtil.adjustViewName("/sym/ccm/cca/CmmnCodeDetail");
 	}
@@ -103,9 +104,7 @@ public class CmmnCodeManageController {
 			ModelMap model) {
 
 		CmmnClCodeVO cmmnClCodeVO = new CmmnClCodeVO();
-		cmmnClCodeVO.getSearchVO().setRecordPerPage(999999);
-		cmmnClCodeVO.getSearchVO().setFirstIndex(0);
-		cmmnClCodeVO.getSearchVO().setSearchCondition("CodeList");
+		cmmnClCodeVO.getSearchVO().setSizeAndOffset(999999, 0);
 
 		model.addAttribute("cmmnClCode", cmmnClCodeManageService.selectCmmnClCodeList(cmmnClCodeVO));
 
@@ -146,9 +145,10 @@ public class CmmnCodeManageController {
 	@RequestMapping(value = "/sym/ccm/cca/editCmmnCode.do")
 	@Secured("ROLE_ADMIN")
 	public String editCmmnCode(
-			@ModelAttribute CmmnCodeVO cmmnCodeVO) {
-		
-		cmmnCodeManageService.selectCmmnCodeDetail(cmmnCodeVO);
+			CmmnCodeVO cmmnCodeVO,
+			ModelMap model) {
+
+		model.addAttribute(cmmnCodeManageService.selectCmmnCodeDetail(cmmnCodeVO));
 
 		return WebUtil.adjustViewName("/sym/ccm/cca/CmmnCodeEdit");
 	}

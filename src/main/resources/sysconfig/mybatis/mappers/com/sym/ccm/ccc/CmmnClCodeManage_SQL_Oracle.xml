@@ -17,7 +17,7 @@
 			     , CL_CODE_NM				AS "clCodeNm"
 			     , USE_AT					AS "useAt"
 			  FROM COMTC_CMMN_CL_CODE
-			 WHERE 1 = 1
+			 WHERE USE_AT = 'Y'
 		]]>
      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
@@ -29,9 +29,6 @@
             </when>
         </choose>
 		</if>
-        <if test='searchVO.searchCondition == "CodeList"'>
-				<![CDATA[ AND USE_AT = 'Y']]>
-        </if>
         /* 구현 Sql */
         <![CDATA[
                    ) ALL_LIST
@@ -45,7 +42,7 @@
 		<![CDATA[
 			SELECT COUNT(*) totcnt
 			  FROM COMTC_CMMN_CL_CODE
-			 WHERE 1 = 1
+			 WHERE USE_AT = 'Y'
 		]]>
      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
@@ -57,9 +54,6 @@
             </when>
         </choose>
 		</if>
-        <if test='searchVO.searchCondition == "CodeList"'>
-				<![CDATA[ AND USE_AT = 'Y']]>
-        </if>
 	</select>
 
 	<!-- 상세보기 -->

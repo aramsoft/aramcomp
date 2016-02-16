@@ -53,8 +53,7 @@ public class AdministCodeRecptnController {
 			@ModelAttribute AdministCodeRecptnVO administCodeRecptnVO, 
 			ModelMap model) {
 
-		administCodeRecptnVO.getSearchVO().setFirstIndex(0);
-		administCodeRecptnVO.getSearchVO().setRecordPerPage(5);
+		administCodeRecptnVO.getSearchVO().setSizeAndOffset(5,0);
 
 		model.addAttribute("resultList", administCodeManageService.selectAdministCodeRecptnList(administCodeRecptnVO));
 
@@ -77,12 +76,12 @@ public class AdministCodeRecptnController {
 		administCodeRecptnVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", administCodeManageService.selectAdministCodeRecptnList(administCodeRecptnVO));
-
 		int totCnt = administCodeManageService.selectAdministCodeRecptnListCnt(administCodeRecptnVO);
-		administCodeRecptnVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		administCodeRecptnVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/ccm/acr/AdministCodeRecptnList");
 	}
@@ -94,26 +93,27 @@ public class AdministCodeRecptnController {
 	 */
 	@RequestMapping(value = "/sym/ccm/acr/detailAdministCodeRecptn.do")
 	public String detailAdministCodeRecptn(
-			@ModelAttribute AdministCodeRecptnVO administCodeRecptnVO, 
+			AdministCodeRecptnVO administCodeRecptnVO, 
 			ModelMap model)  {
+
+		/* 법정동코드 조회 */
+		administCodeRecptnVO = administCodeManageService.selectAdministCodeDetail(administCodeRecptnVO);
+
+		model.addAttribute(administCodeRecptnVO);
+
+		/* 법정동코드수신 리스트 */
+		AdministCodeRecptnVO vo = new AdministCodeRecptnVO();
+		vo.getSearchVO().setSizeAndOffset(9999999, 0);
+		vo.getSearchVO().setSearchCondition("CodeList");
+		vo.setAdministZoneSe(administCodeRecptnVO.getAdministZoneSe());
+		vo.setAdministZoneCode(administCodeRecptnVO.getAdministZoneCode());
+
+		model.addAttribute("administCodeRecptnList", administCodeManageService.selectAdministCodeRecptnList(vo));
 
 		/* 변경구분코드 */
 		cmmUseService.populateCmmCodeList("COM043", "COM043_changeSe");
 		/* 처리구분코드 */
 		cmmUseService.populateCmmCodeList("COM044", "COM044_processSe");
-
-		/* 법정동코드 조회 */
-		administCodeManageService.selectAdministCodeDetail(administCodeRecptnVO);
-
-		/* 법정동코드수신 리스트 */
-		AdministCodeRecptnVO vo = new AdministCodeRecptnVO();
-		vo.setAdministZoneSe(administCodeRecptnVO.getAdministZoneSe());
-		vo.setAdministZoneCode(administCodeRecptnVO.getAdministZoneCode());
-		vo.getSearchVO().setRecordPerPage(9999999);
-		vo.getSearchVO().setFirstIndex(0);
-		vo.getSearchVO().setSearchCondition("CodeList");
-
-		model.addAttribute("administCodeRecptnList", administCodeManageService.selectAdministCodeRecptnList(vo));
 
 		return WebUtil.adjustViewName("/sym/ccm/acr/AdministCodeRecptnDetail");
 	}

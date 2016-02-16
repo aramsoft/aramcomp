@@ -18,10 +18,10 @@
 			 WHERE 1 = 1
 		]]>
 	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
-                <![CDATA[ AND a.URL LIKE LIKE '%'||#{searchVO.searchKeyword}||'%' ]]>
+            <![CDATA[ AND a.URL LIKE LIKE '%'||#{searchVO.searchKeyword}||'%' ]]>
 		</if>
       	<if test='searchBgnDe != null and searchBgnDe != ""'>
-				<![CDATA[ AND a.OCCRRNC_DE BETWEEN #{searchBgnDe} AND #{searchEndDe} ]]>
+			<![CDATA[ AND a.OCCRRNC_DE BETWEEN #{searchBgnDe} AND #{searchEndDe} ]]>
 		</if>
 		<![CDATA[
 			 ORDER BY a.REQUST_ID DESC
@@ -42,10 +42,10 @@
 			 WHERE 1 = 1
 		]]>
 	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
-                <![CDATA[ AND a.URL LIKE LIKE '%'||#{searchVO.searchKeyword}||'%' ]]>
+            <![CDATA[ AND a.URL LIKE LIKE '%'||#{searchVO.searchKeyword}||'%' ]]>
 		</if>
       	<if test='searchBgnDe != null and searchBgnDe != ""'>
-				<![CDATA[ AND a.OCCRRNC_DE BETWEEN #{searchBgnDe} AND #{searchEndDe} ]]>
+			<![CDATA[ AND a.OCCRRNC_DE BETWEEN #{searchBgnDe} AND #{searchEndDe} ]]>
 		</if>
 	</select>
 

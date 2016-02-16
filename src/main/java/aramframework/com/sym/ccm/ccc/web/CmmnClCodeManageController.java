@@ -62,12 +62,12 @@ public class CmmnClCodeManageController {
 		cmmnClCodeVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", cmmnClCodeManageService.selectCmmnClCodeList(cmmnClCodeVO));
-
 		int totCnt = cmmnClCodeManageService.selectCmmnClCodeListCnt(cmmnClCodeVO);
-		cmmnClCodeVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		cmmnClCodeVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/ccm/ccc/CmmnClCodeList");
 	}
@@ -79,9 +79,10 @@ public class CmmnClCodeManageController {
 	 */
 	@RequestMapping(value = "/sym/ccm/ccc/detailCmmnClCode.do")
 	public String detailCmmnClCode(
-			@ModelAttribute CmmnClCodeVO cmmnClCodeVO) {
+			CmmnClCodeVO cmmnClCodeVO, 
+			ModelMap model) {
 		
-		cmmnClCodeManageService.selectCmmnClCodeDetail(cmmnClCodeVO);
+		model.addAttribute(cmmnClCodeManageService.selectCmmnClCodeDetail(cmmnClCodeVO));
 
 		return WebUtil.adjustViewName("/sym/ccm/ccc/CmmnClCodeDetail");
 	}
@@ -139,9 +140,10 @@ public class CmmnClCodeManageController {
 	@RequestMapping(value = "/sym/ccm/ccc/editCmmnClCode.do")
 	@Secured("ROLE_ADMIN")
 	public String editCmmnClCode(
-			@ModelAttribute("cmmnClCodeVO") CmmnClCodeVO cmmnClCodeVO) {
+			CmmnClCodeVO cmmnClCodeVO, 
+			ModelMap model) {
 		
-		cmmnClCodeManageService.selectCmmnClCodeDetail(cmmnClCodeVO);
+		model.addAttribute(cmmnClCodeManageService.selectCmmnClCodeDetail(cmmnClCodeVO));
 
 		return WebUtil.adjustViewName("/sym/ccm/ccc/CmmnClCodeEdit");
 	}

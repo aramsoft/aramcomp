@@ -54,12 +54,12 @@ public class UserLogController {
 		userLogVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", userLogService.selectUserLogInf(userLogVO));
-
 		int totCnt = userLogService.selectUserLogInfCnt(userLogVO);
-		userLogVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		userLogVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+		
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/log/ulg/UserLogList");
 	}
@@ -72,9 +72,10 @@ public class UserLogController {
 	@RequestMapping(value = "/sym/log/ulg/detailUserLog.do")
 	@Secured("ROLE_ADMIN")
 	public String detailUserLog(
-			@ModelAttribute UserLogVO userLogVO) {
+			UserLogVO userLogVO,
+			ModelMap model) {
 
-		userLogService.selectUserLog(userLogVO);
+		model.addAttribute(userLogService.selectUserLog(userLogVO));
 
 		return WebUtil.adjustViewName("/sym/log/ulg/UserLogDetail");
 	}

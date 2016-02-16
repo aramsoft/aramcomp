@@ -47,8 +47,9 @@
    		</form:select>
 		<label for="searchBgnDe">보고일자 : </label>
    		<form:hidden path="searchBgnDe" />
-    	<c:if test="${!empty memoReprtVO.searchBgnDe}">
-			<c:set var="searchBgnDeVal" value="${fn:substring(memoReprtVO.searchBgnDe, 0,4)}-${fn:substring(memoReprtVO.searchBgnDe, 4,6)}-${fn:substring(memoReprtVO.searchBgnDe, 6,8)}"/>
+ 		<c:set var="searchBgnDe" value="${memoReprtVO.searchBgnDe}"/>
+    	<c:if test="${!empty searchBgnDe}">
+			<c:set var="searchBgnDeVal" value="${fn:substring(searchBgnDe, 0,4)}-${fn:substring(searchBgnDe, 4,6)}-${fn:substring(searchBgnDe, 6,8)}"/>
      	</c:if>
      	<input name="searchBgnDeView" id="searchBgnDeView" type="text" size="10" title="조회시작일자" value="${searchBgnDeVal}"  readonly />
      	<a href="#" onClick="javascript:fn_aram_NormalCalendar(document.forms[0].searchBgnDe, document.forms[0].searchBgnDeView); return false;">
@@ -56,8 +57,9 @@
      	</a>
    		~
      	<form:hidden path="searchEndDe" />
-    	<c:if test="${!empty memoReprtVO.searchEndDe}">
-			<c:set var="searchEndDeVal" value="${fn:substring(memoReprtVO.searchEndDe, 0,4)}-${fn:substring(memoReprtVO.searchEndDe, 4,6)}-${fn:substring(memoReprtVO.searchEndDe, 6,8)}"/>
+  		<c:set var="searchEndDe" value="${memoReprtVO.searchEndDe}"/>
+    	<c:if test="${!empty searchEndDe}">
+			<c:set var="searchEndDeVal" value="${fn:substring(searchEndDe, 0,4)}-${fn:substring(searchEndDe, 4,6)}-${fn:substring(searchEndDe, 6,8)}"/>
      	</c:if>
      	<input name="searchEndDeView" id="searchEndDeView" type="text" size="10" title="조회종료일자" value="${searchEndDeVal}"  readonly />
      	<a href="#" onClick="javascript:fn_aram_NormalCalendar(document.forms[0].searchEndDe, document.forms[0].searchEndDeView); return false;">
@@ -158,8 +160,8 @@ function fn_aram_linkPage(pageNo) {
 function fn_aram_search() {
     var varForm = document.getElementById("memoReprtVO");
 
-	var bgnDe = varForm.searchBgnDe.value;
-	var endDe = varForm.searchEndDe.value;
+	var bgnDe = varForm["searchBgnDe"].value;
+	var endDe = varForm["searchEndDe"].value;
 
 	if(bgnDe != ""){
 		if(isDate(bgnDe, "검색시작일자") == false) {

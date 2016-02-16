@@ -88,7 +88,9 @@
   	    <if test='searchDe != null and searchDe != ""'>
         <choose>
             <when test='searchDe == "0"'>
-	 			<![CDATA[ AND A.REPORT_DE  BETWEEN #{searchBgnDe} AND #{searchEndDe}		]]>
+	 			<![CDATA[ 
+	 				AND A.REPORT_DE  BETWEEN #{searchBgnDe} AND #{searchEndDe}		
+	 			]]>
             </when>
             <when test='searchDe == "1"'>
 		 		<![CDATA[	
@@ -149,7 +151,9 @@
   	    <if test='searchDe != null and searchDe != ""'>
         <choose>
             <when test='searchDe == "0"'>
-	 			<![CDATA[ AND A.REPORT_DE  BETWEEN #{searchBgnDe} AND #{searchEndDe}		]]>
+	 			<![CDATA[ 
+	 				AND A.REPORT_DE  BETWEEN #{searchBgnDe} AND #{searchEndDe}
+	 			]]>
             </when>
             <when test='searchDe == "1"'>
 		 		<![CDATA[	

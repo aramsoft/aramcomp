@@ -54,12 +54,12 @@ public class LoginLogController {
 		loginLogVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", loginLogService.selectLoginLogInf(loginLogVO));
-
 		int totCnt = loginLogService.selectLoginLogInfCnt(loginLogVO);
-		loginLogVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		loginLogVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/log/clg/LoginLogList");
 	}
@@ -72,9 +72,10 @@ public class LoginLogController {
 	@RequestMapping(value = "/sym/log/clg/detailLoginLog.do")
 	@Secured("ROLE_ADMIN")
 	public String detailLoginLog(
-			@ModelAttribute LoginLogVO loginLogVO) {
+			LoginLogVO loginLogVO,
+			ModelMap model) {
 
-		loginLogService.selectLoginLog(loginLogVO);
+		model.addAttribute(loginLogService.selectLoginLog(loginLogVO));
 
 		return WebUtil.adjustViewName("/sym/log/clg/LoginLogDetail");
 	}

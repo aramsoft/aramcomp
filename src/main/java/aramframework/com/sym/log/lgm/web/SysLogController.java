@@ -54,12 +54,12 @@ public class SysLogController {
 		sysLogVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", sysLogService.selectSysLogInf(sysLogVO));
-
 		int totCnt = sysLogService.selectSysLogInfCnt(sysLogVO);
-		sysLogVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		sysLogVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/log/lgm/SysLogList");
 	}
@@ -72,9 +72,10 @@ public class SysLogController {
 	@RequestMapping(value = "/sym/log/lgm/detailSysLog.do")
 	@Secured("ROLE_ADMIN")
 	public String detailSysLog(
-			@ModelAttribute SysLogVO sysLogVO) {
+			SysLogVO sysLogVO,
+			ModelMap model) {
 
-		sysLogService.selectSysLog(sysLogVO);
+		model.addAttribute(sysLogService.selectSysLog(sysLogVO));
 
 		return WebUtil.adjustViewName("/sym/log/lgm/SysLogDetail");
 	}

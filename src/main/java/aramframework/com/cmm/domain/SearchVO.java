@@ -68,6 +68,12 @@ public class SearchVO {
 		this.lastIndex = paginationInfo.getLastRecordIndex();
 	}
 	
+	// 일정크기를 가져온다.
+	public void setSizeAndOffset(int size, int offset) {
+		this.recordPerPage = size;
+		this.firstIndex = offset;
+	}
+	
 	/**
 	 * searchCondition attribute 값을 리턴한다.
 	 * 

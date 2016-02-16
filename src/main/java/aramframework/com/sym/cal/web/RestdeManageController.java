@@ -84,12 +84,12 @@ public class RestdeManageController {
 		restdeVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", restdeManageService.selectRestdeList(restdeVO));
-
 		int totCnt = restdeManageService.selectRestdeListCnt(restdeVO);
-		restdeVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		restdeVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/cal/RestdeList");
 	}
@@ -101,9 +101,10 @@ public class RestdeManageController {
 	 */
 	@RequestMapping(value = "/sym/cal/detailRestde.do")
 	public String detailRestde(
-			@ModelAttribute RestdeVO restdeVO) {
+			RestdeVO restdeVO,
+			ModelMap model) {
 		
-		restdeManageService.selectRestdeDetail(restdeVO);
+		model.addAttribute(restdeManageService.selectRestdeDetail(restdeVO));
 
 		return WebUtil.adjustViewName("/sym/cal/RestdeDetail");
 	}
@@ -157,9 +158,10 @@ public class RestdeManageController {
 	@RequestMapping(value = "/sym/cal/editRestde.do")
 	@Secured("ROLE_ADMIN")
 	public String editRestde(
-			@ModelAttribute RestdeVO restdeVO) {
-
-		restdeManageService.selectRestdeDetail(restdeVO);
+			RestdeVO restdeVO,
+			ModelMap model) {
+		
+		model.addAttribute(restdeManageService.selectRestdeDetail(restdeVO));
 
 		cmmUseService.populateCmmCodeList("COM017", "COM017_restde");
 

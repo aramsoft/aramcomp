@@ -78,12 +78,12 @@ public class CmmnDetailCodeManageController {
 		cmmnDetailCodeVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", cmmnDetailCodeManageService.selectCmmnDetailCodeList(cmmnDetailCodeVO));
-
 		int totCnt = cmmnDetailCodeManageService.selectCmmnDetailCodeListCnt(cmmnDetailCodeVO);
-		cmmnDetailCodeVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		cmmnDetailCodeVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/ccm/cde/CmmnDetailCodeList");
 	}
@@ -115,21 +115,20 @@ public class CmmnDetailCodeManageController {
 			@RequestParam String clCode, 
 			ModelMap model) {
 
+		// class code list
 		CmmnClCodeVO cmmnClCodeVO = new CmmnClCodeVO();
-		cmmnClCodeVO.getSearchVO().setRecordPerPage(999999);
-		cmmnClCodeVO.getSearchVO().setFirstIndex(0);
-		cmmnClCodeVO.getSearchVO().setSearchCondition("CodeList");
-		List<EgovMap> CmmnClCodeList = cmmnClCodeManageService.selectCmmnClCodeList(cmmnClCodeVO);
+		cmmnClCodeVO.getSearchVO().setSizeAndOffset(999999, 0);
+		List<EgovMap> cmmnClCodeList = cmmnClCodeManageService.selectCmmnClCodeList(cmmnClCodeVO);
 
-		model.addAttribute("cmmnClCodeList", cmmnClCodeManageService.selectCmmnClCodeList(cmmnClCodeVO));
+		model.addAttribute("cmmnClCodeList", cmmnClCodeList);
 
+		// common code list
 		CmmnCodeVO cmmnCodeVO = new CmmnCodeVO();
-		cmmnCodeVO.getSearchVO().setRecordPerPage(999999);
-		cmmnCodeVO.getSearchVO().setFirstIndex(0);
-		cmmnCodeVO.getSearchVO().setSearchCondition("clCode");
+		cmmnCodeVO.getSearchVO().setSizeAndOffset(999999, 0);
 
+		cmmnCodeVO.getSearchVO().setSearchCondition("clCode");
 		if ( clCode.equals("") ) {
-			clCode = CmmnClCodeList.get(0).get("clCode").toString();
+			clCode = cmmnClCodeList.get(0).get("clCode").toString();
 		}	
 		cmmnCodeVO.getSearchVO().setSearchKeyword(clCode);
 

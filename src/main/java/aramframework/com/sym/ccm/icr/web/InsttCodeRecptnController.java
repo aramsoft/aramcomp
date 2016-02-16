@@ -53,8 +53,7 @@ public class InsttCodeRecptnController {
 			@ModelAttribute InsttCodeRecptnVO insttCodeRecptnVO, 
 			ModelMap model) {
 
-		insttCodeRecptnVO.getSearchVO().setRecordPerPage(5);
-		insttCodeRecptnVO.getSearchVO().setFirstIndex(0);
+		insttCodeRecptnVO.getSearchVO().setSizeAndOffset(5, 0);
 
 		model.addAttribute("resultList", insttCodeManageService.selectInsttCodeRecptnList(insttCodeRecptnVO));
 
@@ -77,12 +76,12 @@ public class InsttCodeRecptnController {
 		insttCodeRecptnVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", insttCodeManageService.selectInsttCodeRecptnList(insttCodeRecptnVO));
-
 		int totCnt = insttCodeManageService.selectInsttCodeRecptnListCnt(insttCodeRecptnVO);
-		insttCodeRecptnVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		insttCodeRecptnVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/ccm/icr/InsttCodeRecptnList");
 	}
@@ -94,26 +93,26 @@ public class InsttCodeRecptnController {
 	 */
 	@RequestMapping(value = "/sym/ccm/icr/detailInsttCodeRecptn.do")
 	public String selectInsttCodeDetail(
-			@ModelAttribute InsttCodeRecptnVO insttCodeRecptnVO, 
+			InsttCodeRecptnVO insttCodeRecptnVO, 
 			ModelMap model) {
+
+		/* 기관코드 조회 */
+		insttCodeRecptnVO = insttCodeManageService.selectInsttCodeDetail(insttCodeRecptnVO);
+
+		model.addAttribute(insttCodeRecptnVO);
+
+		/* 기관코드수신 리스트 */
+		InsttCodeRecptnVO vo = new InsttCodeRecptnVO();
+		vo.getSearchVO().setSizeAndOffset(9999999, 0);
+		vo.getSearchVO().setSearchCondition("CodeList");
+		vo.setInsttCode(insttCodeRecptnVO.getInsttCode());
+
+		model.addAttribute("insttCodeRecptnList", insttCodeManageService.selectInsttCodeRecptnList(vo));
 
 		/* 변경구분코드 */
 		cmmUseService.populateCmmCodeList("COM043", "COM043_changeSe");
 		/* 처리구분코드 */
 		cmmUseService.populateCmmCodeList("COM044", "COM044_processSe");
-
-		/* 기관코드 조회 */
-		insttCodeManageService.selectInsttCodeDetail(insttCodeRecptnVO);
-
-		/* 기관코드수신 리스트 */
-		InsttCodeRecptnVO vo = new InsttCodeRecptnVO();
-		vo.setInsttCode(insttCodeRecptnVO.getInsttCode());
-		
-		vo.getSearchVO().setRecordPerPage(9999999);
-		vo.getSearchVO().setFirstIndex(0);
-		vo.getSearchVO().setSearchCondition("CodeList");
-
-		model.addAttribute("insttCodeRecptnList", insttCodeManageService.selectInsttCodeRecptnList(vo));
 
 		return WebUtil.adjustViewName("/sym/ccm/icr/InsttCodeRecptnDetail");
 	}

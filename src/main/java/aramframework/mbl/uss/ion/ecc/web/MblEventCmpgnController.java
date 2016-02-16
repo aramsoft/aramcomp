@@ -110,12 +110,13 @@ public class MblEventCmpgnController {
 	 */
 	@RequestMapping(value="/uss/ion/ecc/detailEventCmpgn.mdo")
 	public String detailEventCmpgn(
-			@ModelAttribute EventCmpgnVO eventCmpgnVO) {
+			EventCmpgnVO eventCmpgnVO,
+	   		ModelMap model) {
 
 		// 공통코드 행사유형 조회
 		cmmUseService.populateCmmCodeList("COM035", "COM035_eventTy");
     	
-        eventCmpgnService.selectEventCmpgnDetail(eventCmpgnVO);
+		model.addAttribute(eventCmpgnService.selectEventCmpgnDetail(eventCmpgnVO));
 
 		return "aramframework/mbl/uss/ion/ecc/EventCmpgnDetail"; 	
 	}
@@ -178,7 +179,7 @@ public class MblEventCmpgnController {
 	@RequestMapping(value="/uss/ion/ecc/editEventCmpgn.mdo")
 	@Secured("ROLE_USER")
 	public String editEventCmpgn(
-			@ModelAttribute EventCmpgnVO eventCmpgnVO, 
+			EventCmpgnVO eventCmpgnVO, 
     		ModelMap model) {
     	
 		//로그인 객체 선언
@@ -188,7 +189,8 @@ public class MblEventCmpgnController {
 		// 공통코드 행사유형 조회
 		cmmUseService.populateCmmCodeList("COM035", "COM035_eventTy");
     	
-        eventCmpgnService.selectEventCmpgnDetail(eventCmpgnVO);
+		model.addAttribute(eventCmpgnService.selectEventCmpgnDetail(eventCmpgnVO));
+        
     	return "aramframework/mbl/uss/ion/ecc/EventCmpgnEdit"; 	
 	}
 	

@@ -71,12 +71,12 @@ public class SysHistoryController {
 		sysHistoryVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", sysHistoryService.selectSysHistoryList(sysHistoryVO));
-
 		int totCnt = sysHistoryService.selectSysHistoryListCnt(sysHistoryVO);
-		sysHistoryVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		sysHistoryVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/log/slg/SysHistList");
 	}
@@ -89,9 +89,10 @@ public class SysHistoryController {
 	@RequestMapping(value = "/sym/log/slg/detailSysHistory.do")
 	@Secured("ROLE_ADMIN")
 	public String detailSysHistory(
-			@ModelAttribute SysHistoryVO sysHistoryVO) {
+			SysHistoryVO sysHistoryVO,
+			ModelMap model) {
 
-		sysHistoryService.selectSysHistory(sysHistoryVO);
+		model.addAttribute(sysHistoryService.selectSysHistory(sysHistoryVO));
 
 		return WebUtil.adjustViewName("/sym/log/slg/SysHistDetail");
 	}
@@ -151,10 +152,10 @@ public class SysHistoryController {
 	@RequestMapping(value = "/sym/log/slg/editSysHistory.do")
 	@Secured("ROLE_ADMIN")
 	public String editSysHistory(
-			@ModelAttribute SysHistoryVO sysHistoryVO, 
+			SysHistoryVO sysHistoryVO,
 			ModelMap model) {
 
-		sysHistoryService.selectSysHistory(sysHistoryVO);
+		model.addAttribute(sysHistoryService.selectSysHistory(sysHistoryVO));
 
 		cmmUseService.populateCmmCodeList("COM002", "COM002_histSe");
 		

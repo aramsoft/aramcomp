@@ -88,7 +88,7 @@
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr class="link" onclick="javascript:fn_aram_choose('${result.administZoneCode}','${result.administZoneNm}'); return false;">
 
-		<td class="lt_text3"><c:out value="${(administCodeVO.pageIndex - 1) * administCodeVO.pageSize + status.count}"/></td>
+		<td class="lt_text3"><c:out value="${(administCodeVO.searchVO.pageIndex - 1) * administCodeVO.searchVO.pageSize + status.count}"/></td>
 		<td class="lt_text3">
 			<c:choose>
 			<c:when test='${result.administZoneSe == "1"}'>법정동</c:when>

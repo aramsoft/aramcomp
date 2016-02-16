@@ -62,12 +62,12 @@ public class AdministCodeManageController {
 		administCodeVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", administCodeManageService.selectAdministCodeList(administCodeVO));
-
 		int totCnt = administCodeManageService.selectAdministCodeListCnt(administCodeVO);
-		administCodeVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		administCodeVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/ccm/adc/AdministCodeList");
 	}
@@ -79,9 +79,10 @@ public class AdministCodeManageController {
 	 */
 	@RequestMapping(value = "/sym/ccm/adc/detailAdministCode.do")
 	public String detailAdministCode(
-			@ModelAttribute AdministCodeVO administCodeVO) {
+			AdministCodeVO administCodeVO,
+			ModelMap model) {
 		
-		administCodeManageService.selectAdministCodeDetail(administCodeVO);
+		model.addAttribute(administCodeManageService.selectAdministCodeDetail(administCodeVO));
 
 		return WebUtil.adjustViewName("/sym/ccm/adc/AdministCodeDetail");
 	}
@@ -139,9 +140,10 @@ public class AdministCodeManageController {
 	@RequestMapping(value = "/sym/ccm/adc/editAdministCode.do")
 	@Secured("ROLE_ADMIN")
 	public String editAdministCode(
-			@ModelAttribute AdministCodeVO administCodeVO) {
+			AdministCodeVO administCodeVO,
+			ModelMap model) {
 		
-		administCodeManageService.selectAdministCodeDetail(administCodeVO);
+		model.addAttribute(administCodeManageService.selectAdministCodeDetail(administCodeVO));
 
 		return WebUtil.adjustViewName("/sym/ccm/adc/AdministCodeEdit");
 	}
@@ -203,12 +205,12 @@ public class AdministCodeManageController {
 		administCodeVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", administCodeManageService.selectAdministCodeList(administCodeVO));
-
 		int totCnt = administCodeManageService.selectAdministCodeListCnt(administCodeVO);
-		administCodeVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		administCodeVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/ccm/adc/AdministCodePopup");
 	}

@@ -54,12 +54,12 @@ public class WebLogController {
 		webLogVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", webLogService.selectWebLogInf(webLogVO));
-
 		int totCnt = webLogService.selectWebLogInfCnt(webLogVO);
-		webLogVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		webLogVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+	
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/log/wlg/WebLogList");
 	}
@@ -72,9 +72,10 @@ public class WebLogController {
 	@RequestMapping(value = "/sym/log/wlg/detailWebLog.do")
 	@Secured("ROLE_ADMIN")
 	public String detailWebLog(
-			@ModelAttribute WebLogVO webLogVO) {
+			WebLogVO webLogVO,
+			ModelMap model) {
 
-		webLogService.selectWebLog(webLogVO);
+		model.addAttribute(webLogService.selectWebLog(webLogVO));
 
 		return WebUtil.adjustViewName("/sym/log/wlg/WebLogDetail");
 	}

@@ -20,7 +20,7 @@
 			  FROM COMTC_CMMN_CODE   A
 			       LEFT OUTER JOIN COMTC_CMMN_CL_CODE B
 					   	ON A.CL_CODE = B.CL_CODE
-			 WHERE 1=1
+			 WHERE A.USE_AT = 'Y'
 		]]>
      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
@@ -31,7 +31,6 @@
 				<![CDATA[ AND A.CODE_ID_NM LIKE '%' || #{searchVO.searchKeyword} || '%']]>
             </when>
             <when test='searchVO.searchCondition == "clCode"'>
-				<![CDATA[ AND A.USE_AT = 'Y']]>
 				<![CDATA[ AND A.CL_CODE LIKE '%' || #{searchVO.searchKeyword} || '%']]>
             </when>
         </choose>
@@ -55,7 +54,7 @@
 			  FROM COMTC_CMMN_CODE   A
 			       LEFT OUTER JOIN COMTC_CMMN_CL_CODE B
 					   	ON A.CL_CODE = B.CL_CODE
-			 WHERE 1=1
+			 WHERE A.USE_AT = 'Y'
 		]]>
      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
@@ -66,7 +65,6 @@
 				<![CDATA[ AND A.CODE_ID_NM LIKE '%' || #{searchVO.searchKeyword} || '%']]>
             </when>
             <when test='searchVO.searchCondition == "clCode"'>
-				<![CDATA[ AND A.USE_AT = 'Y']]>
 				<![CDATA[ AND A.CL_CODE LIKE '%' || #{searchVO.searchKeyword} || '%']]>
             </when>
         </choose>

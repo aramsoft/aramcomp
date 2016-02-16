@@ -57,12 +57,12 @@ public class TrsmrcvLogController {
 		trsmrcvLogVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", trsmrcvLogService.selectTrsmrcvLogInf(trsmrcvLogVO));
-
 		int totCnt = trsmrcvLogService.selectTrsmrcvLogInfCnt(trsmrcvLogVO);
-		trsmrcvLogVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		trsmrcvLogVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/log/tlg/TrsmrcvLogList");
 	}
@@ -75,9 +75,10 @@ public class TrsmrcvLogController {
 	@RequestMapping(value = "/sym/log/tlg/detailTrsmrcvLog.do")
 	@Secured("ROLE_ADMIN")
 	public String detailTrsmrcvLog(
-			@ModelAttribute TrsmrcvLogVO trsmrcvLogVO) {
+			TrsmrcvLogVO trsmrcvLogVO,
+			ModelMap model) {
 
-		trsmrcvLogService.selectTrsmrcvLog(trsmrcvLogVO);
+		model.addAttribute(trsmrcvLogService.selectTrsmrcvLog(trsmrcvLogVO));
 
 		return WebUtil.adjustViewName("/sym/log/tlg/TrsmrcvLogDetail");
 	}

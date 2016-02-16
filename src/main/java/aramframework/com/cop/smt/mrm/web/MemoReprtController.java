@@ -69,11 +69,11 @@ public class MemoReprtController {
 		searchVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", memoReprtService.selectReportrList(searchVO));
-
 		int totCnt = memoReprtService.selectReportrListCnt(searchVO);
-		searchVO.setTotalRecordCount(totCnt);
 
+		searchVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
+
 		model.addAttribute("paginationInfo", paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/smt/mrm/ReportrListPopup");

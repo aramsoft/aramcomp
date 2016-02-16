@@ -67,14 +67,13 @@ public class ZipManageController {
 		PaginationInfo paginationInfo = new PaginationInfo();
 		zipVO.getSearchVO().fillPageInfo(paginationInfo);
 
-		int totCnt = 0; 
 		model.addAttribute("resultList", zipManageService.selectZipList(zipVO));
+		int totCnt = zipManageService.selectZipListCnt(zipVO);
 
-		totCnt = zipManageService.selectZipListCnt(zipVO);
 		zipVO.getSearchVO().setTotalRecordCount(totCnt);
-
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/ccm/zip/ZipList");
 	}
@@ -86,9 +85,10 @@ public class ZipManageController {
 	 */
 	@RequestMapping(value = "/sym/ccm/zip/detailZip.do")
 	public String selectZipDetail(
-			@ModelAttribute ZipVO zipVO) {
+			ZipVO zipVO,
+			ModelMap model) {
 
-		zipManageService.selectZipDetail(zipVO);
+		model.addAttribute(zipManageService.selectZipDetail(zipVO));
 
 		return WebUtil.adjustViewName("/sym/ccm/zip/ZipDetail");
 	}
@@ -199,9 +199,10 @@ public class ZipManageController {
 	@RequestMapping(value = "/sym/ccm/zip/editZip.do")
 	@Secured("ROLE_ADMIN")
 	public String updateZipView(
-			@ModelAttribute ZipVO zipVO) {
-		
-		zipManageService.selectZipDetail(zipVO);
+			ZipVO zipVO,
+			ModelMap model) {
+
+		model.addAttribute(zipManageService.selectZipDetail(zipVO));
 
 		return WebUtil.adjustViewName("/sym/ccm/zip/ZipEdit");
 	}
@@ -263,12 +264,12 @@ public class ZipManageController {
 		zipVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", zipManageService.selectZipList(zipVO));
- 
-		int totCnt = zipManageService.selectZipListCnt(zipVO);
-		zipVO.getSearchVO().setTotalRecordCount(totCnt);
+ 		int totCnt = zipManageService.selectZipListCnt(zipVO);
 
+ 		zipVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/ccm/zip/ZipSearchPopup");
 	}
@@ -288,12 +289,12 @@ public class ZipManageController {
 
 		Map<String, Object> map = zipManageService.selectRdNmList(zipVO);
 		model.addAttribute("resultList", map.get("resultList"));
-
 		int totCnt = Integer.parseInt((String) map.get("resultCnt"));
-		zipVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		zipVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/ccm/zip/RdNmSearchPopup");
 	}

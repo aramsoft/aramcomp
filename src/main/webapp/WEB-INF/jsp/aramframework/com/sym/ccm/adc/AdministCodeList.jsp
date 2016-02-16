@@ -79,12 +79,12 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="startIndex" value="${(administCodeVO.pageIndex-1) * administCodeVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(administCodeVO.searchVO.pageIndex-1) * administCodeVO.searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr class="link" onclick="javascript:fn_aram_detail('${result.administZoneSe}', '${result.administZoneCode}'); return false;">
  
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${administCodeVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${administCodeVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<td class="lt_text3">

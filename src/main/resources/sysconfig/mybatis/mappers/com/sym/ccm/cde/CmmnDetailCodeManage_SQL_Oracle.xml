@@ -21,7 +21,7 @@
 			  FROM COMTC_CMMN_DETAIL_CODE A
 				   LEFT OUTER JOIN COMTC_CMMN_CODE B 
 					    ON A.CODE_ID = B.CODE_ID
-			 WHERE 1=1
+			 WHERE A.USE_AT = 'Y'
 		]]>
      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
@@ -54,7 +54,7 @@
 			  FROM COMTC_CMMN_DETAIL_CODE A
 				   LEFT OUTER JOIN COMTC_CMMN_CODE B 
 					    ON A.CODE_ID = B.CODE_ID
-			 WHERE 1=1
+			 WHERE A.USE_AT = 'Y'
 		]]>
      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
@@ -82,7 +82,7 @@
 			  FROM COMTC_CMMN_DETAIL_CODE A
 				   LEFT OUTER JOIN COMTC_CMMN_CODE B 
 					    ON A.CODE_ID = B.CODE_ID
-			 WHERE 1=1
+			 WHERE A.USE_AT = 'Y'
 		]]>
      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>

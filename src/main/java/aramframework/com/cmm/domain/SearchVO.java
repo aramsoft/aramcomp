@@ -47,10 +47,10 @@ public class SearchVO {
 	private int pageSize = 10;
 
 	/** firstIndex */
-	private int firstIndex = 1;
+	private int firstIndex = 0;
 
 	/** lastIndex */
-	private int lastIndex = 1;
+	private int lastIndex = 0;
 
 	/** recordPerPage */
 	private int recordPerPage = 10;

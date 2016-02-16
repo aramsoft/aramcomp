@@ -68,40 +68,17 @@ public class AuthorController {
 		authorVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", authorService.selectAuthorList(authorVO));
-
 		int totCnt = authorService.selectAuthorListCnt(authorVO);
-		authorVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		authorVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
         String authorResourceReload = AramProperties.getProperty("Globals.authorResourceReload");       
 		model.addAttribute("authorResourceReload", authorResourceReload);
 		
 		return WebUtil.adjustViewName("/sec/arm/AuthorList");
-	}
-
-	/**
-	 * 권한목록을 삭제한다.
-	 * 
-	 * @param authorCodes
-	 */
-	@RequestMapping(value = "/sec/arm/deleteListAuthor.do")
-	@Secured("ROLE_ADMIN")
-	public String deleteListAuthor(
-			@RequestParam String authorCodes, 
-			ModelMap model) {
-
-		String[] strAuthorCodes = authorCodes.split(";");
-
-		AuthorVO amVO = new AuthorVO(); 
-		for (int i = 0; i < strAuthorCodes.length; i++) {
-			amVO.setAuthorCode(strAuthorCodes[i]);
-			authorService.deleteAuthor(amVO);
-		}
-		
-		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/sec/arm/listAuthor.do");
 	}
 
 	/**
@@ -148,9 +125,10 @@ public class AuthorController {
 	@RequestMapping(value = "/sec/arm/editAuthor.do")
 	@Secured("ROLE_ADMIN")
 	public String editAuthorManage(
-			@ModelAttribute AuthorVO authorVO) {
+			@ModelAttribute AuthorVO authorVO,
+			ModelMap model) {
 
-		authorService.selectAuthor(authorVO);
+		model.addAttribute(authorService.selectAuthor(authorVO));
 		
 		return WebUtil.adjustViewName("/sec/arm/AuthorEdit");
 	}
@@ -196,6 +174,23 @@ public class AuthorController {
 	}
 
 	/**
+	 * 권한목록을 삭제한다.
+	 * 
+	 * @param authorCodes
+	 */
+	@RequestMapping(value = "/sec/arm/deleteListAuthor.do")
+	@Secured("ROLE_ADMIN")
+	public String deleteListAuthor(
+			@RequestParam String authorCodes, 
+			ModelMap model) {
+
+		authorService.deleteAuthors(authorCodes);
+		
+		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
+		return WebUtil.redirectJsp(model, "/sec/arm/listAuthor.do");
+	}
+
+	/**
 	 * 권한 세부정보 캐쉬맵을 재설정한다.
 	 * 
 	 * @param authorVO
@@ -207,7 +202,6 @@ public class AuthorController {
 			ModelMap model) {
 
         String authorResourceReload = AramProperties.getProperty("Globals.authorResourceReload");       
-
         if( "true".equals(authorResourceReload) ) {
 //        	filterSource.reloadRequestMap();
 //       	methodSource.reloadMethodMap();

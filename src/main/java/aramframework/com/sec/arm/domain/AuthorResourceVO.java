@@ -53,14 +53,15 @@ public class AuthorResourceVO extends BaseVO {
 	private String regYn;
 	
 	// 추가 검색 설정
-	/** 검색조건 */
-	private String saveSearchCondition = "";
 
 	/** 검색Keyword */
-	private String saveSearchKeyword = "";
+	private String saveSearchKeyword;
 
 	/** 현재페이지 */
-	private int savePageIndex = 1;
+	private int savePageIndex;
+	
+	/** 검색조건 */
+	private int saveRecordPerPage;
 	
 	// domain
 	/**
@@ -227,24 +228,6 @@ public class AuthorResourceVO extends BaseVO {
 	}
 
 	/**
-	 * searchCondition attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getSaveSearchCondition() {
-		return saveSearchCondition;
-	}
-	/**
-	 * searchCondition attribute 값을 설정한다.
-	 * 
-	 * @param searchCondition
-	 *            String
-	 */
-	public void setSaveSearchCondition(String saveSearchCondition) {
-		this.saveSearchCondition = saveSearchCondition;
-	}
-
-	/**
 	 * searchKeyword attribute 값을 리턴한다.
 	 * 
 	 * @return String
@@ -278,6 +261,24 @@ public class AuthorResourceVO extends BaseVO {
 	 */
 	public void setSavePageIndex(int savePageIndex) {
 		this.savePageIndex = savePageIndex;
+	}
+
+	/**
+	 * saveRecordPerPage attribute 값을 리턴한다.
+	 * 
+	 * @return int
+	 */
+	public int getSaveRecordPerPage() {
+		return saveRecordPerPage;
+	}
+	/**
+	 * searchCondition attribute 값을 설정한다.
+	 * 
+	 * @param saveRecordPerPage
+	 *            int
+	 */
+	public void setSaveRecordPerPage(int saveRecordPerPage) {
+		this.saveRecordPerPage = saveRecordPerPage;
 	}
 
 }

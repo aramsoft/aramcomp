@@ -48,30 +48,18 @@ public class AuthorResourceController {
 	@Secured("ROLE_ADMIN")
 	public String listAuthorResource(
 			@ModelAttribute AuthorResourceVO authorResourceVO, 
-			@RequestParam(value="authorCodeForResources", required=false) String authorCodeForResources, 
 			ModelMap model) {
 
-		if ( !(authorCodeForResources == null || authorCodeForResources.equals("")) ) {
-			authorResourceVO.setSaveSearchKeyword(authorResourceVO.getSearchVO().getSearchKeyword());
-			authorResourceVO.setSaveSearchCondition(authorResourceVO.getSearchVO().getSearchCondition());
-			authorResourceVO.setSavePageIndex(authorResourceVO.getSavePageIndex());
-			
-			authorResourceVO.getSearchVO().setSearchKeyword(authorCodeForResources);
-			authorResourceVO.getSearchVO().setSearchCondition("1");
-			authorResourceVO.getSearchVO().setPageIndex(1);
-			authorResourceVO.setAuthorCode(authorCodeForResources);
-		}
-		
 		PaginationInfo paginationInfo = new PaginationInfo();
 		authorResourceVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", authorResourceService.selectAuthorResourceList(authorResourceVO));
-
 		int totCnt = authorResourceService.selectAuthorResourceListCnt(authorResourceVO);
-		authorResourceVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		authorResourceVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+		
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sec/arm/AuthorResource");
 	}
@@ -91,21 +79,7 @@ public class AuthorResourceController {
 			@RequestParam String regYns, 
 			ModelMap model) {
 
-		String[] strResourceCodes = resourceCodes.split(";");
-		String[] strRegYns = regYns.split(";");
-
-		AuthorResourceVO armVO = new AuthorResourceVO();
-		armVO.setAuthorCode(authorCode);
-
-		for (int i = 0; i < strResourceCodes.length; i++) {
-			armVO.setResourceCode(strResourceCodes[i]);
-			armVO.setRegYn(strRegYns[i]);
-
-			authorResourceService.deleteAuthorResource(armVO);// 2011.09.07
-			if (strRegYns[i].equals("Y")) {
-				authorResourceService.insertAuthorResource(armVO);
-			} 
-		}
+		authorResourceService.insertAuthorResources(authorCode, resourceCodes, regYns);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		return WebUtil.redirectJsp(model, "/sec/arm/listAuthorResource.do");

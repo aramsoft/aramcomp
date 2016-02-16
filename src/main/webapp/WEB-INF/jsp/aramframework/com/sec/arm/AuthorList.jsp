@@ -36,7 +36,10 @@
 
 <input type="hidden" name="authorCode"/>
 <input type="hidden" name="authorCodes"/>
-<input type="hidden" name="authorCodeForResources"/>
+
+<input type="hidden" name="saveSearchKeyword"/>
+<input type="hidden" name="saveRecordPerPage"/>
+<input type="hidden" name="savePageIndex"/>
 
 <div id="search_area">
 	<div class="button_area">
@@ -84,12 +87,12 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="startIndex" value="${(authorVO.pageIndex-1) * authorVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(authorVO.searchVO.pageIndex-1) * authorVO.searchVO.recordPerPage}"/>
  	<c:forEach var="result" items="${resultList}" varStatus="status">
   	<tr>
   	
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${authorVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${authorVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 		
     	<td class="lt_text3">
@@ -175,7 +178,12 @@ function fn_aram_clearCache() {
 
 function fn_aram_get_authorResource(author) {
     var varForm = document.getElementById("authorVO");
-    varForm.authorCodeForResources.value = author;
+
+    varForm.saveSearchKeyword.value = varForm["searchVO.searchKeyword"].value;
+    varForm.saveRecordPerPage.value = varForm["searchVO.recordPerPage"].value;
+    varForm.savePageIndex.value = varForm["searchVO.pageIndex"].value;
+    
+    varForm.authorCode.value = author;
     varForm.action = "${pageContext.request.contextPath}/sec/arm/listAuthorResource.do";
     varForm.submit();
 }

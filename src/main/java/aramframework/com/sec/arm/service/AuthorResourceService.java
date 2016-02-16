@@ -89,4 +89,27 @@ public class AuthorResourceService extends EgovAbstractServiceImpl {
 		authorResourceMapper.deleteAuthorResource(authorResourceVO);
 	}
 
+	/**
+	 * 권한 롤 관계정보를 화면에서 입력하여 입력항목의 정합성을 체크하고 데이터베이스에 저장
+	 * 
+	 * @param authorResourceVO
+	 */
+	public void insertAuthorResources(String authorCode, String resourceCodes, String regYns) {
+		String[] strResourceCodes = resourceCodes.split(";");
+		String[] strRegYns = regYns.split(";");
+
+		AuthorResourceVO suthorResourceVO = new AuthorResourceVO();
+		suthorResourceVO.setAuthorCode(authorCode);
+
+		for (int i = 0; i < strResourceCodes.length; i++) {
+			suthorResourceVO.setResourceCode(strResourceCodes[i]);
+			suthorResourceVO.setRegYn(strRegYns[i]);
+
+			deleteAuthorResource(suthorResourceVO);// 2011.09.07
+			if (strRegYns[i].equals("Y")) {
+				insertAuthorResource(suthorResourceVO);
+			} 
+		}
+	}
+
 }

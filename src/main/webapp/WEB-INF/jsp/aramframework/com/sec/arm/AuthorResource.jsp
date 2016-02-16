@@ -34,10 +34,8 @@
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
-<form:hidden path="authorCode" />
 <input type="hidden" name="resourceCodes"/>
 <input type="hidden" name="regYns"/>
-<input type="hidden" name="authorCodeForResources" value="" />
 
 <div id="search_area">
 	<div class="button_area">
@@ -46,7 +44,7 @@
 	</div>
 	<div class="keyword_area">
  		권한코드 : 
-   		<form:input path="searchVO.searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+   		<form:input path="authorCode" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
 		<form:select path="searchVO.recordPerPage" class="select" onchange="fn_aram_search();" title="recordPerPage">
 	   		<form:option value="10" label="10" />
 	   		<form:option value="20" label="20" />
@@ -102,12 +100,12 @@
 </tbody>
 </table>
 
-<form:hidden path="searchVO.searchCondition" />
+<form:hidden path="searchVO.searchKeyword" />
 <form:hidden path="searchVO.pageIndex" />
 
 <form:hidden path="saveSearchKeyword" />
-<form:hidden path="saveSearchCondition" />
 <form:hidden path="savePageIndex" />
+<form:hidden path="saveRecordPerPage" />
 </form:form>
 
 <div id="page_navigation">
@@ -130,7 +128,6 @@ function press() {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("authorResourceVO");
-    varForm.searchCondition.value = "1";
     varForm["searchVO.pageIndex"].value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/sec/arm/listAuthorResource.do";
     varForm.submit();
@@ -138,7 +135,7 @@ function fn_aram_linkPage(pageNo){
 
 function fn_aram_search(){
     var varForm = document.getElementById("authorResourceVO");
-    varForm.searchCondition.value = "1";
+    varForm["searchVO.pageIndex"].value = "1";
     varForm.action = "${pageContext.request.contextPath}/sec/arm/listAuthorResource.do";
     varForm.submit();
 }
@@ -156,9 +153,9 @@ function fn_aram_insert() {
 function fn_aram_list_author(){
     var varForm = document.getElementById("authorResourceVO");
 
-    varForm.searchKeyword.value = varForm.saveSearchKeyword.value;
-    varForm.searchCondition.value = varForm.saveSearchCondition.value;
+    varForm["searchVO.searchKeyword"].value = varForm.saveSearchKeyword.value;
     varForm["searchVO.pageIndex"].value = varForm.savePageIndex.value;
+    varForm["searchVO.recordPerPage"].value = varForm.saveRecordPerPage.value;
     
     varForm.action = "${pageContext.request.contextPath}/sec/arm/listAuthor.do";
     varForm.submit();

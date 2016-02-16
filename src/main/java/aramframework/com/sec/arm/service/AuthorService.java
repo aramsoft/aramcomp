@@ -101,4 +101,21 @@ public class AuthorService extends EgovAbstractServiceImpl {
 		authorMapper.deleteAuthor(authorVO);
 	}
 
+	/**
+	 * 권한들을 삭제한다.
+	 * 
+	 * @param authorCodes
+	 */
+	public void deleteAuthors(String authorCodes) {
+
+		String[] strAuthorCodes = authorCodes.split(";");
+
+		AuthorVO authorVO = new AuthorVO(); 
+		for (int i = 0; i < strAuthorCodes.length; i++) {
+			authorVO.setAuthorCode(strAuthorCodes[i]);
+			authorMapper.deleteAuthor(authorVO);
+		}
+		
+	}
+
 }

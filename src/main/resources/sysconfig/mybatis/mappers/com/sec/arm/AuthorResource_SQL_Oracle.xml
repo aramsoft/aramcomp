@@ -23,7 +23,7 @@
               FROM COMTN_RESOURCE_INFO A 
                    LEFT OUTER JOIN (SELECT RESOURCE_CODE, CREAT_DT 
                    				      FROM COMTN_AUTHOR_RESOURCE 
-                   					 WHERE AUTHOR_CODE = #{searchVO.searchKeyword}) B
+                   					 WHERE AUTHOR_CODE = #{authorCode}) B
                 		ON A.RESOURCE_CODE = B.RESOURCE_CODE        
         ]]>
         /* 구현 Sql */
@@ -41,7 +41,7 @@
               FROM COMTN_RESOURCE_INFO A 
                    LEFT OUTER JOIN (SELECT RESOURCE_CODE, CREAT_DT 
                    					  FROM COMTN_AUTHOR_RESOURCE 
-                   					 WHERE AUTHOR_CODE = #{searchVO.searchKeyword}) B
+                   					 WHERE AUTHOR_CODE = #{authorCode}) B
                 		ON A.RESOURCE_CODE = B.RESOURCE_CODE
         ]]>			
     </select>

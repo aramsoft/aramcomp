@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.service.FileMngUtil;
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cop.smt.dsm.dao.DiaryManageMapper;
 import aramframework.com.cop.smt.dsm.domain.DiaryManageVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -70,8 +69,8 @@ public class DiaryManageService extends EgovAbstractServiceImpl {
 	 */
 	public DiaryManageVO selectDiaryManageDetail(DiaryManageVO diaryManageVO) {
 		DiaryManageVO resultVo = diaryManageMapper.selectDiaryManageDetail(diaryManageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, diaryManageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(diaryManageVO.getSearchVO()); 
 		return resultVo;
 	}
 

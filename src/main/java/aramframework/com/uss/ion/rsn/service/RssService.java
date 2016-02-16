@@ -8,7 +8,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.ion.rsn.dao.RssMapper;
 import aramframework.com.uss.ion.rsn.domain.RssInfoVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -64,8 +63,8 @@ public class RssService extends EgovAbstractServiceImpl {
 	 */
 	public RssInfoVO selectRssServiceDetail(RssInfoVO rssInfoVO) {
 		RssInfoVO resultVo = rssMapper.selectRssServiceDetail(rssInfoVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, rssInfoVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(rssInfoVO.getSearchVO()); 
 		return resultVo;
 	}
 

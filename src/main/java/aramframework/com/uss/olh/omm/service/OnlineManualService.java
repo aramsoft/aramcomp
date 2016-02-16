@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.olh.omm.dao.OnlineManualMapper;
 import aramframework.com.uss.olh.omm.domain.OnlineManualVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -66,8 +65,8 @@ public class OnlineManualService extends EgovAbstractServiceImpl {
 	 */
 	public OnlineManualVO selectOnlineManualDetail(OnlineManualVO onlineManualVO) {
 		OnlineManualVO resultVo = onlineManualMapper.selectOnlineManualDetail(onlineManualVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, onlineManualVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(onlineManualVO.getSearchVO()); 
 		return resultVo;
 	}
 

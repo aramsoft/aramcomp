@@ -1,6 +1,6 @@
 package aramframework.com.utl.pao.domain;
 
-import java.io.Serializable;
+import aramframework.com.cmm.domain.BaseVO;
 
 /**
  * 관인이미지 모델 클래스
@@ -21,9 +21,7 @@ import java.io.Serializable;
  * </pre>
  */
 
-public class PrntngOutptVO implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+public class PrntngOutptVO extends BaseVO {
 
 	/** 이미지정보 */
 	private byte[] imgInfo;

@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.constant.AramProperties;
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cop.sms.dao.SmsMapper;
 import aramframework.com.cop.sms.domain.SmsMessageVO;
 import aramframework.com.cop.sms.domain.SmsRecptnVO;
@@ -253,8 +252,8 @@ public class SmsInfoService extends EgovAbstractServiceImpl {
 		}
 		resultVo.setRecptn(list);
 
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, smsVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(smsVO.getSearchVO()); 
 		return resultVo;
 	}
 

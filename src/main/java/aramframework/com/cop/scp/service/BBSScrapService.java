@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cop.scp.dao.BBSScrapMapper;
 import aramframework.com.cop.scp.domain.ScrapVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -79,8 +78,8 @@ public class BBSScrapService extends EgovAbstractServiceImpl {
 	 */
 	public ScrapVO selectScrap(ScrapVO scrapVO) {
 		ScrapVO resultVo = bbsScrapMapper.selectScrap(scrapVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, scrapVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(scrapVO.getSearchVO()); 
 		return resultVo;
 	}
 

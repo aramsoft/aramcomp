@@ -1,12 +1,10 @@
 package aramframework.com.sym.tbm.tbr.service;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.sym.tbm.tbr.dao.TroblReqstMapper;
 import aramframework.com.sym.tbm.tbr.domain.TroblReqstVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -68,9 +66,8 @@ public class TroblReqstService extends EgovAbstractServiceImpl {
 	 */
 	public TroblReqstVO selectTroblReqst(TroblReqstVO troblReqstVO) {
 		TroblReqstVO resultVo = troblReqstMapper.selectTroblReqst(troblReqstVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, troblReqstVO,
-				Arrays.asList(new String[] {"strTroblNm", "strTroblKnd", "strProcessSttus"}) ); 
+		// searchVO 이전 
+		resultVo.setSearchVO(troblReqstVO.getSearchVO()); 
 		return resultVo;
 	}
 

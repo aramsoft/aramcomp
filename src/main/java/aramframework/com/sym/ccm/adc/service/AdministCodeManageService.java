@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.sym.ccm.adc.dao.AdministCodeManageMapper;
 import aramframework.com.sym.ccm.adc.domain.AdministCodeVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -61,8 +60,8 @@ public class AdministCodeManageService extends EgovAbstractServiceImpl {
 	 */
 	public AdministCodeVO selectAdministCodeDetail(AdministCodeVO administCodeVO) {
 		AdministCodeVO resultVo = administCodeManageMapper.selectAdministCodeDetail(administCodeVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, administCodeVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(administCodeVO.getSearchVO()); 
 		return resultVo;
 	}
 

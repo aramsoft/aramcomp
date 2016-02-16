@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cop.tpl.dao.TemplateMapper;
 import aramframework.com.cop.tpl.domain.TemplateInfVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -66,8 +65,8 @@ public class TemplateService extends EgovAbstractServiceImpl {
 	 */
 	public TemplateInfVO selectTemplateInf(TemplateInfVO templateInfVO) {
 		TemplateInfVO resultVo = templateMapper.selectTemplateInf(templateInfVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, templateInfVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(templateInfVO.getSearchVO()); 
 		return resultVo;
 	}
 

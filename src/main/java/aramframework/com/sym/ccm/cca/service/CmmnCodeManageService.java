@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.sym.ccm.cca.dao.CmmnCodeManageMapper;
 import aramframework.com.sym.ccm.cca.domain.CmmnCodeVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -61,8 +60,8 @@ public class CmmnCodeManageService extends EgovAbstractServiceImpl {
 	 */
 	public CmmnCodeVO selectCmmnCodeDetail(CmmnCodeVO cmmnCodeVO) {
 		CmmnCodeVO resultVo = cmmnCodeManageMapper.selectCmmnCodeDetail(cmmnCodeVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, cmmnCodeVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(cmmnCodeVO.getSearchVO()); 
 		return resultVo;
 	}
 

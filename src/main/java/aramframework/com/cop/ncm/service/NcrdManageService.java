@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cop.ncm.dao.NcrdManageMapper;
 import aramframework.com.cop.ncm.domain.NameCardUseVO;
 import aramframework.com.cop.ncm.domain.NameCardVO;
@@ -67,8 +66,8 @@ public class NcrdManageService extends EgovAbstractServiceImpl {
 	 */
 	public NameCardVO selectNcrdItem(NameCardVO nameCardVO) {
 		NameCardVO resultVo = ncrdManageMapper.selectNcrdItem(nameCardVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, nameCardVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(nameCardVO.getSearchVO()); 
 		return resultVo;
 	}
 

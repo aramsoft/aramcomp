@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.ion.uas.dao.UserAbsnceMapper;
 import aramframework.com.uss.ion.uas.domain.UserAbsnceVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -62,8 +61,8 @@ public class UserAbsnceService extends EgovAbstractServiceImpl {
 	 */
 	public UserAbsnceVO selectUserAbsnce(UserAbsnceVO userAbsnceVO) {
 		UserAbsnceVO resultVo = userAbsnceMapper.selectUserAbsnce(userAbsnceVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, userAbsnceVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(userAbsnceVO.getSearchVO()); 
 		return resultVo;
 	}
 

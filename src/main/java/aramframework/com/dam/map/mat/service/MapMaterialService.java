@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.dam.map.mat.dao.MapMaterialMapper;
 import aramframework.com.dam.map.mat.domain.MapMaterialVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -61,8 +60,8 @@ public class MapMaterialService extends EgovAbstractServiceImpl {
 	 */
 	public MapMaterialVO selectMapMaterial(MapMaterialVO mapMaterialVO) {
 		MapMaterialVO resultVo = mapMaterialMapper.selectMapMaterial(mapMaterialVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, mapMaterialVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(mapMaterialVO.getSearchVO()); 
 		return resultVo;
 	}
 

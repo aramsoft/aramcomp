@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.sec.dpt.dao.DeptMapper;
 import aramframework.com.sec.dpt.domain.DeptVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -67,9 +66,8 @@ public class DeptService extends EgovAbstractServiceImpl {
 	 */
 	public DeptVO selectDept(DeptVO deptVO) {
 		DeptVO resultVo = deptMapper.selectDept(deptVO);
-
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, deptVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(deptVO.getSearchVO()); 
 		return resultVo;
 	}
 

@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cop.smt.lsm.dao.LeaderSchdulMapper;
 import aramframework.com.cop.smt.lsm.domain.LeaderSchdulVO;
 import aramframework.com.cop.smt.lsm.domain.LeaderSttusVO;
@@ -58,8 +57,8 @@ public class LeaderSchdulService extends EgovAbstractServiceImpl {
 	 */
 	public LeaderSchdulVO selectLeaderSchdul(LeaderSchdulVO leaderSchdulVO) {
 		LeaderSchdulVO resultVo = leaderSchdulMapper.selectLeaderSchdul(leaderSchdulVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, leaderSchdulVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(leaderSchdulVO.getSearchVO()); 
 		return resultVo;
 	}
 
@@ -120,8 +119,8 @@ public class LeaderSchdulService extends EgovAbstractServiceImpl {
 	 */
 	public LeaderSttusVO selectLeaderSttus(LeaderSttusVO leaderSttusVO) {
 		LeaderSttusVO resultVo = leaderSchdulMapper.selectLeaderSttus(leaderSttusVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, leaderSttusVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(leaderSttusVO.getSearchVO()); 
 		return resultVo;
 	}
 

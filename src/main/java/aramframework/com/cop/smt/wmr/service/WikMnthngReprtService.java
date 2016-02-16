@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.FileMngUtil;
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cop.smt.wmr.dao.WikMnthngReprtMapper;
 import aramframework.com.cop.smt.wmr.domain.WikMnthngReprtVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -121,8 +120,8 @@ public class WikMnthngReprtService extends EgovAbstractServiceImpl {
 			String yymmddhhmm = year + "/" + month + "/" + day + "  " + hour + "시 " + min + "분";
 			resultVo.setReprtSttus("승인 (" + yymmddhhmm + ") ");
 		}
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, wikMnthngReprtVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(wikMnthngReprtVO.getSearchVO()); 
 		return resultVo;
 	}
 

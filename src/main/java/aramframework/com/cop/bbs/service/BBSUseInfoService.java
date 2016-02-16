@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cop.bbs.dao.BBSUseInfoMapper;
 import aramframework.com.cop.bbs.domain.BoardUseInfVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -80,8 +79,8 @@ public class BBSUseInfoService extends EgovAbstractServiceImpl {
 	 */
 	public BoardUseInfVO selectBBSUseInf(BoardUseInfVO boardUseInfVO) {
 		BoardUseInfVO resultVo = bbsUseInfoMapper.selectBBSUseInf(boardUseInfVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, boardUseInfVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(boardUseInfVO.getSearchVO()); 
 		return resultVo;
 	}
 

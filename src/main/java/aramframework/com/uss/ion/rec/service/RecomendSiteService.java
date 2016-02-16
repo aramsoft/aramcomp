@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.ion.rec.dao.RecomendSiteMapper;
 import aramframework.com.uss.ion.rec.domain.RecomendSiteVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -67,8 +66,8 @@ public class RecomendSiteService extends EgovAbstractServiceImpl {
 	 */
 	public RecomendSiteVO selectRecomendSiteDetail(RecomendSiteVO recomendSiteVO) {
 		RecomendSiteVO resultVo = recomendSiteMapper.selectRecomendSiteDetail(recomendSiteVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, recomendSiteVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(recomendSiteVO.getSearchVO()); 
 		return resultVo;
 	}
 

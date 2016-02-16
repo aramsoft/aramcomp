@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.olp.qim.dao.QustnrItemManageMapper;
 import aramframework.com.uss.olp.qim.domain.QustnrItemManageVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -66,8 +65,8 @@ public class QustnrItemManageService extends EgovAbstractServiceImpl {
 	 */
 	public QustnrItemManageVO selectQustnrItemManageDetail(QustnrItemManageVO qustnrItemManageVO) {
 		QustnrItemManageVO resultVo = qustnrItemManageMapper.selectQustnrItemManageDetail(qustnrItemManageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, qustnrItemManageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(qustnrItemManageVO.getSearchVO()); 
 		return resultVo;
 	}
 

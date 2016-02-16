@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.utl.sys.htm.dao.HttpMntrngMapper;
 import aramframework.com.utl.sys.htm.domain.HttpMntrngLogVO;
 import aramframework.com.utl.sys.htm.domain.HttpMntrngVO;
@@ -80,8 +79,8 @@ public class HttpMntrngService extends EgovAbstractServiceImpl {
 	 */
 	public HttpMntrngVO selectHttpMntrngDetail(HttpMntrngVO httpMntrngVO) {
 		HttpMntrngVO resultVo = httpMntrngMapper.selectHttpMntrngDetail(httpMntrngVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, httpMntrngVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(httpMntrngVO.getSearchVO()); 
 		return resultVo;
 	}
 
@@ -178,8 +177,8 @@ public class HttpMntrngService extends EgovAbstractServiceImpl {
 	 */
 	public HttpMntrngLogVO selectHttpMntrngDetailLog(HttpMntrngLogVO httpMntrngLogVO) {
 		HttpMntrngLogVO resultVo = httpMntrngMapper.selectHttpMntrngDetailLog(httpMntrngLogVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, httpMntrngLogVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(httpMntrngLogVO.getSearchVO()); 
 		return resultVo;
 	}
 

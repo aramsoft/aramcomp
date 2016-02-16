@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.sec.arm.dao.AuthorMapper;
 import aramframework.com.sec.arm.domain.AuthorVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -70,8 +69,8 @@ public class AuthorService extends EgovAbstractServiceImpl {
 	 */
 	public AuthorVO selectAuthor(AuthorVO authorVO) {
 		AuthorVO resultVo = authorMapper.selectAuthor(authorVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, authorVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(authorVO.getSearchVO()); 
 		return resultVo;
 	}
 

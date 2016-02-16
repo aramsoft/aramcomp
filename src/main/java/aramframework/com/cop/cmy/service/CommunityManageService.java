@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 import aramframework.com.cmm.constant.CacheKey;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cop.bbs.domain.BoardMasterVO;
 import aramframework.com.cop.bbs.domain.BoardUseInfVO;
 import aramframework.com.cop.bbs.service.BBSMasterService;
@@ -116,8 +115,8 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 	 */
 	public CommunityVO selectCommunityInf(CommunityVO communityVO) {
 		CommunityVO resultVo = communityManageMapper.selectCommunityInf(communityVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, communityVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(communityVO.getSearchVO()); 
 		return resultVo;
 	}
 	
@@ -429,8 +428,8 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 	 */
 	public CommunityUserVO selectCommunityUserInf(CommunityUserVO communityUserVO) {
 		CommunityUserVO resultVo = communityManageMapper.selectCommunityUserInf(communityUserVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, communityUserVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(communityUserVO.getSearchVO()); 
 		return resultVo;
 	}
 

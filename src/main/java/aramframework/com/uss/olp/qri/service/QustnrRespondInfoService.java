@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.olp.qri.dao.QustnrRespondInfoMapper;
 import aramframework.com.uss.olp.qri.domain.QustnrRespondInfoVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -138,8 +137,8 @@ public class QustnrRespondInfoService extends EgovAbstractServiceImpl {
 	 */
 	public QustnrRespondInfoVO selectQustnrRespondInfoDetail(QustnrRespondInfoVO qustnrRespondInfoVO) {
 		QustnrRespondInfoVO resultVo = qustnrRespondInfoMapper.selectQustnrRespondInfoDetail(qustnrRespondInfoVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, qustnrRespondInfoVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(qustnrRespondInfoVO.getSearchVO()); 
 		return resultVo;
 	}
 

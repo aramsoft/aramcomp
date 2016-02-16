@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.sym.cal.dao.RestdeManageMapper;
 import aramframework.com.sym.cal.domain.RestdeVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -66,8 +65,8 @@ public class RestdeManageService extends EgovAbstractServiceImpl {
 	 */
 	public RestdeVO selectRestdeDetail(RestdeVO restdeVO) {
 		RestdeVO resultVo = restdeManageMapper.selectRestdeDetail(restdeVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, restdeVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(restdeVO.getSearchVO()); 
 		return resultVo;
 	}
 

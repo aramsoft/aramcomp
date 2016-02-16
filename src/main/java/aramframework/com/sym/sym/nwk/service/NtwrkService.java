@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.sym.sym.nwk.dao.NtwrkMapper;
 import aramframework.com.sym.sym.nwk.domain.NtwrkVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -67,8 +66,8 @@ public class NtwrkService extends EgovAbstractServiceImpl {
 	 */
 	public NtwrkVO selectNtwrk(NtwrkVO ntwrkVO) {
 		NtwrkVO resultVo = ntwrkMapper.selectNtwrk(ntwrkVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, ntwrkVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(ntwrkVO.getSearchVO()); 
 		return resultVo;
 	}
 

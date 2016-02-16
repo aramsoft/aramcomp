@@ -7,7 +7,6 @@ import org.apache.commons.io.FileSystemUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.utl.sys.fsm.dao.FileSysMntrngMapper;
 import aramframework.com.utl.sys.fsm.domain.FileSysMntrngLogVO;
 import aramframework.com.utl.sys.fsm.domain.FileSysMntrngVO;
@@ -74,8 +73,8 @@ public class FileSysMntrngService extends EgovAbstractServiceImpl {
 	 */
 	public FileSysMntrngVO selectFileSysMntrng(FileSysMntrngVO fileSysMntrngVO) {
 		FileSysMntrngVO resultVo = fileSysMntrngMapper.selectFileSysMntrng(fileSysMntrngVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, fileSysMntrngVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(fileSysMntrngVO.getSearchVO()); 
 		return resultVo;
 	}
 
@@ -177,8 +176,8 @@ public class FileSysMntrngService extends EgovAbstractServiceImpl {
 	 */
 	public FileSysMntrngLogVO selectFileSysMntrngLog(FileSysMntrngLogVO fileSysMntrngLogVO) {
 		FileSysMntrngLogVO resultVo = fileSysMntrngMapper.selectFileSysMntrngLog(fileSysMntrngLogVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, fileSysMntrngLogVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(fileSysMntrngLogVO.getSearchVO()); 
 		return resultVo;
 	}
 

@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.utl.sys.nsm.dao.NtwrkSvcMntrngMapper;
 import aramframework.com.utl.sys.nsm.domain.NtwrkSvcMntrngLogVO;
 import aramframework.com.utl.sys.nsm.domain.NtwrkSvcMntrngVO;
@@ -69,8 +68,8 @@ public class NtwrkSvcMntrngService extends EgovAbstractServiceImpl {
 	 */
 	public NtwrkSvcMntrngVO selectNtwrkSvcMntrng(NtwrkSvcMntrngVO ntwrkSvcMntrngVO) {
 		NtwrkSvcMntrngVO resultVo = ntwrkSvcMntrngMapper.selectNtwrkSvcMntrng(ntwrkSvcMntrngVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, ntwrkSvcMntrngVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(ntwrkSvcMntrngVO.getSearchVO()); 
 		return resultVo;
 	}
 
@@ -160,8 +159,8 @@ public class NtwrkSvcMntrngService extends EgovAbstractServiceImpl {
 	 */
 	public NtwrkSvcMntrngLogVO selectNtwrkSvcMntrngLog(NtwrkSvcMntrngLogVO ntwrkSvcMntrngLogVO) {
 		NtwrkSvcMntrngLogVO resultVo = ntwrkSvcMntrngMapper.selectNtwrkSvcMntrngLog(ntwrkSvcMntrngLogVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, ntwrkSvcMntrngLogVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(ntwrkSvcMntrngLogVO.getSearchVO()); 
 		return resultVo;
 	}
 

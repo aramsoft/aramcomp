@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.dam.mgm.dao.KnoManagementMapper;
 import aramframework.com.dam.mgm.domain.KnoManagementVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -61,8 +60,8 @@ public class KnoManagementService extends EgovAbstractServiceImpl {
 	 */
 	public void selectKnoManagement(KnoManagementVO knoManagementVO) {
 		KnoManagementVO resultVo = knoManagementMapper.selectKnoManagement(knoManagementVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, knoManagementVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(knoManagementVO.getSearchVO()); 
 	}
 
 	/**

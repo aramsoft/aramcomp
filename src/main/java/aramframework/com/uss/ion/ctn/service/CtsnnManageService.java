@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.ion.ctn.dao.CtsnnManageMapper;
 import aramframework.com.uss.ion.ctn.domain.CtsnnManageVO;
 import aramframework.com.uss.ion.ism.domain.InfrmlSanctnVO;
@@ -72,8 +71,8 @@ public class CtsnnManageService extends EgovAbstractServiceImpl {
 	 */
 	public CtsnnManageVO selectCtsnnManage(CtsnnManageVO ctsnnManageVO) {
 		CtsnnManageVO resultVo = ctsnnManageMapper.selectCtsnnManage(ctsnnManageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, ctsnnManageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(ctsnnManageVO.getSearchVO()); 
 		return resultVo;
 	}
 

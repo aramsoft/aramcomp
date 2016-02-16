@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.dam.app.dao.KnoAppraisalMapper;
 import aramframework.com.dam.app.domain.KnoAppraisalVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -61,8 +60,8 @@ public class KnoAppraisalService extends EgovAbstractServiceImpl {
 	 */
 	public KnoAppraisalVO selectKnoAppraisal(KnoAppraisalVO knoAppraisalVO) {
 		KnoAppraisalVO resultVo = knoAppraisalMapper.selectKnoAppraisal(knoAppraisalVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, knoAppraisalVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(knoAppraisalVO.getSearchVO()); 
 		return resultVo;
 	}
 

@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cop.bbs.dao.BBSAddedOptionsMapper;
 import aramframework.com.cop.bbs.dao.BBSSatisfactionMapper;
 import aramframework.com.cop.bbs.domain.BoardMasterVO;
@@ -96,8 +95,8 @@ public class BBSSatisfactionService extends EgovAbstractServiceImpl {
 	 */
 	public SatisfactionVO selectSatisfaction(SatisfactionVO satisfactionVO) {
 		SatisfactionVO resultVo = bbsSatisfactionMapper.selectSatisfaction(satisfactionVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, satisfactionVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(satisfactionVO.getSearchVO()); 
 		return resultVo;
 	}
 

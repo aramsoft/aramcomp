@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.FileMngUtil;
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cop.smt.djm.dao.DeptJobMapper;
 import aramframework.com.cop.smt.djm.domain.DeptJobBxVO;
 import aramframework.com.cop.smt.djm.domain.DeptJobVO;
@@ -137,8 +136,8 @@ public class DeptJobService extends EgovAbstractServiceImpl {
 	 */
 	public DeptJobBxVO selectDeptJobBx(DeptJobBxVO deptJobBxVO) {
 		DeptJobBxVO resultVo = deptJobMapper.selectDeptJobBx(deptJobBxVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, deptJobBxVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(deptJobBxVO.getSearchVO()); 
 		return resultVo;
 	}
 
@@ -243,8 +242,8 @@ public class DeptJobService extends EgovAbstractServiceImpl {
 	 */
 	public DeptJobVO selectDeptJob(DeptJobVO deptJobVO) {
 		DeptJobVO resultVo = deptJobMapper.selectDeptJob(deptJobVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, deptJobVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(deptJobVO.getSearchVO()); 
 		return resultVo;
 	}
 

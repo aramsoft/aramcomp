@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.service.FileMngUtil;
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.ion.nws.dao.NewsManageMapper;
 import aramframework.com.uss.ion.nws.domain.NewsManageVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -71,8 +70,8 @@ public class NewsManageService extends EgovAbstractServiceImpl {
 	 */
 	public NewsManageVO selectNewsDetail(NewsManageVO newsManageVO) {
 		NewsManageVO resultVo = newsManageMapper.selectNewsDetail(newsManageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, newsManageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(newsManageVO.getSearchVO()); 
 		return resultVo;
 	}
 

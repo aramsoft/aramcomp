@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.ssi.syi.ist.dao.CntcSttusMapper;
 import aramframework.com.ssi.syi.ist.domain.CntcSttusVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -61,8 +60,8 @@ public class CntcSttusService extends EgovAbstractServiceImpl {
 	 */
 	public CntcSttusVO selectCntcSttusDetail(CntcSttusVO cntcSttusVO) {
 		CntcSttusVO resultVo =  cntcSttusMapper.selectCntcSttusDetail(cntcSttusVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, cntcSttusVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(cntcSttusVO.getSearchVO()); 
 		return resultVo;
 	}
 

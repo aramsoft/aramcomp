@@ -9,7 +9,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.sym.mnu.mcm.dao.MenuCreateMapper;
 import aramframework.com.sym.mnu.mcm.domain.MenuCreateVO;
 import aramframework.com.sym.mnu.mcm.domain.MenuSiteMapVO;
@@ -101,8 +100,8 @@ public class MenuCreateService extends EgovAbstractServiceImpl {
 	 */
 	public MenuCreateVO selectAuthorByUsr(MenuCreateVO menuCreateVO) {
 		MenuCreateVO resultVo = menuCreateMapper.selectAuthorByUsr(menuCreateVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, menuCreateVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(menuCreateVO.getSearchVO()); 
 		return resultVo;
 	}
 

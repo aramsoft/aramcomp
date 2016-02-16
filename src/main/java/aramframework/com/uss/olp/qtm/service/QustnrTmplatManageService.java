@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.olp.qtm.dao.QustnrTmplatManageMapper;
 import aramframework.com.uss.olp.qtm.domain.QustnrTmplatManageVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -66,8 +65,8 @@ public class QustnrTmplatManageService extends EgovAbstractServiceImpl {
 	 */
 	public QustnrTmplatManageVO selectQustnrTmplatManageDetail(QustnrTmplatManageVO qustnrTmplatManageVO) {
 		QustnrTmplatManageVO resultVo = qustnrTmplatManageMapper.selectQustnrTmplatManageDetail(qustnrTmplatManageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, qustnrTmplatManageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(qustnrTmplatManageVO.getSearchVO()); 
 		return resultVo;
 	}
 

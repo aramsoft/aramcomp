@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.service.FileMngUtil;
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.ion.mtg.dao.MtgPlaceManageMapper;
 import aramframework.com.uss.ion.mtg.domain.MtgPlaceFxtrsVO;
 import aramframework.com.uss.ion.mtg.domain.MtgPlaceManageVO;
@@ -80,8 +79,8 @@ public class MtgPlaceManageService extends EgovAbstractServiceImpl {
 	 */
 	public MtgPlaceManageVO selectMtgPlaceManage(MtgPlaceManageVO mtgPlaceManageVO) {
 		MtgPlaceManageVO resultVo = mtgPlaceManageMapper.selectMtgPlaceManage(mtgPlaceManageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, mtgPlaceManageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(mtgPlaceManageVO.getSearchVO()); 
 		return resultVo;
 	}
 
@@ -204,8 +203,8 @@ public class MtgPlaceManageService extends EgovAbstractServiceImpl {
 	 */
 	public MtgPlaceResveVO selectMtgPlaceResveDetail(MtgPlaceResveVO mtgPlaceResveVO) {
 		MtgPlaceResveVO resultVo = mtgPlaceManageMapper.selectMtgPlaceResveDetail(mtgPlaceResveVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, mtgPlaceResveVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(mtgPlaceResveVO.getSearchVO()); 
 		return resultVo;
 	}
 

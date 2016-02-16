@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.sec.rmt.dao.ResourceMapper;
 import aramframework.com.sec.rmt.domain.ResourceVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -76,8 +75,8 @@ public class ResourceService extends EgovAbstractServiceImpl {
 	 */
 	public ResourceVO selectResource(ResourceVO resourceVO) {
 		ResourceVO resultVo = resourceMapper.selectResource(resourceVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, resourceVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(resourceVO.getSearchVO()); 
 		return resultVo;
 	}
 

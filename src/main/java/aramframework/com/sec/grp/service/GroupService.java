@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.sec.grp.dao.GroupMapper;
 import aramframework.com.sec.grp.domain.GroupVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -67,8 +66,8 @@ public class GroupService extends EgovAbstractServiceImpl {
 	 */
 	public GroupVO selectGroup(GroupVO groupVO) {
 		GroupVO resultVo = groupMapper.selectGroup(groupVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, groupVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(groupVO.getSearchVO()); 
 		return resultVo;
 	}
 

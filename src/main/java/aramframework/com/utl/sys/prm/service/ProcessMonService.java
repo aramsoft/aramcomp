@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.utl.sys.prm.dao.ProcessMonMapper;
 import aramframework.com.utl.sys.prm.domain.ProcessMonLogVO;
 import aramframework.com.utl.sys.prm.domain.ProcessMonVO;
@@ -78,8 +77,8 @@ public class ProcessMonService extends EgovAbstractServiceImpl {
 	 */
 	public ProcessMonVO selectProcessMon(ProcessMonVO processMonVO) {
 		ProcessMonVO resultVo = processMonMapper.selectProcessMon(processMonVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, processMonVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(processMonVO.getSearchVO()); 
 		return resultVo;
 	}
 
@@ -176,8 +175,8 @@ public class ProcessMonService extends EgovAbstractServiceImpl {
 	 */
 	public ProcessMonLogVO selectProcessMonLog(ProcessMonLogVO processMonLogVO) {
 		ProcessMonLogVO resultVo = processMonMapper.selectProcessMonLog(processMonLogVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, processMonLogVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(processMonLogVO.getSearchVO()); 
 		return resultVo;
 	}
 

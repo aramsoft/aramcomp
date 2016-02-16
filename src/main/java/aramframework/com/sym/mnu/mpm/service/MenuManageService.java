@@ -10,7 +10,6 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.sym.mnu.mpm.dao.MenuManageMapper;
 import aramframework.com.sym.mnu.mpm.domain.MenuManageVO;
 import aramframework.com.sym.prm.dao.ProgrmManageDtlMapper;
@@ -99,8 +98,8 @@ public class MenuManageService extends EgovAbstractServiceImpl {
 	 */
 	public MenuManageVO selectMenuManage(MenuManageVO menuManageVO) {
 		MenuManageVO resultVo = menuManageMapper.selectMenuManage(menuManageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, menuManageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(menuManageVO.getSearchVO()); 
 		return resultVo;
 	}
 

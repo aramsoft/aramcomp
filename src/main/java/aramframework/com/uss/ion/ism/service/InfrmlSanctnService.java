@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.ion.ism.dao.InfrmlSanctnMapper;
 import aramframework.com.uss.ion.ism.domain.InfrmlSanctnVO;
 import aramframework.com.uss.ion.ism.domain.SanctnerVO;
@@ -72,8 +71,8 @@ public class InfrmlSanctnService extends EgovAbstractServiceImpl {
 				resultVo.setSanctnDt(resultVo.getSanctnDt().substring(0, 19));
 			}
 		}
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, infrmlSanctnVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(infrmlSanctnVO.getSearchVO()); 
 		return resultVo;
 	}
 

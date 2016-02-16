@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.umt.dao.EntrprsManageMapper;
 import aramframework.com.uss.umt.dao.MberManageMapper;
 import aramframework.com.uss.umt.dao.UserManageMapper;
@@ -76,8 +75,8 @@ public class MberManageService extends EgovAbstractServiceImpl {
 	 */
 	public MberManageVO selectMber(MberManageVO mberManageVO) {
 		MberManageVO resultVo = mberManageMapper.selectMber(mberManageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, mberManageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(mberManageVO.getSearchVO()); 
 		return resultVo;
 	}
 

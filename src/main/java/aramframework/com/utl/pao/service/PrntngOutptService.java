@@ -3,7 +3,6 @@ package aramframework.com.utl.pao.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.utl.pao.dao.PrntngOutptMapper;
 import aramframework.com.utl.pao.domain.PrntngOutptVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -38,8 +37,8 @@ public class PrntngOutptService extends EgovAbstractServiceImpl {
 	 */
 	public PrntngOutptVO selectErncsl(PrntngOutptVO prntngOutptVO){
 		PrntngOutptVO resultVo = prntngOutptMapper.selectErncsl(prntngOutptVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, prntngOutptVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(prntngOutptVO.getSearchVO()); 
 		return resultVo;
 	}
 

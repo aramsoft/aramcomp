@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.utl.sys.srm.dao.ServerResrceMntrngMapper;
 import aramframework.com.utl.sys.srm.domain.ServerResrceMntrngVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -86,8 +85,8 @@ public class ServerResrceMntrngService extends EgovAbstractServiceImpl {
 	 */
 	public ServerResrceMntrngVO selectServerResrceMntrng(ServerResrceMntrngVO serverResrceMntrngVO) {
 		ServerResrceMntrngVO resultVo = serverResrceMntrngMapper.selectServerResrceMntrng(serverResrceMntrngVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, serverResrceMntrngVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(serverResrceMntrngVO.getSearchVO()); 
 		return resultVo;
 	}
 

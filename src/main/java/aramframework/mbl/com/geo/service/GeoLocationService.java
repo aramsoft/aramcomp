@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.mbl.com.geo.dao.GeoLocationMapper;
 import aramframework.mbl.com.geo.domain.GeoLocationVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -72,8 +71,8 @@ public class GeoLocationService extends EgovAbstractServiceImpl {
      */
     public GeoLocationVO selectBuildingLocationInfo(GeoLocationVO geoLocationVO) {
     	GeoLocationVO resultVo = geoLocationMapper.selectBuildingLocationInfo(geoLocationVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, geoLocationVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(geoLocationVO.getSearchVO()); 
 		return resultVo;
    }
  

@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.constant.CacheKey;
 import aramframework.com.cmm.domain.SearchVO;
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cmm.util.ComponentChecker;
 import aramframework.com.cop.bbs.dao.BBSAddedOptionsMapper;
 import aramframework.com.cop.bbs.dao.BBSMasterMapper;
@@ -130,8 +129,8 @@ public class BBSMasterService extends EgovAbstractServiceImpl {
 				resultVo.setOption("na"); // 미지정 상태로 수정 가능 (이미 지정된 경우는 수정 불가로 처리)
 			}
 		}
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, boardMasterVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(boardMasterVO.getSearchVO()); 
 		return resultVo;
 	}
 

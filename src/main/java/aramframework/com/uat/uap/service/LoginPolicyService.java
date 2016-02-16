@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uat.uap.dao.LoginPolicyMapper;
 import aramframework.com.uat.uap.domain.LoginPolicyVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -62,8 +61,8 @@ public class LoginPolicyService extends EgovAbstractServiceImpl {
 	 */
 	public LoginPolicyVO selectLoginPolicy(LoginPolicyVO loginPolicyVO) {
 		LoginPolicyVO resultVo = loginPolicyMapper.selectLoginPolicy(loginPolicyVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, loginPolicyVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(loginPolicyVO.getSearchVO()); 
 		return resultVo;
 	}
 

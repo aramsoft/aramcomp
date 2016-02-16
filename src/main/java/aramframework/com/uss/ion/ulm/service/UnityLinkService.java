@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.ion.ulm.dao.UnityLinkMapper;
 import aramframework.com.uss.ion.ulm.domain.UnityLinkVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -75,8 +74,8 @@ public class UnityLinkService extends EgovAbstractServiceImpl {
 	 */
 	public UnityLinkVO selectUnityLinkDetail(UnityLinkVO unityLinkVO) {
 		UnityLinkVO resultVo =  unityLinkMapper.selectUnityLinkDetail(unityLinkVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, unityLinkVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(unityLinkVO.getSearchVO()); 
 		return resultVo;
 	}
 

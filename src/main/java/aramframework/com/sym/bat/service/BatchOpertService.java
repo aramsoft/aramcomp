@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.sym.bat.dao.BatchOpertMapper;
 import aramframework.com.sym.bat.domain.BatchOpertVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -70,8 +69,8 @@ public class BatchOpertService extends EgovAbstractServiceImpl {
 	 */
 	public BatchOpertVO selectBatchOpert(BatchOpertVO batchOpertVO) {
 		BatchOpertVO resultVo = batchOpertMapper.selectBatchOpert(batchOpertVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, batchOpertVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(batchOpertVO.getSearchVO()); 
 		return resultVo;
 	}
 

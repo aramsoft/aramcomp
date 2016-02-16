@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.domain.FileVO;
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.ion.msi.dao.MainImageMapper;
 import aramframework.com.uss.ion.msi.domain.MainImageVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -70,8 +69,8 @@ public class MainImageService extends EgovAbstractServiceImpl {
 	 */
 	public MainImageVO selectMainImage(MainImageVO mainImageVO) {
 		MainImageVO resultVo = mainImageMapper.selectMainImage(mainImageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, mainImageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(mainImageVO.getSearchVO()); 
 		return resultVo;
 	}
 

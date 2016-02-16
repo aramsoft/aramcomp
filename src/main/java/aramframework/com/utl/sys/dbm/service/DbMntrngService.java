@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.utl.sys.dbm.dao.DbMntrngMapper;
 import aramframework.com.utl.sys.dbm.domain.DbMntrngLogVO;
 import aramframework.com.utl.sys.dbm.domain.DbMntrngVO;
@@ -65,8 +64,8 @@ public class DbMntrngService extends EgovAbstractServiceImpl {
 	 */
 	public DbMntrngVO selectDbMntrng(DbMntrngVO dbMntrngVO) {
 		DbMntrngVO resultVo = dbMntrngMapper.selectDbMntrng(dbMntrngVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, dbMntrngVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(dbMntrngVO.getSearchVO()); 
 		return resultVo;
 	}
 
@@ -124,8 +123,8 @@ public class DbMntrngService extends EgovAbstractServiceImpl {
 	 */
 	public DbMntrngLogVO selectDbMntrngLog(DbMntrngLogVO dbMntrngLogVO) {
 		DbMntrngLogVO resultVo = dbMntrngMapper.selectDbMntrngLog(dbMntrngLogVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, dbMntrngLogVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(dbMntrngLogVO.getSearchVO()); 
 		return resultVo;
 	}
 

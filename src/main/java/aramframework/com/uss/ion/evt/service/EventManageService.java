@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.ion.evt.dao.EventManageMapper;
 import aramframework.com.uss.ion.evt.domain.EventAtdrnVO;
 import aramframework.com.uss.ion.evt.domain.EventManageVO;
@@ -73,8 +72,8 @@ public class EventManageService extends EgovAbstractServiceImpl {
 	 */
 	public EventManageVO selectEventManage(EventManageVO eventManageVO) {
 		EventManageVO resultVo = eventManageMapper.selectEventManage(eventManageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, eventManageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(eventManageVO.getSearchVO()); 
 		return resultVo;
 	}
 
@@ -163,8 +162,8 @@ public class EventManageService extends EgovAbstractServiceImpl {
 	 */
 	public EventAtdrnVO selectEventAtdrn(EventAtdrnVO eventAtdrnVO) {
 		EventAtdrnVO resultVo = eventManageMapper.selectEventAtdrn(eventAtdrnVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, eventAtdrnVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(eventAtdrnVO.getSearchVO()); 
 		return resultVo;
 	}
 

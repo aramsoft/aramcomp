@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.domain.SearchVO;
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cop.adb.dao.AdressBookMapper;
 import aramframework.com.cop.adb.domain.AdressBookUserVO;
 import aramframework.com.cop.adb.domain.AdressBookVO;
@@ -72,8 +71,8 @@ public class AdressBookService extends EgovAbstractServiceImpl {
 	public AdressBookVO selectAdressBook(AdressBookVO adressBookVO) {
 		AdressBookVO resultVo = adressBookMapper.selectAdressBook(adressBookVO);
 		resultVo.setAdbkMan(adressBookMapper.selectUserList(adressBookVO));
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, adressBookVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(adressBookVO.getSearchVO()); 
 		return resultVo;
 	}
 

@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.olh.awm.dao.AdministrationWordMapper;
 import aramframework.com.uss.olh.awm.domain.AdministrationWordVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -66,8 +65,8 @@ public class AdministrationWordService extends EgovAbstractServiceImpl {
 	 */
 	public AdministrationWordVO selectAdministrationWordDetail(AdministrationWordVO administrationWordVO) {
 		AdministrationWordVO resultVo = administrationWordMapper.selectAdministrationWordDetail(administrationWordVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, administrationWordVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(administrationWordVO.getSearchVO()); 
 		return resultVo;
 	}
 

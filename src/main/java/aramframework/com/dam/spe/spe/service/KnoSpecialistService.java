@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.dam.spe.spe.dao.KnoSpecialistMapper;
 import aramframework.com.dam.spe.spe.domain.KnoSpecialistVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -61,8 +60,8 @@ public class KnoSpecialistService extends EgovAbstractServiceImpl {
 	 */
 	public KnoSpecialistVO selectKnoSpecialist(KnoSpecialistVO knoSpecialistVO) {
 		KnoSpecialistVO resultVo = knoSpecialistMapper.selectKnoSpecialist(knoSpecialistVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, knoSpecialistVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(knoSpecialistVO.getSearchVO()); 
 		return resultVo;
 	}
 

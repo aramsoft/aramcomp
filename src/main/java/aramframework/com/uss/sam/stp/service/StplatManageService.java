@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.sam.stp.dao.StplatManageMapper;
 import aramframework.com.uss.sam.stp.domain.StplatManageVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -67,8 +66,8 @@ public class StplatManageService extends EgovAbstractServiceImpl {
 	 */
 	public StplatManageVO selectStplatDetail(StplatManageVO stplatManageVO)  {
 		StplatManageVO resultVo = stplatManageMapper.selectStplatDetail(stplatManageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, stplatManageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(stplatManageVO.getSearchVO()); 
 		return resultVo;
 	}
 

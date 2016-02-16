@@ -26,7 +26,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.constant.AramProperties;
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.sym.ccm.zip.dao.ZipManageMapper;
 import aramframework.com.sym.ccm.zip.domain.ZipVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -88,8 +87,8 @@ public class ZipManageService extends EgovAbstractServiceImpl {
 	 */
 	public ZipVO selectZipDetail(ZipVO zipVO) {
 		ZipVO resultVo = zipManageMapper.selectZipDetail(zipVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, zipVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(zipVO.getSearchVO()); 
 		return resultVo;
 	}
 

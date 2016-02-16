@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.domain.FileVO;
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.ion.bnr.dao.BannerMapper;
 import aramframework.com.uss.ion.bnr.domain.BannerVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -70,8 +69,8 @@ public class BannerService extends EgovAbstractServiceImpl {
 	 */
 	public BannerVO selectBanner(BannerVO bannerVO) {
 		BannerVO resultVo = bannerMapper.selectBanner(bannerVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, bannerVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(bannerVO.getSearchVO()); 
 		return resultVo;
 	}
 

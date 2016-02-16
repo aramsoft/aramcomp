@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.sym.bat.dao.BatchResultMapper;
 import aramframework.com.sym.bat.dao.BatchSchdulMapper;
 import aramframework.com.sym.bat.domain.BatchResultVO;
@@ -71,8 +70,8 @@ public class BatchSchdulService extends EgovAbstractServiceImpl {
 	 */
 	public BatchSchdulVO selectBatchSchdul(BatchSchdulVO batchSchdulVO) {
 		BatchSchdulVO resultVo = batchSchdulMapper.selectBatchSchdul(batchSchdulVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, batchSchdulVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(batchSchdulVO.getSearchVO()); 
 		return resultVo;
 	}
 

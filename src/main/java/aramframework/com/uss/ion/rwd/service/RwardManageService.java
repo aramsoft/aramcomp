@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.service.FileMngUtil;
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.ion.ism.domain.InfrmlSanctnVO;
 import aramframework.com.uss.ion.ism.service.InfrmlSanctnService;
 import aramframework.com.uss.ion.rwd.dao.RwardManageMapper;
@@ -76,8 +75,8 @@ public class RwardManageService extends EgovAbstractServiceImpl {
 	 */
 	public RwardManageVO selectRwardManage(RwardManageVO rwardManageVO) {
 		RwardManageVO resultVo = rwardManageMapper.selectRwardManage(rwardManageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, rwardManageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(rwardManageVO.getSearchVO()); 
 		return resultVo;
 	}
 

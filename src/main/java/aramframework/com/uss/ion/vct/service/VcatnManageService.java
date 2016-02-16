@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.ism.domain.InfrmlSanctnVO;
 import aramframework.com.uss.ion.ism.service.InfrmlSanctnService;
@@ -70,8 +69,8 @@ public class VcatnManageService extends EgovAbstractServiceImpl {
 	 */
 	public VcatnManageVO selectVcatnManage(VcatnManageVO vcatnManageVO) {
 		VcatnManageVO resultVo = vcatnManageMapper.selectVcatnManage(vcatnManageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, vcatnManageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(vcatnManageVO.getSearchVO()); 
 		return resultVo;
 	}
 

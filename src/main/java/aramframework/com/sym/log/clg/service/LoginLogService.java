@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.sym.log.clg.dao.LoginLogMapper;
 import aramframework.com.sym.log.clg.domain.LoginLogVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -67,8 +66,8 @@ public class LoginLogService extends EgovAbstractServiceImpl {
 	 */
 	public LoginLogVO selectLoginLog(LoginLogVO loginLogVO) {
 		LoginLogVO resultVo = loginLogMapper.selectLoginLog(loginLogVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, loginLogVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(loginLogVO.getSearchVO()); 
 		return resultVo;
 	}
 

@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.dam.map.tea.dao.MapTeamMapper;
 import aramframework.com.dam.map.tea.domain.MapTeamVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -61,8 +60,8 @@ public class MapTeamService extends EgovAbstractServiceImpl {
 	 */
 	public void selectMapTeamDetail(MapTeamVO mapTeamVO) {
 		MapTeamVO resultVo = mapTeamMapper.selectMapTeamDetail(mapTeamVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, mapTeamVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(mapTeamVO.getSearchVO()); 
 	}
 
 	/**

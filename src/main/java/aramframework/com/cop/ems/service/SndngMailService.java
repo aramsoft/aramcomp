@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
 import aramframework.com.cmm.constant.AramProperties;
 import aramframework.com.cmm.constant.Globals;
 import aramframework.com.cmm.service.FileMngUtil;
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cop.ems.dao.SndngMailMapper;
 import aramframework.com.cop.ems.domain.AtchmnFileVO;
 import aramframework.com.cop.ems.domain.SndngMailVO;
@@ -116,8 +115,8 @@ public class SndngMailService extends EgovAbstractServiceImpl {
 	 */
 	public SndngMailVO selectSndngMail(SndngMailVO sndngMailVO) {
 		SndngMailVO resultVo = sndngMailMapper.selectSndngMail(sndngMailVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, sndngMailVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(sndngMailVO.getSearchVO()); 
 		return resultVo;
 	}
 

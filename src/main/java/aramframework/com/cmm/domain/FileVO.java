@@ -1,7 +1,5 @@
 package aramframework.com.cmm.domain;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-
 import aramframework.com.cmm.util.WebUtil;
 
 /**
@@ -23,7 +21,7 @@ import aramframework.com.cmm.util.WebUtil;
  * </pre>
  */
 
-public class FileVO {
+public class FileVO extends BaseVO {
 
 	// domain
 	/** 첨부파일 아이디 */
@@ -56,10 +54,6 @@ public class FileVO {
 	/** 파일크기	 */
 	private String fileSize = "";
 
-	// helper
-	// path id for rest
-	private String pathId = "";
-	
 	// domain
 	/**
 	 * atchFileId attribute를 리턴한다.
@@ -241,33 +235,6 @@ public class FileVO {
 	 */
 	public void setFileSize(String fileSize) {
 		this.fileSize = fileSize;
-	}
-
-	// helper
-	/**
-	 * pathId attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getPathId() {
-		return pathId;
-	}
-	/**
-	 * pathId attribute 값을 설정한다.
-	 * 
-	 * @param pathId
-	 *            String
-	 */
-/*
-	public void setPathId(String pathId) {
-		this.pathId = pathId;
-	}
-*/
-	/**
-	 * toString 메소드를 대치한다.
-	 */
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
 	}
 
 }

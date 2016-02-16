@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.ssi.syi.iis.dao.CntcInsttMapper;
 import aramframework.com.ssi.syi.iis.domain.CntcInsttVO;
 import aramframework.com.ssi.syi.iis.domain.CntcServiceVO;
@@ -76,8 +75,8 @@ public class CntcInsttService extends EgovAbstractServiceImpl {
 	 */
 	public CntcInsttVO selectCntcInsttDetail(CntcInsttVO cntcInsttVO) {
 		CntcInsttVO resultVo =  cntcInsttMapper.selectCntcInsttDetail(cntcInsttVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, cntcInsttVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(cntcInsttVO.getSearchVO()); 
 		return resultVo;
 	}
 
@@ -138,8 +137,8 @@ public class CntcInsttService extends EgovAbstractServiceImpl {
 	 */
 	public CntcSystemVO selectCntcSystemDetail(CntcSystemVO cntcSystemVO) {
 		CntcSystemVO resultVo = cntcInsttMapper.selectCntcSystemDetail(cntcSystemVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, cntcSystemVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(cntcSystemVO.getSearchVO()); 
 		return resultVo;
 	}
 
@@ -200,8 +199,8 @@ public class CntcInsttService extends EgovAbstractServiceImpl {
 	 */
 	public CntcServiceVO selectCntcServiceDetail(CntcServiceVO cntcServiceVO) {
 		CntcServiceVO resultVo = cntcInsttMapper.selectCntcServiceDetail(cntcServiceVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, cntcServiceVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(cntcServiceVO.getSearchVO()); 
 		return resultVo;
 	}
 

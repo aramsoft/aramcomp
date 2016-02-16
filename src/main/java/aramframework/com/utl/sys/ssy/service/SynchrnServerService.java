@@ -19,7 +19,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.utl.sys.ssy.dao.SynchrnServerMapper;
 import aramframework.com.utl.sys.ssy.domain.SynchrnServerVO;
@@ -84,8 +83,8 @@ public class SynchrnServerService extends EgovAbstractServiceImpl {
 	 */
 	public SynchrnServerVO selectSynchrnServer(SynchrnServerVO synchrnServerVO) {
 		SynchrnServerVO resultVo = synchrnServerMapper.selectSynchrnServer(synchrnServerVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, synchrnServerVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(synchrnServerVO.getSearchVO()); 
 		return resultVo;
 	}
 

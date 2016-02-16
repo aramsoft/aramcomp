@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.ion.isg.dao.IntnetSvcGuidanceMapper;
 import aramframework.com.uss.ion.isg.domain.IntnetSvcGuidanceVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -68,8 +67,8 @@ public class IntnetSvcGuidanceService extends EgovAbstractServiceImpl {
 	 */
 	public IntnetSvcGuidanceVO selectIntnetSvcGuidance(IntnetSvcGuidanceVO intnetSvcGuidanceVO) {
 		IntnetSvcGuidanceVO resultVo = intnetSvcGuidanceMapper.selectIntnetSvcGuidance(intnetSvcGuidanceVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, intnetSvcGuidanceVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(intnetSvcGuidanceVO.getSearchVO()); 
 		return resultVo;
 	}
 

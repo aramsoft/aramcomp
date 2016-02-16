@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.ion.ecc.dao.EventCmpgnMapper;
 import aramframework.com.uss.ion.ecc.domain.EventCmpgnVO;
 import aramframework.com.uss.ion.ecc.domain.TnextrlHrInfoVO;
@@ -70,8 +69,8 @@ public class EventCmpgnService extends EgovAbstractServiceImpl {
 	 */
 	public EventCmpgnVO selectEventCmpgnDetail(EventCmpgnVO eventCmpgnVO) {
 		EventCmpgnVO resultVo = eventCmpgnMapper.selectEventCmpgnDetail(eventCmpgnVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, eventCmpgnVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(eventCmpgnVO.getSearchVO()); 
 		return resultVo;
 	}
 
@@ -133,8 +132,8 @@ public class EventCmpgnService extends EgovAbstractServiceImpl {
 	 */
 	public TnextrlHrInfoVO selectTnextrlHrInfoDetail(TnextrlHrInfoVO tnextrlHrInfoVO) {
 		TnextrlHrInfoVO resultVo = eventCmpgnMapper.selectTnextrlHrInfoDetail(tnextrlHrInfoVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, tnextrlHrInfoVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(tnextrlHrInfoVO.getSearchVO()); 
 		return resultVo;
 	}
 

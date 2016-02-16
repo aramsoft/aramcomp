@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.service.FileMngUtil;
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cop.bbs.dao.BBSBoardMapper;
 import aramframework.com.cop.bbs.domain.BoardVO;
 import aramframework.com.utl.fcc.service.DateUtil;
@@ -100,8 +99,8 @@ public class BBSBoardService extends EgovAbstractServiceImpl {
 	 */
 	public BoardVO selectBoardArticle(BoardVO boardVO) {
 		BoardVO resultVo = bbsBoardMapper.selectBoardArticle(boardVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, boardVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(boardVO.getSearchVO()); 
 		return resultVo;
 	}
 

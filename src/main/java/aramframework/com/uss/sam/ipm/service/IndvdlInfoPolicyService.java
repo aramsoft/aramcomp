@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.sam.ipm.dao.IndvdlInfoPolicyMapper;
 import aramframework.com.uss.sam.ipm.domain.IndvdlInfoPolicyVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -66,8 +65,8 @@ public class IndvdlInfoPolicyService extends EgovAbstractServiceImpl {
 	 */
 	public IndvdlInfoPolicyVO selectIndvdlInfoPolicyDetail(IndvdlInfoPolicyVO indvdlInfoPolicyVO) {
 		IndvdlInfoPolicyVO resultVo = indvdlInfoPolicyMapper.selectIndvdlInfoPolicyDetail(indvdlInfoPolicyVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, indvdlInfoPolicyVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(indvdlInfoPolicyVO.getSearchVO()); 
 		return resultVo;
 	}
 

@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.ion.pwm.dao.PopupManageMapper;
 import aramframework.com.uss.ion.pwm.domain.PopupManageVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -75,8 +74,8 @@ public class PopupManageService extends EgovAbstractServiceImpl {
 	 */
 	public PopupManageVO selectPopupDetail(PopupManageVO popupManageVO) {
 		PopupManageVO resultVo = popupManageMapper.selectPopupDetail(popupManageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, popupManageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(popupManageVO.getSearchVO()); 
 		return resultVo;
 	}
 

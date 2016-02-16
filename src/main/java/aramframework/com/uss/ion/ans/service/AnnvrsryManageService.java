@@ -11,7 +11,6 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.ion.ans.dao.AnnvrsryManageMapper;
 import aramframework.com.uss.ion.ans.domain.AnnvrsryManageVO;
 import aramframework.com.utl.fcc.service.DateUtil;
@@ -79,8 +78,8 @@ public class AnnvrsryManageService extends EgovAbstractServiceImpl {
 	 */
 	public AnnvrsryManageVO selectAnnvrsryManage(AnnvrsryManageVO annvrsryManageVO) {
 		AnnvrsryManageVO resultVo = annvrsryManageMapper.selectAnnvrsryManage(annvrsryManageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, annvrsryManageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(annvrsryManageVO.getSearchVO()); 
 		return resultVo;
 	}
 

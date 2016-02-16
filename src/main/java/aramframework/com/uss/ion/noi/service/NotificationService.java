@@ -10,7 +10,6 @@ import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.ion.noi.dao.NotificationMapper;
 import aramframework.com.uss.ion.noi.domain.NotificationVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -66,8 +65,8 @@ public class NotificationService extends EgovAbstractServiceImpl {
 	 */
 	public NotificationVO selectNotificationInf(NotificationVO notificationVO) {
 		NotificationVO resultVo = notificationMapper.selectNotificationInf(notificationVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, notificationVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(notificationVO.getSearchVO()); 
 		return resultVo;
 	}
 

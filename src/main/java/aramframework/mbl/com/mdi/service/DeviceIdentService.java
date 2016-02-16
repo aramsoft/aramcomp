@@ -18,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.constant.AramProperties;
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.mbl.com.mdi.dao.DeviceIdentMapper;
 import aramframework.mbl.com.mdi.domain.DeviceIdentVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -85,8 +84,8 @@ public class DeviceIdentService extends EgovAbstractServiceImpl {
      */
     public DeviceIdentVO selectDeviceIdent(DeviceIdentVO deviceIdentVO) {
     	DeviceIdentVO resultVo = deviceIdentMapper.selectDeviceIdent(deviceIdentVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, deviceIdentVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(deviceIdentVO.getSearchVO()); 
 		return resultVo;
     }
 

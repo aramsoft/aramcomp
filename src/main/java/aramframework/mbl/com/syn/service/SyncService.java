@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.mbl.com.syn.dao.SyncMapper;
 import aramframework.mbl.com.syn.domain.SyncVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -67,8 +66,8 @@ public class SyncService extends EgovAbstractServiceImpl {
 	 */
 	public SyncVO selectSync(SyncVO syncVO) {
 		SyncVO resultVo = syncMapper.selectSync(syncVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, syncVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(syncVO.getSearchVO()); 
 		return resultVo;
 	}
 	

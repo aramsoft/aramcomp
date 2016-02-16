@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.domain.SearchVO;
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.utl.sys.trm.dao.TrsmrcvMntrngMapper;
 import aramframework.com.utl.sys.trm.domain.TrsmrcvMntrngLogVO;
 import aramframework.com.utl.sys.trm.domain.TrsmrcvMntrngVO;
@@ -66,8 +65,8 @@ public class TrsmrcvMntrngService extends EgovAbstractServiceImpl {
 	 */
 	public TrsmrcvMntrngVO selectTrsmrcvMntrng(TrsmrcvMntrngVO trsmrcvMntrngVO) {
 		TrsmrcvMntrngVO resultVo = trsmrcvMntrngMapper.selectTrsmrcvMntrng(trsmrcvMntrngVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, trsmrcvMntrngVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(trsmrcvMntrngVO.getSearchVO()); 
 		return resultVo;
 	}
 
@@ -125,8 +124,8 @@ public class TrsmrcvMntrngService extends EgovAbstractServiceImpl {
 	 */
 	public TrsmrcvMntrngLogVO selectTrsmrcvMntrngLog(TrsmrcvMntrngLogVO trsmrcvMntrngLogVO) {
 		TrsmrcvMntrngLogVO resultVo = trsmrcvMntrngMapper.selectTrsmrcvMntrngLog(trsmrcvMntrngLogVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, trsmrcvMntrngLogVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(trsmrcvMntrngLogVO.getSearchVO()); 
 		return resultVo;
 	}
 

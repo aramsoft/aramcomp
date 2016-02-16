@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.sym.prm.dao.ProgrmManageMapper;
 import aramframework.com.sym.prm.domain.ProgrmManageVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -70,8 +69,8 @@ public class ProgrmManageService extends EgovAbstractServiceImpl {
 	 */
 	public ProgrmManageVO selectProgrm(ProgrmManageVO progrmManageVO) {
 		ProgrmManageVO resultVo = progrmManageMapper.selectProgrm(progrmManageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, progrmManageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(progrmManageVO.getSearchVO()); 
 		return resultVo;
 	}
 

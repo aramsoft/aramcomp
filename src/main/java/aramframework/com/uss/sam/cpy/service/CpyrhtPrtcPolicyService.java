@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.sam.cpy.dao.CpyrhtPrtcPolicyMapper;
 import aramframework.com.uss.sam.cpy.domain.CpyrhtPrtcPolicyVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -67,8 +66,8 @@ public class CpyrhtPrtcPolicyService extends EgovAbstractServiceImpl {
 	 */
 	public CpyrhtPrtcPolicyVO selectCpyrhtPrtcPolicyDetail(CpyrhtPrtcPolicyVO cpyrhtPrtcPolicyVO) {
 		CpyrhtPrtcPolicyVO resultVo = cpyrhtPrtcPolicyMapper.selectCpyrhtPrtcPolicyDetail(cpyrhtPrtcPolicyVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, cpyrhtPrtcPolicyVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(cpyrhtPrtcPolicyVO.getSearchVO()); 
 		return resultVo;
 	}
 

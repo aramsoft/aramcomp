@@ -7,7 +7,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cop.cmy.dao.CmyMenuManageMapper;
 import aramframework.com.cop.cmy.domain.CommunityMenuVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -99,8 +98,8 @@ public class CmyMenuManageService extends EgovAbstractServiceImpl {
 	 */
 	public CommunityMenuVO selectMenuManage(CommunityMenuVO communityMenuVO) {
 		CommunityMenuVO resultVo = cmyMenuManageMapper.selectMenuManage(communityMenuVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, communityMenuVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(communityMenuVO.getSearchVO()); 
 		return resultVo;
 	}
 

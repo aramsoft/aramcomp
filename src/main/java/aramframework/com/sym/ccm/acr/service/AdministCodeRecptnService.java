@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.constant.AramProperties;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.sym.ccm.acr.dao.AdministCodeRecptnMapper;
 import aramframework.com.sym.ccm.acr.domain.AdministCodeRecptnVO;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -95,8 +94,8 @@ public class AdministCodeRecptnService extends EgovAbstractServiceImpl {
 	 */
 	public AdministCodeRecptnVO selectAdministCodeDetail(AdministCodeRecptnVO administCodeRecptnVO) {
 		AdministCodeRecptnVO resultVo = administCodeRecptnMapper.selectAdministCodeDetail(administCodeRecptnVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, administCodeRecptnVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(administCodeRecptnVO.getSearchVO()); 
 		return resultVo;
 	}
 

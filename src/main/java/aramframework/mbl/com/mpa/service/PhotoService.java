@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.service.FileMngUtil;
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.mbl.com.mpa.dao.PhotoMapper;
 import aramframework.mbl.com.mpa.domain.PhotoVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -77,8 +76,8 @@ public class PhotoService extends EgovAbstractServiceImpl {
      */
     public PhotoVO selectPhoto(PhotoVO photoVO) {
     	PhotoVO resultVo = photoMapper.selectPhoto(photoVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, photoVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(photoVO.getSearchVO()); 
 		return resultVo;
     }
 

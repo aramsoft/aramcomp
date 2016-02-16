@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.service.FileMngUtil;
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.dam.per.dao.KnoPersonalMapper;
 import aramframework.com.dam.per.domain.KnoPersonalVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -71,8 +70,8 @@ public class KnoPersonalService extends EgovAbstractServiceImpl {
 	 */
 	public void selectKnoPersonal(KnoPersonalVO knoPersonalVO) {
 		KnoPersonalVO resultVo =knoPersonalMapper.selectKnoPersonal(knoPersonalVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, knoPersonalVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(knoPersonalVO.getSearchVO()); 
 	}
 
 	/**

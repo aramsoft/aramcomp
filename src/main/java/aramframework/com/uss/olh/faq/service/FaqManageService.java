@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.service.FileMngUtil;
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.olh.faq.dao.FaqManageMapper;
 import aramframework.com.uss.olh.faq.domain.FaqManageVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -71,8 +70,8 @@ public class FaqManageService extends EgovAbstractServiceImpl {
 	 */
 	public FaqManageVO selectFaqListDetail(FaqManageVO faqManageVO) {
 		FaqManageVO resultVo = faqManageMapper.selectFaqListDetail(faqManageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, faqManageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(faqManageVO.getSearchVO()); 
 		return resultVo;
 	}
 

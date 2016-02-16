@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.domain.FileVO;
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.ion.lsi.dao.LoginScrinImageMapper;
 import aramframework.com.uss.ion.lsi.domain.LoginScrinImageVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -70,8 +69,8 @@ public class LoginScrinImageService extends EgovAbstractServiceImpl {
 	 */
 	public LoginScrinImageVO selectLoginScrinImage(LoginScrinImageVO loginScrinImageVO) {
 		LoginScrinImageVO resultVo = loginScrinImageMapper.selectLoginScrinImage(loginScrinImageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, loginScrinImageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(loginScrinImageVO.getSearchVO()); 
 		return resultVo;
 	}
 

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import aramframework.com.cmm.dao.FileMngMapper;
 import aramframework.com.cmm.domain.FileVO;
-import aramframework.com.cmm.util.BeanUtil;
 
 /**
  * 파일정보의 관리를 위한 구현 클래스
@@ -79,8 +78,8 @@ public class FileMngService extends EgovAbstractServiceImpl {
 	 */
 	public FileVO selectFileInf(FileVO fileVO) {
 		FileVO resultVo = fileMngMapper.selectFileInf(fileVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, fileVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(fileVO.getSearchVO()); 
 		return resultVo;
 	}
 

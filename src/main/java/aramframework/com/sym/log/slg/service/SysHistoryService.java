@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.service.FileMngUtil;
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.sym.log.slg.dao.SysHistoryMapper;
 import aramframework.com.sym.log.slg.domain.SysHistoryVO;
 import aramframework.com.utl.fcc.service.StringUtil;
@@ -66,8 +65,8 @@ public class SysHistoryService extends EgovAbstractServiceImpl {
 	 */
 	public SysHistoryVO selectSysHistory(SysHistoryVO sysHistoryVO) {
 		SysHistoryVO resultVo = sysHistoryMapper.selectSysHistory(sysHistoryVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, sysHistoryVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(sysHistoryVO.getSearchVO()); 
 		return resultVo;
 	}
 

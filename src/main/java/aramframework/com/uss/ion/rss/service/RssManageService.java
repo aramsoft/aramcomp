@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.domain.ComCodeVO;
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.ion.rss.dao.RssManageJDBC;
 import aramframework.com.uss.ion.rss.dao.RssManageMapper;
 import aramframework.com.uss.ion.rss.domain.RssManageVO;
@@ -91,8 +90,8 @@ public class RssManageService extends EgovAbstractServiceImpl {
 	 */
 	public RssManageVO selectRssManageDetail(RssManageVO rssManageVO) {
 		RssManageVO resultVo = rssManageMapper.selectRssManageDetail(rssManageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, rssManageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(rssManageVO.getSearchVO()); 
 		return resultVo;
 	}
 

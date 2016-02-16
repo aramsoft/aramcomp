@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.mpe.dao.IndvdlPgeMapper;
 import aramframework.com.uss.mpe.domain.IndvdlPgeCntntsVO;
 import aramframework.com.uss.mpe.domain.IndvdlPgeConfVO;
@@ -107,8 +106,8 @@ public class IndvdlPgeService extends EgovAbstractServiceImpl {
 	 */
 	public IndvdlPgeConfVO selectIndvdlpgeConfDetail(IndvdlPgeConfVO indvdlPgeConfVO) {
 		IndvdlPgeConfVO resultVo = indvdlPgeMapper.selectIndvdlpgeConfDetail(indvdlPgeConfVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, indvdlPgeConfVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(indvdlPgeConfVO.getSearchVO()); 
 		return resultVo;
 	}
 
@@ -165,8 +164,8 @@ public class IndvdlPgeService extends EgovAbstractServiceImpl {
 	 */
 	public IndvdlPgeCntntsVO selectIndvdlpgeCntnts(IndvdlPgeCntntsVO indvdlPgeCntntsVO) {
 		IndvdlPgeCntntsVO resultVo = indvdlPgeMapper.selectIndvdlpgeCntnts(indvdlPgeCntntsVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, indvdlPgeCntntsVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(indvdlPgeCntntsVO.getSearchVO()); 
 		return resultVo;
 	}
 

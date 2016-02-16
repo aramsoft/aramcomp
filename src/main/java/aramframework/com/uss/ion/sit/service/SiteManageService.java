@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.ion.sit.dao.SiteManageMapper;
 import aramframework.com.uss.ion.sit.domain.SiteManageVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -67,8 +66,8 @@ public class SiteManageService extends EgovAbstractServiceImpl {
 	 */
 	public SiteManageVO selectSiteDetail(SiteManageVO siteManageVO) {
 		SiteManageVO resultVo = siteManageMapper.selectSiteDetail(siteManageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, siteManageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(siteManageVO.getSearchVO()); 
 		return resultVo;
 	}
 

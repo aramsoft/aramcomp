@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.mbl.com.mcg.dao.ChartGraphMapper;
 import aramframework.mbl.com.mcg.domain.ChartGraphVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -72,8 +71,8 @@ public class ChartGraphService extends EgovAbstractServiceImpl {
      */
     public ChartGraphVO selectChartGraph(ChartGraphVO chartGraphVO) {
     	ChartGraphVO resultVo = chartGraphMapper.selectChartGraph(chartGraphVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, chartGraphVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(chartGraphVO.getSearchVO()); 
 		return resultVo;
     }
 

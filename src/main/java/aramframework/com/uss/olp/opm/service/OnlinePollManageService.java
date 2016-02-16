@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.olp.opm.dao.OnlinePollManageMapper;
 import aramframework.com.uss.olp.opm.domain.OnlinePollItemVO;
 import aramframework.com.uss.olp.opm.domain.OnlinePollManageVO;
@@ -70,8 +69,8 @@ public class OnlinePollManageService extends EgovAbstractServiceImpl {
 	 */
 	public OnlinePollManageVO selectOnlinePollManageDetail(OnlinePollManageVO onlinePollManageVO) {
 		OnlinePollManageVO resultVo = onlinePollManageMapper.selectOnlinePollManageDetail(onlinePollManageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, onlinePollManageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(onlinePollManageVO.getSearchVO()); 
 		return resultVo;
 	}
 

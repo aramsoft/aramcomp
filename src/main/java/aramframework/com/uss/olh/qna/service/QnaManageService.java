@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.olh.qna.dao.QnaManageMapper;
 import aramframework.com.uss.olh.qna.domain.QnaManageVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -67,8 +66,8 @@ public class QnaManageService extends EgovAbstractServiceImpl {
 	 */
 	public QnaManageVO selectQnaListDetail(QnaManageVO qnaManageVO) {
 		QnaManageVO resultVo = qnaManageMapper.selectQnaListDetail(qnaManageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, qnaManageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(qnaManageVO.getSearchVO()); 
 		return resultVo;
 	}
 
@@ -147,8 +146,8 @@ public class QnaManageService extends EgovAbstractServiceImpl {
 	 */
 	public QnaManageVO selectQnaAnswerDetail(QnaManageVO qnaManageVO) {
 		QnaManageVO resultVo = qnaManageMapper.selectQnaAnswerDetail(qnaManageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, qnaManageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(qnaManageVO.getSearchVO()); 
 		return resultVo;
 	}
 

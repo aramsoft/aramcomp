@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.sym.sym.srv.dao.ServerMapper;
 import aramframework.com.sym.sym.srv.domain.ServerEqpmnRelateVO;
 import aramframework.com.sym.sym.srv.domain.ServerEqpmnVO;
@@ -73,8 +72,8 @@ public class ServerService extends EgovAbstractServiceImpl {
 	 */
 	public ServerEqpmnVO selectServerEqpmn(ServerEqpmnVO serverEqpmnVO) {
 		ServerEqpmnVO resultVo = serverMapper.selectServerEqpmn(serverEqpmnVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, serverEqpmnVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(serverEqpmnVO.getSearchVO()); 
 		return resultVo;
 	}
 
@@ -135,8 +134,8 @@ public class ServerService extends EgovAbstractServiceImpl {
 	 */
 	public ServerVO selectServer(ServerVO serverVO) {
 		ServerVO resultVo = serverMapper.selectServer(serverVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, serverVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(serverVO.getSearchVO()); 
 		return resultVo;
 	}
 

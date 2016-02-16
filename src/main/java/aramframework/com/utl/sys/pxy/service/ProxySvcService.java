@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.utl.sys.pxy.dao.ProxySvcMapper;
 import aramframework.com.utl.sys.pxy.domain.ProxySvcLogVO;
 import aramframework.com.utl.sys.pxy.domain.ProxySvcVO;
@@ -78,8 +77,8 @@ public class ProxySvcService extends EgovAbstractServiceImpl {
 	 */
 	public ProxySvcVO selectProxySvc(ProxySvcVO proxySvcVO) {
 		ProxySvcVO resultVo = proxySvcMapper.selectProxySvc(proxySvcVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, proxySvcVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(proxySvcVO.getSearchVO()); 
 		return resultVo;
 	}
 

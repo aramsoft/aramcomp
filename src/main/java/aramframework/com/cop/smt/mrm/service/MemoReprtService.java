@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.FileMngUtil;
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cop.smt.mrm.dao.MemoReprtMapper;
 import aramframework.com.cop.smt.mrm.domain.MemoReprtVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -112,8 +111,8 @@ public class MemoReprtService extends EgovAbstractServiceImpl {
 			String yymmddhhmm = year + "/" + month + "/" + day + "  " + hour + "시 " + min + "분";
 			resultVo.setReprtSttus("확인 (" + yymmddhhmm + ") ");
 		}
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, memoReprtVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(memoReprtVO.getSearchVO()); 
 		return resultVo;
 	}
 

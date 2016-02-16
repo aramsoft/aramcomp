@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.ssi.syi.sim.dao.SystemCntcMapper;
 import aramframework.com.ssi.syi.sim.domain.SystemCntcVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -67,8 +66,8 @@ public class SystemCntcService extends EgovAbstractServiceImpl {
 	 */
 	public SystemCntcVO selectSystemCntcDetail(SystemCntcVO systemCntcVO) {
 		SystemCntcVO resultVo = systemCntcMapper.selectSystemCntcDetail(systemCntcVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, systemCntcVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(systemCntcVO.getSearchVO()); 
 		return resultVo;
 	}
 

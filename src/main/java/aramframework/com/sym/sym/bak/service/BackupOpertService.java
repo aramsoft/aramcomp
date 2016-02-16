@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.sym.sym.bak.dao.BackupOpertMapper;
 import aramframework.com.sym.sym.bak.dao.BackupResultMapper;
 import aramframework.com.sym.sym.bak.domain.BackupOpertVO;
@@ -71,8 +70,8 @@ public class BackupOpertService extends EgovAbstractServiceImpl {
 	 */
 	public BackupOpertVO selectBackupOpert(BackupOpertVO backupOpertVO) {
 		BackupOpertVO resultVo = backupOpertMapper.selectBackupOpert(backupOpertVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, backupOpertVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(backupOpertVO.getSearchVO()); 
 		return resultVo;
 	}
 

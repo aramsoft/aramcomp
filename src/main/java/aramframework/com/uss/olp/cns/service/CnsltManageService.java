@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.service.FileMngUtil;
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.olp.cns.dao.CnsltManageMapper;
 import aramframework.com.uss.olp.cns.domain.CnsltManageVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -71,8 +70,8 @@ public class CnsltManageService extends EgovAbstractServiceImpl {
 	 */
 	public CnsltManageVO selectCnsltListDetail(CnsltManageVO cnsltManageVO) {
 		CnsltManageVO resultVo = cnsltManageMapper.selectCnsltListDetail(cnsltManageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, cnsltManageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(cnsltManageVO.getSearchVO()); 
 		return resultVo;
 	}
 
@@ -154,8 +153,8 @@ public class CnsltManageService extends EgovAbstractServiceImpl {
 	 */
 	public CnsltManageVO selectCnsltAnswerDetail(CnsltManageVO cnsltManageVO) {
 		CnsltManageVO resultVo = cnsltManageMapper.selectCnsltAnswerDetail(cnsltManageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, cnsltManageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(cnsltManageVO.getSearchVO()); 
 		return resultVo;
 	}
 

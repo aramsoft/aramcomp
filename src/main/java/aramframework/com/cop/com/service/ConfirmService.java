@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.cop.cmy.domain.CommunityUserVO;
 import aramframework.com.cop.cmy.domain.CommunityVO;
 import aramframework.com.cop.cmy.service.CommunityManageService;
@@ -68,8 +67,8 @@ public class ConfirmService extends EgovAbstractServiceImpl {
 	 */
 	public ConfirmHistoryVO selectSingleConfirmRequest(ConfirmHistoryVO confirmHistoryVO) {
 		ConfirmHistoryVO resultVo = confirmMapper.selectSingleConfirmRequest(confirmHistoryVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, confirmHistoryVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(confirmHistoryVO.getSearchVO()); 
 		return resultVo;
 	}
 

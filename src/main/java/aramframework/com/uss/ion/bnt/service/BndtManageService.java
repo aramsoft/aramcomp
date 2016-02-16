@@ -13,7 +13,6 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.ion.bnt.dao.BndtManageMapper;
 import aramframework.com.uss.ion.bnt.domain.BndtCeckManageVO;
 import aramframework.com.uss.ion.bnt.domain.BndtDiaryVO;
@@ -77,8 +76,8 @@ public class BndtManageService extends EgovAbstractServiceImpl {
 	 */
 	public BndtManageVO selectBndtManage(BndtManageVO bndtManageVO) {
 		BndtManageVO resultVo = bndtManageMapper.selectBndtManage(bndtManageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, bndtManageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(bndtManageVO.getSearchVO()); 
 		return resultVo;
 	}
 
@@ -145,8 +144,8 @@ public class BndtManageService extends EgovAbstractServiceImpl {
 	 */
 	public BndtCeckManageVO selectBndtCeckManage(BndtCeckManageVO bndtCeckManageVO) {
 		BndtCeckManageVO resultVo = bndtManageMapper.selectBndtCeckManage(bndtCeckManageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, bndtCeckManageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(bndtCeckManageVO.getSearchVO()); 
 		return resultVo;
 	}
 

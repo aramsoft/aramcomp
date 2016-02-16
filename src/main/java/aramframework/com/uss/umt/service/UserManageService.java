@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.uss.umt.dao.EntrprsManageMapper;
 import aramframework.com.uss.umt.dao.MberManageMapper;
 import aramframework.com.uss.umt.dao.UserManageMapper;
@@ -75,8 +74,8 @@ public class UserManageService extends EgovAbstractServiceImpl {
 	 */
 	public UserManageVO selectUser(UserManageVO userManageVO) {
 		UserManageVO resultVo = userManageMapper.selectUser(userManageVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, userManageVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(userManageVO.getSearchVO()); 
 		return resultVo;
 	}
 

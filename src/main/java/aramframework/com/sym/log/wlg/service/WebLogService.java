@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.BeanUtil;
 import aramframework.com.sym.log.wlg.dao.WebLogMapper;
 import aramframework.com.sym.log.wlg.domain.WebLogVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -67,8 +66,8 @@ public class WebLogService extends EgovAbstractServiceImpl {
 	 */
 	public WebLogVO selectWebLog(WebLogVO webLogVO) {
 		WebLogVO resultVo = webLogMapper.selectWebLog(webLogVO);
-		// deep copy
-		BeanUtil.copyPropertiesCore(resultVo, webLogVO); 
+		// searchVO 이전 
+		resultVo.setSearchVO(webLogVO.getSearchVO()); 
 		return resultVo;
 	}
 

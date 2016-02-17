@@ -120,4 +120,20 @@ public class ResourceService extends EgovAbstractServiceImpl {
 		resourceMapper.deleteResource(resourceVO);
 	}
 
+	/**
+	 * 불필요한 롤정보를 화면에 조회하여 데이터베이스에서 삭제
+	 * 
+	 * @param resourceVO
+	 */
+	public void deleteResources(String resourceCodes) {
+
+		String[] strResourceCodes = resourceCodes.split(";");
+
+		ResourceVO rmVO = new ResourceVO(); 
+		for (int i = 0; i < strResourceCodes.length; i++) {
+			rmVO.setResourceCode(strResourceCodes[i]);
+			resourceMapper.deleteResource(rmVO);
+		}
+	}
+
 }

@@ -80,4 +80,46 @@ public class GroupAuthorService extends EgovAbstractServiceImpl {
 		groupAuthorMapper.deleteGroupAuthor(groupAuthorVO);
 	}
 
+	/**
+	 * 그룹에 권한정보를 할당하여 데이터베이스에 등록
+	 * 
+	 * @param groupAuthorVO
+	 */
+	public void insertGroupAuthors(
+			String userIds, 
+			String authorCodes,
+			String regYns, 
+			String mberTyCodes) {
+		
+		String[] strUserIds = userIds.split(";");
+		String[] strAuthorCodes = authorCodes.split(";");
+		String[] strRegYns = regYns.split(";");
+		String[] strMberTyCodes = mberTyCodes.split(";");// 2011.08.04 수정 부분
+
+		GroupAuthorVO gaVO = new GroupAuthorVO();
+		for (int i = 0; i < strUserIds.length; i++) {
+			gaVO.setUniqId(strUserIds[i]);
+			gaVO.setAuthorCode(strAuthorCodes[i]);
+			gaVO.setMberTyCode(strMberTyCodes[i]);// 2011.08.04 수정 부분
+			if (strRegYns[i].equals("N"))
+				groupAuthorMapper.insertGroupAuthor(gaVO);
+			else
+				groupAuthorMapper.updateGroupAuthor(gaVO);
+		}
+	}
+
+	/**
+	 * 그룹별 할당된 시스템 메뉴 접근권한을 삭제
+	 * 
+	 * @param groupAuthorVO
+	 */
+	public void deleteGroupAuthors(String userIds) {
+		String[] strUserIds = userIds.split(";");
+		GroupAuthorVO agVO = new GroupAuthorVO();
+		for (int i = 0; i < strUserIds.length; i++) {
+			agVO.setUniqId(strUserIds[i]);
+			groupAuthorMapper.deleteGroupAuthor(agVO);
+		}
+	}
+
 }

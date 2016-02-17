@@ -61,12 +61,12 @@ public class DeptAuthorController {
 		deptAuthorVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", deptAuthorService.selectDeptAuthorList(deptAuthorVO));
-
 		int totCnt = deptAuthorService.selectDeptAuthorListCnt(deptAuthorVO);
-		deptAuthorVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		deptAuthorVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		AuthorVO authorVO = new AuthorVO();
 		model.addAttribute("authorList", authorService.selectAuthorAllList(authorVO));
@@ -89,20 +89,8 @@ public class DeptAuthorController {
 			@RequestParam String regYns, 
 			ModelMap model) {
 
-		String[] strUserIds = userIds.split(";");
-		String[] strAuthorCodes = authorCodes.split(";");
-		String[] strRegYns = regYns.split(";");
-
-		DeptAuthorVO daVO = new DeptAuthorVO();
-		for (int i = 0; i < strUserIds.length; i++) {
-			daVO.setUniqId(strUserIds[i]);
-			daVO.setAuthorCode(strAuthorCodes[i]);
-			if (strRegYns[i].equals("N"))
-				deptAuthorService.insertDeptAuthor(daVO);
-			else
-				deptAuthorService.updateDeptAuthor(daVO);
-		}
-
+		deptAuthorService.insertDeptAuthors(userIds, authorCodes, regYns);
+		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		return WebUtil.redirectJsp(model, "/sec/dpt/listDeptAuthor.do");
 	}
@@ -118,40 +106,10 @@ public class DeptAuthorController {
 			@RequestParam String userIds, 
 			ModelMap model) {
 
-		String[] strUserIds = userIds.split(";");
-
-		DeptAuthorVO daVO = new DeptAuthorVO();
-		for (int i = 0; i < strUserIds.length; i++) {
-			daVO.setUniqId(strUserIds[i]);
-			deptAuthorService.deleteDeptAuthor(daVO);
-		}
+		deptAuthorService.deleteDeptAuthors(userIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		return WebUtil.redirectJsp(model, "/sec/dpt/listDeptAuthor.do");
 	}
 
-	/**
-	 * 부서조회 팝업 
-	 * 
-	 * @param deptAuthorVO
-	 */
-	@RequestMapping("/sec/dpt/listDeptPopup.do")
-	public String listDept(
-			@ModelAttribute DeptAuthorVO deptAuthorVO, 
-			ModelMap model) {
-
-		PaginationInfo paginationInfo = new PaginationInfo();
-		deptAuthorVO.getSearchVO().fillPageInfo(paginationInfo);
-
-		model.addAttribute("resultList", deptAuthorService.selectDeptList(deptAuthorVO));
-
-		int totCnt = deptAuthorService.selectDeptListCnt(deptAuthorVO);
-		deptAuthorVO.getSearchVO().setTotalRecordCount(totCnt);
-
-		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
-
-		return WebUtil.adjustViewName("/sec/dpt/DeptSearchPopup");
-	}
-	
 }

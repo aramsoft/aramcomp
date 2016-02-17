@@ -45,10 +45,6 @@ public class ResourceVO extends BaseVO {
 	/** 롤 등록일시 */
 	private String resourceCreatDe;
 	
-	// helper
-	/** 권한 코드 */
-	private String authorCode;
-
 	// domain
 	/**
 	 * resourceCode attribute 를 리턴한다.
@@ -174,25 +170,6 @@ public class ResourceVO extends BaseVO {
 	 */
 	public void setResourceCreatDe(String resourceCreatDe) {
 		this.resourceCreatDe = resourceCreatDe;
-	}
-
-	// helper
-	/**
-	 * authorCode attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getAuthorCode() {
-		return authorCode;
-	}
-	/**
-	 * authorCode attribute 값을 설정한다.
-	 * 
-	 * @param authorCode
-	 *            String
-	 */
-	public void setAuthorCode(String authorCode) {
-		this.authorCode = authorCode;
 	}
 
 }

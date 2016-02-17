@@ -61,12 +61,12 @@ public class GroupAuthorController {
 		groupAuthorVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", groupAuthorService.selectGroupAuthorList(groupAuthorVO));
-
 		int totCnt = groupAuthorService.selectGroupAuthorListCnt(groupAuthorVO);
-		groupAuthorVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		groupAuthorVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		AuthorVO authorVO = new AuthorVO();
 		model.addAttribute("authorList", authorService.selectAuthorAllList(authorVO));
@@ -84,28 +84,14 @@ public class GroupAuthorController {
 	 */
 	@RequestMapping(value = "/sec/grp/insertGroupAuthor.do")
 	@Secured("ROLE_ADMIN")
-	public String insertGroupAuthor(
+	public String insertGroupAuthors(
 			@RequestParam String userIds, 
 			@RequestParam String authorCodes,
 			@RequestParam String regYns, 
 			@RequestParam String mberTyCodes,// 2011.08.04 수정 부분
 			ModelMap model) {
 
-		String[] strUserIds = userIds.split(";");
-		String[] strAuthorCodes = authorCodes.split(";");
-		String[] strRegYns = regYns.split(";");
-		String[] strMberTyCodes = mberTyCodes.split(";");// 2011.08.04 수정 부분
-
-		GroupAuthorVO agVO = new GroupAuthorVO();
-		for (int i = 0; i < strUserIds.length; i++) {
-			agVO.setUniqId(strUserIds[i]);
-			agVO.setAuthorCode(strAuthorCodes[i]);
-			agVO.setMberTyCode(strMberTyCodes[i]);// 2011.08.04 수정 부분
-			if (strRegYns[i].equals("N"))
-				groupAuthorService.insertGroupAuthor(agVO);
-			else
-				groupAuthorService.updateGroupAuthor(agVO);
-		}
+		groupAuthorService.insertGroupAuthors(userIds, authorCodes, regYns, mberTyCodes);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		return WebUtil.redirectJsp(model, "/sec/grp/listGroupAuthor.do");
@@ -118,17 +104,11 @@ public class GroupAuthorController {
 	 */
 	@RequestMapping(value = "/sec/grp/deleteGroupAuthor.do")
 	@Secured("ROLE_ADMIN")
-	public String deleteGroupAuthor(
+	public String deleteGroupAuthors(
 			@RequestParam String userIds, 
 			ModelMap model) {
 
-		String[] strUserIds = userIds.split(";");
-
-		GroupAuthorVO agVO = new GroupAuthorVO();
-		for (int i = 0; i < strUserIds.length; i++) {
-			agVO.setUniqId(strUserIds[i]);
-			groupAuthorService.deleteGroupAuthor(agVO);
-		}
+		groupAuthorService.deleteGroupAuthors(userIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		return WebUtil.redirectJsp(model, "/sec/grp/listGroupAuthor.do");

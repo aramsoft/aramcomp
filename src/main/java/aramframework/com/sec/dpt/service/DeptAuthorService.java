@@ -81,21 +81,42 @@ public class DeptAuthorService extends EgovAbstractServiceImpl {
 	}
 
 	/**
-	 * 부서목록 조회
+	 * 부서에 해당하는 사용자에게 시스템 메뉴/접근권한을 일괄 할당
 	 * 
 	 * @param deptAuthorVO
 	 */
-	public List<EgovMap> selectDeptList(DeptAuthorVO deptAuthorVO) {
-		return deptAuthorMapper.selectDeptList(deptAuthorVO);
+	public void insertDeptAuthors(
+			String userIds, 
+			String authorCodes,
+			String regYns) {
+		
+		String[] strUserIds = userIds.split(";");
+		String[] strAuthorCodes = authorCodes.split(";");
+		String[] strRegYns = regYns.split(";");
+
+		DeptAuthorVO daVO = new DeptAuthorVO();
+		for (int i = 0; i < strUserIds.length; i++) {
+			daVO.setUniqId(strUserIds[i]);
+			daVO.setAuthorCode(strAuthorCodes[i]);
+			if (strRegYns[i].equals("N"))
+				deptAuthorMapper.insertDeptAuthor(daVO);
+			else
+				deptAuthorMapper.updateDeptAuthor(daVO);
+		}
 	}
 
 	/**
-	 * 부서 목록조회 카운트를 반환한다
+	 * 불필요한 부서권한를 조회하여 데이터베이스에서 삭제
 	 * 
 	 * @param deptAuthorVO
 	 */
-	public int selectDeptListCnt(DeptAuthorVO deptAuthorVO) {
-		return deptAuthorMapper.selectDeptListCnt(deptAuthorVO);
+	public void deleteDeptAuthors(String userIds) {
+		String[] strUserIds = userIds.split(";");
+		DeptAuthorVO daVO = new DeptAuthorVO();
+		for (int i = 0; i < strUserIds.length; i++) {
+			daVO.setUniqId(strUserIds[i]);
+			deptAuthorMapper.deleteDeptAuthor(daVO);
+		}
 	}
-	
+
 }

@@ -88,11 +88,11 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="startIndex" value="${(groupAuthorVO.pageIndex-1) * groupAuthorVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(groupAuthorVO.searchVO.pageIndex-1) * groupAuthorVO.searchVO.recordPerPage}"/>
  	<c:forEach var="result" items="${resultList}" varStatus="status">
   	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${groupAuthorVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${groupAuthorVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
     	<td class="lt_text3">
@@ -162,12 +162,12 @@ var gArguments = new Array();
  ******************************************************** */
 function fn_aram_get_group() {
     var varForm = document.getElementById("groupAuthorVO");
-    if(varForm.searchCondition.value != 'GROUP_ID') {
+    if(varForm["searchVO.searchCondition"].value != 'GROUP_ID') {
         alert("그룹을 선택하세요.");
         return;
     }
     
-	gArguments["groupId"] = varForm.searchKeyword;
+	gArguments["groupId"] = varForm["searchVO.searchKeyword"];
 	var url = "/sec/grp/listGroupPopup.do";
 
 	window.open(url, "p_deptInqire", "width=500px,height=485px,top=100px,left=100px,location=no");
@@ -175,11 +175,11 @@ function fn_aram_get_group() {
 
 function onSearchCondition() {
     var varForm = document.getElementById("groupAuthorVO");
-    varForm.searchKeyword.value = "";
-	if(varForm.searchCondition.value == 'GROUP_ID') {
-		varForm.searchKeyword.readOnly = true;
+    varForm["searchVO.searchKeyword"].value = "";
+	if(varForm["searchVO.searchCondition"].value == 'GROUP_ID') {
+		varForm["searchVO.searchKeyword"].readOnly = true;
 	} else {
-		varForm.searchKeyword.readOnly = false;
+		varForm["searchVO.searchKeyword"].readOnly = false;
 	}
 }
 

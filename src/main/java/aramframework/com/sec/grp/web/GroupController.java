@@ -61,12 +61,12 @@ public class GroupController {
 		groupVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", groupService.selectGroupList(groupVO));
-
 		int totCnt = groupService.selectGroupListCnt(groupVO);
-		groupVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		groupVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sec/grp/GroupList");
 	}
@@ -115,9 +115,10 @@ public class GroupController {
 	@RequestMapping(value = "/sec/grp/editGroup.do")
 	@Secured("ROLE_ADMIN")
 	public String editGroup(
-			@ModelAttribute GroupVO groupVO) {
+			GroupVO groupVO,
+			ModelMap model) {
 
-		groupService.selectGroup(groupVO);
+		model.addAttribute(groupService.selectGroup(groupVO));
 		
 		return WebUtil.adjustViewName("/sec/grp/GroupEdit");
 	}
@@ -173,12 +174,7 @@ public class GroupController {
 			@RequestParam String groupIds, 
 			ModelMap model) {
 
-		String[] strGroupIds = groupIds.split(";");
-		GroupVO gmVO = new GroupVO(); 
-		for (int i = 0; i < strGroupIds.length; i++) {
-			gmVO.setGroupId(strGroupIds[i]);
-			groupService.deleteGroup(gmVO);
-		}
+		groupService.deleteGroups(groupIds);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		return WebUtil.redirectJsp(model, "/sec/grp/listGroup.do");
@@ -198,12 +194,12 @@ public class GroupController {
 		groupVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", groupService.selectGroupList(groupVO));
-
 		int totCnt = groupService.selectGroupListCnt(groupVO);
-		groupVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		groupVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+	
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sec/grp/GroupSearchPopup");
 	}

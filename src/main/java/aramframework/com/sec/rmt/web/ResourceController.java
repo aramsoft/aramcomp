@@ -50,7 +50,7 @@ public class ResourceController {
 	private DefaultBeanValidator beanValidator;
 
 	/**
-	 * 등록된 롤 정보 목록 조회
+	 * 등록된 자원정보 목록 조회
 	 * 
 	 * @param groupVO
 	 */
@@ -65,41 +65,18 @@ public class ResourceController {
 		resourceVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", resourceService.selectResourceList(resourceVO));
-
 		int totCnt = resourceService.selectResourceListCnt(resourceVO);
-		resourceVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		resourceVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sec/rmt/ResourceList");
 	}
 
 	/**
-	 * 불필요한 그룹정보 목록을 화면에 조회하여 데이터베이스에서 삭제
-	 * 
-	 * @param resourceCodes
-	 */
-	@RequestMapping(value = "/sec/rmt/deleteListResource.do")
-	@Secured("ROLE_ADMIN")
-	public String deleteListResource(
-			@RequestParam String resourceCodes, 
-			ModelMap model) {
-
-		String[] strResourceCodes = resourceCodes.split(";");
-
-		ResourceVO rmVO = new ResourceVO(); 
-		for (int i = 0; i < strResourceCodes.length; i++) {
-			rmVO.setResourceCode(strResourceCodes[i]);
-			resourceService.deleteResource(rmVO);
-		}
-		
-		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/sec/rmt/listResource.do");
-	}
-
-	/**
-	 * 롤 등록화면 이동
+	 * 자원정보 등록화면 이동
 	 * 
 	 * @param resourceVO
 	 */
@@ -114,7 +91,7 @@ public class ResourceController {
 	}
 
 	/**
-	 * 시스템 메뉴에 따른 접근권한, 데이터 입력, 수정, 삭제의 권한 롤을 등록
+	 * 자원정보 등록
 	 * 
 	 * @param resourceVO
 	 */
@@ -137,16 +114,17 @@ public class ResourceController {
 	}
 
 	/**
-	 * 롤 수정화면 이동
+	 * 자원정보 수정화면 이동
 	 * 
 	 * @param resourceVO
 	 */
 	@RequestMapping(value = "/sec/rmt/editResource.do")
 	@Secured("ROLE_ADMIN")
 	public String editResource(
-			@ModelAttribute ResourceVO resourceVO) {
+			ResourceVO resourceVO,
+			ModelMap model) {
 
-		resourceService.selectResource(resourceVO);
+		model.addAttribute(resourceService.selectResource(resourceVO));
 
 		cmmUseService.populateCmmCodeList("COM029", "COM029_resourceType");
 
@@ -154,7 +132,7 @@ public class ResourceController {
 	}
 
 	/**
-	 * 시스템 메뉴에 따른 접근권한, 데이터 입력, 수정, 삭제의 권한 롤을 수정
+	 * 자원정보 수정
 	 * 
 	 * @param resourceVO
 	 */
@@ -177,7 +155,7 @@ public class ResourceController {
 	}
 
 	/**
-	 * 불필요한 롤정보를 화면에 조회하여 데이터베이스에서 삭제
+	 * 자원정보 삭제
 	 * 
 	 * @param resourceVO
 	 */
@@ -189,6 +167,23 @@ public class ResourceController {
 
 		resourceService.deleteResource(resourceVO);
 
+		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
+        return WebUtil.redirectJsp(model, "/sec/rmt/listResource.do");
+	}
+
+	/**
+	 * 불필요한 자원정보 목록을 화면에 조회하여 데이터베이스에서 삭제
+	 * 
+	 * @param resourceCodes
+	 */
+	@RequestMapping(value = "/sec/rmt/deleteListResource.do")
+	@Secured("ROLE_ADMIN")
+	public String deleteListResources(
+			@RequestParam String resourceCodes, 
+			ModelMap model) {
+
+		resourceService.deleteResources(resourceCodes);
+		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
         return WebUtil.redirectJsp(model, "/sec/rmt/listResource.do");
 	}

@@ -67,12 +67,12 @@ public class LoginPolicyController {
 		loginPolicyVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", loginPolicyService.selectLoginPolicyList(loginPolicyVO));
-
 		int totCnt = loginPolicyService.selectLoginPolicyListCnt(loginPolicyVO);
-		loginPolicyVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		loginPolicyVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+	
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uat/uap/LoginPolicyList");
 	}
@@ -124,9 +124,10 @@ public class LoginPolicyController {
 	@RequestMapping("/uat/uap/editLoginPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String editLoginPolicy(
-			@ModelAttribute LoginPolicyVO loginPolicyVO) {
+			LoginPolicyVO loginPolicyVO,
+			ModelMap model) {
 
-		loginPolicyService.selectLoginPolicy(loginPolicyVO);
+		model.addAttribute(loginPolicyService.selectLoginPolicy(loginPolicyVO));
 
 		return WebUtil.adjustViewName("/uat/uap/LoginPolicyEdit");
 	}

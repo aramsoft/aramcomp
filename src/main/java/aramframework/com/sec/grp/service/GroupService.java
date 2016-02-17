@@ -103,4 +103,18 @@ public class GroupService extends EgovAbstractServiceImpl {
 		groupMapper.deleteGroup(groupVO);
 	}
 
+	/**
+	 * 불필요한 그룹정보를 화면에 조회하여 데이터베이스에서 삭제
+	 * 
+	 * @param groupVO
+	 */
+	public void deleteGroups(String groupIds) {
+		String[] strGroupIds = groupIds.split(";");
+		GroupVO groupVO = new GroupVO(); 
+		for (int i = 0; i < strGroupIds.length; i++) {
+			groupVO.setGroupId(strGroupIds[i]);
+			groupMapper.deleteGroup(groupVO);
+		}
+	}
+
 }

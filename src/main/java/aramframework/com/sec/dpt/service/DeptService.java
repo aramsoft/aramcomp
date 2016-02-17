@@ -103,4 +103,18 @@ public class DeptService extends EgovAbstractServiceImpl {
 		deptMapper.deleteDept(deptVO);
 	}
 	
+	/**
+	 * 기 등록된 부서정보를 삭제한다.
+	 * 
+	 * @param deptVO
+	 */
+	public void deleteDepts(String orgnztIds) {
+		String[] strOrgnztIds = orgnztIds.split(";");
+		DeptVO dmVO = new DeptVO();
+		for (int i = 0; i < strOrgnztIds.length; i++) {
+			dmVO.setOrgnztId(strOrgnztIds[i]);
+			deptMapper.deleteDept(dmVO);
+		}
+	}
+	
 }

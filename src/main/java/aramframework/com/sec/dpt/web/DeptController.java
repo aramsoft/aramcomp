@@ -61,12 +61,12 @@ public class DeptController {
 		deptVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", deptService.selectDeptList(deptVO));
-
 		int totCnt = deptService.selectDeptListCnt(deptVO);
-		deptVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		deptVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sec/dpt/DeptList");
 	}
@@ -115,9 +115,10 @@ public class DeptController {
 	@RequestMapping(value = "/sec/dpt/editDept.do")
 	@Secured("ROLE_ADMIN")
 	public String editDept(
-			@ModelAttribute DeptVO deptVO) {
+			DeptVO deptVO,
+			ModelMap model) {
 
-		deptService.selectDept(deptVO);
+		model.addAttribute(deptService.selectDept(deptVO));
 		
 		return WebUtil.adjustViewName("/sec/dpt/DeptEdit");
 	}
@@ -173,16 +174,34 @@ public class DeptController {
 			@RequestParam String orgnztIds, 
 			ModelMap model) {
 
-		String[] strOrgnztIds = orgnztIds.split(";");
-
-		DeptVO dmVO = new DeptVO();
-		for (int i = 0; i < strOrgnztIds.length; i++) {
-			dmVO.setOrgnztId(strOrgnztIds[i]);
-			deptService.deleteDept(dmVO);
-		}
-
+		deptService.deleteDepts(orgnztIds);
+		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 	    return WebUtil.redirectJsp(model, "/sec/dpt/listDept.do");
 	}
 
+	/**
+	 * 부서조회 팝업 
+	 * 
+	 * @param deptAuthorVO
+	 */
+	@RequestMapping("/sec/dpt/listDeptPopup.do")
+	public String listDeptSearch(
+			@ModelAttribute DeptVO deptVO, 
+			ModelMap model) {
+
+		PaginationInfo paginationInfo = new PaginationInfo();
+		deptVO.getSearchVO().fillPageInfo(paginationInfo);
+
+		model.addAttribute("resultList", deptService.selectDeptList(deptVO));
+
+		int totCnt = deptService.selectDeptListCnt(deptVO);
+		deptVO.getSearchVO().setTotalRecordCount(totCnt);
+
+		paginationInfo.setTotalRecordCount(totCnt);
+		model.addAttribute("paginationInfo", paginationInfo);
+
+		return WebUtil.adjustViewName("/sec/dpt/DeptSearchPopup");
+	}
+	
 }

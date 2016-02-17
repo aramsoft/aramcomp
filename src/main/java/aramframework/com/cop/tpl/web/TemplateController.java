@@ -68,12 +68,12 @@ public class TemplateController {
 		templateInfVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", tmplatService.selectTemplateInfs(templateInfVO));
-
 		int totCnt = tmplatService.selectTemplateInfsCnt(templateInfVO);
-		templateInfVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		templateInfVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/tpl/TemplateList");
 	}
@@ -128,12 +128,13 @@ public class TemplateController {
 	@RequestMapping("/cop/tpl/editTemplate.do")
 	@Secured("ROLE_ADMIN")
 	public String editTemplate(
-			@ModelAttribute TemplateInfVO templateInfVO) {
+			TemplateInfVO templateInfVO,
+			ModelMap model) {
+
+		model.addAttribute(tmplatService.selectTemplateInf(templateInfVO));
 
 		// 템플릿구분
 		cmmUseService.populateCmmCodeList("COM005", "COM005_tmplatSe");
-
-		tmplatService.selectTemplateInf(templateInfVO);
 
 		return WebUtil.adjustViewName("/cop/tpl/TemplateEdit");
 	}
@@ -197,10 +198,7 @@ public class TemplateController {
 
 		String typeFlag = request.getParameter("typeFlag");
 
-		if ("CLB".equals(typeFlag)) {
-			templateInfVO.setTypeFlag(typeFlag);
-			templateInfVO.setTmplatSeCode("TMPT03");
-		} else if ("CMY".equals(typeFlag)) {
+		if ("CMY".equals(typeFlag)) {
 			templateInfVO.setTypeFlag(typeFlag);
 			templateInfVO.setTmplatSeCode("TMPT02");
 		} else {
@@ -213,12 +211,12 @@ public class TemplateController {
 		templateInfVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", tmplatService.selectTemplateInfs(templateInfVO));
-
 		int totCnt = tmplatService.selectTemplateInfsCnt(templateInfVO);
-		templateInfVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		templateInfVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/tpl/TemplatePopup");
 	}

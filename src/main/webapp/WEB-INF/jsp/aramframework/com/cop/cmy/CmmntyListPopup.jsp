@@ -42,7 +42,7 @@
 	<h2>커뮤니티 목록</h2>
 </div>
 
-<form:form commandName="searchVO" action="" method="post">
+<form:form commandName="communityVO" action="" method="post">
 
 <div id="search_area">
 	<div class="button_area">
@@ -84,12 +84,12 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(communityVO.searchVO.pageIndex-1) * communityVO.searchVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
 	<tr class="link" onClick="javascript:fn_aram_choose('<c:out value="${result.cmmntyId}"/>','<c:out value="${result.cmmntyNm}"/>'); return false;">
  
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${communityVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 	    <td class="lt_text3"><c:out value="${result.cmmntyNm}"/></td>
@@ -122,14 +122,14 @@ function press(event) {
  * 페이징 처리 함수
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
-    var varForm = document.getElementById("searchVO");
+    var varForm = document.getElementById("communityVO");
     varForm["searchVO.pageIndex"].value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/cop/cmy/listCommunityPopup.do";
     varForm.submit();
 }
 
 function fn_aram_search(){
-    var varForm = document.getElementById("searchVO");
+    var varForm = document.getElementById("communityVO");
     varForm["searchVO.pageIndex"].value = '1';
     varForm.action = "${pageContext.request.contextPath}/cop/cmy/listCommunityPopup.do";
     varForm.submit();

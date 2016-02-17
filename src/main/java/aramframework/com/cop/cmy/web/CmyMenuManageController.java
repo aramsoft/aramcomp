@@ -100,12 +100,12 @@ public class CmyMenuManageController {
 		communityMenuVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", cmyMenuManageService.selectMenuManageList(communityMenuVO));
-
 		int totCnt = cmyMenuManageService.selectMenuManageListCnt(communityMenuVO);
-		communityMenuVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		communityMenuVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/cmy/CmyMenuList");
 	}
@@ -168,7 +168,8 @@ public class CmyMenuManageController {
 	@RequestMapping(value = "/cop/cmy/editMenu.do")
 	@Secured("ROLE_USER")
 	public String editMenu(
-			@ModelAttribute CommunityMenuVO communityMenuVO) {
+			CommunityMenuVO communityMenuVO,
+			ModelMap model) {
 	
 		checkAuthorityManager(); // server-side 권한 확인
 
@@ -178,7 +179,7 @@ public class CmyMenuManageController {
 			communityMenuVO.setTrgetId(WebUtil.getCurTrgetId());
 		}
 		
-		cmyMenuManageService.selectMenuManage(communityMenuVO);
+		model.addAttribute(cmyMenuManageService.selectMenuManage(communityMenuVO));
 
 		return WebUtil.adjustViewName("/cop/cmy/CmyMenuEdit");
 	}

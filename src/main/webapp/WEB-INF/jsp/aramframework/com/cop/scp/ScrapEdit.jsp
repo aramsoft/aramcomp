@@ -82,7 +82,7 @@
 	    	<span class="norequired_icon"></span>
 	    	조회수
 	    </th>
-	    <td width="20%"><c:out value="${boardVO.inqireCo}" /></td>
+	    <td width="20%"><c:out value="${boardVO.rdcnt}" /></td>
 	</tr>    
 	<tr> 
 	    <th>

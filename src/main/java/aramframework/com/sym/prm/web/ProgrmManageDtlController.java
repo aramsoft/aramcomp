@@ -63,17 +63,16 @@ public class ProgrmManageDtlController {
 			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO, 
 			ModelMap model) {
 
-		/** pageing */
 		PaginationInfo paginationInfo = new PaginationInfo();
 		progrmManageDtlVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", progrmManageDtlService.selectProgrmChangeRequstList(progrmManageDtlVO));
-
 		int totCnt = progrmManageDtlService.selectProgrmChangeRequstListCnt(progrmManageDtlVO);
-		progrmManageDtlVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		progrmManageDtlVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/prm/ProgramChangeRequstList");
 	}
@@ -128,9 +127,10 @@ public class ProgrmManageDtlController {
 	@RequestMapping(value = "/sym/prm/editProgramChangeRequst.do")
 	@Secured("ROLE_USER")
 	public String editProgramChangeRequst(
-			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO) {
+			ProgrmManageDtlVO progrmManageDtlVO,
+			ModelMap model) {
 
-		progrmManageDtlService.selectProgrmChangeRequst(progrmManageDtlVO);
+		model.addAttribute(progrmManageDtlService.selectProgrmChangeRequst(progrmManageDtlVO));
 
 		return WebUtil.adjustViewName("/sym/prm/ProgramChangeRequstEdit");
 	}
@@ -197,17 +197,16 @@ public class ProgrmManageDtlController {
 			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO, 
 			ModelMap model) {
 
-		/** pageing */
 		PaginationInfo paginationInfo = new PaginationInfo();
 		progrmManageDtlVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", progrmManageDtlService.selectChangeRequstProcessList(progrmManageDtlVO));
-
 		int totCnt = progrmManageDtlService.selectChangeRequstProcessListCnt(progrmManageDtlVO);
-		progrmManageDtlVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		progrmManageDtlVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/prm/ProgramChangeProcessList");
 	}
@@ -220,15 +219,18 @@ public class ProgrmManageDtlController {
 	@RequestMapping(value = "/sym/prm/editProgramChangeProcess.do")
 	@Secured("ROLE_ADMIN")
 	public String editProgramChangeProcess(
-			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO) {
+			ProgrmManageDtlVO progrmManageDtlVO,
+			ModelMap model) {
 	
-		progrmManageDtlService.selectProgrmChangeRequst(progrmManageDtlVO);
+		progrmManageDtlVO = progrmManageDtlService.selectProgrmChangeRequst(progrmManageDtlVO);
 
 		if (progrmManageDtlVO.getOpetrId() == null) {
 			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 			progrmManageDtlVO.setOpetrId(loginVO.getId());
 		}
 
+		model.addAttribute(progrmManageDtlVO);
+		
 		return WebUtil.adjustViewName("/sym/prm/ProgramChangeProcessEdit");
 	}
 
@@ -311,17 +313,16 @@ public class ProgrmManageDtlController {
 			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO, 
 			ModelMap model) {
 
-		/** pageing */
 		PaginationInfo paginationInfo = new PaginationInfo();
 		progrmManageDtlVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", progrmManageDtlService.selectProgrmChangeHistoryList(progrmManageDtlVO));
-
 		int totCnt = progrmManageDtlService.selectProgrmChangeHistoryListCnt(progrmManageDtlVO);
-		progrmManageDtlVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		progrmManageDtlVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/prm/ProgramChgHstList");
 	}
@@ -335,9 +336,10 @@ public class ProgrmManageDtlController {
 	@RequestMapping(value = "/sym/prm/detailProgramChgHst.do")
 	@Secured("ROLE_USER")
 	public String detailProgramChgHst(
-			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO) {
+			ProgrmManageDtlVO progrmManageDtlVO,
+			ModelMap model) {
 
-		progrmManageDtlService.selectProgrmChangeRequst(progrmManageDtlVO);
+		model.addAttribute(progrmManageDtlService.selectProgrmChangeRequst(progrmManageDtlVO));
 		
 		return WebUtil.adjustViewName("/sym/prm/ProgramChgHstDetail");
 	}

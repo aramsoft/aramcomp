@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.constant.CacheKey;
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cop.bbs.domain.BoardMasterVO;
 import aramframework.com.cop.bbs.domain.BoardUseInfVO;
@@ -86,8 +85,8 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param searchVO
 	 */
-	public List<EgovMap> selectCommunityInfs(SearchVO searchVO) {
-		return communityManageMapper.selectCommunityInfs(searchVO);
+	public List<EgovMap> selectCommunityList(CommunityVO communityVO) {
+		return communityManageMapper.selectCommunityList(communityVO);
 	}
 
 	/**
@@ -95,8 +94,8 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param searchVO
 	 */
-	public int selectCommunityInfsCnt(SearchVO searchVO) {
-		return communityManageMapper.selectCommunityInfsCnt(searchVO);
+	public int selectCommunityListCnt(CommunityVO communityVO) {
+		return communityManageMapper.selectCommunityListCnt(communityVO);
 	}
 	
 	/**
@@ -553,7 +552,8 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
         if( communityVO == null ) {
         	communityVO = new CommunityVO();
     		communityVO.setCmmntyId(cmmntyId);
-    		selectCommunityInf(communityVO);
+    		
+    		communityVO = selectCommunityInf(communityVO);
     		
         	cacheMap.put(CacheKey.CMY_HOME, communityVO);
         }

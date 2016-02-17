@@ -2,7 +2,6 @@ package aramframework.com.cop.cmy.dao;
 
 import java.util.List;
 
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cop.bbs.domain.BoardUseInfVO;
 import aramframework.com.cop.cmy.domain.CommunityMenuVO;
 import aramframework.com.cop.cmy.domain.CommunityUserVO;
@@ -51,14 +50,14 @@ public interface CommunityManageMapper {
 	 * 
 	 * @param searchVO
 	 */
-	public List<EgovMap> selectCommunityInfs(SearchVO searchVO);
+	public List<EgovMap> selectCommunityList(CommunityVO communityVO);
 
 	/**
 	 * 커뮤니티 정보 목록에 대한 전체 건수를 조회한다.
 	 * 
 	 * @param searchVO
 	 */
-	public int selectCommunityInfsCnt(SearchVO searchVO);
+	public int selectCommunityListCnt(CommunityVO communityVO);
 
 	/**
 	 * HomeUrl로 부터 커뮤니티 ID를 조회한다.

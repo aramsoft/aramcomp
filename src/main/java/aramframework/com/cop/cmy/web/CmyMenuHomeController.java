@@ -16,7 +16,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -82,9 +81,7 @@ public class CmyMenuHomeController {
 	public String directCmmntyHomePage(
 			@PathVariable String appId) {
 
-		String homeUrl = "/apps/" + appId;
-
-		String cmmntyId = cmmntyService.selectCommntyHomeUrl(homeUrl);
+		String cmmntyId = cmmntyService.selectCommntyHomeUrl("/apps/"+appId);
 		if( cmmntyId == null ) {
 			throw new RuntimeException("cmmntyId is not found !!!");
 		}
@@ -104,11 +101,9 @@ public class CmyMenuHomeController {
 			@PathVariable String menuAlias,
 			HttpServletRequest request) { 
 
-		String homeUrl = "/apps/" + appId;
-		LOG.debug("homeUrl = " + homeUrl);
 		LOG.debug("request URI = " + request.getRequestURI());
 		
-		String cmmntyId = cmmntyService.selectCommntyHomeUrl(homeUrl);
+		String cmmntyId = cmmntyService.selectCommntyHomeUrl("/apps/"+appId);
 		if( cmmntyId == null ) {
 			throw new RuntimeException("cmmntyId is not found !!!");
 		}
@@ -148,7 +143,7 @@ public class CmyMenuHomeController {
 
 		cmmntyId = WebUtil.getOriginalId(cmmntyId, "CMMNTY_");
 
-		String contentUrl = "/content/board/"+bbsId+ "/articles";
+		String contentUrl = "/content/board/"+bbsId+"/articles";
 
 		return cmmntyMainPageHandler(cmmntyId, "", contentUrl);
 	}
@@ -168,7 +163,7 @@ public class CmyMenuHomeController {
 
 		cmmntyId = WebUtil.getOriginalId(cmmntyId, "CMMNTY_");
 
-		String contentUrl = "/content/board/"+bbsId+ "/article/"+nttId;
+		String contentUrl = "/content/board/"+bbsId+"/article/"+nttId;
 
 		return cmmntyMainPageHandler(cmmntyId, "", contentUrl);
 	}
@@ -371,7 +366,6 @@ public class CmyMenuHomeController {
 		BoardMasterVO bMasterVO[] = new BoardMasterVO[6];
 		
 		// 방명록 제외 처리
-		// 방명록 제외 처리
 		for (int i = 0; i < bbsList.size(); i++) {
 			if (bbsList.get(i).getBbsTyCode().equals(BBSBoardService.BBS_TYPE_VISIT)) {
 				bbsList.remove(i);
@@ -421,7 +415,7 @@ public class CmyMenuHomeController {
 	 */
 	@RequestMapping("/cop/cmy/previewCmmntyMainPage.do")
 	public String previewCmmntyMainPage(
-			@ModelAttribute CommunityVO communityVO, 
+			CommunityVO communityVO, 
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -435,7 +429,7 @@ public class CmyMenuHomeController {
 		communityUserVO.setEmplyrId(loginVO.getUniqId());
 		communityUserVO.setEmplyrNm("관리자");
 
-		model.addAttribute("communityUserVO", communityUserVO);
+		model.addAttribute(communityUserVO);
 
 		// --------------------------------
 		// 게시판 목록 정보 처리
@@ -475,8 +469,9 @@ public class CmyMenuHomeController {
 		}
 
 		model.addAttribute("preview", "true");
-		
 		model.addAttribute("contentUrl", "/cop/cmy/previewCmmntyMainContents.do");
+		
+		model.addAttribute(communityVO);
 		
 		String tmplatCours = communityVO.getSearchVO().getSearchKeyword();
 		return tmplatCours;
@@ -489,7 +484,7 @@ public class CmyMenuHomeController {
 	 */
 	@RequestMapping("/cop/cmy/previewCmmntyMainContents.do")
 	public String previewCmmntyMainContents(
-			@ModelAttribute CommunityVO communityVO, 
+			CommunityVO communityVO, 
 			ModelMap model) {
 		
 		// --------------------------------
@@ -527,6 +522,8 @@ public class CmyMenuHomeController {
 
 		model.addAttribute("articleList", target);
 		model.addAttribute("preview", "true");
+
+		model.addAttribute(communityVO);
 
 		return WebUtil.adjustViewName("/cop/cmy/CmmntyMainContents");
 	}

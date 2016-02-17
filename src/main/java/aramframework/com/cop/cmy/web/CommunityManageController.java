@@ -15,7 +15,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -80,19 +79,19 @@ public class CommunityManageController {
 	 */
 	@RequestMapping("/cop/cmy/listCommunityPopup.do")
 	public String listCommunityPopup(
-			@ModelAttribute SearchVO searchVO, 
+			@ModelAttribute CommunityVO communityVO, 
 			ModelMap model) {
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
-		searchVO.fillPageInfo(paginationInfo);
+		communityVO.getSearchVO().fillPageInfo(paginationInfo);
 
-		model.addAttribute("resultList", cmmntyService.selectCommunityInfs(searchVO));
+		model.addAttribute("resultList", cmmntyService.selectCommunityList(communityVO));
+		int totCnt = cmmntyService.selectCommunityListCnt(communityVO);
 
-		int totCnt = cmmntyService.selectCommunityInfsCnt(searchVO);
-		searchVO.setTotalRecordCount(totCnt);
-
+		communityVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/cmy/CmmntyListPopup");
 	}
@@ -127,13 +126,13 @@ public class CommunityManageController {
 		PaginationInfo paginationInfo = new PaginationInfo();
 		communityVO.getSearchVO().fillPageInfo(paginationInfo);
 
-		model.addAttribute("resultList", cmmntyService.selectCommunityInfs(communityVO.getSearchVO()));
+		model.addAttribute("resultList", cmmntyService.selectCommunityList(communityVO));
+		int totCnt = cmmntyService.selectCommunityListCnt(communityVO);
 
-		int totCnt = cmmntyService.selectCommunityInfsCnt(communityVO.getSearchVO());
 		communityVO.getSearchVO().setTotalRecordCount(totCnt);
-
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/cmy/CmmntyList");
 	}
@@ -147,9 +146,8 @@ public class CommunityManageController {
 	@Secured("ROLE_USER")
 	public String detailCommunity(
 			HttpServletRequest request, 
-			@ModelAttribute CommunityVO communityVO, 
-			ModelMap model) 
-	throws Exception {
+			CommunityVO communityVO, 
+			ModelMap model) {
 		
 		checkAuthorityManager(); // server-side 권한 확인
 
@@ -160,7 +158,7 @@ public class CommunityManageController {
 			communityVO.setCmmntyId(trgetId);
 		}
 		
-		cmmntyService.selectCommunityInf(communityVO);
+		communityVO = cmmntyService.selectCommunityInf(communityVO);
 
 		// -----------------------
 		// 제공 URL
@@ -173,6 +171,7 @@ public class CommunityManageController {
 		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
 			model.addAttribute("isAdmin", "true");
 		}
+		model.addAttribute(communityVO);
 		
 		return WebUtil.adjustViewName("/cop/cmy/CmmntyDetail");
 	}
@@ -238,12 +237,12 @@ public class CommunityManageController {
 	@RequestMapping("/cop/cmy/editCommunity.do")
 	@Secured("ROLE_USER")
 	public String editCommunity(
-			@ModelAttribute CommunityVO communityVO, 
+			CommunityVO communityVO, 
 			ModelMap model) {
 
 		checkAuthorityManager(); // server-side 권한 확인
 
-		cmmntyService.selectCommunityInf(communityVO);
+		communityVO = cmmntyService.selectCommunityInf(communityVO);
 
 		model.addAttribute("manager", cmmntyService.selectCommunityManagerInf(communityVO));
 		model.addAttribute("bbsList", cmmntyService.selectCommunityBBSUseInf(communityVO));
@@ -251,6 +250,8 @@ public class CommunityManageController {
 		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
 			model.addAttribute("isAdmin", "true");
 		}
+		model.addAttribute(communityVO);
+		
 		return WebUtil.adjustViewName("/cop/cmy/CmmntyEdit");
 	}
 

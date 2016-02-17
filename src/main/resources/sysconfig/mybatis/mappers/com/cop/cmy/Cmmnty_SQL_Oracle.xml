@@ -34,7 +34,7 @@
 	</select>	
 
 	<!-- 목록조회  -->
-	<select id="selectCommunityInfs" resultType="egovMap" >
+	<select id="selectCommunityList" resultType="egovMap" >
 		<![CDATA[
             SELECT *
               FROM (
@@ -77,7 +77,7 @@
 	</select>	
 	
 	<!-- 목록조회_게시물 총갯수  -->
-	<select id="selectCommunityInfsCnt" resultType="int" >
+	<select id="selectCommunityListCnt" resultType="int" >
 		<![CDATA[
 			SELECT COUNT(a.CMMNTY_ID)
 			  FROM COMTN_CMMNTY a

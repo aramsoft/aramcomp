@@ -76,12 +76,12 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="startIndex" value="${(progrmManageDtlVO.pageIndex-1) * progrmManageDtlVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(progrmManageDtlVO.searchVO.pageIndex-1) * progrmManageDtlVO.searchVO.recordPerPage}"/>
  	<c:forEach var="result" items="${resultList}" varStatus="status">
   	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.progrmFileNm}"/>','<c:out value="${result.rqestNo}"/>'); return false;">
   	
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${progrmManageDtlVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${progrmManageDtlVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
     	<td class="lt_text3"><c:out value="${result.progrmFileNm}"/></td>

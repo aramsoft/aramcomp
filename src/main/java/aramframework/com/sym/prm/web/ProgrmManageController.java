@@ -63,12 +63,12 @@ public class ProgrmManageController {
 		progrmManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", progrmManageService.selectProgrmList(progrmManageVO));
-
 		int totCnt = progrmManageService.selectProgrmListCnt(progrmManageVO);
-		progrmManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		progrmManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/prm/ProgramPopup");
 	}
@@ -89,12 +89,12 @@ public class ProgrmManageController {
 		progrmManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", progrmManageService.selectProgrmList(progrmManageVO));
-
 		int totCnt = progrmManageService.selectProgrmListCnt(progrmManageVO);
-		progrmManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		progrmManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/prm/ProgramList");
 	}
@@ -172,9 +172,10 @@ public class ProgrmManageController {
 	@RequestMapping(value = "/sym/prm/editProgram.do")
 	@Secured("ROLE_ADMIN")
 	public String editProgram(
-			@ModelAttribute ProgrmManageVO progrmManageVO) {
+			ProgrmManageVO progrmManageVO,
+			ModelMap model) {
 		
-		progrmManageService.selectProgrm(progrmManageVO);
+		model.addAttribute(progrmManageService.selectProgrm(progrmManageVO));
 
 		return WebUtil.adjustViewName("/sym/prm/ProgramEdit");
 	}

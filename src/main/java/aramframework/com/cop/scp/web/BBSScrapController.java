@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
-import aramframework.com.cop.bbs.domain.BoardMasterVO;
 import aramframework.com.cop.bbs.domain.BoardVO;
 import aramframework.com.cop.bbs.service.BBSBoardService;
 import aramframework.com.cop.bbs.service.BBSMasterService;
@@ -75,12 +74,12 @@ public class BBSScrapController {
 		scrapVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", bbsScrapService.selectScrapList(scrapVO));
-
 		int totCnt = bbsScrapService.selectScrapListCnt(scrapVO);
-		scrapVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		scrapVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/scp/ScrapList");
 	}
@@ -93,19 +92,20 @@ public class BBSScrapController {
 	@RequestMapping("/cop/scp/detailScrap.do")
 	@Secured("ROLE_USER")
 	public String detailScrap(
-			@ModelAttribute ScrapVO scrapVO, 
+			ScrapVO scrapVO, 
 			ModelMap model) {
 
-		bbsScrapService.selectScrap(scrapVO);
+		scrapVO = bbsScrapService.selectScrap(scrapVO);
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		model.addAttribute("sessionUniqId", loginVO.getUniqId());
+		model.addAttribute("uniqId", loginVO.getUniqId());
 
 		// -------------------------------------
 		// 게시판 내용 취득
 		// -------------------------------------
-		model.addAttribute("boardVO", getBoardInfo(scrapVO));
-
+		model.addAttribute(getBoardInfo(scrapVO));
+		model.addAttribute(scrapVO);
+		
 		return WebUtil.adjustViewName("/cop/scp/ScrapDetail");
 	}
 
@@ -119,13 +119,9 @@ public class BBSScrapController {
 		BoardVO boardVO = new BoardVO();
 		boardVO.setBbsId(scrapVO.getBbsId());
 		boardVO.setNttId(scrapVO.getNttId());
-
-		BoardMasterVO boardMasterVO = bbsMasterService.selectBBSMasterInf(boardVO.getBbsId());
-		boardVO.setBoardMasterVO(boardMasterVO);
-
-		boardService.selectBoardArticle(boardVO);
-
-		return boardVO;
+		boardVO.setBoardMasterVO(bbsMasterService.selectBBSMasterInf(boardVO.getBbsId()));
+		
+		return boardService.selectBoardArticle(boardVO);
 	}
 
 	/**
@@ -142,7 +138,7 @@ public class BBSScrapController {
 		// -------------------------------------
 		// 게시판 내용 취득
 		// -------------------------------------
-		model.addAttribute("boardVO", getBoardInfo(scrapVO));
+		model.addAttribute(getBoardInfo(scrapVO));
 
 		return WebUtil.adjustViewName("/cop/scp/ScrapRegist");
 	}
@@ -165,7 +161,7 @@ public class BBSScrapController {
 			// -------------------------------------
 			// 게시판 내용 취득
 			// -------------------------------------
-			model.addAttribute("boardVO", getBoardInfo(scrapVO));
+			model.addAttribute(getBoardInfo(scrapVO));
 
 			return WebUtil.adjustViewName("/cop/scp/ScrapRegist");
 		}
@@ -187,15 +183,16 @@ public class BBSScrapController {
 	@RequestMapping("/cop/scp/editScrap.do")
 	@Secured("ROLE_USER")
 	public String editScrap(
-			@ModelAttribute ScrapVO scrapVO, 
+			ScrapVO scrapVO, 
 			ModelMap model) {
 
-		bbsScrapService.selectScrap(scrapVO);
+		scrapVO = bbsScrapService.selectScrap(scrapVO);
 
 		// -------------------------------------
 		// 게시판 내용 취득
 		// -------------------------------------
-		model.addAttribute("boardVO", getBoardInfo(scrapVO));
+		model.addAttribute(getBoardInfo(scrapVO));
+		model.addAttribute(scrapVO);
 
 		return WebUtil.adjustViewName("/cop/scp/ScrapEdit");
 	}
@@ -214,11 +211,10 @@ public class BBSScrapController {
 
 		beanValidator.validate(scrapVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-
 			// -------------------------------------
 			// 게시판 내용 취득
 			// -------------------------------------
-			model.addAttribute("boardVO", getBoardInfo(scrapVO));
+			model.addAttribute(getBoardInfo(scrapVO));
 
 			return WebUtil.adjustViewName("/cop/scp/ScrapEdit");
 		}
@@ -263,8 +259,7 @@ public class BBSScrapController {
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		scrapVO.setUniqId(loginVO.getUniqId());
 
-		scrapVO.getSearchVO().setFirstIndex(0);
-		scrapVO.getSearchVO().setRecordPerPage(5);
+		scrapVO.getSearchVO().setSizeAndOffset(5, 0);
 
 		model.addAttribute("resultList", bbsScrapService.selectScrapList(scrapVO));
 

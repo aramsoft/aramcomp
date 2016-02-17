@@ -171,9 +171,6 @@
 	    	<c:when test="${not empty boardUseInfVO.cmmntyNm}">
 	    		<c:out value="${boardUseInfVO.cmmntyNm}" />
 	    	</c:when>
-	    	<c:when test="${not empty boardUseInfVO.clbNm}">
-   				<c:out value="${boardUseInfVO.clbCmmntyNm}" /> / <c:out value="${boardUseInfVO.clbNm}" />
-   			</c:when>
 	    	<c:when test="${not empty boardUseInfVO.useAt}">
    				(시스템  활용)
    			</c:when>

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.ComponentChecker;
@@ -67,19 +66,19 @@ public class BBSMasterController {
 	 */
 	@RequestMapping("/cop/bbs/listBoardMasterPopup.do")
 	public String listBoardMasterPopup(
-			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute("boardMasterVO") BoardMasterVO boardMasterVO,
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		searchVO.fillPageInfo(paginationInfo);
+		boardMasterVO.getSearchVO().fillPageInfo(paginationInfo);
 
-		model.addAttribute("resultList", bbsMasterService.selectNotUsedBdMstrList(searchVO));
+		model.addAttribute("resultList", bbsMasterService.selectNotUsedBdMstrList(boardMasterVO));
+		int totCnt = bbsMasterService.selectNotUsedBdMstrListCnt(boardMasterVO);
 
-		int totCnt = bbsMasterService.selectNotUsedBdMstrListCnt(searchVO);
-		searchVO.setTotalRecordCount(totCnt);
-
+		boardMasterVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+		
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/bbs/BoardMasterPopup");
 	}
@@ -100,12 +99,12 @@ public class BBSMasterController {
 		boardMasterVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", bbsMasterService.selectBBSMasterInfs(boardMasterVO));
-
 		int totCnt = bbsMasterService.selectBBSMasterInfsCnt(boardMasterVO);
-		boardMasterVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		boardMasterVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+	
+		model.addAttribute(paginationInfo);
 
 		if (ComponentChecker.hasComponent("communityManageService")) {// 2011.09.15
 			model.addAttribute("useCommunity", "true");
@@ -188,20 +187,11 @@ public class BBSMasterController {
 	@Secured("ROLE_ADMIN")
 	public String editBoardMaster(
 			HttpServletRequest request,
-			@ModelAttribute BoardMasterVO boardMasterVO,
+			BoardMasterVO boardMasterVO,
 			BoardUseInfVO boardUseInfVO, 
 			ModelMap model) {
 	
-		bbsMasterService.selectBBSMasterInf(boardMasterVO);
-
-		// ---------------------------------
-		// 2009.06.26 : 2단계 기능 추가
-		// ---------------------------------
-		// String flag = AramProperties.getProperty("Globals.addedOptions");
-		// if (flag != null && flag.trim().equalsIgnoreCase("true")) {
-		// 		model.addAttribute("addedOptions", "true");
-		// }
-		// //-------------------------------
+		model.addAttribute(bbsMasterService.selectBBSMasterInf(boardMasterVO));
 
 		// ---------------------------------
 		// 2011.09.15 : 2단계 기능 추가 반영 방법 변경
@@ -215,7 +205,7 @@ public class BBSMasterController {
 		}
 
 		if ( bbsUseInfoService.existBBSUseInf(boardUseInfVO) != 0 ) {
-			bbsUseInfoService.selectBBSUseInf(boardUseInfVO);
+			boardUseInfVO = bbsUseInfoService.selectBBSUseInf(boardUseInfVO);
 	
 			// 시스템 사용 게시판의 경우 URL 표시
 			if ("SYSTEM_DEFAULT_BOARD".equals(boardUseInfVO.getTrgetId())) {
@@ -227,6 +217,7 @@ public class BBSMasterController {
 							+ "/content/board/" + boardUseInfVO.getPathId() + "/articles");
 				}
 			}
+			model.addAttribute(boardUseInfVO);
 		}
 		
 		return WebUtil.adjustViewName("/cop/bbs/BoardMasterEdit");

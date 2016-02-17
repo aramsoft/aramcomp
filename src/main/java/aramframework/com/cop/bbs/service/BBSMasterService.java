@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.constant.CacheKey;
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.ComponentChecker;
 import aramframework.com.cop.bbs.dao.BBSAddedOptionsMapper;
 import aramframework.com.cop.bbs.dao.BBSMasterMapper;
@@ -262,8 +261,8 @@ public class BBSMasterService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param searchVO
 	 */
-	public List<EgovMap> selectNotUsedBdMstrList(SearchVO searchVO) {
-		return bbsMasterMapper.selectNotUsedBdMstrList(searchVO);
+	public List<EgovMap> selectNotUsedBdMstrList(BoardMasterVO boardMasterVO) {
+		return bbsMasterMapper.selectNotUsedBdMstrList(boardMasterVO);
 	}
 	
 	/**
@@ -271,8 +270,8 @@ public class BBSMasterService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param searchVO
 	 */
-	public int selectNotUsedBdMstrListCnt(SearchVO searchVO) {
-		return bbsMasterMapper.selectNotUsedBdMstrListCnt(searchVO);
+	public int selectNotUsedBdMstrListCnt(BoardMasterVO boardMasterVO) {
+		return bbsMasterMapper.selectNotUsedBdMstrListCnt(boardMasterVO);
 	}
 	
 	/**

@@ -2,7 +2,6 @@ package aramframework.com.cop.bbs.dao;
 
 import java.util.List;
 
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cop.bbs.domain.BoardMasterVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
@@ -110,16 +109,16 @@ public interface BBSMasterMapper  {
 	/**
 	 * 사용 중이지 않은 게시판 속성정보 목록을 조회한다.
 	 * 
-	 * @param searchVO
+	 * @param boardMasterVO
 	 */
-	public List<EgovMap> selectNotUsedBdMstrList(SearchVO searchVO);
+	public List<EgovMap> selectNotUsedBdMstrList(BoardMasterVO boardMasterVO);
 
 	/**
 	 * 사용 중이지 않은 게시판 속성정보 목록 숫자를 조회한다
 	 * 
-	 * @param searchVO
+	 * @param boardMasterVO
 	 */
-	public int selectNotUsedBdMstrListCnt(SearchVO searchVO);
+	public int selectNotUsedBdMstrListCnt(BoardMasterVO boardMasterVO);
 
 	/**
 	 * 템플릿의 유효여부를 점검한다.

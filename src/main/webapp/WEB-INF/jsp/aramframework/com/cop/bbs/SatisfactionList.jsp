@@ -42,7 +42,7 @@
 <DIV id="main" style="width:100%;"> 
 
 <div class="content_title">
- 	<h2>만족도조사</h2> - <c:out value="${satisfactionVO.totalRecordCount}"/>개
+ 	<h2>만족도조사</h2> - <c:out value="${satisfactionVO.searchVO.totalRecordCount}"/>개
  	&nbsp;&nbsp;&nbsp;(전체 :
  	<c:choose>
 	<c:when test="${summary> 4.0}"><span title="<c:out value='${summary}'/>">★★★★★</span></c:when>
@@ -105,7 +105,7 @@
     	</td>
     	<td class="lt_text3" style="padding-left:10px;">
 
-    		<c:if test="${anonymous == 'true' || result.wrterId == sessionUniqId}">
+    		<c:if test="${anonymous == 'true' || result.wrterId == uniqId}">
      		<a href="#" onclick="javascript:fn_aram_edit_satisfaction('<c:out value="${result.stsfdgNo}" />', '<c:out value="${status.index}" />'); return false;"><spring:message code="button.update" /></a>
       		| <a href="#" onclick="javascript:fn_aram_delete_satisfaction('<c:out value="${result.stsfdgNo}" />', '<c:out value="${status.index}" />'); return false;"><spring:message code="button.delete" /></a>
     		</c:if>
@@ -124,7 +124,7 @@
 
 <div style="margin-top:10px; width:100%"></div>
 
-<c:if test="${ anonymous == 'true' || not empty sessionUniqId }">
+<c:if test="${ anonymous == 'true' || not empty uniqId }">
 
 <div id="search_area">
 	<div class="button_area">
@@ -247,7 +247,7 @@ function fn_aram_linkPage(pageNo) {
     var varForm = document.getElementById("satisfactionVO");
 	varForm["searchVO.pageIndex"].value = pageNo;
 	varForm.stsfdgNo.value = '';
-	varForm.action = "${pageContext.request.contextPath}/cop/bbs${prefix}/listSatisfaction.do";
+	varForm.action = "${pageContext.request.contextPath}/content/board${prefix}/${satisfactionVO.bbsId}/article/${satisfactionVO.nttId}/satisfactions";
 	varForm.submit();
 }
 
@@ -255,7 +255,7 @@ function fn_aram_reset_satisfaction() {
     var varForm = document.getElementById("satisfactionVO");
 	varForm["searchVO.pageIndex"].value = '1';
 	varForm.stsfdgNo.value = '';
-	varForm.action = "${pageContext.request.contextPath}/cop/bbs${prefix}/listSatisfaction.do";
+	varForm.action = "${pageContext.request.contextPath}/content/board${prefix}/${satisfactionVO.bbsId}/article/${satisfactionVO.nttId}/satisfactions";
 	varForm.submit();
 }
 
@@ -293,7 +293,7 @@ function fn_aram_edit_satisfaction(satisfactionNo, index) {
 </c:if>
 	varForm.modified.value = "false";
 	varForm.stsfdgNo.value = satisfactionNo;
-	varForm.action = "${pageContext.request.contextPath}/cop/bbs${prefix}/listSatisfaction.do";
+	varForm.action = "${pageContext.request.contextPath}/content/board${prefix}/${satisfactionVO.bbsId}/article/${satisfactionVO.nttId}/satisfactions";
 	varForm.submit();
 }
 

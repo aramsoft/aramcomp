@@ -58,7 +58,7 @@ public class BBSCommentController {
 	public String listComment(
 			@PathVariable String bbsId, 
 			@PathVariable int nttId,			
-			@ModelAttribute CommentVO commentVO, 
+			CommentVO commentVO, 
 			ModelMap model) {
 
 		commentVO.setBbsId(bbsId);
@@ -72,7 +72,7 @@ public class BBSCommentController {
 
 		// comment 수정을 위한 처리
 		if (!commentVO.getCommentNo().equals("")) {
-			bbsCommentService.selectComment(commentVO);
+			model.addAttribute(bbsCommentService.selectComment(commentVO));
 		} else {
 			commentVO.setCommentCn("");
 		}
@@ -80,7 +80,7 @@ public class BBSCommentController {
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		if( loginVO != null ) {
 			commentVO.setWrterNm(loginVO.getName());
-			model.addAttribute("sessionUniqId", loginVO.getUniqId());
+			model.addAttribute("uniqId", loginVO.getUniqId());
 		} else {
 			commentVO.setWrterNm("");
 		}
@@ -89,14 +89,15 @@ public class BBSCommentController {
 		commentVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", bbsCommentService.selectCommentList(commentVO));
-
 		int totCnt = bbsCommentService.selectCommentListCnt(commentVO);
-		commentVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		commentVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		model.addAttribute("anonymous", "false");
+		
 		return WebUtil.adjustViewName("/cop/bbs/CommentList");
 	}
 
@@ -186,7 +187,7 @@ public class BBSCommentController {
 	public String listAnonymousComment(
 			@PathVariable String bbsId, 
 			@PathVariable int nttId,			
-			@ModelAttribute CommentVO commentVO, 
+			CommentVO commentVO, 
 			ModelMap model) 
 	throws Exception {
 
@@ -211,7 +212,7 @@ public class BBSCommentController {
 			if (!dbpassword.equals(enpassword)) {
 				model.addAttribute("subMsg", MessageHelper.getMessage("cop.password.not.same.msg"));
 			} else {
-				bbsCommentService.selectComment(commentVO);
+				model.addAttribute(bbsCommentService.selectComment(commentVO));
 			}
 		}
 
@@ -219,14 +220,15 @@ public class BBSCommentController {
 		commentVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", bbsCommentService.selectCommentList(commentVO));
-
 		int totCnt = bbsCommentService.selectCommentListCnt(commentVO);
-		commentVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		commentVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		model.addAttribute("anonymous", "true");
+
 		return WebUtil.adjustViewName("/cop/bbs/CommentList");
 	}
 

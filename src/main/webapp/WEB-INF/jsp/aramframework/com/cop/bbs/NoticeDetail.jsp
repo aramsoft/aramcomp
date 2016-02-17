@@ -45,11 +45,11 @@
 	</div>	
 	<div class="button_area">
  	  <c:if test="${editAuthFlag == 'Y'}">
-    	<c:if test="${boardVO.frstRegisterId == sessionUniqId}">
+    	<c:if test="${boardVO.frstRegisterId == uniqId}">
      		<span class="button"><a href="#" onclick="javascript:fn_aram_edit(); return false;"><spring:message code="button.update" /></a></span>
      		<span class="button"><a href="#" onclick="javascript:fn_aram_delete(); return false;"><spring:message code="button.delete" /></a></span>
     	</c:if>
-    	<c:if test="${role_admin == 'Y'}">
+    	<c:if test="${role == 'ROLE_ADMIN'}">
      		<span class="button"><a href="#" onclick="javascript:fn_aram_erase(); return false;">완전삭제</a></span>
     	</c:if>
      	<c:if test="${boardVO.boardMasterVO.replyPosblAt == 'Y'}">

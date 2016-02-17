@@ -42,7 +42,7 @@
 <DIV id="main" style="width:100%;"> 
 
 <div class="content_title">
-	<h2>댓글</h2> - <c:out value="${commentVO.totalRecordCount}"/>개
+	<h2>댓글</h2> - <c:out value="${commentVO.searchVO.totalRecordCount}"/>개
 	<a href="#" onclick="javascript:fn_aram_help(); return false;">
 		<img src="${pageContext.request.contextPath}/images/aramframework/com/cmm/icon/icon_help.gif" width="16" height="16" hspace="3" style="vertical-align:middle;" alt="도움말아이콘이미지">
 	</a>
@@ -87,7 +87,7 @@
 			</div>
 		</td>
 		<td class="lt_text3" style="padding-left:10px;">
-			<c:if test="${anonymous == 'true' || result.wrterId == sessionUniqId}">
+			<c:if test="${anonymous == 'true' || result.wrterId == uniqId}">
 		     <a href="#" onclick="javascript:fn_aram_edit_comment('<c:out value="${result.commentNo}" />', '<c:out value="${status.index}" />'); return false;"><spring:message code="button.update" /></a>
 		      | <a href="#" onclick="javascript:fn_aram_delete_comment('<c:out value="${result.commentNo}" />', '<c:out value="${status.index}" />'); return false;"><spring:message code="button.delete" /></a>
 		    </c:if>
@@ -106,7 +106,7 @@
 
 <div style="margin-top:10px; width:100%"></div>
 
-<c:if test="${ anonymous == 'true' || not empty sessionUniqId }">
+<c:if test="${ anonymous == 'true' || not empty uniqId }">
 
 <div id="search_area">
 	<div class="button_area">
@@ -196,7 +196,7 @@ function fn_aram_linkPage(pageNo) {
     var varForm = document.getElementById("commentVO");
 	varForm["searchVO.pageIndex"].value = pageNo;
 	varForm.commentNo.value = '';
-	varForm.action = "${pageContext.request.contextPath}/cop/bbs${prefix}/listComment.do";
+	varForm.action = "${pageContext.request.contextPath}/content/board${prefix}/${commentVO.bbsId}/article/${commentVO.nttId}/comments";
 	varForm.submit();
 }
 
@@ -204,7 +204,7 @@ function fn_aram_reset_comment() {
     var varForm = document.getElementById("commentVO");
 	varForm["searchVO.pageIndex"].value = '1';
 	varForm.commentNo.value = '';
-	varForm.action = "${pageContext.request.contextPath}/cop/bbs${prefix}/listComment.do";
+	varForm.action = "${pageContext.request.contextPath}/content/board${prefix}/${commentVO.bbsId}/article/${commentVO.nttId}/comments";
 	varForm.submit();
 }
 
@@ -242,7 +242,7 @@ function fn_aram_edit_comment(commentNo, index) {
 </c:if>
 	varForm.modified.value = "false";
 	varForm.commentNo.value = commentNo;
-	varForm.action = "${pageContext.request.contextPath}/cop/bbs${prefix}/listComment.do";
+	varForm.action = "${pageContext.request.contextPath}/content/board${prefix}/${commentVO.bbsId}/article/${commentVO.nttId}/comments";
 	varForm.submit();
 }
 

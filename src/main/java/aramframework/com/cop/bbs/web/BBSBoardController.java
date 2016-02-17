@@ -166,10 +166,7 @@ public class BBSBoardController {
 			@ModelAttribute BoardVO boardVO, 
 			ModelMap model) {
 
-		String bbsId = WebUtil.getOriginalId(bbsPathId, "BBSMSTR_");
-		
-		boardVO.setBbsId(bbsId);
-
+		boardVO.setBbsId(WebUtil.getOriginalId(bbsPathId, "BBSMSTR_"));
 		if( boardVO.getBbsId() == null || boardVO.getBbsId().equals("") ) {
 			throw new RuntimeException("bbsId is not found !!!");
 		}
@@ -179,7 +176,7 @@ public class BBSBoardController {
 		model.addAttribute("editAuthFlag", getEditAuthFlag(boardVO));
 		
 		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
-			model.addAttribute("role_admin", "Y");
+			model.addAttribute("role", "ROLE_ADMIN");
 		}
 		
 		// -------------------------------
@@ -193,12 +190,12 @@ public class BBSBoardController {
 		boardVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", boardService.selectBoardArticleList(boardVO));
-
 		int totCnt = boardService.selectBoardArticleListCnt(boardVO);
-		boardVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		boardVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/bbs/NoticeList");
 	}
@@ -214,24 +211,21 @@ public class BBSBoardController {
 	public String detailBoardArticle(
 			@PathVariable String bbsPathId, 
 			@PathVariable int nttId,			
-			@ModelAttribute BoardVO boardVO, 
+			BoardVO boardVO, 
 			ModelMap model) {
 
-		String bbsId = WebUtil.getOriginalId(bbsPathId, "BBSMSTR_");
-
-		boardVO.setBbsId(bbsId);
-		boardVO.setNttId(nttId);
-
+		boardVO.setBbsId(WebUtil.getOriginalId(bbsPathId, "BBSMSTR_"));
 		if( boardVO.getBbsId() == null || boardVO.getBbsId().equals("") ) {
 			throw new RuntimeException("bbsId not found");
 		}
 		
-		// set boardMasterVO
+		boardVO.setNttId(nttId);
 		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
+
 		model.addAttribute("editAuthFlag", getEditAuthFlag(boardVO));
 
 		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
-			model.addAttribute("role_admin", "Y");
+			model.addAttribute("role", "ROLE_ADMIN");
 		}
 		
 		// 조회수 증가 여부 지정
@@ -239,7 +233,7 @@ public class BBSBoardController {
 		// 2009.06.29 : 2단계 기능 추가
 		// ---------------------------------
 		boardService.updateRdcnt(boardVO);
-		boardService.selectBoardArticle(boardVO);
+		boardVO = boardService.selectBoardArticle(boardVO);
 
 		// ----------------------------
 		// 2009.06.29 : 2단계 기능 추가
@@ -263,12 +257,13 @@ public class BBSBoardController {
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		if( loginVO != null ) {
-			model.addAttribute("sessionUniqId", loginVO.getUniqId());
+			model.addAttribute("uniqId", loginVO.getUniqId());
 		} 
 		
 		model.addAttribute("mainTitle", boardVO.getNttSj());
-
 		setDirectUrlToModel(boardVO, model);
+		
+		model.addAttribute(boardVO);
 		
 		return WebUtil.adjustViewName("/cop/bbs/NoticeDetail");
 	}
@@ -284,22 +279,26 @@ public class BBSBoardController {
 	public String viewlBoardArticle(
 			@PathVariable String bbsPathId, 
 			@PathVariable int nttId,			
-			@ModelAttribute BoardVO boardVO, 
+			BoardVO boardVO, 
 			ModelMap model) {
 
-		String bbsId = WebUtil.getOriginalId(bbsPathId, "BBSMSTR_");
-
-		boardVO.setBbsId(bbsId);
+		boardVO.setBbsId(WebUtil.getOriginalId(bbsPathId, "BBSMSTR_"));
+		if( boardVO.getBbsId() == null || boardVO.getBbsId().equals("") ) {
+			throw new RuntimeException("bbsId not found");
+		}
+		
 		boardVO.setNttId(nttId);
 		
-		boardService.selectBoardArticle(boardVO);
+		boardVO = boardService.selectBoardArticle(boardVO);
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		if( loginVO != null ) {
-			model.addAttribute("sessionUniqId", loginVO.getUniqId());
+			model.addAttribute("uniqId", loginVO.getUniqId());
 		} 
 		
 		setDirectUrlToModel(boardVO, model);
+
+		model.addAttribute(boardVO);
 
 		return WebUtil.adjustViewName("/cop/bbs/NoticeView");
 	}
@@ -317,7 +316,7 @@ public class BBSBoardController {
 			String cmmntyId = WebUtil.getPathId(trgetId);
 			directUrl = contextUrl + "/content/apps/"+cmmntyId+"/board/"+boardVO.getPathId()+"/article/"+boardVO.getNttId();
 		} else {
-			directUrl = contextUrl + "/content/board/"+boardVO.getPathId()+ "/article/"+ boardVO.getNttId();
+			directUrl = contextUrl + "/content/board/"+boardVO.getPathId()+"/article/"+ boardVO.getNttId();
 		}
 		model.addAttribute("directUrl", directUrl);
 	}
@@ -336,7 +335,6 @@ public class BBSBoardController {
 			throw new RuntimeException("bbsId not found");
 		}
 		
-		// set boardMasterVO
 		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
 		
 		String editAuthFlag = getEditAuthFlag(boardVO);
@@ -363,7 +361,6 @@ public class BBSBoardController {
 			ModelMap model) 
 	throws Exception {
 
-		// set boardMasterVO
 		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
 		
 		String editAuthFlag = getEditAuthFlag(boardVO);
@@ -410,7 +407,6 @@ public class BBSBoardController {
 			throw new RuntimeException("bbsId not found");
 		}
 		
-		// set boardMasterVO
 		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
 		
 		String editAuthFlag = getEditAuthFlag(boardVO);
@@ -438,7 +434,6 @@ public class BBSBoardController {
 			ModelMap model)
 	throws Exception {
 
-		// set boardMasterVO
 		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
 		
 		String editAuthFlag = getEditAuthFlag(boardVO);
@@ -479,7 +474,7 @@ public class BBSBoardController {
 	 */
 	@RequestMapping("/cop/bbs/editBoardArticle.do")
 	public String editBoardArticle(
-			@ModelAttribute BoardVO boardVO, 
+			BoardVO boardVO, 
 			ModelMap model) 
 	throws Exception {
 
@@ -487,7 +482,6 @@ public class BBSBoardController {
 			throw new RuntimeException("bbsId not found");
 		}
 		
-		// set boardMasterVO
 		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
 		
 		String editAuthFlag = getEditAuthFlag(boardVO);
@@ -496,7 +490,7 @@ public class BBSBoardController {
 		}
 		model.addAttribute("editAuthFlag", editAuthFlag);
 		
-		boardService.selectBoardArticle(boardVO);
+		model.addAttribute(boardService.selectBoardArticle(boardVO));
 		
 		return WebUtil.adjustViewName("/cop/bbs/NoticeEdit");
 	}
@@ -515,7 +509,6 @@ public class BBSBoardController {
 			ModelMap model)
 	throws Exception {
 
-		// set boardMasterVO
 		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
 		
 		String editAuthFlag = getEditAuthFlag(boardVO);
@@ -558,7 +551,6 @@ public class BBSBoardController {
 			@ModelAttribute BoardVO boardVO, 
 			ModelMap model) {
 
-		// set boardMasterVO
 		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
 		
 		String editAuthFlag = getEditAuthFlag(boardVO);
@@ -586,7 +578,6 @@ public class BBSBoardController {
 			@ModelAttribute BoardVO boardVO, 
 			ModelMap model) {
 
-		// set boardMasterVO
 		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
 		
 		boardService.eraseBoardArticle(boardVO);
@@ -607,15 +598,11 @@ public class BBSBoardController {
 			@ModelAttribute BoardVO boardVO, 
 			ModelMap model) {
 
-		String bbsId = WebUtil.getOriginalId(bbsPathId, "BBSMSTR_");
-
-		boardVO.setBbsId(bbsId);
-		
+		boardVO.setBbsId(WebUtil.getOriginalId(bbsPathId, "BBSMSTR_"));
 		if( boardVO.getBbsId() == null || boardVO.getBbsId().equals("") ) {
 			throw new RuntimeException("bbsId not found");
 		}
 		
-		// set boardMasterVO
 		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
 			
 		// -------------------------------
@@ -634,13 +621,13 @@ public class BBSBoardController {
 		boardVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+		model.addAttribute(paginationInfo);
 
 		model.addAttribute("anonymous", "true");
 		model.addAttribute("editAuthFlag", "Y");
 
 		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
-			model.addAttribute("role_admin", "Y");
+			model.addAttribute("role", "ROLE_ADMIN");
 		}
 
 		return WebUtil.adjustViewName("/cop/bbs/NoticeList");
@@ -657,19 +644,15 @@ public class BBSBoardController {
 	public String detailAnonymousBoardArticle(
 			@PathVariable String bbsPathId, 
 			@PathVariable int nttId,			
-			@ModelAttribute BoardVO boardVO, 
+			BoardVO boardVO, 
 			ModelMap model) {
 
-		String bbsId = WebUtil.getOriginalId(bbsPathId, "BBSMSTR_");
-
-		boardVO.setBbsId(bbsId);
-		boardVO.setNttId(nttId);
-
+		boardVO.setBbsId(WebUtil.getOriginalId(bbsPathId, "BBSMSTR_"));
 		if( boardVO.getBbsId() == null || boardVO.getBbsId().equals("") ) {
 			throw new RuntimeException("bbsId not found");
 		}
-		
-		// set boardMasterVO
+
+		boardVO.setNttId(nttId);
 		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
 			
 		// -------------------------------
@@ -684,7 +667,7 @@ public class BBSBoardController {
 		// 2009.06.29 : 2단계 기능 추가
 		// ---------------------------------
 		boardService.updateRdcnt(boardVO);
-		boardService.selectBoardArticle(boardVO);
+		boardVO = boardService.selectBoardArticle(boardVO);
 
 		// ----------------------------
 		// 2009.06.29 : 2단계 기능 추가
@@ -706,13 +689,22 @@ public class BBSBoardController {
 			}
 		}
 
-		model.addAttribute("sessionUniqId", "ANONYMOUS");
+		model.addAttribute("uniqId", "ANONYMOUS");
 		model.addAttribute("anonymous", "true");
 		model.addAttribute("editAuthFlag", "Y");
 		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
-			model.addAttribute("role_admin", "Y");
+			model.addAttribute("role", "ROLE_ADMIN");
 		}
 
+		setDirectUrlToModelAnonymous(boardVO, model);
+
+		model.addAttribute(boardVO);
+		
+		return WebUtil.adjustViewName("/cop/bbs/NoticeDetail");
+	}
+	
+	private void setDirectUrlToModelAnonymous(BoardVO boardVO, ModelMap model) {
+		
 		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
 
 		String trgetId = (String) requestAttributes.getAttribute("curTrgetId", RequestAttributes.SCOPE_REQUEST);
@@ -721,16 +713,12 @@ public class BBSBoardController {
 		if( trgetId != null 
 				&& trgetId != "" 
 				&& trgetId.indexOf("CMMNTY_") != -1) {
-			directUrl = contextUrl + "/content/apps/" + WebUtil.getPathId(trgetId)
-								   + "/board/" + boardVO.getPathId()
-								   + "/article/" + boardVO.getNttId();
+			String cmmntyId = WebUtil.getPathId(trgetId);
+			directUrl = contextUrl + "/content/apps/"+cmmntyId+"/board/"+boardVO.getPathId()+"/article/"+boardVO.getNttId();
 		} else {
-			directUrl = contextUrl + "/content/board/anonymous/" + boardVO.getPathId()
-								   + "/article/" + boardVO.getNttId();
+			directUrl = contextUrl + "/content/board/anonymous/"+boardVO.getPathId()+ "/article/"+ boardVO.getNttId();
 		}
 		model.addAttribute("directUrl", directUrl);
-		
-		return WebUtil.adjustViewName("/cop/bbs/NoticeDetail");
 	}
 	
 	/**
@@ -747,7 +735,6 @@ public class BBSBoardController {
 			throw new RuntimeException("bbsId not found");
 		}
 		
-		// set boardMasterVO
 		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
 
 		// -------------------------------
@@ -813,7 +800,6 @@ public class BBSBoardController {
 			throw new RuntimeException("bbsId not found");
 		}
 		
-		// set boardMasterVO
 		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
 
 		// -------------------------------
@@ -876,7 +862,7 @@ public class BBSBoardController {
 	 */
 	@RequestMapping("/cop/bbs/anonymous/editBoardArticle.do")
 	public String editAnonymousBoardArticle(
-			@ModelAttribute BoardVO boardVO,
+			BoardVO boardVO,
 			ModelMap model)
 	throws Exception {
 
@@ -884,7 +870,6 @@ public class BBSBoardController {
 			throw new RuntimeException("bbsId not found");
 		}
 		
-		// set boardMasterVO
 		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
 
 		// -------------------------------
@@ -901,13 +886,12 @@ public class BBSBoardController {
 		String enpassword = FileScrty.encryptPassword(boardVO.getPassword());
 		
 		if (!dbpassword.equals(enpassword)) {
-			model.addAttribute("message", MessageHelper.getMessage("cop.password.not.same.msg"));
-
 			model.addAttribute("anonymous", "true");
+			model.addAttribute("message", MessageHelper.getMessage("cop.password.not.same.msg"));
 			return WebUtil.adjustViewName("/cop/bbs/NoticeDetail");
 		}
 
-		boardService.selectBoardArticle(boardVO);
+		model.addAttribute(boardService.selectBoardArticle(boardVO));
 
 		model.addAttribute("anonymous", "true");
 		model.addAttribute("editAuthFlag", "Y");
@@ -992,7 +976,7 @@ public class BBSBoardController {
 	@RequestMapping("/cop/bbs/selectGuestList.do")
 	@Secured("ROLE_USER")
 	public String selectGuestList(
-			@ModelAttribute BoardVO boardVO, 
+			BoardVO boardVO, 
 			ModelMap model) 
 	throws Exception {
 
@@ -1026,12 +1010,12 @@ public class BBSBoardController {
 		boardVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", boardService.selectGuestList(boardVO));
-
 		int totCnt = boardService.selectGuestListCnt(boardVO);
-		boardVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		boardVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/bbs/GuestList");
 	}
@@ -1069,28 +1053,27 @@ public class BBSBoardController {
 	@RequestMapping("/cop/bbs/editGuestList.do")
 	@Secured("ROLE_USER")
 	public String editGuestList(
-			@ModelAttribute BoardVO boardVO, 
+			BoardVO boardVO, 
 			ModelMap model) {
 
 		if( boardVO.getBbsId() == null || boardVO.getBbsId().equals("") ) {
 			throw new RuntimeException("bbsId not found");
 		}
 		
-		// set boardMasterVO
 		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
 
-		boardService.selectBoardArticle(boardVO);
+		model.addAttribute(boardService.selectBoardArticle(boardVO));
 
 		PaginationInfo paginationInfo = new PaginationInfo();
 		boardVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", boardService.selectGuestList(boardVO));
-
 		int totCnt = boardService.selectGuestListCnt(boardVO);
-		boardVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		boardVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/bbs/GuestList");
 	}
@@ -1142,7 +1125,7 @@ public class BBSBoardController {
 	 */
 	@RequestMapping("/cop/bbs/previewBoardList.do")
 	public String previewBoardArticle(
-			@ModelAttribute BoardVO boardVO, 
+			BoardVO boardVO, 
 			ModelMap model) {
 
 		String template = boardVO.getSearchVO().getSearchKeyword(); // 템플릿 URL
@@ -1186,15 +1169,17 @@ public class BBSBoardController {
 
 		int totCnt = list.size();
 		boardVO.getSearchVO().setTotalRecordCount(totCnt);
-
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		masterVo.setTmplatCours(template);
 		boardVO.setBoardMasterVO(masterVo);
 
 		model.addAttribute("preview", "true");
-
+		
+		model.addAttribute(boardVO);
+				
 		return WebUtil.adjustViewName("/cop/bbs/NoticeList");
 	}
 	

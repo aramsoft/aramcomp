@@ -58,7 +58,7 @@ public class BBSSatisfactionController {
 	public String listSatisfaction(
 			@PathVariable String bbsId, 
 			@PathVariable int nttId,			
-			@ModelAttribute SatisfactionVO satisfactionVO, 
+			SatisfactionVO satisfactionVO, 
 			ModelMap model) {
 
 		satisfactionVO.setBbsId(bbsId);
@@ -73,7 +73,7 @@ public class BBSSatisfactionController {
 
 		// 수정을 위한 처리
 		if (!satisfactionVO.getStsfdgNo().equals("")) {
-			bbsSatisfactionService.selectSatisfaction(satisfactionVO);
+			model.addAttribute(bbsSatisfactionService.selectSatisfaction(satisfactionVO));
 		} else {
 			satisfactionVO.setStsfdgCn("");
 			satisfactionVO.setStsfdg(0);
@@ -82,7 +82,7 @@ public class BBSSatisfactionController {
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		if( loginVO != null ) {
 			satisfactionVO.setWrterNm(loginVO.getName());
-			model.addAttribute("sessionUniqId", loginVO.getUniqId());
+			model.addAttribute("uniqId", loginVO.getUniqId());
 		} else {
 			satisfactionVO.setWrterNm("");
 		}
@@ -92,12 +92,12 @@ public class BBSSatisfactionController {
 
 		model.addAttribute("resultList", bbsSatisfactionService.selectSatisfactionList(satisfactionVO));
 		model.addAttribute("summary", bbsSatisfactionService.getSummary(satisfactionVO));
-
 		int totCnt = bbsSatisfactionService.selectSatisfactionListCnt(satisfactionVO);
+		
 		satisfactionVO.getSearchVO().setTotalRecordCount(totCnt);
-
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		model.addAttribute("anonymous", "false");
 		return WebUtil.adjustViewName("/cop/bbs/SatisfactionList");
@@ -188,7 +188,7 @@ public class BBSSatisfactionController {
 	public String listAnonymousSatisfaction(
 			@PathVariable String bbsId, 
 			@PathVariable int nttId,			
-			@ModelAttribute SatisfactionVO satisfactionVO, 
+			SatisfactionVO satisfactionVO, 
 			ModelMap model)
 	throws Exception {
 
@@ -221,7 +221,7 @@ public class BBSSatisfactionController {
 				satisfactionVO.setWrterNm("");
 
 			} else {
-				bbsSatisfactionService.selectSatisfaction(satisfactionVO);
+				model.addAttribute(bbsSatisfactionService.selectSatisfaction(satisfactionVO));
 			}
 		}
 
@@ -230,13 +230,12 @@ public class BBSSatisfactionController {
 
 		model.addAttribute("resultList", bbsSatisfactionService.selectSatisfactionList(satisfactionVO));
 		model.addAttribute("summary", bbsSatisfactionService.getSummary(satisfactionVO));
-
 		int totCnt = bbsSatisfactionService.selectSatisfactionListCnt(satisfactionVO);
+
 		satisfactionVO.getSearchVO().setTotalRecordCount(totCnt);
-
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
 
+		model.addAttribute(paginationInfo);
 
 		model.addAttribute("anonymous", "true");
 		return WebUtil.adjustViewName("/cop/bbs/SatisfactionList");

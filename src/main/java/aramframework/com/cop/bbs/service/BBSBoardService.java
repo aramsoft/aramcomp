@@ -101,6 +101,8 @@ public class BBSBoardService extends EgovAbstractServiceImpl {
 		BoardVO resultVo = bbsBoardMapper.selectBoardArticle(boardVO);
 		// searchVO 이전 
 		resultVo.setSearchVO(boardVO.getSearchVO()); 
+		// boardMasterVO 이전 
+		resultVo.setBoardMasterVO(boardVO.getBoardMasterVO()); 
 		return resultVo;
 	}
 

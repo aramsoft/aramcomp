@@ -70,7 +70,6 @@
  	   	<th scope="col"            >게시판명</th>
     	<c:if test="${useCommunity == 'true'}">
 			<th scope="col" width="10%">커뮤니티명</th>
-			<th scope="col" width="10%">동호회명</th>
     	</c:if>
     	<th scope="col" width="15%">등록일시</th>
     	<th scope="col" width="7%">사용여부</th>
@@ -81,18 +80,18 @@
 	<tr>
     	<c:set var="colNo" value="5" />
     	<c:if test="${useCommunity == 'true'}">
-    	<c:set var="colNo" value="${colNo + 2}" />
+    	<c:set var="colNo" value="${colNo + 1}" />
   		</c:if>
  		<td class="lt_text3" colspan="${colNo}"><spring:message code="common.nodata.msg" /></td>
 	</tr>
 	</c:if>
 
- 	<c:set var="startIndex" value="${(boardUseInfVO.pageIndex-1) * boardUseInfVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(boardUseInfVO.searchVO.pageIndex-1) * boardUseInfVO.searchVO.recordPerPage}"/>
  	<c:forEach var="result" items="${resultList}" varStatus="status">
  	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.bbsId}"/>', '<c:out value='${result.trgetId}'/>'); return false;">
 
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${boardUseInfVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${boardUseInfVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
  
      	<td class="lt_text3"><c:out value="${result.bbsId}"/></td>
@@ -100,9 +99,7 @@
      	<c:if test="${useCommunity == 'true'}">
 			<td class="lt_text3">
 				<c:out value="${result.cmmntyNm}"/>
-				<c:out value="${result.clbCmmntyNm}"/>
 			</td>
-			<td class="lt_text3"><c:out value="${result.clbNm}"/></td>
     	</c:if>
 
     	<td class="lt_text3"><fmt:formatDate value="${result.frstRegisterPnttm}" pattern="yyyy-MM-dd"/></td>

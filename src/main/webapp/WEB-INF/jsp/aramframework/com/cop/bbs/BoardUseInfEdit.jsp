@@ -55,16 +55,13 @@
 	<tr>
 	    <th>
 	    	<span class="norequired_icon"></span>
-	    	커뮤니티/동호회명
+	    	커뮤니티명
 	    </th>
 	    <td>
 	    	<c:choose>
 	    	<c:when test="${not empty boardUseInfVO.cmmntyNm}">
 	    		<c:out value="${boardUseInfVO.cmmntyNm}" />
 	    	</c:when>
-	    	<c:when test="${not empty boardUseInfVO.clbNm}">
-   				<c:out value="${boardUseInfVO.clbCmmntyNm}" /> / <c:out value="${boardUseInfVO.clbNm}" />
-   			</c:when>
    			<c:otherwise>(시스템  활용)</c:otherwise>
 			</c:choose>
 	    </td>

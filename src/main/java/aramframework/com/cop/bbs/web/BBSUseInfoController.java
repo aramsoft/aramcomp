@@ -66,12 +66,12 @@ public class BBSUseInfoController {
 		boardUseInfVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", bbsUseService.selectBBSUseInfs(boardUseInfVO));
-
 		int totCnt = bbsUseService.selectBBSUseInfsCnt(boardUseInfVO);
-		boardUseInfVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		boardUseInfVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		if (ComponentChecker.hasComponent("communityManageService")) {// 2011.09.15
 			model.addAttribute("useCommunity", "true");
@@ -115,9 +115,8 @@ public class BBSUseInfoController {
 			return WebUtil.adjustViewName("/cop/bbs/BoardUseInfRegist");
 		}
 
-		String trgetType = boardUseInfVO.getTrgetType();
 		String registSeCode = "";
-		if ("CMMNTY".equals(trgetType)) {
+		if ("CMMNTY".equals(boardUseInfVO.getTrgetType())) {
 			registSeCode = "REGC06";	// Community
 		} else {
 			registSeCode = "REGC01";	// 시스템
@@ -143,10 +142,10 @@ public class BBSUseInfoController {
 	@Secured("ROLE_ADMIN")
 	public String editBoardUseInf(
 			HttpServletRequest request,
-			@ModelAttribute BoardUseInfVO boardUseInfVO, 
+			BoardUseInfVO boardUseInfVO, 
 			ModelMap model) {
 		
-		bbsUseService.selectBBSUseInf(boardUseInfVO);
+		boardUseInfVO = bbsUseService.selectBBSUseInf(boardUseInfVO);
 
 		// 시스템 사용 게시판의 경우 URL 표시
 //		if ("SYSTEM_DEFAULT_BOARD".equals(vo.getTrgetId())) {
@@ -158,7 +157,8 @@ public class BBSUseInfoController {
 						+ "/content/board/" + boardUseInfVO.getPathId() + "/articles");
 			}
 //		}
-			
+		model.addAttribute(boardUseInfVO);
+					
 		return WebUtil.adjustViewName("/cop/bbs/BoardUseInfEdit");
 	}
 

@@ -95,12 +95,12 @@ public class CmyBBSMasterController {
 		boardMasterVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", bbsMasterService.selectBdMstrListByTrget(boardMasterVO));
-
 		int totCnt = bbsMasterService.selectBdMstrListCntByTrget(boardMasterVO);
-		boardMasterVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		boardMasterVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/com/BdMstrListByTrget");
 	}
@@ -160,8 +160,6 @@ public class CmyBBSMasterController {
 		String targetId = boardMasterVO.getTrgetId();
 		if (targetId.startsWith("CMMNTY_")) {
 			boardMasterVO.setRegistSeCode("REGC06");
-		} else if (targetId.startsWith("CLB_")) {
-			boardMasterVO.setRegistSeCode("REGC05");
 		} else {
 			boardMasterVO.setTrgetId("SYSTEM_DEFAULT_BOARD");
 			boardMasterVO.setRegistSeCode("REGC01");
@@ -182,13 +180,13 @@ public class CmyBBSMasterController {
 	@Secured("ROLE_USER")
 	public String editBdMstrByTrget(
 			HttpServletRequest request,
-			@ModelAttribute BoardMasterVO boardMasterVO, 
+			BoardMasterVO boardMasterVO, 
 			BoardUseInfVO boardUseInfVO, 
 			ModelMap model) {
 
 		checkAuthorityManager(); // server-side 권한 확인
 
-		bbsMasterService.selectBBSMasterInf(boardMasterVO);
+		model.addAttribute(bbsMasterService.selectBBSMasterInf(boardMasterVO));
 
 		// ---------------------------------
 		// 2011.09.15 : 2단계 기능 추가 반영 방법 변경
@@ -201,7 +199,7 @@ public class CmyBBSMasterController {
 			model.addAttribute("useSatisfaction", "true");
 		}
 
-		bbsUseInfoService.selectBBSUseInf(boardUseInfVO);
+		boardUseInfVO = bbsUseInfoService.selectBBSUseInf(boardUseInfVO);
 
 		// 시스템 사용 게시판의 경우 URL 표시
 	    String bbsId = boardUseInfVO.getBbsId();
@@ -214,7 +212,8 @@ public class CmyBBSMasterController {
 						+ "/content/board/" + WebUtil.getPathId(bbsId) + "/articles"); 
 			}
 //		}
-
+		model.addAttribute(boardUseInfVO);
+		
 		return WebUtil.adjustViewName("/cop/com/BdMstrEditByTrget");
 	}
 

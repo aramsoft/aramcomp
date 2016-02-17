@@ -76,7 +76,7 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="startIndex" value="${(confirmHistoryVO.pageIndex-1) * confirmHistoryVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(confirmHistoryVO.searchVO.pageIndex-1) * confirmHistoryVO.searchVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
 
 	<c:choose>
@@ -89,7 +89,7 @@
    	</c:choose>
 
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${confirmHistoryVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${confirmHistoryVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<td class="lt_text3"><c:out value="${result.confmTyCodeNm}"/></td>

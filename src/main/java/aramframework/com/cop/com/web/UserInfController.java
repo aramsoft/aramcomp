@@ -73,12 +73,12 @@ public class UserInfController {
 		userInfVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", userInfService.selectUserList(userInfVO));
-
 		int totCnt = userInfService.selectUserListCnt(userInfVO);
-		userInfVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		userInfVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		model.addAttribute("targetMethod", "selectUserList");
 
@@ -119,12 +119,12 @@ public class UserInfController {
 		userInfVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", userInfService.selectCmmntyUserList(userInfVO));
-
 		int totCnt = userInfService.selectCmmntyUserListCnt(userInfVO);
-		userInfVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		userInfVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		model.addAttribute("targetMethod", "selectCmmntyUserList");
 
@@ -165,12 +165,12 @@ public class UserInfController {
 		userInfVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", userInfService.selectCmmntyMngrList(userInfVO));
-
 		int totCnt = userInfService.selectCmmntyMngrListCnt(userInfVO);
-		userInfVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		userInfVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		model.addAttribute("targetMethod", "selectCmmntyMngrList");
 

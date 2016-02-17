@@ -1,6 +1,7 @@
 package aramframework.com.cop.com.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -78,12 +79,12 @@ public class ConfirmController {
 		confirmHistoryVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", confirmService.selectConfirmRequestList(confirmHistoryVO));
-
 		int totCnt = confirmService.selectConfirmRequestListCnt(confirmHistoryVO);
-		confirmHistoryVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		confirmHistoryVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/com/ConfirmList");
 	}
@@ -94,18 +95,17 @@ public class ConfirmController {
 	 * @param confirmHistoryVO
 	 */
 	@RequestMapping("/cop/com/editConfirm.do")
+	@Secured("ROLE_USER")
 	public String editConfirm(
-			@ModelAttribute ConfirmHistoryVO confirmHistoryVO) {
+			ConfirmHistoryVO confirmHistoryVO,
+			ModelMap model) {
 		
 		checkAuthorityManager(); // server-side 권한 확인
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		confirmHistoryVO.setConfmerId(loginVO.getUniqId());
 
-		Boolean isAuthenticated = UserDetailsHelper.isAuthenticated();
-		if (isAuthenticated) {
-			confirmService.selectSingleConfirmRequest(confirmHistoryVO);
-		}
+		model.addAttribute(confirmService.selectSingleConfirmRequest(confirmHistoryVO));
 
 		cmmUseService.populateCmmCodeList("COM007", "COM007_confmSttus");
 
@@ -118,6 +118,7 @@ public class ConfirmController {
 	 * @param confirmHistoryVO
 	 */
 	@RequestMapping("/cop/com/updateConfirm.do")
+	@Secured("ROLE_USER")
 	public String updateConfirm(
 			@ModelAttribute ConfirmHistoryVO confirmHistoryVO, 
 			ModelMap model) {

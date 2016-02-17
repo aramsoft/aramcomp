@@ -81,11 +81,11 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="startIndex" value="${(boardMasterVO.pageIndex-1) * boardMasterVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(boardMasterVO.searchVO.pageIndex-1) * boardMasterVO.searchVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
 	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${boardMasterVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${boardMasterVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<td class="lt_text3">

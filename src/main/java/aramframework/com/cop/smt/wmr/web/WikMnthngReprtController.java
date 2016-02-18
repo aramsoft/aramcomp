@@ -109,7 +109,7 @@ public class WikMnthngReprtController {
 		wikMnthngReprtVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/smt/wmr/WikMnthngReprtList");
 	}
@@ -121,16 +121,16 @@ public class WikMnthngReprtController {
 	 */
 	@RequestMapping("/cop/smt/wmr/detailWikMnthngReprt.do")
 	public String detailWikMnthngReprt(
-			@ModelAttribute WikMnthngReprtVO wikMnthngReprtVO, 
+			WikMnthngReprtVO wikMnthngReprtVO, 
 			ModelMap model)  {
 		
-		// 공통코드 우선순위 조회
-		cmmUseService.populateCmmCodeList("COM060", "COM060_reprtSe");
-
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		model.addAttribute("uniqId", loginVO.getUniqId());
 
-		wikMnthngReprtService.selectWikMnthngReprt(wikMnthngReprtVO);
+		model.addAttribute(wikMnthngReprtService.selectWikMnthngReprt(wikMnthngReprtVO));
+
+		// 공통코드 우선순위 조회
+		cmmUseService.populateCmmCodeList("COM060", "COM060_reprtSe");
 
 		return WebUtil.adjustViewName("/cop/smt/wmr/WikMnthngReprtDetail");
 	}
@@ -174,8 +174,6 @@ public class WikMnthngReprtController {
 			return WebUtil.adjustViewName("/cop/smt/wmr/WikMnthngReprtRegist");
 		}
 		
-//		PdfCnvr.getPDF("test", multiRequest);
-
 		// 첨부파일 관련 첨부파일ID 생성
 		wikMnthngReprtVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "DSCH_"));
 
@@ -196,9 +194,10 @@ public class WikMnthngReprtController {
 	 */
 	@RequestMapping("/cop/smt/wmr/editWikMnthngReprt.do")
 	public String editWikMnthngReprt(
-			@ModelAttribute WikMnthngReprtVO wikMnthngReprtVO) {
+			WikMnthngReprtVO wikMnthngReprtVO,
+			ModelMap model)  {
 
-		wikMnthngReprtService.selectWikMnthngReprt(wikMnthngReprtVO);
+		model.addAttribute(wikMnthngReprtService.selectWikMnthngReprt(wikMnthngReprtVO));
 
 		return WebUtil.adjustViewName("/cop/smt/wmr/WikMnthngReprtEdit");
 	}

@@ -78,12 +78,12 @@ public class KnoSpecialistController {
 		knoSpecialistVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", knoSpecialistService.selectKnoSpecialistList(knoSpecialistVO));
-
 		int totCnt = knoSpecialistService.selectKnoSpecialistListCnt(knoSpecialistVO);
-		knoSpecialistVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		knoSpecialistVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/dam/spe/spe/KnoSpecialistList");
 	}
@@ -95,9 +95,10 @@ public class KnoSpecialistController {
 	 */
 	@RequestMapping(value = "/dam/spe/spe/detailKnoSpecialist.do")
 	public String detailKnoSpecialist(
-			@ModelAttribute KnoSpecialistVO knoSpecialistVO) {
+			KnoSpecialistVO knoSpecialistVO,
+			ModelMap model) {
 
-		knoSpecialistService.selectKnoSpecialist(knoSpecialistVO);
+		model.addAttribute(knoSpecialistService.selectKnoSpecialist(knoSpecialistVO));
 
 		return WebUtil.adjustViewName("/dam/spe/spe/KnoSpecialistDetail");
 	}
@@ -113,20 +114,16 @@ public class KnoSpecialistController {
 			ModelMap model) {
 
 		MapTeamVO mapTeamVO = new MapTeamVO();
-		mapTeamVO.getSearchVO().setRecordPerPage(999999);
-		mapTeamVO.getSearchVO().setFirstIndex(0);
+		mapTeamVO.getSearchVO().setSizeAndOffset(999999, 0);
 		List<EgovMap> mapTeamList = mapTeamService.selectMapTeamList(mapTeamVO);
 		model.addAttribute("mapTeamList", mapTeamList);
 
 		MapMaterialVO mapMaterialVO = new MapMaterialVO();
-		mapMaterialVO.getSearchVO().setRecordPerPage(999999);
-		mapMaterialVO.getSearchVO().setFirstIndex(0);
+		mapMaterialVO.getSearchVO().setSizeAndOffset(999999, 0);
 		mapMaterialVO.getSearchVO().setSearchCondition("ORGNZT_ID");
 
-		EgovMap vo = new EgovMap();
-		if (knoSpecialistVO.getOrgnztId() == null 
-				|| knoSpecialistVO.getOrgnztId().equals("")) {
-			vo = mapTeamList.get(0);
+		if (knoSpecialistVO.getOrgnztId() == null || knoSpecialistVO.getOrgnztId().equals("")) {
+			EgovMap vo = mapTeamList.get(0);
 			mapMaterialVO.getSearchVO().setSearchKeyword(vo.get("orgnztId").toString());
 		} else {
 			mapMaterialVO.getSearchVO().setSearchKeyword(knoSpecialistVO.getOrgnztId());
@@ -152,20 +149,16 @@ public class KnoSpecialistController {
 		if (bindingResult.hasErrors()) {
 
 			MapTeamVO mapTeamVO = new MapTeamVO();
-			mapTeamVO.getSearchVO().setRecordPerPage(999999);
-			mapTeamVO.getSearchVO().setFirstIndex(0);
+			mapTeamVO.getSearchVO().setSizeAndOffset(999999, 0);
 			List<EgovMap> mapTeamList = mapTeamService.selectMapTeamList(mapTeamVO);
 			model.addAttribute("mapTeamList", mapTeamList);
 
 			MapMaterialVO mapMaterialVO = new MapMaterialVO();
-			mapMaterialVO.getSearchVO().setRecordPerPage(999999);
-			mapMaterialVO.getSearchVO().setFirstIndex(0);
+			mapMaterialVO.getSearchVO().setSizeAndOffset(999999, 0);
 			mapMaterialVO.getSearchVO().setSearchCondition("ORGNZT_ID");
 
-			EgovMap vo = new EgovMap();
-			if (knoSpecialistVO.getOrgnztId() == null 
-					|| knoSpecialistVO.getOrgnztId().equals("")) {
-				vo = mapTeamList.get(0);
+			if (knoSpecialistVO.getOrgnztId() == null || knoSpecialistVO.getOrgnztId().equals("")) {
+				EgovMap vo = mapTeamList.get(0);
 				mapMaterialVO.getSearchVO().setSearchKeyword(vo.get("orgnztId").toString());
 			} else {
 				mapMaterialVO.getSearchVO().setSearchKeyword(knoSpecialistVO.getOrgnztId());
@@ -193,9 +186,10 @@ public class KnoSpecialistController {
 	 */
 	@RequestMapping(value = "/dam/spe/spe/editKnoSpecialist.do")
 	public String editKnoSpecialist(
-			@ModelAttribute KnoSpecialistVO knoSpecialistVO) {
+			KnoSpecialistVO knoSpecialistVO,
+			ModelMap model) {
 
-		knoSpecialistService.selectKnoSpecialist(knoSpecialistVO);
+		model.addAttribute(knoSpecialistService.selectKnoSpecialist(knoSpecialistVO));
 
 		return WebUtil.adjustViewName("/dam/spe/spe/KnoSpecialistEdit");
 	}

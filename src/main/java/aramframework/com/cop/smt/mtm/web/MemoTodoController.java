@@ -103,7 +103,7 @@ public class MemoTodoController {
 		memoTodoVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/smt/mtm/MemoTodoList");
 	}
@@ -116,9 +116,10 @@ public class MemoTodoController {
 	@RequestMapping("/cop/smt/mtm/detailMemoTodo.do")
 	@Secured("ROLE_USER")
 	public String detailMemoTodo(
-			@ModelAttribute MemoTodoVO memoTodoVO) {
+			MemoTodoVO memoTodoVO,
+			ModelMap model) {
 		
-		memoTodoService.selectMemoTodo(memoTodoVO);
+		memoTodoVO = memoTodoService.selectMemoTodo(memoTodoVO);
 
 		memoTodoVO.setTodoDe(memoTodoVO.getTodoBeginTime().substring(0, 8));
 		memoTodoVO.setTodoBeginHour(memoTodoVO.getTodoBeginTime().substring(8, 10));
@@ -126,15 +127,17 @@ public class MemoTodoController {
 		memoTodoVO.setTodoEndHour(memoTodoVO.getTodoEndTime().substring(8, 10));
 		memoTodoVO.setTodoEndMin(memoTodoVO.getTodoEndTime().substring(10, 12));
 
+		model.addAttribute(memoTodoVO);
+
 		return WebUtil.adjustViewName("/cop/smt/mtm/MemoTodoDetail");
 	}
 
 	// 할일일자(시)
 	@ModelAttribute("todoListHour")
-	public List<ComCodeVO> todoListHour() { return WebUtil.getTimeHH();}
+	public List<ComCodeVO> todoListHour() {return WebUtil.getTimeHH();}
 	// 할일일자(분)
 	@ModelAttribute("todoListMin")
-	public List<ComCodeVO> todoListMin() { return WebUtil.getTimeMM();}
+	public List<ComCodeVO> todoListMin() {return WebUtil.getTimeMM();}
 
 	/**
 	 * 메모할일 정보의 등록페이지로 이동한다.
@@ -196,15 +199,18 @@ public class MemoTodoController {
 	@RequestMapping("/cop/smt/mtm/editMemoTodo.do")
 	@Secured("ROLE_USER")
 	public String editMemoTodo(
-			@ModelAttribute MemoTodoVO memoTodoVO) {
+			MemoTodoVO memoTodoVO,
+			ModelMap model) {
 
-		memoTodoService.selectMemoTodo(memoTodoVO);
+		memoTodoVO = memoTodoService.selectMemoTodo(memoTodoVO);
 
 		memoTodoVO.setTodoDe(memoTodoVO.getTodoBeginTime().substring(0, 8));
 		memoTodoVO.setTodoBeginHour(memoTodoVO.getTodoBeginTime().substring(8, 10));
 		memoTodoVO.setTodoBeginMin(memoTodoVO.getTodoBeginTime().substring(10, 12));
 		memoTodoVO.setTodoEndHour(memoTodoVO.getTodoEndTime().substring(8, 10));
 		memoTodoVO.setTodoEndMin(memoTodoVO.getTodoEndTime().substring(10, 12));
+
+		model.addAttribute(memoTodoVO);
 
 		return WebUtil.adjustViewName("/cop/smt/mtm/MemoTodoEdit");
 	}

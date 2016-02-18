@@ -81,23 +81,12 @@ public class RequestOfferController {
 		requestOfferVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", requestOfferService.selectRequestOfferList(requestOfferVO));
-
 		int totCnt = (Integer) requestOfferService.selectRequestOfferListCnt(requestOfferVO);
+
 		requestOfferVO.getSearchVO().setTotalRecordCount(totCnt);
-
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
 
-		// 로그인 객체 선언
-		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		model.addAttribute("USER_UNIQ_ID", (String) loginVO.getUniqId());
-
-		// 지식전문가 일때
-		if (requestOfferService.selectRequestOfferSpeCheck(loginVO.getUniqId())) {
-			model.addAttribute("IS_SPE", "Y");
-		} else {
-			model.addAttribute("IS_SPE", "N");
-		}
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/dam/spe/req/RequestOfferList");
 	}
@@ -109,15 +98,15 @@ public class RequestOfferController {
 	 */
 	@RequestMapping(value = "/dam/spe/req/detailRequestOffer.do")
 	public String detailRequestOffer(
-			@ModelAttribute RequestOfferVO requestOfferVO, 
+			RequestOfferVO requestOfferVO, 
 			ModelMap model) {
 
 		// 상세정보 불러오기
-		requestOfferService.selectRequestOffer(requestOfferVO);
+		model.addAttribute(requestOfferService.selectRequestOffer(requestOfferVO));
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		model.addAttribute("USER_UNIQ_ID", (String) loginVO.getUniqId());
+		model.addAttribute("uniqId", (String) loginVO.getUniqId());
 
 		// 지식전문가 일때
 		if (requestOfferService.selectRequestOfferSpeCheck(loginVO.getUniqId())) {
@@ -142,21 +131,17 @@ public class RequestOfferController {
 
 		// 조직유형 불러오기
 		MapTeamVO mapTeamVO = new MapTeamVO();
-		mapTeamVO.getSearchVO().setRecordPerPage(999999);
-		mapTeamVO.getSearchVO().setFirstIndex(0);
+		mapTeamVO.getSearchVO().setSizeAndOffset(999999, 0);
 		List<EgovMap> mapTeamList = mapTeamService.selectMapTeamList(mapTeamVO);
 		model.addAttribute("mapTeamList", mapTeamList);
 
 		// 지식유형코드불러오기
 		MapMaterialVO mapMaterialVO = new MapMaterialVO();
-		mapMaterialVO.getSearchVO().setRecordPerPage(999999);
-		mapMaterialVO.getSearchVO().setFirstIndex(0);
+		mapMaterialVO.getSearchVO().setSizeAndOffset(999999, 0);
 		mapMaterialVO.getSearchVO().setSearchCondition("ORGNZT_ID");
 
-		EgovMap vo = new EgovMap();
-		if (requestOfferVO.getOrgnztId() == null 
-				|| requestOfferVO.getOrgnztId().equals("")) {
-			vo = mapTeamList.get(0);
+		if (requestOfferVO.getOrgnztId() == null || requestOfferVO.getOrgnztId().equals("")) {
+			EgovMap vo = mapTeamList.get(0);
 			mapMaterialVO.getSearchVO().setSearchKeyword(vo.get("orgnztId").toString());
 		} else {
 			mapMaterialVO.getSearchVO().setSearchKeyword(requestOfferVO.getOrgnztId());
@@ -219,38 +204,31 @@ public class RequestOfferController {
 	 */
 	@RequestMapping(value = "/dam/spe/req/editRequestOffer.do")
 	public String editRequestOffer(
-			@ModelAttribute RequestOfferVO requestOfferVO, 
+			RequestOfferVO requestOfferVO, 
 			ModelMap model) {
 
-		// 수정정보 불러오기
-		if (requestOfferVO.getOrgnztId() != null 
-				&& !requestOfferVO.getOrgnztId().equals("")) {
-			requestOfferService.selectRequestOffer(requestOfferVO);
-		}
+		requestOfferVO = requestOfferService.selectRequestOffer(requestOfferVO);
 		
 		// 조직유형 불러오기
 		MapTeamVO mapTeamVO = new MapTeamVO();
-		mapTeamVO.getSearchVO().setRecordPerPage(999999);
-		mapTeamVO.getSearchVO().setFirstIndex(0);
+		mapTeamVO.getSearchVO().setSizeAndOffset(999999, 0);
 		List<EgovMap> mapTeamList = mapTeamService.selectMapTeamList(mapTeamVO);
 		model.addAttribute("mapTeamList", mapTeamList);
 
 		// 지식유형코드불러오기
 		MapMaterialVO mapMaterialVO = new MapMaterialVO();
-		mapMaterialVO.getSearchVO().setRecordPerPage(999999);
-		mapMaterialVO.getSearchVO().setFirstIndex(0);
+		mapMaterialVO.getSearchVO().setSizeAndOffset(999999, 0);
 		mapMaterialVO.getSearchVO().setSearchCondition("ORGNZT_ID");
 
-		EgovMap vo = new EgovMap();
-		if (requestOfferVO.getOrgnztId() == null 
-				|| requestOfferVO.getOrgnztId().equals("")) {
-			vo = mapTeamList.get(0);
+		if (requestOfferVO.getOrgnztId() == null || requestOfferVO.getOrgnztId().equals("")) {
+			EgovMap vo = mapTeamList.get(0);
 			mapMaterialVO.getSearchVO().setSearchKeyword(vo.get("orgnztId").toString());
 		} else {
 			mapMaterialVO.getSearchVO().setSearchKeyword(requestOfferVO.getOrgnztId());
 		}
 		model.addAttribute("mapMaterialList", mapMaterialService.selectMapMaterialList(mapMaterialVO));
-
+		model.addAttribute(requestOfferVO);
+		
 		return WebUtil.adjustViewName("/dam/spe/req/RequestOfferEdit");
 	}
 

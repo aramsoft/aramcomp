@@ -32,7 +32,7 @@
 <div id="search_area">
 	<div class="button_area">
 		<%-- 자기 글일때만 수정/삭제버튼 활성화 --%>
-		<c:if test="${requestOfferVO.frstRegisterId eq USER_UNIQ_ID}">
+		<c:if test="${requestOfferVO.frstRegisterId eq uniqId}">
 			<span class="button"><a href="#" onclick="javascript:fn_aram_edit(); return false;"><spring:message code="button.update" /></a></span>
 			<span class="button"><a href="#" onclick="javascript:fn_aram_delete(); return false;"><spring:message code="button.delete" /></a></span>
 		</c:if>

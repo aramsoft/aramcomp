@@ -87,7 +87,7 @@ public class SchdulManageController {
 		searchVO.setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/smt/sim/EmplyrListPopup");
 	}
@@ -112,7 +112,7 @@ public class SchdulManageController {
 		searchVO.setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/smt/sim/SchdulListPopup");
 	}
@@ -411,17 +411,10 @@ public class SchdulManageController {
 	 */
 	@RequestMapping(value = "/cop/smt/sim/detailSchdul.do")
 	public String detailSchdul(
-			@ModelAttribute SchdulManageVO schdulManageVO, 
+			SchdulManageVO schdulManageVO, 
 			ModelMap model) {
 
-		// 공통코드 중요도 조회
-		cmmUseService.populateCmmCodeList("COM019", "COM019_schdulIpcr");
-		// 공통코드 일정구분 조회
-		cmmUseService.populateCmmCodeList("COM030", "COM030_schdulSe");
-		// 공통코드 반복구분 조회
-		cmmUseService.populateCmmCodeList("COM031", "COM031_reptitSe");
-
-		schdulManageService.selectSchdulManageDetail(schdulManageVO);
+		model.addAttribute(schdulManageService.selectSchdulManageDetail(schdulManageVO));
 
 		// -----------------------------------------------------------
 		// 2011.09.16 : 일지관리가 존재할 때 버튼이 나타나도록 수정
@@ -431,15 +424,22 @@ public class SchdulManageController {
 			model.addAttribute("useDiaryManage", "true");
 		}
 
+		// 공통코드 중요도 조회
+		cmmUseService.populateCmmCodeList("COM019", "COM019_schdulIpcr");
+		// 공통코드 일정구분 조회
+		cmmUseService.populateCmmCodeList("COM030", "COM030_schdulSe");
+		// 공통코드 반복구분 조회
+		cmmUseService.populateCmmCodeList("COM031", "COM031_reptitSe");
+
 		return WebUtil.adjustViewName("/cop/smt/sim/SchdulDetail");
 	}
 
 	// 일정일자(시)
 	@ModelAttribute("schdulListHH")
-	public List<ComCodeVO> schdulListHH() { return WebUtil.getTimeHH();}
+	public List<ComCodeVO> schdulListHH() {return WebUtil.getTimeHH();}
 	// 일정일자(분)
 	@ModelAttribute("schdulListMM")
-	public List<ComCodeVO> schdulListMM() { return WebUtil.getTimeMM();}
+	public List<ComCodeVO> schdulListMM() {return WebUtil.getTimeMM();}
 
 	/**
 	 * 일정를 등록 폼
@@ -504,12 +504,7 @@ public class SchdulManageController {
 			@ModelAttribute SchdulManageVO schdulManageVO, 
 			ModelMap model) {
 
-		// 공통코드 중요도 조회
-		cmmUseService.populateCmmCodeList("COM019", "COM019_schdulIpcr");
-		// 공통코드 일정구분 조회
-		cmmUseService.populateCmmCodeList("COM030", "COM030_schdulSe");
-
-		schdulManageService.selectSchdulManageDetail(schdulManageVO);
+		schdulManageVO = schdulManageService.selectSchdulManageDetail(schdulManageVO);
  
 		String sSchdulBgnde = schdulManageVO.getSchdulBgnde();
 		String sSchdulEndde = schdulManageVO.getSchdulEndde();
@@ -528,6 +523,12 @@ public class SchdulManageController {
 			writer = true;
 		}
 		model.addAttribute("writer", writer);
+		model.addAttribute(schdulManageVO);
+
+		// 공통코드 중요도 조회
+		cmmUseService.populateCmmCodeList("COM019", "COM019_schdulIpcr");
+		// 공통코드 일정구분 조회
+		cmmUseService.populateCmmCodeList("COM030", "COM030_schdulSe");
 
 		return WebUtil.adjustViewName("/cop/smt/sim/SchdulEdit");
 	}

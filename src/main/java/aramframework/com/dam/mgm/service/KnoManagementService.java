@@ -58,10 +58,11 @@ public class KnoManagementService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param knoManagementVO
 	 */
-	public void selectKnoManagement(KnoManagementVO knoManagementVO) {
+	public KnoManagementVO selectKnoManagement(KnoManagementVO knoManagementVO) {
 		KnoManagementVO resultVo = knoManagementMapper.selectKnoManagement(knoManagementVO);
 		// searchVO 이전 
-		resultVo.setSearchVO(knoManagementVO.getSearchVO()); 
+		resultVo.setSearchVO(knoManagementVO.getSearchVO());
+		return resultVo;
 	}
 
 	/**

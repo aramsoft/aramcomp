@@ -65,12 +65,12 @@ public class MapTeamController {
 		mapTeamVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", mapTeamService.selectMapTeamList(mapTeamVO));
-
 		int totCnt = mapTeamService.selectMapTeamListCnt(mapTeamVO);
-		mapTeamVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		mapTeamVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/dam/map/tea/MapTeamList");
 	}
@@ -82,9 +82,10 @@ public class MapTeamController {
 	 */
 	@RequestMapping(value = "/dam/map/tea/detailMapTeam.do")
 	public String detailMapTeam(
-			@ModelAttribute MapTeamVO mapTeamVO) {
+			MapTeamVO mapTeamVO,
+			ModelMap model) {
 
-		mapTeamService.selectMapTeamDetail(mapTeamVO);
+		model.addAttribute(mapTeamService.selectMapTeamDetail(mapTeamVO));
 
 		return WebUtil.adjustViewName("/dam/map/tea/MapTeamDetail");
 	}
@@ -134,9 +135,10 @@ public class MapTeamController {
 	 */
 	@RequestMapping(value = "/dam/map/tea/editMapTeam.do")
 	public String editMapTeam(
-			@ModelAttribute MapTeamVO mapTeamVO) {
+			MapTeamVO mapTeamVO,
+			ModelMap model) {
 
-		mapTeamService.selectMapTeamDetail(mapTeamVO);
+		model.addAttribute(mapTeamService.selectMapTeamDetail(mapTeamVO));
 		
 		return WebUtil.adjustViewName("/dam/map/tea/MapTeamEdit");
 	}

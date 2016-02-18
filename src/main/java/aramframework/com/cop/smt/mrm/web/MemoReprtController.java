@@ -200,7 +200,7 @@ public class MemoReprtController {
 			MemoReprtVO memoReprtVO,
 			ModelMap model) {
 
-		memoReprtService.selectMemoReprt(memoReprtVO);
+		model.addAttribute(memoReprtService.selectMemoReprt(memoReprtVO));
 
 		return WebUtil.adjustViewName("/cop/smt/mrm/MemoReprtEdit");
 	}

@@ -69,12 +69,12 @@ public class KnoAppraisalController {
 		knoAppraisalVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", knoAppraisalService.selectKnoAppraisalList(knoAppraisalVO));
-
 		int totCnt = knoAppraisalService.selectKnoAppraisalListCnt(knoAppraisalVO);
-		knoAppraisalVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		knoAppraisalVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/dam/app/KnoAppraisalList");
 	}
@@ -86,9 +86,10 @@ public class KnoAppraisalController {
 	 */
 	@RequestMapping(value = "/dam/app/detailKnoAppraisal.do")
 	public String detailKnoAppraisal(
-			@ModelAttribute KnoAppraisalVO knoAppraisalVO) {
+			KnoAppraisalVO knoAppraisalVO,
+			ModelMap model) {
 
-		knoAppraisalService.selectKnoAppraisal(knoAppraisalVO);
+		model.addAttribute(knoAppraisalService.selectKnoAppraisal(knoAppraisalVO));
 
 		return WebUtil.adjustViewName("/dam/app/KnoAppraisalDetail");
 	}
@@ -100,9 +101,10 @@ public class KnoAppraisalController {
 	 */
 	@RequestMapping(value = "/dam/app/editKnoAppraisal.do")
 	public String editKnoAppraisal(
-			@ModelAttribute KnoAppraisalVO knoAppraisalVO) {
+			KnoAppraisalVO knoAppraisalVO,
+			ModelMap model) {
 
-		knoAppraisalService.selectKnoAppraisal(knoAppraisalVO);
+		model.addAttribute(knoAppraisalService.selectKnoAppraisal(knoAppraisalVO));
 
 		return WebUtil.adjustViewName("/dam/app/KnoAppraisalEdit");
 	}

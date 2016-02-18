@@ -87,12 +87,12 @@ public class KnoPersonalController {
 		knoPersonalVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", knoPersonalService.selectKnoPersonalList(knoPersonalVO));
-
 		int totCnt = knoPersonalService.selectKnoPersonalListCnt(knoPersonalVO);
-		knoPersonalVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		knoPersonalVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/dam/per/KnoPersonalList");
 	}
@@ -104,9 +104,10 @@ public class KnoPersonalController {
 	 */
 	@RequestMapping(value = "/dam/per/detailKnoPersonal.do")
 	public String detailKnoPersonal(
-			@ModelAttribute KnoPersonalVO knoPersonalVO) {
+			KnoPersonalVO knoPersonalVO,
+			ModelMap model) {
 
-		knoPersonalService.selectKnoPersonal(knoPersonalVO);
+		model.addAttribute(knoPersonalService.selectKnoPersonal(knoPersonalVO));
 
 		return WebUtil.adjustViewName("/dam/per/KnoPersonalDetail");
 	}
@@ -122,20 +123,15 @@ public class KnoPersonalController {
 			ModelMap model) {
 
 		MapTeamVO mapTeamVO = new MapTeamVO();
-		mapTeamVO.getSearchVO().setRecordPerPage(999999);
-		mapTeamVO.getSearchVO().setFirstIndex(0);
+		mapTeamVO.getSearchVO().setSizeAndOffset(999999, 0);
 		List<EgovMap> mapTeamList = mapTeamService.selectMapTeamList(mapTeamVO);
 		model.addAttribute("mapTeamList", mapTeamList);
 
 		MapMaterialVO mapMaterialVO = new MapMaterialVO();
-		mapMaterialVO.getSearchVO().setRecordPerPage(999999);
-		mapMaterialVO.getSearchVO().setFirstIndex(0);
+		mapMaterialVO.getSearchVO().setSizeAndOffset(999999, 0);
 		mapMaterialVO.getSearchVO().setSearchCondition("ORGNZT_ID");
-
-		EgovMap vo = new EgovMap();
-		if (knoPersonalVO.getOrgnztId() == null 
-				|| knoPersonalVO.getOrgnztId().equals("")) {
-			vo = mapTeamList.get(0);
+		if (knoPersonalVO.getOrgnztId() == null || knoPersonalVO.getOrgnztId().equals("")) {
+			EgovMap vo = mapTeamList.get(0);
 			mapMaterialVO.getSearchVO().setSearchKeyword(vo.get("orgnztId").toString());
 		} else {
 			mapMaterialVO.getSearchVO().setSearchKeyword(knoPersonalVO.getOrgnztId());
@@ -183,9 +179,10 @@ public class KnoPersonalController {
 	 */
 	@RequestMapping(value = "/dam/per/editKnoPersonal.do")
 	public String editKnoPersonal(
-			@ModelAttribute KnoPersonalVO knoPersonalVO) {
+			KnoPersonalVO knoPersonalVO,
+			ModelMap model) {
 
-		knoPersonalService.selectKnoPersonal(knoPersonalVO);
+		model.addAttribute(knoPersonalService.selectKnoPersonal(knoPersonalVO));
 
 		return WebUtil.adjustViewName("/dam/per/KnoPersonalEdit");
 	}

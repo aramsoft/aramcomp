@@ -64,12 +64,12 @@ public class KnoManagementController {
 		knoManagementVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", knoManagementService.selectKnoManagementList(knoManagementVO));
-
 		int totCnt = knoManagementService.selectKnoManagementListCnt(knoManagementVO);
-		knoManagementVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		knoManagementVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/dam/mgm/KnoManagementList");
 	}
@@ -81,13 +81,14 @@ public class KnoManagementController {
 	 */
 	@RequestMapping(value = "/dam/mgm/detailKnoManagement.do")
 	public String detailKnoManagement(
-			@ModelAttribute KnoManagementVO knoManagementVO, 
+			KnoManagementVO knoManagementVO, 
 			ModelMap model) {
 
 		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
 			model.addAttribute("authority", "ROLE_ADMIN");
 		}
-		knoManagementService.selectKnoManagement(knoManagementVO);
+		
+		model.addAttribute(knoManagementService.selectKnoManagement(knoManagementVO));
 
 		return WebUtil.adjustViewName("/dam/mgm/KnoManagementDetail");
 	}
@@ -99,9 +100,10 @@ public class KnoManagementController {
 	 */
 	@RequestMapping(value = "/dam/mgm/editKnoManagement.do")
 	public String editKnoManagement(
-			@ModelAttribute KnoManagementVO knoManagementVO) {
+			KnoManagementVO knoManagementVO, 
+			ModelMap model) {
 
-		knoManagementService.selectKnoManagement(knoManagementVO);
+		model.addAttribute(knoManagementService.selectKnoManagement(knoManagementVO));
 
 		return WebUtil.adjustViewName("/dam/mgm/KnoManagementEdit");
 	}

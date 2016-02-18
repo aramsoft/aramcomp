@@ -70,12 +70,12 @@ public class MapMaterialController {
 		mapMaterialVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList",  mapMaterialService.selectMapMaterialList(mapMaterialVO));
-
 		int totCnt = mapMaterialService.selectMapMaterialListCnt(mapMaterialVO);
-		mapMaterialVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		mapMaterialVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/dam/map/mat/MapMaterialList");
 	}
@@ -87,9 +87,10 @@ public class MapMaterialController {
 	 */
 	@RequestMapping(value = "/dam/map/mat/detailMapMaterial.do")
 	public String detailMapMaterial(
-			@ModelAttribute MapMaterialVO mapMaterialVO) {
+			MapMaterialVO mapMaterialVO,
+			ModelMap model) {
 
-		mapMaterialService.selectMapMaterial(mapMaterialVO);
+		model.addAttribute(mapMaterialService.selectMapMaterial(mapMaterialVO));
 
 		return WebUtil.adjustViewName("/dam/map/mat/MapMaterialDetail");
 	}
@@ -151,9 +152,10 @@ public class MapMaterialController {
 	 */
 	@RequestMapping(value = "/dam/map/mat/editMapMaterial.do")
 	public String editMapMaterial(
-			@ModelAttribute MapMaterialVO mapMaterialVO) {
+			MapMaterialVO mapMaterialVO,
+			ModelMap model) {
 
-		mapMaterialService.selectMapMaterial(mapMaterialVO);
+		model.addAttribute(mapMaterialService.selectMapMaterial(mapMaterialVO));
 
 		return WebUtil.adjustViewName("/dam/map/mat/MapMaterialEdit");
 	}

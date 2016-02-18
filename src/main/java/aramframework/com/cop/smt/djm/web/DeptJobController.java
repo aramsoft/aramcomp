@@ -81,12 +81,12 @@ public class DeptJobController {
 		searchVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", deptJobService.selectChargerList(searchVO));
-
 		int totCnt = deptJobService.selectChargerListCnt(searchVO);
-		searchVO.setTotalRecordCount(totCnt);
 
+		searchVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/smt/djm/ChargerListPopup");
 	}
@@ -105,12 +105,12 @@ public class DeptJobController {
 		searchVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", deptJobService.selectDeptList(searchVO));
-
 		int totCnt = deptJobService.selectDeptListCnt(searchVO);
-		searchVO.setTotalRecordCount(totCnt);
 
+		searchVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/smt/djm/DeptListPopup");
 	}
@@ -132,15 +132,14 @@ public class DeptJobController {
 		deptJobBxVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		List<EgovMap> list = deptJobService.selectDeptJobBxList(deptJobBxVO);
-
 		model.addAttribute("resultList", list);
 		model.addAttribute("resultNum", list.size());
-
 		int totCnt = deptJobService.selectDeptJobBxListCnt(deptJobBxVO);
-		deptJobBxVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		deptJobBxVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		String returnUrl;
 		if ("Y".equals(popFlag)) {
@@ -158,9 +157,10 @@ public class DeptJobController {
 	 */
 	 @RequestMapping("/cop/smt/djm/detailDeptJobBx.do")
 	 public String detailDeptJobBx(
-			 @ModelAttribute DeptJobBxVO deptJobBxVO) {
+			DeptJobBxVO deptJobBxVO,
+			ModelMap model) {
 	
- 		deptJobService.selectDeptJobBx(deptJobBxVO);
+		 model.addAttribute(deptJobService.selectDeptJobBx(deptJobBxVO));
 
 		return WebUtil.adjustViewName("/cop/smt/djm/DeptJobBxDetail");
 	}
@@ -242,11 +242,10 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/editDeptJobBx.do")
 	@Secured("ROLE_ADMIN")
 	public String editDeptJobBx(
-			@ModelAttribute DeptJobBxVO deptJobBxVO, 
+			DeptJobBxVO deptJobBxVO, 
 			ModelMap model) {
 
-		deptJobService.selectDeptJobBx(deptJobBxVO);
-
+		model.addAttribute(deptJobService.selectDeptJobBx(deptJobBxVO));
 		model.addAttribute("indictOrdrValue", deptJobBxVO.getIndictOrdr());
 
 		return WebUtil.adjustViewName("/cop/smt/djm/DeptJobBxEdit");
@@ -340,13 +339,12 @@ public class DeptJobController {
 		deptJobVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", deptJobService.selectDeptJobList(deptJobVO));
-
 		int totCnt = deptJobService.selectDeptJobListCnt(deptJobVO);
+
 		deptJobVO.getSearchVO().setTotalRecordCount(totCnt);
-
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
 
+		model.addAttribute(paginationInfo);
 		model.addAttribute("resultBxList", deptJobService.selectDeptJobBxListAll());
 
 		return WebUtil.adjustViewName("/cop/smt/djm/DeptJobList");
@@ -360,14 +358,12 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/detailDeptJob.do")
 	@Secured("ROLE_USER")
 	public String detailDeptJob(
-			@ModelAttribute DeptJobVO deptJobVO, 
+			DeptJobVO deptJobVO, 
 			ModelMap model) {
 		
-		deptJobService.selectDeptJob(deptJobVO);
+		model.addAttribute(deptJobService.selectDeptJob(deptJobVO));
 
-		/*
-		 * 공통코드 우선순위 조회
-		 */
+		// 공통코드 우선순위 조회
 		model.addAttribute("priort", cmmUseService.selectCmmCodeList("COM059"));
 
 		return WebUtil.adjustViewName("/cop/smt/djm/DeptJobDetail");
@@ -431,9 +427,10 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/editDeptJob.do")
 	@Secured("ROLE_USER")
 	public String editDeptJob(
-			@ModelAttribute DeptJobVO deptJobVO) {
+			DeptJobVO deptJobVO,
+			ModelMap model) {
 
-		deptJobService.selectDeptJob(deptJobVO);
+		model.addAttribute(deptJobService.selectDeptJob(deptJobVO));
 
 		return WebUtil.adjustViewName("/cop/smt/djm/DeptJobEdit");
 	}

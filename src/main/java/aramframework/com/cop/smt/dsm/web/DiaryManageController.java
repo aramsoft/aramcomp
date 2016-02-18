@@ -67,12 +67,12 @@ public class DiaryManageController {
 		diaryManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", diaryManageService.selectDiaryManageList(diaryManageVO));
-
 		int totCnt = (Integer) diaryManageService.selectDiaryManageListCnt(diaryManageVO);
-		diaryManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		diaryManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/smt/dsm/DiaryList");
 	}
@@ -85,9 +85,10 @@ public class DiaryManageController {
 	@RequestMapping(value = "/cop/smt/dsm/detailDiary.do")
 	@Secured("ROLE_USER")
 	public String detailDiary(
-			@ModelAttribute DiaryManageVO diaryManageVO) {
+			DiaryManageVO diaryManageVO,
+			ModelMap model) {
 
-		diaryManageService.selectDiaryManageDetail(diaryManageVO);
+		model.addAttribute(diaryManageService.selectDiaryManageDetail(diaryManageVO));
 
 		return WebUtil.adjustViewName("/cop/smt/dsm/DiaryDetail");
 	}
@@ -147,9 +148,10 @@ public class DiaryManageController {
 	@RequestMapping(value = "/cop/smt/dsm/editDiary.do")
 	@Secured("ROLE_USER")
 	public String editDiary(
-			@ModelAttribute DiaryManageVO diaryManageVO) {
+			DiaryManageVO diaryManageVO,
+			ModelMap model) {
 
-		diaryManageService.selectDiaryManageDetail(diaryManageVO);
+		model.addAttribute(diaryManageService.selectDiaryManageDetail(diaryManageVO));
 
 		return WebUtil.adjustViewName("/cop/smt/dsm/DiaryEdit");
 	}

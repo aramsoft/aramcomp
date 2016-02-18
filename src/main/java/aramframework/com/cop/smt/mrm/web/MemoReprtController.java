@@ -74,7 +74,7 @@ public class MemoReprtController {
 		searchVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
-		model.addAttribute("paginationInfo", paginationInfo);
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/smt/mrm/ReportrListPopup");
 	}
@@ -99,12 +99,12 @@ public class MemoReprtController {
 		memoReprtVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", memoReprtService.selectMemoReprtList(memoReprtVO));
-
 		int totCnt = memoReprtService.selectMemoReprtListCnt(memoReprtVO);
-		memoReprtVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		memoReprtVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+	
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/smt/mrm/MemoReprtList");
 	}
@@ -117,18 +117,19 @@ public class MemoReprtController {
 	@RequestMapping("/cop/smt/mrm/detailMemoReprt.do")
 	@Secured("ROLE_USER")
 	public String detailMemoReprt(
-			@ModelAttribute MemoReprtVO memoReprtVO, 
+			MemoReprtVO memoReprtVO, 
 			ModelMap model) {
 	
-		memoReprtService.selectMemoReprt(memoReprtVO);
+		memoReprtVO = memoReprtService.selectMemoReprt(memoReprtVO);
 		
 		// 1. 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		model.addAttribute("uniqId", loginVO.getUniqId());
 
 		if (loginVO.getUniqId().equals(memoReprtVO.getReportrId())) {
-			memoReprtService.readMemoReprt(memoReprtVO);
+			memoReprtService.readMemoReprt(memoReprtVO);	// notice read status
 		}
+		model.addAttribute(memoReprtVO);
 		
 		return WebUtil.adjustViewName("/cop/smt/mrm/MemoReprtDetail");
 	}
@@ -196,7 +197,8 @@ public class MemoReprtController {
 	@RequestMapping("/cop/smt/mrm/editMemoReprt.do")
 	@Secured("ROLE_USER")
 	public String editMemoReprt(
-			@ModelAttribute MemoReprtVO memoReprtVO) {
+			MemoReprtVO memoReprtVO,
+			ModelMap model) {
 
 		memoReprtService.selectMemoReprt(memoReprtVO);
 

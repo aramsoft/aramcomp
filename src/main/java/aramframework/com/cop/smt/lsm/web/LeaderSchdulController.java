@@ -318,30 +318,31 @@ public class LeaderSchdulController {
 	 */
 	@RequestMapping(value = "/cop/smt/lsm/detailLeaderSchdul.do")
 	public String detailLeaderSchdul(
-			@ModelAttribute LeaderSchdulVO leaderSchdulVO) {
+			LeaderSchdulVO leaderSchdulVO,
+			ModelMap model) {
+
+		leaderSchdulService.selectLeaderSchdul(leaderSchdulVO);
 
 		// 공통코드 간부일정구분
 		cmmUseService.populateCmmCodeList("COM057", "COM057_schdulSeLeader");
 		// 공통코드 반복구분 조회
 		cmmUseService.populateCmmCodeList("COM058", "COM058_reptitSeLeader");
 
-		leaderSchdulService.selectLeaderSchdul(leaderSchdulVO);
-
 		return WebUtil.adjustViewName("/cop/smt/lsm/LeaderSchdulDetail");
 	}
 
 	// 일정시작일자(시)
 	@ModelAttribute("schdulBgndeHH")
-	public List<ComCodeVO> schdulBgndeHH() { return WebUtil.getTimeHH();}
+	public List<ComCodeVO> schdulBgndeHH() {return WebUtil.getTimeHH();}
 	// 일정시작일자(분)
 	@ModelAttribute("schdulBgndeMM")
-	public List<ComCodeVO> schdulBgndeMM() { return WebUtil.getTimeMM();}
+	public List<ComCodeVO> schdulBgndeMM() {return WebUtil.getTimeMM();}
 	// 일정종료일자(시)
 	@ModelAttribute("schdulEnddeHH")
-	public List<ComCodeVO> schdulEnddeHH() { return WebUtil.getTimeHH();}
+	public List<ComCodeVO> schdulEnddeHH() {return WebUtil.getTimeHH();}
 	// 일정정료일자(분)
 	@ModelAttribute("schdulEnddeMM")
-	public List<ComCodeVO> schdulEnddeMM() { return WebUtil.getTimeMM();}
+	public List<ComCodeVO> schdulEnddeMM() {return WebUtil.getTimeMM();}
 
 	/**
 	 * 간부일정 등록을 위한 등록 페이지로 이동한다.
@@ -401,12 +402,13 @@ public class LeaderSchdulController {
 	@RequestMapping(value = "/cop/smt/lsm/editLeaderSchdul.do")
 	@Secured("ROLE_USER")
 	public String editLeaderSchdul(
-			@ModelAttribute LeaderSchdulVO leaderSchdulVO) {
+			LeaderSchdulVO leaderSchdulVO,
+			ModelMap model) {
 
 		// 공통코드 간부일정구분
 		cmmUseService.populateCmmCodeList("COM057", "COM057_schdulSeLeader");
 
-		leaderSchdulService.selectLeaderSchdul(leaderSchdulVO);
+		leaderSchdulVO = leaderSchdulService.selectLeaderSchdul(leaderSchdulVO);
 
 		String sSchdulBgnde = leaderSchdulVO.getSchdulBgnde();
 		String sSchdulEndde = leaderSchdulVO.getSchdulEndde();
@@ -419,6 +421,8 @@ public class LeaderSchdulController {
 		leaderSchdulVO.setSchdulEnddeHH(sSchdulEndde.substring(8, 10));
 		leaderSchdulVO.setSchdulEnddeMM(sSchdulEndde.substring(10, 12));
 
+		model.addAttribute(leaderSchdulVO);
+		
 		return WebUtil.adjustViewName("/cop/smt/lsm/LeaderSchdulEdit");
 	}
 
@@ -488,12 +492,12 @@ public class LeaderSchdulController {
 		leaderSttusVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", leaderSchdulService.selectLeaderSttusList(leaderSttusVO));
-
 		int totCnt = leaderSchdulService.selectLeaderSttusListCnt(leaderSttusVO);
-		leaderSttusVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		leaderSttusVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/smt/lsm/LeaderSttusListView");
 	}
@@ -512,12 +516,12 @@ public class LeaderSchdulController {
 		leaderSttusVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", leaderSchdulService.selectLeaderSttusList(leaderSttusVO));
-
 		int totCnt = leaderSchdulService.selectLeaderSttusListCnt(leaderSttusVO);
-		leaderSttusVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		leaderSttusVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/smt/lsm/LeaderSttusList");
 	}
@@ -580,12 +584,13 @@ public class LeaderSchdulController {
 	@RequestMapping("/cop/smt/lsm/editLeaderSttus.do")
 	@Secured("ROLE_USER")
 	public String editLeaderSttus(
-			@ModelAttribute LeaderSttusVO leaderSttusVO) {
+			LeaderSttusVO leaderSttusVO,
+			ModelMap model) {
+
+		model.addAttribute(leaderSchdulService.selectLeaderSttus(leaderSttusVO));
 
 		// 공통코드 간부상태
 		cmmUseService.populateCmmCodeList("COM061", "COM061_leaderSttus");
-
-		leaderSchdulService.selectLeaderSttus(leaderSttusVO);
 
 		return WebUtil.adjustViewName("/cop/smt/lsm/LeaderSttusEdit");
 	}

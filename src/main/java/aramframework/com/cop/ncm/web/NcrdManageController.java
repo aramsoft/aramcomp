@@ -54,9 +54,10 @@ public class NcrdManageController {
 	 */
 	@RequestMapping("/cop/ncm/detailNameCardPopup.do")
 	public String detailNameCardPopup(
-			@ModelAttribute NameCardVO nameCardVO) {
+			NameCardVO nameCardVO,
+			ModelMap model) {
 
-		ncrdService.selectNcrdItem(nameCardVO);
+		model.addAttribute(ncrdService.selectNcrdItem(nameCardVO));
 
 		return WebUtil.adjustViewName("/cop/ncm/NameCardPopup");
 	}
@@ -81,12 +82,12 @@ public class NcrdManageController {
 		nameCardVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", ncrdService.selectNcrdListMine(nameCardVO));
-
 		int totCnt = ncrdService.selectNcrdListMineCnt(nameCardVO);
+	
 		nameCardVO.getSearchVO().setTotalRecordCount(totCnt);
-
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/ncm/NameCardList");
 	}
@@ -139,10 +140,10 @@ public class NcrdManageController {
 	@RequestMapping("/cop/ncm/editNameCard.do")
 	@Secured("ROLE_USER")
 	public String editNameCard(
-			@ModelAttribute NameCardVO nameCardVO, 
+			NameCardVO nameCardVO, 
 			ModelMap model) {
 
-		ncrdService.selectNcrdItem(nameCardVO);
+		nameCardVO = ncrdService.selectNcrdItem(nameCardVO);
 
 		boolean writer = false;
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -150,6 +151,7 @@ public class NcrdManageController {
 			writer = true;
 		}
 		model.addAttribute("writer", writer);
+		model.addAttribute(nameCardVO);
 
 		return WebUtil.adjustViewName("/cop/ncm/NameCardEdit");
 	}
@@ -220,12 +222,12 @@ public class NcrdManageController {
 		nameCardVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", ncrdService.selectNcrdListPublic(nameCardVO));
-
 		int totCnt = ncrdService.selectNcrdListPublicCnt(nameCardVO);
-		nameCardVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		nameCardVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/ncm/NameCardPublic");
 	}

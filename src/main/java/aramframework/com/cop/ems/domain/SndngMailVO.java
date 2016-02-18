@@ -49,12 +49,6 @@ public class SndngMailVO extends BaseVO {
 	private String atchFileId;
 
 	// helper
-	/** 메세지ID 리스트 */
-	private String messageIdList;
-
-	/** 첨부파일ID 리스트 */
-	private String atchFileIdList;
-
 	/** 발송요청XML내용 */
 	private String xmlContent;
 
@@ -183,36 +177,6 @@ public class SndngMailVO extends BaseVO {
 	}
 
 	// helper
-	/**
-	 * messageIdList attribute 를 리턴한다.
-	 * @return String
-	 */
-	public String getMessageIdList() {
-		return messageIdList;
-	}
-	/**
-	 * messageIdList attribute 값을 설정한다.
-	 * @param messageIdList String
-	 */
-	public void setMessageIdList(String messageIdList) {
-		this.messageIdList = messageIdList;
-	}
-
-	/**
-	 * atchFileIdList attribute 를 리턴한다.
-	 * @return String
-	 */
-	public String getAtchFileIdList() {
-		return atchFileIdList;
-	}
-	/**
-	 * atchFileIdList attribute 값을 설정한다.
-	 * @param atchFileIdList String
-	 */
-	public void setAtchFileIdList(String atchFileIdList) {
-		this.atchFileIdList = atchFileIdList;
-	}
-
 	/**
 	 * xmlContent attribute 를 리턴한다.
 	 * @return String

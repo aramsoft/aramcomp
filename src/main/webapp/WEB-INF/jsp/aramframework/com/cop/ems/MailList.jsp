@@ -35,8 +35,7 @@
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
 <input type="hidden" name="mssageId" />
-<input name="messageIdList" type="hidden" value=""/>
-<input name="atchFileIdList" type="hidden" value=""/>
+<input name="messageIds" type="hidden" value=""/>
 
 <div id="search_area">
 	<div class="button_area">
@@ -84,18 +83,17 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="startIndex" value="${(sndngMailVO.pageIndex-1) * sndngMailVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(sndngMailVO.searchVO.pageIndex-1) * sndngMailVO.searchVO.recordPerPage}"/>
   	<c:forEach var="result" items="${resultList}" varStatus="status">
   	<tr class="link" onclick="javascript:fn_aram_detail('${result.mssageId}'); return false;">
  	
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${sndngMailVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${sndngMailVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
     	<td class="lt_text3">
            	<input type="checkbox" name="checkField" class="check2" title="선택">
            	<input name="checkId" type="hidden" value="<c:out value='${result.mssageId}'/>" disabled />
-           	<input name="checkFileId" type="hidden" value="<c:out value='${result.atchFileId}'/>" disabled />
         </td>
  
     	<td class="lt_text3">${result.sndngResultCode}</td>
@@ -188,9 +186,7 @@ function fn_aram_deleteList(){
 	var varForm = document.getElementById("sndngMailVO");
     var checkField = varForm.checkField;
     var id = varForm.checkId;
-    var fileId = varForm.checkFileId;
     var checkedIds = "";
-    var checkedFileIds = "";
     var checkedCount = 0;
 
     if(checkField) {
@@ -198,14 +194,12 @@ function fn_aram_deleteList(){
             for(var i=0; i < checkField.length; i++) {
                 if(checkField[i].checked) {
                     checkedIds += ((checkedCount==0? "" : ",") + id[i].value);
-                    checkedFileIds += ((checkedCount==0? "" : ",") + fileId[i].value);
                     checkedCount++;
                 }
             }
         } else {
             if(checkField.checked) {
                 checkedIds = id.value;
-                checkedFileIds = fileId.value;
             }
         }
     }
@@ -213,9 +207,8 @@ function fn_aram_deleteList(){
     if(checkedIds.length> 0) {
     	var ret = confirm("삭제하시겠습니까?");
     	if (ret == true) {
-    		varForm.messageIdList.value=checkedIds;
-    		varForm.atchFileIdList.value=checkedFileIds;
-    		varForm.action = "${pageContext.request.contextPath}/cop/ems/deleteSndngMailList.do";
+    		varForm.messageIds.value=checkedIds;
+     		varForm.action = "${pageContext.request.contextPath}/cop/ems/deleteSndngMailList.do";
     		varForm.submit();
     	}
     }

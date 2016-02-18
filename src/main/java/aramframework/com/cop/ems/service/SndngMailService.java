@@ -93,22 +93,6 @@ public class SndngMailService extends EgovAbstractServiceImpl {
 	}
 
 	/**
-	 * 발송메일을 삭제한다.
-	 * 
-	 * @param sndngMailVO
-	 */
-	public void deleteSndngMailList(SndngMailVO sndngMailVO) {
-
-		// 1. 발송메일을 삭제한다.
-		String[] sbuf = StringUtil.split(sndngMailVO.getMessageIdList(), ",");
-		for (int i = 0; i < sbuf.length; i++) {
-			SndngMailVO vo = new SndngMailVO();
-			vo.setMssageId(sbuf[i]);
-			deleteSndngMail(vo);
-		}
-	}
-	
-	/**
 	 * 발송메일을 상세 조회한다.
 	 * 
 	 * @param sndngMailVO
@@ -138,6 +122,22 @@ public class SndngMailService extends EgovAbstractServiceImpl {
 		fileMngUtil.deleteMultiFile(sndngMailVO.getAtchFileId());
 	}
 
+	/**
+	 * 발송메일을 삭제한다.
+	 * 
+	 * @param sndngMailVO
+	 */
+	public void deleteSndngMails(String messageIds) {
+
+		// 1. 발송메일을 삭제한다.
+		String[] sbuf = StringUtil.split(messageIds, ",");
+		for (int i = 0; i < sbuf.length; i++) {
+			SndngMailVO sndngMailVO = new SndngMailVO();
+			sndngMailVO.setMssageId(sbuf[i]);
+			deleteSndngMail(sndngMailVO);
+		}
+	}
+	
     /**
 	 * 발송할 메일을 등록한다
 	 * 

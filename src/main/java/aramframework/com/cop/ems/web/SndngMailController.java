@@ -16,6 +16,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
@@ -78,12 +79,12 @@ public class SndngMailController {
 		sndngMailVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", sndngMailService.selectSndngMailList(sndngMailVO));
-
 		int totCnt = sndngMailService.selectSndngMailListCnt(sndngMailVO);
-		sndngMailVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		sndngMailVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/ems/MailList");
 	}
@@ -96,10 +97,10 @@ public class SndngMailController {
 	@RequestMapping(value = "/cop/ems/deleteSndngMailList.do")
 	@Secured("ROLE_USER")
 	public String deleteSndngMailList(
-			@ModelAttribute SndngMailVO sndngMailVO, 
+			@RequestParam String messageIds, 
 			ModelMap model) {
 
-		sndngMailService.deleteSndngMailList(sndngMailVO);
+		sndngMailService.deleteSndngMails(messageIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		return WebUtil.redirectJsp(model, "/cop/ems/listSndngMail.do");

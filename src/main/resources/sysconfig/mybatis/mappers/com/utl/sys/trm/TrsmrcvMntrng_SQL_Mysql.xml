@@ -382,7 +382,7 @@
                     #{logId}
                   , #{cntcId}
                   , #{testClassNm}
-                  , #{mngrNm#
+                  , #{mngrNm}
                   , #{mngrEmailAddr}
                   , #{mntrngSttus}
                   , sysdate()

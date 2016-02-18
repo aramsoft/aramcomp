@@ -87,7 +87,7 @@
 			 		#{scrapId}
 			 	  ,	#{nttId}
 			 	  ,	#{bbsId}
-			 	  ,	#{scrapNm]
+			 	  ,	#{scrapNm}
 			 	  ,	'Y'
 				  , #{frstRegisterId}
 				  , sysdate()

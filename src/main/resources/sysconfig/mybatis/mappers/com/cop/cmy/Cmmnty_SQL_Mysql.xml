@@ -288,11 +288,11 @@
 					SELECT CMMNTY_ID	
 					  FROM COMTN_CMMNTY_USER 
 					 WHERE EMPLYR_ID = #{emplyrId}
-					   AND CMMNTY_ID = #{cmmntyId]
+					   AND CMMNTY_ID = #{cmmntyId}
 					UNION
 					SELECT CMMNTY_ID	
 					  FROM COMTN_CMMNTY
-					 WHERE CMMNTY_ID = #{cmmntyId]
+					 WHERE CMMNTY_ID = #{cmmntyId}
 					   AND MEMBER_AT = 'N'
 			   	  ) A
 		]]>
@@ -316,7 +316,7 @@
 				  , #{emplyrId}
 				  ,	sysdate()
 				  ,	#{mngrAt}
-				  ,	#{useAt#
+				  ,	#{useAt}
 				  , #{frstRegisterId}
 				  , sysdate()
 				  , #{frstRegisterId} 
@@ -383,7 +383,6 @@
 		    	   LEFT OUTER JOIN COMTN_TMPLAT_INFO b
 						ON  a.TMPLAT_ID = b.TMPLAT_ID
 			 WHERE a.CMMNTY_ID = #{cmmntyId}
-		]]>	
 		]]>	
 	</select>	
 		

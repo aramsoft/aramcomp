@@ -83,12 +83,12 @@
 	</tr>
 	</c:if>
 
- 	<c:set var="startIndex" value="${(menuCreaetVO.pageIndex-1) * menuCreateVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(menuCreaetVO.searchVO.pageIndex-1) * menuCreateVO.searchVO.recordPerPage}"/>
  	<c:forEach var="result" items="${resultList}" varStatus="status">
   	<tr>
   	
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${menuCreateVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${menuCreateVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 	    <td class="lt_text3"><c:out value="${result.authorCode}"/></td>

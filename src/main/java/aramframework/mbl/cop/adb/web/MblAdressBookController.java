@@ -83,12 +83,12 @@ public class MblAdressBookController {
         adressBookVO.getSearchVO().fillPageInfo(paginationInfo);
 
         modelAndView.addObject("resultList", adressBookService.selectAdressBookList(adressBookVO));        
- 
         int totCnt = adressBookService.selectAdressBookListCnt(adressBookVO);  
+  
         adressBookVO.getSearchVO().setTotalRecordCount(totCnt);
-
         paginationInfo.setTotalRecordCount(totCnt);
-        modelAndView.addObject("paginationInfo", paginationInfo);
+
+        modelAndView.addObject(paginationInfo);
  
         return modelAndView;
     }
@@ -159,7 +159,7 @@ public class MblAdressBookController {
          
         LoginVO loginVO = (LoginVO)UserDetailsHelper.getAuthenticatedUser();
         
-        adressBookService.selectAdressBook(adressBookVO);
+        adressBookVO = adressBookService.selectAdressBook(adressBookVO);
          
         boolean writer = false;
         String id = "";
@@ -188,7 +188,8 @@ public class MblAdressBookController {
             writer = true;
         }
         model.addAttribute("writer" , writer);
-
+        model.addAttribute(adressBookVO);
+        
         fill_common_code(model);
         return "aramframework/mbl/cop/adb/AdressBookEdit";
     }
@@ -275,7 +276,7 @@ public class MblAdressBookController {
         
         if(adressBookUserVO.getSearchVO().getSearchCondition() == null 
         		|| adressBookUserVO.getSearchVO().getSearchCondition().equals("")){
-        	adressBookUserVO.getSearchVO().setSearchCondition("0");
+        	adressBookUserVO.getSearchVO().setSearchCondition("USERLIST");
         }
         
         PaginationInfo paginationInfo = new PaginationInfo();
@@ -283,20 +284,19 @@ public class MblAdressBookController {
       
 		List<EgovMap> resultList = null;
 		int totCnt = 0;
-		if (adressBookUserVO.getSearchVO().getSearchCondition().equals("0")) {
-			resultList = adressBookService.selectManList(adressBookUserVO.getSearchVO());
-			totCnt = adressBookService.selectManListCnt(adressBookUserVO.getSearchVO());
+		if (adressBookUserVO.getSearchVO().getSearchCondition().equals("USERLIST")) {
+			resultList = adressBookService.selectManList(adressBookUserVO);
+			totCnt = adressBookService.selectManListCnt(adressBookUserVO);
 		} else {
-			resultList = adressBookService.selectCardList(adressBookUserVO.getSearchVO());
-			totCnt = adressBookService.selectCardListCnt(adressBookUserVO.getSearchVO());
+			resultList = adressBookService.selectCardList(adressBookUserVO);
+			totCnt = adressBookService.selectCardListCnt(adressBookUserVO);
 		}
-
         modelAndView.addObject("resultList", resultList);
 
 		adressBookUserVO.getSearchVO().setTotalRecordCount(totCnt); 
-
         paginationInfo.setTotalRecordCount(totCnt); 
-        modelAndView.addObject("paginationInfo", paginationInfo);
+  
+        modelAndView.addObject(paginationInfo);
       
         return modelAndView;
     }

@@ -76,12 +76,12 @@
 	</tr>   	          				 			   
 	</c:if> 
 	   	
- 	<c:set var="startIndex" value="${(mapMaterialVO.pageIndex-1) * mapMaterialVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(mapMaterialVO.searchVO.pageIndex-1) * mapMaterialVO.searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr class="link" onclick="javascript:fn_aram_detail('${result.knoTypeCd}'); return false;">
 
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${mapMaterialVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${mapMaterialVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<td class="lt_text3">${result.orgnztNm}</td>

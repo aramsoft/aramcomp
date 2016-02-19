@@ -26,8 +26,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title> 
-	<c:if test="${searchVO.searchCondition  == 'USERLIST'}">사용자 목록</c:if>
-	<c:if test="${searchVO.searchCondition  == 'NAMECARD'}">명함목록</c:if> 
+	<c:if test="${adressBookUserVO.searchVO.searchCondition  == 'USERLIST'}">사용자 목록</c:if>
+	<c:if test="${adressBookUserVO.searchVO.searchCondition  == 'NAMECARD'}">명함목록</c:if> 
 </title>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/aramframework/com/cmm/com.css" type="text/css">
@@ -42,12 +42,12 @@
 
 <div class="content_title">
 	<h2>
-	<c:if test="${searchVO.searchCondition == 'USERLIST'}">사용자 목록</c:if>
-	<c:if test="${searchVO.searchCondition == 'NAMECARD'}">명함목록</c:if>
+	<c:if test="${adressBookUserVO.searchVO.searchCondition == 'USERLIST'}">사용자 목록</c:if>
+	<c:if test="${adressBookUserVO.searchVO.searchCondition == 'NAMECARD'}">명함목록</c:if>
 	</h2>
 </div>
 
-<form:form commandName="searchVO" action ="" method="post">
+<form:form commandName="adressBookUserVO" action ="" method="post">
 
 <div id="search_area">
 	<div class="button_area">
@@ -102,18 +102,18 @@
 	</tr>
 	</c:if>
 
- 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(adressBookUserVO.searchVO.pageIndex-1) * adressBookUserVO.searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 
-	<c:if test="${searchVO.searchCondition == 'USERLIST'}">
+	<c:if test="${adressBookUserVO.searchVO.searchCondition == 'USERLIST'}">
 	<tr class="link" onclick="javascript:fn_aram_choose('<c:out value="${result.emplyrId}" />'); return false;">
 	</c:if>
-	<c:if test="${searchVO.searchCondition == 'NAMECARD'}">
+	<c:if test="${adressBookUserVO.searchVO.searchCondition == 'NAMECARD'}">
 	<tr class="link" onclick="javascript:fn_aram_choose('<c:out value="${result.ncrdId}" />'); return false;">
 	</c:if>
 
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${adressBookUserVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<c:if test="${searchVO.searchCondition == 'USERLIST'}">

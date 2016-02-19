@@ -78,12 +78,12 @@
 	</tr>   	          				 			   
 	</c:if> 
 	   	
- 	<c:set var="startIndex" value="${(knoPersonalVO.pageIndex-1) * knoPersonalVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(knoPersonalVO.searchVO.pageIndex-1) * knoPersonalVO.searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr class="link" onclick="javascript:fn_aram_detail('${result.knoId}'); return false;">
 
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${knoPersonalVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${knoPersonalVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<td class="lt_text3">${result.orgnztNm}</td>

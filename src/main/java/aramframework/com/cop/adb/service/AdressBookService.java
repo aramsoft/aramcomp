@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cop.adb.dao.AdressBookMapper;
 import aramframework.com.cop.adb.domain.AdressBookUserVO;
 import aramframework.com.cop.adb.domain.AdressBookVO;
@@ -188,8 +187,8 @@ public class AdressBookService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param searchVO
 	 */
-	public List<EgovMap> selectManList(SearchVO searchVO) {
-		return adressBookMapper.selectManList(searchVO);
+	public List<EgovMap> selectManList(AdressBookUserVO adressBookUserVO) {
+		return adressBookMapper.selectManList(adressBookUserVO);
 	}
 
 	/**
@@ -197,8 +196,8 @@ public class AdressBookService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param searchVO
 	 */
-	public int selectManListCnt(SearchVO searchVO) {
-		return adressBookMapper.selectManListCnt(searchVO);
+	public int selectManListCnt(AdressBookUserVO adressBookUserVO) {
+		return adressBookMapper.selectManListCnt(adressBookUserVO);
 	}
 	
 	/**
@@ -206,8 +205,8 @@ public class AdressBookService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param searchVO
 	 */
-	public List<EgovMap> selectCardList(SearchVO searchVO) {
-		return adressBookMapper.selectCardList(searchVO);
+	public List<EgovMap> selectCardList(AdressBookUserVO adressBookUserVO) {
+		return adressBookMapper.selectCardList(adressBookUserVO);
 	}
 
 	/**
@@ -215,8 +214,8 @@ public class AdressBookService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param searchVO
 	 */
-	public int selectCardListCnt(SearchVO searchVO) {
-		return adressBookMapper.selectCardListCnt(searchVO);
+	public int selectCardListCnt(AdressBookUserVO adressBookUserVO) {
+		return adressBookMapper.selectCardListCnt(adressBookUserVO);
 	}
 	
 	/**

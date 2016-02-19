@@ -84,12 +84,12 @@
     </tr>
     </c:if>
     
- 	<c:set var="startIndex" value="${(troblReqstVO.pageIndex-1) * troblReqstVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(troblReqstVO.searchVO.pageIndex-1) * troblReqstVO.searchVO.recordPerPage}"/>
  	<c:forEach var="result" items="${resultList}" varStatus="status">
   	<tr class="link" onclick="javascript:fn_aram_detail('${result.troblId}'); return false;">
   	
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${troblReqstVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${troblReqstVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
     	<td class="lt_text3">${result.troblId}</td>

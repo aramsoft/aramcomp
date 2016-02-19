@@ -97,12 +97,12 @@
     
     <%-- 데이터를 화면에 출력해준다 --%>
 	<c:set var="tempDate" value=""/>
- 	<c:set var="startIndex" value="${(batchResultVO.pageIndex-1) * batchResultVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(batchResultVO.searchVO.pageIndex-1) * batchResultVO.searchVO.recordPerPage}"/>
     <c:forEach items="${resultList}" var="result" varStatus="status">
     <tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.batchResultId}"/>'); return false;">
     
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${batchResultVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${batchResultVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
         <td class="lt_text3"><c:out value='${result.batchResultId}'/></td>

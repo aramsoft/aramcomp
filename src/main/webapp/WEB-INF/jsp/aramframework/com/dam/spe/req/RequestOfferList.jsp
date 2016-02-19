@@ -80,7 +80,7 @@
 	</c:if>
 	
 	<%-- 데이터를 화면에 출력해준다 --%>
- 	<c:set var="startIndex" value="${(requestOfferVO.pageIndex-1) * requestOfferVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(requestOfferVO.searchVO.pageIndex-1) * requestOfferVO.searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr class="link" onclick="javascript:fn_aram_detail('${result.knoId}'); return false;">
  

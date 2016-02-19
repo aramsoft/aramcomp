@@ -2,7 +2,6 @@ package aramframework.com.cop.adb.dao;
 
 import java.util.List;
 
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cop.adb.domain.AdressBookUserVO;
 import aramframework.com.cop.adb.domain.AdressBookVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
@@ -91,14 +90,14 @@ public interface AdressBookMapper {
 	 * 
 	 * @param searchVO
 	 */
-	public List<EgovMap> selectManList(SearchVO searchVO);
+	public List<EgovMap> selectManList(AdressBookUserVO adressBookUserVO);
 
 	/**
 	 * 사용자 목록에 대한 전체 건수를 조회한다.
 	 * 
 	 * @param searchVO
 	 */
-	public int selectManListCnt(SearchVO searchVO);
+	public int selectManListCnt(AdressBookUserVO adressBookUserVO);
 
 	/**
 	 * 주소록을 구성할 사용자의 정보를 조회한다.
@@ -112,14 +111,14 @@ public interface AdressBookMapper {
 	 * 
 	 * @param searchVO
 	 */
-	public List<EgovMap> selectCardList(SearchVO searchVO);
+	public List<EgovMap> selectCardList(AdressBookUserVO adressBookUserVO);
 
 	/**
 	 * 명함 목록에 대한 전체 건수를 조회한다.
 	 * 
 	 * @param searchVO
 	 */
-	public int selectCardListCnt(SearchVO searchVO);
+	public int selectCardListCnt(AdressBookUserVO adressBookUserVO);
 
 	/**
 	 * 주소록을 구성할 명함의 정보를 조회한다.

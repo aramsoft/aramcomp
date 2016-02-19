@@ -14,7 +14,6 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchCodeVO;
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
@@ -260,32 +259,32 @@ public class AdressBookController {
 	@RequestMapping("/cop/adb/listUserPopup.do")
 	@Secured("ROLE_USER")
 	public String listAdressBookUser(
-			@ModelAttribute SearchVO searchVO, 
+			@ModelAttribute AdressBookUserVO adressBookUserVO, 
 			ModelMap model) {
 
-		if (searchVO.getSearchCondition() == null 
-			|| searchVO.getSearchCondition().equals("")) {
-			searchVO.setSearchCondition("USERLIST");
+		if (adressBookUserVO.getSearchVO().getSearchCondition() == null 
+			|| adressBookUserVO.getSearchVO().getSearchCondition().equals("")) {
+			adressBookUserVO.getSearchVO().setSearchCondition("USERLIST");
 		}
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		searchVO.fillPageInfo(paginationInfo);
+		adressBookUserVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		List<EgovMap> resultList = null;
 		int totCnt = 0;
-		if (searchVO.getSearchCondition().equals("USERLIST")) {
-			resultList = adressBookService.selectManList(searchVO);
-			totCnt = adressBookService.selectManListCnt(searchVO);
+		if (adressBookUserVO.getSearchVO().getSearchCondition().equals("USERLIST")) {
+			resultList = adressBookService.selectManList(adressBookUserVO);
+			totCnt = adressBookService.selectManListCnt(adressBookUserVO);
 		} else {
-			resultList = adressBookService.selectCardList(searchVO);
-			totCnt = adressBookService.selectCardListCnt(searchVO);
+			resultList = adressBookService.selectCardList(adressBookUserVO);
+			totCnt = adressBookService.selectCardListCnt(adressBookUserVO);
 		}
 		model.addAttribute("resultList", resultList);
 
-		searchVO.setTotalRecordCount(totCnt);
-		
+		adressBookUserVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+		
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/cop/adb/AdressBookPopup");
 	}

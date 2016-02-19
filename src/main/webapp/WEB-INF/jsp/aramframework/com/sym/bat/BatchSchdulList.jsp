@@ -77,12 +77,12 @@
     </c:if>
     
      <%-- 데이터를 화면에 출력해준다 --%>
- 	<c:set var="startIndex" value="${(batchSchdulVO.pageIndex-1) * batchSchdulVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(batchSchdulVO.searchVO.pageIndex-1) * batchSchdulVO.searchVO.recordPerPage}"/>
     <c:forEach items="${resultList}" var="result" varStatus="status">
     <tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.batchSchdulId}"/>'); return false;">
  
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${batchSchdulVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${batchSchdulVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
     	<td class="lt_text3"><c:out value='${result.batchSchdulId}'/></td>

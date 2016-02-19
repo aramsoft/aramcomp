@@ -49,8 +49,8 @@
 			  FROM COMTN_ADBK_MANAGE		
 			 WHERE USE_AT = 'Y'
 			   AND (OTHBC_SCOPE = '전체'
-					OR (OTHBC_SCOPE = '부서' AND TRGET_ORGNZT_ID = #trgetOrgnztId#)			
-					OR (OTHBC_SCOPE = '개인' AND WRTER_ID = #wrterId#)	
+					OR (OTHBC_SCOPE = '부서' AND TRGET_ORGNZT_ID = #{trgetOrgnztId})			
+					OR (OTHBC_SCOPE = '개인' AND WRTER_ID = #{wrterId})	
 				   )		
 		]]>	
      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>

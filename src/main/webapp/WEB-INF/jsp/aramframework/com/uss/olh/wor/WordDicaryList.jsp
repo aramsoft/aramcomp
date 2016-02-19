@@ -80,12 +80,12 @@
   	</tr>   	          				 			   
  	</c:if>
  	
- 	<c:set var="startIndex" value="${(wordDicaryVO.pageIndex-1) * wordDicaryVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(wordDicaryVO.searchVO.pageIndex-1) * wordDicaryVO.searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="resultInfo" varStatus="status">
   	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${resultInfo.wordId}"/>'); return false;">
   	
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${wordDicaryVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${wordDicaryVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<td class="lt_text3"><c:out value="${resultInfo.wordNm}"/></td>

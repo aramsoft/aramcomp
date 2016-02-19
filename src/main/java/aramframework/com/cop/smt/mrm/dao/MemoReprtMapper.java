@@ -2,7 +2,7 @@ package aramframework.com.cop.smt.mrm.dao;
 
 import java.util.List;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.cop.smt.mrm.domain.MemoReprtVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
@@ -34,14 +34,14 @@ public interface MemoReprtMapper {
 	 * 
 	 * @param searchVO
 	 */
-	public List<EgovMap> selectReportrList(SearchVO searchVO);
+	public List<EgovMap> selectReportrList(BaseVO baseVO);
 
 	/**
 	 * 보고자 목록에 대한 전체 건수를 조회한다.
 	 * 
 	 * @param searchVO
 	 */
-	public int selectReportrListCnt(SearchVO searchVO);
+	public int selectReportrListCnt(BaseVO baseVO);
 
 	/**
 	 * 주어진 조건에 맞는 직위명을 불러온다.

@@ -81,11 +81,11 @@
 	</c:if>
 	
 	<%-- 데이터를 화면에 출력해준다 --%>
- 	<c:set var="startIndex" value="${(onlinePollPartcptnVO.pageIndex-1) * onlinePollPartcptnVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(onlinePollPartcptnVO.searchVO.pageIndex-1) * onlinePollPartcptnVO.searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${onlinePollPartcptnVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${onlinePollPartcptnVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 	    <td class="lt_text3L">

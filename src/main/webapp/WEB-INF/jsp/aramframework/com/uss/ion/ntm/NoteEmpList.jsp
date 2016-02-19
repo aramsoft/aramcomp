@@ -41,7 +41,7 @@
 	<h2>수신자/참조자 선택</h2>
 </div>
 
-<form:form commandName="searchVO" action="" method="post">
+<form:form commandName="baseVO" action="" method="post">
 
 <div id="search_area">
 	<div class="button_area">
@@ -91,11 +91,11 @@
 	</c:if>
 	
 	<%-- 데이터를 화면에 출력해준다  --%>
- 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(baseVO.searchVO.pageIndex-1) * baseVO.searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${baseVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<td class="lt_text3L"><a href="#" onclick="fn_aram_close_noteEmpOne(${status.count-1}); return false;">${result.emplyrId}</a></td>

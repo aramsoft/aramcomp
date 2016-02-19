@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.cmm.service.FileMngUtil;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -146,16 +146,16 @@ public class NoteManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ntm/listNoteEmpPopup.do")
 	public String listNoteEmpPopup(
-			@ModelAttribute SearchVO searchVO, 
+			@ModelAttribute BaseVO baseVO, 
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		searchVO.fillPageInfo(paginationInfo);
+		baseVO.getSearchVO().fillPageInfo(paginationInfo);
 
-		model.addAttribute("resultList", noteManageService.selectNoteEmpList(searchVO));
+		model.addAttribute("resultList", noteManageService.selectNoteEmpList(baseVO));
 
-		int totCnt = (Integer) noteManageService.selectNoteEmpListCnt(searchVO);
-		searchVO.setTotalRecordCount(totCnt);
+		int totCnt = (Integer) noteManageService.selectNoteEmpListCnt(baseVO);
+		baseVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

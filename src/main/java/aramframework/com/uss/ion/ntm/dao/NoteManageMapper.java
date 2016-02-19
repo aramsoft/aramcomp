@@ -2,7 +2,7 @@ package aramframework.com.uss.ion.ntm.dao;
 
 import java.util.List;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.uss.ion.ntm.domain.NoteManageVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
@@ -62,13 +62,13 @@ public interface NoteManageMapper {
 	 * 
 	 * @param searchVO
 	 */
-	public List<EgovMap> selectNoteEmpList(SearchVO searchVO);
+	public List<EgovMap> selectNoteEmpList(BaseVO baseVO);
 
 	/**
 	 * 수신자/참조자선택팝업 건수를 조회한다.
 	 * 
 	 * @param searchVO
 	 */
-	public int selectNoteEmpListCnt(SearchVO searchVO);
+	public int selectNoteEmpListCnt(BaseVO baseVO);
 	
 }

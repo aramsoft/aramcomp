@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.uss.olp.mgt.dao.MeetingManageMapper;
 import aramframework.com.uss.olp.mgt.domain.MeetingManageVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -46,8 +46,8 @@ public class MeetingManageService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param searchVO
 	 */
-	public List<EgovMap> selectDeptListPopup(SearchVO searchVO) {
-		return meetingManageMapper.selectDeptListPopup(searchVO);
+	public List<EgovMap> selectDeptListPopup(BaseVO baseVO) {
+		return meetingManageMapper.selectDeptListPopup(baseVO);
 	}
 
 	/**
@@ -55,8 +55,8 @@ public class MeetingManageService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param searchVO
 	 */
-	public List<EgovMap> selectEmpLyrListPopup(SearchVO searchVO) {
-		return meetingManageMapper.selectEmpLyrListPopup(searchVO);
+	public List<EgovMap> selectEmpLyrListPopup(BaseVO baseVO) {
+		return meetingManageMapper.selectEmpLyrListPopup(baseVO);
 	}
 
 	/**

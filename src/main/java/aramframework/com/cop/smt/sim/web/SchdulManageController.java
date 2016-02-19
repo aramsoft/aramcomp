@@ -15,8 +15,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.cmm.domain.ComCodeVO;
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.service.FileMngUtil;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
@@ -75,16 +75,16 @@ public class SchdulManageController {
 	 */
 	@RequestMapping("/cop/smt/sim/listEmplyrPopup.do")
 	public String listEmplyrPopup(
-			@ModelAttribute SearchVO searchVO, 
+			@ModelAttribute BaseVO baseVO, 
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		searchVO.fillPageInfo(paginationInfo);
+		baseVO.getSearchVO().fillPageInfo(paginationInfo);
 
-		model.addAttribute("resultList", schdulManageService.selectEmplyrList(searchVO));
+		model.addAttribute("resultList", schdulManageService.selectEmplyrList(baseVO));
 
-		int totCnt = schdulManageService.selectEmplyrListCnt(searchVO);
-		searchVO.setTotalRecordCount(totCnt);
+		int totCnt = schdulManageService.selectEmplyrListCnt(baseVO);
+		baseVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute(paginationInfo);
@@ -100,16 +100,16 @@ public class SchdulManageController {
 	@RequestMapping(value = "/cop/smt/sim/listSchdulPopup.do")
 	@Secured("ROLE_USER")
 	public String listSchdulPopup(
-			@ModelAttribute("searchVO") SearchVO searchVO, 
+			@ModelAttribute SchdulManageVO schdulManageVO, 
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		searchVO.fillPageInfo(paginationInfo);
+		schdulManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
-		model.addAttribute("resultList", schdulManageService.selectSchdulManageList(searchVO));
+		model.addAttribute("resultList", schdulManageService.selectSchdulManageList(schdulManageVO));
 
-		int totCnt = (Integer) schdulManageService.selectSchdulManageListCnt(searchVO);
-		searchVO.setTotalRecordCount(totCnt);
+		int totCnt = (Integer) schdulManageService.selectSchdulManageListCnt(schdulManageVO);
+		schdulManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute(paginationInfo);

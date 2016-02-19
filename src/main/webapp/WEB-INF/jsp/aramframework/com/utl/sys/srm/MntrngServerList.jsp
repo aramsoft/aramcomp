@@ -63,11 +63,11 @@
 	</tr>		 
 	</c:if>
 	
- 	<c:set var="startIndex" value="${(serverResrceMntrngVO.pageIndex-1) * serverResrceMntrngVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(serverResrceMntrngVO.searchVO.pageIndex-1) * serverResrceMntrngVO.searchVO.recordPerPage}"/>
  	<c:forEach var="result" items="${resultList}" varStatus="status">
   	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${serverResrceMntrngVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${serverResrceMntrngVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 	    <td class="lt_text3"><c:out value="${result.serverEqpmnId}"/></td>

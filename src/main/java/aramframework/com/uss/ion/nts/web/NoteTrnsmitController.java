@@ -135,7 +135,7 @@ public class NoteTrnsmitController {
 	 */
 	@RequestMapping(value = "/uss/ion/nts/detailNoteTrnsmit.do")
 	public String detailNoteTrnsmit(
-			@ModelAttribute("noteTrnsmitVO") NoteTrnsmitVO noteTrnsmitVO, 
+			@ModelAttribute NoteTrnsmitVO noteTrnsmitVO, 
 			@RequestParam(value="cmd", required=false) String sCmd,
 			ModelMap model)  {
 

@@ -80,12 +80,12 @@
 	</tr>		 
 	</c:if>
 	
- 	<c:set var="startIndex" value="${(ntwrkSvcMntrngVO.pageIndex-1) * ntwrkSvcMntrngVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(ntwrkSvcMntrngVO.searchVO.pageIndex-1) * ntwrkSvcMntrngVO.searchVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
 	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.sysIp}"/>', '<c:out value="${result.sysPort}"/>'); return false;">
 	
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${ntwrkSvcMntrngVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${ntwrkSvcMntrngVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 	    <td class="lt_text3"><c:out value="${result.sysIp}"/></td>

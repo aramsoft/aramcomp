@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.service.FileMngUtil;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
@@ -67,16 +67,16 @@ public class WikMnthngReprtController {
 	 */
 	@RequestMapping("/cop/smt/wmr/listReportrPopup.do")
 	public String listReportr(
-			@ModelAttribute("searchVO") SearchVO searchVO, 
+			@ModelAttribute BaseVO baseVO, 
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		searchVO.fillPageInfo(paginationInfo);
+		baseVO.getSearchVO().fillPageInfo(paginationInfo);
 
-		model.addAttribute("resultList", wikMnthngReprtService.selectReportrList(searchVO));
+		model.addAttribute("resultList", wikMnthngReprtService.selectReportrList(baseVO));
 
-		int totCnt = wikMnthngReprtService.selectReportrListCnt(searchVO);
-		searchVO.setTotalRecordCount(totCnt);
+		int totCnt = wikMnthngReprtService.selectReportrListCnt(baseVO);
+		baseVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

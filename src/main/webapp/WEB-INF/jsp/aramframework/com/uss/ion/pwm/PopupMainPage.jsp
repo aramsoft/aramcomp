@@ -61,7 +61,7 @@
 	 <%-- 데이터를 화면에 출력해준다 --%>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr>
-	    <td class="lt_text3"><c:out value="${(popupManageVO.pageIndex-1) * popupManageVO.pageSize + status.count}"/></td>
+	    <td class="lt_text3"><c:out value="${(popupManageVO.searchVO.pageIndex-1) * popupManageVO.searchVO.pageSize + status.count}"/></td>
 	    <td class="lt_text3L">
 	     	<div class="divDotText" style="width:200px; border:solid 0px;">
 	     	<c:out value="${result.popupTitleNm}"/>

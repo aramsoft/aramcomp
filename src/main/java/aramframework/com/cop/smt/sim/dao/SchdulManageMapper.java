@@ -2,7 +2,7 @@ package aramframework.com.cop.smt.sim.dao;
 
 import java.util.List;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.cop.smt.sim.domain.SchdulManageVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
@@ -34,14 +34,14 @@ public interface SchdulManageMapper {
 	 * 
 	 * @param searchVO
 	 */
-	public List<EgovMap> selectEmplyrList(SearchVO searchVO);
+	public List<EgovMap> selectEmplyrList(BaseVO baseVO);
 	
 	/**
 	 * 사용자 목록에 대한 전체 건수를 조회한다.
 	 * 
 	 * @param searchVO
 	 */
-	public int selectEmplyrListCnt(SearchVO searchVO);
+	public int selectEmplyrListCnt(BaseVO baseVO);
 
 	/**
 	 * 메인페이지/일정관리조회 목록을 Map(map)형식으로 조회한다.
@@ -62,14 +62,14 @@ public interface SchdulManageMapper {
 	 * 
 	 * @param searchVO
 	 */
-	public List<EgovMap> selectSchdulManageList(SearchVO searchVO);
+	public List<EgovMap> selectSchdulManageList(SchdulManageVO schdulManageVO);
 
 	/**
 	 * 일정를(을) 목록 전체 건수를(을) 조회한다.
 	 * 
 	 * @param searchVO
 	 */
-	public int selectSchdulManageListCnt(SearchVO searchVO);
+	public int selectSchdulManageListCnt(SchdulManageVO schdulManageVO);
 
 	/**
 	 * 일정를(을) 상세조회 한다.

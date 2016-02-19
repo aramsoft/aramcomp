@@ -86,12 +86,13 @@
 	</tr>		 
 	</c:if>
 	
- 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(sanctnerVO.searchVO.pageIndex-1) * sanctnerVO.searchVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
 	<tr class="link" onclick="javascript:fn_aram_choose('<c:out value="${result.uniqId}"/>', '<c:out value="${result.emplNo}"/>', '<c:out value="${result.emplyrNm}"/>', '<c:out value="${result.orgnztNm}"/>'); return false;">
 	
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<td class="lt_text3"><c:out value="${index}"/></td>
+		<c:set var="reverseIndex" value="${sanctnerVO.searchVO.totalRecordCount - index + 1}"/>
+		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 	    <td class="lt_text3"><c:out value="${result.orgnztNm}"/></td>
 	    <td class="lt_text3"><c:out value="${result.ofcpsNm}"/></td>

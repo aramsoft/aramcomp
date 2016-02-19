@@ -2,7 +2,7 @@ package aramframework.com.cop.smt.djm.dao;
 
 import java.util.List;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.cop.smt.djm.domain.DeptJobBxVO;
 import aramframework.com.cop.smt.djm.domain.DeptJobVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
@@ -35,28 +35,28 @@ public interface DeptJobMapper {
 	 * 
 	 * @param searchVO
 	 */
-	public List<EgovMap> selectChargerList(SearchVO searchVO);
+	public List<EgovMap> selectChargerList(BaseVO baseVO);
 
 	/**
 	 * 담당자 목록에 대한 전체 건수를 조회한다.
 	 * 
 	 * @param searchVO
 	 */
-	public int selectChargerListCnt(SearchVO searchVO);
+	public int selectChargerListCnt(BaseVO baseVO);
 
 	/**
 	 * 주어진 조건에 맞는 부서를 불러온다.
 	 * 
 	 * @param searchVO
 	 */
-	public List<EgovMap> selectDeptList(SearchVO searchVO);
+	public List<EgovMap> selectDeptList(BaseVO baseVO);
 
 	/**
 	 * 부서 목록에 대한 전체 건수를 조회한다.
 	 * 
 	 * @param searchVO
 	 */
-	public int selectDeptListCnt(SearchVO searchVO);
+	public int selectDeptListCnt(BaseVO baseVO);
 
 	/**
 	 * 주어진 조건에 맞는 부서를 불러온다.

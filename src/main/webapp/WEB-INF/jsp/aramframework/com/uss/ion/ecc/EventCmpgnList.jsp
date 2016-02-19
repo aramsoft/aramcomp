@@ -83,7 +83,7 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="startIndex" value="${(eventCmpgnVO.pageIndex-1) * eventCmpgnVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(eventCmpgnVO.searchVO.pageIndex-1) * eventCmpgnVO.searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>

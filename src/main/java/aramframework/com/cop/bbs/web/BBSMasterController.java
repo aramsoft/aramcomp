@@ -66,7 +66,7 @@ public class BBSMasterController {
 	 */
 	@RequestMapping("/cop/bbs/listBoardMasterPopup.do")
 	public String listBoardMasterPopup(
-			@ModelAttribute("boardMasterVO") BoardMasterVO boardMasterVO,
+			@ModelAttribute BoardMasterVO boardMasterVO,
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();

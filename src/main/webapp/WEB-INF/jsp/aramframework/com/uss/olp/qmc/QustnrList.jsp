@@ -87,11 +87,11 @@
 	</c:if>
 	
  	<%-- 데이터를 화면에 출력해준다 --%>
- 	<c:set var="startIndex" value="${(qustnrManageVO.pageIndex-1) * qustnrManageVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(qustnrManageVO.searchVO.pageIndex-1) * qustnrManageVO.searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${qustnrManageVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${qustnrManageVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<td class="lt_text3L">

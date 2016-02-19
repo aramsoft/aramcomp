@@ -133,11 +133,11 @@
 	</tr>   	          				 			   
 	</c:if>
 	
- 	<c:set var="startIndex" value="${(eventAtdrnVO.pageIndex-1) * eventAtdrnVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(eventAtdrnVO.searchVO.pageIndex-1) * eventAtdrnVO.searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${eventAtdrnVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${eventAtdrnVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<td class="lt_text3">

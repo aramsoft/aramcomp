@@ -75,12 +75,12 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="startIndex" value="${(mainImageVO.pageIndex-1) * mainImageVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(mainImageVO.searchVO.pageIndex-1) * mainImageVO.searchVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
 	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.imageId}"/>'); return false;"> 
  
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${mainImageVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${mainImageVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 	    <td class="lt_text3"><c:out value="${result.imageNm}"/></td>

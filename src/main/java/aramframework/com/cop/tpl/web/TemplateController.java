@@ -193,7 +193,7 @@ public class TemplateController {
 	@RequestMapping("/cop/tpl/listTemplatePopup.do")
 	public String listTemplatePopup(
 			HttpServletRequest request, 
-			@ModelAttribute("searchVO") TemplateInfVO templateInfVO, 
+			@ModelAttribute TemplateInfVO templateInfVO, 
 			ModelMap model) {
 
 		String typeFlag = request.getParameter("typeFlag");

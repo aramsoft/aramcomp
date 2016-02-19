@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.cmm.service.FileMngUtil;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
@@ -62,16 +62,16 @@ public class MemoReprtController {
 	 */
 	@RequestMapping("/cop/smt/mrm/listReportrPopup.do")
 	public String listReportr(
-			@ModelAttribute("searchVO") SearchVO searchVO, 
+			@ModelAttribute BaseVO baseVO, 
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		searchVO.fillPageInfo(paginationInfo);
+		baseVO.getSearchVO().fillPageInfo(paginationInfo);
 
-		model.addAttribute("resultList", memoReprtService.selectReportrList(searchVO));
-		int totCnt = memoReprtService.selectReportrListCnt(searchVO);
+		model.addAttribute("resultList", memoReprtService.selectReportrList(baseVO));
+		int totCnt = memoReprtService.selectReportrListCnt(baseVO);
 
-		searchVO.setTotalRecordCount(totCnt);
+		baseVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

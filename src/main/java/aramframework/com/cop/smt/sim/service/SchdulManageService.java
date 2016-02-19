@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.cmm.service.FileMngUtil;
 import aramframework.com.cop.smt.sim.dao.SchdulManageMapper;
 import aramframework.com.cop.smt.sim.domain.SchdulManageVO;
@@ -51,8 +51,8 @@ public class SchdulManageService extends EgovAbstractServiceImpl {
 	 * @param searchVO
 	 * 
 	 */
-	public List<EgovMap> selectEmplyrList(SearchVO searchVO) {
-		return schdulManageMapper.selectEmplyrList(searchVO);
+	public List<EgovMap> selectEmplyrList(BaseVO baseVO) {
+		return schdulManageMapper.selectEmplyrList(baseVO);
 	}
 
 	/**
@@ -61,8 +61,8 @@ public class SchdulManageService extends EgovAbstractServiceImpl {
 	 * @param searchVO
 	 * 
 	 */
-	public int selectEmplyrListCnt(SearchVO searchVO) {
-		return schdulManageMapper.selectEmplyrListCnt(searchVO);
+	public int selectEmplyrListCnt(BaseVO baseVO) {
+		return schdulManageMapper.selectEmplyrListCnt(baseVO);
 	}
 
 	/**
@@ -88,8 +88,8 @@ public class SchdulManageService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param searchVO
 	 */
-	public List<EgovMap> selectSchdulManageList(SearchVO searchVO) {
-		return schdulManageMapper.selectSchdulManageList(searchVO);
+	public List<EgovMap> selectSchdulManageList(SchdulManageVO schdulManageVO) {
+		return schdulManageMapper.selectSchdulManageList(schdulManageVO);
 	}
 
 	/**
@@ -97,8 +97,8 @@ public class SchdulManageService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param searchVO
 	 */
-	public int selectSchdulManageListCnt(SearchVO searchVO) {
-		return (Integer) schdulManageMapper.selectSchdulManageListCnt(searchVO);
+	public int selectSchdulManageListCnt(SchdulManageVO schdulManageVO) {
+		return (Integer) schdulManageMapper.selectSchdulManageListCnt(schdulManageVO);
 	}
 
 	/**

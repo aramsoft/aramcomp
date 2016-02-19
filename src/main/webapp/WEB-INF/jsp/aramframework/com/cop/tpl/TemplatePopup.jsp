@@ -42,7 +42,7 @@
 	<h2>템플릿 목록</h2>
 </div>
 
-<form:form commandName="searchVO" action ="" method="post">
+<form:form commandName="templateInfVO" action ="" method="post">
 <input type="hidden" name="tmplatId" value="" />
 <input name="typeFlag" type="hidden" value="<c:out value='${typeFlag}'/>"/>
 
@@ -88,13 +88,17 @@
 	</tr>
 	</c:if>
 	
+ 	<c:set var="startIndex" value="${(templateInfVO.searchVO.pageIndex-1) * templateInfVO.searchVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
 
 	<tr <c:if test="${result.useAt == 'Y'}">
 		class="link" onclick="javascript:fn_aram_choose('<c:out value="${result.tmplatId}"/>','<c:out value="${result.tmplatNm}"/>'); return false;">
 		</c:if>>
 
-	    <td class="lt_text3"><c:out value="${(searchVO.pageIndex-1) * searchVO.pageSize + status.count}"/></td>
+ 		<c:set var="index" value="${startIndex + status.count}"/>
+		<c:set var="reverseIndex" value="${templateInfVO.searchVO.totalRecordCount - index + 1}"/>
+		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
+
 	    <td class="lt_text3"><c:out value="${result.tmplatNm}"/></td>
 	    <td class="lt_text3"><c:out value="${result.tmplatSeCodeNm}"/></td>
 	    <td class="lt_text3"><c:out value="${result.tmplatCours}"/></td>

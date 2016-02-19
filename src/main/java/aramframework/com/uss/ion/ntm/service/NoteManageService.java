@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.uss.ion.ntm.dao.NoteManageMapper;
 import aramframework.com.uss.ion.ntm.domain.NoteManageVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -134,8 +134,8 @@ public class NoteManageService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param searchVO
 	 */
-	public List<EgovMap> selectNoteEmpList(SearchVO searchVO) {
-		return noteManageMapper.selectNoteEmpList(searchVO);
+	public List<EgovMap> selectNoteEmpList(BaseVO baseVO) {
+		return noteManageMapper.selectNoteEmpList(baseVO);
 	}
 
 	/**
@@ -143,8 +143,8 @@ public class NoteManageService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param searchVO
 	 */
-	public int selectNoteEmpListCnt(SearchVO searchVO) {
-		return (Integer) noteManageMapper.selectNoteEmpListCnt(searchVO);
+	public int selectNoteEmpListCnt(BaseVO baseVO) {
+		return (Integer) noteManageMapper.selectNoteEmpListCnt(baseVO);
 	}
 	
 }

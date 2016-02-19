@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -54,10 +54,10 @@ public class MeetingManageController {
 	 */
 	@RequestMapping(value = "/uss/olp/mgt/listMeetingDeptPopup.do")
 	public String listMeetingDeptPopup(
-			@ModelAttribute SearchVO searchVO, 
+			@ModelAttribute BaseVO baseVO, 
 			ModelMap model) {
 
-		model.addAttribute("resultList", meetingManageService.selectDeptListPopup(searchVO));
+		model.addAttribute("resultList", meetingManageService.selectDeptListPopup(baseVO));
 
 		return WebUtil.adjustViewName("/uss/olp/mgt/MeetingDeptPopup");
 	}
@@ -69,10 +69,10 @@ public class MeetingManageController {
 	 */
 	@RequestMapping(value = "/uss/olp/mgt/listMeetingEmpLyrPopup.do")
 	public String listMeetingEmpLyrPopup(
-			@ModelAttribute SearchVO searchVO, 
+			@ModelAttribute BaseVO baseVO, 
 			ModelMap model) {
 
-		model.addAttribute("resultList", meetingManageService.selectEmpLyrListPopup(searchVO));
+		model.addAttribute("resultList", meetingManageService.selectEmpLyrListPopup(baseVO));
 
 		return WebUtil.adjustViewName("/uss/olp/mgt/MeetingEmpLyrPopup");
 	}

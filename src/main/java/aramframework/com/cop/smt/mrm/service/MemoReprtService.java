@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.cmm.service.FileMngUtil;
 import aramframework.com.cop.smt.mrm.dao.MemoReprtMapper;
 import aramframework.com.cop.smt.mrm.domain.MemoReprtVO;
@@ -50,8 +50,8 @@ public class MemoReprtService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param searchVO
 	 */
-	public List<EgovMap> selectReportrList(SearchVO searchVO) {
-		return memoReprtMapper.selectReportrList(searchVO);
+	public List<EgovMap> selectReportrList(BaseVO baseVO) {
+		return memoReprtMapper.selectReportrList(baseVO);
 	}
 
 	/**
@@ -59,8 +59,8 @@ public class MemoReprtService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param searchVO
 	 */
-	public int selectReportrListCnt(SearchVO searchVO) {
-		return memoReprtMapper.selectReportrListCnt(searchVO);
+	public int selectReportrListCnt(BaseVO baseVO) {
+		return memoReprtMapper.selectReportrListCnt(baseVO);
 	}
 
 	/**

@@ -82,7 +82,7 @@
     </c:if>
     
     <%-- 데이터를 화면에 출력해준다 --%>
- 	<c:set var="startIndex" value="${(dbMntrngVO.pageIndex-1) * dbMntrngVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(dbMntrngVO.searchVO.pageIndex-1) * dbMntrngVO.searchVO.recordPerPage}"/>
     <c:forEach items="${resultList}" var="result" varStatus="status">
     <tr class="link" onclick="javascript:fn_aram_detail('${result.dataSourcNm}'); return false;">
     

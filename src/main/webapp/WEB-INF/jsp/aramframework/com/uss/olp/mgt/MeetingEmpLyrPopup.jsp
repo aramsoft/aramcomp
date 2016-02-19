@@ -42,7 +42,7 @@
 	<h2>아이디 검색</h2>
 </div>
 
-<form:form commandName="searchVO" action="" method="post">
+<form:form commandName="baseVO" action="" method="post">
 
 <div id="search_area">
 	<div class="button_area">
@@ -88,7 +88,7 @@
 	</c:if>
 	
 	<%-- 데이터를 화면에 출력해준다  --%>
- 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(baseVO.searchVO.pageIndex-1) * baseVO.searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr class="link" onclick="javascript:fn_aram_choose('${result.uniqId}', '${result.userNm}'); return false;">
 	

@@ -2,7 +2,7 @@ package aramframework.com.uss.olp.mgt.dao;
 
 import java.util.List;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.uss.olp.mgt.domain.MeetingManageVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
@@ -34,14 +34,14 @@ public interface MeetingManageMapper {
 	 * 
 	 * @param searchVO
 	 */
-	public List<EgovMap> selectDeptListPopup(SearchVO searchVO);
+	public List<EgovMap> selectDeptListPopup(BaseVO baseVO);
 
 	/**
 	 * 아이디 목록을 조회한다.
 	 * 
 	 * @param searchVO
 	 */
-	public List<EgovMap> selectEmpLyrListPopup(SearchVO searchVO);
+	public List<EgovMap> selectEmpLyrListPopup(BaseVO baseVO);
 
 	/**
 	 * 회의정보 목록을 조회한다.

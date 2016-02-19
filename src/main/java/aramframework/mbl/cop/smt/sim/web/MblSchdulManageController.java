@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cop.smt.sim.domain.SchdulManageVO;
@@ -438,17 +437,17 @@ public class MblSchdulManageController {
 	 */
 	@RequestMapping(value="/cop/smt/sim/listSchdulPopupJson.mdo")
 	public ModelAndView listSchdulPopupJson(
-			@ModelAttribute SearchVO searchVO) {
+			@ModelAttribute SchdulManageVO schdulManageVO) {
 
 		ModelAndView modelAndView = new ModelAndView("jsonView");
 
     	PaginationInfo paginationInfo = new PaginationInfo();
-    	searchVO.fillPageInfo(paginationInfo);
+    	schdulManageVO.getSearchVO().fillPageInfo(paginationInfo);
 		
-    	modelAndView.addObject("resultList", schdulManageService.selectSchdulManageList(searchVO));
+    	modelAndView.addObject("resultList", schdulManageService.selectSchdulManageList(schdulManageVO));
         
-        int totCnt = (Integer)schdulManageService.selectSchdulManageListCnt(searchVO);
-        searchVO.setTotalRecordCount(totCnt);
+        int totCnt = (Integer)schdulManageService.selectSchdulManageListCnt(schdulManageVO);
+        schdulManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		modelAndView.addObject("paginationInfo", paginationInfo);
@@ -472,17 +471,17 @@ public class MblSchdulManageController {
 	 */
 	@RequestMapping(value="/cop/smt/sim/listEmplyrPopupJson.mdo")
 	public ModelAndView listEmplyrPopupJson(
-			@ModelAttribute SearchVO searchVO) {
+			@ModelAttribute SchdulManageVO schdulManageVO) {
 
 		ModelAndView modelAndView = new ModelAndView("jsonView");
 
     	PaginationInfo paginationInfo = new PaginationInfo();
-    	searchVO.fillPageInfo(paginationInfo);
+    	schdulManageVO.getSearchVO().fillPageInfo(paginationInfo);
 		
-    	modelAndView.addObject("resultList", schdulManageService.selectEmplyrList(searchVO));
+    	modelAndView.addObject("resultList", schdulManageService.selectEmplyrList(schdulManageVO));
         
-        int totCnt = (Integer)schdulManageService.selectEmplyrListCnt(searchVO);
-        searchVO.setTotalRecordCount(totCnt);
+        int totCnt = (Integer)schdulManageService.selectEmplyrListCnt(schdulManageVO);
+        schdulManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		modelAndView.addObject("paginationInfo", paginationInfo);

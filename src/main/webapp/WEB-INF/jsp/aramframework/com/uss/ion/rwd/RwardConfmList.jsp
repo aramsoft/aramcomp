@@ -126,11 +126,11 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="startIndex" value="${(rwardManageVO.pageIndex-1) * rwardManageVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(rwardManageVO.searchVO.pageIndex-1) * rwardManageVO.searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${rwardManageVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${rwardManageVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<td class="lt_text3"><c:out value="${result.rwardCdNm    }"/></td>

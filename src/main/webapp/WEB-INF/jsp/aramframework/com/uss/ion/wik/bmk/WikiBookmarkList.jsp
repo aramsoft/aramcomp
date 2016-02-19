@@ -74,7 +74,7 @@
 	<%-- 데이터를 화면에 출력해준다 --%>
 	<c:forEach items="${resultList}" var="resultInfo" varStatus="status">
 	<tr>
-		<td class="lt_text3"><c:out value="${(searchVO.pageIndex-1) * searchVO.pageSize + status.count}"/></td>
+		<td class="lt_text3"><c:out value="${(wikiBookmarkVO.searchVO.pageIndex-1) * wikiBookmarkVO.searchVO.pageSize + status.count}"/></td>
 		<td class="lt_text3">
 			<input type="checkbox" name="checkList" title="선택" value="${resultInfo.wikiBkmkId}">
 		</td>

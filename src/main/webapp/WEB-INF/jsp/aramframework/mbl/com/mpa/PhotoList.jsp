@@ -76,12 +76,12 @@
   	</tr>                                            
  	</c:if>
     
-	<c:set var="startIndex" value="${(photoVO.pageIndex-1) * photoVO.recordPerPage}"/>
+	<c:set var="startIndex" value="${(photoVO.searchVO.pageIndex-1) * photoVO.searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.sn}"/>'); return false;">
   	
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${photoVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${photoVO.searchVO.totalRecordCount - index + 1}"/>
         <td class="lt_text3"><c:out value="${reverseIndex}"/></td>                 
 
         <td class="lt_text3"><c:out value="${result.photoSj}"/></td>

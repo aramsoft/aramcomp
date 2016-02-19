@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.cmm.service.FileMngUtil;
 import aramframework.com.cop.smt.djm.dao.DeptJobMapper;
 import aramframework.com.cop.smt.djm.domain.DeptJobBxVO;
@@ -54,8 +54,8 @@ public class DeptJobService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param searchVO
 	 */
-	public List<EgovMap> selectChargerList(SearchVO searchVO) {
-		return  deptJobMapper.selectChargerList(searchVO);
+	public List<EgovMap> selectChargerList(BaseVO baseVO) {
+		return  deptJobMapper.selectChargerList(baseVO);
 	}
 
 	/**
@@ -63,8 +63,8 @@ public class DeptJobService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param searchVO
 	 */
-	public int selectChargerListCnt(SearchVO searchVO) {
-		return deptJobMapper.selectChargerListCnt(searchVO);
+	public int selectChargerListCnt(BaseVO baseVO) {
+		return deptJobMapper.selectChargerListCnt(baseVO);
 	}
 
 	/**
@@ -72,8 +72,8 @@ public class DeptJobService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param searchVO
 	 */
-	public List<EgovMap> selectDeptList(SearchVO searchVO) {
-		return  deptJobMapper.selectDeptList(searchVO);
+	public List<EgovMap> selectDeptList(BaseVO baseVO) {
+		return  deptJobMapper.selectDeptList(baseVO);
 	}
 
 	/**
@@ -81,8 +81,8 @@ public class DeptJobService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param searchVO
 	 */
-	public int selectDeptListCnt(SearchVO searchVO) {
-		return deptJobMapper.selectDeptListCnt(searchVO);
+	public int selectDeptListCnt(BaseVO baseVO) {
+		return deptJobMapper.selectDeptListCnt(baseVO);
 	}
 
 	/**

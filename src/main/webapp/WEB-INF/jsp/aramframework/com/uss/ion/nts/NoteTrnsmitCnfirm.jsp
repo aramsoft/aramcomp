@@ -108,7 +108,7 @@
 	<%-- 데이터를 화면에 출력해준다  --%>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr>
-		<td class="lt_text3"><c:out value="${(searchVO.pageIndex-1) * searchVO.pageSize + status.count}"/></td>
+		<td class="lt_text3"><c:out value="${(noteTrnsmitVO.searchVO.pageIndex-1) * noteTrnsmitVO.searchVO.pageSize + status.count}"/></td>
 		<td class="lt_text3"><c:out value="${result.rcverIds}"/></td>
 		<td class="lt_text3"><c:out value="${result.rcverNm}"/></td>
 		<td class="lt_text3">
@@ -135,7 +135,7 @@
 </tbody>  
 </table>
 
-<form:form commandName="searchVO" action="" method="post">
+<form:form commandName="noteTrnsmitVO" action="" method="post">
 <input name="noteId" type="hidden" value="">
 <input name="noteTrnsmitId" type="hidden" value="">
 <input name="noteRecptnId" type="hidden" value="">

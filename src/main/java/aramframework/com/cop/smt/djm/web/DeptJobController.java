@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.service.FileMngUtil;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
@@ -74,16 +74,16 @@ public class DeptJobController {
 	 */
 	@RequestMapping("/cop/smt/djm/listChargerPopup.do")
 	public String listCharger(
-			@ModelAttribute SearchVO searchVO, 
+			@ModelAttribute BaseVO baseVO, 
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		searchVO.fillPageInfo(paginationInfo);
+		baseVO.getSearchVO().fillPageInfo(paginationInfo);
 
-		model.addAttribute("resultList", deptJobService.selectChargerList(searchVO));
-		int totCnt = deptJobService.selectChargerListCnt(searchVO);
+		model.addAttribute("resultList", deptJobService.selectChargerList(baseVO));
+		int totCnt = deptJobService.selectChargerListCnt(baseVO);
 
-		searchVO.setTotalRecordCount(totCnt);
+		baseVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -98,16 +98,16 @@ public class DeptJobController {
 	 */
 	@RequestMapping("/cop/smt/djm/listDeptPopup.do")
 	public String listDept(
-			@ModelAttribute SearchVO searchVO, 
+			@ModelAttribute BaseVO baseVO, 
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		searchVO.fillPageInfo(paginationInfo);
+		baseVO.getSearchVO().fillPageInfo(paginationInfo);
 
-		model.addAttribute("resultList", deptJobService.selectDeptList(searchVO));
-		int totCnt = deptJobService.selectDeptListCnt(searchVO);
+		model.addAttribute("resultList", deptJobService.selectDeptList(baseVO));
+		int totCnt = deptJobService.selectDeptListCnt(baseVO);
 
-		searchVO.setTotalRecordCount(totCnt);
+		baseVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

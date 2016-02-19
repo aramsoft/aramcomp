@@ -85,12 +85,12 @@
 	</c:if>
 	
 	 <%-- 데이터를 화면에 출력해준다 --%>
- 	<c:set var="startIndex" value="${(qustnrRespondInfoVO.pageIndex-1) * qustnrRespondInfoVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(qustnrRespondInfoVO.searchVO.pageIndex-1) * qustnrRespondInfoVO.searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr class="link" onclick="javascript:fn_aram_detail('${result.qestnrQesrspnsId}'); return false;">
 	
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${qustnrRespondInfoVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${qustnrRespondInfoVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<td class="lt_text3">${result.qestnrSj}</td>

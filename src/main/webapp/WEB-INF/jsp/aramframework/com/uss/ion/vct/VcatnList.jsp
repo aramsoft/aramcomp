@@ -84,12 +84,12 @@
 	</tr>   	          				 			   
 	</c:if>
 	
- 	<c:set var="startIndex" value="${(vcatnManageVO.pageIndex-1) * vcatnManageVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(vcatnManageVO.searchVO.pageIndex-1) * vcatnManageVO.searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.applcntId}"/>','<c:out value="${result.vcatnSe}"/>','<c:out value="${result.bgnde}"/>','<c:out value="${result.endde}"/>'); return false;">
 
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${vcatnManageVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${vcatnManageVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<td class="lt_text3"><c:out value="${result.vcatnSeNm }"/></td>

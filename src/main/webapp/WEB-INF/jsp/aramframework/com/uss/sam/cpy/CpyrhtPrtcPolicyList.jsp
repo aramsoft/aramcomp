@@ -76,12 +76,12 @@
   	</tr>   	          				 			   
  	</c:if>
  	
- 	<c:set var="startIndex" value="${(cpyrhtPrtcPolicyVO.pageIndex-1) * cpyrhtPrtcPolicyVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(cpyrhtPrtcPolicyVO.searchVO.pageIndex-1) * cpyrhtPrtcPolicyVO.searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
   	<tr class="link" onClick="javascript:fn_aram_detail('<c:out value="${result.cpyrhtId}"/>')">
  
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${cpyrhtPrtcPolicyVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${cpyrhtPrtcPolicyVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
    		<td class="lt_text3"><c:out value='${fn:substring(result.cpyrhtPrtcPolicyCn, 0, 40)}'/></td>

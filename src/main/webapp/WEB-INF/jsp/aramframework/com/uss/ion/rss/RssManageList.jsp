@@ -94,11 +94,11 @@
 	</c:if>
 	
 	<%-- 데이터를 화면에 출력해준다 --%>
- 	<c:set var="startIndex" value="${(rssManageVO.pageIndex-1) * rssManageVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(rssManageVO.searchVO.pageIndex-1) * rssManageVO.searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr class="link" onclick="javascript:fn_aram_detail('${result.rssId}'); return false;">
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${rssManageVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${rssManageVO.searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<td class="lt_text3">

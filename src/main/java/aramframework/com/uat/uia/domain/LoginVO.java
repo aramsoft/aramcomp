@@ -1,5 +1,7 @@
 package aramframework.com.uat.uia.domain;
 
+import java.io.Serializable;
+
  
 /**
  * 공통 Login 객체 모델 VO
@@ -20,7 +22,9 @@ package aramframework.com.uat.uia.domain;
  * </pre>
  */
 
-public class LoginVO {
+public class LoginVO implements Serializable{
+
+	private static final long serialVersionUID = 8845407526781637386L;
 
 	/** 아이디 */
 	private String id;

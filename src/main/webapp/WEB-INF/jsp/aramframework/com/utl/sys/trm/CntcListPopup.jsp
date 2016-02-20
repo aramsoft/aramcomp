@@ -42,7 +42,7 @@
 	&nbsp;연계 조회
 </div>
 
-<form:form commandName="searchVO" action="" method="post">
+<form:form commandName="baseVO" action="" method="post">
 
 <div id="search_area">
 	<div class="button_area">

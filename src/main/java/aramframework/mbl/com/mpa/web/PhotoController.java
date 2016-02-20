@@ -106,12 +106,12 @@ public class PhotoController {
         photoVO.getSearchVO().fillPageInfo(paginationInfo);
 
         model.addAttribute("resultList", photoService.selectPhotoList(photoVO));
-
         int totCnt = photoService.selectPhotoListCnt(photoVO);
-        photoVO.getSearchVO().setTotalRecordCount(totCnt);
 
+        photoVO.getSearchVO().setTotalRecordCount(totCnt);
         paginationInfo.setTotalRecordCount(totCnt);
-        model.addAttribute("paginationInfo", paginationInfo);
+
+        model.addAttribute(paginationInfo);
 
 		RequestContextHolder.getRequestAttributes().setAttribute("jspPrefix", "aramframework/mbl", RequestAttributes.SCOPE_REQUEST);
 		return WebUtil.adjustViewName("/com/mpa/PhotoList");
@@ -125,9 +125,10 @@ public class PhotoController {
     @RequestMapping(value = "/mbl/com/mpa/detailPhoto.do")
 	@Secured("ROLE_USER")
     public String detailPhoto(
-    		@ModelAttribute PhotoVO photoVO) {
+    		PhotoVO photoVO,
+            ModelMap model) {
     	
-        photoService.selectPhoto(photoVO);
+    	model.addAttribute(photoService.selectPhoto(photoVO));
 
 		RequestContextHolder.getRequestAttributes().setAttribute("jspPrefix", "aramframework/mbl", RequestAttributes.SCOPE_REQUEST);
 		return WebUtil.adjustViewName("/com/mpa/PhotoDetail");
@@ -188,9 +189,10 @@ public class PhotoController {
     @RequestMapping(value = "/mbl/com/mpa/editPhoto.do")
 	@Secured("ROLE_USER")
     public String editPhoto(
-    		@ModelAttribute PhotoVO photoVO) {
+       		PhotoVO photoVO,
+            ModelMap model) {
     	
-        photoService.selectPhoto(photoVO);
+    	model.addAttribute(photoService.selectPhoto(photoVO));
 
 		RequestContextHolder.getRequestAttributes().setAttribute("jspPrefix", "aramframework/mbl", RequestAttributes.SCOPE_REQUEST);
 		return WebUtil.adjustViewName("/com/mpa/PhotoEdit");

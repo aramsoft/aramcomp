@@ -123,12 +123,12 @@ public class OfflineWebController {
     	offlineWebVO.getSearchVO().fillPageInfo(paginationInfo);
 		
 		model.addAttribute("resultList",  offlineWebService.selectOfflineWebList(offlineWebVO));
-        
         int totCnt = offlineWebService.selectOfflineWebListCnt(offlineWebVO);
+   
         offlineWebVO.getSearchVO().setTotalRecordCount(totCnt);
-
 		paginationInfo.setTotalRecordCount(totCnt);
-        model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
         
         return "aramframework/mbl/com/ows/OfflineWebList";
 	}
@@ -141,9 +141,10 @@ public class OfflineWebController {
 	@RequestMapping(value="/mbl/com/ows/detailOfflineWeb.mdo")
 	@Secured("ROLE_USER")
 	public String detailOfflineWeb(			
-			@ModelAttribute OfflineWebVO offlineWebVO) {
+			OfflineWebVO offlineWebVO,
+			ModelMap model) {
 		
-		offlineWebService.selectOfflineWeb(offlineWebVO);
+		model.addAttribute(offlineWebService.selectOfflineWeb(offlineWebVO));
 
 		return "aramframework/mbl/com/ows/OfflineWebDetail";
 	}
@@ -195,9 +196,10 @@ public class OfflineWebController {
 	@RequestMapping(value="/mbl/com/ows/editOfflineWeb.mdo")
 	@Secured("ROLE_USER")
 	public String editOfflineWeb(
-			@ModelAttribute OfflineWebVO offlineWebVO) {
+			OfflineWebVO offlineWebVO,
+			ModelMap model) {
 		
-		offlineWebService.selectOfflineWeb(offlineWebVO);
+		model.addAttribute(offlineWebService.selectOfflineWeb(offlineWebVO));
 		
         return "aramframework/mbl/com/ows/OfflineWebEdit";
 	}

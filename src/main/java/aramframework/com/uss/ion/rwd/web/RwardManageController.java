@@ -75,12 +75,12 @@ public class RwardManageController {
 		rwardManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", rwardManageService.selectRwardManageList(rwardManageVO));
-
 		int totCnt = rwardManageService.selectRwardManageListCnt(rwardManageVO);
-		rwardManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		rwardManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		cmmUseService.populateCmmCodeList("COM055", "COM055_rward");
 
@@ -94,12 +94,12 @@ public class RwardManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/rwd/detailRward.do")
 	public String detailRward(
-			@ModelAttribute RwardManageVO rwardManageVO) {
+			RwardManageVO rwardManageVO,
+			ModelMap model) {
 
 		rwardManageVO.setRwardDe(StringUtil.removeMinusChar(rwardManageVO.getRwardDe()));
 
-		// 등록 상세정보
-		rwardManageService.selectRwardManage(rwardManageVO);
+		model.addAttribute(rwardManageService.selectRwardManage(rwardManageVO));
 
 		return WebUtil.adjustViewName("/uss/ion/rwd/RwardDetail");
 	}
@@ -155,12 +155,12 @@ public class RwardManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/rwd/editRward.do")
 	public String editRward(
-			@ModelAttribute RwardManageVO rwardManageVO) {
+			RwardManageVO rwardManageVO,
+			ModelMap model) {
 
 		rwardManageVO.setRwardDe(StringUtil.removeMinusChar(rwardManageVO.getRwardDe()));
 
-		// 등록 상세정보
-		rwardManageService.selectRwardManage(rwardManageVO);
+		model.addAttribute(rwardManageService.selectRwardManage(rwardManageVO));
 
 		cmmUseService.populateCmmCodeList("COM055", "COM055_rward");
 
@@ -236,12 +236,12 @@ public class RwardManageController {
 		rwardManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", rwardManageService.selectRwardManageConfmList(rwardManageVO));
-
 		int totCnt = rwardManageService.selectRwardManageConfmListCnt(rwardManageVO);
-		rwardManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		rwardManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		cmmUseService.populateCmmCodeList("COM055", "COM055_rward");
 
@@ -255,12 +255,12 @@ public class RwardManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/rwd/editRwardConfm.do")
 	public String editRwardConfm(
-			@ModelAttribute RwardManageVO rwardManageVO) {
+			RwardManageVO rwardManageVO,
+			ModelMap model) {
 
 		rwardManageVO.setRwardDe(StringUtil.removeMinusChar(rwardManageVO.getRwardDe()));
 
-		// 등록 상세정보
-		rwardManageService.selectRwardManage(rwardManageVO);
+		model.addAttribute(rwardManageService.selectRwardManage(rwardManageVO));
 
 		return WebUtil.adjustViewName("/uss/ion/rwd/RwardConfmEdit");
 	}

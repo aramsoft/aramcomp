@@ -66,12 +66,12 @@ public class NewsManageController {
 		newsManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", newsManageService.selectNewsList(newsManageVO));
-
 		int totCnt = newsManageService.selectNewsListCnt(newsManageVO);
-		newsManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		newsManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/ion/nws/NewsInfoList");
 	}
@@ -83,9 +83,10 @@ public class NewsManageController {
 	 */
 	@RequestMapping("/uss/ion/nws/detailNewsInfo.do")
 	public String detailNewsInfo(
-			@ModelAttribute NewsManageVO newsManageVO) {
+			NewsManageVO newsManageVO,
+			ModelMap model) {
 
-		newsManageService.selectNewsDetail(newsManageVO);
+		model.addAttribute(newsManageService.selectNewsDetail(newsManageVO));
 
 		return WebUtil.adjustViewName("/uss/ion/nws/NewsInfoDetail");
 	}
@@ -143,9 +144,10 @@ public class NewsManageController {
 	@RequestMapping("/uss/ion/nws/editNewsInfo.do")
 	@Secured("ROLE_USER")
 	public String editNewsInfo(
-			@ModelAttribute NewsManageVO newsManageVO) {
+			NewsManageVO newsManageVO,
+			ModelMap model) {
 
-		newsManageService.selectNewsDetail(newsManageVO);
+		model.addAttribute(newsManageService.selectNewsDetail(newsManageVO));
 
 		return WebUtil.adjustViewName("/uss/ion/nws/NewsInfoEdit");
 	}

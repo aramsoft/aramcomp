@@ -63,12 +63,12 @@ public class WikiBookmarkController {
 		wikiBookmarkVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", wikiBookmarkService.selectWikiBookmarkList(wikiBookmarkVO));
-
 		int totCnt = (Integer) wikiBookmarkService.selectWikiBookmarkListCnt(wikiBookmarkVO);
-		wikiBookmarkVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		wikiBookmarkVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/ion/wik/bmk/WikiBookmarkList");
 	}

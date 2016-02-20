@@ -61,12 +61,12 @@ public class WordDicaryController {
 		wordDicaryVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", wordDicaryService.selectWordDicaryList(wordDicaryVO));
-
 		int totCnt = wordDicaryService.selectWordDicaryListCnt(wordDicaryVO);
-		wordDicaryVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		wordDicaryVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/olh/wor/WordDicaryList");
 	}
@@ -78,9 +78,10 @@ public class WordDicaryController {
 	 */
 	@RequestMapping("/uss/olh/wor/detailWordDicary.do")
 	public String detailWordDicary(
-			@ModelAttribute WordDicaryVO wordDicaryVO) {
+			WordDicaryVO wordDicaryVO,
+			ModelMap model) {
 
-		wordDicaryService.selectWordDicaryDetail(wordDicaryVO);
+		model.addAttribute(wordDicaryService.selectWordDicaryDetail(wordDicaryVO));
 
 		return WebUtil.adjustViewName("/uss/olh/wor/WordDicaryDetail");
 	}
@@ -133,9 +134,10 @@ public class WordDicaryController {
 	@RequestMapping("/uss/olh/wor/editWordDicary.do")
 	@Secured("ROLE_USER")
 	public String editWordDicary(
-			@ModelAttribute WordDicaryVO wordDicaryVO) {
+			WordDicaryVO wordDicaryVO,
+			ModelMap model) {
 
-		wordDicaryService.selectWordDicaryDetail(wordDicaryVO);
+		model.addAttribute(wordDicaryService.selectWordDicaryDetail(wordDicaryVO));
 
 		return WebUtil.adjustViewName("/uss/olh/wor/WordDicaryEdit");
 	}

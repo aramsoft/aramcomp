@@ -64,12 +64,12 @@ public class QustnrManageController {
 		qustnrManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", qustnrManageService.selectQustnrManageList(qustnrManageVO));
-
 		int totCnt = (Integer) qustnrManageService.selectQustnrManageListCnt(qustnrManageVO);
-		qustnrManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		qustnrManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/olp/qmc/QustnrListPopup");
 	}
@@ -90,12 +90,12 @@ public class QustnrManageController {
 		qustnrManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", qustnrManageService.selectQustnrManageList(qustnrManageVO));
-
 		int totCnt = (Integer) qustnrManageService.selectQustnrManageListCnt(qustnrManageVO);
-		qustnrManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		qustnrManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/olp/qmc/QustnrList");
 	}
@@ -107,9 +107,10 @@ public class QustnrManageController {
 	 */
 	@RequestMapping(value = "/uss/olp/qmc/detailQustnr.do")
 	public String detailQustnr(
-			@ModelAttribute QustnrManageVO qustnrManageVO) {
+			QustnrManageVO qustnrManageVO,
+			ModelMap model) {
 
-		qustnrManageService.selectQustnrManageDetail(qustnrManageVO);
+		model.addAttribute(qustnrManageService.selectQustnrManageDetail(qustnrManageVO));
 
 		// 공통코드 직업유형 조회
 		cmmUseService.populateCmmCodeList("COM034", "COM034_occpType");
@@ -175,16 +176,17 @@ public class QustnrManageController {
 	@RequestMapping(value = "/uss/olp/qmc/editQustnr.do")
 	@Secured("ROLE_USER")
 	public String editQustnr(
-			@ModelAttribute QustnrManageVO qustnrManageVO, 
+			QustnrManageVO qustnrManageVO,
 			ModelMap model) {
 
-		qustnrManageService.selectQustnrManageDetail(qustnrManageVO);
-
-		// 공통코드 직업유형 조회
-		cmmUseService.populateCmmCodeList("COM034", "COM034_occpType");
+		qustnrManageVO = qustnrManageService.selectQustnrManageDetail(qustnrManageVO);
 
 		// 설문템플릿 정보 불러오기
 		model.addAttribute("listQustnrTmplat", qustnrManageService.selectQustnrTmplatManageList(qustnrManageVO));
+		model.addAttribute(qustnrManageVO);
+		
+		// 공통코드 직업유형 조회
+		cmmUseService.populateCmmCodeList("COM034", "COM034_occpType");
 
 		return WebUtil.adjustViewName("/uss/olp/qmc/QustnrEdit");
 	}

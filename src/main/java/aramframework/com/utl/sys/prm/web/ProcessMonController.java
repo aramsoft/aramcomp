@@ -70,12 +70,12 @@ public class ProcessMonController {
 		processMonVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", processMonService.selectProcessMonList(processMonVO));
-
 		int totCnt = processMonService.selectProcessMonListCnt(processMonVO);
-		processMonVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		processMonVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/utl/sys/prm/ProcessMonList");
 	}
@@ -88,9 +88,10 @@ public class ProcessMonController {
 	@RequestMapping("/utl/sys/prm/detailProcessMon.do")
 	@Secured("ROLE_ADMIN")
 	public String detailProcessMon(
-			@ModelAttribute ProcessMonVO processMonVO) {
+			ProcessMonVO processMonVO,
+			ModelMap model) {
 
-		processMonService.selectProcessMon(processMonVO);
+		model.addAttribute(processMonService.selectProcessMon(processMonVO));
 
 		return WebUtil.adjustViewName("/utl/sys/prm/ProcessMonDetail");
 	}
@@ -144,9 +145,10 @@ public class ProcessMonController {
 	@RequestMapping(value = "/utl/sys/prm/editProcessMon.do")
 	@Secured("ROLE_ADMIN")
 	public String editProcessMon(
-			@ModelAttribute ProcessMonVO processMonVO) {
+			ProcessMonVO processMonVO,
+			ModelMap model) {
 
-		processMonService.selectProcessMon(processMonVO);
+		model.addAttribute(processMonService.selectProcessMon(processMonVO));
 
 		return WebUtil.adjustViewName("/utl/sys/prm/ProcessMonEdit");
 	}
@@ -235,12 +237,12 @@ public class ProcessMonController {
 		processMonLogVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", processMonService.selectProcessMonLogList(processMonLogVO));
-
 		int totCnt = processMonService.selectProcessMonLogListCnt(processMonLogVO);
-		processMonLogVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		processMonLogVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/utl/sys/prm/ProcessMonLogList");
 	}
@@ -260,9 +262,10 @@ public class ProcessMonController {
 	@RequestMapping("/utl/sys/prm/detailProcessMonLog.do")
 	@Secured("ROLE_ADMIN")
 	public String detailProcessMonLog(
-			@ModelAttribute ProcessMonLogVO processMonLogVO) {
+			ProcessMonLogVO processMonLogVO,
+			ModelMap model) {
 
-		processMonService.selectProcessMonLog(processMonLogVO);
+		processMonLogVO = processMonService.selectProcessMonLog(processMonLogVO);
 
 		if (processMonLogVO.getCreatDt() != null && !processMonLogVO.getCreatDt().equals("")) {
 			if (processMonLogVO.getCreatDt().length() > 18) {
@@ -270,6 +273,8 @@ public class ProcessMonController {
 			}
 		}
 
+		model.addAttribute(processMonLogVO);
+		
 		return WebUtil.adjustViewName("/utl/sys/prm/ProcessMonLogDetail");
 	}
 

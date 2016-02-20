@@ -71,12 +71,12 @@ public class CnsltManageController {
 		cnsltManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", cnsltManageService.selectCnsltList(cnsltManageVO));
-
 		int totCnt = cnsltManageService.selectCnsltListCnt(cnsltManageVO);
-		cnsltManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		cnsltManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		// 인증여부 체크
 		Boolean isAuthenticated = UserDetailsHelper.isAuthenticated();
@@ -96,9 +96,10 @@ public class CnsltManageController {
 	 */
 	@RequestMapping("/uss/olp/cns/detailCnslt.do")
 	public String detailCnslt(
-			@ModelAttribute CnsltManageVO cnsltManageVO) {
+			CnsltManageVO cnsltManageVO,
+			ModelMap model) {
 
-		cnsltManageService.selectCnsltListDetail(cnsltManageVO);
+		model.addAttribute(cnsltManageService.selectCnsltListDetail(cnsltManageVO));
 
 		return WebUtil.adjustViewName("/uss/olp/cns/CnsltDetail");
 	}
@@ -245,15 +246,18 @@ public class CnsltManageController {
 	 */
 	@RequestMapping("/uss/olp/cns/editCnslt.do")
 	public String editCnslt(
-			@ModelAttribute CnsltManageVO cnsltManageVO) {
+			CnsltManageVO cnsltManageVO,
+			ModelMap model) {
 
 		// 작성비밀번호를 암호화 하기 위해서 Get
 		String writngPassword = cnsltManageVO.getWritngPassword();
 
-		cnsltManageService.selectCnsltListDetail(cnsltManageVO);
+		cnsltManageVO = cnsltManageService.selectCnsltListDetail(cnsltManageVO);
 
 		cnsltManageVO.setWritngPassword(writngPassword);
-
+		
+		model.addAttribute(cnsltManageVO);
+		
 		return WebUtil.adjustViewName("/uss/olp/cns/CnsltEdit");
 	}
 
@@ -365,12 +369,12 @@ public class CnsltManageController {
 		cnsltManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", cnsltManageService.selectCnsltAnswerList(cnsltManageVO));
-
 		int totCnt = cnsltManageService.selectCnsltAnswerListCnt(cnsltManageVO);
-		cnsltManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		cnsltManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/olp/cns/CnsltAnswerList");
 	}
@@ -383,9 +387,10 @@ public class CnsltManageController {
 	@RequestMapping("/uss/olp/cnm/detailCnsltAnswer.do")
 	@Secured("ROLE_USER")
 	public String detailCnsltAnswer(
-			@ModelAttribute CnsltManageVO cnsltManageVO) {
+			CnsltManageVO cnsltManageVO,
+			ModelMap model) {
 
-		cnsltManageService.selectCnsltListDetail(cnsltManageVO);
+		model.addAttribute(cnsltManageService.selectCnsltListDetail(cnsltManageVO));
 
 		return WebUtil.adjustViewName("/uss/olp/cns/CnsltAnswerDetail");
 	}
@@ -398,9 +403,10 @@ public class CnsltManageController {
 	@RequestMapping("/uss/olp/cnm/editCnsltAnswer.do")
 	@Secured("ROLE_USER")
 	public String editCnsltAnswer(
-			@ModelAttribute CnsltManageVO cnsltManageVO) {
+			CnsltManageVO cnsltManageVO,
+			ModelMap model) {
 
-		cnsltManageService.selectCnsltListDetail(cnsltManageVO);
+		model.addAttribute(cnsltManageService.selectCnsltListDetail(cnsltManageVO));
 
 		// 공통코드를 가져오기 위한 Vo
 		cmmUseService.populateCmmCodeList("COM028", "COM028_qnaProcessSttus");

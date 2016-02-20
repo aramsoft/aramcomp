@@ -80,12 +80,12 @@ public class MberManageController {
 		mberManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", mberManageService.selectMberList(mberManageVO));
-
 		int totCnt = mberManageService.selectMberListCnt(mberManageVO);
-		mberManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		mberManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		// 일반회원 상태코드를 코드정보로부터 조회
 		cmmUseService.populateCmmCodeList("COM013", "COM013_mberSttus");
@@ -224,12 +224,12 @@ public class MberManageController {
 	@RequestMapping("/uss/umt/editMber.do")
 	@Secured("ROLE_USER")
 	public String editMber(
-			@ModelAttribute MberManageVO mberManageVO, 
+			MberManageVO mberManageVO, 
 			ModelMap model) {
 
 		fill_common_code();
 		
-		mberManageService.selectMber(mberManageVO);
+		model.addAttribute(mberManageService.selectMber(mberManageVO));
 
 		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
 			model.addAttribute("isAdmin", "true");

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -67,12 +67,12 @@ public class TrsmrcvMntrngController {
 		trsmrcvMntrngVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", trsmrcvMntrngService.selectTrsmrcvMntrngList(trsmrcvMntrngVO));
-
 		int totCnt = trsmrcvMntrngService.selectTrsmrcvMntrngListCnt(trsmrcvMntrngVO);
+	
 		trsmrcvMntrngVO.getSearchVO().setTotalRecordCount(totCnt);
-
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+		
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/utl/sys/trm/TrsmrcvMntrngList");
 	}
@@ -85,9 +85,10 @@ public class TrsmrcvMntrngController {
 	@RequestMapping("/utl/sys/trm/detailTrsmrcvMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String detailTrsmrcvMntrng(
-			@ModelAttribute TrsmrcvMntrngVO trsmrcvMntrngVO) {
+			TrsmrcvMntrngVO trsmrcvMntrngVO,
+			ModelMap model) {
 
-		trsmrcvMntrngService.selectTrsmrcvMntrng(trsmrcvMntrngVO);
+		model.addAttribute(trsmrcvMntrngService.selectTrsmrcvMntrng(trsmrcvMntrngVO));
 
 		return WebUtil.adjustViewName("/utl/sys/trm/TrsmrcvMntrngDetail");
 	}
@@ -158,9 +159,10 @@ public class TrsmrcvMntrngController {
 	@RequestMapping("/utl/sys/trm/editTrsmrcvMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String editTrsmrcvMntrng(
-			@ModelAttribute TrsmrcvMntrngVO trsmrcvMntrngVO) {
+			TrsmrcvMntrngVO trsmrcvMntrngVO,
+			ModelMap model) {
 
-		trsmrcvMntrngService.selectTrsmrcvMntrng(trsmrcvMntrngVO);
+		model.addAttribute(trsmrcvMntrngService.selectTrsmrcvMntrng(trsmrcvMntrngVO));
 
 		return WebUtil.adjustViewName("/utl/sys/trm/TrsmrcvMntrngEdit");
 	}
@@ -224,12 +226,12 @@ public class TrsmrcvMntrngController {
 		trsmrcvMntrngLogVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", trsmrcvMntrngService.selectTrsmrcvMntrngLogList(trsmrcvMntrngLogVO));
-
 		int totCnt = trsmrcvMntrngService.selectTrsmrcvMntrngLogListCnt(trsmrcvMntrngLogVO);
+
 		trsmrcvMntrngLogVO.getSearchVO().setTotalRecordCount(totCnt);
-	
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/utl/sys/trm/TrsmrcvMntrngLogList");
 	}
@@ -242,9 +244,10 @@ public class TrsmrcvMntrngController {
 	@RequestMapping("/utl/sys/trm/detailTrsmrcvMntrngLog.do")
 	@Secured("ROLE_ADMIN")
 	public String selectTrsmrcvMntrngLog(
-			@ModelAttribute TrsmrcvMntrngLogVO trsmrcvMntrngLogVO) {
+			TrsmrcvMntrngLogVO trsmrcvMntrngLogVO,
+			ModelMap model) {
 		
-		trsmrcvMntrngService.selectTrsmrcvMntrngLog(trsmrcvMntrngLogVO);
+		model.addAttribute(trsmrcvMntrngService.selectTrsmrcvMntrngLog(trsmrcvMntrngLogVO));
 
 		return WebUtil.adjustViewName("/utl/sys/trm/TrsmrcvMntrngLogDetail");
 	}
@@ -256,19 +259,19 @@ public class TrsmrcvMntrngController {
 	 */
 	@RequestMapping("/utl/sys/trm/listCntcPopup.do")
 	public String listCntc(
-			@ModelAttribute SearchVO searchVO, 
+			@ModelAttribute BaseVO baseVO, 
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		searchVO.fillPageInfo(paginationInfo);
+		baseVO.getSearchVO().fillPageInfo(paginationInfo);
 
-		model.addAttribute("resultList", trsmrcvMntrngService.selectCntcList(searchVO));
-
-		int totCnt = trsmrcvMntrngService.selectCntcListCnt(searchVO);
-		searchVO.setTotalRecordCount(totCnt);
-
+		model.addAttribute("resultList", trsmrcvMntrngService.selectCntcList(baseVO));
+		int totCnt = trsmrcvMntrngService.selectCntcListCnt(baseVO);
+	
+		baseVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+	
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/utl/sys/trm/CntcListPopup");
 	}

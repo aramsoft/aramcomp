@@ -71,12 +71,12 @@ public class DbMntrngController {
 		dbMntrngVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", dbMntrngService.selectDbMntrngList(dbMntrngVO));
-
 		int totCnt = dbMntrngService.selectDbMntrngListCnt(dbMntrngVO);
-		dbMntrngVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		dbMntrngVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/utl/sys/dbm/DbMntrngList");
 	}
@@ -89,9 +89,10 @@ public class DbMntrngController {
 	@RequestMapping("/utl/sys/dbm/detailDbMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String detailDbMntrng(
-			@ModelAttribute DbMntrngVO dbMntrngVO) {
+			DbMntrngVO dbMntrngVO,
+			ModelMap model) {
 
-		dbMntrngService.selectDbMntrng(dbMntrngVO);
+		model.addAttribute(dbMntrngService.selectDbMntrng(dbMntrngVO));
 
 		return WebUtil.adjustViewName("/utl/sys/dbm/DbMntrngDetail");
 	}
@@ -165,9 +166,10 @@ public class DbMntrngController {
 	@RequestMapping("/utl/sys/dbm/editDbMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String editDbMntrng(
-			@ModelAttribute DbMntrngVO dbMntrngVO) {
+			DbMntrngVO dbMntrngVO,
+			ModelMap model) {
 
-		dbMntrngService.selectDbMntrng(dbMntrngVO);
+		model.addAttribute(dbMntrngService.selectDbMntrng(dbMntrngVO));
 
 		// DBMS종류코드목록을 코드정보로부터 조회
 		cmmUseService.populateCmmCodeList("COM048", "COM048_dbmsKind");
@@ -235,12 +237,12 @@ public class DbMntrngController {
 		dbMntrngLogVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", dbMntrngService.selectDbMntrngLogList(dbMntrngLogVO));
-
 		int totCnt = dbMntrngService.selectDbMntrngLogListCnt(dbMntrngLogVO);
-		dbMntrngLogVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		dbMntrngLogVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/utl/sys/dbm/DbMntrngLogList");
 	}
@@ -254,9 +256,10 @@ public class DbMntrngController {
 	@RequestMapping("/utl/sys/dbm/detailDbMntrngLog.do")
 	@Secured("ROLE_ADMIN")
 	public String detailDbMntrngLog(
-			@ModelAttribute DbMntrngLogVO dbMntrngLogVO) {
+			DbMntrngLogVO dbMntrngLogVO,
+			ModelMap model) {
 
-		dbMntrngService.selectDbMntrngLog(dbMntrngLogVO);
+		model.addAttribute(dbMntrngService.selectDbMntrngLog(dbMntrngLogVO));
 
 		return WebUtil.adjustViewName("/utl/sys/dbm/DbMntrngLogDetail");
 	}

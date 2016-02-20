@@ -2,7 +2,7 @@ package aramframework.com.utl.sys.trm.dao;
 
 import java.util.List;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.utl.sys.trm.domain.TrsmrcvMntrngLogVO;
 import aramframework.com.utl.sys.trm.domain.TrsmrcvMntrngVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
@@ -105,13 +105,13 @@ public interface TrsmrcvMntrngMapper {
 	 * 
 	 * @param searchVO
 	 */
-	public List<EgovMap> selectCntcList(SearchVO searchVO);
+	public List<EgovMap> selectCntcList(BaseVO baseVO);
 
 	/**
 	 * 연계정보 목록 전체 건수를(을) 조회한다.
 	 * 
 	 * @param searchVO
 	 */
-	public int selectCntcListCnt(SearchVO searchVO);
+	public int selectCntcListCnt(BaseVO baseVO);
 
 }

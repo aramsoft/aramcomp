@@ -52,12 +52,12 @@ public class RssController {
 		rssInfoVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", rssService.selectRssServiceList(rssInfoVO));
-
 		int totCnt = (Integer) rssService.selectRssServiceListCnt(rssInfoVO);
-		rssInfoVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		rssInfoVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/ion/rsn/RssServiceList");
 	}
@@ -69,14 +69,14 @@ public class RssController {
 	 */
 	@RequestMapping(value = "/uss/ion/rsn/detailRssService.do")
 	public String detailRssService(
-			@ModelAttribute RssInfoVO rssInfoVO, 
+			RssInfoVO rssInfoVO, 
 			ModelMap model) {
 		
 		if( rssInfoVO.getRssId() == null || rssInfoVO.getRssId().equals("") ) {
 			throw new RuntimeException("rssId is not found !!!");
 		}
 		
-		rssService.selectRssServiceDetail(rssInfoVO);
+		model.addAttribute(rssService.selectRssServiceDetail(rssInfoVO));
 
 		model.addAttribute("mapRssInfoList", rssService.selectRssServiceTable(rssInfoVO));
 

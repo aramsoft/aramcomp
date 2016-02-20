@@ -67,12 +67,12 @@ public class OnlinePollManageController {
 		onlinePollManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", onlinePollManageService.selectOnlinePollManageList(onlinePollManageVO));
-
 		int totCnt = (Integer) onlinePollManageService.selectOnlinePollManageListCnt(onlinePollManageVO);
-		onlinePollManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		onlinePollManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/olp/opm/OnlinePollList");
 	}
@@ -84,9 +84,10 @@ public class OnlinePollManageController {
 	 */
 	@RequestMapping(value = "/uss/olp/opm/detailOnlinePoll.do")
 	public String detailOnlinePoll(
-			@ModelAttribute OnlinePollManageVO onlinePollManageVO) {
+			OnlinePollManageVO onlinePollManageVO,
+			ModelMap model) {
 
-		onlinePollManageService.selectOnlinePollManageDetail(onlinePollManageVO);
+		model.addAttribute(onlinePollManageService.selectOnlinePollManageDetail(onlinePollManageVO));
 
 		// POLL종류 설정
 		cmmUseService.populateCmmCodeList("COM039", "COM039_pollKind");
@@ -143,10 +144,10 @@ public class OnlinePollManageController {
 	 */
 	@RequestMapping(value = "/uss/olp/opm/editOnlinePoll.do")
 	public String editOnlinePoll(
-			@ModelAttribute OnlinePollManageVO onlinePollManageVO) {
+			OnlinePollManageVO onlinePollManageVO,
+			ModelMap model) {
 
-		// 게시물 정보 설정
-		onlinePollManageService.selectOnlinePollManageDetail(onlinePollManageVO);
+		model.addAttribute(onlinePollManageService.selectOnlinePollManageDetail(onlinePollManageVO));
 
 		// POLL종류 Select박스 설정
 		cmmUseService.populateCmmCodeList("COM039", "COM039_pollKind");

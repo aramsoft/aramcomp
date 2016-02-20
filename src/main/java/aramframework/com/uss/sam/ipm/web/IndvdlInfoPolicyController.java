@@ -62,12 +62,12 @@ public class IndvdlInfoPolicyController {
 		indvdlInfoPolicyVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", indvdlInfoPolicyService.selectIndvdlInfoPolicyList(indvdlInfoPolicyVO));
-
 		int totCnt = (Integer) indvdlInfoPolicyService.selectIndvdlInfoPolicyListCnt(indvdlInfoPolicyVO);
-		indvdlInfoPolicyVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		indvdlInfoPolicyVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/sam/ipm/IndvdlInfoPolicyList");
 	}
@@ -80,9 +80,10 @@ public class IndvdlInfoPolicyController {
 	@RequestMapping(value = "/uss/sam/ipm/detailIndvdlInfoPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String detailIndvdlInfoPolicy(
-			@ModelAttribute IndvdlInfoPolicyVO indvdlInfoPolicyVO) {
+			IndvdlInfoPolicyVO indvdlInfoPolicyVO,
+			ModelMap model) {
 
-		indvdlInfoPolicyService.selectIndvdlInfoPolicyDetail(indvdlInfoPolicyVO);
+		model.addAttribute(indvdlInfoPolicyService.selectIndvdlInfoPolicyDetail(indvdlInfoPolicyVO));
 
 		return WebUtil.adjustViewName("/uss/sam/ipm/IndvdlInfoPolicyDetail");
 	}
@@ -137,9 +138,10 @@ public class IndvdlInfoPolicyController {
 	@RequestMapping(value = "/uss/sam/ipm/editIndvdlInfoPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String editIndvdlInfoPolicy(
-			@ModelAttribute IndvdlInfoPolicyVO indvdlInfoPolicyVO) {
+			IndvdlInfoPolicyVO indvdlInfoPolicyVO,
+			ModelMap model) {
 
-		indvdlInfoPolicyService.selectIndvdlInfoPolicyDetail(indvdlInfoPolicyVO);
+		model.addAttribute(indvdlInfoPolicyService.selectIndvdlInfoPolicyDetail(indvdlInfoPolicyVO));
 
 		return WebUtil.adjustViewName("/uss/sam/ipm/IndvdlInfoPolicyEdit");
 	}

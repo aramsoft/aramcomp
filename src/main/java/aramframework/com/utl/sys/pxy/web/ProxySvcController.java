@@ -72,12 +72,12 @@ public class ProxySvcController {
 		proxySvcVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", proxySvcService.selectProxySvcList(proxySvcVO));
-
 		int totCnt = proxySvcService.selectProxySvcListCnt(proxySvcVO);
-		proxySvcVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		proxySvcVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/utl/sys/pxy/ProxySvcList");
 	}
@@ -90,9 +90,10 @@ public class ProxySvcController {
 	@RequestMapping(value = "/utl/sys/pxy/detailProxySvc.do")
 	@Secured("ROLE_ADMIN")
 	public String detailProxySvc(
-			@ModelAttribute ProxySvcVO proxySvcVO) {
+			ProxySvcVO proxySvcVO,
+			ModelMap model) {
 
-		proxySvcService.selectProxySvc(proxySvcVO);
+		model.addAttribute(proxySvcService.selectProxySvc(proxySvcVO));
 
 		return WebUtil.adjustViewName("/utl/sys/pxy/ProxySvcDetail");
 	}
@@ -146,9 +147,10 @@ public class ProxySvcController {
 	@RequestMapping(value = "/utl/sys/pxy/editProxySvc.do")
 	@Secured("ROLE_ADMIN")
 	public String editProxySvc(
-			@ModelAttribute ProxySvcVO proxySvcVO) {
+			ProxySvcVO proxySvcVO,
+			ModelMap model) {
 
-		proxySvcService.selectProxySvc(proxySvcVO);
+		model.addAttribute(proxySvcService.selectProxySvc(proxySvcVO));
 
 		cmmUseService.populateCmmCodeList("COM072", "COM072_svcSttus");
 
@@ -221,12 +223,12 @@ public class ProxySvcController {
 		proxySvcLogVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", proxySvcService.selectProxySvcLogList(proxySvcLogVO));
-
 		int totCnt = proxySvcService.selectProxySvcLogListCnt(proxySvcLogVO);
-		proxySvcLogVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		proxySvcLogVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		proxySvcLogVO.setStrStartDate(StringUtil.addMinusChar(proxySvcLogVO.getStrStartDate()));
 		proxySvcLogVO.setStrEndDate(StringUtil.addMinusChar(proxySvcLogVO.getStrEndDate()));

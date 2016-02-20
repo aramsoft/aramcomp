@@ -58,12 +58,12 @@ public class ServerResrceMntrngController {
 		serverResrceMntrngVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", serverResrceMntrngService.selectMntrngServerList(serverResrceMntrngVO));
-
 		int totCnt = serverResrceMntrngService.selectMntrngServerListCnt(serverResrceMntrngVO);
-		serverResrceMntrngVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		serverResrceMntrngVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/utl/sys/srm/MntrngServerList");
 	}
@@ -91,12 +91,12 @@ public class ServerResrceMntrngController {
 		serverResrceMntrngVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("serverResrceMntrngList", serverResrceMntrngService.selectServerResrceMntrngList(serverResrceMntrngVO));
-
 		int totCnt = serverResrceMntrngService.selectServerResrceMntrngListCnt(serverResrceMntrngVO);
-		serverResrceMntrngVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		serverResrceMntrngVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		serverResrceMntrngVO.setStrStartDt(StringUtil.addMinusChar(serverResrceMntrngVO.getStrStartDt()));
 		serverResrceMntrngVO.setStrEndDt(StringUtil.addMinusChar(serverResrceMntrngVO.getStrEndDt()));
@@ -112,9 +112,10 @@ public class ServerResrceMntrngController {
 	@RequestMapping(value = "/utl/sys/srm/detailServerResrceMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String detailServerResrceMntrng(
-			@ModelAttribute ServerResrceMntrngVO serverResrceMntrngVO) {
+			ServerResrceMntrngVO serverResrceMntrngVO,
+			ModelMap model) {
 
-		serverResrceMntrngVO = serverResrceMntrngService.selectServerResrceMntrng(serverResrceMntrngVO);
+		model.addAttribute(serverResrceMntrngService.selectServerResrceMntrng(serverResrceMntrngVO));
 
 		return WebUtil.adjustViewName("/utl/sys/srm/ServerResrceMntrngDetail");
 	}

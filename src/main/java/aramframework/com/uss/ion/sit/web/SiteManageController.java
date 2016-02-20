@@ -66,12 +66,12 @@ public class SiteManageController {
 		siteManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", siteManageService.selectSiteList(siteManageVO));
-
 		int totCnt = siteManageService.selectSiteListCnt(siteManageVO);
-		siteManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		siteManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/ion/sit/SiteInfoList");
 	}
@@ -83,9 +83,10 @@ public class SiteManageController {
 	 */
 	@RequestMapping("/uss/ion/sit/detailSiteInfo.do")
 	public String detailSiteInfo(
-			@ModelAttribute SiteManageVO siteManageVO) {
+			SiteManageVO siteManageVO,
+			ModelMap model) {
 
-		siteManageService.selectSiteDetail(siteManageVO);
+		model.addAttribute(siteManageService.selectSiteDetail(siteManageVO));
 
 		return WebUtil.adjustViewName("/uss/ion/sit/SiteInfoDetail");
 	}
@@ -138,9 +139,10 @@ public class SiteManageController {
 	 */
 	@RequestMapping("/uss/ion/sit/editSiteInfo.do")
 	public String editSiteInfo(
-			@ModelAttribute SiteManageVO siteManageVO) {
+			SiteManageVO siteManageVO,
+			ModelMap model) {
 
-		siteManageService.selectSiteDetail(siteManageVO);
+		model.addAttribute(siteManageService.selectSiteDetail(siteManageVO));
 
 		// 공통코드를 가져오기 위한 Vo
 		cmmUseService.populateCmmCodeList("COM023", "COM023_siteThema");

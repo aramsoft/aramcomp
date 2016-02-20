@@ -63,7 +63,7 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/detailIndvdlpge.do")
 	@Secured("ROLE_USER")
 	public String detailIndvdlpge(
-			@ModelAttribute IndvdlPgeConfVO indvdlPgeConfVO, 
+			IndvdlPgeConfVO indvdlPgeConfVO, 
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -92,7 +92,7 @@ public class IndvdlPgeController {
 		model.addAttribute("indvdlPgeDetailListCount", totDetailCnt);
 
 		// 마이페이지 기본정보 설정
-		indvdlPgeService.selectIndvdlpgeConfDetail(indvdlPgeConfVO);
+		model.addAttribute(indvdlPgeService.selectIndvdlpgeConfDetail(indvdlPgeConfVO));
 		
 		// 기준개수별 사이즈를 구한다.
 		int sideCnt = indvdlPgeConfVO.getSortCnt();
@@ -186,13 +186,12 @@ public class IndvdlPgeController {
 
 		// 사용자가 마이페이지에 컨텐츠를 추가하기 위해 등록되어 있는 마이페이지 목록을 조회한다.
 		model.addAttribute("resultList", indvdlPgeService.addIndvdlpgeCntntsList(indvdlPgeCntntsVO));
-
-		// 목록의 페이징을 위해 등록되어 있는 마이페이지 개수를 조회한다.
 		int totCnt = indvdlPgeService.addIndvdlpgeCntntsListCnt(indvdlPgeCntntsVO);
-		indvdlPgeCntntsVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		indvdlPgeCntntsVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/mpe/IndvdlpgeList");
 	}
@@ -263,13 +262,12 @@ public class IndvdlPgeController {
 
 		// 컨텐츠 목록을 조회한다.
 		model.addAttribute("resultList", indvdlPgeService.selectIndvdlpgeCntntsList(indvdlPgeCntntsVO));
-
-		// 컨텐츠의 개수를 조회한다.
 		int totCnt = indvdlPgeService.selectIndvdlpgeCntntsListCnt(indvdlPgeCntntsVO);
-		indvdlPgeCntntsVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		indvdlPgeCntntsVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/mpe/IndvdlpgeCntntsList");
 	}
@@ -282,9 +280,10 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/detailIndvdlpgeCntnts.do")
 	@Secured("ROLE_ADMIN")
 	public String detailIndvdlpgeCntnts(
-			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO) {
+			IndvdlPgeCntntsVO indvdlPgeCntntsVO,
+			ModelMap model) {
 
-		indvdlPgeService.selectIndvdlpgeCntnts(indvdlPgeCntntsVO);
+		model.addAttribute(indvdlPgeService.selectIndvdlpgeCntnts(indvdlPgeCntntsVO));
 
 		return WebUtil.adjustViewName("/uss/mpe/IndvdlpgeCntntsDetail");
 	}
@@ -335,9 +334,10 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/editIndvdlpgeCntnts.do")
 	@Secured("ROLE_ADMIN")
 	public String editIndvdlpgeCntnts(
-			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO) {
+			IndvdlPgeCntntsVO indvdlPgeCntntsVO,
+			ModelMap model) {
 
-		indvdlPgeService.selectIndvdlpgeCntnts(indvdlPgeCntntsVO);
+		model.addAttribute(indvdlPgeService.selectIndvdlpgeCntnts(indvdlPgeCntntsVO));
 
 		return WebUtil.adjustViewName("/uss/mpe/IndvdlpgeCntntsEdit");
 	}

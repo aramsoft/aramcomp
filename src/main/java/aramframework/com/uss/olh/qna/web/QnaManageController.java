@@ -66,12 +66,12 @@ public class QnaManageController {
 		qnaManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", qnaManageService.selectQnaList(qnaManageVO));
-
 		int totCnt = qnaManageService.selectQnaListCnt(qnaManageVO);
-		qnaManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		qnaManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		// 인증여부 체크
 		Boolean isAuthenticated = UserDetailsHelper.isAuthenticated();
@@ -91,9 +91,10 @@ public class QnaManageController {
 	 */
 	@RequestMapping("/uss/olh/qna/detailQna.do")
 	public String detailQna(
-			@ModelAttribute QnaManageVO qnaManageVO) {
+			QnaManageVO qnaManageVO,
+			ModelMap model) {
 
-		qnaManageService.selectQnaListDetail(qnaManageVO);
+		model.addAttribute(qnaManageService.selectQnaListDetail(qnaManageVO));
 
 		return WebUtil.adjustViewName("/uss/olh/qna/QnaDetail");
 	}
@@ -234,15 +235,17 @@ public class QnaManageController {
 	 */
 	@RequestMapping("/uss/olh/qna/editQna.do")
 	public String editQna(
-			@ModelAttribute QnaManageVO qnaManageVO) {
+			QnaManageVO qnaManageVO,
+			ModelMap model) {
+
+		qnaManageVO = qnaManageService.selectQnaListDetail(qnaManageVO);
 		
 		// 작성비밀번호 임시 저장
 		String writngPassword = qnaManageVO.getWritngPassword();
-
-		qnaManageService.selectQnaListDetail(qnaManageVO);
-
 		qnaManageVO.setWritngPassword(writngPassword);
-		
+
+		model.addAttribute(qnaManageVO);
+
 		return WebUtil.adjustViewName("/uss/olh/qna/QnaEdit");
 	}
 
@@ -349,12 +352,12 @@ public class QnaManageController {
 		qnaManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", qnaManageService.selectQnaAnswerList(qnaManageVO));
-
 		int totCnt = qnaManageService.selectQnaAnswerListCnt(qnaManageVO);
-		qnaManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		qnaManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/olh/qna/QnaAnswerList");
 	}
@@ -367,9 +370,10 @@ public class QnaManageController {
 	@RequestMapping("/uss/olh/qnm/detailQnaAnswer.do")
 	@Secured("ROLE_USER")
 	public String detailQnaAnswer(
-			@ModelAttribute QnaManageVO qnaManageVO) {
+			QnaManageVO qnaManageVO,
+			ModelMap model) {
 
-		qnaManageService.selectQnaAnswerDetail(qnaManageVO);
+		model.addAttribute(qnaManageService.selectQnaAnswerDetail(qnaManageVO));
 
 		return WebUtil.adjustViewName("/uss/olh/qna/QnaAnswerDetail");
 	}
@@ -382,9 +386,10 @@ public class QnaManageController {
 	@RequestMapping("/uss/olh/qnm/editQnaAnswer.do")
 	@Secured("ROLE_USER")
 	public String editQnaAnswer(
-			@ModelAttribute QnaManageVO qnaManageVO) {
+			QnaManageVO qnaManageVO,
+			ModelMap model) {
 
-		qnaManageService.selectQnaAnswerDetail(qnaManageVO);
+		model.addAttribute(qnaManageService.selectQnaAnswerDetail(qnaManageVO));
 
 		// 공통코드를 가져오기 위한 Vo
 		cmmUseService.populateCmmCodeList("COM028", "COM028_qnaProcessSttus");

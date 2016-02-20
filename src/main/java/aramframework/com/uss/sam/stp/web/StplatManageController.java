@@ -62,12 +62,12 @@ public class StplatManageController {
 		stplatManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", stplatManageService.selectStplatList(stplatManageVO));
-
 		int totCnt = stplatManageService.selectStplatListCnt(stplatManageVO);
-		stplatManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		stplatManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/sam/stp/StplatList");
 	}
@@ -80,9 +80,10 @@ public class StplatManageController {
 	@RequestMapping("/uss/sam/stp/detailStplat.do")
 	@Secured("ROLE_ADMIN")
 	public String detailStplat(
-			@ModelAttribute StplatManageVO stplatManageVO) {
+			StplatManageVO stplatManageVO,
+			ModelMap model) {
 
-		stplatManageService.selectStplatDetail(stplatManageVO);
+		model.addAttribute(stplatManageService.selectStplatDetail(stplatManageVO));
 
 		return WebUtil.adjustViewName("/uss/sam/stp/StplatDetail");
 	}
@@ -135,9 +136,10 @@ public class StplatManageController {
 	@RequestMapping("/uss/sam/stp/editStplat.do")
 	@Secured("ROLE_ADMIN")
 	public String editStplat(
-			@ModelAttribute StplatManageVO stplatManageVO) {
+			StplatManageVO stplatManageVO,
+			ModelMap model) {
 
-		stplatManageService.selectStplatDetail(stplatManageVO);
+		model.addAttribute(stplatManageService.selectStplatDetail(stplatManageVO));
 
 		return WebUtil.adjustViewName("/uss/sam/stp/StplatEdit");
 	}

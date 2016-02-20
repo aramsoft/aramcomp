@@ -80,12 +80,12 @@ public class OnlineManualController {
 		onlineManualVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", onlineManualService.selectOnlineManualList(onlineManualVO));
-
 		int totCnt = (Integer) onlineManualService.selectOnlineManualListCnt(onlineManualVO);
-		onlineManualVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		onlineManualVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		// 온라인메뉴얼 구분 설정
 		cmmUseService.populateCmmCodeList("COM041", "COM041_onlineMnlSe");
@@ -100,9 +100,10 @@ public class OnlineManualController {
 	 */
 	@RequestMapping(value = "/uss/olh/omm/detailOnlineManualUser.do")
 	public String detailOnlineManualUser(
-			@ModelAttribute OnlineManualVO onlineManualVO) {
+			OnlineManualVO onlineManualVO,
+			ModelMap model) {
 
-		onlineManualService.selectOnlineManualDetail(onlineManualVO);
+		model.addAttribute(onlineManualService.selectOnlineManualDetail(onlineManualVO));
 
 		// 온라인메뉴얼 구분 설정
 		cmmUseService.populateCmmCodeList("COM041", "COM041_onlineMnlSe");
@@ -126,12 +127,12 @@ public class OnlineManualController {
 		onlineManualVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", onlineManualService.selectOnlineManualList(onlineManualVO));
-
 		int totCnt = (Integer) onlineManualService.selectOnlineManualListCnt(onlineManualVO);
-		onlineManualVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		onlineManualVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+	
+		model.addAttribute(paginationInfo);
 
 		// 온라인메뉴얼 구분 설정
 		cmmUseService.populateCmmCodeList("COM041", "COM041_onlineMnlSe");
@@ -146,9 +147,10 @@ public class OnlineManualController {
 	 */
 	@RequestMapping(value = "/uss/olh/omm/detailOnlineManual.do")
 	public String detailOnlineManual(
-			@ModelAttribute OnlineManualVO onlineManualVO) {
+			OnlineManualVO onlineManualVO,
+			ModelMap model) {
 
-		onlineManualService.selectOnlineManualDetail(onlineManualVO);
+		model.addAttribute(onlineManualService.selectOnlineManualDetail(onlineManualVO));
 
 		// 온라인메뉴얼 구분 설정
 		cmmUseService.populateCmmCodeList("COM041", "COM041_onlineMnlSe");
@@ -206,10 +208,10 @@ public class OnlineManualController {
 	 */
 	@RequestMapping(value = "/uss/olh/omm/editOnlineManual.do")
 	public String editOnlineManual(
-			@ModelAttribute OnlineManualVO onlineManualVO) {
+			OnlineManualVO onlineManualVO,
+			ModelMap model) {
 
-		// 게시물 불러오기
-		onlineManualService.selectOnlineManualDetail(onlineManualVO);
+		model.addAttribute(onlineManualService.selectOnlineManualDetail(onlineManualVO));
 
 		// 온라인메뉴얼 구분 설정
 		cmmUseService.populateCmmCodeList("COM041", "COM041_onlineMnlSe");

@@ -66,12 +66,12 @@ public class FaqManageController {
 		faqManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", faqManageService.selectFaqList(faqManageVO));
-
 		int totCnt = faqManageService.selectFaqListCnt(faqManageVO);
-		faqManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		faqManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+	
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/olh/faq/FaqList");
 	}
@@ -83,9 +83,10 @@ public class FaqManageController {
 	 */
 	@RequestMapping("/uss/olh/faq/detailFaq.do")
 	public String detailFaq(
-			@ModelAttribute FaqManageVO faqManageVO) {
+			FaqManageVO faqManageVO,
+			ModelMap model) {
 
-		faqManageService.selectFaqListDetail(faqManageVO);
+		model.addAttribute(faqManageService.selectFaqListDetail(faqManageVO));
 
 		return WebUtil.adjustViewName("/uss/olh/faq/FaqDetail");
 	}
@@ -143,9 +144,10 @@ public class FaqManageController {
 	@RequestMapping("/uss/olh/faq/editFaq.do")
 	@Secured("ROLE_USER")
 	public String editFaq(
-			@ModelAttribute FaqManageVO faqManageVO) {
+			FaqManageVO faqManageVO,
+			ModelMap model) {
 
-		faqManageService.selectFaqListDetail(faqManageVO);
+		model.addAttribute(faqManageService.selectFaqListDetail(faqManageVO));
 
 		return WebUtil.adjustViewName("/uss/olh/faq/FaqEdit");
 	}

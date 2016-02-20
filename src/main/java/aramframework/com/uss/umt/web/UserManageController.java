@@ -72,12 +72,12 @@ public class UserManageController {
 		userManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", userManageService.selectUserList(userManageVO));
-
 		int totCnt = userManageService.selectUserListCnt(userManageVO);
-		userManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		userManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		// 사용자상태코드를 코드정보로부터 조회
 		cmmUseService.populateCmmCodeList("COM013", "COM013_mberSttus");
@@ -175,11 +175,12 @@ public class UserManageController {
 	@RequestMapping("/uss/umt/editUser.do")
 	@Secured("ROLE_USER")
 	public String editUser(
-			@ModelAttribute UserManageVO userManageVO, 
+			UserManageVO userManageVO, 
 			ModelMap model) {
 
 		fill_common_code(model);
-		userManageService.selectUser(userManageVO);
+		
+		model.addAttribute(userManageService.selectUser(userManageVO));
 
 		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
 			model.addAttribute("isAdmin", "true");

@@ -92,12 +92,12 @@ public class RssManageController {
 		rssManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", rssManageService.selectRssManageList(rssManageVO));
-
 		int totCnt = (Integer) rssManageService.selectRssManageListCnt(rssManageVO);
-		rssManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		rssManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/ion/rss/RssManageList");
 	}
@@ -154,10 +154,10 @@ public class RssManageController {
 	@RequestMapping(value = "/uss/ion/rss/detailRssManage.do")
 	@Secured("ROLE_ADMIN")
 	public String detailRssManage(
-			@ModelAttribute RssManageVO rssManageVO) {
+			RssManageVO rssManageVO,
+			ModelMap model)  {
 
-		// 상세정보 불러오기
-		rssManageService.selectRssManageDetail(rssManageVO);
+		model.addAttribute(rssManageService.selectRssManageDetail(rssManageVO));
 
 		return WebUtil.adjustViewName("/uss/ion/rss/RssManageDetail");
 	}
@@ -216,14 +216,13 @@ public class RssManageController {
 	@RequestMapping(value = "/uss/ion/rss/editRssManage.do")
 	@Secured("ROLE_ADMIN")
 	public String editRssManage(
-			@ModelAttribute RssManageVO rssManageVO, 
-			ModelMap model) {
+			RssManageVO rssManageVO,
+			ModelMap model)  {
+
+		model.addAttribute(rssManageService.selectRssManageDetail(rssManageVO));
 
 		// 테이블 목록 불러오기
 		model.addAttribute("trgetSvcTableList", rssManageService.selectRssManageTableList());
-
-		// 수정정보 불러오기
-		rssManageService.selectRssManageDetail(rssManageVO);
 
 		return WebUtil.adjustViewName("/uss/ion/rss/RssManageEdit");
 	}

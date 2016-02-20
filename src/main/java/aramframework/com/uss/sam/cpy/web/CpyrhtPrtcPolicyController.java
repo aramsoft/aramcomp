@@ -62,12 +62,12 @@ public class CpyrhtPrtcPolicyController {
 		cpyrhtPrtcPolicyVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", cpyrhtPrtcPolicyService.selectCpyrhtPrtcPolicyList(cpyrhtPrtcPolicyVO));
-
 		int totCnt = cpyrhtPrtcPolicyService.selectCpyrhtPrtcPolicyListCnt(cpyrhtPrtcPolicyVO);
-		cpyrhtPrtcPolicyVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		cpyrhtPrtcPolicyVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/sam/cpy/CpyrhtPrtcPolicyList");
 	}
@@ -80,9 +80,10 @@ public class CpyrhtPrtcPolicyController {
 	@RequestMapping("/uss/sam/cpy/detailCpyrhtPrtcPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String detailCpyrhtPrtcPolicy(
-			@ModelAttribute CpyrhtPrtcPolicyVO cpyrhtPrtcPolicyVO)  {
+			CpyrhtPrtcPolicyVO cpyrhtPrtcPolicyVO,
+			ModelMap model) {
 
-		cpyrhtPrtcPolicyService.selectCpyrhtPrtcPolicyDetail(cpyrhtPrtcPolicyVO);
+		model.addAttribute(cpyrhtPrtcPolicyService.selectCpyrhtPrtcPolicyDetail(cpyrhtPrtcPolicyVO));
 
 		return WebUtil.adjustViewName("/uss/sam/cpy/CpyrhtPrtcPolicyDetail");
 	}
@@ -135,9 +136,10 @@ public class CpyrhtPrtcPolicyController {
 	@RequestMapping("/uss/sam/cpy/editCpyrhtPrtcPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String editCpyrhtPrtcPolicy(
-			@ModelAttribute CpyrhtPrtcPolicyVO cpyrhtPrtcPolicyVO) {
+			CpyrhtPrtcPolicyVO cpyrhtPrtcPolicyVO,
+			ModelMap model) {
 
-		cpyrhtPrtcPolicyService.selectCpyrhtPrtcPolicyDetail(cpyrhtPrtcPolicyVO);
+		model.addAttribute(cpyrhtPrtcPolicyService.selectCpyrhtPrtcPolicyDetail(cpyrhtPrtcPolicyVO));
 
 		return WebUtil.adjustViewName("/uss/sam/cpy/CpyrhtPrtcPolicyEdit");
 	}

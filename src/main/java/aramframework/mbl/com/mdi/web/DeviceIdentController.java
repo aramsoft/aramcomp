@@ -136,12 +136,12 @@ public class DeviceIdentController {
         deviceIdentVO.getSearchVO().fillPageInfo(paginationInfo);
 
         model.addAttribute("resultList", deviceIdentService.selectDeviceIdentList(deviceIdentVO));
-
         int totCnt = deviceIdentService.selectDeviceIdentListCnt(deviceIdentVO);
-        deviceIdentVO.getSearchVO().setTotalRecordCount(totCnt);
 
+        deviceIdentVO.getSearchVO().setTotalRecordCount(totCnt);
         paginationInfo.setTotalRecordCount(totCnt);
-        model.addAttribute("paginationInfo", paginationInfo);
+
+        model.addAttribute(paginationInfo);
 
 		RequestContextHolder.getRequestAttributes().setAttribute("jspPrefix", "aramframework/mbl", RequestAttributes.SCOPE_REQUEST);
 		return WebUtil.adjustViewName("/com/mdi/DeviceIdentList");
@@ -155,9 +155,10 @@ public class DeviceIdentController {
     @RequestMapping(value = "/mbl/com/mdi/detailDeviceIdent.do")
 	@Secured("ROLE_ADMIN")
     public String detailDeviceIdent(
-            @ModelAttribute DeviceIdentVO deviceIdentVO) {
+            DeviceIdentVO deviceIdentVO,
+            ModelMap model) {
     	
-        deviceIdentService.selectDeviceIdent(deviceIdentVO);
+    	model.addAttribute(deviceIdentService.selectDeviceIdent(deviceIdentVO));
 
 		RequestContextHolder.getRequestAttributes().setAttribute("jspPrefix", "aramframework/mbl", RequestAttributes.SCOPE_REQUEST);
 		return WebUtil.adjustViewName("/com/mdi/DeviceIdentDetail");
@@ -226,10 +227,10 @@ public class DeviceIdentController {
     @RequestMapping(value = "/mbl/com/mdi/editDeviceIdent.do")
 	@Secured("ROLE_ADMIN")
     public String editDeviceIdent(
-            @ModelAttribute DeviceIdentVO deviceIdentVO,
+            DeviceIdentVO deviceIdentVO,
             ModelMap model) {
     	
-        deviceIdentService.selectDeviceIdent(deviceIdentVO);
+    	model.addAttribute(deviceIdentService.selectDeviceIdent(deviceIdentVO));
  
         model.addAttribute("browserCmmCodeDetailList", cmmUseService.selectCmmCodeList("COM083"));
         model.addAttribute("osCmmCodeDetailList", cmmUseService.selectCmmCodeList("COM084"));

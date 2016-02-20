@@ -142,12 +142,12 @@ public class MultimediaController {
         multimediaVO.getSearchVO().fillPageInfo(paginationInfo);
 
         model.addAttribute("resultList", multimediaService.selectMultimediaList(multimediaVO));
-
         int totCnt = multimediaService.selectMultimediaListCnt(multimediaVO);
-        multimediaVO.getSearchVO().setTotalRecordCount(totCnt);
 
+        multimediaVO.getSearchVO().setTotalRecordCount(totCnt);
         paginationInfo.setTotalRecordCount(totCnt);
-        model.addAttribute("paginationInfo", paginationInfo);
+
+        model.addAttribute(paginationInfo);
 
 		RequestContextHolder.getRequestAttributes().setAttribute("jspPrefix", "aramframework/mbl", RequestAttributes.SCOPE_REQUEST);
 		return WebUtil.adjustViewName("/com/mlt/MultimediaList");
@@ -161,9 +161,10 @@ public class MultimediaController {
     @RequestMapping(value = "/mbl/com/mlt/detailMultimedia.do")
 	@Secured("ROLE_USER")
     public String detailMultimedia(
-            @ModelAttribute MultimediaVO multimediaVO) {
+            MultimediaVO multimediaVO,
+            ModelMap model) {
     	
-        multimediaService.selectMultimedia(multimediaVO);
+    	model.addAttribute(multimediaService.selectMultimedia(multimediaVO));
 
 		RequestContextHolder.getRequestAttributes().setAttribute("jspPrefix", "aramframework/mbl", RequestAttributes.SCOPE_REQUEST);
 		return WebUtil.adjustViewName("/com/mlt/MultimediaDetail");
@@ -248,9 +249,10 @@ public class MultimediaController {
     @RequestMapping(value = "/mbl/com/mlt/editMultimedia.do")
 	@Secured("ROLE_USER")
     public String editMultimedia(
-            @ModelAttribute MultimediaVO multimediaVO) {
+            MultimediaVO multimediaVO,
+            ModelMap model) {
     	
-        multimediaService.selectMultimedia(multimediaVO);
+    	model.addAttribute(multimediaService.selectMultimedia(multimediaVO));
 
 		cmmUseService.populateCmmCodeList("COM077", "COM077_mltmdCmmCode");
 

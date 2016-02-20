@@ -62,12 +62,12 @@ public class AdministrationWordController {
 		administrationWordVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", administrationWordService.selectAdministrationWordList(administrationWordVO));
-
 		int totCnt = (Integer) administrationWordService.selectAdministrationWordListCnt(administrationWordVO);
-		administrationWordVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		administrationWordVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/olh/awm/AdministrationWordList");
 	}
@@ -79,9 +79,10 @@ public class AdministrationWordController {
 	 */
 	@RequestMapping(value = "/uss/olh/awm/detailAdministrationWord.do")
 	public String detailAdministrationWord(
-			@ModelAttribute AdministrationWordVO administrationWordVO) {
+			AdministrationWordVO administrationWordVO,
+			ModelMap model) {
 
-		administrationWordService.selectAdministrationWordDetail(administrationWordVO);
+		model.addAttribute(administrationWordService.selectAdministrationWordDetail(administrationWordVO));
 
 		return WebUtil.adjustViewName("/uss/olh/awm/AdministrationWordDetail");
 	}
@@ -92,7 +93,7 @@ public class AdministrationWordController {
 	 * @param administrationWordVO
 	 */
 	@RequestMapping(value = "/uss/olh/awm/registAdministrationWord.do")
-	public String egistAdministrationWord(
+	public String registAdministrationWord(
 			@ModelAttribute AdministrationWordVO administrationWordVO) {
 
 		return WebUtil.adjustViewName("/uss/olh/awm/AdministrationWordRegist");
@@ -132,9 +133,10 @@ public class AdministrationWordController {
 	 */
 	@RequestMapping(value = "/uss/olh/awm/editAdministrationWord.do")
 	public String editAdministrationWord(
-			@ModelAttribute AdministrationWordVO administrationWordVO) {
+			AdministrationWordVO administrationWordVO,
+			ModelMap model) {
 
-		administrationWordService.selectAdministrationWordDetail(administrationWordVO);
+		model.addAttribute(administrationWordService.selectAdministrationWordDetail(administrationWordVO));
 
 		return WebUtil.adjustViewName("/uss/olh/awm/AdministrationWordEdit");
 	}
@@ -197,12 +199,12 @@ public class AdministrationWordController {
 		administrationWordVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", administrationWordService.selectAdministrationWordList(administrationWordVO));
-
 		int totCnt = (Integer) administrationWordService.selectAdministrationWordListCnt(administrationWordVO);
-		administrationWordVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		administrationWordVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/olh/awm/AdministrationWordUserList");
 	}
@@ -214,9 +216,10 @@ public class AdministrationWordController {
 	 */
 	@RequestMapping(value = "/uss/olh/awm/detailAdministrationWordUser.do")
 	public String detailAdministrationUserWord(
-			@ModelAttribute AdministrationWordVO administrationWordVO) {
+			AdministrationWordVO administrationWordVO,
+			ModelMap model) {
 
-		administrationWordService.selectAdministrationWordDetail(administrationWordVO);
+		model.addAttribute(administrationWordService.selectAdministrationWordDetail(administrationWordVO));
 
 		return WebUtil.adjustViewName("/uss/olh/awm/AdministrationWordUserDetail");
 	}

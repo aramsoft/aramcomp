@@ -74,12 +74,12 @@ public class QustnrRespondInfoController {
 		qustnrRespondInfoVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", qustnrRespondInfoService.selectQustnrRespondInfoManageList(qustnrRespondInfoVO));
-
 		int totCnt = (Integer) qustnrRespondInfoService.selectQustnrRespondInfoManageListCnt(qustnrRespondInfoVO);
-		qustnrRespondInfoVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		qustnrRespondInfoVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/olp/qri/QustnrRespondInfoUserList");
 	}
@@ -314,12 +314,12 @@ public class QustnrRespondInfoController {
 		qustnrRespondInfoVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", qustnrRespondInfoService.selectQustnrRespondInfoList(qustnrRespondInfoVO));
-
 		int totCnt = (Integer) qustnrRespondInfoService.selectQustnrRespondInfoListCnt(qustnrRespondInfoVO);
-		qustnrRespondInfoVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		qustnrRespondInfoVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/olp/qri/QustnrRespondInfoList");
 	}
@@ -332,9 +332,10 @@ public class QustnrRespondInfoController {
 	@RequestMapping(value = "/uss/olp/qri/detailQustnrRespondInfo.do")
 	@Secured("ROLE_USER")
 	public String detailQustnrRespondInfo(
-			@ModelAttribute QustnrRespondInfoVO qustnrRespondInfoVO) {
+			QustnrRespondInfoVO qustnrRespondInfoVO,
+			ModelMap model) {
 
-		qustnrRespondInfoService.selectQustnrRespondInfoDetail(qustnrRespondInfoVO);
+		model.addAttribute(qustnrRespondInfoService.selectQustnrRespondInfoDetail(qustnrRespondInfoVO));
 
 		return WebUtil.adjustViewName("/uss/olp/qri/QustnrRespondInfoDetail");
 	}
@@ -388,9 +389,10 @@ public class QustnrRespondInfoController {
 	@RequestMapping(value = "/uss/olp/qri/editQustnrRespondInfo.do")
 	@Secured("ROLE_USER")
 	public String editQustnrRespondInfo(
-			@ModelAttribute QustnrRespondInfoVO qustnrRespondInfoVO) {
+			QustnrRespondInfoVO qustnrRespondInfoVO,
+			ModelMap model) {
 
-		qustnrRespondInfoService.selectQustnrRespondInfoDetail(qustnrRespondInfoVO);
+		model.addAttribute(qustnrRespondInfoService.selectQustnrRespondInfoDetail(qustnrRespondInfoVO));
 
 		return WebUtil.adjustViewName("/uss/olp/qri/QustnrRespondInfoEdit");
 	}

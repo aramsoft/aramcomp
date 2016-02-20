@@ -70,12 +70,12 @@ public class HttpMntrngController {
 		httpMntrngVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", httpMntrngService.selectHttpMntrngList(httpMntrngVO));
-
 		int totCnt = httpMntrngService.selectHttpMntrngListCnt(httpMntrngVO);
-		httpMntrngVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		httpMntrngVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/utl/sys/htm/HttpMntrngList");
 	}
@@ -88,9 +88,10 @@ public class HttpMntrngController {
 	@RequestMapping(value = "/utl/sys/htm/detailHttpMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String detailHttpMon(
-			@ModelAttribute HttpMntrngVO httpMntrngVO) {
+			HttpMntrngVO httpMntrngVO,
+			ModelMap model) {
 
-		httpMntrngService.selectHttpMntrngDetail(httpMntrngVO);
+		model.addAttribute(httpMntrngService.selectHttpMntrngDetail(httpMntrngVO));
 
 		return WebUtil.adjustViewName("/utl/sys/htm/HttpMntrngDetail");
 	}
@@ -143,9 +144,10 @@ public class HttpMntrngController {
 	@RequestMapping(value = "/utl/sys/htm/editHttpMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String editHttpMon(
-			@ModelAttribute HttpMntrngVO httpMntrngVO) {
+			HttpMntrngVO httpMntrngVO,
+			ModelMap model) {
 
-		httpMntrngService.selectHttpMntrngDetail(httpMntrngVO);
+		model.addAttribute(httpMntrngService.selectHttpMntrngDetail(httpMntrngVO));
 
 		return WebUtil.adjustViewName("/utl/sys/htm/HttpMntrngEdit");
 	}
@@ -233,12 +235,12 @@ public class HttpMntrngController {
 		httpMntrngLogVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", httpMntrngService.selectHttpMntrngLogList(httpMntrngLogVO));
-
 		int totCnt = httpMntrngService.selectHttpMntrngLogListCnt(httpMntrngLogVO);
-		httpMntrngLogVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		httpMntrngLogVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/utl/sys/htm/HttpMntrngLogList");
 	}
@@ -258,9 +260,10 @@ public class HttpMntrngController {
 	@RequestMapping(value = "/utl/sys/htm/detailHttpMntrngLog.do")
 	@Secured("ROLE_ADMIN")
 	public String selectHttpMonDetailLog(
-			@ModelAttribute HttpMntrngLogVO httpMntrngLogVO)  {
+			HttpMntrngLogVO httpMntrngLogVO,
+			ModelMap model) {
 
-		httpMntrngService.selectHttpMntrngDetailLog(httpMntrngLogVO);
+		model.addAttribute(httpMntrngService.selectHttpMntrngDetailLog(httpMntrngLogVO));
 
 		return WebUtil.adjustViewName("/utl/sys/htm/HttpMntrngLogDetail");
 	}

@@ -61,12 +61,12 @@ public class RecomendSiteController {
 		recomendSiteVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", recomendSiteService.selectRecomendSiteList(recomendSiteVO));
-
 		int totCnt = recomendSiteService.selectRecomendSiteListCnt(recomendSiteVO);
-		recomendSiteVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		recomendSiteVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/ion/rec/RecomendSiteList");
 	}
@@ -78,9 +78,10 @@ public class RecomendSiteController {
 	 */
 	@RequestMapping("/uss/ion/rec/detailRecomendSite.do")
 	public String detailRecomendSite(
-			@ModelAttribute RecomendSiteVO recomendSiteVO) {
+			RecomendSiteVO recomendSiteVO,
+			ModelMap model) {
 
-		recomendSiteService.selectRecomendSiteDetail(recomendSiteVO);
+		model.addAttribute(recomendSiteService.selectRecomendSiteDetail(recomendSiteVO));
 
 		return WebUtil.adjustViewName("/uss/ion/rec/RecomendSiteDetail");
 	}
@@ -133,9 +134,10 @@ public class RecomendSiteController {
 	@RequestMapping("/uss/ion/rec/editRecomendSite.do")
 	@Secured("ROLE_USER")
 	public String editRecomendSite(
-			@ModelAttribute RecomendSiteVO recomendSiteVO) {
+			RecomendSiteVO recomendSiteVO,
+			ModelMap model) {
 
-		recomendSiteService.selectRecomendSiteDetail(recomendSiteVO);
+		model.addAttribute(recomendSiteService.selectRecomendSiteDetail(recomendSiteVO));
 
 		return WebUtil.adjustViewName("/uss/ion/rec/RecomendSiteEdit");
 	}

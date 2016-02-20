@@ -69,12 +69,12 @@ public class NtwrkSvcMntrngController {
 		ntwrkSvcMntrngVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", ntwrkSvcMntrngService.selectNtwrkSvcMntrngList(ntwrkSvcMntrngVO));
-
 		int totCnt = ntwrkSvcMntrngService.selectNtwrkSvcMntrngListCnt(ntwrkSvcMntrngVO);
-		ntwrkSvcMntrngVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		ntwrkSvcMntrngVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/utl/sys/nsm/NtwrkSvcMntrngList");
 	}
@@ -87,9 +87,10 @@ public class NtwrkSvcMntrngController {
 	@RequestMapping("/utl/sys/nsm/detailNtwrkSvcMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String detailNtwrkSvcMntrng(
-			@ModelAttribute NtwrkSvcMntrngVO ntwrkSvcMntrngVO) {
+			NtwrkSvcMntrngVO ntwrkSvcMntrngVO,
+			ModelMap model) {
 
-		ntwrkSvcMntrngService.selectNtwrkSvcMntrng(ntwrkSvcMntrngVO);
+		ntwrkSvcMntrngVO = ntwrkSvcMntrngService.selectNtwrkSvcMntrng(ntwrkSvcMntrngVO);
 
 		// 시스템 IP 설정
 		String[] sysIps = ntwrkSvcMntrngVO.getSysIp().split("[.]");
@@ -103,6 +104,8 @@ public class NtwrkSvcMntrngController {
 				ntwrkSvcMntrngVO.setCreatDt(ntwrkSvcMntrngVO.getCreatDt().substring(0, 19));
 			}
 		}
+		
+		model.addAttribute(ntwrkSvcMntrngVO);
 		
 		return WebUtil.adjustViewName("/utl/sys/nsm/NtwrkSvcMntrngDetail");
 	}
@@ -172,9 +175,10 @@ public class NtwrkSvcMntrngController {
 	@RequestMapping("/utl/sys/nsm/editNtwrkSvcMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String editNtwrkSvcMntrng(
-			@ModelAttribute NtwrkSvcMntrngVO ntwrkSvcMntrngVO) {
+			NtwrkSvcMntrngVO ntwrkSvcMntrngVO,
+			ModelMap model) {
 
-		ntwrkSvcMntrngService.selectNtwrkSvcMntrng(ntwrkSvcMntrngVO);
+		ntwrkSvcMntrngVO = ntwrkSvcMntrngService.selectNtwrkSvcMntrng(ntwrkSvcMntrngVO);
 
 		// 시스템 IP 설정
 		String[] sysIps = ntwrkSvcMntrngVO.getSysIp().split("[.]");
@@ -188,7 +192,9 @@ public class NtwrkSvcMntrngController {
 				ntwrkSvcMntrngVO.setCreatDt(ntwrkSvcMntrngVO.getCreatDt().substring(0, 19));
 			}
 		}
-
+		
+		model.addAttribute(ntwrkSvcMntrngVO);
+		
 		return WebUtil.adjustViewName("/utl/sys/nsm/NtwrkSvcMntrngEdit");
 	}
 
@@ -282,12 +288,12 @@ public class NtwrkSvcMntrngController {
 			// System.out.println(list.get(k).getCreatDt());
 		}
 		model.addAttribute("resultList", list);
-
 		int totCnt = ntwrkSvcMntrngService.selectNtwrkSvcMntrngLogListCnt(ntwrkSvcMntrngLogVO);
-		ntwrkSvcMntrngLogVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		ntwrkSvcMntrngLogVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/utl/sys/nsm/NtwrkSvcMntrngLogList");
 	}
@@ -307,15 +313,18 @@ public class NtwrkSvcMntrngController {
 	@RequestMapping("/utl/sys/nsm/detailNtwrkSvcMntrngLog.do")
 	@Secured("ROLE_ADMIN")
 	public String detailNtwrkSvcMntrngLog(
-			@ModelAttribute NtwrkSvcMntrngLogVO ntwrkSvcMntrngLogVO) {
+			NtwrkSvcMntrngLogVO ntwrkSvcMntrngLogVO,
+			ModelMap model) {
 
-		ntwrkSvcMntrngService.selectNtwrkSvcMntrngLog(ntwrkSvcMntrngLogVO);
+		ntwrkSvcMntrngLogVO = ntwrkSvcMntrngService.selectNtwrkSvcMntrngLog(ntwrkSvcMntrngLogVO);
 
 		if (ntwrkSvcMntrngLogVO.getCreatDt() != null && !ntwrkSvcMntrngLogVO.getCreatDt().equals("")) {
 			if (ntwrkSvcMntrngLogVO.getCreatDt().length() > 18) {
 				ntwrkSvcMntrngLogVO.setCreatDt(ntwrkSvcMntrngLogVO.getCreatDt().substring(0, 19));
 			}
 		}
+		
+		model.addAttribute(ntwrkSvcMntrngLogVO);
 		
 		return WebUtil.adjustViewName("/utl/sys/nsm/NtwrkSvcMntrngLogDetail");
 	}

@@ -15,7 +15,6 @@ import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
-import aramframework.com.uss.ion.vct.domain.IndvdlYrycManageVO;
 import aramframework.com.uss.ion.vct.domain.VcatnManageVO;
 import aramframework.com.uss.ion.vct.service.VcatnManageService;
 import aramframework.com.utl.fcc.service.DateUtil;
@@ -82,12 +81,12 @@ public class VcatnManageController {
 		vcatnManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", vcatnManageService.selectVcatnManageList(vcatnManageVO));
-
 		int totCnt = vcatnManageService.selectVcatnManageListCnt(vcatnManageVO);
-		vcatnManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		vcatnManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/ion/vct/VcatnList");
 	}
@@ -99,14 +98,13 @@ public class VcatnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/vct/detailVcatn.do")
 	public String detailVcatn(
-			@ModelAttribute VcatnManageVO vcatnManageVO, 
+			VcatnManageVO vcatnManageVO, 
 			ModelMap model) {
 
-		// 등록 상세정보
-		vcatnManageService.selectVcatnManage(vcatnManageVO);
+		vcatnManageVO = vcatnManageService.selectVcatnManage(vcatnManageVO);
 
-		IndvdlYrycManageVO indvdlYrycManageVO = vcatnManageService.selectIndvdlYrycManage(vcatnManageVO.getApplcntId());
-		model.addAttribute("indvdlYrycManageVO", indvdlYrycManageVO);
+		model.addAttribute(vcatnManageService.selectIndvdlYrycManage(vcatnManageVO.getApplcntId()));
+		model.addAttribute(vcatnManageVO);
 
 		return WebUtil.adjustViewName("/uss/ion/vct/VcatnDetail");
 	}
@@ -213,14 +211,14 @@ public class VcatnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/vct/editVcatn.do")
 	public String editVcatn(
-			@ModelAttribute VcatnManageVO vcatnManageVO, 
+			VcatnManageVO vcatnManageVO, 
 			ModelMap model) {
 
-		// 등록 상세정보
-		vcatnManageService.selectVcatnManage(vcatnManageVO);
+		vcatnManageVO = vcatnManageService.selectVcatnManage(vcatnManageVO);
 
-		model.addAttribute("indvdlYrycManageVO", vcatnManageService.selectIndvdlYrycManage(vcatnManageVO.getApplcntId()));
-
+		model.addAttribute(vcatnManageService.selectIndvdlYrycManage(vcatnManageVO.getApplcntId()));
+		model.addAttribute(vcatnManageVO);
+		
 		cmmUseService.populateCmmCodeList("COM056", "COM056_vcatnSe");
 
 		return WebUtil.adjustViewName("/uss/ion/vct/VcatnEdit");
@@ -296,12 +294,12 @@ public class VcatnManageController {
 		vcatnManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", vcatnManageService.selectVcatnManageConfmList(vcatnManageVO));
-
 		int totCnt = vcatnManageService.selectVcatnManageConfmListCnt(vcatnManageVO);
-		vcatnManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		vcatnManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/ion/vct/VcatnConfmList");
 	}
@@ -313,14 +311,14 @@ public class VcatnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/vct/editVcatnConfm.do")
 	public String editVcatnConfm(
-			@ModelAttribute VcatnManageVO vcatnManageVO, 
+			VcatnManageVO vcatnManageVO, 
 			ModelMap model) {
 
-		// 등록 상세정보
-		vcatnManageService.selectVcatnManage(vcatnManageVO);
+		vcatnManageVO = vcatnManageService.selectVcatnManage(vcatnManageVO);
 
-		model.addAttribute("indvdlYrycManageVO", vcatnManageService.selectIndvdlYrycManage(vcatnManageVO.getApplcntId()));
-
+		model.addAttribute(vcatnManageService.selectIndvdlYrycManage(vcatnManageVO.getApplcntId()));
+		model.addAttribute(vcatnManageVO);
+		
 		return WebUtil.adjustViewName("/uss/ion/vct/VcatnConfmEdit");
 	}
 

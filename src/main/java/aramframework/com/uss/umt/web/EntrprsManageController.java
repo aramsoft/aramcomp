@@ -80,12 +80,12 @@ public class EntrprsManageController {
 		entrprsManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", entrprsManageService.selectEntrprsMberList(entrprsManageVO));
-
 		int totCnt = entrprsManageService.selectEntrprsMberListCnt(entrprsManageVO);
-		entrprsManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		entrprsManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		// 기업회원상태코드목록
 		cmmUseService.populateCmmCodeList("COM013", "COM013_mberSttus");
@@ -226,12 +226,12 @@ public class EntrprsManageController {
 	@RequestMapping("/uss/umt/editEntrprsMber.do")
 	@Secured("ROLE_USER")
 	public String editEntrprsMber(
-			@ModelAttribute EntrprsManageVO entrprsManageVO, 
+			EntrprsManageVO entrprsManageVO, 
 			ModelMap model) {
 
 		fill_common_code();
 		
-		entrprsManageService.selectEntrprsMber(entrprsManageVO);
+		model.addAttribute(entrprsManageService.selectEntrprsMber(entrprsManageVO));
 
 		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
 			model.addAttribute("isAdmin", "true");

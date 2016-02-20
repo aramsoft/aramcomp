@@ -70,12 +70,12 @@ public class FileSysMntrngController {
 		fileSysMntrngVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", fileSysMntrngService.selectFileSysMntrngList(fileSysMntrngVO));
-
 		int totCnt = fileSysMntrngService.selectFileSysMntrngListCnt(fileSysMntrngVO);
-		fileSysMntrngVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		fileSysMntrngVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/utl/sys/fsm/FileSysMntrngList");
 	}
@@ -88,16 +88,19 @@ public class FileSysMntrngController {
 	@RequestMapping("/utl/sys/fsm/detailFileSysMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String detailFileSysMntrng(
-			@ModelAttribute FileSysMntrngVO fileSysMntrngVO) {
+			FileSysMntrngVO fileSysMntrngVO,
+			ModelMap model) {
 		
-		fileSysMntrngService.selectFileSysMntrng(fileSysMntrngVO);
+		fileSysMntrngVO = fileSysMntrngService.selectFileSysMntrng(fileSysMntrngVO);
 
 		if (fileSysMntrngVO.getCreatDt() != null && !fileSysMntrngVO.getCreatDt().equals("")) {
 			if (fileSysMntrngVO.getCreatDt().length() > 18) {
 				fileSysMntrngVO.setCreatDt(fileSysMntrngVO.getCreatDt().substring(0, 19));
 			}
 		}
-
+		
+		model.addAttribute(fileSysMntrngVO);
+		
 		return WebUtil.adjustViewName("/utl/sys/fsm/FileSysMntrngDetail");
 	}
 
@@ -150,15 +153,18 @@ public class FileSysMntrngController {
 	@RequestMapping("/utl/sys/fsm/editFileSysMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String editFileSysMntrng(
-			@ModelAttribute FileSysMntrngVO fileSysMntrngVO) {
+			FileSysMntrngVO fileSysMntrngVO,
+			ModelMap model) {
 
-		fileSysMntrngService.selectFileSysMntrng(fileSysMntrngVO);
+		fileSysMntrngVO = fileSysMntrngService.selectFileSysMntrng(fileSysMntrngVO);
 
 		if (fileSysMntrngVO.getCreatDt() != null && !fileSysMntrngVO.getCreatDt().equals("")) {
 			if (fileSysMntrngVO.getCreatDt().length() > 18) {
 				fileSysMntrngVO.setCreatDt(fileSysMntrngVO.getCreatDt().substring(0, 19));
 			}
 		}
+		
+		model.addAttribute(fileSysMntrngVO);
 		
 		return WebUtil.adjustViewName("/utl/sys/fsm/FileSysMntrngEdit");
 	}
@@ -266,12 +272,12 @@ public class FileSysMntrngController {
 			// System.out.println(list.get(k).getCreatDt());
 		}
 		model.addAttribute("resultList", list);
-
 		int totCnt = fileSysMntrngService.selectFileSysMntrngLogListCnt(fileSysMntrngLogVO);
-		fileSysMntrngLogVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		fileSysMntrngLogVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/utl/sys/fsm/FileSysMntrngLogList");
 	}
@@ -291,15 +297,18 @@ public class FileSysMntrngController {
 	@RequestMapping("/utl/sys/fsm/detailFileSysMntrngLog.do")
 	@Secured("ROLE_ADMIN")
 	public String detailFileSysMntrngLog(
-			@ModelAttribute FileSysMntrngLogVO fileSysMntrngLogVO) {
+			FileSysMntrngLogVO fileSysMntrngLogVO,
+			ModelMap model) {
 		
-		fileSysMntrngService.selectFileSysMntrngLog(fileSysMntrngLogVO);
+		fileSysMntrngLogVO = fileSysMntrngService.selectFileSysMntrngLog(fileSysMntrngLogVO);
 
 		if (fileSysMntrngLogVO.getCreatDt() != null && !fileSysMntrngLogVO.getCreatDt().equals("")) {
 			if (fileSysMntrngLogVO.getCreatDt().length() > 18) {
 				fileSysMntrngLogVO.setCreatDt(fileSysMntrngLogVO.getCreatDt().substring(0, 19));
 			}
 		}
+		
+		model.addAttribute(fileSysMntrngLogVO);
 		
 		return WebUtil.adjustViewName("/utl/sys/fsm/FileSysMntrngLogDetail");
 	}

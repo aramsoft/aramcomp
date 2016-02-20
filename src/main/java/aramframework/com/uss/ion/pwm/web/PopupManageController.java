@@ -70,12 +70,12 @@ public class PopupManageController {
 		popupManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", popupManageService.selectPopupList(popupManageVO));
-
 		int totCnt = (Integer) popupManageService.selectPopupListCnt(popupManageVO);
-		popupManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		popupManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/ion/pwm/PopupList");
 	}
@@ -87,10 +87,10 @@ public class PopupManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/pwm/detailPopup.do")
 	public String detailPopup(
-			@ModelAttribute PopupManageVO popupManageVO) {
+			PopupManageVO popupManageVO,
+			ModelMap model) {
 
-		// 상세정보 불러오기
-		popupManageService.selectPopupDetail(popupManageVO);
+		model.addAttribute(popupManageService.selectPopupDetail(popupManageVO));
 
 		return WebUtil.adjustViewName("/uss/ion/pwm/PopupDetail");
 	}
@@ -155,9 +155,10 @@ public class PopupManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/pwm/editPopup.do")
 	public String editPopup(
-			@ModelAttribute PopupManageVO popupManageVO) {
+			PopupManageVO popupManageVO,
+			ModelMap model) {
 
-		popupManageService.selectPopupDetail(popupManageVO);
+		popupManageVO = popupManageService.selectPopupDetail(popupManageVO);
 
 		String sNtceBgnde = popupManageVO.getNtceBgnde();
 		String sNtceEndde = popupManageVO.getNtceEndde();
@@ -167,7 +168,9 @@ public class PopupManageController {
 
 		popupManageVO.setNtceEnddeHH(sNtceEndde.substring(8, 10));
 		popupManageVO.setNtceEnddeMM(sNtceEndde.substring(10, 12));
-
+		
+		model.addAttribute(popupManageVO);
+				
 		return WebUtil.adjustViewName("/uss/ion/pwm/PopupEdit");
 	}
 
@@ -259,8 +262,7 @@ public class PopupManageController {
 			@ModelAttribute PopupManageVO popupManageVO, 
 			ModelMap model) {
 
-		popupManageVO.getSearchVO().setRecordPerPage(5);
-		popupManageVO.getSearchVO().setFirstIndex(0);
+		popupManageVO.getSearchVO().setSizeAndOffset(5, 0);
 
 		model.addAttribute("resultList", popupManageService.selectPopupMainList(popupManageVO));
 

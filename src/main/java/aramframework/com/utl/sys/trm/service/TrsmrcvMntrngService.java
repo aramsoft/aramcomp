@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.utl.sys.trm.dao.TrsmrcvMntrngMapper;
 import aramframework.com.utl.sys.trm.domain.TrsmrcvMntrngLogVO;
 import aramframework.com.utl.sys.trm.domain.TrsmrcvMntrngVO;
@@ -144,8 +144,8 @@ public class TrsmrcvMntrngService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param searchVO
 	 */
-	public List<EgovMap> selectCntcList(SearchVO searchVO) {
-		return trsmrcvMntrngMapper.selectCntcList(searchVO);
+	public List<EgovMap> selectCntcList(BaseVO baseVO) {
+		return trsmrcvMntrngMapper.selectCntcList(baseVO);
 	}
 
 	/**
@@ -153,8 +153,8 @@ public class TrsmrcvMntrngService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param searchVO
 	 */
-	public int selectCntcListCnt(SearchVO searchVO) {
-		return trsmrcvMntrngMapper.selectCntcListCnt(searchVO);
+	public int selectCntcListCnt(BaseVO baseVO) {
+		return trsmrcvMntrngMapper.selectCntcListCnt(baseVO);
 	}
 
 }

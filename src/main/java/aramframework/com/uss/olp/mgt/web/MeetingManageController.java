@@ -92,12 +92,12 @@ public class MeetingManageController {
 		meetingManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", meetingManageService.selectMeetingManageList(meetingManageVO));
-
 		int totCnt = (Integer) meetingManageService.selectMeetingManageListCnt(meetingManageVO);
-		meetingManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		meetingManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/olp/mgt/MeetingList");
 	}
@@ -110,9 +110,10 @@ public class MeetingManageController {
 	@RequestMapping(value = "/uss/olp/mgt/detailMeeting.do")
 	@Secured("ROLE_USER")
 	public String detailMeeting(
-			@ModelAttribute MeetingManageVO meetingManageVO) {
+			MeetingManageVO meetingManageVO,
+			ModelMap model) {
 
-		meetingManageService.selectMeetingManageDetail(meetingManageVO);
+		model.addAttribute(meetingManageService.selectMeetingManageDetail(meetingManageVO));
 
 		return WebUtil.adjustViewName("/uss/olp/mgt/MeetingDetail");
 	}
@@ -166,9 +167,10 @@ public class MeetingManageController {
 	@RequestMapping(value = "/uss/olp/mgt/editMeeting.do")
 	@Secured("ROLE_USER")
 	public String editMeeting(
-			@ModelAttribute MeetingManageVO meetingManageVO) {
+			MeetingManageVO meetingManageVO,
+			ModelMap model) {
 
-		meetingManageService.selectMeetingManageDetail(meetingManageVO);
+		model.addAttribute(meetingManageService.selectMeetingManageDetail(meetingManageVO));
 
 		return WebUtil.adjustViewName("/uss/olp/mgt/MeetingEdit");
 	}

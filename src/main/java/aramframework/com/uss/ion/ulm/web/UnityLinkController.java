@@ -66,12 +66,12 @@ public class UnityLinkController {
 		unityLinkVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", unityLinkService.selectUnityLinkList(unityLinkVO));
-
 		int totCnt = (Integer) unityLinkService.selectUnityLinkListCnt(unityLinkVO);
-		unityLinkVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		unityLinkVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		// 통합링크구분설정
 		cmmUseService.populateCmmCodeList("COM039", "COM039_pollKind");
@@ -86,10 +86,10 @@ public class UnityLinkController {
 	 */
 	@RequestMapping(value = "/uss/ion/ulm/detailUnityLink.do")
 	public String detailUnityLink(
-			@ModelAttribute UnityLinkVO unityLinkVO) {
+			UnityLinkVO unityLinkVO,
+			ModelMap model) {
 
-		// 상세정보 불러오기
-		unityLinkService.selectUnityLinkDetail(unityLinkVO);
+		model.addAttribute(unityLinkService.selectUnityLinkDetail(unityLinkVO));
 
 		// 통합링크구분설정
 		cmmUseService.populateCmmCodeList("COM039", "COM039_pollKind");
@@ -147,13 +147,13 @@ public class UnityLinkController {
 	 */
 	@RequestMapping(value = "/uss/ion/ulm/editUnityLink.do")
 	public String editUnityLink(
-			@ModelAttribute UnityLinkVO unityLinkVO) {
+			UnityLinkVO unityLinkVO,
+			ModelMap model) {
+
+		model.addAttribute(unityLinkService.selectUnityLinkDetail(unityLinkVO));
 
 		// 통합링크구분설정
 		cmmUseService.populateCmmCodeList("COM039", "COM039_pollKind");
-
-		// 수정정보 불러오기
-		unityLinkService.selectUnityLinkDetail(unityLinkVO);
 
 		return WebUtil.adjustViewName("/uss/ion/ulm/UnityLinkEdit");
 	}

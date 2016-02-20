@@ -244,12 +244,12 @@ public class SyncController {
     	syncVO.getSearchVO().fillPageInfo(paginationInfo);
 		
 		model.addAttribute("resultList", syncService.selectSyncList(syncVO));
-        
         int totCnt = syncService.selectSyncListCnt(syncVO);
-        syncVO.getSearchVO().setTotalRecordCount(totCnt);
 
+        syncVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-        model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
         
 		RequestContextHolder.getRequestAttributes().setAttribute("jspPrefix", "aramframework/mbl", RequestAttributes.SCOPE_REQUEST);
 		return WebUtil.adjustViewName("/com/syn/SyncList");
@@ -263,9 +263,10 @@ public class SyncController {
 	@RequestMapping(value="/mbl/com/syn/detailSync.do")
 	@Secured("ROLE_USER")
 	public String detailSync(			
-			@ModelAttribute SyncVO syncVO) {
+			SyncVO syncVO,
+			ModelMap model) {
 		
-		syncService.selectSync(syncVO);
+		model.addAttribute(syncService.selectSync(syncVO));
 		
 		RequestContextHolder.getRequestAttributes().setAttribute("jspPrefix", "aramframework/mbl", RequestAttributes.SCOPE_REQUEST);
 		return WebUtil.adjustViewName("/com/syn/SyncDetail");
@@ -321,9 +322,10 @@ public class SyncController {
 	@RequestMapping(value="/mbl/com/syn/editSync.do")
 	@Secured("ROLE_USER")
 	public String editSync(
-			@ModelAttribute SyncVO syncVO) {
+			SyncVO syncVO,
+			ModelMap model) {
 		
-		syncService.selectSync(syncVO);
+		model.addAttribute(syncService.selectSync(syncVO));
 		
 		RequestContextHolder.getRequestAttributes().setAttribute("jspPrefix", "aramframework/mbl", RequestAttributes.SCOPE_REQUEST);
 		return WebUtil.adjustViewName("/com/syn/SyncEdit");

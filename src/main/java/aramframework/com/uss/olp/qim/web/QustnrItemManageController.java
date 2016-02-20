@@ -60,12 +60,12 @@ public class QustnrItemManageController {
 		qustnrItemManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", qustnrItemManageService.selectQustnrItemManageList(qustnrItemManageVO));
-
 		int totCnt = (Integer) qustnrItemManageService.selectQustnrItemManageListCnt(qustnrItemManageVO);
-		qustnrItemManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		qustnrItemManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/olp/qim/QustnrItemListPopup");
 	}
@@ -92,12 +92,12 @@ public class QustnrItemManageController {
 		qustnrItemManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", qustnrItemManageService.selectQustnrItemManageList(qustnrItemManageVO));
-
 		int totCnt = (Integer) qustnrItemManageService.selectQustnrItemManageListCnt(qustnrItemManageVO);
-		qustnrItemManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		qustnrItemManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/olp/qim/QustnrItemList");
 	}
@@ -110,9 +110,10 @@ public class QustnrItemManageController {
 	@RequestMapping(value = "/uss/olp/qim/detailQustnrItem.do")
 	@Secured("ROLE_USER")
 	public String detailQustnrItem(
-			@ModelAttribute QustnrItemManageVO qustnrItemManageVO) {
+			QustnrItemManageVO qustnrItemManageVO,
+			ModelMap model) {
 
-		qustnrItemManageService.selectQustnrItemManageDetail(qustnrItemManageVO);
+		model.addAttribute(qustnrItemManageService.selectQustnrItemManageDetail(qustnrItemManageVO));
 
 		return WebUtil.adjustViewName("/uss/olp/qim/QustnrItemDetail");
 	}
@@ -166,9 +167,10 @@ public class QustnrItemManageController {
 	@RequestMapping(value = "/uss/olp/qim/editQustnrItem.do")
 	@Secured("ROLE_USER")
 	public String editQustnrItem(
-			@ModelAttribute QustnrItemManageVO qustnrItemManageVO) {
+			QustnrItemManageVO qustnrItemManageVO,
+			ModelMap model) {
 
-		qustnrItemManageService.selectQustnrItemManageDetail(qustnrItemManageVO);
+		model.addAttribute(qustnrItemManageService.selectQustnrItemManageDetail(qustnrItemManageVO));
 
 		return WebUtil.adjustViewName("/uss/olp/qim/QustnrItemEdit");
 	}

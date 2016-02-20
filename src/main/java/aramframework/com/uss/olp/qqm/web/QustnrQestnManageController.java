@@ -70,12 +70,12 @@ public class QustnrQestnManageController {
 		qustnrQestnManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", qustnrQestnManageService.selectQustnrQestnManageList(qustnrQestnManageVO));
-
 		int totCnt = (Integer) qustnrQestnManageService.selectQustnrQestnManageListCnt(qustnrQestnManageVO);
-		qustnrQestnManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		qustnrQestnManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/olp/qqm/QustnrQestnListPopup");
 	}
@@ -102,12 +102,12 @@ public class QustnrQestnManageController {
 		qustnrQestnManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", qustnrQestnManageService.selectQustnrQestnManageList(qustnrQestnManageVO));
-
 		int totCnt = (Integer) qustnrQestnManageService.selectQustnrQestnManageListCnt(qustnrQestnManageVO);
-		qustnrQestnManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		qustnrQestnManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/olp/qqm/QustnrQestnList");
 	}
@@ -120,9 +120,10 @@ public class QustnrQestnManageController {
 	@RequestMapping(value = "/uss/olp/qqm/detailQustnrQestn.do")
 	@Secured("ROLE_USER")
 	public String detailQustnrQestn(
-			@ModelAttribute QustnrQestnManageVO qustnrQestnManageVO) {
+			QustnrQestnManageVO qustnrQestnManageVO,
+			ModelMap model) {
 
-		qustnrQestnManageService.selectQustnrQestnManageDetail(qustnrQestnManageVO);
+		model.addAttribute(qustnrQestnManageService.selectQustnrQestnManageDetail(qustnrQestnManageVO));
 
 		// 공통코드 질문유형 조회
 		cmmUseService.populateCmmCodeList("COM018", "COM018_qestnType");
@@ -182,9 +183,10 @@ public class QustnrQestnManageController {
 	@RequestMapping(value = "/uss/olp/qqm/editQustnrQestn.do")
 	@Secured("ROLE_USER")
 	public String editQustnrQestn(
-			@ModelAttribute QustnrQestnManageVO qustnrQestnManageVO) {
+			QustnrQestnManageVO qustnrQestnManageVO,
+			ModelMap model) {
 
-		qustnrQestnManageService.selectQustnrQestnManageDetail(qustnrQestnManageVO);
+		model.addAttribute(qustnrQestnManageService.selectQustnrQestnManageDetail(qustnrQestnManageVO));
 
 		// 공통코드 질문유형 조회
 		cmmUseService.populateCmmCodeList("COM018", "COM018_qestnType");
@@ -245,10 +247,10 @@ public class QustnrQestnManageController {
 	@RequestMapping(value = "/uss/olp/qqm/statisticsQustnrQestn.do")
 	@Secured("ROLE_USER")
 	public String statisticsQustnrQestn(
-			@ModelAttribute QustnrQestnManageVO qustnrQestnManageVO, 
+			QustnrQestnManageVO qustnrQestnManageVO, 
 			ModelMap model) {
 
-		qustnrQestnManageService.selectQustnrQestnManageDetail(qustnrQestnManageVO);
+		model.addAttribute(qustnrQestnManageService.selectQustnrQestnManageDetail(qustnrQestnManageVO));
 		
 		// 객관식설문통계
 		model.addAttribute("statisticsList", qustnrQestnManageService.selectQustnrManageStatistics(qustnrQestnManageVO));

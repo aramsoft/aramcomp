@@ -101,12 +101,12 @@ public class ChartGraphController {
         chartGraphVO.getSearchVO().fillPageInfo(paginationInfo);
 
         model.addAttribute("resultList", chartGraphService.selectChartGraphList(chartGraphVO));
-
         int totCnt = chartGraphService.selectChartGraphListCnt(chartGraphVO);
-        chartGraphVO.getSearchVO().setTotalRecordCount(totCnt);
 
+        chartGraphVO.getSearchVO().setTotalRecordCount(totCnt);
         paginationInfo.setTotalRecordCount(totCnt);
-        model.addAttribute("paginationInfo", paginationInfo);
+
+        model.addAttribute(paginationInfo);
 
 		RequestContextHolder.getRequestAttributes().setAttribute("jspPrefix", "aramframework/mbl", RequestAttributes.SCOPE_REQUEST);
 		return WebUtil.adjustViewName("/com/mcg/ChartGraphList");
@@ -120,9 +120,10 @@ public class ChartGraphController {
     @RequestMapping(value = "/mbl/com/mcg/detailChartGraph.do")
 	@Secured("ROLE_USER")
     public String detailChartGraph(
-            @ModelAttribute ChartGraphVO chartGraphVO) {
+            ChartGraphVO chartGraphVO,
+            ModelMap model) {
     	
-        chartGraphService.selectChartGraph(chartGraphVO);
+    	model.addAttribute(chartGraphService.selectChartGraph(chartGraphVO));
 
 		RequestContextHolder.getRequestAttributes().setAttribute("jspPrefix", "aramframework/mbl", RequestAttributes.SCOPE_REQUEST);
 		return WebUtil.adjustViewName("/com/mcg/ChartGraphDetail");
@@ -178,9 +179,10 @@ public class ChartGraphController {
     @RequestMapping(value = "/mbl/com/mcg/editChartGraph.do")
 	@Secured("ROLE_USER")
     public String editChartGraph(
-            @ModelAttribute ChartGraphVO chartGraphVO) {
+            ChartGraphVO chartGraphVO,
+            ModelMap model) {
     	
-        chartGraphService.selectChartGraph(chartGraphVO);
+    	model.addAttribute(chartGraphService.selectChartGraph(chartGraphVO));
  
 		RequestContextHolder.getRequestAttributes().setAttribute("jspPrefix", "aramframework/mbl", RequestAttributes.SCOPE_REQUEST);
 		return WebUtil.adjustViewName("/com/mcg/ChartGraphEdit");

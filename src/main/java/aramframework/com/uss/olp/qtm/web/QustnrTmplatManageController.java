@@ -70,12 +70,12 @@ public class QustnrTmplatManageController {
 		qustnrTmplatManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", qustnrTmplatManageService.selectQustnrTmplatManageList(qustnrTmplatManageVO));
-
 		int totCnt = (Integer) qustnrTmplatManageService.selectQustnrTmplatManageListCnt(qustnrTmplatManageVO);
-		qustnrTmplatManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		qustnrTmplatManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/olp/qtm/QustnrTmplatList");
 	}
@@ -112,9 +112,10 @@ public class QustnrTmplatManageController {
 	@RequestMapping(value = "/uss/olp/qtm/detailQustnrTmplat.do")
 	@Secured("ROLE_ADMIN")
 	public String detailQustnrTmplat(
-			@ModelAttribute QustnrTmplatManageVO qustnrTmplatManageVO) {
+			QustnrTmplatManageVO qustnrTmplatManageVO,
+			ModelMap model) {
 
-		qustnrTmplatManageService.selectQustnrTmplatManageDetail(qustnrTmplatManageVO);
+		model.addAttribute(qustnrTmplatManageService.selectQustnrTmplatManageDetail(qustnrTmplatManageVO));
 
 		return WebUtil.adjustViewName("/uss/olp/qtm/QustnrTmplatDetail");
 	}
@@ -179,9 +180,10 @@ public class QustnrTmplatManageController {
 	@RequestMapping(value = "/uss/olp/qtm/editQustnrTmplat.do")
 	@Secured("ROLE_ADMIN")
 	public String editQustnrTmplat(
-			@ModelAttribute QustnrTmplatManageVO qustnrTmplatManageVO) {
-		
-		qustnrTmplatManageService.selectQustnrTmplatManageDetail(qustnrTmplatManageVO);
+			QustnrTmplatManageVO qustnrTmplatManageVO,
+			ModelMap model) {
+
+		model.addAttribute(qustnrTmplatManageService.selectQustnrTmplatManageDetail(qustnrTmplatManageVO));
 
 		return WebUtil.adjustViewName("/uss/olp/qtm/QustnrTmplatEdit");
 	}

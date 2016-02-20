@@ -80,12 +80,12 @@ public class SynchrnServerController {
 		synchrnServerVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", synchrnServerService.selectSynchrnServerList(synchrnServerVO));
-
 		int totCnt = synchrnServerService.selectSynchrnServerListCnt(synchrnServerVO);
-		synchrnServerVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		synchrnServerVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		model.addAttribute("fileList", synchrnServerService.getFileName(uploadDir));
 
@@ -100,9 +100,10 @@ public class SynchrnServerController {
 	@RequestMapping(value = "/utl/sys/ssy/detailSynchrnServer.do")
 	@Secured("ROLE_ADMIN")
 	public String detailSynchrnServer(
-			@ModelAttribute SynchrnServerVO synchrnServerVO) {
+			SynchrnServerVO synchrnServerVO,
+			ModelMap model) {
 
-		synchrnServerService.selectSynchrnServer(synchrnServerVO);
+		model.addAttribute(synchrnServerService.selectSynchrnServer(synchrnServerVO));
 
 //		model.addAttribute("fileList", egovSynchrnServerService.selectSynchrnServerFiles(synchrnServerVO));
 
@@ -160,9 +161,10 @@ public class SynchrnServerController {
 	@RequestMapping(value = "/utl/sys/ssy/editSynchrnServer.do")
 	@Secured("ROLE_ADMIN")
 	public String editSynchrnServer(
-			@ModelAttribute SynchrnServerVO synchrnServerVO) {
+			SynchrnServerVO synchrnServerVO,
+			ModelMap model) {
 
-		synchrnServerService.selectSynchrnServer(synchrnServerVO);
+		model.addAttribute(synchrnServerService.selectSynchrnServer(synchrnServerVO));
 		
 		return WebUtil.adjustViewName("/utl/sys/ssy/SynchrnServerEdit");
 	}

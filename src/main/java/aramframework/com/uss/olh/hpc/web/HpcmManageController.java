@@ -65,12 +65,12 @@ public class HpcmManageController {
 		hpcmManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", hpcmManageService.selectHpcmList(hpcmManageVO));
-
 		int totCnt = hpcmManageService.selectHpcmListCnt(hpcmManageVO);
-		hpcmManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		hpcmManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/olh/hpc/HpcmList");
 	}
@@ -82,9 +82,10 @@ public class HpcmManageController {
 	 */
 	@RequestMapping("/uss/olh/hpc/detailHpcm.do")
 	public String detailHpcm(
-			@ModelAttribute HpcmManageVO hpcmManageVO) {
+			HpcmManageVO hpcmManageVO,
+			ModelMap model) {
 
-		hpcmManageService.selectHpcmDetail(hpcmManageVO);
+		model.addAttribute(hpcmManageService.selectHpcmDetail(hpcmManageVO));
 
 		return WebUtil.adjustViewName("/uss/olh/hpc/HpcmDetail");
 	}
@@ -140,12 +141,13 @@ public class HpcmManageController {
 	@RequestMapping("/uss/olh/hpc/editHpcm.do")
 	@Secured("ROLE_USER")
 	public String editHpcmManage(
-			@ModelAttribute HpcmManageVO hpcmManageVO) {
+			HpcmManageVO hpcmManageVO,
+			ModelMap model) {
+
+		model.addAttribute(hpcmManageService.selectHpcmDetail(hpcmManageVO));
 
 		// 공통코드를 가져오기 위한 Vo
 		cmmUseService.populateCmmCodeList("COM021", "COM021_hpcmSe");
-
-		hpcmManageService.selectHpcmDetail(hpcmManageVO);
 
 		return WebUtil.adjustViewName("/uss/olh/hpc/HpcmEdit");
 	}

@@ -107,12 +107,12 @@ public class GeoLocationController {
         geoLocationVO.getSearchVO().fillPageInfo(paginationInfo);
         
         model.addAttribute("resultList", geoLocationService.selectBuildingLocationInfoList(geoLocationVO));
- 
         int totCnt =  geoLocationService.selectBuildingLocationInfoListCnt(geoLocationVO);
-        geoLocationVO.getSearchVO().setTotalRecordCount(totCnt);
 
+        geoLocationVO.getSearchVO().setTotalRecordCount(totCnt);
         paginationInfo.setTotalRecordCount(totCnt);
-        model.addAttribute("paginationInfo", paginationInfo);
+
+        model.addAttribute(paginationInfo);
         
 		RequestContextHolder.getRequestAttributes().setAttribute("jspPrefix", "aramframework/mbl", RequestAttributes.SCOPE_REQUEST);
 		return WebUtil.adjustViewName("/com/geo/BuildingLocationInfoList");
@@ -125,9 +125,10 @@ public class GeoLocationController {
      */
     @RequestMapping("/mbl/com/geo/detailBuildingLocationInfo.do")
     public String detailBuildingLocationInfo(
-    		@ModelAttribute GeoLocationVO geoLocationVO) {
+    		GeoLocationVO geoLocationVO,
+    		ModelMap model) {
     	
-        geoLocationService.selectBuildingLocationInfo(geoLocationVO);
+    	model.addAttribute(geoLocationService.selectBuildingLocationInfo(geoLocationVO));
 
 		RequestContextHolder.getRequestAttributes().setAttribute("jspPrefix", "aramframework/mbl", RequestAttributes.SCOPE_REQUEST);
 		return WebUtil.adjustViewName("/com/geo/BuildingLocationInfoDetail");
@@ -180,9 +181,10 @@ public class GeoLocationController {
      */
     @RequestMapping(value="/mbl/com/geo/editBuildingLocationInfo.do")
     public String editBuildingLocationInfo(
-    		@ModelAttribute GeoLocationVO geoLocationVO) {
+    		GeoLocationVO geoLocationVO,
+    		ModelMap model) {
     	
-    	geoLocationService.selectBuildingLocationInfo(geoLocationVO);
+    	model.addAttribute(geoLocationService.selectBuildingLocationInfo(geoLocationVO));
 
 		RequestContextHolder.getRequestAttributes().setAttribute("jspPrefix", "aramframework/mbl", RequestAttributes.SCOPE_REQUEST);
 		return WebUtil.adjustViewName("/com/geo/BuildingLocationInfoEdit");

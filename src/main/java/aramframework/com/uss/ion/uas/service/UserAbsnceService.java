@@ -94,6 +94,21 @@ public class UserAbsnceService extends EgovAbstractServiceImpl {
 	}
 
 	/**
+	 * 기 등록된 사용자부재정보를 삭제한다.
+	 * 
+	 * @param userAbsnceVO
+	 */
+	public void deleteUserAbsnces(String userIds) {
+		String[] strUserIds = userIds.split(";");
+
+		UserAbsnceVO uaVO = new UserAbsnceVO();
+		for (int i = 0; i < strUserIds.length; i++) {
+			uaVO.setUserId(strUserIds[i]);
+			userAbsnceMapper.deleteUserAbsnce(uaVO);
+		}
+	}
+
+	/**
 	 * 사용자부재정보가 특정화면에 반영된 결과를 조회한다.
 	 * 
 	 * @param userAbsnceVO

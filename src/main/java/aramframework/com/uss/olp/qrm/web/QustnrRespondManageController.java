@@ -72,12 +72,12 @@ public class QustnrRespondManageController {
 		qustnrRespondManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", qustnrRespondManageService.selectQustnrRespondManageList(qustnrRespondManageVO));
-
 		int totCnt = (Integer) qustnrRespondManageService.selectQustnrRespondManageListCnt(qustnrRespondManageVO);
-		qustnrRespondManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		qustnrRespondManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/olp/qrm/QustnrRespondList");
 	}
@@ -90,14 +90,15 @@ public class QustnrRespondManageController {
 	@RequestMapping(value = "/uss/olp/qrm/detailQustnrRespond.do")
 	@Secured("ROLE_USER")
 	public String detailQustnrRespond(
-			@ModelAttribute QustnrRespondManageVO qustnrRespondManageVO) {
+			QustnrRespondManageVO qustnrRespondManageVO,
+			ModelMap model) {
+
+		model.addAttribute(qustnrRespondManageService.selectQustnrRespondManageDetail(qustnrRespondManageVO));
 
 		// 성별코드조회
 		cmmUseService.populateCmmCodeList("COM014", "COM014_sexdstn");
 		// 직업코드조회
 		cmmUseService.populateCmmCodeList("COM034", "COM034_occpType");
-
-		qustnrRespondManageService.selectQustnrRespondManageDetail(qustnrRespondManageVO);
 
 		return WebUtil.adjustViewName("/uss/olp/qrm/QustnrRespondDetail");
 	}
@@ -156,14 +157,15 @@ public class QustnrRespondManageController {
 	@RequestMapping(value = "/uss/olp/qrm/editQustnrRespond.do")
 	@Secured("ROLE_USER")
 	public String editQustnrRespond(
-			@ModelAttribute QustnrRespondManageVO qustnrRespondManageVO)  {
+			QustnrRespondManageVO qustnrRespondManageVO,
+			ModelMap model) {
+
+		model.addAttribute(qustnrRespondManageService.selectQustnrRespondManageDetail(qustnrRespondManageVO));
 
 		// 성별코드조회
 		cmmUseService.populateCmmCodeList("COM014", "COM014_sexdstn");
 		// 직업코드조회
 		cmmUseService.populateCmmCodeList("COM034", "COM034_occpType");
-
-		qustnrRespondManageService.selectQustnrRespondManageDetail(qustnrRespondManageVO);
 
 		return WebUtil.adjustViewName("/uss/olp/qrm/QustnrRespondEdit");
 	}

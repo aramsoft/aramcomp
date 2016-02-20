@@ -67,12 +67,12 @@ public class UserAbsnceController {
 		userAbsnceVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", userAbsnceService.selectUserAbsnceList(userAbsnceVO));
-
 		int totCnt = userAbsnceService.selectUserAbsnceListCnt(userAbsnceVO);
-		userAbsnceVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		userAbsnceVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/ion/uas/UserAbsnceList");
 	}
@@ -117,9 +117,10 @@ public class UserAbsnceController {
 	 */
 	@RequestMapping("/uss/ion/uas/editUserAbsnce.do")
 	public String editUserAbsnce(
-			@ModelAttribute UserAbsnceVO userAbsnceVO) {
+			UserAbsnceVO userAbsnceVO,
+			ModelMap model) {
 
-		userAbsnceService.selectUserAbsnce(userAbsnceVO);
+		model.addAttribute(userAbsnceService.selectUserAbsnce(userAbsnceVO));
 
 		return WebUtil.adjustViewName("/uss/ion/uas/UserAbsnceEdit");
 	}
@@ -166,17 +167,11 @@ public class UserAbsnceController {
 	 */
 	@RequestMapping("/uss/ion/uas/deleteListUserAbsnce.do")
 	public String deleteListUserAbsnce(
-			@RequestParam String userIds, 
 			@ModelAttribute UserAbsnceVO userAbsnceVO,
+			@RequestParam String userIds, 
 			ModelMap model) {
 
-		String[] strUserIds = userIds.split(";");
-
-		UserAbsnceVO uaVO = new UserAbsnceVO();
-		for (int i = 0; i < strUserIds.length; i++) {
-			uaVO.setUserId(strUserIds[i]);
-			userAbsnceService.deleteUserAbsnce(uaVO);
-		}
+		userAbsnceService.deleteUserAbsnces(userIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
         return WebUtil.redirectJsp(model, "/uss/ion/uas/listUserAbsnce.do");
@@ -194,8 +189,7 @@ public class UserAbsnceController {
 
 		userAbsnceVO.setSelAbsnceAt("A");
 
-		userAbsnceVO.getSearchVO().setRecordPerPage(5);
-		userAbsnceVO.getSearchVO().setFirstIndex(0);
+		userAbsnceVO.getSearchVO().setSizeAndOffset(5, 0);
 
 		model.addAttribute("resultList", userAbsnceService.selectUserAbsnceList(userAbsnceVO));
 

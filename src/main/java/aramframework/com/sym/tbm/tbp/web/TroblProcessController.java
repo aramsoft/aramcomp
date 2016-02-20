@@ -63,7 +63,7 @@ public class TroblProcessController {
 	@RequestMapping(value = "/sym/tbm/tbp/listTroblProcess.do")
 	@Secured("ROLE_ADMIN")
 	public String listTroblProcess(
-			@ModelAttribute("troblProcessVO") TroblProcessVO troblProcessVO, 
+			@ModelAttribute TroblProcessVO troblProcessVO, 
 			ModelMap model) {
 
 		if (troblProcessVO.getStrTroblKnd() == null)
@@ -75,12 +75,12 @@ public class TroblProcessController {
 		troblProcessVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", troblProcessService.selectTroblProcessList(troblProcessVO));
-
 		int totCnt = troblProcessService.selectTroblProcessListCnt(troblProcessVO);
-		troblProcessVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		troblProcessVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 		
 		cmmUseService.populateCmmCodeList("COM065", "COM065_troblKnd");
 		cmmUseService.populateCmmCodeList("COM068", "COM068_processSttus");
@@ -96,7 +96,7 @@ public class TroblProcessController {
 	@RequestMapping(value = "/sym/tbm/tbp/registTroblProcess.do")
 	@Secured("ROLE_ADMIN")
 	public String registTroblProcess(
-			@ModelAttribute("troblProcessVO") TroblProcessVO troblProcessVO) {
+			@ModelAttribute TroblProcessVO troblProcessVO) {
 
 		troblProcessService.selectTroblProcess(troblProcessVO);
 		
@@ -111,7 +111,7 @@ public class TroblProcessController {
 	@RequestMapping(value = "/sym/tbm/tbp/insertTroblProcess.do")
 	@Secured("ROLE_ADMIN")
 	public String insertTroblProcess(
-			@ModelAttribute("troblProcessVO") TroblProcessVO troblProcessVO, 
+			@ModelAttribute TroblProcessVO troblProcessVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
@@ -139,7 +139,7 @@ public class TroblProcessController {
 	@RequestMapping(value = "/sym/tbm/tbp/deleteTroblProcess.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteTroblProcess(
-			@ModelAttribute("troblProcessVO") TroblProcessVO troblProcessVO, 
+			@ModelAttribute TroblProcessVO troblProcessVO, 
 			ModelMap model) {
 
 		troblProcessVO.setProcessSttus("R");

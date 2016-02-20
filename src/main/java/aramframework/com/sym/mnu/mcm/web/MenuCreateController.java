@@ -70,12 +70,12 @@ public class MenuCreateController {
 			}
 		}
 		model.addAttribute("resultList", menuCreateService.selectMenuCreateList(menuCreateVO));
-
 		int totCnt = menuCreateService.selectMenuCreateListCnt(menuCreateVO);
-		menuCreateVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		menuCreateVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/mnu/mcm/MenuCreateList");
 	}

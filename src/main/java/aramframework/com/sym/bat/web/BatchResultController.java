@@ -55,12 +55,12 @@ public class BatchResultController {
 		batchResultVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", batchResultService.selectBatchResultList(batchResultVO));
-
 		int totCnt = batchResultService.selectBatchResultListCnt(batchResultVO);
-		batchResultVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		batchResultVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/bat/BatchResultList");
 	}
@@ -73,9 +73,10 @@ public class BatchResultController {
 	@RequestMapping("/sym/bat/detailBatchResult.do")
 	@Secured("ROLE_ADMIN")
 	public String detailBatchResult(
-			@ModelAttribute BatchResultVO batchResultVO) {
+			BatchResultVO batchResultVO,
+			ModelMap model) {
 		
-		batchResultService.selectBatchResult(batchResultVO);
+		model.addAttribute(batchResultService.selectBatchResult(batchResultVO));
 
 		return WebUtil.adjustViewName("/sym/bat/BatchResultDetail");
 	}

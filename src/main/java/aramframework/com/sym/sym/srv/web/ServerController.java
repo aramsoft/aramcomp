@@ -66,19 +66,19 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/listServerEqpmn.do")
 	@Secured("ROLE_ADMIN")
 	public String listServerEqpmn(
-			@ModelAttribute("serverEqpmnVO") ServerEqpmnVO serverEqpmnVO, 
+			@ModelAttribute ServerEqpmnVO serverEqpmnVO, 
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
 		serverEqpmnVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", serverService.selectServerEqpmnList(serverEqpmnVO));
-
 		int totCnt = serverService.selectServerEqpmnListCnt(serverEqpmnVO);
-		serverEqpmnVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		serverEqpmnVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/sym/srv/ServerEqpmnList");
 	}
@@ -91,9 +91,10 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/detailServerEqpmn.do")
 	@Secured("ROLE_ADMIN")
 	public String detailServerEqpmn(
-			@ModelAttribute("serverEqpmnVO") ServerEqpmnVO serverEqpmnVO) {
+			ServerEqpmnVO serverEqpmnVO, 
+			ModelMap model) {
 		
-		serverService.selectServerEqpmn(serverEqpmnVO);
+		model.addAttribute(serverService.selectServerEqpmn(serverEqpmnVO));
 		
 		return WebUtil.adjustViewName("/sym/sym/srv/ServerEqpmnDetail");
 	}
@@ -106,7 +107,7 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/registServerEqpmn.do")
 	@Secured("ROLE_ADMIN")
 	public String registServerEqpmn(
-			@ModelAttribute("serverEqpmnVO") ServerEqpmnVO serverEqpmnVO) {
+			@ModelAttribute ServerEqpmnVO serverEqpmnVO) {
 
 		return WebUtil.adjustViewName("/sym/sym/srv/ServerEqpmnRegist");
 	}
@@ -119,7 +120,7 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/insertServerEqpmn.do")
 	@Secured("ROLE_ADMIN")
 	public String insertServerEqpmn(
-			@ModelAttribute("serverEqpmnVO") ServerEqpmnVO serverEqpmnVO, 
+			@ModelAttribute ServerEqpmnVO serverEqpmnVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
@@ -145,9 +146,10 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/editServerEqpmn.do")
 	@Secured("ROLE_ADMIN")
 	public String editServerEqpmn(
-			@ModelAttribute("serverEqpmnVO") ServerEqpmnVO serverEqpmnVO) {
-
-		serverService.selectServerEqpmn(serverEqpmnVO);
+			ServerEqpmnVO serverEqpmnVO, 
+			ModelMap model) {
+		
+		model.addAttribute(serverService.selectServerEqpmn(serverEqpmnVO));
 		
 		return WebUtil.adjustViewName("/sym/sym/srv/ServerEqpmnEdit");
 	}
@@ -160,7 +162,7 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/updateServerEqpmn.do")
 	@Secured("ROLE_ADMIN")
 	public String updateServerEqpmn(
-			@ModelAttribute("serverEqpmnVO") ServerEqpmnVO serverEqpmnVO,
+			@ModelAttribute ServerEqpmnVO serverEqpmnVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
 
@@ -186,7 +188,7 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/deleteServerEqpmn.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteServerEqpmn(
-			@ModelAttribute("serverEqpmnVO") ServerEqpmnVO serverEqpmnVO,
+			@ModelAttribute ServerEqpmnVO serverEqpmnVO,
 			ModelMap model) {
 		
 		serverService.deleteServerEqpmn(serverEqpmnVO);
@@ -204,19 +206,19 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/listServer.do")
 	@Secured("ROLE_ADMIN")
 	public String listServer(
-			@ModelAttribute("serverVO") ServerVO serverVO, 
+			@ModelAttribute ServerVO serverVO, 
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
 		serverVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", serverService.selectServerList(serverVO));
-
 		int totCnt = serverService.selectServerListCnt(serverVO);
-		serverVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		serverVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/sym/srv/ServerList");
 	}
@@ -229,10 +231,10 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/detailServer.do")
 	@Secured("ROLE_ADMIN")
 	public String detailServer(
-			@ModelAttribute("serverVO") ServerVO serverVO, 
+			ServerVO serverVO, 
 			ModelMap model) {
 
-		serverService.selectServer(serverVO);
+		model.addAttribute(serverService.selectServer(serverVO));
 		
 		model.addAttribute("serverEqpmnRelateDetailList", serverService.selectServerEqpmnRelateDetail(serverVO));
 		model.addAttribute("serverEqpmnRelateDetailCount", serverService.selectServerEqpmnRelateDetailTotCnt(serverVO));
@@ -248,7 +250,7 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/registServer.do")
 	@Secured("ROLE_ADMIN")
 	public String registServer(
-			@ModelAttribute("serverVO") ServerVO serverVO) {
+			@ModelAttribute ServerVO serverVO) {
 
 		cmmUseService.populateCmmCodeList("COM064", "COM064_serverKnd");
 
@@ -263,7 +265,7 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/insertServer.do")
 	@Secured("ROLE_ADMIN")
 	public String insertServer(
-			@ModelAttribute("serverVO") ServerVO serverVO, 
+			@ModelAttribute ServerVO serverVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
 
@@ -289,7 +291,8 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/editServer.do")
 	@Secured("ROLE_ADMIN")
 	public String editServer(
-			@ModelAttribute("serverVO") ServerVO serverVO) {
+			ServerVO serverVO,
+			ModelMap model) {
 
 		serverService.selectServer(serverVO);
 
@@ -306,7 +309,7 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/updateServer.do")
 	@Secured("ROLE_ADMIN")
 	public String updateServer(
-			@ModelAttribute("serverVO") ServerVO serverVO, 
+			@ModelAttribute ServerVO serverVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
@@ -332,7 +335,7 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/deleteServer.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteServer(
-			@ModelAttribute("serverVO") ServerVO serverVO, 
+			@ModelAttribute ServerVO serverVO, 
 			ModelMap model) {
 
 		serverService.deleteServer(serverVO);
@@ -349,19 +352,19 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/listServerEqpmnRelate.do")
 	@Secured("ROLE_ADMIN")
 	public String listServerEqpmnRelate(
-			@ModelAttribute("serverEqpmnRelateVO") ServerEqpmnRelateVO serverEqpmnRelateVO, 
+			@ModelAttribute ServerEqpmnRelateVO serverEqpmnRelateVO, 
 			ModelMap model)  {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
 		serverEqpmnRelateVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", serverService.selectServerEqpmnRelateList(serverEqpmnRelateVO));
-
 		int totCnt = serverService.selectServerEqpmnRelateListCnt(serverEqpmnRelateVO);
-		serverEqpmnRelateVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		serverEqpmnRelateVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		ServerVO serverVO = new ServerVO();
 		serverVO.setServerId(serverEqpmnRelateVO.getServerId());
@@ -381,26 +384,14 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/updateServerEqpmnRelate.do")
 	@Secured("ROLE_ADMIN")
 	public String updateServerEqpmnRelate(
+			@ModelAttribute ServerEqpmnRelateVO serverEqpmnRelateVO, 
 			@RequestParam("serverId") String serverId, 
 			@RequestParam("serverEqpmnIds") String serverEqpmnIds,
 			@RequestParam("regYns") String regYns, 
-			@ModelAttribute("serverEqpmnRelateVO") ServerEqpmnRelateVO serverEqpmnRelateVO, 
 			ModelMap model) {
 
-		String[] strServerEqpmnIds = serverEqpmnIds.split(";");
-		String[] strRegYns = regYns.split(";");
-
-		ServerEqpmnRelateVO serVO = new ServerEqpmnRelateVO();
-		serVO.setServerId(serverId);
-
-		for (int i = 0; i < strServerEqpmnIds.length; i++) {
-			serVO.setServerEqpmnId(strServerEqpmnIds[i]);
-			if (strRegYns[i].equals("Y"))
-				serverService.insertServerEqpmnRelate(serVO);
-			else
-				serverService.deleteServerEqpmnRelate(serVO);
-		}
-
+		serverService.updateServerEqpmnRelate(serverId, serverEqpmnIds, regYns);
+		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
         return WebUtil.redirectJsp(model, "/sym/sym/srv/listServerEqpmnRelate.do?serverId="+serverId);
 	}

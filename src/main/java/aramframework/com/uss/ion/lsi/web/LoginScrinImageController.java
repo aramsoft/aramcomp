@@ -82,12 +82,12 @@ public class LoginScrinImageController {
 		loginScrinImageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", loginScrinImageService.selectLoginScrinImageList(loginScrinImageVO));
-
 		int totCnt = loginScrinImageService.selectLoginScrinImageListCnt(loginScrinImageVO);
-		loginScrinImageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		loginScrinImageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/ion/lsi/LoginScrinImageList");
 	}
@@ -153,9 +153,10 @@ public class LoginScrinImageController {
 	 */
 	@RequestMapping(value = "/uss/ion/lsi/editLoginScrinImage.do")
 	public String editLoginScrinImage(
-			@ModelAttribute LoginScrinImageVO loginScrinImageVO) {
+			LoginScrinImageVO loginScrinImageVO,
+			ModelMap model) {
 
-		loginScrinImageService.selectLoginScrinImage(loginScrinImageVO);
+		model.addAttribute(loginScrinImageService.selectLoginScrinImage(loginScrinImageVO));
 
 		return WebUtil.adjustViewName("/uss/ion/lsi/LoginScrinImageEdit");
 	}
@@ -234,16 +235,11 @@ public class LoginScrinImageController {
 	 */
 	@RequestMapping(value = "/uss/ion/lsi/deleteListLoginScrinImage.do")
 	public String deleteListLoginScrinImage(
-			@RequestParam String imageIds,
 			@ModelAttribute LoginScrinImageVO loginScrinImageVO, 
+			@RequestParam String imageIds,
 			ModelMap model) {
 
-		String[] strImageIds = imageIds.split(";");
-		LoginScrinImageVO lsiVO = new LoginScrinImageVO();
-		for (int i = 0; i < strImageIds.length; i++) {
-			lsiVO.setImageId(strImageIds[i]);
-			loginScrinImageService.deleteLoginScrinImage(lsiVO);
-		}
+		loginScrinImageService.deleteLoginScrinImages(imageIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
         return WebUtil.redirectJsp(model, "/uss/ion/lsi/listLoginScrinImage.do");

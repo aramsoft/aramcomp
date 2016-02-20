@@ -62,9 +62,8 @@ public class NtwrkController {
 	@RequestMapping(value = "/sym/sym/nwk/listNtwrk.do")
 	@Secured("ROLE_ADMIN")
 	public String listNtwrk(
-			@ModelAttribute("ntwrkVO") NtwrkVO ntwrkVO, 
-			ModelMap model) 
-	throws Exception {
+			@ModelAttribute NtwrkVO ntwrkVO, 
+			ModelMap model) {
 
 		if (ntwrkVO.getStrManageIem() == null)
 			ntwrkVO.setStrManageIem("00");
@@ -73,12 +72,12 @@ public class NtwrkController {
 		ntwrkVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", ntwrkService.selectNtwrkList(ntwrkVO));
-
 		int totCnt = ntwrkService.selectNtwrkListCnt(ntwrkVO);
-		ntwrkVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		ntwrkVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		// 관리항목코드
 		cmmUseService.populateCmmCodeList("COM067", "COM067_manageIem");
@@ -94,9 +93,10 @@ public class NtwrkController {
 	@RequestMapping(value = "/sym/sym/nwk/detailNtwrk.do")
 	@Secured("ROLE_ADMIN")
 	public String detailNtwrk(
-			@ModelAttribute("ntwrkVO") NtwrkVO ntwrkVO) {
+			NtwrkVO ntwrkVO,
+			ModelMap model) {
 
-		ntwrkService.selectNtwrk(ntwrkVO);
+		model.addAttribute(ntwrkService.selectNtwrk(ntwrkVO));
 		
 		return WebUtil.adjustViewName("/sym/sym/nwk/NtwrkDetail");
 	}
@@ -109,7 +109,7 @@ public class NtwrkController {
 	@RequestMapping(value = "/sym/sym/nwk/registNtwrk.do")
 	@Secured("ROLE_ADMIN")
 	public String registNtwrk(
-			@ModelAttribute("ntwrkVO") NtwrkVO ntwrkVO) {
+			@ModelAttribute NtwrkVO ntwrkVO) {
 
 		// 관리항목코드
 		cmmUseService.populateCmmCodeList("COM067", "COM067_manageIem");
@@ -125,7 +125,7 @@ public class NtwrkController {
 	@RequestMapping(value = "/sym/sym/nwk/insertNtwrk.do")
 	@Secured("ROLE_ADMIN")
 	public String insertNtwrk(
-			@ModelAttribute("ntwrkVO") NtwrkVO ntwrkVO, 
+			@ModelAttribute NtwrkVO ntwrkVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
@@ -151,9 +151,10 @@ public class NtwrkController {
 	@RequestMapping(value = "/sym/sym/nwk/editNtwrk.do")
 	@Secured("ROLE_ADMIN")
 	public String editNtwrk(
-			@ModelAttribute("ntwrkVO") NtwrkVO ntwrkVO) {
+			NtwrkVO ntwrkVO,
+			ModelMap model) {
 
-		ntwrkService.selectNtwrk(ntwrkVO);
+		model.addAttribute(ntwrkService.selectNtwrk(ntwrkVO));
 		
 		// 관리항목코드
 		cmmUseService.populateCmmCodeList("COM067", "COM067_manageIem");
@@ -169,7 +170,7 @@ public class NtwrkController {
 	@RequestMapping(value = "/sym/sym/nwk/updateNtwrk.do")
 	@Secured("ROLE_ADMIN")
 	public String updateNtwrk(
-			@ModelAttribute("ntwrkVO") NtwrkVO ntwrkVO, 
+			@ModelAttribute NtwrkVO ntwrkVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
@@ -195,7 +196,7 @@ public class NtwrkController {
 	@RequestMapping(value = "/sym/sym/nwk/deleteNtwrk.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteNtwrk(
-			@ModelAttribute("ntwrkVO") NtwrkVO ntwrkVO, 
+			@ModelAttribute NtwrkVO ntwrkVO, 
 			ModelMap model) {
 
 		ntwrkService.deleteNtwrk(ntwrkVO);

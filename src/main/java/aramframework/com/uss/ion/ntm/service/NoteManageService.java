@@ -1,7 +1,6 @@
 package aramframework.com.uss.ion.ntm.service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -66,7 +65,7 @@ public class NoteManageService extends EgovAbstractServiceImpl {
 	 * @param noteManageVO
 	 * @param commandMap
 	 */
-	public void insertNoteManage(NoteManageVO noteManageVO, Map<String, Object> commandMap) {
+	public void insertNoteManage(NoteManageVO noteManageVO, String sRecptnEmpList, String sRecptnSeList) {
 
 		/* ****************************************************************
 		 * 쪽지관리 처리
@@ -98,11 +97,9 @@ public class NoteManageService extends EgovAbstractServiceImpl {
 		noteManageMapper.insertNoteTrnsmit(noteManageVO);
 
 		// 수신자 리스트
-		String sRecptnEmpList = (String) commandMap.get("recptnEmpList");
 		String[] sRecptnEmpListResult = sRecptnEmpList.split(",");
 
 		// 수신자구분 리스트
-		String sRecptnSeList = (String) commandMap.get("recptnSeList");
 		String[] sRecptnSeListResult = sRecptnSeList.split(",");
 
 		/* ****************************************************************

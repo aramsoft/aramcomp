@@ -225,4 +225,26 @@ public class ServerService extends EgovAbstractServiceImpl {
 		serverMapper.deleteServerEqpmnRelate(serverEqpmnRelateVO);
 	}
 
+	/**
+	 * 기 등록된 서버장비관계정보를 삭제한다.
+	 * 
+	 * @param serverEqpmnRelateVO
+	 */
+	public void updateServerEqpmnRelate(String serverId, String serverEqpmnIds, String regYns) {
+		String[] strServerEqpmnIds = serverEqpmnIds.split(";");
+		String[] strRegYns = regYns.split(";");
+
+		ServerEqpmnRelateVO serverVO = new ServerEqpmnRelateVO();
+		serverVO.setServerId(serverId);
+
+		for (int i = 0; i < strServerEqpmnIds.length; i++) {
+			serverVO.setServerEqpmnId(strServerEqpmnIds[i]);
+			if (strRegYns[i].equals("Y"))
+				insertServerEqpmnRelate(serverVO);
+			else
+				deleteServerEqpmnRelate(serverVO);
+		}
+
+	}
+
 }

@@ -113,6 +113,47 @@ public class KnoSpecialistController {
 			@ModelAttribute KnoSpecialistVO knoSpecialistVO, 
 			ModelMap model) {
 
+		populateMapTeam(knoSpecialistVO, model);
+		
+		return WebUtil.adjustViewName("/dam/spe/spe/KnoSpecialistRegist");
+	}
+
+	/**
+	 * 지식전문가 정보를 신규로 등록한다.
+	 * 
+	 * @param knoSpecialistVO
+	 */
+	@RequestMapping(value = "/dam/spe/spe/insertKnoSpecialist.do")
+	public String insertKnoSpecialist(
+			@ModelAttribute KnoSpecialistVO knoSpecialistVO, 
+			BindingResult bindingResult, 
+			ModelMap model) {
+
+		beanValidator.validate(knoSpecialistVO, bindingResult);
+		if (bindingResult.hasErrors()) {
+			
+			populateMapTeam(knoSpecialistVO, model);
+
+			return WebUtil.adjustViewName("/dam/spe/spe/KnoSpecialistRegist");
+		}
+
+		// 로그인 객체 선언
+		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
+		knoSpecialistVO.setFrstRegisterId(loginVO.getUniqId());
+
+		knoSpecialistService.insertKnoSpecialist(knoSpecialistVO);
+
+		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
+		return WebUtil.redirectJsp(model, "/dam/spe/spe/listKnoSpecialist.do");
+	}
+
+	/**
+	 * mapTeamList, mapMaterialList를 가져온다.
+	 * 
+	 * @param knoSpecialistVO
+	 */
+	private void populateMapTeam(KnoSpecialistVO knoSpecialistVO, ModelMap model) {
+		
 		MapTeamVO mapTeamVO = new MapTeamVO();
 		mapTeamVO.getSearchVO().setSizeAndOffset(999999, 0);
 		List<EgovMap> mapTeamList = mapTeamService.selectMapTeamList(mapTeamVO);
@@ -130,55 +171,8 @@ public class KnoSpecialistController {
 		}
 
 		model.addAttribute("mapMaterialList", mapMaterialService.selectMapMaterialList(mapMaterialVO));
-
-		return WebUtil.adjustViewName("/dam/spe/spe/KnoSpecialistRegist");
 	}
-
-	/**
-	 * 지식전문가 정보를 신규로 등록한다.
-	 * 
-	 * @param knoSpecialistVO
-	 */
-	@RequestMapping(value = "/dam/spe/spe/insertKnoSpecialist.do")
-	public String insertKnoSpecialist(
-			@ModelAttribute KnoSpecialistVO knoSpecialistVO, 
-			BindingResult bindingResult, 
-			ModelMap model) {
-
-		beanValidator.validate(knoSpecialistVO, bindingResult);
-		if (bindingResult.hasErrors()) {
-
-			MapTeamVO mapTeamVO = new MapTeamVO();
-			mapTeamVO.getSearchVO().setSizeAndOffset(999999, 0);
-			List<EgovMap> mapTeamList = mapTeamService.selectMapTeamList(mapTeamVO);
-			model.addAttribute("mapTeamList", mapTeamList);
-
-			MapMaterialVO mapMaterialVO = new MapMaterialVO();
-			mapMaterialVO.getSearchVO().setSizeAndOffset(999999, 0);
-			mapMaterialVO.getSearchVO().setSearchCondition("ORGNZT_ID");
-
-			if (knoSpecialistVO.getOrgnztId() == null || knoSpecialistVO.getOrgnztId().equals("")) {
-				EgovMap vo = mapTeamList.get(0);
-				mapMaterialVO.getSearchVO().setSearchKeyword(vo.get("orgnztId").toString());
-			} else {
-				mapMaterialVO.getSearchVO().setSearchKeyword(knoSpecialistVO.getOrgnztId());
-			}
-
-			model.addAttribute("mapMaterialList", mapMaterialService.selectMapMaterialList(mapMaterialVO));
-
-			return WebUtil.adjustViewName("/dam/spe/spe/KnoSpecialistRegist");
-		}
-
-		// 로그인 객체 선언
-		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		knoSpecialistVO.setFrstRegisterId(loginVO.getUniqId());
-
-		knoSpecialistService.insertKnoSpecialist(knoSpecialistVO);
-
-		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/dam/spe/spe/listKnoSpecialist.do");
-	}
-
+	
 	/**
 	 * 기 등록 된 지식전문가 정보를 수정화면으로 이동한다.
 	 * 

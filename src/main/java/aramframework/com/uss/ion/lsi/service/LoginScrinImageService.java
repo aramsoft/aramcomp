@@ -108,6 +108,20 @@ public class LoginScrinImageService extends EgovAbstractServiceImpl {
 	}
 
 	/**
+	 * 기 등록된 로그인화면이미지정보를 삭제한다.
+	 * 
+	 * @param loginScrinImageVO
+	 */
+	public void deleteLoginScrinImages(String imageIds) {
+		String[] strImageIds = imageIds.split(";");
+		LoginScrinImageVO lsiVO = new LoginScrinImageVO();
+		for (int i = 0; i < strImageIds.length; i++) {
+			lsiVO.setImageId(strImageIds[i]);
+			deleteLoginScrinImage(lsiVO);
+		}
+	}
+
+	/**
 	 * 기 등록된 로그인화면이미지정보의 파일을 삭제한다.
 	 * 
 	 * @param loginScrinImageVO

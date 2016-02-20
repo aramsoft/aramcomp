@@ -105,11 +105,8 @@ public class MapMaterialController {
 			@ModelAttribute MapMaterialVO mapMaterialVO, 
 			ModelMap model) {
 
-		MapTeamVO searchVO = new MapTeamVO();
-		searchVO.getSearchVO().setRecordPerPage(999999);
-		searchVO.getSearchVO().setFirstIndex(0);
-		model.addAttribute("mapTeam", mapTeamService.selectMapTeamList(searchVO));
-
+		populateMapTeam(model);
+		
 		return WebUtil.adjustViewName("/dam/map/mat/MapMaterialRegist");
 	}
 
@@ -127,11 +124,8 @@ public class MapMaterialController {
 		beanValidator.validate(mapMaterialVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 
-			MapTeamVO searchVO = new MapTeamVO();
-			searchVO.getSearchVO().setRecordPerPage(999999);
-			searchVO.getSearchVO().setFirstIndex(0);
-			model.addAttribute("mapTeam", mapTeamService.selectMapTeamList(searchVO));
-
+			populateMapTeam(model);
+			
 			return WebUtil.adjustViewName("/dam/map/mat/MapMaterialRegist");
 		}
 
@@ -145,6 +139,20 @@ public class MapMaterialController {
 		return WebUtil.redirectJsp(model, "/dam/map/mat/listMapMaterial.do");
 	}
 
+	/**
+	 * mapTeamList, mapMaterialList를 가져온다.
+	 * 
+	 * @param knoSpecialistVO
+	 */
+	private void populateMapTeam(ModelMap model) {
+
+		MapTeamVO mapTeamVO = new MapTeamVO();
+		mapTeamVO.getSearchVO().setRecordPerPage(999999);
+		mapTeamVO.getSearchVO().setFirstIndex(0);
+		model.addAttribute("mapTeamList", mapTeamService.selectMapTeamList(mapTeamVO));
+
+	}
+	
 	/**
 	 * 기 등록 된 지식맵(지식유형)링 정보를 수정화면으로 이동한다.
 	 * 

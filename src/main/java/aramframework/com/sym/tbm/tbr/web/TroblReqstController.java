@@ -63,7 +63,7 @@ public class TroblReqstController {
 	@RequestMapping(value = "/sym/tbm/tbr/listTroblReqst.do")
 	@Secured("ROLE_USER")
 	public String listTroblReqst(
-			@ModelAttribute("troblReqstVO") TroblReqstVO troblReqstVO, 
+			@ModelAttribute TroblReqstVO troblReqstVO, 
 			ModelMap model) {
 
 		if (troblReqstVO.getStrTroblKnd() == null)
@@ -75,12 +75,12 @@ public class TroblReqstController {
 		troblReqstVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", troblReqstService.selectTroblReqstList(troblReqstVO));
-
 		int totCnt = troblReqstService.selectTroblReqstListCnt(troblReqstVO);
-		troblReqstVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		troblReqstVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		cmmUseService.populateCmmCodeList("COM065", "COM065_troblKnd");
 		cmmUseService.populateCmmCodeList("COM068", "COM068_processSttus");
@@ -96,9 +96,10 @@ public class TroblReqstController {
 	@RequestMapping(value = "/sym/tbm/tbr/detailTroblReqst.do")
 	@Secured("ROLE_USER")
 	public String detailTroblReqst(
-			@ModelAttribute("troblReqstVO") TroblReqstVO troblReqstVO) {
+			TroblReqstVO troblReqstVO,
+			ModelMap model) {
 
-		troblReqstService.selectTroblReqst(troblReqstVO);
+		model.addAttribute(troblReqstService.selectTroblReqst(troblReqstVO));
 		
 		return WebUtil.adjustViewName("/sym/tbm/tbr/TroblReqstDetail");
 	}
@@ -111,7 +112,7 @@ public class TroblReqstController {
 	@RequestMapping(value = "/sym/tbm/tbr/registTroblReqst.do")
 	@Secured("ROLE_USER")
 	public String registTroblReqst(
-			@ModelAttribute("troblReqstVO") TroblReqstVO troblReqstVO) {
+			@ModelAttribute TroblReqstVO troblReqstVO) {
 
 		cmmUseService.populateCmmCodeList("COM065", "COM065_troblKnd");
 
@@ -126,7 +127,7 @@ public class TroblReqstController {
 	@RequestMapping(value = "/sym/tbm/tbr/insertTroblReqst.do")
 	@Secured("ROLE_USER")
 	public String insertTroblReqst(
-			@ModelAttribute("troblReqstVO") TroblReqstVO troblReqstVO, 
+			@ModelAttribute TroblReqstVO troblReqstVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
@@ -155,9 +156,10 @@ public class TroblReqstController {
 	@RequestMapping(value = "/sym/tbm/tbr/editTroblReqst.do")
 	@Secured("ROLE_USER")
 	public String editTroblReqst(
-			@ModelAttribute("troblReqstVO") TroblReqstVO troblReqstVO) {
+			TroblReqstVO troblReqstVO,
+			ModelMap model) {
 
-		troblReqstService.selectTroblReqst(troblReqstVO);
+		model.addAttribute(troblReqstService.selectTroblReqst(troblReqstVO));
 		
 		cmmUseService.populateCmmCodeList("COM065", "COM065_troblKnd");
 
@@ -172,7 +174,7 @@ public class TroblReqstController {
 	@RequestMapping(value = "/sym/tbm/tbr/updateTroblReqst.do")
 	@Secured("ROLE_USER")
 	public String updateTroblReqst(
-			@ModelAttribute("troblReqstVO") TroblReqstVO troblReqstVO, 
+			@ModelAttribute TroblReqstVO troblReqstVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
@@ -200,7 +202,7 @@ public class TroblReqstController {
 	@RequestMapping(value = "/sym/tbm/tbr/deleteTroblReqst.do")
 	@Secured("ROLE_USER")
 	public String deleteTroblReqst(
-			@ModelAttribute("troblReqstVO") TroblReqstVO troblReqstVO, 
+			@ModelAttribute TroblReqstVO troblReqstVO, 
 			ModelMap model) {
 
 		troblReqstService.deleteTroblReqst(troblReqstVO);
@@ -217,7 +219,7 @@ public class TroblReqstController {
 	@RequestMapping(value = "/sym/tbm/tbr/requstTroblReqst.do")
 	@Secured("ROLE_USER")
 	public String requstTroblReqst(
-			@ModelAttribute("troblReqstVO") TroblReqstVO troblReqstVO, 
+			@ModelAttribute TroblReqstVO troblReqstVO, 
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -238,7 +240,7 @@ public class TroblReqstController {
 	@RequestMapping(value = "/sym/tbm/tbr/cancelTroblReqst.do")
 	@Secured("ROLE_USER")
 	public String cancelTroblReqst(
-			@ModelAttribute("troblReqstVO") TroblReqstVO troblReqstVO, 
+			@ModelAttribute TroblReqstVO troblReqstVO, 
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();

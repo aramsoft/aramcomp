@@ -122,21 +122,7 @@ public class KnoPersonalController {
 			@ModelAttribute KnoPersonalVO knoPersonalVO, 
 			ModelMap model) {
 
-		MapTeamVO mapTeamVO = new MapTeamVO();
-		mapTeamVO.getSearchVO().setSizeAndOffset(999999, 0);
-		List<EgovMap> mapTeamList = mapTeamService.selectMapTeamList(mapTeamVO);
-		model.addAttribute("mapTeamList", mapTeamList);
-
-		MapMaterialVO mapMaterialVO = new MapMaterialVO();
-		mapMaterialVO.getSearchVO().setSizeAndOffset(999999, 0);
-		mapMaterialVO.getSearchVO().setSearchCondition("ORGNZT_ID");
-		if (knoPersonalVO.getOrgnztId() == null || knoPersonalVO.getOrgnztId().equals("")) {
-			EgovMap vo = mapTeamList.get(0);
-			mapMaterialVO.getSearchVO().setSearchKeyword(vo.get("orgnztId").toString());
-		} else {
-			mapMaterialVO.getSearchVO().setSearchKeyword(knoPersonalVO.getOrgnztId());
-		}
-		model.addAttribute("mapMaterialList", mapMaterialService.selectMapMaterialList(mapMaterialVO));
+		populateMapTeam(knoPersonalVO, model);
 
 		return WebUtil.adjustViewName("/dam/per/KnoPersonalRegist");
 	}
@@ -156,6 +142,9 @@ public class KnoPersonalController {
 
 		beanValidator.validate(knoPersonalVO, bindingResult);
 		if (bindingResult.hasErrors()) {
+			
+			populateMapTeam(knoPersonalVO, model);
+
 			return WebUtil.adjustViewName("/dam/per/KnoPersonalRegist");
 		}
 
@@ -172,6 +161,30 @@ public class KnoPersonalController {
 		return WebUtil.redirectJsp(model, "/dam/per/listKnoPersonal.do");
 	}
 
+	/**
+	 * mapTeamList, mapMaterialList를 가져온다.
+	 * 
+	 * @param knoSpecialistVO
+	 */
+	private void populateMapTeam(KnoPersonalVO knoPersonalVO, ModelMap model) {
+		
+		MapTeamVO mapTeamVO = new MapTeamVO();
+		mapTeamVO.getSearchVO().setSizeAndOffset(999999, 0);
+		List<EgovMap> mapTeamList = mapTeamService.selectMapTeamList(mapTeamVO);
+		model.addAttribute("mapTeamList", mapTeamList);
+
+		MapMaterialVO mapMaterialVO = new MapMaterialVO();
+		mapMaterialVO.getSearchVO().setSizeAndOffset(999999, 0);
+		mapMaterialVO.getSearchVO().setSearchCondition("ORGNZT_ID");
+		if (knoPersonalVO.getOrgnztId() == null || knoPersonalVO.getOrgnztId().equals("")) {
+			EgovMap vo = mapTeamList.get(0);
+			mapMaterialVO.getSearchVO().setSearchKeyword(vo.get("orgnztId").toString());
+		} else {
+			mapMaterialVO.getSearchVO().setSearchKeyword(knoPersonalVO.getOrgnztId());
+		}
+		model.addAttribute("mapMaterialList", mapMaterialService.selectMapMaterialList(mapMaterialVO));
+	}
+	
 	/**
 	 * 기 등록 된 개인지식 정보를 수정폼.
 	 * 

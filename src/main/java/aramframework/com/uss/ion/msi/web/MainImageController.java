@@ -82,12 +82,12 @@ public class MainImageController {
 		mainImageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", mainImageService.selectMainImageList(mainImageVO));
-
 		int totCnt = mainImageService.selectLoginScrinImageListCnt(mainImageVO);
-		mainImageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		mainImageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/ion/msi/MainImageList");
 	}
@@ -153,9 +153,10 @@ public class MainImageController {
 	 */
 	@RequestMapping(value = "/uss/ion/msi/editMainImage.do")
 	public String editMainImage(
-			@ModelAttribute MainImageVO mainImageVO) {
+			MainImageVO mainImageVO,
+			ModelMap model) {
 
-		mainImageService.selectMainImage(mainImageVO);
+		model.addAttribute(mainImageService.selectMainImage(mainImageVO));
 
 		return WebUtil.adjustViewName("/uss/ion/msi/MainImageEdit");
 	}
@@ -236,13 +237,7 @@ public class MainImageController {
 			@RequestParam String imageIds, 
 			ModelMap model) {
 
-		String[] strImageIds = imageIds.split(";");
-
-		MainImageVO mainImageVO = new MainImageVO();
-		for (int i = 0; i < strImageIds.length; i++) {
-			mainImageVO.setImageId(strImageIds[i]);
-			mainImageService.deleteMainImage(mainImageVO);
-		}
+		mainImageService.deleteMainImages(imageIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
         return WebUtil.redirectJsp(model, "/uss/ion/msi/listMainImage.do");

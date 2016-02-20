@@ -73,12 +73,12 @@ public class EventManageController {
 		eventManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", eventManageService.selectEventManageList(eventManageVO));
-
 		int totCnt = eventManageService.selectEventManageListCnt(eventManageVO);
-		eventManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		eventManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		// 행사년월
 		java.util.Calendar cal = java.util.Calendar.getInstance();
@@ -101,10 +101,10 @@ public class EventManageController {
 	@RequestMapping(value = "/uss/ion/evt/detailEventReqst.do")
 	public String detailEgovEventReqst(
 			@RequestParam(value="popup", required=false) String popup,
-			@ModelAttribute EventManageVO eventManageVO, 
+			EventManageVO eventManageVO, 
 			ModelMap model) {
 
-		eventManageService.selectEventManage(eventManageVO);
+		model.addAttribute(eventManageService.selectEventManage(eventManageVO));
 
 		if ("true".equals(popup)) {
 			model.addAttribute("check_popup", "Y");
@@ -159,9 +159,10 @@ public class EventManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/evt/editEventReqst.do")
 	public String editEgovEventReqst(
-			@ModelAttribute EventManageVO eventManageVO) {
+			EventManageVO eventManageVO, 
+			ModelMap model) {
 
-		eventManageService.selectEventManage(eventManageVO);
+		model.addAttribute(eventManageService.selectEventManage(eventManageVO));
 
 		return WebUtil.adjustViewName("/uss/ion/evt/EventReqstEdit");
 	}
@@ -228,12 +229,12 @@ public class EventManageController {
 		eventAtdrnVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", eventManageService.selectEventAtdrnList(eventAtdrnVO));
-
 		int totCnt = eventManageService.selectEventAtdrnListCnt(eventAtdrnVO);
-		eventAtdrnVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		eventAtdrnVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		// 행사년월
 		java.util.Calendar cal = java.util.Calendar.getInstance();
@@ -256,11 +257,12 @@ public class EventManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/evt/detailEventRcrpt.do")
 	public String detailEventRcrpt(
-			@ModelAttribute EventAtdrnVO eventAtdrnVO, 
-			@ModelAttribute EventManageVO eventManageVO) {
+			EventAtdrnVO eventAtdrnVO, 
+			EventManageVO eventManageVO,
+			ModelMap model) {
 
-		eventManageService.selectEventAtdrn(eventAtdrnVO);
-		eventManageService.selectEventManage(eventManageVO);
+		model.addAttribute(eventManageService.selectEventAtdrn(eventAtdrnVO));
+		model.addAttribute(eventManageService.selectEventManage(eventManageVO));
 
 		return WebUtil.adjustViewName("/uss/ion/evt/EventRceptDetail");
 	}
@@ -371,12 +373,12 @@ public class EventManageController {
 		eventAtdrnVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", eventManageService.selectEventRceptConfmList(eventAtdrnVO));
-
 		int totCnt = eventManageService.selectEventRceptConfmListCnt(eventAtdrnVO);
-		eventAtdrnVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		eventAtdrnVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		// 행사년월
 		java.util.Calendar cal = java.util.Calendar.getInstance();
@@ -428,12 +430,12 @@ public class EventManageController {
 		eventAtdrnVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", eventManageService.selectEventReqstAtdrnList(eventAtdrnVO));
-
 		int totCnt = eventManageService.selectEventReqstAtdrnListCnt(eventAtdrnVO);
-		eventAtdrnVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		eventAtdrnVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/ion/evt/EventReqstAtdrnList");
 	}

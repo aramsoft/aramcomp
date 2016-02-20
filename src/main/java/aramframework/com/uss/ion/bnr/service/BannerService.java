@@ -108,6 +108,21 @@ public class BannerService extends EgovAbstractServiceImpl {
 	}
 
 	/**
+	 * 기 등록된 배너정보를 삭제한다.
+	 * 
+	 * @param bannerVO
+	 */
+	public void deleteBanners(String bannerIds) {
+		String[] strBannerIds = bannerIds.split(";");
+
+		BannerVO bVO = new BannerVO();
+		for (int i = 0; i < strBannerIds.length; i++) {
+			bVO.setBannerId(strBannerIds[i]);
+			deleteBanner(bVO);
+		}
+	}
+
+	/**
 	 * 기 등록된 배너정보의 이미지파일을 삭제한다.
 	 * 
 	 * @param bannerVO

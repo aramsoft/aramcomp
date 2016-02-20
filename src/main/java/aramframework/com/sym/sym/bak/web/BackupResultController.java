@@ -58,12 +58,12 @@ public class BackupResultController {
 		backupResultVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", backupResultService.selectBackupResultList(backupResultVO));
-
 		int totCnt = backupResultService.selectBackupResultListCnt(backupResultVO);
-		backupResultVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		backupResultVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/sym/bak/BackupResultList");
 	}
@@ -76,9 +76,10 @@ public class BackupResultController {
 	@RequestMapping("/sym/sym/bak/detailBackupResult.do")
 	@Secured("ROLE_ADMIN")
 	public String detailBackupResult(
-			@ModelAttribute BackupResultVO backupResultVO) {
+			BackupResultVO backupResultVO,
+			ModelMap model) {
 		
-		backupResultService.selectBackupResult(backupResultVO);
+		model.addAttribute(backupResultService.selectBackupResult(backupResultVO));
 
 		return WebUtil.adjustViewName("/sym/sym/bak/BackupResultDetail");
 	}

@@ -67,12 +67,12 @@ public class BatchOpertController {
 		batchOpertVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", batchOpertService.selectBatchOpertList(batchOpertVO));
-
 		int totCnt = batchOpertService.selectBatchOpertListCnt(batchOpertVO);
-		batchOpertVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		batchOpertVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/bat/BatchOpertPopup");
 	}
@@ -93,12 +93,12 @@ public class BatchOpertController {
 		batchOpertVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", batchOpertService.selectBatchOpertList(batchOpertVO));
-
 		int totCnt = batchOpertService.selectBatchOpertListCnt(batchOpertVO);
-		batchOpertVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		batchOpertVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/bat/BatchOpertList");
 	}
@@ -111,9 +111,10 @@ public class BatchOpertController {
 	@RequestMapping("/sym/bat/detailBatchOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String detailBatchOpert(
-			@ModelAttribute BatchOpertVO batchOpertVO) {
+			BatchOpertVO batchOpertVO,
+			ModelMap model) {
 		
-		batchOpertService.selectBatchOpert(batchOpertVO);
+		model.addAttribute(batchOpertService.selectBatchOpert(batchOpertVO));
 
 		return WebUtil.adjustViewName("/sym/bat/BatchOpertDetail");
 	}
@@ -169,9 +170,10 @@ public class BatchOpertController {
 	@RequestMapping("/sym/bat/editBatchOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String editBatchOpert(
-			@ModelAttribute BatchOpertVO batchOpertVO) {
-
-		batchOpertService.selectBatchOpert(batchOpertVO);
+			BatchOpertVO batchOpertVO,
+			ModelMap model) {
+		
+		model.addAttribute(batchOpertService.selectBatchOpert(batchOpertVO));
 
 		return WebUtil.adjustViewName("/sym/bat/BatchOpertEdit");
 	}

@@ -122,12 +122,12 @@ public class NoteRecptnController {
 		noteRecptnVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", noteRecptnService.selectNoteRecptnList(noteRecptnVO));
-
 		int totCnt = (Integer) noteRecptnService.selectNoteRecptnListCnt(noteRecptnVO);
-		noteRecptnVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		noteRecptnVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/ion/ntr/NoteRecptnList");
 	}

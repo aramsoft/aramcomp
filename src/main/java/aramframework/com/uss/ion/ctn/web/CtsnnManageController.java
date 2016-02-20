@@ -69,12 +69,12 @@ public class CtsnnManageController {
 		ctsnnManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", ctsnnManageService.selectCtsnnManageList(ctsnnManageVO));
-
 		int totCnt = ctsnnManageService.selectCtsnnManageListCnt(ctsnnManageVO);
-		ctsnnManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		ctsnnManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		cmmUseService.populateCmmCodeList("COM054", "COM054_ctsnn");
 
@@ -88,10 +88,10 @@ public class CtsnnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ctn/detailCtsnn.do")
 	public String detailCtsnn(
-			@ModelAttribute CtsnnManageVO ctsnnManageVO) {
+			CtsnnManageVO ctsnnManageVO,
+			ModelMap model) {
 
-		// 등록 상세정보
-		ctsnnManageService.selectCtsnnManage(ctsnnManageVO);
+		model.addAttribute(ctsnnManageService.selectCtsnnManage(ctsnnManageVO));
 
 		return WebUtil.adjustViewName("/uss/ion/ctn/CtsnnDetail");
 	}
@@ -143,10 +143,10 @@ public class CtsnnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ctn/editCtsnn.do")
 	public String editCtsnn(
-			@ModelAttribute CtsnnManageVO ctsnnManageVO) {
+			CtsnnManageVO ctsnnManageVO,
+			ModelMap model) {
 
-		// 등록 상세정보
-		ctsnnManageService.selectCtsnnManage(ctsnnManageVO);
+		model.addAttribute(ctsnnManageService.selectCtsnnManage(ctsnnManageVO));
 
 		cmmUseService.populateCmmCodeList("COM054", "COM054_ctsnn");
 		cmmUseService.populateCmmCodeList("COM073", "COM073_relate");
@@ -212,12 +212,12 @@ public class CtsnnManageController {
 		ctsnnManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", ctsnnManageService.selectCtsnnManageConfmList(ctsnnManageVO));
-
 		int totCnt = ctsnnManageService.selectCtsnnManageConfmListCnt(ctsnnManageVO);
-		ctsnnManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		ctsnnManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		cmmUseService.populateCmmCodeList("COM054", "COM054_ctsnn");
 
@@ -231,10 +231,10 @@ public class CtsnnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ctn/editCtsnnConfm.do")
 	public String detailCtsnnConfm(
-			@ModelAttribute CtsnnManageVO ctsnnManageVO) {
+			CtsnnManageVO ctsnnManageVO,
+			ModelMap model) {
 		
-		// 등록 상세정보
-		ctsnnManageService.selectCtsnnManage(ctsnnManageVO);
+		model.addAttribute(ctsnnManageService.selectCtsnnManage(ctsnnManageVO));
 
 		return WebUtil.adjustViewName("/uss/ion/ctn/CtsnnConfmEdit");
 	}

@@ -91,12 +91,12 @@ public class AnnvrsryManageController {
 		annvrsryManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", annvrsryManageService.selectAnnvrsryManageList(annvrsryManageVO));
-
 		int totCnt = annvrsryManageService.selectAnnvrsryManageListCnt(annvrsryManageVO);
-		annvrsryManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		annvrsryManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/ion/ans/AnnvrsryList");
 	}
@@ -108,9 +108,10 @@ public class AnnvrsryManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ans/detailAnnvrsry.do")
 	public String detailAnnvrsry(
-			@ModelAttribute AnnvrsryManageVO annvrsryManageVO) {
+			AnnvrsryManageVO annvrsryManageVO,
+			ModelMap model) {
 
-		annvrsryManageService.selectAnnvrsryManage(annvrsryManageVO);
+		annvrsryManageVO = annvrsryManageService.selectAnnvrsryManage(annvrsryManageVO);
 
 		String sTempCldrSe = null;
 		if ("1".equals(annvrsryManageVO.getCldrSe()))
@@ -127,6 +128,8 @@ public class AnnvrsryManageController {
 			sTempAnnvrsrySetup = "OFF";
 		annvrsryManageVO.setAnnvrsrySetupNm(sTempAnnvrsrySetup);
 
+		model.addAttribute(annvrsryManageVO);
+		
 		return WebUtil.adjustViewName("/uss/ion/ans/AnnvrsryDetail");
 	}
 
@@ -190,9 +193,10 @@ public class AnnvrsryManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ans/editAnnvrsry.do")
 	public String editAnnvrsry(
-			@ModelAttribute AnnvrsryManageVO annvrsryManageVO) {
+			AnnvrsryManageVO annvrsryManageVO,
+			ModelMap model) {
 
-		annvrsryManageService.selectAnnvrsryManage(annvrsryManageVO);
+		model.addAttribute(annvrsryManageService.selectAnnvrsryManage(annvrsryManageVO));
 
 		cmmUseService.populateCmmCodeList("COM069", "COM069_annvrsrySe");
 
@@ -255,9 +259,7 @@ public class AnnvrsryManageController {
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		annvrsryManageVO.setUsid(loginVO.getUniqId());
-
-		annvrsryManageVO.getSearchVO().setRecordPerPage(5);
-		annvrsryManageVO.getSearchVO().setFirstIndex(0);
+		annvrsryManageVO.getSearchVO().setSizeAndOffset(5, 0);
 
 		model.addAttribute("resultList", annvrsryManageService.selectAnnvrsryGdcc(annvrsryManageVO));
 

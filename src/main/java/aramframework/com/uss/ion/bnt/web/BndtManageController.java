@@ -114,12 +114,12 @@ public class BndtManageController {
 		bndtManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("bndtManageList", bndtManageService.selectBndtManageList(bndtManageVO));
-
 		int totCnt = bndtManageService.selectBndtManageListCnt(bndtManageVO);
-		bndtManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		bndtManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/ion/bnt/BndtManageList");
 	}
@@ -131,9 +131,10 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/detailBndtManage.do")
 	public String detailBndtManage(
-			@ModelAttribute BndtManageVO bndtManageVO) {
+			BndtManageVO bndtManageVO,
+			ModelMap model) {
 
-		bndtManageService.selectBndtManage(bndtManageVO);
+		model.addAttribute(bndtManageService.selectBndtManage(bndtManageVO));
 
 		return WebUtil.adjustViewName("/uss/ion/bnt/BndtManageDetail");
 	}
@@ -182,9 +183,10 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/editBndtManage.do")
 	public String editBndtManage(
-			@ModelAttribute BndtManageVO bndtManageVO) {
+			BndtManageVO bndtManageVO,
+			ModelMap model) {
 
-		bndtManageService.selectBndtManage(bndtManageVO);
+		model.addAttribute(bndtManageService.selectBndtManage(bndtManageVO));
 
 		return WebUtil.adjustViewName("/uss/ion/bnt/BndtManageEdit");
 	}
@@ -253,12 +255,12 @@ public class BndtManageController {
 		bndtCeckManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", bndtManageService.selectBndtCeckManageList(bndtCeckManageVO));
-
 		int totCnt = bndtManageService.selectBndtCeckManageListCnt(bndtCeckManageVO);
-		bndtCeckManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		bndtCeckManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		cmmUseService.populateCmmCodeList("COM071", "COM071_bndtCeckSe");
 
@@ -272,9 +274,10 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/detailBndtCeckManage.do")
 	public String detailBndtCeckManage(
-			@ModelAttribute BndtCeckManageVO bndtCeckManageVO) {
+			BndtCeckManageVO bndtCeckManageVO,
+			ModelMap model) {
 
-		bndtManageService.selectBndtCeckManage(bndtCeckManageVO);
+		model.addAttribute(bndtManageService.selectBndtCeckManage(bndtCeckManageVO));
 
 		return WebUtil.adjustViewName("/uss/ion/bnt/BndtCeckManageDetail");
 	}
@@ -330,9 +333,10 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/editBndtCeckManage.do")
 	public String editBndtCeckManage(
-			@ModelAttribute BndtCeckManageVO bndtCeckManageVO) {
+			BndtCeckManageVO bndtCeckManageVO,
+			ModelMap model) {
 
-		bndtManageService.selectBndtCeckManage(bndtCeckManageVO);
+		model.addAttribute(bndtManageService.selectBndtCeckManage(bndtCeckManageVO));
 
 		return WebUtil.adjustViewName("/uss/ion/bnt/BndtCeckManageEdit");
 	}

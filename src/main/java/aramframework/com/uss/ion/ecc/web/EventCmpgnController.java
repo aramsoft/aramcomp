@@ -65,12 +65,12 @@ public class EventCmpgnController {
 		eventCmpgnVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", eventCmpgnService.selectEventCmpgnList(eventCmpgnVO));
-
 		int totCnt = (Integer) eventCmpgnService.selectEventCmpgnListCnt(eventCmpgnVO);
-		eventCmpgnVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		eventCmpgnVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		// 공통코드 행사유형 조회
 		cmmUseService.populateCmmCodeList("COM035", "COM035_eventTy");
@@ -94,12 +94,12 @@ public class EventCmpgnController {
 		eventCmpgnVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", eventCmpgnService.selectEventCmpgnList(eventCmpgnVO));
-
 		int totCnt = (Integer) eventCmpgnService.selectEventCmpgnListCnt(eventCmpgnVO);
-		eventCmpgnVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		eventCmpgnVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		// 공통코드 행사유형 조회
 		cmmUseService.populateCmmCodeList("COM035", "COM035_eventTy");
@@ -114,12 +114,13 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/detailEventCmpgn.do")
 	public String detailEventCmpgn(
-			@ModelAttribute EventCmpgnVO eventCmpgnVO) {
+			EventCmpgnVO eventCmpgnVO,
+			ModelMap model) {
+
+		model.addAttribute(eventCmpgnService.selectEventCmpgnDetail(eventCmpgnVO));
 
 		// 공통코드 행사유형 조회
 		cmmUseService.populateCmmCodeList("COM035", "COM035_eventTy");
-
-		eventCmpgnService.selectEventCmpgnDetail(eventCmpgnVO);
 
 		return WebUtil.adjustViewName("/uss/ion/ecc/EventCmpgnDetail");
 	}
@@ -180,8 +181,10 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/editEventCmpgn.do")
 	public String editEventCmpgn(
-			@ModelAttribute EventCmpgnVO eventCmpgnVO, 
+			EventCmpgnVO eventCmpgnVO,
 			ModelMap model) {
+
+		model.addAttribute(eventCmpgnService.selectEventCmpgnDetail(eventCmpgnVO));
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -189,8 +192,6 @@ public class EventCmpgnController {
 
 		// 공통코드 행사유형 조회
 		cmmUseService.populateCmmCodeList("COM035", "COM035_eventTy");
-
-		eventCmpgnService.selectEventCmpgnDetail(eventCmpgnVO);
 
 		return WebUtil.adjustViewName("/uss/ion/ecc/EventCmpgnEdit");
 	}
@@ -262,12 +263,12 @@ public class EventCmpgnController {
 		tnextrlHrInfoVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", eventCmpgnService.selectTnextrlHrInfoList(tnextrlHrInfoVO));
-
 		int totCnt = (Integer) eventCmpgnService.selectTnextrlHrInfoListCnt(tnextrlHrInfoVO);
-		tnextrlHrInfoVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		tnextrlHrInfoVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		// 성별코드조회
 		cmmUseService.populateCmmCodeList("COM014", "COM014_sexdstn");
@@ -282,14 +283,15 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/detailTnextrlHrInfo.do")
 	public String detailTnextrlHrInfo(
-			@ModelAttribute TnextrlHrInfoVO tnextrlHrInfoVO) {
+			TnextrlHrInfoVO tnextrlHrInfoVO,
+			ModelMap model) {
+
+		model.addAttribute(eventCmpgnService.selectTnextrlHrInfoDetail(tnextrlHrInfoVO));
 
 		// 성별코드조회
 		cmmUseService.populateCmmCodeList("COM014", "COM014_sexdstn");
 		// 직업코드조회
 		cmmUseService.populateCmmCodeList("COM034", "COM034_occpType");
-
-		eventCmpgnService.selectTnextrlHrInfoDetail(tnextrlHrInfoVO);
 
 		return WebUtil.adjustViewName("/uss/ion/ecc/TnextrlHrInfoDetail");
 	}
@@ -345,14 +347,15 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/editTnextrlHrInfo.do")
 	public String editTnextrlHrInfo(
-			@ModelAttribute TnextrlHrInfoVO tnextrlHrInfoVO) {
+			TnextrlHrInfoVO tnextrlHrInfoVO,
+			ModelMap model) {
+
+		model.addAttribute(eventCmpgnService.selectTnextrlHrInfoDetail(tnextrlHrInfoVO));
 
 		// 성별코드조회
 		cmmUseService.populateCmmCodeList("COM014", "COM014_sexdstn");
 		// 직업코드조회
 		cmmUseService.populateCmmCodeList("COM034", "COM034_occpType");
-
-		eventCmpgnService.selectTnextrlHrInfoDetail(tnextrlHrInfoVO);
 
 		return WebUtil.adjustViewName("/uss/ion/ecc/TnextrlHrInfoEdit");
 	}

@@ -85,12 +85,12 @@ public class MtgPlaceManageController {
 		mtgPlaceManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", mtgPlaceManageService.selectMtgPlaceManageList(mtgPlaceManageVO));
-
 		int totCnt = mtgPlaceManageService.selectMtgPlaceManageListCnt(mtgPlaceManageVO);
+	
 		mtgPlaceManageVO.getSearchVO().setTotalRecordCount(totCnt);
-
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+	
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/ion/mtg/MtgPlaceList");
 	}
@@ -103,10 +103,10 @@ public class MtgPlaceManageController {
 	@RequestMapping(value = "/uss/ion/mtg/detailMtgPlace.do")
 	@Secured("ROLE_USER")
 	public String detailMtgPlace(
-			@ModelAttribute MtgPlaceManageVO mtgPlaceManageVO,
+			MtgPlaceManageVO mtgPlaceManageVO,
 			ModelMap model) {
 
-		mtgPlaceManageService.selectMtgPlaceManage(mtgPlaceManageVO);
+		model.addAttribute(mtgPlaceManageService.selectMtgPlaceManage(mtgPlaceManageVO));
 
 		MtgPlaceFxtrsVO	mtgPlaceFxtrsVO = new MtgPlaceFxtrsVO();
 		mtgPlaceFxtrsVO.setMtgPlaceId(mtgPlaceManageVO.getMtgPlaceId());
@@ -176,10 +176,10 @@ public class MtgPlaceManageController {
 	@RequestMapping(value = "/uss/ion/mtg/editMtgPlace.do")
 	@Secured("ROLE_USER")
 	public String editMtgPlace(
-			@ModelAttribute MtgPlaceManageVO mtgPlaceManageVO,
+			MtgPlaceManageVO mtgPlaceManageVO,
 			ModelMap model) {
 
-		mtgPlaceManageService.selectMtgPlaceManage(mtgPlaceManageVO);
+		model.addAttribute(mtgPlaceManageService.selectMtgPlaceManage(mtgPlaceManageVO));
 
 		MtgPlaceFxtrsVO	mtgPlaceFxtrsVO = new MtgPlaceFxtrsVO();
 		mtgPlaceFxtrsVO.setMtgPlaceId(mtgPlaceManageVO.getMtgPlaceId());
@@ -251,7 +251,7 @@ public class MtgPlaceManageController {
 		MtgPlaceManageVO mtgPlaceManageVO = new MtgPlaceManageVO();
 		mtgPlaceManageVO.setMtgPlaceId(sTmMtgPlaceId);
 
-		mtgPlaceManageService.selectMtgPlaceManage(mtgPlaceManageVO);
+		model.addAttribute(mtgPlaceManageService.selectMtgPlaceManage(mtgPlaceManageVO));
 
 		FileVO fileVO = new FileVO();
 		fileVO.setAtchFileId(mtgPlaceManageVO.getAtchFileId());
@@ -311,17 +311,15 @@ public class MtgPlaceManageController {
 	@RequestMapping(value = "/uss/ion/mtg/detailMtgPlaceResve.do")
 	@Secured("ROLE_USER")
 	public String detailMtgPlaceResve(
-			@ModelAttribute MtgPlaceResveVO mtgPlaceResveVO, 
+			MtgPlaceResveVO mtgPlaceResveVO, 
 			ModelMap model) {
 
 		MtgPlaceManageVO mtgPlaceManageVO = new MtgPlaceManageVO();
 		mtgPlaceManageVO.setMtgPlaceId(mtgPlaceResveVO.getMtgPlaceId());
 
-		mtgPlaceManageService.selectMtgPlaceManage(mtgPlaceManageVO);
+		model.addAttribute(mtgPlaceManageService.selectMtgPlaceManage(mtgPlaceManageVO));
 
-		model.addAttribute("mtgPlaceManageVO", mtgPlaceManageVO);
-
-		mtgPlaceManageService.selectMtgPlaceResveDetail(mtgPlaceResveVO);
+		mtgPlaceResveVO = mtgPlaceManageService.selectMtgPlaceResveDetail(mtgPlaceResveVO);
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		mtgPlaceResveVO.setUsidTemp(loginVO.getUniqId());
@@ -339,7 +337,9 @@ public class MtgPlaceManageController {
 
 		mtgPlaceResveVO.setResveBeginTm(resveBeginTm);
 		mtgPlaceResveVO.setResveEndTm(resveEndTm);
-
+		
+		model.addAttribute(mtgPlaceResveVO);
+		
 		return WebUtil.adjustViewName("/uss/ion/mtg/MtgPlaceResveDetail");
 	}
 
@@ -357,9 +357,7 @@ public class MtgPlaceManageController {
 		MtgPlaceManageVO mtgPlaceManageVO = new MtgPlaceManageVO();
 		mtgPlaceManageVO.setMtgPlaceId(mtgPlaceResveVO.getMtgPlaceId());
 
-		mtgPlaceManageService.selectMtgPlaceManage(mtgPlaceManageVO);
-
-		model.addAttribute("mtgPlaceManageVO", mtgPlaceManageVO);
+		model.addAttribute(mtgPlaceManageService.selectMtgPlaceManage(mtgPlaceManageVO));
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -404,16 +402,14 @@ public class MtgPlaceManageController {
 	@RequestMapping(value = "/uss/ion/mtg/editMtgPlaceResve.do")
 	@Secured("ROLE_USER")
 	public String editMtgPlaceResve(
-			@ModelAttribute MtgPlaceResveVO mtgPlaceResveVO, 
+			MtgPlaceResveVO mtgPlaceResveVO, 
 			ModelMap model) {
 
 		MtgPlaceManageVO mtgPlaceManageVO = new MtgPlaceManageVO();
 		mtgPlaceManageVO.setMtgPlaceId(mtgPlaceResveVO.getMtgPlaceId());
 
-		mtgPlaceManageService.selectMtgPlaceManage(mtgPlaceManageVO);
-		model.addAttribute("mtgPlaceManageVO", mtgPlaceManageVO);
-
-		mtgPlaceManageService.selectMtgPlaceResveDetail(mtgPlaceResveVO);
+		model.addAttribute(mtgPlaceManageService.selectMtgPlaceManage(mtgPlaceManageVO));
+		model.addAttribute(mtgPlaceManageService.selectMtgPlaceResveDetail(mtgPlaceResveVO));
 
 		return WebUtil.adjustViewName("/uss/ion/mtg/MtgPlaceResveEdit");
 	}

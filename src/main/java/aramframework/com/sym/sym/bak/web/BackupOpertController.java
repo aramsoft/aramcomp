@@ -80,12 +80,12 @@ public class BackupOpertController {
 		backupOpertVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", backupOpertService.selectBackupOpertList(backupOpertVO));
-
 		int totCnt = backupOpertService.selectBackupOpertListCnt(backupOpertVO);
-		backupOpertVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		backupOpertVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/sym/bak/BackupOpertList");
 	}
@@ -98,9 +98,10 @@ public class BackupOpertController {
 	@RequestMapping("/sym/sym/bak/detailBackupOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String detailBackupOpert(
-			@ModelAttribute BackupOpertVO backupOpertVO) {
+			BackupOpertVO backupOpertVO,
+			ModelMap model) {
 		
-		backupOpertService.selectBackupOpert(backupOpertVO);
+		model.addAttribute(backupOpertService.selectBackupOpert(backupOpertVO));
 
 		return WebUtil.adjustViewName("/sym/sym/bak/BackupOpertDetail");
 	}
@@ -163,12 +164,12 @@ public class BackupOpertController {
 	@RequestMapping("/sym/sym/bak/editBackupOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String editBackupOpert(
-			@ModelAttribute BackupOpertVO backupOpertVO, 
+			BackupOpertVO backupOpertVO,
 			ModelMap model) {
-
+		
+		model.addAttribute(backupOpertService.selectBackupOpert(backupOpertVO));
+	
 		referenceData(model);
-
-		backupOpertService.selectBackupOpert(backupOpertVO);
 
 		return WebUtil.adjustViewName("/sym/sym/bak/BackupOpertEdit");
 	}

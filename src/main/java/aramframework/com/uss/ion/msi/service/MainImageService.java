@@ -108,6 +108,21 @@ public class MainImageService extends EgovAbstractServiceImpl {
 	}
 
 	/**
+	 * 기 등록된 메인화면이미지정보를 삭제한다.
+	 * 
+	 * @param mainImageVO
+	 */
+	public void deleteMainImages(String imageIds) {
+		String[] strImageIds = imageIds.split(";");
+
+		MainImageVO mainImageVO = new MainImageVO();
+		for (int i = 0; i < strImageIds.length; i++) {
+			mainImageVO.setImageId(strImageIds[i]);
+			deleteMainImage(mainImageVO);
+		}
+	}
+
+	/**
 	 * 기 등록된 메인화면이미지정보의 이미지파일을 삭제한다.
 	 * 
 	 * @param mainImageVO

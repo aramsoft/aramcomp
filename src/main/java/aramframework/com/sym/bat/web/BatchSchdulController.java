@@ -73,12 +73,12 @@ public class BatchSchdulController {
 		batchSchdulVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", batchSchdulService.selectBatchSchdulList(batchSchdulVO));
-
 		int totCnt = batchSchdulService.selectBatchSchdulListCnt(batchSchdulVO);
-		batchSchdulVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		batchSchdulVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/bat/BatchSchdulList");
 	}
@@ -91,9 +91,10 @@ public class BatchSchdulController {
 	@RequestMapping("/sym/bat/detailBatchSchdul.do")
 	@Secured("ROLE_ADMIN")
 	public String detailBatchSchdul(
-			@ModelAttribute BatchSchdulVO batchSchdulVO) {
+			BatchSchdulVO batchSchdulVO,
+			ModelMap model) {
 
-		batchSchdulService.selectBatchSchdul(batchSchdulVO);
+		model.addAttribute(batchSchdulService.selectBatchSchdul(batchSchdulVO));
 
 		return WebUtil.adjustViewName("/sym/bat/BatchSchdulDetail");
 	}
@@ -155,12 +156,12 @@ public class BatchSchdulController {
 	@RequestMapping("/sym/bat/editBatchSchdul.do")
 	@Secured("ROLE_ADMIN")
 	public String editBatchSchdul(
-			@ModelAttribute BatchSchdulVO batchSchdulVO, 
+			BatchSchdulVO batchSchdulVO,
 			ModelMap model) {
 
-		referenceData(model);
+		model.addAttribute(batchSchdulService.selectBatchSchdul(batchSchdulVO));
 
-		batchSchdulService.selectBatchSchdul(batchSchdulVO);
+		referenceData(model);
 
 		return WebUtil.adjustViewName("/sym/bat/BatchSchdulEdit");
 	}

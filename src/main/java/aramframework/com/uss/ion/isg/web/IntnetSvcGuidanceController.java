@@ -9,7 +9,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
@@ -72,12 +71,12 @@ public class IntnetSvcGuidanceController {
 		intnetSvcGuidanceVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", intnetSvcGuidanceService.selectIntnetSvcGuidanceList(intnetSvcGuidanceVO));
-
 		int totCnt = intnetSvcGuidanceService.selectIntnetSvcGuidanceListCnt(intnetSvcGuidanceVO);
-		intnetSvcGuidanceVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		intnetSvcGuidanceVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/ion/isg/IntnetSvcGuidanceList");
 	}
@@ -126,10 +125,10 @@ public class IntnetSvcGuidanceController {
 	 */
 	@RequestMapping("/uss/ion/isg/editIntnetSvcGuidance.do")
 	public String editIntnetSvcGuidance(
-			@RequestParam String intnetSvcId,
-			@ModelAttribute IntnetSvcGuidanceVO intnetSvcGuidanceVO) {
+			IntnetSvcGuidanceVO intnetSvcGuidanceVO,
+			ModelMap model) {
 
-		intnetSvcGuidanceService.selectIntnetSvcGuidance(intnetSvcGuidanceVO);
+		model.addAttribute(intnetSvcGuidanceService.selectIntnetSvcGuidance(intnetSvcGuidanceVO));
 
 		return WebUtil.adjustViewName("/uss/ion/isg/IntnetSvcGuidanceEdit");
 	}

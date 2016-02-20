@@ -1,7 +1,5 @@
 package aramframework.com.uss.ion.ntm.web;
 
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -9,6 +7,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
@@ -21,7 +20,6 @@ import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.ntm.domain.NoteManageVO;
 import aramframework.com.uss.ion.ntm.service.NoteManageService;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
-import egovframework.rte.ptl.mvc.bind.annotation.CommandMap;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
@@ -65,14 +63,13 @@ public class NoteManageController {
 	@RequestMapping(value = "/uss/ion/ntm/registNote.do")
 	@Secured("ROLE_USER")
 	public String registNote(
-			@CommandMap Map<String, Object> commandMap, 
 			@ModelAttribute NoteManageVO noteManageVO, 
+			@RequestParam String cmd,
 			ModelMap model) {
 
 		// 답변처리
-		String sCmd = commandMap.get("cmd") == null ? "" : (String) commandMap.get("cmd");
-		if (sCmd.equals("reply")) {
-			model.addAttribute("cmd", sCmd);
+		if (cmd.equals("reply")) {
+			model.addAttribute("cmd", cmd);
 
 			EgovMap mapNoteManage = noteManageService.selectNoteManage(noteManageVO);
 
@@ -113,7 +110,8 @@ public class NoteManageController {
 	@RequestMapping(value = "/uss/ion/ntm/insertNote.do")
 	public String insertNote(
 			MultipartHttpServletRequest multiRequest, 
-			@CommandMap Map<String, Object> commandMap, 
+			@RequestParam String recptnEmpList,
+			@RequestParam String recptnSeList,
 			@ModelAttribute NoteManageVO noteManageVO, 
 			BindingResult bindingResult,
 			ModelMap model) 
@@ -133,7 +131,7 @@ public class NoteManageController {
 		noteManageVO.setFrstRegisterId(loginVO.getUniqId());
 
 		// 쪽지등록
-		noteManageService.insertNoteManage(noteManageVO, commandMap);
+		noteManageService.insertNoteManage(noteManageVO, recptnEmpList, recptnSeList);
 
 		model.addAttribute("message", "작성된 쪽지를 전송하였습니다!");
         return WebUtil.redirectJsp(model, "/uss/ion/nts/listNoteTrnsmit.do");

@@ -77,12 +77,12 @@ public class MenuManageController {
 		menuManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", menuManageService.selectMenuManageList(menuManageVO));
-
 		int totCnt = menuManageService.selectMenuManageListCnt(menuManageVO);
-		menuManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		menuManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/sym/mnu/mpm/MenuList");
 	}
@@ -141,10 +141,10 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/editMenu.do")
 	@Secured("ROLE_ADMIN")
 	public String editMenu(
-			@ModelAttribute MenuManageVO menuManageVO, 
+			MenuManageVO menuManageVO, 
 			ModelMap model) {
 
-		menuManageService.selectMenuManage(menuManageVO);
+		model.addAttribute(menuManageService.selectMenuManage(menuManageVO));
 
 		return WebUtil.adjustViewName("/sym/mnu/mpm/MenuEdit");
 	}

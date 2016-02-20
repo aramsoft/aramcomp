@@ -66,12 +66,12 @@ public class DtaUseStatsContoller {
 		dtaUseStatsVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", dtaUseStatsService.selectDtaUseStatsList(dtaUseStatsVO));
-
 		int totPageCnt = dtaUseStatsService.selectDtaUseStatsListCnt(dtaUseStatsVO);
-		dtaUseStatsVO.getSearchVO().setTotalRecordCount(totPageCnt);
 
+		dtaUseStatsVO.getSearchVO().setTotalRecordCount(totPageCnt);
 		paginationInfo.setTotalRecordCount(totPageCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		int totCnt = dtaUseStatsService.selectDtaUseStatsListBarListCnt(dtaUseStatsVO);
 		if (totCnt > 10 && totCnt <= 100) {

@@ -82,12 +82,12 @@ public class BannerController {
 		bannerVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", bannerService.selectBannerList(bannerVO));
-
 		int totCnt = bannerService.selectBannerListCnt(bannerVO);
-		bannerVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		bannerVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/ion/bnr/BannerList");
 	}
@@ -153,9 +153,10 @@ public class BannerController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnr/editBanner.do")
 	public String editBanner(
-			@ModelAttribute BannerVO bannerVO) {
+			BannerVO bannerVO,
+			ModelMap model) {
 
-		bannerService.selectBanner(bannerVO);
+		model.addAttribute(bannerService.selectBanner(bannerVO));
 		
 		return WebUtil.adjustViewName("/uss/ion/bnr/BannerEdit");
 	}
@@ -238,13 +239,7 @@ public class BannerController {
 			@ModelAttribute BannerVO bannerVO, 
 			ModelMap model) {
 
-		String[] strBannerIds = bannerIds.split(";");
-
-		BannerVO bVO = new BannerVO();
-		for (int i = 0; i < strBannerIds.length; i++) {
-			bVO.setBannerId(strBannerIds[i]);
-			bannerService.deleteBanner(bVO);
-		}
+		bannerService.deleteBanners(bannerIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
         return WebUtil.redirectJsp(model, "/uss/ion/bnr/listBanner.do");
@@ -277,8 +272,7 @@ public class BannerController {
 			@ModelAttribute BannerVO bannerVO, 
 			ModelMap model) {
 
-		bannerVO.getSearchVO().setRecordPerPage(5);
-		bannerVO.getSearchVO().setFirstIndex(0);
+		bannerVO.getSearchVO().setSizeAndOffset(5, 0);
 
 		model.addAttribute("bannerList", bannerService.selectBannerList(bannerVO));
 

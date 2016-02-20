@@ -54,12 +54,12 @@ public class InfrmlSanctnController {
 		sanctnerVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", infrmlSanctnService.selectSanctnerList(sanctnerVO));
-
 		int totCnt = infrmlSanctnService.selectSanctnerListCnt(sanctnerVO);
-		sanctnerVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		sanctnerVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/ion/ism/SanctnerListPopup");
 	}
@@ -71,9 +71,10 @@ public class InfrmlSanctnController {
 	 */
 	@RequestMapping("/uss/ion/ism/detailSanctner.do")
 	public String detailSanctner(
-			@ModelAttribute InfrmlSanctnVO infrmlSanctnVO) {
+			InfrmlSanctnVO infrmlSanctnVO,
+			ModelMap model) {
 
-		infrmlSanctnService.selectInfrmlSanctn(infrmlSanctnVO);
+		model.addAttribute(infrmlSanctnService.selectInfrmlSanctn(infrmlSanctnVO));
 
 		return WebUtil.adjustViewName("/uss/ion/ism/InfrmlSanctnDetail");
 	}

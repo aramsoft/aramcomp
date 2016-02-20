@@ -65,12 +65,12 @@ public class NotificationController {
 		notificationVO.setUniqId(loginVO.getUniqId());
 
 		model.addAttribute("resultList", notificationService.selectNotificationInfs(notificationVO));
-
 		int totCnt = notificationService.selectNotificationInfsCnt(notificationVO);
-		notificationVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		notificationVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return WebUtil.adjustViewName("/uss/ion/noi/NotificationList");
 	}
@@ -82,10 +82,10 @@ public class NotificationController {
 	 */
 	@RequestMapping("/uss/ion/noi/detailNotification.do")
 	public String detailNotification(
-			@ModelAttribute NotificationVO notificationVO, 
+			NotificationVO notificationVO, 
 			ModelMap model) {
 
-		notificationService.selectNotificationInf(notificationVO);
+		model.addAttribute(notificationService.selectNotificationInf(notificationVO));
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		model.addAttribute("sessionUniqId", loginVO.getUniqId());
@@ -142,9 +142,10 @@ public class NotificationController {
 	 */
 	@RequestMapping("/uss/ion/noi/editNotification.do")
 	public String editNotification(
-			@ModelAttribute NotificationVO notificationVO) {
-		
-		notificationService.selectNotificationInf(notificationVO);
+			NotificationVO notificationVO, 
+			ModelMap model) {
+
+		model.addAttribute(notificationService.selectNotificationInf(notificationVO));
 
 		return WebUtil.adjustViewName("/uss/ion/noi/NotificationEdit");
 	}

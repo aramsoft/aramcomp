@@ -49,7 +49,7 @@
 	    </th>          
 	    <td width="80%">
 			<select name="orgnztId" class="select" title="조직명">
-				<c:forEach var="result" items="${mapTeam}" varStatus="status">
+				<c:forEach var="result" items="${mapTeamList}" varStatus="status">
 					<option value='<c:out value="${result.orgnztId}"/>'><c:out value="${result.orgnztNm}"/></option>
 				</c:forEach>			  		   
 			</select>

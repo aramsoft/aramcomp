@@ -1,5 +1,7 @@
 package aramframework.com.uss.ion.ntm.web;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,7 @@ import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.ntm.domain.NoteManageVO;
 import aramframework.com.uss.ion.ntm.service.NoteManageService;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
+import egovframework.rte.ptl.mvc.bind.annotation.CommandMap;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
@@ -63,13 +66,16 @@ public class NoteManageController {
 	@RequestMapping(value = "/uss/ion/ntm/registNote.do")
 	@Secured("ROLE_USER")
 	public String registNote(
+			@CommandMap Map<String, Object> commandMap,
 			@ModelAttribute NoteManageVO noteManageVO, 
-			@RequestParam String cmd,
 			ModelMap model) {
 
+		// 변수 설정
+		String sCmd = commandMap.get("cmd") == null ? "" : (String) commandMap.get("cmd");
+		// 삭제 모드로 실행시
 		// 답변처리
-		if (cmd.equals("reply")) {
-			model.addAttribute("cmd", cmd);
+		if (sCmd.equals("reply")) {
+			model.addAttribute("cmd", sCmd);
 
 			EgovMap mapNoteManage = noteManageService.selectNoteManage(noteManageVO);
 

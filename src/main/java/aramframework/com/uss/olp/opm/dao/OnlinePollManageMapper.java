@@ -2,7 +2,6 @@ package aramframework.com.uss.olp.opm.dao;
 
 import java.util.List;
 
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.uss.olp.opm.domain.OnlinePollItemVO;
 import aramframework.com.uss.olp.opm.domain.OnlinePollManageVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
@@ -35,14 +34,14 @@ public interface OnlinePollManageMapper {
 	 * 
 	 * @param searchVO
 	 */
-	public List<EgovMap> selectOnlinePollManageList(SearchVO searchVO);
+	public List<EgovMap> selectOnlinePollManageList(OnlinePollManageVO onlinePollManageVO);
 
 	/**
 	 * 온라인POLL관리를(을) 목록 전체 건수를(을) 조회한다.
 	 * 
 	 * @param searchVO
 	 */
-	public int selectOnlinePollManageListCnt(SearchVO searchVO);
+	public int selectOnlinePollManageListCnt(OnlinePollManageVO onlinePollManageVO);
 
 	/**
 	 * 온라인POLL관리를(을) 상세조회 한다.

@@ -32,7 +32,7 @@
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
 <input type="hidden" name="serverId"/>
-<input type="hidden" name="totalCount" value="${synchrnServerVO.totalRecordCount}" />
+<input type="hidden" name="totalCount" value="${synchrnServerVO.searchVO.totalRecordCount}" />
 
 <div id="search_area">
 	<div class="button_area">
@@ -159,7 +159,7 @@
     </tbody>
     </table>
          
-    <input type="hidden" name="pageIndex" value="<c:out value='${synchrnServerVO.pageIndex}'/>" />
+    <input type="hidden" name="pageIndex" value="<c:out value='${synchrnServerVO.searchVO.pageIndex}'/>" />
     <input type="hidden" name="deleteFiles" />
     </form>
 

@@ -166,7 +166,7 @@
         </choose>
 		</if>
 	    <if test='searchVO.searchCondition == "3"'>
-				<![CDATA[ AND REQUST_DE between #{searchKeywordFrom} and #{searchKeywordTo} ]]>
+				<![CDATA[ AND REQUST_DE between #{searchVO.searchKeywordFrom} and #{searchVO.searchKeywordTo} ]]>
         </if>
         <![CDATA[   
              ORDER BY REQUST_NO ASC
@@ -200,7 +200,7 @@
         </choose>
 		</if>
 	    <if test='searchVO.searchCondition == "3"'>
-				<![CDATA[ AND REQUST_DE between #{searchKeywordFrom} and #{searchKeywordTo} ]]>
+				<![CDATA[ AND REQUST_DE between #{searchVO.searchKeywordFrom} and #{searchVO.searchKeywordTo} ]]>
         </if>
 	</select>
 

@@ -39,11 +39,11 @@
       	<if test='sttus != null and sttus != "00"'>
 				<![CDATA[ AND A.STTUS = #{sttus} ]]>
 		</if>
-      	<if test='searchVO.searchKeywordFrom != null and searchKeywordFrom != ""'>
-				<![CDATA[ AND SUBSTR(A.EXECUT_BEGIN_TM,1, 8) >= #{searchKeywordFrom}  ]]>
+      	<if test='searchVO.searchKeywordFrom != null and searchVO.searchKeywordFrom != ""'>
+				<![CDATA[ AND SUBSTR(A.EXECUT_BEGIN_TM,1, 8) >= #{searchVO.searchKeywordFrom}  ]]>
 		</if>
-      	<if test='searchVO.searchKeywordTo != null and searchKeywordTo != ""'>
-				<![CDATA[ AND SUBSTR(A.EXECUT_BEGIN_TM,1, 8) <= #{searchKeywordTo}  ]]>
+      	<if test='searchVO.searchKeywordTo != null and searchVO.searchKeywordTo != ""'>
+				<![CDATA[ AND SUBSTR(A.EXECUT_BEGIN_TM,1, 8) <= #{searchVO.searchKeywordTo}  ]]>
 		</if>
        	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
@@ -81,11 +81,11 @@
       	<if test='sttus != null and sttus != "00"'>
 				<![CDATA[ AND A.STTUS = #{sttus} ]]>
 		</if>
-      	<if test='searchVO.searchKeywordFrom != null and searchKeywordFrom != ""'>
-				<![CDATA[ AND SUBSTR(A.EXECUT_BEGIN_TM,1, 8) >= #{searchKeywordFrom}  ]]>
+      	<if test='searchVO.searchKeywordFrom != null and searchVO.searchKeywordFrom != ""'>
+				<![CDATA[ AND SUBSTR(A.EXECUT_BEGIN_TM,1, 8) >= #{searchVO.searchKeywordFrom}  ]]>
 		</if>
-      	<if test='searchVO.searchKeywordTo != null and searchKeywordTo != ""'>
-				<![CDATA[ AND SUBSTR(A.EXECUT_BEGIN_TM,1, 8) <= #{searchKeywordTo}  ]]>
+      	<if test='searchVO.searchKeywordTo != null and searchVO.searchKeywordTo != ""'>
+				<![CDATA[ AND SUBSTR(A.EXECUT_BEGIN_TM,1, 8) <= #{searchVO.searchKeywordTo}  ]]>
 		</if>
        	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>

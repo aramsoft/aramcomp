@@ -50,7 +50,7 @@ public class OnlinePollManageService extends EgovAbstractServiceImpl {
 	 * @param onlinePollManageVO
 	 */
 	public List<EgovMap> selectOnlinePollManageList(OnlinePollManageVO onlinePollManageVO) {
-		return onlinePollManageMapper.selectOnlinePollManageList(onlinePollManageVO.getSearchVO());
+		return onlinePollManageMapper.selectOnlinePollManageList(onlinePollManageVO);
 	}
 
 	/**
@@ -59,7 +59,7 @@ public class OnlinePollManageService extends EgovAbstractServiceImpl {
 	 * @param onlinePollManageVO
 	 */
 	public int selectOnlinePollManageListCnt(OnlinePollManageVO onlinePollManageVO) {
-		return (Integer) onlinePollManageMapper.selectOnlinePollManageListCnt(onlinePollManageVO.getSearchVO());
+		return (Integer) onlinePollManageMapper.selectOnlinePollManageListCnt(onlinePollManageVO);
 	}
 
 	/**

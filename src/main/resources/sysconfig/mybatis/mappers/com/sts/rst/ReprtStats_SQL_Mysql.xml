@@ -79,7 +79,7 @@
 		    		</choose>
 	       		</when>	
 	        	<otherwise>
-       		   		DATE_FORMAT(A.FRST_REGIST_PNTTM, '%Y') 		AS "grpRegDate"
+       		   		DATE_FORMAT(FRST_REGIST_PNTTM, '%Y') 		AS "grpRegDate"
  	        	</otherwise>
 	        </choose>
  

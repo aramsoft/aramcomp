@@ -205,11 +205,11 @@
 				       	ON A.MNTRNG_STTUS = C.CODE
              WHERE 1=1
         ]]>
-       	<if test='searchVO.searchKeywordFrom != null and searchKeywordFrom != ""'>
-				<![CDATA[ AND TO_CHAR(A.CREAT_DT, 'YYYYMMDD') >= #{searchKeywordFrom}  ]]>
+       	<if test='searchVO.searchKeywordFrom != null and searchVO.searchKeywordFrom != ""'>
+				<![CDATA[ AND TO_CHAR(A.CREAT_DT, 'YYYYMMDD') >= #{searchVO.searchKeywordFrom}  ]]>
 		</if>
-       	<if test='searchVO.searchKeywordTo != null and searchKeywordTo != ""'>
-				<![CDATA[ AND TO_CHAR(A.CREAT_DT, 'YYYYMMDD') <= #{searchKeywordTo}	]]>
+       	<if test='searchVO.searchKeywordTo != null and searchVO.searchKeywordTo != ""'>
+				<![CDATA[ AND TO_CHAR(A.CREAT_DT, 'YYYYMMDD') <= #{searchVO.searchKeywordTo}	]]>
 		</if>
        	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
@@ -249,11 +249,11 @@
 				       	ON A.MNTRNG_STTUS = C.CODE
              WHERE 1=1
         ]]>
-       	<if test='searchVO.searchKeywordFrom != null and searchKeywordFrom != ""'>
-				<![CDATA[ AND TO_CHAR(A.CREAT_DT, 'YYYYMMDD') >= #{searchKeywordFrom}  ]]>
+       	<if test='searchVO.searchKeywordFrom != null and searchVO.searchKeywordFrom != ""'>
+				<![CDATA[ AND TO_CHAR(A.CREAT_DT, 'YYYYMMDD') >= #{searchVO.searchKeywordFrom}  ]]>
 		</if>
-       	<if test='searchVO.searchKeywordTo != null and searchKeywordTo != ""'>
-				<![CDATA[ AND TO_CHAR(A.CREAT_DT, 'YYYYMMDD') <= #{searchKeywordTo}	]]>
+       	<if test='searchVO.searchKeywordTo != null and searchVO.searchKeywordTo != ""'>
+				<![CDATA[ AND TO_CHAR(A.CREAT_DT, 'YYYYMMDD') <= #{searchVO.searchKeywordTo}	]]>
 		</if>
        	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>

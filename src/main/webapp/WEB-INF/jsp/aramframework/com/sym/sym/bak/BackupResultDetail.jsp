@@ -134,8 +134,8 @@
 <!-- 검색조건 유지 -->
 <form:hidden path="searchVO.searchCondition" />
 <form:hidden path="searchVO.searchKeyword" />
-<form:hidden path="searchKeywordFrom" />
-<form:hidden path="searchKeywordTo" />
+<form:hidden path="searchVO.searchKeywordFrom" />
+<form:hidden path="searchVO.searchKeywordTo" />
 <form:hidden path="searchVO.pageIndex" />
 <form:hidden path="searchVO.recordPerPage" />
 <!-- 검색조건 유지 -->

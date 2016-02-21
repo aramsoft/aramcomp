@@ -73,8 +73,8 @@
 </div>
 
 <form:hidden path="searchVO.pageIndex" />
-<form:hidden path="searchKeywordFrom" />
-<form:hidden path="searchKeywordTo" />
+<form:hidden path="searchVO.searchKeywordFrom" />
+<form:hidden path="searchVO.searchKeywordTo" />
 </form:form>
 
 <table class="table-list" summary="백업결과에 대한 목록을 제공합니다.">

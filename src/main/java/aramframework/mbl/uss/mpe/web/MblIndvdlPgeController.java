@@ -139,13 +139,12 @@ public class MblIndvdlPgeController {
 		
 		// 사용자가 마이페이지에 컨텐츠를 추가하기 위해 등록되어 있는 마이페이지 목록을 조회한다.
 		modelAndView.addObject("indvdlCntntsList", indvdlPgeService.addIndvdlpgeCntntsList(indvdlPgeCntntsVO));
-        
-        // 목록의 페이징을 위해 등록되어 있는 마이페이지 개수를 조회한다.
         int totCnt = indvdlPgeService.addIndvdlpgeCntntsListCnt(indvdlPgeCntntsVO);
-        indvdlPgeCntntsVO.getSearchVO().setTotalRecordCount(totCnt);
 
+        indvdlPgeCntntsVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		modelAndView.addObject("paginationInfo", paginationInfo);
+
+		modelAndView.addObject(paginationInfo);
 
         return modelAndView;
 	}
@@ -157,9 +156,10 @@ public class MblIndvdlPgeController {
 	 */
 	@RequestMapping(value="/uss/mpe/indvdlCntntsPreview.mdo")
 	public String indvdlCntntsPreview(
-			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO) {
+			IndvdlPgeCntntsVO indvdlPgeCntntsVO,
+    		ModelMap model) {
 		
-		indvdlPgeService.selectIndvdlpgeCntnts(indvdlPgeCntntsVO);
+		model.addAttribute(indvdlPgeService.selectIndvdlpgeCntnts(indvdlPgeCntntsVO));
 
 		return "aramframework/mbl/uss/mpe/IndvdlpgeInfoDetail";
 	}

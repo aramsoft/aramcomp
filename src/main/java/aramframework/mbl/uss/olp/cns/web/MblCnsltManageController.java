@@ -60,13 +60,12 @@ public class MblCnsltManageController {
     	cnsltManageVO.getSearchVO().fillPageInfo(paginationInfo);
 		
 		model.addAttribute("cnsltManageList", cnsltManageService.selectCnsltList(cnsltManageVO));
-        
-        /** paging */
         int totCnt = cnsltManageService.selectCnsltListCnt(cnsltManageVO);
-        cnsltManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+        cnsltManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
              
 		// 인증여부 체크
 		Boolean isAuthenticated = UserDetailsHelper.isAuthenticated();
@@ -86,12 +85,13 @@ public class MblCnsltManageController {
      */
     @RequestMapping("/uss/olp/cns/detailCnslt.mdo")
     public String detailCnslt(
-    		@ModelAttribute CnsltManageVO cnsltManageVO) {  
+    		CnsltManageVO cnsltManageVO,
+    		ModelMap model) {
     	
     	// 조회 수 증가
     	cnsltManageService.updateCnsltInqireCo(cnsltManageVO);
 
-    	cnsltManageService.selectCnsltListDetail(cnsltManageVO);
+    	model.addAttribute(cnsltManageService.selectCnsltListDetail(cnsltManageVO));
     	
         return "aramframework/mbl/uss/olp/cns/CnsltDetail";
     }
@@ -213,14 +213,18 @@ public class MblCnsltManageController {
      */
     @RequestMapping(value="/uss/olp/cns/editCnslt.mdo")
     public String editCnslt(
-    		@ModelAttribute CnsltManageVO cnsltManageVO) {
+    		CnsltManageVO cnsltManageVO,
+    		ModelMap model) {
+    		
     	
 		// 작성비밀번호를 암호화 하기 위해서 Get
 		String writngPassword = cnsltManageVO.getWritngPassword();
 
-		cnsltManageService.selectCnsltListDetail(cnsltManageVO);
+		cnsltManageVO = cnsltManageService.selectCnsltListDetail(cnsltManageVO);
 		
 		cnsltManageVO.setWritngPassword(writngPassword);
+		
+		model.addAttribute(cnsltManageVO);
 
 		return "aramframework/mbl/uss/olp/cns/CnsltEdit";
     }

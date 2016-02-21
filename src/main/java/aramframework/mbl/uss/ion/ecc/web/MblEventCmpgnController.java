@@ -57,17 +57,16 @@ public class MblEventCmpgnController {
 			@ModelAttribute EventCmpgnVO eventCmpgnVO, 
     		ModelMap model) {
 		
-    	/** pageing */
     	PaginationInfo paginationInfo = new PaginationInfo();
     	eventCmpgnVO.getSearchVO().fillPageInfo(paginationInfo);
 		
 		model.addAttribute("resultList", eventCmpgnService.selectEventCmpgnList(eventCmpgnVO));
-        
         int totCnt = (Integer)eventCmpgnService.selectEventCmpgnListCnt(eventCmpgnVO);
+ 
         eventCmpgnVO.getSearchVO().setTotalRecordCount(totCnt);
-
 		paginationInfo.setTotalRecordCount(totCnt);
-        model.addAttribute("paginationInfo", paginationInfo);
+		
+        model.addAttribute(paginationInfo);
         
 		// 공통코드 행사유형 조회
 		cmmUseService.populateCmmCodeList("COM035", "COM035_eventTy");
@@ -85,17 +84,16 @@ public class MblEventCmpgnController {
 			@ModelAttribute EventCmpgnVO eventCmpgnVO, 
     		ModelMap model) {
 		
-    	/** pageing */
     	PaginationInfo paginationInfo = new PaginationInfo();
     	eventCmpgnVO.getSearchVO().fillPageInfo(paginationInfo);
 		
 		model.addAttribute("resultList", eventCmpgnService.selectEventCmpgnList(eventCmpgnVO));
-        
         int totCnt = (Integer)eventCmpgnService.selectEventCmpgnListCnt(eventCmpgnVO);
+   
         eventCmpgnVO.getSearchVO().setTotalRecordCount(totCnt);
-
 		paginationInfo.setTotalRecordCount(totCnt);
-        model.addAttribute("paginationInfo", paginationInfo);
+		
+        model.addAttribute(paginationInfo);
         
 		// 공통코드 행사유형 조회
 		cmmUseService.populateCmmCodeList("COM035", "COM035_eventTy");
@@ -113,11 +111,11 @@ public class MblEventCmpgnController {
 			EventCmpgnVO eventCmpgnVO,
 	   		ModelMap model) {
 
+		model.addAttribute(eventCmpgnService.selectEventCmpgnDetail(eventCmpgnVO));
+
 		// 공통코드 행사유형 조회
 		cmmUseService.populateCmmCodeList("COM035", "COM035_eventTy");
     	
-		model.addAttribute(eventCmpgnService.selectEventCmpgnDetail(eventCmpgnVO));
-
 		return "aramframework/mbl/uss/ion/ecc/EventCmpgnDetail"; 	
 	}
 

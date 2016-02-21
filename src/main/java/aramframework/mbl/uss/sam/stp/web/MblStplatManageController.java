@@ -66,12 +66,12 @@ public class MblStplatManageController {
     	stplatManageVO.getSearchVO().fillPageInfo(paginationInfo);
 		
 		modelAndView.addObject("reusltList", stplatManageService.selectStplatList(stplatManageVO));
-        
         int totCnt = stplatManageService.selectStplatListCnt(stplatManageVO);
+ 
         stplatManageVO.getSearchVO().setTotalRecordCount(totCnt);
-
 		paginationInfo.setTotalRecordCount(totCnt);
- 		modelAndView.addObject("paginationInfo", paginationInfo);
+
+		modelAndView.addObject(paginationInfo);
 		
 		return modelAndView;
     } 
@@ -83,10 +83,10 @@ public class MblStplatManageController {
      */
     @RequestMapping("/uss/sam/stp/detailStplat.mdo")
     public String detailStplat(
-			@ModelAttribute StplatManageVO stplatManageVO, 
+			StplatManageVO stplatManageVO, 
             ModelMap model) {  
     	
-		stplatManageService.selectStplatDetail(stplatManageVO);
+    	model.addAttribute(stplatManageService.selectStplatDetail(stplatManageVO));
         return	"aramframework/mbl/uss/sam/stp/StplatDetail";
     }
 

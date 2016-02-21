@@ -64,13 +64,12 @@ public class MblWordDicaryController {
     	wordDicaryVO.getSearchVO().fillPageInfo(paginationInfo);
 		
 		modelAndView.addObject("wordDicaryList", wordDicaryService.selectWordDicaryList(wordDicaryVO));
-
-        /** Paging */
         int totCnt = wordDicaryService.selectWordDicaryListCnt(wordDicaryVO);
-        wordDicaryVO.getSearchVO().setTotalRecordCount(totCnt);
 
+        wordDicaryVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-        modelAndView.addObject("paginationInfo", paginationInfo);
+
+		modelAndView.addObject(paginationInfo);
         
         return modelAndView;
     }
@@ -82,9 +81,10 @@ public class MblWordDicaryController {
      */
     @RequestMapping("/uss/olh/wor/detailWordDicary.mdo")
     public String detailWordDicary(
-    		@ModelAttribute WordDicaryVO wordDicaryVO) {  
+    		WordDicaryVO wordDicaryVO,
+    		ModelMap model) {
     	
-		wordDicaryService.selectWordDicaryDetail(wordDicaryVO);
+    	model.addAttribute(wordDicaryService.selectWordDicaryDetail(wordDicaryVO));
 		
         return "aramframework/mbl/uss/olh/wor/WordDicaryDetail";
     }
@@ -104,13 +104,12 @@ public class MblWordDicaryController {
     	wordDicaryVO.getSearchVO().fillPageInfo(paginationInfo);
 		
 		model.addAttribute("wordDicaryList", wordDicaryService.selectWordDicaryList(wordDicaryVO));
-
-        /** Paging */
         int totCnt = wordDicaryService.selectWordDicaryListCnt(wordDicaryVO);
-        wordDicaryVO.getSearchVO().setTotalRecordCount(totCnt);
 
+        wordDicaryVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
         
         return "aramframework/mbl/uss/olh/wor/WordDicaryMainList";
     }

@@ -73,7 +73,7 @@ public class ImageProcessController {
 		fileVO.setAtchFileId(fileId);
 		fileVO.setFileSn(fileSn);
 		
-		fileMngService.selectFileInf(fileVO);
+		fileVO = fileMngService.selectFileInf(fileVO);
 
 		// 2011.10.10 보안점검 후속조치
 		String source = fileVO.getFileStreCours() +  fileVO.getStreFileNm();

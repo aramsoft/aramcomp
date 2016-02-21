@@ -59,17 +59,16 @@ public class MblRecomendSiteController {
     	
     	ModelAndView modelAndView = new ModelAndView("jsonView");
     	
-		/** paging */
 		PaginationInfo paginationInfo = new PaginationInfo();
 		recomendSiteVO.getSearchVO().fillPageInfo(paginationInfo);
 		
 		modelAndView.addObject("resultList", recomendSiteService.selectRecomendSiteList(recomendSiteVO));
-        
         int totCnt = recomendSiteService.selectRecomendSiteListCnt(recomendSiteVO);
-        recomendSiteVO.getSearchVO().setTotalRecordCount(totCnt);
 
+        recomendSiteVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		modelAndView.addObject("paginationInfo", paginationInfo);
+
+		modelAndView.addObject(paginationInfo);
         
         return modelAndView;
     } 
@@ -80,10 +79,11 @@ public class MblRecomendSiteController {
      * @param recomendSiteVO
      */
     @RequestMapping("/uss/ion/rec/detailRecomendSite.mdo")
-    public String	detailRecomendSite(
-    		@ModelAttribute RecomendSiteVO recomendSiteVO) {  
+    public String detailRecomendSite(
+    		RecomendSiteVO recomendSiteVO,
+    		ModelMap model) {
     	
-		recomendSiteService.selectRecomendSiteDetail(recomendSiteVO);
+    	model.addAttribute(recomendSiteService.selectRecomendSiteDetail(recomendSiteVO));
 		
         return "aramframework/mbl/uss/ion/rec/RecomendSiteDetail";
     }

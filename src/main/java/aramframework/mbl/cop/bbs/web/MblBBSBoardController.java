@@ -183,12 +183,12 @@ public class MblBBSBoardController {
 		boardVO.getSearchVO().fillPageInfo(paginationInfo);
 		
 		model.addAttribute("resultList", boardService.selectBoardArticleList(boardVO));
-
 		int totCnt = boardService.selectBoardArticleListCnt(boardVO);
-		boardVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		boardVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		return "aramframework/mbl/cop/bbs/NoticeList";
     }
@@ -204,7 +204,7 @@ public class MblBBSBoardController {
 	public String detailBoardArticle(
 			@PathVariable String bbsPathId, 
 			@PathVariable int nttId,			
-			@ModelAttribute BoardVO boardVO,
+			BoardVO boardVO,
 			ModelMap model) {
 
 		String bbsId = WebUtil.getOriginalId(bbsPathId, "BBSMSTR_");
@@ -225,7 +225,7 @@ public class MblBBSBoardController {
 		// 2009.06.29 : 2단계 기능 추가
 		// ---------------------------------
 		boardService.updateRdcnt(boardVO);
-		boardService.selectBoardArticle(boardVO);
+		model.addAttribute(boardService.selectBoardArticle(boardVO));
 
 		// ----------------------------
 		// 2009.06.29 : 2단계 기능 추가
@@ -428,7 +428,7 @@ public class MblBBSBoardController {
      */
     @RequestMapping("/cop/bbs/editBoardArticle.mdo")
     public String editBoardArticle(
-			@ModelAttribute BoardVO boardVO, 
+			BoardVO boardVO, 
     		ModelMap model) {
 
     	if( boardVO.getBbsId() == null || boardVO.getBbsId().equals("") ) {
@@ -444,7 +444,7 @@ public class MblBBSBoardController {
 		}
 		model.addAttribute("editAuthFlag", getEditAuthFlag(boardVO));
 		
-    	boardService.selectBoardArticle(boardVO);
+		model.addAttribute(boardService.selectBoardArticle(boardVO));
 		
 		return "aramframework/mbl/cop/bbs/NoticeEdit";
     }

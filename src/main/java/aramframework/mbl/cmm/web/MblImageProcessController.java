@@ -63,7 +63,7 @@ public class MblImageProcessController {
 		fileVO.setAtchFileId(fileId);
 		fileVO.setFileSn(fileSn);
 		
-		fileService.selectFileInf(fileVO);
+		fileVO = fileService.selectFileInf(fileVO);
 
 		// 2011.10.10 보안점검 후속조치
 		String source = fileVO.getFileStreCours() +  fileVO.getStreFileNm();

@@ -58,12 +58,12 @@ public class MblDiaryManageController {
     	diaryManageVO.getSearchVO().fillPageInfo(paginationInfo);
 		
 		model.addAttribute("resultList", diaryManageService.selectDiaryManageList(diaryManageVO));
-        
         int totCnt = (Integer)diaryManageService.selectDiaryManageListCnt(diaryManageVO);
-        diaryManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+        diaryManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-        model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
         
 		return "aramframework/mbl/cop/smt/dsm/DiaryList"; 
 	}
@@ -76,9 +76,10 @@ public class MblDiaryManageController {
 	@RequestMapping(value="/cop/smt/dsm/detailDiary.mdo")
 	@Secured("ROLE_USER")
 	public String detailDiary(
-			@ModelAttribute DiaryManageVO diaryManageVO) {
+			DiaryManageVO diaryManageVO,
+    		ModelMap model) {
 		
-        diaryManageService.selectDiaryManageDetail(diaryManageVO);
+		model.addAttribute(diaryManageService.selectDiaryManageDetail(diaryManageVO));
 
         return "aramframework/mbl/cop/smt/dsm/DiaryDetail"; 	
 	}
@@ -137,9 +138,10 @@ public class MblDiaryManageController {
 	@RequestMapping(value="/cop/smt/dsm/editDiary.mdo")
 	@Secured("ROLE_USER")
 	public String editDiary(
-			@ModelAttribute DiaryManageVO diaryManageVO) {
-
-		diaryManageService.selectDiaryManageDetail(diaryManageVO);
+			DiaryManageVO diaryManageVO,
+    		ModelMap model) {
+		
+		model.addAttribute(diaryManageService.selectDiaryManageDetail(diaryManageVO));
 
 		return "aramframework/mbl/cop/smt/dsm/DiaryEdit"; 	
 	}

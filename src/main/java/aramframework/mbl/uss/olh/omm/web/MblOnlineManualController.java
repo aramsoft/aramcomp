@@ -68,12 +68,12 @@ public class MblOnlineManualController {
         onlineManualVO.getSearchVO().fillPageInfo(paginationInfo);
 
         modelAndView.addObject("reusltList", onlineManualService.selectOnlineManualList(onlineManualVO));
-		
         int totCnt = (Integer) onlineManualService.selectOnlineManualListCnt(onlineManualVO);
-        onlineManualVO.getSearchVO().setTotalRecordCount(totCnt);
 
+        onlineManualVO.getSearchVO().setTotalRecordCount(totCnt);
         paginationInfo.setTotalRecordCount(totCnt);
-        modelAndView.addObject("paginationInfo", paginationInfo);
+
+        modelAndView.addObject(paginationInfo);
  
         //온라인메뉴얼 구분 설정
         modelAndView.addObject("onlineMnlSeCodeList", cmmUseService.selectCmmCodeList("COM041"));
@@ -88,10 +88,10 @@ public class MblOnlineManualController {
      */
     @RequestMapping(value = "/uss/olh/omm/detailOnlineManual.mdo")
     public String detailOnlineManual(
-    		@ModelAttribute OnlineManualVO onlineManualVO, 
-           ModelMap model) {
+    		OnlineManualVO onlineManualVO, 
+            ModelMap model) {
 
-        onlineManualService.selectOnlineManualDetail(onlineManualVO);
+    	model.addAttribute(onlineManualService.selectOnlineManualDetail(onlineManualVO));
         
         //온라인메뉴얼 구분 설정
         model.addAttribute("onlineMnlSeCodeList", cmmUseService.selectCmmCodeList("COM041"));

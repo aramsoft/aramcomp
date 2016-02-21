@@ -68,12 +68,12 @@ public class MblBBSCommentController {
 		commentVO.getSearchVO().fillPageInfo(paginationInfo);
 	
 		model.addAttribute("resultList", bbsCommentService.selectCommentList(commentVO));
-
 		int totCnt = bbsCommentService.selectCommentListCnt(commentVO);
-		commentVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		commentVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 	
 		model.addAttribute("anonymous", "false");
 		return "aramframework/mbl/cop/bbs/CommentList";
@@ -173,12 +173,12 @@ public class MblBBSCommentController {
 		commentVO.getSearchVO().fillPageInfo(paginationInfo);
 	
 		model.addAttribute("resultList", bbsCommentService.selectCommentList(commentVO));
-
 		int totCnt = bbsCommentService.selectCommentListCnt(commentVO);
-		commentVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		commentVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 	
 		model.addAttribute("anonymous", "true");
 		return "aramframework/mbl/cop/bbs/CommentList";

@@ -59,13 +59,12 @@ public class MblQnaManageController {
     	qnaManageVO.getSearchVO().fillPageInfo(paginationInfo);
 		
 		model.addAttribute("qnaManageList", qnaManageService.selectQnaList(qnaManageVO));
-        
-        /** paging */
         int totCnt = qnaManageService.selectQnaListCnt(qnaManageVO);
-        qnaManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+        qnaManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 
 		// 인증여부 체크
 		Boolean isAuthenticated = UserDetailsHelper.isAuthenticated();
@@ -86,9 +85,10 @@ public class MblQnaManageController {
     //@RequestParam("passwordConfirmAt") String passwordConfirmAt ,
     @RequestMapping("/uss/olh/qna/detailQna.mdo")
     public String detailQna(
-    		@ModelAttribute QnaManageVO qnaManageVO) {  
+    		QnaManageVO qnaManageVO,
+    		ModelMap model) {
 
-		qnaManageService.selectQnaListDetail(qnaManageVO);
+    	model.addAttribute(qnaManageService.selectQnaListDetail(qnaManageVO));
 		
         return	"aramframework/mbl/uss/olh/qna/QnaDetail";
     }
@@ -232,14 +232,17 @@ public class MblQnaManageController {
      */
     @RequestMapping("/uss/olh/qna/editQna.mdo")
     public String editQna(
-    		@ModelAttribute QnaManageVO qnaManageVO) {    	    		        	
+    		QnaManageVO qnaManageVO,
+    		ModelMap model) {
     	        
 		// 작성 비밀번호를 얻는다.
 		String	writngPassword = qnaManageVO.getWritngPassword();		
 
-		qnaManageService.selectQnaListDetail(qnaManageVO);
+		qnaManageVO = qnaManageService.selectQnaListDetail(qnaManageVO);
 
 		qnaManageVO.setWritngPassword(writngPassword);
+		
+		model.addAttribute(qnaManageVO);
 		
         return "aramframework/mbl/uss/olh/qna/QnaEdit";
     }

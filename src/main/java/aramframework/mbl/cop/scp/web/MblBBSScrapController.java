@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
-import aramframework.com.cop.bbs.domain.BoardMasterVO;
 import aramframework.com.cop.bbs.domain.BoardVO;
 import aramframework.com.cop.bbs.service.BBSBoardService;
 import aramframework.com.cop.bbs.service.BBSMasterService;
@@ -71,12 +70,12 @@ public class MblBBSScrapController {
 		scrapVO.setUniqId(loginVO.getUniqId());
 		
 		model.addAttribute("resultList", bbsScrapService.selectScrapList(scrapVO));
-
 		int totCnt = bbsScrapService.selectScrapListCnt(scrapVO);
-		scrapVO.getSearchVO().setTotalRecordCount(totCnt);
 
+		scrapVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute("paginationInfo", paginationInfo);
+
+		model.addAttribute(paginationInfo);
 	
 		return "aramframework/mbl/cop/scp/ScrapList";
     }
@@ -89,25 +88,19 @@ public class MblBBSScrapController {
     @RequestMapping("/cop/scp/detailScrap.mdo")
 	@Secured("ROLE_USER")
     public String detailScrap(
-			@ModelAttribute ScrapVO scrapVO, 
+			ScrapVO scrapVO, 
     		ModelMap model)  {
     	
 		LoginVO loginVO = (LoginVO)UserDetailsHelper.getAuthenticatedUser();
-		
-		bbsScrapService.selectScrap(scrapVO);
-	
 		model.addAttribute("sessionUniqId", loginVO.getUniqId());
 		
+		scrapVO = bbsScrapService.selectScrap(scrapVO);
+	
 		//-------------------------------------
 		//게시판 내용 취득
 		//-------------------------------------
-		scrapVO.setNttId(scrapVO.getNttId());
-		scrapVO.setBbsId(scrapVO.getBbsId());
-
-		BoardVO boardVO = getBoardInfo(scrapVO);
-
-		model.addAttribute("boardVO", boardVO);
-		////-----------------------------------
+		model.addAttribute(getBoardInfo(scrapVO));
+		model.addAttribute(	scrapVO);
 		
 		return "aramframework/mbl/cop/scp/ScrapDetail";
     }
@@ -119,16 +112,11 @@ public class MblBBSScrapController {
 	 */
 	private BoardVO getBoardInfo(ScrapVO scrapVO) {
 		BoardVO boardVO = new BoardVO();
-
 		boardVO.setBbsId(scrapVO.getBbsId());
 		boardVO.setNttId(scrapVO.getNttId());
 
-		boardService.selectBoardArticle(boardVO);
-
-		BoardMasterVO boardMasterVO = bbsMasterService.selectBBSMasterInf(boardVO.getBbsId());
-		boardVO.setBoardMasterVO(boardMasterVO);
-
-		return boardVO;
+		boardVO.setBoardMasterVO(bbsMasterService.selectBBSMasterInf(boardVO.getBbsId()));
+		return boardService.selectBoardArticle(boardVO);
 	}
 
     /**
@@ -145,8 +133,7 @@ public class MblBBSScrapController {
 		//-------------------------------------
 		//게시판 내용 취득
 		//-------------------------------------
-		BoardVO boardVO = getBoardInfo(scrapVO);
-		model.addAttribute("boardVO", boardVO);
+		model.addAttribute(getBoardInfo(scrapVO));
 		
 		return "aramframework/mbl/cop/scp/ScrapRegist";
     }
@@ -165,11 +152,10 @@ public class MblBBSScrapController {
 
 		beanValidator.validate(scrapVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			// -------------------------------------
-			// 게시판 내용 취득
-			// -------------------------------------
-			BoardVO boardVO = getBoardInfo(scrapVO);
-			model.addAttribute("boardVO", boardVO);
+			//-------------------------------------
+			//게시판 내용 취득
+			//-------------------------------------
+			model.addAttribute(getBoardInfo(scrapVO));
 			
 		    return "aramframework/mbl/cop/scp/ScrapRegist";
 		}
@@ -190,16 +176,16 @@ public class MblBBSScrapController {
     @RequestMapping("/cop/scp/editScrap.mdo")
 	@Secured("ROLE_USER")
     public String editScrap(
-			@ModelAttribute ScrapVO scrapVO, 
+			ScrapVO scrapVO, 
     		ModelMap model) {
     	
-		bbsScrapService.selectScrap(scrapVO);
+    	scrapVO = bbsScrapService.selectScrap(scrapVO);
 	
 		//-------------------------------------
 		//게시판 내용 취득
 		//-------------------------------------
-		BoardVO boardVO = getBoardInfo(scrapVO);
-		model.addAttribute("boardVO", boardVO);
+		model.addAttribute(getBoardInfo(scrapVO));
+		model.addAttribute(scrapVO);
 		
 		return "aramframework/mbl/cop/scp/ScrapEdit";
     }
@@ -218,12 +204,10 @@ public class MblBBSScrapController {
 
 		beanValidator.validate(scrapVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-		    
-			// -------------------------------------
-			// 게시판 내용 취득
-			// -------------------------------------
-			BoardVO boardVO = getBoardInfo(scrapVO);
-			model.addAttribute("boardVO", boardVO);
+			//-------------------------------------
+			//게시판 내용 취득
+			//-------------------------------------
+			model.addAttribute(getBoardInfo(scrapVO));
 
 		    return "aramframework/mbl/cop/scp/ScrapEdit";
 		}
@@ -263,11 +247,9 @@ public class MblBBSScrapController {
 			@ModelAttribute ScrapVO scrapVO, 
     		ModelMap model) {
 
-		scrapVO.getSearchVO().setFirstIndex(0);
-		scrapVO.getSearchVO().setRecordPerPage(5);
-
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		scrapVO.setUniqId(loginVO.getUniqId());
+		scrapVO.getSearchVO().setSizeAndOffset(5, 0);
 
 		model.addAttribute("resultList",bbsScrapService.selectScrapList(scrapVO));
 		model.addAttribute("resultCnt", bbsScrapService.selectScrapListCnt(scrapVO));

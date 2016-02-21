@@ -95,12 +95,12 @@ public class MblQustnrRespondInfoController {
     	qustnrRespondInfoVO.getSearchVO().fillPageInfo(paginationInfo);
 		
 		modelAndView.addObject("resultList", qustnrRespondInfoService.selectQustnrRespondInfoManageList(qustnrRespondInfoVO));
-        
-        int totCnt = (Integer)qustnrRespondInfoService.selectQustnrRespondInfoManageListCnt(qustnrRespondInfoVO);
+        int totCnt = qustnrRespondInfoService.selectQustnrRespondInfoManageListCnt(qustnrRespondInfoVO);
+ 
         qustnrRespondInfoVO.getSearchVO().setTotalRecordCount(totCnt);
-
 		paginationInfo.setTotalRecordCount(totCnt);
-		modelAndView.addObject("paginationInfo", paginationInfo);
+
+		modelAndView.addObject(paginationInfo);
         
 		return modelAndView; 
 	}

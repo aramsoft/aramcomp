@@ -59,12 +59,12 @@ public class MblOnlinePollPartcptnController {
         onlinePollPartcptnVO.getSearchVO().fillPageInfo(paginationInfo);
 
         model.addAttribute("resultList", onlinePollPartcptnService.selectOnlinePollManageList(onlinePollPartcptnVO));
-
         int totCnt = (Integer) onlinePollPartcptnService.selectOnlinePollManageListCnt(onlinePollPartcptnVO);
+
         onlinePollPartcptnVO.getSearchVO().setTotalRecordCount(totCnt);
- 
         paginationInfo.setTotalRecordCount(totCnt);
-        model.addAttribute("paginationInfo", paginationInfo);
+ 
+        model.addAttribute(paginationInfo);
 
         return "aramframework/mbl/uss/olp/opp/OnlinePollPartcptnList";
     }
@@ -77,7 +77,7 @@ public class MblOnlinePollPartcptnController {
     @RequestMapping(value = "/uss/olp/opp/registOnlinePollPartcptn.mdo")
 	@Secured("ROLE_USER")
     public String registOnlinePollPartcptn(
-            @ModelAttribute OnlinePollPartcptnVO onlinePollPartcptnVO, 
+            OnlinePollPartcptnVO onlinePollPartcptnVO, 
             ModelMap model) {
 
         //POLL종류 설정
@@ -86,9 +86,11 @@ public class MblOnlinePollPartcptnController {
         model.addAttribute("pollDeuseYnList", cmmUseService.selectCmmCodeList("COM038"));
         
         //온라인POLL관리 정보 설정
-        onlinePollPartcptnService.selectOnlinePollManageDetail(onlinePollPartcptnVO);
+        onlinePollPartcptnVO = onlinePollPartcptnService.selectOnlinePollManageDetail(onlinePollPartcptnVO);
          //온라인POLL항목 정보 설정            
         model.addAttribute("PollItem", onlinePollPartcptnService.selectOnlinePollItemList(onlinePollPartcptnVO));
+        model.addAttribute(onlinePollPartcptnVO);
+        
         return "aramframework/mbl/uss/olp/opp/OnlinePollPartcptnRegist";
     }
     
@@ -139,7 +141,7 @@ public class MblOnlinePollPartcptnController {
     @RequestMapping(value = "/uss/olp/opp/statisticsOnlinePollPartcptn.mdo")
     public String statisticsOnlinePollPartcptn(
 			HttpServletRequest request, 
-            @ModelAttribute OnlinePollPartcptnVO onlinePollPartcptnVO, 
+            OnlinePollPartcptnVO onlinePollPartcptnVO, 
             ModelMap model) {
         
         //POLL종류 설정
@@ -148,12 +150,14 @@ public class MblOnlinePollPartcptnController {
         model.addAttribute("pollDeuseYnList", cmmUseService.selectCmmCodeList("COM038"));
         
         //온라인POLL관리 정보 설정
-        onlinePollPartcptnService.selectOnlinePollManageDetail(onlinePollPartcptnVO);
+        onlinePollPartcptnVO = onlinePollPartcptnService.selectOnlinePollManageDetail(onlinePollPartcptnVO);
         //온라인POLL항목 정보 설정            
         model.addAttribute("PollItemList", onlinePollPartcptnService.selectOnlinePollItemList(onlinePollPartcptnVO));
         //온라인POLL결과 정보 설정          
         model.addAttribute("statisticsList", onlinePollPartcptnService.selectOnlinePollManageStatistics(onlinePollPartcptnVO));
-
+        
+        model.addAttribute(onlinePollPartcptnVO);
+        
         //이전 주소
         model.addAttribute("returnUrl", request.getHeader("REFERER"));
         
@@ -177,7 +181,7 @@ public class MblOnlinePollPartcptnController {
         onlinePollPartcptnVO.getSearchVO().fillPageInfo(paginationInfo);
 
         model.addAttribute("resultList", onlinePollPartcptnService.selectOnlinePollManageList(onlinePollPartcptnVO));
-        model.addAttribute("paginationInfo", paginationInfo);
+        model.addAttribute(paginationInfo);
   
         return "aramframework/mbl/uss/olp/opp/OnlinePollPartcptnMainList";
     }

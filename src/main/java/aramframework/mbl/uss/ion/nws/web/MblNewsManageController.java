@@ -2,6 +2,7 @@ package aramframework.mbl.uss.ion.nws.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -58,17 +59,16 @@ public class MblNewsManageController {
 
     	ModelAndView modelAndView = new ModelAndView("jsonView");
     	
-    	/** pageing */
     	PaginationInfo paginationInfo = new PaginationInfo();
     	newsManageVO.getSearchVO().fillPageInfo(paginationInfo);
 
 		modelAndView.addObject("NewsList", newsManageService.selectNewsList(newsManageVO));
-
         int totCnt = newsManageService.selectNewsListCnt(newsManageVO);
-        newsManageVO.getSearchVO().setTotalRecordCount(totCnt);
 
+        newsManageVO.getSearchVO().setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
-		modelAndView.addObject("paginationInfo", paginationInfo);
+
+		modelAndView.addObject(paginationInfo);
 
         return modelAndView;
     } 
@@ -80,9 +80,10 @@ public class MblNewsManageController {
      */
     @RequestMapping("/uss/ion/nws/detailNewsInfo.mdo")
     public String detailNewsInfo(
-    		@ModelAttribute NewsManageVO newsManageVO) {  
+    		NewsManageVO newsManageVO,
+    		ModelMap model) {
     	
-		newsManageService.selectNewsDetail(newsManageVO);
+    	model.addAttribute(newsManageService.selectNewsDetail(newsManageVO));
 		
         return	"aramframework/mbl/uss/ion/nws/NewsInfoDetail";
     }

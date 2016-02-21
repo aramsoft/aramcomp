@@ -133,7 +133,7 @@ public class MblFileDownloadController {
 		fileVO.setAtchFileId(fileId);
 		fileVO.setFileSn(fileSn);
 		
-		fileService.selectFileInf(fileVO);
+		fileVO = fileService.selectFileInf(fileVO);
 
 		File uFile = new File(fileVO.getFileStreCours(), fileVO.getStreFileNm());
 		int fSize = (int) uFile.length();

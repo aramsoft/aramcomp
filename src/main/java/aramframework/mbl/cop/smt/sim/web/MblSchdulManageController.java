@@ -173,11 +173,9 @@ public class MblSchdulManageController {
 		int iNowDate = calNow.get(Calendar.DATE);
         
         if(strDate != null && !"".equals(strDate)) {
-        	
-  		  iNowYear = Integer.parseInt(strDate.split("-")[0]);
-		  iNowMonth = Integer.parseInt(strDate.split("-")[1]);
-		  iNowDate = Integer.parseInt(strDate.split("-")[2]);
-	        	
+  		  	iNowYear = Integer.parseInt(strDate.split("-")[0]);
+  		  	iNowMonth = Integer.parseInt(strDate.split("-")[1]);
+  		  	iNowDate = Integer.parseInt(strDate.split("-")[2]);
         } 
        
         calNow.set(iNowYear, iNowMonth, iNowDate);
@@ -246,7 +244,7 @@ public class MblSchdulManageController {
 	@RequestMapping(value="/cop/smt/sim/detailSchdul.mdo")
 	public String detailSchdul(
 			HttpServletRequest request, 
-			@ModelAttribute SchdulManageVO schdulManageVO,
+			SchdulManageVO schdulManageVO,
     		ModelMap model) {
 		
 		//공통코드  중요도 조회
@@ -256,7 +254,7 @@ public class MblSchdulManageController {
     	//공통코드  반복구분 조회
 		cmmUseService.populateCmmCodeList("COM031", "COM031_reptitSe");
     	
-        schdulManageService.selectSchdulManageDetail(schdulManageVO);
+		model.addAttribute(schdulManageService.selectSchdulManageDetail(schdulManageVO));
         
 		/* *****************************************************************
     	// 검색조건 유지
@@ -334,7 +332,7 @@ public class MblSchdulManageController {
 	@Secured("ROLE_USER")
 	public String editSchdul(
 			HttpServletRequest request, 
-			@ModelAttribute SchdulManageVO schdulManageVO,
+			SchdulManageVO schdulManageVO,
     		ModelMap model) {
 		
 		//공통코드  중요도 조회
@@ -344,7 +342,7 @@ public class MblSchdulManageController {
     	//공통코드  반복구분 조회
 		cmmUseService.populateCmmCodeList("COM031", "COM031_reptitSe");
 
-    	schdulManageService.selectSchdulManageDetail(schdulManageVO);
+		schdulManageVO = schdulManageService.selectSchdulManageDetail(schdulManageVO);
 		
     	String sSchdulBgnde = schdulManageVO.getSchdulBgnde();
     	String sSchdulEndde = schdulManageVO.getSchdulEndde();
@@ -354,6 +352,8 @@ public class MblSchdulManageController {
     	
     	schdulManageVO.setSchdulEnddeYYYMMDD(sSchdulEndde.substring(0, 4) +"-"+sSchdulEndde.substring(4, 6)+"-"+sSchdulEndde.substring(6, 8) );
     	schdulManageVO.setSchdulEnddeHH(sSchdulEndde.substring(8, 10) + ":" + sSchdulEndde.substring(10, 12));
+ 
+    	model.addAttribute(schdulManageVO);
     	
     	/* *****************************************************************
     	// 검색조건 유지
@@ -445,12 +445,12 @@ public class MblSchdulManageController {
     	schdulManageVO.getSearchVO().fillPageInfo(paginationInfo);
 		
     	modelAndView.addObject("resultList", schdulManageService.selectSchdulManageList(schdulManageVO));
-        
         int totCnt = (Integer)schdulManageService.selectSchdulManageListCnt(schdulManageVO);
+ 
         schdulManageVO.getSearchVO().setTotalRecordCount(totCnt);
-
 		paginationInfo.setTotalRecordCount(totCnt);
-		modelAndView.addObject("paginationInfo", paginationInfo);
+
+		modelAndView.addObject(paginationInfo);
         
         return modelAndView; 
 	}
@@ -479,12 +479,12 @@ public class MblSchdulManageController {
     	schdulManageVO.getSearchVO().fillPageInfo(paginationInfo);
 		
     	modelAndView.addObject("resultList", schdulManageService.selectEmplyrList(schdulManageVO));
-        
         int totCnt = (Integer)schdulManageService.selectEmplyrListCnt(schdulManageVO);
+ 
         schdulManageVO.getSearchVO().setTotalRecordCount(totCnt);
-
 		paginationInfo.setTotalRecordCount(totCnt);
-		modelAndView.addObject("paginationInfo", paginationInfo);
+
+		modelAndView.addObject(paginationInfo);
         
         return modelAndView; 
 	}

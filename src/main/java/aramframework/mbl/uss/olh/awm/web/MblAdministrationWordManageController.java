@@ -59,17 +59,16 @@ public class MblAdministrationWordManageController {
     	
     	ModelAndView modelAndView = new ModelAndView("jsonView");
 
-        /** pageing */
         PaginationInfo paginationInfo = new PaginationInfo();
         administrationWordVO.getSearchVO().fillPageInfo(paginationInfo);
         
         modelAndView.addObject("resultList", administrationWordService.selectAdministrationWordList(administrationWordVO));
+        int totCnt = administrationWordService.selectAdministrationWordListCnt(administrationWordVO);
 
-        int totCnt = (Integer) administrationWordService.selectAdministrationWordListCnt(administrationWordVO);
         administrationWordVO.getSearchVO().setTotalRecordCount(totCnt);
-
         paginationInfo.setTotalRecordCount(totCnt);
-        modelAndView.addObject("paginationInfo", paginationInfo);
+
+        modelAndView.addObject(paginationInfo);
 
         return modelAndView;
     }
@@ -81,9 +80,10 @@ public class MblAdministrationWordManageController {
      */
     @RequestMapping(value = "/uss/olh/awa/detailAdministrationWord.mdo")
     public String detailAdministrationWord(
-    		@ModelAttribute AdministrationWordVO administrationWordVO) {
+    		AdministrationWordVO administrationWordVO,
+    		ModelMap model) {
 
-    	administrationWordService.selectAdministrationWordDetail(administrationWordVO);
+    	model.addAttribute(administrationWordService.selectAdministrationWordDetail(administrationWordVO));
     	
         return "aramframework/mbl/uss/olh/awa/AdministrationWordDetail";
     }
@@ -103,12 +103,12 @@ public class MblAdministrationWordManageController {
         administrationWordVO.getSearchVO().fillPageInfo(paginationInfo);
         
         model.addAttribute("resultList", administrationWordService.selectAdministrationWordList(administrationWordVO));
-
         int totCnt = (Integer) administrationWordService.selectAdministrationWordListCnt(administrationWordVO);
-        administrationWordVO.getSearchVO().setTotalRecordCount(totCnt);
 
+        administrationWordVO.getSearchVO().setTotalRecordCount(totCnt);
         paginationInfo.setTotalRecordCount(totCnt);
-        model.addAttribute("paginationInfo", paginationInfo);
+
+        model.addAttribute(paginationInfo);
 
         return "aramframework/mbl/uss/olh/awa/AdministrationWordMainList";
     }

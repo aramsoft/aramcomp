@@ -2,6 +2,7 @@ package aramframework.mbl.uss.olh.hpc.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -63,12 +64,12 @@ public class MblHpcmManageController {
     	hpcmManageVO.getSearchVO().fillPageInfo(paginationInfo);
 		
 		modelAndView.addObject("reusltList", hpcmManageService.selectHpcmList(hpcmManageVO));
-        
         int totCnt = hpcmManageService.selectHpcmListCnt(hpcmManageVO);
+ 
         hpcmManageVO.getSearchVO().setTotalRecordCount(totCnt);
-
 		paginationInfo.setTotalRecordCount(totCnt);
-        modelAndView.addObject("paginationInfo", paginationInfo);
+
+		modelAndView.addObject(paginationInfo);
  
         return modelAndView;
     } 
@@ -80,9 +81,10 @@ public class MblHpcmManageController {
      */
     @RequestMapping("/uss/olh/hpc/detailHpcm.mdo")
     public String detailHpcm(
-    		@ModelAttribute HpcmManageVO hpcmManageVO) {  
+    		HpcmManageVO hpcmManageVO,  
+			ModelMap model) {
 
-    	hpcmManageService.selectHpcmDetail(hpcmManageVO);
+    	model.addAttribute(hpcmManageService.selectHpcmDetail(hpcmManageVO));
 		
         return	"aramframework/mbl/uss/olh/hpc/HpcmDetail";
     }

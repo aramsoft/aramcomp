@@ -2,6 +2,7 @@ package aramframework.mbl.uss.olh.faq.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -63,12 +64,12 @@ public class MblFaqManageController {
     	faqManageVO.getSearchVO().fillPageInfo(paginationInfo);
 		
 		modelAndView.addObject("FaqList", faqManageService.selectFaqList(faqManageVO));
-		
         int totCnt = faqManageService.selectFaqListCnt(faqManageVO);
+ 
         faqManageVO.getSearchVO().setTotalRecordCount(totCnt);
-
 		paginationInfo.setTotalRecordCount(totCnt);
-		modelAndView.addObject("paginationInfo", paginationInfo);
+
+		modelAndView.addObject(paginationInfo);
 		
         return modelAndView;
     }
@@ -80,9 +81,10 @@ public class MblFaqManageController {
      */
     @RequestMapping("/uss/olh/faq/detailFaq.mdo")
     public String detailFaq(
-    		@ModelAttribute FaqManageVO faqManageVO) {  
+    		FaqManageVO faqManageVO,
+    		ModelMap model) {
     	
-		faqManageService.selectFaqListDetail(faqManageVO);
+    	model.addAttribute(faqManageService.selectFaqListDetail(faqManageVO));
 		
         return	"aramframework/mbl/uss/olh/faq/FaqDetail";
     }

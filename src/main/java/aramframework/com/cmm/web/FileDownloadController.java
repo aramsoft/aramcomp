@@ -139,7 +139,7 @@ public class FileDownloadController {
 		fileVO.setAtchFileId(fileId);
 		fileVO.setFileSn(fileSn);
 		
-		fileMngService.selectFileInf(fileVO);
+		fileVO = fileMngService.selectFileInf(fileVO);
 
 		File uFile = new File(fileVO.getFileStreCours(), fileVO.getStreFileNm());
 		int fSize = (int) uFile.length();

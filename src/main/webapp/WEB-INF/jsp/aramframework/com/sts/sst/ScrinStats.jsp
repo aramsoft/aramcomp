@@ -55,6 +55,7 @@
 
 <div id="search_area">
 	<div class="button_area">
+		<span class="button"><a href="#" onclick="javascript:fnSearch(); return false;">검색</a></span>
 		<span class="button"><a href="#" onclick="javascript:fnInitAll(); return false;">초기화</a></span>
 	</div>
 	<div class="keyword_area" style="width:70%">

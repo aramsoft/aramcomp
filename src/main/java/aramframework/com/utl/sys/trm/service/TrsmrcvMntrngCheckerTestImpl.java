@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory;
 
 public class TrsmrcvMntrngCheckerTestImpl implements TrsmrcvMntrngChecker {
 
-	protected static final Logger LOG = LoggerFactory.getLogger(TrsmrcvMntrngCheckerTestImpl.class);
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * 송수신모니터링을 수행한다.

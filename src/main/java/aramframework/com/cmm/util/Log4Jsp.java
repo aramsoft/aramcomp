@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Log4Jsp
-{
+public class Log4Jsp {
+	
 	protected static final Logger LOG = LoggerFactory.getLogger(Log4Jsp.class);
 
 	public static void debug(String msg) {

@@ -1,4 +1,4 @@
-package aramframework.com.cop.sms.schedule;
+package aramframework.com.cop.sms.smeapi;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

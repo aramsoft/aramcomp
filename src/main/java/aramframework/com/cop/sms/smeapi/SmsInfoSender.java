@@ -1,4 +1,4 @@
-package aramframework.com.cop.sms.service;
+package aramframework.com.cop.sms.smeapi;
 
 import x3.client.smeapi.SMEConnection;
 import x3.client.smeapi.SMEConnectionFactory;

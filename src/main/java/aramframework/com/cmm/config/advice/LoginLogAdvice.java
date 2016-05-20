@@ -30,7 +30,7 @@ import aramframework.com.uat.uia.domain.LoginVO;
 
 public class LoginLogAdvice {
 
-	protected static final Logger LOG = LoggerFactory.getLogger(LoginLogAdvice.class);
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired 
 	private LoginLogService loginLogService;

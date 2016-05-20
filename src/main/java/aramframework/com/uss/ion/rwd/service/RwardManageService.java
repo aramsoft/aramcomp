@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.service.FileMngUtil;
+import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.uss.ion.ism.domain.InfrmlSanctnVO;
 import aramframework.com.uss.ion.ism.service.InfrmlSanctnService;
 import aramframework.com.uss.ion.rwd.dao.RwardManageMapper;

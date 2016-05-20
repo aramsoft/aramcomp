@@ -21,8 +21,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.constant.AramProperties;
-import aramframework.com.cmm.service.FileMngUtil;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
+import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.ems.domain.SndngMailVO;

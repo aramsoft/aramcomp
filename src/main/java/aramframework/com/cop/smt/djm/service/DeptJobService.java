@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.domain.BaseVO;
-import aramframework.com.cmm.service.FileMngUtil;
+import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cop.smt.djm.dao.DeptJobMapper;
 import aramframework.com.cop.smt.djm.domain.DeptJobBxVO;
 import aramframework.com.cop.smt.djm.domain.DeptJobVO;

@@ -1,4 +1,4 @@
-package aramframework.com.cmm.service;
+package aramframework.com.cmm.util;
 
 import java.io.File;
 import java.sql.Timestamp;
@@ -19,7 +19,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import aramframework.com.cmm.constant.AramProperties;
 import aramframework.com.cmm.domain.FileVO;
-import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.cmm.service.FileMngService;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 
 /**

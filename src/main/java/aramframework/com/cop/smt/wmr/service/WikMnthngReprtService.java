@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.domain.BaseVO;
-import aramframework.com.cmm.service.FileMngUtil;
+import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cop.smt.wmr.dao.WikMnthngReprtMapper;
 import aramframework.com.cop.smt.wmr.domain.WikMnthngReprtVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;

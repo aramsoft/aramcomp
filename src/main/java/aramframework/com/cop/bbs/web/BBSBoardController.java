@@ -22,8 +22,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.constant.CacheKey;
-import aramframework.com.cmm.service.FileMngUtil;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
+import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.bbs.domain.BoardMasterVO;

@@ -46,8 +46,8 @@ import aramframework.com.cmm.util.WebUtil;
 @Controller
 public class FileDownloadController {
 
-	@Autowired 
-	private FileMngService fileMngService; 
+	@Autowired
+	private FileMngService fileMngService;
 
 	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 

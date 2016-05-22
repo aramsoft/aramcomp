@@ -41,7 +41,6 @@ public class WebUtil {
 		model.addAttribute("redirectURL", redirectUrl);
 		return "aramframework/com/cmm/redirect";
 	}
-	
 /*
 	public static String redirectJsp(ModelMap model, String redirectUrl, String param) {
 		model.addAttribute("redirectURL", redirectUrl);
@@ -60,14 +59,14 @@ public class WebUtil {
 	}
 */	
 	public static String adjustViewName(String viewName) {
-				
+		
 		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
 
 		String jspPrefix = (String) requestAttributes.getAttribute("jspPrefix", RequestAttributes.SCOPE_REQUEST);
 		if (jspPrefix == null || "".equals(jspPrefix)) jspPrefix = comDefaultPath;
 		
 		String jspPage = jspPrefix + viewName;	
-				
+		
 //		LOG.debug("jspPage = " + jspPage);
 
 		// if tiles exist, forward tiles layout

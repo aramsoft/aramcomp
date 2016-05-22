@@ -13,7 +13,7 @@ import egovframework.rte.fdl.idgnr.impl.strategy.EgovIdGnrStrategyImpl;
 @Configuration
 public class AdressBookIdGnr {
 
-	@Autowired 
+	@Autowired
 	DataSource dataSource;
 	
 /*	

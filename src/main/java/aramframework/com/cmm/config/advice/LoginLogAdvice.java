@@ -32,7 +32,7 @@ public class LoginLogAdvice {
 
 	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
-	@Autowired 
+	@Autowired
 	private LoginLogService loginLogService;
 
 	/**

@@ -45,8 +45,8 @@ import aramframework.com.utl.sim.service.FileCmprs;
 @Controller
 public class ImageProcessController {
 
-	@Autowired 
-	private FileMngService fileMngService; 
+	@Autowired
+	private FileMngService fileMngService;
 
 	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 

@@ -46,10 +46,10 @@ public class FileMngUtil {
 
 	public static final int BUFF_SIZE = 2048;
 
-	@Autowired 
+	@Autowired
 	private EgovIdGnrService fileIdGnrService; 
 
-	@Autowired 
+	@Autowired
 	private FileMngService fileMngService;
 
 	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());

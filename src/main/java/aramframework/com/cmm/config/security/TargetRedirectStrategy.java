@@ -23,7 +23,7 @@ public class TargetRedirectStrategy implements RedirectStrategy {
 	@Autowired
 	SimpleUrlAuthenticationSuccessHandler authenticationSuccessHandler;
 	
-    protected final Logger LOG = LoggerFactory.getLogger(getClass());
+    protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
     private boolean contextRelative;
 

@@ -30,7 +30,7 @@ import aramframework.com.uat.uia.domain.LoginVO;
 
 public class SysLogAdvice {
 
-	@Autowired 
+	@Autowired
 	private SysLogService sysLogService;
 
 	/**

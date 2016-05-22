@@ -36,14 +36,14 @@ public class AdressBookVO extends BaseVO {
 	/** 주소록 공개범위 */
 	private String othbcScope = "";
 
+	/** 최초등록자 부서 */
+	private String trgetOrgnztId = "";
+
 	/** 주소록 사용여부 */
 	private String useAt = "";
 
 	/** 주소록 등록자 아이디 */
 	private String wrterId = "";
-	
-	/** 최초등록자 부서 */
-	private String trgetOrgnztId = "";
 
 	// helper
 	/** 사용자 아이디(for list) */

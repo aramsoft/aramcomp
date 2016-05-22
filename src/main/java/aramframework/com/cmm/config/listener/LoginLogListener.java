@@ -17,7 +17,7 @@ public class LoginLogListener implements ApplicationListener<ApplicationEvent> {
 
 	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
-	@Autowired 
+	@Autowired
 	private LoginLogService loginLogService;
 
 	public void onApplicationEvent(ApplicationEvent event) {

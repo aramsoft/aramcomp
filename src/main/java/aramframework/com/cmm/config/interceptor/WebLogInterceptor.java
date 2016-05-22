@@ -42,7 +42,7 @@ public class WebLogInterceptor extends HandlerInterceptorAdapter {
 
 	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 	
-	@Autowired 
+	@Autowired
 	private WebLogService webLogService;
 
 	private Set<String> passURL;

@@ -38,8 +38,8 @@ import aramframework.com.cmm.service.FileMngService;
 @Controller
 public class FileMngController {
 
-	@Autowired 
-	private FileMngService fileMngService; 
+	@Autowired
+	private FileMngService fileMngService;
 
 	/**
 	 * 첨부파일에 대한 목록을 조회한다.

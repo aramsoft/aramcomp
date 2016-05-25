@@ -46,13 +46,13 @@ public class BBSBoardService extends EgovAbstractServiceImpl {
 	static public String BBS_ATTRB_GALARY 	= "BBSA02";	//갤러리
 	static public String BBS_ATTRB_GENERAL 	= "BBSA03";	//일반게시판
 	
-	@Autowired 
+	@Autowired
 	private BBSBoardMapper bbsBoardMapper;	
 
-	@Autowired 
-	private FileMngUtil fileUtil;
+	@Autowired
+	private FileMngUtil fileMngUtil;
 
-	@Autowired 
+	@Autowired
 	private EgovIdGnrService nttNoGnrService; 
 
 	/**
@@ -177,7 +177,7 @@ public class BBSBoardService extends EgovAbstractServiceImpl {
 	 */
 	public void eraseBoardArticle(BoardVO boardVO) {
 		// 첨부파일 삭제 ....
-		fileUtil.deleteMultiFile(boardVO.getAtchFileId());
+		fileMngUtil.deleteMultiFile(boardVO.getAtchFileId());
 		bbsBoardMapper.eraseScrap(boardVO);
 		bbsBoardMapper.eraseComment(boardVO);
 		bbsBoardMapper.eraseSatisfaction(boardVO);

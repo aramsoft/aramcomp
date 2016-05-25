@@ -36,13 +36,13 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
 @Service
 public class BBSCommentService extends EgovAbstractServiceImpl {
 
-	@Autowired 
+	@Autowired
 	private BBSAddedOptionsMapper bbsAddedOptionsMapper;	
 
-	@Autowired 
+	@Autowired
 	private BBSCommentMapper bbsCommentMapper;	
 
-	@Autowired 
+	@Autowired
 	private EgovIdGnrService answerNoGnrService; 
 		
 	/**

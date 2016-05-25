@@ -36,13 +36,13 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
 @Service
 public class BBSSatisfactionService extends EgovAbstractServiceImpl {
 
-	@Autowired 
+	@Autowired
 	private BBSAddedOptionsMapper bbsAddedOptionsMapper;	
 
-	@Autowired 
+	@Autowired
 	private BBSSatisfactionMapper bbsSatisfactionMapper;	
 
-	@Autowired 
+	@Autowired
 	private EgovIdGnrService stsfdgNoGnrService; 
 	
 	/**

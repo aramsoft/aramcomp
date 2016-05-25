@@ -45,22 +45,17 @@ public class BBSMasterService extends EgovAbstractServiceImpl {
 	@Resource(name = "cacheDictionary")
 	private Map<String, Object> cacheDictionary;
 
-	@Autowired 
+	@Autowired
 	private BBSMasterMapper bbsMasterMapper;		
 
-	@Autowired 
+	@Autowired
 	private BBSUseInfoMapper bbsUseInfoMapper;	
 
-	@Autowired 
+	@Autowired
 	private EgovIdGnrService bbsMasterIdGnrService; 
 
-	// ---------------------------------
-	// 2009.06.26 : 2단계 기능 추가
-	// ---------------------------------
-	@Autowired 
+	@Autowired
 	private BBSAddedOptionsMapper bbsAddedOptionsMapper;	
-
-	// //-------------------------------
 
 	/**
 	 * 게시판 속성 정보의 목록을 조회 한다.

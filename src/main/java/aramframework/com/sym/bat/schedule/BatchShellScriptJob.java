@@ -1,4 +1,4 @@
-package aramframework.com.sym.bat.service;
+package aramframework.com.sym.bat.schedule;
 
 import org.quartz.Job;
 import org.quartz.JobDataMap;

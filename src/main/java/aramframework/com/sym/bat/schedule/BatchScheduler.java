@@ -1,4 +1,4 @@
-package aramframework.com.sym.bat.service;
+package aramframework.com.sym.bat.schedule;
 
 import java.util.Date;
 import java.util.List;
@@ -19,6 +19,7 @@ import org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean;
 import org.springframework.util.Assert;
 
 import aramframework.com.sym.bat.domain.BatchSchdulVO;
+import aramframework.com.sym.bat.service.BatchSchdulService;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 
 /**

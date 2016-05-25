@@ -1,4 +1,4 @@
-package aramframework.com.sym.bat.service;
+package aramframework.com.sym.bat.schedule;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import aramframework.com.sym.bat.domain.BatchResultVO;
+import aramframework.com.sym.bat.service.BatchSchdulService;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 
 /**

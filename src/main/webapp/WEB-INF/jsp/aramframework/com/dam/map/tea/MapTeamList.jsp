@@ -75,12 +75,13 @@
 	</tr>   	          				 			   
 	</c:if>  
 	  	
- 	<c:set var="startIndex" value="${(mapTeamVO.searchVO.pageIndex-1) * mapTeamVO.searchVO.recordPerPage}"/>
+  	<c:set var="searchVO" value="${mapTeamVO.searchVO}"/>
+ 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr class="link" onclick="javascript:fn_aram_detail('${result.orgnztId}'); return false;">				
  	
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${mapTeamVO.searchVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<td class="lt_text3">${result.orgnztNm}</td>

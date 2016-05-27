@@ -41,7 +41,7 @@
 	<h2>보고대상자 선택</h2>
 </div>
 
-<form:form commandName="searchVO" action ="" method="post">
+<form:form commandName="baseVO" action ="" method="post">
 
 <div id="search_area">
 	<div class="button_area">
@@ -86,7 +86,7 @@
 	</tr>		 
 	</c:if>
 
-  	<c:set var="searchVO" value="${schdulManageVO.baseVO}"/>
+  	<c:set var="searchVO" value="${baseVO.searchVO}"/>
  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
  	<c:forEach var="result" items="${resultList}" varStatus="status">
 	<tr class="link" onclick="javascript:fn_aram_choose('<c:out value="${result.uniqId}"/>', '<c:out value="${result.emplNo}"/>', '<c:out value="${result.emplyrNm}"/>', '<c:out value="${result.orgnztNm}"/>'); return false;">

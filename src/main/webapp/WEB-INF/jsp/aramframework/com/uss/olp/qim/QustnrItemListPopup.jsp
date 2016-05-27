@@ -86,12 +86,13 @@
 	</tr>
 	</c:if>
 	
+ 	<c:set var="searchVO" value="${qustnrItemManageVO.searchVO}"/>
+ 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
- 	<c:set var="startIndex" value="${(qustnrItemManageVO.searchVO.pageIndex-1) * qustnrItemManageVO.searchVO.recordPerPage}"/>
 	<tr class="link" onclick="javascript:fn_aram_choose('${result.qustnrIemId}', '${result.qustnrIemCn}'); return false;">
  	
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${qustnrItemManageVO.searchVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<td class="lt_text3L"><c:out value="${result.qustnrIemCn}"/></td>

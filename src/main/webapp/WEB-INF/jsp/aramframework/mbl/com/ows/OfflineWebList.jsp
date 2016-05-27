@@ -159,11 +159,12 @@ function fn_aram_regist_offlineWeb(){
 		  	</tr>                                            
 		 	</c:if>
 		    
- 			<c:set var="startIndex" value="${(offlineWebVO.searchVO.pageIndex-1) * offlineWebVO.searchVO.recordPerPage}"/>
+    		<c:set var="searchVO" value="${offlineWebVO.searchVO}"/>
+ 			<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 			<c:forEach items="${resultList}" var="result" varStatus="status">
 		  	<tr> 
 		 		<c:set var="index" value="${startIndex + status.count}"/>
-				<c:set var="reverseIndex" value="${offlineWebVO.searchVO.totalRecordCount - index + 1}"/>
+				<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
 		        <td class="lt_text3"><c:out value="${reverseIndex}"/></td>                 
 
 		        <td class="lt_text3">

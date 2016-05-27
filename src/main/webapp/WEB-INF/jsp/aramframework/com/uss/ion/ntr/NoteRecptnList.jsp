@@ -117,11 +117,12 @@
 	</c:if>
 	
 	<%-- 데이터를 화면에 출력해준다 --%>
- 	<c:set var="startIndex" value="${(noteRecptnVO.searchVO.pageIndex-1) * noteRecptnVO.searchVO.recordPerPage}"/>
+ 	<c:set var="searchVO" value="${noteRecptnVO.searchVO}"/>
+ 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${noteRecptnVO.searchVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 		<td class="lt_text3">
 			<input type="checkbox" name="checkList" title="선택" value="${result.noteId},${result.noteTrnsmitId},${result.noteRecptnId}">

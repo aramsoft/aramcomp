@@ -80,12 +80,13 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="startIndex" value="${(notificationVO.searchVO.pageIndex-1) * notificationVO.searchVO.recordPerPage}"/>
+ 	<c:set var="searchVO" value="${notificationVO.searchVO}"/>
+ 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
 	<tr class="link" onclick="javascript:fn_aram_detail('${result.ntfcNo}'); return false;">
  
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${notificationVO.searchVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 	    <td class="lt_text3"><c:out value="${result.ntfcSj}"/></td>

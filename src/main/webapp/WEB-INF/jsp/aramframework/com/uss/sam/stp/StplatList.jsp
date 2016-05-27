@@ -77,12 +77,13 @@
   	</tr>
  	</c:if>
 
- 	<c:set var="startIndex" value="${(stplatManageVO.searchVO.pageIndex-1) * stplatManageVO.searchVO.recordPerPage}"/>
+   	<c:set var="searchVO" value="${stplatManageVO.searchVO}"/>
+ 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
   	<tr class="link" onClick="fn_aram_detail('<c:out value="${result.useStplatId}"/>')">
  
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${stplatManageVO.searchVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 	
 		<td class="lt_text3"><c:out value="${result.useStplatNm}"/></td>

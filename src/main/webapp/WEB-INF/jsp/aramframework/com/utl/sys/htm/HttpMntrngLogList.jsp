@@ -95,12 +95,13 @@
   		</tr>
  	</c:if>
  	
- 	<c:set var="startIndex" value="${(httpMntrngLogVO.searchVO.pageIndex-1) * httpMntrngLogVO.searchVO.recordPerPage}"/>
+    <c:set var="searchVO" value="${httpMntrngLogVO.searchVO}"/>
+ 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
  	<c:forEach var="result" items="${resultList}" varStatus="status">
   	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.webKind}"/>', '<c:out value="${result.logId}"/>'); return false;">
  	
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${httpMntrngLogVO.searchVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<td class="lt_text3"><c:out value="${result.logId}"/></td>

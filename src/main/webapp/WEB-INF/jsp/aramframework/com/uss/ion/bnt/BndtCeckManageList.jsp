@@ -115,12 +115,13 @@
 	</tr>   	          				 			   
 	</c:if>
 	
- 	<c:set var="startIndex" value="${(bndtCeckManageVO.searchVO.pageIndex-1) * bndtCeckManageVO.searchVO.recordPerPage}"/>
+ 	<c:set var="searchVO" value="${bndtCeckManageVO.searchVO}"/>
+ 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
 	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.bndtCeckSe}"/>','<c:out value="${result.bndtCeckCd}"/>'); return false;">
 	
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${bndtCeckManageVO.searchVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<td class="lt_text3"><c:out value="${result.bndtCeckSeNm}"/></td>

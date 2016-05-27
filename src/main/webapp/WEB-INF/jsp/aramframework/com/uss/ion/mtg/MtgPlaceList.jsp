@@ -73,12 +73,13 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="startIndex" value="${(mtgPlaceManageVO.searchVO.pageIndex-1) * mtgPlaceManageVO.searchVO.recordPerPage}"/>
+ 	<c:set var="searchVO" value="${mtgPlaceManageVO.searchVO}"/>
+ 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
  	<c:forEach var="result" items="${resultList}" varStatus="status">
   	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.mtgPlaceId}"/>'); return false;">
  
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${mtgPlaceManageVO.searchVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
     	<td class="lt_text3"><c:out value="${result.mtgPlaceNm}"/></td>

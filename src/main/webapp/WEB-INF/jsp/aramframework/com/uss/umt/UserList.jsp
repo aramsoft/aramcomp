@@ -92,7 +92,8 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="startIndex" value="${(userManageVO.searchVO.pageIndex-1) * userManageVO.searchVO.recordPerPage}"/>
+    <c:set var="searchVO" value="${userManageVO.searchVO}"/>
+ 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
     <c:forEach var="result" items="${resultList}" varStatus="status">
     <tr>
  		<c:set var="index" value="${startIndex + status.count}"/>

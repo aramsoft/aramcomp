@@ -82,7 +82,8 @@
 	</c:if>
 	
 	 <%-- 데이터를 화면에 출력해준다 --%>
- 	<c:set var="startIndex" value="${(qustnrRespondInfoVO.searchVO.pageIndex-1) * qustnrRespondInfoVO.searchVO.recordPerPage}"/>
+   	<c:set var="searchVO" value="${qustnrRespondInfoVO.searchVO}"/>
+ 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>

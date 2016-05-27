@@ -102,18 +102,19 @@
 	</tr>
 	</c:if>
 
- 	<c:set var="startIndex" value="${(adressBookUserVO.searchVO.pageIndex-1) * adressBookUserVO.searchVO.recordPerPage}"/>
+ 	<c:set var="searchVO" value="${adressBookUserVO.searchVO}"/>
+ 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 
-	<c:if test="${adressBookUserVO.searchVO.searchCondition == 'USERLIST'}">
+	<c:if test="${searchVO.searchCondition == 'USERLIST'}">
 	<tr class="link" onclick="javascript:fn_aram_choose('<c:out value="${result.emplyrId}" />'); return false;">
 	</c:if>
-	<c:if test="${adressBookUserVO.searchVO.searchCondition == 'NAMECARD'}">
+	<c:if test="${searchVO.searchCondition == 'NAMECARD'}">
 	<tr class="link" onclick="javascript:fn_aram_choose('<c:out value="${result.ncrdId}" />'); return false;">
 	</c:if>
 
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${adressBookUserVO.searchVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<c:if test="${searchVO.searchCondition == 'USERLIST'}">

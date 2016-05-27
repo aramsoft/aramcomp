@@ -63,8 +63,8 @@ public class LogAuditFilter implements Filter {
 
 	}
 	
-	private String getParameters (HttpServletRequest req) 
-	{
+	private String getParameters (HttpServletRequest req) {
+		
 	    StringBuffer buffer = new StringBuffer();
 	    Enumeration<?> names = req.getParameterNames();
 	    if (names.hasMoreElements()) {

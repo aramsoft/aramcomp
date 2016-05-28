@@ -43,7 +43,7 @@ import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 @Component("smsInfoReceiver")
 public class SmsInfoReceiver extends EgovAbstractServiceImpl implements SMEListener {
 
-	@Autowired 
+	@Autowired
 	private SmsMapper smsMapper;
 	
 	private String smeConfigPath = null;

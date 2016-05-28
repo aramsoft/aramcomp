@@ -22,7 +22,7 @@ import aramframework.com.cmm.domain.BaseVO;
  */
 
 public class GroupAuthorVO extends BaseVO {
-	
+
 	/** 설정대상 사용자 ID	 */
 	private String userId;
 	

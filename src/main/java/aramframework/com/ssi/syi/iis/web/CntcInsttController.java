@@ -47,10 +47,10 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class CntcInsttController {
 
-	@Autowired
+	@Autowired 
 	private CntcInsttService cntcInsttService;
 
-	@Autowired
+	@Autowired 
 	private CntcMessageService cntcMessageService;
 
 	@Autowired

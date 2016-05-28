@@ -40,7 +40,7 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class SmsInfoController {
 
-	@Autowired 
+	@Autowired
 	private SmsInfoService smsInfoService;
 
 	@Autowired

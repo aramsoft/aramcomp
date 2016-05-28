@@ -47,7 +47,7 @@ public class DtaUseStatsService extends EgovAbstractServiceImpl {
 	private DtaUseStatsMapper dtaUseStatsMapper;	
 
 	@Autowired
-	private EgovIdGnrService dtaUseStatsIdGnrService; 
+	private EgovIdGnrService dtaUseStatsIdGnrService;
 
 	/**
 	 * 자료이용현황 통계정보의 대상목록을 조회한다.

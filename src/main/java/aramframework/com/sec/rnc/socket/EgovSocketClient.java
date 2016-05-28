@@ -1,4 +1,4 @@
-package aramframework.com.sec.rnc.service;
+package aramframework.com.sec.rnc.socket;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

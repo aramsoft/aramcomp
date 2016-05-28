@@ -1,9 +1,7 @@
-package aramframework.com.utl.sys.nsm.service;
+package aramframework.com.utl.sys.trm.domain;
 
 /**
- * 개요 - 네트워크서비스 모니터링에 대한 결과 클래스를 정의한다.
- * 
- * 상세내용 - 모니터링 정상여부, 원인 Exception 항목을 관리한다.
+ * 송수신모니터링 에 대한 결과 클래스
  * 
  * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
@@ -21,7 +19,7 @@ package aramframework.com.utl.sys.nsm.service;
  * </pre>
  */
 
-public class NtwrkSvcMntrngResult {
+public class TrsmrcvMntrngResult {
 
 	/**
 	 * 모니터링 정상여부
@@ -32,23 +30,37 @@ public class NtwrkSvcMntrngResult {
 	 */
 	private Throwable cause;
 
+	/**
+	 * @return the nrmltAt
+	 */
 	public boolean isNrmltAt() {
 		return nrmltAt;
 	}
 
+	/**
+	 * @return the cause
+	 */
 	public Throwable getCause() {
 		return cause;
 	}
 
+	/**
+	 * @param nrmltAt
+	 *            the nrmltAt to set
+	 */
 	public void setNrmltAt(boolean nrmltAt) {
 		this.nrmltAt = nrmltAt;
 	}
 
+	/**
+	 * @param cause
+	 *            the cause to set
+	 */
 	public void setCause(Throwable cause) {
 		this.cause = cause;
 	}
 
-	public NtwrkSvcMntrngResult(boolean nrmltAt, Throwable cause) {
+	public TrsmrcvMntrngResult(boolean nrmltAt, Throwable cause) {
 		this.nrmltAt = nrmltAt;
 		this.cause = cause;
 	}

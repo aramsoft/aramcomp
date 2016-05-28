@@ -1,4 +1,4 @@
-package aramframework.com.utl.sys.dbm.service;
+package aramframework.com.utl.sys.dbm.schedule;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,6 +8,8 @@ import javax.sql.DataSource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import aramframework.com.utl.sys.dbm.domain.DbMntrngResult;
 
 /**
  * DB서비스모니터링을 위한 Check 클래스

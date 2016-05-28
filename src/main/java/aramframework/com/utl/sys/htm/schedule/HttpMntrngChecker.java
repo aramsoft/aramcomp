@@ -1,9 +1,11 @@
-package aramframework.com.utl.sys.htm.service;
+package aramframework.com.utl.sys.htm.schedule;
 
 import java.io.File;
 import java.net.URL;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import aramframework.com.utl.sys.htm.service.HttpMntrngService;
 
 /**
  * 개요 - HTTP서비스모니터링을 위한 Check 클래스

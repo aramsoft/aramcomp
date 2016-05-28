@@ -2,6 +2,7 @@ package aramframework.com.sec.rnc.service;
 
 import org.springframework.stereotype.Service;
 
+import aramframework.com.sec.rnc.socket.EgovSocketClient;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 
 /**

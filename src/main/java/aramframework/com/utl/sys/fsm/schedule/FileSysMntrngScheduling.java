@@ -15,7 +15,6 @@ import aramframework.com.utl.fcc.service.DateUtil;
 import aramframework.com.utl.fcc.service.StringUtil;
 import aramframework.com.utl.sys.fsm.domain.FileSysMntrngVO;
 import aramframework.com.utl.sys.fsm.service.FileSysMntrngService;
-import aramframework.com.utl.sys.fsm.service.FileSysChecker;
 
 /**
  * 개요 - 네트워크서비스 모니터링을 위한 스케쥴링클래스를 정의한다.
@@ -39,8 +38,8 @@ import aramframework.com.utl.sys.fsm.service.FileSysChecker;
  * </pre>
  */
 
-@Component("fileSystemMntrngScheduling")
-public class FileSystemMntrngScheduling {
+@Component("fileSysMntrngScheduling")
+public class FileSysMntrngScheduling {
 
 	@Autowired
 	private FileSysMntrngService fileSysMntrngService;

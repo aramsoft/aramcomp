@@ -1,7 +1,9 @@
-package aramframework.com.utl.sys.nsm.service;
+package aramframework.com.utl.sys.nsm.schedule;
 
 import java.io.IOException;
 import java.net.Socket;
+
+import aramframework.com.utl.sys.nsm.domain.NtwrkSvcMntrngResult;
 
 /**
  * 개요 - 네트워크서비스 모니터링을 위한 Check 클래스

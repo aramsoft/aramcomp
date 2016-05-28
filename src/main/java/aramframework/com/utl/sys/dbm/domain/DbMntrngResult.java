@@ -1,7 +1,7 @@
-package aramframework.com.utl.sys.trm.service;
+package aramframework.com.utl.sys.dbm.domain;
 
 /**
- * 송수신모니터링 에 대한 결과 클래스
+ * DB서비스모니터링 에 대한 결과 클래스
  * 
  * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
@@ -19,7 +19,7 @@ package aramframework.com.utl.sys.trm.service;
  * </pre>
  */
 
-public class TrsmrcvMntrngResult {
+public class DbMntrngResult {
 
 	/**
 	 * 모니터링 정상여부
@@ -60,7 +60,7 @@ public class TrsmrcvMntrngResult {
 		this.cause = cause;
 	}
 
-	public TrsmrcvMntrngResult(boolean nrmltAt, Throwable cause) {
+	public DbMntrngResult(boolean nrmltAt, Throwable cause) {
 		this.nrmltAt = nrmltAt;
 		this.cause = cause;
 	}

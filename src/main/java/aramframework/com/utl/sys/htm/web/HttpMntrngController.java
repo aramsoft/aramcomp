@@ -19,7 +19,7 @@ import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.utl.sys.htm.domain.HttpMntrngLogVO;
 import aramframework.com.utl.sys.htm.domain.HttpMntrngVO;
-import aramframework.com.utl.sys.htm.service.HttpMntrngChecker;
+import aramframework.com.utl.sys.htm.schedule.HttpMntrngChecker;
 import aramframework.com.utl.sys.htm.service.HttpMntrngService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 

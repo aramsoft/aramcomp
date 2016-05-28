@@ -19,7 +19,7 @@ import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.utl.sys.prm.domain.ProcessMonLogVO;
 import aramframework.com.utl.sys.prm.domain.ProcessMonVO;
-import aramframework.com.utl.sys.prm.service.ProcessMonChecker;
+import aramframework.com.utl.sys.prm.schedule.ProcessMonChecker;
 import aramframework.com.utl.sys.prm.service.ProcessMonService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 

@@ -1,4 +1,6 @@
-package aramframework.com.utl.sys.trm.service;
+package aramframework.com.utl.sys.trm.schedule;
+
+import aramframework.com.utl.sys.trm.domain.TrsmrcvMntrngResult;
 
 
 /**

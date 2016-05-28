@@ -1,10 +1,12 @@
-package aramframework.com.utl.sys.trm.service;
+package aramframework.com.utl.sys.trm.schedule;
 
 import java.util.Date;
 import java.util.Random;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import aramframework.com.utl.sys.trm.domain.TrsmrcvMntrngResult;
 
 /**
  * 송수신모니터링을 위한 Check interface 예제 구현클래스

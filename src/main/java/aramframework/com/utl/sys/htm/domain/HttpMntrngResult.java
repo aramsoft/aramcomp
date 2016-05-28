@@ -1,4 +1,4 @@
-package aramframework.com.utl.sys.htm.service;
+package aramframework.com.utl.sys.htm.domain;
 
 /**
  * 개요 - 

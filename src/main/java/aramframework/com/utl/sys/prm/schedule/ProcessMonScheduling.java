@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 import aramframework.com.utl.fcc.service.DateUtil;
 import aramframework.com.utl.fcc.service.StringUtil;
 import aramframework.com.utl.sys.prm.domain.ProcessMonVO;
-import aramframework.com.utl.sys.prm.service.ProcessMonChecker;
 import aramframework.com.utl.sys.prm.service.ProcessMonService;
 
 /**

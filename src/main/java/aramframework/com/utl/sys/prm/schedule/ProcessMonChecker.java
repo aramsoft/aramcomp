@@ -1,4 +1,4 @@
-package aramframework.com.utl.sys.prm.service;
+package aramframework.com.utl.sys.prm.schedule;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

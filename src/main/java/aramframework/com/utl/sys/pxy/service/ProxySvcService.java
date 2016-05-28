@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import aramframework.com.utl.sys.pxy.dao.ProxySvcMapper;
 import aramframework.com.utl.sys.pxy.domain.ProxySvcLogVO;
 import aramframework.com.utl.sys.pxy.domain.ProxySvcVO;
+import aramframework.com.utl.sys.pxy.thread.ProxyCommand;
+import aramframework.com.utl.sys.pxy.thread.ProxyServer;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.cmmn.exception.FdlException;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;

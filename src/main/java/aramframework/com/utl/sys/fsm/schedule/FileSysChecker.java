@@ -1,4 +1,4 @@
-package aramframework.com.utl.sys.fsm.service;
+package aramframework.com.utl.sys.fsm.schedule;
 
 import java.io.BufferedReader;
 import java.io.File;

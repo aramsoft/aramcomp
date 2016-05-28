@@ -1,4 +1,4 @@
-package aramframework.com.utl.sys.fsm.service;
+package aramframework.com.utl.sys.fsm.schedule;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one or more

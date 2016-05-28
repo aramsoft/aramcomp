@@ -1,4 +1,4 @@
-package aramframework.com.utl.sys.pxy.service;
+package aramframework.com.utl.sys.pxy.thread;
 
 import java.io.IOException;
 import java.io.InputStream;

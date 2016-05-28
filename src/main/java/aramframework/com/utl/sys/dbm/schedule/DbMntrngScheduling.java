@@ -14,9 +14,8 @@ import org.springframework.stereotype.Component;
 
 import aramframework.com.utl.fcc.service.StringUtil;
 import aramframework.com.utl.sys.dbm.domain.DbMntrngLogVO;
+import aramframework.com.utl.sys.dbm.domain.DbMntrngResult;
 import aramframework.com.utl.sys.dbm.domain.DbMntrngVO;
-import aramframework.com.utl.sys.dbm.service.DbMntrngChecker;
-import aramframework.com.utl.sys.dbm.service.DbMntrngResult;
 import aramframework.com.utl.sys.dbm.service.DbMntrngService;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 import egovframework.rte.psl.dataaccess.util.EgovMap;

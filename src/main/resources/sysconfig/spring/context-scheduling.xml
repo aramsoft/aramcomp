@@ -19,7 +19,7 @@
 	</bean>
 
 	<!-- SMS 전송 결과 수신 처리 -->
-	<!-- 시작하고 1분후,  매 분1마다  실행한다 .(milisecond)-->
+	<!-- 시작하고 1분후,  매 분1마다  실행한다 .(millisecond)-->
 <!-- 
 	<bean id="smsInfoReceiverJob"
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -44,7 +44,7 @@
 -->	
 
 	<!-- 코드 수신 연계 처리 -->
-	<!-- 시작하고 1분후,  매 분1마다  실행한다 .(milisecond)-->
+	<!-- 시작하고 1분후,  매 분1마다  실행한다 .(millisecond)-->
 	
 	<!-- 기관코드 수신 작업 정의  -->
 <!-- 
@@ -90,7 +90,7 @@
 -->
 
 	<!-- 서버 모니터링 -->
-	<!-- 시작하고 1분후,  매 분10마다  실행한다 .(milisecond)-->
+	<!-- 시작하고 1분후,  매 분10마다  실행한다 .(millisecond)-->
 	
 	<!-- DB서비스모니터링  작업 정의 -->
 <!-- 

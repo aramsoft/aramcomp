@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.cop.cmy.dao.CmyMenuManageMapper;
 import aramframework.com.cop.cmy.domain.CommunityMenuVO;
+import aramframework.com.cop.cmy.excel.ExcelCmyMenuMapping;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.excel.impl.EgovExcelServiceImpl;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
@@ -173,8 +174,8 @@ public class CmyMenuManageService extends EgovAbstractServiceImpl {
 	 * @param cmmntyId
 	 */
 	public void insertExcelMenu(InputStream file, String cmmntyId) {
-		String mapClass = "aramframework.com.cop.cmy.excel.ExcelCmyMenuMapping";
-		String sqlId = "aramframework.com.cop.cmy.dao.CmyMenuManageMapper.insertMenuManage";
+		String mapClass = ExcelCmyMenuMapping.class.getName();
+		String sqlId = CmyMenuManageMapper.class.getName() + ".insertMenuManage";
 
 		cmyMenuManageMapper.deleteMenuManageTrget(cmmntyId);
 		try {

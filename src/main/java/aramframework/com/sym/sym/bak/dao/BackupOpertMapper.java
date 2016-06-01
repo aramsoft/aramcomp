@@ -30,7 +30,7 @@ import aramframework.com.sym.sym.bak.domain.BackupSchdulDfkVO;
 @Repository
 public class BackupOpertMapper extends EgovAbstractMapper {
 
-	final static String NAMESPACE = "aramframework.com.sym.sym.bak.dao.BackupOpertMapper";
+	final static String NAMESPACE = BackupOpertMapper.class.getName();
 
 	/**
 	 * 백업작업정보목록을 조회한다.

@@ -28,6 +28,8 @@ import org.springframework.stereotype.Service;
 import aramframework.com.cmm.constant.AramProperties;
 import aramframework.com.sym.ccm.zip.dao.ZipManageMapper;
 import aramframework.com.sym.ccm.zip.domain.ZipVO;
+import aramframework.com.sym.ccm.zip.excel.ExcelZipAramMapping;
+import aramframework.com.sym.ccm.zip.excel.ExcelZipMapping;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.excel.impl.EgovExcelServiceImpl;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
@@ -107,8 +109,8 @@ public class ZipManageService extends EgovAbstractServiceImpl {
 	 * @param file
 	 */
 	public void insertExcelZip(InputStream file) {
-		String mapClass = "aramframework.com.sym.ccm.zip.excel.ExcelZipMapping";
-		String sqlId = "aramframework.com.sym.ccm.zip.dao.ZipManageMapper.insertExcelZip";
+		String mapClass = ExcelZipMapping.class.getName();
+		String sqlId = ZipManageMapper.class.getName() + ".insertExcelZip";
 
 		zipManageMapper.deleteAllZip();
 		try {
@@ -128,8 +130,8 @@ public class ZipManageService extends EgovAbstractServiceImpl {
 	 * @param file
 	 */
 	public void insertExcelZipAram(InputStream file) {
-		String mapClass = "aramframework.com.sym.ccm.zip.excel.ExcelZipAramMapping";
-		String sqlId = "aramframework.com.sym.ccm.zip.dao.ZipManageMapper.insertExcelZipAram";
+		String mapClass = ExcelZipAramMapping.class.getName();
+		String sqlId = ZipManageMapper.class.getName() + "insertExcelZipAram";
 
 		zipManageMapper.deleteAllZipAram();
 		try {

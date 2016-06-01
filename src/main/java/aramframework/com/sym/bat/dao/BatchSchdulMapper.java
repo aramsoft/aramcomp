@@ -30,7 +30,7 @@ import aramframework.com.sym.bat.domain.BatchSchdulVO;
 @Repository
 public class BatchSchdulMapper extends EgovAbstractMapper {
 
-	final static String NAMESPACE = "aramframework.com.sym.bat.dao.BatchSchdulMapper";
+	final static String NAMESPACE = BatchSchdulMapper.class.getName();
 	/**
 	 * 배치스케줄정보목록을 조회한다.
 	 * 

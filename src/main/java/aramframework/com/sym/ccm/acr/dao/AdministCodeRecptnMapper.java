@@ -27,10 +27,10 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * </pre>
  */
 
-@Repository("administCodeRecptnMapper")
+@Repository
 public class AdministCodeRecptnMapper extends EgovAbstractMapper {
 
-	final static String NAMESPACE = "aramframework.com.sym.ccm.acr.dao.AdministCodeRecptnMapper";
+	final static String NAMESPACE = AdministCodeRecptnMapper.class.getName();
 
 	/**
 	 * 법정동코드수신 목록을 조회한다.

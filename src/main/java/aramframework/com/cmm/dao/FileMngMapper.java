@@ -29,7 +29,7 @@ import aramframework.com.cmm.domain.FileVO;
 @Repository
 public class FileMngMapper extends EgovAbstractMapper {
 
-	final static String NAMESPACE = "aramframework.com.cmm.dao.FileMngMapper";
+	final static String NAMESPACE = FileMngMapper.class.getName();
 	/**
 	 * 파일명 검색에 대한 목록을 조회한다.
 	 * 

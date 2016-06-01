@@ -30,7 +30,7 @@ import aramframework.com.sts.com.StatsVO;
 @Repository
 public class BbsStatsMapper extends EgovAbstractMapper {
 
-	final static String NAMESPACE = "aramframework.com.sts.bst.dao.BbsStatsMapper";
+	final static String NAMESPACE = BbsStatsMapper.class.getName();
 
 	/**
 	 * 게시물 생성글수 통계를 조회한다

@@ -35,13 +35,14 @@
 	<!--
         View resolver that delegates to other view resolvers based on the content type
     -->
-    <bean id="beanViewResolver"  class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="1" />
+
+    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="1" />
     <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />				
 
-    <bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="2"  >
+    <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="2"  >
 		<property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
 	</bean>
-    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer" >
+    <bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer" >
 		<property name="definitions">
 			<list>
 				<value>/WEB-INF/layouts/layouts.xml</value>
@@ -50,14 +51,13 @@
 			</list>
 		</property>
 	</bean>
-
     <!--
 		- This bean configures the 'prefix' and 'suffix' properties of
 		- InternalResourceViewResolver, which resolves logical view names
 		- returned by Controllers. For example, a logical view name of "vets"
 		- will be mapped to "/WEB-INF/jsp/vets.jsp". no order(last call)
 	-->
-    <bean id="urlViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" 
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" 
 		  p:viewClass="org.springframework.web.servlet.view.JstlView"
 		  p:prefix="/WEB-INF/jsp/" p:suffix=".jsp"/>
  	

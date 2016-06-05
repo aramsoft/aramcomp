@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE form-validation PUBLIC 
+    "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1//EN" 
+    "http://jakarta.apache.org/commons/dtds/validator_1_1.dtd">
+
+<form-validation>
+    <formset>
+
+		<form name="boardVO">
+			<field property="nttSj" depends="required, maxlength">
+        		<arg0 key="cop.nttSj" />
+        		<arg1 key="1200" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>1200</var-value>
+				</var>
+			</field>			
+			<field property="nttCn" depends="required">
+        		<arg0 key="cop.nttCn" />
+			</field> 
+			<field property="ntceBgnde" depends="required">
+        		<arg0 key="cop.ntceBgnde" />
+			</field>
+			<field property="ntceEndde" depends="required">
+        		<arg0 key="cop.ntceEndde" />
+			</field>
+			<field property="ntcrNm" depends="required">
+        		<arg0 key="cop.ntcrNm" />
+			</field>
+			<field property="password" depends="required">
+        		<arg0 key="cop.password" />
+			</field>
+		</form>
+		
+		<form name="boardMasterVO">
+			<field property="bbsNm" depends="required, maxlength">
+        		<arg0 key="cop.bbsNm" />
+        		<arg1 key="120" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>120</var-value>
+				</var>
+			</field>
+			<field property="bbsIntrcn" depends="required, maxlength">
+        		<arg0 key="cop.bbsIntrcn" />
+        		<arg1 key="2000" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field> 
+			<field property="bbsTyCode" depends="required">
+        		<arg0 key="cop.bbsTyCode" />
+			</field>			
+			<field property="bbsAttrbCode" depends="required">
+        		<arg0 key="cop.bbsAttrbCode" />
+			</field>
+			<field property="replyPosblAt" depends="required">
+        		<arg0 key="cop.replyPosblAt" />
+			</field>	
+			<field property="fileAtchPosblAt" depends="required">
+        		<arg0 key="cop.fileAtchPosblAt" />
+			</field>
+			<field property="posblAtchFileNumber" depends="required">
+        		<arg0 key="cop.posblAtchFileNumber" />
+			</field>
+			<field property="tmplatId" depends="required">
+        		<arg0 key="cop.tmplatId" />
+			</field>			
+		</form>
+		
+		<form name="boardUseInfVO" >
+			<field property="bbsId" depends="required">
+        		<arg0 key="cop.bbsNm" />
+			</field>			
+			<field property="trgetId" depends="required">
+        		<arg0 key="cop.trgetNm" />
+			</field>		
+		</form>		
+		
+		<form name="commentVO">
+			<field property="wrterNm" depends="required, maxlength">
+        		<arg0 key="cop.comment.wrterNm" />
+        		<arg1 key="20" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+			</field>			
+			<field property="commentCn" depends="required, maxlength">
+        		<arg0 key="cop.comment.commentCn" />
+        		<arg1 key="200" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>200</var-value>
+				</var>
+			</field>
+			<field property="commentPassword" depends="required">
+        		<arg0 key="cop.comment.commentPassword" />
+			</field>
+		</form>
+
+		<form name="satisfactionVO">
+			<field property="wrterNm" depends="required, maxlength">
+        		<arg0 key="cop.satisfaction.wrterNm" />
+        		<arg1 key="20" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+			</field>			
+			<field property="stsfdgCn" depends="maxlength">
+        		<arg0 key="cop.satisfaction.stsfdgCn" />
+        		<arg1 key="200" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>200</var-value>
+				</var>
+			</field>
+			<field property="stsfdg" depends="required">
+        		<arg0 key="cop.satisfaction.stsfdg" />
+			</field>
+			<field property="stsfdgPassword" depends="required">
+        		<arg0 key="cop.satisfaction.stsfdgPassword" />
+			</field>
+		</form>
+		
+    </formset>
+</form-validation>

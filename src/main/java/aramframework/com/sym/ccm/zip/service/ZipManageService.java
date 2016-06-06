@@ -131,7 +131,7 @@ public class ZipManageService extends EgovAbstractServiceImpl {
 	 */
 	public void insertExcelZipAram(InputStream file) {
 		String mapClass = ExcelZipAramMapping.class.getName();
-		String sqlId = ZipManageMapper.class.getName() + "insertExcelZipAram";
+		String sqlId = ZipManageMapper.class.getName() + ".insertExcelZipAram";
 
 		zipManageMapper.deleteAllZipAram();
 		try {

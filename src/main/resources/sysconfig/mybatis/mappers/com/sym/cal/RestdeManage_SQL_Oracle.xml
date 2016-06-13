@@ -218,9 +218,9 @@
 
 	<select id="selectNormalMonthRestde" resultType="egovMap">
 		<![CDATA[
-            SELECT #{year}                		YEAR
-                 , #{month}               		MONTH
-                 , TO_CHAR(TO_NUMBER( SUBSTR(RESTDE,7,2))) DAY
+            SELECT #{year}                		AS YEAR
+                 , #{month}               		AS MONTH
+                 , TO_CHAR(TO_NUMBER( SUBSTR(RESTDE,7,2))) AS DAY
                  , RESTDE
                  , RESTDE_NM
               FROM COMTN_RESTDE 
@@ -319,9 +319,9 @@
 
 	<select id="selectAdministMonthRestde" resultType="egovMap">
 		<![CDATA[
-            SELECT #{year}                		YEAR
-                 , #{month}               		MONTH
-                 , TO_CHAR(TO_NUMBER(SUBSTR(RESTDE,7,2))) DAY
+            SELECT #{year}                		AS YEAR
+                 , #{month}               		AS MONTH
+                 , TO_CHAR(TO_NUMBER(SUBSTR(RESTDE,7,2))) AS DAY
                  , RESTDE
                  , RESTDE_NM
               FROM COMTN_RESTDE 

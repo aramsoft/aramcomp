@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.uss.olp.opr.dao.OnlinePollResultMapper">
+
+	<!-- 온라인POLL결과::목록조회 게시물정보 -->
+	<select id="selectOnlinePollResultList" resultType="egovMap">
+	 	<![CDATA[
+			SELECT (SELECT POLL_IEM_NM 
+			          FROM COMTN_ONLINE_POLL_IEM 
+			         WHERE POLL_ID=A.POLL_ID 
+			           AND POLL_IEM_ID=A.POLL_IEM_ID
+			       ) 						AS "pollIemNm" 
+			     , A.POLL_RESULT_ID			AS "pollResultId" 
+			     , (SELECT USER_NM 
+			          FROM COMVN_USER_MASTER 
+			         WHERE ESNTL_ID = A.FRST_REGISTER_ID
+			       ) 						AS "frstRegisterNm"  
+			     , A.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"  
+			  FROM COMTN_ONLINE_POLL_RESULT A
+			 WHERE A.POLL_ID = #{pollId} 
+			 ORDER BY "pollIemNm"
+		]]> 
+	</select>
+	
+    <!-- 온라인POLL결과::삭제  -->
+	<delete id="deleteOnlinePollResult">
+		<![CDATA[
+			DELETE 
+			  FROM COMTN_ONLINE_POLL_RESULT 
+			 WHERE POLL_RESULT_ID = #{pollResultId}
+		]]>
+	</delete>
+
+</mapper>

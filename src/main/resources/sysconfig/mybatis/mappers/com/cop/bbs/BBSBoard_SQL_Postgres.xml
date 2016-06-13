@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.cop.bbs.dao.BBSBoardMapper">
+
+	<!-- 목록조회  -->
+	<select id="selectBoardArticleList" resultType="egovMap" >
+        /* 구현 Sql */
+		<![CDATA[
+			SELECT a.BBS_ID					AS "bbsId" 
+				 , a.NTT_ID					AS "nttId" 
+			     , a.NTT_SJ					AS "nttSj" 
+			     , a.FRST_REGISTER_ID		AS "frstRegisterId" 
+			     , COALESCE(b.USER_NM, a.NTCR_NM) 	AS "frstRegisterNm"
+			     , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
+			     , a.RDCNT 					AS "rdcnt"
+			     , a.THREAD_DEPTH			AS "threadDepth"
+			     , a.USE_AT					AS "useAt" 
+			     , a.NTCR_NM				AS "ntcrNm" 
+			     , rtrim(a.NTCE_BGNDE) 		AS "ntceBgnde"
+			     , rtrim(a.NTCE_ENDDE) 		AS "ntceEndde" 
+			  FROM COMTN_BBS a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+						ON a.FRST_REGISTER_ID = b.ESNTL_ID 
+			 WHERE a.BBS_ID = #{bbsId}
+		]]>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "NTT_SJ"'>
+             	<![CDATA[ AND a.NTT_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "NTT_CN"'>
+             	<![CDATA[ AND a.NTT_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "USER_NM"'>
+             	<![CDATA[ AND b.USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[			
+			 ORDER BY a.THREAD_GROUP_NO DESC, a.THREAD_NO ASC
+        ]]>			
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+        ]]>			
+	</select>	
+	
+	<!-- 목록조회_게시물 총갯수  -->
+	<select id="selectBoardArticleListCnt" resultType="int" >
+		<![CDATA[
+			SELECT COUNT(a.NTT_ID)
+			  FROM COMTN_BBS a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+						ON a.FRST_REGISTER_ID = b.ESNTL_ID 
+			 WHERE a.BBS_ID = #{bbsId}
+		]]>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "NTT_SJ"'>
+             	<![CDATA[ AND a.NTT_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "NTT_CN"'>
+             	<![CDATA[ AND a.NTT_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "USER_NM"'>
+             	<![CDATA[ AND b.USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>	
+ 
+	<!-- 상세보기 -->
+	<select id="selectBoardArticle" resultType="boardVO" >
+		<![CDATA[
+			SELECT a.BBS_ID
+			     , a.NTT_ID
+				 , a.NTT_SJ
+			     , a.NTCR_ID
+			     , a.NTCR_NM
+			     , a.THREAD_NO
+			     , a.NTT_CN
+			     , a.PASSWORD
+			     , a.FRST_REGISTER_ID		
+			     , b.USER_NM 				AS "frstRegisterNm"
+			     , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
+			     , a.NTCE_BGNDE
+			     , a.NTCE_ENDDE
+			     , a.RDCNT								
+			     , a.USE_AT
+			     , a.ATCH_FILE_ID
+			     , a.PARNTS_NTT_ID			
+			     , a.ANSWER_AT				
+			     , a.THREAD_DEPTH			
+			     , a.THREAD_GROUP_NO
+			  FROM COMTN_BBS a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+						ON a.FRST_REGISTER_ID = b.ESNTL_ID 
+			 WHERE a.BBS_ID = #{bbsId}	
+			   AND a.NTT_ID = #{nttId}	
+		]]>				
+	</select> 
+
+	<!-- 입력 -->
+	<insert id="insertBoardArticle" >
+		<selectKey resultType="long" keyProperty="threadGroupNo" order="BEFORE">
+			SELECT COALESCE(MAX(THREAD_GROUP_NO),0)+1 
+			  FROM COMTN_BBS
+			 WHERE BBS_ID = #{bbsId}
+		</selectKey>
+		<![CDATA[
+			INSERT INTO COMTN_BBS (
+					NTT_ID
+				  ,	BBS_ID
+				  ,	NTT_SJ
+				  ,	NTT_CN
+				  ,	THREAD_GROUP_NO
+				  ,	NTCR_ID
+				  ,	NTCR_NM
+				  ,	PASSWORD
+				  , RDCNT
+				  ,	NTCE_BGNDE
+				  ,	NTCE_ENDDE
+				  ,	ANSWER_AT
+				  ,	PARNTS_NTT_ID
+				  ,	THREAD_NO
+				  ,	THREAD_DEPTH
+				  ,	ATCH_FILE_ID
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+				  ,	USE_AT
+			 ) VALUES ( 
+			 		#{nttId}
+			 	  , #{bbsId}
+			 	  ,	#{nttSj}
+			 	  ,	#{nttCn, jdbcType=CLOB}
+			 	  ,	#{threadGroupNo}
+			 	  ,	#{ntcrId}
+			 	  ,	#{ntcrNm}
+			 	  ,	#{password}
+			 	  ,	#{rdcnt}
+			 	  ,	#{ntceBgnde}
+			 	  ,	#{ntceEndde}
+			 	  ,	'N'
+			 	  ,	0
+			 	  ,	1
+			 	  ,	0
+			 	  ,	#{atchFileId, jdbcType=VARCHAR}
+				  , #{frstRegisterId}
+				  , now()
+				  , #{frstRegisterId} 
+				  , now()
+			 	  ,	'Y'
+			 )			
+		]]>
+	</insert>
+	
+	<!-- 답글 입력 -->
+	<insert id="replyBoardArticle" >
+		<![CDATA[
+			INSERT INTO COMTN_BBS (
+					NTT_ID
+				  , BBS_ID
+				  ,	NTT_SJ
+				  ,	NTT_CN
+				  ,	THREAD_GROUP_NO
+				  ,	NTCR_ID
+				  ,	NTCR_NM
+				  ,	PASSWORD
+				  ,	RDCNT
+				  ,	NTCE_BGNDE
+				  ,	NTCE_ENDDE
+				  ,	ANSWER_AT
+				  ,	PARNTS_NTT_ID
+				  ,	THREAD_NO
+				  ,	THREAD_DEPTH
+				  ,	ATCH_FILE_ID
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+				  ,	USE_AT
+			 ) VALUES ( 
+			 		#{nttId}
+			 	  ,	#{bbsId}
+			 	  ,	#{nttSj}
+			 	  ,	#{nttCn, jdbcType=CLOB}
+			 	  ,	#{threadGroupNo}
+			 	  ,	#{ntcrId}
+			 	  ,	#{ntcrNm}
+			 	  ,	#{password}
+			 	  ,	#{rdcnt}
+			 	  ,	#{ntceBgnde}
+			 	  ,	#{ntceEndde}
+			 	  ,	#{answerAt}
+			 	  ,	#{parntsNttId}
+			 	  ,	1
+			 	  ,	#{threadDepth}
+			 	  ,	#{atchFileId, jdbcType=VARCHAR}
+				  , #{frstRegisterId}
+				  , now()
+				  , #{frstRegisterId} 
+				  , now()
+			 	  ,	'Y'
+			 )			
+		]]>
+	</insert>	
+	
+	<select id="getParentThreadNo" resultType="int">
+		<![CDATA[
+			SELECT THREAD_NO 
+			  FROM COMTN_BBS
+			 WHERE BBS_ID = #{bbsId} 
+			   AND NTT_ID = #{parntsNttId}			
+		]]>
+	</select>
+	
+ 	<update id="updateThreadNo" >
+ 		<![CDATA[
+			UPDATE COMTN_BBS 
+			   SET THREAD_NO = #{threadNo}
+			 WHERE BBS_ID = #{bbsId} 
+			   AND NTT_ID = #{nttId}
+ 		]]>
+ 	</update>
+ 	
+ 	<update id="updateOtherThreadNo" >
+ 		<![CDATA[
+			UPDATE COMTN_BBS 
+			   SET THREAD_NO = THREAD_NO + 1
+			 WHERE BBS_ID = #{bbsId} 
+			   AND THREAD_GROUP_NO = #{threadGroupNo}
+			   AND THREAD_NO > #{threadNo}
+ 		]]>
+ 	</update>
+ 	
+	<!-- 수정 -->
+ 	<update id="updateBoardArticle" >
+ 		<![CDATA[
+			UPDATE COMTN_BBS 
+			   SET NTT_SJ = #{nttSj}
+			     , NTT_CN = #{nttCn, jdbcType=CLOB}
+			     , NTCR_ID = #{ntcrId}
+			     , NTCR_NM = #{ntcrNm}
+			     , PASSWORD = #{password}
+			     , NTCE_BGNDE = #{ntceBgnde}
+			     , NTCE_ENDDE = #{ntceEndde}
+			     , ATCH_FILE_ID = #{atchFileId, jdbcType=VARCHAR}
+			     , LAST_UPDUSR_ID = #{lastUpdusrId}
+			     , LAST_UPDT_PNTTM = now()
+			 WHERE BBS_ID = #{bbsId}
+			   AND NTT_ID = #{nttId}
+ 		]]>
+ 	</update>
+
+ 	<update id="updateRdcnt" >
+ 		<![CDATA[
+			UPDATE COMTN_BBS 
+			   SET RDCNT = RDCNT+1
+			 WHERE BBS_ID = #{bbsId}
+			   AND NTT_ID = #{nttId}
+ 		]]>
+ 	</update>
+
+	<!-- 삭제 -->
+ 	<update id="deleteBoardArticle" >
+ 		<![CDATA[
+			UPDATE COMTN_BBS 
+			   SET NTT_SJ = #{nttSj}
+			     , USE_AT = 'N'
+			     , LAST_UPDUSR_ID = #{lastUpdusrId}
+			     , LAST_UPDT_PNTTM = now()
+			 WHERE BBS_ID = #{bbsId}
+			   AND NTT_ID = #{nttId}
+ 		]]>
+ 	</update>
+
+	<!-- 완전삭제 -->
+	<delete id="eraseBoardArticle" > 
+		<![CDATA[
+			DELETE 
+			  FROM COMTN_BBS 
+			 WHERE BBS_ID = #{bbsId}
+			   AND NTT_ID = #{nttId}
+		]]>
+	</delete>
+	<delete id="eraseComment" > 
+		<![CDATA[
+			DELETE 
+			  FROM COMTN_COMMENT 
+			 WHERE BBS_ID = #{bbsId}
+			   AND NTT_ID = #{nttId}
+		]]>
+	</delete>
+	<delete id="eraseSatisfaction" > 
+		<![CDATA[
+			DELETE 
+			  FROM COMTN_STSFDG 
+			 WHERE BBS_ID = #{bbsId}
+			   AND NTT_ID = #{nttId}
+		]]>
+	</delete>
+	<delete id="eraseScrap" > 
+		<![CDATA[
+			DELETE 
+			  FROM COMTN_SCRAP 
+			 WHERE BBS_ID = #{bbsId}
+			   AND NTT_ID = #{nttId}
+		]]>
+	</delete>
+	<!-- 완전삭제 -->
+
+	<select id="getPasswordInf" resultType="String">
+		<![CDATA[
+			SELECT PASSWORD
+			  FROM COMTN_BBS	
+			 WHERE BBS_ID = #{bbsId}
+			   AND NTT_ID = #{nttId}				
+		]]>
+	</select>
+
+	<!-- 목록조회(방명록)  -->
+	<select id="selectGuestList" resultType="boardVO" >
+        /* 구현 Sql */
+		<![CDATA[
+			SELECT a.NTT_ID					AS "nttId"
+			     , a.NTCR_NM				AS "ntcrNm"
+			     , a.NTT_CN					AS "nttCn"
+			     , a.FRST_REGISTER_ID		AS "frstRegisterId"	
+			     , b.USER_NM 				AS "frstRegisterNm"
+			     , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
+			  FROM COMTN_BBS a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+						ON a.FRST_REGISTER_ID = b.ESNTL_ID 
+			 WHERE a.BBS_ID = #{bbsId}
+			   AND a.USE_AT = 'Y'
+			 ORDER BY a.SORT_ORDR DESC, a.NTT_NO ASC
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+        ]]>			
+	</select>	
+	
+	<!-- 목록조회(방명록)_게시물 총갯수  -->
+	<select id="selectGuestListCnt" resultType="int" >
+		<![CDATA[
+			SELECT COUNT(NTT_ID)
+			  FROM COMTN_BBS 
+			 WHERE BBS_ID = #{bbsId}	
+			   AND USE_AT = 'Y'
+		]]>			
+	</select>	
+ 	
+	<!-- 삭제 -->
+	<update id="deleteGuestList" >
+		<![CDATA[
+			UPDATE COMTN_BBS
+			   SET USE_AT = 'N'
+			 WHERE BBS_ID = #{bbsId}
+			   AND NTT_ID = #{nttId}
+		]]>			
+	</update>	
+	
+</mapper>

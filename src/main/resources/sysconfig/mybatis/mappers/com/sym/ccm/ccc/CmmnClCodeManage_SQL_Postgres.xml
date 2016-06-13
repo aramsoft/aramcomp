@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.sym.ccm.ccc.dao.CmmnClCodeManageMapper">
+
+	<!-- 목록조회  -->
+	<select id="selectCmmnClCodeList" resultType="egovMap">
+        /* 구현 Sql */
+		<![CDATA[
+			SELECT CL_CODE					AS "clCode"
+			     , CL_CODE_NM				AS "clCodeNm"
+			     , USE_AT					AS "useAt"
+			  FROM COMTC_CMMN_CL_CODE
+			 WHERE USE_AT = 'Y'
+		]]>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "CL_CODE"'>
+				<![CDATA[ AND CL_CODE LIKE '%' || #{searchVO.searchKeyword} || '%']]>
+            </when>
+            <when test='searchVO.searchCondition == "CL_CODE_NM"'>
+				<![CDATA[ AND CL_CODE_NM LIKE '%' || #{searchVO.searchKeyword} || '%']]>
+            </when>
+        </choose>
+		</if>
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+        ]]>			
+	</select>
+
+	<!-- 목록조회_게시물 총갯수  -->
+	<select id="selectCmmnClCodeListCnt" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) totcnt
+			  FROM COMTC_CMMN_CL_CODE
+			 WHERE USE_AT = 'Y'
+		]]>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "CL_CODE"'>
+				<![CDATA[ AND CL_CODE LIKE '%' || #{searchVO.searchKeyword} || '%']]>
+            </when>
+            <when test='searchVO.searchCondition == "CL_CODE_NM"'>
+				<![CDATA[ AND CL_CODE_NM LIKE '%' || #{searchVO.searchKeyword} || '%']]>
+            </when>
+        </choose>
+		</if>
+	</select>
+
+	<!-- 상세보기 -->
+	<select id="selectCmmnClCodeDetail" resultType="cmmnClCodeVO">
+		<![CDATA[
+            SELECT CL_CODE    				AS "clCode"
+			     , CL_CODE_NM 				AS "clCodeNm"
+                 , CL_CODE_DC 				AS "clCodeDc"
+                 , USE_AT     				AS "useAt"
+              FROM COMTC_CMMN_CL_CODE
+             WHERE CL_CODE    = #{clCode}
+		]]>
+	</select>
+
+	<!-- 입력 -->
+	<insert id="insertCmmnClCode">
+		<![CDATA[
+		    INSERT INTO  COMTC_CMMN_CL_CODE (  
+		    	   CL_CODE
+		         , CL_CODE_NM
+		         , CL_CODE_DC
+		         , USE_AT
+				 , FRST_REGISTER_ID 
+				 , FRST_REGIST_PNTTM 
+				 , LAST_UPDUSR_ID
+				 , LAST_UPDT_PNTTM 
+		    ) VALUES (  
+		    	   #{clCode}
+		         , #{clCodeNm}
+		         , #{clCodeDc}
+		         , #{useAt}
+				 , #{frstRegisterId}
+				 , now()
+				 , #{frstRegisterId} 
+				 , now()
+		    )
+		]]>
+	</insert>
+
+	<!-- 수정 -->
+	<update id="updateCmmnClCode">
+		<![CDATA[
+            UPDATE COMTC_CMMN_CL_CODE
+               SET CL_CODE_NM        = #{clCodeNm}
+                 , CL_CODE_DC        = #{clCodeDc}
+                 , USE_AT            = #{useAt}
+                 , LAST_UPDUSR_ID    = #{lastUpdusrId}
+                 , LAST_UPDT_PNTTM 	 = now()
+             WHERE CL_CODE           = #{clCode}
+		]]>
+	</update>
+
+	<!-- 삭제 -->
+	<delete id="deleteCmmnClCode">
+		<![CDATA[
+            UPDATE COMTC_CMMN_CL_CODE
+               SET USE_AT  = 'N'
+             WHERE CL_CODE = #{clCode}
+		]]>
+	</delete>
+
+</mapper>

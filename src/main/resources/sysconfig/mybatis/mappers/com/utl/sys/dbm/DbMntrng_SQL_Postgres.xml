@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.utl.sys.dbm.dao.DbMntrngMapper">
+
+    <select id="selectDbMntrngList" resultType="dbMntrngVO" >
+        /* 구현 Sql */
+       	<![CDATA[
+            SELECT A.DATA_SOURC_NM			
+            	 , A.SERVER_NM				
+            	 , A.DBMS_KND				AS "dbmsKind"	
+            	 , A.CECK_SQL				
+            	 , A.MNGR_NM				
+            	 , A.MNGR_EMAIL_ADRES		AS "mngrEmailAddr"
+            	 , A.MNTRNG_STTUS			
+            	 , DATE_FORMAT(A.CREAT_DT, '%Y-%m-%d %H:%i:%S') AS "creatDt" 
+            	 , B.CODE_NM 				AS "dbmsKindNm" 
+            	 , C.CODE_NM 				AS "mntrngSttusNm" 
+              FROM COMTN_DB_MNTRNG A
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM048') B
+				       	ON A.DBMS_KND = B.CODE
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM046') C
+				       	ON A.MNTRNG_STTUS = C.CODE
+             WHERE 1=1
+        ]]>
+      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "DATA_SOURC_NM"'>
+                <![CDATA[ AND A.DATA_SOURC_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "SERVER_NM"'>
+                <![CDATA[ AND A.SERVER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "MNGR_NM"'>
+                <![CDATA[ AND A.MNGR_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "CODE_NM"'>
+                <![CDATA[ AND C.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+        <![CDATA[
+             ORDER BY A.DATA_SOURC_NM ASC
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+        ]]>			
+    </select>
+
+    <select id="selectDbMntrngListCnt" resultType="int" >
+        <![CDATA[
+            SELECT COUNT(*) totcnt
+              FROM COMTN_DB_MNTRNG A
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM048') B
+				       	ON A.DBMS_KND = B.CODE
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM046') C
+				       	ON A.MNTRNG_STTUS = C.CODE
+             WHERE 1=1
+        ]]>
+      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "DATA_SOURC_NM"'>
+                <![CDATA[ AND A.DATA_SOURC_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "SERVER_NM"'>
+                <![CDATA[ AND A.SERVER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "MNGR_NM"'>
+                <![CDATA[ AND A.MNGR_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "CODE_NM"'>
+                <![CDATA[ AND C.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+    </select>
+    
+    <select id="selectDbMntrng" resultType="dbMntrngVO">
+        <![CDATA[
+            SELECT A.DATA_SOURC_NM
+            	 , A.SERVER_NM
+            	 , A.DBMS_KND					AS DBMS_KNDE
+            	 , A.CECK_SQL
+            	 , A.MNGR_NM
+            	 , A.MNGR_EMAIL_ADRES			AS MNGR_EMAIL_ADDR
+            	 , A.MNTRNG_STTUS
+            	 , A.LAST_UPDT_PNTTM 			AS "lastUpdusrPnttm" 
+            	 , A.LAST_UPDUSR_ID
+            	 , A.FRST_REGISTER_ID
+            	 , A.FRST_REGIST_PNTTM 			AS "frstRegisterPnttm" 
+            	 , DATE_FORMAT(A.CREAT_DT, '%Y-%m-%d %H:%i:%S') AS CREAT_DT
+            	 , B.CODE_NM 					AS DBMS_KIND_NM
+            	 , C.CODE_NM 					AS MNTRNG_STTUS_NM
+              FROM COMTN_DB_MNTRNG A
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM048') B
+				       	ON A.DBMS_KND = B.CODE
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM046') C
+				       	ON A.MNTRNG_STTUS = C.CODE
+             WHERE A.DATA_SOURC_NM = #{dataSourcNm}
+        ]]>
+    </select>
+
+    <insert id="insertDbMntrng" >
+        <![CDATA[
+            INSERT INTO COMTN_DB_MNTRNG (
+                	DATA_SOURC_NM
+                  ,	SERVER_NM
+                  ,	DBMS_KND
+                  ,	CECK_SQL
+                  ,	MNGR_NM
+                  ,	MNGR_EMAIL_ADRES
+                  ,	MNTRNG_STTUS
+                  ,	CREAT_DT
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+            ) VALUES (
+                    #{dataSourcNm}
+                  , #{serverNm}
+                  , #{dbmsKind}
+                  , #{ceckSql}
+                  , #{mngrNm}
+                  , #{mngrEmailAddr}
+                  , #{mntrngSttus}
+                  , now()
+				  , #{frstRegisterId}
+				  , now()
+				  , #{frstRegisterId} 
+				  , now()
+            ) 
+        ]]>
+    </insert>
+
+    <update id="updateDbMntrng" >
+        <![CDATA[
+            UPDATE COMTN_DB_MNTRNG 
+               SET SERVER_NM = #{serverNm}
+               	 , DBMS_KND = #{dbmsKind}
+               	 , CECK_SQL = #{ceckSql}
+               	 , MNGR_NM = #{mngrNm}
+               	 , MNGR_EMAIL_ADRES = #{mngrEmailAddr}
+               	 , MNTRNG_STTUS = #{mntrngSttus}
+               	 , CREAT_DT = now()
+               	 , LAST_UPDUSR_ID = #{lastUpdusrId}
+               	 , LAST_UPDT_PNTTM = now()
+             WHERE DATA_SOURC_NM = #{dataSourcNm} 
+        ]]>
+    </update>
+    
+    <delete id="deleteDbMntrng" >
+        <![CDATA[
+            DELETE  
+              FROM COMTN_DB_MNTRNG 
+             WHERE DATA_SOURC_NM = #{dataSourcNm} 
+        ]]>
+    </delete>
+
+    <select id="selectDbMntrngLogList" resultType="dbMntrngLogVO"  >
+        /* 구현 Sql */
+       <![CDATA[
+            SELECT A.LOG_ID					
+                 , A.DATA_SOURC_NM			
+                 , A.SERVER_NM				
+                 , A.MNGR_NM				
+                 , A.MNGR_EMAIL_ADRES			AS "mngrEmailAddr"
+                 , DATE_FORMAT(A.CREAT_DT, '%Y-%m-%d %H:%i:%S') AS "creatDt" 
+                 , B.CODE_NM 					AS "dbmsKindNm"
+                 , C.CODE_NM 					AS "mntrngSttusNm" 
+              FROM COMTN_DB_MNTRNG_LOG A
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM048') B
+				       	ON A.DBMS_KND = B.CODE
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM046') C
+				       	ON A.MNTRNG_STTUS = C.CODE
+             WHERE 1=1
+        ]]>
+        <if test='searchVO.searchKeywordFrom != null and searchVO.searchKeywordFrom != ""'>
+				<![CDATA[ AND DATE_FORMAT(A.CREAT_DT, '%Y%m%d') >= #{searchVO.searchKeywordFrom}  ]]>
+		</if>
+       	<if test='searchVO.searchKeywordTo != null and searchVO.searchKeywordTo != ""'>
+				<![CDATA[ AND DATE_FORMAT(A.CREAT_DT, '%Y%m%d') <= #{searchVO.searchKeywordTo}	]]>
+		</if>
+       	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "DATA_SOURC_NM"'>
+                <![CDATA[ AND A.DATA_SOURC_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "SERVER_NM"'>
+                <![CDATA[ AND A.SERVER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "MNGR_NM"'>
+                <![CDATA[ AND A.MNGR_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+        <![CDATA[
+            ORDER BY A.LOG_ID DESC
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+        ]]>			
+    </select>
+
+    <select id="selectDbMntrngLogListCnt" resultType="int" >
+        <![CDATA[
+            SELECT COUNT(*) totcnt
+              FROM COMTN_DB_MNTRNG_LOG A
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM048') B
+				       	ON A.DBMS_KND = B.CODE
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM046') C
+				       	ON A.MNTRNG_STTUS = C.CODE
+             WHERE 1=1
+        ]]>
+        <if test='searchVO.searchKeywordFrom != null and searchVO.searchKeywordFrom != ""'>
+				<![CDATA[ AND DATE_FORMAT(A.CREAT_DT, '%Y%m%d') >= #{searchVO.searchKeywordFrom}  ]]>
+		</if>
+       	<if test='searchVO.searchKeywordTo != null and searchVO.searchKeywordTo != ""'>
+				<![CDATA[ AND DATE_FORMAT(A.CREAT_DT, '%Y%m%d') <= #{searchVO.searchKeywordTo}	]]>
+		</if>
+       	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "DATA_SOURC_NM"'>
+                <![CDATA[ AND A.DATA_SOURC_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "SERVER_NM"'>
+                <![CDATA[ AND A.SERVER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "MNGR_NM"'>
+                <![CDATA[ AND A.MNGR_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+    </select>
+
+    <select id="selectDbMntrngLog" resultType="dbMntrngLogVO">
+        <![CDATA[
+            SELECT A.LOG_ID
+                 , A.DATA_SOURC_NM
+                 , A.SERVER_NM
+                 , A.DBMS_KND				AS DBMS_KNDE
+                 , A.CECK_SQL
+                 , A.MNGR_NM
+                 , A.MNGR_EMAIL_ADRES		AS MNGR_EMAIL_ADDR
+                 , A.MNTRNG_STTUS
+                 , A.LAST_UPDT_PNTTM 		AS "lastUpdusrPnttm" 
+                 , A.LAST_UPDUSR_ID
+                 , A.FRST_REGISTER_ID
+                 , A.FRST_REGIST_PNTTM 		AS "frstRegisterPnttm"
+                 , DATE_FORMAT(A.CREAT_DT, '%Y-%m-%d %H:%i:%S') AS CREAT_DT
+                 , A.LOG_INFO
+                 , B.CODE_NM 				AS DBMS_KIND_NM
+                 , C.CODE_NM 				AS MNTRNG_STTUS_NM
+              FROM COMTN_DB_MNTRNG_LOG A
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM048') B
+				       	ON A.DBMS_KND = B.CODE
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM046') C
+				       	ON A.MNTRNG_STTUS = C.CODE
+             WHERE A.LOG_ID = #{logId}
+        ]]>
+    </select>
+    
+    <insert id="insertDbMntrngLog" >
+        <![CDATA[
+            INSERT INTO COMTN_DB_MNTRNG_LOG (
+                	LOG_ID
+                  ,	DATA_SOURC_NM
+                  ,	SERVER_NM
+                  ,	DBMS_KND
+                  ,	CECK_SQL
+                  ,	MNGR_NM
+                  ,	MNGR_EMAIL_ADRES
+                  ,	MNTRNG_STTUS
+                  ,	CREAT_DT
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+                  ,	LOG_INFO
+            ) VALUES (
+                    #{logId}
+                  , #{dataSourcNm}
+                  , #{serverNm}
+                  , #{dbmsKind}
+                  , #{ceckSql}
+                  , #{mngrNm}
+                  , #{mngrEmailAddr}
+                  , #{mntrngSttus}
+                  , now()
+				  , #{frstRegisterId}
+				  , now()
+				  , #{frstRegisterId} 
+				  , now()
+                  , #{logInfo, jdbcType=VARCHAR}
+            ) 
+        ]]>
+    </insert>
+
+</mapper>            

@@ -84,7 +84,7 @@ CREATE TABLE COMTN_AUTHOR_GROUP_INFO
 (
 	GROUP_ID              	char(20)  		NOT NULL,
 	GROUP_NM              	varchar(60)  	NOT NULL,
-	GROUP_CREAT_DE        	char(20)  		NOT NULL,
+	GROUP_CREAT_DE        	datetime  		NOT NULL,
 	GROUP_DC              	varchar(100)  	NULL,
 	CONSTRAINT COMTN_AUTHOR_GROUP_INFO_PK PRIMARY KEY (GROUP_ID)
 );
@@ -244,7 +244,7 @@ CREATE TABLE COMTN_AUTHOR_INFO
 	AUTHOR_CODE           	varchar(30)  	NOT NULL,
 	AUTHOR_NM             	varchar(60)  	NOT NULL,
 	AUTHOR_DC             	varchar(200)  	NULL,
-	AUTHOR_CREAT_DE       	char(20)  		NOT NULL,
+	AUTHOR_CREAT_DE       	datetime  		NOT NULL,
 	CONSTRAINT COMTN_AUTHOR_INFO_PK PRIMARY KEY (AUTHOR_CODE)
 );
 
@@ -284,7 +284,7 @@ CREATE TABLE COMTN_RESOURCE_INFO
 	RESOURCE_DC               	varchar(200)  	NULL,
 	RESOURCE_TY               	varchar(80)  	NULL,
 	RESOURCE_SORT             	varchar(10)  	NULL,
-	RESOURCE_CREAT_DE         	char(20)  		NOT NULL,
+	RESOURCE_CREAT_DE         	datetime  		NOT NULL,
 	CONSTRAINT  COMTN_RESOURCEE_INFO_PK PRIMARY KEY (RESOURCE_CODE)
 );
 
@@ -1541,7 +1541,7 @@ CREATE TABLE COMTH_USER_LOG
 CREATE TABLE COMTH_WEB_LOG
 (
 	REQUST_ID             	varchar(20)  	NOT NULL,
-	OCCRRNC_DE            	char(20)  		NULL,
+	OCCRRNC_DE            	datetime  		NULL,
 	URL                   	varchar(100) 	NULL,
 	RQESTER_ID            	varchar(20)  	NULL,
 	RQESTER_IP            	varchar(23)  	NULL,

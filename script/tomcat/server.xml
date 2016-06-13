@@ -132,8 +132,21 @@
 		  	driverClassName="com.p6spy.engine.spy.P6SpyDriver" 
         -->
 
-      <Context docBase="aramcomp" path="/aramcomp-webapp" reloadable="true" source="org.eclipse.jst.j2ee.server:aramcomp">
+        <!--
+		  	driverClassName="com.p6spy.engine.spy.P6SpyDriver" 
+        -->
+      
+      <Context docBase="aramcomp" path="/" reloadable="true" source="org.eclipse.jst.j2ee.server:aramcomp">
 		  <Resource 
+		  	driverClassName="org.postgresql.Driver" 
+		  	maxActive="100" maxIdle="30" maxWait="10000" 
+		  	name="jdbc/EgovCmmDS" 
+		  	password="aramcomp" 
+		  	username="aramcomp"
+		  	type="javax.sql.DataSource" 
+		  	url="jdbc:postgresql://localhost:5432/aramcomp" 
+		  	/>
+		  <!-- Resource 
 		  	driverClassName="oracle.jdbc.driver.OracleDriver" 
 		  	maxActive="100" maxIdle="30" maxWait="10000" 
 		  	name="jdbc/EgovCmmDS" 
@@ -141,7 +154,16 @@
 		  	username="aramcomp"
 		  	type="javax.sql.DataSource" 
 		  	url="jdbc:oracle:thin:@localhost:1521:XE" 
-		  	/>
+		  	/-->
+		  <!-- Resource 
+		  	driverClassName="com.mysql.jdbc.Driver" 
+		  	maxActive="100" maxIdle="30" maxWait="10000" 
+		  	name="jdbc/EgovCmmDS" 
+		  	password="aramcomp" 
+		  	username="aramcomp"
+		  	type="javax.sql.DataSource" 
+		  	url="jdbc:mysql://localhost:3306/aramcomp" 
+		  	/-->
       </Context>
       </Host>
     </Engine>

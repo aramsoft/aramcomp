@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.sec.arm.dao.AuthorResourceMapper">
+
+	<!-- 목록조회  -->
+     <select id="selectAuthorResourceList" resultType="egovMap">
+        /* 구현 Sql */
+		<![CDATA[
+            SELECT A.RESOURCE_CODE				AS "resourceCode" 
+                 , A.RESOURCE_NM				AS "resourceNm" 
+                 , A.RESOURCE_DC				AS "resourceDc" 
+                 , A.RESOURCE_TY				AS "resourceTy" 
+                 , A.RESOURCE_SORT				AS "resourceSort" 
+                 , B.CREAT_DT				AS "creatDt" 
+                 , (CASE WHEN B.RESOURCE_CODE IS NULL THEN 'N' ELSE 'Y' END) AS "regYn" 
+              FROM COMTN_RESOURCE_INFO A 
+                   LEFT OUTER JOIN (SELECT RESOURCE_CODE, CREAT_DT 
+                   				      FROM COMTN_AUTHOR_RESOURCE 
+                   					 WHERE AUTHOR_CODE = #{authorCode}) B
+                		ON A.RESOURCE_CODE = B.RESOURCE_CODE        
+        ]]>
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+        ]]>			
+    </select>
+
+	<!-- 목록조회_게시물 총갯수  -->
+    <select id="selectAuthorResourceListCnt" resultType="int">
+		<![CDATA[
+            SELECT COUNT(*) totcnt
+              FROM COMTN_RESOURCE_INFO A 
+                   LEFT OUTER JOIN (SELECT RESOURCE_CODE, CREAT_DT 
+                   					  FROM COMTN_AUTHOR_RESOURCE 
+                   					 WHERE AUTHOR_CODE = #{authorCode}) B
+                		ON A.RESOURCE_CODE = B.RESOURCE_CODE
+        ]]>			
+    </select>
+
+	<!-- 입력 -->
+    <insert id="insertAuthorResource" >
+        <![CDATA[
+            INSERT INTO COMTN_AUTHOR_RESOURCE ( 
+            		AUTHOR_CODE
+            	  ,	RESOURCE_CODE
+            	  ,	CREAT_DT
+            ) VALUES ( 
+            		#{authorCode}
+            	  ,	#{resourceCode}
+            	  ,	now()
+            )
+        ]]>
+    </insert>
+
+	<!-- 삭제 -->
+    <delete id="deleteAuthorResource">
+        <![CDATA[
+            DELETE 
+              FROM COMTN_AUTHOR_RESOURCE 
+             WHERE AUTHOR_CODE=#{authorCode}
+               AND RESOURCE_CODE=#{resourceCode}
+        ]]>
+    </delete>
+    
+</mapper>

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.uss.umt.dao.EntrprsManageMapper">
+
+	<!-- 목록조회  -->
+    <select id="selectEntrprsMberList" resultType="egovMap">
+        /* 구현 Sql */
+		<![CDATA[
+	        SELECT ESNTL_ID               	AS "uniqId"
+	             , 'USR02'                	AS "userTy"
+	             , ENTRPRS_MBER_ID        	AS "userId"
+	             , CMPNY_NM               	AS "cmpnyNm"
+	             , APPLCNT_NM             	AS "userNm"
+	             , APPLCNT_EMAIL_ADRES    	AS "emailAdres"
+	             , AREA_NO                	AS "areaNo"
+	             , ENTRPRS_MIDDLE_TELNO   	AS "middleTelno"
+	             , ENTRPRS_END_TELNO      	AS "endTelno"
+	             , ENTRPRS_MBER_STTUS     	AS "sttus"
+	             , SBSCRB_DE              	AS "sbscrbDe"
+	          FROM COMTN_ENTRPRS_MBER
+	         WHERE 1=1
+        ]]>
+     	<if test='sbscrbSttus != 0 '>
+               	<![CDATA[ AND ENTRPRS_MBER_STTUS LIKE  #{sbscrbSttus} ]]>
+		</if>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "ENTRPRS_MBER_ID"'>
+                <![CDATA[ AND ENTRPRS_MBER_ID LIKE #{searchVO.searchKeyword} ]]> 
+            </when>
+            <when test='searchVO.searchCondition == "APPLCNT_NM"'>
+                <![CDATA[ AND APPLCNT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[
+	         ORDER BY SBSCRB_DE DESC
+        ]]>
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+        ]]>			
+    </select>
+    
+	<!-- 목록조회_게시물 총갯수  -->
+    <select id="selectEntrprsMberListCnt" resultType="int">
+        <![CDATA[
+            SELECT COUNT(1) totcnt
+              FROM COMTN_ENTRPRS_MBER
+	         WHERE 1=1
+        ]]>			
+     	<if test='sbscrbSttus != 0 '>
+               	<![CDATA[ AND ENTRPRS_MBER_STTUS LIKE  #{sbscrbSttus} ]]>
+		</if>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "ENTRPRS_MBER_ID"'>
+                <![CDATA[ AND ENTRPRS_MBER_ID LIKE #{searchVO.searchKeyword} ]]> 
+            </when>
+            <when test='searchVO.searchCondition == "APPLCNT_NM"'>
+                <![CDATA[ AND APPLCNT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+    </select>
+
+	<!-- 상세보기 -->
+    <select id="selectEntrprsMber" resultType="entrprsManageVO">
+       <![CDATA[
+           SELECT ESNTL_ID              	AS "uniqId"
+                , 'USR02'                   AS "userTy"
+                , ENTRPRS_MBER_ID           AS "entrprsmberId"
+                , ENTRPRS_SE_CODE           AS "entrprsSeCode"
+                , BIZRNO                    AS "bizrno"
+                , JURIRNO                   AS "jurirno"
+                , CMPNY_NM                  AS "cmpnyNm"
+                , CXFC                      AS "cxfc"
+                , ZIP                       AS "zip"
+                , ADRES                     AS "adres"
+                , ENTRPRS_MIDDLE_TELNO      AS "entrprsMiddleTelno"
+                , FXNUM                     AS "fxnum"
+                , INDUTY_CODE               AS "indutyCode"
+                , APPLCNT_NM                AS "applcntNm"
+                , SBSCRB_DE                 AS "sbscrbDe"
+                , ENTRPRS_MBER_STTUS        AS "entrprsMberSttus"
+                , ENTRPRS_MBER_PASSWORD     AS "password"
+                , ENTRPRS_MBER_PASSWORD_HINT AS "passwordHint"
+                , ENTRPRS_MBER_PASSWORD_CNSR AS "passwordCnsr"
+                , DETAIL_ADRES              AS "detailAdres"
+                , ENTRPRS_END_TELNO         AS "entrprsEndTelno"
+                , AREA_NO                   AS "areaNo"
+                , APPLCNT_IHIDNUM           AS "applcntIhidnum"
+                , APPLCNT_EMAIL_ADRES       AS "applcntEmailAdres"
+                , GOOGLE_ACCOUNT	        AS "googleAccount"
+             FROM COMTN_ENTRPRS_MBER
+            WHERE ESNTL_ID = #{uniqId}
+        ]]>
+    </select>
+
+	<!-- 입력 -->
+    <insert id="insertEntrprsMber">
+        <![CDATA[
+            INSERT INTO COMTN_ENTRPRS_MBER (   
+            		ESNTL_ID                      
+            	  , ENTRPRS_MBER_ID               
+            	  , ENTRPRS_SE_CODE              
+            	  , BIZRNO                       
+            	  , JURIRNO                      
+            	  , CMPNY_NM                     
+            	  , CXFC                         
+            	  , ZIP                          
+            	  , ADRES                        
+            	  , ENTRPRS_MIDDLE_TELNO         
+            	  , FXNUM                        
+            	  , INDUTY_CODE                  
+            	  , APPLCNT_NM                   
+            	  , SBSCRB_DE                    
+            	  , ENTRPRS_MBER_STTUS           
+            	  , ENTRPRS_MBER_PASSWORD        
+            	  , ENTRPRS_MBER_PASSWORD_HINT   
+            	  , ENTRPRS_MBER_PASSWORD_CNSR   
+            	  , DETAIL_ADRES                 
+            	  , ENTRPRS_END_TELNO            
+            	  , AREA_NO                      
+            	  , APPLCNT_EMAIL_ADRES          
+            	  , APPLCNT_IHIDNUM              
+            ) VALUES (
+                    #{uniqId}
+                  , #{entrprsmberId, jdbcType=VARCHAR}
+                  , #{entrprsSeCode, jdbcType=VARCHAR}
+                  , #{bizrno, jdbcType=VARCHAR}
+                  , #{jurirno, jdbcType=VARCHAR}
+                  , #{cmpnyNm, jdbcType=VARCHAR}
+                  , #{cxfc, jdbcType=VARCHAR}
+                  , #{zip, jdbcType=VARCHAR}
+                  , #{adres, jdbcType=VARCHAR}
+                  , #{entrprsMiddleTelno, jdbcType=VARCHAR}
+                  , #{fxnum, jdbcType=VARCHAR}
+                  , #{indutyCode, jdbcType=VARCHAR}
+                  , #{applcntNm, jdbcType=VARCHAR}
+                  , now()
+                  , #{entrprsMberSttus, jdbcType=VARCHAR}
+                  , #{password, jdbcType=VARCHAR}
+                  , #{passwordHint, jdbcType=VARCHAR}
+                  , #{passwordCnsr, jdbcType=VARCHAR}
+                  , #{detailAdres, jdbcType=VARCHAR}
+                  , #{entrprsEndTelno, jdbcType=VARCHAR}
+                  , #{areaNo, jdbcType=VARCHAR}
+                  , #{applcntEmailAdres, jdbcType=VARCHAR}
+                  , #{applcntIhidnum, jdbcType=VARCHAR}        
+            )      
+        ]]>
+    </insert>
+    
+	<!-- 수정 -->
+   <update id="updateEntrprsMber">
+        <![CDATA[
+             UPDATE COMTN_ENTRPRS_MBER 
+                SET ENTRPRS_MBER_ID              = #{entrprsmberId}
+                  , ENTRPRS_SE_CODE              = #{entrprsSeCode, jdbcType=VARCHAR}
+                  , BIZRNO                       = #{bizrno, jdbcType=VARCHAR}
+                  , JURIRNO                      = #{jurirno, jdbcType=VARCHAR}
+                  , CMPNY_NM                     = #{cmpnyNm, jdbcType=VARCHAR}
+                  , CXFC                         = #{cxfc, jdbcType=VARCHAR}
+                  , ZIP                          = #{zip, jdbcType=VARCHAR}
+                  , ADRES                        = #{adres, jdbcType=VARCHAR}
+                  , ENTRPRS_MIDDLE_TELNO         = #{entrprsMiddleTelno, jdbcType=VARCHAR}
+                  , FXNUM                        = #{fxnum, jdbcType=VARCHAR}
+                  , INDUTY_CODE                  = #{indutyCode, jdbcType=VARCHAR}
+                  , APPLCNT_NM                   = #{applcntNm, jdbcType=VARCHAR}
+                  , ENTRPRS_MBER_STTUS           = #{entrprsMberSttus, jdbcType=VARCHAR}
+                  , ENTRPRS_MBER_PASSWORD_HINT   = #{passwordHint, jdbcType=VARCHAR}
+                  , ENTRPRS_MBER_PASSWORD_CNSR   = #{passwordCnsr, jdbcType=VARCHAR}
+                  , DETAIL_ADRES                 = #{detailAdres, jdbcType=VARCHAR}
+                  , ENTRPRS_END_TELNO            = #{entrprsEndTelno, jdbcType=VARCHAR}
+                  , AREA_NO                      = #{areaNo, jdbcType=VARCHAR}
+                  , APPLCNT_EMAIL_ADRES          = #{applcntEmailAdres, jdbcType=VARCHAR}
+              WHERE ESNTL_ID = #{uniqId}
+        ]]>
+    </update>
+    
+	<!-- 삭제 -->
+    <delete id="deleteEntrprsMber">
+        <![CDATA[
+             DELETE 
+               FROM COMTN_ENTRPRS_MBER 
+              WHERE ESNTL_ID = #{delId}
+        ]]>
+    </delete>
+    
+	<!-- 비밀번호가져오기 -->
+    <select id="selectPassword" resultType="entrprsManageVO">
+        <![CDATA[
+             SELECT ENTRPRS_MBER_PASSWORD    password 
+               FROM COMTN_ENTRPRS_MBER
+              WHERE ESNTL_ID = #{uniqId}
+        ]]>
+    </select>
+    
+	<!-- 비밀번호수정 -->
+    <update id="updatePassword" >
+        <![CDATA[
+            UPDATE COMTN_ENTRPRS_MBER 
+               SET ENTRPRS_MBER_PASSWORD   =  #{password}
+             WHERE ESNTL_ID = #{uniqId}
+        ]]>
+    </update>
+    
+	<!-- 약관 상세 조회 -->
+    <select id="selectStplat" resultType="stplatVO">
+        <![CDATA[
+            SELECT USE_STPLAT_ID           
+                 , USE_STPLAT_CN           
+                 , INFO_PROVD_AGRE_CN      
+              FROM COMTN_STPLAT_INFO
+             WHERE USE_STPLAT_ID=#{stplatId}
+        ]]>
+    </select>
+    
+</mapper>

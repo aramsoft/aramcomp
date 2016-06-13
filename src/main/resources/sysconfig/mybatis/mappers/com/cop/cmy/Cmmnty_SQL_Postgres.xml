@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.cop.cmy.dao.CommunityManageMapper">
+
+	<!-- 전체조회  -->
+	<select id="selectAllCmmnty" resultType="egovMap"  >
+		<![CDATA[
+			SELECT a.CMMNTY_ID				AS "cmmntyId"
+			     , a.CMMNTY_NM				AS "cmmntyNm"
+			     , a.USE_AT					AS "useAt"
+			     , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
+			     , a.FRST_REGISTER_ID		AS "frstRegisterId"
+			     , b.USER_NM 				AS "frstRegisterNm"
+			  FROM COMTN_CMMNTY a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+						ON  a.FRST_REGISTER_ID = b.ESNTL_ID
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM001') c
+				       	ON a.REGIST_SE_CODE = c.CODE
+			 WHERE a.USE_AT = 'Y' 
+			 ORDER BY CMMNTY_NM		
+		]]>
+	</select>	
+
+	<select id="selectCmmntyListPortlet" resultType="egovMap"  >
+		<![CDATA[
+			SELECT CMMNTY_ID				AS "cmmntyId"
+			     , CMMNTY_NM				AS "cmmntyNm"
+			  FROM COMTN_CMMNTY
+			 WHERE USE_AT = 'Y' 
+		]]>
+	</select>	
+
+	<!-- 목록조회  -->
+	<select id="selectCommunityList" resultType="egovMap" >
+        /* 구현 Sql */
+		<![CDATA[
+			SELECT a.CMMNTY_ID				AS "cmmntyId"
+				 , a.CMMNTY_NM				AS "cmmntyNm"
+				 , a.USE_AT					AS "useAt"
+				 , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
+				 , a.FRST_REGISTER_ID		AS "frstRegisterId"
+				 , b.USER_NM 				AS "frstRegisterNm"
+			  FROM COMTN_CMMNTY a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+						ON  a.FRST_REGISTER_ID = b.ESNTL_ID
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM001') c
+				       	ON a.REGIST_SE_CODE = c.CODE
+			 WHERE 1=1 
+		]]>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "CMMNTY_NM"'>
+             	<![CDATA[ AND a.CMMNTY_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[			
+			 ORDER BY a.FRST_REGIST_PNTTM DESC 
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+        ]]>			
+	</select>	
+	
+	<!-- 목록조회_게시물 총갯수  -->
+	<select id="selectCommunityListCnt" resultType="int" >
+		<![CDATA[
+			SELECT COUNT(a.CMMNTY_ID)
+			  FROM COMTN_CMMNTY a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+						ON  a.FRST_REGISTER_ID = b.ESNTL_ID
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM001') c
+				       	ON a.REGIST_SE_CODE = c.CODE
+			 WHERE 1=1
+		]]>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "CMMNTY_NM"'>
+             	<![CDATA[ AND a.CMMNTY_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>	
+
+	<!-- 상세보기 -->
+	<select id="selectCommunityInf" resultType="communityVO">
+		<![CDATA[
+			SELECT a.CMMNTY_ID
+				 , a.CMMNTY_NM
+				 , a.CMMNTY_INTRCN
+				 , a.USE_AT
+				 , a.MEMBER_AT
+				 , a.HOME_URL
+				 , c.TMPLAT_ID
+				 , c.TMPLAT_NM
+				 , a.FRST_REGISTER_ID	
+				 , b.USER_NM 				AS "frstRegisterNm"
+				 , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
+				 , a.CMMNTY_LOGO_IMAGE
+				 , a.ADDITIONAL_INFO
+			  FROM COMTN_CMMNTY a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+						ON a.FRST_REGISTER_ID = b.ESNTL_ID
+				   LEFT OUTER JOIN COMTN_TMPLAT_INFO c
+						ON a.TMPLAT_ID = c.TMPLAT_ID
+			 WHERE a.CMMNTY_ID = #{cmmntyId}	
+		]]>	
+	</select>
+	
+	<select id="selectCommntyHomeUrl" resultType="String">
+		<![CDATA[
+			SELECT CMMNTY_ID	
+			  FROM COMTN_CMMNTY
+			 WHERE HOME_URL = #{homeUrl}	
+		]]>	
+	</select>
+	
+	<!-- 입력 -->
+	<insert id="insertCommunityInf" >
+		<![CDATA[
+			INSERT INTO COMTN_CMMNTY (
+					CMMNTY_ID
+				  ,	CMMNTY_NM
+				  ,	CMMNTY_INTRCN
+				  ,	REGIST_SE_CODE
+				  ,	TMPLAT_ID
+				  ,	USE_AT
+				  , MEMBER_AT
+				  , HOME_URL
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+				  , CMMNTY_LOGO_IMAGE
+				  , ADDITIONAL_INFO
+			) VALUES (
+					#{cmmntyId}
+				  , #{cmmntyNm}
+				  ,	#{cmmntyIntrcn}
+				  ,	#{registSeCode}
+				  ,	#{tmplatId}
+				  ,	#{useAt}
+				  , #{memberAt}
+				  , #{homeUrl}
+				  , #{frstRegisterId}
+				  , now()
+				  , #{frstRegisterId} 
+				  , now()
+				  , #{cmmntyLogoImage, jdbcType=BLOB}
+				  , #{additionalInfo, jdbcType=VARCHAR}
+			)
+		]]>
+	</insert>
+
+	<!-- 수정 -->
+	<update id="updateCommunityInf" >
+		<![CDATA[
+			UPDATE COMTN_CMMNTY
+			   SET CMMNTY_NM = #{cmmntyNm}
+			     , CMMNTY_INTRCN = #{cmmntyIntrcn}
+			     , TMPLAT_ID = #{tmplatId}
+			     , USE_AT = #{useAt}
+			     , MEMBER_AT = #{memberAt}
+			     , HOME_URL = #{homeUrl}
+			     , LAST_UPDUSR_ID = #{lastUpdusrId}
+			     , LAST_UPDT_PNTTM = now()
+			     , ADDITIONAL_INFO = #{additionalInfo}
+		]]>
+   	    <if test='cmmntyLogoImage != null and cmmntyLogoImage != ""'>
+			 	 , CMMNTY_LOGO_IMAGE = #{cmmntyLogoImage, jdbcType=BLOB}
+		</if>
+		<![CDATA[
+			 WHERE CMMNTY_ID = #{cmmntyId}
+		]]>
+	</update>
+	
+	<!-- 삭제 -->
+	<update id="deleteCommunityInf" >
+		<![CDATA[
+			UPDATE COMTN_CMMNTY
+			   SET USE_AT = 'N'
+			     , LAST_UPDUSR_ID = #lastUpdusrId#
+			     , LAST_UPDT_PNTTM = now()
+			 WHERE CMMNTY_ID = #{cmmntyId}
+		]]>
+	</update>	
+	
+	<!-- 커뮤니티 메뉴 -->
+	<select id="selectCommunityTopMenuInfs" resultType="egovMap" >
+		<![CDATA[
+			SELECT A.MENU_NO				AS "menuNo"
+			     , A.MENU_ALIAS				AS "menuAlias"
+			     , A.MENU_NM				AS "menuNm"
+			     , COALESCE(A.DIRECT_URL, 
+			     		(SELECT B.URL 
+				          FROM COMTN_PROGRM_LIST B 
+				         WHERE A.PROGRM_FILE_NM = B.PROGRM_FILE_NM
+				        )
+				   )      					AS "chkURL"
+			  FROM COMTN_CMMNTY_MENU A
+			 WHERE A.TRGET_ID = #{cmmntyId}
+			   AND A.USE_AT = 'Y'
+			   AND A.MGR_AT = 'N'
+			   AND A.TOPMENU_AT = 'Y'
+			 ORDER BY A.MENU_NO ASC  	
+		]]>	
+	</select>	 
+	
+	<select id="selectCommunityMgrMenuInfs" resultType="egovMap" >
+		<![CDATA[
+			SELECT A.MENU_NO				AS "menuNo"
+			     , A.MENU_ALIAS				AS "menuAlias"
+			     , A.MENU_NM				AS "menuNm"
+			     , COALESCE(A.DIRECT_URL,			
+				        (SELECT B.URL 
+				          FROM COMTN_PROGRM_LIST B 
+				         WHERE A.PROGRM_FILE_NM = B.PROGRM_FILE_NM
+				        )
+				   )      					AS "chkURL"
+			  FROM COMTN_CMMNTY_MENU A
+			 WHERE A.TRGET_ID = #{cmmntyId}
+			   AND A.USE_AT = 'Y'
+			   AND A.MGR_AT = 'Y'	
+			   AND A.TOPMENU_AT = 'Y'
+			 ORDER BY A.MENU_NO ASC  	
+		]]>	
+	</select>
+		
+	<select id="selectCommunitySubMenuInfs" resultType="egovMap" >
+		<![CDATA[
+			SELECT A.MENU_NO				AS "menuNo"
+			     , A.MENU_ALIAS				AS "menuAlias"
+			     , A.MENU_NM				AS "menuNm"
+			     , COALESCE(A.DIRECT_URL,			
+				       (SELECT B.URL 
+				          FROM COMTN_PROGRM_LIST B 
+				         WHERE A.PROGRM_FILE_NM = B.PROGRM_FILE_NM
+				        )
+				   )      					AS "chkURL"
+			  FROM COMTN_CMMNTY_MENU A
+			 WHERE A.TRGET_ID = #{trgetId}
+			   AND A.USE_AT = 'Y'
+			   AND A.MENU_NO >= #{menuNo}
+			   AND A.MENU_NO < #{menuNo} + 100000
+			 ORDER BY A.MENU_NO ASC  	
+		]]>	
+	</select>
+		
+	<!-- 커뮤니티 사용자  상세보기 -->
+	<select id="selectCommunityUserInf" resultType="communityUserVO" >
+		<![CDATA[			
+			SELECT MNGR_AT
+			     , USE_AT 
+			  FROM COMTN_CMMNTY_USER
+			 WHERE EMPLYR_ID = #{emplyrId} 
+			   AND CMMNTY_ID = #{cmmntyId}
+		]]>
+	</select>	
+	
+	<!-- 관리자목록 조회 -->
+	<select id="selectCommunityManagerInfs" resultType="egovMap" >
+		<![CDATA[			
+			SELECT a.EMPLYR_ID				AS "emplyrId"
+			     , b.USER_NM 				AS "emplyrNm" 
+			  FROM COMTN_CMMNTY_USER a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+						ON a.EMPLYR_ID = b.ESNTL_ID
+			 WHERE a.CMMNTY_ID =  #{cmmntyId}
+			   AND a.USE_AT = 'Y' 
+			   AND a.MNGR_AT = 'Y'
+			 ORDER BY a.FRST_REGIST_PNTTM ASC
+		]]>
+	</select>	
+		
+	<!-- 커뮤니티 사용자 여부 조회 (커뮤니티가 회원정보를 갖지 않으면 무조건 OK) -->
+	<select id="checkExistUser" resultType="int">
+		<![CDATA[
+			SELECT COUNT(A.CMMNTY_ID)
+			 FROM (
+					SELECT CMMNTY_ID	
+					  FROM COMTN_CMMNTY_USER 
+					 WHERE EMPLYR_ID = #{emplyrId}
+					   AND CMMNTY_ID = #{cmmntyId}
+					UNION
+					SELECT CMMNTY_ID	
+					  FROM COMTN_CMMNTY
+					 WHERE CMMNTY_ID = #{cmmntyId}
+					   AND MEMBER_AT = 'N'
+			   	  ) A
+		]]>
+	</select>
+		
+	<!-- 입력 -->
+	<insert id="insertCommunityUserInf" >
+		<![CDATA[
+			INSERT INTO COMTN_CMMNTY_USER (
+					CMMNTY_ID
+				  ,	EMPLYR_ID
+				  ,	SBSCRB_DE
+				  ,	MNGR_AT
+				  ,	USE_AT
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+			) VALUES (
+					#{cmmntyId}
+				  , #{emplyrId}
+				  ,	now()
+				  ,	#{mngrAt}
+				  ,	#{useAt}
+				  , #{frstRegisterId}
+				  , now()
+				  , #{frstRegisterId} 
+				  , now()
+			)		
+		]]>
+	</insert>
+
+	<!-- 수정 -->
+	<update id="updateCommunityUserInf" >
+		<![CDATA[
+			UPDATE COMTN_CMMNTY_USER
+			   SET MNGR_AT = #{mngrAt}
+			     , USE_AT = #{useAt}
+			     , SECSN_DE = #{secsnDe}
+			     , LAST_UPDUSR_ID = #{lastUpdusrId}
+			     , LAST_UPDT_PNTTM = now()
+			 WHERE CMMNTY_ID = #{cmmntyId}	
+			   AND EMPLYR_ID = #{emplyrId}
+		]]>
+	</update>	
+	
+	<!-- 삭제 -->
+	<update id="deleteCommunityUserInf" >
+		<![CDATA[
+			UPDATE COMTN_CMMNTY_USER
+			   SET USE_AT = 'N'
+			     , MNGR_AT = 'N'
+			     , SECSN_DE = #{secsnDe}
+			     , LAST_UPDUSR_ID = #{lastUpdusrId}
+			     , LAST_UPDT_PNTTM = now()
+			 WHERE CMMNTY_ID = #{cmmntyId}	
+			   AND EMPLYR_ID = #{emplyrId}
+		]]>
+	</update>	
+	
+	<!-- 제거 -->
+	<update id="eraseCommunityUserInf" >
+		<![CDATA[
+			DELETE 
+			  FROM COMTN_CMMNTY_USER
+			 WHERE CMMNTY_ID = #{cmmntyId}	
+			   AND EMPLYR_ID = #{emplyrId}
+		]]>
+	</update>	
+		
+	<update id="deleteAllCommunityUserInf" >
+		<![CDATA[
+			UPDATE COMTN_CMMNTY_USER
+			   SET USE_AT = 'N'
+			     , MNGR_AT = 'N'
+			     , SECSN_DE = #secsnDe#
+			     , LAST_UPDUSR_ID = #lastUpdusrId#
+			     , LAST_UPDT_PNTTM = now()
+			 WHERE CMMNTY_ID = #{cmmntyId}	
+			   AND USE_AT = 'Y'
+		]]>
+	</update>	
+	
+	<select id="selectCmmntyTemplat" resultType="String" >
+		<![CDATA[
+			SELECT b.TMPLAT_COURS 
+			  FROM COMTN_CMMNTY a
+		    	   LEFT OUTER JOIN COMTN_TMPLAT_INFO b
+						ON  a.TMPLAT_ID = b.TMPLAT_ID
+			 WHERE a.CMMNTY_ID = #{cmmntyId}
+		]]>	
+	</select>	
+		
+	<!-- 커뮤니티 게시판 -->
+	<select id="selectCommunityBBSUseInf" resultType="egovMap" >
+		<![CDATA[
+			SELECT b.BBS_ID					AS "bbsId"
+			     , b.BBS_NM					AS "bbsNm"
+			  FROM COMTN_BBS_USE  a
+		    	   LEFT OUTER JOIN COMTN_BBS_MASTER b
+						ON a.BBS_ID = b.BBS_ID
+			 WHERE a.TRGET_ID = #{cmmntyId}
+			   AND a.USE_AT = 'Y'	
+		]]>	
+	</select>	
+	
+</mapper>
+

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.cop.sms.dao.SmsMapper">
+
+	<select id="selectSmsInfs" resultType="egovMap">
+        /* 구현 Sql */
+		<![CDATA[
+			SELECT a.SMS_ID					AS "smsId"
+				 , a.TRNSMIS_TELNO 			AS "trnsmitTelno"
+				 , (SELECT COUNT(*) 
+				      FROM COMTN_SMS_RECPTN s 
+				     WHERE s.SMS_ID = a.SMS_ID) AS "recptnCnt"
+				 , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
+			  FROM COMTN_SMS a
+			 WHERE 1=1	
+		]]>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "SMS_ID"'>
+				<![CDATA[
+					AND a.SMS_ID in (SELECT SMS_ID 
+					               FROM COMTN_SMS_RECPTN 
+					              WHERE RECPTN_TELNO LIKE '%' || #{searchVO.searchKeyword} || '%')
+		 		]]>
+            </when>
+            <when test='searchVO.searchCondition == "TRNSMIS_CN"'>
+                <![CDATA[ AND a.TRNSMIS_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[			
+			 ORDER BY a.FRST_REGIST_PNTTM DESC 
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+        ]]>			
+	</select>	
+	
+	<select id="selectSmsInfsCnt" resultType="int" >
+		<![CDATA[
+			SELECT COUNT(a.SMS_ID)
+			  FROM COMTN_SMS a
+			 WHERE 1=1 
+		]]>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "SMS_ID"'>
+				<![CDATA[
+					AND a.SMS_ID in (SELECT SMS_ID 
+						               FROM COMTN_SMS_RECPTN 
+						              WHERE RECPTN_TELNO LIKE '%' || #{searchVO.searchKeyword} || '%')
+		 		]]>
+            </when>
+            <when test='searchVO.searchCondition == "TRNSMIS_CN"'>
+                <![CDATA[ AND a.TRNSMIS_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+	
+	<select id="selectSmsInf" resultType="smsVO" >
+		<![CDATA[
+			SELECT a.SMS_ID					AS "smsId"
+			     , a.TRNSMIS_TELNO			AS "trnsmitTelno"
+			     , a.TRNSMIS_CN				AS "trnsmitCn"
+			     , a.FRST_REGISTER_ID		AS "frstRegisterId"	
+			     , b.USER_NM 				AS "frstRegisterNm"
+			     , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
+			  FROM COMTN_SMS a				
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+						ON a.FRST_REGISTER_ID = b.ESNTL_ID		
+			 WHERE a.SMS_ID = #{smsId}
+		]]>				
+	</select>
+	
+	<select id="selectSmsRecptnInfs" resultType="egovMap" >
+		<![CDATA[
+			SELECT a.SMS_ID					AS "smsId"
+				 , a.RECPTN_TELNO			AS "recptnTelno"
+				 , a.RESULT_CODE			AS "resultCode"
+				 , a.RESULT_MSSAGE			AS "resultMssage"
+			  FROM COMTN_SMS_RECPTN a
+			 WHERE a.SMS_ID = #{smsId}
+		]]>				
+	</select> 
+	
+	<insert id="insertSmsInf" >
+		<![CDATA[
+			INSERT INTO COMTN_SMS (
+					SMS_ID
+				  ,	TRNSMIS_TELNO
+				  ,	TRNSMIS_CN
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+			) VALUES ( 
+					#{smsId}
+				  ,	#{trnsmitTelno}
+				  ,	#{trnsmitCn}
+				  , #{frstRegisterId}
+				  , now()
+			)			
+		]]>
+	</insert>
+	
+	<insert id="insertSmsRecptnInf" >
+		<![CDATA[
+			INSERT INTO COMTN_SMS_RECPTN (
+					SMS_ID
+				  ,	RECPTN_TELNO
+				  ,	RESULT_CODE
+				  ,	RESULT_MSSAGE 
+			) VALUES ( 
+					#{smsId}
+				  ,	#{recptnTelno}
+				  , #{resultCode}
+				  ,	#{resultMssage}
+			)		
+		]]>
+	</insert>
+	
+	<insert id="updateSmsRecptnInf" >
+		<![CDATA[
+			UPDATE COMTN_SMS_RECPTN 
+			   SET RESULT_CODE = #{resultCode}
+			     , RESULT_MSSAGE = #{resultMssage}
+			 WHERE SMS_ID = #{smsId} 
+			   AND RECPTN_TELNO = #{recptnTelno}
+		]]>
+	</insert>
+
+</mapper>

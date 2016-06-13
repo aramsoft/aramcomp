@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.uss.ion.noi.dao.NotificationMapper">
+
+	<select id="selectNotificationInfs" resultType="egovMap" >
+        /* 구현 Sql */
+       	<![CDATA[
+			SELECT a.NTCN_NO				AS "ntfcNo"
+			     , a.NTCN_SJ				AS "ntfcSj"
+			     , DATE_FORMAT(STR_TO_DATE(a.NTCN_TM, '%Y%m%d%H%i%S'), '%Y-%m-%d %H:%i:%S') AS "ntfcTime" 
+			     , REPLACE(BH_NTCN_INTRVL,',','분,') || '분' AS "bhNtfcIntrvlString" 
+			     , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm" 
+			  FROM COMTN_NTFC_INFO a
+			 WHERE 1=1	
+		]]>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+	    <choose>
+            <when test='searchVO.searchCondition == "NTCN_TM"'>
+             	<![CDATA[ AND a.NTCN_TM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "NTCN_SJ"'>
+             	<![CDATA[ AND a.NTCN_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "NTCN_CN"'>
+             	<![CDATA[ AND a.NTCN_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[			
+			 ORDER BY a.FRST_REGIST_PNTTM DESC 
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+        ]]>			
+	</select>	
+	
+	<select id="selectNotificationInfsCnt" resultType="int" >
+		<![CDATA[
+			SELECT COUNT(a.NTCN_NO)
+			  FROM COMTN_NTFC_INFO a
+			 WHERE 1=1 
+		]]>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "NTCN_TM"'>
+             	<![CDATA[ AND a.NTCN_TM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "NTCN_SJ"'>
+             	<![CDATA[ AND a.NTCN_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "NTCN_CN"'>
+             	<![CDATA[ AND a.NTCN_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+
+	<select id="selectNotificationInf" resultType="notificationVO" >
+		<![CDATA[
+			SELECT a.NTCN_NO				AS "ntfcNo"			
+			     , a.NTCN_SJ				AS "ntfcSj" 
+			     , a.NTCN_CN				AS "ntfcCn"
+			     , DATE_FORMAT(STR_TO_DATE(a.NTCN_TM, '%Y%m%d%H%i%S'), '%Y-%m-%d %H:%i:%S')) AS "ntfcTime"
+			     , REPLACE(BH_NTCN_INTRVL,',','분,') || '분' AS "bhNtfcIntrvlString"
+			     , a.FRST_REGISTER_ID		AS "frstRegisterId"
+			     , b.USER_NM 				AS "frstRegisterNm"
+			     , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
+			  FROM COMTN_NTFC_INFO a				
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+						ON a.FRST_REGISTER_ID = b.ESNTL_ID		
+			 WHERE a.NTCN_NO = #{ntfcNo}
+		]]>				
+	</select> 
+ 
+	<insert id="insertNotificationInf" >
+		<selectKey resultType="String" keyProperty="ntfcNo" order="BEFORE">
+			SELECT COALESCE(MAX(NTCN_NO),0)+1 AS NTCN_NO FROM COMTN_NTFC_INFO
+		</selectKey>
+		<![CDATA[
+			INSERT INTO COMTN_NTFC_INFO (
+					NTCN_NO
+				  , NTCN_SJ
+				  , NTCN_CN
+				  , NTCN_TM
+				  , BH_NTCN_INTRVL
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+			) VALUES ( 
+					#{ntfcNo}
+				  , #{ntfcSj}
+				  , #{ntfcCn}
+				  , #{ntfcTime}
+				  , #{bhNtfcIntrvlString}
+				  , #{frstRegisterId}
+				  , now()
+				  , #{frstRegisterId} 
+				  , now()
+			)			
+		]]>
+	</insert>
+ 
+ 	<update id="updateNotificationInf" >
+ 		<![CDATA[
+			UPDATE COMTN_NTFC_INFO 
+			   SET NTCN_SJ 			= #{ntfcSj}
+			     , NTCN_CN 			= #{ntfcCn}
+			     , NTCN_TM 			= #{ntfcTime}
+			     , BH_NTCN_INTRVL 	= #{bhNtfcIntrvlString}
+			     , LAST_UPDUSR_ID 	= #{lastUpdusrId}
+			     , LAST_UPDT_PNTTM 	= now()
+			 WHERE NTCN_NO = #{ntfcNo}
+ 		]]>
+ 	</update>
+
+ 	<update id="deleteNotificationInf" >
+ 		<![CDATA[
+			DELETE 
+			  FROM COMTN_NTFC_INFO
+			 WHERE NTCN_NO = #{ntfcNo}
+ 		]]>
+ 	</update>
+
+	<select id="getNotificationData" resultType="egovMap">
+		<![CDATA[
+			SELECT a.NTCN_NO				AS "ntfcNo"
+			     , a.NTCN_SJ				AS "ntfcSj"
+			     , a.NTCN_CN				AS "ntfcCn"
+			     , DATE_FORMAT(STR_TO_DATE(a.NTCN_TM, '%Y%m%d%H%i%S'), '%Y-%m-%d %H:%i:%S') AS "ntfcTime"
+			     , BH_NTCN_INTRVL 			AS "bhNtfcIntrvlString" 
+			  FROM COMTN_NTFC_INFO a
+			 WHERE a.NTCN_TM BETWEEN #{startDateTime} AND #{endDateTime}
+			 ORDER BY a.NTCN_TM ASC 
+		]]>				
+	</select>
+	
+</mapper>

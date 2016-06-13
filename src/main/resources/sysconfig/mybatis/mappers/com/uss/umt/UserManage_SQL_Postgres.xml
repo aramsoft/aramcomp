@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.uss.umt.dao.UserManageMapper">
+
+	<!-- 목록조회  -->
+    <select id="selectUserList" resultType="egovMap">
+        /* 구현 Sql */
+		<![CDATA[
+		    SELECT ESNTL_ID              	AS "uniqId"
+		         , 'USR03'               	AS "userTy"
+		         , EMPLYR_ID             	AS "userId"
+		         , USER_NM             	    AS "userNm"
+		         , EMAIL_ADRES           	AS "emailAdres"
+		         , AREA_NO               	AS "areaNo"
+		         , HOUSE_MIDDLE_TELNO      	AS "middleTelno"
+		         , HOUSE_END_TELNO          AS "endTelno"
+		         , EMPLYR_STTUS_CODE     	AS "sttus"
+		         , SBSCRB_DE             	AS "sbscrbDe"
+		      FROM COMTN_EMPLYR_INFO
+	         WHERE 1=1
+        ]]>
+    	<if test='sbscrbSttus != 0 '>
+               	<![CDATA[ AND EMPLYR_STTUS_CODE LIKE  #{sbscrbSttus} ]]>
+		</if>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "EMPLYR_ID"'>
+                <![CDATA[ AND EMPLYR_ID LIKE #{searchVO.searchKeyword} ]]> 
+            </when>
+            <when test='searchVO.searchCondition == "USER_NM"'>
+                <![CDATA[ AND USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[
+	         ORDER BY SBSCRB_DE DESC
+        ]]>
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+        ]]>			
+    </select>
+    
+	<!-- 목록조회_게시물 총갯수  -->
+    <select id="selectUserListCnt" resultType="int">
+		<![CDATA[
+            SELECT COUNT(1) totcnt
+              FROM COMTN_EMPLYR_INFO
+             WHERE 1=1
+        ]]>			
+    	<if test='sbscrbSttus != 0 '>
+               	<![CDATA[ AND EMPLYR_STTUS_CODE LIKE  #{sbscrbSttus} ]]>
+		</if>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "EMPLYR_ID"'>
+                <![CDATA[ AND EMPLYR_ID LIKE #{searchVO.searchKeyword} ]]> 
+            </when>
+            <when test='searchVO.searchCondition == "USER_NM"'>
+                <![CDATA[ AND USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+    </select>
+    
+	<!-- 상세보기 -->
+    <select id="selectUser" resultType="userManageVO">
+        <![CDATA[
+            SELECT ESNTL_ID          		AS "uniqId"            
+                 , 'USR03'           		AS "userTy"			  
+                 , EMPLYR_ID         		AS "emplyrId"          
+                 , USER_NM         	    	AS "emplyrNm"          
+                 , PASSWORD          		AS "password"          
+                 , PASSWORD_HINT     		AS "passwordHint"      
+                 , PASSWORD_CNSR     		AS "passwordCnsr"      
+                 , EMPL_NO           		AS "emplNo"            
+                 , IHIDNUM           		AS "ihidnum"           
+                 , SEXDSTN_CODE      		AS "sexdstnCode"       
+                 , BRTHDY               	AS "brth"              
+                 , AREA_NO           		AS "areaNo"            
+                 , HOUSE_MIDDLE_TELNO   	AS "homemiddleTelno"   
+                 , HOUSE_END_TELNO      	AS "homeendTelno"      
+                 , FXNUM             		AS "fxnum"             
+                 , HOUSE_ADRES          	AS "homeadres"         
+                 , DETAIL_ADRES      		AS "detailAdres"       
+                 , ZIP               		AS "zip"               
+                 , OFFM_TELNO        		AS "offmTelno"         
+                 , MBTLNUM       			AS "moblphonNo"        
+                 , EMAIL_ADRES       		AS "emailAdres"        
+                 , OFCPS_NM          		AS "ofcpsNm"           
+                 , ORGNZT_ID         		AS "orgnztId"          
+                 , PSTINST_CODE         	AS "insttCode"         
+                 , EMPLYR_STTUS_CODE 		AS "emplyrSttusCode"   
+                 , SBSCRB_DE         		AS "sbscrbDe"          
+                 , CRTFC_DN_VALUE       	AS "subDn"
+                 , GOOGLE_ACCOUNT	        AS "googleAccount"
+         	  FROM COMTN_EMPLYR_INFO
+             WHERE ESNTL_ID = #{uniqId}
+        ]]>
+    </select>
+    
+	<!-- 입력 -->
+    <insert id="insertUser">
+        <![CDATA[
+            INSERT INTO COMTN_EMPLYR_INFO (   
+            		ESNTL_ID            
+            	  , EMPLYR_ID           
+            	  , USER_NM           	
+            	  , PASSWORD            
+            	  , PASSWORD_HINT       
+            	  , PASSWORD_CNSR       
+            	  , EMPL_NO             
+            	  , IHIDNUM             
+            	  , SEXDSTN_CODE        
+            	  , BRTHDY              
+            	  , AREA_NO             
+            	  , HOUSE_MIDDLE_TELNO  
+            	  , HOUSE_END_TELNO     
+            	  , FXNUM               
+            	  , HOUSE_ADRES         
+            	  , DETAIL_ADRES        
+            	  , ZIP                 
+            	  , OFFM_TELNO          
+            	  , MBTLNUM         	
+            	  , EMAIL_ADRES         
+            	  , OFCPS_NM            
+            	  , ORGNZT_ID           
+            	  , PSTINST_CODE        
+            	  , EMPLYR_STTUS_CODE   
+            	  , SBSCRB_DE           
+            	  , CRTFC_DN_VALUE      
+            ) VALUES (
+                    #{uniqId}            
+                  , #{emplyrId, jdbcType=VARCHAR}          
+                  , #{emplyrNm, jdbcType=VARCHAR}          
+                  , #{password, jdbcType=VARCHAR}          
+                  , #{passwordHint, jdbcType=VARCHAR}      
+                  , #{passwordCnsr, jdbcType=VARCHAR}      
+                  , #{emplNo, jdbcType=VARCHAR}            
+                  , #{ihidnum, jdbcType=VARCHAR}           
+                  , #{sexdstnCode, jdbcType=VARCHAR}       
+                  , #{brth, jdbcType=VARCHAR}              
+                  , #{areaNo, jdbcType=VARCHAR}            
+                  , #{homemiddleTelno, jdbcType=VARCHAR}   
+                  , #{homeendTelno, jdbcType=VARCHAR}      
+                  , #{fxnum, jdbcType=VARCHAR}             
+                  , #{homeadres, jdbcType=VARCHAR}         
+                  , #{detailAdres, jdbcType=VARCHAR}       
+                  , #{zip, jdbcType=VARCHAR}               
+                  , #{offmTelno, jdbcType=VARCHAR}         
+                  , #{moblphonNo, jdbcType=VARCHAR}        
+                  , #{emailAdres, jdbcType=VARCHAR}        
+                  , #{ofcpsNm, jdbcType=VARCHAR}           
+                  , #{orgnztId, jdbcType=VARCHAR}          
+                  , #{insttCode, jdbcType=VARCHAR}         
+                  , #{emplyrSttusCode, jdbcType=VARCHAR}   
+                  , now()           	
+                  , #{subDn, jdbcType=VARCHAR}             
+            )
+        ]]>
+    </insert>
+    
+	<!-- 수정 -->
+    <update id="updateUser">
+        <![CDATA[
+            UPDATE COMTN_EMPLYR_INFO 
+               SET EMPLYR_ID           	= #{emplyrId}        
+                 , USER_NM             	= #{emplyrNm, jdbcType=VARCHAR}        
+                 , PASSWORD_HINT       	= #{passwordHint, jdbcType=VARCHAR}    
+                 , PASSWORD_CNSR       	= #{passwordCnsr, jdbcType=VARCHAR}    
+                 , EMPL_NO             	= #{emplNo, jdbcType=VARCHAR}          
+                 , IHIDNUM             	= #{ihidnum, jdbcType=VARCHAR}         
+                 , SEXDSTN_CODE        	= #{sexdstnCode, jdbcType=VARCHAR}     
+                 , BRTHDY              	= #{brth, jdbcType=VARCHAR}            
+                 , AREA_NO             	= #{areaNo, jdbcType=VARCHAR}          
+                 , HOUSE_MIDDLE_TELNO  	= #{homemiddleTelno, jdbcType=VARCHAR} 
+                 , HOUSE_END_TELNO     	= #{homeendTelno, jdbcType=VARCHAR}    
+                 , FXNUM               	= #{fxnum, jdbcType=VARCHAR}           
+                 , HOUSE_ADRES         	= #{homeadres, jdbcType=VARCHAR}       
+                 , DETAIL_ADRES        	= #{detailAdres, jdbcType=VARCHAR}     
+                 , ZIP                 	= #{zip, jdbcType=VARCHAR}             
+                 , OFFM_TELNO          	= #{offmTelno, jdbcType=VARCHAR}       
+                 , MBTLNUM         	   	= #{moblphonNo, jdbcType=VARCHAR}      
+                 , EMAIL_ADRES         	= #{emailAdres, jdbcType=VARCHAR}      
+                 , OFCPS_NM            	= #{ofcpsNm, jdbcType=VARCHAR}         
+                 , ORGNZT_ID           	= #{orgnztId, jdbcType=VARCHAR}        
+                 , PSTINST_CODE        	= #{insttCode, jdbcType=VARCHAR}       
+                 , EMPLYR_STTUS_CODE   	= #{emplyrSttusCode, jdbcType=VARCHAR} 
+                 , CRTFC_DN_VALUE      	= #{subDn, jdbcType=VARCHAR}
+             WHERE ESNTL_ID = #{uniqId}
+        ]]>
+    </update>
+    
+	<!-- 삭제 -->
+    <delete id="deleteUser">
+        <![CDATA[
+            DELETE 
+              FROM COMTN_EMPLYR_INFO 
+             WHERE ESNTL_ID = #{delId}
+        ]]>
+    </delete>
+    
+	<!-- 사용자 이력 입력 -->
+    <insert id="insertUserHistory">
+        <![CDATA[
+            INSERT INTO COMTN_EMPLYR_CHANGE_DTLS (   
+            		EMPLYR_ID           
+            	  , EMPL_NO             
+            	  , SEXDSTN_CODE        
+            	  , BRTHDY              
+            	  , AREA_NO             
+            	  , HOUSE_MIDDLE_TELNO  
+            	  , HOUSE_END_TELNO     
+            	  , FXNUM               
+            	  , HOUSE_ADRES         
+            	  , DETAIL_ADRES        
+            	  , ZIP                 
+            	  , OFFM_TELNO          
+            	  , MBTLNUM         	
+            	  , EMAIL_ADRES         
+            	  , ORGNZT_ID           
+            	  , PSTINST_CODE        
+            	  , EMPLYR_STTUS_CODE   
+            	  , ESNTL_ID            
+            	  , CHANGE_DE           
+            ) 
+             SELECT EMPLYR_ID           
+                  , EMPL_NO             
+                  , SEXDSTN_CODE        
+                  , BRTHDY              
+                  , AREA_NO             
+                  , HOUSE_MIDDLE_TELNO  
+                  , HOUSE_END_TELNO     
+                  , FXNUM               
+                  , HOUSE_ADRES         
+                  , DETAIL_ADRES        
+                  , ZIP                 
+                  , OFFM_TELNO          
+                  , MBTLNUM         	
+                  , EMAIL_ADRES         
+                  , ORGNZT_ID           
+                  , PSTINST_CODE        
+                  , EMPLYR_STTUS_CODE   
+                  , ESNTL_ID            
+                  , DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%S')
+               FROM COMTN_EMPLYR_INFO
+              WHERE ESNTL_ID = #{uniqId}
+        ]]>
+    </insert>
+    
+	<!-- 사용자 이력 삭제 -->
+    <insert id="deleteUserHistory">
+        <![CDATA[
+             DELETE 
+               FROM COMTN_EMPLYR_CHANGE_DTLS 
+              WHERE ESNTL_ID = #{delId}
+        ]]>
+    </insert>
+
+	<!-- ID중복체크 -->
+    <select id="checkIdDplct" resultType="int">
+        <![CDATA[
+            SELECT COUNT(1) usedCnt
+              FROM (
+                    SELECT EMPLYR_ID    	userId
+                      FROM COMTN_EMPLYR_INFO
+                     UNION ALL
+                    SELECT ENTRPRS_MBER_ID userId
+                      FROM COMTN_ENTRPRS_MBER
+                     UNION ALL
+                    SELECT MBER_ID         userId
+                      FROM COMTN_GNRL_MBER
+                   ) A
+             WHERE userId = #{checkId}
+        ]]>
+    </select>
+    
+	<!-- 비밀번호가져오기 -->
+    <select id="selectPassword" resultType="userManageVO">
+        <![CDATA[
+            SELECT PASSWORD        		password 
+              FROM COMTN_EMPLYR_INFO
+             WHERE ESNTL_ID = #{uniqId}
+        ]]>
+    </select>
+    
+	<!-- 비밀번호수정 -->
+    <update id="updatePassword">
+        <![CDATA[
+            UPDATE COMTN_EMPLYR_INFO 
+               SET PASSWORD = #{password}
+             WHERE ESNTL_ID = #{uniqId}
+        ]]>
+    </update>
+    
+</mapper>

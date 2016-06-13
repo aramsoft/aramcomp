@@ -20,7 +20,7 @@
         </Logger>
         
 		<!-- log SQL with timing information, post execution -->
-        <Logger name="java.sql" level="ERROR" additivity="false">
+        <Logger name="java.sql" level="DEBUG" additivity="false">
             <AppenderRef ref="file" />
         </Logger>
 	    <logger name="org.springframework.security" level="ERROR" additivity="false">

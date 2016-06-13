@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.sym.log.clg.dao.LoginLogMapper">
+
+	<!-- 로그인 로그 목록  조회 -->
+	<select id="selectLoginLogInf" resultType="egovMap">
+        /* 구현 Sql */
+		<![CDATA[
+			SELECT a.LOG_ID					AS "logId" 
+				 , a.CREAT_DT				AS "creatDt" 
+				 , a.CONECT_MTHD			AS "loginMthd" 
+				 , a.CONECT_IP				AS "loginIp" 
+				 , b.USER_NM 				AS "loginNm" 
+			  FROM COMTH_LOGIN_LOG a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+						ON a.CONECT_ID = b.ESNTL_ID
+			 WHERE 1 = 1
+		]]>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+            <![CDATA[ AND a.CONECT_MTHD LIKE '%'||#{searchVO.searchKeyword}||'%' ]]>
+		</if>
+     	<if test='searchBgnDe != null and searchBgnDe != ""'>
+			<![CDATA[ AND DATE_FORMAT(a.CREAT_DT, '%Y%m%d') BETWEEN #{searchBgnDe} AND #{searchEndDe} ]]>
+		</if>
+		<![CDATA[
+			 ORDER BY a.CREAT_DT DESC
+		]]>
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+        ]]>			
+	</select>
+
+	<!-- 로그인 로그 총건수 -->
+	<select id="selectLoginLogInfCnt" resultType="int">
+		<![CDATA[
+			SELECT COUNT(a.LOG_ID) 			as cnt
+			  FROM COMTH_LOGIN_LOG a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+						ON a.CONECT_ID = b.ESNTL_ID
+			 WHERE 1 = 1
+		]]>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+            <![CDATA[ AND a.CONECT_MTHD LIKE '%'||#{searchVO.searchKeyword}||'%' ]]>
+		</if>
+     	<if test='searchBgnDe != null and searchBgnDe != ""'>
+			<![CDATA[ AND DATE_FORMAT(a.CREAT_DT, '%Y%m%d') BETWEEN #{searchBgnDe} AND #{searchEndDe} ]]>
+		</if>
+	</select>
+
+	<!-- 로그인 로그 상세  조회 -->
+	<select id="selectLoginLog" resultType="loginLogVO">
+		<![CDATA[
+			SELECT a.LOG_ID					
+				 , a.CREAT_DT				
+				 , a.CONECT_MTHD			AS "loginMthd"
+				 , a.CONECT_IP				AS "loginIp"
+				 , a.CONECT_ID				AS "loginId"
+				 , b.USER_NM AS 			AS "loginNm"		
+			  FROM COMTH_LOGIN_LOG a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+						ON a.CONECT_ID = b.ESNTL_ID
+			 WHERE a.LOG_ID = #{logId}
+		]]>
+	</select>
+
+	<!-- 로그인 로그 등록 -->
+	<insert id="logInsertLoginLog" >
+		<![CDATA[
+			INSERT INTO COMTH_LOGIN_LOG ( 
+					LOG_ID
+				  , CONECT_MTHD
+				  , CONECT_ID
+				  , CONECT_IP
+				  , ERROR_OCCRRNC_AT
+				  , ERROR_CODE
+				  , CREAT_DT 
+			) VALUES ( 
+					#{logId, jdbcType=VARCHAR}
+				  , #{loginMthd, jdbcType=VARCHAR}
+				  , #{loginId, jdbcType=VARCHAR}
+				  , #{loginIp, jdbcType=VARCHAR}
+				  , #{errOccrrAt, jdbcType=VARCHAR}
+				  , #{errorCode, jdbcType=VARCHAR}
+				  , now()
+			)
+		]]>
+	</insert>
+
+</mapper>
+

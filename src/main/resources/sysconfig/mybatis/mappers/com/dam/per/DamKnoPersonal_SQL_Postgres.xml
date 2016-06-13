@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.dam.per.dao.KnoPersonalMapper">
+
+	<select id="selectKnoPersonalList" resultType="egovMap" >
+        /* 구현 Sql */
+		<![CDATA[
+			SELECT C.ORGNZT_NM				AS "orgnztNm"
+			     , B.KNWLDG_TY_NM			AS "knoTypeNm"
+				 , A.KNWLDG_ID				AS "knoId"		     		
+				 , A.KNWLDG_NM				AS "knoNm"
+				 , D.USER_NM    			AS "userNm"      
+                 , A.COLCT_DE				AS "colYmd"
+                 , A.OTHBC_AT				AS "othbcAt"
+			  FROM COMTN_DAM_KNOIFM A
+				   LEFT OUTER JOIN COMTN_DAM_MAP_KNO B
+						ON A.KNWLDG_TY_CODE = B.KNWLDG_TY_CODE
+				   LEFT OUTER JOIN COMTN_DAM_MAP_TEAM C
+						ON B.ORGNZT_ID = C.ORGNZT_ID
+				   LEFT OUTER JOIN COMVN_USER_MASTER D
+						ON A.FRST_REGISTER_ID = D.ESNTL_ID
+			 WHERE A.FRST_REGISTER_ID = #{frstRegisterId}				
+		]]>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "KNWLDG_TY_NM"'>
+                 <![CDATA[ AND B.KNWLDG_TY_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "KNWLDG_NM"'>
+                 <![CDATA[ AND A.KNWLDG_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+        ]]>			
+	</select>
+
+	<select id="selectKnoPersonalListCnt" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) as totcnt 
+			  FROM COMTN_DAM_KNOIFM A
+				   LEFT OUTER JOIN COMTN_DAM_MAP_KNO B
+						ON A.KNWLDG_TY_CODE = B.KNWLDG_TY_CODE
+				   LEFT OUTER JOIN COMTN_DAM_MAP_TEAM C
+						ON B.ORGNZT_ID = C.ORGNZT_ID
+				   LEFT OUTER JOIN COMVN_USER_MASTER D
+						ON A.FRST_REGISTER_ID = D.ESNTL_ID
+			 WHERE A.FRST_REGISTER_ID = #{frstRegisterId}				
+		]]>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "KNWLDG_TY_NM"'>
+                 <![CDATA[ AND B.KNWLDG_TY_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "KNWLDG_NM"'>
+                 <![CDATA[ AND A.KNWLDG_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+
+	<select id="selectKnoPersonal" resultType="knoPersonalVO">
+		<![CDATA[
+			SELECT C.ORGNZT_NM			AS "orgnztNm"
+			     , C.ORGNZT_ID			AS "orgnztId"
+			     , B.KNWLDG_TY_NM		AS "knoTypeNm"		     			
+			     , B.KNWLDG_TY_CODE		AS "knoTypeCd"
+				 , A.KNWLDG_ID			AS "knoId"	     
+				 , A.KNWLDG_NM			AS "knoNm"	     
+			     , A.KNWLDG_CN       	AS "knoCn"   
+                 , A.COLCT_DE			AS "colYmd"
+                 , A.OTHBC_AT			AS "othbcAt"
+                 , A.ATCH_FILE_ID		AS "atchFileId"
+			     , A.FRST_REGISTER_ID	AS "frstRegisterId"
+			     , A.FRST_REGIST_PNTTM	AS "frstRegisterPnttm"
+			     , A.LAST_UPDUSR_ID		AS "lastUpdusrId"
+			     , A.LAST_UPDT_PNTTM	AS "lastUpdusrPnttm"		     
+			  FROM COMTN_DAM_KNOIFM A
+				   LEFT OUTER JOIN COMTN_DAM_MAP_KNO B
+						ON A.KNWLDG_TY_CODE = B.KNWLDG_TY_CODE
+				   LEFT OUTER JOIN COMTN_DAM_MAP_TEAM C
+						ON B.ORGNZT_ID = C.ORGNZT_ID
+			 WHERE A.KNWLDG_ID = #{knoId}
+		]]>
+	</select>
+
+	<insert id="insertKnoPersonal">
+		<![CDATA[
+		    INSERT INTO COMTN_DAM_KNOIFM ( 
+		    	   KNWLDG_ID
+		         , KNWLDG_NM
+		         , ORGNZT_ID
+		         , KNWLDG_TY_CODE
+		         , KNWLDG_CN
+		         , COLCT_DE
+		         , OTHBC_AT
+		         , ATCH_FILE_ID
+				 , FRST_REGISTER_ID 
+				 , FRST_REGIST_PNTTM 
+				 , LAST_UPDUSR_ID
+				 , LAST_UPDT_PNTTM 
+		    ) VALUES ( 
+		    	   #{knoId}
+		         , #{knoNm}
+		         , #{orgnztId}		         		         
+		         , #{knoTypeCd}
+		         , #{knoCn}
+		         , #{colYmd}
+		         , #{othbcAt}
+		         , #{atchFileId}		         		         
+				 , #{frstRegisterId}
+				 , now()
+				 , #{frstRegisterId} 
+				 , now()
+		    ) 
+		]]>
+	</insert>
+
+	<update id="updateKnoPersonal">
+		<![CDATA[
+            UPDATE COMTN_DAM_KNOIFM 
+               SET ORGNZT_ID         	= #{orgnztId}      
+                 , KNWLDG_TY_CODE	  	= #{knoTypeCd}
+                 , KNWLDG_NM        	= #{knoNm}
+                 , KNWLDG_CN			= #{knoCn}
+		         , COLCT_DE			  	= #{colYmd}
+		         , OTHBC_AT          	= #{othbcAt}               
+                 , ATCH_FILE_ID      	= #{atchFileId}               
+                 , LAST_UPDUSR_ID    	= #{lastUpdusrId}               
+                 , LAST_UPDT_PNTTM 		= now()
+             WHERE KNWLDG_ID       	  	= #{knoId} 
+		]]>
+	</update>
+
+	<delete id="deleteKnoPersonal">
+		<![CDATA[
+            DELETE 
+              FROM COMTN_DAM_KNOIFM 
+             WHERE KNWLDG_ID = #{knoId}
+		]]>
+	</delete>
+
+</mapper>
+           

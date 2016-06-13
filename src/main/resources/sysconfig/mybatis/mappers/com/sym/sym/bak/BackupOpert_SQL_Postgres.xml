@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.sym.sym.bak.dao.BackupOpertMapper">
+
+    <select id="selectBackupOpertList" resultType="backupOpertVO">
+        /* 구현 Sql */
+        <![CDATA[ 
+            SELECT A.BACKUP_OPERT_ID
+                 , A.EXECUT_CYCLE
+                 , C.CODE_NM 				AS "executCycleNm"
+                 , A.EXECUT_SCHDUL_DE
+                 , A.EXECUT_SCHDUL_HOUR
+                 , A.EXECUT_SCHDUL_MNT
+                 , A.EXECUT_SCHDUL_SECND
+                 , A.BACKUP_OPERT_NM
+                 , A.BACKUP_ORGINL_DRCTRY
+                 , A.BACKUP_STRE_DRCTRY
+                 , A.CMPRS_SE
+                 , B.CODE_NM 				AS "cmprsSeNm"
+                 , A.LAST_UPDT_PNTTM 		AS "lastUpdusrPnttm" 
+                 , A.LAST_UPDUSR_ID
+                 , A.FRST_REGISTER_ID
+                 , A.FRST_REGIST_PNTTM	 	AS "frstRegisterPnttm"  
+              FROM COMTN_BACKUP_OPERT A
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM049') B
+					   	ON A.CMPRS_SE = B.CODE
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM047') C
+					   	ON A.EXECUT_CYCLE = C.CODE
+             WHERE A.USE_AT = 'Y'
+        ]]>
+       	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "BACKUP_OPERT_NM"'>
+                 <![CDATA[ AND A.BACKUP_OPERT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "BACKUP_ORGINL_DRCTRY"'>
+                 <![CDATA[ AND A.BACKUP_ORGINL_DRCTRY LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+        <![CDATA[
+             ORDER BY A.BACKUP_OPERT_ID ASC
+        ]]>             
+         /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+        ]]>			
+    </select>
+
+    <select id="selectBackupOpertListCnt"  resultType="int" >
+        <![CDATA[
+            SELECT COUNT(*) totcnt
+              FROM COMTN_BACKUP_OPERT A
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM049') B
+					   	ON A.CMPRS_SE = B.CODE
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM047') C
+					   	ON A.EXECUT_CYCLE = C.CODE
+             WHERE A.USE_AT = 'Y'
+        ]]>
+       	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "BACKUP_OPERT_NM"'>
+                 <![CDATA[ AND A.BACKUP_OPERT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "BACKUP_ORGINL_DRCTRY"'>
+                 <![CDATA[ AND A.BACKUP_ORGINL_DRCTRY LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+    </select>
+    
+    <select id="selectBackupOpert" resultType="backupOpertVO">
+        <![CDATA[
+            SELECT A.BACKUP_OPERT_ID
+                 , A.EXECUT_CYCLE
+                 , C.CODE_NM 				AS "executCycleNm"
+                 , A.EXECUT_SCHDUL_DE
+                 , A.EXECUT_SCHDUL_HOUR
+                 , A.EXECUT_SCHDUL_MNT
+                 , A.EXECUT_SCHDUL_SECND
+                 , A.BACKUP_OPERT_NM
+                 , A.BACKUP_ORGINL_DRCTRY
+                 , A.BACKUP_STRE_DRCTRY
+                 , A.CMPRS_SE
+                 , B.CODE_NM 				AS "cmprsSeNm"
+                 , A.LAST_UPDT_PNTTM 		AS "lastUpdusrPnttm" 
+                 , A.LAST_UPDUSR_ID
+                 , A.FRST_REGISTER_ID
+                 , A.FRST_REGIST_PNTTM		AS "frstRegisterPnttm" 
+              FROM COMTN_BACKUP_OPERT A
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM049') B
+					   	ON A.CMPRS_SE = B.CODE
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM047') C
+					   	ON A.EXECUT_CYCLE = C.CODE
+             WHERE A.USE_AT = 'Y'
+               AND A.BACKUP_OPERT_ID = #{backupOpertId}
+        ]]>
+    </select>
+
+    <insert id="insertBackupOpert">
+        <![CDATA[
+            INSERT INTO COMTN_BACKUP_OPERT (
+                	BACKUP_OPERT_ID
+                  , BACKUP_OPERT_NM
+                  , BACKUP_ORGINL_DRCTRY
+                  , BACKUP_STRE_DRCTRY
+                  , CMPRS_SE
+                  , EXECUT_CYCLE
+                  , EXECUT_SCHDUL_DE
+                  , EXECUT_SCHDUL_HOUR
+                  , EXECUT_SCHDUL_MNT
+                  , EXECUT_SCHDUL_SECND
+                  , USE_AT
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+            ) VALUES (
+                    #{backupOpertId}
+                  , #{backupOpertNm}
+                  , #{backupOrginlDrctry}
+                  , #{backupStreDrctry}
+                  , #{cmprsSe}
+                  , #{executCycle}
+                  , #{executSchdulDe}
+                  , #{executSchdulHour}
+                  , #{executSchdulMnt}
+                  , #{executSchdulSecnd}
+                  , 'Y'
+				  , #{frstRegisterId}
+				  , now()
+				  , #{frstRegisterId} 
+				  , now()
+            ) 
+        ]]>
+    </insert>
+
+    <update id="updateBackupOpert">
+        <![CDATA[
+            UPDATE COMTN_BACKUP_OPERT 
+               SET BACKUP_OPERT_NM 			= #{backupOpertNm}
+                 , BACKUP_ORGINL_DRCTRY 	= #{backupOrginlDrctry}
+                 , BACKUP_STRE_DRCTRY 		= #{backupStreDrctry}
+                 , CMPRS_SE 				= #{cmprsSe}
+                 , EXECUT_CYCLE 			= #{executCycle}
+                 , EXECUT_SCHDUL_DE 		= #{executSchdulDe}
+                 , EXECUT_SCHDUL_HOUR 		= #{executSchdulHour}
+                 , EXECUT_SCHDUL_MNT 		= #{executSchdulMnt}
+                 , EXECUT_SCHDUL_SECND 		= #{executSchdulSecnd}
+                 , LAST_UPDUSR_ID 			= #{lastUpdusrId}
+                 , LAST_UPDT_PNTTM 			= now()
+             WHERE BACKUP_OPERT_ID = #{backupOpertId}
+        ]]>
+    </update>
+    
+    <delete id="deleteBackupOpert">
+        <![CDATA[
+            UPDATE COMTN_BACKUP_OPERT 
+               SET USE_AT = 'N'
+             WHERE BACKUP_OPERT_ID = #{backupOpertId} 
+        ]]>
+    </delete>
+
+    <select id="selectBackupSchdulDfkList" resultType="backupSchdulDfkVO">
+        <![CDATA[
+            SELECT A.BACKUP_OPERT_ID
+                 , A.EXECUT_SCHDUL_DFK_SE
+                 , B.CODE_NM 				AS "executSchdulDfkSeNm"
+              FROM COMTN_BACKUP_SCHDUL_DFK A
+				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
+					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
+					    	  		 WHERE CODE_ID = 'COM074') B
+					   	ON A.EXECUT_SCHDUL_DFK_SE = B.CODE
+             WHERE A.BACKUP_OPERT_ID = #{backupOpertId}
+        ]]>
+    </select>
+
+    <insert id="insertBackupSchdulDfk">
+        <![CDATA[
+            INSERT INTO COMTN_BACKUP_SCHDUL_DFK (
+                	BACKUP_OPERT_ID
+                  , EXECUT_SCHDUL_DFK_SE
+            ) VALUES (
+                    #{backupOpertId}
+                  , #{executSchdulDfkSe}
+            ) 
+        ]]>
+    </insert>
+
+    <delete id="deleteBackupSchdulDfk">
+        <![CDATA[
+            DELETE 
+              FROM COMTN_BACKUP_SCHDUL_DFK
+             WHERE BACKUP_OPERT_ID = #{backupOpertId} 
+        ]]>
+    </delete>
+
+</mapper>            

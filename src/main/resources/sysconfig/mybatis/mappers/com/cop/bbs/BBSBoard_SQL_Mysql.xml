@@ -78,7 +78,7 @@
 				 , a.NTT_SJ
 			     , a.NTCR_ID
 			     , a.NTCR_NM
-			     , a.NTT_NO
+			     , a.THREAD_NO
 			     , a.NTT_CN
 			     , a.PASSWORD
 			     , a.FRST_REGISTER_ID		

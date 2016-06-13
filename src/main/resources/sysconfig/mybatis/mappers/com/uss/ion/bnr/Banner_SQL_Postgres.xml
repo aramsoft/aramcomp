@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.uss.ion.bnr.dao.BannerMapper">
+
+    <select id="selectBannerList" resultType="egovMap" >
+        /* 구현 Sql */
+       <![CDATA[
+            SELECT BANNER_ID				AS "bannerId"
+                 , BANNER_NM				AS "bannerNm"
+                 , LINK_URL					AS "linkUrl"
+                 , BANNER_DC				AS "bannerDc"
+                 , REFLCT_AT				AS "reflctAt"
+              FROM COMTN_BANNER
+             WHERE 1=1
+        ]]>
+      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+	            <![CDATA[ AND BANNER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+		</if>
+        <![CDATA[
+             ORDER BY FRST_REGIST_PNTTM DESC
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+        ]]>			
+    </select>
+
+    <select id="selectBannerListCnt" resultType="int">
+        <![CDATA[
+            SELECT COUNT(*) totcnt
+              FROM COMTN_BANNER
+             WHERE 1=1
+ 		]]>				
+      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+	            <![CDATA[ AND BANNER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+		</if>
+    </select>
+
+    <select id="selectBanner" resultType="bannerVO">
+        <![CDATA[
+            SELECT BANNER_ID
+                 , BANNER_NM
+                 , LINK_URL
+                 , BANNER_IMAGE
+                 , BANNER_IMAGE_FILE
+                 , BANNER_DC
+                 , SORT_ORDR
+                 , REFLCT_AT
+                 , FRST_REGISTER_ID			AS "userId"
+                 , FRST_REGIST_PNTTM		AS "regDate" 
+              FROM COMTN_BANNER
+             WHERE BANNER_ID = #{bannerId}
+        ]]>
+    </select>
+
+    <insert id="insertBanner" >
+        <![CDATA[
+            INSERT INTO COMTN_BANNER (
+            		BANNER_ID
+            	  , BANNER_NM
+            	  , LINK_URL
+            	  , BANNER_IMAGE
+            	  , BANNER_IMAGE_FILE
+            	  , BANNER_DC
+            	  , SORT_ORDR
+            	  , REFLCT_AT
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+            ) VALUES (
+            		#{bannerId}
+            	  , #{bannerNm}
+            	  , #{linkUrl}
+            	  , #{bannerImage}
+            	  , #{bannerImageFile}
+            	  , #{bannerDc}
+            	  , #{sortOrdr}
+            	  , #{reflctAt}
+				  , #{userId}
+				  , now()
+				  , #{userId} 
+				  , now()
+            )
+        ]]>
+    </insert>
+
+    <update id="updateBanner" >
+        <![CDATA[
+            UPDATE COMTN_BANNER
+               SET BANNER_NM 			= #{bannerNm}
+                 , LINK_URL 			= #{linkUrl}
+        ]]>
+    	<if test='isAtchFile != null and isAtchFile == true'>
+        <![CDATA[
+                 , BANNER_IMAGE 		= #{bannerImage}
+                 , BANNER_IMAGE_FILE 	= #{bannerImageFile}
+        ]]>
+ 		</if>
+        <![CDATA[
+                 , BANNER_DC 			= #{bannerDc}
+                 , SORT_ORDR 			= #{sortOrdr}
+                 , REFLCT_AT 			= #{reflctAt}
+                 , LAST_UPDT_PNTTM 		= now()
+                 , LAST_UPDUSR_ID 		= #{userId}
+             WHERE BANNER_ID = #{bannerId}
+        ]]>
+    </update>
+
+    <delete id="deleteBanner" >
+        <![CDATA[
+            DELETE 
+              FROM COMTN_BANNER
+             WHERE BANNER_ID = #{bannerId}
+        ]]>
+    </delete>
+
+    <select id="selectBannerResult" resultType="egovMap" >
+        <![CDATA[
+            SELECT BANNER_IMAGE_FILE		AS "bannerImageFile"
+                 , LINK_URL					AS "linkUrl"
+              FROM COMTN_BANNER
+             WHERE REFLCT_AT = 'Y'
+               AND BANNER_ID = #{bannerId}               
+             ORDER BY SORT_ORDR
+        ]]>
+    </select>
+
+    <select id="selectBannerFile" resultType="fileVO">
+        <![CDATA[
+            SELECT B.FILE_STRE_COURS 		AS "fileStreCours"
+                 , B.STRE_FILE_NM 			AS "streFileNm"
+              FROM COMTN_BANNER A
+                   INNER JOIN COMTN_FILE_DETAIL B
+                 		 ON A.BANNER_IMAGE_FILE = B.ATCH_FILE_ID
+             WHERE A.BANNER_ID = #{bannerId}
+        ]]>
+    </select>
+    
+</mapper>

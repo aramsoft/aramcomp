@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.sym.mnu.bmm.dao.BkmkMenuManageMapper">
+	
+	<select id="selectBkmkMenuManageList" resultType="egovMap">
+        /* 구현 Sql */
+       <![CDATA[
+			SELECT MENU_ID 					AS "menuId"
+			     , EMPLYR_ID				AS "userId"
+			     , MENU_NM					AS "menuNm"
+			     , PROGRM_STRE_PATH 		AS "progrmStrePath"
+			  FROM COMTN_BKMK_MENU_MANAGE
+			 WHERE EMPLYR_ID = #{userId}				 						
+		]]>	
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "MENU_NM"'>
+				<![CDATA[ AND MENU_NM LIKE '%'|| #searchKeyword#||'%']]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[			
+			 ORDER BY MENU_NM 
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+        ]]>			
+	</select>	
+
+	<select id="selectBkmkMenuManageListCnt" resultType="int">
+		<![CDATA[ 
+			SELECT count(MENU_ID) 
+			  FROM COMTN_BKMK_MENU_MANAGE
+			 WHERE EMPLYR_ID = #{userId}					
+		]]>		
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "MENU_NM"'>
+				<![CDATA[ AND MENU_NM LIKE '%'|| #searchKeyword#||'%']]>
+            </when>
+        </choose>
+		</if>
+	</select>
+	
+	<select id="selectBkmkMenuList" resultType="egovMap">
+        /* 구현 Sql */
+      	<![CDATA[
+			SELECT d.MENU_NO				AS "menuId"
+			     , d.MENU_NM				AS "menuNm"
+			     , d.MENU_DC				AS "menuDc"
+			  FROM COMTN_MENU_INFO d
+			     , (SELECT a.MENU_NO  
+			  	      FROM COMTN_MENU_CREAT_DTLS a
+					       LEFT OUTER JOIN COMTN_EMPLYR_SCRTY_ESTBS b
+					       		ON a.AUTHOR_CODE = b.AUTHOR_CODE   
+					       LEFT OUTER JOIN COMVN_USER_MASTER c 
+					       		ON b.SCRTY_DTRMN_TRGET_ID = c.ESNTL_ID  
+				  	 WHERE c.USER_ID =  #{userId})temp
+			 WHERE d.PROGRM_FILE_NM != 'dir' 
+			   AND d.MENU_NO = temp.MENU_NO
+			   AND d.menu_no not in (SELECT MENU_ID 
+			                           FROM COMTN_BKMK_MENU_MANAGE 
+			                          WHERE EMPLYR_ID =  #{userId})	
+		]]>		
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "MENU_NM"'>
+				<![CDATA[ AND d.MENU_NM LIKE '%'|| #searchKeyword#||'%']]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[			
+			 ORDER BY MENU_NM 
+		]]>						
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+        ]]>			
+	</select>	
+
+	<select id="selectBkmkMenuListCnt" resultType="int">
+		<![CDATA[ 
+			SELECT count(d.MENU_NM) 
+			  FROM COMTN_MENU_INFO d
+			     , (SELECT a.MENU_NO  
+				      FROM COMTN_MENU_CREAT_DTLS a
+					       LEFT OUTER JOIN COMTN_EMPLYR_SCRTY_ESTBS b
+					       		ON a.AUTHOR_CODE = b.AUTHOR_CODE   
+					       LEFT OUTER JOIN COMVN_USER_MASTER c 
+					       		ON b.SCRTY_DTRMN_TRGET_ID = c.ESNTL_ID  
+				  	 WHERE c.USER_ID =  #{userId})temp
+			 WHERE d.PROGRM_FILE_NM != 'dir' 
+			   AND d.MENU_NO = temp.MENU_NO
+			   AND d.menu_no not in (SELECT MENU_ID 
+			                           FROM COMTN_BKMK_MENU_MANAGE 
+			                          WHERE EMPLYR_ID = #{userId})						
+		]]>		
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "MENU_NM"'>
+				<![CDATA[ AND d.MENU_NM LIKE '%'|| #searchKeyword#||'%']]>
+            </when>
+        </choose>
+		</if>
+	</select>
+	
+	<select id="selectBkmkMenuManage" resultType="bkmkmenuManageVO">
+		<![CDATA[ 
+			 SELECT MENU_ID					AS "menuId" 
+			 	  , EMPLYR_ID				AS "userId"
+			 	  , MENU_NM					AS "menuNm"
+			 	  , PROGRM_STRE_PATH 		AS "progrmStrePath"
+			   FROM	COMTN_BKMK_MENU_MANAGE
+			  WHERE	MENU_ID 	= #{menuId} 
+			    AND EMPLYR_ID 	= #{userId}
+		]]> 
+	</select>		
+
+	<insert id="insertBkmkMenuManage" >
+		<![CDATA[
+			INSERT INTO COMTN_BKMK_MENU_MANAGE ( 
+					MENU_ID 
+				  , EMPLYR_ID
+				  ,	MENU_NM
+				  ,	PROGRM_STRE_PATH 
+			) VALUES ( 
+					#{menuId}
+				  ,	#{userId}
+				  , #{menuNm}
+				  ,	#{progrmStrePath} 
+			)		
+		]]>
+	</insert>
+	
+	<delete id="deleteBkmkMenuManage" >
+		<![CDATA[
+			DELETE 
+			  FROM COMTN_BKMK_MENU_MANAGE 
+			 WHERE MENU_ID 		= #{menuId}
+			   AND EMPLYR_ID 	= #{userId}			
+		]]>
+	</delete>
+	
+	<select id="selectUrl" resultType="String">
+		<![CDATA[ 
+			SELECT a.URL
+			  FROM COMTN_PROGRM_LIST a
+			       INNER JOIN (SELECT MENU_NO, PROGRM_FILE_NM 
+                      			 FROM COMTN_MENU_INFO  
+                     			WHERE MENU_NO = #{menuId} ) b
+			   			 ON a.PROGRM_FILE_NM = b.PROGRM_FILE_NM			
+		]]>		
+	</select>
+	
+	<select id="selectBkmkPreview" resultType="egovMap">
+		<![CDATA[ 
+			SELECT b.MENU_NO				AS "menuNo"
+				 , b.MENU_ORDR				AS "menuOrdr"
+				 , b.MENU_NM				AS "menuNm"
+				 , b.UPPER_MENU_NO			AS "upperMenuId"
+				 , b.MENU_DC				AS "menuDc"
+				 , b.RELATE_IMAGE_PATH		AS "relateImagePath"
+				 , b.RELATE_IMAGE_NM		AS "relateImageNm"
+				 , b.PROGRM_FILE_NM			AS "progrmFileNm"
+			  FROM COMTN_BKMK_MENU_MANAGE a  
+			       LEFT OUTER JOIN COMTN_MENU_INFO b
+			       		ON a.MENU_ID = b.MENU_NO
+		     WHERE a.EMPLYR_ID = #{userId} 
+		]]> 
+	</select>
+	
+</mapper>                            

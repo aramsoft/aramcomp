@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.mbl.com.mms.dao.MmsMapper">
+
+	<select id="selectMmsTransmissionResultList" resultType="egovMap" >
+        /* 구현 Sql */
+       	<![CDATA[
+			SELECT a.SN
+			     , a.TRNSMIS_NO
+			     , a.RECPTN_NO
+			     , b.CODE_NM AS TRNSMIS_RESULT_NM
+			     , c.CODE_NM AS RQESTER_RESULT_NM
+			     , a.TRNSMIS_DT
+			     , a.TRNSMIS_CONFIRM_DT
+			     , a.MSSAGE_ID
+			  FROM MBLTN_MMS a
+				   LEFT OUTER JOIN COMTC_CMMN_DETAIL_CODE b
+				  		ON  a.TRNSMIS_RESULT_CODE_ID = b.CODE_ID
+				 		AND a.TRNSMIS_RESULT_CODE = b.CODE           
+				   LEFT OUTER JOIN COMTC_CMMN_DETAIL_CODE c
+						ON  a.RQESTER_RESULT_CODE_ID = c.CODE_ID
+						AND a.RQESTER_RESULT_CODE = c.CODE
+			 WHERE 1 = 1
+		]]>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "TRNSMIS_NO"'>
+             	<![CDATA[ AND A.TRNSMIS_NO LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "RECPTN_NO"'>
+             	<![CDATA[ AND A.RECPTN_NO LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "CODE_NM"'>
+             	<![CDATA[ AND B.TRNSMIS_RESULT_CODE LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "CODE_NM"'>
+             	<![CDATA[ AND C.RQESTER_RESULT_CODE LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[
+			 ORDER BY a.SN DESC
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+        ]]>			
+	</select>	
+	
+	<select id="selectMmsTransmissionResultListCnt" resultType="int" >
+		<![CDATA[
+			SELECT COUNT(a.SN)
+			  FROM MBLTN_MMS a
+				   LEFT OUTER JOIN COMTC_CMMN_DETAIL_CODE b
+				  		ON  a.TRNSMIS_RESULT_CODE_ID = b.CODE_ID
+				 		AND a.TRNSMIS_RESULT_CODE = b.CODE           
+				   LEFT OUTER JOIN COMTC_CMMN_DETAIL_CODE c
+						ON  a.RQESTER_RESULT_CODE_ID = c.CODE_ID
+						AND a.RQESTER_RESULT_CODE = c.CODE
+			 WHERE 1 = 1
+		]]>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "TRNSMIS_NO"'>
+             	<![CDATA[ AND A.TRNSMIS_NO LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "RECPTN_NO"'>
+             	<![CDATA[ AND A.RECPTN_NO LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "CODE_NM"'>
+             	<![CDATA[ AND B.TRNSMIS_RESULT_CODE LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "CODE_NM"'>
+             	<![CDATA[ AND C.RQESTER_RESULT_CODE LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+	
+	<insert id="insertMmsTransmissionResult" >
+		<![CDATA[
+			INSERT INTO MBLTN_MMS (
+					SN
+				  , MBER_ID
+				  , TRNSMIS_NO
+				  ,	RECPTN_NO
+				  , MSSAGE_SJ
+				  , MSSAGE_CN
+				  ,	TRNSMIS_DT
+				  , RQESTER_RESULT_CODE_ID
+				  , RQESTER_RESULT_CODE
+				  , MSSAGE_ID
+			) VALUES (
+					#{sn}
+				  , #{mberId}
+				  , #{trnsmisNo}
+				  ,	#{recptnNo}
+				  , #{mssageSj}
+				  , #{mssageCn}
+				  ,	now()
+				  ,	(SELECT CODE_ID
+					   FROM COMTC_CMMN_DETAIL_CODE
+					  WHERE CODE_NM = #{rqesterResultNm})
+				  ,	(SELECT CODE
+					   FROM COMTC_CMMN_DETAIL_CODE
+					  WHERE CODE_NM = #{rqesterResultNm})
+				  ,	#{mssageId}
+			)
+		]]>
+	</insert>
+	
+	<update id="updateMmsTransmissionResult">
+		<![CDATA[
+			UPDATE MBLTN_MMS
+			   SET TRNSMIS_RESULT_CODE_ID = (SELECT CODE_ID
+											   FROM COMTC_CMMN_DETAIL_CODE
+											  WHERE CODE_NM = #{trnsmisResultNm})
+				 , TRNSMIS_RESULT_CODE = (SELECT CODE
+											FROM COMTC_CMMN_DETAIL_CODE
+										   WHERE CODE_NM = #{trnsmisResultNm})
+				 , TRNSMIS_CONFIRM_DT = now()
+ 			 WHERE MSSAGE_ID = #{mssageId}
+		]]>
+	</update>	
+	
+	<select id="selectAttachFileList" resultType="egovMap" >
+        /* 구현 Sql */
+       <![CDATA[
+			SELECT SN
+			     , ATCH_FILE_ID
+			     , ORIGNL_FILE_NM
+			     , MMS_ATCH_FILE_SJ
+			     , UPDT_DT
+			  FROM MBLTN_MMS_ATTACH 
+				   NATURAL JOIN COMTN_FILE_DETAIL
+			 WHERE 1 = 1
+		]]>
+  	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "MMS_ATCH_FILE_SJ"'>
+             	<![CDATA[ AND MMS_ATCH_FILE_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "ORIGNL_FILE_NM"'>
+             	<![CDATA[ AND ORIGNL_FILE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[
+			 ORDER BY SN DESC
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+        ]]>			
+	</select>	
+	
+	<select id="selectAttachFileListCnt" resultType="int" >
+		<![CDATA[
+			SELECT COUNT(SN)
+			  FROM MBLTN_MMS_ATTACH 
+				   NATURAL JOIN COMTN_FILE_DETAIL 
+			 WHERE 1 = 1
+		]]>
+  	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "MMS_ATCH_FILE_SJ"'>
+             	<![CDATA[ AND MMS_ATCH_FILE_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "ORIGNL_FILE_NM"'>
+             	<![CDATA[ AND ORIGNL_FILE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+	
+	<select id="selectAttachFile" resultType="attachFileVO" >
+		<![CDATA[
+			SELECT SN
+			     , MBER_ID
+			     , ATCH_FILE_ID
+			     , ORIGNL_FILE_NM
+			     , FILE_STRE_COURS
+			     , FILE_EXTSN
+			     , STRE_FILE_NM
+			     , MMS_ATCH_FILE_SJ
+			     , CREAT_DT
+			     , UPDT_DT
+			  FROM MBLTN_MMS_ATTACH 
+				   NATURAL JOIN COMTN_FILE_DETAIL 
+			 WHERE SN = #{sn}
+		]]>	
+	</select>
+ 
+ 	<insert id="insertAttachFile" >
+		<![CDATA[
+			INSERT INTO MBLTN_MMS_ATTACH (
+					SN
+				  , MBER_ID
+				  , ATCH_FILE_ID
+				  , MMS_ATCH_FILE_SJ
+				  , CREAT_DT
+				  , UPDT_DT
+			) VALUES (
+					#{sn}
+				  , #{mberId}
+				  , #{atchFileId}
+				  , #{mmsAtchFileSj}
+				  , now()
+				  , now()
+			)			
+		]]>
+	</insert>
+	
+	<update id="updateAttachFile">
+		<![CDATA[
+			UPDATE MBLTN_MMS_ATTACH
+			   SET MBER_ID = #{mberId}
+			     , ATCH_FILE_ID = #{atchFileId}
+			     , MMS_ATCH_FILE_SJ = #{mmsAtchFileSj}
+			     , UPDT_DT = now()
+ 			 WHERE SN = #{sn}
+		]]>
+      	<if test='mberId != null and mberId != ""'>
+ 			   <![CDATA[ AND MBER_ID = #{mberId} ]]>
+		</if>
+	</update>
+	
+	<delete id="deleteAttachFile">
+		<![CDATA[
+			DELETE 
+			  FROM MBLTN_MMS_ATTACH 
+			 WHERE SN = #{sn}
+		]]>
+      	<if test='mberId != null and mberId != ""'>
+ 			   <![CDATA[ AND MBER_ID = #{mberId} ]]>
+		</if>
+	</delete>
+ 
+</mapper>

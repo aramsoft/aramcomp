@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.cop.smt.djm.dao.DeptJobMapper">
+
+	<select id="selectChargerList" resultType="egovMap" >
+        /* 구현 Sql */
+		<![CDATA[
+			SELECT b.ORGNZT_NM				AS "orgnztNm"
+				 , a.ESNTL_ID  				AS "uniqId"
+				 , a.USER_NM				AS "emplyrNm"
+				 , a.EMPL_NO				AS "emplNo"
+				 , a.OFCPS_NM				AS "ofcpsNm"
+			  FROM COMTN_EMPLYR_INFO a
+				   LEFT OUTER JOIN COMTN_ORGNZT_INFO b
+						ON a.ORGNZT_ID = b.ORGNZT_ID
+			 WHERE 1=1
+		]]>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "ORGNZT_NM"'>
+             	<![CDATA[ AND COALESCE(b.ORGNZT_NM, ' ')  LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "USER_NM"'>
+             	<![CDATA[ AND COALESCE(a.USER_NM, ' ')  LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[
+			 ORDER BY b.ORGNZT_NM, a.USER_NM ASC
+		]]>	
+        /* 구현 Sql */
+        <![CDATA[
+ 			 LIMIT #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+        ]]>			
+	</select>	
+	
+	<select id="selectChargerListCnt" resultType="int" >
+		<![CDATA[
+			SELECT COUNT(EMPLYR_ID) as cnt
+			  FROM COMTN_EMPLYR_INFO a
+				   LEFT OUTER JOIN COMTN_ORGNZT_INFO b
+						ON a.ORGNZT_ID = b.ORGNZT_ID
+			 WHERE 1=1
+		]]>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "ORGNZT_NM"'>
+             	<![CDATA[ AND COALESCE(b.ORGNZT_NM, ' ')  LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "USER_NM"'>
+             	<![CDATA[ AND COALESCE(a.USER_NM, ' ')  LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+	
+	<!-- 부서::목록조회 -->
+	<select id="selectDeptList" resultType="egovMap" >
+        /* 구현 Sql */
+	 	<![CDATA[
+			SELECT ORGNZT_ID				AS "orgnztId"
+			 	 , ORGNZT_NM				AS "orgnztNm"
+			 	 , ORGNZT_DC				AS "orgnztDc" 
+			  FROM COMTN_ORGNZT_INFO
+			 WHERE 1=1
+	 	]]>
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "ORGNZT_NM"'>
+             	<![CDATA[ AND ORGNZT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "ORGNZT_DC"'>
+             	<![CDATA[ AND ORGNZT_DC LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		 <![CDATA[
+			 ORDER BY ORGNZT_NM ASC
+		 ]]>
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+        ]]>			
+	</select>
+	
+	<!-- 부서::목록조회 Count-->
+	<select id="selectDeptListCnt" resultType="int" >
+		<![CDATA[
+			SELECT COUNT(ORGNZT_ID) as cnt
+			  FROM COMTN_ORGNZT_INFO 
+			 WHERE 1=1
+		]]>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "ORGNZT_NM"'>
+             	<![CDATA[ AND ORGNZT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "ORGNZT_DC"'>
+             	<![CDATA[ AND ORGNZT_DC LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+	
+	<!-- 부서::조회 -->
+	<select id="selectDept" resultType="String">
+		 <![CDATA[
+			SELECT ORGNZT_NM 
+			  FROM COMTN_ORGNZT_INFO
+			 WHERE ORGNZT_ID = #{orgnztId}
+		 ]]>
+	</select>
+	
+	<!-- 부서업무함::목록조회(All) -->
+	<select id="selectDeptJobBxListAll" resultType="egovMap" >
+		 <![CDATA[
+			SELECT A.DEPT_ID				AS "deptId"
+				 , B.ORGNZT_NM 				AS "deptNm"
+				 , A.DEPT_JOBBX_ID			AS "deptJobBxId"
+				 , A.DEPT_JOBBX_NM			AS "deptJobBxNm"
+			  FROM COMTN_DEPT_JOB_BX A
+			 	   LEFT OUTER JOIN COMTN_ORGNZT_INFO B
+						ON A.DEPT_ID = B.ORGNZT_ID 
+			 ORDER BY B.ORGNZT_NM, A.INDICT_ORDR ASC
+		 ]]>	
+	</select>
+	
+	<!-- 부서업무함::목록조회 -->
+	<select id="selectDeptJobBxList" resultType="egovMap" >
+        /* 구현 Sql */
+		 <![CDATA[
+			SELECT A.DEPT_ID				AS "deptId"
+				 , B.ORGNZT_NM 				AS "deptNm"
+				 , A.DEPT_JOBBX_ID			AS "deptJobBxId"
+				 , A.DEPT_JOBBX_NM			AS "deptJobBxNm"
+				 , A.INDICT_ORDR			AS "indictOrdr"
+				 , C.USER_NM 				AS "lastUpdusrNm"
+				 , A.LAST_UPDT_PNTTM		AS "lastUpdtPnttm"
+			  FROM COMTN_DEPT_JOB_BX A
+				   LEFT OUTER JOIN COMTN_ORGNZT_INFO B
+						ON A.DEPT_ID = B.ORGNZT_ID 
+			 	   LEFT OUTER JOIN COMTN_EMPLYR_INFO C
+						ON A.LAST_UPDUSR_ID = C.ESNTL_ID 
+			 WHERE 1=1
+		]]>
+    	<if test='popupCnd != null and popupCnd != ""'>
+    	   	<if test='deptId != null and deptId != ""'>
+			 	<![CDATA[ AND A.DEPT_ID = #{deptId} ]]>
+			</if>
+		</if>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "ORGNZT_NM"'>
+             	<![CDATA[ AND COALESCE(B.ORGNZT_NM, ' ') LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "DEPT_JOBBX_NM"'>
+             	<![CDATA[ AND A.DEPT_JOBBX_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[
+			 ORDER BY B.ORGNZT_NM, A.INDICT_ORDR ASC
+		]]>
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+        ]]>			
+	</select>
+	
+	<!-- 부서업무함::목록조회 Count-->
+	<select id="selectDeptJobBxListCnt" resultType="int" >
+		<![CDATA[
+			SELECT COUNT(DEPT_JOBBX_ID) as cnt
+			  FROM COMTN_DEPT_JOB_BX A
+				   LEFT OUTER JOIN COMTN_ORGNZT_INFO B
+						ON A.DEPT_ID = B.ORGNZT_ID 
+			 WHERE 1=1
+		]]>
+    	<if test='popupCnd != null and popupCnd != ""'>
+    	   	<if test='deptId != null and deptId != ""'>
+			 	<![CDATA[ AND A.DEPT_ID = #{deptId} ]]>
+			</if>
+		</if>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "ORGNZT_NM"'>
+             	<![CDATA[ AND COALESCE(B.ORGNZT_NM, ' ') LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "DEPT_JOBBX_NM"'>
+             	<![CDATA[ AND A.DEPT_JOBBX_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+	
+	<!-- 부서업무함::상세보기 -->
+	<select id="selectDeptJobBx" resultType="deptJobBxVO" >
+			SELECT A.DEPT_ID			AS "deptId"
+				 , B.ORGNZT_NM 			AS "deptNm" 
+				 , A.DEPT_JOBBX_ID		AS "deptJobBxId" 
+				 , A.DEPT_JOBBX_NM		AS "deptJobBxNm"
+				 , A.INDICT_ORDR		AS "indictOrdr" 
+				 , A.LAST_UPDT_PNTTM	AS "lastUpdusrPnttm"
+				 , C.USER_NM 			AS "lastUpdusrNm" 
+			  FROM COMTN_DEPT_JOB_BX A
+				   LEFT OUTER JOIN COMTN_ORGNZT_INFO B
+						ON A.DEPT_ID = B.ORGNZT_ID
+				   LEFT OUTER JOIN COMTN_EMPLYR_INFO C
+						ON A.LAST_UPDUSR_ID = C.ESNTL_ID 
+			 WHERE A.DEPT_JOBBX_ID = #{deptJobBxId}
+	</select>
+	
+	<!-- 부서업무함::입력  -->
+	<insert id="insertDeptJobBx" >
+		 <![CDATA[
+			INSERT INTO COMTN_DEPT_JOB_BX ( 
+					DEPT_JOBBX_ID
+				  ,	DEPT_ID
+				  ,	DEPT_JOBBX_NM
+				  ,	INDICT_ORDR
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+			)VALUES( 
+					#{deptJobBxId}
+				  ,	#{deptId}
+				  ,	#{deptJobBxNm}
+				  ,	#{indictOrdr}
+				  , #{frstRegisterId}
+				  , now()
+				  , #{frstRegisterId} 
+				  , now()
+			)
+		 ]]>
+	</insert>
+	
+	<!-- 부서업무함::수정  -->
+	<update id="updateDeptJobBx" > 
+			UPDATE COMTN_DEPT_JOB_BX 
+			   SET DEPT_ID			= #{deptId}
+			   	 , DEPT_JOBBX_NM	= #{deptJobBxNm}
+			   	 , INDICT_ORDR		= #{indictOrdr}
+			   	 , LAST_UPDUSR_ID   = #{lastUpdusrId}
+			   	 , LAST_UPDT_PNTTM  = now()
+			 WHERE DEPT_JOBBX_ID = #{deptJobBxId}
+	</update>
+	
+	<!-- 부서업무함::등록시 순서 조회 -->
+	<select id="selectMaxDeptJobBxOrdr" resultType="int" >
+		<![CDATA[
+			SELECT COALESCE(MAX(INDICT_ORDR), 0)
+			  FROM COMTN_DEPT_JOB_BX 
+		 	 WHERE DEPT_ID=#{deptId}
+		]]>
+	</select>
+	
+	<!-- 부서업무함::순서 조회 -->
+	<select id="selectDeptJobBxOrdr" resultType="int" >
+		<![CDATA[
+			SELECT COUNT(DEPT_JOBBX_ID) as cnt
+			  FROM COMTN_DEPT_JOB_BX 
+		 	 WHERE DEPT_ID=#{deptId}
+			   AND DEPT_JOBBX_ID != #{deptJobBxId} 
+		]]>
+        <choose>
+            <when test='ordrCnd == "up"'>
+             	<![CDATA[ AND INDICT_ORDR <= #{indictOrdr}  ||'%' ]]>
+            </when>
+            <when test='ordrCnd == "down"'>
+             	<![CDATA[ AND INDICT_ORDR >= #{indictOrdr} ]]>
+            </when>
+            <otherwise>
+		   		<![CDATA[ AND INDICT_ORDR = #{indictOrdr} ]]>
+            </otherwise>
+        </choose>
+	</select>
+	
+	<!-- 부서업무함::순서 수정  -->
+	<update id="updateDeptJobBxOrdrUp" > 
+		<![CDATA[	
+			UPDATE COMTN_DEPT_JOB_BX 
+			   SET INDICT_ORDR = INDICT_ORDR + 1
+			 WHERE DEPT_ID = #{deptId}
+			   AND INDICT_ORDR = #{indictOrdr}
+		]]>
+	</update>
+	
+	<!-- 부서업무함::순서 수정  -->
+	<update id="updateDeptJobBxOrdrDown" > 
+		<![CDATA[	
+			UPDATE COMTN_DEPT_JOB_BX 
+			   SET INDICT_ORDR = INDICT_ORDR - 1
+			 WHERE DEPT_ID = #{deptId}
+			   AND INDICT_ORDR = #{indictOrdr}
+		]]>
+	</update>
+	
+	<!-- 부서업무함::순서 수정  -->
+	<update id="updateDeptJobBxOrdr" > 
+		<![CDATA[	
+			UPDATE COMTN_DEPT_JOB_BX 
+			   SET INDICT_ORDR = #{indictOrdr}
+			 WHERE DEPT_JOBBX_ID = #{deptJobBxId}
+		]]>
+	</update>
+	
+	<!-- 부서업무함::순서 수정  -->
+	<update id="updateDeptJobBxOrdrAll" > 
+		<![CDATA[	
+			UPDATE COMTN_DEPT_JOB_BX 
+			   SET INDICT_ORDR = INDICT_ORDR + 1
+			 WHERE DEPT_ID = #{deptId}
+		  	   AND INDICT_ORDR >= #{indictOrdr} 
+		]]>
+	</update>
+	
+	<!-- 부서업무함::삭제  -->
+	<delete id="deleteDeptJobBx" > 
+		<![CDATA[
+			DELETE 
+			  FROM COMTN_DEPT_JOB_BX 
+			 WHERE DEPT_JOBBX_ID = #{deptJobBxId}
+		]]>
+	</delete>
+	
+	<!-- 부서업무함::부서업무함명 체크  -->
+	<select id="selectDeptJobBxCheck" resultType="int" >
+		<![CDATA[
+			SELECT COUNT(DEPT_JOBBX_ID) as cnt
+			  FROM COMTN_DEPT_JOB_BX 
+			 WHERE DEPT_ID = #{deptId}
+			   AND DEPT_JOBBX_NM = #{deptJobBxNm}
+		]]>
+	</select>
+	
+	<!-- 부서업무::목록조회 -->
+	<select id="selectDeptJobList" resultType="egovMap" >
+        /* 구현 Sql */
+		 <![CDATA[
+			SELECT B.DEPT_ID				AS "deptId"
+				 , A.DEPT_JOB_ID			AS "deptJobId"
+				 , A.DEPT_JOB_NM			AS "deptJobNm"
+				 , A.PRIORT					AS "priort"
+				 , C.USER_NM 				AS "chargerNm" 
+				 , A.FRST_REGIST_PNTTM	    AS "frstRegisterPnttm"
+			  FROM COMTN_DEPT_JOB A
+				   LEFT OUTER JOIN COMTN_DEPT_JOB_BX B
+						ON A.DEPT_JOBBX_ID = B.DEPT_JOBBX_ID 
+			  	   LEFT OUTER JOIN COMTN_EMPLYR_INFO C
+						ON A.CHARGER_ID = C.ESNTL_ID 
+			 WHERE 1=1			
+		]]>
+  	    <if test='searchDeptJobBxId != null and searchDeptJobBxId != ""'>
+             	<![CDATA[ AND A.DEPT_JOBBX_ID = #{searchDeptJobBxId} ]]>
+        </if>
+ 	    <if test='searchDeptId != null and searchDeptId != ""'>
+             	<![CDATA[ AND B.DEPT_ID = #{searchDeptId} ]]>
+        </if>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "DEPT_JOB_NM"'>
+             	<![CDATA[ AND A.DEPT_JOB_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "DEPT_JOB_CN"'>
+             	<![CDATA[ AND A.DEPT_JOB_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "USER_NM"'>
+             	<![CDATA[ AND C.USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+		<![CDATA[
+			 ORDER BY A.FRST_REGIST_PNTTM DESC
+		]]>	
+        /* 구현 Sql */
+        <![CDATA[
+ 			 LIMIT #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+        ]]>			
+	</select>
+	
+	<!-- 부서업무::목록조회 Count-->
+	<select id="selectDeptJobListCnt" resultType="int" >
+		<![CDATA[
+			SELECT COUNT(A.DEPT_JOB_ID) as cnt
+			  FROM COMTN_DEPT_JOB A
+				   LEFT OUTER JOIN COMTN_DEPT_JOB_BX B
+						ON A.DEPT_JOBBX_ID = B.DEPT_JOBBX_ID 
+				   LEFT OUTER JOIN COMTN_EMPLYR_INFO C
+						ON A.CHARGER_ID = C.ESNTL_ID 
+			 WHERE 1=1			
+		]]>
+  	    <if test='searchDeptJobBxId != null and searchDeptJobBxId != ""'>
+             	<![CDATA[ AND A.DEPT_JOBBX_ID = #{searchDeptJobBxId} ]]>
+        </if>
+ 	    <if test='searchDeptId != null and searchDeptId != ""'>
+             	<![CDATA[ AND B.DEPT_ID = #{searchDeptId} ]]>
+        </if>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "DEPT_JOB_NM"'>
+             	<![CDATA[ AND A.DEPT_JOB_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "DEPT_JOB_CN"'>
+             	<![CDATA[ AND A.DEPT_JOB_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "USER_NM"'>
+             	<![CDATA[ AND C.USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+
+	<!-- 부서업무::상세보기 -->
+	<select id="selectDeptJob" resultType="deptJobVO" >
+		<![CDATA[
+			SELECT B.DEPT_ID
+				 , C.ORGNZT_NM 				AS "deptNm" 
+				 , A.DEPT_JOBBX_ID			AS "deptJobBxId"
+				 , B.DEPT_JOBBX_NM			AS "deptJobBxNm"
+				 , A.DEPT_JOB_ID
+				 , A.DEPT_JOB_NM
+				 , A.DEPT_JOB_CN
+				 , A.CHARGER_ID
+				 , D.USER_NM 				AS "chargerNm"
+				 , A.PRIORT
+				 , A.ATCH_FILE_ID
+				 , A.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
+				 , A.FRST_REGISTER_ID
+				 , A.LAST_UPDT_PNTTM		AS "lastUpdusrPnttm"
+				 , A.LAST_UPDUSR_ID 
+			  FROM COMTN_DEPT_JOB A
+				   LEFT OUTER JOIN COMTN_DEPT_JOB_BX B 
+						ON A.DEPT_JOBBX_ID = B.DEPT_JOBBX_ID
+				   LEFT OUTER JOIN COMTN_ORGNZT_INFO C
+						ON B.DEPT_ID = C.ORGNZT_ID
+				   LEFT OUTER JOIN COMTN_EMPLYR_INFO D
+						ON A.CHARGER_ID = D.ESNTL_ID
+			 WHERE A.DEPT_JOB_ID = #{deptJobId}
+		]]>
+	</select>
+	
+	<!-- 부서업무::입력  -->
+	<insert id="insertDeptJob" >
+	 	<![CDATA[
+			INSERT INTO COMTN_DEPT_JOB ( 
+					DEPT_JOB_ID
+				  ,	DEPT_JOBBX_ID
+				  ,	DEPT_JOB_NM
+				  ,	DEPT_JOB_CN
+				  ,	CHARGER_ID
+				  ,	PRIORT
+				  ,	ATCH_FILE_ID
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+			)VALUES( 
+					#{deptJobId}
+				  ,	#{deptJobBxId}
+				  ,	#{deptJobNm}
+				  ,	#{deptJobCn}
+				  ,	#{chargerId}
+				  ,	#{priort}
+				  ,	#{atchFileId, jdbcType=VARCHAR}
+				  , #{frstRegisterId}
+				  , now()
+				  , #{frstRegisterId} 
+				  , now()
+			)
+		]]>
+	</insert>
+
+	<!-- 부서업무::수정  -->
+	<update id="updateDeptJob" > 
+	 	<![CDATA[
+			UPDATE COMTN_DEPT_JOB
+			   SET DEPT_JOBBX_ID	= #{deptJobBxId}
+			   	 , DEPT_JOB_NM		= #{deptJobNm}
+			   	 , DEPT_JOB_CN		= #{deptJobCn}
+			   	 , CHARGER_ID		= #{chargerId}
+			   	 , PRIORT			= #{priort}
+			   	 , ATCH_FILE_ID		= #{atchFileId, jdbcType=VARCHAR}
+			   	 , LAST_UPDUSR_ID 	= #{lastUpdusrId}
+			   	 , LAST_UPDT_PNTTM 	= now()
+			 WHERE DEPT_JOB_ID = #{deptJobId}
+		]]>
+	</update>
+	
+	<!-- 부서업무::삭제  -->
+	<delete id="deleteDeptJob" > 
+		<![CDATA[
+			DELETE 
+			  FROM COMTN_DEPT_JOB 
+			 WHERE DEPT_JOB_ID = #{deptJobId}
+		]]>
+	</delete>
+	
+</mapper>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.uss.olp.qim.dao.QustnrItemManageMapper">
+
+	<!-- 질문항목::목록조회_게시물정보 -->
+	<select id="selectQustnrItemManageList" resultType="egovMap">
+        /* 구현 Sql */
+       	<![CDATA[
+		    SELECT A.QUSTNR_QESITM_ID	 	AS "qestnrQesitmId"
+		         , A.QESTNR_ID				AS "qestnrId"
+			     ,(SELECT QUSTNR_SJ 
+			         FROM COMTN_QESTNR_INFO 
+			        WHERE QESTNR_ID = A.QESTNR_ID
+			        ) 						AS "qestnrSj"
+		         , A.QUSTNR_IEM_ID			AS "qustnrIemId"
+		         , A.IEM_CN					AS "qustnrIemCn"
+		         , A.ETC_ANSWER_AT			AS "etcAnswerAt"
+		         , A.FRST_REGIST_PNTTM	 	AS "frstRegisterPnttm" 
+		         , (SELECT USER_NM 
+		              FROM COMVN_USER_MASTER 
+		             WHERE ESNTL_ID = A.FRST_REGISTER_ID
+		           ) 						AS "frstRegisterNm" 
+		      FROM COMTN_QUSTNR_IEM A
+		     WHERE 1=1
+	 	]]>
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "IEM_CN"'>
+                <![CDATA[ AND A.IEM_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "FRST_REGISTER_ID"'>
+				<![CDATA[ 
+					AND A.FRST_REGISTER_ID IN (SELECT ESNTL_ID 
+	 	   						  	  	      	 FROM COMVN_USER_MASTER 
+	 	   							         	 WHERE USER_NM LIKE '%' || #{searchVO.searchKeyword} || '%' )	            
+	 			]]>
+	 	   	</when>
+            <when test='searchVO.searchCondition == "QUSTNR_QESITM_ID"'>
+                <![CDATA[ AND A.QUSTNR_QESITM_ID = #{searchVO.searchKeyword} ]]>
+            </when>
+        </choose>
+		</if>
+	 	<![CDATA[
+		     ORDER BY A.FRST_REGIST_PNTTM DESC
+	 	]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+        ]]>			
+	</select>
+
+	<!-- 질문항목::목록조회_게시물 총갯수  -->
+	<select id="selectQustnrItemManageListCnt" resultType="int">
+	 	<![CDATA[
+			SELECT COUNT(*) totcnt
+			  FROM COMTN_QUSTNR_IEM A
+			 WHERE 1=1
+        ]]>			
+    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "IEM_CN"'>
+                <![CDATA[ AND A.IEM_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            </when>
+            <when test='searchVO.searchCondition == "FRST_REGISTER_ID"'>
+				<![CDATA[ 
+					AND A.FRST_REGISTER_ID IN (SELECT ESNTL_ID 
+	 	   						  	  	      	 FROM COMVN_USER_MASTER 
+	 	   							         	 WHERE USER_NM LIKE '%' || #{searchVO.searchKeyword} || '%' )	            
+	 			]]>
+	 	   	</when>
+            <when test='searchVO.searchCondition == "QUSTNR_QESITM_ID"'>
+                <![CDATA[ AND A.QUSTNR_QESITM_ID = #{searchVO.searchKeyword} ]]>
+            </when>
+        </choose>
+		</if>
+	</select>
+
+	<!-- 질문항목::상세보기 -->
+	<select id="selectQustnrItemManageDetail" resultType="qustnrItemManageVO">
+	 	<![CDATA[
+			SELECT A.QUSTNR_QESITM_ID	    AS "qestnrQesitmId"
+			     , (SELECT QESTN_CN 
+			          FROM COMTN_QUSTNR_QESITM 
+			         WHERE QUSTNR_QESITM_ID = A.QUSTNR_QESITM_ID
+			       ) 						AS "qestnCn"
+			     , A.QESTNR_ID				AS "qestnrId"
+			     ,(SELECT QUSTNR_SJ 
+			         FROM COMTN_QESTNR_INFO 
+			        WHERE QESTNR_ID = A.QESTNR_ID
+			        ) 						AS "qestnrSj"
+			     , A.IEM_SN					AS "qustnrIemSn"
+			     , A.QUSTNR_IEM_ID			AS "qustnrIemId"
+			     , A.IEM_CN					AS "qustnrIemCn"
+			     , A.ETC_ANSWER_AT			AS "etcAnswerAt"
+			     , A.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
+			     , A.FRST_REGISTER_ID		AS "frstRegisterId"
+			     , A.LAST_UPDT_PNTTM		AS "lastUpdusrPnttm"
+			     , A.LAST_UPDUSR_ID			AS "lastUpdusrId"
+			  FROM COMTN_QUSTNR_IEM A
+			 WHERE A.QUSTNR_IEM_ID = #{qustnrIemId}
+        ]]>			
+	</select>
+
+	<!-- 질문항목::입력  -->
+	<insert id="insertQustnrItemManage">
+	 	<![CDATA[
+			INSERT INTO COMTN_QUSTNR_IEM (
+					QUSTNR_QESITM_ID
+				  ,	QESTNR_ID
+				  ,	IEM_SN
+				  ,	QUSTNR_IEM_ID
+				  ,	IEM_CN
+				  ,	ETC_ANSWER_AT
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+			)VALUES(
+					#{qestnrQesitmId}
+				  ,	#{qestnrId}
+				  ,	#{qustnrIemSn}
+				  ,	#{qustnrIemId}
+				  ,	#{qustnrIemCn}
+				  ,	#{etcAnswerAt}
+				  , #{frstRegisterId}
+				  , now()
+				  , #{frstRegisterId} 
+				  , now()
+			)
+	 	]]>
+	</insert>
+
+	<!-- 질문항목::수정  -->
+	<update id="updateQustnrItemManage">
+	 	<![CDATA[
+			UPDATE COMTN_QUSTNR_IEM
+			   SET IEM_SN			= #{qustnrIemSn}
+			     , IEM_CN			= #{qustnrIemCn}
+			     , ETC_ANSWER_AT	= #{etcAnswerAt}
+			     , LAST_UPDUSR_ID 	= #{lastUpdusrId}
+			     , LAST_UPDT_PNTTM 	= now()
+			 WHERE QUSTNR_IEM_ID = #{qustnrIemId}
+	 	]]>
+	</update>
+
+	<!-- 질문항목(설문결과) 삭제 -->
+	<delete id="deleteQustnrRespondInfo">
+	 	<![CDATA[
+			DELETE 
+			  FROM COMTN_QUSTNR_RSPNS_RESULT 
+			 WHERE QUSTNR_IEM_ID = #{qustnrIemId}
+	 	]]>
+	</delete>
+
+	<!-- 질문항목::삭제  -->
+	<delete id="deleteQustnrItemManage">
+		<![CDATA[
+			DELETE 
+			  FROM COMTN_QUSTNR_IEM
+			 WHERE QUSTNR_IEM_ID = #{qustnrIemId}
+		]]>
+	</delete>
+
+</mapper>

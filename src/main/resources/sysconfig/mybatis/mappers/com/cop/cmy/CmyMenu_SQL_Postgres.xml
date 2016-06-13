@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.cop.cmy.dao.CmyMenuManageMapper">
+
+	<select id="selectMenuManageList" resultType="egovMap">
+        /* 구현 Sql */
+		<![CDATA[
+			SELECT MENU_NO           		AS "menuNo"
+				 , MENU_ALIAS          		AS "menuAlias"
+				 , MENU_NM           		AS "menuNm"
+				 , PROGRM_FILE_NM    		AS "progrmFileNm"
+				 , TOPMENU_AT    			AS "topMenuAt"
+		 	  FROM COMTN_CMMNTY_MENU 
+			 WHERE TRGET_ID = #{trgetId}
+			   AND MENU_NM like '%'|| #{searchVO.searchKeyword}||'%'
+			 ORDER BY MENU_NO ASC 
+		 ]]>
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+        ]]>			
+	</select> 
+
+	<!-- 총건수 조회 -->
+	<select id="selectMenuManageListCnt" resultType="int">
+		<![CDATA[
+			SELECT COUNT(MENU_NO) AS "totcnt"
+			  FROM COMTN_CMMNTY_MENU
+			 WHERE TRGET_ID = #{trgetId}
+			   AND MENU_NM like '%'|| #{searchVO.searchKeyword}||'%'
+		]]>
+	</select>
+
+	<select id="selectMenuListExcel" resultType="egovMap">
+        /* 구현 Sql */
+		<![CDATA[
+			SELECT MENU_NO           		AS "menuNo"
+				 , MENU_NM           		AS "menuNm"
+				 , PROGRM_FILE_NM    		AS "progrmFileNm"
+				 , MENU_DC           		AS "menuDc"
+				 , USE_AT    				AS "useAt"
+				 , MGR_AT    				AS "mgrAt"
+				 , DIRECT_URL    			AS "directUrl"
+				 , TOPMENU_AT    			AS "topMenuAt"
+				 , MENU_ALIAS          		AS "menuAlias"
+		 	  FROM COMTN_CMMNTY_MENU 
+			 WHERE TRGET_ID = #{trgetId}
+			 ORDER BY MENU_NO ASC 
+		 ]]>
+        /* 구현 Sql */
+	</select> 
+		
+	<select id="selectMenuManage" resultType="communityMenuVO">
+		<![CDATA[
+			SELECT MENU_NO           		AS "menuNo"
+				 , MENU_ALIAS           	AS "menuAlias"
+				 , MENU_NM           		AS "menuNm"
+				 , MENU_DC           		AS "menuDc"
+            	 , USE_AT					AS "useAt"
+            	 , MGR_AT					AS "mgrAt"
+				 , PROGRM_FILE_NM    		AS "progrmFileNm"
+				 , DIRECT_URL    			AS "directUrl"
+				 , TOPMENU_AT    			AS "topMenuAt"
+		 	  FROM COMTN_CMMNTY_MENU 
+			 WHERE TRGET_ID = #{trgetId}
+			   AND MENU_NO = #{menuNo}
+		]]>
+	</select>
+	
+	<insert id="insertMenuManage">
+			INSERT INTO COMTN_CMMNTY_MENU ( 
+					TRGET_ID
+				  ,	MENU_NO
+                  , MENU_ALIAS
+                  , MENU_NM
+            	  , MENU_DC
+            	  , USE_AT
+            	  , MGR_AT
+            	  , PROGRM_FILE_NM
+            	  , DIRECT_URL
+            	  , TOPMENU_AT
+            ) VALUES (
+                    #{trgetId}
+            	  ,	#{menuNo}
+                  , #{menuAlias} 
+                  , #{menuNm}  
+                  , #{menuDc, jdbcType=VARCHAR}
+                  , #{useAt}
+                  , #{mgrAt}
+                  , #{progrmFileNm, jdbcType=VARCHAR} 
+                  , #{directUrl, jdbcType=VARCHAR} 
+                  , #{topMenuAt}
+            )
+	</insert>
+
+	<update id="updateMenuManage">
+			UPDATE COMTN_CMMNTY_MENU  
+			   SET MENU_ALIAS          	= #{menuAlias}         
+            	 , MENU_NM           	= #{menuNm}         
+            	 , MENU_DC           	= #{menuDc}         
+            	 , USE_AT            	= #{useAt}         
+            	 , MGR_AT            	= #{mgrAt}         
+           	 	 , PROGRM_FILE_NM    	= #{progrmFileNm, jdbcType=VARCHAR}  
+            	 , DIRECT_URL    		= #{directUrl, jdbcType=VARCHAR}   
+            	 , TOPMENU_AT    		= #{topMenuAt}   
+		<if test='newMenuNo != null and newMenuNo != "" and newMenuNo != "0"'>
+			     , MENU_NO 				= #{newMenuNo}
+		</if>
+		<![CDATA[
+			 WHERE TRGET_ID = #{trgetId}
+			   AND MENU_NO = #{menuNo}
+		]]>
+	</update>
+
+	<delete id="deleteMenuManage">
+		<![CDATA[                          
+			DELETE 
+			  FROM COMTN_CMMNTY_MENU               
+			 WHERE TRGET_ID = #trgetId#
+			   AND MENU_NO = #{menuNo}
+		]]>                                
+	</delete> 
+	
+	<delete id="deleteMenuManageTrget">
+		<![CDATA[                          
+			DELETE 
+			  FROM COMTN_CMMNTY_MENU               
+			 WHERE TRGET_ID = #{trgetId}
+		]]>                                
+	</delete> 
+	
+	<!-- 메뉴번호 존재여부 조회 -->
+	<select id="selectMenuNoByPk" resultType="int">
+		<![CDATA[
+			SELECT COUNT(MENU_NO) 			AS "totcnt"
+			  FROM COMTN_CMMNTY_MENU 
+			 WHERE TRGET_ID = #{trgetId}
+			   AND MENU_NO = #{menuNo}
+		]]>
+	</select>
+	
+	<!-- 메뉴별명으로 부터 메뉴번호 조회 -->
+	<select id="selectMenuNoByMenuAlias" resultType="String">
+		<![CDATA[
+			SELECT MENU_NO
+			  FROM COMTN_CMMNTY_MENU 
+			 WHERE TRGET_ID = #{trgetId}
+			   AND MENU_ALIAS = #{menuAlias}
+		]]>
+	</select>
+	
+</mapper>                            

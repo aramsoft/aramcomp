@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.sym.mnu.mcm.dao.MenuCreateMapper">
+
+	<select id="selectMenuCreateSiteMapList" resultType="egovMap">
+		<![CDATA[
+			SELECT B.MENU_NO       			AS "menuNo"
+				 , B.MENU_ORDR     			AS "menuOrdr"
+				 , B.MENU_NM       			AS "menuNm"
+				 , B.UPPER_MENU_NO 			AS "upperMenuId"
+				 , (SELECT C.URL 
+				      FROM COMTN_PROGRM_LIST C 
+				     WHERE B.PROGRM_FILE_NM = C.PROGRM_FILE_NM
+				   ) 				AS "chkURL"	
+			  FROM COMTN_MENU_CREAT_DTLS A
+			       LEFT OUTER JOIN COMTN_MENU_INFO B
+			       		ON A.MENU_NO  = B.MENU_NO  
+			 WHERE A.AUTHOR_CODE = #{authorCode}
+			 ORDER BY B.MENU_ORDR
+		 ]]>
+	</select> 
+
+    <select id="selectSiteMapByUser" resultType="egovMap">
+        <![CDATA[
+            SELECT A.MENU_NO 				AS "menuNo"
+                 , A.MENU_ORDR 				AS "menuOrdr"
+                 , A.MENU_NM 				AS "menuNm"
+                 , A.UPPER_MENU_NO 			AS "upperMenuId"
+                 , (SELECT Z.URL 
+                	  FROM COMTN_PROGRM_LIST Z 
+                	 WHERE A.PROGRM_FILE_NM = Z.PROGRM_FILE_NM
+                   ) 						AS "chkURL" 
+              FROM COMTN_MENU_INFO A
+			       LEFT OUTER JOIN COMTN_MENU_CREAT_DTLS B
+			       		ON A.MENU_NO = B.MENU_NO  
+			       LEFT OUTER JOIN COMTN_EMPLYR_SCRTY_ESTBS C
+			       		ON B.AUTHOR_CODE = C.AUTHOR_CODE
+			       LEFT OUTER JOIN COMVN_USER_MASTER D
+			       		ON C.SCRTY_DTRMN_TRGET_ID = D.ESNTL_ID
+            WHERE A.MENU_NO > 0
+              AND D.USER_ID = #{creatPersonId}
+            ORDER BY A.MENU_ORDR
+         ]]>
+    </select> 	
+
+	<insert id="insertSiteMap">
+		<![CDATA[
+			INSERT INTO COMTN_SITE_MAP ( 
+					MAPNG_CREAT_ID
+				  ,	CREATR_ID
+				  ,	MAPNG_FILE_NM
+				  ,	MAPNG_FILE_PATH 
+			) VALUES ( 
+					#{mapCreatId}
+				  ,	#{creatPersonId}
+				  ,	#{bndeFileNm}
+				  ,	#{bndeFilePath}
+			)
+		]]>
+	</insert>
+	
+	<select id="selectSiteMapCnt" resultType="int">
+		<![CDATA[
+			SELECT COUNT(MAPNG_CREAT_ID) 	AS "totcnt"
+			  FROM COMTN_SITE_MAP
+			 WHERE MAPNG_CREAT_ID like CONCAT(#{mapCreatId}, '%')
+		]]>
+	</select>
+
+</mapper>                            

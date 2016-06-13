@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.uss.ion.mtg.dao.MtgPlaceManageMapper">
+  
+	<!-- 회의실관리 -->
+	<!-- 목록조회  -->
+    <select id="selectMtgPlaceManageList" resultType="egovMap">
+        /* 구현 Sql */
+       	<![CDATA[
+		    SELECT MTGRUM_ID  				AS "mtgPlaceId"      	        
+		         , MTGRUM_NM  				AS "mtgPlaceNm"      	       
+		         , OPN_BEGIN_TM             AS "opnBeginTm"
+		         , OPN_END_TM               AS "opnEndTm"  
+		         , ACEPTNC_POSBL_NMPR  		AS "aceptncPosblNmpr"
+		         , LC_SE                    AS "lcSe"        
+		         , LC_DETAIL                AS "lcDetail"    
+		         , (SELECT code_nm 
+		              FROM COMTC_CMMN_DETAIL_CODE
+			         WHERE code_id ='COM070' 
+			           AND code = A.LC_SE
+			       ) 						AS "lcSeNm" 
+		      FROM COMTN_MTG_PLACE_MANAGE A 
+		     WHERE 1=1         
+		]]> 
+   	    <if test='trgetId != null and trgetId != ""'>
+        		<![CDATA[ AND TRGET_ID = #{trgetId} ]]>
+		</if>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        		<![CDATA[ AND MTGRUM_NM like '%'||#{searchVO.searchKeyword}||'%' ]]>
+		</if>
+        <![CDATA[
+			 ORDER BY FRST_REGIST_PNTTM DESC
+		]]>				
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+        ]]>			
+    </select>
+
+	<!-- 목록조회_게시물 총갯수  -->
+    <select id="selectMtgPlaceManageListCnt" resultType="int">
+        <![CDATA[
+            SELECT COUNT(*) totcnt
+              FROM COMTN_MTG_PLACE_MANAGE
+             WHERE 1=1  
+        ]]> 
+   	    <if test='trgetId != null and trgetId != ""'>
+        		<![CDATA[ AND TRGET_ID = #{trgetId} ]]>
+		</if>
+   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        		<![CDATA[ AND MTGRUM_NM like '%'||#{searchVO.searchKeyword}||'%' ]]>
+		</if>
+    </select>
+    
+	<!-- 상세보기 -->
+    <select id="selectMtgPlaceManage" resultType="mtgPlaceManageVO">
+        <![CDATA[
+			SELECT MTGRUM_ID        		AS "mtgPlaceId"       
+			     , MTGRUM_NM        		AS "mtgPlaceNm"       
+			     , OPN_BEGIN_TM         	AS "opnBeginTm"       
+			     , OPN_END_TM           	AS "opnEndTm"         
+			     , ACEPTNC_POSBL_NMPR   	AS "aceptncPosblNmpr" 
+			     , LC_SE                	AS "lcSe"             
+			     , LC_DETAIL            	AS "lcDetail"         
+			     , ATCH_FILE_ID         	AS "atchFileId"       
+			     , FRST_REGISTER_ID     	AS "frstRegisterId"   
+			     , FRST_REGIST_PNTTM    	AS "frstRegisterPnttm"
+			     , LAST_UPDUSR_ID       	AS "lastUpdusrId"     
+			     , LAST_UPDT_PNTTM      	AS "lastUpdusrPnttm"  
+			     , (SELECT code_nm 
+			          FROM COMTC_CMMN_DETAIL_CODE
+			         WHERE code_id ='COM070' 
+			           AND code = LC_SE
+			       ) 						AS "lcSeNm"
+			  FROM COMTN_MTG_PLACE_MANAGE
+			 WHERE MTGRUM_ID  = #{mtgPlaceId}
+        ]]>
+    </select>
+
+	<!-- 입력 -->
+    <insert id="insertMtgPlaceManage" >
+        <![CDATA[
+            INSERT INTO COMTN_MTG_PLACE_MANAGE (
+            		MTGRUM_ID        
+            	  , MTGRUM_NM        
+            	  , OPN_BEGIN_TM        
+            	  , OPN_END_TM          
+            	  , ACEPTNC_POSBL_NMPR  
+            	  , LC_SE               
+            	  , LC_DETAIL           
+            	  , ATCH_FILE_ID		
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+			  	  ,	TRGET_ID
+            ) VALUES (
+            		#{mtgPlaceId}
+            	  , #{mtgPlaceNm}
+            	  , #{opnBeginTm}
+            	  , #{opnEndTm}
+            	  , #{aceptncPosblNmpr}
+            	  , #{lcSe}
+            	  , #{lcDetail}
+            	  , #{atchFileId, jdbcType=VARCHAR}
+				  , #{frstRegisterId}
+				  , now()
+				  , #{frstRegisterId} 
+				  , now()
+			  	  ,	#{trgetId}
+            ) 
+        ]]>
+    </insert>     
+
+	<!-- 수정 -->
+    <update id="updateMtgPlaceManage" >
+        <![CDATA[
+            UPDATE COMTN_MTG_PLACE_MANAGE
+               SET MTGRUM_NM        	= #{mtgPlaceNm}      
+                 , OPN_BEGIN_TM        	= #{opnBeginTm}      
+                 , OPN_END_TM          	= #{opnEndTm}        
+                 , ACEPTNC_POSBL_NMPR  	= #{aceptncPosblNmpr}
+                 , LC_SE               	= #{lcSe}            
+                 , LC_DETAIL           	= #{lcDetail}        
+                 , ATCH_FILE_ID        	= #{atchFileId, jdbcType=VARCHAR}      
+                 , LAST_UPDUSR_ID      	= #{lastUpdusrId}   
+                 , LAST_UPDT_PNTTM   	= now()    
+			 WHERE MTGRUM_ID  = #{mtgPlaceId}   
+        ]]>
+    </update>    
+    
+	<!-- 삭제 -->
+    <delete id="deleteMtgPlaceManage" >
+        <![CDATA[
+            DELETE 
+              FROM COMTN_MTG_PLACE_MANAGE
+			 WHERE MTGRUM_ID = #{mtgPlaceId}   
+        ]]>
+    </delete>  
+    
+	<!-- 회의실예약 -->
+    <select id="selectMtgPlaceIDList" resultType="mtgPlaceManageVO">
+        <![CDATA[
+		   SELECT MTGRUM_ID        			AS "mtgPlaceId"      
+		        , MTGRUM_NM        			AS "mtgPlaceNm"       
+		     FROM COMTN_MTG_PLACE_MANAGE 
+		    WHERE 1=1
+        ]]> 
+   	    <if test='trgetId != null and trgetId != ""'>
+        		<![CDATA[ AND TRGET_ID = #{trgetId} ]]>
+		</if>
+        <![CDATA[
+ 		    ORDER BY MTGRUM_ID ASC
+        ]]> 
+     </select>
+
+	<!-- 목록조회  -->
+    <select id="selectMtgPlaceResveManageList" resultType="egovMap">
+        <![CDATA[
+			SELECT mtg.MTGRUM_NM 			as "mtgPlaceNm"
+			     , mtg.MTGRUM_ID 			as "mtgPlaceId"
+			     , COALESCE((SELECT CONCAT(RESVE_ID,MTG_SJ) FROM COMTN_MTG_PLACE_RESVE WHERE RESVE_ID = res.0800 ),'0') as "resve0800"
+			     , COALESCE((SELECT CONCAT(RESVE_ID,MTG_SJ) FROM COMTN_MTG_PLACE_RESVE WHERE RESVE_ID = res.0830 ),'0') as "resve0830"
+			     , COALESCE((SELECT CONCAT(RESVE_ID,MTG_SJ) FROM COMTN_MTG_PLACE_RESVE WHERE RESVE_ID = res.0900 ),'0') as "resve0900"
+			     , COALESCE((SELECT CONCAT(RESVE_ID,MTG_SJ) FROM COMTN_MTG_PLACE_RESVE WHERE RESVE_ID = res.0930 ),'0') as "resve0930"
+			     , COALESCE((SELECT CONCAT(RESVE_ID,MTG_SJ) FROM COMTN_MTG_PLACE_RESVE WHERE RESVE_ID = res.1000 ),'0') as "resve1000"
+			     , COALESCE((SELECT CONCAT(RESVE_ID,MTG_SJ) FROM COMTN_MTG_PLACE_RESVE WHERE RESVE_ID = res.1030 ),'0') as "resve1030"
+			     , COALESCE((SELECT CONCAT(RESVE_ID,MTG_SJ) FROM COMTN_MTG_PLACE_RESVE WHERE RESVE_ID = res.1100 ),'0') as "resve1100"
+			     , COALESCE((SELECT CONCAT(RESVE_ID,MTG_SJ) FROM COMTN_MTG_PLACE_RESVE WHERE RESVE_ID = res.1130 ),'0') as "resve1130"
+			     , COALESCE((SELECT CONCAT(RESVE_ID,MTG_SJ) FROM COMTN_MTG_PLACE_RESVE WHERE RESVE_ID = res.1200 ),'0') as "resve1200"
+			     , COALESCE((SELECT CONCAT(RESVE_ID,MTG_SJ) FROM COMTN_MTG_PLACE_RESVE WHERE RESVE_ID = res.1230 ),'0') as "resve1230"
+			     , COALESCE((SELECT CONCAT(RESVE_ID,MTG_SJ) FROM COMTN_MTG_PLACE_RESVE WHERE RESVE_ID = res.1300 ),'0') as "resve1300"
+			     , COALESCE((SELECT CONCAT(RESVE_ID,MTG_SJ) FROM COMTN_MTG_PLACE_RESVE WHERE RESVE_ID = res.1330 ),'0') as "resve1330"
+			     , COALESCE((SELECT CONCAT(RESVE_ID,MTG_SJ) FROM COMTN_MTG_PLACE_RESVE WHERE RESVE_ID = res.1400 ),'0') as "resve1400"
+			     , COALESCE((SELECT CONCAT(RESVE_ID,MTG_SJ) FROM COMTN_MTG_PLACE_RESVE WHERE RESVE_ID = res.1430 ),'0') as "resve1430"
+			     , COALESCE((SELECT CONCAT(RESVE_ID,MTG_SJ) FROM COMTN_MTG_PLACE_RESVE WHERE RESVE_ID = res.1500 ),'0') as "resve1500"
+			     , COALESCE((SELECT CONCAT(RESVE_ID,MTG_SJ) FROM COMTN_MTG_PLACE_RESVE WHERE RESVE_ID = res.1530 ),'0') as "resve1530"
+			     , COALESCE((SELECT CONCAT(RESVE_ID,MTG_SJ) FROM COMTN_MTG_PLACE_RESVE WHERE RESVE_ID = res.1600 ),'0') as "resve1600"
+			     , COALESCE((SELECT CONCAT(RESVE_ID,MTG_SJ) FROM COMTN_MTG_PLACE_RESVE WHERE RESVE_ID = res.1630 ),'0') as "resve1630"
+			     , COALESCE((SELECT CONCAT(RESVE_ID,MTG_SJ) FROM COMTN_MTG_PLACE_RESVE WHERE RESVE_ID = res.1700 ),'0') as "resve1700"
+			     , COALESCE((SELECT CONCAT(RESVE_ID,MTG_SJ) FROM COMTN_MTG_PLACE_RESVE WHERE RESVE_ID = res.1730 ),'0') as "resve1730"
+			     , COALESCE((SELECT CONCAT(RESVE_ID,MTG_SJ) FROM COMTN_MTG_PLACE_RESVE WHERE RESVE_ID = res.1800 ),'0') as "resve1800"
+			     , COALESCE((SELECT CONCAT(RESVE_ID,MTG_SJ) FROM COMTN_MTG_PLACE_RESVE WHERE RESVE_ID = res.1830 ),'0') as "resve1830"
+			     , COALESCE((SELECT CONCAT(RESVE_ID,MTG_SJ) FROM COMTN_MTG_PLACE_RESVE WHERE RESVE_ID = res.1900 ),'0') as "resve1900"
+			     , COALESCE((SELECT CONCAT(RESVE_ID,MTG_SJ) FROM COMTN_MTG_PLACE_RESVE WHERE RESVE_ID = res.1930 ),'0') as "resve1930"
+			     , COALESCE((SELECT CONCAT(RESVE_ID,MTG_SJ) FROM COMTN_MTG_PLACE_RESVE WHERE RESVE_ID = res.2000 ),'0') as "resve2000"
+			     , COALESCE((SELECT CONCAT(RESVE_ID,MTG_SJ) FROM COMTN_MTG_PLACE_RESVE WHERE RESVE_ID = res.2030 ),'0') as "resve2030"
+			     , COALESCE((SELECT CONCAT(RESVE_ID,MTG_SJ) FROM COMTN_MTG_PLACE_RESVE WHERE RESVE_ID = res.2100 ),'0') as "resve2100"
+			  FROM COMTN_MTG_PLACE_MANAGE mtg 
+				   LEFT JOIN (SELECT MAX(COALESCE(MTGRUM_ID,'')) AS MTGRUM_ID
+				                   , MAX(case  when 800  between RESVE_BEGIN_TM and (RESVE_END_TM-1)  then RESVE_ID else '' end) AS "0800"
+				                   , MAX(case  when 830  between RESVE_BEGIN_TM and (RESVE_END_TM-1)  then RESVE_ID else '' end) AS "0830"
+				                   , MAX(case  when 900  between RESVE_BEGIN_TM and (RESVE_END_TM-1)  then RESVE_ID else '' end) AS "0900"
+				                   , MAX(case  when 930  between RESVE_BEGIN_TM and (RESVE_END_TM-1)  then RESVE_ID else '' end) AS "0930"
+				                   , MAX(case  when 1000 between RESVE_BEGIN_TM and (RESVE_END_TM-1)  then RESVE_ID else '' end) AS "1000"
+				                   , MAX(case  when 1030 between RESVE_BEGIN_TM and (RESVE_END_TM-1)  then RESVE_ID else '' end) AS "1030"
+				                   , MAX(case  when 1100 between RESVE_BEGIN_TM and (RESVE_END_TM-1)  then RESVE_ID else '' end) AS "1100"
+				                   , MAX(case  when 1130 between RESVE_BEGIN_TM and (RESVE_END_TM-1)  then RESVE_ID else '' end) AS "1130"
+				                   , MAX(case  when 1200 between RESVE_BEGIN_TM and (RESVE_END_TM-1)  then RESVE_ID else '' end) AS "1200"
+				                   , MAX(case  when 1230 between RESVE_BEGIN_TM and (RESVE_END_TM-1)  then RESVE_ID else '' end) AS "1230"
+				                   , MAX(case  when 1300 between RESVE_BEGIN_TM and (RESVE_END_TM-1)  then RESVE_ID else '' end) AS "1300"
+				                   , MAX(case  when 1330 between RESVE_BEGIN_TM and (RESVE_END_TM-1)  then RESVE_ID else '' end) AS "1330"
+				                   , MAX(case  when 1400 between RESVE_BEGIN_TM and (RESVE_END_TM-1)  then RESVE_ID else '' end) AS "1400"
+				                   , MAX(case  when 1430 between RESVE_BEGIN_TM and (RESVE_END_TM-1)  then RESVE_ID else '' end) AS "1430"
+				                   , MAX(case  when 1500 between RESVE_BEGIN_TM and (RESVE_END_TM-1)  then RESVE_ID else '' end) AS "1500"
+				                   , MAX(case  when 1530 between RESVE_BEGIN_TM and (RESVE_END_TM-1)  then RESVE_ID else '' end) AS "1530"
+				                   , MAX(case  when 1600 between RESVE_BEGIN_TM and (RESVE_END_TM-1)  then RESVE_ID else '' end) AS "1600"
+				                   , MAX(case  when 1630 between RESVE_BEGIN_TM and (RESVE_END_TM-1)  then RESVE_ID else '' end) AS "1630"
+				                   , MAX(case  when 1700 between RESVE_BEGIN_TM and (RESVE_END_TM-1)  then RESVE_ID else '' end) AS "1700"
+				                   , MAX(case  when 1730 between RESVE_BEGIN_TM and (RESVE_END_TM-1)  then RESVE_ID else '' end) AS "1730"
+				                   , MAX(case  when 1800 between RESVE_BEGIN_TM and (RESVE_END_TM-1)  then RESVE_ID else '' end) AS "1800"
+				                   , MAX(case  when 1830 between RESVE_BEGIN_TM and (RESVE_END_TM-1)  then RESVE_ID else '' end) AS "1830"
+				                   , MAX(case  when 1900 between RESVE_BEGIN_TM and (RESVE_END_TM-1)  then RESVE_ID else '' end) AS "1900"
+				                   , MAX(case  when 1930 between RESVE_BEGIN_TM and (RESVE_END_TM-1)  then RESVE_ID else '' end) AS "1930"
+				                   , MAX(case  when 2000 between RESVE_BEGIN_TM and (RESVE_END_TM-1)  then RESVE_ID else '' end) AS "2000"
+				                   , MAX(case  when 2030 between RESVE_BEGIN_TM and (RESVE_END_TM-1)  then RESVE_ID else '' end) AS "2030"
+				                   , MAX(case  when 2100 between RESVE_BEGIN_TM and (RESVE_END_TM-1)  then RESVE_ID else '' end) AS "2100"
+						        FROM COMTN_MTG_PLACE_RESVE
+			                   WHERE RESVE_DE = #{resveDe}
+			                     AND MTGRUM_ID = #{mtgPlaceId}) res 
+			        	ON res.MTGRUM_ID = mtg.MTGRUM_ID
+			 WHERE mtg.MTGRUM_ID = #{mtgPlaceId}
+        ]]> 
+    </select>
+
+	<!-- 상세보기 -->
+    <select id="selectMtgPlaceResveDetail" resultType="mtgPlaceResveVO">
+        <![CDATA[
+            SELECT mtg.MTGRUM_ID   	  		AS "mtgPlaceId"  
+                 , res.RESVE_ID       		AS "resveId"     
+                 , res.MTG_SJ         		AS "mtgSj"       
+                 , res.RESVE_DE       		AS "resveDe"     
+                 , res.RESVE_BEGIN_TM 		AS "resveBeginTm"
+                 , res.RESVE_END_TM   		AS "resveEndTm"  
+                 , res.ATNDNC_NMPR    		AS "atndncNmpr"  
+                 , res.MTG_CN         		AS "mtgCn"       
+                 , (SELECT info.ORGNZT_NM 
+                      FROM COMTN_ORGNZT_INFO info 
+                     WHERE info.ORGNZT_ID = mst.ORGNZT_ID 
+                   ) 						AS "resevOrgnztNm"
+                 , res.RSVCTM_ID   			AS "resveManId"  
+                 , mst.USER_NM        		AS "resveManNm"
+              FROM COMTN_MTG_PLACE_MANAGE mtg
+                 , COMTN_MTG_PLACE_RESVE res
+                 , COMVN_USER_MASTER mst
+             WHERE 1=1
+               AND res.MTGRUM_ID = mtg.MTGRUM_ID
+               AND res.RSVCTM_ID = mst.ESNTL_ID
+               AND res.RESVE_ID  = #{resveId}
+               AND mtg.MTGRUM_ID = #{mtgPlaceId}
+        ]]>
+    </select>
+
+	<!-- 입력 -->
+    <insert id="insertMtgPlaceResve" >
+        <![CDATA[
+            INSERT INTO COMTN_MTG_PLACE_RESVE ( 
+            		RESVE_ID             
+            	  , MTGRUM_ID         
+            	  , MTG_SJ               
+            	  , RSVCTM_ID         
+            	  , RESVE_DE             
+            	  , RESVE_BEGIN_TM       
+            	  , RESVE_END_TM         
+            	  , ATNDNC_NMPR          
+            	  , MTG_CN               
+				  , FRST_REGISTER_ID 
+				  , FRST_REGIST_PNTTM 
+				  , LAST_UPDUSR_ID
+				  , LAST_UPDT_PNTTM 
+            ) VALUES ( 
+            		#{resveId}            
+            	  , #{mtgPlaceId}         
+            	  , #{mtgSj}              
+            	  , #{resveManId}         
+            	  , #{resveDe}            
+            	  , #{resveBeginTm}       
+            	  , #{resveEndTm}         
+            	  , #{atndncNmpr}         
+            	  , #{mtgCn}              
+				  , #{frstRegisterId}
+				  , now()
+				  , #{frstRegisterId} 
+				  , now()
+            ) 
+        ]]>
+    </insert>     
+
+	<!-- 수정 -->
+    <update id="updateMtgPlaceResve" >
+        <![CDATA[
+            UPDATE COMTN_MTG_PLACE_RESVE
+               SET MTG_SJ           = #{mtgSj}        
+                 , RSVCTM_ID      	= #{resveManId}   
+                 , RESVE_DE         = #{resveDe}      
+                 , RESVE_BEGIN_TM   = #{resveBeginTm} 
+                 , RESVE_END_TM     = #{resveEndTm}   
+                 , ATNDNC_NMPR      = #{atndncNmpr}   
+                 , MTG_CN           = #{mtgCn}        
+                 , LAST_UPDUSR_ID   = #{lastUpdusrId} 
+                 , LAST_UPDT_PNTTM 	= now()    
+			 WHERE MTGRUM_ID  = #{mtgPlaceId}   
+			   AND RESVE_ID   = #{resveId}
+        ]]>
+    </update>    
+    
+	<!-- 삭제 -->
+    <delete id="deleteMtgPlaceResve" >
+        <![CDATA[
+            DELETE 
+              FROM COMTN_MTG_PLACE_RESVE
+			 WHERE MTGRUM_ID = #{mtgPlaceId}   
+			   AND RESVE_ID = #{resveId}
+        ]]>
+    </delete>  
+
+	<!-- 중복체크 -->
+    <select id="mtgPlaceResveDplactCeck" resultType="int">
+        <![CDATA[
+			SELECT count(resve_id) 
+			  FROM COMTN_MTG_PLACE_RESVE
+			 WHERE RESVE_DE     = #{resveDe} 
+			   AND MTGRUM_ID  	= #{mtgPlaceId} 
+			   AND (resve_begin_tm BETWEEN cast(#{resveBeginTm} as signed)+1 and cast(#{resveEndTm} as signed)-1
+			       or RESVE_END_TM BETWEEN cast(#{resveBeginTm} as signed)+1 and cast(#{resveEndTm} as signed)-1 )
+        ]]>
+   	    <if test='resveId != null and resveId != ""'>
+        		<![CDATA[ AND RESVE_ID <> #{resveId} ]]>
+		</if>
+    </select>
+
+	<!-- 회의실비품관리 -->
+	<!-- 목록조회  -->
+    <select id="selectFxtrsManageList" resultType="mtgPlaceFxtrsVO">
+        <![CDATA[
+		    SELECT fx.FXTRS_CODE 			AS "fxtrsCd"
+		         , fx.FXTRS_NM  				AS "fxtrsNm"
+		         , fx.MAKR_NM   				AS "makrNm"
+		         , fx.PRICE     				AS "price" 
+		         , COALESCE(mtg.QY,0) 			AS "quantity"
+		         , mtg.MTGRUM_ID 			AS "mtgPlaceId"
+		 	  FROM COMTN_FXTRS_MANAGE fx
+				   LEFT OUTER JOIN  COMTN_MTG_PLACE_FXTRS mtg 
+			 	  	    ON fx.FXTRS_CODE = mtg.FXTRS_CODE
+			 WHERE mtg.MTGRUM_ID = #{mtgPlaceId}
+        ]]>
+    </select>
+
+	<!-- 입력 -->
+    <insert id="insertMtgPlaceFxtrs" >
+        <![CDATA[
+            INSERT INTO COMTN_MTG_PLACE_FXTRS (
+            		MTGRUM_ID
+            	  , FXTRS_CODE
+            	  , QY
+            ) VALUES (
+            		#{mtgPlaceId}
+            	  , #{fxtrsCd}
+            	  , #{quantity}
+            ) 
+        ]]>
+    </insert>
+    
+    <delete id="deleteMtgPlaceFxtrs" >
+        <![CDATA[
+            DELETE 
+              FROM COMTN_MTG_PLACE_FXTRS
+			 WHERE MTGRUM_ID = #{mtgPlaceId}   
+        ]]>
+    </delete> 
+
+</mapper>

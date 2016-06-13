@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.uat.uap.dao.LoginPolicyMapper">
+
+	<!-- 목록조회  -->
+    <select id="selectLoginPolicyList" resultType="EgovMap">
+        /* 구현 Sql */
+       	<![CDATA[
+            SELECT A.USER_ID				AS "emplyrId"
+                 , A.USER_NM				AS "emplyrNm"	
+                 , B.IP_INFO				AS "ipInfo"
+                 , B.LMTT_AT				AS "lmttAt" 
+              FROM COMVN_USER_MASTER A 
+              	   LEFT OUTER JOIN COMTN_LOGIN_POLICY B
+                		ON A.USER_ID = B.EMPLYR_ID   
+             WHERE 1 = 1
+        ]]>               
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "USER_NM"'>
+                 <![CDATA[ AND A.USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>   
+            </when>
+        </choose>
+		</if>
+        /* 구현 Sql */
+        <![CDATA[
+ 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+        ]]>			
+    </select>
+
+	<!-- 목록조회_게시물 총갯수  -->
+    <select id="selectLoginPolicyListCnt" resultType="int">
+        <![CDATA[
+            SELECT COUNT(*) AS totcnt                  
+              FROM COMVN_USER_MASTER A 
+              	   LEFT OUTER JOIN COMTN_LOGIN_POLICY B
+                		ON A.USER_ID = B.EMPLYR_ID   
+             WHERE 1 = 1
+        ]]>			
+     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+        <choose>
+            <when test='searchVO.searchCondition == "USER_NM"'>
+                 <![CDATA[ AND A.USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>   
+            </when>
+        </choose>
+		</if>
+    </select>
+    
+	<!-- 상세보기 -->
+    <select id="selectLoginPolicy" resultType="loginPolicyVO">
+        <![CDATA[
+            SELECT A.USER_ID					AS "emplyrId" 
+                 , A.USER_NM					AS "emplyrNm" 
+                 , A.USER_SE					AS "emplyrSe" 
+                 , B.IP_INFO					AS "ipInfo"
+                 , B.DPLCT_PERM_AT				AS "dplctPermAt"
+                 , COALESCE(B.LMTT_AT,'N') 		AS "lmttAt"
+                 , B.LAST_UPDUSR_ID				AS "userId" 
+                 , B.LAST_UPDT_PNTTM			AS "regDate"
+                 , IF(B.EMPLYR_ID IS NULL, 'N', 'Y') AS "regYn"
+              FROM COMVN_USER_MASTER A 
+                   LEFT OUTER JOIN COMTN_LOGIN_POLICY B
+                		ON A.USER_ID = B.EMPLYR_ID   
+             WHERE A.USER_ID = #{emplyrId}
+        ]]>			
+    </select>
+    
+	<!-- 입력 -->
+    <insert id="insertLoginPolicy" >
+        <![CDATA[
+            INSERT INTO COMTN_LOGIN_POLICY (
+            		EMPLYR_ID
+                  , IP_INFO
+                  , DPLCT_PERM_AT
+                  , LMTT_AT
+                  , FRST_REGISTER_ID
+                  , FRST_REGIST_PNTTM
+                  , LAST_UPDUSR_ID
+                  , LAST_UPDT_PNTTM
+            ) VALUES (
+                    #{emplyrId}
+                  , #{ipInfo}
+                  , #{dplctPermAt}
+                  , #{lmttAt}
+                  , #{userId}
+                  , now()
+                  , #{userId}
+                  , now()
+            )
+        ]]>
+    </insert>
+
+	<!-- 수정 -->
+    <update id="updateLoginPolicy" >
+        <![CDATA[
+            UPDATE COMTN_LOGIN_POLICY 
+               SET IP_INFO = #{ipInfo}
+                 , DPLCT_PERM_AT = #{dplctPermAt}
+                 , LMTT_AT = #{lmttAt}
+                 , LAST_UPDUSR_ID = #{userId}
+                 , LAST_UPDT_PNTTM = now()
+             WHERE EMPLYR_ID = #{emplyrId}
+        ]]>
+    </update>
+
+	<!-- 삭제 -->
+    <delete id="deleteLoginPolicy">
+        <![CDATA[
+            DELETE 
+              FROM COMTN_LOGIN_POLICY 
+             WHERE EMPLYR_ID = #{emplyrId}
+        ]]>
+    </delete>
+
+</mapper>

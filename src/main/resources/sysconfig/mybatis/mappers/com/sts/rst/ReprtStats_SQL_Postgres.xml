@@ -27,7 +27,7 @@
 			</if>
         	<if test='pmFromDate != null and pmFromDate != ""'>
          		<if test='pmToDate != null and pmToDate != ""'>
-                     AND DATE_FORMAT(FRST_REGIST_PNTTM, '%Y%m%d') BETWEEN #{pmFromDate} AND #{pmToDate}
+                     AND TO_CHAR(FRST_REGIST_PNTTM,'YYYYMMDD') BETWEEN #{pmFromDate} AND #{pmToDate}
               	</if>
   			</if>
         <![CDATA[
@@ -53,7 +53,7 @@
 				</if>
 	        	<if test='pmFromDate != null and pmFromDate != ""'>
 	         		<if test='pmToDate != null and pmToDate != ""'>
-	                     AND DATE_FORMAT(FRST_REGIST_PNTTM, '%Y%m%d') BETWEEN #{pmFromDate} AND #{pmToDate}
+	                     AND TO_CHAR(FRST_REGIST_PNTTM,'YYYYMMDD') BETWEEN #{pmFromDate} AND #{pmToDate}
 	              	</if>
 	  			</if>
                      GROUP BY REPRT_TY
@@ -68,18 +68,18 @@
 		        <when test='pmDateTy != null and pmDateTy != ""'>
 		 	        <choose>
 				        <when test='pmDateTy == "%Y"'>
-	               			DATE_FORMAT(FRST_REGIST_PNTTM, '%Y') 		AS "grpRegDate"
+	               			TO_CHAR(FRST_REGIST_PNTTM,'YYYY') 		AS "grpRegDate"
 			            </when>
 				        <when test='pmDateTy == "%Y-%m"'>
-	               			DATE_FORMAT(FRST_REGIST_PNTTM, '%Y%m') 	AS "grpRegDate"
+	               			TO_CHAR(FRST_REGIST_PNTTM,'YYYYMM') 	AS "grpRegDate"
 		            	</when>
 				        <when test='pmDateTy == "%Y-%m-%d"'>
-	               			DATE_FORMAT(FRST_REGIST_PNTTM, '%Y%m%d') 	AS "grpRegDate"
+	               			TO_CHAR(FRST_REGIST_PNTTM,'YYYYMMDD') 	AS "grpRegDate"
 		        		</when>
 		    		</choose>
 	       		</when>	
 	        	<otherwise>
-       		   		DATE_FORMAT(FRST_REGIST_PNTTM, '%Y') 		AS "grpRegDate"
+       		   		TO_CHAR(FRST_REGIST_PNTTM,'YYYY') 		AS "grpRegDate"
  	        	</otherwise>
 	        </choose>
  
@@ -93,7 +93,7 @@
 			</if>
         	<if test='pmFromDate != null and pmFromDate != ""'>
          		<if test='pmToDate != null and pmToDate != ""'>
-                     AND DATE_FORMAT(FRST_REGIST_PNTTM, '%Y%m%d') BETWEEN #{pmFromDate} AND #{pmToDate}
+                     AND TO_CHAR(FRST_REGIST_PNTTM,'YYYYMMDD') BETWEEN #{pmFromDate} AND #{pmToDate}
               	</if>
   			</if>
 
@@ -101,18 +101,18 @@
 		        <when test='pmDateTy != null and pmDateTy != ""'>
 		 	        <choose>
 				        <when test='pmDateTy == "%Y"'>
-			               GROUP BY DATE_FORMAT(FRST_REGIST_PNTTM, '%Y')
+			               GROUP BY TO_CHAR(FRST_REGIST_PNTTM,'YYYY')
 			            </when>
 				        <when test='pmDateTy == "%Y-%m"'>
-			               GROUP BY DATE_FORMAT(FRST_REGIST_PNTTM, '%Y%m')
+			               GROUP BY TO_CHAR(FRST_REGIST_PNTTM,'YYYYMM')
 		            	</when>
 				        <when test='pmDateTy == "%Y-%m-%d"'>
-			               GROUP BY DATE_FORMAT(FRST_REGIST_PNTTM, '%Y%m%d')
+			               GROUP BY TO_CHAR(FRST_REGIST_PNTTM,'YYYYMMDD')
 		        		</when>
 		    		</choose>
 	       		</when>	
 	        	<otherwise>
-	        		   GROUP BY DATE_FORMAT(FRST_REGIST_PNTTM, '%Y')
+	        		   GROUP BY TO_CHAR(FRST_REGIST_PNTTM,'YYYY')
 	        	</otherwise>
 	        </choose>
          <![CDATA[
@@ -129,7 +129,7 @@
 			</if>
         	<if test='pmFromDate != null and pmFromDate != ""'>
          		<if test='pmToDate != null and pmToDate != ""'>
-                     AND DATE_FORMAT(FRST_REGIST_PNTTM, '%Y%m%d') BETWEEN #{pmFromDate} AND #{pmToDate}
+                     AND TO_CHAR(FRST_REGIST_PNTTM,'YYYYMMDD') BETWEEN #{pmFromDate} AND #{pmToDate}
               	</if>
   			</if>
     </select>
@@ -148,7 +148,7 @@
 			</if>
         	<if test='pmFromDate != null and pmFromDate != ""'>
          		<if test='pmToDate != null and pmToDate != ""'>
-                     AND DATE_FORMAT(FRST_REGIST_PNTTM, '%Y%m%d') BETWEEN #{pmFromDate} AND #{pmToDate}
+                     AND TO_CHAR(FRST_REGIST_PNTTM,'YYYYMMDD') BETWEEN #{pmFromDate} AND #{pmToDate}
               	</if>
   			</if>
              GROUP BY REPRT_TY
@@ -169,7 +169,7 @@
 			</if>
         	<if test='pmFromDate != null and pmFromDate != ""'>
          		<if test='pmToDate != null and pmToDate != ""'>
-                     AND DATE_FORMAT(FRST_REGIST_PNTTM, '%Y%m%d') BETWEEN #{pmFromDate} AND #{pmToDate}
+                     AND TO_CHAR(FRST_REGIST_PNTTM,'YYYYMMDD') BETWEEN #{pmFromDate} AND #{pmToDate}
               	</if>
   			</if>
              GROUP BY REPRT_STTUS
@@ -199,7 +199,7 @@
                AND REPRT_STTUS = #{reprtSttus}
         	<if test='pmFromDate != null and pmFromDate != ""'>
          		<if test='pmToDate != null and pmToDate != ""'>
-                     AND DATE_FORMAT(FRST_REGIST_PNTTM, '%Y%m%d') BETWEEN #{pmFromDate} AND #{pmToDate}
+                     AND TO_CHAR(FRST_REGIST_PNTTM,'YYYYMMDD') BETWEEN #{pmFromDate} AND #{pmToDate}
               	</if>
   			</if>
     </select>

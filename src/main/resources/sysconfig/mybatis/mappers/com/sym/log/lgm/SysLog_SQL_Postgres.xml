@@ -123,9 +123,9 @@
 			  FROM COMTH_SYS_LOG b
 			 WHERE NOT EXISTS (SELECT c.OCCRRNC_DE
 			                     FROM COMTS_SYS_LOG_SUMMARY c
-			                    WHERE RTRIM(c.OCCRRNC_DE) = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+			                    WHERE RTRIM(c.OCCRRNC_DE) = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 			                  )
-			   AND RTRIM(b.OCCRRNC_DE) = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+			   AND RTRIM(b.OCCRRNC_DE) = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 			 GROUP BY b.OCCRRNC_DE
 				    , b.SVC_NM
 				    , b.METHOD_NM
@@ -138,7 +138,7 @@
 		<![CDATA[
 			DELETE 
 			  FROM COMTH_SYS_LOG
-			 WHERE RTRIM(OCCRRNC_DE) < DATE_FORMAT(ADDDATE(now(), -7), '%Y%m%d')
+			 WHERE RTRIM(OCCRRNC_DE) < TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 		]]>
 	</delete>
 

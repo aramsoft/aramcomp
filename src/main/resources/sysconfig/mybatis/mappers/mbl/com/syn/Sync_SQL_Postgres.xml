@@ -11,9 +11,9 @@
 			     , A.MBER_ID
 			     , A.SYNC_SJ
 			     , A.SYNC_CN
-			     , DATE_FORMAT(A.SYNC_DT, '%Y%m%d') AS SYNC_DT
-			     , DATE_FORMAT(A.CREAT_DT, '%Y%m%d') AS CREAT_DT
-			     , DATE_FORMAT(A.UPDT_DT, '%Y%m%d') AS UPDT_DT
+			     , TO_CHAR(A.SYNC_DT,'YYYYMMDD') AS SYNC_DT
+			     , TO_CHAR(A.CREAT_DT,'YYYYMMDD') AS CREAT_DT
+			     , TO_CHAR(A.UPDT_DT,'YYYYMMDD') AS UPDT_DT
 			  FROM MBLTN_SYNC A
 			 WHERE 1 = 1
 		]]>
@@ -75,10 +75,10 @@
 			     , A.SYNC_SJ
 			     , A.SYNC_CN
 			     , CASE WHEN DATE_FORMAT(A.SYNC_DT, '') IS NULL THEN ''
-			            ELSE DATE_FORMAT(A.SYNC_DT, '%Y%m%d') 
+			            ELSE TO_CHAR(A.SYNC_DT,'YYYYMMDD') 
 			       END AS SYNC_DT
-			     , DATE_FORMAT(A.CREAT_DT, '%Y%m%d') AS CREAT_DT
-			     , DATE_FORMAT(A.UPDT_DT, '%Y%m%d') AS UPDT_DT
+			     , TO_CHAR(A.CREAT_DT,'YYYYMMDD') AS CREAT_DT
+			     , TO_CHAR(A.UPDT_DT,'YYYYMMDD') AS UPDT_DT
 			  FROM MBLTN_SYNC A
 			 WHERE 1 = 1
 			   AND A.SN = #{sn}

@@ -11,8 +11,8 @@
 			     , A.MBER_ID
 			     , A.OFFLINE_SJ
 			     , A.OFFLINE_CN
-			     , DATE_FORMAT(A.CREAT_DT, '%Y%m%d') AS CREAT_DT
-			     , DATE_FORMAT(A.UPDT_DT, '%Y%m%d') AS UPDT_DT
+			     , TO_CHAR(A.CREAT_DT,'YYYYMMDD') AS CREAT_DT
+			     , TO_CHAR(A.UPDT_DT,'YYYYMMDD') AS UPDT_DT
 			  FROM MBLTN_OFFLINE_WEB A
 			 WHERE 1 = 1
 		]]>
@@ -71,8 +71,8 @@
 			     , A.MBER_ID
 			     , A.OFFLINE_SJ			AS "offlineWebSj"
 			     , A.OFFLINE_CN			AS "offlineWebCn"
-			     , DATE_FORMAT(A.CREAT_DT, '%Y%m%d') 	AS "creatDt"
-			     , DATE_FORMAT(A.UPDT_DT, '%Y%m%d') 	AS "updtDt"
+			     , TO_CHAR(A.CREAT_DT,'YYYYMMDD') 	AS "creatDt"
+			     , TO_CHAR(A.UPDT_DT,'YYYYMMDD') 	AS "updtDt"
 			  FROM MBLTN_OFFLINE_WEB A
 			 WHERE 1 = 1
 			   AND A.SN = #{sn}

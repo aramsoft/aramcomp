@@ -64,7 +64,7 @@
              WHERE 1=1
        	]]>                      
         <if test='strStartDt != null and strStartDt != ""'>
-			 	<![CDATA[ AND DATE_FORMAT(A.CREAT_DT, '%Y%m%d') BETWEEN #{strStartDt} AND #{strEndDt} ]]> 	
+			 	<![CDATA[ AND TO_CHAR(A.CREAT_DT,'YYYYMMDD') BETWEEN #{strStartDt} AND #{strEndDt} ]]> 	
 		</if>
       	<if test='strServerNm != null and strServerNm != ""'>
                 <![CDATA[ AND C.SERVER_EQPMN_NM LIKE '%'|| #{strServerNm} ||'%' ]]> 
@@ -89,7 +89,7 @@
              WHERE 1=1
         ]]>			
         <if test='strStartDt != null and strStartDt != ""'>
-			 	<![CDATA[ AND DATE_FORMAT(A.CREAT_DT, '%Y%m%d') BETWEEN #{strStartDt} AND #{strEndDt} ]]> 	
+			 	<![CDATA[ AND TO_CHAR(A.CREAT_DT,'YYYYMMDD') BETWEEN #{strStartDt} AND #{strEndDt} ]]> 	
 		</if>
       	<if test='strServerNm != null and strServerNm != ""'>
                 <![CDATA[ AND C.SERVER_EQPMN_NM LIKE '%'|| #{strServerNm} ||'%' ]]> 

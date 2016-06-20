@@ -220,7 +220,7 @@
 				   LEFT OUTER JOIN COMTN_EVENT_ATDRN atdrn
 				        ON  atdrn.EVENT_ID = mge.EVENT_ID
 			 WHERE atdrn.APPLCNT_ID = #{applcntId}
-			   AND (DATE_FORMAT(now(), '%Y%m%d')  BETWEEN RCEPT_BGNDE  AND RCEPT_ENDDE 
+			   AND (TO_CHAR(now(),'YYYYMMDD')  BETWEEN RCEPT_BGNDE  AND RCEPT_ENDDE 
 			        or atdrn.confm_At is not null)
         ]]>	 
     	<if test='searchSe != null and searchSe != ""'>
@@ -271,7 +271,7 @@
 			       LEFT OUTER JOIN COMTN_EVENT_ATDRN atdrn
 			         	ON 	atdrn.EVENT_ID = mge.EVENT_ID
 			 WHERE atdrn.APPLCNT_ID = #{applcntId}
-			   AND (DATE_FORMAT(now(), '%Y%m%d') BETWEEN RCEPT_BGNDE AND RCEPT_ENDDE 
+			   AND (TO_CHAR(now(),'YYYYMMDD') BETWEEN RCEPT_BGNDE AND RCEPT_ENDDE 
 		            or atdrn.confm_At is not null)
         ]]>	 
     	<if test='searchSe != null and searchSe != ""'>

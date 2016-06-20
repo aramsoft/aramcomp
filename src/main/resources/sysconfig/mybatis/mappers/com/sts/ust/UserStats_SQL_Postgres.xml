@@ -29,48 +29,48 @@
 		<![CDATA[
 			INSERT INTO COMTS_USER_SUMMARY 	
 					
-			SELECT DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d') AS OCCRRNC_DE
+			SELECT TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD') AS OCCRRNC_DE
 			     , 'COM012' 				AS STATS_SE
 			     , 'USR01' 					AS DETAIL_STATS_SE
 			     , COUNT(a.MBER_ID) 		AS USER_CO
 			  FROM COMTN_GNRL_MBER a
 			 WHERE NOT EXISTS (SELECT b.OCCRRNC_DE 
 			                     FROM COMTS_USER_SUMMARY b
-			                    WHERE RTRIM(b.OCCRRNC_DE) = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+			                    WHERE RTRIM(b.OCCRRNC_DE) = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
                       			  AND b.STATS_SE = 'COM012'
 		      					  AND b.DETAIL_STATS_SE = 'USR01'
 			                  )
-			 GROUP BY DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+			 GROUP BY TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 			
 			UNION
 			
-			SELECT DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d') AS OCCRRNC_DE
+			SELECT TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD') AS OCCRRNC_DE
 			     , 'COM012' 				AS STATS_SE
 			     , 'USR02' 					AS DETAIL_STATS_SE
 			     , COUNT(a.ENTRPRS_MBER_ID) AS USER_CO
 			  FROM COMTN_ENTRPRS_MBER a
 			 WHERE NOT EXISTS (SELECT b.OCCRRNC_DE 
 			                     FROM COMTS_USER_SUMMARY b
-			                    WHERE RTRIM(b.OCCRRNC_DE) = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+			                    WHERE RTRIM(b.OCCRRNC_DE) = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
                       			  AND b.STATS_SE = 'COM012'
 		      					  AND b.DETAIL_STATS_SE = 'USR02'
 			                  )
-			 GROUP BY DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+			 GROUP BY TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 				    
 			UNION
 			
-			SELECT DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d') AS OCCRRNC_DE
+			SELECT TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD') AS OCCRRNC_DE
 			     , 'COM012' 				AS STATS_SE
 			     , 'USR03' 					AS DETAIL_STATS_SE
 			     , COUNT(a.EMPLYR_ID) 		AS USER_CO
 			  FROM COMTN_EMPLYR_INFO a
 			 WHERE NOT EXISTS (SELECT b.OCCRRNC_DE 
 			                     FROM COMTS_USER_SUMMARY b
-			                    WHERE RTRIM(b.OCCRRNC_DE) = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+			                    WHERE RTRIM(b.OCCRRNC_DE) = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
                       			  AND b.STATS_SE = 'COM012'
 		      					  AND b.DETAIL_STATS_SE = 'USR03'
 			                  )
-			 GROUP BY DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+			 GROUP BY TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 			
 			UNION
 			
@@ -79,51 +79,51 @@
 			     , c.DETAIL_STATS_SE
 			     , SUM(c.USER_CO) 			AS USER_CO
 			  FROM (
-					SELECT DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d') AS OCCRRNC_DE
+					SELECT TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD') AS OCCRRNC_DE
 					     , 'COM013' 		AS STATS_SE
 					     , 'A' 				AS DETAIL_STATS_SE
 					     , COUNT(a.MBER_ID) AS USER_CO
 					  FROM COMTN_GNRL_MBER a
 					 WHERE NOT EXISTS (SELECT b.OCCRRNC_DE 
 					                     FROM COMTS_USER_SUMMARY b
-					                    WHERE RTRIM(b.OCCRRNC_DE) = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+					                    WHERE RTRIM(b.OCCRRNC_DE) = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 		                      			  AND b.STATS_SE = 'COM013'
 				      					  AND b.DETAIL_STATS_SE = 'A'
 					                  )
 					   AND MBER_STTUS = 'A'                  
-					 GROUP BY DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+					 GROUP BY TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 					
 					UNION
 					
-					SELECT DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d') AS OCCRRNC_DE
+					SELECT TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD') AS OCCRRNC_DE
 					     , 'COM013' 		AS STATS_SE
 					     , 'A' 				AS DETAIL_STATS_SE
 					     , COUNT(a.ENTRPRS_MBER_ID) AS USER_CO
 					  FROM COMTN_ENTRPRS_MBER a
 					 WHERE NOT EXISTS (SELECT b.OCCRRNC_DE 
 					                     FROM COMTS_USER_SUMMARY b
-					                    WHERE RTRIM(b.OCCRRNC_DE) = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+					                    WHERE RTRIM(b.OCCRRNC_DE) = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 		                      			  AND b.STATS_SE = 'COM013'
 				      					  AND b.DETAIL_STATS_SE = 'A'
 					                  )
 					   AND ENTRPRS_MBER_STTUS = 'A'               
-					 GROUP BY DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+					 GROUP BY TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 					
 					UNION
 						    
-					SELECT DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d') AS OCCRRNC_DE
+					SELECT TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD') AS OCCRRNC_DE
 					     , 'COM013' 		AS STATS_SE
 					     , 'A' 				AS DETAIL_STATS_SE
 					     , COUNT(a.EMPLYR_ID) AS USER_CO
 					  FROM COMTN_EMPLYR_INFO a
 					 WHERE NOT EXISTS (SELECT b.OCCRRNC_DE 
 					                     FROM COMTS_USER_SUMMARY b
-					                    WHERE RTRIM(b.OCCRRNC_DE) = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+					                    WHERE RTRIM(b.OCCRRNC_DE) = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 		                      			  AND b.STATS_SE = 'COM013'
 				      					  AND b.DETAIL_STATS_SE = 'A'
 					                  )
 					   AND EMPLYR_STTUS_CODE = 'A'               
-					 GROUP BY DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+					 GROUP BY TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 
 					) c
 			GROUP BY c.OCCRRNC_DE
@@ -137,51 +137,51 @@
 			     , c.DETAIL_STATS_SE
 			     , SUM(c.USER_CO) 			AS USER_CO
 			  FROM (
-					SELECT DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d') AS OCCRRNC_DE
+					SELECT TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD') AS OCCRRNC_DE
 					     , 'COM013' 		AS STATS_SE
 					     , 'D' 				AS DETAIL_STATS_SE
 					     , COUNT(a.MBER_ID) AS USER_CO
 					  FROM COMTN_GNRL_MBER a
 					 WHERE NOT EXISTS (SELECT b.OCCRRNC_DE 
 					                     FROM COMTS_USER_SUMMARY b
-					                    WHERE RTRIM(b.OCCRRNC_DE) = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+					                    WHERE RTRIM(b.OCCRRNC_DE) = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 		                      			  AND b.STATS_SE = 'COM013'
 				      					  AND b.DETAIL_STATS_SE = 'D'
 					                  )
 					   AND MBER_STTUS = 'D'                  
-					 GROUP BY DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+					 GROUP BY TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 					
 					UNION
 					
-					SELECT DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d') AS OCCRRNC_DE
+					SELECT TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD') AS OCCRRNC_DE
 					     , 'COM013' 		AS STATS_SE
 					     , 'D' 				AS DETAIL_STATS_SE
 					     , COUNT(a.ENTRPRS_MBER_ID) AS USER_CO
 					  FROM COMTN_ENTRPRS_MBER a
 					 WHERE NOT EXISTS (SELECT b.OCCRRNC_DE 
 					                     FROM COMTS_USER_SUMMARY b
-					                    WHERE RTRIM(b.OCCRRNC_DE) = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+					                    WHERE RTRIM(b.OCCRRNC_DE) = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 		                      			  AND b.STATS_SE = 'COM013'
 				      					  AND b.DETAIL_STATS_SE = 'D'
 					                  )
 					   AND ENTRPRS_MBER_STTUS = 'D'               
-					 GROUP BY DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+					 GROUP BY TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 					
 					UNION
 						    
-					SELECT DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d') AS OCCRRNC_DE
+					SELECT TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD') AS OCCRRNC_DE
 					     , 'COM013' 		AS STATS_SE
 					     , 'D' 				AS DETAIL_STATS_SE
 					     , COUNT(a.EMPLYR_ID) AS USER_CO
 					  FROM COMTN_EMPLYR_INFO a
 					 WHERE NOT EXISTS (SELECT b.OCCRRNC_DE 
 					                     FROM COMTS_USER_SUMMARY b
-					                    WHERE RTRIM(b.OCCRRNC_DE) = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+					                    WHERE RTRIM(b.OCCRRNC_DE) = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 		                      			  AND b.STATS_SE = 'COM013'
 				      					  AND b.DETAIL_STATS_SE = 'D'
 					                  )
 					   AND EMPLYR_STTUS_CODE = 'D'               
-					 GROUP BY DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+					 GROUP BY TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 
 					) c
 			GROUP BY c.OCCRRNC_DE
@@ -195,51 +195,51 @@
 			     , c.DETAIL_STATS_SE
 			     , SUM(c.USER_CO) AS USER_CO
 			  FROM (
-					SELECT DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d') AS OCCRRNC_DE
+					SELECT TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD') AS OCCRRNC_DE
 					     , 'COM013' 		AS STATS_SE
 					     , 'P' 				AS DETAIL_STATS_SE
 					     , COUNT(a.MBER_ID) AS USER_CO
 					  FROM COMTN_GNRL_MBER a
 					 WHERE NOT EXISTS (SELECT b.OCCRRNC_DE 
 					                     FROM COMTS_USER_SUMMARY b
-					                    WHERE RTRIM(b.OCCRRNC_DE) = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+					                    WHERE RTRIM(b.OCCRRNC_DE) = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 		                      			  AND b.STATS_SE = 'COM013'
 				      					  AND b.DETAIL_STATS_SE = 'P'
 					                  )
 					   AND MBER_STTUS = 'P'                  
-					 GROUP BY DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+					 GROUP BY TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 
 					UNION
 					
-					SELECT DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d') AS OCCRRNC_DE
+					SELECT TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD') AS OCCRRNC_DE
 					     , 'COM013' 		AS STATS_SE
 					     , 'P' 				AS DETAIL_STATS_SE
 					     , COUNT(a.ENTRPRS_MBER_ID) AS USER_CO
 					  FROM COMTN_ENTRPRS_MBER a
 					 WHERE NOT EXISTS (SELECT b.OCCRRNC_DE 
 					                     FROM COMTS_USER_SUMMARY b
-					                    WHERE RTRIM(b.OCCRRNC_DE) = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+					                    WHERE RTRIM(b.OCCRRNC_DE) = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 		                      			  AND b.STATS_SE = 'COM013'
 				      					  AND b.DETAIL_STATS_SE = 'P'
 					                  )
 					   AND ENTRPRS_MBER_STTUS = 'P'               
-					 GROUP BY DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+					 GROUP BY TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 					
 					UNION
 						    
-					SELECT DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d') AS OCCRRNC_DE
+					SELECT TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD') AS OCCRRNC_DE
 					     , 'COM013' 		AS STATS_SE
 					     , 'P' 				AS DETAIL_STATS_SE
 					     , COUNT(a.EMPLYR_ID) AS USER_CO
 					  FROM COMTN_EMPLYR_INFO a
 					 WHERE NOT EXISTS (SELECT b.OCCRRNC_DE 
 					                     FROM COMTS_USER_SUMMARY b
-					                    WHERE RTRIM(b.OCCRRNC_DE) = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+					                    WHERE RTRIM(b.OCCRRNC_DE) = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 		                      			  AND b.STATS_SE = 'COM013'
 				      					  AND b.DETAIL_STATS_SE = 'P'
 					                  )
 					   AND EMPLYR_STTUS_CODE = 'P'               
-					 GROUP BY DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+					 GROUP BY TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 					) c
 			GROUP BY c.OCCRRNC_DE
 			       , c.STATS_SE
@@ -252,35 +252,35 @@
 			     , c.DETAIL_STATS_SE
 			     , SUM(c.USER_CO) 			AS USER_CO
 			  FROM (
-					SELECT DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d') AS OCCRRNC_DE
+					SELECT TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD') AS OCCRRNC_DE
 					     , 'COM014' 		AS STATS_SE
 					     , 'F' 				AS DETAIL_STATS_SE
 					     , COUNT(a.MBER_ID) AS USER_CO
 					  FROM COMTN_GNRL_MBER a
 					 WHERE NOT EXISTS (SELECT b.OCCRRNC_DE 
 					                     FROM COMTS_USER_SUMMARY b
-					                    WHERE RTRIM(b.OCCRRNC_DE) = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+					                    WHERE RTRIM(b.OCCRRNC_DE) = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 		                      			  AND b.STATS_SE = 'COM014'
 				      					  AND b.DETAIL_STATS_SE = 'F'
 					                  )
 					   AND SEXDSTN_CODE = 'F'                  
-					 GROUP BY DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+					 GROUP BY TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 					
 					UNION
 						    
-					SELECT DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d') AS OCCRRNC_DE
+					SELECT TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD') AS OCCRRNC_DE
 					     , 'COM014' 		AS STATS_SE
 					     , 'F' 				AS DETAIL_STATS_SE
 					     , COUNT(a.EMPLYR_ID) AS USER_CO
 					  FROM COMTN_EMPLYR_INFO a
 					 WHERE NOT EXISTS (SELECT b.OCCRRNC_DE 
 					                     FROM COMTS_USER_SUMMARY b
-					                    WHERE RTRIM(b.OCCRRNC_DE) = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+					                    WHERE RTRIM(b.OCCRRNC_DE) = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 		                      			  AND b.STATS_SE = 'COM014'
 				      					  AND b.DETAIL_STATS_SE = 'F'
 					                  )
 					   AND SEXDSTN_CODE = 'F'               
-					 GROUP BY DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+					 GROUP BY TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 					) c
 			GROUP BY c.OCCRRNC_DE
 			       , c.STATS_SE
@@ -293,35 +293,35 @@
 			     , c.DETAIL_STATS_SE
 			     , SUM(c.USER_CO) 			AS USER_CO
 			  FROM (
-					SELECT DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d') AS OCCRRNC_DE
+					SELECT TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD') AS OCCRRNC_DE
 					     , 'COM014' 		AS STATS_SE
 					     , 'M' 				AS DETAIL_STATS_SE
 					     , COUNT(a.MBER_ID) AS USER_CO
 					  FROM COMTN_GNRL_MBER a
 					 WHERE NOT EXISTS (SELECT b.OCCRRNC_DE 
 					                     FROM COMTS_USER_SUMMARY b
-					                    WHERE RTRIM(b.OCCRRNC_DE) = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+					                    WHERE RTRIM(b.OCCRRNC_DE) = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 		                      			  AND b.STATS_SE = 'COM014'
 				      					  AND b.DETAIL_STATS_SE = 'M'
 					                  )
 					   AND SEXDSTN_CODE = 'M'                  
-					 GROUP BY DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+					 GROUP BY TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 					
 					UNION
 						    
-					SELECT DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d') AS OCCRRNC_DE
+					SELECT TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD') AS OCCRRNC_DE
 					     , 'COM014' 		AS STATS_SE
 					     , 'M' 				AS DETAIL_STATS_SE
 					     , COUNT(a.EMPLYR_ID) AS USER_CO
 					  FROM COMTN_EMPLYR_INFO a
 					 WHERE NOT EXISTS (SELECT b.OCCRRNC_DE 
 					                     FROM COMTS_USER_SUMMARY b
-					                    WHERE RTRIM(b.OCCRRNC_DE) = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+					                    WHERE RTRIM(b.OCCRRNC_DE) = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 		                      			  AND b.STATS_SE = 'COM014'
 				      					  AND b.DETAIL_STATS_SE = 'M'
 					                  )
 					   AND SEXDSTN_CODE = 'M'               
-					 GROUP BY DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+					 GROUP BY TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 					) c
 			GROUP BY c.OCCRRNC_DE
 			       , c.STATS_SE

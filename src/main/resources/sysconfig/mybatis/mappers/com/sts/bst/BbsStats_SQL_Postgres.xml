@@ -204,7 +204,7 @@
 		  FROM COMTN_BBS a
 		     , COMTN_BBS_MASTER b
 		 WHERE a.BBS_ID = b.BBS_ID
-		   AND DATE_FORMAT(a.FRST_REGIST_PNTTM, '%Y%m%d') = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+		   AND TO_CHAR(a.FRST_REGIST_PNTTM,'YYYYMMDD') = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 		   AND b.BBS_TY_CODE = #{detailStatsKind}             
 		]]>			    
 	    	</when>
@@ -214,7 +214,7 @@
 		  FROM COMTN_BBS a
 		     , COMTN_BBS_MASTER b
 		 WHERE a.BBS_ID = b.BBS_ID
-		   AND DATE_FORMAT(a.FRST_REGIST_PNTTM, '%Y%m%d') = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+		   AND TO_CHAR(a.FRST_REGIST_PNTTM,'YYYYMMDD') = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 		   AND b.BBS_ATTRB_CODE = #{detailStatsKind}             
 		]]>			    
 	    	</when>
@@ -225,7 +225,7 @@
 		     , COMTN_BBS_MASTER b
 		     , COMTN_TMPLAT_INFO c
 		 WHERE a.BBS_ID = b.BBS_ID
-		   AND DATE_FORMAT(a.FRST_REGIST_PNTTM, '%Y%m%d') = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+		   AND TO_CHAR(a.FRST_REGIST_PNTTM,'YYYYMMDD') = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 		   AND b.TMPLAT_ID = c.TMPLAT_ID
 		   AND c.TMPLAT_SE_CODE = #{detailStatsKind}             
 		]]>			    
@@ -242,7 +242,7 @@
 		  FROM COMTN_BBS a
 		     , COMTN_BBS_MASTER b
 		 WHERE a.BBS_ID = b.BBS_ID
-		   AND DATE_FORMAT(a.FRST_REGIST_PNTTM, '%Y%m%d') = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+		   AND TO_CHAR(a.FRST_REGIST_PNTTM,'YYYYMMDD') = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 		   AND b.BBS_TY_CODE = #{detailStatsKind}             
 		]]>
 	    	</when>
@@ -252,7 +252,7 @@
 		  FROM COMTN_BBS a
 		     , COMTN_BBS_MASTER b
 		 WHERE a.BBS_ID = b.BBS_ID
-		   AND DATE_FORMAT(a.FRST_REGIST_PNTTM, '%Y%m%d') = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+		   AND TO_CHAR(a.FRST_REGIST_PNTTM,'YYYYMMDD') = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 		   AND b.BBS_ATTRB_CODE = #{detailStatsKind}             
 		]]>
 	    	</when>
@@ -263,7 +263,7 @@
 		     , COMTN_BBS_MASTER b
 		     , COMTN_TMPLAT_INFO c
 		 WHERE a.BBS_ID = b.BBS_ID
-		   AND DATE_FORMAT(a.FRST_REGIST_PNTTM, '%Y%m%d') = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+		   AND TO_CHAR(a.FRST_REGIST_PNTTM,'YYYYMMDD') = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 		   AND b.TMPLAT_ID = c.TMPLAT_ID
 		   AND c.TMPLAT_SE_CODE = #{detailStatsKind}          
 		]]>
@@ -280,7 +280,7 @@
 		  FROM COMTN_BBS a
 		     , COMTN_BBS_MASTER b
 		 WHERE a.BBS_ID = b.BBS_ID
-		   AND DATE_FORMAT(a.FRST_REGIST_PNTTM, '%Y%m%d') = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+		   AND TO_CHAR(a.FRST_REGIST_PNTTM,'YYYYMMDD') = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 		   AND b.BBS_TY_CODE = #{detailStatsKind}          
 		]]>
 	    	</when>
@@ -290,7 +290,7 @@
 		  FROM COMTN_BBS a
 		     , COMTN_BBS_MASTER b
 		 WHERE a.BBS_ID = b.BBS_ID
-		   AND DATE_FORMAT(a.FRST_REGIST_PNTTM, '%Y%m%d') = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+		   AND TO_CHAR(a.FRST_REGIST_PNTTM,'YYYYMMDD') = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 		   AND b.BBS_ATTRB_CODE = #{detailStatsKind}          
 		]]>
 	    	</when>
@@ -301,7 +301,7 @@
 		     , COMTN_BBS_MASTER b
 		     , COMTN_TMPLAT_INFO c
 		 WHERE a.BBS_ID = b.BBS_ID
-		   AND DATE_FORMAT(a.FRST_REGIST_PNTTM, '%Y%m%d') = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+		   AND TO_CHAR(a.FRST_REGIST_PNTTM,'YYYYMMDD') = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 		   AND b.TMPLAT_ID = c.TMPLAT_ID
 		   AND c.TMPLAT_SE_CODE = #{detailStatsKind}     
 		]]>
@@ -323,9 +323,9 @@
 						       , COMTN_BBS_MASTER d
 						   WHERE c.BBS_ID = d.BBS_ID
 						     AND c.RDCNT > 0
-						     AND DATE_FORMAT(c.FRST_REGIST_PNTTM, '%Y%m%d') = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+		   				     AND TO_CHAR(c.FRST_REGIST_PNTTM,'YYYYMMDD') = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 							 AND d.BBS_TY_CODE = #{detailStatsKind})
-		   AND DATE_FORMAT(a.FRST_REGIST_PNTTM, '%Y%m%d') = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+		   AND TO_CHAR(a.FRST_REGIST_PNTTM,'YYYYMMDD') = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 		   AND b.BBS_TY_CODE = #{detailStatsKind}
 		 LIMIT 1 OFFSET 1        
 		]]>
@@ -341,9 +341,9 @@
 						       , COMTN_BBS_MASTER d
 						   WHERE c.BBS_ID = d.BBS_ID
 						     AND c.RDCNT > 0
-						     AND DATE_FORMAT(c.FRST_REGIST_PNTTM, '%Y%m%d') = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+		   					 AND TO_CHAR(c.FRST_REGIST_PNTTM,'YYYYMMDD') = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 							 AND d.BBS_ATTRB_CODE = #{detailStatsKind})
-		   AND DATE_FORMAT(a.FRST_REGIST_PNTTM, '%Y%m%d') = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+		   AND TO_CHAR(a.FRST_REGIST_PNTTM,'YYYYMMDD') = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 		   AND b.BBS_ATTRB_CODE = #{detailStatsKind}    
 		 LIMIT 1 OFFSET 1        
 		]]>
@@ -361,10 +361,10 @@
 						       , COMTN_TMPLAT_INFO f
 						   WHERE d.BBS_ID = e.BBS_ID
 						     AND d.RDCNT > 0
-						     AND DATE_FORMAT(d.FRST_REGIST_PNTTM, '%Y%m%d') = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+		   					 AND TO_CHAR(c.FRST_REGIST_PNTTM,'YYYYMMDD') = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 							 AND e.TMPLAT_ID = f.TMPLAT_ID
 	   						 AND f.TMPLAT_SE_CODE = #{detailStatsKind})
-		   AND DATE_FORMAT(a.FRST_REGIST_PNTTM, '%Y%m%d') = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+		   AND TO_CHAR(a.FRST_REGIST_PNTTM,'YYYYMMDD') = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 		   AND b.TMPLAT_ID = c.TMPLAT_ID
 		   AND c.TMPLAT_SE_CODE = #{detailStatsKind}
 		 LIMIT 1 OFFSET 1        
@@ -387,9 +387,9 @@
 						       , COMTN_BBS_MASTER d
 						   WHERE c.BBS_ID = d.BBS_ID
 						     AND c.RDCNT > 0
-						     AND DATE_FORMAT(c.FRST_REGIST_PNTTM, '%Y%m%d') = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+		   					 AND TO_CHAR(c.FRST_REGIST_PNTTM,'YYYYMMDD') = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 						     AND d.BBS_TY_CODE = #{detailStatsKind})
-		   AND DATE_FORMAT(a.FRST_REGIST_PNTTM, '%Y%m%d') = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+		   AND TO_CHAR(a.FRST_REGIST_PNTTM,'YYYYMMDD') = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 		   AND b.BBS_TY_CODE = #{detailStatsKind}
 		 LIMIT 1 OFFSET 1        
 		]]>
@@ -405,9 +405,9 @@
 						       , COMTN_BBS_MASTER d
 						   WHERE c.BBS_ID = d.BBS_ID
 						     AND c.RDCNT > 0
-						     AND DATE_FORMAT(c.FRST_REGIST_PNTTM, '%Y%m%d') = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+		   					 AND TO_CHAR(c.FRST_REGIST_PNTTM,'YYYYMMDD') = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 						     AND d.BBS_ATTRB_CODE = #{detailStatsKind})
-		   AND DATE_FORMAT(a.FRST_REGIST_PNTTM, '%Y%m%d') = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+		   AND TO_CHAR(a.FRST_REGIST_PNTTM,'YYYYMMDD') = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 		   AND b.BBS_ATTRB_CODE = #{detailStatsKin}#
 		 LIMIT 1 OFFSET 1        
 		]]>
@@ -425,10 +425,10 @@
 						       , COMTN_TMPLAT_INFO f
 						   WHERE d.BBS_ID = e.BBS_ID
 						     AND d.RDCNT > 0
-						     AND DATE_FORMAT(d.FRST_REGIST_PNTTM, '%Y%m%d') = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+		   					 AND TO_CHAR(c.FRST_REGIST_PNTTM,'YYYYMMDD') = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 							 AND e.TMPLAT_ID = f.TMPLAT_ID
 	   						 AND f.TMPLAT_SE_CODE = #{detailStatsKind})
-		   AND DATE_FORMAT(a.FRST_REGIST_PNTTM, '%Y%m%d') = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+		   AND TO_CHAR(a.FRST_REGIST_PNTTM,'YYYYMMDD') = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 		   AND b.TMPLAT_ID = c.TMPLAT_ID
 		   AND c.TMPLAT_SE_CODE = #{detailStatsKind}
 		 LIMIT 1 OFFSET 1        
@@ -449,7 +449,7 @@
 				     , COMTN_BBS_MASTER b
 				 WHERE a.BBS_ID = b.BBS_ID
 				   AND a.NTCR_ID IS NOT NULL
-				   AND DATE_FORMAT(a.FRST_REGIST_PNTTM, '%Y%m%d') = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+		   		   AND TO_CHAR(a.FRST_REGIST_PNTTM,'YYYYMMDD') = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 				   AND b.BBS_TY_CODE = #{detailStatsKind}
 				 GROUP BY a.NTCR_ID) c
 		  WHERE c.topNtcepersonCo = (SELECT MAX(f.topNtcepersonCo)
@@ -459,7 +459,7 @@
 										          , COMTN_BBS_MASTER e
 										      WHERE d.BBS_ID = e.BBS_ID
 										        AND d.NTCR_ID IS NOT NULL
-										        AND DATE_FORMAT(d.FRST_REGIST_PNTTM, '%Y%m%d') = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+		   										AND TO_CHAR(d.FRST_REGIST_PNTTM,'YYYYMMDD') = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 										        AND e.BBS_TY_CODE = #{detailStatsKind}
 										      GROUP BY d.NTCR_ID) f
 									)
@@ -475,7 +475,7 @@
 				     , COMTN_BBS_MASTER b
 				 WHERE a.BBS_ID = b.BBS_ID
 				   AND a.NTCR_ID IS NOT NULL
-				   AND DATE_FORMAT(a.FRST_REGIST_PNTTM, '%Y%m%d') = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+		   		   AND TO_CHAR(a.FRST_REGIST_PNTTM,'YYYYMMDD') = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 				   AND b.BBS_ATTRB_CODE = #{detailStatsKind}
 				 GROUP BY a.NTCR_ID) c
 		  WHERE c.topNtcepersonCo = (SELECT MAX(f.topNtcepersonCo)
@@ -485,7 +485,7 @@
 										          , COMTN_BBS_MASTER e
 										      WHERE d.BBS_ID = e.BBS_ID
 										        AND d.NTCR_ID IS NOT NULL
-										        AND DATE_FORMAT(d.FRST_REGIST_PNTTM, '%Y%m%d') = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+		   									    AND TO_CHAR(d.FRST_REGIST_PNTTM,'YYYYMMDD') = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 										        AND e.BBS_ATTRB_CODE = #{detailStatsKind}
 										      GROUP BY d.NTCR_ID) f
 									)
@@ -502,7 +502,7 @@
 				     , COMTN_TMPLAT_INFO t1
 				 WHERE a.BBS_ID = b.BBS_ID
 				   AND a.NTCR_ID IS NOT NULL
-				   AND DATE_FORMAT(a.FRST_REGIST_PNTTM, '%Y%m%d') = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+		   		   AND TO_CHAR(a.FRST_REGIST_PNTTM,'YYYYMMDD') = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 				   AND b.TMPLAT_ID = t1.TMPLAT_ID
 		           AND t1.TMPLAT_SE_CODE = #{detailStatsKind}
 				 GROUP BY a.NTCR_ID) c
@@ -514,7 +514,7 @@
 										          , COMTN_TMPLAT_INFO t2
 										      WHERE d.BBS_ID = e.BBS_ID
 										        AND d.NTCR_ID IS NOT NULL
-										        AND DATE_FORMAT(d.FRST_REGIST_PNTTM, '%Y%m%d') = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+		   										AND TO_CHAR(d.FRST_REGIST_PNTTM,'YYYYMMDD') = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 										        AND e.TMPLAT_ID = t2.TMPLAT_ID
 			           							AND t2.TMPLAT_SE_CODE = #{detailStatsKind}
 										      GROUP BY d.NTCR_ID) f
@@ -530,7 +530,7 @@
 		<![CDATA[
 			SELECT STATS_SE 		AS statsKind
 			  FROM COMTS_BBS_SUMMARY 
-			 WHERE RTRIM(OCCRRNC_DE) = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+			 WHERE RTRIM(OCCRRNC_DE) = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 			   AND STATS_SE 		= #{statsKind}
 			   AND DETAIL_STATS_SE 	= #{detailStatsKind}
 		]]>
@@ -541,7 +541,7 @@
 		<![CDATA[
 			DELETE 
 			  FROM COMTS_BBS_SUMMARY
-			 WHERE RTRIM(OCCRRNC_DE) = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+			 WHERE RTRIM(OCCRRNC_DE) = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 			   AND STATS_SE 		= #{statsKind}
 			   AND DETAIL_STATS_SE 	= #{detailStatsKind}
 		]]>
@@ -561,7 +561,7 @@
 				  ,	MUMM_INQIRE_BBSCTT_ID
 				  ,	TOP_NTCR_ID
 			) VALUES (
-					DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+					TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD'), '%Y%m%d')
 				  ,	#{statsKind}
 				  ,	#{detailStatsKind}
 				  ,	#{creatCo}

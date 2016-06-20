@@ -47,7 +47,7 @@
 	        </when>
 	        <when test='searchDe == "1"'>
 		 		<![CDATA[ 
-		 			AND DATE_FORMAT(A.FRST_REGIST_PNTTM, '%Y%m%d') BETWEEN #{searchBgnDe} AND #{searchEndDe}		
+		 			AND TO_CHAR(A.FRST_REGIST_PNTTM,'YYYYMMDD') BETWEEN #{searchBgnDe} AND #{searchEndDe}		
 		 		]]>
 	        </when>
 	    </choose>
@@ -90,7 +90,7 @@
 	        </when>
 	        <when test='searchDe == "1"'>
 		 		<![CDATA[ 
-		 			AND DATE_FORMAT(A.FRST_REGIST_PNTTM, '%Y%m%d') BETWEEN #{searchBgnDe} AND #{searchEndDe}		
+		 			AND TO_CHAR(A.FRST_REGIST_PNTTM,'YYYYMMDD') BETWEEN #{searchBgnDe} AND #{searchEndDe}		
 		 		]]>
 	        </when>
 	    </choose>

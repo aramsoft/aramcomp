@@ -110,7 +110,7 @@
 	<delete id="deleteAdministCode">
 		<![CDATA[
             UPDATE COMTC_ADMINIST_CODE
-               SET ABL_DE             = DATE_FORMAT(now(), '%Y%m%d')
+               SET ABL_DE             = TO_CHAR(now(),'YYYYMMDD')
 			     , USE_AT             = 'N'
              WHERE ADMINIST_ZONE_SE   = #{administZoneSe}
                AND ADMINIST_ZONE_CODE = #{administZoneCode}

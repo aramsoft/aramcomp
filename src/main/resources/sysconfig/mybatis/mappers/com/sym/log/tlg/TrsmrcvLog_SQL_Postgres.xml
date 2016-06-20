@@ -130,7 +130,7 @@
 				  , #{resultMessage, jdbcType=VARCHAR}
 				  , #{rqesterId, jdbcType=VARCHAR}
 				  , now()
-				  , DATE_FORMAT(now(), '%Y%m%d')
+				  , TO_CHAR(now(),'YYYYMMDD')
 			)
 		]]>
 	</insert>
@@ -151,9 +151,9 @@
 			  FROM COMTH_TRSMRCV_LOG b
 			 WHERE NOT EXISTS (SELECT c.OCCRRNC_DE
 			                     FROM COMTS_TRSMRCV_LOG_SUMMARY c
-			                    WHERE RTRIM(c.OCCRRNC_DE) = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+			                    WHERE RTRIM(c.OCCRRNC_DE) = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 			                  )
-			   AND RTRIM(b.OCCRRNC_DE) = DATE_FORMAT(ADDDATE(now(), -1), '%Y%m%d')
+			   AND RTRIM(b.OCCRRNC_DE) = TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 			 GROUP BY b.OCCRRNC_DE
  				    , b.TRSMRCV_SE_CODE
 				    , b.PROVD_INSTT_ID
@@ -170,7 +170,7 @@
 		<![CDATA[
 			DELETE 
 			  FROM COMTH_TRSMRCV_LOG
-			 WHERE RTRIM(OCCRRNC_DE) < DATE_FORMAT(ADDDATE(now(), -7), '%Y%m%d')
+			 WHERE RTRIM(OCCRRNC_DE) < TO_CHAR(ADDDATE(now(), -1),'YYYYMMDD')
 		]]>
 	</delete>
 

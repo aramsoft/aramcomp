@@ -21,7 +21,7 @@
             <![CDATA[ AND a.CONECT_MTHD LIKE '%'||#{searchVO.searchKeyword}||'%' ]]>
 		</if>
      	<if test='searchBgnDe != null and searchBgnDe != ""'>
-			<![CDATA[ AND DATE_FORMAT(a.CREAT_DT, '%Y%m%d') BETWEEN #{searchBgnDe} AND #{searchEndDe} ]]>
+			<![CDATA[ AND TO_CHAR(a.CREAT_DT,'YYYYMMDD') BETWEEN #{searchBgnDe} AND #{searchEndDe} ]]>
 		</if>
 		<![CDATA[
 			 ORDER BY a.CREAT_DT DESC
@@ -45,7 +45,7 @@
             <![CDATA[ AND a.CONECT_MTHD LIKE '%'||#{searchVO.searchKeyword}||'%' ]]>
 		</if>
      	<if test='searchBgnDe != null and searchBgnDe != ""'>
-			<![CDATA[ AND DATE_FORMAT(a.CREAT_DT, '%Y%m%d') BETWEEN #{searchBgnDe} AND #{searchEndDe} ]]>
+			<![CDATA[ AND TO_CHAR(a.CREAT_DT,'YYYYMMDD') BETWEEN #{searchBgnDe} AND #{searchEndDe} ]]>
 		</if>
 	</select>
 

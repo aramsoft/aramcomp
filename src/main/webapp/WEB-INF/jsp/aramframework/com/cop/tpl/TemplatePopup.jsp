@@ -88,7 +88,7 @@
 	</tr>
 	</c:if>
 	
-  	<c:set var="searchVO" value="${templateInfVO.baseVO}"/>
+  	<c:set var="searchVO" value="${templateInfVO.searchVO}"/>
  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
 

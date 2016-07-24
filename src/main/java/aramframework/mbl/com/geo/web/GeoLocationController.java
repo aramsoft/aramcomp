@@ -82,7 +82,6 @@ public class GeoLocationController {
     	
         ModelAndView modelAndView = new ModelAndView("jsonView");
 
-        geoLocationVO.getSearchVO().setSearchUseYn("Y");
         modelAndView.addObject("resultList", geoLocationService.selectBuildingLocationInfoList(geoLocationVO));
          
         return modelAndView;

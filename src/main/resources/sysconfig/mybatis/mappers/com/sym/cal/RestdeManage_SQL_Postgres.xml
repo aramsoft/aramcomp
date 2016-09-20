@@ -123,22 +123,22 @@
 
 	<select id="selectNormalRestdePopup" resultType="egovMap">
 		<![CDATA[
-            SELECT  #{year}               YEAR
-                 ,  #{month}              MONTH
+            SELECT  #{year}              AS YEAR
+                 ,  #{month}             AS MONTH
                  ,  CASE ((DUMMY.ROWNUM + 1 - #{startWeekMonth})>0 AND (DUMMY.ROWNUM + 1 - #{startWeekMonth})<=#{lastDayMonth})
-                    WHEN 1 THEN CAST((DUMMY.ROWNUM + 1 - #{startWeekMonth}) AS CHAR)
+                    WHEN true THEN CAST((DUMMY.ROWNUM + 1 - #{startWeekMonth}) AS CHAR)
                     ELSE '' 
-                    END                  DAY 
-                 ,  DUMMY.ROWNUM         CELL_NUM
-                 ,  DUMMY.WEEKS + 1      WEEKS
-                 ,  DUMMY.WEEK           WEEK
+                    END                  AS DAY 
+                 ,  DUMMY.ROWNUM         AS CELL_NUM
+                 ,  DUMMY.WEEKS + 1      AS WEEKS
+                 ,  DUMMY.WEEK           AS WEEK
                  ,  (
                     SELECT  CASE (COUNT(*)) WHEN 0 THEN CASE DUMMY.WEEK WHEN 1 THEN 'Y' WHEN 7 THEN 'Y' ELSE 'N' END ELSE 'Y' END
                       FROM  COMTN_RESTDE 
                      WHERE  RESTDE = CONCAT(#{year}
                                             ,LPAD(#{month},2,'0')
                                             ,LPAD(CASE((DUMMY.ROWNUM + 1 - #{startWeekMonth})>0 AND (DUMMY.ROWNUM + 1 - #{startWeekMonth})<=#{lastDayMonth})
-                                                  WHEN 1 THEN CAST((DUMMY.ROWNUM + 1 - #{startWeekMonth}) AS CHAR)
+                                                  WHEN true THEN CAST((DUMMY.ROWNUM + 1 - #{startWeekMonth}) AS CHAR)
                                                   ELSE '' 
                                                   END,2,'0'
                                              )
@@ -146,9 +146,9 @@
                        AND  RESTDE_SE_CODE IN ('01','02')                                   
                     ) REST_AT
               FROM  (
-                    SELECT  (W.W*7) + D.D ROWNUM
-                         ,  W.W WEEKS
-                         ,  D.D WEEK
+                    SELECT  (W.W*7) + D.D AS ROWNUM
+                         ,  W.W 		  AS WEEKS
+                         ,  D.D 		  AS WEEK
                       FROM  (
                             SELECT 0 W
                             UNION ALL

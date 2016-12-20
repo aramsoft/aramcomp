@@ -11,7 +11,7 @@ import egovframework.rte.fdl.idgnr.impl.EgovTableIdGnrServiceImpl;
 import egovframework.rte.fdl.idgnr.impl.strategy.EgovIdGnrStrategyImpl;
 
 /**
- * 롤관리  Id generation 클래스
+ * 그룹관리  Id generation 클래스
  * 
  * @author 아람컴포넌트 조헌철
  * @since 2014.11.11

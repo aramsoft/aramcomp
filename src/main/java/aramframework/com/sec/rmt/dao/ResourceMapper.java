@@ -7,7 +7,7 @@ import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**
- * 롤관리에 대한 DAO 클래스를 정의한다.
+ * 자원관리에 대한 DAO 클래스를 정의한다.
  * 
  * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
@@ -19,49 +19,49 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
 public interface ResourceMapper {
 
 	/**
-	 * 등록된 모든 롤 정보 목록 조회
+	 * 등록된 모든 자원 정보 목록 조회
 	 * 
 	 * @param resourceVO
 	 */
 	public List<EgovMap> selectResourceAllList(ResourceVO resourceVO);
 
 	/**
-	 * 등록된 롤 정보 목록 조회
+	 * 등록된 자원 정보 목록 조회
 	 * 
 	 * @param resourceVO
 	 */
 	public List<EgovMap> selectResourceList(ResourceVO resourceVO);
 
 	/**
-	 * 롤목록 총 갯수를 조회한다.
+	 * 자원목록 총 갯수를 조회한다.
 	 * 
 	 * @param resourceVO
 	 */
 	public int selectResourceListCnt(ResourceVO resourceVO);
 
 	/**
-	 * 등록된 롤 정보 조회
+	 * 등록된 자원 정보 조회
 	 * 
 	 * @param resourceVO
 	 */
 	public ResourceVO selectResource(ResourceVO resourceVO);
 
 	/**
-	 * 시스템 메뉴에 따른 접근권한, 데이터 입력, 수정, 삭제의 권한 롤을 등록
+	 * 자원을 등록
 	 * 
 	 * @param resourceVO
 	 */
 	public void insertResource(ResourceVO resourceVO);
 
 	/**
-	 * 시스템 메뉴에 따른 접근권한, 데이터 입력, 수정, 삭제의 권한 롤을 수정
+	 * 자원을 수정
 	 * 
 	 * @param resourceVO
 	 */
 	public void updateResource(ResourceVO resourceVO);
 
 	/**
-	 * 불필요한 롤정보를 화면에 조회하여 데이터베이스에서 삭제
+	 * 불필요한 자원정보 삭제
 	 * 
 	 * @param resourceVO
 	 */

@@ -19,7 +19,7 @@ import aramframework.com.sec.rmt.service.ResourceService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
- * 롤관리에 관한 controller 클래스를 정의한다.
+ * 자원관리에 관한 controller 클래스를 정의한다.
  * 
  * @author 아람컴포넌트 조헌철
  * @since 2014.11.11

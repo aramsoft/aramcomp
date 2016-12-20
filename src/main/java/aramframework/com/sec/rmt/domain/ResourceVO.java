@@ -3,7 +3,7 @@ package aramframework.com.sec.rmt.domain;
 import aramframework.com.cmm.domain.BaseVO;
 
 /**
- * 롤관리에 대한 model 클래스를 정의한다.
+ * 자원관리에 대한 model 클래스를 정의한다.
  * 
  * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
@@ -14,25 +14,25 @@ import aramframework.com.cmm.domain.BaseVO;
 public class ResourceVO extends BaseVO {
 
 	// domain
-	/** 롤코드 */
+	/** 자원코드 */
 	private String resourceCode;
 	
-	/** 롤명 */
+	/** 자원명 */
 	private String resourceNm;
 	
-	/** 롤패턴 */
+	/** 자원패턴 */
 	private String resourcePttrn;
 	
-	/** 롤 설명 */
+	/** 자원설명 */
 	private String resourceDc;
 	
-	/** 롤 타입 */
+	/** 자원타입 */
 	private String resourceTy;
 	
-	/** 롤 Sort */
+	/** 자원Sort */
 	private String resourceSort;
 	
-	/** 롤 등록일시 */
+	/** 자원등록일시 */
 	private String resourceCreatDe;
 	
 	// domain

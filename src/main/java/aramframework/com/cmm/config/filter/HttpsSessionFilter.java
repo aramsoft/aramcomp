@@ -15,24 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * 
+ * 일반 세션 정보를 Https 세션 정보로 이관 
  * 
  * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  * @see
  *
- * <pre>
- * 
- * << 개정이력(Modification Information) >>
- *   
- *   수정일            수정자          수정내용
- *   -------     ------   ---------------------------
- *   2014.11.11  조헌철         최초 생성
- * 
- * </pre>
  */
-
 public class HttpsSessionFilter implements Filter {
 
 	@SuppressWarnings("unused")

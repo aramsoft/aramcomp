@@ -19,24 +19,14 @@ import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uat.uia.service.LoginService;
 
 /**
- * 
+ * 이중 로그인을 위해 내부적으로 처리되는 로그인 필터
  * 
  * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  * @see
  *
- * <pre>
- * 
- * << 개정이력(Modification Information) >>
- *   
- *   수정일            수정자          수정내용
- *   -------     ------   ---------------------------
- *   2014.11.11  조헌철         최초 생성
- * 
- * </pre>
  */
-
 public class CustomLoginFilter extends OncePerRequestFilter {
 
 	@Autowired 

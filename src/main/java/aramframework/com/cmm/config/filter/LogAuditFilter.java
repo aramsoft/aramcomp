@@ -31,6 +31,15 @@ import org.slf4j.LoggerFactory;
 
 import aramframework.com.uat.uia.domain.LoginVO;
 
+/**
+ * Http요청을 감사하기 위한 입력 파라메터 검사 필터 
+ * 
+ * @author 아람컴포넌트 조헌철
+ * @since 2014.11.11
+ * @version 1.0
+ * @see
+ *
+ */
 public class LogAuditFilter implements Filter {
 
 	@SuppressWarnings("unused")

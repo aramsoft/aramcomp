@@ -1,6 +1,5 @@
 package aramframework.com.cmm.constant;
 
-
 /**
  * 시스템 구동 시 프로퍼티를 통해 사용될 전역변수를 정의한다.
  * 
@@ -9,17 +8,7 @@ package aramframework.com.cmm.constant;
  * @version 1.0
  * @see
  *
- * <pre>
- * 
- * << 개정이력(Modification Information) >>
- *   
- *   수정일            수정자          수정내용
- *   -------     ------   ---------------------------
- *   2014.11.11  조헌철         최초 생성
- * 
- * </pre>
  */
-
 public interface Globals {
 	// OS 유형
 	String OS_TYPE = AramProperties.getProperty("Globals.OsType");

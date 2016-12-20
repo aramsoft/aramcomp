@@ -26,6 +26,15 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
+/**
+ * 악의적인 스크립트 공격을 피하기 위해 Html Tag를 entiey tag로 변경
+ * 
+ * @author 아람컴포넌트 조헌철
+ * @since 2014.11.11
+ * @version 1.0
+ * @see
+ *
+ */
 public class HTMLTagFilter implements Filter {
 
 	@SuppressWarnings("unused")

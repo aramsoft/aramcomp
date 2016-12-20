@@ -13,6 +13,15 @@ import aramframework.com.sym.log.clg.domain.LoginLogVO;
 import aramframework.com.sym.log.clg.service.LoginLogService;
 import aramframework.com.uat.uia.domain.LoginVO;
 
+/**
+ * 로그인 로그를 기록하기 위한 스프링 이벤트 리스너 클래스
+ * 
+ * @author 아람컴포넌트 조헌철
+ * @since 2014.11.11
+ * @version 1.0
+ * @see
+ *
+ */
 public class LoginLogListener implements ApplicationListener<ApplicationEvent> {
 
 	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());

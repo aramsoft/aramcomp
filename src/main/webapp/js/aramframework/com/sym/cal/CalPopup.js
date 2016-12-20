@@ -30,7 +30,7 @@ function fn_aram_NormalCalendar(sDate, vDate) {
 	gCalendars["vDate"] = vDate;
 	gCalendars["init"] = "";
 
-	window.open(url, "calPopup", "width=300px,height=215px,top=100px,left=100px,location=no");
+	window.open(url, "calPopup", "width=280px,height=190px,top=100px,left=100px,location=no");
 }
 
 /**********************************************

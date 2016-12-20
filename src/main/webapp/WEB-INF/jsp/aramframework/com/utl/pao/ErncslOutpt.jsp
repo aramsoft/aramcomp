@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" session="false" %>
-<%@ page import="aramframework.com.utl.pao.service.PrntngOutpt"  %>
+<%@ page import="aramframework.com.utl.pao.service.PrntngOutptService"  %>
 <%@ page import="java.util.*"  %>
 <%@ page import="java.io.*"  %>
 <%@ page import="javax.imageio.*"  %>

@@ -17,9 +17,6 @@ public class SearchVO {
 	/** 검색조건 */
 	private String searchCondition = "";
 
-	/** 검색사용여부 */
-	private String searchUseYn = "";
-
 	/** 검색Keyword */
 	private String searchKeyword = "";
 
@@ -80,24 +77,6 @@ public class SearchVO {
 	 */
 	public void setSearchCondition(String searchCondition) {
 		this.searchCondition = searchCondition;
-	}
-
-	/**
-	 * searchUseYn attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getSearchUseYn() {
-		return searchUseYn;
-	}
-	/**
-	 * searchUseYn attribute 값을 설정한다.
-	 * 
-	 * @param searchUseYn
-	 *            String
-	 */
-	public void setSearchUseYn(String searchUseYn) {
-		this.searchUseYn = searchUseYn;
 	}
 
 	/**

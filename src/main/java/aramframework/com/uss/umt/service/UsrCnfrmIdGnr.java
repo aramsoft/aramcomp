@@ -1,4 +1,4 @@
-package aramframework.com.cop.com.service;
+package aramframework.com.uss.umt.service;
 
 import javax.sql.DataSource;
 
@@ -11,7 +11,7 @@ import egovframework.rte.fdl.idgnr.impl.EgovTableIdGnrServiceImpl;
 import egovframework.rte.fdl.idgnr.impl.strategy.EgovIdGnrStrategyImpl;
 
 @Configuration
-public class ConfirmIdGnr {
+public class UsrCnfrmIdGnr {
 
 	@Autowired
 	DataSource dataSource;

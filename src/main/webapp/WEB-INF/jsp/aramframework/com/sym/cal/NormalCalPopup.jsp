@@ -32,7 +32,7 @@
 
 <body>
 
-<DIV id="main" style="width:300px;margin:0px;">
+<DIV id="main" >
 
 <form name="Form" action ="" method="post">
 <input type="hidden" name="init" value="${init}" />

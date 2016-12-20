@@ -9,6 +9,15 @@ import java.io.PrintStream;
 
 import org.slf4j.Logger;
 
+/**
+ * 스택트레이스의 로그 라인을 제한하기 위한 유틸리티 컴포넌트 
+ * 
+ * @author 아람컴포넌트 조헌철
+ * @since 2014.11.11
+ * @version 1.0
+ * @see
+ *
+ */
 public class LogUtil {
 
 	/**

@@ -1,5 +1,20 @@
 package aramframework.com.cmm.web;
 
+import java.lang.reflect.Method;
+import java.util.Map;
+import java.util.TreeMap;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import aramframework.com.cmm.annotation.IncludedInfoVO;
+import aramframework.com.cmm.annotation.IncludedInfo;
+
 /**
  * 컴포넌트 설치 후 설치된 컴포넌트들을 IncludedInfo annotation을 통해 찾아낸 후
  * 화면에 표시할 정보를 처리하는 Controller 클래스
@@ -17,32 +32,7 @@ package aramframework.com.cmm.web;
  * @version 1.0
  * @see
  *
- * <pre>
- * 
- * << 개정이력(Modification Information) >>
- *   
- *   수정일            수정자          수정내용
- *   -------     ------   ---------------------------
- *   2014.11.11  조헌철         최초 생성
- * 
- * </pre>
  */
-
-import java.lang.reflect.Method;
-import java.util.Map;
-import java.util.TreeMap;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import aramframework.com.cmm.annotation.IncludedInfoVO;
-import aramframework.com.cmm.annotation.IncludedInfo;
-
 @Controller
 public class ComIndexController {
 

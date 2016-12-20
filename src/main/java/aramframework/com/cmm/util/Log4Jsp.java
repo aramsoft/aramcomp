@@ -13,6 +13,15 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Jsp프로그램에서 로그를 기록하기 위한 유틸리티 컴포넌트 
+ * 
+ * @author 아람컴포넌트 조헌철
+ * @since 2014.11.11
+ * @version 1.0
+ * @see
+ *
+ */
 public class Log4Jsp {
 	
 	protected static final Logger LOG = LoggerFactory.getLogger(Log4Jsp.class);

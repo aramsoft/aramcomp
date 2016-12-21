@@ -1,5 +1,9 @@
 package aramframework.mbl.cmm.web;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 /**
  * 컴포넌트 설치 후 설치된 컴포넌트들을 IncludedInfo annotation을 통해 찾아낸 후
  * 화면에 표시할 정보를 처리하는 Controller 클래스
@@ -17,21 +21,7 @@ package aramframework.mbl.cmm.web;
  * @version 1.0
  * @see
  *
- * <pre>
- * 
- * << 개정이력(Modification Information) >>
- *   
- *   수정일            수정자          수정내용
- *   -------     ------   ---------------------------
- *   2014.11.11  조헌철         최초 생성
- * 
- * </pre>
  */
-
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 @Controller
 public class MblComIndexController  {
 

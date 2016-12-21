@@ -50,7 +50,6 @@ import org.apache.commons.io.IOUtils;
  * @version $Id: FileSystemUtils.java 453889 2006-10-07 11:56:25Z scolebourne $
  * @since Commons IO 1.1
  */
-
 public class FileSysUtils {
 
 	/** Singleton instance, used mainly for testing. */

@@ -10,6 +10,15 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 import egovframework.rte.fdl.idgnr.impl.EgovTableIdGnrServiceImpl;
 import egovframework.rte.fdl.idgnr.impl.strategy.EgovIdGnrStrategyImpl;
 
+/**
+ * 네트워크 Id generation 클래스
+ * 
+ * @author 아람컴포넌트 조헌철
+ * @since 2014.11.11
+ * @version 1.0
+ * @see
+ *
+ */
 @Configuration
 public class NtwrkIdGnr {
 

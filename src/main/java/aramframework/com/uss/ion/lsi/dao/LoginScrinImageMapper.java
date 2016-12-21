@@ -16,17 +16,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * @version 1.0
  * @see
  *
- * <pre>
- * 
- * << 개정이력(Modification Information) >>
- *   
- *   수정일            수정자          수정내용
- *   -------     ------   ---------------------------
- *   2014.11.11  조헌철         최초 생성
- * 
- * </pre>
  */
-
 @Mapper
 public interface LoginScrinImageMapper {
 

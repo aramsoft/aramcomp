@@ -12,8 +12,6 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.AbstractPaginationRenderer;
  * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
- * @see
- *
  */
 public class ImagePaginationRenderer extends AbstractPaginationRenderer implements ServletContextAware {
 

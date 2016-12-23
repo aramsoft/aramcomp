@@ -16,8 +16,6 @@ import org.apache.taglibs.standard.tag.common.core.Util;
  * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
- * @see
- *
  */
 @SuppressWarnings("serial")
 public class ComCrossSiteHndlr extends BodyTagSupport {

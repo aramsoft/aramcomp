@@ -28,8 +28,6 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
  * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
- * @see
- *
  */
 @Component("fileMngUtil")
 public class FileMngUtil {
@@ -67,7 +65,6 @@ public class FileMngUtil {
 	 * 
 	 * @param files
 	 * @return
-	 * @throws Exception
 	 */
 	public String updateMultiFile(MultipartHttpServletRequest multiRequest, String KeyStr, String atchFileId) 
 	throws Exception {
@@ -91,7 +88,6 @@ public class FileMngUtil {
 	 * 첨부파일을 삭제한다.
 	 * 
 	 * @param files
-	 * @return
 	 */
 	public void deleteMultiFile(String atchFileId) {
 		FileVO fvo = new FileVO();
@@ -106,7 +102,6 @@ public class FileMngUtil {
 	 * 
 	 * @param files
 	 * @return
-	 * @throws Exception
 	 */
 	public List<FileVO> parseFileInf(Map<String, MultipartFile> files, String KeyStr, 
 			int fileKeyParam, String atchFileId, String storePath) 
@@ -193,8 +188,6 @@ public class FileMngUtil {
 	 * 
 	 * @param
 	 * @return Timestamp 값
-	 * @exception MyException
-	 * @see
 	 */
 	private String getTimeStamp() {
 

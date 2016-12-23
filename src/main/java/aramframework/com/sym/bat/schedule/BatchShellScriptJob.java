@@ -13,8 +13,6 @@ import org.slf4j.LoggerFactory;
  * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
- * @see
- *
  */
 public class BatchShellScriptJob implements Job {
 

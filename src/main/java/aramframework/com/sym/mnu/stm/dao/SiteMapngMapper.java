@@ -10,8 +10,6 @@ import aramframework.com.sym.mnu.stm.domain.SiteMapngVO;
  * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
- * @see
- *
  */
 @Mapper
 public interface SiteMapngMapper {

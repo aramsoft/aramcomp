@@ -8,8 +8,6 @@ import aramframework.com.cmm.domain.BaseVO;
  * @author 공통서비스 개발팀 조재영
  * @since 2009.04.10
  * @version 1.0
- * @see
- *
  */
 public class MberManageVO extends BaseVO {
 

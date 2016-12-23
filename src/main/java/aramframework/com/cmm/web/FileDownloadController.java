@@ -42,8 +42,8 @@ public class FileDownloadController {
 	/**
 	 * 브라우저 구분 얻기.
 	 * 
-	 * @param request
-	 * @return
+	 * @param 	request		HttpServletRequest
+	 * @return				String
 	 */
 	private String getBrowser(HttpServletRequest request) {
 		String header = request.getHeader("User-Agent");
@@ -62,10 +62,10 @@ public class FileDownloadController {
 	/**
 	 * Disposition 지정하기.
 	 * 
-	 * @param filename
-	 * @param request
-	 * @param response
-	 * @throws Exception
+	 * @param 	filename	String
+	 * @param 	request		HttpServletRequest
+	 * @param 	response	HttpServletResponse
+	 * @throws 				Exception
 	 */
 	private void setDisposition(
 			String filename, 
@@ -110,8 +110,11 @@ public class FileDownloadController {
 	/**
 	 * 첨부파일로 등록된 파일에 대하여 다운로드를 제공한다.
 	 * 
-	 * @param response
-	 * @throws Exception
+	 * @param 	filePathId	String
+	 * @param 	fileSn		String
+	 * @param 	request		HttpServletRequest
+	 * @param 	response	HttpServletResponse
+	 * @throws 				Exception
 	 */
 	@RequestMapping(value = "/content/files/{filePathId}/file/{fileSn}")
 	public void cvplFileDownload(
@@ -188,8 +191,11 @@ public class FileDownloadController {
 	/**
 	 * 첨부파일로 등록된 파일에 대하여 다운로드를 제공한다.
 	 * 
-	 * @param response
-	 * @throws Exception
+	 * @param 	filePathId	String
+	 * @param 	fileSn		String
+	 * @param 	request		HttpServletRequest
+	 * @param 	response	HttpServletResponse
+	 * @throws 				Exception
 	 */
 	@RequestMapping(value = "/content/authfiles/{filePathId}/file/{fileSn}")
 	@Secured("ROLE_USER")

@@ -25,10 +25,6 @@ public class LoginLogAdvice {
 
 	/**
 	 * 로그인 로그정보를 생성한다. 
-	 * 
-	 * @param
-	 * @return void
-	 * @throws Exception
 	 */
 	public void logLogin() throws Throwable {
 
@@ -56,10 +52,6 @@ public class LoginLogAdvice {
 
 	/**
 	 * 로그아웃 로그정보를 생성한다. 
-	 * 
-	 * @param
-	 * @return void
-	 * @throws Exception
 	 */
 	public void logLogout() throws Throwable {
 

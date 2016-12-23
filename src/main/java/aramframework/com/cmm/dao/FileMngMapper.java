@@ -21,7 +21,8 @@ public class FileMngMapper extends EgovAbstractMapper {
 	/**
 	 * 파일명 검색에 대한 목록을 조회한다.
 	 * 
-	 * @param fileVO
+	 * @param 	fileVO	FileVO
+	 * @return 			List
 	 */
 	public List<FileVO> selectFileListByFileNm(FileVO fileVO) {
 		return selectList(NAMESPACE+".selectFileListByFileNm", fileVO);
@@ -30,7 +31,8 @@ public class FileMngMapper extends EgovAbstractMapper {
 	/**
 	 * 파일명 검색에 대한 목록 전체 건수를 조회한다.
 	 * 
-	 * @param fileVO
+	 * @param 	fileVO	FileVO
+	 * @return 			건수
 	 */
 	public int selectFileListCntByFileNm(FileVO fileVO) {
 		return (Integer) getSqlSession().selectOne(NAMESPACE+".selectFileListCntByFileNm", fileVO);
@@ -39,7 +41,8 @@ public class FileMngMapper extends EgovAbstractMapper {
 	/**
 	 * 파일에 대한 목록을 조회한다.
 	 * 
-	 * @param fileVO
+	 * @param 	fileVO	FileVO
+	 * @return 			List
 	 */
 	public List<FileVO> selectFileList(FileVO fileVO) {
 		return selectList(NAMESPACE+".selectFileList", fileVO);
@@ -48,7 +51,8 @@ public class FileMngMapper extends EgovAbstractMapper {
 	/**
 	 * 이미지 파일에 대한 목록을 조회한다.
 	 * 
-	 * @param fileVO
+	 * @param 	fileVO	FileVO
+	 * @return 			List
 	 */
 	public List<FileVO> selectImageFileList(FileVO fileVO) {
 		return selectList(NAMESPACE+".selectImageFileList", fileVO);
@@ -57,7 +61,8 @@ public class FileMngMapper extends EgovAbstractMapper {
 	/**
 	 * 파일에 대한 상세정보를 조회한다.
 	 * 
-	 * @param fileVO
+	 * @param 	fileVO	FileVO
+	 * @return 			FileVO
 	 */
 	public FileVO selectFileInf(FileVO fileVO) {
 		return (FileVO) selectOne(NAMESPACE+".selectFileInf", fileVO);
@@ -66,7 +71,8 @@ public class FileMngMapper extends EgovAbstractMapper {
 	/**
 	 * 파일 구분자에 대한 최대값을 구한다.
 	 * 
-	 * @param fileVO
+	 * @param 	fileVO	FileVO
+	 * @return 			최대값
 	 */
 	public int getMaxFileSN(FileVO fileVO) {
 		return (Integer) getSqlSession().selectOne(NAMESPACE+".getMaxFileSN", fileVO);
@@ -75,7 +81,7 @@ public class FileMngMapper extends EgovAbstractMapper {
 	/**
 	 * 하나의 파일에 대한 정보(속성 및 상세)를 등록한다.
 	 * 
-	 * @param fileVO
+	 * @param 	fileVO	FileVO
 	 */
 	public void insertFileInf(FileVO fileVO) {
 		insert(NAMESPACE+".insertFileMaster", fileVO);
@@ -85,7 +91,8 @@ public class FileMngMapper extends EgovAbstractMapper {
 	/**
 	 * 여러 개의 파일에 대한 정보(속성 및 상세)를 등록한다.
 	 * 
-	 * @param fileList
+	 * @param 	fileList	List
+	 * @return 				atchFileId
 	 */
 	public String insertFileInfs(List<FileVO> fileList) {
 		FileVO fileVO = fileList.get(0);
@@ -102,7 +109,7 @@ public class FileMngMapper extends EgovAbstractMapper {
 	/**
 	 * 여러 개의 파일에 대한 정보(속성 및 상세)를 추가한다.
 	 * 
-	 * @param fileList
+	 * @param 	fileList	List
 	 */
 	public void addFileInfs(List<FileVO> fileList) {
 		for(FileVO fileVO : fileList) {
@@ -113,7 +120,7 @@ public class FileMngMapper extends EgovAbstractMapper {
 	/**
 	 * 전체 파일을 삭제한다.
 	 * 
-	 * @param fileVO
+	 * @param 	fileVO	FileVO
 	 */
 	public void deleteAllFileInf(FileVO fileVO) {
 		delete(NAMESPACE+".deleteFileDetails", fileVO);
@@ -124,7 +131,7 @@ public class FileMngMapper extends EgovAbstractMapper {
 	/**
 	 * 하나의 파일을 삭제한다.
 	 * 
-	 * @param fileVO
+	 * @param 	fileVO	FileVO
 	 */
 	public void deleteFileInf(FileVO fileVO) {
 		delete(NAMESPACE+".deleteFileDetail", fileVO);
@@ -133,7 +140,7 @@ public class FileMngMapper extends EgovAbstractMapper {
 	/**
 	 * 여러 파일을 삭제한다.
 	 * 
-	 * @param fileVO
+	 * @param 	fileVO	FileVO
 	 */
 	public void deleteFileList(FileVO fileVO) {
 		delete(NAMESPACE+".deleteFileDetails", fileVO);
@@ -142,7 +149,7 @@ public class FileMngMapper extends EgovAbstractMapper {
 	/**
 	 * 여러 개의 파일을 삭제한다.
 	 * 
-	 * @param fileList
+	 * @param 	fileList	List
 	 */
 	public void deleteFileInfs(List<FileVO> fileList) {
 		for(FileVO fileVO : fileList) {

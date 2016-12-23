@@ -44,7 +44,7 @@ public class BaseVO {
 	/**
 	 * searchVO attribute 를 리턴한다.
 	 * 
-	 * @return SearchVO
+	 * @return 	SearchVO
 	 */
 	public SearchVO getSearchVO() {
 		if( searchVO == null ) searchVO = new SearchVO();
@@ -53,8 +53,7 @@ public class BaseVO {
 	/**
 	 * searchVO attribute 값을 설정한다.
 	 * 
-	 * @param searchVO
-	 *            SearchVO
+	 * @param 	searchVO	SearchVO
 	 */
 	public void setSearchVO(SearchVO searchVO) {
 		this.searchVO = searchVO;
@@ -64,7 +63,7 @@ public class BaseVO {
 	/**
 	 * pathId attribute 값을 리턴한다.
 	 * 
-	 * @return String
+	 * @return 	String
 	 */
 	public String getPathId() {
 		return pathId;
@@ -72,8 +71,7 @@ public class BaseVO {
 	/**
 	 * pathId attribute 값을 설정한다.
 	 * 
-	 * @param pathId
-	 *            String
+	 * @param 	pathId	String
 	 */
 /*
 	public void setPathId(String pathId) {
@@ -83,7 +81,7 @@ public class BaseVO {
 	/**
 	 * frstRegisterId attribute를 리턴한다.
 	 * 
-	 * @return the frstRegisterId
+	 * @return 	the frstRegisterId
 	 */
 	public String getFrstRegisterId() {
 		return frstRegisterId;
@@ -91,8 +89,7 @@ public class BaseVO {
 	/**
 	 * frstRegisterId attribute 값을 설정한다.
 	 * 
-	 * @param frstRegisterId
-	 *            the frstRegisterId to set
+	 * @param frstRegisterId	the frstRegisterId to set
 	 */
 	public void setFrstRegisterId(String frstRegisterId) {
 		this.frstRegisterId = frstRegisterId;
@@ -101,7 +98,7 @@ public class BaseVO {
 	/**
 	 * frstRegisterNm attribute를 리턴한다.
 	 * 
-	 * @return the frstRegisterNm
+	 * @return 	the frstRegisterNm
 	 */
 	public String getFrstRegisterNm() {
 		return frstRegisterNm;
@@ -109,8 +106,7 @@ public class BaseVO {
 	/**
 	 * frstRegisterNm attribute 값을 설정한다.
 	 * 
-	 * @param frstRegisterNm
-	 *            the frstRegisterNm to set
+	 * @param 	frstRegisterNm	the frstRegisterNm to set
 	 */
 	public void setFrstRegisterNm(String frstRegisterNm) {
 		this.frstRegisterNm = frstRegisterNm;
@@ -119,7 +115,7 @@ public class BaseVO {
 	/**
 	 * frstRegisterPnttm attribute를 리턴한다.
 	 * 
-	 * @return the frstRegisterPnttm
+	 * @return 	the frstRegisterPnttm
 	 */
 	public Date getFrstRegisterPnttm() {
 		return frstRegisterPnttm;
@@ -127,8 +123,7 @@ public class BaseVO {
 	/**
 	 * frstRegisterPnttm attribute 값을 설정한다.
 	 * 
-	 * @param frstRegisterPnttm
-	 *            the frstRegisterPnttm to set
+	 * @param 	frstRegisterPnttm	the frstRegisterPnttm to set
 	 */
 	public void setFrstRegisterPnttm(Date frstRegisterPnttm) {
 		this.frstRegisterPnttm = frstRegisterPnttm;
@@ -137,7 +132,7 @@ public class BaseVO {
 	/**
 	 * lastUpdusrId attribute를 리턴한다.
 	 * 
-	 * @return the lastUpdusrId
+	 * @return 	the lastUpdusrId
 	 */
 	public String getLastUpdusrId() {
 		return lastUpdusrId;
@@ -145,8 +140,7 @@ public class BaseVO {
 	/**
 	 * lastUpdusrId attribute 값을 설정한다.
 	 * 
-	 * @param AdbkNm
-	 *            the lastUpdusrId to set
+	 * @param 	lastUpdusrId	the lastUpdusrId to set
 	 */
 	public void setLastUpdusrId(String lastUpdusrId) {
 		this.lastUpdusrId = lastUpdusrId;
@@ -155,7 +149,7 @@ public class BaseVO {
 	/**
 	 * lastUpdusrNm attribute를 리턴한다.
 	 * 
-	 * @return the lastUpdusrNm
+	 * @return 	the lastUpdusrNm
 	 */
 	public String getLastUpdusrNm() {
 		return lastUpdusrNm;
@@ -163,8 +157,7 @@ public class BaseVO {
 	/**
 	 * lastUpdusrNm attribute 값을 설정한다.
 	 * 
-	 * @param lastUpdusrNm
-	 *            the lastUpdusrNm to set
+	 * @param 	lastUpdusrNm	the lastUpdusrNm to set
 	 */
 	public void setLastUpdusrNm(String lastUpdusrNm) {
 		this.lastUpdusrNm = lastUpdusrNm;
@@ -173,7 +166,7 @@ public class BaseVO {
 	/**
 	 * lastUpdusrPnttm attribute를 리턴한다.
 	 * 
-	 * @return the lastUpdusrPnttm
+	 * @return 	the lastUpdusrPnttm
 	 */
 	public Date getLastUpdusrPnttm() {
 		return lastUpdusrPnttm;
@@ -181,8 +174,7 @@ public class BaseVO {
 	/**
 	 * lastUpdusrPnttm attribute 값을 설정한다.
 	 * 
-	 * @param lastUpdusrPnttm
-	 *            the lastUpdusrPnttm to set
+	 * @param 	lastUpdusrPnttm		the lastUpdusrPnttm to set
 	 */
 	public void setLastUpdusrPnttm(Date lastUpdusrPnttm) {
 		this.lastUpdusrPnttm = lastUpdusrPnttm;
@@ -190,6 +182,8 @@ public class BaseVO {
 
 	/**
 	 * toString 메소드를 대치한다.
+	 * 
+	 * @return 	String 
 	 */
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);

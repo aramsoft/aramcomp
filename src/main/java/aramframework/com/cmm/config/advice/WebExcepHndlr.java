@@ -19,6 +19,9 @@ public class WebExcepHndlr implements ExceptionHandler {
 
 	/**
 	 * 발생된 Exception을 처리한다.
+	 * 
+	 * @param 	ex			Exception
+	 * @param 	packageName	패키지 이름
 	 */
 	public void occur(Exception ex, String packageName) {
 		// LOG.debug(" ServiceExceptionHandler run...............");
@@ -29,4 +32,5 @@ public class WebExcepHndlr implements ExceptionHandler {
 			LogUtil.logErrorMessage(LOG, ex, 10);
 		}	
 	}
+	
 }

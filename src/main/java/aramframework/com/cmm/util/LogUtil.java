@@ -21,7 +21,9 @@ public class LogUtil {
 	/**
 	 * 에러 메시지와 스택트레이스를  로그에 저장한다. 
 	 * 
-	 * @param e : Exception 변수
+	 * @param LOG  		Logger
+	 * @param e  		Exception 변수
+	 * @param depth  	라인수
 	 */
 	public static void logErrorMessage(Logger LOG, Exception e, int depth) {
 

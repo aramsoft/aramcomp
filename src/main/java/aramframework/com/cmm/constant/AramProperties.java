@@ -67,9 +67,8 @@ public class AramProperties {
 	/**
 	 * 인자로 주어진 문자열을 Key값으로 하는 상대경로 프로퍼티 값을 절대경로로 반환한다(Globals.java 전용)
 	 * 
-	 * @param keyName
-	 *            String
-	 * @return String
+	 * @param 	keyName	String
+	 * @return 			String
 	 */
 	public static String getPathProperty(String keyName) {
 		String value = ERR_CODE;
@@ -101,9 +100,8 @@ public class AramProperties {
 	/**
 	 * 인자로 주어진 문자열을 Key값으로 하는 프로퍼티 값을 반환한다(Globals.java 전용)
 	 * 
-	 * @param keyName
-	 *            String
-	 * @return String
+	 * @param keyName	String
+	 * @return 			String
 	 */
 	public static String getProperty(String keyName) {
 		String value = ERR_CODE;
@@ -134,11 +132,9 @@ public class AramProperties {
 	/**
 	 * 주어진 파일에서 인자로 주어진 문자열을 Key값으로 하는 프로퍼티 상대 경로값을 절대 경로값으로 반환한다
 	 * 
-	 * @param fileName
-	 *            String
-	 * @param key
-	 *            String
-	 * @return String
+	 * @param 	fileName	String
+	 * @param 	key         String
+	 * @return 				String
 	 */
 	public static String getPathProperty(String fileName, String key) {
 		FileInputStream fis = null;
@@ -168,11 +164,9 @@ public class AramProperties {
 	/**
 	 * 주어진 파일에서 인자로 주어진 문자열을 Key값으로 하는 프로퍼티 값을 반환한다
 	 * 
-	 * @param fileName
-	 *            String
-	 * @param key
-	 *            String
-	 * @return String
+	 * @param 	fileName	String
+	 * @param 	key         String
+	 * @return 				String
 	 */
 	public static String getProperty(String fileName, String key) {
 		FileInputStream fis = null;
@@ -201,9 +195,8 @@ public class AramProperties {
 	/**
 	 * 주어진 프로파일의 내용을 파싱하여 (key-value) 형태의 구조체 배열을 반환한다.
 	 * 
-	 * @param property
-	 *            String
-	 * @return ArrayList
+	 * @param 	property	String
+	 * @return 				ArrayList
 	 */
 	public static ArrayList<Map<String, String>> loadPropertyFile(String property) {
 

@@ -37,9 +37,8 @@ public class ProcessMonService extends EgovAbstractServiceImpl {
 	/**
 	 * 등록된 PROCESS모니터링 목록을 조회한다.
 	 * 
-	 * @param processMonVO
-	 *            - PROCESS모니터링 Vo
-	 * @return List - PROCESS모니터링 목록
+	 * @param processMonVO	PROCESS모니터링 Vo
+	 * @return 				PROCESS모니터링 목록
 	 */
 	public List<ProcessMonVO> selectProcessMonList(ProcessMonVO processMonVO) {
 		return processMonMapper.selectProcessMonList(processMonVO);
@@ -48,9 +47,8 @@ public class ProcessMonService extends EgovAbstractServiceImpl {
 	/**
 	 * PROCESS모니터링 목록 총 갯수를 조회한다.
 	 * 
-	 * @param processMonVO
-	 *            - PROCESS모니터링 Vo
-	 * @return int - PROCESS모니터링 토탈 카운트 수
+	 * @param processMonVO	PROCESS모니터링 Vo
+	 * @return 				PROCESS모니터링 토탈 카운트 수
 	 */
 	public int selectProcessMonListCnt(ProcessMonVO processMonVO) {
 		return processMonMapper.selectProcessMonListCnt(processMonVO);
@@ -59,9 +57,8 @@ public class ProcessMonService extends EgovAbstractServiceImpl {
 	/**
 	 * 등록된 PROCESS모니터링의 상세정보를 조회한다.
 	 * 
-	 * @param processMonVO
-	 *            - PROCESS모니터링 Vo
-	 * @return processMonVO - PROCESS모니터링 Vo
+	 * @param processMonVO	PROCESS모니터링 Vo
+	 * @return 				PROCESS모니터링 Vo
 	 */
 	public ProcessMonVO selectProcessMon(ProcessMonVO processMonVO) {
 		ProcessMonVO resultVo = processMonMapper.selectProcessMon(processMonVO);
@@ -73,8 +70,7 @@ public class ProcessMonService extends EgovAbstractServiceImpl {
 	/**
 	 * PROCESS모니터링 정보를 신규로 등록한다.
 	 * 
-	 * @param processNm
-	 *            - PROCESS모니터링 model
+	 * @param processMonVO	PROCESS모니터링 Vo
 	 */
 	public void insertProcessMon(ProcessMonVO processMonVO) {
 		try {
@@ -88,8 +84,7 @@ public class ProcessMonService extends EgovAbstractServiceImpl {
 	/**
 	 * 기 등록된 PROCESS모니터링 정보를 수정한다.
 	 * 
-	 * @param processNm
-	 *            - PROCESS모니터링 model
+	 * @param processMonVO	PROCESS모니터링 Vo
 	 */
 	public void updateProcessMon(ProcessMonVO processMonVO) {
 		processMonMapper.updateProcessMon(processMonVO);
@@ -98,8 +93,7 @@ public class ProcessMonService extends EgovAbstractServiceImpl {
 	/**
 	 * 기 등록된 PROCESS모니터링 정보를 삭제한다.
 	 * 
-	 * @param processNm
-	 *            - PROCESS모니터링 model
+	 * @param processMonVO	PROCESS모니터링 Vo
 	 */
 	public void deleteProcessMon(ProcessMonVO processMonVO) {
 		processMonMapper.deleteProcessMon(processMonVO);
@@ -108,8 +102,7 @@ public class ProcessMonService extends EgovAbstractServiceImpl {
 	/**
 	 * 프로세스 모니터링 결과를 수정한다.
 	 * 
-	 * @param processMonLog
-	 *            - 프로세스 모니터링대상 model
+	 * @param processMonVO	PROCESS모니터링 Vo
 	 */
 	public void updateProcessMonSttus(ProcessMonVO processMonVO) {
 		processMonMapper.updateProcessMonSttus(processMonVO);
@@ -134,9 +127,8 @@ public class ProcessMonService extends EgovAbstractServiceImpl {
 	/**
 	 * 등록된 프로세스 모니터링로그 목록을 조회한다.
 	 * 
-	 * @param processMonVO
-	 *            - PROCESS모니터링 Vo
-	 * @return List - PROCESS모니터링 목록
+	 * @param processMonLogVO	ProcessMonLogVO
+	 * @return 					PROCESS모니터링로그 목록
 	 */
 	public List<ProcessMonLogVO> selectProcessMonLogList(ProcessMonLogVO processMonLogVO) {
 		return processMonMapper.selectProcessMonLogList(processMonLogVO);
@@ -145,9 +137,8 @@ public class ProcessMonService extends EgovAbstractServiceImpl {
 	/**
 	 * 등록된 프로세스 모니터링로그 목록 총 갯수를 조회한다.
 	 * 
-	 * @param processMonVO
-	 *            - PROCESS모니터링 Vo
-	 * @return int - PROCESS모니터링 토탈 카운트 수
+	 * @param processMonLogVO	ProcessMonLogVO
+	 * @return 					PROCESS모니터링 토탈 카운트 수
 	 */
 	public int selectProcessMonLogListCnt(ProcessMonLogVO processMonLogVO) {
 		return processMonMapper.selectProcessMonLogListCnt(processMonLogVO);
@@ -157,9 +148,8 @@ public class ProcessMonService extends EgovAbstractServiceImpl {
 	/**
 	 * 프로세스 모니터링로그의 상세정보를 조회한다.
 	 * 
-	 * @param ProcessMonVO
-	 *            - 프로세스모니터링로그 model
-	 * @return ProcessMonVO - 프로세스모니터링로그 model
+	 * @param processMonLogVO	ProcessMonLogVO
+	 * @return 					ProcessMonLogVO
 	 */
 	public ProcessMonLogVO selectProcessMonLog(ProcessMonLogVO processMonLogVO) {
 		ProcessMonLogVO resultVo = processMonMapper.selectProcessMonLog(processMonLogVO);
@@ -171,8 +161,7 @@ public class ProcessMonService extends EgovAbstractServiceImpl {
 	/**
 	 * 프로세스 모니터링로그를 등록한다.
 	 * 
-	 * @param processMonLog
-	 *            - 프로세스 모니터링로그 model
+	 * @param processMonLogVO	ProcessMonLogVO
 	 */
 	public void insertProcessMonLog(ProcessMonLogVO processMonLogVO) {
 		processMonMapper.insertProcessMonLog(processMonLogVO);

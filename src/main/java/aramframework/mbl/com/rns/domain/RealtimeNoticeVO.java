@@ -59,7 +59,7 @@ public class RealtimeNoticeVO extends BaseVO  {
 	/**
 	 * 실시간 공지 서비스 일련번호를 획득한다.
 	 * 
-	 * @return the sn
+	 * @return 실시간 공지 서비스 일련번호
 	 */
 	public int getSn() {
 		return sn;
@@ -67,7 +67,7 @@ public class RealtimeNoticeVO extends BaseVO  {
 	/**
 	 * 실시간 공지 서비스 일련번호를 할당한다. 
 	 * 
-	 * @param sn the sn to set
+	 * @param 	sn 	실시간 공지 서비스 일련번호
 	 */
 	public void setSn(int sn) {
 		this.sn = sn;
@@ -76,7 +76,7 @@ public class RealtimeNoticeVO extends BaseVO  {
 	/**
 	 * 실시간 공지 회원ID를 획득한다.
 	 * 
-	 * @return the mberId
+	 * @return 	실시간 공지 회원ID
 	 */
 	public String getMberId() {
 		return mberId;
@@ -84,7 +84,7 @@ public class RealtimeNoticeVO extends BaseVO  {
 	/**
 	 * 실시간 공지 회원ID를 할당한다. 
 	 * 
-	 * @param mberId the mberId to set
+	 * @param mberId 	실시간 공지 회원ID
 	 */
 	public void setMberId(String mberId) {
 		this.mberId = mberId;
@@ -93,7 +93,7 @@ public class RealtimeNoticeVO extends BaseVO  {
 	/**
 	 * 실시간 공지 제목을 획득한다.
 	 * 
-	 * @return the noticeSj
+	 * @return 실시간 공지 제목
 	 */
 	public String getNoticeSj() {
 		return noticeSj;
@@ -101,7 +101,7 @@ public class RealtimeNoticeVO extends BaseVO  {
 	/**
 	 * 실시간 공지 제목을 할당한다. 
 	 * 
-	 * @param noticeSj the noticeSj to set
+	 * @param noticeSj 실시간 공지 제목
 	 */
 	public void setNoticeSj(String noticeSj) {
 		this.noticeSj = noticeSj;
@@ -110,7 +110,7 @@ public class RealtimeNoticeVO extends BaseVO  {
 	/**
 	 * 실시간 공지 내용을 획득한다.
 	 * 
-	 * @return the noticeCn
+	 * @return 실시간 공지 내용
 	 */
 	public String getNoticeCn() {
 		return noticeCn;
@@ -118,7 +118,7 @@ public class RealtimeNoticeVO extends BaseVO  {
 	/**
 	 * 실시간 공지 내용을 할당한다.
 	 * 
-	 * @param noticeCn the noticeCn to set
+	 * @param noticeCn 실시간 공지 내용
 	 */
 	public void setNoticeCn(String noticeCn) {
 		this.noticeCn = noticeCn;
@@ -127,7 +127,7 @@ public class RealtimeNoticeVO extends BaseVO  {
 	/**
 	 * 실시간 공지 서비스 최신구분 코드ID를 획득한다.
 	 * 
-	 * @return the recentCodeId
+	 * @return 최신구분 코드ID
 	 */
 	public String getRecentCodeId() {
 		return recentCodeId;
@@ -135,7 +135,7 @@ public class RealtimeNoticeVO extends BaseVO  {
 	/**
 	 * 실시간 공지 서비스 최신구분 코드ID를 할당한다.
 	 * 
-	 * @param updtDt the updtDt to set
+	 * @param updtDt 최신구분 코드ID
 	 */
 	public void setRecentCodeId(String recentCodeId) {
 		this.recentCodeId = recentCodeId;
@@ -144,7 +144,7 @@ public class RealtimeNoticeVO extends BaseVO  {
 	/**
 	 * 실시간 공지 서비스 최신구분 코드를 획득한다.
 	 * 
-	 * @return the recentCode
+	 * @return 최신구분 코드
 	 */
 	public String getRecentCode() {
 		return recentCode;
@@ -152,7 +152,7 @@ public class RealtimeNoticeVO extends BaseVO  {
 	/**
 	 * 실시간 공지 서비스 최신구분 코드를 할당한다.
 	 * 
-	 * @param updtDt the updtDt to set
+	 * @param updtDt 최신구분 코드
 	 */
 	public void setRecentCode(String recentCode) {
 		this.recentCode = recentCode;
@@ -161,7 +161,7 @@ public class RealtimeNoticeVO extends BaseVO  {
 	/**
 	 * 실시간 공지 시작일시를 획득한다.
 	 * 
-	 * @return the noticeBgnDt
+	 * @return 실시간 공지 시작일시
 	 */
 	public String getNoticeBgnDt() {
 		return noticeBgnDt;
@@ -169,7 +169,7 @@ public class RealtimeNoticeVO extends BaseVO  {
 	/**
 	 * 실시간 공지 시작일시를 할당한다.
 	 * 
-	 * @param noticeBgnDt the noticeBgnDt to set
+	 * @param noticeBgnDt 실시간 공지 시작일시
 	 */
 	public void setNoticeBgnDt(String noticeBgnDt) {
 		this.noticeBgnDt = noticeBgnDt;
@@ -178,7 +178,7 @@ public class RealtimeNoticeVO extends BaseVO  {
 	/**
 	 * 실시간 공지 종료일시를 획득한다.
 	 * 
-	 * @return the noticeEndDt
+	 * @return 실시간 공지 종료일시
 	 */
 	public String getNoticeEndDt() {
 		return noticeEndDt;
@@ -186,25 +186,25 @@ public class RealtimeNoticeVO extends BaseVO  {
 	/**
 	 * 실시간 공지 종료일시를 할당한다.
 	 * 
-	 * @param noticeEndDt the noticeEndDt to set
+	 * @param noticeEndDt 실시간 공지 종료일시
 	 */
 	public void setNoticeEndDt(String noticeEndDt) {
 		this.noticeEndDt = noticeEndDt;
 	}
 	
 	/**
-	 * 실시간 공지 생서일시를 획득한다.
+	 * 실시간 공지 생성일시를 획득한다.
 	 * 
-	 * @return the creatDt
+	 * @return 실시간 공지 생성일시
 	 */
 	
 	public String getCreatDt() {
 		return creatDt;
 	}
 	/**
-	 * 실시간 공지 생서일시를 할당한다.
+	 * 실시간 공지 생성일시를 할당한다.
 	 * 
-	 * @param creatDt the creatDt to set
+	 * @param creatDt 실시간 공지 생성일시
 	 */
 	public void setCreatDt(String creatDt) {
 		this.creatDt = creatDt;
@@ -213,7 +213,7 @@ public class RealtimeNoticeVO extends BaseVO  {
 	/**
 	 * 실시간 공지 수정일시를 획득한다.
 	 * 
-	 * @return the updtDt
+	 * @return 실시간 공지 수정일시
 	 */
 	public String getUpdtDt() {
 		return updtDt;
@@ -221,7 +221,7 @@ public class RealtimeNoticeVO extends BaseVO  {
 	/**
 	 * 실시간 공지 수정일시를 할당한다.
 	 * 
-	 * @param updtDt the updtDt to set
+	 * @param updtDt 실시간 공지 수정일시
 	 */
 	public void setUpdtDt(String updtDt) {
 		this.updtDt = updtDt;
@@ -231,7 +231,7 @@ public class RealtimeNoticeVO extends BaseVO  {
 	/**
 	 * 실시간 공지 최신구분명을 획득한다.
 	 * 
-	 * @return the recentNm
+	 * @return 실시간 공지 최신구분명
 	 */
 	public String getRecentNm() {
 		return recentNm;
@@ -239,7 +239,7 @@ public class RealtimeNoticeVO extends BaseVO  {
 	/**
 	 * 실시간 공지 최신구분명을 할당한다.
 	 * 
-	 * @param recentNm the recentNm to set
+	 * @param recentNm 실시간 공지 최신구분명
 	 */
 	public void setRecentNm(String recentNm) {
 		this.recentNm = recentNm;
@@ -248,7 +248,7 @@ public class RealtimeNoticeVO extends BaseVO  {
 	/**
 	 * 실시간 공지 서비스 목록 조회 갯수를 획득한다.
 	 * 
-	 * @return int
+	 * @return 목록 조회 갯수
 	 */
 	public int getFetchRow() {
 		return fetchRow;
@@ -256,7 +256,7 @@ public class RealtimeNoticeVO extends BaseVO  {
 	/**
 	 * 실시간 공지 서비스 목록 조회 갯수를 할당한다.
 	 * 
-	 * @param fetchRow
+	 * @param fetchRow	목록 조회 갯수
 	 */
 	public void setFetchRow(int fetchRow) {
 		this.fetchRow = fetchRow;
@@ -265,17 +265,18 @@ public class RealtimeNoticeVO extends BaseVO  {
 	/**
 	 * 실시간 공지 서비스 일련번호를 획득한다.
 	 * 
-	 * @return String 일련번호
+	 * @return 실시간 공지 서비스 일련번호
 	 */
 	public String getSearchSn() {
 		return searchSn;
 	}
 	/**
-	 * 실시간 공지 서비스 일변로호를 할당한다.
+	 * 실시간 공지 서비스 일련번호를 할당한다.
 	 * 
-	 * @param searchSn
+	 * @param searchSn	실시간 공지 서비스 일련번호
 	 */
 	public void setSsearchSn(String searchSn) {
 		this.searchSn = searchSn;
 	}
+	
 }

@@ -32,11 +32,11 @@ public class FileMngController {
 	/**
 	 * 첨부파일에 대한 목록을 조회한다.
 	 * 
-	 * @param fileVO
-	 * @param atchFileId
-]	 * @param model
-	 * @return
-	 * @throws Exception
+	 * @param fileId	String
+	 * @param fileVO	FileVO
+	 * @param model		ModelMap
+	 * @return			String
+	 * @throws 			Exception
 	 */
 	@RequestMapping("/content/files/{fileId}")
 	public String selectFileList(
@@ -58,11 +58,11 @@ public class FileMngController {
 	/**
 	 * 첨부파일 변경을 위한 수정페이지로 이동한다.
 	 * 
-	 * @param fileVO
-	 * @param atchFileId
-	 * @param model
-	 * @return
-	 * @throws Exception
+	 * @param fileId	String
+	 * @param fileVO	FileVO
+	 * @param model		ModelMap
+	 * @return			String
+	 * @throws 			Exception
 	 */
 	@RequestMapping("/content/files/{fileId}/editform")
 	public String editFileInfs(
@@ -84,11 +84,11 @@ public class FileMngController {
 	/**
 	 * 이미지 첨부파일에 대한 목록을 조회한다.
 	 * 
-	 * @param fileVO
-	 * @param atchFileId
-	 * @param model
-	 * @return
-	 * @throws Exception
+	 * @param fileId	String
+	 * @param fileVO	FileVO
+	 * @param model		ModelMap
+	 * @return			String
+	 * @throws 			Exception
 	 */
 	@RequestMapping("/content/imagefiles/{fileId}")
 	public String selectImageFileList(
@@ -108,11 +108,11 @@ public class FileMngController {
 	/**
 	 * 첨부파일에 대한 삭제를 처리한다.
 	 * 
-	 * @param fileVO
-	 * @param returnUrl
-]	 * @param model
-	 * @return
-	 * @throws Exception
+	 * @param returnUrl	String
+	 * @param fileVO	FileVO
+	 * @param request	HttpServletRequest
+	 * @return			String
+	 * @throws 			Exception
 	 */
 	@RequestMapping("/cmm/fms/deleteFileInfs.do")
 	@Secured("ROLE_USER")

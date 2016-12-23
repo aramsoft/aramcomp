@@ -19,21 +19,24 @@ public interface CmmUseMapper {
 	/**
 	 * 주어진 조건에 따른 공통코드를 불러온다.
 	 * 
-	 * @param searchCodeVO
+	 * @param 	searchCodeVO	SearchCodeVO
+	 * @return					List
 	 */
 	public List<ComCodeVO> selectCmmCodeList(SearchCodeVO searchCodeVO);
 
 	/**
 	 * 주어진 조건에 따른 공통코드를 불러온다.
 	 * 
-	 * @param searchCodeVO
+	 * @param 	searchCodeVO	SearchCodeVO
+	 * @return					ComCodeVO
 	 */
 	public ComCodeVO selectCmmCode(SearchCodeVO searchCodeVO);
 
 	/**
 	 * 공통코드로 사용할 조직정보를 를 불러온다.
 	 * 
-	 * @param searchCodeVO
+	 * @param 	searchCodeVO	SearchCodeVO
+	 * @return					List
 	 */
 	public List<ComCodeVO> selectOgrnztIdList(SearchCodeVO searchCodeVO);
 

@@ -34,8 +34,8 @@ public class CmmUseService extends EgovAbstractServiceImpl {
 	/**
 	 * 공통코드를 ServletContext에 등록한다.
 	 * 
-	 * @param codeId
-	 * @param codeName
+	 * @param 	codeId		String
+	 * @param 	codeName	String
 	 */
 	public void populateCmmCodeList(String codeId, String codeName) {
 		@SuppressWarnings("unchecked")
@@ -50,7 +50,8 @@ public class CmmUseService extends EgovAbstractServiceImpl {
 	/**
 	 * 공통코드를 조회한다.
 	 * 
-	 * @param searchCodeVO
+	 * @param 	searchCodeVO	SearchCodeVO
+	 * @return					List
 	 */
 	public List<ComCodeVO> selectCmmCodeList(SearchCodeVO searchCodeVO) {
 		return cmmUseMapper.selectCmmCodeList(searchCodeVO);
@@ -59,7 +60,8 @@ public class CmmUseService extends EgovAbstractServiceImpl {
 	/**
 	 * 공통코드를 조회한다.
 	 * 
-	 * @param codeId
+	 * @param 	codeId			String
+	 * @return					List
 	 */
 	public List<ComCodeVO> selectCmmCodeList(String codeId) {
 		SearchCodeVO vo = new SearchCodeVO();
@@ -70,8 +72,9 @@ public class CmmUseService extends EgovAbstractServiceImpl {
 	/**
 	 * 공통코드를 조회한다.
 	 * 
-	 * @param codeId
-	 * @param codeDetailId
+	 * @param 	codeId			String
+	 * @param 	codeDetailId	String
+	 * @return					ComCodeVO
 	 */
 	public ComCodeVO selectCmmCode(String codeId, String codeDetailId) {
 		SearchCodeVO vo = new SearchCodeVO();
@@ -83,7 +86,8 @@ public class CmmUseService extends EgovAbstractServiceImpl {
 	/**
 	 * searchCodeVO의 리스트를 받아서 여러개의 코드 리스트를 맵에 담아서 리턴한다.
 	 * 
-	 * @param voList
+	 * @param 	voList		List
+	 * @return				Map
 	 */
 	public Map<String, List<ComCodeVO>> selectCmmCodeMap(List<SearchCodeVO> voList) {
 		Map<String, List<ComCodeVO>> map = new HashMap<String, List<ComCodeVO>>();
@@ -101,7 +105,8 @@ public class CmmUseService extends EgovAbstractServiceImpl {
 	/**
 	 * 조직정보를 코드형태로 리턴한다.
 	 * 
-	 * @param searchCodeVO
+	 * @param 	searchCodeVO	SearchCodeVO
+	 * @return					List
 	 */
 	public List<ComCodeVO> selectOgrnztIdList(SearchCodeVO searchCodeVO) {
 		return cmmUseMapper.selectOgrnztIdList(searchCodeVO);

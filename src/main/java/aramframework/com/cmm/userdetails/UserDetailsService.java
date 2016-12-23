@@ -14,7 +14,7 @@ public interface UserDetailsService {
 	/**
 	 * 인증된 사용자객체를 VO형식으로 가져온다.
 	 * 
-	 * @return Object - 사용자 ValueObject
+	 * @return 	사용자 ValueObject
 	 */
 	public Object getAuthenticatedUser();
 
@@ -24,14 +24,14 @@ public interface UserDetailsService {
 	 * ROLE_RESTRICTED, IS_AUTHENTICATED_FULLY, IS_AUTHENTICATED_REMEMBERED,
 	 * IS_AUTHENTICATED_ANONYMOUSLY]
 	 * 
-	 * @return List - 사용자 권한정보 목록
+	 * @return 	사용자 권한정보 목록
 	 */
 	public List<String> getAuthorities();
 
 	/**
 	 * 인증된 사용자 여부를 체크한다.
 	 * 
-	 * @return Boolean - 인증된 사용자 여부(TRUE / FALSE)
+	 * @return 	인증된 사용자 여부(TRUE / FALSE)
 	 */
 	public Boolean isAuthenticated();
 

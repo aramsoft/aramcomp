@@ -27,7 +27,7 @@ public class UserDetailsSecurityServiceImpl extends EgovAbstractServiceImpl impl
 	/**
 	 * 인증된 사용자객체를 VO형식으로 가져온다.
 	 * 
-	 * @return Object - 사용자 ValueObject
+	 * @return 	사용자 ValueObject
 	 */
     public Object getAuthenticatedUser() {
         SecurityContext context = SecurityContextHolder.getContext();
@@ -52,7 +52,7 @@ public class UserDetailsSecurityServiceImpl extends EgovAbstractServiceImpl impl
 	 * ROLE_RESTRICTED, IS_AUTHENTICATED_FULLY, IS_AUTHENTICATED_REMEMBERED,
 	 * IS_AUTHENTICATED_ANONYMOUSLY]
 	 * 
-	 * @return List - 사용자 권한정보 목록
+	 * @return 	사용자 권한정보 목록
 	 */
     public List<String> getAuthorities() {
         List<String> listAuth = new ArrayList<String>();
@@ -79,7 +79,7 @@ public class UserDetailsSecurityServiceImpl extends EgovAbstractServiceImpl impl
 	/**
 	 * 인증된 사용자 여부를 체크한다.
 	 * 
-	 * @return Boolean - 인증된 사용자 여부(TRUE / FALSE)
+	 * @return 	인증된 사용자 여부(TRUE / FALSE)
 	 */
 
     public Boolean isAuthenticated() {

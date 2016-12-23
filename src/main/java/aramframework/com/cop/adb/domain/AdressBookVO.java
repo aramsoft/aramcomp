@@ -42,18 +42,17 @@ public class AdressBookVO extends BaseVO {
 
 	// domain
 	/**
-	 * AdbkId attribute를 리턴한다.
+	 * adbkId attribute를 리턴한다.
 	 * 
-	 * @return the AdbkId
+	 * @return 	the adbkId
 	 */
 	public String getAdbkId() {
 		return adbkId;
 	}
 	/**
-	 * AdbkId attribute 값을 설정한다.
+	 * adbkId attribute 값을 설정한다.
 	 * 
-	 * @param AdbkId
-	 *            the AdbkId to set
+	 * @param 	adbkId	the adbkId to set
 	 */
 	public void setAdbkId(String adbkId) {
 		this.adbkId = adbkId;
@@ -62,16 +61,15 @@ public class AdressBookVO extends BaseVO {
 	/**
 	 * adbkNm attribute를 리턴한다.
 	 * 
-	 * @return the adbkNm
+	 * @return 	the adbkNm
 	 */
 	public String getAdbkNm() {
 		return adbkNm;
 	}
 	/**
-	 * AdbkNm attribute 값을 설정한다.
+	 * adbkNm attribute 값을 설정한다.
 	 * 
-	 * @param AdbkNm
-	 *            the AdbkNm to set
+	 * @param 	adbkNm	the adbkNm to set
 	 */
 	public void setAdbkNm(String adbkNm) {
 		this.adbkNm = adbkNm;
@@ -80,7 +78,7 @@ public class AdressBookVO extends BaseVO {
 	/**
 	 * othbcScope attribute를 리턴한다.
 	 * 
-	 * @return the othbcScope
+	 * @return 	the othbcScope
 	 */
 	public String getOthbcScope() {
 		return othbcScope;
@@ -88,8 +86,7 @@ public class AdressBookVO extends BaseVO {
 	/**
 	 * othbcScope attribute 값을 설정한다.
 	 * 
-	 * @param othbcScope
-	 *            the othbcScope to set
+	 * @param 	othbcScope	the othbcScope to set
 	 */
 	public void setOthbcScope(String othbcScope) {
 		this.othbcScope = othbcScope;
@@ -98,7 +95,7 @@ public class AdressBookVO extends BaseVO {
 	/**
 	 * useAt attribute를 리턴한다.
 	 * 
-	 * @return the useAt
+	 * @return 	the useAt
 	 */
 	public String getUseAt() {
 		return useAt;
@@ -106,8 +103,7 @@ public class AdressBookVO extends BaseVO {
 	/**
 	 * useAt attribute 값을 설정한다.
 	 * 
-	 * @param useAt
-	 *            the useAt to set
+	 * @param 	useAt	the useAt to set
 	 */
 	public void setUseAt(String useAt) {
 		this.useAt = useAt;
@@ -116,7 +112,7 @@ public class AdressBookVO extends BaseVO {
 	/**
 	 * wrterId attribute를 리턴한다.
 	 * 
-	 * @return the wrterId
+	 * @return 	the wrterId
 	 */
 	public String getWrterId() {
 		return wrterId;
@@ -124,8 +120,7 @@ public class AdressBookVO extends BaseVO {
 	/**
 	 * wrterId attribute 값을 설정한다.
 	 * 
-	 * @param wrterId
-	 *            the wrterId to set
+	 * @param 	wrterId	the wrterId to set
 	 */
 	public void setWrterId(String wrterId) {
 		this.wrterId = wrterId;
@@ -134,7 +129,7 @@ public class AdressBookVO extends BaseVO {
 	/**
 	 * trgetOrgnztId attribute를 리턴한다.
 	 * 
-	 * @return the trgetOrgnztId
+	 * @return 	the trgetOrgnztId
 	 */
 	public String getTrgetOrgnztId() {
 		return trgetOrgnztId;
@@ -142,8 +137,7 @@ public class AdressBookVO extends BaseVO {
 	/**
 	 * trgetOrgnztId attribute 값을 설정한다.
 	 * 
-	 * @param trgetOrgnztId
-	 *            the trgetOrgnztId to set
+	 * @param 	trgetOrgnztId	the trgetOrgnztId to set
 	 */
 	public void setTrgetOrgnztId(String trgetOrgnztId) {
 		this.trgetOrgnztId = trgetOrgnztId;
@@ -153,7 +147,7 @@ public class AdressBookVO extends BaseVO {
 	/**
 	 * userIds attribute를 리턴한다.
 	 * 
-	 * @return the userIds
+	 * @return 	the userIds
 	 */
 	public String getUserIds() {
 		return userIds;
@@ -161,8 +155,7 @@ public class AdressBookVO extends BaseVO {
 	/**
 	 * userIds attribute 값을 설정한다.
 	 * 
-	 * @param userIds
-	 *            the userIds to set
+	 * @param 	userIds	the userIds to set
 	 */
 	public void setUserIds(String userIds) {
 		this.userIds = userIds;
@@ -171,7 +164,7 @@ public class AdressBookVO extends BaseVO {
 	/**
 	 * adbkMan attribute를 리턴한다.
 	 * 
-	 * @return the adbkMan
+	 * @return 	the adbkMan
 	 */
 	public List<AdressBookUserVO> getAdbkMan() {
 		return adbkMan;
@@ -179,8 +172,7 @@ public class AdressBookVO extends BaseVO {
 	/**
 	 * adbkMan attribute 값을 설정한다.
 	 * 
-	 * @param adbkMan
-	 *            the adbkMan to set
+	 * @param 	adbkMan	the adbkMan to set
 	 */
 	public void setAdbkMan(List<AdressBookUserVO> adbkMan) {
 		this.adbkMan = adbkMan;

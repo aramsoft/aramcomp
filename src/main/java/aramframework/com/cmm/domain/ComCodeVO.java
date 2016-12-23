@@ -25,7 +25,7 @@ public class ComCodeVO {
 	/**
 	 * codeId attribute 를 리턴한다.
 	 * 
-	 * @return String
+	 * @return 	String
 	 */
 	public String getCodeId() {
 		return codeId;
@@ -33,8 +33,7 @@ public class ComCodeVO {
 	/**
 	 * codeId attribute 값을 설정한다.
 	 * 
-	 * @param codeId
-	 *            String
+	 * @param 	codeId	String
 	 */
 	public void setCodeId(String codeId) {
 		this.codeId = codeId;
@@ -43,7 +42,7 @@ public class ComCodeVO {
 	/**
 	 * code attribute 를 리턴한다.
 	 * 
-	 * @return String
+	 * @return 	String
 	 */
 	public String getCode() {
 		return code;
@@ -51,8 +50,7 @@ public class ComCodeVO {
 	/**
 	 * code attribute 값을 설정한다.
 	 * 
-	 * @param code
-	 *            String
+	 * @param 	code	String
 	 */
 	public void setCode(String code) {
 		this.code = code;
@@ -61,7 +59,7 @@ public class ComCodeVO {
 	/**
 	 * codeNm attribute 를 리턴한다.
 	 * 
-	 * @return String
+	 * @return 	String
 	 */
 	public String getCodeNm() {
 		return codeNm;
@@ -69,8 +67,7 @@ public class ComCodeVO {
 	/**
 	 * codeNm attribute 값을 설정한다.
 	 * 
-	 * @param codeNm
-	 *            String
+	 * @param 	codeNm	String
 	 */
 	public void setCodeNm(String codeNm) {
 		this.codeNm = codeNm;
@@ -79,7 +76,7 @@ public class ComCodeVO {
 	/**
 	 * codeDc attribute 를 리턴한다.
 	 * 
-	 * @return String
+	 * @return 	String
 	 */
 	public String getCodeDc() {
 		return codeDc;
@@ -87,8 +84,7 @@ public class ComCodeVO {
 	/**
 	 * codeDc attribute 값을 설정한다.
 	 * 
-	 * @param codeDc
-	 *            String
+	 * @param 	codeDc	String
 	 */
 	public void setCodeDc(String codeDc) {
 		this.codeDc = codeDc;

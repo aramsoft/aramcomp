@@ -29,7 +29,7 @@ public class SearchCodeVO {
 	/**
 	 * codeId attribute를 리턴한다.
 	 * 
-	 * @return the codeId
+	 * @return 	the codeId
 	 */
 	public String getCodeId() {
 		return codeId;
@@ -37,8 +37,7 @@ public class SearchCodeVO {
 	/**
 	 * codeId attribute 값을 설정한다.
 	 * 
-	 * @param codeId
-	 *            the codeId to set
+	 * @param 	codeId	the codeId to set
 	 */
 	public void setCodeId(String codeId) {
 		this.codeId = codeId;
@@ -47,7 +46,7 @@ public class SearchCodeVO {
 	/**
 	 * code attribute를 리턴한다.
 	 * 
-	 * @return the code
+	 * @return 	the code
 	 */
 	public String getCode() {
 		return code;
@@ -55,8 +54,7 @@ public class SearchCodeVO {
 	/**
 	 * code attribute 값을 설정한다.
 	 * 
-	 * @param code
-	 *            the code to set
+	 * @param 	code	the code to set
 	 */
 	public void setCode(String code) {
 		this.code = code;
@@ -65,7 +63,7 @@ public class SearchCodeVO {
 	/**
 	 * tableNm attribute를 리턴한다.
 	 * 
-	 * @return the tableNm
+	 * @return 	the tableNm
 	 */
 	public String getTableNm() {
 		return tableNm;
@@ -73,8 +71,7 @@ public class SearchCodeVO {
 	/**
 	 * tableNm attribute 값을 설정한다.
 	 * 
-	 * @param tableNm
-	 *            the tableNm to set
+	 * @param 	tableNm	the tableNm to set
 	 */
 	public void setTableNm(String tableNm) {
 		this.tableNm = tableNm;
@@ -83,7 +80,7 @@ public class SearchCodeVO {
 	/**
 	 * haveDetailCondition attribute를 리턴한다.
 	 * 
-	 * @return the haveDetailCondition
+	 * @return 	the haveDetailCondition
 	 */
 	public String getHaveDetailCondition() {
 		return haveDetailCondition;
@@ -91,8 +88,7 @@ public class SearchCodeVO {
 	/**
 	 * haveDetailCondition attribute 값을 설정한다.
 	 * 
-	 * @param haveDetailCondition
-	 *            the haveDetailCondition to set
+	 * @param 	haveDetailCondition	the haveDetailCondition to set
 	 */
 	public void setHaveDetailCondition(String haveDetailCondition) {
 		this.haveDetailCondition = haveDetailCondition;
@@ -101,7 +97,7 @@ public class SearchCodeVO {
 	/**
 	 * detailCondition attribute를 리턴한다.
 	 * 
-	 * @return the detailCondition
+	 * @return 	the detailCondition
 	 */
 	public String getDetailCondition() {
 		return detailCondition;
@@ -109,8 +105,7 @@ public class SearchCodeVO {
 	/**
 	 * detailCondition attribute 값을 설정한다.
 	 * 
-	 * @param detailCondition
-	 *            the detailCondition to set
+	 * @param 	detailCondition	the detailCondition to set
 	 */
 	public void setDetailCondition(String detailCondition) {
 		this.detailCondition = detailCondition;
@@ -118,6 +113,8 @@ public class SearchCodeVO {
 
 	/**
 	 * toString 메소드를 대치한다.
+	 * 
+	 * @return 	String 
 	 */
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);

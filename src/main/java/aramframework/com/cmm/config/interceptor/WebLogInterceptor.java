@@ -42,9 +42,10 @@ public class WebLogInterceptor extends HandlerInterceptorAdapter {
 	/**
 	 * 웹 로그정보를 생성한다.
 	 * 
-	 * @param HttpServletRequest
-	 *            request, HttpServletResponse response, Object handler
-	 * @return
+	 * @param request		HttpServletRequest
+	 * @param response		HttpServletResponse
+	 * @param handler		Object
+	 * @param modeAndView	ModelAndView
 	 * @throws Exception
 	 */
 	@Override

@@ -19,9 +19,7 @@ public class MessageHelper {
 	/**
 	 * getReloadableResourceBundleMessageSource()
 	 * 
-	 * @param reloadableResourceBundleMessageSource
-	 *            - resource MessageSource
-	 * @return ReloadableResourceBundleMessageSource
+	 * @param 	reloadableResourceBundleMessageSource	resource MessageSource
 	 */
 	public void setMessageSource(ReloadableResourceBundleMessageSource reloadableResourceBundleMessageSource) {
 		MessageHelper.messageSource = reloadableResourceBundleMessageSource;
@@ -30,7 +28,7 @@ public class MessageHelper {
 	/**
 	 * getReloadableResourceBundleMessageSource()
 	 * 
-	 * @return ReloadableResourceBundleMessageSource
+	 * @return 	ReloadableResourceBundleMessageSource
 	 */
 	public ReloadableResourceBundleMessageSource getMessageSource() {
 		return messageSource;
@@ -39,9 +37,8 @@ public class MessageHelper {
 	/**
 	 * 정의된 메세지 조회
 	 * 
-	 * @param code
-	 *            - 메세지 코드
-	 * @return String
+	 * @param 	code	메세지 코드
+	 * @return 			String
 	 */
 	public static String getMessage(String code) {
 		return messageSource.getMessage(code, null, Locale.getDefault());

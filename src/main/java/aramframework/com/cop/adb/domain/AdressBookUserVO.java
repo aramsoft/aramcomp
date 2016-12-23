@@ -65,7 +65,7 @@ public class AdressBookUserVO extends BaseVO {
 	/**
 	 * adbkUserId attribute를 리턴한다.
 	 * 
-	 * @return the adbkUserId
+	 * @return 	the adbkUserId
 	 */
 	public String getAdbkUserId() {
 		return adbkUserId;
@@ -73,8 +73,7 @@ public class AdressBookUserVO extends BaseVO {
 	/**
 	 * adbkUserId attribute 값을 설정한다.
 	 * 
-	 * @param adbkUserId
-	 *            the adbkUserId to set
+	 * @param 	adbkUserId	the adbkUserId to set
 	 */
 	public void setAdbkUserId(String adbkUserId) {
 		this.adbkUserId = adbkUserId;
@@ -83,7 +82,7 @@ public class AdressBookUserVO extends BaseVO {
 	/**
 	 * adbkId attribute를 리턴한다.
 	 * 
-	 * @return the adbkId
+	 * @return 	the adbkId
 	 */
 	public String getAdbkId() {
 		return adbkId;
@@ -91,8 +90,7 @@ public class AdressBookUserVO extends BaseVO {
 	/**
 	 * adbkId attribute 값을 설정한다.
 	 * 
-	 * @param adbkId
-	 *            the adbkId to set
+	 * @param 	adbkId	the adbkId to set
 	 */
 	public void setAdbkId(String adbkId) {
 		this.adbkId = adbkId;
@@ -101,7 +99,7 @@ public class AdressBookUserVO extends BaseVO {
 	/**
 	 * emplyrId attribute를 리턴한다.
 	 * 
-	 * @return the emplyrId
+	 * @return 	the emplyrId
 	 */
 	public String getEmplyrId() {
 		return emplyrId;
@@ -109,8 +107,7 @@ public class AdressBookUserVO extends BaseVO {
 	/**
 	 * emplyrId attribute 값을 설정한다.
 	 * 
-	 * @param emplyrId
-	 *            the emplyrId to set
+	 * @param 	emplyrId	the emplyrId to set
 	 */
 	public void setEmplyrId(String emplyrId) {
 		this.emplyrId = emplyrId;
@@ -119,7 +116,7 @@ public class AdressBookUserVO extends BaseVO {
 	/**
 	 * ncrdId attribute를 리턴한다.
 	 * 
-	 * @return the ncrdId
+	 * @return 	the ncrdId
 	 */
 	public String getNcrdId() {
 		return ncrdId;
@@ -127,8 +124,7 @@ public class AdressBookUserVO extends BaseVO {
 	/**
 	 * ncrdId attribute 값을 설정한다.
 	 * 
-	 * @param ncrdId
-	 *            the ncrdId to set
+	 * @param 	ncrdId	the ncrdId to set
 	 */
 	public void setNcrdId(String ncrdId) {
 		this.ncrdId = ncrdId;
@@ -137,7 +133,7 @@ public class AdressBookUserVO extends BaseVO {
 	/**
 	 * nm attribute를 리턴한다.
 	 * 
-	 * @return the nm
+	 * @return 	the nm
 	 */
 	public String getNm() {
 		return nm;
@@ -145,8 +141,7 @@ public class AdressBookUserVO extends BaseVO {
 	/**
 	 * nm attribute 값을 설정한다.
 	 * 
-	 * @param nm
-	 *            the nm to set
+	 * @param 	nm	the nm to set
 	 */
 	public void setNm(String nm) {
 		this.nm = nm;
@@ -155,7 +150,7 @@ public class AdressBookUserVO extends BaseVO {
 	/**
 	 * emailAdres attribute를 리턴한다.
 	 * 
-	 * @return the emailAdres
+	 * @return 	the emailAdres
 	 */
 	public String getEmailAdres() {
 		return emailAdres;
@@ -163,8 +158,7 @@ public class AdressBookUserVO extends BaseVO {
 	/**
 	 * emailAdres attribute 값을 설정한다.
 	 * 
-	 * @param emailAdres
-	 *            the emailAdres to set
+	 * @param 	emailAdres	the emailAdres to set
 	 */
 	public void setEmailAdres(String emailAdres) {
 		this.emailAdres = emailAdres;
@@ -173,7 +167,7 @@ public class AdressBookUserVO extends BaseVO {
 	/**
 	 * moblphonNo attribute를 리턴한다.
 	 * 
-	 * @return the moblphonNo
+	 * @return 	the moblphonNo
 	 */
 	public String getMoblphonNo() {
 		return moblphonNo;
@@ -181,8 +175,7 @@ public class AdressBookUserVO extends BaseVO {
 	/**
 	 * moblphonNo attribute 값을 설정한다.
 	 * 
-	 * @param moblphonNo
-	 *            the moblphonNo to set
+	 * @param 	moblphonNo	the moblphonNo to set
 	 */
 	public void setMoblphonNo(String moblphonNo) {
 		this.moblphonNo = moblphonNo;
@@ -194,13 +187,12 @@ public class AdressBookUserVO extends BaseVO {
 	 * @return the fxnum
 	 */
 	public String getFxnum() {
-		return fxnum;
+		return 	fxnum;
 	}
 	/**
 	 * fxnum attribute 값을 설정한다.
 	 * 
-	 * @param fxnum
-	 *            the fxnum to set
+	 * @param 	fxnum	the fxnum to set
 	 */
 	public void setFxnum(String fxnum) {
 		this.fxnum = fxnum;
@@ -209,7 +201,7 @@ public class AdressBookUserVO extends BaseVO {
 	/**
 	 * offmTelno attribute를 리턴한다.
 	 * 
-	 * @return the offmTelno
+	 * @return 	the offmTelno
 	 */
 	public String getOffmTelno() {
 		return offmTelno;
@@ -217,8 +209,7 @@ public class AdressBookUserVO extends BaseVO {
 	/**
 	 * offmTelno attribute 값을 설정한다.
 	 * 
-	 * @param offmTelno
-	 *            the offmTelno to set
+	 * @param 	offmTelno	the offmTelno to set
 	 */
 	public void setOffmTelno(String offmTelno) {
 		this.offmTelno = offmTelno;
@@ -227,7 +218,7 @@ public class AdressBookUserVO extends BaseVO {
 	/**
 	 * homeTelno attribute를 리턴한다.
 	 * 
-	 * @return the homeTelno
+	 * @return 	the homeTelno
 	 */
 	public String getHomeTelno() {
 		return homeTelno;
@@ -235,8 +226,7 @@ public class AdressBookUserVO extends BaseVO {
 	/**
 	 * homeTelno attribute 값을 설정한다.
 	 * 
-	 * @param homeTelno
-	 *            the homeTelno to set
+	 * @param 	homeTelno	the homeTelno to set
 	 */
 	public void setHomeTelno(String homeTelno) {
 		this.homeTelno = homeTelno;
@@ -246,7 +236,7 @@ public class AdressBookUserVO extends BaseVO {
 	/**
 	 * userId attribute를 리턴한다.
 	 * 
-	 * @return the userId
+	 * @return 	the userId
 	 */
 	public String getUserId() {
 		return userId;
@@ -254,8 +244,7 @@ public class AdressBookUserVO extends BaseVO {
 	/**
 	 * userId attribute 값을 설정한다.
 	 * 
-	 * @param userId
-	 *            the userId to set
+	 * @param 	userId	the userId to set
 	 */
 	public void setUserId(String userId) {
 		this.userId = userId;
@@ -264,7 +253,7 @@ public class AdressBookUserVO extends BaseVO {
 	/**
 	 * userNm attribute를 리턴한다.
 	 * 
-	 * @return the userNm
+	 * @return 	the userNm
 	 */
 	public String getUserNm() {
 		return userNm;
@@ -272,8 +261,7 @@ public class AdressBookUserVO extends BaseVO {
 	/**
 	 * userNm attribute 값을 설정한다.
 	 * 
-	 * @param userNm
-	 *            the userNm to set
+	 * @param 	userNm	the userNm to set
 	 */
 	public void setUserNm(String userNm) {
 		this.userNm = userNm;
@@ -282,7 +270,7 @@ public class AdressBookUserVO extends BaseVO {
 	/**
 	 * userEmail attribute를 리턴한다.
 	 * 
-	 * @return the userEmail
+	 * @return 	the userEmail
 	 */
 	public String getUserEmail() {
 		return userEmail;
@@ -290,44 +278,41 @@ public class AdressBookUserVO extends BaseVO {
 	/**
 	 * userEmail attribute 값을 설정한다.
 	 * 
-	 * @param userEmail
-	 *            the userEmail to set
+	 * @param 	userEmail	the userEmail to set
 	 */
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
 
 	/**
-	 * userEmail attribute를 리턴한다.
+	 * areaNo attribute를 리턴한다.
 	 * 
-	 * @return the userEmail
+	 * @return 	the areaNo
 	 */
 	public String getAreaNo() {
 		return areaNo;
 	}
 	/**
-	 * userEmail attribute 값을 설정한다.
+	 * areaNo attribute 값을 설정한다.
 	 * 
-	 * @param userEmail
-	 *            the userEmail to set
+	 * @param 	areaNo	the areaNo to set
 	 */
 	public void setAreaNo(String areaNo) {
 		this.areaNo = areaNo;
 	}
 
 	/**
-	 * userEmail attribute를 리턴한다.
+	 * homemiddleTelno attribute를 리턴한다.
 	 * 
-	 * @return the userEmail
+	 * @return 	the homemiddleTelno
 	 */
 	public String getHomemiddleTelno() {
 		return homemiddleTelno;
 	}
 	/**
-	 * userEmail attribute 값을 설정한다.
+	 * homemiddleTelno attribute 값을 설정한다.
 	 * 
-	 * @param userEmail
-	 *            the userEmail to set
+	 * @param 	homemiddleTelno	the homemiddleTelno to set
 	 */
 	public void setHomemiddleTelno(String homemiddleTelno) {
 		this.homemiddleTelno = homemiddleTelno;
@@ -336,7 +321,7 @@ public class AdressBookUserVO extends BaseVO {
 	/**
 	 * homeendTelno attribute를 리턴한다.
 	 * 
-	 * @return the homeendTelno
+	 * @return 	the homeendTelno
 	 */
 	public String getHomeendTelno() {
 		return homeendTelno;
@@ -344,8 +329,7 @@ public class AdressBookUserVO extends BaseVO {
 	/**
 	 * homeendTelno attribute 값을 설정한다.
 	 * 
-	 * @param homeendTelno
-	 *            the homeendTelno to set
+	 * @param 	homeendTelno	the homeendTelno to set
 	 */
 	public void setHomeendTelno(String homeendTelno) {
 		this.homeendTelno = homeendTelno;

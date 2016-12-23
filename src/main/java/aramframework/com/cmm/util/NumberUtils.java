@@ -20,9 +20,9 @@ public class NumberUtils {
 	/**
 	 * Integer Array내에 해당 정수가 있는가를 확인한다.
 	 * 
-	 * @param	intArray	검사할 정수 배열
+	 * @param	nArray		검사할 정수 배열
 	 * @param	number		검사할 정수 
-	 * @return 	boolean	:   존재하면 <code>true</code>, 
+	 * @return 				존재하면 <code>true</code>, 
 	 * 						없으면 <code>false</false>
 	 */
 	public static boolean existNumber(int[] nArray, int number) 

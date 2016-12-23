@@ -24,9 +24,8 @@ public class SysLogAdvice {
 	/**
 	 * 시스템 로그정보를 생성한다. sevice Class의 insert로 시작되는 Method
 	 * 
-	 * @param ProceedingJoinPoint
-	 * @return Object
-	 * @throws Exception
+	 * @param 	joinPoint	ProceedingJoinPoint
+	 * @return 	Object
 	 */
 	public Object logInsert(ProceedingJoinPoint joinPoint) throws Throwable {
 
@@ -73,9 +72,8 @@ public class SysLogAdvice {
 	/**
 	 * 시스템 로그정보를 생성한다. sevice Class의 update로 시작되는 Method
 	 * 
-	 * @param ProceedingJoinPoint
-	 * @return Object
-	 * @throws Exception
+	 * @param 	joinPoint	ProceedingJoinPoint
+	 * @return 	Object
 	 */
 	public Object logUpdate(ProceedingJoinPoint joinPoint) throws Throwable {
 
@@ -122,9 +120,8 @@ public class SysLogAdvice {
 	/**
 	 * 시스템 로그정보를 생성한다. sevice Class의 delete로 시작되는 Method
 	 * 
-	 * @param ProceedingJoinPoint
-	 * @return Object
-	 * @throws Exception
+	 * @param 	joinPoint	ProceedingJoinPoint
+	 * @return 	Object
 	 */
 	public Object logDelete(ProceedingJoinPoint joinPoint) throws Throwable {
 
@@ -171,9 +168,8 @@ public class SysLogAdvice {
 	/**
 	 * 시스템 로그정보를 생성한다. sevice Class의 select로 시작되는 Method
 	 * 
-	 * @param ProceedingJoinPoint
-	 * @return Object
-	 * @throws Exception
+	 * @param 	joinPoint	ProceedingJoinPoint
+	 * @return 	Object
 	 */
 	public Object logSelect(ProceedingJoinPoint joinPoint) throws Throwable {
 

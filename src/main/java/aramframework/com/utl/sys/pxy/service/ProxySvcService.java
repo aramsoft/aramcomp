@@ -45,7 +45,8 @@ public class ProxySvcService extends EgovAbstractServiceImpl {
 	/**
 	 * 프록시서비스를 관리하기 위해 등록된 프록시정보 목록을 조회한다.
 	 * 
-	 * @param proxySvcVO
+	 * @param proxySvcVO	ProxySvcVO
+	 * @return				List
 	 */
 	public List<ProxySvcVO> selectProxySvcList(ProxySvcVO proxySvcVO) {
 		return proxySvcMapper.selectProxySvcList(proxySvcVO);
@@ -54,7 +55,8 @@ public class ProxySvcService extends EgovAbstractServiceImpl {
 	/**
 	 * 프록시서비스 목록 총 갯수를 조회한다.
 	 * 
-	 * @param proxySvcVO
+	 * @param proxySvcVO	ProxySvcVO
+	 * @return				총 갯수
 	 */
 	public int selectProxySvcListCnt(ProxySvcVO proxySvcVO) {
 		return proxySvcMapper.selectProxySvcListCnt(proxySvcVO);
@@ -63,7 +65,8 @@ public class ProxySvcService extends EgovAbstractServiceImpl {
 	/**
 	 * 등록된 프록시서비스의 상세정보를 조회한다.
 	 * 
-	 * @param proxySvcVO
+	 * @param proxySvcVO	ProxySvcVO
+	 * @return				ProxySvcVO
 	 */
 	public ProxySvcVO selectProxySvc(ProxySvcVO proxySvcVO) {
 		ProxySvcVO resultVo = proxySvcMapper.selectProxySvc(proxySvcVO);
@@ -75,7 +78,7 @@ public class ProxySvcService extends EgovAbstractServiceImpl {
 	/**
 	 * 프록시서비스를 신규로 등록한다.
 	 * 
-	 * @param ProxySvcVO
+	 * @param proxySvcVO	ProxySvcVO
 	 */
 	public ProxySvcVO insertProxySvc(ProxySvcVO proxySvcVO) {
 		try {
@@ -95,7 +98,7 @@ public class ProxySvcService extends EgovAbstractServiceImpl {
 	/**
 	 * 기 등록된 프록시서비스를 수정한다.
 	 * 
-	 * @param ProxySvcVO
+	 * @param proxySvcVO	ProxySvcVO
 	 */
 	public void updateProxySvc(ProxySvcVO proxySvcVO) {
 		proxySvcMapper.updateProxySvc(proxySvcVO);
@@ -105,7 +108,7 @@ public class ProxySvcService extends EgovAbstractServiceImpl {
 	/**
 	 * 기 등록된 프록시서비스를 삭제한다.
 	 * 
-	 * @param ProxySvcVO
+	 * @param proxySvcVO	ProxySvcVO
 	 */
 	public void deleteProxySvc(ProxySvcVO proxySvcVO) {
 		proxySvcMapper.deleteProxySvc(proxySvcVO);
@@ -114,7 +117,8 @@ public class ProxySvcService extends EgovAbstractServiceImpl {
 	/**
 	 * 프록시서비스를 모니터링하기 위해 등록된 프록시로그 목록을 조회한다.
 	 * 
-	 * @param proxySvcLogVO
+	 * @param proxySvcLogVO	ProxySvcLogVO
+	 * @return				List
 	 */
 	public List<ProxySvcLogVO> selectProxySvcLogList(ProxySvcLogVO proxySvcLogVO) {
 		return proxySvcMapper.selectProxySvcLogList(proxySvcLogVO);
@@ -123,7 +127,8 @@ public class ProxySvcService extends EgovAbstractServiceImpl {
 	/**
 	 * 프록시로그 목록 총 갯수를 조회한다.
 	 * 
-	 * @param proxySvcLogVO
+	 * @param proxySvcLogVO	ProxySvcLogVO
+	 * @return				총 갯수
 	 */
 	public int selectProxySvcLogListCnt(ProxySvcLogVO proxySvcLogVO) {
 		return proxySvcMapper.selectProxySvcLogListCnt(proxySvcLogVO);
@@ -132,7 +137,7 @@ public class ProxySvcService extends EgovAbstractServiceImpl {
 	/**
 	 * 프록시로그를 생성한다.
 	 * 
-	 * @param proxySvcLogVO
+	 * @param proxySvcLogVO	ProxySvcLogVO
 	 */
 	public void insertProxySvcLog(ProxySvcLogVO proxySvcLogVO) {
 		proxySvcMapper.insertProxySvcLog(proxySvcLogVO);
@@ -141,7 +146,7 @@ public class ProxySvcService extends EgovAbstractServiceImpl {
 	/**
 	 * 프록시서버를 실행한다.
 	 * 
-	 * @param proxySvcVO
+	 * @param proxySvcVO	ProxySvcVO
 	 */
 	public void runProxyServer(ProxySvcVO proxySvcVO) {
 		try {

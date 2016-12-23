@@ -41,10 +41,10 @@ public class ImageProcessController {
 	/**
 	 * 첨부된 이미지에 대한 미리보기 기능을 제공한다.
 	 * 
-	 * @param atchFileId
-	 * @param fileSn
-	 * @param model
-	 * @param response
+	 * @param filePathId	String
+	 * @param fileSn		String
+	 * @param strWidth		String
+	 * @param response		HttpServletResponse
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/content/imagefiles/{filePathId}/file/{fileSn}")
@@ -149,10 +149,7 @@ public class ImageProcessController {
 	/**
 	 * 이미지의 크기를 줄인다.
 	 * 
-	 * @param atchFileId
-	 * @param fileSn
-	 * @param model
-	 * @param response
+	 * @param fileVO	FileVO
 	 * @throws Exception
 	 */
 	@RequestMapping("/cmm/fms/reduceImage.do")
@@ -169,10 +166,8 @@ public class ImageProcessController {
 	/**
 	 * 이미지의 폭을 수정한다.
 	 * 
-	 * @param atchFileId
-	 * @param fileSn
-	 * @param model
-	 * @param response
+	 * @param width		int
+	 * @param fileVO	FileVO
 	 * @throws Exception
 	 */
 	@RequestMapping("/cmm/fms/resizeImage.do")
@@ -186,4 +181,5 @@ public class ImageProcessController {
 		String target = fileVO.getFileStreCours() +  "test.jpg";
 		FileCmprs.resizeJpeg(source, target, width);
 	}
+	
 }

@@ -21,10 +21,8 @@ public class SessionMapping extends EgovUsersByUsernameMapping {
 	/**
 	 * 사용자정보를 테이블에서 조회하여 EgovUsersByUsernameMapping 에 매핑한다.
 	 * 
-	 * @param ds
-	 *            DataSource
-	 * @param usersByUsernameQuery
-	 *            String
+	 * @param 	ds						DataSource
+	 * @param 	usersByUsernameQuery	String
 	 */
 	public SessionMapping(DataSource ds, String usersByUsernameQuery) {
 		super(ds, usersByUsernameQuery);
@@ -33,11 +31,9 @@ public class SessionMapping extends EgovUsersByUsernameMapping {
 	/**
 	 * mapRow Override
 	 * 
-	 * @param rs
-	 *            ResultSet 결과
-	 * @param rownum
-	 *            row num
-	 * @return Object EgovUserDetails
+	 * @param 	rs		ResultSet 결과
+	 * @param 	rownum  row num
+	 * @return 			EgovUserDetails
 	 * @exception SQLException
 	 */
 	@Override
@@ -72,4 +68,5 @@ public class SessionMapping extends EgovUsersByUsernameMapping {
 
 		return new EgovUserDetails(strUserId, strPassWord, strEnabled, loginVO);
 	}
+	
 }

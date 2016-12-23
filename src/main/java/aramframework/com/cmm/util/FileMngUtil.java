@@ -45,8 +45,9 @@ public class FileMngUtil {
 	/**
 	 * 첨부파일을 새로 저장한다.
 	 * 
-	 * @param files
-	 * @return
+	 * @param 	multiRequest	MultipartHttpServletRequest
+	 * @param 	KeyStr			String
+	 * @return					String
 	 * @throws Exception
 	 */
 	public String insertMultiFile(MultipartHttpServletRequest multiRequest, String KeyStr) 
@@ -63,8 +64,11 @@ public class FileMngUtil {
 	/**
 	 * 첨부파일을 수정 저장한다.
 	 * 
-	 * @param files
-	 * @return
+	 * @param 	multiRequest	MultipartHttpServletRequest
+	 * @param 	KeyStr			String
+	 * @param 	atchFileId		String
+	 * @return					String
+	 * @throws Exception
 	 */
 	public String updateMultiFile(MultipartHttpServletRequest multiRequest, String KeyStr, String atchFileId) 
 	throws Exception {
@@ -87,7 +91,7 @@ public class FileMngUtil {
 	/**
 	 * 첨부파일을 삭제한다.
 	 * 
-	 * @param files
+	 * @param 	atchFileId		String
 	 */
 	public void deleteMultiFile(String atchFileId) {
 		FileVO fvo = new FileVO();
@@ -100,8 +104,13 @@ public class FileMngUtil {
 	/**
 	 * 첨부파일에 대한 목록 정보를 취득한다.
 	 * 
-	 * @param files
-	 * @return
+	 * @param 	files			Map
+	 * @param 	KeyStr			String
+	 * @param 	fileKeyParam	int
+	 * @param 	atchFileId		String
+	 * @param 	storePath		String
+	 * @return					List
+	 * @throws Exception
 	 */
 	public List<FileVO> parseFileInf(Map<String, MultipartFile> files, String KeyStr, 
 			int fileKeyParam, String atchFileId, String storePath) 
@@ -186,7 +195,6 @@ public class FileMngUtil {
 	 * 공통 컴포넌트 utl.fcc 패키지와 Dependency제거를 위해 내부 메서드로 추가 정의함
 	 * 응용어플리케이션에서 고유값을 사용하기 위해 시스템에서17자리의TIMESTAMP값을 구하는 기능
 	 * 
-	 * @param
 	 * @return Timestamp 값
 	 */
 	private String getTimeStamp() {
@@ -207,4 +215,5 @@ public class FileMngUtil {
 
 		return rtnStr;
 	}
+	
 }

@@ -26,7 +26,8 @@ public class FileMngService extends EgovAbstractServiceImpl {
 	/**
 	 * 파일명 검색에 대한 목록을 조회한다.
 	 * 
-	 * @param fileVO
+	 * @param 	fileVO	FileVO
+	 * @return			List
 	 */
 	public List<FileVO> selectFileListByFileNm(FileVO fileVO) {
 		return fileMngMapper.selectFileListByFileNm(fileVO);
@@ -35,7 +36,8 @@ public class FileMngService extends EgovAbstractServiceImpl {
 	/**
 	 * 파일명 검색에 대한 목록 총갯수을 조회한다.
 	 * 
-	 * @param fileVO
+	 * @param 	fileVO	FileVO
+	 * @return			총갯수
 	 */
 	public int selectFileListCntByFileNm(FileVO fileVO) {
 		return fileMngMapper.selectFileListCntByFileNm(fileVO);
@@ -44,7 +46,8 @@ public class FileMngService extends EgovAbstractServiceImpl {
 	/**
 	 * 파일에 대한 목록을 조회한다.
 	 * 
-	 * @param fileVO
+	 * @param 	fileVO	FileVO
+	 * @return			List
 	 */
 	public List<FileVO> selectFileList(FileVO fileVO) {
 		return fileMngMapper.selectFileList(fileVO);
@@ -53,7 +56,8 @@ public class FileMngService extends EgovAbstractServiceImpl {
 	/**
 	 * 이미지 파일에 대한 목록을 조회한다.
 	 * 
-	 * @param fileVO
+	 * @param 	fileVO	FileVO
+	 * @return			List
 	 */
 	public List<FileVO> selectImageFileList(FileVO fileVO) {
 		return fileMngMapper.selectImageFileList(fileVO);
@@ -62,7 +66,8 @@ public class FileMngService extends EgovAbstractServiceImpl {
 	/**
 	 * 파일에 대한 상세정보를 조회한다.
 	 * 
-	 * @param fileVO
+	 * @param 	fileVO	FileVO
+	 * @return			FileVO
 	 */
 	public FileVO selectFileInf(FileVO fileVO) {
 		FileVO resultVo = fileMngMapper.selectFileInf(fileVO);
@@ -74,7 +79,8 @@ public class FileMngService extends EgovAbstractServiceImpl {
 	/**
 	 * 파일 구분자에 대한 최대값을 구한다.
 	 * 
-	 * @param fileVO
+	 * @param 	fileVO	FileVO
+	 * @return			최대값
 	 */
 	public int getMaxFileSN(FileVO fileVO) {
 		return fileMngMapper.getMaxFileSN(fileVO);
@@ -83,7 +89,8 @@ public class FileMngService extends EgovAbstractServiceImpl {
 	/**
 	 * 여러 개의 파일에 대한 정보(속성 및 상세)를 등록한다.
 	 * 
-	 * @param fvoList
+	 * @param 	fvoList		List
+	 * @return				atchFileId
 	 */
 	public String insertFileInfs(List<FileVO> fvoList) {
 		String atchFileId = "";
@@ -100,7 +107,8 @@ public class FileMngService extends EgovAbstractServiceImpl {
 	/**
 	 * 하나의 파일에 대한 정보(속성 및 상세)를 등록한다.
 	 * 
-	 * @param fileVO
+	 * @param 	fileVO	FileVO
+	 * @return			atchFileId
 	 */
 	public String insertFileInf(FileVO fileVO) {
 		fileMngMapper.insertFileInf(fileVO);
@@ -110,7 +118,7 @@ public class FileMngService extends EgovAbstractServiceImpl {
 	/**
 	 * 여러 개의 파일에 대한 정보(속성 및 상세)를 수정한다.
 	 * 
-	 * @param fvoList
+	 * @param 	fvoList		List
 	 */
 	public void addFileInfs(List<FileVO> fvoList) {
 		// Delete & Insert
@@ -120,7 +128,7 @@ public class FileMngService extends EgovAbstractServiceImpl {
 	/**
 	 * 전체 파일을 삭제한다.
 	 * 
-	 * @param fileVO
+	 * @param 	fileVO	FileVO
 	 */
 	public void deleteAllFileInf(FileVO fileVO) {
 		deleteFileAll(fileVO);
@@ -130,7 +138,7 @@ public class FileMngService extends EgovAbstractServiceImpl {
 	/**
 	 * 여러 개의 파일을 삭제한다.
 	 * 
-	 * @param fvoList
+	 * @param 	fvoList		List
 	 */
 	public void deleteFileInfs(List<FileVO> fvoList) {
 		deleteFileList(fvoList);
@@ -140,7 +148,7 @@ public class FileMngService extends EgovAbstractServiceImpl {
 	/**
 	 * 하나의 파일을 삭제한다.
 	 * 
-	 * @param fileVO
+	 * @param 	fileVO	FileVO
 	 */
 	public void deleteFileInf(FileVO fileVO) {
 		deleteFile(fileVO);
@@ -150,7 +158,7 @@ public class FileMngService extends EgovAbstractServiceImpl {
 	/**
 	 * 전체 파일을 삭제한다.
 	 * 
-	 * @param fileVO
+	 * @param 	fileVO	FileVO
 	 */
 	public void deleteFileAll(FileVO fileVO) {
 		List<FileVO> fileList = selectFileList(fileVO);
@@ -160,10 +168,10 @@ public class FileMngService extends EgovAbstractServiceImpl {
 	/**
 	 * 전체 파일을 삭제한다.
 	 * 
-	 * @param fileList
+	 * @param 	fvoList	List
 	 */
-	public void deleteFileList(List<FileVO> fileList) {
-		for(FileVO fileVO: fileList) {
+	public void deleteFileList(List<FileVO> fvoList) {
+		for(FileVO fileVO: fvoList) {
 			deleteFile(fileVO);
 		}
 	}	
@@ -171,7 +179,7 @@ public class FileMngService extends EgovAbstractServiceImpl {
 	/**
 	 * 하나의 파일을 삭제한다.
 	 * 
-	 * @param fileVO
+	 * @param 	fileVO	FileVO
 	 */
 	public void deleteFile(FileVO fileVO) {
 		if( fileVO.getStreFileNm() == null || !"".equals(fileVO.getStreFileNm())) {

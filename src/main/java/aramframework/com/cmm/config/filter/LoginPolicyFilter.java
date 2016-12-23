@@ -45,12 +45,10 @@ public class LoginPolicyFilter extends OncePerRequestFilter {
 	/**
 	 * IP를 이용해 로그인을 제한하는 메서든
 	 * 
-	 * @param request
-	 * @param response
-	 * @param chain
-	 * @return void
-	 * @exception IOException
-	 *                , ServletException
+	 * @param 	request		HttpServletRequest
+	 * @param 	response	HttpServletResponse
+	 * @param 	chain		FilterChain
+	 * @exception 			IOException, ServletException
 	 */
 	@Override
 	public void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) 

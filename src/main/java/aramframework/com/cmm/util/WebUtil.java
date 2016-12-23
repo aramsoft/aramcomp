@@ -93,10 +93,10 @@ public class WebUtil {
 	}	
 
 	/**
-	 * 시간의 LIST를 반환한다.
+	 * pathId를 추출한다.
 	 * 
-	 * @return List
-	 * @throws
+	 * @param 	original		String
+	 * @return 					String
 	 */
 	public static String getPathId(String original) {
 		int index = original.lastIndexOf("_")+1;
@@ -111,8 +111,7 @@ public class WebUtil {
 	/**
 	 * 시간의 LIST를 반환한다.
 	 * 
-	 * @return List
-	 * @throws
+	 * @return 		List
 	 */
 	public static List<ComCodeVO> getTimeHH() {
 		ArrayList<ComCodeVO> listHH = new ArrayList<ComCodeVO>();
@@ -137,8 +136,7 @@ public class WebUtil {
 	/**
 	 * 분의 LIST를 반환한다.
 	 * 
-	 * @return List
-	 * @throws
+	 * @return 		List
 	 */
 	public static List<ComCodeVO> getTimeMM() {
 		ArrayList<ComCodeVO> listMM = new ArrayList<ComCodeVO>();
@@ -162,8 +160,7 @@ public class WebUtil {
 	/**
 	 * 0을 붙여 반환
 	 * 
-	 * @return String
-	 * @throws
+	 * @return 	String
 	 */
 	public static String dateTypeIntForString(int iInput) {
 		String sOutput = Integer.toString(iInput);
@@ -222,8 +219,8 @@ public class WebUtil {
 	/**
 	 * 행안부 보안취약점 점검 조치 방안.
 	 * 
-	 * @param value
-	 * @return
+	 * @param 	value	String
+	 * @return			String
 	 */
 	public static String filePathReplaceAll(String value) {
 		String returnValue = value;
@@ -240,7 +237,7 @@ public class WebUtil {
 	}
 
 	public static String filePathWhiteList(String value) {
-		return value; // TODO
+		return value; 
 	}
 
 	public static boolean isIPAddress(String str) {

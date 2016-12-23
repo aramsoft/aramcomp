@@ -46,7 +46,7 @@ public class FileVO extends BaseVO {
 	/**
 	 * atchFileId attribute를 리턴한다.
 	 * 
-	 * @return the atchFileId
+	 * @return 	the atchFileId
 	 */
 	public String getAtchFileId() {
 		return atchFileId;
@@ -54,8 +54,7 @@ public class FileVO extends BaseVO {
 	/**
 	 * atchFileId attribute 값을 설정한다.
 	 * 
-	 * @param atchFileId
-	 *            the atchFileId to set
+	 * @param 	atchFileId	the atchFileId to set
 	 */
 	public void setAtchFileId(String atchFileId) {
 		this.atchFileId = atchFileId;
@@ -66,7 +65,7 @@ public class FileVO extends BaseVO {
 	/**
 	 * creatDt attribute를 리턴한다.
 	 * 
-	 * @return the creatDt
+	 * @return 	the creatDt
 	 */
 	public String getCreatDt() {
 		return creatDt;
@@ -74,8 +73,7 @@ public class FileVO extends BaseVO {
 	/**
 	 * creatDt attribute 값을 설정한다.
 	 * 
-	 * @param creatDt
-	 *            the creatDt to set
+	 * @param 	creatDt	the creatDt to set
 	 */
 	public void setCreatDt(String creatDt) {
 		this.creatDt = creatDt;
@@ -84,7 +82,7 @@ public class FileVO extends BaseVO {
 	/**
 	 * fileSn attribute를 리턴한다.
 	 * 
-	 * @return the fileSn
+	 * @return 	the fileSn
 	 */
 	public String getFileSn() {
 		return fileSn;
@@ -92,8 +90,7 @@ public class FileVO extends BaseVO {
 	/**
 	 * fileSn attribute 값을 설정한다.
 	 * 
-	 * @param fileSn
-	 *            the fileSn to set
+	 * @param 	fileSn	the fileSn to set
 	 */
 	public void setFileSn(String fileSn) {
 		this.fileSn = fileSn;
@@ -102,7 +99,7 @@ public class FileVO extends BaseVO {
 	/**
 	 * fileStreCours attribute를 리턴한다.
 	 * 
-	 * @return the fileStreCours
+	 * @return 	the fileStreCours
 	 */
 	public String getFileStreCours() {
 		return fileStreCours;
@@ -110,8 +107,7 @@ public class FileVO extends BaseVO {
 	/**
 	 * fileStreCours attribute 값을 설정한다.
 	 * 
-	 * @param fileStreCours
-	 *            the fileStreCours to set
+	 * @param 	fileStreCours	the fileStreCours to set
 	 */
 	public void setFileStreCours(String fileStreCours) {
 		this.fileStreCours = fileStreCours;
@@ -120,7 +116,7 @@ public class FileVO extends BaseVO {
 	/**
 	 * streFileNm attribute를 리턴한다.
 	 * 
-	 * @return the streFileNm
+	 * @return 	the streFileNm
 	 */
 	public String getStreFileNm() {
 		return streFileNm;
@@ -128,8 +124,7 @@ public class FileVO extends BaseVO {
 	/**
 	 * streFileNm attribute 값을 설정한다.
 	 * 
-	 * @param streFileNm
-	 *            the streFileNm to set
+	 * @param 	streFileNm	the streFileNm to set
 	 */
 	public void setStreFileNm(String streFileNm) {
 		this.streFileNm = streFileNm;
@@ -138,7 +133,7 @@ public class FileVO extends BaseVO {
 	/**
 	 * orignlFileNm attribute를 리턴한다.
 	 * 
-	 * @return the orignlFileNm
+	 * @return 	the orignlFileNm
 	 */
 	public String getOrignlFileNm() {
 		return orignlFileNm;
@@ -146,8 +141,7 @@ public class FileVO extends BaseVO {
 	/**
 	 * orignlFileNm attribute 값을 설정한다.
 	 * 
-	 * @param orignlFileNm
-	 *            the orignlFileNm to set
+	 * @param 	orignlFileNm	the orignlFileNm to set
 	 */
 	public void setOrignlFileNm(String orignlFileNm) {
 		this.orignlFileNm = orignlFileNm;
@@ -156,7 +150,7 @@ public class FileVO extends BaseVO {
 	/**
 	 * fileExtsn attribute를 리턴한다.
 	 * 
-	 * @return the fileExtsn
+	 * @return 	the fileExtsn
 	 */
 	public String getFileExtsn() {
 		return fileExtsn;
@@ -164,8 +158,7 @@ public class FileVO extends BaseVO {
 	/**
 	 * fileExtsn attribute 값을 설정한다.
 	 * 
-	 * @param fileExtsn
-	 *            the fileExtsn to set
+	 * @param 	fileExtsn	the fileExtsn to set
 	 */
 	public void setFileExtsn(String fileExtsn) {
 		this.fileExtsn = fileExtsn;
@@ -174,7 +167,7 @@ public class FileVO extends BaseVO {
 	/**
 	 * fileType attribute를 리턴한다.
 	 * 
-	 * @return the fileType
+	 * @return 	the fileType
 	 */
 	public String getFileType() {
 		return fileType;
@@ -182,8 +175,7 @@ public class FileVO extends BaseVO {
 	/**
 	 * fileType attribute 값을 설정한다.
 	 * 
-	 * @param fileType
-	 *            the fileType to set
+	 * @param 	fileType	the fileType to set
 	 */
 	public void setFileType(String fileType) {
 		this.fileType = fileType;
@@ -192,7 +184,7 @@ public class FileVO extends BaseVO {
 	/**
 	 * fileCn attribute를 리턴한다.
 	 * 
-	 * @return the fileCn
+	 * @return 	the fileCn
 	 */
 	public String getFileCn() {
 		return fileCn;
@@ -200,8 +192,7 @@ public class FileVO extends BaseVO {
 	/**
 	 * fileCn attribute 값을 설정한다.
 	 * 
-	 * @param fileCn
-	 *            the fileCn to set
+	 * @param 	fileCn	the fileCn to set
 	 */
 	public void setFileCn(String fileCn) {
 		this.fileCn = fileCn;
@@ -210,7 +201,7 @@ public class FileVO extends BaseVO {
 	/**
 	 * fileSize attribute를 리턴한다.
 	 * 
-	 * @return the fileSize
+	 * @return 	the fileSize
 	 */
 	public String getFileSize() {
 		return fileSize;
@@ -218,8 +209,7 @@ public class FileVO extends BaseVO {
 	/**
 	 * fileSize attribute 값을 설정한다.
 	 * 
-	 * @param fileSize
-	 *            the fileSize to set
+	 * @param 	fileSize	the fileSize to set
 	 */
 	public void setFileSize(String fileSize) {
 		this.fileSize = fileSize;

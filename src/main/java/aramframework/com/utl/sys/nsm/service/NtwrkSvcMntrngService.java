@@ -34,7 +34,8 @@ public class NtwrkSvcMntrngService extends EgovAbstractServiceImpl {
 	/**
 	 * 네트워크서비스 모니터링대상 목록을 조회한다.
 	 * 
-	 * @param ntwrkSvcMntrngVO
+	 * @param ntwrkSvcMntrngVO	NtwrkSvcMntrngVO
+	 * @return					List
 	 */
 	public List<NtwrkSvcMntrngVO> selectNtwrkSvcMntrngList(NtwrkSvcMntrngVO ntwrkSvcMntrngVO) {
 		return ntwrkSvcMntrngMapper.selectNtwrkSvcMntrngList(ntwrkSvcMntrngVO);
@@ -43,7 +44,8 @@ public class NtwrkSvcMntrngService extends EgovAbstractServiceImpl {
 	/**
 	 * 네트워크서비스 모니터링대상 총 갯수를 조회한다.
 	 * 
-	 * @param ntwrkSvcMntrngVO
+	 * @param ntwrkSvcMntrngVO	NtwrkSvcMntrngVO
+	 * @return					총 갯수
 	 */
 	public int selectNtwrkSvcMntrngListCnt(NtwrkSvcMntrngVO ntwrkSvcMntrngVO) {
 		return ntwrkSvcMntrngMapper.selectNtwrkSvcMntrngListCnt(ntwrkSvcMntrngVO);
@@ -52,7 +54,8 @@ public class NtwrkSvcMntrngService extends EgovAbstractServiceImpl {
 	/**
 	 * 네트워크서비스 모니터링대상을 조회한다.
 	 * 
-	 * @param ntwrkSvcMntrngVO
+	 * @param ntwrkSvcMntrngVO	NtwrkSvcMntrngVO
+	 * @return					NtwrkSvcMntrngVO
 	 */
 	public NtwrkSvcMntrngVO selectNtwrkSvcMntrng(NtwrkSvcMntrngVO ntwrkSvcMntrngVO) {
 		NtwrkSvcMntrngVO resultVo = ntwrkSvcMntrngMapper.selectNtwrkSvcMntrng(ntwrkSvcMntrngVO);
@@ -64,7 +67,7 @@ public class NtwrkSvcMntrngService extends EgovAbstractServiceImpl {
 	/**
 	 * 네트워크서비스 모니터링대상을 수정한다.
 	 * 
-	 * @param ntwrkSvcMntrngVO
+	 * @param ntwrkSvcMntrngVO	NtwrkSvcMntrngVO
 	 */
 	public void updateNtwrkSvcMntrng(NtwrkSvcMntrngVO ntwrkSvcMntrngVO) {
 		ntwrkSvcMntrngMapper.updateNtwrkSvcMntrng(ntwrkSvcMntrngVO);
@@ -73,7 +76,7 @@ public class NtwrkSvcMntrngService extends EgovAbstractServiceImpl {
 	/**
 	 * 네트워크서비스 모니터링대상을 등록한다.
 	 * 
-	 * @param ntwrkSvcMntrngVO
+	 * @param ntwrkSvcMntrngVO	NtwrkSvcMntrngVO
 	 */
 	public void insertNtwrkSvcMntrng(NtwrkSvcMntrngVO ntwrkSvcMntrngVO) {
 		ntwrkSvcMntrngVO.setMntrngSttus("01");
@@ -83,7 +86,8 @@ public class NtwrkSvcMntrngService extends EgovAbstractServiceImpl {
 	/**
 	 * 네트워크서비스 모니터링대상을 등록하기 위한 중복 조회를 수행한다.
 	 * 
-	 * @param ntwrkSvcMntrngVO
+	 * @param ntwrkSvcMntrngVO	NtwrkSvcMntrngVO
+	 * @return					int
 	 */
 	public int selectNtwrkSvcMntrngCheck(NtwrkSvcMntrngVO ntwrkSvcMntrngVO) {
 		return ntwrkSvcMntrngMapper.selectNtwrkSvcMntrngCheck(ntwrkSvcMntrngVO);
@@ -92,7 +96,7 @@ public class NtwrkSvcMntrngService extends EgovAbstractServiceImpl {
 	/**
 	 * 네트워크서비스 모니터링대상을 삭제한다.
 	 * 
-	 * @param ntwrkSvcMntrngVO
+	 * @param ntwrkSvcMntrngVO	NtwrkSvcMntrngVO
 	 */
 	public void deleteNtwrkSvcMntrng(NtwrkSvcMntrngVO ntwrkSvcMntrngVO) {
 		ntwrkSvcMntrngMapper.deleteNtwrkSvcMntrng(ntwrkSvcMntrngVO);
@@ -101,7 +105,7 @@ public class NtwrkSvcMntrngService extends EgovAbstractServiceImpl {
 	/**
 	 * 네트워크서비스 모니터링 결과를 수정한다.
 	 * 
-	 * @param ntwrkSvcMntrngVO
+	 * @param ntwrkSvcMntrngVO	NtwrkSvcMntrngVO
 	 */
 	public void updateNtwrkSvcMntrngSttus(NtwrkSvcMntrngVO ntwrkSvcMntrngVO) {
 		ntwrkSvcMntrngMapper.updateNtwrkSvcMntrngSttus(ntwrkSvcMntrngVO);
@@ -125,7 +129,8 @@ public class NtwrkSvcMntrngService extends EgovAbstractServiceImpl {
 	/**
 	 * 네트워크서비스 모니터링대상 로그 목록을 조회한다.
 	 * 
-	 * @param ntwrkSvcMntrngLogVO
+	 * @param ntwrkSvcMntrngLogVO	NtwrkSvcMntrngLogVO
+	 * @return						List
 	 */
 	public List<NtwrkSvcMntrngLogVO> selectNtwrkSvcMntrngLogList(NtwrkSvcMntrngLogVO ntwrkSvcMntrngLogVO) {
 		return ntwrkSvcMntrngMapper.selectNtwrkSvcMntrngLogList(ntwrkSvcMntrngLogVO);
@@ -134,7 +139,8 @@ public class NtwrkSvcMntrngService extends EgovAbstractServiceImpl {
 	/**
 	 * 네트워크서비스 모니터링대상 로그 총 갯수를 조회한다.
 	 * 
-	 * @param ntwrkSvcMntrngLogVO
+	 * @param ntwrkSvcMntrngLogVO	NtwrkSvcMntrngLogVO
+	 * @return						총 갯수
 	 */
 	public int selectNtwrkSvcMntrngLogListCnt(NtwrkSvcMntrngLogVO ntwrkSvcMntrngLogVO) {
 		return ntwrkSvcMntrngMapper.selectNtwrkSvcMntrngLogListCnt(ntwrkSvcMntrngLogVO);
@@ -143,7 +149,8 @@ public class NtwrkSvcMntrngService extends EgovAbstractServiceImpl {
 	/**
 	 * 네트워크서비스 모니터링 로그를 조회한다.
 	 * 
-	 * @param ntwrkSvcMntrngLogVO
+	 * @param ntwrkSvcMntrngLogVO	NtwrkSvcMntrngLogVO
+	 * @return						NtwrkSvcMntrngLogVO
 	 */
 	public NtwrkSvcMntrngLogVO selectNtwrkSvcMntrngLog(NtwrkSvcMntrngLogVO ntwrkSvcMntrngLogVO) {
 		NtwrkSvcMntrngLogVO resultVo = ntwrkSvcMntrngMapper.selectNtwrkSvcMntrngLog(ntwrkSvcMntrngLogVO);
@@ -155,7 +162,7 @@ public class NtwrkSvcMntrngService extends EgovAbstractServiceImpl {
 	/**
 	 * 네트워크서비스 모니터링 로그를 등록한다.
 	 * 
-	 * @param ntwrkSvcMntrngLogVO
+	 * @param ntwrkSvcMntrngLogVO	NtwrkSvcMntrngLogVO
 	 */
 	public void insertNtwrkSvcMntrngLog(NtwrkSvcMntrngLogVO ntwrkSvcMntrngLogVO) {
 		ntwrkSvcMntrngMapper.insertNtwrkSvcMntrngLog(ntwrkSvcMntrngLogVO);

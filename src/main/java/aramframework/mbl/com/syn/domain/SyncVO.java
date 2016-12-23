@@ -48,7 +48,7 @@ public class SyncVO extends BaseVO {
 	/**
 	 * 동기화 서비스 일련번호를 획득한다.
 	 * 
-	 * @return sn
+	 * @return 		동기화 서비스 일련번호
 	 */
 	public int getSn() {
 		return sn;
@@ -56,7 +56,7 @@ public class SyncVO extends BaseVO {
 	/**
 	 * 동기화 서비스 일련번호를  할당한다.
 	 * 
-	 * @param sn
+	 * @param 	sn	동기화 서비스 일련번호
 	 */
 	public void setSn(int sn) {
 		this.sn = sn;
@@ -65,7 +65,7 @@ public class SyncVO extends BaseVO {
 	/**
 	 * 동기화 서비스 회원ID를 획득한다. 
 	 * 
-	 * @return
+	 * @return	동기화 서비스 회원ID
 	 */
 	public String getMberId() {
 		return mberId;
@@ -73,7 +73,7 @@ public class SyncVO extends BaseVO {
 	/**
 	 * 동기화 서비스 회원ID를 할당한다.  
 	 * 
-	 * @param mberId
+	 * @param 	mberId	동기화 서비스 회원ID
 	 */
 	public void setMberId(String mberId) {
 		this.mberId = mberId;
@@ -82,7 +82,7 @@ public class SyncVO extends BaseVO {
 	/**
 	 * 동기화 서비스 제목을 획득한다.
 	 * 
-	 * @return
+	 * @return	동기화 서비스 제목
 	 */
 	public String getSyncSj() {
 		return syncSj;
@@ -90,7 +90,7 @@ public class SyncVO extends BaseVO {
 	/**
 	 * 동기화 서비스 제목을 할당한다. 
 	 * 
-	 * @param syncSj
+	 * @param syncSj	동기화 서비스 제목
 	 */
 	public void setSyncSj(String syncSj) {
 		this.syncSj = syncSj;
@@ -99,7 +99,7 @@ public class SyncVO extends BaseVO {
 	/**
 	 * 동기화 서비스 내용을 획득한다.
 	 * 
-	 * @return
+	 * @return	동기화 서비스 내용
 	 */
 	public String getSyncCn() {
 		return syncCn;
@@ -107,7 +107,7 @@ public class SyncVO extends BaseVO {
 	/**
 	 * 동기화 서비스 내용을 할당한다. 
 	 * 
-	 * @param syncCn
+	 * @param syncCn	동기화 서비스 내용
 	 */
 	public void setSyncCn(String syncCn) {
 		this.syncCn = syncCn;
@@ -116,7 +116,7 @@ public class SyncVO extends BaseVO {
 	/**
 	 * 동기화 서비스 동기화일시를 획득한다.
 	 * 
-	 * @return
+	 * @return	동기화 서비스 동기화일시
 	 */
 	public String getSyncDt() {
 		return syncDt;
@@ -124,7 +124,7 @@ public class SyncVO extends BaseVO {
 	/**
 	 * 동기화 서비스 동기화일시를 할당한다. 
 	 * 
-	 * @param syncDt
+	 * @param syncDt	동기화 서비스 동기화일시
 	 */
 	public void setSyncDt(String syncDt) {
 		this.syncDt = syncDt;
@@ -133,7 +133,7 @@ public class SyncVO extends BaseVO {
 	/**
 	 * 동기화 서비스 등록일시를 획득한다.
 	 * 
-	 * @return
+	 * @return	동기화 서비스 등록일시
 	 */
 	public String getCreatDt() {
 		return creatDt;
@@ -141,7 +141,7 @@ public class SyncVO extends BaseVO {
 	/**
 	 * 동기화 서비스 등록일시를 할당한다. 
 	 * 
-	 * @param creatDt
+	 * @param creatDt	동기화 서비스 등록일시
 	 */
 	public void setCreatDt(String creatDt) {
 		this.creatDt = creatDt;
@@ -150,7 +150,7 @@ public class SyncVO extends BaseVO {
 	/**
 	 * 동기화 서비스 수정일시를 획득한다.
 	 * 	
-	 * @return
+	 * @return	동기화 서비스 수정일시
 	 */
 	public String getUpdtDt() {
 		return updtDt;
@@ -158,7 +158,7 @@ public class SyncVO extends BaseVO {
 	/**
 	 * 동기화 서비스 수정일시를 할당한다. 
 	 * 
-	 * @param updtDt
+	 * @param updtDt	동기화 서비스 수정일시
 	 */
 	public void setUpdtDt(String updtDt) {
 		this.updtDt = updtDt;
@@ -167,7 +167,8 @@ public class SyncVO extends BaseVO {
 	// helper
 	/**
 	 * 조회 건수를 가져온다.
-	 * @return int 조회 건수
+	 * 
+	 * @return 	조회 건수
 	 */	
 	public int getFetchRow() {
 		return fetchRow;
@@ -183,13 +184,14 @@ public class SyncVO extends BaseVO {
 	
 	/**
 	 * 접속 장비타입을 가져온다.
-	 * @return String 장비타입
+	 * 
+	 * @return 	장비타입
 	 */
 	public String getDeviceType() {
 		return deviceType;
 	}
 	/**
-	 * 조회 건수를 저장한다.
+	 * 접속 장비타입를 저장한다.
 	 * 
 	 * @param deviceType 접속 장비타입
 	 */

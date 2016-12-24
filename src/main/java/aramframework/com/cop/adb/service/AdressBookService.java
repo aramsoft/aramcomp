@@ -35,7 +35,8 @@ public class AdressBookService extends EgovAbstractServiceImpl {
 	/**
 	 * 주소록 목록을 조회한다.
 	 * 
-	 * @param adressBookVO
+	 * @param adressBookVO	AdressBookVO
+	 * @return				List
 	 */
 	public List<EgovMap> selectAdressBookList(AdressBookVO adressBookVO) {
 		return adressBookMapper.selectAdressBookList(adressBookVO);
@@ -44,7 +45,8 @@ public class AdressBookService extends EgovAbstractServiceImpl {
 	/**
 	 * 주소록 목록 총갯수을 조회한다.
 	 * 
-	 * @param adressBookVO
+	 * @param adressBookVO	AdressBookVO
+	 * @return				전체 건수
 	 */
 	public int selectAdressBookListCnt(AdressBookVO adressBookVO) {
 		return adressBookMapper.selectAdressBookListCnt(adressBookVO);
@@ -53,7 +55,8 @@ public class AdressBookService extends EgovAbstractServiceImpl {
 	/**
 	 * 주소록 정보를 조회한다.
 	 * 
-	 * @param adressBookVO
+	 * @param adressBookVO	AdressBookVO
+	 * @return				AdressBookVO
 	 */
 	public AdressBookVO selectAdressBook(AdressBookVO adressBookVO) {
 		AdressBookVO resultVo = adressBookMapper.selectAdressBook(adressBookVO);
@@ -66,7 +69,7 @@ public class AdressBookService extends EgovAbstractServiceImpl {
 	/**
 	 * 주소록 정보를 등록한다.
 	 * 
-	 * @param adressBookVO
+	 * @param adressBookVO	AdressBookVO
 	 */
 	public void insertAdressBook(AdressBookVO adressBookVO){
 
@@ -91,7 +94,7 @@ public class AdressBookService extends EgovAbstractServiceImpl {
 	/**
 	 * 주소록 정보를 수정한다.
 	 * 
-	 * @param adressBookVO
+	 * @param adressBookVO	AdressBookVO
 	 */
 	public void updateAdressBook(AdressBookVO adressBookVO) {
 
@@ -164,7 +167,7 @@ public class AdressBookService extends EgovAbstractServiceImpl {
 	/**
 	 * 주소록 정보를 삭제한다.
 	 * 
-	 * @param adressBookVO
+	 * @param adressBookVO	AdressBookVO
 	 */
 	public void deleteAdressBook(AdressBookVO adressBookVO) {
 		adressBookMapper.updateAdressBook(adressBookVO);
@@ -173,7 +176,8 @@ public class AdressBookService extends EgovAbstractServiceImpl {
 	/**
 	 * 사용자 목록을 조회한다.
 	 * 
-	 * @param searchVO
+	 * @param adressBookUserVO	AdressBookUserVO
+	 * @return					List
 	 */
 	public List<EgovMap> selectManList(AdressBookUserVO adressBookUserVO) {
 		return adressBookMapper.selectManList(adressBookUserVO);
@@ -182,7 +186,8 @@ public class AdressBookService extends EgovAbstractServiceImpl {
 	/**
 	 * 사용자 목록 총갯수을 조회한다.
 	 * 
-	 * @param searchVO
+	 * @param adressBookUserVO	AdressBookUserVO
+	 * @return					전체 건수
 	 */
 	public int selectManListCnt(AdressBookUserVO adressBookUserVO) {
 		return adressBookMapper.selectManListCnt(adressBookUserVO);
@@ -191,7 +196,8 @@ public class AdressBookService extends EgovAbstractServiceImpl {
 	/**
 	 * 명함 목록을 조회한다.
 	 * 
-	 * @param searchVO
+	 * @param adressBookUserVO	AdressBookUserVO
+	 * @return					List
 	 */
 	public List<EgovMap> selectCardList(AdressBookUserVO adressBookUserVO) {
 		return adressBookMapper.selectCardList(adressBookUserVO);
@@ -200,7 +206,8 @@ public class AdressBookService extends EgovAbstractServiceImpl {
 	/**
 	 * 명함 목록 총갯수을 조회한다.
 	 * 
-	 * @param searchVO
+	 * @param adressBookUserVO	AdressBookUserVO
+	 * @return					전체 건수
 	 */
 	public int selectCardListCnt(AdressBookUserVO adressBookUserVO) {
 		return adressBookMapper.selectCardListCnt(adressBookUserVO);
@@ -209,7 +216,8 @@ public class AdressBookService extends EgovAbstractServiceImpl {
 	/**
 	 * 주소록 구성원 정보를 불러온다.
 	 * 
-	 * @param id
+	 * @param id	String
+	 * @return		AdressBookUserVO
 	 */
 	public AdressBookUserVO selectAdbkUser(String id) {
 

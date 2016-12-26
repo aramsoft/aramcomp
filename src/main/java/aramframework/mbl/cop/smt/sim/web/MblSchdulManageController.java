@@ -43,7 +43,10 @@ public class MblSchdulManageController {
 	/**
 	 * 일정(일별) 목록 화면을 출력한다.
 	 * 
-	 * @param schdulManageVO 
+	 * @param 	request 		HttpServletRequest
+	 * @param 	schdulManageVO 	SchdulManageVO
+	 * @param 	model 			ModelMap
+	 * @return					Jsp 파일
 	 */
 	@RequestMapping(value="/cop/smt/sim/listSchdulDaily.mdo")
 	public String listSchdulDaily(
@@ -65,7 +68,10 @@ public class MblSchdulManageController {
 	/**
 	 * 일정(일별) 목록을 조회한다.
 	 * 
-	 * @param schdulManageVO 
+	 * @param 	request 		HttpServletRequest
+	 * @param 	schdulManageVO 	SchdulManageVO
+	 * @param 	model 			ModelMap
+	 * @return					jsonView
 	 */
 	@RequestMapping(value="/cop/smt/sim/listSchdulDailyJson.mdo")
 	public ModelAndView listSchdulDailyJson(
@@ -115,7 +121,10 @@ public class MblSchdulManageController {
 	/**
 	 * 일정(주간별) 목록 화면을 출력한다.
 	 * 
-	 * @param schdulManageVO
+	 * @param 	request 		HttpServletRequest
+	 * @param 	schdulManageVO 	SchdulManageVO
+	 * @param 	model 			ModelMap
+	 * @return					Jsp 파일
 	 */
 	@RequestMapping(value="/cop/smt/sim/listSchdulWeek.mdo")
 	public String listSchdulWeek(
@@ -137,7 +146,10 @@ public class MblSchdulManageController {
 	/**
 	 * 일정(주간별) 목록을 조회한다. 
 	 * 
-	 * @param schdulManageVO
+	 * @param 	request 		HttpServletRequest
+	 * @param 	schdulManageVO 	SchdulManageVO
+	 * @param 	model 			ModelMap
+	 * @return					jsonView
 	 */
 	@RequestMapping(value="/cop/smt/sim/listSchdulWeekJson.mdo")
 	public ModelAndView listSchdulWeekJson(
@@ -227,7 +239,10 @@ public class MblSchdulManageController {
 	/**
 	 * 일정 목록을 상세조회한다. 
 	 * 
-	 * @param schdulManageVO
+	 * @param 	request 		HttpServletRequest
+	 * @param 	schdulManageVO 	SchdulManageVO
+	 * @param 	model 			ModelMap
+	 * @return					Jsp 파일
 	 */
 	@RequestMapping(value="/cop/smt/sim/detailSchdul.mdo")
 	public String detailSchdul(
@@ -256,7 +271,10 @@ public class MblSchdulManageController {
 	/**
 	 * 일정 등록 화면을 출력한다.
 	 * 
-	 * @param schdulManageVO
+	 * @param 	request 		HttpServletRequest
+	 * @param 	schdulManageVO 	SchdulManageVO
+	 * @param 	model 			ModelMap
+	 * @return					Jsp 파일
 	 */
 	@RequestMapping(value="/cop/smt/sim/registSchdul.mdo")
 	@Secured("ROLE_USER")
@@ -281,7 +299,10 @@ public class MblSchdulManageController {
 	/**
 	 * 일정를 등록 처리 한다. 
 	 * 
-	 * @param schdulManageVO
+	 * @param 	request 		HttpServletRequest
+	 * @param 	schdulManageVO 	SchdulManageVO
+	 * @param 	model 			ModelMap
+	 * @return					Jsp 파일
 	 */
 	@RequestMapping(value="/cop/smt/sim/insertSchdul.mdo")
 	@Secured("ROLE_USER")
@@ -314,7 +335,10 @@ public class MblSchdulManageController {
 	/**
 	 * 일정 수정 화면을 출력한다. 
 	 * 
-	 * @param schdulManageVO
+	 * @param 	request 		HttpServletRequest
+	 * @param 	schdulManageVO 	SchdulManageVO
+	 * @param 	model 			ModelMap
+	 * @return					Jsp 파일
 	 */
 	@RequestMapping(value="/cop/smt/sim/editSchdul.mdo")
 	@Secured("ROLE_USER")
@@ -355,7 +379,10 @@ public class MblSchdulManageController {
 	/**
 	 * 일정을 수정 처리 한다.
 	 * 
-	 * @param schdulManageVO
+	 * @param 	request 		HttpServletRequest
+	 * @param 	schdulManageVO 	SchdulManageVO
+	 * @param 	model 			ModelMap
+	 * @return					Jsp 파일
 	 */
 	@RequestMapping(value="/cop/smt/sim/updateSchdul.mdo")
 	@Secured("ROLE_USER")
@@ -397,7 +424,8 @@ public class MblSchdulManageController {
 	/**
 	 *  일정을 삭제 처리한다. 
 	 *  
-	 * @param schdulManageVO
+	 * @param 	schdulManageVO 	SchdulManageVO
+	 * @return					Jsp 파일
 	 */
 	@RequestMapping(value="/cop/smt/sim/deleteSchdul.mdo")
 	@Secured("ROLE_USER")
@@ -412,6 +440,7 @@ public class MblSchdulManageController {
 	/**
 	 * 일정관리 목록 화면을 출력한다.
 	 * 
+	 * @return					Jsp 파일
 	 */
 	@RequestMapping(value="/cop/smt/sim/listSchdulPopup.mdo")
 	public String listSchdulPopup() {
@@ -421,7 +450,8 @@ public class MblSchdulManageController {
 	/**
 	 * 일정관리 목록을 조회한다.
 	 * 
-	 * @param searchVO
+	 * @param 	schdulManageVO 	SchdulManageVO
+	 * @return					jsonView
 	 */
 	@RequestMapping(value="/cop/smt/sim/listSchdulPopupJson.mdo")
 	public ModelAndView listSchdulPopupJson(
@@ -446,6 +476,7 @@ public class MblSchdulManageController {
 	/**
 	 * 담당자관리 목록 화면을 출력한다.
 	 * 
+	 * @return					Jsp 파일
 	 */
 	@RequestMapping(value="/cop/smt/sim/listEmplyrPopup.mdo")
 	public String listEmplyrPopup() {
@@ -455,7 +486,8 @@ public class MblSchdulManageController {
 	/**
 	 * 담당자관리 목록을 조회한다.
 	 * 
-	 * @param searchVO
+	 * @param 	schdulManageVO 	SchdulManageVO
+	 * @return					jsonView
 	 */
 	@RequestMapping(value="/cop/smt/sim/listEmplyrPopupJson.mdo")
 	public ModelAndView listEmplyrPopupJson(

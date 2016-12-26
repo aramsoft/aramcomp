@@ -28,8 +28,6 @@ public class ImgPaginationRenderer extends AbstractPaginationRenderer {
 	
     /**
     * PaginationRenderer
-	* 
-    * @see 개발프레임웍크 실행환경 개발팀
     */
 	public ImgPaginationRenderer() {
 
@@ -53,6 +51,6 @@ public class ImgPaginationRenderer extends AbstractPaginationRenderer {
         otherPageLabel = "<span><a href=\"javascript:{0}({1});return false;\" onclick=\"{0}({1});return false;\">{2}</a></span>&#160;";
         nextPageLabel = "<a href=\"javascript:{0}({1}); return false;\" class=\"next\" onclick=\"{0}({1}); return false;\">" + "</a>&#160;";
         lastPageLabel = "<a href=\"javascript:{0}({1}); return false;\" class=\"last\" onclick=\"{0}({1}); return false;\">" + "</a>&#160;";
-        
 	}
+	
 }

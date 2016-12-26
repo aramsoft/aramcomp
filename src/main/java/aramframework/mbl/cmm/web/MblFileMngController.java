@@ -31,10 +31,9 @@ public class MblFileMngController {
 	/**
 	 * 첨부파일에 대한 목록을 조회한다.
 	 * 
-	 * @param fileVO
-	 * @param atchFileId
-]	 * @param model
-	 * @return
+	 * @param 	atchFileId	fileid
+	 * @param 	model		ModelMap
+	 * @return				jsp 파일
 	 * @throws Exception
 	 */
 	@RequestMapping("/cmm/fms/selectFileInfs.mdo")
@@ -58,10 +57,9 @@ public class MblFileMngController {
 	/**
 	 * 첨부파일 변경을 위한 수정페이지로 이동한다.
 	 * 
-	 * @param fileVO
-	 * @param atchFileId
-	 * @param model
-	 * @return
+	 * @param 	atchFileId	fileid
+	 * @param 	model		ModelMap
+	 * @return				jsp 파일
 	 * @throws Exception
 	 */
 	@RequestMapping("/cmm/fms/editFileInfs.mdo")
@@ -85,10 +83,9 @@ public class MblFileMngController {
 	/**
 	 * 이미지 첨부파일에 대한 목록을 조회한다.
 	 * 
-	 * @param fileVO
-	 * @param atchFileId
-	 * @param model
-	 * @return
+	 * @param 	atchFileId	fileid
+	 * @param 	model		ModelMap
+	 * @return				jsp 파일
 	 * @throws Exception
 	 */
 	@RequestMapping("/cmm/fms/selectImageFileInfs.mdo")
@@ -109,10 +106,11 @@ public class MblFileMngController {
 	/**
 	 * 첨부파일에 대한 삭제를 처리한다.
 	 * 
-	 * @param fileVO
-	 * @param returnUrl
-]	 * @param model
-	 * @return
+	 * @param 	returnUrl	문자열
+	 * @param 	fileVO		FileVO
+	 * @param 	request		HttpServletRequest
+	 * @param 	model		ModelMap
+	 * @return				returnUrl 문자열
 	 * @throws Exception
 	 */
 	@RequestMapping("/cmm/fms/deleteFileInfs.mdo")

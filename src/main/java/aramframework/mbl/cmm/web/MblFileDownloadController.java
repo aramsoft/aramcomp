@@ -41,8 +41,8 @@ public class MblFileDownloadController {
 	/**
 	 * 브라우저 구분 얻기.
 	 * 
-	 * @param request
-	 * @return
+	 * @param 	request	HttpServletRequest
+	 * @return			브라우저 이름
 	 */
 	private String getBrowser(HttpServletRequest request) {
 		String header = request.getHeader("User-Agent");
@@ -61,12 +61,16 @@ public class MblFileDownloadController {
 	/**
 	 * Disposition 지정하기.
 	 * 
-	 * @param filename
-	 * @param request
-	 * @param response
-	 * @throws Exception
+	 * @param 	filename	파일이름
+	 * @param 	request		HttpServletRequest
+	 * @param 	response	HttpServletResponse
+	 * @throws 	Exception
 	 */
-	private void setDisposition(String filename, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	private void setDisposition(
+			String filename, 
+			HttpServletRequest request, 
+			HttpServletResponse response) 
+	throws Exception {
 		String browser = getBrowser(request);
 
 		String dispositionPrefix = "attachment; filename=";
@@ -104,8 +108,11 @@ public class MblFileDownloadController {
 	/**
 	 * 첨부파일로 등록된 파일에 대하여 다운로드를 제공한다.
 	 * 
-	 * @param response
-	 * @throws Exception
+	 * @param 	filePathId	파일ID
+	 * @param 	fileSn		파일번호
+	 * @param 	request		HttpServletRequest
+	 * @param 	response	HttpServletResponse
+	 * @throws 				Exception
 	 */
 	@RequestMapping(value = "/content/mbl/files/{filePathId}/file/{fileSn}")
 	public void cvplFileDownload(
@@ -153,7 +160,6 @@ public class MblFileDownloadController {
 					try {
 						in.close();
 					} catch (Exception ignore) {
-						// no-op
 						LOG.error("IGNORED: " + ignore.getMessage());
 					}
 				}
@@ -161,7 +167,6 @@ public class MblFileDownloadController {
 					try {
 						out.close();
 					} catch (Exception ignore) {
-						// no-op
 						LOG.error("IGNORED: " + ignore.getMessage());
 					}
 				}
@@ -180,4 +185,5 @@ public class MblFileDownloadController {
 			printwriter.close();
 		}
 	}
+	
 }

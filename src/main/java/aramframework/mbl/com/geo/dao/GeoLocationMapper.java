@@ -24,42 +24,45 @@ public interface GeoLocationMapper {
     /**
      * 건물 위치정보 목록을 조회한다.
      * 
-     * @param geoLocationVO
+     * @param 	geoLocationVO	GeoLocationVO
+	 * @return				List
      */
 	public List<EgovMap> selectBuildingLocationInfoList(GeoLocationVO geoLocationVO);
     
     /**
      * 건물 위치정보에 대한 목록 건수를 조회 한다.
      * 
-     * @param geoLocationVO
+     * @param 	geoLocationVO	GeoLocationVO
+	 * @return					목록 건수
     */
     public int selectBuildingLocationInfoListCnt(GeoLocationVO geoLocationVO);
 
     /**
      * 건물 위치정보를 조회한다.
      * 
-     * @param geoLocationVO
+     * @param 	geoLocationVO	GeoLocationVO
+	 * @return					GeoLocationVO
     */
     public GeoLocationVO selectBuildingLocationInfo(GeoLocationVO geoLocationVO);
     
     /**
      * 건물 위치정보를 DB에 등록한다.
      * 
-     * @param geoLocationVO
+     * @param 	geoLocationVO	GeoLocationVO
      */
     public void insertBuildingLocationInfo(GeoLocationVO geoLocationVO);
      
     /**
      * 건물 위치정보를 DB에서 수정한다.
      * 
-     * @param geoLocationVO
+     * @param 	geoLocationVO	GeoLocationVO
      */
     public void updateBuildingLocationInfo(GeoLocationVO geoLocationVO);
      
     /**
      * 주변건물 위치정보를 DB에서 삭제한다.
      * 
-     * @param geoLocationVO
+     * @param 	geoLocationVO	GeoLocationVO
      */
     public void deleteBuildingLocationInfo(GeoLocationVO geoLocationVO);
     

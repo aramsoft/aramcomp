@@ -40,7 +40,8 @@ public class GeoLocationVO extends BaseVO {
     // domain
     /**
      * 순번을 가져온다.
-     * @return int 순번
+     * 
+     * @return  	순번
      */
     public int getSn() {
         return sn;
@@ -48,7 +49,7 @@ public class GeoLocationVO extends BaseVO {
     /**
      * 순번을 저장한다.
      * 
-     * @param sn
+     * @param 	sn	순번
      */
     public void setSn(int sn) {
         this.sn = sn;
@@ -56,7 +57,8 @@ public class GeoLocationVO extends BaseVO {
 
     /**
      * 회원ID를 가져온다.
-     * @return String 회원ID
+     * 
+     * @return 		회원ID
      */
     public String getMberId() {
         return mberId;
@@ -64,7 +66,7 @@ public class GeoLocationVO extends BaseVO {
     /**
      * 회원ID를 저장한다.
      * 
-     * @param mberId
+     * @param 	mberId	회원ID
      */
     public void setMberId(String mberId) {
         this.mberId = mberId;
@@ -72,7 +74,8 @@ public class GeoLocationVO extends BaseVO {
    
     /**
      * 건물명을 가져온다.
-     * @return String 건물명
+     * 
+     * @return 		건물명
      */
     public String getBuldNm() {
         return buldNm;
@@ -80,7 +83,7 @@ public class GeoLocationVO extends BaseVO {
     /**
      * 건물명을 저장한다.
      * 
-     * @param buldNm
+     * @param 	buldNm	건물명
      */
     public void setBuldNm(String buldNm) {
         this.buldNm = buldNm;
@@ -88,7 +91,8 @@ public class GeoLocationVO extends BaseVO {
 
     /**
      * 위도를 가져온다.
-     * @return String 위도
+     * 
+     * @return 		위도
      */
     public String getLa() {
         return la;
@@ -96,7 +100,7 @@ public class GeoLocationVO extends BaseVO {
     /**
      * 위도를 저장한다.
      * 
-     * @param la
+     * @param 	la	위도
      */
     public void setLa(String la) {
         this.la = la;
@@ -104,7 +108,8 @@ public class GeoLocationVO extends BaseVO {
     
     /**
      * 경도를 가져온다.
-     * @return String 경도
+     * 
+     * @return 		경도
      */
     public String getLo() {
         return lo;
@@ -112,7 +117,7 @@ public class GeoLocationVO extends BaseVO {
     /**
      * 경도를 저장한다.
      * 
-     * @param lo
+     * @param 	lo	경도
      */
     public void setLo(String lo) {
         this.lo = lo;
@@ -120,7 +125,8 @@ public class GeoLocationVO extends BaseVO {
 
     /**
      * 전화번호를 가져온다.
-     * @return String 전화번호
+     * 
+     * @return		전화번호
      */
     public String getTelno() {
         return telno;
@@ -128,7 +134,7 @@ public class GeoLocationVO extends BaseVO {
     /**
      * 전화번호를 저장한다.
      * 
-     * @param telno
+     * @param 	telno	전화번호
      */
     public void setTelno(String telno) {
         this.telno = telno;
@@ -136,7 +142,7 @@ public class GeoLocationVO extends BaseVO {
 
     /**
      * 주소를 가져온다.
-     * @return String 주소
+     * @return 		주소
      */
     public String getAdres() {
         return adres;
@@ -144,7 +150,7 @@ public class GeoLocationVO extends BaseVO {
     /**
      * 주소를 저장한다.
      * 
-     * @param adres
+     * @param 	adres	주소
      */
     public void setAdres(String adres) {
         this.adres = adres;

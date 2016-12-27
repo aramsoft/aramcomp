@@ -37,7 +37,8 @@ public class GeoLocationService extends EgovAbstractServiceImpl {
     /**
      * 건물의 위치정보 목록을 조회한다.
      * 
-     * @param geoLocationVO
+     * @param 	geoLocationVO	GeoLocationVO
+	 * @return					List
      */
     public List<EgovMap> selectBuildingLocationInfoList(GeoLocationVO geoLocationVO) {
     	return geoLocationMapper.selectBuildingLocationInfoList(geoLocationVO);
@@ -46,7 +47,8 @@ public class GeoLocationService extends EgovAbstractServiceImpl {
     /**
      * 건물의 위치정보 총 갯수를 조회한다.
      * 
-     * @param geoLocationVO
+     * @param 	geoLocationVO	GeoLocationVO
+	 * @return					목록 건수
      */
     public int selectBuildingLocationInfoListCnt(GeoLocationVO geoLocationVO) {
     	return geoLocationMapper.selectBuildingLocationInfoListCnt(geoLocationVO);
@@ -55,7 +57,8 @@ public class GeoLocationService extends EgovAbstractServiceImpl {
     /**
      * 건물의 위치정보를 조회한다.
      * 
-     * @param geoLocationVO
+     * @param 	geoLocationVO	GeoLocationVO
+	 * @return					GeoLocationVO
      */
     public GeoLocationVO selectBuildingLocationInfo(GeoLocationVO geoLocationVO) {
     	GeoLocationVO resultVo = geoLocationMapper.selectBuildingLocationInfo(geoLocationVO);
@@ -67,7 +70,7 @@ public class GeoLocationService extends EgovAbstractServiceImpl {
     /**
      * 건물의 위치정보를 DB에 등록한다.
      * 
-     * @param geoLocationVO
+    * @param 	geoLocationVO	GeoLocationVO
      */
     public void insertBuildingLocationInfo(GeoLocationVO geoLocationVO) {
         try {
@@ -81,7 +84,7 @@ public class GeoLocationService extends EgovAbstractServiceImpl {
     /**
      * 건물의 위치정보를 수정한다.
      * 
-     * @param geoLocationVO
+    * @param 	geoLocationVO	GeoLocationVO
      */
     public void updateBuildingLocationInfo(GeoLocationVO geoLocationVO) {
         geoLocationMapper.updateBuildingLocationInfo(geoLocationVO);
@@ -90,7 +93,7 @@ public class GeoLocationService extends EgovAbstractServiceImpl {
     /**
      * 건물의 위치정보를 삭제한다.
      * 
-     * @param geoLocationVO
+    * @param 	geoLocationVO	GeoLocationVO
      */
     public void deleteBuildingLocationInfo(GeoLocationVO geoLocationVO) {
         geoLocationMapper.deleteBuildingLocationInfo(geoLocationVO);

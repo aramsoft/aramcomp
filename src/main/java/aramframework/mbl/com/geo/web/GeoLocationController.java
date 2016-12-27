@@ -62,7 +62,7 @@ public class GeoLocationController {
     /**
      * 주변 건물 위치정보 목록 조회 Service interface 호출 및 결과를 반환한다.
      * 
-     * @param geoLocationVO
+     * @param geoLocationVO		GeoLocationVO
      */
     @RequestMapping("/mbl/com/geo/listMobileBuildingLocationInfoJson.mdo")
     public ModelAndView listMobileBuildingLocationInfoJson(

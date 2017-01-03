@@ -22,14 +22,15 @@ public class SessionCookieUtil {
 	/**
 	 * HttpSession에 주어진 키 값으로 세션 정보를 생성하는 기능
 	 * 
-	 * @param request
-	 * @param keyStr
-	 *            - 세션 키
-	 * @param valStr
-	 *            - 세션 값
-	 * @throws Exception
+	 * @param request	HttpServletRequest	
+	 * @param keyStr	세션 키
+	 * @param valStr	세션 값
 	 */
-	public static void setSessionAttribute(HttpServletRequest request, String keyStr, String valStr) throws Exception {
+	public static void setSessionAttribute(
+			HttpServletRequest request, 
+			String keyStr, 
+			String valStr) 
+	throws Exception {
 
 		HttpSession session = request.getSession();
 		session.setAttribute(keyStr, valStr);
@@ -38,14 +39,15 @@ public class SessionCookieUtil {
 	/**
 	 * HttpSession에 주어진 키 값으로 세션 객체를 생성하는 기능
 	 * 
-	 * @param request
-	 * @param keyStr
-	 *            - 세션 키
-	 * @param valStr
-	 *            - 세션 값
-	 * @throws Exception
+	 * @param request	HttpServletRequest
+	 * @param keyStr	세션 키
+	 * @param valStr	세션 값
 	 */
-	public static void setSessionAttribute(HttpServletRequest request, String keyStr, Object obj) throws Exception {
+	public static void setSessionAttribute(
+			HttpServletRequest request, 
+			String keyStr, 
+			Object obj) 
+	throws Exception {
 
 		HttpSession session = request.getSession();
 		session.setAttribute(keyStr, obj);
@@ -54,13 +56,15 @@ public class SessionCookieUtil {
 	/**
 	 * HttpSession에 존재하는 주어진 키 값에 해당하는 세션 값을 얻어오는 기능
 	 * 
-	 * @param request
-	 * @param keyStr
-	 *            - 세션 키
-	 * @return
+	 * @param request	HttpServletRequest
+	 * @param keyStr	세션 키
+	 * @return			세션 값
 	 * @throws Exception
 	 */
-	public static Object getSessionAttribute(HttpServletRequest request, String keyStr) throws Exception {
+	public static Object getSessionAttribute(
+			HttpServletRequest request, 
+			String keyStr) 
+	throws Exception {
 
 		HttpSession session = request.getSession();
 		return session.getAttribute(keyStr);
@@ -69,12 +73,13 @@ public class SessionCookieUtil {
 	/**
 	 * HttpSession 객체내의 모든 값을 호출하는 기능
 	 * 
-	 * @param request
-	 * @return
-	 * @throws Exception
+	 * @param request	HttpServletRequest
+	 * @return			객체내의 모든 값
 	 */
 	@SuppressWarnings("unchecked")
-	public static String getSessionValuesString(HttpServletRequest request) throws Exception {
+	public static String getSessionValuesString(
+			HttpServletRequest request) 
+	throws Exception {
 		HttpSession session = request.getSession();
 		String returnVal = "";
 
@@ -90,12 +95,13 @@ public class SessionCookieUtil {
 	/**
 	 * HttpSession에 존재하는 세션을 주어진 키 값으로 삭제하는 기능
 	 * 
-	 * @param request
-	 * @param keyStr
-	 *            - 세션 키
-	 * @throws Exception
+	 * @param request	HttpServletRequest
+	 * @param keyStr	세션 키
 	 */
-	public static void removeSessionAttribute(HttpServletRequest request, String keyStr) throws Exception {
+	public static void removeSessionAttribute(
+			HttpServletRequest request, 
+			String keyStr) 
+	throws Exception {
 
 		HttpSession session = request.getSession();
 		session.removeAttribute(keyStr);
@@ -105,19 +111,17 @@ public class SessionCookieUtil {
 	 * 쿠키생성 - 입력받은 분만큼 쿠키를 유지되도록 세팅한다. 쿠키의 유효시간을 5분으로 설정 =>(cookie.setMaxAge(60
 	 * * 5) 쿠키의 유효시간을 10일로 설정 =>(cookie.setMaxAge(60 * 60 * 24 * 10)
 	 * 
-	 * @param response
-	 *            - Response
-	 * @param cookieNm
-	 *            - 쿠키명
-	 * @param cookieValue
-	 *            - 쿠키값
-	 * @param minute
-	 *            - 지속시킬 시간(분)
-	 * @return
-	 * @exception
-	 * @see
+	 * @param response		HttpServletResponse
+	 * @param cookieNm  	쿠키명
+	 * @param cookieValue 	쿠키값
+	 * @param minute		지속시킬 시간(분)
 	 */
-	public static void setCookie(HttpServletResponse response, String cookieNm, String cookieVal, int minute) throws UnsupportedEncodingException {
+	public static void setCookie(
+			HttpServletResponse response, 
+			String cookieNm, 
+			String cookieVal, 
+			int minute) 
+	throws UnsupportedEncodingException {
 
 		// 특정의 encode 방식을 사용해 캐릭터 라인을 application/x-www-form-urlencoded 형식으로 변환
 		// 일반 문자열을 웹에서 통용되는 'x-www-form-urlencoded' 형식으로 변환하는 역할
@@ -139,18 +143,16 @@ public class SessionCookieUtil {
 	/**
 	 * 쿠키생성 - 쿠키의 유효시간을 설정하지 않을 경우 쿠키의 생명주기는 브라우저가 종료될 때까지
 	 * 
-	 * @param response
-	 *            - Response
-	 * @param cookieNm
-	 *            - 쿠키명
-	 * @param cookieValue
-	 *            - 쿠키값
-	 * @return
-	 * @exception
-	 * @see
+	 * @param response	HttpServletResponse
+	 * @param cookieNm	 쿠키명
+	 * @param cookieValue	쿠키값
 	 */
 
-	public static void setCookie(HttpServletResponse response, String cookieNm, String cookieVal) throws UnsupportedEncodingException {
+	public static void setCookie(
+			HttpServletResponse response, 
+			String cookieNm, 
+			String cookieVal) 
+	throws UnsupportedEncodingException {
 
 		// 특정의 encode 방식을 사용해 캐릭터 라인을 application/x-www-form-urlencoded 형식으로 변환
 		// 일반 문자열을 웹에서 통용되는 'x-www-form-urlencoded' 형식으로 변환하는 역할
@@ -169,15 +171,15 @@ public class SessionCookieUtil {
 	/**
 	 * 쿠키값 사용 - 쿠키값을 읽어들인다.
 	 * 
-	 * @param request
-	 *            - Request
-	 * @param name
-	 *            - 쿠키명
-	 * @return 쿠키값
+	 * @param request	HttpServletRequest
+	 * @param name		쿠키명
+	 * @return 			쿠키값
 	 * @exception
-	 * @see
 	 */
-	public static String getCookie(HttpServletRequest request, String cookieNm) throws Exception {
+	public static String getCookie(
+			HttpServletRequest request, 
+			String cookieNm) 
+	throws Exception {
 
 		// 한 도메인에서 여러 개의 쿠키를 사용할 수 있기 때문에 Cookie[] 배열이 반환
 		// Cookie를 읽어서 Cookie 배열로 반환
@@ -209,15 +211,14 @@ public class SessionCookieUtil {
 	/**
 	 * 쿠키값 삭제 - cookie.setMaxAge(0) - 쿠키의 유효시간을 0으로 설정해 줌으로써 쿠키를 삭제하는 것과 동일한 효과
 	 * 
-	 * @param request
-	 *            - Request
-	 * @param name
-	 *            - 쿠키명
+	 * @param response	HttpServletResponse
+	 * @param cookieNm  쿠키명
 	 * @return 쿠키값
-	 * @exception
-	 * @see
 	 */
-	public static void setCookie(HttpServletResponse response, String cookieNm) throws UnsupportedEncodingException {
+	public static void setCookie(
+			HttpServletResponse response,
+			String cookieNm) 
+	throws UnsupportedEncodingException {
 
 		// 쿠키생성 - 쿠키의 이름, 쿠키의 값
 		Cookie cookie = new Cookie(cookieNm, null);
@@ -232,4 +233,5 @@ public class SessionCookieUtil {
 		// response 내장 객체를 이용해 쿠키를 전송
 		response.addCookie(cookie);
 	}
+	
 }

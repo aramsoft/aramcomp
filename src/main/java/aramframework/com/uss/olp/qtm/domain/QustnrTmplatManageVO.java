@@ -30,7 +30,7 @@ public class QustnrTmplatManageVO extends BaseVO  {
 	/**
 	 * qestnrTmplatId attribute 를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return the qestnrTmplatId
 	 */
 	public String getQestnrTmplatId() {
 		return qestnrTmplatId;
@@ -38,7 +38,7 @@ public class QustnrTmplatManageVO extends BaseVO  {
 	/**
 	 * qestnrTmplatId attribute 값을 설정한다.
 	 * 
-	 * @return qestnrTmplatId String
+	 * @param qestnrTmplatId String
 	 */
 	public void setQestnrTmplatId(String qestnrTmplatId) {
 		this.qestnrTmplatId = qestnrTmplatId;
@@ -47,7 +47,7 @@ public class QustnrTmplatManageVO extends BaseVO  {
 	/**
 	 * qestnrTmplatTy attribute 를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return the qestnrTmplatTy
 	 */
 	public String getQestnrTmplatTy() {
 		return qestnrTmplatTy;
@@ -55,7 +55,7 @@ public class QustnrTmplatManageVO extends BaseVO  {
 	/**
 	 * qestnrTmplatTy attribute 값을 설정한다.
 	 * 
-	 * @return qestnrTmplatTy String
+	 * @param qestnrTmplatTy String
 	 */
 	public void setQestnrTmplatTy(String qestnrTmplatTy) {
 		this.qestnrTmplatTy = qestnrTmplatTy;
@@ -64,7 +64,7 @@ public class QustnrTmplatManageVO extends BaseVO  {
 	/**
 	 * qestnrTmplatCn attribute 를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return the qestnrTmplatCn
 	 */
 	public String getQestnrTmplatCn() {
 		return qestnrTmplatCn;
@@ -72,7 +72,7 @@ public class QustnrTmplatManageVO extends BaseVO  {
 	/**
 	 * qestnrTmplatCn attribute 값을 설정한다.
 	 * 
-	 * @return qestnrTmplatCn String
+	 * @param qestnrTmplatCn String
 	 */
 	public void setQestnrTmplatCn(String qestnrTmplatCn) {
 		this.qestnrTmplatCn = qestnrTmplatCn;
@@ -81,7 +81,7 @@ public class QustnrTmplatManageVO extends BaseVO  {
 	/**
 	 * qestnrTmplatCours attribute 를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return the qestnrTmplatCours
 	 */
 	public String getQestnrTmplatCours() {
 		return qestnrTmplatCours;
@@ -89,7 +89,7 @@ public class QustnrTmplatManageVO extends BaseVO  {
 	/**
 	 * qestnrTmplatCours attribute 값을 설정한다.
 	 * 
-	 * @return qestnrTmplatCours String
+	 * @param qestnrTmplatCours String
 	 */
 	public void setQestnrTmplatCours(String qestnrTmplatCours) {
 		this.qestnrTmplatCours = qestnrTmplatCours;
@@ -106,7 +106,7 @@ public class QustnrTmplatManageVO extends BaseVO  {
 	/**
 	 * qestnrTmplatImagepathnm attribute 값을 설정한다.
 	 * 
-	 * @return qestnrTmplatImageInfo byte[]
+	 * @param qestnrTmplatImageInfo byte[]
 	 */
 	public void setQestnrTmplatImageInfo(byte[] qestnrTmplatImageInfo) {
 		this.qestnrTmplatImageInfo = qestnrTmplatImageInfo;

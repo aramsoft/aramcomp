@@ -50,7 +50,7 @@ public class QustnrRespondManageVO extends BaseVO  {
 	/**
 	 * qestnrId attribute 를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return the qestnrId
 	 */
 	public String getQestnrId() {
 		return qestnrId;
@@ -58,7 +58,7 @@ public class QustnrRespondManageVO extends BaseVO  {
 	/**
 	 * qestnrId attribute 값을 설정한다.
 	 * 
-	 * @return qestnrId String
+	 * @param qestnrId String
 	 */
 	public void setQestnrId(String qestnrId) {
 		this.qestnrId = qestnrId;
@@ -67,7 +67,7 @@ public class QustnrRespondManageVO extends BaseVO  {
 	/**
 	 * qestnrRespondId attribute 를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return the qestnrRespondId
 	 */
 	public String getQestnrRespondId() {
 		return qestnrRespondId;
@@ -75,7 +75,7 @@ public class QustnrRespondManageVO extends BaseVO  {
 	/**
 	 * qestnrRespondId attribute 값을 설정한다.
 	 * 
-	 * @return qestnrRespondId String
+	 * @param qestnrRespondId String
 	 */
 	public void setQestnrRespondId(String qestnrRespondId) {
 		this.qestnrRespondId = qestnrRespondId;
@@ -84,7 +84,7 @@ public class QustnrRespondManageVO extends BaseVO  {
 	/**
 	 * sexdstnCode attribute 를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return the sexdstnCode
 	 */
 	public String getSexdstnCode() {
 		return sexdstnCode;
@@ -92,7 +92,7 @@ public class QustnrRespondManageVO extends BaseVO  {
 	/**
 	 * sexdstnCode attribute 값을 설정한다.
 	 * 
-	 * @return sexdstnCode String
+	 * @param 	sexdstnCode 	String
 	 */
 	public void setSexdstnCode(String sexdstnCode) {
 		this.sexdstnCode = sexdstnCode;
@@ -101,7 +101,7 @@ public class QustnrRespondManageVO extends BaseVO  {
 	/**
 	 * occpTyCode attribute 를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return the occpTyCode
 	 */
 	public String getOccpTyCode() {
 		return occpTyCode;
@@ -109,7 +109,7 @@ public class QustnrRespondManageVO extends BaseVO  {
 	/**
 	 * occpTyCode attribute 값을 설정한다.
 	 * 
-	 * @return occpTyCode String
+	 * @param 	occpTyCode 	String
 	 */
 	public void setOccpTyCode(String occpTyCode) {
 		this.occpTyCode = occpTyCode;
@@ -118,7 +118,7 @@ public class QustnrRespondManageVO extends BaseVO  {
 	/**
 	 * respondNm attribute 를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return the respondNm
 	 */
 	public String getRespondNm() {
 		return respondNm;
@@ -126,7 +126,7 @@ public class QustnrRespondManageVO extends BaseVO  {
 	/**
 	 * respondNm attribute 값을 설정한다.
 	 * 
-	 * @return respondNm String
+	 * @param 	respondNm 	String
 	 */
 	public void setRespondNm(String respondNm) {
 		this.respondNm = respondNm;
@@ -135,7 +135,7 @@ public class QustnrRespondManageVO extends BaseVO  {
 	/**
 	 * brth attribute 를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return the brth
 	 */
 	public String getBrth() {
 		return brth;
@@ -143,7 +143,7 @@ public class QustnrRespondManageVO extends BaseVO  {
 	/**
 	 * brth attribute 값을 설정한다.
 	 * 
-	 * @return brth String
+	 * @param 	brth 	String
 	 */
 	public void setBrth(String brth) {
 		this.brth = brth;
@@ -152,7 +152,7 @@ public class QustnrRespondManageVO extends BaseVO  {
 	/**
 	 * areaNo attribute 를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return the areaNo
 	 */
 	public String getAreaNo() {
 		return areaNo;
@@ -160,7 +160,7 @@ public class QustnrRespondManageVO extends BaseVO  {
 	/**
 	 * areaNo attribute 값을 설정한다.
 	 * 
-	 * @return areaNo String
+	 * @param 	areaNo 	String
 	 */
 	public void setAreaNo(String areaNo) {
 		this.areaNo = areaNo;
@@ -169,7 +169,7 @@ public class QustnrRespondManageVO extends BaseVO  {
 	/**
 	 * middleTelno attribute 를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return the middleTelno
 	 */
 	public String getMiddleTelno() {
 		return middleTelno;
@@ -177,7 +177,7 @@ public class QustnrRespondManageVO extends BaseVO  {
 	/**
 	 * middleTelno attribute 값을 설정한다.
 	 * 
-	 * @return middleTelno String
+	 * @param 	middleTelno 	String
 	 */
 	public void setMiddleTelno(String middleTelno) {
 		this.middleTelno = middleTelno;
@@ -186,7 +186,7 @@ public class QustnrRespondManageVO extends BaseVO  {
 	/**
 	 * endTelno attribute 를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return the endTelno
 	 */
 	public String getEndTelno() {
 		return endTelno;
@@ -194,7 +194,7 @@ public class QustnrRespondManageVO extends BaseVO  {
 	/**
 	 * endTelno attribute 값을 설정한다.
 	 * 
-	 * @return endTelno String
+	 * @param 	endTelno 	String
 	 */
 	public void setEndTelno(String endTelno) {
 		this.endTelno = endTelno;
@@ -204,7 +204,7 @@ public class QustnrRespondManageVO extends BaseVO  {
 	/**
 	 * qestnrSj attribute 를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return the qestnrSj
 	 */
 	public String getQestnrSj() {
 		return qestnrSj;
@@ -212,7 +212,7 @@ public class QustnrRespondManageVO extends BaseVO  {
 	/**
 	 * qestnrSj attribute 값을 설정한다.
 	 * 
-	 * @return qestnrSj String
+	 * @searchMode 	qestnrSj 	String
 	 */
 	public void setQestnrSj(String qestnrSj) {
 		this.qestnrSj = qestnrSj;
@@ -221,7 +221,7 @@ public class QustnrRespondManageVO extends BaseVO  {
 	/**
 	 * searchMode attribute 를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return the searchMode
 	 */
 	public String getSearchMode() {
 		return searchMode;
@@ -229,7 +229,7 @@ public class QustnrRespondManageVO extends BaseVO  {
 	/**
 	 * searchMode attribute 값을 설정한다.
 	 * 
-	 * @return searchMode String
+	 * @searchMode searchMode String
 	 */
 	public void setSearchMode(String searchMode) {
 		this.searchMode = searchMode;

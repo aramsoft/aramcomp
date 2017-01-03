@@ -15,8 +15,8 @@ public class MessageUtil {
 	/**
 	 * 해당되는 속성키로부터 에러 메시지를 얻는다.
 	 * 
-	 * @param strCode
-	 * @return
+	 * @param strCode	속성키
+	 * @return	에러 메시지
 	 */
 	public static String getErrorMsg(String strCode) {
 
@@ -26,9 +26,9 @@ public class MessageUtil {
 	/**
 	 * 해당되는 속성키로부터 에러 메시지(파라미터 변환 포함)를 얻는다.
 	 * 
-	 * @param strCode
-	 * @param arrParam
-	 * @return
+	 * @param strCode	속성키
+	 * @param arrParam	파라미터
+	 * @return	에러 메시지
 	 */
 	public static String getErrorMsg(String strCode, String[] arrParam) {
 
@@ -38,8 +38,8 @@ public class MessageUtil {
 	/**
 	 * 해당되는 속성키로부터 정보 메시지를 얻는다.
 	 * 
-	 * @param strCode
-	 * @return
+	 * @param strCode	속성키
+	 * @return	정보 메시지
 	 */
 	public static String getInfoMsg(String strCode) {
 
@@ -49,9 +49,9 @@ public class MessageUtil {
 	/**
 	 * 해당되는 속성키로부터 정보 메시지(파라미터 변환 포함)를 얻는다.
 	 * 
-	 * @param strCode
-	 * @param arrParam
-	 * @return
+	 * @param strCode	속성키
+	 * @param arrParam	파라미터
+	 * @return	정보 메시지
 	 */
 	public static String getInfoMsg(String strCode, String[] arrParam) {
 
@@ -61,8 +61,8 @@ public class MessageUtil {
 	/**
 	 * 해당되는 속성키로부터 경고 메시지를 얻는다.
 	 * 
-	 * @param strCode
-	 * @return
+	 * @param strCode	속성키
+	 * @return 경고 메시지
 	 */
 	public static String getWarnMsg(String strCode) {
 
@@ -72,9 +72,9 @@ public class MessageUtil {
 	/**
 	 * 해당되는 속성키로부터 경고 메시지(파라미터 변환 포함)를 얻는다.
 	 * 
-	 * @param strCode
-	 * @param arrParam
-	 * @return
+	 * @param strCode	속성키
+	 * @param arrParam	파라미터
+	 * @return  경고 메시지
 	 */
 	public static String getWarnMsg(String strCode, String[] arrParam) {
 
@@ -84,8 +84,8 @@ public class MessageUtil {
 	/**
 	 * 해당되는 속성키로부터 확인 메시지를 얻는다.
 	 * 
-	 * @param strCode
-	 * @return
+	 * @param strCode	속성키
+	 * @return 확인 메시지
 	 */
 	public static String getConfirmMsg(String strCode) {
 
@@ -95,9 +95,9 @@ public class MessageUtil {
 	/**
 	 * 해당되는 속성키로부터 확인 메시지(파라미터 변환 포함)를 얻는다.
 	 * 
-	 * @param strCode
-	 * @param arrParam
-	 * @return
+	 * @param strCode	속성키
+	 * @param arrParam	파라미터 변환
+	 * @return 확인 메시지
 	 */
 	public static String getConfirmMsg(String strCode, String[] arrParam) {
 
@@ -134,4 +134,5 @@ public class MessageUtil {
 
 		return message;
 	}
+	
 }

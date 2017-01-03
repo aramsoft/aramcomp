@@ -56,7 +56,7 @@ public class QustnrRespondInfoVO extends BaseVO  {
 	/**
 	 * qestnrQesrspnsId attribute 를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return 	the qestnrQesrspnsId
 	 */
 	public String getQestnrQesrspnsId() {
 		return qestnrQesrspnsId;
@@ -64,7 +64,7 @@ public class QustnrRespondInfoVO extends BaseVO  {
 	/**
 	 * qestnrQesrspnsId attribute 값을 설정한다.
 	 * 
-	 * @return qestnrQesrspnsId String
+	 * @param 	qestnrQesrspnsId String
 	 */
 	public void setQestnrQesrspnsId(String qestnrQesrspnsId) {
 		this.qestnrQesrspnsId = qestnrQesrspnsId;
@@ -73,7 +73,7 @@ public class QustnrRespondInfoVO extends BaseVO  {
 	/**
 	 * qestnrId attribute 를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return the qestnrId
 	 */
 	public String getQestnrId() {
 		return qestnrId;
@@ -81,7 +81,7 @@ public class QustnrRespondInfoVO extends BaseVO  {
 	/**
 	 * qestnrId attribute 값을 설정한다.
 	 * 
-	 * @return qestnrId String
+	 * @param 	qestnrId 	String
 	 */
 	public void setQestnrId(String qestnrId) {
 		this.qestnrId = qestnrId;
@@ -90,7 +90,7 @@ public class QustnrRespondInfoVO extends BaseVO  {
 	/**
 	 * qestnrQesitmId attribute 를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return the qestnrQesitmId
 	 */
 	public String getQestnrQesitmId() {
 		return qestnrQesitmId;
@@ -98,7 +98,7 @@ public class QustnrRespondInfoVO extends BaseVO  {
 	/**
 	 * qestnrQesitmId attribute 값을 설정한다.
 	 * 
-	 * @return qestnrQesitmId String
+	 * @param 	qestnrQesitmId 	String
 	 */
 	public void setQestnrQesitmId(String qestnrQesitmId) {
 		this.qestnrQesitmId = qestnrQesitmId;
@@ -107,7 +107,7 @@ public class QustnrRespondInfoVO extends BaseVO  {
 	/**
 	 * qustnrIemId attribute 를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return 	the qustnrIemId
 	 */
 	public String getQustnrIemId() {
 		return qustnrIemId;
@@ -115,7 +115,7 @@ public class QustnrRespondInfoVO extends BaseVO  {
 	/**
 	 * qustnrIemId attribute 값을 설정한다.
 	 * 
-	 * @return qustnrIemId String
+	 * @param 	qustnrIemId 	String
 	 */
 	public void setQustnrIemId(String qustnrIemId) {
 		this.qustnrIemId = qustnrIemId;
@@ -124,7 +124,7 @@ public class QustnrRespondInfoVO extends BaseVO  {
 	/**
 	 * respondAnswerCn attribute 를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return 	the respondAnswerCn
 	 */
 	public String getRespondAnswerCn() {
 		return respondAnswerCn;
@@ -132,7 +132,7 @@ public class QustnrRespondInfoVO extends BaseVO  {
 	/**
 	 * respondAnswerCn attribute 값을 설정한다.
 	 * 
-	 * @return respondAnswerCn String
+	 * @param  respondAnswerCn String
 	 */
 	public void setRespondAnswerCn(String respondAnswerCn) {
 		this.respondAnswerCn = respondAnswerCn;
@@ -141,7 +141,7 @@ public class QustnrRespondInfoVO extends BaseVO  {
 	/**
 	 * etcAnswerCn attribute 를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return the etcAnswerCn
 	 */
 	public String getEtcAnswerCn() {
 		return etcAnswerCn;
@@ -149,7 +149,7 @@ public class QustnrRespondInfoVO extends BaseVO  {
 	/**
 	 * etcAnswerCn attribute 값을 설정한다.
 	 * 
-	 * @return etcAnswerCn String
+	 * @param etcAnswerCn String
 	 */
 	public void setEtcAnswerCn(String etcAnswerCn) {
 		this.etcAnswerCn = etcAnswerCn;
@@ -158,7 +158,7 @@ public class QustnrRespondInfoVO extends BaseVO  {
 	/**
 	 * respondNm attribute 를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return the respondNm
 	 */
 	public String getRespondNm() {
 		return respondNm;
@@ -166,7 +166,7 @@ public class QustnrRespondInfoVO extends BaseVO  {
 	/**
 	 * respondNm attribute 값을 설정한다.
 	 * 
-	 * @return respondNm String
+	 * @param respondNm String
 	 */
 	public void setRespondNm(String respondNm) {
 		this.respondNm = respondNm;
@@ -176,7 +176,7 @@ public class QustnrRespondInfoVO extends BaseVO  {
 	/**
 	 * qestnrSj attribute 를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return the qestnrSj
 	 */
 	public String getQestnrSj() {
 		return qestnrSj;
@@ -184,7 +184,7 @@ public class QustnrRespondInfoVO extends BaseVO  {
 	/**
 	 * qestnrSj attribute 값을 설정한다.
 	 * 
-	 * @return qestnrSj String
+	 * @param qestnrSj String
 	 */
 	public void setQestnrSj(String qestnrSj) {
 		this.qestnrSj = qestnrSj;
@@ -193,7 +193,7 @@ public class QustnrRespondInfoVO extends BaseVO  {
 	/**
 	 * qestnCn attribute 를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return the qestnCn
 	 */
 	public String getQestnCn() {
 		return qestnCn;
@@ -201,7 +201,7 @@ public class QustnrRespondInfoVO extends BaseVO  {
 	/**
 	 * qestnCn attribute 값을 설정한다.
 	 * 
-	 * @return qestnCn String
+	 * @param qestnCn String
 	 */
 	public void setQestnCn(String qestnCn) {
 		this.qestnCn = qestnCn;
@@ -210,7 +210,7 @@ public class QustnrRespondInfoVO extends BaseVO  {
 	/**
 	 * qestnTyCode attribute 를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return the qestnTyCode
 	 */
 	public String getQestnTyCode() {
 		return qestnTyCode;
@@ -218,7 +218,7 @@ public class QustnrRespondInfoVO extends BaseVO  {
 	/**
 	 * qestnTyCode attribute 값을 설정한다.
 	 * 
-	 * @return qestnTyCode String
+	 * @param qestnTyCode String
 	 */
 	public void setQestnTyCode(String qestnTyCode) {
 		this.qestnTyCode = qestnTyCode;
@@ -227,7 +227,7 @@ public class QustnrRespondInfoVO extends BaseVO  {
 	/**
 	 * qustnrIemCn attribute 를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return the qustnrIemCn
 	 */
 	public String getQustnrIemCn() {
 		return qustnrIemCn;
@@ -235,7 +235,7 @@ public class QustnrRespondInfoVO extends BaseVO  {
 	/**
 	 * qustnrIemCn attribute 값을 설정한다.
 	 * 
-	 * @return qustnrIemCn String
+	 * @param qustnrIemCn String
 	 */
 	public void setQustnrIemCn(String qustnrIemCn) {
 		this.qustnrIemCn = qustnrIemCn;
@@ -252,8 +252,7 @@ public class QustnrRespondInfoVO extends BaseVO  {
 	/**
 	 * trgetId attribute 값을 설정한다.
 	 * 
-	 * @param trgetId
-	 *            the trgetId to set
+	 * @param trgetId	the trgetId to set
 	 */
 	public void setTrgetId(String trgetId) {
 		this.trgetId = trgetId;
@@ -262,7 +261,7 @@ public class QustnrRespondInfoVO extends BaseVO  {
 	/**
 	 * searchMode attribute 를 리턴한다.
 	 * 
-	 * @return the String
+	 * @return the searchMode
 	 */
 	public String getSearchMode() {
 		return searchMode;
@@ -270,7 +269,7 @@ public class QustnrRespondInfoVO extends BaseVO  {
 	/**
 	 * searchMode attribute 값을 설정한다.
 	 * 
-	 * @return searchMode String
+	 * @param searchMode String
 	 */
 	public void setSearchMode(String searchMode) {
 		this.searchMode = searchMode;

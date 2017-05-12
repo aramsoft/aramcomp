@@ -26,7 +26,6 @@ import aramframework.com.cop.bbs.domain.BoardVO;
 import aramframework.com.cop.bbs.service.BBSBoardService;
 import aramframework.com.cop.bbs.service.BBSCommentService;
 import aramframework.com.cop.bbs.service.BBSMasterService;
-import aramframework.com.cop.bbs.service.BBSSatisfactionService;
 import aramframework.com.cop.com.service.UserInfService;
 import aramframework.com.cop.scp.service.BBSScrapService;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -65,9 +64,6 @@ public class MblBBSBoardController {
     //---------------------------------
     @Autowired(required=false)
     private BBSCommentService bbsCommentService;
-    
-    @Autowired(required=false)
-    private BBSSatisfactionService bbsSatisfactionService;
     
     @Autowired(required=false)
     private BBSScrapService bbsScrapService;

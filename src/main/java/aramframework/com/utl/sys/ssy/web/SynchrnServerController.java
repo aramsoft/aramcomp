@@ -18,7 +18,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.constant.AramProperties;
-import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.utl.sys.ssy.domain.SynchrnServerVO;
@@ -41,9 +40,6 @@ public class SynchrnServerController {
 	@Autowired
 	private SynchrnServerService synchrnServerService;
 
-	@Autowired
-	private CmmUseService cmmUseService;
-	
 	@Autowired
 	private DefaultBeanValidator beanValidator;
 

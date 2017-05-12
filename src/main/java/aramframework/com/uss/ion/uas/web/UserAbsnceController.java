@@ -7,7 +7,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
@@ -35,9 +34,6 @@ public class UserAbsnceController {
 
 	@Autowired
 	private UserAbsnceService userAbsnceService;
-
-	@Autowired
-	private DefaultBeanValidator beanValidator;
 
 	/**
 	 * 사용자부재정보를 관리하기 위해 등록된 사용자부재 목록을 조회한다.

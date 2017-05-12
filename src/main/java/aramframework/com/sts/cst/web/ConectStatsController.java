@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.sts.com.StatsVO;
 import aramframework.com.sts.cst.service.ConectStatsService;
 
@@ -26,9 +25,6 @@ public class ConectStatsController {
 
 	@Autowired
 	private ConectStatsService conectStatsService;
-
-	@Autowired
-	private CmmUseService cmmUseService;
 
 	/**
 	 * 접속 통계를 조회한다

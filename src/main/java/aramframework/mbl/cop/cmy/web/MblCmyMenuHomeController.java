@@ -22,7 +22,6 @@ import aramframework.com.cop.bbs.service.BBSBoardService;
 import aramframework.com.cop.bbs.service.BBSMasterService;
 import aramframework.com.cop.cmy.domain.CommunityVO;
 import aramframework.com.cop.cmy.service.CommunityManageService;
-import aramframework.com.cop.com.service.ConfirmService;
 
 /**
  * 커뮤니티 정보를 관리하기 위한 컨트롤러 클래스
@@ -42,9 +41,6 @@ public class MblCmyMenuHomeController {
     
 	@Autowired
     private CommunityManageService cmmntyService;
-
-	@Autowired
-    private ConfirmService confmService;
 
 	/**
 	 * 커뮤니티 홈페이지를 조회한다.

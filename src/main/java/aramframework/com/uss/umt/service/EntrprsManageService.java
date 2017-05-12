@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.uss.umt.dao.EntrprsManageMapper;
-import aramframework.com.uss.umt.dao.MberManageMapper;
-import aramframework.com.uss.umt.dao.UserManageMapper;
 import aramframework.com.uss.umt.domain.EntrprsManageVO;
 import aramframework.com.uss.umt.domain.StplatVO;
 import aramframework.com.utl.sim.service.FileScrty;
@@ -25,12 +23,6 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 @Service
 public class EntrprsManageService extends EgovAbstractServiceImpl {
 
-	@Autowired
-	private UserManageMapper userManageMapper;
-	
-	@Autowired
-	private MberManageMapper mberManageMapper;
-	
 	@Autowired
 	private EntrprsManageMapper entrprsManageMapper;
 	

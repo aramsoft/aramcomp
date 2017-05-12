@@ -46,7 +46,7 @@
         </choose>
 		</if>
     </select>
-    
+     
 	<!-- 상세보기 -->
     <select id="selectLoginPolicy" resultType="loginPolicyVO">
         <![CDATA[
@@ -58,7 +58,7 @@
                  , COALESCE(B.LMTT_AT,'N') 		AS "lmttAt"
                  , B.LAST_UPDUSR_ID				AS "userId" 
                  , B.LAST_UPDT_PNTTM			AS "regDate"
-                 , IF(B.EMPLYR_ID IS NULL, 'N', 'Y') AS "regYn"
+                 , (CASE B.EMPLYR_ID WHEN NULL THEN 'N' ELSE 'Y' END)	 AS "regYn"
               FROM COMVN_USER_MASTER A 
                    LEFT OUTER JOIN COMTN_LOGIN_POLICY B
                 		ON A.USER_ID = B.EMPLYR_ID   

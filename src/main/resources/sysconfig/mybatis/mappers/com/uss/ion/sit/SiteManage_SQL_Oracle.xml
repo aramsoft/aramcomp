@@ -83,10 +83,16 @@
 			     , SITE_THEMA_CL_CODE
 			     , B.CODE_NM  				AS "siteThemaClNm"
 			     , A.ACTVTY_AT
-			     , DECODE(A.ACTVTY_AT,'Y','활성','N','비활성','비활성') AS "actvtyAtNm"
+			     , CASE	A.ACTVTY_AT
+						WHEN	'Y'	THEN '활성'
+						ELSE	'비활성'
+					END						AS "actvtyAtNm"
 			     , A.USE_AT
-			     , DECODE(A.USE_AT,'Y','사용','N','미사용','미사용') 	AS "useAtNm"
-			     , USER_NM										AS "emplyrNm"
+			     , CASE	A.USE_AT
+						WHEN	'Y'	THEN '사용'
+						ELSE	'미사용'
+					END						AS "useAtNm"	
+			     , USER_NM					AS "emplyrNm"
 			     , A.FRST_REGIST_PNTTM 		AS "frstRegisterPnttm" 
 			     , A.FRST_REGISTER_ID
 			     , A.LAST_UPDT_PNTTM   		AS "lastUpdusrPnttm"

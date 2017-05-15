@@ -30,7 +30,7 @@ public class NetInfo {
 	 */
 	public static String getHostName() throws Exception {
 		// 실행할 명령을 프로퍼티 파일에서 확인한다.
-		String command = AramProperties.getPathProperty(Globals.SHELL_FILE_PATH, "SHELL." + Globals.OS_TYPE + ".getHostName");
+		String command = AramProperties.getPathProperty(Globals.SHELL_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getHostName");
 
 		// 출력할 결과 (파싱대상)
 		String hostStr = "";

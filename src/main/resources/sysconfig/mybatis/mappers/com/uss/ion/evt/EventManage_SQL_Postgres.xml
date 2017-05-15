@@ -15,7 +15,7 @@
 		         , GARDEN               	AS "garden"           
 		         , RCEPT_BGNDE       		AS "rceptBeginDe"     
 		         , RCEPT_ENDDE          	AS "rceptEndDe"       
-		         , STR_TO_DATE(EVENT_ENDDE, '%Y%m%d')-STR_TO_DATE(EVENT_BGNDE,'%Y%m%d')+1 as "eventDayCount" 
+		         , to_date(EVENT_ENDDE, 'YYYYMMDD')-to_date(EVENT_BGNDE,'YYYYMMDD')+1 as "eventDayCount" 
 		         , (select count(atdrn.APPLCNT_ID) 
 		              from COMTN_EVENT_ATDRN atdrn
 			         where atdrn.EVENT_ID = A.EVENT_ID
@@ -95,12 +95,12 @@
 			     , mge.REFRN_URL            AS "refrnUrl"         
 			     , mge.RCEPT_BGNDE       	AS "rceptBeginDe"     
 			     , mge.RCEPT_ENDDE         	AS "rceptEndDe"       
-			     , STR_TO_DATE(mge.EVENT_ENDDE, '%Y%m%d')-STR_TO_DATE(mge.EVENT_BGNDE,'%Y%m%d')+1  AS "eventDayCount" 
+			     , to_date(mge.EVENT_ENDDE, 'YYYYMMDD')-to_date(mge.EVENT_BGNDE,'YYYYMMDD')+1  AS "eventDayCount" 
 			     , (select count(*) 
 			          from COMTN_EVENT_ATDRN a 
 			         where a.EVENT_ID = mge.EVENT_ID
 			       ) 						AS "eventAtdrnCount"
-			     , TRUNC(STR_TO_DATE(mge.RCEPT_BGNDE, '%Y%m%d')-now())  AS "eventAtdrnDayCount"
+			     , TRUNC(to_date(mge.RCEPT_BGNDE, 'YYYYMMDD')-now())  AS "eventAtdrnDayCount"
 			     , (select code_nm 
 			     	  from COMTC_CMMN_DETAIL_CODE 
 			     	 where code_id ='COM053' 
@@ -204,7 +204,7 @@
 			     , mge.GARDEN               AS "garden"          
 			     , mge.RCEPT_BGNDE       	AS "rceptBeginDe"     
 			     , mge.RCEPT_ENDDE         	AS "rceptEndDe"       
-			     , STR_TO_DATE(mge.EVENT_ENDDE, '%Y%m%d')-STR_TO_DATE(mge.EVENT_BGNDE,'%Y%m%d')+1 as "eventDayCount" 
+			     , to_date(mge.EVENT_ENDDE, 'YYYYMMDD')-to_date(mge.EVENT_BGNDE,'YYYYMMDD')+1  AS "eventDayCount" 
 			     , (select count(APPLCNT_ID) 
 			          from COMTN_EVENT_ATDRN 
 				     where EVENT_ID = mge.EVENT_ID
@@ -382,7 +382,7 @@
         <![CDATA[
             UPDATE COMTN_EVENT_ATDRN
                SET CONFM_AT          = #{confmAt}    
-                 , SANCTN_DT         = STR_TO_DATE(#{sanctnDt}, '%Y-%m-%d %H:%i:%S')   
+                 , SANCTN_DT         = TO_DATE(#{sanctnDt}, 'YYYY-MM-DD HH24:MI:SS')   
                  , RETURN_RESN       = #{returnResn} 
                  , LAST_UPDUSR_ID    = #{lastUpdusrId}
                  , LAST_UPDT_PNTTM 	 = now()   
@@ -411,7 +411,7 @@
 				 , mge.EVENT_PLACE          AS "eventPlace"       
 				 , atdrn.INFRML_SANCTN_ID   AS "infrmlSanctnId"   
 				 , atdrn.REQST_DE           AS "reqstDe"          
-				 , STR_TO_DATE(mge.EVENT_ENDDE, '%Y%m%d')-STR_TO_DATE(mge.EVENT_BGNDE,'%Y%m%d')+1 as "eventDayCount" 
+				 , to_date(mge.EVENT_ENDDE, 'YYYYMMDD')-to_date(mge.EVENT_BGNDE,'YYYYMMDD')+1 as "eventDayCount" 
 				 , (select code_nm 
 				      from COMTC_CMMN_DETAIL_CODE  
 				     WHERE code_id ='COM053' 
@@ -423,7 +423,7 @@
 				      from COMVN_USER_MASTER 
 				     WHERE ESNTL_ID = atdrn.APPLCNT_ID
 				   )  						AS "applcntNm"
-				 , DATE_FORMAT(atdrn.SANCTN_DT, '%Y-%m-%d') AS "sanctnDt"  
+				 , TO_CHAR(atdrn.SANCTN_DT, 'YYYY-MM-DD') AS "sanctnDt"  
 			  FROM COMTN_EVENT_MANAGE mge
 			       LEFT OUTER JOIN COMTN_EVENT_ATDRN atdrn
 			         	ON 	atdrn.EVENT_ID = mge.EVENT_ID

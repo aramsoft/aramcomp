@@ -856,7 +856,7 @@ public class SysInfo {
 		BufferedReader b_out = null;
 		try {
 			Process p = null;
-			String cmdStr = AramProperties.getPathProperty(Globals.SHELL_FILE_PATH, "SHELL." + Globals.OS_TYPE + "." + propertyKeyword);
+			String cmdStr = AramProperties.getPathProperty(Globals.SHELL_CONF_PATH, "SHELL." + Globals.OS_TYPE + "." + propertyKeyword);
 			command[0] = cmdStr;
 			p = Runtime.getRuntime().exec(command);
 			p.waitFor();

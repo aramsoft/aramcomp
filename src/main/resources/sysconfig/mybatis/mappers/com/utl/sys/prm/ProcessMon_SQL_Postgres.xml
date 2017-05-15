@@ -65,7 +65,7 @@
  			SELECT A.PROCS_ID				PROCESS_ID
 				 , A.PROCS_NM				PROCESS_NM
 			     , B.CODE_NM 				PROCS_STTUS
-            	 , DATE_FORMAT(A.CREAT_DT, '%Y-%m-%d %H:%i:%S') CREAT_DT
+				 , TO_CHAR(A.CREAT_DT,'YYYY-MM-DD HH24:MI:SS') CREAT_DT				 
 			     , A.MNGR_NM
                  , A.MNGR_EMAIL_ADRES	  	MNGR_EMAIL_ADDR  
             	 , A.FRST_REGISTER_ID
@@ -133,7 +133,7 @@
 		<![CDATA[
             UPDATE COMTN_PROCESS_MON 
                SET PROCS_STTUS       = #{procsSttus}
-                 , CREAT_DT          = STR_TO_DATE(#{creatDt}, '%Y%m%d%H%i%S')
+                 , CREAT_DT          = TO_DATE(#{creatDt}, 'yyyymmddhh24miss')
                  , LAST_UPDUSR_ID    = #{lastUpdusrId}
                  , LAST_UPDT_PNTTM   = now()
              WHERE PROCS_ID = #{processId} 
@@ -147,7 +147,7 @@
  				 , A.PROCS_ID				PROCESS_ID
 				 , A.PROCS_NM				PROCESS_NM
 				 , C.CODE_NM 				PROCS_STTUS			 				 
-				 , DATE_FORMAT(A.CREAT_DT, '%Y-%m-%d %H:%i:%S') CREAT_DT
+				 , TO_CHAR(A.CREAT_DT,'YYYY-MM-DD HH24:MI:SS') CREAT_DT
 				 , A.LOG_INFO				 
 			     , A.MNGR_NM
 			     , A.MNGR_EMAIL_ADRES		MNGR_EMAIL_ADDR    
@@ -161,7 +161,7 @@
 			 WHERE 1 = 1
 		]]>
         <if test='searchBgnDt != null and searchBgnDt != ""'>
-				<![CDATA[ AND DATE_FORMAT(CREAT_DT, '%Y-%m-%d %H%i%S') BETWEEN #{searchBgnDt} AND #{searchEndDt} ]]>			
+				<![CDATA[ AND TO_CHAR(A.CREAT_DT,'YYYY-MM-DD HH24MISS') BETWEEN #{searchBgnDt} AND #{searchEndDt} ]]>			
 		</if>
       	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
@@ -195,7 +195,7 @@
 			 WHERE 1 = 1
 		]]>
         <if test='searchBgnDt != null and searchBgnDt != ""'>
-				<![CDATA[ AND DATE_FORMAT(CREAT_DT, '%Y-%m-%d %H%i%S') BETWEEN #{searchBgnDt} AND #{searchEndDt} ]]>			
+				<![CDATA[ AND TO_CHAR(A.CREAT_DT,'YYYY-MM-DD HH24MISS') BETWEEN #{searchBgnDt} AND #{searchEndDt} ]]>			
 		</if>
       	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
@@ -215,7 +215,7 @@
  				 , A.PROCS_ID				PROCESS_ID
 				 , A.PROCS_NM				PROCESS_NM
 			     , B.CODE_NM 				PROCS_STTUS
-            	 , DATE_FORMAT(A.CREAT_DT, '%Y-%m-%d %H:%i:%S') CREAT_DT				
+            	 , TO_CHAR(A.CREAT_DT,'YYYY-MM-DD HH24:MI:SS') CREAT_DT				
 				 , A.LOG_INFO	                        	 
 			     , A.MNGR_NM  				
                  , A.MNGR_EMAIL_ADRES 		MNGR_EMAIL_ADDR		     
@@ -253,7 +253,7 @@
 		         , #{processId}
 		         , #{processNm}
 		         , #{procsSttus}
-		         , STR_TO_DATE(#{creatDt}, '%Y%m%d%H%i%S')
+		         , TO_DATE(#{creatDt}, 'yyyymmddhh24miss')
 		         , #{logInfo, jdbcType=VARCHAR}
 		         , #{mngrNm}
 		         , #{mngrEmailAddr}

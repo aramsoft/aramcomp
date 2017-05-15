@@ -13,7 +13,7 @@
                      WHERE CODE_ID = 'COM065'
                        AND CODE = TROBL_KND
                    ) 						AS "troblKndNm"
-                 , DATE_FORMAT(STR_TO_DATE(TROBL_OCCRRNC_TIME, '%Y%m%d%H%i%S'), '%Y-%m-%d %H:%i:%S') AS "troblOccrrncTime"
+                 , TO_CHAR(TO_DATE(TROBL_OCCRRNC_TIME, 'YYYYMMDDHH24MISS'), 'YYYY-MM-DD HH24:MI:SS') AS "troblOccrrncTime"
                  , TROBL_RQESTER_NM			AS "troblRqesterNm"
                  , (SELECT CODE_NM 
                       FROM COMTC_CMMN_DETAIL_CODE
@@ -69,12 +69,12 @@
                         AND CODE = TROBL_KND
                     ) 						AS TROBL_KND_NM
                   , TROBL_DC
-                  , DATE_FORMAT(STR_TO_DATE(TROBL_OCCRRNC_TIME, '%Y%m%d%H%i%S'), '%Y-%m-%d %H:%i:%S') AS TROBL_OCCRRNC_TIME
+                  , TO_CHAR(TO_DATE(TROBL_OCCRRNC_TIME, 'YYYYMMDDHH24MISS'), 'YYYY-MM-DD HH24:MI:SS') AS TROBL_OCCRRNC_TIME
                   , TROBL_RQESTER_NM
-                  , DATE_FORMAT(STR_TO_DATE(TROBL_REQUST_TIME, '%Y%m%d%H%i%S'), '%Y-%m-%d %H:%i:%S') AS TROBL_REQUST_TIME
+                  , TO_CHAR(TO_DATE(TROBL_REQUST_TIME, 'YYYYMMDDHH24MISS'), 'YYYY-MM-DD HH24:MI:SS') AS TROBL_REQUST_TIME
                   , TROBL_PROCESS_RESULT
                   , TROBL_OPETR_NM
-                  , DATE_FORMAT(STR_TO_DATE(TROBL_PROCESS_TIME, '%Y%m%d%H%i%S'), '%Y-%m-%d %H:%i:%S') AS TROBL_PROCESS_TIME
+                  , TO_CHAR(TO_DATE(TROBL_PROCESS_TIME, 'YYYYMMDDHH24MISS'), 'YYYY-MM-DD HH24:MI:SS') AS TROBL_PROCESS_TIME
                   , PROCESS_STTUS
                   , (SELECT CODE_NM 
                        FROM COMTC_CMMN_DETAIL_CODE
@@ -143,7 +143,7 @@
      	<if test='processSttus != null and processSttus != ""' >
      	<choose>
      	  	<when test='processSttus eq "R"'>
-               	 , TROBL_REQUST_TIME = DATE_FORMAT(now(),'%Y%m%d%H%i%S')
+                 , TROBL_REQUST_TIME = TO_CHAR(now(),'YYYYMMDDHH24MISS')
 			</when>
       		<when test='processSttus eq "A"'>
                  , TROBL_REQUST_TIME = null

@@ -74,8 +74,8 @@
 			     , A.MBER_ID
 			     , A.SYNC_SJ
 			     , A.SYNC_CN
-			     , CASE WHEN DATE_FORMAT(A.SYNC_DT, '') IS NULL THEN ''
-			            ELSE TO_CHAR(A.SYNC_DT,'YYYYMMDD') 
+			     , CASE WHEN TO_CHAR(A.SYNC_DT) IS NULL THEN ''
+			            ELSE TO_CHAR( A.SYNC_DT, 'YYYY-MM-DD') 
 			       END AS SYNC_DT
 			     , TO_CHAR(A.CREAT_DT,'YYYYMMDD') AS CREAT_DT
 			     , TO_CHAR(A.UPDT_DT,'YYYYMMDD') AS UPDT_DT

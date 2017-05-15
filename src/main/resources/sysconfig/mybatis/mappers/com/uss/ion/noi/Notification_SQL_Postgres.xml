@@ -8,7 +8,7 @@
        	<![CDATA[
 			SELECT a.NTCN_NO				AS "ntfcNo"
 			     , a.NTCN_SJ				AS "ntfcSj"
-			     , DATE_FORMAT(STR_TO_DATE(a.NTCN_TM, '%Y%m%d%H%i%S'), '%Y-%m-%d %H:%i:%S') AS "ntfcTime" 
+			     , TO_CHAR(TO_DATE(a.NTCN_TM, 'YYYYMMDDHH24MISS'), 'YYYY-MM-DD HH24:MI:SS') AS "ntfcTime" 
 			     , REPLACE(BH_NTCN_INTRVL,',','분,') || '분' AS "bhNtfcIntrvlString" 
 			     , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm" 
 			  FROM COMTN_NTFC_INFO a
@@ -62,7 +62,7 @@
 			SELECT a.NTCN_NO				AS "ntfcNo"			
 			     , a.NTCN_SJ				AS "ntfcSj" 
 			     , a.NTCN_CN				AS "ntfcCn"
-			     , DATE_FORMAT(STR_TO_DATE(a.NTCN_TM, '%Y%m%d%H%i%S'), '%Y-%m-%d %H:%i:%S')) AS "ntfcTime"
+			     , TO_CHAR(TO_DATE(a.NTCN_TM, 'YYYYMMDDHH24MISS'), 'YYYY-MM-DD HH24:MI:SS') AS "ntfcTime" 
 			     , REPLACE(BH_NTCN_INTRVL,',','분,') || '분' AS "bhNtfcIntrvlString"
 			     , a.FRST_REGISTER_ID		AS "frstRegisterId"
 			     , b.USER_NM 				AS "frstRegisterNm"
@@ -129,7 +129,7 @@
 			SELECT a.NTCN_NO				AS "ntfcNo"
 			     , a.NTCN_SJ				AS "ntfcSj"
 			     , a.NTCN_CN				AS "ntfcCn"
-			     , DATE_FORMAT(STR_TO_DATE(a.NTCN_TM, '%Y%m%d%H%i%S'), '%Y-%m-%d %H:%i:%S') AS "ntfcTime"
+			     , TO_CHAR(TO_DATE(a.NTCN_TM, 'YYYYMMDDHH24MISS'), 'YYYY-MM-DD HH24:MI:SS') AS "ntfcTime" 
 			     , BH_NTCN_INTRVL 			AS "bhNtfcIntrvlString" 
 			  FROM COMTN_NTFC_INFO a
 			 WHERE a.NTCN_TM BETWEEN #{startDateTime} AND #{endDateTime}

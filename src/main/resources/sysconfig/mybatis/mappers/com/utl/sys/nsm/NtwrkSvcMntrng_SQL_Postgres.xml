@@ -170,7 +170,7 @@
 	 	<![CDATA[
 			UPDATE COMTN_NTWRK_SVC_MNTRNG 
 			   SET MNTRNG_STTUS = #{mntrngSttus}
-			     , CREAT_DT = STR_TO_DATE(#{creatDt}, '%Y%m%d%H%i%S')
+			     , CREAT_DT = TO_DATE(#{creatDt}, 'yyyymmddhh24miss')
 			     , LAST_UPDUSR_ID = #{lastUpdusrId}
 			     , LAST_UPDT_PNTTM = now()
 			 WHERE SYS_IP = #{sysIp}
@@ -199,7 +199,7 @@
 			 WHERE 1 = 1
 		]]>
         <if test='searchBgnDt != null and searchBgnDt != ""'>
-				<![CDATA[ AND DATE_FORMAT(A.CREAT_DT, '%Y-%m-%d %H:%i') BETWEEN #{searchBgnDt} AND #{searchEndDt} ]]>	
+				<![CDATA[ AND to_char(A.CREAT_DT, 'YYYY-MM-DD HH24:MI') BETWEEN #{searchBgnDt} AND #{searchEndDt} ]]>	
 		</if>
       	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
@@ -241,7 +241,7 @@
 			 WHERE 1 = 1
 	 	]]>
         <if test='searchBgnDt != null and searchBgnDt != ""'>
-				<![CDATA[ AND DATE_FORMAT(A.CREAT_DT, '%Y-%m-%d %H:%i') BETWEEN #{searchBgnDt} AND #{searchEndDt} ]]>	
+				<![CDATA[ AND to_char(A.CREAT_DT, 'YYYY-MM-DD HH24:MI') BETWEEN #{searchBgnDt} AND #{searchEndDt} ]]>	
 		</if>
       	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
@@ -308,7 +308,7 @@
 				  ,	#{sysNm}
 				  ,	#{mntrngSttus}
 				  ,	#{logInfo, jdbcType=VARCHAR}
-				  ,	STR_TO_DATE(#creatDt}, '%Y%m%d%H%i%S')
+				  ,	TO_DATE(#{creatDt}, 'yyyymmddhh24miss')
 				  , #{frstRegisterId}
 				  , now()
 				  , #{frstRegisterId} 

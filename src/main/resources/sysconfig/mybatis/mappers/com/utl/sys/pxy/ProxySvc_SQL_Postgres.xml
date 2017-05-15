@@ -142,7 +142,7 @@
             	 , B.PROXY_NM
             	 , A.CLNT_PORT
             	 , A.CLNT_IP
-            	 , DATE_FORMAT(A.CONECT_TIME, '%Y-%m-%d %H%i%S') AS CONECT_TIME
+            	 , TO_CHAR(A.CONECT_TIME, 'YYYY-MM-DD HH24:MI:SS') AS CONECT_TIME
             	 , A.FRST_REGIST_PNTTM 		AS "frstRegisterPnttm"
             	 , A.FRST_REGISTER_ID
             	 , A.LAST_UPDT_PNTTM 		AS "lastUpdusrPnttm"
@@ -153,7 +153,7 @@
              WHERE 1=1       
        	]]>               
         <if test='strStartDate != null and strStartDate != ""'>
-				<![CDATA[ AND DATE_FORMAT(A.CONECT_TIME, '%Y%m%d') BETWEEN #{strStartDate} AND #{strEndDate} ]]>		
+				<![CDATA[ AND TO_CHAR(A.CONECT_TIME, 'YYYYMMDD') BETWEEN #{strStartDate} AND #{strEndDate} ]]>		
 		</if>
        	<![CDATA[                      
              ORDER BY A.LAST_UPDT_PNTTM DESC
@@ -173,7 +173,7 @@
              WHERE 1=1       
         ]]>			
         <if test='strStartDate != null and strStartDate != ""'>
-				<![CDATA[ AND DATE_FORMAT(A.CONECT_TIME, '%Y%m%d') BETWEEN #{strStartDate} AND #{strEndDate} ]]>		
+				<![CDATA[ AND TO_CHAR(A.CONECT_TIME, 'YYYYMMDD') BETWEEN #{strStartDate} AND #{strEndDate} ]]>		
 		</if>
     </select>    
     

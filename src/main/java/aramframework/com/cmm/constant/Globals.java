@@ -21,7 +21,7 @@ public interface Globals {
 	// 프로퍼티 파일 위치
 	String CONF_PATH        = AramProperties.getPathProperty("Globals.ConfPath");
 	// ShellFile 경로
-	String SHELL_FILE_PATH  = AramProperties.getPathProperty("Globals.ShellFilePath");
+	String SHELL_CONF_PATH  = AramProperties.getPathProperty("Globals.ShellConfPath");
 	// Server정보 프로퍼티 위치
 	String SERVER_CONF_PATH = AramProperties.getPathProperty("Globals.ServerConfPath");
 	// Client정보 프로퍼티 위치

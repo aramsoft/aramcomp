@@ -26,10 +26,10 @@
 			 	      				     WHERE NOTE_ID = A.NOTE_ID 
 			 	      				     LIMIT 1)
 			 	    ) 						AS "trnsmiterId" 
-			 	  , DATE_FORMAT((SELECT FRST_REGIST_PNTTM 
+			 	  , TO_CHAR((SELECT FRST_REGIST_PNTTM 
 			 	  			   FROM COMTN_NOTE_TRNSMIT 
 			 	  			  WHERE NOTE_ID = A.NOTE_ID 
-			 	  			  LIMIT 1),'%Y-%m-%d %H:%i:%S') AS "trnsmiterPnttm" 
+			 	  			    AND ROWNUM <= 1),'YYYY-MM-DD HH24:MI:SS') AS "trnsmiterPnttm" 
 			 	  , A.NOTE_SJ				AS "noteSj"
 			 	  ,	A.NOTE_CN				AS "noteCn"
 			   FROM COMTN_NOTE A

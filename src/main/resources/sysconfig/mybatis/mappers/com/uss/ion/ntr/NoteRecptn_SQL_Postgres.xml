@@ -43,8 +43,8 @@
     	<if test='searchFromDate != null and searchFromDate != ""'>
     		<if test='searchToDate != null and searchToDate != ""'>
 	 			<![CDATA[ 
-	 		   		AND DATE_FORMAT(NOTE_TNS.FRST_REGIST_PNTTM, '%Y-%m-%d') >= #{searchFromDate} 
-	 		   		AND DATE_FORMAT(NOTE_TNS.FRST_REGIST_PNTTM, '%Y-%m-%d') <= #{searchToDate} 
+	 		   		AND TO_CHAR(NOTE_TNS.FRST_REGIST_PNTTM,'YYYY-MM-DD') >= #{searchFromDate} 
+	 		   		AND TO_CHAR(NOTE_TNS.FRST_REGIST_PNTTM,'YYYY-MM-DD') <= #{searchToDate} 
 	 			]]> 
 	 		</if>
 	 	</if>
@@ -88,8 +88,8 @@
     	<if test='searchFromDate != null and searchFromDate != ""'>
     		<if test='searchToDate != null and searchToDate != ""'>
 	 			<![CDATA[ 
-	 		   		AND DATE_FORMAT(NOTE_TNS.FRST_REGIST_PNTTM, '%Y-%m-%d') >= #{searchFromDate} 
-	 		   		AND DATE_FORMAT(NOTE_TNS.FRST_REGIST_PNTTM, '%Y-%m-%d') <= #{searchToDate} 
+	 		   		AND TO_CHAR(NOTE_TNS.FRST_REGIST_PNTTM,'YYYY-MM-DD') >= #{searchFromDate} 
+	 		   		AND TO_CHAR(NOTE_TNS.FRST_REGIST_PNTTM,'YYYY-MM-DD') <= #{searchToDate} 
 	 			]]> 
 	 		</if>
 	 	</if>
@@ -106,7 +106,7 @@
 			          FROM COMTN_EMPLYR_INFO 
 			         WHERE ESNTL_ID = NOTE_TNS.TRNSMITER_ID
 			       ) 						TRNSMITER_NM
-			     , DATE_FORMAT(NOTE_TNS.FRST_REGIST_PNTTM, '%Y-%m-%d %H%i%S') TRNSMITER_PNTTM
+			     , TO_CHAR(NOTE_TNS.FRST_REGIST_PNTTM,'YYYY-MM-DD HH24:MI:SS') TRNSMITER_PNTTM
 			     , NOTE.NOTE_SJ
 			     , NOTE.NOTE_CN
 			     , NOTE.ATCH_FILE_ID
@@ -115,7 +115,7 @@
 			          FROM COMTN_EMPLYR_INFO 
 			         WHERE ESNTL_ID = NOTE_RNS.RCVER_ID
 			       ) 						RCVER_NM
-			     , DATE_FORMAT(NOTE_RNS.FRST_REGIST_PNTTM, '%Y-%m-%d %H%i%S') RCVER_PNTTM
+			     , TO_CHAR(NOTE_RNS.FRST_REGIST_PNTTM,'YYYY-MM-DD HH24:MI:SS') RCVER_PNTTM
 			     , NOTE_RNS.OPEN_YN
 			     , NOTE_RNS.RECPTN_SE
 			  FROM COMTN_NOTE NOTE

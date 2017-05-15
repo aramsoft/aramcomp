@@ -51,7 +51,7 @@
                    ) 						AS SVC_STTUS_NM
                  , A.LOG_INFO
                  , C.MNGR_EMAIL_ADRES
-                 , DATE_FORMAT(A.CREAT_DT, '%Y-%m-%d %H%i%S') AS CREAT_DT
+                 , TO_CHAR(A.CREAT_DT, 'YYYY-MM-DD HH24:MI:SS') AS CREAT_DT
                  , A.FRST_REGIST_PNTTM 		AS "frstRegisterPnttm" 
                  , C.FRST_REGISTER_ID
                  , A.LAST_UPDT_PNTTM 		AS "lastUpdusrPnttm"
@@ -113,7 +113,7 @@
                    ) 						AS SVC_STTUS_NM
                  , A.LOG_INFO
                  , C.MNGR_EMAIL_ADRES
-                 , DATE_FORMAT(A.CREAT_DT, '%Y-%m-%d %H%i%S') AS CREAT_DT
+                 , TO_CHAR(A.CREAT_DT, 'YYYY-MM-DD HH24:MI:SS') AS CREAT_DT
                  , A.FRST_REGIST_PNTTM 		AS "frstRegisterPnttm" 
                  , A.FRST_REGISTER_ID
                  , A.LAST_UPDT_PNTTM 		AS "lastUpdusrPnttm" 

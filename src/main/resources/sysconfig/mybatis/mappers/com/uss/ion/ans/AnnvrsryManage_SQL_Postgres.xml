@@ -32,7 +32,7 @@
              WHERE REPTIT_AT = '1'
                AND USER_ID = #{usid}
                    ) A
-             ORDER BY A.annvrsryDe DESC
+             ORDER BY A."annvrsryDe" DESC
 			 LIMIT #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
         ]]>
     </select>

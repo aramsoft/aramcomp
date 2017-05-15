@@ -238,7 +238,7 @@
         <![CDATA[
 	        UPDATE COMTN_RWARD_MANAGE
 	           SET CONFM_AT           = #{confmAt}
-	             , SANCTN_DT          = STR_TO_DATE(#{sanctnDt}, '%Y-%m-%d %H:%i:%S')
+	             , SANCTN_DT          = TO_DATE(#{sanctnDt}, 'YYYY-MM-DD HH24:MI:SS')
 	             , RETURN_RESN        = #{returnResn}
 	             , LAST_UPDUSR_ID     = #{lastUpdusrId}
 	             , LAST_UPDT_PNTTM    = now()    

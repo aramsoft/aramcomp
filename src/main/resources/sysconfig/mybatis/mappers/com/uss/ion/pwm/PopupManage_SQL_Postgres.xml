@@ -14,8 +14,8 @@
 			     , A.NTCE_AT				AS "ntceAt"
 			  FROM COMTN_POPUP_MANAGE A
 			 WHERE A.NTCE_AT = 'Y'
-			   AND DATE_FORMAT(now(),'%Y%m%d%H%i%S') >= NTCE_BGNDE
-			   AND DATE_FORMAT(now(),'%Y%m%d%H%i%S') <=  NTCE_ENDDE
+			   AND TO_CHAR(now(),'YYYYMMDDHH24MI') >= NTCE_BGNDE
+			   AND TO_CHAR(now(),'YYYYMMDDHH24MI') <=  NTCE_ENDDE
 	 	]]>
 	</select>
 

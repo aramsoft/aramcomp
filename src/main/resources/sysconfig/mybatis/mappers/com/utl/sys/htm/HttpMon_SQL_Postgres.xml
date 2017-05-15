@@ -10,7 +10,7 @@
 			     , A.WEBSVC_KND				WEB_KIND
 				 , A.SITE_URL
 				 , B.CODE_NM 				HTTP_STTUS_CD
-			     , DATE_FORMAT(A.CREAT_DT, '%Y-%m-%d %H:%i:%S') CREAT_DT				 
+			     , TO_CHAR(A.CREAT_DT,'YYYY-MM-DD HH24:MI:SS') CREAT_DT				 
 			     , A.MNGR_NM
 			     , A.MNGR_EMAIL_ADRES		MNGR_EMAIL_ADDR
 		 	  FROM COMTN_HTTP_MON A
@@ -66,7 +66,7 @@
             SELECT SYS_ID
             	 , WEBSVC_KND			WEB_KIND
             	 , SITE_URL
-				 , DATE_FORMAT(CREAT_DT, '%Y-%m-%d %H:%i:%S') CREAT_DT				           	 
+				 , TO_CHAR(CREAT_DT,'YYYY-MM-DD HH24:MI:SS') CREAT_DT				           	 
 			     , MNGR_NM
                  , MNGR_EMAIL_ADRES		MNGR_EMAIL_ADDR
             	 , FRST_REGISTER_ID
@@ -133,7 +133,7 @@
 		<![CDATA[
             UPDATE COMTN_HTTP_MON 
                SET HTTP_STTUS_CODE   = #{httpSttusCd}
-                 , CREAT_DT          = STR_TO_DATE(#{creatDt}, '%Y%m%d%H%i%S')
+                 , CREAT_DT          = TO_DATE(#{creatDt}, 'yyyymmddhh24miss')
                  , LAST_UPDUSR_ID    = #{lastUpdusrId}
                  , LAST_UPDT_PNTTM 	 = now()
              WHERE SYS_ID            = #{sysId}
@@ -148,7 +148,7 @@
 				 , A.WEBSVC_KND	 			WEB_KIND
 				 , B.SITE_URL
 				 , C.CODE_NM 				HTTP_STTUS_CD
-			     , DATE_FORMAT(A.CREAT_DT, '%Y-%m-%d %H:%i:%S') CREAT_DT
+			     , TO_CHAR(A.CREAT_DT,'YYYY-MM-DD HH24:MI:SS') CREAT_DT
 				 , A.LOG_INFO
 			     , A.MNGR_NM
 			     , A.MNGR_EMAIL_ADRES		MNGR_EMAIL_ADDR    
@@ -162,7 +162,7 @@
 			 WHERE 1=1
 		]]>
         <if test='searchBgnDt != null and searchBgnDt != ""'>
-				<![CDATA[ AND DATE_FORMAT(CREAT_DT, '%Y-%m-%d %H%i%S') BETWEEN #{searchBgnDt} AND #{searchEndDt} ]]>			
+					AND TO_CHAR(A.CREAT_DT,'YYYY-MM-DD HH24MISS') BETWEEN #{searchBgnDt} AND #{searchEndDt}			
 		</if>
       	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
@@ -196,7 +196,7 @@
 			 WHERE 1=1
 		]]>
         <if test='searchBgnDt != null and searchBgnDt != ""'>
-				<![CDATA[ AND DATE_FORMAT(CREAT_DT, '%Y-%m-%d %H%i%S') BETWEEN #{searchBgnDt} AND #{searchEndDt} ]]>			
+					AND TO_CHAR(A.CREAT_DT,'YYYY-MM-DD HH24MISS') BETWEEN #{searchBgnDt} AND #{searchEndDt}			
 		</if>
       	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
         <choose>
@@ -217,7 +217,7 @@
             	 , A.WEBSVC_KND				WEB_KIND
             	 , A.SITE_URL
 				 , B.CODE_NM 				HTTP_STTUS_CODE
-				 , DATE_FORMAT(A.CREAT_DT, '%Y-%m-%d %H:%i:%S') CREAT_DT
+				 , TO_CHAR(A.CREAT_DT,'YYYY-MM-DD HH24:MI:SS') CREAT_DT
 				 , A.LOG_INFO				           	 
 			     , A.MNGR_NM
                  , A.MNGR_EMAIL_ADRES		MNGR_EMAIL_ADDR
@@ -257,7 +257,7 @@
 		         , #{webKind}
 		         , #{siteUrl}
 		         , #{httpSttusCd}		         
-		         , STR_TO_DATE(#{creatDt}, '%Y%m%d%H%i%S')
+		         , TO_DATE(#{creatDt}, 'yyyymmddhh24miss')
 		         , #{logInfo, jdbcType=VARCHAR}		         
 		         , #{mngrNm}
 		         , #{mngrEmailAddr}

@@ -71,7 +71,7 @@ public class SynchrnServerController {
 
 		model.addAttribute(paginationInfo);
 
-		model.addAttribute("fileList", synchrnServerService.getFileName(uploadDir));
+//		model.addAttribute("fileList", synchrnServerService.getFileName(uploadDir));
 
 		return WebUtil.adjustViewName("/utl/sys/ssy/SynchrnServerList");
 	}

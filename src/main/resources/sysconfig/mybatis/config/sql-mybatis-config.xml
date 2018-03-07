@@ -167,8 +167,6 @@
 		<typeAlias alias="userManageVO" 		type="aramframework.com.uss.umt.domain.UserManageVO"/>
 		<typeAlias alias="stplatVO" 			type="aramframework.com.uss.umt.domain.StplatVO"/>
 
-		<typeAlias alias="prntngOutptVO" 		type="aramframework.com.utl.pao.domain.PrntngOutptVO"/>
-		
 		<typeAlias alias="dbMntrngVO" 			type="aramframework.com.utl.sys.dbm.domain.DbMntrngVO"/>
 		<typeAlias alias="dbMntrngLogVO"		type="aramframework.com.utl.sys.dbm.domain.DbMntrngLogVO"/>
 		<typeAlias alias="fileSysMntrngVO" 		type="aramframework.com.utl.sys.fsm.domain.FileSysMntrngVO"/>

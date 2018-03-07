@@ -38,17 +38,6 @@ CREATE TABLE COMTN_FILE_DETAIL
 );
 CREATE INDEX COMTN_FILE_DETAIL_i01 ON COMTN_FILE_DETAIL(ATCH_FILE_ID ASC);
 
-----------------------------------------------------
-
-CREATE TABLE IMGTEMP
-(
-	ORGNZT_CODE           	varchar(10)  	NOT NULL,
-	ERNCSL_SE             	varchar(2)  	NOT NULL,
-	IMAGE_INFO            	bytea  			NOT NULL,
-	IMAGE_TY              	varchar(20)  	NULL,
-	CONSTRAINT IMGTEMP_PK PRIMARY KEY (ORGNZT_CODE, ERNCSL_SE)
-);
-
 -- ===========================================================
 -- POLICY
 

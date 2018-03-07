@@ -2405,37 +2405,6 @@ CREATE TABLE COMTN_VCATN_MANAGE
 	CONSTRAINT  COMTN_VCATN_MANAGE_PK PRIMARY KEY (APPLCNT_ID, VCATN_SE, BGNDE, ENDDE)
 );
 
------------------------------------
-
-CREATE TABLE COMTN_TWITTER
-(
-	USER_ID               	varchar(20)  	NOT NULL,
-	CNSMR_KEY             	varchar(50)  	NOT NULL,
-	CNSMR_SECRET          	varchar(50)  	NOT NULL,
-	FRST_REGISTER_ID      	varchar(20)  	NOT NULL,
-	FRST_REGIST_PNTTM     	datetime        NOT NULL,
-	LAST_UPDUSR_ID        	varchar(20)  	NULL,
-	LAST_UPDT_PNTTM       	datetime        NULL,
-	CONSTRAINT  COMTN_TWITTER_PK PRIMARY KEY (USER_ID)
-);
-
-------------------------------------------------------
-
-CREATE TABLE COMTN_WIKI_BKMK
-(
-	WIKI_BKMK_ID          	char(20)  		NOT NULL,
-	USER_ID              	varchar(20)  	NOT NULL,
-	WIKI_BKMK_NM          	varchar(1000)   NOT NULL,
-	FRST_REGISTER_ID      	varchar(20)  	NOT NULL,
-	FRST_REGIST_PNTTM     	datetime  		NOT	NULL,
-	LAST_UPDUSR_ID        	varchar(20)  	NULL,
-	LAST_UPDT_PNTTM       	datetime  		NULL,
-	CONSTRAINT  COMTN_WIKI_BKMK_PK PRIMARY KEY (WIKI_BKMK_ID, USER_ID),
-	CONSTRAINT  COMTN_WIKI_BKMK_FK1 FOREIGN KEY (USER_ID) REFERENCES COMTN_TWITTER(USER_ID)
-);
-
-INSERT INTO COMTE_COPSEQ ( TABLE_NAME, NEXT_ID ) VALUES ('WIKI_BKMK_ID', 1);
-
 -- ==================================================
 -- INDVDL
 

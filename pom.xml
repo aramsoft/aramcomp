@@ -238,14 +238,6 @@
  				
 		<!-- 공통컴포넌트 시작 -->
 
-        <!-- WYSIWYG Editor -->
-<!-- 
-        <dependency>
-            <groupId>com.ckeditor</groupId>
-            <artifactId>ckeditor-java-core</artifactId>
-            <version>3.5.3</version>
-        </dependency>
--->
 		<!-- 우편번호를 위한 라이브러리(이메일 밸리데이션)  -->
 		<dependency>
 			<groupId>oro</groupId>

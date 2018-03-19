@@ -1,44 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0    http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>aramframework</groupId>
+	<groupId>kr.co.aramsoft</groupId>
 	<artifactId>aramcomp</artifactId>
 	<packaging>war</packaging>
 	<version>3.2.0</version>  
-	<name>aramsoft</name>
-	<url>http://maven.apache.org</url> 
+	<name>aramcomp</name>
+	<url>http://aramcomp.aramsoft.co.kr</url> 
 
 	<properties>
 	    <spring.version>3.2.9.RELEASE</spring.version>
 	    <spring.security.version>3.2.4.RELEASE</spring.security.version>
 		<egovframework.rte.version>3.1.0</egovframework.rte.version>
 	</properties>
-
-	<repositories> 
-
-		<repository>
-			<id>mvn2</id>
-			<url>http://repo1.maven.org/maven2/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-
-		<repository>
-			<id>egovframe</id>
-			<url>http://www.egovframe.go.kr/maven/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-
-	</repositories>
 
 	<dependencies>
 				
@@ -369,8 +343,8 @@
 	
 	<build>
 		<defaultGoal>install</defaultGoal>
-		<directory>${basedir}/target</directory>
 		<finalName>aramcomp-webapp</finalName>
+		<directory>${basedir}/target</directory>
 	    <pluginManagement>
 			<plugins>
 				<plugin>
@@ -419,4 +393,31 @@
 			</plugin>
 		</plugins>
 	</reporting>  
+
+	<repositories> 
+
+		<repository>
+			<id>mvn2</id>
+			<url>http://repo1.maven.org/maven2/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>egovframe</id>
+			<url>http://www.egovframe.go.kr/maven/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+	</repositories>
+
 </project>

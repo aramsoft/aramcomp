@@ -25,12 +25,10 @@
 		<property name="rendererType">
 			<map>
 				<entry key="image" value-ref="imageRenderer"/>
-				<entry key="mblImage" value-ref="mblImageRenderer"/>  
 			</map>
 		</property>
 	</bean>
 	<bean id="imageRenderer"    class="aramframework.com.cmm.config.web.ImagePaginationRenderer"/>
-	<bean id="mblImageRenderer" class="aramframework.mbl.cmm.web.ImgPaginationRenderer"/>
 
 	<!--
         View resolver that delegates to other view resolvers based on the content type

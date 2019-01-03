@@ -184,18 +184,6 @@
 		<typeAlias alias="trsmrcvMntrngVO" 		type="aramframework.com.utl.sys.trm.domain.TrsmrcvMntrngVO"/>
 		<typeAlias alias="trsmrcvMntrngLogVO"	type="aramframework.com.utl.sys.trm.domain.TrsmrcvMntrngLogVO"/>
 		
-		<typeAlias alias="geoLocationVO"		type="aramframework.mbl.com.geo.domain.GeoLocationVO"/>
-		<typeAlias alias="chartGraphVO"			type="aramframework.mbl.com.mcg.domain.ChartGraphVO"/>
-		<typeAlias alias="deviceIdentVO"		type="aramframework.mbl.com.mdi.domain.DeviceIdentVO"/>
-		<typeAlias alias="multimediaVO"			type="aramframework.mbl.com.mlt.domain.MultimediaVO"/>
-		<typeAlias alias="multimediaFileInfoVO"	type="aramframework.mbl.com.mlt.domain.MultimediaFileInfoVO"/>
-		<typeAlias alias="mmsTransInfoVO"		type="aramframework.mbl.com.mms.domain.MmsTransInfoVO"/>
-		<typeAlias alias="attachFileVO"			type="aramframework.mbl.com.mms.domain.AttachFileVO"/>
-		<typeAlias alias="photoVO"				type="aramframework.mbl.com.mpa.domain.PhotoVO"/>
-		<typeAlias alias="openApiVO"			type="aramframework.mbl.com.oas.domain.OpenApiVO"/>
-		<typeAlias alias="offlineWebVO"			type="aramframework.mbl.com.ows.domain.OfflineWebVO"/>
-		<typeAlias alias="realtimeNoticeVO"		type="aramframework.mbl.com.rns.domain.RealtimeNoticeVO"/>
-		<typeAlias alias="syncVO"				type="aramframework.mbl.com.syn.domain.SyncVO"/>
 <!-- 
  		<package name="aramframework"/>
 -->		

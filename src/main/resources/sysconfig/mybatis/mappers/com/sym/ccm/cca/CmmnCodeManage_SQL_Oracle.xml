@@ -22,16 +22,16 @@
 					   	ON A.CL_CODE = B.CL_CODE
 			 WHERE A.USE_AT = 'Y'
 		]]>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "CODE_ID"'>
-				<![CDATA[ AND A.CODE_ID LIKE '%' || #{searchVO.searchKeyword} || '%']]>
+            <when test='searchCondition == "CODE_ID"'>
+				<![CDATA[ AND A.CODE_ID LIKE '%' || #{searchKeyword} || '%']]>
             </when>
-            <when test='searchVO.searchCondition == "CODE_ID_NM"'>
-				<![CDATA[ AND A.CODE_ID_NM LIKE '%' || #{searchVO.searchKeyword} || '%']]>
+            <when test='searchCondition == "CODE_ID_NM"'>
+				<![CDATA[ AND A.CODE_ID_NM LIKE '%' || #{searchKeyword} || '%']]>
             </when>
-            <when test='searchVO.searchCondition == "clCode"'>
-				<![CDATA[ AND A.CL_CODE LIKE '%' || #{searchVO.searchKeyword} || '%']]>
+            <when test='searchCondition == "clCode"'>
+				<![CDATA[ AND A.CL_CODE LIKE '%' || #{searchKeyword} || '%']]>
             </when>
         </choose>
 		</if>
@@ -42,7 +42,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>			
 
 	</select>
@@ -56,16 +56,16 @@
 					   	ON A.CL_CODE = B.CL_CODE
 			 WHERE A.USE_AT = 'Y'
 		]]>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "CODE_ID"'>
-				<![CDATA[ AND A.CODE_ID LIKE '%' || #{searchVO.searchKeyword} || '%']]>
+            <when test='searchCondition == "CODE_ID"'>
+				<![CDATA[ AND A.CODE_ID LIKE '%' || #{searchKeyword} || '%']]>
             </when>
-            <when test='searchVO.searchCondition == "CODE_ID_NM"'>
-				<![CDATA[ AND A.CODE_ID_NM LIKE '%' || #{searchVO.searchKeyword} || '%']]>
+            <when test='searchCondition == "CODE_ID_NM"'>
+				<![CDATA[ AND A.CODE_ID_NM LIKE '%' || #{searchKeyword} || '%']]>
             </when>
-            <when test='searchVO.searchCondition == "clCode"'>
-				<![CDATA[ AND A.CL_CODE LIKE '%' || #{searchVO.searchKeyword} || '%']]>
+            <when test='searchCondition == "clCode"'>
+				<![CDATA[ AND A.CL_CODE LIKE '%' || #{searchKeyword} || '%']]>
             </when>
         </choose>
 		</if>

@@ -56,10 +56,7 @@ public class MainImageService extends EgovAbstractServiceImpl {
 	 * @param mainImageVO
 	 */
 	public MainImageVO selectMainImage(MainImageVO mainImageVO) {
-		MainImageVO resultVo = mainImageMapper.selectMainImage(mainImageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(mainImageVO.getSearchVO()); 
-		return resultVo;
+		return mainImageMapper.selectMainImage(mainImageVO);
 	}
 
 	/**

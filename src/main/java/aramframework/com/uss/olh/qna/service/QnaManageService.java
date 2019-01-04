@@ -53,10 +53,7 @@ public class QnaManageService extends EgovAbstractServiceImpl {
 	 * @param qnaManageVO
 	 */
 	public QnaManageVO selectQnaListDetail(QnaManageVO qnaManageVO) {
-		QnaManageVO resultVo = qnaManageMapper.selectQnaListDetail(qnaManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(qnaManageVO.getSearchVO()); 
-		return resultVo;
+		return qnaManageMapper.selectQnaListDetail(qnaManageVO);
 	}
 
 	/**
@@ -133,10 +130,7 @@ public class QnaManageService extends EgovAbstractServiceImpl {
 	 * @param qnaManageVO
 	 */
 	public QnaManageVO selectQnaAnswerDetail(QnaManageVO qnaManageVO) {
-		QnaManageVO resultVo = qnaManageMapper.selectQnaAnswerDetail(qnaManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(qnaManageVO.getSearchVO()); 
-		return resultVo;
+		return qnaManageMapper.selectQnaAnswerDetail(qnaManageVO);
 	}
 
 	/**

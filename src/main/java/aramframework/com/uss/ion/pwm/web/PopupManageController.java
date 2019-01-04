@@ -55,12 +55,12 @@ public class PopupManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		popupManageVO.getSearchVO().fillPageInfo(paginationInfo);
+		popupManageVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", popupManageService.selectPopupList(popupManageVO));
 		int totCnt = (Integer) popupManageService.selectPopupListCnt(popupManageVO);
 
-		popupManageVO.getSearchVO().setTotalRecordCount(totCnt);
+		popupManageVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -250,7 +250,7 @@ public class PopupManageController {
 			@ModelAttribute PopupManageVO popupManageVO, 
 			ModelMap model) {
 
-		popupManageVO.getSearchVO().setSizeAndOffset(5, 0);
+		popupManageVO.setSizeAndOffset(5, 0);
 
 		model.addAttribute("resultList", popupManageService.selectPopupMainList(popupManageVO));
 

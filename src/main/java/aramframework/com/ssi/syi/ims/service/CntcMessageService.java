@@ -58,10 +58,7 @@ public class CntcMessageService extends EgovAbstractServiceImpl {
 	 * @param cntcMessageVO
 	 */
 	public CntcMessageVO selectCntcMessageDetail(CntcMessageVO cntcMessageVO) {
-		CntcMessageVO resultVo = cntcMessageMapper.selectCntcMessageDetail(cntcMessageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(cntcMessageVO.getSearchVO()); 
-		return resultVo;
+		return cntcMessageMapper.selectCntcMessageDetail(cntcMessageVO);
 	}
 
 	/**
@@ -120,10 +117,7 @@ public class CntcMessageService extends EgovAbstractServiceImpl {
 	 * @param cntcMessageItemVO
 	 */
 	public CntcMessageItemVO selectCntcMessageItemDetail(CntcMessageItemVO cntcMessageItemVO) {
-		CntcMessageItemVO resultVo = cntcMessageMapper.selectCntcMessageItemDetail(cntcMessageItemVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(cntcMessageItemVO.getSearchVO()); 
-		return resultVo;
+		return cntcMessageMapper.selectCntcMessageItemDetail(cntcMessageItemVO);
 	}
 
 	/**

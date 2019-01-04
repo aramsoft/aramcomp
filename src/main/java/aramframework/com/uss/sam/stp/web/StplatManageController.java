@@ -47,12 +47,12 @@ public class StplatManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		stplatManageVO.getSearchVO().fillPageInfo(paginationInfo);
+		stplatManageVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", stplatManageService.selectStplatList(stplatManageVO));
 		int totCnt = stplatManageService.selectStplatListCnt(stplatManageVO);
 
-		stplatManageVO.getSearchVO().setTotalRecordCount(totCnt);
+		stplatManageVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

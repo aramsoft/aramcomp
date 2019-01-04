@@ -23,8 +23,8 @@
 					   	ON a.TRSMRCV_SE_CODE = c.CODE
 			 WHERE 1=1
 		]]>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
-            <![CDATA[ AND c.CODE_NM LIKE '%'||#{searchVO.searchKeyword}||'%' ]]>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+            <![CDATA[ AND c.CODE_NM LIKE '%'||#{searchKeyword}||'%' ]]>
 		</if>
      	<if test='searchBgnDe != null and searchBgnDe != ""'>
 			<![CDATA[ AND a.OCCRRNC_DE BETWEEN #{searchBgnDe} AND #{searchEndDe} ]]>
@@ -34,7 +34,7 @@
 		]]>
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
 	</select>
 
@@ -51,8 +51,8 @@
 					   	ON a.TRSMRCV_SE_CODE = c.CODE
 			 WHERE 1=1
 		]]>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
-            <![CDATA[ AND c.CODE_NM LIKE '%'||#{searchVO.searchKeyword}||'%' ]]>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+            <![CDATA[ AND c.CODE_NM LIKE '%'||#{searchKeyword}||'%' ]]>
 		</if>
      	<if test='searchBgnDe != null and searchBgnDe != ""'>
 			<![CDATA[ AND a.OCCRRNC_DE BETWEEN #{searchBgnDe} AND #{searchEndDe} ]]>

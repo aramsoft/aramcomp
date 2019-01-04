@@ -52,12 +52,12 @@ public class DiaryManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		diaryManageVO.getSearchVO().fillPageInfo(paginationInfo);
+		diaryManageVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", diaryManageService.selectDiaryManageList(diaryManageVO));
 		int totCnt = (Integer) diaryManageService.selectDiaryManageListCnt(diaryManageVO);
 
-		diaryManageVO.getSearchVO().setTotalRecordCount(totCnt);
+		diaryManageVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

@@ -61,9 +61,9 @@ public class DbMntrngScheduling {
 		List<EgovMap> targetList = null;
 		DbMntrngVO dbMntrngVO = new DbMntrngVO();
 		// 모니터링 대상 검색 조건 초기화
-		dbMntrngVO.getSearchVO().setPageIndex(1);
-		dbMntrngVO.getSearchVO().setFirstIndex(0);
-		dbMntrngVO.getSearchVO().setRecordPerPage(RECORD_COUNT_PER_PAGE);
+		dbMntrngVO.setPageIndex(1);
+		dbMntrngVO.setFirstIndex(0);
+		dbMntrngVO.setRecordPerPage(RECORD_COUNT_PER_PAGE);
 		targetList = dbMntrngService.selectDbMntrngList(dbMntrngVO);
 		if (LOG.isDebugEnabled()) {
 			LOG.debug("조회조건 " + dbMntrngVO);

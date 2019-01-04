@@ -16,10 +16,10 @@
    	    <if test='trgetId != null and trgetId != ""'>
 		   		<![CDATA[ AND TRGET_ID = #{trgetId} ]]>	
 		</if>
-    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "QESTN_SJ"'>
-                <![CDATA[ AND QESTN_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>	
+            <when test='searchCondition == "QESTN_SJ"'>
+                <![CDATA[ AND QESTN_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>	
             </when>
         </choose>
 		</if>
@@ -28,7 +28,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
 	</select>
 	
@@ -41,10 +41,10 @@
    	    <if test='trgetId != null and trgetId != ""'>
 		   		<![CDATA[ AND TRGET_ID = #{trgetId} ]]>	
 		</if>
-    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "QESTN_SJ"'>
-                <![CDATA[ AND QESTN_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>	
+            <when test='searchCondition == "QESTN_SJ"'>
+                <![CDATA[ AND QESTN_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>	
             </when>
         </choose>
 		</if>

@@ -52,17 +52,17 @@ public class QustnrRespondManageController {
 
 		// 설문지정보에서 넘어오면 자동검색 설정
 		if (qustnrRespondManageVO.getSearchMode().equals("Y")) {
-			qustnrRespondManageVO.getSearchVO().setSearchCondition("QESTNR_ID");
-			qustnrRespondManageVO.getSearchVO().setSearchKeyword(qustnrRespondManageVO.getQestnrId());
+			qustnrRespondManageVO.setSearchCondition("QESTNR_ID");
+			qustnrRespondManageVO.setSearchKeyword(qustnrRespondManageVO.getQestnrId());
 		}
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		qustnrRespondManageVO.getSearchVO().fillPageInfo(paginationInfo);
+		qustnrRespondManageVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", qustnrRespondManageService.selectQustnrRespondManageList(qustnrRespondManageVO));
 		int totCnt = (Integer) qustnrRespondManageService.selectQustnrRespondManageListCnt(qustnrRespondManageVO);
 
-		qustnrRespondManageVO.getSearchVO().setTotalRecordCount(totCnt);
+		qustnrRespondManageVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

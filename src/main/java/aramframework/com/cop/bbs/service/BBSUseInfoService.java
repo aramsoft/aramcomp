@@ -66,10 +66,7 @@ public class BBSUseInfoService extends EgovAbstractServiceImpl {
 	 * @param boardUseInfVO
 	 */
 	public BoardUseInfVO selectBBSUseInf(BoardUseInfVO boardUseInfVO) {
-		BoardUseInfVO resultVo = bbsUseInfoMapper.selectBBSUseInf(boardUseInfVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(boardUseInfVO.getSearchVO()); 
-		return resultVo;
+		return bbsUseInfoMapper.selectBBSUseInf(boardUseInfVO);
 	}
 
 	/**

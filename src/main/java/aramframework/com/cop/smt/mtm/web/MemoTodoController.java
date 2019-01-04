@@ -83,12 +83,12 @@ public class MemoTodoController {
 		memoTodoVO.setSearchId(loginVO.getUniqId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		memoTodoVO.getSearchVO().fillPageInfo(paginationInfo);
+		memoTodoVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", memoTodoService.selectMemoTodoList(memoTodoVO));
 
 		int totCnt = memoTodoService.selectMemoTodoListCnt(memoTodoVO);
-		memoTodoVO.getSearchVO().setTotalRecordCount(totCnt);
+		memoTodoVO.setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute(paginationInfo);

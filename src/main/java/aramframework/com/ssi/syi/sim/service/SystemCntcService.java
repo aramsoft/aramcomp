@@ -53,10 +53,7 @@ public class SystemCntcService extends EgovAbstractServiceImpl {
 	 * @param systemCntcVO
 	 */
 	public SystemCntcVO selectSystemCntcDetail(SystemCntcVO systemCntcVO) {
-		SystemCntcVO resultVo = systemCntcMapper.selectSystemCntcDetail(systemCntcVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(systemCntcVO.getSearchVO()); 
-		return resultVo;
+		return systemCntcMapper.selectSystemCntcDetail(systemCntcVO);
 	}
 
 	/**

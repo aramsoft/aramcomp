@@ -47,12 +47,12 @@ public class CmmnClCodeManageController {
 			ModelMap model) {
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
-		cmmnClCodeVO.getSearchVO().fillPageInfo(paginationInfo);
+		cmmnClCodeVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", cmmnClCodeManageService.selectCmmnClCodeList(cmmnClCodeVO));
 		int totCnt = cmmnClCodeManageService.selectCmmnClCodeListCnt(cmmnClCodeVO);
 
-		cmmnClCodeVO.getSearchVO().setTotalRecordCount(totCnt);
+		cmmnClCodeVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

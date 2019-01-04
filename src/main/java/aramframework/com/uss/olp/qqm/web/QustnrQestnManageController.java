@@ -50,17 +50,17 @@ public class QustnrQestnManageController {
 
 		// 설문지정보에서 넘어오면 자동검색 설정
 		if (qustnrQestnManageVO.getSearchMode().equals("Y")) {
-			qustnrQestnManageVO.getSearchVO().setSearchCondition("QESTNR_ID");
-			qustnrQestnManageVO.getSearchVO().setSearchKeyword(qustnrQestnManageVO.getQestnrId());
+			qustnrQestnManageVO.setSearchCondition("QESTNR_ID");
+			qustnrQestnManageVO.setSearchKeyword(qustnrQestnManageVO.getQestnrId());
 		}
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		qustnrQestnManageVO.getSearchVO().fillPageInfo(paginationInfo);
+		qustnrQestnManageVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", qustnrQestnManageService.selectQustnrQestnManageList(qustnrQestnManageVO));
 		int totCnt = (Integer) qustnrQestnManageService.selectQustnrQestnManageListCnt(qustnrQestnManageVO);
 
-		qustnrQestnManageVO.getSearchVO().setTotalRecordCount(totCnt);
+		qustnrQestnManageVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -82,17 +82,17 @@ public class QustnrQestnManageController {
 
 		// 설문지정보에서 넘어오면 자동검색 설정
 		if (qustnrQestnManageVO.getSearchMode().equals("Y")) {
-			qustnrQestnManageVO.getSearchVO().setSearchCondition("QESTNR_ID");
-			qustnrQestnManageVO.getSearchVO().setSearchKeyword(qustnrQestnManageVO.getQestnrId());
+			qustnrQestnManageVO.setSearchCondition("QESTNR_ID");
+			qustnrQestnManageVO.setSearchKeyword(qustnrQestnManageVO.getQestnrId());
 		}
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		qustnrQestnManageVO.getSearchVO().fillPageInfo(paginationInfo);
+		qustnrQestnManageVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", qustnrQestnManageService.selectQustnrQestnManageList(qustnrQestnManageVO));
 		int totCnt = (Integer) qustnrQestnManageService.selectQustnrQestnManageListCnt(qustnrQestnManageVO);
 
-		qustnrQestnManageVO.getSearchVO().setTotalRecordCount(totCnt);
+		qustnrQestnManageVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

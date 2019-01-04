@@ -46,12 +46,12 @@ public class DeptAuthorController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		deptAuthorVO.getSearchVO().fillPageInfo(paginationInfo);
+		deptAuthorVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", deptAuthorService.selectDeptAuthorList(deptAuthorVO));
 		int totCnt = deptAuthorService.selectDeptAuthorListCnt(deptAuthorVO);
 
-		deptAuthorVO.getSearchVO().setTotalRecordCount(totCnt);
+		deptAuthorVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

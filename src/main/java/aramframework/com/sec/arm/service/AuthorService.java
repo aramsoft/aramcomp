@@ -56,10 +56,7 @@ public class AuthorService extends EgovAbstractServiceImpl {
 	 * @param authorVO
 	 */
 	public AuthorVO selectAuthor(AuthorVO authorVO) {
-		AuthorVO resultVo = authorMapper.selectAuthor(authorVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(authorVO.getSearchVO()); 
-		return resultVo;
+		return authorMapper.selectAuthor(authorVO);
 	}
 
 	/**

@@ -47,10 +47,7 @@ public class CntcSttusService extends EgovAbstractServiceImpl {
 	 * @param cntcSttusVO
 	 */
 	public CntcSttusVO selectCntcSttusDetail(CntcSttusVO cntcSttusVO) {
-		CntcSttusVO resultVo =  cntcSttusMapper.selectCntcSttusDetail(cntcSttusVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(cntcSttusVO.getSearchVO()); 
-		return resultVo;
+		return cntcSttusMapper.selectCntcSttusDetail(cntcSttusVO);
 	}
 
 }

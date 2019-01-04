@@ -47,12 +47,12 @@ public class AdministCodeManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		administCodeVO.getSearchVO().fillPageInfo(paginationInfo);
+		administCodeVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", administCodeManageService.selectAdministCodeList(administCodeVO));
 		int totCnt = administCodeManageService.selectAdministCodeListCnt(administCodeVO);
 
-		administCodeVO.getSearchVO().setTotalRecordCount(totCnt);
+		administCodeVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -190,12 +190,12 @@ public class AdministCodeManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		administCodeVO.getSearchVO().fillPageInfo(paginationInfo);
+		administCodeVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", administCodeManageService.selectAdministCodeList(administCodeVO));
 		int totCnt = administCodeManageService.selectAdministCodeListCnt(administCodeVO);
 
-		administCodeVO.getSearchVO().setTotalRecordCount(totCnt);
+		administCodeVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

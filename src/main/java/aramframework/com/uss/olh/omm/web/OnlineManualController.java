@@ -65,12 +65,12 @@ public class OnlineManualController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		onlineManualVO.getSearchVO().fillPageInfo(paginationInfo);
+		onlineManualVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", onlineManualService.selectOnlineManualList(onlineManualVO));
 		int totCnt = (Integer) onlineManualService.selectOnlineManualListCnt(onlineManualVO);
 
-		onlineManualVO.getSearchVO().setTotalRecordCount(totCnt);
+		onlineManualVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -112,12 +112,12 @@ public class OnlineManualController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		onlineManualVO.getSearchVO().fillPageInfo(paginationInfo);
+		onlineManualVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", onlineManualService.selectOnlineManualList(onlineManualVO));
 		int totCnt = (Integer) onlineManualService.selectOnlineManualListCnt(onlineManualVO);
 
-		onlineManualVO.getSearchVO().setTotalRecordCount(totCnt);
+		onlineManualVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 	
 		model.addAttribute(paginationInfo);

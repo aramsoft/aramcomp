@@ -52,16 +52,16 @@
 					    AND C.REQUST_SYS_ID   = H.SYS_ID  
              WHERE 1=1
 		]]>
-      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "CNTC_NM"'>
-                <![CDATA[ AND C.CNTC_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "CNTC_NM"'>
+                <![CDATA[ AND C.CNTC_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "MNGR_NM"'>
-                <![CDATA[ AND A.MNGR_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "MNGR_NM"'>
+                <![CDATA[ AND A.MNGR_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "MNTRNG_STTUS"'>
-                <![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "MNTRNG_STTUS"'>
+                <![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -72,7 +72,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>			
 	</select>
 
@@ -102,16 +102,16 @@
 					    AND C.REQUST_SYS_ID   = H.SYS_ID  
              WHERE 1=1
         ]]>
-      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "CNTC_NM"'>
-                <![CDATA[ AND C.CNTC_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "CNTC_NM"'>
+                <![CDATA[ AND C.CNTC_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "MNGR_NM"'>
-                <![CDATA[ AND A.MNGR_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "MNGR_NM"'>
+                <![CDATA[ AND A.MNGR_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "MNTRNG_STTUS"'>
-                <![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "MNTRNG_STTUS"'>
+                <![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -262,19 +262,19 @@
 					    AND C.REQUST_SYS_ID   = H.SYS_ID  
              WHERE 1=1
         ]]>
-        <if test='searchVO.searchKeywordFrom != null and searchVO.searchKeywordFrom != ""'>
-				<![CDATA[ AND TO_CHAR(A.CREAT_DT, 'YYYYMMDD') >= #{searchVO.searchKeywordFrom}  ]]>
+        <if test='searchKeywordFrom != null and searchKeywordFrom != ""'>
+				<![CDATA[ AND TO_CHAR(A.CREAT_DT, 'YYYYMMDD') >= #{searchKeywordFrom}  ]]>
 		</if>
-       	<if test='searchVO.searchKeywordTo != null and searchVO.searchKeywordTo != ""'>
-				<![CDATA[ AND TO_CHAR(A.CREAT_DT, 'YYYYMMDD') <= #{searchVO.searchKeywordTo}	]]>
+       	<if test='searchKeywordTo != null and searchKeywordTo != ""'>
+				<![CDATA[ AND TO_CHAR(A.CREAT_DT, 'YYYYMMDD') <= #{searchKeywordTo}	]]>
 		</if>
-       	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+       	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "CNTC_NM"'>
-                <![CDATA[ AND C.CNTC_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "CNTC_NM"'>
+                <![CDATA[ AND C.CNTC_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "MNGR_NM"'>
-                <![CDATA[ AND A.MNGR_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "MNGR_NM"'>
+                <![CDATA[ AND A.MNGR_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -285,7 +285,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>			
     </select>
 
@@ -315,19 +315,19 @@
 					    AND C.REQUST_SYS_ID   = H.SYS_ID  
              WHERE 1=1
         ]]>
-        <if test='searchVO.searchKeywordFrom != null and searchVO.searchKeywordFrom != ""'>
-				<![CDATA[ AND TO_CHAR(A.CREAT_DT, 'YYYYMMDD') >= #{searchVO.searchKeywordFrom}  ]]>
+        <if test='searchKeywordFrom != null and searchKeywordFrom != ""'>
+				<![CDATA[ AND TO_CHAR(A.CREAT_DT, 'YYYYMMDD') >= #{searchKeywordFrom}  ]]>
 		</if>
-       	<if test='searchVO.searchKeywordTo != null and searchVO.searchKeywordTo != ""'>
-				<![CDATA[ AND TO_CHAR(A.CREAT_DT, 'YYYYMMDD') <= #{searchVO.searchKeywordTo}	]]>
+       	<if test='searchKeywordTo != null and searchKeywordTo != ""'>
+				<![CDATA[ AND TO_CHAR(A.CREAT_DT, 'YYYYMMDD') <= #{searchKeywordTo}	]]>
 		</if>
-       	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+       	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "CNTC_NM"'>
-                <![CDATA[ AND C.CNTC_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "CNTC_NM"'>
+                <![CDATA[ AND C.CNTC_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "MNGR_NM"'>
-                <![CDATA[ AND A.MNGR_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "MNGR_NM"'>
+                <![CDATA[ AND A.MNGR_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -450,10 +450,10 @@
 					    AND A.REQUST_SYS_ID   = D2.SYS_ID
              WHERE 1=1
         ]]>
-       	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+       	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "CNTC_NM"'>
-                <![CDATA[ AND A.CNTC_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "CNTC_NM"'>
+                <![CDATA[ AND A.CNTC_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -464,7 +464,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex}+ #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex}+ #{recordPerPage}
         ]]>			
     </select>
 
@@ -488,10 +488,10 @@
 					    AND A.REQUST_SYS_ID   = D2.SYS_ID
              WHERE 1=1
         ]]>
-       	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+       	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "CNTC_NM"'>
-                <![CDATA[ AND A.CNTC_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "CNTC_NM"'>
+                <![CDATA[ AND A.CNTC_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

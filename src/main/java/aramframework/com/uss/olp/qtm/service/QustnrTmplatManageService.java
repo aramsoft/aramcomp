@@ -52,10 +52,7 @@ public class QustnrTmplatManageService extends EgovAbstractServiceImpl {
 	 * @param qustnrTmplatManageVO
 	 */
 	public QustnrTmplatManageVO selectQustnrTmplatManageDetail(QustnrTmplatManageVO qustnrTmplatManageVO) {
-		QustnrTmplatManageVO resultVo = qustnrTmplatManageMapper.selectQustnrTmplatManageDetail(qustnrTmplatManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(qustnrTmplatManageVO.getSearchVO()); 
-		return resultVo;
+		return qustnrTmplatManageMapper.selectQustnrTmplatManageDetail(qustnrTmplatManageVO);
 	}
 
 	/**

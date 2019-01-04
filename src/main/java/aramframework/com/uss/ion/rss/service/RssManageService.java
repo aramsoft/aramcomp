@@ -77,10 +77,7 @@ public class RssManageService extends EgovAbstractServiceImpl {
 	 * @param rssManageVO
 	 */
 	public RssManageVO selectRssManageDetail(RssManageVO rssManageVO) {
-		RssManageVO resultVo = rssManageMapper.selectRssManageDetail(rssManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(rssManageVO.getSearchVO()); 
-		return resultVo;
+		return rssManageMapper.selectRssManageDetail(rssManageVO);
 	}
 
 	/**

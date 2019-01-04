@@ -49,10 +49,7 @@ public class BatchResultService extends EgovAbstractServiceImpl {
 	 * @param batchResultVO
 	 */
 	public BatchResultVO selectBatchResult(BatchResultVO batchResultVO) {
-		BatchResultVO resultVo = batchResultMapper.selectBatchResult(batchResultVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(batchResultVO.getSearchVO()); 
-		return resultVo;
+		return batchResultMapper.selectBatchResult(batchResultVO);
 	}
 
 	/**

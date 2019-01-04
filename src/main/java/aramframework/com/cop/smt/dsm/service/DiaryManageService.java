@@ -56,10 +56,7 @@ public class DiaryManageService extends EgovAbstractServiceImpl {
 	 * @param diaryManageVO
 	 */
 	public DiaryManageVO selectDiaryManageDetail(DiaryManageVO diaryManageVO) {
-		DiaryManageVO resultVo = diaryManageMapper.selectDiaryManageDetail(diaryManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(diaryManageVO.getSearchVO()); 
-		return resultVo;
+		return diaryManageMapper.selectDiaryManageDetail(diaryManageVO);
 	}
 
 	/**

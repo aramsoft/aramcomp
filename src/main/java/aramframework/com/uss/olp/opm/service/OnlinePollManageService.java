@@ -56,10 +56,7 @@ public class OnlinePollManageService extends EgovAbstractServiceImpl {
 	 * @param onlinePollManageVO
 	 */
 	public OnlinePollManageVO selectOnlinePollManageDetail(OnlinePollManageVO onlinePollManageVO) {
-		OnlinePollManageVO resultVo = onlinePollManageMapper.selectOnlinePollManageDetail(onlinePollManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(onlinePollManageVO.getSearchVO()); 
-		return resultVo;
+		return onlinePollManageMapper.selectOnlinePollManageDetail(onlinePollManageVO);
 	}
 
 	/**

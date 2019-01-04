@@ -39,12 +39,12 @@ public class WebLogController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		webLogVO.getSearchVO().fillPageInfo(paginationInfo);
+		webLogVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", webLogService.selectWebLogInf(webLogVO));
 		int totCnt = webLogService.selectWebLogInfCnt(webLogVO);
 
-		webLogVO.getSearchVO().setTotalRecordCount(totCnt);
+		webLogVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 	
 		model.addAttribute(paginationInfo);

@@ -72,10 +72,7 @@ public class ServerResrceMntrngService extends EgovAbstractServiceImpl {
 	 * @param serverResrceMntrngVO
 	 */
 	public ServerResrceMntrngVO selectServerResrceMntrng(ServerResrceMntrngVO serverResrceMntrngVO) {
-		ServerResrceMntrngVO resultVo = serverResrceMntrngMapper.selectServerResrceMntrng(serverResrceMntrngVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(serverResrceMntrngVO.getSearchVO()); 
-		return resultVo;
+		return serverResrceMntrngMapper.selectServerResrceMntrng(serverResrceMntrngVO);
 	}
 
 	/**

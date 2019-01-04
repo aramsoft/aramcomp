@@ -33,11 +33,11 @@
  		</if>
  	    <choose>
 	        <when test='searchMonth != null and searchMonth != ""'>
-		   		<![CDATA[ AND #{searchVO.searchKeyword} BETWEEN SUBSTR(EVENT_BGNDE, 0, 6) AND SUBSTR(EVENT_ENDDE, 0, 6)  ]]>
+		   		<![CDATA[ AND #{searchKeyword} BETWEEN SUBSTR(EVENT_BGNDE, 0, 6) AND SUBSTR(EVENT_ENDDE, 0, 6)  ]]>
 	        </when>
 	        <otherwise>
 		     	<if test='searchYear != null and searchYear != ""'>
-				<![CDATA[ AND EVENT_BGNDE like '%'||#{searchVO.searchKeyword}||'%'    ]]>
+				<![CDATA[ AND EVENT_BGNDE like '%'||#{searchKeyword}||'%'    ]]>
 		 		</if>
 	        </otherwise>
 	    </choose>
@@ -49,7 +49,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
     </select>
 
@@ -64,11 +64,11 @@
  		</if>
  	    <choose>
 	        <when test='searchMonth != null and searchMonth != ""'>
-		   		<![CDATA[ AND #{searchVO.searchKeyword} BETWEEN SUBSTR(EVENT_BGNDE, 0, 6) AND SUBSTR(EVENT_ENDDE, 0, 6)  ]]>
+		   		<![CDATA[ AND #{searchKeyword} BETWEEN SUBSTR(EVENT_BGNDE, 0, 6) AND SUBSTR(EVENT_ENDDE, 0, 6)  ]]>
 	        </when>
 	        <otherwise>
 		     	<if test='searchYear != null and searchYear != ""'>
-				<![CDATA[ AND EVENT_BGNDE like '%'||#{searchVO.searchKeyword}||'%'    ]]>
+				<![CDATA[ AND EVENT_BGNDE like '%'||#{searchKeyword}||'%'    ]]>
 		 		</if>
 	        </otherwise>
 	    </choose>
@@ -228,11 +228,11 @@
  		</if>
  	    <choose>
 	        <when test='searchMonth != null and searchMonth != ""'>
-		   		<![CDATA[ AND #{searchVO.searchKeyword} BETWEEN SUBSTR(mge.EVENT_BGNDE, 0, 6) AND SUBSTR(mge.EVENT_ENDDE, 0, 6)  ]]>
+		   		<![CDATA[ AND #{searchKeyword} BETWEEN SUBSTR(mge.EVENT_BGNDE, 0, 6) AND SUBSTR(mge.EVENT_ENDDE, 0, 6)  ]]>
 	        </when>
 	        <otherwise>
 		     	<if test='searchYear != null and searchYear != ""'>
-				<![CDATA[ AND mge.EVENT_BGNDE like '%'||#{searchVO.searchKeyword}||'%'    ]]>
+				<![CDATA[ AND mge.EVENT_BGNDE like '%'||#{searchKeyword}||'%'    ]]>
 		 		</if>
 	        </otherwise>
 	    </choose>
@@ -260,7 +260,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
     </select>
 
@@ -279,11 +279,11 @@
  		</if>
  	    <choose>
 	        <when test='searchMonth != null and searchMonth != ""'>
-		   		<![CDATA[ AND #{searchVO.searchKeyword} BETWEEN SUBSTR(mge.EVENT_BGNDE, 0, 6) AND SUBSTR(mge.EVENT_ENDDE, 0, 6)  ]]>
+		   		<![CDATA[ AND #{searchKeyword} BETWEEN SUBSTR(mge.EVENT_BGNDE, 0, 6) AND SUBSTR(mge.EVENT_ENDDE, 0, 6)  ]]>
 	        </when>
 	        <otherwise>
 		     	<if test='searchYear != null and searchYear != ""'>
-				<![CDATA[ AND mge.EVENT_BGNDE like '%'||#{searchVO.searchKeyword}||'%'    ]]>
+				<![CDATA[ AND mge.EVENT_BGNDE like '%'||#{searchKeyword}||'%'    ]]>
 		 		</if>
 	        </otherwise>
 	    </choose>
@@ -434,11 +434,11 @@
  		</if>
  	    <choose>
 	        <when test='searchMonth != null and searchMonth != ""'>
-		   		<![CDATA[ AND #{searchVO.searchKeyword} BETWEEN SUBSTR(mge.EVENT_BGNDE, 0, 6) AND SUBSTR(mge.EVENT_ENDDE, 0, 6)  ]]>
+		   		<![CDATA[ AND #{searchKeyword} BETWEEN SUBSTR(mge.EVENT_BGNDE, 0, 6) AND SUBSTR(mge.EVENT_ENDDE, 0, 6)  ]]>
 	        </when>
 	        <otherwise>
 		     	<if test='searchYear != null and searchYear != ""'>
-				<![CDATA[ AND mge.EVENT_BGNDE like '%'||#{searchVO.searchKeyword}||'%'    ]]>
+				<![CDATA[ AND mge.EVENT_BGNDE like '%'||#{searchKeyword}||'%'    ]]>
 		 		</if>
 	        </otherwise>
 	    </choose>
@@ -450,7 +450,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
     </select>
 
@@ -467,11 +467,11 @@
  		</if>
  	    <choose>
 	        <when test='searchMonth != null and searchMonth != ""'>
-		   		<![CDATA[ AND #{searchVO.searchKeyword} BETWEEN SUBSTR(mge.EVENT_BGNDE, 0, 6) AND SUBSTR(mge.EVENT_ENDDE, 0, 6)  ]]>
+		   		<![CDATA[ AND #{searchKeyword} BETWEEN SUBSTR(mge.EVENT_BGNDE, 0, 6) AND SUBSTR(mge.EVENT_ENDDE, 0, 6)  ]]>
 	        </when>
 	        <otherwise>
 		     	<if test='searchYear != null and searchYear != ""'>
-				<![CDATA[ AND mge.EVENT_BGNDE like '%'||#{searchVO.searchKeyword}||'%'    ]]>
+				<![CDATA[ AND mge.EVENT_BGNDE like '%'||#{searchKeyword}||'%'    ]]>
 		 		</if>
 	        </otherwise>
 	    </choose>
@@ -498,7 +498,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			 LIMIT #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
     </select>
 

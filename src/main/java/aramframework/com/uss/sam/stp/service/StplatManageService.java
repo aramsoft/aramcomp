@@ -53,10 +53,7 @@ public class StplatManageService extends EgovAbstractServiceImpl {
 	 * @param stplatManageVO
 	 */
 	public StplatManageVO selectStplatDetail(StplatManageVO stplatManageVO)  {
-		StplatManageVO resultVo = stplatManageMapper.selectStplatDetail(stplatManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(stplatManageVO.getSearchVO()); 
-		return resultVo;
+		return stplatManageMapper.selectStplatDetail(stplatManageVO);
 	}
 
 	/**

@@ -46,12 +46,12 @@ public class RecomendSiteController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		recomendSiteVO.getSearchVO().fillPageInfo(paginationInfo);
+		recomendSiteVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", recomendSiteService.selectRecomendSiteList(recomendSiteVO));
 		int totCnt = recomendSiteService.selectRecomendSiteListCnt(recomendSiteVO);
 
-		recomendSiteVO.getSearchVO().setTotalRecordCount(totCnt);
+		recomendSiteVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

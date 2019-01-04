@@ -81,10 +81,7 @@ public class AdministCodeRecptnService extends EgovAbstractServiceImpl {
 	 * @param administCodeRecptnVO
 	 */
 	public AdministCodeRecptnVO selectAdministCodeDetail(AdministCodeRecptnVO administCodeRecptnVO) {
-		AdministCodeRecptnVO resultVo = administCodeRecptnMapper.selectAdministCodeDetail(administCodeRecptnVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(administCodeRecptnVO.getSearchVO()); 
-		return resultVo;
+		return administCodeRecptnMapper.selectAdministCodeDetail(administCodeRecptnVO);
 	}
 
 	/**

@@ -31,12 +31,12 @@
               FROM COMTH_ADMINIST_CODE_LOG
              WHERE 1 = 1
         ]]>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
-            <if test='searchVO.searchCondition == "ADMINIST_ZONE_NM"'>
-				<![CDATA[ AND ADMINIST_ZONE_NM LIKE '%'||#{searchVO.searchKeyword}||'%']]>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+            <if test='searchCondition == "ADMINIST_ZONE_NM"'>
+				<![CDATA[ AND ADMINIST_ZONE_NM LIKE '%'||#{searchKeyword}||'%']]>
             </if>
 		</if>
-        <if test='searchVO.searchCondition == "CodeList"'>
+        <if test='searchCondition == "CodeList"'>
 				<![CDATA[
                    	AND ADMINIST_ZONE_SE     = #{administZoneSe}
                   	AND ADMINIST_ZONE_CODE   = #{administZoneCode}
@@ -46,7 +46,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>			
     </select>
 
@@ -57,12 +57,12 @@
               FROM COMTH_ADMINIST_CODE_LOG
              WHERE 1 = 1
         ]]>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
-            <if test='searchVO.searchCondition == "ADMINIST_ZONE_NM"'>
-				<![CDATA[ AND ADMINIST_ZONE_NM LIKE '%'||#{searchVO.searchKeyword}||'%']]>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+            <if test='searchCondition == "ADMINIST_ZONE_NM"'>
+				<![CDATA[ AND ADMINIST_ZONE_NM LIKE '%'||#{searchKeyword}||'%']]>
             </if>
 		</if>
-        <if test='searchVO.searchCondition == "CodeList"'>
+        <if test='searchCondition == "CodeList"'>
 				<![CDATA[
                    	AND ADMINIST_ZONE_SE     = #{administZoneSe}
                    	AND ADMINIST_ZONE_CODE   = #{administZoneCode}

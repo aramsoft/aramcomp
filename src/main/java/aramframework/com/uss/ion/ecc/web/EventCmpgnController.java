@@ -50,12 +50,12 @@ public class EventCmpgnController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		eventCmpgnVO.getSearchVO().fillPageInfo(paginationInfo);
+		eventCmpgnVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", eventCmpgnService.selectEventCmpgnList(eventCmpgnVO));
 		int totCnt = (Integer) eventCmpgnService.selectEventCmpgnListCnt(eventCmpgnVO);
 
-		eventCmpgnVO.getSearchVO().setTotalRecordCount(totCnt);
+		eventCmpgnVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -79,12 +79,12 @@ public class EventCmpgnController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		eventCmpgnVO.getSearchVO().fillPageInfo(paginationInfo);
+		eventCmpgnVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", eventCmpgnService.selectEventCmpgnList(eventCmpgnVO));
 		int totCnt = (Integer) eventCmpgnService.selectEventCmpgnListCnt(eventCmpgnVO);
 
-		eventCmpgnVO.getSearchVO().setTotalRecordCount(totCnt);
+		eventCmpgnVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -243,17 +243,17 @@ public class EventCmpgnController {
 
 		// 행사/이벤트/캠페인에서 넘어오면 자동검색 설정
 		if (tnextrlHrInfoVO.getSearchMode().equals("Y")) {
-			tnextrlHrInfoVO.getSearchVO().setSearchCondition("EVENT_ID");
-			tnextrlHrInfoVO.getSearchVO().setSearchKeyword(tnextrlHrInfoVO.getEventId());
+			tnextrlHrInfoVO.setSearchCondition("EVENT_ID");
+			tnextrlHrInfoVO.setSearchKeyword(tnextrlHrInfoVO.getEventId());
 		}
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		tnextrlHrInfoVO.getSearchVO().fillPageInfo(paginationInfo);
+		tnextrlHrInfoVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", eventCmpgnService.selectTnextrlHrInfoList(tnextrlHrInfoVO));
 		int totCnt = (Integer) eventCmpgnService.selectTnextrlHrInfoListCnt(tnextrlHrInfoVO);
 
-		tnextrlHrInfoVO.getSearchVO().setTotalRecordCount(totCnt);
+		tnextrlHrInfoVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

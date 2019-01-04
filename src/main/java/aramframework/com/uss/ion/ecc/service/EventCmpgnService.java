@@ -56,10 +56,7 @@ public class EventCmpgnService extends EgovAbstractServiceImpl {
 	 * @param eventCmpgnVO
 	 */
 	public EventCmpgnVO selectEventCmpgnDetail(EventCmpgnVO eventCmpgnVO) {
-		EventCmpgnVO resultVo = eventCmpgnMapper.selectEventCmpgnDetail(eventCmpgnVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(eventCmpgnVO.getSearchVO()); 
-		return resultVo;
+		return eventCmpgnMapper.selectEventCmpgnDetail(eventCmpgnVO);
 	}
 
 	/**
@@ -119,10 +116,7 @@ public class EventCmpgnService extends EgovAbstractServiceImpl {
 	 * @param tnextrlHrInfoVO
 	 */
 	public TnextrlHrInfoVO selectTnextrlHrInfoDetail(TnextrlHrInfoVO tnextrlHrInfoVO) {
-		TnextrlHrInfoVO resultVo = eventCmpgnMapper.selectTnextrlHrInfoDetail(tnextrlHrInfoVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(tnextrlHrInfoVO.getSearchVO()); 
-		return resultVo;
+		return eventCmpgnMapper.selectTnextrlHrInfoDetail(tnextrlHrInfoVO);
 	}
 
 	/**

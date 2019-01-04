@@ -52,10 +52,7 @@ public class AdministrationWordService extends EgovAbstractServiceImpl {
 	 * @param administrationWordVO
 	 */
 	public AdministrationWordVO selectAdministrationWordDetail(AdministrationWordVO administrationWordVO) {
-		AdministrationWordVO resultVo = administrationWordMapper.selectAdministrationWordDetail(administrationWordVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(administrationWordVO.getSearchVO()); 
-		return resultVo;
+		return administrationWordMapper.selectAdministrationWordDetail(administrationWordVO);
 	}
 
 	/**

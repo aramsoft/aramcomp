@@ -124,10 +124,7 @@ public class QustnrRespondInfoService extends EgovAbstractServiceImpl {
 	 * @param qustnrRespondInfoVO
 	 */
 	public QustnrRespondInfoVO selectQustnrRespondInfoDetail(QustnrRespondInfoVO qustnrRespondInfoVO) {
-		QustnrRespondInfoVO resultVo = qustnrRespondInfoMapper.selectQustnrRespondInfoDetail(qustnrRespondInfoVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(qustnrRespondInfoVO.getSearchVO()); 
-		return resultVo;
+		return qustnrRespondInfoMapper.selectQustnrRespondInfoDetail(qustnrRespondInfoVO);
 	}
 
 	/**

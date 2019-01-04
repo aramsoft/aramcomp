@@ -13,19 +13,19 @@
 			  FROM COMTC_CMMN_CL_CODE
 			 WHERE USE_AT = 'Y'
 		]]>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "CL_CODE"'>
-				<![CDATA[ AND CL_CODE LIKE '%' || #{searchVO.searchKeyword} || '%']]>
+            <when test='searchCondition == "CL_CODE"'>
+				<![CDATA[ AND CL_CODE LIKE '%' || #{searchKeyword} || '%']]>
             </when>
-            <when test='searchVO.searchCondition == "CL_CODE_NM"'>
-				<![CDATA[ AND CL_CODE_NM LIKE '%' || #{searchVO.searchKeyword} || '%']]>
+            <when test='searchCondition == "CL_CODE_NM"'>
+				<![CDATA[ AND CL_CODE_NM LIKE '%' || #{searchKeyword} || '%']]>
             </when>
         </choose>
 		</if>
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
 	</select>
 
@@ -36,13 +36,13 @@
 			  FROM COMTC_CMMN_CL_CODE
 			 WHERE USE_AT = 'Y'
 		]]>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "CL_CODE"'>
-				<![CDATA[ AND CL_CODE LIKE '%' || #{searchVO.searchKeyword} || '%']]>
+            <when test='searchCondition == "CL_CODE"'>
+				<![CDATA[ AND CL_CODE LIKE '%' || #{searchKeyword} || '%']]>
             </when>
-            <when test='searchVO.searchCondition == "CL_CODE_NM"'>
-				<![CDATA[ AND CL_CODE_NM LIKE '%' || #{searchVO.searchKeyword} || '%']]>
+            <when test='searchCondition == "CL_CODE_NM"'>
+				<![CDATA[ AND CL_CODE_NM LIKE '%' || #{searchKeyword} || '%']]>
             </when>
         </choose>
 		</if>

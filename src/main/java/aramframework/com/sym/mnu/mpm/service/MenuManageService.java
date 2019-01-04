@@ -85,10 +85,7 @@ public class MenuManageService extends EgovAbstractServiceImpl {
 	 * @param menuManageVO
 	 */
 	public MenuManageVO selectMenuManage(MenuManageVO menuManageVO) {
-		MenuManageVO resultVo = menuManageMapper.selectMenuManage(menuManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(menuManageVO.getSearchVO()); 
-		return resultVo;
+		return menuManageMapper.selectMenuManage(menuManageVO);
 	}
 
 	/**

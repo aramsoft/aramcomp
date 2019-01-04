@@ -61,10 +61,7 @@ public class PopupManageService extends EgovAbstractServiceImpl {
 	 * @param popupManageVO
 	 */
 	public PopupManageVO selectPopupDetail(PopupManageVO popupManageVO) {
-		PopupManageVO resultVo = popupManageMapper.selectPopupDetail(popupManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(popupManageVO.getSearchVO()); 
-		return resultVo;
+		return popupManageMapper.selectPopupDetail(popupManageVO);
 	}
 
 	/**

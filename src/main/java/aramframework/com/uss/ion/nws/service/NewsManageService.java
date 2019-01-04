@@ -57,10 +57,7 @@ public class NewsManageService extends EgovAbstractServiceImpl {
 	 * @param newsManageVO
 	 */
 	public NewsManageVO selectNewsDetail(NewsManageVO newsManageVO) {
-		NewsManageVO resultVo = newsManageMapper.selectNewsDetail(newsManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(newsManageVO.getSearchVO()); 
-		return resultVo;
+		return newsManageMapper.selectNewsDetail(newsManageVO);
 	}
 
 	/**

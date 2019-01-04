@@ -48,10 +48,7 @@ public class LoginPolicyService extends EgovAbstractServiceImpl {
 	 * @param loginPolicyVO
 	 */
 	public LoginPolicyVO selectLoginPolicy(LoginPolicyVO loginPolicyVO) {
-		LoginPolicyVO resultVo = loginPolicyMapper.selectLoginPolicy(loginPolicyVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(loginPolicyVO.getSearchVO()); 
-		return resultVo;
+		return loginPolicyMapper.selectLoginPolicy(loginPolicyVO);
 	}
 
 	/**

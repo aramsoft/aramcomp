@@ -29,10 +29,10 @@
     	<if test='trgetId != null and trgetId != ""'>
 		   		<![CDATA[ AND A.TRGET_ID = #{trgetId} ]]>
 		</if>
-     	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+     	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "POLL_NM"'>
-                <![CDATA[ AND A.POLL_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "POLL_NM"'>
+                <![CDATA[ AND A.POLL_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -43,7 +43,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>			
 	</select>
 	
@@ -57,10 +57,10 @@
     	<if test='trgetId != null and trgetId != ""'>
 		   		<![CDATA[ AND A.TRGET_ID = #{trgetId} ]]>
 		</if>
-     	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+     	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "POLL_NM"'>
-                <![CDATA[ AND A.POLL_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "POLL_NM"'>
+                <![CDATA[ AND A.POLL_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

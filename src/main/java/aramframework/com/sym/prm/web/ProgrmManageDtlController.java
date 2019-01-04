@@ -52,12 +52,12 @@ public class ProgrmManageDtlController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		progrmManageDtlVO.getSearchVO().fillPageInfo(paginationInfo);
+		progrmManageDtlVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", progrmManageDtlService.selectProgrmChangeRequstList(progrmManageDtlVO));
 		int totCnt = progrmManageDtlService.selectProgrmChangeRequstListCnt(progrmManageDtlVO);
 
-		progrmManageDtlVO.getSearchVO().setTotalRecordCount(totCnt);
+		progrmManageDtlVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -186,12 +186,12 @@ public class ProgrmManageDtlController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		progrmManageDtlVO.getSearchVO().fillPageInfo(paginationInfo);
+		progrmManageDtlVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", progrmManageDtlService.selectChangeRequstProcessList(progrmManageDtlVO));
 		int totCnt = progrmManageDtlService.selectChangeRequstProcessListCnt(progrmManageDtlVO);
 
-		progrmManageDtlVO.getSearchVO().setTotalRecordCount(totCnt);
+		progrmManageDtlVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -302,12 +302,12 @@ public class ProgrmManageDtlController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		progrmManageDtlVO.getSearchVO().fillPageInfo(paginationInfo);
+		progrmManageDtlVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", progrmManageDtlService.selectProgrmChangeHistoryList(progrmManageDtlVO));
 		int totCnt = progrmManageDtlService.selectProgrmChangeHistoryListCnt(progrmManageDtlVO);
 
-		progrmManageDtlVO.getSearchVO().setTotalRecordCount(totCnt);
+		progrmManageDtlVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

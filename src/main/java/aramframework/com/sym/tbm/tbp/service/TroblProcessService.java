@@ -47,10 +47,7 @@ public class TroblProcessService extends EgovAbstractServiceImpl {
 	 * @param troblProcessVO
 	 */
 	public TroblProcessVO selectTroblProcess(TroblProcessVO troblProcessVO) {
-		TroblProcessVO resultVo = troblProcessMapper.selectTroblProcess(troblProcessVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(troblProcessVO.getSearchVO()); 
-		return resultVo;
+		return troblProcessMapper.selectTroblProcess(troblProcessVO);
 	}
 
 	/**

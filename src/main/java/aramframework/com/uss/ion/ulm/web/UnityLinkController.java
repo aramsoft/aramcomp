@@ -51,12 +51,12 @@ public class UnityLinkController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		unityLinkVO.getSearchVO().fillPageInfo(paginationInfo);
+		unityLinkVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", unityLinkService.selectUnityLinkList(unityLinkVO));
 		int totCnt = (Integer) unityLinkService.selectUnityLinkListCnt(unityLinkVO);
 
-		unityLinkVO.getSearchVO().setTotalRecordCount(totCnt);
+		unityLinkVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

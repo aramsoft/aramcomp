@@ -108,8 +108,6 @@ public class WikMnthngReprtService extends EgovAbstractServiceImpl {
 			String yymmddhhmm = year + "/" + month + "/" + day + "  " + hour + "시 " + min + "분";
 			resultVo.setReprtSttus("승인 (" + yymmddhhmm + ") ");
 		}
-		// searchVO 이전 
-		resultVo.setSearchVO(wikMnthngReprtVO.getSearchVO()); 
 		return resultVo;
 	}
 

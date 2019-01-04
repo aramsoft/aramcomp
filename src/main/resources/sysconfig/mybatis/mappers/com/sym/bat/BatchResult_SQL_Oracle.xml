@@ -42,19 +42,19 @@
       	<if test='sttus != null and sttus != "00"'>
 				<![CDATA[ AND A.STTUS = #{sttus} ]]>
 		</if>
-      	<if test='searchVO.searchKeywordFrom != null and searchVO.searchKeywordFrom != ""'>
-				<![CDATA[ AND SUBSTR(A.EXECUT_BEGIN_TM,1, 8) >= #{searchVO.searchKeywordFrom}  ]]>
+      	<if test='searchKeywordFrom != null and searchKeywordFrom != ""'>
+				<![CDATA[ AND SUBSTR(A.EXECUT_BEGIN_TM,1, 8) >= #{searchKeywordFrom}  ]]>
 		</if>
-      	<if test='searchVO.searchKeywordTo != null and searchVO.searchKeywordTo != ""'>
-				<![CDATA[ AND SUBSTR(A.EXECUT_BEGIN_TM,1, 8) <= #{searchVO.searchKeywordTo}  ]]>
+      	<if test='searchKeywordTo != null and searchKeywordTo != ""'>
+				<![CDATA[ AND SUBSTR(A.EXECUT_BEGIN_TM,1, 8) <= #{searchKeywordTo}  ]]>
 		</if>
-       	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+       	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "BATCH_OPERT_NM"'>
-                 <![CDATA[ AND B.BATCH_OPERT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BATCH_OPERT_NM"'>
+                 <![CDATA[ AND B.BATCH_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "BATCH_SCHDUL_ID"'>
-                 <![CDATA[ AND A.BATCH_SCHDUL_ID LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BATCH_SCHDUL_ID"'>
+                 <![CDATA[ AND A.BATCH_SCHDUL_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -65,7 +65,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>			
     </select>
 
@@ -84,19 +84,19 @@
       	<if test='sttus != null and sttus != "00"'>
 				<![CDATA[ AND A.STTUS = #{sttus} ]]>
 		</if>
-      	<if test='searchVO.searchKeywordFrom != null and searchVO.searchKeywordFrom != ""'>
-				<![CDATA[ AND SUBSTR(A.EXECUT_BEGIN_TM,1, 8) >= #{searchVO.searchKeywordFrom}  ]]>
+      	<if test='searchKeywordFrom != null and searchKeywordFrom != ""'>
+				<![CDATA[ AND SUBSTR(A.EXECUT_BEGIN_TM,1, 8) >= #{searchKeywordFrom}  ]]>
 		</if>
-      	<if test='searchVO.searchKeywordTo != null and searchVO.searchKeywordTo != ""'>
-				<![CDATA[ AND SUBSTR(A.EXECUT_BEGIN_TM,1, 8) <= #{searchVO.searchKeywordTo}  ]]>
+      	<if test='searchKeywordTo != null and searchKeywordTo != ""'>
+				<![CDATA[ AND SUBSTR(A.EXECUT_BEGIN_TM,1, 8) <= #{searchKeywordTo}  ]]>
 		</if>
-       	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+       	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "BATCH_OPERT_NM"'>
-                 <![CDATA[ AND B.BATCH_OPERT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BATCH_OPERT_NM"'>
+                 <![CDATA[ AND B.BATCH_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "BATCH_SCHDUL_ID"'>
-                 <![CDATA[ AND A.BATCH_SCHDUL_ID LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BATCH_SCHDUL_ID"'>
+                 <![CDATA[ AND A.BATCH_SCHDUL_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

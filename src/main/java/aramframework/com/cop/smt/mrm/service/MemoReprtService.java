@@ -99,8 +99,6 @@ public class MemoReprtService extends EgovAbstractServiceImpl {
 			String yymmddhhmm = year + "/" + month + "/" + day + "  " + hour + "시 " + min + "분";
 			resultVo.setReprtSttus("확인 (" + yymmddhhmm + ") ");
 		}
-		// searchVO 이전 
-		resultVo.setSearchVO(memoReprtVO.getSearchVO()); 
 		return resultVo;
 	}
 

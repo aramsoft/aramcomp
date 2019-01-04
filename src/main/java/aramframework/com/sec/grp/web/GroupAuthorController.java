@@ -46,12 +46,12 @@ public class GroupAuthorController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		groupAuthorVO.getSearchVO().fillPageInfo(paginationInfo);
+		groupAuthorVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", groupAuthorService.selectGroupAuthorList(groupAuthorVO));
 		int totCnt = groupAuthorService.selectGroupAuthorListCnt(groupAuthorVO);
 
-		groupAuthorVO.getSearchVO().setTotalRecordCount(totCnt);
+		groupAuthorVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

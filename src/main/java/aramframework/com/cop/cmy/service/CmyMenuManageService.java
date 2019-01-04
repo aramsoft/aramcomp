@@ -86,10 +86,7 @@ public class CmyMenuManageService extends EgovAbstractServiceImpl {
 	 * @param communityMenuVO
 	 */
 	public CommunityMenuVO selectMenuManage(CommunityMenuVO communityMenuVO) {
-		CommunityMenuVO resultVo = cmyMenuManageMapper.selectMenuManage(communityMenuVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(communityMenuVO.getSearchVO()); 
-		return resultVo;
+		return cmyMenuManageMapper.selectMenuManage(communityMenuVO);
 	}
 
 	private void checkMenuAlias(CommunityMenuVO communityMenuVO) {

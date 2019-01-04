@@ -54,12 +54,12 @@ public class MemoReprtController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		baseVO.getSearchVO().fillPageInfo(paginationInfo);
+		baseVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", memoReprtService.selectReportrList(baseVO));
 		int totCnt = memoReprtService.selectReportrListCnt(baseVO);
 
-		baseVO.getSearchVO().setTotalRecordCount(totCnt);
+		baseVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -84,12 +84,12 @@ public class MemoReprtController {
 		memoReprtVO.setSearchId(loginVO.getUniqId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		memoReprtVO.getSearchVO().fillPageInfo(paginationInfo);
+		memoReprtVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", memoReprtService.selectMemoReprtList(memoReprtVO));
 		int totCnt = memoReprtService.selectMemoReprtListCnt(memoReprtVO);
 
-		memoReprtVO.getSearchVO().setTotalRecordCount(totCnt);
+		memoReprtVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 	
 		model.addAttribute(paginationInfo);

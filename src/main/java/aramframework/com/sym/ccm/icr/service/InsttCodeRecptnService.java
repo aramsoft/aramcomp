@@ -80,10 +80,7 @@ public class InsttCodeRecptnService extends EgovAbstractServiceImpl {
 	 * @param insttCodeRecptnVO
 	 */
 	public InsttCodeRecptnVO selectInsttCodeDetail(InsttCodeRecptnVO insttCodeRecptnVO) {
-		InsttCodeRecptnVO resultVo = insttCodeRecptnMapper.selectInsttCodeDetail(insttCodeRecptnVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(insttCodeRecptnVO.getSearchVO()); 
-		return resultVo;
+		return insttCodeRecptnMapper.selectInsttCodeDetail(insttCodeRecptnVO);
 	}
 
 	/**

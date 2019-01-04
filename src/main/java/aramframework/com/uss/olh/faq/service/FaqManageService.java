@@ -57,10 +57,7 @@ public class FaqManageService extends EgovAbstractServiceImpl {
 	 * @param faqManageVO
 	 */
 	public FaqManageVO selectFaqListDetail(FaqManageVO faqManageVO) {
-		FaqManageVO resultVo = faqManageMapper.selectFaqListDetail(faqManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(faqManageVO.getSearchVO()); 
-		return resultVo;
+		return faqManageMapper.selectFaqListDetail(faqManageVO);
 	}
 
 	/**

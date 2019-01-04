@@ -53,10 +53,7 @@ public class GroupService extends EgovAbstractServiceImpl {
 	 * @param groupVO
 	 */
 	public GroupVO selectGroup(GroupVO groupVO) {
-		GroupVO resultVo = groupMapper.selectGroup(groupVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(groupVO.getSearchVO()); 
-		return resultVo;
+		return groupMapper.selectGroup(groupVO);
 	}
 
 	/**

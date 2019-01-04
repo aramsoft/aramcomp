@@ -14,15 +14,15 @@
               FROM COMTN_MAIN_IMAGE
              WHERE 1=1
         ]]>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
-        		<![CDATA[ AND IMAGE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+        		<![CDATA[ AND IMAGE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
 		</if>
         <![CDATA[
              ORDER BY FRST_REGIST_PNTTM DESC
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
     </select>
 
@@ -32,8 +32,8 @@
               FROM COMTN_MAIN_IMAGE
              WHERE 1=1
  		]]>				
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
-        		<![CDATA[ AND IMAGE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+        		<![CDATA[ AND IMAGE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
 		</if>
     </select>
 

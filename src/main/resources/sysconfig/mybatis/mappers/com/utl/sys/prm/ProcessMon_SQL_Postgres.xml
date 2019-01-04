@@ -19,13 +19,13 @@
 				       	ON A.PROCS_STTUS = B.CODE
 			 WHERE 1 = 1
 		]]>
-      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "PROCS_NM"'>
-                <![CDATA[ AND A.PROCS_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "PROCS_NM"'>
+                <![CDATA[ AND A.PROCS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "PROCS_STTUS"'>
-                <![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "PROCS_STTUS"'>
+                <![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -34,7 +34,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
 	</select>
 	
@@ -48,13 +48,13 @@
 				       	ON A.PROCS_STTUS = B.CODE
 			 WHERE 1 = 1
 		]]>
-      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "PROCS_NM"'>
-                <![CDATA[ AND A.PROCS_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "PROCS_NM"'>
+                <![CDATA[ AND A.PROCS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "PROCS_STTUS"'>
-                <![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "PROCS_STTUS"'>
+                <![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -163,13 +163,13 @@
         <if test='searchBgnDt != null and searchBgnDt != ""'>
 				<![CDATA[ AND TO_CHAR(A.CREAT_DT,'YYYY-MM-DD HH24MISS') BETWEEN #{searchBgnDt} AND #{searchEndDt} ]]>			
 		</if>
-      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "PROCS_NM"'>
-                <![CDATA[ AND A.PROCS_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "PROCS_NM"'>
+                <![CDATA[ AND A.PROCS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "PROCS_STTUS"'>
-                <![CDATA[ AND C.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "PROCS_STTUS"'>
+                <![CDATA[ AND C.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -178,7 +178,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
 	</select>	
 	
@@ -197,13 +197,13 @@
         <if test='searchBgnDt != null and searchBgnDt != ""'>
 				<![CDATA[ AND TO_CHAR(A.CREAT_DT,'YYYY-MM-DD HH24MISS') BETWEEN #{searchBgnDt} AND #{searchEndDt} ]]>			
 		</if>
-      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "PROCS_NM"'>
-                <![CDATA[ AND A.PROCS_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "PROCS_NM"'>
+                <![CDATA[ AND A.PROCS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "PROCS_STTUS"'>
-                <![CDATA[ AND C.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "PROCS_STTUS"'>
+                <![CDATA[ AND C.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

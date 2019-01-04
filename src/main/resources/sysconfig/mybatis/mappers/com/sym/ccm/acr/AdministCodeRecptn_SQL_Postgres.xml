@@ -25,12 +25,12 @@
               FROM COMTH_ADMINIST_CODE_LOG
              WHERE 1 = 1
         ]]>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
-            <if test='searchVO.searchCondition == "ADMINIST_ZONE_NM"'>
-				<![CDATA[ AND ADMINIST_ZONE_NM LIKE '%'||#{searchVO.searchKeyword}||'%']]>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+            <if test='searchCondition == "ADMINIST_ZONE_NM"'>
+				<![CDATA[ AND ADMINIST_ZONE_NM LIKE '%'||#{searchKeyword}||'%']]>
             </if>
 		</if>
-        <if test='searchVO.searchCondition == "CodeList"'>
+        <if test='searchCondition == "CodeList"'>
 				<![CDATA[
                    AND ADMINIST_ZONE_SE     = #{administZoneSe}
                    AND ADMINIST_ZONE_CODE   = #{administZoneCode}
@@ -38,7 +38,7 @@
         </if>        
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
     </select>
 
@@ -49,12 +49,12 @@
               FROM COMTH_ADMINIST_CODE_LOG
              WHERE 1 = 1
         ]]>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
-            <if test='searchVO.searchCondition == "ADMINIST_ZONE_NM"'>
-				<![CDATA[ AND ADMINIST_ZONE_NM LIKE '%'||#{searchVO.searchKeyword}||'%']]>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+            <if test='searchCondition == "ADMINIST_ZONE_NM"'>
+				<![CDATA[ AND ADMINIST_ZONE_NM LIKE '%'||#{searchKeyword}||'%']]>
             </if>
 		</if>
-        <if test='searchVO.searchCondition == "CodeList"'>
+        <if test='searchCondition == "CodeList"'>
 				<![CDATA[
                    AND ADMINIST_ZONE_SE     = #{administZoneSe}
                    AND ADMINIST_ZONE_CODE   = #{administZoneCode}

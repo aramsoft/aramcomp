@@ -42,12 +42,12 @@ public class TrsmrcvLogController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		trsmrcvLogVO.getSearchVO().fillPageInfo(paginationInfo);
+		trsmrcvLogVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", trsmrcvLogService.selectTrsmrcvLogInf(trsmrcvLogVO));
 		int totCnt = trsmrcvLogService.selectTrsmrcvLogInfCnt(trsmrcvLogVO);
 
-		trsmrcvLogVO.getSearchVO().setTotalRecordCount(totCnt);
+		trsmrcvLogVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

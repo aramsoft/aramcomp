@@ -39,12 +39,12 @@ public class SysLogController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		sysLogVO.getSearchVO().fillPageInfo(paginationInfo);
+		sysLogVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", sysLogService.selectSysLogInf(sysLogVO));
 		int totCnt = sysLogService.selectSysLogInfCnt(sysLogVO);
 
-		sysLogVO.getSearchVO().setTotalRecordCount(totCnt);
+		sysLogVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

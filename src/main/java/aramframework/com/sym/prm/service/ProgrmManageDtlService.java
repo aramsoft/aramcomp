@@ -47,10 +47,7 @@ public class ProgrmManageDtlService extends EgovAbstractServiceImpl {
 	 * @param progrmManageDtlVO
 	 */
 	public ProgrmManageDtlVO selectProgrmChangeRequst(ProgrmManageDtlVO progrmManageDtlVO) {
-		ProgrmManageDtlVO resultVo = progrmManageDtlMapper.selectProgrmChangeRequst(progrmManageDtlVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(progrmManageDtlVO.getSearchVO()); 
-		return resultVo;
+		return progrmManageDtlMapper.selectProgrmChangeRequst(progrmManageDtlVO);
 	}
 
 	/**

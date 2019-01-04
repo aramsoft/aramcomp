@@ -47,10 +47,7 @@ public class MapMaterialService extends EgovAbstractServiceImpl {
 	 * @param mapMaterialVO
 	 */
 	public MapMaterialVO selectMapMaterial(MapMaterialVO mapMaterialVO) {
-		MapMaterialVO resultVo = mapMaterialMapper.selectMapMaterial(mapMaterialVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(mapMaterialVO.getSearchVO()); 
-		return resultVo;
+		return mapMaterialMapper.selectMapMaterial(mapMaterialVO);
 	}
 
 	/**

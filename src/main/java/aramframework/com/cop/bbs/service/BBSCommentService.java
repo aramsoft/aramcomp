@@ -73,10 +73,7 @@ public class BBSCommentService extends EgovAbstractServiceImpl {
 	 * @param commentVO
 	 */
 	public CommentVO selectComment(CommentVO commentVO) {
-		CommentVO resultVo = bbsCommentMapper.selectComment(commentVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(commentVO.getSearchVO()); 
-		return resultVo;
+		return bbsCommentMapper.selectComment(commentVO);
 	}
 
 	/**

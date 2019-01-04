@@ -41,7 +41,7 @@ public class InsttCodeRecptnController {
 			@ModelAttribute InsttCodeRecptnVO insttCodeRecptnVO, 
 			ModelMap model) {
 
-		insttCodeRecptnVO.getSearchVO().setSizeAndOffset(5, 0);
+		insttCodeRecptnVO.setSizeAndOffset(5, 0);
 
 		model.addAttribute("resultList", insttCodeManageService.selectInsttCodeRecptnList(insttCodeRecptnVO));
 
@@ -61,12 +61,12 @@ public class InsttCodeRecptnController {
 			ModelMap model) {
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
-		insttCodeRecptnVO.getSearchVO().fillPageInfo(paginationInfo);
+		insttCodeRecptnVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", insttCodeManageService.selectInsttCodeRecptnList(insttCodeRecptnVO));
 		int totCnt = insttCodeManageService.selectInsttCodeRecptnListCnt(insttCodeRecptnVO);
 
-		insttCodeRecptnVO.getSearchVO().setTotalRecordCount(totCnt);
+		insttCodeRecptnVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -91,8 +91,8 @@ public class InsttCodeRecptnController {
 
 		/* 기관코드수신 리스트 */
 		InsttCodeRecptnVO vo = new InsttCodeRecptnVO();
-		vo.getSearchVO().setSizeAndOffset(9999999, 0);
-		vo.getSearchVO().setSearchCondition("CodeList");
+		vo.setSizeAndOffset(9999999, 0);
+		vo.setSearchCondition("CodeList");
 		vo.setInsttCode(insttCodeRecptnVO.getInsttCode());
 
 		model.addAttribute("insttCodeRecptnList", insttCodeManageService.selectInsttCodeRecptnList(vo));

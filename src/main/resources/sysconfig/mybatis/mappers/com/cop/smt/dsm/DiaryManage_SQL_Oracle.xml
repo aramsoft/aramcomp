@@ -28,16 +28,16 @@
 			  FROM COMTN_DIARY_INFO A 
 			 WHERE 1=1
 		]]>
-  	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+  	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "DIARY_NM"'>
-             	<![CDATA[ AND A.DIARY_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "DIARY_NM"'>
+             	<![CDATA[ AND A.DIARY_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "DRCT_MATTER"'>
-             	<![CDATA[ AND A.DRCT_MATTER LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "DRCT_MATTER"'>
+             	<![CDATA[ AND A.DRCT_MATTER LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "PARTCLR_MATTER"'>
-             	<![CDATA[ AND A.PARTCLR_MATTER LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "PARTCLR_MATTER"'>
+             	<![CDATA[ AND A.PARTCLR_MATTER LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -48,7 +48,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>			
 	</select>
 	
@@ -59,16 +59,16 @@
 			  FROM COMTN_DIARY_INFO A
 			 WHERE 1=1
  		]]>
-  	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+  	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "DIARY_NM"'>
-             	<![CDATA[ AND A.DIARY_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "DIARY_NM"'>
+             	<![CDATA[ AND A.DIARY_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "DRCT_MATTER"'>
-             	<![CDATA[ AND A.DRCT_MATTER LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "DRCT_MATTER"'>
+             	<![CDATA[ AND A.DRCT_MATTER LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "PARTCLR_MATTER"'>
-             	<![CDATA[ AND A.PARTCLR_MATTER LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "PARTCLR_MATTER"'>
+             	<![CDATA[ AND A.PARTCLR_MATTER LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

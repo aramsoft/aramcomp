@@ -170,13 +170,13 @@ public class IndvdlPgeController {
 		indvdlPgeCntntsVO.setUserId(loginVO.getId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		indvdlPgeCntntsVO.getSearchVO().fillPageInfo(paginationInfo);
+		indvdlPgeCntntsVO.fillPageInfo(paginationInfo);
 
 		// 사용자가 마이페이지에 컨텐츠를 추가하기 위해 등록되어 있는 마이페이지 목록을 조회한다.
 		model.addAttribute("resultList", indvdlPgeService.addIndvdlpgeCntntsList(indvdlPgeCntntsVO));
 		int totCnt = indvdlPgeService.addIndvdlpgeCntntsListCnt(indvdlPgeCntntsVO);
 
-		indvdlPgeCntntsVO.getSearchVO().setTotalRecordCount(totCnt);
+		indvdlPgeCntntsVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -246,13 +246,13 @@ public class IndvdlPgeController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		indvdlPgeCntntsVO.getSearchVO().fillPageInfo(paginationInfo);
+		indvdlPgeCntntsVO.fillPageInfo(paginationInfo);
 
 		// 컨텐츠 목록을 조회한다.
 		model.addAttribute("resultList", indvdlPgeService.selectIndvdlpgeCntntsList(indvdlPgeCntntsVO));
 		int totCnt = indvdlPgeService.selectIndvdlpgeCntntsListCnt(indvdlPgeCntntsVO);
 
-		indvdlPgeCntntsVO.getSearchVO().setTotalRecordCount(totCnt);
+		indvdlPgeCntntsVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

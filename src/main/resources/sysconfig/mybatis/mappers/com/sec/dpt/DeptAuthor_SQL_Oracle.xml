@@ -18,14 +18,14 @@
               FROM COMTN_ORGNZT_INFO             
              WHERE 1 = 1 
         ]]>        
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
-        		<![CDATA[ AND ORGNZT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>   
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+        		<![CDATA[ AND ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>   
 		</if>
         /* 구현 Sql */
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>			
     </select>
 
@@ -36,8 +36,8 @@
               FROM COMTN_ORGNZT_INFO             
              WHERE 1 = 1 
          ]]>			
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
-        		<![CDATA[ AND ORGNZT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>   
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+        		<![CDATA[ AND ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>   
 		</if>
     </select>
 
@@ -76,7 +76,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>			
     </select>
 

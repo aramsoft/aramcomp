@@ -48,7 +48,7 @@ public class BkmkMenuManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		bkmkMenuManageVO.getSearchVO().fillPageInfo(paginationInfo);
+		bkmkMenuManageVO.fillPageInfo(paginationInfo);
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		bkmkMenuManageVO.setUserId(loginVO.getId());
@@ -56,7 +56,7 @@ public class BkmkMenuManageController {
 		model.addAttribute("resultList", bkmkMenuManageService.selectBkmkMenuManageList(bkmkMenuManageVO));
 		int totCnt = bkmkMenuManageService.selectBkmkMenuManageListCnt(bkmkMenuManageVO);
 
-		bkmkMenuManageVO.getSearchVO().setTotalRecordCount(totCnt);
+		bkmkMenuManageVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -150,12 +150,12 @@ public class BkmkMenuManageController {
 		bkmkMenuManageVO.setUserId(loginVO.getId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		bkmkMenuManageVO.getSearchVO().fillPageInfo(paginationInfo);
+		bkmkMenuManageVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", bkmkMenuManageService.selectBkmkMenuList(bkmkMenuManageVO));
 		int totCnt = bkmkMenuManageService.selectBkmkMenuListCnt(bkmkMenuManageVO);
 
-		bkmkMenuManageVO.getSearchVO().setTotalRecordCount(totCnt);
+		bkmkMenuManageVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -175,7 +175,7 @@ public class BkmkMenuManageController {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 
-		bkmkMenuManageVO.getSearchVO().setSizeAndOffset(10, 0);
+		bkmkMenuManageVO.setSizeAndOffset(10, 0);
 		bkmkMenuManageVO.setUserId(loginVO.getId());
 
 		model.addAttribute("list_menulist", bkmkMenuManageService.selectBkmkMenuManageList(bkmkMenuManageVO));

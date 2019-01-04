@@ -23,13 +23,13 @@
 				       	ON A.HPCM_SE_CODE = B.CODE
 		     WHERE 1=1
 		]]>
-   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+   	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "HPCM_SE_CODE"'>
-                <![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "HPCM_SE_CODE"'>
+                <![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "HPCM_DFN"'>
-                <![CDATA[ AND A.HPCM_DFN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "HPCM_DFN"'>
+                <![CDATA[ AND A.HPCM_DFN LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -40,7 +40,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>			
 	</select>
 
@@ -54,13 +54,13 @@
 				       	ON A.HPCM_SE_CODE = B.CODE
 			 WHERE 1=1
 		]]>
-   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+   	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "HPCM_SE_CODE"'>
-                <![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "HPCM_SE_CODE"'>
+                <![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "HPCM_DFN"'>
-                <![CDATA[ AND A.HPCM_DFN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "HPCM_DFN"'>
+                <![CDATA[ AND A.HPCM_DFN LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

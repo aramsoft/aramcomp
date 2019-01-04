@@ -53,10 +53,7 @@ public class DeptService extends EgovAbstractServiceImpl {
 	 * @param deptVO
 	 */
 	public DeptVO selectDept(DeptVO deptVO) {
-		DeptVO resultVo = deptMapper.selectDept(deptVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(deptVO.getSearchVO()); 
-		return resultVo;
+		return deptMapper.selectDept(deptVO);
 	}
 
 	/**

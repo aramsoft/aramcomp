@@ -51,12 +51,12 @@ public class SiteManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		siteManageVO.getSearchVO().fillPageInfo(paginationInfo);
+		siteManageVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", siteManageService.selectSiteList(siteManageVO));
 		int totCnt = siteManageService.selectSiteListCnt(siteManageVO);
 
-		siteManageVO.getSearchVO().setTotalRecordCount(totCnt);
+		siteManageVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

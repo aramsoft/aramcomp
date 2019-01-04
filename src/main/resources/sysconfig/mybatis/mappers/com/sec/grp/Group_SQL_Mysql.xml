@@ -14,15 +14,15 @@
               FROM COMTN_AUTHOR_GROUP_INFO
              WHERE 1=1
         ]]>                
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
-           		<![CDATA[ AND GROUP_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>   
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+           		<![CDATA[ AND GROUP_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>   
 		</if>
         <![CDATA[            
              ORDER BY GROUP_CREAT_DE DESC
         ]]>                  
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
     </select>
 
@@ -33,8 +33,8 @@
               FROM COMTN_AUTHOR_GROUP_INFO
              WHERE 1=1
         ]]>			
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
-           		<![CDATA[ AND GROUP_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>   
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+           		<![CDATA[ AND GROUP_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>   
 		</if>
     </select>
 

@@ -66,10 +66,7 @@ public class HttpMntrngService extends EgovAbstractServiceImpl {
 	 * @return httpMonVO - HTTP서비스모니터링 Vo
 	 */
 	public HttpMntrngVO selectHttpMntrngDetail(HttpMntrngVO httpMntrngVO) {
-		HttpMntrngVO resultVo = httpMntrngMapper.selectHttpMntrngDetail(httpMntrngVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(httpMntrngVO.getSearchVO()); 
-		return resultVo;
+		return httpMntrngMapper.selectHttpMntrngDetail(httpMntrngVO);
 	}
 
 	/**
@@ -164,10 +161,7 @@ public class HttpMntrngService extends EgovAbstractServiceImpl {
 	 * @return httpMonVO - HTTP서비스모니터링 Vo
 	 */
 	public HttpMntrngLogVO selectHttpMntrngDetailLog(HttpMntrngLogVO httpMntrngLogVO) {
-		HttpMntrngLogVO resultVo = httpMntrngMapper.selectHttpMntrngDetailLog(httpMntrngLogVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(httpMntrngLogVO.getSearchVO()); 
-		return resultVo;
+		return httpMntrngMapper.selectHttpMntrngDetailLog(httpMntrngLogVO);
 	}
 
 	/**

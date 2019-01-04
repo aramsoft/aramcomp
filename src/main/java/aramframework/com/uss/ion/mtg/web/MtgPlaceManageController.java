@@ -70,12 +70,12 @@ public class MtgPlaceManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		mtgPlaceManageVO.getSearchVO().fillPageInfo(paginationInfo);
+		mtgPlaceManageVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", mtgPlaceManageService.selectMtgPlaceManageList(mtgPlaceManageVO));
 		int totCnt = mtgPlaceManageService.selectMtgPlaceManageListCnt(mtgPlaceManageVO);
 	
-		mtgPlaceManageVO.getSearchVO().setTotalRecordCount(totCnt);
+		mtgPlaceManageVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 	
 		model.addAttribute(paginationInfo);

@@ -47,10 +47,7 @@ public class KnoSpecialistService extends EgovAbstractServiceImpl {
 	 * @param knoSpecialistVO
 	 */
 	public KnoSpecialistVO selectKnoSpecialist(KnoSpecialistVO knoSpecialistVO) {
-		KnoSpecialistVO resultVo = knoSpecialistMapper.selectKnoSpecialist(knoSpecialistVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(knoSpecialistVO.getSearchVO()); 
-		return resultVo;
+		return knoSpecialistMapper.selectKnoSpecialist(knoSpecialistVO);
 	}
 
 	/**

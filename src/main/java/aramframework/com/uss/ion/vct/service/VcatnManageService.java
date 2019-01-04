@@ -56,10 +56,7 @@ public class VcatnManageService extends EgovAbstractServiceImpl {
 	 * @param vcatnManageVO
 	 */
 	public VcatnManageVO selectVcatnManage(VcatnManageVO vcatnManageVO) {
-		VcatnManageVO resultVo = vcatnManageMapper.selectVcatnManage(vcatnManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(vcatnManageVO.getSearchVO()); 
-		return resultVo;
+		return vcatnManageMapper.selectVcatnManage(vcatnManageVO);
 	}
 
 	/**

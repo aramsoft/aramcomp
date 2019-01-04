@@ -35,13 +35,13 @@
 					   	ON A.EXECUT_CYCLE = C.CODE
              WHERE 1=1
         ]]>
-       	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+       	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "BATCH_OPERT_NM"'>
-                 <![CDATA[ AND B.BATCH_OPERT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BATCH_OPERT_NM"'>
+                 <![CDATA[ AND B.BATCH_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "BATCH_PROGRM"'>
-                 <![CDATA[ AND B.BATCH_PROGRM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BATCH_PROGRM"'>
+                 <![CDATA[ AND B.BATCH_PROGRM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -50,7 +50,7 @@
         ]]>             
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
     </select>
 
@@ -66,13 +66,13 @@
 					   	ON A.EXECUT_CYCLE = C.CODE
              WHERE 1=1
         ]]>
-       	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+       	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "BATCH_OPERT_NM"'>
-                 <![CDATA[ AND B.BATCH_OPERT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BATCH_OPERT_NM"'>
+                 <![CDATA[ AND B.BATCH_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "BATCH_PROGRM"'>
-                 <![CDATA[ AND B.BATCH_PROGRM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BATCH_PROGRM"'>
+                 <![CDATA[ AND B.BATCH_PROGRM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

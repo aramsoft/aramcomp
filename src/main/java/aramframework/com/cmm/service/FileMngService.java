@@ -70,10 +70,7 @@ public class FileMngService extends EgovAbstractServiceImpl {
 	 * @return			FileVO
 	 */
 	public FileVO selectFileInf(FileVO fileVO) {
-		FileVO resultVo = fileMngMapper.selectFileInf(fileVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(fileVO.getSearchVO()); 
-		return resultVo;
+		return  fileMngMapper.selectFileInf(fileVO);
 	}
 
 	/**

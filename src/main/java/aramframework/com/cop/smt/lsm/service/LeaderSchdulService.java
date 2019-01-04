@@ -44,10 +44,7 @@ public class LeaderSchdulService extends EgovAbstractServiceImpl {
 	 * @param LeaderSchdulVO
 	 */
 	public LeaderSchdulVO selectLeaderSchdul(LeaderSchdulVO leaderSchdulVO) {
-		LeaderSchdulVO resultVo = leaderSchdulMapper.selectLeaderSchdul(leaderSchdulVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(leaderSchdulVO.getSearchVO()); 
-		return resultVo;
+		return leaderSchdulMapper.selectLeaderSchdul(leaderSchdulVO);
 	}
 
 	/**
@@ -106,10 +103,7 @@ public class LeaderSchdulService extends EgovAbstractServiceImpl {
 	 * @param leaderSttusVO
 	 */
 	public LeaderSttusVO selectLeaderSttus(LeaderSttusVO leaderSttusVO) {
-		LeaderSttusVO resultVo = leaderSchdulMapper.selectLeaderSttus(leaderSttusVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(leaderSttusVO.getSearchVO()); 
-		return resultVo;
+		return leaderSchdulMapper.selectLeaderSttus(leaderSttusVO);
 	}
 
 	/**

@@ -52,10 +52,7 @@ public class RestdeManageService extends EgovAbstractServiceImpl {
 	 * @param restdeVO
 	 */
 	public RestdeVO selectRestdeDetail(RestdeVO restdeVO) {
-		RestdeVO resultVo = restdeManageMapper.selectRestdeDetail(restdeVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(restdeVO.getSearchVO()); 
-		return resultVo;
+		return restdeManageMapper.selectRestdeDetail(restdeVO);
 	}
 
 	/**

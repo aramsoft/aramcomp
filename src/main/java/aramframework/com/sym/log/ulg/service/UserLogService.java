@@ -47,10 +47,7 @@ public class UserLogService extends EgovAbstractServiceImpl {
 	 * @param userLogVO
 	 */
 	public UserLogVO selectUserLog(UserLogVO userLog) {
-		UserLogVO resultVo = userLogMapper.selectUserLog(userLog);
-		// searchVO 이전 
-		resultVo.setSearchVO(userLog.getSearchVO()); 
-		return resultVo;
+		return userLogMapper.selectUserLog(userLog);
 	}
 
 	/**

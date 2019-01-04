@@ -53,10 +53,7 @@ public class CpyrhtPrtcPolicyService extends EgovAbstractServiceImpl {
 	 * @param cpyrhtPrtcPolicyVO
 	 */
 	public CpyrhtPrtcPolicyVO selectCpyrhtPrtcPolicyDetail(CpyrhtPrtcPolicyVO cpyrhtPrtcPolicyVO) {
-		CpyrhtPrtcPolicyVO resultVo = cpyrhtPrtcPolicyMapper.selectCpyrhtPrtcPolicyDetail(cpyrhtPrtcPolicyVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(cpyrhtPrtcPolicyVO.getSearchVO()); 
-		return resultVo;
+		return cpyrhtPrtcPolicyMapper.selectCpyrhtPrtcPolicyDetail(cpyrhtPrtcPolicyVO);
 	}
 
 	/**

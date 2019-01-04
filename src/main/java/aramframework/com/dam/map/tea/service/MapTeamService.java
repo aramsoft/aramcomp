@@ -47,10 +47,7 @@ public class MapTeamService extends EgovAbstractServiceImpl {
 	 * @param mapTeamVO
 	 */
 	public MapTeamVO selectMapTeamDetail(MapTeamVO mapTeamVO) {
-		MapTeamVO resultVo = mapTeamMapper.selectMapTeamDetail(mapTeamVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(mapTeamVO.getSearchVO()); 
-		return resultVo;
+		return mapTeamMapper.selectMapTeamDetail(mapTeamVO);
 	}
 
 	/**

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -52,12 +53,12 @@ public class LoginPolicyController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		loginPolicyVO.getSearchVO().fillPageInfo(paginationInfo);
+		loginPolicyVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", loginPolicyService.selectLoginPolicyList(loginPolicyVO));
 		int totCnt = loginPolicyService.selectLoginPolicyListCnt(loginPolicyVO);
 
-		loginPolicyVO.getSearchVO().setTotalRecordCount(totCnt);
+		loginPolicyVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 	
 		model.addAttribute(paginationInfo);
@@ -73,6 +74,7 @@ public class LoginPolicyController {
 	@RequestMapping("/uat/uap/registLoginPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String registLoginPolicy(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute LoginPolicyVO loginPolicyVO)	{
 
 		return WebUtil.adjustViewName("/uat/uap/LoginPolicyRegist");
@@ -86,6 +88,7 @@ public class LoginPolicyController {
 	@RequestMapping("/uat/uap/insertLoginPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String insertLoginPolicy(
+			@ModelAttribute SearchVO searchVO, 
 			@ModelAttribute LoginPolicyVO loginPolicyVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -112,7 +115,8 @@ public class LoginPolicyController {
 	@RequestMapping("/uat/uap/editLoginPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String editLoginPolicy(
-			LoginPolicyVO loginPolicyVO,
+			@ModelAttribute SearchVO searchVO, 
+			@ModelAttribute LoginPolicyVO loginPolicyVO,
 			ModelMap model) {
 
 		model.addAttribute(loginPolicyService.selectLoginPolicy(loginPolicyVO));
@@ -128,6 +132,7 @@ public class LoginPolicyController {
 	@RequestMapping("/uat/uap/updateLoginPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String updateLoginPolicy(
+			@ModelAttribute SearchVO searchVO, 
 			@ModelAttribute LoginPolicyVO loginPolicyVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -158,6 +163,7 @@ public class LoginPolicyController {
 	@RequestMapping("/uat/uap/deleteLoginPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteLoginPolicy(
+			@ModelAttribute SearchVO searchVO, 
 			@ModelAttribute LoginPolicyVO loginPolicyVO, 
 			ModelMap model) {
 

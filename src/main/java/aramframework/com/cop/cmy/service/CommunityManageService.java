@@ -101,10 +101,7 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 	 * @param communityVO
 	 */
 	public CommunityVO selectCommunityInf(CommunityVO communityVO) {
-		CommunityVO resultVo = communityManageMapper.selectCommunityInf(communityVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(communityVO.getSearchVO()); 
-		return resultVo;
+		return communityManageMapper.selectCommunityInf(communityVO);
 	}
 	
 	/**
@@ -414,10 +411,7 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 	 * @param communityUserVO
 	 */
 	public CommunityUserVO selectCommunityUserInf(CommunityUserVO communityUserVO) {
-		CommunityUserVO resultVo = communityManageMapper.selectCommunityUserInf(communityUserVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(communityUserVO.getSearchVO()); 
-		return resultVo;
+		return communityManageMapper.selectCommunityUserInf(communityUserVO);
 	}
 
 	/**

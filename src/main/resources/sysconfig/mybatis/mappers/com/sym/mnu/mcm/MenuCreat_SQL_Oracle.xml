@@ -21,13 +21,13 @@
 			         WHERE B.AUTHOR_CODE = A.AUTHOR_CODE 
 			       ) 						AS "chkYeoBu"
 			  FROM COMTN_AUTHOR_INFO A
-			 WHERE A.AUTHOR_CODE like '%'||#{searchVO.searchKeyword}||'%'
+			 WHERE A.AUTHOR_CODE like '%'||#{searchKeyword}||'%'
         ]]>
         /* 구현 Sql */
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>			
 	</select> 
 
@@ -35,7 +35,7 @@
 		<![CDATA[
 			SELECT COUNT(AUTHOR_CODE) AS "totcnt"
 			  FROM COMTN_AUTHOR_INFO A
-			 WHERE A.AUTHOR_CODE like '%'||#{searchVO.searchKeyword}||'%'
+			 WHERE A.AUTHOR_CODE like '%'||#{searchKeyword}||'%'
 		]]>
 	</select>
 
@@ -98,7 +98,7 @@
 			  FROM COMTN_EMPLYR_SCRTY_ESTBS
 			 WHERE SCRTY_DTRMN_TRGET_ID = (SELECT ESNTL_ID 
 			 								 FROM COMVN_USER_MASTER
-											WHERE USER_ID = #{searchVO.searchKeyword} )
+											WHERE USER_ID = #{searchKeyword} )
 		]]>
 	</select>
 
@@ -108,7 +108,7 @@
 			  FROM COMTN_EMPLYR_SCRTY_ESTBS
 			 WHERE SCRTY_DTRMN_TRGET_ID = ( SELECT ESNTL_ID 
 				     						  FROM COMVN_USER_MASTER
-				    					 	 WHERE USER_ID = #{searchVO.searchKeyword} )
+				    					 	 WHERE USER_ID = #{searchKeyword} )
 		]]>
 	</select>
 

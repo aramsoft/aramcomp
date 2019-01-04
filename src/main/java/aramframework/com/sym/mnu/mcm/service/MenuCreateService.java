@@ -87,10 +87,7 @@ public class MenuCreateService extends EgovAbstractServiceImpl {
 	 * @param menuCreateVO
 	 */
 	public MenuCreateVO selectAuthorByUsr(MenuCreateVO menuCreateVO) {
-		MenuCreateVO resultVo = menuCreateMapper.selectAuthorByUsr(menuCreateVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(menuCreateVO.getSearchVO()); 
-		return resultVo;
+		return menuCreateMapper.selectAuthorByUsr(menuCreateVO);
 	}
 
 	/**

@@ -46,12 +46,12 @@ public class DeptController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		deptVO.getSearchVO().fillPageInfo(paginationInfo);
+		deptVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", deptService.selectDeptList(deptVO));
 		int totCnt = deptService.selectDeptListCnt(deptVO);
 
-		deptVO.getSearchVO().setTotalRecordCount(totCnt);
+		deptVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -179,12 +179,12 @@ public class DeptController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		deptVO.getSearchVO().fillPageInfo(paginationInfo);
+		deptVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", deptService.selectDeptList(deptVO));
 
 		int totCnt = deptService.selectDeptListCnt(deptVO);
-		deptVO.getSearchVO().setTotalRecordCount(totCnt);
+		deptVO.setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

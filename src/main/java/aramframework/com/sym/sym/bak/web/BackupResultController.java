@@ -43,12 +43,12 @@ public class BackupResultController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		backupResultVO.getSearchVO().fillPageInfo(paginationInfo);
+		backupResultVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", backupResultService.selectBackupResultList(backupResultVO));
 		int totCnt = backupResultService.selectBackupResultListCnt(backupResultVO);
 
-		backupResultVO.getSearchVO().setTotalRecordCount(totCnt);
+		backupResultVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

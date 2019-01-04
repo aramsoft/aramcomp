@@ -16,13 +16,13 @@
 						ON a.ORGNZT_ID = b.ORGNZT_ID
 			 WHERE 1=1
 		]]>
-    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "ORGNZT_NM"'>
-             	<![CDATA[ AND IFNULL(b.ORGNZT_NM, ' ')  LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "ORGNZT_NM"'>
+             	<![CDATA[ AND IFNULL(b.ORGNZT_NM, ' ')  LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "USER_NM"'>
-             	<![CDATA[ AND IFNULL(a.USER_NM, ' ') LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "USER_NM"'>
+             	<![CDATA[ AND IFNULL(a.USER_NM, ' ') LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -31,7 +31,7 @@
 		]]>		
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
 	</select>		
 	
@@ -43,13 +43,13 @@
 						ON a.ORGNZT_ID = b.ORGNZT_ID
 			 WHERE 1=1
 		]]>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "ORGNZT_NM"'>
-             	<![CDATA[ AND IFNULL(b.ORGNZT_NM, ' ')  LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "ORGNZT_NM"'>
+             	<![CDATA[ AND IFNULL(b.ORGNZT_NM, ' ')  LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "USER_NM"'>
-             	<![CDATA[ AND IFNULL(a.USER_NM, ' ') LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "USER_NM"'>
+             	<![CDATA[ AND IFNULL(a.USER_NM, ' ') LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -135,15 +135,15 @@
 			  FROM COMTN_SCHDUL_INFO A
 			 WHERE 1=1 
 		]]>
-   	 	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
-		   	   	<![CDATA[ AND A.SCHDUL_NM LIKE '%' || #{searchVO.searchKeyword} || '%' ]]>
+   	 	<if test='searchKeyword != null and searchKeyword != ""'>
+		   	   	<![CDATA[ AND A.SCHDUL_NM LIKE '%' || #{searchKeyword} || '%' ]]>
 		</if>
 		<![CDATA[
 			 ORDER BY A.FRST_REGIST_PNTTM DESC
 		]]>
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
 	</select>
 	
@@ -154,8 +154,8 @@
 			  FROM COMTN_SCHDUL_INFO A
 			 WHERE 1=1 
          ]]>			
-   	 	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
-		   	   	<![CDATA[ AND A.SCHDUL_NM LIKE '%' || #{searchVO.searchKeyword} || '%' ]]>
+   	 	<if test='searchKeyword != null and searchKeyword != ""'>
+		   	   	<![CDATA[ AND A.SCHDUL_NM LIKE '%' || #{searchKeyword} || '%' ]]>
 		</if>
 	</select>
 	

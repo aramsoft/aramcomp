@@ -54,9 +54,9 @@ public class NtwrkSvcMntrngScheduling {
 		NtwrkSvcMntrngVO ntwrkSvcMntrngVO = new NtwrkSvcMntrngVO();
 
 		// 모니터링 대상 검색 조건 초기화
-		ntwrkSvcMntrngVO.getSearchVO().setPageIndex(1);
-		ntwrkSvcMntrngVO.getSearchVO().setFirstIndex(0);
-		ntwrkSvcMntrngVO.getSearchVO().setRecordPerPage(RECORD_COUNT_PER_PAGE);
+		ntwrkSvcMntrngVO.setPageIndex(1);
+		ntwrkSvcMntrngVO.setFirstIndex(0);
+		ntwrkSvcMntrngVO.setRecordPerPage(RECORD_COUNT_PER_PAGE);
 		targetList = ntwrkSvcMntrngService.selectNtwrkSvcMntrngList(ntwrkSvcMntrngVO);
 		if (LOG.isDebugEnabled()) {
 			LOG.debug("조회조건 " + ntwrkSvcMntrngVO);

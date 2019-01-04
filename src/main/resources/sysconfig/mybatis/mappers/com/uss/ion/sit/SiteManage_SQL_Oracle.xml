@@ -29,13 +29,13 @@
 		   		   		ON A.LAST_UPDUSR_ID = C.ESNTL_ID 									   
 		     WHERE 1=1 								
 		]]>					
- 	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+ 	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "SITE_NM"'>
-                <![CDATA[ AND A.SITE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>		
+            <when test='searchCondition == "SITE_NM"'>
+                <![CDATA[ AND A.SITE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>		
             </when>
-            <when test='searchVO.searchCondition == "SITE_URL"'>
-                <![CDATA[ AND A.SITE_URL LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>		
+            <when test='searchCondition == "SITE_URL"'>
+                <![CDATA[ AND A.SITE_URL LIKE '%'|| #{searchKeyword} ||'%' ]]>		
             </when>
         </choose>
 		</if>
@@ -46,7 +46,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>			
 	</select>
 	
@@ -62,13 +62,13 @@
 		   		   		ON A.LAST_UPDUSR_ID = C.ESNTL_ID 									   
 		     WHERE 1=1 								
 		]]>					
- 	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+ 	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "SITE_NM"'>
-                <![CDATA[ AND A.SITE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>		
+            <when test='searchCondition == "SITE_NM"'>
+                <![CDATA[ AND A.SITE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>		
             </when>
-            <when test='searchVO.searchCondition == "SITE_URL"'>
-                <![CDATA[ AND A.SITE_URL LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>		
+            <when test='searchCondition == "SITE_URL"'>
+                <![CDATA[ AND A.SITE_URL LIKE '%'|| #{searchKeyword} ||'%' ]]>		
             </when>
         </choose>
 		</if>

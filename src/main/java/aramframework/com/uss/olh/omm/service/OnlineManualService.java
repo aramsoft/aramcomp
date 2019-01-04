@@ -52,10 +52,7 @@ public class OnlineManualService extends EgovAbstractServiceImpl {
 	 * @param onlineManualVO
 	 */
 	public OnlineManualVO selectOnlineManualDetail(OnlineManualVO onlineManualVO) {
-		OnlineManualVO resultVo = onlineManualMapper.selectOnlineManualDetail(onlineManualVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(onlineManualVO.getSearchVO()); 
-		return resultVo;
+		return onlineManualMapper.selectOnlineManualDetail(onlineManualVO);
 	}
 
 	/**

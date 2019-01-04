@@ -17,19 +17,19 @@
 			  FROM COMTN_QUSTNR_TMPLAT A
 		     WHERE 1=1
 	 	]]>
-  	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+  	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "QUSTNR_TMPLAT_DC"'>
-               	<![CDATA[ AND A.QUSTNR_TMPLAT_DC LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "QUSTNR_TMPLAT_DC"'>
+               	<![CDATA[ AND A.QUSTNR_TMPLAT_DC LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "QUSTNR_TMPLAT_TY"'>
-               	<![CDATA[ AND A.QUSTNR_TMPLAT_TY LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "QUSTNR_TMPLAT_TY"'>
+               	<![CDATA[ AND A.QUSTNR_TMPLAT_TY LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
 	    </choose>
 		</if>
        	/* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
 	</select>
 
@@ -39,13 +39,13 @@
 			  FROM COMTN_QUSTNR_TMPLAT
 			 WHERE 1=1
         ]]>			
-  	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+  	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "QUSTNR_TMPLAT_DC"'>
-               	<![CDATA[ AND A.QUSTNR_TMPLAT_DC LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "QUSTNR_TMPLAT_DC"'>
+               	<![CDATA[ AND A.QUSTNR_TMPLAT_DC LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "QUSTNR_TMPLAT_TY"'>
-               	<![CDATA[ AND A.QUSTNR_TMPLAT_TY LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "QUSTNR_TMPLAT_TY"'>
+               	<![CDATA[ AND A.QUSTNR_TMPLAT_TY LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
 	    </choose>
 		</if>

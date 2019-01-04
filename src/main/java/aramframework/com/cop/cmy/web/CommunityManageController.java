@@ -71,12 +71,12 @@ public class CommunityManageController {
 			ModelMap model) {
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
-		communityVO.getSearchVO().fillPageInfo(paginationInfo);
+		communityVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", cmmntyService.selectCommunityList(communityVO));
 		int totCnt = cmmntyService.selectCommunityListCnt(communityVO);
 
-		communityVO.getSearchVO().setTotalRecordCount(totCnt);
+		communityVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -112,12 +112,12 @@ public class CommunityManageController {
 			ModelMap model) {
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
-		communityVO.getSearchVO().fillPageInfo(paginationInfo);
+		communityVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", cmmntyService.selectCommunityList(communityVO));
 		int totCnt = cmmntyService.selectCommunityListCnt(communityVO);
 
-		communityVO.getSearchVO().setTotalRecordCount(totCnt);
+		communityVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

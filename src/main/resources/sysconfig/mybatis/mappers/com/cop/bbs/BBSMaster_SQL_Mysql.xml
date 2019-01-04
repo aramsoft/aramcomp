@@ -33,13 +33,13 @@
 						ON  d.TRGET_ID = e.CMMNTY_ID
 			 WHERE 1=1	
 		]]>
-   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+   	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "BBS_NM"'>
-             	<![CDATA[ AND a.BBS_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BBS_NM"'>
+             	<![CDATA[ AND a.BBS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "BBS_TY_CODE"'>
-             	<![CDATA[ AND b.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BBS_TY_CODE"'>
+             	<![CDATA[ AND b.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -48,7 +48,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
 	</select>	
 	
@@ -71,13 +71,13 @@
 						ON  d.TRGET_ID = e.CMMNTY_ID
 			 WHERE 1=1	
 		]]>
-   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+   	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "BBS_NM"'>
-             	<![CDATA[ AND a.BBS_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BBS_NM"'>
+             	<![CDATA[ AND a.BBS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "BBS_TY_CODE"'>
-             	<![CDATA[ AND b.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BBS_TY_CODE"'>
+             	<![CDATA[ AND b.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -235,13 +235,13 @@
 				       	ON b.BBS_ATTRB_CODE = d.CODE
 			 WHERE a.TRGET_ID = #{trgetId}
 		]]>
- 	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+ 	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "BBS_NM"'>
-             	<![CDATA[ AND b.BBS_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BBS_NM"'>
+             	<![CDATA[ AND b.BBS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "BBS_TY_CODE"'>
-             	<![CDATA[ AND c.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BBS_TY_CODE"'>
+             	<![CDATA[ AND c.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -250,7 +250,7 @@
 		]]>			
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
 	</select>
 
@@ -271,13 +271,13 @@
 				       	ON b.BBS_ATTRB_CODE = d.CODE
 			 WHERE a.TRGET_ID = #{trgetId}
 		]]>
- 	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+ 	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "BBS_NM"'>
-             	<![CDATA[ AND b.BBS_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BBS_NM"'>
+             	<![CDATA[ AND b.BBS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "BBS_TY_CODE"'>
-             	<![CDATA[ AND c.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BBS_TY_CODE"'>
+             	<![CDATA[ AND c.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -308,13 +308,13 @@
 			 WHERE a.USE_AT = 'Y'
 			   AND a.BBS_ID NOT IN (SELECT BBS_ID FROM COMTN_BBS_USE WHERE USE_AT = 'Y')
 		]]>
-   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+   	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "BBS_NM"'>
-             	<![CDATA[ AND a.BBS_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BBS_NM"'>
+             	<![CDATA[ AND a.BBS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "BBS_TY_CODE"'>
-             	<![CDATA[ AND b.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BBS_TY_CODE"'>
+             	<![CDATA[ AND b.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -323,7 +323,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
 	</select>	
 	
@@ -343,13 +343,13 @@
 			 WHERE a.USE_AT = 'Y'
 			   AND a.BBS_ID NOT IN (SELECT BBS_ID FROM COMTN_BBS_USE WHERE USE_AT = 'Y')
 		]]>
-    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "BBS_NM"'>
-             	<![CDATA[ AND a.BBS_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BBS_NM"'>
+             	<![CDATA[ AND a.BBS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "BBS_TY_CODE"'>
-             	<![CDATA[ AND b.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BBS_TY_CODE"'>
+             	<![CDATA[ AND b.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

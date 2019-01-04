@@ -149,9 +149,9 @@ public class BackupScheduler {
 		List<BackupOpertVO> targetList = null;
 		BackupOpertVO backupOpertVO = new BackupOpertVO();
 		// 모니터링 대상 검색 조건 초기화
-		backupOpertVO.getSearchVO().setPageIndex(1);
-		backupOpertVO.getSearchVO().setFirstIndex(0);
-		backupOpertVO.getSearchVO().setRecordPerPage(RECORD_COUNT_PER_PAGE);
+		backupOpertVO.setPageIndex(1);
+		backupOpertVO.setFirstIndex(0);
+		backupOpertVO.setRecordPerPage(RECORD_COUNT_PER_PAGE);
 		targetList = backupOpertService.selectBackupOpertList(backupOpertVO);
 		if (LOG.isDebugEnabled()) {
 			LOG.debug("Result 건수 : " + targetList.size());

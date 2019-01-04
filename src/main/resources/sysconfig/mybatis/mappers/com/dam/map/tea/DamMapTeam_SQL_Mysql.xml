@@ -13,19 +13,19 @@
 			  FROM COMTN_DAM_MAP_TEAM
 			 WHERE 1 = 1
 		]]>
-   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+   	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "ORGNZT_NM"'>
-                 <![CDATA[ AND ORGNZT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "ORGNZT_NM"'>
+                 <![CDATA[ AND ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "ORGNZT_ID"'>
-                 <![CDATA[ AND ORGNZT_ID LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "ORGNZT_ID"'>
+                 <![CDATA[ AND ORGNZT_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
 	</select>
 
@@ -35,13 +35,13 @@
 			  FROM COMTN_DAM_MAP_TEAM
 			 WHERE 1 = 1
 		]]>
-   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+   	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "ORGNZT_NM"'>
-                 <![CDATA[ AND ORGNZT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "ORGNZT_NM"'>
+                 <![CDATA[ AND ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "ORGNZT_ID"'>
-                 <![CDATA[ AND ORGNZT_ID LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "ORGNZT_ID"'>
+                 <![CDATA[ AND ORGNZT_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

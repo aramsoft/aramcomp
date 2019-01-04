@@ -53,10 +53,7 @@ public class TrsmrcvLogService extends EgovAbstractServiceImpl {
 	 * @param trsmrcvLogVO
 	 */
 	public TrsmrcvLogVO selectTrsmrcvLog(TrsmrcvLogVO trsmrcvLogVO) {
-		TrsmrcvLogVO resultVo = trsmrcvLogMapper.selectTrsmrcvLog(trsmrcvLogVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(trsmrcvLogVO.getSearchVO()); 
-		return resultVo;
+		return trsmrcvLogMapper.selectTrsmrcvLog(trsmrcvLogVO);
 	}
 
 	/**

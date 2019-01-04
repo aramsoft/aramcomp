@@ -59,8 +59,6 @@ public class InfrmlSanctnService extends EgovAbstractServiceImpl {
 				resultVo.setSanctnDt(resultVo.getSanctnDt().substring(0, 19));
 			}
 		}
-		// searchVO 이전 
-		resultVo.setSearchVO(infrmlSanctnVO.getSearchVO()); 
 		return resultVo;
 	}
 

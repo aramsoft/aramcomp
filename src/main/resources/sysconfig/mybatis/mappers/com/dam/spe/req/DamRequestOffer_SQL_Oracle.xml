@@ -52,13 +52,13 @@
 			  FROM COMTN_DAM_CALRES A
 			 WHERE 1=1
 		]]>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "KNWLDG_NM"'>
-                 <![CDATA[ AND A.KNWLDG_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "KNWLDG_NM"'>
+                 <![CDATA[ AND A.KNWLDG_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "KNWLDG_CN"'>
-                 <![CDATA[ AND A.KNWLDG_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "KNWLDG_CN"'>
+                 <![CDATA[ AND A.KNWLDG_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -69,7 +69,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>			
 	</select>
 	
@@ -80,13 +80,13 @@
 			  FROM COMTN_DAM_CALRES A
 			 WHERE 1=1
         ]]>			
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "KNWLDG_NM"'>
-                 <![CDATA[ AND A.KNWLDG_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "KNWLDG_NM"'>
+                 <![CDATA[ AND A.KNWLDG_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "KNWLDG_CN"'>
-                 <![CDATA[ AND A.KNWLDG_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "KNWLDG_CN"'>
+                 <![CDATA[ AND A.KNWLDG_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

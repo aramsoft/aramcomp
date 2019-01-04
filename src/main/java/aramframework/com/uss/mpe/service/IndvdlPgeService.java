@@ -93,10 +93,7 @@ public class IndvdlPgeService extends EgovAbstractServiceImpl {
 	 * @param indvdlPgeConfVO
 	 */
 	public IndvdlPgeConfVO selectIndvdlpgeConfDetail(IndvdlPgeConfVO indvdlPgeConfVO) {
-		IndvdlPgeConfVO resultVo = indvdlPgeMapper.selectIndvdlpgeConfDetail(indvdlPgeConfVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(indvdlPgeConfVO.getSearchVO()); 
-		return resultVo;
+		return indvdlPgeMapper.selectIndvdlpgeConfDetail(indvdlPgeConfVO);
 	}
 
 	/**
@@ -151,10 +148,7 @@ public class IndvdlPgeService extends EgovAbstractServiceImpl {
 	 * @param indvdlPgeCntntsVO
 	 */
 	public IndvdlPgeCntntsVO selectIndvdlpgeCntnts(IndvdlPgeCntntsVO indvdlPgeCntntsVO) {
-		IndvdlPgeCntntsVO resultVo = indvdlPgeMapper.selectIndvdlpgeCntnts(indvdlPgeCntntsVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(indvdlPgeCntntsVO.getSearchVO()); 
-		return resultVo;
+		return indvdlPgeMapper.selectIndvdlpgeCntnts(indvdlPgeCntntsVO);
 	}
 
 	/**

@@ -57,10 +57,7 @@ public class KnoPersonalService extends EgovAbstractServiceImpl {
 	 * @param knoPersonalVO
 	 */
 	public KnoPersonalVO selectKnoPersonal(KnoPersonalVO knoPersonalVO) {
-		KnoPersonalVO resultVo = knoPersonalMapper.selectKnoPersonal(knoPersonalVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(knoPersonalVO.getSearchVO());
-		return resultVo;
+		return knoPersonalMapper.selectKnoPersonal(knoPersonalVO);
 	}
 
 	/**

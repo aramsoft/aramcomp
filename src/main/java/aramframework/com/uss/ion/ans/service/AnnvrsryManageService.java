@@ -65,10 +65,7 @@ public class AnnvrsryManageService extends EgovAbstractServiceImpl {
 	 * @param annvrsryManageVO
 	 */
 	public AnnvrsryManageVO selectAnnvrsryManage(AnnvrsryManageVO annvrsryManageVO) {
-		AnnvrsryManageVO resultVo = annvrsryManageMapper.selectAnnvrsryManage(annvrsryManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(annvrsryManageVO.getSearchVO()); 
-		return resultVo;
+		return annvrsryManageMapper.selectAnnvrsryManage(annvrsryManageVO);
 	}
 
 	/**

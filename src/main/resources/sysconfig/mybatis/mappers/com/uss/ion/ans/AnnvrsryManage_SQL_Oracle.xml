@@ -21,7 +21,7 @@
                  , REPTIT_AT            as "reptitSe"          
               FROM COMTN_ANNVRSRY_MANAGE A 
              WHERE REPTIT_AT IS NULL
-               AND ANNVRSRY like  '%'||#{searchVO.searchKeyword}||'%'
+               AND ANNVRSRY like  '%'||#{searchKeyword}||'%'
                   AND USER_ID = #{usid}
 	         union all
             SELECT ANNVRSRY_ID          as "annId"             
@@ -40,7 +40,7 @@
                  ) ALL_LIST
              ORDER BY "annvrsryDe" DESC
                  )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>
     </select>
     <select id="selectAnnvrsryManageListCnt"  resultType="int">
@@ -48,7 +48,7 @@
            	SELECT COUNT(*) totcnt
            	  FROM (SELECT *
 	            	  FROM COMTN_ANNVRSRY_MANAGE
-	            	 WHERE ANNVRSRY like  '%'||#{searchVO.searchKeyword}||'%'
+	            	 WHERE ANNVRSRY like  '%'||#{searchKeyword}||'%'
 					   AND USER_ID = #{usid}
 		             union all
 	            	SELECT *

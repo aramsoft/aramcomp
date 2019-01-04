@@ -33,13 +33,13 @@
 					   	ON A.EXECUT_CYCLE = C.CODE
              WHERE A.USE_AT = 'Y'
         ]]>
-       	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+       	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "BACKUP_OPERT_NM"'>
-                 <![CDATA[ AND A.BACKUP_OPERT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BACKUP_OPERT_NM"'>
+                 <![CDATA[ AND A.BACKUP_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "BACKUP_ORGINL_DRCTRY"'>
-                 <![CDATA[ AND A.BACKUP_ORGINL_DRCTRY LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BACKUP_ORGINL_DRCTRY"'>
+                 <![CDATA[ AND A.BACKUP_ORGINL_DRCTRY LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -48,7 +48,7 @@
         ]]>             
          /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
     </select>
 
@@ -66,13 +66,13 @@
 					   	ON A.EXECUT_CYCLE = C.CODE
              WHERE A.USE_AT = 'Y'
         ]]>
-       	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+       	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "BACKUP_OPERT_NM"'>
-                 <![CDATA[ AND A.BACKUP_OPERT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BACKUP_OPERT_NM"'>
+                 <![CDATA[ AND A.BACKUP_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "BACKUP_ORGINL_DRCTRY"'>
-                 <![CDATA[ AND A.BACKUP_ORGINL_DRCTRY LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BACKUP_ORGINL_DRCTRY"'>
+                 <![CDATA[ AND A.BACKUP_ORGINL_DRCTRY LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

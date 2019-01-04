@@ -72,12 +72,12 @@ public class KnoPersonalController {
 		knoPersonalVO.setFrstRegisterId(loginVO.getUniqId());
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
-		knoPersonalVO.getSearchVO().fillPageInfo(paginationInfo);
+		knoPersonalVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", knoPersonalService.selectKnoPersonalList(knoPersonalVO));
 		int totCnt = knoPersonalService.selectKnoPersonalListCnt(knoPersonalVO);
 
-		knoPersonalVO.getSearchVO().setTotalRecordCount(totCnt);
+		knoPersonalVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -157,18 +157,18 @@ public class KnoPersonalController {
 	private void populateMapTeam(KnoPersonalVO knoPersonalVO, ModelMap model) {
 		
 		MapTeamVO mapTeamVO = new MapTeamVO();
-		mapTeamVO.getSearchVO().setSizeAndOffset(999999, 0);
+		mapTeamVO.setSizeAndOffset(999999, 0);
 		List<EgovMap> mapTeamList = mapTeamService.selectMapTeamList(mapTeamVO);
 		model.addAttribute("mapTeamList", mapTeamList);
 
 		MapMaterialVO mapMaterialVO = new MapMaterialVO();
-		mapMaterialVO.getSearchVO().setSizeAndOffset(999999, 0);
-		mapMaterialVO.getSearchVO().setSearchCondition("ORGNZT_ID");
+		mapMaterialVO.setSizeAndOffset(999999, 0);
+		mapMaterialVO.setSearchCondition("ORGNZT_ID");
 		if (knoPersonalVO.getOrgnztId() == null || knoPersonalVO.getOrgnztId().equals("")) {
 			EgovMap vo = mapTeamList.get(0);
-			mapMaterialVO.getSearchVO().setSearchKeyword(vo.get("orgnztId").toString());
+			mapMaterialVO.setSearchKeyword(vo.get("orgnztId").toString());
 		} else {
-			mapMaterialVO.getSearchVO().setSearchKeyword(knoPersonalVO.getOrgnztId());
+			mapMaterialVO.setSearchKeyword(knoPersonalVO.getOrgnztId());
 		}
 		model.addAttribute("mapMaterialList", mapMaterialService.selectMapMaterialList(mapMaterialVO));
 	}

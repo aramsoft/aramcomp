@@ -77,12 +77,12 @@ public class MeetingManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		meetingManageVO.getSearchVO().fillPageInfo(paginationInfo);
+		meetingManageVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", meetingManageService.selectMeetingManageList(meetingManageVO));
 		int totCnt = (Integer) meetingManageService.selectMeetingManageListCnt(meetingManageVO);
 
-		meetingManageVO.getSearchVO().setTotalRecordCount(totCnt);
+		meetingManageVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

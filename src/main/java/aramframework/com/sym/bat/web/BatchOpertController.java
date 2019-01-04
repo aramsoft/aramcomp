@@ -52,12 +52,12 @@ public class BatchOpertController {
 			ModelMap model) {
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
-		batchOpertVO.getSearchVO().fillPageInfo(paginationInfo);
+		batchOpertVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", batchOpertService.selectBatchOpertList(batchOpertVO));
 		int totCnt = batchOpertService.selectBatchOpertListCnt(batchOpertVO);
 
-		batchOpertVO.getSearchVO().setTotalRecordCount(totCnt);
+		batchOpertVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -78,12 +78,12 @@ public class BatchOpertController {
 			ModelMap model) {
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
-		batchOpertVO.getSearchVO().fillPageInfo(paginationInfo);
+		batchOpertVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", batchOpertService.selectBatchOpertList(batchOpertVO));
 		int totCnt = batchOpertService.selectBatchOpertListCnt(batchOpertVO);
 
-		batchOpertVO.getSearchVO().setTotalRecordCount(totCnt);
+		batchOpertVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

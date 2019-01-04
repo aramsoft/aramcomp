@@ -58,10 +58,7 @@ public class NtwrkSvcMntrngService extends EgovAbstractServiceImpl {
 	 * @return					NtwrkSvcMntrngVO
 	 */
 	public NtwrkSvcMntrngVO selectNtwrkSvcMntrng(NtwrkSvcMntrngVO ntwrkSvcMntrngVO) {
-		NtwrkSvcMntrngVO resultVo = ntwrkSvcMntrngMapper.selectNtwrkSvcMntrng(ntwrkSvcMntrngVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(ntwrkSvcMntrngVO.getSearchVO()); 
-		return resultVo;
+		return ntwrkSvcMntrngMapper.selectNtwrkSvcMntrng(ntwrkSvcMntrngVO);
 	}
 
 	/**
@@ -153,10 +150,7 @@ public class NtwrkSvcMntrngService extends EgovAbstractServiceImpl {
 	 * @return						NtwrkSvcMntrngLogVO
 	 */
 	public NtwrkSvcMntrngLogVO selectNtwrkSvcMntrngLog(NtwrkSvcMntrngLogVO ntwrkSvcMntrngLogVO) {
-		NtwrkSvcMntrngLogVO resultVo = ntwrkSvcMntrngMapper.selectNtwrkSvcMntrngLog(ntwrkSvcMntrngLogVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(ntwrkSvcMntrngLogVO.getSearchVO()); 
-		return resultVo;
+		return ntwrkSvcMntrngMapper.selectNtwrkSvcMntrngLog(ntwrkSvcMntrngLogVO);
 	}
 
 	/**

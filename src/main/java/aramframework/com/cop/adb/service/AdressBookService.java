@@ -61,8 +61,6 @@ public class AdressBookService extends EgovAbstractServiceImpl {
 	public AdressBookVO selectAdressBook(AdressBookVO adressBookVO) {
 		AdressBookVO resultVo = adressBookMapper.selectAdressBook(adressBookVO);
 		resultVo.setAdbkMan(adressBookMapper.selectUserList(adressBookVO));
-		// searchVO 이전 
-		resultVo.setSearchVO(adressBookVO.getSearchVO()); 
 		return resultVo;
 	}
 

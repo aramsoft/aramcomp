@@ -54,10 +54,7 @@ public class MberManageService extends EgovAbstractServiceImpl {
 	 * @param mberManageVO
 	 */
 	public MberManageVO selectMber(MberManageVO mberManageVO) {
-		MberManageVO resultVo = mberManageMapper.selectMber(mberManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(mberManageVO.getSearchVO()); 
-		return resultVo;
+		return mberManageMapper.selectMber(mberManageVO);
 	}
 
 	/**

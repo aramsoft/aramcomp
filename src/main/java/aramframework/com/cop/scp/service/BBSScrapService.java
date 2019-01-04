@@ -65,10 +65,7 @@ public class BBSScrapService extends EgovAbstractServiceImpl {
 	 * @param scrapVO
 	 */
 	public ScrapVO selectScrap(ScrapVO scrapVO) {
-		ScrapVO resultVo = bbsScrapMapper.selectScrap(scrapVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(scrapVO.getSearchVO()); 
-		return resultVo;
+		return bbsScrapMapper.selectScrap(scrapVO);
 	}
 
 	/**

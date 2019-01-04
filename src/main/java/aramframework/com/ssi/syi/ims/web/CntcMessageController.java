@@ -49,12 +49,12 @@ public class CntcMessageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		cntcMessageVO.getSearchVO().fillPageInfo(paginationInfo);
+		cntcMessageVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", cntcMessageService.selectCntcMessageList(cntcMessageVO));
 
 		int totCnt = cntcMessageService.selectCntcMessageListCnt(cntcMessageVO);
-		cntcMessageVO.getSearchVO().setTotalRecordCount(totCnt);
+		cntcMessageVO.setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -79,9 +79,9 @@ public class CntcMessageController {
 		cntcMessageService.selectCntcMessageDetail(cntcMessageVO);
 
 		/* 연계메시지항목 리스트 */
-		cntcMessageItemVO.getSearchVO().setRecordPerPage(9999999);
-		cntcMessageItemVO.getSearchVO().setFirstIndex(0);
-		cntcMessageItemVO.getSearchVO().setSearchCondition("CodeList");
+		cntcMessageItemVO.setRecordPerPage(9999999);
+		cntcMessageItemVO.setFirstIndex(0);
+		cntcMessageItemVO.setSearchCondition("CodeList");
 
 		model.addAttribute("cntcMessageItemList", cntcMessageService.selectCntcMessageItemList(cntcMessageItemVO));
 
@@ -101,9 +101,9 @@ public class CntcMessageController {
 
 		// 연계메시지 리스트박스 데이터
 		CntcMessageVO searchCntcMessageVO = new CntcMessageVO();
-		searchCntcMessageVO.getSearchVO().setRecordPerPage(999999);
-		searchCntcMessageVO.getSearchVO().setFirstIndex(0);
-		searchCntcMessageVO.getSearchVO().setSearchCondition("CodeList");
+		searchCntcMessageVO.setRecordPerPage(999999);
+		searchCntcMessageVO.setFirstIndex(0);
+		searchCntcMessageVO.setSearchCondition("CodeList");
 		
 		model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
@@ -127,9 +127,9 @@ public class CntcMessageController {
 
 			// 연계메시지 리스트박스 데이터
 			CntcMessageVO searchCntcMessageVO = new CntcMessageVO();
-			searchCntcMessageVO.getSearchVO().setRecordPerPage(999999);
-			searchCntcMessageVO.getSearchVO().setFirstIndex(0);
-			searchCntcMessageVO.getSearchVO().setSearchCondition("CodeList");
+			searchCntcMessageVO.setRecordPerPage(999999);
+			searchCntcMessageVO.setFirstIndex(0);
+			searchCntcMessageVO.setSearchCondition("CodeList");
 			
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
@@ -159,9 +159,9 @@ public class CntcMessageController {
 
 		// 연계메시지 리스트박스 데이터
 		CntcMessageVO searchCntcMessageVO = new CntcMessageVO();
-		searchCntcMessageVO.getSearchVO().setRecordPerPage(999999);
-		searchCntcMessageVO.getSearchVO().setFirstIndex(0);
-		searchCntcMessageVO.getSearchVO().setSearchCondition("CodeList");
+		searchCntcMessageVO.setRecordPerPage(999999);
+		searchCntcMessageVO.setFirstIndex(0);
+		searchCntcMessageVO.setSearchCondition("CodeList");
 
 		model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
@@ -187,9 +187,9 @@ public class CntcMessageController {
 
 			// 연계메시지 리스트박스 데이터
 			CntcMessageVO searchCntcMessageVO = new CntcMessageVO();
-			searchCntcMessageVO.getSearchVO().setRecordPerPage(999999);
-			searchCntcMessageVO.getSearchVO().setFirstIndex(0);
-			searchCntcMessageVO.getSearchVO().setSearchCondition("CodeList");
+			searchCntcMessageVO.setRecordPerPage(999999);
+			searchCntcMessageVO.setFirstIndex(0);
+			searchCntcMessageVO.setSearchCondition("CodeList");
 
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
@@ -236,9 +236,9 @@ public class CntcMessageController {
 
 		// 연계메시지 리스트박스 데이터
 		CntcMessageVO searchCntcMessageVO = new CntcMessageVO();
-		searchCntcMessageVO.getSearchVO().setRecordPerPage(999999);
-		searchCntcMessageVO.getSearchVO().setFirstIndex(0);
-		searchCntcMessageVO.getSearchVO().setSearchCondition("CodeList");
+		searchCntcMessageVO.setRecordPerPage(999999);
+		searchCntcMessageVO.setFirstIndex(0);
+		searchCntcMessageVO.setSearchCondition("CodeList");
 		
 		model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
@@ -262,9 +262,9 @@ public class CntcMessageController {
 
 			// 연계메시지 리스트박스 데이터
 			CntcMessageVO searchCntcMessageVO = new CntcMessageVO();
-			searchCntcMessageVO.getSearchVO().setRecordPerPage(999999);
-			searchCntcMessageVO.getSearchVO().setFirstIndex(0);
-			searchCntcMessageVO.getSearchVO().setSearchCondition("CodeList");
+			searchCntcMessageVO.setRecordPerPage(999999);
+			searchCntcMessageVO.setFirstIndex(0);
+			searchCntcMessageVO.setSearchCondition("CodeList");
 			
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
@@ -294,9 +294,9 @@ public class CntcMessageController {
 
 		// 연계메시지 리스트박스 데이터
 		CntcMessageVO searchCntcMessageVO = new CntcMessageVO();
-		searchCntcMessageVO.getSearchVO().setRecordPerPage(999999);
-		searchCntcMessageVO.getSearchVO().setFirstIndex(0);
-		searchCntcMessageVO.getSearchVO().setSearchCondition("CodeList");
+		searchCntcMessageVO.setRecordPerPage(999999);
+		searchCntcMessageVO.setFirstIndex(0);
+		searchCntcMessageVO.setSearchCondition("CodeList");
 		
 		model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
@@ -322,9 +322,9 @@ public class CntcMessageController {
 
 			// 연계메시지 리스트박스 데이터
 			CntcMessageVO searchCntcMessageVO = new CntcMessageVO();
-			searchCntcMessageVO.getSearchVO().setRecordPerPage(999999);
-			searchCntcMessageVO.getSearchVO().setFirstIndex(0);
-			searchCntcMessageVO.getSearchVO().setSearchCondition("CodeList");
+			searchCntcMessageVO.setRecordPerPage(999999);
+			searchCntcMessageVO.setFirstIndex(0);
+			searchCntcMessageVO.setSearchCondition("CodeList");
 			
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 

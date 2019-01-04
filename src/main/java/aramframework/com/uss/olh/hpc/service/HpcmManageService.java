@@ -53,10 +53,7 @@ public class HpcmManageService extends EgovAbstractServiceImpl {
 	 * @param hpcmManageVO
 	 */
 	public HpcmManageVO selectHpcmDetail(HpcmManageVO hpcmManageVO) {
-		HpcmManageVO resultVo = hpcmManageMapper.selectHpcmDetail(hpcmManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(hpcmManageVO.getSearchVO()); 
-		return resultVo;
+		return hpcmManageMapper.selectHpcmDetail(hpcmManageVO);
 	}
 
 	/**

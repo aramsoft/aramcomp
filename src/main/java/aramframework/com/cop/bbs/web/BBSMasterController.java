@@ -58,12 +58,12 @@ public class BBSMasterController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		boardMasterVO.getSearchVO().fillPageInfo(paginationInfo);
+		boardMasterVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", bbsMasterService.selectNotUsedBdMstrList(boardMasterVO));
 		int totCnt = bbsMasterService.selectNotUsedBdMstrListCnt(boardMasterVO);
 
-		boardMasterVO.getSearchVO().setTotalRecordCount(totCnt);
+		boardMasterVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 		
 		model.addAttribute(paginationInfo);
@@ -84,12 +84,12 @@ public class BBSMasterController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		boardMasterVO.getSearchVO().fillPageInfo(paginationInfo);
+		boardMasterVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", bbsMasterService.selectBBSMasterInfs(boardMasterVO));
 		int totCnt = bbsMasterService.selectBBSMasterInfsCnt(boardMasterVO);
 
-		boardMasterVO.getSearchVO().setTotalRecordCount(totCnt);
+		boardMasterVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 	
 		model.addAttribute(paginationInfo);

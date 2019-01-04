@@ -55,15 +55,15 @@ public class EventManageController {
 			@ModelAttribute EventManageVO eventManageVO, 
 			ModelMap model) {
 
-		eventManageVO.getSearchVO().setSearchKeyword(eventManageVO.getSearchYear() + eventManageVO.getSearchMonth());
+		eventManageVO.setSearchKeyword(eventManageVO.getSearchYear() + eventManageVO.getSearchMonth());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		eventManageVO.getSearchVO().fillPageInfo(paginationInfo);
+		eventManageVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", eventManageService.selectEventManageList(eventManageVO));
 		int totCnt = eventManageService.selectEventManageListCnt(eventManageVO);
 
-		eventManageVO.getSearchVO().setTotalRecordCount(totCnt);
+		eventManageVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -211,15 +211,15 @@ public class EventManageController {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		eventAtdrnVO.setApplcntId(loginVO.getUniqId());// 사용자UniqID
-		eventAtdrnVO.getSearchVO().setSearchKeyword(eventAtdrnVO.getSearchYear() + eventAtdrnVO.getSearchMonth());
+		eventAtdrnVO.setSearchKeyword(eventAtdrnVO.getSearchYear() + eventAtdrnVO.getSearchMonth());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		eventAtdrnVO.getSearchVO().fillPageInfo(paginationInfo);
+		eventAtdrnVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", eventManageService.selectEventAtdrnList(eventAtdrnVO));
 		int totCnt = eventManageService.selectEventAtdrnListCnt(eventAtdrnVO);
 
-		eventAtdrnVO.getSearchVO().setTotalRecordCount(totCnt);
+		eventAtdrnVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -355,15 +355,15 @@ public class EventManageController {
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		eventAtdrnVO.setSanctnerId(loginVO.getUniqId());// 승인권자UniqID
 
-		eventAtdrnVO.getSearchVO().setSearchKeyword(eventAtdrnVO.getSearchYear() + eventAtdrnVO.getSearchMonth());
+		eventAtdrnVO.setSearchKeyword(eventAtdrnVO.getSearchYear() + eventAtdrnVO.getSearchMonth());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		eventAtdrnVO.getSearchVO().fillPageInfo(paginationInfo);
+		eventAtdrnVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", eventManageService.selectEventRceptConfmList(eventAtdrnVO));
 		int totCnt = eventManageService.selectEventRceptConfmListCnt(eventAtdrnVO);
 
-		eventAtdrnVO.getSearchVO().setTotalRecordCount(totCnt);
+		eventAtdrnVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -415,12 +415,12 @@ public class EventManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		eventAtdrnVO.getSearchVO().fillPageInfo(paginationInfo);
+		eventAtdrnVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", eventManageService.selectEventReqstAtdrnList(eventAtdrnVO));
 		int totCnt = eventManageService.selectEventReqstAtdrnListCnt(eventAtdrnVO);
 
-		eventAtdrnVO.getSearchVO().setTotalRecordCount(totCnt);
+		eventAtdrnVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

@@ -76,10 +76,7 @@ public class RequestOfferService extends EgovAbstractServiceImpl {
 	 * @param requestOfferVO
 	 */
 	public RequestOfferVO selectRequestOffer(RequestOfferVO requestOfferVO) {
-		RequestOfferVO resultVo = requestOfferMapper.selectRequestOffer(requestOfferVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(requestOfferVO.getSearchVO()); 
-		return resultVo;
+		return requestOfferMapper.selectRequestOffer(requestOfferVO);
 	}
 
 	/**

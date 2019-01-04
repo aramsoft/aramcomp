@@ -23,16 +23,16 @@
 		      FROM COMTN_QUSTNR_QESITM A
 		     WHERE 1=1
 	 	]]>
-    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "QESTN_CN"'>
-               	<![CDATA[ AND A.QESTN_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "QESTN_CN"'>
+               	<![CDATA[ AND A.QESTN_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "MXMM_CHOISE_CO"'>
-               	<![CDATA[ AND A.MXMM_CHOISE_CO LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "MXMM_CHOISE_CO"'>
+               	<![CDATA[ AND A.MXMM_CHOISE_CO LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "QESTNR_ID"'>
-               	<![CDATA[ AND A.QESTNR_ID = #{searchVO.searchKeyword} ]]>
+            <when test='searchCondition == "QESTNR_ID"'>
+               	<![CDATA[ AND A.QESTNR_ID = #{searchKeyword} ]]>
             </when>
 	    </choose>
 		</if>
@@ -41,7 +41,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
 	</select>
 
@@ -52,16 +52,16 @@
 			  FROM COMTN_QUSTNR_QESITM A
 			 WHERE 1=1
         ]]>			
-    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "QESTN_CN"'>
-               	<![CDATA[ AND A.QESTN_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "QESTN_CN"'>
+               	<![CDATA[ AND A.QESTN_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "MXMM_CHOISE_CO"'>
-               	<![CDATA[ AND A.MXMM_CHOISE_CO LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "MXMM_CHOISE_CO"'>
+               	<![CDATA[ AND A.MXMM_CHOISE_CO LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "QESTNR_ID"'>
-               	<![CDATA[ AND A.QESTNR_ID = #{searchVO.searchKeyword} ]]>
+            <when test='searchCondition == "QESTNR_ID"'>
+               	<![CDATA[ AND A.QESTNR_ID = #{searchKeyword} ]]>
             </when>
 	    </choose>
 		</if>

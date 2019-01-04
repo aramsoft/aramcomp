@@ -53,10 +53,7 @@ public class SiteManageService extends EgovAbstractServiceImpl {
 	 * @param siteManageVO
 	 */
 	public SiteManageVO selectSiteDetail(SiteManageVO siteManageVO) {
-		SiteManageVO resultVo = siteManageMapper.selectSiteDetail(siteManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(siteManageVO.getSearchVO()); 
-		return resultVo;
+		return siteManageMapper.selectSiteDetail(siteManageVO);
 	}
 
 	/**

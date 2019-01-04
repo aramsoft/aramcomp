@@ -12,13 +12,13 @@
 			  FROM COMTN_ORGNZT_INFO
 			 WHERE 1=1
 	 	]]>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "ORGNZT_NM"'>
-                <![CDATA[ AND ORGNZT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "ORGNZT_NM"'>
+                <![CDATA[ AND ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "ORGNZT_DC"'>
-                <![CDATA[ AND ORGNZT_DC LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "ORGNZT_DC"'>
+                <![CDATA[ AND ORGNZT_DC LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -36,16 +36,16 @@
 			  FROM COMTN_EMPLYR_INFO
 			 WHERE 1=1
 	 	]]>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "USER_NM"'>
-                <![CDATA[ AND USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "USER_NM"'>
+                <![CDATA[ AND USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "EMPLYR_ID"'>
-                <![CDATA[ AND EMPLYR_ID LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "EMPLYR_ID"'>
+                <![CDATA[ AND EMPLYR_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "OFFM_TELNO"'> 
-                <![CDATA[ AND OFFM_TELNO LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "OFFM_TELNO"'> 
+                <![CDATA[ AND OFFM_TELNO LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -75,13 +75,13 @@
     	<if test='trgetId != null and trgetId != ""'>
 		   		<![CDATA[ AND A.TRGET_ID = #{trgetId} ]]>
 		</if>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "MTG_NM"'>
-                <![CDATA[ AND A.MTG_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "MTG_NM"'>
+                <![CDATA[ AND A.MTG_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "MTG_MTR_CN"'>
-                <![CDATA[ AND A.MTG_MTR_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "MTG_MTR_CN"'>
+                <![CDATA[ AND A.MTG_MTR_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -90,7 +90,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
 	</select>
 	
@@ -104,13 +104,13 @@
     	<if test='trgetId != null and trgetId != ""'>
 		   		<![CDATA[ AND A.TRGET_ID = #{trgetId} ]]>
 		</if>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "MTG_NM"'>
-                <![CDATA[ AND A.MTG_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "MTG_NM"'>
+                <![CDATA[ AND A.MTG_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "MTG_MTR_CN"'>
-                <![CDATA[ AND A.MTG_MTR_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "MTG_MTR_CN"'>
+                <![CDATA[ AND A.MTG_MTR_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

@@ -55,12 +55,12 @@ public class ProcessMonController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		processMonVO.getSearchVO().fillPageInfo(paginationInfo);
+		processMonVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", processMonService.selectProcessMonList(processMonVO));
 		int totCnt = processMonService.selectProcessMonListCnt(processMonVO);
 
-		processMonVO.getSearchVO().setTotalRecordCount(totCnt);
+		processMonVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -222,12 +222,12 @@ public class ProcessMonController {
 		}
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		processMonLogVO.getSearchVO().fillPageInfo(paginationInfo);
+		processMonLogVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", processMonService.selectProcessMonLogList(processMonLogVO));
 		int totCnt = processMonService.selectProcessMonLogListCnt(processMonLogVO);
 
-		processMonLogVO.getSearchVO().setTotalRecordCount(totCnt);
+		processMonLogVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

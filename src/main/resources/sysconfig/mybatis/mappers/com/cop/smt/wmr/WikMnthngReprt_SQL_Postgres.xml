@@ -16,13 +16,13 @@
 						ON a.ORGNZT_ID = b.ORGNZT_ID
 			 WHERE 1=1
 		]]>
-   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+   	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "ORGNZT_NM"'>
-             	<![CDATA[ AND COALESCE(b.ORGNZT_NM, ' ') LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "ORGNZT_NM"'>
+             	<![CDATA[ AND COALESCE(b.ORGNZT_NM, ' ') LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "USER_NM"'>
-             	<![CDATA[ AND COALESCE(a.USER_NM, ' ') LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "USER_NM"'>
+             	<![CDATA[ AND COALESCE(a.USER_NM, ' ') LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -31,7 +31,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
 	</select>	
 	
@@ -43,13 +43,13 @@
 						ON a.ORGNZT_ID = b.ORGNZT_ID
 			 WHERE 1=1
 		]]>
-   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+   	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "ORGNZT_NM"'>
-             	<![CDATA[ AND COALESCE(b.ORGNZT_NM, ' ') LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "ORGNZT_NM"'>
+             	<![CDATA[ AND COALESCE(b.ORGNZT_NM, ' ') LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "USER_NM"'>
-             	<![CDATA[ AND COALESCE(a.USER_NM, ' ') LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "USER_NM"'>
+             	<![CDATA[ AND COALESCE(a.USER_NM, ' ') LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -100,13 +100,13 @@
             </when>
         </choose>
 		</if>
-    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "REPRT_SJ"'>
-             	<![CDATA[ AND A.REPRT_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "REPRT_SJ"'>
+             	<![CDATA[ AND A.REPRT_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "USER_NM"'>
-             	<![CDATA[ AND B.USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "USER_NM"'>
+             	<![CDATA[ AND B.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -131,7 +131,7 @@
 		]]>	
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
 	</select>
 	
@@ -163,13 +163,13 @@
             </when>
         </choose>
 		</if>
-    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "REPRT_SJ"'>
-             	<![CDATA[ AND A.REPRT_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "REPRT_SJ"'>
+             	<![CDATA[ AND A.REPRT_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "USER_NM"'>
-             	<![CDATA[ AND B.USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "USER_NM"'>
+             	<![CDATA[ AND B.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

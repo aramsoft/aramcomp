@@ -71,10 +71,7 @@ public class MeetingManageService extends EgovAbstractServiceImpl {
 	 * @param meetingManageVO
 	 */
 	public MeetingManageVO selectMeetingManageDetail(MeetingManageVO meetingManageVO) {
-		MeetingManageVO resultVo = meetingManageMapper.selectMeetingManageDetail(meetingManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(meetingManageVO.getSearchVO()); 
-		return resultVo;
+		return meetingManageMapper.selectMeetingManageDetail(meetingManageVO);
 	}
 
 	/**

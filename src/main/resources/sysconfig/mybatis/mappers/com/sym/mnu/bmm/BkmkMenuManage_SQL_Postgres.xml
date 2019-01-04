@@ -13,9 +13,9 @@
 			  FROM COMTN_BKMK_MENU_MANAGE
 			 WHERE EMPLYR_ID = #{userId}				 						
 		]]>	
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "MENU_NM"'>
+            <when test='searchCondition == "MENU_NM"'>
 				<![CDATA[ AND MENU_NM LIKE '%'|| #searchKeyword#||'%']]>
             </when>
         </choose>
@@ -25,7 +25,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
 	</select>	
 
@@ -35,9 +35,9 @@
 			  FROM COMTN_BKMK_MENU_MANAGE
 			 WHERE EMPLYR_ID = #{userId}					
 		]]>		
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "MENU_NM"'>
+            <when test='searchCondition == "MENU_NM"'>
 				<![CDATA[ AND MENU_NM LIKE '%'|| #searchKeyword#||'%']]>
             </when>
         </choose>
@@ -64,9 +64,9 @@
 			                           FROM COMTN_BKMK_MENU_MANAGE 
 			                          WHERE EMPLYR_ID =  #{userId})	
 		]]>		
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "MENU_NM"'>
+            <when test='searchCondition == "MENU_NM"'>
 				<![CDATA[ AND d.MENU_NM LIKE '%'|| #searchKeyword#||'%']]>
             </when>
         </choose>
@@ -76,7 +76,7 @@
 		]]>						
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
 	</select>	
 
@@ -97,9 +97,9 @@
 			                           FROM COMTN_BKMK_MENU_MANAGE 
 			                          WHERE EMPLYR_ID = #{userId})						
 		]]>		
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "MENU_NM"'>
+            <when test='searchCondition == "MENU_NM"'>
 				<![CDATA[ AND d.MENU_NM LIKE '%'|| #searchKeyword#||'%']]>
             </when>
         </choose>

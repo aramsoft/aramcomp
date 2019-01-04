@@ -53,10 +53,7 @@ public class RecomendSiteService extends EgovAbstractServiceImpl {
 	 * @param recomendSiteVO
 	 */
 	public RecomendSiteVO selectRecomendSiteDetail(RecomendSiteVO recomendSiteVO) {
-		RecomendSiteVO resultVo = recomendSiteMapper.selectRecomendSiteDetail(recomendSiteVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(recomendSiteVO.getSearchVO()); 
-		return resultVo;
+		return recomendSiteMapper.selectRecomendSiteDetail(recomendSiteVO);
 	}
 
 	/**

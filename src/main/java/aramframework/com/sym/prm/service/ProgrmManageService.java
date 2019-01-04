@@ -56,10 +56,7 @@ public class ProgrmManageService extends EgovAbstractServiceImpl {
 	 * @param progrmManageVO
 	 */
 	public ProgrmManageVO selectProgrm(ProgrmManageVO progrmManageVO) {
-		ProgrmManageVO resultVo = progrmManageMapper.selectProgrm(progrmManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(progrmManageVO.getSearchVO()); 
-		return resultVo;
+		return progrmManageMapper.selectProgrm(progrmManageVO);
 	}
 
 	/**

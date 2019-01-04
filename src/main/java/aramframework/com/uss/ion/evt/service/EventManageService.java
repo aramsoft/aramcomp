@@ -59,10 +59,7 @@ public class EventManageService extends EgovAbstractServiceImpl {
 	 * @param eventManageVO
 	 */
 	public EventManageVO selectEventManage(EventManageVO eventManageVO) {
-		EventManageVO resultVo = eventManageMapper.selectEventManage(eventManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(eventManageVO.getSearchVO()); 
-		return resultVo;
+		return eventManageMapper.selectEventManage(eventManageVO);
 	}
 
 	/**
@@ -149,10 +146,7 @@ public class EventManageService extends EgovAbstractServiceImpl {
 	 * @param eventAtdrnVO
 	 */
 	public EventAtdrnVO selectEventAtdrn(EventAtdrnVO eventAtdrnVO) {
-		EventAtdrnVO resultVo = eventManageMapper.selectEventAtdrn(eventAtdrnVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(eventAtdrnVO.getSearchVO()); 
-		return resultVo;
+		return eventManageMapper.selectEventAtdrn(eventAtdrnVO);
 	}
 
 	/**

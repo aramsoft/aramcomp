@@ -67,12 +67,12 @@ public class SchdulManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		baseVO.getSearchVO().fillPageInfo(paginationInfo);
+		baseVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", schdulManageService.selectEmplyrList(baseVO));
 
 		int totCnt = schdulManageService.selectEmplyrListCnt(baseVO);
-		baseVO.getSearchVO().setTotalRecordCount(totCnt);
+		baseVO.setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute(paginationInfo);
@@ -92,12 +92,12 @@ public class SchdulManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		schdulManageVO.getSearchVO().fillPageInfo(paginationInfo);
+		schdulManageVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", schdulManageService.selectSchdulManageList(schdulManageVO));
 
 		int totCnt = (Integer) schdulManageService.selectSchdulManageListCnt(schdulManageVO);
-		schdulManageVO.getSearchVO().setTotalRecordCount(totCnt);
+		schdulManageVO.setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute(paginationInfo);

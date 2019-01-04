@@ -58,10 +58,7 @@ public class CtsnnManageService extends EgovAbstractServiceImpl {
 	 * @param ctsnnManageVO
 	 */
 	public CtsnnManageVO selectCtsnnManage(CtsnnManageVO ctsnnManageVO) {
-		CtsnnManageVO resultVo = ctsnnManageMapper.selectCtsnnManage(ctsnnManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(ctsnnManageVO.getSearchVO()); 
-		return resultVo;
+		return ctsnnManageMapper.selectCtsnnManage(ctsnnManageVO);
 	}
 
 	/**

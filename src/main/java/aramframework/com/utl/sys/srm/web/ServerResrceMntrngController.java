@@ -43,12 +43,12 @@ public class ServerResrceMntrngController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		serverResrceMntrngVO.getSearchVO().fillPageInfo(paginationInfo);
+		serverResrceMntrngVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", serverResrceMntrngService.selectMntrngServerList(serverResrceMntrngVO));
 		int totCnt = serverResrceMntrngService.selectMntrngServerListCnt(serverResrceMntrngVO);
 
-		serverResrceMntrngVO.getSearchVO().setTotalRecordCount(totCnt);
+		serverResrceMntrngVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -76,12 +76,12 @@ public class ServerResrceMntrngController {
 		}
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		serverResrceMntrngVO.getSearchVO().fillPageInfo(paginationInfo);
+		serverResrceMntrngVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("serverResrceMntrngList", serverResrceMntrngService.selectServerResrceMntrngList(serverResrceMntrngVO));
 		int totCnt = serverResrceMntrngService.selectServerResrceMntrngListCnt(serverResrceMntrngVO);
 
-		serverResrceMntrngVO.getSearchVO().setTotalRecordCount(totCnt);
+		serverResrceMntrngVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

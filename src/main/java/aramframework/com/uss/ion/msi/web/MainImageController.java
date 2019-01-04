@@ -67,12 +67,12 @@ public class MainImageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		mainImageVO.getSearchVO().fillPageInfo(paginationInfo);
+		mainImageVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", mainImageService.selectMainImageList(mainImageVO));
 		int totCnt = mainImageService.selectLoginScrinImageListCnt(mainImageVO);
 
-		mainImageVO.getSearchVO().setTotalRecordCount(totCnt);
+		mainImageVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

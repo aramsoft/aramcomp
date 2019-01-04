@@ -53,10 +53,7 @@ public class SysLogService extends EgovAbstractServiceImpl {
 	 * @param sysLogVO
 	 */
 	public SysLogVO selectSysLog(SysLogVO sysLogVO) {
-		SysLogVO resultVo = sysLogMapper.selectSysLog(sysLogVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(sysLogVO.getSearchVO()); 
-		return resultVo;
+		return sysLogMapper.selectSysLog(sysLogVO);
 	}
 
 	/**

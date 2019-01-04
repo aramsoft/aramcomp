@@ -123,10 +123,7 @@ public class DeptJobService extends EgovAbstractServiceImpl {
 	 * @param deptJobBxVO
 	 */
 	public DeptJobBxVO selectDeptJobBx(DeptJobBxVO deptJobBxVO) {
-		DeptJobBxVO resultVo = deptJobMapper.selectDeptJobBx(deptJobBxVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(deptJobBxVO.getSearchVO()); 
-		return resultVo;
+		return deptJobMapper.selectDeptJobBx(deptJobBxVO);
 	}
 
 	/**
@@ -229,10 +226,7 @@ public class DeptJobService extends EgovAbstractServiceImpl {
 	 * @param deptJobVO
 	 */
 	public DeptJobVO selectDeptJob(DeptJobVO deptJobVO) {
-		DeptJobVO resultVo = deptJobMapper.selectDeptJob(deptJobVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(deptJobVO.getSearchVO()); 
-		return resultVo;
+		return deptJobMapper.selectDeptJob(deptJobVO);
 	}
 
 	/**

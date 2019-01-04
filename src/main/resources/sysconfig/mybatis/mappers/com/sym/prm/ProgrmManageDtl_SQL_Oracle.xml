@@ -20,13 +20,13 @@
 				 , REQUST_DE 				AS "rqestDe"
 				 , REQUST_SJ 				AS "rqestSj"
 			  FROM COMTN_PROGRM_CHANGE_DTLS
-			 WHERE PROGRM_FILE_NM like '%'||#{searchVO.searchKeyword}||'%'
+			 WHERE PROGRM_FILE_NM like '%'||#{searchKeyword}||'%'
 		 ]]>
         /* 구현 Sql */
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>			
 	</select>
 
@@ -35,7 +35,7 @@
 		<![CDATA[
 			SELECT COUNT(*) AS "totcnt"
 			  FROM COMTN_PROGRM_CHANGE_DTLS
-			 WHERE PROGRM_FILE_NM like '%'||#{searchVO.searchKeyword}||'%'
+			 WHERE PROGRM_FILE_NM like '%'||#{searchKeyword}||'%'
 		]]>
 	</select>
 
@@ -152,21 +152,21 @@
 			  FROM COMTN_PROGRM_CHANGE_DTLS
 			 WHERE 1=1
 		]]>
-      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "1"'>
-				<![CDATA[ AND PROCESS_STTUS_CODE like '%'||#{searchVO.searchKeyword}||'%' ]]>
+            <when test='searchCondition == "1"'>
+				<![CDATA[ AND PROCESS_STTUS_CODE like '%'||#{searchKeyword}||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "2"'>
-				<![CDATA[ AND PROCESS_STTUS_CODE = #{searchVO.searchKeyword}]]>
+            <when test='searchCondition == "2"'>
+				<![CDATA[ AND PROCESS_STTUS_CODE = #{searchKeyword}]]>
             </when>
-            <when test='searchVO.searchCondition == "4"'>
-				<![CDATA[ AND REQUSTER_ID like  '%'||#{searchVO.searchKeyword}||'%']]>
+            <when test='searchCondition == "4"'>
+				<![CDATA[ AND REQUSTER_ID like  '%'||#{searchKeyword}||'%']]>
             </when>
         </choose>
 		</if>
-	    <if test='searchVO.searchCondition == "3"'>
-				<![CDATA[ AND REQUST_DE between #{searchVO.searchKeywordFrom} and #{searchVO.searchKeywordTo} ]]>
+	    <if test='searchCondition == "3"'>
+				<![CDATA[ AND REQUST_DE between #{searchKeywordFrom} and #{searchKeywordTo} ]]>
         </if>
         <![CDATA[   
              ORDER BY REQUST_NO ASC
@@ -175,7 +175,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>			
 	</select>
 
@@ -186,21 +186,21 @@
 		  	  FROM COMTN_PROGRM_CHANGE_DTLS
 			 WHERE 1=1
 		]]>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "1"'>
-				<![CDATA[ AND PROCESS_STTUS_CODE like '%'||#{searchVO.searchKeyword}||'%' ]]>
+            <when test='searchCondition == "1"'>
+				<![CDATA[ AND PROCESS_STTUS_CODE like '%'||#{searchKeyword}||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "2"'>
-				<![CDATA[ AND PROCESS_STTUS_CODE = #{searchVO.searchKeyword}]]>
+            <when test='searchCondition == "2"'>
+				<![CDATA[ AND PROCESS_STTUS_CODE = #{searchKeyword}]]>
             </when>
-            <when test='searchVO.searchCondition == "4"'>
-				<![CDATA[ AND REQUSTER_ID like  '%'||#{searchVO.searchKeyword}||'%']]>
+            <when test='searchCondition == "4"'>
+				<![CDATA[ AND REQUSTER_ID like  '%'||#{searchKeyword}||'%']]>
             </when>
         </choose>
 		</if>
-	    <if test='searchVO.searchCondition == "3"'>
-				<![CDATA[ AND REQUST_DE between #{searchVO.searchKeywordFrom} and #{searchVO.searchKeywordTo} ]]>
+	    <if test='searchCondition == "3"'>
+				<![CDATA[ AND REQUST_DE between #{searchKeywordFrom} and #{searchKeywordTo} ]]>
         </if>
 	</select>
 
@@ -229,13 +229,13 @@
 				 , REQUST_DE 				AS "rqestDe"
 				 , PROCESS_DE 				AS "processDe"				 
 			  FROM COMTN_PROGRM_CHANGE_DTLS
-			 WHERE PROGRM_FILE_NM like '%'||#{searchVO.searchKeyword}||'%'
+			 WHERE PROGRM_FILE_NM like '%'||#{searchKeyword}||'%'
 		 ]]>
         /* 구현 Sql */
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>			
 	</select>
 
@@ -244,7 +244,7 @@
 		<![CDATA[
 			SELECT COUNT(*) AS "totcnt"
 			  FROM COMTN_PROGRM_CHANGE_DTLS
-			 WHERE PROGRM_FILE_NM like '%'||#{searchVO.searchKeyword}||'%'
+			 WHERE PROGRM_FILE_NM like '%'||#{searchKeyword}||'%'
 		]]>
 	</select>
 

@@ -76,13 +76,13 @@ public class BBSSatisfactionController {
 		}
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
-		satisfactionVO.getSearchVO().fillPageInfo(paginationInfo);
+		satisfactionVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", bbsSatisfactionService.selectSatisfactionList(satisfactionVO));
 		model.addAttribute("summary", bbsSatisfactionService.getSummary(satisfactionVO));
 		int totCnt = bbsSatisfactionService.selectSatisfactionListCnt(satisfactionVO);
 		
-		satisfactionVO.getSearchVO().setTotalRecordCount(totCnt);
+		satisfactionVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -214,13 +214,13 @@ public class BBSSatisfactionController {
 		}
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		satisfactionVO.getSearchVO().fillPageInfo(paginationInfo);
+		satisfactionVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", bbsSatisfactionService.selectSatisfactionList(satisfactionVO));
 		model.addAttribute("summary", bbsSatisfactionService.getSummary(satisfactionVO));
 		int totCnt = bbsSatisfactionService.selectSatisfactionListCnt(satisfactionVO);
 
-		satisfactionVO.getSearchVO().setTotalRecordCount(totCnt);
+		satisfactionVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

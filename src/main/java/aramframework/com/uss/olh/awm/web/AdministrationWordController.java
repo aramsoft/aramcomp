@@ -47,12 +47,12 @@ public class AdministrationWordController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		administrationWordVO.getSearchVO().fillPageInfo(paginationInfo);
+		administrationWordVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", administrationWordService.selectAdministrationWordList(administrationWordVO));
 		int totCnt = (Integer) administrationWordService.selectAdministrationWordListCnt(administrationWordVO);
 
-		administrationWordVO.getSearchVO().setTotalRecordCount(totCnt);
+		administrationWordVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -184,12 +184,12 @@ public class AdministrationWordController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		administrationWordVO.getSearchVO().fillPageInfo(paginationInfo);
+		administrationWordVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", administrationWordService.selectAdministrationWordList(administrationWordVO));
 		int totCnt = (Integer) administrationWordService.selectAdministrationWordListCnt(administrationWordVO);
 
-		administrationWordVO.getSearchVO().setTotalRecordCount(totCnt);
+		administrationWordVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -222,8 +222,8 @@ public class AdministrationWordController {
 			@ModelAttribute AdministrationWordVO administrationWordVO, 
 			ModelMap model) {
 
-		administrationWordVO.getSearchVO().setRecordPerPage(5);
-		administrationWordVO.getSearchVO().setFirstIndex(0);
+		administrationWordVO.setRecordPerPage(5);
+		administrationWordVO.setFirstIndex(0);
 
 		model.addAttribute("resultList", administrationWordService.selectAdministrationWordList(administrationWordVO));
 

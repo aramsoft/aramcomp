@@ -62,12 +62,12 @@ public class AdressBookController {
 		model.addAttribute("userId", loginVO.getId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		adressBookVO.getSearchVO().fillPageInfo(paginationInfo);
+		adressBookVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", adressBookService.selectAdressBookList(adressBookVO));
 
 		int totCnt = adressBookService.selectAdressBookListCnt(adressBookVO);
-		adressBookVO.getSearchVO().setTotalRecordCount(totCnt);
+		adressBookVO.setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -250,17 +250,17 @@ public class AdressBookController {
 			@ModelAttribute AdressBookUserVO adressBookUserVO, 
 			ModelMap model) {
 
-		if (adressBookUserVO.getSearchVO().getSearchCondition() == null 
-			|| adressBookUserVO.getSearchVO().getSearchCondition().equals("")) {
-			adressBookUserVO.getSearchVO().setSearchCondition("USERLIST");
+		if (adressBookUserVO.getSearchCondition() == null 
+			|| adressBookUserVO.getSearchCondition().equals("")) {
+			adressBookUserVO.setSearchCondition("USERLIST");
 		}
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		adressBookUserVO.getSearchVO().fillPageInfo(paginationInfo);
+		adressBookUserVO.fillPageInfo(paginationInfo);
 
 		List<EgovMap> resultList = null;
 		int totCnt = 0;
-		if (adressBookUserVO.getSearchVO().getSearchCondition().equals("USERLIST")) {
+		if (adressBookUserVO.getSearchCondition().equals("USERLIST")) {
 			resultList = adressBookService.selectManList(adressBookUserVO);
 			totCnt = adressBookService.selectManListCnt(adressBookUserVO);
 		} else {
@@ -269,7 +269,7 @@ public class AdressBookController {
 		}
 		model.addAttribute("resultList", resultList);
 
-		adressBookUserVO.getSearchVO().setTotalRecordCount(totCnt);
+		adressBookUserVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 		
 		model.addAttribute(paginationInfo);
@@ -365,11 +365,11 @@ public class AdressBookController {
 		adressBookVO.setWrterId(loginVO.getId());
 		adressBookVO.setTrgetOrgnztId(loginVO.getOrgnztId());
 
-		adressBookVO.getSearchVO().setFirstIndex(0);
-		adressBookVO.getSearchVO().setRecordPerPage(5);
+		adressBookVO.setFirstIndex(0);
+		adressBookVO.setRecordPerPage(5);
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		adressBookVO.getSearchVO().fillPageInfo(paginationInfo);
+		adressBookVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", adressBookService.selectAdressBookList(adressBookVO));
 

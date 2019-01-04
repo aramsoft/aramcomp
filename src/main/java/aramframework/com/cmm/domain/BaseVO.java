@@ -11,7 +11,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  * @since 2014.11.11
  * @version 1.0
  */
-public class BaseVO {
+public class BaseVO extends SearchVO {
 
 	// search
 	/** 검색 객체 */
@@ -39,25 +39,6 @@ public class BaseVO {
 
 	/** 최종수정시점 */
 	private Date lastUpdusrPnttm = null;
-
-	// search
-	/**
-	 * searchVO attribute 를 리턴한다.
-	 * 
-	 * @return 	SearchVO
-	 */
-	public SearchVO getSearchVO() {
-		if( searchVO == null ) searchVO = new SearchVO();
-		return searchVO;
-	}
-	/**
-	 * searchVO attribute 값을 설정한다.
-	 * 
-	 * @param 	searchVO	SearchVO
-	 */
-	public void setSearchVO(SearchVO searchVO) {
-		this.searchVO = searchVO;
-	}
 
 	// common
 	/**

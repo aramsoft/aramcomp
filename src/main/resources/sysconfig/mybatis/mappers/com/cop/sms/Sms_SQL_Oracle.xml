@@ -21,17 +21,17 @@
 			  FROM COMTN_SMS a
 			 WHERE 1=1	
 		]]>
-   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+   	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "RECPTN_TELNO"'>
+            <when test='searchCondition == "RECPTN_TELNO"'>
 				<![CDATA[
 					AND a.SMS_ID in (SELECT SMS_ID 
 						               FROM COMTN_SMS_RECPTN 
-						              WHERE RECPTN_TELNO LIKE '%' || #{searchVO.searchKeyword} || '%')
+						              WHERE RECPTN_TELNO LIKE '%' || #{searchKeyword} || '%')
 		 		]]>
             </when>
-            <when test='searchVO.searchCondition == "TRNSMIS_CN"'>
-                <![CDATA[ AND a.TRNSMIS_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "TRNSMIS_CN"'>
+                <![CDATA[ AND a.TRNSMIS_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -42,7 +42,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>			
 	</select>	
 	
@@ -52,17 +52,17 @@
 			  FROM COMTN_SMS a
 			 WHERE 1=1 
 		]]>
-   	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+   	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "RECPTN_TELNO"'>
+            <when test='searchCondition == "RECPTN_TELNO"'>
 				<![CDATA[
 					AND a.SMS_ID in (SELECT SMS_ID 
 						               FROM COMTN_SMS_RECPTN 
-						              WHERE RECPTN_TELNO LIKE '%' || #{searchVO.searchKeyword} || '%')
+						              WHERE RECPTN_TELNO LIKE '%' || #{searchKeyword} || '%')
 		 		]]>
             </when>
-            <when test='searchVO.searchCondition == "TRNSMIS_CN"'>
-                <![CDATA[ AND a.TRNSMIS_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "TRNSMIS_CN"'>
+                <![CDATA[ AND a.TRNSMIS_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

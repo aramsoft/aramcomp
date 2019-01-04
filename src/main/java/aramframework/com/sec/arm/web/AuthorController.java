@@ -53,12 +53,12 @@ public class AuthorController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		authorVO.getSearchVO().fillPageInfo(paginationInfo);
+		authorVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", authorService.selectAuthorList(authorVO));
 		int totCnt = authorService.selectAuthorListCnt(authorVO);
 
-		authorVO.getSearchVO().setTotalRecordCount(totCnt);
+		authorVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

@@ -24,16 +24,16 @@
 						ON a.FRST_REGISTER_ID = b.ESNTL_ID 
 			 WHERE a.BBS_ID = #{bbsId}
 		]]>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "NTT_SJ"'>
-             	<![CDATA[ AND a.NTT_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "NTT_SJ"'>
+             	<![CDATA[ AND a.NTT_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "NTT_CN"'>
-             	<![CDATA[ AND a.NTT_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "NTT_CN"'>
+             	<![CDATA[ AND a.NTT_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "USER_NM"'>
-             	<![CDATA[ AND b.USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "USER_NM"'>
+             	<![CDATA[ AND b.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -42,7 +42,7 @@
         ]]>			
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
 	</select>	
 	
@@ -55,16 +55,16 @@
 						ON a.FRST_REGISTER_ID = b.ESNTL_ID 
 			 WHERE a.BBS_ID = #{bbsId}
 		]]>
-    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "NTT_SJ"'>
-             	<![CDATA[ AND a.NTT_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "NTT_SJ"'>
+             	<![CDATA[ AND a.NTT_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "NTT_CN"'>
-             	<![CDATA[ AND a.NTT_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "NTT_CN"'>
+             	<![CDATA[ AND a.NTT_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "USER_NM"'>
-             	<![CDATA[ AND b.USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "USER_NM"'>
+             	<![CDATA[ AND b.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -340,7 +340,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
 	</select>	
 	

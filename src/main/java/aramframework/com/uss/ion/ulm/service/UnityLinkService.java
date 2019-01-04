@@ -61,10 +61,7 @@ public class UnityLinkService extends EgovAbstractServiceImpl {
 	 * @param unityLinkVO
 	 */
 	public UnityLinkVO selectUnityLinkDetail(UnityLinkVO unityLinkVO) {
-		UnityLinkVO resultVo =  unityLinkMapper.selectUnityLinkDetail(unityLinkVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(unityLinkVO.getSearchVO()); 
-		return resultVo;
+		return unityLinkMapper.selectUnityLinkDetail(unityLinkVO);
 	}
 
 	/**

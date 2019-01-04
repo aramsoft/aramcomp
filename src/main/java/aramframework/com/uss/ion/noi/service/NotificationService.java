@@ -52,10 +52,7 @@ public class NotificationService extends EgovAbstractServiceImpl {
 	 * @param notificationVO
 	 */
 	public NotificationVO selectNotificationInf(NotificationVO notificationVO) {
-		NotificationVO resultVo = notificationMapper.selectNotificationInf(notificationVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(notificationVO.getSearchVO()); 
-		return resultVo;
+		return notificationMapper.selectNotificationInf(notificationVO);
 	}
 
 	/**

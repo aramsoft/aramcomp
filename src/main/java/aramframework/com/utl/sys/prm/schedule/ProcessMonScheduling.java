@@ -49,9 +49,9 @@ public class ProcessMonScheduling {
 		ProcessMonVO processMonVO = new ProcessMonVO();
 
 		// 모니터링 대상 검색 조건 초기화
-		processMonVO.getSearchVO().setPageIndex(1);
-		processMonVO.getSearchVO().setFirstIndex(0);
-		processMonVO.getSearchVO().setRecordPerPage(RECORD_COUNT_PER_PAGE);
+		processMonVO.setPageIndex(1);
+		processMonVO.setFirstIndex(0);
+		processMonVO.setRecordPerPage(RECORD_COUNT_PER_PAGE);
 		targetList = processMonService.selectProcessMonList(processMonVO);
 
 		if (LOG.isDebugEnabled()) {

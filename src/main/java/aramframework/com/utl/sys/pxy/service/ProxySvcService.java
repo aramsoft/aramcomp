@@ -69,10 +69,7 @@ public class ProxySvcService extends EgovAbstractServiceImpl {
 	 * @return				ProxySvcVO
 	 */
 	public ProxySvcVO selectProxySvc(ProxySvcVO proxySvcVO) {
-		ProxySvcVO resultVo = proxySvcMapper.selectProxySvc(proxySvcVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(proxySvcVO.getSearchVO()); 
-		return resultVo;
+		return proxySvcMapper.selectProxySvc(proxySvcVO);
 	}
 
 	/**

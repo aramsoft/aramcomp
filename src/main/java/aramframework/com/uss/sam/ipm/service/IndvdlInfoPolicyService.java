@@ -52,10 +52,7 @@ public class IndvdlInfoPolicyService extends EgovAbstractServiceImpl {
 	 * @param indvdlInfoPolicyVO
 	 */
 	public IndvdlInfoPolicyVO selectIndvdlInfoPolicyDetail(IndvdlInfoPolicyVO indvdlInfoPolicyVO) {
-		IndvdlInfoPolicyVO resultVo = indvdlInfoPolicyMapper.selectIndvdlInfoPolicyDetail(indvdlInfoPolicyVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(indvdlInfoPolicyVO.getSearchVO()); 
-		return resultVo;
+		return indvdlInfoPolicyMapper.selectIndvdlInfoPolicyDetail(indvdlInfoPolicyVO);
 	}
 
 	/**

@@ -58,12 +58,12 @@ public class UserInfController {
 			ModelMap model) {
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
-		userInfVO.getSearchVO().fillPageInfo(paginationInfo);
+		userInfVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", userInfService.selectUserList(userInfVO));
 		int totCnt = userInfService.selectUserListCnt(userInfVO);
 
-		userInfVO.getSearchVO().setTotalRecordCount(totCnt);
+		userInfVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -104,12 +104,12 @@ public class UserInfController {
 		}
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
-		userInfVO.getSearchVO().fillPageInfo(paginationInfo);
+		userInfVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", userInfService.selectCmmntyUserList(userInfVO));
 		int totCnt = userInfService.selectCmmntyUserListCnt(userInfVO);
 
-		userInfVO.getSearchVO().setTotalRecordCount(totCnt);
+		userInfVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -150,12 +150,12 @@ public class UserInfController {
 		}
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
-		userInfVO.getSearchVO().fillPageInfo(paginationInfo);
+		userInfVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", userInfService.selectCmmntyMngrList(userInfVO));
 		int totCnt = userInfService.selectCmmntyMngrListCnt(userInfVO);
 
-		userInfVO.getSearchVO().setTotalRecordCount(totCnt);
+		userInfVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

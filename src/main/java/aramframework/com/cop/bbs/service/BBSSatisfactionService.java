@@ -82,10 +82,7 @@ public class BBSSatisfactionService extends EgovAbstractServiceImpl {
 	 * @param satisfactionVO
 	 */
 	public SatisfactionVO selectSatisfaction(SatisfactionVO satisfactionVO) {
-		SatisfactionVO resultVo = bbsSatisfactionMapper.selectSatisfaction(satisfactionVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(satisfactionVO.getSearchVO()); 
-		return resultVo;
+		return  bbsSatisfactionMapper.selectSatisfaction(satisfactionVO);
 	}
 
 	/**

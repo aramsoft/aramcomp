@@ -61,10 +61,7 @@ public class UserManageService extends EgovAbstractServiceImpl {
 	 * @param userManageVO
 	 */
 	public UserManageVO selectUser(UserManageVO userManageVO) {
-		UserManageVO resultVo = userManageMapper.selectUser(userManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(userManageVO.getSearchVO()); 
-		return resultVo;
+		return userManageMapper.selectUser(userManageVO);
 	}
 
 	/**

@@ -52,10 +52,7 @@ public class TemplateService extends EgovAbstractServiceImpl {
 	 * @param templateInfVO
 	 */
 	public TemplateInfVO selectTemplateInf(TemplateInfVO templateInfVO) {
-		TemplateInfVO resultVo = templateMapper.selectTemplateInf(templateInfVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(templateInfVO.getSearchVO()); 
-		return resultVo;
+		return templateMapper.selectTemplateInf(templateInfVO);
 	}
 
 	/**

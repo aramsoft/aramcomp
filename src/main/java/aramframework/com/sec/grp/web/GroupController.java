@@ -46,12 +46,12 @@ public class GroupController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		groupVO.getSearchVO().fillPageInfo(paginationInfo);
+		groupVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", groupService.selectGroupList(groupVO));
 		int totCnt = groupService.selectGroupListCnt(groupVO);
 
-		groupVO.getSearchVO().setTotalRecordCount(totCnt);
+		groupVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -179,12 +179,12 @@ public class GroupController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		groupVO.getSearchVO().fillPageInfo(paginationInfo);
+		groupVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", groupService.selectGroupList(groupVO));
 		int totCnt = groupService.selectGroupListCnt(groupVO);
 
-		groupVO.getSearchVO().setTotalRecordCount(totCnt);
+		groupVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 	
 		model.addAttribute(paginationInfo);

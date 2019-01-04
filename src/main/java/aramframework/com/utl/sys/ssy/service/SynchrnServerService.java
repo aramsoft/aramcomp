@@ -70,10 +70,7 @@ public class SynchrnServerService extends EgovAbstractServiceImpl {
 	 * @param synchrnServerVO
 	 */
 	public SynchrnServerVO selectSynchrnServer(SynchrnServerVO synchrnServerVO) {
-		SynchrnServerVO resultVo = synchrnServerMapper.selectSynchrnServer(synchrnServerVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(synchrnServerVO.getSearchVO()); 
-		return resultVo;
+		return synchrnServerMapper.selectSynchrnServer(synchrnServerVO);
 	}
 
 	/**

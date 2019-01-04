@@ -47,10 +47,7 @@ public class BkmkMenuManageService extends EgovAbstractServiceImpl {
 	 * @param bkmkMenuManageVO
 	 */
 	public BkmkMenuManageVO selectBkmkMenuManage(BkmkMenuManageVO bkmkMenuManageVO) {
-		BkmkMenuManageVO resultVo = bkmkMenuManageMapper.selectBkmkMenuManage(bkmkMenuManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(bkmkMenuManageVO.getSearchVO()); 
-		return resultVo;
+		return bkmkMenuManageMapper.selectBkmkMenuManage(bkmkMenuManageVO);
 	}
 
 	/**

@@ -241,8 +241,6 @@ public class SmsInfoService extends EgovAbstractServiceImpl {
 		}
 		resultVo.setRecptn(list);
 
-		// searchVO 이전 
-		resultVo.setSearchVO(smsVO.getSearchVO()); 
 		return resultVo;
 	}
 

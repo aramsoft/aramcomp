@@ -40,12 +40,12 @@ public class BatchResultController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		batchResultVO.getSearchVO().fillPageInfo(paginationInfo);
+		batchResultVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", batchResultService.selectBatchResultList(batchResultVO));
 		int totCnt = batchResultService.selectBatchResultListCnt(batchResultVO);
 
-		batchResultVO.getSearchVO().setTotalRecordCount(totCnt);
+		batchResultVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

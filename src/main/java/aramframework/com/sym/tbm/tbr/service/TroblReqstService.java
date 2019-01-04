@@ -53,10 +53,7 @@ public class TroblReqstService extends EgovAbstractServiceImpl {
 	 * @param troblReqstVO
 	 */
 	public TroblReqstVO selectTroblReqst(TroblReqstVO troblReqstVO) {
-		TroblReqstVO resultVo = troblReqstMapper.selectTroblReqst(troblReqstVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(troblReqstVO.getSearchVO()); 
-		return resultVo;
+		return troblReqstMapper.selectTroblReqst(troblReqstVO);
 	}
 
 	/**

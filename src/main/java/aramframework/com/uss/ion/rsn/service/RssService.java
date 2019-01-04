@@ -50,10 +50,7 @@ public class RssService extends EgovAbstractServiceImpl {
 	 * @param rssInfoVO
 	 */
 	public RssInfoVO selectRssServiceDetail(RssInfoVO rssInfoVO) {
-		RssInfoVO resultVo = rssMapper.selectRssServiceDetail(rssInfoVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(rssInfoVO.getSearchVO()); 
-		return resultVo;
+		return rssMapper.selectRssServiceDetail(rssInfoVO);
 	}
 
 	/**

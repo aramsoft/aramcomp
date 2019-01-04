@@ -47,10 +47,7 @@ public class CmmnClCodeManageService extends EgovAbstractServiceImpl {
 	 * @param cmmnClCodeVO
 	 */
 	public CmmnClCodeVO selectCmmnClCodeDetail(CmmnClCodeVO cmmnClCodeVO) {
-		CmmnClCodeVO resultVo = cmmnClCodeManageMapper.selectCmmnClCodeDetail(cmmnClCodeVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(cmmnClCodeVO.getSearchVO()); 
-		return resultVo;
+		return cmmnClCodeManageMapper.selectCmmnClCodeDetail(cmmnClCodeVO);
 	}
 
 	/**

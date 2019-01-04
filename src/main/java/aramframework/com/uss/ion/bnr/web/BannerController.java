@@ -67,12 +67,12 @@ public class BannerController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		bannerVO.getSearchVO().fillPageInfo(paginationInfo);
+		bannerVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", bannerService.selectBannerList(bannerVO));
 		int totCnt = bannerService.selectBannerListCnt(bannerVO);
 
-		bannerVO.getSearchVO().setTotalRecordCount(totCnt);
+		bannerVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -260,7 +260,7 @@ public class BannerController {
 			@ModelAttribute BannerVO bannerVO, 
 			ModelMap model) {
 
-		bannerVO.getSearchVO().setSizeAndOffset(5, 0);
+		bannerVO.setSizeAndOffset(5, 0);
 
 		model.addAttribute("bannerList", bannerService.selectBannerList(bannerVO));
 

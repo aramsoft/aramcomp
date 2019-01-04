@@ -45,12 +45,12 @@ public class QustnrItemManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		qustnrItemManageVO.getSearchVO().fillPageInfo(paginationInfo);
+		qustnrItemManageVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", qustnrItemManageService.selectQustnrItemManageList(qustnrItemManageVO));
 		int totCnt = (Integer) qustnrItemManageService.selectQustnrItemManageListCnt(qustnrItemManageVO);
 
-		qustnrItemManageVO.getSearchVO().setTotalRecordCount(totCnt);
+		qustnrItemManageVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -72,17 +72,17 @@ public class QustnrItemManageController {
 
 		// 설문문항에 넘어온 건에 대해 조회
 		if (qustnrItemManageVO.getSearchMode().equals("Y")) {
-			qustnrItemManageVO.getSearchVO().setSearchCondition("QUSTNR_QESITM_ID");// qestnrQesitmId
-			qustnrItemManageVO.getSearchVO().setSearchKeyword(qustnrItemManageVO.getQestnrQesitmId());
+			qustnrItemManageVO.setSearchCondition("QUSTNR_QESITM_ID");// qestnrQesitmId
+			qustnrItemManageVO.setSearchKeyword(qustnrItemManageVO.getQestnrQesitmId());
 		}
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		qustnrItemManageVO.getSearchVO().fillPageInfo(paginationInfo);
+		qustnrItemManageVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", qustnrItemManageService.selectQustnrItemManageList(qustnrItemManageVO));
 		int totCnt = (Integer) qustnrItemManageService.selectQustnrItemManageListCnt(qustnrItemManageVO);
 
-		qustnrItemManageVO.getSearchVO().setTotalRecordCount(totCnt);
+		qustnrItemManageVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

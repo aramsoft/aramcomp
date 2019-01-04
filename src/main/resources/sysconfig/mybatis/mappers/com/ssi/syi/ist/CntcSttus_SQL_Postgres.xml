@@ -62,16 +62,16 @@
                    	    AND A.REQUST_SYS_ID   = D2.SYS_ID
              WHERE 1=1
         ]]>
-      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "CNTC_NM"'>
-                 <![CDATA[ AND A.CNTC_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "CNTC_NM"'>
+                 <![CDATA[ AND A.CNTC_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
     </select>
 
@@ -118,10 +118,10 @@
                    	    AND A.REQUST_SYS_ID   = D2.SYS_ID
              WHERE 1=1
         ]]>
-      	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "CNTC_NM"'>
-                 <![CDATA[ AND A.CNTC_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "CNTC_NM"'>
+                 <![CDATA[ AND A.CNTC_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

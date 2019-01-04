@@ -26,13 +26,13 @@
 				       	ON A.HTTP_STTUS_CODE = B.CODE
 			 WHERE 1 = 1
 		]]>
-       	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+       	    <if test='searchKeyword != null and searchKeyword != ""'>
 	        <choose>
-	            <when test='searchVO.searchCondition == "MNGR_NM"'>
-	                 AND A.MNGR_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%'
+	            <when test='searchCondition == "MNGR_NM"'>
+	                 AND A.MNGR_NM LIKE '%'|| #{searchKeyword} ||'%'
 	            </when>
-	            <when test='searchVO.searchCondition == "HTTP_STTUS"'>
-	                 AND B.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%'
+	            <when test='searchCondition == "HTTP_STTUS"'>
+	                 AND B.CODE_NM LIKE '%'|| #{searchKeyword} ||'%'
 	            </when>
 	        </choose>
 			</if>
@@ -43,7 +43,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>			
 	</select>	
 
@@ -57,13 +57,13 @@
 				       	ON A.HTTP_STTUS_CODE = B.CODE
 			 WHERE 1 = 1
 		]]>
-       	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+       	    <if test='searchKeyword != null and searchKeyword != ""'>
 	        <choose>
-	            <when test='searchVO.searchCondition == "MNGR_NM"'>
-	                 AND A.MNGR_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%'
+	            <when test='searchCondition == "MNGR_NM"'>
+	                 AND A.MNGR_NM LIKE '%'|| #{searchKeyword} ||'%'
 	            </when>
-	            <when test='searchVO.searchCondition == "HTTP_STTUS"'>
-	                 AND B.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%'
+	            <when test='searchCondition == "HTTP_STTUS"'>
+	                 AND B.CODE_NM LIKE '%'|| #{searchKeyword} ||'%'
 	            </when>
 	        </choose>
 			</if>
@@ -178,13 +178,13 @@
          	<if test='searchBgnDt != null and searchBgnDt != ""'>
 					AND TO_CHAR(A.CREAT_DT,'YYYY-MM-DD HH24MISS') BETWEEN #{searchBgnDt} AND #{searchEndDt}			
 			</if>
-       	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+       	    <if test='searchKeyword != null and searchKeyword != ""'>
 	        <choose>
-	            <when test='searchVO.searchCondition == "WEBSVC_KND"'>
-	                 AND A.WEBSVC_KND LIKE '%'|| #{searchVO.searchKeyword} ||'%'
+	            <when test='searchCondition == "WEBSVC_KND"'>
+	                 AND A.WEBSVC_KND LIKE '%'|| #{searchKeyword} ||'%'
 	            </when>
-	            <when test='searchVO.searchCondition == "HTTP_STTUS"'>
-	                 AND C.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%'
+	            <when test='searchCondition == "HTTP_STTUS"'>
+	                 AND C.CODE_NM LIKE '%'|| #{searchKeyword} ||'%'
 	            </when>
 	        </choose>
 			</if>
@@ -195,7 +195,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>			
 	</select>	
 
@@ -214,13 +214,13 @@
          	<if test='searchBgnDt != null and searchBgnDt != ""'>
 					AND TO_CHAR(A.CREAT_DT,'YYYY-MM-DD HH24MISS') BETWEEN #{searchBgnDt} AND #{searchEndDt}			
 			</if>
-       	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+       	    <if test='searchKeyword != null and searchKeyword != ""'>
 	        <choose>
-	            <when test='searchVO.searchCondition == "WEBSVC_KND"'>
-	                 AND A.WEBSVC_KND LIKE '%'|| #{searchVO.searchKeyword} ||'%'
+	            <when test='searchCondition == "WEBSVC_KND"'>
+	                 AND A.WEBSVC_KND LIKE '%'|| #{searchKeyword} ||'%'
 	            </when>
-	            <when test='searchVO.searchCondition == "HTTP_STTUS"'>
-	                 AND C.CODE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%'
+	            <when test='searchCondition == "HTTP_STTUS"'>
+	                 AND C.CODE_NM LIKE '%'|| #{searchKeyword} ||'%'
 	            </when>
 	        </choose>
 			</if>

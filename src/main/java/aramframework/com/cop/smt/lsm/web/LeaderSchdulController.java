@@ -477,12 +477,12 @@ public class LeaderSchdulController {
 		}
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		leaderSttusVO.getSearchVO().fillPageInfo(paginationInfo);
+		leaderSttusVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", leaderSchdulService.selectLeaderSttusList(leaderSttusVO));
 		int totCnt = leaderSchdulService.selectLeaderSttusListCnt(leaderSttusVO);
 
-		leaderSttusVO.getSearchVO().setTotalRecordCount(totCnt);
+		leaderSttusVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -501,12 +501,12 @@ public class LeaderSchdulController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		leaderSttusVO.getSearchVO().fillPageInfo(paginationInfo);
+		leaderSttusVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", leaderSchdulService.selectLeaderSttusList(leaderSttusVO));
 		int totCnt = leaderSchdulService.selectLeaderSttusListCnt(leaderSttusVO);
 
-		leaderSttusVO.getSearchVO().setTotalRecordCount(totCnt);
+		leaderSttusVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

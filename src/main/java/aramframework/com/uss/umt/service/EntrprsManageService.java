@@ -54,10 +54,7 @@ public class EntrprsManageService extends EgovAbstractServiceImpl {
 	 * @param entrprsManageVO
 	 */
 	public EntrprsManageVO selectEntrprsMber(EntrprsManageVO entrprsManageVO) {
-		EntrprsManageVO resultVo = entrprsManageMapper.selectEntrprsMber(entrprsManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(entrprsManageVO.getSearchVO()); 
-		return resultVo;
+		return entrprsManageMapper.selectEntrprsMber(entrprsManageVO);
 	}
 
 	/**

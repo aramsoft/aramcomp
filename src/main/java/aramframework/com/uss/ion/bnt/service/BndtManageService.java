@@ -63,10 +63,7 @@ public class BndtManageService extends EgovAbstractServiceImpl {
 	 * @param bndtManageVO
 	 */
 	public BndtManageVO selectBndtManage(BndtManageVO bndtManageVO) {
-		BndtManageVO resultVo = bndtManageMapper.selectBndtManage(bndtManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(bndtManageVO.getSearchVO()); 
-		return resultVo;
+		return bndtManageMapper.selectBndtManage(bndtManageVO);
 	}
 
 	/**
@@ -131,10 +128,7 @@ public class BndtManageService extends EgovAbstractServiceImpl {
 	 * @param bndtCeckManageVO
 	 */
 	public BndtCeckManageVO selectBndtCeckManage(BndtCeckManageVO bndtCeckManageVO) {
-		BndtCeckManageVO resultVo = bndtManageMapper.selectBndtCeckManage(bndtCeckManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(bndtCeckManageVO.getSearchVO()); 
-		return resultVo;
+		return bndtManageMapper.selectBndtCeckManage(bndtCeckManageVO);
 	}
 
 	/**

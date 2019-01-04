@@ -57,10 +57,7 @@ public class BatchSchdulService extends EgovAbstractServiceImpl {
 	 * @param batchSchdulVO
 	 */
 	public BatchSchdulVO selectBatchSchdul(BatchSchdulVO batchSchdulVO) {
-		BatchSchdulVO resultVo = batchSchdulMapper.selectBatchSchdul(batchSchdulVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(batchSchdulVO.getSearchVO()); 
-		return resultVo;
+		return batchSchdulMapper.selectBatchSchdul(batchSchdulVO);
 	}
 
 	/**

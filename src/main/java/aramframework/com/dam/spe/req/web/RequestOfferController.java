@@ -66,12 +66,12 @@ public class RequestOfferController {
 			ModelMap model) {
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
-		requestOfferVO.getSearchVO().fillPageInfo(paginationInfo);
+		requestOfferVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", requestOfferService.selectRequestOfferList(requestOfferVO));
 		int totCnt = (Integer) requestOfferService.selectRequestOfferListCnt(requestOfferVO);
 
-		requestOfferVO.getSearchVO().setTotalRecordCount(totCnt);
+		requestOfferVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -119,20 +119,20 @@ public class RequestOfferController {
 
 		// 조직유형 불러오기
 		MapTeamVO mapTeamVO = new MapTeamVO();
-		mapTeamVO.getSearchVO().setSizeAndOffset(999999, 0);
+		mapTeamVO.setSizeAndOffset(999999, 0);
 		List<EgovMap> mapTeamList = mapTeamService.selectMapTeamList(mapTeamVO);
 		model.addAttribute("mapTeamList", mapTeamList);
 
 		// 지식유형코드불러오기
 		MapMaterialVO mapMaterialVO = new MapMaterialVO();
-		mapMaterialVO.getSearchVO().setSizeAndOffset(999999, 0);
-		mapMaterialVO.getSearchVO().setSearchCondition("ORGNZT_ID");
+		mapMaterialVO.setSizeAndOffset(999999, 0);
+		mapMaterialVO.setSearchCondition("ORGNZT_ID");
 
 		if (requestOfferVO.getOrgnztId() == null || requestOfferVO.getOrgnztId().equals("")) {
 			EgovMap vo = mapTeamList.get(0);
-			mapMaterialVO.getSearchVO().setSearchKeyword(vo.get("orgnztId").toString());
+			mapMaterialVO.setSearchKeyword(vo.get("orgnztId").toString());
 		} else {
-			mapMaterialVO.getSearchVO().setSearchKeyword(requestOfferVO.getOrgnztId());
+			mapMaterialVO.setSearchKeyword(requestOfferVO.getOrgnztId());
 		}
 
 		model.addAttribute("mapMaterialList", mapMaterialService.selectMapMaterialList(mapMaterialVO));
@@ -199,20 +199,20 @@ public class RequestOfferController {
 		
 		// 조직유형 불러오기
 		MapTeamVO mapTeamVO = new MapTeamVO();
-		mapTeamVO.getSearchVO().setSizeAndOffset(999999, 0);
+		mapTeamVO.setSizeAndOffset(999999, 0);
 		List<EgovMap> mapTeamList = mapTeamService.selectMapTeamList(mapTeamVO);
 		model.addAttribute("mapTeamList", mapTeamList);
 
 		// 지식유형코드불러오기
 		MapMaterialVO mapMaterialVO = new MapMaterialVO();
-		mapMaterialVO.getSearchVO().setSizeAndOffset(999999, 0);
-		mapMaterialVO.getSearchVO().setSearchCondition("ORGNZT_ID");
+		mapMaterialVO.setSizeAndOffset(999999, 0);
+		mapMaterialVO.setSearchCondition("ORGNZT_ID");
 
 		if (requestOfferVO.getOrgnztId() == null || requestOfferVO.getOrgnztId().equals("")) {
 			EgovMap vo = mapTeamList.get(0);
-			mapMaterialVO.getSearchVO().setSearchKeyword(vo.get("orgnztId").toString());
+			mapMaterialVO.setSearchKeyword(vo.get("orgnztId").toString());
 		} else {
-			mapMaterialVO.getSearchVO().setSearchKeyword(requestOfferVO.getOrgnztId());
+			mapMaterialVO.setSearchKeyword(requestOfferVO.getOrgnztId());
 		}
 		model.addAttribute("mapMaterialList", mapMaterialService.selectMapMaterialList(mapMaterialVO));
 		model.addAttribute(requestOfferVO);

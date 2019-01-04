@@ -142,12 +142,12 @@ public class NoteManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		baseVO.getSearchVO().fillPageInfo(paginationInfo);
+		baseVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", noteManageService.selectNoteEmpList(baseVO));
 
 		int totCnt = (Integer) noteManageService.selectNoteEmpListCnt(baseVO);
-		baseVO.getSearchVO().setTotalRecordCount(totCnt);
+		baseVO.setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

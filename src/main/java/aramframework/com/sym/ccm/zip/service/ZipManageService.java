@@ -76,10 +76,7 @@ public class ZipManageService extends EgovAbstractServiceImpl {
 	 * @param zipVO
 	 */
 	public ZipVO selectZipDetail(ZipVO zipVO) {
-		ZipVO resultVo = zipManageMapper.selectZipDetail(zipVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(zipVO.getSearchVO()); 
-		return resultVo;
+		return zipManageMapper.selectZipDetail(zipVO);
 	}
 
 	/**
@@ -162,7 +159,7 @@ public class ZipManageService extends EgovAbstractServiceImpl {
 		List<EgovMap> result = new ArrayList<EgovMap>();
 		int cnt = 0;
 
-		if( zipVO.getSearchVO().getSearchKeyword() != null && !zipVO.getSearchVO().getSearchKeyword().equals("") ) {
+		if( zipVO.getSearchKeyword() != null && !zipVO.getSearchKeyword().equals("") ) {
 	        String indexName = AramProperties.getProperty("Globals.zipIndexPath");       
 	        IndexSearcher searcher = null;         
 	        TopDocs hits = null;                   
@@ -175,7 +172,7 @@ public class ZipManageService extends EgovAbstractServiceImpl {
 				throw new RuntimeException(e);
 	        }	  
 
-	        String queryString = zipVO.getSearchVO().getSearchKeyword();           
+	        String queryString = zipVO.getSearchKeyword();           
 	        Query query = null;                     
 	        Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_29);           
             try {
@@ -187,7 +184,7 @@ public class ZipManageService extends EgovAbstractServiceImpl {
 				throw new RuntimeException(e);
             }
             try {
-				hits = searcher.search(query, zipVO.getSearchVO().getRecordPerPage() + zipVO.getSearchVO().getFirstIndex());
+				hits = searcher.search(query, zipVO.getRecordPerPage() + zipVO.getFirstIndex());
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}   // run the query 
@@ -209,10 +206,10 @@ public class ZipManageService extends EgovAbstractServiceImpl {
             LOG.debug("totalRecord = " + hits.totalHits);
 */            
     		EgovMap target = null;
-    		int lastIndex = zipVO.getSearchVO().getLastIndex();
+    		int lastIndex = zipVO.getLastIndex();
     		if( lastIndex > hits.totalHits ) lastIndex = hits.totalHits;
             try {
-	            for (int i = zipVO.getSearchVO().getFirstIndex(); i < lastIndex; i++) {  // for each element
+	            for (int i = zipVO.getFirstIndex(); i < lastIndex; i++) {  // for each element
 	                Document doc = searcher.doc(hits.scoreDocs[i].doc);                    //get the next document 
 	          		target = new EgovMap();
 	           		target.put("zip", doc.get("zipcode"));

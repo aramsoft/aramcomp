@@ -58,12 +58,12 @@ public class BatchSchdulController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		batchSchdulVO.getSearchVO().fillPageInfo(paginationInfo);
+		batchSchdulVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", batchSchdulService.selectBatchSchdulList(batchSchdulVO));
 		int totCnt = batchSchdulService.selectBatchSchdulListCnt(batchSchdulVO);
 
-		batchSchdulVO.getSearchVO().setTotalRecordCount(totCnt);
+		batchSchdulVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

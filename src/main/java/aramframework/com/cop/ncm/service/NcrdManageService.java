@@ -53,10 +53,7 @@ public class NcrdManageService extends EgovAbstractServiceImpl {
 	 * @param nameCardVO
 	 */
 	public NameCardVO selectNcrdItem(NameCardVO nameCardVO) {
-		NameCardVO resultVo = ncrdManageMapper.selectNcrdItem(nameCardVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(nameCardVO.getSearchVO()); 
-		return resultVo;
+		return ncrdManageMapper.selectNcrdItem(nameCardVO);
 	}
 
 	/**

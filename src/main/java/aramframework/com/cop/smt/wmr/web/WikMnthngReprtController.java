@@ -59,12 +59,12 @@ public class WikMnthngReprtController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		baseVO.getSearchVO().fillPageInfo(paginationInfo);
+		baseVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", wikMnthngReprtService.selectReportrList(baseVO));
 
 		int totCnt = wikMnthngReprtService.selectReportrListCnt(baseVO);
-		baseVO.getSearchVO().setTotalRecordCount(totCnt);
+		baseVO.setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
@@ -89,12 +89,12 @@ public class WikMnthngReprtController {
 		wikMnthngReprtVO.setSearchId(loginVO.getUniqId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		wikMnthngReprtVO.getSearchVO().fillPageInfo(paginationInfo);
+		wikMnthngReprtVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", wikMnthngReprtService.selectWikMnthngReprtList(wikMnthngReprtVO));
 
 		int totCnt = wikMnthngReprtService.selectWikMnthngReprtListCnt(wikMnthngReprtVO);
-		wikMnthngReprtVO.getSearchVO().setTotalRecordCount(totCnt);
+		wikMnthngReprtVO.setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute(paginationInfo);

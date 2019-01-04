@@ -52,10 +52,7 @@ public class OnlinePollPartcptnService extends EgovAbstractServiceImpl {
 	 * @param onlinePollPartcptnVO
 	 */
 	public OnlinePollPartcptnVO selectOnlinePollManageDetail(OnlinePollPartcptnVO onlinePollPartcptnVO) {
-		OnlinePollPartcptnVO resultVo = onlinePollPartcptnMapper.selectOnlinePollManageDetail(onlinePollPartcptnVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(onlinePollPartcptnVO.getSearchVO()); 
-		return resultVo;
+		return onlinePollPartcptnMapper.selectOnlinePollManageDetail(onlinePollPartcptnVO);
 	}
 
 	/**

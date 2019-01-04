@@ -56,10 +56,7 @@ public class BannerService extends EgovAbstractServiceImpl {
 	 * @param bannerVO
 	 */
 	public BannerVO selectBanner(BannerVO bannerVO) {
-		BannerVO resultVo = bannerMapper.selectBanner(bannerVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(bannerVO.getSearchVO()); 
-		return resultVo;
+		return bannerMapper.selectBanner(bannerVO);
 	}
 
 	/**

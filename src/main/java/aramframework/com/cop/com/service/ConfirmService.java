@@ -54,10 +54,7 @@ public class ConfirmService extends EgovAbstractServiceImpl {
 	 * @param confirmHistoryVO
 	 */
 	public ConfirmHistoryVO selectSingleConfirmRequest(ConfirmHistoryVO confirmHistoryVO) {
-		ConfirmHistoryVO resultVo = confirmMapper.selectSingleConfirmRequest(confirmHistoryVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(confirmHistoryVO.getSearchVO()); 
-		return resultVo;
+		return confirmMapper.selectSingleConfirmRequest(confirmHistoryVO);
 	}
 
 	/**

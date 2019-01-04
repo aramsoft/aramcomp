@@ -61,12 +61,12 @@ public class SynchrnServerController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		synchrnServerVO.getSearchVO().fillPageInfo(paginationInfo);
+		synchrnServerVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", synchrnServerService.selectSynchrnServerList(synchrnServerVO));
 		int totCnt = synchrnServerService.selectSynchrnServerListCnt(synchrnServerVO);
 
-		synchrnServerVO.getSearchVO().setTotalRecordCount(totCnt);
+		synchrnServerVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

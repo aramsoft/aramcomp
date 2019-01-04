@@ -67,12 +67,12 @@ public class LoginScrinImageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		loginScrinImageVO.getSearchVO().fillPageInfo(paginationInfo);
+		loginScrinImageVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", loginScrinImageService.selectLoginScrinImageList(loginScrinImageVO));
 		int totCnt = loginScrinImageService.selectLoginScrinImageListCnt(loginScrinImageVO);
 
-		loginScrinImageVO.getSearchVO().setTotalRecordCount(totCnt);
+		loginScrinImageVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

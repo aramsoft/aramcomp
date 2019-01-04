@@ -57,10 +57,7 @@ public class BackupOpertService extends EgovAbstractServiceImpl {
 	 * @param backupOpertVO
 	 */
 	public BackupOpertVO selectBackupOpert(BackupOpertVO backupOpertVO) {
-		BackupOpertVO resultVo = backupOpertMapper.selectBackupOpert(backupOpertVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(backupOpertVO.getSearchVO()); 
-		return resultVo;
+		return backupOpertMapper.selectBackupOpert(backupOpertVO);
 	}
 
 	/**

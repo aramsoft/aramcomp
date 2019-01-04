@@ -28,8 +28,8 @@
 					   	ON a.PROCESS_SE_CODE = c.CODE
 			 WHERE 1=1
 		]]>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
-            <![CDATA[ AND a.CODE_NM LIKE '%'||#{searchVO.searchKeyword}||'%' ]]>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+            <![CDATA[ AND a.CODE_NM LIKE '%'||#{searchKeyword}||'%' ]]>
 		</if>
      	<if test='searchBgnDe != null and searchBgnDe != ""'>
 			<![CDATA[ AND a.OCCRRNC_DE BETWEEN #{searchBgnDe} AND #{searchEndDe} ]]>
@@ -41,7 +41,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>			
 	</select>
 
@@ -58,8 +58,8 @@
 					   	ON a.PROCESS_SE_CODE = c.CODE
 			 WHERE 1=1
 		]]>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
-            <![CDATA[ AND a.CODE_NM LIKE '%'||#{searchVO.searchKeyword}||'%' ]]>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+            <![CDATA[ AND a.CODE_NM LIKE '%'||#{searchKeyword}||'%' ]]>
 		</if>
      	<if test='searchBgnDe != null and searchBgnDe != ""'>
 			<![CDATA[ AND a.OCCRRNC_DE BETWEEN #{searchBgnDe} AND #{searchEndDe} ]]>

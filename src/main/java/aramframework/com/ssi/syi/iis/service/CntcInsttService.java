@@ -62,10 +62,7 @@ public class CntcInsttService extends EgovAbstractServiceImpl {
 	 * @param cntcInsttVO
 	 */
 	public CntcInsttVO selectCntcInsttDetail(CntcInsttVO cntcInsttVO) {
-		CntcInsttVO resultVo =  cntcInsttMapper.selectCntcInsttDetail(cntcInsttVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(cntcInsttVO.getSearchVO()); 
-		return resultVo;
+		return cntcInsttMapper.selectCntcInsttDetail(cntcInsttVO);
 	}
 
 	/**
@@ -124,10 +121,7 @@ public class CntcInsttService extends EgovAbstractServiceImpl {
 	 * @param cntcSystemVO
 	 */
 	public CntcSystemVO selectCntcSystemDetail(CntcSystemVO cntcSystemVO) {
-		CntcSystemVO resultVo = cntcInsttMapper.selectCntcSystemDetail(cntcSystemVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(cntcSystemVO.getSearchVO()); 
-		return resultVo;
+		return cntcInsttMapper.selectCntcSystemDetail(cntcSystemVO);
 	}
 
 	/**
@@ -186,10 +180,7 @@ public class CntcInsttService extends EgovAbstractServiceImpl {
 	 * @param cntcServiceVO
 	 */
 	public CntcServiceVO selectCntcServiceDetail(CntcServiceVO cntcServiceVO) {
-		CntcServiceVO resultVo = cntcInsttMapper.selectCntcServiceDetail(cntcServiceVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(cntcServiceVO.getSearchVO()); 
-		return resultVo;
+		return cntcInsttMapper.selectCntcServiceDetail(cntcServiceVO);
 	}
 
 	/**

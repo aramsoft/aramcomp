@@ -51,10 +51,7 @@ public class DbMntrngService extends EgovAbstractServiceImpl {
 	 * @param dbMntrngVO
 	 */
 	public DbMntrngVO selectDbMntrng(DbMntrngVO dbMntrngVO) {
-		DbMntrngVO resultVo = dbMntrngMapper.selectDbMntrng(dbMntrngVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(dbMntrngVO.getSearchVO()); 
-		return resultVo;
+		return dbMntrngMapper.selectDbMntrng(dbMntrngVO);
 	}
 
 	/**
@@ -110,10 +107,7 @@ public class DbMntrngService extends EgovAbstractServiceImpl {
 	 * @param dbMntrngLogVO
 	 */
 	public DbMntrngLogVO selectDbMntrngLog(DbMntrngLogVO dbMntrngLogVO) {
-		DbMntrngLogVO resultVo = dbMntrngMapper.selectDbMntrngLog(dbMntrngLogVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(dbMntrngLogVO.getSearchVO()); 
-		return resultVo;
+		return dbMntrngMapper.selectDbMntrngLog(dbMntrngLogVO);
 	}
 
 	/**

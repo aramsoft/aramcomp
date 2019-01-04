@@ -47,10 +47,7 @@ public class AdministCodeManageService extends EgovAbstractServiceImpl {
 	 * @param administCodeVO
 	 */
 	public AdministCodeVO selectAdministCodeDetail(AdministCodeVO administCodeVO) {
-		AdministCodeVO resultVo = administCodeManageMapper.selectAdministCodeDetail(administCodeVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(administCodeVO.getSearchVO()); 
-		return resultVo;
+		return administCodeManageMapper.selectAdministCodeDetail(administCodeVO);
 	}
 
 	/**

@@ -52,10 +52,7 @@ public class SysHistoryService extends EgovAbstractServiceImpl {
 	 * @param sysHistoryVO
 	 */
 	public SysHistoryVO selectSysHistory(SysHistoryVO sysHistoryVO) {
-		SysHistoryVO resultVo = sysHistoryMapper.selectSysHistory(sysHistoryVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(sysHistoryVO.getSearchVO()); 
-		return resultVo;
+		return sysHistoryMapper.selectSysHistory(sysHistoryVO);
 	}
 
 	/**

@@ -59,10 +59,7 @@ public class ServerService extends EgovAbstractServiceImpl {
 	 * @param serverEqpmnVO
 	 */
 	public ServerEqpmnVO selectServerEqpmn(ServerEqpmnVO serverEqpmnVO) {
-		ServerEqpmnVO resultVo = serverMapper.selectServerEqpmn(serverEqpmnVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(serverEqpmnVO.getSearchVO()); 
-		return resultVo;
+		return serverMapper.selectServerEqpmn(serverEqpmnVO);
 	}
 
 	/**
@@ -121,10 +118,7 @@ public class ServerService extends EgovAbstractServiceImpl {
 	 * @param serverVO
 	 */
 	public ServerVO selectServer(ServerVO serverVO) {
-		ServerVO resultVo = serverMapper.selectServer(serverVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(serverVO.getSearchVO()); 
-		return resultVo;
+		return serverMapper.selectServer(serverVO);
 	}
 
 	/**

@@ -18,16 +18,16 @@
 		      FROM COMTN_ONLINE_MANUAL A
 		     WHERE 1=1
 	 	]]>
-	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "ONLINE_MNL_NM"'>
-                <![CDATA[ AND ONLINE_MNL_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "ONLINE_MNL_NM"'>
+                <![CDATA[ AND ONLINE_MNL_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "ONLINE_MNL_DFN"'>
-                <![CDATA[ AND ONLINE_MNL_DFN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "ONLINE_MNL_DFN"'>
+                <![CDATA[ AND ONLINE_MNL_DFN LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "ONLINE_MNL_DC"'>
-                <![CDATA[ AND ONLINE_MNL_DC LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "ONLINE_MNL_DC"'>
+                <![CDATA[ AND ONLINE_MNL_DC LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -36,7 +36,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			 LIMIT #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
 	</select>
 	
@@ -47,16 +47,16 @@
 			  FROM COMTN_ONLINE_MANUAL
 			 WHERE 1=1
         ]]>			
-	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "ONLINE_MNL_NM"'>
-                <![CDATA[ AND ONLINE_MNL_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "ONLINE_MNL_NM"'>
+                <![CDATA[ AND ONLINE_MNL_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "ONLINE_MNL_DFN"'>
-                <![CDATA[ AND ONLINE_MNL_DFN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "ONLINE_MNL_DFN"'>
+                <![CDATA[ AND ONLINE_MNL_DFN LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "ONLINE_MNL_DC"'>
-                <![CDATA[ AND ONLINE_MNL_DC LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "ONLINE_MNL_DC"'>
+                <![CDATA[ AND ONLINE_MNL_DC LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

@@ -50,12 +50,12 @@ public class HpcmManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		hpcmManageVO.getSearchVO().fillPageInfo(paginationInfo);
+		hpcmManageVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", hpcmManageService.selectHpcmList(hpcmManageVO));
 		int totCnt = hpcmManageService.selectHpcmListCnt(hpcmManageVO);
 
-		hpcmManageVO.getSearchVO().setTotalRecordCount(totCnt);
+		hpcmManageVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

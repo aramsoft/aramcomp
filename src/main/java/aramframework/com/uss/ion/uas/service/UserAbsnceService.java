@@ -48,10 +48,7 @@ public class UserAbsnceService extends EgovAbstractServiceImpl {
 	 * @param userAbsnceVO
 	 */
 	public UserAbsnceVO selectUserAbsnce(UserAbsnceVO userAbsnceVO) {
-		UserAbsnceVO resultVo = userAbsnceMapper.selectUserAbsnce(userAbsnceVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(userAbsnceVO.getSearchVO()); 
-		return resultVo;
+		return userAbsnceMapper.selectUserAbsnce(userAbsnceVO);
 	}
 
 	/**

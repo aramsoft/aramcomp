@@ -16,13 +16,13 @@
               FROM COMTN_BATCH_OPERT A
              WHERE USE_AT = 'Y'
         ]]>
-       	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+       	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "BATCH_OPERT_NM"'>
-                 <![CDATA[ AND A.BATCH_OPERT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BATCH_OPERT_NM"'>
+                 <![CDATA[ AND A.BATCH_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "BATCH_PROGRM"'>
-                 <![CDATA[ AND A.BATCH_PROGRM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BATCH_PROGRM"'>
+                 <![CDATA[ AND A.BATCH_PROGRM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -31,7 +31,7 @@
         ]]>             
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
     </select>
 
@@ -41,13 +41,13 @@
               FROM COMTN_BATCH_OPERT A
              WHERE USE_AT = 'Y'
         ]]>
-       	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+       	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "BATCH_OPERT_NM"'>
-                 <![CDATA[ AND A.BATCH_OPERT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BATCH_OPERT_NM"'>
+                 <![CDATA[ AND A.BATCH_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "BATCH_PROGRM"'>
-                 <![CDATA[ AND A.BATCH_PROGRM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BATCH_PROGRM"'>
+                 <![CDATA[ AND A.BATCH_PROGRM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

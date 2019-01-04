@@ -95,10 +95,7 @@ public class SchdulManageService extends EgovAbstractServiceImpl {
 	 * @param schdulManageVO
 	 */
 	public SchdulManageVO selectSchdulManageDetail(SchdulManageVO schdulManageVO) {
-		SchdulManageVO resultVo =schdulManageMapper.selectSchdulManageDetail(schdulManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(schdulManageVO.getSearchVO()); 
-		return resultVo;
+		return schdulManageMapper.selectSchdulManageDetail(schdulManageVO);
 	}
 
 	/**

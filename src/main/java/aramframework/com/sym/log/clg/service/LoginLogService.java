@@ -53,10 +53,7 @@ public class LoginLogService extends EgovAbstractServiceImpl {
 	 * @param loginLogVO
 	 */
 	public LoginLogVO selectLoginLog(LoginLogVO loginLogVO) {
-		LoginLogVO resultVo = loginLogMapper.selectLoginLog(loginLogVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(loginLogVO.getSearchVO()); 
-		return resultVo;
+		return loginLogMapper.selectLoginLog(loginLogVO);
 	}
 
 	/**

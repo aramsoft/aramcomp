@@ -52,12 +52,12 @@ public class OnlinePollManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		onlinePollManageVO.getSearchVO().fillPageInfo(paginationInfo);
+		onlinePollManageVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", onlinePollManageService.selectOnlinePollManageList(onlinePollManageVO));
 		int totCnt = (Integer) onlinePollManageService.selectOnlinePollManageListCnt(onlinePollManageVO);
 
-		onlinePollManageVO.getSearchVO().setTotalRecordCount(totCnt);
+		onlinePollManageVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

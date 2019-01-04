@@ -62,10 +62,7 @@ public class ResourceService extends EgovAbstractServiceImpl {
 	 * @param resourceVO
 	 */
 	public ResourceVO selectResource(ResourceVO resourceVO) {
-		ResourceVO resultVo = resourceMapper.selectResource(resourceVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(resourceVO.getSearchVO()); 
-		return resultVo;
+		return resourceMapper.selectResource(resourceVO);
 	}
 
 	/**

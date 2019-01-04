@@ -57,10 +57,7 @@ public class CnsltManageService extends EgovAbstractServiceImpl {
 	 * @param cnsltManageVO
 	 */
 	public CnsltManageVO selectCnsltListDetail(CnsltManageVO cnsltManageVO) {
-		CnsltManageVO resultVo = cnsltManageMapper.selectCnsltListDetail(cnsltManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(cnsltManageVO.getSearchVO()); 
-		return resultVo;
+		return cnsltManageMapper.selectCnsltListDetail(cnsltManageVO);
 	}
 
 	/**
@@ -140,10 +137,7 @@ public class CnsltManageService extends EgovAbstractServiceImpl {
 	 * @param cnsltManageVO
 	 */
 	public CnsltManageVO selectCnsltAnswerDetail(CnsltManageVO cnsltManageVO) {
-		CnsltManageVO resultVo = cnsltManageMapper.selectCnsltAnswerDetail(cnsltManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(cnsltManageVO.getSearchVO()); 
-		return resultVo;
+		return cnsltManageMapper.selectCnsltAnswerDetail(cnsltManageVO);
 	}
 
 	/**

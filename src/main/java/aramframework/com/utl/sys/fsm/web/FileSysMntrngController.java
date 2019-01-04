@@ -55,12 +55,12 @@ public class FileSysMntrngController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		fileSysMntrngVO.getSearchVO().fillPageInfo(paginationInfo);
+		fileSysMntrngVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", fileSysMntrngService.selectFileSysMntrngList(fileSysMntrngVO));
 		int totCnt = fileSysMntrngService.selectFileSysMntrngListCnt(fileSysMntrngVO);
 
-		fileSysMntrngVO.getSearchVO().setTotalRecordCount(totCnt);
+		fileSysMntrngVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -236,7 +236,7 @@ public class FileSysMntrngController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		fileSysMntrngLogVO.getSearchVO().fillPageInfo(paginationInfo);
+		fileSysMntrngLogVO.fillPageInfo(paginationInfo);
 
 		// 조회기간설정
 		if (fileSysMntrngLogVO.getSearchBgnDe() != null && fileSysMntrngLogVO.getSearchEndDe() != null) {
@@ -262,7 +262,7 @@ public class FileSysMntrngController {
 		model.addAttribute("resultList", list);
 		int totCnt = fileSysMntrngService.selectFileSysMntrngLogListCnt(fileSysMntrngLogVO);
 
-		fileSysMntrngLogVO.getSearchVO().setTotalRecordCount(totCnt);
+		fileSysMntrngLogVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

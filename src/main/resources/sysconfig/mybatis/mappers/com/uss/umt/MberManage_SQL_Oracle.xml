@@ -29,13 +29,13 @@
     	<if test='sbscrbSttus != 0 '>
                	<![CDATA[ AND MBER_STTUS LIKE  #{sbscrbSttus} ]]>	
 		</if>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "MBER_ID"'>
-                <![CDATA[ AND MBER_ID LIKE #{searchVO.searchKeyword}  ]]>	
+            <when test='searchCondition == "MBER_ID"'>
+                <![CDATA[ AND MBER_ID LIKE #{searchKeyword}  ]]>	
             </when>
-            <when test='searchVO.searchCondition == "MBER_NM"'>
-                <![CDATA[ AND MBER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>	
+            <when test='searchCondition == "MBER_NM"'>
+                <![CDATA[ AND MBER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>	
             </when>
         </choose>
 		</if>
@@ -46,7 +46,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>			
     </select>
      
@@ -60,13 +60,13 @@
     	<if test='sbscrbSttus != 0 '>
                	<![CDATA[ AND MBER_STTUS LIKE  #{sbscrbSttus} ]]>	
 		</if>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "MBER_ID"'>
-                <![CDATA[ AND MBER_ID LIKE #{searchVO.searchKeyword}  ]]>	
+            <when test='searchCondition == "MBER_ID"'>
+                <![CDATA[ AND MBER_ID LIKE #{searchKeyword}  ]]>	
             </when>
-            <when test='searchVO.searchCondition == "MBER_NM"'>
-                <![CDATA[ AND MBER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>	
+            <when test='searchCondition == "MBER_NM"'>
+                <![CDATA[ AND MBER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>	
             </when>
         </choose>
 		</if>

@@ -61,10 +61,7 @@ public class MemoTodoService extends EgovAbstractServiceImpl {
 	 * @param memoTodoVO
 	 */
 	public MemoTodoVO selectMemoTodo(MemoTodoVO memoTodoVO) {
-		MemoTodoVO resultVo = memoTodoMapper.selectMemoTodo(memoTodoVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(memoTodoVO.getSearchVO()); 
-		return resultVo;
+		return memoTodoMapper.selectMemoTodo(memoTodoVO);
 	}
 
 	/**

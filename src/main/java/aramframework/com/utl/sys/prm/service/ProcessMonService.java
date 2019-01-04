@@ -61,10 +61,7 @@ public class ProcessMonService extends EgovAbstractServiceImpl {
 	 * @return 				PROCESS모니터링 Vo
 	 */
 	public ProcessMonVO selectProcessMon(ProcessMonVO processMonVO) {
-		ProcessMonVO resultVo = processMonMapper.selectProcessMon(processMonVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(processMonVO.getSearchVO()); 
-		return resultVo;
+		return processMonMapper.selectProcessMon(processMonVO);
 	}
 
 	/**
@@ -152,10 +149,7 @@ public class ProcessMonService extends EgovAbstractServiceImpl {
 	 * @return 					ProcessMonLogVO
 	 */
 	public ProcessMonLogVO selectProcessMonLog(ProcessMonLogVO processMonLogVO) {
-		ProcessMonLogVO resultVo = processMonMapper.selectProcessMonLog(processMonLogVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(processMonLogVO.getSearchVO()); 
-		return resultVo;
+		return processMonMapper.selectProcessMonLog(processMonLogVO);
 	}
 
 	/**

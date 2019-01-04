@@ -43,19 +43,19 @@
               FROM COMTH_INSTT_CODE_LOG
              WHERE 1 = 1
         ]]>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
-            <if test='searchVO.searchCondition == "ALL_INSTT_NM"'>
-				<![CDATA[ AND ALL_INSTT_NM LIKE '%'||#{searchVO.searchKeyword}||'%']]>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+            <if test='searchCondition == "ALL_INSTT_NM"'>
+				<![CDATA[ AND ALL_INSTT_NM LIKE '%'||#{searchKeyword}||'%']]>
             </if>
 		</if>
-        <if test='searchVO.searchCondition == "CodeList"'>
+        <if test='searchCondition == "CodeList"'>
 				<![CDATA[ AND INSTT_CODE = #{insttCode} ]]>    
         </if>        
         /* 구현 Sql */
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>			
     </select>
 
@@ -66,12 +66,12 @@
               FROM COMTH_INSTT_CODE_LOG
              WHERE 1 = 1
         ]]>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
-            <if test='searchVO.searchCondition == "ALL_INSTT_NM"'>
-				<![CDATA[ AND ALL_INSTT_NM LIKE '%'||#{searchVO.searchKeyword}||'%']]>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
+            <if test='searchCondition == "ALL_INSTT_NM"'>
+				<![CDATA[ AND ALL_INSTT_NM LIKE '%'||#{searchKeyword}||'%']]>
             </if>
 		</if>
-        <if test='searchVO.searchCondition == "CodeList"'>
+        <if test='searchCondition == "CodeList"'>
 				<![CDATA[ AND INSTT_CODE = #{insttCode} ]]>    
         </if>        
     </select>

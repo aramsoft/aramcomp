@@ -56,10 +56,7 @@ public class LoginScrinImageService extends EgovAbstractServiceImpl {
 	 * @param loginScrinImageVO
 	 */
 	public LoginScrinImageVO selectLoginScrinImage(LoginScrinImageVO loginScrinImageVO) {
-		LoginScrinImageVO resultVo = loginScrinImageMapper.selectLoginScrinImage(loginScrinImageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(loginScrinImageVO.getSearchVO()); 
-		return resultVo;
+		return loginScrinImageMapper.selectLoginScrinImage(loginScrinImageVO);
 	}
 
 	/**

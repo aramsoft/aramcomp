@@ -51,12 +51,12 @@ public class BBSUseInfoController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		boardUseInfVO.getSearchVO().fillPageInfo(paginationInfo);
+		boardUseInfVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", bbsUseService.selectBBSUseInfs(boardUseInfVO));
 		int totCnt = bbsUseService.selectBBSUseInfsCnt(boardUseInfVO);
 
-		boardUseInfVO.getSearchVO().setTotalRecordCount(totCnt);
+		boardUseInfVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

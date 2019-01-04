@@ -56,10 +56,7 @@ public class BatchOpertService extends EgovAbstractServiceImpl {
 	 * @param batchOpertVO
 	 */
 	public BatchOpertVO selectBatchOpert(BatchOpertVO batchOpertVO) {
-		BatchOpertVO resultVo = batchOpertMapper.selectBatchOpert(batchOpertVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(batchOpertVO.getSearchVO()); 
-		return resultVo;
+		return batchOpertMapper.selectBatchOpert(batchOpertVO);
 	}
 
 	/**

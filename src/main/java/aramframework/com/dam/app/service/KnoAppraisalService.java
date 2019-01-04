@@ -47,10 +47,7 @@ public class KnoAppraisalService extends EgovAbstractServiceImpl {
 	 * @param knoAppraisalVO
 	 */
 	public KnoAppraisalVO selectKnoAppraisal(KnoAppraisalVO knoAppraisalVO) {
-		KnoAppraisalVO resultVo = knoAppraisalMapper.selectKnoAppraisal(knoAppraisalVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(knoAppraisalVO.getSearchVO()); 
-		return resultVo;
+		return knoAppraisalMapper.selectKnoAppraisal(knoAppraisalVO);
 	}
 
 	/**

@@ -51,12 +51,12 @@ public class QnaManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		qnaManageVO.getSearchVO().fillPageInfo(paginationInfo);
+		qnaManageVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", qnaManageService.selectQnaList(qnaManageVO));
 		int totCnt = qnaManageService.selectQnaListCnt(qnaManageVO);
 
-		qnaManageVO.getSearchVO().setTotalRecordCount(totCnt);
+		qnaManageVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -337,12 +337,12 @@ public class QnaManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		qnaManageVO.getSearchVO().fillPageInfo(paginationInfo);
+		qnaManageVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", qnaManageService.selectQnaAnswerList(qnaManageVO));
 		int totCnt = qnaManageService.selectQnaAnswerListCnt(qnaManageVO);
 
-		qnaManageVO.getSearchVO().setTotalRecordCount(totCnt);
+		qnaManageVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

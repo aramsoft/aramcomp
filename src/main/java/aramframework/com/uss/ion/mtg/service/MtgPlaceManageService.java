@@ -66,10 +66,7 @@ public class MtgPlaceManageService extends EgovAbstractServiceImpl {
 	 * @param mtgPlaceManageVO
 	 */
 	public MtgPlaceManageVO selectMtgPlaceManage(MtgPlaceManageVO mtgPlaceManageVO) {
-		MtgPlaceManageVO resultVo = mtgPlaceManageMapper.selectMtgPlaceManage(mtgPlaceManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(mtgPlaceManageVO.getSearchVO()); 
-		return resultVo;
+		return mtgPlaceManageMapper.selectMtgPlaceManage(mtgPlaceManageVO);
 	}
 
 	/**
@@ -190,10 +187,7 @@ public class MtgPlaceManageService extends EgovAbstractServiceImpl {
 	 * @param mtgPlaceResveVO
 	 */
 	public MtgPlaceResveVO selectMtgPlaceResveDetail(MtgPlaceResveVO mtgPlaceResveVO) {
-		MtgPlaceResveVO resultVo = mtgPlaceManageMapper.selectMtgPlaceResveDetail(mtgPlaceResveVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(mtgPlaceResveVO.getSearchVO()); 
-		return resultVo;
+		return mtgPlaceManageMapper.selectMtgPlaceResveDetail(mtgPlaceResveVO);
 	}
 
 	/**

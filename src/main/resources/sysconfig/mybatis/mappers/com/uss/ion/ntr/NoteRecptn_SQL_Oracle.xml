@@ -30,19 +30,19 @@
 			          	AND NOTE_TNS.NOTE_TRNSMIT_ID=NOTE_RNS.NOTE_TRNSMIT_ID
 			 WHERE NOTE_RNS.RCVER_ID = #{rcverId}
 		]]>
- 	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+ 	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "RCVER_ID"'>
-				<![CDATA[ AND NOTE_RNS.RCVER_ID = (SELECT ESNTL_ID FROM COMTN_EMPLYR_INFO WHERE EMPLYR_ID = #{searchVO.searchKeyword}) ]]>
+            <when test='searchCondition == "RCVER_ID"'>
+				<![CDATA[ AND NOTE_RNS.RCVER_ID = (SELECT ESNTL_ID FROM COMTN_EMPLYR_INFO WHERE EMPLYR_ID = #{searchKeyword}) ]]>
             </when>
-            <when test='searchVO.searchCondition == "RCVER_NM"'>
-				<![CDATA[ AND NOTE_RNS.RCVER_ID = (SELECT ESNTL_ID FROM COMTN_EMPLYR_INFO WHERE USER_NM =  #{searchVO.searchKeyword}) ]]>
+            <when test='searchCondition == "RCVER_NM"'>
+				<![CDATA[ AND NOTE_RNS.RCVER_ID = (SELECT ESNTL_ID FROM COMTN_EMPLYR_INFO WHERE USER_NM =  #{searchKeyword}) ]]>
             </when>
-            <when test='searchVO.searchCondition == "NOTE_SJ"'>
-               	<![CDATA[ AND NOTE.NOTE_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "NOTE_SJ"'>
+               	<![CDATA[ AND NOTE.NOTE_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "NOTE_CN"'>
-               	<![CDATA[ AND NOTE.NOTE_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "NOTE_CN"'>
+               	<![CDATA[ AND NOTE.NOTE_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -61,7 +61,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>			
 	</select>
 
@@ -77,19 +77,19 @@
 			          	AND NOTE_TNS.NOTE_TRNSMIT_ID=NOTE_RNS.NOTE_TRNSMIT_ID
 			 WHERE NOTE_RNS.RCVER_ID = #{rcverId}
         ]]>			
- 	    <if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+ 	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "RCVER_ID"'>
-				<![CDATA[ AND NOTE_RNS.RCVER_ID = (SELECT ESNTL_ID FROM COMTN_EMPLYR_INFO WHERE EMPLYR_ID = #{searchVO.searchKeyword}) ]]>
+            <when test='searchCondition == "RCVER_ID"'>
+				<![CDATA[ AND NOTE_RNS.RCVER_ID = (SELECT ESNTL_ID FROM COMTN_EMPLYR_INFO WHERE EMPLYR_ID = #{searchKeyword}) ]]>
             </when>
-            <when test='searchVO.searchCondition == "RCVER_NM"'>
-				<![CDATA[ AND NOTE_RNS.RCVER_ID = (SELECT ESNTL_ID FROM COMTN_EMPLYR_INFO WHERE USER_NM =  #{searchVO.searchKeyword}) ]]>
+            <when test='searchCondition == "RCVER_NM"'>
+				<![CDATA[ AND NOTE_RNS.RCVER_ID = (SELECT ESNTL_ID FROM COMTN_EMPLYR_INFO WHERE USER_NM =  #{searchKeyword}) ]]>
             </when>
-            <when test='searchVO.searchCondition == "NOTE_SJ"'>
-               	<![CDATA[ AND NOTE.NOTE_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "NOTE_SJ"'>
+               	<![CDATA[ AND NOTE.NOTE_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "NOTE_CN"'>
-               	<![CDATA[ AND NOTE.NOTE_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "NOTE_CN"'>
+               	<![CDATA[ AND NOTE.NOTE_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

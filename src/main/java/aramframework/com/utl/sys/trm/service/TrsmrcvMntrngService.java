@@ -52,10 +52,7 @@ public class TrsmrcvMntrngService extends EgovAbstractServiceImpl {
 	 * @param trsmrcvMntrngVO
 	 */
 	public TrsmrcvMntrngVO selectTrsmrcvMntrng(TrsmrcvMntrngVO trsmrcvMntrngVO) {
-		TrsmrcvMntrngVO resultVo = trsmrcvMntrngMapper.selectTrsmrcvMntrng(trsmrcvMntrngVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(trsmrcvMntrngVO.getSearchVO()); 
-		return resultVo;
+		return trsmrcvMntrngMapper.selectTrsmrcvMntrng(trsmrcvMntrngVO);
 	}
 
 	/**
@@ -111,10 +108,7 @@ public class TrsmrcvMntrngService extends EgovAbstractServiceImpl {
 	 * @param trsmrcvMntrngLogVO
 	 */
 	public TrsmrcvMntrngLogVO selectTrsmrcvMntrngLog(TrsmrcvMntrngLogVO trsmrcvMntrngLogVO) {
-		TrsmrcvMntrngLogVO resultVo = trsmrcvMntrngMapper.selectTrsmrcvMntrngLog(trsmrcvMntrngLogVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(trsmrcvMntrngLogVO.getSearchVO()); 
-		return resultVo;
+		return trsmrcvMntrngMapper.selectTrsmrcvMntrngLog(trsmrcvMntrngLogVO);
 	}
 
 	/**

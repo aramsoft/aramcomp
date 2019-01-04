@@ -23,13 +23,13 @@
 					   	ON A.RESTDE_SE_CODE = B.CODE
 			 WHERE 1=1
 		]]>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "RESTDE"'>
-				<![CDATA[ AND A.RESTDE = #{searchVO.searchKeyword}]]>
+            <when test='searchCondition == "RESTDE"'>
+				<![CDATA[ AND A.RESTDE = #{searchKeyword}]]>
             </when>
-            <when test='searchVO.searchCondition == "RESTDE_NM"'>
-				<![CDATA[ AND A.RESTDE_NM LIKE '%' || #{searchVO.searchKeyword} || '%']]>
+            <when test='searchCondition == "RESTDE_NM"'>
+				<![CDATA[ AND A.RESTDE_NM LIKE '%' || #{searchKeyword} || '%']]>
             </when>
         </choose>
 		</if>
@@ -40,7 +40,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>			
 	</select>
 
@@ -54,13 +54,13 @@
 					   	ON A.RESTDE_SE_CODE = B.CODE
 			 WHERE 1=1
 		]]>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "RESTDE"'>
-				<![CDATA[ AND A.RESTDE = #{searchVO.searchKeyword}]]>
+            <when test='searchCondition == "RESTDE"'>
+				<![CDATA[ AND A.RESTDE = #{searchKeyword}]]>
             </when>
-            <when test='searchVO.searchCondition == "RESTDE_NM"'>
-				<![CDATA[ AND A.RESTDE_NM LIKE '%' || #{searchVO.searchKeyword} || '%']]>
+            <when test='searchCondition == "RESTDE_NM"'>
+				<![CDATA[ AND A.RESTDE_NM LIKE '%' || #{searchKeyword} || '%']]>
             </when>
         </choose>
 		</if>

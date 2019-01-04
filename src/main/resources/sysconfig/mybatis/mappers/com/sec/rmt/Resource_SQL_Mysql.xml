@@ -33,15 +33,15 @@
               FROM COMTN_RESOURCE_INFO
              WHERE 1=1
         ]]>             
-    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
-                <![CDATA[ AND RESOURCE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+                <![CDATA[ AND RESOURCE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
 		</if>
         <![CDATA[            
             ORDER BY RESOURCE_CREAT_DE DESC 
         ]]> 
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
     </select>
 
@@ -52,8 +52,8 @@
               FROM COMTN_RESOURCE_INFO
              WHERE 1=1
         ]]> 
-    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
-                <![CDATA[ AND RESOURCE_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+                <![CDATA[ AND RESOURCE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
 		</if>
     </select>
 

@@ -66,12 +66,12 @@ public class DeptJobController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		baseVO.getSearchVO().fillPageInfo(paginationInfo);
+		baseVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", deptJobService.selectChargerList(baseVO));
 		int totCnt = deptJobService.selectChargerListCnt(baseVO);
 
-		baseVO.getSearchVO().setTotalRecordCount(totCnt);
+		baseVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -90,12 +90,12 @@ public class DeptJobController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		baseVO.getSearchVO().fillPageInfo(paginationInfo);
+		baseVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", deptJobService.selectDeptList(baseVO));
 		int totCnt = deptJobService.selectDeptListCnt(baseVO);
 
-		baseVO.getSearchVO().setTotalRecordCount(totCnt);
+		baseVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -117,14 +117,14 @@ public class DeptJobController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		deptJobBxVO.getSearchVO().fillPageInfo(paginationInfo);
+		deptJobBxVO.fillPageInfo(paginationInfo);
 
 		List<EgovMap> list = deptJobService.selectDeptJobBxList(deptJobBxVO);
 		model.addAttribute("resultList", list);
 		model.addAttribute("resultNum", list.size());
 		int totCnt = deptJobService.selectDeptJobBxListCnt(deptJobBxVO);
 
-		deptJobBxVO.getSearchVO().setTotalRecordCount(totCnt);
+		deptJobBxVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -324,12 +324,12 @@ public class DeptJobController {
 		}
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		deptJobVO.getSearchVO().fillPageInfo(paginationInfo);
+		deptJobVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", deptJobService.selectDeptJobList(deptJobVO));
 		int totCnt = deptJobService.selectDeptJobListCnt(deptJobVO);
 
-		deptJobVO.getSearchVO().setTotalRecordCount(totCnt);
+		deptJobVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

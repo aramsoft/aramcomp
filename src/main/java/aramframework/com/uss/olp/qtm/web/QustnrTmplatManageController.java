@@ -55,12 +55,12 @@ public class QustnrTmplatManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		qustnrTmplatManageVO.getSearchVO().fillPageInfo(paginationInfo);
+		qustnrTmplatManageVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", qustnrTmplatManageService.selectQustnrTmplatManageList(qustnrTmplatManageVO));
 		int totCnt = (Integer) qustnrTmplatManageService.selectQustnrTmplatManageListCnt(qustnrTmplatManageVO);
 
-		qustnrTmplatManageVO.getSearchVO().setTotalRecordCount(totCnt);
+		qustnrTmplatManageVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

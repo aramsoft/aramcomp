@@ -65,12 +65,12 @@ public class MberManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		mberManageVO.getSearchVO().fillPageInfo(paginationInfo);
+		mberManageVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", mberManageService.selectMberList(mberManageVO));
 		int totCnt = mberManageService.selectMberListCnt(mberManageVO);
 
-		mberManageVO.getSearchVO().setTotalRecordCount(totCnt);
+		mberManageVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

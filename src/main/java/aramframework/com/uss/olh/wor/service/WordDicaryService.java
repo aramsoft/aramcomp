@@ -53,10 +53,7 @@ public class WordDicaryService extends EgovAbstractServiceImpl {
 	 * @param wordDicaryVO
 	 */
 	public WordDicaryVO selectWordDicaryDetail(WordDicaryVO wordDicaryVO) {
-		WordDicaryVO resultVo = wordDicaryMapper.selectWordDicaryDetail(wordDicaryVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(wordDicaryVO.getSearchVO()); 
-		return resultVo;
+		return wordDicaryMapper.selectWordDicaryDetail(wordDicaryVO);
 	}
 
 	/**

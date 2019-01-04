@@ -32,16 +32,16 @@
     	<if test='trgetId != null and trgetId != ""'>
 		   		<![CDATA[ AND A.TRGET_ID = #{trgetId} ]]>
 		</if>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "QUSTNR_SJ"'>
-               	<![CDATA[ AND A.QUSTNR_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "QUSTNR_SJ"'>
+               	<![CDATA[ AND A.QUSTNR_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "FRST_REGISTER_ID"'>
+            <when test='searchCondition == "FRST_REGISTER_ID"'>
        			<![CDATA[
 			   		AND A.FRST_REGISTER_ID IN (SELECT ESNTL_ID 
 			 					        	     FROM COMVN_USER_MASTER 
-			 						    	    WHERE USER_NM LIKE '%' || #{searchVO.searchKeyword} || '%' )
+			 						    	    WHERE USER_NM LIKE '%' || #{searchKeyword} || '%' )
 				]]>
             </when>
         </choose>
@@ -51,7 +51,7 @@
 		]]>
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
 	</select>
 
@@ -65,16 +65,16 @@
     	<if test='trgetId != null and trgetId != ""'>
 		   		<![CDATA[ AND A.TRGET_ID = #{trgetId} ]]>
 		</if>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "QUSTNR_SJ"'>
-               	<![CDATA[ AND A.QUSTNR_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "QUSTNR_SJ"'>
+               	<![CDATA[ AND A.QUSTNR_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "FRST_REGISTER_ID"'>
+            <when test='searchCondition == "FRST_REGISTER_ID"'>
        			<![CDATA[
 			   		AND A.FRST_REGISTER_ID IN (SELECT ESNTL_ID 
 			 					        	     FROM COMVN_USER_MASTER 
-			 						    	    WHERE USER_NM LIKE '%' || #{searchVO.searchKeyword} || '%' )
+			 						    	    WHERE USER_NM LIKE '%' || #{searchKeyword} || '%' )
 				]]>
             </when>
         </choose>

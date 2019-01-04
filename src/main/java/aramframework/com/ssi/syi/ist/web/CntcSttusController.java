@@ -40,12 +40,12 @@ public class CntcSttusController {
 			ModelMap model) {
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
-		cntcSttusVO.getSearchVO().fillPageInfo(paginationInfo);
+		cntcSttusVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", cntcSttusService.selectCntcSttusList(cntcSttusVO));
 
 		int totCnt = cntcSttusService.selectCntcSttusListCnt(cntcSttusVO);
-		cntcSttusVO.getSearchVO().setTotalRecordCount(totCnt);
+		cntcSttusVO.setTotalRecordCount(totCnt);
 
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);

@@ -54,10 +54,7 @@ public class IntnetSvcGuidanceService extends EgovAbstractServiceImpl {
 	 * @param intnetSvcGuidanceVO
 	 */
 	public IntnetSvcGuidanceVO selectIntnetSvcGuidance(IntnetSvcGuidanceVO intnetSvcGuidanceVO) {
-		IntnetSvcGuidanceVO resultVo = intnetSvcGuidanceMapper.selectIntnetSvcGuidance(intnetSvcGuidanceVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(intnetSvcGuidanceVO.getSearchVO()); 
-		return resultVo;
+		return intnetSvcGuidanceMapper.selectIntnetSvcGuidance(intnetSvcGuidanceVO);
 	}
 
 	/**

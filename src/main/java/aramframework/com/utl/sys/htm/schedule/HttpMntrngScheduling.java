@@ -54,9 +54,9 @@ public class HttpMntrngScheduling {
 		HttpMntrngVO httpMonVO = new HttpMntrngVO();
 
 		// 모니터링 대상 검색 조건 초기화
-		httpMonVO.getSearchVO().setPageIndex(1);
-		httpMonVO.getSearchVO().setFirstIndex(0);
-		httpMonVO.getSearchVO().setRecordPerPage(RECORD_COUNT_PER_PAGE);
+		httpMonVO.setPageIndex(1);
+		httpMonVO.setFirstIndex(0);
+		httpMonVO.setRecordPerPage(RECORD_COUNT_PER_PAGE);
 		targetList = httpMntrngService.selectHttpMntrngList(httpMonVO);
 
 		if (LOG.isDebugEnabled()) {

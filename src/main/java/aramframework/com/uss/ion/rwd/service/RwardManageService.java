@@ -62,10 +62,7 @@ public class RwardManageService extends EgovAbstractServiceImpl {
 	 * @param rwardManageVO
 	 */
 	public RwardManageVO selectRwardManage(RwardManageVO rwardManageVO) {
-		RwardManageVO resultVo = rwardManageMapper.selectRwardManage(rwardManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(rwardManageVO.getSearchVO()); 
-		return resultVo;
+		return rwardManageMapper.selectRwardManage(rwardManageVO);
 	}
 
 	/**

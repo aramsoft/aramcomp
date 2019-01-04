@@ -50,12 +50,12 @@ public class ResourceController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		resourceVO.getSearchVO().fillPageInfo(paginationInfo);
+		resourceVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", resourceService.selectResourceList(resourceVO));
 		int totCnt = resourceService.selectResourceListCnt(resourceVO);
 
-		resourceVO.getSearchVO().setTotalRecordCount(totCnt);
+		resourceVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

@@ -22,13 +22,13 @@
               FROM COMTN_BATCH_OPERT A
              WHERE USE_AT = 'Y'
         ]]>
-       	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+       	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "BATCH_OPERT_NM"'>
-                 <![CDATA[ AND A.BATCH_OPERT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BATCH_OPERT_NM"'>
+                 <![CDATA[ AND A.BATCH_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "BATCH_PROGRM"'>
-                 <![CDATA[ AND A.BATCH_PROGRM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BATCH_PROGRM"'>
+                 <![CDATA[ AND A.BATCH_PROGRM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -39,7 +39,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>			
     </select>
 
@@ -49,13 +49,13 @@
               FROM COMTN_BATCH_OPERT A
              WHERE USE_AT = 'Y'
         ]]>
-       	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+       	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "BATCH_OPERT_NM"'>
-                 <![CDATA[ AND A.BATCH_OPERT_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BATCH_OPERT_NM"'>
+                 <![CDATA[ AND A.BATCH_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "BATCH_PROGRM"'>
-                 <![CDATA[ AND A.BATCH_PROGRM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "BATCH_PROGRM"'>
+                 <![CDATA[ AND A.BATCH_PROGRM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>

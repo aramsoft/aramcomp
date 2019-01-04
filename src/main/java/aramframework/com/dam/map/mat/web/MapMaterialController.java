@@ -55,12 +55,12 @@ public class MapMaterialController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		mapMaterialVO.getSearchVO().fillPageInfo(paginationInfo);
+		mapMaterialVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList",  mapMaterialService.selectMapMaterialList(mapMaterialVO));
 		int totCnt = mapMaterialService.selectMapMaterialListCnt(mapMaterialVO);
 
-		mapMaterialVO.getSearchVO().setTotalRecordCount(totCnt);
+		mapMaterialVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -133,12 +133,10 @@ public class MapMaterialController {
 	 * @param knoSpecialistVO
 	 */
 	private void populateMapTeam(ModelMap model) {
-
 		MapTeamVO mapTeamVO = new MapTeamVO();
-		mapTeamVO.getSearchVO().setRecordPerPage(999999);
-		mapTeamVO.getSearchVO().setFirstIndex(0);
+		mapTeamVO.setRecordPerPage(999999);
+		mapTeamVO.setFirstIndex(0);
 		model.addAttribute("mapTeamList", mapTeamService.selectMapTeamList(mapTeamVO));
-
 	}
 	
 	/**

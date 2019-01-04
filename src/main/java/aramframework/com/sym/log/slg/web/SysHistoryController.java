@@ -56,12 +56,12 @@ public class SysHistoryController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		sysHistoryVO.getSearchVO().fillPageInfo(paginationInfo);
+		sysHistoryVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", sysHistoryService.selectSysHistoryList(sysHistoryVO));
 		int totCnt = sysHistoryService.selectSysHistoryListCnt(sysHistoryVO);
 
-		sysHistoryVO.getSearchVO().setTotalRecordCount(totCnt);
+		sysHistoryVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

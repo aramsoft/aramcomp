@@ -60,10 +60,7 @@ public class FileSysMntrngService extends EgovAbstractServiceImpl {
 	 * @param fileSysMntrngVO
 	 */
 	public FileSysMntrngVO selectFileSysMntrng(FileSysMntrngVO fileSysMntrngVO) {
-		FileSysMntrngVO resultVo = fileSysMntrngMapper.selectFileSysMntrng(fileSysMntrngVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(fileSysMntrngVO.getSearchVO()); 
-		return resultVo;
+		return fileSysMntrngMapper.selectFileSysMntrng(fileSysMntrngVO);
 	}
 
 	/**
@@ -163,10 +160,7 @@ public class FileSysMntrngService extends EgovAbstractServiceImpl {
 	 * @param fileSysMntrngLogVO
 	 */
 	public FileSysMntrngLogVO selectFileSysMntrngLog(FileSysMntrngLogVO fileSysMntrngLogVO) {
-		FileSysMntrngLogVO resultVo = fileSysMntrngMapper.selectFileSysMntrngLog(fileSysMntrngLogVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(fileSysMntrngLogVO.getSearchVO()); 
-		return resultVo;
+		return fileSysMntrngMapper.selectFileSysMntrngLog(fileSysMntrngLogVO);
 	}
 
 	/**

@@ -53,10 +53,7 @@ public class NtwrkService extends EgovAbstractServiceImpl {
 	 * @param ntwrkVO
 	 */
 	public NtwrkVO selectNtwrk(NtwrkVO ntwrkVO) {
-		NtwrkVO resultVo = ntwrkMapper.selectNtwrk(ntwrkVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(ntwrkVO.getSearchVO()); 
-		return resultVo;
+		return ntwrkMapper.selectNtwrk(ntwrkVO);
 	}
 
 	/**

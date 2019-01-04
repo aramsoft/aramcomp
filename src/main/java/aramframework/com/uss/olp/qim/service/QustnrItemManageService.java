@@ -52,10 +52,7 @@ public class QustnrItemManageService extends EgovAbstractServiceImpl {
 	 * @param qustnrItemManageVO
 	 */
 	public QustnrItemManageVO selectQustnrItemManageDetail(QustnrItemManageVO qustnrItemManageVO) {
-		QustnrItemManageVO resultVo = qustnrItemManageMapper.selectQustnrItemManageDetail(qustnrItemManageVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(qustnrItemManageVO.getSearchVO()); 
-		return resultVo;
+		return qustnrItemManageMapper.selectQustnrItemManageDetail(qustnrItemManageVO);
 	}
 
 	/**

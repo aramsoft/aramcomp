@@ -41,7 +41,7 @@ public class AdministCodeRecptnController {
 			@ModelAttribute AdministCodeRecptnVO administCodeRecptnVO, 
 			ModelMap model) {
 
-		administCodeRecptnVO.getSearchVO().setSizeAndOffset(5,0);
+		administCodeRecptnVO.setSizeAndOffset(5,0);
 
 		model.addAttribute("resultList", administCodeManageService.selectAdministCodeRecptnList(administCodeRecptnVO));
 
@@ -61,12 +61,12 @@ public class AdministCodeRecptnController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		administCodeRecptnVO.getSearchVO().fillPageInfo(paginationInfo);
+		administCodeRecptnVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", administCodeManageService.selectAdministCodeRecptnList(administCodeRecptnVO));
 		int totCnt = administCodeManageService.selectAdministCodeRecptnListCnt(administCodeRecptnVO);
 
-		administCodeRecptnVO.getSearchVO().setTotalRecordCount(totCnt);
+		administCodeRecptnVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
@@ -91,8 +91,8 @@ public class AdministCodeRecptnController {
 
 		/* 법정동코드수신 리스트 */
 		AdministCodeRecptnVO vo = new AdministCodeRecptnVO();
-		vo.getSearchVO().setSizeAndOffset(9999999, 0);
-		vo.getSearchVO().setSearchCondition("CodeList");
+		vo.setSizeAndOffset(9999999, 0);
+		vo.setSearchCondition("CodeList");
 		vo.setAdministZoneSe(administCodeRecptnVO.getAdministZoneSe());
 		vo.setAdministZoneCode(administCodeRecptnVO.getAdministZoneCode());
 

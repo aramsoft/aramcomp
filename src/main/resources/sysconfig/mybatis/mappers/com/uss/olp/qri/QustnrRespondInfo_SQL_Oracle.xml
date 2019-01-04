@@ -28,13 +28,13 @@
     	<if test='trgetId != null and trgetId != ""'>
 		   		<![CDATA[ AND A.TRGET_ID = #{trgetId} ]]>
 		</if>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "QUSTNR_SJ"'>
-               	<![CDATA[ AND A.QUSTNR_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "QUSTNR_SJ"'>
+               	<![CDATA[ AND A.QUSTNR_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "FRST_REGISTER_ID"'>
-               	<![CDATA[ AND B.USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "FRST_REGISTER_ID"'>
+               	<![CDATA[ AND B.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -45,7 +45,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>			
 	</select>
 
@@ -61,13 +61,13 @@
     	<if test='trgetId != null and trgetId != ""'>
 		   		<![CDATA[ AND A.TRGET_ID = #{trgetId} ]]>
 		</if>
-     	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "QUSTNR_SJ"'>
-               	<![CDATA[ AND A.QUSTNR_SJ LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "QUSTNR_SJ"'>
+               	<![CDATA[ AND A.QUSTNR_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "FRST_REGISTER_ID"'>
-               	<![CDATA[ AND B.USER_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "FRST_REGISTER_ID"'>
+               	<![CDATA[ AND B.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
         </choose>
 		</if>
@@ -200,19 +200,19 @@
 	 	      FROM COMTN_QUSTNR_RSPNS_RESULT A
 		     WHERE 1=1
 	 	]]>
-    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "ETC_ANSWER_CN"'>
-               	<![CDATA[ AND A.ETC_ANSWER_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "ETC_ANSWER_CN"'>
+               	<![CDATA[ AND A.ETC_ANSWER_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "RESPOND_ANSWER_CN"'>
-               	<![CDATA[ AND A.RESPOND_ANSWER_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "RESPOND_ANSWER_CN"'>
+               	<![CDATA[ AND A.RESPOND_ANSWER_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "RESPOND_NM"'>
-               	<![CDATA[ AND A.RESPOND_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "RESPOND_NM"'>
+               	<![CDATA[ AND A.RESPOND_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "QESTNR_ID"'>
-               	<![CDATA[ AND A.QESTNR_ID = #{searchVO.searchKeyword} ]]>
+            <when test='searchCondition == "QESTNR_ID"'>
+               	<![CDATA[ AND A.QESTNR_ID = #{searchKeyword} ]]>
             </when>
 	    </choose>
 		</if>
@@ -223,7 +223,7 @@
         <![CDATA[
                    ) ALL_LIST
                    )
-             WHERE RNUM BETWEEN #{searchVO.firstIndex} + 1 AND #{searchVO.firstIndex} + #{searchVO.recordPerPage}
+             WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
         ]]>			
 	</select>
 
@@ -234,19 +234,19 @@
 			  FROM COMTN_QUSTNR_RSPNS_RESULT A
 			 WHERE 1=1
         ]]>			
-    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "ETC_ANSWER_CN"'>
-               	<![CDATA[ AND A.ETC_ANSWER_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "ETC_ANSWER_CN"'>
+               	<![CDATA[ AND A.ETC_ANSWER_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "RESPOND_ANSWER_CN"'>
-               	<![CDATA[ AND A.RESPOND_ANSWER_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "RESPOND_ANSWER_CN"'>
+               	<![CDATA[ AND A.RESPOND_ANSWER_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "RESPOND_NM"'>
-               	<![CDATA[ AND A.RESPOND_NM LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "RESPOND_NM"'>
+               	<![CDATA[ AND A.RESPOND_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "QESTNR_ID"'>
-               	<![CDATA[ AND A.QESTNR_ID = #{searchVO.searchKeyword} ]]>
+            <when test='searchCondition == "QESTNR_ID"'>
+               	<![CDATA[ AND A.QESTNR_ID = #{searchKeyword} ]]>
             </when>
 	    </choose>
 		</if>

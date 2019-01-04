@@ -86,10 +86,7 @@ public class SndngMailService extends EgovAbstractServiceImpl {
 	 * @param sndngMailVO
 	 */
 	public SndngMailVO selectSndngMail(SndngMailVO sndngMailVO) {
-		SndngMailVO resultVo = sndngMailMapper.selectSndngMail(sndngMailVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(sndngMailVO.getSearchVO()); 
-		return resultVo;
+		return sndngMailMapper.selectSndngMail(sndngMailVO);
 	}
 
 	/**

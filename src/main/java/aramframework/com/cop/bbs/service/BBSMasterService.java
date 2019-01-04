@@ -111,8 +111,6 @@ public class BBSMasterService extends EgovAbstractServiceImpl {
 				resultVo.setOption("na"); // 미지정 상태로 수정 가능 (이미 지정된 경우는 수정 불가로 처리)
 			}
 		}
-		// searchVO 이전 
-		resultVo.setSearchVO(boardMasterVO.getSearchVO()); 
 		return resultVo;
 	}
 

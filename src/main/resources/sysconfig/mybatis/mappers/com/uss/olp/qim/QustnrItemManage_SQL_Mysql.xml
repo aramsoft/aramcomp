@@ -24,20 +24,20 @@
 		      FROM COMTN_QUSTNR_IEM A
 		     WHERE 1=1
 	 	]]>
-    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "IEM_CN"'>
-                <![CDATA[ AND A.IEM_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "IEM_CN"'>
+                <![CDATA[ AND A.IEM_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "FRST_REGISTER_ID"'>
+            <when test='searchCondition == "FRST_REGISTER_ID"'>
 				<![CDATA[ 
 					AND A.FRST_REGISTER_ID IN (SELECT ESNTL_ID 
 	 	   						  	  	      	 FROM COMVN_USER_MASTER 
-	 	   							         	 WHERE USER_NM LIKE '%' || #{searchVO.searchKeyword} || '%' )	            
+	 	   							         	 WHERE USER_NM LIKE '%' || #{searchKeyword} || '%' )	            
 	 			]]>
 	 	   	</when>
-            <when test='searchVO.searchCondition == "QUSTNR_QESITM_ID"'>
-                <![CDATA[ AND A.QUSTNR_QESITM_ID = #{searchVO.searchKeyword} ]]>
+            <when test='searchCondition == "QUSTNR_QESITM_ID"'>
+                <![CDATA[ AND A.QUSTNR_QESITM_ID = #{searchKeyword} ]]>
             </when>
         </choose>
 		</if>
@@ -46,7 +46,7 @@
 	 	]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
 	</select>
 
@@ -57,20 +57,20 @@
 			  FROM COMTN_QUSTNR_IEM A
 			 WHERE 1=1
         ]]>			
-    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
-            <when test='searchVO.searchCondition == "IEM_CN"'>
-                <![CDATA[ AND A.IEM_CN LIKE '%'|| #{searchVO.searchKeyword} ||'%' ]]>
+            <when test='searchCondition == "IEM_CN"'>
+                <![CDATA[ AND A.IEM_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
             </when>
-            <when test='searchVO.searchCondition == "FRST_REGISTER_ID"'>
+            <when test='searchCondition == "FRST_REGISTER_ID"'>
 				<![CDATA[ 
 					AND A.FRST_REGISTER_ID IN (SELECT ESNTL_ID 
 	 	   						  	  	      	 FROM COMVN_USER_MASTER 
-	 	   							         	 WHERE USER_NM LIKE '%' || #{searchVO.searchKeyword} || '%' )	            
+	 	   							         	 WHERE USER_NM LIKE '%' || #{searchKeyword} || '%' )	            
 	 			]]>
 	 	   	</when>
-            <when test='searchVO.searchCondition == "QUSTNR_QESITM_ID"'>
-                <![CDATA[ AND A.QUSTNR_QESITM_ID = #{searchVO.searchKeyword} ]]>
+            <when test='searchCondition == "QUSTNR_QESITM_ID"'>
+                <![CDATA[ AND A.QUSTNR_QESITM_ID = #{searchKeyword} ]]>
             </when>
         </choose>
 		</if>

@@ -57,12 +57,12 @@ public class NtwrkController {
 			ntwrkVO.setStrManageIem("00");
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		ntwrkVO.getSearchVO().fillPageInfo(paginationInfo);
+		ntwrkVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", ntwrkService.selectNtwrkList(ntwrkVO));
 		int totCnt = ntwrkService.selectNtwrkListCnt(ntwrkVO);
 
-		ntwrkVO.getSearchVO().setTotalRecordCount(totCnt);
+		ntwrkVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);

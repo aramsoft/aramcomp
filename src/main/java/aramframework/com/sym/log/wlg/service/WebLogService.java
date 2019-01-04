@@ -53,10 +53,7 @@ public class WebLogService extends EgovAbstractServiceImpl {
 	 * @param webLogVO
 	 */
 	public WebLogVO selectWebLog(WebLogVO webLogVO) {
-		WebLogVO resultVo = webLogMapper.selectWebLog(webLogVO);
-		// searchVO 이전 
-		resultVo.setSearchVO(webLogVO.getSearchVO()); 
-		return resultVo;
+		return webLogMapper.selectWebLog(webLogVO);
 	}
 
 	/**

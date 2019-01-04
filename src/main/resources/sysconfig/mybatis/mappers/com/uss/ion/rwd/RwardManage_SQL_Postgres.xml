@@ -29,8 +29,8 @@
 				        ON A.RWARDWNR_ID = C.ESNTL_ID
              WHERE 1=1 
         ]]>
-    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
-        		<![CDATA[ AND A.RWARD_CODE = #{searchVO.searchKeyword} ]]>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+        		<![CDATA[ AND A.RWARD_CODE = #{searchKeyword} ]]>
 		</if>
     	<if test='searchFromDate != null and searchFromDate != ""'>
         		<![CDATA[ AND A.RWARD_DE BETWEEN #{searchFromDate} AND #{searchToDate} ]]>
@@ -43,7 +43,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
     </select> 
 
@@ -55,8 +55,8 @@
 				        ON A.RWARDWNR_ID = C.ESNTL_ID
              WHERE 1=1 
         ]]>
-    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
-        		<![CDATA[ AND A.RWARD_CODE = #{searchVO.searchKeyword} ]]>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+        		<![CDATA[ AND A.RWARD_CODE = #{searchKeyword} ]]>
 		</if>
     	<if test='searchFromDate != null and searchFromDate != ""'>
         		<![CDATA[ AND A.RWARD_DE BETWEEN #{searchFromDate} AND #{searchToDate} ]]>
@@ -191,8 +191,8 @@
 				        ON A.RWARDWNR_ID = C.ESNTL_ID 
              WHERE A.SANCTNER_ID = #{sanctnerId}
         ]]>
-    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
-        		<![CDATA[ AND A.RWARD_CODE = #{searchVO.searchKeyword} ]]>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+        		<![CDATA[ AND A.RWARD_CODE = #{searchKeyword} ]]>
 		</if>
     	<if test='searchFromDate != null and searchFromDate != ""'>
         		<![CDATA[ AND A.RWARD_DE BETWEEN #{searchFromDate} AND #{searchToDate} ]]>
@@ -208,7 +208,7 @@
 		]]>				
         /* 구현 Sql */
         <![CDATA[
- 			LIMIT  #{searchVO.recordPerPage} OFFSET #{searchVO.firstIndex}
+ 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
         ]]>			
     </select> 
 
@@ -220,8 +220,8 @@
 				        ON A.RWARDWNR_ID = C.ESNTL_ID 
              WHERE A.SANCTNER_ID = #{sanctnerId}
         ]]>
-    	<if test='searchVO.searchKeyword != null and searchVO.searchKeyword != ""'>
-        		<![CDATA[ AND A.RWARD_CODE = #{searchVO.searchKeyword} ]]>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
+        		<![CDATA[ AND A.RWARD_CODE = #{searchKeyword} ]]>
 		</if>
     	<if test='searchFromDate != null and searchFromDate != ""'>
         		<![CDATA[ AND A.RWARD_DE BETWEEN #{searchFromDate} AND #{searchToDate} ]]>

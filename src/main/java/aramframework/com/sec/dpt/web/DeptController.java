@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sec.dpt.domain.DeptVO;
@@ -67,6 +68,7 @@ public class DeptController {
 	@RequestMapping(value = "/sec/dpt/registDept.do")
 	@Secured("ROLE_ADMIN")
 	public String registDept(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DeptVO deptVO) {
 
 		return WebUtil.adjustViewName("/sec/dpt/DeptRegist");
@@ -80,6 +82,7 @@ public class DeptController {
 	@RequestMapping(value = "/sec/dpt/insertDept.do")
 	@Secured("ROLE_ADMIN")
 	public String insertDept(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DeptVO deptVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -103,7 +106,8 @@ public class DeptController {
 	@RequestMapping(value = "/sec/dpt/editDept.do")
 	@Secured("ROLE_ADMIN")
 	public String editDept(
-			DeptVO deptVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute DeptVO deptVO,
 			ModelMap model) {
 
 		model.addAttribute(deptService.selectDept(deptVO));
@@ -119,6 +123,7 @@ public class DeptController {
 	@RequestMapping(value = "/sec/dpt/updateDept.do")
 	@Secured("ROLE_ADMIN")
 	public String updateDept(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DeptVO deptVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -142,6 +147,7 @@ public class DeptController {
 	@RequestMapping(value = "/sec/dpt/deleteDept.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteDept(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DeptVO deptVO, 
 			ModelMap model) {
 
@@ -159,6 +165,7 @@ public class DeptController {
 	@RequestMapping(value = "/sec/dpt/deleteListDept.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteListDept(
+			@ModelAttribute SearchVO searchVO,
 			@RequestParam String orgnztIds, 
 			ModelMap model) {
 

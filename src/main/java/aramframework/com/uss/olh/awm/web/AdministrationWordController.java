@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -67,7 +68,8 @@ public class AdministrationWordController {
 	 */
 	@RequestMapping(value = "/uss/olh/awm/detailAdministrationWord.do")
 	public String detailAdministrationWord(
-			AdministrationWordVO administrationWordVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute AdministrationWordVO administrationWordVO,
 			ModelMap model) {
 
 		model.addAttribute(administrationWordService.selectAdministrationWordDetail(administrationWordVO));
@@ -82,6 +84,7 @@ public class AdministrationWordController {
 	 */
 	@RequestMapping(value = "/uss/olh/awm/registAdministrationWord.do")
 	public String registAdministrationWord(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AdministrationWordVO administrationWordVO) {
 
 		return WebUtil.adjustViewName("/uss/olh/awm/AdministrationWordRegist");
@@ -94,6 +97,7 @@ public class AdministrationWordController {
 	 */
 	@RequestMapping(value = "/uss/olh/awm/insertAdministrationWord.do")
 	public String insertAdministrationWord(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AdministrationWordVO administrationWordVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -121,7 +125,8 @@ public class AdministrationWordController {
 	 */
 	@RequestMapping(value = "/uss/olh/awm/editAdministrationWord.do")
 	public String editAdministrationWord(
-			AdministrationWordVO administrationWordVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute AdministrationWordVO administrationWordVO,
 			ModelMap model) {
 
 		model.addAttribute(administrationWordService.selectAdministrationWordDetail(administrationWordVO));
@@ -136,6 +141,7 @@ public class AdministrationWordController {
 	 */
 	@RequestMapping(value = "/uss/olh/awm/updateAdministrationWord.do")
 	public String updateAdministrationWord(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AdministrationWordVO administrationWordVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -163,6 +169,7 @@ public class AdministrationWordController {
 	 */
 	@RequestMapping(value = "/uss/olh/awm/deleteAdministrationWord.do")
 	public String deleteAdministrationWord(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AdministrationWordVO administrationWordVO, 
 			ModelMap model) {
 
@@ -204,7 +211,8 @@ public class AdministrationWordController {
 	 */
 	@RequestMapping(value = "/uss/olh/awm/detailAdministrationWordUser.do")
 	public String detailAdministrationUserWord(
-			AdministrationWordVO administrationWordVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute AdministrationWordVO administrationWordVO,
 			ModelMap model) {
 
 		model.addAttribute(administrationWordService.selectAdministrationWordDetail(administrationWordVO));

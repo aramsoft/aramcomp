@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -70,7 +71,8 @@ public class HpcmManageController {
 	 */
 	@RequestMapping("/uss/olh/hpc/detailHpcm.do")
 	public String detailHpcm(
-			HpcmManageVO hpcmManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute HpcmManageVO hpcmManageVO,
 			ModelMap model) {
 
 		model.addAttribute(hpcmManageService.selectHpcmDetail(hpcmManageVO));
@@ -86,6 +88,7 @@ public class HpcmManageController {
 	@RequestMapping("/uss/olh/hpc/registHpcm.do")
 	@Secured("ROLE_USER")
 	public String registHpcm(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute HpcmManageVO hpcmManageVO) {
 
 		// 공통코드를 가져오기 위한 Vo
@@ -102,6 +105,7 @@ public class HpcmManageController {
 	@RequestMapping("/uss/olh/hpc/insertHpcm.do")
 	@Secured("ROLE_USER")
 	public String insertHpcm(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute HpcmManageVO hpcmManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -129,7 +133,8 @@ public class HpcmManageController {
 	@RequestMapping("/uss/olh/hpc/editHpcm.do")
 	@Secured("ROLE_USER")
 	public String editHpcmManage(
-			HpcmManageVO hpcmManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute HpcmManageVO hpcmManageVO,
 			ModelMap model) {
 
 		model.addAttribute(hpcmManageService.selectHpcmDetail(hpcmManageVO));
@@ -148,6 +153,7 @@ public class HpcmManageController {
 	@RequestMapping("/uss/olh/hpc/updateHpcm.do")
 	@Secured("ROLE_USER")
 	public String updateHpcmManage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute HpcmManageVO hpcmManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -176,6 +182,7 @@ public class HpcmManageController {
 	@RequestMapping(value="/uss/olh/hpc/deleteHpcm.do")
 	@Secured("ROLE_USER")
 	public String deleteHpcm(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute HpcmManageVO hpcmManageVO, 
 			ModelMap model) {
 

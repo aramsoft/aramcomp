@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.utl.fcc.service.DateUtil;
 import aramframework.com.utl.fcc.service.StringUtil;
@@ -100,7 +101,8 @@ public class ServerResrceMntrngController {
 	@RequestMapping(value = "/utl/sys/srm/detailServerResrceMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String detailServerResrceMntrng(
-			ServerResrceMntrngVO serverResrceMntrngVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute ServerResrceMntrngVO serverResrceMntrngVO,
 			ModelMap model) {
 
 		model.addAttribute(serverResrceMntrngService.selectServerResrceMntrng(serverResrceMntrngVO));

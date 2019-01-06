@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
@@ -71,7 +72,8 @@ public class FaqManageController {
 	 */
 	@RequestMapping("/uss/olh/faq/detailFaq.do")
 	public String detailFaq(
-			FaqManageVO faqManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute FaqManageVO faqManageVO,
 			ModelMap model) {
 
 		model.addAttribute(faqManageService.selectFaqListDetail(faqManageVO));
@@ -87,6 +89,7 @@ public class FaqManageController {
 	@RequestMapping("/uss/olh/faq/registFaq.do")
 	@Secured("ROLE_USER")
 	public String registFaq(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute FaqManageVO faqManageVO) {
 
 		return WebUtil.adjustViewName("/uss/olh/faq/FaqRegist");
@@ -101,6 +104,7 @@ public class FaqManageController {
 	@Secured("ROLE_USER")
 	public String insertFaq(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute FaqManageVO faqManageVO, 
 			BindingResult bindingResult,
 			ModelMap model) 
@@ -132,7 +136,8 @@ public class FaqManageController {
 	@RequestMapping("/uss/olh/faq/editFaq.do")
 	@Secured("ROLE_USER")
 	public String editFaq(
-			FaqManageVO faqManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute FaqManageVO faqManageVO,
 			ModelMap model) {
 
 		model.addAttribute(faqManageService.selectFaqListDetail(faqManageVO));
@@ -149,6 +154,7 @@ public class FaqManageController {
 	@Secured("ROLE_USER")
 	public String updateFaq(
 			MultipartHttpServletRequest multiRequest,
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute FaqManageVO faqManageVO, 
 			BindingResult bindingResult,
 			ModelMap model) 
@@ -182,6 +188,7 @@ public class FaqManageController {
 	@RequestMapping(value="/uss/olh/faq/deleteFaq.do")
 	@Secured("ROLE_USER")
 	public String deleteFaqManage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute FaqManageVO faqManageVO, 
 			ModelMap model) {
 

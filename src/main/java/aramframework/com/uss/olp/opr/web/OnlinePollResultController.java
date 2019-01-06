@@ -6,6 +6,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uss.olp.opr.domain.OnlinePollResultVO;
@@ -46,6 +47,7 @@ public class OnlinePollResultController {
 	 */
 	@RequestMapping(value = "/uss/olp/opr/deleteOnlinePollResult.do")
 	public String deleteOnlinePollResult(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute OnlinePollResultVO onlinePollResultVO, 
 			ModelMap model) {
 

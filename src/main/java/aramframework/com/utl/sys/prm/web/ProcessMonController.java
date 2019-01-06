@@ -13,6 +13,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.ComCodeVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -76,7 +77,8 @@ public class ProcessMonController {
 	@RequestMapping("/utl/sys/prm/detailProcessMon.do")
 	@Secured("ROLE_ADMIN")
 	public String detailProcessMon(
-			ProcessMonVO processMonVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute ProcessMonVO processMonVO,
 			ModelMap model) {
 
 		model.addAttribute(processMonService.selectProcessMon(processMonVO));
@@ -92,6 +94,7 @@ public class ProcessMonController {
 	@RequestMapping(value = "/utl/sys/prm/registProcessMon.do")
 	@Secured("ROLE_ADMIN")
 	public String registProcessMon(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProcessMonVO processMonVO) {
 
 		return WebUtil.adjustViewName("/utl/sys/prm/ProcessMonRegist");
@@ -105,6 +108,7 @@ public class ProcessMonController {
 	@RequestMapping(value = "/utl/sys/prm/insertProcessMon.do")
 	@Secured("ROLE_ADMIN")
 	public String insertProcessMon(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProcessMonVO processMonVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -133,7 +137,8 @@ public class ProcessMonController {
 	@RequestMapping(value = "/utl/sys/prm/editProcessMon.do")
 	@Secured("ROLE_ADMIN")
 	public String editProcessMon(
-			ProcessMonVO processMonVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute ProcessMonVO processMonVO,
 			ModelMap model) {
 
 		model.addAttribute(processMonService.selectProcessMon(processMonVO));
@@ -149,6 +154,7 @@ public class ProcessMonController {
 	@RequestMapping(value = "/utl/sys/prm/updateProcessMon.do")
 	@Secured("ROLE_ADMIN")
 	public String updateProcessMon(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProcessMonVO processMonVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -176,6 +182,7 @@ public class ProcessMonController {
 	@RequestMapping(value = "/utl/sys/prm/deleteProcessMon.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteProcessMon(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProcessMonVO processMonVO, 
 			ModelMap model) {
 
@@ -250,7 +257,8 @@ public class ProcessMonController {
 	@RequestMapping("/utl/sys/prm/detailProcessMonLog.do")
 	@Secured("ROLE_ADMIN")
 	public String detailProcessMonLog(
-			ProcessMonLogVO processMonLogVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute ProcessMonLogVO processMonLogVO,
 			ModelMap model) {
 
 		processMonLogVO = processMonService.selectProcessMonLog(processMonLogVO);

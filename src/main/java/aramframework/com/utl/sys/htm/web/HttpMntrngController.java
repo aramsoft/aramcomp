@@ -13,6 +13,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.ComCodeVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -76,7 +77,8 @@ public class HttpMntrngController {
 	@RequestMapping(value = "/utl/sys/htm/detailHttpMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String detailHttpMon(
-			HttpMntrngVO httpMntrngVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute HttpMntrngVO httpMntrngVO,
 			ModelMap model) {
 
 		model.addAttribute(httpMntrngService.selectHttpMntrngDetail(httpMntrngVO));
@@ -92,6 +94,7 @@ public class HttpMntrngController {
 	@RequestMapping(value = "/utl/sys/htm/registHttpMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String registHttpMon(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute HttpMntrngVO httpMntrngVO) {
 
 		return WebUtil.adjustViewName("/utl/sys/htm/HttpMntrngRegist");
@@ -105,6 +108,7 @@ public class HttpMntrngController {
 	@RequestMapping(value = "/utl/sys/htm/insertHttpMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String insertHttpMon(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute HttpMntrngVO httpMntrngVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -132,7 +136,8 @@ public class HttpMntrngController {
 	@RequestMapping(value = "/utl/sys/htm/editHttpMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String editHttpMon(
-			HttpMntrngVO httpMntrngVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute HttpMntrngVO httpMntrngVO,
 			ModelMap model) {
 
 		model.addAttribute(httpMntrngService.selectHttpMntrngDetail(httpMntrngVO));
@@ -148,6 +153,7 @@ public class HttpMntrngController {
 	@RequestMapping(value = "/utl/sys/htm/updateHttpMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String updateHttpMon(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute HttpMntrngVO httpMntrngVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
@@ -175,6 +181,7 @@ public class HttpMntrngController {
 	@RequestMapping(value = "/utl/sys/htm/deleteHttpMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteHttpMon(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute HttpMntrngVO httpMntrngVO, 
 			ModelMap model) {
 
@@ -248,7 +255,8 @@ public class HttpMntrngController {
 	@RequestMapping(value = "/utl/sys/htm/detailHttpMntrngLog.do")
 	@Secured("ROLE_ADMIN")
 	public String selectHttpMonDetailLog(
-			HttpMntrngLogVO httpMntrngLogVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute HttpMntrngLogVO httpMntrngLogVO,
 			ModelMap model) {
 
 		model.addAttribute(httpMntrngService.selectHttpMntrngDetailLog(httpMntrngLogVO));

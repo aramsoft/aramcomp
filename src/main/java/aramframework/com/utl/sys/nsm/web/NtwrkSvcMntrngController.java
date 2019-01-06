@@ -13,6 +13,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.ComCodeVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -75,7 +76,8 @@ public class NtwrkSvcMntrngController {
 	@RequestMapping("/utl/sys/nsm/detailNtwrkSvcMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String detailNtwrkSvcMntrng(
-			NtwrkSvcMntrngVO ntwrkSvcMntrngVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute NtwrkSvcMntrngVO ntwrkSvcMntrngVO,
 			ModelMap model) {
 
 		ntwrkSvcMntrngVO = ntwrkSvcMntrngService.selectNtwrkSvcMntrng(ntwrkSvcMntrngVO);
@@ -106,6 +108,7 @@ public class NtwrkSvcMntrngController {
 	@RequestMapping("/utl/sys/nsm/registNtwrkSvcMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String registNtwrkSvcMntrng(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NtwrkSvcMntrngVO ntwrkSvcMntrngVO) {
 
 		return WebUtil.adjustViewName("/utl/sys/nsm/NtwrkSvcMntrngRegist");
@@ -119,6 +122,7 @@ public class NtwrkSvcMntrngController {
 	@RequestMapping("/utl/sys/nsm/insertNtwrkSvcMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String insertNtwrkSvcMntrng(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NtwrkSvcMntrngVO ntwrkSvcMntrngVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -163,7 +167,8 @@ public class NtwrkSvcMntrngController {
 	@RequestMapping("/utl/sys/nsm/editNtwrkSvcMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String editNtwrkSvcMntrng(
-			NtwrkSvcMntrngVO ntwrkSvcMntrngVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute NtwrkSvcMntrngVO ntwrkSvcMntrngVO,
 			ModelMap model) {
 
 		ntwrkSvcMntrngVO = ntwrkSvcMntrngService.selectNtwrkSvcMntrng(ntwrkSvcMntrngVO);
@@ -194,6 +199,7 @@ public class NtwrkSvcMntrngController {
 	@RequestMapping("/utl/sys/nsm/updateNtwrkSvcMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String updateNtwrkSvcMntrng(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NtwrkSvcMntrngVO ntwrkSvcMntrngVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -231,6 +237,7 @@ public class NtwrkSvcMntrngController {
 	@RequestMapping("/utl/sys/nsm/deleteNtwrkSvcMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteNtwrkSvcMntrng(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NtwrkSvcMntrngVO ntwrkSvcMntrngVO, 
 			ModelMap model) {
 
@@ -301,7 +308,8 @@ public class NtwrkSvcMntrngController {
 	@RequestMapping("/utl/sys/nsm/detailNtwrkSvcMntrngLog.do")
 	@Secured("ROLE_ADMIN")
 	public String detailNtwrkSvcMntrngLog(
-			NtwrkSvcMntrngLogVO ntwrkSvcMntrngLogVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute NtwrkSvcMntrngLogVO ntwrkSvcMntrngLogVO,
 			ModelMap model) {
 
 		ntwrkSvcMntrngLogVO = ntwrkSvcMntrngService.selectNtwrkSvcMntrngLog(ntwrkSvcMntrngLogVO);

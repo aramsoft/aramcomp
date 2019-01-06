@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -68,7 +69,8 @@ public class IndvdlInfoPolicyController {
 	@RequestMapping(value = "/uss/sam/ipm/detailIndvdlInfoPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String detailIndvdlInfoPolicy(
-			IndvdlInfoPolicyVO indvdlInfoPolicyVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute IndvdlInfoPolicyVO indvdlInfoPolicyVO,
 			ModelMap model) {
 
 		model.addAttribute(indvdlInfoPolicyService.selectIndvdlInfoPolicyDetail(indvdlInfoPolicyVO));
@@ -84,6 +86,7 @@ public class IndvdlInfoPolicyController {
 	@RequestMapping(value = "/uss/sam/ipm/registIndvdlInfoPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String registIndvdlInfoPolicy(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IndvdlInfoPolicyVO indvdlInfoPolicyVO) {
 
 		return WebUtil.adjustViewName("/uss/sam/ipm/IndvdlInfoPolicyRegist");
@@ -97,6 +100,7 @@ public class IndvdlInfoPolicyController {
 	@RequestMapping(value = "/uss/sam/ipm/insertIndvdlInfoPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String insertIndvdlInfoPolicy(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IndvdlInfoPolicyVO indvdlInfoPolicyVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -126,7 +130,8 @@ public class IndvdlInfoPolicyController {
 	@RequestMapping(value = "/uss/sam/ipm/editIndvdlInfoPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String editIndvdlInfoPolicy(
-			IndvdlInfoPolicyVO indvdlInfoPolicyVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute IndvdlInfoPolicyVO indvdlInfoPolicyVO,
 			ModelMap model) {
 
 		model.addAttribute(indvdlInfoPolicyService.selectIndvdlInfoPolicyDetail(indvdlInfoPolicyVO));
@@ -142,6 +147,7 @@ public class IndvdlInfoPolicyController {
 	@RequestMapping(value = "/uss/sam/ipm/updateIndvdlInfoPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String updateIndvdlInfoPolicy(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IndvdlInfoPolicyVO indvdlInfoPolicyVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -170,6 +176,7 @@ public class IndvdlInfoPolicyController {
 	@RequestMapping(value = "/uss/sam/ipm/deleteIndvdlInfoPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteIndvdlInfoPolicy(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IndvdlInfoPolicyVO indvdlInfoPolicyVO, 
 			ModelMap model) {
 

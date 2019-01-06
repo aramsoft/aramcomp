@@ -14,6 +14,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchCodeVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -115,6 +116,7 @@ public class UserManageController {
 	@RequestMapping("/uss/umt/registUser.do")
 	@Secured("ROLE_ADMIN")
 	public String registUser(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute UserManageVO userManageVO, 
 			ModelMap model) {
 
@@ -131,6 +133,7 @@ public class UserManageController {
 	@RequestMapping("/uss/umt/insertUser.do")
 	@Secured("ROLE_ADMIN")
 	public String insertUser(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute UserManageVO userManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -163,7 +166,8 @@ public class UserManageController {
 	@RequestMapping("/uss/umt/editUser.do")
 	@Secured("ROLE_USER")
 	public String editUser(
-			UserManageVO userManageVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute UserManageVO userManageVO, 
 			ModelMap model) {
 
 		fill_common_code(model);
@@ -184,6 +188,7 @@ public class UserManageController {
 	@RequestMapping("/uss/umt/updateUser.do")
 	@Secured("ROLE_USER")
 	public String updateUser(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute UserManageVO userManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -227,6 +232,7 @@ public class UserManageController {
 	@RequestMapping(value = "/uss/umt/editUserPassword.do")
 	@Secured("ROLE_USER")
 	public String editUserPassword(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute UserManageVO userManageVO,
 			ModelMap model) {
 
@@ -245,6 +251,7 @@ public class UserManageController {
 	@Secured("ROLE_USER")
 	public String updateUserPassword(
 			HttpServletRequest request, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute UserManageVO userManageVO,
 			ModelMap model)
 	throws Exception {
@@ -291,6 +298,7 @@ public class UserManageController {
 	@RequestMapping("/uss/umt/deleteUser.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteUser(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute UserManageVO userManageVO,
 			ModelMap model) {
 
@@ -311,6 +319,7 @@ public class UserManageController {
 	public String deleteIdsAll(
 			@RequestParam String returnUrl, 
 			@RequestParam String checkedIdForDel, 
+			@ModelAttribute SearchVO searchVO,
 			ModelMap model) {
 
 		userManageService.deleteIdsAll(checkedIdForDel);
@@ -319,6 +328,7 @@ public class UserManageController {
 		
 		return WebUtil.redirectJsp(model, returnUrl);
 	}
+	
 	private void fill_common_code(ModelMap model)  {
 
 		// 패스워드힌트목록을 코드정보로부터 조회

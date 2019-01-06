@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -108,7 +109,8 @@ public class QustnrQestnManageController {
 	@RequestMapping(value = "/uss/olp/qqm/detailQustnrQestn.do")
 	@Secured("ROLE_USER")
 	public String detailQustnrQestn(
-			QustnrQestnManageVO qustnrQestnManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute QustnrQestnManageVO qustnrQestnManageVO,
 			ModelMap model) {
 
 		model.addAttribute(qustnrQestnManageService.selectQustnrQestnManageDetail(qustnrQestnManageVO));
@@ -127,6 +129,7 @@ public class QustnrQestnManageController {
 	@RequestMapping(value = "/uss/olp/qqm/registQustnrQestn.do")
 	@Secured("ROLE_USER")
 	public String registQustnrQestn(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrQestnManageVO qustnrQestnManageVO) {
 
 		// 공통코드 질문유형 조회
@@ -143,6 +146,7 @@ public class QustnrQestnManageController {
 	@RequestMapping(value = "/uss/olp/qqm/insertQustnrQestn.do")
 	@Secured("ROLE_USER")
 	public String insertQustnrQestn(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrQestnManageVO qustnrQestnManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -171,7 +175,8 @@ public class QustnrQestnManageController {
 	@RequestMapping(value = "/uss/olp/qqm/editQustnrQestn.do")
 	@Secured("ROLE_USER")
 	public String editQustnrQestn(
-			QustnrQestnManageVO qustnrQestnManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute QustnrQestnManageVO qustnrQestnManageVO,
 			ModelMap model) {
 
 		model.addAttribute(qustnrQestnManageService.selectQustnrQestnManageDetail(qustnrQestnManageVO));
@@ -190,6 +195,7 @@ public class QustnrQestnManageController {
 	@RequestMapping(value = "/uss/olp/qqm/updateQustnrQestn.do")
 	@Secured("ROLE_USER")
 	public String updateQustnrQestn(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrQestnManageVO qustnrQestnManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -218,6 +224,7 @@ public class QustnrQestnManageController {
 	@RequestMapping(value = "/uss/olp/qqm/deleteQustnrQestn.do")
 	@Secured("ROLE_USER")
 	public String deleteQustnrQestn(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrQestnManageVO qustnrQestnManageVO, 
 			ModelMap model) {
 
@@ -235,7 +242,8 @@ public class QustnrQestnManageController {
 	@RequestMapping(value = "/uss/olp/qqm/statisticsQustnrQestn.do")
 	@Secured("ROLE_USER")
 	public String statisticsQustnrQestn(
-			QustnrQestnManageVO qustnrQestnManageVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute QustnrQestnManageVO qustnrQestnManageVO, 
 			ModelMap model) {
 
 		model.addAttribute(qustnrQestnManageService.selectQustnrQestnManageDetail(qustnrQestnManageVO));

@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
@@ -84,7 +85,8 @@ public class CnsltManageController {
 	 */
 	@RequestMapping("/uss/olp/cns/detailCnslt.do")
 	public String detailCnslt(
-			CnsltManageVO cnsltManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute CnsltManageVO cnsltManageVO,
 			ModelMap model) {
 
 		model.addAttribute(cnsltManageService.selectCnsltListDetail(cnsltManageVO));
@@ -99,6 +101,7 @@ public class CnsltManageController {
 	 */
 	@RequestMapping("/uss/olp/cns/updateCnsltInqireCo.do")
 	public String updateCnsltInqireCo(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO) {
 
 		cnsltManageService.updateCnsltInqireCo(cnsltManageVO);
@@ -113,6 +116,7 @@ public class CnsltManageController {
 	 */
 	@RequestMapping("/uss/olp/cns/LoginRealnmChoice.do")
 	public String LoginRealnmChoice(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO) {
 
 		return WebUtil.adjustViewName("/uss/olp/cns/CnsltLoginRealnmChoice");
@@ -125,6 +129,7 @@ public class CnsltManageController {
 	 */
 	@RequestMapping("/uss/olp/cns/registCnslt.do")
 	public String registCnslt(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO)  {
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -145,6 +150,7 @@ public class CnsltManageController {
 	@RequestMapping("/uss/olp/cns/insertCnslt.do")
 	public String insertCnslt(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -185,6 +191,7 @@ public class CnsltManageController {
 	 */
 	@RequestMapping("/uss/olp/cns/CnsltPasswordPopup.do")
 	public String CnsltPasswordConfirmView(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO) { 
 		
 		return WebUtil.adjustViewName("/uss/olp/cns/CnsltPasswordPopup");
@@ -197,6 +204,7 @@ public class CnsltManageController {
 	 */
 	@RequestMapping("/uss/olp/cns/CnsltPasswordConfirm.do")
 	public String CnsltPasswordConfirm(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO, 
 			ModelMap model) 
 	throws Exception {
@@ -234,7 +242,8 @@ public class CnsltManageController {
 	 */
 	@RequestMapping("/uss/olp/cns/editCnslt.do")
 	public String editCnslt(
-			CnsltManageVO cnsltManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute CnsltManageVO cnsltManageVO,
 			ModelMap model) {
 
 		// 작성비밀번호를 암호화 하기 위해서 Get
@@ -257,6 +266,7 @@ public class CnsltManageController {
 	@RequestMapping("/uss/olp/cns/updateCnslt.do")
 	public String updateCnslt(
 			MultipartHttpServletRequest multiRequest,
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -297,6 +307,7 @@ public class CnsltManageController {
 	 */
 	@RequestMapping("/uss/olp/cns/CnsltPasswordConfirmDel.do")
 	public String CnsltPasswordConfirmDel(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO, 
 			ModelMap model) 
 	throws Exception {
@@ -332,6 +343,7 @@ public class CnsltManageController {
 	 */
 	@RequestMapping("/uss/olp/cns/deleteCnslt.do")
 	public String deleteCnslt(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO, 
 			ModelMap model) {
 
@@ -375,7 +387,8 @@ public class CnsltManageController {
 	@RequestMapping("/uss/olp/cnm/detailCnsltAnswer.do")
 	@Secured("ROLE_USER")
 	public String detailCnsltAnswer(
-			CnsltManageVO cnsltManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute CnsltManageVO cnsltManageVO,
 			ModelMap model) {
 
 		model.addAttribute(cnsltManageService.selectCnsltListDetail(cnsltManageVO));
@@ -391,7 +404,8 @@ public class CnsltManageController {
 	@RequestMapping("/uss/olp/cnm/editCnsltAnswer.do")
 	@Secured("ROLE_USER")
 	public String editCnsltAnswer(
-			CnsltManageVO cnsltManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute CnsltManageVO cnsltManageVO,
 			ModelMap model) {
 
 		model.addAttribute(cnsltManageService.selectCnsltListDetail(cnsltManageVO));
@@ -410,6 +424,7 @@ public class CnsltManageController {
 	@RequestMapping("/uss/olp/cnm/updateCnsltAnswer.do")
 	@Secured("ROLE_USER")
 	public String updateCnsltAnswer(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO, 
 			ModelMap model) {
 

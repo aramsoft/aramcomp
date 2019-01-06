@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -78,7 +79,8 @@ public class QustnrRespondManageController {
 	@RequestMapping(value = "/uss/olp/qrm/detailQustnrRespond.do")
 	@Secured("ROLE_USER")
 	public String detailQustnrRespond(
-			QustnrRespondManageVO qustnrRespondManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute QustnrRespondManageVO qustnrRespondManageVO,
 			ModelMap model) {
 
 		model.addAttribute(qustnrRespondManageService.selectQustnrRespondManageDetail(qustnrRespondManageVO));
@@ -99,6 +101,7 @@ public class QustnrRespondManageController {
 	@RequestMapping(value = "/uss/olp/qrm/registQustnrRespond.do")
 	@Secured("ROLE_USER")
 	public String registQustnrRespond(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrRespondManageVO qustnrRespondManageVO) {
 
 		// 성별코드조회
@@ -117,6 +120,7 @@ public class QustnrRespondManageController {
 	@RequestMapping(value = "/uss/olp/qrm/insertQustnrRespond.do")
 	@Secured("ROLE_USER")
 	public String insertQustnrRespond(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrRespondManageVO qustnrRespondManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -145,7 +149,8 @@ public class QustnrRespondManageController {
 	@RequestMapping(value = "/uss/olp/qrm/editQustnrRespond.do")
 	@Secured("ROLE_USER")
 	public String editQustnrRespond(
-			QustnrRespondManageVO qustnrRespondManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute QustnrRespondManageVO qustnrRespondManageVO,
 			ModelMap model) {
 
 		model.addAttribute(qustnrRespondManageService.selectQustnrRespondManageDetail(qustnrRespondManageVO));
@@ -166,6 +171,7 @@ public class QustnrRespondManageController {
 	@RequestMapping(value = "/uss/olp/qrm/updateQustnrRespond.do")
 	@Secured("ROLE_USER")
 	public String updateQustnrRespond(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrRespondManageVO qustnrRespondManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -194,6 +200,7 @@ public class QustnrRespondManageController {
 	@RequestMapping(value = "/uss/olp/qrm/deleteQustnrRespond.do")
 	@Secured("ROLE_USER")
 	public String deleteQustnrRespond(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrRespondManageVO qustnrRespondManageVO, 
 			ModelMap model)  {
 

@@ -12,6 +12,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.BaseVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -73,7 +74,8 @@ public class TrsmrcvMntrngController {
 	@RequestMapping("/utl/sys/trm/detailTrsmrcvMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String detailTrsmrcvMntrng(
-			TrsmrcvMntrngVO trsmrcvMntrngVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute TrsmrcvMntrngVO trsmrcvMntrngVO,
 			ModelMap model) {
 
 		model.addAttribute(trsmrcvMntrngService.selectTrsmrcvMntrng(trsmrcvMntrngVO));
@@ -89,6 +91,7 @@ public class TrsmrcvMntrngController {
 	@RequestMapping("/utl/sys/trm/registTrsmrcvMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String registTrsmrcvMntrng(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute TrsmrcvMntrngVO trsmrcvMntrngVO) {
 
 		return WebUtil.adjustViewName("/utl/sys/trm/TrsmrcvMntrngRegist");
@@ -102,6 +105,7 @@ public class TrsmrcvMntrngController {
 	@RequestMapping("/utl/sys/trm/insertTrsmrcvMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String insertTrsmrcvMntrng(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute TrsmrcvMntrngVO trsmrcvMntrngVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -147,7 +151,8 @@ public class TrsmrcvMntrngController {
 	@RequestMapping("/utl/sys/trm/editTrsmrcvMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String editTrsmrcvMntrng(
-			TrsmrcvMntrngVO trsmrcvMntrngVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute TrsmrcvMntrngVO trsmrcvMntrngVO,
 			ModelMap model) {
 
 		model.addAttribute(trsmrcvMntrngService.selectTrsmrcvMntrng(trsmrcvMntrngVO));
@@ -163,6 +168,7 @@ public class TrsmrcvMntrngController {
 	@RequestMapping("/utl/sys/trm/updateTrsmrcvMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String updateTrsmrcvMntrng(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute TrsmrcvMntrngVO trsmrcvMntrngVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -190,6 +196,7 @@ public class TrsmrcvMntrngController {
 	@RequestMapping("/utl/sys/trm/deleteTrsmrcvMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteTrsmrcvMntrng(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute TrsmrcvMntrngVO trsmrcvMntrngVO, 
 			ModelMap model) {
 
@@ -232,7 +239,8 @@ public class TrsmrcvMntrngController {
 	@RequestMapping("/utl/sys/trm/detailTrsmrcvMntrngLog.do")
 	@Secured("ROLE_ADMIN")
 	public String selectTrsmrcvMntrngLog(
-			TrsmrcvMntrngLogVO trsmrcvMntrngLogVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute TrsmrcvMntrngLogVO trsmrcvMntrngLogVO,
 			ModelMap model) {
 		
 		model.addAttribute(trsmrcvMntrngService.selectTrsmrcvMntrngLog(trsmrcvMntrngLogVO));

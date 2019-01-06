@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -88,7 +89,8 @@ public class OnlineManualController {
 	 */
 	@RequestMapping(value = "/uss/olh/omm/detailOnlineManualUser.do")
 	public String detailOnlineManualUser(
-			OnlineManualVO onlineManualVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute OnlineManualVO onlineManualVO,
 			ModelMap model) {
 
 		model.addAttribute(onlineManualService.selectOnlineManualDetail(onlineManualVO));
@@ -135,7 +137,8 @@ public class OnlineManualController {
 	 */
 	@RequestMapping(value = "/uss/olh/omm/detailOnlineManual.do")
 	public String detailOnlineManual(
-			OnlineManualVO onlineManualVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute OnlineManualVO onlineManualVO,
 			ModelMap model) {
 
 		model.addAttribute(onlineManualService.selectOnlineManualDetail(onlineManualVO));
@@ -153,6 +156,7 @@ public class OnlineManualController {
 	 */
 	@RequestMapping(value = "/uss/olh/omm/registOnlineManual.do")
 	public String registOnlineManual(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute OnlineManualVO onlineManualVO) {
 
 		// 온라인메뉴얼 구분 설정
@@ -168,6 +172,7 @@ public class OnlineManualController {
 	 */
 	@RequestMapping(value = "/uss/olh/omm/insertOnlineManual.do")
 	public String insertOnlineManual(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute OnlineManualVO onlineManualVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -196,7 +201,8 @@ public class OnlineManualController {
 	 */
 	@RequestMapping(value = "/uss/olh/omm/editOnlineManual.do")
 	public String editOnlineManual(
-			OnlineManualVO onlineManualVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute OnlineManualVO onlineManualVO,
 			ModelMap model) {
 
 		model.addAttribute(onlineManualService.selectOnlineManualDetail(onlineManualVO));
@@ -214,6 +220,7 @@ public class OnlineManualController {
 	 */
 	@RequestMapping(value = "/uss/olh/omm/updateOnlineManual.do")
 	public String updateOnlineManual(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute OnlineManualVO onlineManualVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
@@ -241,6 +248,7 @@ public class OnlineManualController {
 	 */
 	@RequestMapping(value = "/uss/olh/omm/deleteOnlineManual.do")
 	public String deleteOnlineManual(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute OnlineManualVO onlineManualVO, 
 			ModelMap model) {
 

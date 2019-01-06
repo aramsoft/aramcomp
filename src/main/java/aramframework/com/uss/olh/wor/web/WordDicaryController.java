@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -66,7 +67,8 @@ public class WordDicaryController {
 	 */
 	@RequestMapping("/uss/olh/wor/detailWordDicary.do")
 	public String detailWordDicary(
-			WordDicaryVO wordDicaryVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute WordDicaryVO wordDicaryVO,
 			ModelMap model) {
 
 		model.addAttribute(wordDicaryService.selectWordDicaryDetail(wordDicaryVO));
@@ -82,6 +84,7 @@ public class WordDicaryController {
 	@RequestMapping("/uss/olh/wor/registWordDicary.do")
 	@Secured("ROLE_USER")
 	public String registWordDicary(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute WordDicaryVO wordDicaryVO) {
 
 		return WebUtil.adjustViewName("/uss/olh/wor/WordDicaryRegist");
@@ -95,6 +98,7 @@ public class WordDicaryController {
 	@RequestMapping("/uss/olh/wor/insertWordDicary.do")
 	@Secured("ROLE_USER")
 	public String insertWordDicary(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute WordDicaryVO wordDicaryVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -122,7 +126,8 @@ public class WordDicaryController {
 	@RequestMapping("/uss/olh/wor/editWordDicary.do")
 	@Secured("ROLE_USER")
 	public String editWordDicary(
-			WordDicaryVO wordDicaryVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute WordDicaryVO wordDicaryVO,
 			ModelMap model) {
 
 		model.addAttribute(wordDicaryService.selectWordDicaryDetail(wordDicaryVO));
@@ -138,6 +143,7 @@ public class WordDicaryController {
 	@RequestMapping("/uss/olh/wor/updateWordDicary.do")
 	@Secured("ROLE_USER")
 	public String updateWordDicary(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute WordDicaryVO wordDicaryVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -166,6 +172,7 @@ public class WordDicaryController {
 	@RequestMapping("/uss/olh/wor/deleteWordDicary.do")
 	@Secured("ROLE_USER")
 	public String deleteWordDicary(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute WordDicaryVO wordDicaryVO, 
 			ModelMap model) {
 

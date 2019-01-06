@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -68,7 +69,8 @@ public class StplatManageController {
 	@RequestMapping("/uss/sam/stp/detailStplat.do")
 	@Secured("ROLE_ADMIN")
 	public String detailStplat(
-			StplatManageVO stplatManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute StplatManageVO stplatManageVO,
 			ModelMap model) {
 
 		model.addAttribute(stplatManageService.selectStplatDetail(stplatManageVO));
@@ -84,6 +86,7 @@ public class StplatManageController {
 	@RequestMapping("/uss/sam/stp/registStplat.do")
 	@Secured("ROLE_ADMIN")
 	public String registStplat(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute StplatManageVO stplatManageVO) {
 
 		return WebUtil.adjustViewName("/uss/sam/stp/StplatRegist");
@@ -97,6 +100,7 @@ public class StplatManageController {
 	@RequestMapping("/uss/sam/stp/insertStplat.do")
 	@Secured("ROLE_ADMIN")
 	public String insertStplat(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute StplatManageVO stplatManageVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -124,7 +128,8 @@ public class StplatManageController {
 	@RequestMapping("/uss/sam/stp/editStplat.do")
 	@Secured("ROLE_ADMIN")
 	public String editStplat(
-			StplatManageVO stplatManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute StplatManageVO stplatManageVO,
 			ModelMap model) {
 
 		model.addAttribute(stplatManageService.selectStplatDetail(stplatManageVO));
@@ -140,6 +145,7 @@ public class StplatManageController {
 	@RequestMapping("/uss/sam/stp/updateStplat.do")
 	@Secured("ROLE_ADMIN")
 	public String updateStplat(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute StplatManageVO stplatManageVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -168,6 +174,7 @@ public class StplatManageController {
 	@RequestMapping("/uss/sam/stp/deleteStplat.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteStplat(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute StplatManageVO stplatManageVO, 
 			ModelMap model) {
 

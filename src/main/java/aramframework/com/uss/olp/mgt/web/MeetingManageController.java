@@ -11,6 +11,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.BaseVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -98,7 +99,8 @@ public class MeetingManageController {
 	@RequestMapping(value = "/uss/olp/mgt/detailMeeting.do")
 	@Secured("ROLE_USER")
 	public String detailMeeting(
-			MeetingManageVO meetingManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute MeetingManageVO meetingManageVO,
 			ModelMap model) {
 
 		model.addAttribute(meetingManageService.selectMeetingManageDetail(meetingManageVO));
@@ -114,6 +116,7 @@ public class MeetingManageController {
 	@RequestMapping(value = "/uss/olp/mgt/registMeeting.do")
 	@Secured("ROLE_USER")
 	public String registMeeting(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MeetingManageVO meetingManageVO) {
 
 		return WebUtil.adjustViewName("/uss/olp/mgt/MeetingRegist");
@@ -127,6 +130,7 @@ public class MeetingManageController {
 	@RequestMapping(value = "/uss/olp/mgt/insertMeeting.do")
 	@Secured("ROLE_USER")
 	public String insertMeeting(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MeetingManageVO meetingManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -155,7 +159,8 @@ public class MeetingManageController {
 	@RequestMapping(value = "/uss/olp/mgt/editMeeting.do")
 	@Secured("ROLE_USER")
 	public String editMeeting(
-			MeetingManageVO meetingManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute MeetingManageVO meetingManageVO,
 			ModelMap model) {
 
 		model.addAttribute(meetingManageService.selectMeetingManageDetail(meetingManageVO));
@@ -171,6 +176,7 @@ public class MeetingManageController {
 	@RequestMapping(value = "/uss/olp/mgt/updateMeeting.do")
 	@Secured("ROLE_USER")
 	public String updateMeeting(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MeetingManageVO meetingManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -199,6 +205,7 @@ public class MeetingManageController {
 	@RequestMapping(value = "/uss/olp/mgt/deleteMeeting.do")
 	@Secured("ROLE_USER")
 	public String deleteMeeting(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MeetingManageVO meetingManageVO, 
 			ModelMap model) {
 

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -77,7 +78,8 @@ public class DbMntrngController {
 	@RequestMapping("/utl/sys/dbm/detailDbMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String detailDbMntrng(
-			DbMntrngVO dbMntrngVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute DbMntrngVO dbMntrngVO,
 			ModelMap model) {
 
 		model.addAttribute(dbMntrngService.selectDbMntrng(dbMntrngVO));
@@ -93,6 +95,7 @@ public class DbMntrngController {
 	@RequestMapping("/utl/sys/dbm/registDbMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String registDbMntrng(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DbMntrngVO dbMntrngVO) {
 
 		// DBMS종류코드목록을 코드정보로부터 조회
@@ -109,6 +112,7 @@ public class DbMntrngController {
 	@RequestMapping("/utl/sys/dbm/insertDbMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String insertDbMntrng(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DbMntrngVO dbMntrngVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -154,7 +158,8 @@ public class DbMntrngController {
 	@RequestMapping("/utl/sys/dbm/editDbMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String editDbMntrng(
-			DbMntrngVO dbMntrngVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute DbMntrngVO dbMntrngVO,
 			ModelMap model) {
 
 		model.addAttribute(dbMntrngService.selectDbMntrng(dbMntrngVO));
@@ -174,6 +179,7 @@ public class DbMntrngController {
 	@RequestMapping("/utl/sys/dbm/updateDbMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String updateDbMntrng(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DbMntrngVO dbMntrngVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -201,6 +207,7 @@ public class DbMntrngController {
 	@RequestMapping("/utl/sys/dbm/deleteDbMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteDbMntrng(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DbMntrngVO dbMntrngVO, 
 			ModelMap model) {
 
@@ -244,7 +251,8 @@ public class DbMntrngController {
 	@RequestMapping("/utl/sys/dbm/detailDbMntrngLog.do")
 	@Secured("ROLE_ADMIN")
 	public String detailDbMntrngLog(
-			DbMntrngLogVO dbMntrngLogVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute DbMntrngLogVO dbMntrngLogVO,
 			ModelMap model) {
 
 		model.addAttribute(dbMntrngService.selectDbMntrngLog(dbMntrngLogVO));

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -51,7 +52,8 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/detailIndvdlpge.do")
 	@Secured("ROLE_USER")
 	public String detailIndvdlpge(
-			IndvdlPgeConfVO indvdlPgeConfVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute IndvdlPgeConfVO indvdlPgeConfVO, 
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -98,6 +100,7 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/registIndvdlpgeConf.do")
 	@Secured("ROLE_USER")
 	public String registIndvdlpgeConf(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IndvdlPgeConfVO indvdlPgeConfVO) {
 
 		// ID를 받아서 VO에 설정한다.
@@ -118,6 +121,7 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/updateIndvdlpgeConf.do")
 	@Secured("ROLE_USER")
 	public String updateIndvdlpgeConf(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IndvdlPgeConfVO indvdlPgeConfVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -192,6 +196,7 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/insertIndvdlpgeCntntsMine.do")
 	@Secured("ROLE_USER")
 	public String insertIndvdlpgeCntntsMine(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO, 
 			ModelMap model) {
 
@@ -219,6 +224,7 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/deleteIndvdlpgeCntntsMine.do")
 	@Secured("ROLE_USER")
 	public String deleteIndvdlpgeCntntsMine(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO, 
 			ModelMap model) {
 
@@ -268,7 +274,8 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/detailIndvdlpgeCntnts.do")
 	@Secured("ROLE_ADMIN")
 	public String detailIndvdlpgeCntnts(
-			IndvdlPgeCntntsVO indvdlPgeCntntsVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO,
 			ModelMap model) {
 
 		model.addAttribute(indvdlPgeService.selectIndvdlpgeCntnts(indvdlPgeCntntsVO));
@@ -284,6 +291,7 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/registIndvdlpgeCntnts.do")
 	@Secured("ROLE_ADMIN")
 	public String registIndvdlpgeCntnts(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO) {
 
 		return WebUtil.adjustViewName("/uss/mpe/IndvdlpgeCntntsRegist");
@@ -297,6 +305,7 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/insertIndvdlpgeCntnts.do")
 	@Secured("ROLE_ADMIN")
 	public String insertIndvdlpgeCntnts(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -322,7 +331,8 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/editIndvdlpgeCntnts.do")
 	@Secured("ROLE_ADMIN")
 	public String editIndvdlpgeCntnts(
-			IndvdlPgeCntntsVO indvdlPgeCntntsVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO,
 			ModelMap model) {
 
 		model.addAttribute(indvdlPgeService.selectIndvdlpgeCntnts(indvdlPgeCntntsVO));
@@ -338,6 +348,7 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/updateIndvdlpgeCntnts.do")
 	@Secured("ROLE_ADMIN")
 	public String updateIndvdlpgeCntnts(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -362,6 +373,7 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/deleteIndvdlpgeCntnts.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteIndvdlpgeCntnts(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO, 
 			ModelMap model) {
 
@@ -380,6 +392,7 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/deleteIndvdlpgeCntntsDB.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteIndvdlpgeCntntsDB(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO, 
 			ModelMap model) {
 
@@ -397,6 +410,7 @@ public class IndvdlPgeController {
 	 */
 	@RequestMapping(value = "/uss/mpe/previewIndvdlpgeCntnts.do")
 	public String previewIndvdlpgeCntnts(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO, 
 			ModelMap model) {
 		

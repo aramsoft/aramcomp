@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -72,7 +73,8 @@ public class OnlinePollManageController {
 	 */
 	@RequestMapping(value = "/uss/olp/opm/detailOnlinePoll.do")
 	public String detailOnlinePoll(
-			OnlinePollManageVO onlinePollManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute OnlinePollManageVO onlinePollManageVO,
 			ModelMap model) {
 
 		model.addAttribute(onlinePollManageService.selectOnlinePollManageDetail(onlinePollManageVO));
@@ -90,6 +92,7 @@ public class OnlinePollManageController {
 	 */
 	@RequestMapping(value = "/uss/olp/opm/registOnlinePoll.do")
 	public String registOnlinePoll(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute OnlinePollManageVO onlinePollManageVO) {
 
 		// POLL종류 Select박스 설정
@@ -105,6 +108,7 @@ public class OnlinePollManageController {
 	 */
 	@RequestMapping(value = "/uss/olp/opm/insertOnlinePoll.do")
 	public String insertOnlinePoll(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute OnlinePollManageVO onlinePollManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -132,7 +136,8 @@ public class OnlinePollManageController {
 	 */
 	@RequestMapping(value = "/uss/olp/opm/editOnlinePoll.do")
 	public String editOnlinePoll(
-			OnlinePollManageVO onlinePollManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute OnlinePollManageVO onlinePollManageVO,
 			ModelMap model) {
 
 		model.addAttribute(onlinePollManageService.selectOnlinePollManageDetail(onlinePollManageVO));
@@ -150,6 +155,7 @@ public class OnlinePollManageController {
 	 */
 	@RequestMapping(value = "/uss/olp/opm/updateOnlinePoll.do")
 	public String updateOnlinePoll(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute OnlinePollManageVO onlinePollManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -177,6 +183,7 @@ public class OnlinePollManageController {
 	 */
 	@RequestMapping(value = "/uss/olp/opm/deleteOnlinePoll.do")
 	public String deleteOnlinePoll(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute OnlinePollManageVO onlinePollManageVO, 
 			ModelMap model) {
 
@@ -208,6 +215,7 @@ public class OnlinePollManageController {
 	 */
 	@RequestMapping(value = "/uss/olp/opm/insertOnlinePollItem.do")
 	public String insertOnlinePollItem(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute OnlinePollItemVO onlinePollItemVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -229,6 +237,7 @@ public class OnlinePollManageController {
 	 */
 	@RequestMapping(value = "/uss/olp/opm/updateOnlinePollItem.do")
 	public String updateOnlinePollItem(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute OnlinePollItemVO onlinePollItemVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -250,6 +259,7 @@ public class OnlinePollManageController {
 	 */
 	@RequestMapping(value = "/uss/olp/opm/deleteOnlinePollItem.do")
 	public String deleteOnlinePollItem(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute OnlinePollItemVO onlinePollItemVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {

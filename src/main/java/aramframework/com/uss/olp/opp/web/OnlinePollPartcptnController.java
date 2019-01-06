@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -86,6 +87,7 @@ public class OnlinePollPartcptnController {
 	@RequestMapping(value = "/uss/olp/opp/registOnlinePollPartcptn.do")
 	@Secured("ROLE_USER")
 	public String registOnlinePollPartcptn(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute OnlinePollPartcptnVO onlinePollPartcptnVO, 
 			ModelMap model) {
 
@@ -107,6 +109,7 @@ public class OnlinePollPartcptnController {
 	@RequestMapping(value = "/uss/olp/opp/insertOnlinePollPartcptn.do")
 	@Secured("ROLE_USER")
 	public String insertOnlinePollPartcptn(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute OnlinePollPartcptnVO onlinePollPartcptnVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -136,7 +139,8 @@ public class OnlinePollPartcptnController {
 	@RequestMapping(value = "/uss/olp/opp/statisticsOnlinePollPartcptn.do")
 	public String statisticsOnlinePollPartcptn(
 			HttpServletRequest request, 
-			OnlinePollPartcptnVO onlinePollPartcptnVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute OnlinePollPartcptnVO onlinePollPartcptnVO, 
 			ModelMap model) {
 
 		// 온라인POLL관리 정보 설정

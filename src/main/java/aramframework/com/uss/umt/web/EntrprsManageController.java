@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -115,6 +116,7 @@ public class EntrprsManageController {
 	@Secured("ROLE_ANONYMOUS")
 	public String sbscrbEntrprsMberView(
 			HttpServletRequest request, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute EntrprsManageVO entrprsManageVO, 
 			ModelMap model) {
 		
@@ -144,6 +146,7 @@ public class EntrprsManageController {
 	@RequestMapping("/uss/umt/sbscrbEntrprsMber.do")
 	@Secured("ROLE_ANONYMOUS")
 	public String sbscrbEntrprsMber(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute EntrprsManageVO entrprsManageVO,
 			ModelMap model) {
 
@@ -174,6 +177,7 @@ public class EntrprsManageController {
 	@RequestMapping("/uss/umt/registEntrprsMber.do")
 	@Secured("ROLE_ADMIN")
 	public String registEntrprsMber(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute EntrprsManageVO entrprsManageVO) {
 
 		fill_common_code();
@@ -189,6 +193,7 @@ public class EntrprsManageController {
 	@RequestMapping("/uss/umt/insertEntrprsMber.do")
 	@Secured("ROLE_ADMIN")
 	public String insertEntrprsMber(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute EntrprsManageVO entrprsManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -214,7 +219,8 @@ public class EntrprsManageController {
 	@RequestMapping("/uss/umt/editEntrprsMber.do")
 	@Secured("ROLE_USER")
 	public String editEntrprsMber(
-			EntrprsManageVO entrprsManageVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute EntrprsManageVO entrprsManageVO, 
 			ModelMap model) {
 
 		fill_common_code();
@@ -236,6 +242,7 @@ public class EntrprsManageController {
 	@RequestMapping("/uss/umt/updateEntrprsMber.do.do")
 	@Secured("ROLE_USER")
 	public String updateEntrprsMber(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute EntrprsManageVO entrprsManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -259,6 +266,7 @@ public class EntrprsManageController {
 	@RequestMapping(value = "/uss/umt/editEntrprsMberPassword.do")
 	@Secured("ROLE_USER")
 	public String editEntrprsMberPassword(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute EntrprsManageVO entrprsManageVO,
 			ModelMap model) {
 
@@ -277,6 +285,7 @@ public class EntrprsManageController {
 	@Secured("ROLE_USER")
 	public String updateEntrprsMberPassword(
 			HttpServletRequest request, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute EntrprsManageVO entrprsManageVO, 
 			ModelMap model) 
 	throws Exception {
@@ -323,6 +332,7 @@ public class EntrprsManageController {
 	@RequestMapping("/uss/umt/deleteEntrprsMber.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteEntrprsMber( 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute EntrprsManageVO entrprsManageVO, 
 			ModelMap model) {
 

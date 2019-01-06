@@ -18,6 +18,7 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.constant.AramProperties;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.utl.sys.ssy.domain.SynchrnServerVO;
@@ -84,7 +85,8 @@ public class SynchrnServerController {
 	@RequestMapping(value = "/utl/sys/ssy/detailSynchrnServer.do")
 	@Secured("ROLE_ADMIN")
 	public String detailSynchrnServer(
-			SynchrnServerVO synchrnServerVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute SynchrnServerVO synchrnServerVO,
 			ModelMap model) {
 
 		model.addAttribute(synchrnServerService.selectSynchrnServer(synchrnServerVO));
@@ -102,6 +104,7 @@ public class SynchrnServerController {
 	@RequestMapping(value = "/utl/sys/ssy/registSynchrnServer.do")
 	@Secured("ROLE_ADMIN")
 	public String registSynchrnServer(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SynchrnServerVO synchrnServerVO) {
 
 		return WebUtil.adjustViewName("/utl/sys/ssy/SynchrnServerRegist");
@@ -115,6 +118,7 @@ public class SynchrnServerController {
 	@RequestMapping(value = "/utl/sys/ssy/insertSynchrnServer.do")
 	@Secured("ROLE_ADMIN")
 	public String insertSynchrnServer(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SynchrnServerVO synchrnServerVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -145,7 +149,8 @@ public class SynchrnServerController {
 	@RequestMapping(value = "/utl/sys/ssy/editSynchrnServer.do")
 	@Secured("ROLE_ADMIN")
 	public String editSynchrnServer(
-			SynchrnServerVO synchrnServerVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute SynchrnServerVO synchrnServerVO,
 			ModelMap model) {
 
 		model.addAttribute(synchrnServerService.selectSynchrnServer(synchrnServerVO));
@@ -161,6 +166,7 @@ public class SynchrnServerController {
 	@RequestMapping(value = "/utl/sys/ssy/updateSynchrnServer.do")
 	@Secured("ROLE_ADMIN")
 	public String updateSynchrnServer(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SynchrnServerVO synchrnServerVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -190,6 +196,7 @@ public class SynchrnServerController {
 	@RequestMapping(value = "/utl/sys/ssy/deleteSynchrnServer.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteSynchrnServer(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SynchrnServerVO synchrnServerVO,
 			ModelMap model) {
 
@@ -237,6 +244,7 @@ public class SynchrnServerController {
 	@RequestMapping(value = "/utl/sys/ssy/deleteSynchrnServerFile.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteSynchrnServerFile(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SynchrnServerVO synchrnServerVO,
 			ModelMap model) {
 
@@ -258,6 +266,7 @@ public class SynchrnServerController {
 	@Secured("ROLE_ADMIN")
 	public String downloadFtpFile(
 			@RequestParam String fileNm,
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SynchrnServerVO synchrnServerVO,
 			ModelMap model) {
 
@@ -278,6 +287,7 @@ public class SynchrnServerController {
 	@Secured("ROLE_ADMIN")
 	public String uploadFile(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SynchrnServerVO synchrnServerVO,
 			ModelMap model) 
 	throws Exception {
@@ -300,6 +310,7 @@ public class SynchrnServerController {
 	@Secured("ROLE_ADMIN")
 	public String deleteFile(
 			@RequestParam String deleteFiles, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SynchrnServerVO synchrnServerVO,
 			ModelMap model) {
 

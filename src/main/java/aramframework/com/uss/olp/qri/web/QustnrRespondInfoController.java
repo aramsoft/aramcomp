@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -81,7 +82,8 @@ public class QustnrRespondInfoController {
 	@RequestMapping(value = "/uss/olp/qri/registQustnrRespondInfoUser.do")
 	public String registQustnrRespondInfoUser(
 			@RequestParam(value="qestnrId", required=true) String qestnrId,
-			@ModelAttribute("qustnrRespondInfoVO") QustnrRespondInfoVO qustnrRespondInfoVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute QustnrRespondInfoVO qustnrRespondInfoVO, 
 			ModelMap model) {
 
 		// 로그인 객체 선언
@@ -151,6 +153,7 @@ public class QustnrRespondInfoController {
 	@RequestMapping(value = "/uss/olp/qri/insertQustnrRespondInfoUser.do")
 	public String insertQustnrRespondInfoUser(
 			@CommandMap Map<String, Object> commandMap, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrRespondInfoVO qustnrRespondInfoVO, 
 			ModelMap model) {
 
@@ -254,8 +257,9 @@ public class QustnrRespondInfoController {
 	 */
 	@RequestMapping(value = "/uss/olp/qri/statisticsQustnrRespondInfo.do")
 	public String statisticsQustnrRespondInfo(
-			@ModelAttribute QustnrRespondInfoVO qustnrRespondInfoVO, 
 			@CommandMap Map<String, Object> commandMap,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute QustnrRespondInfoVO qustnrRespondInfoVO, 
 			ModelMap model) {
 
 		// 설문지정보ID 설정
@@ -320,7 +324,8 @@ public class QustnrRespondInfoController {
 	@RequestMapping(value = "/uss/olp/qri/detailQustnrRespondInfo.do")
 	@Secured("ROLE_USER")
 	public String detailQustnrRespondInfo(
-			QustnrRespondInfoVO qustnrRespondInfoVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute QustnrRespondInfoVO qustnrRespondInfoVO,
 			ModelMap model) {
 
 		model.addAttribute(qustnrRespondInfoService.selectQustnrRespondInfoDetail(qustnrRespondInfoVO));
@@ -336,6 +341,7 @@ public class QustnrRespondInfoController {
 	@RequestMapping(value = "/uss/olp/qri/registQustnrRespondInfo.do")
 	@Secured("ROLE_USER")
 	public String registQustnrRespondInfo(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrRespondInfoVO qustnrRespondInfoVO) {
 
 		return WebUtil.adjustViewName("/uss/olp/qri/QustnrRespondInfoRegist");
@@ -349,6 +355,7 @@ public class QustnrRespondInfoController {
 	@RequestMapping(value = "/uss/olp/qri/insertQustnrRespondInfo.do")
 	@Secured("ROLE_USER")
 	public String insertQustnrRespondInfo(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrRespondInfoVO qustnrRespondInfoVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -377,7 +384,8 @@ public class QustnrRespondInfoController {
 	@RequestMapping(value = "/uss/olp/qri/editQustnrRespondInfo.do")
 	@Secured("ROLE_USER")
 	public String editQustnrRespondInfo(
-			QustnrRespondInfoVO qustnrRespondInfoVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute QustnrRespondInfoVO qustnrRespondInfoVO,
 			ModelMap model) {
 
 		model.addAttribute(qustnrRespondInfoService.selectQustnrRespondInfoDetail(qustnrRespondInfoVO));
@@ -393,6 +401,7 @@ public class QustnrRespondInfoController {
 	@RequestMapping(value = "/uss/olp/qri/updateQustnrRespondInfo.do")
 	@Secured("ROLE_USER")
 	public String updateQustnrRespondInfo(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrRespondInfoVO qustnrRespondInfoVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -421,6 +430,7 @@ public class QustnrRespondInfoController {
 	@RequestMapping(value = "/uss/olp/qri/deleteQustnrRespondInfo.do")
 	@Secured("ROLE_USER")
 	public String deleteQustnrRespondInfo(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrRespondInfoVO qustnrRespondInfoVO, 
 			ModelMap model) {
 

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -79,7 +80,8 @@ public class QnaManageController {
 	 */
 	@RequestMapping("/uss/olh/qna/detailQna.do")
 	public String detailQna(
-			QnaManageVO qnaManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute QnaManageVO qnaManageVO,
 			ModelMap model) {
 
 		model.addAttribute(qnaManageService.selectQnaListDetail(qnaManageVO));
@@ -94,6 +96,7 @@ public class QnaManageController {
 	 */
 	@RequestMapping("/uss/olh/qna/updateQnaInqireCo.do")
 	public String updateQnaInqireCo(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QnaManageVO qnaManageVO) {
 
 		qnaManageService.updateQnaInqireCo(qnaManageVO);
@@ -108,6 +111,7 @@ public class QnaManageController {
 	 */
 	@RequestMapping("/uss/olh/qna/LoginRealnmChoice.do")
 	public String LoginRealnmChoice(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QnaManageVO qnaManageVO) {
 		
 		return WebUtil.adjustViewName("/uss/olh/qna/QnaLoginRealnmChoice");
@@ -120,6 +124,7 @@ public class QnaManageController {
 	 */
 	@RequestMapping("/uss/olh/qna/registQna.do")
 	public String registQna(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QnaManageVO qnaManageVO) {
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -139,6 +144,7 @@ public class QnaManageController {
 	 */
 	@RequestMapping("/uss/olh/qna/insertQna.do")
 	public String insertQnaCn(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QnaManageVO qnaManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -175,6 +181,7 @@ public class QnaManageController {
 	 */
 	@RequestMapping("/uss/olh/qna/QnaPasswordPopup.do")
 	public String QnaPasswordConfirmView(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QnaManageVO qnaManageVO) {
 		
 		return WebUtil.adjustViewName("/uss/olh/qna/QnaPasswordPopup");
@@ -187,6 +194,7 @@ public class QnaManageController {
 	 */
 	@RequestMapping("/uss/olh/qna/QnaPasswordConfirm.do")
 	public String QnaPasswordConfirm(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QnaManageVO qnaManageVO, 
 			ModelMap model) 
 	throws Exception {
@@ -223,7 +231,8 @@ public class QnaManageController {
 	 */
 	@RequestMapping("/uss/olh/qna/editQna.do")
 	public String editQna(
-			QnaManageVO qnaManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute QnaManageVO qnaManageVO,
 			ModelMap model) {
 
 		qnaManageVO = qnaManageService.selectQnaListDetail(qnaManageVO);
@@ -244,6 +253,7 @@ public class QnaManageController {
 	 */
 	@RequestMapping("/uss/olh/qna/updateQna.do")
 	public String updateQna(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QnaManageVO qnaManageVO, 
 			BindingResult bindingResult,
 			ModelMap model) 
@@ -280,6 +290,7 @@ public class QnaManageController {
 	 */
 	@RequestMapping("/uss/olh/qna/QnaPasswordConfirmDel.do")
 	public String QnaPasswordConfirmDel(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QnaManageVO qnaManageVO, 
 			ModelMap model) 
 	throws Exception {
@@ -315,6 +326,7 @@ public class QnaManageController {
 	 */
 	@RequestMapping("/uss/olh/qna/deleteQna.do")
 	public String deleteQna(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QnaManageVO qnaManageVO, 
 			ModelMap model) {
 
@@ -358,7 +370,8 @@ public class QnaManageController {
 	@RequestMapping("/uss/olh/qnm/detailQnaAnswer.do")
 	@Secured("ROLE_USER")
 	public String detailQnaAnswer(
-			QnaManageVO qnaManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute QnaManageVO qnaManageVO,
 			ModelMap model) {
 
 		model.addAttribute(qnaManageService.selectQnaAnswerDetail(qnaManageVO));
@@ -374,7 +387,8 @@ public class QnaManageController {
 	@RequestMapping("/uss/olh/qnm/editQnaAnswer.do")
 	@Secured("ROLE_USER")
 	public String editQnaAnswer(
-			QnaManageVO qnaManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute QnaManageVO qnaManageVO,
 			ModelMap model) {
 
 		model.addAttribute(qnaManageService.selectQnaAnswerDetail(qnaManageVO));
@@ -393,6 +407,7 @@ public class QnaManageController {
 	@RequestMapping("/uss/olh/qnm/updateQnaAnswer.do")
 	@Secured("ROLE_USER")
 	public String updateQnaAnswer(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QnaManageVO qnaManageVO, 
 			ModelMap model) {
 

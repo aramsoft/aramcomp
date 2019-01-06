@@ -13,6 +13,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.ComCodeVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -76,7 +77,8 @@ public class FileSysMntrngController {
 	@RequestMapping("/utl/sys/fsm/detailFileSysMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String detailFileSysMntrng(
-			FileSysMntrngVO fileSysMntrngVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute FileSysMntrngVO fileSysMntrngVO,
 			ModelMap model) {
 		
 		fileSysMntrngVO = fileSysMntrngService.selectFileSysMntrng(fileSysMntrngVO);
@@ -100,6 +102,7 @@ public class FileSysMntrngController {
 	@RequestMapping("/utl/sys/fsm/registFileSysMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String registFileSysMntrng(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute FileSysMntrngVO fileSysMntrngVO) {
 		
 		return WebUtil.adjustViewName("/utl/sys/fsm/FileSysMntrngRegist");
@@ -113,6 +116,7 @@ public class FileSysMntrngController {
 	@RequestMapping("/utl/sys/fsm/insertFileSysMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String insertFileSysMntrng(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute FileSysMntrngVO fileSysMntrngVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -141,7 +145,8 @@ public class FileSysMntrngController {
 	@RequestMapping("/utl/sys/fsm/editFileSysMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String editFileSysMntrng(
-			FileSysMntrngVO fileSysMntrngVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute FileSysMntrngVO fileSysMntrngVO,
 			ModelMap model) {
 
 		fileSysMntrngVO = fileSysMntrngService.selectFileSysMntrng(fileSysMntrngVO);
@@ -165,6 +170,7 @@ public class FileSysMntrngController {
 	@RequestMapping("/utl/sys/fsm/updateFileSysMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String updateFileSysMntrng(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute FileSysMntrngVO fileSysMntrngVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -191,6 +197,7 @@ public class FileSysMntrngController {
 	@RequestMapping("/utl/sys/fsm/deleteFileSysMntrng.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteFileSysMntrng(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute FileSysMntrngVO fileSysMntrngVO, 
 			ModelMap model) {
 
@@ -285,7 +292,8 @@ public class FileSysMntrngController {
 	@RequestMapping("/utl/sys/fsm/detailFileSysMntrngLog.do")
 	@Secured("ROLE_ADMIN")
 	public String detailFileSysMntrngLog(
-			FileSysMntrngLogVO fileSysMntrngLogVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute FileSysMntrngLogVO fileSysMntrngLogVO,
 			ModelMap model) {
 		
 		fileSysMntrngLogVO = fileSysMntrngService.selectFileSysMntrngLog(fileSysMntrngLogVO);

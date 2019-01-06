@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -100,7 +101,8 @@ public class QustnrTmplatManageController {
 	@RequestMapping(value = "/uss/olp/qtm/detailQustnrTmplat.do")
 	@Secured("ROLE_ADMIN")
 	public String detailQustnrTmplat(
-			QustnrTmplatManageVO qustnrTmplatManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute QustnrTmplatManageVO qustnrTmplatManageVO,
 			ModelMap model) {
 
 		model.addAttribute(qustnrTmplatManageService.selectQustnrTmplatManageDetail(qustnrTmplatManageVO));
@@ -116,6 +118,7 @@ public class QustnrTmplatManageController {
 	@RequestMapping(value = "/uss/olp/qtm/registQustnrTmplat.do")
 	@Secured("ROLE_ADMIN")
 	public String registQustnrTmplat(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrTmplatManageVO qustnrTmplatManageVO) {
 
 		return WebUtil.adjustViewName("/uss/olp/qtm/QustnrTmplatRegist");
@@ -130,6 +133,7 @@ public class QustnrTmplatManageController {
 	@Secured("ROLE_ADMIN")
 	public String insertQustnrTmplat(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrTmplatManageVO qustnrTmplatManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -168,7 +172,8 @@ public class QustnrTmplatManageController {
 	@RequestMapping(value = "/uss/olp/qtm/editQustnrTmplat.do")
 	@Secured("ROLE_ADMIN")
 	public String editQustnrTmplat(
-			QustnrTmplatManageVO qustnrTmplatManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute QustnrTmplatManageVO qustnrTmplatManageVO,
 			ModelMap model) {
 
 		model.addAttribute(qustnrTmplatManageService.selectQustnrTmplatManageDetail(qustnrTmplatManageVO));
@@ -186,6 +191,7 @@ public class QustnrTmplatManageController {
 	@Secured("ROLE_ADMIN")
 	public String updateQustnrTmplat(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrTmplatManageVO qustnrTmplatManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model)
@@ -225,6 +231,7 @@ public class QustnrTmplatManageController {
 	@RequestMapping(value = "/uss/olp/qtm/deleteQustnrTmplat.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteQustnrTmplat(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrTmplatManageVO qustnrTmplatManageVO, 
 			ModelMap model) {
 

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -95,7 +96,8 @@ public class QustnrManageController {
 	 */
 	@RequestMapping(value = "/uss/olp/qmc/detailQustnr.do")
 	public String detailQustnr(
-			QustnrManageVO qustnrManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute QustnrManageVO qustnrManageVO,
 			ModelMap model) {
 
 		model.addAttribute(qustnrManageService.selectQustnrManageDetail(qustnrManageVO));
@@ -114,6 +116,7 @@ public class QustnrManageController {
 	@RequestMapping(value = "/uss/olp/qmc/registQustnr.do")
 	@Secured("ROLE_USER")
 	public String registQustnr(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrManageVO qustnrManageVO, 
 			ModelMap model) {
 
@@ -134,6 +137,7 @@ public class QustnrManageController {
 	@RequestMapping(value = "/uss/olp/qmc/insertQustnr.do")
 	@Secured("ROLE_USER")
 	public String insertQustnr(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrManageVO qustnrManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -164,7 +168,8 @@ public class QustnrManageController {
 	@RequestMapping(value = "/uss/olp/qmc/editQustnr.do")
 	@Secured("ROLE_USER")
 	public String editQustnr(
-			QustnrManageVO qustnrManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute QustnrManageVO qustnrManageVO,
 			ModelMap model) {
 
 		qustnrManageVO = qustnrManageService.selectQustnrManageDetail(qustnrManageVO);
@@ -187,6 +192,7 @@ public class QustnrManageController {
 	@RequestMapping(value = "/uss/olp/qmc/updateQustnr.do")
 	@Secured("ROLE_USER")
 	public String updateQustnr(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrManageVO qustnrManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -217,6 +223,7 @@ public class QustnrManageController {
 	@RequestMapping(value = "/uss/olp/qmc/deleteQustnr.do")
 	@Secured("ROLE_USER")
 	public String deleteQustnr(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrManageVO qustnrManageVO, 
 			ModelMap model) {
 

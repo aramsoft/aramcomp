@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -98,7 +99,8 @@ public class QustnrItemManageController {
 	@RequestMapping(value = "/uss/olp/qim/detailQustnrItem.do")
 	@Secured("ROLE_USER")
 	public String detailQustnrItem(
-			QustnrItemManageVO qustnrItemManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute QustnrItemManageVO qustnrItemManageVO,
 			ModelMap model) {
 
 		model.addAttribute(qustnrItemManageService.selectQustnrItemManageDetail(qustnrItemManageVO));
@@ -114,6 +116,7 @@ public class QustnrItemManageController {
 	@RequestMapping(value = "/uss/olp/qim/registQustnrItem.do")
 	@Secured("ROLE_USER")
 	public String registQustnrItem(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrItemManageVO qustnrItemManageVO) {
 
 		return WebUtil.adjustViewName("/uss/olp/qim/QustnrItemRegist");
@@ -127,6 +130,7 @@ public class QustnrItemManageController {
 	@RequestMapping(value = "/uss/olp/qim/insertQustnrItem.do")
 	@Secured("ROLE_USER")
 	public String insertQustnrItem(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrItemManageVO qustnrItemManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -155,7 +159,8 @@ public class QustnrItemManageController {
 	@RequestMapping(value = "/uss/olp/qim/editQustnrItem.do")
 	@Secured("ROLE_USER")
 	public String editQustnrItem(
-			QustnrItemManageVO qustnrItemManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute QustnrItemManageVO qustnrItemManageVO,
 			ModelMap model) {
 
 		model.addAttribute(qustnrItemManageService.selectQustnrItemManageDetail(qustnrItemManageVO));
@@ -171,6 +176,7 @@ public class QustnrItemManageController {
 	@RequestMapping(value = "/uss/olp/qim/updateQustnrItem.do")
 	@Secured("ROLE_USER")
 	public String updateQustnrItem(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrItemManageVO qustnrItemManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -199,6 +205,7 @@ public class QustnrItemManageController {
 	@RequestMapping(value = "/uss/olp/qim/deleteQustnrItem.do")
 	@Secured("ROLE_USER")
 	public String deleteQustnrItem(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrItemManageVO qustnrItemManageVO, 
 			ModelMap model) {
 

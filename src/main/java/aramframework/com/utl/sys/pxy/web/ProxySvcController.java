@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -78,7 +79,8 @@ public class ProxySvcController {
 	@RequestMapping(value = "/utl/sys/pxy/detailProxySvc.do")
 	@Secured("ROLE_ADMIN")
 	public String detailProxySvc(
-			ProxySvcVO proxySvcVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute ProxySvcVO proxySvcVO,
 			ModelMap model) {
 
 		model.addAttribute(proxySvcService.selectProxySvc(proxySvcVO));
@@ -94,6 +96,7 @@ public class ProxySvcController {
 	@RequestMapping(value = "/utl/sys/pxy/registProxySvc.do")
 	@Secured("ROLE_ADMIN")
 	public String registProxySvc(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProxySvcVO proxySvcVO) {
 
 		cmmUseService.populateCmmCodeList("COM072", "COM072_svcSttus");
@@ -109,6 +112,7 @@ public class ProxySvcController {
 	@RequestMapping(value = "/utl/sys/pxy/insertProxySvc.do")
 	@Secured("ROLE_ADMIN")
 	public String insertProxySvc(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProxySvcVO proxySvcVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -135,7 +139,8 @@ public class ProxySvcController {
 	@RequestMapping(value = "/utl/sys/pxy/editProxySvc.do")
 	@Secured("ROLE_ADMIN")
 	public String editProxySvc(
-			ProxySvcVO proxySvcVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute ProxySvcVO proxySvcVO,
 			ModelMap model) {
 
 		model.addAttribute(proxySvcService.selectProxySvc(proxySvcVO));
@@ -153,6 +158,7 @@ public class ProxySvcController {
 	@RequestMapping(value = "/utl/sys/pxy/updateProxySvc.do")
 	@Secured("ROLE_ADMIN")
 	public String updateProxySvc(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProxySvcVO proxySvcVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -179,6 +185,7 @@ public class ProxySvcController {
 	@RequestMapping(value = "/utl/sys/pxy/deleteProxySvc.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteProxySvc(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProxySvcVO proxySvcVO,
 			ModelMap model) {
 

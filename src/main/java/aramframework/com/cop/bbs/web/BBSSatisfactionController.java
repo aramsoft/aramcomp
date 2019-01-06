@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -99,6 +100,7 @@ public class BBSSatisfactionController {
 	@RequestMapping("/cop/bbs/insertSatisfaction.do")
 	@Secured("ROLE_USER")
 	public String insertSatisfaction(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SatisfactionVO satisfactionVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -128,6 +130,7 @@ public class BBSSatisfactionController {
 	@RequestMapping("/cop/bbs/updateSatisfaction.do")
 	@Secured("ROLE_USER")
 	public String updateSatisfaction(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SatisfactionVO satisfactionVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -156,6 +159,7 @@ public class BBSSatisfactionController {
 	@RequestMapping("/cop/bbs/deleteSatisfaction.do")
 	@Secured("ROLE_USER")
 	public String deleteSatisfaction(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SatisfactionVO satisfactionVO, 
 			ModelMap model) {
 
@@ -236,6 +240,7 @@ public class BBSSatisfactionController {
 	 */
 	@RequestMapping("/cop/bbs/anonymous/insertSatisfaction.do")
 	public String insertAnonymousSatisfaction(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SatisfactionVO satisfactionVO,
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -264,6 +269,7 @@ public class BBSSatisfactionController {
 	 */
 	@RequestMapping("/cop/bbs/anonymous/updateSatisfaction.do")
 	public String updateAnonymousSatisfaction(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SatisfactionVO satisfactionVO,
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -291,6 +297,7 @@ public class BBSSatisfactionController {
 	 */
 	@RequestMapping("/cop/bbs/anonymous/deleteSatisfaction.do")
 	public String deleteAnonymousSatisfaction(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SatisfactionVO satisfactionVO,
 			ModelMap model) 
 	throws Exception {

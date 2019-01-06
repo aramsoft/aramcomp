@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -97,6 +98,7 @@ public class BBSCommentController {
 	@RequestMapping("/cop/bbs/insertComment.do")
 	@Secured("ROLE_USER")
 	public String insertComment(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CommentVO commentVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
@@ -127,6 +129,7 @@ public class BBSCommentController {
 	@RequestMapping("/cop/bbs/updateComment.do")
 	@Secured("ROLE_USER")
 	public String updateComment(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CommentVO commentVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
@@ -155,6 +158,7 @@ public class BBSCommentController {
 	@RequestMapping("/cop/bbs/deleteComment.do")
 	@Secured("ROLE_USER")
 	public String deleteComment(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CommentVO commentVO, 
 			ModelMap model) {
 
@@ -227,6 +231,7 @@ public class BBSCommentController {
 	 */
 	@RequestMapping("/cop/bbs/anonymous/insertComment.do")
 	public String insertAnonymousComment(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CommentVO commentVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -255,6 +260,7 @@ public class BBSCommentController {
 	 */
 	@RequestMapping("/cop/bbs/anonymous/updateComment.do")
 	public String updateAnonymousComment(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CommentVO commentVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -294,6 +300,7 @@ public class BBSCommentController {
 	 */
 	@RequestMapping("/cop/bbs/anonymous/deleteComment.do")
 	public String deleteAnonymousComment(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CommentVO commentVO, 
 			ModelMap model)
 	throws Exception {

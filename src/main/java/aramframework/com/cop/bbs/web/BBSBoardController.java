@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.constant.CacheKey;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
@@ -199,7 +200,8 @@ public class BBSBoardController {
 	public String detailBoardArticle(
 			@PathVariable String bbsPathId, 
 			@PathVariable int nttId,			
-			BoardVO boardVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute BoardVO boardVO, 
 			ModelMap model) {
 
 		boardVO.setBbsId(WebUtil.getOriginalId(bbsPathId, "BBSMSTR_"));
@@ -267,7 +269,8 @@ public class BBSBoardController {
 	public String viewlBoardArticle(
 			@PathVariable String bbsPathId, 
 			@PathVariable int nttId,			
-			BoardVO boardVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute BoardVO boardVO, 
 			ModelMap model) {
 
 		boardVO.setBbsId(WebUtil.getOriginalId(bbsPathId, "BBSMSTR_"));
@@ -316,6 +319,7 @@ public class BBSBoardController {
 	 */
 	@RequestMapping("/cop/bbs/registBoardArticle.do")
 	public String registBoardArticle(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
 			ModelMap model) {
 
@@ -344,6 +348,7 @@ public class BBSBoardController {
 	@Secured("ROLE_USER")
 	public String insertBoardArticle(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO,
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -388,6 +393,7 @@ public class BBSBoardController {
 	 */
 	@RequestMapping("/cop/bbs/replyBoardArticle.do")
 	public String replyBoardArticle(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
 			ModelMap model) {
 
@@ -417,6 +423,7 @@ public class BBSBoardController {
 	@RequestMapping("/cop/bbs/insertReplyBoardArticle.do")
 	public String addReplyBoardArticle(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO,
 			BindingResult bindingResult, 
 			ModelMap model)
@@ -462,7 +469,8 @@ public class BBSBoardController {
 	 */
 	@RequestMapping("/cop/bbs/editBoardArticle.do")
 	public String editBoardArticle(
-			BoardVO boardVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute BoardVO boardVO, 
 			ModelMap model) 
 	throws Exception {
 
@@ -492,6 +500,7 @@ public class BBSBoardController {
 	@RequestMapping("/cop/bbs/updateBoardArticle.do")
 	public String updateBoardArticle(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO,
 			BindingResult bindingResult, 
 			ModelMap model)
@@ -536,6 +545,7 @@ public class BBSBoardController {
 	 */
 	@RequestMapping("/cop/bbs/deleteBoardArticle.do")
 	public String deleteBoardArticle(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
 			ModelMap model) {
 
@@ -563,6 +573,7 @@ public class BBSBoardController {
 	@RequestMapping("/cop/bbs/eraseBoardArticle.do")
 	@Secured("ROLE_ADMIN")
 	public String eraseBoardArticle(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
 			ModelMap model) {
 
@@ -583,6 +594,7 @@ public class BBSBoardController {
 	@RequestMapping(value="/content/board/anonymous/{bbsPathId}/articles")
 	public String listAnonymousBoardArticle(
 			@PathVariable String bbsPathId, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
 			ModelMap model) {
 
@@ -632,7 +644,8 @@ public class BBSBoardController {
 	public String detailAnonymousBoardArticle(
 			@PathVariable String bbsPathId, 
 			@PathVariable int nttId,			
-			BoardVO boardVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute BoardVO boardVO, 
 			ModelMap model) {
 
 		boardVO.setBbsId(WebUtil.getOriginalId(bbsPathId, "BBSMSTR_"));
@@ -716,6 +729,7 @@ public class BBSBoardController {
 	 */
 	@RequestMapping("/cop/bbs/anonymous/registBoardArticle.do")
 	public String registAnonymousBoardArticle(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
 			ModelMap model) {
 
@@ -747,6 +761,7 @@ public class BBSBoardController {
 	@RequestMapping("/cop/bbs/anonymous/insertBoardArticle.do")
 	public String insertAnonymousBoardArticle(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO,
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -781,6 +796,7 @@ public class BBSBoardController {
 	 */
 	@RequestMapping("/cop/bbs/anonymous/replyBoardArticle.do")
 	public String replyAnonymousBoardArticle(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
 			ModelMap model) {
 
@@ -813,6 +829,7 @@ public class BBSBoardController {
 	@RequestMapping("/cop/bbs/anonymous/insertReplyBoardArticle.do")
 	public String addReplyAnonymousBoardArticle(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO,
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -850,7 +867,8 @@ public class BBSBoardController {
 	 */
 	@RequestMapping("/cop/bbs/anonymous/editBoardArticle.do")
 	public String editAnonymousBoardArticle(
-			BoardVO boardVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute BoardVO boardVO,
 			ModelMap model)
 	throws Exception {
 
@@ -896,6 +914,7 @@ public class BBSBoardController {
 	@RequestMapping("/cop/bbs/anonymous/updateBoardArticle.do")
 	public String updateAnonymousBoardArticle(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO,
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -931,6 +950,7 @@ public class BBSBoardController {
 	 */
 	@RequestMapping("/cop/bbs/anonymous/deleteBoardArticle.do")
 	public String deleteAnonymousBoardArticle(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
 			ModelMap model) 
 	throws Exception {

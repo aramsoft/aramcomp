@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.ComponentChecker;
@@ -109,6 +110,7 @@ public class BBSMasterController {
 	@RequestMapping("/cop/bbs/registBoardMaster.do")
 	@Secured("ROLE_ADMIN")
 	public String registBoardMaster(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardMasterVO boardMasterVO,
 			ModelMap model) {
 
@@ -146,6 +148,7 @@ public class BBSMasterController {
 	@RequestMapping("/cop/bbs/insertBoardMaster.do")
 	@Secured("ROLE_ADMIN")
 	public String insertBoardMaster(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardMasterVO boardMasterVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -175,8 +178,9 @@ public class BBSMasterController {
 	@Secured("ROLE_ADMIN")
 	public String editBoardMaster(
 			HttpServletRequest request,
-			BoardMasterVO boardMasterVO,
-			BoardUseInfVO boardUseInfVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute BoardMasterVO boardMasterVO,
+			@ModelAttribute BoardUseInfVO boardUseInfVO, 
 			ModelMap model) {
 	
 		model.addAttribute(bbsMasterService.selectBBSMasterInf(boardMasterVO));
@@ -219,6 +223,7 @@ public class BBSMasterController {
 	@RequestMapping("/cop/bbs/updateBoardMaster.do")
 	@Secured("ROLE_ADMIN")
 	public String updateBoardMaster(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardMasterVO boardMasterVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -245,6 +250,7 @@ public class BBSMasterController {
 	@RequestMapping("/cop/bbs/deleteBoardMaster.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteBoardMaster(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardMasterVO boardMasterVO,
 			ModelMap model) {
 

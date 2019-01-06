@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.ComponentChecker;
 import aramframework.com.cmm.util.MessageHelper;
@@ -76,6 +77,7 @@ public class BBSUseInfoController {
 	@RequestMapping("/cop/bbs/registBoardUseInf.do")
 	@Secured("ROLE_ADMIN")
 	public String registBoardUseInf(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardUseInfVO boardUseInfVO, 
 			ModelMap model) {
 
@@ -94,6 +96,7 @@ public class BBSUseInfoController {
 	@RequestMapping("/cop/bbs/insertBoardUseInf.do")
 	@Secured("ROLE_ADMIN")
 	public String insertBoardUseInf(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardUseInfVO boardUseInfVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -130,7 +133,8 @@ public class BBSUseInfoController {
 	@Secured("ROLE_ADMIN")
 	public String editBoardUseInf(
 			HttpServletRequest request,
-			BoardUseInfVO boardUseInfVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute BoardUseInfVO boardUseInfVO, 
 			ModelMap model) {
 		
 		boardUseInfVO = bbsUseService.selectBBSUseInf(boardUseInfVO);
@@ -158,6 +162,7 @@ public class BBSUseInfoController {
 	@RequestMapping("/cop/bbs/updateBoardUseInf.do")
 	@Secured("ROLE_ADMIN")
 	public String updateBoardUseInf(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardUseInfVO boardUseInfVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -182,6 +187,7 @@ public class BBSUseInfoController {
 	@Secured("ROLE_ADMIN")
 	public String deleteBoardUseInf(
 			HttpServletRequest request, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardUseInfVO boardUseInfVO, 
 			ModelMap model) {
 

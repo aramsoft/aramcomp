@@ -14,6 +14,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchCodeVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
@@ -90,6 +91,7 @@ public class AdressBookController {
 	@RequestMapping("/cop/adb/registAdressBook.do")
 	@Secured("ROLE_USER")
 	public String registAdressBook(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AdressBookVO adressBookVO, 
 			ModelMap model) {
 		
@@ -105,6 +107,7 @@ public class AdressBookController {
 	@RequestMapping("/cop/adb/insertAdressBook.do")
 	@Secured("ROLE_USER")
 	public String insertAdressBook(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AdressBookVO adressBookVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -142,6 +145,7 @@ public class AdressBookController {
 	@RequestMapping("/cop/adb/editAdressBook.do")
 	@Secured("ROLE_USER")
 	public String editAdressBook(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AdressBookVO adressBookVO, 
 			ModelMap model) {
 
@@ -187,6 +191,7 @@ public class AdressBookController {
 	@RequestMapping("/cop/adb/updateAdressBook.do")
 	@Secured("ROLE_USER")
 	public String updateAdressBook(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AdressBookVO adressBookVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -224,6 +229,7 @@ public class AdressBookController {
 	@RequestMapping("/cop/adb/deleteAdressBook.do")
 	@Secured("ROLE_USER")
 	public String deleteAdressBook(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AdressBookVO adressBookVO, 
 			ModelMap model) {
 

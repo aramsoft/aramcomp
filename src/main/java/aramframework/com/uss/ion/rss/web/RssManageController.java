@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -100,6 +101,7 @@ public class RssManageController {
 	@Secured("ROLE_ADMIN")
 	public String deleteListRssManage(
 			@CommandMap Map<String, Object> commandMap, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RssManageVO rssManageVO, 
 			ModelMap model)  {
 
@@ -142,7 +144,8 @@ public class RssManageController {
 	@RequestMapping(value = "/uss/ion/rss/detailRssManage.do")
 	@Secured("ROLE_ADMIN")
 	public String detailRssManage(
-			RssManageVO rssManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute RssManageVO rssManageVO,
 			ModelMap model)  {
 
 		model.addAttribute(rssManageService.selectRssManageDetail(rssManageVO));
@@ -158,6 +161,7 @@ public class RssManageController {
 	@RequestMapping(value = "/uss/ion/rss/registRssManage.do")
 	@Secured("ROLE_ADMIN")
 	public String registRssManage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RssManageVO rssManageVO, 
 			ModelMap model) {
 
@@ -174,6 +178,7 @@ public class RssManageController {
 	@RequestMapping(value = "/uss/ion/rss/insertRssManage.do")
 	@Secured("ROLE_ADMIN")
 	public String insertRssManage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RssManageVO rssManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -204,7 +209,8 @@ public class RssManageController {
 	@RequestMapping(value = "/uss/ion/rss/editRssManage.do")
 	@Secured("ROLE_ADMIN")
 	public String editRssManage(
-			RssManageVO rssManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute RssManageVO rssManageVO,
 			ModelMap model)  {
 
 		model.addAttribute(rssManageService.selectRssManageDetail(rssManageVO));
@@ -223,6 +229,7 @@ public class RssManageController {
 	@RequestMapping(value = "/uss/ion/rss/updateRssManage.do")
 	@Secured("ROLE_ADMIN")
 	public String updateRssManage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RssManageVO rssManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -254,6 +261,7 @@ public class RssManageController {
 	@RequestMapping(value = "/uss/ion/rss/deleteRssManage.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteRssManage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RssManageVO rssManageVO, 
 			ModelMap model) {
 

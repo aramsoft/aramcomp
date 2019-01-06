@@ -15,6 +15,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.BaseVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.WebUtil;
@@ -55,6 +56,7 @@ public class NoteManageController {
 	@Secured("ROLE_USER")
 	public String registNote(
 			@CommandMap Map<String, Object> commandMap,
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NoteManageVO noteManageVO, 
 			ModelMap model) {
 
@@ -106,6 +108,7 @@ public class NoteManageController {
 			MultipartHttpServletRequest multiRequest, 
 			@RequestParam String recptnEmpList,
 			@RequestParam String recptnSeList,
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NoteManageVO noteManageVO, 
 			BindingResult bindingResult,
 			ModelMap model) 

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uss.ion.rsn.domain.RssInfoVO;
 import aramframework.com.uss.ion.rsn.service.RssService;
@@ -57,7 +58,8 @@ public class RssController {
 	 */
 	@RequestMapping(value = "/uss/ion/rsn/detailRssService.do")
 	public String detailRssService(
-			RssInfoVO rssInfoVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute RssInfoVO rssInfoVO, 
 			ModelMap model) {
 		
 		if( rssInfoVO.getRssId() == null || rssInfoVO.getRssId().equals("") ) {

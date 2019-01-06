@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -70,7 +71,8 @@ public class NotificationController {
 	 */
 	@RequestMapping("/uss/ion/noi/detailNotification.do")
 	public String detailNotification(
-			NotificationVO notificationVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute NotificationVO notificationVO, 
 			ModelMap model) {
 
 		model.addAttribute(notificationService.selectNotificationInf(notificationVO));
@@ -88,6 +90,7 @@ public class NotificationController {
 	 */
 	@RequestMapping("/uss/ion/noi/registNotification.do")
 	public String registNotification(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NotificationVO notificationVO) {
 
 		return WebUtil.adjustViewName("/uss/ion/noi/NotificationRegist");
@@ -100,6 +103,7 @@ public class NotificationController {
 	 */
 	@RequestMapping("/uss/ion/noi/insertNotification.do")
 	public String insertNotification(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NotificationVO notificationVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -130,7 +134,8 @@ public class NotificationController {
 	 */
 	@RequestMapping("/uss/ion/noi/editNotification.do")
 	public String editNotification(
-			NotificationVO notificationVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute NotificationVO notificationVO, 
 			ModelMap model) {
 
 		model.addAttribute(notificationService.selectNotificationInf(notificationVO));
@@ -145,6 +150,7 @@ public class NotificationController {
 	 */
 	@RequestMapping("/uss/ion/noi/updateNotification.do")
 	public String updateNotification(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NotificationVO notificationVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -175,6 +181,7 @@ public class NotificationController {
 	 */
 	@RequestMapping("/uss/ion/noi/deleteNotification.do")
 	public String deleteNotification(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NotificationVO notificationVO, 
 			ModelMap model) {
 
@@ -194,6 +201,7 @@ public class NotificationController {
 	 */
 	@RequestMapping("/uss/ion/noi/getNotifications.do")
 	public String getNotifications(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NotificationVO notificationVO, 
 			ModelMap model) {
 		

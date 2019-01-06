@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -68,6 +69,7 @@ public class UserAbsnceController {
 	 */
 	@RequestMapping("/uss/ion/uas/registUserAbsnce.do")
 	public String registUserAbsnce(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute UserAbsnceVO userAbsnceVO) {
 
 		userAbsnceService.selectUserAbsnce(userAbsnceVO);
@@ -82,6 +84,7 @@ public class UserAbsnceController {
 	 */
 	@RequestMapping("/uss/ion/uas/insertUserAbsnce.do")
 	public String insertUserAbsnce(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute UserAbsnceVO userAbsnceVO,
 			ModelMap model) {
 
@@ -101,7 +104,8 @@ public class UserAbsnceController {
 	 */
 	@RequestMapping("/uss/ion/uas/editUserAbsnce.do")
 	public String editUserAbsnce(
-			UserAbsnceVO userAbsnceVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute UserAbsnceVO userAbsnceVO,
 			ModelMap model) {
 
 		model.addAttribute(userAbsnceService.selectUserAbsnce(userAbsnceVO));
@@ -116,6 +120,7 @@ public class UserAbsnceController {
 	 */
 	@RequestMapping("/uss/ion/uas/updateUserAbsnce.do")
 	public String updateUserAbsnce(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute UserAbsnceVO userAbsnceVO,
 			ModelMap model) {
 
@@ -135,6 +140,7 @@ public class UserAbsnceController {
 	 */
 	@RequestMapping("/uss/ion/uas/deleteUserAbsnce.do")
 	public String deleteUserAbsnce(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute UserAbsnceVO userAbsnceVO,
 			ModelMap model) {
 
@@ -151,8 +157,9 @@ public class UserAbsnceController {
 	 */
 	@RequestMapping("/uss/ion/uas/deleteListUserAbsnce.do")
 	public String deleteListUserAbsnce(
-			@ModelAttribute UserAbsnceVO userAbsnceVO,
 			@RequestParam String userIds, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute UserAbsnceVO userAbsnceVO,
 			ModelMap model) {
 
 		userAbsnceService.deleteUserAbsnces(userIds);

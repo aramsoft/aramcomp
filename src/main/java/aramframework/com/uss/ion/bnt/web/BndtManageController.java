@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -119,7 +120,8 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/detailBndtManage.do")
 	public String detailBndtManage(
-			BndtManageVO bndtManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute BndtManageVO bndtManageVO,
 			ModelMap model) {
 
 		model.addAttribute(bndtManageService.selectBndtManage(bndtManageVO));
@@ -134,6 +136,7 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/registBndtManage.do")
 	public String registBndtManage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BndtManageVO bndtManageVO) {
 		
 		return WebUtil.adjustViewName("/uss/ion/bnt/BndtManageRegist");
@@ -146,6 +149,7 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/insertBndtManage.do")
 	public String insertBndtManage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BndtManageVO bndtManageVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -171,7 +175,8 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/editBndtManage.do")
 	public String editBndtManage(
-			BndtManageVO bndtManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute BndtManageVO bndtManageVO,
 			ModelMap model) {
 
 		model.addAttribute(bndtManageService.selectBndtManage(bndtManageVO));
@@ -186,6 +191,7 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/updateBndtManage.do")
 	public String updateBndtManage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BndtManageVO bndtManageVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -211,6 +217,7 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/deleteBndtManage.do")
 	public String deleteBndtManage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BndtManageVO bndtManageVO,
 			ModelMap model) {
 
@@ -262,7 +269,8 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/detailBndtCeckManage.do")
 	public String detailBndtCeckManage(
-			BndtCeckManageVO bndtCeckManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute BndtCeckManageVO bndtCeckManageVO,
 			ModelMap model) {
 
 		model.addAttribute(bndtManageService.selectBndtCeckManage(bndtCeckManageVO));
@@ -277,6 +285,7 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/registBndtCeckManage.do")
 	public String registBndtCeckManage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BndtCeckManageVO bndtCeckManageVO) {
 
 		cmmUseService.populateCmmCodeList("COM071", "COM071_bndtCeckSe");
@@ -291,6 +300,7 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/insertBndtCeckManage.do")
 	public String insertBndtCeckManage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BndtCeckManageVO bndtCeckManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -321,7 +331,8 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/editBndtCeckManage.do")
 	public String editBndtCeckManage(
-			BndtCeckManageVO bndtCeckManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute BndtCeckManageVO bndtCeckManageVO,
 			ModelMap model) {
 
 		model.addAttribute(bndtManageService.selectBndtCeckManage(bndtCeckManageVO));
@@ -336,6 +347,7 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/updateBndtCeckManage.do")
 	public String updateBndtCeckManage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BndtCeckManageVO bndtCeckManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -361,6 +373,7 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/deleteBndtCeckManage.do")
 	public String deleteBndtCeckManage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BndtCeckManageVO bndtCeckManageVO, 
 			ModelMap model) {
 
@@ -379,6 +392,7 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/detailBndtDiary.do")
 	public String detailBndtDiary(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BndtDiaryVO bndtDiaryVO, 
 			ModelMap model) {
 
@@ -394,6 +408,7 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/registBndtDiary.do")
 	public String registBndtDiary(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BndtDiaryVO bndtDiaryVO, 
 			ModelMap model) {
 
@@ -411,6 +426,7 @@ public class BndtManageController {
 	@RequestMapping(value = "/uss/ion/bnt/insertBndtDiary.do")
 	public String insertBndtDiary(
 			@RequestParam String diaryForInsert, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BndtDiaryVO bndtDiaryVO, 
 			ModelMap model) {
 
@@ -430,6 +446,7 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/editBndtDiary.do")
 	public String editBndtDiary(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BndtDiaryVO bndtDiaryVO, 
 			ModelMap model) {
 
@@ -447,6 +464,7 @@ public class BndtManageController {
 	@RequestMapping(value = "/uss/ion/bnt/updateBndtDiary.do")
 	public String updateBndtDiary(
 			@RequestParam String diaryForUpdate, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BndtDiaryVO bndtDiaryVO, 
 			ModelMap model) {
 
@@ -466,6 +484,7 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/deleteBndtDiary.do")
 	public String deleteBndtDiary(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BndtDiaryVO bndtDiaryVO, 
 			ModelMap model) {
 
@@ -517,6 +536,7 @@ public class BndtManageController {
 	@RequestMapping(value = "/uss/ion/bnt/insertBndtManageBnde.do")
 	public String insertBndtManageBnde(
 			@RequestParam String checkedBndtManageForInsert,
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BndtManageVO bndtManageVO, 
 			ModelMap model) {
 

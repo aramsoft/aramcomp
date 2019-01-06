@@ -15,6 +15,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.ComCodeVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
@@ -306,7 +307,8 @@ public class LeaderSchdulController {
 	 */
 	@RequestMapping(value = "/cop/smt/lsm/detailLeaderSchdul.do")
 	public String detailLeaderSchdul(
-			LeaderSchdulVO leaderSchdulVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute LeaderSchdulVO leaderSchdulVO,
 			ModelMap model) {
 
 		leaderSchdulService.selectLeaderSchdul(leaderSchdulVO);
@@ -340,6 +342,7 @@ public class LeaderSchdulController {
 	@RequestMapping(value = "/cop/smt/lsm/registLeaderSchdul.do")
 	@Secured("ROLE_USER")
 	public String registLeaderSchdul(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute LeaderSchdulVO leaderSchdulVO, 
 			ModelMap model) {
 
@@ -362,6 +365,7 @@ public class LeaderSchdulController {
 	@RequestMapping(value = "/cop/smt/lsm/insertLeaderSchdul.do")
 	@Secured("ROLE_USER")
 	public String insertLeaderSchdul(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute LeaderSchdulVO leaderSchdulVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -390,7 +394,8 @@ public class LeaderSchdulController {
 	@RequestMapping(value = "/cop/smt/lsm/editLeaderSchdul.do")
 	@Secured("ROLE_USER")
 	public String editLeaderSchdul(
-			LeaderSchdulVO leaderSchdulVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute LeaderSchdulVO leaderSchdulVO,
 			ModelMap model) {
 
 		// 공통코드 간부일정구분
@@ -422,6 +427,7 @@ public class LeaderSchdulController {
 	@RequestMapping(value = "/cop/smt/lsm/updateLeaderSchdul.do")
 	@Secured("ROLE_USER")
 	public String updateLeaderSchdul(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute LeaderSchdulVO leaderSchdulVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -450,6 +456,7 @@ public class LeaderSchdulController {
 	@RequestMapping(value = "/cop/smt/lsm/deleteLeaderSchdul.do")
 	@Secured("ROLE_USER")
 	public String deleteLeaderSchdul(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute LeaderSchdulVO leaderSchdulVO, 
 			ModelMap model) {
 
@@ -522,6 +529,7 @@ public class LeaderSchdulController {
 	@RequestMapping("/cop/smt/lsm/registLeaderSttus.do")
 	@Secured("ROLE_USER")
 	public String registLeaderSttus(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute LeaderSttusVO leaderSttusVO) {
 		
 		// 공통코드 간부상태
@@ -538,6 +546,7 @@ public class LeaderSchdulController {
 	@RequestMapping("/cop/smt/lsm/insertLeaderSttus.do")
 	@Secured("ROLE_USER")
 	public String insertLeaderSttus(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute LeaderSttusVO leaderSttusVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -572,7 +581,8 @@ public class LeaderSchdulController {
 	@RequestMapping("/cop/smt/lsm/editLeaderSttus.do")
 	@Secured("ROLE_USER")
 	public String editLeaderSttus(
-			LeaderSttusVO leaderSttusVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute LeaderSttusVO leaderSttusVO,
 			ModelMap model) {
 
 		model.addAttribute(leaderSchdulService.selectLeaderSttus(leaderSttusVO));
@@ -591,6 +601,7 @@ public class LeaderSchdulController {
 	@RequestMapping("/cop/smt/lsm/updateLeaderSttus.do")
 	@Secured("ROLE_USER")
 	public String updateLeaderSttus(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute LeaderSttusVO leaderSttusVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -617,6 +628,7 @@ public class LeaderSchdulController {
 	@RequestMapping("/cop/smt/lsm/deleteLeaderSttus.do")
 	@Secured("ROLE_USER")
 	public String deleteLeaderSttus(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute LeaderSttusVO leaderSttusVO, 
 			ModelMap model) {
 

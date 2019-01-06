@@ -12,6 +12,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.BaseVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
@@ -109,7 +110,8 @@ public class WikMnthngReprtController {
 	 */
 	@RequestMapping("/cop/smt/wmr/detailWikMnthngReprt.do")
 	public String detailWikMnthngReprt(
-			WikMnthngReprtVO wikMnthngReprtVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute WikMnthngReprtVO wikMnthngReprtVO, 
 			ModelMap model)  {
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -130,6 +132,7 @@ public class WikMnthngReprtController {
 	 */
 	@RequestMapping("/cop/smt/wmr/registWikMnthngReprt.do")
 	public String registWikMnthngReprt(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute WikMnthngReprtVO wikMnthngReprtVO) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -151,6 +154,7 @@ public class WikMnthngReprtController {
 	@RequestMapping("/cop/smt/wmr/insertWikMnthngReprt.do")
 	public String insertWikMnthngReprt(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute WikMnthngReprtVO wikMnthngReprtVO,
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -182,7 +186,8 @@ public class WikMnthngReprtController {
 	 */
 	@RequestMapping("/cop/smt/wmr/editWikMnthngReprt.do")
 	public String editWikMnthngReprt(
-			WikMnthngReprtVO wikMnthngReprtVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute WikMnthngReprtVO wikMnthngReprtVO,
 			ModelMap model)  {
 
 		model.addAttribute(wikMnthngReprtService.selectWikMnthngReprt(wikMnthngReprtVO));
@@ -198,6 +203,7 @@ public class WikMnthngReprtController {
 	@RequestMapping("/cop/smt/wmr/updateWikMnthngReprt.do")
 	public String updateWikMnthngReprt(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute WikMnthngReprtVO wikMnthngReprtVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -228,6 +234,7 @@ public class WikMnthngReprtController {
 	 */
 	@RequestMapping("/cop/smt/wmr/deleteWikMnthngReprt.do")
 	public String deleteWikMnthngReprt(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute WikMnthngReprtVO wikMnthngReprtVO, 
 			ModelMap model) {
 
@@ -244,6 +251,7 @@ public class WikMnthngReprtController {
 	 */
 	@RequestMapping("/cop/smt/wmr/confirmWikMnthngReprt.do")
 	public String confirmWikMnthngReprt(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute WikMnthngReprtVO wikMnthngReprtVO, 
 			ModelMap model) {
 

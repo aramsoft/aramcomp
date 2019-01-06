@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sec.arm.domain.AuthorVO;
@@ -77,6 +78,7 @@ public class GroupAuthorController {
 			@RequestParam String authorCodes,
 			@RequestParam String regYns, 
 			@RequestParam String mberTyCodes,// 2011.08.04 수정 부분
+			@ModelAttribute SearchVO searchVO,
 			ModelMap model) {
 
 		groupAuthorService.insertGroupAuthors(userIds, authorCodes, regYns, mberTyCodes);
@@ -94,6 +96,7 @@ public class GroupAuthorController {
 	@Secured("ROLE_ADMIN")
 	public String deleteGroupAuthors(
 			@RequestParam String userIds, 
+			@ModelAttribute SearchVO searchVO,
 			ModelMap model) {
 
 		groupAuthorService.deleteGroupAuthors(userIds);

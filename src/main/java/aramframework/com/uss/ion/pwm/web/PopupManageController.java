@@ -15,6 +15,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.ComCodeVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -75,7 +76,8 @@ public class PopupManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/pwm/detailPopup.do")
 	public String detailPopup(
-			PopupManageVO popupManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute PopupManageVO popupManageVO,
 			ModelMap model) {
 
 		model.addAttribute(popupManageService.selectPopupDetail(popupManageVO));
@@ -103,6 +105,7 @@ public class PopupManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/pwm/registPopup.do")
 	public String registPopup(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute PopupManageVO popupManageVO) {
 
 		return WebUtil.adjustViewName("/uss/ion/pwm/PopupRegist");
@@ -115,6 +118,7 @@ public class PopupManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/pwm/insertPopup.do")
 	public String insertPopup(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute PopupManageVO popupManageVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
@@ -143,7 +147,8 @@ public class PopupManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/pwm/editPopup.do")
 	public String editPopup(
-			PopupManageVO popupManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute PopupManageVO popupManageVO,
 			ModelMap model) {
 
 		popupManageVO = popupManageService.selectPopupDetail(popupManageVO);
@@ -169,6 +174,7 @@ public class PopupManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/pwm/updatePopup.do")
 	public String updatePopup(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute PopupManageVO popupManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -197,6 +203,7 @@ public class PopupManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/pwm/deletePopup.do")
 	public String deletePopup(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute PopupManageVO popupManageVO, 
 			ModelMap model) {
 
@@ -216,6 +223,7 @@ public class PopupManageController {
 			@RequestParam String fileUrl, 
 			@RequestParam String stopVewAt,
 			@RequestParam String popupId, 
+			@ModelAttribute SearchVO searchVO,
 			ModelMap model) {
 
 		model.addAttribute("stopVewAt", stopVewAt);

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -80,7 +81,8 @@ public class BBSScrapController {
 	@RequestMapping("/cop/scp/detailScrap.do")
 	@Secured("ROLE_USER")
 	public String detailScrap(
-			ScrapVO scrapVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute ScrapVO scrapVO, 
 			ModelMap model) {
 
 		scrapVO = bbsScrapService.selectScrap(scrapVO);
@@ -120,6 +122,7 @@ public class BBSScrapController {
 	@RequestMapping("/cop/scp/registScrap.do")
 	@Secured("ROLE_USER")
 	public String registScrap(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ScrapVO scrapVO, 
 			ModelMap model) {
 
@@ -139,6 +142,7 @@ public class BBSScrapController {
 	@RequestMapping("/cop/scp/insertScrap.do")
 	@Secured("ROLE_USER")
 	public String insertScrap(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ScrapVO scrapVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -171,7 +175,8 @@ public class BBSScrapController {
 	@RequestMapping("/cop/scp/editScrap.do")
 	@Secured("ROLE_USER")
 	public String editScrap(
-			ScrapVO scrapVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute ScrapVO scrapVO, 
 			ModelMap model) {
 
 		scrapVO = bbsScrapService.selectScrap(scrapVO);
@@ -193,6 +198,7 @@ public class BBSScrapController {
 	@RequestMapping("/cop/scp/updateScrap.do")
 	@Secured("ROLE_USER")
 	public String updateScrap(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ScrapVO scrapVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -224,6 +230,7 @@ public class BBSScrapController {
 	@RequestMapping("/cop/scp/deleteScrap.do")
 	@Secured("ROLE_USER")
 	public String deleteScrap(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ScrapVO scrapVO, 
 			ModelMap model) {
 		
@@ -241,6 +248,7 @@ public class BBSScrapController {
 	@RequestMapping("/cop/scp/listScrapMainPage.do")
 	@Secured("ROLE_USER")
 	public String listScrapMainPage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ScrapVO scrapVO, 
 			ModelMap model) {
 

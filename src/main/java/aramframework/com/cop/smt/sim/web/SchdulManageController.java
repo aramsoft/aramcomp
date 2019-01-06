@@ -17,6 +17,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.cmm.domain.ComCodeVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.ComponentChecker;
@@ -399,7 +400,8 @@ public class SchdulManageController {
 	 */
 	@RequestMapping(value = "/cop/smt/sim/detailSchdul.do")
 	public String detailSchdul(
-			SchdulManageVO schdulManageVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute SchdulManageVO schdulManageVO, 
 			ModelMap model) {
 
 		model.addAttribute(schdulManageService.selectSchdulManageDetail(schdulManageVO));
@@ -437,6 +439,7 @@ public class SchdulManageController {
 	@RequestMapping(value = "/cop/smt/sim/registSchdul.do")
 	@Secured("ROLE_USER")
 	public String registSchdul(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SchdulManageVO schdulManageVO) {
 
 		// 공통코드 중요도 조회
@@ -457,6 +460,7 @@ public class SchdulManageController {
 	@Secured("ROLE_USER")
 	public String insertSchdul(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SchdulManageVO schdulManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model)
@@ -489,6 +493,7 @@ public class SchdulManageController {
 	@RequestMapping(value = "/cop/smt/sim/editSchdul.do")
 	@Secured("ROLE_USER")
 	public String editSchdul(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SchdulManageVO schdulManageVO, 
 			ModelMap model) {
 
@@ -531,6 +536,7 @@ public class SchdulManageController {
 	@Secured("ROLE_USER")
 	public String updateSchdul(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SchdulManageVO schdulManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -576,6 +582,7 @@ public class SchdulManageController {
 	@RequestMapping(value = "/cop/smt/sim/deleteSchdul.do")
 	@Secured("ROLE_USER")
 	public String deleteSchdul(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SchdulManageVO schdulManageVO, 
 			ModelMap model) {
 

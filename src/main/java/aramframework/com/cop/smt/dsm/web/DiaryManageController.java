@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
@@ -73,7 +74,8 @@ public class DiaryManageController {
 	@RequestMapping(value = "/cop/smt/dsm/detailDiary.do")
 	@Secured("ROLE_USER")
 	public String detailDiary(
-			DiaryManageVO diaryManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute DiaryManageVO diaryManageVO,
 			ModelMap model) {
 
 		model.addAttribute(diaryManageService.selectDiaryManageDetail(diaryManageVO));
@@ -89,6 +91,7 @@ public class DiaryManageController {
 	@RequestMapping(value = "/cop/smt/dsm/registDiary.do")
 	@Secured("ROLE_USER")
 	public String registDiary(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DiaryManageVO diaryManageVO) {
 
 		return WebUtil.adjustViewName("/cop/smt/dsm/DiaryRegist");
@@ -104,6 +107,7 @@ public class DiaryManageController {
 	@Secured("ROLE_USER")
 	public String insertDiary(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DiaryManageVO diaryManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -136,7 +140,8 @@ public class DiaryManageController {
 	@RequestMapping(value = "/cop/smt/dsm/editDiary.do")
 	@Secured("ROLE_USER")
 	public String editDiary(
-			DiaryManageVO diaryManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute DiaryManageVO diaryManageVO,
 			ModelMap model) {
 
 		model.addAttribute(diaryManageService.selectDiaryManageDetail(diaryManageVO));
@@ -154,6 +159,7 @@ public class DiaryManageController {
 	@Secured("ROLE_USER")
 	public String updateDiary(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DiaryManageVO diaryManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -187,6 +193,7 @@ public class DiaryManageController {
 	@RequestMapping(value = "/cop/smt/dsm/deleteDiary.do")
 	@Secured("ROLE_USER")
 	public String deleteDiary(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DiaryManageVO diaryManageVO, 
 			ModelMap model) {
 

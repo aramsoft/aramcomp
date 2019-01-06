@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -89,7 +90,8 @@ public class RestdeManageController {
 	 */
 	@RequestMapping(value = "/sym/cal/detailRestde.do")
 	public String detailRestde(
-			RestdeVO restdeVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute RestdeVO restdeVO,
 			ModelMap model) {
 		
 		model.addAttribute(restdeManageService.selectRestdeDetail(restdeVO));
@@ -105,6 +107,7 @@ public class RestdeManageController {
 	@RequestMapping(value = "/sym/cal/registRestde.do")
 	@Secured("ROLE_ADMIN")
 	public String registRestde(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RestdeVO restdeVO) {
 		
 		cmmUseService.populateCmmCodeList("COM017", "COM017_restde");
@@ -120,6 +123,7 @@ public class RestdeManageController {
 	@RequestMapping(value = "/sym/cal/insertRestde.do")
 	@Secured("ROLE_ADMIN")
 	public String insertRestde(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RestdeVO restdeVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -146,7 +150,8 @@ public class RestdeManageController {
 	@RequestMapping(value = "/sym/cal/editRestde.do")
 	@Secured("ROLE_ADMIN")
 	public String editRestde(
-			RestdeVO restdeVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute RestdeVO restdeVO,
 			ModelMap model) {
 		
 		model.addAttribute(restdeManageService.selectRestdeDetail(restdeVO));
@@ -164,6 +169,7 @@ public class RestdeManageController {
 	@RequestMapping(value = "/sym/cal/updateRestde.do")
 	@Secured("ROLE_ADMIN")
 	public String updateRestde(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RestdeVO restdeVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
@@ -190,6 +196,7 @@ public class RestdeManageController {
 	@RequestMapping(value = "/sym/cal/deleteRestde.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteRestde(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RestdeVO restdeVO, 
 			ModelMap model) {
 

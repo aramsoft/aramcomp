@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -108,6 +109,7 @@ public class ReprtStatsController {
 	@RequestMapping("/sts/rst/detailReprtStats.do")
 	@Secured("ROLE_ADMIN")
 	public String detailReprtStats(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ReprtStatsVO reprtStatsVO, 
 			ModelMap model) {
 
@@ -124,6 +126,7 @@ public class ReprtStatsController {
 	@RequestMapping("/sts/rst/registReprtStats.do")
 	@Secured("ROLE_ADMIN")
 	public String registReprtStats(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ReprtStatsVO reprtStatsVO,
 			ModelMap model) {
 
@@ -141,6 +144,7 @@ public class ReprtStatsController {
 	@RequestMapping("/sts/rst/insertReprtStats.do")
 	@Secured("ROLE_ADMIN")
 	public String insertReprtStats(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ReprtStatsVO reprtStatsVO,
 			BindingResult bindingResult, 
 			ModelMap model) {

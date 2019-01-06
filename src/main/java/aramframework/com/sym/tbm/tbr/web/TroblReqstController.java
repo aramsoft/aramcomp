@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -84,7 +85,8 @@ public class TroblReqstController {
 	@RequestMapping(value = "/sym/tbm/tbr/detailTroblReqst.do")
 	@Secured("ROLE_USER")
 	public String detailTroblReqst(
-			TroblReqstVO troblReqstVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute TroblReqstVO troblReqstVO,
 			ModelMap model) {
 
 		model.addAttribute(troblReqstService.selectTroblReqst(troblReqstVO));
@@ -100,6 +102,7 @@ public class TroblReqstController {
 	@RequestMapping(value = "/sym/tbm/tbr/registTroblReqst.do")
 	@Secured("ROLE_USER")
 	public String registTroblReqst(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute TroblReqstVO troblReqstVO) {
 
 		cmmUseService.populateCmmCodeList("COM065", "COM065_troblKnd");
@@ -115,6 +118,7 @@ public class TroblReqstController {
 	@RequestMapping(value = "/sym/tbm/tbr/insertTroblReqst.do")
 	@Secured("ROLE_USER")
 	public String insertTroblReqst(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute TroblReqstVO troblReqstVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -144,7 +148,8 @@ public class TroblReqstController {
 	@RequestMapping(value = "/sym/tbm/tbr/editTroblReqst.do")
 	@Secured("ROLE_USER")
 	public String editTroblReqst(
-			TroblReqstVO troblReqstVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute TroblReqstVO troblReqstVO,
 			ModelMap model) {
 
 		model.addAttribute(troblReqstService.selectTroblReqst(troblReqstVO));
@@ -162,6 +167,7 @@ public class TroblReqstController {
 	@RequestMapping(value = "/sym/tbm/tbr/updateTroblReqst.do")
 	@Secured("ROLE_USER")
 	public String updateTroblReqst(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute TroblReqstVO troblReqstVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -190,6 +196,7 @@ public class TroblReqstController {
 	@RequestMapping(value = "/sym/tbm/tbr/deleteTroblReqst.do")
 	@Secured("ROLE_USER")
 	public String deleteTroblReqst(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute TroblReqstVO troblReqstVO, 
 			ModelMap model) {
 
@@ -207,6 +214,7 @@ public class TroblReqstController {
 	@RequestMapping(value = "/sym/tbm/tbr/requstTroblReqst.do")
 	@Secured("ROLE_USER")
 	public String requstTroblReqst(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute TroblReqstVO troblReqstVO, 
 			ModelMap model) {
 
@@ -228,6 +236,7 @@ public class TroblReqstController {
 	@RequestMapping(value = "/sym/tbm/tbr/cancelTroblReqst.do")
 	@Secured("ROLE_USER")
 	public String cancelTroblReqst(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute TroblReqstVO troblReqstVO, 
 			ModelMap model) {
 

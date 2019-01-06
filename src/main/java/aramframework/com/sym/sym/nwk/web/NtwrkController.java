@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -81,7 +82,8 @@ public class NtwrkController {
 	@RequestMapping(value = "/sym/sym/nwk/detailNtwrk.do")
 	@Secured("ROLE_ADMIN")
 	public String detailNtwrk(
-			NtwrkVO ntwrkVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute NtwrkVO ntwrkVO,
 			ModelMap model) {
 
 		model.addAttribute(ntwrkService.selectNtwrk(ntwrkVO));
@@ -97,6 +99,7 @@ public class NtwrkController {
 	@RequestMapping(value = "/sym/sym/nwk/registNtwrk.do")
 	@Secured("ROLE_ADMIN")
 	public String registNtwrk(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NtwrkVO ntwrkVO) {
 
 		// 관리항목코드
@@ -113,6 +116,7 @@ public class NtwrkController {
 	@RequestMapping(value = "/sym/sym/nwk/insertNtwrk.do")
 	@Secured("ROLE_ADMIN")
 	public String insertNtwrk(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NtwrkVO ntwrkVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -139,7 +143,8 @@ public class NtwrkController {
 	@RequestMapping(value = "/sym/sym/nwk/editNtwrk.do")
 	@Secured("ROLE_ADMIN")
 	public String editNtwrk(
-			NtwrkVO ntwrkVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute NtwrkVO ntwrkVO,
 			ModelMap model) {
 
 		model.addAttribute(ntwrkService.selectNtwrk(ntwrkVO));
@@ -158,6 +163,7 @@ public class NtwrkController {
 	@RequestMapping(value = "/sym/sym/nwk/updateNtwrk.do")
 	@Secured("ROLE_ADMIN")
 	public String updateNtwrk(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NtwrkVO ntwrkVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -184,6 +190,7 @@ public class NtwrkController {
 	@RequestMapping(value = "/sym/sym/nwk/deleteNtwrk.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteNtwrk(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NtwrkVO ntwrkVO, 
 			ModelMap model) {
 

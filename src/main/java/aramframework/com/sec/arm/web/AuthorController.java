@@ -13,6 +13,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.constant.AramProperties;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sec.arm.domain.AuthorVO;
 import aramframework.com.sec.arm.service.AuthorService;
@@ -77,6 +78,7 @@ public class AuthorController {
 	@RequestMapping("/sec/arm/registAuthor.do")
 	@Secured("ROLE_ADMIN")
 	public String registAuthorManage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AuthorVO authorVO) {
 		
 		return WebUtil.adjustViewName("/sec/arm/AuthorRegist");
@@ -90,6 +92,7 @@ public class AuthorController {
 	@RequestMapping(value = "/sec/arm/insertAuthor.do")
 	@Secured("ROLE_ADMIN")
 	public String insertAuthorManage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AuthorVO authorVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -113,6 +116,7 @@ public class AuthorController {
 	@RequestMapping(value = "/sec/arm/editAuthor.do")
 	@Secured("ROLE_ADMIN")
 	public String editAuthorManage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AuthorVO authorVO,
 			ModelMap model) {
 
@@ -129,6 +133,7 @@ public class AuthorController {
 	@RequestMapping(value = "/sec/arm/updateAuthor.do")
 	@Secured("ROLE_ADMIN")
 	public String updateAuthor(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AuthorVO authorVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -152,6 +157,7 @@ public class AuthorController {
 	@RequestMapping(value = "/sec/arm/deleteAuthor.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteAuthorManage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AuthorVO authorVO, 
 			ModelMap model) {
 
@@ -169,6 +175,7 @@ public class AuthorController {
 	@RequestMapping(value = "/sec/arm/deleteListAuthor.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteListAuthor(
+			@ModelAttribute SearchVO searchVO,
 			@RequestParam String authorCodes, 
 			ModelMap model) {
 
@@ -186,6 +193,7 @@ public class AuthorController {
 	@RequestMapping(value = "/sec/arm/clearCacheAuthor.do")
 	@Secured("ROLE_ADMIN")
 	public String clearCacheAuthor(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AuthorVO authorVO, 
 			ModelMap model) {
 

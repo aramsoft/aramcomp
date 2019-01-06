@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -74,7 +75,8 @@ public class UnityLinkController {
 	 */
 	@RequestMapping(value = "/uss/ion/ulm/detailUnityLink.do")
 	public String detailUnityLink(
-			UnityLinkVO unityLinkVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute UnityLinkVO unityLinkVO,
 			ModelMap model) {
 
 		model.addAttribute(unityLinkService.selectUnityLinkDetail(unityLinkVO));
@@ -92,6 +94,7 @@ public class UnityLinkController {
 	 */
 	@RequestMapping(value = "/uss/ion/ulm/registUnityLink.do")
 	public String registUnityLink(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute UnityLinkVO unityLinkVO) {
 
 		// 통합링크구분설정
@@ -107,6 +110,7 @@ public class UnityLinkController {
 	 */
 	@RequestMapping(value = "/uss/ion/ulm/insertUnityLink.do")
 	public String insertUnityLink(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute UnityLinkVO unityLinkVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -135,7 +139,8 @@ public class UnityLinkController {
 	 */
 	@RequestMapping(value = "/uss/ion/ulm/editUnityLink.do")
 	public String editUnityLink(
-			UnityLinkVO unityLinkVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute UnityLinkVO unityLinkVO,
 			ModelMap model) {
 
 		model.addAttribute(unityLinkService.selectUnityLinkDetail(unityLinkVO));
@@ -153,6 +158,7 @@ public class UnityLinkController {
 	 */
 	@RequestMapping(value = "/uss/ion/ulm/updateUnityLink.do")
 	public String updateUnityLink(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute UnityLinkVO unityLinkVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
@@ -181,6 +187,7 @@ public class UnityLinkController {
 	 */
 	@RequestMapping(value = "/uss/ion/ulm/deleteUnityLink.do")
 	public String deleteUnityLink(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute UnityLinkVO unityLinkVO, 
 			ModelMap model) {
 

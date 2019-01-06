@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
@@ -71,7 +72,8 @@ public class NewsManageController {
 	 */
 	@RequestMapping("/uss/ion/nws/detailNewsInfo.do")
 	public String detailNewsInfo(
-			NewsManageVO newsManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute NewsManageVO newsManageVO,
 			ModelMap model) {
 
 		model.addAttribute(newsManageService.selectNewsDetail(newsManageVO));
@@ -87,6 +89,7 @@ public class NewsManageController {
 	@RequestMapping("/uss/ion/nws/registNewsInfo.do")
 	@Secured("ROLE_USER")
 	public String registNewsInfo(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NewsManageVO newsManageVO) {
 
 		return WebUtil.adjustViewName("/uss/ion/nws/NewsInfoRegist");
@@ -101,6 +104,7 @@ public class NewsManageController {
 	@Secured("ROLE_USER")
 	public String insertNewsInfo(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NewsManageVO newsManageVO, 
 			BindingResult bindingResult,
 			ModelMap model) 
@@ -132,7 +136,8 @@ public class NewsManageController {
 	@RequestMapping("/uss/ion/nws/editNewsInfo.do")
 	@Secured("ROLE_USER")
 	public String editNewsInfo(
-			NewsManageVO newsManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute NewsManageVO newsManageVO,
 			ModelMap model) {
 
 		model.addAttribute(newsManageService.selectNewsDetail(newsManageVO));
@@ -149,6 +154,7 @@ public class NewsManageController {
 	@Secured("ROLE_USER")
 	public String updateNewsInfo(
 			MultipartHttpServletRequest multiRequest,
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NewsManageVO newsManageVO, 
 			BindingResult bindingResult,
 			ModelMap model) 
@@ -182,6 +188,7 @@ public class NewsManageController {
 	@RequestMapping("/uss/ion/nws/deleteNewsInfo.do")
 	@Secured("ROLE_USER")
 	public String deleteNewsInfo(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NewsManageVO newsManageVO, 
 			ModelMap model) {
 

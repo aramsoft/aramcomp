@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -79,7 +80,8 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/detailServerEqpmn.do")
 	@Secured("ROLE_ADMIN")
 	public String detailServerEqpmn(
-			ServerEqpmnVO serverEqpmnVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute ServerEqpmnVO serverEqpmnVO, 
 			ModelMap model) {
 		
 		model.addAttribute(serverService.selectServerEqpmn(serverEqpmnVO));
@@ -95,6 +97,7 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/registServerEqpmn.do")
 	@Secured("ROLE_ADMIN")
 	public String registServerEqpmn(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ServerEqpmnVO serverEqpmnVO) {
 
 		return WebUtil.adjustViewName("/sym/sym/srv/ServerEqpmnRegist");
@@ -108,6 +111,7 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/insertServerEqpmn.do")
 	@Secured("ROLE_ADMIN")
 	public String insertServerEqpmn(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ServerEqpmnVO serverEqpmnVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -134,7 +138,8 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/editServerEqpmn.do")
 	@Secured("ROLE_ADMIN")
 	public String editServerEqpmn(
-			ServerEqpmnVO serverEqpmnVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute ServerEqpmnVO serverEqpmnVO, 
 			ModelMap model) {
 		
 		model.addAttribute(serverService.selectServerEqpmn(serverEqpmnVO));
@@ -150,6 +155,7 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/updateServerEqpmn.do")
 	@Secured("ROLE_ADMIN")
 	public String updateServerEqpmn(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ServerEqpmnVO serverEqpmnVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -176,6 +182,7 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/deleteServerEqpmn.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteServerEqpmn(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ServerEqpmnVO serverEqpmnVO,
 			ModelMap model) {
 		
@@ -219,7 +226,8 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/detailServer.do")
 	@Secured("ROLE_ADMIN")
 	public String detailServer(
-			ServerVO serverVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute ServerVO serverVO, 
 			ModelMap model) {
 
 		model.addAttribute(serverService.selectServer(serverVO));
@@ -238,6 +246,7 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/registServer.do")
 	@Secured("ROLE_ADMIN")
 	public String registServer(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ServerVO serverVO) {
 
 		cmmUseService.populateCmmCodeList("COM064", "COM064_serverKnd");
@@ -253,6 +262,7 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/insertServer.do")
 	@Secured("ROLE_ADMIN")
 	public String insertServer(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ServerVO serverVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
@@ -279,7 +289,8 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/editServer.do")
 	@Secured("ROLE_ADMIN")
 	public String editServer(
-			ServerVO serverVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute ServerVO serverVO,
 			ModelMap model) {
 
 		serverService.selectServer(serverVO);
@@ -297,6 +308,7 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/updateServer.do")
 	@Secured("ROLE_ADMIN")
 	public String updateServer(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ServerVO serverVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -323,6 +335,7 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/deleteServer.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteServer(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ServerVO serverVO, 
 			ModelMap model) {
 
@@ -372,10 +385,11 @@ public class ServerController {
 	@RequestMapping(value = "/sym/sym/srv/updateServerEqpmnRelate.do")
 	@Secured("ROLE_ADMIN")
 	public String updateServerEqpmnRelate(
-			@ModelAttribute ServerEqpmnRelateVO serverEqpmnRelateVO, 
 			@RequestParam("serverId") String serverId, 
 			@RequestParam("serverEqpmnIds") String serverEqpmnIds,
 			@RequestParam("regYns") String regYns, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute ServerEqpmnRelateVO serverEqpmnRelateVO, 
 			ModelMap model) {
 
 		serverService.updateServerEqpmnRelate(serverId, serverEqpmnIds, regYns);

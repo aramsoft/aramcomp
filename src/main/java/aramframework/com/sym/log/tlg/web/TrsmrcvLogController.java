@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -63,7 +64,8 @@ public class TrsmrcvLogController {
 	@RequestMapping(value = "/sym/log/tlg/detailTrsmrcvLog.do")
 	@Secured("ROLE_ADMIN")
 	public String detailTrsmrcvLog(
-			TrsmrcvLogVO trsmrcvLogVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute TrsmrcvLogVO trsmrcvLogVO,
 			ModelMap model) {
 
 		model.addAttribute(trsmrcvLogService.selectTrsmrcvLog(trsmrcvLogVO));
@@ -79,6 +81,7 @@ public class TrsmrcvLogController {
 	@RequestMapping(value = "/sym/log/tlg/registTrsmrcvLog.do")
 	@Secured("ROLE_ADMIN")
 	public String registTrsmrcvLog(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute TrsmrcvLogVO trsmrcvLogVO) {
 
 		return WebUtil.adjustViewName("/sym/log/tlg/TrsmrcvLogRegist");
@@ -92,6 +95,7 @@ public class TrsmrcvLogController {
 	@RequestMapping(value = "/sym/log/tlg/insertTrsmrcvLog.do")
 	@Secured("ROLE_ADMIN")
 	public String insertTrsmrcvLog(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute TrsmrcvLogVO trsmrcvLogVO, 
 			ModelMap model) {
 

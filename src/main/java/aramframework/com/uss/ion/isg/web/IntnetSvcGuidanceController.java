@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -76,6 +77,7 @@ public class IntnetSvcGuidanceController {
 	 */
 	@RequestMapping("/uss/ion/isg/registIntnetSvcGuidance.do")
 	public String registIntnetSvcGuidance(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IntnetSvcGuidanceVO intnetSvcGuidanceVO) {
 
 		return WebUtil.adjustViewName("/uss/ion/isg/IntnetSvcGuidanceRegist");
@@ -88,6 +90,7 @@ public class IntnetSvcGuidanceController {
 	 */
 	@RequestMapping("/uss/ion/isg/insertIntnetSvcGuidance.do")
 	public String insertIntnetSvcGuidance(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IntnetSvcGuidanceVO intnetSvcGuidanceVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -113,7 +116,8 @@ public class IntnetSvcGuidanceController {
 	 */
 	@RequestMapping("/uss/ion/isg/editIntnetSvcGuidance.do")
 	public String editIntnetSvcGuidance(
-			IntnetSvcGuidanceVO intnetSvcGuidanceVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute IntnetSvcGuidanceVO intnetSvcGuidanceVO,
 			ModelMap model) {
 
 		model.addAttribute(intnetSvcGuidanceService.selectIntnetSvcGuidance(intnetSvcGuidanceVO));
@@ -128,6 +132,7 @@ public class IntnetSvcGuidanceController {
 	 */
 	@RequestMapping("/uss/ion/isg/updateIntnetSvcGuidance.do")
 	public String updateIntnetSvcGuidance(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IntnetSvcGuidanceVO intnetSvcGuidanceVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -153,6 +158,7 @@ public class IntnetSvcGuidanceController {
 	 */
 	@RequestMapping("/uss/ion/isg/deleteIntnetSvcGuidance.do")
 	public String deleteIntnetSvcGuidance(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IntnetSvcGuidanceVO intnetSvcGuidanceVO, 
 			ModelMap model) {
 
@@ -170,6 +176,7 @@ public class IntnetSvcGuidanceController {
 	@IncludedInfo(name = "인터넷서비스안내 결과", order = 5291, gid = 50)
 	@RequestMapping("/uss/ion/isg/viewIntnetSvcGuidance.do")
 	public String viewIntnetSvcGuidance(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IntnetSvcGuidanceVO intnetSvcGuidanceVO, 
 			ModelMap model) {
 

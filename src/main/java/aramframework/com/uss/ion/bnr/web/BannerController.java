@@ -17,6 +17,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.FileVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
@@ -87,6 +88,7 @@ public class BannerController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnr/registBanner.do")
 	public String registBanner(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BannerVO bannerVO) {
 
 		return WebUtil.adjustViewName("/uss/ion/bnr/BannerRegist");
@@ -100,6 +102,7 @@ public class BannerController {
 	@RequestMapping(value = "/uss/ion/bnr/insertBanner.do")
 	public String insertBanner(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BannerVO bannerVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -141,7 +144,8 @@ public class BannerController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnr/editBanner.do")
 	public String editBanner(
-			BannerVO bannerVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute BannerVO bannerVO,
 			ModelMap model) {
 
 		model.addAttribute(bannerService.selectBanner(bannerVO));
@@ -157,6 +161,7 @@ public class BannerController {
 	@RequestMapping(value = "/uss/ion/bnr/updateBanner.do")
 	public String updateBanne(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BannerVO bannerVO, 
 			BindingResult bindingResult,
 			ModelMap model) 
@@ -206,6 +211,7 @@ public class BannerController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnr/deleteBanner.do")
 	public String deleteBanner(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BannerVO bannerVO, 
 			ModelMap model) {
 
@@ -224,6 +230,7 @@ public class BannerController {
 	@RequestMapping(value = "/uss/ion/bnr/deleteBannerList.do")
 	public String deleteBannerList(
 			@RequestParam String bannerIds, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BannerVO bannerVO, 
 			ModelMap model) {
 
@@ -241,6 +248,7 @@ public class BannerController {
 	@RequestMapping(value = "/uss/ion/bnr/getBannerImage.do")
 	public String getBannerImage(
 			@ModelAttribute BannerVO bannerVO, 
+			@ModelAttribute SearchVO searchVO,
 			ModelMap model) {
 
 		model.addAttribute("fileList", bannerService.selectBannerResult(bannerVO));

@@ -6,6 +6,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uss.ion.ism.domain.InfrmlSanctnVO;
 import aramframework.com.uss.ion.ism.domain.SanctnerVO;
@@ -59,7 +60,8 @@ public class InfrmlSanctnController {
 	 */
 	@RequestMapping("/uss/ion/ism/detailSanctner.do")
 	public String detailSanctner(
-			InfrmlSanctnVO infrmlSanctnVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute InfrmlSanctnVO infrmlSanctnVO,
 			ModelMap model) {
 
 		model.addAttribute(infrmlSanctnService.selectInfrmlSanctn(infrmlSanctnVO));

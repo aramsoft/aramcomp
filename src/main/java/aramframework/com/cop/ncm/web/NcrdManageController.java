@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -88,6 +89,7 @@ public class NcrdManageController {
 	@RequestMapping("/cop/ncm/registNameCard.do")
 	@Secured("ROLE_USER")
 	public String registNameCard(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NameCardVO nameCardVO) {
 		
 		return WebUtil.adjustViewName("/cop/ncm/NameCardRegist");
@@ -101,6 +103,7 @@ public class NcrdManageController {
 	@RequestMapping("/cop/ncm/insertNameCard.do")
 	@Secured("ROLE_USER")
 	public String insertNameCard(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NameCardVO nameCardVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
@@ -128,7 +131,8 @@ public class NcrdManageController {
 	@RequestMapping("/cop/ncm/editNameCard.do")
 	@Secured("ROLE_USER")
 	public String editNameCard(
-			NameCardVO nameCardVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute NameCardVO nameCardVO, 
 			ModelMap model) {
 
 		nameCardVO = ncrdService.selectNcrdItem(nameCardVO);
@@ -152,6 +156,7 @@ public class NcrdManageController {
 	@RequestMapping("/cop/ncm/updateNameCard.do")
 	@Secured("ROLE_USER")
 	public String updateNameCard(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NameCardVO nameCardVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -178,6 +183,7 @@ public class NcrdManageController {
 	@RequestMapping("/cop/ncm/deleteNameCard.do")
 	@Secured("ROLE_USER")
 	public String deleteNameCard(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NameCardVO nameCardVO, 
 			ModelMap model) {
 
@@ -228,6 +234,7 @@ public class NcrdManageController {
 	@RequestMapping("/cop/ncm/insertNameCardUse.do")
 	@Secured("ROLE_USER")
 	public String insertNameCardUse(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NameCardUseVO nameCardUseVO, 
 			ModelMap model) {
 
@@ -249,6 +256,7 @@ public class NcrdManageController {
 	@RequestMapping("/cop/ncm/updateNameCardUse.do")
 	@Secured("ROLE_USER")
 	public String updateNameCardUse(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NameCardUseVO nameCardUseVO, 
 			ModelMap model) {
 
@@ -270,6 +278,7 @@ public class NcrdManageController {
 	@RequestMapping("/cop/ncm/deleteNameCardUse.do")
 	@Secured("ROLE_USER")
 	public String deleteNameCardUse(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NameCardUseVO nameCardUseVO, 
 			ModelMap model) {
 

@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.constant.AramProperties;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
@@ -86,6 +87,7 @@ public class SndngMailController {
 	@Secured("ROLE_USER")
 	public String deleteSndngMailList(
 			@RequestParam String messageIds, 
+			@ModelAttribute SearchVO searchVO,
 			ModelMap model) {
 
 		sndngMailService.deleteSndngMails(messageIds);
@@ -102,6 +104,7 @@ public class SndngMailController {
 	@RequestMapping(value = "/cop/ems/detailSndngMail.do")
 	@Secured("ROLE_USER")
 	public String detailSndngMail(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SndngMailVO sndngMailVO) {
 
 		// 1. 발송메일을 상세 조회한다.
@@ -119,6 +122,7 @@ public class SndngMailController {
 	@RequestMapping(value = "/cop/ems/detailSndngMailXml.do")
 	@Secured("ROLE_USER")
 	public void detailSndngMailXml(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SndngMailVO sndngMailVO, 
 			HttpServletResponse response) 
 	throws Exception {
@@ -172,6 +176,7 @@ public class SndngMailController {
     @RequestMapping(value="/cop/ems/registSndngMail.do")
 	@Secured("ROLE_USER")
     public String registSndngMail(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SndngMailVO sndngMailVO) {
     	
 		return WebUtil.adjustViewName("/cop/ems/MailRegist");
@@ -187,6 +192,7 @@ public class SndngMailController {
 	@Secured("ROLE_USER")
 	public String insertSndngMail(
 			MultipartHttpServletRequest multiRequest,
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SndngMailVO sndngMailVO,
 			ModelMap model) 
     throws Exception {
@@ -227,6 +233,7 @@ public class SndngMailController {
 	@RequestMapping(value = "/cop/ems/deleteSndngMail.do")
 	@Secured("ROLE_USER")
 	public String deleteSndngMail(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SndngMailVO sndngMailVO, 
 			ModelMap model) {
 

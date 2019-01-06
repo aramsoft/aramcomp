@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.prm.domain.ProgrmManageVO;
@@ -96,8 +97,9 @@ public class ProgrmManageController {
 	@RequestMapping("/sym/prm/deleteListProgram.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteListProgram(
-			@ModelAttribute ProgrmManageVO progrmManageVO, 
 			@RequestParam String checkedProgrmFileNmForDel,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute ProgrmManageVO progrmManageVO, 
 			ModelMap model) {
 		
 		String[] delProgrmFileNm = checkedProgrmFileNmForDel.split(",");
@@ -120,6 +122,7 @@ public class ProgrmManageController {
 	@RequestMapping(value = "/sym/prm/registProgram.do")
 	@Secured("ROLE_ADMIN")
 	public String registProgrm(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProgrmManageVO progrmManageVO) {
 
 		return WebUtil.adjustViewName("/sym/prm/ProgramRegist");
@@ -133,6 +136,7 @@ public class ProgrmManageController {
 	@RequestMapping(value = "/sym/prm/insertProgram.do")
 	@Secured("ROLE_ADMIN")
 	public String insertProgrm(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProgrmManageVO progrmManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -160,7 +164,8 @@ public class ProgrmManageController {
 	@RequestMapping(value = "/sym/prm/editProgram.do")
 	@Secured("ROLE_ADMIN")
 	public String editProgram(
-			ProgrmManageVO progrmManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute ProgrmManageVO progrmManageVO,
 			ModelMap model) {
 		
 		model.addAttribute(progrmManageService.selectProgrm(progrmManageVO));
@@ -177,6 +182,7 @@ public class ProgrmManageController {
 	@RequestMapping(value = "/sym/prm/updateProgram.do")
 	@Secured("ROLE_ADMIN")
 	public String updateProgrm(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProgrmManageVO progrmManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -204,6 +210,7 @@ public class ProgrmManageController {
 	@RequestMapping(value = "/sym/prm/deleteProgram.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteProgrm(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProgrmManageVO progrmManageVO, 
 			ModelMap model) {
 

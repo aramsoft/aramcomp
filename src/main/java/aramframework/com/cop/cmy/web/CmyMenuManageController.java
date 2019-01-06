@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.constant.CacheKey;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.cmy.domain.CommunityMenuVO;
@@ -106,6 +107,7 @@ public class CmyMenuManageController {
 	@RequestMapping(value = "/cop/cmy/registMenu.do")
 	@Secured("ROLE_USER")
 	public String registMenu(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CommunityMenuVO communityMenuVO) {
 
 		checkAuthorityManager(); // server-side 권한 확인
@@ -121,6 +123,7 @@ public class CmyMenuManageController {
 	@RequestMapping(value = "/cop/cmy/insertMenu.do")
 	@Secured("ROLE_USER")
 	public String insertMenu(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CommunityMenuVO communityMenuVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -156,7 +159,8 @@ public class CmyMenuManageController {
 	@RequestMapping(value = "/cop/cmy/editMenu.do")
 	@Secured("ROLE_USER")
 	public String editMenu(
-			CommunityMenuVO communityMenuVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute CommunityMenuVO communityMenuVO,
 			ModelMap model) {
 	
 		checkAuthorityManager(); // server-side 권한 확인
@@ -180,6 +184,7 @@ public class CmyMenuManageController {
 	@RequestMapping(value = "/cop/cmy/updateMenu.do")
 	@Secured("ROLE_USER")
 	public String updateMenu(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CommunityMenuVO communityMenuVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -220,6 +225,7 @@ public class CmyMenuManageController {
 	@RequestMapping(value = "/cop/cmy/deleteMenu.do")
 	@Secured("ROLE_USER")
 	public String deleteMenu(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CommunityMenuVO communityMenuVO, 
 			ModelMap model) {
 		
@@ -242,6 +248,7 @@ public class CmyMenuManageController {
 	@Secured("ROLE_USER")
 	public String deleteListMenu(
 			@RequestParam String checkedMenuNoForDel,
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CommunityMenuVO communityMenuVO, 
 			ModelMap model) {
 
@@ -282,6 +289,7 @@ public class CmyMenuManageController {
 	@RequestMapping(value = "/cop/cmy/registMenuExcel.do")
 	@Secured("ROLE_USER")
 	public String registZipExcel(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CommunityMenuVO communityMenuVO) {
 		
 		return WebUtil.adjustViewName("/cop/cmy/CmyMenuExcelRegist");
@@ -297,6 +305,7 @@ public class CmyMenuManageController {
 	@Secured("ROLE_USER")
 	public String insertMenuExcel(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CommunityMenuVO communityMenuVO, 
 			ModelMap model) 
 	throws Exception {
@@ -339,6 +348,7 @@ public class CmyMenuManageController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/cop/cmy/clearCacheMenu.do")
     public String clearCacheMenu(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CommunityMenuVO communityMenuVO, 
 			ModelMap model) {
 

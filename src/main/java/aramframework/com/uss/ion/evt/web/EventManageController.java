@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -89,7 +90,8 @@ public class EventManageController {
 	@RequestMapping(value = "/uss/ion/evt/detailEventReqst.do")
 	public String detailEgovEventReqst(
 			@RequestParam(value="popup", required=false) String popup,
-			EventManageVO eventManageVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute EventManageVO eventManageVO, 
 			ModelMap model) {
 
 		model.addAttribute(eventManageService.selectEventManage(eventManageVO));
@@ -108,6 +110,7 @@ public class EventManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/evt/registEventReqst.do")
 	public String registEventReqst(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute EventManageVO eventManageVO) {
 
 		cmmUseService.populateCmmCodeList("COM053", "COM053_eventSe");
@@ -122,6 +125,7 @@ public class EventManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/evt/insertEventReqst.do")
 	public String insertEventReqst(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute EventManageVO eventManageVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -147,7 +151,8 @@ public class EventManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/evt/editEventReqst.do")
 	public String editEgovEventReqst(
-			EventManageVO eventManageVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute EventManageVO eventManageVO, 
 			ModelMap model) {
 
 		model.addAttribute(eventManageService.selectEventManage(eventManageVO));
@@ -162,6 +167,7 @@ public class EventManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/evt/updateEventReqst.do")
 	public String updateEventReqst(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute EventManageVO eventManageVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -187,6 +193,7 @@ public class EventManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/evt/deleteEventReqst.do")
 	public String deleteEventReqst(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute EventManageVO eventManageVO, 
 			ModelMap model) {
 
@@ -245,8 +252,9 @@ public class EventManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/evt/detailEventRcrpt.do")
 	public String detailEventRcrpt(
-			EventAtdrnVO eventAtdrnVO, 
-			EventManageVO eventManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute EventAtdrnVO eventAtdrnVO, 
+			@ModelAttribute EventManageVO eventManageVO,
 			ModelMap model) {
 
 		model.addAttribute(eventManageService.selectEventAtdrn(eventAtdrnVO));
@@ -263,6 +271,7 @@ public class EventManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/evt/registEventRcrpt.do")
 	public String registEventRcrpt(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute EventAtdrnVO eventAtdrnVO, 
 			@ModelAttribute EventManageVO eventManageVO) {
 
@@ -285,6 +294,7 @@ public class EventManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/evt/insertEventRcrpt.do")
 	public String insertEventRcrpt(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute EventAtdrnVO eventAtdrnVO, 
 			@ModelAttribute EventManageVO eventManageVO, 
 			BindingResult bindingResult, 
@@ -331,6 +341,7 @@ public class EventManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/evt/deleteEventRcrpt.do")
 	public String deleteEventRcrpt(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute EventAtdrnVO eventAtdrnVO, 
 			ModelMap model) {
 
@@ -389,6 +400,7 @@ public class EventManageController {
 	@RequestMapping(value = "/uss/ion/evt/updateEventRceptConfm.do")
 	public String updateEventRceptConfm(
 			@RequestParam String checkedEventRceptForConfm,
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute EventAtdrnVO eventAtdrnVO, 
 			ModelMap model) {
 

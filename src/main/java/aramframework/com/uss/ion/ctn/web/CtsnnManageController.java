@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -76,7 +77,8 @@ public class CtsnnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ctn/detailCtsnn.do")
 	public String detailCtsnn(
-			CtsnnManageVO ctsnnManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute CtsnnManageVO ctsnnManageVO,
 			ModelMap model) {
 
 		model.addAttribute(ctsnnManageService.selectCtsnnManage(ctsnnManageVO));
@@ -91,6 +93,7 @@ public class CtsnnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ctn/registCtsnn.do")
 	public String registCtsnn(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CtsnnManageVO ctsnnManageVO) {
 
 		cmmUseService.populateCmmCodeList("COM054", "COM054_ctsnn");
@@ -106,6 +109,7 @@ public class CtsnnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ctn/insertCtsnn.do")
 	public String insertCtsnn(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CtsnnManageVO ctsnnManageVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -131,7 +135,8 @@ public class CtsnnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ctn/editCtsnn.do")
 	public String editCtsnn(
-			CtsnnManageVO ctsnnManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute CtsnnManageVO ctsnnManageVO,
 			ModelMap model) {
 
 		model.addAttribute(ctsnnManageService.selectCtsnnManage(ctsnnManageVO));
@@ -149,6 +154,7 @@ public class CtsnnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ctn/updateCtsnn.do")
 	public String updateCtsnn(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CtsnnManageVO ctsnnManageVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -171,6 +177,7 @@ public class CtsnnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ctn/deleteCtsnn.do")
 	public String deleteCtsnn(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CtsnnManageVO ctsnnManageVO,
 			ModelMap model) {
 
@@ -219,7 +226,8 @@ public class CtsnnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ctn/editCtsnnConfm.do")
 	public String detailCtsnnConfm(
-			CtsnnManageVO ctsnnManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute CtsnnManageVO ctsnnManageVO,
 			ModelMap model) {
 		
 		model.addAttribute(ctsnnManageService.selectCtsnnManage(ctsnnManageVO));
@@ -234,6 +242,7 @@ public class CtsnnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ctn/updateCtsnnConfm.do")
 	public String updateCtsnnConfm(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CtsnnManageVO ctsnnManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {

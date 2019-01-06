@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -96,7 +97,8 @@ public class AnnvrsryManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ans/detailAnnvrsry.do")
 	public String detailAnnvrsry(
-			AnnvrsryManageVO annvrsryManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute AnnvrsryManageVO annvrsryManageVO,
 			ModelMap model) {
 
 		annvrsryManageVO = annvrsryManageService.selectAnnvrsryManage(annvrsryManageVO);
@@ -128,6 +130,7 @@ public class AnnvrsryManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ans/registAnnvrsry.do")
 	public String registAnnvrsry(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AnnvrsryManageVO annvrsryManageVO) {
 
 		// 로그인 객체 선언
@@ -150,6 +153,7 @@ public class AnnvrsryManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ans/insertAnnvrsry.do")
 	public String insertAnnvrsry(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AnnvrsryManageVO annvrsryManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -181,7 +185,8 @@ public class AnnvrsryManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ans/editAnnvrsry.do")
 	public String editAnnvrsry(
-			AnnvrsryManageVO annvrsryManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute AnnvrsryManageVO annvrsryManageVO,
 			ModelMap model) {
 
 		model.addAttribute(annvrsryManageService.selectAnnvrsryManage(annvrsryManageVO));
@@ -198,6 +203,7 @@ public class AnnvrsryManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ans/updateAnnvrsry.do")
 	public String updateAnnvrsry(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AnnvrsryManageVO annvrsryManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -223,6 +229,7 @@ public class AnnvrsryManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ans/deleteAnnvrsry.do")
 	public String deleteAnnvrsry(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AnnvrsryManageVO annvrsryManageVO, 
 			ModelMap model) {
 
@@ -261,6 +268,7 @@ public class AnnvrsryManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ans/detailAnnvrsryGdcc.do")
 	public String detailAnnvrsryGdcc(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AnnvrsryManageVO annvrsryManageVO) {
 
 		/*
@@ -356,6 +364,7 @@ public class AnnvrsryManageController {
 	@RequestMapping(value = "/uss/ion/ans/insertAnnvrsryBnde.do")
 	public String insertAnnvrsryBnde(
 			@RequestParam String checkedAnnvrsryManageForInsert,
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AnnvrsryManageVO annvrsryManageVO, 
 			ModelMap model) {
 

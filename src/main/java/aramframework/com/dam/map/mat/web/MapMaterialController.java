@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -75,7 +76,8 @@ public class MapMaterialController {
 	 */
 	@RequestMapping(value = "/dam/map/mat/detailMapMaterial.do")
 	public String detailMapMaterial(
-			MapMaterialVO mapMaterialVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute MapMaterialVO mapMaterialVO,
 			ModelMap model) {
 
 		model.addAttribute(mapMaterialService.selectMapMaterial(mapMaterialVO));
@@ -90,6 +92,7 @@ public class MapMaterialController {
 	 */
 	@RequestMapping(value = "/dam/map/mat/registMapMaterial.do")
 	public String registMapMaterial(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MapMaterialVO mapMaterialVO, 
 			ModelMap model) {
 
@@ -105,6 +108,7 @@ public class MapMaterialController {
 	 */
 	@RequestMapping(value = "/dam/map/mat/insertMapMaterial.do")
 	public String insertMapMaterial(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MapMaterialVO mapMaterialVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -146,7 +150,8 @@ public class MapMaterialController {
 	 */
 	@RequestMapping(value = "/dam/map/mat/editMapMaterial.do")
 	public String editMapMaterial(
-			MapMaterialVO mapMaterialVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute MapMaterialVO mapMaterialVO,
 			ModelMap model) {
 
 		model.addAttribute(mapMaterialService.selectMapMaterial(mapMaterialVO));
@@ -161,6 +166,7 @@ public class MapMaterialController {
 	 */
 	@RequestMapping(value = "/dam/map/mat/updateMapMaterial.do")
 	public String updateMapMaterial(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MapMaterialVO mapMaterialVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -187,6 +193,7 @@ public class MapMaterialController {
 	 */
 	@RequestMapping(value = "/dam/map/mat/deleteMapMaterial.do")
 	public String deleteMapMaterial(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MapMaterialVO mapMaterialVO, 
 			ModelMap model) {
 

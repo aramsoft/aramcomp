@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -74,7 +75,8 @@ public class KnoAppraisalController {
 	 */
 	@RequestMapping(value = "/dam/app/detailKnoAppraisal.do")
 	public String detailKnoAppraisal(
-			KnoAppraisalVO knoAppraisalVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute KnoAppraisalVO knoAppraisalVO,
 			ModelMap model) {
 
 		model.addAttribute(knoAppraisalService.selectKnoAppraisal(knoAppraisalVO));
@@ -89,7 +91,8 @@ public class KnoAppraisalController {
 	 */
 	@RequestMapping(value = "/dam/app/editKnoAppraisal.do")
 	public String editKnoAppraisal(
-			KnoAppraisalVO knoAppraisalVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute KnoAppraisalVO knoAppraisalVO,
 			ModelMap model) {
 
 		model.addAttribute(knoAppraisalService.selectKnoAppraisal(knoAppraisalVO));
@@ -104,6 +107,7 @@ public class KnoAppraisalController {
 	 */
 	@RequestMapping(value = "/dam/app/updateKnoAppraisal.do")
 	public String updateKnoAppraisal(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute KnoAppraisalVO knoAppraisalVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {

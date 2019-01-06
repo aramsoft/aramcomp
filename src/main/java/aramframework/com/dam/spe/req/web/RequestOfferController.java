@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
@@ -86,7 +87,8 @@ public class RequestOfferController {
 	 */
 	@RequestMapping(value = "/dam/spe/req/detailRequestOffer.do")
 	public String detailRequestOffer(
-			RequestOfferVO requestOfferVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute RequestOfferVO requestOfferVO, 
 			ModelMap model) {
 
 		// 상세정보 불러오기
@@ -114,6 +116,7 @@ public class RequestOfferController {
 	@RequestMapping(value = "/dam/spe/req/registRequestOffer.do")
 	public String registRequestOffer(
 			@RequestParam(value="cmd", required=false) String cmd,
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RequestOfferVO requestOfferVO, 
 			ModelMap model) {
 
@@ -149,6 +152,7 @@ public class RequestOfferController {
 	@RequestMapping(value = "/dam/spe/req/insertRequestOffer.do")
 	public String insertRequestOffer(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RequestOfferVO requestOfferVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -192,7 +196,8 @@ public class RequestOfferController {
 	 */
 	@RequestMapping(value = "/dam/spe/req/editRequestOffer.do")
 	public String editRequestOffer(
-			RequestOfferVO requestOfferVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute RequestOfferVO requestOfferVO, 
 			ModelMap model) {
 
 		requestOfferVO = requestOfferService.selectRequestOffer(requestOfferVO);
@@ -228,6 +233,7 @@ public class RequestOfferController {
 	@RequestMapping(value = "/dam/spe/req/updateRequestOffer.do")
 	public String updateRequestOffer(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RequestOfferVO requestOfferVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -260,6 +266,7 @@ public class RequestOfferController {
 	 */
 	@RequestMapping(value = "/dam/spe/req/deleteRequestOffer.do")
 	public String deleteRequestOffer(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RequestOfferVO requestOfferVO, 
 			ModelMap model) {
 

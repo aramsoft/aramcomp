@@ -16,6 +16,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.FileVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
@@ -91,7 +92,8 @@ public class MtgPlaceManageController {
 	@RequestMapping(value = "/uss/ion/mtg/detailMtgPlace.do")
 	@Secured("ROLE_USER")
 	public String detailMtgPlace(
-			MtgPlaceManageVO mtgPlaceManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute MtgPlaceManageVO mtgPlaceManageVO,
 			ModelMap model) {
 
 		model.addAttribute(mtgPlaceManageService.selectMtgPlaceManage(mtgPlaceManageVO));
@@ -111,6 +113,7 @@ public class MtgPlaceManageController {
 	@RequestMapping(value = "/uss/ion/mtg/registMtgPlace.do")
 	@Secured("ROLE_USER")
 	public String registMtgPlace(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MtgPlaceManageVO mtgPlaceManageVO, 
 			ModelMap model) {
 
@@ -133,6 +136,7 @@ public class MtgPlaceManageController {
 	public String insertMtgPlace(
 			MultipartHttpServletRequest multiRequest,
 			@RequestParam String checkedMtgPlacesForInsert, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MtgPlaceManageVO mtgPlaceManageVO,
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -164,7 +168,8 @@ public class MtgPlaceManageController {
 	@RequestMapping(value = "/uss/ion/mtg/editMtgPlace.do")
 	@Secured("ROLE_USER")
 	public String editMtgPlace(
-			MtgPlaceManageVO mtgPlaceManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute MtgPlaceManageVO mtgPlaceManageVO,
 			ModelMap model) {
 
 		model.addAttribute(mtgPlaceManageService.selectMtgPlaceManage(mtgPlaceManageVO));
@@ -189,6 +194,7 @@ public class MtgPlaceManageController {
 	public String updateMtgPlace(
 			MultipartHttpServletRequest multiRequest, 
 			@RequestParam String checkedMtgPlacesForInsert, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MtgPlaceManageVO mtgPlaceManageVO,
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -217,6 +223,7 @@ public class MtgPlaceManageController {
 	@RequestMapping(value = "/uss/ion/mtg/deleteMtgPlace.do")
 	@Secured("ROLE_USER")
 	public String deleteMtgPlace(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MtgPlaceManageVO mtgPlaceManageVO,
 			ModelMap model) {
 		
@@ -234,6 +241,7 @@ public class MtgPlaceManageController {
 	@RequestMapping(value = "/uss/ion/mtg/detailMtgPlaceImage.do")
 	public String detailMtgPlaceImage(
 			@RequestParam String sTmMtgPlaceId, 
+			@ModelAttribute SearchVO searchVO,
 			ModelMap model) {
 		
 		MtgPlaceManageVO mtgPlaceManageVO = new MtgPlaceManageVO();
@@ -260,6 +268,7 @@ public class MtgPlaceManageController {
 	@IncludedInfo(name = "회의실예약관리", order = 5261, gid = 50)
 	@RequestMapping(value = "/uss/ion/mtg/listMtgPlaceResve.do")
 	public String listMtgPlaceResve(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MtgPlaceResveVO mtgPlaceResveVO, 
 			ModelMap model) {
 		
@@ -299,7 +308,8 @@ public class MtgPlaceManageController {
 	@RequestMapping(value = "/uss/ion/mtg/detailMtgPlaceResve.do")
 	@Secured("ROLE_USER")
 	public String detailMtgPlaceResve(
-			MtgPlaceResveVO mtgPlaceResveVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute MtgPlaceResveVO mtgPlaceResveVO, 
 			ModelMap model) {
 
 		MtgPlaceManageVO mtgPlaceManageVO = new MtgPlaceManageVO();
@@ -339,6 +349,7 @@ public class MtgPlaceManageController {
 	@RequestMapping(value = "/uss/ion/mtg/registMtgPlaceResve.do")
 	@Secured("ROLE_USER")
 	public String registMtgPlaceResve(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MtgPlaceResveVO mtgPlaceResveVO, 
 			ModelMap model) {
 
@@ -363,6 +374,7 @@ public class MtgPlaceManageController {
 	@RequestMapping(value = "/uss/ion/mtg/insertMtgPlaceResve.do")
 	@Secured("ROLE_USER")
 	public String insertMtgPlaceResve(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MtgPlaceResveVO mtgPlaceResveVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -390,7 +402,8 @@ public class MtgPlaceManageController {
 	@RequestMapping(value = "/uss/ion/mtg/editMtgPlaceResve.do")
 	@Secured("ROLE_USER")
 	public String editMtgPlaceResve(
-			MtgPlaceResveVO mtgPlaceResveVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute MtgPlaceResveVO mtgPlaceResveVO, 
 			ModelMap model) {
 
 		MtgPlaceManageVO mtgPlaceManageVO = new MtgPlaceManageVO();
@@ -410,6 +423,7 @@ public class MtgPlaceManageController {
 	@RequestMapping(value = "/uss/ion/mtg/updateMtgPlaceResve.do")
 	@Secured("ROLE_USER")
 	public String updateMtgPlaceResve(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MtgPlaceResveVO mtgPlaceResveVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -433,6 +447,7 @@ public class MtgPlaceManageController {
 	@RequestMapping(value = "/uss/ion/mtg/deleteMtgPlaceResve.do")
 	@Secured("ROLE_USER")
 	public String deleteMtgPlaceResve(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MtgPlaceResveVO mtgPlaceResveVO, 
 			ModelMap model) {
 
@@ -458,6 +473,7 @@ public class MtgPlaceManageController {
 			@RequestParam String sTempResveEndTm, 
 			@RequestParam String sTempMtgPlaceId,
 			@RequestParam String sTempResveId, 
+			@ModelAttribute SearchVO searchVO,
 			ModelMap model) {
 		
 		MtgPlaceResveVO mtgPlaceResveVO = new MtgPlaceResveVO();

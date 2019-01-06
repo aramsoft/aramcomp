@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.util.WebUtil;
@@ -71,6 +72,7 @@ public class ResourceController {
 	@RequestMapping("/sec/rmt/registResource.do")
 	@Secured("ROLE_ADMIN")
 	public String registResource(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ResourceVO resourceVO) {
 
 		cmmUseService.populateCmmCodeList("COM029", "COM029_resourceType");
@@ -86,6 +88,7 @@ public class ResourceController {
 	@RequestMapping(value = "/sec/rmt/insertResource.do")
 	@Secured("ROLE_ADMIN")
 	public String insertResource(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ResourceVO resourceVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -109,7 +112,8 @@ public class ResourceController {
 	@RequestMapping(value = "/sec/rmt/editResource.do")
 	@Secured("ROLE_ADMIN")
 	public String editResource(
-			ResourceVO resourceVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute ResourceVO resourceVO,
 			ModelMap model) {
 
 		model.addAttribute(resourceService.selectResource(resourceVO));
@@ -127,6 +131,7 @@ public class ResourceController {
 	@RequestMapping(value = "/sec/rmt/updateResource.do")
 	@Secured("ROLE_ADMIN")
 	public String updateResourceManage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ResourceVO resourceVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -150,6 +155,7 @@ public class ResourceController {
 	@RequestMapping(value = "/sec/rmt/deleteResource.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteResource(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ResourceVO resourceVO, 
 			ModelMap model) {
 
@@ -168,6 +174,7 @@ public class ResourceController {
 	@Secured("ROLE_ADMIN")
 	public String deleteListResources(
 			@RequestParam String resourceCodes, 
+			@ModelAttribute SearchVO searchVO,
 			ModelMap model) {
 
 		resourceService.deleteResources(resourceCodes);

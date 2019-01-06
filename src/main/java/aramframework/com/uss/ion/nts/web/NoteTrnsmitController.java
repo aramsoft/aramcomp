@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -123,8 +124,9 @@ public class NoteTrnsmitController {
 	 */
 	@RequestMapping(value = "/uss/ion/nts/detailNoteTrnsmit.do")
 	public String detailNoteTrnsmit(
-			@ModelAttribute NoteTrnsmitVO noteTrnsmitVO, 
 			@RequestParam(value="cmd", required=false) String sCmd,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute NoteTrnsmitVO noteTrnsmitVO, 
 			ModelMap model)  {
 
 		// 로그인 객체 선언
@@ -153,8 +155,9 @@ public class NoteTrnsmitController {
 	 */
 	@RequestMapping(value = "/uss/ion/nts/confirmNoteTrnsmit.do")
 	public String confirmNoteTrnsmit(
-			@ModelAttribute NoteTrnsmitVO noteTrnsmitVO, 
 			@RequestParam(value="cmd", required=false) String sCmd,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute NoteTrnsmitVO noteTrnsmitVO, 
 			ModelMap model) {
 
 		if (sCmd.equals("del")) {

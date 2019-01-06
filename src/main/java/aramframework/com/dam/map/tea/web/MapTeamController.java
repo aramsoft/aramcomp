@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -70,7 +71,8 @@ public class MapTeamController {
 	 */
 	@RequestMapping(value = "/dam/map/tea/detailMapTeam.do")
 	public String detailMapTeam(
-			MapTeamVO mapTeamVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute MapTeamVO mapTeamVO,
 			ModelMap model) {
 
 		model.addAttribute(mapTeamService.selectMapTeamDetail(mapTeamVO));
@@ -85,6 +87,7 @@ public class MapTeamController {
 	 */
 	@RequestMapping(value = "/dam/map/tea/registMapTeam.do")
 	public String registMapTeam(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MapTeamVO mapTeamVO) {
 		
 		return WebUtil.adjustViewName("/dam/map/tea/MapTeamRegist");
@@ -97,6 +100,7 @@ public class MapTeamController {
 	 */
 	@RequestMapping(value = "/dam/map/tea/insertMapTeam.do")
 	public String insertMapTeam(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MapTeamVO mapTeamVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
@@ -123,7 +127,8 @@ public class MapTeamController {
 	 */
 	@RequestMapping(value = "/dam/map/tea/editMapTeam.do")
 	public String editMapTeam(
-			MapTeamVO mapTeamVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute MapTeamVO mapTeamVO,
 			ModelMap model) {
 
 		model.addAttribute(mapTeamService.selectMapTeamDetail(mapTeamVO));
@@ -138,6 +143,7 @@ public class MapTeamController {
 	 */
 	@RequestMapping(value = "/dam/map/tea/updateMapTeam.do")
 	public String updateMapTeam(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MapTeamVO mapTeamVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
@@ -164,6 +170,7 @@ public class MapTeamController {
 	 */
 	@RequestMapping(value = "/dam/map/tea/deleteMapTeam.do")
 	public String deleteMapTeam(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MapTeamVO mapTeamVO, 
 			ModelMap model) {
 

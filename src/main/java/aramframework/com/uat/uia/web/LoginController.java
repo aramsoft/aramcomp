@@ -171,8 +171,6 @@ public class LoginController {
         requestUrl = request.getRequestURL().toString();
 		if( requestUrl.startsWith("http://localhost") ) {
 			main_page = Globals.LOCAL_PAGE;
-		} else if( requestUrl.startsWith("http://m.aramsoft.co.kr/") ) {
-			main_page = Globals.MOBILE_PAGE;
 		} else {
 			main_page = Globals.MAIN_PAGE;
 		}

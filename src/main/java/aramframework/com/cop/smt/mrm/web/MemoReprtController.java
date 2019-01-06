@@ -12,6 +12,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.BaseVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
@@ -105,7 +106,8 @@ public class MemoReprtController {
 	@RequestMapping("/cop/smt/mrm/detailMemoReprt.do")
 	@Secured("ROLE_USER")
 	public String detailMemoReprt(
-			MemoReprtVO memoReprtVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute MemoReprtVO memoReprtVO, 
 			ModelMap model) {
 	
 		memoReprtVO = memoReprtService.selectMemoReprt(memoReprtVO);
@@ -130,6 +132,7 @@ public class MemoReprtController {
 	@RequestMapping("/cop/smt/mrm/registMemoReprt.do")
 	@Secured("ROLE_USER")
 	public String registMemoReprt(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MemoReprtVO memoReprtVO) {
 
 		// 1. 로그인 객체 선언
@@ -153,6 +156,7 @@ public class MemoReprtController {
 	@Secured("ROLE_USER")
 	public String insertMemoReprt(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MemoReprtVO memoReprtVO,
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -185,7 +189,8 @@ public class MemoReprtController {
 	@RequestMapping("/cop/smt/mrm/editMemoReprt.do")
 	@Secured("ROLE_USER")
 	public String editMemoReprt(
-			MemoReprtVO memoReprtVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute MemoReprtVO memoReprtVO,
 			ModelMap model) {
 
 		model.addAttribute(memoReprtService.selectMemoReprt(memoReprtVO));
@@ -202,6 +207,7 @@ public class MemoReprtController {
 	@Secured("ROLE_USER")
 	public String updateMemoReprt(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MemoReprtVO memoReprtVO,
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -233,6 +239,7 @@ public class MemoReprtController {
 	@RequestMapping("/cop/smt/mrm/deleteMemoReprt.do")
 	@Secured("ROLE_USER")
 	public String deleteMemoReprt(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MemoReprtVO memoReprtVO, 
 			ModelMap model) {
 
@@ -250,6 +257,7 @@ public class MemoReprtController {
 	@RequestMapping("/cop/smt/mrm/updateMemoReprtDrctMatter.do")
 	@Secured("ROLE_USER")
 	public String updateMemoReprtDrctMatter(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MemoReprtVO memoReprtVO, 
 			ModelMap model) {
 

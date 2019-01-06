@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
@@ -82,7 +83,8 @@ public class RwardManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/rwd/detailRward.do")
 	public String detailRward(
-			RwardManageVO rwardManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute RwardManageVO rwardManageVO,
 			ModelMap model) {
 
 		rwardManageVO.setRwardDe(StringUtil.removeMinusChar(rwardManageVO.getRwardDe()));
@@ -99,6 +101,7 @@ public class RwardManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/rwd/registRward.do")
 	public String registRward(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RwardManageVO rwardManageVO) {
 		
 		cmmUseService.populateCmmCodeList("COM055", "COM055_rward");
@@ -114,6 +117,7 @@ public class RwardManageController {
 	@RequestMapping(value = "/uss/ion/rwd/insertRward.do")
 	public String insertRward(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RwardManageVO rwardManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -143,7 +147,8 @@ public class RwardManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/rwd/editRward.do")
 	public String editRward(
-			RwardManageVO rwardManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute RwardManageVO rwardManageVO,
 			ModelMap model) {
 
 		rwardManageVO.setRwardDe(StringUtil.removeMinusChar(rwardManageVO.getRwardDe()));
@@ -163,6 +168,7 @@ public class RwardManageController {
 	@RequestMapping(value = "/uss/ion/rwd/updateRward.do")
 	public String updateRward(
 			MultipartHttpServletRequest multiRequest,
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RwardManageVO rwardManageVO, 
 			BindingResult bindingResult,
 			ModelMap model) 
@@ -192,6 +198,7 @@ public class RwardManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/rwd/deleteRward.do")
 	public String deleteRward(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RwardManageVO rwardManageVO, 
 			ModelMap model) {
 
@@ -243,7 +250,8 @@ public class RwardManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/rwd/editRwardConfm.do")
 	public String editRwardConfm(
-			RwardManageVO rwardManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute RwardManageVO rwardManageVO,
 			ModelMap model) {
 
 		rwardManageVO.setRwardDe(StringUtil.removeMinusChar(rwardManageVO.getRwardDe()));
@@ -260,6 +268,7 @@ public class RwardManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/rwd/updateRwardConfm.do")
 	public String updtRwardManageConfm(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RwardManageVO rwardManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {

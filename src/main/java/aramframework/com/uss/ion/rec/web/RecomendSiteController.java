@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -66,7 +67,8 @@ public class RecomendSiteController {
 	 */
 	@RequestMapping("/uss/ion/rec/detailRecomendSite.do")
 	public String detailRecomendSite(
-			RecomendSiteVO recomendSiteVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute RecomendSiteVO recomendSiteVO,
 			ModelMap model) {
 
 		model.addAttribute(recomendSiteService.selectRecomendSiteDetail(recomendSiteVO));
@@ -82,6 +84,7 @@ public class RecomendSiteController {
 	@RequestMapping("/uss/ion/rec/registRecomendSite.do")
 	@Secured("ROLE_USER")
 	public String registRecomendSite(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RecomendSiteVO recomendSiteVO) {
 
 		return WebUtil.adjustViewName("/uss/ion/rec/RecomendSiteRegist");
@@ -95,6 +98,7 @@ public class RecomendSiteController {
 	@RequestMapping("/uss/ion/rec/insertRecomendSite.do")
 	@Secured("ROLE_USER")
 	public String insertRecomendSite(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RecomendSiteVO recomendSiteVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
@@ -122,7 +126,8 @@ public class RecomendSiteController {
 	@RequestMapping("/uss/ion/rec/editRecomendSite.do")
 	@Secured("ROLE_USER")
 	public String editRecomendSite(
-			RecomendSiteVO recomendSiteVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute RecomendSiteVO recomendSiteVO,
 			ModelMap model) {
 
 		model.addAttribute(recomendSiteService.selectRecomendSiteDetail(recomendSiteVO));
@@ -138,6 +143,7 @@ public class RecomendSiteController {
 	@RequestMapping("/uss/ion/rec/updateRecomendSite.do")
 	@Secured("ROLE_USER")
 	public String updateRecomendSite(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RecomendSiteVO recomendSiteVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
@@ -166,8 +172,8 @@ public class RecomendSiteController {
 	@RequestMapping("/uss/ion/rec/deleteRecomendSite.do")
 	@Secured("ROLE_USER")
 	public String deleteRecomendSite(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RecomendSiteVO recomendSiteVO, 
-			BindingResult bindingResult,
 			ModelMap model) {
 
 		recomendSiteService.deleteRecomendSiteInfo(recomendSiteVO);

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -69,7 +70,8 @@ public class KnoManagementController {
 	 */
 	@RequestMapping(value = "/dam/mgm/detailKnoManagement.do")
 	public String detailKnoManagement(
-			KnoManagementVO knoManagementVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute KnoManagementVO knoManagementVO, 
 			ModelMap model) {
 
 		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
@@ -88,7 +90,8 @@ public class KnoManagementController {
 	 */
 	@RequestMapping(value = "/dam/mgm/editKnoManagement.do")
 	public String editKnoManagement(
-			KnoManagementVO knoManagementVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute KnoManagementVO knoManagementVO, 
 			ModelMap model) {
 
 		model.addAttribute(knoManagementService.selectKnoManagement(knoManagementVO));
@@ -103,6 +106,7 @@ public class KnoManagementController {
 	 */
 	@RequestMapping(value = "/dam/mgm/updateKnoManagement.do")
 	public String updateKnoManagement(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute KnoManagementVO knoManagementVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {

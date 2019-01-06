@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sec.arm.domain.AuthorVO;
@@ -75,6 +76,7 @@ public class DeptAuthorController {
 			@RequestParam String userIds, 
 			@RequestParam String authorCodes,
 			@RequestParam String regYns, 
+			@ModelAttribute SearchVO searchVO,
 			ModelMap model) {
 
 		deptAuthorService.insertDeptAuthors(userIds, authorCodes, regYns);
@@ -92,6 +94,7 @@ public class DeptAuthorController {
 	@Secured("ROLE_ADMIN")
 	public String deleteDeptAuthor(
 			@RequestParam String userIds, 
+			@ModelAttribute SearchVO searchVO,
 			ModelMap model) {
 
 		deptAuthorService.deleteDeptAuthors(userIds);

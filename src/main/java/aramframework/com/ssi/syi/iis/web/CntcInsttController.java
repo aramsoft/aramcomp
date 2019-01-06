@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -80,6 +81,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/detailCntcInstt.do")
 	@Secured("ROLE_ADMIN")
 	public String detailCntcInstt(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcInsttVO cntcInsttVO, 
 			@ModelAttribute CntcSystemVO cntcSystemVO,
 			@ModelAttribute CntcServiceVO cntcServiceVO, 
@@ -118,6 +120,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/registCntcInstt.do")
 	@Secured("ROLE_ADMIN")
 	public String registCntcInstt(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcInsttVO cntcInsttVO) {
 		
 		return WebUtil.adjustViewName("/ssi/syi/iis/CntcInsttRegist");
@@ -131,6 +134,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/insertCntcInstt.do")
 	@Secured("ROLE_ADMIN")
 	public String insertCntcInstt(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcInsttVO cntcInsttVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -158,6 +162,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/editCntcInstt.do")
 	@Secured("ROLE_ADMIN")
 	public String editCntcInstt(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcInsttVO cntcInsttVO) {
 
 		cntcInsttService.selectCntcInsttDetail(cntcInsttVO);
@@ -173,6 +178,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/updateCntcInstt.do")
 	@Secured("ROLE_ADMIN")
 	public String updateCntcInstt(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcInsttVO cntcInsttVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -200,6 +206,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/deleteCntcInstt.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteCntcInstt(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcInsttVO cntcInsttVO, 
 			ModelMap model) {
 
@@ -217,6 +224,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/registCntcSystem.do")
 	@Secured("ROLE_ADMIN")
 	public String registCntcSystem(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcSystemVO cntcSystemVO, 
 			ModelMap model) {
 
@@ -238,6 +246,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/insertCntcSystem.do")
 	@Secured("ROLE_ADMIN")
 	public String insertCntcSystem(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcSystemVO cntcSystemVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -273,6 +282,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/editCntcSystem.do")
 	@Secured("ROLE_ADMIN")
 	public String editCntcSystem(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcSystemVO cntcSystemVO, 
 			ModelMap model) {
 
@@ -303,6 +313,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/updateCntcSystem.do")
 	@Secured("ROLE_ADMIN")
 	public String updateCntcSystem(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcSystemVO cntcSystemVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -345,6 +356,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/deleteCntcSystem.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteCntcSystem(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcSystemVO cntcSystemVO) {
 
 		cntcInsttService.deleteCntcSystem(cntcSystemVO);
@@ -360,6 +372,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/registCntcService.do")
 	@Secured("ROLE_ADMIN")
 	public String registCntcService(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcServiceVO cntcServiceVO, 
 			ModelMap model) {
 
@@ -404,6 +417,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/insertCntcService.do")
 	@Secured("ROLE_ADMIN")
 	public String insertCntcService(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcServiceVO cntcServiceVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -461,6 +475,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/editCntcService.do")
 	@Secured("ROLE_ADMIN")
 	public String editCntcService(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcServiceVO cntcServiceVO, 
 			ModelMap model) {
 
@@ -506,6 +521,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/updateCntcService.do")
 	@Secured("ROLE_ADMIN")
 	public String updateCntcService(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcServiceVO cntcServiceVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -563,6 +579,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/deleteCntcService.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteCntcService(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcServiceVO cntcServiceVO) {
 
 		cntcInsttService.deleteCntcService(cntcServiceVO);

@@ -17,6 +17,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.FileVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
@@ -87,6 +88,7 @@ public class LoginScrinImageController {
 	 */
 	@RequestMapping(value = "/uss/ion/lsi/registLoginScrinImage.do")
 	public String registLoginScrinImage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute LoginScrinImageVO loginScrinImageVO) {
 
 		return WebUtil.adjustViewName("/uss/ion/lsi/LoginScrinImageRegist");
@@ -100,6 +102,7 @@ public class LoginScrinImageController {
 	@RequestMapping(value = "/uss/ion/lsi/insertLoginScrinImage.do")
 	public String insertLoginScrinImage(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute LoginScrinImageVO loginScrinImageVO, 
 			BindingResult bindingResult, 
 			ModelMap model)
@@ -141,7 +144,8 @@ public class LoginScrinImageController {
 	 */
 	@RequestMapping(value = "/uss/ion/lsi/editLoginScrinImage.do")
 	public String editLoginScrinImage(
-			LoginScrinImageVO loginScrinImageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute LoginScrinImageVO loginScrinImageVO,
 			ModelMap model) {
 
 		model.addAttribute(loginScrinImageService.selectLoginScrinImage(loginScrinImageVO));
@@ -157,6 +161,7 @@ public class LoginScrinImageController {
 	@RequestMapping(value = "/uss/ion/lsi/updateLoginScrinImage.do")
 	public String updateLoginScrinImage(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute LoginScrinImageVO loginScrinImageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -206,6 +211,7 @@ public class LoginScrinImageController {
 	 */
 	@RequestMapping(value = "/uss/ion/lsi/deleteLoginScrinImage.do")
 	public String deleteLoginScrinImage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute LoginScrinImageVO loginScrinImageVO, 
 			ModelMap model) {
 
@@ -223,6 +229,7 @@ public class LoginScrinImageController {
 	 */
 	@RequestMapping(value = "/uss/ion/lsi/deleteListLoginScrinImage.do")
 	public String deleteListLoginScrinImage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute LoginScrinImageVO loginScrinImageVO, 
 			@RequestParam String imageIds,
 			ModelMap model) {
@@ -240,6 +247,7 @@ public class LoginScrinImageController {
 	 */
 	@RequestMapping(value = "/uss/ion/lsi/viewLoginScrinImage.do")
 	public String viewLoginScrinImage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute LoginScrinImageVO loginScrinImageVO, 
 			ModelMap model) {
 

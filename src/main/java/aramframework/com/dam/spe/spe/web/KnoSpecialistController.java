@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -83,7 +84,8 @@ public class KnoSpecialistController {
 	 */
 	@RequestMapping(value = "/dam/spe/spe/detailKnoSpecialist.do")
 	public String detailKnoSpecialist(
-			KnoSpecialistVO knoSpecialistVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute KnoSpecialistVO knoSpecialistVO,
 			ModelMap model) {
 
 		model.addAttribute(knoSpecialistService.selectKnoSpecialist(knoSpecialistVO));
@@ -98,6 +100,7 @@ public class KnoSpecialistController {
 	 */
 	@RequestMapping(value = "/dam/spe/spe/registKnoSpecialist.do")
 	public String registKnoSpecialist(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute KnoSpecialistVO knoSpecialistVO, 
 			ModelMap model) {
 
@@ -113,6 +116,7 @@ public class KnoSpecialistController {
 	 */
 	@RequestMapping(value = "/dam/spe/spe/insertKnoSpecialist.do")
 	public String insertKnoSpecialist(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute KnoSpecialistVO knoSpecialistVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -168,7 +172,8 @@ public class KnoSpecialistController {
 	 */
 	@RequestMapping(value = "/dam/spe/spe/editKnoSpecialist.do")
 	public String editKnoSpecialist(
-			KnoSpecialistVO knoSpecialistVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute KnoSpecialistVO knoSpecialistVO,
 			ModelMap model) {
 
 		model.addAttribute(knoSpecialistService.selectKnoSpecialist(knoSpecialistVO));
@@ -183,6 +188,7 @@ public class KnoSpecialistController {
 	 */
 	@RequestMapping(value = "/dam/spe/spe/updateKnoSpecialist.do")
 	public String updateKnoSpecialist(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute KnoSpecialistVO knoSpecialistVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -209,6 +215,7 @@ public class KnoSpecialistController {
 	 */
 	@RequestMapping(value = "/dam/spe/spe/deleteKnoSpecialist.do")
 	public String deleteKnoSpecialist(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute KnoSpecialistVO knoSpecialistVO, 
 			ModelMap model) {
 

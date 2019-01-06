@@ -17,6 +17,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.BaseVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
@@ -112,6 +113,7 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/listDeptJobBx.do")
 	@Secured("ROLE_ADMIN")
 	public String listDeptJobBx(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DeptJobBxVO deptJobBxVO, 
 			@RequestParam(value="PopFlag", required=false) String popFlag,
 			ModelMap model) {
@@ -145,7 +147,8 @@ public class DeptJobController {
 	 */
 	 @RequestMapping("/cop/smt/djm/detailDeptJobBx.do")
 	 public String detailDeptJobBx(
-			DeptJobBxVO deptJobBxVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute DeptJobBxVO deptJobBxVO,
 			ModelMap model) {
 	
 		 model.addAttribute(deptJobService.selectDeptJobBx(deptJobBxVO));
@@ -161,6 +164,7 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/registDeptJobBx.do")
 	@Secured("ROLE_ADMIN")
 	public String registDeptJobBx(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DeptJobBxVO deptJobBxVO) {
 		
 		return WebUtil.adjustViewName("/cop/smt/djm/DeptJobBxRegist");
@@ -175,6 +179,7 @@ public class DeptJobController {
 	@Secured("ROLE_ADMIN")
 	public String getDeptJobBxOrdr(
 			HttpServletRequest request, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DeptJobBxVO deptJobBxVO, 
 			ModelMap model) {
 
@@ -196,6 +201,7 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/insertDeptJobBx.do")
 	@Secured("ROLE_ADMIN")
 	public String insertDeptJobBx(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DeptJobBxVO deptJobBxVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -230,7 +236,8 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/editDeptJobBx.do")
 	@Secured("ROLE_ADMIN")
 	public String editDeptJobBx(
-			DeptJobBxVO deptJobBxVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute DeptJobBxVO deptJobBxVO, 
 			ModelMap model) {
 
 		model.addAttribute(deptJobService.selectDeptJobBx(deptJobBxVO));
@@ -247,6 +254,7 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/updateDeptJobBx.do")
 	@Secured("ROLE_ADMIN")
 	public String updateDeptJobBx(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DeptJobBxVO deptJobBxVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -273,6 +281,7 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/updateDeptJobBxOrdr.do")
 	@Secured("ROLE_ADMIN")
 	public String updateDeptJobBxOrdr(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DeptJobBxVO deptJobBxVO, 
 			ModelMap model) {
 
@@ -296,6 +305,7 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/deleteDeptJobBx.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteDeptJobBx(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DeptJobBxVO deptJobBxVO, 
 			ModelMap model) {
 
@@ -346,7 +356,8 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/detailDeptJob.do")
 	@Secured("ROLE_USER")
 	public String detailDeptJob(
-			DeptJobVO deptJobVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute DeptJobVO deptJobVO, 
 			ModelMap model) {
 		
 		model.addAttribute(deptJobService.selectDeptJob(deptJobVO));
@@ -365,6 +376,7 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/registDeptJob.do")
 	@Secured("ROLE_USER")
 	public String registDeptJob(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DeptJobVO deptJobVO) {
 
 		deptJobVO.setDeptId(deptJobVO.getSearchDeptId());
@@ -383,6 +395,7 @@ public class DeptJobController {
 	@Secured("ROLE_USER")
 	public String insertDeptJob(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DeptJobVO deptJobVO, 
 			BindingResult bindingResult,
 			ModelMap model) 
@@ -415,7 +428,8 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/editDeptJob.do")
 	@Secured("ROLE_USER")
 	public String editDeptJob(
-			DeptJobVO deptJobVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute DeptJobVO deptJobVO,
 			ModelMap model) {
 
 		model.addAttribute(deptJobService.selectDeptJob(deptJobVO));
@@ -432,6 +446,7 @@ public class DeptJobController {
 	@Secured("ROLE_USER")
 	public String updateDeptJob(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DeptJobVO deptJobVO,
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -463,6 +478,7 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/deleteDeptJob.do")
 	@Secured("ROLE_USER")
 	public String deleteDeptJob(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DeptJobVO deptJobVO, 
 			ModelMap model) {
 

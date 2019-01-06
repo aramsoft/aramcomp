@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
@@ -92,7 +93,8 @@ public class KnoPersonalController {
 	 */
 	@RequestMapping(value = "/dam/per/detailKnoPersonal.do")
 	public String detailKnoPersonal(
-			KnoPersonalVO knoPersonalVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute KnoPersonalVO knoPersonalVO,
 			ModelMap model) {
 
 		model.addAttribute(knoPersonalService.selectKnoPersonal(knoPersonalVO));
@@ -107,6 +109,7 @@ public class KnoPersonalController {
 	 */
 	@RequestMapping(value = "/dam/per/registKnoPersonal.do")
 	public String registKnoPersonal(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute KnoPersonalVO knoPersonalVO, 
 			ModelMap model) {
 
@@ -123,6 +126,7 @@ public class KnoPersonalController {
 	@RequestMapping(value = "/dam/per/insertKnoPersonal.do")
 	public String insertKnoPersonal(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute KnoPersonalVO knoPersonalVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -180,7 +184,8 @@ public class KnoPersonalController {
 	 */
 	@RequestMapping(value = "/dam/per/editKnoPersonal.do")
 	public String editKnoPersonal(
-			KnoPersonalVO knoPersonalVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute KnoPersonalVO knoPersonalVO,
 			ModelMap model) {
 
 		model.addAttribute(knoPersonalService.selectKnoPersonal(knoPersonalVO));
@@ -196,6 +201,7 @@ public class KnoPersonalController {
 	@RequestMapping(value = "/dam/per/updateKnoPersonal.do")
 	public String updateKnoPersonal(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute KnoPersonalVO knoPersonalVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -227,6 +233,7 @@ public class KnoPersonalController {
 	 */
 	@RequestMapping(value = "/dam/per/deleteKnoPersonal.do")
 	public String deleteKnoPersonal(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute KnoPersonalVO knoPersonalVO, 
 			ModelMap model) {
 

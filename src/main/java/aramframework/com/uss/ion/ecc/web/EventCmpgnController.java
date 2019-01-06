@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -102,7 +103,8 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/detailEventCmpgn.do")
 	public String detailEventCmpgn(
-			EventCmpgnVO eventCmpgnVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute EventCmpgnVO eventCmpgnVO,
 			ModelMap model) {
 
 		model.addAttribute(eventCmpgnService.selectEventCmpgnDetail(eventCmpgnVO));
@@ -120,6 +122,7 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/registEventCmpgn.do")
 	public String registEventCmpgn(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute EventCmpgnVO eventCmpgnVO, 
 			ModelMap model) {
 
@@ -140,6 +143,7 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/insertEventCmpgn.do")
 	public String insertEventCmpgn(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute EventCmpgnVO eventCmpgnVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -169,7 +173,8 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/editEventCmpgn.do")
 	public String editEventCmpgn(
-			EventCmpgnVO eventCmpgnVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute EventCmpgnVO eventCmpgnVO,
 			ModelMap model) {
 
 		model.addAttribute(eventCmpgnService.selectEventCmpgnDetail(eventCmpgnVO));
@@ -191,6 +196,7 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/updateEventCmpgn.do")
 	public String updateEventCmpgn(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute EventCmpgnVO eventCmpgnVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -220,6 +226,7 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/deleteEventCmpgn.do")
 	public String deleteEventCmpgn(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute EventCmpgnVO eventCmpgnVO, 
 			ModelMap model) {
 
@@ -271,7 +278,8 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/detailTnextrlHrInfo.do")
 	public String detailTnextrlHrInfo(
-			TnextrlHrInfoVO tnextrlHrInfoVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute TnextrlHrInfoVO tnextrlHrInfoVO,
 			ModelMap model) {
 
 		model.addAttribute(eventCmpgnService.selectTnextrlHrInfoDetail(tnextrlHrInfoVO));
@@ -291,6 +299,7 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/registTnextrlHrInfo.do")
 	public String registTnextrlHrInfo(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute TnextrlHrInfoVO tnextrlHrInfoVO) {
 
 		// 성별코드조회
@@ -308,6 +317,7 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/insertTnextrlHrInfo.do")
 	public String insertTnextrlHrInfo(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute TnextrlHrInfoVO tnextrlHrInfoVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -335,7 +345,8 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/editTnextrlHrInfo.do")
 	public String editTnextrlHrInfo(
-			TnextrlHrInfoVO tnextrlHrInfoVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute TnextrlHrInfoVO tnextrlHrInfoVO,
 			ModelMap model) {
 
 		model.addAttribute(eventCmpgnService.selectTnextrlHrInfoDetail(tnextrlHrInfoVO));
@@ -355,6 +366,7 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/updateTnextrlHrInfo.do")
 	public String updateTnextrlHrInfo(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute TnextrlHrInfoVO tnextrlHrInfoVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -382,6 +394,7 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/deleteTnextrlHrInfo.do")
 	public String deleteTnextrlHrInfo(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute TnextrlHrInfoVO tnextrlHrInfoVO, 
 			ModelMap model) {
 

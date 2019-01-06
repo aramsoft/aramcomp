@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -84,6 +85,7 @@ public class TroblProcessController {
 	@RequestMapping(value = "/sym/tbm/tbp/registTroblProcess.do")
 	@Secured("ROLE_ADMIN")
 	public String registTroblProcess(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute TroblProcessVO troblProcessVO) {
 
 		troblProcessService.selectTroblProcess(troblProcessVO);
@@ -99,6 +101,7 @@ public class TroblProcessController {
 	@RequestMapping(value = "/sym/tbm/tbp/insertTroblProcess.do")
 	@Secured("ROLE_ADMIN")
 	public String insertTroblProcess(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute TroblProcessVO troblProcessVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -127,6 +130,7 @@ public class TroblProcessController {
 	@RequestMapping(value = "/sym/tbm/tbp/deleteTroblProcess.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteTroblProcess(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute TroblProcessVO troblProcessVO, 
 			ModelMap model) {
 

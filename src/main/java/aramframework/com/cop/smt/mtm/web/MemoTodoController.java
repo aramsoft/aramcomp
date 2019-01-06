@@ -13,6 +13,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.ComCodeVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -104,7 +105,8 @@ public class MemoTodoController {
 	@RequestMapping("/cop/smt/mtm/detailMemoTodo.do")
 	@Secured("ROLE_USER")
 	public String detailMemoTodo(
-			MemoTodoVO memoTodoVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute MemoTodoVO memoTodoVO,
 			ModelMap model) {
 		
 		memoTodoVO = memoTodoService.selectMemoTodo(memoTodoVO);
@@ -135,6 +137,7 @@ public class MemoTodoController {
 	@RequestMapping("/cop/smt/mtm/registMemoTodo.do")
 	@Secured("ROLE_USER")
 	public String registMemoTodo(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MemoTodoVO memoTodoVO) {
 		
 		// 1. 로그인 객체 선언
@@ -156,6 +159,7 @@ public class MemoTodoController {
 	@RequestMapping("/cop/smt/mtm/insertMemoTodo.do")
 	@Secured("ROLE_USER")
 	public String insertMemoTodo(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MemoTodoVO memoTodoVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -187,7 +191,8 @@ public class MemoTodoController {
 	@RequestMapping("/cop/smt/mtm/editMemoTodo.do")
 	@Secured("ROLE_USER")
 	public String editMemoTodo(
-			MemoTodoVO memoTodoVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute MemoTodoVO memoTodoVO,
 			ModelMap model) {
 
 		memoTodoVO = memoTodoService.selectMemoTodo(memoTodoVO);
@@ -211,6 +216,7 @@ public class MemoTodoController {
 	@RequestMapping("/cop/smt/mtm/updateMemoTodo.do")
 	@Secured("ROLE_USER")
 	public String updateMemoTodo(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MemoTodoVO memoTodoVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -240,6 +246,7 @@ public class MemoTodoController {
 	@RequestMapping("/cop/smt/mtm/deleteMemoTodo.do")
 	@Secured("ROLE_USER")
 	public String deleteMemoTodo(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MemoTodoVO memoTodoVO, 
 			ModelMap model) {
 

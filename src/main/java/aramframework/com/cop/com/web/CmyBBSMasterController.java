@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.ComponentChecker;
@@ -101,6 +102,7 @@ public class CmyBBSMasterController {
 	@RequestMapping("/cop/com/registBdMstrByTrget.do")
 	@Secured("ROLE_USER")
 	public String registBdMstrByTrget(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardMasterVO boardMasterVO, 
 			ModelMap model) {
 
@@ -131,6 +133,7 @@ public class CmyBBSMasterController {
 	@RequestMapping("/cop/com/insertBdMstrByTrget.do")
 	@Secured("ROLE_USER")
 	public String insertBdMstrByTrget(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardMasterVO boardMasterVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -168,8 +171,9 @@ public class CmyBBSMasterController {
 	@Secured("ROLE_USER")
 	public String editBdMstrByTrget(
 			HttpServletRequest request,
-			BoardMasterVO boardMasterVO, 
-			BoardUseInfVO boardUseInfVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute BoardMasterVO boardMasterVO, 
+			@ModelAttribute BoardUseInfVO boardUseInfVO, 
 			ModelMap model) {
 
 		checkAuthorityManager(); // server-side 권한 확인
@@ -213,6 +217,7 @@ public class CmyBBSMasterController {
 	@RequestMapping("/cop/com/updateBdMstrByTrget.do")
 	@Secured("ROLE_USER")
 	public String updateBdMstrByTrget(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardMasterVO boardMasterVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -239,6 +244,7 @@ public class CmyBBSMasterController {
 	 */
 	@RequestMapping("/cop/com/deleteBdMstrByTrget.do")
 	public String deleteBdMstrByTrget(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardMasterVO boardMasterVO,
 			ModelMap model) {
 
@@ -259,8 +265,9 @@ public class CmyBBSMasterController {
 	 */
 	@RequestMapping("/cop/com/updateBoardUseInfByTrget.do")
 	public String updateBoardUseInfByTrget(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardMasterVO boardMasterVO,
-			BoardUseInfVO boardUseInfVO,
+			@ModelAttribute BoardUseInfVO boardUseInfVO,
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();

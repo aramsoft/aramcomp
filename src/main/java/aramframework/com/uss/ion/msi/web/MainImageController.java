@@ -17,6 +17,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.FileVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
@@ -87,6 +88,7 @@ public class MainImageController {
 	 */
 	@RequestMapping(value = "/uss/ion/msi/registMainImage.do")
 	public String registMainImage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MainImageVO mainImageVO) {
 		
 		return WebUtil.adjustViewName("/uss/ion/msi/MainImageRegist");
@@ -100,6 +102,7 @@ public class MainImageController {
 	@RequestMapping(value = "/uss/ion/msi/insertMainImage.do")
 	public String insertMainImage(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MainImageVO mainImageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -141,7 +144,8 @@ public class MainImageController {
 	 */
 	@RequestMapping(value = "/uss/ion/msi/editMainImage.do")
 	public String editMainImage(
-			MainImageVO mainImageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute MainImageVO mainImageVO,
 			ModelMap model) {
 
 		model.addAttribute(mainImageService.selectMainImage(mainImageVO));
@@ -157,6 +161,7 @@ public class MainImageController {
 	@RequestMapping(value = "/uss/ion/msi/updateMainImage.do")
 	public String updateMainImage(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MainImageVO mainImageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -206,6 +211,7 @@ public class MainImageController {
 	 */
 	@RequestMapping(value = "/uss/ion/msi/deleteMainImage.do")
 	public String deleteMainImage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MainImageVO mainImageVO, 
 			ModelMap model) {
 
@@ -223,6 +229,7 @@ public class MainImageController {
 	@RequestMapping(value = "/uss/ion/msi/deleteListMainImage.do")
 	public String deleteListMainImage(
 			@RequestParam String imageIds, 
+			@ModelAttribute SearchVO searchVO,
 			ModelMap model) {
 
 		mainImageService.deleteMainImages(imageIds);
@@ -239,6 +246,7 @@ public class MainImageController {
 	@IncludedInfo(name = "메인이미지 반영결과보기", order = 5251, gid = 50)
 	@RequestMapping(value = "/uss/ion/msi/viewMainImage.do")
 	public String viewMainImage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MainImageVO mainImageVO, 
 			ModelMap model) {
 

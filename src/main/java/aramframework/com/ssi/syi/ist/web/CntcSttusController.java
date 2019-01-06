@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.ssi.syi.ist.domain.CntcSttusVO;
 import aramframework.com.ssi.syi.ist.service.CntcSttusService;
@@ -61,6 +62,7 @@ public class CntcSttusController {
 	@RequestMapping(value = "/ssi/syi/ist/detailCntcSttus.do")
 	@Secured("ROLE_ADMIN")
 	public String selectCntcSttusLogDetail(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcSttusVO cntcSttusVO) {
 		
 		cntcSttusService.selectCntcSttusDetail(cntcSttusVO);

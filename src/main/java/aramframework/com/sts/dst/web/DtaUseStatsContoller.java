@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sts.dst.domain.DtaUseStatsVO;
@@ -98,6 +99,7 @@ public class DtaUseStatsContoller {
 	@RequestMapping("/sts/dst/detailDtaUseStats.do")
 	@Secured("ROLE_ADMIN")
 	public String detailDtaUseStats(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DtaUseStatsVO dtaUseStatsVO, 
 			ModelMap model)  {
 

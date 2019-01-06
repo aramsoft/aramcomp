@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -76,6 +77,7 @@ public class SystemCntcController {
 	@RequestMapping(value = "/ssi/syi/sim/detailSystemCntc.do")
 	@Secured("ROLE_ADMIN")
 	public String detailSystemCntc(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SystemCntcVO systemCntcVO, 
 			ModelMap model) {
 
@@ -119,6 +121,7 @@ public class SystemCntcController {
 	@RequestMapping(value = "/ssi/syi/sim/registSystemCntc.do")
 	@Secured("ROLE_ADMIN")
 	public String registSystemCntc(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SystemCntcVO systemCntcVO, 
 			ModelMap model) {
 
@@ -160,6 +163,7 @@ public class SystemCntcController {
 	@RequestMapping(value = "/ssi/syi/sim/insertSystemCntc.do")
 	@Secured("ROLE_ADMIN")
 	public String insertSystemCntc(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SystemCntcVO systemCntcVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -215,6 +219,7 @@ public class SystemCntcController {
 	@RequestMapping(value = "/ssi/syi/sim/editSystemCntc.do")
 	@Secured("ROLE_ADMIN")
 	public String editSystemCntc(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SystemCntcVO systemCntcVO, 
 			ModelMap model) {
 
@@ -259,6 +264,7 @@ public class SystemCntcController {
 	@RequestMapping(value = "/ssi/syi/sim/updateSystemCntc.do")
 	@Secured("ROLE_ADMIN")
 	public String updateSystemCntc(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SystemCntcVO systemCntcVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -314,6 +320,7 @@ public class SystemCntcController {
 	@RequestMapping(value = "/ssi/syi/sim/deleteSystemCntc.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteSystemCntc(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SystemCntcVO systemCntcVO, 
 			ModelMap model) {
 
@@ -357,6 +364,7 @@ public class SystemCntcController {
 	@RequestMapping(value = "/ssi/syi/sim/editSystemCntcConfirm.do")
 	@Secured("ROLE_ADMIN")
 	public String editSystemCntcConfirm(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SystemCntcVO systemCntcVO, 
 			ModelMap model) {
 
@@ -400,6 +408,7 @@ public class SystemCntcController {
 	@RequestMapping(value = "/ssi/syi/sim/confirmSystemCntcConfirm.do")
 	@Secured("ROLE_ADMIN")
 	public String confirmSystemCntcConfirm(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SystemCntcVO systemCntcVO, 
 			ModelMap model) {
 

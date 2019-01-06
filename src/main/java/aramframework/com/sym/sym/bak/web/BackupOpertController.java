@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -86,7 +87,8 @@ public class BackupOpertController {
 	@RequestMapping("/sym/sym/bak/detailBackupOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String detailBackupOpert(
-			BackupOpertVO backupOpertVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute BackupOpertVO backupOpertVO,
 			ModelMap model) {
 		
 		model.addAttribute(backupOpertService.selectBackupOpert(backupOpertVO));
@@ -102,6 +104,7 @@ public class BackupOpertController {
 	@RequestMapping("/sym/sym/bak/registBackupOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String registBackupOpert(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BackupOpertVO backupOpertVO, 
 			ModelMap model) {
 
@@ -118,6 +121,7 @@ public class BackupOpertController {
 	@RequestMapping("/sym/sym/bak/insertBackupOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String insertBackupOpert(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BackupOpertVO backupOpertVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -152,7 +156,8 @@ public class BackupOpertController {
 	@RequestMapping("/sym/sym/bak/editBackupOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String editBackupOpert(
-			BackupOpertVO backupOpertVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute BackupOpertVO backupOpertVO,
 			ModelMap model) {
 		
 		model.addAttribute(backupOpertService.selectBackupOpert(backupOpertVO));
@@ -170,6 +175,7 @@ public class BackupOpertController {
 	@RequestMapping("/sym/sym/bak/updateBackupOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String updateBackupOpert(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BackupOpertVO backupOpertVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -203,6 +209,7 @@ public class BackupOpertController {
 	@RequestMapping("/sym/sym/bak/deleteBackupOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteBackupOpert(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BackupOpertVO backupOpertVO, 
 			ModelMap model) {
 

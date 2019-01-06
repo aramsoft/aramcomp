@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -71,7 +72,8 @@ public class SiteManageController {
 	 */
 	@RequestMapping("/uss/ion/sit/detailSiteInfo.do")
 	public String detailSiteInfo(
-			SiteManageVO siteManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute SiteManageVO siteManageVO,
 			ModelMap model) {
 
 		model.addAttribute(siteManageService.selectSiteDetail(siteManageVO));
@@ -86,6 +88,7 @@ public class SiteManageController {
 	 */
 	@RequestMapping("/uss/ion/sit/registSiteInfo.do")
 	public String registSiteInfo(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SiteManageVO siteManageVO) {
 
 		// 공통코드를 가져오기 위한 Vo
@@ -101,6 +104,7 @@ public class SiteManageController {
 	 */
 	@RequestMapping("/uss/ion/sit/insertSiteInfo.do")
 	public String insertSiteInfo(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SiteManageVO siteManageVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
@@ -127,7 +131,8 @@ public class SiteManageController {
 	 */
 	@RequestMapping("/uss/ion/sit/editSiteInfo.do")
 	public String editSiteInfo(
-			SiteManageVO siteManageVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute SiteManageVO siteManageVO,
 			ModelMap model) {
 
 		model.addAttribute(siteManageService.selectSiteDetail(siteManageVO));
@@ -145,6 +150,7 @@ public class SiteManageController {
 	 */
 	@RequestMapping("/uss/ion/sit/updateSiteInfo.do")
 	public String updateSiteInfo(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SiteManageVO siteManageVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
@@ -172,6 +178,7 @@ public class SiteManageController {
 	 */
 	@RequestMapping("/uss/ion/sit/deleteSiteInfo.do")
 	public String deleteSiteInfo(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SiteManageVO siteManageVO, 
 			BindingResult bindingResult,
 			ModelMap model) {

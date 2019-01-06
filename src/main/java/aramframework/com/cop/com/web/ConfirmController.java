@@ -7,6 +7,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
@@ -85,7 +86,8 @@ public class ConfirmController {
 	@RequestMapping("/cop/com/editConfirm.do")
 	@Secured("ROLE_USER")
 	public String editConfirm(
-			ConfirmHistoryVO confirmHistoryVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute ConfirmHistoryVO confirmHistoryVO,
 			ModelMap model) {
 		
 		checkAuthorityManager(); // server-side 권한 확인
@@ -108,6 +110,7 @@ public class ConfirmController {
 	@RequestMapping("/cop/com/updateConfirm.do")
 	@Secured("ROLE_USER")
 	public String updateConfirm(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ConfirmHistoryVO confirmHistoryVO, 
 			ModelMap model) {
 

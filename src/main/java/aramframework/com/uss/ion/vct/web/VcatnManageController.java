@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -86,7 +87,8 @@ public class VcatnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/vct/detailVcatn.do")
 	public String detailVcatn(
-			VcatnManageVO vcatnManageVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute VcatnManageVO vcatnManageVO, 
 			ModelMap model) {
 
 		vcatnManageVO = vcatnManageService.selectVcatnManage(vcatnManageVO);
@@ -104,6 +106,7 @@ public class VcatnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/vct/registVcatn.do")
 	public String registVcatn(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute VcatnManageVO vcatnManageVO,
 			ModelMap model) {
 
@@ -126,6 +129,7 @@ public class VcatnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/vct/insertVcatn.do")
 	public String insertVcatn(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute VcatnManageVO vcatnManageVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -199,7 +203,8 @@ public class VcatnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/vct/editVcatn.do")
 	public String editVcatn(
-			VcatnManageVO vcatnManageVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute VcatnManageVO vcatnManageVO, 
 			ModelMap model) {
 
 		vcatnManageVO = vcatnManageService.selectVcatnManage(vcatnManageVO);
@@ -219,6 +224,7 @@ public class VcatnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/vct/updateVcatn.do")
 	public String updateVcatn(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute VcatnManageVO vcatnManageVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -244,6 +250,7 @@ public class VcatnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/vct/deleteVcatn.do")
 	public String deleteVcatn(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute VcatnManageVO vcatnManageVO, 
 			ModelMap model) {
 
@@ -299,7 +306,8 @@ public class VcatnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/vct/editVcatnConfm.do")
 	public String editVcatnConfm(
-			VcatnManageVO vcatnManageVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute VcatnManageVO vcatnManageVO, 
 			ModelMap model) {
 
 		vcatnManageVO = vcatnManageService.selectVcatnManage(vcatnManageVO);
@@ -317,6 +325,7 @@ public class VcatnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/vct/updateVcatnConfm.do")
 	public String updateVcatnConfm(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute VcatnManageVO vcatnManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {

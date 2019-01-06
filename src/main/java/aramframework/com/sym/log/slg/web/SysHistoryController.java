@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
@@ -77,7 +78,8 @@ public class SysHistoryController {
 	@RequestMapping(value = "/sym/log/slg/detailSysHistory.do")
 	@Secured("ROLE_ADMIN")
 	public String detailSysHistory(
-			SysHistoryVO sysHistoryVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute SysHistoryVO sysHistoryVO,
 			ModelMap model) {
 
 		model.addAttribute(sysHistoryService.selectSysHistory(sysHistoryVO));
@@ -93,6 +95,7 @@ public class SysHistoryController {
 	@RequestMapping(value = "/sym/log/slg/registSysHistory.do")
 	@Secured("ROLE_ADMIN")
 	public String registSysHistory(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SysHistoryVO sysHistoryVO, 
 			ModelMap model) {
 
@@ -110,6 +113,7 @@ public class SysHistoryController {
 	@Secured("ROLE_ADMIN")
 	public String insertSysHistory(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SysHistoryVO sysHistoryVO, 
 			BindingResult bindingResult,
 			ModelMap model) 
@@ -140,7 +144,8 @@ public class SysHistoryController {
 	@RequestMapping(value = "/sym/log/slg/editSysHistory.do")
 	@Secured("ROLE_ADMIN")
 	public String editSysHistory(
-			SysHistoryVO sysHistoryVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute SysHistoryVO sysHistoryVO,
 			ModelMap model) {
 
 		model.addAttribute(sysHistoryService.selectSysHistory(sysHistoryVO));
@@ -159,6 +164,7 @@ public class SysHistoryController {
 	@Secured("ROLE_ADMIN")
 	public String updateSysHistory(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SysHistoryVO sysHistoryVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -187,6 +193,7 @@ public class SysHistoryController {
 	@RequestMapping(value = "/sym/log/slg/deleteSysHistory.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteSysHistory(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SysHistoryVO sysHistoryVO, 
 			ModelMap model) {
 

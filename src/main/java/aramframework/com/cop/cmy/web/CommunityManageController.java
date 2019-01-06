@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -134,7 +135,8 @@ public class CommunityManageController {
 	@Secured("ROLE_USER")
 	public String detailCommunity(
 			HttpServletRequest request, 
-			CommunityVO communityVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute CommunityVO communityVO, 
 			ModelMap model) {
 		
 		checkAuthorityManager(); // server-side 권한 확인
@@ -172,6 +174,7 @@ public class CommunityManageController {
 	@RequestMapping("/cop/cmy/registCommunity.do")
 	@Secured("ROLE_ADMIN")
 	public String registCommunity(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CommunityVO communityVO) {
 		
 		return WebUtil.adjustViewName("/cop/cmy/CmmntyRegist");
@@ -187,6 +190,7 @@ public class CommunityManageController {
 	@Secured("ROLE_ADMIN")
 	public String insertCommunity(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CommunityVO communityVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -225,7 +229,8 @@ public class CommunityManageController {
 	@RequestMapping("/cop/cmy/editCommunity.do")
 	@Secured("ROLE_USER")
 	public String editCommunity(
-			CommunityVO communityVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute CommunityVO communityVO, 
 			ModelMap model) {
 
 		checkAuthorityManager(); // server-side 권한 확인
@@ -253,6 +258,7 @@ public class CommunityManageController {
 	@Secured("ROLE_USER")
 	public String updateCommunity(
 			MultipartHttpServletRequest multiRequest, 
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CommunityVO communityVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -355,6 +361,7 @@ public class CommunityManageController {
 	@RequestMapping("/cop/cmy/deleteCmmntyUserBySelf.do")
 	@Secured("ROLE_USER")
 	public String deleteCmmntyUserBySelf(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CommunityUserVO communityUserVO, 
 			ModelMap model) {
 

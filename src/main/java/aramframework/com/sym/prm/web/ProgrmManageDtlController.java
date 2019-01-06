@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -74,6 +75,7 @@ public class ProgrmManageDtlController {
 	@RequestMapping(value = "/sym/prm/registProgramChangeRequst.do")
 	@Secured("ROLE_USER")
 	public String registProgrmChangeRequst(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -91,6 +93,7 @@ public class ProgrmManageDtlController {
 	@RequestMapping(value = "/sym/prm/insertProgramChangeRequst.do")
 	@Secured("ROLE_USER")
 	public String insertProgrmChangeRequst(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -115,7 +118,8 @@ public class ProgrmManageDtlController {
 	@RequestMapping(value = "/sym/prm/editProgramChangeRequst.do")
 	@Secured("ROLE_USER")
 	public String editProgramChangeRequst(
-			ProgrmManageDtlVO progrmManageDtlVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO,
 			ModelMap model) {
 
 		model.addAttribute(progrmManageDtlService.selectProgrmChangeRequst(progrmManageDtlVO));
@@ -131,6 +135,7 @@ public class ProgrmManageDtlController {
 	@RequestMapping(value = "/sym/prm/updateProgramChangeRequst.do")
 	@Secured("ROLE_USER")
 	public String updateProgrmChangeRequst(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -162,6 +167,7 @@ public class ProgrmManageDtlController {
 	@RequestMapping(value = "/sym/prm/deleteProgramChangeRequst.do")
 	@Secured("ROLE_USER")
 	public String deleteProgrmChangeRequst(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO, 
 			ModelMap model) {
 
@@ -207,7 +213,8 @@ public class ProgrmManageDtlController {
 	@RequestMapping(value = "/sym/prm/editProgramChangeProcess.do")
 	@Secured("ROLE_ADMIN")
 	public String editProgramChangeProcess(
-			ProgrmManageDtlVO progrmManageDtlVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO,
 			ModelMap model) {
 	
 		progrmManageDtlVO = progrmManageDtlService.selectProgrmChangeRequst(progrmManageDtlVO);
@@ -230,6 +237,7 @@ public class ProgrmManageDtlController {
 	@RequestMapping(value = "/sym/prm/updateProgramChangeProcess.do")
 	@Secured("ROLE_ADMIN")
 	public String updateProgramChangeProcess(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
@@ -280,6 +288,7 @@ public class ProgrmManageDtlController {
 	@RequestMapping(value = "/sym/prm/deleteProgramChangeProcess.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteProgramChangeProcess(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO, 
 			ModelMap model) {
 
@@ -324,7 +333,8 @@ public class ProgrmManageDtlController {
 	@RequestMapping(value = "/sym/prm/detailProgramChgHst.do")
 	@Secured("ROLE_USER")
 	public String detailProgramChgHst(
-			ProgrmManageDtlVO progrmManageDtlVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO,
 			ModelMap model) {
 
 		model.addAttribute(progrmManageDtlService.selectProgrmChangeRequst(progrmManageDtlVO));

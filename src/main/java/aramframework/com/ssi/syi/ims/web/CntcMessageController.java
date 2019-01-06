@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -71,6 +72,7 @@ public class CntcMessageController {
 	@RequestMapping(value = "/ssi/syi/ims/detailCntcMessage.do")
 	@Secured("ROLE_ADMIN")
 	public String detailCntcMessage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcMessageVO cntcMessageVO,
 			@ModelAttribute CntcMessageItemVO cntcMessageItemVO, 
 			ModelMap model) {
@@ -96,6 +98,7 @@ public class CntcMessageController {
 	@RequestMapping(value = "/ssi/syi/ims/registCntcMessage.do")
 	@Secured("ROLE_ADMIN")
 	public String registCntcMessage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcMessageVO cntcMessageVO,
 			ModelMap model) {
 
@@ -118,6 +121,7 @@ public class CntcMessageController {
 	@RequestMapping(value = "/ssi/syi/ims/insertCntcMessage.do")
 	@Secured("ROLE_ADMIN")
 	public String insertCntcMessage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcMessageVO cntcMessageVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -154,6 +158,7 @@ public class CntcMessageController {
 	@RequestMapping(value = "/ssi/syi/ims/editCntcMessage.do")
 	@Secured("ROLE_ADMIN")
 	public String editCntcMessage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcMessageVO cntcMessageVO,
 			ModelMap model) {
 
@@ -178,6 +183,7 @@ public class CntcMessageController {
 	@RequestMapping(value = "/ssi/syi/ims/updateCntcMessage.do")
 	@Secured("ROLE_ADMIN")
 	public String updateCntcMessage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcMessageVO cntcMessageVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -214,6 +220,7 @@ public class CntcMessageController {
 	@RequestMapping(value = "/ssi/syi/ims/deleteCntcMessage.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteCntcMessage(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcMessageVO cntcMessageVO,
 			ModelMap model) {
 
@@ -231,6 +238,7 @@ public class CntcMessageController {
 	@RequestMapping(value = "/ssi/syi/ims/registCntcMessageItem.do")
 	@Secured("ROLE_ADMIN")
 	public String registCntcMessageItem(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcMessageItemVO cntcMessageItemVO, 
 			ModelMap model) {
 
@@ -253,6 +261,7 @@ public class CntcMessageController {
 	@RequestMapping(value = "/ssi/syi/ims/insertCntcMessageItem.do")
 	@Secured("ROLE_ADMIN")
 	public String insertCntcMessageItem(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcMessageItemVO cntcMessageItemVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -289,6 +298,7 @@ public class CntcMessageController {
 	@RequestMapping(value = "/ssi/syi/ims/editCntcMessageItem.do")
 	@Secured("ROLE_ADMIN")
 	public String editCntcMessageItem(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcMessageItemVO cntcMessageItemVO, 
 			ModelMap model) {
 
@@ -313,6 +323,7 @@ public class CntcMessageController {
 	@RequestMapping(value = "/ssi/syi/ims/updateCntcMessageItem.do")
 	@Secured("ROLE_ADMIN")
 	public String updateCntcMessageItem(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcMessageItemVO cntcMessageItemVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -349,6 +360,7 @@ public class CntcMessageController {
 	@RequestMapping(value = "/ssi/syi/ims/deleteCntcMessageItem.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteCntcMessageItem(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcMessageItemVO cntcMessageItemVO) {
 
 		cntcMessageService.deleteCntcMessageItem(cntcMessageItemVO);

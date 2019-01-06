@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.mnu.mpm.domain.MenuManageVO;
@@ -83,6 +84,7 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/registMenu.do")
 	@Secured("ROLE_ADMIN")
 	public String registMenu(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO) {
 		
 		return WebUtil.adjustViewName("/sym/mnu/mpm/MenuRegist");
@@ -96,6 +98,7 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/insertMenu.do")
 	@Secured("ROLE_ADMIN")
 	public String insertMenu(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -129,7 +132,8 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/editMenu.do")
 	@Secured("ROLE_ADMIN")
 	public String editMenu(
-			MenuManageVO menuManageVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute MenuManageVO menuManageVO, 
 			ModelMap model) {
 
 		model.addAttribute(menuManageService.selectMenuManage(menuManageVO));
@@ -145,6 +149,7 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/updateMenu.do")
 	@Secured("ROLE_ADMIN")
 	public String updateMenu(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -173,6 +178,7 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/deleteMenu.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteMenu(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO, 
 			ModelMap model) {
 		
@@ -199,8 +205,9 @@ public class MenuManageController {
 	@RequestMapping(value="/sym/mnu/mpm/deleteListMenu.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteListMenu(
-			@ModelAttribute MenuManageVO menuManageVO, 
 			@RequestParam String checkedMenuNoForDel,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute MenuManageVO menuManageVO, 
 			ModelMap model) {
 
 		String[] delMenuNo = checkedMenuNoForDel.split(",");
@@ -247,6 +254,7 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/insertMenuTree.do")
 	@Secured("ROLE_ADMIN")
 	public String insertMenuTree(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -279,6 +287,7 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/updateMenuTree.do")
 	@Secured("ROLE_ADMIN")
 	public String updateMenuTree(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -307,6 +316,7 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/deleteMenuTree.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteMenuTree(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -325,6 +335,7 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/moveMenuTree.do")
 	@Secured("ROLE_ADMIN")
 	public String moveMenuTree(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO, 
 			ModelMap model) {
 
@@ -343,6 +354,7 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/deleteMenuBnde.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteMenuBnde(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO, 
 			ModelMap model) {
 
@@ -360,6 +372,7 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/registMenuBnde.do")
 	@Secured("ROLE_ADMIN")
 	public String registMenuBnde(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO) {
 
 		return WebUtil.adjustViewName("/sym/mnu/mpm/MenuBndeRegist");
@@ -375,6 +388,7 @@ public class MenuManageController {
 	@Secured("ROLE_ADMIN")
 	public String insertMenuBnde(
 			MultipartHttpServletRequest multiRequest,
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO, 
 			ModelMap model)
 	throws Exception {

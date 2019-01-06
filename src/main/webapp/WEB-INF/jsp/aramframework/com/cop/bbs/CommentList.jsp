@@ -42,7 +42,7 @@
 <DIV id="main" style="width:100%;"> 
 
 <div class="content_title">
-	<h2>댓글</h2> - <c:out value="${commentVO.searchVO.totalRecordCount}"/>개
+	<h2>댓글</h2> - <c:out value="${commentVO.totalRecordCount}"/>개
 	<a href="#" onclick="javascript:fn_aram_help(); return false;">
 		<img src="${pageContext.request.contextPath}/images/aramframework/com/cmm/icon/icon_help.gif" width="16" height="16" hspace="3" style="vertical-align:middle;" alt="도움말아이콘이미지">
 	</a>
@@ -173,7 +173,7 @@ function fn_check_length() {
 
 </c:if>
 
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <c:if test="${not empty subMsg}">
@@ -194,7 +194,7 @@ function fn_check_length() {
  ******************************************************** */
 function fn_aram_linkPage(pageNo) {
     var varForm = document.getElementById("commentVO");
-	varForm["searchVO.pageIndex"].value = pageNo;
+	varForm.pageIndex.value = pageNo;
 	varForm.commentNo.value = '';
 	varForm.action = "${pageContext.request.contextPath}/content/board${prefix}/${commentVO.bbsId}/article/${commentVO.nttId}/comments";
 	varForm.submit();
@@ -202,7 +202,7 @@ function fn_aram_linkPage(pageNo) {
 
 function fn_aram_reset_comment() {
     var varForm = document.getElementById("commentVO");
-	varForm["searchVO.pageIndex"].value = '1';
+	varForm.pageIndex.value = '1';
 	varForm.commentNo.value = '';
 	varForm.action = "${pageContext.request.contextPath}/content/board${prefix}/${commentVO.bbsId}/article/${commentVO.nttId}/comments";
 	varForm.submit();

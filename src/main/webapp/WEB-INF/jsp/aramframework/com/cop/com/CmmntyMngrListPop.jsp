@@ -55,7 +55,7 @@
 	</div>
 </div>
 
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <table class="table-list">
@@ -73,7 +73,7 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="searchVO" value="${userInfVO.searchVO}"/>
+ 	<c:set var="searchVO" value="${userInfVO}"/>
  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
 	<tr class="link" onClick="javascript:fn_aram_choose('<c:out value="${result.uniqId}" />'); return false;">
@@ -112,7 +112,7 @@ function fn_aram_linkPage(pageNo) {
 	} else {
 		actionUrl = "${pageContext.request.contextPath}/cop/com/listUser.do";
 	}
-	varForm["searchVO.pageIndex"].value = pageNo;
+	varForm.pageIndex.value = pageNo;
 	varForm.action = actionUrl;
 	varForm.submit();
 }

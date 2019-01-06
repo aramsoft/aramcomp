@@ -43,12 +43,12 @@
 		<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;"><spring:message code="button.create" /></a></span>
 	</div>
 	<div class="keyword_area">
-	   	<form:select path="searchVO.searchCondition" class="select" title="검색유형선력">
+	   	<form:select path="searchCondition" class="select" title="검색유형선력">
 			<form:option value="" label="--선택하세요--" />
 		   	<form:option value="CMMNTY_NM" label="커뮤니티명" />
 	   	</form:select>
-   		<form:input path="searchVO.searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색단어입력" />
-		<form:select path="searchVO.recordPerPage" class="select" onchange="javascript:fn_aram_search(); return false;" title="recordPerPage">
+   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색단어입력" />
+		<form:select path="recordPerPage" class="select" onchange="javascript:fn_aram_search(); return false;" title="recordPerPage">
 	   		<form:option value="10" label="10" />
 	   		<form:option value="20" label="20" />
 	   		<form:option value="30" label="30" />
@@ -57,7 +57,7 @@
 	</div>
 </div>
 
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <table class="table-list"  summary="번호,커뮤니티명,생성자,생성일,사용여부   목록입니다">
@@ -77,7 +77,7 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="searchVO" value="${communityVO.searchVO}"/>
+ 	<c:set var="searchVO" value="${communityVO}"/>
  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
 	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.cmmntyId}"/>'); return false;">
@@ -117,14 +117,14 @@ function press(event) {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("communityVO");
-    varForm["searchVO.pageIndex"].value = pageNo;
+    varForm.pageIndex.value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/cop/cmy/listCommunity.do";
     varForm.submit();
 }
 
 function fn_aram_search(){
     var varForm = document.getElementById("communityVO");
-    varForm["searchVO.pageIndex"].value = '1';
+    varForm.pageIndex.value = '1';
     varForm.action = "${pageContext.request.contextPath}/cop/cmy/listCommunity.do";
     varForm.submit();
 }

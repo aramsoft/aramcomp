@@ -224,7 +224,7 @@ function fn_check_length() {
 
 </c:if>
 
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <c:if test="${not empty subMsg}">
@@ -245,7 +245,7 @@ function fn_check_length() {
  ******************************************************** */
 function fn_aram_linkPage(pageNo) {
     var varForm = document.getElementById("satisfactionVO");
-	varForm["searchVO.pageIndex"].value = pageNo;
+	varForm.pageIndex.value = pageNo;
 	varForm.stsfdgNo.value = '';
 	varForm.action = "${pageContext.request.contextPath}/content/board${prefix}/${satisfactionVO.bbsId}/article/${satisfactionVO.nttId}/satisfactions";
 	varForm.submit();
@@ -253,7 +253,7 @@ function fn_aram_linkPage(pageNo) {
 
 function fn_aram_reset_satisfaction() {
     var varForm = document.getElementById("satisfactionVO");
-	varForm["searchVO.pageIndex"].value = '1';
+	varForm.pageIndex.value = '1';
 	varForm.stsfdgNo.value = '';
 	varForm.action = "${pageContext.request.contextPath}/content/board${prefix}/${satisfactionVO.bbsId}/article/${satisfactionVO.nttId}/satisfactions";
 	varForm.submit();

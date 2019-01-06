@@ -48,7 +48,7 @@
 		<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;"><spring:message code="button.create" /></a></span>
 	</div>
 	<div class="keyword_area">
-		<form:select path="searchVO.searchCondition" class="select" title="검색조건선택">
+		<form:select path="searchCondition" class="select" title="검색조건선택">
 			<form:option value="" label="--선택하세요--" />
 	   		<form:option value="NTT_SJ" label="제목" />
 	   		<form:option value="NTT_CN" label="내용" />
@@ -56,8 +56,8 @@
 	   		<form:option value="USER_NM" label="작성자" />
 	   		</c:if>
 		</form:select>
-   		<form:input path="searchVO.searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-		<form:select path="searchVO.recordPerPage" class="select" onchange="javascript:fn_aram_search(); return false;" title="recordPerPage">
+   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+		<form:select path="recordPerPage" class="select" onchange="javascript:fn_aram_search(); return false;" title="recordPerPage">
 	   		<form:option value="10" label="10" />
 	   		<form:option value="20" label="20" />
 	   		<form:option value="30" label="30" />
@@ -66,7 +66,7 @@
 	</div>
 </div>
 
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <table class="table-list" summary="번호, 제목, 게시시작일, 게시종료일, 작성자, 작성일, 조회수   입니다">
@@ -99,7 +99,7 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="searchVO" value="${boardVO.searchVO}"/>
+ 	<c:set var="searchVO" value="${boardVO}"/>
  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
  
@@ -165,7 +165,7 @@ function press(event) {
  ******************************************************** */
 function fn_aram_linkPage(pageNo) {
     var varForm = document.getElementById("boardVO");
-    varForm["searchVO.pageIndex"].value = pageNo;
+    varForm.pageIndex.value = pageNo;
     if( varForm.curTrgetId.value != "") {
     	varForm.action = "${pageContext.request.contextPath}/content/apps/${targetVO.pathId}/board/${boardVO.pathId}/articles";
     }
@@ -177,7 +177,7 @@ function fn_aram_linkPage(pageNo) {
 
 function fn_aram_search() {
     var varForm = document.getElementById("boardVO");
-    varForm["searchVO.pageIndex"].value = '1';
+    varForm.pageIndex.value = '1';
     if( varForm.curTrgetId.value != "") {
     	varForm.action = "${pageContext.request.contextPath}/content/apps/${targetVO.pathId}/board/${boardVO.pathId}/articles";
     }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sec.grp.domain.GroupVO;
@@ -67,6 +68,7 @@ public class GroupController {
 	@RequestMapping(value = "/sec/grp/registGroup.do")
 	@Secured("ROLE_ADMIN")
 	public String registGroup(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute GroupVO groupVO) {
 
 		return WebUtil.adjustViewName("/sec/grp/GroupRegist");
@@ -80,6 +82,7 @@ public class GroupController {
 	@RequestMapping(value = "/sec/grp/insertGroup.do")
 	@Secured("ROLE_ADMIN")
 	public String insertGroup(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute GroupVO groupVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -103,7 +106,8 @@ public class GroupController {
 	@RequestMapping(value = "/sec/grp/editGroup.do")
 	@Secured("ROLE_ADMIN")
 	public String editGroup(
-			GroupVO groupVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute GroupVO groupVO,
 			ModelMap model) {
 
 		model.addAttribute(groupService.selectGroup(groupVO));
@@ -119,6 +123,7 @@ public class GroupController {
 	@RequestMapping(value = "/sec/grp/updateGroup.do")
 	@Secured("ROLE_ADMIN")
 	public String updateGroup(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute GroupVO groupVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -142,6 +147,7 @@ public class GroupController {
 	@RequestMapping(value = "/sec/grp/deleteGroup.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteGroup(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute GroupVO groupVO, 
 			ModelMap model) {
 
@@ -159,6 +165,7 @@ public class GroupController {
 	@RequestMapping(value = "/sec/grp/deleteListGroup.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteListGroup(
+			@ModelAttribute SearchVO searchVO,
 			@RequestParam String groupIds, 
 			ModelMap model) {
 

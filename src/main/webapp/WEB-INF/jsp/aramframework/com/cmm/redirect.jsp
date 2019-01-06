@@ -14,10 +14,12 @@
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
 <!-- 검색조건 유지 -->
-<input type="hidden" name="curTrgetId" value="${searchVO.searchCondition}" />
-<input type="hidden" name="curTrgetId" value="${searchVO.searchKeyword}" />
-<input type="hidden" name="curTrgetId" value="${searchVO.pageIndex}" />
-<input type="hidden" name="curTrgetId" value="${searchVO.recordPerPage}" />
+<input type="hidden" name="searchCondition" 	value="${searchVO.searchCondition}" />
+<input type="hidden" name="searchKeyword"   	value="${searchVO.searchKeyword}" />
+<input type="hidden" name="searchKeywordFrom"   value="${searchVO.searchKeywordFrom}" />
+<input type="hidden" name="searchKeywordTo"   	value="${searchVO.searchKeywordTo}" />
+<input type="hidden" name="pageIndex"       	value="${searchVO.pageIndex}" />
+<input type="hidden" name="recordPerPage"   	value="${searchVO.recordPerPage}" />
 <!-- 검색조건 유지 -->
 </form>
 

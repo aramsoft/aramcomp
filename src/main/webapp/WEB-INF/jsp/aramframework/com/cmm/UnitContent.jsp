@@ -116,23 +116,5 @@
 </table>
 
 <div style="margin-top:10px; width:100%"></div>
-
-<table>
-    <tr>
-      <td class="title_left">
-      	<img src="${pageContext.request.contextPath}/images/aramframework/com/cmm/icon/tit_icon.gif" width="16" height="16" hspace="3" align="middle" alt="gpki_icon">
-      	샘플 프로그램
-      </td>
-    </tr>
-    <tr>
-      <td valign="top">&nbsp;-&nbsp;
-      	<a href="${pageContext.request.contextPath}/UnitMain.mdo" target="_new">
-      		모바일 페이지
-      	</a>
-      </td>
-    </tr>
-</table>
-
-<div style="margin-top:10px; width:100%"></div>
 </DIV>
 

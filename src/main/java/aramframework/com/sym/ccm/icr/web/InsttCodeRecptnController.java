@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.ccm.icr.domain.InsttCodeRecptnVO;
@@ -81,7 +82,8 @@ public class InsttCodeRecptnController {
 	 */
 	@RequestMapping(value = "/sym/ccm/icr/detailInsttCodeRecptn.do")
 	public String selectInsttCodeDetail(
-			InsttCodeRecptnVO insttCodeRecptnVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute InsttCodeRecptnVO insttCodeRecptnVO, 
 			ModelMap model) {
 
 		/* 기관코드 조회 */
@@ -112,6 +114,7 @@ public class InsttCodeRecptnController {
 	 */
 	@RequestMapping(value = "/sym/ccm/icr/registInsttCodeRecptn.do")
 	public String registInsttCodeRecptn(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute InsttCodeRecptnVO insttCodeRecptnVO) {
 		
 		return WebUtil.adjustViewName("/sym/ccm/icr/InsttCodeRecptnRegist");
@@ -124,6 +127,7 @@ public class InsttCodeRecptnController {
 	 */
 	@RequestMapping(value = "/sym/ccm/icr/insertInsttCodeRecptn.do")
 	public String insertInsttCodeRecptn(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute InsttCodeRecptnVO insttCodeRecptnVO, 
 			ModelMap model) {
 		

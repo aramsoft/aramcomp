@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -67,7 +68,8 @@ public class CmmnClCodeManageController {
 	 */
 	@RequestMapping(value = "/sym/ccm/ccc/detailCmmnClCode.do")
 	public String detailCmmnClCode(
-			CmmnClCodeVO cmmnClCodeVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute CmmnClCodeVO cmmnClCodeVO, 
 			ModelMap model) {
 		
 		model.addAttribute(cmmnClCodeManageService.selectCmmnClCodeDetail(cmmnClCodeVO));
@@ -83,6 +85,7 @@ public class CmmnClCodeManageController {
 	@RequestMapping(value = "/sym/ccm/ccc/registCmmnClCode.do")
 	@Secured("ROLE_ADMIN")
 	public String registCmmnClCode(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CmmnClCodeVO cmmnClCodeVO) {
 
 		return WebUtil.adjustViewName("/sym/ccm/ccc/CmmnClCodeRegist");
@@ -96,6 +99,7 @@ public class CmmnClCodeManageController {
 	@RequestMapping(value = "/sym/ccm/ccc/insertCmmnClCode.do")
 	@Secured("ROLE_ADMIN")
 	public String insertCmmnClCode(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CmmnClCodeVO cmmnClCodeVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -128,7 +132,8 @@ public class CmmnClCodeManageController {
 	@RequestMapping(value = "/sym/ccm/ccc/editCmmnClCode.do")
 	@Secured("ROLE_ADMIN")
 	public String editCmmnClCode(
-			CmmnClCodeVO cmmnClCodeVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute CmmnClCodeVO cmmnClCodeVO, 
 			ModelMap model) {
 		
 		model.addAttribute(cmmnClCodeManageService.selectCmmnClCodeDetail(cmmnClCodeVO));
@@ -144,6 +149,7 @@ public class CmmnClCodeManageController {
 	@RequestMapping(value = "/sym/ccm/ccc/updateCmmnClCode.do")
 	@Secured("ROLE_ADMIN")
 	public String updateCmmnClCode(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CmmnClCodeVO cmmnClCodeVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -170,6 +176,7 @@ public class CmmnClCodeManageController {
 	@RequestMapping(value = "/sym/ccm/ccc/deleteCmmnClCode.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteCmmnClCode(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CmmnClCodeVO cmmnClCodeVO,
 			ModelMap model) {
 		

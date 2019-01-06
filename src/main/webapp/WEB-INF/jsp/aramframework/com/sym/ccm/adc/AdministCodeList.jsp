@@ -43,13 +43,13 @@
 		<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;"><spring:message code="button.create" /></a></span>
 	</div>
 	<div class="keyword_area">
-  		<form:select path="searchVO.searchCondition" class="select" title="">
+  		<form:select path="searchCondition" class="select" title="">
 	   		<form:option value='' label="--선택하세요--" />
 	   		<form:option value='1' label="법정동 지역명" />
 	   		<form:option value='2' label="행정동 지역명" />
    		</form:select>
-   		<form:input path="searchVO.searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-		<form:select path="searchVO.recordPerPage" class="select" onchange="fn_aram_search();" >
+   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
 	   		<form:option value="10" label="10" />
 	   		<form:option value="20" label="20" />
 	   		<form:option value="30" label="30" />
@@ -58,7 +58,7 @@
 	</div>
 </div>
 
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <table class="table-list" summary="구분, 행정구역코드, 행정구역명, 사용여부가 담긴 행정코드 목록을 조회한다.">
@@ -79,7 +79,7 @@
 	</tr>
 	</c:if>
 	
-  	<c:set var="searchVO" value="${administCodeVO.searchVO}"/>
+  	<c:set var="searchVO" value="${administCodeVO}"/>
  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr class="link" onclick="javascript:fn_aram_detail('${result.administZoneSe}', '${result.administZoneCode}'); return false;">
@@ -124,7 +124,7 @@ function press(event) {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("administCodeVO");
-    varForm["searchVO.pageIndex"].value = pageNo;
+    varForm.pageIndex.value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/sym/ccm/adc/listAdministCode.do";
     varForm.submit();
 }
@@ -134,7 +134,7 @@ function fn_aram_linkPage(pageNo){
  ******************************************************** */
 function fn_aram_search(){
     var varForm = document.getElementById("administCodeVO");
-    varForm["searchVO.pageIndex"].value = 1;
+    varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/sym/ccm/adc/listAdministCode.do";
     varForm.submit();
 }

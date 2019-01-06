@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.ccm.acr.domain.AdministCodeRecptnVO;
@@ -81,7 +82,8 @@ public class AdministCodeRecptnController {
 	 */
 	@RequestMapping(value = "/sym/ccm/acr/detailAdministCodeRecptn.do")
 	public String detailAdministCodeRecptn(
-			AdministCodeRecptnVO administCodeRecptnVO, 
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute AdministCodeRecptnVO administCodeRecptnVO, 
 			ModelMap model)  {
 
 		/* 법정동코드 조회 */
@@ -113,6 +115,7 @@ public class AdministCodeRecptnController {
 	 */
 	@RequestMapping(value = "/sym/ccm/acr/registAdministCodeRecptn.do")
 	public String registAdministCodeRecptn(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AdministCodeRecptnVO administCodeRecptnVO) {
 		
 		return WebUtil.adjustViewName("/sym/ccm/acr/AdministCodeRecptnRegist");
@@ -125,6 +128,7 @@ public class AdministCodeRecptnController {
 	 */
 	@RequestMapping(value = "/sym/ccm/acr/insertAdministCodeRecptn.do")
 	public String insertAdministCodeRecptn(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AdministCodeRecptnVO administCodeRecptnVO, 
 			ModelMap model) {
 		

@@ -39,12 +39,12 @@
 		<span class="button"><a href="#" onclick="fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
 	</div>
 	<div class="keyword_area">
- 	   	<form:select path="searchVO.searchCondition" class="select" title="검색유형선력">
+ 	   	<form:select path="searchCondition" class="select" title="검색유형선력">
 		   	<form:option value="" label="--선택하세요--" />
 		   	<form:option value="BATCH_OPERT_NM" label="배치작업명" />
 		   	<form:option value="BATCH_SCHDUL_ID" label="배치스케줄ID" />
 	   	</form:select>
-   		<form:input path="searchVO.searchKeyword" size="15" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+   		<form:input path="searchKeyword" size="15" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
                       실행시작일자:
         <input type="text" name="searchStartDate" size="10" title="검색시작일자">
         <a href="#" onClick="javascript:fn_aram_NormalCalendar('',  frm.searchStartDate ); return false;">
@@ -61,7 +61,7 @@
 	   		<form:option value="02" label="비정상" />
 	   		<form:option value="03" label="수행중" />
 		</form:select>
-		<form:select path="searchVO.recordPerPage" class="select" onchange="fn_aram_search();" >
+		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
 	   		<form:option value="10" label="10" />
 	   		<form:option value="20" label="20" />
 	   		<form:option value="30" label="30" />
@@ -70,9 +70,9 @@
 	</div>
 </div>
 
-<form:hidden path="searchVO.pageIndex" />
-<form:hidden path="searchVO.searchKeywordFrom" />
-<form:hidden path="searchVO.searchKeywordTo" />
+<form:hidden path="pageIndex" />
+<form:hidden path="searchKeywordFrom" />
+<form:hidden path="searchKeywordTo" />
 </form:form>
 
 <table class="table-list" summary="배치결과에 대한 목록을 제공합니다.">
@@ -97,7 +97,7 @@
     
     <%-- 데이터를 화면에 출력해준다 --%>
 	<c:set var="tempDate" value=""/>
-  	<c:set var="searchVO" value="${batchResultVO.searchVO}"/>
+  	<c:set var="searchVO" value="${batchResultVO}"/>
  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
     <c:forEach items="${resultList}" var="result" varStatus="status">
     <tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.batchResultId}"/>'); return false;">
@@ -161,7 +161,7 @@ function press(event) {
  ******************************************************** */
 function fn_aram_linkPage(pageNo) {
     var varForm = document.getElementById("batchResultVO");
-    varForm["searchVO.pageIndex"].value = pageNo;
+    varForm.pageIndex.value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/sym/bat/listBatchResult.do";
     varForm.submit();
 }
@@ -248,7 +248,7 @@ function fn_aram_search() {
         /**  lee.m.j 2010-10-27 추가   **/
     }
 
-    varForm["searchVO.pageIndex"].value = '1';
+    varForm.pageIndex.value = '1';
     varForm.action = "${pageContext.request.contextPath}/sym/bat/listBatchResult.do";
     varForm.submit();
 }
@@ -278,8 +278,7 @@ function fn_aram_getToday(){
 /* ********************************************************
  * LPAD 처리
  ******************************************************** */
-function fn_aram_getLpad(rtnSize, sourceStr)
-{
+function fn_aram_getLpad(rtnSize, sourceStr){
     rtnStr = sourceStr;
 
     for(var i= sourceStr.length; i<parseInt(rtnSize); i++)

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -67,7 +68,8 @@ public class AdministCodeManageController {
 	 */
 	@RequestMapping(value = "/sym/ccm/adc/detailAdministCode.do")
 	public String detailAdministCode(
-			AdministCodeVO administCodeVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute AdministCodeVO administCodeVO,
 			ModelMap model) {
 		
 		model.addAttribute(administCodeManageService.selectAdministCodeDetail(administCodeVO));
@@ -83,6 +85,7 @@ public class AdministCodeManageController {
 	@RequestMapping(value = "/sym/ccm/adc/registAdministCode.do")
 	@Secured("ROLE_ADMIN")
 	public String registAdministCode(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AdministCodeVO administCodeVO) {
 
 		return WebUtil.adjustViewName("/sym/ccm/adc/AdministCodeRegist");
@@ -96,6 +99,7 @@ public class AdministCodeManageController {
 	@RequestMapping(value = "/sym/ccm/adc/insertAdministCode.do")
 	@Secured("ROLE_ADMIN")
 	public String insertAdministCode(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AdministCodeVO administCodeVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -128,7 +132,8 @@ public class AdministCodeManageController {
 	@RequestMapping(value = "/sym/ccm/adc/editAdministCode.do")
 	@Secured("ROLE_ADMIN")
 	public String editAdministCode(
-			AdministCodeVO administCodeVO,
+			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute AdministCodeVO administCodeVO,
 			ModelMap model) {
 		
 		model.addAttribute(administCodeManageService.selectAdministCodeDetail(administCodeVO));
@@ -144,6 +149,7 @@ public class AdministCodeManageController {
 	@RequestMapping(value = "/sym/ccm/adc/updateAdministCode.do")
 	@Secured("ROLE_ADMIN")
 	public String updateAdministCode(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AdministCodeVO administCodeVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -170,6 +176,7 @@ public class AdministCodeManageController {
 	@RequestMapping(value = "/sym/ccm/adc/deleteAdministCode.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteAdministCode(
+			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AdministCodeVO administCodeVO, 
 			ModelMap model) {
 

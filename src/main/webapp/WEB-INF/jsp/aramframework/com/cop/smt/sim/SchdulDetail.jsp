@@ -149,6 +149,13 @@
 	<!-- 첨부파일 테이블 레이아웃 End.-->
 </table>
 	
+<!-- 검색조건 유지 -->
+<form:hidden path="searchSchdulSe" value="" />
+<form:hidden path="year" value="" />
+<form:hidden path="month" value="" />
+<form:hidden path="week" value="" />
+<form:hidden path="day" value="" />
+<!-- 검색조건 유지 -->
 </form:form>
 
 </DIV>

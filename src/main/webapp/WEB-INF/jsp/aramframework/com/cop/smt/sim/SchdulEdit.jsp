@@ -208,6 +208,13 @@
  	<!--첨부화일 업로드를 위한 end.. -->
 </table>
 	
+<!-- 검색조건 유지 -->
+<form:hidden path="searchSchdulSe" value="" />
+<form:hidden path="year" value="" />
+<form:hidden path="month" value="" />
+<form:hidden path="week" value="" />
+<form:hidden path="day" value="" />
+<!-- 검색조건 유지 -->
 </form:form>
 
 </DIV>

@@ -61,7 +61,7 @@
 	</tr>		 
 	</c:if>
 	
-  	<c:set var="searchVO" value="${memoTodoVO.searchVO}"/>
+  	<c:set var="searchVO" value="${memoTodoVO}"/>
  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
 	<tr class="link" onclick="javascript:fn_aram_detail('${result.todoId}'); return false;">

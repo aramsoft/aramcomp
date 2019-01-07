@@ -39,13 +39,13 @@
 		<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;"><spring:message code="button.create" /></a></span>
 	</div>
 	<div class="keyword_area">
-    	<form:select path="searchVO.searchCondition" class="select" title="조회조건 선택">
+    	<form:select path="searchCondition" class="select" title="조회조건 선택">
 			<form:option value="" label="--선택하세요--" />
 	   		<form:option value="ORGNZT_NM" label="조직명" />			   
 	   		<form:option value="KNWLDG_TY_NM" label="지식유형명" />			   
    		</form:select>
-  			<form:input path="searchVO.searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" /> 
-		<form:select path="searchVO.recordPerPage" class="select" onchange="fn_aram_search();" >
+  		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" /> 
+		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
 	   		<form:option value="10" label="10" />
 	   		<form:option value="20" label="20" />
 	   		<form:option value="30" label="30" />
@@ -54,7 +54,7 @@
 	</div>
 </div>
 
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <table class="table-list" summary="이 표는 지식맵(유형별) 정보를 제공하며, 순번, 조직명, 지식유형명, 지식URL, 분류일자 정보로 구성되어 있습니다 .">
@@ -76,7 +76,7 @@
 	</tr>   	          				 			   
 	</c:if> 
 	   	
-  	<c:set var="searchVO" value="${mapMaterialVO.searchVO}"/>
+  	<c:set var="searchVO" value="${mapMaterialVO}"/>
  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr class="link" onclick="javascript:fn_aram_detail('${result.knoTypeCd}'); return false;">
@@ -123,7 +123,7 @@ function press(event) {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("mapMaterialVO");
-    varForm["searchVO.pageIndex"].value = pageNo;
+    varForm.pageIndex.value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/dam/map/mat/listMapMaterial.do";
     varForm.submit();
 }
@@ -133,7 +133,7 @@ function fn_aram_linkPage(pageNo){
  ******************************************************** */
 function fn_aram_search(){
     var varForm = document.getElementById("mapMaterialVO");
-    varForm["searchVO.pageIndex"].value = '1';
+    varForm.pageIndex.value = '1';
     varForm.action = "${pageContext.request.contextPath}/dam/map/mat/listMapMaterial.do";
     varForm.submit();
 }

@@ -49,7 +49,7 @@
  		<form:input path="deptCode" size="22" title="부서코드" onkeypress="press();" readonly="true" />
         <form:input path="deptNm" size="17" title="부서명" onkeypress="press();" readonly="true" />
   		<span class="button"><a href="#" onclick="javascript:fn_aram_get_dept(); return false;">부서조회 팝업</a></span>
-		<form:select path="searchVO.recordPerPage" class="select" onchange="fn_aram_search();" title="recordPerPage">
+		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" title="recordPerPage">
 	   		<form:option value="10" label="10" />
 	   		<form:option value="20" label="20" />
 	   		<form:option value="30" label="30" />
@@ -58,8 +58,8 @@
 	</div>
 </div>
 
-<form:hidden path="searchVO.searchCondition" />
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="searchCondition" />
+<form:hidden path="pageIndex" />
 
 <table class="table-list" summary="부서 권한 관리 테이블입니다.사용자 ID,사용자 명,권한,등록 여부 정보를 담고 있습니다.">
 <thead>
@@ -82,7 +82,7 @@
 	</tr>
 	</c:if>
 	
-  	<c:set var="searchVO" value="${deptAuthorVO.searchVO}"/>
+  	<c:set var="searchVO" value="${deptAuthorVO}"/>
  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
  	<c:forEach var="result" items="${resultList}" varStatus="status">
 	<tr>
@@ -195,7 +195,7 @@ function press() {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("deptAuthorVO");
-    varForm["searchVO.pageIndex"].value = pageNo;
+    varForm.pageIndex.value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/sec/dpt/listDeptAuthor.do";
     varForm.submit();
 }
@@ -207,7 +207,7 @@ function fn_aram_search() {
 		return;
 	}
 
-	varForm["searchVO.pageIndex"].value = "1";
+	varForm.pageIndex.value = "1";
 	varForm.action = "${pageContext.request.contextPath}/sec/dpt/listDeptAuthor.do";
 	varForm.submit();
 }

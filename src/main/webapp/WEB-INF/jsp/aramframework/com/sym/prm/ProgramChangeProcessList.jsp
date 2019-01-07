@@ -49,8 +49,9 @@
            	<option value="3">요청일자  </option>
            	<option value="4">요청자  </option>
        	</select>
-   		<span id="searchSpan">&nbsp;&nbsp;전체조회&nbsp;<input name='searchKeyword' type='hidden' size='10' value='%'  maxlength='20' title="검색조건값"></span>
-		<form:select path="searchVO.recordPerPage" class="select" onchange="fn_aram_search();" >
+   		<span id="searchSpan">&nbsp;&nbsp;전체조회&nbsp;
+   		<form:hidden path='searchKeyword' size='10' value='%'  maxlength='20' title="검색조건값"></span>
+		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
 	   		<form:option value="10" label="10" />
 	   		<form:option value="20" label="20" />
 	   		<form:option value="30" label="30" />
@@ -82,7 +83,7 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="searchVO" value="${progrmManageDtlVO.searchVO}"/>
+ 	<c:set var="searchVO" value="${progrmManageDtlVO}"/>
  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
  	<c:forEach var="result" items="${resultList}" varStatus="status">
   	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.progrmFileNm}"/>','<c:out value="${result.rqestNo}"/>'); return false;">
@@ -123,7 +124,7 @@
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("progrmManageDtlVO");
-    varForm["searchVO.pageIndex"].value = pageNo;
+    varForm.pageIndex.value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/sym/prm/listProgramChangeProcess.do";
     varForm.submit();
 }
@@ -133,7 +134,7 @@ function fn_aram_linkPage(pageNo){
  ******************************************************** */
 function fn_aram_search() {
     var varForm = document.getElementById("progrmManageDtlVO");
-    varForm["searchVO.pageIndex"].value = 1;
+    varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/sym/prm/listProgramChangeProcess.do";
     varForm.submit();
 }

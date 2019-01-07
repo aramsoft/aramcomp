@@ -82,8 +82,8 @@
 	</div>
 </div>
 
-<form:hidden path="searchVO.searchCondition" value="1" />
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="searchCondition" value="1" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <table class="table-list" summary="보고서통계에 대한 보고서유형, 진행상태 건수에 대한 정보를 제공한다.">
@@ -222,7 +222,7 @@ function press() {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("reprtStatsVO");
-    varForm["searchVO.pageIndex"].value = pageNo;
+    varForm.pageIndex.value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/sts/rst/listReprtStats.do";
     varForm.submit();
 }
@@ -230,7 +230,7 @@ function fn_aram_linkPage(pageNo){
 function fn_aram_search() {
     var varForm = document.getElementById("reprtStatsVO");
 	if(!checkDateTy()) return;
-	varForm["searchVO.pageIndex"].value = '1';
+	varForm.pageIndex.value = '1';
 	varForm.action = "${pageContext.request.contextPath}/sts/rst/listReprtStats.do";
 	varForm.submit();
 }

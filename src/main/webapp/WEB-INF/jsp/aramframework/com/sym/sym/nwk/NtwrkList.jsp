@@ -46,7 +46,7 @@
    		</form:select>	   
  		<label for="strUserNm">사용자 명 : </label>
     	<form:input path="strUserNm" size="15" maxlength="25" title="검색어 입력" onkeypress="press();"/> 
-		<form:select path="searchVO.recordPerPage" class="select" onchange="fn_aram_search();" >
+		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
 	   		<form:option value="10" label="10" />
 	   		<form:option value="20" label="20" />
 	   		<form:option value="30" label="30" />
@@ -55,7 +55,7 @@
 	</div>
 </div>
 
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <table class="table-list" summary="네트워크에 대한 목록을 제공한다.">
@@ -79,7 +79,7 @@
     </tr>
     </c:if>
     
- 	<c:set var="searchVO" value="${ntwrkVO.searchVO}"/>
+ 	<c:set var="searchVO" value="${ntwrkVO}"/>
  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
  	<c:forEach var="result" items="${resultList}" varStatus="status">
   	<tr class="link" onclick="javascript:fn_aram_detail('${result.ntwrkId}'); return false;">
@@ -120,14 +120,14 @@ function press() {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("ntwrkVO");
-    varForm["searchVO.pageIndex"].value = pageNo;
+    varForm.pageIndex.value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/sym/sym/nwk/listNtwrk.do";
     varForm.submit();
 }
 
 function fn_aram_search(){
     var varForm = document.getElementById("ntwrkVO");
-    varForm["searchVO.pageIndex"].value = '1';
+    varForm.pageIndex.value = '1';
     varForm.action = "${pageContext.request.contextPath}/sym/sym/nwk/listNtwrk.do";
     varForm.submit();
 }

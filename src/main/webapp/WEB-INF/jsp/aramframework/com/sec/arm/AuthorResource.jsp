@@ -45,7 +45,7 @@
 	<div class="keyword_area">
  		권한코드 : 
    		<form:input path="authorCode" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-		<form:select path="searchVO.recordPerPage" class="select" onchange="fn_aram_search();" title="recordPerPage">
+		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" title="recordPerPage">
 	   		<form:option value="10" label="10" />
 	   		<form:option value="20" label="20" />
 	   		<form:option value="30" label="30" />
@@ -100,8 +100,8 @@
 </tbody>
 </table>
 
-<form:hidden path="searchVO.searchKeyword" />
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="searchKeyword" />
+<form:hidden path="pageIndex" />
 
 <form:hidden path="saveSearchKeyword" />
 <form:hidden path="savePageIndex" />
@@ -128,14 +128,14 @@ function press() {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("authorResourceVO");
-    varForm["searchVO.pageIndex"].value = pageNo;
+    varForm.pageIndex.value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/sec/arm/listAuthorResource.do";
     varForm.submit();
 }
 
 function fn_aram_search(){
     var varForm = document.getElementById("authorResourceVO");
-    varForm["searchVO.pageIndex"].value = "1";
+    varForm.pageIndex.value = "1";
     varForm.action = "${pageContext.request.contextPath}/sec/arm/listAuthorResource.do";
     varForm.submit();
 }
@@ -153,9 +153,9 @@ function fn_aram_insert() {
 function fn_aram_list_author(){
     var varForm = document.getElementById("authorResourceVO");
 
-    varForm["searchVO.searchKeyword"].value = varForm.saveSearchKeyword.value;
-    varForm["searchVO.pageIndex"].value = varForm.savePageIndex.value;
-    varForm["searchVO.recordPerPage"].value = varForm.saveRecordPerPage.value;
+    varForm.searchKeyword.value = varForm.saveSearchKeyword.value;
+    varForm.pageIndex.value = varForm.savePageIndex.value;
+    varForm.recordPerPage.value = varForm.saveRecordPerPage.value;
     
     varForm.action = "${pageContext.request.contextPath}/sec/arm/listAuthor.do";
     varForm.submit();

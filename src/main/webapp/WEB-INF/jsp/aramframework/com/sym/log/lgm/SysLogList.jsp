@@ -75,8 +75,8 @@
      		<img name="calendarImg" src="${pageContext.request.contextPath}/images/aramframework/com/cmm/icon/bu_icon_carlendar.gif"  align="middle" style="border:0px" alt="달력창팝업버튼이미지">
      	</a>
     	&nbsp;<label for="searchKeyword">처리구분</label> :
-   		<form:input path="searchVO.searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-		<form:select path="searchVO.recordPerPage" class="select" onchange="fn_aram_search();" >
+   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
 	   		<form:option value="10" label="10" />
 	   		<form:option value="20" label="20" />
 	   		<form:option value="30" label="30" />
@@ -85,7 +85,7 @@
 	</div>
 </div>
 	
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="pageIndex" />
 </form:form>
 	
 <table class="table-list" summary="요청ID, 발생일자, 메소드명, 처리구분, 처리시간, 요청자의 정보를 보여주는 시스템 로그 목록 테이블이다.">
@@ -109,7 +109,7 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="searchVO" value="${sysLogVO.searchVO}"/>
+ 	<c:set var="searchVO" value="${sysLogVO}"/>
  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
 	<tr  class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.requstId}"/>'); return false;">
@@ -150,7 +150,7 @@ function press() {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("sysLogVO");
-	varForm["searchVO.pageIndex"].value = pageNo;
+	varForm.pageIndex.value = pageNo;
 	varForm.action = "${pageContext.request.contextPath}/sym/log/lgm/listSysLog.do";
 	varForm.submit();
 }
@@ -180,7 +180,7 @@ function fn_aram_search(){
 		}
 	}
 
-	varForm["searchVO.pageIndex"].value = '1';
+	varForm.pageIndex.value = '1';
 	varForm.action = "${pageContext.request.contextPath}/sym/log/lgm/listSysLog.do";
 	varForm.submit();
 }

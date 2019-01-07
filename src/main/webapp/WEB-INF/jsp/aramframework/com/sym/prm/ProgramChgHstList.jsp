@@ -43,8 +43,8 @@
 	</div>
 	<div class="keyword_area">
        	<label for="searchKeyword">프로그램명</label>
-   		<form:input path="searchVO.searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-		<form:select path="searchVO.recordPerPage" class="select" onchange="fn_aram_search();" >
+   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
 	   		<form:option value="10" label="10" />
 	   		<form:option value="20" label="20" />
 	   		<form:option value="30" label="30" />
@@ -53,7 +53,7 @@
 	</div>
 </div>
 
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <table class="table-list" summary="프로그램변경이력 목록으로 프로그램파일명,처리상태,처리내용,변경요청자,변경요청일자,변경완료일자로 구성 ">
@@ -76,7 +76,7 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="searchVO" value="${progrmManageDtlVO.searchVO}"/>
+ 	<c:set var="searchVO" value="${progrmManageDtlVO}"/>
  	<c:set var="startIndex" value="${(pageIndex-1) * searchVO.recordPerPage}"/>
  	<c:forEach var="result" items="${resultList}" varStatus="status">
   	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.progrmFileNm}"/>','<c:out value="${result.rqestNo}"/>'); return false;">
@@ -124,7 +124,7 @@ function press(event) {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("progrmManageDtlVO");
-    varForm["searchVO.pageIndex"].value = pageNo;
+    varForm.pageIndex.value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/sym/prm/listProgramChgHst.do";
     varForm.submit();
 }
@@ -134,7 +134,7 @@ function fn_aram_linkPage(pageNo){
  ******************************************************** */
 function fn_aram_search() {
     var varForm = document.getElementById("progrmManageDtlVO");
-    varForm["searchVO.pageIndex"].value = 1;
+    varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/sym/prm/listProgramChgHst.do";
     varForm.submit();
 }

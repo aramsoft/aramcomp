@@ -117,6 +117,13 @@
   	</tr>
 </table>
 
+<!-- 검색조건 유지 -->
+<form:hidden path="searchBgnDe" />
+<form:hidden path="searchEndDe" />
+<input type="hidden" name="searchKeyword"   value="${searchVO.searchKeyword}" />
+<input type="hidden" name="pageIndex"       value="${searchVO.pageIndex}" />
+<input type="hidden" name="recordPerPage"   value="${searchVO.recordPerPage}" />
+<!-- 검색조건 유지 -->
 </form:form>
 
 </DIV>

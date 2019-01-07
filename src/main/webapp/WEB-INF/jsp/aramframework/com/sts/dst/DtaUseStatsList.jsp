@@ -59,7 +59,7 @@
 	</div>
 	<div class="keyword_area" >
 		<label for="searchKeyword">게시판명: </label>
-   		<form:input path="searchVO.searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
 		기간구분:
        	<form:select path="pmDateTy" title="기간구분">
             <form:option value="" label="선택"/>
@@ -80,8 +80,8 @@
 	</div>
 </div>
 
-<form:hidden path="searchVO.searchCondition" value="1" />
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="searchCondition" value="1" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <table class="table-list" summary="자료이용현황통계에 대한 게시판명, 글번호, 글제목, 첨부파일명, 다운횟수에 대한 정보를 제공한다.">
@@ -184,7 +184,7 @@ function press() {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("dtaUseStatsVO");
-    varForm["searchVO.pageIndex"].value = pageNo;
+    varForm.pageIndex.value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/sts/dst/listDtaUseStats.do";
     varForm.submit();
 }
@@ -192,7 +192,7 @@ function fn_aram_linkPage(pageNo){
 function fn_aram_search() {
     var varForm = document.getElementById("dtaUseStatsVO");
 	if(!checkDateTy()) return;
-	varForm["searchVO.pageIndex"].value = '1';
+	varForm.pageIndex.value = '1';
 	varForm.action = "${pageContext.request.contextPath}/sts/dst/listDtaUseStats.do";
 	varForm.submit();
 }

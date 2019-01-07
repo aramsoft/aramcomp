@@ -149,8 +149,8 @@
 <form:hidden path="strProcessSttus" />
 <form:hidden path="strTroblKnd" />
 <form:hidden path="strTroblNm" />
-<form:hidden path="searchVO.pageIndex" />
-<form:hidden path="searchVO.recordPerPage" />
+<input type="hidden" name="pageIndex"       value="${searchVO.pageIndex}" />
+<input type="hidden" name="recordPerPage"   value="${searchVO.recordPerPage}" />
 <!-- 검색조건 유지 -->
 </form:form>
 

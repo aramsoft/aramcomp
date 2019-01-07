@@ -59,8 +59,8 @@
 	</div>
 	<div class="keyword_area">
   		<label for="searchKeyword">메뉴명</label>
-   		<form:input path="searchVO.searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-		<form:select path="searchVO.recordPerPage" class="select" onchange="fn_aram_search();" >
+   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
 	   		<form:option value="10" label="10" />
 	   		<form:option value="20" label="20" />
 	   		<form:option value="30" label="30" />
@@ -87,7 +87,7 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="searchVO" value="${bkmkMenuManageVO.searchVO}"/>
+ 	<c:set var="searchVO" value="${bkmkMenuManageVO}"/>
  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
 	<tr>
@@ -109,8 +109,8 @@
 </tbody>
 </table>
 
-<form:hidden path="searchVO.searchCondition" value="0" />
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="searchCondition" value="0" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <div id="page_navigation">
@@ -132,14 +132,14 @@ function press(event) {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("bkmkMenuManageVO");
-    varForm["searchVO.pageIndex"].value = pageNo;
+    varForm.pageIndex.value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/sym/mnu/bmm/listBkmkMenu.do";
     varForm.submit();
 }
 
 function fn_aram_search(){
     var varForm = document.getElementById("bkmkMenuManageVO");
-    varForm["searchVO.pageIndex"].value = '1';
+    varForm.pageIndex.value = '1';
     varForm.action = "${pageContext.request.contextPath}/sym/mnu/bmm/listBkmkMenu.do";
     varForm.submit();
 }

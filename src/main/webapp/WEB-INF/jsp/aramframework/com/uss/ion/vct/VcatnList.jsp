@@ -52,7 +52,7 @@
     		<label for="searchKeyword">휴가년도</label>
     	</th>          
     	<td width="80%">
-    		<form:select path="searchVO.searchKeyword" title="휴가년도">
+    		<form:select path="searchKeyword" title="휴가년도">
     			<form:option value="" label="전체" />
            		<form:options items="${yearList}" />
            	</form:select>년
@@ -60,8 +60,8 @@
   	</tr> 
 </table>
 
-<form:hidden path="searchVO.searchCondition" value="1" />
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="searchCondition" value="1" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <table class="table-list" summary="휴가관리 목록으로 순번 휴가구분 시작일 종료일 휴가사유 구분 승인자로 구성">
@@ -84,7 +84,7 @@
 	</tr>   	          				 			   
 	</c:if>
 	
- 	<c:set var="searchVO" value="${vcatnManageVO.searchVO}"/>
+ 	<c:set var="searchVO" value="${vcatnManageVO}"/>
  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.applcntId}"/>','<c:out value="${result.vcatnSe}"/>','<c:out value="${result.bgnde}"/>','<c:out value="${result.endde}"/>'); return false;">
@@ -125,7 +125,7 @@
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("vcatnManageVO");
-	varForm["searchVO.pageIndex"].value = pageNo;
+	varForm.pageIndex.value = pageNo;
 	varForm.action = "${pageContext.request.contextPath}/uss/ion/vct/listVcatn.do";
 	varForm.submit();
 }
@@ -136,7 +136,7 @@ function fn_aram_linkPage(pageNo){
  /*설명 : 목록 조회 */
 function fn_aram_search(){
     var varForm = document.getElementById("vcatnManageVO");
-	varForm["searchVO.pageIndex"].value = "1";
+	varForm.pageIndex.value = "1";
 	varForm.action = "${pageContext.request.contextPath}/uss/ion/vct/listVcatn.do";
 	varForm.submit();
 }

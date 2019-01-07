@@ -71,16 +71,16 @@
       	</a>
       	
 		<label for="searchCondition"> </label>
-    	<form:select path="searchVO.searchCondition" title="조회조건 선택">
+    	<form:select path="searchCondition" title="조회조건 선택">
 	   		<form:option value='' label="--선택하세요--" />
 	   		<form:option value="NOTE_SJ" label="쪽지제목" />			   
 	   		<form:option value="NOTE_CN" label="쪽지내용" />			   
    		</form:select>
    		
  		<label for="searchKeyword"> </label>
-   		<form:input path="searchVO.searchKeyword" size="25" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+   		<form:input path="searchKeyword" size="25" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
 		
-		<form:select path="searchVO.recordPerPage" class="select" onchange="fn_aram_search_noteTrnsmit();" title="recordPerPage">
+		<form:select path="recordPerPage" class="select" onchange="fn_aram_search_noteTrnsmit();" title="recordPerPage">
 	   		<form:option value="10" label="10" />
 	   		<form:option value="20" label="20" />
 	   		<form:option value="30" label="30" />
@@ -116,7 +116,7 @@
 	</c:if>
 	
 	<%-- 데이터를 화면에 출력해준다 --%>
- 	<c:set var="searchVO" value="${noteTrnsmitVO.searchVO}"/>
+ 	<c:set var="searchVO" value="${noteTrnsmitVO}"/>
  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr>
@@ -174,7 +174,7 @@ function press(event) {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("noteTrnsmitVO");
-    varForm["searchVO.pageIndex"].value = pageNo;
+    varForm.pageIndex.value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/uss/ion/nts/listNoteTrnsmit.do";
     varForm.submit();
 }
@@ -184,7 +184,7 @@ function fn_aram_linkPage(pageNo){
  ******************************************************** */
 function fn_aram_search_noteTrnsmit(){
     var varForm = document.getElementById("noteTrnsmitVO");
-    varForm["searchVO.pageIndex"].value = '1';
+    varForm.pageIndex.value = '1';
     varForm.action = "${pageContext.request.contextPath}/uss/ion/nts/listNoteTrnsmit.do";
     varForm.submit();
 }

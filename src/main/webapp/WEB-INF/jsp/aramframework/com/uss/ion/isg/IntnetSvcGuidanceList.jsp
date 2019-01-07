@@ -45,8 +45,8 @@
 	</div>
 	<div class="keyword_area">
  		<label for="searchKeyword">인터넷서비스 명 : </label>
-   		<form:input path="searchVO.searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-		<form:select path="searchVO.recordPerPage" class="select" onchange="fn_aram_search(); return false;" >
+   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+		<form:select path="recordPerPage" class="select" onchange="fn_aram_search(); return false;" >
 	   		<form:option value="10" label="10" />
 	   		<form:option value="20" label="20" />
 	   		<form:option value="30" label="30" />
@@ -55,8 +55,8 @@
 	</div>
 </div>
 
-<form:hidden path="searchVO.searchCondition" />
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="searchCondition" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <table class="table-list" summary="인터넷서비스안내에 대한 목록을 제공한다.">
@@ -81,7 +81,7 @@
  	</tr>
  	</c:if>
  	
- 	<c:set var="searchVO" value="${intnetSvcGuidanceVO.searchVO}"/>
+ 	<c:set var="searchVO" value="${intnetSvcGuidanceVO}"/>
  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
  	<c:forEach var="result" items="${resultList}" varStatus="status">
  	<tr>
@@ -128,14 +128,14 @@ function press() {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("intnetSvcGuidanceVO");
-    varForm["searchVO.pageIndex"].value = pageNo;
+    varForm.pageIndex.value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/uss/ion/isg/listIntnetSvcGuidance.do";
     varForm.submit();
 }
 
 function fn_aram_search() {
     var varForm = document.getElementById("intnetSvcGuidanceVO");
-    varForm["searchVO.pageIndex"].value = '1';
+    varForm.pageIndex.value = '1';
     varForm.action = "${pageContext.request.contextPath}/uss/ion/isg/listIntnetSvcGuidance.do";
     varForm.submit();
 }

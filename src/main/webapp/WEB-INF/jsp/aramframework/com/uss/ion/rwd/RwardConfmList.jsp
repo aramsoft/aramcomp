@@ -49,7 +49,7 @@
     		<label for="searchKeyword">포상구분</label>
     	</th>
     	<td width="30%">
-        	<form:select path="searchVO.searchKeyword" title="포상구분">
+        	<form:select path="searchKeyword" title="포상구분">
                 <form:option value="" label="전체"/>
                 <form:options items="${COM055_rward}" itemValue="code" itemLabel="codeNm"/>
       		</form:select>
@@ -101,8 +101,8 @@
   	</tr>
 </table>
 
-<form:hidden path="searchVO.searchCondition" value="1" />
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="searchCondition" value="1" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <table class="table-list" summary="포상승인관리 목록">
@@ -126,7 +126,7 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="searchVO" value="${rwardManageVO.searchVO}"/>
+ 	<c:set var="searchVO" value="${rwardManageVO}"/>
  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr>
@@ -173,7 +173,7 @@
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("rwardManageVO");
-	varForm["searchVO.pageIndex"].value = pageNo;
+	varForm.pageIndex.value = pageNo;
 	varForm.action = "${pageContext.request.contextPath}/uss/ion/rwd/listRwardConfm.do";
 	varForm.submit();
 }
@@ -191,6 +191,7 @@ function fn_aram_search(){
 		}
 	}else varForm.searchToDate.value = "";
 
+	varForm.pageIndex.value = "1";
 	varForm.action = "${pageContext.request.contextPath}/uss/ion/rwd/listRwardConfm.do";
 	varForm.submit();
 }

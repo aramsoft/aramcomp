@@ -101,8 +101,8 @@
   	</tr>
 </table>
 
-<form:hidden path="searchVO.searchCondition" value="1" />
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="searchCondition" value="1" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <div style="margin-top:10px; width:100%"></div>
@@ -129,7 +129,7 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="searchVO" value="${ctsnnManageVO.searchVO}"/>
+ 	<c:set var="searchVO" value="${ctsnnManageVO}"/>
  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr class="link" onclick="javascript:fn_aram_detail('${result.ctsnnId}'); return false;">
@@ -171,7 +171,7 @@
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("ctsnnManageVO");
-	varForm["searchVO.pageIndex"].value = pageNo;
+	varForm.pageIndex.value = pageNo;
 	varForm.action = "${pageContext.request.contextPath}/uss/ion/ctn/listCtsnn.do";
 	varForm.submit();
 }
@@ -187,8 +187,9 @@ function fn_aram_search(){
 	        alert("경조신청일자 검색조건의 시작일자가 종료일자보다  늦습니다. 경조신청일자를 확인하세요.");
 	        return;
 		 }
-	} else varForm.searchToDate.value = "";
-	varForm["searchVO.pageIndex"].value = '1';
+	} 
+	else varForm.searchToDate.value = "";
+	varForm.pageIndex.value = '1';
 	varForm.action = "${pageContext.request.contextPath}/uss/ion/ctn/listCtsnn.do";
 	varForm.submit();
 }

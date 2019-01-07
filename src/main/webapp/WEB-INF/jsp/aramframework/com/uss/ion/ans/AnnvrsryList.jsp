@@ -52,7 +52,7 @@
 			<span class="norequired_icon"></span>
     	</th>
     	<td width="80%">
-        	<form:select path="searchVO.searchKeyword" title="년도">
+        	<form:select path="searchKeyword" title="년도">
                 <form:option value="" label="전체"/>
                 <form:options items="${yearList}" />
       		</form:select>년
@@ -60,8 +60,8 @@
 	</tr>
 </table>
 
-<form:hidden path="searchVO.searchCondition" value="1" />
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="searchCondition" value="1" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <table class="table-list" summary="이 표는 기념일관리리스트의 정보를 제공하며 기념일제목, 기념일(양/음), 메모, 알림여부, D-day로 구성되어 있습니다.">
@@ -84,7 +84,7 @@
 	</tr>   	          				 			   
 	</c:if>
 	
- 	<c:set var="searchVO" value="${annvrsryManageVO.searchVO}"/>
+ 	<c:set var="searchVO" value="${annvrsryManageVO}"/>
   	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
  	<c:forEach var="result" items="${resultList}" varStatus="status">
   	<tr class="link" onclick="javascript:fn_aram_detail_annvrsryManage('${result.annId}'); return false;">
@@ -130,7 +130,7 @@
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("annvrsryManageVO");
-    varForm["searchVO.pageIndex"].value = pageNo;
+    varForm.pageIndex.value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/uss/ion/ans/listAnnvrsry.do";
     varForm.submit();
 }
@@ -138,7 +138,7 @@ function fn_aram_linkPage(pageNo){
 /*설명 : 기념일 목록 조회 */
 function fn_aram_search(){
     var varForm = document.getElementById("annvrsryManageVO");
-    varForm["searchVO.pageIndex"].value = "1";
+    varForm.pageIndex.value = "1";
     varForm.action = "${pageContext.request.contextPath}/uss/ion/ans/listAnnvrsry.do";
     varForm.submit();
 }

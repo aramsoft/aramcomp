@@ -91,8 +91,8 @@
   	</tr> 
 </table>
 
-<form:hidden path="searchVO.searchCondition" value="1" />
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="searchCondition" value="1" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <div style="margin-top:10px; width:100%"></div>
@@ -118,7 +118,7 @@
 	</tr>   	          				 			   
 	</c:if>
 	
- 	<c:set var="searchVO" value="${eventManageVO.searchVO}"/>
+ 	<c:set var="searchVO" value="${eventManageVO}"/>
  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr>
@@ -171,7 +171,7 @@
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("eventManageVO");
-	varForm["searchVO.pageIndex"].value    = pageNo;
+	varForm.pageIndex.value    = pageNo;
 	varForm.action             = "${pageContext.request.contextPath}/uss/ion/evt/listEventReqst.do";
 	varForm.submit();
 }
@@ -188,7 +188,7 @@ function fn_aram_search(){
 			return;
 		} 
 	}
-	varForm["searchVO.pageIndex"].value = '1';
+	varForm.pageIndex.value = '1';
 	varForm.action = "${pageContext.request.contextPath}/uss/ion/evt/listEventReqst.do";
 	varForm.submit();
 }

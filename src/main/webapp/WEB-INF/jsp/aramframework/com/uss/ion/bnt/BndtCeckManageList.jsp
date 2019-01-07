@@ -73,7 +73,7 @@
 	    	<label for="searchKeyword">당직체크코드명</label>
 	    </th>          
 	    <td width="30%">
-   			<form:input path="searchVO.searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+   			<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
         </td>
 	</tr> 
 	<tr>
@@ -91,8 +91,8 @@
 	</tr> 
 </table>
 
-<form:hidden path="searchVO.searchCondition" value="1" />
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="searchCondition" value="1" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <div style="margin-top:3px; width:100%"></div>
@@ -115,7 +115,7 @@
 	</tr>   	          				 			   
 	</c:if>
 	
- 	<c:set var="searchVO" value="${bndtCeckManageVO.searchVO}"/>
+ 	<c:set var="searchVO" value="${bndtCeckManageVO}"/>
  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
 	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.bndtCeckSe}"/>','<c:out value="${result.bndtCeckCd}"/>'); return false;">
@@ -155,7 +155,7 @@ function press(event) {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
 	var varForm = document.getElementById("bndtCeckManageVO");
-	varForm["searchVO.pageIndex"].value = pageNo;
+	varForm.pageIndex.value = pageNo;
 	varForm.action = "${pageContext.request.contextPath}/uss/ion/bnt/listBndtCeckManage.do";
 	varForm.submit();
 }
@@ -166,6 +166,7 @@ function fn_aram_linkPage(pageNo){
  /*설명 : 목록 조회 */
 function fn_aram_search(){
 	var varForm = document.getElementById("bndtCeckManageVO");
+	varForm.pageIndex.value = 1;
 	varForm.action = "${pageContext.request.contextPath}/uss/ion/bnt/listBndtCeckManage.do";
 	varForm.submit();
 }

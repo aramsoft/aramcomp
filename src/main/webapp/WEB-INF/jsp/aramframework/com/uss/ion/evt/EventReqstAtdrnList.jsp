@@ -52,8 +52,8 @@
 	</div>
 </div>
 
-<form:hidden path="searchVO.searchCondition" value="1" />
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="searchCondition" value="1" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <table class="table-list" summary="행사 참석자 목록 순번,참석자명,소속,E-Mail,구분 구성">
@@ -74,7 +74,7 @@
 	</tr>   	          				 			   
 	</c:if>
 
- 	<c:set var="searchVO" value="${eventAtdmVO.searchVO}"/>
+ 	<c:set var="searchVO" value="${eventAtdmVO}"/>
  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr>
@@ -108,7 +108,7 @@
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("eventAtdmVO");
-	varForm["searchVO.pageIndex"].value    = pageNo;
+	varForm.pageIndex.value    = pageNo;
 	varForm.action             = "${pageContext.request.contextPath}/uss/ion/evt/listEventReqst.do";
 	varForm.submit();
 }

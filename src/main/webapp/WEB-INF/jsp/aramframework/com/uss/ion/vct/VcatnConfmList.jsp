@@ -98,8 +98,8 @@
   	</tr> 
 </table>
 
-<form:hidden path="searchVO.searchCondition" value="1" />
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="searchCondition" value="1" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <table class="table-list" summary="휴가승인관리 목록으로 순번 휴가구분 신청자 소속 시작일 종료일 진행구분 승인처리로 구성">
@@ -123,7 +123,7 @@
 	</tr>   	          				 			   
 	</c:if>
 	
- 	<c:set var="searchVO" value="${vcatnManageVO.searchVO}"/>
+ 	<c:set var="searchVO" value="${vcatnManageVO}"/>
  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr>
@@ -171,7 +171,7 @@
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("vcatnManageVO");
-	varForm["searchVO.pageIndex"].value = pageNo;
+	varForm.pageIndex.value = pageNo;
 	varForm.action = "${pageContext.request.contextPath}/uss/ion/vct/listVcatnConfm.do";
 	varForm.submit();
 }
@@ -190,7 +190,7 @@ function fn_aram_search(){
 		} 
 	}
 	 
-	varForm["searchVO.pageIndex"].value = pageNo;
+	varForm.pageIndex.value = pageNo;
 	varForm.action = "${pageContext.request.contextPath}/uss/ion/vct/listVcatnConfm.do";
 	varForm.submit();
 }

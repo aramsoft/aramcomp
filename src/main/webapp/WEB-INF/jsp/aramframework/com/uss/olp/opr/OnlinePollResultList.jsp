@@ -62,7 +62,7 @@
 	</c:if>
 	
 	<%-- 데이터를 화면에 출력해준다 --%>
- 	<c:set var="searchVO" value="${onlinePollResultVO.searchVO}"/>
+ 	<c:set var="searchVO" value="${onlinePollResultVO}"/>
  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr>

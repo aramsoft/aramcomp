@@ -42,12 +42,14 @@
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
-<!-- 검색조건 유지 -->
-<form:hidden path="searchVO.searchCondition" />
-<form:hidden path="searchVO.searchKeyword" />
 <form:hidden path="sbscrbSttus" />
-<form:hidden path="searchVO.pageIndex" />
-<form:hidden path="searchVO.recordPerPage" />
+
+<!-- 검색조건 유지 -->
+<input type="hidden" name="searchCondition" value="${searchVO.searchCondition}" />
+<input type="hidden" name="searchKeyword"   value="${searchVO.searchKeyword}" />
+<input type="hidden" name="pageIndex"       value="${searchVO.pageIndex}" />
+<input type="hidden" name="recordPerPage"   value="${searchVO.recordPerPage}" />
+<!-- 검색조건 유지 -->
 
 <table class="table-register">
     <tr>

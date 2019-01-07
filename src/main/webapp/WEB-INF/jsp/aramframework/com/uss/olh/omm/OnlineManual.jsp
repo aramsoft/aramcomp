@@ -65,8 +65,7 @@ function CheckMenuPosition()
    setTimeout ("CheckMenuPosition()", TimeOutInterval);
 }
 
-function OnLoad()
-{
+function OnLoad() {
    CheckMenuPosition();
    return true;
 }

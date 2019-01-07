@@ -27,7 +27,7 @@
 	<h2>프록시 로그 목록</h2>
 </div>
 
-<form:form commandName="proxyLogVO" action="" method="post">
+<form:form commandName="proxySvcLogVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
@@ -47,7 +47,7 @@
         <a href="#" onClick="javascript:fn_aram_NormalCalendar('', document.forms[0].strEndDate); return false;" >
            	<img src="/images/aramframework/com/sym/cal/bu_icon_carlendar.gif" title="새창" alt="달력창팝업버튼이미지">
         </a>
-		<form:select path="searchVO.recordPerPage" class="select" onchange="fn_aram_search();" >
+		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
 	   		<form:option value="10" label="10" />
 	   		<form:option value="20" label="20" />
 	   		<form:option value="30" label="30" />
@@ -56,7 +56,7 @@
 	</div>
 </div>
 
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <table class="table-list" summary="프록시로그에 대한 목록을 제공한다.">
@@ -110,15 +110,15 @@ function press() {
  * 페이징 처리 함수
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
-    var varForm = document.getElementById("proxyLogVO");
-    varForm["searchVO.pageIndex"].value = pageNo;
+    var varForm = document.getElementById("proxySvcLogVO");
+    varForm.pageIndex.value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/utl/sys/pxy/listProxyLog.do";
     varForm.submit();
 }
 
 function fn_aram_search(){
 
-    var varForm = document.getElementById("proxyLogVO");
+    var varForm = document.getElementById("proxySvcLogVO");
     var fromDate = varForm.strStartDate.value;
     var endDate = varForm.strEndDate.value;
 
@@ -149,7 +149,7 @@ function fn_aram_search(){
         }
     }
 
-    varForm["searchVO.pageIndex"].value = '1';
+    varForm.pageIndex.value = '1';
     varForm.action = "${pageContext.request.contextPath}/utl/sys/pxy/listProxyLog.do";
     varForm.submit();
 }

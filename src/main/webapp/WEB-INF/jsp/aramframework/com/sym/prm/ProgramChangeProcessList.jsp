@@ -50,7 +50,7 @@
            	<option value="4">요청자  </option>
        	</select>
    		<span id="searchSpan">&nbsp;&nbsp;전체조회&nbsp;
-   		<form:hidden path='searchKeyword' size='10' value='%'  maxlength='20' title="검색조건값"></span>
+   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" /></span>
 		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
 	   		<form:option value="10" label="10" />
 	   		<form:option value="20" label="20" />
@@ -60,7 +60,7 @@
 	</div>
 </div>
 
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <table class="table-list" summary="프로그램변경요청처리 목록화면으로 요청번호,프로그램파일명,처리상태,요청제목,요청자,요청일자로 구성.">

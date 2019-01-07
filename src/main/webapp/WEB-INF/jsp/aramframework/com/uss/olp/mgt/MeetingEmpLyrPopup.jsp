@@ -49,14 +49,14 @@
      	<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
 	</div>
 	<div class="keyword_area">
-    	<form:select path="searchVO.searchCondition" title="조회조건 선택">
+    	<form:select path="searchCondition" title="조회조건 선택">
 	   		<form:option value='' label="--선택하세요--" />
 	   		<form:option value="USER_NM" label="이름" />			   
 	   		<form:option value="EMPLYR_ID" label="아이디" />			   
 	   		<form:option value="OFFM_TELNO" label="전화번호" />			   
    		</form:select>
-   		<form:input path="searchVO.searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-		<form:select path="searchVO.recordPerPage" class="select" onchange="fn_aram_search();" >
+   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
 	   		<form:option value="10" label="10" />
 	   		<form:option value="20" label="20" />
 	   		<form:option value="30" label="30" />
@@ -65,7 +65,7 @@
 	</div>
 </div>
 
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <table class="table-list" summary="목록 을 제공한다.">
@@ -88,7 +88,7 @@
 	</c:if>
 	
 	<%-- 데이터를 화면에 출력해준다  --%>
- 	<c:set var="startIndex" value="${(baseVO.searchVO.pageIndex-1) * baseVO.searchVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(baseVO.pageIndex-1) * baseVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr class="link" onclick="javascript:fn_aram_choose('${result.uniqId}', '${result.userNm}'); return false;">
 	
@@ -119,7 +119,7 @@ function press(event) {
  ******************************************************** */
 function fn_aram_search(){
     var varForm = document.getElementById("searchVO");
-    varForm["searchVO.pageIndex"].value = '1';
+    varForm.pageIndex.value = '1';
 	vFrom.action = "${pageContext.request.contextPath}/uss/olp/mgt/listMeetingEmpLyrPopup.do";
 	vFrom.submit();
 }

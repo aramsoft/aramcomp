@@ -73,7 +73,7 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="searchVO" value="${insttCodeRecptnVO.searchVO}"/>
+ 	<c:set var="searchVO" value="${insttCodeRecptnVO}"/>
  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.insttCode}"/>'); return false;">

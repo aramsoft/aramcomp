@@ -45,7 +45,7 @@
 	</div>
 </div>
 
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <table class="table-list" summary="프록시설정에 대한 목록을 제공한다.">
@@ -68,7 +68,7 @@
 	</tr>		 
 	</c:if>
 	
-    <c:set var="searchVO" value="${proxySvcVO.searchVO}"/>
+    <c:set var="searchVO" value="${proxySvcVO}"/>
  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
  	<c:forEach var="result" items="${resultList}" varStatus="status">
   	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.proxyId}"/>'); return false;">
@@ -107,7 +107,7 @@ function press() {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("proxySvcVO");
-    varForm["searchVO.pageIndex"].value = pageNo;
+    varForm.pageIndex.value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/utl/sys/pxy/listProxySvc.do";
     varForm.submit();
 }
@@ -117,7 +117,7 @@ function fn_aram_linkPage(pageNo){
  ******************************************************** */
 function fn_aram_search(){
     var varForm = document.getElementById("proxySvcVO");
-    varForm["searchVO.pageIndex"].value = '1';
+    varForm.pageIndex.value = '1';
     varForm.action = "${pageContext.request.contextPath}/utl/sys/pxy/listProxySvc.do";
     varForm.submit();
 }

@@ -49,7 +49,7 @@
 	   		<form:option value="EXTRL_HR_NM" label="외부인사명" />			   
 	   		<form:option value="PSITN_INSTT_NM" label="소속기관" />			   
    		</form:select>
-   		<form:input path=".searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
 		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
 	   		<form:option value="10" label="10" />
 	   		<form:option value="20" label="20" />

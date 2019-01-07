@@ -46,14 +46,16 @@
 <!-- 상세정보 사용자 삭제시 prameter 전달용 input -->
 <input name="checkedIdForDel" type="hidden" />
 
-<!-- 검색조건 유지 -->
-<form:hidden path="searchVO.searchCondition" />
-<form:hidden path="searchVO.searchKeyword" />
 <form:hidden path="sbscrbSttus" />
-<form:hidden path="searchVO.pageIndex" />
-<form:hidden path="searchVO.recordPerPage" />
-
 <form:hidden path="userTy" />
+
+<!-- 검색조건 유지 -->
+<input type="hidden" name="searchCondition" value="${searchVO.searchCondition}" />
+<input type="hidden" name="searchKeyword"   value="${searchVO.searchKeyword}" />
+<input type="hidden" name="pageIndex"       value="${searchVO.pageIndex}" />
+<input type="hidden" name="recordPerPage"   value="${searchVO.recordPerPage}" />
+<!-- 검색조건 유지 -->
+
 <input name="password" type="hidden" value="dummyPassword"/>
 
 <table class="table-register">

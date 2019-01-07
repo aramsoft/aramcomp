@@ -32,7 +32,7 @@
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
 <input type="hidden" name="serverId"/>
-<input type="hidden" name="totalCount" value="${synchrnServerVO.searchVO.totalRecordCount}" />
+<input type="hidden" name="totalCount" value="${synchrnServerVO.totalRecordCount}" />
 
 <div id="search_area">
 	<div class="button_area">
@@ -46,7 +46,7 @@
 	</div>
 </div>
 
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <table class="table-list" summary="동기화대상 서버에 대한 목록을 제공한다.">
@@ -68,7 +68,7 @@
 	</tr>		 
 	</c:if>
 	
-    <c:set var="searchVO" value="${synchrnServerVO.searchVO}"/>
+    <c:set var="searchVO" value="${synchrnServerVO}"/>
  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
  	<c:forEach var="result" items="${resultList}" varStatus="status">
   	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.serverId}"/>'); return false;">
@@ -160,7 +160,7 @@
     </tbody>
     </table>
          
-    <input type="hidden" name="pageIndex" value="<c:out value='${synchrnServerVO.searchVO.pageIndex}'/>" />
+    <input type="hidden" name="pageIndex" value="<c:out value='${synchrnServerVO.pageIndex}'/>" />
     <input type="hidden" name="deleteFiles" />
     </form>
 
@@ -181,7 +181,7 @@ function press() {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("synchrnServerVO");
-    varForm["searchVO.pageIndex"].value = pageNo;
+    varForm.pageIndex.value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/utl/sys/ssy/listSynchrnServer.do";
     varForm.submit();
 }
@@ -191,7 +191,7 @@ function fn_aram_linkPage(pageNo){
  ******************************************************** */
 function fn_aram_search(){
     var varForm = document.getElementById("synchrnServerVO");
-    varForm["searchVO.pageIndex"].value = '1';
+    varForm.pageIndex.value = '1';
     varForm.action = "${pageContext.request.contextPath}/utl/sys/ssy/listSynchrnServer.do";
     varForm.submit();
 }

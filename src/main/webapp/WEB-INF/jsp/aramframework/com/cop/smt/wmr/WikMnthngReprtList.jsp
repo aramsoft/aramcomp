@@ -89,7 +89,7 @@
 	</div>
 </div>
 
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <table class="table-list"  summary="이 표는 주간/월간보고 정보를 제공하며, 보고유형, 보고일자, 보고서제목, 해당일자, 작성자, 승인 정보로 구성되어 있습니다 .">

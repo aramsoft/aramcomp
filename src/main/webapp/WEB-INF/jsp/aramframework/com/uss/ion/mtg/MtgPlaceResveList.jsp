@@ -87,8 +87,8 @@
   	</tr> 
 </table>
 <br>
-<form:hidden path="searchVO.searchCondition" value="1"/>
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="searchCondition" value="1"/>
+<form:hidden path="pageIndex" />
 </form:form>
   
 <table>

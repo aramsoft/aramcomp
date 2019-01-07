@@ -39,12 +39,12 @@
 	</div>
 	<div class="keyword_area">
 		컨텐츠 명 
-   		<form:input path="searchVO.searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
 	</div>
 </div>
 
-<form:hidden path="searchVO.searchCondition" />
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="searchCondition" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <table class="table-list"  summary="마이페이지에 추가 가능한 컨텐츠  목록을 제공한다.">
@@ -115,7 +115,7 @@ function press(event) {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
 	var varForm = document.getElementById("indvdlPgeCntntsVO");
-    varForm["searchVO.pageIndex"].value=pageNo;
+    varForm.pageIndex.value=pageNo;
     varForm.action = "${pageContext.request.contextPath}/uss/mpe/listIndvdlpgeCntntsMine.do";
     varForm.submit();
 }
@@ -125,7 +125,7 @@ function fn_aram_linkPage(pageNo){
 ******************************************************** */
 function fn_aram_search(){
 	var varForm = document.getElementById("indvdlPgeCntntsVO");
-    varForm["searchVO.pageIndex"].value = 1;
+    varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/uss/mpe/listIndvdlpgeCntntsMine.do";
     varForm.submit();
 }

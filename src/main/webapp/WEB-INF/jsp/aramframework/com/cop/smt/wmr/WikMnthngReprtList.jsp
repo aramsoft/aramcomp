@@ -188,7 +188,7 @@ function fn_aram_search() {
 		}
 	}
 
-    varForm.pageIndex.value = '1';
+    varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/cop/smt/wmr/listWikMnthngReprt.do";
 	varForm.submit();
 }

@@ -146,7 +146,7 @@ function fn_aram_search(){
 		return;
 	}
 
-    varForm.pageIndex.value = pageNo;
+    varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/uss/olp/qim/listQustnrItem.do";
     varForm.submit();
 }

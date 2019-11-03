@@ -123,7 +123,7 @@ function press(event) {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("knoManagementVO");
-    varForm["searchVO.pageIndex"].value = pageNo;
+    varForm.pageIndex.value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/dam/mgm/listKnoManagement.do";
     varForm.submit();
 }
@@ -133,7 +133,7 @@ function fn_aram_linkPage(pageNo){
  ******************************************************** */
 function fn_aram_search(){
     var varForm = document.getElementById("knoManagementVO");
-    varForm["searchVO.pageIndex"].value = 1;
+    varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/dam/mgm/listKnoManagement.do";
     varForm.submit();
 }

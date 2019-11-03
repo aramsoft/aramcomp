@@ -138,7 +138,7 @@ function fn_aram_linkPage(pageNo){
 /*설명 : 기념일 목록 조회 */
 function fn_aram_search(){
     var varForm = document.getElementById("annvrsryManageVO");
-    varForm.pageIndex.value = "1";
+    varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/uss/ion/ans/listAnnvrsry.do";
     varForm.submit();
 }

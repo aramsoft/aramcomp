@@ -119,7 +119,7 @@ function press(event) {
  ******************************************************** */
 function fn_aram_search(){
     var varForm = document.getElementById("searchVO");
-    varForm.pageIndex.value = '1';
+    varForm.pageIndex.value = 1;
 	vFrom.action = "${pageContext.request.contextPath}/uss/olp/mgt/listMeetingEmpLyrPopup.do";
 	vFrom.submit();
 }

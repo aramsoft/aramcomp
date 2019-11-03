@@ -182,7 +182,7 @@ function fn_aram_search_noteRecptn(){
 		varForm.searchToDate.value = "";
 	}
 
-	varForm.pageIndex.value = "1";
+	varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/uss/ion/ntr/listNoteRecptn.do";
 	varForm.submit();
 }

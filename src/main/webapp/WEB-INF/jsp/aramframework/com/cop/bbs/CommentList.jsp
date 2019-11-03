@@ -202,7 +202,7 @@ function fn_aram_linkPage(pageNo) {
 
 function fn_aram_reset_comment() {
     var varForm = document.getElementById("commentVO");
-	varForm.pageIndex.value = '1';
+	varForm.pageIndex.value = 1;
 	varForm.commentNo.value = '';
 	varForm.action = "${pageContext.request.contextPath}/content/board${prefix}/${commentVO.bbsId}/article/${commentVO.nttId}/comments";
 	varForm.submit();

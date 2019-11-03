@@ -152,7 +152,7 @@ function fn_aram_linkPage(pageNo){
 
 function fn_aram_search(){
     var varForm = document.getElementById("authorVO");
-    varForm.pageIndex.value = "1";
+    varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/sec/arm/listAuthor.do";
     varForm.submit();
 }
@@ -180,9 +180,9 @@ function fn_aram_clearCache() {
 function fn_aram_get_authorResource(author) {
     var varForm = document.getElementById("authorVO");
 
-    varForm.saveSearchKeyword.value = varForm["searchVO.searchKeyword"].value;
-    varForm.saveRecordPerPage.value = varForm["searchVO.recordPerPage"].value;
-    varForm.savePageIndex.value = varForm["searchVO.pageIndex"].value;
+    varForm.saveSearchKeyword.value = varForm.searchKeyword.value;
+    varForm.saveRecordPerPage.value = varForm.recordPerPage.value;
+    varForm.savePageIndex.value = varForm.pageIndex.value;
     
     varForm.authorCode.value = author;
     varForm.action = "${pageContext.request.contextPath}/sec/arm/listAuthorResource.do";

@@ -127,7 +127,7 @@ function fn_aram_linkPage(pageNo){
 
 function fn_aram_search(){
     var varForm = document.getElementById("templateInfVO");
-    varForm.pageIndex.value = '1';
+    varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/cop/tpl/listTemplate.do";
     varForm.submit();
 }

@@ -152,7 +152,7 @@ function fn_aram_linkPage(pageNo) {
 
 function fn_aram_reset_guestList(pageNo) {
     var varForm = document.getElementById("boardVO");
-    varForm.pageIndex.value = '1';
+    varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/cop/bbs/selectGuestList.do";
     varForm.submit();
 }

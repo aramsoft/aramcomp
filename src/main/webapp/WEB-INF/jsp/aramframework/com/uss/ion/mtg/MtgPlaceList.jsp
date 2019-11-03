@@ -119,7 +119,7 @@ function fn_aram_linkPage(pageNo){
 /*설명 : 회의실  목록 조회 */
 function fn_aram_search(){
     var varForm = document.getElementById("mtgPlaceManageVO");
-    varForm.pageIndex.value = "1";
+    varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/uss/ion/mtg/listMtgPlace.do";
     varForm.submit();
 }

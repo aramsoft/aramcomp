@@ -689,7 +689,7 @@
 /*설명 : 회의실  예약목록 조회 */
 function fn_aram_list(){
     var varForm = document.getElementById("mtgPlaceResveVO");
-    varForm["searchVO.pageIndex"].value = "1";
+    varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/uss/ion/mtg/listMtgPlaceResve.do";
     varForm.submit();
 }

@@ -151,7 +151,7 @@ function fn_aram_linkPage(pageNo){
 
 function fn_aram_search(){
     var varForm = document.getElementById("groupAuthorVO");
-    varForm.pageIndex.value = '1';
+    varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/sec/grp/listGroupAuthor.do";
     varForm.submit();
 }
@@ -163,12 +163,9 @@ var gArguments = new Array();
  ******************************************************** */
 function fn_aram_get_group() {
     var varForm = document.getElementById("groupAuthorVO");
-    if(varForm.searchCondition.value != 'GROUP_ID') {
-        alert("그룹을 선택하세요.");
-        return;
-    }
-    
-	gArguments["groupId"] = varForm["searchVO.searchKeyword"];
+    varForm.searchCondition.value = 'GROUP_ID';
+        
+	gArguments["groupId"] = varForm.searchKeyword;
 	var url = "/sec/grp/listGroupPopup.do";
 
 	window.open(url, "p_deptInqire", "width=500px,height=485px,top=100px,left=100px,location=no");

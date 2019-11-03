@@ -131,7 +131,7 @@ function fn_aram_search(){
 	if (sC1 == "1" ) {
 		varForm.searchKeyword.value = sK.replace(/\-/, "");
 	}
-	varForm.pageIndex.value = "1";
+	varForm.pageIndex.value = 1;
 	varForm.submit();
 }
 

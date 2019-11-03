@@ -138,7 +138,7 @@ function fn_aram_linkPage(pageNo){
  ******************************************************** */
 function fn_aram_search(){
     var varForm = document.getElementById("eventCmpgnVO");
-    varForm.pageIndex.value = pageNo;
+    varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/uss/ion/ecc/listEventCmpgn.do";
     varForm.submit();
 }

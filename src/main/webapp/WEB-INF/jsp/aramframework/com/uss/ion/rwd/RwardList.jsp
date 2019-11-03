@@ -176,7 +176,7 @@ function fn_aram_search(){
 		}
 	}else varForm.searchToDate.value = "";
 	
-	varForm.pageIndex.value = "1";
+	varForm.pageIndex.value = 1;
 	varForm.action = "${pageContext.request.contextPath}/uss/ion/rwd/listRward.do";
 	varForm.submit();
 }

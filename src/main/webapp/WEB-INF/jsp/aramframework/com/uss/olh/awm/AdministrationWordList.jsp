@@ -197,7 +197,7 @@ function fn_aram_search(){
     varForm.choseongA.value = '';
     varForm.choseongB.value = '';
     varForm.choseongSe.value = '';
-    varForm.pageIndex.value = '1';
+    varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/uss/olh/awm/listAdministrationWord.do";
     varForm.submit();
 }
@@ -210,7 +210,7 @@ function fn_aram_choseong(choseongA, choseongB, choseongSe){
     varForm.choseongA.value = choseongA;
     varForm.choseongB.value = choseongB;
     varForm.choseongSe.value = choseongSe;
-    varForm.pageIndex.value = '1';
+    varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/uss/olh/awm/listAdministrationWord.do";
     varForm.submit();
 }

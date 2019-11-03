@@ -113,7 +113,7 @@ function press(event) {
  ******************************************************** */
 function fn_aram_search(){
     var varForm = document.getElementById("searchVO");
-    varForm.pageIndex.value = '1';
+    varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/uss/olp/mgt/listMeetingDeptPopup.do";
     varForm.submit();
 }

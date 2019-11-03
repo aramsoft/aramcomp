@@ -177,7 +177,7 @@ function fn_aram_linkPage(pageNo) {
 
 function fn_aram_search() {
     var varForm = document.getElementById("boardVO");
-    varForm.pageIndex.value = '1';
+    varForm.pageIndex.value = 1;
     if( varForm.curTrgetId.value != "") {
     	varForm.action = "${pageContext.request.contextPath}/content/apps/${targetVO.pathId}/board/${boardVO.pathId}/articles";
     }

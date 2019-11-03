@@ -118,7 +118,7 @@ function fn_aram_linkPage(pageNo){
 
 function fn_aram_search(){
     var varForm = document.getElementById("mainImageVO");
-    varForm.pageIndex.value = "1";
+    varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/uss/ion/msi/listMainImage.do";
     varForm.submit();
 }

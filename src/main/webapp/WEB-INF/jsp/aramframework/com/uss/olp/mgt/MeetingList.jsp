@@ -152,7 +152,7 @@ function fn_aram_linkPage(pageNo){
  ******************************************************** */
 function fn_aram_search(){
     var varForm = document.getElementById("meetingManageVO");
-    varForm.pageIndex.value = '1';
+    varForm.pageIndex.value = 1;
     varFormaction = "${pageContext.request.contextPath}/uss/olp/mgt/listMeeting.do";
     varForm.submit();
 }

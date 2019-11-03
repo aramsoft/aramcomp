@@ -120,7 +120,7 @@ function fn_aram_linkPage(pageNo){
 
 function fn_aram_search(){
     var varForm = document.getElementById("serverEqpmnVO");
-    varForm.pageIndex.value = '1';
+    varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/sym/sym/srv/listServerEqpmn.do";
     varForm.submit();
 }

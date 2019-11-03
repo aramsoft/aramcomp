@@ -155,7 +155,7 @@ function fn_aram_linkPage(pageNo){
  ******************************************************** */
 function fn_aram_search(){
     var varForm = document.getElementById("onlinePollManageVO");
-    varForm.pageIndex.value = '1';
+    varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/uss/olp/opm/listOnlinePoll.do";
     varForm.submit();
 }

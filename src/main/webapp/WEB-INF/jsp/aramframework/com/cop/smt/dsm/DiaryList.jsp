@@ -130,7 +130,7 @@ function fn_aram_linkPage(pageNo){
  ******************************************************** */
 function fn_aram_search(){
     var varForm = document.getElementById("diaryManageVO");
-    varForm.pageIndex.value = '1';
+    varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/cop/smt/dsm/listDiary.do";
     varForm.submit();
 }

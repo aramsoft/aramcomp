@@ -120,7 +120,7 @@ function fn_aram_linkPage(pageIndex){
 
 function fn_aram_search(){
     var varForm = document.getElementById("bkmkMenuManageVO");
-    varForm.pageIndex.value = '1';
+    varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/sym/mnu/bmm/listBkmkMenuPopup.do";
     varForm.submit();
 }

@@ -118,7 +118,7 @@ function linkPage(pageNo){
 
 function fn_aram_search(){
     var varForm = document.getElementById("groupVO");
-    varForm.pageIndex.value = '1';
+    varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/sec/grp/listGroup.do";
     varForm.submit();
 }

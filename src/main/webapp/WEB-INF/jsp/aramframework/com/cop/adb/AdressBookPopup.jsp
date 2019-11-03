@@ -156,7 +156,7 @@ function fn_aram_linkPage(pageIndex){
 
 function fn_aram_search(){
     var varForm = document.getElementById("searchVO");
-    varForm.pageIndex.value = 'USERLIST';
+    varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/cop/adb/listUserPopup.do";
     varForm.submit();
 }

@@ -202,7 +202,7 @@
 
 function fn_aram_list(){
     var varForm = document.getElementById("troblProcessVO");
-    varForm["searchVO.pageIndex"].value = '1';
+    varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/sym/tbm/tbp/listTroblProcess.do";
     varForm.submit();
 }

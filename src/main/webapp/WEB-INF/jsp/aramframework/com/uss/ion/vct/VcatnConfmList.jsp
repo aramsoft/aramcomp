@@ -190,7 +190,7 @@ function fn_aram_search(){
 		} 
 	}
 	 
-	varForm.pageIndex.value = pageNo;
+	varForm.pageIndex.value = 1;
 	varForm.action = "${pageContext.request.contextPath}/uss/ion/vct/listVcatnConfm.do";
 	varForm.submit();
 }

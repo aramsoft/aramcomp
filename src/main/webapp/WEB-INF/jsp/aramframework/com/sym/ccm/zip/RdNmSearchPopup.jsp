@@ -124,7 +124,7 @@ function fn_aram_linkPage(pageNo){
  ******************************************************** */
 function fn_aram_search(){
    	var varForm = document.getElementById("zipVO");
-	varForm.pageIndex.value = "1";
+	varForm.pageIndex.value = 1;
    	varForm.action = "${pageContext.request.contextPath}/sym/ccm/zip/listRdNmPopup.do";
    	varForm.submit();
 }

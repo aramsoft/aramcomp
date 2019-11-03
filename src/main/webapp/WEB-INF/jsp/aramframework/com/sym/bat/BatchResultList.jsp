@@ -248,7 +248,7 @@ function fn_aram_search() {
         /**  lee.m.j 2010-10-27 추가   **/
     }
 
-    varForm.pageIndex.value = '1';
+    varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/sym/bat/listBatchResult.do";
     varForm.submit();
 }

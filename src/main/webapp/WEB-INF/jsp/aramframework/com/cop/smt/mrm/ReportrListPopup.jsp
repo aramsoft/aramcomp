@@ -127,15 +127,15 @@ function press(event) {
  * 페이징 처리 함수
  ******************************************************** */
 function fn_aram_linkPage(pageNo) {
-    var varForm = document.getElementById("searchVO");
-    varForm["searchVO.pageIndex"].value = pageNo; 
+    var varForm = document.getElementById("baseVO");
+    varForm.pageIndex.value = pageNo; 
     varForm.action = "${pageContext.request.contextPath}/cop/smt/mrm/listReportr.do";
     varForm.submit();	
 }
 
 function fn_aram_search() {
-    var varForm = document.getElementById("searchVO");
-    varForm["searchVO.pageIndex"].value = '1'; 
+    var varForm = document.getElementById("baseVO");
+    varForm.pageIndex.value = 1; 
     varForm.action = "${pageContext.request.contextPath}/cop/smt/mrm/listReportr.do";
     varForm.submit();	
 }

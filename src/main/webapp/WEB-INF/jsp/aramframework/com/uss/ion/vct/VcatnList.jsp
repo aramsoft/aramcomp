@@ -136,7 +136,7 @@ function fn_aram_linkPage(pageNo){
  /*설명 : 목록 조회 */
 function fn_aram_search(){
     var varForm = document.getElementById("vcatnManageVO");
-	varForm.pageIndex.value = "1";
+	varForm.pageIndex.value = 1;
 	varForm.action = "${pageContext.request.contextPath}/uss/ion/vct/listVcatn.do";
 	varForm.submit();
 }

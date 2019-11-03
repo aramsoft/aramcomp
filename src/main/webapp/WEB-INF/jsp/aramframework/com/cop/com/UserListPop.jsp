@@ -143,7 +143,7 @@ function fn_aram_search(){
     var varForm = document.getElementById("userInfVO");
 	var _target = varForm.targetMethod.value;
 
-	varForm.pageIndex.value = '1';
+	varForm.pageIndex.value = 1;
 	if(_target == 'selectCmmntyMngrList'){
 		varForm.action = "${pageContext.request.contextPath}/cop/com/listCmmntyMngr.do";
 	}else if(_target == 'selectCmmntyUserList'){

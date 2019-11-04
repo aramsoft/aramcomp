@@ -20,11 +20,4 @@
 	<bean id="login.listener" class="aramframework.com.cmm.listener.LoginLogListener" />
 -->
 
-	<!--  자료이용현황 통계자료 생성 --> 
-    <aop:config>
-        <aop:aspect id="dtaUseStatsManageAspect" ref="dtaUseStatsService">
-            <aop:after method="insertDtaUseStats" pointcut="execution(public * aramframework.com.cmm.web.FileDownloadController.cvplFileDownload(..)) and args(commandMap, ..)" />
-        </aop:aspect>
-    </aop:config>
-	
 </beans>

@@ -43,10 +43,6 @@
  		<typeAlias alias="groupAuthorVO"		type="aramframework.com.sec.grp.domain.GroupAuthorVO"/>
  		<typeAlias alias="resourceVO"			type="aramframework.com.sec.rmt.domain.ResourceVO"/>
 
- 		<typeAlias alias="statsVO"				type="aramframework.com.sts.com.StatsVO"/>
- 		<typeAlias alias="dtaUseStatsVO"		type="aramframework.com.sts.dst.domain.DtaUseStatsVO"/>
-		<typeAlias alias="reprtStatsVO"			type="aramframework.com.sts.rst.domain.ReprtStatsVO"/>
-
 		<typeAlias alias="batchOpertVO"			type="aramframework.com.sym.bat.domain.BatchOpertVO"/>
 		<typeAlias alias="batchSchdulVO"		type="aramframework.com.sym.bat.domain.BatchSchdulVO"/>
 		<typeAlias alias="batchSchdulDfkVO"		type="aramframework.com.sym.bat.domain.BatchSchdulDfkVO"/>

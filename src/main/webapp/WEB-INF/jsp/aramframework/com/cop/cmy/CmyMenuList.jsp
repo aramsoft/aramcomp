@@ -105,7 +105,7 @@
 </tbody>
 </table>
 
-<form:hidden path="searchVO.pageIndex" />
+<form:hidden path="pageIndex" />
 </form:form>
 
 <div id="page_navigation">

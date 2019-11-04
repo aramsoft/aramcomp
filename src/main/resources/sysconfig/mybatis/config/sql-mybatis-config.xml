@@ -66,11 +66,6 @@
 		<typeAlias alias="backupOpertVO"		type="aramframework.com.sym.sym.bak.domain.BackupOpertVO"/>
 		<typeAlias alias="backupSchdulDfkVO"	type="aramframework.com.sym.sym.bak.domain.BackupSchdulDfkVO"/>
 		<typeAlias alias="backupResultVO"		type="aramframework.com.sym.sym.bak.domain.BackupResultVO"/>
-		<typeAlias alias="ntwrkVO"				type="aramframework.com.sym.sym.nwk.domain.NtwrkVO"/>
-		<typeAlias alias="serverVO"				type="aramframework.com.sym.sym.srv.domain.ServerVO"/>
-		<typeAlias alias="serverEqpmnVO"		type="aramframework.com.sym.sym.srv.domain.ServerEqpmnVO"/>
-		<typeAlias alias="troblProcessVO"		type="aramframework.com.sym.tbm.tbp.domain.TroblProcessVO"/>
-		<typeAlias alias="troblReqstVO"			type="aramframework.com.sym.tbm.tbr.domain.TroblReqstVO"/>
 		
 		<typeAlias alias="loginPolicyVO"		type="aramframework.com.uat.uap.domain.LoginPolicyVO"/>
 		<typeAlias alias="loginVO"				type="aramframework.com.uat.uia.domain.LoginVO"/>

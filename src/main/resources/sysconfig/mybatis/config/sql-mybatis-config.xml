@@ -48,17 +48,13 @@
 		<typeAlias alias="batchSchdulDfkVO"		type="aramframework.com.sym.bat.domain.BatchSchdulDfkVO"/>
 		<typeAlias alias="batchResultVO"		type="aramframework.com.sym.bat.domain.BatchResultVO"/>
  		<typeAlias alias="restdeVO"				type="aramframework.com.sym.cal.domain.RestdeVO"/>
- 		<typeAlias alias="administCodeRecptnVO"	type="aramframework.com.sym.ccm.acr.domain.AdministCodeRecptnVO"/>
-		<typeAlias alias="administCodeVO"		type="aramframework.com.sym.ccm.adc.domain.AdministCodeVO"/>
 		<typeAlias alias="cmmnCodeVO"			type="aramframework.com.sym.ccm.cca.domain.CmmnCodeVO"/>
 		<typeAlias alias="cmmnClCodeVO"			type="aramframework.com.sym.ccm.ccc.domain.CmmnClCodeVO"/>
 		<typeAlias alias="cmmnDetailCodeVO"		type="aramframework.com.sym.ccm.cde.domain.CmmnDetailCodeVO"/>
-		<typeAlias alias="insttCodeRecptnVO"	type="aramframework.com.sym.ccm.icr.domain.InsttCodeRecptnVO"/>
 		<typeAlias alias="zipVO"				type="aramframework.com.sym.ccm.zip.domain.ZipVO"/>
 		<typeAlias alias="loginLogVO"			type="aramframework.com.sym.log.clg.domain.LoginLogVO"/>
 		<typeAlias alias="sysLogVO"				type="aramframework.com.sym.log.lgm.domain.SysLogVO"/>
 		<typeAlias alias="sysHistoryVO"			type="aramframework.com.sym.log.slg.domain.SysHistoryVO"/>
-		<typeAlias alias="trsmrcvLogVO"			type="aramframework.com.sym.log.tlg.domain.TrsmrcvLogVO"/>
 		<typeAlias alias="userLogVO"			type="aramframework.com.sym.log.ulg.domain.UserLogVO"/>
 		<typeAlias alias="webLogVO"				type="aramframework.com.sym.log.wlg.domain.WebLogVO"/>
 		<typeAlias alias="bkmkMenuManageVO"		type="aramframework.com.sym.mnu.bmm.domain.BkmkMenuManageVO"/>
@@ -82,12 +78,8 @@
 		<typeAlias alias="indvdlPgeConfVO"		type="aramframework.com.uss.mpe.domain.IndvdlPgeConfVO"/>
 		<typeAlias alias="indvdlPgeCntntsVO"	type="aramframework.com.uss.mpe.domain.IndvdlPgeCntntsVO"/>
 		
-		<typeAlias alias="administrationWordVO"	type="aramframework.com.uss.olh.awm.domain.AdministrationWordVO"/>
 		<typeAlias alias="faqManageVO"			type="aramframework.com.uss.olh.faq.domain.FaqManageVO"/>
-		<typeAlias alias="hpcmManageVO"			type="aramframework.com.uss.olh.hpc.domain.HpcmManageVO"/>
-		<typeAlias alias="onlineManualVO"		type="aramframework.com.uss.olh.omm.domain.OnlineManualVO"/>
 		<typeAlias alias="qnaManageVO"			type="aramframework.com.uss.olh.qna.domain.QnaManageVO"/>
-		<typeAlias alias="wordDicaryVO"			type="aramframework.com.uss.olh.wor.domain.WordDicaryVO"/>
 		
 		<typeAlias alias="cpyrhtPrtcPolicyVO" 	type="aramframework.com.uss.sam.cpy.domain.CpyrhtPrtcPolicyVO"/>
 		<typeAlias alias="indvdlInfoPolicyVO" 	type="aramframework.com.uss.sam.ipm.domain.IndvdlInfoPolicyVO"/>

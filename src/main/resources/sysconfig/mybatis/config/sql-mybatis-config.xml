@@ -31,25 +31,10 @@
   		<typeAlias alias="nameCardUseVO"		type="aramframework.com.cop.ncm.domain.NameCardUseVO"/>
  		<typeAlias alias="scrapVO"				type="aramframework.com.cop.scp.domain.ScrapVO"/>
  		<typeAlias alias="smsVO"				type="aramframework.com.cop.sms.domain.SmsVO"/>
- 		<typeAlias alias="deptJobVO"			type="aramframework.com.cop.smt.djm.domain.DeptJobVO"/>
- 		<typeAlias alias="deptJobBxVO"			type="aramframework.com.cop.smt.djm.domain.DeptJobBxVO"/>
  		<typeAlias alias="diaryManageVO"		type="aramframework.com.cop.smt.dsm.domain.DiaryManageVO"/>
- 		<typeAlias alias="leaderSchdulVO"		type="aramframework.com.cop.smt.lsm.domain.LeaderSchdulVO"/>
- 		<typeAlias alias="leaderSttusVO"		type="aramframework.com.cop.smt.lsm.domain.LeaderSttusVO"/>
- 		<typeAlias alias="memoReprtVO"			type="aramframework.com.cop.smt.mrm.domain.MemoReprtVO"/>
- 		<typeAlias alias="memoTodoVO"			type="aramframework.com.cop.smt.mtm.domain.MemoTodoVO"/>
  		<typeAlias alias="schdulManageVO"		type="aramframework.com.cop.smt.sim.domain.SchdulManageVO"/>
- 		<typeAlias alias="wikMnthngReprtVO"		type="aramframework.com.cop.smt.wmr.domain.WikMnthngReprtVO"/>
  		<typeAlias alias="templateInfVO"		type="aramframework.com.cop.tpl.domain.TemplateInfVO"/>
 
- 		<typeAlias alias="knoAppraisalVO"		type="aramframework.com.dam.app.domain.KnoAppraisalVO"/>
- 		<typeAlias alias="mapMaterialVO"		type="aramframework.com.dam.map.mat.domain.MapMaterialVO"/>
- 		<typeAlias alias="mapTeamVO"			type="aramframework.com.dam.map.tea.domain.MapTeamVO"/>
- 		<typeAlias alias="knoManagementVO"		type="aramframework.com.dam.mgm.domain.KnoManagementVO"/>
- 		<typeAlias alias="knoPersonalVO"		type="aramframework.com.dam.per.domain.KnoPersonalVO"/>
- 		<typeAlias alias="requestOfferVO"		type="aramframework.com.dam.spe.req.domain.RequestOfferVO"/>
- 		<typeAlias alias="knoSpecialistVO"		type="aramframework.com.dam.spe.spe.domain.KnoSpecialistVO"/>
- 		
  		<typeAlias alias="authorVO"				type="aramframework.com.sec.arm.domain.AuthorVO"/>
  		<typeAlias alias="authorResourceVO"		type="aramframework.com.sec.arm.domain.AuthorResourceVO"/>
  		<typeAlias alias="deptVO"				type="aramframework.com.sec.dpt.domain.DeptVO"/>
@@ -57,14 +42,6 @@
  		<typeAlias alias="groupVO"				type="aramframework.com.sec.grp.domain.GroupVO"/>
  		<typeAlias alias="groupAuthorVO"		type="aramframework.com.sec.grp.domain.GroupAuthorVO"/>
  		<typeAlias alias="resourceVO"			type="aramframework.com.sec.rmt.domain.ResourceVO"/>
-
- 		<typeAlias alias="cntcInsttVO"			type="aramframework.com.ssi.syi.iis.domain.CntcInsttVO"/>
- 		<typeAlias alias="cntcServiceVO"		type="aramframework.com.ssi.syi.iis.domain.CntcServiceVO"/>
- 		<typeAlias alias="cntcSystemVO"			type="aramframework.com.ssi.syi.iis.domain.CntcSystemVO"/>
- 		<typeAlias alias="cntcMessageVO"		type="aramframework.com.ssi.syi.ims.domain.CntcMessageVO"/>
- 		<typeAlias alias="cntcMessageItemVO"	type="aramframework.com.ssi.syi.ims.domain.CntcMessageItemVO"/>
- 		<typeAlias alias="cntcSttusVO"			type="aramframework.com.ssi.syi.ist.domain.CntcSttusVO"/>
- 		<typeAlias alias="systemCntcVO"			type="aramframework.com.ssi.syi.sim.domain.SystemCntcVO"/>
 
  		<typeAlias alias="statsVO"				type="aramframework.com.sts.com.StatsVO"/>
  		<typeAlias alias="dtaUseStatsVO"		type="aramframework.com.sts.dst.domain.DtaUseStatsVO"/>
@@ -105,36 +82,6 @@
 		
 		<typeAlias alias="loginPolicyVO"		type="aramframework.com.uat.uap.domain.LoginPolicyVO"/>
 		<typeAlias alias="loginVO"				type="aramframework.com.uat.uia.domain.LoginVO"/>
-
-		<typeAlias alias="annvrsryManageVO"		type="aramframework.com.uss.ion.ans.domain.AnnvrsryManageVO"/>
-		<typeAlias alias="bannerVO"				type="aramframework.com.uss.ion.bnr.domain.BannerVO"/>
-		<typeAlias alias="bndtManageVO"			type="aramframework.com.uss.ion.bnt.domain.BndtManageVO"/>
-		<typeAlias alias="bndtCeckManageVO"		type="aramframework.com.uss.ion.bnt.domain.BndtCeckManageVO"/>
-		<typeAlias alias="bndtDiaryVO"			type="aramframework.com.uss.ion.bnt.domain.BndtDiaryVO"/>
-		<typeAlias alias="ctsnnManageVO"		type="aramframework.com.uss.ion.ctn.domain.CtsnnManageVO"/>
-		<typeAlias alias="eventCmpgnVO"			type="aramframework.com.uss.ion.ecc.domain.EventCmpgnVO"/>
-		<typeAlias alias="tnextrlHrInfoVO"		type="aramframework.com.uss.ion.ecc.domain.TnextrlHrInfoVO"/>
-		<typeAlias alias="eventManageVO"		type="aramframework.com.uss.ion.evt.domain.EventManageVO"/>
-		<typeAlias alias="eventAtdrnVO"			type="aramframework.com.uss.ion.evt.domain.EventAtdrnVO"/>
-		<typeAlias alias="intnetSvcGuidanceVO"	type="aramframework.com.uss.ion.isg.domain.IntnetSvcGuidanceVO"/>
-		<typeAlias alias="infrmlSanctnVO"		type="aramframework.com.uss.ion.ism.domain.InfrmlSanctnVO"/>
-		<typeAlias alias="loginScrinImageVO"	type="aramframework.com.uss.ion.lsi.domain.LoginScrinImageVO"/>
-		<typeAlias alias="mainImageVO"			type="aramframework.com.uss.ion.msi.domain.MainImageVO"/>
-		<typeAlias alias="mtgPlaceManageVO"		type="aramframework.com.uss.ion.mtg.domain.MtgPlaceManageVO"/>
-		<typeAlias alias="mtgPlaceResveVO"		type="aramframework.com.uss.ion.mtg.domain.MtgPlaceResveVO"/>
-		<typeAlias alias="mtgPlaceFxtrsVO"		type="aramframework.com.uss.ion.mtg.domain.MtgPlaceFxtrsVO"/>
-		<typeAlias alias="notificationVO"		type="aramframework.com.uss.ion.noi.domain.NotificationVO"/>
-		<typeAlias alias="newsManageVO"			type="aramframework.com.uss.ion.nws.domain.NewsManageVO"/>
-		<typeAlias alias="popupManageVO"		type="aramframework.com.uss.ion.pwm.domain.PopupManageVO"/>
-		<typeAlias alias="recomendSiteVO"		type="aramframework.com.uss.ion.rec.domain.RecomendSiteVO"/>
-		<typeAlias alias="rssInfoVO"			type="aramframework.com.uss.ion.rsn.domain.RssInfoVO"/>
-		<typeAlias alias="rssManageVO"			type="aramframework.com.uss.ion.rss.domain.RssManageVO"/>
-		<typeAlias alias="rwardManageVO"		type="aramframework.com.uss.ion.rwd.domain.RwardManageVO"/>
-		<typeAlias alias="siteManageVO"			type="aramframework.com.uss.ion.sit.domain.SiteManageVO"/>
-		<typeAlias alias="userAbsnceVO"			type="aramframework.com.uss.ion.uas.domain.UserAbsnceVO"/>
-		<typeAlias alias="unityLinkVO"			type="aramframework.com.uss.ion.ulm.domain.UnityLinkVO"/>
-		<typeAlias alias="vcatnManageVO"		type="aramframework.com.uss.ion.vct.domain.VcatnManageVO"/>
-		<typeAlias alias="indvdlYrycManageVO"	type="aramframework.com.uss.ion.vct.domain.IndvdlYrycManageVO"/>
 		
 		<typeAlias alias="indvdlPgeConfVO"		type="aramframework.com.uss.mpe.domain.IndvdlPgeConfVO"/>
 		<typeAlias alias="indvdlPgeCntntsVO"	type="aramframework.com.uss.mpe.domain.IndvdlPgeCntntsVO"/>
@@ -146,18 +93,6 @@
 		<typeAlias alias="qnaManageVO"			type="aramframework.com.uss.olh.qna.domain.QnaManageVO"/>
 		<typeAlias alias="wordDicaryVO"			type="aramframework.com.uss.olh.wor.domain.WordDicaryVO"/>
 		
-		<typeAlias alias="cnsltManageVO"		type="aramframework.com.uss.olp.cns.domain.CnsltManageVO"/>
-		<typeAlias alias="meetingManageVO"		type="aramframework.com.uss.olp.mgt.domain.MeetingManageVO"/>
-		<typeAlias alias="onlinePollManageVO"	type="aramframework.com.uss.olp.opm.domain.OnlinePollManageVO"/>
-		<typeAlias alias="onlinePollItemVO"		type="aramframework.com.uss.olp.opm.domain.OnlinePollItemVO"/>
-		<typeAlias alias="onlinePollPartcptnVO"	type="aramframework.com.uss.olp.opp.domain.OnlinePollPartcptnVO"/>
-		<typeAlias alias="qustnrItemManageVO"	type="aramframework.com.uss.olp.qim.domain.QustnrItemManageVO"/>
-		<typeAlias alias="qustnrManageVO"		type="aramframework.com.uss.olp.qmc.domain.QustnrManageVO"/>
-		<typeAlias alias="qustnrQestnManageVO"	type="aramframework.com.uss.olp.qqm.domain.QustnrQestnManageVO"/>
-		<typeAlias alias="qustnrRespondInfoVO"	type="aramframework.com.uss.olp.qri.domain.QustnrRespondInfoVO"/>
-		<typeAlias alias="qustnrRespondManageVO" type="aramframework.com.uss.olp.qrm.domain.QustnrRespondManageVO"/>
-		<typeAlias alias="qustnrTmplatManageVO" type="aramframework.com.uss.olp.qtm.domain.QustnrTmplatManageVO"/>
-		
 		<typeAlias alias="cpyrhtPrtcPolicyVO" 	type="aramframework.com.uss.sam.cpy.domain.CpyrhtPrtcPolicyVO"/>
 		<typeAlias alias="indvdlInfoPolicyVO" 	type="aramframework.com.uss.sam.ipm.domain.IndvdlInfoPolicyVO"/>
 		<typeAlias alias="stplatManageVO" 		type="aramframework.com.uss.sam.stp.domain.StplatManageVO"/>
@@ -167,23 +102,6 @@
 		<typeAlias alias="userManageVO" 		type="aramframework.com.uss.umt.domain.UserManageVO"/>
 		<typeAlias alias="stplatVO" 			type="aramframework.com.uss.umt.domain.StplatVO"/>
 
-		<typeAlias alias="dbMntrngVO" 			type="aramframework.com.utl.sys.dbm.domain.DbMntrngVO"/>
-		<typeAlias alias="dbMntrngLogVO"		type="aramframework.com.utl.sys.dbm.domain.DbMntrngLogVO"/>
-		<typeAlias alias="fileSysMntrngVO" 		type="aramframework.com.utl.sys.fsm.domain.FileSysMntrngVO"/>
-		<typeAlias alias="fileSysMntrngLogVO"	type="aramframework.com.utl.sys.fsm.domain.FileSysMntrngLogVO"/>
-		<typeAlias alias="httpMntrngVO" 		type="aramframework.com.utl.sys.htm.domain.HttpMntrngVO"/>
-		<typeAlias alias="httpMntrngLogVO" 		type="aramframework.com.utl.sys.htm.domain.HttpMntrngLogVO"/>
-		<typeAlias alias="ntwrkSvcMntrngVO" 	type="aramframework.com.utl.sys.nsm.domain.NtwrkSvcMntrngVO"/>
-		<typeAlias alias="ntwrkSvcMntrngLogVO" 	type="aramframework.com.utl.sys.nsm.domain.NtwrkSvcMntrngLogVO"/>
-		<typeAlias alias="processMonVO" 		type="aramframework.com.utl.sys.prm.domain.ProcessMonVO"/>
-		<typeAlias alias="processMonLogVO" 		type="aramframework.com.utl.sys.prm.domain.ProcessMonLogVO"/>
-		<typeAlias alias="proxySvcVO" 			type="aramframework.com.utl.sys.pxy.domain.ProxySvcVO"/>
-		<typeAlias alias="proxySvcLogVO" 		type="aramframework.com.utl.sys.pxy.domain.ProxySvcLogVO"/>
-		<typeAlias alias="serverResrceMntrngVO" type="aramframework.com.utl.sys.srm.domain.ServerResrceMntrngVO"/>
-		<typeAlias alias="synchrnServerVO" 		type="aramframework.com.utl.sys.ssy.domain.SynchrnServerVO"/>
-		<typeAlias alias="trsmrcvMntrngVO" 		type="aramframework.com.utl.sys.trm.domain.TrsmrcvMntrngVO"/>
-		<typeAlias alias="trsmrcvMntrngLogVO"	type="aramframework.com.utl.sys.trm.domain.TrsmrcvMntrngLogVO"/>
-		
 <!-- 
  		<package name="aramframework"/>
 -->		

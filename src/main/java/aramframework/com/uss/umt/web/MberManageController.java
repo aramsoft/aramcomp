@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -114,9 +113,8 @@ public class MberManageController {
 	@RequestMapping("/uss/umt/sbscrbMberView.do")
 	@Secured("ROLE_ANONYMOUS")
 	public String sbscrbMberView(
-			HttpServletRequest request, 
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MberManageVO mberManageVO,
+			HttpServletRequest request, 
 			ModelMap model) {
 		
 		if (!"".equals(request.getParameter("realname"))) {
@@ -145,7 +143,6 @@ public class MberManageController {
 	@RequestMapping("/uss/umt/sbscrbMber.do")
 	@Secured("ROLE_ANONYMOUS")
 	public String sbscrbMber(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MberManageVO mberManageVO,
 			ModelMap model) {
 
@@ -177,8 +174,8 @@ public class MberManageController {
 	@RequestMapping("/uss/umt/registMber.do")
 	@Secured("ROLE_ADMIN")
 	public String registMber(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute MberManageVO mberManageVO) {
+			@ModelAttribute MberManageVO mberManageVO,
+			ModelMap model) {
 
 		fill_common_code();
 
@@ -193,7 +190,6 @@ public class MberManageController {
 	@RequestMapping("/uss/umt/insertMber.do")
 	@Secured("ROLE_ADMIN")
 	public String insertMber(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MberManageVO mberManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -206,7 +202,7 @@ public class MberManageController {
 		mberManageService.insertMber(mberManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, "/uss/umt/listMber.do");
+	    return WebUtil.redirectJsp(model, mberManageVO, "/uss/umt/listMber.do");
 	}
 
 	/**
@@ -217,7 +213,6 @@ public class MberManageController {
 	@RequestMapping("/uss/umt/editMber.do")
 	@Secured("ROLE_USER")
 	public String editMber(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MberManageVO mberManageVO, 
 			ModelMap model) {
 
@@ -239,7 +234,6 @@ public class MberManageController {
 	@RequestMapping("/uss/umt/updateMber.do")
 	@Secured("ROLE_USER")
 	public String updateMber(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MberManageVO mberManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -252,7 +246,7 @@ public class MberManageController {
 		mberManageService.updateMber(mberManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, "/uss/umt/editMber.do?uniqId="+mberManageVO.getUniqId());
+	    return WebUtil.redirectJsp(model, mberManageVO, "/uss/umt/editMber.do?uniqId="+mberManageVO.getUniqId());
 	}
 
 	/**
@@ -263,7 +257,6 @@ public class MberManageController {
 	@RequestMapping(value = "/uss/umt/editMberPassword.do")
 	@Secured("ROLE_USER")
 	public String editMberPassword(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MberManageVO mberManageVO, 
 			ModelMap model) {
 		
@@ -281,9 +274,8 @@ public class MberManageController {
 	@RequestMapping(value = "/uss/umt/updateMberPassword.do")
 	@Secured("ROLE_USER")
 	public String updateMberPassword(
-			HttpServletRequest request, 
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MberManageVO mberManageVO, 
+			HttpServletRequest request, 
 			ModelMap model) 
 	throws Exception {
 		
@@ -317,7 +309,7 @@ public class MberManageController {
 		} 
 		
 		model.addAttribute("message", MessageHelper.getMessage(message));
-	    return WebUtil.redirectJsp(model, "/uss/umt/editMber.do?uniqId="+mberManageVO.getUniqId());
+	    return WebUtil.redirectJsp(model, mberManageVO, "/uss/umt/editMber.do?uniqId="+mberManageVO.getUniqId());
 	}
 
 	/**
@@ -329,14 +321,13 @@ public class MberManageController {
 	@RequestMapping("/uss/umt/deleteMber.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteMber(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MberManageVO mberManageVO, 
 			ModelMap model) {
 
 		mberManageService.deleteMber(mberManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, "/uss/umt/listMber.do");
+	    return WebUtil.redirectJsp(model, mberManageVO, "/uss/umt/listMber.do");
 	}
 
 	/**

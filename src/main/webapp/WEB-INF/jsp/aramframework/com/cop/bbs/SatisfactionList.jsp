@@ -42,7 +42,7 @@
 <DIV id="main" style="width:100%;"> 
 
 <div class="content_title">
- 	<h2>만족도조사</h2> - <c:out value="${satisfactionVO.searchVO.totalRecordCount}"/>개
+ 	<h2>만족도조사</h2> - <c:out value="${satisfactionVO.totalRecordCount}"/>개
  	&nbsp;&nbsp;&nbsp;(전체 :
  	<c:choose>
 	<c:when test="${summary> 4.0}"><span title="<c:out value='${summary}'/>">★★★★★</span></c:when>

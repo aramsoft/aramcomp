@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -75,9 +74,8 @@ public class BkmkMenuManageController {
 	@RequestMapping("/sym/mnu/bmm/deleteListBkmkMenu.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteListBkmkMenu(
-			@RequestParam String checkMenuIds,
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BkmkMenuManageVO bkmkMenuManageVO, 
+			@RequestParam String checkMenuIds,
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -91,7 +89,7 @@ public class BkmkMenuManageController {
 		}
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/sym/mnu/bmm/listBkmkMenu.do");
+        return WebUtil.redirectJsp(model, bkmkMenuManageVO, "/sym/mnu/bmm/listBkmkMenu.do");
 	}
 
 	/**
@@ -102,8 +100,8 @@ public class BkmkMenuManageController {
 	@RequestMapping("/sym/mnu/bmm/registBkmkMenu.do")
 	@Secured("ROLE_ADMIN")
 	public String addBkmkMenuManage(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute BkmkMenuManageVO bkmkMenuManageVO) {
+			@ModelAttribute BkmkMenuManageVO bkmkMenuManageVO,
+			ModelMap model) {
 
 		if (!bkmkMenuManageVO.getMenuId().equals("")) {
 			bkmkMenuManageVO.setProgrmStrePath(bkmkMenuManageService.selectUrl(bkmkMenuManageVO));
@@ -120,7 +118,6 @@ public class BkmkMenuManageController {
 	@RequestMapping("/sym/mnu/bmm/insertBkmkMenu.do")
 	@Secured("ROLE_ADMIN")
 	public String insertBkmkMenu(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BkmkMenuManageVO bkmkMenuManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -136,7 +133,7 @@ public class BkmkMenuManageController {
 		bkmkMenuManageService.insertBkmkMenuManage(bkmkMenuManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/sym/mnu/bmm/listBkmkMenu.do");
+        return WebUtil.redirectJsp(model, bkmkMenuManageVO, "/sym/mnu/bmm/listBkmkMenu.do");
 	}
 
 	/**

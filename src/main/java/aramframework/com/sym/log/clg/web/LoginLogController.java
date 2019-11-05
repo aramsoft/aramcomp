@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.log.clg.domain.LoginLogVO;
 import aramframework.com.sym.log.clg.service.LoginLogService;
@@ -61,7 +60,6 @@ public class LoginLogController {
 	@RequestMapping(value = "/sym/log/clg/detailLoginLog.do")
 	@Secured("ROLE_ADMIN")
 	public String detailLoginLog(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute LoginLogVO loginLogVO,
 			ModelMap model) {
 

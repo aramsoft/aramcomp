@@ -122,9 +122,9 @@ var imgpath = "${pageContext.request.contextPath}/images/aramframework/com/cmm/u
 </table>
 
 <!-- 검색조건 유지 -->
-<input type="hidden" name="searchCondition" value="${searchVO.searchCondition}" />
-<input type="hidden" name="searchKeyword"   value="${searchVO.searchKeyword}" />
-<input type="hidden" name="pageIndex"       value="${searchVO.pageIndex}" />
+<input type="hidden" name="searchCondition" value="${menuCreateVO.searchCondition}" />
+<input type="hidden" name="searchKeyword"   value="${menuCreateVO.searchKeyword}" />
+<input type="hidden" name="pageIndex"       value="${menuCreateVO.pageIndex}" />
 <!-- 검색조건 유지 -->
 </form:form>
 

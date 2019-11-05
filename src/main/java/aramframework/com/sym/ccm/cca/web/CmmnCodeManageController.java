@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -73,7 +72,6 @@ public class CmmnCodeManageController {
 	 */
 	@RequestMapping(value = "/sym/ccm/cca/detailCmmnCode.do")
 	public String detailCmmnCode(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CmmnCodeVO cmmnCodeVO,
 			ModelMap model) {
 
@@ -90,7 +88,6 @@ public class CmmnCodeManageController {
 	@RequestMapping(value = "/sym/ccm/cca/registCmmnCode.do")
 	@Secured("ROLE_ADMIN")
 	public String registCmmnCode(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CmmnCodeVO cmmnCodeVO, 
 			ModelMap model) {
 
@@ -110,7 +107,6 @@ public class CmmnCodeManageController {
 	@RequestMapping(value = "/sym/ccm/cca/insertCmmnCode.do")
 	@Secured("ROLE_ADMIN")
 	public String insertCmmnCode(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CmmnCodeVO cmmnCodeVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
@@ -126,7 +122,7 @@ public class CmmnCodeManageController {
 		cmmnCodeManageService.insertCmmnCode(cmmnCodeVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/sym/ccm/cca/listCmmnCode.do");
+        return WebUtil.redirectJsp(model, cmmnCodeVO, "/sym/ccm/cca/listCmmnCode.do");
 	}
 
 	/**
@@ -137,7 +133,6 @@ public class CmmnCodeManageController {
 	@RequestMapping(value = "/sym/ccm/cca/editCmmnCode.do")
 	@Secured("ROLE_ADMIN")
 	public String editCmmnCode(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CmmnCodeVO cmmnCodeVO,
 			ModelMap model) {
 
@@ -154,7 +149,6 @@ public class CmmnCodeManageController {
 	@RequestMapping(value = "/sym/ccm/cca/updateCmmnCode.do")
 	@Secured("ROLE_ADMIN")
 	public String updateCmmnCode(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CmmnCodeVO cmmnCodeVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
@@ -170,7 +164,7 @@ public class CmmnCodeManageController {
 		cmmnCodeManageService.updateCmmnCode(cmmnCodeVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/sym/ccm/cca/listCmmnCode.do");
+        return WebUtil.redirectJsp(model, cmmnCodeVO, "/sym/ccm/cca/listCmmnCode.do");
 	}
 
 	/**
@@ -181,14 +175,13 @@ public class CmmnCodeManageController {
 	@RequestMapping(value = "/sym/ccm/cca/deleteCmmnCode.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteCmmnCode(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CmmnCodeVO cmmnCodeVO, 
 			ModelMap model) {
 
 		cmmnCodeManageService.deleteCmmnCode(cmmnCodeVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/sym/ccm/cca/listCmmnCode.do");
+        return WebUtil.redirectJsp(model, cmmnCodeVO, "/sym/ccm/cca/listCmmnCode.do");
 	}
 
 }

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sec.arm.domain.AuthorVO;
@@ -73,16 +72,16 @@ public class DeptAuthorController {
 	@RequestMapping(value = "/sec/dpt/insertDeptAuthor.do")
 	@Secured("ROLE_ADMIN")
 	public String insertDeptAuthor(
+			@ModelAttribute DeptAuthorVO deptAuthorVO,
 			@RequestParam String userIds, 
 			@RequestParam String authorCodes,
 			@RequestParam String regYns, 
-			@ModelAttribute SearchVO searchVO,
 			ModelMap model) {
 
 		deptAuthorService.insertDeptAuthors(userIds, authorCodes, regYns);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/sec/dpt/listDeptAuthor.do");
+		return WebUtil.redirectJsp(model, deptAuthorVO, "/sec/dpt/listDeptAuthor.do");
 	}
 
 	/**
@@ -93,14 +92,14 @@ public class DeptAuthorController {
 	@RequestMapping(value = "/sec/dpt/deleteDeptAuthor.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteDeptAuthor(
+			@ModelAttribute DeptAuthorVO deptAuthorVO,
 			@RequestParam String userIds, 
-			@ModelAttribute SearchVO searchVO,
 			ModelMap model) {
 
 		deptAuthorService.deleteDeptAuthors(userIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/sec/dpt/listDeptAuthor.do");
+		return WebUtil.redirectJsp(model, deptAuthorVO, "/sec/dpt/listDeptAuthor.do");
 	}
 
 }

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -78,7 +77,6 @@ public class MenuCreateController {
 	@RequestMapping(value = "/sym/mnu/mcm/detailMenuCreate.do")
 	@Secured("ROLE_ADMIN")
 	public String detailMenuCreate(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MenuCreateVO menuCreateVO, 
 			ModelMap model) {
 		
@@ -97,10 +95,9 @@ public class MenuCreateController {
 	@RequestMapping("/sym/mnu/mcm/insertMenuCreate.do")
 	@Secured("ROLE_ADMIN")
 	public String insertMenuCreate(
+			@ModelAttribute MenuCreateVO menuCreateVO, 
 			@RequestParam String checkedAuthorForInsert,
 			@RequestParam String checkedMenuNoForInsert, 
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute MenuCreateVO menuCreateVO, 
 			ModelMap model) {
 
 		String[] insertMenuNo = checkedMenuNoForInsert.split(",");
@@ -111,7 +108,7 @@ public class MenuCreateController {
 			model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		}
 
-        return WebUtil.redirectJsp(model, "/sym/mnu/mcm/detailMenuCreate.do?authorCode="+menuCreateVO.getAuthorCode());
+        return WebUtil.redirectJsp(model, menuCreateVO, "/sym/mnu/mcm/detailMenuCreate.do?authorCode="+menuCreateVO.getAuthorCode());
 	}
 
 	/* 메뉴사이트맵 생성조회 */
@@ -123,7 +120,6 @@ public class MenuCreateController {
 	@RequestMapping(value = "/sym/mnu/mcm/detailMenuCreateSiteMap.do")
 	@Secured("ROLE_ADMIN")
 	public String detailMenuCreatSiteMap(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MenuSiteMapVO menuSiteMapVO, 
 			ModelMap model) {
 
@@ -144,7 +140,6 @@ public class MenuCreateController {
 	@RequestMapping(value = "/sym/mnu/mcm/insertMenuCreateSiteMap.do")
 	@Secured("ROLE_ADMIN")
 	public String insertMenuCreateSiteMap(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MenuSiteMapVO menuSiteMapVO, 
 			@RequestParam String valueHtml,
 			ModelMap model) {
@@ -163,7 +158,7 @@ public class MenuCreateController {
 			model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		}
 	
-        return WebUtil.redirectJsp(model, "/sym/mnu/mcm/detailMenuCreate.do?authorCode="+menuSiteMapVO.getAuthorCode());
+        return WebUtil.redirectJsp(model, menuSiteMapVO, "/sym/mnu/mcm/detailMenuCreate.do?authorCode="+menuSiteMapVO.getAuthorCode());
 	}
 
 }

@@ -20,14 +20,14 @@ public interface SchdulManageMapper {
 	/**
 	 * 주어진 조건에 맞는 사용자를 불러온다.
 	 * 
-	 * @param searchVO
+	 * @param baseVO
 	 */
 	public List<EgovMap> selectEmplyrList(BaseVO baseVO);
 	
 	/**
 	 * 사용자 목록에 대한 전체 건수를 조회한다.
 	 * 
-	 * @param searchVO
+	 * @param baseVO
 	 */
 	public int selectEmplyrListCnt(BaseVO baseVO);
 
@@ -48,14 +48,14 @@ public interface SchdulManageMapper {
 	/**
 	 * 일정 목록을 조회한다.
 	 * 
-	 * @param searchVO
+	 * @param schdulManageVO
 	 */
 	public List<EgovMap> selectSchdulManageList(SchdulManageVO schdulManageVO);
 
 	/**
 	 * 일정를(을) 목록 전체 건수를(을) 조회한다.
 	 * 
-	 * @param searchVO
+	 * @param schdulManageVO
 	 */
 	public int selectSchdulManageListCnt(SchdulManageVO schdulManageVO);
 

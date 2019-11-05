@@ -88,8 +88,7 @@
 	</tr>
 	</c:if>
 	
-  	<c:set var="searchVO" value="${templateInfVO}"/>
- 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
+  	<c:set var="startIndex" value="${(templateInfVO.pageIndex-1) * templateInfVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
 
 	<tr <c:if test="${result.useAt == 'Y'}">
@@ -97,7 +96,7 @@
 		</c:if>>
 
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${templateInfVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 	    <td class="lt_text3"><c:out value="${result.tmplatNm}"/></td>
@@ -131,14 +130,14 @@ function press(event) {
  * 페이징 처리 함수
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
-    var varForm = document.getElementById("searchVO");
+    var varForm = document.getElementById("templateInfVO");
     varForm.pageIndex.value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/cop/tpl/listTemplatePopup.do";
     varForm.submit();
 }
 
 function fn_aram_search(){
-    var varForm = document.getElementById("searchVO");
+    var varForm = document.getElementById("templateInfVO");
     varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/cop/tpl/listTemplatePopup.do";
     varForm.submit();

@@ -21,7 +21,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.constant.AramProperties;
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
@@ -86,14 +85,14 @@ public class SndngMailController {
 	@RequestMapping(value = "/cop/ems/deleteSndngMailList.do")
 	@Secured("ROLE_USER")
 	public String deleteSndngMailList(
+			@ModelAttribute SndngMailVO sndngMailVO, 
 			@RequestParam String messageIds, 
-			@ModelAttribute SearchVO searchVO,
 			ModelMap model) {
 
 		sndngMailService.deleteSndngMails(messageIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/cop/ems/listSndngMail.do");
+		return WebUtil.redirectJsp(model, sndngMailVO, "/cop/ems/listSndngMail.do");
 	}
 	
 	/**
@@ -104,8 +103,8 @@ public class SndngMailController {
 	@RequestMapping(value = "/cop/ems/detailSndngMail.do")
 	@Secured("ROLE_USER")
 	public String detailSndngMail(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute SndngMailVO sndngMailVO) {
+			@ModelAttribute SndngMailVO sndngMailVO, 
+			ModelMap model) {
 
 		// 1. 발송메일을 상세 조회한다.
 		sndngMailService.selectSndngMail(sndngMailVO);
@@ -122,7 +121,6 @@ public class SndngMailController {
 	@RequestMapping(value = "/cop/ems/detailSndngMailXml.do")
 	@Secured("ROLE_USER")
 	public void detailSndngMailXml(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SndngMailVO sndngMailVO, 
 			HttpServletResponse response) 
 	throws Exception {
@@ -176,8 +174,8 @@ public class SndngMailController {
     @RequestMapping(value="/cop/ems/registSndngMail.do")
 	@Secured("ROLE_USER")
     public String registSndngMail(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute SndngMailVO sndngMailVO) {
+			@ModelAttribute SndngMailVO sndngMailVO, 
+			ModelMap model) {
     	
 		return WebUtil.adjustViewName("/cop/ems/MailRegist");
     }
@@ -191,9 +189,8 @@ public class SndngMailController {
     @RequestMapping(value="/cop/ems/insertSndngMail.do")
 	@Secured("ROLE_USER")
 	public String insertSndngMail(
-			MultipartHttpServletRequest multiRequest,
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SndngMailVO sndngMailVO,
+			MultipartHttpServletRequest multiRequest,
 			ModelMap model) 
     throws Exception {
     	
@@ -218,7 +215,7 @@ public class SndngMailController {
     	
 		if (link.equals("N")) {
 			model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		    return WebUtil.redirectJsp(model, "/cop/ems/listSndngMail.do");
+		    return WebUtil.redirectJsp(model, sndngMailVO, "/cop/ems/listSndngMail.do");
 		} else {
 			model.addAttribute("closeYn", "Y");
 			return WebUtil.adjustViewName("/cop/ems/MailRegist");
@@ -233,14 +230,13 @@ public class SndngMailController {
 	@RequestMapping(value = "/cop/ems/deleteSndngMail.do")
 	@Secured("ROLE_USER")
 	public String deleteSndngMail(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SndngMailVO sndngMailVO, 
 			ModelMap model) {
 
 		sndngMailService.deleteSndngMail(sndngMailVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/cop/ems/listSndngMail.do");
+		return WebUtil.redirectJsp(model, sndngMailVO, "/cop/ems/listSndngMail.do");
 	}
 
 }

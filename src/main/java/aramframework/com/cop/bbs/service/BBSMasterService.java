@@ -240,7 +240,7 @@ public class BBSMasterService extends EgovAbstractServiceImpl {
 	/**
 	 * 사용중이지 않은 게시판 속성 정보의 목록을 조회 한다.
 	 * 
-	 * @param searchVO
+	 * @param boardMasterVO
 	 */
 	public List<EgovMap> selectNotUsedBdMstrList(BoardMasterVO boardMasterVO) {
 		return bbsMasterMapper.selectNotUsedBdMstrList(boardMasterVO);
@@ -249,7 +249,7 @@ public class BBSMasterService extends EgovAbstractServiceImpl {
 	/**
 	 * 사용중이지 않은 게시판 속성 정보의 목록 총갯수을 조회 한다.
 	 * 
-	 * @param searchVO
+	 * @param boardMasterVO
 	 */
 	public int selectNotUsedBdMstrListCnt(BoardMasterVO boardMasterVO) {
 		return bbsMasterMapper.selectNotUsedBdMstrListCnt(boardMasterVO);
@@ -258,9 +258,9 @@ public class BBSMasterService extends EgovAbstractServiceImpl {
 	/**
 	 * 템플릿의 유효여부를 점검한다.
 	 * 
-	 * @param searchVO
+	 * @param boardMasterVO
 	 */
-	public void validateTemplate(BoardMasterVO searchVO) {
+	public void validateTemplate(BoardMasterVO boardMasterVO) {
 		egovLogger.debug("validateTemplate method ignored...");
 	}
 

@@ -11,6 +11,7 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
 import aramframework.com.cmm.domain.ComCodeVO;
+import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 교차접속 스크립트 공격 취약성 방지(파라미터 문자열 교체)
@@ -25,7 +26,8 @@ public class WebUtil {
 	
 	final static String comDefaultPath = "aramframework/com";
 	
-	public static String redirectJsp(ModelMap model, String redirectUrl) {
+	public static String redirectJsp(ModelMap model, SearchVO searchVO, String redirectUrl) {
+		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("redirectURL", redirectUrl);
 		return "aramframework/com/cmm/redirect";
 	}

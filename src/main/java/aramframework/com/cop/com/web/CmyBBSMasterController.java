@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.ComponentChecker;
@@ -102,7 +101,6 @@ public class CmyBBSMasterController {
 	@RequestMapping("/cop/com/registBdMstrByTrget.do")
 	@Secured("ROLE_USER")
 	public String registBdMstrByTrget(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardMasterVO boardMasterVO, 
 			ModelMap model) {
 
@@ -133,7 +131,6 @@ public class CmyBBSMasterController {
 	@RequestMapping("/cop/com/insertBdMstrByTrget.do")
 	@Secured("ROLE_USER")
 	public String insertBdMstrByTrget(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardMasterVO boardMasterVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -159,7 +156,7 @@ public class CmyBBSMasterController {
 		bbsMasterService.insertBBSMastetInf(boardMasterVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/cop/com/listBdMstrByTrget.do");
+		return WebUtil.redirectJsp(model, boardMasterVO, "/cop/com/listBdMstrByTrget.do");
 	}
 
 	/**
@@ -170,10 +167,9 @@ public class CmyBBSMasterController {
 	@RequestMapping("/cop/com/editBdMstrByTrget.do")
 	@Secured("ROLE_USER")
 	public String editBdMstrByTrget(
-			HttpServletRequest request,
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardMasterVO boardMasterVO, 
 			@ModelAttribute BoardUseInfVO boardUseInfVO, 
+			HttpServletRequest request,
 			ModelMap model) {
 
 		checkAuthorityManager(); // server-side 권한 확인
@@ -217,7 +213,6 @@ public class CmyBBSMasterController {
 	@RequestMapping("/cop/com/updateBdMstrByTrget.do")
 	@Secured("ROLE_USER")
 	public String updateBdMstrByTrget(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardMasterVO boardMasterVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -234,7 +229,7 @@ public class CmyBBSMasterController {
 		bbsMasterService.updateBBSMasterInf(boardMasterVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/cop/com/listBdMstrByTrget.do");
+		return WebUtil.redirectJsp(model, boardMasterVO, "/cop/com/listBdMstrByTrget.do");
 	}
 
 	/**
@@ -244,7 +239,6 @@ public class CmyBBSMasterController {
 	 */
 	@RequestMapping("/cop/com/deleteBdMstrByTrget.do")
 	public String deleteBdMstrByTrget(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardMasterVO boardMasterVO,
 			ModelMap model) {
 
@@ -254,7 +248,7 @@ public class CmyBBSMasterController {
 		bbsMasterService.deleteBBSMasterInf(boardMasterVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/cop/com/listBdMstrByTrget.do");
+		return WebUtil.redirectJsp(model, boardMasterVO, "/cop/com/listBdMstrByTrget.do");
 	}
 
 	/**
@@ -265,7 +259,6 @@ public class CmyBBSMasterController {
 	 */
 	@RequestMapping("/cop/com/updateBoardUseInfByTrget.do")
 	public String updateBoardUseInfByTrget(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardMasterVO boardMasterVO,
 			@ModelAttribute BoardUseInfVO boardUseInfVO,
 			ModelMap model) {
@@ -276,7 +269,7 @@ public class CmyBBSMasterController {
 		bbsUseInfoService.updateBBSUseInf(boardUseInfVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/cop/com/listBdMstrByTrget.do");
+		return WebUtil.redirectJsp(model, boardMasterVO, "/cop/com/listBdMstrByTrget.do");
 	}
 
 }

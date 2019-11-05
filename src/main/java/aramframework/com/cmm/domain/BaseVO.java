@@ -13,10 +13,6 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  */
 public class BaseVO extends SearchVO {
 
-	// search
-	/** 검색 객체 */
-	SearchVO searchVO = null;
-	
 	// rest 관련
 	// path id for rest
 	protected String pathId = "";

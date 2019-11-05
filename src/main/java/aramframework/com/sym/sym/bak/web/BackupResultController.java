@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.sym.bak.domain.BackupResultVO;
@@ -65,7 +64,6 @@ public class BackupResultController {
 	@RequestMapping("/sym/sym/bak/detailBackupResult.do")
 	@Secured("ROLE_ADMIN")
 	public String detailBackupResult(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BackupResultVO backupResultVO,
 			ModelMap model) {
 		
@@ -82,14 +80,13 @@ public class BackupResultController {
 	@RequestMapping("/sym/sym/bak/deleteBackupResult.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteBackupResult(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BackupResultVO backupResultVO, 
 			ModelMap model) {
 
 		backupResultService.deleteBackupResult(backupResultVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/sym/sym/bak/listBackupResult.do");
+        return WebUtil.redirectJsp(model, backupResultVO, "/sym/sym/bak/listBackupResult.do");
 	}
 
 }

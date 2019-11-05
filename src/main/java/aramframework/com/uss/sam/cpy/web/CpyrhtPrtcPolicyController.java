@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -69,7 +68,6 @@ public class CpyrhtPrtcPolicyController {
 	@RequestMapping("/uss/sam/cpy/detailCpyrhtPrtcPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String detailCpyrhtPrtcPolicy(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CpyrhtPrtcPolicyVO cpyrhtPrtcPolicyVO,
 			ModelMap model) {
 
@@ -86,8 +84,8 @@ public class CpyrhtPrtcPolicyController {
 	@RequestMapping("/uss/sam/cpy/registCpyrhtPrtcPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String registCpyrhtPrtcPolicy(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute CpyrhtPrtcPolicyVO cpyrhtPrtcPolicyVO) {
+			@ModelAttribute CpyrhtPrtcPolicyVO cpyrhtPrtcPolicyVO, 
+			ModelMap model) {
 
 		return WebUtil.adjustViewName("/uss/sam/cpy/CpyrhtPrtcPolicyRegist");
 	}
@@ -100,7 +98,6 @@ public class CpyrhtPrtcPolicyController {
 	@RequestMapping("/uss/sam/cpy/insertCpyrhtPrtcPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String insertCpyrhtPrtcPolicy(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CpyrhtPrtcPolicyVO cpyrhtPrtcPolicyVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -117,7 +114,7 @@ public class CpyrhtPrtcPolicyController {
 		cpyrhtPrtcPolicyService.insertCpyrhtPrtcPolicy(cpyrhtPrtcPolicyVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, "/uss/sam/cpy/listCpyrhtPrtcPolicy.do");
+	    return WebUtil.redirectJsp(model, cpyrhtPrtcPolicyVO, "/uss/sam/cpy/listCpyrhtPrtcPolicy.do");
 	}
 
 	/**
@@ -128,7 +125,6 @@ public class CpyrhtPrtcPolicyController {
 	@RequestMapping("/uss/sam/cpy/editCpyrhtPrtcPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String editCpyrhtPrtcPolicy(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CpyrhtPrtcPolicyVO cpyrhtPrtcPolicyVO,
 			ModelMap model) {
 
@@ -145,7 +141,6 @@ public class CpyrhtPrtcPolicyController {
 	@RequestMapping("/uss/sam/cpy/updateCpyrhtPrtcPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String updateCpyrhtPrtcPolicy(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CpyrhtPrtcPolicyVO cpyrhtPrtcPolicyVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -163,7 +158,7 @@ public class CpyrhtPrtcPolicyController {
 		cpyrhtPrtcPolicyService.updateCpyrhtPrtcPolicy(cpyrhtPrtcPolicyVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, "/uss/sam/cpy/listCpyrhtPrtcPolicy.do");
+	    return WebUtil.redirectJsp(model, cpyrhtPrtcPolicyVO, "/uss/sam/cpy/listCpyrhtPrtcPolicy.do");
 	}
 
 	/**
@@ -174,14 +169,13 @@ public class CpyrhtPrtcPolicyController {
 	@RequestMapping("/uss/sam/cpy/deleteCpyrhtPrtcPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteCpyrhtPrtcPolicy(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CpyrhtPrtcPolicyVO cpyrhtPrtcPolicyVO, 
 			ModelMap model) {
 
 		cpyrhtPrtcPolicyService.deleteCpyrhtPrtcPolicy(cpyrhtPrtcPolicyVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, "/uss/sam/cpy/listCpyrhtPrtcPolicy.do");
+	    return WebUtil.redirectJsp(model, cpyrhtPrtcPolicyVO, "/uss/sam/cpy/listCpyrhtPrtcPolicy.do");
 	}
 
 }

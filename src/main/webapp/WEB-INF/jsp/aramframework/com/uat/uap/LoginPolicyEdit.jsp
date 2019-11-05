@@ -97,10 +97,10 @@
 
 <form:hidden path="dplctPermAt" value="Y" />
 <!-- 검색조건 유지 -->
-<input type="hidden" name="curTrgetId" value="${searchVO.searchCondition}" />
-<input type="hidden" name="curTrgetId" value="${searchVO.searchKeyword}" />
-<input type="hidden" name="curTrgetId" value="${searchVO.pageIndex}" />
-<input type="hidden" name="curTrgetId" value="${searchVO.recordPerPage}" />
+<input type="hidden" name="curTrgetId" value="${loginPolicyVO.searchCondition}" />
+<input type="hidden" name="curTrgetId" value="${loginPolicyVO.searchKeyword}" />
+<input type="hidden" name="curTrgetId" value="${loginPolicyVO.pageIndex}" />
+<input type="hidden" name="curTrgetId" value="${loginPolicyVO.recordPerPage}" />
 <!-- 검색조건 유지 -->
 </form:form>
 

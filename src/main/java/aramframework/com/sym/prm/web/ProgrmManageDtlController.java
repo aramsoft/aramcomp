@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -75,8 +74,8 @@ public class ProgrmManageDtlController {
 	@RequestMapping(value = "/sym/prm/registProgramChangeRequst.do")
 	@Secured("ROLE_USER")
 	public String registProgrmChangeRequst(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO) {
+			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO, 
+			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		progrmManageDtlVO.setRqestPersonId(loginVO.getId());
@@ -93,7 +92,6 @@ public class ProgrmManageDtlController {
 	@RequestMapping(value = "/sym/prm/insertProgramChangeRequst.do")
 	@Secured("ROLE_USER")
 	public String insertProgrmChangeRequst(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -107,7 +105,7 @@ public class ProgrmManageDtlController {
 		progrmManageDtlService.insertProgrmChangeRequst(progrmManageDtlVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/sym/prm/listProgramChangeRequst.do");
+		return WebUtil.redirectJsp(model, progrmManageDtlVO, "/sym/prm/listProgramChangeRequst.do");
 	}
 
 	/**
@@ -118,7 +116,6 @@ public class ProgrmManageDtlController {
 	@RequestMapping(value = "/sym/prm/editProgramChangeRequst.do")
 	@Secured("ROLE_USER")
 	public String editProgramChangeRequst(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO,
 			ModelMap model) {
 
@@ -135,7 +132,6 @@ public class ProgrmManageDtlController {
 	@RequestMapping(value = "/sym/prm/updateProgramChangeRequst.do")
 	@Secured("ROLE_USER")
 	public String updateProgrmChangeRequst(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -156,7 +152,7 @@ public class ProgrmManageDtlController {
 		progrmManageDtlService.updateProgrmChangeRequst(progrmManageDtlVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/sym/prm/listProgramChangeRequst.do");
+        return WebUtil.redirectJsp(model, progrmManageDtlVO, "/sym/prm/listProgramChangeRequst.do");
 	}
 
 	/**
@@ -167,7 +163,6 @@ public class ProgrmManageDtlController {
 	@RequestMapping(value = "/sym/prm/deleteProgramChangeRequst.do")
 	@Secured("ROLE_USER")
 	public String deleteProgrmChangeRequst(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO, 
 			ModelMap model) {
 
@@ -175,7 +170,7 @@ public class ProgrmManageDtlController {
 		progrmManageDtlService.deleteProgrmChangeRequst(progrmManageDtlVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/sym/prm/listProgramChangeRequst.do");
+        return WebUtil.redirectJsp(model, progrmManageDtlVO, "/sym/prm/listProgramChangeRequst.do");
 	}
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -213,7 +208,6 @@ public class ProgrmManageDtlController {
 	@RequestMapping(value = "/sym/prm/editProgramChangeProcess.do")
 	@Secured("ROLE_ADMIN")
 	public String editProgramChangeProcess(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO,
 			ModelMap model) {
 	
@@ -237,7 +231,6 @@ public class ProgrmManageDtlController {
 	@RequestMapping(value = "/sym/prm/updateProgramChangeProcess.do")
 	@Secured("ROLE_ADMIN")
 	public String updateProgramChangeProcess(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
@@ -276,7 +269,7 @@ public class ProgrmManageDtlController {
 		}
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/sym/prm/listProgramChangeProcess.do");
+        return WebUtil.redirectJsp(model, progrmManageDtlVO, "/sym/prm/listProgramChangeProcess.do");
 	}
 
 	/**
@@ -288,14 +281,13 @@ public class ProgrmManageDtlController {
 	@RequestMapping(value = "/sym/prm/deleteProgramChangeProcess.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteProgramChangeProcess(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO, 
 			ModelMap model) {
 
 		progrmManageDtlService.deleteProgrmChangeRequst(progrmManageDtlVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/sym/prm/listProgramChangeProcess.do");
+        return WebUtil.redirectJsp(model, progrmManageDtlVO, "/sym/prm/listProgramChangeProcess.do");
 	}
 
 	/**
@@ -333,7 +325,6 @@ public class ProgrmManageDtlController {
 	@RequestMapping(value = "/sym/prm/detailProgramChgHst.do")
 	@Secured("ROLE_USER")
 	public String detailProgramChgHst(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO,
 			ModelMap model) {
 

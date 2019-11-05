@@ -14,7 +14,6 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchCodeVO;
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -116,7 +115,6 @@ public class UserManageController {
 	@RequestMapping("/uss/umt/registUser.do")
 	@Secured("ROLE_ADMIN")
 	public String registUser(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute UserManageVO userManageVO, 
 			ModelMap model) {
 
@@ -133,7 +131,6 @@ public class UserManageController {
 	@RequestMapping("/uss/umt/insertUser.do")
 	@Secured("ROLE_ADMIN")
 	public String insertUser(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute UserManageVO userManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -155,7 +152,7 @@ public class UserManageController {
 		userManageService.insertUser(userManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, "/uss/umt/listUser.do");
+	    return WebUtil.redirectJsp(model, userManageVO, "/uss/umt/listUser.do");
 	}
 
 	/**
@@ -166,7 +163,6 @@ public class UserManageController {
 	@RequestMapping("/uss/umt/editUser.do")
 	@Secured("ROLE_USER")
 	public String editUser(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute UserManageVO userManageVO, 
 			ModelMap model) {
 
@@ -188,7 +184,6 @@ public class UserManageController {
 	@RequestMapping("/uss/umt/updateUser.do")
 	@Secured("ROLE_USER")
 	public String updateUser(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute UserManageVO userManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -214,7 +209,7 @@ public class UserManageController {
 		updateUserSession(userManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, "/uss/umt/editUser.do?uniqId="+userManageVO.getUniqId());
+	    return WebUtil.redirectJsp(model, userManageVO, "/uss/umt/editUser.do?uniqId="+userManageVO.getUniqId());
 	}
 
 	private void updateUserSession(UserManageVO userManageVO) {
@@ -232,7 +227,6 @@ public class UserManageController {
 	@RequestMapping(value = "/uss/umt/editUserPassword.do")
 	@Secured("ROLE_USER")
 	public String editUserPassword(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute UserManageVO userManageVO,
 			ModelMap model) {
 
@@ -250,9 +244,8 @@ public class UserManageController {
 	@RequestMapping(value = "/uss/umt/updateUserPassword.do")
 	@Secured("ROLE_USER")
 	public String updateUserPassword(
-			HttpServletRequest request, 
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute UserManageVO userManageVO,
+			HttpServletRequest request, 
 			ModelMap model)
 	throws Exception {
 		
@@ -286,7 +279,7 @@ public class UserManageController {
 		} 
 		
 		model.addAttribute("message", MessageHelper.getMessage(message));
-	    return WebUtil.redirectJsp(model, "/uss/umt/editUser.do?uniqId="+userManageVO.getUniqId());
+	    return WebUtil.redirectJsp(model, userManageVO, "/uss/umt/editUser.do?uniqId="+userManageVO.getUniqId());
 	}
 
 	/**
@@ -298,14 +291,13 @@ public class UserManageController {
 	@RequestMapping("/uss/umt/deleteUser.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteUser(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute UserManageVO userManageVO,
 			ModelMap model) {
 
 		userManageService.deleteUser(userManageVO);
 	
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, "/uss/umt/listUser.do");
+	    return WebUtil.redirectJsp(model, userManageVO, "/uss/umt/listUser.do");
 	}
 
 	/**
@@ -317,16 +309,16 @@ public class UserManageController {
 	@RequestMapping("/uss/umt/deleteIdsAll.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteIdsAll(
+			@ModelAttribute UserManageVO userManageVO,
 			@RequestParam String returnUrl, 
 			@RequestParam String checkedIdForDel, 
-			@ModelAttribute SearchVO searchVO,
 			ModelMap model) {
 
 		userManageService.deleteIdsAll(checkedIdForDel);
 	
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		
-		return WebUtil.redirectJsp(model, returnUrl);
+		return WebUtil.redirectJsp(model, userManageVO, returnUrl);
 	}
 	
 	private void fill_common_code(ModelMap model)  {

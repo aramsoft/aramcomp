@@ -66,9 +66,9 @@ public class LoginController {
 	 */ 
 	@RequestMapping(value = "/uat/uia/loginUsr.do")
 	public String loginUsrView(
-			HttpServletRequest request, 
-			@RequestParam(value="targetUrl", required=false) String targetUrl,
 			@ModelAttribute LoginVO loginVO, 
+			@RequestParam(value="targetUrl", required=false) String targetUrl,
+			HttpServletRequest request, 
 			HttpServletResponse response,
 			ModelMap model) {
 

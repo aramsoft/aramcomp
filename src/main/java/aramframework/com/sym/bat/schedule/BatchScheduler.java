@@ -246,7 +246,7 @@ public class BatchScheduler implements BeanFactoryAware {
 		batchSchdulVO.setFirstIndex(0);
 		batchSchdulVO.setRecordPerPage(RECORD_COUNT_PER_PAGE);
 		targetList = batchSchdulService.selectBatchSchdulList(batchSchdulVO);
-//		log.debug("조회조건 " + searchVO);
+//		log.debug("조회조건 " + batchSchdulVO);
 		if (LOG.isDebugEnabled()) {
 			LOG.debug("Result 건수 : " + targetList.size());
 		}

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -73,7 +72,6 @@ public class SmsInfoController {
 	@RequestMapping("/cop/sms/detailSms.do")
 	@Secured("ROLE_USER")
 	public String detailSms(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SmsVO smsVO, 
 			ModelMap model) 
 	throws Exception {
@@ -94,8 +92,8 @@ public class SmsInfoController {
 	@RequestMapping("/cop/sms/registSms.do")
 	@Secured("ROLE_USER")
 	public String registSms(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute SmsVO smsVO) {
+			@ModelAttribute SmsVO smsVO, 
+			ModelMap model) {
 
 		return WebUtil.adjustViewName("/cop/sms/SmsInfoRegist");
 	}
@@ -108,7 +106,6 @@ public class SmsInfoController {
 	@RequestMapping("/cop/sms/insertSms.do")
 	@Secured("ROLE_USER")
 	public String insertSms(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SmsVO smsVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -125,7 +122,7 @@ public class SmsInfoController {
 		smsInfoService.insertSmsInf(smsVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/cop/sms/listSms.do");
+		return WebUtil.redirectJsp(model, smsVO, "/cop/sms/listSms.do");
 	}
 
 }

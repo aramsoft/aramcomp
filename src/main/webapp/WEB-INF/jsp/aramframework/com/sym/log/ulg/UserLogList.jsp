@@ -111,13 +111,12 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="searchVO" value="${userLogVO}"/>
- 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
+  	<c:set var="startIndex" value="${(userLogVO.pageIndex-1) * userLogVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
 	<tr  class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.occrrncDe}"/>'); return false;">
 	
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${userLogVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 	    <td class="lt_text3"><c:out value="${result.occrrncDe}"/></td>

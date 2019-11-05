@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -90,7 +89,6 @@ public class RestdeManageController {
 	 */
 	@RequestMapping(value = "/sym/cal/detailRestde.do")
 	public String detailRestde(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RestdeVO restdeVO,
 			ModelMap model) {
 		
@@ -107,8 +105,8 @@ public class RestdeManageController {
 	@RequestMapping(value = "/sym/cal/registRestde.do")
 	@Secured("ROLE_ADMIN")
 	public String registRestde(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute RestdeVO restdeVO) {
+			@ModelAttribute RestdeVO restdeVO, 
+			ModelMap model) {
 		
 		cmmUseService.populateCmmCodeList("COM017", "COM017_restde");
 
@@ -123,7 +121,6 @@ public class RestdeManageController {
 	@RequestMapping(value = "/sym/cal/insertRestde.do")
 	@Secured("ROLE_ADMIN")
 	public String insertRestde(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RestdeVO restdeVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -139,7 +136,7 @@ public class RestdeManageController {
 		restdeManageService.insertRestde(restdeVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/sym/cal/listRestde.do");
+        return WebUtil.redirectJsp(model, restdeVO, "/sym/cal/listRestde.do");
 	}
 
 	/**
@@ -150,7 +147,6 @@ public class RestdeManageController {
 	@RequestMapping(value = "/sym/cal/editRestde.do")
 	@Secured("ROLE_ADMIN")
 	public String editRestde(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RestdeVO restdeVO,
 			ModelMap model) {
 		
@@ -169,7 +165,6 @@ public class RestdeManageController {
 	@RequestMapping(value = "/sym/cal/updateRestde.do")
 	@Secured("ROLE_ADMIN")
 	public String updateRestde(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RestdeVO restdeVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
@@ -185,7 +180,7 @@ public class RestdeManageController {
 		restdeManageService.updateRestde(restdeVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/sym/cal/listRestde.do");
+        return WebUtil.redirectJsp(model, restdeVO, "/sym/cal/listRestde.do");
 	}
 
 	/**
@@ -196,14 +191,13 @@ public class RestdeManageController {
 	@RequestMapping(value = "/sym/cal/deleteRestde.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteRestde(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RestdeVO restdeVO, 
 			ModelMap model) {
 
 		restdeManageService.deleteRestde(restdeVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/sym/cal/listRestde.do");
+        return WebUtil.redirectJsp(model, restdeVO, "/sym/cal/listRestde.do");
 	}
 
 	/**

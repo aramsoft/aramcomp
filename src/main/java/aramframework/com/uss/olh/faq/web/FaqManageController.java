@@ -11,7 +11,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
@@ -72,7 +71,6 @@ public class FaqManageController {
 	 */
 	@RequestMapping("/uss/olh/faq/detailFaq.do")
 	public String detailFaq(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute FaqManageVO faqManageVO,
 			ModelMap model) {
 
@@ -89,8 +87,8 @@ public class FaqManageController {
 	@RequestMapping("/uss/olh/faq/registFaq.do")
 	@Secured("ROLE_USER")
 	public String registFaq(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute FaqManageVO faqManageVO) {
+			@ModelAttribute FaqManageVO faqManageVO, 
+			ModelMap model) {
 
 		return WebUtil.adjustViewName("/uss/olh/faq/FaqRegist");
 	}
@@ -103,10 +101,9 @@ public class FaqManageController {
 	@RequestMapping("/uss/olh/faq/insertFaq.do")
 	@Secured("ROLE_USER")
 	public String insertFaq(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute FaqManageVO faqManageVO, 
 			BindingResult bindingResult,
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception {
 
@@ -125,7 +122,7 @@ public class FaqManageController {
 		faqManageService.insertFaqCn(faqManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/olh/faq/listFaq.do");
+        return WebUtil.redirectJsp(model, faqManageVO, "/uss/olh/faq/listFaq.do");
 	}
 
 	/**
@@ -136,7 +133,6 @@ public class FaqManageController {
 	@RequestMapping("/uss/olh/faq/editFaq.do")
 	@Secured("ROLE_USER")
 	public String editFaq(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute FaqManageVO faqManageVO,
 			ModelMap model) {
 
@@ -153,10 +149,9 @@ public class FaqManageController {
 	@RequestMapping("/uss/olh/faq/updateFaq.do")
 	@Secured("ROLE_USER")
 	public String updateFaq(
-			MultipartHttpServletRequest multiRequest,
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute FaqManageVO faqManageVO, 
 			BindingResult bindingResult,
+			MultipartHttpServletRequest multiRequest,
 			ModelMap model) 
 	throws Exception {
 
@@ -177,7 +172,7 @@ public class FaqManageController {
 		faqManageService.updateFaqCn(faqManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/olh/faq/listFaq.do");
+        return WebUtil.redirectJsp(model, faqManageVO, "/uss/olh/faq/listFaq.do");
 	}
 
 	/**
@@ -188,14 +183,13 @@ public class FaqManageController {
 	@RequestMapping(value="/uss/olh/faq/deleteFaq.do")
 	@Secured("ROLE_USER")
 	public String deleteFaqManage(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute FaqManageVO faqManageVO, 
 			ModelMap model) {
 
 		faqManageService.deleteFaqCn(faqManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/olh/faq/listFaq.do");
+        return WebUtil.redirectJsp(model, faqManageVO, "/uss/olh/faq/listFaq.do");
 	}
 
 }

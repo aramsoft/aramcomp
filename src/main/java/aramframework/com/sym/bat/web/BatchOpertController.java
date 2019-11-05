@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -100,7 +99,6 @@ public class BatchOpertController {
 	@RequestMapping("/sym/bat/detailBatchOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String detailBatchOpert(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BatchOpertVO batchOpertVO,
 			ModelMap model) {
 		
@@ -117,8 +115,8 @@ public class BatchOpertController {
 	@RequestMapping("/sym/bat/registBatchOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String registBatchOpert(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute BatchOpertVO batchOpertVO) {
+			@ModelAttribute BatchOpertVO batchOpertVO, 
+			ModelMap model) {
 	
 		return WebUtil.adjustViewName("/sym/bat/BatchOpertRegist");
 	}
@@ -131,7 +129,6 @@ public class BatchOpertController {
 	@RequestMapping("/sym/bat/insertBatchOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String insertBatchOpert(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BatchOpertVO batchOpertVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -151,7 +148,7 @@ public class BatchOpertController {
 		batchOpertService.insertBatchOpert(batchOpertVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/sym/bat/listBatchOpert.do");
+        return WebUtil.redirectJsp(model, batchOpertVO, "/sym/bat/listBatchOpert.do");
 	}
 
 	/**
@@ -162,7 +159,6 @@ public class BatchOpertController {
 	@RequestMapping("/sym/bat/editBatchOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String editBatchOpert(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BatchOpertVO batchOpertVO,
 			ModelMap model) {
 		
@@ -179,7 +175,6 @@ public class BatchOpertController {
 	@RequestMapping("/sym/bat/updateBatchOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String updateBatchOpert(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BatchOpertVO batchOpertVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -199,7 +194,7 @@ public class BatchOpertController {
 		batchOpertService.updateBatchOpert(batchOpertVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/sym/bat/listBatchOpert.do");
+        return WebUtil.redirectJsp(model, batchOpertVO, "/sym/bat/listBatchOpert.do");
 	}
 
 	/**
@@ -210,14 +205,13 @@ public class BatchOpertController {
 	@RequestMapping("/sym/bat/deleteBatchOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteBatchOpert(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BatchOpertVO batchOpertVO, 
 			ModelMap model) {
 
 		batchOpertService.deleteBatchOpert(batchOpertVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/sym/bat/listBatchOpert.do");
+        return WebUtil.redirectJsp(model, batchOpertVO, "/sym/bat/listBatchOpert.do");
 	}
 
 }

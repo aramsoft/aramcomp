@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -52,7 +51,6 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/detailIndvdlpge.do")
 	@Secured("ROLE_USER")
 	public String detailIndvdlpge(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IndvdlPgeConfVO indvdlPgeConfVO, 
 			ModelMap model) {
 
@@ -100,8 +98,8 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/registIndvdlpgeConf.do")
 	@Secured("ROLE_USER")
 	public String registIndvdlpgeConf(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute IndvdlPgeConfVO indvdlPgeConfVO) {
+			@ModelAttribute IndvdlPgeConfVO indvdlPgeConfVO, 
+			ModelMap model) {
 
 		// ID를 받아서 VO에 설정한다.
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -121,7 +119,6 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/updateIndvdlpgeConf.do")
 	@Secured("ROLE_USER")
 	public String updateIndvdlpgeConf(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IndvdlPgeConfVO indvdlPgeConfVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -144,7 +141,7 @@ public class IndvdlPgeController {
 			indvdlPgeService.updateIndvdlpgeConf(indvdlPgeConfVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/mpe/detailIndvdlpge.do");
+        return WebUtil.redirectJsp(model, indvdlPgeConfVO, "/uss/mpe/detailIndvdlpge.do");
 	}
 
 	/**
@@ -196,7 +193,6 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/insertIndvdlpgeCntntsMine.do")
 	@Secured("ROLE_USER")
 	public String insertIndvdlpgeCntntsMine(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO, 
 			ModelMap model) {
 
@@ -213,7 +209,7 @@ public class IndvdlPgeController {
 		indvdlPgeService.addIndvdlpgeCntnts(indvdlPgeCntntsVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/mpe/listIndvdlpgeCntntsMine.do");
+        return WebUtil.redirectJsp(model, indvdlPgeCntntsVO, "/uss/mpe/listIndvdlpgeCntntsMine.do");
 	}
 
 	/**
@@ -224,7 +220,6 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/deleteIndvdlpgeCntntsMine.do")
 	@Secured("ROLE_USER")
 	public String deleteIndvdlpgeCntntsMine(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO, 
 			ModelMap model) {
 
@@ -236,7 +231,7 @@ public class IndvdlPgeController {
 		indvdlPgeService.delIndvdlpgeCntnts(indvdlPgeCntntsVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/mpe/detailIndvdlpge.do?userId="+indvdlPgeCntntsVO.getUserId());
+        return WebUtil.redirectJsp(model, indvdlPgeCntntsVO, "/uss/mpe/detailIndvdlpge.do?userId="+indvdlPgeCntntsVO.getUserId());
 	}
 
 	/**
@@ -274,7 +269,6 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/detailIndvdlpgeCntnts.do")
 	@Secured("ROLE_ADMIN")
 	public String detailIndvdlpgeCntnts(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO,
 			ModelMap model) {
 
@@ -291,8 +285,8 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/registIndvdlpgeCntnts.do")
 	@Secured("ROLE_ADMIN")
 	public String registIndvdlpgeCntnts(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO) {
+			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO, 
+			ModelMap model) {
 
 		return WebUtil.adjustViewName("/uss/mpe/IndvdlpgeCntntsRegist");
 	}
@@ -305,7 +299,6 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/insertIndvdlpgeCntnts.do")
 	@Secured("ROLE_ADMIN")
 	public String insertIndvdlpgeCntnts(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -320,7 +313,7 @@ public class IndvdlPgeController {
 		indvdlPgeService.insertIndvdlpgeCntnts(indvdlPgeCntntsVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/mpe/listIndvdlpgeCntnts.do");
+        return WebUtil.redirectJsp(model, indvdlPgeCntntsVO, "/uss/mpe/listIndvdlpgeCntnts.do");
 	}
 
 	/**
@@ -331,7 +324,6 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/editIndvdlpgeCntnts.do")
 	@Secured("ROLE_ADMIN")
 	public String editIndvdlpgeCntnts(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO,
 			ModelMap model) {
 
@@ -348,7 +340,6 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/updateIndvdlpgeCntnts.do")
 	@Secured("ROLE_ADMIN")
 	public String updateIndvdlpgeCntnts(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -362,7 +353,7 @@ public class IndvdlPgeController {
 		indvdlPgeService.updateIndvdlpgeCntnts(indvdlPgeCntntsVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/mpe/listIndvdlpgeCntnts.do");
+        return WebUtil.redirectJsp(model, indvdlPgeCntntsVO, "/uss/mpe/listIndvdlpgeCntnts.do");
 	}
 
 	/**
@@ -373,7 +364,6 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/deleteIndvdlpgeCntnts.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteIndvdlpgeCntnts(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO, 
 			ModelMap model) {
 
@@ -381,7 +371,7 @@ public class IndvdlPgeController {
 		indvdlPgeService.deleteIndvdlpgeCntnts(indvdlPgeCntntsVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/mpe/listIndvdlpgeCntnts.do");
+        return WebUtil.redirectJsp(model, indvdlPgeCntntsVO, "/uss/mpe/listIndvdlpgeCntnts.do");
 	}
 
 	/**
@@ -392,7 +382,6 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/deleteIndvdlpgeCntntsDB.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteIndvdlpgeCntntsDB(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO, 
 			ModelMap model) {
 
@@ -400,7 +389,7 @@ public class IndvdlPgeController {
 		indvdlPgeService.deleteIndvdlpgeCntntsDB(indvdlPgeCntntsVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/mpe/listIndvdlpgeCntnts.do");
+        return WebUtil.redirectJsp(model, indvdlPgeCntntsVO, "/uss/mpe/listIndvdlpgeCntnts.do");
 	}
 
 	/**
@@ -410,7 +399,6 @@ public class IndvdlPgeController {
 	 */
 	@RequestMapping(value = "/uss/mpe/previewIndvdlpgeCntnts.do")
 	public String previewIndvdlpgeCntnts(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO, 
 			ModelMap model) {
 		

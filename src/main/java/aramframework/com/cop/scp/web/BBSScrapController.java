@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -81,7 +80,6 @@ public class BBSScrapController {
 	@RequestMapping("/cop/scp/detailScrap.do")
 	@Secured("ROLE_USER")
 	public String detailScrap(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ScrapVO scrapVO, 
 			ModelMap model) {
 
@@ -122,7 +120,6 @@ public class BBSScrapController {
 	@RequestMapping("/cop/scp/registScrap.do")
 	@Secured("ROLE_USER")
 	public String registScrap(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ScrapVO scrapVO, 
 			ModelMap model) {
 
@@ -142,7 +139,6 @@ public class BBSScrapController {
 	@RequestMapping("/cop/scp/insertScrap.do")
 	@Secured("ROLE_USER")
 	public String insertScrap(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ScrapVO scrapVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -164,7 +160,7 @@ public class BBSScrapController {
 		bbsScrapService.insertScrap(scrapVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/cop/scp/listScrap.do");
+		return WebUtil.redirectJsp(model, scrapVO, "/cop/scp/listScrap.do");
 	}
 
 	/**
@@ -175,7 +171,6 @@ public class BBSScrapController {
 	@RequestMapping("/cop/scp/editScrap.do")
 	@Secured("ROLE_USER")
 	public String editScrap(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ScrapVO scrapVO, 
 			ModelMap model) {
 
@@ -198,7 +193,6 @@ public class BBSScrapController {
 	@RequestMapping("/cop/scp/updateScrap.do")
 	@Secured("ROLE_USER")
 	public String updateScrap(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ScrapVO scrapVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -219,7 +213,7 @@ public class BBSScrapController {
 		bbsScrapService.updateScrap(scrapVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/cop/scp/listScrap.do");
+		return WebUtil.redirectJsp(model, scrapVO, "/cop/scp/listScrap.do");
 	}
 
 	/**
@@ -230,14 +224,13 @@ public class BBSScrapController {
 	@RequestMapping("/cop/scp/deleteScrap.do")
 	@Secured("ROLE_USER")
 	public String deleteScrap(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ScrapVO scrapVO, 
 			ModelMap model) {
 		
 		bbsScrapService.deleteScrap(scrapVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/cop/scp/listScrap.do");
+		return WebUtil.redirectJsp(model, scrapVO, "/cop/scp/listScrap.do");
 	}
 
 	/**
@@ -248,7 +241,6 @@ public class BBSScrapController {
 	@RequestMapping("/cop/scp/listScrapMainPage.do")
 	@Secured("ROLE_USER")
 	public String listScrapMainPage(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ScrapVO scrapVO, 
 			ModelMap model) {
 

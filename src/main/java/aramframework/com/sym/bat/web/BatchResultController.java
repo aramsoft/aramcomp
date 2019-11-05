@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.bat.domain.BatchResultVO;
@@ -62,7 +61,6 @@ public class BatchResultController {
 	@RequestMapping("/sym/bat/detailBatchResult.do")
 	@Secured("ROLE_ADMIN")
 	public String detailBatchResult(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BatchResultVO batchResultVO,
 			ModelMap model) {
 		
@@ -79,14 +77,13 @@ public class BatchResultController {
 	@RequestMapping("/sym/bat/deleteBatchResult.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteBatchResult(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BatchResultVO batchResultVO, 
 			ModelMap model) {
 
 		batchResultService.deleteBatchResult(batchResultVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/sym/bat/listBatchResult.do");
+        return WebUtil.redirectJsp(model, batchResultVO, "/sym/bat/listBatchResult.do");
 	}
 
 }

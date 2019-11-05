@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sec.arm.domain.AuthorResourceVO;
@@ -63,16 +62,16 @@ public class AuthorResourceController {
 	@RequestMapping(value = "/sec/arm/insertAuthorResource.do")
 	@Secured("ROLE_ADMIN")
 	public String insertAuthorResource(
+			@ModelAttribute AuthorResourceVO authorResourceVO, 
 			@RequestParam String authorCode, 
 			@RequestParam String resourceCodes,
 			@RequestParam String regYns, 
-			@ModelAttribute SearchVO searchVO,
 			ModelMap model) {
 
 		authorResourceService.insertAuthorResources(authorCode, resourceCodes, regYns);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/sec/arm/listAuthorResource.do");
+		return WebUtil.redirectJsp(model, authorResourceVO, "/sec/arm/listAuthorResource.do");
 	}
 	
 }

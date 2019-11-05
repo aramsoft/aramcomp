@@ -99,8 +99,10 @@ public class FaqManageService extends EgovAbstractServiceImpl {
 	 */
 	public void deleteFaqCn(FaqManageVO faqManageVO) {
 		// 첨부파일 삭제 ....
-		fileUtil.deleteMultiFile(faqManageVO.getAtchFileId());
-
+		if( faqManageVO.getAtchFileId() != null && "".equals(faqManageVO.getAtchFileId())) {
+			fileUtil.deleteMultiFile(faqManageVO.getAtchFileId());
+		}
+		
 		faqManageMapper.deleteFaqCn(faqManageVO);
 	}
 

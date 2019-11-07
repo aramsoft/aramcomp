@@ -1,5 +1,7 @@
 package aramframework.com.sec.grp.web;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -70,17 +72,25 @@ public class GroupAuthorController {
 	 * @param regYns
 	 * @param mberTyCodes
 	 */
-	@RequestMapping(value = "/sec/grp/insertGroupAuthor.do")
+	@RequestMapping(value = "/sec/grp/insertListGroupAuthor.do")
 	@Secured("ROLE_ADMIN")
 	public String insertGroupAuthors(
 			@ModelAttribute GroupAuthorVO groupAuthorVO,
-			@RequestParam String userIds, 
-			@RequestParam String authorCodes,
-			@RequestParam String regYns, 
-			@RequestParam String mberTyCodes,// 2011.08.04 수정 부분
+			@RequestParam String strAuthorCodes,
+			@RequestParam String strRegYns, 
+			@RequestParam String strMberTyCodes,// 2011.08.04 수정 부분
+			HttpServletRequest request, 
 			ModelMap model) {
 
-		groupAuthorService.insertGroupAuthors(userIds, authorCodes, regYns, mberTyCodes);
+    	String[] uniqIds = null;
+    	if(request.getParameterValues("uniqIds") != null) 
+    		uniqIds = request.getParameterValues("uniqIds"); 
+
+		String[] authorCodes = strAuthorCodes.split(";");
+		String[] regYns = strRegYns.split(";");
+		String[] mberTyCodes = strMberTyCodes.split(";");
+
+		groupAuthorService.insertGroupAuthors(uniqIds, authorCodes, regYns, mberTyCodes);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		return WebUtil.redirectJsp(model, groupAuthorVO, "/sec/grp/listGroupAuthor.do");
@@ -91,14 +101,18 @@ public class GroupAuthorController {
 	 * 
 	 * @param userIds
 	 */
-	@RequestMapping(value = "/sec/grp/deleteGroupAuthor.do")
+	@RequestMapping(value = "/sec/grp/deleteListGroupAuthor.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteGroupAuthors(
 			@ModelAttribute GroupAuthorVO groupAuthorVO,
-			@RequestParam String userIds, 
+			HttpServletRequest request, 
 			ModelMap model) {
 
-		groupAuthorService.deleteGroupAuthors(userIds);
+    	String[] uniqIds = null;
+    	if(request.getParameterValues("uniqIds") != null) 
+    		uniqIds = request.getParameterValues("uniqIds"); 
+
+		groupAuthorService.deleteGroupAuthors(uniqIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		return WebUtil.redirectJsp(model, groupAuthorVO, "/sec/grp/listGroupAuthor.do");

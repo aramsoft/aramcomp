@@ -35,7 +35,6 @@
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
 <input type="hidden" name="authorCode"/>
-<input type="hidden" name="authorCodes"/>
 
 <input type="hidden" name="saveSearchKeyword"/>
 <input type="hidden" name="saveRecordPerPage"/>
@@ -65,12 +64,12 @@
 <form:hidden path="searchCondition" />
 <form:hidden path="pageIndex" />
 
-<table class="table-list" summary="권한관리에  관한 테이블입니다.권한ID,권한 명,설명, 등록일자, 접근자원정보의 내용을 담고 있습니다.">
+<table class="table-list" id="tblData" summary="권한관리에  관한 테이블입니다.권한ID,권한 명,설명, 등록일자, 접근자원정보의 내용을 담고 있습니다.">
 <thead>
   	<tr>
 		<th scope="col" width="7%" >No.</th>
     	<th scope="col" width="5%" >
-    		<input type="checkbox" name="checkAll" class="check2" onchange="javascript:fnCheckAll(); return false;" title="전체선택" />
+    		<input type="checkbox" id="checkAll" class="check2" title="전체선택" />
     	</th>
     	<th scope="col" width="15%">권한 ID</th>
     	<th scope="col" width="25%">권한 명</th>
@@ -96,8 +95,7 @@
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 		
     	<td class="lt_text3">
-    		<input type="checkbox" name="delYn" class="check2" title="선택">
-    		<input type="hidden" name="checkId" value="<c:out value="${result.authorCode}"/>" disabled />
+			<input type="checkbox" class="check2" id="uniqIds" name="uniqIds" value="${result.authorCode}" />
     	</td>
     	
     	<td class="lt_text">
@@ -131,6 +129,16 @@
 </DIV>
 
 <script type="text/javascript" defer="defer">
+
+$(function() {
+	$("#checkAll").on("click", function(){
+		if( $(this).is(":checked") ){
+			$("#tblData input[name=uniqIds]").prop("checked", true);
+		}else{
+			$("#tblData input[name=uniqIds]").prop("checked", false); 
+		}
+	});
+});
 
 function press() {
 
@@ -189,60 +197,16 @@ function fn_aram_get_authorResource(author) {
 }
 
 function fn_aram_deleteList() {
-    var varForm = document.getElementById("authorVO");
+	if( $("#tblData input[name=uniqIds]:checked").length == 0) {
+		alert("선택한 항목이 없습니다.");
+		return false;
+	}
 
-    if(fncManageChecked()) {
-        if(confirm("삭제하시겠습니까?")) {
-        	varForm.action = "${pageContext.request.contextPath}/sec/arm/deleteListAuthor.do";
-        	varForm.submit();
-        }
+	var varForm = document.getElementById("authorVO");
+    if(confirm("삭제하시겠습니까?")) {
+      	varForm.action = "${pageContext.request.contextPath}/sec/arm/deleteListAuthor.do";
+       	varForm.submit();
     }
-}
-
-function fnCheckAll() {
-    var varForm = document.getElementById("authorVO");
-    var checkField = varForm.delYn;
-    
-    if(checkField.length> 1) {
-        for(var i=0; i < checkField.length; i++) {
-            checkField[i].checked = varForm.checkAll.checked;
-        }
-    } else {
-        checkField.checked = varForm.checkAll.checked;
-    }
-}
-
-function fncManageChecked() {
-    var varForm = document.getElementById("authorVO");
-    var checkField = varForm.delYn;
-    var checkId = varForm.checkId;
-    var returnValue = "";
-    var returnBoolean = false;
-
-    if(checkField) {
-        if(checkField.length> 1) {
-            for(var i=0; i<checkField.length; i++) {
-                if(checkField[i].checked) {
-                	returnValue += ((checkedCount==0? "" : ";") + checkId[i].value);
-                    checkedCount++;
-                }
-            }
-        } else {
-            if(checkField.checked) {
-                returnValue = checkId.value;
-            }
-        }
-    } 
-
-    if(returnValue.length> 0) {
-        varForm.authorCodes.value = returnValue;
-        resultCheck = true;
-    } else {
-        alert("선택된 권한이 없습니다.");
-        resultCheck = false;
-    }
-
-    return returnBoolean;
 }
 
 /*********************************************************

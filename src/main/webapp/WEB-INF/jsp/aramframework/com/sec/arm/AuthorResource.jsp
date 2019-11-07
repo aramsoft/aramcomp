@@ -34,7 +34,6 @@
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
-<input type="hidden" name="resourceCodes"/>
 <input type="hidden" name="regYns"/>
 
 <div id="search_area">
@@ -54,11 +53,11 @@
 	</div>
 </div>
 
-<table class="table-list" summary="접근자원을 관리하는 테이블입니다.접근자원ID,접근자원명,접근자원타입,접근자원Sort,접근자원설명,등록일자,등록여부의 내용을 담고 있습니다.">
+<table class="table-list" id="tblData" summary="접근자원을 관리하는 테이블입니다.접근자원ID,접근자원명,접근자원타입,접근자원Sort,접근자원설명,등록일자,등록여부의 내용을 담고 있습니다.">
 <thead>
   	<tr>
 	    <th scope="col" width="3%" >
-    		<input type="checkbox" name="checkAll" class="check2" onchange="javascript:fnCheckAll(); return false;" title="전체선택" />
+    		<input type="checkbox" id="checkAll" class="check2" title="전체선택" />
 	    </th>
 	    <th scope="col" width="10%">접근자원 ID</th>
 	    <th scope="col" width="20%">접근자원 명</th>
@@ -80,8 +79,7 @@
  	<c:forEach var="result" items="${resultList}" varStatus="status">
   	<tr>
 	    <td class="lt_text3">
-	    	<input type="checkbox" name="delYn" class="check2" title="선택">
-	    	<input type="hidden" name="checkId" value="<c:out value="${result.resourceCode}"/>" disabled />
+			<input type="checkbox" class="check2" id="uniqIds" name="uniqIds" value="${result.resourceCode}" />
 	    </td>
 	    <td class="lt_text"><c:out value="${result.resourceCode}"/></td>
 	    <td class="lt_text"><c:out value="${result.resourceNm}"/></td>
@@ -90,7 +88,7 @@
 	    <td class="lt_text3"><c:out value="${result.resourceDc}"/></td>
 	    <td class="lt_text3"><c:out value="${result.creatDt}"/></td>
 	    <td class="lt_text3">
-        	<select name="regYn" title="등록여부">
+        	<select id="regYn${result.resourceCode}" title="등록여부">
             	<option value="Y" <c:if test="${result.regYn == 'Y'}">selected</c:if>>등록</option>
             	<option value="N" <c:if test="${result.regYn == 'N'}">selected</c:if>>미등록</option>
         	</select>
@@ -115,6 +113,16 @@
 </DIV>
 
 <script type="text/javascript"  defer="defer">
+
+$(function() {
+	$("#checkAll").on("click", function(){
+		if( $(this).is(":checked") ){
+			$("#tblData input[name=uniqIds]").prop("checked", true);
+		}else{
+			$("#tblData input[name=uniqIds]").prop("checked", false); 
+		}
+	});
+});
 
 function press() {
 
@@ -141,12 +149,21 @@ function fn_aram_search(){
 }
 
 function fn_aram_insert() {
+	if( $("#tblData input[name=uniqIds]:checked").length == 0) {
+		alert("선택한 항목이 없습니다.");
+		return false;
+	}
+
+	var regYns = "";
+	$("#tblData input[name=uniqIds]:checked").each(function() {	
+		regYns += ((regYns == "")?"":";") + $("#regYn"+this.value).val(); 
+	});
+	
     var varForm = document.getElementById("authorResourceVO");
-	if(fncManageChecked()) {
-	    if(confirm("등록하시겠습니까?")) {
-	    	varForm.action = "${pageContext.request.contextPath}/sec/arm/insertAuthorResource.do";
-	    	varForm.submit();
-	    }
+    if(confirm("등록하시겠습니까?")) {
+    	varForm.regYns.value = regYns;
+    	varForm.action = "${pageContext.request.contextPath}/sec/arm/insertAuthorResource.do";
+    	varForm.submit();
 	} 
 }
 
@@ -159,60 +176,6 @@ function fn_aram_list_author(){
     
     varForm.action = "${pageContext.request.contextPath}/sec/arm/listAuthor.do";
     varForm.submit();
-}
-
-function fnCheckAll() {
-    var varForm = document.getElementById("authorResourceVO");
-    var checkField = varForm.delYn;
-    
-    if(checkField.length> 1) {
-        for(var i=0; i < checkField.length; i++) {
-            checkField[i].checked = varForm.checkAll.checked;
-        }
-    } else {
-        checkField.checked = varForm.checkAll.checked;
-    }
-}
-
-function fncManageChecked() {
-    var varForm = document.getElementById("authorResourceVO");
-    var checkField = varForm.delYn;
-    var checkId = varForm.checkId;
-    var checkRegYn = varForm.regYn;
-    var returnValue = "";
-    var returnRegYns = "";
-    var checkedCount = 0;
-    var returnBoolean = false;
-
-    if(checkField) {
-        if(checkField.length> 1) {
-            for(var i=0; i<checkField.length; i++) {
-                if(checkField[i].checked) {
-                    if(checkField[i].checked) {
-                    	returnValue += ((checkedCount==0? "" : ";") + checkId[i].value);
-                    	returnRegYns += ((checkedCount==0? "" : ";") + checkRegYn[i].value);
-                        checkedCount++;
-                    }
-                }
-            }
-        } else {
-            if(checkField.checked) {
-            	returnValue = checkId.value;
-                returnRegYns = checkRegYn.value;
-            }
-        }
-    } 
-
-    if(returnValue.length> 0) {
-        varForm.resourceCodes.value = returnValue;
-        varForm.regYns.value = returnRegYns;
-        returnBoolean = true;
-    } else {
-        alert("선택된 접근자원이 없습니다.");
-        returnBoolean = false;
-    }
-    
-    return returnBoolean;
 }
 
 /*********************************************************

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
@@ -13,7 +14,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -243,16 +243,19 @@ public class CmyMenuManageController {
 	@Secured("ROLE_USER")
 	public String deleteListMenu(
 			@ModelAttribute CommunityMenuVO communityMenuVO, 
-			@RequestParam String checkedMenuNoForDel,
+			HttpServletRequest request, 
 			ModelMap model) {
 
-		String[] delMenuNo = checkedMenuNoForDel.split(",");
-		if (delMenuNo == null || (delMenuNo.length == 0)) {
+    	String[] delMenuNos = null;
+    	if(request.getParameterValues("uniqIds") != null) 
+    		delMenuNos = request.getParameterValues("uniqIds");
+
+		if (delMenuNos == null || (delMenuNos.length == 0)) {
 			model.addAttribute("message",  MessageHelper.getMessage("fail.common.delete"));
 			return WebUtil.redirectJsp(model, communityMenuVO, "/cop/cmy/listMenu.do");
 		} 
 
-		cmyMenuManageService.deleteMenuManageList(communityMenuVO.getTrgetId(), checkedMenuNoForDel);
+		cmyMenuManageService.deleteMenuManageList(communityMenuVO.getTrgetId(), delMenuNos);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		return WebUtil.redirectJsp(model, communityMenuVO, "/cop/cmy/listMenu.do");

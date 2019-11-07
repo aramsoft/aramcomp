@@ -33,7 +33,6 @@
 
 <input type="hidden" name="menuNo" value="0"/>
 <input type="hidden" name="trgetId" value="${curTrgetId}">
-<input type="hidden" name="checkedMenuNoForDel" />
 
 <div id="search_area">
 	<div class="button_area">
@@ -56,13 +55,13 @@
 	</div>
 </div>
 
-<table class="table-list" style="table-layout:fixed" summary="메뉴관리 목록 조회화면으로 메뉴ID,메뉴한글명,프로그램파일명,메뉴설명,상위메뉴ID로 구성.">
+<table class="table-list" id="tblData" style="table-layout:fixed" summary="메뉴관리 목록 조회화면으로 메뉴ID,메뉴한글명,프로그램파일명,메뉴설명,상위메뉴ID로 구성.">
 <caption>메뉴관리 목록 조회</caption>
 <thead>
   	<tr>
 	    <th scope="col" width="5%" >No.</th>
 	    <th scope="col" width="5%" >
-    		<input type="checkbox" name="checkAll" class="check2" onchange="javascript:fnCheckAll(); return false;" title="전체선택" />
+    		<input type="checkbox" id="checkAll" class="check2" title="전체선택" />
 	    </th>
 	    <th scope="col" width="10%">메뉴ID</th>
 	    <th scope="col" width="15%">메뉴한글명</th>
@@ -86,8 +85,7 @@
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 	    <td class="lt_text">
-	       	<input type="checkbox" name="checkField" class="check2" title="선택"/>
-	       	<input name="checkMenuNo" type="hidden" value="${result.menuNo}" disabled />
+			<input type="checkbox" class="check2" id="uniqIds" name="uniqIds" value="${result.menuNo}" />
 	    </td>
 	    
 	    <td class="lt_text">
@@ -114,6 +112,16 @@
 </div>
 
 <script type="text/javascript">
+
+$(function() {
+	$("#checkAll").on("click", function(){
+		if( $(this).is(":checked") ){
+			$("#tblData input[name=uniqIds]").prop("checked", true);
+		}else{
+			$("#tblData input[name=uniqIds]").prop("checked", false); 
+		}
+	});
+});
 
 function press(event) {
 	if (event.keyCode==13) {
@@ -190,54 +198,18 @@ function fn_aram_clearCache() {
 }
 
 /* ********************************************************
- * 모두선택 처리 함수
- ******************************************************** */
-function fnCheckAll() {
-    var varForm = document.getElementById("communityMenuVO");
-    var checkField = varForm.checkField;
-
-	if(checkField.length> 1) {
-       for(var i=0; i < checkField.length; i++) {
-          checkField[i].checked = varForm.checkAll.checked;
-       }
-    } else {
-       checkField.checked = varForm.checkAll.checked;
-    }
-}
-
-/* ********************************************************
  * 멀티삭제 처리 함수
  ******************************************************** */
 function fn_aram_deleteList() {
-    var varForm = document.getElementById("communityMenuVO");
-    var checkField = varForm.checkField;
-    var menuNo = varForm.checkMenuNo;
-    var checkMenuNos = "";
-    var checkedCount = 0;
-
-    if(checkField) {
-    	if(checkField.length> 1) {
-            for(var i=0; i < checkField.length; i++) {
-                if(checkField[i].checked) {
-                    checkMenuNos += ((checkedCount==0? "" : ",") + menuNo[i].value);
-                    checkedCount++;
-                }
-            }
-        } else {
-            if(checkField.checked) {
-                checkMenuNos = menuNo.value;
-            }
-        }
-    }
-    if(checkMenuNos.length == 0){
-		alert("선택된 메뉴가 없습니다.");
+	if( $("#tblData input[name=uniqIds]:checked").length == 0) {
+		alert("선택한 항목이 없습니다.");
 		return false;
-    }
-
-    varForm.checkedMenuNoForDel.value=checkMenuNos;
-    varForm.menuNo.value = 0;
-    varForm.action = "${pageContext.request.contextPath}/cop/cmy/deleteListMenu.do";
-    varForm.submit();
+	}
+    var varForm = document.getElementById("communityMenuVO");
+    if(confirm("삭제하시겠습니까?")) {
+    	varForm.action = "${pageContext.request.contextPath}/cop/cmy/deleteListMenu.do";
+    	varForm.submit();
+    }	
 }
 
 </script>

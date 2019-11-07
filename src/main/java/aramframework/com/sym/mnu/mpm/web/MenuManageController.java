@@ -1,5 +1,7 @@
 package aramframework.com.sym.mnu.mpm.web;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -7,7 +9,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
@@ -199,24 +200,26 @@ public class MenuManageController {
 	@RequestMapping(value="/sym/mnu/mpm/deleteListMenu.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteListMenu(
-			@RequestParam String checkedMenuNoForDel,
 			@ModelAttribute MenuManageVO menuManageVO, 
+			HttpServletRequest request, 
 			ModelMap model) {
 
-		String[] delMenuNo = checkedMenuNoForDel.split(",");
-		menuManageVO.setMenuNo(Integer.parseInt(delMenuNo[0]));
+    	String[] delMenuNos = null;
+    	if(request.getParameterValues("uniqIds") != null) 
+    		delMenuNos = request.getParameterValues("uniqIds"); 
 
+		menuManageVO.setMenuNo(Integer.parseInt(delMenuNos[0]));
 		if (menuManageService.selectUpperMenuNoByPk(menuManageVO) != 0) {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.delete.upperMenuExist"));
 	        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenu.do");
 		} 
 		
-		if (delMenuNo == null || (delMenuNo.length == 0)) {
+		if (delMenuNos == null || (delMenuNos.length == 0)) {
 			model.addAttribute("message",  MessageHelper.getMessage("fail.common.delete"));
 	        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenu.do");
 		} 
 
-		menuManageService.deleteMenuManageList(checkedMenuNoForDel);
+		menuManageService.deleteMenuManageList(delMenuNos);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
         return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenu.do");

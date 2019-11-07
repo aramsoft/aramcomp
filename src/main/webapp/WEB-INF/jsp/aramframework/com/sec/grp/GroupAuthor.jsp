@@ -34,7 +34,6 @@
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
-<input type="hidden" name="userIds"/>
 <input type="hidden" name="authorCodes"/>
 <input type="hidden" name="regYns"/>
 <input type="hidden" name="mberTyCodes"/>
@@ -66,12 +65,12 @@
 
 <form:hidden path="pageIndex" />
 
-<table class="table-list" summary="그룹내 권한을 관리하는 테이블입니다.사용자 ID,사용자 명,사용자 유형,권한,등록 여부의 정보를 담고 있습니다.">
+<table class="table-list" id="tblData" summary="그룹내 권한을 관리하는 테이블입니다.사용자 ID,사용자 명,사용자 유형,권한,등록 여부의 정보를 담고 있습니다.">
 <thead>
   	<tr>
 		<th scope="col" width="7%" >No.</th>
     	<th scope="col" width="5%" >
-    		<input type="checkbox" name="checkAll" class="check2" onchange="javascript:fnCheckAll(); return false;" title="전체선택" />
+    		<input type="checkbox" id="checkAll" class="check2" title="전체선택" />
     	</th>
     	<th scope="col" width="15%">사용자 ID</th>
     	<th scope="col" width="15%">사용자 명</th>
@@ -96,18 +95,17 @@
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
     	<td class="lt_text3">
-    		<input type="checkbox" name="delYn" class="check2" title="선택">
-    		<input type="hidden" name="checkId" value="<c:out value="${result.uniqId}"/>" disabled />
+			<input type="checkbox" class="check2" id="uniqIds" name="uniqIds" value="${result.uniqId}" />
     	</td>
 
     	<td class="lt_text3"><c:out value="${result.userId}"/></td>
     	<td class="lt_text3"><c:out value="${result.userNm}"/></td>
     	<td class="lt_text3">
     		<c:out value="${result.mberTyNm}"/>
-    		<input type="hidden" name="mberTyCode" value="${result.mberTyCode}" disabled />
+    		<input type="hidden" id="mberTy${result.uniqId}" value="${result.mberTyCode}" disabled />
     	</td>
     	<td class="lt_text3">
-    		<select name="authorManageCombo" title="권한">
+    		<select id="author${result.uniqId}" title="권한">
 	    		<c:forEach var="author" items="${authorList}" varStatus="status">
 	            <option value="<c:out value="${author.authorCode}"/>" <c:if test="${author.authorCode == result.authorCode}">selected</c:if>><c:out value="${author.authorNm}"/></option>
 	        	</c:forEach>
@@ -115,7 +113,7 @@
 	    </td>
     	<td class="lt_text3">
     		<c:out value="${result.regYn}"/>
-    		<input type="hidden" name="regYn" value="<c:out value="${result.regYn}"/>">
+    		<input type="hidden" id="regYn${result.uniqId}" value="<c:out value="${result.regYn}"/>">
     	</td>
   	</tr>
  	</c:forEach>
@@ -131,6 +129,16 @@
 </DIV>
 
 <script type="text/javascript" defer="defer">
+
+$(function() {
+	$("#checkAll").on("click", function(){
+		if( $(this).is(":checked") ){
+			$("#tblData input[name=uniqIds]").prop("checked", true);
+		}else{
+			$("#tblData input[name=uniqIds]").prop("checked", false); 
+		}
+	});
+});
 
 function press() {
     if (event.keyCode==13) {
@@ -181,88 +189,40 @@ function onSearchCondition() {
 }
 
 function fn_aram_insertList() {
-    var varForm = document.getElementById("groupAuthorVO");
-	if(!fncManageChecked()) return;
+	if( $("#tblData input[name=uniqIds]:checked").length == 0) {
+		alert("선택한 항목이 없습니다.");
+		return false;
+	}
 
+	var authorCodes = "";
+	var regYns = "";
+	var mberTyCodes = "";
+	$("#tblData input[name=uniqIds]:checked").each(function() {	
+		authorCodes += ((authorCodes == "")?"":";") + $("#author"+this.value).val(); 
+		regYns += ((regYns == "")?"":";") + $("#regYn"+this.value).val(); 
+		mberTyCodes += ((mberTyCodes == "")?"":";") + $("#mberTy"+this.value).val(); 
+	});
+
+    var varForm = document.getElementById("groupAuthorVO");
     if(confirm("등록하시겠습니까?")) {
-    	varForm.action = "${pageContext.request.contextPath}/sec/grp/insertGroupAuthor.do";
+    	varForm.authorCodes.value = authorCodes;
+    	varForm.regYns.value = regYns;
+    	varForm.mberTyCodes.value = mberTyCodes;
+    	varForm.action = "${pageContext.request.contextPath}/sec/grp/insertListGroupAuthor.do";
     	varForm.submit();
     }
 }
 
 function fn_aram_deleteList() {
-    var varForm = document.getElementById("groupAuthorVO");
-	if(!fncManageChecked()) return;
-
+	if( $("#tblData input[name=uniqIds]:checked").length == 0) {
+		alert("선택한 항목이 없습니다.");
+		return false;
+	}
+    
     if(confirm("삭제하시겠습니까?")) {
-    	varForm.action = "${pageContext.request.contextPath}/sec/grp/deleteGroupAuthor.do";
+    	varForm.action = "${pageContext.request.contextPath}/sec/grp/deleteListGroupAuthor.do";
     	varForm.submit();
     }
-}
-
-function fnCheckAll() {
-    var varForm = document.getElementById("groupAuthorVO");
-    var checkField = varForm.delYn;
-    
-    if(checkField.length> 1) {
-        for(var i=0; i < checkField.length; i++) {
-            checkField[i].checked = varForm.checkAll.checked;
-        }
-    } else {
-        checkField.checked = varForm.checkAll.checked;
-    }
-}
-
-function fncManageChecked() {
-    var varForm = document.getElementById("groupAuthorVO");
-	var returnBoolean = false;
-
-    var checkField = varForm.delYn;
-    var checkId = varForm.checkId;
-    var selectAuthor = varForm.authorManageCombo;
-    var booleanRegYn = varForm.regYn;
-    var listMberTyCode = varForm.mberTyCode;
-
-    var returnId = "";
-    var returnAuthor = "";
-    var returnRegYn = "";
-    var returnmberTyCode = "";
-
-    var checkedCount = 0;
-
-    if(checkField) {
-        if(checkField.length> 1) {
-            for(var i=0; i<checkField.length; i++) {
-                if(checkField[i].checked) {
-                	returnId += ((checkedCount==0? "" : ";") + checkId[i].value);
-                	returnAuthor += ((checkedCount==0? "" : ";") + selectAuthor[i].value);
-                	returnRegYn += ((checkedCount==0? "" : ";") + booleanRegYn[i].value);
-                	returnmberTyCode += ((checkedCount==0? "" : ";") + listMberTyCode[i].value);
-                    checkedCount++;
-                }
-            }
-        } else {
-            if(checkField.checked) {
-                returnId = checkId.value;
-                returnAuthor = selectAuthor.value;
-                returnRegYn = booleanRegYn.value;
-                returnmberTyCode = listMberTyCode.value;
-            }
-        }
-    } 
-    
-    if(returnId.length> 0) {
-        varForm.userIds.value = returnId;
-        varForm.authorCodes.value = returnAuthor;
-        varForm.regYns.value = returnRegYn;
-        varForm.mberTyCodes.value = returnmberTyCode;
-        returnBoolean = true;
-    } else {
-        alert("선택 항목이 없습니다.");
-        returnBoolean = false;
-    }
-    
-    return returnBoolean;
 }
 
 /*********************************************************

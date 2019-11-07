@@ -1,5 +1,7 @@
 package aramframework.com.sec.arm.web;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -63,12 +65,17 @@ public class AuthorResourceController {
 	@Secured("ROLE_ADMIN")
 	public String insertAuthorResource(
 			@ModelAttribute AuthorResourceVO authorResourceVO, 
-			@RequestParam String authorCode, 
-			@RequestParam String resourceCodes,
-			@RequestParam String regYns, 
+			@RequestParam String strRegYns, 
+			HttpServletRequest request, 
 			ModelMap model) {
 
-		authorResourceService.insertAuthorResources(authorCode, resourceCodes, regYns);
+    	String[] resourceCodes = null;
+    	if(request.getParameterValues("uniqIds") != null) 
+    		resourceCodes = request.getParameterValues("uniqIds");
+
+		String[] regYns = strRegYns.split(";");
+		
+		authorResourceService.insertAuthorResources(authorResourceVO.getAuthorCode(), resourceCodes, regYns);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		return WebUtil.redirectJsp(model, authorResourceVO, "/sec/arm/listAuthorResource.do");

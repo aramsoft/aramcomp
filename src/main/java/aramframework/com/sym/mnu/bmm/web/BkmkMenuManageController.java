@@ -1,5 +1,7 @@
 package aramframework.com.sym.mnu.bmm.web;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -7,7 +9,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
@@ -75,15 +76,18 @@ public class BkmkMenuManageController {
 	@Secured("ROLE_ADMIN")
 	public String deleteListBkmkMenu(
 			@ModelAttribute BkmkMenuManageVO bkmkMenuManageVO, 
-			@RequestParam String checkMenuIds,
+			HttpServletRequest request, 
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 
-		String[] temp = checkMenuIds.split(",");
+    	String[] menuIds = null;
+    	if(request.getParameterValues("uniqIds") != null) 
+    		menuIds = request.getParameterValues("uniqIds"); 
+
 		BkmkMenuManageVO bmmVO = new BkmkMenuManageVO();
-		for (int i = 0; i < temp.length; i++) {
-			bmmVO.setMenuId(temp[i]);
+		for (int i = 0; i < menuIds.length; i++) {
+			bmmVO.setMenuId(menuIds[i]);
 			bmmVO.setUserId(loginVO.getId());
 			bkmkMenuManageService.deleteBkmkMenuManage(bmmVO);
 		}

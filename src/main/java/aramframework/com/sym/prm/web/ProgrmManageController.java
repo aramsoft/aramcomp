@@ -1,5 +1,7 @@
 package aramframework.com.sym.prm.web;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +11,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
@@ -97,16 +98,19 @@ public class ProgrmManageController {
 	@Secured("ROLE_ADMIN")
 	public String deleteListProgram(
 			@ModelAttribute ProgrmManageVO progrmManageVO, 
-			@RequestParam String checkedProgrmFileNmForDel,
+			HttpServletRequest request, 
 			ModelMap model) {
 		
-		String[] delProgrmFileNm = checkedProgrmFileNmForDel.split(",");
-		if (delProgrmFileNm == null || (delProgrmFileNm.length == 0)) {
+    	String[] progrmFileNms = null;
+    	if(request.getParameterValues("uniqIds") != null) 
+    		progrmFileNms = request.getParameterValues("uniqIds"); 
+
+		if (progrmFileNms == null || (progrmFileNms.length == 0)) {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.delete"));
 	        return WebUtil.redirectJsp(model, progrmManageVO, "/sym/prm/listProgram.do");
 		} 
 		
-		progrmManageService.deleteProgrmManageList(checkedProgrmFileNmForDel);
+		progrmManageService.deleteProgrmManageList(progrmFileNms);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
         return WebUtil.redirectJsp(model, progrmManageVO, "/sym/prm/listProgram.do");

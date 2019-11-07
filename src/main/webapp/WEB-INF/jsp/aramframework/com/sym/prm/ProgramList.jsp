@@ -35,7 +35,6 @@
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
 <input type="hidden" name="progrmFileNm"/>
-<input type="hidden" name="checkedProgrmFileNmForDel"  />
 
 <div id="search_area">
 	<div class="button_area">
@@ -55,13 +54,13 @@
 	</div>
 </div>
 
-<table class="table-list" summary="프로그램목록관리 목록으로 프로그램파일명, 프로그램명, url,프로그램설명 으로 구성">
+<table class="table-list" id="tblData" summary="프로그램목록관리 목록으로 프로그램파일명, 프로그램명, url,프로그램설명 으로 구성">
 <caption>프로그램목록관리 목록</caption>
 <thead>
   	<tr>
      	<th scope="col" width="5%" >No.</th>
     	<th scope="col" width="7%" >
-    		<input type="checkbox" name="checkAll" class="check2" onchange="javascript:fnCheckAll(); return false;" title="전체선택">
+    		<input type="checkbox" id="checkAll" class="check2" title="전체선택">
     	</th>
     	<th scope="col" width="20%">프로그램파일명</th>
     	<th scope="col" width="20%">프로그램명</th>
@@ -85,8 +84,7 @@
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
     	<td class="lt_text3">
-       		<input type="checkbox" name="checkField" class="check2" title="선택">
-       		<input type="hidden" name="checkProgrmFileNm" value="<c:out value='${result.progrmFileNm}'/>" disabled />
+ 			<input type="checkbox" class="check2" id="uniqIds" name="uniqIds" value="${result.progrmFileNm}" />
     	</td>
     	<td class="lt_text">
 			<span class="link">
@@ -112,6 +110,16 @@
 </DIV>
 
 <script type="text/javascript">
+
+$(function() {
+	$("#checkAll").on("click", function(){
+		if( $(this).is(":checked") ){
+			$("#tblData input[name=uniqIds]").prop("checked", true);
+		}else{
+			$("#tblData input[name=uniqIds]").prop("checked", false); 
+		}
+	});
+});
 
 function press() {
 	if (event.keyCode==13) {
@@ -163,51 +171,16 @@ function fn_aram_regist() {
  * 멀티삭제 처리 함수
  ******************************************************** */
 function fn_aram_deleteList() {
-    var varForm = document.getElementById("progrmManageVO");
-    var checkField = varForm.checkField;
-    var ProgrmFileNm = varForm.checkProgrmFileNm;
-    var checkProgrmFileNms = "";
-    var checkedCount = 0; 
-
-    if(checkField) {
-    	if(checkField.length> 1) {
-            for(var i=0; i < checkField.length; i++) {
-            	if(checkField[i].checked) {
-                    checkProgrmFileNms += ((checkedCount==0? "" : ",") + ProgrmFileNm[i].value);
-                    checkedCount++;
-                }
-            }
-        } else {
-            if(checkField.checked) {
-            	checkProgrmFileNms = ProgrmFileNm.value;
-            }
-        }
-    }
-
-    if(checkProgrmFileNms.length == 0){
-		alert("선택된 프로그램이 없습니다.");
+	if( $("#tblData input[name=uniqIds]:checked").length == 0) {
+		alert("선택한 항목이 없습니다.");
 		return false;
-    }
-
-    varForm.checkedProgrmFileNmForDel.value=checkProgrmFileNms;
-    varForm.action = "${pageContext.request.contextPath}/sym/prm/deleteListProgram.do";
-    varForm.submit();
-}
-
-/* ********************************************************
- * 모두선택 처리 함수
- ******************************************************** */
-function fnCheckAll() {
-    var varForm = document.getElementById("progrmManageVO");
-    var checkField = varForm.checkField;
+	}
     
-    if(checkField.length> 1) {
-        for(var i=0; i < checkField.length; i++) {
-            checkField[i].checked = varForm.checkAll.checked;
-        }
-    } else {
-        checkField.checked = varForm.checkAll.checked;
-    }
+    var varForm = document.getElementById("progrmManageVO");
+    if(confirm("삭제하시겠습니까?")) {
+    	varForm.action = "${pageContext.request.contextPath}/sym/prm/deleteListProgram.do";
+    	varForm.submit();
+    }	
 }
 
 /*********************************************************

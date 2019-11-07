@@ -34,7 +34,6 @@
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
-<input type="hidden" name="userIds"/>
 <input type="hidden" name="authorCodes"/>
 <input type="hidden" name="regYns"/>
 
@@ -61,12 +60,12 @@
 <form:hidden path="searchCondition" />
 <form:hidden path="pageIndex" />
 
-<table class="table-list" summary="부서 권한 관리 테이블입니다.사용자 ID,사용자 명,권한,등록 여부 정보를 담고 있습니다.">
+<table class="table-list" id="tblData" summary="부서 권한 관리 테이블입니다.사용자 ID,사용자 명,권한,등록 여부 정보를 담고 있습니다.">
 <thead>
   	<tr>
 		<th scope="col" width="7%">No.</th>
     	<th scope="col" width="5%">
-    		<input type="checkbox" name="checkAll" class="check2" onchange="javascript:fnCheckAll(); return false;" title="전체선택" />
+    		<input type="checkbox" id="checkAll" class="check2" title="전체선택" />
     	</th>
     	<th scope="col" width="10%">사용자 ID</th>
     	<th scope="col"            >사용자 명</th>
@@ -91,14 +90,13 @@
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<td class="lt_text3">
-			<input type="checkbox" name="delYn" class="check2" title="선택">
-			<input type="hidden" name="checkId" value="<c:out value="${result.uniqId}"/>" disabled />
+			<input type="checkbox" class="check2" id="uniqIds" name="uniqIds" value="${result.uniqId}" />
 		</td>
 
 	    <td class="lt_text3"><c:out value="${result.userId}"/></td>
 	    <td class="lt_text3"><c:out value="${result.userNm}"/></td>
 	    <td class="lt_text3">
-	    	<select name="authorManageCombo" title="등록여부">
+	    	<select id="author${result.uniqId}" title="등록여부">
 	        	<c:forEach var="author" items="${authorList}" varStatus="status">
 	            <option value="<c:out value="${author.authorCode}"/>" <c:if test="${author.authorCode == result.authorCode}">selected</c:if>><c:out value="${author.authorNm}"/></option>
 	        	</c:forEach>
@@ -106,7 +104,7 @@
 	    </td>
 	    <td class="lt_text3">
 	    	<c:out value="${result.regYn}"/>
-	    	<input type="hidden" name="regYn" value="<c:out value="${result.regYn}"/>">
+	    	<input type="hidden" id="regYn${result.uniqId}" value="<c:out value="${result.regYn}"/>">
 	    </td>
 	</tr>
 	</c:forEach>
@@ -123,65 +121,15 @@
 
 <script type="text/javascript" defer="defer">
 
-function fnCheckAll() {
-    var varForm = document.getElementById("deptAuthorVO");
-    var checkField = varForm.delYn;
-    
-    if(checkField.length> 1) {
-        for(var i=0; i < checkField.length; i++) {
-            checkField[i].checked = varForm.checkAll.checked;
-        }
-    } else {
-        checkField.checked = varForm.checkAll.checked;
-    }
-}
-
-function fncManageChecked() {
-    var varForm = document.getElementById("deptAuthorVO");
-    var returnBoolean = true;
-
-    var checkField = varForm.delYn;
-    var checkId = varForm.checkId;
-    var selectAuthor = varForm.authorManageCombo;
-    var booleanRegYn = varForm.regYn;
-
-    var returnId = "";
-    var returnAuthor = "";
-    var returnRegYn = "";
-
-    var checkedCount = 0;
-
-    if(checkField) {
-        if(checkField.length> 1) {
-            for(var i=0; i<checkField.length; i++) {
-                if(checkField[i].checked) {
-                    returnId += ((checkedCount==0? "" : ";") + checkId[i].value);
-                    returnAuthor += ((checkedCount==0? "" : ";") + selectAuthor[i].value);
-                    returnRegYn += ((checkedCount==0? "" : ";") + booleanRegYn[i].value);
-                    checkedCount++;
-                }
-            }
-        } else {
-            if(checkField.checked) {
-            	returnId = checkId.value;
-                returnAuthor = selectAuthor.value;
-                returnRegYn = booleanRegYn.value;
-            }
-        }
-    }
-    
-    if(returnId.length> 0) {
-	    varForm.userIds.value = returnId;
-	    varForm.authorCodes.value = returnAuthor;
-	    varForm.regYns.value = returnRegYn;
-	    returnBoolean = true;
-    } else {
-        alert("선택된 사용자가  없습니다.");
-        returnBoolean = false;
-    }
-    
-    return returnBoolean;
-}
+$(function() {
+	$("#checkAll").on("click", function(){
+		if( $(this).is(":checked") ){
+			$("#tblData input[name=uniqIds]").prop("checked", true);
+		}else{
+			$("#tblData input[name=uniqIds]").prop("checked", false); 
+		}
+	});
+});
 
 function press() {
     if (event.keyCode==13) {
@@ -212,21 +160,36 @@ function fn_aram_search() {
 }
 
 function fn_aram_insertList() {
-    if(!fncManageChecked()) return;
-    
+	if( $("#tblData input[name=uniqIds]:checked").length == 0) {
+		alert("선택한 항목이 없습니다.");
+		return false;
+	}
+
+	var authorCodes = "";
+	var regYns = "";
+	$("#tblData input[name=uniqIds]:checked").each(function() {	
+		authorCodes += ((authorCodes == "")?"":";") + $("#author"+this.value).val(); 
+		regYns += ((regYns == "")?"":";") + $("#regYn"+this.value).val(); 
+	});
+
     var varForm = document.getElementById("deptAuthorVO");
     if(confirm("등록하시겠습니까?")) {
-    	varForm.action = "${pageContext.request.contextPath}/sec/dpt/insertDeptAuthor.do";
+    	varForm.authorCodes.value = authorCodes;
+    	varForm.regYns.value = regYns;
+    	varForm.action = "${pageContext.request.contextPath}/sec/dpt/insertListDeptAuthor.do";
     	varForm.submit();
     }
 }
 
 function fn_aram_deleteList() {
-    if(!fncManageChecked()) return;
+	if( $("#tblData input[name=uniqIds]:checked").length == 0) {
+		alert("선택한 항목이 없습니다.");
+		return false;
+	}
     
     var varForm = document.getElementById("deptAuthorVO");
     if(confirm("삭제하시겠습니까?")) {
-    	varForm.action = "${pageContext.request.contextPath}/sec/dpt/deleteDeptAuthor.do";
+    	varForm.action = "${pageContext.request.contextPath}/sec/dpt/deleteListDeptAuthor.do";
     	varForm.submit();
     }
 }

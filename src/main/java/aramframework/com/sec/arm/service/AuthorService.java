@@ -91,13 +91,10 @@ public class AuthorService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param authorCodes
 	 */
-	public void deleteAuthors(String authorCodes) {
-
-		String[] strAuthorCodes = authorCodes.split(";");
-
+	public void deleteAuthors(String[] authorCodes) {
 		AuthorVO authorVO = new AuthorVO(); 
-		for (int i = 0; i < strAuthorCodes.length; i++) {
-			authorVO.setAuthorCode(strAuthorCodes[i]);
+		for (int i = 0; i < authorCodes.length; i++) {
+			authorVO.setAuthorCode(authorCodes[i]);
 			authorMapper.deleteAuthor(authorVO);
 		}
 		

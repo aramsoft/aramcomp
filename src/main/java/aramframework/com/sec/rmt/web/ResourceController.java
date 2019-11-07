@@ -1,5 +1,7 @@
 package aramframework.com.sec.rmt.web;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -7,7 +9,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
@@ -169,8 +170,12 @@ public class ResourceController {
 	@Secured("ROLE_ADMIN")
 	public String deleteListResources(
 			@ModelAttribute ResourceVO resourceVO, 
-			@RequestParam String resourceCodes, 
+			HttpServletRequest request, 
 			ModelMap model) {
+
+    	String[] resourceCodes = null;
+    	if(request.getParameterValues("uniqIds") != null) 
+    		resourceCodes = request.getParameterValues("uniqIds"); 
 
 		resourceService.deleteResources(resourceCodes);
 		

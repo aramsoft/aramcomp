@@ -62,20 +62,13 @@ public class CmyMenuManageService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param checkedMenuNoForDel
 	 */
-	public void deleteMenuManageList(String trgetId, String checkedMenuNoForDel) {
+	public void deleteMenuManageList(String trgetId, String[] delMenuNos) {
 
-		String[] delMenuNo = checkedMenuNoForDel.split(",");
-
-		if (delMenuNo == null || (delMenuNo.length == 0)) {
-			egovLogger.debug("delMenuNo is empty, checkedMenuNoForDel = " + checkedMenuNoForDel);
-			return;
-		}
-		
 		CommunityMenuVO communityMenuVO = null;
-		for (int i = 0; i < delMenuNo.length; i++) {
+		for (int i = 0; i < delMenuNos.length; i++) {
 			communityMenuVO = new CommunityMenuVO();
 			communityMenuVO.setTrgetId(trgetId);
-			communityMenuVO.setMenuNo(Integer.parseInt(delMenuNo[i]));
+			communityMenuVO.setMenuNo(Integer.parseInt(delMenuNos[i]));
 			cmyMenuManageMapper.deleteMenuManage(communityMenuVO);
 		}
 	}

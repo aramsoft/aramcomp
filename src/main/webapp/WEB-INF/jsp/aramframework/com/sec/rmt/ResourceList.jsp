@@ -35,7 +35,6 @@
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
 <input type="hidden" name="resourceCode"/>
-<input type="hidden" name="resourceCodes"/>
 
 <div id="search_area">
 	<div class="button_area">
@@ -58,12 +57,12 @@
 <form:hidden path="searchCondition" />
 <form:hidden path="pageIndex" />
 
-<table class="table-list" summary="접근자원 관리 테이블입니다.접근자원  코드,접근자원 명,접근자원 타입,접근자원 Sort,접근자원 설명,등록일자의 정보를 담고 있습니다.">
+<table class="table-list" id="tblData" summary="접근자원 관리 테이블입니다.접근자원  코드,접근자원 명,접근자원 타입,접근자원 Sort,접근자원 설명,등록일자의 정보를 담고 있습니다.">
 <thead>
   	<tr>
 		<th scope="col" width="7%" >No.</th>
     	<th scope="col" width="5%" >
-    		<input type="checkbox" name="checkAll" class="check2" onchange="javascript:fnCheckAll(); return false;" title="전체선택" />
+    		<input type="checkbox" id="checkAll" class="check2" title="전체선택" />
     	</th>
     	<th scope="col" width="25%">접근자원 코드</th>
     	<th scope="col"            >접근자원 명</th>
@@ -88,8 +87,7 @@
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 	    <td class="lt_text3">
-	    	<input type="checkbox" name="delYn" class="check2" title="선택">
-	    	<input type="hidden" name="checkId" value="<c:out value="${result.resourceCode}"/>" disabled />
+			<input type="checkbox" class="check2" id="uniqIds" name="uniqIds" value="${result.resourceCode}" />
 	    </td>
 	    
 	    <td class="lt_text"><c:out value="${result.resourceCode}"/></td>
@@ -117,6 +115,16 @@
 </DIV>
 
 <script type="text/javascript" defer="defer">
+
+$(function() {
+	$("#checkAll").on("click", function(){
+		if( $(this).is(":checked") ){
+			$("#tblData input[name=uniqIds]").prop("checked", true);
+		}else{
+			$("#tblData input[name=uniqIds]").prop("checked", false); 
+		}
+	});
+});
 
 function press() {
     if (event.keyCode==13) {
@@ -156,60 +164,16 @@ function fn_aram_regist() {
 }
 
 function fn_aram_deleteList() {
-    var varForm = document.getElementById("resourceVO");
-	if(fncManageChecked()) {
-        if(confirm("삭제하시겠습니까?")) {
-        	varForm.action = "${pageContext.request.contextPath}/sec/rmt/deleteListResource.do";
-        	varForm.submit();
-        }
-    }
-}
-
-function fnCheckAll() {
-    var varForm = document.getElementById("resourceVO");
-    var checkField = varForm.delYn;
+	if( $("#tblData input[name=uniqIds]:checked").length == 0) {
+		alert("선택한 항목이 없습니다.");
+		return false;
+	}
     
-    if(checkField.length> 1) {
-        for(var i=0; i < checkField.length; i++) {
-            checkField[i].checked = varForm.checkAll.checked;
-        }
-    } else {
-        checkField.checked = varForm.checkAll.checked;
-    }
-}
-
-function fncManageChecked() {
     var varForm = document.getElementById("resourceVO");
-    var checkField = varForm.delYn;
-    var checkId = varForm.checkId;
-    var returnValue = "";
-    var resultCheck = false;
-    var checkedCount = 0;
-
-    if(checkField) {
-        if(checkField.length> 1) {
-            for(var i=0; i<checkField.length; i++) {
-                if(checkField[i].checked) {
-                	returnValue += ((checkedCount==0? "" : ";") + checkId[i].value);
-                    checkedCount++;
-                }
-            }
-        } else {
-            if(checkField.checked) {
-                returnValue = checkId.value;
-            }
-        }
-    } 
-
-    if(returnValue.length> 0) {
-        varForm.resourceCodes.value = returnValue;
-        resultCheck = true;
-    } else {
-        alert("선택된 접근자원이 없습니다.");
-        resultCheck = false;
+    if(confirm("삭제하시겠습니까?")) {
+       	varForm.action = "${pageContext.request.contextPath}/sec/rmt/deleteListResource.do";
+       	varForm.submit();
     }
-
-    return resultCheck;
 }
 
 /*********************************************************

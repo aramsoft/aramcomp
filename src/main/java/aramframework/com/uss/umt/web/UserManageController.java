@@ -311,13 +311,16 @@ public class UserManageController {
 	public String deleteIdsAll(
 			@ModelAttribute UserManageVO userManageVO,
 			@RequestParam String returnUrl, 
-			@RequestParam String checkedIdForDel, 
+			HttpServletRequest request, 
 			ModelMap model) {
 
-		userManageService.deleteIdsAll(checkedIdForDel);
+    	String[] ids = null;
+    	if(request.getParameterValues("uniqIds") != null) 
+    		ids = request.getParameterValues("uniqIds");
+
+		userManageService.deleteIdsAll(ids);
 	
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		
 		return WebUtil.redirectJsp(model, userManageVO, returnUrl);
 	}
 	

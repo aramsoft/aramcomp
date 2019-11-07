@@ -37,7 +37,6 @@
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
 <input type="hidden" name="uniqId"/>
-<input type="hidden" name="checkedIdForDel" />
 <input type="hidden" name="returnUrl" />
 
 <div id="search_area">
@@ -69,12 +68,12 @@
 </div>
 <form:hidden path="pageIndex" />
  
-<table class="table-list">
+<table class="table-list" id="tblData" >
 <thead>
     <tr>
     	<th scope="col" width="7%" >No.</th>
         <th scope="col" width="5%" >
-    		<input type="checkbox" name="checkAll" class="check2" onchange="javascript:fnCheckAll(); return false;" title="전체선택" />
+    		<input type="checkbox" id="checkAll" class="check2" title="전체선택" />
         </th>
         <th scope="col" width="10%">아이디</th>
         <th scope="col" width="10%">사용자이름</th>
@@ -100,12 +99,11 @@
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
         <td class="lt_text3">
-            <input name="checkField" title="checkField <c:out value="${status.count}"/>" type="checkbox"/>
-            <input name="checkId" type="hidden" value="<c:out value='${result.userTy}'/>:<c:out value='${result.uniqId}'/>" disabled />
+			<input type="checkbox" class="check2" id="uniqIds" name="uniqIds" value="${result.userTy}-${result.uniqId}" />
         </td>
         <td class="lt_text3">
 			<span class="link">
-			<a href="#"  onclick="javascript:fn_aram_detail('<c:out value="${result.userTy}"/>:<c:out value="${result.uniqId}"/>'); return false;">
+			<a href="#"  onclick="javascript:fn_aram_detail('<c:out value="${result.uniqId}"/>'); return false;">
 				<c:out value="${result.userId}"/>
 			</a>
 			</span>
@@ -134,6 +132,16 @@
 
 <script type="text/javascript">
 
+$(function() {
+	$("#checkAll").on("click", function(){
+		if( $(this).is(":checked") ){
+			$("#tblData input[name=uniqIds]").prop("checked", true);
+		}else{
+			$("#tblData input[name=uniqIds]").prop("checked", false); 
+		}
+	});
+});
+
 function press(event) {
 	if (event.keyCode==13) {
 		fn_aram_search();
@@ -157,16 +165,9 @@ function fn_aram_search(){
     varForm.submit();
 }
 
-function fn_aram_detail(id) {
+function fn_aram_detail(uniqId) {
     var varForm = document.getElementById("mberManageVO");
-
-    array = id.split(":");
-	if(array[0] == "") {
-	} else {
-	    userTy = array[0];
-	    userId = array[1];    
-	}
-	varForm.uniqId.value = userId;
+	varForm.uniqId.value = uniqId;
 	varForm.action = "${pageContext.request.contextPath}/uss/umt/editMber.do";
 	varForm.submit();
 }
@@ -179,34 +180,16 @@ function fn_aram_regist() {
 }
 
 function fn_aram_deleteList() {
+	if( $("#tblData input[name=uniqIds]:checked").length == 0) {
+		alert("선택한 항목이 없습니다.");
+		return false;
+	}
+    
     var varForm = document.getElementById("mberManageVO");
-    var checkField = varForm.checkField;
-    var id = varForm.checkId;
-    var checkedIds = "";
-    var checkedCount = 0;
- 
-    if(checkField) {
-        if(checkField.length> 1) {
-            for(var i=0; i < checkField.length; i++) {
-                if(checkField[i].checked) {
-                    checkedIds += ((checkedCount==0? "" : ",") + id[i].value);
-                    checkedCount++;
-                }
-            }
-        } else {
-            if(checkField.checked) {
-                checkedIds = id.value;
-            }
-        }
-    }
-    if(checkedIds.length> 0) {
-    	//alert(checkedIds);
-        if(confirm("<spring:message code="common.delete.msg" />")){
-        	varForm.checkedIdForDel.value=checkedIds;
-        	varForm.returnUrl.value="/uss/umt/listMber.do";
-        	varForm.action = "${pageContext.request.contextPath}/uss/umt/deleteIdsAll.do";
-        	varForm.submit();
-        }
+    if(confirm("<spring:message code="common.delete.msg" />")){
+       	varForm.returnUrl.value="/uss/umt/listMber.do";
+       	varForm.action = "${pageContext.request.contextPath}/uss/umt/deleteIdsAll.do";
+       	varForm.submit();
     }
 }
 

@@ -1,5 +1,7 @@
 package aramframework.com.sec.dpt.web;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -69,16 +71,23 @@ public class DeptAuthorController {
 	 * @param authorCodes
 	 * @param regYns
 	 */
-	@RequestMapping(value = "/sec/dpt/insertDeptAuthor.do")
+	@RequestMapping(value = "/sec/dpt/insertListDeptAuthor.do")
 	@Secured("ROLE_ADMIN")
 	public String insertDeptAuthor(
 			@ModelAttribute DeptAuthorVO deptAuthorVO,
-			@RequestParam String userIds, 
-			@RequestParam String authorCodes,
-			@RequestParam String regYns, 
+			@RequestParam String strAuthorCodes,
+			@RequestParam String strRegYns, 
+			HttpServletRequest request, 
 			ModelMap model) {
 
-		deptAuthorService.insertDeptAuthors(userIds, authorCodes, regYns);
+    	String[] uniqIds = null;
+    	if(request.getParameterValues("uniqIds") != null) 
+    		uniqIds = request.getParameterValues("uniqIds"); 
+
+		String[] authorCodes = strAuthorCodes.split(";");
+		String[] regYns = strRegYns.split(";");
+
+		deptAuthorService.insertDeptAuthors(uniqIds, authorCodes, regYns);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		return WebUtil.redirectJsp(model, deptAuthorVO, "/sec/dpt/listDeptAuthor.do");
@@ -89,14 +98,18 @@ public class DeptAuthorController {
 	 * 
 	 * @param userIds
 	 */
-	@RequestMapping(value = "/sec/dpt/deleteDeptAuthor.do")
+	@RequestMapping(value = "/sec/dpt/deleteListDeptAuthor.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteDeptAuthor(
 			@ModelAttribute DeptAuthorVO deptAuthorVO,
-			@RequestParam String userIds, 
+			HttpServletRequest request, 
 			ModelMap model) {
 
-		deptAuthorService.deleteDeptAuthors(userIds);
+    	String[] uniqIds = null;
+    	if(request.getParameterValues("uniqIds") != null) 
+    		uniqIds = request.getParameterValues("uniqIds"); 
+
+		deptAuthorService.deleteDeptAuthors(uniqIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		return WebUtil.redirectJsp(model, deptAuthorVO, "/sec/dpt/listDeptAuthor.do");

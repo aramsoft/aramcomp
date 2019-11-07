@@ -73,23 +73,13 @@ public class GroupAuthorService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param groupAuthorVO
 	 */
-	public void insertGroupAuthors(
-			String userIds, 
-			String authorCodes,
-			String regYns, 
-			String mberTyCodes) {
-		
-		String[] strUserIds = userIds.split(";");
-		String[] strAuthorCodes = authorCodes.split(";");
-		String[] strRegYns = regYns.split(";");
-		String[] strMberTyCodes = mberTyCodes.split(";");// 2011.08.04 수정 부분
-
+	public void insertGroupAuthors(String[] uniqIds, String[] authorCodes, String[] regYns, String[] mberTyCodes) {
 		GroupAuthorVO gaVO = new GroupAuthorVO();
-		for (int i = 0; i < strUserIds.length; i++) {
-			gaVO.setUniqId(strUserIds[i]);
-			gaVO.setAuthorCode(strAuthorCodes[i]);
-			gaVO.setMberTyCode(strMberTyCodes[i]);// 2011.08.04 수정 부분
-			if (strRegYns[i].equals("N"))
+		for (int i = 0; i < uniqIds.length; i++) {
+			gaVO.setUniqId(uniqIds[i]);
+			gaVO.setAuthorCode(authorCodes[i]);
+			gaVO.setMberTyCode(mberTyCodes[i]);// 2011.08.04 수정 부분
+			if (regYns[i].equals("N"))
 				groupAuthorMapper.insertGroupAuthor(gaVO);
 			else
 				groupAuthorMapper.updateGroupAuthor(gaVO);
@@ -101,11 +91,10 @@ public class GroupAuthorService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param groupAuthorVO
 	 */
-	public void deleteGroupAuthors(String userIds) {
-		String[] strUserIds = userIds.split(";");
+	public void deleteGroupAuthors(String[] uniqIds) {
 		GroupAuthorVO agVO = new GroupAuthorVO();
-		for (int i = 0; i < strUserIds.length; i++) {
-			agVO.setUniqId(strUserIds[i]);
+		for (int i = 0; i < uniqIds.length; i++) {
+			agVO.setUniqId(uniqIds[i]);
 			groupAuthorMapper.deleteGroupAuthor(agVO);
 		}
 	}

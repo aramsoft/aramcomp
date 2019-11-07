@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.PrintWriter;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -16,7 +17,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
@@ -86,10 +86,14 @@ public class SndngMailController {
 	@Secured("ROLE_USER")
 	public String deleteSndngMailList(
 			@ModelAttribute SndngMailVO sndngMailVO, 
-			@RequestParam String messageIds, 
+			HttpServletRequest request, 
 			ModelMap model) {
 
-		sndngMailService.deleteSndngMails(messageIds);
+    	String[] mssageIds = null;
+    	if(request.getParameterValues("uniqIds") != null) 
+    		mssageIds = request.getParameterValues("uniqIds");
+
+		sndngMailService.deleteSndngMails(mssageIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		return WebUtil.redirectJsp(model, sndngMailVO, "/cop/ems/listSndngMail.do");

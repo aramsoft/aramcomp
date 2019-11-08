@@ -15,8 +15,6 @@ public interface Globals {
 	
 	// 메인 페이지
 	String MAIN_PAGE   = AramProperties.getProperty("Globals.MainPage");
-	String MOBILE_PAGE = AramProperties.getProperty("Globals.MobilePage");
-	String LOCAL_PAGE  = AramProperties.getProperty("Globals.LocalPage");
 	
 	// 프로퍼티 파일 위치
 	String CONF_PATH        = AramProperties.getPathProperty("Globals.ConfPath");

@@ -76,7 +76,6 @@ public class LoginController {
 			model.addAttribute("useMemberManage", "true");
 		}
 
-		// 접속 기기에 따라서 모바일용/일반웹용 처음 페이지를 다르게 호출한다.
 		String requestUrl = null;
 		SavedRequest savedRequest = requestCache.getRequest(request, response);
 		if ( targetUrl != null ) {
@@ -92,6 +91,7 @@ public class LoginController {
         	requestUrl = request.getRequestURI();
         }
         
+		// 접속 기기에 따라서 모바일용/일반웹용 처음 페이지를 다르게 호출한다.
 		if( requestUrl.startsWith("http://m.aramsoft.co.kr") 
 			|| 	requestUrl.indexOf(".mdo") != -1 ) {
     		return "aramframework/mbl/uat/uia/LoginUsr";
@@ -165,24 +165,9 @@ public class LoginController {
             	LOG.debug("savedRequestUrl = " + requestUrl);
             	return "redirect:" + requestUrl;
             }
-       } 
+        } 
 
-        String main_page = null; 
-        requestUrl = request.getRequestURL().toString();
-		if( requestUrl.startsWith("http://localhost") ) {
-			main_page = Globals.LOCAL_PAGE;
-		} else {
-			main_page = Globals.MAIN_PAGE;
-		}
-
-		LOG.debug("main_page > " + main_page);
-
-		if (main_page.startsWith("http")) {
-			return "redirect:" + main_page;
-		} else {
-			return main_page;
-		}
-
+        return Globals.MAIN_PAGE;
 	}
 
 	/**

@@ -47,16 +47,16 @@
 	<beans:bean id="logAuditFilter"
 	    class="aramframework.com.cmm.config.filter.LogAuditFilter">
 	</beans:bean>
-	
+<!-- 	
 	<beans:bean id="htmlTagFilter"
 	    class="aramframework.com.cmm.config.filter.HTMLTagFilter">
 	</beans:bean>
-	
+-->	
 	<beans:bean id="customLoginFilter"
 	    class="aramframework.com.cmm.config.filter.CustomLoginFilter">
 	    <beans:property name="loginURL" value="/uat/uia/loginUsr.do" />
 	</beans:bean>
-	
+<!-- 	
 	<beans:bean id="loginPolicyFilter"
 	    class="aramframework.com.cmm.config.filter.LoginPolicyFilter">
 	</beans:bean>
@@ -64,6 +64,7 @@
 	<beans:bean id="httpsSessionFilter"
 	    class="aramframework.com.cmm.config.filter.HttpsSessionFilter">
 	</beans:bean>
+-->	
 	
 	<beans:bean id="targetRedirectStrategy"
 	    class="aramframework.com.cmm.config.security.TargetRedirectStrategy">

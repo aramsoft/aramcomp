@@ -269,6 +269,7 @@ public class ZipManageController {
 	 * 
 	 * @param zipVO
 	 */
+
 	@RequestMapping(value = "/sym/ccm/zip/listRdNmPopup.do")
 	public String listEdNmPopup(
 			@ModelAttribute ZipVO zipVO, 

@@ -4,13 +4,18 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tiles.Attribute;
 import org.apache.tiles.AttributeContext;
-import org.apache.tiles.TilesContainer;
-import org.apache.tiles.servlet.context.ServletUtil;
+import org.apache.tiles.access.TilesAccess;
+import org.apache.tiles.impl.BasicTilesContainer;
+import org.apache.tiles.request.ApplicationContext;
+import org.apache.tiles.request.Request;
+import org.apache.tiles.request.servlet.ServletRequest;
+import org.apache.tiles.request.servlet.ServletUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,8 +49,8 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * @version 1.0
  */
 @Controller
-public class CmyMenuHomeController {
-
+public class CmyMenuHomeController  {
+ 
 	@Autowired 
 	private CommunityManageService cmmntyService;
 
@@ -248,10 +253,17 @@ public class CmyMenuHomeController {
     	if ("".equals(tmplatCours) || tmplatCours == null) {
     		tmplatCours = "/WEB-INF/layouts/apps/appsDefault";
     	}
-    	
+
+		ServletContext servletContext = request.getSession().getServletContext();
+		ApplicationContext tilesAppContext = ServletUtil.getApplicationContext(servletContext);
+		Request tilesRequest = new ServletRequest(tilesAppContext, request, response);
+		BasicTilesContainer container = (BasicTilesContainer) TilesAccess.getContainer(tilesAppContext);
+		AttributeContext attributeContext = container.getAttributeContext(tilesRequest);
+
+/*    	
 		TilesContainer container = ServletUtil.getCurrentContainer(request,	request.getSession().getServletContext());
 		AttributeContext attributeContext = container.startContext(request, response);
-		
+*/		
 		if (tmplatCours.indexOf("/WEB-INF/layouts") != -1) {
 			attributeContext.setTemplateAttribute(new Attribute(tmplatCours+".jsp"));
 		} else {

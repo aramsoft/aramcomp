@@ -21,7 +21,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.web.servlet.view.document.AbstractExcelView;
@@ -57,53 +57,36 @@ public class ExcelCmyMenuView extends AbstractExcelView {
 		response.setHeader("Content-Disposition", "attachment; fileName=\"" + fileName + "\";"); 
 		response.setHeader("Content-Transfer-Encoding", "binary"); 
 
-		HSSFCell cell = null;
-
 		HSSFSheet sheet = wb.createSheet("메뉴 List");
 		sheet.setDefaultColumnWidth(20);
 
 		// set header information
-		setText(getCell(sheet, 0, 0), "매뉴번호");
-		setText(getCell(sheet, 0, 1), "메뉴명");
-		setText(getCell(sheet, 0, 2), "프로그램명");
-		setText(getCell(sheet, 0, 3), "메뉴설명");
-		setText(getCell(sheet, 0, 4), "사용여부");
-		setText(getCell(sheet, 0, 5), "관리자여부");
-		setText(getCell(sheet, 0, 6), "바로가기url");
-		setText(getCell(sheet, 0, 7), "톱메뉴여부");
-		setText(getCell(sheet, 0, 8), "메뉴별명");
+		HSSFRow row = sheet.createRow(0);
+		row.createCell(0).setCellValue("매뉴번호");
+		row.createCell(1).setCellValue("메뉴명");
+		row.createCell(2).setCellValue("프로그램명");
+		row.createCell(3).setCellValue("메뉴설명");
+		row.createCell(4).setCellValue("사용여부");
+		row.createCell(5).setCellValue("관리자여부");
+		row.createCell(6).setCellValue("바로가기url");
+		row.createCell(7).setCellValue("톱메뉴여부");
+		row.createCell(8).setCellValue("메뉴별명");
 		
 		List<EgovMap> resultList = (List<EgovMap>) model.get("resultList");
 
 		for (int i = 0; i < resultList.size(); i++) {
 			EgovMap result = resultList.get(i);
 
-			cell = getCell(sheet, 1 + i, 0);
-			setText(cell, String.valueOf(result.get("menuNo")));
-
-			cell = getCell(sheet, 1 + i, 1);
-			setText(cell, (String)result.get("menuNm"));
-
-			cell = getCell(sheet, 1 + i, 2);
-			setText(cell, (String)result.get("progrmFileNm"));
-
-			cell = getCell(sheet, 1 + i, 3);
-			setText(cell, (String)result.get("menuDc"));
-
-			cell = getCell(sheet, 1 + i, 4);
-			setText(cell, (String)result.get("useAt"));
-			
-			cell = getCell(sheet, 1 + i, 5);
-			setText(cell, (String)result.get("mgrAt"));
-			
-			cell = getCell(sheet, 1 + i, 6);
-			setText(cell, (String)result.get("directUrl"));
-			
-			cell = getCell(sheet, 1 + i, 7);
-			setText(cell, (String)result.get("topMenuAt"));
-			
-			cell = getCell(sheet, 1 + i, 8);
-			setText(cell, (String)result.get("menuAlias"));
+			row = sheet.createRow(i + 1);
+			row.createCell(0).setCellValue(String.valueOf(result.get("menuNo")));
+			row.createCell(1).setCellValue((String)result.get("menuNm"));
+			row.createCell(2).setCellValue((String)result.get("progrmFileNm"));
+			row.createCell(3).setCellValue((String)result.get("menuDc"));
+			row.createCell(4).setCellValue((String)result.get("useAt"));
+			row.createCell(5).setCellValue((String)result.get("mgrAt"));
+			row.createCell(6).setCellValue((String)result.get("directUrl"));
+			row.createCell(7).setCellValue((String)result.get("topMenuAt"));
+			row.createCell(8).setCellValue((String)result.get("menuAlias"));
 		}
 	}
 }	

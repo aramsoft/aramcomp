@@ -21,7 +21,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.web.servlet.view.document.AbstractExcelView;
@@ -57,42 +57,32 @@ public class ExcelCmmnDetailView extends AbstractExcelView {
 		response.setHeader("Content-Disposition", "attachment; fileName=\"" + fileName + "\";"); 
 		response.setHeader("Content-Transfer-Encoding", "binary"); 
 
-		HSSFCell cell = null;
-
 		HSSFSheet sheet = wb.createSheet("Codes List");
 		sheet.setDefaultColumnWidth(12);
 
 		// set header information
-		setText(getCell(sheet, 0, 0), "No.");
-		setText(getCell(sheet, 0, 1), "코드ID");
-		setText(getCell(sheet, 0, 2), "코드ID명");
-		setText(getCell(sheet, 0, 3), "코드");
-		setText(getCell(sheet, 0, 4), "코드명");
-		setText(getCell(sheet, 0, 5), "사용여부");
+		HSSFRow row = sheet.createRow(0);
+		row.createCell(0).setCellValue("No.");
+		row.createCell(1).setCellValue("코드ID");
+		row.createCell(2).setCellValue("코드ID명");
+		row.createCell(3).setCellValue("코드");
+		row.createCell(4).setCellValue("코드명");
+		row.createCell(5).setCellValue("사용여부");
 
 		List<EgovMap> resultList = (List<EgovMap>) model.get("resultList");
 
 		for (int i = 0; i < resultList.size(); i++) {
 			EgovMap result = resultList.get(i);
 
-			cell = getCell(sheet, 1 + i, 0);
-			setText(cell, Integer.toString(i + 1));
-
-			cell = getCell(sheet, 1 + i, 1);
-			setText(cell, (String)result.get("codeId"));
-
-			cell = getCell(sheet, 1 + i, 2);
-			setText(cell, (String)result.get("codeIdNm"));
-
-			cell = getCell(sheet, 1 + i, 3);
-			setText(cell, (String)result.get("code"));
-
-			cell = getCell(sheet, 1 + i, 4);
-			setText(cell, (String)result.get("codeNm"));
-
-			cell = getCell(sheet, 1 + i, 5);
-			setText(cell, (String)result.get("useAt"));
+			row = sheet.createRow(i + 1);
+			row.createCell(0).setCellValue(Integer.toString(i + 1));
+			row.createCell(1).setCellValue((String)result.get("codeId"));
+			row.createCell(2).setCellValue((String)result.get("codeIdNm"));
+			row.createCell(3).setCellValue((String)result.get("code"));
+			row.createCell(4).setCellValue((String)result.get("codeNm"));
+			row.createCell(5).setCellValue((String)result.get("useAt"));
 		}
 	}
+	
 }	
 

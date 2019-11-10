@@ -144,6 +144,7 @@
 </table>
 
 <div id="page_navigation">
+	<ui:pagination paginationInfo="${paginationInfo}" type="image" jsFunction="fn_aram_linkPage" />
 </div>
 
 </div>

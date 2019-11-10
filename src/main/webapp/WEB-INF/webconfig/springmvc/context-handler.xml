@@ -47,7 +47,7 @@
 		<property name="interceptors">
 			<list>
 				<ref bean="tilesInterceptor" />
-				<ref bean="webLogInterceptor" />
+		 		<ref bean="webLogInterceptor" /> 
 			</list>
 		</property>
 	</bean>

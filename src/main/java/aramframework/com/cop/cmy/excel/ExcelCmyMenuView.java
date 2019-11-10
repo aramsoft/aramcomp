@@ -21,10 +21,10 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.springframework.web.servlet.view.document.AbstractExcelView;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.springframework.web.servlet.view.document.AbstractXlsxView;
 
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
@@ -35,7 +35,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * @since 2014.11.11
  * @version 1.0
  */
-public class ExcelCmyMenuView extends AbstractExcelView {
+public class ExcelCmyMenuView extends AbstractXlsxView {
 
 	/**
 	 * 엑셀파일을 설정하고 생성한다.
@@ -49,7 +49,7 @@ public class ExcelCmyMenuView extends AbstractExcelView {
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void buildExcelDocument(Map<String, Object> model,
-			HSSFWorkbook wb, HttpServletRequest request,
+			Workbook wb, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
 		String fileName = "메뉴.xls"; 
@@ -57,11 +57,11 @@ public class ExcelCmyMenuView extends AbstractExcelView {
 		response.setHeader("Content-Disposition", "attachment; fileName=\"" + fileName + "\";"); 
 		response.setHeader("Content-Transfer-Encoding", "binary"); 
 
-		HSSFSheet sheet = wb.createSheet("메뉴 List");
+		Sheet sheet = wb.createSheet("메뉴 List");
 		sheet.setDefaultColumnWidth(20);
 
 		// set header information
-		HSSFRow row = sheet.createRow(0);
+		Row row = sheet.createRow(0);
 		row.createCell(0).setCellValue("매뉴번호");
 		row.createCell(1).setCellValue("메뉴명");
 		row.createCell(2).setCellValue("프로그램명");

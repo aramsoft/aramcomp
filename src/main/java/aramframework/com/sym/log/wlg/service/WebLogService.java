@@ -63,7 +63,7 @@ public class WebLogService extends EgovAbstractServiceImpl {
 	 */
 	public void logInsertWebLog(WebLogVO webLogVO) {
 		try {
-			webLogVO.setRequstId(webLogIdGnrService.getNextStringId());
+			webLogVO.setRequstId(Integer.toString(webLogIdGnrService.getNextIntegerId()));
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

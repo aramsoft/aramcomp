@@ -86,7 +86,7 @@ public class WebLogInterceptor extends HandlerInterceptorAdapter {
 		webLogVO.setRqesterId(uniqId);
 		webLogVO.setRqesterIp(requestIP);
 
-//		webLogService.logInsertWebLog(webLogVO);
+		webLogService.logInsertWebLog(webLogVO);
 	}
 	
 }

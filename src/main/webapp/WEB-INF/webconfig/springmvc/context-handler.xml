@@ -76,6 +76,12 @@
 		- This bean processes annotated handler methods, applying Application-specific PropertyEditors
 		- for request parameter binding. It overrides the default AnnotationMethodHandlerAdapter.
 	-->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="webBindingInitializer">
+            <bean class="aramframework.com.cmm.config.web.BindingInitializer"/>
+        </property>
+    </bean>
+<!--     
 	<bean class="egovframework.rte.ptl.mvc.bind.annotation.EgovRequestMappingHandlerAdapter">
 		<property name="webBindingInitializer">
 			<bean class="aramframework.com.cmm.config.web.BindingInitializer"/>
@@ -92,5 +98,5 @@
 			</list>
 		</property>
 	</bean>
-
+-->
 </beans>

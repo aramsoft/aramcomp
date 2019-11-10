@@ -72,7 +72,7 @@ public class BatchJobListener implements JobListener {
 	 *      jobContext)
 	 */
 	public void jobToBeExecuted(JobExecutionContext jobContext) {
-		LOG.debug("job[" + jobContext.getJobDetail().getName() + "] " + "jobToBeExecuted ");
+		LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "jobToBeExecuted ");
 		BatchResultVO batchResult = new BatchResultVO();
 		JobDataMap dataMap = jobContext.getJobDetail().getJobDataMap();
 		try {
@@ -112,8 +112,8 @@ public class BatchJobListener implements JobListener {
 	 *      jobContext)
 	 */
 	public void jobWasExecuted(JobExecutionContext jobContext, JobExecutionException jee) {
-		LOG.debug("job[" + jobContext.getJobDetail().getName() + "] " + "jobWasExecuted ");
-		LOG.debug("job[" + jobContext.getJobDetail().getName() + "] " + "수행시간 : " + jobContext.getFireTime() + ", " + jobContext.getJobRunTime());
+		LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "jobWasExecuted ");
+		LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "수행시간 : " + jobContext.getFireTime() + ", " + jobContext.getJobRunTime());
 
 		int jobResult = 99;
 		BatchResultVO batchResult = new BatchResultVO();
@@ -172,7 +172,7 @@ public class BatchJobListener implements JobListener {
 	 *      jobContext)
 	 */
 	public void jobExecutionVetoed(JobExecutionContext jobContext) {
-		LOG.debug("job[" + jobContext.getJobDetail().getName() + "] " + "jobExecutionVetoed ");
+		LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "jobExecutionVetoed ");
 
 		BatchResultVO batchResult = new BatchResultVO();
 		JobDataMap dataMap = jobContext.getJobDetail().getJobDataMap();

@@ -120,7 +120,8 @@ public class BackupOpertController {
 	public String insertBackupOpert(
 			@ModelAttribute BackupOpertVO backupOpertVO, 
 			BindingResult bindingResult, 
-			ModelMap model) {
+			ModelMap model) 
+	throws Exception {
 
 		beanValidator.validate(backupOpertVO, bindingResult);
 		backupOpertValidator.validate(backupOpertVO, bindingResult);
@@ -172,7 +173,8 @@ public class BackupOpertController {
 	public String updateBackupOpert(
 			@ModelAttribute BackupOpertVO backupOpertVO, 
 			BindingResult bindingResult, 
-			ModelMap model) {
+			ModelMap model) 
+	throws Exception {
 
 		beanValidator.validate(backupOpertVO, bindingResult);
 		backupOpertValidator.validate(backupOpertVO, bindingResult);

@@ -30,7 +30,7 @@
 	</a>
 </div>
 
-<form:form commandName="sndngMailVO" action ="" method="post">
+<form:form modelAttribute="sndngMailVO" action ="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

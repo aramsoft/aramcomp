@@ -46,7 +46,7 @@
 	</div>
 </div>
 
-<form:form commandName="menuManageVO" action="" method="post" enctype="multipart/form-data">
+<form:form modelAttribute="menuManageVO" action="" method="post" enctype="multipart/form-data">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

@@ -41,7 +41,7 @@
 	<h2>도로명 찾기 (참조자료:2013년 11월 30일 기준, 대표지번 5,976,051건, 관련지번 1,967,927건)</h2>
 </div>
 
-<form:form commandName="zipVO"  action="" method="post">
+<form:form modelAttribute="zipVO"  action="" method="post">
 
 <div id="search_area">
 	<div class="button_area">

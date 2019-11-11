@@ -37,7 +37,7 @@
 	<div class="keyword_area"></div>
 </div>
 
-<form:form commandName="communityMenuVO" action="" method="post">
+<form:form modelAttribute="communityMenuVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

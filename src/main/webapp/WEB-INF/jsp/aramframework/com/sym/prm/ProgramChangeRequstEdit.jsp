@@ -37,7 +37,7 @@
 	</div>
 </div>
 
-<form:form commandName="progrmManageDtlVO" method="post">
+<form:form modelAttribute="progrmManageDtlVO" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

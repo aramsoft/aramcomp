@@ -42,7 +42,7 @@
 	<h2>템플릿 목록</h2>
 </div>
 
-<form:form commandName="templateInfVO" action ="" method="post">
+<form:form modelAttribute="templateInfVO" action ="" method="post">
 <input type="hidden" name="tmplatId" value="" />
 <input name="typeFlag" type="hidden" value="<c:out value='${typeFlag}'/>"/>
 

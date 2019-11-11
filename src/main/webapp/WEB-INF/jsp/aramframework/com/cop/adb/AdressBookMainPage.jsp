@@ -35,7 +35,7 @@
 
 <div id="border" style="width:200px">
 
-<form:form commandName="searchVO" action ="" method="post">
+<form:form modelAttribute="searchVO" action ="" method="post">
 <input type="hidden" name="adbkId" value=""/>
 
 <table class="table-list" summary="주소록에 대한 목록을 제공한다.(마이페이지용)">

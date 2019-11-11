@@ -30,7 +30,7 @@
 	</a>
 </div>
 
-<form:form commandName="authorResourceVO" action="${pageContext.request.contextPath}/sec/arm/listAuthorResource.do" method="post">
+<form:form modelAttribute="authorResourceVO" action="${pageContext.request.contextPath}/sec/arm/listAuthorResource.do" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<form:form commandName="searchVO" action="" method="post">
+<form:form modelAttribute="searchVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

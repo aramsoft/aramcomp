@@ -27,7 +27,7 @@
 	<h2>사용자 목록</h2>
 </div>
 
-<form:form commandName="userInfVO" action="" method="post">
+<form:form modelAttribute="userInfVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

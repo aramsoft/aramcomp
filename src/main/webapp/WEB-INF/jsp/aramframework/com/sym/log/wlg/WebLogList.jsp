@@ -44,7 +44,7 @@
 	</a>
 </div>
 
-<form:form commandName="webLogVO" action="" method="post">
+<form:form modelAttribute="webLogVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

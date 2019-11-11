@@ -42,7 +42,7 @@
 	<h2>게시판 목록</h2>
 </div>
 
-<form:form commandName="boardMasterVO" action ="" method="post">
+<form:form modelAttribute="boardMasterVO" action ="" method="post">
 
 <div id="search_area">
 	<div class="button_area">

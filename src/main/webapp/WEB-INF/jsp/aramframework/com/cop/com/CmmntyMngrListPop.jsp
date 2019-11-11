@@ -41,7 +41,7 @@
 	<h2>승인자 선택</h2>
 </div>
 
-<form:form commandName="userInfVO" action="" method="post">
+<form:form modelAttribute="userInfVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="targetMethod" value="${targetMethod}" />
 

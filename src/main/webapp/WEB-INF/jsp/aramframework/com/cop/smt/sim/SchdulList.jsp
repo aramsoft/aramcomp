@@ -49,7 +49,7 @@
 <iframe id="SchdulView" name="SchdulView" src="" width="700" height="710" seamless="seamless"  title="일정관리">
 </iframe>
 
-<form:form commandName="schdulManageVO" name="schdulManageVO" action="?" method="post">
+<form:form modelAttribute="schdulManageVO" name="schdulManageVO" action="?" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

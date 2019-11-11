@@ -27,7 +27,7 @@
 	<h2>배치스케줄 목록</h2>
 </div>
 
-<form:form commandName="batchSchdulVO" action="" method="post">
+<form:form modelAttribute="batchSchdulVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

@@ -21,10 +21,10 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.springframework.web.servlet.view.document.AbstractExcelView;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.springframework.web.servlet.view.document.AbstractXlsxView;
 
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
@@ -35,7 +35,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
  * @since 2014.11.11
  * @version 1.0
  */
-public class ExcelCmmnDetailView extends AbstractExcelView {
+public class ExcelCmmnDetailView extends AbstractXlsxView {
 
 	/**
 	 * 엑셀파일을 설정하고 생성한다.
@@ -49,7 +49,7 @@ public class ExcelCmmnDetailView extends AbstractExcelView {
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void buildExcelDocument(Map<String, Object> model,
-			HSSFWorkbook wb, HttpServletRequest request,
+			Workbook wb, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
 		String fileName = "CommonCode.xls"; 
@@ -57,11 +57,11 @@ public class ExcelCmmnDetailView extends AbstractExcelView {
 		response.setHeader("Content-Disposition", "attachment; fileName=\"" + fileName + "\";"); 
 		response.setHeader("Content-Transfer-Encoding", "binary"); 
 
-		HSSFSheet sheet = wb.createSheet("Codes List");
+		Sheet sheet = wb.createSheet("Codes List");
 		sheet.setDefaultColumnWidth(12);
 
 		// set header information
-		HSSFRow row = sheet.createRow(0);
+		Row row = sheet.createRow(0);
 		row.createCell(0).setCellValue("No.");
 		row.createCell(1).setCellValue("코드ID");
 		row.createCell(2).setCellValue("코드ID명");

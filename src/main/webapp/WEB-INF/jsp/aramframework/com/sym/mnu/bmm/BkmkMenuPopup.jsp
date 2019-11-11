@@ -41,7 +41,7 @@
 	<h2>메뉴 목록</h2>
 </div>
 
-<form:form commandName="bkmkMenuManageVO" action="" method="post">
+<form:form modelAttribute="bkmkMenuManageVO" action="" method="post">
 <input type="hidden" name="PopFlag" value="Y">
 
 <div id="search_area">

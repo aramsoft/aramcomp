@@ -42,7 +42,7 @@
 	<h2>커뮤니티 목록</h2>
 </div>
 
-<form:form commandName="communityVO" action="" method="post">
+<form:form modelAttribute="communityVO" action="" method="post">
 
 <div id="search_area">
 	<div class="button_area">

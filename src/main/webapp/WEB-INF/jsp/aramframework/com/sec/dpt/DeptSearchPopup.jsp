@@ -41,7 +41,7 @@
 	<h2>부서 조회 팝업</h2>
 </div>
 
-<form:form commandName="deptVO" method="post">
+<form:form modelAttribute="deptVO" method="post">
 
 <div id="search_area">
 	<div class="button_area">

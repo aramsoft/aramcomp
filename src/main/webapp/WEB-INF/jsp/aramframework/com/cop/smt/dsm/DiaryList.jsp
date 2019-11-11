@@ -31,7 +31,7 @@
 	</a>
 </div>
 
-<form:form commandName="diaryManageVO" action ="" method="post">
+<form:form modelAttribute="diaryManageVO" action ="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

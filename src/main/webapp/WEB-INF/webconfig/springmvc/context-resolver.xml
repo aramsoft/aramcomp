@@ -35,8 +35,9 @@
     -->
 
     <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="1" />
+<!-- 
     <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />				
-
+-->
     <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="2"  >
 		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
 	</bean>

@@ -32,7 +32,7 @@
 </div>
 
 <!-- content start -->
-<form:form commandName="mberManageVO" action="" method="post">
+<form:form modelAttribute="mberManageVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

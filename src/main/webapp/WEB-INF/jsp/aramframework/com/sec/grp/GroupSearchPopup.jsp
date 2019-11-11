@@ -41,7 +41,7 @@
 	<h2>그룹 조회 팝업</h2>
 </div>
 
-<form:form commandName="groupVO" method="post">
+<form:form modelAttribute="groupVO" method="post">
 
 <div id="search_area">
 	<div class="button_area">

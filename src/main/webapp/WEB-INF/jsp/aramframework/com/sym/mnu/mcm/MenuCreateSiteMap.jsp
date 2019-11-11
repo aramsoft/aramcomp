@@ -41,7 +41,7 @@
 	<h2>메뉴사이트맵생성</h2>
 </div>
 
-<form:form commandName="menuSiteMapVO" action="" method="post">
+<form:form modelAttribute="menuSiteMapVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

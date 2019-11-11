@@ -30,7 +30,7 @@
 </div>
 
 <!-- 등록  폼 영역  -->
-<form:form commandName="zipVO" method="post" enctype="multipart/form-data">
+<form:form modelAttribute="zipVO" method="post" enctype="multipart/form-data">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

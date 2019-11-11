@@ -9,7 +9,7 @@
 	<url>http://aramcomp.aramsoft.co.kr</url> 
 
 	<properties>
-	    <spring.version>3.2.9.RELEASE</spring.version>
+	    <spring.version>5.2.1.RELEASE</spring.version>
 	    <spring.security.version>3.2.4.RELEASE</spring.security.version>
 		<egovframework.rte.version>3.1.0</egovframework.rte.version>
 	</properties>
@@ -305,21 +305,6 @@
 			<version>2.0.2</version>
 		</dependency>
 	
-		<dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>2.5.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <version>2.5.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.5.1</version>
-        </dependency>               
 		<!-- 모바일 신규공통컴포넌트  -->
 		
 		<!-- 3rd party 라이브러리로 별도의 설치 필요  -->

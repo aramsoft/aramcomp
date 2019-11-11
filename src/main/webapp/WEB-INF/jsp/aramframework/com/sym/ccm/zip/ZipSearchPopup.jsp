@@ -41,7 +41,7 @@
 	<h2>우편번호 찾기</h2>
 </div>
 
-<form:form commandName="zipVO"  action="" method="post">
+<form:form modelAttribute="zipVO"  action="" method="post">
 
 <div id="search_area">
 	<div class="button_area">

@@ -90,7 +90,7 @@
 
 <DIV id="main" style="width:100%;">
 
-<form:form commandName="schdulManageVO" action="" method="post">
+<form:form modelAttribute="schdulManageVO" action="" method="post">
 <form:hidden path="year" />
 <form:hidden path="month" />
 <form:hidden path="week" />

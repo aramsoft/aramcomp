@@ -59,7 +59,7 @@
 
 <div style="margin-top:10px; width:100%"></div>
 
-<form:form commandName="satisfactionVO"  method="post" action="">
+<form:form modelAttribute="satisfactionVO"  method="post" action="">
 <form:hidden path="bbsId" />
 <form:hidden path="nttId" />
 <form:hidden path="stsfdgNo" />

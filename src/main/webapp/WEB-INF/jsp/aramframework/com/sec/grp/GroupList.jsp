@@ -30,7 +30,7 @@
 	</a>
 </div>
 
-<form:form commandName="groupVO" action="" method="post">
+<form:form modelAttribute="groupVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

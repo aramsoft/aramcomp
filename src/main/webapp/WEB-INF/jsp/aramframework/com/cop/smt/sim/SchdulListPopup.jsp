@@ -43,7 +43,7 @@
 	<h2>일정관리 목록</h2>
 </div>
 
-<form:form commandName="schdulManageVO" action="" method="post">
+<form:form modelAttribute="schdulManageVO" action="" method="post">
 
 <div id="search_area">
 	<div class="button_area">

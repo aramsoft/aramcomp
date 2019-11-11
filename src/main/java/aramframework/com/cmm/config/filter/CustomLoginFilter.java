@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import aramframework.com.cmm.util.LogUtil;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uat.uia.service.LoginService;
@@ -86,7 +87,7 @@ public class CustomLoginFilter extends OncePerRequestFilter {
 				}
 			} catch (Exception ex) {
 				// DB인증 예외가 발생할 경우 로그인 화면으로 redirect 시킴
-				LOG.error("Login Exception : " + ex.getCause());
+				LogUtil.logErrorMessage(LOG, ex, 20);
 				request.setAttribute("message", MessageHelper.getMessage("fail.common.login"));
 				RequestDispatcher dispatcher = request.getRequestDispatcher(getLoginURL());
 				dispatcher.forward(request, response);
@@ -112,10 +113,10 @@ public class CustomLoginFilter extends OncePerRequestFilter {
 	    }
 	    
 	    public String getParameter(String name) {
-	        if ( name.equals("j_username") ) {
+	        if ( name.equals("username") ) {
 	        	return this.username;
 	        }	
-	        if( name.equals("j_password") ) {
+	        if( name.equals("password") ) {
 		        return this.password;
 	        } 
 	        return super.getParameter(name);

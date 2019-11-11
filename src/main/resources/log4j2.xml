@@ -23,7 +23,7 @@
         <Logger name="java.sql" level="DEBUG" additivity="false">
             <AppenderRef ref="file" />
         </Logger>
-	    <logger name="org.springframework.security" level="ERROR" additivity="false">
+	    <logger name="org.springframework.security" level="DEBUG" additivity="false">
 	        <AppenderRef ref="file" />
 	    </logger>
 	    <logger name="org.springframework" level="ERROR" additivity="false">

@@ -26,7 +26,12 @@
 		<access-denied-handler error-page="/sec/arm/accessDenied.do"/>
 		
         <anonymous/>
-
+ 
+		<csrf disabled="true"/>
+		<headers>
+			<frame-options policy="SAMEORIGIN" />
+		</headers>
+		
 		<session-management>
 			<concurrency-control max-sessions="1" expired-url="/uat/uia/loginUsr.do?login_error=5" />
 		</session-management> 
@@ -87,8 +92,14 @@
 	</beans:bean>
 
 	<authentication-manager alias="authenticationManager">
-		<authentication-provider user-service-ref="jdbcUserService" />
+		<authentication-provider user-service-ref="jdbcUserService" >
+			<password-encoder ref="passwordEncoder"></password-encoder>
+		</authentication-provider>
 	</authentication-manager>
+
+	<beans:bean id="passwordEncoder" 
+		class="aramframework.com.cmm.config.filter.NoOpPasswordEncoder">
+	</beans:bean>
 
     <beans:bean id="jdbcUserService"
         class="egovframework.rte.fdl.security.userdetails.jdbc.EgovJdbcUserDetailsManager" >

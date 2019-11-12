@@ -58,13 +58,11 @@ function checkLogin(userSe) {
 
 function actionLogin() {
 
-    if (document.loginForm.id.value =="") {
+    if (document.loginForm.username.value =="") {
         alert("아이디를 입력하세요");
     } else if (document.loginForm.password.value =="") {
         alert("비밀번호를 입력하세요");
     } else {
-        //document.loginForm.action="${pageContext.request.contextPath}/uat/uia/actionLogin.do";
-        //document.loginForm.j_username.value = document.loginForm.userSe.value + document.loginForm.username.value;
         document.loginForm.action="${pageContext.request.contextPath}/j_spring_security_check";
         document.loginForm.submit();
     }
@@ -131,11 +129,11 @@ function saveid(form) {
         expdate.setTime(expdate.getTime() + 1000 * 3600 * 24 * 30); // 30일
     else
         expdate.setTime(expdate.getTime() - 1); // 쿠키 삭제조건
-    setCookie("saveid", form.id.value, expdate);
+    setCookie("saveid", form.username.value, expdate);
 }
 
 function getid(form) {
-    form.checkId.checked = ((form.id.value = getCookie("saveid")) != "");
+    form.checkId.checked = ((form.username.value = getCookie("saveid")) != "");
 }
 
 function fnInit() {
@@ -209,8 +207,8 @@ window.onload = fnInit;
                     <td colspan="2">
                     <table border="0">
                         <tr>
-                            <td><label for="id">아이디&nbsp;&nbsp;</label></td>
-                            <td><input type="text" name="id" id="id" style="height:16px; width:85px; border:1px solid #CCCCCC; margin:0px; padding:0px; ime-mode:disabled;" tabindex="4" maxlength="10"/></td>
+                            <td><label for="username">아이디&nbsp;&nbsp;</label></td>
+                            <td><input type="text" name="username" id="username" style="height:16px; width:85px; border:1px solid #CCCCCC; margin:0px; padding:0px; ime-mode:disabled;" tabindex="4" maxlength="10"/></td>
 							<td>&nbsp;</td>
                         </tr>
                         <tr>

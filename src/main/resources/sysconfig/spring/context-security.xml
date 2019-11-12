@@ -46,7 +46,6 @@
     	</port-mappings>
 -->
 		<custom-filter ref="logAuditFilter" position="FIRST"/>
-		<custom-filter ref="customLoginFilter" before="FORM_LOGIN_FILTER"/>
     </http>
     
 	<beans:bean id="logAuditFilter"
@@ -56,12 +55,7 @@
 	<beans:bean id="htmlTagFilter"
 	    class="aramframework.com.cmm.config.filter.HTMLTagFilter">
 	</beans:bean>
--->	
-	<beans:bean id="customLoginFilter"
-	    class="aramframework.com.cmm.config.filter.CustomLoginFilter">
-	    <beans:property name="loginURL" value="/uat/uia/loginUsr.do" />
-	</beans:bean>
-<!-- 	
+
 	<beans:bean id="loginPolicyFilter"
 	    class="aramframework.com.cmm.config.filter.LoginPolicyFilter">
 	</beans:bean>
@@ -98,17 +92,17 @@
 	</authentication-manager>
 
 	<beans:bean id="passwordEncoder" 
-		class="aramframework.com.cmm.config.filter.NoOpPasswordEncoder">
+		class="aramframework.com.cmm.config.filter.AramPasswordEncoder">
 	</beans:bean>
 
     <beans:bean id="jdbcUserService"
         class="egovframework.rte.fdl.security.userdetails.jdbc.EgovJdbcUserDetailsManager" >
 
         <beans:property name="usersByUsernameQuery" value=
-        		"SELECT USER_ID, ESNTL_ID AS PASSWORD, 1 ENABLED, USER_NM, USER_ZIP,  
+        		"SELECT USER_ID, PASSWORD, 1 ENABLED, USER_NM, USER_ZIP,  
                         USER_ADRES, USER_EMAIL, USER_SE, ORGNZT_ID, ESNTL_ID,
                         (select a.ORGNZT_NM from COMTN_ORGNZT_INFO a where a.ORGNZT_ID = m.ORGNZT_ID) ORGNZT_NM, MBTLNUM
-                   FROM COMVN_USER_MASTER m WHERE CONCAT(USER_SE, USER_ID) = ? "/>
+                   FROM COMVN_USER_MASTER m WHERE USER_ID = ? "/>
         <beans:property name="authoritiesByUsernameQuery" value=
         		"SELECT A.SCRTY_DTRMN_TRGET_ID USER_ID, A.AUTHOR_CODE AUTHORITY 
                    FROM COMTN_EMPLYR_SCRTY_ESTBS A, COMVN_USER_MASTER B 

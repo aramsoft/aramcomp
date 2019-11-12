@@ -74,14 +74,19 @@
 	
  	<c:set var="startIndex" value="${(groupVO.pageIndex-1) * groupVO.recordPerPage}"/>
  	<c:forEach var="result" items="${resultList}" varStatus="status">
-  	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.groupId}"/>'); return false;">
-
+  	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
 		<c:set var="reverseIndex" value="${groupVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
     	<td class="lt_text"><c:out value="${result.groupId}"/></td>
-    	<td class="lt_text"><c:out value="${result.groupNm}"/></td>
+    	<td class="lt_text">
+			<span class="link">
+    		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.groupId}"/>'); return false;">
+    			<c:out value="${result.groupNm}"/>
+    		</a>
+			</span>
+    	</td>
     	<td class="lt_text3"><c:out value="${result.groupDc}"/></td>
     	<td class="lt_text3"><c:out value="${result.groupCreatDe}"/></td>
   	</tr>

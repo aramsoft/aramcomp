@@ -79,13 +79,18 @@
 
   	<c:set var="startIndex" value="${(stplatManageVO.pageIndex-1) * stplatManageVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
-  	<tr class="link" onClick="fn_aram_detail('<c:out value="${result.useStplatId}"/>')">
- 
- 		<c:set var="index" value="${startIndex + status.count}"/>
+  	<tr>
+  		<c:set var="index" value="${startIndex + status.count}"/>
 		<c:set var="reverseIndex" value="${stplatManageVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 	
-		<td class="lt_text3"><c:out value="${result.useStplatNm}"/></td>
+		<td class="lt_text3">
+			<span class="link">
+    		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.useStplatId}"/>'); return false;">
+				<c:out value="${result.useStplatNm}"/>
+    		</a>
+			</span>
+		</td>
     	<td class="lt_text3"><c:out value="${result.frstRegisterNm}"/></td>
 		<td class="lt_text3"><fmt:formatDate value="${result.frstRegisterPnttm}" pattern="yyyy-MM-dd"/></td>	
   	</tr>

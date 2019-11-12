@@ -77,14 +77,19 @@
 	
  	<c:set var="startIndex" value="${(loginPolicyVO.pageIndex-1) * loginPolicyVO.recordPerPage}"/>
  	<c:forEach var="result" items="${resultList}" varStatus="status">
-  	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.emplyrId}"/>'); return false;">
-  	
- 		<c:set var="index" value="${startIndex + status.count}"/>
+  	<tr>
+  		<c:set var="index" value="${startIndex + status.count}"/>
 		<c:set var="reverseIndex" value="${loginPolicyVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
     	<td class="lt_text3"><c:out value="${result.emplyrId}"/></td>
-    	<td class="lt_text3"><c:out value="${result.emplyrNm}"/></td>
+    	<td class="lt_text3">
+			<span class="link">
+    		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.emplyrId}"/>'); return false;">
+    			<c:out value="${result.emplyrNm}"/>
+    		</a>
+			</span>
+    	</td>
     	<td class="lt_text3"><c:out value="${result.ipInfo}"/></td>
     	<td class="lt_text3">
     		<c:if test="${result.lmttAt == 'Y'}">Y</c:if>

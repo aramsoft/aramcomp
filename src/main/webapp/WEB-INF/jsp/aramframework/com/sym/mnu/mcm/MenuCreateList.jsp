@@ -86,7 +86,6 @@
  	<c:set var="startIndex" value="${(menuCreateVO.pageIndex-1) * menuCreateVO.recordPerPage}"/>
  	<c:forEach var="result" items="${resultList}" varStatus="status">
   	<tr>
-  	
  		<c:set var="index" value="${startIndex + status.count}"/>
 		<c:set var="reverseIndex" value="${menuCreateVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
@@ -100,14 +99,16 @@
 	    </td>
 	    <td class="lt_text3" style="height:30px;">
    	   		<span class="button">
-   	   			<a href="#"  onclick="fn_aram_create_menu('<c:out value="${result.authorCode}"/>'); return false;">
-   	   			메뉴생성</a>
+   	   		<a href="#"  onclick="fn_aram_create_menu('<c:out value="${result.authorCode}"/>'); return false;">
+   	   			메뉴생성
+   	   		</a>
 	    	</span>
 	    </td>
 	    <td class="lt_text3">
    	   		<span class="button">
-    	   		<a href="#"  onclick="fn_aram_create_siteMap('<c:out value="${result.authorCode}"/>'); return false;">
-    	   		사이트맵생성</a>
+    	   	<a href="#"  onclick="fn_aram_create_siteMap('<c:out value="${result.authorCode}"/>'); return false;">
+    	   		사이트맵생성
+    	   	</a>
     	   	</span>
    		</td>
   	</tr>

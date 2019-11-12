@@ -80,13 +80,19 @@
     <%-- 데이터를 화면에 출력해준다 --%>
  	<c:set var="startIndex" value="${(batchOpertVO.pageIndex-1) * batchOpertVO.recordPerPage}"/>
     <c:forEach items="${resultList}" var="result" varStatus="status">
-    <tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.batchOpertId}"/>'); return false;">
+    <tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
 		<c:set var="reverseIndex" value="${batchOpertVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
         <td class="lt_text3"><c:out value='${result.batchOpertId}'/></td>
-        <td class="lt_text3">${result.batchOpertNm}</td>
+        <td class="lt_text3">
+			<span class="link">
+    		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.batchOpertId}"/>'); return false;">
+        		${result.batchOpertNm}
+    		</a>
+			</span>
+        </td>
         <td class="lt_text3">${result.batchProgrm}</td>
         <td class="lt_text3">${result.batchBean}</td>
         <td class="lt_text3">${result.batchObject} / ${result.batchMethod}</td>

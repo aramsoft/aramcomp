@@ -111,13 +111,18 @@
 	
  	<c:set var="startIndex" value="${(sysLogVO.pageIndex-1) * sysLogVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
-	<tr  class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.requstId}"/>'); return false;">
-	
+	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
 		<c:set var="reverseIndex" value="${sysLogVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
-	    <td class="lt_text3"><c:out value="${result.requstId}"/></td>
+	    <td class="lt_text3">
+			<span class="link">
+    		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.requstId}"/>'); return false;">
+	    		<c:out value="${result.requstId}"/>
+    		</a>
+			</span>
+	    </td>
 	    <td class="lt_text3"><c:out value="${result.occrrncDe}"/></td>
 	    <td class="lt_text3"><c:out value="${result.methodNm}"/></td>
 	    <td class="lt_text3"><c:out value="${result.processSeCodeNm}"/></td>

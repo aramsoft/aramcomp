@@ -96,13 +96,17 @@
  	
   	<c:set var="startIndex" value="${(sysHistoryVO.pageIndex-1) * sysHistoryVO.recordPerPage}"/>
  	<c:forEach var="result" items="${resultList}" varStatus="status">
-  	<tr  class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.histId}"/>'); return false;">
-  	
+  	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
 		<c:set var="reverseIndex" value="${sysHistoryVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
-	    <td class="lt_text3"><c:out value="${result.histId}"/></td>
+	    <td class="lt_text3">
+			<span class="link">
+    		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.histId}"/>'); return false;">
+	    		<c:out value="${result.histId}"/></td>
+    		</a>
+			</span>
 	    <td class="lt_text3"><c:out value="${result.sysNm}"/></td>
 	    <td class="lt_text3"><c:out value="${result.histSeCodeNm}"/></td>
 	    <td class="lt_text3"><c:out value="${result.frstRegisterNm}"/></td>

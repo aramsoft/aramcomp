@@ -79,14 +79,19 @@
 	
  	<c:set var="startIndex" value="${(cmmnClCodeVO.pageIndex-1) * cmmnClCodeVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
-	<tr class="link" onclick="javascript:fn_aram_detail('${result.clCode}'); return false;">
-	
+	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
 		<c:set var="reverseIndex" value="${cmmnClCodeVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<td class="lt_text3"><c:out value="${result.clCode}"/></td>
-		<td class="lt_text"><c:out value="${result.clCodeNm}" /></td>
+		<td class="lt_text">
+			<span class="link">
+    		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.clCode}"/>'); return false;">
+				<c:out value="${result.clCodeNm}" />
+    		</a>
+			</span>
+		</td>
 		<td class="lt_text3">
 			<c:if test="${result.useAt == 'Y'}">사용</c:if>
 			<c:if test="${result.useAt == 'N'}">미사용</c:if>

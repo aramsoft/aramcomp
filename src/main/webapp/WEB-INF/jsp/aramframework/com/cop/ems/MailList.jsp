@@ -84,8 +84,7 @@
 	
  	<c:set var="startIndex" value="${(sndngMailVO.pageIndex-1) * sndngMailVO.recordPerPage}"/>
   	<c:forEach var="result" items="${resultList}" varStatus="status">
-  	<tr class="link" onclick="javascript:fn_aram_detail('${result.mssageId}'); return false;">
- 	
+  	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
 		<c:set var="reverseIndex" value="${sndngMailVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
@@ -97,7 +96,13 @@
     	<td class="lt_text3">${result.sndngResultCode}</td>
     	<td class="lt_text3">${result.dsptchPerson}</td>
     	<td class="lt_text6">${result.recptnPerson}</td>
-    	<td class="lt_text6"><c:out value="${result.sj}"/></td>
+    	<td class="lt_text6">
+	   		<span class="link">
+	   		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.mssageId}"/>'); return false;">
+    			<c:out value="${result.sj}"/>
+	   		</a>
+	   		</span>
+    	</td>
      	<td class="lt_text3">${result.dsptchDt}</td>
   	</tr>
   	</c:forEach>

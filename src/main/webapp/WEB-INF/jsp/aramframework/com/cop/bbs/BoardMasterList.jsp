@@ -89,14 +89,19 @@
 
  	<c:set var="startIndex" value="${(boardMasterVO.pageIndex-1) * boardMasterVO.recordPerPage}"/>
  	<c:forEach var="result" items="${resultList}" varStatus="status">
-  	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.bbsId}"/>'); return false;">
-
+  	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
 		<c:set var="reverseIndex" value="${boardMasterVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
     	<td class="lt_text3"><c:out value="${result.bbsId}"/></td>
-    	<td class="lt_text3"><c:out value="${result.bbsNm}"/></td>
+    	<td class="lt_text3">
+	   		<span class="link">
+	   		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.bbsId}"/>'); return false;">
+    			<c:out value="${result.bbsNm}"/>
+	   		</a>
+	   		</span>
+    	</td>
     	<c:if test="${useCommunity == 'true'}">
 			<td class="lt_text3"><c:out value="${result.cmmntyNm}"/></td>
     	</c:if>

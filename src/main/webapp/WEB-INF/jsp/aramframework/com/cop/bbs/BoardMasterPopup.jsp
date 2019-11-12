@@ -88,13 +88,18 @@
 
   	<c:set var="startIndex" value="${(boardMasterVO.pageIndex-1) * boardMasterVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
-	<tr class="link" onclick="javascript:fn_aram_choose('<c:out value="${result.bbsId}"/>','<c:out value="${result.bbsNm}"/>'); return false;">
-
+	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
 		<c:set var="reverseIndex" value="${boardMasterVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
-	    <td class="lt_text3"><c:out value="${result.bbsNm}"/></td>
+	    <td class="lt_text3">
+	   		<span class="link">
+	   		<a href="#" onclick="javascript:fn_aram_choose('<c:out value="${result.bbsId}"/>','<c:out value="${result.bbsNm}"/>'); return false;">
+	    		<c:out value="${result.bbsNm}"/>
+	   		</a>
+	   		</span>
+	    </td>
 	    <td class="lt_text3"><c:out value="${result.bbsTyCodeNm}"/></td>
 	    <td class="lt_text3"><c:out value="${result.bbsAttrbCodeNm}"/></td>
 	    <td class="lt_text3"><fmt:formatDate value="${result.frstRegisterPnttm}" pattern="yyyy-MM-dd"/></td>

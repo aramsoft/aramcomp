@@ -84,14 +84,19 @@
  	<%-- 데이터를 화면에 출력해준다 --%>
   	<c:set var="startIndex" value="${(diaryManageVO.pageIndex-1) * diaryManageVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
-	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.diaryId}"/>'); return false;">
- 
- 		<c:set var="index" value="${startIndex + status.count}"/>
+	<tr>
+  		<c:set var="index" value="${startIndex + status.count}"/>
 		<c:set var="reverseIndex" value="${diaryManageVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
     	<td class="lt_text3"><c:out value='${result.schdulNm}'/></td>
-    	<td class="lt_text3L"><c:out value="${result.diaryNm}"/></td>
+    	<td class="lt_text3L">
+	   		<span class="link">
+	   		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.diaryId}"/>'); return false;">
+    			<c:out value="${result.diaryNm}"/>
+	   		</a>
+	   		</span>
+    	</td>
     	<td class="lt_text3"><c:out value='${result.diaryProcsPte}'/>%</td>
     	<td class="lt_text3"><c:out value='${result.frstRegisterNm}'/></td>
     	<td class="lt_text3"><fmt:formatDate value="${result.frstRegisterPnttm}" pattern="yyyy-MM-dd"/></td>

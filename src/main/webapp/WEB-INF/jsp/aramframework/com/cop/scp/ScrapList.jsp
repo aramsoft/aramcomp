@@ -77,13 +77,18 @@
 	
   	<c:set var="startIndex" value="${(scrapVO.pageIndex-1) * scrapVO.recordPerPage}"/>
  	<c:forEach var="result" items="${resultList}" varStatus="status">
-  	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.scrapId}"/>'); return false;">
-
+  	<tr>
   		<c:set var="index" value="${startIndex + status.count}"/>
 		<c:set var="reverseIndex" value="${scrapVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
  
-    	<td class="lt_text3"><c:out value="${result.scrapNm}"/></td>
+    	<td class="lt_text3">
+	   		<span class="link">
+	   		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.scrapId}"/>'); return false;">
+    			<c:out value="${result.scrapNm}"/>
+	   		</a>
+	   		</span>
+    	</td>
     	<td class="lt_text3"><c:out value="${result.frstRegisterNm}"/></td>
     	<td class="lt_text3"><fmt:formatDate value="${result.frstRegisterPnttm}" pattern="yyyy-MM-dd"/></td>
   	</tr>

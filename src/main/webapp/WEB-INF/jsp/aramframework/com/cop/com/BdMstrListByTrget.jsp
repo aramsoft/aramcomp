@@ -89,9 +89,11 @@
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<td class="lt_text3">
+	   		<span class="link">
 			<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.bbsId}"/>'); return false;">
 			  	<c:out value="${result.bbsNm}"/>
 			</a>
+			</span>
 		</td>
 		<td class="lt_text3"><c:out value="${result.bbsTyCodeNm}"/></td>
 		<td class="lt_text3"><c:out value="${result.bbsAttrbCodeNm}"/></td>

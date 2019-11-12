@@ -86,8 +86,7 @@
 	<%-- 데이터를 화면에 출력해준다 --%>
  	<c:set var="startIndex" value="${(schdulManageVO.pageIndex-1) * schdulManageVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
-	<tr class="link" onClick="javaScript:fn_aram_choose('${result.schdulId}', '${result.schdulNm}'); return false;">
-
+	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
 		<c:set var="reverseIndex" value="${schdulManageVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
@@ -97,7 +96,13 @@
 			 <c:if test="${result.othbcScope == 'G'}">전체</c:if>
 			 <c:if test="${result.othbcScope == 'C'}">커뮤니티</c:if>
 		</td>
-		<td class="lt_text3">${result.schdulNm}</td>
+		<td class="lt_text3">
+	   		<span class="link">
+	   		<a href="#" onclick="javascript:fn_aram_choose('${result.schdulId}', '${result.schdulNm}'); return false;">
+				${result.schdulNm}
+	   		</a>
+	   		</span>
+		</td>
 		<td class="lt_text3">${fn:substring(result.schdulBgnde, 0, 4)}-${fn:substring(result.schdulBgnde, 4, 6)}-${fn:substring(result.schdulBgnde, 6, 8)}</td>
 		<td class="lt_text3">${fn:substring(result.schdulEndde, 0, 4)}-${fn:substring(result.schdulEndde, 4, 6)}-${fn:substring(result.schdulEndde, 6, 8)}</td>
 	  </tr>

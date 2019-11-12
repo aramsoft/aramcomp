@@ -82,7 +82,6 @@
  	<c:set var="startIndex" value="${(nameCardVO.pageIndex-1) * nameCardVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
 	<tr>
-	
  		<c:set var="index" value="${startIndex + status.count}"/>
 		<c:set var="reverseIndex" value="${nameCardVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>

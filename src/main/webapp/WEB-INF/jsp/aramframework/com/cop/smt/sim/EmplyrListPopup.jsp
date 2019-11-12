@@ -88,15 +88,20 @@
 	
  	<c:set var="startIndex" value="${(baseVO.pageIndex-1) * baseVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
-	<tr class="link" onclick="javascript:fn_aram_choose('${result.uniqId}', '${result.emplNo}', '${result.emplyrNm}', '${result.orgnztNm}'); return false;">
-	
- 		<c:set var="index" value="${startIndex + status.count}"/>
+	<tr>
+		<c:set var="index" value="${startIndex + status.count}"/>
 		<c:set var="reverseIndex" value="${baseVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 	    <td class="lt_text3"><c:out value="${result.orgnztNm}"/></td>
 	    <td class="lt_text3"><c:out value="${result.ofcpsNm}"/></td>
-	    <td class="lt_text3"><c:out value="${result.emplNo}"/></td>
+	    <td class="lt_text3">
+	   		<span class="link">
+	   		<a href="#" onclick="javascript:fn_aram_choose('${result.uniqId}', '${result.emplNo}', '${result.emplyrNm}', '${result.orgnztNm}'); return false;">
+	    		<c:out value="${result.emplNo}"/>
+	   		</a>
+	   		</span>
+	    </td>
 	    <td class="lt_text3"><c:out value="${result.emplyrNm}"/></td>
 	</tr>
 	</c:forEach>	  

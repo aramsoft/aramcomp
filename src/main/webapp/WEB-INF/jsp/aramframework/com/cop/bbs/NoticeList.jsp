@@ -101,29 +101,30 @@
 	
  	<c:set var="startIndex" value="${(boardVO.pageIndex-1) * boardVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
- 
-	<tr	class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.nttId}"/>'); return false;">
-	  
-	   
+	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
 		<c:set var="reverseIndex" value="${boardVO.totalRecordCount - index + 1}"/>
    		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
     	<td class="lt_text">
-	    	<c:if test="${result.threadDepth!=0}">
-	    		<c:forEach begin="0" end="${result.threadDepth}" step="1">
-	   			&nbsp;
-	    		</c:forEach>
-	    		<img src="${pageContext.request.contextPath}/images/aramframework/com/cmm/icon/reply_arrow.gif" alt="reply arrow">
-	    	</c:if>
-	    	<c:choose>
-	    	<c:when test="${(editAuthFlag != 'Y' && result.isExpired=='Y') || result.useAt == 'N'}">
-	    		<span class="bbs_useless"><c:out value="${result.nttSj}" /></span>
-	    	</c:when>
-	    	<c:otherwise>
-	    		<c:out value="${result.nttSj}"/>
-	    	</c:otherwise>
-	    	</c:choose>
+	   		<span class="link">
+	   		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.nttId}"/>'); return false;">
+		    	<c:if test="${result.threadDepth!=0}">
+		    		<c:forEach begin="0" end="${result.threadDepth}" step="1">
+		   			&nbsp;
+		    		</c:forEach>
+		    		<img src="${pageContext.request.contextPath}/images/aramframework/com/cmm/icon/reply_arrow.gif" alt="reply arrow">
+		    	</c:if>
+		    	<c:choose>
+		    	<c:when test="${(editAuthFlag != 'Y' && result.isExpired=='Y') || result.useAt == 'N'}">
+		    		<span class="bbs_useless"><c:out value="${result.nttSj}" /></span>
+		    	</c:when>
+		    	<c:otherwise>
+		    		<c:out value="${result.nttSj}"/>
+		    	</c:otherwise>
+		    	</c:choose>
+	   		</a>
+	   		</span>
     	</td>
     	
    		<c:if test="${boardVO.boardMasterVO.bbsAttrbCode == 'BBSA01'}">

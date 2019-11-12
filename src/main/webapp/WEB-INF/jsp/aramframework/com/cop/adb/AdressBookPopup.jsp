@@ -103,23 +103,29 @@
 
  	<c:set var="startIndex" value="${(adressBookUserVO.pageIndex-1) * adressBookUserVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
-
-	<c:if test="${adressBookUserVO.searchCondition == 'USERLIST'}">
-	<tr class="link" onclick="javascript:fn_aram_choose('<c:out value="${result.emplyrId}" />'); return false;">
-	</c:if>
-	<c:if test="${adressBookUserVO.searchCondition == 'NAMECARD'}">
-	<tr class="link" onclick="javascript:fn_aram_choose('<c:out value="${result.ncrdId}" />'); return false;">
-	</c:if>
-
+	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
 		<c:set var="reverseIndex" value="${adressBookUserVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<c:if test="${adressBookUserVO.searchCondition == 'USERLIST'}">
-		<td class="lt_text3"><c:out value="${result.emplyrId}" /></td>
+		<td class="lt_text3">
+	   		<span class="link">
+	   		<a href="#" onclick="javascript:fn_aram_choose('<c:out value="${result.emplyrId}"/>'); return false;">
+				<c:out value="${result.emplyrId}" />
+			</a>
+			</span>	
+		</td>
 		</c:if>
+		
 		<c:if test="${adressBookUserVO.searchCondition == 'NAMECARD'}">
-		<td class="lt_text3"><c:out value="${result.ncrdId}" /></td>
+		<td class="lt_text3">
+	   		<span class="link">
+	   		<a href="#" onclick="javascript:fn_aram_choose('<c:out value="${result.ncrdId}"/>'); return false;">
+				<c:out value="${result.ncrdId}" />
+			</a>
+			</span>	
+		</td>
 		</c:if>
 
     	<td class="lt_text3"><c:out value="${result.nm}"/></td>

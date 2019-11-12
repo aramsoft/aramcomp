@@ -22,8 +22,9 @@ public class PaginationTag extends TagSupport {
 	public int doEndTag() throws JspException {
 		try {
 			JspWriter out = this.pageContext.getOut();
-			WebApplicationContext ctx = RequestContextUtils.findWebApplicationContext((HttpServletRequest)this.pageContext.getRequest(),
-					this.pageContext.getServletContext());
+			WebApplicationContext ctx = RequestContextUtils.findWebApplicationContext(
+					(HttpServletRequest)this.pageContext.getRequest(), this.pageContext.getServletContext());
+			
 			Object paginationManager;
 			if (ctx.containsBean("paginationManager")) {
 				paginationManager = (PaginationManager) ctx.getBean("paginationManager");

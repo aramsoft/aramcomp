@@ -82,38 +82,28 @@
 	
   	<c:set var="startIndex" value="${(nameCardVO.pageIndex-1) * nameCardVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
-
-	<c:choose>
-  	<c:when test="${result.frstRegisterId == uniqId}">
-   		<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.ncrdId}"/>'); return false;">
-   	</c:when>
-    <c:otherwise>
-   		<tr class="link" onclick="javascript:fn_aram_popup('<c:out value="${result.ncrdId}"/>'); return false;">
-    </c:otherwise>
-    </c:choose>
 	<tr>
-	
- 		<c:set var="index" value="${startIndex + status.count}"/>
+		<c:set var="index" value="${startIndex + status.count}"/>
 		<c:set var="reverseIndex" value="${nameCardVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 	    <td class="lt_text3">
-		<c:choose>
-	  	<c:when test="${result.frstRegisterId == uniqId}">
-	   		<span class="link">
-	   		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.ncrdId}"/>'); return false;">
-	   			<c:out value="${result.ncrdNm}"/>
-	   		</a>
-	   		</span>
-	   	</c:when>
-	    <c:otherwise>
-	   		<span class="link">
-	   		<a href="#" onclick="javascript:fn_aram_popup('<c:out value="${result.ncrdId}"/>'); return false;">
-	   			<c:out value="${result.ncrdNm}"/>
-	   		</a>
-	   		</span>
-	    </c:otherwise>
-	    </c:choose>
+			<c:choose>
+		  	<c:when test="${result.frstRegisterId == uniqId}">
+		   		<span class="link">
+		   		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.ncrdId}"/>'); return false;">
+		   			<c:out value="${result.ncrdNm}"/>
+		   		</a>
+		   		</span>
+		   	</c:when>
+		    <c:otherwise>
+		   		<span class="link">
+		   		<a href="#" onclick="javascript:fn_aram_popup('<c:out value="${result.ncrdId}"/>'); return false;">
+		   			<c:out value="${result.ncrdNm}"/>
+		   		</a>
+		   		</span>
+		    </c:otherwise>
+		    </c:choose>
 	    </td>
 	    <td class="lt_text3"><c:out value="${result.cmpnyNm}"/></td>
 	    <td class="lt_text3"><c:out value="${result.deptNm}"/></td>

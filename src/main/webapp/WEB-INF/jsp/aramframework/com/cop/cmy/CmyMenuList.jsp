@@ -78,8 +78,7 @@
 	
  	<c:set var="startIndex" value="${(communityMenuVO.pageIndex-1) * communityMenuVO.recordPerPage}"/>
  	<c:forEach var="result" items="${resultList}" varStatus="status">
-  	<tr class="link" onclick="fn_aram_detail('${result.menuNo}'); return false;">
-
+  	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
 		<c:set var="reverseIndex" value="${communityMenuVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
@@ -89,12 +88,18 @@
 	    </td>
 	    
 	    <td class="lt_text">
-	    	<c:if test="${result.topMenuAt == 'N'}">
-	    		<img src="${pageContext.request.contextPath}/images/aramframework/com/cop/tpl/bull.gif" width="21" height="11" alt="bull" />
-	    	</c:if>
-	    	<c:out value="${result.menuNo}"/>
+		    <c:if test="${result.topMenuAt == 'N'}">
+		    	<img src="${pageContext.request.contextPath}/images/aramframework/com/cop/tpl/bull.gif" width="21" height="11" alt="bull" />
+		    </c:if>
+		    <c:out value="${result.menuNo}"/>
 	    </td>
-	    <td class="lt_text"><c:out value="${result.menuNm}"/></td>
+	    <td class="lt_text">
+	   		<span class="link">
+		   	<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.menuNo}"/>'); return false;">
+	    		<c:out value="${result.menuNm}"/>
+	   		</a>
+	   		</span>
+	    </td>
 	    <td class="lt_text"><c:out value="${result.menuAlias}"/></td>
 	    <td class="lt_text"><c:out value="${result.progrmFileNm}"/></td>
   	</tr>

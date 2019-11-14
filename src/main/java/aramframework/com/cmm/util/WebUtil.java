@@ -31,34 +31,15 @@ public class WebUtil {
 		model.addAttribute("redirectURL", redirectUrl);
 		return "aramframework/com/cmm/redirect";
 	}
-/*
-	public static String redirectJsp(ModelMap model, String redirectUrl, String param) {
-		model.addAttribute("redirectURL", redirectUrl);
-		
-		HashMap<String, String> parameterMap = new HashMap<String, String>();
 
-		String params[] = param.split("&");
-		for(int i = 0; i < params.length; ++i) {
-			String values[] = params[i].split("=");
-//			LOG.debug("values[0]=" + values[0] + ", values[1] = " + values[1]);
-			parameterMap.put(values[0], values[1]);
-		}
-		model.addAttribute("parameterMap", parameterMap);
-
-		return comRedirectJsp;
-	}
-*/	
 	public static String adjustViewName(String viewName) {
 		
 		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
 
 		String jspPrefix = (String) requestAttributes.getAttribute("jspPrefix", RequestAttributes.SCOPE_REQUEST);
 		if (jspPrefix == null || "".equals(jspPrefix)) jspPrefix = comDefaultPath;
-		
 		String jspPage = jspPrefix + viewName;	
 		
-//		LOG.debug("jspPage = " + jspPage);
-
 		// if tiles exist, forward tiles layout
 		String aTrgetId   = (String) requestAttributes.getAttribute("curTrgetId", RequestAttributes.SCOPE_REQUEST);
 		String aCurMenuNo = (String) requestAttributes.getAttribute("curMenuNo", RequestAttributes.SCOPE_REQUEST);

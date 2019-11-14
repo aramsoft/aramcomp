@@ -1,12 +1,9 @@
 <!doctype html>
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@ page import	= "aramframework.com.cmm.util.Log4Jsp" %>
+<%@ page import	= "aramframework.com.cmm.util.LogUtil" %>
+<%@ page isErrorPage="true" %>
 <%
-	Log4Jsp.error("[code404.jsp] HTTP 404 Error - File not found ");
-	Log4Jsp.debugRequest(request);
-	Log4Jsp.debugParameters(request);
-	Log4Jsp.debugHeaders(request);
-//	Log4Jsp.debugCookies(request);
+	LogUtil.logErrorMessage(exception, 100);
 %>
 <html lang="ko">
 <head>

@@ -47,7 +47,7 @@ public class LoginLogAdvice {
 		loginLogVO.setLoginMthd("I"); // 로그인:I, 로그아웃:O
 		loginLogVO.setErrOccrrAt("N");
 		loginLogVO.setErrorCode("");
-//		loginLogService.logInsertLoginLog(loginLogVO);
+		loginLogService.logInsertLoginLog(loginLogVO);
 	}
 
 	/**
@@ -74,7 +74,7 @@ public class LoginLogAdvice {
 		loginLogVO.setLoginMthd("O"); // 로그인:I, 로그아웃:O
 		loginLogVO.setErrOccrrAt("N");
 		loginLogVO.setErrorCode("");
-//		loginLogService.logInsertLoginLog(loginLogVO);
+		loginLogService.logInsertLoginLog(loginLogVO);
 	}
 
 }

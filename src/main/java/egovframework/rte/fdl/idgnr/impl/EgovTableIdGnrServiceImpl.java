@@ -157,7 +157,7 @@ public class EgovTableIdGnrServiceImpl extends AbstractDataBlockIdGnrService {
 
 		try {
 			return transactionTemplate.execute(new TransactionCallback<Object>() {
-				@SuppressWarnings("deprecation")
+
 				public Object doInTransaction(TransactionStatus status) {
 
 					Object nextId;

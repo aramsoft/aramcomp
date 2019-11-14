@@ -260,10 +260,6 @@ public class CmyMenuHomeController  {
 		BasicTilesContainer container = (BasicTilesContainer) TilesAccess.getContainer(tilesAppContext);
 		AttributeContext attributeContext = container.getAttributeContext(tilesRequest);
 
-/*    	
-		TilesContainer container = ServletUtil.getCurrentContainer(request,	request.getSession().getServletContext());
-		AttributeContext attributeContext = container.startContext(request, response);
-*/		
 		if (tmplatCours.indexOf("/WEB-INF/layouts") != -1) {
 			attributeContext.setTemplateAttribute(new Attribute(tmplatCours+".jsp"));
 		} else {

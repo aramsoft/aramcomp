@@ -5,17 +5,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import aramframework.com.utl.sim.service.FileScrty;
 
 /**
- * This {@link PasswordEncoder} is provided for legacy and testing purposes only and is
- * not considered secure.
- *
- * A password encoder that does nothing. Useful for testing where working with plain text
- * passwords may be preferred.
- *
- * @author Keith Donald
- * This PasswordEncoder is not secure. Instead use an
- * adaptive one way function like BCryptPasswordEncoder, Pbkdf2PasswordEncoder, or
- * SCryptPasswordEncoder. Even better use {@link DelegatingPasswordEncoder} which supports
- * password upgrades.
+ * 인증 작업에 필요한 password encode임.
+ * 
+ * @author 아람컴포넌트 조헌철
+ * @since 2019.11.14
+ * @version 1.0
  */
 public final class AramPasswordEncoder implements PasswordEncoder {
 

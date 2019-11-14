@@ -79,11 +79,11 @@
  	</c:if>
  	
  	<c:forEach var="result" items="${resultList}" varStatus="status">
-  	<tr class="link" onclick="javascript:fn_aram_choose('<c:out value="${result.deptCode}"/>', '<c:out value="${result.deptNm}"/>'); return false;">
+  	<tr class="link" onclick="javascript:fn_aram_choose('<c:out value="${result.orgnztId}"/>', '<c:out value="${result.orgnztNm}"/>'); return false;">
   	
     	<td class="lt_text3"></td>
-    	<td class="lt_text"><c:out value="${result.deptCode}"/></td>
-    	<td class="lt_text"><c:out value="${result.deptNm}"/></td>
+    	<td class="lt_text"><c:out value="${result.orgnztId}"/></td>
+    	<td class="lt_text"><c:out value="${result.orgnztNm}"/></td>
   	</tr>
  	</c:forEach>
 </tbody> 

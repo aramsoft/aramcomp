@@ -132,12 +132,10 @@
 </table>
 
 <!-- 검색조건 유지 -->
-<input type="hidden" name="searchCondition" 	value="${backupResultVO.searchCondition}" />
-<input type="hidden" name="searchKeyword"   	value="${backupResultVO.searchKeyword}" />
-<input type="hidden" name="searchKeywordFrom"   value="${backupResultVO.searchKeywordFrom}" />
-<input type="hidden" name="searchKeywordTo"   	value="${backupResultVO.searchKeywordTo}" />
-<input type="hidden" name="pageIndex"       	value="${backupResultVO.pageIndex}" />
-<input type="hidden" name="recordPerPage"   	value="${backupResultVO.recordPerPage}" />
+<input type="hidden" name="searchCondition" value="${searchVO.searchCondition}" />
+<input type="hidden" name="searchKeyword"   value="${searchVO.searchKeyword}" />
+<input type="hidden" name="pageIndex"       value="${searchVO.pageIndex}" />
+<input type="hidden" name="recordPerPage"   value="${searchVO.recordPerPage}" />
 <!-- 검색조건 유지 -->
 </form:form>
 

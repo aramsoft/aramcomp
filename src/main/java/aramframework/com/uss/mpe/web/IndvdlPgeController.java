@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -51,6 +52,7 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/detailIndvdlpge.do")
 	@Secured("ROLE_USER")
 	public String detailIndvdlpge(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IndvdlPgeConfVO indvdlPgeConfVO, 
 			ModelMap model) {
 
@@ -98,6 +100,7 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/registIndvdlpgeConf.do")
 	@Secured("ROLE_USER")
 	public String registIndvdlpgeConf(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IndvdlPgeConfVO indvdlPgeConfVO, 
 			ModelMap model) {
 
@@ -119,6 +122,7 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/updateIndvdlpgeConf.do")
 	@Secured("ROLE_USER")
 	public String updateIndvdlpgeConf(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IndvdlPgeConfVO indvdlPgeConfVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -193,6 +197,7 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/insertIndvdlpgeCntntsMine.do")
 	@Secured("ROLE_USER")
 	public String insertIndvdlpgeCntntsMine(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO, 
 			ModelMap model) {
 
@@ -269,6 +274,7 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/detailIndvdlpgeCntnts.do")
 	@Secured("ROLE_ADMIN")
 	public String detailIndvdlpgeCntnts(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO,
 			ModelMap model) {
 
@@ -285,6 +291,7 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/registIndvdlpgeCntnts.do")
 	@Secured("ROLE_ADMIN")
 	public String registIndvdlpgeCntnts(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO, 
 			ModelMap model) {
 
@@ -299,6 +306,7 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/insertIndvdlpgeCntnts.do")
 	@Secured("ROLE_ADMIN")
 	public String insertIndvdlpgeCntnts(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -324,6 +332,7 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/editIndvdlpgeCntnts.do")
 	@Secured("ROLE_ADMIN")
 	public String editIndvdlpgeCntnts(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO,
 			ModelMap model) {
 
@@ -340,6 +349,7 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/updateIndvdlpgeCntnts.do")
 	@Secured("ROLE_ADMIN")
 	public String updateIndvdlpgeCntnts(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {

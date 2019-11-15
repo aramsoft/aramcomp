@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.util.WebUtil;
@@ -72,6 +73,7 @@ public class ResourceController {
 	@RequestMapping("/sec/rmt/registResource.do")
 	@Secured("ROLE_ADMIN")
 	public String registResource(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ResourceVO resourceVO, 
 			ModelMap model) {
 
@@ -88,6 +90,7 @@ public class ResourceController {
 	@RequestMapping(value = "/sec/rmt/insertResource.do")
 	@Secured("ROLE_ADMIN")
 	public String insertResource(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ResourceVO resourceVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -111,6 +114,7 @@ public class ResourceController {
 	@RequestMapping(value = "/sec/rmt/editResource.do")
 	@Secured("ROLE_ADMIN")
 	public String editResource(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ResourceVO resourceVO,
 			ModelMap model) {
 
@@ -129,6 +133,7 @@ public class ResourceController {
 	@RequestMapping(value = "/sec/rmt/updateResource.do")
 	@Secured("ROLE_ADMIN")
 	public String updateResourceManage(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ResourceVO resourceVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {

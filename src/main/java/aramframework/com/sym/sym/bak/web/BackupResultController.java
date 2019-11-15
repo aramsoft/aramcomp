@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.sym.bak.domain.BackupResultVO;
@@ -64,6 +65,7 @@ public class BackupResultController {
 	@RequestMapping("/sym/sym/bak/detailBackupResult.do")
 	@Secured("ROLE_ADMIN")
 	public String detailBackupResult(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BackupResultVO backupResultVO,
 			ModelMap model) {
 		

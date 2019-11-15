@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -86,6 +87,7 @@ public class BackupOpertController {
 	@RequestMapping("/sym/sym/bak/detailBackupOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String detailBackupOpert(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BackupOpertVO backupOpertVO,
 			ModelMap model) {
 		
@@ -102,6 +104,7 @@ public class BackupOpertController {
 	@RequestMapping("/sym/sym/bak/registBackupOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String registBackupOpert(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BackupOpertVO backupOpertVO, 
 			ModelMap model) {
 
@@ -118,6 +121,7 @@ public class BackupOpertController {
 	@RequestMapping("/sym/sym/bak/insertBackupOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String insertBackupOpert(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BackupOpertVO backupOpertVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -153,6 +157,7 @@ public class BackupOpertController {
 	@RequestMapping("/sym/sym/bak/editBackupOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String editBackupOpert(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BackupOpertVO backupOpertVO,
 			ModelMap model) {
 		
@@ -171,6 +176,7 @@ public class BackupOpertController {
 	@RequestMapping("/sym/sym/bak/updateBackupOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String updateBackupOpert(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BackupOpertVO backupOpertVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 

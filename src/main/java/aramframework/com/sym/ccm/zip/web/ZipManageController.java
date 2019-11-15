@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -72,7 +73,8 @@ public class ZipManageController {
 	 * @param zipVO
 	 */
 	@RequestMapping(value = "/sym/ccm/zip/detailZip.do")
-	public String selectZipDetail(
+	public String detailZip(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ZipVO zipVO,
 			ModelMap model) {
 
@@ -89,6 +91,7 @@ public class ZipManageController {
 	@RequestMapping(value = "/sym/ccm/zip/registZip.do")
 	@Secured("ROLE_ADMIN")
 	public String registZip(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ZipVO zipVO, 
 			ModelMap model) {
 
@@ -103,6 +106,7 @@ public class ZipManageController {
 	@RequestMapping(value = "/sym/ccm/zip/insertZip.do")
 	@Secured("ROLE_ADMIN")
 	public String insertZip(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ZipVO zipVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -188,7 +192,8 @@ public class ZipManageController {
 	 */
 	@RequestMapping(value = "/sym/ccm/zip/editZip.do")
 	@Secured("ROLE_ADMIN")
-	public String updateZipView(
+	public String editZip(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ZipVO zipVO,
 			ModelMap model) {
 
@@ -205,6 +210,7 @@ public class ZipManageController {
 	@RequestMapping(value = "/sym/ccm/zip/updateZip.do")
 	@Secured("ROLE_ADMIN")
 	public String updateZip(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ZipVO zipVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {

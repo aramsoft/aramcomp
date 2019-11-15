@@ -44,13 +44,6 @@
 
 <form:hidden path="sbscrbSttus" />
 
-<!-- 검색조건 유지 -->
-<input type="hidden" name="searchCondition" value="${entrprsManageVO.searchCondition}" />
-<input type="hidden" name="searchKeyword"   value="${entrprsManageVO.searchKeyword}" />
-<input type="hidden" name="pageIndex"       value="${entrprsManageVO.pageIndex}" />
-<input type="hidden" name="recordPerPage"   value="${entrprsManageVO.recordPerPage}" />
-<!-- 검색조건 유지 -->
-
 <table class="table-register">
     <tr>
         <th width="20%">
@@ -92,6 +85,12 @@
     </tr>
 </table>
 
+<!-- 검색조건 유지 -->
+<input type="hidden" name="searchCondition" value="${entrprsManageVO.searchCondition}" />
+<input type="hidden" name="searchKeyword"   value="${entrprsManageVO.searchKeyword}" />
+<input type="hidden" name="pageIndex"       value="${entrprsManageVO.pageIndex}" />
+<input type="hidden" name="recordPerPage"   value="${entrprsManageVO.recordPerPage}" />
+<!-- 검색조건 유지 -->
 </form:form>
 
 </DIV>

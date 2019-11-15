@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -73,6 +74,7 @@ public class LoginPolicyController {
 	@RequestMapping("/uat/uap/registLoginPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String registLoginPolicy(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute LoginPolicyVO loginPolicyVO, 
 			ModelMap model)	{
 
@@ -87,6 +89,7 @@ public class LoginPolicyController {
 	@RequestMapping("/uat/uap/insertLoginPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String insertLoginPolicy(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute LoginPolicyVO loginPolicyVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -113,6 +116,7 @@ public class LoginPolicyController {
 	@RequestMapping("/uat/uap/editLoginPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String editLoginPolicy(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute LoginPolicyVO loginPolicyVO,
 			ModelMap model) {
 
@@ -129,6 +133,7 @@ public class LoginPolicyController {
 	@RequestMapping("/uat/uap/updateLoginPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String updateLoginPolicy(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute LoginPolicyVO loginPolicyVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {

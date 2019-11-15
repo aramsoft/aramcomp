@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -68,6 +69,7 @@ public class CpyrhtPrtcPolicyController {
 	@RequestMapping("/uss/sam/cpy/detailCpyrhtPrtcPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String detailCpyrhtPrtcPolicy(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CpyrhtPrtcPolicyVO cpyrhtPrtcPolicyVO,
 			ModelMap model) {
 
@@ -84,6 +86,7 @@ public class CpyrhtPrtcPolicyController {
 	@RequestMapping("/uss/sam/cpy/registCpyrhtPrtcPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String registCpyrhtPrtcPolicy(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CpyrhtPrtcPolicyVO cpyrhtPrtcPolicyVO, 
 			ModelMap model) {
 
@@ -98,6 +101,7 @@ public class CpyrhtPrtcPolicyController {
 	@RequestMapping("/uss/sam/cpy/insertCpyrhtPrtcPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String insertCpyrhtPrtcPolicy(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CpyrhtPrtcPolicyVO cpyrhtPrtcPolicyVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -125,6 +129,7 @@ public class CpyrhtPrtcPolicyController {
 	@RequestMapping("/uss/sam/cpy/editCpyrhtPrtcPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String editCpyrhtPrtcPolicy(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CpyrhtPrtcPolicyVO cpyrhtPrtcPolicyVO,
 			ModelMap model) {
 
@@ -141,6 +146,7 @@ public class CpyrhtPrtcPolicyController {
 	@RequestMapping("/uss/sam/cpy/updateCpyrhtPrtcPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String updateCpyrhtPrtcPolicy(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CpyrhtPrtcPolicyVO cpyrhtPrtcPolicyVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {

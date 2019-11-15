@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -68,6 +69,7 @@ public class IndvdlInfoPolicyController {
 	@RequestMapping(value = "/uss/sam/ipm/detailIndvdlInfoPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String detailIndvdlInfoPolicy(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IndvdlInfoPolicyVO indvdlInfoPolicyVO,
 			ModelMap model) {
 
@@ -84,6 +86,7 @@ public class IndvdlInfoPolicyController {
 	@RequestMapping(value = "/uss/sam/ipm/registIndvdlInfoPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String registIndvdlInfoPolicy(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IndvdlInfoPolicyVO indvdlInfoPolicyVO) {
 
 		return WebUtil.adjustViewName("/uss/sam/ipm/IndvdlInfoPolicyRegist");
@@ -97,6 +100,7 @@ public class IndvdlInfoPolicyController {
 	@RequestMapping(value = "/uss/sam/ipm/insertIndvdlInfoPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String insertIndvdlInfoPolicy(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IndvdlInfoPolicyVO indvdlInfoPolicyVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -126,6 +130,7 @@ public class IndvdlInfoPolicyController {
 	@RequestMapping(value = "/uss/sam/ipm/editIndvdlInfoPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String editIndvdlInfoPolicy(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IndvdlInfoPolicyVO indvdlInfoPolicyVO,
 			ModelMap model) {
 
@@ -142,6 +147,7 @@ public class IndvdlInfoPolicyController {
 	@RequestMapping(value = "/uss/sam/ipm/updateIndvdlInfoPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String updateIndvdlInfoPolicy(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IndvdlInfoPolicyVO indvdlInfoPolicyVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {

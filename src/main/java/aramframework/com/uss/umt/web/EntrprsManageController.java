@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -174,6 +175,7 @@ public class EntrprsManageController {
 	@RequestMapping("/uss/umt/registEntrprsMber.do")
 	@Secured("ROLE_ADMIN")
 	public String registEntrprsMber(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute EntrprsManageVO entrprsManageVO,
 			ModelMap model) {
 
@@ -190,6 +192,7 @@ public class EntrprsManageController {
 	@RequestMapping("/uss/umt/insertEntrprsMber.do")
 	@Secured("ROLE_ADMIN")
 	public String insertEntrprsMber(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute EntrprsManageVO entrprsManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -215,6 +218,7 @@ public class EntrprsManageController {
 	@RequestMapping("/uss/umt/editEntrprsMber.do")
 	@Secured("ROLE_USER")
 	public String editEntrprsMber(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute EntrprsManageVO entrprsManageVO, 
 			ModelMap model) {
 
@@ -237,6 +241,7 @@ public class EntrprsManageController {
 	@RequestMapping("/uss/umt/updateEntrprsMber.do.do")
 	@Secured("ROLE_USER")
 	public String updateEntrprsMber(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute EntrprsManageVO entrprsManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -260,6 +265,7 @@ public class EntrprsManageController {
 	@RequestMapping(value = "/uss/umt/editEntrprsMberPassword.do")
 	@Secured("ROLE_USER")
 	public String editEntrprsMberPassword(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute EntrprsManageVO entrprsManageVO,
 			ModelMap model) {
 
@@ -277,6 +283,7 @@ public class EntrprsManageController {
 	@RequestMapping(value = "/uss/umt/updateEntrprsMberPassword.do")
 	@Secured("ROLE_USER")
 	public String updateEntrprsMberPassword(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute EntrprsManageVO entrprsManageVO, 
 			HttpServletRequest request, 
 			ModelMap model) 

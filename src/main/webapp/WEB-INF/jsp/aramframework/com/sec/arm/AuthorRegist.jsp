@@ -74,10 +74,10 @@
 </table>
  
 <!-- 검색조건 유지 -->
-<input type="hidden" name="searchCondition" value="${authorVO.searchCondition}" />
-<input type="hidden" name="searchKeyword"   value="${authorVO.searchKeyword}" />
-<input type="hidden" name="pageIndex"       value="${authorVO.pageIndex}" />
-<input type="hidden" name="recordPerPage"   value="${authorVO.recordPerPage}" />
+<input type="hidden" name="searchCondition" value="${searchVO.searchCondition}" />
+<input type="hidden" name="searchKeyword"   value="${searchVO.searchKeyword}" />
+<input type="hidden" name="pageIndex"       value="${searchVO.pageIndex}" />
+<input type="hidden" name="recordPerPage"   value="${searchVO.recordPerPage}" />
 <!-- 검색조건 유지 -->
 </form:form>
 

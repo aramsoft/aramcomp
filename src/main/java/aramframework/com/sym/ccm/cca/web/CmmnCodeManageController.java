@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -72,6 +73,7 @@ public class CmmnCodeManageController {
 	 */
 	@RequestMapping(value = "/sym/ccm/cca/detailCmmnCode.do")
 	public String detailCmmnCode(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CmmnCodeVO cmmnCodeVO,
 			ModelMap model) {
 
@@ -88,6 +90,7 @@ public class CmmnCodeManageController {
 	@RequestMapping(value = "/sym/ccm/cca/registCmmnCode.do")
 	@Secured("ROLE_ADMIN")
 	public String registCmmnCode(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CmmnCodeVO cmmnCodeVO, 
 			ModelMap model) {
 
@@ -107,6 +110,7 @@ public class CmmnCodeManageController {
 	@RequestMapping(value = "/sym/ccm/cca/insertCmmnCode.do")
 	@Secured("ROLE_ADMIN")
 	public String insertCmmnCode(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CmmnCodeVO cmmnCodeVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
@@ -133,6 +137,7 @@ public class CmmnCodeManageController {
 	@RequestMapping(value = "/sym/ccm/cca/editCmmnCode.do")
 	@Secured("ROLE_ADMIN")
 	public String editCmmnCode(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CmmnCodeVO cmmnCodeVO,
 			ModelMap model) {
 
@@ -149,6 +154,7 @@ public class CmmnCodeManageController {
 	@RequestMapping(value = "/sym/ccm/cca/updateCmmnCode.do")
 	@Secured("ROLE_ADMIN")
 	public String updateCmmnCode(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CmmnCodeVO cmmnCodeVO, 
 			BindingResult bindingResult,
 			ModelMap model) {

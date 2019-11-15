@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -79,6 +80,7 @@ public class QnaManageController {
 	 */
 	@RequestMapping("/uss/olh/qna/detailQna.do")
 	public String detailQna(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QnaManageVO qnaManageVO,
 			ModelMap model) {
 
@@ -94,6 +96,7 @@ public class QnaManageController {
 	 */
 	@RequestMapping("/uss/olh/qna/updateQnaInqireCo.do")
 	public String updateQnaInqireCo(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QnaManageVO qnaManageVO, 
 			ModelMap model) {
 
@@ -122,6 +125,7 @@ public class QnaManageController {
 	 */
 	@RequestMapping("/uss/olh/qna/registQna.do")
 	public String registQna(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QnaManageVO qnaManageVO, 
 			ModelMap model) {
 
@@ -142,6 +146,7 @@ public class QnaManageController {
 	 */
 	@RequestMapping("/uss/olh/qna/insertQna.do")
 	public String insertQnaCn(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QnaManageVO qnaManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -227,6 +232,7 @@ public class QnaManageController {
 	 */
 	@RequestMapping("/uss/olh/qna/editQna.do")
 	public String editQna(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QnaManageVO qnaManageVO,
 			ModelMap model) {
 
@@ -248,6 +254,7 @@ public class QnaManageController {
 	 */
 	@RequestMapping("/uss/olh/qna/updateQna.do")
 	public String updateQna(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QnaManageVO qnaManageVO, 
 			BindingResult bindingResult,
 			ModelMap model) 
@@ -362,6 +369,7 @@ public class QnaManageController {
 	@RequestMapping("/uss/olh/qnm/detailQnaAnswer.do")
 	@Secured("ROLE_USER")
 	public String detailQnaAnswer(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QnaManageVO qnaManageVO,
 			ModelMap model) {
 

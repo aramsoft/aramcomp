@@ -213,12 +213,6 @@
     <form:hidden path="mberSttus" />
 </table>
 
-<!-- 검색조건 유지 -->
-<input type="hidden" name="searchCondition" value="${mberManageVO.searchCondition}" />
-<input type="hidden" name="searchKeyword"   value="${mberManageVO.searchKeyword}" />
-<input type="hidden" name="pageIndex"       value="${mberManageVO.pageIndex}" />
-<input type="hidden" name="recordPerPage"   value="${mberManageVO.recordPerPage}" />
-<!-- 검색조건 유지 -->
 </form:form>
 
 </DIV>

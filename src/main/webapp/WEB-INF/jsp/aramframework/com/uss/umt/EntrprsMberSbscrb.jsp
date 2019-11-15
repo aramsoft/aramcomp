@@ -255,12 +255,6 @@
     <form:hidden path="entrprsMberSttus" />
 </table>
 
-<!-- 검색조건 유지 -->
-<input type="hidden" name="searchCondition" value="${entrprsManageVO.searchCondition}" />
-<input type="hidden" name="searchKeyword"   value="${entrprsManageVO.searchKeyword}" />
-<input type="hidden" name="pageIndex"       value="${entrprsManageVO.pageIndex}" />
-<input type="hidden" name="recordPerPage"   value="${entrprsManageVO.recordPerPage}" />
-<!-- 검색조건 유지 -->
 </form:form>
 <!-- content end -->
 

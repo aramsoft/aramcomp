@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.log.lgm.domain.SysLogVO;
 import aramframework.com.sym.log.lgm.service.SysLogService;
@@ -60,6 +61,7 @@ public class SysLogController {
 	@RequestMapping(value = "/sym/log/lgm/detailSysLog.do")
 	@Secured("ROLE_ADMIN")
 	public String detailSysLog(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SysLogVO sysLogVO,
 			ModelMap model) {
 

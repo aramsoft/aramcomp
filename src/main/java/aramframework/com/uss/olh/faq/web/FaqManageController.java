@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
@@ -71,6 +72,7 @@ public class FaqManageController {
 	 */
 	@RequestMapping("/uss/olh/faq/detailFaq.do")
 	public String detailFaq(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute FaqManageVO faqManageVO,
 			ModelMap model) {
 
@@ -87,6 +89,7 @@ public class FaqManageController {
 	@RequestMapping("/uss/olh/faq/registFaq.do")
 	@Secured("ROLE_USER")
 	public String registFaq(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute FaqManageVO faqManageVO, 
 			ModelMap model) {
 
@@ -101,6 +104,7 @@ public class FaqManageController {
 	@RequestMapping("/uss/olh/faq/insertFaq.do")
 	@Secured("ROLE_USER")
 	public String insertFaq(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute FaqManageVO faqManageVO, 
 			BindingResult bindingResult,
 			MultipartHttpServletRequest multiRequest, 
@@ -133,6 +137,7 @@ public class FaqManageController {
 	@RequestMapping("/uss/olh/faq/editFaq.do")
 	@Secured("ROLE_USER")
 	public String editFaq(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute FaqManageVO faqManageVO,
 			ModelMap model) {
 
@@ -149,6 +154,7 @@ public class FaqManageController {
 	@RequestMapping("/uss/olh/faq/updateFaq.do")
 	@Secured("ROLE_USER")
 	public String updateFaq(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute FaqManageVO faqManageVO, 
 			BindingResult bindingResult,
 			MultipartHttpServletRequest multiRequest,

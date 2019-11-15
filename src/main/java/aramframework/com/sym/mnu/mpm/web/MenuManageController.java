@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.mnu.mpm.domain.MenuManageVO;
@@ -84,6 +85,7 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/registMenu.do")
 	@Secured("ROLE_ADMIN")
 	public String registMenu(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO) {
 		
 		return WebUtil.adjustViewName("/sym/mnu/mpm/MenuRegist");
@@ -97,6 +99,7 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/insertMenu.do")
 	@Secured("ROLE_ADMIN")
 	public String insertMenu(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -130,6 +133,7 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/editMenu.do")
 	@Secured("ROLE_ADMIN")
 	public String editMenu(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO, 
 			ModelMap model) {
 
@@ -146,6 +150,7 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/updateMenu.do")
 	@Secured("ROLE_ADMIN")
 	public String updateMenu(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {

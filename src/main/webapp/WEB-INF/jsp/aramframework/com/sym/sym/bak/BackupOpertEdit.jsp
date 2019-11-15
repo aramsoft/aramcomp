@@ -152,10 +152,10 @@
 </table>
 
 <!-- 검색조건 유지 -->
-<input type="hidden" name="searchCondition" value="${backupOpertVO.searchCondition}" />
-<input type="hidden" name="searchKeyword"   value="${backupOpertVO.searchKeyword}" />
-<input type="hidden" name="pageIndex"       value="${backupOpertVO.pageIndex}" />
-<input type="hidden" name="recordPerPage"   value="${backupOpertVO.recordPerPage}" />
+<input type="hidden" name="searchCondition" value="${searchVO.searchCondition}" />
+<input type="hidden" name="searchKeyword"   value="${searchVO.searchKeyword}" />
+<input type="hidden" name="pageIndex"       value="${searchVO.pageIndex}" />
+<input type="hidden" name="recordPerPage"   value="${searchVO.recordPerPage}" />
 <!-- 검색조건 유지 -->
 </form:form>
 

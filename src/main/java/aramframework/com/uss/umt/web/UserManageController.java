@@ -14,6 +14,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchCodeVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -115,6 +116,7 @@ public class UserManageController {
 	@RequestMapping("/uss/umt/registUser.do")
 	@Secured("ROLE_ADMIN")
 	public String registUser(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute UserManageVO userManageVO, 
 			ModelMap model) {
 
@@ -131,6 +133,7 @@ public class UserManageController {
 	@RequestMapping("/uss/umt/insertUser.do")
 	@Secured("ROLE_ADMIN")
 	public String insertUser(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute UserManageVO userManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -163,6 +166,7 @@ public class UserManageController {
 	@RequestMapping("/uss/umt/editUser.do")
 	@Secured("ROLE_USER")
 	public String editUser(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute UserManageVO userManageVO, 
 			ModelMap model) {
 
@@ -184,6 +188,7 @@ public class UserManageController {
 	@RequestMapping("/uss/umt/updateUser.do")
 	@Secured("ROLE_USER")
 	public String updateUser(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute UserManageVO userManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -227,6 +232,7 @@ public class UserManageController {
 	@RequestMapping(value = "/uss/umt/editUserPassword.do")
 	@Secured("ROLE_USER")
 	public String editUserPassword(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute UserManageVO userManageVO,
 			ModelMap model) {
 
@@ -244,6 +250,7 @@ public class UserManageController {
 	@RequestMapping(value = "/uss/umt/updateUserPassword.do")
 	@Secured("ROLE_USER")
 	public String updateUserPassword(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute UserManageVO userManageVO,
 			HttpServletRequest request, 
 			ModelMap model)

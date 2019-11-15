@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.prm.domain.ProgrmManageVO;
@@ -124,6 +125,7 @@ public class ProgrmManageController {
 	@RequestMapping(value = "/sym/prm/registProgram.do")
 	@Secured("ROLE_ADMIN")
 	public String registProgrm(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ProgrmManageVO progrmManageVO,
 			ModelMap model) {
 
@@ -138,6 +140,7 @@ public class ProgrmManageController {
 	@RequestMapping(value = "/sym/prm/insertProgram.do")
 	@Secured("ROLE_ADMIN")
 	public String insertProgrm(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ProgrmManageVO progrmManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -165,6 +168,7 @@ public class ProgrmManageController {
 	@RequestMapping(value = "/sym/prm/editProgram.do")
 	@Secured("ROLE_ADMIN")
 	public String editProgram(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ProgrmManageVO progrmManageVO,
 			ModelMap model) {
 		
@@ -182,6 +186,7 @@ public class ProgrmManageController {
 	@RequestMapping(value = "/sym/prm/updateProgram.do")
 	@Secured("ROLE_ADMIN")
 	public String updateProgrm(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ProgrmManageVO progrmManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {

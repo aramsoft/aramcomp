@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -174,6 +175,7 @@ public class MberManageController {
 	@RequestMapping("/uss/umt/registMber.do")
 	@Secured("ROLE_ADMIN")
 	public String registMber(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MberManageVO mberManageVO,
 			ModelMap model) {
 
@@ -190,6 +192,7 @@ public class MberManageController {
 	@RequestMapping("/uss/umt/insertMber.do")
 	@Secured("ROLE_ADMIN")
 	public String insertMber(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MberManageVO mberManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -213,6 +216,7 @@ public class MberManageController {
 	@RequestMapping("/uss/umt/editMber.do")
 	@Secured("ROLE_USER")
 	public String editMber(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MberManageVO mberManageVO, 
 			ModelMap model) {
 
@@ -234,6 +238,7 @@ public class MberManageController {
 	@RequestMapping("/uss/umt/updateMber.do")
 	@Secured("ROLE_USER")
 	public String updateMber(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MberManageVO mberManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -257,6 +262,7 @@ public class MberManageController {
 	@RequestMapping(value = "/uss/umt/editMberPassword.do")
 	@Secured("ROLE_USER")
 	public String editMberPassword(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MberManageVO mberManageVO, 
 			ModelMap model) {
 		
@@ -274,6 +280,7 @@ public class MberManageController {
 	@RequestMapping(value = "/uss/umt/updateMberPassword.do")
 	@Secured("ROLE_USER")
 	public String updateMberPassword(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MberManageVO mberManageVO, 
 			HttpServletRequest request, 
 			ModelMap model) 

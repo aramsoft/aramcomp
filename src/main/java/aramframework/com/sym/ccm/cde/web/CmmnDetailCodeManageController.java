@@ -101,6 +101,7 @@ public class CmmnDetailCodeManageController {
 	@RequestMapping(value = "/sym/ccm/cde/registCmmnDetailCode.do")
 	@Secured("ROLE_ADMIN")
 	public String registCmmnDetailCode(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CmmnDetailCodeVO cmmnDetailCodeVO, 
 			@RequestParam String clCode, 
 			ModelMap model) {
@@ -135,6 +136,7 @@ public class CmmnDetailCodeManageController {
 	@RequestMapping(value = "/sym/ccm/cde/insertCmmnDetailCode.do")
 	@Secured("ROLE_ADMIN")
 	public String insertCmmnDetailCode(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CmmnDetailCodeVO cmmnDetailCodeVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {

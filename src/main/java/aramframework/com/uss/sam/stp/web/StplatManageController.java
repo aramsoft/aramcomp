@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -68,6 +69,7 @@ public class StplatManageController {
 	@RequestMapping("/uss/sam/stp/detailStplat.do")
 	@Secured("ROLE_ADMIN")
 	public String detailStplat(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute StplatManageVO stplatManageVO,
 			ModelMap model) {
 
@@ -84,6 +86,7 @@ public class StplatManageController {
 	@RequestMapping("/uss/sam/stp/registStplat.do")
 	@Secured("ROLE_ADMIN")
 	public String registStplat(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute StplatManageVO stplatManageVO, 
 			ModelMap model) {
 
@@ -98,6 +101,7 @@ public class StplatManageController {
 	@RequestMapping("/uss/sam/stp/insertStplat.do")
 	@Secured("ROLE_ADMIN")
 	public String insertStplat(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute StplatManageVO stplatManageVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -125,6 +129,7 @@ public class StplatManageController {
 	@RequestMapping("/uss/sam/stp/editStplat.do")
 	@Secured("ROLE_ADMIN")
 	public String editStplat(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute StplatManageVO stplatManageVO,
 			ModelMap model) {
 
@@ -141,6 +146,7 @@ public class StplatManageController {
 	@RequestMapping("/uss/sam/stp/updateStplat.do")
 	@Secured("ROLE_ADMIN")
 	public String updateStplat(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute StplatManageVO stplatManageVO,
 			BindingResult bindingResult, 
 			ModelMap model) {

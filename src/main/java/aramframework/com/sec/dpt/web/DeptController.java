@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sec.dpt.domain.DeptVO;
@@ -67,6 +68,7 @@ public class DeptController {
 	@RequestMapping(value = "/sec/dpt/registDept.do")
 	@Secured("ROLE_ADMIN")
 	public String registDept(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptVO deptVO, 
 			ModelMap model) {
 
@@ -81,6 +83,7 @@ public class DeptController {
 	@RequestMapping(value = "/sec/dpt/insertDept.do")
 	@Secured("ROLE_ADMIN")
 	public String insertDept(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptVO deptVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -104,6 +107,7 @@ public class DeptController {
 	@RequestMapping(value = "/sec/dpt/editDept.do")
 	@Secured("ROLE_ADMIN")
 	public String editDept(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptVO deptVO,
 			ModelMap model) {
 
@@ -120,6 +124,7 @@ public class DeptController {
 	@RequestMapping(value = "/sec/dpt/updateDept.do")
 	@Secured("ROLE_ADMIN")
 	public String updateDept(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptVO deptVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {

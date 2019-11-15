@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sec.grp.domain.GroupVO;
@@ -67,6 +68,7 @@ public class GroupController {
 	@RequestMapping(value = "/sec/grp/registGroup.do")
 	@Secured("ROLE_ADMIN")
 	public String registGroup(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute GroupVO groupVO, 
 			ModelMap model) {
 
@@ -81,6 +83,7 @@ public class GroupController {
 	@RequestMapping(value = "/sec/grp/insertGroup.do")
 	@Secured("ROLE_ADMIN")
 	public String insertGroup(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute GroupVO groupVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -104,6 +107,7 @@ public class GroupController {
 	@RequestMapping(value = "/sec/grp/editGroup.do")
 	@Secured("ROLE_ADMIN")
 	public String editGroup(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute GroupVO groupVO,
 			ModelMap model) {
 
@@ -120,6 +124,7 @@ public class GroupController {
 	@RequestMapping(value = "/sec/grp/updateGroup.do")
 	@Secured("ROLE_ADMIN")
 	public String updateGroup(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute GroupVO groupVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -176,7 +181,7 @@ public class GroupController {
 	 * @param groupVO
 	 */
 	@RequestMapping("/sec/grp/listGroupPopup.do")
-	public String listGroupSearch(
+	public String listGroupPopup(
 			@ModelAttribute GroupVO groupVO, 
 			ModelMap model) {
 

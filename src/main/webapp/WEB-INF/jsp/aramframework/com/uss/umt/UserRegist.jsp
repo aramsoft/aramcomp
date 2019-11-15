@@ -305,10 +305,10 @@
 </table>
 
 <!-- 검색조건 유지 -->
-<input type="hidden" name="searchCondition" value="${userManageVO.searchCondition}" />
-<input type="hidden" name="searchKeyword"   value="${userManageVO.searchKeyword}" />
-<input type="hidden" name="pageIndex"       value="${userManageVO.pageIndex}" />
-<input type="hidden" name="recordPerPage"   value="${userManageVO.recordPerPage}" />
+<input type="hidden" name="searchCondition" value="${searchVO.searchCondition}" />
+<input type="hidden" name="searchKeyword"   value="${searchVO.searchKeyword}" />
+<input type="hidden" name="pageIndex"       value="${searchVO.pageIndex}" />
+<input type="hidden" name="recordPerPage"   value="${searchVO.recordPerPage}" />
 <!-- 검색조건 유지 -->
 </form:form>
 

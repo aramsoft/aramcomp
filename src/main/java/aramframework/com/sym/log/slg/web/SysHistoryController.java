@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
@@ -77,6 +78,7 @@ public class SysHistoryController {
 	@RequestMapping(value = "/sym/log/slg/detailSysHistory.do")
 	@Secured("ROLE_ADMIN")
 	public String detailSysHistory(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SysHistoryVO sysHistoryVO,
 			ModelMap model) {
 
@@ -93,6 +95,7 @@ public class SysHistoryController {
 	@RequestMapping(value = "/sym/log/slg/registSysHistory.do")
 	@Secured("ROLE_ADMIN")
 	public String registSysHistory(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SysHistoryVO sysHistoryVO, 
 			ModelMap model) {
 
@@ -109,6 +112,7 @@ public class SysHistoryController {
 	@RequestMapping(value = "/sym/log/slg/insertSysHistory.do")
 	@Secured("ROLE_ADMIN")
 	public String insertSysHistory(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SysHistoryVO sysHistoryVO, 
 			BindingResult bindingResult,
 			MultipartHttpServletRequest multiRequest, 
@@ -140,6 +144,7 @@ public class SysHistoryController {
 	@RequestMapping(value = "/sym/log/slg/editSysHistory.do")
 	@Secured("ROLE_ADMIN")
 	public String editSysHistory(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SysHistoryVO sysHistoryVO,
 			ModelMap model) {
 
@@ -158,6 +163,7 @@ public class SysHistoryController {
 	@RequestMapping(value = "/sym/log/slg/updateSysHistory.do")
 	@Secured("ROLE_ADMIN")
 	public String updateSysHistory(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SysHistoryVO sysHistoryVO, 
 			BindingResult bindingResult, 
 			MultipartHttpServletRequest multiRequest, 

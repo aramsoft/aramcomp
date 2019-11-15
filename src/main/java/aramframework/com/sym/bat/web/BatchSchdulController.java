@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
@@ -79,6 +80,7 @@ public class BatchSchdulController {
 	@RequestMapping("/sym/bat/detailBatchSchdul.do")
 	@Secured("ROLE_ADMIN")
 	public String detailBatchSchdul(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BatchSchdulVO batchSchdulVO,
 			ModelMap model) {
 
@@ -95,6 +97,7 @@ public class BatchSchdulController {
 	@RequestMapping("/sym/bat/registBatchSchdul.do")
 	@Secured("ROLE_ADMIN")
 	public String registBatchSchdul(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BatchSchdulVO batchSchdulVO, 
 			ModelMap model) {
 
@@ -111,6 +114,7 @@ public class BatchSchdulController {
 	@RequestMapping("/sym/bat/insertBatchSchdul.do")
 	@Secured("ROLE_ADMIN")
 	public String insertBatchSchdul(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BatchSchdulVO batchSchdulVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -144,6 +148,7 @@ public class BatchSchdulController {
 	@RequestMapping("/sym/bat/editBatchSchdul.do")
 	@Secured("ROLE_ADMIN")
 	public String editBatchSchdul(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BatchSchdulVO batchSchdulVO,
 			ModelMap model) {
 
@@ -162,6 +167,7 @@ public class BatchSchdulController {
 	@RequestMapping("/sym/bat/updateBatchSchdul.do")
 	@Secured("ROLE_ADMIN")
 	public String updateBatchSchdul(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BatchSchdulVO batchSchdulVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 

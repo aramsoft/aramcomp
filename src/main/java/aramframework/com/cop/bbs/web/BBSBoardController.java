@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.constant.CacheKey;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
@@ -197,6 +198,7 @@ public class BBSBoardController {
 	 */
 	@RequestMapping(value="/content/board/{bbsPathId}/article/{nttId}")
 	public String detailBoardArticle(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
 			@PathVariable String bbsPathId, 
 			@PathVariable int nttId,			
@@ -316,6 +318,7 @@ public class BBSBoardController {
 	 */
 	@RequestMapping("/cop/bbs/registBoardArticle.do")
 	public String registBoardArticle(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
 			ModelMap model) {
 
@@ -343,6 +346,7 @@ public class BBSBoardController {
 	@RequestMapping("/cop/bbs/insertBoardArticle.do")
 	@Secured("ROLE_USER")
 	public String insertBoardArticle(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO,
 			BindingResult bindingResult, 
 			MultipartHttpServletRequest multiRequest, 
@@ -388,6 +392,7 @@ public class BBSBoardController {
 	 */
 	@RequestMapping("/cop/bbs/replyBoardArticle.do")
 	public String replyBoardArticle(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
 			ModelMap model) {
 
@@ -416,6 +421,7 @@ public class BBSBoardController {
 	 */
 	@RequestMapping("/cop/bbs/insertReplyBoardArticle.do")
 	public String addReplyBoardArticle(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO,
 			BindingResult bindingResult, 
 			MultipartHttpServletRequest multiRequest, 
@@ -462,6 +468,7 @@ public class BBSBoardController {
 	 */
 	@RequestMapping("/cop/bbs/editBoardArticle.do")
 	public String editBoardArticle(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
 			ModelMap model) 
 	throws Exception {
@@ -507,7 +514,6 @@ public class BBSBoardController {
 		beanValidator.validate(boardVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("editAuthFlag", editAuthFlag);
-
 			return WebUtil.adjustViewName("/cop/bbs/NoticeEdit");
 		}
 
@@ -630,6 +636,7 @@ public class BBSBoardController {
 	 */
 	@RequestMapping(value="/content/board/anonymous/{bbsPathId}/article/{nttId}")
 	public String detailAnonymousBoardArticle(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
 			@PathVariable String bbsPathId, 
 			@PathVariable int nttId,			
@@ -716,6 +723,7 @@ public class BBSBoardController {
 	 */
 	@RequestMapping("/cop/bbs/anonymous/registBoardArticle.do")
 	public String registAnonymousBoardArticle(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
 			ModelMap model) {
 
@@ -746,6 +754,7 @@ public class BBSBoardController {
 	 */
 	@RequestMapping("/cop/bbs/anonymous/insertBoardArticle.do")
 	public String insertAnonymousBoardArticle(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO,
 			BindingResult bindingResult, 
 			MultipartHttpServletRequest multiRequest, 
@@ -781,6 +790,7 @@ public class BBSBoardController {
 	 */
 	@RequestMapping("/cop/bbs/anonymous/replyBoardArticle.do")
 	public String replyAnonymousBoardArticle(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
 			ModelMap model) {
 
@@ -812,6 +822,7 @@ public class BBSBoardController {
 	 */
 	@RequestMapping("/cop/bbs/anonymous/insertReplyBoardArticle.do")
 	public String addReplyAnonymousBoardArticle(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO,
 			BindingResult bindingResult, 
 			MultipartHttpServletRequest multiRequest, 
@@ -850,6 +861,7 @@ public class BBSBoardController {
 	 */
 	@RequestMapping("/cop/bbs/anonymous/editBoardArticle.do")
 	public String editAnonymousBoardArticle(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO,
 			ModelMap model)
 	throws Exception {
@@ -895,6 +907,7 @@ public class BBSBoardController {
 	 */
 	@RequestMapping("/cop/bbs/anonymous/updateBoardArticle.do")
 	public String updateAnonymousBoardArticle(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO,
 			BindingResult bindingResult, 
 			MultipartHttpServletRequest multiRequest, 

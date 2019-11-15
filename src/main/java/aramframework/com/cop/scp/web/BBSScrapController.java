@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -80,6 +81,7 @@ public class BBSScrapController {
 	@RequestMapping("/cop/scp/detailScrap.do")
 	@Secured("ROLE_USER")
 	public String detailScrap(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ScrapVO scrapVO, 
 			ModelMap model) {
 
@@ -120,6 +122,7 @@ public class BBSScrapController {
 	@RequestMapping("/cop/scp/registScrap.do")
 	@Secured("ROLE_USER")
 	public String registScrap(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ScrapVO scrapVO, 
 			ModelMap model) {
 
@@ -139,6 +142,7 @@ public class BBSScrapController {
 	@RequestMapping("/cop/scp/insertScrap.do")
 	@Secured("ROLE_USER")
 	public String insertScrap(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ScrapVO scrapVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -171,6 +175,7 @@ public class BBSScrapController {
 	@RequestMapping("/cop/scp/editScrap.do")
 	@Secured("ROLE_USER")
 	public String editScrap(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ScrapVO scrapVO, 
 			ModelMap model) {
 
@@ -193,6 +198,7 @@ public class BBSScrapController {
 	@RequestMapping("/cop/scp/updateScrap.do")
 	@Secured("ROLE_USER")
 	public String updateScrap(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ScrapVO scrapVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {

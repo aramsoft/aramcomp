@@ -106,10 +106,10 @@
 </table>
 
 <!-- 검색조건 유지 -->
-<input type="hidden" name="searchCondition" value="${boardUseInfVO.searchCondition}" />
-<input type="hidden" name="searchKeyword"   value="${boardUseInfVO.searchKeyword}" />
-<input type="hidden" name="pageIndex"       value="${boardUseInfVO.pageIndex}" />
-<input type="hidden" name="recordPerPage"   value="${boardUseInfVO.recordPerPage}" />
+<input type="hidden" name="searchCondition" value="${searchVO.searchCondition}" />
+<input type="hidden" name="searchKeyword"   value="${searchVO.searchKeyword}" />
+<input type="hidden" name="pageIndex"       value="${searchVO.pageIndex}" />
+<input type="hidden" name="recordPerPage"   value="${searchVO.recordPerPage}" />
 <!-- 검색조건 유지 -->
 </form:form>
 

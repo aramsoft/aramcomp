@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
@@ -74,6 +75,7 @@ public class TemplateController {
 	@RequestMapping("/cop/tpl/registTemplate.do")
 	@Secured("ROLE_ADMIN")
 	public String registTemplate(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute TemplateInfVO templateInfVO, 
 			ModelMap model) {
 
@@ -91,6 +93,7 @@ public class TemplateController {
 	@RequestMapping("/cop/tpl/insertTemplate.do")
 	@Secured("ROLE_ADMIN")
 	public String insertTemplate(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute TemplateInfVO templateInfVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -117,6 +120,7 @@ public class TemplateController {
 	@RequestMapping("/cop/tpl/editTemplate.do")
 	@Secured("ROLE_ADMIN")
 	public String editTemplate(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute TemplateInfVO templateInfVO,
 			ModelMap model) {
 
@@ -136,6 +140,7 @@ public class TemplateController {
 	@RequestMapping("/cop/tpl/updateTemplate.do")
 	@Secured("ROLE_ADMIN")
 	public String updateTemplate(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute TemplateInfVO templateInfVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {

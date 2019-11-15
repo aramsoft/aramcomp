@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -133,6 +134,7 @@ public class CommunityManageController {
 	@RequestMapping("/cop/cmy/detailCommunity.do")
 	@Secured("ROLE_USER")
 	public String detailCommunity(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CommunityVO communityVO, 
 			HttpServletRequest request, 
 			ModelMap model) {
@@ -172,6 +174,7 @@ public class CommunityManageController {
 	@RequestMapping("/cop/cmy/registCommunity.do")
 	@Secured("ROLE_ADMIN")
 	public String registCommunity(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CommunityVO communityVO, 
 			ModelMap model) {
 		
@@ -187,6 +190,7 @@ public class CommunityManageController {
 	@RequestMapping("/cop/cmy/insertCommunity.do")
 	@Secured("ROLE_ADMIN")
 	public String insertCommunity(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CommunityVO communityVO, 
 			BindingResult bindingResult, 
 			MultipartHttpServletRequest multiRequest, 
@@ -226,6 +230,7 @@ public class CommunityManageController {
 	@RequestMapping("/cop/cmy/editCommunity.do")
 	@Secured("ROLE_USER")
 	public String editCommunity(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CommunityVO communityVO, 
 			ModelMap model) {
 
@@ -253,6 +258,7 @@ public class CommunityManageController {
 	@RequestMapping("/cop/cmy/updateCommunity.do")
 	@Secured("ROLE_USER")
 	public String updateCommunity(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CommunityVO communityVO, 
 			BindingResult bindingResult, 
 			MultipartHttpServletRequest multiRequest, 

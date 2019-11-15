@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.ComponentChecker;
@@ -101,6 +102,7 @@ public class CmyBBSMasterController {
 	@RequestMapping("/cop/com/registBdMstrByTrget.do")
 	@Secured("ROLE_USER")
 	public String registBdMstrByTrget(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardMasterVO boardMasterVO, 
 			ModelMap model) {
 
@@ -131,6 +133,7 @@ public class CmyBBSMasterController {
 	@RequestMapping("/cop/com/insertBdMstrByTrget.do")
 	@Secured("ROLE_USER")
 	public String insertBdMstrByTrget(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardMasterVO boardMasterVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -167,6 +170,7 @@ public class CmyBBSMasterController {
 	@RequestMapping("/cop/com/editBdMstrByTrget.do")
 	@Secured("ROLE_USER")
 	public String editBdMstrByTrget(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardMasterVO boardMasterVO, 
 			@ModelAttribute BoardUseInfVO boardUseInfVO, 
 			HttpServletRequest request,
@@ -213,6 +217,7 @@ public class CmyBBSMasterController {
 	@RequestMapping("/cop/com/updateBdMstrByTrget.do")
 	@Secured("ROLE_USER")
 	public String updateBdMstrByTrget(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardMasterVO boardMasterVO,
 			BindingResult bindingResult, 
 			ModelMap model) {

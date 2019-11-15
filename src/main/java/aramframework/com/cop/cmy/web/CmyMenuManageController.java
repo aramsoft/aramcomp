@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.constant.CacheKey;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.cmy.domain.CommunityMenuVO;
@@ -106,6 +107,7 @@ public class CmyMenuManageController {
 	@RequestMapping(value = "/cop/cmy/registMenu.do")
 	@Secured("ROLE_USER")
 	public String registMenu(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CommunityMenuVO communityMenuVO, 
 			ModelMap model) {
 
@@ -122,6 +124,7 @@ public class CmyMenuManageController {
 	@RequestMapping(value = "/cop/cmy/insertMenu.do")
 	@Secured("ROLE_USER")
 	public String insertMenu(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CommunityMenuVO communityMenuVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -157,6 +160,7 @@ public class CmyMenuManageController {
 	@RequestMapping(value = "/cop/cmy/editMenu.do")
 	@Secured("ROLE_USER")
 	public String editMenu(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CommunityMenuVO communityMenuVO,
 			ModelMap model) {
 	
@@ -181,6 +185,7 @@ public class CmyMenuManageController {
 	@RequestMapping(value = "/cop/cmy/updateMenu.do")
 	@Secured("ROLE_USER")
 	public String updateMenu(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CommunityMenuVO communityMenuVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -286,7 +291,7 @@ public class CmyMenuManageController {
 	 */
 	@RequestMapping(value = "/cop/cmy/registMenuExcel.do")
 	@Secured("ROLE_USER")
-	public String registZipExcel(
+	public String registMenuExcel(
 			@ModelAttribute CommunityMenuVO communityMenuVO,
 			ModelMap model) {
 		

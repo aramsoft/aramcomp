@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.constant.AramProperties;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
@@ -107,6 +108,7 @@ public class SndngMailController {
 	@RequestMapping(value = "/cop/ems/detailSndngMail.do")
 	@Secured("ROLE_USER")
 	public String detailSndngMail(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SndngMailVO sndngMailVO, 
 			ModelMap model) {
 
@@ -178,6 +180,7 @@ public class SndngMailController {
     @RequestMapping(value="/cop/ems/registSndngMail.do")
 	@Secured("ROLE_USER")
     public String registSndngMail(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SndngMailVO sndngMailVO, 
 			ModelMap model) {
     	
@@ -193,6 +196,7 @@ public class SndngMailController {
     @RequestMapping(value="/cop/ems/insertSndngMail.do")
 	@Secured("ROLE_USER")
 	public String insertSndngMail(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SndngMailVO sndngMailVO,
 			MultipartHttpServletRequest multiRequest,
 			ModelMap model) 

@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -83,6 +84,7 @@ public class CmmnDetailCodeManageController {
 	 */
 	@RequestMapping(value = "/sym/ccm/cde/detailCmmnDetailCode.do")
 	public String detailCmmnDetailCode(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CmmnDetailCodeVO cmmnDetailCodeVO,
 			ModelMap model) {
 		
@@ -165,6 +167,7 @@ public class CmmnDetailCodeManageController {
 	@RequestMapping(value = "/sym/ccm/cde/editCmmnDetailCode.do")
 	@Secured("ROLE_ADMIN")
 	public String editCmmnDetailCode(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CmmnDetailCodeVO cmmnDetailCodeVO,
 			ModelMap model) {
 		
@@ -181,6 +184,7 @@ public class CmmnDetailCodeManageController {
 	@RequestMapping(value = "/sym/ccm/cde/updateCmmnDetailCode.do")
 	@Secured("ROLE_ADMIN")
 	public String updateCmmnDetailCode(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CmmnDetailCodeVO cmmnDetailCodeVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {

@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
@@ -73,6 +74,7 @@ public class DiaryManageController {
 	@RequestMapping(value = "/cop/smt/dsm/detailDiary.do")
 	@Secured("ROLE_USER")
 	public String detailDiary(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DiaryManageVO diaryManageVO,
 			ModelMap model) {
 
@@ -89,6 +91,7 @@ public class DiaryManageController {
 	@RequestMapping(value = "/cop/smt/dsm/registDiary.do")
 	@Secured("ROLE_USER")
 	public String registDiary(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DiaryManageVO diaryManageVO, 
 			ModelMap model) {
 
@@ -104,6 +107,7 @@ public class DiaryManageController {
 	@RequestMapping(value = "/cop/smt/dsm/insertDiary.do")
 	@Secured("ROLE_USER")
 	public String insertDiary(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DiaryManageVO diaryManageVO, 
 			BindingResult bindingResult, 
 			MultipartHttpServletRequest multiRequest, 
@@ -137,6 +141,7 @@ public class DiaryManageController {
 	@RequestMapping(value = "/cop/smt/dsm/editDiary.do")
 	@Secured("ROLE_USER")
 	public String editDiary(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DiaryManageVO diaryManageVO,
 			ModelMap model) {
 
@@ -154,6 +159,7 @@ public class DiaryManageController {
 	@RequestMapping(value = "/cop/smt/dsm/updateDiary.do")
 	@Secured("ROLE_USER")
 	public String updateDiary(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DiaryManageVO diaryManageVO, 
 			BindingResult bindingResult, 
 			MultipartHttpServletRequest multiRequest, 

@@ -64,17 +64,10 @@ public class MenuManageService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param checkedMenuNoForDel
 	 */
-	public void deleteMenuManageList(String checkedMenuNoForDel) {
-		MenuManageVO menuManageVO = null;
-
-		String[] delMenuNo = checkedMenuNoForDel.split(",");
-
-		if (delMenuNo == null || (delMenuNo.length == 0)) {
-			throw new RuntimeException("String Split Error!");
-		}
-		for (int i = 0; i < delMenuNo.length; i++) {
-			menuManageVO = new MenuManageVO();
-			menuManageVO.setMenuNo(Integer.parseInt(delMenuNo[i]));
+	public void deleteMenuManageList(String[] delMenuNos) {
+		MenuManageVO menuManageVO = new MenuManageVO();
+		for (int i = 0; i < delMenuNos.length; i++) {
+			menuManageVO.setMenuNo(Integer.parseInt(delMenuNos[i]));
 			menuManageMapper.deleteMenuManage(menuManageVO);
 		}
 	}

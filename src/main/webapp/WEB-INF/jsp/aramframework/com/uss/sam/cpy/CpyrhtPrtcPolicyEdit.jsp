@@ -35,7 +35,7 @@
 </div>
 
 <!-- 등록  폼 영역  -->
-<form:form commandName="cpyrhtPrtcPolicyVO" action="" method="post">
+<form:form modelAttribute="cpyrhtPrtcPolicyVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

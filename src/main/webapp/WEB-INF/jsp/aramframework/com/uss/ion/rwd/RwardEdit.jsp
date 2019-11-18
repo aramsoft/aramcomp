@@ -35,7 +35,7 @@
 	</div>
 </div>
 
-<form:form commandName="rwardManageVO" method="post" action="" enctype="multipart/form-data">
+<form:form modelAttribute="rwardManageVO" method="post" action="" enctype="multipart/form-data">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

@@ -27,7 +27,7 @@
 	<h2>회의실 목록</h2>
 </div>
 
-<form:form commandName="mtgPlaceManageVO" action="" method="post">
+<form:form modelAttribute="mtgPlaceManageVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

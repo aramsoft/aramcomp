@@ -125,7 +125,7 @@ public class CtsnnManageController {
 		ctsnnManageService.insertCtsnnManage(ctsnnManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/ion/ctn/listCtsnn.do");
+        return WebUtil.redirectJsp(model, ctsnnManageVO, "/uss/ion/ctn/listCtsnn.do");
 	}
 
 	/**
@@ -167,7 +167,7 @@ public class CtsnnManageController {
 		ctsnnManageService.updateCtsnnManage(ctsnnManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/ctn/listCtsnn.do");
+        return WebUtil.redirectJsp(model, ctsnnManageVO, "/uss/ion/ctn/listCtsnn.do");
 	}
 
 	/**
@@ -184,7 +184,7 @@ public class CtsnnManageController {
 		ctsnnManageService.deleteCtsnnManage(ctsnnManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/ctn/listCtsnn.do");
+        return WebUtil.redirectJsp(model, ctsnnManageVO, "/uss/ion/ctn/listCtsnn.do");
 	}
 
 	/*** 승인관련 ***/
@@ -259,7 +259,7 @@ public class CtsnnManageController {
 		ctsnnManageService.updtCtsnnManageConfm(ctsnnManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/ctn/listCtsnnConfm.do");
+        return WebUtil.redirectJsp(model, ctsnnManageVO, "/uss/ion/ctn/listCtsnnConfm.do");
 	}
 
 }

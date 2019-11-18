@@ -27,7 +27,7 @@
 	<h2>백업작업 목록</h2>
 </div>
 
-<form:form commandName="backupOpertVO" action="" method="post">
+<form:form modelAttribute="backupOpertVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
@@ -79,21 +79,25 @@
     </c:if>
     
     <%-- 데이터를 화면에 출력해준다 --%>
- 	<c:set var="searchVO" value="${backupOpertVO}"/>
- 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
-    <c:forEach items="${resultList}" var="resultInfo" varStatus="status">
-    <tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${resultInfo.backupOpertId}"/>'); return false;">
- 
- 		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
+ 	<c:set var="startIndex" value="${(backupOpertVO.pageIndex-1) * backupOpertVO.recordPerPage}"/>
+    <c:forEach items="${resultList}" var="result" varStatus="status">
+    <tr>
+  		<c:set var="index" value="${startIndex + status.count}"/>
+		<c:set var="reverseIndex" value="${backupOpertVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
-        <td class="lt_text3"><c:out value='${resultInfo.backupOpertId}'/></td>
-        <td class="lt_text6">${resultInfo.backupOpertNm}</td>
-        <td class="lt_text6">${resultInfo.backupOrginlDrctry}</td>
-        <td class="lt_text6">${resultInfo.backupStreDrctry}</td>
-        <td class="lt_text3">${resultInfo.executCycleNm}</td>
-        <td class="lt_text3">${resultInfo.executSchdul}</td>
+        <td class="lt_text3"><c:out value='${result.backupOpertId}'/></td>
+        <td class="lt_text6">
+			<span class="link">
+    		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.backupOpertId}"/>'); return false;">
+        		${result.backupOpertNm}
+    		</a>
+			</span>
+        </td>
+        <td class="lt_text6">${result.backupOrginlDrctry}</td>
+        <td class="lt_text6">${result.backupStreDrctry}</td>
+        <td class="lt_text3">${result.executCycleNm}</td>
+        <td class="lt_text3">${result.executSchdul}</td>
     </tr>   
     </c:forEach>
 </tbody>

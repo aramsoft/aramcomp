@@ -32,7 +32,7 @@
 	<h2>부서 업무 목록</h2>
 </div>
 
-<form:form commandName="deptJobVO" action ="" method="post">
+<form:form modelAttribute="deptJobVO" action ="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

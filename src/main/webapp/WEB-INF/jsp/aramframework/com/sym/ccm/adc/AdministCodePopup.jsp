@@ -41,7 +41,7 @@
 	<h2>행정코드 목록</h2> 
 </div>
 
-<form:form commandName="administCodeVO" action=""  method="post">
+<form:form modelAttribute="administCodeVO" action=""  method="post">
 <input type=hidden name="administZoneSe">
 <input type=hidden name="administZoneCode">
 

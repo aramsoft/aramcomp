@@ -37,7 +37,7 @@
 
 <DIV id="main">
 
-<form:form commandName="annvrsryManageVO" action="" method="post">
+<form:form modelAttribute="annvrsryManageVO" action="" method="post">
 <input type="hidden" name="annId" value="">
 <table class="table-list" summary="기념일에 대한 목록을 제공한다.(마이페이지용)">	
 <tbody>

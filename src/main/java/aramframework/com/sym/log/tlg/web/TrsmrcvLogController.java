@@ -105,7 +105,7 @@ public class TrsmrcvLogController {
 		trsmrcvLogService.logInsertTrsmrcvLog(trsmrcvLogVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/sym/log/tlg/listTrsmrcvLog.do");
+        return WebUtil.redirectJsp(model, trsmrcvLogVO, "/sym/log/tlg/listTrsmrcvLog.do");
 	}
 
 }

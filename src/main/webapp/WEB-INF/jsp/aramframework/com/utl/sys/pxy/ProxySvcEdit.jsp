@@ -35,7 +35,7 @@
 	</div>
 </div>
 
-<form:form commandName="proxySvcVO" method="post" action="">
+<form:form modelAttribute="proxySvcVO" method="post" action="">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

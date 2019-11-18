@@ -64,7 +64,7 @@ public class CommunityManageController {
 	/**
 	 * 팝업을 위한 커뮤니티 목록 정보를 조회한다.
 	 * 
-	 * @param searchVO
+	 * @param communityVO
 	 */
 	@RequestMapping("/cop/cmy/listCommunityPopup.do")
 	public String listCommunityPopup(
@@ -134,9 +134,9 @@ public class CommunityManageController {
 	@RequestMapping("/cop/cmy/detailCommunity.do")
 	@Secured("ROLE_USER")
 	public String detailCommunity(
-			HttpServletRequest request, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CommunityVO communityVO, 
+			HttpServletRequest request, 
 			ModelMap model) {
 		
 		checkAuthorityManager(); // server-side 권한 확인
@@ -174,8 +174,9 @@ public class CommunityManageController {
 	@RequestMapping("/cop/cmy/registCommunity.do")
 	@Secured("ROLE_ADMIN")
 	public String registCommunity(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute CommunityVO communityVO) {
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute CommunityVO communityVO, 
+			ModelMap model) {
 		
 		return WebUtil.adjustViewName("/cop/cmy/CmmntyRegist");
 	}
@@ -189,10 +190,10 @@ public class CommunityManageController {
 	@RequestMapping("/cop/cmy/insertCommunity.do")
 	@Secured("ROLE_ADMIN")
 	public String insertCommunity(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CommunityVO communityVO, 
 			BindingResult bindingResult, 
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception {
 
@@ -218,7 +219,7 @@ public class CommunityManageController {
 		cmmntyService.insertCommunityInf(communityVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/cop/cmy/listCommunity.do");
+		return WebUtil.redirectJsp(model, communityVO, "/cop/cmy/listCommunity.do");
 	}
 
 	/**
@@ -229,7 +230,7 @@ public class CommunityManageController {
 	@RequestMapping("/cop/cmy/editCommunity.do")
 	@Secured("ROLE_USER")
 	public String editCommunity(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CommunityVO communityVO, 
 			ModelMap model) {
 
@@ -257,10 +258,10 @@ public class CommunityManageController {
 	@RequestMapping("/cop/cmy/updateCommunity.do")
 	@Secured("ROLE_USER")
 	public String updateCommunity(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CommunityVO communityVO, 
 			BindingResult bindingResult, 
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception {
 
@@ -291,7 +292,7 @@ public class CommunityManageController {
 		}
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/cop/cmy/detailCommunity.do?cmmntyId="+communityVO.getCmmntyId());
+		return WebUtil.redirectJsp(model, communityVO, "/cop/cmy/detailCommunity.do?cmmntyId="+communityVO.getCmmntyId());
 	}
 
 	/**
@@ -361,7 +362,6 @@ public class CommunityManageController {
 	@RequestMapping("/cop/cmy/deleteCmmntyUserBySelf.do")
 	@Secured("ROLE_USER")
 	public String deleteCmmntyUserBySelf(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CommunityUserVO communityUserVO, 
 			ModelMap model) {
 

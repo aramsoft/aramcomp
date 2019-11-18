@@ -41,7 +41,7 @@
 	<h2>보고대상자 선택</h2>
 </div>
 
-<form:form commandName="baseVO" action ="" method="post">
+<form:form modelAttribute="baseVO" action ="" method="post">
 
 <div id="search_area">
 	<div class="button_area">

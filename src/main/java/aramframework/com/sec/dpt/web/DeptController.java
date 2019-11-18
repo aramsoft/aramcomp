@@ -68,8 +68,9 @@ public class DeptController {
 	@RequestMapping(value = "/sec/dpt/registDept.do")
 	@Secured("ROLE_ADMIN")
 	public String registDept(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute DeptVO deptVO) {
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute DeptVO deptVO, 
+			ModelMap model) {
 
 		return WebUtil.adjustViewName("/sec/dpt/DeptRegist");
 	}
@@ -82,7 +83,7 @@ public class DeptController {
 	@RequestMapping(value = "/sec/dpt/insertDept.do")
 	@Secured("ROLE_ADMIN")
 	public String insertDept(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptVO deptVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -95,7 +96,7 @@ public class DeptController {
 		deptService.insertDept(deptVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, "/sec/dpt/listDept.do");
+	    return WebUtil.redirectJsp(model, deptVO, "/sec/dpt/listDept.do");
 	}
 
 	/**
@@ -106,7 +107,7 @@ public class DeptController {
 	@RequestMapping(value = "/sec/dpt/editDept.do")
 	@Secured("ROLE_ADMIN")
 	public String editDept(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptVO deptVO,
 			ModelMap model) {
 
@@ -123,7 +124,7 @@ public class DeptController {
 	@RequestMapping(value = "/sec/dpt/updateDept.do")
 	@Secured("ROLE_ADMIN")
 	public String updateDept(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptVO deptVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -136,7 +137,7 @@ public class DeptController {
 		deptService.updateDept(deptVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, "/sec/dpt/listDept.do");
+	    return WebUtil.redirectJsp(model, deptVO, "/sec/dpt/listDept.do");
 	}
 
 	/**
@@ -147,14 +148,13 @@ public class DeptController {
 	@RequestMapping(value = "/sec/dpt/deleteDept.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteDept(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DeptVO deptVO, 
 			ModelMap model) {
 
 		deptService.deleteDept(deptVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, "/sec/dpt/listDept.do");
+	    return WebUtil.redirectJsp(model, deptVO, "/sec/dpt/listDept.do");
 	}
 
 	/**
@@ -165,14 +165,14 @@ public class DeptController {
 	@RequestMapping(value = "/sec/dpt/deleteListDept.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteListDept(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute DeptVO deptVO, 
 			@RequestParam String orgnztIds, 
 			ModelMap model) {
 
 		deptService.deleteDepts(orgnztIds);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, "/sec/dpt/listDept.do");
+	    return WebUtil.redirectJsp(model, deptVO, "/sec/dpt/listDept.do");
 	}
 
 	/**

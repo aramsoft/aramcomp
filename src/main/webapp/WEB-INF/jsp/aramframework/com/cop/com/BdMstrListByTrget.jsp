@@ -28,7 +28,7 @@
 	<h2>게시판 목록</h2>
 </div>
 
-<form:form commandName="boardMasterVO" action="" method="post">
+<form:form modelAttribute="boardMasterVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
@@ -81,18 +81,19 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="searchVO" value="${boardMasterVO}"/>
- 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(boardMasterVO.pageIndex-1) * boardMasterVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
 	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${boardMasterVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<td class="lt_text3">
+	   		<span class="link">
 			<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.bbsId}"/>'); return false;">
 			  	<c:out value="${result.bbsNm}"/>
 			</a>
+			</span>
 		</td>
 		<td class="lt_text3"><c:out value="${result.bbsTyCodeNm}"/></td>
 		<td class="lt_text3"><c:out value="${result.bbsAttrbCodeNm}"/></td>

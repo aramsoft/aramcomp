@@ -71,7 +71,7 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 	/**
 	 * 커뮤니티 정보 목록을 조회한다.
 	 * 
-	 * @param searchVO
+	 * @param communityVO
 	 */
 	public List<EgovMap> selectCommunityList(CommunityVO communityVO) {
 		return communityManageMapper.selectCommunityList(communityVO);
@@ -80,7 +80,7 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 	/**
 	 * 커뮤니티 정보 목록 총갯수을 조회한다.
 	 * 
-	 * @param searchVO
+	 * @param communityVO
 	 */
 	public int selectCommunityListCnt(CommunityVO communityVO) {
 		return communityManageMapper.selectCommunityListCnt(communityVO);

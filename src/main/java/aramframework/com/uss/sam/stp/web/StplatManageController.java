@@ -69,7 +69,7 @@ public class StplatManageController {
 	@RequestMapping("/uss/sam/stp/detailStplat.do")
 	@Secured("ROLE_ADMIN")
 	public String detailStplat(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute StplatManageVO stplatManageVO,
 			ModelMap model) {
 
@@ -86,8 +86,9 @@ public class StplatManageController {
 	@RequestMapping("/uss/sam/stp/registStplat.do")
 	@Secured("ROLE_ADMIN")
 	public String registStplat(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute StplatManageVO stplatManageVO) {
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute StplatManageVO stplatManageVO, 
+			ModelMap model) {
 
 		return WebUtil.adjustViewName("/uss/sam/stp/StplatRegist");
 	}
@@ -100,7 +101,7 @@ public class StplatManageController {
 	@RequestMapping("/uss/sam/stp/insertStplat.do")
 	@Secured("ROLE_ADMIN")
 	public String insertStplat(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute StplatManageVO stplatManageVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -117,7 +118,7 @@ public class StplatManageController {
 		stplatManageService.insertStplat(stplatManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, "/uss/sam/stp/listStplat.do");
+	    return WebUtil.redirectJsp(model, stplatManageVO, "/uss/sam/stp/listStplat.do");
 	}
 
 	/**
@@ -128,7 +129,7 @@ public class StplatManageController {
 	@RequestMapping("/uss/sam/stp/editStplat.do")
 	@Secured("ROLE_ADMIN")
 	public String editStplat(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute StplatManageVO stplatManageVO,
 			ModelMap model) {
 
@@ -145,7 +146,7 @@ public class StplatManageController {
 	@RequestMapping("/uss/sam/stp/updateStplat.do")
 	@Secured("ROLE_ADMIN")
 	public String updateStplat(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute StplatManageVO stplatManageVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -163,7 +164,7 @@ public class StplatManageController {
 		stplatManageService.updateStplat(stplatManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, "/uss/sam/stp/listStplat.do");
+	    return WebUtil.redirectJsp(model, stplatManageVO, "/uss/sam/stp/listStplat.do");
 	}
 
 	/**
@@ -174,14 +175,13 @@ public class StplatManageController {
 	@RequestMapping("/uss/sam/stp/deleteStplat.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteStplat(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute StplatManageVO stplatManageVO, 
 			ModelMap model) {
 
 		stplatManageService.deleteStplat(stplatManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, "/uss/sam/stp/listStplat.do");
+	    return WebUtil.redirectJsp(model, stplatManageVO, "/uss/sam/stp/listStplat.do");
 	}
 
 }

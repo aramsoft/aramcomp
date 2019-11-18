@@ -176,7 +176,7 @@ public class WikMnthngReprtController {
 		wikMnthngReprtService.insertWikMnthngReprt(wikMnthngReprtVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/cop/smt/wmr/listWikMnthngReprt.do");
+		return WebUtil.redirectJsp(model, wikMnthngReprtVO, "/cop/smt/wmr/listWikMnthngReprt.do");
 	}
 
 	/**
@@ -224,7 +224,7 @@ public class WikMnthngReprtController {
 		wikMnthngReprtService.updateWikMnthngReprt(wikMnthngReprtVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/cop/smt/wmr/listWikMnthngReprt.do");
+		return WebUtil.redirectJsp(model, wikMnthngReprtVO, "/cop/smt/wmr/listWikMnthngReprt.do");
 	}
 
 	/**
@@ -241,7 +241,7 @@ public class WikMnthngReprtController {
 		wikMnthngReprtService.deleteWikMnthngReprt(wikMnthngReprtVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/cop/smt/wmr/listWikMnthngReprt.do");
+		return WebUtil.redirectJsp(model, wikMnthngReprtVO, "/cop/smt/wmr/listWikMnthngReprt.do");
 	}
 
 	/**
@@ -258,7 +258,7 @@ public class WikMnthngReprtController {
 		wikMnthngReprtService.confirmWikMnthngReprt(wikMnthngReprtVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/cop/smt/wmr/listWikMnthngReprt.do");
+		return WebUtil.redirectJsp(model, wikMnthngReprtVO, "/cop/smt/wmr/listWikMnthngReprt.do");
 	}
 
 }

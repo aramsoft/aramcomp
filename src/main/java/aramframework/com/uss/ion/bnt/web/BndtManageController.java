@@ -165,7 +165,7 @@ public class BndtManageController {
 		bndtManageService.insertBndtManage(bndtManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/ion/bnt/listBndtManage.do");
+        return WebUtil.redirectJsp(model, bndtManageVO, "/uss/ion/bnt/listBndtManage.do");
 	}
 
 	/**
@@ -207,7 +207,7 @@ public class BndtManageController {
 		bndtManageService.updtBndtManage(bndtManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/bnt/listBndtManage.do");
+        return WebUtil.redirectJsp(model, bndtManageVO, "/uss/ion/bnt/listBndtManage.do");
 	}
 
 	/**
@@ -230,7 +230,7 @@ public class BndtManageController {
 		bndtManageService.deleteBndtManage(bndtManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/bnt/listBndtManage.do");
+        return WebUtil.redirectJsp(model, bndtManageVO, "/uss/ion/bnt/listBndtManage.do");
 	}
 
 	/****** 당직체크 관리 ******/
@@ -321,7 +321,7 @@ public class BndtManageController {
 		bndtManageService.insertBndtCeckManage(bndtCeckManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/ion/bnt/listBndtCeckManage.do");
+        return WebUtil.redirectJsp(model, bndtCeckManageVO, "/uss/ion/bnt/listBndtCeckManage.do");
 	}
 
 	/**
@@ -363,7 +363,7 @@ public class BndtManageController {
 		bndtManageService.updtBndtCeckManage(bndtCeckManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/bnt/listBndtCeckManage.do");
+        return WebUtil.redirectJsp(model, bndtCeckManageVO, "/uss/ion/bnt/listBndtCeckManage.do");
 	}
 
 	/**
@@ -380,7 +380,7 @@ public class BndtManageController {
 		bndtManageService.deleteBndtCeckManage(bndtCeckManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/bnt/listBndtCeckManage.do");
+        return WebUtil.redirectJsp(model, bndtCeckManageVO, "/uss/ion/bnt/listBndtCeckManage.do");
 	}
 
 	/****** 당직일지 ******/
@@ -436,7 +436,7 @@ public class BndtManageController {
 		bndtManageService.insertBndtDiary(bndtDiaryVO, diaryForInsert);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/ion/bnt/listBndtManage.do");
+        return WebUtil.redirectJsp(model, bndtDiaryVO, "/uss/ion/bnt/listBndtManage.do");
 	}
 
 	/**
@@ -474,7 +474,7 @@ public class BndtManageController {
 		bndtManageService.updtBndtDiary(bndtDiaryVO, diaryForUpdate);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/bnt/listBndtManage.do");
+        return WebUtil.redirectJsp(model, bndtDiaryVO, "/uss/ion/bnt/listBndtManage.do");
 	}
 
 	/**
@@ -491,7 +491,7 @@ public class BndtManageController {
 		bndtManageService.deleteBndtDiary(bndtDiaryVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/bnt/listBndtManage.do");
+        return WebUtil.redirectJsp(model, bndtDiaryVO, "/uss/ion/bnt/listBndtManage.do");
 	}
 
 	/**

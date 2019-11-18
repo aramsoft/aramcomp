@@ -30,7 +30,7 @@
 	</a>
 </div>
 
-<form:form commandName="cmmnCodeVO" action="" method="post">
+<form:form modelAttribute="cmmnCodeVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
@@ -78,18 +78,22 @@
 	</tr>
 	</c:if>
 	
-  	<c:set var="searchVO" value="${cmmnCodeVO}"/>
- 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(cmmnCodeVO.pageIndex-1) * cmmnCodeVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
-	<tr class="link" onclick="javascript:fn_aram_detail('${result.codeId}'); return false;">
- 
- 		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
+	<tr>
+  		<c:set var="index" value="${startIndex + status.count}"/>
+		<c:set var="reverseIndex" value="${cmmnCodeVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 	
 		<td class="lt_text3">${result.clCodeNm}</td>
 		<td class="lt_text3">${result.codeId}</td>
-		<td class="lt_text">${result.codeIdNm}</td>
+		<td class="lt_text">
+			<span class="link">
+    		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.codeId}"/>'); return false;">
+				${result.codeIdNm}
+    		</a>
+			</span>
+		</td>
 		<td class="lt_text3">
 			<c:if test="${result.useAt == 'Y'}">사용</c:if>
 			<c:if test="${result.useAt == 'N'}">미사용</c:if>

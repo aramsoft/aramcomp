@@ -130,7 +130,7 @@ public class DbMntrngController {
 		dbMntrngService.insertDbMntrng(dbMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, "/utl/sys/dbm/listDbMntrng.do");
+	    return WebUtil.redirectJsp(model, dbMntrngVO, "/utl/sys/dbm/listDbMntrng.do");
 	}
 
 	private void checkDuplication(DbMntrngVO dbMntrngVO, Errors errors) {
@@ -196,7 +196,7 @@ public class DbMntrngController {
 		dbMntrngService.updateDbMntrng(dbMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, "/utl/sys/dbm/listDbMntrng.do");
+	    return WebUtil.redirectJsp(model, dbMntrngVO, "/utl/sys/dbm/listDbMntrng.do");
 	}
 
 	/**
@@ -214,7 +214,7 @@ public class DbMntrngController {
 		dbMntrngService.deleteDbMntrng(dbMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, "/utl/sys/dbm/listDbMntrng.do");
+	    return WebUtil.redirectJsp(model, dbMntrngVO, "/utl/sys/dbm/listDbMntrng.do");
 	}
 
 	/**

@@ -109,7 +109,7 @@
 			UPDATE COMTN_CMMNTY_MENU  
 			   SET MENU_ALIAS          	= #{menuAlias}         
             	 , MENU_NM           	= #{menuNm}         
-            	 , MENU_DC           	= #{menuDc}         
+            	 , MENU_DC           	= #{menuDc, jdbcType=VARCHAR}         
             	 , USE_AT            	= #{useAt}         
             	 , MGR_AT            	= #{mgrAt}         
             	 , PROGRM_FILE_NM    	= #{progrmFileNm, jdbcType=VARCHAR}  

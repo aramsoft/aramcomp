@@ -61,7 +61,7 @@ public class SysLogController {
 	@RequestMapping(value = "/sym/log/lgm/detailSysLog.do")
 	@Secured("ROLE_ADMIN")
 	public String detailSysLog(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SysLogVO sysLogVO,
 			ModelMap model) {
 

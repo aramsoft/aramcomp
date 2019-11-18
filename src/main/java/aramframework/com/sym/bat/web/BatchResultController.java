@@ -62,7 +62,7 @@ public class BatchResultController {
 	@RequestMapping("/sym/bat/detailBatchResult.do")
 	@Secured("ROLE_ADMIN")
 	public String detailBatchResult(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BatchResultVO batchResultVO,
 			ModelMap model) {
 		
@@ -79,14 +79,13 @@ public class BatchResultController {
 	@RequestMapping("/sym/bat/deleteBatchResult.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteBatchResult(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BatchResultVO batchResultVO, 
 			ModelMap model) {
 
 		batchResultService.deleteBatchResult(batchResultVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/sym/bat/listBatchResult.do");
+        return WebUtil.redirectJsp(model, batchResultVO, "/sym/bat/listBatchResult.do");
 	}
 
 }

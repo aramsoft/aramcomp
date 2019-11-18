@@ -87,7 +87,7 @@ public class BackupOpertController {
 	@RequestMapping("/sym/sym/bak/detailBackupOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String detailBackupOpert(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BackupOpertVO backupOpertVO,
 			ModelMap model) {
 		
@@ -104,7 +104,7 @@ public class BackupOpertController {
 	@RequestMapping("/sym/sym/bak/registBackupOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String registBackupOpert(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BackupOpertVO backupOpertVO, 
 			ModelMap model) {
 
@@ -121,10 +121,11 @@ public class BackupOpertController {
 	@RequestMapping("/sym/sym/bak/insertBackupOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String insertBackupOpert(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BackupOpertVO backupOpertVO, 
 			BindingResult bindingResult, 
-			ModelMap model) {
+			ModelMap model) 
+	throws Exception {
 
 		beanValidator.validate(backupOpertVO, bindingResult);
 		backupOpertValidator.validate(backupOpertVO, bindingResult);
@@ -145,7 +146,7 @@ public class BackupOpertController {
 
 		// Exception 없이 진행시 등록성공메시지
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/sym/sym/bak/listBackupOpert.do");
+		return WebUtil.redirectJsp(model, backupOpertVO, "/sym/sym/bak/listBackupOpert.do");
 	}
 
 	/**
@@ -156,7 +157,7 @@ public class BackupOpertController {
 	@RequestMapping("/sym/sym/bak/editBackupOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String editBackupOpert(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BackupOpertVO backupOpertVO,
 			ModelMap model) {
 		
@@ -175,10 +176,11 @@ public class BackupOpertController {
 	@RequestMapping("/sym/sym/bak/updateBackupOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String updateBackupOpert(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BackupOpertVO backupOpertVO, 
 			BindingResult bindingResult, 
-			ModelMap model) {
+			ModelMap model) 
+	throws Exception {
 
 		beanValidator.validate(backupOpertVO, bindingResult);
 		backupOpertValidator.validate(backupOpertVO, bindingResult);
@@ -198,7 +200,7 @@ public class BackupOpertController {
 		backupScheduler.updateBackupOpert(backupOpertVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/sym/sym/bak/listBackupOpert.do");
+        return WebUtil.redirectJsp(model, backupOpertVO, "/sym/sym/bak/listBackupOpert.do");
 	}
 
 	/**
@@ -209,7 +211,6 @@ public class BackupOpertController {
 	@RequestMapping("/sym/sym/bak/deleteBackupOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteBackupOpert(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BackupOpertVO backupOpertVO, 
 			ModelMap model) {
 
@@ -218,7 +219,7 @@ public class BackupOpertController {
 		backupOpertService.deleteBackupOpert(backupOpertVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/sym/sym/bak/listBackupOpert.do");
+        return WebUtil.redirectJsp(model, backupOpertVO, "/sym/sym/bak/listBackupOpert.do");
 	}
 
 	/**

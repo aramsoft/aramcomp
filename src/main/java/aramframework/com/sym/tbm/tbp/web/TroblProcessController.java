@@ -119,7 +119,7 @@ public class TroblProcessController {
 		troblProcessService.insertTroblProcess(troblProcessVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/sym/tbm/tbp/listTroblProcess.do");
+        return WebUtil.redirectJsp(model, troblProcessVO, "/sym/tbm/tbp/listTroblProcess.do");
 	}
 
 	/**
@@ -139,7 +139,7 @@ public class TroblProcessController {
 		troblProcessService.deleteTroblProcess(troblProcessVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/sym/tbm/tbp/registTroblProcess.do");
+        return WebUtil.redirectJsp(model, troblProcessVO, "/sym/tbm/tbp/registTroblProcess.do");
 	}
 
 }

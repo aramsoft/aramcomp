@@ -41,7 +41,7 @@
 	<h2>부서업무함 목록</h2>
 </div>
 
-<form:form commandName="deptJobBxVO" action ="" method="post">
+<form:form modelAttribute="deptJobBxVO" action ="" method="post">
 
 <input type="hidden" name="PopFlag" value="Y" />
 	

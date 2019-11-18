@@ -110,13 +110,10 @@ public class ResourceService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param resourceVO
 	 */
-	public void deleteResources(String resourceCodes) {
-
-		String[] strResourceCodes = resourceCodes.split(";");
-
+	public void deleteResources(String[] resourceCodes) {
 		ResourceVO rmVO = new ResourceVO(); 
-		for (int i = 0; i < strResourceCodes.length; i++) {
-			rmVO.setResourceCode(strResourceCodes[i]);
+		for (int i = 0; i < resourceCodes.length; i++) {
+			rmVO.setResourceCode(resourceCodes[i]);
 			resourceMapper.deleteResource(rmVO);
 		}
 	}

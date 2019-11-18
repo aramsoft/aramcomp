@@ -94,7 +94,7 @@ public class UserAbsnceController {
 		userAbsnceService.insertUserAbsnce(userAbsnceVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/ion/uas/listUserAbsnce.do");
+        return WebUtil.redirectJsp(model, userAbsnceVO, "/uss/ion/uas/listUserAbsnce.do");
 	}
 
 	/**
@@ -130,7 +130,7 @@ public class UserAbsnceController {
 		userAbsnceService.updateUserAbsnce(userAbsnceVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/uas/listUserAbsnce.do");
+        return WebUtil.redirectJsp(model, userAbsnceVO, "/uss/ion/uas/listUserAbsnce.do");
 	}
 
 	/**
@@ -147,7 +147,7 @@ public class UserAbsnceController {
 		userAbsnceService.deleteUserAbsnce(userAbsnceVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/uas/listUserAbsnce.do");
+        return WebUtil.redirectJsp(model, userAbsnceVO, "/uss/ion/uas/listUserAbsnce.do");
 	}
 
 	/**
@@ -165,7 +165,7 @@ public class UserAbsnceController {
 		userAbsnceService.deleteUserAbsnces(userIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/uas/listUserAbsnce.do");
+        return WebUtil.redirectJsp(model, userAbsnceVO, "/uss/ion/uas/listUserAbsnce.do");
 	}
 
 	/**

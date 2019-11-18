@@ -44,7 +44,7 @@
 	<h2><spring:message code="cop.guestList" /></h2>
 </div>
 
-<form:form commandName="boardVO" method="post">
+<form:form modelAttribute="boardVO" method="post">
 <form:hidden path="bbsId" />
 <form:hidden path="nttId" />
 

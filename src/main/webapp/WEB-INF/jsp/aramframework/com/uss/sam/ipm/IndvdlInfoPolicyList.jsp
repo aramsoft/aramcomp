@@ -31,7 +31,7 @@
 	</a>
 </div>
 
-<form:form commandName="indvdlInfoPolicyVO" action=""  method="post">
+<form:form modelAttribute="indvdlInfoPolicyVO" action=""  method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
@@ -80,20 +80,24 @@
 	</c:if>
 	
  	<%-- 데이터를 화면에 출력해준다 --%>
-   	<c:set var="searchVO" value="${indvdlInfoPolicyVO}"/>
- 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(indvdlInfoPolicyVO.pageIndex-1) * indvdlInfoPolicyVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
-	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.indvdlInfoId}"/>'); return false;">
-	
- 		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
+	<tr>
+		<c:set var="index" value="${startIndex + status.count}"/>
+		<c:set var="reverseIndex" value="${indvdlInfoPolicyVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
  
     	<td class="lt_text3">
     		<c:if test="${result.indvdlInfoYn == 'Y'}">예</c:if>
     		<c:if test="${result.indvdlInfoYn == 'N'}">아니오</c:if>
     	</td>
-    	<td class="lt_text3"><c:out value="${result.indvdlInfoNm}"/></td>
+    	<td class="lt_text3">
+			<span class="link">
+    		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.indvdlInfoId}"/>'); return false;">
+    			<c:out value="${result.indvdlInfoNm}"/>
+    		</a>
+			</span>
+    	</td>
     	<td class="lt_text3"><c:out value="${result.frstRegisterNm}"/></td>
     	<td class="lt_text3"><fmt:formatDate value="${result.frstRegisterPnttm}" pattern="yyyy-MM-dd"/></td>
 	</tr>  

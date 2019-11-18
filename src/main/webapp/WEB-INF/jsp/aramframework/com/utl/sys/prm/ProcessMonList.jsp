@@ -27,7 +27,7 @@
 	<h2>프로세스모니터링 목록</h2> 
 </div>
 
-<form:form commandName="processMonVO" action="" method="post">
+<form:form modelAttribute="processMonVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

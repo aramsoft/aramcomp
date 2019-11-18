@@ -68,8 +68,9 @@ public class GroupController {
 	@RequestMapping(value = "/sec/grp/registGroup.do")
 	@Secured("ROLE_ADMIN")
 	public String registGroup(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute GroupVO groupVO) {
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute GroupVO groupVO, 
+			ModelMap model) {
 
 		return WebUtil.adjustViewName("/sec/grp/GroupRegist");
 	}
@@ -82,7 +83,7 @@ public class GroupController {
 	@RequestMapping(value = "/sec/grp/insertGroup.do")
 	@Secured("ROLE_ADMIN")
 	public String insertGroup(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute GroupVO groupVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -95,7 +96,7 @@ public class GroupController {
 		groupService.insertGroup(groupVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/sec/grp/listGroup.do");
+		return WebUtil.redirectJsp(model, groupVO, "/sec/grp/listGroup.do");
 	}
 
 	/**
@@ -106,7 +107,7 @@ public class GroupController {
 	@RequestMapping(value = "/sec/grp/editGroup.do")
 	@Secured("ROLE_ADMIN")
 	public String editGroup(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute GroupVO groupVO,
 			ModelMap model) {
 
@@ -123,7 +124,7 @@ public class GroupController {
 	@RequestMapping(value = "/sec/grp/updateGroup.do")
 	@Secured("ROLE_ADMIN")
 	public String updateGroup(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute GroupVO groupVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -136,7 +137,7 @@ public class GroupController {
 		groupService.updateGroup(groupVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/sec/grp/listGroup.do");
+		return WebUtil.redirectJsp(model, groupVO, "/sec/grp/listGroup.do");
 	}
 
 	/**
@@ -147,14 +148,13 @@ public class GroupController {
 	@RequestMapping(value = "/sec/grp/deleteGroup.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteGroup(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute GroupVO groupVO, 
 			ModelMap model) {
 
 		groupService.deleteGroup(groupVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/sec/grp/listGroup.do");
+		return WebUtil.redirectJsp(model, groupVO, "/sec/grp/listGroup.do");
 	}
 
 	/**
@@ -165,14 +165,14 @@ public class GroupController {
 	@RequestMapping(value = "/sec/grp/deleteListGroup.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteListGroup(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute GroupVO groupVO, 
 			@RequestParam String groupIds, 
 			ModelMap model) {
 
 		groupService.deleteGroups(groupIds);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/sec/grp/listGroup.do");
+		return WebUtil.redirectJsp(model, groupVO, "/sec/grp/listGroup.do");
 	}
 
 	/**
@@ -181,7 +181,7 @@ public class GroupController {
 	 * @param groupVO
 	 */
 	@RequestMapping("/sec/grp/listGroupPopup.do")
-	public String listGroupSearch(
+	public String listGroupPopup(
 			@ModelAttribute GroupVO groupVO, 
 			ModelMap model) {
 

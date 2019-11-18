@@ -135,7 +135,7 @@
 </tbody>  
 </table>
 
-<form:form commandName="noteTrnsmitVO" action="" method="post">
+<form:form modelAttribute="noteTrnsmitVO" action="" method="post">
 <input name="noteId" type="hidden" value="">
 <input name="noteTrnsmitId" type="hidden" value="">
 <input name="noteRecptnId" type="hidden" value="">

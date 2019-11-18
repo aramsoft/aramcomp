@@ -31,7 +31,7 @@
 	</a>
 </div>
 
-<form:form commandName="boardUseInfVO" action="" method="post">
+<form:form modelAttribute="boardUseInfVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
@@ -86,17 +86,21 @@
 	</tr>
 	</c:if>
 
- 	<c:set var="searchVO" value="${boardUseInfVO}"/>
- 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
+  	<c:set var="startIndex" value="${(boardUseInfVO.pageIndex-1) * boardUseInfVO.recordPerPage}"/>
  	<c:forEach var="result" items="${resultList}" varStatus="status">
- 	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.bbsId}"/>', '<c:out value='${result.trgetId}'/>'); return false;">
-
+ 	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${boardUseInfVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
  
      	<td class="lt_text3"><c:out value="${result.bbsId}"/></td>
-    	<td class="lt_text3"><c:out value="${result.bbsNm}"/></td>
+    	<td class="lt_text3">
+	   		<span class="link">
+	   		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.bbsId}"/>', '<c:out value='${result.trgetId}'/>'); return false;">
+    			<c:out value="${result.bbsNm}"/>
+	   		</a>
+	   		</span>
+    	</td>
      	<c:if test="${useCommunity == 'true'}">
 			<td class="lt_text3">
 				<c:out value="${result.cmmntyNm}"/>

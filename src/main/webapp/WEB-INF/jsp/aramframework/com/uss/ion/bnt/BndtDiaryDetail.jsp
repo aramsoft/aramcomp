@@ -50,7 +50,7 @@
 	</div>
 </div>
 
-<form:form commandName="bndtDiaryVO" method="post" action="">
+<form:form modelAttribute="bndtDiaryVO" method="post" action="">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

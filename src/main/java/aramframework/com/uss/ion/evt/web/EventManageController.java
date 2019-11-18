@@ -141,7 +141,7 @@ public class EventManageController {
 		eventManageService.insertEventManage(eventManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/ion/evt/listEventReqst.do");
+        return WebUtil.redirectJsp(model, eventManageVO, "/uss/ion/evt/listEventReqst.do");
 	}
 
 	/**
@@ -183,7 +183,7 @@ public class EventManageController {
 		eventManageService.updateEventManage(eventManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/evt/listEventReqst.do");
+        return WebUtil.redirectJsp(model, eventManageVO, "/uss/ion/evt/listEventReqst.do");
 	}
 
 	/**
@@ -200,7 +200,7 @@ public class EventManageController {
 		eventManageService.deleteEventManage(eventManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/evt/listEventReqst.do");
+        return WebUtil.redirectJsp(model, eventManageVO, "/uss/ion/evt/listEventReqst.do");
 	}
 
 	/** 행사접수관리 **/
@@ -331,7 +331,7 @@ public class EventManageController {
 		eventManageService.insertEventAtdrn(eventAtdrnVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/ion/evt/listEventRcrpt.do");
+        return WebUtil.redirectJsp(model, eventAtdrnVO, "/uss/ion/evt/listEventRcrpt.do");
 	}
 
 	/**
@@ -348,7 +348,7 @@ public class EventManageController {
 		eventManageService.deleteEventAtdrn(eventAtdrnVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/evt/listEventRcrpt.do");
+        return WebUtil.redirectJsp(model, eventAtdrnVO, "/uss/ion/evt/listEventRcrpt.do");
 	}
 
 	/**
@@ -411,7 +411,7 @@ public class EventManageController {
 		eventManageService.updateEventAtdrn(eventAtdrnVO, checkedEventRceptForConfm);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/evt/listEventRceptConfm.do");
+        return WebUtil.redirectJsp(model, eventAtdrnVO, "/uss/ion/evt/listEventRceptConfm.do");
 	}
 
 	/**

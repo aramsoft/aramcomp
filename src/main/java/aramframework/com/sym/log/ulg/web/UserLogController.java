@@ -61,7 +61,7 @@ public class UserLogController {
 	@RequestMapping(value = "/sym/log/ulg/detailUserLog.do")
 	@Secured("ROLE_ADMIN")
 	public String detailUserLog(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute UserLogVO userLogVO,
 			ModelMap model) {
 

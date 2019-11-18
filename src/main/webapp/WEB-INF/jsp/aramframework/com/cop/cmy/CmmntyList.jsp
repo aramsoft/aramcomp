@@ -31,7 +31,7 @@
 	</a>
 </div>
 
-<form:form commandName="communityVO" action="" method="post">
+<form:form modelAttribute="communityVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
@@ -77,16 +77,21 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="searchVO" value="${communityVO}"/>
- 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(communityVO.pageIndex-1) * communityVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
-	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.cmmntyId}"/>'); return false;">
- 
- 		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
+	<tr>
+  		<c:set var="index" value="${startIndex + status.count}"/>
+		<c:set var="reverseIndex" value="${communityVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
-	    <td class="lt_text3"><c:out value="${result.cmmntyNm}"/></td>
+	    <td class="lt_text3">
+	   		<span class="link">
+	   		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.cmmntyId}"/>'); return false;">
+	    		<c:out value="${result.cmmntyNm}"/>
+	   		</a>
+	   		</span>
+	    </td>
+
 	    <td class="lt_text3"><c:out value="${result.frstRegisterNm}"/></td>
 	    <td class="lt_text3"><fmt:formatDate value="${result.frstRegisterPnttm}" pattern="yyyy-MM-dd"/></td>
 	    <td class="lt_text3">

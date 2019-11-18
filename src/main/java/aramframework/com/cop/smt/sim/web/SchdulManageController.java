@@ -17,7 +17,6 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.cmm.domain.ComCodeVO;
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.ComponentChecker;
@@ -60,7 +59,7 @@ public class SchdulManageController {
 	/**
 	 * 사용자 정보에 대한 팝업 목록을 조회한다.
 	 * 
-	 * @param searchVO
+	 * @param baseVO
 	 */
 	@RequestMapping("/cop/smt/sim/listEmplyrPopup.do")
 	public String listEmplyrPopup(
@@ -84,7 +83,7 @@ public class SchdulManageController {
 	/**
 	 * 일정관리 목록을 조회한다.
 	 * 
-	 * @param searchVO
+	 * @param schdulManageVO
 	 */
 	@RequestMapping(value = "/cop/smt/sim/listSchdulPopup.do")
 	@Secured("ROLE_USER")
@@ -136,7 +135,8 @@ public class SchdulManageController {
 	@IncludedInfo(name = "일정관리", order = 4050, gid = 40)
 	@RequestMapping(value = "/cop/smt/sim/listSchdul.do")
 	public String listSchdul(
-			@ModelAttribute SchdulManageVO schdulManageVO) {
+			@ModelAttribute SchdulManageVO schdulManageVO, 
+			ModelMap model) {
 		
 		return WebUtil.adjustViewName("/cop/smt/sim/SchdulList");
 	}
@@ -400,7 +400,6 @@ public class SchdulManageController {
 	 */
 	@RequestMapping(value = "/cop/smt/sim/detailSchdul.do")
 	public String detailSchdul(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SchdulManageVO schdulManageVO, 
 			ModelMap model) {
 
@@ -439,8 +438,8 @@ public class SchdulManageController {
 	@RequestMapping(value = "/cop/smt/sim/registSchdul.do")
 	@Secured("ROLE_USER")
 	public String registSchdul(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute SchdulManageVO schdulManageVO) {
+			@ModelAttribute SchdulManageVO schdulManageVO, 
+			ModelMap model) {
 
 		// 공통코드 중요도 조회
 		cmmUseService.populateCmmCodeList("COM019", "COM019_schdulIpcr");
@@ -459,10 +458,9 @@ public class SchdulManageController {
 	@RequestMapping(value = "/cop/smt/sim/insertSchdul.do")
 	@Secured("ROLE_USER")
 	public String insertSchdul(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SchdulManageVO schdulManageVO, 
 			BindingResult bindingResult, 
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model)
 	throws Exception {
 
@@ -482,7 +480,7 @@ public class SchdulManageController {
 		schdulManageService.insertSchdulManage(schdulManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/cop/smt/sim/listSchdul.do");
+		return WebUtil.redirectJsp(model, schdulManageVO, "/cop/smt/sim/listSchdul.do");
 	}
 
 	/**
@@ -493,7 +491,6 @@ public class SchdulManageController {
 	@RequestMapping(value = "/cop/smt/sim/editSchdul.do")
 	@Secured("ROLE_USER")
 	public String editSchdul(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SchdulManageVO schdulManageVO, 
 			ModelMap model) {
 
@@ -535,10 +532,9 @@ public class SchdulManageController {
 	@RequestMapping(value = "/cop/smt/sim/updateSchdul.do")
 	@Secured("ROLE_USER")
 	public String updateSchdul(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SchdulManageVO schdulManageVO, 
 			BindingResult bindingResult, 
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception {
 
@@ -571,7 +567,7 @@ public class SchdulManageController {
 		schdulManageService.updateSchdulManage(schdulManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/cop/smt/sim/listSchdul.do");
+		return WebUtil.redirectJsp(model, schdulManageVO, "/cop/smt/sim/listSchdul.do");
 	}
 
 	/**
@@ -582,14 +578,13 @@ public class SchdulManageController {
 	@RequestMapping(value = "/cop/smt/sim/deleteSchdul.do")
 	@Secured("ROLE_USER")
 	public String deleteSchdul(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SchdulManageVO schdulManageVO, 
 			ModelMap model) {
 
 		schdulManageService.deleteSchdulManage(schdulManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/cop/smt/sim/listSchdul.do");
+		return WebUtil.redirectJsp(model, schdulManageVO, "/cop/smt/sim/listSchdul.do");
 	}
 
 }

@@ -106,7 +106,7 @@ public class IntnetSvcGuidanceController {
 		intnetSvcGuidanceService.insertIntnetSvcGuidance(intnetSvcGuidanceVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/ion/isg/listIntnetSvcGuidance.do");
+        return WebUtil.redirectJsp(model, intnetSvcGuidanceVO, "/uss/ion/isg/listIntnetSvcGuidance.do");
 	}
 
 	/**
@@ -148,7 +148,7 @@ public class IntnetSvcGuidanceController {
 		intnetSvcGuidanceService.updateIntnetSvcGuidance(intnetSvcGuidanceVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/isg/listIntnetSvcGuidance.do");
+        return WebUtil.redirectJsp(model, intnetSvcGuidanceVO, "/uss/ion/isg/listIntnetSvcGuidance.do");
 	}
 
 	/**
@@ -165,7 +165,7 @@ public class IntnetSvcGuidanceController {
 		intnetSvcGuidanceService.deleteIntnetSvcGuidance(intnetSvcGuidanceVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/isg/listIntnetSvcGuidance.do");
+        return WebUtil.redirectJsp(model, intnetSvcGuidanceVO, "/uss/ion/isg/listIntnetSvcGuidance.do");
 	}
 
 	/**

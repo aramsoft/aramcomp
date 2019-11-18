@@ -67,7 +67,8 @@ public class MainMenuController {
 	 */
 	@RequestMapping(value = "/sym/mnu/mpm/MainMenuBottom.do")
 	public String selectMainMenuBottom(
-			@ModelAttribute MenuManageVO menuManageVO) {
+			@ModelAttribute MenuManageVO menuManageVO, 
+			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 
@@ -112,7 +113,8 @@ public class MainMenuController {
 	@RequestMapping(value = "/sym/mnu/mpm/MainMenuRight.do")
 	@Secured("ROLE_USER")
 	public String selectMainMenuRight(
-			@RequestParam String vStartP) {
+			@RequestParam String vStartP, 
+			ModelMap model) {
 		
 		int iMenuNo = Integer.parseInt(vStartP);
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -172,7 +174,8 @@ public class MainMenuController {
 	public String selectMainMenuIndex(
 			@ModelAttribute MenuManageVO menuManageVO, 
 			@RequestParam String menuNo,
-			@RequestParam String chkURL) {
+			@RequestParam String chkURL, 
+			ModelMap model) {
 
 		int iMenuNo = Integer.parseInt(menuNo);
 		menuManageVO.setMenuNo(iMenuNo);

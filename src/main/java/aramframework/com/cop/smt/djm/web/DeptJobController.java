@@ -225,7 +225,7 @@ public class DeptJobController {
 		deptJobService.insertDeptJobBx(deptJobBxVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/cop/smt/djm/listDeptJobBx.do");
+		return WebUtil.redirectJsp(model, deptJobBxVO, "/cop/smt/djm/listDeptJobBx.do");
 	}
 
 	/**
@@ -270,7 +270,7 @@ public class DeptJobController {
 		deptJobService.updateDeptJobBx(deptJobBxVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/cop/smt/djm/listDeptJobBx.do");
+		return WebUtil.redirectJsp(model, deptJobBxVO, "/cop/smt/djm/listDeptJobBx.do");
 	}
 
 	/**
@@ -294,7 +294,7 @@ public class DeptJobController {
 		}
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/cop/smt/djm/listDeptJobBx.do");
+		return WebUtil.redirectJsp(model, deptJobBxVO, "/cop/smt/djm/listDeptJobBx.do");
 	}
 
 	/**
@@ -312,7 +312,7 @@ public class DeptJobController {
 		deptJobService.deleteDeptJobBx(deptJobBxVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/cop/smt/djm/listDeptJobBx.do");
+		return WebUtil.redirectJsp(model, deptJobBxVO, "/cop/smt/djm/listDeptJobBx.do");
 	}
 
 	/**
@@ -417,7 +417,7 @@ public class DeptJobController {
 		deptJobService.insertDeptJob(deptJobVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/cop/smt/djm/listDeptJob.do");
+		return WebUtil.redirectJsp(model, deptJobVO, "/cop/smt/djm/listDeptJob.do");
 	}
 
 	/**
@@ -467,7 +467,7 @@ public class DeptJobController {
 		deptJobService.updateDeptJob(deptJobVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/cop/smt/djm/listDeptJob.do");
+		return WebUtil.redirectJsp(model, deptJobVO, "/cop/smt/djm/listDeptJob.do");
 	}
 
 	/**
@@ -485,7 +485,7 @@ public class DeptJobController {
 		deptJobService.deleteDeptJob(deptJobVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/cop/smt/djm/listDeptJob.do");
+		return WebUtil.redirectJsp(model, deptJobVO, "/cop/smt/djm/listDeptJob.do");
 	}
 
 }

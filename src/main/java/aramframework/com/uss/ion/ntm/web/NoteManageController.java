@@ -131,7 +131,7 @@ public class NoteManageController {
 		noteManageService.insertNoteManage(noteManageVO, recptnEmpList, recptnSeList);
 
 		model.addAttribute("message", "작성된 쪽지를 전송하였습니다!");
-        return WebUtil.redirectJsp(model, "/uss/ion/nts/listNoteTrnsmit.do");
+        return WebUtil.redirectJsp(model, noteManageVO, "/uss/ion/nts/listNoteTrnsmit.do");
 	}
 
 	/**

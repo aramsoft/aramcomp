@@ -27,7 +27,7 @@
 	<h2>HTTP모니터링 목록</h2>
 </div>
 
-<form:form commandName="httpMntrngVO" action="" method="post">
+<form:form modelAttribute="httpMntrngVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

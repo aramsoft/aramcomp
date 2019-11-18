@@ -41,7 +41,7 @@
 	<h2>부서 조회 팝업</h2>
 </div>
 
-<form:form commandName="deptVO" method="post">
+<form:form modelAttribute="deptVO" method="post">
 
 <div id="search_area">
 	<div class="button_area">
@@ -79,11 +79,11 @@
  	</c:if>
  	
  	<c:forEach var="result" items="${resultList}" varStatus="status">
-  	<tr class="link" onclick="javascript:fn_aram_choose('<c:out value="${result.deptCode}"/>', '<c:out value="${result.deptNm}"/>'); return false;">
+  	<tr class="link" onclick="javascript:fn_aram_choose('<c:out value="${result.orgnztId}"/>', '<c:out value="${result.orgnztNm}"/>'); return false;">
   	
     	<td class="lt_text3"></td>
-    	<td class="lt_text"><c:out value="${result.deptCode}"/></td>
-    	<td class="lt_text"><c:out value="${result.deptNm}"/></td>
+    	<td class="lt_text"><c:out value="${result.orgnztId}"/></td>
+    	<td class="lt_text"><c:out value="${result.orgnztNm}"/></td>
   	</tr>
  	</c:forEach>
 </tbody> 

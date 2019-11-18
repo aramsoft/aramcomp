@@ -127,7 +127,7 @@ public class ServerController {
 		serverService.insertServerEqpmn(serverEqpmnVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/sym/sym/srv/listServerEqpmn.do");
+        return WebUtil.redirectJsp(model, serverEqpmnVO, "/sym/sym/srv/listServerEqpmn.do");
 	}
 
 	/**
@@ -171,7 +171,7 @@ public class ServerController {
 		serverService.updateServerEqpmn(serverEqpmnVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/sym/sym/srv/listServerEqpmn.do");
+        return WebUtil.redirectJsp(model, serverEqpmnVO, "/sym/sym/srv/listServerEqpmn.do");
 	}
 
 	/**
@@ -189,7 +189,7 @@ public class ServerController {
 		serverService.deleteServerEqpmn(serverEqpmnVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/sym/sym/srv/listServerEqpmn.do");
+        return WebUtil.redirectJsp(model, serverEqpmnVO, "/sym/sym/srv/listServerEqpmn.do");
 	}
 
 	/**
@@ -278,7 +278,7 @@ public class ServerController {
 		serverService.insertServer(serverVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/sym/sym/srv/listServer.do");
+        return WebUtil.redirectJsp(model, serverVO, "/sym/sym/srv/listServer.do");
 	}
 
 	/**
@@ -324,7 +324,7 @@ public class ServerController {
 		serverService.updateServer(serverVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/sym/sym/srv/listServer.do");
+        return WebUtil.redirectJsp(model, serverVO, "/sym/sym/srv/listServer.do");
 	}
 
 	/**
@@ -342,7 +342,7 @@ public class ServerController {
 		serverService.deleteServer(serverVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/sym/sym/srv/listServer.do");
+        return WebUtil.redirectJsp(model, serverVO, "/sym/sym/srv/listServer.do");
 	}
 
 	/**
@@ -395,7 +395,7 @@ public class ServerController {
 		serverService.updateServerEqpmnRelate(serverId, serverEqpmnIds, regYns);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/sym/sym/srv/listServerEqpmnRelate.do?serverId="+serverId);
+        return WebUtil.redirectJsp(model, serverEqpmnRelateVO, "/sym/sym/srv/listServerEqpmnRelate.do?serverId="+serverId);
 	}
 
 }

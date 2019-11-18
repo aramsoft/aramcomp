@@ -134,7 +134,7 @@ public class BannerController {
 		bannerService.insertBanner(bannerVO);
 	
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/ion/bnr/listBanner.do");
+        return WebUtil.redirectJsp(model, bannerVO, "/uss/ion/bnr/listBanner.do");
 	}
 
 	/**
@@ -201,7 +201,7 @@ public class BannerController {
 		bannerService.updateBanner(bannerVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/bnr/listBanner.do");
+        return WebUtil.redirectJsp(model, bannerVO, "/uss/ion/bnr/listBanner.do");
 	}
 
 	/**
@@ -218,7 +218,7 @@ public class BannerController {
 		bannerService.deleteBanner(bannerVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/bnr/listBanner.do");
+        return WebUtil.redirectJsp(model, bannerVO, "/uss/ion/bnr/listBanner.do");
 	}
 
 	/**
@@ -237,7 +237,7 @@ public class BannerController {
 		bannerService.deleteBanners(bannerIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/bnr/listBanner.do");
+        return WebUtil.redirectJsp(model, bannerVO, "/uss/ion/bnr/listBanner.do");
 	}
 
 	/**

@@ -38,7 +38,7 @@
 </div>
 
 <!-- 상단타이틀 -->
-<form:form commandName="dbMntrngVO" action="" method="post">
+<form:form modelAttribute="dbMntrngVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

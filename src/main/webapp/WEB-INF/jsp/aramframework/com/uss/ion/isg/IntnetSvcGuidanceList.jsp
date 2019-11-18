@@ -31,7 +31,7 @@
 	</a>
 </div>
 
-<form:form commandName="intnetSvcGuidanceVO" action="" method="post">
+<form:form modelAttribute="intnetSvcGuidanceVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

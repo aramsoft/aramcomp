@@ -148,7 +148,7 @@ public class QustnrItemManageController {
 		qustnrItemManageService.insertQustnrItemManage(qustnrItemManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, "/uss/olp/qim/listQustnrItem.do");
+	    return WebUtil.redirectJsp(model, qustnrItemManageVO, "/uss/olp/qim/listQustnrItem.do");
 	}
 
 	/**
@@ -194,7 +194,7 @@ public class QustnrItemManageController {
 		qustnrItemManageService.updateQustnrItemManage(qustnrItemManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, "/uss/olp/qim/listQustnrItem.do");
+	    return WebUtil.redirectJsp(model, qustnrItemManageVO, "/uss/olp/qim/listQustnrItem.do");
 	}
 
 	/**
@@ -212,7 +212,7 @@ public class QustnrItemManageController {
 		qustnrItemManageService.deleteQustnrItemManage(qustnrItemManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, "/uss/olp/qim/listQustnrItem.do");
+	    return WebUtil.redirectJsp(model, qustnrItemManageVO, "/uss/olp/qim/listQustnrItem.do");
 	}
 
 }

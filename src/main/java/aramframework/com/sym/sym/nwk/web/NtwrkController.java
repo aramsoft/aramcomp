@@ -132,7 +132,7 @@ public class NtwrkController {
 		ntwrkService.insertNtwrk(ntwrkVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/sym/sym/nwk/listNtwrk.do");
+        return WebUtil.redirectJsp(model, ntwrkVO, "/sym/sym/nwk/listNtwrk.do");
 	}
 
 	/**
@@ -179,7 +179,7 @@ public class NtwrkController {
 		ntwrkService.updateNtwrk(ntwrkVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/sym/sym/nwk/listNtwrk.do");
+        return WebUtil.redirectJsp(model, ntwrkVO, "/sym/sym/nwk/listNtwrk.do");
 	}
 
 	/**
@@ -197,7 +197,7 @@ public class NtwrkController {
 		ntwrkService.deleteNtwrk(ntwrkVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/sym/sym/nwk/listNtwrk.do");
+        return WebUtil.redirectJsp(model, ntwrkVO, "/sym/sym/nwk/listNtwrk.do");
 	}
 
 }

@@ -37,7 +37,7 @@
 </div>
 
 <!-- 파일첨부를 위한 폼명 및 Enctype 설정 -->
-<form:form commandName="requestOfferVO" method="post" enctype="multipart/form-data">
+<form:form modelAttribute="requestOfferVO" method="post" enctype="multipart/form-data">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

@@ -137,7 +137,7 @@ public class TroblReqstController {
 		troblReqstService.insertTroblReqst(troblReqstVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/sym/tbm/tbr/listTroblReqst.do");
+        return WebUtil.redirectJsp(model, troblReqstVO, "/sym/tbm/tbr/listTroblReqst.do");
 	}
 
 	/**
@@ -185,7 +185,7 @@ public class TroblReqstController {
 		troblReqstService.updateTroblReqst(troblReqstVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/sym/tbm/tbr/listTroblReqst.do");
+        return WebUtil.redirectJsp(model, troblReqstVO, "/sym/tbm/tbr/listTroblReqst.do");
 	}
 
 	/**
@@ -203,7 +203,7 @@ public class TroblReqstController {
 		troblReqstService.deleteTroblReqst(troblReqstVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/sym/tbm/tbr/listTroblReqst.do");
+        return WebUtil.redirectJsp(model, troblReqstVO, "/sym/tbm/tbr/listTroblReqst.do");
 	}
 
 	/**
@@ -225,7 +225,7 @@ public class TroblReqstController {
 		troblReqstService.requstTroblReqst(troblReqstVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/sym/tbm/tbr/listTroblReqst.do");
+        return WebUtil.redirectJsp(model, troblReqstVO, "/sym/tbm/tbr/listTroblReqst.do");
 	}
 
 	/**
@@ -247,7 +247,7 @@ public class TroblReqstController {
 		troblReqstService.requstTroblReqst(troblReqstVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/sym/tbm/tbr/listTroblReqst.do");
+        return WebUtil.redirectJsp(model, troblReqstVO, "/sym/tbm/tbr/listTroblReqst.do");
 	}
 
 }

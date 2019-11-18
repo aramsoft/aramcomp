@@ -27,7 +27,7 @@
 	<h2>사용자 목록</h2>
 </div>
 
-<form:form commandName="userInfVO" action="" method="post">
+<form:form modelAttribute="userInfVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
@@ -78,12 +78,11 @@
 	</tr>
 	</c:if>
 	
-  	<c:set var="searchVO" value="${userInfVO}"/>
- 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(userInfVO.pageIndex-1) * userInfVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
 	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${userInfVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 	    <td class="lt_text3"  <c:if test="${result.oprtrAt == 'Y'}">style="background-color:#e4eaf8;"</c:if>>

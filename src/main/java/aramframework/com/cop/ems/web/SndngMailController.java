@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.PrintWriter;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -16,7 +17,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
@@ -86,14 +86,18 @@ public class SndngMailController {
 	@RequestMapping(value = "/cop/ems/deleteSndngMailList.do")
 	@Secured("ROLE_USER")
 	public String deleteSndngMailList(
-			@RequestParam String messageIds, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute SndngMailVO sndngMailVO, 
+			HttpServletRequest request, 
 			ModelMap model) {
 
-		sndngMailService.deleteSndngMails(messageIds);
+    	String[] mssageIds = null;
+    	if(request.getParameterValues("uniqIds") != null) 
+    		mssageIds = request.getParameterValues("uniqIds");
+
+		sndngMailService.deleteSndngMails(mssageIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/cop/ems/listSndngMail.do");
+		return WebUtil.redirectJsp(model, sndngMailVO, "/cop/ems/listSndngMail.do");
 	}
 	
 	/**
@@ -104,8 +108,9 @@ public class SndngMailController {
 	@RequestMapping(value = "/cop/ems/detailSndngMail.do")
 	@Secured("ROLE_USER")
 	public String detailSndngMail(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute SndngMailVO sndngMailVO) {
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute SndngMailVO sndngMailVO, 
+			ModelMap model) {
 
 		// 1. 발송메일을 상세 조회한다.
 		sndngMailService.selectSndngMail(sndngMailVO);
@@ -122,7 +127,6 @@ public class SndngMailController {
 	@RequestMapping(value = "/cop/ems/detailSndngMailXml.do")
 	@Secured("ROLE_USER")
 	public void detailSndngMailXml(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SndngMailVO sndngMailVO, 
 			HttpServletResponse response) 
 	throws Exception {
@@ -176,8 +180,9 @@ public class SndngMailController {
     @RequestMapping(value="/cop/ems/registSndngMail.do")
 	@Secured("ROLE_USER")
     public String registSndngMail(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute SndngMailVO sndngMailVO) {
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute SndngMailVO sndngMailVO, 
+			ModelMap model) {
     	
 		return WebUtil.adjustViewName("/cop/ems/MailRegist");
     }
@@ -191,9 +196,9 @@ public class SndngMailController {
     @RequestMapping(value="/cop/ems/insertSndngMail.do")
 	@Secured("ROLE_USER")
 	public String insertSndngMail(
-			MultipartHttpServletRequest multiRequest,
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SndngMailVO sndngMailVO,
+			MultipartHttpServletRequest multiRequest,
 			ModelMap model) 
     throws Exception {
     	
@@ -218,7 +223,7 @@ public class SndngMailController {
     	
 		if (link.equals("N")) {
 			model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		    return WebUtil.redirectJsp(model, "/cop/ems/listSndngMail.do");
+		    return WebUtil.redirectJsp(model, sndngMailVO, "/cop/ems/listSndngMail.do");
 		} else {
 			model.addAttribute("closeYn", "Y");
 			return WebUtil.adjustViewName("/cop/ems/MailRegist");
@@ -233,14 +238,13 @@ public class SndngMailController {
 	@RequestMapping(value = "/cop/ems/deleteSndngMail.do")
 	@Secured("ROLE_USER")
 	public String deleteSndngMail(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SndngMailVO sndngMailVO, 
 			ModelMap model) {
 
 		sndngMailService.deleteSndngMail(sndngMailVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/cop/ems/listSndngMail.do");
+		return WebUtil.redirectJsp(model, sndngMailVO, "/cop/ems/listSndngMail.do");
 	}
 
 }

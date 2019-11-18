@@ -44,7 +44,7 @@
 	</a>
 </div>
 
-<form:form commandName="webLogVO" action="" method="post">
+<form:form modelAttribute="webLogVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
@@ -106,16 +106,20 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="searchVO" value="${webLogVO}"/>
- 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(webLogVO.pageIndex-1) * webLogVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
-	<tr  class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.requstId}"/>'); return false;">
-	
- 		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
+	<tr>
+		<c:set var="index" value="${startIndex + status.count}"/>
+		<c:set var="reverseIndex" value="${webLogVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
-	    <td class="lt_text3"><c:out value="${result.requstId}"/></td>
+	    <td class="lt_text3">
+			<span class="link">
+    		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.requstId}"/>'); return false;">
+	    		<c:out value="${result.requstId}"/>
+    		</a>
+			</span>
+	    </td>
 	    <td class="lt_text3"><c:out value="${result.occrrncDe}"/></td>
 	    <td class="lt_text3"><c:out value="${result.url}"/></td>
 	    <td class="lt_text3"><c:out value="${result.rqesterNm}"/></td>

@@ -42,7 +42,7 @@
 	<h2>행사/이벤트/캠페인 목록 팝업</h2>
 </div>
 
-<form:form commandName="eventCmpgnVO" action="" method="post">
+<form:form modelAttribute="eventCmpgnVO" action="" method="post">
 <input name="eventId" type="hidden" value="">
 
 <div id="search_area">

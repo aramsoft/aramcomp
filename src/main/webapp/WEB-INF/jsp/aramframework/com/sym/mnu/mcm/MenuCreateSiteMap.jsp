@@ -41,7 +41,7 @@
 	<h2>메뉴사이트맵생성</h2>
 </div>
 
-<form:form commandName="menuSiteMapVO" action="" method="post">
+<form:form modelAttribute="menuSiteMapVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
@@ -127,6 +127,7 @@ var getContextPath = "${pageContext.request.contextPath}";
 <input type="hidden" name="searchCondition" value="${searchVO.searchCondition}" />
 <input type="hidden" name="searchKeyword"   value="${searchVO.searchKeyword}" />
 <input type="hidden" name="pageIndex"       value="${searchVO.pageIndex}" />
+<input type="hidden" name="recordPerPage"   value="${searchVO.recordPerPage}" />
 <!-- 검색조건 유지 -->
 </form:form>
 

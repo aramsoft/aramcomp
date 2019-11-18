@@ -35,7 +35,7 @@
 	</div>
 </div>
 
-<form:form commandName="mtgPlaceManageVO" method="post" action=""  enctype="multipart/form-data"> 
+<form:form modelAttribute="mtgPlaceManageVO" method="post" action=""  enctype="multipart/form-data"> 
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
@@ -198,7 +198,7 @@
    		<label for="fxtrsForm">비품정보</label>
    	</th>
    	<td width="80%"  align="center">
-    	<form:form commandName="fxtrsForm" name="fxtrsForm" method="post" action="#">  
+    	<form:form modelAttribute="fxtrsForm" name="fxtrsForm" method="post" action="#">  
     	<div style="visibility:hidden;display:none;"><input name="iptSubmit" type="submit" value="전송" title="전송"></div> 
 
 		<table class="table-list">

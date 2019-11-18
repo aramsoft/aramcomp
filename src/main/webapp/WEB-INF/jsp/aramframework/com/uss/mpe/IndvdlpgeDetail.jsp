@@ -129,7 +129,7 @@
 </tbody>
 </table>
 
-<form:form commandName="indvdlPgeConfVO" action="" method="post">
+<form:form modelAttribute="indvdlPgeConfVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

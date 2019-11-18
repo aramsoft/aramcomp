@@ -115,7 +115,7 @@ public class RecomendSiteController {
 		recomendSiteService.insertRecomendSiteInfo(recomendSiteVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/ion/rec/listRecomendSite.do");
+        return WebUtil.redirectJsp(model, recomendSiteVO, "/uss/ion/rec/listRecomendSite.do");
 	}
 
 	/**
@@ -161,7 +161,7 @@ public class RecomendSiteController {
 		recomendSiteService.updateRecomendSiteInfo(recomendSiteVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/rec/listRecomendSite.do");
+        return WebUtil.redirectJsp(model, recomendSiteVO, "/uss/ion/rec/listRecomendSite.do");
 	}
 
 	/**
@@ -179,7 +179,7 @@ public class RecomendSiteController {
 		recomendSiteService.deleteRecomendSiteInfo(recomendSiteVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/rec/listRecomendSite.do");
+        return WebUtil.redirectJsp(model, recomendSiteVO, "/uss/ion/rec/listRecomendSite.do");
 	}
 
 }

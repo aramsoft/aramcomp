@@ -51,7 +51,7 @@ public class BBSMasterController {
 	/**
 	 * 게시판 마스터 선택 팝업을 위한 목록을 조회한다.
 	 * 
-	 * @param searchVO
+	 * @param boardMasterVO
 	 */
 	@RequestMapping("/cop/bbs/listBoardMasterPopup.do")
 	public String listBoardMasterPopup(
@@ -110,7 +110,7 @@ public class BBSMasterController {
 	@RequestMapping("/cop/bbs/registBoardMaster.do")
 	@Secured("ROLE_ADMIN")
 	public String registBoardMaster(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardMasterVO boardMasterVO,
 			ModelMap model) {
 
@@ -148,7 +148,7 @@ public class BBSMasterController {
 	@RequestMapping("/cop/bbs/insertBoardMaster.do")
 	@Secured("ROLE_ADMIN")
 	public String insertBoardMaster(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardMasterVO boardMasterVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -166,7 +166,7 @@ public class BBSMasterController {
 		bbsMasterService.insertBBSMastetInf(boardMasterVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/cop/bbs/listBoardMaster.do");
+		return WebUtil.redirectJsp(model, boardMasterVO, "/cop/bbs/listBoardMaster.do");
 	}
 
 	/**
@@ -177,10 +177,10 @@ public class BBSMasterController {
 	@RequestMapping("/cop/bbs/editBoardMaster.do")
 	@Secured("ROLE_ADMIN")
 	public String editBoardMaster(
-			HttpServletRequest request,
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardMasterVO boardMasterVO,
 			@ModelAttribute BoardUseInfVO boardUseInfVO, 
+			HttpServletRequest request,
 			ModelMap model) {
 	
 		model.addAttribute(bbsMasterService.selectBBSMasterInf(boardMasterVO));
@@ -223,7 +223,7 @@ public class BBSMasterController {
 	@RequestMapping("/cop/bbs/updateBoardMaster.do")
 	@Secured("ROLE_ADMIN")
 	public String updateBoardMaster(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardMasterVO boardMasterVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -239,7 +239,7 @@ public class BBSMasterController {
 		bbsMasterService.updateBBSMasterInf(boardMasterVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/cop/bbs/listBoardMaster.do");
+		return WebUtil.redirectJsp(model, boardMasterVO, "/cop/bbs/listBoardMaster.do");
 	}
 
 	/**
@@ -250,7 +250,6 @@ public class BBSMasterController {
 	@RequestMapping("/cop/bbs/deleteBoardMaster.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteBoardMaster(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardMasterVO boardMasterVO,
 			ModelMap model) {
 
@@ -260,7 +259,7 @@ public class BBSMasterController {
 		bbsMasterService.deleteBBSMasterInf(boardMasterVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/cop/bbs/listBoardMaster.do");
+		return WebUtil.redirectJsp(model, boardMasterVO, "/cop/bbs/listBoardMaster.do");
 	}
 
 }

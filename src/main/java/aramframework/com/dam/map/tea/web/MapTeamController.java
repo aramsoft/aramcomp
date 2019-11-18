@@ -117,7 +117,7 @@ public class MapTeamController {
 		mapTeamService.insertMapTeam(mapTeamVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/dam/map/tea/listMapTeam.do");
+		return WebUtil.redirectJsp(model, mapTeamVO, "/dam/map/tea/listMapTeam.do");
 	}
 
 	/**
@@ -160,7 +160,7 @@ public class MapTeamController {
 		mapTeamService.updateMapTeam(mapTeamVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/dam/map/tea/listMapTeam.do");
+		return WebUtil.redirectJsp(model, mapTeamVO, "/dam/map/tea/listMapTeam.do");
 	}
 
 	/**
@@ -177,7 +177,7 @@ public class MapTeamController {
 		mapTeamService.deleteMapTeam(mapTeamVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/dam/map/tea/listMapTeam.do");
+		return WebUtil.redirectJsp(model, mapTeamVO, "/dam/map/tea/listMapTeam.do");
 	}
 
 }

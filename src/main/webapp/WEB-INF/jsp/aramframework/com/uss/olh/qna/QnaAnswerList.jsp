@@ -31,7 +31,7 @@
 	</a>
 </div>
 
-<form:form commandName="qnaManageVO" action="" method="post">
+<form:form modelAttribute="qnaManageVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
@@ -81,16 +81,20 @@
   	</tr>   	          				 			   
  	</c:if>
  	
- 	<c:set var="searchVO" value="${qnaManageVO}"/>
- 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(qnaManageVO.pageIndex-1) * qnaManageVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="resultInfo" varStatus="status">
-  	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${resultInfo.qaId}"/>'); return false;">
-  	
- 		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
+  	<tr>
+  		<c:set var="index" value="${startIndex + status.count}"/>
+		<c:set var="reverseIndex" value="${qnaManageVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
-		<td class="listLeft"><c:out value="${resultInfo.qestnSj}"/></td>
+		<td class="listLeft">
+			<span class="link">
+    		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.qaId}"/>'); return false;">
+				<c:out value="${resultInfo.qestnSj}"/>
+    		</a>
+			</span>
+		</td>
 		<td class="lt_text3"><c:out value="${resultInfo.wrterNm}"/></td>
 		<td class="lt_text3"><c:out value="${resultInfo.qnaProcessSttusCodeNm}"/></td>
 		<td class="lt_text3"><c:out value="${resultInfo.inqireCo}"/></td>				

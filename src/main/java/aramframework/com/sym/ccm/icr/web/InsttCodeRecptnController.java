@@ -133,7 +133,7 @@ public class InsttCodeRecptnController {
 		
 		insttCodeManageService.insertInsttCodeRecptn();
 		
-        return WebUtil.redirectJsp(model, "/sym/ccm/icr/listInsttCodeRecptn.do");
+        return WebUtil.redirectJsp(model, insttCodeRecptnVO, "/sym/ccm/icr/listInsttCodeRecptn.do");
 	}
 
 }

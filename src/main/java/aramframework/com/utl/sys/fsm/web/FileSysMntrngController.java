@@ -134,7 +134,7 @@ public class FileSysMntrngController {
 		fileSysMntrngService.insertFileSysMntrng(fileSysMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, "/utl/sys/fsm/listFileSysMntrng.do");
+	    return WebUtil.redirectJsp(model, fileSysMntrngVO, "/utl/sys/fsm/listFileSysMntrng.do");
 	}
 
 	/**
@@ -186,7 +186,7 @@ public class FileSysMntrngController {
 		fileSysMntrngService.updateFileSysMntrng(fileSysMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, "/utl/sys/fsm/listFileSysMntrng.do");
+	    return WebUtil.redirectJsp(model, fileSysMntrngVO, "/utl/sys/fsm/listFileSysMntrng.do");
 	}
 
 	/**
@@ -204,7 +204,7 @@ public class FileSysMntrngController {
 		fileSysMntrngService.deleteFileSysMntrng(fileSysMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, "/utl/sys/fsm/listFileSysMntrng.do");
+	    return WebUtil.redirectJsp(model, fileSysMntrngVO, "/utl/sys/fsm/listFileSysMntrng.do");
 	}
 
 	/**

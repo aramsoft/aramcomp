@@ -1,5 +1,7 @@
 package aramframework.com.sec.arm.web;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -8,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sec.arm.domain.AuthorResourceVO;
@@ -63,16 +64,21 @@ public class AuthorResourceController {
 	@RequestMapping(value = "/sec/arm/insertAuthorResource.do")
 	@Secured("ROLE_ADMIN")
 	public String insertAuthorResource(
-			@RequestParam String authorCode, 
-			@RequestParam String resourceCodes,
-			@RequestParam String regYns, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute AuthorResourceVO authorResourceVO, 
+			@RequestParam String strRegYns, 
+			HttpServletRequest request, 
 			ModelMap model) {
 
-		authorResourceService.insertAuthorResources(authorCode, resourceCodes, regYns);
+    	String[] resourceCodes = null;
+    	if(request.getParameterValues("uniqIds") != null) 
+    		resourceCodes = request.getParameterValues("uniqIds");
+
+		String[] regYns = strRegYns.split(";");
+		
+		authorResourceService.insertAuthorResources(authorResourceVO.getAuthorCode(), resourceCodes, regYns);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/sec/arm/listAuthorResource.do");
+		return WebUtil.redirectJsp(model, authorResourceVO, "/sec/arm/listAuthorResource.do");
 	}
 	
 }

@@ -174,7 +174,7 @@ public class VcatnManageController {
 
 		if (result.equals("01")) {
 			model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	        return WebUtil.redirectJsp(model, "/uss/ion/vct/listVcatn.do");
+	        return WebUtil.redirectJsp(model, vcatnManageVO, "/uss/ion/vct/listVcatn.do");
 		} else {
 
 			if (result.equals("99"))
@@ -240,7 +240,7 @@ public class VcatnManageController {
 		vcatnManageService.updateVcatnManage(vcatnManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/vct/listVcatn.do");
+        return WebUtil.redirectJsp(model, vcatnManageVO, "/uss/ion/vct/listVcatn.do");
 	}
 
 	/**
@@ -257,7 +257,7 @@ public class VcatnManageController {
 		vcatnManageService.deleteVcatnManage(vcatnManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/vct/listVcatn.do");
+        return WebUtil.redirectJsp(model, vcatnManageVO, "/uss/ion/vct/listVcatn.do");
 	}
 
 	/*** 승인관련 ***/
@@ -342,7 +342,7 @@ public class VcatnManageController {
 		vcatnManageService.updateVcatnManageConfm(vcatnManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/vct/listVcatnConfm.do");
+        return WebUtil.redirectJsp(model, vcatnManageVO, "/uss/ion/vct/listVcatnConfm.do");
 	}
 
 }

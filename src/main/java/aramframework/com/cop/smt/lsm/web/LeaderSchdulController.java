@@ -570,7 +570,7 @@ public class LeaderSchdulController {
 		leaderSchdulService.insertLeaderSttus(leaderSttusVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/cop/smt/lsm/listLeaderSttus.do");
+		return WebUtil.redirectJsp(model, leaderSttusVO, "/cop/smt/lsm/listLeaderSttus.do");
 	}
 
 	/**
@@ -617,7 +617,7 @@ public class LeaderSchdulController {
 		leaderSchdulService.updateLeaderSttus(leaderSttusVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/cop/smt/lsm/listLeaderSttus.do");
+		return WebUtil.redirectJsp(model, leaderSttusVO, "/cop/smt/lsm/listLeaderSttus.do");
 	}
 
 	/**
@@ -635,7 +635,7 @@ public class LeaderSchdulController {
 		leaderSchdulService.deleteLeaderSttus(leaderSttusVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/cop/smt/lsm/listLeaderSttus.do");
+		return WebUtil.redirectJsp(model, leaderSttusVO, "/cop/smt/lsm/listLeaderSttus.do");
 	}
 
 }

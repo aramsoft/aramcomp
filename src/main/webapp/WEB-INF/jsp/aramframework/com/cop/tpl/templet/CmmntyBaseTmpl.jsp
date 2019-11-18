@@ -231,7 +231,7 @@ function fn_aram_login(){
 
 function fn_aram_logout(){
 	var url = "${pageContext.request.contextPath}/uat/uia/actionLogout.do";
-	url = url + "?targetUrl=${pageContext.request.contextPath}/${targetVO.homeUrl}";
+	url = url + "?targetUrl=${pageContext.request.contextPath}${targetVO.homeUrl}";
 	fn_aram_load(url);
 }
 

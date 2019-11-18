@@ -56,7 +56,7 @@
 	</div>
 </div>
 
-<form:form commandName="mtgPlaceResveVO" action="" method="post">
+<form:form modelAttribute="mtgPlaceResveVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

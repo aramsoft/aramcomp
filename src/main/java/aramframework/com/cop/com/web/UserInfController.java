@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -184,10 +183,9 @@ public class UserInfController {
 	@RequestMapping("/cop/com/registCmmntyManager.do")
 	@Secured("ROLE_USER")
 	public String registCmmntyManager(
+			@ModelAttribute UserInfVO userInfVO, 
 			@RequestParam(value="param_cmmntyId", required=true) String cmmntyId,
 			@RequestParam(value="param_emplyrId", required=true) String emplyrId,
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute UserInfVO userInfVO, 
 			ModelMap model) {
 
 		checkAuthorityManager(); // server-side 권한 확인
@@ -205,7 +203,7 @@ public class UserInfController {
 		cmmntyService.updateCommunityUserInf(communityUserVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/cop/com/listCmmntyUser.do");
+		return WebUtil.redirectJsp(model, userInfVO, "/cop/com/listCmmntyUser.do");
 	}
 
 	/**
@@ -218,10 +216,9 @@ public class UserInfController {
 	@RequestMapping("/cop/com/deleteCmmntyManager.do")
 	@Secured("ROLE_USER")
 	public String deleteCmmntyManager(
+			@ModelAttribute UserInfVO userInfVO, 
 			@RequestParam(value="param_cmmntyId", required=true) String cmmntyId,
 			@RequestParam(value="param_emplyrId", required=true) String emplyrId,
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute UserInfVO userInfVO, 
 			ModelMap model) {
 
 		checkAuthorityManager(); // server-side 권한 확인
@@ -239,7 +236,7 @@ public class UserInfController {
 		cmmntyService.updateCommunityUserInf(communityUserVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/cop/com/listCmmntyUser.do");
+		return WebUtil.redirectJsp(model, userInfVO, "/cop/com/listCmmntyUser.do");
 	}
 
 	/**
@@ -252,10 +249,9 @@ public class UserInfController {
 	@RequestMapping("/cop/com/reRegistCmmntyUser.do")
 	@Secured("ROLE_USER")
 	public String reRegisterCmmntyUser(
+			@ModelAttribute UserInfVO userInfVO, 
 			@RequestParam(value="param_cmmntyId", required=true) String cmmntyId,
 			@RequestParam(value="param_emplyrId", required=true) String emplyrId,
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute UserInfVO userInfVO, 
 			ModelMap model) {
 
 		checkAuthorityManager(); // server-side 권한 확인
@@ -275,7 +271,7 @@ public class UserInfController {
 		cmmntyService.updateCommunityUserInf(communityUserVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/cop/com/listCmmntyUser.do");
+		return WebUtil.redirectJsp(model, userInfVO, "/cop/com/listCmmntyUser.do");
 	}
 
 	/**
@@ -288,10 +284,9 @@ public class UserInfController {
 	@RequestMapping("/cop/com/deleteCmmntyUser.do")
 	@Secured("ROLE_USER")
 	public String deleteCmmntyUser(
+			@ModelAttribute UserInfVO userInfVO, 
 			@RequestParam(value="param_cmmntyId", required=true) String cmmntyId,
 			@RequestParam(value="param_emplyrId", required=true) String emplyrId,
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute UserInfVO userInfVO, 
 			ModelMap model) {
 
 		checkAuthorityManager(); // server-side 권한 확인
@@ -308,7 +303,7 @@ public class UserInfController {
 		cmmntyService.deleteCommunityUserInf(communityUserVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/cop/com/listCmmntyUser.do");
+		return WebUtil.redirectJsp(model, userInfVO, "/cop/com/listCmmntyUser.do");
 	}
 
 	/**
@@ -321,10 +316,9 @@ public class UserInfController {
 	@RequestMapping("/cop/com/eraseCmmntyUser.do")
 	@Secured("ROLE_USER")
 	public String eraseCmmntyUser(
+			@ModelAttribute UserInfVO userInfVO, 
 			@RequestParam(value="param_cmmntyId", required=true) String cmmntyId,
 			@RequestParam(value="param_emplyrId", required=true) String emplyrId,
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute UserInfVO userInfVO, 
 			ModelMap model) {
 
 		checkAuthorityManager(); // server-side 권한 확인
@@ -341,7 +335,7 @@ public class UserInfController {
 		cmmntyService.eraseCommunityUserInf(communityUserVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/cop/com/listCmmntyUser.do");
+		return WebUtil.redirectJsp(model, userInfVO, "/cop/com/listCmmntyUser.do");
 	}
 
 }

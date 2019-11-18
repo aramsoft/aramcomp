@@ -22,7 +22,6 @@ import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cop.ems.dao.SndngMailMapper;
 import aramframework.com.cop.ems.domain.AtchmnFileVO;
 import aramframework.com.cop.ems.domain.SndngMailVO;
-import aramframework.com.utl.fcc.service.StringUtil;
 import aramframework.com.utl.sim.service.FileTool;
 import aramframework.com.utl.sim.service.XMLDoc;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -112,13 +111,11 @@ public class SndngMailService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param sndngMailVO
 	 */
-	public void deleteSndngMails(String messageIds) {
+	public void deleteSndngMails(String[] messageIds) {
 
-		// 1. 발송메일을 삭제한다.
-		String[] sbuf = StringUtil.split(messageIds, ",");
-		for (int i = 0; i < sbuf.length; i++) {
-			SndngMailVO sndngMailVO = new SndngMailVO();
-			sndngMailVO.setMssageId(sbuf[i]);
+		SndngMailVO sndngMailVO = new SndngMailVO();
+		for (int i = 0; i < messageIds.length; i++) {
+			sndngMailVO.setMssageId(messageIds[i]);
 			deleteSndngMail(sndngMailVO);
 		}
 	}

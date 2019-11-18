@@ -128,7 +128,7 @@ public class MapMaterialController {
 		mapMaterialService.insertMapMaterial(mapMaterialVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/dam/map/mat/listMapMaterial.do");
+		return WebUtil.redirectJsp(model, mapMaterialVO, "/dam/map/mat/listMapMaterial.do");
 	}
 
 	/**
@@ -183,7 +183,7 @@ public class MapMaterialController {
 		mapMaterialService.updateMapMaterial(mapMaterialVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/dam/map/mat/listMapMaterial.do");
+		return WebUtil.redirectJsp(model, mapMaterialVO, "/dam/map/mat/listMapMaterial.do");
 	}
 
 	/**
@@ -200,7 +200,7 @@ public class MapMaterialController {
 		mapMaterialService.deleteMapMaterial(mapMaterialVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/dam/map/mat/listMapMaterial.do");
+		return WebUtil.redirectJsp(model, mapMaterialVO, "/dam/map/mat/listMapMaterial.do");
 	}
 
 }

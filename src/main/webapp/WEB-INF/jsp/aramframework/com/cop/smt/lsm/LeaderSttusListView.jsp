@@ -42,7 +42,7 @@
 	<h2>간부상태 목록</h2>
 </div>
 
-<form:form commandName="leaderSttusVO" action ="" method="post">
+<form:form modelAttribute="leaderSttusVO" action ="" method="post">
 
 <input type="hidden" name="leaderId" value="">
 	

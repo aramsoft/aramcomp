@@ -27,7 +27,7 @@
 	<h2>승인 목록</h2>
 </div>
 
-<form:form commandName="confirmHistoryVO" action ="" method="post">
+<form:form modelAttribute="confirmHistoryVO" action ="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
@@ -76,25 +76,28 @@
 	</tr>
 	</c:if>
 	
-  	<c:set var="searchVO" value="${confirmHistoryVO}"/>
- 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(confirmHistoryVO.pageIndex-1) * confirmHistoryVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
-
-	<c:choose>
-    <c:when test="${result.confmSttusCode == 'AP01'}">
-		<tr class="link" onclick="javascript:fn_aram_detail(<c:out value='${result.confmNumber}'/>); return false;">
-	</c:when>
-    <c:otherwise>
-    	<tr>
-    </c:otherwise>
-   	</c:choose>
-
+   	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${confirmHistoryVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<td class="lt_text3"><c:out value="${result.confmTyCodeNm}"/></td>
-		<td class="lt_text3"><c:out value="${result.confmSttusCodeNm}"/></td>
+		<td class="lt_text3">
+			<c:choose>
+		    <c:when test="${result.confmSttusCode == 'AP01'}">
+		   		<span class="link">
+		   		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.confmNumber}"/>'); return false;">
+					<c:out value="${result.confmSttusCodeNm}"/>
+		   		</a>
+		   		</span>
+			</c:when>
+		    <c:otherwise>
+				<c:out value="${result.confmSttusCodeNm}"/>
+		    </c:otherwise>
+		   	</c:choose>
+		</td>
 		<td class="lt_text3"><c:out value="${result.confmRqesterNm}"/></td>
 		<td class="lt_text3"><c:out value="${result.opertTyCodeNm}"/></td>
 		<td class="lt_text3"><c:out value="${fn:substring(result.confmDe, 0, 4)}-${fn:substring(result.confmDe, 4, 6)}-${fn:substring(result.confmDe, 6, 8)}"/></td>

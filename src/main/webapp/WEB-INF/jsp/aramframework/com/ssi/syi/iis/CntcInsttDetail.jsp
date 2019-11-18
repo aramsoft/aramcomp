@@ -35,7 +35,7 @@
 	</div>
 </div>
 
-<form:form commandName="cntcInsttVO" action="" method="post">
+<form:form modelAttribute="cntcInsttVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
@@ -81,7 +81,7 @@
 	</div>
 </div>
 
-<form:form commandName="cntcSystemVO" action ="" method="post">
+<form:form modelAttribute="cntcSystemVO" action ="" method="post">
 <form:hidden path="insttId" />
 <input type="hidden" name="sysId">
 <input type="hidden" name="svcId">

@@ -1,31 +1,17 @@
 package aramframework.com.sym.ccm.zip.service;
 
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.analysis.standard.StandardAnalyzer;
-import org.apache.lucene.document.Document;
-import org.apache.lucene.index.IndexReader;
-import org.apache.lucene.queryParser.ParseException;
-import org.apache.lucene.queryParser.QueryParser;
-import org.apache.lucene.search.IndexSearcher;
-import org.apache.lucene.search.Query;
-import org.apache.lucene.search.TopDocs;
-import org.apache.lucene.store.FSDirectory;
-import org.apache.lucene.util.Version;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.constant.AramProperties;
 import aramframework.com.sym.ccm.zip.dao.ZipManageMapper;
 import aramframework.com.sym.ccm.zip.domain.ZipVO;
 import aramframework.com.sym.ccm.zip.excel.ExcelZipAramMapping;
@@ -158,7 +144,7 @@ public class ZipManageService extends EgovAbstractServiceImpl {
 
 		List<EgovMap> result = new ArrayList<EgovMap>();
 		int cnt = 0;
-
+/*
 		if( zipVO.getSearchKeyword() != null && !zipVO.getSearchKeyword().equals("") ) {
 	        String indexName = AramProperties.getProperty("Globals.zipIndexPath");       
 	        IndexSearcher searcher = null;         
@@ -190,21 +176,20 @@ public class ZipManageService extends EgovAbstractServiceImpl {
 			}   // run the query 
             LOG.debug("totalRecord = " + hits.totalHits);
 
-/*
-        	PhraseQuery pquery = new PhraseQuery();
-        	pquery.setSlop(0);
-            try {
-            	String[] pharse = queryString.split(" ");
-            	for(int i=0; i < pharse.length; i++) {
-            		pquery.add(new Term("keywards", pharse[i]));
-            	}
-            } catch (Exception e) {                           
-	        	LOG.error(e.getMessage());
-	        	throw e;
-            }
-            hits = searcher.search(pquery, zipVO.getRecordPerPage() + zipVO.getFirstIndex());   // run the query 
-            LOG.debug("totalRecord = " + hits.totalHits);
-*/            
+//        	PhraseQuery pquery = new PhraseQuery();
+//        	pquery.setSlop(0);
+//          try {
+//            	String[] pharse = queryString.split(" ");
+//            	for(int i=0; i < pharse.length; i++) {
+//            		pquery.add(new Term("keywards", pharse[i]));
+//            	}
+//          } catch (Exception e) {                           
+//	        	LOG.error(e.getMessage());
+//	        	throw e;
+//          }
+//          hits = searcher.search(pquery, zipVO.getRecordPerPage() + zipVO.getFirstIndex());   // run the query 
+//          LOG.debug("totalRecord = " + hits.totalHits);
+            
     		EgovMap target = null;
     		int lastIndex = zipVO.getLastIndex();
     		if( lastIndex > hits.totalHits ) lastIndex = hits.totalHits;
@@ -222,7 +207,7 @@ public class ZipManageService extends EgovAbstractServiceImpl {
 			}   
 	        cnt = hits.totalHits;
 		} 
-		
+*/		
 		Map<String, Object> map = new HashMap<String, Object>();
 
 		map.put("resultList", result);

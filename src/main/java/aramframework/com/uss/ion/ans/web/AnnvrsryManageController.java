@@ -175,7 +175,7 @@ public class AnnvrsryManageController {
 		annvrsryManageService.insertAnnvrsryManage(annvrsryManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/ion/ans/listAnnvrsry.do");
+        return WebUtil.redirectJsp(model, annvrsryManageVO, "/uss/ion/ans/listAnnvrsry.do");
 	}
 
 	/**
@@ -219,7 +219,7 @@ public class AnnvrsryManageController {
 		annvrsryManageService.updateAnnvrsryManage(annvrsryManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/ans/listAnnvrsry.do");
+        return WebUtil.redirectJsp(model, annvrsryManageVO, "/uss/ion/ans/listAnnvrsry.do");
 	}
 
 	/**
@@ -236,7 +236,7 @@ public class AnnvrsryManageController {
 		annvrsryManageService.deleteAnnvrsryManage(annvrsryManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/ans/listAnnvrsry.do");
+        return WebUtil.redirectJsp(model, annvrsryManageVO, "/uss/ion/ans/listAnnvrsry.do");
 	}
 
 	/**

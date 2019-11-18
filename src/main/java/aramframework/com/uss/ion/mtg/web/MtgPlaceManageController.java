@@ -157,7 +157,7 @@ public class MtgPlaceManageController {
 		mtgPlaceManageService.insertMtgPlaceManage(mtgPlaceManageVO, checkedMtgPlacesForInsert);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/ion/mtg/listMtgPlace.do");
+        return WebUtil.redirectJsp(model, mtgPlaceManageVO, "/uss/ion/mtg/listMtgPlace.do");
 	}
 
 	/**
@@ -212,7 +212,7 @@ public class MtgPlaceManageController {
 		mtgPlaceManageService.updateMtgPlaceManage(mtgPlaceManageVO, checkedMtgPlacesForInsert);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/mtg/listMtgPlace.do");
+        return WebUtil.redirectJsp(model, mtgPlaceManageVO, "/uss/ion/mtg/listMtgPlace.do");
 	}
 
 	/**
@@ -230,7 +230,7 @@ public class MtgPlaceManageController {
 		mtgPlaceManageService.deleteMtgPlaceManage(mtgPlaceManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/mtg/listMtgPlace.do");
+        return WebUtil.redirectJsp(model, mtgPlaceManageVO, "/uss/ion/mtg/listMtgPlace.do");
 	}
 
 	/**
@@ -391,7 +391,7 @@ public class MtgPlaceManageController {
 		mtgPlaceManageService.insertMtgPlaceResve(mtgPlaceResveVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/ion/mtg/listMtgPlaceResve.do");
+        return WebUtil.redirectJsp(model, mtgPlaceResveVO, "/uss/ion/mtg/listMtgPlaceResve.do");
 	}
 
 	/**
@@ -436,7 +436,7 @@ public class MtgPlaceManageController {
 		mtgPlaceManageService.updateMtgPlaceResve(mtgPlaceResveVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/mtg/listMtgPlaceResve.do");
+        return WebUtil.redirectJsp(model, mtgPlaceResveVO, "/uss/ion/mtg/listMtgPlaceResve.do");
 	}
 
 	/**
@@ -454,7 +454,7 @@ public class MtgPlaceManageController {
 		mtgPlaceManageService.deleteMtgPlaceResve(mtgPlaceResveVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/mtg/listMtgPlaceResve.do");
+        return WebUtil.redirectJsp(model, mtgPlaceResveVO, "/uss/ion/mtg/listMtgPlaceResve.do");
 	}
 
 	/**

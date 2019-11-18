@@ -43,7 +43,7 @@
 	<h2>일정관리 목록</h2>
 </div>
 
-<form:form commandName="schdulManageVO" action="" method="post">
+<form:form modelAttribute="schdulManageVO" action="" method="post">
 
 <div id="search_area">
 	<div class="button_area">
@@ -84,13 +84,11 @@
  	</c:if>
 
 	<%-- 데이터를 화면에 출력해준다 --%>
-  	<c:set var="searchVO" value="${schdulManageVO}"/>
- 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(schdulManageVO.pageIndex-1) * schdulManageVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
-	<tr class="link" onClick="javaScript:fn_aram_choose('${result.schdulId}', '${result.schdulNm}'); return false;">
-
+	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${schdulManageVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<td class="lt_text3">
@@ -98,7 +96,13 @@
 			 <c:if test="${result.othbcScope == 'G'}">전체</c:if>
 			 <c:if test="${result.othbcScope == 'C'}">커뮤니티</c:if>
 		</td>
-		<td class="lt_text3">${result.schdulNm}</td>
+		<td class="lt_text3">
+	   		<span class="link">
+	   		<a href="#" onclick="javascript:fn_aram_choose('${result.schdulId}', '${result.schdulNm}'); return false;">
+				${result.schdulNm}
+	   		</a>
+	   		</span>
+		</td>
 		<td class="lt_text3">${fn:substring(result.schdulBgnde, 0, 4)}-${fn:substring(result.schdulBgnde, 4, 6)}-${fn:substring(result.schdulBgnde, 6, 8)}</td>
 		<td class="lt_text3">${fn:substring(result.schdulEndde, 0, 4)}-${fn:substring(result.schdulEndde, 4, 6)}-${fn:substring(result.schdulEndde, 6, 8)}</td>
 	  </tr>

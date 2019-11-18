@@ -134,7 +134,7 @@ public class AdministCodeRecptnController {
 		
 		administCodeManageService.insertAdministCodeRecptn();
 		
-        return WebUtil.redirectJsp(model, "/sym/ccm/acr/listAdministCodeRecptn.do");
+        return WebUtil.redirectJsp(model, administCodeRecptnVO, "/sym/ccm/acr/listAdministCodeRecptn.do");
 	}
 	
 }

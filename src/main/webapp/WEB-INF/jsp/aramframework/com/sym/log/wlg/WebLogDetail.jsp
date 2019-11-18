@@ -47,7 +47,7 @@
 	</div>
 </div>
 
-<form:form commandName="webLogVO" action="" method="post"> 
+<form:form modelAttribute="webLogVO" action="" method="post"> 
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
@@ -99,6 +99,7 @@
 <!-- 검색조건 유지 -->
 <form:hidden path="searchBgnDe" />
 <form:hidden path="searchEndDe" />
+<input type="hidden" name="searchCondition" value="${searchVO.searchCondition}" />
 <input type="hidden" name="searchKeyword"   value="${searchVO.searchKeyword}" />
 <input type="hidden" name="pageIndex"       value="${searchVO.pageIndex}" />
 <input type="hidden" name="recordPerPage"   value="${searchVO.recordPerPage}" />

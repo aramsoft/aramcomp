@@ -121,7 +121,7 @@ public class AdministCodeManageController {
 		administCodeManageService.insertAdministCode(administCodeVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/sym/ccm/adc/listAdministCode.do");
+        return WebUtil.redirectJsp(model, administCodeVO, "/sym/ccm/adc/listAdministCode.do");
 	}
 
 	/**
@@ -165,7 +165,7 @@ public class AdministCodeManageController {
 		administCodeManageService.updateAdministCode(administCodeVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/sym/ccm/adc/listAdministCode.do");
+        return WebUtil.redirectJsp(model, administCodeVO, "/sym/ccm/adc/listAdministCode.do");
 	}
 
 	/**
@@ -183,7 +183,7 @@ public class AdministCodeManageController {
 		administCodeManageService.deleteAdministCode(administCodeVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/sym/ccm/adc/listAdministCode.do");
+        return WebUtil.redirectJsp(model, administCodeVO, "/sym/ccm/adc/listAdministCode.do");
 	}
 
 	/**

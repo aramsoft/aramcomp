@@ -43,7 +43,7 @@
 	<h2>설문문항 목록 팝업</h2>
 </div>
 
-<form:form commandName="qustnrQestnManageVO" action="" method="post">
+<form:form modelAttribute="qustnrQestnManageVO" action="" method="post">
 
 <div id="search_area">
 	<div class="button_area">

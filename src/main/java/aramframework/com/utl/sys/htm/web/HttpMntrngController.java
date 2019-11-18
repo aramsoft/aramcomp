@@ -125,7 +125,7 @@ public class HttpMntrngController {
 		httpMntrngService.insertHttpMntrng(httpMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, "/utl/sys/htm/listHttpMntrng.do");
+	    return WebUtil.redirectJsp(model, httpMntrngVO, "/utl/sys/htm/listHttpMntrng.do");
 	}
 
 	/**
@@ -170,7 +170,7 @@ public class HttpMntrngController {
 		httpMntrngService.updateHttpMntrng(httpMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, "/utl/sys/htm/listHttpMntrng.do");
+	    return WebUtil.redirectJsp(model, httpMntrngVO, "/utl/sys/htm/listHttpMntrng.do");
 	}
 
 	/**
@@ -188,7 +188,7 @@ public class HttpMntrngController {
 		httpMntrngService.deleteHttpMntrng(httpMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, "/utl/sys/htm/listHttpMntrng.do");
+	    return WebUtil.redirectJsp(model, httpMntrngVO, "/utl/sys/htm/listHttpMntrng.do");
 	}
 
 	/**

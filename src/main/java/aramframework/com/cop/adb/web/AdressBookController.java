@@ -91,7 +91,7 @@ public class AdressBookController {
 	@RequestMapping("/cop/adb/registAdressBook.do")
 	@Secured("ROLE_USER")
 	public String registAdressBook(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AdressBookVO adressBookVO, 
 			ModelMap model) {
 		
@@ -107,7 +107,7 @@ public class AdressBookController {
 	@RequestMapping("/cop/adb/insertAdressBook.do")
 	@Secured("ROLE_USER")
 	public String insertAdressBook(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AdressBookVO adressBookVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -134,7 +134,7 @@ public class AdressBookController {
 		adressBookService.insertAdressBook(adressBookVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/cop/adb/listAdressBook.do");
+		return WebUtil.redirectJsp(model, adressBookVO, "/cop/adb/listAdressBook.do");
 	}
 
 	/**
@@ -145,7 +145,7 @@ public class AdressBookController {
 	@RequestMapping("/cop/adb/editAdressBook.do")
 	@Secured("ROLE_USER")
 	public String editAdressBook(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AdressBookVO adressBookVO, 
 			ModelMap model) {
 
@@ -191,7 +191,7 @@ public class AdressBookController {
 	@RequestMapping("/cop/adb/updateAdressBook.do")
 	@Secured("ROLE_USER")
 	public String updateAdressBook(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AdressBookVO adressBookVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -218,7 +218,7 @@ public class AdressBookController {
 		adressBookService.updateAdressBook(adressBookVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/cop/adb/listAdressBook.do");
+		return WebUtil.redirectJsp(model, adressBookVO, "/cop/adb/listAdressBook.do");
 	}
 	
 	/**
@@ -229,7 +229,6 @@ public class AdressBookController {
 	@RequestMapping("/cop/adb/deleteAdressBook.do")
 	@Secured("ROLE_USER")
 	public String deleteAdressBook(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AdressBookVO adressBookVO, 
 			ModelMap model) {
 
@@ -242,13 +241,13 @@ public class AdressBookController {
 		adressBookService.deleteAdressBook(adressBookVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/cop/adb/listAdressBook.do");
+		return WebUtil.redirectJsp(model, adressBookVO, "/cop/adb/listAdressBook.do");
 	}
 
 	/**
 	 * 주소록 등록가능한 구성원을 조회한다.
 	 * 
-	 * @param searchVO
+	 * @param adressBookUserVO
 	 */
 	@RequestMapping("/cop/adb/listUserPopup.do")
 	@Secured("ROLE_USER")

@@ -61,7 +61,7 @@ public class WebLogController {
 	@RequestMapping(value = "/sym/log/wlg/detailWebLog.do")
 	@Secured("ROLE_ADMIN")
 	public String detailWebLog(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute WebLogVO webLogVO,
 			ModelMap model) {
 

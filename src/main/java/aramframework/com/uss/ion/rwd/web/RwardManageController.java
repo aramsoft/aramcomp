@@ -137,7 +137,7 @@ public class RwardManageController {
 		rwardManageService.insertRwardManage(rwardManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/ion/rwd/listRward.do");
+        return WebUtil.redirectJsp(model, rwardManageVO, "/uss/ion/rwd/listRward.do");
 	}
 
 	/**
@@ -188,7 +188,7 @@ public class RwardManageController {
 		rwardManageService.updtRwardManage(rwardManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/rwd/listRward.do");
+        return WebUtil.redirectJsp(model, rwardManageVO, "/uss/ion/rwd/listRward.do");
 	}
 
 	/**
@@ -208,7 +208,7 @@ public class RwardManageController {
 		rwardManageService.deleteRwardManage(rwardManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/rwd/listRward.do");
+        return WebUtil.redirectJsp(model, rwardManageVO, "/uss/ion/rwd/listRward.do");
 	}
 
 	/*** 승인관련 ***/
@@ -287,7 +287,7 @@ public class RwardManageController {
 		rwardManageService.updtRwardManageConfm(rwardManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/rwd/listRward.do");
+        return WebUtil.redirectJsp(model, rwardManageVO, "/uss/ion/rwd/listRward.do");
 	}
 	
 }

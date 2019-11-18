@@ -1,5 +1,7 @@
 package aramframework.com.sym.mnu.mpm.web;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -7,7 +9,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
@@ -84,7 +85,7 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/registMenu.do")
 	@Secured("ROLE_ADMIN")
 	public String registMenu(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO) {
 		
 		return WebUtil.adjustViewName("/sym/mnu/mpm/MenuRegist");
@@ -98,7 +99,7 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/insertMenu.do")
 	@Secured("ROLE_ADMIN")
 	public String insertMenu(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -121,7 +122,7 @@ public class MenuManageController {
 		menuManageService.insertMenuManage(menuManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/sym/mnu/mpm/listMenu.do");
+        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenu.do");
 	}
 
 	/**
@@ -132,7 +133,7 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/editMenu.do")
 	@Secured("ROLE_ADMIN")
 	public String editMenu(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO, 
 			ModelMap model) {
 
@@ -149,7 +150,7 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/updateMenu.do")
 	@Secured("ROLE_ADMIN")
 	public String updateMenu(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -167,7 +168,7 @@ public class MenuManageController {
 		menuManageService.updateMenuManage(menuManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/sym/mnu/mpm/listMenu.do");
+        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenu.do");
 	}
 
 	/**
@@ -178,13 +179,12 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/deleteMenu.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteMenu(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO, 
 			ModelMap model) {
 		
 		if (menuManageService.selectUpperMenuNoByPk(menuManageVO) != 0) {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.delete.upperMenuExist"));
-	        return WebUtil.redirectJsp(model, "/sym/mnu/mpm/listMenu.do");
+	        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenu.do");
 		}
 
 		menuManageService.deleteMenuManage(menuManageVO);
@@ -193,7 +193,7 @@ public class MenuManageController {
 		menuManageVO.setMenuNm(_MenuNm);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/sym/mnu/mpm/listMenu.do");
+        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenu.do");
 	}
 
 	/**
@@ -205,28 +205,29 @@ public class MenuManageController {
 	@RequestMapping(value="/sym/mnu/mpm/deleteListMenu.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteListMenu(
-			@RequestParam String checkedMenuNoForDel,
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO, 
+			HttpServletRequest request, 
 			ModelMap model) {
 
-		String[] delMenuNo = checkedMenuNoForDel.split(",");
-		menuManageVO.setMenuNo(Integer.parseInt(delMenuNo[0]));
+    	String[] delMenuNos = null;
+    	if(request.getParameterValues("uniqIds") != null) 
+    		delMenuNos = request.getParameterValues("uniqIds"); 
 
+		menuManageVO.setMenuNo(Integer.parseInt(delMenuNos[0]));
 		if (menuManageService.selectUpperMenuNoByPk(menuManageVO) != 0) {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.delete.upperMenuExist"));
-	        return WebUtil.redirectJsp(model, "/sym/mnu/mpm/listMenu.do");
+	        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenu.do");
 		} 
 		
-		if (delMenuNo == null || (delMenuNo.length == 0)) {
+		if (delMenuNos == null || (delMenuNos.length == 0)) {
 			model.addAttribute("message",  MessageHelper.getMessage("fail.common.delete"));
-	        return WebUtil.redirectJsp(model, "/sym/mnu/mpm/listMenu.do");
+	        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenu.do");
 		} 
 
-		menuManageService.deleteMenuManageList(checkedMenuNoForDel);
+		menuManageService.deleteMenuManageList(delMenuNos);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/sym/mnu/mpm/listMenu.do");
+        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenu.do");
 	}
 
 	/**
@@ -254,7 +255,6 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/insertMenuTree.do")
 	@Secured("ROLE_ADMIN")
 	public String insertMenuTree(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -266,17 +266,17 @@ public class MenuManageController {
 
 		if (menuManageService.selectMenuNoByPk(menuManageVO) != 0) {
 			model.addAttribute("message", MessageHelper.getMessage("common.isExist.msg"));
-	        return WebUtil.redirectJsp(model, "/sym/mnu/mpm/listMenuTree.do");
+	        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenuTree.do");
 		}
 		if (progrmManageService.selectProgrmNMTotCnt(menuManageVO.getProgrmFileNm()) == 0) {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.insert"));
-	        return WebUtil.redirectJsp(model, "/sym/mnu/mpm/listMenuTree.do");
+	        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenuTree.do");
 		} 
 		
 		menuManageService.insertMenuManage(menuManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/sym/mnu/mpm/listMenuTree.do");
+        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenuTree.do");
 	}
 
 	/**
@@ -287,25 +287,24 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/updateMenuTree.do")
 	@Secured("ROLE_ADMIN")
 	public String updateMenuTree(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(menuManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-	        return WebUtil.redirectJsp(model, "/sym/mnu/mpm/listMenuTree.do");
+	        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenuTree.do");
 		}
 		
 		if (progrmManageService.selectProgrmNMTotCnt(menuManageVO.getProgrmFileNm()) == 0) {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.update"));
-	        return WebUtil.redirectJsp(model, "/sym/mnu/mpm/listMenuTree.do");
+	        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenuTree.do");
 		} 
 		
 		menuManageService.updateMenuManage(menuManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/sym/mnu/mpm/listMenuTree.do");
+        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenuTree.do");
 	}
 
 	/**
@@ -316,7 +315,6 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/deleteMenuTree.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteMenuTree(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -324,7 +322,7 @@ public class MenuManageController {
 		menuManageService.deleteMenuManage(menuManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/sym/mnu/mpm/listMenuTree.do");
+        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenuTree.do");
 	}
 
 	/**
@@ -335,7 +333,6 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/moveMenuTree.do")
 	@Secured("ROLE_ADMIN")
 	public String moveMenuTree(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO, 
 			ModelMap model) {
 
@@ -354,7 +351,6 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/deleteMenuBnde.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteMenuBnde(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO, 
 			ModelMap model) {
 
@@ -372,7 +368,6 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/registMenuBnde.do")
 	@Secured("ROLE_ADMIN")
 	public String registMenuBnde(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO) {
 
 		return WebUtil.adjustViewName("/sym/mnu/mpm/MenuBndeRegist");
@@ -387,9 +382,8 @@ public class MenuManageController {
 	@RequestMapping(value = "/sym/mnu/mpm/insertMenuBnde.do")
 	@Secured("ROLE_ADMIN")
 	public String insertMenuBnde(
-			MultipartHttpServletRequest multiRequest,
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO, 
+			MultipartHttpServletRequest multiRequest,
 			ModelMap model)
 	throws Exception {
 

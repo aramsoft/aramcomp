@@ -125,7 +125,7 @@ public class NewsManageController {
 		newsManageService.insertNewsInfo(newsManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/ion/nws/listNewsInfo.do");
+        return WebUtil.redirectJsp(model, newsManageVO, "/uss/ion/nws/listNewsInfo.do");
 	}
 
 	/**
@@ -177,7 +177,7 @@ public class NewsManageController {
 		newsManageService.updateNewsInfo(newsManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/nws/listNewsInfo.do");
+        return WebUtil.redirectJsp(model, newsManageVO, "/uss/ion/nws/listNewsInfo.do");
 	}
 
 	/**
@@ -195,7 +195,7 @@ public class NewsManageController {
 		newsManageService.deleteNewsInfo(newsManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/nws/listNewsInfo.do");
+        return WebUtil.redirectJsp(model, newsManageVO, "/uss/ion/nws/listNewsInfo.do");
 	}
 
 }

@@ -27,7 +27,7 @@
 	<h2>지식평가 목록</h2> 
 </div>
 
-<form:form commandName="knoAppraisalVO" action="" method="post">
+<form:form modelAttribute="knoAppraisalVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

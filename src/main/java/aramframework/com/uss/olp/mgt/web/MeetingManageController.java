@@ -148,7 +148,7 @@ public class MeetingManageController {
 		meetingManageService.insertMeetingManage(meetingManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/olp/mgt/listMeeting.do");
+        return WebUtil.redirectJsp(model, meetingManageVO, "/uss/olp/mgt/listMeeting.do");
 	}
 
 	/**
@@ -194,7 +194,7 @@ public class MeetingManageController {
 		meetingManageService.updateMeetingManage(meetingManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/olp/mgt/listMeeting.do");
+        return WebUtil.redirectJsp(model, meetingManageVO, "/uss/olp/mgt/listMeeting.do");
 	}
 
 	/**
@@ -212,7 +212,7 @@ public class MeetingManageController {
 		meetingManageService.deleteMeetingManage(meetingManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/olp/mgt/listMeeting.do");
+        return WebUtil.redirectJsp(model, meetingManageVO, "/uss/olp/mgt/listMeeting.do");
 	}
 
 }

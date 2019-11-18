@@ -28,10 +28,10 @@ public class BatchShellScriptJob implements Job {
 		JobDataMap dataMap = jobContext.getJobDetail().getJobDataMap();
 
 		if (LOG.isDebugEnabled()) {
-			LOG.debug("job[" + jobContext.getJobDetail().getName() + "] " + "Trigger이름 : " + jobContext.getTrigger().getName());
-			LOG.debug("job[" + jobContext.getJobDetail().getName() + "] " + "BatchOpert이름 : " + dataMap.getString("batchOpertId"));
-			LOG.debug("job[" + jobContext.getJobDetail().getName() + "] " + "BatchProgram이름 : " + dataMap.getString("batchProgrm"));
-			LOG.debug("job[" + jobContext.getJobDetail().getName() + "] " + "Parameter이름 : " + dataMap.getString("paramtr"));
+			LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "Trigger이름 : " + jobContext.getTrigger().getKey().getName());
+			LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "BatchOpert이름 : " + dataMap.getString("batchOpertId"));
+			LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "BatchProgram이름 : " + dataMap.getString("batchProgrm"));
+			LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "Parameter이름 : " + dataMap.getString("paramtr"));
 		}
 
 		int result = executeProgram(dataMap.getString("batchProgrm"), dataMap.getString("paramtr"));

@@ -94,7 +94,7 @@ public String DateTypeIntForString(int iInput){
 
 <DIV id="main" style="width:100%;">
 
-<form:form commandName="leaderSchdulVO" action="" method="post">
+<form:form modelAttribute="leaderSchdulVO" action="" method="post">
 <form:hidden path="year" />
 <form:hidden path="month" />
 <form:hidden path="week" />

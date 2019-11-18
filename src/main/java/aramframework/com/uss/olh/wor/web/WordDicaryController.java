@@ -115,7 +115,7 @@ public class WordDicaryController {
 		wordDicaryService.insertWordDicary(wordDicaryVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/olh/wor/listWordDicary.do");
+        return WebUtil.redirectJsp(model, wordDicaryVO, "/uss/olh/wor/listWordDicary.do");
 	}
 
 	/**
@@ -161,7 +161,7 @@ public class WordDicaryController {
 		wordDicaryService.updateWordDicary(wordDicaryVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/olh/wor/listWordDicary.do");
+        return WebUtil.redirectJsp(model, wordDicaryVO, "/uss/olh/wor/listWordDicary.do");
 	}
 
 	/**
@@ -179,7 +179,7 @@ public class WordDicaryController {
 		wordDicaryService.deleteWordDicary(wordDicaryVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/olh/wor/listWordDicary.do");
+        return WebUtil.redirectJsp(model, wordDicaryVO, "/uss/olh/wor/listWordDicary.do");
 	}
 
 }

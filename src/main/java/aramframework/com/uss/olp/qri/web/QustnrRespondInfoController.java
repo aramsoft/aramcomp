@@ -246,7 +246,7 @@ public class QustnrRespondInfoController {
 		String ReusltScript = "설문참여에 응해주셔서 감사합니다";
 
 		model.addAttribute("message", ReusltScript);
-	    return WebUtil.redirectJsp(model, "/uss/olp/qri/listQustnrRespondInfoUser.do");
+	    return WebUtil.redirectJsp(model, qustnrRespondInfoVO, "/uss/olp/qri/listQustnrRespondInfoUser.do");
 	}
 	
 	/**
@@ -373,7 +373,7 @@ public class QustnrRespondInfoController {
 		qustnrRespondInfoService.insertQustnrRespondInfo(qustnrRespondInfoVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, "/uss/olp/qri/listQustnrRespondInfo.do");
+	    return WebUtil.redirectJsp(model, qustnrRespondInfoVO, "/uss/olp/qri/listQustnrRespondInfo.do");
 	}
 	
 	/**
@@ -419,7 +419,7 @@ public class QustnrRespondInfoController {
 		qustnrRespondInfoService.updateQustnrRespondInfo(qustnrRespondInfoVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, "/uss/olp/qri/listQustnrRespondInfo.do");
+	    return WebUtil.redirectJsp(model, qustnrRespondInfoVO, "/uss/olp/qri/listQustnrRespondInfo.do");
 	}
 
 	/**
@@ -437,7 +437,7 @@ public class QustnrRespondInfoController {
 		qustnrRespondInfoService.deleteQustnrRespondInfo(qustnrRespondInfoVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, "/uss/olp/qri/listQustnrRespondInfo.do");
+	    return WebUtil.redirectJsp(model, qustnrRespondInfoVO, "/uss/olp/qri/listQustnrRespondInfo.do");
 	}
 
 }

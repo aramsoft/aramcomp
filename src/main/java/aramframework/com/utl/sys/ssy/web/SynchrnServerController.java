@@ -138,7 +138,7 @@ public class SynchrnServerController {
 		synchrnServerService.insertSynchrnServer(synchrnServerVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, "/utl/sys/ssy/listSynchrnServer.do");
+	    return WebUtil.redirectJsp(model, synchrnServerVO, "/utl/sys/ssy/listSynchrnServer.do");
 	}
 
 	/**
@@ -185,7 +185,7 @@ public class SynchrnServerController {
 		synchrnServerService.updateSynchrnServer(synchrnServerVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, "/utl/sys/ssy/listSynchrnServer.do");
+	    return WebUtil.redirectJsp(model, synchrnServerVO, "/utl/sys/ssy/listSynchrnServer.do");
 	}
 
 	/**
@@ -203,7 +203,7 @@ public class SynchrnServerController {
 		synchrnServerService.deleteSynchrnServer(synchrnServerVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, "/utl/sys/ssy/listSynchrnServer.do");
+	    return WebUtil.redirectJsp(model, synchrnServerVO, "/utl/sys/ssy/listSynchrnServer.do");
 	}
 
 	/**
@@ -233,7 +233,7 @@ public class SynchrnServerController {
 		 * }
 		 */
 
-	    return WebUtil.redirectJsp(model, "/utl/sys/ssy/listSynchrnServer.do");
+	    return WebUtil.redirectJsp(model, synchrnServerVO, "/utl/sys/ssy/listSynchrnServer.do");
 	}
 
 	/**
@@ -253,7 +253,7 @@ public class SynchrnServerController {
 		synchrnServerService.deleteSynchrnServerFile(synchrnServerVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, "/utl/sys/ssy/listSynchrnServer.do");
+	    return WebUtil.redirectJsp(model, synchrnServerVO, "/utl/sys/ssy/listSynchrnServer.do");
 	}
 
 	/**
@@ -275,7 +275,7 @@ public class SynchrnServerController {
 		synchrnServerVO.setFilePath(uploadDir);
 		synchrnServerService.downloadFtpFile(synchrnServerVO, fileNm);
 
-	    return WebUtil.redirectJsp(model, "/utl/sys/ssy/listSynchrnServer.do");
+	    return WebUtil.redirectJsp(model, synchrnServerVO, "/utl/sys/ssy/listSynchrnServer.do");
 	}
 
 	/**
@@ -297,7 +297,7 @@ public class SynchrnServerController {
 
 		synchrnServerService.writeFile(multipartFile, fileName, uploadDir, synchrnServerVO);
 
-	    return WebUtil.redirectJsp(model, "/utl/sys/ssy/listSynchrnServer.do");
+	    return WebUtil.redirectJsp(model, synchrnServerVO, "/utl/sys/ssy/listSynchrnServer.do");
 	}
 
 	/**
@@ -318,7 +318,7 @@ public class SynchrnServerController {
 		synchrnServerService.deleteFile(deleteFiles, uploadDir, synchrnServerVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, "/utl/sys/ssy/listSynchrnServer.do");
+	    return WebUtil.redirectJsp(model, synchrnServerVO, "/utl/sys/ssy/listSynchrnServer.do");
 	}
 
 }

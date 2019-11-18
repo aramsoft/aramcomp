@@ -178,7 +178,7 @@ public class MemoReprtController {
 		memoReprtService.insertMemoReprt(memoReprtVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/cop/smt/mrm/listMemoReprt.do");
+		return WebUtil.redirectJsp(model, memoReprtVO, "/cop/smt/mrm/listMemoReprt.do");
 	}
 
 	/**
@@ -228,7 +228,7 @@ public class MemoReprtController {
 		memoReprtService.updateMemoReprt(memoReprtVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/cop/smt/mrm/listMemoReprt.do");
+		return WebUtil.redirectJsp(model, memoReprtVO, "/cop/smt/mrm/listMemoReprt.do");
 	}
 
 	/**
@@ -246,7 +246,7 @@ public class MemoReprtController {
 		memoReprtService.deleteMemoReprt(memoReprtVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/cop/smt/mrm/listMemoReprt.do");
+		return WebUtil.redirectJsp(model, memoReprtVO, "/cop/smt/mrm/listMemoReprt.do");
 	}
 
 	/**
@@ -264,7 +264,7 @@ public class MemoReprtController {
 		memoReprtService.updateMemoReprtDrctMatter(memoReprtVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/cop/smt/mrm/listMemoReprt.do");
+		return WebUtil.redirectJsp(model, memoReprtVO, "/cop/smt/mrm/listMemoReprt.do");
 	}
 
 }

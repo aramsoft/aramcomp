@@ -42,7 +42,7 @@
 	<h2>작성 비밀번호 확인</h2>
 </div>
 
-<form:form commandName="cnsltManageVO" action="" method="post" onsubmit="fn_aram_confirm_qnapassword();">
+<form:form modelAttribute="cnsltManageVO" action="" method="post" onsubmit="fn_aram_confirm_qnapassword();">
 
 <!-- 등록  폼 영역  -->
 <table border="0" class="table-register">

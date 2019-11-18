@@ -30,7 +30,7 @@
 	</a>
 </div>
 
-<form:form commandName="restdeVO" action="" method="post">
+<form:form modelAttribute="restdeVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
@@ -77,17 +77,21 @@
 	</tr>
 	</c:if>
 	
-  	<c:set var="searchVO" value="${restdeVO}"/>
- 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(restdeVO.pageIndex-1) * restdeVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
-	<tr class="link" onclick="javascript:fn_aram_detail('${result.restdeNo}'); return false;">
-
+	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${restdeVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<td class="lt_text3"><c:out value='${fn:substring(result.restdeDe, 0,4)}-${fn:substring(result.restdeDe,  4,6)}-${fn:substring(result.restdeDe, 6, 8)}'/></td>
-		<td class="lt_text">${result.restdeNm}</td>
+		<td class="lt_text">
+			<span class="link">
+    		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.restdeNo}"/>'); return false;">
+				${result.restdeNm}
+    		</a>
+			</span>
+ 		</td>
 		<td class="lt_text3">${result.restdeSe}</td>
 	</tr>
 	</c:forEach>

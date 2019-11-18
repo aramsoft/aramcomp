@@ -25,7 +25,7 @@
 <DIV id="main">
 
 <!-- 상단타이틀 -->
-<form:form commandName="insttCodeRecptnVO" method="post">
+<form:form modelAttribute="insttCodeRecptnVO" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

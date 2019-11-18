@@ -69,7 +69,7 @@ public class IndvdlInfoPolicyController {
 	@RequestMapping(value = "/uss/sam/ipm/detailIndvdlInfoPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String detailIndvdlInfoPolicy(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IndvdlInfoPolicyVO indvdlInfoPolicyVO,
 			ModelMap model) {
 
@@ -86,7 +86,7 @@ public class IndvdlInfoPolicyController {
 	@RequestMapping(value = "/uss/sam/ipm/registIndvdlInfoPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String registIndvdlInfoPolicy(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IndvdlInfoPolicyVO indvdlInfoPolicyVO) {
 
 		return WebUtil.adjustViewName("/uss/sam/ipm/IndvdlInfoPolicyRegist");
@@ -100,7 +100,7 @@ public class IndvdlInfoPolicyController {
 	@RequestMapping(value = "/uss/sam/ipm/insertIndvdlInfoPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String insertIndvdlInfoPolicy(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IndvdlInfoPolicyVO indvdlInfoPolicyVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -119,7 +119,7 @@ public class IndvdlInfoPolicyController {
 		indvdlInfoPolicyService.insertIndvdlInfoPolicy(indvdlInfoPolicyVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, "/uss/sam/ipm/listIndvdlInfoPolicy.do");
+	    return WebUtil.redirectJsp(model, indvdlInfoPolicyVO, "/uss/sam/ipm/listIndvdlInfoPolicy.do");
 	}
 
 	/**
@@ -130,7 +130,7 @@ public class IndvdlInfoPolicyController {
 	@RequestMapping(value = "/uss/sam/ipm/editIndvdlInfoPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String editIndvdlInfoPolicy(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IndvdlInfoPolicyVO indvdlInfoPolicyVO,
 			ModelMap model) {
 
@@ -147,7 +147,7 @@ public class IndvdlInfoPolicyController {
 	@RequestMapping(value = "/uss/sam/ipm/updateIndvdlInfoPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String updateIndvdlInfoPolicy(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IndvdlInfoPolicyVO indvdlInfoPolicyVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -165,7 +165,7 @@ public class IndvdlInfoPolicyController {
 		indvdlInfoPolicyService.updateIndvdlInfoPolicy(indvdlInfoPolicyVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, "/uss/sam/ipm/listIndvdlInfoPolicy.do");
+	    return WebUtil.redirectJsp(model, indvdlInfoPolicyVO, "/uss/sam/ipm/listIndvdlInfoPolicy.do");
 	}
 
 	/**
@@ -176,14 +176,13 @@ public class IndvdlInfoPolicyController {
 	@RequestMapping(value = "/uss/sam/ipm/deleteIndvdlInfoPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteIndvdlInfoPolicy(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IndvdlInfoPolicyVO indvdlInfoPolicyVO, 
 			ModelMap model) {
 
 		indvdlInfoPolicyService.deleteIndvdlInfoPolicy(indvdlInfoPolicyVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, "/uss/sam/ipm/listIndvdlInfoPolicy.do");
+	    return WebUtil.redirectJsp(model, indvdlInfoPolicyVO, "/uss/sam/ipm/listIndvdlInfoPolicy.do");
 	}
 
 }

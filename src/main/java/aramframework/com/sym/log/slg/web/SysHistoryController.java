@@ -78,7 +78,7 @@ public class SysHistoryController {
 	@RequestMapping(value = "/sym/log/slg/detailSysHistory.do")
 	@Secured("ROLE_ADMIN")
 	public String detailSysHistory(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SysHistoryVO sysHistoryVO,
 			ModelMap model) {
 
@@ -95,7 +95,7 @@ public class SysHistoryController {
 	@RequestMapping(value = "/sym/log/slg/registSysHistory.do")
 	@Secured("ROLE_ADMIN")
 	public String registSysHistory(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SysHistoryVO sysHistoryVO, 
 			ModelMap model) {
 
@@ -112,10 +112,10 @@ public class SysHistoryController {
 	@RequestMapping(value = "/sym/log/slg/insertSysHistory.do")
 	@Secured("ROLE_ADMIN")
 	public String insertSysHistory(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SysHistoryVO sysHistoryVO, 
 			BindingResult bindingResult,
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception {
 
@@ -133,7 +133,7 @@ public class SysHistoryController {
 		sysHistoryService.insertSysHistory(sysHistoryVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/sym/log/slg/listSysHistory.do");
+        return WebUtil.redirectJsp(model, sysHistoryVO, "/sym/log/slg/listSysHistory.do");
 	}
 
 	/**
@@ -144,7 +144,7 @@ public class SysHistoryController {
 	@RequestMapping(value = "/sym/log/slg/editSysHistory.do")
 	@Secured("ROLE_ADMIN")
 	public String editSysHistory(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SysHistoryVO sysHistoryVO,
 			ModelMap model) {
 
@@ -163,10 +163,10 @@ public class SysHistoryController {
 	@RequestMapping(value = "/sym/log/slg/updateSysHistory.do")
 	@Secured("ROLE_ADMIN")
 	public String updateSysHistory(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SysHistoryVO sysHistoryVO, 
 			BindingResult bindingResult, 
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception {
 
@@ -182,7 +182,7 @@ public class SysHistoryController {
 		sysHistoryService.updateSysHistory(sysHistoryVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/sym/log/slg/listSysHistory.do");
+        return WebUtil.redirectJsp(model, sysHistoryVO, "/sym/log/slg/listSysHistory.do");
 	}
 
 	/**
@@ -193,14 +193,13 @@ public class SysHistoryController {
 	@RequestMapping(value = "/sym/log/slg/deleteSysHistory.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteSysHistory(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SysHistoryVO sysHistoryVO, 
 			ModelMap model) {
 
 		sysHistoryService.deleteSysHistory(sysHistoryVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/sym/log/slg/listSysHistory.do");
+        return WebUtil.redirectJsp(model, sysHistoryVO, "/sym/log/slg/listSysHistory.do");
 	}
 
 }

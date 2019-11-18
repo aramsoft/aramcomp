@@ -28,7 +28,7 @@
 	<h2>DB서비스모니터링로그 목록</h2> 
 </div>
 
-<form:form commandName="dbMntrngLogVO" action="" method="post">
+<form:form modelAttribute="dbMntrngLogVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

@@ -65,7 +65,7 @@ public class BackupResultController {
 	@RequestMapping("/sym/sym/bak/detailBackupResult.do")
 	@Secured("ROLE_ADMIN")
 	public String detailBackupResult(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BackupResultVO backupResultVO,
 			ModelMap model) {
 		
@@ -82,14 +82,13 @@ public class BackupResultController {
 	@RequestMapping("/sym/sym/bak/deleteBackupResult.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteBackupResult(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BackupResultVO backupResultVO, 
 			ModelMap model) {
 
 		backupResultService.deleteBackupResult(backupResultVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/sym/sym/bak/listBackupResult.do");
+        return WebUtil.redirectJsp(model, backupResultVO, "/sym/sym/bak/listBackupResult.do");
 	}
 
 }

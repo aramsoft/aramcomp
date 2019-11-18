@@ -38,7 +38,7 @@
 	</div>
 </div>
 
-<form:form commandName="mberManageVO" action="" method="post">
+<form:form modelAttribute="mberManageVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
@@ -46,13 +46,6 @@
 <input name="checkedIdForDel" type="hidden" />
 
 <form:hidden path="sbscrbSttus" />
-
-<!-- 검색조건 유지 -->
-<input type="hidden" name="searchCondition" value="${searchVO.searchCondition}" />
-<input type="hidden" name="searchKeyword"   value="${searchVO.searchKeyword}" />
-<input type="hidden" name="pageIndex"       value="${searchVO.pageIndex}" />
-<input type="hidden" name="recordPerPage"   value="${searchVO.recordPerPage}" />
-<!-- 검색조건 유지 -->
 
 <form:hidden path="userTy" />
 <input name="password" type="hidden" value="dummyPassword"/>
@@ -234,6 +227,12 @@
 	</c:choose>
 </table>
 
+<!-- 검색조건 유지 -->
+<input type="hidden" name="searchCondition" value="${searchVO.searchCondition}" />
+<input type="hidden" name="searchKeyword"   value="${searchVO.searchKeyword}" />
+<input type="hidden" name="pageIndex"       value="${searchVO.pageIndex}" />
+<input type="hidden" name="recordPerPage"   value="${searchVO.recordPerPage}" />
+<!-- 검색조건 유지 -->
 </form:form>
 
 </DIV>

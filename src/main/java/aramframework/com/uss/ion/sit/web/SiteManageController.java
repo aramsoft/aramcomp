@@ -121,7 +121,7 @@ public class SiteManageController {
 		siteManageService.insertSiteInfo(siteManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/ion/sit/listSiteInfo.do");
+        return WebUtil.redirectJsp(model, siteManageVO, "/uss/ion/sit/listSiteInfo.do");
 	}
 
 	/**
@@ -168,7 +168,7 @@ public class SiteManageController {
 		siteManageService.updateSiteInfo(siteManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/sit/listSiteInfo.do");
+        return WebUtil.redirectJsp(model, siteManageVO, "/uss/ion/sit/listSiteInfo.do");
 	}
 
 	/**
@@ -186,7 +186,7 @@ public class SiteManageController {
 		siteManageService.deleteSiteInfo(siteManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/sit/listSiteInfo.do");
+        return WebUtil.redirectJsp(model, siteManageVO, "/uss/ion/sit/listSiteInfo.do");
 	}
 
 }

@@ -38,7 +38,7 @@
 	</div>
 </div>
 
-<form:form commandName="ctsnnManageVO" action="" method="post">
+<form:form modelAttribute="ctsnnManageVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

@@ -34,7 +34,7 @@
 	</div>
 </div>
 
-<form:form commandName="fileSysMntrngLogVO" method="post" action="">
+<form:form modelAttribute="fileSysMntrngLogVO" method="post" action="">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

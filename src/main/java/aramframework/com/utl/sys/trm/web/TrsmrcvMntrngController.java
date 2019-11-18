@@ -123,7 +123,7 @@ public class TrsmrcvMntrngController {
 		trsmrcvMntrngService.insertTrsmrcvMntrng(trsmrcvMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, "/utl/sys/trm/listTrsmrcvMntrng.do");
+	    return WebUtil.redirectJsp(model, trsmrcvMntrngVO, "/utl/sys/trm/listTrsmrcvMntrng.do");
 	}
 
 	private void checkDuplication(TrsmrcvMntrngVO trsmrcvMntrngVO, Errors errors) {
@@ -185,7 +185,7 @@ public class TrsmrcvMntrngController {
 		trsmrcvMntrngService.updateTrsmrcvMntrng(trsmrcvMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, "/utl/sys/trm/listTrsmrcvMntrng.do");
+	    return WebUtil.redirectJsp(model, trsmrcvMntrngVO, "/utl/sys/trm/listTrsmrcvMntrng.do");
 	}
 
 	/**
@@ -203,7 +203,7 @@ public class TrsmrcvMntrngController {
 		trsmrcvMntrngService.deleteTrsmrcvMntrng(trsmrcvMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, "/utl/sys/trm/listTrsmrcvMntrng.do");
+	    return WebUtil.redirectJsp(model, trsmrcvMntrngVO, "/utl/sys/trm/listTrsmrcvMntrng.do");
 	}
 
 	/**

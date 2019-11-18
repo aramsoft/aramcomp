@@ -180,7 +180,7 @@ public class MemoTodoController {
 		memoTodoService.insertMemoTodo(memoTodoVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/cop/smt/mtm/listMemoTodo.do");
+		return WebUtil.redirectJsp(model, memoTodoVO, "/cop/smt/mtm/listMemoTodo.do");
 	}
 	
 	/**
@@ -235,7 +235,7 @@ public class MemoTodoController {
 		memoTodoService.updateMemoTodo(memoTodoVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/cop/smt/mtm/listMemoTodo.do");
+		return WebUtil.redirectJsp(model, memoTodoVO, "/cop/smt/mtm/listMemoTodo.do");
 	}
 
 	/**
@@ -253,7 +253,7 @@ public class MemoTodoController {
 		memoTodoService.deleteMemoTodo(memoTodoVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/cop/smt/mtm/listMemoTodo.do");
+		return WebUtil.redirectJsp(model, memoTodoVO, "/cop/smt/mtm/listMemoTodo.do");
 	}
 
 }

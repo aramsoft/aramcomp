@@ -147,7 +147,7 @@ public class CntcMessageController {
 		cntcMessageService.insertCntcMessage(cntcMessageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/ssi/syi/ims/listCntcMessage.do");
+        return WebUtil.redirectJsp(model, cntcMessageVO, "/ssi/syi/ims/listCntcMessage.do");
 	}
 
 	/**
@@ -209,7 +209,7 @@ public class CntcMessageController {
 		cntcMessageService.updateCntcMessage(cntcMessageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/ssi/syi/ims/listCntcMessage.do");
+        return WebUtil.redirectJsp(model, cntcMessageVO, "/ssi/syi/ims/listCntcMessage.do");
 	}
 
 	/**
@@ -227,7 +227,7 @@ public class CntcMessageController {
 		cntcMessageService.deleteCntcMessage(cntcMessageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/ssi/syi/ims/listCntcMessage.do");
+        return WebUtil.redirectJsp(model, cntcMessageVO, "/ssi/syi/ims/listCntcMessage.do");
 	}
 
 	/**

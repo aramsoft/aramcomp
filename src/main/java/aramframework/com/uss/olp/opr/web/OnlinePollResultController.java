@@ -54,7 +54,7 @@ public class OnlinePollResultController {
 		onlinePollResultService.deleteOnlinePollResult(onlinePollResultVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, "/uss/olp/opr/listOnlinePollResult.do?pollId="+onlinePollResultVO.getPollId());
+	    return WebUtil.redirectJsp(model, onlinePollResultVO, "/uss/olp/opr/listOnlinePollResult.do?pollId="+onlinePollResultVO.getPollId());
 	}
 
 }

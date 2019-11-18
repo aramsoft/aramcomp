@@ -41,7 +41,7 @@ String sLinkType = request.getParameter("linkType") == null ? "" : (String)reque
 	</div>
 </div>
 	
-<form:form commandName="leaderSchdulVO" action="" method="post">
+<form:form modelAttribute="leaderSchdulVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

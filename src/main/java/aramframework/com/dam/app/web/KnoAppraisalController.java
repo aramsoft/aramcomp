@@ -125,7 +125,7 @@ public class KnoAppraisalController {
 		knoAppraisalService.updateKnoAppraisal(knoAppraisalVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/dam/app/listKnoAppraisal.do");
+		return WebUtil.redirectJsp(model, knoAppraisalVO, "/dam/app/listKnoAppraisal.do");
 	}
 
 }

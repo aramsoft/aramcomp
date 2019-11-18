@@ -31,7 +31,7 @@
 	</a>
 </div>
 
-<form:form commandName="onlinePollPartcptnVO" action="" method="post">
+<form:form modelAttribute="onlinePollPartcptnVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

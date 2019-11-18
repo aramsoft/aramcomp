@@ -133,7 +133,7 @@ public class RssManageController {
 		}
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/rss/listRssManage.do");
+        return WebUtil.redirectJsp(model, rssManageVO, "/uss/ion/rss/listRssManage.do");
 	}
 
 	/**
@@ -198,7 +198,7 @@ public class RssManageController {
 		rssManageService.insertRssManage(rssManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/ion/rss/listRssManage.do");
+        return WebUtil.redirectJsp(model, rssManageVO, "/uss/ion/rss/listRssManage.do");
 	}
 
 	/**
@@ -250,7 +250,7 @@ public class RssManageController {
 		rssManageService.updateRssManage(rssManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/rss/listRssManage.do");
+        return WebUtil.redirectJsp(model, rssManageVO, "/uss/ion/rss/listRssManage.do");
 	}
 
 	/**
@@ -268,7 +268,7 @@ public class RssManageController {
 		rssManageService.deleteRssManage(rssManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/rss/listRssManage.do");
+        return WebUtil.redirectJsp(model, rssManageVO, "/uss/ion/rss/listRssManage.do");
 	}
 
 }

@@ -119,10 +119,9 @@ public class UserManageService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param checkedIdForDel
 	 */
-	public void deleteIdsAll(String checkedIdForDel) {
-		String[] delId = checkedIdForDel.split(",");
-		for (int i = 0; i < delId.length; i++) {
-			String[] id = delId[i].split(":");
+	public void deleteIdsAll(String[] ids) {
+		for (int i = 0; i < ids.length; i++) {
+			String[] id = ids[i].split("-");
 			if (id[0].equals("USR03")) {
 				// 업무사용자(직원)삭제
 				userManageMapper.deleteUserHistory(id[1]);

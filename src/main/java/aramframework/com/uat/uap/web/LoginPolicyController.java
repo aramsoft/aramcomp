@@ -74,8 +74,9 @@ public class LoginPolicyController {
 	@RequestMapping("/uat/uap/registLoginPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String registLoginPolicy(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute LoginPolicyVO loginPolicyVO)	{
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute LoginPolicyVO loginPolicyVO, 
+			ModelMap model)	{
 
 		return WebUtil.adjustViewName("/uat/uap/LoginPolicyRegist");
 	}
@@ -88,7 +89,7 @@ public class LoginPolicyController {
 	@RequestMapping("/uat/uap/insertLoginPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String insertLoginPolicy(
-			@ModelAttribute SearchVO searchVO, 
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute LoginPolicyVO loginPolicyVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -104,7 +105,7 @@ public class LoginPolicyController {
 		loginPolicyService.insertLoginPolicy(loginPolicyVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uat/uap/listLoginPolicy.do");
+        return WebUtil.redirectJsp(model, loginPolicyVO, "/uat/uap/listLoginPolicy.do");
 	}
 
 	/**
@@ -115,7 +116,7 @@ public class LoginPolicyController {
 	@RequestMapping("/uat/uap/editLoginPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String editLoginPolicy(
-			@ModelAttribute SearchVO searchVO, 
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute LoginPolicyVO loginPolicyVO,
 			ModelMap model) {
 
@@ -132,7 +133,7 @@ public class LoginPolicyController {
 	@RequestMapping("/uat/uap/updateLoginPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String updateLoginPolicy(
-			@ModelAttribute SearchVO searchVO, 
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute LoginPolicyVO loginPolicyVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -152,7 +153,7 @@ public class LoginPolicyController {
 		}
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uat/uap/listLoginPolicy.do");
+        return WebUtil.redirectJsp(model, loginPolicyVO, "/uat/uap/listLoginPolicy.do");
 	}
 
 	/**
@@ -163,14 +164,13 @@ public class LoginPolicyController {
 	@RequestMapping("/uat/uap/deleteLoginPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteLoginPolicy(
-			@ModelAttribute SearchVO searchVO, 
 			@ModelAttribute LoginPolicyVO loginPolicyVO, 
 			ModelMap model) {
 
 		loginPolicyService.deleteLoginPolicy(loginPolicyVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uat/uap/listLoginPolicy.do");
+        return WebUtil.redirectJsp(model, loginPolicyVO, "/uat/uap/listLoginPolicy.do");
 	}
 
 }

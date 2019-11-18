@@ -27,7 +27,7 @@
 	<h2>메모보고 목록</h2>
 </div>
 
-<form:form commandName="memoReprtVO" action="" method="post">
+<form:form modelAttribute="memoReprtVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

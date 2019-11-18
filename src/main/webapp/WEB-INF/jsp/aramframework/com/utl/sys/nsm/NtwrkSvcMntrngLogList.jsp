@@ -28,7 +28,7 @@
 	<h2>네트워크서비스모니터링 로그 목록</h2> 
 </div>
 
-<form:form commandName="ntwrkSvcMntrngLogVO" action="" method="post">
+<form:form modelAttribute="ntwrkSvcMntrngLogVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

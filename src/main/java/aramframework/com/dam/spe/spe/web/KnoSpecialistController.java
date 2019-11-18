@@ -136,7 +136,7 @@ public class KnoSpecialistController {
 		knoSpecialistService.insertKnoSpecialist(knoSpecialistVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/dam/spe/spe/listKnoSpecialist.do");
+		return WebUtil.redirectJsp(model, knoSpecialistVO, "/dam/spe/spe/listKnoSpecialist.do");
 	}
 
 	/**
@@ -205,7 +205,7 @@ public class KnoSpecialistController {
 		knoSpecialistService.updateKnoSpecialist(knoSpecialistVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/dam/spe/spe/listKnoSpecialist.do");
+		return WebUtil.redirectJsp(model, knoSpecialistVO, "/dam/spe/spe/listKnoSpecialist.do");
 	}
 
 	/**
@@ -222,7 +222,7 @@ public class KnoSpecialistController {
 		knoSpecialistService.deleteKnoSpecialist(knoSpecialistVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/dam/spe/spe/listKnoSpecialist.do");
+		return WebUtil.redirectJsp(model, knoSpecialistVO, "/dam/spe/spe/listKnoSpecialist.do");
 	}
 
 }

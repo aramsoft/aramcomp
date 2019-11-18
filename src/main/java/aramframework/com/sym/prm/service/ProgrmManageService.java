@@ -91,13 +91,10 @@ public class ProgrmManageService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param checkedProgrmFileNmForDel
 	 */
-	public void deleteProgrmManageList(String checkedProgrmFileNmForDel) {
-		String[] delProgrmFileNm = checkedProgrmFileNmForDel.split(",");
-
-		ProgrmManageVO vo = null;
-		for (int i = 0; i < delProgrmFileNm.length; i++) {
-			vo = new ProgrmManageVO();
-			vo.setProgrmFileNm(delProgrmFileNm[i]);
+	public void deleteProgrmManageList(String[] progrmFileNms) {
+		ProgrmManageVO vo = new ProgrmManageVO();
+		for (int i = 0; i < progrmFileNms.length; i++) {
+			vo.setProgrmFileNm(progrmFileNms[i]);
 			progrmManageMapper.deleteProgrm(vo);
 		}
 	}

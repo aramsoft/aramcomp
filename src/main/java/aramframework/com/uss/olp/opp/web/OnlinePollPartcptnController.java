@@ -128,7 +128,7 @@ public class OnlinePollPartcptnController {
 		onlinePollPartcptnService.insertOnlinePollResult(onlinePollPartcptnVO);
 
 		model.addAttribute("message", "온라인POLL참여에 응해주셔서 감사합니다!");
-        return WebUtil.redirectJsp(model, "/uss/olp/opp/listOnlinePollPartcptn.do");
+        return WebUtil.redirectJsp(model, onlinePollPartcptnVO, "/uss/olp/opp/listOnlinePollPartcptn.do");
 	}
 
 	/**

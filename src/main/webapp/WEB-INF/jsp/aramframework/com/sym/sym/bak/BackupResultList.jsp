@@ -30,7 +30,7 @@
 	<h2>백업결과 목록</h2> 
 </div>
 
-<form:form commandName="backupResultVO" action="" method="post">
+<form:form modelAttribute="backupResultVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
@@ -99,18 +99,22 @@
     </c:if>
     
     <%-- 데이터를 화면에 출력해준다 --%>
- 	<c:set var="searchVO" value="${backupResultVO}"/>
- 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
+  	<c:set var="startIndex" value="${(backupResultVO.pageIndex-1) * backupResultVO.recordPerPage}"/>
     <c:forEach items="${resultList}" var="result" varStatus="status">
-    <tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.backupResultId}"/>'); return false;">
-    
- 		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
+    <tr>
+    	<c:set var="index" value="${startIndex + status.count}"/>
+		<c:set var="reverseIndex" value="${backupResultVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
         <td class="lt_text3"><c:out value='${result.backupResultId}'/></td>
         <td class="lt_text3">${result.backupOpertId}</td>
-        <td class="lt_text6">${result.backupOpertNm}</td>
+        <td class="lt_text6">
+			<span class="link">
+    		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.backupResultId}"/>'); return false;">
+        		${result.backupOpertNm}
+    		</a>
+			</span>
+        </td>
         <td class="lt_text3">${result.sttusNm}</td>
         <td class="lt_text">
             <fmt:parseDate value="${result.executBeginTime}" pattern="yyyyMMddHHmmss" var="tempDate"/>

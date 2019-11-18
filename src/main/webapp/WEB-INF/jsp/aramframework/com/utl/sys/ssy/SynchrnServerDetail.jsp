@@ -35,7 +35,7 @@
 	</div>
 </div>
 
-<form:form commandName="synchrnServerVO" method="post" action="">
+<form:form modelAttribute="synchrnServerVO" method="post" action="">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
@@ -116,7 +116,7 @@
 	<h2>동기화 파일 목록</h2>
 </div>
 
-<form:form commandName="fileList" method="post" action="">
+<form:form modelAttribute="fileList" method="post" action="">
 <input type="hidden" name="serverId" value="<c:out value='${synchrnServerVO.serverId}'/>" />
 <input type="hidden" name="fileNm" />    
 

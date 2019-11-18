@@ -137,7 +137,7 @@ public class PopupManageController {
 		popupManageService.insertPopup(popupManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/ion/pwm/listPopup.do");
+        return WebUtil.redirectJsp(model, popupManageVO, "/uss/ion/pwm/listPopup.do");
 	}
 
 	/**
@@ -193,7 +193,7 @@ public class PopupManageController {
 		popupManageService.updatePopup(popupManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/pwm/listPopup.do");
+        return WebUtil.redirectJsp(model, popupManageVO, "/uss/ion/pwm/listPopup.do");
 	}
 
 	/**
@@ -210,7 +210,7 @@ public class PopupManageController {
 		popupManageService.deletePopup(popupManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/pwm/listPopup.do");
+        return WebUtil.redirectJsp(model, popupManageVO, "/uss/ion/pwm/listPopup.do");
 	}
 
 	/**

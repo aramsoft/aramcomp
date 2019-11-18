@@ -34,7 +34,7 @@
 	</div>
 </div>
 
-<form:form commandName="dbMntrngLogVO" method="post" action="">
+<form:form modelAttribute="dbMntrngLogVO" method="post" action="">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

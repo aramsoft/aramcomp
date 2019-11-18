@@ -36,7 +36,7 @@
 </div>
 
 <!-- 상단타이틀(파일첨부를 위한 폼명 및 Enctype 설정 -->
-<form:form commandName="rwardManageVO" method="post" action="" enctype="multipart/form-data">
+<form:form modelAttribute="rwardManageVO" method="post" action="" enctype="multipart/form-data">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

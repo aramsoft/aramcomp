@@ -191,7 +191,7 @@ public class OnlineManualController {
 		onlineManualService.insertOnlineManual(onlineManualVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/olh/omm/listOnlineManual.do");
+        return WebUtil.redirectJsp(model, onlineManualVO, "/uss/olh/omm/listOnlineManual.do");
 	}
 
 	/**
@@ -238,7 +238,7 @@ public class OnlineManualController {
 		onlineManualService.updateOnlineManual(onlineManualVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/olh/omm/listOnlineManual.do");
+        return WebUtil.redirectJsp(model, onlineManualVO, "/uss/olh/omm/listOnlineManual.do");
 	}
 
 	/**
@@ -255,7 +255,7 @@ public class OnlineManualController {
 		onlineManualService.deleteOnlineManual(onlineManualVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/olh/omm/listOnlineManual.do");
+        return WebUtil.redirectJsp(model, onlineManualVO, "/uss/olh/omm/listOnlineManual.do");
 	}
 
 }

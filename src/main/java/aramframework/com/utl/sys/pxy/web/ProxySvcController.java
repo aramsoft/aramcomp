@@ -128,7 +128,7 @@ public class ProxySvcController {
 		proxySvcService.insertProxySvc(proxySvcVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, "/utl/sys/pxy/listProxySvc.do");
+	    return WebUtil.redirectJsp(model, proxySvcVO, "/utl/sys/pxy/listProxySvc.do");
 	}
 
 	/**
@@ -174,7 +174,7 @@ public class ProxySvcController {
 		proxySvcService.updateProxySvc(proxySvcVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, "/utl/sys/pxy/listProxySvc.do");
+	    return WebUtil.redirectJsp(model, proxySvcVO, "/utl/sys/pxy/listProxySvc.do");
 	}
 
 	/**
@@ -192,7 +192,7 @@ public class ProxySvcController {
 		proxySvcService.deleteProxySvc(proxySvcVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, "/utl/sys/pxy/listProxySvc.do");
+	    return WebUtil.redirectJsp(model, proxySvcVO, "/utl/sys/pxy/listProxySvc.do");
 	}
 
 	/**

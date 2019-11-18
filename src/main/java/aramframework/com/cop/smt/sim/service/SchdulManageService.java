@@ -36,7 +36,7 @@ public class SchdulManageService extends EgovAbstractServiceImpl {
 	/**
 	 * 사용자 목록을 조회한다.
 	 * 
-	 * @param searchVO
+	 * @param baseVO
 	 * 
 	 */
 	public List<EgovMap> selectEmplyrList(BaseVO baseVO) {
@@ -46,7 +46,7 @@ public class SchdulManageService extends EgovAbstractServiceImpl {
 	/**
 	 * 사용자 총횟수를 조회한다.
 	 * 
-	 * @param searchVO
+	 * @param baseVO
 	 * 
 	 */
 	public int selectEmplyrListCnt(BaseVO baseVO) {
@@ -74,7 +74,7 @@ public class SchdulManageService extends EgovAbstractServiceImpl {
 	/**
 	 * 일정 목록을 조회한다.
 	 * 
-	 * @param searchVO
+	 * @param schdulManageVO
 	 */
 	public List<EgovMap> selectSchdulManageList(SchdulManageVO schdulManageVO) {
 		return schdulManageMapper.selectSchdulManageList(schdulManageVO);
@@ -83,7 +83,7 @@ public class SchdulManageService extends EgovAbstractServiceImpl {
 	/**
 	 * 일정를(을) 목록 전체 건수를(을) 조회한다.
 	 * 
-	 * @param searchVO
+	 * @param schdulManageVO
 	 */
 	public int selectSchdulManageListCnt(SchdulManageVO schdulManageVO) {
 		return (Integer) schdulManageMapper.selectSchdulManageListCnt(schdulManageVO);

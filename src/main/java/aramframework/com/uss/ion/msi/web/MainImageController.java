@@ -134,7 +134,7 @@ public class MainImageController {
 		mainImageService.insertMainImage(mainImageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/ion/msi/listMainImage.do");
+        return WebUtil.redirectJsp(model, mainImageVO, "/uss/ion/msi/listMainImage.do");
 	}
 
 	/**
@@ -201,7 +201,7 @@ public class MainImageController {
 		mainImageService.updateMainImage(mainImageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/msi/listMainImage.do");
+        return WebUtil.redirectJsp(model, mainImageVO, "/uss/ion/msi/listMainImage.do");
 	}
 
 	/**
@@ -218,7 +218,7 @@ public class MainImageController {
 		mainImageService.deleteMainImage(mainImageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/msi/listMainImage.do");
+        return WebUtil.redirectJsp(model, mainImageVO, "/uss/ion/msi/listMainImage.do");
 	}
 
 	/**
@@ -235,7 +235,7 @@ public class MainImageController {
 		mainImageService.deleteMainImages(imageIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/msi/listMainImage.do");
+        return WebUtil.redirectJsp(model, searchVO, "/uss/ion/msi/listMainImage.do");
 	}
 
 	/**

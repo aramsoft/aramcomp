@@ -73,8 +73,8 @@ public class ZipManageController {
 	 * @param zipVO
 	 */
 	@RequestMapping(value = "/sym/ccm/zip/detailZip.do")
-	public String selectZipDetail(
-			@ModelAttribute SearchVO searchVO,
+	public String detailZip(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ZipVO zipVO,
 			ModelMap model) {
 
@@ -91,8 +91,9 @@ public class ZipManageController {
 	@RequestMapping(value = "/sym/ccm/zip/registZip.do")
 	@Secured("ROLE_ADMIN")
 	public String registZip(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute ZipVO zipVO) {
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute ZipVO zipVO, 
+			ModelMap model) {
 
 		return WebUtil.adjustViewName("/sym/ccm/zip/ZipRegist");
 	}
@@ -105,7 +106,7 @@ public class ZipManageController {
 	@RequestMapping(value = "/sym/ccm/zip/insertZip.do")
 	@Secured("ROLE_ADMIN")
 	public String insertZip(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ZipVO zipVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -121,7 +122,7 @@ public class ZipManageController {
 		zipManageService.insertZip(zipVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/sym/ccm/zip/listZip.do");
+        return WebUtil.redirectJsp(model, zipVO, "/sym/ccm/zip/listZip.do");
 	}
 
 	/**
@@ -132,8 +133,8 @@ public class ZipManageController {
 	@RequestMapping(value = "/sym/ccm/zip/registZipExcel.do")
 	@Secured("ROLE_ADMIN")
 	public String registZipExcel(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute ZipVO zipVO) {
+			@ModelAttribute ZipVO zipVO, 
+			ModelMap model) {
 
 		return WebUtil.adjustViewName("/sym/ccm/zip/ZipExcelRegist");
 	}
@@ -146,7 +147,6 @@ public class ZipManageController {
 	@RequestMapping(value = "/sym/ccm/zip/insertZipExcel.do")
 	@Secured("ROLE_ADMIN")
 	public String insertExcelZip(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ZipVO zipVO, 
 			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
@@ -182,7 +182,7 @@ public class ZipManageController {
 		}
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/sym/ccm/zip/listZip.do");
+        return WebUtil.redirectJsp(model, zipVO, "/sym/ccm/zip/listZip.do");
 	}
 
 	/**
@@ -192,8 +192,8 @@ public class ZipManageController {
 	 */
 	@RequestMapping(value = "/sym/ccm/zip/editZip.do")
 	@Secured("ROLE_ADMIN")
-	public String updateZipView(
-			@ModelAttribute SearchVO searchVO,
+	public String editZip(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ZipVO zipVO,
 			ModelMap model) {
 
@@ -210,7 +210,7 @@ public class ZipManageController {
 	@RequestMapping(value = "/sym/ccm/zip/updateZip.do")
 	@Secured("ROLE_ADMIN")
 	public String updateZip(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ZipVO zipVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -226,7 +226,7 @@ public class ZipManageController {
 		zipManageService.updateZip(zipVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/sym/ccm/zip/listZip.do");
+        return WebUtil.redirectJsp(model, zipVO, "/sym/ccm/zip/listZip.do");
 	}
 	
 	/**
@@ -237,14 +237,13 @@ public class ZipManageController {
 	@RequestMapping(value = "/sym/ccm/zip/deleteZip.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteZip(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ZipVO zipVO, 
 			ModelMap model) {
 
 		zipManageService.deleteZip(zipVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/sym/ccm/zip/listZip.do");
+        return WebUtil.redirectJsp(model, zipVO, "/sym/ccm/zip/listZip.do");
 	}
 
 	/**
@@ -276,6 +275,7 @@ public class ZipManageController {
 	 * 
 	 * @param zipVO
 	 */
+
 	@RequestMapping(value = "/sym/ccm/zip/listRdNmPopup.do")
 	public String listEdNmPopup(
 			@ModelAttribute ZipVO zipVO, 

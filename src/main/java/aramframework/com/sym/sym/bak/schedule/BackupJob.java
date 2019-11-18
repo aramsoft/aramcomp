@@ -47,11 +47,11 @@ public class BackupJob implements Job {
 		JobDataMap dataMap = jobContext.getJobDetail().getJobDataMap();
 
 		if (LOG.isDebugEnabled()) {
-			LOG.debug("job[" + jobContext.getJobDetail().getName() + "] " + "Trigger이름 : " + jobContext.getTrigger().getName());
-			LOG.debug("job[" + jobContext.getJobDetail().getName() + "] " + "BackupOpert ID : " + dataMap.getString("backupOpertId"));
-			LOG.debug("job[" + jobContext.getJobDetail().getName() + "] " + "백업원본디렉토리 : " + dataMap.getString("backupOrginlDrctry"));
-			LOG.debug("job[" + jobContext.getJobDetail().getName() + "] " + "백업저장디렉토리 : " + dataMap.getString("backupStreDrctry"));
-			LOG.debug("job[" + jobContext.getJobDetail().getName() + "] " + "압축구분 : " + dataMap.getString("cmprsSe"));
+			LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "Trigger이름 : " + jobContext.getTrigger().getKey().getName());
+			LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "BackupOpert ID : " + dataMap.getString("backupOpertId"));
+			LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "백업원본디렉토리 : " + dataMap.getString("backupOrginlDrctry"));
+			LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "백업저장디렉토리 : " + dataMap.getString("backupStreDrctry"));
+			LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "압축구분 : " + dataMap.getString("cmprsSe"));
 		}
 		String backupOpertId = dataMap.getString("backupOpertId");
 		String backupOrginlDrctry = dataMap.getString("backupOrginlDrctry");

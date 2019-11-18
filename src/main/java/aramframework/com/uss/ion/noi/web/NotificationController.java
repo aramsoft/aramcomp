@@ -124,7 +124,7 @@ public class NotificationController {
 		notificationService.insertNotificationInf(notificationVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/ion/noi/listNotification.do");
+        return WebUtil.redirectJsp(model, notificationVO, "/uss/ion/noi/listNotification.do");
 	}
 
 	/**
@@ -171,7 +171,7 @@ public class NotificationController {
 		notificationService.updateNotifictionInf(notificationVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/noi/listNotification.do");
+        return WebUtil.redirectJsp(model, notificationVO, "/uss/ion/noi/listNotification.do");
 	}
 
 	/**
@@ -191,7 +191,7 @@ public class NotificationController {
 		notificationService.deleteNotifictionInf(notificationVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/noi/listNotification.do");
+        return WebUtil.redirectJsp(model, notificationVO, "/uss/ion/noi/listNotification.do");
 	}
 
 	/**

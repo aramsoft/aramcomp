@@ -30,12 +30,11 @@
 	</a>
 </div>
 
-<form:form commandName="sndngMailVO" action ="" method="post">
+<form:form modelAttribute="sndngMailVO" action ="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
 <input type="hidden" name="mssageId" />
-<input name="messageIds" type="hidden" value=""/>
 
 <div id="search_area">
 	<div class="button_area">
@@ -60,13 +59,13 @@
 	</div>
 </div>
 
-<table class="table-list" summary="상태, 발신자, 수신자, 제목, 날짜의 정보를 가진 발송메일내역을 조회한다.">
+<table class="table-list" id="tblData" summary="상태, 발신자, 수신자, 제목, 날짜의 정보를 가진 발송메일내역을 조회한다.">
 <CAPTION style="display: none;">발송메일 내역 조회</CAPTION>
 <thead>
   	<tr>
 	    <th scope="col" width="7%" >No.</th>
 		<th scope="col" width="5%" >
-    		<input type="checkbox" name="checkAll" class="check2" onchange="javascript:fnCheckAll(); return false;" title="전체선택" />
+    		<input type="checkbox" id="checkAll" class="check2" title="전체선택" />
 		</th>
 		<th scope="col" width="10%">상태</th>
 		<th scope="col" width="10%">발신자</th>
@@ -83,24 +82,27 @@
 	</tr>
 	</c:if>
 	
-  	<c:set var="searchVO" value="${sndngMailVO}"/>
- 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(sndngMailVO.pageIndex-1) * sndngMailVO.recordPerPage}"/>
   	<c:forEach var="result" items="${resultList}" varStatus="status">
-  	<tr class="link" onclick="javascript:fn_aram_detail('${result.mssageId}'); return false;">
- 	
+  	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${sndngMailVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
     	<td class="lt_text3">
-           	<input type="checkbox" name="checkField" class="check2" title="선택">
-           	<input name="checkId" type="hidden" value="<c:out value='${result.mssageId}'/>" disabled />
+			<input type="checkbox" class="check2" id="uniqIds" name="uniqIds" value="${result.mssageId}" />
         </td>
  
     	<td class="lt_text3">${result.sndngResultCode}</td>
     	<td class="lt_text3">${result.dsptchPerson}</td>
     	<td class="lt_text6">${result.recptnPerson}</td>
-    	<td class="lt_text6"><c:out value="${result.sj}"/></td>
+    	<td class="lt_text6">
+	   		<span class="link">
+	   		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.mssageId}"/>'); return false;">
+    			<c:out value="${result.sj}"/>
+	   		</a>
+	   		</span>
+    	</td>
      	<td class="lt_text3">${result.dsptchDt}</td>
   	</tr>
   	</c:forEach>
@@ -117,6 +119,16 @@
 </DIV>
 
 <script type="text/javascript">
+
+$(function() {
+	$("#checkAll").on("click", function(){
+		if( $(this).is(":checked") ){
+			$("#tblData input[name=uniqIds]").prop("checked", true);
+		}else{
+			$("#tblData input[name=uniqIds]").prop("checked", false); 
+		}
+	});
+});
 
 function press(event) {
 	if (event.keyCode==13) {
@@ -165,53 +177,20 @@ function fn_aram_regist(){
 }
 
 /* ********************************************************
- * 모두선택 처리 함수
- ******************************************************** */
-function fnCheckAll(){
-    var varForm = document.getElementById("sndngMailVO");
-	var checkField = varForm.checkField;
-
-    if(checkField.length> 1) {
-        for(var i=0; i < checkField.length; i++) {
-            checkField[i].checked = varForm.checkAll.checked;
-        }
-    } else {
-        checkField.checked = varForm.checkAll.checked;
-    }
-}
-
-/* ********************************************************
  * 삭제 처리 함수
  ******************************************************** */
 function fn_aram_deleteList(){
+	if( $("#tblData input[name=uniqIds]:checked").length == 0) {
+		alert("선택한 항목이 없습니다.");
+		return false;
+	}
 	var varForm = document.getElementById("sndngMailVO");
-    var checkField = varForm.checkField;
-    var id = varForm.checkId;
-    var checkedIds = "";
-    var checkedCount = 0;
-
-    if(checkField) {
-        if(checkField.length> 1) {
-            for(var i=0; i < checkField.length; i++) {
-                if(checkField[i].checked) {
-                    checkedIds += ((checkedCount==0? "" : ",") + id[i].value);
-                    checkedCount++;
-                }
-            }
-        } else {
-            if(checkField.checked) {
-                checkedIds = id.value;
-            }
-        }
-    }
     
-    if(checkedIds.length> 0) {
-    	var ret = confirm("삭제하시겠습니까?");
-    	if (ret == true) {
-    		varForm.messageIds.value=checkedIds;
-     		varForm.action = "${pageContext.request.contextPath}/cop/ems/deleteSndngMailList.do";
-    		varForm.submit();
-    	}
+   	var ret = confirm("삭제하시겠습니까?");
+    if (ret == true) {
+   		varForm.messageIds.value=checkedIds;
+    	varForm.action = "${pageContext.request.contextPath}/cop/ems/deleteSndngMailList.do";
+    	varForm.submit();
     }
 }
 

@@ -31,7 +31,7 @@
 	</a>
 </div>
 
-<form:form commandName="stplatManageVO" action="${pageContext.request.contextPath}/uss/sam/stp/StplatListInqire.do" method="post">
+<form:form modelAttribute="stplatManageVO" action="${pageContext.request.contextPath}/uss/sam/stp/StplatListInqire.do" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
@@ -77,16 +77,20 @@
   	</tr>
  	</c:if>
 
-   	<c:set var="searchVO" value="${stplatManageVO}"/>
- 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
+  	<c:set var="startIndex" value="${(stplatManageVO.pageIndex-1) * stplatManageVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
-  	<tr class="link" onClick="fn_aram_detail('<c:out value="${result.useStplatId}"/>')">
- 
- 		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
+  	<tr>
+  		<c:set var="index" value="${startIndex + status.count}"/>
+		<c:set var="reverseIndex" value="${stplatManageVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 	
-		<td class="lt_text3"><c:out value="${result.useStplatNm}"/></td>
+		<td class="lt_text3">
+			<span class="link">
+    		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.useStplatId}"/>'); return false;">
+				<c:out value="${result.useStplatNm}"/>
+    		</a>
+			</span>
+		</td>
     	<td class="lt_text3"><c:out value="${result.frstRegisterNm}"/></td>
 		<td class="lt_text3"><fmt:formatDate value="${result.frstRegisterPnttm}" pattern="yyyy-MM-dd"/></td>	
   	</tr>

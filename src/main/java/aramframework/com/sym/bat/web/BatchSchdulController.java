@@ -80,7 +80,7 @@ public class BatchSchdulController {
 	@RequestMapping("/sym/bat/detailBatchSchdul.do")
 	@Secured("ROLE_ADMIN")
 	public String detailBatchSchdul(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BatchSchdulVO batchSchdulVO,
 			ModelMap model) {
 
@@ -97,7 +97,7 @@ public class BatchSchdulController {
 	@RequestMapping("/sym/bat/registBatchSchdul.do")
 	@Secured("ROLE_ADMIN")
 	public String registBatchSchdul(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BatchSchdulVO batchSchdulVO, 
 			ModelMap model) {
 
@@ -114,7 +114,7 @@ public class BatchSchdulController {
 	@RequestMapping("/sym/bat/insertBatchSchdul.do")
 	@Secured("ROLE_ADMIN")
 	public String insertBatchSchdul(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BatchSchdulVO batchSchdulVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -137,7 +137,7 @@ public class BatchSchdulController {
 		batchScheduler.insertBatchSchdul(batchSchdulVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/sym/bat/listBatchSchdul.do");
+		return WebUtil.redirectJsp(model, batchSchdulVO, "/sym/bat/listBatchSchdul.do");
 	}
 
 	/**
@@ -148,7 +148,7 @@ public class BatchSchdulController {
 	@RequestMapping("/sym/bat/editBatchSchdul.do")
 	@Secured("ROLE_ADMIN")
 	public String editBatchSchdul(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BatchSchdulVO batchSchdulVO,
 			ModelMap model) {
 
@@ -167,7 +167,7 @@ public class BatchSchdulController {
 	@RequestMapping("/sym/bat/updateBatchSchdul.do")
 	@Secured("ROLE_ADMIN")
 	public String updateBatchSchdul(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BatchSchdulVO batchSchdulVO, 
 			BindingResult bindingResult, 
 			ModelMap model) 
@@ -190,7 +190,7 @@ public class BatchSchdulController {
 		batchScheduler.updateBatchSchdul(batchSchdulVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/sym/bat/listBatchSchdul.do");
+		return WebUtil.redirectJsp(model, batchSchdulVO, "/sym/bat/listBatchSchdul.do");
 	}
 
 	/**
@@ -201,7 +201,6 @@ public class BatchSchdulController {
 	@RequestMapping("/sym/bat/deleteBatchSchdul.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteBatchSchdul(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BatchSchdulVO batchSchdulVO, 
 			ModelMap model) 
 	throws Exception {
@@ -212,7 +211,7 @@ public class BatchSchdulController {
 		batchSchdulService.deleteBatchSchdul(batchSchdulVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/sym/bat/listBatchSchdul.do");
+		return WebUtil.redirectJsp(model, batchSchdulVO, "/sym/bat/listBatchSchdul.do");
 	}
 
 	/**

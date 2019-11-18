@@ -156,7 +156,7 @@ public class NtwrkSvcMntrngController {
 		ntwrkSvcMntrngService.insertNtwrkSvcMntrng(ntwrkSvcMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, "/utl/sys/nsm/listNtwrkSvcMntrng.do");
+	    return WebUtil.redirectJsp(model, ntwrkSvcMntrngVO, "/utl/sys/nsm/listNtwrkSvcMntrng.do");
 	}
 
 	/**
@@ -226,7 +226,7 @@ public class NtwrkSvcMntrngController {
 		ntwrkSvcMntrngService.updateNtwrkSvcMntrng(ntwrkSvcMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, "/utl/sys/nsm/listNtwrkSvcMntrng.do");
+	    return WebUtil.redirectJsp(model, ntwrkSvcMntrngVO, "/utl/sys/nsm/listNtwrkSvcMntrng.do");
 	}
 
 	/**
@@ -244,7 +244,7 @@ public class NtwrkSvcMntrngController {
 		ntwrkSvcMntrngService.deleteNtwrkSvcMntrng(ntwrkSvcMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, "/utl/sys/nsm/listNtwrkSvcMntrng.do");
+	    return WebUtil.redirectJsp(model, ntwrkSvcMntrngVO, "/utl/sys/nsm/listNtwrkSvcMntrng.do");
 	}
 
 	/**

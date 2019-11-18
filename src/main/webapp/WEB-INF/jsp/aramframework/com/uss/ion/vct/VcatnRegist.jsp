@@ -38,7 +38,7 @@
 	</div>
 </div>
 
-<form:form commandName="vcatnManageVO" method="post" action="">
+<form:form modelAttribute="vcatnManageVO" method="post" action="">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

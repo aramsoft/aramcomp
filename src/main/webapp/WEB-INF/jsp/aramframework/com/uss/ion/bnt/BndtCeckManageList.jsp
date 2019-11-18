@@ -48,7 +48,7 @@
 	</div>
 </div>
 
-<form:form commandName="bndtCeckManageVO" action="" method="post">
+<form:form modelAttribute="bndtCeckManageVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

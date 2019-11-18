@@ -42,7 +42,7 @@
 	<h2>행사참석자 목록</h2>
 </div>
 
-<form:form commandName="eventAtdmVO" action="" method="post">
+<form:form modelAttribute="eventAtdmVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

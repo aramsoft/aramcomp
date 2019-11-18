@@ -27,7 +27,7 @@
 	<h2>배치스케줄 목록</h2>
 </div>
 
-<form:form commandName="batchSchdulVO" action="" method="post">
+<form:form modelAttribute="batchSchdulVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
@@ -77,17 +77,21 @@
     </c:if>
     
      <%-- 데이터를 화면에 출력해준다 --%>
-  	<c:set var="searchVO" value="${batchSchdulVO}"/>
- 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
+  	<c:set var="startIndex" value="${(batchSchdulVO.pageIndex-1) * batchSchdulVO.recordPerPage}"/>
     <c:forEach items="${resultList}" var="result" varStatus="status">
-    <tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.batchSchdulId}"/>'); return false;">
- 
- 		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
+    <tr>
+  		<c:set var="index" value="${startIndex + status.count}"/>
+		<c:set var="reverseIndex" value="${batchSchdulVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
     	<td class="lt_text3"><c:out value='${result.batchSchdulId}'/></td>
-        <td class="lt_text3">${result.batchOpertNm}</td>
+        <td class="lt_text3">
+			<span class="link">
+    		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.batchSchdulId}"/>'); return false;">
+        		${result.batchOpertNm}
+    		</a>
+			</span>
+        </td>
         <td class="lt_text3">${result.executCycleNm}</td>
         <td class="lt_text3">${result.executSchdul}</td>
     </tr>   

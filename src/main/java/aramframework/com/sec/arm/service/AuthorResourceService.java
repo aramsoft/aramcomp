@@ -82,19 +82,15 @@ public class AuthorResourceService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param authorResourceVO
 	 */
-	public void insertAuthorResources(String authorCode, String resourceCodes, String regYns) {
-		String[] strResourceCodes = resourceCodes.split(";");
-		String[] strRegYns = regYns.split(";");
-
+	public void insertAuthorResources(String authorCode, String[] resourceCodes, String[] regYns) {
 		AuthorResourceVO suthorResourceVO = new AuthorResourceVO();
 		suthorResourceVO.setAuthorCode(authorCode);
-
-		for (int i = 0; i < strResourceCodes.length; i++) {
-			suthorResourceVO.setResourceCode(strResourceCodes[i]);
-			suthorResourceVO.setRegYn(strRegYns[i]);
+		for (int i = 0; i < resourceCodes.length; i++) {
+			suthorResourceVO.setResourceCode(resourceCodes[i]);
+			suthorResourceVO.setRegYn(regYns[i]);
 
 			deleteAuthorResource(suthorResourceVO);// 2011.09.07
-			if (strRegYns[i].equals("Y")) {
+			if (regYns[i].equals("Y")) {
 				insertAuthorResource(suthorResourceVO);
 			} 
 		}

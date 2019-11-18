@@ -42,7 +42,7 @@
 	<h2>템플릿 목록</h2>
 </div>
 
-<form:form commandName="templateInfVO" action ="" method="post">
+<form:form modelAttribute="templateInfVO" action ="" method="post">
 <input type="hidden" name="tmplatId" value="" />
 <input name="typeFlag" type="hidden" value="<c:out value='${typeFlag}'/>"/>
 
@@ -88,19 +88,25 @@
 	</tr>
 	</c:if>
 	
-  	<c:set var="searchVO" value="${templateInfVO}"/>
- 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
+  	<c:set var="startIndex" value="${(templateInfVO.pageIndex-1) * templateInfVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
-
-	<tr <c:if test="${result.useAt == 'Y'}">
-		class="link" onclick="javascript:fn_aram_choose('<c:out value="${result.tmplatId}"/>','<c:out value="${result.tmplatNm}"/>'); return false;">
-		</c:if>>
-
+	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${templateInfVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
-	    <td class="lt_text3"><c:out value="${result.tmplatNm}"/></td>
+	    <td class="lt_text3">
+			<c:if test="${result.useAt == 'Y'}">
+		   		<span class="link">
+		   		<a href="#" onclick="javascript:fn_aram_choose('<c:out value="${result.tmplatId}"/>'); return false;">
+					<c:out value="${result.tmplatNm}"/>
+		   		</a>
+		   		</span>
+			</c:if>	    	
+			<c:if test="${result.useAt == 'N'}">
+					<c:out value="${result.tmplatNm}"/>
+			</c:if>	    	
+	    </td>
 	    <td class="lt_text3"><c:out value="${result.tmplatSeCodeNm}"/></td>
 	    <td class="lt_text3"><c:out value="${result.tmplatCours}"/></td>
 	    <td class="lt_text3">
@@ -131,14 +137,14 @@ function press(event) {
  * 페이징 처리 함수
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
-    var varForm = document.getElementById("searchVO");
+    var varForm = document.getElementById("templateInfVO");
     varForm.pageIndex.value = pageNo;
     varForm.action = "${pageContext.request.contextPath}/cop/tpl/listTemplatePopup.do";
     varForm.submit();
 }
 
 function fn_aram_search(){
-    var varForm = document.getElementById("searchVO");
+    var varForm = document.getElementById("templateInfVO");
     varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/cop/tpl/listTemplatePopup.do";
     varForm.submit();

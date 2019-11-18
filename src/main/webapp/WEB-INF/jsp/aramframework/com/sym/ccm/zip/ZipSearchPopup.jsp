@@ -41,7 +41,7 @@
 	<h2>우편번호 찾기</h2>
 </div>
 
-<form:form commandName="zipVO"  action="" method="post">
+<form:form modelAttribute="zipVO"  action="" method="post">
 
 <div id="search_area">
 	<div class="button_area">
@@ -85,16 +85,20 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="searchVO" value="${zipVO}"/>
- 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(zipVO.pageIndex-1) * zipVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
-	<tr class="link" onclick="javascript:fn_aram_choose( '${result.zip}', '${result.ctprvnNm} ${result.signguNm} ${result.emdNm} ${result.liBuldNm}'); return false;">
-
+	<tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${zipVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
-		<td class="lt_text3"><c:out value='${fn:substring(result.zip, 0,3)}-${fn:substring(result.zip, 3,6)}'/></td>
+		<td class="lt_text3">
+			<span class="link">
+    		<a href="#" onclick="javascript:fn_aram_choose('${result.zip}', '${result.ctprvnNm} ${result.signguNm} ${result.emdNm} ${result.liBuldNm}'); return false;">
+				<c:out value='${fn:substring(result.zip, 0,3)}-${fn:substring(result.zip, 3,6)}'/>
+    		</a>
+			</span>
+		</td>
 		<td class="lt_text">${result.ctprvnNm} ${result.signguNm} ${result.emdNm} ${result.liBuldNm} ${result.lnbrDongHo}</td>
 	</tr>
 	</c:forEach>

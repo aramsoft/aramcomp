@@ -115,7 +115,7 @@ public class AdministrationWordController {
 		administrationWordService.insertAdministrationWord(administrationWordVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/olh/awm/listAdministrationWord.do");
+        return WebUtil.redirectJsp(model, administrationWordVO, "/uss/olh/awm/listAdministrationWord.do");
 	}
 
 	/**
@@ -159,7 +159,7 @@ public class AdministrationWordController {
 		administrationWordService.updateAdministrationWord(administrationWordVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/olh/awm/listAdministrationWord.do");
+        return WebUtil.redirectJsp(model, administrationWordVO, "/uss/olh/awm/listAdministrationWord.do");
 	}
 
 	/**
@@ -176,7 +176,7 @@ public class AdministrationWordController {
 		administrationWordService.deleteAdministrationWord(administrationWordVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/olh/awm/listAdministrationWord.do");
+        return WebUtil.redirectJsp(model, administrationWordVO, "/uss/olh/awm/listAdministrationWord.do");
 	}
 
 	/**

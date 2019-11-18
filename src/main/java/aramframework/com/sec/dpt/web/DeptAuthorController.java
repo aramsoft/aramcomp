@@ -1,5 +1,7 @@
 package aramframework.com.sec.dpt.web;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -9,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sec.arm.domain.AuthorVO;
@@ -70,19 +71,26 @@ public class DeptAuthorController {
 	 * @param authorCodes
 	 * @param regYns
 	 */
-	@RequestMapping(value = "/sec/dpt/insertDeptAuthor.do")
+	@RequestMapping(value = "/sec/dpt/insertListDeptAuthor.do")
 	@Secured("ROLE_ADMIN")
 	public String insertDeptAuthor(
-			@RequestParam String userIds, 
-			@RequestParam String authorCodes,
-			@RequestParam String regYns, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute DeptAuthorVO deptAuthorVO,
+			@RequestParam String strAuthorCodes,
+			@RequestParam String strRegYns, 
+			HttpServletRequest request, 
 			ModelMap model) {
 
-		deptAuthorService.insertDeptAuthors(userIds, authorCodes, regYns);
+    	String[] uniqIds = null;
+    	if(request.getParameterValues("uniqIds") != null) 
+    		uniqIds = request.getParameterValues("uniqIds"); 
+
+		String[] authorCodes = strAuthorCodes.split(";");
+		String[] regYns = strRegYns.split(";");
+
+		deptAuthorService.insertDeptAuthors(uniqIds, authorCodes, regYns);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/sec/dpt/listDeptAuthor.do");
+		return WebUtil.redirectJsp(model, deptAuthorVO, "/sec/dpt/listDeptAuthor.do");
 	}
 
 	/**
@@ -90,17 +98,21 @@ public class DeptAuthorController {
 	 * 
 	 * @param userIds
 	 */
-	@RequestMapping(value = "/sec/dpt/deleteDeptAuthor.do")
+	@RequestMapping(value = "/sec/dpt/deleteListDeptAuthor.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteDeptAuthor(
-			@RequestParam String userIds, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute DeptAuthorVO deptAuthorVO,
+			HttpServletRequest request, 
 			ModelMap model) {
 
-		deptAuthorService.deleteDeptAuthors(userIds);
+    	String[] uniqIds = null;
+    	if(request.getParameterValues("uniqIds") != null) 
+    		uniqIds = request.getParameterValues("uniqIds"); 
+
+		deptAuthorService.deleteDeptAuthors(uniqIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/sec/dpt/listDeptAuthor.do");
+		return WebUtil.redirectJsp(model, deptAuthorVO, "/sec/dpt/listDeptAuthor.do");
 	}
 
 }

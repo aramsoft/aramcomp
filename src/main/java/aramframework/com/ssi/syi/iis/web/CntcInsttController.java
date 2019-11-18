@@ -151,7 +151,7 @@ public class CntcInsttController {
 		cntcInsttService.insertCntcInstt(cntcInsttVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/ssi/syi/iis/listCntcInstt.do");
+        return WebUtil.redirectJsp(model, cntcInsttVO, "/ssi/syi/iis/listCntcInstt.do");
 	}
 
 	/**
@@ -195,7 +195,7 @@ public class CntcInsttController {
 		cntcInsttService.updateCntcInstt(cntcInsttVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/ssi/syi/iis/listCntcInstt.do");
+        return WebUtil.redirectJsp(model, cntcInsttVO, "/ssi/syi/iis/listCntcInstt.do");
 	}
 
 	/**
@@ -213,7 +213,7 @@ public class CntcInsttController {
 		cntcInsttService.deleteCntcInstt(cntcInsttVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/ssi/syi/iis/listCntcInstt.do");
+        return WebUtil.redirectJsp(model, cntcInsttVO, "/ssi/syi/iis/listCntcInstt.do");
 	}
 
 	/**

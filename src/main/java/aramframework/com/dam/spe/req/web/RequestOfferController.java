@@ -186,7 +186,7 @@ public class RequestOfferController {
 		}
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/dam/spe/req/listRequestOffer.do");
+		return WebUtil.redirectJsp(model, requestOfferVO, "/dam/spe/req/listRequestOffer.do");
 	}
 
 	/**
@@ -256,7 +256,7 @@ public class RequestOfferController {
 		requestOfferService.updateRequestOffer(requestOfferVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/dam/spe/req/listRequestOffer.do");
+		return WebUtil.redirectJsp(model, requestOfferVO, "/dam/spe/req/listRequestOffer.do");
 	}
 
 	/**
@@ -287,7 +287,7 @@ public class RequestOfferController {
 		requestOfferService.deleteRequestOffer(requestOfferVO);
 	
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/dam/spe/req/listRequestOffer.do");
+		return WebUtil.redirectJsp(model, requestOfferVO, "/dam/spe/req/listRequestOffer.do");
 	}
 
 }

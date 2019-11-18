@@ -86,7 +86,7 @@ public class ConfirmController {
 	@RequestMapping("/cop/com/editConfirm.do")
 	@Secured("ROLE_USER")
 	public String editConfirm(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ConfirmHistoryVO confirmHistoryVO,
 			ModelMap model) {
 		
@@ -110,7 +110,6 @@ public class ConfirmController {
 	@RequestMapping("/cop/com/updateConfirm.do")
 	@Secured("ROLE_USER")
 	public String updateConfirm(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ConfirmHistoryVO confirmHistoryVO, 
 			ModelMap model) {
 
@@ -122,7 +121,7 @@ public class ConfirmController {
 		confirmService.updateConfirmRequest(confirmHistoryVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/cop/com/listConfirmByTrget.do");
+		return WebUtil.redirectJsp(model, confirmHistoryVO, "/cop/com/listConfirmByTrget.do");
 	}
 
 }

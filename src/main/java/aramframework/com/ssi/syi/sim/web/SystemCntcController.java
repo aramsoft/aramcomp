@@ -208,7 +208,7 @@ public class SystemCntcController {
 		systemCntcService.insertSystemCntc(systemCntcVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/ssi/syi/sim/listSystemCntc.do");
+        return WebUtil.redirectJsp(model, systemCntcVO, "/ssi/syi/sim/listSystemCntc.do");
 	}
 
 	/**
@@ -309,7 +309,7 @@ public class SystemCntcController {
 		systemCntcService.updateSystemCntc(systemCntcVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/ssi/syi/sim/listSystemCntc.do");
+        return WebUtil.redirectJsp(model, systemCntcVO, "/ssi/syi/sim/listSystemCntc.do");
 	}
 
 	/**
@@ -327,7 +327,7 @@ public class SystemCntcController {
 		systemCntcService.deleteSystemCntc(systemCntcVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/ssi/syi/sim/listSystemCntc.do");
+        return WebUtil.redirectJsp(model, systemCntcVO, "/ssi/syi/sim/listSystemCntc.do");
 	}
 
 	/**
@@ -418,7 +418,7 @@ public class SystemCntcController {
 
 		systemCntcService.confirmSystemCntc(systemCntcVO);
 
-        return WebUtil.redirectJsp(model, "/ssi/syi/sim/listSystemCntcConfirm.do");
+        return WebUtil.redirectJsp(model, systemCntcVO, "/ssi/syi/sim/listSystemCntcConfirm.do");
 	}
 
 }

@@ -41,7 +41,7 @@
 	<h2><span id="title"></span> 선택</h2>
 </div>
 
-<form:form commandName="sanctnerVO" action="" method="post">
+<form:form modelAttribute="sanctnerVO" action="" method="post">
 
 <div id="search_area">
 	<div class="button_area">

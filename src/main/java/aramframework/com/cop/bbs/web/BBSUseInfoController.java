@@ -77,7 +77,7 @@ public class BBSUseInfoController {
 	@RequestMapping("/cop/bbs/registBoardUseInf.do")
 	@Secured("ROLE_ADMIN")
 	public String registBoardUseInf(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardUseInfVO boardUseInfVO, 
 			ModelMap model) {
 
@@ -96,7 +96,7 @@ public class BBSUseInfoController {
 	@RequestMapping("/cop/bbs/insertBoardUseInf.do")
 	@Secured("ROLE_ADMIN")
 	public String insertBoardUseInf(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardUseInfVO boardUseInfVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -121,7 +121,7 @@ public class BBSUseInfoController {
 		bbsUseService.insertBBSUseInf(boardUseInfVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/cop/bbs/listBoardUseInf.do");
+		return WebUtil.redirectJsp(model, boardUseInfVO, "/cop/bbs/listBoardUseInf.do");
 	}
 
 	/**
@@ -132,9 +132,9 @@ public class BBSUseInfoController {
 	@RequestMapping("/cop/bbs/editBoardUseInf.do")
 	@Secured("ROLE_ADMIN")
 	public String editBoardUseInf(
-			HttpServletRequest request,
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardUseInfVO boardUseInfVO, 
+			HttpServletRequest request,
 			ModelMap model) {
 		
 		boardUseInfVO = bbsUseService.selectBBSUseInf(boardUseInfVO);
@@ -162,7 +162,7 @@ public class BBSUseInfoController {
 	@RequestMapping("/cop/bbs/updateBoardUseInf.do")
 	@Secured("ROLE_ADMIN")
 	public String updateBoardUseInf(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardUseInfVO boardUseInfVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -175,7 +175,7 @@ public class BBSUseInfoController {
 		bbsUseService.updateBBSUseInf(boardUseInfVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/cop/bbs/listBoardUseInf.do");
+		return WebUtil.redirectJsp(model, boardUseInfVO, "/cop/bbs/listBoardUseInf.do");
 	}
 
 	/**
@@ -186,15 +186,13 @@ public class BBSUseInfoController {
 	@RequestMapping("/cop/bbs/deleteBoardUseInf.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteBoardUseInf(
-			HttpServletRequest request, 
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BoardUseInfVO boardUseInfVO, 
 			ModelMap model) {
 
 		bbsUseService.deleteBBSUseInf(boardUseInfVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/cop/bbs/listBoardUseInf.do");
+		return WebUtil.redirectJsp(model, boardUseInfVO, "/cop/bbs/listBoardUseInf.do");
 	}
 
 }

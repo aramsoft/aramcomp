@@ -126,7 +126,7 @@ public class ProcessMonController {
 		processMonService.insertProcessMon(processMonVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, "/utl/sys/prm/listProcessMon.do");
+	    return WebUtil.redirectJsp(model, processMonVO, "/utl/sys/prm/listProcessMon.do");
 	}
 
 	/**
@@ -171,7 +171,7 @@ public class ProcessMonController {
 		processMonService.updateProcessMon(processMonVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, "/utl/sys/prm/listProcessMon.do");
+	    return WebUtil.redirectJsp(model, processMonVO, "/utl/sys/prm/listProcessMon.do");
 	}
 
 	/**
@@ -189,7 +189,7 @@ public class ProcessMonController {
 		processMonService.deleteProcessMon(processMonVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, "/utl/sys/prm/listProcessMon.do");
+	    return WebUtil.redirectJsp(model, processMonVO, "/utl/sys/prm/listProcessMon.do");
 	}
 
 	/**

@@ -35,7 +35,7 @@
 	</div>
 </div>
 
-<form:form commandName="synchrnServerVO" method="post" action="">
+<form:form modelAttribute="synchrnServerVO" method="post" action="">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

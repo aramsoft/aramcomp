@@ -119,7 +119,7 @@ public class KnoManagementController {
 		knoManagementService.updateKnoManagement(knoManagementVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/dam/mgm/listKnoManagement.do");
+		return WebUtil.redirectJsp(model, knoManagementVO, "/dam/mgm/listKnoManagement.do");
 	}
 	
 }

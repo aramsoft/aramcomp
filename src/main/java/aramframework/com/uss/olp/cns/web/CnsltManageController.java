@@ -181,7 +181,7 @@ public class CnsltManageController {
 		cnsltManageService.insertCnsltDtls(cnsltManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/olp/cns/listCnslt.do");
+        return WebUtil.redirectJsp(model, cnsltManageVO, "/uss/olp/cns/listCnslt.do");
 	}
 
 	/**
@@ -297,7 +297,7 @@ public class CnsltManageController {
 		cnsltManageService.updateCnsltDtls(cnsltManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/olp/cns/listCnslt.do");
+        return WebUtil.redirectJsp(model, cnsltManageVO, "/uss/olp/cns/listCnslt.do");
 	}
 
 	/**
@@ -350,7 +350,7 @@ public class CnsltManageController {
 		cnsltManageService.deleteCnsltDtls(cnsltManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/olp/cns/listCnslt.do");
+        return WebUtil.redirectJsp(model, cnsltManageVO, "/uss/olp/cns/listCnslt.do");
 	}
 
 	/**
@@ -435,7 +435,7 @@ public class CnsltManageController {
 		cnsltManageService.updateCnsltDtlsAnswer(cnsltManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/olp/cnm/listCnsltAnswer.do");
+        return WebUtil.redirectJsp(model, cnsltManageVO, "/uss/olp/cnm/listCnsltAnswer.do");
 	}
 
 }

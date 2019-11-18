@@ -28,20 +28,22 @@
 	<h2>오늘의 할일 목록</h2> [ <c:out value="${resultToday}"/> ]
 </div>
 
-<form:form commandName="memoTodoVO" action="" method="post">
-<input type="hidden" name="curTrgetId" value="${curTrgetId}" />
-<input type="hidden" name="curMenuNo" value="${curMenuNo}" />
-
-<input type="hidden" name="todoId">
-
 <div id="search_area">
 	<div class="button_area">
        	<span class="button"><a href="#" onclick="javascript:fn_aram_list(); return false;">전체목록</a></span>
 	</div>
 </div>
 
-<form:hidden path="searchVO.pageIndex" />
-</form:form>
+<form:form modelAttribute="memoTodoVO" action="" method="post">
+<input type="hidden" name="curTrgetId" value="${curTrgetId}" />
+<input type="hidden" name="curMenuNo" value="${curMenuNo}" />
+
+<input type="hidden" name="todoId">
+
+<form:hidden path="searchCondition" />
+<form:hidden path="searchKeyword" />
+<form:hidden path="pageIndex" />
+<form:hidden path="recordPerPage" />
 
 <table class="table-list"  summary="이 표는 메모할일 중 오늘의 할일 정보를 제공하며, 할일일시, 할일제목, 작성자, 작성일자 정보로 구성되어 있습니다 .">
 <caption>오늘의 할일 목록</caption>
@@ -61,13 +63,12 @@
 	</tr>		 
 	</c:if>
 	
-  	<c:set var="searchVO" value="${memoTodoVO}"/>
- 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(memoTodoVO.pageIndex-1) * memoTodoVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
 	<tr class="link" onclick="javascript:fn_aram_detail('${result.todoId}'); return false;">
 
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${memoTodoVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 	    <td class="lt_text3">
@@ -82,6 +83,8 @@
 	</c:forEach>	  
 </tbody>
 </table>
+
+</form:form>
 
 </div>
 

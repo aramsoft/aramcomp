@@ -1,5 +1,7 @@
 package aramframework.com.sym.prm.web;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +11,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
@@ -97,21 +98,23 @@ public class ProgrmManageController {
 	@RequestMapping("/sym/prm/deleteListProgram.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteListProgram(
-			@RequestParam String checkedProgrmFileNmForDel,
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProgrmManageVO progrmManageVO, 
+			HttpServletRequest request, 
 			ModelMap model) {
 		
-		String[] delProgrmFileNm = checkedProgrmFileNmForDel.split(",");
-		if (delProgrmFileNm == null || (delProgrmFileNm.length == 0)) {
+    	String[] progrmFileNms = null;
+    	if(request.getParameterValues("uniqIds") != null) 
+    		progrmFileNms = request.getParameterValues("uniqIds"); 
+
+		if (progrmFileNms == null || (progrmFileNms.length == 0)) {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.delete"));
-	        return WebUtil.redirectJsp(model, "/sym/prm/listProgram.do");
+	        return WebUtil.redirectJsp(model, progrmManageVO, "/sym/prm/listProgram.do");
 		} 
 		
-		progrmManageService.deleteProgrmManageList(checkedProgrmFileNmForDel);
+		progrmManageService.deleteProgrmManageList(progrmFileNms);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/sym/prm/listProgram.do");
+        return WebUtil.redirectJsp(model, progrmManageVO, "/sym/prm/listProgram.do");
 	}
 
 	/**
@@ -122,8 +125,9 @@ public class ProgrmManageController {
 	@RequestMapping(value = "/sym/prm/registProgram.do")
 	@Secured("ROLE_ADMIN")
 	public String registProgrm(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute ProgrmManageVO progrmManageVO) {
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute ProgrmManageVO progrmManageVO,
+			ModelMap model) {
 
 		return WebUtil.adjustViewName("/sym/prm/ProgramRegist");
 	}
@@ -136,7 +140,7 @@ public class ProgrmManageController {
 	@RequestMapping(value = "/sym/prm/insertProgram.do")
 	@Secured("ROLE_ADMIN")
 	public String insertProgrm(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ProgrmManageVO progrmManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -153,7 +157,7 @@ public class ProgrmManageController {
 		progrmManageService.insertProgrm(progrmManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/sym/prm/listProgram.do");
+		return WebUtil.redirectJsp(model, progrmManageVO, "/sym/prm/listProgram.do");
 	}
 
 	/**
@@ -164,7 +168,7 @@ public class ProgrmManageController {
 	@RequestMapping(value = "/sym/prm/editProgram.do")
 	@Secured("ROLE_ADMIN")
 	public String editProgram(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ProgrmManageVO progrmManageVO,
 			ModelMap model) {
 		
@@ -182,7 +186,7 @@ public class ProgrmManageController {
 	@RequestMapping(value = "/sym/prm/updateProgram.do")
 	@Secured("ROLE_ADMIN")
 	public String updateProgrm(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ProgrmManageVO progrmManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -199,7 +203,7 @@ public class ProgrmManageController {
 		progrmManageService.updateProgrm(progrmManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/sym/prm/listProgram.do");
+        return WebUtil.redirectJsp(model, progrmManageVO, "/sym/prm/listProgram.do");
 	}
 
 	/**
@@ -210,14 +214,13 @@ public class ProgrmManageController {
 	@RequestMapping(value = "/sym/prm/deleteProgram.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteProgrm(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProgrmManageVO progrmManageVO, 
 			ModelMap model) {
 
 		progrmManageService.deleteProgrm(progrmManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/sym/prm/listProgram.do");
+        return WebUtil.redirectJsp(model, progrmManageVO, "/sym/prm/listProgram.do");
 	}
 
 }

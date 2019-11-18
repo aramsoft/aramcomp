@@ -27,7 +27,7 @@
 	<h2>상담답변 수정</h2>
 </div>
 
-<form:form commandName="cnsltManageVO" action="${pageContext.request.contextPath}/uss/olp/cnm/updateCnsltAnswer.do" method="post">
+<form:form modelAttribute="cnsltManageVO" action="${pageContext.request.contextPath}/uss/olp/cnm/updateCnsltAnswer.do" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

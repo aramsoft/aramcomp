@@ -27,7 +27,7 @@
 	<h2>프록시설정 목록</h2> 
 </div>
 
-<form:form commandName="proxySvcVO" action="" method="post">
+<form:form modelAttribute="proxySvcVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

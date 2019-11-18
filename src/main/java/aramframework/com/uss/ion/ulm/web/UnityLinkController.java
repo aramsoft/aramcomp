@@ -129,7 +129,7 @@ public class UnityLinkController {
 		unityLinkService.insertUnityLink(unityLinkVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/ion/ulm/listUnityLink.do");
+        return WebUtil.redirectJsp(model, unityLinkVO, "/uss/ion/ulm/listUnityLink.do");
 	}
 	
 	/**
@@ -177,7 +177,7 @@ public class UnityLinkController {
 		unityLinkService.updateUnityLink(unityLinkVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/ulm/listUnityLink.do");
+        return WebUtil.redirectJsp(model, unityLinkVO, "/uss/ion/ulm/listUnityLink.do");
 	}
 
 	/**
@@ -194,7 +194,7 @@ public class UnityLinkController {
 		unityLinkService.deleteUnityLink(unityLinkVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/ulm/listUnityLink.do");
+        return WebUtil.redirectJsp(model, unityLinkVO, "/uss/ion/ulm/listUnityLink.do");
 	}
 
 	/**

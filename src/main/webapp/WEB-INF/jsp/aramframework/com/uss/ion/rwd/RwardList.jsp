@@ -36,7 +36,7 @@
 	</div>
 </div>
 
-<form:form commandName="rwardManageVO" action="" method="post">
+<form:form modelAttribute="rwardManageVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

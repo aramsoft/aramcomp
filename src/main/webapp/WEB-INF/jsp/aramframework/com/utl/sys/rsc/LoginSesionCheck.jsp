@@ -50,7 +50,7 @@
 	</a>
 </div>
 
-<form:form commandName="loginSessionCheck" method="post" action="${pageContext.request.contextPath}/utl/sys/rsc/setLoginSession.do">
+<form:form modelAttribute="loginSessionCheck" method="post" action="${pageContext.request.contextPath}/utl/sys/rsc/setLoginSession.do">
 
 <div id="search_area">
 	<div class="button_area">

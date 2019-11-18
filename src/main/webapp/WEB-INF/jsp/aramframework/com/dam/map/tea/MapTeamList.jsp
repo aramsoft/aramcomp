@@ -27,7 +27,7 @@
 	<h2>지식맵(조직별) 목록 </h2>
 </div>
 
-<form:form commandName="mapTeamVO" action="" method="post">
+<form:form modelAttribute="mapTeamVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

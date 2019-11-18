@@ -87,7 +87,7 @@
 	<h2>당직관리 목록</h2> 
 </div>
 
-<form:form commandName="bndtManageVO" action="" method="post">  
+<form:form modelAttribute="bndtManageVO" action="" method="post">  
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

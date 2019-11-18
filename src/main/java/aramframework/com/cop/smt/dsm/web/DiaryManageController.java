@@ -74,7 +74,7 @@ public class DiaryManageController {
 	@RequestMapping(value = "/cop/smt/dsm/detailDiary.do")
 	@Secured("ROLE_USER")
 	public String detailDiary(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DiaryManageVO diaryManageVO,
 			ModelMap model) {
 
@@ -91,8 +91,9 @@ public class DiaryManageController {
 	@RequestMapping(value = "/cop/smt/dsm/registDiary.do")
 	@Secured("ROLE_USER")
 	public String registDiary(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute DiaryManageVO diaryManageVO) {
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute DiaryManageVO diaryManageVO, 
+			ModelMap model) {
 
 		return WebUtil.adjustViewName("/cop/smt/dsm/DiaryRegist");
 	}
@@ -106,10 +107,10 @@ public class DiaryManageController {
 	@RequestMapping(value = "/cop/smt/dsm/insertDiary.do")
 	@Secured("ROLE_USER")
 	public String insertDiary(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DiaryManageVO diaryManageVO, 
 			BindingResult bindingResult, 
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception {
 
@@ -129,7 +130,7 @@ public class DiaryManageController {
 		diaryManageService.insertDiaryManage(diaryManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/cop/smt/dsm/listDiary.do");
+		return WebUtil.redirectJsp(model, diaryManageVO, "/cop/smt/dsm/listDiary.do");
 	}
 
 	/**
@@ -140,7 +141,7 @@ public class DiaryManageController {
 	@RequestMapping(value = "/cop/smt/dsm/editDiary.do")
 	@Secured("ROLE_USER")
 	public String editDiary(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DiaryManageVO diaryManageVO,
 			ModelMap model) {
 
@@ -158,10 +159,10 @@ public class DiaryManageController {
 	@RequestMapping(value = "/cop/smt/dsm/updateDiary.do")
 	@Secured("ROLE_USER")
 	public String updateDiary(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DiaryManageVO diaryManageVO, 
 			BindingResult bindingResult, 
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception {
 
@@ -182,7 +183,7 @@ public class DiaryManageController {
 		diaryManageService.updateDiaryManage(diaryManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/cop/smt/dsm/listDiary.do");
+		return WebUtil.redirectJsp(model, diaryManageVO, "/cop/smt/dsm/listDiary.do");
 	}
 
 	/**
@@ -193,14 +194,13 @@ public class DiaryManageController {
 	@RequestMapping(value = "/cop/smt/dsm/deleteDiary.do")
 	@Secured("ROLE_USER")
 	public String deleteDiary(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DiaryManageVO diaryManageVO, 
 			ModelMap model) {
 
 		diaryManageService.deleteDiaryManage(diaryManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/cop/smt/dsm/listDiary.do");
+		return WebUtil.redirectJsp(model, diaryManageVO, "/cop/smt/dsm/listDiary.do");
 	}
 
 }

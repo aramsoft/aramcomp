@@ -44,7 +44,7 @@
 	</a>
 </div>
 
-<form:form commandName="statsVO" action="${pageContext.request.contextPath}/sts/ust/selectUserStats.do"  method="post">
+<form:form modelAttribute="statsVO" action="${pageContext.request.contextPath}/sts/ust/selectUserStats.do"  method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

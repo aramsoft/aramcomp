@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
@@ -13,7 +14,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -107,8 +107,9 @@ public class CmyMenuManageController {
 	@RequestMapping(value = "/cop/cmy/registMenu.do")
 	@Secured("ROLE_USER")
 	public String registMenu(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute CommunityMenuVO communityMenuVO) {
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute CommunityMenuVO communityMenuVO, 
+			ModelMap model) {
 
 		checkAuthorityManager(); // server-side 권한 확인
 
@@ -123,7 +124,7 @@ public class CmyMenuManageController {
 	@RequestMapping(value = "/cop/cmy/insertMenu.do")
 	@Secured("ROLE_USER")
 	public String insertMenu(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CommunityMenuVO communityMenuVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -148,7 +149,7 @@ public class CmyMenuManageController {
 		cmyMenuManageService.insertMenuManage(communityMenuVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/cop/cmy/listMenu.do");
+		return WebUtil.redirectJsp(model, communityMenuVO, "/cop/cmy/listMenu.do");
 	}
 
 	/**
@@ -159,7 +160,7 @@ public class CmyMenuManageController {
 	@RequestMapping(value = "/cop/cmy/editMenu.do")
 	@Secured("ROLE_USER")
 	public String editMenu(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CommunityMenuVO communityMenuVO,
 			ModelMap model) {
 	
@@ -184,7 +185,7 @@ public class CmyMenuManageController {
 	@RequestMapping(value = "/cop/cmy/updateMenu.do")
 	@Secured("ROLE_USER")
 	public String updateMenu(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CommunityMenuVO communityMenuVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -214,7 +215,7 @@ public class CmyMenuManageController {
 		cmyMenuManageService.updateMenuManage(communityMenuVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/cop/cmy/listMenu.do");
+		return WebUtil.redirectJsp(model, communityMenuVO, "/cop/cmy/listMenu.do");
 	}
 
 	/**
@@ -225,7 +226,6 @@ public class CmyMenuManageController {
 	@RequestMapping(value = "/cop/cmy/deleteMenu.do")
 	@Secured("ROLE_USER")
 	public String deleteMenu(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CommunityMenuVO communityMenuVO, 
 			ModelMap model) {
 		
@@ -235,7 +235,7 @@ public class CmyMenuManageController {
 		communityMenuVO.setMenuNm(_MenuNm);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/cop/cmy/listMenu.do");
+		return WebUtil.redirectJsp(model, communityMenuVO, "/cop/cmy/listMenu.do");
 	}
 
 	/**
@@ -247,21 +247,23 @@ public class CmyMenuManageController {
 	@RequestMapping("/cop/cmy/deleteListMenu.do")
 	@Secured("ROLE_USER")
 	public String deleteListMenu(
-			@RequestParam String checkedMenuNoForDel,
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CommunityMenuVO communityMenuVO, 
+			HttpServletRequest request, 
 			ModelMap model) {
 
-		String[] delMenuNo = checkedMenuNoForDel.split(",");
-		if (delMenuNo == null || (delMenuNo.length == 0)) {
+    	String[] delMenuNos = null;
+    	if(request.getParameterValues("uniqIds") != null) 
+    		delMenuNos = request.getParameterValues("uniqIds");
+
+		if (delMenuNos == null || (delMenuNos.length == 0)) {
 			model.addAttribute("message",  MessageHelper.getMessage("fail.common.delete"));
-			return WebUtil.redirectJsp(model, "/cop/cmy/listMenu.do");
+			return WebUtil.redirectJsp(model, communityMenuVO, "/cop/cmy/listMenu.do");
 		} 
 
-		cmyMenuManageService.deleteMenuManageList(communityMenuVO.getTrgetId(), checkedMenuNoForDel);
+		cmyMenuManageService.deleteMenuManageList(communityMenuVO.getTrgetId(), delMenuNos);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/cop/cmy/listMenu.do");
+		return WebUtil.redirectJsp(model, communityMenuVO, "/cop/cmy/listMenu.do");
 	}
 	
 	/**
@@ -272,7 +274,8 @@ public class CmyMenuManageController {
 	@RequestMapping(value = "/cop/cmy/downMenuExcel.do")
 	@Secured("ROLE_USER")
 	public ModelAndView downMenuExcel(
-			@ModelAttribute CommunityMenuVO communityMenuVO) {
+			@ModelAttribute CommunityMenuVO communityMenuVO,
+			ModelMap model) {
 
 		ModelAndView modelAndView = new ModelAndView(new ExcelCmyMenuView());
 
@@ -288,9 +291,9 @@ public class CmyMenuManageController {
 	 */
 	@RequestMapping(value = "/cop/cmy/registMenuExcel.do")
 	@Secured("ROLE_USER")
-	public String registZipExcel(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute CommunityMenuVO communityMenuVO) {
+	public String registMenuExcel(
+			@ModelAttribute CommunityMenuVO communityMenuVO,
+			ModelMap model) {
 		
 		return WebUtil.adjustViewName("/cop/cmy/CmyMenuExcelRegist");
 	}
@@ -304,9 +307,8 @@ public class CmyMenuManageController {
 	@RequestMapping(value = "/cop/cmy/insertMenuExcel.do")
 	@Secured("ROLE_USER")
 	public String insertMenuExcel(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CommunityMenuVO communityMenuVO, 
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception {
 
@@ -315,13 +317,10 @@ public class CmyMenuManageController {
 		for (MultipartFile file : multiRequest.getFileMap().values()) {
 			if (!"".equals(file.getOriginalFilename())) {
 				// 2011.10.07 업로드 파일에 대한 확장자를 체크
-				if (file.getOriginalFilename().endsWith(".xls") 
-						|| file.getOriginalFilename().endsWith(".xlsx") 
-						|| file.getOriginalFilename().endsWith(".XLS")
-						|| file.getOriginalFilename().endsWith(".XLSX")) {
+				if (file.getOriginalFilename().toUpperCase().endsWith(".XLSX")) {
 					try { 
 						fis = file.getInputStream();
-						cmyMenuManageService.insertExcelMenu(fis, communityMenuVO.getTrgetId());
+						cmyMenuManageService.insertExcelMenu(communityMenuVO, fis);
 					} catch (Exception e) {
 						throw e;
 					} finally {
@@ -330,14 +329,14 @@ public class CmyMenuManageController {
 					}
 
 				} else {
-					model.addAttribute("message", "xls, xlsx 파일 타입만 등록이 가능합니다.");
+					model.addAttribute("message", "xlsx 파일 타입만 등록이 가능합니다.");
 					return WebUtil.adjustViewName("/cop/cmy/CmyMenuExcelRegist");
 				}
 			}
 		}
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/cop/cmy/listMenu.do");
+		return WebUtil.redirectJsp(model, communityMenuVO, "/cop/cmy/listMenu.do");
 	}
 	
     /**
@@ -348,7 +347,6 @@ public class CmyMenuManageController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/cop/cmy/clearCacheMenu.do")
     public String clearCacheMenu(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CommunityMenuVO communityMenuVO, 
 			ModelMap model) {
 
@@ -357,7 +355,7 @@ public class CmyMenuManageController {
 		cacheMap = (HashMap<String, Object>) cacheDictionary.get(CacheKey.CMY_PREFIX + communityMenuVO.getTrgetId());
         if( cacheMap == null ) {
     		model.addAttribute("message", MessageHelper.getMessage("fail.common.delete"));
-			return WebUtil.redirectJsp(model, "/cop/cmy/listMenu.do");
+			return WebUtil.redirectJsp(model, communityMenuVO, "/cop/cmy/listMenu.do");
         }
         
         // clear cache
@@ -366,7 +364,7 @@ public class CmyMenuManageController {
 	    }
     	cacheMap = null;
 	    
-		return WebUtil.redirectJsp(model, "/cop/cmy/listMenu.do");
+		return WebUtil.redirectJsp(model, communityMenuVO, "/cop/cmy/listMenu.do");
     }
     
 }

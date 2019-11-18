@@ -42,7 +42,7 @@
 	<h2>RSS서비스 목록</h2>
 </div>
 
-<form:form commandName="rssInfoVO" action="" method="post">
+<form:form modelAttribute="rssInfoVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

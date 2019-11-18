@@ -163,7 +163,7 @@ public class EventCmpgnController {
 		eventCmpgnService.insertEventCmpgn(eventCmpgnVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/ion/ecc/listEventCmpgn.do");
+        return WebUtil.redirectJsp(model, eventCmpgnVO, "/uss/ion/ecc/listEventCmpgn.do");
 	}
 
 	/**
@@ -216,7 +216,7 @@ public class EventCmpgnController {
 		eventCmpgnService.updateEventCmpgn(eventCmpgnVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/ecc/listEventCmpgn.do");
+        return WebUtil.redirectJsp(model, eventCmpgnVO, "/uss/ion/ecc/listEventCmpgn.do");
 	}
 
 	/**
@@ -233,7 +233,7 @@ public class EventCmpgnController {
 		eventCmpgnService.deleteEventCmpgn(eventCmpgnVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/ecc/listEventCmpgn.do");
+        return WebUtil.redirectJsp(model, eventCmpgnVO, "/uss/ion/ecc/listEventCmpgn.do");
 	}
 
 	/**
@@ -335,7 +335,7 @@ public class EventCmpgnController {
 		eventCmpgnService.insertTnextrlHrInfo(tnextrlHrInfoVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/ion/ecc/listTnextrlHrInfo.do");
+        return WebUtil.redirectJsp(model, tnextrlHrInfoVO, "/uss/ion/ecc/listTnextrlHrInfo.do");
 	}
 
 	/**
@@ -384,7 +384,7 @@ public class EventCmpgnController {
 		eventCmpgnService.updateTnextrlHrInfo(tnextrlHrInfoVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/ecc/listTnextrlHrInfo.do");
+        return WebUtil.redirectJsp(model, tnextrlHrInfoVO, "/uss/ion/ecc/listTnextrlHrInfo.do");
 	}
 
 	/**
@@ -401,7 +401,7 @@ public class EventCmpgnController {
 		eventCmpgnService.deleteTnextrlHrInfo(tnextrlHrInfoVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/ecc/listTnextrlHrInfo.do");
+        return WebUtil.redirectJsp(model, tnextrlHrInfoVO, "/uss/ion/ecc/listTnextrlHrInfo.do");
 	}
 
 }

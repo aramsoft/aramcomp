@@ -160,7 +160,7 @@ public class ReprtStatsController {
 		reprtStatsService.insertReprtStats(reprtStatsVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/sts/rst/listReprtStats.do");
+        return WebUtil.redirectJsp(model, reprtStatsVO, "/sts/rst/listReprtStats.do");
 	}
 
 }

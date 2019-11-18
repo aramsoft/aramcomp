@@ -150,7 +150,7 @@ public class KnoPersonalController {
 		knoPersonalService.insertKnoPersonal(knoPersonalVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, "/dam/per/listKnoPersonal.do");
+		return WebUtil.redirectJsp(model, knoPersonalVO, "/dam/per/listKnoPersonal.do");
 	}
 
 	/**
@@ -223,7 +223,7 @@ public class KnoPersonalController {
 		knoPersonalService.updateKnoPersonal(knoPersonalVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, "/dam/per/listKnoPersonal.do");
+		return WebUtil.redirectJsp(model, knoPersonalVO, "/dam/per/listKnoPersonal.do");
 	}
 
 	/**
@@ -240,7 +240,7 @@ public class KnoPersonalController {
 		knoPersonalService.deleteKnoPersonal(knoPersonalVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, "/dam/per/listKnoPersonal.do");
+		return WebUtil.redirectJsp(model, knoPersonalVO, "/dam/per/listKnoPersonal.do");
 	}
 
 }

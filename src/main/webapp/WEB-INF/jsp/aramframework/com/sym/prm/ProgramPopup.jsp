@@ -41,7 +41,7 @@
 	<h2>프로그램파일명 검색</h2>
 </div>
 
-<form:form commandName="progrmManageVO" action="" method="post">
+<form:form modelAttribute="progrmManageVO" action="" method="post">
 <form:hidden path="searchUseAt"/>
 
 <div id="search_area">

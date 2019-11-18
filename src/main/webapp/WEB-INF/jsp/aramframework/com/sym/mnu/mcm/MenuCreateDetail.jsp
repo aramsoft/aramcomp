@@ -48,7 +48,7 @@
 	</div>
 </div>
 
-<form:form commandName="menuCreateVO" action="" method="post">
+<form:form modelAttribute="menuCreateVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
@@ -125,6 +125,7 @@ var imgpath = "${pageContext.request.contextPath}/images/aramframework/com/cmm/u
 <input type="hidden" name="searchCondition" value="${searchVO.searchCondition}" />
 <input type="hidden" name="searchKeyword"   value="${searchVO.searchKeyword}" />
 <input type="hidden" name="pageIndex"       value="${searchVO.pageIndex}" />
+<input type="hidden" name="recordPerPage"   value="${searchVO.recordPerPage}" />
 <!-- 검색조건 유지 -->
 </form:form>
 

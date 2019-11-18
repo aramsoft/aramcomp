@@ -164,7 +164,7 @@ public class QustnrQestnManageController {
 		qustnrQestnManageService.insertQustnrQestnManage(qustnrQestnManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, "/uss/olp/qqm/listQustnrQestn.do");
+	    return WebUtil.redirectJsp(model, qustnrQestnManageVO, "/uss/olp/qqm/listQustnrQestn.do");
 	}
 	
 	/**
@@ -213,7 +213,7 @@ public class QustnrQestnManageController {
 		qustnrQestnManageService.updateQustnrQestnManage(qustnrQestnManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, "/uss/olp/qqm/listQustnrQestn.do");
+	    return WebUtil.redirectJsp(model, qustnrQestnManageVO, "/uss/olp/qqm/listQustnrQestn.do");
 	}
 
 	/**
@@ -231,7 +231,7 @@ public class QustnrQestnManageController {
 		qustnrQestnManageService.deleteQustnrQestnManage(qustnrQestnManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, "/uss/olp/qqm/listQustnrQestn.do");
+	    return WebUtil.redirectJsp(model, qustnrQestnManageVO, "/uss/olp/qqm/listQustnrQestn.do");
 	}
 
 	/**

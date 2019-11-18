@@ -50,7 +50,7 @@
 </div>
 
 <!-- 등록폼 시작  -->
-<form:form commandName="noteManageVO" action="" method="post" enctype="multipart/form-data">
+<form:form modelAttribute="noteManageVO" action="" method="post" enctype="multipart/form-data">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

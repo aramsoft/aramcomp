@@ -36,7 +36,7 @@
 </div>
 
 <!-- 등록  폼 영역  -->
-<form:form commandName="ntwrkVO" action="" method="post">
+<form:form modelAttribute="ntwrkVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

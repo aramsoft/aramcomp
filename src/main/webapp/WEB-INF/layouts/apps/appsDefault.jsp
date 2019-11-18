@@ -196,10 +196,10 @@ function fn_aram_login(){
 	url = url + "&curTrgetId=${targetVO.cmmntyId}&curMenuNo="+cur_menuNo;
 	fn_aram_load(url);
 }
-
+ 
 function fn_aram_logout(){
 	var url = "${pageContext.request.contextPath}/uat/uia/actionLogout.do";
-	url = url + "?targetUrl=${pageContext.request.contextPath}/${targetVO.homeUrl}";
+	url = url + "?targetUrl=${pageContext.request.contextPath}${targetVO.homeUrl}";
 	fn_aram_load(url);
 }
 
@@ -207,7 +207,7 @@ function fn_aram_loadMenu(menuAlias){
 	url = "${pageContext.request.contextPath}${targetVO.homeUrl}/" + menuAlias;
 	fn_aram_load(url);
 }
-
+ 
 function fn_aram_loadMenuUrl(url, menuNo){
   	if( url.indexOf('?') != -1 ) {
 		url = url+"&curTrgetId=${targetVO.cmmntyId}&curMenuNo="+menuNo;

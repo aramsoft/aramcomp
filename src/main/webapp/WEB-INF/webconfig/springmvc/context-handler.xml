@@ -3,9 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
-						http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+						http://www.springframework.org/schema/beans/spring-beans.xsd
         				http://www.springframework.org/schema/context 
-						http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+						http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- The controllers are autodetected POJOs labeled with the @Controller annotation. -->
 	<context:component-scan base-package="aramframework">
@@ -47,7 +47,7 @@
 		<property name="interceptors">
 			<list>
 				<ref bean="tilesInterceptor" />
-				<ref bean="webLogInterceptor" />
+		 		<ref bean="webLogInterceptor" /> 
 			</list>
 		</property>
 	</bean>
@@ -57,9 +57,8 @@
 
 	<!-- 웹로그 인터셉터 -->
 	<bean id="webLogInterceptor" class="aramframework.com.cmm.config.interceptor.WebLogInterceptor"> 
-	<!-- 웹로그가 필요 없는 URL 리스트  -->
  		<property name="passURL">
-			<set>
+			<set> 
 				<value>/index.do</value>
 				<value>/UnitMain.do</value>
 				<value>/UnitLeft.do</value>
@@ -76,6 +75,12 @@
 		- This bean processes annotated handler methods, applying Application-specific PropertyEditors
 		- for request parameter binding. It overrides the default AnnotationMethodHandlerAdapter.
 	-->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="webBindingInitializer">
+            <bean class="aramframework.com.cmm.config.web.BindingInitializer"/>
+        </property>
+    </bean>
+<!--     
 	<bean class="egovframework.rte.ptl.mvc.bind.annotation.EgovRequestMappingHandlerAdapter">
 		<property name="webBindingInitializer">
 			<bean class="aramframework.com.cmm.config.web.BindingInitializer"/>
@@ -92,5 +97,5 @@
 			</list>
 		</property>
 	</bean>
-
+-->
 </beans>

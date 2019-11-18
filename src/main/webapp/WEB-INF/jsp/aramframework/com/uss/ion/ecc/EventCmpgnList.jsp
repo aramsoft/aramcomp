@@ -30,7 +30,7 @@
 	</a>
 </div>
 
-<form:form commandName="eventCmpgnVO" action="" method="post">
+<form:form modelAttribute="eventCmpgnVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

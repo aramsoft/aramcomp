@@ -36,7 +36,7 @@
 </div>
 
 <!-- 상단타이틀 -->
-<form:form commandName="systemCntcVO" action="" method="post">
+<form:form modelAttribute="systemCntcVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

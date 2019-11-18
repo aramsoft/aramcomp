@@ -50,7 +50,7 @@
 
 <div style="margin-top:10px; width:100%;"></div>
 
-<form:form commandName="commentVO"  method="post" action="">
+<form:form modelAttribute="commentVO"  method="post" action="">
 <form:hidden path="bbsId" />
 <form:hidden path="nttId" />
 <form:hidden path="commentNo" />

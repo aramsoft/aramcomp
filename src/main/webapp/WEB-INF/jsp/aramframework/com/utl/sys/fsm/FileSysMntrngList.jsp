@@ -27,7 +27,7 @@
 	<h2>파일시스템모니터링 목록</h2> 
 </div>
 
-<form:form commandName="fileSysMntrngVO" action="" method="post">
+<form:form modelAttribute="fileSysMntrngVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 

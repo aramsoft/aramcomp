@@ -1,5 +1,7 @@
 package aramframework.com.sec.rmt.web;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -7,7 +9,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
@@ -72,8 +73,9 @@ public class ResourceController {
 	@RequestMapping("/sec/rmt/registResource.do")
 	@Secured("ROLE_ADMIN")
 	public String registResource(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute ResourceVO resourceVO) {
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute ResourceVO resourceVO, 
+			ModelMap model) {
 
 		cmmUseService.populateCmmCodeList("COM029", "COM029_resourceType");
 
@@ -88,7 +90,7 @@ public class ResourceController {
 	@RequestMapping(value = "/sec/rmt/insertResource.do")
 	@Secured("ROLE_ADMIN")
 	public String insertResource(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ResourceVO resourceVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -101,7 +103,7 @@ public class ResourceController {
 		resourceService.insertResource(resourceVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/sec/rmt/listResource.do");
+        return WebUtil.redirectJsp(model, resourceVO, "/sec/rmt/listResource.do");
 	}
 
 	/**
@@ -112,7 +114,7 @@ public class ResourceController {
 	@RequestMapping(value = "/sec/rmt/editResource.do")
 	@Secured("ROLE_ADMIN")
 	public String editResource(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ResourceVO resourceVO,
 			ModelMap model) {
 
@@ -131,7 +133,7 @@ public class ResourceController {
 	@RequestMapping(value = "/sec/rmt/updateResource.do")
 	@Secured("ROLE_ADMIN")
 	public String updateResourceManage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ResourceVO resourceVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -144,7 +146,7 @@ public class ResourceController {
 		resourceService.updateResource(resourceVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/sec/rmt/listResource.do");
+        return WebUtil.redirectJsp(model, resourceVO, "/sec/rmt/listResource.do");
 	}
 
 	/**
@@ -155,14 +157,13 @@ public class ResourceController {
 	@RequestMapping(value = "/sec/rmt/deleteResource.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteResource(
-			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ResourceVO resourceVO, 
 			ModelMap model) {
 
 		resourceService.deleteResource(resourceVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/sec/rmt/listResource.do");
+        return WebUtil.redirectJsp(model, resourceVO, "/sec/rmt/listResource.do");
 	}
 
 	/**
@@ -173,14 +174,18 @@ public class ResourceController {
 	@RequestMapping(value = "/sec/rmt/deleteListResource.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteListResources(
-			@RequestParam String resourceCodes, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute ResourceVO resourceVO, 
+			HttpServletRequest request, 
 			ModelMap model) {
+
+    	String[] resourceCodes = null;
+    	if(request.getParameterValues("uniqIds") != null) 
+    		resourceCodes = request.getParameterValues("uniqIds"); 
 
 		resourceService.deleteResources(resourceCodes);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/sec/rmt/listResource.do");
+        return WebUtil.redirectJsp(model, resourceVO, "/sec/rmt/listResource.do");
 	}
 
 }

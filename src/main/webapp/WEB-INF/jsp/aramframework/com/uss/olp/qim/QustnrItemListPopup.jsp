@@ -43,7 +43,7 @@
 	<h2>설문항목 목록</h2>
 </div>
 
-<form:form commandName="qustnrItemManageVO" action="" method="post">
+<form:form modelAttribute="qustnrItemManageVO" action="" method="post">
 
 <div id="search_area">
 	<div class="button_area">

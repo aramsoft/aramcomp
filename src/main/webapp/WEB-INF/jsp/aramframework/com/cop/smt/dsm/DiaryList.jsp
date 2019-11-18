@@ -31,7 +31,7 @@
 	</a>
 </div>
 
-<form:form commandName="diaryManageVO" action ="" method="post">
+<form:form modelAttribute="diaryManageVO" action ="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
@@ -82,17 +82,21 @@
 	</c:if>
 
  	<%-- 데이터를 화면에 출력해준다 --%>
-  	<c:set var="searchVO" value="${diaryManageVO}"/>
-  	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
+  	<c:set var="startIndex" value="${(diaryManageVO.pageIndex-1) * diaryManageVO.recordPerPage}"/>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
-	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.diaryId}"/>'); return false;">
- 
- 		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
+	<tr>
+  		<c:set var="index" value="${startIndex + status.count}"/>
+		<c:set var="reverseIndex" value="${diaryManageVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
     	<td class="lt_text3"><c:out value='${result.schdulNm}'/></td>
-    	<td class="lt_text3L"><c:out value="${result.diaryNm}"/></td>
+    	<td class="lt_text3L">
+	   		<span class="link">
+	   		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.diaryId}"/>'); return false;">
+    			<c:out value="${result.diaryNm}"/>
+	   		</a>
+	   		</span>
+    	</td>
     	<td class="lt_text3"><c:out value='${result.diaryProcsPte}'/>%</td>
     	<td class="lt_text3"><c:out value='${result.frstRegisterNm}'/></td>
     	<td class="lt_text3"><fmt:formatDate value="${result.frstRegisterPnttm}" pattern="yyyy-MM-dd"/></td>

@@ -134,7 +134,7 @@ public class LoginScrinImageController {
 		loginScrinImageService.insertLoginScrinImage(loginScrinImageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, "/uss/ion/lsi/listLoginScrinImage.do");
+        return WebUtil.redirectJsp(model, loginScrinImageVO, "/uss/ion/lsi/listLoginScrinImage.do");
 	}
 
 	/**
@@ -201,7 +201,7 @@ public class LoginScrinImageController {
 		loginScrinImageService.updateLoginScrinImage(loginScrinImageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, "/uss/ion/lsi/listLoginScrinImage.do");
+        return WebUtil.redirectJsp(model, loginScrinImageVO, "/uss/ion/lsi/listLoginScrinImage.do");
 	}
 
 	/**
@@ -218,7 +218,7 @@ public class LoginScrinImageController {
 		loginScrinImageService.deleteLoginScrinImage(loginScrinImageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/lsi/listLoginScrinImage.do");
+        return WebUtil.redirectJsp(model, loginScrinImageVO, "/uss/ion/lsi/listLoginScrinImage.do");
 	}
 
 	/**
@@ -237,7 +237,7 @@ public class LoginScrinImageController {
 		loginScrinImageService.deleteLoginScrinImages(imageIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, "/uss/ion/lsi/listLoginScrinImage.do");
+        return WebUtil.redirectJsp(model, loginScrinImageVO, "/uss/ion/lsi/listLoginScrinImage.do");
 	}
 
 	/**

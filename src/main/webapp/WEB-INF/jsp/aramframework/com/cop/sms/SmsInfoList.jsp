@@ -31,7 +31,7 @@
 	</a>
 </div>
 
-<form:form commandName="smsVO" action ="" method="post">
+<form:form modelAttribute="smsVO" action ="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
@@ -77,16 +77,20 @@
 	</tr>
 	</c:if>
 
-  	<c:set var="searchVO" value="${smsVO}"/>
- 	<c:set var="startIndex" value="${(searchVO.pageIndex-1) * searchVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(smsVO.pageIndex-1) * smsVO.recordPerPage}"/>
 	<c:forEach var="result" items="${resultList}" varStatus="status">
-	<tr class="link" onclick="javascript:fn_aram_detail('<c:out value="${result.smsId}"/>'); return false;">
- 
- 		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
+	<tr>
+  		<c:set var="index" value="${startIndex + status.count}"/>
+		<c:set var="reverseIndex" value="${smsVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
-    	<td class="lt_text3"><fmt:formatDate value="${result.frstRegisterPnttm}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+    	<td class="lt_text3">
+	   		<span class="link">
+	   		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.smsId}"/>'); return false;">
+    			<fmt:formatDate value="${result.frstRegisterPnttm}" pattern="yyyy-MM-dd HH:mm:ss"/>
+	   		</a>
+	   		</span>
+    	</td>
 	    <td class="lt_text3"><c:out value="${result.trnsmitTelno}"/></td>
 	    <td class="lt_text3"><c:out value="${result.recptnCnt}"/></td>
 	</tr>

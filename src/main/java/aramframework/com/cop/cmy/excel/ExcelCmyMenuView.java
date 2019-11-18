@@ -52,7 +52,7 @@ public class ExcelCmyMenuView extends AbstractXlsxView {
 			Workbook wb, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
-		String fileName = "메뉴.xls"; 
+		String fileName = "메뉴.xlsx"; 
 		fileName = new String(fileName.getBytes("euc-kr"), "8859_1"); 
 		response.setHeader("Content-Disposition", "attachment; fileName=\"" + fileName + "\";"); 
 		response.setHeader("Content-Transfer-Encoding", "binary"); 

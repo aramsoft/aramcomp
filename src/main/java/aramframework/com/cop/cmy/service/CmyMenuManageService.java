@@ -3,7 +3,10 @@ package aramframework.com.cop.cmy.service;
 import java.io.InputStream;
 import java.util.List;
 
-import org.mybatis.spring.SqlSessionTemplate;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +14,6 @@ import aramframework.com.cop.cmy.dao.CmyMenuManageMapper;
 import aramframework.com.cop.cmy.domain.CommunityMenuVO;
 import aramframework.com.cop.cmy.excel.ExcelCmyMenuMapping;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.fdl.excel.impl.EgovExcelServiceImpl;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**
@@ -26,9 +28,6 @@ public class CmyMenuManageService extends EgovAbstractServiceImpl {
 
 	@Autowired 
 	private CmyMenuManageMapper cmyMenuManageMapper;	
-
-	@Autowired 
-	private SqlSessionTemplate sqlSessionTemplate;
 
 	/**
 	 * 메뉴 목록을 조회
@@ -151,20 +150,30 @@ public class CmyMenuManageService extends EgovAbstractServiceImpl {
 	 * @param file
 	 * @param cmmntyId
 	 */
-	public void insertExcelMenu(InputStream file, String cmmntyId) {
-		String mapClass = ExcelCmyMenuMapping.class.getName();
-		String sqlId = CmyMenuManageMapper.class.getName() + ".insertMenuManage";
+	public void insertExcelMenu(CommunityMenuVO communityMenuVO, InputStream fis) throws Exception {
 
-		cmyMenuManageMapper.deleteMenuManageTrget(cmmntyId);
-		try {
-			EgovExcelServiceImpl excelService = new EgovExcelServiceImpl();
-			excelService.setMapClass(mapClass);
-			excelService.setSqlSessionTemplate(sqlSessionTemplate);
+		ExcelCmyMenuMapping mapping = new ExcelCmyMenuMapping();
 			
-			excelService.uploadExcel(sqlId, file, 1, (long) 5000);
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		} 
+		Workbook workbook = new XSSFWorkbook(fis);
+		int sheetNum = workbook.getNumberOfSheets();
+		for (int k = 0; k < sheetNum; k++) {
+			Sheet sheet = workbook.getSheetAt(k);
+			int rows = sheet.getPhysicalNumberOfRows();
+			for (int r = 1; r < rows; r++) {
+    			Row row = sheet.getRow(r);
+    			if (row != null) {
+    				CommunityMenuVO vo = (CommunityMenuVO)mapping.mappingColumn(row);
+     				vo.setTrgetId(communityMenuVO.getTrgetId());
+ 
+     				CommunityMenuVO resultVO = cmyMenuManageMapper.selectMenuManage(vo);
+    		    	if ( resultVO == null ) {
+    		    		cmyMenuManageMapper.insertMenuManage(vo);
+    		    	} else {
+    		    		cmyMenuManageMapper.updateMenuManage(vo);
+    		    	}	
+    			}
+			}
+		}
 	}
 
 }

@@ -317,13 +317,10 @@ public class CmyMenuManageController {
 		for (MultipartFile file : multiRequest.getFileMap().values()) {
 			if (!"".equals(file.getOriginalFilename())) {
 				// 2011.10.07 업로드 파일에 대한 확장자를 체크
-				if (file.getOriginalFilename().endsWith(".xls") 
-						|| file.getOriginalFilename().endsWith(".xlsx") 
-						|| file.getOriginalFilename().endsWith(".XLS")
-						|| file.getOriginalFilename().endsWith(".XLSX")) {
+				if (file.getOriginalFilename().toUpperCase().endsWith(".XLSX")) {
 					try { 
 						fis = file.getInputStream();
-						cmyMenuManageService.insertExcelMenu(fis, communityMenuVO.getTrgetId());
+						cmyMenuManageService.insertExcelMenu(communityMenuVO, fis);
 					} catch (Exception e) {
 						throw e;
 					} finally {
@@ -332,7 +329,7 @@ public class CmyMenuManageController {
 					}
 
 				} else {
-					model.addAttribute("message", "xls, xlsx 파일 타입만 등록이 가능합니다.");
+					model.addAttribute("message", "xlsx 파일 타입만 등록이 가능합니다.");
 					return WebUtil.adjustViewName("/cop/cmy/CmyMenuExcelRegist");
 				}
 			}

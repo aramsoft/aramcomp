@@ -1,10 +1,6 @@
 <!doctype html>
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@ page import	= "aramframework.com.cmm.util.LogUtil" %>
 <%@ page isErrorPage="true" %>
-<%
-	LogUtil.logErrorMessage(exception, 100);
-%>
 <html lang="ko">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">

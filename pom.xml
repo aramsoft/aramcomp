@@ -162,6 +162,12 @@
 		<!-- 실행환경 라이브러리 끝 -->
 
 
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.3</version>
+		</dependency>
+
 		<!-- common-annotations for JSE 5 -->
 		<dependency>
 			<groupId>commons-lang</groupId>

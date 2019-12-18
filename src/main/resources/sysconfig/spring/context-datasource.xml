@@ -10,12 +10,12 @@
 	<!-- DataSource -->
 	
 	<!-- Datasource는 jndi lookup을 사용: container에 위임 -->	
+<!-- 
 	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/EgovCmmDS"/>
-
-	<!-- 
+-->
+	 
 	<alias name="dataSource-${Globals.DbType}" alias="dataSource" />
-	-->
-	
+
 	<!-- MySQL -->
 	<!-- 
 	<bean id="dataSource-Mysql" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
@@ -35,5 +35,15 @@
 		<property name="password" value="${Globals.Password}"/>
 	</bean>
 	-->
+	
+	<!-- Postgres -->
+	 
+	<bean id="dataSource-Postgres" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${Globals.DriverClassName}"/>
+		<property name="url" value="${Globals.Url}" />
+		<property name="username" value="${Globals.UserName}"/>
+		<property name="password" value="${Globals.Password}"/>
+	</bean>
+	
 	
 </beans>

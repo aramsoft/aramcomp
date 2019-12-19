@@ -133,7 +133,9 @@ function saveid(form) {
 }
 
 function getid(form) {
-    form.checkId.checked = ((form.username.value = getCookie("saveid")) != "");
+	if(  getCookie("saveid") != "" ) {
+		form.checkId.checked = ((form.username.value = getCookie("saveid")) != "");
+	}
 }
 
 function fnInit() {
@@ -208,12 +210,12 @@ window.onload = fnInit;
                     <table border="0">
                         <tr>
                             <td><label for="username">아이디&nbsp;&nbsp;</label></td>
-                            <td><input type="text" name="username" id="username" style="height:16px; width:85px; border:1px solid #CCCCCC; margin:0px; padding:0px; ime-mode:disabled;" tabindex="4" maxlength="10"/></td>
+                            <td><input type="text" name="username" id="username" value="TEST1" style="height:16px; width:85px; border:1px solid #CCCCCC; margin:0px; padding:0px; ime-mode:disabled;" tabindex="4" maxlength="10"/></td>
 							<td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td><label for="password">비밀번호&nbsp;&nbsp;</label></td>
-                            <td><input type="password" name="password" id="password" value="" style="height: 16px; width: 85px; border: 1px solid #CCCCCC; margin: 0px; padding: 0px; ime-mode: disabled;" maxlength="12" tabindex="5" onKeyDown="javascript:if (event.keyCode == 13) { actionLogin(); }"/></td>
+                            <td><input type="password" name="password" id="password" value="rhdxhd12" style="height: 16px; width: 85px; border: 1px solid #CCCCCC; margin: 0px; padding: 0px; ime-mode: disabled;" maxlength="12" tabindex="5" onKeyDown="javascript:if (event.keyCode == 13) { actionLogin(); }"/></td>
                             <td class="title">&nbsp;&nbsp;<label for="checkId"><input type="checkbox" name="checkId" class="check2" onClick="javascript:saveid(document.loginForm);" id="checkId" tabindex="6"/>ID저장</label></td>
                         </tr>
                     </table>

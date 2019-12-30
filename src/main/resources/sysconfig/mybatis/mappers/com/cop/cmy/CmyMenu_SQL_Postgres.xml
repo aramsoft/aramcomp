@@ -117,7 +117,7 @@
 		<![CDATA[                          
 			DELETE 
 			  FROM COMTN_CMMNTY_MENU               
-			 WHERE TRGET_ID = #trgetId#
+			 WHERE TRGET_ID = #{trgetId}
 			   AND MENU_NO = #{menuNo}
 		]]>                                
 	</delete> 

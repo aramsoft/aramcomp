@@ -9,7 +9,7 @@
 	<url>http://aramcomp.aramsoft.co.kr</url> 
 
 	<properties>
-	    <spring.version>5.2.1.RELEASE</spring.version>
+	    <spring.version>5.2.3.RELEASE</spring.version>
 	    <spring.security.version>5.2.1.RELEASE</spring.security.version>
 		<egovframework.rte.version>3.1.0</egovframework.rte.version>
 	</properties>

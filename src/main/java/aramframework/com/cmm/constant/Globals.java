@@ -17,31 +17,22 @@ public interface Globals {
 	String MAIN_PAGE   = AramProperties.getProperty("Globals.MainPage");
 	
 	// 프로퍼티 파일 위치
-	String CONF_PATH        = AramProperties.getPathProperty("Globals.ConfPath");
+	String CONF_PATH        = AramProperties.getSysPathProperty("Globals.ConfPath");
 	// ShellFile 경로
-	String SHELL_CONF_PATH  = AramProperties.getPathProperty("Globals.ShellConfPath");
+	String SHELL_CONF_PATH  = AramProperties.getSysPathProperty("Globals.ShellConfPath");
 	// Server정보 프로퍼티 위치
-	String SERVER_CONF_PATH = AramProperties.getPathProperty("Globals.ServerConfPath");
+	String SERVER_CONF_PATH = AramProperties.getSysPathProperty("Globals.ServerConfPath");
 	// Client정보 프로퍼티 위치
-	String CLIENT_CONF_PATH = AramProperties.getPathProperty("Globals.ClientConfPath");
+	String CLIENT_CONF_PATH = AramProperties.getSysPathProperty("Globals.ClientConfPath");
 	// 파일포맷 정보 프로퍼티 위치
-	String FILE_FORMAT_PATH = AramProperties.getPathProperty("Globals.FileFormatPath");
-
-	// 파일 업로드 원 파일명
-	String ORIGIN_FILE_NM = "originalFileName";
-	// 파일 확장자
-	String FILE_EXT       = "fileExtension";
-	// 파일크기
-	String FILE_SIZE      = "fileSize";
-	// 업로드된 파일명
-	String UPLOAD_FILE_NM = "uploadFileName";
-	// 파일경로
-	String FILE_PATH      = "filePath";
+	String FILE_FORMAT_PATH = AramProperties.getSysPathProperty("Globals.FileFormatPath");
+	// sms 정보 프로퍼티 위치
+	String SME_CONFIG_PATH    = AramProperties.getSysPathProperty("Globals.SMEConfigPath");
 
 	// 메일발송요청 XML파일경로
-	String MAIL_REQUEST_PATH  = AramProperties.getPathProperty("Globals.MailRequestPath");
+	String MAIL_REQUEST_PATH  = AramProperties.getProperty("Globals.MailRequestPath");
 	// 메일발송응답 XML파일경로
-	String MAIL_RESPONSE_PATH = AramProperties.getPathProperty("Globals.MailResponsePath");
+	String MAIL_RESPONSE_PATH = AramProperties.getProperty("Globals.MailResponsePath");
 
 	// G4C 연결용 IP (localhost)
 	String LOCAL_IP = AramProperties.getProperty("Globals.LocalIp");

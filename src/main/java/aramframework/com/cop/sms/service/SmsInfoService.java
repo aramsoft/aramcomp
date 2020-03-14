@@ -4,12 +4,10 @@ import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.constant.AramProperties;
+import aramframework.com.cmm.constant.Globals;
 import aramframework.com.cop.sms.dao.SmsMapper;
 import aramframework.com.cop.sms.domain.SmsMessageVO;
 import aramframework.com.cop.sms.domain.SmsRecptnVO;
@@ -34,16 +32,6 @@ public class SmsInfoService extends EgovAbstractServiceImpl {
 
 	@Autowired 
 	private EgovIdGnrService smsIdGnrService; 
-
-	private String smeConfigPath = null;
-
-	@PostConstruct
-	public void init() {
-		// --------------------------------
-		// 속성 정보 얻기
-		// --------------------------------
-		smeConfigPath = AramProperties.getPathProperty("Globals.SMEConfigPath");
-	}
 
 	private String getPhoneNumber(String number) {
 		String result = number;
@@ -194,7 +182,7 @@ public class SmsInfoService extends EgovAbstractServiceImpl {
 			SmsInfoSender sender = null;
 			SmsMessageVO result = null;
 			try {
-				sender = new SmsInfoSender(smeConfigPath);
+				sender = new SmsInfoSender(Globals.SME_CONFIG_PATH);
 				sender.open();
 				result = sender.send(smsMsg);
 			} finally {
@@ -269,7 +257,7 @@ public class SmsInfoService extends EgovAbstractServiceImpl {
 		SmsInfoSender sender = null;
 		SmsMessageVO result = null;
 		try {
-			sender = new SmsInfoSender(smeConfigPath);
+			sender = new SmsInfoSender(Globals.SME_CONFIG_PATH);
 
 			sender.open();
 			result = sender.send(smsMessageVO);
@@ -299,7 +287,7 @@ public class SmsInfoService extends EgovAbstractServiceImpl {
 		SmsInfoSender sender = null;
 
 		try {
-			sender = new SmsInfoSender(smeConfigPath);
+			sender = new SmsInfoSender(Globals.SME_CONFIG_PATH);
 
 			sender.open();
 

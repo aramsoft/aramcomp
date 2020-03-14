@@ -567,7 +567,7 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 			communityMenuVO.setMenuNo(Integer.parseInt(menuId.substring(0,1)+"00000"));
 		}
 		
-		String subMenuKey = CacheKey.CMY_SUBLIST+communityMenuVO.getMenuNo();
+		String subMenuKey = CacheKey.CMY_SUBMENU+communityMenuVO.getMenuNo();
 		List<EgovMap> subMenuList = (List<EgovMap>) cacheMap.get(subMenuKey);
         if( subMenuList == null ) {
     		subMenuList = selectCommunitySubMenuInfs(communityMenuVO);

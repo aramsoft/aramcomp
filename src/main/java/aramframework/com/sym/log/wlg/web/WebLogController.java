@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.log.wlg.domain.WebLogVO;
 import aramframework.com.sym.log.wlg.service.WebLogService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -50,7 +49,7 @@ public class WebLogController {
 	
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("sym/log/wlg/WebLogList");
+		return "sym/log/wlg/WebLogList";
 	}
 
 	/**
@@ -67,7 +66,7 @@ public class WebLogController {
 
 		model.addAttribute(webLogService.selectWebLog(webLogVO));
 
-		return WebUtil.adjustViewName("sym/log/wlg/WebLogDetail");
+		return "sym/log/wlg/WebLogDetail";
 	}
 
 }

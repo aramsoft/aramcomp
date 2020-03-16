@@ -64,7 +64,7 @@ public class ZipManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("sym/ccm/zip/ZipList");
+		return "sym/ccm/zip/ZipList";
 	}
 
 	/**
@@ -80,7 +80,7 @@ public class ZipManageController {
 
 		model.addAttribute(zipManageService.selectZipDetail(zipVO));
 
-		return WebUtil.adjustViewName("sym/ccm/zip/ZipDetail");
+		return "sym/ccm/zip/ZipDetail";
 	}
 
 	/**
@@ -95,7 +95,7 @@ public class ZipManageController {
 			@ModelAttribute ZipVO zipVO, 
 			ModelMap model) {
 
-		return WebUtil.adjustViewName("sym/ccm/zip/ZipRegist");
+		return "sym/ccm/zip/ZipRegist";
 	}
 
 	/**
@@ -116,7 +116,7 @@ public class ZipManageController {
 
 		beanValidator.validate(zipVO, bindingResult);
 		if (bindingResult.hasErrors()){
-			return WebUtil.adjustViewName("sym/ccm/zip/ZipRegist");
+			return "sym/ccm/zip/ZipRegist";
 		}
 		
 		zipManageService.insertZip(zipVO);
@@ -136,7 +136,7 @@ public class ZipManageController {
 			@ModelAttribute ZipVO zipVO, 
 			ModelMap model) {
 
-		return WebUtil.adjustViewName("sym/ccm/zip/ZipExcelRegist");
+		return "sym/ccm/zip/ZipExcelRegist";
 	}
 
 	/**
@@ -176,7 +176,7 @@ public class ZipManageController {
 							fis.close();					}
 				} else {
 					model.addAttribute("message", "xls, xlsx 파일 타입만 등록이 가능합니다.");
-					return WebUtil.adjustViewName("sym/ccm/zip/ZipExcelRegist");
+					return "sym/ccm/zip/ZipExcelRegist";
 				}
 			}
 		}
@@ -199,7 +199,7 @@ public class ZipManageController {
 
 		model.addAttribute(zipManageService.selectZipDetail(zipVO));
 
-		return WebUtil.adjustViewName("sym/ccm/zip/ZipEdit");
+		return "sym/ccm/zip/ZipEdit";
 	}
 
 	/**
@@ -220,7 +220,7 @@ public class ZipManageController {
 
 		beanValidator.validate(zipVO, bindingResult);
 		if (bindingResult.hasErrors()){
-			return WebUtil.adjustViewName("sym/ccm/zip/ZipEdit");
+			return "sym/ccm/zip/ZipEdit";
 		}
 		
 		zipManageService.updateZip(zipVO);
@@ -267,7 +267,7 @@ public class ZipManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("sym/ccm/zip/ZipSearchPopup");
+		return "sym/ccm/zip/ZipSearchPopup";
 	}
 
 	/**
@@ -293,7 +293,7 @@ public class ZipManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("sym/ccm/zip/RdNmSearchPopup");
+		return "sym/ccm/zip/RdNmSearchPopup";
 	}
 	
 }

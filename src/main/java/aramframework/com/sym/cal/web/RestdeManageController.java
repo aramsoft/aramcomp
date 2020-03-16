@@ -80,7 +80,7 @@ public class RestdeManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("sym/cal/RestdeList");
+		return "sym/cal/RestdeList";
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class RestdeManageController {
 		
 		model.addAttribute(restdeManageService.selectRestdeDetail(restdeVO));
 
-		return WebUtil.adjustViewName("sym/cal/RestdeDetail");
+		return "sym/cal/RestdeDetail";
 	}
 
 	/**
@@ -113,7 +113,7 @@ public class RestdeManageController {
 		
 		cmmUseService.populateCmmCodeList("COM017", "COM017_restde");
 
-		return WebUtil.adjustViewName("sym/cal/RestdeRegist");
+		return "sym/cal/RestdeRegist";
 	}
 
 	/**
@@ -131,7 +131,7 @@ public class RestdeManageController {
 		
 		beanValidator.validate(restdeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("sym/cal/RestdeRegist");
+			return "sym/cal/RestdeRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -159,7 +159,7 @@ public class RestdeManageController {
 
 		cmmUseService.populateCmmCodeList("COM017", "COM017_restde");
 
-		return WebUtil.adjustViewName("sym/cal/RestdeEdit");
+		return "sym/cal/RestdeEdit";
 	}
 
 	/**
@@ -177,7 +177,7 @@ public class RestdeManageController {
 
 		beanValidator.validate(restdeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("sym/cal/RestdeEdit");
+			return "sym/cal/RestdeEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -220,7 +220,7 @@ public class RestdeManageController {
 		// 2011.10.18 달력 출력을 위해 필요한 숫자 이외의 값을 사용하는 경우 체크
 		bindingResult = checkRestdeWithValidator(restdeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("cmm/error/dataAccessFailure");
+			return "cmm/error/dataAccessFailure";
 		}
 
 		Calendar cal = Calendar.getInstance();
@@ -302,7 +302,7 @@ public class RestdeManageController {
 
 		model.addAttribute("resultList", CalInfoList);
 
-		return WebUtil.adjustViewName("sym/cal/CallCalPopup");
+		return "sym/cal/CallCalPopup";
 	}
 
 	/**
@@ -319,7 +319,7 @@ public class RestdeManageController {
 		// 2011.10.18 달력 출력을 위해 필요한 숫자 이외의 값을 사용하는 경우 체크
 		bindingResult = checkRestdeWithValidator(restdeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("cmm/error/dataAccessFailure");
+			return "cmm/error/dataAccessFailure";
 		}
 
 		Calendar cal = Calendar.getInstance();
@@ -359,7 +359,7 @@ public class RestdeManageController {
 
 		model.addAttribute("resultList", restdeManageService.selectNormalRestdePopup(restdeVO));
 
-		return WebUtil.adjustViewName("sym/cal/NormalCalPopup");
+		return "sym/cal/NormalCalPopup";
 	}
 
 	/**
@@ -376,7 +376,7 @@ public class RestdeManageController {
 		// 2011.10.18 달력 출력을 위해 필요한 숫자 이외의 값을 사용하는 경우 체크
 		bindingResult = checkRestdeWithValidator(restdeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("cmm/error/dataAccessFailure");
+			return "cmm/error/dataAccessFailure";
 		}
 
 		Calendar cal = Calendar.getInstance();
@@ -429,7 +429,7 @@ public class RestdeManageController {
 		model.addAttribute("resultList", restdeManageService.selectNormalDayCal(restdeVO));
 		model.addAttribute("RestdeList", restdeManageService.selectNormalDayRestde(restdeVO));
 
-		return WebUtil.adjustViewName("sym/cal/NormalDayCalendar");
+		return "sym/cal/NormalDayCalendar";
 	}
 
 	/**
@@ -446,7 +446,7 @@ public class RestdeManageController {
 		// 2011.10.18 달력 출력을 위해 필요한 숫자 이외의 값을 사용하는 경우 체크
 		bindingResult = checkRestdeWithValidator(restdeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("cmm/error/dataAccessFailure");
+			return "cmm/error/dataAccessFailure";
 		}
 
 		Calendar cal = Calendar.getInstance();
@@ -596,7 +596,7 @@ public class RestdeManageController {
 
 		model.addAttribute("resultList", restdeManageService.selectNormalDayCal(restdeVO));
 
-		return WebUtil.adjustViewName("sym/cal/NormalWeekCalendar");
+		return "sym/cal/NormalWeekCalendar";
 	}
 
 	/**
@@ -613,7 +613,7 @@ public class RestdeManageController {
 		// 2011.10.18 달력 출력을 위해 필요한 숫자 이외의 값을 사용하는 경우 체크
 		bindingResult = checkRestdeWithValidator(restdeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("cmm/error/dataAccessFailure");
+			return "cmm/error/dataAccessFailure";
 		}
 
 		Calendar cal = Calendar.getInstance();
@@ -654,7 +654,7 @@ public class RestdeManageController {
 		model.addAttribute("resultList", restdeManageService.selectNormalRestdePopup(restdeVO));
 		model.addAttribute("RestdeList", restdeManageService.selectNormalMonthRestde(restdeVO));
 
-		return WebUtil.adjustViewName("sym/cal/NormalMonthCalendar");
+		return "sym/cal/NormalMonthCalendar";
 	}
 
 	/**
@@ -671,7 +671,7 @@ public class RestdeManageController {
 		// 2011.10.18 달력 출력을 위해 필요한 숫자 이외의 값을 사용하는 경우 체크
 		bindingResult = checkRestdeWithValidator(restdeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("cmm/error/dataAccessFailure");
+			return "cmm/error/dataAccessFailure";
 		}
 
 		Calendar cal = Calendar.getInstance();
@@ -838,7 +838,7 @@ public class RestdeManageController {
 		model.addAttribute("RestdeList_11", NormalMonthRestdeList_11);
 		model.addAttribute("RestdeList_12", NormalMonthRestdeList_12);
 
-		return WebUtil.adjustViewName("sym/cal/NormalYearCalendar");
+		return "sym/cal/NormalYearCalendar";
 	}
 
 	/**
@@ -855,7 +855,7 @@ public class RestdeManageController {
 		// 2011.10.18 달력 출력을 위해 필요한 숫자 이외의 값을 사용하는 경우 체크
 		bindingResult = checkRestdeWithValidator(restdeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("cmm/error/dataAccessFailure");
+			return "cmm/error/dataAccessFailure";
 		}
 
 		Calendar cal = Calendar.getInstance();
@@ -895,7 +895,7 @@ public class RestdeManageController {
 
 		model.addAttribute("resultList", restdeManageService.selectAdministRestdePopup(restdeVO));
 
-		return WebUtil.adjustViewName("sym/cal/AdministCalPopup");
+		return "sym/cal/AdministCalPopup";
 	}
 
 	/**
@@ -912,7 +912,7 @@ public class RestdeManageController {
 		// 2011.10.18 달력 출력을 위해 필요한 숫자 이외의 값을 사용하는 경우 체크
 		bindingResult = checkRestdeWithValidator(restdeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("cmm/error/dataAccessFailure");
+			return "cmm/error/dataAccessFailure";
 		}
 
 		Calendar cal = Calendar.getInstance();
@@ -965,7 +965,7 @@ public class RestdeManageController {
 		model.addAttribute("resultList", restdeManageService.selectAdministDayCal(restdeVO));
 		model.addAttribute("RestdeList", restdeManageService.selectAdministDayRestde(restdeVO));
 
-		return WebUtil.adjustViewName("sym/cal/AdministDayCalendar");
+		return "sym/cal/AdministDayCalendar";
 	}
 
 	/**
@@ -982,7 +982,7 @@ public class RestdeManageController {
 		// 2011.10.18 달력 출력을 위해 필요한 숫자 이외의 값을 사용하는 경우 체크
 		bindingResult = checkRestdeWithValidator(restdeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("cmm/error/dataAccessFailure");
+			return "cmm/error/dataAccessFailure";
 		}
 
 		Calendar cal = Calendar.getInstance();
@@ -1133,7 +1133,7 @@ public class RestdeManageController {
 
 		model.addAttribute("resultList", CalInfoList);
 
-		return WebUtil.adjustViewName("sym/cal/AdministWeekCalendar");
+		return "sym/cal/AdministWeekCalendar";
 	}
 
 	/**
@@ -1150,7 +1150,7 @@ public class RestdeManageController {
 		// 2011.10.18 달력 출력을 위해 필요한 숫자 이외의 값을 사용하는 경우 체크
 		bindingResult = checkRestdeWithValidator(restdeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("cmm/error/dataAccessFailure");
+			return "cmm/error/dataAccessFailure";
 		}
 
 		Calendar cal = Calendar.getInstance();
@@ -1191,7 +1191,7 @@ public class RestdeManageController {
 		model.addAttribute("resultList", restdeManageService.selectAdministRestdePopup(restdeVO));
 		model.addAttribute("RestdeList", restdeManageService.selectAdministMonthRestde(restdeVO));
 
-		return WebUtil.adjustViewName("sym/cal/AdministMonthCalendar");
+		return "sym/cal/AdministMonthCalendar";
 	}
 
 	/**
@@ -1208,7 +1208,7 @@ public class RestdeManageController {
 		// 2011.10.18 달력 출력을 위해 필요한 숫자 이외의 값을 사용하는 경우 체크
 		bindingResult = checkRestdeWithValidator(restdeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("cmm/error/dataAccessFailure");
+			return "cmm/error/dataAccessFailure";
 		}
 
 		Calendar cal = Calendar.getInstance();
@@ -1375,7 +1375,7 @@ public class RestdeManageController {
 		model.addAttribute("RestdeList_11", AdministMonthRestdeList_11);
 		model.addAttribute("RestdeList_12", AdministMonthRestdeList_12);
 
-		return WebUtil.adjustViewName("sym/cal/AdministYearCalendar");
+		return "sym/cal/AdministYearCalendar";
 	}
 
 }

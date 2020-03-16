@@ -51,7 +51,7 @@ public class AuthorResourceController {
 		
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("sec/arm/AuthorResource");
+		return "sec/arm/AuthorResource";
 	}
 
 	/**

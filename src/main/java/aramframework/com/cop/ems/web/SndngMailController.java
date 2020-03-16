@@ -75,7 +75,7 @@ public class SndngMailController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("cop/ems/MailList");
+		return "cop/ems/MailList";
 	}
 
 	/**
@@ -116,7 +116,7 @@ public class SndngMailController {
 		sndngMailService.selectSndngMail(sndngMailVO);
 
 		// 발송메일 상세조회 화면 이동
-		return WebUtil.adjustViewName("cop/ems/MailDetail");
+		return "cop/ems/MailDetail";
 	}
 
 	/**
@@ -184,7 +184,7 @@ public class SndngMailController {
 			@ModelAttribute SndngMailVO sndngMailVO, 
 			ModelMap model) {
     	
-		return WebUtil.adjustViewName("cop/ems/MailRegist");
+		return "cop/ems/MailRegist";
     }
     
     /**
@@ -218,7 +218,7 @@ public class SndngMailController {
     	// 발송메일을 등록한다.
     	boolean result = sndngMailService.insertSndngMail(sndngMailVO);
     	if (!result) {
-			return WebUtil.adjustViewName("cmm/error/egovError");
+			return "cmm/error/egovError";
     	}
     	
 		if (link.equals("N")) {
@@ -226,7 +226,7 @@ public class SndngMailController {
 		    return WebUtil.redirectJsp(model, sndngMailVO, "/cop/ems/listSndngMail.do");
 		} else {
 			model.addAttribute("closeYn", "Y");
-			return WebUtil.adjustViewName("cop/ems/MailRegist");
+			return "cop/ems/MailRegist";
 		}
 	}
     

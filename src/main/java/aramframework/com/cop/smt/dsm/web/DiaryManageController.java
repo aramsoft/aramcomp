@@ -63,7 +63,7 @@ public class DiaryManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("cop/smt/dsm/DiaryList");
+		return "cop/smt/dsm/DiaryList";
 	}
 
 	/**
@@ -80,7 +80,7 @@ public class DiaryManageController {
 
 		model.addAttribute(diaryManageService.selectDiaryManageDetail(diaryManageVO));
 
-		return WebUtil.adjustViewName("cop/smt/dsm/DiaryDetail");
+		return "cop/smt/dsm/DiaryDetail";
 	}
 
 	/**
@@ -95,7 +95,7 @@ public class DiaryManageController {
 			@ModelAttribute DiaryManageVO diaryManageVO, 
 			ModelMap model) {
 
-		return WebUtil.adjustViewName("cop/smt/dsm/DiaryRegist");
+		return "cop/smt/dsm/DiaryRegist";
 	}
 
 	/**
@@ -117,7 +117,7 @@ public class DiaryManageController {
 		// 서버 validate 체크
 		beanValidator.validate(diaryManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("cop/smt/dsm/DiaryRegist");
+			return "cop/smt/dsm/DiaryRegist";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
@@ -147,7 +147,7 @@ public class DiaryManageController {
 
 		model.addAttribute(diaryManageService.selectDiaryManageDetail(diaryManageVO));
 
-		return WebUtil.adjustViewName("cop/smt/dsm/DiaryEdit");
+		return "cop/smt/dsm/DiaryEdit";
 	}
 
 	/**
@@ -169,7 +169,7 @@ public class DiaryManageController {
 		// 서버 validate 체크
 		beanValidator.validate(diaryManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("cop/smt/dsm/DiaryEdit");
+			return "cop/smt/dsm/DiaryEdit";
 		}
 		
 		 // 첨부파일 관련 ID 생성 start....

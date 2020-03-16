@@ -70,7 +70,7 @@ public class BBSScrapController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("cop/scp/ScrapList");
+		return "cop/scp/ScrapList";
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class BBSScrapController {
 		model.addAttribute(getBoardInfo(scrapVO));
 		model.addAttribute(scrapVO);
 		
-		return WebUtil.adjustViewName("cop/scp/ScrapDetail");
+		return "cop/scp/ScrapDetail";
 	}
 
 	/**
@@ -131,7 +131,7 @@ public class BBSScrapController {
 		// -------------------------------------
 		model.addAttribute(getBoardInfo(scrapVO));
 
-		return WebUtil.adjustViewName("cop/scp/ScrapRegist");
+		return "cop/scp/ScrapRegist";
 	}
 
 	/**
@@ -155,7 +155,7 @@ public class BBSScrapController {
 			// -------------------------------------
 			model.addAttribute(getBoardInfo(scrapVO));
 
-			return WebUtil.adjustViewName("cop/scp/ScrapRegist");
+			return "cop/scp/ScrapRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -187,7 +187,7 @@ public class BBSScrapController {
 		model.addAttribute(getBoardInfo(scrapVO));
 		model.addAttribute(scrapVO);
 
-		return WebUtil.adjustViewName("cop/scp/ScrapEdit");
+		return "cop/scp/ScrapEdit";
 	}
 
 	/**
@@ -210,7 +210,7 @@ public class BBSScrapController {
 			// -------------------------------------
 			model.addAttribute(getBoardInfo(scrapVO));
 
-			return WebUtil.adjustViewName("cop/scp/ScrapEdit");
+			return "cop/scp/ScrapEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -257,7 +257,7 @@ public class BBSScrapController {
 
 		model.addAttribute("resultList", bbsScrapService.selectScrapList(scrapVO));
 
-		return WebUtil.adjustViewName("cop/scp/ScrapMainPage");
+		return "cop/scp/ScrapMainPage";
 	}
 	
 }

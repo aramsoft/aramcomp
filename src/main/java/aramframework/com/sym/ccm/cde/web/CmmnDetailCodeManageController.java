@@ -74,7 +74,7 @@ public class CmmnDetailCodeManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("sym/ccm/cde/CmmnDetailCodeList");
+		return "sym/ccm/cde/CmmnDetailCodeList";
 	}
 
 	/**
@@ -90,7 +90,7 @@ public class CmmnDetailCodeManageController {
 		
 		model.addAttribute(cmmnDetailCodeManageService.selectCmmnDetailCodeDetail(cmmnDetailCodeVO));
 
-		return WebUtil.adjustViewName("sym/ccm/cde/CmmnDetailCodeDetail");
+		return "sym/ccm/cde/CmmnDetailCodeDetail";
 	}
 
 	/**
@@ -125,7 +125,7 @@ public class CmmnDetailCodeManageController {
 
 		model.addAttribute("cmmnCodeList", cmmnCodeManageService.selectCmmnCodeList(cmmnCodeVO));
 
-		return WebUtil.adjustViewName("sym/ccm/cde/CmmnDetailCodeRegist");
+		return "sym/ccm/cde/CmmnDetailCodeRegist";
 	}
 
 	/**
@@ -143,13 +143,13 @@ public class CmmnDetailCodeManageController {
 
 		beanValidator.validate(cmmnDetailCodeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("sym/ccm/cde/CmmnDetailCodeRegist");
+			return "sym/ccm/cde/CmmnDetailCodeRegist";
 		}
 
 		CmmnDetailCodeVO vo = cmmnDetailCodeManageService.selectCmmnDetailCodeDetail(cmmnDetailCodeVO);
 		if (vo != null) {
 			model.addAttribute("message", "이미 등록된 코드가 존재합니다.");
-			return WebUtil.adjustViewName("sym/ccm/cde/CmmnDetailCodeRegist");
+			return "sym/ccm/cde/CmmnDetailCodeRegist";
 		}
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -175,7 +175,7 @@ public class CmmnDetailCodeManageController {
 		
 		model.addAttribute(cmmnDetailCodeManageService.selectCmmnDetailCodeDetail(cmmnDetailCodeVO));
 
-		return WebUtil.adjustViewName("sym/ccm/cde/CmmnDetailCodeEdit");
+		return "sym/ccm/cde/CmmnDetailCodeEdit";
 	}
 
 	/**
@@ -193,7 +193,7 @@ public class CmmnDetailCodeManageController {
 		
 		beanValidator.validate(cmmnDetailCodeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("sym/ccm/cde/CmmnDetailCodeEdit");
+			return "sym/ccm/cde/CmmnDetailCodeEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();

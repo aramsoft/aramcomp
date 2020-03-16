@@ -57,7 +57,7 @@ public class DeptController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("sec/dpt/DeptList");
+		return "sec/dpt/DeptList";
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class DeptController {
 			@ModelAttribute DeptVO deptVO, 
 			ModelMap model) {
 
-		return WebUtil.adjustViewName("sec/dpt/DeptRegist");
+		return "sec/dpt/DeptRegist";
 	}
 
 	/**
@@ -90,7 +90,7 @@ public class DeptController {
 
 		beanValidator.validate(deptVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("sec/dpt/DeptRegist");
+			return "sec/dpt/DeptRegist";
 		} 
 		
 		deptService.insertDept(deptVO);
@@ -113,7 +113,7 @@ public class DeptController {
 
 		model.addAttribute(deptService.selectDept(deptVO));
 		
-		return WebUtil.adjustViewName("sec/dpt/DeptEdit");
+		return "sec/dpt/DeptEdit";
 	}
 
 	/**
@@ -131,7 +131,7 @@ public class DeptController {
 
 		beanValidator.validate(deptVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("sec/dpt/DeptEdit");
+			return "sec/dpt/DeptEdit";
 		} 
 		
 		deptService.updateDept(deptVO);
@@ -196,7 +196,7 @@ public class DeptController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return WebUtil.adjustViewName("sec/dpt/DeptSearchPopup");
+		return "sec/dpt/DeptSearchPopup";
 	}
 	
 }

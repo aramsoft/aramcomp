@@ -63,7 +63,7 @@ public class ProgrmManageDtlController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("sym/prm/ProgramChangeRequstList");
+		return "sym/prm/ProgramChangeRequstList";
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class ProgrmManageDtlController {
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		progrmManageDtlVO.setRqestPersonId(loginVO.getId());
 		
-		return WebUtil.adjustViewName("sym/prm/ProgramChangeRequstRegist");
+		return "sym/prm/ProgramChangeRequstRegist";
 	}
 
 	/**
@@ -102,7 +102,7 @@ public class ProgrmManageDtlController {
 		// beanValidator 처리
 		beanValidator.validate(progrmManageDtlVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("sym/prm/ProgramChangeRequstRegist");
+			return "sym/prm/ProgramChangeRequstRegist";
 		}
 		
 		progrmManageDtlService.insertProgrmChangeRequst(progrmManageDtlVO);
@@ -125,7 +125,7 @@ public class ProgrmManageDtlController {
 
 		model.addAttribute(progrmManageDtlService.selectProgrmChangeRequst(progrmManageDtlVO));
 
-		return WebUtil.adjustViewName("sym/prm/ProgramChangeRequstEdit");
+		return "sym/prm/ProgramChangeRequstEdit";
 	}
 
 	/**
@@ -144,14 +144,14 @@ public class ProgrmManageDtlController {
 		// beanValidator 처리
 		beanValidator.validate(progrmManageDtlVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("sym/prm/ProgramChangeRequstEdit");
+			return "sym/prm/ProgramChangeRequstEdit";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		if (!progrmManageDtlVO.getRqestPersonId().equals(loginVO.getId())) {
 			model.addAttribute("message", "수정이 실패하였습니다. 변경요청 수정은 변경요청자만 수정가능합니다.");
-			return WebUtil.adjustViewName("sym/prm/ProgramChangeRequstEdit");
+			return "sym/prm/ProgramChangeRequstEdit";
 		}
 		
 		progrmManageDtlService.updateProgrmChangeRequst(progrmManageDtlVO);
@@ -202,7 +202,7 @@ public class ProgrmManageDtlController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("sym/prm/ProgramChangeProcessList");
+		return "sym/prm/ProgramChangeProcessList";
 	}
 
 	/**
@@ -226,7 +226,7 @@ public class ProgrmManageDtlController {
 
 		model.addAttribute(progrmManageDtlVO);
 		
-		return WebUtil.adjustViewName("sym/prm/ProgramChangeProcessEdit");
+		return "sym/prm/ProgramChangeProcessEdit";
 	}
 
 	/**
@@ -244,7 +244,7 @@ public class ProgrmManageDtlController {
 
 		beanValidator.validate(progrmManageDtlVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("sym/prm/ProgramChangeProcessEdit");
+			return "sym/prm/ProgramChangeProcessEdit";
 		}
 
 		progrmManageDtlService.updateProgrmChangeRequstProcess(progrmManageDtlVO);
@@ -320,7 +320,7 @@ public class ProgrmManageDtlController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("sym/prm/ProgramChgHstList");
+		return "sym/prm/ProgramChgHstList";
 	}
 
 	/* 프로그램변경이력상세조회 */
@@ -338,7 +338,7 @@ public class ProgrmManageDtlController {
 
 		model.addAttribute(progrmManageDtlService.selectProgrmChangeRequst(progrmManageDtlVO));
 		
-		return WebUtil.adjustViewName("sym/prm/ProgramChgHstDetail");
+		return "sym/prm/ProgramChgHstDetail";
 	}
 
 }

@@ -73,7 +73,7 @@ public class AdressBookController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return WebUtil.adjustViewName("cop/adb/AdressBookList");
+		return "cop/adb/AdressBookList";
 	}
 
 	private void fill_common_code(ModelMap model) {
@@ -96,7 +96,7 @@ public class AdressBookController {
 			ModelMap model) {
 		
 		fill_common_code(model);
-		return WebUtil.adjustViewName("cop/adb/AdressBookRegist");
+		return "cop/adb/AdressBookRegist";
 	}
 
 	/**
@@ -115,7 +115,7 @@ public class AdressBookController {
 		beanValidator.validate(adressBookVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			fill_common_code(model);
-			return WebUtil.adjustViewName("cop/adb/AdressBookRegist");
+			return "cop/adb/AdressBookRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -180,7 +180,7 @@ public class AdressBookController {
 		model.addAttribute("writer", writer);
 
 		fill_common_code(model);
-		return WebUtil.adjustViewName("cop/adb/AdressBookEdit");
+		return "cop/adb/AdressBookEdit";
 	}
 
 	/**
@@ -199,7 +199,7 @@ public class AdressBookController {
 		beanValidator.validate(adressBookVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			fill_common_code(model);
-			return WebUtil.adjustViewName("cop/adb/AdressBookEdit");
+			return "cop/adb/AdressBookEdit";
 		}
 
 		String[] tempId = adressBookVO.getUserIds().split(",");
@@ -279,7 +279,7 @@ public class AdressBookController {
 		
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("cop/adb/AdressBookPopup");
+		return "cop/adb/AdressBookPopup";
 	}
 
 	/**
@@ -306,10 +306,10 @@ public class AdressBookController {
 		fill_common_code(model);
 
 		if (checkCnd.equals("regist"))
-			return WebUtil.adjustViewName("cop/adb/AdressBookRegist");
+			return "cop/adb/AdressBookRegist";
 		else {
 			model.addAttribute("writer", true);
-			return WebUtil.adjustViewName("cop/adb/AdressBookEdit");
+			return "cop/adb/AdressBookEdit";
 		}
 	}
 
@@ -348,10 +348,10 @@ public class AdressBookController {
 		fill_common_code(model);
 
 		if (checkCnd.equals("regist"))
-			return WebUtil.adjustViewName("cop/adb/AdressBookRegist");
+			return "cop/adb/AdressBookRegist";
 		else {
 			model.addAttribute("writer", true);
-			return WebUtil.adjustViewName("cop/adb/AdressBookEdit");
+			return "cop/adb/AdressBookEdit";
 		}
 	}
 
@@ -378,7 +378,7 @@ public class AdressBookController {
 
 		model.addAttribute("resultList", adressBookService.selectAdressBookList(adressBookVO));
 
-		return WebUtil.adjustViewName("cop/adb/AdressBookMainPage");
+		return "cop/adb/AdressBookMainPage";
 	}
 
 }

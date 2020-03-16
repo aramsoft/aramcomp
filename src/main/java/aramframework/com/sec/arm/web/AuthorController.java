@@ -68,7 +68,7 @@ public class AuthorController {
         String authorResourceReload = AramProperties.getProperty("Globals.authorResourceReload");       
 		model.addAttribute("authorResourceReload", authorResourceReload);
 		
-		return WebUtil.adjustViewName("sec/arm/AuthorList");
+		return "sec/arm/AuthorList";
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class AuthorController {
 			@ModelAttribute AuthorVO authorVO, 
 			ModelMap model) {
 		
-		return WebUtil.adjustViewName("sec/arm/AuthorRegist");
+		return "sec/arm/AuthorRegist";
 	}
 
 	/**
@@ -101,7 +101,7 @@ public class AuthorController {
 
 		beanValidator.validate(authorVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("sec/arm/AuthorRegist");
+			return "sec/arm/AuthorRegist";
 		} 
 		
 		authorService.insertAuthor(authorVO);
@@ -124,7 +124,7 @@ public class AuthorController {
 
 		model.addAttribute(authorService.selectAuthor(authorVO));
 		
-		return WebUtil.adjustViewName("sec/arm/AuthorEdit");
+		return "sec/arm/AuthorEdit";
 	}
 
 	/**
@@ -142,7 +142,7 @@ public class AuthorController {
 
 		beanValidator.validate(authorVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("sec/arm/AuthorEdit");
+			return "sec/arm/AuthorEdit";
 		} 
 		
 		authorService.updateAuthor(authorVO);

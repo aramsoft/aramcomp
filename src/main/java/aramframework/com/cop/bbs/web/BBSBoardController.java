@@ -186,7 +186,7 @@ public class BBSBoardController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("cop/bbs/NoticeList");
+		return "cop/bbs/NoticeList";
 	}
 	
 	/**
@@ -255,7 +255,7 @@ public class BBSBoardController {
 		
 		model.addAttribute(boardVO);
 		
-		return WebUtil.adjustViewName("cop/bbs/NoticeDetail");
+		return "cop/bbs/NoticeDetail";
 	}
 	
 	/**
@@ -290,7 +290,7 @@ public class BBSBoardController {
 
 		model.addAttribute(boardVO);
 
-		return WebUtil.adjustViewName("cop/bbs/NoticeView");
+		return "cop/bbs/NoticeView";
 	}
 
 	private void setDirectUrlToModel(BoardVO boardVO, ModelMap model) {
@@ -334,7 +334,7 @@ public class BBSBoardController {
 		}
 		model.addAttribute("editAuthFlag", editAuthFlag);
 
-		return WebUtil.adjustViewName("cop/bbs/NoticeRegist");
+		return "cop/bbs/NoticeRegist";
 	}
 
 	/**
@@ -364,7 +364,7 @@ public class BBSBoardController {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("editAuthFlag", editAuthFlag);
 
-			return WebUtil.adjustViewName("cop/bbs/NoticeRegist");
+			return "cop/bbs/NoticeRegist";
 		}
 
 		boardVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "BBS_"));
@@ -410,7 +410,7 @@ public class BBSBoardController {
 		
 		boardService.selectBoardArticle(boardVO);
 
-		return WebUtil.adjustViewName("cop/bbs/NoticeReply");
+		return "cop/bbs/NoticeReply";
 	}
 
 	/**
@@ -438,7 +438,7 @@ public class BBSBoardController {
 		beanValidator.validate(boardVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("editAuthFlag", editAuthFlag);
-			return WebUtil.adjustViewName("cop/bbs/NoticeReply");
+			return "cop/bbs/NoticeReply";
 		}
 
 		boardVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "BBS_"));
@@ -487,7 +487,7 @@ public class BBSBoardController {
 		
 		model.addAttribute(boardService.selectBoardArticle(boardVO));
 		
-		return WebUtil.adjustViewName("cop/bbs/NoticeEdit");
+		return "cop/bbs/NoticeEdit";
 	}
 
 	/**
@@ -514,7 +514,7 @@ public class BBSBoardController {
 		beanValidator.validate(boardVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("editAuthFlag", editAuthFlag);
-			return WebUtil.adjustViewName("cop/bbs/NoticeEdit");
+			return "cop/bbs/NoticeEdit";
 		}
 
 		// 첨부파일 관련 ID 생성 start....
@@ -624,7 +624,7 @@ public class BBSBoardController {
 			model.addAttribute("role", "ROLE_ADMIN");
 		}
 
-		return WebUtil.adjustViewName("cop/bbs/NoticeList");
+		return "cop/bbs/NoticeList";
 	}
 
 	/**
@@ -695,7 +695,7 @@ public class BBSBoardController {
 
 		model.addAttribute(boardVO);
 		
-		return WebUtil.adjustViewName("cop/bbs/NoticeDetail");
+		return "cop/bbs/NoticeDetail";
 	}
 	
 	private void setDirectUrlToModelAnonymous(BoardVO boardVO, ModelMap model) {
@@ -743,7 +743,7 @@ public class BBSBoardController {
 		model.addAttribute("anonymous", "true");
 		model.addAttribute("editAuthFlag", "Y");
 
-		return WebUtil.adjustViewName("cop/bbs/NoticeRegist");
+		return "cop/bbs/NoticeRegist";
 	}
 
 	/**
@@ -767,7 +767,7 @@ public class BBSBoardController {
 			model.addAttribute("anonymous", "true");
 			model.addAttribute("editAuthFlag", "Y");
 
-			return WebUtil.adjustViewName("cop/bbs/NoticeRegist");
+			return "cop/bbs/NoticeRegist";
 		}
 
 		boardVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "BBS_"));
@@ -811,7 +811,7 @@ public class BBSBoardController {
 		model.addAttribute("editAuthFlag", "Y");
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.adjustViewName("cop/bbs/NoticeReply");
+		return "cop/bbs/NoticeReply";
 	}
 
 	/**
@@ -834,7 +834,7 @@ public class BBSBoardController {
 			model.addAttribute("anonymous", "true");
 			model.addAttribute("editAuthFlag", "Y");
 
-			return WebUtil.adjustViewName("cop/bbs/NoticeReply");
+			return "cop/bbs/NoticeReply";
 		}
 
 		boardVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "BBS_"));
@@ -888,7 +888,7 @@ public class BBSBoardController {
 		if (!dbpassword.equals(enpassword)) {
 			model.addAttribute("anonymous", "true");
 			model.addAttribute("message", MessageHelper.getMessage("cop.password.not.same.msg"));
-			return WebUtil.adjustViewName("cop/bbs/NoticeDetail");
+			return "cop/bbs/NoticeDetail";
 		}
 
 		model.addAttribute(boardService.selectBoardArticle(boardVO));
@@ -896,7 +896,7 @@ public class BBSBoardController {
 		model.addAttribute("anonymous", "true");
 		model.addAttribute("editAuthFlag", "Y");
 
-		return WebUtil.adjustViewName("cop/bbs/NoticeEdit");
+		return "cop/bbs/NoticeEdit";
 	}
 
 	/**
@@ -919,7 +919,7 @@ public class BBSBoardController {
 			model.addAttribute("anonymous", "true");
 			model.addAttribute("editAuthFlag", "Y");
 
-			return WebUtil.adjustViewName("cop/bbs/NoticeEdit");
+			return "cop/bbs/NoticeEdit";
 		}
 
 		String atchFileId = boardVO.getAtchFileId();
@@ -957,7 +957,7 @@ public class BBSBoardController {
 		if (!dbpassword.equals(enpassword)) {
 			model.addAttribute("message", MessageHelper.getMessage("cop.password.not.same.msg"));
 			model.addAttribute("anonymous", "true");
-			return WebUtil.adjustViewName("cop/bbs/NoticeDetail");
+			return "cop/bbs/NoticeDetail";
 		}
 		// //-----------------------------
 
@@ -1018,7 +1018,7 @@ public class BBSBoardController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("cop/bbs/GuestList");
+		return "cop/bbs/GuestList";
 	}
 
 	/**
@@ -1076,7 +1076,7 @@ public class BBSBoardController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("cop/bbs/GuestList");
+		return "cop/bbs/GuestList";
 	}
 
 	/**
@@ -1181,7 +1181,7 @@ public class BBSBoardController {
 		
 		model.addAttribute(boardVO);
 				
-		return WebUtil.adjustViewName("cop/bbs/NoticeList");
+		return "cop/bbs/NoticeList";
 	}
 	
 }

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.log.lgm.domain.SysLogVO;
 import aramframework.com.sym.log.lgm.service.SysLogService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -50,7 +49,7 @@ public class SysLogController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("sym/log/lgm/SysLogList");
+		return "sym/log/lgm/SysLogList";
 	}
 
 	/**
@@ -67,7 +66,7 @@ public class SysLogController {
 
 		model.addAttribute(sysLogService.selectSysLog(sysLogVO));
 
-		return WebUtil.adjustViewName("sym/log/lgm/SysLogDetail");
+		return "sym/log/lgm/SysLogDetail";
 	}
 
 }

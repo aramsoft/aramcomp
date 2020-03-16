@@ -24,37 +24,15 @@ public class WebUtil {
 
 	protected static final Logger LOG = LoggerFactory.getLogger(WebUtil.class);
 	
-	final static String comDefaultPath = "";
-	
 	public static String redirectJsp(ModelMap model, SearchVO searchVO, String redirectUrl) {
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("redirectURL", redirectUrl);
 		return "cmm/redirect";
 	}
 
-	public static String adjustViewName(String viewName) {
-		
-		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
-
-		String jspPrefix = (String) requestAttributes.getAttribute("jspPrefix", RequestAttributes.SCOPE_REQUEST);
-		if (jspPrefix == null || "".equals(jspPrefix)) jspPrefix = comDefaultPath;
-		String jspPage = jspPrefix + viewName;	
-		
-		// if tiles exist, forward tiles layout
-		String aTrgetId   = (String) requestAttributes.getAttribute("curTrgetId", RequestAttributes.SCOPE_REQUEST);
-		String aCurMenuNo = (String) requestAttributes.getAttribute("curMenuNo", RequestAttributes.SCOPE_REQUEST);
-		if( aTrgetId != null
-				&& aTrgetId.startsWith("CMMNTY_") 
-				&& aCurMenuNo != null
-				&& !"".equals(aCurMenuNo) )  {
-			
-			requestAttributes.setAttribute("jspPage", jspPage, RequestAttributes.SCOPE_REQUEST);
-			
-			return "forward:/cop/cmy/CmmntyTilesPage.do";
-		}
-		
-		return jspPage;
-	}
+//	public static String adjustViewName(String viewName) {
+//		return viewName;
+//	}
 	
 	public static String getCurTrgetId() {
 		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();

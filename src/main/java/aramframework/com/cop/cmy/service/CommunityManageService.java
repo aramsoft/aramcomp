@@ -641,4 +641,48 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 		return communityUserVO;
 	}
 	
+	public String getMenuInfo(CommunityVO communityVO, String menuId, String target) {
+		
+		if( menuId == null || menuId.equals("") ) return "";
+		
+		int menuNo = Integer.parseInt(menuId);
+
+		// check topMenuList
+		List<EgovMap> menuList = communityVO.getTopMenuList();
+		String content = getContent(menuNo, menuList, target);
+		if( !"".equals(content) ) {
+			return content;
+		} 
+		
+		// check mgrMenuList
+		menuList = communityVO.getMgrMenuList();
+		content = getContent(menuNo, menuList, target);
+		if( !"".equals(content) ) {
+			return content;
+		} 
+
+		// check subMenuList
+		menuList = communityVO.getSubMenuList();
+		content = getContent(menuNo, menuList, target);
+		if( !"".equals(content) ) {
+			return content;
+		} 
+		
+		return "";
+	}
+	
+	private String getContent(int menuNo, List<EgovMap> menuList, String target) {
+
+		int i = 0;
+		for (; i < menuList.size(); i++) {
+			if( menuNo == ((BigDecimal)menuList.get(i).get("menuNo")).intValue()) {
+				break;
+			}
+		}
+		if( i < menuList.size()) {
+			return (String)menuList.get(i).get(target);
+		} 
+		return "";
+	}
+	
 }

@@ -12,7 +12,6 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.bbs.domain.SatisfactionVO;
 import aramframework.com.cop.bbs.service.BBSSatisfactionService;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -88,7 +87,7 @@ public class BBSSatisfactionController {
 		model.addAttribute(paginationInfo);
 
 		model.addAttribute("anonymous", "false");
-		return WebUtil.adjustViewName("cop/bbs/SatisfactionList");
+		return "cop/bbs/SatisfactionList";
 	}
 
 	/**
@@ -226,7 +225,7 @@ public class BBSSatisfactionController {
 		model.addAttribute(paginationInfo);
 
 		model.addAttribute("anonymous", "true");
-		return WebUtil.adjustViewName("cop/bbs/SatisfactionList");
+		return "cop/bbs/SatisfactionList";
 	}
 
 	/**

@@ -57,7 +57,7 @@ public class GroupController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("sec/grp/GroupList");
+		return "sec/grp/GroupList";
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class GroupController {
 			@ModelAttribute GroupVO groupVO, 
 			ModelMap model) {
 
-		return WebUtil.adjustViewName("sec/grp/GroupRegist");
+		return "sec/grp/GroupRegist";
 	}
 
 	/**
@@ -90,7 +90,7 @@ public class GroupController {
 
 		beanValidator.validate(groupVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("sec/grp/GroupRegist");
+			return "sec/grp/GroupRegist";
 		} 
 
 		groupService.insertGroup(groupVO);
@@ -113,7 +113,7 @@ public class GroupController {
 
 		model.addAttribute(groupService.selectGroup(groupVO));
 		
-		return WebUtil.adjustViewName("sec/grp/GroupEdit");
+		return "sec/grp/GroupEdit";
 	}
 
 	/**
@@ -131,7 +131,7 @@ public class GroupController {
 
 		beanValidator.validate(groupVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("sec/grp/GroupEdit");
+			return "sec/grp/GroupEdit";
 		} 
 
 		groupService.updateGroup(groupVO);
@@ -196,7 +196,7 @@ public class GroupController {
 	
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("sec/grp/GroupSearchPopup");
+		return "sec/grp/GroupSearchPopup";
 	}
 	
 }

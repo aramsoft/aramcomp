@@ -64,7 +64,7 @@ public class BkmkMenuManageController {
 		model.addAttribute(paginationInfo);
 		model.addAttribute("uniqId", loginVO.getUniqId());
 
-		return WebUtil.adjustViewName("sym/mnu/bmm/BkmkMenuList");
+		return "sym/mnu/bmm/BkmkMenuList";
 	}
 
 	/**
@@ -113,7 +113,7 @@ public class BkmkMenuManageController {
 			bkmkMenuManageVO.setProgrmStrePath(bkmkMenuManageService.selectUrl(bkmkMenuManageVO));
 		}
 		
-		return WebUtil.adjustViewName("sym/mnu/bmm/BkmkMenuRegist");
+		return "sym/mnu/bmm/BkmkMenuRegist";
 	}
 
 	/**
@@ -131,7 +131,7 @@ public class BkmkMenuManageController {
 
 		beanValidator.validate(bkmkMenuManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("sym/mnu/bmm/BkmkMenuRegist");
+			return "sym/mnu/bmm/BkmkMenuRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -168,7 +168,7 @@ public class BkmkMenuManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("sym/mnu/bmm/BkmkMenuPopup");
+		return "sym/mnu/bmm/BkmkMenuPopup";
 	}
 
 	/**
@@ -188,7 +188,7 @@ public class BkmkMenuManageController {
 
 		model.addAttribute("list_menulist", bkmkMenuManageService.selectBkmkMenuManageList(bkmkMenuManageVO));
 
-		return WebUtil.adjustViewName("sym/mnu/bmm/BkmkMenuPreview");
+		return "sym/mnu/bmm/BkmkMenuPreview";
 	}
 	
 }

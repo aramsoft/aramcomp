@@ -54,7 +54,7 @@ public class BackupResultController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("sym/sym/bak/BackupResultList");
+		return "sym/sym/bak/BackupResultList";
 	}
 
 	/**
@@ -71,7 +71,7 @@ public class BackupResultController {
 		
 		model.addAttribute(backupResultService.selectBackupResult(backupResultVO));
 
-		return WebUtil.adjustViewName("sym/sym/bak/BackupResultDetail");
+		return "sym/sym/bak/BackupResultDetail";
 	}
 
 	/**

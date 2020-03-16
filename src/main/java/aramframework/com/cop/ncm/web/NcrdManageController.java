@@ -48,7 +48,7 @@ public class NcrdManageController {
 
 		model.addAttribute(ncrdService.selectNcrdItem(nameCardVO));
 
-		return WebUtil.adjustViewName("cop/ncm/NameCardPopup");
+		return "cop/ncm/NameCardPopup";
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class NcrdManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("cop/ncm/NameCardList");
+		return "cop/ncm/NameCardList";
 	}
 
 	/**
@@ -93,7 +93,7 @@ public class NcrdManageController {
 			@ModelAttribute NameCardVO nameCardVO, 
 			ModelMap model) {
 		
-		return WebUtil.adjustViewName("cop/ncm/NameCardRegist");
+		return "cop/ncm/NameCardRegist";
 	}
 
 	/**
@@ -111,7 +111,7 @@ public class NcrdManageController {
 
 		beanValidator.validate(nameCardVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("cop/ncm/NameCardRegist");
+			return "cop/ncm/NameCardRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -146,7 +146,7 @@ public class NcrdManageController {
 		model.addAttribute("writer", writer);
 		model.addAttribute(nameCardVO);
 
-		return WebUtil.adjustViewName("cop/ncm/NameCardEdit");
+		return "cop/ncm/NameCardEdit";
 	}
 
 	/**
@@ -164,7 +164,7 @@ public class NcrdManageController {
 
 		beanValidator.validate(nameCardVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("cop/ncm/NameCardEdit");
+			return "cop/ncm/NameCardEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -223,7 +223,7 @@ public class NcrdManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("cop/ncm/NameCardPublic");
+		return "cop/ncm/NameCardPublic";
 	}
 
 	/**

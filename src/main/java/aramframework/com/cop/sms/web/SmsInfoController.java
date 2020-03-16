@@ -62,7 +62,7 @@ public class SmsInfoController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return WebUtil.adjustViewName("cop/sms/SmsInfoList");
+		return "cop/sms/SmsInfoList";
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class SmsInfoController {
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		model.addAttribute("sessionUniqId", loginVO.getUniqId());
 
-		return WebUtil.adjustViewName("cop/sms/SmsInfoDetail");
+		return "cop/sms/SmsInfoDetail";
 	}
 
 	/**
@@ -98,7 +98,7 @@ public class SmsInfoController {
 			@ModelAttribute SmsVO smsVO, 
 			ModelMap model) {
 
-		return WebUtil.adjustViewName("cop/sms/SmsInfoRegist");
+		return "cop/sms/SmsInfoRegist";
 	}
 
 	/**
@@ -117,7 +117,7 @@ public class SmsInfoController {
 
 		beanValidator.validate(smsVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("cop/sms/SmsInfoRegist");
+			return "cop/sms/SmsInfoRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();

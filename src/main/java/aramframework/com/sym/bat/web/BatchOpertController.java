@@ -63,7 +63,7 @@ public class BatchOpertController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("sym/bat/BatchOpertPopup");
+		return "sym/bat/BatchOpertPopup";
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class BatchOpertController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("sym/bat/BatchOpertList");
+		return "sym/bat/BatchOpertList";
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class BatchOpertController {
 		
 		model.addAttribute(batchOpertService.selectBatchOpert(batchOpertVO));
 
-		return WebUtil.adjustViewName("sym/bat/BatchOpertDetail");
+		return "sym/bat/BatchOpertDetail";
 	}
 
 	/**
@@ -121,7 +121,7 @@ public class BatchOpertController {
 			@ModelAttribute BatchOpertVO batchOpertVO, 
 			ModelMap model) {
 	
-		return WebUtil.adjustViewName("sym/bat/BatchOpertRegist");
+		return "sym/bat/BatchOpertRegist";
 	}
 
 	/**
@@ -142,7 +142,7 @@ public class BatchOpertController {
 			batchOpertValidator.validate(batchOpertVO, bindingResult);
 		}
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("sym/bat/BatchOpertRegist");
+			return "sym/bat/BatchOpertRegist";
 		} 
 		
 		// 로그인 객체 선언
@@ -169,7 +169,7 @@ public class BatchOpertController {
 		
 		model.addAttribute(batchOpertService.selectBatchOpert(batchOpertVO));
 
-		return WebUtil.adjustViewName("sym/bat/BatchOpertEdit");
+		return "sym/bat/BatchOpertEdit";
 	}
 
 	/**
@@ -190,7 +190,7 @@ public class BatchOpertController {
 			batchOpertValidator.validate(batchOpertVO, bindingResult);
 		}
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("sym/bat/BatchOpertEdit");
+			return "sym/bat/BatchOpertEdit";
 		}
 
 		// 로그인 객체 선언

@@ -58,7 +58,7 @@ public class StplatManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("uss/sam/stp/StplatList");
+		return "uss/sam/stp/StplatList";
 	}
 
 	/**
@@ -75,7 +75,7 @@ public class StplatManageController {
 
 		model.addAttribute(stplatManageService.selectStplatDetail(stplatManageVO));
 
-		return WebUtil.adjustViewName("uss/sam/stp/StplatDetail");
+		return "uss/sam/stp/StplatDetail";
 	}
 
 	/**
@@ -90,7 +90,7 @@ public class StplatManageController {
 			@ModelAttribute StplatManageVO stplatManageVO, 
 			ModelMap model) {
 
-		return WebUtil.adjustViewName("uss/sam/stp/StplatRegist");
+		return "uss/sam/stp/StplatRegist";
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class StplatManageController {
 
 		beanValidator.validate(stplatManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("uss/sam/stp/StplatRegist");
+			return "uss/sam/stp/StplatRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -135,7 +135,7 @@ public class StplatManageController {
 
 		model.addAttribute(stplatManageService.selectStplatDetail(stplatManageVO));
 
-		return WebUtil.adjustViewName("uss/sam/stp/StplatEdit");
+		return "uss/sam/stp/StplatEdit";
 	}
 
 	/**
@@ -154,7 +154,7 @@ public class StplatManageController {
 		// Validation
 		beanValidator.validate(stplatManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("uss/sam/stp/StplatEdit");
+			return "uss/sam/stp/StplatEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기

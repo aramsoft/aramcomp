@@ -1,21 +1,11 @@
 package aramframework.com.cop.cmy.web;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.tiles.Attribute;
-import org.apache.tiles.AttributeContext;
-import org.apache.tiles.access.TilesAccess;
-import org.apache.tiles.impl.BasicTilesContainer;
-import org.apache.tiles.request.ApplicationContext;
-import org.apache.tiles.request.Request;
-import org.apache.tiles.request.servlet.ServletRequest;
-import org.apache.tiles.request.servlet.ServletUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +29,6 @@ import aramframework.com.cop.cmy.domain.CommunityVO;
 import aramframework.com.cop.cmy.service.CmyMenuManageService;
 import aramframework.com.cop.cmy.service.CommunityManageService;
 import aramframework.com.uat.uia.domain.LoginVO;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 커뮤니티 정보를 관리하기 위한 컨트롤러 클래스
@@ -197,7 +186,7 @@ public class CmyMenuHomeController  {
 		}
 		
 		if( "".equals(contentUrl) ) {
-			contentUrl = getMenuInfo(communityVO, menuId, "chkURL");
+			contentUrl = cmmntyService.getMenuInfo(communityVO, menuId, "chkURL");
 			if( "".equals(contentUrl) ) {
 				contentUrl =  "/cop/cmy/CmmntyMainContents.do";
 			}
@@ -210,109 +199,6 @@ public class CmyMenuHomeController  {
 	   	return "forward:"+contentUrl;
 	}
 
-    /**
-	 * 커뮤니티 타일 페이지로 이동한다.
-	 * 
-	 */
-	@RequestMapping("/cop/cmy/CmmntyTilesPage.do")
-	public String CmmntyTilesPage(
-			HttpServletRequest request, 
-			HttpServletResponse response, 
-			ModelMap model) 
-	throws Exception {
-
-		String jspPage = (String) request.getAttribute("jspPage");
-		String cmmntyId = (String) request.getAttribute("curTrgetId");
-		String menuId = (String) request.getAttribute("curMenuNo");
-		
-		if (!cmmntyId.startsWith("CMMNTY_") || "".equals(menuId)) {
-			return jspPage;
-		}
-		
-        CommunityVO communityVO = cmmntyService.getCommunityInfo(cmmntyId, menuId);
-        model.addAttribute("targetVO", communityVO);
-	
-		// --------------------------------
-		// 커뮤니티 사용자 정보
-		// --------------------------------
-		model.addAttribute("targetUserVO", cmmntyService.getCommunityUserInfo(cmmntyId));
-		
-        // --------------------------------
-		// 메뉴 정보
-		// --------------------------------
-		String menuAlias = getMenuInfo(communityVO, menuId, "menuAlias");
-		if( "".equals(menuAlias) ) {
-			menuAlias = communityVO.getTopMenuList().get(0).get("menuAlias").toString();
-		}
-		model.addAttribute("menuAlias", menuAlias);
-	    
-		// --------------------------------
-		// 커뮤니티 템플릿 정보
-		// --------------------------------
-		String tmplatCours = cmmntyService.selectCmmntyTemplat(communityVO);
-    	if ("".equals(tmplatCours) || tmplatCours == null) {
-    		tmplatCours = "/WEB-INF/layouts/apps/appsDefault";
-    	}
-
-		ServletContext servletContext = request.getSession().getServletContext();
-		ApplicationContext tilesAppContext = ServletUtil.getApplicationContext(servletContext);
-		Request tilesRequest = new ServletRequest(tilesAppContext, request, response);
-		BasicTilesContainer container = (BasicTilesContainer) TilesAccess.getContainer(tilesAppContext);
-		AttributeContext attributeContext = container.getAttributeContext(tilesRequest);
-
-		if (tmplatCours.indexOf("/WEB-INF/layouts") != -1) {
-			attributeContext.setTemplateAttribute(new Attribute(tmplatCours+".jsp"));
-		} else {
-			attributeContext.setTemplateAttribute(new Attribute("/WEB-INF/jsp/"+tmplatCours+".jsp"));
-		}
-		
-	    return jspPage;
-	}
-
-	private String getMenuInfo(CommunityVO communityVO, String menuId, String target) {
-	
-		if( menuId == null || menuId.equals("") ) return "";
-		
-		int menuNo = Integer.parseInt(menuId);
-
-		// check topMenuList
-		List<EgovMap> menuList = communityVO.getTopMenuList();
-		String content = getContent(menuNo, menuList, target);
-		if( !"".equals(content) ) {
-			return content;
-		} 
-		
-		// check mgrMenuList
-		menuList = communityVO.getMgrMenuList();
-		content = getContent(menuNo, menuList, target);
-		if( !"".equals(content) ) {
-			return content;
-		} 
-
-		// check subMenuList
-		menuList = communityVO.getSubMenuList();
-		content = getContent(menuNo, menuList, target);
-		if( !"".equals(content) ) {
-			return content;
-		} 
-		
-		return "";
-	}
-	
-	private String getContent(int menuNo, List<EgovMap> menuList, String target) {
-
-		int i = 0;
-		for (; i < menuList.size(); i++) {
-			if( menuNo == ((BigDecimal)menuList.get(i).get("menuNo")).intValue()) {
-				break;
-			}
-		}
-		if( i < menuList.size()) {
-			return (String)menuList.get(i).get(target);
-		} 
-		return "";
-	}
-	
 	/**
 	 * 커뮤니티 이미지 를 가져온다.
 	 * 
@@ -401,7 +287,7 @@ public class CmyMenuHomeController  {
 
 		model.addAttribute("articleList", target);
 		
-		return WebUtil.adjustViewName("cop/cmy/CmmntyMainContents");
+		return "cop/cmy/CmmntyMainContents";
 	}
 
 	/**
@@ -521,7 +407,7 @@ public class CmyMenuHomeController  {
 
 		model.addAttribute(communityVO);
 
-		return WebUtil.adjustViewName("cop/cmy/CmmntyMainContents");
+		return "cop/cmy/CmmntyMainContents";
 	}
 
 }

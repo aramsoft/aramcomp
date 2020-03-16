@@ -74,7 +74,7 @@ public class UserInfController {
 		if ("Y".equals(popFlag)) {
 			returnUrl = "cop/com/UserListPop";
 		} else {
-			returnUrl = WebUtil.adjustViewName("cop/com/UserList");
+			returnUrl = "cop/com/UserList";
 		}
 		return returnUrl;
 	}
@@ -120,7 +120,7 @@ public class UserInfController {
 		if ("Y".equals(popFlag)) {
 			returnUrl = "cop/com/UserListPop";
 		} else {
-			returnUrl = WebUtil.adjustViewName("cop/com/UserList");
+			returnUrl = "cop/com/UserList";
 		}
 		return returnUrl;
 	}
@@ -168,7 +168,7 @@ public class UserInfController {
 		} else if ("S".equals(popFlag)) {
 			returnUrl = "cop/com/CmmntyMngrListPop";
 		} else {
-			returnUrl = WebUtil.adjustViewName("cop/com/UserList");
+			returnUrl = "cop/com/UserList";
 		}
 		return returnUrl;
 	}

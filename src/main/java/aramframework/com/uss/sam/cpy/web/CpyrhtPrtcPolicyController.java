@@ -58,7 +58,7 @@ public class CpyrhtPrtcPolicyController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("uss/sam/cpy/CpyrhtPrtcPolicyList");
+		return "uss/sam/cpy/CpyrhtPrtcPolicyList";
 	}
 
 	/**
@@ -75,7 +75,7 @@ public class CpyrhtPrtcPolicyController {
 
 		model.addAttribute(cpyrhtPrtcPolicyService.selectCpyrhtPrtcPolicyDetail(cpyrhtPrtcPolicyVO));
 
-		return WebUtil.adjustViewName("uss/sam/cpy/CpyrhtPrtcPolicyDetail");
+		return "uss/sam/cpy/CpyrhtPrtcPolicyDetail";
 	}
 
 	/**
@@ -90,7 +90,7 @@ public class CpyrhtPrtcPolicyController {
 			@ModelAttribute CpyrhtPrtcPolicyVO cpyrhtPrtcPolicyVO, 
 			ModelMap model) {
 
-		return WebUtil.adjustViewName("uss/sam/cpy/CpyrhtPrtcPolicyRegist");
+		return "uss/sam/cpy/CpyrhtPrtcPolicyRegist";
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class CpyrhtPrtcPolicyController {
 
 		beanValidator.validate(cpyrhtPrtcPolicyVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("uss/sam/cpy/CpyrhtPrtcPolicyRegist");
+			return "uss/sam/cpy/CpyrhtPrtcPolicyRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -135,7 +135,7 @@ public class CpyrhtPrtcPolicyController {
 
 		model.addAttribute(cpyrhtPrtcPolicyService.selectCpyrhtPrtcPolicyDetail(cpyrhtPrtcPolicyVO));
 
-		return WebUtil.adjustViewName("uss/sam/cpy/CpyrhtPrtcPolicyEdit");
+		return "uss/sam/cpy/CpyrhtPrtcPolicyEdit";
 	}
 
 	/**
@@ -154,7 +154,7 @@ public class CpyrhtPrtcPolicyController {
 		// Validation
 		beanValidator.validate(cpyrhtPrtcPolicyVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("uss/sam/cpy/CpyrhtPrtcPolicyEdit");
+			return "uss/sam/cpy/CpyrhtPrtcPolicyEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기

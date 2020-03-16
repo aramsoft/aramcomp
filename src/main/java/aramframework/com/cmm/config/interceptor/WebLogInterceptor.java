@@ -45,7 +45,7 @@ public class WebLogInterceptor extends HandlerInterceptorAdapter {
 	 * @param request		HttpServletRequest
 	 * @param response		HttpServletResponse
 	 * @param handler		Object
-	 * @param modeAndView	ModelAndView
+	 * @param modelAndView	ModelAndView
 	 * @throws Exception
 	 */
 	@Override
@@ -53,7 +53,7 @@ public class WebLogInterceptor extends HandlerInterceptorAdapter {
 			HttpServletRequest request, 
 			HttpServletResponse response, 
 			Object handler, 
-			ModelAndView modeAndView) 
+			ModelAndView modelAndView) 
 	throws Exception {
 
 		String requestIP = request.getRemoteAddr();

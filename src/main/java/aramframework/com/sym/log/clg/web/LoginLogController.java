@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.log.clg.domain.LoginLogVO;
 import aramframework.com.sym.log.clg.service.LoginLogService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -50,7 +49,7 @@ public class LoginLogController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("sym/log/clg/LoginLogList");
+		return "sym/log/clg/LoginLogList";
 	}
 
 	/**
@@ -67,7 +66,7 @@ public class LoginLogController {
 
 		model.addAttribute(loginLogService.selectLoginLog(loginLogVO));
 
-		return WebUtil.adjustViewName("sym/log/clg/LoginLogDetail");
+		return "sym/log/clg/LoginLogDetail";
 	}
 
 }

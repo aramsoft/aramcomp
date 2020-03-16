@@ -37,4 +37,5 @@ public interface Globals {
 	// G4C 연결용 IP (localhost)
 	String LOCAL_IP = AramProperties.getProperty("Globals.LocalIp");
 
+	String FILE_UPLOAD_DIR = AramProperties.getProperty("Globals.fileStorePath");
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 
-import aramframework.com.cmm.constant.AramProperties;
+import aramframework.com.cmm.constant.Globals;
 import aramframework.com.utl.fcc.service.FileUploadUtil;
 import aramframework.com.utl.fcc.service.FormBasedFileUtil;
 import aramframework.com.utl.fcc.service.FormBasedFileVo;
@@ -27,7 +27,7 @@ import aramframework.com.utl.fcc.service.FormBasedFileVo;
 public class WebEditorImageController {
 
 	/** 첨부파일 위치 지정 */
-	private final String uploadDir = AramProperties.getProperty("Globals.fileStorePath");
+	private final String uploadDir = Globals.FILE_UPLOAD_DIR;
 
 	/** 첨부 최대 파일 크기 지정 */
 	private final long maxFileSize = 1024 * 1024 * 100; // 업로드 최대 사이즈 설정 (100M)

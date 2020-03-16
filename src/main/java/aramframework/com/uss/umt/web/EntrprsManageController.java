@@ -79,7 +79,7 @@ public class EntrprsManageController {
 		// 기업회원상태코드목록
 		cmmUseService.populateCmmCodeList("COM013", "COM013_mberSttus");
 
-		return WebUtil.adjustViewName("/uss/umt/EntrprsMberList");
+		return WebUtil.adjustViewName("uss/umt/EntrprsMberList");
 	}
 
 	/**
@@ -104,7 +104,7 @@ public class EntrprsManageController {
 		model.addAttribute("stplatVO", entrprsManageService.selectStplat(stplatId)); // 약관정보포함
 		model.addAttribute("sbscrbTy", sbscrbTy); // 회원가입유형포함
 
-		return WebUtil.adjustViewName("/uss/umt/StplatCnfirm");
+		return WebUtil.adjustViewName("uss/umt/StplatCnfirm");
 	}
 
 	/**
@@ -134,7 +134,7 @@ public class EntrprsManageController {
 
 		entrprsManageVO.setEntrprsMberSttus("A");
 
-		return WebUtil.adjustViewName("/uss/umt/EntrprsMberSbscrb");
+		return WebUtil.adjustViewName("uss/umt/EntrprsMberSbscrb");
 	}
 
 	/**
@@ -164,7 +164,7 @@ public class EntrprsManageController {
 		   			   + "\n\n사용자 승인 후 사용하시기 바랍니다.";
 		model.addAttribute("message", message);
 		
-		return WebUtil.adjustViewName("/uss/umt/SbscrbSuccess");
+		return WebUtil.adjustViewName("uss/umt/SbscrbSuccess");
 	}
 
 	/**
@@ -181,7 +181,7 @@ public class EntrprsManageController {
 
 		fill_common_code();
 		
-		return WebUtil.adjustViewName("/uss/umt/EntrprsMberRegist");
+		return WebUtil.adjustViewName("uss/umt/EntrprsMberRegist");
 	}
 
 	/**
@@ -199,7 +199,7 @@ public class EntrprsManageController {
 
 		beanValidator.validate(entrprsManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/umt/EntrprsMberRegist");
+			return WebUtil.adjustViewName("uss/umt/EntrprsMberRegist");
 		} 
 		
 		entrprsManageService.insertEntrprsMber(entrprsManageVO);
@@ -230,7 +230,7 @@ public class EntrprsManageController {
 			model.addAttribute("isAdmin", "true");
 		}
 		
-		return WebUtil.adjustViewName("/uss/umt/EntrprsMberEdit");
+		return WebUtil.adjustViewName("uss/umt/EntrprsMberEdit");
 	}
 
 	/**
@@ -248,7 +248,7 @@ public class EntrprsManageController {
 
 		beanValidator.validate(entrprsManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/umt/EntrprsMberEdit");
+			return WebUtil.adjustViewName("uss/umt/EntrprsMberEdit");
 		} 
 
 		entrprsManageService.updateEntrprsMber(entrprsManageVO);
@@ -272,7 +272,7 @@ public class EntrprsManageController {
 		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
 			model.addAttribute("isAdmin", "true");
 		}
-		return WebUtil.adjustViewName("/uss/umt/EntrprsPassword");
+		return WebUtil.adjustViewName("uss/umt/EntrprsPassword");
 	}
 
 	/**

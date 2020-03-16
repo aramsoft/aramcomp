@@ -72,9 +72,9 @@ public class UserInfController {
 
 		String returnUrl;
 		if ("Y".equals(popFlag)) {
-			returnUrl = "aramframework/com/cop/com/UserListPop";
+			returnUrl = "cop/com/UserListPop";
 		} else {
-			returnUrl = WebUtil.adjustViewName("/cop/com/UserList");
+			returnUrl = WebUtil.adjustViewName("cop/com/UserList");
 		}
 		return returnUrl;
 	}
@@ -118,9 +118,9 @@ public class UserInfController {
 
 		String returnUrl;
 		if ("Y".equals(popFlag)) {
-			returnUrl = "aramframework/com/cop/com/UserListPop";
+			returnUrl = "cop/com/UserListPop";
 		} else {
-			returnUrl = WebUtil.adjustViewName("/cop/com/UserList");
+			returnUrl = WebUtil.adjustViewName("cop/com/UserList");
 		}
 		return returnUrl;
 	}
@@ -164,11 +164,11 @@ public class UserInfController {
 
 		String returnUrl;
 		if ("Y".equals(popFlag)) {
-			returnUrl = "aramframework/com/cop/com/UserListPop";
+			returnUrl = "cop/com/UserListPop";
 		} else if ("S".equals(popFlag)) {
-			returnUrl = "aramframework/com/cop/com/CmmntyMngrListPop";
+			returnUrl = "cop/com/CmmntyMngrListPop";
 		} else {
-			returnUrl = WebUtil.adjustViewName("/cop/com/UserList");
+			returnUrl = WebUtil.adjustViewName("cop/com/UserList");
 		}
 		return returnUrl;
 	}

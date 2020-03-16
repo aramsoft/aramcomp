@@ -86,7 +86,7 @@ public class BBSCommentController {
 
 		model.addAttribute("anonymous", "false");
 		
-		return WebUtil.adjustViewName("/cop/bbs/CommentList");
+		return WebUtil.adjustViewName("cop/bbs/CommentList");
 	}
 
 	/**
@@ -217,7 +217,7 @@ public class BBSCommentController {
 
 		model.addAttribute("anonymous", "true");
 
-		return WebUtil.adjustViewName("/cop/bbs/CommentList");
+		return WebUtil.adjustViewName("cop/bbs/CommentList");
 	}
 
 	/**

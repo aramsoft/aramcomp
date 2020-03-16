@@ -24,12 +24,12 @@ public class WebUtil {
 
 	protected static final Logger LOG = LoggerFactory.getLogger(WebUtil.class);
 	
-	final static String comDefaultPath = "aramframework/com";
+	final static String comDefaultPath = "";
 	
 	public static String redirectJsp(ModelMap model, SearchVO searchVO, String redirectUrl) {
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("redirectURL", redirectUrl);
-		return "aramframework/com/cmm/redirect";
+		return "cmm/redirect";
 	}
 
 	public static String adjustViewName(String viewName) {

@@ -50,7 +50,7 @@ public class WebLogController {
 	
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/log/wlg/WebLogList");
+		return WebUtil.adjustViewName("sym/log/wlg/WebLogList");
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class WebLogController {
 
 		model.addAttribute(webLogService.selectWebLog(webLogVO));
 
-		return WebUtil.adjustViewName("/sym/log/wlg/WebLogDetail");
+		return WebUtil.adjustViewName("sym/log/wlg/WebLogDetail");
 	}
 
 }

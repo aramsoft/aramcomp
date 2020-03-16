@@ -69,7 +69,7 @@ public class BBSMasterController {
 		
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/bbs/BoardMasterPopup");
+		return WebUtil.adjustViewName("cop/bbs/BoardMasterPopup");
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class BBSMasterController {
 			model.addAttribute("useCommunity", "true");
 		}
 
-		return WebUtil.adjustViewName("/cop/bbs/BoardMasterList");
+		return WebUtil.adjustViewName("cop/bbs/BoardMasterList");
 	}
 
 	/**
@@ -137,7 +137,7 @@ public class BBSMasterController {
 			model.addAttribute("useSatisfaction", "true");
 		}
 
-		return WebUtil.adjustViewName("/cop/bbs/BoardMasterRegist");
+		return WebUtil.adjustViewName("cop/bbs/BoardMasterRegist");
 	}
 
 	/**
@@ -155,7 +155,7 @@ public class BBSMasterController {
 
 		beanValidator.validate(boardMasterVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/bbs/BoardMasterRegist");
+			return WebUtil.adjustViewName("cop/bbs/BoardMasterRegist");
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -212,7 +212,7 @@ public class BBSMasterController {
 			model.addAttribute(boardUseInfVO);
 		}
 		
-		return WebUtil.adjustViewName("/cop/bbs/BoardMasterEdit");
+		return WebUtil.adjustViewName("cop/bbs/BoardMasterEdit");
 	}
 
 	/**
@@ -230,7 +230,7 @@ public class BBSMasterController {
 
 		beanValidator.validate(boardMasterVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/bbs/BoardMasterEdit");
+			return WebUtil.adjustViewName("cop/bbs/BoardMasterEdit");
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();

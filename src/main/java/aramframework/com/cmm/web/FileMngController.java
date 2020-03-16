@@ -52,7 +52,7 @@ public class FileMngController {
 		model.addAttribute("updateFlag", "N");
 		model.addAttribute("fileListCnt", result.size());
 
-		return "aramframework/com/cmm/fms/FileList";
+		return "cmm/fms/FileList";
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class FileMngController {
 		model.addAttribute("updateFlag", "Y");
 		model.addAttribute("fileListCnt", result.size());
 
-		return "aramframework/com/cmm/fms/FileList";
+		return "cmm/fms/FileList";
 	}
 
 	/**
@@ -102,7 +102,7 @@ public class FileMngController {
 
 		model.addAttribute("fileList", result);
 
-		return "aramframework/com/cmm/fms/ImgFileList";
+		return "cmm/fms/ImgFileList";
 	}
 
 	/**

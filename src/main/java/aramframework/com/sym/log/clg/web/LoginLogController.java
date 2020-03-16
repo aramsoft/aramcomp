@@ -50,7 +50,7 @@ public class LoginLogController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/log/clg/LoginLogList");
+		return WebUtil.adjustViewName("sym/log/clg/LoginLogList");
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class LoginLogController {
 
 		model.addAttribute(loginLogService.selectLoginLog(loginLogVO));
 
-		return WebUtil.adjustViewName("/sym/log/clg/LoginLogDetail");
+		return WebUtil.adjustViewName("sym/log/clg/LoginLogDetail");
 	}
 
 }

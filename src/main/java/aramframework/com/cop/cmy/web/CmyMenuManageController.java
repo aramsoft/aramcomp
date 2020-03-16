@@ -96,7 +96,7 @@ public class CmyMenuManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/cmy/CmyMenuList");
+		return WebUtil.adjustViewName("cop/cmy/CmyMenuList");
 	}
 
 	/**
@@ -113,7 +113,7 @@ public class CmyMenuManageController {
 
 		checkAuthorityManager(); // server-side 권한 확인
 
-		return WebUtil.adjustViewName("/cop/cmy/CmyMenuRegist");
+		return WebUtil.adjustViewName("cop/cmy/CmyMenuRegist");
 	}
 
 	/**
@@ -131,19 +131,19 @@ public class CmyMenuManageController {
 
 		beanValidator.validate(communityMenuVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/cmy/CmyMenuRegist");
+			return WebUtil.adjustViewName("cop/cmy/CmyMenuRegist");
 		}
 
 		if (cmyMenuManageService.selectMenuNoByPk(communityMenuVO) != 0) {
 			model.addAttribute("message", MessageHelper.getMessage("common.isExist.msg"));
-			return WebUtil.adjustViewName("/cop/cmy/CmyMenuRegist");
+			return WebUtil.adjustViewName("cop/cmy/CmyMenuRegist");
 		}
 		
 		if (communityMenuVO.getProgrmFileNm() != null
 			&& !communityMenuVO.getProgrmFileNm().equals("")	
 			&& progrmManageService.selectProgrmNMTotCnt(communityMenuVO.getProgrmFileNm()) == 0) {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.insert"));
-			return "aramframework/com/cop/cmy/CmyMenuRegist";
+			return "cop/cmy/CmyMenuRegist";
 		} 
 		
 		cmyMenuManageService.insertMenuManage(communityMenuVO);
@@ -174,7 +174,7 @@ public class CmyMenuManageController {
 		
 		model.addAttribute(cmyMenuManageService.selectMenuManage(communityMenuVO));
 
-		return WebUtil.adjustViewName("/cop/cmy/CmyMenuEdit");
+		return WebUtil.adjustViewName("cop/cmy/CmyMenuEdit");
 	}
 
 	/**
@@ -192,7 +192,7 @@ public class CmyMenuManageController {
 
 		beanValidator.validate(communityMenuVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/cmy/CmyMenuEdit");
+			return WebUtil.adjustViewName("cop/cmy/CmyMenuEdit");
 		}
 		
 		if( communityMenuVO.getNewMenuNo() != 0 ) {
@@ -201,7 +201,7 @@ public class CmyMenuManageController {
 			newCommunityMenuVO.setTrgetId(communityMenuVO.getTrgetId());
 			if (cmyMenuManageService.selectMenuNoByPk(newCommunityMenuVO) != 0) {
 				model.addAttribute("message", MessageHelper.getMessage("common.isExist.msg"));
-				return WebUtil.adjustViewName("/cop/cmy/CmyMenuEdit");
+				return WebUtil.adjustViewName("cop/cmy/CmyMenuEdit");
 			}
 		}
 		
@@ -209,7 +209,7 @@ public class CmyMenuManageController {
 				&& !communityMenuVO.getProgrmFileNm().equals("")	
 				&& progrmManageService.selectProgrmNMTotCnt(communityMenuVO.getProgrmFileNm()) == 0) {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.update"));
-			return WebUtil.adjustViewName("/cop/cmy/CmyMenuEdit");
+			return WebUtil.adjustViewName("cop/cmy/CmyMenuEdit");
 		} 
 		
 		cmyMenuManageService.updateMenuManage(communityMenuVO);
@@ -295,7 +295,7 @@ public class CmyMenuManageController {
 			@ModelAttribute CommunityMenuVO communityMenuVO,
 			ModelMap model) {
 		
-		return WebUtil.adjustViewName("/cop/cmy/CmyMenuExcelRegist");
+		return WebUtil.adjustViewName("cop/cmy/CmyMenuExcelRegist");
 	}
 
 	/**
@@ -330,7 +330,7 @@ public class CmyMenuManageController {
 
 				} else {
 					model.addAttribute("message", "xlsx 파일 타입만 등록이 가능합니다.");
-					return WebUtil.adjustViewName("/cop/cmy/CmyMenuExcelRegist");
+					return WebUtil.adjustViewName("cop/cmy/CmyMenuExcelRegist");
 				}
 			}
 		}

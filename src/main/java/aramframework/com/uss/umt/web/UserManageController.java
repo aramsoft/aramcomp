@@ -71,7 +71,7 @@ public class UserManageController {
 		// 사용자상태코드를 코드정보로부터 조회
 		cmmUseService.populateCmmCodeList("COM013", "COM013_mberSttus");
 
-		return WebUtil.adjustViewName("/uss/umt/UserList");
+		return WebUtil.adjustViewName("uss/umt/UserList");
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class UserManageController {
 	public String checkIdDplctView(ModelMap model) {
 		model.addAttribute("checkId", "");
 		model.addAttribute("usedCnt", "-1");
-		return "aramframework/com/uss/umt/IdDplctCheck";
+		return "uss/umt/IdDplctCheck";
 	}
 
 	/**
@@ -98,14 +98,14 @@ public class UserManageController {
 		if (checkId == null || checkId.equals("")) {
 			model.addAttribute("checkId", "");
 			model.addAttribute("usedCnt", "-1");
-			return "aramframework/com/uss/umt/IdDplctCheck";
+			return "uss/umt/IdDplctCheck";
 		}
 
 		int usedCnt = userManageService.checkIdDplct(checkId);
 		model.addAttribute("usedCnt", usedCnt);
 		model.addAttribute("checkId", checkId);
 
-		return "aramframework/com/uss/umt/IdDplctCheck";
+		return "uss/umt/IdDplctCheck";
 	}
 
 	/**
@@ -122,7 +122,7 @@ public class UserManageController {
 
 		fill_common_code(model);
 		
-		return WebUtil.adjustViewName("/uss/umt/UserRegist");
+		return WebUtil.adjustViewName("uss/umt/UserRegist");
 	}
 
 	/**
@@ -146,7 +146,7 @@ public class UserManageController {
 			vo.setTableNm("COMTN_ORGNZT_INFO");
 			model.addAttribute("orgnztId_result", cmmUseService.selectOgrnztIdList(vo));
 
-			return WebUtil.adjustViewName("/uss/umt/UserRegist");
+			return WebUtil.adjustViewName("uss/umt/UserRegist");
 		} 
 		
 		if (userManageVO.getOrgnztId().equals("")) {
@@ -177,7 +177,7 @@ public class UserManageController {
 		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
 			model.addAttribute("isAdmin", "true");
 		}
-		return WebUtil.adjustViewName("/uss/umt/UserEdit");
+		return WebUtil.adjustViewName("uss/umt/UserEdit");
 	}
 
 	/**
@@ -200,7 +200,7 @@ public class UserManageController {
 			vo.setTableNm("COMTN_ORGNZT_INFO");
 			model.addAttribute("orgnztId_result", cmmUseService.selectOgrnztIdList(vo));
 
-			return WebUtil.adjustViewName("/uss/umt/UserEdit");
+			return WebUtil.adjustViewName("uss/umt/UserEdit");
 		} 
 
 		// 업무사용자 수정시 히스토리 정보를 등록한다.
@@ -239,7 +239,7 @@ public class UserManageController {
 		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
 			model.addAttribute("isAdmin", "true");
 		}
-		return WebUtil.adjustViewName("/uss/umt/UserPassword");
+		return WebUtil.adjustViewName("uss/umt/UserPassword");
 	}
 
 	/**

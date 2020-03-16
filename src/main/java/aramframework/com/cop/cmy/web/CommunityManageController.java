@@ -82,7 +82,7 @@ public class CommunityManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/cmy/CmmntyListPopup");
+		return WebUtil.adjustViewName("cop/cmy/CmmntyListPopup");
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class CommunityManageController {
 
 		model.addAttribute("resultList", cmmntyService.selectCmmntyListPortlet(communityVO));
 
-		return WebUtil.adjustViewName("/cop/cmy/CmmntyListPortlet");
+		return WebUtil.adjustViewName("cop/cmy/CmmntyListPortlet");
 	}
 
 	/**
@@ -123,7 +123,7 @@ public class CommunityManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/cmy/CmmntyList");
+		return WebUtil.adjustViewName("cop/cmy/CmmntyList");
 	}
 
 	/**
@@ -163,7 +163,7 @@ public class CommunityManageController {
 		}
 		model.addAttribute(communityVO);
 		
-		return WebUtil.adjustViewName("/cop/cmy/CmmntyDetail");
+		return WebUtil.adjustViewName("cop/cmy/CmmntyDetail");
 	}
 
 	/**
@@ -178,7 +178,7 @@ public class CommunityManageController {
 			@ModelAttribute CommunityVO communityVO, 
 			ModelMap model) {
 		
-		return WebUtil.adjustViewName("/cop/cmy/CmmntyRegist");
+		return WebUtil.adjustViewName("cop/cmy/CmmntyRegist");
 	}
 
 	/**
@@ -199,7 +199,7 @@ public class CommunityManageController {
 
 		beanValidator.validate(communityVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/cmy/CmmntyRegist");
+			return WebUtil.adjustViewName("cop/cmy/CmmntyRegist");
 		}
 
 		for (MultipartFile file : multiRequest.getFileMap().values()) {
@@ -246,7 +246,7 @@ public class CommunityManageController {
 		}
 		model.addAttribute(communityVO);
 		
-		return WebUtil.adjustViewName("/cop/cmy/CmmntyEdit");
+		return WebUtil.adjustViewName("cop/cmy/CmmntyEdit");
 	}
 
 	/**
@@ -270,7 +270,7 @@ public class CommunityManageController {
 			model.addAttribute("manager",cmmntyService.selectCommunityManagerInf(communityVO));
 			model.addAttribute("bbsList", cmmntyService.selectCommunityBBSUseInf(communityVO));
 
-			return WebUtil.adjustViewName("/cop/cmy/CmmntyEdit");
+			return WebUtil.adjustViewName("cop/cmy/CmmntyEdit");
 		}
 
 		for (MultipartFile file : multiRequest.getFileMap().values()) {
@@ -351,7 +351,7 @@ public class CommunityManageController {
 		}
 
 		model.addAttribute("returnMsg", retVal);
-		return WebUtil.adjustViewName("/cop/cmy/CmmntyMsg");
+		return WebUtil.adjustViewName("cop/cmy/CmmntyMsg");
 	}
 
 	/**
@@ -390,7 +390,7 @@ public class CommunityManageController {
 		// cmmntyService.deleteCommunityUserInf(cmmntyUser);
 
 		model.addAttribute("returnMsg", retVal);
-		return WebUtil.adjustViewName("/cop/cmy/CmmntyMsg");
+		return WebUtil.adjustViewName("cop/cmy/CmmntyMsg");
 	}
 
 }

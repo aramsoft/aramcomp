@@ -88,7 +88,7 @@ public class BBSSatisfactionController {
 		model.addAttribute(paginationInfo);
 
 		model.addAttribute("anonymous", "false");
-		return WebUtil.adjustViewName("/cop/bbs/SatisfactionList");
+		return WebUtil.adjustViewName("cop/bbs/SatisfactionList");
 	}
 
 	/**
@@ -226,7 +226,7 @@ public class BBSSatisfactionController {
 		model.addAttribute(paginationInfo);
 
 		model.addAttribute("anonymous", "true");
-		return WebUtil.adjustViewName("/cop/bbs/SatisfactionList");
+		return WebUtil.adjustViewName("cop/bbs/SatisfactionList");
 	}
 
 	/**

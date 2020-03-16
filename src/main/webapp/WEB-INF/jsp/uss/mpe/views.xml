@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="uss/mpe/IndvdlpgeList" extends="default">
+    <put-attribute name="title" value="마이페이지 컨텐츠 추가" />
+    <put-attribute name="body" value="/WEB-INF/jsp/uss/mpe/IndvdlpgeList.jsp" />
+  </definition>
+  
+  <definition name="uss/mpe/IndvdlpgeDetail" extends="default">
+    <put-attribute name="title" value="마이페이지" />
+    <put-attribute name="body" value="/WEB-INF/jsp/uss/mpe/IndvdlpgeDetail.jsp" />
+  </definition>
+  
+  <definition name="uss/mpe/IndvdlpgeConfRegist" extends="default">
+    <put-attribute name="title" value="마이페이지 구성" />
+    <put-attribute name="body" value="/WEB-INF/jsp/uss/mpe/IndvdlpgeConfRegist.jsp" />
+  </definition>
+  
+</tiles-definitions>

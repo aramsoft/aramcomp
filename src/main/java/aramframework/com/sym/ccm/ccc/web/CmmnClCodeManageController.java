@@ -58,7 +58,7 @@ public class CmmnClCodeManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/ccm/ccc/CmmnClCodeList");
+		return WebUtil.adjustViewName("sym/ccm/ccc/CmmnClCodeList");
 	}
 
 	/**
@@ -74,7 +74,7 @@ public class CmmnClCodeManageController {
 		
 		model.addAttribute(cmmnClCodeManageService.selectCmmnClCodeDetail(cmmnClCodeVO));
 
-		return WebUtil.adjustViewName("/sym/ccm/ccc/CmmnClCodeDetail");
+		return WebUtil.adjustViewName("sym/ccm/ccc/CmmnClCodeDetail");
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class CmmnClCodeManageController {
 			@ModelAttribute CmmnClCodeVO cmmnClCodeVO, 
 			ModelMap model) {
 
-		return WebUtil.adjustViewName("/sym/ccm/ccc/CmmnClCodeRegist");
+		return WebUtil.adjustViewName("sym/ccm/ccc/CmmnClCodeRegist");
 	}
 
 	/**
@@ -107,13 +107,13 @@ public class CmmnClCodeManageController {
 
 		beanValidator.validate(cmmnClCodeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/ccm/ccc/CmmnClCodeRegist");
+			return WebUtil.adjustViewName("sym/ccm/ccc/CmmnClCodeRegist");
 		}
 
 		CmmnClCodeVO vo = cmmnClCodeManageService.selectCmmnClCodeDetail(cmmnClCodeVO);
 		if (vo != null) {
 			model.addAttribute("message", "이미 등록된 분류코드가 존재합니다.");
-			return WebUtil.adjustViewName("/sym/ccm/ccc/CmmnClCodeRegist");
+			return WebUtil.adjustViewName("sym/ccm/ccc/CmmnClCodeRegist");
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -139,7 +139,7 @@ public class CmmnClCodeManageController {
 		
 		model.addAttribute(cmmnClCodeManageService.selectCmmnClCodeDetail(cmmnClCodeVO));
 
-		return WebUtil.adjustViewName("/sym/ccm/ccc/CmmnClCodeEdit");
+		return WebUtil.adjustViewName("sym/ccm/ccc/CmmnClCodeEdit");
 	}
 
 	/**
@@ -157,7 +157,7 @@ public class CmmnClCodeManageController {
 
 		beanValidator.validate(cmmnClCodeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/ccm/ccc/CmmnClCodeEdit");
+			return WebUtil.adjustViewName("sym/ccm/ccc/CmmnClCodeEdit");
 		}
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();

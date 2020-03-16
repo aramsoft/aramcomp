@@ -62,7 +62,7 @@ public class FaqManageController {
 	
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/olh/faq/FaqList");
+		return WebUtil.adjustViewName("uss/olh/faq/FaqList");
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class FaqManageController {
 
 		model.addAttribute(faqManageService.selectFaqListDetail(faqManageVO));
 
-		return WebUtil.adjustViewName("/uss/olh/faq/FaqDetail");
+		return WebUtil.adjustViewName("uss/olh/faq/FaqDetail");
 	}
 
 	/**
@@ -93,7 +93,7 @@ public class FaqManageController {
 			@ModelAttribute FaqManageVO faqManageVO, 
 			ModelMap model) {
 
-		return WebUtil.adjustViewName("/uss/olh/faq/FaqRegist");
+		return WebUtil.adjustViewName("uss/olh/faq/FaqRegist");
 	}
 
 	/**
@@ -113,7 +113,7 @@ public class FaqManageController {
 
 		beanValidator.validate(faqManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olh/faq/FaqRegist");
+			return WebUtil.adjustViewName("uss/olh/faq/FaqRegist");
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
@@ -143,7 +143,7 @@ public class FaqManageController {
 
 		model.addAttribute(faqManageService.selectFaqListDetail(faqManageVO));
 
-		return WebUtil.adjustViewName("/uss/olh/faq/FaqEdit");
+		return WebUtil.adjustViewName("uss/olh/faq/FaqEdit");
 	}
 
 	/**
@@ -164,7 +164,7 @@ public class FaqManageController {
 		// Validation
 		beanValidator.validate(faqManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olh/faq/FaqEdit");
+			return WebUtil.adjustViewName("uss/olh/faq/FaqEdit");
 		}
 
 		// 첨부파일 관련 ID 생성 start....

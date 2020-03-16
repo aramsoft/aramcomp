@@ -50,7 +50,7 @@ public class SysLogController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/log/lgm/SysLogList");
+		return WebUtil.adjustViewName("sym/log/lgm/SysLogList");
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class SysLogController {
 
 		model.addAttribute(sysLogService.selectSysLog(sysLogVO));
 
-		return WebUtil.adjustViewName("/sym/log/lgm/SysLogDetail");
+		return WebUtil.adjustViewName("sym/log/lgm/SysLogDetail");
 	}
 
 }

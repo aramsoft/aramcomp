@@ -51,7 +51,7 @@ public class BatchResultController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/bat/BatchResultList");
+		return WebUtil.adjustViewName("sym/bat/BatchResultList");
 	}
 
 	/**
@@ -68,7 +68,7 @@ public class BatchResultController {
 		
 		model.addAttribute(batchResultService.selectBatchResult(batchResultVO));
 
-		return WebUtil.adjustViewName("/sym/bat/BatchResultDetail");
+		return WebUtil.adjustViewName("sym/bat/BatchResultDetail");
 	}
 
 	/**

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="sec/grp/GroupList" extends="default">
+    <put-attribute name="title" value="그룹 목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/sec/grp/GroupList.jsp" />
+  </definition>
+  
+  <definition name="sec/grp/GroupRegist" extends="default">
+    <put-attribute name="title" value="그룹 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/sec/grp/GroupRegist.jsp" />
+  </definition>
+  
+  <definition name="sec/grp/GroupEdit" extends="default">
+    <put-attribute name="title" value="그룹 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/sec/grp/GroupEdit.jsp" />
+  </definition>
+  
+  <definition name="sec/grp/GroupAuthor" extends="default">
+    <put-attribute name="title" value="그룹사용자별 권한 목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/sec/grp/GroupAuthor.jsp" />
+  </definition>
+  
+</tiles-definitions>

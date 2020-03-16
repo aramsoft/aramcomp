@@ -64,7 +64,7 @@ public class TemplateController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/tpl/TemplateList");
+		return WebUtil.adjustViewName("cop/tpl/TemplateList");
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class TemplateController {
 		// 템플릿구분
 		cmmUseService.populateCmmCodeList("COM005", "COM005_tmplatSe");
 
-		return WebUtil.adjustViewName("/cop/tpl/TemplateRegist");
+		return WebUtil.adjustViewName("cop/tpl/TemplateRegist");
 	}
 
 	/**
@@ -100,7 +100,7 @@ public class TemplateController {
 
 		beanValidator.validate(templateInfVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/tpl/TemplateRegist");
+			return WebUtil.adjustViewName("cop/tpl/TemplateRegist");
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -129,7 +129,7 @@ public class TemplateController {
 		// 템플릿구분
 		cmmUseService.populateCmmCodeList("COM005", "COM005_tmplatSe");
 
-		return WebUtil.adjustViewName("/cop/tpl/TemplateEdit");
+		return WebUtil.adjustViewName("cop/tpl/TemplateEdit");
 	}
 
 	/**
@@ -147,7 +147,7 @@ public class TemplateController {
 
 		beanValidator.validate(templateInfVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/tpl/TemplateEdit");
+			return WebUtil.adjustViewName("cop/tpl/TemplateEdit");
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -212,7 +212,7 @@ public class TemplateController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/tpl/TemplatePopup");
+		return WebUtil.adjustViewName("cop/tpl/TemplatePopup");
 	}
 	
 }

@@ -62,7 +62,7 @@ public class ResourceController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sec/rmt/ResourceList");
+		return WebUtil.adjustViewName("sec/rmt/ResourceList");
 	}
 
 	/**
@@ -79,7 +79,7 @@ public class ResourceController {
 
 		cmmUseService.populateCmmCodeList("COM029", "COM029_resourceType");
 
-		return WebUtil.adjustViewName("/sec/rmt/ResourceRegist");
+		return WebUtil.adjustViewName("sec/rmt/ResourceRegist");
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class ResourceController {
 
 		beanValidator.validate(resourceVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sec/rmt/ResourceRegist");
+			return WebUtil.adjustViewName("sec/rmt/ResourceRegist");
 		} 
 		
 		resourceService.insertResource(resourceVO);
@@ -122,7 +122,7 @@ public class ResourceController {
 
 		cmmUseService.populateCmmCodeList("COM029", "COM029_resourceType");
 
-		return WebUtil.adjustViewName("/sec/rmt/ResourceEdit");
+		return WebUtil.adjustViewName("sec/rmt/ResourceEdit");
 	}
 
 	/**
@@ -140,7 +140,7 @@ public class ResourceController {
 
 		beanValidator.validate(resourceVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sec/rmt/ResourceEdit");
+			return WebUtil.adjustViewName("sec/rmt/ResourceEdit");
 		} 
 		
 		resourceService.updateResource(resourceVO);

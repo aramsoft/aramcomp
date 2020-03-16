@@ -91,7 +91,7 @@ public class CmyBBSMasterController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/com/BdMstrListByTrget");
+		return WebUtil.adjustViewName("cop/com/BdMstrListByTrget");
 	}
 
 	/**
@@ -122,7 +122,7 @@ public class CmyBBSMasterController {
 			model.addAttribute("useSatisfaction", "true");
 		}
 
-		return WebUtil.adjustViewName("/cop/com/BdMstrRegistByTrget");
+		return WebUtil.adjustViewName("cop/com/BdMstrRegistByTrget");
 	}
 
 	/**
@@ -140,7 +140,7 @@ public class CmyBBSMasterController {
 
 		beanValidator.validate(boardMasterVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/com/BdMstrRegistByTrget");
+			return WebUtil.adjustViewName("cop/com/BdMstrRegistByTrget");
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -206,7 +206,7 @@ public class CmyBBSMasterController {
 //		}
 		model.addAttribute(boardUseInfVO);
 		
-		return WebUtil.adjustViewName("/cop/com/BdMstrEditByTrget");
+		return WebUtil.adjustViewName("cop/com/BdMstrEditByTrget");
 	}
 
 	/**
@@ -224,7 +224,7 @@ public class CmyBBSMasterController {
 
 		beanValidator.validate(boardMasterVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/com/BdMstrEditByTrget");
+			return WebUtil.adjustViewName("cop/com/BdMstrEditByTrget");
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();

@@ -61,7 +61,7 @@ public class DeptAuthorController {
 		AuthorVO authorVO = new AuthorVO();
 		model.addAttribute("authorList", authorService.selectAuthorAllList(authorVO));
 
-		return WebUtil.adjustViewName("/sec/dpt/DeptAuthor");
+		return WebUtil.adjustViewName("sec/dpt/DeptAuthor");
 	}
 
 	/**

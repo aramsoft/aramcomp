@@ -401,7 +401,7 @@ public class CmyMenuHomeController  {
 
 		model.addAttribute("articleList", target);
 		
-		return WebUtil.adjustViewName("/cop/cmy/CmmntyMainContents");
+		return WebUtil.adjustViewName("cop/cmy/CmmntyMainContents");
 	}
 
 	/**
@@ -521,7 +521,7 @@ public class CmyMenuHomeController  {
 
 		model.addAttribute(communityVO);
 
-		return WebUtil.adjustViewName("/cop/cmy/CmmntyMainContents");
+		return WebUtil.adjustViewName("cop/cmy/CmmntyMainContents");
 	}
 
 }

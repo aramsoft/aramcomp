@@ -58,7 +58,7 @@ public class IndvdlInfoPolicyController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/sam/ipm/IndvdlInfoPolicyList");
+		return WebUtil.adjustViewName("uss/sam/ipm/IndvdlInfoPolicyList");
 	}
 
 	/**
@@ -75,7 +75,7 @@ public class IndvdlInfoPolicyController {
 
 		model.addAttribute(indvdlInfoPolicyService.selectIndvdlInfoPolicyDetail(indvdlInfoPolicyVO));
 
-		return WebUtil.adjustViewName("/uss/sam/ipm/IndvdlInfoPolicyDetail");
+		return WebUtil.adjustViewName("uss/sam/ipm/IndvdlInfoPolicyDetail");
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class IndvdlInfoPolicyController {
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IndvdlInfoPolicyVO indvdlInfoPolicyVO) {
 
-		return WebUtil.adjustViewName("/uss/sam/ipm/IndvdlInfoPolicyRegist");
+		return WebUtil.adjustViewName("uss/sam/ipm/IndvdlInfoPolicyRegist");
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class IndvdlInfoPolicyController {
 		// 서버 validate 체크
 		beanValidator.validate(indvdlInfoPolicyVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/sam/ipm/IndvdlInfoPolicyRegist");
+			return WebUtil.adjustViewName("uss/sam/ipm/IndvdlInfoPolicyRegist");
 		}
 		
 		// 아이디 설정
@@ -136,7 +136,7 @@ public class IndvdlInfoPolicyController {
 
 		model.addAttribute(indvdlInfoPolicyService.selectIndvdlInfoPolicyDetail(indvdlInfoPolicyVO));
 
-		return WebUtil.adjustViewName("/uss/sam/ipm/IndvdlInfoPolicyEdit");
+		return WebUtil.adjustViewName("uss/sam/ipm/IndvdlInfoPolicyEdit");
 	}
 
 	/**
@@ -155,7 +155,7 @@ public class IndvdlInfoPolicyController {
 		// 서버 validate 체크
 		beanValidator.validate(indvdlInfoPolicyVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/sam/ipm/IndvdlInfoPolicyEdit");
+			return WebUtil.adjustViewName("uss/sam/ipm/IndvdlInfoPolicyEdit");
 		}
 			// 아이디 설정
 		// 로그인VO에서 사용자 정보 가져오기

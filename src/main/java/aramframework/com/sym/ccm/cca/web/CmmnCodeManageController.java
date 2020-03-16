@@ -63,7 +63,7 @@ public class CmmnCodeManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/ccm/cca/CmmnCodeList");
+		return WebUtil.adjustViewName("sym/ccm/cca/CmmnCodeList");
 	}
 
 	/**
@@ -79,7 +79,7 @@ public class CmmnCodeManageController {
 
 		model.addAttribute(cmmnCodeManageService.selectCmmnCodeDetail(cmmnCodeVO));
 
-		return WebUtil.adjustViewName("/sym/ccm/cca/CmmnCodeDetail");
+		return WebUtil.adjustViewName("sym/ccm/cca/CmmnCodeDetail");
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class CmmnCodeManageController {
 
 		model.addAttribute("cmmnClCode", cmmnClCodeManageService.selectCmmnClCodeList(cmmnClCodeVO));
 
-		return WebUtil.adjustViewName("/sym/ccm/cca/CmmnCodeRegist");
+		return WebUtil.adjustViewName("sym/ccm/cca/CmmnCodeRegist");
 	}
 
 	/**
@@ -117,7 +117,7 @@ public class CmmnCodeManageController {
 
 		beanValidator.validate(cmmnCodeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/ccm/cca/CmmnCodeRegist");
+			return WebUtil.adjustViewName("sym/ccm/cca/CmmnCodeRegist");
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -143,7 +143,7 @@ public class CmmnCodeManageController {
 
 		model.addAttribute(cmmnCodeManageService.selectCmmnCodeDetail(cmmnCodeVO));
 
-		return WebUtil.adjustViewName("/sym/ccm/cca/CmmnCodeEdit");
+		return WebUtil.adjustViewName("sym/ccm/cca/CmmnCodeEdit");
 	}
 
 	/**
@@ -161,7 +161,7 @@ public class CmmnCodeManageController {
 
 		beanValidator.validate(cmmnCodeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/ccm/cca/CmmnCodeEdit");
+			return WebUtil.adjustViewName("sym/ccm/cca/CmmnCodeEdit");
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();

@@ -67,7 +67,7 @@ public class SysHistoryController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/log/slg/SysHistList");
+		return WebUtil.adjustViewName("sym/log/slg/SysHistList");
 	}
 
 	/**
@@ -84,7 +84,7 @@ public class SysHistoryController {
 
 		model.addAttribute(sysHistoryService.selectSysHistory(sysHistoryVO));
 
-		return WebUtil.adjustViewName("/sym/log/slg/SysHistDetail");
+		return WebUtil.adjustViewName("sym/log/slg/SysHistDetail");
 	}
 
 	/**
@@ -101,7 +101,7 @@ public class SysHistoryController {
 
 		cmmUseService.populateCmmCodeList("COM002", "COM002_histSe");
 
-		return WebUtil.adjustViewName("/sym/log/slg/SysHistRegist");
+		return WebUtil.adjustViewName("sym/log/slg/SysHistRegist");
 	}
 
 	/**
@@ -121,7 +121,7 @@ public class SysHistoryController {
 
 		beanValidator.validate(sysHistoryVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/log/slg/SysHistRegist");
+			return WebUtil.adjustViewName("sym/log/slg/SysHistRegist");
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
@@ -152,7 +152,7 @@ public class SysHistoryController {
 
 		cmmUseService.populateCmmCodeList("COM002", "COM002_histSe");
 		
-		return WebUtil.adjustViewName("/sym/log/slg/SysHistEdit");
+		return WebUtil.adjustViewName("sym/log/slg/SysHistEdit");
 	}
 
 	/**
@@ -172,7 +172,7 @@ public class SysHistoryController {
 
 		beanValidator.validate(sysHistoryVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/log/slg/SysHistEdit");
+			return WebUtil.adjustViewName("sym/log/slg/SysHistEdit");
 		}
 
 		// 첨부파일 관련 ID 생성 start....

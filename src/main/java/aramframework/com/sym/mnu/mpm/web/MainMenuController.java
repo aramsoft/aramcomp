@@ -50,13 +50,13 @@ public class MainMenuController {
 			// 메인 페이지 이동
 			// G일반 / E기업 / U업무
 			if (loginVO.getUserSe().equals("USR")) {
-				return "aramframework/com/main_head"; // "EgovMainViewG"; 일반사용자
+				return "main_head"; // "EgovMainViewG"; 일반사용자
 			} else {
-				return "aramframework/com/main_headG";
+				return "main_headG";
 			}
 		} else {
 			// 오류 페이지 이동
-			return "aramframework/com/cmm/error/egovError";
+			return "cmm/error/egovError";
 		}
 	}
 
@@ -74,10 +74,10 @@ public class MainMenuController {
 
 		if (!loginVO.getId().equals("")) {
 			// "EgovMainViewG"; 일반사용자
-			return "aramframework/com/main_bottom"; 
+			return "main_bottom"; 
 		} else {
 			// 오류 페이지 이동
-			return "aramframework/com/cmm/error/egovError";
+			return "cmm/error/egovError";
 		}
 	}
 
@@ -101,7 +101,7 @@ public class MainMenuController {
 		menuManageVO.setTmpUniqId(loginVO.getUniqId());
 
 		model.addAttribute("list_menulist", mainMenuService.selectMainMenuLeft(menuManageVO));
-		return "aramframework/com/main_left";
+		return "main_left";
 	}
 
 	/**
@@ -147,18 +147,18 @@ public class MainMenuController {
 			// 메인 페이지 이동
 			// G일반 / E기업 / U업무
 			if (loginVO.getUserSe().equals("GNR")) {// 2011.09.07
-				return "aramframework/com/MainHomeG"; // "EgovMainViewG";
+				return "MainHomeG"; // "EgovMainViewG";
 															// 일반사용자
 			} else if (loginVO.getUserSe().equals("USR")) {// 2011.09.07
-				// return "aramframework/com/IndvdlpgeDetail";
-				return "aramframework/com/MainHome";
+				// return "IndvdlpgeDetail";
+				return "MainHome";
 			} else {
-				// return "aramframework/com/MainView";//1차 사업 메인화면
-				return "aramframework/com/MainHome2";// 2차 사업 메인화면
+				// return "MainView";//1차 사업 메인화면
+				return "MainHome2";// 2차 사업 메인화면
 			}
 		} else {
 			// 오류 페이지 이동
-			return "aramframework/com/cmm/error/egovError";
+			return "cmm/error/egovError";
 		}
 	}
 	
@@ -181,7 +181,7 @@ public class MainMenuController {
 		menuManageVO.setMenuNo(iMenuNo);
 		// menuManageVO.setTempValue(chkURL);
 
-		return "aramframework/com/MainIndex";
+		return "MainIndex";
 	}
 
 }

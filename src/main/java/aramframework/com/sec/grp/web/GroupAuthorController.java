@@ -61,7 +61,7 @@ public class GroupAuthorController {
 		AuthorVO authorVO = new AuthorVO();
 		model.addAttribute("authorList", authorService.selectAuthorAllList(authorVO));
 
-		return WebUtil.adjustViewName("/sec/grp/GroupAuthor");
+		return WebUtil.adjustViewName("sec/grp/GroupAuthor");
 	}
 
 	/**

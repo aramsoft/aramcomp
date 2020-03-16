@@ -76,7 +76,7 @@ public class BackupOpertController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/sym/bak/BackupOpertList");
+		return WebUtil.adjustViewName("sym/sym/bak/BackupOpertList");
 	}
 
 	/**
@@ -93,7 +93,7 @@ public class BackupOpertController {
 		
 		model.addAttribute(backupOpertService.selectBackupOpert(backupOpertVO));
 
-		return WebUtil.adjustViewName("/sym/sym/bak/BackupOpertDetail");
+		return WebUtil.adjustViewName("sym/sym/bak/BackupOpertDetail");
 	}
 
 	/**
@@ -110,7 +110,7 @@ public class BackupOpertController {
 
 		referenceData(model);
 
-		return WebUtil.adjustViewName("/sym/sym/bak/BackupOpertRegist");
+		return WebUtil.adjustViewName("sym/sym/bak/BackupOpertRegist");
 	}
 
 	/**
@@ -131,7 +131,7 @@ public class BackupOpertController {
 		backupOpertValidator.validate(backupOpertVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			referenceData(model);
-			return WebUtil.adjustViewName("/sym/sym/bak/BackupOpertRegist");
+			return WebUtil.adjustViewName("sym/sym/bak/BackupOpertRegist");
 		} 
 		
 		// 로그인 객체 선언
@@ -165,7 +165,7 @@ public class BackupOpertController {
 	
 		referenceData(model);
 
-		return WebUtil.adjustViewName("/sym/sym/bak/BackupOpertEdit");
+		return WebUtil.adjustViewName("sym/sym/bak/BackupOpertEdit");
 	}
 
 	/**
@@ -186,7 +186,7 @@ public class BackupOpertController {
 		backupOpertValidator.validate(backupOpertVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			referenceData(model);
-			return WebUtil.adjustViewName("/sym/sym/bak/BackupOpertEdit");
+			return WebUtil.adjustViewName("sym/sym/bak/BackupOpertEdit");
 		}
 
 		// 로그인 객체 선언

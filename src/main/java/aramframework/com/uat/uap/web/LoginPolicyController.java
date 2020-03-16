@@ -63,7 +63,7 @@ public class LoginPolicyController {
 	
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uat/uap/LoginPolicyList");
+		return WebUtil.adjustViewName("uat/uap/LoginPolicyList");
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class LoginPolicyController {
 			@ModelAttribute LoginPolicyVO loginPolicyVO, 
 			ModelMap model)	{
 
-		return WebUtil.adjustViewName("/uat/uap/LoginPolicyRegist");
+		return WebUtil.adjustViewName("uat/uap/LoginPolicyRegist");
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class LoginPolicyController {
 
 		beanValidator.validate(loginPolicyVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uat/uap/LoginPolicyRegist");
+			return WebUtil.adjustViewName("uat/uap/LoginPolicyRegist");
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -122,7 +122,7 @@ public class LoginPolicyController {
 
 		model.addAttribute(loginPolicyService.selectLoginPolicy(loginPolicyVO));
 
-		return WebUtil.adjustViewName("/uat/uap/LoginPolicyEdit");
+		return WebUtil.adjustViewName("uat/uap/LoginPolicyEdit");
 	}
 
 	/**
@@ -140,7 +140,7 @@ public class LoginPolicyController {
 
 		beanValidator.validate(loginPolicyVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uat/uap/LoginPolicyEdit");
+			return WebUtil.adjustViewName("uat/uap/LoginPolicyEdit");
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();

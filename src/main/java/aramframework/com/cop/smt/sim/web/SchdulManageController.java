@@ -77,7 +77,7 @@ public class SchdulManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/smt/sim/EmplyrListPopup");
+		return WebUtil.adjustViewName("cop/smt/sim/EmplyrListPopup");
 	}
 
 	/**
@@ -102,7 +102,7 @@ public class SchdulManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/smt/sim/SchdulListPopup");
+		return WebUtil.adjustViewName("cop/smt/sim/SchdulListPopup");
 	}
 
 	/**
@@ -124,7 +124,7 @@ public class SchdulManageController {
  
 		model.addAttribute("resultList", schdulManageService.selectSchdulManageMainList(schdulManageVO));
 
-		return WebUtil.adjustViewName("/cop/smt/sim/SchdulMainPage");
+		return WebUtil.adjustViewName("cop/smt/sim/SchdulMainPage");
 	}
 	
 	/**
@@ -138,7 +138,7 @@ public class SchdulManageController {
 			@ModelAttribute SchdulManageVO schdulManageVO, 
 			ModelMap model) {
 		
-		return WebUtil.adjustViewName("/cop/smt/sim/SchdulList");
+		return WebUtil.adjustViewName("cop/smt/sim/SchdulList");
 	}
 
 	/**
@@ -197,7 +197,7 @@ public class SchdulManageController {
 		// 공통코드 일정종류
 		cmmUseService.populateCmmCodeList("COM030", "COM030_schdulSe");
 
-		return WebUtil.adjustViewName("/cop/smt/sim/SchdulDailyList");
+		return WebUtil.adjustViewName("cop/smt/sim/SchdulDailyList");
 	}
 
 	/**
@@ -325,7 +325,7 @@ public class SchdulManageController {
 		// 공통코드 일정종류
 		cmmUseService.populateCmmCodeList("COM030", "COM030_schdulSe");
 
-		return WebUtil.adjustViewName("/cop/smt/sim/SchdulWeekList");
+		return WebUtil.adjustViewName("cop/smt/sim/SchdulWeekList");
 	}
 
 	/**
@@ -390,7 +390,7 @@ public class SchdulManageController {
 		// 공통코드 일정종류
 		cmmUseService.populateCmmCodeList("COM030", "COM030_schdulSe");
 
-		return WebUtil.adjustViewName("/cop/smt/sim/SchdulMonthList");
+		return WebUtil.adjustViewName("cop/smt/sim/SchdulMonthList");
 	}
 
 	/**
@@ -420,7 +420,7 @@ public class SchdulManageController {
 		// 공통코드 반복구분 조회
 		cmmUseService.populateCmmCodeList("COM031", "COM031_reptitSe");
 
-		return WebUtil.adjustViewName("/cop/smt/sim/SchdulDetail");
+		return WebUtil.adjustViewName("cop/smt/sim/SchdulDetail");
 	}
 
 	// 일정일자(시)
@@ -446,7 +446,7 @@ public class SchdulManageController {
 		// 공통코드 일정구분 조회
 		cmmUseService.populateCmmCodeList("COM030", "COM030_schdulSe");
 
-		return WebUtil.adjustViewName("/cop/smt/sim/SchdulRegist");
+		return WebUtil.adjustViewName("cop/smt/sim/SchdulRegist");
 	}
 
 	/**
@@ -467,7 +467,7 @@ public class SchdulManageController {
 		// 서버 validate 체크
 		beanValidator.validate(schdulManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/smt/sim/SchdulRegist");
+			return WebUtil.adjustViewName("cop/smt/sim/SchdulRegist");
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
@@ -520,7 +520,7 @@ public class SchdulManageController {
 		// 공통코드 일정구분 조회
 		cmmUseService.populateCmmCodeList("COM030", "COM030_schdulSe");
 
-		return WebUtil.adjustViewName("/cop/smt/sim/SchdulEdit");
+		return WebUtil.adjustViewName("cop/smt/sim/SchdulEdit");
 	}
 
 	/**
@@ -549,7 +549,7 @@ public class SchdulManageController {
 			}
 			model.addAttribute("writer", writer);
 
-			return WebUtil.adjustViewName("/cop/smt/sim/SchdulEdit");
+			return WebUtil.adjustViewName("cop/smt/sim/SchdulEdit");
 		}
 
 		// 로그인 객체 선언

@@ -66,7 +66,7 @@ public class BBSUseInfoController {
 			model.addAttribute("useCommunity", "true");
 		}
 
-		return WebUtil.adjustViewName("/cop/bbs/BoardUseInfList");
+		return WebUtil.adjustViewName("cop/bbs/BoardUseInfList");
 	}
 
 	/**
@@ -85,7 +85,7 @@ public class BBSUseInfoController {
 			model.addAttribute("useCommunity", "true");
 		}
 
-		return WebUtil.adjustViewName("/cop/bbs/BoardUseInfRegist");
+		return WebUtil.adjustViewName("cop/bbs/BoardUseInfRegist");
 	}
 
 	/**
@@ -103,7 +103,7 @@ public class BBSUseInfoController {
 
 		beanValidator.validate(boardUseInfVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/bbs/BoardUseInfRegist");
+			return WebUtil.adjustViewName("cop/bbs/BoardUseInfRegist");
 		}
 
 		String registSeCode = "";
@@ -151,7 +151,7 @@ public class BBSUseInfoController {
 //		}
 		model.addAttribute(boardUseInfVO);
 					
-		return WebUtil.adjustViewName("/cop/bbs/BoardUseInfEdit");
+		return WebUtil.adjustViewName("cop/bbs/BoardUseInfEdit");
 	}
 
 	/**
@@ -169,7 +169,7 @@ public class BBSUseInfoController {
 
 		beanValidator.validate(boardUseInfVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/bbs/BoardUseInfEdit");
+			return WebUtil.adjustViewName("cop/bbs/BoardUseInfEdit");
 		}
 
 		bbsUseService.updateBBSUseInf(boardUseInfVO);

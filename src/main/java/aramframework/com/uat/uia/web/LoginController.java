@@ -91,13 +91,7 @@ public class LoginController {
         	requestUrl = request.getRequestURI();
         }
         
-		// 접속 기기에 따라서 모바일용/일반웹용 처음 페이지를 다르게 호출한다.
-		if( requestUrl.startsWith("http://m.aramsoft.co.kr") 
-			|| 	requestUrl.indexOf(".mdo") != -1 ) {
-    		return "aramframework/mbl/uat/uia/LoginUsr";
-    	} else {
-        	return "aramframework/com/uat/uia/LoginUsr";
-    	}
+       	return "uat/uia/LoginUsr";
 	}
 
 	/**
@@ -124,7 +118,7 @@ public class LoginController {
 			return "forward:/uat/uia/actionMain.do";
 		} else {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.login"));
-			return "aramframework/com/uat/uia/LoginUsr";
+			return "uat/uia/LoginUsr";
 		}
 	}
 
@@ -143,7 +137,7 @@ public class LoginController {
 		Boolean isAuthenticated = UserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.login"));
-			return "aramframework/com/uat/uia/LoginUsr";
+			return "uat/uia/LoginUsr";
 		}
 		
 		String requestUrl = null;
@@ -209,7 +203,7 @@ public class LoginController {
 		// 1. 비밀번호 힌트 공통코드 조회
 		cmmUseService.populateCmmCodeList("COM022", "COM022_passwordHint");
 
-		return "aramframework/com/uat/uia/IdPasswordSearch";
+		return "uat/uia/IdPasswordSearch";
 	}
 
 	/**
@@ -226,7 +220,7 @@ public class LoginController {
 				|| loginVO.getName() == null || loginVO.getName().equals("") 
 				&& loginVO.getEmail() == null || loginVO.getEmail().equals("")
 				&& loginVO.getUserSe() == null || loginVO.getUserSe().equals("")) {
-			return "aramframework/com/cmm/egovError";
+			return "cmm/egovError";
 		}
 
 		// 1. 아이디 찾기
@@ -238,7 +232,7 @@ public class LoginController {
 		} else {
 			model.addAttribute("resultInfo", MessageHelper.getMessage("fail.common.idsearch"));
 		}
-		return "aramframework/com/uat/uia/IdPasswordResult";
+		return "uat/uia/IdPasswordResult";
 	}
 
 	/**
@@ -271,7 +265,7 @@ public class LoginController {
 		} else {
 			model.addAttribute("resultInfo", MessageHelper.getMessage("fail.common.pwsearch"));
 		}
-		return "aramframework/com/uat/uia/IdPasswordResult";
+		return "uat/uia/IdPasswordResult";
 	}
 
 	/**
@@ -288,7 +282,7 @@ public class LoginController {
 			}
 		}
 		model.addAttribute("activeUsers", lastActivityDates);
-		return "aramframework/com/uat/uia/ListActiveUsers";
+		return "uat/uia/ListActiveUsers";
 	}
 	
 }

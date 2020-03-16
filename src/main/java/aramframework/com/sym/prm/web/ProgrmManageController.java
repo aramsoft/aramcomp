@@ -60,7 +60,7 @@ public class ProgrmManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/prm/ProgramPopup");
+		return WebUtil.adjustViewName("sym/prm/ProgramPopup");
 	}
 	
 	/**
@@ -86,7 +86,7 @@ public class ProgrmManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/prm/ProgramList");
+		return WebUtil.adjustViewName("sym/prm/ProgramList");
 	}
 
 	/**
@@ -129,7 +129,7 @@ public class ProgrmManageController {
 			@ModelAttribute ProgrmManageVO progrmManageVO,
 			ModelMap model) {
 
-		return WebUtil.adjustViewName("/sym/prm/ProgramRegist");
+		return WebUtil.adjustViewName("sym/prm/ProgramRegist");
 	}
 
 	/**
@@ -147,7 +147,7 @@ public class ProgrmManageController {
 
 		beanValidator.validate(progrmManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/prm/ProgramRegist");
+			return WebUtil.adjustViewName("sym/prm/ProgramRegist");
 		}
 		
 		if (progrmManageVO.getProgrmDc() == null || progrmManageVO.getProgrmDc().equals("")) {
@@ -174,7 +174,7 @@ public class ProgrmManageController {
 		
 		model.addAttribute(progrmManageService.selectProgrm(progrmManageVO));
 
-		return WebUtil.adjustViewName("/sym/prm/ProgramEdit");
+		return WebUtil.adjustViewName("sym/prm/ProgramEdit");
 	}
 
 	/**
@@ -193,7 +193,7 @@ public class ProgrmManageController {
 
 		beanValidator.validate(progrmManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/prm/ProgramEdit");
+			return WebUtil.adjustViewName("sym/prm/ProgramEdit");
 		}
 		
 		if (progrmManageVO.getProgrmDc() == null || progrmManageVO.getProgrmDc().equals("")) {

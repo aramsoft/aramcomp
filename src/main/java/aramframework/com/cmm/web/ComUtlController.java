@@ -32,7 +32,7 @@ public class ComUtlController {
 
 		// service 사용하여 리턴할 결과값 처리하는 부분은 생략하고 단순 페이지 링크만 처리함
 		if (link==null || link.equals("")){
-			link="aramframework/com/cmm/error/egovError";
+			link="cmm/error/egovError";
 		}
 		
 		// 선택된 메뉴정보를 세션으로 등록한다.
@@ -56,7 +56,7 @@ public class ComUtlController {
 
 		// service 사용하여 리턴할 결과값 처리하는 부분은 생략하고 단순 페이지 링크만 처리함
 		if (linkPage==null || linkPage.equals("")){
-			link="aramframework/com/cmm/error/egovError";
+			link="cmm/error/egovError";
 		}else{
 			if(link.indexOf(",")>-1){
 			    link=link.substring(0,link.indexOf(","));	// import access시 필요
@@ -79,7 +79,7 @@ public class ComUtlController {
 		String link = linkPage;
 		// service 사용하여 리턴할 결과값 처리하는 부분은 생략하고 단순 페이지 링크만 처리함
 		if (linkPage==null || linkPage.equals("")){
-			link="aramframework/com/cmm/error/egovError";
+			link="cmm/error/egovError";
 		}
 		return link;
 	}
@@ -89,7 +89,7 @@ public class ComUtlController {
 	 */
 	@RequestMapping("/validator.do")
 	public String validate() {
-		return "aramframework/com/cmm/validator";
+		return "cmm/validator";
 	}
 
 }

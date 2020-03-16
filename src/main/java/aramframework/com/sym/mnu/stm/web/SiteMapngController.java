@@ -44,12 +44,12 @@ public class SiteMapngController {
 
 		if (siteMapngVO == null) {
 			model.addAttribute("message", "사이트맵을 생성해 주세요.");
-			return WebUtil.adjustViewName("/sym/mnu/stm/SiteMapng");
+			return WebUtil.adjustViewName("sym/mnu/stm/SiteMapng");
 		}
 
 		model.addAttribute("siteMapngVO", siteMapngVO);
 
-		return WebUtil.adjustViewName("/sym/mnu/stm/SiteMapng");
+		return WebUtil.adjustViewName("sym/mnu/stm/SiteMapng");
 	}
 	
 }

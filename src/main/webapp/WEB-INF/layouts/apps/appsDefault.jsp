@@ -30,12 +30,12 @@
 <c:if test="${fn:length(mainTitle) != 0}"><c:out value="${boardVO.nttSj}" /></c:if>
 </title>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/aramframework/com/cmm/mcm.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/aramframework/com/cmm/com.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/aramframework/com/cmm/button.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/cmm/mcm.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/cmm/com.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/cmm/button.css" type="text/css">
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/aramframework/com/cmm/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/aramframework/com/cmm/utl/CmmUtl.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/cmm/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/cmm/utl/CmmUtl.js"></script>
 
 </head>
 

@@ -75,7 +75,7 @@ public class ConfirmController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/com/ConfirmList");
+		return WebUtil.adjustViewName("cop/com/ConfirmList");
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class ConfirmController {
 
 		cmmUseService.populateCmmCodeList("COM007", "COM007_confmSttus");
 
-		return WebUtil.adjustViewName("/cop/com/ConfirmEdit");
+		return WebUtil.adjustViewName("cop/com/ConfirmEdit");
 	}
 
 	/**

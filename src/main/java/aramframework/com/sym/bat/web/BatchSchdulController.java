@@ -69,7 +69,7 @@ public class BatchSchdulController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/bat/BatchSchdulList");
+		return WebUtil.adjustViewName("sym/bat/BatchSchdulList");
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class BatchSchdulController {
 
 		model.addAttribute(batchSchdulService.selectBatchSchdul(batchSchdulVO));
 
-		return WebUtil.adjustViewName("/sym/bat/BatchSchdulDetail");
+		return WebUtil.adjustViewName("sym/bat/BatchSchdulDetail");
 	}
 
 	/**
@@ -103,7 +103,7 @@ public class BatchSchdulController {
 
 		referenceData(model);
 
-		return WebUtil.adjustViewName("/sym/bat/BatchSchdulRegist");
+		return WebUtil.adjustViewName("sym/bat/BatchSchdulRegist");
 	}
 
 	/**
@@ -123,7 +123,7 @@ public class BatchSchdulController {
 		beanValidator.validate(batchSchdulVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			referenceData(model);
-			return WebUtil.adjustViewName("/sym/bat/BatchSchdulRegist");
+			return WebUtil.adjustViewName("sym/bat/BatchSchdulRegist");
 		} 
 		
 		// 로그인 객체 선언
@@ -156,7 +156,7 @@ public class BatchSchdulController {
 
 		referenceData(model);
 
-		return WebUtil.adjustViewName("/sym/bat/BatchSchdulEdit");
+		return WebUtil.adjustViewName("sym/bat/BatchSchdulEdit");
 	}
 
 	/**
@@ -176,7 +176,7 @@ public class BatchSchdulController {
 		beanValidator.validate(batchSchdulVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			referenceData(model);
-			return WebUtil.adjustViewName("/sym/bat/BatchSchdulEdit");
+			return WebUtil.adjustViewName("sym/bat/BatchSchdulEdit");
 		}
 
 		// 로그인 객체 선언

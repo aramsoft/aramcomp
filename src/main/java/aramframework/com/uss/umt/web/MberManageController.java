@@ -79,7 +79,7 @@ public class MberManageController {
 		// 일반회원 상태코드를 코드정보로부터 조회
 		cmmUseService.populateCmmCodeList("COM013", "COM013_mberSttus");
 
-		return WebUtil.adjustViewName("/uss/umt/MberList");
+		return WebUtil.adjustViewName("uss/umt/MberList");
 	}
 
 	/**
@@ -103,7 +103,7 @@ public class MberManageController {
 		model.addAttribute("stplatVO", mberManageService.selectStplat(stplatId)); // 약관정보 포함
 		model.addAttribute("sbscrbTy", sbscrbTy); // 회원가입유형 포함
 
-		return WebUtil.adjustViewName("/uss/umt/StplatCnfirm");
+		return WebUtil.adjustViewName("uss/umt/StplatCnfirm");
 	}
 
 	/**
@@ -133,7 +133,7 @@ public class MberManageController {
 
 		mberManageVO.setMberSttus("A");
 
-		return WebUtil.adjustViewName("/uss/umt/MberSbscrb");
+		return WebUtil.adjustViewName("uss/umt/MberSbscrb");
 	}
 
 	/**
@@ -164,7 +164,7 @@ public class MberManageController {
 					   + "\n\n로그인 후 사용하시기 바랍니다.";
 		model.addAttribute("message", message);
 		
-		return WebUtil.adjustViewName("/uss/umt/SbscrbSuccess");
+		return WebUtil.adjustViewName("uss/umt/SbscrbSuccess");
 	}
 
 	/**
@@ -181,7 +181,7 @@ public class MberManageController {
 
 		fill_common_code();
 
-		return WebUtil.adjustViewName("/uss/umt/MberRegist");
+		return WebUtil.adjustViewName("uss/umt/MberRegist");
 	}
 
 	/**
@@ -199,7 +199,7 @@ public class MberManageController {
 
 		beanValidator.validate(mberManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/umt/MberRegist");
+			return WebUtil.adjustViewName("uss/umt/MberRegist");
 		} 
 		
 		mberManageService.insertMber(mberManageVO);
@@ -227,7 +227,7 @@ public class MberManageController {
 		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
 			model.addAttribute("isAdmin", "true");
 		}
-		return WebUtil.adjustViewName("/uss/umt/MberEdit");
+		return WebUtil.adjustViewName("uss/umt/MberEdit");
 	}
 
 	/**
@@ -245,7 +245,7 @@ public class MberManageController {
 
 		beanValidator.validate(mberManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/umt/MberEdit");
+			return WebUtil.adjustViewName("uss/umt/MberEdit");
 		} 
 		
 		mberManageService.updateMber(mberManageVO);
@@ -269,7 +269,7 @@ public class MberManageController {
 		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
 			model.addAttribute("isAdmin", "true");
 		}
-		return WebUtil.adjustViewName("/uss/umt/MberPassword");
+		return WebUtil.adjustViewName("uss/umt/MberPassword");
 	}
 
 	/**

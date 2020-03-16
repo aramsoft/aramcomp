@@ -70,7 +70,7 @@ public class QnaManageController {
 			model.addAttribute("certificationAt", "Y");
 		}
 
-		return WebUtil.adjustViewName("/uss/olh/qna/QnaList");
+		return WebUtil.adjustViewName("uss/olh/qna/QnaList");
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class QnaManageController {
 
 		model.addAttribute(qnaManageService.selectQnaListDetail(qnaManageVO));
 
-		return WebUtil.adjustViewName("/uss/olh/qna/QnaDetail");
+		return WebUtil.adjustViewName("uss/olh/qna/QnaDetail");
 	}
 
 	/**
@@ -115,7 +115,7 @@ public class QnaManageController {
 			@ModelAttribute QnaManageVO qnaManageVO, 
 			ModelMap model) {
 		
-		return WebUtil.adjustViewName("/uss/olh/qna/QnaLoginRealnmChoice");
+		return WebUtil.adjustViewName("uss/olh/qna/QnaLoginRealnmChoice");
 	}
 
 	/**
@@ -136,7 +136,7 @@ public class QnaManageController {
 			qnaManageVO.setEmailAdres(loginVO.getEmail()); // email 주소
 		}
 		
-		return WebUtil.adjustViewName("/uss/olh/qna/QnaRegist");
+		return WebUtil.adjustViewName("uss/olh/qna/QnaRegist");
 	}
 
 	/**
@@ -154,7 +154,7 @@ public class QnaManageController {
 
 		beanValidator.validate(qnaManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olh/qna/QnaRegist");
+			return WebUtil.adjustViewName("uss/olh/qna/QnaRegist");
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -186,7 +186,7 @@ public class QnaManageController {
 			@ModelAttribute QnaManageVO qnaManageVO, 
 			ModelMap model) {
 		
-		return WebUtil.adjustViewName("/uss/olh/qna/QnaPasswordPopup");
+		return WebUtil.adjustViewName("uss/olh/qna/QnaPasswordPopup");
 	}
 
 	/**
@@ -244,7 +244,7 @@ public class QnaManageController {
 
 		model.addAttribute(qnaManageVO);
 
-		return WebUtil.adjustViewName("/uss/olh/qna/QnaEdit");
+		return WebUtil.adjustViewName("uss/olh/qna/QnaEdit");
 	}
 
 	/**
@@ -263,7 +263,7 @@ public class QnaManageController {
 		// Validation
 		beanValidator.validate(qnaManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olh/qna/QnaEdit");
+			return WebUtil.adjustViewName("uss/olh/qna/QnaEdit");
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -358,7 +358,7 @@ public class QnaManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/olh/qna/QnaAnswerList");
+		return WebUtil.adjustViewName("uss/olh/qna/QnaAnswerList");
 	}
 
 	/**
@@ -375,7 +375,7 @@ public class QnaManageController {
 
 		model.addAttribute(qnaManageService.selectQnaAnswerDetail(qnaManageVO));
 
-		return WebUtil.adjustViewName("/uss/olh/qna/QnaAnswerDetail");
+		return WebUtil.adjustViewName("uss/olh/qna/QnaAnswerDetail");
 	}
 
 	/**
@@ -394,7 +394,7 @@ public class QnaManageController {
 		// 공통코드를 가져오기 위한 Vo
 		cmmUseService.populateCmmCodeList("COM028", "COM028_qnaProcessSttus");
 
-		return WebUtil.adjustViewName("/uss/olh/qna/QnaAnswerEdit");
+		return WebUtil.adjustViewName("uss/olh/qna/QnaAnswerEdit");
 	}
 
 	/**

@@ -123,8 +123,8 @@ public class TilesInterceptor extends HandlerInterceptorAdapter {
 		BasicTilesContainer container = (BasicTilesContainer) TilesAccess.getContainer(tilesAppContext);
 		AttributeContext attributeContext = container.getAttributeContext(tilesRequest);
 
-		if (tmplatCours.indexOf("/WEB-INF/layouts") != -1) {
-			attributeContext.setTemplateAttribute(new Attribute(tmplatCours));							// jsp file name(/WEB-INF 포함 jsp 파일)
+		if (tmplatCours.indexOf("/WEB-INF/") != -1) {
+			attributeContext.setTemplateAttribute(new Attribute(tmplatCours+".jsp"));					// WEB-INF 포함 jsp 파일
 		} else {
 			attributeContext.setTemplateAttribute(new Attribute("/WEB-INF/jsp/"+tmplatCours+".jsp"));	// spring view name
 		}

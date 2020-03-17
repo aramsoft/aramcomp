@@ -112,9 +112,9 @@ public class TilesInterceptor extends HandlerInterceptorAdapter {
 		// --------------------------------
 		// 커뮤니티 템플릿 정보
 		// --------------------------------
-		String tmplatCours = cmmntyService.selectCmmntyTemplat(communityVO);
+		String tmplatCours = communityVO.getTmplatCours();
     	if ("".equals(tmplatCours) || tmplatCours == null) {
-    		tmplatCours = "/WEB-INF/layouts/apps/appsDefault";
+    		return;
     	}
 
 		ServletContext servletContext = request.getSession().getServletContext();
@@ -124,9 +124,9 @@ public class TilesInterceptor extends HandlerInterceptorAdapter {
 		AttributeContext attributeContext = container.getAttributeContext(tilesRequest);
 
 		if (tmplatCours.indexOf("/WEB-INF/layouts") != -1) {
-			attributeContext.setTemplateAttribute(new Attribute(tmplatCours+".jsp"));
+			attributeContext.setTemplateAttribute(new Attribute(tmplatCours));							// jsp file name(/WEB-INF 포함 jsp 파일)
 		} else {
-			attributeContext.setTemplateAttribute(new Attribute("/WEB-INF/jsp/"+tmplatCours+".jsp"));
+			attributeContext.setTemplateAttribute(new Attribute("/WEB-INF/jsp/"+tmplatCours+".jsp"));	// spring view name
 		}
 		
 	}

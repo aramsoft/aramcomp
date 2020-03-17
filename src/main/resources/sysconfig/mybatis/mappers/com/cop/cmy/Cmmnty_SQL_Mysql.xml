@@ -101,6 +101,7 @@
 				 , a.HOME_URL
 				 , c.TMPLAT_ID
 				 , c.TMPLAT_NM
+				 , c.TMPLAT_COURS
 				 , a.FRST_REGISTER_ID	
 				 , b.USER_NM 				AS "frstRegisterNm"
 				 , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"

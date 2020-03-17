@@ -53,6 +53,9 @@ public class CommunityVO extends BaseVO {
 	/** 템플릿 이름 */
 	private String tmplatNm = "";
 
+	/** 템플릿 경로 */
+	private String tmplatCours = "";
+
 	/** 제공 URL */
 	private String provdUrl = "";
 
@@ -165,6 +168,14 @@ public class CommunityVO extends BaseVO {
 	}
 	public void setTmplatNm(String tmplatNm) {
 		this.tmplatNm = tmplatNm;
+	}
+
+	/** tmplatCours  */
+	public String getTmplatCours() {
+		return tmplatCours;
+	}
+	public void setTmplatCours(String tmplatCours) {
+		this.tmplatCours = tmplatCours;
 	}
 
 	/** provdUrl 	 */ 

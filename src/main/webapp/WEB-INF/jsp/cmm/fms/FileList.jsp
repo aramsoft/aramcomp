@@ -42,7 +42,7 @@
 						width="19" height="18" onClick="fn_aram_deleteFile('<c:out value="${fileVO.atchFileId}"/>','<c:out value="${fileVO.fileSn}"/>');" alt="파일삭제">
 			</c:when>
 			<c:otherwise>
-				<a href="${pageContext.request.contextPath}/content/files/${fileVO.pathId}/file/${fileVO.fileSn}" target="new">
+				<a href="${pageContext.request.contextPath}/files/${fileVO.pathId}/id/${fileVO.fileSn}" target="new">
 					<c:out value="${fileVO.orignlFileNm}"/>&nbsp;[<c:out value="${fileVO.fileSize}"/>&nbsp;byte]
 				</a>
 			</c:otherwise>

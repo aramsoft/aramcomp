@@ -84,7 +84,7 @@
 		<td>
 			<!-- 첨부파일 삭제 후 리턴 URL -->
 			<input type="hidden" name="returnUrl" value="${pageContext.request.contextPath}/uss/olh/faq/editFaq.do"/>
-			<c:import url="/content/files/${faqManageVO.atchFileId}/editform" />
+			<c:import url="/files/${faqManageVO.atchFileId}/edit" />
 		</td>
 	</tr>
 	</c:when>

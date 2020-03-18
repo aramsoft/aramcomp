@@ -143,7 +143,7 @@
 			파일첨부
 		</th>
 		<td>
-			<c:import url="/content/files/${schdulManageVO.atchFileId}" />
+			<c:import url="/files/${schdulManageVO.atchFileId}" />
 		</td>
 	</tr>
 	<!-- 첨부파일 테이블 레이아웃 End.-->

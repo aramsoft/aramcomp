@@ -60,22 +60,10 @@
     <servlet-mapping>
         <servlet-name>action</servlet-name>
         <url-pattern>*.do</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>action</servlet-name>
         <url-pattern>*.mdo</url-pattern>
-    </servlet-mapping>
- 	<servlet-mapping> 
- 		<servlet-name>action</servlet-name> 
- 		<url-pattern>/content/*</url-pattern> 
- 	</servlet-mapping> 
- 	<servlet-mapping> 
- 		<servlet-name>action</servlet-name> 
+ 		<url-pattern>/files/*</url-pattern> 
+		<url-pattern>/board/*</url-pattern> 
  		<url-pattern>/apps/*</url-pattern> 
- 	</servlet-mapping> 
- 	<servlet-mapping> 
- 		<servlet-name>action</servlet-name> 
- 		<url-pattern>/home/*</url-pattern> 
  	</servlet-mapping> 
  	
     <welcome-file-list>

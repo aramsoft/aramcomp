@@ -96,7 +96,7 @@
  	    	<spring:message code="sym.log.atchFileList" scope="row" />
 	    </th>
 	    <td>
-			<c:import url="/content/files/${sysHistoryVO.atchFileId}" />
+			<c:import url="/files/${sysHistoryVO.atchFileId}" />
 	    </td>
 	</tr>
   	</c:if>

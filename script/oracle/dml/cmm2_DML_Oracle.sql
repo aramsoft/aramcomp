@@ -1457,15 +1457,15 @@ VALUES ('AuthorManage', '/sec/arm/', '권한관리', '권한관리', '/sec/arm/l
 INSERT INTO COMTN_PROGRM_LIST ( PROGRM_FILE_NM, PROGRM_STRE_PATH, PROGRM_KOREAN_NM, PROGRM_DC, URL, CMMNTY_USE_AT ) 
 VALUES ('BbsStats', '/sts/bst/', '게시물통계', '게시물 통계', '/sts/bst/selectBbsStats.do', NULL); 
 INSERT INTO COMTN_PROGRM_LIST ( PROGRM_FILE_NM, PROGRM_STRE_PATH, PROGRM_KOREAN_NM, PROGRM_DC, URL, CMMNTY_USE_AT ) 
-VALUES ('BoardExampleAnonymous', '/cop/bbs/', '익명게시판예시', '익명게시판 예시 게시판입니다.', '/content/board/5/articles', NULL); 
+VALUES ('BoardExampleAnonymous', '/cop/bbs/', '익명게시판예시', '익명게시판 예시 게시판입니다.', '/board/5/list', NULL); 
 INSERT INTO COMTN_PROGRM_LIST ( PROGRM_FILE_NM, PROGRM_STRE_PATH, PROGRM_KOREAN_NM, PROGRM_DC, URL, CMMNTY_USE_AT ) 
-VALUES ('BoardExampleData', '/cop/bbs/', '자료실예시', '자료시 예시 게시판입니다.', '/content/board/6/articles', NULL); 
+VALUES ('BoardExampleData', '/cop/bbs/', '자료실예시', '자료시 예시 게시판입니다.', '/board/6/list', NULL); 
 INSERT INTO COMTN_PROGRM_LIST ( PROGRM_FILE_NM, PROGRM_STRE_PATH, PROGRM_KOREAN_NM, PROGRM_DC, URL, CMMNTY_USE_AT ) 
-VALUES ('BoardExampleGuest', '/cop/bbs/', '방명록예시', '방명록 예시 게시판입니다.', '/content/board/2/articles', NULL); 
+VALUES ('BoardExampleGuest', '/cop/bbs/', '방명록예시', '방명록 예시 게시판입니다.', '/board/2/list', NULL); 
 INSERT INTO COMTN_PROGRM_LIST ( PROGRM_FILE_NM, PROGRM_STRE_PATH, PROGRM_KOREAN_NM, PROGRM_DC, URL, CMMNTY_USE_AT ) 
-VALUES ('BoardExamplePicture', '/cop/bbs/', '사진첩예시', '사진첩에 대한 예시 게시판입니다.', '/content/board/4/articles', NULL); 
+VALUES ('BoardExamplePicture', '/cop/bbs/', '사진첩예시', '사진첩에 대한 예시 게시판입니다.', '/board/4/list', NULL); 
 INSERT INTO COMTN_PROGRM_LIST ( PROGRM_FILE_NM, PROGRM_STRE_PATH, PROGRM_KOREAN_NM, PROGRM_DC, URL, CMMNTY_USE_AT ) 
-VALUES ('BoardExampleValidity', '/cop/bbs/', '유효게시판예시', '유효게시판 예시 게시판입니다.', '/content/board/3/articles', NULL); 
+VALUES ('BoardExampleValidity', '/cop/bbs/', '유효게시판예시', '유효게시판 예시 게시판입니다.', '/board/3/list', NULL); 
 INSERT INTO COMTN_PROGRM_LIST ( PROGRM_FILE_NM, PROGRM_STRE_PATH, PROGRM_KOREAN_NM, PROGRM_DC, URL, CMMNTY_USE_AT ) 
 VALUES ('BoardMstrManage', '/cop/bbs/', '게시판관리', '게시판관리', '/cop/bbs/listBoardMaster.do', 'N'); 
 INSERT INTO COMTN_PROGRM_LIST ( PROGRM_FILE_NM, PROGRM_STRE_PATH, PROGRM_KOREAN_NM, PROGRM_DC, URL, CMMNTY_USE_AT ) 
@@ -1789,17 +1789,17 @@ VALUES ('CMMNTY_0000000000001', 'USRCNFRM_00000000000', 'N',  SYSDATE, NULL, 'Y'
 INSERT INTO COMTN_CMMNTY_MENU ( TRGET_ID, MENU_NO, MENU_NM, PROGRM_FILE_NM, MENU_DC, USE_AT, MGR_AT, DIRECT_URL, TOPMENU_AT, MENU_ALIAS ) 
 VALUES ('CMMNTY_0000000000001', 100000, '게시판', NULL, NULL, 'Y', 'N', '/cop/cmy/CmmntyMainContents.do', 'Y', '100000'); 
 INSERT INTO COMTN_CMMNTY_MENU ( TRGET_ID, MENU_NO, MENU_NM, PROGRM_FILE_NM, MENU_DC, USE_AT, MGR_AT, DIRECT_URL, TOPMENU_AT, MENU_ALIAS ) 
-VALUES ('CMMNTY_0000000000001', 100010, '공지게시판', NULL, '공지게시판', 'Y', 'N', '/content/board/102/articles', 'N', 'notice'); 
+VALUES ('CMMNTY_0000000000001', 100010, '공지게시판', NULL, '공지게시판', 'Y', 'N', '/board/102/list', 'N', 'notice'); 
 INSERT INTO COMTN_CMMNTY_MENU ( TRGET_ID, MENU_NO, MENU_NM, PROGRM_FILE_NM, MENU_DC, USE_AT, MGR_AT, DIRECT_URL, TOPMENU_AT, MENU_ALIAS ) 
-VALUES ('CMMNTY_0000000000001', 100020, '갤러리', NULL, '갤러리 게시판', 'Y', 'N', '/content/board/103/articles', 'N', 'gallery'); 
+VALUES ('CMMNTY_0000000000001', 100020, '갤러리', NULL, '갤러리 게시판', 'Y', 'N', '/board/103/list', 'N', 'gallery'); 
 INSERT INTO COMTN_CMMNTY_MENU ( TRGET_ID, MENU_NO, MENU_NM, PROGRM_FILE_NM, MENU_DC, USE_AT, MGR_AT, DIRECT_URL, TOPMENU_AT, MENU_ALIAS ) 
-VALUES ('CMMNTY_0000000000001', 100030, '자유게시판', NULL, '자유게시판', 'Y', 'N', '/content/board/104/articles', 'N', 'freeboard'); 
+VALUES ('CMMNTY_0000000000001', 100030, '자유게시판', NULL, '자유게시판', 'Y', 'N', '/board/104/list', 'N', 'freeboard'); 
 INSERT INTO COMTN_CMMNTY_MENU ( TRGET_ID, MENU_NO, MENU_NM, PROGRM_FILE_NM, MENU_DC, USE_AT, MGR_AT, DIRECT_URL, TOPMENU_AT, MENU_ALIAS ) 
-VALUES ('CMMNTY_0000000000001', 100040, '자료실', NULL, '자료실 게시판', 'Y', 'N', '/content/board/105/articles', 'N', 'dataroom'); 
+VALUES ('CMMNTY_0000000000001', 100040, '자료실', NULL, '자료실 게시판', 'Y', 'N', '/board/105/list', 'N', 'dataroom'); 
 INSERT INTO COMTN_CMMNTY_MENU ( TRGET_ID, MENU_NO, MENU_NM, PROGRM_FILE_NM, MENU_DC, USE_AT, MGR_AT, DIRECT_URL, TOPMENU_AT, MENU_ALIAS ) 
-VALUES ('CMMNTY_0000000000001', 100050, '익명게시판', NULL, '익명 게시판', 'Y', 'N', '/content/board/106/articles', 'N', 'anonymous'); 
+VALUES ('CMMNTY_0000000000001', 100050, '익명게시판', NULL, '익명 게시판', 'Y', 'N', '/board/106/list', 'N', 'anonymous'); 
 INSERT INTO COMTN_CMMNTY_MENU ( TRGET_ID, MENU_NO, MENU_NM, PROGRM_FILE_NM, MENU_DC, USE_AT, MGR_AT, DIRECT_URL, TOPMENU_AT, MENU_ALIAS ) 
-VALUES ('CMMNTY_0000000000001', 100060, '버그게시판(익명)', NULL, '버그 및 이슈 게시판', 'Y', 'N', '/content/board/51/articles', 'N', 'bugissue'); 
+VALUES ('CMMNTY_0000000000001', 100060, '버그게시판(익명)', NULL, '버그 및 이슈 게시판', 'Y', 'N', '/board/51/list', 'N', 'bugissue'); 
 
 INSERT INTO COMTN_CMMNTY_MENU ( TRGET_ID, MENU_NO, MENU_NM, PROGRM_FILE_NM, MENU_DC, USE_AT, MGR_AT, DIRECT_URL, TOPMENU_AT, MENU_ALIAS ) 
 VALUES ('CMMNTY_0000000000001', 300000, 'FAQ', 'FaqManage', NULL, 'Y', 'N', NULL, 'Y', '300000'); 

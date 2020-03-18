@@ -149,7 +149,7 @@ public class BBSBoardController {
 	 * @param bbsPathId
 	 * @param boardVO
 	 */
-	@RequestMapping(value="/content/board/{bbsPathId}/articles")
+	@RequestMapping(value="/board/{bbsPathId}/list")
 	public String listlBoardArticle(
 			@ModelAttribute BoardVO boardVO, 
 			@PathVariable String bbsPathId, 
@@ -205,7 +205,7 @@ public class BBSBoardController {
 	 * @param nttId
 	 * @param boardVO
 	 */
-	@RequestMapping(value="/content/board/{bbsPathId}/article/{nttId}")
+	@RequestMapping(value="/board/{bbsPathId}/id/{nttId}")
 	public String detailBoardArticle(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
@@ -285,7 +285,7 @@ public class BBSBoardController {
 	 * @param nttId
 	 * @param boardVO
 	 */
-	@RequestMapping(value="/content/board/{bbsPathId}/view/{nttId}", method=RequestMethod.GET)
+	@RequestMapping(value="/board/{bbsPathId}/view/{nttId}", method=RequestMethod.GET)
 	public String viewlBoardArticle(
 			@ModelAttribute BoardVO boardVO, 
 			@PathVariable String bbsPathId, 
@@ -324,9 +324,9 @@ public class BBSBoardController {
 				&& trgetId != "" 
 				&& trgetId.indexOf("CMMNTY_") != -1) {
 			String cmmntyId = WebUtil.getPathId(trgetId);
-			directUrl = contextUrl + "/content/apps/"+cmmntyId+"/board/"+boardVO.getPathId()+"/article/"+boardVO.getNttId();
+			directUrl = contextUrl + "/apps/id/"+cmmntyId+"/board/"+boardVO.getPathId()+"/id/"+boardVO.getNttId();
 		} else {
-			directUrl = contextUrl + "/content/board/"+boardVO.getPathId()+"/article/"+ boardVO.getNttId();
+			directUrl = contextUrl + "/board/"+boardVO.getPathId()+"/id/"+ boardVO.getNttId();
 		}
 		model.addAttribute("directUrl", directUrl);
 	}
@@ -423,7 +423,7 @@ public class BBSBoardController {
 		boardService.insertBoardArticle(boardVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, boardVO, "/content/board/"+boardVO.getPathId()+ "/articles");
+		return WebUtil.redirectJsp(model, boardVO, "/board/"+boardVO.getPathId()+ "/list");
 	}
 
 	/**
@@ -523,7 +523,7 @@ public class BBSBoardController {
 		boardService.insertBoardArticle(boardVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, boardVO,"/content/board/"+boardVO.getPathId()+ "/articles");
+		return WebUtil.redirectJsp(model, boardVO,"/board/"+boardVO.getPathId()+ "/list");
 	}
 
 	/**
@@ -631,7 +631,7 @@ public class BBSBoardController {
 		boardService.updateBoardArticle(boardVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model,  boardVO, "/content/board/"+boardVO.getPathId()+ "/articles");
+		return WebUtil.redirectJsp(model,  boardVO, "/board/"+boardVO.getPathId()+ "/list");
 	}
 
 	/**
@@ -680,7 +680,7 @@ public class BBSBoardController {
 		boardService.deleteBoardArticle(boardVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, boardVO, "/content/board/"+boardVO.getPathId()+ "/articles");
+		return WebUtil.redirectJsp(model, boardVO, "/board/"+boardVO.getPathId()+ "/list");
 	}
 
 	/**
@@ -699,7 +699,7 @@ public class BBSBoardController {
 		boardService.eraseBoardArticle(boardVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, boardVO, "/content/board/"+boardVO.getPathId()+ "/articles");
+		return WebUtil.redirectJsp(model, boardVO, "/board/"+boardVO.getPathId()+ "/list");
 	}
 
 	/**

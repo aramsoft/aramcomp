@@ -109,14 +109,14 @@
 	<c:if test="${boardVO.boardMasterVO.bbsAttrbCode == 'BBSA02'}">
 	<tr>
 		<td colspan="6">
-			<c:import url="/content/imagefiles/${boardVO.atchFileId}" />
+			<c:import url="/files/image/${boardVO.atchFileId}" />
 		</td>
 	</tr>
 	</c:if>
 	<tr>
 	    <th>첨부파일 목록</th>
 	    <td colspan="5">
-			<c:import url="/content/files/${boardVO.atchFileId}" />
+			<c:import url="/files/${boardVO.atchFileId}" />
 	    </td>
 	</tr>
 	</c:if>
@@ -143,11 +143,11 @@
 
 <!-- 2009.06.29 : 2단계 기능 추가  -->
 <c:if test="${useComment == 'true'}">
-<iframe id="commentFrame" onload="javascript:changeFrameSize(); return false;" src="/content/board/${boardVO.bbsId}/article/${boardVO.nttId}/comments?anonymous=${anonymous}" seamless="seamless" width="100%" height="0" title="컨텐츠영역"></iframe>
+<iframe id="commentFrame" onload="javascript:changeFrameSize(); return false;" src="/board/${boardVO.bbsId}/id/${boardVO.nttId}/comments?anonymous=${anonymous}" seamless="seamless" width="100%" height="0" title="컨텐츠영역"></iframe>
 </c:if>
 
 <c:if test="${useSatisfaction == 'true'}">
-<iframe id="commentFrame" onload="javascript:changeFrameSize(); return false;" src="/content/board/${boardVO.bbsId}/article/${boardVO.nttId}/satisfactions?anonymous=${anonymous}" seamless="seamless" width="100%" height="0" title="컨텐츠영역"></iframe>
+<iframe id="commentFrame" onload="javascript:changeFrameSize(); return false;" src="/board/${boardVO.bbsId}/id/${boardVO.nttId}/satisfactions?anonymous=${anonymous}" seamless="seamless" width="100%" height="0" title="컨텐츠영역"></iframe>
 </c:if>
 <!-- 2009.06.29 : 2단계 기능 추가  -->
 
@@ -185,7 +185,7 @@ function fn_aram_scrap_sns(sns) {
 
 function fn_aram_list() {
     var varForm = document.getElementById("boardVO");
-	varForm.action = "${pageContext.request.contextPath}/content/board/"+ fn_aram_get_idString(varForm.bbsId.value)+"/articles";
+	varForm.action = "${pageContext.request.contextPath}/board/"+ fn_aram_get_idString(varForm.bbsId.value)+"/list";
     varForm.submit();
 }
 

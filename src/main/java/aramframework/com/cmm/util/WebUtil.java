@@ -48,7 +48,6 @@ public class WebUtil {
 		try {
 			return String.format(format, Integer.parseInt(source));
 		} catch(Exception ex) {
-			LOG.error("fail to id conversion!!, format = " + format + ", source = " + source);
 			return source;
 		}
 	}	

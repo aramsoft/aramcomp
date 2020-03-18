@@ -97,7 +97,7 @@
 	    	첨부파일
 	    </th>
 	    <td>
-			<c:import url="/content/files/${sndngMailVO.atchFileId}" />
+			<c:import url="/files/${sndngMailVO.atchFileId}" />
 	    </td>
 	</tr>
 	</c:if>

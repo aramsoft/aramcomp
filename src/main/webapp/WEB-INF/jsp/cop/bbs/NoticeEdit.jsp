@@ -141,7 +141,7 @@
 		</th>
 		<td>
 			<input type="hidden" name="returnUrl" value="${pageContext.request.contextPath}/cop/bbs/editBoardArticle.do"/>
-			<c:import url="/content/files/${boardVO.atchFileId}/editform" />
+			<c:import url="/files/${boardVO.atchFileId}/edit" />
 		</td>
 	</tr>
 	</c:when>
@@ -224,7 +224,7 @@ window.onload = function() {
 
 function fn_aram_list() {
     var varForm = document.getElementById("boardVO");
-	varForm.action = "${pageContext.request.contextPath}/content/board/" + fn_aram_get_idString(varForm.bbsId.value) + "/articles";
+	varForm.action = "${pageContext.request.contextPath}/board/" + fn_aram_get_idString(varForm.bbsId.value) + "/list";
     varForm.submit();
 }
 

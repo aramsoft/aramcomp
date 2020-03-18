@@ -87,7 +87,7 @@
  			첨부파일 목록
 		</th>
 		<td>
-			<c:import url="/content/files/${faqManageVO.atchFileId}" />
+			<c:import url="/files/${faqManageVO.atchFileId}" />
 		</td>
 	</tr>
   	</c:if>	   

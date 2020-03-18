@@ -50,7 +50,7 @@
 	<div id="logo">
 		<a href="#" onclick="javascript:fn_aram_goCmmntyHome(); return false;">
     	<c:if test="${targetVO.cmmntyLogoImage ne null}">
-   			<img src="${pageContext.request.contextPath}/content/apps/${targetVO.pathId}/logo" alt="커뮤니티로고이미지">
+   			<img src="${pageContext.request.contextPath}/apps/id/${targetVO.pathId}/logo" alt="커뮤니티로고이미지">
    		</c:if>
      	<c:if test="${targetVO.cmmntyLogoImage eq null}">
    			<b>Home</b>

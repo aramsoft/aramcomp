@@ -246,7 +246,7 @@ function fn_aram_linkPage(pageNo) {
     var varForm = document.getElementById("satisfactionVO");
 	varForm.pageIndex.value = pageNo;
 	varForm.stsfdgNo.value = '';
-	varForm.action = "${pageContext.request.contextPath}/content/board/${satisfactionVO.bbsId}/article/${satisfactionVO.nttId}/satisfactions";
+	varForm.action = "${pageContext.request.contextPath}/board/${satisfactionVO.bbsId}/id/${satisfactionVO.nttId}/satisfactions";
 	varForm.submit();
 }
 
@@ -254,7 +254,7 @@ function fn_aram_reset_satisfaction() {
     var varForm = document.getElementById("satisfactionVO");
 	varForm.pageIndex.value = 1;
 	varForm.stsfdgNo.value = '';
-	varForm.action = "${pageContext.request.contextPath}/content/board/${satisfactionVO.bbsId}/article/${satisfactionVO.nttId}/satisfactions";
+	varForm.action = "${pageContext.request.contextPath}/board/${satisfactionVO.bbsId}/id/${satisfactionVO.nttId}/satisfactions";
 	varForm.submit();
 }
 
@@ -292,7 +292,7 @@ function fn_aram_edit_satisfaction(satisfactionNo, index) {
 </c:if>
 	varForm.modified.value = "false";
 	varForm.stsfdgNo.value = satisfactionNo;
-	varForm.action = "${pageContext.request.contextPath}/content/board/${satisfactionVO.bbsId}/article/${satisfactionVO.nttId}/satisfactions";
+	varForm.action = "${pageContext.request.contextPath}/board/${satisfactionVO.bbsId}/id/${satisfactionVO.nttId}/satisfactions";
 	varForm.submit();
 }
 

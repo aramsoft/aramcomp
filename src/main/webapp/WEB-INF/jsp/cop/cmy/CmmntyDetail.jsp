@@ -125,16 +125,6 @@
 	    	제공 URL
 	    </th>
 	    <td colspan="3">
-			<a href="<c:out value="${communityVO.provdUrl}" />" target="_new">
-	    	   	<c:out value="${communityVO.provdUrl}" />
-			</a>
-	    </td>
-	</tr>
-	<tr>
-	    <th>
-	    	제공 URL2
-	    </th>
-	    <td colspan="3">
 			<a href="<c:out value="${communityVO.provdUrl2}" />" target="_new">
 	    	   	<c:out value="${communityVO.provdUrl2}" />
 			</a>
@@ -146,7 +136,7 @@
     	</th>
     	<td colspan="3">
      		<c:if test="${communityVO.cmmntyLogoImage ne null}">
-    		<img src="${pageContext.request.contextPath}/content/apps/${communityVO.pathId}/logo" alt="커뮤니티로고이미지" title="커뮤니티로고이미지">
+    		<img src="${pageContext.request.contextPath}/apps/id/${communityVO.pathId}/logo" alt="커뮤니티로고이미지" title="커뮤니티로고이미지">
     		</c:if>
     	</td>
   	</tr>

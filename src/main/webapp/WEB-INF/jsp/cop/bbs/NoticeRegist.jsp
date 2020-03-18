@@ -196,7 +196,7 @@ window.onload = function() {
 
 function fn_aram_list() {
     var varForm = document.getElementById("boardVO");
-	varForm.action = "${pageContext.request.contextPath}/content/board/" + fn_aram_get_idString(varForm.bbsId.value) + "/articles";
+	varForm.action = "${pageContext.request.contextPath}/board/" + fn_aram_get_idString(varForm.bbsId.value) + "/list";
 	varForm.submit();
 }
 

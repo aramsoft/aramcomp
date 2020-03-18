@@ -53,35 +53,35 @@
     </tr>
     <tr> 
       <td valign="top">&nbsp;-&nbsp;
-      	<a href="${pageContext.request.contextPath}/content/board/1/articles">
+      	<a href="${pageContext.request.contextPath}/board/1/list">
       		공지사항 
       	</a>
       </td>
     </tr>
     <tr> 
       <td valign="top">&nbsp;-&nbsp;
-      	<a href="${pageContext.request.contextPath}/content/board/11/articles">
+      	<a href="${pageContext.request.contextPath}/board/11/list">
       		일반게시판 
       	</a>
       </td>
     </tr>
     <tr> 
       <td valign="top">&nbsp;-&nbsp;
-      	<a href="${pageContext.request.contextPath}/content/board/21/articles">
+      	<a href="${pageContext.request.contextPath}/board/21/list">
       		유효게시판 
       	</a>
       </td>
     </tr>
     <tr> 
       <td valign="top">&nbsp;-&nbsp;
-      	<a href="${pageContext.request.contextPath}/content/board/31/articles">
+      	<a href="${pageContext.request.contextPath}/board/31/list">
       		익명게시판 
       	</a>
       </td>
     </tr>
     <tr> 
       <td valign="top">&nbsp;-&nbsp;
-      	<a href="${pageContext.request.contextPath}/content/board/41/articles">
+      	<a href="${pageContext.request.contextPath}/board/41/list">
       		프로그램팁 
       	</a>
       </td>
@@ -89,7 +89,7 @@
 <!-- 
     <tr> 
       <td valign="top">&nbsp;-&nbsp;
-      	<a href="${pageContext.request.contextPath}/content/board/51/articles">
+      	<a href="${pageContext.request.contextPath}/board/51/list">
       		버그리포트
       	</a>
       </td>

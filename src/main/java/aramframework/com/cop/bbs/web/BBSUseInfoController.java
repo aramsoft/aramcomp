@@ -136,7 +136,7 @@ public class BBSUseInfoController {
 			HttpServletRequest request,
 			ModelMap model) {
 		
-		boardUseInfVO.setProvdUrl2(request.getContextPath() + "/content/board/" + boardUseInfVO.getPathId() + "/articles");
+		boardUseInfVO.setProvdUrl2(request.getContextPath() + "/board/" + boardUseInfVO.getPathId() + "/list");
 			
 		model.addAttribute(boardUseInfVO);
 					

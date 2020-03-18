@@ -38,7 +38,7 @@ public class FileMngController {
 	 * @return			String
 	 * @throws 			Exception
 	 */
-	@RequestMapping("/content/files/{fileId}")
+	@RequestMapping("/files/{fileId}")
 	public String selectFileList(
 			@PathVariable String fileId, 
 			@ModelAttribute FileVO fileVO, 
@@ -64,7 +64,7 @@ public class FileMngController {
 	 * @return			String
 	 * @throws 			Exception
 	 */
-	@RequestMapping("/content/files/{fileId}/editform")
+	@RequestMapping("/files/{fileId}/edit")
 	public String editFileInfs(
 			@PathVariable String fileId, 
 			@ModelAttribute FileVO fileVO, 
@@ -90,7 +90,7 @@ public class FileMngController {
 	 * @return			String
 	 * @throws 			Exception
 	 */
-	@RequestMapping("/content/imagefiles/{fileId}")
+	@RequestMapping("/files/image/{fileId}")
 	public String selectImageFileList(
 			@PathVariable String fileId, 
 			@ModelAttribute FileVO fileVO, 
@@ -127,7 +127,7 @@ public class FileMngController {
 		// --------------------------------------------
 		// contextRoot가 있는 경우 제외 시켜야 함
 		// --------------------------------------------
-		// return "forward:/content/files/"+fileVO.getFileId();
+		// return "forward:/files/"+fileVO.getFileId();
 		// return "forward:" + returnUrl;
 
 		if ("".equals(request.getContextPath()) || "/".equals(request.getContextPath())) {

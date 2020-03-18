@@ -27,7 +27,7 @@
 	</tr>
 	<tr>
 	   	<td>
-	   		<img src='${pageContext.request.contextPath}/content/imagefiles/${fileVO.pathId}/file/${fileVO.fileSn}?width=550'  width="550" alt="해당파일이미지"/>
+	   		<img src='${pageContext.request.contextPath}/files/image/${fileVO.pathId}/id/${fileVO.fileSn}?width=550'  width="550" alt="해당파일이미지"/>
 	   	</td>
 	</tr>
 	<tr>

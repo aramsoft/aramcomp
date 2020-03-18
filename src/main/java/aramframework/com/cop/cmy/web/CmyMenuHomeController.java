@@ -59,11 +59,11 @@ public class CmyMenuHomeController  {
 	 * 
 	 * @param appId
 	 */
-	@RequestMapping(value="/apps/{appId}", method=RequestMethod.GET)
-	public String directCmmntyHomePage(
-			@PathVariable String appId) {
+	@RequestMapping(value="/apps/{appAlias}", method=RequestMethod.GET)
+	public String directCmmntyHomePage(@PathVariable String appAlias) {
 
-		String cmmntyId = cmmntyService.selectCommntyHomeUrl("/apps/"+appId);
+//		String cmmntyId = WebUtil.getOriginalId(appId, "CMMNTY_");
+		String cmmntyId = cmmntyService.selectCommntyHomeUrl("/apps/"+appAlias);
 		if( cmmntyId == null ) {
 			throw new RuntimeException("cmmntyId is not found !!!");
 		}
@@ -77,15 +77,13 @@ public class CmyMenuHomeController  {
 	 * @param appId
 	 * @param menuAlias
 	 */
-	@RequestMapping(value="/apps/{appId}/{menuAlias}", method=RequestMethod.GET)
+	@RequestMapping(value="/apps/{appAlias}/{menuAlias}", method=RequestMethod.GET)
 	public String directCmmntyHomeMenuPage(
-			@PathVariable String appId,			
-			@PathVariable String menuAlias,
-			HttpServletRequest request) { 
+			@PathVariable String appAlias,			
+			@PathVariable String menuAlias) { 
 
-		LOG.debug("request URI = " + request.getRequestURI());
-		
-		String cmmntyId = cmmntyService.selectCommntyHomeUrl("/apps/"+appId);
+//		String cmmntyId = WebUtil.getOriginalId(appId, "CMMNTY_");
+		String cmmntyId = cmmntyService.selectCommntyHomeUrl("/apps/"+appAlias);
 		if( cmmntyId == null ) {
 			throw new RuntimeException("cmmntyId is not found !!!");
 		}
@@ -103,9 +101,8 @@ public class CmyMenuHomeController  {
 	 * 
 	 * @param cmmntyId
 	 */
-	@RequestMapping(value="/content/apps/{cmmntyId}", method=RequestMethod.GET)
-	public String directCmmntyMainPage(
-			@PathVariable String cmmntyId) {
+	@RequestMapping(value="/apps/id/{cmmntyId}", method=RequestMethod.GET)
+	public String directCmmntyMainPage(@PathVariable String cmmntyId) {
 
 		cmmntyId = WebUtil.getOriginalId(cmmntyId, "CMMNTY_");
 
@@ -118,14 +115,14 @@ public class CmyMenuHomeController  {
 	 * @param bbsId
 	 * @param cmmntyId
 	 */
-	@RequestMapping(value="/content/apps/{cmmntyId}/board/{bbsId}/articles")
+	@RequestMapping(value="/apps/id/{cmmntyId}/board/{bbsId}/list")
 	public String directCmmntyBoard(
-			@PathVariable String bbsId, 
-			@PathVariable String cmmntyId) {
+			@PathVariable String cmmntyId,
+			@PathVariable String bbsId) {
 
 		cmmntyId = WebUtil.getOriginalId(cmmntyId, "CMMNTY_");
 
-		String contentUrl = "/content/board/"+bbsId+"/articles";
+		String contentUrl = "/board/"+bbsId+"/list";
 
 		return cmmntyMainPageHandler(cmmntyId, "", contentUrl);
 	}
@@ -137,7 +134,7 @@ public class CmyMenuHomeController  {
 	 * @param bbsId
 	 * @param nttId
 	 */
-	@RequestMapping(value="/content/apps/{cmmntyId}/board/{bbsId}/article/{nttId}")
+	@RequestMapping(value="/apps/id/{cmmntyId}/board/{bbsId}/id/{nttId}")
 	public String directCmmntyBbsPage(
 			@PathVariable String cmmntyId,			
 			@PathVariable String bbsId, 
@@ -145,7 +142,7 @@ public class CmyMenuHomeController  {
 
 		cmmntyId = WebUtil.getOriginalId(cmmntyId, "CMMNTY_");
 
-		String contentUrl = "/content/board/"+bbsId+"/article/"+nttId;
+		String contentUrl = "/board/"+bbsId+"/id/"+nttId;
 
 		return cmmntyMainPageHandler(cmmntyId, "", contentUrl);
 	}
@@ -156,7 +153,7 @@ public class CmyMenuHomeController  {
 	 * @param cmmntyId
 	 * @param menuId
 	 */
-	@RequestMapping(value="/content/apps/{cmmntyId}/menu/{menuId}")
+	@RequestMapping(value="/apps/id/{cmmntyId}/menu/{menuId}")
 	public String directCmmntyMainPage(
 			HttpServletRequest request, 
 			@PathVariable String cmmntyId,			
@@ -204,7 +201,7 @@ public class CmyMenuHomeController  {
 	 * 
 	 * @param cmmntyId
 	 */
-	@RequestMapping(value="/content/apps/{cmmntyId}/logo", method=RequestMethod.GET)
+	@RequestMapping(value="/apps/id/{cmmntyId}/logo", method=RequestMethod.GET)
 	public void directCmmntyLogo(
 			@PathVariable String cmmntyId,			
 			HttpServletResponse response) 

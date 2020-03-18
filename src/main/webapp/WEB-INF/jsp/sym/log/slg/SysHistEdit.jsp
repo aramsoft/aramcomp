@@ -110,7 +110,7 @@
     	</th>
     	<td>
 			<input type="hidden" name="returnUrl" value="${pageContext.request.contextPath}/sym/log/slg/editSysHistory.do"/>
-			<c:import url="/content/files/${sysHistoryVO.atchFileId}/editform" />
+			<c:import url="/files/${sysHistoryVO.atchFileId}/edit" />
     	</td>
   	</tr>
 	</c:when>

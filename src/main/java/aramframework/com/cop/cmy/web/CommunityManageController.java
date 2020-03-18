@@ -153,8 +153,8 @@ public class CommunityManageController {
 		// -----------------------
 		// 제공 URL
 		// -----------------------
-		communityVO.setProvdUrl(request.getContextPath() + "/content/apps/" + communityVO.getCmmntyId());
-		communityVO.setProvdUrl2(request.getContextPath() + "/content/apps/" + communityVO.getPathId());
+//		communityVO.setProvdUrl(request.getContextPath() + "/apps/id/" + communityVO.getCmmntyId());
+		communityVO.setProvdUrl2(request.getContextPath() + "/apps/id/" + communityVO.getPathId());
   
 		model.addAttribute("bbsList", cmmntyService.selectCommunityBBSUseInf(communityVO));
 

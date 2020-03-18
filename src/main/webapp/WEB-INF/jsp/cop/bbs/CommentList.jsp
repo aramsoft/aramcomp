@@ -195,7 +195,7 @@ function fn_aram_linkPage(pageNo) {
     var varForm = document.getElementById("commentVO");
 	varForm.pageIndex.value = pageNo;
 	varForm.commentNo.value = '';
-	varForm.action = "${pageContext.request.contextPath}/content/board/${commentVO.bbsId}/article/${commentVO.nttId}/comments";
+	varForm.action = "${pageContext.request.contextPath}/board/${commentVO.bbsId}/id/${commentVO.nttId}/comments";
 	varForm.submit();
 }
 
@@ -203,7 +203,7 @@ function fn_aram_reset_comment() {
     var varForm = document.getElementById("commentVO");
 	varForm.pageIndex.value = 1;
 	varForm.commentNo.value = '';
-	varForm.action = "${pageContext.request.contextPath}/content/board/${commentVO.bbsId}/article/${commentVO.nttId}/comments";
+	varForm.action = "${pageContext.request.contextPath}/board/${commentVO.bbsId}/id/${commentVO.nttId}/comments";
 	varForm.submit();
 }
 
@@ -241,7 +241,7 @@ function fn_aram_edit_comment(commentNo, index) {
 </c:if>
 	varForm.modified.value = "false";
 	varForm.commentNo.value = commentNo;
-	varForm.action = "${pageContext.request.contextPath}/content/board/${commentVO.bbsId}/article/${commentVO.nttId}/comments";
+	varForm.action = "${pageContext.request.contextPath}/board/${commentVO.bbsId}/id/${commentVO.nttId}/comments";
 	varForm.submit();
 }
 

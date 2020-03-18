@@ -200,7 +200,7 @@ public class BBSMasterController {
 	
 			// 시스템 사용 게시판의 경우 URL 표시
 			if ("SYSTEM_DEFAULT_BOARD".equals(boardUseInfVO.getTrgetId())) {
-				boardUseInfVO.setProvdUrl2(request.getContextPath() + "/content/board/" + boardUseInfVO.getPathId() + "/articles");
+				boardUseInfVO.setProvdUrl2(request.getContextPath() + "/board/" + boardUseInfVO.getPathId() + "/list");
 			}
 			model.addAttribute(boardUseInfVO);
 		}

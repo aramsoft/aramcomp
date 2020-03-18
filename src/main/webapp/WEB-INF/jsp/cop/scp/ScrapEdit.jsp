@@ -103,7 +103,7 @@
 			첨부이미지
 		</th>
 		<td colspan="5">
-			<c:import url="/content/imagefiles/${boardVO.atchFileId}" charEncoding="utf-8" />
+			<c:import url="/files/image/${boardVO.atchFileId}" charEncoding="utf-8" />
 		</td>
 	</tr>
 	</c:if>
@@ -113,7 +113,7 @@
 	    	첨부파일 목록
 	    </th>
 	    <td colspan="5">
-			<c:import url="/content/files/${boardVO.atchFileId}" />
+			<c:import url="/files/${boardVO.atchFileId}" />
 	    </td>
 	  </tr>
 	</c:if>

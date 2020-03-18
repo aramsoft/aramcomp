@@ -113,7 +113,7 @@
 		</th>
 	    <td>
 			<input type="hidden" name="returnUrl" value="${pageContext.request.contextPath}/cop/smt/dsm/editDiary.do"/>
-			<c:import url="/content/files/${diaryManageVO.atchFileId}/editform" />
+			<c:import url="/files/${diaryManageVO.atchFileId}/edit" />
 	    </td>
 	</tr>
  	</c:when>

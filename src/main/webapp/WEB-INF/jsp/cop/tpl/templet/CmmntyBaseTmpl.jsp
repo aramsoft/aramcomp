@@ -49,7 +49,7 @@
 	<div id="logo">
 		<a href="#" onclick="javascript:fn_aram_goCmmntyHome(); return false;">
     	<c:if test="${targetVO.cmmntyLogoImage ne null}">
-   			<img src="${pageContext.request.contextPath}/content/apps/${targetVO.pathId}/logo" alt="커뮤니티로고이미지">
+   			<img src="${pageContext.request.contextPath}/apps/id/${targetVO.pathId}/logo" alt="커뮤니티로고이미지">
    		</c:if>
      	<c:if test="${targetVO.cmmntyLogoImage eq null}">
    			<b>Home</b>
@@ -136,39 +136,6 @@
 	       	</ul>
 	       	</nav>
  			<!-- 서브메뉴 목록 부분 : End -->
-
-		    <c:if test="${targetVO.homeUrl == '/apps/aramht'}">
-			<!-- 데모 프로그램 부분 : Start-->
- 			<nav class="menubox">
-      		<ul>
-	       		<li class="leftmenu_dept01">
-	       			<span class="leftbar"></span>
-	                <span class="menubar">데모프로그램</span>	
-	       			<span class="rightbar"></span>
-              	</li>
-           			
-      			<li class="leftmenu_dept02">
-	          		<span class="menubar"></span>
-                 	<a href="${pageContext.request.contextPath}/apps/mbl/aramht" target="_blank">
-                		모바일홈화면
-                	</a>
-      			</li>
-      			<li class="leftmenu_dept02">
-	          		<span class="menubar"></span>
-                 	<a href="${pageContext.request.contextPath}/UnitMain.do" target="_blank">
-                		데모메인화면
-                	</a>
-      			</li>
-      			<li class="leftmenu_dept02">
-	          		<span class="menubar"></span>
-                 	<a href="${pageContext.request.contextPath}/home/sample/main.do" target="_blank">
-                		샘플홈페이지
-                	</a>
-      			</li>
-          	</ul>
-	       	</nav>
-			<!-- 데모 프로그램 부분 : End -->
-			</c:if>
 
 		    <c:if test="${targetVO.memberAt == 'Y'}">
 			<c:if test="${loginVO != null}">

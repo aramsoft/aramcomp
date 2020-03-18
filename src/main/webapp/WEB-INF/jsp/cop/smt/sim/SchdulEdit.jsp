@@ -170,7 +170,7 @@
 		</th>
 		<td>
 			<input type="hidden" name="returnUrl" value="${pageContext.request.contextPath}/cop/smt/sim/editSchdul.do"/>
-			<c:import url="/content/files/${schdulManageVO.atchFileId}/editform" />
+			<c:import url="/files/${schdulManageVO.atchFileId}/edit" />
 		</td>
 	</tr>
 	</c:when>

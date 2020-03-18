@@ -90,7 +90,7 @@
 			파일첨부
 		</th>
 		<td>
-			<c:import url="/content/files/${diaryManageVO.atchFileId}" />
+			<c:import url="/files/${diaryManageVO.atchFileId}" />
 	 	</td>
   	</tr>
 	<!-- 첨부파일 테이블 레이아웃 End.-->

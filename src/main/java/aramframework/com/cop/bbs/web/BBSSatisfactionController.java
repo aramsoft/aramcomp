@@ -1,7 +1,7 @@
 package aramframework.com.cop.bbs.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -56,7 +56,7 @@ public class BBSSatisfactionController {
 
 		// 수정 처리된 후 만족도조사 등록 화면으로 처리되기 위한 구현
 		if (satisfactionVO.isModified()) {
-			satisfactionVO.setStsfdgNo("");
+			satisfactionVO.setStsfdgNo(0);
 			satisfactionVO.setStsfdgCn("");
 			satisfactionVO.setStsfdg(0);
 		}
@@ -67,12 +67,14 @@ public class BBSSatisfactionController {
 		} else {
 			model.addAttribute("anonymous", "false");
 			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-			satisfactionVO.setWrterNm(loginVO.getName());
-			model.addAttribute("uniqId", loginVO.getUniqId());
+			if( loginVO != null) {
+				satisfactionVO.setWrterNm(loginVO.getName());
+				model.addAttribute("uniqId", loginVO.getUniqId());
+			}	
 		}
 
 		// 수정을 위한 처리
-		if (!satisfactionVO.getStsfdgNo().equals("")) {
+		if (satisfactionVO.getStsfdgNo() != 0 ) {
 			model.addAttribute(bbsSatisfactionService.selectSatisfaction(satisfactionVO));
 		} else {
 			satisfactionVO.setStsfdgCn("");
@@ -100,7 +102,6 @@ public class BBSSatisfactionController {
 	 * @param satisfactionVO
 	 */
 	@RequestMapping("/cop/bbs/insertSatisfaction.do")
-	@Secured("ROLE_USER")
 	public String insertSatisfaction(
 			@ModelAttribute SatisfactionVO satisfactionVO, 
 			BindingResult bindingResult, 
@@ -122,16 +123,14 @@ public class BBSSatisfactionController {
 		} else {
 			model.addAttribute("anonymous", "false");
 			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-
-			satisfactionVO.setFrstRegisterId(loginVO.getUniqId());
-			satisfactionVO.setWrterId(loginVO.getUniqId());
-			satisfactionVO.setStsfdgPassword(""); // dummy
+			if( loginVO == null) {
+				throw new AccessDeniedException("access denined!!!");
+			} else {
+				satisfactionVO.setFrstRegisterId(loginVO.getUniqId());
+				satisfactionVO.setWrterId(loginVO.getUniqId());
+				satisfactionVO.setStsfdgPassword(""); // dummy
+			}	
 		}
-
-		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		satisfactionVO.setFrstRegisterId(loginVO.getUniqId());
-		satisfactionVO.setWrterId(loginVO.getUniqId());
-		satisfactionVO.setStsfdgPassword(""); // dummy
 
 		bbsSatisfactionService.insertSatisfaction(satisfactionVO);
 
@@ -145,7 +144,6 @@ public class BBSSatisfactionController {
 	 * @param satisfactionVO
 	 */
 	@RequestMapping("/cop/bbs/updateSatisfaction.do")
-	@Secured("ROLE_USER")
 	public String updateSatisfaction(
 			@ModelAttribute SatisfactionVO satisfactionVO, 
 			BindingResult bindingResult, 
@@ -178,8 +176,12 @@ public class BBSSatisfactionController {
 			model.addAttribute("anonymous", "false");
 
 			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-			satisfactionVO.setLastUpdusrId(loginVO.getUniqId());
-			satisfactionVO.setStsfdgPassword(""); // dummy
+			if( loginVO == null) {
+				throw new AccessDeniedException("access denined!!!");
+			} else {
+				satisfactionVO.setLastUpdusrId(loginVO.getUniqId());
+				satisfactionVO.setStsfdgPassword(""); // dummy
+			}	
 		}
 
 		bbsSatisfactionService.updateSatisfaction(satisfactionVO);
@@ -194,7 +196,6 @@ public class BBSSatisfactionController {
 	 * @param satisfactionVO
 	 */
 	@RequestMapping("/cop/bbs/deleteSatisfaction.do")
-	@Secured("ROLE_USER")
 	public String deleteSatisfaction(
 			@ModelAttribute SatisfactionVO satisfactionVO, 
 			@RequestParam String anonymous,
@@ -216,6 +217,10 @@ public class BBSSatisfactionController {
 			}
 		} else {
 			model.addAttribute("anonymous", "false");
+			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
+			if( loginVO == null) {
+				throw new AccessDeniedException("access denined!!!");
+			} 
 		}
 
 		bbsSatisfactionService.deleteSatisfaction(satisfactionVO);

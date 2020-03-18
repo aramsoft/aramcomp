@@ -83,7 +83,7 @@ public class BBSCommentService extends EgovAbstractServiceImpl {
 	 */
 	public void insertComment(CommentVO commentVO) {
 		try {
-			commentVO.setCommentNo(answerNoGnrService.getNextLongId() + "");
+			commentVO.setCommentNo(answerNoGnrService.getNextLongId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

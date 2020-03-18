@@ -118,10 +118,11 @@ caption { visibility:hidden; font-size:0; height:0; line-height:0; }
 	vertical-align:middle; height:20px; 
 	white-space:nowrap; overflow:hidden; text-overflow:ellipsis; 
 }
+/*
 .table-list tr:hover {
 	background-color: #ffff99;	
 }
-
+*/
 /* 등록 테이블 */
 .table-register    { 
 	width:100%; 

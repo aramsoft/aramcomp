@@ -373,7 +373,6 @@ public class BBSBoardController {
 	 * @param boardVO
 	 */
 	@RequestMapping(value="/cop/bbs/insertBoardArticle.do")
-	@Secured("ROLE_USER")
 	public String insertBoardArticle(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO,
@@ -761,6 +760,7 @@ public class BBSBoardController {
 	 * @param boardVO
 	 */
 	@RequestMapping("/cop/bbs/insertGuestList.do")
+	@Secured("ROLE_USER")
 	public String insertGuestList(
 			@ModelAttribute BoardVO boardVO, 
 			BindingResult bindingResult, 

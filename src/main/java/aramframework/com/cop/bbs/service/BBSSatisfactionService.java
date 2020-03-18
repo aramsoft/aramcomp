@@ -92,7 +92,7 @@ public class BBSSatisfactionService extends EgovAbstractServiceImpl {
 	 */
 	public void insertSatisfaction(SatisfactionVO satisfactionVO) {
 		try {
-			satisfactionVO.setStsfdgNo(stsfdgNoGnrService.getNextLongId() + "");
+			satisfactionVO.setStsfdgNo(stsfdgNoGnrService.getNextLongId());
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}

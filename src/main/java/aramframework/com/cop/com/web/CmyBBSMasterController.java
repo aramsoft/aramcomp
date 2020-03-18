@@ -19,7 +19,6 @@ import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.bbs.domain.BoardMasterVO;
 import aramframework.com.cop.bbs.domain.BoardUseInfVO;
-import aramframework.com.cop.bbs.service.BBSBoardService;
 import aramframework.com.cop.bbs.service.BBSMasterService;
 import aramframework.com.cop.bbs.service.BBSUseInfoService;
 import aramframework.com.cop.com.service.UserInfService;

@@ -1,7 +1,7 @@
 package aramframework.com.cop.bbs.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -56,7 +56,7 @@ public class BBSCommentController {
 
 		// 수정 처리된 후 댓글 등록 화면으로 처리되기 위한 구현
 		if (commentVO.isModified()) {
-			commentVO.setCommentNo("");
+			commentVO.setCommentNo(0);
 			commentVO.setCommentCn("");
 		}
 
@@ -66,12 +66,14 @@ public class BBSCommentController {
 		} else {
 			model.addAttribute("anonymous", "false");
 			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-			commentVO.setWrterNm(loginVO.getName());
-			model.addAttribute("uniqId", loginVO.getUniqId());
+			if( loginVO != null) {
+				commentVO.setWrterNm(loginVO.getName());
+				model.addAttribute("uniqId", loginVO.getUniqId());
+			}	
 		}
 
 		// comment 수정을 위한 처리
-		if (!commentVO.getCommentNo().equals("")) {
+		if (commentVO.getCommentNo() != 0) {
 			model.addAttribute(bbsCommentService.selectComment(commentVO));
 		} else {
 			commentVO.setCommentCn("");
@@ -97,7 +99,6 @@ public class BBSCommentController {
 	 * @param commentVO
 	 */
 	@RequestMapping("/cop/bbs/insertComment.do")
-	@Secured("ROLE_USER")
 	public String insertComment(
 			@ModelAttribute CommentVO commentVO, 
 			BindingResult bindingResult,			
@@ -119,10 +120,13 @@ public class BBSCommentController {
 		} else {
 			model.addAttribute("anonymous", "false");
 			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-
-			commentVO.setFrstRegisterId(loginVO.getUniqId());
-			commentVO.setWrterId(loginVO.getUniqId());
-			commentVO.setCommentPassword(""); // dummy
+			if( loginVO == null) {
+				throw new AccessDeniedException("access denined!!!");
+			} else {
+				commentVO.setFrstRegisterId(loginVO.getUniqId());
+				commentVO.setWrterId(loginVO.getUniqId());
+				commentVO.setCommentPassword(""); // dummy
+			}	
 		}
 
 		bbsCommentService.insertComment(commentVO);
@@ -137,7 +141,6 @@ public class BBSCommentController {
 	 * @param commentVO
 	 */
 	@RequestMapping("/cop/bbs/updateComment.do")
-	@Secured("ROLE_USER")
 	public String updateComment(
 			@ModelAttribute CommentVO commentVO, 
 			BindingResult bindingResult,
@@ -170,8 +173,12 @@ public class BBSCommentController {
 			model.addAttribute("anonymous", "false");
 
 			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-			commentVO.setLastUpdusrId(loginVO.getUniqId());
-			commentVO.setCommentPassword(""); // dummy
+			if( loginVO == null) {
+				throw new AccessDeniedException("access denined!!!");
+			} else {
+				commentVO.setLastUpdusrId(loginVO.getUniqId());
+				commentVO.setCommentPassword(""); // dummy
+			}	
 		}
 
 		bbsCommentService.updateComment(commentVO);
@@ -186,7 +193,6 @@ public class BBSCommentController {
 	 * @param commentVO
 	 */
 	@RequestMapping("/cop/bbs/deleteComment.do")
-	@Secured("ROLE_USER")
 	public String deleteComment(
 			@ModelAttribute CommentVO commentVO, 
 			@RequestParam String anonymous,
@@ -207,6 +213,10 @@ public class BBSCommentController {
 			}
 		} else {
 			model.addAttribute("anonymous", "false");
+			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
+			if( loginVO == null) {
+				throw new AccessDeniedException("access denined!!!");
+			} 
 		}
 
 		bbsCommentService.deleteComment(commentVO);

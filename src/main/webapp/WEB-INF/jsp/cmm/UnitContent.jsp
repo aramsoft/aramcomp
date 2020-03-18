@@ -74,7 +74,7 @@
     </tr>
     <tr> 
       <td valign="top">&nbsp;-&nbsp;
-      	<a href="${pageContext.request.contextPath}/content/board/anonymous/31/articles">
+      	<a href="${pageContext.request.contextPath}/content/board/31/articles">
       		익명게시판 
       	</a>
       </td>
@@ -89,7 +89,7 @@
 <!-- 
     <tr> 
       <td valign="top">&nbsp;-&nbsp;
-      	<a href="${pageContext.request.contextPath}/content/board/anonymous/51/articles">
+      	<a href="${pageContext.request.contextPath}/content/board/51/articles">
       		버그리포트
       	</a>
       </td>

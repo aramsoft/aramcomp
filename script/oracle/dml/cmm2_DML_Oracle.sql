@@ -1797,9 +1797,9 @@ VALUES ('CMMNTY_0000000000001', 100030, '자유게시판', NULL, '자유게시�
 INSERT INTO COMTN_CMMNTY_MENU ( TRGET_ID, MENU_NO, MENU_NM, PROGRM_FILE_NM, MENU_DC, USE_AT, MGR_AT, DIRECT_URL, TOPMENU_AT, MENU_ALIAS ) 
 VALUES ('CMMNTY_0000000000001', 100040, '자료실', NULL, '자료실 게시판', 'Y', 'N', '/content/board/105/articles', 'N', 'dataroom'); 
 INSERT INTO COMTN_CMMNTY_MENU ( TRGET_ID, MENU_NO, MENU_NM, PROGRM_FILE_NM, MENU_DC, USE_AT, MGR_AT, DIRECT_URL, TOPMENU_AT, MENU_ALIAS ) 
-VALUES ('CMMNTY_0000000000001', 100050, '익명게시판', NULL, '익명 게시판', 'Y', 'N', '/content/board/anonymous/106/articles', 'N', 'anonymous'); 
+VALUES ('CMMNTY_0000000000001', 100050, '익명게시판', NULL, '익명 게시판', 'Y', 'N', '/content/board/106/articles', 'N', 'anonymous'); 
 INSERT INTO COMTN_CMMNTY_MENU ( TRGET_ID, MENU_NO, MENU_NM, PROGRM_FILE_NM, MENU_DC, USE_AT, MGR_AT, DIRECT_URL, TOPMENU_AT, MENU_ALIAS ) 
-VALUES ('CMMNTY_0000000000001', 100060, '버그게시판(익명)', NULL, '버그 및 이슈 게시판', 'Y', 'N', '/content/board/anonymous/51/articles', 'N', 'bugissue'); 
+VALUES ('CMMNTY_0000000000001', 100060, '버그게시판(익명)', NULL, '버그 및 이슈 게시판', 'Y', 'N', '/content/board/51/articles', 'N', 'bugissue'); 
 
 INSERT INTO COMTN_CMMNTY_MENU ( TRGET_ID, MENU_NO, MENU_NM, PROGRM_FILE_NM, MENU_DC, USE_AT, MGR_AT, DIRECT_URL, TOPMENU_AT, MENU_ALIAS ) 
 VALUES ('CMMNTY_0000000000001', 300000, 'FAQ', 'FaqManage', NULL, 'Y', 'N', NULL, 'Y', '300000'); 

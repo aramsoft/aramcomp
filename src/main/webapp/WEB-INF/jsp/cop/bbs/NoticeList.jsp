@@ -22,10 +22,6 @@
   *
   */
 %>
-<c:if test="${anonymous == 'true'}">
-	<c:set var="prefix" value="/anonymous"/>
-</c:if>
-
 <DIV id="main"> 
 
 <div class="content_title">
@@ -169,7 +165,7 @@ function fn_aram_linkPage(pageNo) {
     	varForm.action = "${pageContext.request.contextPath}/content/apps/${targetVO.pathId}/board/${boardVO.pathId}/articles";
     }
     else {
-    	varForm.action = "${pageContext.request.contextPath}/content/board${prefix}/${boardVO.pathId}/articles";
+    	varForm.action = "${pageContext.request.contextPath}/content/board/${boardVO.pathId}/articles";
     }
     varForm.submit();
 }
@@ -181,7 +177,7 @@ function fn_aram_search() {
     	varForm.action = "${pageContext.request.contextPath}/content/apps/${targetVO.pathId}/board/${boardVO.pathId}/articles";
     }
     else {
-    	varForm.action = "${pageContext.request.contextPath}/content/board${prefix}/${boardVO.pathId}/articles";
+    	varForm.action = "${pageContext.request.contextPath}/content/board/${boardVO.pathId}/articles";
     }
     varForm.submit();
 }
@@ -192,7 +188,7 @@ function fn_aram_detail(nttId) {
     	varForm.action = "${pageContext.request.contextPath}/content/apps/${targetVO.pathId}/board/${boardVO.pathId}/article/" + nttId;
     }
     else {
-    	varForm.action = "${pageContext.request.contextPath}/content/board${prefix}/${boardVO.pathId}/article/" + nttId;
+    	varForm.action = "${pageContext.request.contextPath}/content/board/${boardVO.pathId}/article/" + nttId;
     }
     varForm.submit();
 }
@@ -200,7 +196,7 @@ function fn_aram_detail(nttId) {
 function fn_aram_regist() {
     var varForm = document.getElementById("boardVO");
     varForm.nttId.value = 0;
-    varForm.action = "${pageContext.request.contextPath}/cop/bbs${prefix}/registBoardArticle.do";
+    varForm.action = "${pageContext.request.contextPath}/cop/bbs/registBoardArticle.do";
     varForm.submit();
 }
 

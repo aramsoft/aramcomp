@@ -18,7 +18,6 @@ import aramframework.com.cmm.util.ComponentChecker;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.bbs.domain.BoardUseInfVO;
-import aramframework.com.cop.bbs.service.BBSBoardService;
 import aramframework.com.cop.bbs.service.BBSUseInfoService;
 import aramframework.com.uat.uia.domain.LoginVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -137,18 +136,8 @@ public class BBSUseInfoController {
 			HttpServletRequest request,
 			ModelMap model) {
 		
-		boardUseInfVO = bbsUseService.selectBBSUseInf(boardUseInfVO);
-
-		// 시스템 사용 게시판의 경우 URL 표시
-//		if ("SYSTEM_DEFAULT_BOARD".equals(vo.getTrgetId())) {
-			if (boardUseInfVO.getBbsTyCode().equals(BBSBoardService.BBS_TYPE_ANONYMOUS)) { // 익명게시판
-				boardUseInfVO.setProvdUrl2(request.getContextPath() 
-						+ "/content/board/anonymous/" + boardUseInfVO.getPathId() + "/articles");
-			} else {
-				boardUseInfVO.setProvdUrl2(request.getContextPath() 
-						+ "/content/board/" + boardUseInfVO.getPathId() + "/articles");
-			}
-//		}
+		boardUseInfVO.setProvdUrl2(request.getContextPath() + "/content/board/" + boardUseInfVO.getPathId() + "/articles");
+			
 		model.addAttribute(boardUseInfVO);
 					
 		return "cop/bbs/BoardUseInfEdit";

@@ -195,15 +195,8 @@ public class CmyBBSMasterController {
 
 		// 시스템 사용 게시판의 경우 URL 표시
 	    String bbsId = boardUseInfVO.getBbsId();
-//		if ("SYSTEM_DEFAULT_BOARD".equals(vo.getTrgetId())) {
-			if (boardUseInfVO.getBbsTyCode().equals(BBSBoardService.BBS_TYPE_ANONYMOUS)) { // 익명게시판
-				boardUseInfVO.setProvdUrl2(request.getContextPath() 
-						+ "/content/board/anonymous/" + WebUtil.getPathId(bbsId) + "/articles"); 
-			} else {
-				boardUseInfVO.setProvdUrl2(request.getContextPath() 
-						+ "/content/board/" + WebUtil.getPathId(bbsId) + "/articles"); 
-			}
-//		}
+		boardUseInfVO.setProvdUrl2(request.getContextPath() + "/content/board/" + WebUtil.getPathId(bbsId) + "/articles"); 
+
 		model.addAttribute(boardUseInfVO);
 		
 		return "cop/com/BdMstrEditByTrget";

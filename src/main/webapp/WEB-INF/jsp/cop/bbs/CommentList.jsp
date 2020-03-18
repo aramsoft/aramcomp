@@ -32,8 +32,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/cmm/com.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/cmm/button.css" type="text/css">
 
-<c:if test="${anonymous == 'true'}"><c:set var="prefix" value="/anonymous"/></c:if>
-
 </head>
 
 <body>
@@ -56,6 +54,7 @@
 <form:hidden path="commentNo" />
 
 <input name="modified" type="hidden" value="false">
+<input name="anonymous" type="hidden" value="${anonymous}">
 
 <c:if test="${anonymous == 'true'}">
 <input type="hidden" name="confirmPassword">
@@ -196,7 +195,7 @@ function fn_aram_linkPage(pageNo) {
     var varForm = document.getElementById("commentVO");
 	varForm.pageIndex.value = pageNo;
 	varForm.commentNo.value = '';
-	varForm.action = "${pageContext.request.contextPath}/content/board${prefix}/${commentVO.bbsId}/article/${commentVO.nttId}/comments";
+	varForm.action = "${pageContext.request.contextPath}/content/board/${commentVO.bbsId}/article/${commentVO.nttId}/comments";
 	varForm.submit();
 }
 
@@ -204,7 +203,7 @@ function fn_aram_reset_comment() {
     var varForm = document.getElementById("commentVO");
 	varForm.pageIndex.value = 1;
 	varForm.commentNo.value = '';
-	varForm.action = "${pageContext.request.contextPath}/content/board${prefix}/${commentVO.bbsId}/article/${commentVO.nttId}/comments";
+	varForm.action = "${pageContext.request.contextPath}/content/board/${commentVO.bbsId}/article/${commentVO.nttId}/comments";
 	varForm.submit();
 }
 
@@ -217,7 +216,7 @@ function fn_aram_insert_comment() {
 	
 	if (confirm("<spring:message code='common.regist.msg' />")) {
 		varForm.modified.value = "true";
-		varForm.action = "${pageContext.request.contextPath}/cop/bbs${prefix}/insertComment.do";
+		varForm.action = "${pageContext.request.contextPath}/cop/bbs/insertComment.do";
 		varForm.submit();
 	}
 }
@@ -242,7 +241,7 @@ function fn_aram_edit_comment(commentNo, index) {
 </c:if>
 	varForm.modified.value = "false";
 	varForm.commentNo.value = commentNo;
-	varForm.action = "${pageContext.request.contextPath}/content/board${prefix}/${commentVO.bbsId}/article/${commentVO.nttId}/comments";
+	varForm.action = "${pageContext.request.contextPath}/content/board/${commentVO.bbsId}/article/${commentVO.nttId}/comments";
 	varForm.submit();
 }
 
@@ -259,7 +258,7 @@ function fn_aram_update_comment() {
 
 	if (confirm("<spring:message code='common.update.msg' />")) {
 		varForm.modified.value = "true";
-		varForm.action = "${pageContext.request.contextPath}/cop/bbs${prefix}/updateComment.do";
+		varForm.action = "${pageContext.request.contextPath}/cop/bbs/updateComment.do";
 		varForm.submit();
 	}
 }
@@ -286,7 +285,7 @@ function fn_aram_delete_comment(commentNo, index) {
 	if (confirm("<spring:message code='common.delete.msg' />")) {
 		varForm.modified.value = "true";
 		varForm.commentNo.value = commentNo;
-		varForm.action = "${pageContext.request.contextPath}/cop/bbs${prefix}/deleteComment.do";
+		varForm.action = "${pageContext.request.contextPath}/cop/bbs/deleteComment.do";
 		varForm.submit();
 	}
 }

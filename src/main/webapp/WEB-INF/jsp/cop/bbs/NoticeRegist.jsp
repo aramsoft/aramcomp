@@ -22,7 +22,6 @@
   *
   */
 %>
-<c:if test="${anonymous == 'true'}"><c:set var="prefix" value="/anonymous"/></c:if>
 <DIV id="main"> 
 
 <div class="content_title">
@@ -197,8 +196,7 @@ window.onload = function() {
 
 function fn_aram_list() {
     var varForm = document.getElementById("boardVO");
-	varForm.action = "${pageContext.request.contextPath}/content/board${prefix}/" 
-					+ fn_aram_get_idString(varForm.bbsId.value) + "/articles";
+	varForm.action = "${pageContext.request.contextPath}/content/board/" + fn_aram_get_idString(varForm.bbsId.value) + "/articles";
 	varForm.submit();
 }
 
@@ -227,7 +225,7 @@ function fn_aram_insert() {
     </c:if>
 
 	if (confirm("<spring:message code='common.regist.msg' />")) {
-		varForm.action = "${pageContext.request.contextPath}/cop/bbs${prefix}/insertBoardArticle.do";
+		varForm.action = "${pageContext.request.contextPath}/cop/bbs/insertBoardArticle.do";
 		varForm.submit();
 	}
 }

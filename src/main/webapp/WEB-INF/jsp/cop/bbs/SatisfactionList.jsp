@@ -32,8 +32,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/cmm/com.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/cmm/button.css" type="text/css">
 
-<c:if test="${anonymous == 'true'}"><c:set var="prefix" value="/anonymous"/></c:if>
-
 </head>
 
 <body>
@@ -65,6 +63,7 @@
 <form:hidden path="stsfdgNo" />
 
 <input name="modified" type="hidden" value="false">
+<input name="anonymous" type="hidden" value="${anonymous}">
 
 <c:if test="${anonymous == 'true'}">
 <input type="hidden" name="confirmPassword">
@@ -247,7 +246,7 @@ function fn_aram_linkPage(pageNo) {
     var varForm = document.getElementById("satisfactionVO");
 	varForm.pageIndex.value = pageNo;
 	varForm.stsfdgNo.value = '';
-	varForm.action = "${pageContext.request.contextPath}/content/board${prefix}/${satisfactionVO.bbsId}/article/${satisfactionVO.nttId}/satisfactions";
+	varForm.action = "${pageContext.request.contextPath}/content/board/${satisfactionVO.bbsId}/article/${satisfactionVO.nttId}/satisfactions";
 	varForm.submit();
 }
 
@@ -255,7 +254,7 @@ function fn_aram_reset_satisfaction() {
     var varForm = document.getElementById("satisfactionVO");
 	varForm.pageIndex.value = 1;
 	varForm.stsfdgNo.value = '';
-	varForm.action = "${pageContext.request.contextPath}/content/board${prefix}/${satisfactionVO.bbsId}/article/${satisfactionVO.nttId}/satisfactions";
+	varForm.action = "${pageContext.request.contextPath}/content/board/${satisfactionVO.bbsId}/article/${satisfactionVO.nttId}/satisfactions";
 	varForm.submit();
 }
 
@@ -268,7 +267,7 @@ function fn_aram_insert_satisfaction() {
 
 	if (confirm("<spring:message code='common.regist.msg' />")) {
 		varForm.modified.value = "true";
-		varForm.action = "${pageContext.request.contextPath}/cop/bbs${prefix}/insertSatisfaction.do";
+		varForm.action = "${pageContext.request.contextPath}/cop/bbs/insertSatisfaction.do";
 		varForm.submit();
 	}
 }
@@ -293,7 +292,7 @@ function fn_aram_edit_satisfaction(satisfactionNo, index) {
 </c:if>
 	varForm.modified.value = "false";
 	varForm.stsfdgNo.value = satisfactionNo;
-	varForm.action = "${pageContext.request.contextPath}/content/board${prefix}/${satisfactionVO.bbsId}/article/${satisfactionVO.nttId}/satisfactions";
+	varForm.action = "${pageContext.request.contextPath}/content/board/${satisfactionVO.bbsId}/article/${satisfactionVO.nttId}/satisfactions";
 	varForm.submit();
 }
 
@@ -310,7 +309,7 @@ function fn_aram_update_satisfaction() {
 
 	if (confirm("<spring:message code='common.update.msg' />")) {
 		varForm.modified.value = "true";
-		varForm.action = "${pageContext.request.contextPath}/cop/bbs${prefix}/updateSatisfaction.do";
+		varForm.action = "${pageContext.request.contextPath}/cop/bbs/updateSatisfaction.do";
 		varForm.submit();
 	}
 }
@@ -337,7 +336,7 @@ function fn_aram_delete_satisfaction(satisfactionNo, index) {
 	if (confirm("<spring:message code='common.delete.msg' />")) {
 		varForm.modified.value = "true";
 		varForm.stsfdgNo.value = satisfactionNo;
-		varForm.action = "${pageContext.request.contextPath}/cop/bbs${prefix}/deleteSatisfaction.do";
+		varForm.action = "${pageContext.request.contextPath}/cop/bbs/deleteSatisfaction.do";
 		varForm.submit();
 	}
 }

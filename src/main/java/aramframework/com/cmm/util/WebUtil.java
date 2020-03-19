@@ -29,10 +29,6 @@ public class WebUtil {
 		model.addAttribute("redirectURL", redirectUrl);
 		return "cmm/redirect";
 	}
-
-//	public static String adjustViewName(String viewName) {
-//		return viewName;
-//	}
 	
 	public static String getCurTrgetId() {
 		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();

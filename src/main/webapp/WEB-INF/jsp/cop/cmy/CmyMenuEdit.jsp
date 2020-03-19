@@ -50,10 +50,19 @@
     		<span class="required_icon"></span>
     		<label for="menuNm">메뉴명</label>
     	</th>
-    	<td colspan="3">
+    	<td width="30%">
       		&nbsp;<c:out value="${communityMenuVO.menuNm}"/>
       		<form:hidden path="menuNm" />
       		<form:errors path="menuNm" cssClass="error"/>
+    	</td>
+    	<th width="20%"  scope="row">
+    		<span class="required_icon"></span>
+    		<label for="newMenuNm">새메뉴명</label>
+    	</th>
+    	<td width="30%">
+      		&nbsp;
+      		<form:input path="newMenuNm" size="10" maxlength="10" title="새메뉴명"/>
+      		<form:errors path="newMenuNm" cssClass="error"/>
     	</td>
   	</tr>
   	<tr>

@@ -195,6 +195,16 @@ public class CmyMenuManageController {
 			return "cop/cmy/CmyMenuEdit";
 		}
 		
+		if( !"".equals(communityMenuVO.getNewMenuNm()) ) {
+			CommunityMenuVO newCommunityMenuVO = new CommunityMenuVO();
+			newCommunityMenuVO.setMenuNm(communityMenuVO.getNewMenuNm());
+			newCommunityMenuVO.setTrgetId(communityMenuVO.getTrgetId());
+			if (cmyMenuManageService.selectMenuNmByPk(newCommunityMenuVO) != 0) {
+				model.addAttribute("message", MessageHelper.getMessage("common.isExist.msg"));
+				return "cop/cmy/CmyMenuEdit";
+			}
+		}
+		
 		if (communityMenuVO.getProgrmFileNm() != null
 				&& !communityMenuVO.getProgrmFileNm().equals("")	
 				&& progrmManageService.selectProgrmNMTotCnt(communityMenuVO.getProgrmFileNm()) == 0) {

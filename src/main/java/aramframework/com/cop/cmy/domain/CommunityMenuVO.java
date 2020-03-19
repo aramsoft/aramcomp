@@ -42,6 +42,10 @@ public class CommunityMenuVO extends BaseVO {
 	/** 사용여부 */
 	private String useAt;
 
+	// helper
+	/** 새메뉴명 */
+	private String newMenuNm;
+	
 	// domain
 	/**
 	 * trgetId attribute를 리턴한다.
@@ -221,6 +225,25 @@ public class CommunityMenuVO extends BaseVO {
 	 */
 	public void setUseAt(String useAt) {
 		this.useAt = useAt;
+	}
+
+	// helper
+	/**
+	 * newMenuNm attribute를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getNewMenuNm() {
+		return newMenuNm;
+	}
+	/**
+	 * newMenuNo attribute 값을 설정한다.
+	 * 
+	 * @param newMenuNo
+	 *            String
+	 */
+	public void setNewMenuNm(String newMenuNm) {
+		this.newMenuNm = newMenuNm;
 	}
 
 }

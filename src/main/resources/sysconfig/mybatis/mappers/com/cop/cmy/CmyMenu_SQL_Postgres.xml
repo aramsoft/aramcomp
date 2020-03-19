@@ -105,6 +105,9 @@
             	 , TOPMENU_AT    		= #{topMenuAt}   
             	 , MGR_AT            	= #{mgrAt}         
             	 , USE_AT            	= #{useAt}         
+		<if test='newMenuNm != null and newMenuNm != ""'>
+			     , MENU_NM 				= #{newMenuNm}
+		</if>
 		<![CDATA[
 			 WHERE TRGET_ID = #{trgetId}
 			   AND MENU_NM = #{menuNm}
@@ -129,13 +132,13 @@
 	</delete> 
 	
 	<!-- 메뉴번호 존재여부 조회 -->
-	<select id="selectMenuNoByPk" resultType="int">
+	<select id="selectMenuNmByPk" resultType="int">
 		<![CDATA[
-			SELECT COUNT(MENU_NO) 			AS "totcnt"
+			SELECT COUNT(MENU_NM) 			AS "totcnt"
 			  FROM COMTN_CMMNTY_MENU 
 			 WHERE TRGET_ID = #{trgetId}
 			   AND MENU_NM = #{menuNm}
-		]]>
+		]]> 
 	</select>
 	
 	<!-- 메뉴별명으로 부터 메뉴번호 조회 -->

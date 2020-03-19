@@ -92,7 +92,7 @@ public class TilesInterceptor extends HandlerInterceptorAdapter {
 			return;
 		}
 		
-        CommunityVO communityVO = cmmntyService.getCommunityInfo(cmmntyId, menuId);
+        CommunityVO communityVO = cmmntyService.getCommunityFullInfo(cmmntyId, menuId);
         modelAndView.addObject("targetVO", communityVO);
 	
 		// --------------------------------

@@ -205,7 +205,7 @@
 				          FROM COMTN_PROGRM_LIST B 
 				         WHERE A.PROGRM_FILE_NM = B.PROGRM_FILE_NM
 				        )
-				   )      					AS "chkURL"
+				   )      					AS "contentURL"
 			  FROM COMTN_CMMNTY_MENU A
 			 WHERE A.TRGET_ID = #{cmmntyId}
 			   AND A.USE_AT = 'Y'
@@ -225,7 +225,7 @@
 				          FROM COMTN_PROGRM_LIST B 
 				         WHERE A.PROGRM_FILE_NM = B.PROGRM_FILE_NM
 				        )
-				   )      					AS "chkURL"
+				   )      					AS "contentURL"
 			  FROM COMTN_CMMNTY_MENU A
 			 WHERE A.TRGET_ID = #{cmmntyId}
 			   AND A.USE_AT = 'Y'
@@ -245,7 +245,7 @@
 				          FROM COMTN_PROGRM_LIST B 
 				         WHERE A.PROGRM_FILE_NM = B.PROGRM_FILE_NM
 				        )
-				   )      					AS "chkURL"
+				   )      					AS "contentURL"
 			  FROM COMTN_CMMNTY_MENU A
 			 WHERE A.TRGET_ID = #{trgetId}
 			   AND A.USE_AT = 'Y'

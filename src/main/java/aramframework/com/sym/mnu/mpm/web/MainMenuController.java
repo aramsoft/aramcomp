@@ -168,18 +168,18 @@ public class MainMenuController {
 	 * 
 	 * @param menuManageVO
 	 * @param menuNo
-	 * @param chkURL
+	 * @param contentURL
 	 */
 	@RequestMapping(value = "/sym/mnu/mpm/MainMenuIndex.do")
 	public String selectMainMenuIndex(
 			@ModelAttribute MenuManageVO menuManageVO, 
 			@RequestParam String menuNo,
-			@RequestParam String chkURL, 
+			@RequestParam String contentURL, 
 			ModelMap model) {
 
 		int iMenuNo = Integer.parseInt(menuNo);
 		menuManageVO.setMenuNo(iMenuNo);
-		// menuManageVO.setTempValue(chkURL);
+		// menuManageVO.setTempValue(contentURL);
 
 		return "MainIndex";
 	}

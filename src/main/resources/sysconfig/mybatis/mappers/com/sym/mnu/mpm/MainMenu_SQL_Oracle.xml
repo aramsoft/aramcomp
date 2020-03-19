@@ -16,7 +16,7 @@
 				 , (SELECT C.URL 
 				      FROM COMTN_PROGRM_LIST C 
 				     WHERE B.PROGRM_FILE_NM = C.PROGRM_FILE_NM
-				   ) 						AS "chkURL"
+				   ) 						AS "contentURL"
 			  FROM COMTN_MENU_CREAT_DTLS A
 	       		   LEFT OUTER JOIN COMTN_MENU_INFO B
 	       			    ON A.MENU_NO  = B.MENU_NO  
@@ -40,7 +40,7 @@
 				 , (SELECT C.URL 
 				      FROM COMTN_PROGRM_LIST C 
 				     WHERE B.PROGRM_FILE_NM = C.PROGRM_FILE_NM
-				   ) 						AS "chkURL"	
+				   ) 						AS "contentURL"	
 			  FROM COMTN_MENU_CREAT_DTLS A
 	        	   LEFT OUTER JOIN COMTN_MENU_INFO B
 			      	    ON A.MENU_NO  = B.MENU_NO  

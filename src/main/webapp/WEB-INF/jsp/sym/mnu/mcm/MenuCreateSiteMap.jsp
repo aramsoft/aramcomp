@@ -69,7 +69,7 @@
        	</td>
     	<td>
 			<c:forEach var="result" items="${list_menulist}" varStatus="status">
-			<input type="hidden" name="tmp_menuNmVal" value="${result.menuNo}|${result.upperMenuId}|${result.menuNm}|${result.menuOrdr}|${result.chkURL}|">
+			<input type="hidden" name="tmp_menuNmVal" value="${result.menuNo}|${result.upperMenuId}|${result.menuNm}|${result.menuOrdr}|${result.contentURL}|">
 			</c:forEach>
     	</td>
   	</tr>

@@ -206,44 +206,7 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 
 			@SuppressWarnings("unused")
 			String bbsId = bbsMasterService.insertBBSMastetInf(boardMasterVO);
-
-			/*
-			 * //게시판 이용정보 생성 
-			 * bdUseInf = new BoardUseInf();
-			 * bdUseInf.setBbsId(_bbsId);
-			 * bdUseInf.setTrgetId(cmmnty.getCmmntyId());
-			 * bdUseInf.setRegistSeCode("REGC06");  	// 커뮤니티 게시판 등록
-			 * bdUseInf.setUseAt("Y");
-			 * //커뮤니티 생성 시 기본 게시판을 이용정보로 등록하는 것이므로 생성시 사용으로 등록
-			 * bdUseInf.setFrstRegisterId(cmmnty.getFrstRegisterId());
-			 * 
-			 * bbsUseService.insertBBSUseInf(bdUseInf); //
-			 */
-
-			/*
-			 * 이미 bbsAttrbService.insertBBSMastetInf() 부분에서 REGC07을 등록함...
-			 * bdUseInf = new BoardUseInf(); 
-			 * bdUseInf.setBbsId(_bbsId);
-			 * bdUseInf.setTrgetId(cmmnty.getEmplyrId());
-			 * bdUseInf.setRegistSeCode("REGC07"); 		// 게시판 사용자 등록
-			 * bdUseInf.setUseAt("Y");
-			 * //커뮤니티 생성 시 생성된 기본 게시판을 최초등록 운영자에게 부여한다
-			 * bdUseInf.setFrstRegisterId(cmmnty.getFrstRegisterId());
-			 * 
-			 * bbsUseService.insertBBSUseInf(bdUseInf); //
-			 */
 		}
-	}
-
-	/**
-	 * 커뮤니티에 대한 게시판 사용정보를 등록한다.
-	 * 
-	 * @param boardUseInfVO
-	 */
-	public void insertCommunityBBSUseInf(BoardUseInfVO boardUseInfVO) {
-		// cmmntyDAO.insertCommunityBBSUseInf(bdUseInf);
-		// 커뮤니티에 게시판을 하나 추가하게 되면 - _- 해당 게시판이 등록된 커뮤니티의
-		// 모든 소속사용자에게 사용 권한을 줘야하나 - _-? 일단 그렇게 진행
 	}
 
 	/**
@@ -460,23 +423,6 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 		int cnt = communityManageMapper.checkExistUser(communityUserVO);
 		if (cnt == 0) {
 			communityManageMapper.insertCommunityUserInf(communityUserVO);
-/*			
-			List<CommunityVO> tmpList = cmmntyDAO.selectCommunityBBSUseInf(communityVO);
-			
-			BoardUseInfVO boardUseInfVO = new BoardUseInfVO();;
-
-			Iterator<CommunityVO> iter = tmpList.iterator();
-			while (iter.hasNext()) {
-
-				boardUseInfVO.setFrstRegisterId(communityUserVO.getFrstRegisterId());
-				boardUseInfVO.setBbsId(((CommunityVO) iter.next()).getBbsId());
-				boardUseInfVO.setTrgetId(communityUserVO.getEmplyrId());
-				boardUseInfVO.setRegistSeCode("REGC07");	// 게시판 사용자 등록
-				boardUseInfVO.setUseAt("Y");
-
-				bbsUseService.insertBBSUseInf(boardUseInfVO);
-			}
-*/
 		} else {
 			retVal = "EXIST";
 		}
@@ -518,7 +464,7 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 	 * @param menuId
 	 */
 	@SuppressWarnings("unchecked")
-	public CommunityVO getCommunityInfo(String cmmntyId, String menuId) {
+	public CommunityVO getCommunityFullInfo(String cmmntyId, String menuId) {
 		HashMap<String, Object> cacheMap = null;
 		
 		cacheMap = (HashMap<String, Object>) cacheDictionary.get(CacheKey.CMY_PREFIX + cmmntyId);
@@ -584,7 +530,7 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 	 * @param cmmntyId
 	 */
 	@SuppressWarnings("unchecked")
-	public CommunityVO getCommunityInfo(String cmmntyId) {
+	public CommunityVO getCommunityOnlyInfo(String cmmntyId) {
 		HashMap<String, Object> cacheMap = null;
 		
 		cacheMap = (HashMap<String, Object>) cacheDictionary.get(CacheKey.CMY_PREFIX + cmmntyId);

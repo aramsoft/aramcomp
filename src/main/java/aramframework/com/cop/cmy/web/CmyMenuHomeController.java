@@ -173,7 +173,7 @@ public class CmyMenuHomeController  {
 			throw new RuntimeException("cmmntyId not found");
 		}
 		
-        CommunityVO communityVO = cmmntyService.getCommunityInfo(cmmntyId, menuId);
+        CommunityVO communityVO = cmmntyService.getCommunityFullInfo(cmmntyId, menuId);
 
         // --------------------------------
 		// 컨텐트 URL 정보
@@ -183,7 +183,7 @@ public class CmyMenuHomeController  {
 		}
 		
 		if( "".equals(contentUrl) ) {
-			contentUrl = cmmntyService.getMenuInfo(communityVO, menuId, "chkURL");
+			contentUrl = cmmntyService.getMenuInfo(communityVO, menuId, "contentURL");
 			if( "".equals(contentUrl) ) {
 				contentUrl =  "/cop/cmy/CmmntyMainContents.do";
 			}
@@ -209,7 +209,7 @@ public class CmyMenuHomeController  {
 
 		cmmntyId = WebUtil.getOriginalId(cmmntyId, "CMMNTY_");
 
-		CommunityVO communityVO = cmmntyService.getCommunityInfo(cmmntyId);
+		CommunityVO communityVO = cmmntyService.getCommunityOnlyInfo(cmmntyId);
 		byte[] img = communityVO.getCmmntyLogoImage();
 
 		String type = "image/jpeg";

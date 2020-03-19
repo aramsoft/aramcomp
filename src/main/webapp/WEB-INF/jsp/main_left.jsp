@@ -16,7 +16,7 @@ var path = "http://" + "${pageContext.request.serverName}" + ":" + "${pageContex
     <td>
         <div style="width:0px; height:0px;">
 		<c:forEach var="result" items="${list_menulist}" varStatus="status">
-		<input type="hidden" name="tmp_menuNm" value="${result.menuNo}|${result.upperMenuId}|${result.menuNm}|${result.relateImagePath}|${result.relateImageNm}|${pageContext.request.contextPath}/${result.chkURL}|"/>
+		<input type="hidden" name="tmp_menuNm" value="${result.menuNo}|${result.upperMenuId}|${result.menuNm}|${result.relateImagePath}|${result.relateImageNm}|${pageContext.request.contextPath}/${result.contentURL}|"/>
 		</c:forEach>
 		</div>
 		<div class="tree" style="overflow: auto; z-index: 5; padding: 0px; ">

@@ -8,7 +8,7 @@
 
 function fn_main_headPageMove(menuNo, url){
 	document.selectOne.menuNo.value=menuNo;
-	document.selectOne.chkURL.value=url;
+	document.selectOne.contentURL.value=url;
     document.selectOne.action = "${pageContext.request.contextPath}/sym/mnu/mpm/MainMenuIndex.do";
     document.selectOne.submit();
 }
@@ -17,7 +17,7 @@ function fn_main_headPageMove(menuNo, url){
 
 <form name="selectOne">
 <input name="menuNo" type="hidden" />
-<input name="chkURL" type="hidden" />
+<input name="contentURL" type="hidden" />
 </form>
 
 <div id="gnb">
@@ -34,7 +34,7 @@ function fn_main_headPageMove(menuNo, url){
 		<li><a href="${pageContext.request.contextPath}/sym/mnu/mpm/MainMenuHome.do" target="_top">HOME</a></li>
 		<c:forEach var="result" items="${list_headmenu}" varStatus="status">
   		<li class="gap"> l </li>
-  		<li><a href="javascript:fn_main_headPageMove('<c:out value="${result.menuNo}"/>','<c:out value="${result.chkURL}"/>')"><c:out value="${result.menuNm}"/></a></li>
+  		<li><a href="javascript:fn_main_headPageMove('<c:out value="${result.menuNo}"/>','<c:out value="${result.contentURL}"/>')"><c:out value="${result.menuNm}"/></a></li>
 		</c:forEach>
     </ul>
 </div>

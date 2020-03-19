@@ -13,6 +13,7 @@
  
   		<typeAlias alias="comCodeVO" 			type="aramframework.com.cmm.domain.ComCodeVO"/>
   		<typeAlias alias="fileVO" 				type="aramframework.com.cmm.domain.FileVO"/>
+  		<typeAlias alias="menuVO" 				type="aramframework.com.cmm.domain.MenuVO"/>
   		
  		<typeAlias alias="adressBookVO" 		type="aramframework.com.cop.adb.domain.AdressBookVO"/>
   		<typeAlias alias="adressBookUserVO" 	type="aramframework.com.cop.adb.domain.AdressBookUserVO"/>

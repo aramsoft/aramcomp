@@ -51,7 +51,7 @@
 
 <form:form modelAttribute="sysHistoryVO" method="post" enctype="multipart/form-data">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
-<input type="hidden" name="curMenuNo" value="${curMenuNo}" />
+<input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
 <table class="table-register" summary="이력구분, 시스템명, 이력내용, 첨부파일을 입력해서 시스템 이력을 등록하는 테이블이다.">
 <CAPTION>시스템 이력등록</CAPTION>

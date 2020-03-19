@@ -52,7 +52,7 @@
 
 <form:form modelAttribute="menuManageVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
-<input type="hidden" name="curMenuNo" value="${curMenuNo}" />
+<input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
 <table class="table-register" summary="메뉴 등록화면">
 <caption>메뉴 등록</caption>

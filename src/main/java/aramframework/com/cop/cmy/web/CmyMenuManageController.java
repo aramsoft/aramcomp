@@ -134,7 +134,7 @@ public class CmyMenuManageController {
 			return "cop/cmy/CmyMenuRegist";
 		}
 
-		if (cmyMenuManageService.selectMenuNoByPk(communityMenuVO) != 0) {
+		if (cmyMenuManageService.selectMenuNmByPk(communityMenuVO) != 0) {
 			model.addAttribute("message", MessageHelper.getMessage("common.isExist.msg"));
 			return "cop/cmy/CmyMenuRegist";
 		}
@@ -193,16 +193,6 @@ public class CmyMenuManageController {
 		beanValidator.validate(communityMenuVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			return "cop/cmy/CmyMenuEdit";
-		}
-		
-		if( communityMenuVO.getNewMenuNo() != 0 ) {
-			CommunityMenuVO newCommunityMenuVO = new CommunityMenuVO();
-			newCommunityMenuVO.setMenuNo(communityMenuVO.getNewMenuNo());
-			newCommunityMenuVO.setTrgetId(communityMenuVO.getTrgetId());
-			if (cmyMenuManageService.selectMenuNoByPk(newCommunityMenuVO) != 0) {
-				model.addAttribute("message", MessageHelper.getMessage("common.isExist.msg"));
-				return "cop/cmy/CmyMenuEdit";
-			}
 		}
 		
 		if (communityMenuVO.getProgrmFileNm() != null

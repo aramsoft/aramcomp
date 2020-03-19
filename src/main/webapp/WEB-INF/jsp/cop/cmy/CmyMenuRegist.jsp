@@ -38,7 +38,7 @@
 
 <form:form modelAttribute="communityMenuVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
-<input type="hidden" name="curMenuNo" value="${curMenuNo}" />
+<input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
 <input type="hidden" name="trgetId" value="${curTrgetId}" />
 
@@ -47,34 +47,34 @@
   	<tr>
     	<th width="20%">
     		<span class="required_icon"></span>
-    		<label for="menuNo">메뉴No</label>
+    		<label for="menuNn">메뉴명</label>
     	</th>
     	<td colspan="3">
       		&nbsp;
-      		<form:input path="menuNo" size="10" maxlength="10" title="메뉴No"/>
-      		<form:errors path="menuNo" cssClass="error"/>
+      		<form:input path="menuNm" size="10" maxlength="10" title="메뉴명"/>
+      		<form:errors path="menuNm" cssClass="error"/>
     	</td>
   	</tr>
   	<tr>
     	<th>
     		<span class="required_icon"></span>
-    		<label for="menuAlias">메뉴별명</label>
+    		<label for="menuKnm">메뉴한글명</label>
     	</th>
     	<td colspan="3">
         	&nbsp;
-      		<form:input path="menuAlias" size="30" maxlength="30" title="메뉴별명"/>
-      		<form:errors path="menuAlias" cssClass="error"/>
+      		<form:input path="menuKnm" size="30" maxlength="30" title="메뉴한글명"/>
+      		<form:errors path="menuKnm" cssClass="error"/>
     	</td>
   	</tr>
   	<tr>
     	<th width="20%">
     		<span class="required_icon"></span>
-    		<label for="menuNm">메뉴명</label>
+    		<label for="menuPos">메뉴위치</label>
     	</th>
     	<td width="30%">
       		&nbsp;
-      		<form:input path="menuNm" size="30"  maxlength="30" title="메뉴명" />
-      		<form:errors path="menuNm" cssClass="error"/>
+      		<form:input path="menuPos" size="30"  maxlength="30" title="메뉴위치" />
+      		<form:errors path="menuPos" cssClass="error"/>
     	</td>
 	    <th width="20%">
 	    	<span class="norequired_icon"></span>
@@ -190,8 +190,7 @@ function fn_aram_insert() {
 ******************************************************** */
 function fn_validatorMenuList() {
 	var varForm = document.getElementById("communityMenuVO");
-	if(varForm.menuNo.value == ""){alert("메뉴번호는 Not Null 항목입니다."); return false;}
-	if(!checkNumber(varForm.menuNo.value)){alert("메뉴번호는 숫자만 입력 가능합니다."); return false;}
+	if(!checkNumber(varForm.menuPos.value)){alert("메뉴위치는 숫자만 입력 가능합니다."); return false;}
 
 	if(varForm.menuNm.value == ""){alert("메뉴명은 Not Null 항목입니다."); return false;}
 	if(varForm.progrmFileNm.value == "" 

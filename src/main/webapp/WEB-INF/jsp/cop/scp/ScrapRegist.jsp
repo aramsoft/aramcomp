@@ -38,7 +38,7 @@
 	
 <form:form modelAttribute="scrapVO" method="post" action="">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
-<input type="hidden" name="curMenuNo" value="${curMenuNo}" />
+<input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
 <input type="hidden" name="bbsId" value="<c:out value='${boardVO.bbsId}'/>">
 <input type="hidden" name="nttId" value="<c:out value='${boardVO.nttId}'/>">

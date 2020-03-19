@@ -38,7 +38,7 @@
 
 <form:form modelAttribute="backupOpertVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
-<input type="hidden" name="curMenuNo" value="${curMenuNo}" />
+<input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
 <table class="table-register" summary="백업작업등록을 위한 테이블.">
 <caption>백업작업 등록</caption>

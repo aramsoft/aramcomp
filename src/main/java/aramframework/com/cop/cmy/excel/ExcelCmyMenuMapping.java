@@ -50,32 +50,32 @@ public class ExcelCmyMenuMapping {
 			}
 
 			switch (c) {
-				case 0:		// MENU_NO(매뉴번호)
-					vo.setMenuNo((int)Double.parseDouble(value));								
-					break;
-				case 1:		// MENU_NM(메뉴명)
+				case 0:		// MENU_NM(메뉴명)
 					vo.setMenuNm(value);
 					break;
-				case 2:		// PROGRM_FILE_NM(프로그램명)
+				case 1:		// MENU_KNM(한글메뉴명)
+					vo.setMenuKnm(value);
+					break;
+				case 2:		// MENU_POS(메뉴위치)
+					vo.setMenuPos(value);
+					break;
+				case 3:		// PROGRM_FILE_NM(프로그램명)
 					vo.setProgrmFileNm(value);
 					break;
-				case 3:		// MENU_DC(메뉴설명)
-					vo.setMenuDc(value);
-					break;
-				case 4:		// USE_AT(사용여부)
-					vo.setUseAt(value);
-					break;
-				case 5:		// MGR_AT(관리자메뉴여부)
-					vo.setMgrAt(value);
-					break;
-				case 6:		// DIRECT_URL(바로가기url)
+				case 4:		// DIRECT_URL(바로가기url)
 					vo.setDirectUrl(value);
 					break;
-				case 7:		// TOPMENU_AT(톱메뉴여부)
+				case 5:		// MENU_DC(메뉴설명)
+					vo.setMenuDc(value);
+					break;
+				case 6:		// TOPMENU_AT(톱메뉴여부)
 					vo.setTopMenuAt(value);
 					break;
-				case 8:		// MENU_ALIAS(메뉴별명)
-					vo.setMenuAlias(value);
+				case 7:		// MGR_AT(관리자메뉴여부)
+					vo.setMgrAt(value);
+					break;
+				case 8:		// USE_AT(사용여부)
+					vo.setUseAt(value);
 					break;
 			}
 		}

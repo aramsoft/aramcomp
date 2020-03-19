@@ -37,7 +37,7 @@
 
 <form:form modelAttribute="mberManageVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
-<input type="hidden" name="curMenuNo" value="${curMenuNo}" />
+<input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
 <!-- 우편번호검색 -->
 <input type="hidden" name="zip_url" value="${pageContext.request.contextPath}/sym/ccm/zip/listZipPopup.do" readonly="readonly" />

@@ -2,6 +2,7 @@ package aramframework.com.cop.cmy.dao;
 
 import java.util.List;
 
+import aramframework.com.cmm.domain.MenuVO;
 import aramframework.com.cop.bbs.domain.BoardUseInfVO;
 import aramframework.com.cop.cmy.domain.CommunityMenuVO;
 import aramframework.com.cop.cmy.domain.CommunityUserVO;
@@ -123,21 +124,21 @@ public interface CommunityManageMapper {
 	 * 
 	 * @param communityVO
 	 */
-	public List<EgovMap> selectCommunityTopMenuInfs(CommunityVO communityVO);
+	public List<MenuVO> selectCommunityTopMenuInfs(CommunityVO communityVO);
 
 	/**
 	 * 커뮤니티에 대한 관리자 메뉴 정보를 조회한다.
 	 * 
 	 * @param communityVO
 	 */
-	public List<EgovMap> selectCommunityMgrMenuInfs(CommunityVO communityVO);
+	public List<MenuVO> selectCommunityMgrMenuInfs(CommunityVO communityVO);
 
 	/**
 	 * 커뮤니티에 대한 서브  메뉴 정보를 조회한다.
 	 * 
 	 * @param communityMenuVO
 	 */
-	public List<EgovMap> selectCommunitySubMenuInfs(CommunityMenuVO communityMenuVO);
+	public List<MenuVO> selectCommunitySubMenuInfs(CommunityMenuVO communityMenuVO);
 
 	// 커뮤니티 사용자....
 	/**

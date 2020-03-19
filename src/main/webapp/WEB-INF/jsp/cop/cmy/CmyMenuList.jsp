@@ -29,9 +29,9 @@
 
 <form:form modelAttribute="communityMenuVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
-<input type="hidden" name="curMenuNo" value="${curMenuNo}" />
+<input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
-<input type="hidden" name="menuNo" value="0"/>
+<input type="hidden" name="menuNm" value=""/>
 <input type="hidden" name="trgetId" value="${curTrgetId}">
 
 <div id="search_area">
@@ -63,10 +63,11 @@
 	    <th scope="col" width="5%" >
     		<input type="checkbox" id="checkAll" class="check2" title="전체선택" />
 	    </th>
-	    <th scope="col" width="10%">메뉴ID</th>
+	    <th scope="col" width="20%">메뉴명</th>
 	    <th scope="col" width="15%">메뉴한글명</th>
-	    <th scope="col" width="15%">메뉴Alias</th>
-	    <th scope="col" >프로그램파일명</th>
+	    <th scope="col" width="10%">메뉴위치</th>
+	    <th scope="col" width="15%">프로그램파일명</th>
+	    <th scope="col" >바로가기URL</th>
   	</tr>
 </thead>
 <tbody>
@@ -84,24 +85,25 @@
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 	    <td class="lt_text">
-			<input type="checkbox" class="check2" id="uniqIds" name="uniqIds" value="${result.menuNo}" />
+			<input type="checkbox" class="check2" id="uniqIds" name="uniqIds" value="${result.menuNm}" />
 	    </td>
 	    
 	    <td class="lt_text">
 		    <c:if test="${result.topMenuAt == 'N'}">
 		    	<img src="${pageContext.request.contextPath}/images/cop/tpl/bull.gif" width="21" height="11" alt="bull" />
 		    </c:if>
-		    <c:out value="${result.menuNo}"/>
+		    <c:out value="${result.menuNm}"/>
 	    </td>
 	    <td class="lt_text">
 	   		<span class="link">
-		   	<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.menuNo}"/>'); return false;">
-	    		<c:out value="${result.menuNm}"/>
+		   	<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.menuNm}"/>'); return false;">
+	    		<c:out value="${result.menuKnm}"/>
 	   		</a>
 	   		</span>
 	    </td>
-	    <td class="lt_text"><c:out value="${result.menuAlias}"/></td>
+	    <td class="lt_text"><c:out value="${result.menuPos}"/></td>
 	    <td class="lt_text"><c:out value="${result.progrmFileNm}"/></td>
+	    <td class="lt_text"><c:out value="${result.directUrl}"/></td>
   	</tr>
  	</c:forEach>
 </tbody>
@@ -157,9 +159,9 @@ function fn_aram_search() {
 /* ********************************************************
  * 상세조회처리 함수
  ******************************************************** */
-function fn_aram_detail(menuNo) {
+function fn_aram_detail(menuNm) {
 	var varForm = document.getElementById("communityMenuVO");
-	varForm.menuNo.value = menuNo;
+	varForm.menuNm.value = menuNm;
 	varForm.action = "${pageContext.request.contextPath}/cop/cmy/editMenu.do";
 	varForm.submit();
 }
@@ -169,7 +171,7 @@ function fn_aram_detail(menuNo) {
  ******************************************************** */
 function fn_aram_regist() {
     var varForm = document.getElementById("communityMenuVO");
-    varForm.menuNo.value = 0;
+    varForm.menuNm.value = "";
     varForm.action = "${pageContext.request.contextPath}/cop/cmy/registMenu.do";
     varForm.submit();
 }
@@ -197,7 +199,7 @@ function fn_aram_excelUp(){
  ******************************************************** */
 function fn_aram_clearCache() {
     var varForm = document.getElementById("communityMenuVO");
-    varForm.menuNo.value = 0;
+    varForm.menuNm.value = "";
     varForm.action = "${pageContext.request.contextPath}/cop/cmy/clearCacheMenu.do";
     varForm.submit();
 }

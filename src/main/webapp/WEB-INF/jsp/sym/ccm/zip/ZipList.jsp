@@ -32,7 +32,7 @@
 
 <form:form modelAttribute="zipVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
-<input type="hidden" name="curMenuNo" value="${curMenuNo}" />
+<input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
 <input type=hidden name="zip">
 <input type=hidden name="sn" value="0">

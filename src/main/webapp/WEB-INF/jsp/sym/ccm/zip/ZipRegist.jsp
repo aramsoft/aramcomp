@@ -40,7 +40,7 @@
 <!-- 등록  폼 영역  -->
 <form:form modelAttribute="zipVO" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
-<input type="hidden" name="curMenuNo" value="${curMenuNo}" />
+<input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
 <table class="table-register" summary="우편번호, 시도명, 시군구명, 읍면동명, 리건물명, 번지동호를 입력하는 우편번호 등록 테이블입니다.">
 <CAPTION>우편번호 등록</CAPTION>

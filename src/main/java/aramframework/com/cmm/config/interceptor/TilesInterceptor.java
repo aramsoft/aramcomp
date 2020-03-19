@@ -56,9 +56,9 @@ public class TilesInterceptor extends HandlerInterceptorAdapter {
 			request.setAttribute("curTrgetId", curTrgetId);
 		}
 		
-		String curMenuNo = request.getParameter("curMenuNo");
-		if( curMenuNo != null && !"".equals(curMenuNo)) {
-			request.setAttribute("curMenuNo", curMenuNo);
+		String curMenuPos = request.getParameter("curMenuPos");
+		if( curMenuPos != null && !"".equals(curMenuPos)) {
+			request.setAttribute("curMenuPos", curMenuPos);
 		}
 		
 		String requestUrl = request.getRequestURL().toString();
@@ -86,13 +86,13 @@ public class TilesInterceptor extends HandlerInterceptorAdapter {
 	throws Exception {
 
 		String cmmntyId = (String) request.getAttribute("curTrgetId");
-		String menuId = (String) request.getAttribute("curMenuNo");
+		String menuPos = (String) request.getAttribute("curMenuPos");
 		
-		if (cmmntyId == null || !cmmntyId.startsWith("CMMNTY_") || "".equals(menuId)) {
+		if (cmmntyId == null || !cmmntyId.startsWith("CMMNTY_") || "".equals(menuPos)) {
 			return;
 		}
 		
-        CommunityVO communityVO = cmmntyService.getCommunityFullInfo(cmmntyId, menuId);
+        CommunityVO communityVO = cmmntyService.getCommunityLayoutInfo(cmmntyId, menuPos);
         modelAndView.addObject("targetVO", communityVO);
 	
 		// --------------------------------
@@ -100,15 +100,6 @@ public class TilesInterceptor extends HandlerInterceptorAdapter {
 		// --------------------------------
         modelAndView.addObject("targetUserVO", cmmntyService.getCommunityUserInfo(cmmntyId));
 		
-        // --------------------------------
-		// 메뉴 정보
-		// --------------------------------
-		String menuAlias = cmmntyService.getMenuInfo(communityVO, menuId, "menuAlias");
-		if( "".equals(menuAlias) ) {
-			menuAlias = communityVO.getTopMenuList().get(0).get("menuAlias").toString();
-		}
-		modelAndView.addObject("menuAlias", menuAlias);
-	    
 		// --------------------------------
 		// 커뮤니티 템플릿 정보
 		// --------------------------------

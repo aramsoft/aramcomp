@@ -32,8 +32,8 @@
 		</form>
 		
         <form name="communityMenuVO">
-			<field property="menuNo" depends="required, integer">
-        		<arg0 key="메뉴번호" resource="false"/>
+			<field property="menuPos" depends="required">
+        		<arg0 key="메뉴위치" resource="false"/>
 			</field> 
              <field property="menuNm" depends="required, maxlength">
         		<arg0 key="메뉴명" resource="false"/>

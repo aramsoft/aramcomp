@@ -37,7 +37,7 @@
 <!-- 등록  폼 영역  -->
 <form:form modelAttribute="qnaManageVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
-<input type="hidden" name="curMenuNo" value="${curMenuNo}" />
+<input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
 <form:hidden path="qaId" />
 

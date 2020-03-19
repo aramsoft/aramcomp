@@ -2,8 +2,8 @@ package aramframework.com.cop.cmy.domain;
 
 import java.util.List;
 
-import egovframework.rte.psl.dataaccess.util.EgovMap;
 import aramframework.com.cmm.domain.BaseVO;
+import aramframework.com.cmm.domain.MenuVO;
 import aramframework.com.cmm.util.WebUtil;
 
 /**
@@ -66,9 +66,10 @@ public class CommunityVO extends BaseVO {
 	private String emplyrId = "";
 	
 	/* for jsp only */
-	private List<EgovMap> topMenuList = null;
-	private List<EgovMap> mgrMenuList = null;
-	private List<EgovMap> subMenuList = null;
+	private List<MenuVO> topMenuList = null;
+	private List<MenuVO> mgrMenuList = null;
+	private List<MenuVO> subMenuList = null;
+	private String curMenuNm = "";
 	
 	// domain
 	/** cmmntyId 	 */ 
@@ -205,27 +206,35 @@ public class CommunityVO extends BaseVO {
 	// for jsp only
 
 	/** topMenuList 	 */ 
-	public List<EgovMap> getTopMenuList() {
+	public List<MenuVO> getTopMenuList() {
 		return topMenuList;
 	}
-	public void setTopMenuList(List<EgovMap> topMenuList) {
+	public void setTopMenuList(List<MenuVO> topMenuList) {
 		this.topMenuList = topMenuList;
 	}
 
 	/** mgrMenuList 	 */ 
-	public List<EgovMap> getMgrMenuList() {
+	public List<MenuVO> getMgrMenuList() {
 		return mgrMenuList;
 	}
-	public void setMgrMenuList(List<EgovMap> mgrMenuList) {
+	public void setMgrMenuList(List<MenuVO> mgrMenuList) {
 		this.mgrMenuList = mgrMenuList;
 	}
 
 	/** subMenuList 	 */ 
-	public List<EgovMap> getSubMenuList() {
+	public List<MenuVO> getSubMenuList() {
 		return subMenuList;
 	}
-	public void setSubMenuList(List<EgovMap> subMenuList) {
+	public void setSubMenuList(List<MenuVO> subMenuList) {
 		this.subMenuList = subMenuList;
+	}
+
+	/** EmplyrId 	 */ 
+	public String getCurMenuNm() {
+		return curMenuNm;
+	}
+	public void setCurMenuNm(String curMenuNm) {
+		this.curMenuNm = curMenuNm;
 	}
 
 }

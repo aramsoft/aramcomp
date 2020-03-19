@@ -33,7 +33,7 @@
 
 <form:form modelAttribute="qnaManageVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
-<input type="hidden" name="curMenuNo" value="${curMenuNo}" />
+<input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
 <input name="qaId" type="hidden" value="">
 

@@ -38,7 +38,7 @@
 
 <form:form modelAttribute="batchSchdulVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
-<input type="hidden" name="curMenuNo" value="${curMenuNo}" />
+<input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
 <table class="table-register" summary="배치스케줄등록을 위한 테이블.">
 <caption>배치스케줄 등록</caption>

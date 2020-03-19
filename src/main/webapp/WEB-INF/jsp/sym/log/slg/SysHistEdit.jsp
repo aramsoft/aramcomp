@@ -52,7 +52,7 @@
 
 <form:form modelAttribute="sysHistoryVO" method="post" enctype="multipart/form-data">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
-<input type="hidden" name="curMenuNo" value="${curMenuNo}" />
+<input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
 <form:hidden path="histId" />
 

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
+import aramframework.com.cmm.domain.MenuVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.bbs.domain.BoardMasterVO;
@@ -59,11 +60,11 @@ public class CmyMenuHomeController  {
 	 * 
 	 * @param appId
 	 */
-	@RequestMapping(value="/apps/{appAlias}", method=RequestMethod.GET)
-	public String directCmmntyHomePage(@PathVariable String appAlias) {
+	@RequestMapping(value="/apps/{appNm}", method=RequestMethod.GET)
+	public String directCmmntyHomePage(@PathVariable String appNm) {
 
 //		String cmmntyId = WebUtil.getOriginalId(appId, "CMMNTY_");
-		String cmmntyId = cmmntyService.selectCommntyHomeUrl("/apps/"+appAlias);
+		String cmmntyId = cmmntyService.selectCommntyHomeUrl("/apps/"+appNm);
 		if( cmmntyId == null ) {
 			throw new RuntimeException("cmmntyId is not found !!!");
 		}
@@ -77,23 +78,23 @@ public class CmyMenuHomeController  {
 	 * @param appId
 	 * @param menuAlias
 	 */
-	@RequestMapping(value="/apps/{appAlias}/{menuAlias}", method=RequestMethod.GET)
+	@RequestMapping(value="/apps/{appNm}/{menuNm}", method=RequestMethod.GET)
 	public String directCmmntyHomeMenuPage(
-			@PathVariable String appAlias,			
-			@PathVariable String menuAlias) { 
+			@PathVariable String appNm,			
+			@PathVariable String menuNm) { 
 
 //		String cmmntyId = WebUtil.getOriginalId(appId, "CMMNTY_");
-		String cmmntyId = cmmntyService.selectCommntyHomeUrl("/apps/"+appAlias);
+		String cmmntyId = cmmntyService.selectCommntyHomeUrl("/apps/"+appNm);
 		if( cmmntyId == null ) {
 			throw new RuntimeException("cmmntyId is not found !!!");
 		}
 		
-		String menuId = cmyMeunService.selectMenuNoByMenuAlias(cmmntyId, menuAlias);
-		if( menuId == null ) {
-			throw new RuntimeException("menuId is not found !!!");
+		String menuPos = cmyMeunService.selectMenuPosByMenuNm(cmmntyId, menuNm);
+		if( menuPos == null ) {
+			throw new RuntimeException("menuPos is not found !!!");
 		}
 		
-		return cmmntyMainPageHandler(cmmntyId, menuId, "");
+		return cmmntyMainPageHandler(cmmntyId, menuPos, "");
 	}
 
 	/**
@@ -166,24 +167,25 @@ public class CmyMenuHomeController  {
 
 	private String cmmntyMainPageHandler(
 			String cmmntyId, 
-			String menuId, 
+			String menuPos, 
 			String contentUrl) {
 
 		if( cmmntyId == null || cmmntyId.equals("") ) {
 			throw new RuntimeException("cmmntyId not found");
 		}
 		
-        CommunityVO communityVO = cmmntyService.getCommunityFullInfo(cmmntyId, menuId);
+        CommunityVO communityVO = cmmntyService.getCommunityLayoutInfo(cmmntyId, menuPos);
 
         // --------------------------------
 		// 컨텐트 URL 정보
 		// --------------------------------
-		if( "".equals(menuId) && communityVO.getTopMenuList().size() != 0 ) {
-			menuId = communityVO.getTopMenuList().get(0).get("menuNo").toString();
+		if( "".equals(menuPos) && communityVO.getTopMenuList().size() != 0 ) {
+			menuPos = communityVO.getTopMenuList().get(0).getMenuPos();
 		}
 		
 		if( "".equals(contentUrl) ) {
-			contentUrl = cmmntyService.getMenuInfo(communityVO, menuId, "contentURL");
+			MenuVO menuVO = cmmntyService.getMenuInfo(communityVO, menuPos);
+			contentUrl = menuVO.getContentUrl();
 			if( "".equals(contentUrl) ) {
 				contentUrl =  "/cop/cmy/CmmntyMainContents.do";
 			}
@@ -191,7 +193,7 @@ public class CmyMenuHomeController  {
 		
 		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
 		requestAttributes.setAttribute("curTrgetId", communityVO.getCmmntyId(), RequestAttributes.SCOPE_REQUEST);
-		requestAttributes.setAttribute("curMenuNo", menuId, RequestAttributes.SCOPE_REQUEST);
+		requestAttributes.setAttribute("curMenuPos", menuPos, RequestAttributes.SCOPE_REQUEST);
 
 	   	return "forward:"+contentUrl;
 	}

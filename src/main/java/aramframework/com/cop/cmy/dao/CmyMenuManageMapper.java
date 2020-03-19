@@ -77,13 +77,13 @@ public interface CmyMenuManageMapper {
 	 * 
 	 * @param communityMenuVO
 	 */
-	public int selectMenuNoByPk(CommunityMenuVO communityMenuVO);
+	public int selectMenuNmByPk(CommunityMenuVO communityMenuVO);
 
 	/**
-	 * 메뉴별명으로부터 메뉴번호 조회
+	 * 메뉴명으로부터 메뉴위치 조회
 	 * 
 	 * @param communityMenuVO
 	 */
-	public String selectMenuNoByMenuAlias(CommunityMenuVO communityMenuVO);
+	public String selectMenuPosByMenuNm(CommunityMenuVO communityMenuVO);
 
 }

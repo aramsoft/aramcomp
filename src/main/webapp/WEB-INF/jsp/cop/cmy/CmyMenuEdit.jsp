@@ -39,7 +39,7 @@
 
 <form:form modelAttribute="communityMenuVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
-<input type="hidden" name="curMenuNo" value="${curMenuNo}" />
+<input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
 <input type="hidden" name="trgetId" value="${curTrgetId}" />
 
@@ -48,42 +48,32 @@
   	<tr>
     	<th width="20%">
     		<span class="required_icon"></span>
-    		<label for="menuNo">메뉴No</label>
-    	</th>
-    	<td width="30%">
-      		&nbsp;<c:out value="${communityMenuVO.menuNo}"/>
-      		<form:hidden path="menuNo" />
-      		<form:errors path="menuNo" cssClass="error"/>
-    	</td>
-    	<th width="20%"  scope="row">
-    		<span class="required_icon"></span>
-    		<label for="newMenuNo">새메뉴 No</label>
-    	</th>
-    	<td width="30%">
-      		&nbsp;
-      		<form:input path="newMenuNo" size="10" maxlength="10" title="새메뉴No"/>
-      		<form:errors path="newMenuNo" cssClass="error"/>
-    	</td>
-  	</tr>
-  	<tr>
-    	<th>
-    		<span class="required_icon"></span>
-    		<label for="menuAlias">메뉴별명</label>
-    	</th>
-    	<td colspan="3">
-        	&nbsp;
-      		<form:input path="menuAlias" size="30" maxlength="30" title="메뉴별명"/>
-      		<form:errors path="menuAlias" cssClass="error"/>
-    	</td>
-  	</tr>
-  	<tr>
-    	<th>
-    		<span class="required_icon"></span>
     		<label for="menuNm">메뉴명</label>
     	</th>
-    	<td>&nbsp;
-      		<form:input path="menuNm" size="30" maxlength="30" title="메뉴명"/>
+    	<td colspan="3">
+      		&nbsp;<c:out value="${communityMenuVO.menuNm}"/>
+      		<form:hidden path="menuNm" />
       		<form:errors path="menuNm" cssClass="error"/>
+    	</td>
+  	</tr>
+  	<tr>
+     	<th >
+    		<span class="required_icon"></span>
+    		<label for="menuKnm">메뉴한글명</label>
+    	</th>
+    	<td colspan="3">&nbsp;
+      		<form:input path="menuKnm" size="30" maxlength="30" title="메뉴한글명"/>
+      		<form:errors path="menuKnm" cssClass="error"/>
+    	</td>
+	</tr>
+  	<tr>
+    	<th>
+    		<span class="required_icon"></span>
+    		<label for="menuPos">메뉴위치</label>
+    	</th>
+    	<td>&nbsp;
+      		<form:input path="menuPos" size="30" maxlength="30" title="메뉴위치"/>
+      		<form:errors path="menuPos" cssClass="error"/>
     	</td>
 	    <th>
 	    	<span class="norequired_icon"></span>
@@ -211,10 +201,8 @@ function fn_aram_delete() {
 ******************************************************** */
 function fn_validatorMenuList() {
 	var varForm = document.getElementById("communityMenuVO");
-	if(varForm.menuNo.value == ""){alert("메뉴번호는 Not Null 항목입니다."); return false;}
-	if(!checkNumber(varForm.menuNo.value)){alert("메뉴번호는 숫자만 입력 가능합니다."); return false;}
-
-	if(varForm.menuNm.value == ""){alert("메뉴명은 Not Null 항목입니다."); return false;}
+	if(varForm.menuNm.value == ""){alert("메뉴번호는 Not Null 항목입니다."); return false;}
+	if(!checkNumber(varForm.menuPos.value)){alert("메뉴위치는 숫자만 입력 가능합니다."); return false;}
 	if(varForm.progrmFileNm.value == "" 
 		&& varForm.directUrl == ""){alert("프로그램파일명 , 바로가기URL 둘중 하나는 값이 있어야 합니다."); return false;}
 

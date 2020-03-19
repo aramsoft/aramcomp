@@ -61,13 +61,13 @@ public class CmyMenuManageService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param checkedMenuNoForDel
 	 */
-	public void deleteMenuManageList(String trgetId, String[] delMenuNos) {
+	public void deleteMenuManageList(String trgetId, String[] delMenuNms) {
 
 		CommunityMenuVO communityMenuVO = null;
-		for (int i = 0; i < delMenuNos.length; i++) {
+		for (int i = 0; i < delMenuNms.length; i++) {
 			communityMenuVO = new CommunityMenuVO();
 			communityMenuVO.setTrgetId(trgetId);
-			communityMenuVO.setMenuNo(Integer.parseInt(delMenuNos[i]));
+			communityMenuVO.setMenuNm(delMenuNms[i]);
 			cmyMenuManageMapper.deleteMenuManage(communityMenuVO);
 		}
 	}
@@ -81,25 +81,12 @@ public class CmyMenuManageService extends EgovAbstractServiceImpl {
 		return cmyMenuManageMapper.selectMenuManage(communityMenuVO);
 	}
 
-	private void checkMenuAlias(CommunityMenuVO communityMenuVO) {
-		String menuAlias = communityMenuVO.getMenuAlias();
-		if( menuAlias == null || "".equals(menuAlias) ) {
-			communityMenuVO.setMenuAlias(String.valueOf(communityMenuVO.getMenuNo()));
-		} else {
-			try{
-				Integer.parseInt(menuAlias);
-				communityMenuVO.setMenuAlias(String.valueOf(communityMenuVO.getMenuNo()));
-			} catch(Exception ex) {	}
-		}
-	}
-	
 	/**
 	 * 메뉴 정보를 등록
 	 * 
 	 * @param communityMenuVO
 	 */
 	public void insertMenuManage(CommunityMenuVO communityMenuVO) {
-		checkMenuAlias(communityMenuVO);
 		cmyMenuManageMapper.insertMenuManage(communityMenuVO);
 	}
 
@@ -109,7 +96,6 @@ public class CmyMenuManageService extends EgovAbstractServiceImpl {
 	 * @param communityMenuVO
 	 */
 	public void updateMenuManage(CommunityMenuVO communityMenuVO) {
-		checkMenuAlias(communityMenuVO);
 		cmyMenuManageMapper.updateMenuManage(communityMenuVO);
 	}
 
@@ -127,21 +113,21 @@ public class CmyMenuManageService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param communityMenuVO
 	 */
-	public int selectMenuNoByPk(CommunityMenuVO communityMenuVO) {
-		return cmyMenuManageMapper.selectMenuNoByPk(communityMenuVO);
+	public int selectMenuNmByPk(CommunityMenuVO communityMenuVO) {
+		return cmyMenuManageMapper.selectMenuNmByPk(communityMenuVO);
 	}
 
 	/**
-	 * 메뉴별명으로부터 메뉴번호 조회
+	 * 메뉴명으로부터 메뉴위치 조회
 	 * 
 	 * @param cmmntyId
 	 * @param menuAlias
 	 */
-	public String selectMenuNoByMenuAlias(String cmmntyId, String menuAlias) {
+	public String selectMenuPosByMenuNm(String cmmntyId, String menuNm) {
 		CommunityMenuVO communityMenuVO = new CommunityMenuVO();
 		communityMenuVO.setTrgetId(cmmntyId);
-		communityMenuVO.setMenuAlias(menuAlias);
-		return cmyMenuManageMapper.selectMenuNoByMenuAlias(communityMenuVO);
+		communityMenuVO.setMenuNm(menuNm);
+		return cmyMenuManageMapper.selectMenuPosByMenuNm(communityMenuVO);
 	}
 	
 	/**

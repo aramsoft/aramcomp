@@ -64,7 +64,7 @@
 
 <form:form modelAttribute="boardVO"  method="post" action="">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
-<input type="hidden" name="curMenuNo" value="${curMenuNo}" />
+<input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
 <form:hidden path="bbsId" />
 <form:hidden path="nttId" />

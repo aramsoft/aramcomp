@@ -41,7 +41,7 @@
 
 <form:form modelAttribute="userManageVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
-<input type="hidden" name="curMenuNo" value="${curMenuNo}" />
+<input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
 <!-- 상세정보 사용자 삭제시 prameter 전달용 input -->
 <input type="hidden" name="checkedIdForDel"  />

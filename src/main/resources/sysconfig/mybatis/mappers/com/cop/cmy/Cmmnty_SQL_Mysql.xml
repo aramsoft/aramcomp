@@ -195,7 +195,7 @@
 	</update>	
 	
 	<!-- 커뮤니티 메뉴 -->
-	<select id="selectCommunityTopMenuInfs" resultType="egovMap" >
+	<select id="selectCommunityTopMenuInfs" resultType="menuVO" >
 		<![CDATA[
 			SELECT A.MENU_NM				AS "menuNm"
 			     , A.MENU_KNM				AS "menuKnm"
@@ -215,7 +215,7 @@
 		]]>	
 	</select>	 
 	
-	<select id="selectCommunityMgrMenuInfs" resultType="egovMap" >
+	<select id="selectCommunityMgrMenuInfs" resultType="menuVO" >
 		<![CDATA[
 			SELECT A.MENU_NO				AS "menuNo"
 			     , A.MENU_ALIAS				AS "menuAlias"
@@ -235,7 +235,7 @@
 		]]>	
 	</select>
 		
-	<select id="selectCommunitySubMenuInfs" resultType="egovMap" >
+	<select id="selectCommunitySubMenuInfs" resultType="menuVO" >
 		<![CDATA[
 			SELECT A.MENU_NO				AS "menuNo"
 			     , A.MENU_ALIAS				AS "menuAlias"

@@ -7,8 +7,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%
  /**
-  * @Class Name : appsDefault.jsp
-  * @Description : 앱스 기본 템플릿
+  * @Class Name : CmmntyBaseTmpl.jsp
+  * @Description : 커뮤니티 기본 템플릿
   * @Modification Information
   * @
   * @ 수정일              수정자          수정내용
@@ -30,12 +30,11 @@
 <c:if test="${fn:length(mainTitle) != 0}"><c:out value="${boardVO.nttSj}" /></c:if>
 </title>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/aramframework/com/cmm/mcm.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/aramframework/com/cmm/com.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/aramframework/com/cmm/button.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/cmm/mcm.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/cmm/com.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/cmm/button.css" type="text/css">
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/aramframework/com/cmm/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/aramframework/com/cmm/utl/CmmUtl.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/cmm/jquery-1.7.1.min.js"></script>
 
 </head>
 
@@ -85,7 +84,7 @@
 		<nav id="user_menu">
 			<ul>
 			<c:forEach var="menu" items="${targetVO.topMenuList}" varStatus="status">
-		        <li><a href="#" onclick="javascript:fn_aram_loadMenu('<c:out value="${menu.menuAlias}"/>'); return false;"><c:out value="${menu.menuNm}"/></a></li>
+		        <li><a href="#" onclick="javascript:fn_aram_loadMenu('<c:out value="${menu.menuNm}"/>'); return false;"><c:out value="${menu.menuKnm}"/></a></li>
 			</c:forEach>
 			</ul>
 		</nav>
@@ -96,7 +95,7 @@
 		<nav id="manager_menu">
 			<ul>
 			<c:forEach var="menu" items="${targetVO.mgrMenuList}" varStatus="status">
-		        <li><a href="#" onclick="javascript:fn_aram_loadMenu('<c:out value="${menu.menuAlias}"/>'); return false;"><c:out value="${menu.menuNm}"/></a></li>
+		        <li><a href="#" onclick="javascript:fn_aram_loadMenu('<c:out value="${menu.menuNm}"/>'); return false;"><c:out value="${menu.menuKnm}"/></a></li>
 			</c:forEach>
 		    <li><a href="#" onclick="javascript:fn_aram_loadMenuUrl('<c:url value="/cop/cmy/listMenu.do"/>', '000000'); return false;">메뉴관리</a></li>
 			</ul>
@@ -119,7 +118,7 @@
 	       		<c:when test="${status.count == 1}">
 	       			<li class="leftmenu_dept01">
 	       				<span class="leftbar"></span>
-	                	<span class="menubar"><c:out value="${submenu.menuNm}"/></span>	
+	                	<span class="menubar"><c:out value="${submenu.menuKnm}"/></span>	
 	       				<span class="rightbar"></span>
 	      			</li>
 	       		</c:when>
@@ -127,8 +126,8 @@
 	       		<c:otherwise>
 	      			<li class="leftmenu_dept02">
 	          			<span class="menubar"></span>
-	          			<a href="#" onclick="javascript:fn_aram_loadMenu('<c:out value="${submenu.menuAlias}"/>'); return false;">
-	          				<c:out value="${submenu.menuNm}"/>
+	          			<a href="#" onclick="javascript:fn_aram_loadMenu('<c:out value="${submenu.menuNm}"/>'); return false;">
+	          				<c:out value="${submenu.menuKnm}"/>
 	          			</a>
 	      			</li>
 	       		</c:otherwise>
@@ -182,8 +181,8 @@
 <c:if test="${preview == null || preview !='true'}">
 <script type="text/javascript">
 
-var cur_menuNo = "${curMenuNo}";
-var cur_menuAlias = "${menuAlias}";
+var cur_menuPos = "${curMenuPos}";
+var cur_menuNm = "${targetVO.curMenuNm}";
 
 function fn_aram_goCmmntyHome(){
 	var url = "${pageContext.request.contextPath}${targetVO.homeUrl}";
@@ -193,7 +192,7 @@ function fn_aram_goCmmntyHome(){
 function fn_aram_login(){
 	var url = "${pageContext.request.contextPath}/uat/uia/loginUsr.do";
 	url = url + "?targetUrl=" + get_curmenu_url();
-	url = url + "&curTrgetId=${targetVO.cmmntyId}&curMenuNo="+cur_menuNo;
+	url = url + "&curTrgetId=${targetVO.cmmntyId}&curMenuPos="+cur_menuPos;
 	fn_aram_load(url);
 }
 
@@ -203,22 +202,22 @@ function fn_aram_logout(){
 	fn_aram_load(url);
 }
 
-function fn_aram_loadMenu(menuAlias){
-	url = "${pageContext.request.contextPath}${targetVO.homeUrl}/" + menuAlias;
+function fn_aram_loadMenu(menuNm){
+	url = "${pageContext.request.contextPath}${targetVO.homeUrl}/" + menuNm;
 	fn_aram_load(url);
 }
 
-function fn_aram_loadMenuUrl(url, menuNo){
+function fn_aram_loadMenuUrl(url, menuPos){
   	if( url.indexOf('?') != -1 ) {
-		url = url+"&curTrgetId=${targetVO.cmmntyId}&curMenuNo="+menuNo;
+		url = url+"&curTrgetId=${targetVO.cmmntyId}&curMenuPos="+menuPos;
 	} else {
-		url = url+"?curTrgetId=${targetVO.cmmntyId}&curMenuNo="+menuNo;
+		url = url+"?curTrgetId=${targetVO.cmmntyId}&curMenuPos="+menuPos;
 	}
 	fn_aram_load(url);
 }
 
 function get_curmenu_url() {
-	return "${pageContext.request.contextPath}${targetVO.homeUrl}/" + cur_menuAlias;
+	return "${pageContext.request.contextPath}${targetVO.homeUrl}/" + cur_menuNm;
 }
 
 function fn_aram_load(url) {
@@ -227,9 +226,10 @@ function fn_aram_load(url) {
 
 function fn_aram_subscribe(){
 	var url = "${pageContext.request.contextPath}/uss/umt/stplatMberView.do";
-	url = url + "?curTrgetId=${targetVO.cmmntyId}&curMenuNo="+cur_menuNo;
+	url = url + "?curTrgetId=${targetVO.cmmntyId}&curMenuPos="+cur_menuPos;
 	fn_aram_load(url);
 }
+
 </script>
 </c:if>
 

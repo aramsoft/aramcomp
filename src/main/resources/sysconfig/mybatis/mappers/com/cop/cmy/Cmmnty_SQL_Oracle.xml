@@ -205,9 +205,9 @@
 	<!-- 커뮤니티 메뉴 -->
 	<select id="selectCommunityTopMenuInfs" resultType="egovMap" >
 		<![CDATA[
-			SELECT A.MENU_NO				AS "menuNo"
-			     , A.MENU_ALIAS				AS "menuAlias"
-			     , A.MENU_NM				AS "menuNm"
+			SELECT A.MENU_NM				AS "menuNm"
+			     , A.MENU_KNM				AS "menuKnm"
+			     , A.MENU_POS				AS "menuPos"
 			     , NVL(A.DIRECT_URL,			
 				       (SELECT B.URL 
 				          FROM COMTN_PROGRM_LIST B 
@@ -219,15 +219,15 @@
 			   AND A.USE_AT = 'Y'
 			   AND A.MGR_AT = 'N'
 			   AND A.TOPMENU_AT = 'Y'
-			 ORDER BY A.MENU_NO ASC  	
+			 ORDER BY A.MENU_POS ASC  	
 		]]>	
 	</select>	 
 	
 	<select id="selectCommunityMgrMenuInfs" resultType="egovMap" >
 		<![CDATA[
-			SELECT A.MENU_NO				AS "menuNo"
-			     , A.MENU_ALIAS				AS "menuAlias"
-			     , A.MENU_NM				AS "menuNm"
+			SELECT A.MENU_NM				AS "menuNm"
+			     , A.MENU_KNM				AS "menuKnm"
+			     , A.MENU_POS				AS "menuPos"
 			     , NVL(A.DIRECT_URL,			
 				       (SELECT B.URL 
 				          FROM COMTN_PROGRM_LIST B 
@@ -239,15 +239,15 @@
 			   AND A.USE_AT = 'Y'
 			   AND A.MGR_AT = 'Y'	
 			   AND A.TOPMENU_AT = 'Y'
-			 ORDER BY A.MENU_NO ASC  	
+			 ORDER BY A.MENU_POS ASC  	
 		]]>	
 	</select>
 		
 	<select id="selectCommunitySubMenuInfs" resultType="egovMap" >
 		<![CDATA[
-			SELECT A.MENU_NO				AS "menuNo"
-			     , A.MENU_ALIAS				AS "menuAlias"
-			     , A.MENU_NM				AS "menuNm"
+			SELECT A.MENU_NM				AS "menuNm"
+			     , A.MENU_KNM				AS "menuKnm"
+			     , A.MENU_POS				AS "menuPos"
 			     , NVL(A.DIRECT_URL,			
 				       (SELECT B.URL 
 				          FROM COMTN_PROGRM_LIST B 
@@ -257,9 +257,8 @@
 			  FROM COMTN_CMMNTY_MENU A
 			 WHERE A.TRGET_ID = #{trgetId}
 			   AND A.USE_AT = 'Y'
-			   AND A.MENU_NO >= #{menuNo}
-			   AND A.MENU_NO < #{menuNo} + 100000
-			 ORDER BY A.MENU_NO ASC  	
+			   AND A.MENU_POS LIKE  #{menuPos}||'%'
+			 ORDER BY A.MENU_POS ASC  	
 		]]>	
 	</select>
 		

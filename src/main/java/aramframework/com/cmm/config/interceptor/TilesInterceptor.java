@@ -88,6 +88,8 @@ public class TilesInterceptor extends HandlerInterceptorAdapter {
 		String cmmntyId = (String) request.getAttribute("curTrgetId");
 		String menuPos = (String) request.getAttribute("curMenuPos");
 		
+//		LOG.debug("cmmntyId = " + cmmntyId + ", menuPos = " + menuPos);
+		
 		if (cmmntyId == null || !cmmntyId.startsWith("CMMNTY_") || "".equals(menuPos)) {
 			return;
 		}
@@ -104,7 +106,7 @@ public class TilesInterceptor extends HandlerInterceptorAdapter {
 		// 커뮤니티 템플릿 정보
 		// --------------------------------
 		String tmplatCours = communityVO.getTmplatCours();
-    	if ("".equals(tmplatCours) || tmplatCours == null) {
+    	if (tmplatCours == null || "".equals(tmplatCours) ) {
     		return;
     	}
 

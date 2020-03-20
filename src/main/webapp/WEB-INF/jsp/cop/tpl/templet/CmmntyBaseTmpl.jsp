@@ -245,7 +245,7 @@ function fn_aram_updateUser(userSe){
 		url = "${pageContext.request.contextPath}/uss/umt/editUser.do";
 	}	
 	url = url + "?uniqId=${loginVO.uniqId}";
-	url = url + "&curTrgetId=${targetVO.cmmntyId}&curMenuNm="+cur_menuNm;
+	url = url + "&curTrgetId=${targetVO.cmmntyId}&curMenuPos="+cur_menuPos;
 	fn_aram_load(url);
 }
 

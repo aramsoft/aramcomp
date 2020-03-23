@@ -7,16 +7,16 @@ aramsoft common library
   
 ##2. Demo화면  
   웹 :   
-  <http://52.79.93.135>   
+  <http://www.aramsoft.co.kr>   
   (관리자 ID : 업무/TEST1/rhdxhd12)    
   커뮤니티 :   
-  <http://52.79.93.135/apps/opensource>  
+  <http://www.aramsoft.co.kr/apps/opensource>  
  
 ##3. 설치 방법
 
 ##4. 문의 사항
    아래 게시판을 이용해 주세요.  
-   <http://52.79.93.135/apps/opensource/bugissue>
+   <http://www.aramsoft.co.kr/apps/opensource/bugissue>
 
 ##5. Licence 
    Apache Licence 2.0

@@ -88,7 +88,7 @@ public class TilesInterceptor extends HandlerInterceptorAdapter {
 		String cmmntyId = (String) request.getAttribute("curTrgetId");
 		String menuPos = (String) request.getAttribute("curMenuPos");
 		
-//		LOG.debug("cmmntyId = " + cmmntyId + ", menuPos = " + menuPos);
+		LOG.debug("cmmntyId = " + cmmntyId + ", menuPos = " + menuPos);
 		
 		if (cmmntyId == null || !cmmntyId.startsWith("CMMNTY_") || "".equals(menuPos)) {
 			return;
@@ -115,6 +115,8 @@ public class TilesInterceptor extends HandlerInterceptorAdapter {
 		Request tilesRequest = new ServletRequest(tilesAppContext, request, response);
 		BasicTilesContainer container = (BasicTilesContainer) TilesAccess.getContainer(tilesAppContext);
 		AttributeContext attributeContext = container.getAttributeContext(tilesRequest);
+
+		LOG.debug("tmplatCours = " + tmplatCours);
 
 		if (tmplatCours.indexOf("/WEB-INF/") != -1) {
 			attributeContext.setTemplateAttribute(new Attribute(tmplatCours+".jsp"));					// WEB-INF 포함 jsp 파일

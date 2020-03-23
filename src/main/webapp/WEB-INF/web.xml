@@ -60,7 +60,6 @@
     <servlet-mapping>
         <servlet-name>action</servlet-name>
         <url-pattern>*.do</url-pattern>
-        <url-pattern>*.mdo</url-pattern>
  		<url-pattern>/files/*</url-pattern> 
 		<url-pattern>/board/*</url-pattern> 
  		<url-pattern>/apps/*</url-pattern> 

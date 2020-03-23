@@ -13,10 +13,23 @@
 		        <TimeBasedTriggeringPolicy />
 		      </Policies>
 		</RollingRandomAccessFile>		
+		<RollingRandomAccessFile name="kormorfile" fileName="/var/log/webapps/kormorweb/kormorfile.log"
+		                 filePattern="/var/log/webapps/kormorweb/kormorfile.log.%d{yyyy-MM-dd}">
+		      <PatternLayout>
+		        <Pattern>[%d{MM/dd HH:mm:ss}] %m%n</Pattern>
+		      </PatternLayout>
+		      <Policies> 
+		        <TimeBasedTriggeringPolicy />
+		      </Policies>
+		</RollingRandomAccessFile>		
     </Appenders>
     <Loggers>
         <Logger name="aramframework" level="DEBUG" additivity="false">
             <AppenderRef ref="file" />
+        </Logger>
+        
+        <Logger name="KORMORAN" level="DEBUG" additivity="false">
+            <AppenderRef ref="kormorfile" />
         </Logger>
         
 		<!-- log SQL with timing information, post execution -->

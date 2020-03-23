@@ -17,4 +17,5 @@ public class NounEomiCombinationRuleChecker implements CombinationRuleChecker {
         }
         return true;
     }
+    
 }

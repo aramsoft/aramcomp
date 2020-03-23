@@ -28,14 +28,13 @@ package kr.co.shineware.nlp.komoran.constant;
  */
 public class SCORE {
 	public static final double NA = -10000.0;
-	public static final double SL = -1.00;
-	public static final double SN = -1.00;
-	public static final double SH = -1.00;
+	public static final double SL = -1.00;		// 외국어SL
+	public static final double SN = -1.00;		// 숫자SN
+	public static final double SH = -1.00;		// 한자SH
 	
-	
-	public static final double SF = -1.00;
-	public static final double SW = -10000.0;
-	public static final double SP = -1.00;
-	public static final double SS = -1.00;
-	public static final double SO = -1.00;	
+	public static final double SF = -1.00;		// 마침표,물음표,느낌표SF
+	public static final double SW = -10000.0;	// 기타기호(논리수학기호,화폐기호)SW
+	public static final double SP = -1.00;		// 쉼표,가운뎃점,콜론,빗금SP
+	public static final double SS = -1.00;		// 따옴표,괄호표,줄표SS
+	public static final double SO = -1.00;		// 붙임표(물결,숨김,빠짐)SO
 }

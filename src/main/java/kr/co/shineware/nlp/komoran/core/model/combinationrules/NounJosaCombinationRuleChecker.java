@@ -1,7 +1,6 @@
 package kr.co.shineware.nlp.komoran.core.model.combinationrules;
 
 import kr.co.shineware.nlp.komoran.constant.SEJONGTAGS;
-import kr.co.shineware.nlp.komoran.constant.SYMBOL;
 import kr.co.shineware.nlp.komoran.core.model.MorphUtil;
 import kr.co.shineware.nlp.komoran.core.model.TagUtil;
 

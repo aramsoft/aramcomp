@@ -50,7 +50,7 @@ public class MergedCombinationRuleChecker implements CombinationRuleChecker {
         }
         //명사형 전성어미
         else if (SEJONGTAGS.ETN_ID == tagId) {
-            boolean hasJongsung = this.morphUtil.hasJongsung(prevMorph);
+//            boolean hasJongsung = this.morphUtil.hasJongsung(prevMorph);
             if (this.morphUtil.isSameJaso(morph, "ㅇㅡㅁ")) {
                 return this.morphUtil.hasJongsung(prevMorph);
             } else if(this.morphUtil.isSameJaso(morph, "ㅁ")){

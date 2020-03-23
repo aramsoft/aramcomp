@@ -205,7 +205,6 @@ public class Komoran implements Cloneable {
         System.out.println(currentMorph+ " : "+scoredTag);
 
         return transitionScore + scoredTag.getScore();
-
     }
 
     private ScoredTag getScoredTag(String jasoUnits, FindContext<List<ScoredTag>> findContext, String posResult) {
@@ -246,7 +245,6 @@ public class Komoran implements Cloneable {
         //start 노드 또는 end 노드의 바로 다음 인덱스
         //어절의 시작을 알리는 idx
         int whitespaceIndex = 0;
-        boolean inserted;
 
         for (int curJasoIndex = 0; curJasoIndex < length; curJasoIndex++) {
 
@@ -270,16 +268,15 @@ public class Komoran implements Cloneable {
             //기타 기호인 경우
             this.symbolParsing(lattice, jasoUnits.charAt(curJasoIndex), curJasoIndex); // 기타 심볼 파싱
             this.userDicParsing(lattice, jasoUnits.charAt(curJasoIndex), curJasoIndex); //사용자 사전 적용
-
             this.regularParsing(lattice, jasoUnits.charAt(curJasoIndex), curJasoIndex); //일반규칙 파싱
             this.irregularParsing(lattice, jasoUnits.charAt(curJasoIndex), curJasoIndex); //불규칙 파싱
             this.irregularExtends(lattice, jasoUnits.charAt(curJasoIndex), curJasoIndex); //불규칙 확장
         }
 
-
         this.consumeContiniousSymbolParserBuffer(lattice, jasoUnits, continuousSymbolBuffer);
+
         lattice.setLastIdx(jasoUnits.length());
-        inserted = lattice.appendEndNode();
+        boolean inserted = lattice.appendEndNode();
         //입력 문장의 끝에 END 품사가 올 수 없는 경우
         if (!inserted) {
             double NAPenaltyScore = SCORE.NA;
@@ -313,69 +310,7 @@ public class Komoran implements Cloneable {
         return nbestResultList;
     }
 
-    private void bridgeToken(Lattice lattice, int curIdx, String jasoUnits, int prevBeginSymbolIdx, List<Pair<Character, KoreanUnitParser.UnitType>> jasoUnitsWithType) {
-
-        if (lattice.put(curIdx, curIdx + 1, SYMBOL.EOE, SYMBOL.EOE, SEJONGTAGS.EOE_ID, 0.0)) {
-            return;
-        }
-        //공백이라면 END 기호를 삽입
-        LatticeNode naLatticeNode = lattice.makeNode(prevBeginSymbolIdx, curIdx, unitParser.combineWithType(jasoUnitsWithType.subList(prevBeginSymbolIdx, curIdx)), SYMBOL.NA, this.resources.getPosTable().getId(SYMBOL.NA), SCORE.NA, 0);
-
-        int naNodeIndex = lattice.appendNode(naLatticeNode);
-        LatticeNode endLatticeNode = lattice.makeNode(curIdx, curIdx + 1, SYMBOL.EOE, SYMBOL.EOE, SEJONGTAGS.EOE_ID, 0.0, naNodeIndex);
-        lattice.appendNode(endLatticeNode);
-    }
-
-    private void symbolParsing(Lattice lattice, char jaso, int idx) {
-
-        Character.UnicodeBlock unicodeBlock = Character.UnicodeBlock.of(jaso);
-        //숫자
-        if (StringUtil.isNumeric(jaso)) {
-        } else if (unicodeBlock == Character.UnicodeBlock.BASIC_LATIN) {
-            if (!isEnglishCharacter(jaso) && !isWhitespaceCharacter(jaso) && !isDictionaryEntryCharacter(jaso)) {
-                lattice.put(idx, idx + 1, "" + jaso, SYMBOL.SW, SEJONGTAGS.SW_ID, SCORE.SW);
-            }
-        } else if (!StringUtil.isKorean(jaso) && !StringUtil.isJapanese(jaso) && !StringUtil.isChinese(jaso)) {
-            lattice.put(idx, idx + 1, "" + jaso, SYMBOL.SW, SEJONGTAGS.SW_ID, SCORE.SW);
-        }
-    }
-
-    private boolean isDictionaryEntryCharacter(char jaso) {
-        return this.resources.getObservation().getTrieDictionary().getValue("" + jaso) != null;
-    }
-
-    private boolean isWhitespaceCharacter(char jaso) {
-        return jaso == ' ';
-    }
-
-    private boolean isEnglishCharacter(char jaso) {
-        return ((jaso >= 'A') && (jaso <= 'Z')) || ((jaso >= 'a') && (jaso <= 'z'));
-    }
-
-    private void userDicParsing(Lattice lattice, char jaso, int curIndex) {
-        //Aho-corasick TRIE 기반의 사전 검색하여 형태소와 품사 및 품사 점수(observation)를 얻어옴
-        Map<String, List<ScoredTag>> morphScoredTagsMap = lattice.retrievalUserDicObservation(jaso);
-
-        if (morphScoredTagsMap == null || morphScoredTagsMap.size() == 0) {
-            return;
-        }
-
-        //형태소 정보만 얻어옴
-        Set<String> morphes = morphScoredTagsMap.keySet();
-
-        //각 형태소와 품사 정보를 lattice에 삽입
-        for (String morph : morphes) {
-            int beginIdx = curIndex - morph.length() + 1;
-            int endIdx = curIndex + 1;
-
-            //형태소에 대한 품사 및 점수(observation) 정보를 List 형태로 가져옴
-            List<ScoredTag> scoredTags = morphScoredTagsMap.get(morph);
-            for (ScoredTag scoredTag : scoredTags) {
-                lattice.put(beginIdx, endIdx, morph, scoredTag.getTag(), scoredTag.getTagId(), scoredTag.getScore());
-            }
-        }
-    }
-
+    //////////////////////////////////////////////////////
     private int lookupFwd(Lattice lattice, String token, int curJasoIndex) {
 
         if (this.fwd == null) {
@@ -401,27 +336,31 @@ public class Komoran implements Cloneable {
     }
 
     private void insertLatticeForFwd(Lattice lattice, int beginIdx, int endIdx,
-                                     List<Pair<String, String>> fwdResultList, String targetWord) {
+            List<Pair<String, String>> fwdResultList, String targetWord) {
 
-        //기분석 사전과 targetWord의 문자열이 일치하는 경우
-//        if (hasRegularFWDValues(fwdResultList, targetWord)) {
-//            for (Pair<String, String> morphPosPair : fwdResultList) {
-//                lattice.put(beginIdx, beginIdx + this.unitParser.parse(morphPosPair.getFirst()).length(), morphPosPair.getFirst(), morphPosPair.getSecond(), this.resources.getTable().getId(morphPosPair.getSecond()), 0.0);
-//                beginIdx += beginIdx + this.unitParser.parse(morphPosPair.getFirst()).length();
-//            }
-//        } else {
-        lattice.put(beginIdx, endIdx, fwdResultList);
-//        }
+		//기분석 사전과 targetWord의 문자열이 일치하는 경우
+		//if (hasRegularFWDValues(fwdResultList, targetWord)) {
+		//for (Pair<String, String> morphPosPair : fwdResultList) {
+		//lattice.put(beginIdx, beginIdx + this.unitParser.parse(morphPosPair.getFirst()).length(), morphPosPair.getFirst(), morphPosPair.getSecond(), this.resources.getTable().getId(morphPosPair.getSecond()), 0.0);
+		//beginIdx += beginIdx + this.unitParser.parse(morphPosPair.getFirst()).length();
+		//}
+		//} else {
+		lattice.put(beginIdx, endIdx, fwdResultList);
+		//}
     }
+    
+    ////////////////////////////////////////
+    private void bridgeToken(Lattice lattice, int curIdx, String jasoUnits, int prevBeginSymbolIdx, List<Pair<Character, KoreanUnitParser.UnitType>> jasoUnitsWithType) {
 
-    private boolean hasRegularFWDValues(List<Pair<String, String>> fwdResultList, String targetWord) {
-        StringBuilder fwdMorphs = new StringBuilder();
-
-        for (Pair<String, String> morphPosPair : fwdResultList) {
-            fwdMorphs.append(this.unitParser.parse(morphPosPair.getFirst()));
+        if (lattice.put(curIdx, curIdx + 1, SYMBOL.EOE, SYMBOL.EOE, SEJONGTAGS.EOE_ID, 0.0)) {
+            return;
         }
+        //공백이라면 END 기호를 삽입
+        LatticeNode naLatticeNode = lattice.makeNode(prevBeginSymbolIdx, curIdx, unitParser.combineWithType(jasoUnitsWithType.subList(prevBeginSymbolIdx, curIdx)), SYMBOL.NA, this.resources.getPosTable().getId(SYMBOL.NA), SCORE.NA, 0);
 
-        return fwdMorphs.toString().equals(targetWord);
+        int naNodeIndex = lattice.appendNode(naLatticeNode);
+        LatticeNode endLatticeNode = lattice.makeNode(curIdx, curIdx + 1, SYMBOL.EOE, SYMBOL.EOE, SEJONGTAGS.EOE_ID, 0.0, naNodeIndex);
+        lattice.appendNode(endLatticeNode);
     }
 
     private void continuousSymbolParsing(Lattice lattice, char charAt, int i, ContinuousSymbolBuffer continuousSymbolBuffer) {
@@ -472,6 +411,149 @@ public class Komoran implements Cloneable {
         }
     }
 
+    private void symbolParsing(Lattice lattice, char jaso, int idx) {
+
+        Character.UnicodeBlock unicodeBlock = Character.UnicodeBlock.of(jaso);
+        //숫자
+        if (StringUtil.isNumeric(jaso)) {
+        } else if (unicodeBlock == Character.UnicodeBlock.BASIC_LATIN) {
+            if (!isEnglishCharacter(jaso) && !isWhitespaceCharacter(jaso) && !isDictionaryEntryCharacter(jaso)) {
+                lattice.put(idx, idx + 1, "" + jaso, SYMBOL.SW, SEJONGTAGS.SW_ID, SCORE.SW);
+            }
+        } else if (!StringUtil.isKorean(jaso) && !StringUtil.isJapanese(jaso) && !StringUtil.isChinese(jaso)) {
+            lattice.put(idx, idx + 1, "" + jaso, SYMBOL.SW, SEJONGTAGS.SW_ID, SCORE.SW);
+        }
+    }
+
+    private boolean isDictionaryEntryCharacter(char jaso) {
+        return this.resources.getObservation().getTrieDictionary().getValue("" + jaso) != null;
+    }
+
+    private boolean isWhitespaceCharacter(char jaso) {
+        return jaso == ' ';
+    }
+
+    private boolean isEnglishCharacter(char jaso) {
+        return ((jaso >= 'A') && (jaso <= 'Z')) || ((jaso >= 'a') && (jaso <= 'z'));
+    }
+
+    /////////////////////////////////////////
+    private void userDicParsing(Lattice lattice, char jaso, int curIndex) {
+        //Aho-corasick TRIE 기반의 사전 검색하여 형태소와 품사 및 품사 점수(observation)를 얻어옴
+        Map<String, List<ScoredTag>> morphScoredTagsMap = lattice.retrievalUserDicObservation(jaso);
+
+        if (morphScoredTagsMap == null || morphScoredTagsMap.size() == 0) {
+            return;
+        }
+
+        //형태소 정보만 얻어옴
+        Set<String> morphes = morphScoredTagsMap.keySet();
+
+        //각 형태소와 품사 정보를 lattice에 삽입
+        for (String morph : morphes) {
+            int beginIdx = curIndex - morph.length() + 1;
+            int endIdx = curIndex + 1;
+
+            //형태소에 대한 품사 및 점수(observation) 정보를 List 형태로 가져옴
+            List<ScoredTag> scoredTags = morphScoredTagsMap.get(morph);
+            for (ScoredTag scoredTag : scoredTags) {
+                lattice.put(beginIdx, endIdx, morph, scoredTag.getTag(), scoredTag.getTagId(), scoredTag.getScore());
+            }
+        }
+    }
+
+    private void regularParsing(Lattice lattice, char jaso, int curIndex) {
+        //TRIE 기반의 사전 검색하여 형태소와 품사 및 품사 점수(observation)를 얻어옴
+        Map<String, List<ScoredTag>> morphScoredTagsMap = lattice.retrievalObservation(jaso);
+
+        if (morphScoredTagsMap == null || morphScoredTagsMap.size() == 0) {
+            return;
+        }
+
+        //형태소 정보만 얻어옴
+        Set<String> morphes = morphScoredTagsMap.keySet();
+
+        //각 형태소와 품사 정보를 lattice에 삽입
+        for (String morph : morphes) {
+            int beginIdx = curIndex - morph.length() + 1;
+            int endIdx = curIndex + 1;
+
+            //형태소에 대한 품사 및 점수(observation) 정보를 List 형태로 가져옴
+            List<ScoredTag> scoredTags = morphScoredTagsMap.get(morph);
+            for (ScoredTag scoredTag : scoredTags) {
+                lattice.put(beginIdx, endIdx, morph, scoredTag.getTag(), scoredTag.getTagId(), scoredTag.getScore());
+                //품사가 EC인 경우에 품사를 EF로 변환하여 lattice에 추가
+                if (scoredTag.getTag().equals(SYMBOL.EC)) {
+                    lattice.put(beginIdx, endIdx, morph, SYMBOL.EF, SEJONGTAGS.EF_ID, scoredTag.getScore());
+                }
+            }
+        }
+    }
+
+    private void irregularParsing(Lattice lattice, char jaso, int curIndex) {
+        //불규칙 노드들을 얻어옴
+        Map<String, List<IrregularNode>> morphIrrNodesMap = lattice.retrievalIrregularNodes(jaso);
+        if (morphIrrNodesMap == null || morphIrrNodesMap.size() == 0) {
+            return;
+        }
+
+        //형태소 정보만 얻어옴
+        Set<String> morphs = morphIrrNodesMap.keySet();
+        for (String morph : morphs) {
+
+            int beginIdx = curIndex - morph.length() + 1;
+            int endIdx = curIndex + 1;
+
+            List<IrregularNode> irrNodes = morphIrrNodesMap.get(morph);
+            for (IrregularNode irregularNode : irrNodes) {
+                lattice.put(beginIdx, endIdx, irregularNode);
+            }
+        }
+    }
+
+    private void irregularExtends(Lattice lattice, char jaso, int curIndex) {
+        List<LatticeNode> prevLatticeNodes = lattice.getNodeList(curIndex);
+        if (prevLatticeNodes != null) {
+            Set<LatticeNode> extendedIrrNodeList = new HashSet<>();
+
+            for (LatticeNode prevLatticeNode : prevLatticeNodes) {
+                //불규칙 태그인 경우에 대해서만
+                if (prevLatticeNode.getMorphTag().getTagId() == SYMBOL.IRREGULAR_ID) {
+                    //마지막 형태소 정보를 얻어옴
+                    String lastMorph = prevLatticeNode.getMorphTag().getMorph();
+
+                    //불규칙의 마지막 형태소에 현재 자소 단위를 합쳤을 때 자식 노드가 있다면 계속 탐색 가능 후보로 처리 해야함
+                    if (this.resources.getObservation().getTrieDictionary().hasChild((lastMorph + jaso).toCharArray())) {
+                        LatticeNode extendedIrregularNode = new LatticeNode();
+                        extendedIrregularNode.setBeginIdx(prevLatticeNode.getBeginIdx());
+                        extendedIrregularNode.setEndIdx(curIndex + 1);
+                        extendedIrregularNode.setMorphTag(new MorphTag(prevLatticeNode.getMorphTag().getMorph() + jaso, SYMBOL.IRREGULAR, SYMBOL.IRREGULAR_ID));
+                        extendedIrregularNode.setPrevNodeIdx(prevLatticeNode.getPrevNodeIdx());
+                        extendedIrregularNode.setScore(prevLatticeNode.getScore());
+                        extendedIrrNodeList.add(extendedIrregularNode);
+                    }
+                    //불규칙의 마지막 형태소에 현재 자소 단위를 합쳐 점수를 얻어옴
+                    List<ScoredTag> lastScoredTags = this.resources.getObservation().getTrieDictionary().getValue(lastMorph + jaso);
+                    if (lastScoredTags == null) {
+                        continue;
+                    }
+
+                    //얻어온 점수를 토대로 lattice에 넣음
+                    for (ScoredTag scoredTag : lastScoredTags) {
+                        lattice.put(prevLatticeNode.getBeginIdx(), curIndex + 1, prevLatticeNode.getMorphTag().getMorph() + jaso,
+                                scoredTag.getTag(), scoredTag.getTagId(), scoredTag.getScore());
+                    }
+                }
+            }
+            for (LatticeNode extendedIrrNode : extendedIrrNodeList) {
+                lattice.appendNode(extendedIrrNode);
+            }
+
+        }
+    }
+
+    /////////////////////////////////////////////////
+    
     private void consumeContiniousSymbolParserBuffer(Lattice lattice, String in, ContinuousSymbolBuffer continuousSymbolBuffer) {
         if (continuousSymbolBuffer.getPrevPos().trim().length() != 0) {
             switch (continuousSymbolBuffer.getPrevPos()) {
@@ -525,102 +607,17 @@ public class Komoran implements Cloneable {
         }
     }
 
-    private void irregularExtends(Lattice lattice, char jaso, int curIndex) {
-        List<LatticeNode> prevLatticeNodes = lattice.getNodeList(curIndex);
-        if (prevLatticeNodes != null) {
-            Set<LatticeNode> extendedIrrNodeList = new HashSet<>();
+/*
+    private boolean hasRegularFWDValues(List<Pair<String, String>> fwdResultList, String targetWord) {
+        StringBuilder fwdMorphs = new StringBuilder();
 
-            for (LatticeNode prevLatticeNode : prevLatticeNodes) {
-                //불규칙 태그인 경우에 대해서만
-                if (prevLatticeNode.getMorphTag().getTagId() == SYMBOL.IRREGULAR_ID) {
-                    //마지막 형태소 정보를 얻어옴
-                    String lastMorph = prevLatticeNode.getMorphTag().getMorph();
-
-                    //불규칙의 마지막 형태소에 현재 자소 단위를 합쳤을 때 자식 노드가 있다면 계속 탐색 가능 후보로 처리 해야함
-                    if (this.resources.getObservation().getTrieDictionary().hasChild((lastMorph + jaso).toCharArray())) {
-                        LatticeNode extendedIrregularNode = new LatticeNode();
-                        extendedIrregularNode.setBeginIdx(prevLatticeNode.getBeginIdx());
-                        extendedIrregularNode.setEndIdx(curIndex + 1);
-                        extendedIrregularNode.setMorphTag(new MorphTag(prevLatticeNode.getMorphTag().getMorph() + jaso, SYMBOL.IRREGULAR, SYMBOL.IRREGULAR_ID));
-                        extendedIrregularNode.setPrevNodeIdx(prevLatticeNode.getPrevNodeIdx());
-                        extendedIrregularNode.setScore(prevLatticeNode.getScore());
-                        extendedIrrNodeList.add(extendedIrregularNode);
-                    }
-                    //불규칙의 마지막 형태소에 현재 자소 단위를 합쳐 점수를 얻어옴
-                    List<ScoredTag> lastScoredTags = this.resources.getObservation().getTrieDictionary().getValue(lastMorph + jaso);
-                    if (lastScoredTags == null) {
-                        continue;
-                    }
-
-                    //얻어온 점수를 토대로 lattice에 넣음
-                    for (ScoredTag scoredTag : lastScoredTags) {
-                        lattice.put(prevLatticeNode.getBeginIdx(), curIndex + 1, prevLatticeNode.getMorphTag().getMorph() + jaso,
-                                scoredTag.getTag(), scoredTag.getTagId(), scoredTag.getScore());
-                    }
-                }
-            }
-            for (LatticeNode extendedIrrNode : extendedIrrNodeList) {
-                lattice.appendNode(extendedIrrNode);
-            }
-
+        for (Pair<String, String> morphPosPair : fwdResultList) {
+            fwdMorphs.append(this.unitParser.parse(morphPosPair.getFirst()));
         }
+
+        return fwdMorphs.toString().equals(targetWord);
     }
-
-    private void irregularParsing(Lattice lattice, char jaso, int curIndex) {
-        //불규칙 노드들을 얻어옴
-        Map<String, List<IrregularNode>> morphIrrNodesMap = lattice.retrievalIrregularNodes(jaso);
-        if (morphIrrNodesMap == null || morphIrrNodesMap.size() == 0) {
-            return;
-        }
-
-        //형태소 정보만 얻어옴
-        Set<String> morphs = morphIrrNodesMap.keySet();
-        for (String morph : morphs) {
-
-            int beginIdx = curIndex - morph.length() + 1;
-            int endIdx = curIndex + 1;
-
-            List<IrregularNode> irrNodes = morphIrrNodesMap.get(morph);
-            for (IrregularNode irregularNode : irrNodes) {
-//                lattice.put(beginIdx, endIdx, irregularNode);
-                this.insertLattice(lattice, beginIdx, endIdx, irregularNode);
-            }
-        }
-    }
-
-    private void insertLattice(Lattice lattice, int beginIdx, int endIdx,
-                               IrregularNode irregularNode) {
-        lattice.put(beginIdx, endIdx, irregularNode);
-    }
-
-    private void regularParsing(Lattice lattice, char jaso, int curIndex) {
-        //TRIE 기반의 사전 검색하여 형태소와 품사 및 품사 점수(observation)를 얻어옴
-        Map<String, List<ScoredTag>> morphScoredTagsMap = lattice.retrievalObservation(jaso);
-
-        if (morphScoredTagsMap == null || morphScoredTagsMap.size() == 0) {
-            return;
-        }
-
-        //형태소 정보만 얻어옴
-        Set<String> morphes = morphScoredTagsMap.keySet();
-
-        //각 형태소와 품사 정보를 lattice에 삽입
-        for (String morph : morphes) {
-            int beginIdx = curIndex - morph.length() + 1;
-            int endIdx = curIndex + 1;
-
-            //형태소에 대한 품사 및 점수(observation) 정보를 List 형태로 가져옴
-            List<ScoredTag> scoredTags = morphScoredTagsMap.get(morph);
-            for (ScoredTag scoredTag : scoredTags) {
-                lattice.put(beginIdx, endIdx, morph, scoredTag.getTag(), scoredTag.getTagId(), scoredTag.getScore());
-                //품사가 EC인 경우에 품사를 EF로 변환하여 lattice에 추가
-                if (scoredTag.getTag().equals(SYMBOL.EC)) {
-                    lattice.put(beginIdx, endIdx, morph, SYMBOL.EF, SEJONGTAGS.EF_ID, scoredTag.getScore());
-                }
-            }
-        }
-    }
-
+*/
     /**
      * 형태소 분석 시 사용될 기분석 사전을 로드합니다. </p>
      * 형태소 분석 진행 전에 로드되어야 합니다. </p>

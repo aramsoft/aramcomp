@@ -46,8 +46,6 @@ public class PosTable implements FileAccessible {
     }
 
     private void init() {
-        this.posIdTable = null;
-        this.idPosTable = null;
         this.posIdTable = new HashMap<String, Integer>();
         this.idPosTable = new HashMap<Integer, String>();
     }
@@ -107,39 +105,6 @@ public class PosTable implements FileAccessible {
             br.close();
             br = null;
             buildSejongTagId();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void load(InputStream is) {
-        try {
-            this.load(new InputStreamReader(is, StandardCharsets.UTF_8));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void load(Reader reader) {
-        try {
-            this.init();
-            BufferedReader br = new BufferedReader(reader);
-            String line = null;
-            while ((line = br.readLine()) != null) {
-                String[] tokens = line.split("\t");
-                this.posIdTable.put(tokens[0], Integer.parseInt(tokens[1]));
-                this.idPosTable.put(Integer.parseInt(tokens[1]), tokens[0]);
-            }
-            br.close();
-            buildSejongTagId();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void load(File file) {
-        try {
-            this.load(new FileReader(file));
         } catch (Exception e) {
             e.printStackTrace();
         }

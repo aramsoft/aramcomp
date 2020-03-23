@@ -47,7 +47,7 @@ public class TagUtil {
     public int getId(String tagName) {
         return this.posTable.getId(tagName);
     }
-
+/*
     private boolean hasTagName(int tagId, String[] symbols) {
         for (String tagName : symbols) {
             if (tagId == this.posTable.getId(tagName)) {
@@ -56,7 +56,7 @@ public class TagUtil {
         }
         return false;
     }
-
+*/
     private boolean hasTagName(int tagId, Set<String> symbols) {
         return symbols.contains(this.posTable.getPos(tagId));
     }

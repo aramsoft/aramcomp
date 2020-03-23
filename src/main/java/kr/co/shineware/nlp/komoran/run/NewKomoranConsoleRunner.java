@@ -8,12 +8,11 @@ import kr.co.shineware.util.common.file.FileUtil;
 import java.util.List;
 
 public class NewKomoranConsoleRunner {
-
-	public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
 
         int thread = Integer.parseInt(args[0]);
 
-        Komoran komoran = new Komoran(DEFAULT_MODEL.LIGHT);
+        Komoran komoran = new Komoran(DEFAULT_MODEL.STABLE);
         ElapsedTimeChecker.checkBeginTime("FILE_ANALYSIS");
         komoran.analyzeTextFile("wiki.titles", "wiki.titles.out", thread);
         ElapsedTimeChecker.checkEndTime("FILE_ANALYSIS");
@@ -22,6 +21,6 @@ public class NewKomoranConsoleRunner {
         komoran.analyze(lines, thread);
         ElapsedTimeChecker.checkEndTime("TEXT_ANALYSIS");
         ElapsedTimeChecker.printTimes();
+
     }
-    
 }

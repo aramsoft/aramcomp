@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.Set;
 
 public class ElapsedTimeChecker {
-	
     private static final String PREFIX_BEGIN = "START_";
     private static final String PREFIX_END = "END_";
     private static Map<String, Long> timeSnapshotMap = new HashMap<>();
@@ -33,5 +32,8 @@ public class ElapsedTimeChecker {
             System.out.println(timeSnapshotKey+" : "+accumulatedTimeSnapshotMap.get(timeSnapshotKey));
         }
     }
-    
+
+    public static Long getElapsedTime(String key){
+        return accumulatedTimeSnapshotMap.get(key);
+    }
 }

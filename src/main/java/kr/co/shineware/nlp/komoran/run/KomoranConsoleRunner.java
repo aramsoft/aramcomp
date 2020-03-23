@@ -13,7 +13,6 @@ import kr.co.shineware.nlp.komoran.modeler.builder.ModelBuilder;
 public class KomoranConsoleRunner {
 
 	public static void main(String[] args) throws Exception {
-		
 		if(args.length < 2){
 			printUsage();
 			return;
@@ -140,5 +139,4 @@ public class KomoranConsoleRunner {
 		System.out.println("[코모란 파일 분석 방법]");
 		System.out.println("\tjava -jar KOMORAN.jar -model '학습된 모델이 포함된 폴더명' [-userDic '사용사 사전 파일'] [-fwd '기분석 사전 파일'] -in '분석 대상 파일' -out '분석 결과 파일'");
 	}
-	
 }

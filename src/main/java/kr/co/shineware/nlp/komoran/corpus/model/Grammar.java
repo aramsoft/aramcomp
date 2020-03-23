@@ -40,9 +40,6 @@ import kr.co.shineware.util.common.string.StringUtil;
  */
 public class Grammar implements FileAccessible {
 
-    //key = prevPos
-    //value.key = nextPos
-    //value.value = tf
     private Map<String, Map<String, Integer>> grammar;
 
     /**

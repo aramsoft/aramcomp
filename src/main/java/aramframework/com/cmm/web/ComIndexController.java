@@ -54,7 +54,7 @@ public class ComIndexController {
 			inputText = "산림청에서 근무해 왔으며, 슬하에 아들 한 명을 두고 있다.";
 		}
 		
-		Komoran komoran = new Komoran(DEFAULT_MODEL.LIGHT);
+		Komoran komoran = new Komoran(DEFAULT_MODEL.STABLE);
 //		komoran.setFWDic("user_data/fwd.user");
 //		komoran.setUserDic("user_data/dic.user"); 
 		

@@ -12,11 +12,9 @@ public class NounEomiCombinationRuleChecker implements CombinationRuleChecker {
 
     @Override
     public boolean isValidRule(String prevMorph, int prevTagId, String morph, int tagId) {
-        if (this.tagUtil.isNoun(prevTagId) 
-        		&& this.tagUtil.isEomi(tagId)) {
+        if (this.tagUtil.isNoun(prevTagId) && this.tagUtil.isEomi(tagId)) {
             return false;
         }
         return true;
     }
-    
 }

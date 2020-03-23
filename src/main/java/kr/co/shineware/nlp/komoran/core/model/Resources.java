@@ -26,7 +26,7 @@ import kr.co.shineware.nlp.komoran.modeler.model.PosTable;
 import kr.co.shineware.nlp.komoran.modeler.model.Transition;
 
 public class Resources {
-	
+
 	private PosTable posTable;
 	private Transition transition;
 	private Observation observation;

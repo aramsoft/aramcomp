@@ -24,7 +24,6 @@ import kr.co.shineware.ds.aho_corasick.AhoCorasickDictionary;
 import kr.co.shineware.nlp.komoran.interfaces.FileAccessible;
 
 public class IrregularTrie implements FileAccessible{
-	
 	private AhoCorasickDictionary<List<IrregularNode>> dic;
 	
 	public IrregularTrie(){
@@ -32,6 +31,7 @@ public class IrregularTrie implements FileAccessible{
 	}
 
 	public void init(){
+		this.dic = null;
 		this.dic = new AhoCorasickDictionary<>();
 	}
 

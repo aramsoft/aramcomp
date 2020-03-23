@@ -30,14 +30,13 @@ import kr.co.shineware.util.common.model.Pair;
  * @since 2.1
  */
 public class ProblemAnswerPair {
-	
-	private String problem;
-	private String answer;
+	private String problem,answer;
 	private List<Pair<String,String>> answerList;
 
 	public String getProblem() {
 		return problem;
 	}
+
 	public void setProblem(String problem) {
 		this.problem = problem;
 	}
@@ -45,6 +44,7 @@ public class ProblemAnswerPair {
 	public String getAnswer() {
 		return answer;
 	}
+
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
@@ -52,16 +52,22 @@ public class ProblemAnswerPair {
 	public List<Pair<String,String>> getAnswerList() {
 		return answerList;
 	}
+
 	public void setAnswerList(List<Pair<String,String>> answerList) {
 		this.answerList = answerList;
 	}
 
 	@Override
 	public String toString() {
-		return "ProblemAnswerPair [problem=" + problem 
-				+ ", answer=" + answer 
-				+ ", answerList=" + answerList 
-				+ "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("ProblemAnswerPair [problem=");
+		builder.append(problem);
+		builder.append(", answer=");
+		builder.append(answer);
+		builder.append(", answerList=");
+		builder.append(answerList);
+		builder.append("]");
+		return builder.toString();
 	}
 	
 }

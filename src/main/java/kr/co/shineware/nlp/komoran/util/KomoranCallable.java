@@ -22,5 +22,4 @@ public class KomoranCallable implements Callable<KomoranResult> {
     public KomoranResult call() throws Exception {
         return this.komoran.analyze(this.input);
     }
-    
 }

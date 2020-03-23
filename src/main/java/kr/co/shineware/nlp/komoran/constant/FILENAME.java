@@ -23,15 +23,15 @@ package kr.co.shineware.nlp.komoran.constant;
  */
 public class FILENAME {
 
-    public static final String GRAMMAR = "grammar.in";
-    public static final String WORD_DIC = "dic.word";
-    public static final String IRREGULAR_DIC = "dic.irregular";
+    public static final String GRAMMAR="grammar.in";
+    public static final String WORD_DIC="dic.word";
+    public static final String IRREGULAR_DIC="dic.irregular";
 
-    public static final String POS_TABLE = "pos.table";
-    public static final String OBSERVATION = "observation.model";
-    public static final String TRANSITION = "transition.model";
-    public static final String IRREGULAR_MODEL = "irregular.model";
+    public static final String POS_TABLE="pos.table";
 
-    public static final String FULL_MODEL = "models_full";
-    public static final String LIGHT_MODEL = "models_light";
+    public static final String OBSERVATION="observation.model";
+    public static final String TRANSITION="transition.model";
+    public static final String IRREGULAR_MODEL="irregular.model";
+    public static final String EXPERIMENT_MODEL = "models_full";
+    public static final String STABLE_MODEL = "models_light";
 }

@@ -27,11 +27,11 @@ public class KomoranTest {
 
 	public static void main(String[] args) throws Exception {
 
-		Komoran komoran = new Komoran("models_full");
-		komoran.setFWDic("user_data/fwd.user");
-		komoran.setUserDic("user_data/dic.user");
+		Komoran komoran = new Komoran("models_light");
+//		komoran.setFWDic("user_data/fwd.user");
+//		komoran.setUserDic("user_data/dic.user");
 
-		String input = "밀리언 달러 베이비랑 바람과 함께 사라지다랑 뭐가 더 재밌었어?";
+		String input = "산림청에서 근무해 왔으며, 슬하에 아들 한 명을 두고 있다.";
 		KomoranResult analyzeResultList = komoran.analyze(input);
 		List<Token> tokenList = analyzeResultList.getTokenList();
 
@@ -52,5 +52,4 @@ public class KomoranTest {
 		System.out.println("==========print 'getList()'==========");
 		System.out.println(analyzeResultList.getList());
 	}
-	
 }

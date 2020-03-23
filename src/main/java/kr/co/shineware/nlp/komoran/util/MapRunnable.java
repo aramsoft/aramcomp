@@ -18,5 +18,4 @@ public class MapRunnable implements Runnable {
     public void run() {
         this.sourceMap.put(this.key, this.value);
     }
-    
 }

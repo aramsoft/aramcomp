@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HangulJamoUtil {
-	
     public static String ToHangulCompatibilityJamo(String source) {
         StringBuilder dest = new StringBuilder();
 
@@ -243,5 +242,4 @@ public class HangulJamoUtil {
         }
         return jamoList;
     }
-    
 }

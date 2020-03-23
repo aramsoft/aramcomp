@@ -21,22 +21,29 @@ import kr.co.shineware.nlp.komoran.model.MorphTag;
 
 public class LatticeNode {
 
+
+    @Override
+    public String toString() {
+        return "LatticeNode [beginIdx=" + beginIdx + ", endIdx=" + endIdx
+                + ", morphTag=" + morphTag + ", score=" + score
+                + ", prevNodeIdx=" + prevNodeIdx + ", morph=" + morph + "]";
+    }
+
     private int beginIdx;
     private int endIdx;
     private MorphTag morphTag;
     private double score;
-    private int prevNodeSeq = -1;
-    private String source;
+    private int prevNodeIdx = -1;
+    private String morph;
 
     public LatticeNode() {
     }
 
-    public LatticeNode(int beginIdx, int endIdx, MorphTag morphTag, double score, String source) {
+    public LatticeNode(int beginIdx, int endIdx, MorphTag morphTag, double score) {
         this.beginIdx = beginIdx;
         this.endIdx = endIdx;
         this.morphTag = morphTag;
         this.score = score;
-        this.source = source;
     }
 
     public LatticeNode(LatticeNode latticeNode) {
@@ -44,12 +51,12 @@ public class LatticeNode {
         this.endIdx = latticeNode.getEndIdx();
         this.morphTag = latticeNode.getMorphTag();
         this.score = latticeNode.getScore();
-        this.source = latticeNode.getSource();
     }
 
     public int getBeginIdx() {
         return beginIdx;
     }
+
     public void setBeginIdx(int beginIdx) {
         this.beginIdx = beginIdx;
     }
@@ -57,6 +64,7 @@ public class LatticeNode {
     public int getEndIdx() {
         return endIdx;
     }
+
     public void setEndIdx(int endIdx) {
         this.endIdx = endIdx;
     }
@@ -64,6 +72,7 @@ public class LatticeNode {
     public MorphTag getMorphTag() {
         return morphTag;
     }
+
     public void setMorphTag(MorphTag morphTag) {
         this.morphTag = morphTag;
     }
@@ -71,37 +80,20 @@ public class LatticeNode {
     public double getScore() {
         return score;
     }
+
     public void setScore(double score) {
         this.score = score;
     }
 
-    public int getPrevNodeSeq() {
-        return prevNodeSeq;
-    }
-    public void setPrevNodeSeq(int prevNodeSeq) {
-        this.prevNodeSeq = prevNodeSeq;
+    public int getPrevNodeIdx() {
+        return prevNodeIdx;
     }
 
-	public String getSource(){
-		return this.source;
-	}
-	public void setSource(String source){
-		this.source = source;
-	}
+    public void setPrevNodeIdx(int prevNodeIdx) {
+        this.prevNodeIdx = prevNodeIdx;
+    }
 
     public String getTag() {
         return this.morphTag.getTag();
     }
-    
-    @Override
-    public String toString() {
-        return "LatticeNode [beginIdx=" + beginIdx 
-        		+ ", endIdx=" + endIdx
-                + ", morphTag=" + morphTag 
-                + ", score=" + score
-                + ", prevNodeSeq=" + prevNodeSeq 
-                + ", source=" + source 
-                + "]";
-    }
-
 }

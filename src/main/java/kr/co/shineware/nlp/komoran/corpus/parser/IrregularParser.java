@@ -40,39 +40,6 @@ public class IrregularParser {
 	private int answerEndIndex = -1;
 	private int problemEndIndex = -1;
 
-	public List<Pair<String, String>> parse(String line){
-		
-		CorpusParser parser = new CorpusParser();
-		try {
-			ProblemAnswerPair pair = parser.parse(line);
-			if(this.isIrregular(pair)){
-				return this.parse(pair.getProblem(), pair.getAnswerList());
-			}
-		} catch (FileFormatException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	public List<Pair<String,String>> parse(ProblemAnswerPair pair){
-		if(this.isIrregular(pair)){
-			return this.parse(pair.getProblem(), pair.getAnswerList());
-		}
-		return null;
-	}
-
-	private boolean isIrregular(ProblemAnswerPair pair) {
-		return this.isIrregular(pair.getProblem(), pair.getAnswerList());
-	}
-
-	private boolean isIrregular(String problem, List<Pair<String, String>> answerList) {
-		StringBuffer answer = new StringBuffer();
-		for (Pair<String, String> pair : answerList) {
-			answer.append(pair.getFirst());
-		}
-		return !StringUtil.getKorean(problem).equals(StringUtil.getKorean(answer.toString()));
-	}
-
 	/**
 	 * 입력된 problem(어절)과 answerList(형태소, 품사)를 비교하여 변화가 일어나는 구간을 pair형태로 반환 <br>
 	 * problem과 answerList의 형태소는 자소 단위로 구성되어 있어야함
@@ -80,63 +47,50 @@ public class IrregularParser {
 	 * @param answerList
 	 * @return
 	 */
-	public List<Pair<String, String>> parse(String problem, List<Pair<String,String>> answerList) {
-
+	public List<Pair<String, String>> parse(String problem, List<Pair<String,String>> answerList){
 		this.setBeginIdx(problem,answerList);
 		this.setEndIdx(problem,answerList);
 		
 		return getIrregularRules(problem,answerList);
 	}
-	
-	private void setBeginIdx(String problem,
-			List<Pair<String, String>> answerList) {
-		//left to right 탐색
-		int ptr = 0;
-
-		for(int i=0;i<answerList.size();i++){
-			String answerMorph = answerList.get(i).getFirst();
-			//음운 추가 현상인 경우
-			//ex : 나가 -> 나가+아, 알 -> 알+ㄹ, 누군지 -> 누구+인지 ('이'추가)
-			//누군지 -> 누구+인지
-			if(ptr + answerMorph.length() > problem.length()){
-				answerBeginIndex = i;
-				problemBeginIndex = ptr;
-				break;
-			}
-			String problemWord = problem.substring(ptr, ptr+answerMorph.length());
-			//단어가 다르면. 즉, 불규칙 시작 부분이면
-			if(!answerMorph.equals(problemWord)){
-				answerBeginIndex = i;
-				problemBeginIndex = ptr;
-				break;
-			}
-			ptr+=answerMorph.length();
-			answerMorph = null;
-			problemWord = null;
+	private Pair<String,String> expandIrregularRule(String problem,List<Pair<String,String>> answerList,int problemBeginIndex,int problemEndIndex,int answerBeginIndex,int answerEndIndex)
+	{
+		StringBuffer centerConvertRule = new StringBuffer();
+		for(int i=answerBeginIndex;i<answerEndIndex+1;i++){			
+			centerConvertRule.append(answerList.get(i).getFirst());
+			centerConvertRule.append("/");
+			centerConvertRule.append(answerList.get(i).getSecond());
+			centerConvertRule.append(" ");
 		}
+
+		String prevConvertRule = "";
+		String nextConvertRule = "";
+		String convertRule = "";
+		int tmpProblemBeginIndex = problemBeginIndex;
+		int tmpProblemEndIndex = problemEndIndex;
+		if(answerBeginIndex != 0){
+			prevConvertRule += answerList.get(answerBeginIndex-1).getFirst();
+			prevConvertRule += "/";
+			prevConvertRule += answerList.get(answerBeginIndex-1).getSecond();
+			prevConvertRule += " ";
+			tmpProblemBeginIndex = problemBeginIndex - answerList.get(answerBeginIndex-1).getFirst().length();
+		}
+
+		if(answerEndIndex+1 != answerList.size()){
+			nextConvertRule += answerList.get(answerEndIndex+1).getFirst();
+			nextConvertRule += "/";
+			nextConvertRule += answerList.get(answerEndIndex+1).getSecond();
+			nextConvertRule += " ";
+			tmpProblemEndIndex = problemEndIndex + answerList.get(answerEndIndex+1).getFirst().length();
+		}
+		convertRule = prevConvertRule + centerConvertRule.toString() + nextConvertRule.trim();
+		String irrProblem = problem.substring(tmpProblemBeginIndex, tmpProblemEndIndex);
+		return new Pair<String, String>(irrProblem, convertRule.trim());	
 	}
 	
-	private void setEndIdx(String problem, List<Pair<String, String>> answerList) {
-		//right to left 탐색
-		int ptr = problem.length();
-		for(int i=answerList.size()-1;i>=0;i--){
-			String answerMorph = answerList.get(i).getFirst();
-
-			if(ptr-answerMorph.length() < 0){
-				answerEndIndex = i;
-				problemEndIndex = ptr;
-				break;
-			}
-			String problemWord = problem.substring(ptr - answerMorph.length(), ptr);
-			if(!answerMorph.equals(problemWord)){
-				answerEndIndex = i;
-				problemEndIndex = ptr;
-				break;
-			}
-			ptr = ptr - answerMorph.length();
-			answerMorph = null;
-			problemWord = null;
-		}
+	
+	private Pair<String,String> expandIrregularRule(String problem,List<Pair<String,String>> answerList){
+		return this.expandIrregularRule(problem, answerList, this.problemBeginIndex, this.problemEndIndex,this.answerBeginIndex, this.answerEndIndex);
 	}
 
 	/**
@@ -217,16 +171,16 @@ public class IrregularParser {
 	 * @param answerList
 	 * @return
 	 */
-	private boolean isCleanRule(String problem, List<Pair<String, String>> answerList) {
+	private boolean isCleanRule(String problem,
+			List<Pair<String, String>> answerList) {
 		
 		if(answerList.get(answerEndIndex).getSecond().equals("VCP")){
 			return false;
 		}
 		
 		for(int i=answerBeginIndex;i<=answerEndIndex;i++){
-			if(answerList.get(i).getSecond().contains("NNP") 
-					|| answerList.get(i).getSecond().contains("NNG") 
-					|| answerList.get(i).getSecond().contains("JK")) {
+			if(answerList.get(i).getSecond().contains("NNP") || answerList.get(i).getSecond().contains("NNG") || answerList.get(i).getSecond().contains("JK"))
+			{
 				return false;
 			}
 		}
@@ -238,51 +192,9 @@ public class IrregularParser {
 		
 		return true;
 	}
-	
-	private Pair<String,String> expandIrregularRule(String problem,List<Pair<String,String>> answerList){
-		return this.expandIrregularRule(problem, answerList, this.problemBeginIndex, this.problemEndIndex,this.answerBeginIndex, this.answerEndIndex);
-	}
-
-	private Pair<String,String> expandIrregularRule(String problem,
-			List<Pair<String,String>> answerList,
-			int problemBeginIndex,int problemEndIndex,int answerBeginIndex,int answerEndIndex) {
-		
-		StringBuffer centerConvertRule = new StringBuffer();
-		for(int i=answerBeginIndex;i<answerEndIndex+1;i++){			
-			centerConvertRule.append(answerList.get(i).getFirst());
-			centerConvertRule.append("/");
-			centerConvertRule.append(answerList.get(i).getSecond());
-			centerConvertRule.append(" ");
-		}
-
-		String prevConvertRule = "";
-		String nextConvertRule = "";
-		String convertRule = "";
-		int tmpProblemBeginIndex = problemBeginIndex;
-		int tmpProblemEndIndex = problemEndIndex;
-		if(answerBeginIndex != 0){
-			prevConvertRule += answerList.get(answerBeginIndex-1).getFirst();
-			prevConvertRule += "/";
-			prevConvertRule += answerList.get(answerBeginIndex-1).getSecond();
-			prevConvertRule += " ";
-			tmpProblemBeginIndex = problemBeginIndex - answerList.get(answerBeginIndex-1).getFirst().length();
-		}
-
-		if(answerEndIndex+1 != answerList.size()){
-			nextConvertRule += answerList.get(answerEndIndex+1).getFirst();
-			nextConvertRule += "/";
-			nextConvertRule += answerList.get(answerEndIndex+1).getSecond();
-			nextConvertRule += " ";
-			tmpProblemEndIndex = problemEndIndex + answerList.get(answerEndIndex+1).getFirst().length();
-		}
-		convertRule = prevConvertRule + centerConvertRule.toString() + nextConvertRule.trim();
-		String irrProblem = problem.substring(tmpProblemBeginIndex, tmpProblemEndIndex);
-		return new Pair<String, String>(irrProblem, convertRule.trim());	
-	}
-	
 	private void appendIrrRule(List<Pair<String, String>> irrRuleList,
-			String problem, List<Pair<String, String>> answerList, int answerBeginIndex, int answerEndIndex) {
-		
+			String problem, List<Pair<String, String>> answerList, int answerBeginIndex,
+			int answerEndIndex) {
 		StringBuffer convertRule = new StringBuffer();
 		for(int i=answerBeginIndex;i<answerEndIndex+1;i++){
 			convertRule.append(answerList.get(i).getFirst());
@@ -294,4 +206,86 @@ public class IrregularParser {
 		convertRule = null;
 	}
 
+	public List<Pair<String, String>> parse(String line){
+		CorpusParser parser = new CorpusParser();
+		try {
+			ProblemAnswerPair pair = parser.parse(line);
+			if(this.isIrregular(pair)){
+				return this.parse(pair.getProblem(), pair.getAnswerList());
+			}
+		} catch (FileFormatException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public List<Pair<String,String>> parse(ProblemAnswerPair pair){
+		if(this.isIrregular(pair)){
+			return this.parse(pair.getProblem(), pair.getAnswerList());
+		}
+		return null;
+	}
+
+	private boolean isIrregular(ProblemAnswerPair pair) {
+		return this.isIrregular(pair.getProblem(), pair.getAnswerList());
+	}
+
+	private boolean isIrregular(String problem, List<Pair<String, String>> answerList) {
+		StringBuffer answer = new StringBuffer();
+		for (Pair<String, String> pair : answerList) {
+			answer.append(pair.getFirst());
+		}
+		return !StringUtil.getKorean(problem).equals(StringUtil.getKorean(answer.toString()));
+	}
+
+	private void setEndIdx(String problem, List<Pair<String, String>> answerList) {
+		//right to left 탐색
+		int ptr = problem.length();
+		for(int i=answerList.size()-1;i>=0;i--){
+			String answerMorph = answerList.get(i).getFirst();
+
+			if(ptr-answerMorph.length() < 0){
+				answerEndIndex = i;
+				problemEndIndex = ptr;
+				break;
+			}
+			String problemWord = problem.substring(ptr - answerMorph.length(), ptr);
+			if(!answerMorph.equals(problemWord)){
+				answerEndIndex = i;
+				problemEndIndex = ptr;
+				break;
+			}
+			ptr = ptr - answerMorph.length();
+			answerMorph = null;
+			problemWord = null;
+		}
+	}
+
+	private void setBeginIdx(String problem,
+			List<Pair<String, String>> answerList) {
+		//left to right 탐색
+		int ptr = 0;
+
+		for(int i=0;i<answerList.size();i++){
+			String answerMorph = answerList.get(i).getFirst();
+			//음운 추가 현상인 경우
+			//ex : 나가 -> 나가+아, 알 -> 알+ㄹ, 누군지 -> 누구+인지 ('이'추가)
+			//누군지 -> 누구+인지
+			if(ptr + answerMorph.length() > problem.length()){
+				answerBeginIndex = i;
+				problemBeginIndex = ptr;
+				break;
+			}
+			String problemWord = problem.substring(ptr, ptr+answerMorph.length());
+			//단어가 다르면. 즉, 불규칙 시작 부분이면
+			if(!answerMorph.equals(problemWord)){
+				answerBeginIndex = i;
+				problemBeginIndex = ptr;
+				break;
+			}
+			ptr+=answerMorph.length();
+			answerMorph = null;
+			problemWord = null;
+		}
+	}
 }

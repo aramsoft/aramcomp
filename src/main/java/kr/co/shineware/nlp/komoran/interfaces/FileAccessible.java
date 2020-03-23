@@ -25,7 +25,6 @@ package kr.co.shineware.nlp.komoran.interfaces;
  *
  */
 public interface FileAccessible {
-
 	/**
 	 * 현재 사용되고 있는 데이터를 filename에 저장
 	 * @param filename
@@ -36,5 +35,4 @@ public interface FileAccessible {
 	 * @param filename
 	 */
     void load(String filename);
-    
 }

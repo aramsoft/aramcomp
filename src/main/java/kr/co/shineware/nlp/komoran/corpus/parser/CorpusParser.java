@@ -25,16 +25,17 @@ import kr.co.shineware.nlp.komoran.corpus.parser.model.ProblemAnswerPair;
 import kr.co.shineware.nlp.komoran.exception.FileFormatException;
 import kr.co.shineware.util.common.model.Pair;
 
+
 /**
  * {@link CorpusBuilder}에 사용되는 파서로써 아래와 같은 형태로 이루어져 있는 경우에 사용 가능함<br>
  * 감기는 감기/NNG 는/JKG <br>
  * 자세한 내용은 아래 링크 참조
- * <a href="http://www.shineware.co.kr"> www.shineware.co.kr > FAQ > CorpusBuilder </a>
+ * <a href="http://www.shineware.co.kr"> www.shineware.co.kr > FAQ > CorpusBuiler </a>
  * @author Junsoo Shin <jsshin@shineware.co.kr>
  * @version 2.1
  * @since 2.1
  */
-public class CorpusParser {
+public class CorpusParser{
 
 	private static final String PROBLEM_ANSWER_SPLITER = "\t";
 	private static final String ANSWER_SPLITER = " ";
@@ -48,19 +49,17 @@ public class CorpusParser {
 	 * @throws FileFormatException
 	 */
 	public ProblemAnswerPair parse(String line) throws FileFormatException {
-
 		String[] problemAnswer = line.split(PROBLEM_ANSWER_SPLITER);
 		if(problemAnswer.length != CONTENTS_COUNT){
 			throw new FileFormatException("Corpus Format Error. "+line);
 		}
-		
 		String problem = problemAnswer[0];
 		String answer = problemAnswer[1];
 		
 		List<Pair<String,String>> answerList = new ArrayList<Pair<String,String>>();
 		
-		this.parseAnswer(answer, answerList);
 		
+		this.parseAnswer(answer,answerList);
 		ProblemAnswerPair paPair = new ProblemAnswerPair();
 		paPair.setProblem(problem);
 		paPair.setAnswer(answer);
@@ -76,14 +75,13 @@ public class CorpusParser {
 	 * @throws FileFormatException
 	 */
 	private void parseAnswer(String answer,List<Pair<String,String>> answerList) throws FileFormatException {
-
 		String[] tmp = answer.trim().split(ANSWER_SPLITER);
 		
 		String prevWord = "";
 		for(int i=0;i<tmp.length;i++){
 			
 			String token = tmp[i];
-			String pos, word;
+			String pos,word;
 			String[] wordPos = token.split(WORD_POS_SPLITER);
 			
 			if(wordPos.length == 2){
@@ -109,5 +107,4 @@ public class CorpusParser {
 			prevWord = "";
 		}
 	}
-	
 }

@@ -18,8 +18,6 @@
 package kr.co.shineware.nlp.komoran.interfaces;
 
 public interface UnitParser {
-	
 	String parse(String in);
 	String combine(String in);
-	
 }

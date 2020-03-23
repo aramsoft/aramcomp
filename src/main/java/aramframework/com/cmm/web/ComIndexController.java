@@ -8,14 +8,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Controller; 
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import aramframework.com.cmm.annotation.IncludedInfoVO;
-import kr.co.shineware.nlp.komoran.constant.DEFAULT_MODEL;
-import kr.co.shineware.nlp.komoran.core.Komoran;
+import aramframework.com.cmm.service.KomoranService;
 import kr.co.shineware.nlp.komoran.model.KomoranResult;
 import aramframework.com.cmm.annotation.IncludedInfo;
 
@@ -40,6 +39,9 @@ public class ComIndexController {
 
 	@Autowired ApplicationContext applicationContext;
 
+	@Autowired 
+	private KomoranService komoranService; 
+
 	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	private Map<Integer, Object> map;
@@ -54,11 +56,11 @@ public class ComIndexController {
 			inputText = "산림청에서 근무해 왔으며, 슬하에 아들 한 명을 두고 있다.";
 		}
 		
-		Komoran komoran = new Komoran(DEFAULT_MODEL.STABLE);
+//		Komoran komoran = new Komoran(DEFAULT_MODEL.STABLE);
 //		komoran.setFWDic("user_data/fwd.user");
 //		komoran.setUserDic("user_data/dic.user"); 
 		
-		KomoranResult analyzeResultList = komoran.analyze(inputText);
+		KomoranResult analyzeResultList = komoranService.analyze(inputText);
 
 		//print each tokens by getTokenList()  
 //		List<Token> tokenList = analyzeResultList.getTokenList();

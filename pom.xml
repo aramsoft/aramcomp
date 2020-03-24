@@ -120,11 +120,13 @@
 			<artifactId>egovframework.rte.ptl.mvc</artifactId>
 			<version>${egovframework.rte.version}</version>
 		</dependency>
+<!-- 
 		<dependency>
 			<groupId>egovframework.rte</groupId>
 			<artifactId>egovframework.rte.fdl.property</artifactId>
 			<version>${egovframework.rte.version}</version>
 		</dependency>
+-->
 		<dependency>
 			<groupId>egovframework.rte</groupId>
 			<artifactId>egovframework.rte.fdl.crypto</artifactId>
@@ -160,8 +162,6 @@
 		</dependency>
 		
 		<!-- 실행환경 라이브러리 끝 -->
-
-
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
@@ -209,23 +209,6 @@
  				
 		<!-- 공통컴포넌트 시작 -->
 
-		<!-- 우편번호를 위한 라이브러리(이메일 밸리데이션)  -->
-<!-- 
-		<dependency>
-			<groupId>oro</groupId>
-			<artifactId>oro</artifactId>
-			<version>2.0.8</version>
-		</dependency>
--->
-		<!-- 요소기술 달력을 위한 라이브러리 -->
-		<!-- 
-		<dependency>
-			<groupId>com.ibm.icu</groupId>
-			<artifactId>icu4j</artifactId>
-			<version>4.8</version>
-		</dependency>
-		-->
-				
 		<!-- FTP용 3rd party 라이브러리 -->
 		<dependency>
 			<groupId>commons-net</groupId>
@@ -261,13 +244,6 @@
 			<scope>provided</scope>
 		</dependency>
 		
-		<!-- LDAP SDK -->
-		<dependency>
-			<groupId>ldapsdk</groupId>
-			<artifactId>ldapsdk</artifactId>
-			<version>4.1</version>
-		</dependency>
-
 		<!-- XML스키마를 자바클래스로 생성하는 라이브러리 -->
  		<dependency>
 			<groupId>org.apache.xmlbeans</groupId>
@@ -315,7 +291,7 @@
 			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/sndng-mail-1.0.jar</systemPath>
 		</dependency>
 
-		<!--  M-Gov (SMS Service API) -->
+		<!--  M-Gov (SMS Service API) --> 
 		<dependency>
 			<groupId>kr.go.mgov</groupId>
 			<artifactId>smeapi</artifactId>

@@ -194,14 +194,6 @@
 			<version>1.19</version>
 		</dependency>
 
-		<!-- cache -->
-		<dependency>
-			<groupId>net.sf.ehcache</groupId>
-			<artifactId>ehcache-core</artifactId>
-			<version>2.4.1</version>
-		</dependency>
-		<!-- cache end -->
-				
 		<!-- Scheduling -->
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
@@ -218,12 +210,13 @@
 		<!-- 공통컴포넌트 시작 -->
 
 		<!-- 우편번호를 위한 라이브러리(이메일 밸리데이션)  -->
+<!-- 
 		<dependency>
 			<groupId>oro</groupId>
 			<artifactId>oro</artifactId>
 			<version>2.0.8</version>
 		</dependency>
-
+-->
 		<!-- 요소기술 달력을 위한 라이브러리 -->
 		<!-- 
 		<dependency>

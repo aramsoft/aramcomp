@@ -48,7 +48,9 @@ function fncGoAfterErrorPage(){
 		</div>	
 	</div>
 	<div class="buttons">              
-        <a href="javascript:fncGoAfterErrorPage();"><img src="${pageContext.request.contextPath}/images/cmm/go_history.jpg" width="90" height="29" border="0"/></a>
+        <a href="javascript:fncGoAfterErrorPage();">
+        	<img src="${pageContext.request.contextPath}/images/cmm/go_history.jpg" width="90" height="29" border="0"/>
+        </a>
 	</div>
 
 </div>

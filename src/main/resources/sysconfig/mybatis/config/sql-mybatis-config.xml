@@ -55,13 +55,9 @@
 		<typeAlias alias="zipVO"				type="aramframework.com.sym.ccm.zip.domain.ZipVO"/>
 		<typeAlias alias="loginLogVO"			type="aramframework.com.sym.log.clg.domain.LoginLogVO"/>
 		<typeAlias alias="sysLogVO"				type="aramframework.com.sym.log.lgm.domain.SysLogVO"/>
-		<typeAlias alias="sysHistoryVO"			type="aramframework.com.sym.log.slg.domain.SysHistoryVO"/>
 		<typeAlias alias="userLogVO"			type="aramframework.com.sym.log.ulg.domain.UserLogVO"/>
 		<typeAlias alias="webLogVO"				type="aramframework.com.sym.log.wlg.domain.WebLogVO"/>
-		<typeAlias alias="bkmkMenuManageVO"		type="aramframework.com.sym.mnu.bmm.domain.BkmkMenuManageVO"/>
-		<typeAlias alias="menuCreateVO"			type="aramframework.com.sym.mnu.mcm.domain.MenuCreateVO"/>
 		<typeAlias alias="menuManageVO"			type="aramframework.com.sym.mnu.mpm.domain.MenuManageVO"/>
-		<typeAlias alias="siteMapngVO"			type="aramframework.com.sym.mnu.stm.domain.SiteMapngVO"/>
 		<typeAlias alias="progrmManageVO"		type="aramframework.com.sym.prm.domain.ProgrmManageVO"/>
 		<typeAlias alias="progrmManageDtlVO"	type="aramframework.com.sym.prm.domain.ProgrmManageDtlVO"/>
 		<typeAlias alias="backupOpertVO"		type="aramframework.com.sym.sym.bak.domain.BackupOpertVO"/>
@@ -70,9 +66,6 @@
 		
 		<typeAlias alias="loginPolicyVO"		type="aramframework.com.uat.uap.domain.LoginPolicyVO"/>
 		<typeAlias alias="loginVO"				type="aramframework.com.uat.uia.domain.LoginVO"/>
-		
-		<typeAlias alias="indvdlPgeConfVO"		type="aramframework.com.uss.mpe.domain.IndvdlPgeConfVO"/>
-		<typeAlias alias="indvdlPgeCntntsVO"	type="aramframework.com.uss.mpe.domain.IndvdlPgeCntntsVO"/>
 		
 		<typeAlias alias="faqManageVO"			type="aramframework.com.uss.olh.faq.domain.FaqManageVO"/>
 		<typeAlias alias="qnaManageVO"			type="aramframework.com.uss.olh.qna.domain.QnaManageVO"/>

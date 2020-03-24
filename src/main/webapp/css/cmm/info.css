@@ -3,6 +3,7 @@
   Description : information page CSS
   Modification Information
 */
+@charset "utf-8";
 
 #wrap { text-align:center; height:100%; }
 #content { 	

@@ -10,7 +10,7 @@
     author   : 공통컴포넌트 개발팀 구지연
     since    : 2011.09.26
 */
-@CHARSET "UTF-8";
+@charset "utf-8";
 
 /* reset */
 frameset, frame, p, div  { margin:0; padding:0; border:0; }

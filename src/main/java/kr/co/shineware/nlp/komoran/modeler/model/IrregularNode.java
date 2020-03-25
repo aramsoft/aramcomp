@@ -24,10 +24,8 @@ import kr.co.shineware.util.common.model.Pair;
 
 public class IrregularNode implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+
 	private String lastMorph;
 	private int firstPosId;
 	private int lastPosId;
@@ -41,36 +39,42 @@ public class IrregularNode implements Serializable{
 	public void setLastMorph(String lastMorph) {
 		this.lastMorph = lastMorph;
 	}
+	
 	public double getInnerScore() {
 		return innerScore;
 	}
 	public void setInnerScore(double innerScore) {
 		this.innerScore = innerScore;
 	}
+	
 	public int getFirstPosId() {
 		return firstPosId;
 	}
 	public void setFirstPosId(int firstPosId) {
 		this.firstPosId = firstPosId;
 	}	
+	
 	public int getLastPosId() {
 		return lastPosId;
 	}
 	public void setLastPosId(int lastPosId) {
 		this.lastPosId = lastPosId;
 	}	
+	
 	public void setTokens(List<Pair<String, Integer>> irrNodeTokens) {
 		this.irrNodeTokens = irrNodeTokens;		
 	}
 	public List<Pair<String, Integer>> getTokens() {
 		return this.irrNodeTokens;
 	}
+	
 	public void setMorphFormat(String morphFormat) {
 		this.morphFormat = morphFormat;		
 	}
 	public String getMorphFormat(){
 		return morphFormat;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -79,13 +83,10 @@ public class IrregularNode implements Serializable{
 		long temp;
 		temp = Double.doubleToLongBits(innerScore);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result
-				+ ((irrNodeTokens == null) ? 0 : irrNodeTokens.hashCode());
-		result = prime * result
-				+ ((lastMorph == null) ? 0 : lastMorph.hashCode());
+		result = prime * result + ((irrNodeTokens == null) ? 0 : irrNodeTokens.hashCode());
+		result = prime * result	+ ((lastMorph == null) ? 0 : lastMorph.hashCode());
 		result = prime * result + lastPosId;
-		result = prime * result
-				+ ((morphFormat == null) ? 0 : morphFormat.hashCode());
+		result = prime * result	+ ((morphFormat == null) ? 0 : morphFormat.hashCode());
 		return result;
 	}
 	@Override
@@ -99,8 +100,7 @@ public class IrregularNode implements Serializable{
 		IrregularNode other = (IrregularNode) obj;
 		if (firstPosId != other.firstPosId)
 			return false;
-		if (Double.doubleToLongBits(innerScore) != Double
-				.doubleToLongBits(other.innerScore))
+		if (Double.doubleToLongBits(innerScore) != Double.doubleToLongBits(other.innerScore))
 			return false;
 		if (irrNodeTokens == null) {
 			if (other.irrNodeTokens != null)
@@ -120,12 +120,14 @@ public class IrregularNode implements Serializable{
     }
 	@Override
 	public String toString() {
-		return "IrregularNode [lastMorph=" + lastMorph + ", firstPosId="
-				+ firstPosId + ", lastPosId=" + lastPosId + ", innerScore="
-				+ innerScore + ", irrNodeTokens=" + irrNodeTokens
-				+ ", morphFormat=" + morphFormat + "]";
+		return "IrregularNode ["
+				+   "lastMorph=" + lastMorph 
+				+ ", firstPosId=" + firstPosId 
+				+ ", lastPosId=" + lastPosId 
+				+ ", innerScore=" + innerScore 
+				+ ", irrNodeTokens=" + irrNodeTokens
+				+ ", morphFormat=" + morphFormat 
+				+ "]";
 	}
-	
-	
-	
+		
 }

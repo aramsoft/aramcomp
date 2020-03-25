@@ -37,9 +37,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 /**
- * 코퍼스로부터 모델 생성 시 필요한 데이터 생성 </br> 생성되는 데이터는 아래와 같음</br> - 단어 사전(word
- * dictionary)</br> - 문법(grammar)</br> - 기분석 사전(full word-phrase
- * dictionary)</br> - 불규칙 사전(irregular dictionary)</br>
+ * 코퍼스로부터 모델 생성 시 필요한 데이터 생성 </br> 생성되는 데이터는 아래와 같음</br> 
+ * - 단어 사전(word dictionary)</br> 
+ * - 문법(grammar)</br> 
+ * - 기분석 사전(full word-phrase dictionary)</br> 
+ * - 불규칙 사전(irregular dictionary)</br>
  *
  * @author Junsoo Shin <jsshin@shineware.co.kr>
  * @version 2.2

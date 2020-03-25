@@ -73,25 +73,4 @@ public class Transition implements FileAccessible{
 		}			
 	}
 
-	public void load(File file) {
-		ObjectInputStream dis;
-		try {
-			dis = new ObjectInputStream(new BufferedInputStream(new GZIPInputStream(new FileInputStream(file))));
-			scoreMatrix = (double[][]) dis.readObject();
-			dis.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void load(InputStream inputStream) {
-		ObjectInputStream dis;
-		try {
-			dis = new ObjectInputStream(new BufferedInputStream(new GZIPInputStream(inputStream)));
-			scoreMatrix = (double[][]) dis.readObject();
-			dis.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 }

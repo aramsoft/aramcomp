@@ -52,7 +52,7 @@ public class ModelBuilder {
 
 	private Transition transition;
 	private Observation observation;
-	private PosTable table;
+	private PosTable posTable;
 	private IrregularTrie irrTrie;
 	
 	private KoreanUnitParser unitParser;
@@ -67,19 +67,16 @@ public class ModelBuilder {
 	 * @param path 모델을 생성하기 위한 트레이닝 데이터 위치
 	 */
 	public void buildPath(String path){
-		this.unitParser = null;
-		this.wordDic = null;
-		this.irrDic = null;
-		this.grammar = null;
 
-		this.unitParser = new KoreanUnitParser();
+		unitParser = new KoreanUnitParser();
+		
 		wordDic = new Dictionary(path+File.separator+FILENAME.WORD_DIC);
-		this.addExternalDic(this.externalDic);
+		addExternalDic(externalDic);
 
 		irrDic = new Dictionary(path+File.separator+FILENAME.IRREGULAR_DIC);
 		grammar = new Grammar(path+File.separator+FILENAME.GRAMMAR);
 
-		Map<String,Integer> totalPrevPOSTf = this.getTotalPrevPOSCount();
+		Map<String,Integer> totalPrevPOSTf = getTotalPrevPOSCount();
 
 		//build POS table
 		this.buildPosTable(totalPrevPOSTf);
@@ -94,7 +91,118 @@ public class ModelBuilder {
 		this.buildIrregularDic();
 	}
 
+	private void addExternalDic(String filename) {
+		try {
+			if(filename != null) {
+				BufferedReader br = new BufferedReader(
+						new InputStreamReader(new FileInputStream(filename), StandardCharsets.UTF_8));
+//				BufferedReader br = new BufferedReader(new FileReader(filename));
+				String line = null;
+				while ((line = br.readLine()) != null) {
+					line = line.trim();
+					if (line.length() == 0 || line.charAt(0) == '#') continue;
+					this.wordDic.append(line, "NNP",50);
+				}
+				br.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
+	/**
+	 * Grammar에 포함되어 있는 이전 품사의 빈도수를 계산 <br>
+	 * Grammar 파일 형식에 다음 품사의 빈도 수 합과 같음 <br>
+	 * Grammar 파일 형식 <br>
+	 * - <이전 품사> \t <다음 품사1:빈도>, <다음 품사2:빈도>, ...
+	 * @return
+	 */
+	private Map<String, Integer> getTotalPrevPOSCount() {
+
+		Map<String,Integer> posCountMap = new HashMap<String, Integer>();
+		Set<String> prevPosSet = grammar.getGrammar().keySet();
+		for (String prevPos : prevPosSet) {
+			Map<String,Integer> prev2curPosMap = grammar.getGrammar().get(prevPos);
+			Integer tf = posCountMap.get(prevPos);
+			if(tf == null){ tf = 0; }
+			
+			Set<String> curPosSet = prev2curPosMap.keySet();
+			for (String curPos : curPosSet) {
+				tf += prev2curPosMap.get(curPos);
+			}
+			
+			posCountMap.put(prevPos, tf);
+		}
+		return posCountMap;
+
+	}
+
+	/**
+	 * 주어진 POS 빈도수 정보를 활용하여 POS table 구축 <br>
+	 * POS table은 형태소 분석 단계에서 메모리 사용량 및 속도 향상을 위해 사용됨 <br>
+	 * String < Integer
+	 * @param totalPrevPOSTf 전체 빈도수
+	 */
+	private void buildPosTable(Map<String, Integer> totalPrevPOSTf) {
+
+		this.posTable = new PosTable();
+		
+		Set<String> posSet = totalPrevPOSTf.keySet();
+		for (String pos : posSet) {
+			this.posTable.put(pos);
+		}
+		this.posTable.put(SYMBOL.BOE);
+		this.posTable.put(SYMBOL.EOE);
+		this.posTable.put(SYMBOL.NA);
+	}
+
+	/**
+	 * Grammar의 데이터를 이용하여 전이 확률(transition probability) 계산<br>
+	 * @param totalPrevPOSTf
+	 */
+
+	private void calTransition(Map<String, Integer> totalPrevPOSTf) {
+
+		this.transition  = new Transition(this.posTable.size());
+
+		Set<String> prevPosSet = grammar.getGrammar().keySet();
+		for (String prevPos : prevPosSet) {
+			Map<String,Integer> curPosMap = grammar.getGrammar().get(prevPos);
+			Set<String> curPosSet = curPosMap.keySet();
+			for (String curPos : curPosSet) {
+				int prev2CurTf = curPosMap.get(curPos);
+				int prevTf = totalPrevPOSTf.get(prevPos);
+				if(curPos.equals("NNP")){
+					prev2CurTf += 100000;
+					prevTf += 100000;
+				}
+				double transitionScore = prev2CurTf/(double)prevTf;
+				transitionScore = Math.log10(transitionScore);
+				this.transition.put(this.posTable.getId(prevPos),this.posTable.getId(curPos),transitionScore);
+			}
+		}
+	}
+
+	/**
+	 * WordDictionary의 데이터를 이용하여 관측 확률(observation probability) 계산<br> 
+	 * @param totalPrevPOSTf
+	 */
+	private void calObservation(Map<String, Integer> totalPrevPOSTf) {
+
+		this.observation = new Observation();
+
+		Set<Entry<String, Map<String,Integer>>> wordDicEntrySet = wordDic.getDictionary().entrySet();
+		for (Entry<String, Map<String, Integer>> wordPosTfEntry : wordDicEntrySet) {
+			String word = wordPosTfEntry.getKey();
+			Set<Entry<String,Integer>> posTfSet = wordPosTfEntry.getValue().entrySet();
+			for (Entry<String, Integer> posTf : posTfSet) {
+				int totalPosTf = totalPrevPOSTf.get(posTf.getKey());
+				double observationScore = (double)posTf.getValue()/totalPosTf;
+				observationScore = Math.log10(observationScore);
+				this.observation.put(word,posTf.getKey(),this.posTable.getId(posTf.getKey()),observationScore);
+			}
+		}
+	}
 
 	/**
 	 * 불규칙 사전 빌드
@@ -134,7 +242,7 @@ public class ModelBuilder {
 			String token = tokens[i];
 			int splitIdx = token.lastIndexOf("/");
 			String morph = token.substring(0, splitIdx);
-			int posId = this.table.getId(token.substring(splitIdx+1));
+			int posId = this.posTable.getId(token.substring(splitIdx+1));
 			irrNodeTokens.add(new Pair<>(morph, posId));
 			//set first pos id
 			if(i == 0){
@@ -181,97 +289,6 @@ public class ModelBuilder {
 		irrNode.setMorphFormat(morphFormat.toString());
 		return irrNode;
 	}	
-	/**
-	 * 주어진 POS 빈도수 정보를 활용하여 POS table 구축 <br>
-	 * POS table은 형태소 분석 단계에서 메모리 사용량 및 속도 향상을 위해 사용됨 <br>
-	 * String < Integer
-	 * @param totalPrevPOSTf 전체 빈도수
-	 */
-	private void buildPosTable(Map<String, Integer> totalPrevPOSTf) {
-		this.table = new PosTable();
-		Set<String> posSet = totalPrevPOSTf.keySet();
-		for (String pos : posSet) {
-			this.table.put(pos);
-		}
-		this.table.put(SYMBOL.BOE);
-		this.table.put(SYMBOL.EOE);
-		this.table.put(SYMBOL.NA);
-	}
-
-	/**
-	 * WordDictionary의 데이터를 이용하여 관측 확률(observation probability) 계산<br> 
-	 * @param totalPrevPOSTf
-	 */
-	private void calObservation(Map<String, Integer> totalPrevPOSTf) {
-
-		this.observation = new Observation();
-
-		Set<Entry<String, Map<String,Integer>>> wordDicEntrySet = wordDic.getDictionary().entrySet();
-		for (Entry<String, Map<String, Integer>> wordPosTfEntry : wordDicEntrySet) {
-			String word = wordPosTfEntry.getKey();
-			Set<Entry<String,Integer>> posTfSet = wordPosTfEntry.getValue().entrySet();
-			for (Entry<String, Integer> posTf : posTfSet) {
-				int totalPosTf = totalPrevPOSTf.get(posTf.getKey());
-				double observationScore = (double)posTf.getValue()/totalPosTf;
-				observationScore = Math.log10(observationScore);
-				this.observation.put(word,posTf.getKey(),this.table.getId(posTf.getKey()),observationScore);
-			}
-		}
-	}
-
-	/**
-	 * Grammar의 데이터를 이용하여 전이 확률(transition probability) 계산<br>
-	 * @param totalPrevPOSTf
-	 */
-
-	private void calTransition(Map<String, Integer> totalPrevPOSTf) {
-
-		this.transition  = new Transition(this.table.size());
-
-		Set<String> prevPosSet = grammar.getGrammar().keySet();
-		for (String prevPos : prevPosSet) {
-			Map<String,Integer> curPosMap = grammar.getGrammar().get(prevPos);
-			Set<String> curPosSet = curPosMap.keySet();
-			for (String curPos : curPosSet) {
-				int prev2CurTf = curPosMap.get(curPos);
-				int prevTf = totalPrevPOSTf.get(prevPos);
-				if(curPos.equals("NNP")){
-					prev2CurTf += 100000;
-					prevTf += 100000;
-				}
-				double transitionScore = prev2CurTf/(double)prevTf;
-				transitionScore = Math.log10(transitionScore);
-				this.transition.put(this.table.getId(prevPos),this.table.getId(curPos),transitionScore);
-			}
-		}
-	}
-
-	/**
-	 * Grammar에 포함되어 있는 이전 품사의 빈도수를 계산 <br>
-	 * Grammar 파일 형식에 다음 품사의 빈도 수 합과 같음 <br>
-	 * Grammar 파일 형식 <br>
-	 * - <이전 품사> \t <다음 품사1:빈도>, <다음 품사2:빈도>, ...
-	 * @return
-	 */
-	private Map<String, Integer> getTotalPrevPOSCount() {
-
-		Map<String,Integer> posCountMap = new HashMap<String, Integer>();
-		Set<String> prevPosSet = grammar.getGrammar().keySet();
-		for (String prevPos : prevPosSet) {
-			Map<String,Integer> prev2curPosMap = grammar.getGrammar().get(prevPos);
-			Set<String> curPosSet = prev2curPosMap.keySet();
-			for (String curPos : curPosSet) {
-				Integer tf = posCountMap.get(prevPos);
-				if(tf == null){
-					tf = 0;
-				}
-				tf += prev2curPosMap.get(curPos);
-				posCountMap.put(prevPos, tf);
-			}
-		}
-		return posCountMap;
-
-	}
 
 
 	@Deprecated
@@ -288,7 +305,7 @@ public class ModelBuilder {
 		FileUtil.makePath(path);
 		this.transition.save(path+File.separator+FILENAME.TRANSITION);
 		this.observation.save(path+File.separator+FILENAME.OBSERVATION);
-		this.table.save(path+File.separator+FILENAME.POS_TABLE);
+		this.posTable.save(path+File.separator+FILENAME.POS_TABLE);
 		this.irrTrie.save(path+File.separator+FILENAME.IRREGULAR_MODEL);
 	}
 
@@ -302,23 +319,4 @@ public class ModelBuilder {
 	public void setExternalDic(String externalDic) {
 		this.externalDic = externalDic;
 	}
-	private void addExternalDic(String filename) {
-		try {
-			if(filename != null) {
-				BufferedReader br = new BufferedReader(
-						new InputStreamReader(new FileInputStream(filename), StandardCharsets.UTF_8));
-//				BufferedReader br = new BufferedReader(new FileReader(filename));
-				String line = null;
-				while ((line = br.readLine()) != null) {
-					line = line.trim();
-					if (line.length() == 0 || line.charAt(0) == '#') continue;
-					this.wordDic.append(line, "NNP",50);
-				}
-				br.close();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
 }

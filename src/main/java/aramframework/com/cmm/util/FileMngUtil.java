@@ -175,11 +175,11 @@ public class FileMngUtil {
 			fvo.setFileExtsn(fileExt);
 			fvo.setFileType(file.getContentType());
 			fvo.setFileStreCours(storePathString);
-			fvo.setFileSize(Long.toString(_size));
+			fvo.setFileSize(_size);
 			fvo.setOrignlFileNm(orginFileName);
 			fvo.setStreFileNm(newName);
 			fvo.setAtchFileId(atchFileIdString);
-			fvo.setFileSn(String.valueOf(fileKey));
+			fvo.setFileSn(fileKey);
 
 			// writeFile(file, newName, storePathString);
 			result.add(fvo);

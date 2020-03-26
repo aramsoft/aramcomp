@@ -118,7 +118,7 @@ public class FileDownloadController {
 	@RequestMapping(value = "/files/{filePathId}/id/{fileSn}")
 	public void cvplFileDownload(
 			@PathVariable String filePathId, 
-			@PathVariable String fileSn, 
+			@PathVariable int fileSn, 
 			HttpServletRequest request, 
 			HttpServletResponse response) 
 	throws Exception {
@@ -130,7 +130,8 @@ public class FileDownloadController {
 		fileVO.setFileSn(fileSn);
 		
 		fileVO = fileMngService.selectFileInf(fileVO);
-
+		LOG.debug("fileVO = " + fileVO);
+		
 		File uFile = new File(fileVO.getFileStreCours(), fileVO.getStreFileNm());
 		int fSize = (int) uFile.length();
 

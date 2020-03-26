@@ -19,7 +19,7 @@ public class FileVO extends BaseVO {
 	private String creatDt = "";
 
 	/** 파일연번  */
-	private String fileSn = "";
+	private int fileSn = 0;
 
 	/** 파일저장경로 */
 	private String fileStreCours = "";
@@ -40,7 +40,7 @@ public class FileVO extends BaseVO {
 	private String fileCn = "";
 
 	/** 파일크기	 */
-	private String fileSize = "";
+	private long fileSize = 0;
 
 	// domain
 	/**
@@ -84,7 +84,7 @@ public class FileVO extends BaseVO {
 	 * 
 	 * @return 	the fileSn
 	 */
-	public String getFileSn() {
+	public int getFileSn() {
 		return fileSn;
 	}
 	/**
@@ -92,7 +92,7 @@ public class FileVO extends BaseVO {
 	 * 
 	 * @param 	fileSn	the fileSn to set
 	 */
-	public void setFileSn(String fileSn) {
+	public void setFileSn(int fileSn) {
 		this.fileSn = fileSn;
 	}
 
@@ -203,7 +203,7 @@ public class FileVO extends BaseVO {
 	 * 
 	 * @return 	the fileSize
 	 */
-	public String getFileSize() {
+	public long getFileSize() {
 		return fileSize;
 	}
 	/**
@@ -211,7 +211,7 @@ public class FileVO extends BaseVO {
 	 * 
 	 * @param 	fileSize	the fileSize to set
 	 */
-	public void setFileSize(String fileSize) {
+	public void setFileSize(long fileSize) {
 		this.fileSize = fileSize;
 	}
 

@@ -50,7 +50,7 @@ public class ImageProcessController {
 	@RequestMapping(value = "/files/image/{filePathId}/id/{fileSn}")
 	public void getImage(
 			@PathVariable String filePathId, 
-			@PathVariable String fileSn, 
+			@PathVariable int fileSn, 
 			@RequestParam(value="width", required=false) String strWidth,
 			HttpServletResponse response) 
 	throws Exception {

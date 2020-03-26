@@ -1,7 +1,5 @@
 package aramframework.com.cmm.domain;
 
-import java.util.List;
-
 import kr.co.shineware.nlp.komoran.constant.SYMBOL;
 import kr.co.shineware.nlp.komoran.core.model.LatticeNode;
 import kr.co.shineware.nlp.komoran.model.KomoranResult;
@@ -16,7 +14,7 @@ import kr.co.shineware.nlp.komoran.parser.KoreanUnitParser;
  */
 public class AramKomoranResult {
 
-	KomoranResult komoranResult;
+	private KomoranResult komoranResult;
 	private KoreanUnitParser parser = new KoreanUnitParser();
 	 
     /**
@@ -40,7 +38,7 @@ public class AramKomoranResult {
     public String getPlainText() {
         StringBuilder result = new StringBuilder();
         for (LatticeNode latticeNode : komoranResult.getResultNodeList()) {
-            if (latticeNode.getMorphTag().getTag().equals(SYMBOL.EOE)) {
+            if (latticeNode.getMorphTag().getTag().equals(SYMBOL.END)) {
             	result.append("<br/>");
             	continue;
             }

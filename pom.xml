@@ -270,6 +270,12 @@
             <version>3.0.8</version>
         </dependency>
         
+		<!-- KOMORAN -->
+		<dependency>
+		    <groupId>com.github.shin285</groupId>
+		    <artifactId>KOMORAN</artifactId>
+		    <version>3.3.8</version>
+		</dependency>
 		<!-- 공통컴포넌트 끝 -->
 
 		<!-- 모바일 신규공통컴포넌트  -->
@@ -374,6 +380,10 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
-	</repositories>
+	    <repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>	
 
 </project>

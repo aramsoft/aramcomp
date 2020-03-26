@@ -44,10 +44,12 @@
             <!-- 검색 필드 박스 시작 -->
             <div id="search_field">
 				<form:form modelAttribute="boardVO" action ="" method="post">
-                    <fieldset>
-                    <legend>조건정보 영역</legend>
 					<form:hidden path="bbsId" />
 					<input type="hidden" name="nttId" value="0"/>
+					<input type="hidden" name="menuNo" value="${menuNo}"/>
+					
+                    <fieldset>
+                    <legend>조건정보 영역</legend>
                         
                     <div class="sf_start">
                         <ul id="search_first_ul">

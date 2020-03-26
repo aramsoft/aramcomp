@@ -39,6 +39,7 @@
                 <div id="search_field_loc"><h2><strong>답글쓰기</strong></h2></div>
             </div>
 			<form:form modelAttribute="boardVO" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="menuNo" value="${menuNo}"/>
 				<form:hidden path="bbsId" />
 				<form:hidden path="nttId" />
 			

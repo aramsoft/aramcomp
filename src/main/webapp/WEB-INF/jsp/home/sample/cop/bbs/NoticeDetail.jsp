@@ -40,9 +40,10 @@
 			<!-- //main content 끝 -->			
             
 			<form:form modelAttribute="boardVO"  method="post" action="">
+				<input type="hidden" name="menuNo" value="${menuNo}"/>
 				<form:hidden path="bbsId" />
 				<form:hidden path="nttId" />
-				
+
                 <div class="modify_user">
                     <table>
                         <tr> 

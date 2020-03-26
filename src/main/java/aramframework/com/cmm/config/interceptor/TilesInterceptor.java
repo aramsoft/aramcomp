@@ -85,14 +85,25 @@ public class TilesInterceptor extends HandlerInterceptorAdapter {
 			ModelAndView modelAndView) 
 	throws Exception {
 
+		String jspPrefix = (String) request.getAttribute("jspPrefix");
+		String viewName = modelAndView.getViewName();
+		if (jspPrefix != null 
+				&& !"".equals(jspPrefix)
+				&& !viewName.startsWith("forward:/") 
+				&& !viewName.startsWith(jspPrefix)) {
+			modelAndView.setViewName(jspPrefix + viewName);
+		}
+		
+//		LOG.debug("jspPrefix = " + jspPrefix + ", viewName = " + viewName);
+
 		String cmmntyId = (String) request.getAttribute("curTrgetId");
 		String menuPos = (String) request.getAttribute("curMenuPos");
-		
-//		LOG.debug("cmmntyId = " + cmmntyId + ", menuPos = " + menuPos);
 		
 		if (cmmntyId == null || !cmmntyId.startsWith("CMMNTY_") || "".equals(menuPos)) {
 			return;
 		}
+		
+//		LOG.debug("cmmntyId = " + cmmntyId + ", menuPos = " + menuPos);
 		
         CommunityVO communityVO = cmmntyService.getCommunityLayoutInfo(cmmntyId, menuPos);
         modelAndView.addObject("targetVO", communityVO);

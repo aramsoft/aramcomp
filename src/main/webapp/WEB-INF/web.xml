@@ -63,6 +63,7 @@
  		<url-pattern>/files/*</url-pattern> 
 		<url-pattern>/board/*</url-pattern> 
  		<url-pattern>/apps/*</url-pattern> 
+ 		<url-pattern>/home/*</url-pattern> 
  	</servlet-mapping> 
  	
     <welcome-file-list>

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import aramframework.com.cmm.annotation.IncludedInfoVO;
+import aramframework.com.cmm.domain.AramKomoranResult;
 import aramframework.com.cmm.service.KomoranService;
 import kr.co.shineware.nlp.komoran.model.KomoranResult;
 import aramframework.com.cmm.annotation.IncludedInfo;
@@ -56,8 +57,10 @@ public class ComIndexController {
 			inputText = "산림청에서 근무해 왔으며, 슬하에 아들 한 명을 두고 있다.";
 		}
 		
-		KomoranResult analyzeResultList = komoranService.analyze(inputText);
+		KomoranResult komoranResultList = komoranService.analyze(inputText);
 
+		AramKomoranResult aramResultList = new AramKomoranResult(komoranResultList);
+		
 		//print each tokens by getTokenList()  
 //		List<Token> tokenList = analyzeResultList.getTokenList();
 //		KORMORLOG.debug("==========print 'getTokenList()'==========");
@@ -79,7 +82,7 @@ public class ComIndexController {
 //		KORMORLOG.debug("==========print 'getList()'==========");
 //		KORMORLOG.debug(analyzeResultList.getList().toString());
 		model.addAttribute("inputText", inputText);
-		model.addAttribute("resultText", analyzeResultList.getPlainText());
+		model.addAttribute("resultText", aramResultList.getPlainText());
 			
 		return "cmm/UnitContent";
 	}

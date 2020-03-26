@@ -91,7 +91,6 @@ public class KomoranResult {
         StringBuilder result = new StringBuilder();
         for (LatticeNode latticeNode : resultNodeList) {
             if (latticeNode.getMorphTag().getTag().equals(SYMBOL.EOE)) {
-            	result.append("<br/>");
             	continue;
             }
             if (latticeNode.getTag().equals(SYMBOL.NA)) {

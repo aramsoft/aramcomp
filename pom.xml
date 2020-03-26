@@ -215,7 +215,14 @@
 			<artifactId>commons-net</artifactId>
 			<version>3.0.1</version>
 		</dependency>
-				
+		
+		<!-- JDBC -->		
+		<dependency>
+		    <groupId>org.postgresql</groupId>
+		    <artifactId>postgresql</artifactId>
+		    <version>9.4.1208</version>
+		</dependency>
+		
 		<!-- Email -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -286,9 +293,8 @@
 			<version>2.0.2</version>
 		</dependency>
 	
-		<!-- 모바일 신규공통컴포넌트  -->
-		
 		<!-- 3rd party 라이브러리로 별도의 설치 필요  -->
+
 		<dependency>
 			<groupId>egovframework.com.ems</groupId>
 			<artifactId>sndng-mail</artifactId>

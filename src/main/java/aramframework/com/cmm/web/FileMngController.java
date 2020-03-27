@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -27,8 +25,6 @@ import aramframework.com.cmm.service.FileMngService;
  */
 @Controller
 public class FileMngController {
-
-	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private FileMngService fileMngService;

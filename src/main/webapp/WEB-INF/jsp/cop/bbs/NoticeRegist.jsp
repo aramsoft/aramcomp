@@ -44,9 +44,6 @@
 <form:hidden path="bbsId" />
 <form:hidden path="nttId" />
 
-<form:hidden path="boardMasterVO.fileAtchPosblAt" readonly="true" />
-<form:hidden path="boardMasterVO.posblAtchFileNumber" readonly="true" />
-
 <table class="table-register">
 	<tr>
 	    <th width="20%">

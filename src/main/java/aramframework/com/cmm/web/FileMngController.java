@@ -68,19 +68,19 @@ public class FileMngController {
 	 * @return			String
 	 * @throws 			Exception
 	 */
-	@RequestMapping("/cmm/fms/editFileInfs.do")
+	@RequestMapping("/files/{fileId}/edit")
 	public String editFileInfs(
+			@PathVariable String fileId, 
 			@ModelAttribute FileVO fileVO, 
 			ModelMap model) 
 	throws Exception {
 
-		LOG.debug("fileVO = " + fileVO);
+		fileVO.setAtchFileId(fileId);
 		List<FileVO> result = fileMngService.selectFileList(fileVO);
 
 		model.addAttribute("fileList", result);
 		model.addAttribute("updateFlag", "Y");
 		model.addAttribute("fileListCnt", result.size());
-		LOG.debug("result.size() = " + result.size());
 
 		return "cmm/fms/FileList";
 	}

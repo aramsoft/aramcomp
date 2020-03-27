@@ -44,9 +44,6 @@
 <form:hidden path="bbsId" />
 <form:hidden path="nttId" />
 
-<form:hidden path="boardMasterVO.fileAtchPosblAt" readonly="true" />
-<form:hidden path="boardMasterVO.posblAtchFileNumber" readonly="true" />
-
 <table class="table-register">
 	<tr>
 	    <th width="20%">
@@ -132,6 +129,8 @@
   	</c:choose>
  	
 	<!-- 파일첨부  -->
+	<c:choose>
+	<c:when test="${not empty boardVO.atchFileId}">
 	<tr>
 		<th>
 		    <span class="norequired_icon"></span>
@@ -139,11 +138,15 @@
 		</th>
 		<td>
 			<input type="hidden" name="returnUrl" value="${pageContext.request.contextPath}/cop/bbs/editBoardArticle.do"/>
-			<jsp:include page="/cmm/fms/editFileInfs.do" flush="true">
-				<jsp:param name="atchFileId" value="${boardVO.atchFileId}" />
-			</jsp:include>
+			<c:import url="/files/${boardVO.atchFileId}/edit" />
 		</td>
 	</tr>
+	</c:when>
+	<c:otherwise>
+		<input type="hidden" name="atchFileId" value="">
+		<input type="hidden" name="fileListCnt" id="fileListCnt" value="0">
+ 	</c:otherwise>
+  	</c:choose>
 	
 	<c:if test="${boardVO.boardMasterVO.fileAtchPosblAt == 'Y'}">
 	<tr>
@@ -153,7 +156,6 @@
 		</th>
 		<td>
 			<input type="hidden" name="posblAtchFileNumber" id="posblAtchFileNumber" value="<c:out value='${boardVO.boardMasterVO.posblAtchFileNumber}'/>" />
-	
 			<div id="file_upload_posbl"  style="display:none;">
 	        <table>
 				<tr>
@@ -173,7 +175,7 @@
 
 		</td>	
 	</tr>
-  	</c:if>
+ 	</c:if>
 </table>
 
 <!-- 검색조건 유지 -->

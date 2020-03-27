@@ -22,17 +22,13 @@
   */
 %>
 
-<!-- <form name="fileForm" action="" method="post">  -->
 <c:if test="${updateFlag=='Y'}">
 <input type="hidden" name="atchFileId" value="${atchFileId}">
 <input type="hidden" name="fileSn" value=0>
 <input type="hidden" name="fileListCnt" id="fileListCnt" value="${fileListCnt}">
 </c:if>
 
-<!-- </form>  -->
-
 <!--<title>파일목록</title> -->
-
 <table>
 	<c:forEach var="fileVO" items="${fileList}" varStatus="status">
 	<tr>
@@ -82,4 +78,5 @@ function fn_aram_deleteFile(atchFileId, fileSn) {
 }
 
 </script>
+
 </c:if>

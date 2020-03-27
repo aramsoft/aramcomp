@@ -320,7 +320,7 @@ public class CmyMenuManageController {
 				if (file.getOriginalFilename().toUpperCase().endsWith(".XLSX")) {
 					try { 
 						fis = file.getInputStream();
-						cmyMenuManageService.insertExcelMenu(communityMenuVO, fis);
+						cmyMenuManageService.syncExcelMenu(communityMenuVO, fis);
 					} catch (Exception e) {
 						throw e;
 					} finally {

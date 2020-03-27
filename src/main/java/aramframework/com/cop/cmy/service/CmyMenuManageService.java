@@ -131,12 +131,12 @@ public class CmyMenuManageService extends EgovAbstractServiceImpl {
 	}
 	
 	/**
-	 * 메뉴 엑셀파일을 등록한다.
+	 * 메뉴 엑셀파일을 등록 또는 수정한다.
 	 * 
 	 * @param file
 	 * @param cmmntyId
 	 */
-	public void insertExcelMenu(CommunityMenuVO communityMenuVO, InputStream fis) throws Exception {
+	public void syncExcelMenu(CommunityMenuVO communityMenuVO, InputStream fis) throws Exception {
 
 		ExcelCmyMenuMapping mapping = new ExcelCmyMenuMapping();
 			

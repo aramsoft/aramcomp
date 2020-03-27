@@ -1,5 +1,7 @@
 package aramframework.com.cmm.domain;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 import aramframework.com.cmm.util.WebUtil;
 
 /**
@@ -215,4 +217,13 @@ public class FileVO extends BaseVO {
 		this.fileSize = fileSize;
 	}
 
+	/**
+	 * toString 메소드를 대치한다.
+	 * 
+	 * @return 	String 
+	 */
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this);
+	}
+	
 }

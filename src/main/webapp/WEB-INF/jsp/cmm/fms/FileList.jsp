@@ -23,9 +23,11 @@
 %>
 
 <!-- <form name="fileForm" action="" method="post">  -->
+<c:if test="${updateFlag=='Y'}">
 <input type="hidden" name="atchFileId" value="${atchFileId}">
-<input type="hidden" name="fileSn">
+<input type="hidden" name="fileSn" value=0>
 <input type="hidden" name="fileListCnt" id="fileListCnt" value="${fileListCnt}">
+</c:if>
 
 <!-- </form>  -->
 
@@ -57,6 +59,8 @@
 	</c:if>
 </table>
 
+<c:if test="${updateFlag=='Y'}">
+
 <script type="text/javascript">
 
 function fn_aram_deleteFile(atchFileId, fileSn) {
@@ -78,3 +82,4 @@ function fn_aram_deleteFile(atchFileId, fileSn) {
 }
 
 </script>
+</c:if>

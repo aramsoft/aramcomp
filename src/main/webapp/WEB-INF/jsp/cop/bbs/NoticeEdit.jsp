@@ -132,8 +132,6 @@
   	</c:choose>
  	
 	<!-- 파일첨부  -->
-	<c:choose>
-	<c:when test="${not empty boardVO.atchFileId}">
 	<tr>
 		<th>
 		    <span class="norequired_icon"></span>
@@ -141,15 +139,11 @@
 		</th>
 		<td>
 			<input type="hidden" name="returnUrl" value="${pageContext.request.contextPath}/cop/bbs/editBoardArticle.do"/>
-			<c:import url="/files/${boardVO.atchFileId}/edit" />
+			<jsp:include page="/cmm/fms/editFileInfs.do" flush="true">
+				<jsp:param name="atchFileId" value="${boardVO.atchFileId}" />
+			</jsp:include>
 		</td>
 	</tr>
-	</c:when>
-	<c:otherwise>
-		<input type="hidden" name="atchFileId" value="">
-		<input type="hidden" name="fileListCnt" id="fileListCnt" value="0">
- 	</c:otherwise>
-  	</c:choose>
 	
 	<c:if test="${boardVO.boardMasterVO.fileAtchPosblAt == 'Y'}">
 	<tr>

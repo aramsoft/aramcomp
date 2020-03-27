@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,8 @@ import aramframework.com.cmm.service.FileMngService;
  */
 @Controller
 public class FileMngController {
+
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private FileMngService fileMngService;
@@ -64,19 +68,19 @@ public class FileMngController {
 	 * @return			String
 	 * @throws 			Exception
 	 */
-	@RequestMapping("/files/{fileId}/edit")
+	@RequestMapping("/cmm/fms/editFileInfs.do")
 	public String editFileInfs(
-			@PathVariable String fileId, 
 			@ModelAttribute FileVO fileVO, 
 			ModelMap model) 
 	throws Exception {
 
-		fileVO.setAtchFileId(fileId);
+		LOG.debug("fileVO = " + fileVO);
 		List<FileVO> result = fileMngService.selectFileList(fileVO);
 
 		model.addAttribute("fileList", result);
 		model.addAttribute("updateFlag", "Y");
 		model.addAttribute("fileListCnt", result.size());
+		LOG.debug("result.size() = " + result.size());
 
 		return "cmm/fms/FileList";
 	}

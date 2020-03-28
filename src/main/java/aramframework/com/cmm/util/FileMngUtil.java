@@ -50,12 +50,12 @@ public class FileMngUtil {
 	 * @return					String
 	 * @throws Exception
 	 */
-	public String insertMultiFile(MultipartHttpServletRequest multiRequest, String KeyStr) 
+	public String insertMultiFile(MultipartHttpServletRequest multiRequest, String category) 
 	throws Exception {
 		String atchFileId = "";
 		Map<String, MultipartFile> files = multiRequest.getFileMap();
 		if (!files.isEmpty()) {
-			List<FileVO> result = parseFileInf(files, KeyStr, 0, "", "");
+			List<FileVO> result = parseFileInf(files, category, 0, "", "");
 			atchFileId = fileMngService.insertFileInfs(result);
 		}
 		return atchFileId;
@@ -70,18 +70,18 @@ public class FileMngUtil {
 	 * @return					String
 	 * @throws Exception
 	 */
-	public String updateMultiFile(MultipartHttpServletRequest multiRequest, String KeyStr, String atchFileId) 
+	public String updateMultiFile(MultipartHttpServletRequest multiRequest, String category, String atchFileId) 
 	throws Exception {
 		final Map<String, MultipartFile> files = multiRequest.getFileMap();
 		if (!files.isEmpty()) {
 			if ("".equals(atchFileId)) {
-				List<FileVO> result = parseFileInf(files, KeyStr, 0, atchFileId, "");
+				List<FileVO> result = parseFileInf(files, category, 0, atchFileId, "");
 				atchFileId = fileMngService.insertFileInfs(result);
 			} else {
 				FileVO fvo = new FileVO();
 				fvo.setAtchFileId(atchFileId);
-				int cnt = fileMngService.getMaxFileSN(fvo);
-				List<FileVO> result = parseFileInf(files, KeyStr, cnt, atchFileId, "");
+				int fileSn = fileMngService.getMaxFileSN(fvo);
+				List<FileVO> result = parseFileInf(files, category, fileSn, atchFileId, "");
 				fileMngService.addFileInfs(result);
 			}
 		}
@@ -112,14 +112,11 @@ public class FileMngUtil {
 	 * @return					List
 	 * @throws Exception
 	 */
-	public List<FileVO> parseFileInf(Map<String, MultipartFile> files, String KeyStr, 
-			int fileKeyParam, String atchFileId, String storePath) 
+	public List<FileVO> parseFileInf(Map<String, MultipartFile> files, String category, 
+			int fileSn, String atchFileId, String storePath) 
 	throws Exception {
 		
-		int fileKey = fileKeyParam;
-
 		String storePathString = "";
-		String atchFileIdString = "";
 
 		if (storePath == null || "".equals(storePath) ) {
 			storePathString = AramProperties.getProperty("Globals.fileStorePath");
@@ -128,10 +125,8 @@ public class FileMngUtil {
 		}
 
 		if (atchFileId == null || "".equals(atchFileId) ) {
-			atchFileIdString = fileIdGnrService.getNextStringId();
-		} else {
-			atchFileIdString = atchFileId;
-		}
+			atchFileId = fileIdGnrService.getNextStringId();
+		} 
 
 		File saveFolder = new File(WebUtil.filePathBlackList(storePathString));
 
@@ -164,7 +159,7 @@ public class FileMngUtil {
 			int index = orginFileName.lastIndexOf(".");
 			// String fileName = orginFileName.substring(0, index);
 			String fileExt = orginFileName.substring(index + 1);
-			String newName = KeyStr + getTimeStamp() + fileKey;
+			String newName = atchFileId + "_" + fileSn + "_" + category + "." + fileExt;
 			long _size = file.getSize();
 
 			if (!"".equals(orginFileName)) {
@@ -178,13 +173,13 @@ public class FileMngUtil {
 			fvo.setFileSize(_size);
 			fvo.setOrignlFileNm(orginFileName);
 			fvo.setStreFileNm(newName);
-			fvo.setAtchFileId(atchFileIdString);
-			fvo.setFileSn(fileKey);
+			fvo.setAtchFileId(atchFileId);
+			fvo.setFileSn(fileSn);
 
 			// writeFile(file, newName, storePathString);
 			result.add(fvo);
 
-			fileKey++;
+			fileSn++;
 		}
 
 		return result;
@@ -197,6 +192,7 @@ public class FileMngUtil {
 	 * 
 	 * @return Timestamp 값
 	 */
+/*
 	private String getTimeStamp() {
 
 		String rtnStr = null;
@@ -215,5 +211,5 @@ public class FileMngUtil {
 
 		return rtnStr;
 	}
-	
+*/	
 }

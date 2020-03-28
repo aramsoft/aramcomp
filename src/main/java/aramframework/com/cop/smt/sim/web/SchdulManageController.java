@@ -471,7 +471,7 @@ public class SchdulManageController {
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
-		schdulManageVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "DSCH_"));
+		schdulManageVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "SIM"));
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -558,7 +558,7 @@ public class SchdulManageController {
 
 		// 첨부파일 관련 ID 생성 start....
 		String atchFileId = schdulManageVO.getAtchFileId();
-		schdulManageVO.setAtchFileId(fileMngUtil.updateMultiFile(multiRequest, "DSCH_", atchFileId));
+		schdulManageVO.setAtchFileId(fileMngUtil.updateMultiFile(multiRequest, "SIM", atchFileId));
 
 		/* *****************************************************************
 		 * // 일정관리정보 업데이트 처리

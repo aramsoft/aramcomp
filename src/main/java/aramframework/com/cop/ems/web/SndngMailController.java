@@ -210,7 +210,7 @@ public class SndngMailController {
     	}
     	
 		// 첨부파일 관련 첨부파일ID 생성
-    	sndngMailVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "MSG_"));
+    	sndngMailVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "EMS"));
     	
     	LoginVO loginVO = (LoginVO)UserDetailsHelper.getAuthenticatedUser();
     	sndngMailVO.setDsptchPerson(loginVO.getId());

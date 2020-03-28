@@ -121,7 +121,7 @@ public class DiaryManageController {
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
-		diaryManageVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "DIARY_"));
+		diaryManageVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "DSM"));
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -174,7 +174,7 @@ public class DiaryManageController {
 		
 		 // 첨부파일 관련 ID 생성 start....
 		String atchFileId = diaryManageVO.getAtchFileId();
-		diaryManageVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "DIARY_", atchFileId));
+		diaryManageVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "DSM", atchFileId));
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();

@@ -403,7 +403,7 @@ public class BBSBoardController {
 			return "cop/bbs/NoticeRegist";
 		}
 
-		boardVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "BBS_"));
+		boardVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "BBS"));
 
 		if (boardVO.getBoardMasterVO().getBbsTyCode().equals(BBSBoardService.BBS_TYPE_ANONYMOUS)) {
 			boardVO.setFrstRegisterId("ANONYMOUS");
@@ -500,7 +500,7 @@ public class BBSBoardController {
 			return "cop/bbs/NoticeReply";
 		}
 
-		boardVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "BBS_"));
+		boardVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "BBS"));
 
 		if (boardVO.getBoardMasterVO().getBbsTyCode().equals(BBSBoardService.BBS_TYPE_ANONYMOUS)) {
 			boardVO.setFrstRegisterId("ANONYMOUS");
@@ -613,7 +613,7 @@ public class BBSBoardController {
 
 		// 첨부파일 관련 ID 생성 start....
 		String atchFileId = boardVO.getAtchFileId();
-		boardVO.setAtchFileId(fileMngUtil.updateMultiFile(multiRequest, "BBS_", atchFileId));
+		boardVO.setAtchFileId(fileMngUtil.updateMultiFile(multiRequest, "BBS", atchFileId));
 
 		if (boardVO.getBoardMasterVO().getBbsTyCode().equals(BBSBoardService.BBS_TYPE_ANONYMOUS)) {
 			boardVO.setLastUpdusrId("ANONYMOUS");

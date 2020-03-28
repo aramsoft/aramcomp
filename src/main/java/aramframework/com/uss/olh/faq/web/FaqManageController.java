@@ -117,7 +117,7 @@ public class FaqManageController {
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
-		faqManageVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "FAQ_"));
+		faqManageVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "FAQ"));
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -169,7 +169,7 @@ public class FaqManageController {
 
 		// 첨부파일 관련 ID 생성 start....
 		String atchFileId = faqManageVO.getAtchFileId();
-		faqManageVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "FAQ_", atchFileId));
+		faqManageVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "FAQ", atchFileId));
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();

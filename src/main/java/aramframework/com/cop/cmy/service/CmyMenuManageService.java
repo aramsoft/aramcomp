@@ -145,10 +145,13 @@ public class CmyMenuManageService extends EgovAbstractServiceImpl {
 		for (int k = 0; k < sheetNum; k++) {
 			Sheet sheet = workbook.getSheetAt(k);
 			int rows = sheet.getPhysicalNumberOfRows();
+			if( rows == 0 ) continue;
+			
+			mapping.setCells(sheet.getRow(0));	// cells 수 설정
 			for (int r = 1; r < rows; r++) {
     			Row row = sheet.getRow(r);
     			if (row != null) {
-    				CommunityMenuVO vo = (CommunityMenuVO)mapping.mappingColumn(row);
+     				CommunityMenuVO vo = (CommunityMenuVO)mapping.mappingColumn(row);
      				vo.setTrgetId(communityMenuVO.getTrgetId());
  
      				CommunityMenuVO resultVO = cmyMenuManageMapper.selectMenuManage(vo);
@@ -157,7 +160,7 @@ public class CmyMenuManageService extends EgovAbstractServiceImpl {
     		    	} else {
     		    		cmyMenuManageMapper.updateMenuManage(vo);
     		    	}	
-    			}
+    			} 
 			}
 		}
 	}

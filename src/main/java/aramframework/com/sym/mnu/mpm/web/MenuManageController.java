@@ -397,12 +397,14 @@ public class MenuManageController {
 						|| file.getOriginalFilename().endsWith(".XLS") 
 						|| file.getOriginalFilename().endsWith(".XLSX")) {
 
+/*
 					if (menuManageService.menuBndeAllDelete()) {
 						message = menuManageService.menuBndeRegist(menuManageVO, file.getInputStream());
 					} else {
 						message = MessageHelper.getMessage("fail.common.msg");
 						menuManageVO.setTmpCmd("EgovMenuBndeRegist Error!!");
 					}
+*/					
 				} else {
 					model.addAttribute("message", "xls, xlsx 파일 타입만 등록이 가능합니다.");
 					return "sym/mnu/mpm/MenuBndeRegist";

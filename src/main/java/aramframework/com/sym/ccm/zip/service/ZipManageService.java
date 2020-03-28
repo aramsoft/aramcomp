@@ -6,18 +6,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.mybatis.spring.SqlSessionTemplate;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.sym.ccm.zip.dao.ZipManageMapper;
+import aramframework.com.sym.ccm.zip.domain.ZipAramVO;
 import aramframework.com.sym.ccm.zip.domain.ZipVO;
 import aramframework.com.sym.ccm.zip.excel.ExcelZipAramMapping;
 import aramframework.com.sym.ccm.zip.excel.ExcelZipMapping;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.fdl.excel.impl.EgovExcelServiceImpl;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**
@@ -32,9 +35,6 @@ public class ZipManageService extends EgovAbstractServiceImpl {
 
 	@Autowired
 	private ZipManageMapper zipManageMapper;	
-
-	@Autowired 
-	private SqlSessionTemplate sqlSessionTemplate;
 
 	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
@@ -78,42 +78,69 @@ public class ZipManageService extends EgovAbstractServiceImpl {
 	 * 우편번호 엑셀파일을 등록한다.
 	 * 
 	 * @param file
+	 * @param cmmntyId
 	 */
-	public void insertExcelZip(InputStream file) {
-		String mapClass = ExcelZipMapping.class.getName();
-		String sqlId = ZipManageMapper.class.getName() + ".insertExcelZip";
+	public void syncExcelZip(InputStream fis) throws Exception {
 
-		zipManageMapper.deleteAllZip();
-		try {
-			EgovExcelServiceImpl excelService = new EgovExcelServiceImpl();
-			excelService.setMapClass(mapClass);
-			excelService.setSqlSessionTemplate(sqlSessionTemplate);
-
-			excelService.uploadExcel(sqlId, file, 1, (long) 5000);
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		} 
+		ExcelZipMapping mapping = new ExcelZipMapping();
+			
+		Workbook workbook = new XSSFWorkbook(fis);
+		int sheetNum = workbook.getNumberOfSheets();
+		for (int k = 0; k < sheetNum; k++) {
+			Sheet sheet = workbook.getSheetAt(k);
+			int rows = sheet.getPhysicalNumberOfRows();
+			if( rows == 0 ) continue;
+			
+			mapping.setCells(sheet.getRow(0));	// cells 수 설정
+			for (int r = 1; r < rows; r++) {
+    			Row row = sheet.getRow(r);
+    			if (row != null) {
+    				ZipVO vo = (ZipVO)mapping.mappingColumn(row);
+ 
+    				ZipVO resultVO = zipManageMapper.selectZipDetail(vo);
+    		    	if ( resultVO == null ) {
+    		    		zipManageMapper.insertZip(vo);
+    		    	} else {
+    		    		zipManageMapper.updateZip(vo);
+    		    	}	
+    			}
+			}
+		}
 	}
 
+
 	/**
-	 * 우편번호 엑셀파일을 등록한다.(아람버전)
+	 * 우편번호 엑셀파일을 등록한다.
 	 * 
 	 * @param file
+	 * @param cmmntyId
 	 */
-	public void insertExcelZipAram(InputStream file) {
-		String mapClass = ExcelZipAramMapping.class.getName();
-		String sqlId = ZipManageMapper.class.getName() + ".insertExcelZipAram";
+	public void syncExcelZipAram(InputStream fis) throws Exception {
 
-		zipManageMapper.deleteAllZipAram();
-		try {
-			EgovExcelServiceImpl excelService = new EgovExcelServiceImpl();
-			excelService.setMapClass(mapClass);
-			excelService.setSqlSessionTemplate(sqlSessionTemplate);
-
-			excelService.uploadExcel(sqlId, file, 1, (long) 5000);
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		} 
+		ExcelZipAramMapping mapping = new ExcelZipAramMapping();
+			
+		Workbook workbook = new XSSFWorkbook(fis);
+		int sheetNum = workbook.getNumberOfSheets();
+		for (int k = 0; k < sheetNum; k++) {
+			Sheet sheet = workbook.getSheetAt(k);
+			int rows = sheet.getPhysicalNumberOfRows();
+			if( rows == 0 ) continue;
+			
+			mapping.setCells(sheet.getRow(0));	// cells 수 설정
+			for (int r = 1; r < rows; r++) {
+    			Row row = sheet.getRow(r);
+    			if (row != null) {
+    				ZipAramVO vo = (ZipAramVO)mapping.mappingColumn(row);
+ 
+    				ZipAramVO resultVO = zipManageMapper.selectZipDetailAram(vo);
+    		    	if ( resultVO == null ) {
+    		    		zipManageMapper.insertZipAram(vo);
+    		    	} else {
+    		    		zipManageMapper.updateZipAram(vo);
+    		    	}	
+    			}
+			}
+		}
 	}
 
 	/**
@@ -128,13 +155,6 @@ public class ZipManageService extends EgovAbstractServiceImpl {
 	 */
 	public void deleteZip(ZipVO zipVO) {
 		zipManageMapper.deleteZip(zipVO);
-	}
-
-	/**
-	 * 우편번호 전체를 삭제한다.
-	 */
-	public void deleteAllZip() {
-		zipManageMapper.deleteAllZip();
 	}
 
 	/**

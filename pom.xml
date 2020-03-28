@@ -149,18 +149,13 @@
 			<artifactId>egovframework.rte.fdl.logging</artifactId>
 			<version>${egovframework.rte.version}</version>
 		</dependency>
+<!-- 
 		<dependency>
 			<groupId>egovframework.rte</groupId>
 			<artifactId>egovframework.rte.fdl.excel</artifactId>
 			<version>${egovframework.rte.version}</version>
-			<exclusions>
-		        <exclusion>
-		            <groupId>egovframework.rte</groupId>
-		            <artifactId>egovframework.rte.fdl.filehandling</artifactId>
-		        </exclusion>
-		    </exclusions> 
 		</dependency>
-		
+-->		
 		<!-- 실행환경 라이브러리 끝 -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
@@ -270,6 +265,18 @@
 			<version>1.3.3</version>
 		</dependency>
 
+		<!-- excel -->
+		<dependency>      
+			<groupId>org.apache.poi</groupId>    
+			<artifactId>poi</artifactId>      
+			<version>3.10.1</version> 
+		</dependency>   
+		<dependency>      
+			<groupId>org.apache.poi</groupId>      
+			<artifactId>poi-ooxml</artifactId>      
+		 	<version>3.10.1</version>  
+		</dependency> 
+		 
 		<!-- Tiles -->
     	<dependency>
             <groupId>org.apache.tiles</groupId>

@@ -157,25 +157,20 @@ public class ZipManageController {
 		for (MultipartFile file : multiRequest.getFileMap().values()) {
 			if (!"".equals(file.getOriginalFilename())) {
 				// 2011.10.07 업로드 파일에 대한 확장자를 체크
-				if (file.getOriginalFilename().endsWith(".xls") 
-						|| file.getOriginalFilename().endsWith(".xlsx") 
-						|| file.getOriginalFilename().endsWith(".XLS")
-						|| file.getOriginalFilename().endsWith(".XLSX")) {
-
-					// zipManageService.deleteAllZip();
-					// excelZipService.uploadExcel("ZipManageDAO.insertExcelZip", file.getInputStream(), 2);
-					// 2011.10.21 보안점검 후속조치
-					try {
+				if (file.getOriginalFilename().toUpperCase().endsWith(".XLSX")) {
+					try { 
 						fis = file.getInputStream();
-//						zipManageService.insertExcelZip(fis);
-						zipManageService.insertExcelZipAram(fis);
+//						zipManageService.syncExcelZip(fis);
+						zipManageService.syncExcelZipAram(fis);
 					} catch (Exception e) {
 						throw e;
 					} finally {
 						if (fis != null)	// 2011.11.1 보안점검 후속조치
-							fis.close();					}
+							fis.close();
+					}
+
 				} else {
-					model.addAttribute("message", "xls, xlsx 파일 타입만 등록이 가능합니다.");
+					model.addAttribute("message", "xlsx 파일 타입만 등록이 가능합니다.");
 					return "sym/ccm/zip/ZipExcelRegist";
 				}
 			}

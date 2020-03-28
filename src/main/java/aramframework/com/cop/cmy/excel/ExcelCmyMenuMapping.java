@@ -14,14 +14,18 @@ import aramframework.com.cop.cmy.domain.CommunityMenuVO;
  */
 public class ExcelCmyMenuMapping {
 
-	private static int CELLS = 9;	// clumns수
+	private int cells = 0;	// column 수
+	
+	public void setCells(Row row) {
+		this.cells = row.getPhysicalNumberOfCells();
+	}
 	
 	public Object mappingColumn(Row row) {
 		
 		CommunityMenuVO vo = new CommunityMenuVO();
 
 		String value = "";
-		for (short c = 0; c < CELLS; c = (short)(c + 1)) {
+		for (short c = 0; c < cells; c = (short)(c + 1)) {
 			Cell cell = row.getCell(c);
 			if (cell != null) {
 				switch (cell.getCellType()) {

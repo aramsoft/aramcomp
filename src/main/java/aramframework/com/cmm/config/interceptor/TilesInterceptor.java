@@ -85,6 +85,8 @@ public class TilesInterceptor extends HandlerInterceptorAdapter {
 			ModelAndView modelAndView) 
 	throws Exception {
 
+		if (modelAndView == null) return;	// for direct response output(modelandview is null)
+		
 		String jspPrefix = (String) request.getAttribute("jspPrefix");
 		String viewName = modelAndView.getViewName();
 		if (jspPrefix != null 

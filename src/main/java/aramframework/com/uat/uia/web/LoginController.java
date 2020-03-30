@@ -253,7 +253,7 @@ public class LoginController {
 				&& loginVO.getPasswordHint() == null || loginVO.getPasswordHint().equals("")
 				&& loginVO.getPasswordCnsr() == null || loginVO.getPasswordCnsr().equals("") 
 				&& loginVO.getUserSe() == null || loginVO.getUserSe().equals("")) {
-			return "aramframework/com/cmm/egovError";
+			return "cmm/error/egovError";
 		}
 
 		// 1. 비밀번호 찾기

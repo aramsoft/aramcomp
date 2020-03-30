@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
@@ -49,16 +48,15 @@ public class WebLogInterceptor extends HandlerInterceptorAdapter {
 	 * @throws Exception
 	 */
 	@Override
-	public void postHandle(
+	public boolean preHandle(
 			HttpServletRequest request, 
 			HttpServletResponse response, 
-			Object handler, 
-			ModelAndView modelAndView) 
+			Object handler) 
 	throws Exception {
 
 		String requestIP = request.getRemoteAddr();
 		
-		if( "127.0.0.1".equals(requestIP)) return;
+		if( "127.0.0.1".equals(requestIP)) return true;
 		
 		String requestURI = URLDecoder.decode(request.getRequestURI(), "UTF-8"); // 요청 URI
 		boolean isPassURL = false;
@@ -72,7 +70,7 @@ public class WebLogInterceptor extends HandlerInterceptorAdapter {
 			}
 		}
 
-		if( isPassURL ) return;
+		if( isPassURL ) return true;
 		
 		/* Authenticated */
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -87,6 +85,7 @@ public class WebLogInterceptor extends HandlerInterceptorAdapter {
 		webLogVO.setRqesterIp(requestIP);
 
 		webLogService.logInsertWebLog(webLogVO);
+		return true;
 	}
 	
 }

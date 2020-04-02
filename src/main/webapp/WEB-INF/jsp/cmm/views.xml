@@ -10,4 +10,9 @@
     <put-attribute name="body" value="/WEB-INF/jsp/cmm/UnitContent.jsp" />
   </definition>
   
+  <definition name="cmm/TestKomoran" extends="default">
+    <put-attribute name="title" value="현태소 분석기 테스트" />
+    <put-attribute name="body" value="/WEB-INF/jsp/cmm/TestKomoran.jsp" />
+  </definition>
+  
 </tiles-definitions>

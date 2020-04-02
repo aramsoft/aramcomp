@@ -137,6 +137,20 @@
 	       	</nav>
  			<!-- 서브메뉴 목록 부분 : End -->
 
+			<!-- 데모 화면 부분 : Start -->
+			<nav class="menubox">
+       		<ul>
+	       		<li class="leftmenu_dept01">
+	       			<span class="leftbar"></span>
+	                <span class="menubar">
+						<a href="/UnitMain.do" target="_blank">데모전체화면</a>
+	                </span>	
+	       			<span class="rightbar"></span>
+      			</li>
+			</ul>
+			</nav>
+			<!-- 데모 화면 부분 : End -->
+
 		    <c:if test="${targetVO.memberAt == 'Y'}">
 			<c:if test="${loginVO != null}">
 			<!-- 회원관련 부분 : Start -->

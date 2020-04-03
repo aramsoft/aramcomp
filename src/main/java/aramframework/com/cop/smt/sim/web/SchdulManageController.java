@@ -120,7 +120,7 @@ public class SchdulManageController {
 		if (loginVO == null) {
 			loginVO = new LoginVO();
 		}
-		schdulManageVO.setUniqId(loginVO.getUniqId());
+		schdulManageVO.setUserId(loginVO.getUserId());
  
 		model.addAttribute("resultList", schdulManageService.selectSchdulManageMainList(schdulManageVO));
 
@@ -190,7 +190,7 @@ public class SchdulManageController {
 		if (loginVO == null) {
 			loginVO = new LoginVO();
 		}
-		schdulManageVO.setUniqId(loginVO.getUniqId());
+		schdulManageVO.setUserId(loginVO.getUserId());
 
 		model.addAttribute("resultList", schdulManageService.selectSchdulManageRetrieve(schdulManageVO));
 
@@ -318,7 +318,7 @@ public class SchdulManageController {
 		if (loginVO == null) {
 			loginVO = new LoginVO();
 		}
-		schdulManageVO.setUniqId(loginVO.getUniqId());
+		schdulManageVO.setUserId(loginVO.getUserId());
 
 		model.addAttribute("resultList", schdulManageService.selectSchdulManageRetrieve(schdulManageVO));
 
@@ -376,7 +376,7 @@ public class SchdulManageController {
 		if (loginVO == null) {
 			loginVO = new LoginVO();
 		}
-		schdulManageVO.setUniqId(loginVO.getUniqId());
+		schdulManageVO.setUserId(loginVO.getUserId());
 
 		model.addAttribute("resultList", schdulManageService.selectSchdulManageRetrieve(schdulManageVO));
 
@@ -475,7 +475,7 @@ public class SchdulManageController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		schdulManageVO.setFrstRegisterId(loginVO.getUniqId());
+		schdulManageVO.setFrstRegisterId(loginVO.getUserId());
 
 		schdulManageService.insertSchdulManage(schdulManageVO);
 
@@ -509,7 +509,7 @@ public class SchdulManageController {
 
 		boolean writer = false;
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		if (schdulManageVO.getFrstRegisterId().equals(loginVO.getUniqId())) {
+		if (schdulManageVO.getFrstRegisterId().equals(loginVO.getUserId())) {
 			writer = true;
 		}
 		model.addAttribute("writer", writer);
@@ -544,7 +544,7 @@ public class SchdulManageController {
 
 			boolean writer = false;
 			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-			if (schdulManageVO.getFrstRegisterId().equals(loginVO.getUniqId())) {
+			if (schdulManageVO.getFrstRegisterId().equals(loginVO.getUserId())) {
 				writer = true;
 			}
 			model.addAttribute("writer", writer);
@@ -554,7 +554,7 @@ public class SchdulManageController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		schdulManageVO.setLastUpdusrId(loginVO.getUniqId());
+		schdulManageVO.setLastUpdusrId(loginVO.getUserId());
 
 		// 첨부파일 관련 ID 생성 start....
 		String atchFileId = schdulManageVO.getAtchFileId();

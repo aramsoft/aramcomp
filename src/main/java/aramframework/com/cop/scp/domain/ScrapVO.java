@@ -29,7 +29,7 @@ public class ScrapVO extends BaseVO {
 
 	// helper
 	/** 유일 아이디 */
-	private String uniqId = "";
+	private String userId = "";
 
 	// domain
 	/**
@@ -124,21 +124,21 @@ public class ScrapVO extends BaseVO {
 
 	// helper
 	/**
-	 * uniqId attribute를 리턴한다.
+	 * userId attribute를 리턴한다.
 	 * 
-	 * @return the uniqId
+	 * @return the userId
 	 */
-	public String getUniqId() {
-		return uniqId;
+	public String getUserId() {
+		return userId;
 	}
 	/**
-	 * uniqId attribute 값을 설정한다.
+	 * userId attribute 값을 설정한다.
 	 * 
-	 * @param uniqId
-	 *            the uniqId to set
+	 * @param userId
+	 *            the userId to set
 	 */
-	public void setUniqId(String uniqId) {
-		this.uniqId = uniqId;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 }

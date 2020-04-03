@@ -78,7 +78,7 @@
 		    <c:out value="${result.nttCn}" />
 		</td>
 		<td class="lt_text">
-		    <c:if test="${result.frstRegisterId == sessionUniqId}">
+		    <c:if test="${result.frstRegisterId == sessionUserId}">
 		    <a href="#" onclick="javascript:fn_aram_edit_guestList('<c:out value="${result.nttId}" />'); return false;"><spring:message code="button.update" /></a>
 		      | <a href="#" onclick="javascript:fn_aram_delete_guestList('<c:out value="${result.nttId}" />'); return false;"><spring:message code="button.delete" /></a>
 		    </c:if>

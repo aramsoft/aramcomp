@@ -214,7 +214,7 @@ public class UserManageController {
 		updateUserSession(userManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, userManageVO, "/uss/umt/editUser.do?uniqId="+userManageVO.getUniqId());
+	    return WebUtil.redirectJsp(model, userManageVO, "/uss/umt/editUser.do?userId="+userManageVO.getEmplyrId());
 	}
 
 	private void updateUserSession(UserManageVO userManageVO) {
@@ -259,12 +259,12 @@ public class UserManageController {
 		String oldPassword = request.getParameter("oldPassword");
 		String newPassword = request.getParameter("newPassword");
 		String newPassword2 = request.getParameter("newPassword2");
-		String uniqId = request.getParameter("uniqId");
+		String userId = request.getParameter("userId");
 
 		boolean isCorrectPassword = false;
 		String message = "";
 
-		UserManageVO resultVO = userManageService.selectPassword(uniqId);
+		UserManageVO resultVO = userManageService.selectPassword(userId);
 		// 패스워드 암호화
 		String encryptPass = FileScrty.encryptPassword(oldPassword);
 		if (encryptPass.equals(resultVO.getPassword())) {
@@ -286,7 +286,7 @@ public class UserManageController {
 		} 
 		
 		model.addAttribute("message", MessageHelper.getMessage(message));
-	    return WebUtil.redirectJsp(model, userManageVO, "/uss/umt/editUser.do?uniqId="+userManageVO.getUniqId());
+	    return WebUtil.redirectJsp(model, userManageVO, "/uss/umt/editUser.do?userId="+userManageVO.getEmplyrId());
 	}
 
 	/**
@@ -321,11 +321,11 @@ public class UserManageController {
 			HttpServletRequest request, 
 			ModelMap model) {
 
-    	String[] ids = null;
-    	if(request.getParameterValues("uniqIds") != null) 
-    		ids = request.getParameterValues("uniqIds");
+    	String[] userIds = null;
+    	if(request.getParameterValues("userIds") != null) 
+    		userIds = request.getParameterValues("userIds");
 
-		userManageService.deleteIdsAll(ids);
+		userManageService.deleteIdsAll(userIds);
 	
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		return WebUtil.redirectJsp(model, userManageVO, returnUrl);

@@ -58,9 +58,9 @@ public class AdressBookController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		adressBookVO.setWrterId(loginVO.getId());
+		adressBookVO.setWrterId(loginVO.getUserId());
 		adressBookVO.setTrgetOrgnztId(loginVO.getOrgnztId());
-		model.addAttribute("userId", loginVO.getId());
+		model.addAttribute("userId", loginVO.getUserId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
 		adressBookVO.fillPageInfo(paginationInfo);
@@ -119,8 +119,8 @@ public class AdressBookController {
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		adressBookVO.setWrterId(loginVO.getId());
-		adressBookVO.setFrstRegisterId(loginVO.getId());
+		adressBookVO.setWrterId(loginVO.getUserId());
+		adressBookVO.setFrstRegisterId(loginVO.getUserId());
 
 		String[] tempId = adressBookVO.getUserIds().split(",");
 		for (int i = 0; i < tempId.length; i++) {
@@ -174,7 +174,7 @@ public class AdressBookController {
 
 		boolean writer = false;
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		if (adressBookVO.getWrterId().equals(loginVO.getId())) {
+		if (adressBookVO.getWrterId().equals(loginVO.getUserId())) {
 			writer = true;
 		}
 		model.addAttribute("writer", writer);
@@ -212,7 +212,7 @@ public class AdressBookController {
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		adressBookVO.setLastUpdusrId(loginVO.getId());
+		adressBookVO.setLastUpdusrId(loginVO.getUserId());
 		adressBookVO.setUseAt("Y");
 
 		adressBookService.updateAdressBook(adressBookVO);
@@ -236,7 +236,7 @@ public class AdressBookController {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		adressBookVO.setUseAt("N");
-		adressBookVO.setLastUpdusrId(loginVO.getId());
+		adressBookVO.setLastUpdusrId(loginVO.getUserId());
 
 		adressBookService.deleteAdressBook(adressBookVO);
 
@@ -367,7 +367,7 @@ public class AdressBookController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		adressBookVO.setWrterId(loginVO.getId());
+		adressBookVO.setWrterId(loginVO.getUserId());
 		adressBookVO.setTrgetOrgnztId(loginVO.getOrgnztId());
 
 		adressBookVO.setFirstIndex(0);

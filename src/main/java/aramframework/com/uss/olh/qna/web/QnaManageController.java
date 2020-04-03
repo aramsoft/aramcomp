@@ -160,7 +160,7 @@ public class QnaManageController {
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		if( loginVO != null ) {
-			qnaManageVO.setFrstRegisterId(loginVO.getUniqId()); // 최초등록자ID
+			qnaManageVO.setFrstRegisterId(loginVO.getUserId()); // 최초등록자ID
 		} else {
 			qnaManageVO.setFrstRegisterId("USRCNFRM_00000000000"); // guest
 		}
@@ -269,7 +269,7 @@ public class QnaManageController {
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		if( loginVO != null ) {
-			qnaManageVO.setLastUpdusrId(loginVO.getUniqId()); // 최종수정자ID
+			qnaManageVO.setLastUpdusrId(loginVO.getUserId()); // 최종수정자ID
 		}
 
 		// 작성비밀번호를 암호화 하기 위해서 Get
@@ -410,7 +410,7 @@ public class QnaManageController {
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		qnaManageVO.setLastUpdusrId(loginVO.getUniqId()); // 최종수정자ID
+		qnaManageVO.setLastUpdusrId(loginVO.getUserId()); // 최종수정자ID
 
 		qnaManageService.updateQnaCnAnswer(qnaManageVO);
 

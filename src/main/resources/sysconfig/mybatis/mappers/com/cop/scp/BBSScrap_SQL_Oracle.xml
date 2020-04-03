@@ -19,9 +19,9 @@
 			     , a.FRST_REGIST_PNTTM      AS "frstRegisterPnttm"
 			  FROM COMTN_SCRAP a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.FRST_REGISTER_ID = b.ESNTL_ID
+						ON a.FRST_REGISTER_ID = b.USER_ID
 			 WHERE a.USE_AT = 'Y'
-			   AND a.FRST_REGISTER_ID = #{uniqId}
+			   AND a.FRST_REGISTER_ID = #{userId}
 		]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
@@ -47,9 +47,9 @@
 			SELECT COUNT(SCRAP_ID)
 			  FROM COMTN_SCRAP a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.FRST_REGISTER_ID = b.ESNTL_ID
+						ON a.FRST_REGISTER_ID = b.USER_ID
 			 WHERE a.USE_AT = 'Y'
-			   AND a.FRST_REGISTER_ID = #{uniqId}
+			   AND a.FRST_REGISTER_ID = #{userId}
 		]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
@@ -73,7 +73,7 @@
 			     , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
 			  FROM COMTN_SCRAP a
 			       LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.FRST_REGISTER_ID = b.ESNTL_ID
+						ON a.FRST_REGISTER_ID = b.USER_ID
 			 WHERE a.SCRAP_ID = #{scrapId}
 		]]>				
 	</select> 

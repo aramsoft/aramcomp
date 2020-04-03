@@ -155,7 +155,7 @@ public class EntrprsManageController {
 		entrprsManageService.insertEntrprsMber(entrprsManageVO);
 
 		GroupAuthorVO groupAuthorVO = new GroupAuthorVO();
-		groupAuthorVO.setUniqId(entrprsManageVO.getUniqId());
+		groupAuthorVO.setUserId(entrprsManageVO.getEntrprsmberId());
 		groupAuthorVO.setAuthorCode("ROLE_ANONYMOUS");
 		groupAuthorVO.setMberTyCode("USR02");// 2011.08.04 수정 부분
 		groupAuthorService.insertGroupAuthor(groupAuthorVO);
@@ -254,7 +254,7 @@ public class EntrprsManageController {
 		entrprsManageService.updateEntrprsMber(entrprsManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, entrprsManageVO, "/uss/umt/editEntrprsMber.do?uniqId="+entrprsManageVO.getUniqId());
+	    return WebUtil.redirectJsp(model, entrprsManageVO, "/uss/umt/editEntrprsMber.do?userId="+entrprsManageVO.getEntrprsmberId());
 	}
 
 	/**
@@ -292,12 +292,12 @@ public class EntrprsManageController {
 		String oldPassword = request.getParameter("oldPassword");
 		String newPassword = request.getParameter("newPassword");
 		String newPassword2 = request.getParameter("newPassword2");
-		String uniqId = request.getParameter("uniqId");
+		String userId = request.getParameter("userId");
 
 		boolean isCorrectPassword = false;
 		String message = "";
 
-		EntrprsManageVO resultVO = entrprsManageService.selectPassword(uniqId);
+		EntrprsManageVO resultVO = entrprsManageService.selectPassword(userId);
 		// 패스워드 암호화
 		String encryptPass = FileScrty.encryptPassword(oldPassword);
 		if (encryptPass.equals(resultVO.getPassword())) {
@@ -319,7 +319,7 @@ public class EntrprsManageController {
 		} 
 		
 		model.addAttribute("message", MessageHelper.getMessage(message));
-	    return WebUtil.redirectJsp(model, entrprsManageVO, "/uss/umt/editEntrprsMber.do?uniqId="+entrprsManageVO.getUniqId());
+	    return WebUtil.redirectJsp(model, entrprsManageVO, "/uss/umt/editEntrprsMber.do?userId="+entrprsManageVO.getEntrprsmberId());
 	}
 
 	/**

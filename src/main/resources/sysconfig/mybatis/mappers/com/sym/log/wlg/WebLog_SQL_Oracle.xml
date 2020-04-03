@@ -20,7 +20,7 @@
 				 , b.USER_NM 				AS "rqesterNm"
 			  FROM COMTH_WEB_LOG a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.RQESTER_ID = b.ESNTL_ID
+						ON a.RQESTER_ID = b.USER_ID
 			 WHERE 1 = 1
 		]]>
       	<if test='searchKeyword != null and searchKeyword != ""'>
@@ -46,7 +46,7 @@
 			SELECT COUNT(a.REQUST_ID) as cnt
 			  FROM COMTH_WEB_LOG a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.RQESTER_ID = b.ESNTL_ID
+						ON a.RQESTER_ID = b.USER_ID
 			 WHERE 1 = 1
 		]]>
       	<if test='searchKeyword != null and searchKeyword != ""'>
@@ -68,7 +68,7 @@
 				 , b.USER_NM 				AS RQESTER_NM
 			  FROM COMTH_WEB_LOG a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.RQESTER_ID = b.ESNTL_ID
+						ON a.RQESTER_ID = b.USER_ID
 			 WHERE a.REQUST_ID = #{requstId}
 		]]>
 	</select>

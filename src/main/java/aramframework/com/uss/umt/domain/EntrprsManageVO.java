@@ -78,13 +78,13 @@ public class EntrprsManageVO extends BaseVO {
 	/** 신청자 이메일주소 */
 	private String applcntEmailAdres;
 
-	/** 사용자고유아이디 */
-	private String uniqId = "";
-	
 	/** 구글 계정 */
 	private String googleAccount;
 
 	// helper
+	/** 사용자 ID */
+	private String userId;
+
 	/** 사용자 유형 */
 	private String userTy;
 	
@@ -493,24 +493,6 @@ public class EntrprsManageVO extends BaseVO {
 	}
 
 	/**
-	 * uniqId attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getUniqId() {
-		return uniqId;
-	}
-	/**
-	 * uniqId attribute 값을 설정한다.
-	 * 
-	 * @param uniqId
-	 *            String
-	 */
-	public void setUniqId(String uniqId) {
-		this.uniqId = uniqId;
-	}
-
-	/**
 	 * googleAccount attribute 값을 리턴한다.
 	 * 
 	 * @return String
@@ -529,6 +511,24 @@ public class EntrprsManageVO extends BaseVO {
 	}
 
 	// helper
+	/**
+	 * userId attribute 값을 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getUserId() {
+		return userId;
+	}
+	/**
+	 * userId attribute 값을 설정한다.
+	 * 
+	 * @param userId
+	 *            String
+	 */
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
 	/**
 	 * userTy attribute 값을 리턴한다.
 	 * 

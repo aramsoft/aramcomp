@@ -68,7 +68,7 @@ public class BBSCommentController {
 			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 			if( loginVO != null) {
 				commentVO.setWrterNm(loginVO.getName());
-				model.addAttribute("uniqId", loginVO.getUniqId());
+				model.addAttribute("userId", loginVO.getUserId());
 			}	
 		}
 
@@ -123,8 +123,8 @@ public class BBSCommentController {
 			if( loginVO == null) {
 				throw new AccessDeniedException("access denined!!!");
 			} else {
-				commentVO.setFrstRegisterId(loginVO.getUniqId());
-				commentVO.setWrterId(loginVO.getUniqId());
+				commentVO.setFrstRegisterId(loginVO.getUserId());
+				commentVO.setWrterId(loginVO.getUserId());
 				commentVO.setCommentPassword(""); // dummy
 			}	
 		}
@@ -176,7 +176,7 @@ public class BBSCommentController {
 			if( loginVO == null) {
 				throw new AccessDeniedException("access denined!!!");
 			} else {
-				commentVO.setLastUpdusrId(loginVO.getUniqId());
+				commentVO.setLastUpdusrId(loginVO.getUserId());
 				commentVO.setCommentPassword(""); // dummy
 			}	
 		}

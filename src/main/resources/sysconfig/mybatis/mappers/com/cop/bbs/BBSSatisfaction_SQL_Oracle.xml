@@ -25,7 +25,7 @@
 			     , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
 			  FROM COMTN_STSFDG a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.FRST_REGISTER_ID = b.ESNTL_ID
+						ON a.FRST_REGISTER_ID = b.USER_ID
 			 WHERE a.BBS_ID = #{bbsId} 
 			   AND a.NTT_ID = #{nttId}
 			   AND a.USE_AT = 'Y'
@@ -45,7 +45,7 @@
 			SELECT COUNT(STSFDG_NO)
 			  FROM COMTN_STSFDG a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.FRST_REGISTER_ID = b.ESNTL_ID
+						ON a.FRST_REGISTER_ID = b.USER_ID
 			 WHERE a.BBS_ID = #{bbsId}
 			   AND a.NTT_ID = #{nttId}
 			   AND a.USE_AT = 'Y'
@@ -69,7 +69,7 @@
 			     , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
 			  FROM COMTN_STSFDG a
 			 	   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.FRST_REGISTER_ID = b.ESNTL_ID
+						ON a.FRST_REGISTER_ID = b.USER_ID
 			 WHERE a.STSFDG_NO = #{stsfdgNo}
 		]]>				
 	</select> 

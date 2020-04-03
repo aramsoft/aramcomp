@@ -29,9 +29,6 @@ public class GroupAuthorVO extends BaseVO {
 	/** 등록 여부 */
 	private String regYn;
 	
-	/** Uniq ID */
-	private String uniqId;
-
 	/**
 	 * userId attribute 를 리턴한다.
 	 * 
@@ -138,24 +135,6 @@ public class GroupAuthorVO extends BaseVO {
 	 */
 	public void setRegYn(String regYn) {
 		this.regYn = regYn;
-	}
-
-	/**
-	 * uniqId attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getUniqId() {
-		return uniqId;
-	}
-	/**
-	 * uniqId attribute 값을 설정한다.
-	 * 
-	 * @param uniqId
-	 *            String
-	 */
-	public void setUniqId(String uniqId) {
-		this.uniqId = uniqId;
 	}
 
 }

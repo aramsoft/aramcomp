@@ -52,7 +52,6 @@
         </th>
         <td width="80%">
             <form:input path="emplyrId" title="사용자아이디" size="20" maxlength="20" readonly="true" />
-            <form:hidden path="uniqId" />
             <form:hidden path="userTy" />
         </td>
     </tr>

@@ -69,7 +69,7 @@ public class BBSSatisfactionController {
 			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 			if( loginVO != null) {
 				satisfactionVO.setWrterNm(loginVO.getName());
-				model.addAttribute("uniqId", loginVO.getUniqId());
+				model.addAttribute("userId", loginVO.getUserId());
 			}	
 		}
 
@@ -126,8 +126,8 @@ public class BBSSatisfactionController {
 			if( loginVO == null) {
 				throw new AccessDeniedException("access denined!!!");
 			} else {
-				satisfactionVO.setFrstRegisterId(loginVO.getUniqId());
-				satisfactionVO.setWrterId(loginVO.getUniqId());
+				satisfactionVO.setFrstRegisterId(loginVO.getUserId());
+				satisfactionVO.setWrterId(loginVO.getUserId());
 				satisfactionVO.setStsfdgPassword(""); // dummy
 			}	
 		}
@@ -179,7 +179,7 @@ public class BBSSatisfactionController {
 			if( loginVO == null) {
 				throw new AccessDeniedException("access denined!!!");
 			} else {
-				satisfactionVO.setLastUpdusrId(loginVO.getUniqId());
+				satisfactionVO.setLastUpdusrId(loginVO.getUserId());
 				satisfactionVO.setStsfdgPassword(""); // dummy
 			}	
 		}

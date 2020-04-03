@@ -97,7 +97,7 @@
 	    <td class="lt_text3"><c:out value="${result.ofcpsNm}"/></td>
 	    <td class="lt_text3">
 	   		<span class="link">
-	   		<a href="#" onclick="javascript:fn_aram_choose('${result.uniqId}', '${result.emplNo}', '${result.emplyrNm}', '${result.orgnztNm}'); return false;">
+	   		<a href="#" onclick="javascript:fn_aram_choose('${result.userId}', '${result.emplNo}', '${result.emplyrNm}', '${result.orgnztNm}'); return false;">
 	    		<c:out value="${result.emplNo}"/>
 	   		</a>
 	   		</span>
@@ -143,8 +143,8 @@ function fn_aram_search() {
     varForm.submit();	
 }
 
-function fn_aram_choose(uniqId, emplNo, emplyrNm, orgnztNm) {
-	if( window.opener.gArguments["uniqId"] )   window.opener.gArguments["uniqId"].value = uniqId;
+function fn_aram_choose(userId, emplNo, emplyrNm, orgnztNm) {
+	if( window.opener.gArguments["userId"] )   window.opener.gArguments["userId"].value = userId;
 	if( window.opener.gArguments["emplNo"] )   window.opener.gArguments["emplNo"].value = emplNo;
 	if( window.opener.gArguments["emplyrNm"] ) window.opener.gArguments["emplyrNm"].value = emplyrNm;
 	if( window.opener.gArguments["orgnztNm"] ) window.opener.gArguments["orgnztNm"].value = orgnztNm;

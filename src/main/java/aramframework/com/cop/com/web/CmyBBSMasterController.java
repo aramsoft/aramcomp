@@ -143,7 +143,7 @@ public class CmyBBSMasterController {
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		boardMasterVO.setFrstRegisterId(loginVO.getUniqId());
+		boardMasterVO.setFrstRegisterId(loginVO.getUserId());
 		boardMasterVO.setUseAt("Y");
 		boardMasterVO.setBbsUseFlag("Y");
 
@@ -220,7 +220,7 @@ public class CmyBBSMasterController {
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		boardMasterVO.setLastUpdusrId(loginVO.getUniqId());
+		boardMasterVO.setLastUpdusrId(loginVO.getUserId());
 		boardMasterVO.setUseAt("Y");
 
 		bbsMasterService.updateBBSMasterInf(boardMasterVO);
@@ -240,7 +240,7 @@ public class CmyBBSMasterController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		boardMasterVO.setLastUpdusrId(loginVO.getUniqId());
+		boardMasterVO.setLastUpdusrId(loginVO.getUserId());
 
 		bbsMasterService.deleteBBSMasterInf(boardMasterVO);
 
@@ -261,7 +261,7 @@ public class CmyBBSMasterController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		boardUseInfVO.setLastUpdusrId(loginVO.getUniqId());
+		boardUseInfVO.setLastUpdusrId(loginVO.getUserId());
 
 		bbsUseInfoService.updateBBSUseInf(boardUseInfVO);
 

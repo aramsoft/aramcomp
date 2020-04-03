@@ -21,7 +21,7 @@
 
 <div class="content_title">
 	<h2><c:out value='${boardVO.nttSj}'/></h2>
-	<c:if test="${boardVO.frstRegisterId == uniqId}">
+	<c:if test="${boardVO.frstRegisterId == userId}">
 		<a href="${directUrl}" target="new">[수정]</a>
 	</c:if>
 </div>

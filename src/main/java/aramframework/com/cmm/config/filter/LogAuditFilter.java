@@ -52,7 +52,7 @@ public class LogAuditFilter implements Filter {
 		String requestURL = httpRequest.getRequestURI();
 
 		LoginVO loginVO = (LoginVO) httpRequest.getSession().getAttribute("loginVO");
-		String userid = (loginVO == null) ? "": loginVO.getId();
+		String userid = (loginVO == null) ? "": loginVO.getUserId();
 		LOG.debug("[" + userid + "@" + httpRequest.getRemoteAddr() 
 				+ "] METHOD = " + httpRequest.getMethod()
 				+ ", URL = " + requestURL 

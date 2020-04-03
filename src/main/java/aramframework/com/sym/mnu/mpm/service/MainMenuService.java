@@ -46,11 +46,11 @@ public class MainMenuService extends EgovAbstractServiceImpl {
 	 * MainMenu Head MenuURL 조회
 	 * 
 	 * @param iMenuNo
-	 * @param sUniqId
+	 * @param sUserId
 	 */
-	public String selectLastMenuURL(int iMenuNo, String sUniqId) {
+	public String selectLastMenuURL(int iMenuNo, String sUserId) {
 		MenuManageVO menuManageVO = new MenuManageVO();
-		menuManageVO.setMenuNo(selectLastMenuNo(iMenuNo, sUniqId));
+		menuManageVO.setMenuNo(selectLastMenuNo(iMenuNo, sUserId));
 		return mainMenuMapper.selectLastMenuURL(menuManageVO);
 	}
 
@@ -58,12 +58,12 @@ public class MainMenuService extends EgovAbstractServiceImpl {
 	 * MainMenu Head Menu MenuNo 조회
 	 * 
 	 * @param iMenuNo
-	 * @param sUniqId
+	 * @param sUserId
 	 */
-	private int selectLastMenuNo(int iMenuNo, String sUniqId) {
+	private int selectLastMenuNo(int iMenuNo, String sUserId) {
 		MenuManageVO menuManageVO = new MenuManageVO();
 		menuManageVO.setMenuNo(iMenuNo);
-		menuManageVO.setTmpUniqId(sUniqId);
+		menuManageVO.setTmpUserId(sUserId);
 		int chkMenuNo = iMenuNo;
 		int cntMenuNo = 0;
 		for (; ;) {

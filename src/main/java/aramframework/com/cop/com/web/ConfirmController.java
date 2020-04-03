@@ -62,7 +62,7 @@ public class ConfirmController {
 		confirmHistoryVO.setTrgetJobId(WebUtil.getCurTrgetId());
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		confirmHistoryVO.setConfmerId(loginVO.getUniqId());
+		confirmHistoryVO.setConfmerId(loginVO.getUserId());
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
 		confirmHistoryVO.fillPageInfo(paginationInfo);
@@ -93,7 +93,7 @@ public class ConfirmController {
 		checkAuthorityManager(); // server-side 권한 확인
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		confirmHistoryVO.setConfmerId(loginVO.getUniqId());
+		confirmHistoryVO.setConfmerId(loginVO.getUserId());
 
 		model.addAttribute(confirmService.selectSingleConfirmRequest(confirmHistoryVO));
 
@@ -116,7 +116,7 @@ public class ConfirmController {
 		checkAuthorityManager(); // server-side 권한 확인
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		confirmHistoryVO.setConfmerId(loginVO.getUniqId());
+		confirmHistoryVO.setConfmerId(loginVO.getUserId());
 
 		confirmService.updateConfirmRequest(confirmHistoryVO);
 

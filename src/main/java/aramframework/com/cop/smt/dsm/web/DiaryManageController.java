@@ -125,7 +125,7 @@ public class DiaryManageController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		diaryManageVO.setFrstRegisterId(loginVO.getUniqId());
+		diaryManageVO.setFrstRegisterId(loginVO.getUserId());
 
 		diaryManageService.insertDiaryManage(diaryManageVO);
 
@@ -178,7 +178,7 @@ public class DiaryManageController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		diaryManageVO.setLastUpdusrId(loginVO.getUniqId());
+		diaryManageVO.setLastUpdusrId(loginVO.getUserId());
 
 		diaryManageService.updateDiaryManage(diaryManageVO);
 

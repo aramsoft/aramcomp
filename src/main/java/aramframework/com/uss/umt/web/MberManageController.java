@@ -155,7 +155,7 @@ public class MberManageController {
 		mberManageService.insertMber(mberManageVO);
 
 		GroupAuthorVO groupAuthorVO = new GroupAuthorVO();
-		groupAuthorVO.setUniqId(mberManageVO.getUniqId());
+		groupAuthorVO.setUserId(mberManageVO.getMberId());
 		groupAuthorVO.setAuthorCode("ROLE_USER");
 		groupAuthorVO.setMberTyCode("USR01");// 2011.08.04 수정 부분
 		groupAuthorService.insertGroupAuthor(groupAuthorVO);
@@ -251,7 +251,7 @@ public class MberManageController {
 		mberManageService.updateMber(mberManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, mberManageVO, "/uss/umt/editMber.do?uniqId="+mberManageVO.getUniqId());
+	    return WebUtil.redirectJsp(model, mberManageVO, "/uss/umt/editMber.do?userId="+mberManageVO.getMberId());
 	}
 
 	/**
@@ -289,12 +289,12 @@ public class MberManageController {
 		String oldPassword = request.getParameter("oldPassword");
 		String newPassword = request.getParameter("newPassword");
 		String newPassword2 = request.getParameter("newPassword2");
-		String uniqId = request.getParameter("uniqId");
+		String userId = request.getParameter("userId");
 
 		boolean isCorrectPassword = false;
 		String message = "";
 
-		MberManageVO resultVO = mberManageService.selectPassword(uniqId);
+		MberManageVO resultVO = mberManageService.selectPassword(userId);
 		// 패스워드 암호화
 		String encryptPass = FileScrty.encryptPassword(oldPassword);
 		if (encryptPass.equals(resultVO.getPassword())) {
@@ -316,7 +316,7 @@ public class MberManageController {
 		} 
 		
 		model.addAttribute("message", MessageHelper.getMessage(message));
-	    return WebUtil.redirectJsp(model, mberManageVO, "/uss/umt/editMber.do?uniqId="+mberManageVO.getUniqId());
+	    return WebUtil.redirectJsp(model, mberManageVO, "/uss/umt/editMber.do?userId="+mberManageVO.getMberId());
 	}
 
 	/**

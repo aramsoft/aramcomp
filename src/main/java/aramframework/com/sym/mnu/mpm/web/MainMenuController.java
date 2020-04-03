@@ -43,10 +43,10 @@ public class MainMenuController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		menuManageVO.setTmpUniqId(loginVO.getUniqId());
+		menuManageVO.setTmpUserId(loginVO.getUserId());
 
 		model.addAttribute("list_headmenu", mainMenuService.selectMainMenuHead(menuManageVO));
-		if (!loginVO.getId().equals("")) {
+		if (!loginVO.getUserId().equals("")) {
 			// 메인 페이지 이동
 			// G일반 / E기업 / U업무
 			if (loginVO.getUserSe().equals("USR")) {
@@ -72,7 +72,7 @@ public class MainMenuController {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 
-		if (!loginVO.getId().equals("")) {
+		if (!loginVO.getUserId().equals("")) {
 			// "EgovMainViewG"; 일반사용자
 			return "main_bottom"; 
 		} else {
@@ -98,7 +98,7 @@ public class MainMenuController {
 		menuManageVO.setMenuNo(iMenuNo);
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		menuManageVO.setTmpUniqId(loginVO.getUniqId());
+		menuManageVO.setTmpUserId(loginVO.getUserId());
 
 		model.addAttribute("list_menulist", mainMenuService.selectMainMenuLeft(menuManageVO));
 		return "main_left";
@@ -119,7 +119,7 @@ public class MainMenuController {
 		int iMenuNo = Integer.parseInt(vStartP);
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 
-		String forwardURL = mainMenuService.selectLastMenuURL(iMenuNo, loginVO.getUniqId());
+		String forwardURL = mainMenuService.selectLastMenuURL(iMenuNo, loginVO.getUserId());
 		return "forward:" + forwardURL;
 	}
 
@@ -135,15 +135,14 @@ public class MainMenuController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		menuManageVO.setTmpUniqId(loginVO.getUniqId());
+		menuManageVO.setTmpUserId(loginVO.getUserId());
 
 		model.addAttribute("list_headmenu", mainMenuService.selectMainMenuHead(menuManageVO));
 
 		log.debug("## selectMainMenuHome ## getSUserSe 1: " + loginVO.getUserSe());
-		log.debug("## selectMainMenuHome ## getSUserId 2: " + loginVO.getId());
-		log.debug("## selectMainMenuHome ## getUniqId  2: " + loginVO.getUniqId());
+		log.debug("## selectMainMenuHome ## getSUserId 2: " + loginVO.getUserId());
 
-		if (!loginVO.getId().equals("")) {
+		if (!loginVO.getUserId().equals("")) {
 			// 메인 페이지 이동
 			// G일반 / E기업 / U업무
 			if (loginVO.getUserSe().equals("GNR")) {// 2011.09.07

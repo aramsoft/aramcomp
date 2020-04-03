@@ -7,8 +7,7 @@
     <select id="selectUserList" resultType="egovMap">
         /* 구현 Sql */
 		<![CDATA[
-		    SELECT ESNTL_ID              	AS "uniqId"
-		         , 'USR03'               	AS "userTy"
+		    SELECT 'USR03'               	AS "userTy"
 		         , EMPLYR_ID             	AS "userId"
 		         , USER_NM             	    AS "userNm"
 		         , EMAIL_ADRES           	AS "emailAdres"
@@ -67,8 +66,7 @@
 	<!-- 상세보기 -->
     <select id="selectUser" resultType="userManageVO">
         <![CDATA[
-            SELECT ESNTL_ID          		AS "uniqId"            
-                 , 'USR03'           		AS "userTy"			  
+            SELECT 'USR03'           		AS "userTy"			  
                  , EMPLYR_ID         		AS "emplyrId"          
                  , USER_NM         	    	AS "emplyrNm"          
                  , PASSWORD          		AS "password"          
@@ -96,7 +94,7 @@
                  , CRTFC_DN_VALUE       	AS "subDn"
                  , GOOGLE_ACCOUNT	        AS "googleAccount"
          	  FROM COMTN_EMPLYR_INFO
-             WHERE ESNTL_ID = #{uniqId}
+             WHERE EMPLYR_ID = #{userId}
         ]]>
     </select>
     
@@ -104,8 +102,7 @@
     <insert id="insertUser">
         <![CDATA[
             INSERT INTO COMTN_EMPLYR_INFO (   
-            		ESNTL_ID            
-            	  , EMPLYR_ID           
+            		EMPLYR_ID           
             	  , USER_NM           	
             	  , PASSWORD            
             	  , PASSWORD_HINT       
@@ -131,8 +128,7 @@
             	  , SBSCRB_DE           
             	  , CRTFC_DN_VALUE      
             ) VALUES (
-                    #{uniqId}            
-                  , #{emplyrId, jdbcType=VARCHAR}          
+                    #{emplyrId, jdbcType=VARCHAR}          
                   , #{emplyrNm, jdbcType=VARCHAR}          
                   , #{password, jdbcType=VARCHAR}          
                   , #{passwordHint, jdbcType=VARCHAR}      
@@ -165,8 +161,7 @@
     <update id="updateUser">
         <![CDATA[
             UPDATE COMTN_EMPLYR_INFO 
-               SET EMPLYR_ID           	= #{emplyrId}        
-                 , USER_NM             	= #{emplyrNm, jdbcType=VARCHAR}        
+               SET USER_NM             	= #{emplyrNm, jdbcType=VARCHAR}        
                  , PASSWORD_HINT       	= #{passwordHint, jdbcType=VARCHAR}    
                  , PASSWORD_CNSR       	= #{passwordCnsr, jdbcType=VARCHAR}    
                  , EMPL_NO             	= #{emplNo, jdbcType=VARCHAR}          
@@ -188,7 +183,7 @@
                  , PSTINST_CODE        	= #{insttCode, jdbcType=VARCHAR}       
                  , EMPLYR_STTUS_CODE   	= #{emplyrSttusCode, jdbcType=VARCHAR} 
                  , CRTFC_DN_VALUE      	= #{subDn, jdbcType=VARCHAR}
-             WHERE ESNTL_ID = #{uniqId}
+             WHERE EMPLYR_ID = #{userId}
         ]]>
     </update>
     
@@ -197,7 +192,7 @@
         <![CDATA[
             DELETE 
               FROM COMTN_EMPLYR_INFO 
-             WHERE ESNTL_ID = #{delId}
+             WHERE EMPLYR_ID = #{userId}
         ]]>
     </delete>
     
@@ -222,7 +217,6 @@
             	  , ORGNZT_ID           
             	  , PSTINST_CODE        
             	  , EMPLYR_STTUS_CODE   
-            	  , ESNTL_ID            
             	  , CHANGE_DE           
             ) 
              SELECT EMPLYR_ID           
@@ -242,10 +236,9 @@
                   , ORGNZT_ID           
                   , PSTINST_CODE        
                   , EMPLYR_STTUS_CODE   
-                  , ESNTL_ID            
                   , DATE_FORMAT(sysdate(), '%Y-%m-%d %H:%i:%S')
                FROM COMTN_EMPLYR_INFO
-              WHERE ESNTL_ID = #{uniqId}
+              WHERE EMPLYR_ID = #{userId}
         ]]>
     </insert>
     
@@ -254,16 +247,34 @@
         <![CDATA[
              DELETE 
                FROM COMTN_EMPLYR_CHANGE_DTLS 
-              WHERE ESNTL_ID = #{delId}
+              WHERE EMPLYR_ID = #{userId}
         ]]>
     </insert>
 
+	<!-- 비밀번호가져오기 -->
+    <select id="selectPassword" resultType="userManageVO">
+        <![CDATA[
+            SELECT PASSWORD        		password 
+              FROM COMTN_EMPLYR_INFO
+             WHERE EMPLYR_ID = #{userId}
+        ]]>
+    </select>
+    
+	<!-- 비밀번호수정 -->
+    <update id="updatePassword">
+        <![CDATA[
+            UPDATE COMTN_EMPLYR_INFO 
+               SET PASSWORD = #{password}
+             WHERE EMPLYR_ID = #{userId}
+        ]]>
+    </update>
+    
 	<!-- ID중복체크 -->
     <select id="checkIdDplct" resultType="int">
         <![CDATA[
             SELECT COUNT(1) usedCnt
               FROM (
-                    SELECT EMPLYR_ID    	userId
+                    SELECT EMPLYR_ID       userId
                       FROM COMTN_EMPLYR_INFO
                      UNION ALL
                     SELECT ENTRPRS_MBER_ID userId
@@ -275,23 +286,5 @@
              WHERE userId = #{checkId}
         ]]>
     </select>
-    
-	<!-- 비밀번호가져오기 -->
-    <select id="selectPassword" resultType="userManageVO">
-        <![CDATA[
-            SELECT PASSWORD        		password 
-              FROM COMTN_EMPLYR_INFO
-             WHERE ESNTL_ID = #{uniqId}
-        ]]>
-    </select>
-    
-	<!-- 비밀번호수정 -->
-    <update id="updatePassword">
-        <![CDATA[
-            UPDATE COMTN_EMPLYR_INFO 
-               SET PASSWORD = #{password}
-             WHERE ESNTL_ID = #{uniqId}
-        ]]>
-    </update>
     
 </mapper>

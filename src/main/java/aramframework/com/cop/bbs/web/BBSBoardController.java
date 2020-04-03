@@ -228,14 +228,14 @@ public class BBSBoardController {
 			model.addAttribute("anonymous", "true");
 			model.addAttribute("editAuthFlag", "Y");
 			
-			model.addAttribute("uniqId", "ANONYMOUS");
+			model.addAttribute("userId", "ANONYMOUS");
 		} else {
 			model.addAttribute("anonymous", "false");
 			model.addAttribute("editAuthFlag", getEditAuthFlag(boardVO));
 
 			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 			if( loginVO != null ) {
-				model.addAttribute("uniqId", loginVO.getUniqId());
+				model.addAttribute("userId", loginVO.getUserId());
 			} 
 		}
 
@@ -299,7 +299,7 @@ public class BBSBoardController {
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		if( loginVO != null ) {
-			model.addAttribute("uniqId", loginVO.getUniqId());
+			model.addAttribute("userId", loginVO.getUserId());
 		} 
 		
 		boardVO.setNttId(nttId);
@@ -413,8 +413,8 @@ public class BBSBoardController {
 			boardVO.setPassword(""); // 익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨
 			
 			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-			boardVO.setFrstRegisterId(loginVO.getUniqId());
-			boardVO.setNtcrId(loginVO.getId()); // 게시물 통계 집계를 위해 등록자 ID 저장
+			boardVO.setFrstRegisterId(loginVO.getUserId());
+			boardVO.setNtcrId(loginVO.getUserId()); // 게시물 통계 집계를 위해 등록자 ID 저장
 			boardVO.setNtcrNm(loginVO.getName()); // 게시물 통계 집계를 위해 등록자 Name 저장
 		}
 
@@ -510,8 +510,8 @@ public class BBSBoardController {
 			boardVO.setPassword(""); // 익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨
 			
 			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-			boardVO.setFrstRegisterId(loginVO.getUniqId());
-			boardVO.setNtcrId(loginVO.getId()); // 게시물 통계 집계를 위해 등록자 ID 저장
+			boardVO.setFrstRegisterId(loginVO.getUserId());
+			boardVO.setNtcrId(loginVO.getUserId()); // 게시물 통계 집계를 위해 등록자 ID 저장
 			boardVO.setNtcrNm(loginVO.getName()); // 게시물 통계 집계를 위해 등록자 Name 저장
 		}
 
@@ -623,7 +623,7 @@ public class BBSBoardController {
 			boardVO.setPassword(""); // 익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨
 			
 			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-			boardVO.setLastUpdusrId(loginVO.getUniqId());
+			boardVO.setLastUpdusrId(loginVO.getUserId());
 		}
 
 		boardVO.setNttCn(unscript(boardVO.getNttCn())); // XSS 방지
@@ -674,7 +674,7 @@ public class BBSBoardController {
 			model.addAttribute("editAuthFlag", editAuthFlag);
 			
 			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-			boardVO.setLastUpdusrId(loginVO.getUniqId());
+			boardVO.setLastUpdusrId(loginVO.getUserId());
 		}
 
 		boardService.deleteBoardArticle(boardVO);
@@ -737,8 +737,8 @@ public class BBSBoardController {
 
 		// 항상 설정
 		boardVO.setNtcrNm(loginVO.getName());
-		boardVO.setNtcrId(loginVO.getUniqId());
-		model.addAttribute("sessionUniqId", loginVO.getUniqId());
+		boardVO.setNtcrId(loginVO.getUserId());
+		model.addAttribute("sessionUserId", loginVO.getUserId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
 		boardVO.fillPageInfo(paginationInfo);
@@ -772,7 +772,7 @@ public class BBSBoardController {
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		boardVO.setFrstRegisterId(loginVO.getUniqId());
+		boardVO.setFrstRegisterId(loginVO.getUserId());
 
 		boardService.insertBoardArticle(boardVO);
 

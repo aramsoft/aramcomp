@@ -275,7 +275,7 @@ var gArguments = new Array();
 ******************************************************** */
 function fn_aram_get_schdulCharger(strTitle, empId, empName){
 	gArguments["title"]    = strTitle;
-	if( empId != "" )    gArguments["uniqId"]   = document.getElementById(empId);
+	if( empId != "" )    gArguments["userId"]   = document.getElementById(empId);
 	if( empName != "" )  gArguments["emplyrNm"] = document.getElementById(empName);
 
 	var url = "/cop/smt/sim/listEmplyrPopup.do";

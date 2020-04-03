@@ -81,9 +81,9 @@ public interface UserManageMapper {
 	/**
 	 * 업무사용자가 비밀번호를 기억하지 못할 때 비밀번호를 찾을 수 있도록 함
 	 * 
-	 * @param uniqId
+	 * @param userId
 	 */
-	public UserManageVO selectPassword(String uniqId);
+	public UserManageVO selectPassword(String userId);
 
 	/**
 	 * 업무사용자 암호수정

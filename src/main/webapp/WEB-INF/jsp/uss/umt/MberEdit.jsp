@@ -59,7 +59,6 @@
         <td width="80%">
             <form:input path="mberId" size="20" readonly="true" maxlength="20" title="일반회원아이디"/>
             <form:errors path="mberId" cssClass="error" />
-            <form:hidden path="uniqId" />
         </td>
     </tr>
     <tr>

@@ -29,10 +29,10 @@ public class LoginLogAdvice {
 	public void logLogin() throws Throwable {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		String uniqId = "unknown";
+		String userId = "unknown";
 		String ip = "";
 		if( loginVO != null ) {
-			uniqId = loginVO.getUniqId();
+			userId = loginVO.getUserId();
 			ip = loginVO.getIp();
 		}
 //		if( "127.0.0.1".equals(ip) || "".equals(ip)) return;
@@ -42,7 +42,7 @@ public class LoginLogAdvice {
 		}
 		
 		LoginLogVO loginLogVO = new LoginLogVO();
-		loginLogVO.setLoginId(uniqId);
+		loginLogVO.setLoginId(userId);
 		loginLogVO.setLoginIp(ip);
 		loginLogVO.setLoginMthd("I"); // 로그인:I, 로그아웃:O
 		loginLogVO.setErrOccrrAt("N");
@@ -56,10 +56,10 @@ public class LoginLogAdvice {
 	public void logLogout() throws Throwable {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		String uniqId = "";
+		String userId = "";
 		String ip = "";
 		if( loginVO != null ) {
-			uniqId = loginVO.getUniqId();
+			userId = loginVO.getUserId();
 			ip = loginVO.getIp();
 		}
 //		if( "127.0.0.1".equals(ip) || "".equals(ip)) return;
@@ -69,7 +69,7 @@ public class LoginLogAdvice {
 		}
 		
 		LoginLogVO loginLogVO = new LoginLogVO();
-		loginLogVO.setLoginId(uniqId);
+		loginLogVO.setLoginId(userId);
 		loginLogVO.setLoginIp(ip);
 		loginLogVO.setLoginMthd("O"); // 로그인:I, 로그아웃:O
 		loginLogVO.setErrOccrrAt("N");

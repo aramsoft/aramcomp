@@ -153,7 +153,7 @@ public class CmmnDetailCodeManageController {
 		}
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		cmmnDetailCodeVO.setFrstRegisterId(loginVO.getUniqId());
+		cmmnDetailCodeVO.setFrstRegisterId(loginVO.getUserId());
 
 		cmmnDetailCodeManageService.insertCmmnDetailCode(cmmnDetailCodeVO);
 
@@ -197,7 +197,7 @@ public class CmmnDetailCodeManageController {
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		cmmnDetailCodeVO.setLastUpdusrId(loginVO.getUniqId());
+		cmmnDetailCodeVO.setLastUpdusrId(loginVO.getUserId());
 
 		cmmnDetailCodeManageService.updateCmmnDetailCode(cmmnDetailCodeVO);
 		

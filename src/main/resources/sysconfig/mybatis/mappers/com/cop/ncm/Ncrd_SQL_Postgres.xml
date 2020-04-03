@@ -17,7 +17,7 @@
 				   LEFT OUTER JOIN COMTN_NCRD b
 						ON a.NCRD_ID = b.NCRD_ID
 				   LEFT OUTER JOIN COMVN_USER_MASTER c
-						ON a.EMPLYR_ID = c.ESNTL_ID
+						ON a.EMPLYR_ID = c.USER_ID
 			 WHERE a.USE_AT = 'Y'
 			   AND a.EMPLYR_ID = #{emplyrId}
 		]]>
@@ -51,7 +51,7 @@
 				   LEFT OUTER JOIN COMTN_NCRD b
 						ON a.NCRD_ID = b.NCRD_ID
 				   LEFT OUTER JOIN COMVN_USER_MASTER c
-						ON a.EMPLYR_ID = c.ESNTL_ID
+						ON a.EMPLYR_ID = c.USER_ID
 			 WHERE a.USE_AT = 'Y'
 			   AND a.EMPLYR_ID = #{emplyrId}
 		]]>

@@ -213,7 +213,7 @@ public class SndngMailController {
     	sndngMailVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "EMS"));
     	
     	LoginVO loginVO = (LoginVO)UserDetailsHelper.getAuthenticatedUser();
-    	sndngMailVO.setDsptchPerson(loginVO.getId());
+    	sndngMailVO.setDsptchPerson(loginVO.getUserId());
     	
     	// 발송메일을 등록한다.
     	boolean result = sndngMailService.insertSndngMail(sndngMailVO);

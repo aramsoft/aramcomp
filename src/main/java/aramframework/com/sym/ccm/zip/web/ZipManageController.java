@@ -112,7 +112,7 @@ public class ZipManageController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		zipVO.setFrstRegisterId(loginVO.getUniqId());
+		zipVO.setFrstRegisterId(loginVO.getUserId());
 
 		beanValidator.validate(zipVO, bindingResult);
 		if (bindingResult.hasErrors()){
@@ -211,7 +211,7 @@ public class ZipManageController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		zipVO.setLastUpdusrId(loginVO.getUniqId());
+		zipVO.setLastUpdusrId(loginVO.getUserId());
 
 		beanValidator.validate(zipVO, bindingResult);
 		if (bindingResult.hasErrors()){

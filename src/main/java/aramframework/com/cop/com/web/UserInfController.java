@@ -194,7 +194,7 @@ public class UserInfController {
 
 		CommunityUserVO communityUserVO = new CommunityUserVO();
 
-		communityUserVO.setLastUpdusrId(loginVO.getUniqId());
+		communityUserVO.setLastUpdusrId(loginVO.getUserId());
 		communityUserVO.setCmmntyId(cmmntyId);
 		communityUserVO.setEmplyrId(emplyrId);
 		communityUserVO.setUseAt("Y");
@@ -227,7 +227,7 @@ public class UserInfController {
 
 		CommunityUserVO communityUserVO = new CommunityUserVO();
 
-		communityUserVO.setLastUpdusrId(loginVO.getUniqId());
+		communityUserVO.setLastUpdusrId(loginVO.getUserId());
 		communityUserVO.setCmmntyId(cmmntyId);
 		communityUserVO.setEmplyrId(emplyrId);
 		communityUserVO.setUseAt("Y");
@@ -260,7 +260,7 @@ public class UserInfController {
 
 		CommunityUserVO communityUserVO = new CommunityUserVO();
 
-		communityUserVO.setLastUpdusrId(loginVO.getUniqId());
+		communityUserVO.setLastUpdusrId(loginVO.getUserId());
 		communityUserVO.setCmmntyId(cmmntyId);
 		communityUserVO.setEmplyrId(emplyrId);
 		communityUserVO.setUseAt("Y");
@@ -295,7 +295,7 @@ public class UserInfController {
 
 		CommunityUserVO communityUserVO = new CommunityUserVO();
 
-		communityUserVO.setLastUpdusrId(loginVO.getUniqId());
+		communityUserVO.setLastUpdusrId(loginVO.getUserId());
 		communityUserVO.setCmmntyId(cmmntyId);
 		communityUserVO.setEmplyrId(emplyrId);
 		communityUserVO.setSecsnDe(DateUtil.getToday());
@@ -327,7 +327,7 @@ public class UserInfController {
 
 		CommunityUserVO communityUserVO = new CommunityUserVO();
 
-		communityUserVO.setLastUpdusrId(loginVO.getUniqId());
+		communityUserVO.setLastUpdusrId(loginVO.getUserId());
 		communityUserVO.setCmmntyId(cmmntyId);
 		communityUserVO.setEmplyrId(emplyrId);
 		communityUserVO.setSecsnDe(DateUtil.getToday());

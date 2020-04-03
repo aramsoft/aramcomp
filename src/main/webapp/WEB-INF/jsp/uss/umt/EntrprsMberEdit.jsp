@@ -60,7 +60,6 @@
         <td width="80%">
         	<form:input path="entrprsmberId" size="20" readonly="true" maxlength="20" />
             <form:errors path="entrprsmberId" cssClass="error"/>
-            <form:hidden path="uniqId" />
         </td>
     </tr>
     <tr>

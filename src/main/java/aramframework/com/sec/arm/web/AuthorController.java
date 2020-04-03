@@ -221,7 +221,7 @@ public class AuthorController {
 	@RequestMapping("/sec/arm/accessDenied.do")
 	public String accessDenied() {
 //		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-//		LOG.error("Access Denied !!! " + loginVO.getId() + "@" + loginVO.getIp());
+//		LOG.error("Access Denied !!! " + loginVO.getUserId() + "@" + loginVO.getIp());
 		return "sec/accessDenied";
 	}
 	

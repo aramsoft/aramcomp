@@ -147,7 +147,7 @@ public class BatchOpertController {
 		
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		batchOpertVO.setFrstRegisterId(loginVO.getUniqId());
+		batchOpertVO.setFrstRegisterId(loginVO.getUserId());
 
 		batchOpertService.insertBatchOpert(batchOpertVO);
 
@@ -195,7 +195,7 @@ public class BatchOpertController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		batchOpertVO.setLastUpdusrId(loginVO.getUniqId());
+		batchOpertVO.setLastUpdusrId(loginVO.getUserId());
 
 		batchOpertService.updateBatchOpert(batchOpertVO);
 

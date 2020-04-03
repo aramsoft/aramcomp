@@ -97,7 +97,7 @@
 	    <td class="lt_text3"><c:out value="${result.deptNm}"/></td>
 		<td class="lt_text3"><fmt:formatDate value="${result.frstRegisterPnttm}" pattern="yyyy-MM-dd"/></td	>
 		<td class="lt_text3">
-	  	<c:if test="${result.emplyrId != uniqId}">
+	  	<c:if test="${result.emplyrId != userId}">
 			<span class="button">
    			<a href="#" onClick="javascript:fn_aram_insert_nameCardUse('<c:out value="${result.ncrdId}"/>'); return false;">
 				사용등록

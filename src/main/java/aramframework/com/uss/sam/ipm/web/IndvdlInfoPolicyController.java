@@ -113,7 +113,7 @@ public class IndvdlInfoPolicyController {
 		
 		// 아이디 설정
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		indvdlInfoPolicyVO.setFrstRegisterId(loginVO.getUniqId());
+		indvdlInfoPolicyVO.setFrstRegisterId(loginVO.getUserId());
 		
 		// 저장
 		indvdlInfoPolicyService.insertIndvdlInfoPolicy(indvdlInfoPolicyVO);
@@ -160,7 +160,7 @@ public class IndvdlInfoPolicyController {
 			// 아이디 설정
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		indvdlInfoPolicyVO.setLastUpdusrId(loginVO.getUniqId());
+		indvdlInfoPolicyVO.setLastUpdusrId(loginVO.getUserId());
 
 		indvdlInfoPolicyService.updateIndvdlInfoPolicy(indvdlInfoPolicyVO);
 

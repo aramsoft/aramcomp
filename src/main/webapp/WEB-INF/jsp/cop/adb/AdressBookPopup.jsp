@@ -166,10 +166,10 @@ function fn_aram_search(){
     varForm.submit();
 }
 
-function fn_aram_choose(uniqId){
+function fn_aram_choose(userId){
 	var retFunc = window.opener.gArguments["retFunc"];
 	if( retFunc != undefined ) {
-		retFunc(uniqId);		
+		retFunc(userId);		
 	}
 	window.close();
 }

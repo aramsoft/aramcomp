@@ -57,7 +57,7 @@ public class BBSScrapController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		scrapVO.setUniqId(loginVO.getUniqId());
+		scrapVO.setUserId(loginVO.getUserId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
 		scrapVO.fillPageInfo(paginationInfo);
@@ -88,7 +88,7 @@ public class BBSScrapController {
 		scrapVO = bbsScrapService.selectScrap(scrapVO);
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		model.addAttribute("uniqId", loginVO.getUniqId());
+		model.addAttribute("userId", loginVO.getUserId());
 
 		// -------------------------------------
 		// 게시판 내용 취득
@@ -159,7 +159,7 @@ public class BBSScrapController {
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		scrapVO.setFrstRegisterId(loginVO.getUniqId());
+		scrapVO.setFrstRegisterId(loginVO.getUserId());
 
 		bbsScrapService.insertScrap(scrapVO);
 
@@ -214,7 +214,7 @@ public class BBSScrapController {
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		scrapVO.setLastUpdusrId(loginVO.getUniqId());
+		scrapVO.setLastUpdusrId(loginVO.getUserId());
 
 		bbsScrapService.updateScrap(scrapVO);
 
@@ -251,7 +251,7 @@ public class BBSScrapController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		scrapVO.setUniqId(loginVO.getUniqId());
+		scrapVO.setUserId(loginVO.getUserId());
 
 		scrapVO.setSizeAndOffset(5, 0);
 

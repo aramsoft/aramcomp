@@ -11,8 +11,6 @@ import aramframework.com.uss.umt.dao.UserManageMapper;
 import aramframework.com.uss.umt.domain.UserManageVO;
 import aramframework.com.utl.sim.service.FileScrty;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.fdl.cmmn.exception.FdlException;
-import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 
 /**
  * 사용자관리에 관한 비지니스 클래스를 정의한다.
@@ -32,10 +30,6 @@ public class UserManageService extends EgovAbstractServiceImpl {
 
 	@Autowired
 	private EntrprsManageMapper entrprsManageMapper;	
-
-	/** egovUsrCnfrmIdGnrService */
-	@Autowired
-	private EgovIdGnrService usrCnfrmIdGnrService;
 
 	/**
 	 * 기 등록된 특정 사용자의 정보를 데이터베이스에서 읽어와 화면에 출력
@@ -70,12 +64,6 @@ public class UserManageService extends EgovAbstractServiceImpl {
 	 * @param userManageVO
 	 */
 	public void insertUser(UserManageVO userManageVO) {
-		// 고유아이디 셋팅
-		try {
-			userManageVO.setUniqId(usrCnfrmIdGnrService.getNextStringId());
-		} catch (FdlException e) {
-			throw new RuntimeException(e);
-		}
 		// 패스워드 암호화
 		String pass;
 		try {
@@ -110,8 +98,8 @@ public class UserManageService extends EgovAbstractServiceImpl {
 	 * @param checkedIdForDel
 	 */
 	public void deleteUser(UserManageVO userManageVO) {
-		userManageMapper.deleteUserHistory(userManageVO.getUniqId());
-		userManageMapper.deleteUser(userManageVO.getUniqId());
+		userManageMapper.deleteUserHistory(userManageVO.getEmplyrId());
+		userManageMapper.deleteUser(userManageVO.getEmplyrId());
 	}
 
 	/**
@@ -157,10 +145,10 @@ public class UserManageService extends EgovAbstractServiceImpl {
 	/**
 	 * 사용자가 비밀번호를 기억하지 못할 때 비밀번호를 찾을 수 있도록 함
 	 * 
-	 * @param uniqId
+	 * @param userId
 	 */
-	public UserManageVO selectPassword(String uniqId) {
-		return userManageMapper.selectPassword(uniqId);
+	public UserManageVO selectPassword(String userId) {
+		return userManageMapper.selectPassword(userId);
 	}
 
 	/**

@@ -36,7 +36,7 @@
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
-<input type="hidden" name="uniqId"/>
+<input type="hidden" name="userId"/>
 <input type="hidden" name="returnUrl" />
 
 <div id="search_area">
@@ -99,11 +99,11 @@
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
         <td class="lt_text3">
-			<input type="checkbox" class="check2" id="uniqIds" name="uniqIds" value="${result.userTy}-${result.uniqId}" />
+			<input type="checkbox" class="check2" id="uniqIds" name="uniqIds" value="${result.userTy}-${result.userId}" />
         </td>
         <td class="lt_text3">
 			<span class="link">
-			<a href="#"  onclick="javascript:fn_aram_detail('<c:out value="${result.uniqId}"/>'); return false;">
+			<a href="#"  onclick="javascript:fn_aram_detail('<c:out value="${result.userId}"/>'); return false;">
 				<c:out value="${result.userId}"/>
 			</a>
 			</span>
@@ -165,16 +165,16 @@ function fn_aram_search(){
     varForm.submit();
 }
 
-function fn_aram_detail(uniqId) {
+function fn_aram_detail(userId) {
     var varForm = document.getElementById("mberManageVO");
-	varForm.uniqId.value = uniqId;
+	varForm.userId.value = userId;
 	varForm.action = "${pageContext.request.contextPath}/uss/umt/editMber.do";
 	varForm.submit();
 }
 
 function fn_aram_regist() {
     var varForm = document.getElementById("mberManageVO");
-	varForm.uniqId.value = "";
+	varForm.userId.value = "";
     varForm.action = "${pageContext.request.contextPath}/uss/umt/registMber.do";
     varForm.submit();
 }

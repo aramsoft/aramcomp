@@ -136,7 +136,7 @@ public class BackupOpertController {
 		
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		backupOpertVO.setFrstRegisterId(loginVO.getUniqId());
+		backupOpertVO.setFrstRegisterId(loginVO.getUserId());
 
 		backupOpertService.insertBackupOpert(backupOpertVO);
 
@@ -191,7 +191,7 @@ public class BackupOpertController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		backupOpertVO.setLastUpdusrId(loginVO.getUniqId());
+		backupOpertVO.setLastUpdusrId(loginVO.getUserId());
 
 		backupOpertService.updateBackupOpert(backupOpertVO);
 

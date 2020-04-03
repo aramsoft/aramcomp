@@ -258,7 +258,7 @@ function fn_aram_updateUser(userSe){
 	} else if ( userSe == 'USR' ) {
 		url = "${pageContext.request.contextPath}/uss/umt/editUser.do";
 	}	
-	url = url + "?uniqId=${loginVO.uniqId}";
+	url = url + "?userId=${loginVO.userId}";
 	url = url + "&curTrgetId=${targetVO.cmmntyId}&curMenuPos="+cur_menuPos;
 	fn_aram_load(url);
 }

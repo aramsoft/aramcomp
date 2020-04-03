@@ -54,7 +54,7 @@ public class UserInfService extends EgovAbstractServiceImpl {
 			CommunityUserVO communityUserVO = new CommunityUserVO();
 
 			communityUserVO.setCmmntyId(trgetId);
-			communityUserVO.setEmplyrId(loginVO.getUniqId());
+			communityUserVO.setEmplyrId(loginVO.getUserId());
 
 			if (cmmntyService.checkCommunityUserInf(communityUserVO).equals("EXIST")) {
 				return "Y";
@@ -87,7 +87,7 @@ public class UserInfService extends EgovAbstractServiceImpl {
 			CommunityUserVO communityUserVO = new CommunityUserVO();
 
 			communityUserVO.setCmmntyId(trgetId);
-			communityUserVO.setEmplyrId(loginVO.getUniqId());
+			communityUserVO.setEmplyrId(loginVO.getUserId());
 
 			if (cmmntyService.isManager(communityUserVO)) {
 				return "Y";

@@ -54,19 +54,19 @@
             SELECT A.USER_ID				AS "userId"
                  , A.USER_NM				AS "userNm"
                  , B.AUTHOR_CODE 			AS "authorCode"
-                 , A.ESNTL_ID 				AS "uniqId" 
+                 , A.USER_ID 				AS "userId" 
                  , (CASE WHEN B.SCRTY_DTRMN_TRGET_ID IS NULL THEN 'N' ELSE 'Y' END) AS "regYn"
               FROM (SELECT A.ORGNZT_ID 		DEPT_CODE, 
                            A.ORGNZT_NM 		DEPT_NM,
                            B.EMPLYR_ID 		USER_ID,
                            B.USER_NM 		USER_NM,
-                           B.ESNTL_ID
+                           B.USER_ID
                       FROM COMTN_ORGNZT_INFO A
                    		   LEFT OUTER JOIN COMTN_EMPLYR_INFO B
                 				ON A.ORGNZT_ID = B.ORGNZT_ID 
                    ) A 
            		   LEFT OUTER JOIN COMTN_EMPLYR_SCRTY_ESTBS B
-           				ON A.ESNTL_ID = B.SCRTY_DTRMN_TRGET_ID 
+           				ON A.USER_ID = B.SCRTY_DTRMN_TRGET_ID 
              WHERE 1 = 1    
         ]]> 
      	<if test='deptCode != null and deptCode neq ""'>
@@ -88,13 +88,13 @@
                            A.ORGNZT_NM 		DEPT_NM,
                            B.EMPLYR_ID 		USER_ID,
                            B.USER_NM 		USER_NM,
-                           B.ESNTL_ID
+                           B.USER_ID
                       FROM COMTN_ORGNZT_INFO A
                    		   LEFT OUTER JOIN COMTN_EMPLYR_INFO B
                 				ON A.ORGNZT_ID = B.ORGNZT_ID 
                    ) A 
                    LEFT OUTER JOIN COMTN_EMPLYR_SCRTY_ESTBS B
-                		ON A.ESNTL_ID = B.SCRTY_DTRMN_TRGET_ID 
+                		ON A.USER_ID = B.SCRTY_DTRMN_TRGET_ID 
              WHERE 1 = 1    
         ]]>			
      	<if test='deptCode != null and deptCode neq ""'>
@@ -109,7 +109,7 @@
             		SCRTY_DTRMN_TRGET_ID
             	  ,	AUTHOR_CODE
             ) VALUES ( 
-            		#{uniqId}
+            		#{userId}
             	  ,	#{authorCode}
             )
         ]]>
@@ -120,7 +120,7 @@
         <![CDATA[
             UPDATE COMTN_EMPLYR_SCRTY_ESTBS 
                SET AUTHOR_CODE=#{authorCode}
-             WHERE SCRTY_DTRMN_TRGET_ID=#{uniqId}
+             WHERE SCRTY_DTRMN_TRGET_ID=#{userId}
         ]]>
     </update>
 
@@ -129,7 +129,7 @@
         <![CDATA[
             DELETE 
               FROM COMTN_EMPLYR_SCRTY_ESTBS 
-             WHERE SCRTY_DTRMN_TRGET_ID=#{uniqId}
+             WHERE SCRTY_DTRMN_TRGET_ID=#{userId}
         ]]>
     </delete>
 

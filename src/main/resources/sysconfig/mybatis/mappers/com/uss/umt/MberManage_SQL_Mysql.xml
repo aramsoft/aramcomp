@@ -7,8 +7,7 @@
  	<select id="selectMberList" resultType="egovMap">
         /* 구현 Sql */
 		<![CDATA[
-		    SELECT ESNTL_ID              	AS "uniqId"
-		         , 'USR01'               	AS "userTy"
+		    SELECT 'USR01'               	AS "userTy"
 		         , MBER_ID               	AS "userId"
 		         , MBER_NM               	AS "userNm"
 		         , MBER_EMAIL_ADRES      	AS "emailAdres"
@@ -67,8 +66,7 @@
 	<!-- 상세보기 -->
     <select id="selectMber" resultType="mberManageVO">
         <![CDATA[
-            SELECT ESNTL_ID         		AS "uniqId"
-                 , 'USR01'          		AS "userTy"
+            SELECT 'USR01'          		AS "userTy"
                  , MBER_ID          		AS "mberId"
                  , MBER_NM          		AS "mberNm"
                  , PASSWORD         		AS "password"
@@ -89,7 +87,7 @@
                  , SBSCRB_DE        		AS "sbscrbDe"
                  , GOOGLE_ACCOUNT	        AS "googleAccount"
               FROM COMTN_GNRL_MBER
-             WHERE ESNTL_ID = #{uniqId}
+             WHERE MBER_ID = #{userId}
         ]]>
     </select>
     
@@ -97,8 +95,7 @@
     <insert id="insertMber">
         <![CDATA[
             INSERT INTO COMTN_GNRL_MBER (   
-                    ESNTL_ID          
-                  , MBER_ID          
+                    MBER_ID          
                   , MBER_NM          
                   , PASSWORD         
                   , PASSWORD_HINT    
@@ -117,8 +114,7 @@
                   , MIDDLE_TELNO    
                   , SBSCRB_DE        
             ) VALUES(
-                    #{uniqId}
-                  , #{mberId, jdbcType=VARCHAR}
+                    #{mberId, jdbcType=VARCHAR}
                   , #{mberNm, jdbcType=VARCHAR}
                   , #{password, jdbcType=VARCHAR}
                   , #{passwordHint, jdbcType=VARCHAR}
@@ -144,8 +140,7 @@
     <update id="updateMber">
         <![CDATA[
             UPDATE COMTN_GNRL_MBER 
-               SET MBER_ID          	= #{mberId}
-                 , MBER_NM          	= #{mberNm, jdbcType=VARCHAR}
+               SET MBER_NM          	= #{mberNm, jdbcType=VARCHAR}
                  , PASSWORD_HINT    	= #{passwordHint, jdbcType=VARCHAR}
                  , PASSWORD_CNSR    	= #{passwordCnsr, jdbcType=VARCHAR}
                  , IHIDNUM          	= #{ihidnum, jdbcType=VARCHAR}
@@ -160,7 +155,7 @@
                  , MBER_FXNUM       	= #{mberFxnum}
                  , MBER_EMAIL_ADRES 	= #{mberEmailAdres, jdbcType=VARCHAR}
                  , MIDDLE_TELNO     	= #{middleTelno, jdbcType=VARCHAR}
-             WHERE ESNTL_ID = #{uniqId}
+             WHERE MBER_ID = #{userId}
         ]]>
     </update>
     
@@ -169,7 +164,7 @@
         <![CDATA[
             DELETE 
               FROM COMTN_GNRL_MBER 
-             WHERE ESNTL_ID = #{delId}
+             WHERE MBER_ID = #{userId}
         ]]>
     </delete>
     
@@ -178,7 +173,7 @@
         <![CDATA[
             SELECT PASSWORD          		password 
               FROM COMTN_GNRL_MBER
-             WHERE ESNTL_ID = #{uniqId}
+             WHERE MBER_ID = #{userId}
         ]]>
     </select>
     
@@ -187,7 +182,7 @@
         <![CDATA[
             UPDATE COMTN_GNRL_MBER 
                SET PASSWORD  = #{password}
-             WHERE ESNTL_ID  = #{uniqId}
+             WHERE MBER_ID  = #{userId}
         ]]>
     </update>
     

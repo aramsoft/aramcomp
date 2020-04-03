@@ -73,11 +73,11 @@ public class DeptAuthorService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param deptAuthorVO
 	 */
-	public void insertDeptAuthors(String[] uniqIds, String[] authorCodes, String[] regYns) {
+	public void insertDeptAuthors(String[] userIds, String[] authorCodes, String[] regYns) {
 		
 		DeptAuthorVO daVO = new DeptAuthorVO();
-		for (int i = 0; i < uniqIds.length; i++) {
-			daVO.setUniqId(uniqIds[i]);
+		for (int i = 0; i < userIds.length; i++) {
+			daVO.setUserId(userIds[i]);
 			daVO.setAuthorCode(authorCodes[i]);
 			if (regYns[i].equals("N"))
 				deptAuthorMapper.insertDeptAuthor(daVO);
@@ -91,10 +91,10 @@ public class DeptAuthorService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param deptAuthorVO
 	 */
-	public void deleteDeptAuthors(String[] uniqIds) {
+	public void deleteDeptAuthors(String[] userIds) {
 		DeptAuthorVO daVO = new DeptAuthorVO();
-		for (int i = 0; i < uniqIds.length; i++) {
-			daVO.setUniqId(uniqIds[i]);
+		for (int i = 0; i < userIds.length; i++) {
+			daVO.setUserId(userIds[i]);
 			deptAuthorMapper.deleteDeptAuthor(daVO);
 		}
 	}

@@ -214,7 +214,7 @@ public class CommunityManageController {
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		communityVO.setUseAt("Y");
 		communityVO.setRegistSeCode("REGC02");	// 커뮤니티 등록 
-		communityVO.setFrstRegisterId(loginVO.getUniqId());
+		communityVO.setFrstRegisterId(loginVO.getUserId());
 
 		cmmntyService.insertCommunityInf(communityVO);
 
@@ -283,7 +283,7 @@ public class CommunityManageController {
 		}
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		communityVO.setLastUpdusrId(loginVO.getUniqId());
+		communityVO.setLastUpdusrId(loginVO.getUserId());
 
 		if ("Y".equals(communityVO.getUseAt())) {
 			cmmntyService.updateCommunityInf(communityVO);
@@ -315,8 +315,8 @@ public class CommunityManageController {
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		communityUserVO.setCmmntyId(trgetId);
 		communityUserVO.setUseAt("Y");
-		communityUserVO.setFrstRegisterId(loginVO.getUniqId());
-		communityUserVO.setEmplyrId(loginVO.getUniqId());
+		communityUserVO.setFrstRegisterId(loginVO.getUserId());
+		communityUserVO.setEmplyrId(loginVO.getUserId());
 
 		// ---------------------------------------------
 		// 승인요청 처리
@@ -332,7 +332,7 @@ public class CommunityManageController {
 			CommunityUserVO manager = cmmntyService.selectCommunityManagerInf(communityVO);
 
 			ConfirmHistoryVO confirmHistoryVO = new ConfirmHistoryVO();
-			confirmHistoryVO.setConfmRqesterId(loginVO.getUniqId()); // 요청자 ID
+			confirmHistoryVO.setConfmRqesterId(loginVO.getUserId()); // 요청자 ID
 			confirmHistoryVO.setConfmerId(manager.getEmplyrId()); // 관리자
 			confirmHistoryVO.setConfmTyCode("CF11"); // 커뮤니티사용자등록
 			confirmHistoryVO.setConfmSttusCode("AP01"); // 승인요청
@@ -369,14 +369,14 @@ public class CommunityManageController {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		communityUserVO.setUseAt("N");
-		communityUserVO.setLastUpdusrId(loginVO.getUniqId());
-		// cmmntyUser.setEmplyrId(user.getUniqId()); //커뮤니티 탈퇴 요청시 승인자를 선택하므로 탈퇴
+		communityUserVO.setLastUpdusrId(loginVO.getUserId());
+		// cmmntyUser.setEmplyrId(user.getUserId()); //커뮤니티 탈퇴 요청시 승인자를 선택하므로 탈퇴
 		// 승인자가 자신이 될 수 없음(2011.9.7 수정분)
 		communityUserVO.setSecsnDe(DateUtil.getToday());
 
 		ConfirmHistoryVO confirmHistoryVO = new ConfirmHistoryVO();
 
-		confirmHistoryVO.setConfmRqesterId(loginVO.getUniqId());
+		confirmHistoryVO.setConfmRqesterId(loginVO.getUserId());
 		confirmHistoryVO.setConfmerId(communityUserVO.getEmplyrId());
 		confirmHistoryVO.setConfmTyCode("CF12"); // 006
 		confirmHistoryVO.setConfmSttusCode("AP01"); // 007

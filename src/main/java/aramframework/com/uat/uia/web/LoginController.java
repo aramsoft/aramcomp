@@ -105,7 +105,7 @@ public class LoginController {
 			ModelMap model) {
 
 		LOG.debug("execute actionLogin !!!" );
-		if( loginVO.getId() == null || loginVO.getId().equals("") ) {
+		if( loginVO.getUserId() == null || loginVO.getUserId().equals("") ) {
 			throw new RuntimeException("userId not found");
 		}
 		if( loginVO.getPassword() == null || loginVO.getPassword().equals("") ) {
@@ -114,7 +114,7 @@ public class LoginController {
 		
 		// 1. 일반 로그인 처리
 		LoginVO resultVO = loginService.actionLogin(loginVO);
-		if (resultVO != null && resultVO.getId() != null && !resultVO.getId().equals("")) {
+		if (resultVO != null && resultVO.getUserId() != null && !resultVO.getUserId().equals("")) {
 			return "forward:/uat/uia/actionMain.do";
 		} else {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.login"));
@@ -227,8 +227,8 @@ public class LoginController {
 		loginVO.setName(loginVO.getName().replaceAll(" ", ""));
 		LoginVO resultVO = loginService.searchId(loginVO);
 
-		if (resultVO != null && resultVO.getId() != null && !resultVO.getId().equals("")) {
-			model.addAttribute("resultInfo", "아이디는 " + resultVO.getId() + " 입니다.");
+		if (resultVO != null && resultVO.getUserId() != null && !resultVO.getUserId().equals("")) {
+			model.addAttribute("resultInfo", "아이디는 " + resultVO.getUserId() + " 입니다.");
 		} else {
 			model.addAttribute("resultInfo", MessageHelper.getMessage("fail.common.idsearch"));
 		}
@@ -246,8 +246,8 @@ public class LoginController {
 			ModelMap model) {
 
 		if (loginVO == null 
-				|| loginVO.getId() == null 
-				|| loginVO.getId().equals("") 
+				|| loginVO.getUserId() == null 
+				|| loginVO.getUserId().equals("") 
 				&& loginVO.getName() == null || loginVO.getName().equals("")
 				&& loginVO.getEmail() == null || loginVO.getEmail().equals("") 
 				&& loginVO.getPasswordHint() == null || loginVO.getPasswordHint().equals("")

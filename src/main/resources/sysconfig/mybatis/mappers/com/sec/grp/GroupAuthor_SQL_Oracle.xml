@@ -23,30 +23,30 @@
                    ) 						AS "mberTyNm" 
                  , B.AUTHOR_CODE 			AS "authorCode"
                  , (CASE WHEN B.SCRTY_DTRMN_TRGET_ID IS NULL THEN 'N' ELSE 'Y' END) AS "regYn" 
-                 ,  ESNTL_ID 				AS "uniqId" 
+                 ,  USER_ID 				AS "userId" 
               FROM (SELECT MBER_ID 			USER_ID
               	         , MBER_NM 			USER_NM
               	         , GROUP_ID
               	         , 'USR01' 			MBER_TY_CODE
-              	         , ESNTL_ID
+              	         , USER_ID
                       FROM COMTN_GNRL_MBER
                      UNION ALL
                     SELECT ENTRPRS_MBER_ID 	USER_ID
                     	 , CMPNY_NM 		USER_NM
                     	 , GROUP_ID
                     	 , 'USR02' 			MBER_TY_CODE
-                    	 , ESNTL_ID 
+                    	 , USER_ID 
                       FROM COMTN_ENTRPRS_MBER
                      UNION ALL
                     SELECT EMPLYR_ID 		USER_ID
                     	 , USER_NM 			USER_NM
                     	 , GROUP_ID
                     	 , 'USR03' 			MBER_TY_CODE
-                    	 , ESNTL_ID 
+                    	 , USER_ID 
                       FROM COMTN_EMPLYR_INFO 
                    ) A 
                    LEFT OUTER JOIN COMTN_EMPLYR_SCRTY_ESTBS B
-                		ON A.ESNTL_ID = B.SCRTY_DTRMN_TRGET_ID
+                		ON A.USER_ID = B.SCRTY_DTRMN_TRGET_ID
              WHERE 1 = 1    
         ]]> 
       	<if test='searchKeyword != null and searchKeyword != ""'>
@@ -78,25 +78,25 @@
               	         , MBER_NM 			USER_NM
               	         , GROUP_ID
               	         , 'USR01' 			MBER_TY_CODE
-              	         , ESNTL_ID
+              	         , USER_ID
                       FROM COMTN_GNRL_MBER
                      UNION ALL
                     SELECT ENTRPRS_MBER_ID 	USER_ID
                     	 , CMPNY_NM 		USER_NM
                     	 , GROUP_ID
                     	 , 'USR02' 			MBER_TY_CODE
-                    	 , ESNTL_ID 
+                    	 , USER_ID 
                       FROM COMTN_ENTRPRS_MBER
                      UNION ALL
                     SELECT EMPLYR_ID 		USER_ID
                     	 , USER_NM 			USER_NM
                     	 , GROUP_ID
                     	 , 'USR03' 			MBER_TY_CODE
-                    	 , ESNTL_ID 
+                    	 , USER_ID 
                       FROM COMTN_EMPLYR_INFO 
                    ) A 
                    LEFT OUTER JOIN COMTN_EMPLYR_SCRTY_ESTBS B
-                		ON A.ESNTL_ID = B.SCRTY_DTRMN_TRGET_ID
+                		ON A.USER_ID = B.SCRTY_DTRMN_TRGET_ID
              WHERE 1 = 1   
         ]]>			
       	<if test='searchKeyword != null and searchKeyword != ""'>
@@ -122,7 +122,7 @@
             	  ,	MBER_TY_CODE
             	  ,	AUTHOR_CODE
             ) VALUES ( 
-            		#{uniqId}
+            		#{userId}
             	  ,	#{mberTyCode}
             	  , #{authorCode}
             )
@@ -135,7 +135,7 @@
             UPDATE COMTN_EMPLYR_SCRTY_ESTBS 
                SET MBER_TY_CODE=#{mberTyCode}
                  , AUTHOR_CODE=#{authorCode}
-             WHERE SCRTY_DTRMN_TRGET_ID=#{uniqId}
+             WHERE SCRTY_DTRMN_TRGET_ID=#{userId}
         ]]>
     </update>
 
@@ -144,7 +144,7 @@
         <![CDATA[
             DELETE 
               FROM COMTN_EMPLYR_SCRTY_ESTBS 
-             WHERE SCRTY_DTRMN_TRGET_ID=#{uniqId}
+             WHERE SCRTY_DTRMN_TRGET_ID=#{userId}
         ]]>
     </delete>
 

@@ -89,7 +89,7 @@
 
 	    <td class="lt_text3">
 			<c:choose>
-		  	<c:when test="${result.frstRegisterId == uniqId}">
+		  	<c:when test="${result.frstRegisterId == userId}">
 		   		<span class="link">
 		   		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.ncrdId}"/>'); return false;">
 		   			<c:out value="${result.ncrdNm}"/>
@@ -109,7 +109,7 @@
 	    <td class="lt_text3"><c:out value="${result.deptNm}"/></td>
 		<td class="lt_text3"><fmt:formatDate value="${result.creatDt}" pattern="yyyy-MM-dd"/></td	>
 	    <td class="lt_text3">
-	  	<c:if test="${result.frstRegisterId != uniqId}">
+	  	<c:if test="${result.frstRegisterId != userId}">
 	   		<span class="button">
 	   		<a href="#" onclick="javascript:fn_aram_delete_nameCardUse('<c:out value="${result.ncrdId}"/>'); return false;">
 	   			등록해지

@@ -98,7 +98,7 @@
 	    <td class="lt_text3"><c:out value="${result.userId}" /></td>
 	    <td class="lt_text3">
 	   		<span class="link">
-	   		<a href="#" onclick="javascript:fn_aram_choose('<c:out value="${result.uniqId}" />','<c:out value="${result.userNm}" />','<c:out value="${result.userId}" />'); return false;">
+	   		<a href="#" onclick="javascript:fn_aram_choose('<c:out value="${result.userNm}" />','<c:out value="${result.userId}" />'); return false;">
 	    		<c:out value="${result.userNm}" />
 	   		</a>
 	   		</span>
@@ -158,8 +158,7 @@ function fn_aram_search(){
 	varForm.submit();
 }
 
-function fn_aram_choose(uniqId, userNm, userId){
-	if(window.opener.gArguments["uniqId"]) window.opener.gArguments["uniqId"].value = uniqId;
+function fn_aram_choose(userNm, userId){
 	if(window.opener.gArguments["userId"]) window.opener.gArguments["userId"].value = userId;
 	if(window.opener.gArguments["userNm"]) window.opener.gArguments["userNm"].value = userNm;
 	window.close();

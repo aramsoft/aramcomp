@@ -229,7 +229,7 @@ function fn_aram_get_tmplat(){
 
 function fn_aram_get_cmmntyAdmin(cmmntyId){
     var varForm = document.getElementById("communityVO");
-	gArguments["uniqId"] = varForm.emplyrId;
+	gArguments["userId"] = varForm.emplyrId;
 	gArguments["userNm"] = varForm.emplyrNm;
 
 	var url = "/cop/com/listCmmntyUser.do?trgetId="+cmmntyId+"&PopFlag=Y";

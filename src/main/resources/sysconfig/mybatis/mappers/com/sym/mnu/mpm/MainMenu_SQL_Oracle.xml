@@ -24,7 +24,7 @@
 			   AND B.UPPER_MENU_NO = 0  
 			   AND A.AUTHOR_CODE = (SELECT C.AUTHOR_CODE 
 			                          from COMTN_EMPLYR_SCRTY_ESTBS C
-	                                 WHERE C.SCRTY_DTRMN_TRGET_ID = #{tmpUniqId})
+	                                 WHERE C.SCRTY_DTRMN_TRGET_ID = #{tmpUserId})
 			 ORDER BY MENU_ORDR
 		]]> 
 	</select>
@@ -46,7 +46,7 @@
 			      	    ON A.MENU_NO  = B.MENU_NO  
 			 WHERE A.AUTHOR_CODE = (SELECT AUTHOR_CODE 
 			                          from COMTN_EMPLYR_SCRTY_ESTBS
-	                                 WHERE SCRTY_DTRMN_TRGET_ID = #{tmpUniqId})
+	                                 WHERE SCRTY_DTRMN_TRGET_ID = #{tmpUserId})
 			 ORDER BY B.MENU_ORDR
 		]]> 
 	</select>
@@ -73,7 +73,7 @@
 			       			   ON A.MENU_NO  = B.MENU_NO  
 			        WHERE A.AUTHOR_CODE = (SELECT AUTHOR_CODE 
 			                                 FROM COMTN_EMPLYR_SCRTY_ESTBS
-	                                        WHERE SCRTY_DTRMN_TRGET_ID = #{tmpUniqId})
+	                                        WHERE SCRTY_DTRMN_TRGET_ID = #{tmpUserId})
 			          AND B.UPPER_MENU_NO = #{menuNo})
 		]]> 
 	</select>
@@ -90,7 +90,7 @@
 			       			    ON A.MENU_NO  = B.MENU_NO  
 			         WHERE A.AUTHOR_CODE = (SELECT AUTHOR_CODE 
 			                                  FROM COMTN_EMPLYR_SCRTY_ESTBS
-	                                         WHERE SCRTY_DTRMN_TRGET_ID = #{tmpUniqId})
+	                                         WHERE SCRTY_DTRMN_TRGET_ID = #{tmpUserId})
 			           AND B.UPPER_MENU_NO = #{menuNo})
 		]]> 
 	</select>

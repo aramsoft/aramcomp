@@ -7,8 +7,7 @@
     <select id="selectEntrprsMberList" resultType="egovMap">
         /* 구현 Sql */
 		<![CDATA[
-	        SELECT ESNTL_ID               	AS "uniqId"
-	             , 'USR02'                	AS "userTy"
+	        SELECT 'USR02'                	AS "userTy"
 	             , ENTRPRS_MBER_ID        	AS "userId"
 	             , CMPNY_NM               	AS "cmpnyNm"
 	             , APPLCNT_NM             	AS "userNm"
@@ -68,8 +67,7 @@
 	<!-- 상세보기 -->
     <select id="selectEntrprsMber" resultType="entrprsManageVO">
        <![CDATA[
-           SELECT ESNTL_ID              	AS "uniqId"
-                , 'USR02'                   AS "userTy"
+           SELECT 'USR02'                   AS "userTy"
                 , ENTRPRS_MBER_ID           AS "entrprsmberId"
                 , ENTRPRS_SE_CODE           AS "entrprsSeCode"
                 , BIZRNO                    AS "bizrno"
@@ -94,7 +92,7 @@
                 , APPLCNT_EMAIL_ADRES       AS "applcntEmailAdres"
                 , GOOGLE_ACCOUNT	        AS "googleAccount"
              FROM COMTN_ENTRPRS_MBER
-            WHERE ESNTL_ID = #{uniqId}
+            WHERE ENTRPRS_MBER_ID = #{userId}
         ]]>
     </select>
 
@@ -102,8 +100,7 @@
     <insert id="insertEntrprsMber">
         <![CDATA[
             INSERT INTO COMTN_ENTRPRS_MBER (   
-            		ESNTL_ID                      
-            	  , ENTRPRS_MBER_ID               
+ 					ENTRPRS_MBER_ID               
             	  , ENTRPRS_SE_CODE              
             	  , BIZRNO                       
             	  , JURIRNO                      
@@ -126,8 +123,7 @@
             	  , APPLCNT_EMAIL_ADRES          
             	  , APPLCNT_IHIDNUM              
             ) VALUES (
-                    #{uniqId}
-                  , #{entrprsmberId, jdbcType=VARCHAR}
+                    #{entrprsmberId, jdbcType=VARCHAR}
                   , #{entrprsSeCode, jdbcType=VARCHAR}
                   , #{bizrno, jdbcType=VARCHAR}
                   , #{jurirno, jdbcType=VARCHAR}
@@ -157,8 +153,7 @@
    <update id="updateEntrprsMber">
         <![CDATA[
              UPDATE COMTN_ENTRPRS_MBER 
-                SET ENTRPRS_MBER_ID              = #{entrprsmberId}
-                  , ENTRPRS_SE_CODE              = #{entrprsSeCode, jdbcType=VARCHAR}
+                SET ENTRPRS_SE_CODE              = #{entrprsSeCode, jdbcType=VARCHAR}
                   , BIZRNO                       = #{bizrno, jdbcType=VARCHAR}
                   , JURIRNO                      = #{jurirno, jdbcType=VARCHAR}
                   , CMPNY_NM                     = #{cmpnyNm, jdbcType=VARCHAR}
@@ -176,7 +171,7 @@
                   , ENTRPRS_END_TELNO            = #{entrprsEndTelno, jdbcType=VARCHAR}
                   , AREA_NO                      = #{areaNo, jdbcType=VARCHAR}
                   , APPLCNT_EMAIL_ADRES          = #{applcntEmailAdres, jdbcType=VARCHAR}
-              WHERE ESNTL_ID = #{uniqId}
+              WHERE ENTRPRS_MBER_ID = #{userId}
         ]]>
     </update>
     
@@ -185,7 +180,7 @@
         <![CDATA[
              DELETE 
                FROM COMTN_ENTRPRS_MBER 
-              WHERE ESNTL_ID = #{delId}
+              WHERE ENTRPRS_MBER_ID = #{userId}
         ]]>
     </delete>
     
@@ -194,7 +189,7 @@
         <![CDATA[
              SELECT ENTRPRS_MBER_PASSWORD    password 
                FROM COMTN_ENTRPRS_MBER
-              WHERE ESNTL_ID = #{uniqId}
+              WHERE ENTRPRS_MBER_ID = #{userId}
         ]]>
     </select>
     
@@ -203,7 +198,7 @@
         <![CDATA[
             UPDATE COMTN_ENTRPRS_MBER 
                SET ENTRPRS_MBER_PASSWORD   =  #{password}
-             WHERE ESNTL_ID = #{uniqId}
+             WHERE ENTRPRS_MBER_ID = #{userId}
         ]]>
     </update>
     

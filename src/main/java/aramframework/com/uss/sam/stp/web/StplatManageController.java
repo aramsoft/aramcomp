@@ -113,7 +113,7 @@ public class StplatManageController {
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		stplatManageVO.setFrstRegisterId(loginVO.getUniqId()); // 최초등록자ID
+		stplatManageVO.setFrstRegisterId(loginVO.getUserId()); // 최초등록자ID
 
 		stplatManageService.insertStplat(stplatManageVO);
 
@@ -159,7 +159,7 @@ public class StplatManageController {
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		stplatManageVO.setLastUpdusrId(loginVO.getUniqId()); // 최종수정자ID
+		stplatManageVO.setLastUpdusrId(loginVO.getUserId()); // 최종수정자ID
 
 		stplatManageService.updateStplat(stplatManageVO);
 

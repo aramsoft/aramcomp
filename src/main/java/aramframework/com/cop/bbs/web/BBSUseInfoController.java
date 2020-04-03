@@ -114,7 +114,7 @@ public class BBSUseInfoController {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		boardUseInfVO.setUseAt("Y");
-		boardUseInfVO.setFrstRegisterId(loginVO.getUniqId());
+		boardUseInfVO.setFrstRegisterId(loginVO.getUserId());
 		boardUseInfVO.setRegistSeCode(registSeCode);
 
 		bbsUseService.insertBBSUseInf(boardUseInfVO);

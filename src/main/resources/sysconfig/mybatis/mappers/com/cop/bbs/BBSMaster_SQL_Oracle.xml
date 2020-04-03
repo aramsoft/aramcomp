@@ -125,7 +125,7 @@
 				   LEFT OUTER JOIN COMTN_TMPLAT_INFO d
 				   		ON  a.TMPLAT_ID = d.TMPLAT_ID				
 				   LEFT OUTER JOIN COMVN_USER_MASTER e
-				   		ON  a.FRST_REGISTER_ID = e.ESNTL_ID		
+				   		ON  a.FRST_REGISTER_ID = e.USER_ID		
 				   LEFT OUTER JOIN COMTN_BBS_USE f
 				   		ON  a.BBS_ID = f.BBS_ID		
 			 WHERE a.BBS_ID = #{bbsId}

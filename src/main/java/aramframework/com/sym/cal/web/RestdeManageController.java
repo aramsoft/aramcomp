@@ -135,7 +135,7 @@ public class RestdeManageController {
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		restdeVO.setFrstRegisterId(loginVO.getUniqId());
+		restdeVO.setFrstRegisterId(loginVO.getUserId());
 
 		restdeManageService.insertRestde(restdeVO);
 		
@@ -181,7 +181,7 @@ public class RestdeManageController {
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		restdeVO.setLastUpdusrId(loginVO.getUniqId());
+		restdeVO.setLastUpdusrId(loginVO.getUserId());
 
 		restdeManageService.updateRestde(restdeVO);
 		

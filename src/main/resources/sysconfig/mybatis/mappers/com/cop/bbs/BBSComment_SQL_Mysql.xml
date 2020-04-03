@@ -18,7 +18,7 @@
 			     , a.FRST_REGIST_PNTTM	    AS "frstRegisterPnttm"
 			  FROM COMTN_COMMENT a
 			  	   LEFT OUTER JOIN COMVN_USER_MASTER b
-				 		ON a.FRST_REGISTER_ID = b.ESNTL_ID
+				 		ON a.FRST_REGISTER_ID = b.USER_ID
 			 WHERE a.BBS_ID = #{bbsId} 
 			   AND a.NTT_ID = #{nttId}
 			   AND a.USE_AT = 'Y'
@@ -36,7 +36,7 @@
 			SELECT COUNT(COMMENT_NO)
 			  FROM COMTN_COMMENT a
 			  	   LEFT OUTER JOIN COMVN_USER_MASTER b
-				 		ON a.FRST_REGISTER_ID = b.ESNTL_ID
+				 		ON a.FRST_REGISTER_ID = b.USER_ID
 			 WHERE a.BBS_ID = #{bbsId} 
 			   AND a.NTT_ID = #{nttId}
 			   AND a.USE_AT = 'Y'
@@ -59,7 +59,7 @@
 				 , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
 			  FROM COMTN_COMMENT a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.FRST_REGISTER_ID = b.ESNTL_ID
+						ON a.FRST_REGISTER_ID = b.USER_ID
 			 WHERE a.COMMENT_NO = #{commentNo}
 		]]>				
 	</select> 

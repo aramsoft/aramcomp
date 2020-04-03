@@ -64,8 +64,8 @@ public class NcrdManageController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		nameCardVO.setEmplyrId(loginVO.getUniqId());
-		model.addAttribute("uniqId", loginVO.getUniqId());
+		nameCardVO.setEmplyrId(loginVO.getUserId());
+		model.addAttribute("userId", loginVO.getUserId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
 		nameCardVO.fillPageInfo(paginationInfo);
@@ -115,7 +115,7 @@ public class NcrdManageController {
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		nameCardVO.setFrstRegisterId(loginVO.getUniqId());
+		nameCardVO.setFrstRegisterId(loginVO.getUserId());
 //		nameCardVO.setTrgetId(loginVO.getOrgnztId());
 
 		ncrdService.insertNcrdItem(nameCardVO);
@@ -140,7 +140,7 @@ public class NcrdManageController {
 
 		boolean writer = false;
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		if (nameCardVO.getFrstRegisterId().equals(loginVO.getUniqId())) {
+		if (nameCardVO.getFrstRegisterId().equals(loginVO.getUserId())) {
 			writer = true;
 		}
 		model.addAttribute("writer", writer);
@@ -168,7 +168,7 @@ public class NcrdManageController {
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		nameCardVO.setLastUpdusrId(loginVO.getUniqId());
+		nameCardVO.setLastUpdusrId(loginVO.getUserId());
 
 		ncrdService.updateNcrdItem(nameCardVO);
 
@@ -188,7 +188,7 @@ public class NcrdManageController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		nameCardVO.setLastUpdusrId(loginVO.getUniqId());
+		nameCardVO.setLastUpdusrId(loginVO.getUserId());
 
 		ncrdService.deleteNcrdItem(nameCardVO);
 
@@ -209,8 +209,8 @@ public class NcrdManageController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		nameCardVO.setEmplyrId(loginVO.getUniqId());
-		model.addAttribute("uniqId", loginVO.getUniqId());
+		nameCardVO.setEmplyrId(loginVO.getUserId());
+		model.addAttribute("userId", loginVO.getUserId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
 		nameCardVO.fillPageInfo(paginationInfo);
@@ -238,7 +238,7 @@ public class NcrdManageController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		nameCardUseVO.setEmplyrId(loginVO.getUniqId());
+		nameCardUseVO.setEmplyrId(loginVO.getUserId());
 		nameCardUseVO.setUseAt("Y");
 
 		ncrdService.insertNcrdUseInf(nameCardUseVO);
@@ -259,7 +259,7 @@ public class NcrdManageController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		nameCardUseVO.setEmplyrId(loginVO.getUniqId());
+		nameCardUseVO.setEmplyrId(loginVO.getUserId());
 		nameCardUseVO.setUseAt("N");
 
 		ncrdService.updateNcrdUseInf(nameCardUseVO);
@@ -280,7 +280,7 @@ public class NcrdManageController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		nameCardUseVO.setEmplyrId(loginVO.getUniqId());
+		nameCardUseVO.setEmplyrId(loginVO.getUserId());
 
 		ncrdService.deleteNcrdUseInf(nameCardUseVO);
 

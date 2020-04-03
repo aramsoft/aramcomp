@@ -39,7 +39,7 @@ public class LoginService extends EgovAbstractServiceImpl {
 		LoginVO loginVO = loginMapper.actionLoginByEsntlId(vo);
 
 		// 3. 결과를 리턴한다.
-		if (loginVO != null && !loginVO.getId().equals("") && !loginVO.getPassword().equals("")) {
+		if (loginVO != null && !loginVO.getUserId().equals("") && !loginVO.getPassword().equals("")) {
 			return loginVO;
 		} else {
 			loginVO = new LoginVO();
@@ -68,7 +68,7 @@ public class LoginService extends EgovAbstractServiceImpl {
 		LoginVO loginVO = loginMapper.actionLogin(vo);
 
 		// 3. 결과를 리턴한다.
-		if (loginVO != null && !loginVO.getId().equals("") && !loginVO.getPassword().equals("")) {
+		if (loginVO != null && !loginVO.getUserId().equals("") && !loginVO.getPassword().equals("")) {
 			return loginVO;
 		} else {
 			loginVO = new LoginVO();
@@ -88,7 +88,7 @@ public class LoginService extends EgovAbstractServiceImpl {
 		LoginVO loginVO = loginMapper.actionCrtfctLogin(vo);
 
 		// 3. 결과를 리턴한다.
-		if (loginVO != null && !loginVO.getId().equals("") && !loginVO.getPassword().equals("")) {
+		if (loginVO != null && !loginVO.getUserId().equals("") && !loginVO.getPassword().equals("")) {
 			return loginVO;
 		} else {
 			loginVO = new LoginVO();
@@ -108,7 +108,7 @@ public class LoginService extends EgovAbstractServiceImpl {
 		LoginVO loginVO = loginMapper.searchId(vo);
 
 		// 2. 결과를 리턴한다.
-		if (loginVO != null && !loginVO.getId().equals("")) {
+		if (loginVO != null && !loginVO.getUserId().equals("")) {
 			return loginVO;
 		} else {
 			loginVO = new LoginVO();
@@ -152,7 +152,7 @@ public class LoginService extends EgovAbstractServiceImpl {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
-		pwVO.setId(vo.getId());
+		pwVO.setUserId(vo.getUserId());
 		pwVO.setPassword(enpassword);
 		pwVO.setUserSe(vo.getUserSe());
 		loginMapper.updatePassword(pwVO);

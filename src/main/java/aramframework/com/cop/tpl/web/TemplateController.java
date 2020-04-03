@@ -104,7 +104,7 @@ public class TemplateController {
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		templateInfVO.setFrstRegisterId(loginVO.getUniqId());
+		templateInfVO.setFrstRegisterId(loginVO.getUserId());
 
 		tmplatService.insertTemplateInf(templateInfVO);
 
@@ -151,7 +151,7 @@ public class TemplateController {
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		templateInfVO.setLastUpdusrId(loginVO.getUniqId());
+		templateInfVO.setLastUpdusrId(loginVO.getUserId());
 
 		tmplatService.updateTemplateInf(templateInfVO);
 
@@ -171,7 +171,7 @@ public class TemplateController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		templateInfVO.setLastUpdusrId(loginVO.getUniqId());
+		templateInfVO.setLastUpdusrId(loginVO.getUserId());
 
 		tmplatService.deleteTemplateInf(templateInfVO);
 

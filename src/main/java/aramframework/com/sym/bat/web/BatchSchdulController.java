@@ -128,7 +128,7 @@ public class BatchSchdulController {
 		
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		batchSchdulVO.setFrstRegisterId(loginVO.getUniqId());
+		batchSchdulVO.setFrstRegisterId(loginVO.getUserId());
 
 		batchSchdulService.insertBatchSchdul(batchSchdulVO);
 
@@ -181,7 +181,7 @@ public class BatchSchdulController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		batchSchdulVO.setLastUpdusrId(loginVO.getUniqId());
+		batchSchdulVO.setLastUpdusrId(loginVO.getUserId());
 
 		batchSchdulService.updateBatchSchdul(batchSchdulVO);
 

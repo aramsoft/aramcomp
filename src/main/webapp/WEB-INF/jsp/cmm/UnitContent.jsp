@@ -12,13 +12,13 @@
 <c:if test="${loginVO != null}">
 	${loginVO.name}님 환영합니다. !!! <br/>
 	<c:if test="${loginVO.userSe == 'GNR' }">
- 	<a href="${pageContext.request.contextPath}/uss/umt/editMber.do?uniqId=${loginVO.uniqId}"><b>일반회원수정</b></a>&nbsp;&nbsp;
+ 	<a href="${pageContext.request.contextPath}/uss/umt/editMber.do?userId=${loginVO.userId}"><b>일반회원수정</b></a>&nbsp;&nbsp;
 	</c:if>
 	<c:if test="${loginVO.userSe == 'ENT' }">
-	<a href="${pageContext.request.contextPath}/uss/umt/editEntrprsMber.do?uniqId=${loginVO.uniqId}"><b>기업회원수정</b></a>&nbsp;&nbsp;
+	<a href="${pageContext.request.contextPath}/uss/umt/editEntrprsMber.do?userId=${loginVO.userId}"><b>기업회원수정</b></a>&nbsp;&nbsp;
 	</c:if>
 	<c:if test="${loginVO.userSe == 'USR' }">
-	<a href="${pageContext.request.contextPath}/uss/umt/editUser.do?uniqId=${loginVO.uniqId}"><b>업무회원수정</b></a>&nbsp;&nbsp;
+	<a href="${pageContext.request.contextPath}/uss/umt/editUser.do?userId=${loginVO.userId}"><b>업무회원수정</b></a>&nbsp;&nbsp;
 	</c:if>
 	<a href="${pageContext.request.contextPath}/uat/uia/actionLogout.do?targetUrl=/UnitContent.do"><b>로그아웃</b></a>
 	<br/><br/>

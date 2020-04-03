@@ -53,7 +53,7 @@ public class SchdulManageVO extends BaseVO  {
 
 	// helper
 	/** 유저ID */
-	private String uniqId;
+	private String userId;
 	
 	/** 담당자명 */
 	private String schdulChargerName = "";
@@ -334,20 +334,20 @@ public class SchdulManageVO extends BaseVO  {
 
 	// helper
 	/**
-	 * uniqId attribute 를 리턴한다.
+	 * userId attribute 를 리턴한다.
 	 * 
 	 * @return the String
 	 */
-	public String getUniqId() {
-		return uniqId;
+	public String getUserId() {
+		return userId;
 	}
 	/**
-	 * uniqId attribute 값을 설정한다.
+	 * userId attribute 값을 설정한다.
 	 * 
-	 * @return uniqId String
+	 * @return userId String
 	 */
-	public void setUniqId(String uniqId) {
-		this.uniqId = uniqId;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	/**

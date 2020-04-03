@@ -42,10 +42,10 @@ public class LoginLogListener implements ApplicationListener<ApplicationEvent> {
 				EgovUserDetails details = (EgovUserDetails) principal;
 				LoginVO loginVO = (LoginVO) details.getEgovUserVO();
 
-				String uniqId = "unknown";
+				String userId = "unknown";
 				String ip = "";
 				if( loginVO != null ) {
-					uniqId = loginVO.getUniqId();
+					userId = loginVO.getUserId();
 					ip = loginVO.getIp();
 				}
 
@@ -56,7 +56,7 @@ public class LoginLogListener implements ApplicationListener<ApplicationEvent> {
 				}
 				
 				LoginLogVO loginLogVO = new LoginLogVO();
-				loginLogVO.setLoginId(uniqId);
+				loginLogVO.setLoginId(userId);
 				loginLogVO.setLoginIp(ip);
 				loginLogVO.setLoginMthd("I"); // 로그인:I, 로그아웃:O
 				loginLogVO.setErrOccrrAt("N");

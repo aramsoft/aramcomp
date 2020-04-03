@@ -96,21 +96,21 @@
 	    <td class="lt_text3">
 	    	<c:choose>
 	    	<c:when test="${result.useAt == 'Y'}">
-	    		<input type="button" value="탈퇴"  onClick="javascript:fn_aram_delete_user('<c:out value="${result.uniqId}"/>'); return false;" />
+	    		<input type="button" value="탈퇴"  onClick="javascript:fn_aram_delete_user('<c:out value="${result.userId}"/>'); return false;" />
 				|
 		    	<c:choose>
 		    	<c:when test="${result.oprtrAt == 'Y'}">
-		    		<input type="button" value="운영진탈퇴" onClick="javascript:fn_aram_delete_manager('<c:out value="${result.uniqId}"/>'); return false;" />
+		    		<input type="button" value="운영진탈퇴" onClick="javascript:fn_aram_delete_manager('<c:out value="${result.userId}"/>'); return false;" />
 		    	</c:when>
 		    	<c:otherwise>
-		    		<input type="button" value="운영진등록" onClick="javascript:fn_aram_regist_manager('<c:out value="${result.uniqId}"/>'); return false;" />
+		    		<input type="button" value="운영진등록" onClick="javascript:fn_aram_regist_manager('<c:out value="${result.userId}"/>'); return false;" />
 		    	</c:otherwise>
 		    	</c:choose>
 		    </c:when>
 	    	<c:otherwise>
-	    		<input type="button" value="재가입" onClick="javascript:fn_aram_reRegist_user('<c:out value="${result.uniqId}"/>'); return false;" />
+	    		<input type="button" value="재가입" onClick="javascript:fn_aram_reRegist_user('<c:out value="${result.userId}"/>'); return false;" />
 				|
-	    		<input type="button" value="삭제" onClick="javascript:fn_aram_erase_user('<c:out value="${result.uniqId}"/>'); return false;" />
+	    		<input type="button" value="삭제" onClick="javascript:fn_aram_erase_user('<c:out value="${result.userId}"/>'); return false;" />
 	    	</c:otherwise>
 	    	</c:choose>
 	    </td>

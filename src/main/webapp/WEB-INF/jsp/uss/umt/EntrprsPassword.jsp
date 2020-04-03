@@ -52,7 +52,6 @@
         </th>
         <td width="80%">
             <form:input path="entrprsmberId" size="20" maxlength="20" readonly="true" />
-            <form:hidden path="uniqId" />
             <form:hidden path="userTy"  />
         </td>
     </tr>

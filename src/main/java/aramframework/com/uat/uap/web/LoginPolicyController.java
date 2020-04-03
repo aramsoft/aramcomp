@@ -100,7 +100,7 @@ public class LoginPolicyController {
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		loginPolicyVO.setUserId(loginVO.getId());
+		loginPolicyVO.setUserId(loginVO.getUserId());
 
 		loginPolicyService.insertLoginPolicy(loginPolicyVO);
 
@@ -144,7 +144,7 @@ public class LoginPolicyController {
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		loginPolicyVO.setUserId(loginVO.getId());
+		loginPolicyVO.setUserId(loginVO.getUserId());
 
 		if( loginPolicyVO.getRegDate() == null || loginPolicyVO.getRegDate().equals("") ) {
 			loginPolicyService.insertLoginPolicy(loginPolicyVO);

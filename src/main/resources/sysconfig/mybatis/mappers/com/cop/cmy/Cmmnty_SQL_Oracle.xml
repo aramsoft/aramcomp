@@ -14,7 +14,7 @@
 			     , b.USER_NM 				AS "frstRegisterNm"
 			  FROM COMTN_CMMNTY a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON  a.FRST_REGISTER_ID = b.ESNTL_ID
+						ON  a.FRST_REGISTER_ID = b.USER_ID
 				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
 					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
 					    	  		 WHERE CODE_ID = 'COM001') c
@@ -51,7 +51,7 @@
 				 , b.USER_NM 				AS "frstRegisterNm"
 			  FROM COMTN_CMMNTY a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON  a.FRST_REGISTER_ID = b.ESNTL_ID
+						ON  a.FRST_REGISTER_ID = b.USER_ID
 				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
 					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
 					    	  		 WHERE CODE_ID = 'COM001') c
@@ -82,7 +82,7 @@
 			SELECT COUNT(a.CMMNTY_ID)
 			  FROM COMTN_CMMNTY a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON  a.FRST_REGISTER_ID = b.ESNTL_ID
+						ON  a.FRST_REGISTER_ID = b.USER_ID
 				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
 					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
 					    	  		 WHERE CODE_ID = 'COM001') c
@@ -117,7 +117,7 @@
 				 , a.ADDITIONAL_INFO
 			  FROM COMTN_CMMNTY a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.FRST_REGISTER_ID = b.ESNTL_ID
+						ON a.FRST_REGISTER_ID = b.USER_ID
 				   LEFT OUTER JOIN COMTN_TMPLAT_INFO c
 						ON a.TMPLAT_ID = c.TMPLAT_ID
 			 WHERE a.CMMNTY_ID = #{cmmntyId}	
@@ -280,7 +280,7 @@
 			     , b.USER_NM 				AS "emplyrNm" 
 			  FROM COMTN_CMMNTY_USER a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.EMPLYR_ID = b.ESNTL_ID
+						ON a.EMPLYR_ID = b.USER_ID
 			 WHERE a.CMMNTY_ID =  #{cmmntyId}
 			   AND a.USE_AT = 'Y' 
 			   AND a.MNGR_AT = 'Y'

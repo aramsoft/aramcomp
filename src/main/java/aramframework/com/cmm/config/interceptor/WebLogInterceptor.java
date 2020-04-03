@@ -74,14 +74,14 @@ public class WebLogInterceptor extends HandlerInterceptorAdapter {
 		
 		/* Authenticated */
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		String uniqId = "unknown";
+		String userId = "unknown";
 		if( loginVO != null ) {
-			uniqId = loginVO.getUniqId();
+			userId = loginVO.getUserId();
 		}
 
 		WebLogVO webLogVO = new WebLogVO();
 		webLogVO.setUrl(requestURI);
-		webLogVO.setRqesterId(uniqId);
+		webLogVO.setRqesterId(userId);
 		webLogVO.setRqesterIp(requestIP);
 
 		webLogService.logInsertWebLog(webLogVO);

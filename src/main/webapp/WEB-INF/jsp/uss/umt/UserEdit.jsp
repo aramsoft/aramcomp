@@ -60,7 +60,6 @@
         <td width="80%">
             <form:input path="emplyrId" size="20" maxlength="20" readonly="true" title="사용자아이디" />
             <form:errors path="emplyrId" cssClass="error"/>
-            <form:hidden path="uniqId" />
         </td>
     </tr>
     <tr>

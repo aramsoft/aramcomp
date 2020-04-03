@@ -15,7 +15,7 @@
 				 , b.USER_NM 				AS "rqesterNm" 
 			  FROM COMTH_SYS_LOG a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.RQESTER_ID = b.ESNTL_ID
+						ON a.RQESTER_ID = b.USER_ID
 				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
 					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
 					    	  		 WHERE CODE_ID = 'COM033') c
@@ -43,7 +43,7 @@
 			SELECT COUNT(a.REQUST_ID) as cnt
 			  FROM COMTH_SYS_LOG a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.RQESTER_ID = b.ESNTL_ID
+						ON a.RQESTER_ID = b.USER_ID
 				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
 					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
 					    	  		 WHERE CODE_ID = 'COM033') c
@@ -73,7 +73,7 @@
 				 , b.USER_NM 				AS "rqesterNm"
 			  FROM COMTH_SYS_LOG a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.RQESTER_ID = b.ESNTL_ID
+						ON a.RQESTER_ID = b.USER_ID
 				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
 					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
 					    	  		 WHERE CODE_ID = 'COM033') c

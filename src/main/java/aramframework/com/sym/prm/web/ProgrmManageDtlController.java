@@ -80,7 +80,7 @@ public class ProgrmManageDtlController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		progrmManageDtlVO.setRqestPersonId(loginVO.getId());
+		progrmManageDtlVO.setRqestPersonId(loginVO.getUserId());
 		
 		return "sym/prm/ProgramChangeRequstRegist";
 	}
@@ -149,7 +149,7 @@ public class ProgrmManageDtlController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		if (!progrmManageDtlVO.getRqestPersonId().equals(loginVO.getId())) {
+		if (!progrmManageDtlVO.getRqestPersonId().equals(loginVO.getUserId())) {
 			model.addAttribute("message", "수정이 실패하였습니다. 변경요청 수정은 변경요청자만 수정가능합니다.");
 			return "sym/prm/ProgramChangeRequstEdit";
 		}
@@ -221,7 +221,7 @@ public class ProgrmManageDtlController {
 
 		if (progrmManageDtlVO.getOpetrId() == null) {
 			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-			progrmManageDtlVO.setOpetrId(loginVO.getId());
+			progrmManageDtlVO.setOpetrId(loginVO.getUserId());
 		}
 
 		model.addAttribute(progrmManageDtlVO);
@@ -267,7 +267,7 @@ public class ProgrmManageDtlController {
 			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 			// 프로그램 변경요청 사항을 이메일로 발송한다.(메일연동솔루션 활용)
 			SndngMailVO sndngMailVO = new SndngMailVO();
-			sndngMailVO.setDsptchPerson(loginVO.getId());
+			sndngMailVO.setDsptchPerson(loginVO.getUserId());
 			sndngMailVO.setRecptnPerson(tmpEmail);
 			sndngMailVO.setSj("프로그램변경요청  처리.");
 			sndngMailVO.setEmailCn("프로그램 변경요청 사항이  " + sTemp + "(으)로 처리 되었습니다.");

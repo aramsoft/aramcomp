@@ -113,7 +113,7 @@ public class CpyrhtPrtcPolicyController {
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		cpyrhtPrtcPolicyVO.setFrstRegisterId(loginVO.getUniqId()); // 최초등록자ID
+		cpyrhtPrtcPolicyVO.setFrstRegisterId(loginVO.getUserId()); // 최초등록자ID
 
 		cpyrhtPrtcPolicyService.insertCpyrhtPrtcPolicy(cpyrhtPrtcPolicyVO);
 
@@ -159,7 +159,7 @@ public class CpyrhtPrtcPolicyController {
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		cpyrhtPrtcPolicyVO.setLastUpdusrId(loginVO.getUniqId()); // 최종수정자ID
+		cpyrhtPrtcPolicyVO.setLastUpdusrId(loginVO.getUserId()); // 최종수정자ID
 
 		cpyrhtPrtcPolicyService.updateCpyrhtPrtcPolicy(cpyrhtPrtcPolicyVO);
 

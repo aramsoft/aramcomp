@@ -86,7 +86,7 @@
 			</div>
 		</td>
 		<td class="lt_text3" style="padding-left:10px;">
-			<c:if test="${anonymous == 'true' || result.wrterId == uniqId}">
+			<c:if test="${anonymous == 'true' || result.wrterId == userId}">
 		     <a href="#" onclick="javascript:fn_aram_edit_comment('<c:out value="${result.commentNo}" />', '<c:out value="${status.index}" />'); return false;"><spring:message code="button.update" /></a>
 		      | <a href="#" onclick="javascript:fn_aram_delete_comment('<c:out value="${result.commentNo}" />', '<c:out value="${status.index}" />'); return false;"><spring:message code="button.delete" /></a>
 		    </c:if>
@@ -105,7 +105,7 @@
 
 <div style="margin-top:10px; width:100%"></div>
 
-<c:if test="${ anonymous == 'true' || not empty uniqId }">
+<c:if test="${ anonymous == 'true' || not empty userId }">
 
 <div id="search_area">
 	<div class="button_area">

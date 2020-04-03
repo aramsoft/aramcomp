@@ -82,7 +82,7 @@
 
 	    <td class="lt_text3">
 	   		<span class="link">
-	   		<a href="#" onclick="javascript:fn_aram_choose('<c:out value="${result.uniqId}"/>'); return false;">
+	   		<a href="#" onclick="javascript:fn_aram_choose('<c:out value="${result.userId}"/>'); return false;">
 	    		<c:out value="${result.userId}" />
 	   		</a>
 	   		</span>
@@ -121,9 +121,9 @@ function fn_aram_linkPage(pageNo) {
 	varForm.submit();
 }
 
-function fn_aram_choose(uniqId) {
+function fn_aram_choose(userId) {
     var varForm = document.getElementById("userInfVO");
-    varForm.emplyrId.value = uniqId;
+    varForm.emplyrId.value = userId;
     varForm.action = "${pageContext.request.contextPath}/cop/cmy/deleteCmmntyUserBySelf.do";
     varForm.submit();
 }

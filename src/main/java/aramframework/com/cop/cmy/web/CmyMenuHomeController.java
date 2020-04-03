@@ -304,10 +304,10 @@ public class CmyMenuHomeController  {
 		communityVO.setCmmntyNm("미리보기 커뮤니티");
 		communityVO.setCmmntyIntrcn("미리보기를 위한 커뮤니티입니다.");
 		communityVO.setUseAt("Y");
-		communityVO.setFrstRegisterId(loginVO.getUniqId()); // 본인
+		communityVO.setFrstRegisterId(loginVO.getUserId()); // 본인
 
 		CommunityUserVO communityUserVO = new CommunityUserVO();
-		communityUserVO.setEmplyrId(loginVO.getUniqId());
+		communityUserVO.setEmplyrId(loginVO.getUserId());
 		communityUserVO.setEmplyrNm("관리자");
 
 		model.addAttribute(communityUserVO);

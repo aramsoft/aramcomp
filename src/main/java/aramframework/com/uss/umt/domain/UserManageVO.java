@@ -81,9 +81,6 @@ public class UserManageVO extends BaseVO {
 	/** 사용자 상태 */
 	private String emplyrSttusCode;
 	
-	/** 사용자고유아이디 */
-	private String uniqId = "";
-	
 	/** DN 값 */
 	private String subDn;
 
@@ -94,6 +91,9 @@ public class UserManageVO extends BaseVO {
 	private String googleAccount;
 
 	// helper
+	/** 사용자 ID */
+	private String userId;
+	
 	/** 사용자 유형 */
 	private String userTy;
 	
@@ -530,24 +530,6 @@ public class UserManageVO extends BaseVO {
 	}
 
 	/**
-	 * uniqId attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getUniqId() {
-		return uniqId;
-	}
-	/**
-	 * uniqId attribute 값을 설정한다.
-	 * 
-	 * @param uniqId
-	 *            String
-	 */
-	public void setUniqId(String uniqId) {
-		this.uniqId = uniqId;
-	}
-
-	/**
 	 * subDn attribute 값을 리턴한다.
 	 * 
 	 * @return String
@@ -602,6 +584,24 @@ public class UserManageVO extends BaseVO {
 	}
 
 	// helper
+	/**
+	 * userId attribute 값을 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getUserId() {
+		return userId;
+	}
+	/**
+	 * userId attribute 값을 설정한다.
+	 * 
+	 * @param userId
+	 *            String
+	 */
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
 	/**
 	 * userTy attribute 값을 리턴한다.
 	 * 

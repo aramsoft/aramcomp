@@ -203,17 +203,17 @@ function fn_aram_get_user(){
 	window.open(url, "p_userInqire", "width=850px,height=420px,top=100px,left=100px,location=no");
 }
 
-function fn_aram_insert_user(uniqId){
+function fn_aram_insert_user(userId){
 	var varForm = document.getElementById("adressBookVO");
 	var checkId = varForm.userIds.value.split(",");
 
 	for(var i = 0; i < checkId.length; i++){
-		if(uniqId == checkId[i]){
+		if(userId == checkId[i]){
 			alert("이미 등록된 사람입니다.");
 			return;
 		}
 	}
-	varForm.userIds.value += uniqId + ",";
+	varForm.userIds.value += userId + ",";
 
     varForm.checkCnd.value = "regist";
 	varForm.action = "${pageContext.request.contextPath}/cop/adb/insertAdressBookUser.do";

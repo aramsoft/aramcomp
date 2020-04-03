@@ -119,7 +119,7 @@
                     <!-- 목록/저장버튼  -->
                  	<div class="buttons_center">
   					  <c:if test="${editAuthFlag == 'Y'}">
-    					<c:if test="${boardVO.frstRegisterId == sessionUniqId}">
+    					<c:if test="${boardVO.frstRegisterId == sessionUserId}">
                     		<a href="#" onclick="javascript:fn_aram_edit(); return false;">수정</a> 
                     		<a href="#" onclick="javascript:fn_aram_delete(); return false;"><spring:message code="button.delete" /></a> 
              			</c:if>    

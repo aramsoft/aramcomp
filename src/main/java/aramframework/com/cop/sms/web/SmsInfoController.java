@@ -49,7 +49,7 @@ public class SmsInfoController {
 	throws Exception {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		smsVO.setUniqId(loginVO.getUniqId());
+		smsVO.setUserId(loginVO.getUserId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
 		smsVO.fillPageInfo(paginationInfo);
@@ -81,7 +81,7 @@ public class SmsInfoController {
 		smsInfoService.selectSmsInf(smsVO);
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		model.addAttribute("sessionUniqId", loginVO.getUniqId());
+		model.addAttribute("sessionUserId", loginVO.getUserId());
 
 		return "cop/sms/SmsInfoDetail";
 	}
@@ -121,7 +121,7 @@ public class SmsInfoController {
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		smsVO.setFrstRegisterId(loginVO.getUniqId());
+		smsVO.setFrstRegisterId(loginVO.getUserId());
 
 		smsInfoService.insertSmsInf(smsVO);
 

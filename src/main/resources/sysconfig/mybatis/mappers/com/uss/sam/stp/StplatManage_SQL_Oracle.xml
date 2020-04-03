@@ -16,7 +16,7 @@
 			     , A.USE_STPLAT_NM			AS "useStplatNm"
 			     , (SELECT USER_NM 
 			          FROM COMVN_USER_MASTER 
-			         WHERE ESNTL_ID = A.FRST_REGISTER_ID
+			         WHERE USER_ID = A.FRST_REGISTER_ID
 			       ) 						AS "frstRegisterNm" 
 			     , A.FRST_REGIST_PNTTM		AS "frstRegisterPnttm" 
 		      FROM COMTN_STPLAT_INFO A                              			

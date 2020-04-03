@@ -597,7 +597,7 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 			
 			communityUserVO.setCmmntyId(cmmntyId);
-			communityUserVO.setEmplyrId(loginVO.getUniqId());
+			communityUserVO.setEmplyrId(loginVO.getUserId());
 			
 			String result = checkCommunityUserInf(communityUserVO);
 			if( result.equals("EXIST")) {

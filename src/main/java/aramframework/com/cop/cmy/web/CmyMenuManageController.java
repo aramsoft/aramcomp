@@ -273,8 +273,9 @@ public class CmyMenuManageController {
 	 */
 	@RequestMapping(value = "/cop/cmy/downMenuExcel.do")
 	@Secured("ROLE_USER")
-	public ModelAndView downMenuExcel(@ModelAttribute CommunityMenuVO communityMenuVO) 
-	throws Exception {
+	public ModelAndView downMenuExcel(
+			@ModelAttribute CommunityMenuVO communityMenuVO,
+			ModelMap model) {
 
 		ModelAndView modelAndView = new ModelAndView(new ExcelCmyMenuView());
 

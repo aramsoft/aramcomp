@@ -35,6 +35,12 @@ public class WebUtil {
 		return (String) requestAttributes.getAttribute("curTrgetId", RequestAttributes.SCOPE_REQUEST);
 	}
 	
+	/**
+	 * pathId로 부터 origId를 생성한다.
+	 * 
+	 * @param 	original		String
+	 * @return 					String
+	 */
 	public static String getOriginalId(String source, String prefix) {
 		if ( source.startsWith(prefix)  ) {
 			return source;
@@ -147,11 +153,9 @@ public class WebUtil {
 		returnValue = clearXSSMinimum(returnValue);
 
 		returnValue = returnValue.replaceAll("%00", null);
-
 		returnValue = returnValue.replaceAll("%", "&#37;");
 
 		// \\. => .
-
 		returnValue = returnValue.replaceAll("\\.\\./", ""); // ../
 		returnValue = returnValue.replaceAll("\\.\\.\\\\", ""); // ..\
 		returnValue = returnValue.replaceAll("\\./", ""); // ./

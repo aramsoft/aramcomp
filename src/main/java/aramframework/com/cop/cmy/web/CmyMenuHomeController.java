@@ -183,6 +183,8 @@ public class CmyMenuHomeController  {
 			menuPos = communityVO.getTopMenuList().get(0).getMenuPos();
 		}
 		
+//		LOG.debug("menuPos = " + menuPos);
+
 		if( "".equals(contentUrl) ) {
 			MenuVO menuVO = cmmntyService.getMenuInfo(communityVO, menuPos);
 			contentUrl = menuVO.getContentUrl();

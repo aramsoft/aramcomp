@@ -160,7 +160,7 @@ public class CmyMenuManageService extends EgovAbstractServiceImpl {
     		    	} else {
     		    		cmyMenuManageMapper.updateMenuManage(vo);
     		    	}	
-    			} 
+    			}
 			}
 		}
 	}

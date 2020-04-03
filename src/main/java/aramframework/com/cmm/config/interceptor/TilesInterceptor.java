@@ -95,8 +95,11 @@ public class TilesInterceptor extends HandlerInterceptorAdapter {
 				&& !viewName.startsWith(jspPrefix)) {
 			modelAndView.setViewName(jspPrefix + viewName);
 		}
-		
+
 //		LOG.debug("jspPrefix = " + jspPrefix + ", viewName = " + viewName);
+
+		String noLayoutChange = (String) modelAndView.getModel().get("noLayoutChange");
+		if( noLayoutChange != null && "true".equals(noLayoutChange) ) return;
 
 		String cmmntyId = (String) request.getAttribute("curTrgetId");
 		String menuPos = (String) request.getAttribute("curMenuPos");

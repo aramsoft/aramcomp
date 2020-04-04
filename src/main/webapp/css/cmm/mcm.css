@@ -19,11 +19,11 @@ footer{ width:980px; margin:100px 10px 10px 10px; text-align:center; }
 	clear:both; float:left; width:978px; margin:0px 10px; 
 	height:74px; border:1px solid #d9dde1; 
 	background:#fff url('/images/cop/tpl/temple_top01.jpg') ;
-	font-size:9pt; font-family:"돋움"; 	
+	font-size:9pt; font-family:Dotum; 	
 }
 #heading{ width:200px; padding:10px;  }
 #heading .cmmty_title {
-	font-size:12pt; font-weight:bold; font-family:"굴림"; 
+	font-size:12pt; font-weight:bold; font-family:Gulim; 
 	color:#3a5870; margin-bottom:10px; text-shadow:5px 5px 5px #A8A8A8; 
 }
 
@@ -38,14 +38,14 @@ footer{ width:980px; margin:100px 10px 10px 10px; text-align:center; }
 #topmenu #rightbar{float:right; background: url('/images/cop/tpl/top_menu_right.gif') no-repeat scroll right top transparent; width:13px; height:40px;}
 
 #user_menu{ float:left; }
-#user_menu a { font-size:9pt; font-family:"굴림"; font-weight: bold; text-decoration:none; }
+#user_menu a { font-size:9pt; font-family:Gulim; font-weight: bold; text-decoration:none; }
 #user_menu a:link 		{color:#ffffff; }
 #user_menu a:visited	{color:#ffffff; }
 #user_menu a:active  	{color:#ffffff; }
 #user_menu a:hover		{color:#ffcb2c; }
 
 #manager_menu{ float:right; }
-#manager_menu a { font-size:9pt; font-family:"굴림"; font-weight: bold; text-decoration:none; }
+#manager_menu a { font-size:9pt; font-family:Gulim; font-weight: bold; text-decoration:none; }
 #manager_menu a:link 		{ color:#66FFFF; }
 #manager_menu a:visited		{ color:#ffffff; }
 #manager_menu a:active  	{ color:#ffffff; }
@@ -69,7 +69,7 @@ footer{ width:980px; margin:100px 10px 10px 10px; text-align:center; }
 #leftmenu .menubox { padding-bottom:10px; }
 
 /* footer */
-#copyright { font-size:12pt; font-weight:bold; font-family:"굴림"; color:#3a5870; }
+#copyright { font-size:12pt; font-weight:bold; font-family:Gulim; color:#3a5870; }
 
 /* CmmntyMainContents.jsp */
 

@@ -18,8 +18,11 @@ public class MenuVO {
 	/** 메뉴번호 */
 	private String menuPos;
 
-	/** content URL */
-	private String contentUrl;
+	/** direct URL */
+	private String directUrl;
+
+	/** program URL */
+	private String programUrl;
 
 	/**
 	 * menuNm attribute를 리턴한다.
@@ -76,21 +79,50 @@ public class MenuVO {
 	}
 
 	/**
+	 * directUrl attribute를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getDirectUrl() {
+		return directUrl;
+	}
+	/**
+	 * directUrl attribute 값을 설정한다.
+	 * 
+	 * @param directUrl
+	 *            String
+	 */
+	public void setDirectUrl(String directUrl) {
+		this.directUrl = directUrl;
+	}
+
+	/**
+	 * programUrl attribute를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getProgramUrl() {
+		return programUrl;
+	}
+	/**
+	 * contentUrl attribute 값을 설정한다.
+	 * 
+	 * @param programUrl
+	 *            String
+	 */
+	public void setProgramUrl(String programUrl) {
+		this.programUrl = programUrl;
+	}
+
+	/**
 	 * contentUrl attribute를 리턴한다.
 	 * 
 	 * @return String
 	 */
 	public String getContentUrl() {
-		return contentUrl;
-	}
-	/**
-	 * contentUrl attribute 값을 설정한다.
-	 * 
-	 * @param directUrl
-	 *            String
-	 */
-	public void setContentUrl(String contentUrl) {
-		this.contentUrl = contentUrl;
+		if( directUrl != null && !"".equals(directUrl)) return directUrl;
+		if( programUrl != null && !"".equals(programUrl)) return programUrl;
+		return "";
 	}
 
 }

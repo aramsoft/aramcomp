@@ -200,12 +200,11 @@
 			SELECT A.MENU_NM				AS "menuNm"
 			     , A.MENU_KNM				AS "menuKnm"
 			     , A.MENU_POS				AS "menuPos"
-			     , COALESCE(A.DIRECT_URL, 
-			     		(SELECT B.URL 
-				           FROM COMTN_PROGRM_LIST B 
-				          WHERE A.PROGRM_FILE_NM = B.PROGRM_FILE_NM
-				        )
-				   )      					AS "contentURL"
+			     , A.DIRECT_URL				AS "directUrl" 
+			     , (SELECT B.URL 
+				      FROM COMTN_PROGRM_LIST B 
+				     WHERE A.PROGRM_FILE_NM = B.PROGRM_FILE_NM
+				   )      					AS "programURL"
 			  FROM COMTN_CMMNTY_MENU A
 			 WHERE A.TRGET_ID = #{cmmntyId}
 			   AND A.USE_AT = 'Y'
@@ -220,12 +219,11 @@
 			SELECT A.MENU_NM				AS "menuNm"
 			     , A.MENU_KNM				AS "menuKnm"
 			     , A.MENU_POS				AS "menuPos"
-			     , COALESCE(A.DIRECT_URL,			
-				        (SELECT B.URL 
-				           FROM COMTN_PROGRM_LIST B 
-				          WHERE A.PROGRM_FILE_NM = B.PROGRM_FILE_NM
-				        )
-				   )      					AS "contentURL"
+			     , A.DIRECT_URL				AS "directUrl" 
+			     , (SELECT B.URL 
+				      FROM COMTN_PROGRM_LIST B 
+				     WHERE A.PROGRM_FILE_NM = B.PROGRM_FILE_NM
+				   )      					AS "programURL"
 			  FROM COMTN_CMMNTY_MENU A
 			 WHERE A.TRGET_ID = #{cmmntyId}
 			   AND A.USE_AT = 'Y'
@@ -240,12 +238,11 @@
 			SELECT A.MENU_NM				AS "menuNm"
 			     , A.MENU_KNM				AS "menuKnm"
 			     , A.MENU_POS				AS "menuPos"
-			     , COALESCE(A.DIRECT_URL,			
-				       (SELECT B.URL 
-				          FROM COMTN_PROGRM_LIST B 
-				         WHERE A.PROGRM_FILE_NM = B.PROGRM_FILE_NM
-				        )
-				   )      					AS "contentURL"
+			     , A.DIRECT_URL				AS "directUrl" 
+			     , (SELECT B.URL 
+				      FROM COMTN_PROGRM_LIST B 
+				     WHERE A.PROGRM_FILE_NM = B.PROGRM_FILE_NM
+				   )      					AS "programURL"
 			  FROM COMTN_CMMNTY_MENU A
 			 WHERE A.TRGET_ID = #{trgetId}
 			   AND A.USE_AT = 'Y'

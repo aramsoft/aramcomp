@@ -183,7 +183,7 @@ public class CmyMenuHomeController  {
 			menuPos = communityVO.getTopMenuList().get(0).getMenuPos();
 		}
 		
-//		LOG.debug("menuPos = " + menuPos);
+		LOG.debug("menuPos = " + menuPos);
 
 		if( "".equals(contentUrl) ) {
 			MenuVO menuVO = cmmntyService.getMenuInfo(communityVO, menuPos);
@@ -192,6 +192,8 @@ public class CmyMenuHomeController  {
 				contentUrl =  "/cop/cmy/CmmntyMainContents.do";
 			}
 		}
+		
+		LOG.debug("contentUrl = " + contentUrl);
 		
 		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
 		requestAttributes.setAttribute("curTrgetId", communityVO.getCmmntyId(), RequestAttributes.SCOPE_REQUEST);

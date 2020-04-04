@@ -24,7 +24,7 @@ body {
 	scrollbar-darkshadow-color:#FFFFFF;
 	scrollbar-track-color:#FFFFFF;
 	scrollbar-arrow-color:#bbbbbb;
-	font-size:0.75em; font-family:Verdana, Helvetica, "굴림", "sans serif"; 
+	font-size:0.75em; font-family:Verdana, Helvetica, Gulim, "sans serif"; 
 }
 
 /* Black 텍스트 Hyperlink Style */
@@ -52,7 +52,7 @@ caption { visibility:hidden; font-size:0; height:0; line-height:0; }
 .noScriptTitle {
 	color:blue;
 	text-align:center;
-	font-family:"돋움";
+	font-family:Dotum;
 	font-weight:bold;
 	margin:0; padding:0;
 }

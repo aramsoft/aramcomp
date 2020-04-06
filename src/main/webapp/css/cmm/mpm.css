@@ -64,7 +64,7 @@ a:active	{ color:#86cd00; }
 .LeftMenuBgList {
 	background-image:url(/images/left_bg.gif);
 	color:#FFFFFF;
-	font-family:"돋움";
+	font-family:Dotum;
 	font-size:12px;
 	padding:2px 0 2px 25px;
 	text-align:left;
@@ -80,7 +80,7 @@ a:active	{ color:#86cd00; }
 	font-size: 11px;
 	color: #7794be;
 	text-align:right;
-	font-family:"돋움";
+	font-family:Dotum;
 	padding-top:3px;
 }
 .QuickLink a	     { font-size:11px; font-family:Dotum; }

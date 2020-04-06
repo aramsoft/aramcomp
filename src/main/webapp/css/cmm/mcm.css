@@ -2,21 +2,21 @@
 html { overflow-y:scroll; }
 
 /* layout */
-#wrap{ width:1000px; margin:0px auto; overflow:hidden; }
-header{ width:980px; margin:0px 10px; }
+#wrap{ width:75%; margin:0px auto; overflow:hidden; }
+header{ width:100%; margin:0px 10px; }
 
-#middle { width:980px; margin:0px 10px; overflow:hidden; }
+#middle { width:100%; margin:0px 10px; overflow:hidden; }
 aside { float:left; width:170px; height:550px; }
-section { float:left; width:810px; }
+section { margin-left:170px; }
 
-footer{ width:980px; margin:100px 10px 10px 10px; text-align:center; }
+footer{ width:100%; margin:100px 10px 10px 10px; text-align:center; }
 
 /* header */
 #logo{ float:left; height:45px;}
 #login{ float:right; margin-top:10px;}
 
 #banner{ 
-	clear:both; float:left; width:978px; margin:0px 10px; 
+	clear:both; float:left; width:100%; margin:0px 10px; 
 	height:74px; border:1px solid #d9dde1; 
 	background:#fff url('/images/cop/tpl/temple_top01.jpg') ;
 	font-size:9pt; font-family:Dotum; 	
@@ -29,7 +29,7 @@ footer{ width:980px; margin:100px 10px 10px 10px; text-align:center; }
 
 /* navigation */
 #topmenu{ 
-	clear:both; float:left; width:980px; height:40px; margin:10px;  
+	clear:both; float:left; width:100%; height:40px; margin:10px;  
 	background:url('/images/cop/tpl/top_menu_bg.gif') repeat-x; 	
 }
 #topmenu ul{ padding:12px; margin:0; }

@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.sam.cpy.domain.CpyrhtPrtcPolicyVO;
 import aramframework.com.uss.sam.cpy.service.CpyrhtPrtcPolicyService;
@@ -118,7 +117,8 @@ public class CpyrhtPrtcPolicyController {
 		cpyrhtPrtcPolicyService.insertCpyrhtPrtcPolicy(cpyrhtPrtcPolicyVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, cpyrhtPrtcPolicyVO, "/uss/sam/cpy/listCpyrhtPrtcPolicy.do");
+		model.addAttribute("redirectURL", "/uss/sam/cpy/listCpyrhtPrtcPolicy.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -164,7 +164,8 @@ public class CpyrhtPrtcPolicyController {
 		cpyrhtPrtcPolicyService.updateCpyrhtPrtcPolicy(cpyrhtPrtcPolicyVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, cpyrhtPrtcPolicyVO, "/uss/sam/cpy/listCpyrhtPrtcPolicy.do");
+		model.addAttribute("redirectURL", "/uss/sam/cpy/listCpyrhtPrtcPolicy.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -175,13 +176,15 @@ public class CpyrhtPrtcPolicyController {
 	@RequestMapping("/uss/sam/cpy/deleteCpyrhtPrtcPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteCpyrhtPrtcPolicy(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CpyrhtPrtcPolicyVO cpyrhtPrtcPolicyVO, 
 			ModelMap model) {
 
 		cpyrhtPrtcPolicyService.deleteCpyrhtPrtcPolicy(cpyrhtPrtcPolicyVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, cpyrhtPrtcPolicyVO, "/uss/sam/cpy/listCpyrhtPrtcPolicy.do");
+		model.addAttribute("redirectURL", "/uss/sam/cpy/listCpyrhtPrtcPolicy.do");
+	    return "cmm/redirect";
 	}
 
 }

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sec.arm.domain.AuthorVO;
 import aramframework.com.sec.arm.service.AuthorService;
 import aramframework.com.sec.grp.domain.GroupAuthorVO;
@@ -93,7 +92,8 @@ public class GroupAuthorController {
 		groupAuthorService.insertGroupAuthors(uniqIds, authorCodes, regYns, mberTyCodes);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, groupAuthorVO, "/sec/grp/listGroupAuthor.do");
+		model.addAttribute("redirectURL", "/sec/grp/listGroupAuthor.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -115,7 +115,8 @@ public class GroupAuthorController {
 		groupAuthorService.deleteGroupAuthors(uniqIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, groupAuthorVO, "/sec/grp/listGroupAuthor.do");
+		model.addAttribute("redirectURL", "/sec/grp/listGroupAuthor.do");
+	    return "cmm/redirect";
 	}
 
 }

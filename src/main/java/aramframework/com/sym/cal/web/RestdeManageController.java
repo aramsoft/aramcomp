@@ -19,7 +19,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.cal.domain.RestdeVO;
 import aramframework.com.sym.cal.service.RestdeManageService;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -140,7 +139,8 @@ public class RestdeManageController {
 		restdeManageService.insertRestde(restdeVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, restdeVO, "/sym/cal/listRestde.do");
+		model.addAttribute("redirectURL", "/sym/cal/listRestde.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -186,7 +186,8 @@ public class RestdeManageController {
 		restdeManageService.updateRestde(restdeVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, restdeVO, "/sym/cal/listRestde.do");
+		model.addAttribute("redirectURL", "/sym/cal/listRestde.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -197,13 +198,15 @@ public class RestdeManageController {
 	@RequestMapping(value = "/sym/cal/deleteRestde.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteRestde(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RestdeVO restdeVO, 
 			ModelMap model) {
 
 		restdeManageService.deleteRestde(restdeVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, restdeVO, "/sym/cal/listRestde.do");
+		model.addAttribute("redirectURL", "/sym/cal/listRestde.do");
+	    return "cmm/redirect";
 	}
 
 	/**

@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uap.domain.LoginPolicyVO;
 import aramframework.com.uat.uap.service.LoginPolicyService;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -105,7 +104,8 @@ public class LoginPolicyController {
 		loginPolicyService.insertLoginPolicy(loginPolicyVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, loginPolicyVO, "/uat/uap/listLoginPolicy.do");
+		model.addAttribute("redirectURL", "/uat/uap/listLoginPolicy.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -153,7 +153,8 @@ public class LoginPolicyController {
 		}
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, loginPolicyVO, "/uat/uap/listLoginPolicy.do");
+		model.addAttribute("redirectURL", "/uat/uap/listLoginPolicy.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -164,13 +165,15 @@ public class LoginPolicyController {
 	@RequestMapping("/uat/uap/deleteLoginPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteLoginPolicy(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute LoginPolicyVO loginPolicyVO, 
 			ModelMap model) {
 
 		loginPolicyService.deleteLoginPolicy(loginPolicyVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, loginPolicyVO, "/uat/uap/listLoginPolicy.do");
+		model.addAttribute("redirectURL", "/uat/uap/listLoginPolicy.do");
+	    return "cmm/redirect";
 	}
 
 }

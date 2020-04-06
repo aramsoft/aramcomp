@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sec.arm.domain.AuthorVO;
 import aramframework.com.sec.arm.service.AuthorService;
 import aramframework.com.sec.dpt.domain.DeptAuthorVO;
@@ -90,7 +89,8 @@ public class DeptAuthorController {
 		deptAuthorService.insertDeptAuthors(uniqIds, authorCodes, regYns);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, deptAuthorVO, "/sec/dpt/listDeptAuthor.do");
+		model.addAttribute("redirectURL", "/sec/dpt/listDeptAuthor.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -112,7 +112,8 @@ public class DeptAuthorController {
 		deptAuthorService.deleteDeptAuthors(uniqIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, deptAuthorVO, "/sec/dpt/listDeptAuthor.do");
+		model.addAttribute("redirectURL", "/sec/dpt/listDeptAuthor.do");
+	    return "cmm/redirect";
 	}
 
 }

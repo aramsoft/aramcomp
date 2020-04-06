@@ -18,7 +18,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.adb.domain.AdressBookUserVO;
 import aramframework.com.cop.adb.domain.AdressBookVO;
 import aramframework.com.cop.adb.service.AdressBookService;
@@ -134,7 +133,8 @@ public class AdressBookController {
 		adressBookService.insertAdressBook(adressBookVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, adressBookVO, "/cop/adb/listAdressBook.do");
+		model.addAttribute("redirectURL", "/cop/adb/listAdressBook.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -198,7 +198,6 @@ public class AdressBookController {
 
 		beanValidator.validate(adressBookVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			fill_common_code(model);
 			return "cop/adb/AdressBookEdit";
 		}
 
@@ -218,7 +217,8 @@ public class AdressBookController {
 		adressBookService.updateAdressBook(adressBookVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, adressBookVO, "/cop/adb/listAdressBook.do");
+		model.addAttribute("redirectURL", "/cop/adb/listAdressBook.do");
+	    return "cmm/redirect";
 	}
 	
 	/**
@@ -229,6 +229,7 @@ public class AdressBookController {
 	@RequestMapping("/cop/adb/deleteAdressBook.do")
 	@Secured("ROLE_USER")
 	public String deleteAdressBook(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AdressBookVO adressBookVO, 
 			ModelMap model) {
 
@@ -241,7 +242,8 @@ public class AdressBookController {
 		adressBookService.deleteAdressBook(adressBookVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, adressBookVO, "/cop/adb/listAdressBook.do");
+		model.addAttribute("redirectURL", "/cop/adb/listAdressBook.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -291,6 +293,7 @@ public class AdressBookController {
 	@RequestMapping("/cop/adb/insertAdressBookUser.do")
 	@Secured("ROLE_USER")
 	public String insertAdressBookUser(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AdressBookVO adressBookVO, 
 			@RequestParam String checkCnd, 
 			ModelMap model) {
@@ -323,6 +326,7 @@ public class AdressBookController {
 	@RequestMapping("/cop/adb/deleteAdressBookUser.do")
 	@Secured("ROLE_USER")
 	public String deleteAdressBookUser(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AdressBookVO adressBookVO, 
 			@RequestParam String checkWord, 
 			@RequestParam String checkCnd, 

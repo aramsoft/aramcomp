@@ -19,7 +19,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sec.grp.domain.GroupAuthorVO;
 import aramframework.com.sec.grp.service.GroupAuthorService;
 import aramframework.com.uss.umt.domain.MberManageVO;
@@ -205,7 +204,8 @@ public class MberManageController {
 		mberManageService.insertMber(mberManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, mberManageVO, "/uss/umt/listMber.do");
+		model.addAttribute("redirectURL", "/uss/umt/listMber.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -251,7 +251,8 @@ public class MberManageController {
 		mberManageService.updateMber(mberManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, mberManageVO, "/uss/umt/editMber.do?userId="+mberManageVO.getMberId());
+		model.addAttribute("redirectURL", "/uss/umt/editMber.do?userId="+mberManageVO.getMberId());
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -316,7 +317,8 @@ public class MberManageController {
 		} 
 		
 		model.addAttribute("message", MessageHelper.getMessage(message));
-	    return WebUtil.redirectJsp(model, mberManageVO, "/uss/umt/editMber.do?userId="+mberManageVO.getMberId());
+		model.addAttribute("redirectURL", "/uss/umt/editMber.do?userId="+mberManageVO.getMberId());
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -328,13 +330,15 @@ public class MberManageController {
 	@RequestMapping("/uss/umt/deleteMber.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteMber(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MberManageVO mberManageVO, 
 			ModelMap model) {
 
 		mberManageService.deleteMber(mberManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, mberManageVO, "/uss/umt/listMber.do");
+		model.addAttribute("redirectURL", "/uss/umt/listMber.do");
+	    return "cmm/redirect";
 	}
 
 	/**

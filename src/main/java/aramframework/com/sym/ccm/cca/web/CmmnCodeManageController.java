@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.ccm.cca.domain.CmmnCodeVO;
 import aramframework.com.sym.ccm.cca.service.CmmnCodeManageService;
 import aramframework.com.sym.ccm.ccc.domain.CmmnClCodeVO;
@@ -126,7 +125,8 @@ public class CmmnCodeManageController {
 		cmmnCodeManageService.insertCmmnCode(cmmnCodeVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, cmmnCodeVO, "/sym/ccm/cca/listCmmnCode.do");
+		model.addAttribute("redirectURL", "/sym/ccm/cca/listCmmnCode.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -170,7 +170,8 @@ public class CmmnCodeManageController {
 		cmmnCodeManageService.updateCmmnCode(cmmnCodeVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, cmmnCodeVO, "/sym/ccm/cca/listCmmnCode.do");
+		model.addAttribute("redirectURL", "/sym/ccm/cca/listCmmnCode.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -181,13 +182,15 @@ public class CmmnCodeManageController {
 	@RequestMapping(value = "/sym/ccm/cca/deleteCmmnCode.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteCmmnCode(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CmmnCodeVO cmmnCodeVO, 
 			ModelMap model) {
 
 		cmmnCodeManageService.deleteCmmnCode(cmmnCodeVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, cmmnCodeVO, "/sym/ccm/cca/listCmmnCode.do");
+		model.addAttribute("redirectURL", "/sym/ccm/cca/listCmmnCode.do");
+	    return "cmm/redirect";
 	}
 
 }

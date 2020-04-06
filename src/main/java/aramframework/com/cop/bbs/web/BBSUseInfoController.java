@@ -16,7 +16,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.ComponentChecker;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.bbs.domain.BoardUseInfVO;
 import aramframework.com.cop.bbs.service.BBSUseInfoService;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -120,7 +119,8 @@ public class BBSUseInfoController {
 		bbsUseService.insertBBSUseInf(boardUseInfVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, boardUseInfVO, "/cop/bbs/listBoardUseInf.do");
+		model.addAttribute("redirectURL", "/cop/bbs/listBoardUseInf.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -165,7 +165,8 @@ public class BBSUseInfoController {
 		bbsUseService.updateBBSUseInf(boardUseInfVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, boardUseInfVO, "/cop/bbs/listBoardUseInf.do");
+		model.addAttribute("redirectURL", "/cop/bbs/listBoardUseInf.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -176,13 +177,15 @@ public class BBSUseInfoController {
 	@RequestMapping("/cop/bbs/deleteBoardUseInf.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteBoardUseInf(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardUseInfVO boardUseInfVO, 
 			ModelMap model) {
 
 		bbsUseService.deleteBBSUseInf(boardUseInfVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, boardUseInfVO, "/cop/bbs/listBoardUseInf.do");
+		model.addAttribute("redirectURL", "/cop/bbs/listBoardUseInf.do");
+	    return "cmm/redirect";
 	}
 
 }

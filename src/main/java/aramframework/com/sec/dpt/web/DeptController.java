@@ -13,7 +13,6 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sec.dpt.domain.DeptVO;
 import aramframework.com.sec.dpt.service.DeptService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -43,6 +42,7 @@ public class DeptController {
 	@RequestMapping(value = "/sec/dpt/listDept.do")
 	@Secured("ROLE_ADMIN")
 	public String listDept(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptVO deptVO, 
 			ModelMap model) {
 
@@ -96,7 +96,8 @@ public class DeptController {
 		deptService.insertDept(deptVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, deptVO, "/sec/dpt/listDept.do");
+		model.addAttribute("redirectURL", "/sec/dpt/listDept.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -137,7 +138,8 @@ public class DeptController {
 		deptService.updateDept(deptVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, deptVO, "/sec/dpt/listDept.do");
+		model.addAttribute("redirectURL", "/sec/dpt/listDept.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -148,13 +150,15 @@ public class DeptController {
 	@RequestMapping(value = "/sec/dpt/deleteDept.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteDept(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptVO deptVO, 
 			ModelMap model) {
 
 		deptService.deleteDept(deptVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, deptVO, "/sec/dpt/listDept.do");
+		model.addAttribute("redirectURL", "/sec/dpt/listDept.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -165,14 +169,15 @@ public class DeptController {
 	@RequestMapping(value = "/sec/dpt/deleteListDept.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteListDept(
-			@ModelAttribute DeptVO deptVO, 
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@RequestParam String orgnztIds, 
 			ModelMap model) {
 
 		deptService.deleteDepts(orgnztIds);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, deptVO, "/sec/dpt/listDept.do");
+		model.addAttribute("redirectURL", "/sec/dpt/listDept.do");
+	    return "cmm/redirect";
 	}
 
 	/**

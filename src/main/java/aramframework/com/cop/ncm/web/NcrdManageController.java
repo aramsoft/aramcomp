@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.ncm.domain.NameCardUseVO;
 import aramframework.com.cop.ncm.domain.NameCardVO;
 import aramframework.com.cop.ncm.service.NcrdManageService;
@@ -121,7 +120,8 @@ public class NcrdManageController {
 		ncrdService.insertNcrdItem(nameCardVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, nameCardVO, "/cop/ncm/listNameCard.do");
+		model.addAttribute("redirectURL", "/cop/ncm/listNameCard.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -173,7 +173,8 @@ public class NcrdManageController {
 		ncrdService.updateNcrdItem(nameCardVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, nameCardVO, "/cop/ncm/listNameCard.do");
+		model.addAttribute("redirectURL", "/cop/ncm/listNameCard.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -193,7 +194,8 @@ public class NcrdManageController {
 		ncrdService.deleteNcrdItem(nameCardVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, nameCardVO, "/cop/ncm/listNameCard.do");
+		model.addAttribute("redirectURL", "/cop/ncm/listNameCard.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -244,7 +246,8 @@ public class NcrdManageController {
 		ncrdService.insertNcrdUseInf(nameCardUseVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, nameCardUseVO, "/cop/ncm/listNameCardPublic.do");
+		model.addAttribute("redirectURL", "/cop/ncm/listNameCardPublic.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -265,7 +268,8 @@ public class NcrdManageController {
 		ncrdService.updateNcrdUseInf(nameCardUseVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, nameCardUseVO, "/cop/ncm/listNameCardPublic.do");
+		model.addAttribute("redirectURL", "/cop/ncm/listNameCardPublic.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -285,7 +289,8 @@ public class NcrdManageController {
 		ncrdService.deleteNcrdUseInf(nameCardUseVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, nameCardUseVO, "/cop/ncm/listNameCard.do");
+		model.addAttribute("redirectURL", "/cop/ncm/listNameCard.do");
+	    return "cmm/redirect";
 	}
 	
 }

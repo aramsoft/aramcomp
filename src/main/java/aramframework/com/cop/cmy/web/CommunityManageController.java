@@ -219,7 +219,8 @@ public class CommunityManageController {
 		cmmntyService.insertCommunityInf(communityVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, communityVO, "/cop/cmy/listCommunity.do");
+		model.addAttribute("redirectURL", "/cop/cmy/listCommunity.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -292,7 +293,8 @@ public class CommunityManageController {
 		}
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, communityVO, "/cop/cmy/detailCommunity.do?cmmntyId="+communityVO.getCmmntyId());
+		model.addAttribute("redirectURL", "/cop/cmy/detailCommunity.do?cmmntyId="+communityVO.getCmmntyId());
+	    return "cmm/redirect";
 	}
 
 	/**

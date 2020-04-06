@@ -15,7 +15,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sec.rmt.domain.ResourceVO;
 import aramframework.com.sec.rmt.service.ResourceService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -103,7 +102,8 @@ public class ResourceController {
 		resourceService.insertResource(resourceVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, resourceVO, "/sec/rmt/listResource.do");
+		model.addAttribute("redirectURL", "/sec/rmt/listResource.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -146,7 +146,8 @@ public class ResourceController {
 		resourceService.updateResource(resourceVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, resourceVO, "/sec/rmt/listResource.do");
+		model.addAttribute("redirectURL", "/sec/rmt/listResource.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -157,13 +158,15 @@ public class ResourceController {
 	@RequestMapping(value = "/sec/rmt/deleteResource.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteResource(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ResourceVO resourceVO, 
 			ModelMap model) {
 
 		resourceService.deleteResource(resourceVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, resourceVO, "/sec/rmt/listResource.do");
+		model.addAttribute("redirectURL", "/sec/rmt/listResource.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -174,6 +177,7 @@ public class ResourceController {
 	@RequestMapping(value = "/sec/rmt/deleteListResource.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteListResources(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ResourceVO resourceVO, 
 			HttpServletRequest request, 
 			ModelMap model) {
@@ -185,7 +189,8 @@ public class ResourceController {
 		resourceService.deleteResources(resourceCodes);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, resourceVO, "/sec/rmt/listResource.do");
+		model.addAttribute("redirectURL", "/sec/rmt/listResource.do");
+	    return "cmm/redirect";
 	}
 
 }

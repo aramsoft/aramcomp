@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.sam.stp.domain.StplatManageVO;
 import aramframework.com.uss.sam.stp.service.StplatManageService;
@@ -118,7 +117,8 @@ public class StplatManageController {
 		stplatManageService.insertStplat(stplatManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, stplatManageVO, "/uss/sam/stp/listStplat.do");
+		model.addAttribute("redirectURL", "/uss/sam/stp/listStplat.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -164,7 +164,8 @@ public class StplatManageController {
 		stplatManageService.updateStplat(stplatManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, stplatManageVO, "/uss/sam/stp/listStplat.do");
+		model.addAttribute("redirectURL", "/uss/sam/stp/listStplat.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -175,13 +176,15 @@ public class StplatManageController {
 	@RequestMapping("/uss/sam/stp/deleteStplat.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteStplat(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute StplatManageVO stplatManageVO, 
 			ModelMap model) {
 
 		stplatManageService.deleteStplat(stplatManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, stplatManageVO, "/uss/sam/stp/listStplat.do");
+		model.addAttribute("redirectURL", "/uss/sam/stp/listStplat.do");
+	    return "cmm/redirect";
 	}
 
 }

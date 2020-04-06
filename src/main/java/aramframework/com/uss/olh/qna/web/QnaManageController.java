@@ -14,7 +14,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.olh.qna.domain.QnaManageVO;
 import aramframework.com.uss.olh.qna.service.QnaManageService;
@@ -173,7 +172,8 @@ public class QnaManageController {
 		qnaManageService.insertQnaCn(qnaManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, qnaManageVO, "/uss/olh/qna/listQna.do");
+		model.addAttribute("redirectURL", "/uss/olh/qna/listQna.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -281,7 +281,8 @@ public class QnaManageController {
 		qnaManageService.updateQnaCn(qnaManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, qnaManageVO, "/uss/olh/qna/listQna.do");
+		model.addAttribute("redirectURL", "/uss/olh/qna/listQna.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -291,6 +292,7 @@ public class QnaManageController {
 	 */
 	@RequestMapping("/uss/olh/qna/QnaPasswordConfirmDel.do")
 	public String QnaPasswordConfirmDel(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QnaManageVO qnaManageVO, 
 			ModelMap model) 
 	throws Exception {
@@ -326,13 +328,15 @@ public class QnaManageController {
 	 */
 	@RequestMapping("/uss/olh/qna/deleteQna.do")
 	public String deleteQna(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QnaManageVO qnaManageVO, 
 			ModelMap model) {
 
 		qnaManageService.deleteQnaCn(qnaManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, qnaManageVO, "/uss/olh/qna/listQna.do");
+		model.addAttribute("redirectURL", "/uss/olh/qna/listQna.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -415,7 +419,8 @@ public class QnaManageController {
 		qnaManageService.updateQnaCnAnswer(qnaManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, qnaManageVO, "/uss/olh/qnm/listQnaAnswer.do");
+		model.addAttribute("redirectURL", "/uss/olh/qnm/listQnaAnswer.do");
+	    return "cmm/redirect";
 	}
 
 }

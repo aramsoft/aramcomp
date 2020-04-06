@@ -158,7 +158,8 @@ public class CmyBBSMasterController {
 		bbsMasterService.insertBBSMastetInf(boardMasterVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, boardMasterVO, "/cop/com/listBdMstrByTrget.do");
+		model.addAttribute("redirectURL", "/cop/com/listBdMstrByTrget.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -226,7 +227,8 @@ public class CmyBBSMasterController {
 		bbsMasterService.updateBBSMasterInf(boardMasterVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, boardMasterVO, "/cop/com/listBdMstrByTrget.do");
+		model.addAttribute("redirectURL", "/cop/com/listBdMstrByTrget.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -245,7 +247,8 @@ public class CmyBBSMasterController {
 		bbsMasterService.deleteBBSMasterInf(boardMasterVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, boardMasterVO, "/cop/com/listBdMstrByTrget.do");
+		model.addAttribute("redirectURL", "/cop/com/listBdMstrByTrget.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -266,7 +269,8 @@ public class CmyBBSMasterController {
 		bbsUseInfoService.updateBBSUseInf(boardUseInfVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, boardMasterVO, "/cop/com/listBdMstrByTrget.do");
+		model.addAttribute("redirectURL", "/cop/com/listBdMstrByTrget.do");
+	    return "cmm/redirect";
 	}
 
 }

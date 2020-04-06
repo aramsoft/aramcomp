@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.sms.domain.SmsVO;
 import aramframework.com.cop.sms.service.SmsInfoService;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -126,7 +125,8 @@ public class SmsInfoController {
 		smsInfoService.insertSmsInf(smsVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, smsVO, "/cop/sms/listSms.do");
+		model.addAttribute("redirectURL", "/cop/sms/listSms.do");
+	    return "cmm/redirect";
 	}
 
 }

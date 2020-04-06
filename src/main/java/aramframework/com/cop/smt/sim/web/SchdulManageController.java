@@ -17,6 +17,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.cmm.domain.ComCodeVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.ComponentChecker;
@@ -400,6 +401,7 @@ public class SchdulManageController {
 	 */
 	@RequestMapping(value = "/cop/smt/sim/detailSchdul.do")
 	public String detailSchdul(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SchdulManageVO schdulManageVO, 
 			ModelMap model) {
 
@@ -438,6 +440,7 @@ public class SchdulManageController {
 	@RequestMapping(value = "/cop/smt/sim/registSchdul.do")
 	@Secured("ROLE_USER")
 	public String registSchdul(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SchdulManageVO schdulManageVO, 
 			ModelMap model) {
 
@@ -458,6 +461,7 @@ public class SchdulManageController {
 	@RequestMapping(value = "/cop/smt/sim/insertSchdul.do")
 	@Secured("ROLE_USER")
 	public String insertSchdul(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SchdulManageVO schdulManageVO, 
 			BindingResult bindingResult, 
 			MultipartHttpServletRequest multiRequest, 
@@ -480,7 +484,8 @@ public class SchdulManageController {
 		schdulManageService.insertSchdulManage(schdulManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, schdulManageVO, "/cop/smt/sim/listSchdul.do");
+		model.addAttribute("redirectURL", "/cop/smt/sim/listSchdul.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -491,6 +496,7 @@ public class SchdulManageController {
 	@RequestMapping(value = "/cop/smt/sim/editSchdul.do")
 	@Secured("ROLE_USER")
 	public String editSchdul(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SchdulManageVO schdulManageVO, 
 			ModelMap model) {
 
@@ -532,6 +538,7 @@ public class SchdulManageController {
 	@RequestMapping(value = "/cop/smt/sim/updateSchdul.do")
 	@Secured("ROLE_USER")
 	public String updateSchdul(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SchdulManageVO schdulManageVO, 
 			BindingResult bindingResult, 
 			MultipartHttpServletRequest multiRequest, 
@@ -567,7 +574,8 @@ public class SchdulManageController {
 		schdulManageService.updateSchdulManage(schdulManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, schdulManageVO, "/cop/smt/sim/listSchdul.do");
+		model.addAttribute("redirectURL", "/cop/smt/sim/listSchdul.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -578,13 +586,15 @@ public class SchdulManageController {
 	@RequestMapping(value = "/cop/smt/sim/deleteSchdul.do")
 	@Secured("ROLE_USER")
 	public String deleteSchdul(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SchdulManageVO schdulManageVO, 
 			ModelMap model) {
 
 		schdulManageService.deleteSchdulManage(schdulManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, schdulManageVO, "/cop/smt/sim/listSchdul.do");
+		model.addAttribute("redirectURL", "/cop/smt/sim/listSchdul.do");
+	    return "cmm/redirect";
 	}
 
 }

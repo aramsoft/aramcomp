@@ -15,7 +15,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.smt.dsm.domain.DiaryManageVO;
 import aramframework.com.cop.smt.dsm.service.DiaryManageService;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -130,7 +129,8 @@ public class DiaryManageController {
 		diaryManageService.insertDiaryManage(diaryManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, diaryManageVO, "/cop/smt/dsm/listDiary.do");
+		model.addAttribute("redirectURL", "/cop/smt/dsm/listDiary.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -183,7 +183,8 @@ public class DiaryManageController {
 		diaryManageService.updateDiaryManage(diaryManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, diaryManageVO, "/cop/smt/dsm/listDiary.do");
+		model.addAttribute("redirectURL", "/cop/smt/dsm/listDiary.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -194,13 +195,15 @@ public class DiaryManageController {
 	@RequestMapping(value = "/cop/smt/dsm/deleteDiary.do")
 	@Secured("ROLE_USER")
 	public String deleteDiary(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DiaryManageVO diaryManageVO, 
 			ModelMap model) {
 
 		diaryManageService.deleteDiaryManage(diaryManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, diaryManageVO, "/cop/smt/dsm/listDiary.do");
+		model.addAttribute("redirectURL", "/cop/smt/dsm/listDiary.do");
+	    return "cmm/redirect";
 	}
 
 }

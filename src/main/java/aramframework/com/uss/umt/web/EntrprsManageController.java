@@ -19,7 +19,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sec.grp.domain.GroupAuthorVO;
 import aramframework.com.sec.grp.service.GroupAuthorService;
 import aramframework.com.uss.umt.domain.EntrprsManageVO;
@@ -207,7 +206,8 @@ public class EntrprsManageController {
 		model.addAttribute("resultMsg", "success.common.insert");
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, entrprsManageVO, "/uss/umt/listEntrprsMber.do");
+		model.addAttribute("redirectURL", "/uss/umt/listEntrprsMber.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -254,7 +254,8 @@ public class EntrprsManageController {
 		entrprsManageService.updateEntrprsMber(entrprsManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, entrprsManageVO, "/uss/umt/editEntrprsMber.do?userId="+entrprsManageVO.getEntrprsmberId());
+		model.addAttribute("redirectURL", "/uss/umt/editEntrprsMber.do?userId="+entrprsManageVO.getEntrprsmberId());
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -319,7 +320,8 @@ public class EntrprsManageController {
 		} 
 		
 		model.addAttribute("message", MessageHelper.getMessage(message));
-	    return WebUtil.redirectJsp(model, entrprsManageVO, "/uss/umt/editEntrprsMber.do?userId="+entrprsManageVO.getEntrprsmberId());
+		model.addAttribute("redirectURL", "/uss/umt/editEntrprsMber.do?userId="+entrprsManageVO.getEntrprsmberId());
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -331,13 +333,15 @@ public class EntrprsManageController {
 	@RequestMapping("/uss/umt/deleteEntrprsMber.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteEntrprsMber( 
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute EntrprsManageVO entrprsManageVO, 
 			ModelMap model) {
 
 		entrprsManageService.deleteEntrprsMber(entrprsManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, entrprsManageVO, "/uss/umt/listEntrprsMber.do");
+		model.addAttribute("redirectURL", "/uss/umt/listEntrprsMber.do");
+	    return "cmm/redirect";
 	}
 
 	/**

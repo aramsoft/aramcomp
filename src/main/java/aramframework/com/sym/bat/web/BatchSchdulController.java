@@ -17,7 +17,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.bat.domain.BatchSchdulVO;
 import aramframework.com.sym.bat.schedule.BatchScheduler;
 import aramframework.com.sym.bat.service.BatchSchdulService;
@@ -137,7 +136,8 @@ public class BatchSchdulController {
 		batchScheduler.insertBatchSchdul(batchSchdulVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, batchSchdulVO, "/sym/bat/listBatchSchdul.do");
+		model.addAttribute("redirectURL", "/sym/bat/listBatchSchdul.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -190,7 +190,8 @@ public class BatchSchdulController {
 		batchScheduler.updateBatchSchdul(batchSchdulVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, batchSchdulVO, "/sym/bat/listBatchSchdul.do");
+		model.addAttribute("redirectURL", "/sym/bat/listBatchSchdul.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -201,6 +202,7 @@ public class BatchSchdulController {
 	@RequestMapping("/sym/bat/deleteBatchSchdul.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteBatchSchdul(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BatchSchdulVO batchSchdulVO, 
 			ModelMap model) 
 	throws Exception {
@@ -211,7 +213,8 @@ public class BatchSchdulController {
 		batchSchdulService.deleteBatchSchdul(batchSchdulVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, batchSchdulVO, "/sym/bat/listBatchSchdul.do");
+		model.addAttribute("redirectURL", "/sym/bat/listBatchSchdul.do");
+	    return "cmm/redirect";
 	}
 
 	/**

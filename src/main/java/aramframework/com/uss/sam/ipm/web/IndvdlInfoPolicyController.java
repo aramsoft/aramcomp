@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.sam.ipm.domain.IndvdlInfoPolicyVO;
 import aramframework.com.uss.sam.ipm.service.IndvdlInfoPolicyService;
@@ -119,7 +118,8 @@ public class IndvdlInfoPolicyController {
 		indvdlInfoPolicyService.insertIndvdlInfoPolicy(indvdlInfoPolicyVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, indvdlInfoPolicyVO, "/uss/sam/ipm/listIndvdlInfoPolicy.do");
+		model.addAttribute("redirectURL", "/uss/sam/ipm/listIndvdlInfoPolicy.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -165,7 +165,8 @@ public class IndvdlInfoPolicyController {
 		indvdlInfoPolicyService.updateIndvdlInfoPolicy(indvdlInfoPolicyVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, indvdlInfoPolicyVO, "/uss/sam/ipm/listIndvdlInfoPolicy.do");
+		model.addAttribute("redirectURL", "/uss/sam/ipm/listIndvdlInfoPolicy.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -176,13 +177,15 @@ public class IndvdlInfoPolicyController {
 	@RequestMapping(value = "/uss/sam/ipm/deleteIndvdlInfoPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteIndvdlInfoPolicy(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IndvdlInfoPolicyVO indvdlInfoPolicyVO, 
 			ModelMap model) {
 
 		indvdlInfoPolicyService.deleteIndvdlInfoPolicy(indvdlInfoPolicyVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, indvdlInfoPolicyVO, "/uss/sam/ipm/listIndvdlInfoPolicy.do");
+		model.addAttribute("redirectURL", "/uss/sam/ipm/listIndvdlInfoPolicy.do");
+	    return "cmm/redirect";
 	}
 
 }

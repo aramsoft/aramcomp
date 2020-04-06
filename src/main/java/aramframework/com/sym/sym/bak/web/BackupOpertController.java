@@ -17,7 +17,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.sym.bak.domain.BackupOpertVO;
 import aramframework.com.sym.sym.bak.schedule.BackupScheduler;
 import aramframework.com.sym.sym.bak.service.BackupOpertService;
@@ -146,7 +145,8 @@ public class BackupOpertController {
 
 		// Exception 없이 진행시 등록성공메시지
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, backupOpertVO, "/sym/sym/bak/listBackupOpert.do");
+		model.addAttribute("redirectURL", "/sym/sym/bak/listBackupOpert.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -200,7 +200,8 @@ public class BackupOpertController {
 		backupScheduler.updateBackupOpert(backupOpertVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, backupOpertVO, "/sym/sym/bak/listBackupOpert.do");
+		model.addAttribute("redirectURL", "/sym/sym/bak/listBackupOpert.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -211,6 +212,7 @@ public class BackupOpertController {
 	@RequestMapping("/sym/sym/bak/deleteBackupOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteBackupOpert(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BackupOpertVO backupOpertVO, 
 			ModelMap model) {
 
@@ -219,7 +221,8 @@ public class BackupOpertController {
 		backupOpertService.deleteBackupOpert(backupOpertVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, backupOpertVO, "/sym/sym/bak/listBackupOpert.do");
+		model.addAttribute("redirectURL", "/sym/sym/bak/listBackupOpert.do");
+	    return "cmm/redirect";
 	}
 
 	/**

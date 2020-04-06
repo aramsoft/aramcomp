@@ -16,7 +16,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.tpl.domain.TemplateInfVO;
 import aramframework.com.cop.tpl.service.TemplateService;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -109,7 +108,8 @@ public class TemplateController {
 		tmplatService.insertTemplateInf(templateInfVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, templateInfVO, "/cop/tpl/listTemplate.do");
+		model.addAttribute("redirectURL", "/cop/tpl/listTemplate.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -156,7 +156,8 @@ public class TemplateController {
 		tmplatService.updateTemplateInf(templateInfVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, templateInfVO, "/cop/tpl/listTemplate.do");
+		model.addAttribute("redirectURL", "/cop/tpl/listTemplate.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -167,6 +168,7 @@ public class TemplateController {
 	@RequestMapping("/cop/tpl/deleteTemplate.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteTemplate(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute TemplateInfVO templateInfVO, 
 			ModelMap model) {
 
@@ -176,7 +178,8 @@ public class TemplateController {
 		tmplatService.deleteTemplateInf(templateInfVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, templateInfVO, "/cop/tpl/listTemplate.do");
+		model.addAttribute("redirectURL", "/cop/tpl/listTemplate.do");
+	    return "cmm/redirect";
 	}
 
 	/**

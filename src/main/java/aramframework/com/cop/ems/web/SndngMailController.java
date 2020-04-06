@@ -86,6 +86,7 @@ public class SndngMailController {
 	@RequestMapping(value = "/cop/ems/deleteSndngMailList.do")
 	@Secured("ROLE_USER")
 	public String deleteSndngMailList(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SndngMailVO sndngMailVO, 
 			HttpServletRequest request, 
 			ModelMap model) {
@@ -97,7 +98,8 @@ public class SndngMailController {
 		sndngMailService.deleteSndngMails(mssageIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, sndngMailVO, "/cop/ems/listSndngMail.do");
+		model.addAttribute("redirectURL", "/cop/ems/listSndngMail.do");
+	    return "cmm/redirect";
 	}
 	
 	/**
@@ -127,6 +129,7 @@ public class SndngMailController {
 	@RequestMapping(value = "/cop/ems/detailSndngMailXml.do")
 	@Secured("ROLE_USER")
 	public void detailSndngMailXml(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SndngMailVO sndngMailVO, 
 			HttpServletResponse response) 
 	throws Exception {
@@ -223,7 +226,8 @@ public class SndngMailController {
     	
 		if (link.equals("N")) {
 			model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		    return WebUtil.redirectJsp(model, sndngMailVO, "/cop/ems/listSndngMail.do");
+			model.addAttribute("redirectURL", "/cop/ems/listSndngMail.do");
+		    return "cmm/redirect";
 		} else {
 			model.addAttribute("closeYn", "Y");
 			return "cop/ems/MailRegist";
@@ -238,13 +242,15 @@ public class SndngMailController {
 	@RequestMapping(value = "/cop/ems/deleteSndngMail.do")
 	@Secured("ROLE_USER")
 	public String deleteSndngMail(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SndngMailVO sndngMailVO, 
 			ModelMap model) {
 
 		sndngMailService.deleteSndngMail(sndngMailVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, sndngMailVO, "/cop/ems/listSndngMail.do");
+		model.addAttribute("redirectURL", "/cop/ems/listSndngMail.do");
+	    return "cmm/redirect";
 	}
 
 }

@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.bbs.domain.BoardVO;
 import aramframework.com.cop.bbs.service.BBSBoardService;
 import aramframework.com.cop.bbs.service.BBSMasterService;
@@ -164,7 +163,8 @@ public class BBSScrapController {
 		bbsScrapService.insertScrap(scrapVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, scrapVO, "/cop/scp/listScrap.do");
+		model.addAttribute("redirectURL", "/cop/scp/listScrap.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -219,7 +219,8 @@ public class BBSScrapController {
 		bbsScrapService.updateScrap(scrapVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, scrapVO, "/cop/scp/listScrap.do");
+		model.addAttribute("redirectURL", "/cop/scp/listScrap.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -230,13 +231,15 @@ public class BBSScrapController {
 	@RequestMapping("/cop/scp/deleteScrap.do")
 	@Secured("ROLE_USER")
 	public String deleteScrap(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ScrapVO scrapVO, 
 			ModelMap model) {
 		
 		bbsScrapService.deleteScrap(scrapVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, scrapVO, "/cop/scp/listScrap.do");
+		model.addAttribute("redirectURL", "/cop/scp/listScrap.do");
+	    return "cmm/redirect";
 	}
 
 	/**

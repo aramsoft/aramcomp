@@ -18,7 +18,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.ccm.zip.domain.ZipVO;
 import aramframework.com.sym.ccm.zip.service.ZipManageService;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -122,7 +121,8 @@ public class ZipManageController {
 		zipManageService.insertZip(zipVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, zipVO, "/sym/ccm/zip/listZip.do");
+		model.addAttribute("redirectURL", "/sym/ccm/zip/listZip.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -177,8 +177,9 @@ public class ZipManageController {
 		}
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, zipVO, "/sym/ccm/zip/listZip.do");
-	}
+		model.addAttribute("redirectURL", "/sym/ccm/zip/listZip.do");
+	    return "cmm/redirect";
+ 	}
 
 	/**
 	 * 우편번호를 수정 전처리 화면으로 이동한다
@@ -221,7 +222,8 @@ public class ZipManageController {
 		zipManageService.updateZip(zipVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, zipVO, "/sym/ccm/zip/listZip.do");
+		model.addAttribute("redirectURL", "/sym/ccm/zip/listZip.do");
+	    return "cmm/redirect";
 	}
 	
 	/**
@@ -232,13 +234,15 @@ public class ZipManageController {
 	@RequestMapping(value = "/sym/ccm/zip/deleteZip.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteZip(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ZipVO zipVO, 
 			ModelMap model) {
 
 		zipManageService.deleteZip(zipVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, zipVO, "/sym/ccm/zip/listZip.do");
+		model.addAttribute("redirectURL", "/sym/ccm/zip/listZip.do");
+	    return "cmm/redirect";
 	}
 
 	/**

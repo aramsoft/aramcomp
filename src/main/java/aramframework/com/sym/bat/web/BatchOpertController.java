@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.bat.domain.BatchOpertVO;
 import aramframework.com.sym.bat.service.BatchOpertService;
 import aramframework.com.sym.bat.validation.BatchOpertValidator;
@@ -152,7 +151,8 @@ public class BatchOpertController {
 		batchOpertService.insertBatchOpert(batchOpertVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, batchOpertVO, "/sym/bat/listBatchOpert.do");
+		model.addAttribute("redirectURL", "/sym/bat/listBatchOpert.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -200,7 +200,8 @@ public class BatchOpertController {
 		batchOpertService.updateBatchOpert(batchOpertVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, batchOpertVO, "/sym/bat/listBatchOpert.do");
+		model.addAttribute("redirectURL", "/sym/bat/listBatchOpert.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -211,13 +212,15 @@ public class BatchOpertController {
 	@RequestMapping("/sym/bat/deleteBatchOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteBatchOpert(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BatchOpertVO batchOpertVO, 
 			ModelMap model) {
 
 		batchOpertService.deleteBatchOpert(batchOpertVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, batchOpertVO, "/sym/bat/listBatchOpert.do");
+		model.addAttribute("redirectURL", "/sym/bat/listBatchOpert.do");
+	    return "cmm/redirect";
 	}
 
 }

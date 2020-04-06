@@ -166,7 +166,7 @@ public class BBSBoardController {
 		// 방명록이면 방명록 URL로 redirect
 		// -------------------------------
 		if (boardVO.getBoardMasterVO().getBbsTyCode().equals(BBSBoardService.BBS_TYPE_VISIT)) {
-			return WebUtil.redirectJsp(model, boardVO, "/cop/bbs/selectGuestList.do?bbsId="+boardVO.getBbsId());
+			return "redirect:/cop/bbs/selectGuestList.do?bbsId="+boardVO.getBbsId();
 		}
 
 		// -------------------------------
@@ -287,6 +287,7 @@ public class BBSBoardController {
 	 */
 	@RequestMapping(value="/board/{bbsPathId}/view/{nttId}", method=RequestMethod.GET)
 	public String viewlBoardArticle(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
 			@PathVariable String bbsPathId, 
 			@PathVariable int nttId,			
@@ -423,7 +424,8 @@ public class BBSBoardController {
 		boardService.insertBoardArticle(boardVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, boardVO, "/board/"+boardVO.getPathId()+ "/list");
+		model.addAttribute("redirectURL", "/board/"+boardVO.getPathId()+ "/list");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -523,7 +525,8 @@ public class BBSBoardController {
 		boardService.insertBoardArticle(boardVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, boardVO,"/board/"+boardVO.getPathId()+ "/list");
+		model.addAttribute("redirectURL", "/board/"+boardVO.getPathId()+ "/list");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -583,6 +586,7 @@ public class BBSBoardController {
 	 */
 	@RequestMapping(value="/cop/bbs/updateBoardArticle.do")
 	public String updateBoardArticle(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO,
 			BindingResult bindingResult, 
 			MultipartHttpServletRequest multiRequest, 
@@ -631,7 +635,8 @@ public class BBSBoardController {
 		boardService.updateBoardArticle(boardVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model,  boardVO, "/board/"+boardVO.getPathId()+ "/list");
+		model.addAttribute("redirectURL", "/board/"+boardVO.getPathId()+ "/list");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -641,6 +646,7 @@ public class BBSBoardController {
 	 */
 	@RequestMapping(value="/cop/bbs/deleteBoardArticle.do")
 	public String deleteBoardArticle(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
 			ModelMap model) 
 	throws Exception {
@@ -680,7 +686,8 @@ public class BBSBoardController {
 		boardService.deleteBoardArticle(boardVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, boardVO, "/board/"+boardVO.getPathId()+ "/list");
+		model.addAttribute("redirectURL", "/board/"+boardVO.getPathId()+ "/list");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -691,6 +698,7 @@ public class BBSBoardController {
 	@RequestMapping("/cop/bbs/eraseBoardArticle.do")
 	@Secured("ROLE_ADMIN")
 	public String eraseBoardArticle(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
 			ModelMap model) {
 
@@ -699,7 +707,8 @@ public class BBSBoardController {
 		boardService.eraseBoardArticle(boardVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, boardVO, "/board/"+boardVO.getPathId()+ "/list");
+		model.addAttribute("redirectURL", "/board/"+boardVO.getPathId()+ "/list");
+	    return "cmm/redirect";
 	}
 
 	/**

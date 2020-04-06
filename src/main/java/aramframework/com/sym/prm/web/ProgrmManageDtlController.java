@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.ems.domain.SndngMailVO;
 import aramframework.com.cop.ems.service.SndngMailService;
 import aramframework.com.sym.prm.domain.ProgrmManageDtlVO;
@@ -108,7 +107,8 @@ public class ProgrmManageDtlController {
 		progrmManageDtlService.insertProgrmChangeRequst(progrmManageDtlVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, progrmManageDtlVO, "/sym/prm/listProgramChangeRequst.do");
+		model.addAttribute("redirectURL", "/sym/prm/listProgramChangeRequst.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -157,7 +157,8 @@ public class ProgrmManageDtlController {
 		progrmManageDtlService.updateProgrmChangeRequst(progrmManageDtlVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, progrmManageDtlVO, "/sym/prm/listProgramChangeRequst.do");
+		model.addAttribute("redirectURL", "/sym/prm/listProgramChangeRequst.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -168,6 +169,7 @@ public class ProgrmManageDtlController {
 	@RequestMapping(value = "/sym/prm/deleteProgramChangeRequst.do")
 	@Secured("ROLE_USER")
 	public String deleteProgrmChangeRequst(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO, 
 			ModelMap model) {
 
@@ -175,7 +177,8 @@ public class ProgrmManageDtlController {
 		progrmManageDtlService.deleteProgrmChangeRequst(progrmManageDtlVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, progrmManageDtlVO, "/sym/prm/listProgramChangeRequst.do");
+		model.addAttribute("redirectURL", "/sym/prm/listProgramChangeRequst.do");
+	    return "cmm/redirect";
 	}
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -276,7 +279,8 @@ public class ProgrmManageDtlController {
 		}
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, progrmManageDtlVO, "/sym/prm/listProgramChangeProcess.do");
+		model.addAttribute("redirectURL", "/sym/prm/listProgramChangeProcess.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -288,13 +292,15 @@ public class ProgrmManageDtlController {
 	@RequestMapping(value = "/sym/prm/deleteProgramChangeProcess.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteProgramChangeProcess(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO, 
 			ModelMap model) {
 
 		progrmManageDtlService.deleteProgrmChangeRequst(progrmManageDtlVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, progrmManageDtlVO, "/sym/prm/listProgramChangeProcess.do");
+		model.addAttribute("redirectURL", "/sym/prm/listProgramChangeProcess.do");
+	    return "cmm/redirect";
 	}
 
 	/**

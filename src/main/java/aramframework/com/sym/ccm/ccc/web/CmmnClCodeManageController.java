@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.ccm.ccc.domain.CmmnClCodeVO;
 import aramframework.com.sym.ccm.ccc.service.CmmnClCodeManageService;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -122,7 +121,8 @@ public class CmmnClCodeManageController {
 		cmmnClCodeManageService.insertCmmnClCode(cmmnClCodeVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, cmmnClCodeVO, "/sym/ccm/ccc/listCmmnClCode.do");
+		model.addAttribute("redirectURL", "/sym/ccm/ccc/listCmmnClCode.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -166,8 +166,9 @@ public class CmmnClCodeManageController {
 		cmmnClCodeManageService.updateCmmnClCode(cmmnClCodeVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, cmmnClCodeVO, "/sym/ccm/ccc/listCmmnClCode.do");
-	}
+		model.addAttribute("redirectURL", "/sym/ccm/ccc/listCmmnClCode.do");
+	    return "cmm/redirect";
+ 	}
 
 	/**
 	 * 공통분류코드를 삭제한다.
@@ -177,13 +178,15 @@ public class CmmnClCodeManageController {
 	@RequestMapping(value = "/sym/ccm/ccc/deleteCmmnClCode.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteCmmnClCode(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CmmnClCodeVO cmmnClCodeVO,
 			ModelMap model) {
 		
 		cmmnClCodeManageService.deleteCmmnClCode(cmmnClCodeVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, cmmnClCodeVO, "/sym/ccm/ccc/listCmmnClCode.do");
+		model.addAttribute("redirectURL", "/sym/ccm/ccc/listCmmnClCode.do");
+	    return "cmm/redirect";
 	}
 
 }

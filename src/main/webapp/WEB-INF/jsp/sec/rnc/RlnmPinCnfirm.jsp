@@ -105,16 +105,18 @@ function fnNextMove(){
 </div>
 
 <div id="search_area">
-	<div class="button_area">
-		<span class="button"><input type="submit" value="<spring:message code="button.realname" />" title="<spring:message code="button.realname" />" onclick="javascript:fnGpinCnfirm(); return false;"></span>
-		<span class="button"><input type="submit" value="<spring:message code="button.moveToIhidnum" />" title="<spring:message code="button.moveToIhidnum" />" onclick="javascript:fnIhidnumMove(); return false;"></span>
-		<span class="button"><a href="http://www.g-pin.go.kr/jsp/members/find_id.jsp" target="_blank"  title="새 창으로 이동">아이디찾기</a></span>
-		<span class="button"><a href="http://www.g-pin.go.kr/jsp/members/find_pw.jsp" target="_blank"  title="새 창으로 이동">비밀번호 찾기</a></span>
-		<span class="button"><a href="http://www.g-pin.go.kr/" target="_blank"  title="새 창으로 이동">공공IPIN센터</a></span>
-		<span class="button"><input type="submit" value="<spring:message code="${nextUrlName}" />" title="<spring:message code="${nextUrlName}" />" onclick="javascript:fnNextMov(); return false;"></span>
+	<div class="search_right">
+		<span class="button_area">
+			<span class="button"><input type="submit" value="<spring:message code="button.realname" />" title="<spring:message code="button.realname" />" onclick="javascript:fnGpinCnfirm(); return false;"></span>
+			<span class="button"><input type="submit" value="<spring:message code="button.moveToIhidnum" />" title="<spring:message code="button.moveToIhidnum" />" onclick="javascript:fnIhidnumMove(); return false;"></span>
+			<span class="button"><a href="http://www.g-pin.go.kr/jsp/members/find_id.jsp" target="_blank"  title="새 창으로 이동">아이디찾기</a></span>
+			<span class="button"><a href="http://www.g-pin.go.kr/jsp/members/find_pw.jsp" target="_blank"  title="새 창으로 이동">비밀번호 찾기</a></span>
+			<span class="button"><a href="http://www.g-pin.go.kr/" target="_blank"  title="새 창으로 이동">공공IPIN센터</a></span>
+			<span class="button"><input type="submit" value="<spring:message code="${nextUrlName}" />" title="<spring:message code="${nextUrlName}" />" onclick="javascript:fnNextMov(); return false;"></span>
+		</span>
 	</div>
 </div>
- 
+
 <!-- content start -->
 <form name="cnfirmForm" method="post" action="${pageContext.request.contextPath}/sec/rnc/confirmRlnm.do">
 	<input type="hidden" name="sbscrbTy" value="${sbscrbTy}">

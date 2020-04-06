@@ -40,9 +40,11 @@
 </div>
 
 <div id="search_area">
-	<div class="button_area">
-		<span class="button"><a href="#" onclick="javascript:deleteMenuList(); return false;">일괄삭제</a></span>
-		<span class="button"><a href="#" onclick="javascript:insertMenuManage(); return false;">일괄등록</a></span>
+	<div class="search_right">
+		<span class="button_area">
+			<span class="button"><a href="#" onclick="javascript:deleteMenuList(); return false;">일괄삭제</a></span>
+			<span class="button"><a href="#" onclick="javascript:insertMenuManage(); return false;">일괄등록</a></span>
+		</span>
 	</div>
 </div>
 

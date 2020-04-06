@@ -44,26 +44,30 @@
 <form:form modelAttribute="zipVO"  action="" method="post">
 
 <div id="search_area">
-	<div class="button_area">
-       	<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+	<div class="search_left">
 	</div>
-	<div class="keyword_area">
-		<form:select path="searchCondition" title="searchCondition">
-			<form:option value="" label="--선택하세요--" />
-	   		<form:option value='EMD_NM' label="읍면동명" />
-	   		<form:option value='ZIP' label="우편번호" />
-	   		<form:option value='CTPRVN_NM' label="시도명" />
-	   		<form:option value='SIGNGU_NM' label="시군구명" />
-	   		<form:option value='LI_BULD_NM' label="리건물명" />
-		</form:select>
-   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
-	   		<form:option value="10" label="10" />
-	   		<form:option value="20" label="20" />
-	   		<form:option value="30" label="30" />
-	   		<form:option value="50" label="50" />
-		</form:select>
-	</div>
+	<div class="search_right">
+		<span class="keyword_area">
+			<form:select path="searchCondition" title="searchCondition">
+				<form:option value="" label="--선택하세요--" />
+		   		<form:option value='EMD_NM' label="읍면동명" />
+		   		<form:option value='ZIP' label="우편번호" />
+		   		<form:option value='CTPRVN_NM' label="시도명" />
+		   		<form:option value='SIGNGU_NM' label="시군구명" />
+		   		<form:option value='LI_BULD_NM' label="리건물명" />
+			</form:select>
+	   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+			<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
+		   		<form:option value="10" label="10" />
+		   		<form:option value="20" label="20" />
+		   		<form:option value="30" label="30" />
+		   		<form:option value="50" label="50" />
+			</form:select>
+		</span>
+		<span class="button_area">
+	       	<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+		</span>
+	</div>	
 </div>
 
 <form:hidden path="pageIndex" />

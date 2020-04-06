@@ -40,31 +40,35 @@
 <input type="hidden" name="returnUrl" />
 
 <div id="search_area">
-	<div class="button_area">
-		<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.search" /></a></span>
- 		<span class="button"><a href="#" onclick="javascript:fn_aram_deleteList(); return false;"><spring:message code="button.delete" /></a></span>
-  		<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;"><spring:message code="button.create" /></a></span>
+	<div class="search_left">
 	</div>
-	<div class="keyword_area">
-       	<form:select path="sbscrbSttus" title="검색조건선택1">
-           	<form:option value="0" label="상태(전체)" />
-           	<form:option value="A" label="가입신청" />
-           	<form:option value="D" label="삭제" />
-           	<form:option value="P" label="승인" />
-       	</form:select>
-       	<form:select path="searchCondition" title="검색조건선택2">
-			<form:option value="" label="--선택하세요--" />
-           	<form:option value="MBER_ID" label="ID" />
-           	<form:option value="MBER_NM" label="Name" />
-       	</form:select>
-   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
-	   		<form:option value="10" label="10" />
-	   		<form:option value="20" label="20" />
-	   		<form:option value="30" label="30" />
-	   		<form:option value="50" label="50" />
-		</form:select>
-	</div>
+	<div class="search_right">
+		<span class="keyword_area">
+	       	<form:select path="sbscrbSttus" title="검색조건선택1">
+	           	<form:option value="0" label="상태(전체)" />
+	           	<form:option value="A" label="가입신청" />
+	           	<form:option value="D" label="삭제" />
+	           	<form:option value="P" label="승인" />
+	       	</form:select>
+	       	<form:select path="searchCondition" title="검색조건선택2">
+				<form:option value="" label="--선택하세요--" />
+	           	<form:option value="MBER_ID" label="ID" />
+	           	<form:option value="MBER_NM" label="Name" />
+	       	</form:select>
+	   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+			<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
+		   		<form:option value="10" label="10" />
+		   		<form:option value="20" label="20" />
+		   		<form:option value="30" label="30" />
+		   		<form:option value="50" label="50" />
+			</form:select>
+		</span>
+		<span class="button_area">
+			<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.search" /></a></span>
+	 		<span class="button"><a href="#" onclick="javascript:fn_aram_deleteList(); return false;"><spring:message code="button.delete" /></a></span>
+	  		<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;"><spring:message code="button.create" /></a></span>
+		</span>
+	</div>	
 </div>
 <form:hidden path="pageIndex" />
  

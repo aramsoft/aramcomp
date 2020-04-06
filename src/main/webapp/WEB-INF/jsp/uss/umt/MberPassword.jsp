@@ -29,12 +29,14 @@
 </div>
 
 <div id="search_area">
-	<div class="button_area">
-		<span class="button"><a href="#" onclick="javascript:fn_aram_update(); return false;"><spring:message code="button.update" /></a></span>
-		<c:if test="${isAdmin=='true'}">
-			<span class="button"><a href="#" onclick="javascript:fn_aram_list(); return false;"><spring:message code="button.list" /></a></span>
-		</c:if>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_reset(); return false;"><spring:message code="button.reset" /></a></span>
+	<div class="search_right">
+		<span class="button_area">
+			<span class="button"><a href="#" onclick="javascript:fn_aram_update(); return false;"><spring:message code="button.update" /></a></span>
+			<c:if test="${isAdmin=='true'}">
+				<span class="button"><a href="#" onclick="javascript:fn_aram_list(); return false;"><spring:message code="button.list" /></a></span>
+			</c:if>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_reset(); return false;"><spring:message code="button.reset" /></a></span>
+		</span>
 	</div>
 </div>
 

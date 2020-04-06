@@ -171,13 +171,13 @@ caption { visibility:hidden; font-size:0; height:0; line-height:0; }
 .table-search td { padding-left:2; padding-right:2; vertical-align:middle; }
 .table-search td img { vertical-align:middle; }
 
-#search_area { width:100%;  }
-#search_area .sns_area { float:left; margin:8px 0px}
-#search_area .button_area { float:right; height:20px; margin:8px 0px;}
-#search_area .keyword_area { float:right; margin:8px 10px; }
-#search_area a img { vertical-align:middle; }
-#search_area .keyword_area1 { float:right; margin:8px 10px 4px 10px; }
-#search_area .keyword_area2 { float:right; margin:4px 10px 8px 10px; }
+#search_area { width:100%;  margin:8px 0px; height:20px; }
+#search_area .search_left { float:left;}
+#search_area .sns_area { margin:0px 8px}
+
+#search_area .search_right { float:right;}
+#search_area .keyword_area { margin:0px 8px; }
+#search_area .button_area { margin:0px 8px; }
 
 /* 투명 테이블 */
 .table-trans    { border:0px solid; border-collapse:collapse; }

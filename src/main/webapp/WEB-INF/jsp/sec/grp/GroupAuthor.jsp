@@ -39,28 +39,32 @@
 <input type="hidden" name="mberTyCodes"/>
 
 <div id="search_area">
-	<div class="button_area">
-		<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_insertList(); return false;"><spring:message code="button.create" /></a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_deleteList(); return false;"><spring:message code="button.delete" /></a></span>
+	<div class="search_left">
 	</div>
-	<div class="keyword_area">
- 		조회조건 : 
- 		<form:select path="searchCondition" class="select" onchange="onSearchCondition()" title="조회조건선택">
-			<form:option value="" label="--선택하세요--" />
-       		<form:option value="USER_ID" label="사용자 ID" />
-            <form:option value="USER_NM" label="사용자 명" />
-            <form:option value="GROUP_ID" label="그룹" />
-        </form:select>
-   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-        <span class="button"><a href="#" onclick="javascript:fn_aram_get_group(); return false;">그룹조회 팝업</a></span>
-		<form:select path="recordPerPage" class="select" onchange="fn_aram_search(); return false;" >
-	   		<form:option value="10" label="10" />
-	   		<form:option value="20" label="20" />
-	   		<form:option value="30" label="30" />
-	   		<form:option value="50" label="50" />
-		</form:select>
-	</div>
+	<div class="search_right">
+		<span class="keyword_area">
+	 		조회조건 : 
+	 		<form:select path="searchCondition" class="select" onchange="onSearchCondition()" title="조회조건선택">
+				<form:option value="" label="--선택하세요--" />
+	       		<form:option value="USER_ID" label="사용자 ID" />
+	            <form:option value="USER_NM" label="사용자 명" />
+	            <form:option value="GROUP_ID" label="그룹" />
+	        </form:select>
+	   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+	        <span class="button"><a href="#" onclick="javascript:fn_aram_get_group(); return false;">그룹조회 팝업</a></span>
+			<form:select path="recordPerPage" class="select" onchange="fn_aram_search(); return false;" >
+		   		<form:option value="10" label="10" />
+		   		<form:option value="20" label="20" />
+		   		<form:option value="30" label="30" />
+		   		<form:option value="50" label="50" />
+			</form:select>
+		</span>
+		<span class="button_area">
+			<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_insertList(); return false;"><spring:message code="button.create" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_deleteList(); return false;"><spring:message code="button.delete" /></a></span>
+		</span>
+	</div>	
 </div>
 
 <form:hidden path="pageIndex" />

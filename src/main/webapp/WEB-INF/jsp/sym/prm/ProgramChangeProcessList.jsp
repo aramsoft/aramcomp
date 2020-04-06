@@ -38,26 +38,30 @@
 <input type="hidden" name="rqestNo" value="0"/>
 
 <div id="search_area">
-	<div class="button_area">
-        <span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+	<div class="search_left">
 	</div>
-	<div class="keyword_area">
-        <label for="searchCondition">검색조건&nbsp;</label>
-       	<select name="searchCondition" onchange="javascript:fncSearchSpan(this.value);" title="검색조건">
-           	<option value="1">전체    </option>
-           	<option value="2">처리상태    </option>
-           	<option value="3">요청일자  </option>
-           	<option value="4">요청자  </option>
-       	</select>
-   		<span id="searchSpan">&nbsp;&nbsp;전체조회&nbsp;
-   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" /></span>
-		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
-	   		<form:option value="10" label="10" />
-	   		<form:option value="20" label="20" />
-	   		<form:option value="30" label="30" />
-	   		<form:option value="50" label="50" />
-		</form:select>
-	</div>
+	<div class="search_right">
+		<span class="keyword_area">
+	        <label for="searchCondition">검색조건&nbsp;</label>
+	       	<select name="searchCondition" onchange="javascript:fncSearchSpan(this.value);" title="검색조건">
+	           	<option value="1">전체    </option>
+	           	<option value="2">처리상태    </option>
+	           	<option value="3">요청일자  </option>
+	           	<option value="4">요청자  </option>
+	       	</select>
+	   		<span id="searchSpan">&nbsp;&nbsp;전체조회&nbsp;
+	   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" /></span>
+			<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
+		   		<form:option value="10" label="10" />
+		   		<form:option value="20" label="20" />
+		   		<form:option value="30" label="30" />
+		   		<form:option value="50" label="50" />
+			</form:select>
+		</span>
+		<span class="button_area">
+	        <span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+		</span>
+	</div>	
 </div>
 
 <form:hidden path="pageIndex" />

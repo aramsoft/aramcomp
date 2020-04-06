@@ -29,9 +29,11 @@
 </div>
 
 <div id="search_area">
-	<div class="button_area">
-		<span class="button"><a href="#" onclick="javascript:fn_aram_sbscrb(); return false;"><spring:message code="button.subscribe" /></a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_reset(); return false;"><spring:message code="button.reset" /></a></span>
+	<div class="search_right">
+		<span class="button_area">
+			<span class="button"><a href="#" onclick="javascript:fn_aram_sbscrb(); return false;"><spring:message code="button.subscribe" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_reset(); return false;"><spring:message code="button.reset" /></a></span>
+		</span>
 	</div>
 </div>
 

@@ -108,16 +108,18 @@
 <c:if test="${ anonymous == 'true' || not empty userId }">
 
 <div id="search_area">
-	<div class="button_area">
-		<c:choose>
-		<c:when test="${commentVO.commentNo == ''}">
-     		<span class="button"><a href="#" onclick="javascript:fn_aram_insert_comment(); return false;">댓글등록</a></span>
-		</c:when>
-		<c:otherwise>
-     		<span class="button"><a href="#" onclick="javascript:fn_aram_update_comment(); return false;">댓글수정</a></span>
-		</c:otherwise>
-		</c:choose>
-     	<span class="button"><a href="#" onclick="javascript:fn_aram_reset_comment(); return false;">댓글초기화</a></span>
+	<div class="search_right">
+		<span class="button_area">
+			<c:choose>
+			<c:when test="${commentVO.commentNo == ''}">
+	     		<span class="button"><a href="#" onclick="javascript:fn_aram_insert_comment(); return false;">댓글등록</a></span>
+			</c:when>
+			<c:otherwise>
+	     		<span class="button"><a href="#" onclick="javascript:fn_aram_update_comment(); return false;">댓글수정</a></span>
+			</c:otherwise>
+			</c:choose>
+	     	<span class="button"><a href="#" onclick="javascript:fn_aram_reset_comment(); return false;">댓글초기화</a></span>
+		</span>
 	</div>
 </div>
 

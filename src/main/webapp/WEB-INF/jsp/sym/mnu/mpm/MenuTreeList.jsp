@@ -47,11 +47,13 @@
 </div>
 
 <div id="search_area">
-	<div class="button_area">
-    	<span class="button"><a href="#" onclick="initlMenuList(); return false;">초기화</a></span>
-        <span class="button"><a href="#" onclick="insertMenuList(); return false;"><spring:message code="button.save" /></a></span>
-        <span class="button"><a href="#" onclick="updateMenuList(); return false;"><spring:message code="button.update" /></a></span>
-        <span class="button"><a href="#" onclick="deleteMenuList(); return false;"><spring:message code="button.delete" /></a></span>
+	<div class="search_right">
+		<span class="button_area">
+	    	<span class="button"><a href="#" onclick="initlMenuList(); return false;">초기화</a></span>
+	        <span class="button"><a href="#" onclick="insertMenuList(); return false;"><spring:message code="button.save" /></a></span>
+	        <span class="button"><a href="#" onclick="updateMenuList(); return false;"><spring:message code="button.update" /></a></span>
+	        <span class="button"><a href="#" onclick="deleteMenuList(); return false;"><spring:message code="button.delete" /></a></span>
+		</span>
 	</div>
 </div>
 

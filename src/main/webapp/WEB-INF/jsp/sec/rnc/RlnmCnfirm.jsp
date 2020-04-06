@@ -97,10 +97,12 @@ function fnNextMove(){
 </div>
 
 <div id="search_area">
-	<div class="button_area">
-		<span class="button"><a href="#" onclick="javascript:fnIhidnumCnfirm(); return false;"><spring:message code="button.realname" /></a></span>
-		<span class="button"><a href="#" onclick="javascript:fnGpinMove(); return false;"><spring:message code="button.moveToGpin" /></a></span>
-		<span class="button"><a href="#" onclick="javascript:fnNextMove(); return false;"><spring:message code="${nextUrlName}" /></a></span>
+	<div class="search_right">
+		<span class="button_area">
+			<span class="button"><a href="#" onclick="javascript:fnIhidnumCnfirm(); return false;"><spring:message code="button.realname" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fnGpinMove(); return false;"><spring:message code="button.moveToGpin" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fnNextMove(); return false;"><spring:message code="${nextUrlName}" /></a></span>
+		</span>
 	</div>
 </div>
 

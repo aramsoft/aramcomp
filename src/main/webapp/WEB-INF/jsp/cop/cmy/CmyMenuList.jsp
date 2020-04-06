@@ -35,24 +35,28 @@
 <input type="hidden" name="trgetId" value="${curTrgetId}">
 
 <div id="search_area">
-	<div class="button_area">
-    	<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
-   		<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;"><spring:message code="button.create" /></a></span>
-   		<span class="button"><a href="#" onclick="javascript:fn_aram_deleteList(); return false;"><spring:message code="button.delete" /></a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_excelDown(); return false;">다운로드</a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_excelUp(); return false;">업로드</a></span>
-   		<span class="button"><a href="#" onclick="javascript:fn_aram_clearCache(); return false;">캐쉬청소</a></span>
+	<div class="search_left">
 	</div>
-	<div class="keyword_area">
-   		<label for="searchKeyword">메뉴명</label>
-		<form:input path="searchKeyword" size="30" title="검색조건선택" onkeypress="javascript:press(event);"  />
-		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
-	   		<form:option value="10" label="10" />
-	   		<form:option value="20" label="20" />
-	   		<form:option value="30" label="30" />
-	   		<form:option value="50" label="50" />
-		</form:select>
-	</div>
+	<div class="search_right">
+		<span class="keyword_area">
+	   		<label for="searchKeyword">메뉴명</label>
+			<form:input path="searchKeyword" size="30" title="검색조건선택" onkeypress="javascript:press(event);"  />
+			<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
+		   		<form:option value="10" label="10" />
+		   		<form:option value="20" label="20" />
+		   		<form:option value="30" label="30" />
+		   		<form:option value="50" label="50" />
+			</form:select>
+		</span>
+		<span class="button_area">
+	    	<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+	   		<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;"><spring:message code="button.create" /></a></span>
+	   		<span class="button"><a href="#" onclick="javascript:fn_aram_deleteList(); return false;"><spring:message code="button.delete" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_excelDown(); return false;">다운로드</a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_excelUp(); return false;">업로드</a></span>
+	   		<span class="button"><a href="#" onclick="javascript:fn_aram_clearCache(); return false;">캐쉬청소</a></span>
+		</span>
+	</div>	
 </div>
 
 <table class="table-list" id="tblData" style="table-layout:fixed" summary="메뉴관리 목록 조회화면으로 메뉴ID,메뉴한글명,프로그램파일명,메뉴설명,상위메뉴ID로 구성.">

@@ -55,7 +55,8 @@
 <input type="hidden" name="day" />
 
 <div id="search_area">
-	<div class="button_area">
+	<div class="search_right">
+		<span class="button_area">
 	  		<select name="year" onChange="javascript:fn_aram_change_Calendar(document.normalWeekCalendar);" title="연도선택">
 	  			<c:if test="${year_b3> 0 && year_b3 < 10000}"><option value="${year_b3}"               >${year_b3}</option></c:if>
 	  			<c:if test="${year_b2> 0 && year_b2 < 10000}"><option value="${year_b2}"               >${year_b2}</option></c:if>
@@ -90,6 +91,7 @@
 	  			<c:if test="${maxWeeks>= 5}"><option value=5  <c:if test="${weeks==5 }">selected="selected"</c:if>>5</option></c:if>
 	  			<c:if test="${maxWeeks == 6}"><option value=6  <c:if test="${weeks==6 }">selected="selected"</c:if>>6</option></c:if>
 	  		</select> 주
+		</span>
 	</div>
 </div>
 </form>

@@ -51,37 +51,41 @@
 <input type=hidden name="logId">
 
 <div id="search_area">
-	<div class="button_area">
-      	<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+	<div class="search_left">
 	</div>
-	<div class="keyword_area">
-  		&nbsp;발생일자 : &nbsp;
-     	<form:hidden path="searchBgnDe" />
-    	<c:if test="${!empty loginLogVO.searchBgnDe}">
-			<c:set var="searchBgnDeVal" value="${fn:substring(loginLogVO.searchBgnDe, 0,4)}-${fn:substring(loginLogVO.searchBgnDe, 4,6)}-${fn:substring(loginLogVO.searchBgnDe, 6,8)}"/>
-     	</c:if>
-     	<input name="searchBgnDeView" id="searchBgnDeView" type="text" size="10" title="조회시작일자" value="${searchBgnDeVal}"  readonly />
-     	<a href="#" onClick="javascript:fn_aram_NormalCalendar(document.forms[0].searchBgnDe, document.forms[0].searchBgnDeView); return false;">
-     		<img name="calendarImg" src="${pageContext.request.contextPath}/images/cmm/icon/bu_icon_carlendar.gif"  align="middle" style="border:0px" alt="달력창팝업버튼이미지">
-     	</a>
-   		~
-     	<form:hidden path="searchEndDe" />
-    	<c:if test="${!empty loginLogVO.searchEndDe}">
-			<c:set var="searchEndDeVal" value="${fn:substring(loginLogVO.searchEndDe, 0,4)}-${fn:substring(loginLogVO.searchEndDe, 4,6)}-${fn:substring(loginLogVO.searchEndDe, 6,8)}"/>
-     	</c:if>
-     	<input name="searchEndDeView" id="searchEndDeView" type="text" size="10" title="조회종료일자" value="${searchEndDeVal}"  readonly />
-     	<a href="#" onClick="javascript:fn_aram_NormalCalendar(document.forms[0].searchEndDe, document.forms[0].searchEndDeView); return false;">
-     		<img name="calendarImg" src="${pageContext.request.contextPath}/images/cmm/icon/bu_icon_carlendar.gif"  align="middle" style="border:0px" alt="달력창팝업버튼이미지">
-     	</a>
-  		&nbsp;로그유형 : &nbsp;
-   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
-	   		<form:option value="10" label="10" />
-	   		<form:option value="20" label="20" />
-	   		<form:option value="30" label="30" />
-	   		<form:option value="50" label="50" />
-		</form:select>
-	</div>
+	<div class="search_right">
+		<span class="keyword_area">
+	  		&nbsp;발생일자 : &nbsp;
+	     	<form:hidden path="searchBgnDe" />
+	    	<c:if test="${!empty loginLogVO.searchBgnDe}">
+				<c:set var="searchBgnDeVal" value="${fn:substring(loginLogVO.searchBgnDe, 0,4)}-${fn:substring(loginLogVO.searchBgnDe, 4,6)}-${fn:substring(loginLogVO.searchBgnDe, 6,8)}"/>
+	     	</c:if>
+	     	<input name="searchBgnDeView" id="searchBgnDeView" type="text" size="10" title="조회시작일자" value="${searchBgnDeVal}"  readonly />
+	     	<a href="#" onClick="javascript:fn_aram_NormalCalendar(document.forms[0].searchBgnDe, document.forms[0].searchBgnDeView); return false;">
+	     		<img name="calendarImg" src="${pageContext.request.contextPath}/images/cmm/icon/bu_icon_carlendar.gif"  align="middle" style="border:0px" alt="달력창팝업버튼이미지">
+	     	</a>
+	   		~
+	     	<form:hidden path="searchEndDe" />
+	    	<c:if test="${!empty loginLogVO.searchEndDe}">
+				<c:set var="searchEndDeVal" value="${fn:substring(loginLogVO.searchEndDe, 0,4)}-${fn:substring(loginLogVO.searchEndDe, 4,6)}-${fn:substring(loginLogVO.searchEndDe, 6,8)}"/>
+	     	</c:if>
+	     	<input name="searchEndDeView" id="searchEndDeView" type="text" size="10" title="조회종료일자" value="${searchEndDeVal}"  readonly />
+	     	<a href="#" onClick="javascript:fn_aram_NormalCalendar(document.forms[0].searchEndDe, document.forms[0].searchEndDeView); return false;">
+	     		<img name="calendarImg" src="${pageContext.request.contextPath}/images/cmm/icon/bu_icon_carlendar.gif"  align="middle" style="border:0px" alt="달력창팝업버튼이미지">
+	     	</a>
+	  		&nbsp;로그유형 : &nbsp;
+	   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+			<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
+		   		<form:option value="10" label="10" />
+		   		<form:option value="20" label="20" />
+		   		<form:option value="30" label="30" />
+		   		<form:option value="50" label="50" />
+			</form:select>
+		</span>
+		<span class="button_area">
+	      	<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+		</span>
+	</div>	
 </div>
 
 <form:hidden path="pageIndex" />

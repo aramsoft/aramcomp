@@ -37,26 +37,30 @@
 <input type="hidden" name="mssageId" />
 
 <div id="search_area">
-	<div class="button_area">
-		<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;"><spring:message code="button.create" /></a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_deleteList(); return false;"><spring:message code="button.delete" /></a></span>
+	<div class="search_left">
 	</div>
-	<div class="keyword_area">
-  		<form:select path="searchCondition" class="select" tabindex="1" title="검색조건선택">
-			<form:option value="" label="--선택하세요--" />
-	   		<form:option value="SJ" label="제목" />
-	   		<form:option value="EMAIL_CN" label="내용" />
-	   		<form:option value="SNDR" label="보낸이" />
-   		</form:select>
-   		<form:input path="searchKeyword" size="35" maxlength="35" tabindex="2" onkeypress="javascript:press(event);" title="검색어 입력" />
-		<form:select path="recordPerPage" class="select" onchange="javascript:fn_aram_search(); return false;" title="recordPerPage">
-	   		<form:option value="10" label="10" />
-	   		<form:option value="20" label="20" />
-	   		<form:option value="30" label="30" />
-	   		<form:option value="50" label="50" />
-		</form:select>
-	</div>
+	<div class="search_right">
+		<span class="keyword_area">
+	  		<form:select path="searchCondition" class="select" tabindex="1" title="검색조건선택">
+				<form:option value="" label="--선택하세요--" />
+		   		<form:option value="SJ" label="제목" />
+		   		<form:option value="EMAIL_CN" label="내용" />
+		   		<form:option value="SNDR" label="보낸이" />
+	   		</form:select>
+	   		<form:input path="searchKeyword" size="35" maxlength="35" tabindex="2" onkeypress="javascript:press(event);" title="검색어 입력" />
+			<form:select path="recordPerPage" class="select" onchange="javascript:fn_aram_search(); return false;" title="recordPerPage">
+		   		<form:option value="10" label="10" />
+		   		<form:option value="20" label="20" />
+		   		<form:option value="30" label="30" />
+		   		<form:option value="50" label="50" />
+			</form:select>
+		</span>
+		<span class="button_area">
+			<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;"><spring:message code="button.create" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_deleteList(); return false;"><spring:message code="button.delete" /></a></span>
+		</span>
+	</div>	
 </div>
 
 <table class="table-list" id="tblData" summary="상태, 발신자, 수신자, 제목, 날짜의 정보를 가진 발송메일내역을 조회한다.">

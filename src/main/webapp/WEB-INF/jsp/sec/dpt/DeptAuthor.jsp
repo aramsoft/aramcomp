@@ -38,23 +38,27 @@
 <input type="hidden" name="regYns"/>
 
 <div id="search_area">
-	<div class="button_area">
-		<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_insertList(); return false;"><spring:message code="button.create" /></a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_deleteList(); return false;"><spring:message code="button.delete" /></a></span>
+	<div class="search_left">
 	</div>
-	<div class="keyword_area">
- 		부서  : 
- 		<form:input path="deptCode" size="22" title="부서코드" onkeypress="press();" readonly="true" />
-        <form:input path="deptNm" size="17" title="부서명" onkeypress="press();" readonly="true" />
-  		<span class="button"><a href="#" onclick="javascript:fn_aram_get_dept(); return false;">부서조회 팝업</a></span>
-		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" title="recordPerPage">
-	   		<form:option value="10" label="10" />
-	   		<form:option value="20" label="20" />
-	   		<form:option value="30" label="30" />
-	   		<form:option value="50" label="50" />
-		</form:select>
-	</div>
+	<div class="search_right">
+		<span class="keyword_area">
+	 		부서  : 
+	 		<form:input path="deptCode" size="22" title="부서코드" onkeypress="press();" readonly="true" />
+	        <form:input path="deptNm" size="17" title="부서명" onkeypress="press();" readonly="true" />
+	  		<span class="button"><a href="#" onclick="javascript:fn_aram_get_dept(); return false;">부서조회 팝업</a></span>
+			<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" title="recordPerPage">
+		   		<form:option value="10" label="10" />
+		   		<form:option value="20" label="20" />
+		   		<form:option value="30" label="30" />
+		   		<form:option value="50" label="50" />
+			</form:select>
+		</span>
+		<span class="button_area">
+			<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_insertList(); return false;"><spring:message code="button.create" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_deleteList(); return false;"><spring:message code="button.delete" /></a></span>
+		</span>
+	</div>	
 </div>
 
 <form:hidden path="searchCondition" />

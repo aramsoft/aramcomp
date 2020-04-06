@@ -55,7 +55,8 @@
 <input type="hidden" name="init" value="${init}" />
 
 <div id="search_area">
-	<div class="button_area">
+	<div class="search_right">
+		<span class="button_area">
 	  		<select name="year" onChange="javascript:fn_aram_change_Calendar(document.normalDayCalendar);" title="연도선택">
 	  			<c:if test="${year_b3> 0 && year_b3 < 10000}"><option value="${year_b3}"               >${year_b3}</option></c:if>
 	  			<c:if test="${year_b2> 0 && year_b2 < 10000}"><option value="${year_b2}"               >${year_b2}</option></c:if>
@@ -115,6 +116,7 @@
 	  			<c:if test="${lastDayMonth>= 30}"><option value=30 <c:if test="${day==30}">selected="selected"</c:if>>30</option></c:if>
 	  			<c:if test="${lastDayMonth == 31}"><option value=31 <c:if test="${day==31}">selected="selected"</c:if>>31</option></c:if>
 	  		</select> 일
+		</span>
 	</div>
 </div>
 

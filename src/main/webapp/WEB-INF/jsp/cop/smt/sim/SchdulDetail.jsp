@@ -28,18 +28,20 @@
 </div>
 
 <div id="search_area">
-	<div class="button_area">
-		<!-- 2011.09.16 : 일지관리 버튼 존재 방법 변경  -->
-		<c:if test="${useDiaryManage == 'true'}">
-       		<span class="button"><a href="#" onclick="javascript:fn_aram_diary(); return false;">일지등록</a></span>
-		</c:if>
-		<!-- 2011.09.16 끝  -->
-      	<span class="button"><a href="#" onclick="javascript:fn_aram_edit(); return false;"><spring:message code="button.update" /></a></span>
-       	<span class="button"><a href="#" onclick="javascript:fn_aram_delete(); return false;"><spring:message code="button.delete" /></a></span>
-      	<span class="button"><a href="#" onclick="javascript:fn_aram_list(); return false;"><spring:message code="button.list" /></a></span>
+	<div class="search_right">
+		<span class="button_area">
+			<!-- 2011.09.16 : 일지관리 버튼 존재 방법 변경  -->
+			<c:if test="${useDiaryManage == 'true'}">
+	       		<span class="button"><a href="#" onclick="javascript:fn_aram_diary(); return false;">일지등록</a></span>
+			</c:if>
+			<!-- 2011.09.16 끝  -->
+	      	<span class="button"><a href="#" onclick="javascript:fn_aram_edit(); return false;"><spring:message code="button.update" /></a></span>
+	       	<span class="button"><a href="#" onclick="javascript:fn_aram_delete(); return false;"><spring:message code="button.delete" /></a></span>
+	      	<span class="button"><a href="#" onclick="javascript:fn_aram_list(); return false;"><spring:message code="button.list" /></a></span>
+		</span>
 	</div>
 </div>
-	
+
 <form:form modelAttribute="schdulManageVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuPos" value="${curMenuPos}" />

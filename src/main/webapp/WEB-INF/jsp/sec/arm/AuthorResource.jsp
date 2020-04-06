@@ -37,20 +37,24 @@
 <input type="hidden" name="regYns"/>
 
 <div id="search_area">
-	<div class="button_area">
-		<span class="button"><a href="#" onclick="javascript:fn_aram_insert(); return false;"><spring:message code="button.create" /></a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_list_author(); return false;"><spring:message code="button.list" /></a></span>
+	<div class="search_left">
 	</div>
-	<div class="keyword_area">
- 		권한코드 : 
-   		<form:input path="authorCode" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" title="recordPerPage">
-	   		<form:option value="10" label="10" />
-	   		<form:option value="20" label="20" />
-	   		<form:option value="30" label="30" />
-	   		<form:option value="50" label="50" />
-		</form:select>
-	</div>
+	<div class="search_right">
+		<span class="keyword_area">
+	 		권한코드 : 
+	   		<form:input path="authorCode" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+			<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" title="recordPerPage">
+		   		<form:option value="10" label="10" />
+		   		<form:option value="20" label="20" />
+		   		<form:option value="30" label="30" />
+		   		<form:option value="50" label="50" />
+			</form:select>
+		</span>
+		<span class="button_area">
+			<span class="button"><a href="#" onclick="javascript:fn_aram_insert(); return false;"><spring:message code="button.create" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_list_author(); return false;"><spring:message code="button.list" /></a></span>
+		</span>
+	</div>	
 </div>
 
 <table class="table-list" id="tblData" summary="접근자원을 관리하는 테이블입니다.접근자원ID,접근자원명,접근자원타입,접근자원Sort,접근자원설명,등록일자,등록여부의 내용을 담고 있습니다.">

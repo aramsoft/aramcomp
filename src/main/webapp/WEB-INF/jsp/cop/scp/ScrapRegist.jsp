@@ -30,12 +30,14 @@
 </div>
 
 <div id="search_area">
-	<div class="button_area">
-		<span class="button"><a href="#" onclick="javascript:fn_aram_insert(); return false;"><spring:message code="button.save" /></a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_return_bbs(); return false;">게시판</a></span>
+	<div class="search_right">
+		<span class="button_area">
+			<span class="button"><a href="#" onclick="javascript:fn_aram_insert(); return false;"><spring:message code="button.save" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_return_bbs(); return false;">게시판</a></span>
+		</span>
 	</div>
 </div>
-	
+
 <form:form modelAttribute="scrapVO" method="post" action="">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuPos" value="${curMenuPos}" />

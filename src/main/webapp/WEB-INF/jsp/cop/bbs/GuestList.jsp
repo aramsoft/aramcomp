@@ -95,16 +95,18 @@
 <div style="margin-top:10px; width:100%"></div>
 
 <div id="search_area">
-	<div class="button_area">
-		<c:choose>
-		<c:when test="${boardVO.nttId == '0'}">
-     		<span class="button"><a href="#" onclick="javascript:fn_aram_insert_guestList(); return false;"><spring:message code="button.create" /></a></span>
-		</c:when>
-		<c:otherwise>
-     		<span class="button"><a href="#" onclick="javascript:fn_aram_update_guestList(); return false;"><spring:message code="button.update" /></a></span>
-		</c:otherwise>
-		</c:choose>
-     	<span class="button"><a href="#" onclick="javascript:fn_aram_reset_guestList(); return false;">초기화</a></span>
+	<div class="search_right">
+		<span class="button_area">
+			<c:choose>
+			<c:when test="${boardVO.nttId == '0'}">
+	     		<span class="button"><a href="#" onclick="javascript:fn_aram_insert_guestList(); return false;"><spring:message code="button.create" /></a></span>
+			</c:when>
+			<c:otherwise>
+	     		<span class="button"><a href="#" onclick="javascript:fn_aram_update_guestList(); return false;"><spring:message code="button.update" /></a></span>
+			</c:otherwise>
+			</c:choose>
+	     	<span class="button"><a href="#" onclick="javascript:fn_aram_reset_guestList(); return false;">초기화</a></span>
+		</span>
 	</div>
 </div>
 

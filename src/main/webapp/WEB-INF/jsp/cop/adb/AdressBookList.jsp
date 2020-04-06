@@ -38,24 +38,28 @@
 <input type="hidden" name="adbkId" />
 
 <div id="search_area">
-	<div class="button_area">
-     	<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
-    	<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;"><spring:message code="button.create" /></a></span>
+	<div class="search_left">
 	</div>
-	<div class="keyword_area">
-	 	<form:select path="searchCondition" class="select" title="검색조건선택">
-	   		<form:option value="" label="--선택하세요--" />
-	   		<form:option value="ADBK_NM" label="주소록명" />
-	   		<form:option value="OTHBC_SCOPE" label="공개범위" />
-	   		<form:option value="WRTER_ID" label="등록자" />
-	  	</form:select>
-	  	<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-		<form:select path="recordPerPage" class="select" onchange="javascript:fn_aram_search(); return false;" title="recordPerPage">
-	   		<form:option value="10" label="10" />
-	   		<form:option value="20" label="20" />
-	   		<form:option value="30" label="30" />
-	   		<form:option value="50" label="50" />
-		</form:select>
+	<div class="search_right">
+		<span class="keyword_area">
+		 	<form:select path="searchCondition" class="select" title="검색조건선택">
+		   		<form:option value="" label="--선택하세요--" />
+		   		<form:option value="ADBK_NM" label="주소록명" />
+		   		<form:option value="OTHBC_SCOPE" label="공개범위" />
+		   		<form:option value="WRTER_ID" label="등록자" />
+		  	</form:select>
+		  	<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+			<form:select path="recordPerPage" class="select" onchange="javascript:fn_aram_search(); return false;" title="recordPerPage">
+		   		<form:option value="10" label="10" />
+		   		<form:option value="20" label="20" />
+		   		<form:option value="30" label="30" />
+		   		<form:option value="50" label="50" />
+			</form:select>
+		</span>
+		<span class="button_area">
+	     	<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+	    	<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;"><spring:message code="button.create" /></a></span>
+		</span>
 	</div>
 </div>
 

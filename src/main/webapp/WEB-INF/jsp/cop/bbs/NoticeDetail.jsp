@@ -28,38 +28,42 @@
 </div>
 
 <div id="search_area">
-	<div class="sns_area">
-		<a href="#" onclick="javascript:fn_aram_scrap_sns('twitter'); return false;">
-			<img src="${pageContext.request.contextPath}/images/cmm/icon/icon_twitter.gif" alt="트위터" />
-		</a>
-		<a href="#" onclick="javascript:fn_aram_scrap_sns('facebook'); return false;">
-			<img src="${pageContext.request.contextPath}/images/cmm/icon/icon_facebook.gif" alt="페이스북" />
-		</a>
-		<a href="#" onclick="javascript:fn_aram_scrap_sns('me2day'); return false;">
-			<img src="${pageContext.request.contextPath}/images/cmm/icon/icon_me2day.gif" alt="미투데이" />
-		</a>
-		<a href="#" onclick="javascript:fn_aram_scrap_sns('yozm'); return false;">
-			<img src="${pageContext.request.contextPath}/images/cmm/icon/icon_yozm.gif" alt="요즘" />
-		</a>
-	</div>	
-	<div class="button_area">
- 	  <c:if test="${editAuthFlag == 'Y'}">
-    	<c:if test="${boardVO.frstRegisterId == userId}">
-     		<span class="button"><a href="#" onclick="javascript:fn_aram_edit(); return false;"><spring:message code="button.update" /></a></span>
-     		<span class="button"><a href="#" onclick="javascript:fn_aram_delete(); return false;"><spring:message code="button.delete" /></a></span>
-    	</c:if>
-    	<c:if test="${role == 'ROLE_ADMIN'}">
-     		<span class="button"><a href="#" onclick="javascript:fn_aram_erase(); return false;">완전삭제</a></span>
-    	</c:if>
-     	<c:if test="${boardVO.boardMasterVO.replyPosblAt == 'Y'}">
-     		<span class="button"><a href="#" onclick="javascript:fn_aram_reply(); return false;">답글작성</a></span>
-    	</c:if>
-      	<c:if test="${useScrap == 'true'}">
-    		<span class="button"><a href="#" onclick="javascript:fn_aram_add_scrap(); return false;">스크랩</a></span>
-        </c:if>
-  	  </c:if>
-     	<span class="button"><a href="#" onclick="javascript:fn_aram_list(); return false;"><spring:message code="button.list" /></a></span>
+	<div class="search_left">
+		<span class="sns_area">
+			<a href="#" onclick="javascript:fn_aram_scrap_sns('twitter'); return false;">
+				<img src="${pageContext.request.contextPath}/images/cmm/icon/icon_twitter.gif" alt="트위터" />
+			</a>
+			<a href="#" onclick="javascript:fn_aram_scrap_sns('facebook'); return false;">
+				<img src="${pageContext.request.contextPath}/images/cmm/icon/icon_facebook.gif" alt="페이스북" />
+			</a>
+			<a href="#" onclick="javascript:fn_aram_scrap_sns('me2day'); return false;">
+				<img src="${pageContext.request.contextPath}/images/cmm/icon/icon_me2day.gif" alt="미투데이" />
+			</a>
+			<a href="#" onclick="javascript:fn_aram_scrap_sns('yozm'); return false;">
+				<img src="${pageContext.request.contextPath}/images/cmm/icon/icon_yozm.gif" alt="요즘" />
+			</a>
+		</span>
 	</div>
+	<div class="search_right">
+		<span class="button_area">
+	 	  	<c:if test="${editAuthFlag == 'Y'}">
+	    	<c:if test="${boardVO.frstRegisterId == userId}">
+	     		<span class="button"><a href="#" onclick="javascript:fn_aram_edit(); return false;"><spring:message code="button.update" /></a></span>
+	     		<span class="button"><a href="#" onclick="javascript:fn_aram_delete(); return false;"><spring:message code="button.delete" /></a></span>
+	    	</c:if>
+	    	<c:if test="${role == 'ROLE_ADMIN'}">
+	     		<span class="button"><a href="#" onclick="javascript:fn_aram_erase(); return false;">완전삭제</a></span>
+	    	</c:if>
+	     	<c:if test="${boardVO.boardMasterVO.replyPosblAt == 'Y'}">
+	     		<span class="button"><a href="#" onclick="javascript:fn_aram_reply(); return false;">답글작성</a></span>
+	    	</c:if>
+	      	<c:if test="${useScrap == 'true'}">
+	    		<span class="button"><a href="#" onclick="javascript:fn_aram_add_scrap(); return false;">스크랩</a></span>
+	        </c:if>
+	  	  	</c:if>
+	     	<span class="button"><a href="#" onclick="javascript:fn_aram_list(); return false;"><spring:message code="button.list" /></a></span>
+		</span>
+	</div>	
 </div>
 
 <form:form modelAttribute="boardVO"  method="post" action="">

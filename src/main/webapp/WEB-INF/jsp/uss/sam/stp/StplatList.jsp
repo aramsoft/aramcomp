@@ -38,24 +38,28 @@
 <input type="hidden" name="useStplatId"/>
 
 <div id="search_area">
-	<div class="button_area">
-      	<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
-      	<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;"><spring:message code="button.create" /></a></span>
+	<div class="search_left">
 	</div>
-	<div class="keyword_area">
-  		<form:select path="searchCondition" title="검색조건선택">
-	   		<form:option value='' label="--선택하세요--" />
-	   		<form:option value="USE_STPLAT_NM" label="이용약관명" />
-	   		<form:option value="USE_STPLAT_CN" label="이용약관내용" />
-   		</form:select>
-   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
-	   		<form:option value="10" label="10" />
-	   		<form:option value="20" label="20" />
-	   		<form:option value="30" label="30" />
-	   		<form:option value="50" label="50" />
-		</form:select>
-	</div>
+	<div class="search_right">
+		<span class="keyword_area">
+	  		<form:select path="searchCondition" title="검색조건선택">
+		   		<form:option value='' label="--선택하세요--" />
+		   		<form:option value="USE_STPLAT_NM" label="이용약관명" />
+		   		<form:option value="USE_STPLAT_CN" label="이용약관내용" />
+	   		</form:select>
+	   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+			<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
+		   		<form:option value="10" label="10" />
+		   		<form:option value="20" label="20" />
+		   		<form:option value="30" label="30" />
+		   		<form:option value="50" label="50" />
+			</form:select>
+		</span>
+		<span class="button_area">
+	      	<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+	      	<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;"><spring:message code="button.create" /></a></span>
+		</span>
+	</div>	
 </div>
 
 <form:hidden path="pageIndex" />

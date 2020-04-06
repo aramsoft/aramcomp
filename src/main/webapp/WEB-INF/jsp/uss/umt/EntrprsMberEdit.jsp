@@ -29,13 +29,15 @@
 </div>
 
 <div id="search_area">
-	<div class="button_area">
-		<span class="button"><a href="#" onclick="javascript:fn_aram_update(); return false;"><spring:message code="button.save" /></a></span>
-		<c:if test="${isAdmin=='true'}">
-			<span class="button"><a href="#" onclick="javascript:fn_aram_delete(); return false;"><spring:message code="button.delete" /></a></span>
-			<span class="button"><a href="#" onclick="javascript:fn_aram_list(); return false;"><spring:message code="button.list" /></a></span>
-		</c:if>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_edit_password(); return false;"><spring:message code="button.passwordUpdate" /></a></span>
+	<div class="search_right">
+		<span class="button_area">
+			<span class="button"><a href="#" onclick="javascript:fn_aram_update(); return false;"><spring:message code="button.save" /></a></span>
+			<c:if test="${isAdmin=='true'}">
+				<span class="button"><a href="#" onclick="javascript:fn_aram_delete(); return false;"><spring:message code="button.delete" /></a></span>
+				<span class="button"><a href="#" onclick="javascript:fn_aram_list(); return false;"><spring:message code="button.list" /></a></span>
+			</c:if>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_edit_password(); return false;"><spring:message code="button.passwordUpdate" /></a></span>
+		</span>
 	</div>
 </div>
 

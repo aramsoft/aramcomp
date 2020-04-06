@@ -29,11 +29,13 @@
 </div>
 
 <div id="search_area">
-	<div class="button_area">
-		<c:if test="${editAuthFlag == 'Y'}">
-  			<span class="button"><a href="#" onclick="javascript:fn_aram_update(); return false;"><spring:message code="button.save" /></a></span>
-  		</c:if>
-   		<span class="button"><a href="#" onclick="javascript:fn_aram_list(); return false;"><spring:message code="button.list" /></a></span>
+	<div class="search_right">
+		<span class="button_area">
+			<c:if test="${editAuthFlag == 'Y'}">
+	  			<span class="button"><a href="#" onclick="javascript:fn_aram_update(); return false;"><spring:message code="button.save" /></a></span>
+	  		</c:if>
+	   		<span class="button"><a href="#" onclick="javascript:fn_aram_list(); return false;"><spring:message code="button.list" /></a></span>
+			</span>
 	</div>
 </div>
 

@@ -59,7 +59,6 @@ caption { visibility:hidden; font-size:0; height:0; line-height:0; }
 
 /********************** 본문   ***************************************/
 #main { margin:10px auto; width:96%; }
-#page_navigation { padding-top:10px; text-align:center;}
 .content_title { 
 	color:#000000;  
 	vertical-align:middle; text-align:left; height:16px; padding-left:20px;  
@@ -88,6 +87,16 @@ caption { visibility:hidden; font-size:0; height:0; line-height:0; }
 .norequired:after {
 	content:"\a0\a0\a0"; 
 }
+
+#search_area { width:100%;  margin:10px 0px; height:20px; }
+#search_area .search_left { float:left;}
+#search_area .sns_area { margin:0px 8px}
+
+#search_area .search_right { float:right;}
+#search_area .keyword_area { margin:0px 8px; }
+#search_area .button_area { margin:0px 8px; }
+
+#page_navigation { padding-top:10px; text-align:center;}
 
 /****************************************** 테이블 & 텍스트   ************************************************************/
 /* 테이블 행_볼드 */
@@ -170,14 +179,6 @@ caption { visibility:hidden; font-size:0; height:0; line-height:0; }
 .table-search th { padding-left:2; padding-right:2; text-align:center; }
 .table-search td { padding-left:2; padding-right:2; vertical-align:middle; }
 .table-search td img { vertical-align:middle; }
-
-#search_area { width:100%;  margin:8px 0px; height:20px; }
-#search_area .search_left { float:left;}
-#search_area .sns_area { margin:0px 8px}
-
-#search_area .search_right { float:right;}
-#search_area .keyword_area { margin:0px 8px; }
-#search_area .button_area { margin:0px 8px; }
 
 /* 투명 테이블 */
 .table-trans    { border:0px solid; border-collapse:collapse; }

@@ -40,6 +40,7 @@
 
 <div id="search_area">
 	<div class="search_left">
+	 	<strong>전체 : ${cmmnDetailCodeVO.totalRecordCount} 건</strong>	
 	</div>
 	<div class="search_right">
 		<span class="keyword_area">
@@ -92,7 +93,7 @@
 	<tr>
 		<c:set var="index" value="${startIndex + status.count}"/>
 		<c:set var="reverseIndex" value="${cmmnDetailCodeVO.totalRecordCount - index + 1}"/>
-		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
+		<td class="lt_text3"><c:out value="${index}"/></td>
 
 		<td class="lt_text3">${result.codeId}</td>
 		<td class="lt_text3">${result.codeIdNm}</td>

@@ -9,9 +9,9 @@ import java.lang.annotation.RetentionPolicy;
  * 하나의 Controller에 여러 개의 목록성 url mapping이 제공되는 경우에는
  * 메소드에 annotation을 부여한다. 
  *
- * @author 아람컴포넌트 조헌철
- * @since 2014.11.11
- * @version 1.0
+ * @author 공통컴포넌트 정진오
+ * @since 2011.08.26
+ * @version 2.0.0
  */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface IncludedInfo {

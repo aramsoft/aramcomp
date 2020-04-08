@@ -56,11 +56,10 @@
                  , B.AUTHOR_CODE 			AS "authorCode"
                  , A.USER_ID 				AS "userId" 
                  , (CASE WHEN B.SCRTY_DTRMN_TRGET_ID IS NULL THEN 'N' ELSE 'Y' END) AS "regYn"
-              FROM (SELECT A.ORGNZT_ID 		DEPT_CODE, 
-                           A.ORGNZT_NM 		DEPT_NM,
-                           B.EMPLYR_ID 		USER_ID,
-                           B.USER_NM 		USER_NM,
-                           B.USER_ID
+              FROM (SELECT A.ORGNZT_ID 		DEPT_CODE 
+                         , A.ORGNZT_NM 		DEPT_NM
+                         , B.EMPLYR_ID 		USER_ID
+                         , B.USER_NM 		USER_NM
                       FROM COMTN_ORGNZT_INFO A
                    		   LEFT OUTER JOIN COMTN_EMPLYR_INFO B
                 				ON A.ORGNZT_ID = B.ORGNZT_ID 
@@ -84,11 +83,10 @@
     <select id="selectDeptAuthorListCnt" resultType="int">
    		<![CDATA[
         	  SELECT COUNT(*) AS totcnt
-              FROM (SELECT A.ORGNZT_ID 		DEPT_CODE, 
-                           A.ORGNZT_NM 		DEPT_NM,
-                           B.EMPLYR_ID 		USER_ID,
-                           B.USER_NM 		USER_NM,
-                           B.USER_ID
+              FROM (SELECT A.ORGNZT_ID 		DEPT_CODE 
+                         , A.ORGNZT_NM 		DEPT_NM
+                         , B.EMPLYR_ID 		USER_ID
+                         , B.USER_NM 		USER_NM
                       FROM COMTN_ORGNZT_INFO A
                    		   LEFT OUTER JOIN COMTN_EMPLYR_INFO B
                 				ON A.ORGNZT_ID = B.ORGNZT_ID 

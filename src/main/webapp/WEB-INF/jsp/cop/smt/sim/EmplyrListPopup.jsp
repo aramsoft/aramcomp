@@ -45,6 +45,7 @@
 
 <div id="search_area">
 	<div class="search_left">
+	 	<strong>전체 : ${baseVO.totalRecordCount} 건</strong>	
 	</div>
 	<div class="search_right">
 		<span class="keyword_area">
@@ -134,14 +135,14 @@ function press(event) {
  * 페이징 처리 함수
  ******************************************************** */
 function fn_aram_linkPage(pageNo) {
-    var varForm = document.getElementById("searchVO");
+    var varForm = document.getElementById("baseVO");
     varForm.pageIndex.value = pageNo; 
     varForm.action = "${pageContext.request.contextPath}/cop/smt/lsm/listEmplyr.do";
     varForm.submit();	
 }
 
 function fn_aram_search() {
-    var varForm = document.getElementById("searchVO");
+    var varForm = document.getElementById("baseVO");
     varForm.pageIndex.value = 1; 
     varForm.action = "${pageContext.request.contextPath}/cop/smt/lsm/listEmplyr.do";
     varForm.submit();	

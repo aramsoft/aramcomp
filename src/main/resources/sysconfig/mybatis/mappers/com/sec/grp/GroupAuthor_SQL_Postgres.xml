@@ -17,26 +17,22 @@
                    ) 						AS "mberTyNm" 
                  , B.AUTHOR_CODE 			AS "authorCode"
                  , (CASE WHEN B.SCRTY_DTRMN_TRGET_ID IS NULL THEN 'N' ELSE 'Y' END) AS "regYn" 
-                 ,  USER_ID 				AS "userId" 
               FROM (SELECT MBER_ID 			USER_ID
               	         , MBER_NM 			USER_NM
               	         , GROUP_ID
               	         , 'USR01' 			MBER_TY_CODE
-              	         , USER_ID
                       FROM COMTN_GNRL_MBER
                      UNION ALL
                     SELECT ENTRPRS_MBER_ID 	USER_ID
                     	 , CMPNY_NM 		USER_NM
                     	 , GROUP_ID
                     	 , 'USR02' 			MBER_TY_CODE
-                    	 , USER_ID 
                       FROM COMTN_ENTRPRS_MBER
                      UNION ALL
                     SELECT EMPLYR_ID 		USER_ID
                     	 , USER_NM 			USER_NM
                     	 , GROUP_ID
                     	 , 'USR03' 			MBER_TY_CODE
-                    	 , USER_ID 
                       FROM COMTN_EMPLYR_INFO 
                    ) A 
                    LEFT OUTER JOIN COMTN_EMPLYR_SCRTY_ESTBS B
@@ -70,21 +66,18 @@
               	         , MBER_NM 			USER_NM
               	         , GROUP_ID
               	         , 'USR01' 			MBER_TY_CODE
-              	         , USER_ID
                       FROM COMTN_GNRL_MBER
                      UNION ALL
                     SELECT ENTRPRS_MBER_ID 	USER_ID
                     	 , CMPNY_NM 		USER_NM
                     	 , GROUP_ID
                     	 , 'USR02' 			MBER_TY_CODE
-                    	 , USER_ID 
                       FROM COMTN_ENTRPRS_MBER
                      UNION ALL
                     SELECT EMPLYR_ID 		USER_ID
                     	 , USER_NM 			USER_NM
                     	 , GROUP_ID
                     	 , 'USR03' 			MBER_TY_CODE
-                    	 , USER_ID 
                       FROM COMTN_EMPLYR_INFO 
                    ) A 
                    LEFT OUTER JOIN COMTN_EMPLYR_SCRTY_ESTBS B

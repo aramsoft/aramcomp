@@ -38,6 +38,7 @@
 
 <div id="search_area">
 	<div class="search_left">
+	 	<strong>전체 : ${cmmnCodeVO.totalRecordCount} 건</strong>	
 	</div>
 	<div class="search_right">
 		<span class="keyword_area">

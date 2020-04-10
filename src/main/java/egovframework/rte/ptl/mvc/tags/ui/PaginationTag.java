@@ -1,4 +1,4 @@
-package egovframework.tag;
+package egovframework.rte.ptl.mvc.tags.ui;
 
 import egovframework.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationManager;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -24,7 +24,6 @@ public class PaginationTag extends TagSupport {
 			JspWriter out = this.pageContext.getOut();
 			WebApplicationContext ctx = RequestContextUtils.findWebApplicationContext(
 					(HttpServletRequest)this.pageContext.getRequest(), this.pageContext.getServletContext());
-			
 			Object paginationManager;
 			if (ctx.containsBean("paginationManager")) {
 				paginationManager = (PaginationManager) ctx.getBean("paginationManager");

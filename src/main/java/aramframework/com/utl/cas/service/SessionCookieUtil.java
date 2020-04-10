@@ -76,7 +76,6 @@ public class SessionCookieUtil {
 	 * @param request	HttpServletRequest
 	 * @return			객체내의 모든 값
 	 */
-	@SuppressWarnings("unchecked")
 	public static String getSessionValuesString(
 			HttpServletRequest request) 
 	throws Exception {

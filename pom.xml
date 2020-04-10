@@ -11,7 +11,7 @@
 	<properties>
 	    <spring.version>5.2.3.RELEASE</spring.version>
 	    <spring.security.version>5.2.1.RELEASE</spring.security.version>
-		<egovframework.rte.version>3.1.0</egovframework.rte.version>
+		<egovframework.rte.version>3.9.0</egovframework.rte.version>
 	</properties>
 
 	<dependencies>

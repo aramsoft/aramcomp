@@ -34,8 +34,11 @@ public class LoginLogAdvice {
 		if( loginVO != null ) {
 			userId = loginVO.getUserId();
 			ip = loginVO.getIp();
+			// 관리자인 경우 pass
+			if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN")) return;  
 		}
-//		if( "127.0.0.1".equals(ip) || "".equals(ip)) return;
+
+		if( "127.0.0.1".equals(ip) || "".equals(ip)) return;
 		
 		if (LOG.isDebugEnabled()) {
 			LOG.debug("Execute login log!!");
@@ -61,8 +64,11 @@ public class LoginLogAdvice {
 		if( loginVO != null ) {
 			userId = loginVO.getUserId();
 			ip = loginVO.getIp();
+			// 관리자인 경우 pass
+			if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN")) return;  
 		}
-//		if( "127.0.0.1".equals(ip) || "".equals(ip)) return;
+
+		if( "127.0.0.1".equals(ip) || "".equals(ip)) return;
 
 		if (LOG.isDebugEnabled()) {
 			LOG.debug("Execute logout log!!");

@@ -77,6 +77,8 @@ public class WebLogInterceptor extends HandlerInterceptorAdapter {
 		String userId = "unknown";
 		if( loginVO != null ) {
 			userId = loginVO.getUserId();
+			// 관리자인 경우 pass
+			if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN")) return true;  
 		}
 
 		WebLogVO webLogVO = new WebLogVO();

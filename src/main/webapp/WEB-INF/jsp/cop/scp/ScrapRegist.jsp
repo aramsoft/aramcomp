@@ -151,7 +151,7 @@ function fn_aram_insert() {
 
 function fn_aram_return_bbs() {
     var varForm = document.getElementById("scrapVO");
-    varForm.action =  "${pageContext.request.contextPath}/cop/bbs/selectBoardArticle.do";
+    varForm.action =  "${pageContext.request.contextPath}/cop/bbs/detailBoardArticle.do";
     varForm.submit();			
 }
 

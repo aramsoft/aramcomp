@@ -150,7 +150,7 @@ public class BBSBoardController {
 	 * @param boardVO
 	 */
 	@RequestMapping(value="/board/{bbsPathId}/list")
-	public String listlBoardArticle(
+	public String listBoardArticlePath(
 			@ModelAttribute BoardVO boardVO, 
 			@PathVariable String bbsPathId, 
 			ModelMap model) {
@@ -159,7 +159,19 @@ public class BBSBoardController {
 		if( boardVO.getBbsId() == null || boardVO.getBbsId().equals("") ) {
 			throw new RuntimeException("bbsId is not found !!!");
 		}
-		
+		return listBoardArticle(boardVO, model);
+	}	
+	/**
+	 * 게시물에 대한 목록을 조회한다.
+	 * 
+	 * @param bbsPathId
+	 * @param boardVO
+	 */
+	@RequestMapping(value="/cop/bbs/listBoardArticle.do")
+	public String listBoardArticle(
+			@ModelAttribute BoardVO boardVO, 
+			ModelMap model) {
+
 		// set boardMasterVO
 		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
 		// -------------------------------
@@ -206,7 +218,7 @@ public class BBSBoardController {
 	 * @param boardVO
 	 */
 	@RequestMapping(value="/board/{bbsPathId}/id/{nttId}")
-	public String detailBoardArticle(
+	public String detailBoardArticleDirect(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
 			@PathVariable String bbsPathId, 
@@ -219,6 +231,22 @@ public class BBSBoardController {
 		}
 		
 		boardVO.setNttId(nttId);
+		return detailBoardArticle(searchVO, boardVO, model);
+	}
+	
+	/**
+	 * 게시물에 대한 상세 정보를 조회한다.
+	 * 
+	 * @param bbsPathId
+	 * @param nttId
+	 * @param boardVO
+	 */
+	@RequestMapping(value="/cop/bbs/detailBoardArticle.do")
+	public String detailBoardArticle(
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute BoardVO boardVO, 
+			ModelMap model) {
+
 		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
 
 		// -------------------------------

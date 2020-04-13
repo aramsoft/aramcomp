@@ -62,6 +62,12 @@
 	        </c:if>
 	  	  	</c:if>
 	     	<span class="button"><a href="#" onclick="javascript:fn_aram_list(); return false;"><spring:message code="button.list" /></a></span>
+	      	<c:if test="${fullScrYn == 'Y'}">
+	    		<span class="button"><a href="#" onclick="javascript:fn_aram_screen('N'); return false;">화면축소</a></span>
+	        </c:if>
+	      	<c:if test="${fullScrYn != 'Y'}">
+	    		<span class="button"><a href="#" onclick="javascript:fn_aram_screen('Y'); return false;">화면확대</a></span>
+	        </c:if>
 		</span>
 	</div>	
 </div>
@@ -69,6 +75,7 @@
 <form:form modelAttribute="boardVO"  method="post" action="">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuPos" value="${curMenuPos}" />
+<input type="hidden" name="fullScrYn" value="${fullScrYn}" />
 
 <form:hidden path="bbsId" />
 <form:hidden path="nttId" />
@@ -193,7 +200,14 @@ function fn_aram_scrap_sns(sns) {
 
 function fn_aram_list() {
     var varForm = document.getElementById("boardVO");
-	varForm.action = "${pageContext.request.contextPath}/board/"+ fn_aram_get_idString(varForm.bbsId.value)+"/list";
+	varForm.action = "${pageContext.request.contextPath}/cop/bbs/listBoardArticle.do";
+    varForm.submit();
+}
+
+function fn_aram_screen(fullScrYn) {
+    var varForm = document.getElementById("boardVO");
+    varForm.fullScrYn.value = fullScrYn;
+	varForm.action = "${pageContext.request.contextPath}/cop/bbs/detailBoardArticle.do";
     varForm.submit();
 }
 

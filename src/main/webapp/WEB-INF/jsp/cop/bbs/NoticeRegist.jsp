@@ -42,6 +42,7 @@
 <form:form modelAttribute="boardVO" method="post" enctype="multipart/form-data">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuPos" value="${curMenuPos}" />
+<input type="hidden" name="fullScrYn" value="${fullScrYn}" />
 
 <form:hidden path="bbsId" />
 <form:hidden path="nttId" />
@@ -195,7 +196,7 @@ window.onload = function() {
 
 function fn_aram_list() {
     var varForm = document.getElementById("boardVO");
-	varForm.action = "${pageContext.request.contextPath}/board/" + fn_aram_get_idString(varForm.bbsId.value) + "/list";
+	varForm.action = "${pageContext.request.contextPath}/cop/bbs/listBoardArticle.do";
 	varForm.submit();
 }
 

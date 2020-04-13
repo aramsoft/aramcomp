@@ -34,6 +34,7 @@
 <form:form modelAttribute="boardVO" action ="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuPos" value="${curMenuPos}" />
+<input type="hidden" name="fullScrYn" value="${fullScrYn}" />
 
 <form:hidden path="bbsId" />
 <input type="hidden" name="nttId" value="0"/>
@@ -63,6 +64,12 @@
 		<span class="button_area">
 			<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
 			<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;"><spring:message code="button.create" /></a></span>
+	      	<c:if test="${fullScrYn == 'Y'}">
+	    		<span class="button"><a href="#" onclick="javascript:fn_aram_screen('N'); return false;">축소</a></span>
+	        </c:if>
+	      	<c:if test="${fullScrYn != 'Y'}">
+	    		<span class="button"><a href="#" onclick="javascript:fn_aram_screen('Y'); return false;">확대</a></span>
+	        </c:if>
 		</span>
 	</div>
 </div>
@@ -166,35 +173,28 @@ function press(event) {
 function fn_aram_linkPage(pageNo) {
     var varForm = document.getElementById("boardVO");
     varForm.pageIndex.value = pageNo;
-    if( varForm.curTrgetId.value != "") {
-    	varForm.action = "${pageContext.request.contextPath}/apps/id/${targetVO.pathId}/board/${boardVO.pathId}/list";
-    }
-    else {
-    	varForm.action = "${pageContext.request.contextPath}/board/${boardVO.pathId}/list";
-    }
+   	varForm.action = "${pageContext.request.contextPath}/cop/bbs/listBoardArticle.do";
     varForm.submit();
 }
 
 function fn_aram_search() {
     var varForm = document.getElementById("boardVO");
     varForm.pageIndex.value = 1;
-    if( varForm.curTrgetId.value != "") {
-    	varForm.action = "${pageContext.request.contextPath}/apps/id/${targetVO.pathId}/board/${boardVO.pathId}/list";
-    }
-    else {
-    	varForm.action = "${pageContext.request.contextPath}/board/${boardVO.pathId}/list";
-    }
+   	varForm.action = "${pageContext.request.contextPath}/cop/bbs/listBoardArticle.do";
+    varForm.submit();
+}
+
+function fn_aram_screen(fullScrYn) {
+    var varForm = document.getElementById("boardVO");
+    varForm.fullScrYn.value = fullScrYn;
+	varForm.action = "${pageContext.request.contextPath}/cop/bbs/listBoardArticle.do";
     varForm.submit();
 }
 
 function fn_aram_detail(nttId) {
     var varForm = document.getElementById("boardVO");
-    if( varForm.curTrgetId.value != "") {
-    	varForm.action = "${pageContext.request.contextPath}/apps/id/${targetVO.pathId}/board/${boardVO.pathId}/id/" + nttId;
-    }
-    else {
-    	varForm.action = "${pageContext.request.contextPath}/board/${boardVO.pathId}/id/" + nttId;
-    }
+    varForm.nttId.value = nttId;
+   	varForm.action = "${pageContext.request.contextPath}/cop/bbs/detailBoardArticle.do";
     varForm.submit();
 }
 

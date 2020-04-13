@@ -79,7 +79,7 @@ public class CommunityVO extends BaseVO {
 	public void setCmmntyId(String cmmntyId) {
 		this.cmmntyId = cmmntyId;
 		if(cmmntyId.length() != 0)
-			this.pathId = WebUtil.getPathId(cmmntyId);
+			this.setPathId(WebUtil.getPathId(cmmntyId));
 	}
 
 	/** cmmntyNm 	 */ 

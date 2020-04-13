@@ -61,6 +61,11 @@ public class TilesInterceptor extends HandlerInterceptorAdapter {
 			request.setAttribute("curMenuPos", curMenuPos);
 		}
 		
+		String fullScrYn = request.getParameter("fullScrYn");
+		if( fullScrYn != null && !"".equals(fullScrYn)) {
+			request.setAttribute("fullScrYn", fullScrYn);
+		}
+		
 		String requestUrl = request.getRequestURL().toString();
 		String requestUri = request.getRequestURI();
 		String contextUrl = requestUrl.substring(0, requestUrl.indexOf(requestUri));
@@ -98,8 +103,8 @@ public class TilesInterceptor extends HandlerInterceptorAdapter {
 
 //		LOG.debug("jspPrefix = " + jspPrefix + ", viewName = " + viewName);
 
-		String noLayoutChange = (String) modelAndView.getModel().get("noLayoutChange");
-		if( noLayoutChange != null && "true".equals(noLayoutChange) ) return;
+		String fullScrYn = (String) request.getAttribute("fullScrYn");
+		if( fullScrYn != null && "Y".equals(fullScrYn) ) return;
 
 		String cmmntyId = (String) request.getAttribute("curTrgetId");
 		String menuPos = (String) request.getAttribute("curMenuPos");

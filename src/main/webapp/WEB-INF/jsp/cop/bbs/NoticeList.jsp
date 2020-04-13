@@ -65,10 +65,10 @@
 			<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
 			<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;"><spring:message code="button.create" /></a></span>
 	      	<c:if test="${fullScrYn == 'Y'}">
-	    		<span class="button"><a href="#" onclick="javascript:fn_aram_screen('N'); return false;">축소</a></span>
+	    		<span class="button"><a href="#" onclick="javascript:fn_aram_screen('N'); return false;">화면축소</a></span>
 	        </c:if>
 	      	<c:if test="${fullScrYn != 'Y'}">
-	    		<span class="button"><a href="#" onclick="javascript:fn_aram_screen('Y'); return false;">확대</a></span>
+	    		<span class="button"><a href="#" onclick="javascript:fn_aram_screen('Y'); return false;">화면확대</a></span>
 	        </c:if>
 		</span>
 	</div>

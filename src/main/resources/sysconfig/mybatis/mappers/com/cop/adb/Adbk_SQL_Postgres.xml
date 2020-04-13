@@ -241,7 +241,6 @@
 				SELECT COUNT(MBER_NM)
 				  FROM COMTN_GNRL_MBER
 				 WHERE MBER_NM LIKE '%' || #{searchKeyword} || '%' )
-			FROM DUAL
 		]]>
 	</select>	
 	

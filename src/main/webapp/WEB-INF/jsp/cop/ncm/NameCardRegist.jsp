@@ -102,7 +102,7 @@
 	    	<spring:message code="cop.telNo" />
 	    </th>
 	    <td colspan="3">
-	      	<form:input path="nationNo" size="7" maxlength="7" />-
+	      	<form:input path="nationNo" size="5" maxlength="4" value="82" />-
 	      	<form:input path="areaNo" size="5" maxlength="4" />-
 	      	<form:input path="middleTelNo" size="5" maxlength="4" />-
 	      	<form:input path="endTelNo" size="5" maxlength="4" />

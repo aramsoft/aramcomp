@@ -236,6 +236,7 @@ public class NcrdManageController {
 	@RequestMapping("/cop/ncm/insertNameCardUse.do")
 	@Secured("ROLE_USER")
 	public String insertNameCardUse(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute NameCardUseVO nameCardUseVO, 
 			ModelMap model) {
 
@@ -251,28 +252,6 @@ public class NcrdManageController {
 	}
 
 	/**
-	 * 명함사용자 정보를 수정한다.
-	 * 
-	 * @param nameCardUseVO
-	 */
-	@RequestMapping("/cop/ncm/updateNameCardUse.do")
-	@Secured("ROLE_USER")
-	public String updateNameCardUse(
-			@ModelAttribute NameCardUseVO nameCardUseVO, 
-			ModelMap model) {
-
-		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		nameCardUseVO.setEmplyrId(loginVO.getUserId());
-		nameCardUseVO.setUseAt("N");
-
-		ncrdService.updateNcrdUseInf(nameCardUseVO);
-
-		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		model.addAttribute("redirectURL", "/cop/ncm/listNameCardPublic.do");
-	    return "cmm/redirect";
-	}
-
-	/**
 	 * 명함사용자 정보를 삭제한다.
 	 * 
 	 * @param nameCardUseVO
@@ -280,6 +259,7 @@ public class NcrdManageController {
 	@RequestMapping("/cop/ncm/deleteNameCardUse.do")
 	@Secured("ROLE_USER")
 	public String deleteNameCardUse(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute NameCardUseVO nameCardUseVO, 
 			ModelMap model) {
 

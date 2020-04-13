@@ -88,13 +88,6 @@ public interface NcrdManageMapper {
 	public void insertNcrdUseInf(NameCardUseVO nameCardUseVO);
 
 	/**
-	 * 명함사용자 정보를 수정한다.
-	 * 
-	 * @param nameCardUseVO
-	 */
-	public void updateNcrdUseInf(NameCardUseVO nameCardUseVO);
-
-	/**
 	 * 명함사용자 정보를 삭제한다.
 	 * 
 	 * @param nameCardUseVO

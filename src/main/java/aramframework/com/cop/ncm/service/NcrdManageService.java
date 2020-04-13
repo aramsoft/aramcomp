@@ -136,15 +136,6 @@ public class NcrdManageService extends EgovAbstractServiceImpl {
 	}
 
 	/**
-	 * 명함사용자 정보를 수정한다.
-	 * 
-	 * @param nameCardUseVO
-	 */
-	public void updateNcrdUseInf(NameCardUseVO nameCardUseVO) {
-		ncrdManageMapper.updateNcrdUseInf(nameCardUseVO);
-	}
-
-	/**
 	 * 명함사용자 정보를 삭제한다.
 	 * 
 	 * @param nameCardUseVO

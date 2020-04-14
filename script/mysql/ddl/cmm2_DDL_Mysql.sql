@@ -30,7 +30,6 @@ CREATE TABLE COMTN_FILE_DETAIL
 	STRE_FILE_NM          	varchar(255)  	NOT NULL,
 	ORIGNL_FILE_NM        	varchar(255)  	NULL,
 	FILE_EXTSN            	varchar(20)  	NULL,
-	FILE_TYPE            	varchar(50)  	NULL,
 	FILE_CN               	mediumtext  	NULL,
 	FILE_SIZE            	decimal(10)  	NOT NULL ,
 	CONSTRAINT COMTN_FILE_DETAIL_PK PRIMARY KEY (ATCH_FILE_ID, FILE_SN),

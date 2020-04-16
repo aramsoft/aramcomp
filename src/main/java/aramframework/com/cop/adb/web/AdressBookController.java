@@ -1,5 +1,6 @@
 package aramframework.com.cop.adb.web;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -113,7 +114,6 @@ public class AdressBookController {
 
 		beanValidator.validate(adressBookVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			fill_common_code(model);
 			return "cop/adb/AdressBookRegist";
 		}
 
@@ -122,18 +122,20 @@ public class AdressBookController {
 		adressBookVO.setFrstRegisterId(loginVO.getUserId());
 
 		String[] tempId = adressBookVO.getUserIds().split(",");
+		List<AdressBookUserVO> userList = new ArrayList<AdressBookUserVO>();
 		for (int i = 0; i < tempId.length; i++) {
 			if (!tempId[i].equals("")) {
 				AdressBookUserVO adbkUser = adressBookService.selectAdbkUser(tempId[i]);
-				adressBookVO.getAdbkMan().add(adbkUser);
+				userList.add(adbkUser);
 			}
 		}
+		adressBookVO.setAdbkUserList(userList);
 		adressBookVO.setTrgetOrgnztId(loginVO.getOrgnztId());
 
 		adressBookService.insertAdressBook(adressBookVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		model.addAttribute("redirectURL", "/cop/adb/listAdressBook.do");
+		model.addAttribute("redirectURL", "/cop/adb/editAdressBook.do?adbkId=" + adressBookVO.getAdbkId());
 	    return "cmm/redirect";
 	}
 
@@ -149,28 +151,19 @@ public class AdressBookController {
 			@ModelAttribute AdressBookVO adressBookVO, 
 			ModelMap model) {
 
-		adressBookService.selectAdressBook(adressBookVO);
+		adressBookVO = adressBookService.selectAdressBook(adressBookVO);
 
-		String id = "";
+		String userIds = "";
 		AdressBookUserVO adbkUser = null;
-		for (int i = 0; i < adressBookVO.getAdbkMan().size(); i++) {
-			adbkUser = adressBookVO.getAdbkMan().get(i);
-			if (adbkUser.getNcrdId() == null) {
-				adbkUser.setNcrdId("");
-			}
-			if (adbkUser.getEmplyrId() == null) {
-				adbkUser.setEmplyrId("");
-			}
-		}
-		for (int i = 0; i < adressBookVO.getAdbkMan().size(); i++) {
-			adbkUser = adressBookVO.getAdbkMan().get(i);
+		for (int i = 0; i < adressBookVO.getAdbkUserList().size(); i++) {
+			adbkUser = adressBookVO.getAdbkUserList().get(i);
 			if (adbkUser.getEmplyrId().equals("")) {
-				id += adbkUser.getNcrdId() + ",";
+				userIds += adbkUser.getNcrdId() + ",";
 			} else {
-				id += adbkUser.getEmplyrId() + ",";
+				userIds += adbkUser.getEmplyrId() + ",";
 			}
 		}
-		adressBookVO.setUserIds(id);
+		adressBookVO.setUserIds(userIds);
 
 		boolean writer = false;
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -178,6 +171,7 @@ public class AdressBookController {
 			writer = true;
 		}
 		model.addAttribute("writer", writer);
+		model.addAttribute("adressBookVO", adressBookVO);
 
 		fill_common_code(model);
 		return "cop/adb/AdressBookEdit";
@@ -202,13 +196,14 @@ public class AdressBookController {
 		}
 
 		String[] tempId = adressBookVO.getUserIds().split(",");
-
+		List<AdressBookUserVO> userList = new ArrayList<AdressBookUserVO>();
 		for (int i = 0; i < tempId.length; i++) {
 			if (!tempId[i].equals("")) {
 				AdressBookUserVO adbkUser = adressBookService.selectAdbkUser(tempId[i]);
-				adressBookVO.getAdbkMan().add(adbkUser);
+				userList.add(adbkUser);
 			}
 		}
+		adressBookVO.setAdbkUserList(userList);
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		adressBookVO.setLastUpdusrId(loginVO.getUserId());
@@ -217,7 +212,7 @@ public class AdressBookController {
 		adressBookService.updateAdressBook(adressBookVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		model.addAttribute("redirectURL", "/cop/adb/listAdressBook.do");
+		model.addAttribute("redirectURL", "/cop/adb/editAdressBook.do?adbkId=" + adressBookVO.getAdbkId());
 	    return "cmm/redirect";
 	}
 	
@@ -232,8 +227,6 @@ public class AdressBookController {
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AdressBookVO adressBookVO, 
 			ModelMap model) {
-
-		adressBookService.selectAdressBook(adressBookVO);
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		adressBookVO.setUseAt("N");
@@ -285,73 +278,31 @@ public class AdressBookController {
 	}
 
 	/**
-	 * 주소록의 구성원을 추가한다.
+	 * 주소록의 구성원을 갱신한다.
 	 * 
 	 * @param adressBookVO
 	 * @param checkCnd
 	 */
-	@RequestMapping("/cop/adb/insertAdressBookUser.do")
+	@RequestMapping("/cop/adb/refreshAdressBookUser.do")
 	@Secured("ROLE_USER")
-	public String insertAdressBookUser(
+	public String refreshAdressBookUser(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AdressBookVO adressBookVO, 
-			@RequestParam String checkCnd, 
+			@RequestParam String source, 
 			ModelMap model) {
 
 		String[] tempId = adressBookVO.getUserIds().split(",");
+		List<AdressBookUserVO> userList = new ArrayList<AdressBookUserVO>();
 		for (int i = 0; i < tempId.length; i++) {
 			if (!tempId[i].equals("")) {
 				AdressBookUserVO adbkUser = adressBookService.selectAdbkUser(tempId[i]);
-				adressBookVO.getAdbkMan().add(adbkUser);
+				userList.add(adbkUser);
 			}
 		}
+		adressBookVO.setAdbkUserList(userList);
 
 		fill_common_code(model);
-
-		if (checkCnd.equals("regist"))
-			return "cop/adb/AdressBookRegist";
-		else {
-			model.addAttribute("writer", true);
-			return "cop/adb/AdressBookEdit";
-		}
-	}
-
-	/**
-	 * 주소록의 구성원을 삭제한다.
-	 * 
-	 * @param adressBookVO
-	 * @param checkWord
-	 * @param checkCnd
-	 */
-	@RequestMapping("/cop/adb/deleteAdressBookUser.do")
-	@Secured("ROLE_USER")
-	public String deleteAdressBookUser(
-			@ModelAttribute("searchVO") SearchVO searchVO,
-			@ModelAttribute AdressBookVO adressBookVO, 
-			@RequestParam String checkWord, 
-			@RequestParam String checkCnd, 
-			ModelMap model) {
-
-		String[] tempId = adressBookVO.getUserIds().split(",");
-
-		String id = "";
-		for (int i = 0; i < tempId.length; i++) {
-
-			if (tempId[i].equals(checkWord)) {
-				continue;
-			}
-
-			if (!tempId[i].equals("")) {
-				AdressBookUserVO adbkUser = adressBookService.selectAdbkUser(tempId[i]);
-				adressBookVO.getAdbkMan().add(adbkUser);
-			}
-			id += tempId[i] + ",";
-		}
-		adressBookVO.setUserIds(id);
-
-		fill_common_code(model);
-
-		if (checkCnd.equals("regist"))
+		if (source.equals("regist"))
 			return "cop/adb/AdressBookRegist";
 		else {
 			model.addAttribute("writer", true);

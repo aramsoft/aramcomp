@@ -137,15 +137,6 @@
 	    	<spring:message code="cop.adres" />
 	    </th>
 	    <td colspan="3">
-	      	<form:hidden path="zip" size="6" />
-          	<input name="v_zip" size="7" readOnly value="<c:out value='${fn:substring(nameCardVO.zip,0,3)}-${fn:substring(nameCardVO.zip,3,6)}'/>"  />
-            <a href="#" onclick="fn_aram_ZipSearch(document.forms[0].zip, document.forms[0].v_zip, document.forms[0].adres); return false;">
-                <img src="${pageContext.request.contextPath}/images/cmm/icon/search.gif" alt="" />(지번 검색)
-            </a>
-            <a href="#" onclick="fn_aram_RdNmSearch(document.forms[0].zip, document.forms[0].v_zip, document.forms[0].adres); return false;">
-                <img src="${pageContext.request.contextPath}/images/cmm/icon/search.gif" alt="" />(도로명 검색)
-            </a>
-	      	<br>
 	      	<form:input path="adres" size="80" readonly="true" />
 	      	<br>
 	      	<form:input path="detailAdres" size="80" maxlength="80" />
@@ -187,8 +178,6 @@
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/validator.do"></script>
 <validator:javascript formName="nameCardVO" staticJavascript="false" xhtml="true" cdata="false"/>
-
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/sym/ccm/zip/ZipPopup.js"></script>
 
 <script type="text/javascript">
 

@@ -43,8 +43,7 @@
 
 <form:hidden path="adbkId" />
 <form:hidden path="userIds" />
-<input type="hidden" name="checkWord" value="">
-<input type="hidden" name="checkCnd"  value="">
+<input type="hidden" name="source" value="" />
 
 <table class="table-register" summary="주소록 등록할 데이터 항목을 보여준다.">
 	<tr>
@@ -116,13 +115,13 @@
 	</tr>
 </thead>
 <tbody>
-	<c:if test="${fn:length(adressBookVO.adbkMan) == 0}">
+	<c:if test="${fn:length(adressBookVO.adbkUserList) == 0}">
 	<tr>
 		<td class="lt_text3" colspan="7"><spring:message code="common.nodata.msg" /></td>
 	</tr>
 	</c:if>
 	
-	<c:forEach var="result" items="${adressBookVO.adbkMan}" varStatus="status">
+	<c:forEach var="result" items="${adressBookVO.adbkUserList}" varStatus="status">
 	<tr>
 	    <c:if test="${fn:length(result.emplyrId) != 0}">
 		<td class="lt_text3"><c:out value="${result.emplyrId}" /></td>
@@ -217,19 +216,26 @@ function fn_aram_insert_user(userId){
 	}
 	varForm.userIds.value += userId + ",";
 
-    varForm.checkCnd.value = "regist";
-	varForm.action = "${pageContext.request.contextPath}/cop/adb/insertAdressBookUser.do";
+	varForm.source.value = 'regist';
+	varForm.action = "${pageContext.request.contextPath}/cop/adb/refreshAdressBookUser.do";
 	varForm.submit();
 }
 
 function fn_aram_delete_user(userId){
     var varForm = document.getElementById("adressBookVO");
-    varForm.checkWord.value = userId;
-    
-    varForm.checkCnd.value = "regist";
-    varForm.action = "${pageContext.request.contextPath}/cop/adb/deleteAdressBookUser.do";
-    varForm.submit();
-	return true;
+	var checkId = varForm.userIds.value.split(",");
+
+	var userIds = "";
+	for(var i = 0; i < checkId.length; i++){
+		if(userId != checkId[i]){
+			userIds += checkId[i] + ",";
+		}
+	}
+	varForm.userIds.value = userIds;
+	
+	varForm.source.value = 'regist';
+	varForm.action = "${pageContext.request.contextPath}/cop/adb/refreshAdressBookUser.do";
+	varForm.submit();
 }
 
 function fn_aram_popup_nameCard(ncrdId){

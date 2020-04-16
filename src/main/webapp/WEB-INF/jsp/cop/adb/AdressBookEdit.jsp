@@ -44,8 +44,7 @@
 
 <form:hidden path="adbkId" />
 <form:hidden path="userIds" />
-<input type="hidden" name="checkWord" value="">
-<input type="hidden" name="checkCnd"  value="">
+<input type="hidden" name="source" value="" />
 
 <table class="table-register" summary="주소록의 수정에 대한 데이터 항목을 제공한다.">
 	<tr>
@@ -124,13 +123,13 @@
 	</tr>
 </thead>
 <tbody>
-	<c:if test="${fn:length(adressBookVO.adbkMan) == 0}">
+	<c:if test="${fn:length(adressBookVO.adbkUserList) == 0}">
 	<tr>
 	    <td class="lt_text3" colspan="7"><spring:message code="common.nodata.msg" /></td>
 	</tr>
 	</c:if>
 	
-	<c:forEach var="result" items="${adressBookVO.adbkMan}" varStatus="status">
+	<c:forEach var="result" items="${adressBookVO.adbkUserList}" varStatus="status">
 	<tr>
 
 		<c:if test="${fn:length(result.emplyrId) != 0}">
@@ -226,19 +225,27 @@ function fn_aram_insert_user(userId){
 		}
 	}
 	varForm.userIds.value += userId + ",";
-
-    varForm.checkCnd.value = "update";
-	varForm.action = "${pageContext.request.contextPath}/cop/adb/insertAdressBookUser.do";
+	
+	varForm.source.value = 'edit';
+	varForm.action = "${pageContext.request.contextPath}/cop/adb/refreshAdressBookUser.do";
 	varForm.submit();
 }
 
 function fn_aram_delete_user(userId){
     var varForm = document.getElementById("adressBookVO");
-    varForm.checkWord.value = userId;
-    
-    varForm.checkCnd.value = "update";
-    varForm.action = "${pageContext.request.contextPath}/cop/adb/deleteAdressBookUser.do";
-    varForm.submit();
+	var checkId = varForm.userIds.value.split(",");
+
+	var userIds = "";
+	for(var i = 0; i < checkId.length; i++){
+		if(userId != checkId[i]){
+			userIds += checkId[i] + ",";
+		}
+	}
+	varForm.userIds.value = userIds;
+	
+	varForm.source.value = 'edit';
+	varForm.action = "${pageContext.request.contextPath}/cop/adb/refreshAdressBookUser.do";
+	varForm.submit();
 }
 
 function fn_aram_popup_nameCard(ncrdId){

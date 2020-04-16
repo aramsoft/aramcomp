@@ -60,7 +60,7 @@ public class AdressBookService extends EgovAbstractServiceImpl {
 	 */
 	public AdressBookVO selectAdressBook(AdressBookVO adressBookVO) {
 		AdressBookVO resultVo = adressBookMapper.selectAdressBook(adressBookVO);
-		resultVo.setAdbkMan(adressBookMapper.selectUserList(adressBookVO));
+		resultVo.setAdbkUserList(adressBookMapper.selectUserList(adressBookVO));
 		return resultVo;
 	}
 
@@ -77,12 +77,12 @@ public class AdressBookService extends EgovAbstractServiceImpl {
 	
 			adressBookMapper.insertAdressBook(adressBookVO);
 	
-			AdressBookUserVO adbkUserVO = new AdressBookUserVO();
-			for (int i = 0; i < adressBookVO.getAdbkMan().size(); i++) {
-				adbkUserVO = adressBookVO.getAdbkMan().get(i);
-				adbkUserVO.setAdbkUserId(adbkUserIdGnrService.getNextStringId());
-				adbkUserVO.setAdbkId(adressBookVO.getAdbkId());
-				adressBookMapper.insertAdressBookUser(adbkUserVO);
+			AdressBookUserVO newAdbkUserVO = new AdressBookUserVO();
+			for (int i = 0; i < adressBookVO.getAdbkUserList().size(); i++) {
+				newAdbkUserVO = adressBookVO.getAdbkUserList().get(i);
+				newAdbkUserVO.setAdbkUserId(adbkUserIdGnrService.getNextStringId());
+				newAdbkUserVO.setAdbkId(adressBookVO.getAdbkId());
+				adressBookMapper.insertAdressBookUser(newAdbkUserVO);
 			}
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
@@ -98,66 +98,49 @@ public class AdressBookService extends EgovAbstractServiceImpl {
 
 		adressBookMapper.updateAdressBook(adressBookVO);
 
-		List<AdressBookUserVO> temp = adressBookMapper.selectUserList(adressBookVO);
+		List<AdressBookUserVO> oldUserList = adressBookMapper.selectUserList(adressBookVO);
 
-		for (int i = 0; i < temp.size(); i++) {
-			if (temp.get(i).getEmplyrId() == null)
-				temp.get(i).setEmplyrId("");
-
-			if (temp.get(i).getNcrdId() == null)
-				temp.get(i).setNcrdId("");
-		}
-
-		AdressBookUserVO adbkUserVO = null;
-		for (int i = 0; i < adressBookVO.getAdbkMan().size(); i++) {
-			adbkUserVO = adressBookVO.getAdbkMan().get(i);
-			if (adbkUserVO.getEmplyrId() == null)
-				adbkUserVO.setEmplyrId("");
-
-			if (adbkUserVO.getNcrdId() == null)
-				adbkUserVO.setNcrdId("");
-		}
-
-		AdressBookUserVO tempUserVO = null;
+		AdressBookUserVO newAdbkUserVO = null;
+		AdressBookUserVO oldAdbkUserVO = null;
 		try {
-			for (int i = 0; i < adressBookVO.getAdbkMan().size(); i++) {
-				adbkUserVO = adressBookVO.getAdbkMan().get(i);
+			for (int i = 0; i < adressBookVO.getAdbkUserList().size(); i++) {
+				newAdbkUserVO = adressBookVO.getAdbkUserList().get(i);
 	
 				boolean check = false;
-				for (int j = 0; j < temp.size(); j++) {
-					tempUserVO = temp.get(j);
-					if (adbkUserVO.getEmplyrId().equals(tempUserVO.getEmplyrId())
-							&& adbkUserVO.getNcrdId().equals(tempUserVO.getNcrdId())) {
+				for (int j = 0; j < oldUserList.size(); j++) {
+					oldAdbkUserVO = oldUserList.get(j);
+					if (newAdbkUserVO.getEmplyrId().equals(oldAdbkUserVO.getEmplyrId())
+							&& newAdbkUserVO.getNcrdId().equals(oldAdbkUserVO.getNcrdId())) {
 						check = true;
 						break;
 					}
 				}
 				
 				if (!check) {
-					adbkUserVO.setAdbkUserId(adbkUserIdGnrService.getNextStringId());
-					adbkUserVO.setAdbkId(adressBookVO.getAdbkId());
-					adressBookMapper.insertAdressBookUser(adbkUserVO);
+					newAdbkUserVO.setAdbkUserId(adbkUserIdGnrService.getNextStringId());
+					newAdbkUserVO.setAdbkId(adressBookVO.getAdbkId());
+					adressBookMapper.insertAdressBookUser(newAdbkUserVO);
 				}
 			}
 		} catch (FdlException e) {
 			throw new RuntimeException(e);
 		}
 
-		for (int i = 0; i < temp.size(); i++) {
-			tempUserVO = temp.get(i);
+		for (int i = 0; i < oldUserList.size(); i++) {
+			oldAdbkUserVO = oldUserList.get(i);
 
 			boolean check = false;
-			for (int j = 0; j < adressBookVO.getAdbkMan().size(); j++) {
-				adbkUserVO = adressBookVO.getAdbkMan().get(j);
-				if (tempUserVO.getEmplyrId().equals(adbkUserVO.getEmplyrId())
-						&& tempUserVO.getNcrdId().equals(adbkUserVO.getNcrdId())) {
+			for (int j = 0; j < adressBookVO.getAdbkUserList().size(); j++) {
+				newAdbkUserVO = adressBookVO.getAdbkUserList().get(j);
+				if (oldAdbkUserVO.getEmplyrId().equals(newAdbkUserVO.getEmplyrId())
+						&& oldAdbkUserVO.getNcrdId().equals(newAdbkUserVO.getNcrdId())) {
 					check = true;
 					break;
 				}
 			}
 			
 			if (!check) {
-				adressBookMapper.deleteAdressBookUser(tempUserVO);
+				adressBookMapper.deleteAdressBookUser(oldAdbkUserVO);
 			}
 		}
 	}
@@ -168,7 +151,7 @@ public class AdressBookService extends EgovAbstractServiceImpl {
 	 * @param adressBookVO	AdressBookVO
 	 */
 	public void deleteAdressBook(AdressBookVO adressBookVO) {
-		adressBookMapper.updateAdressBook(adressBookVO);
+		adressBookMapper.deleteAdressBook(adressBookVO);
 	}
 
 	/**

@@ -38,7 +38,7 @@ public class AdressBookVO extends BaseVO {
 	private String userIds = "";
 
 	/** 주소록구성원 */
-	private List<AdressBookUserVO> adbkMan = new ArrayList<AdressBookUserVO>();
+	private List<AdressBookUserVO> adbkUserList = new ArrayList<AdressBookUserVO>();
 
 	// domain
 	/**
@@ -162,20 +162,20 @@ public class AdressBookVO extends BaseVO {
 	}
 
 	/**
-	 * adbkMan attribute를 리턴한다.
+	 * adbkUserList attribute를 리턴한다.
 	 * 
-	 * @return 	the adbkMan
+	 * @return 	the adbkUserList
 	 */
-	public List<AdressBookUserVO> getAdbkMan() {
-		return adbkMan;
+	public List<AdressBookUserVO> getAdbkUserList() {
+		return adbkUserList;
 	}
 	/**
-	 * adbkMan attribute 값을 설정한다.
+	 * adbkUserList attribute 값을 설정한다.
 	 * 
-	 * @param 	adbkMan	the adbkMan to set
+	 * @param 	adbkUserList	the adbkUserList to set
 	 */
-	public void setAdbkMan(List<AdressBookUserVO> adbkMan) {
-		this.adbkMan = adbkMan;
+	public void setAdbkUserList(List<AdressBookUserVO> adbkUserList) {
+		this.adbkUserList = adbkUserList;
 	}
 
 }

@@ -97,7 +97,7 @@
 	<tr>
 	    <th scope="col" width="7%" >No.</th>
 	    <th scope="col" width="15%">요청ID</th>
-	    <th scope="col" width="10%">발생일자</th>
+	    <th scope="col" width="20%">발생일자</th>
 	    <th scope="col"            >URL</th>
 	    <th scope="col" width="10%">요청자</th>
 	    <th scope="col" width="15%">요청자IP</th>

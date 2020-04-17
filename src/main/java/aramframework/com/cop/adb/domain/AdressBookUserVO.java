@@ -110,9 +110,8 @@ public class AdressBookUserVO extends BaseVO {
 	 * @param 	emplyrId	the emplyrId to set
 	 */
 	public void setEmplyrId(String emplyrId) {
-		this.emplyrId = emplyrId;
 		if( emplyrId == null ) this.emplyrId = "";
-		this.emplyrId = this.emplyrId.trim();
+		else				   this.emplyrId = emplyrId.trim();
 	}
 
 	/**
@@ -129,9 +128,8 @@ public class AdressBookUserVO extends BaseVO {
 	 * @param 	ncrdId	the ncrdId to set
 	 */
 	public void setNcrdId(String ncrdId) {
-		this.ncrdId = ncrdId;
 		if( ncrdId == null ) this.ncrdId = "";
-		this.ncrdId = this.ncrdId.trim();
+		else				 this.ncrdId = ncrdId.trim();
 	}
 
 	/**

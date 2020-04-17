@@ -182,8 +182,9 @@
 		<![CDATA[
 			DELETE 
 			  FROM COMTN_ADBK_USER 
-			 WHERE (EMPLYR_ID = #{emplyrId} AND ADBK_ID = #{adbkId} )
-			       AND (NCRD_ID = #{ncrdId} AND ADBK_ID = #{adbkId} )
+			 WHERE ((EMPLYR_ID IS NULL OR EMPLYR_ID = #{emplyrId}) 
+			        AND (NCRD_ID IS NULL OR NCRD_ID = #{ncrdId}))
+			   AND ADBK_ID = #{adbkId} 
 		]]>
 	</delete>	
 	

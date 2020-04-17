@@ -105,7 +105,7 @@
 <table class="table-list" summary="주소록에  대한 주소록구성원 목록을 제공한다.">
 <thead>
 	<tr>
-	    <th width="15%">아이디</th>
+	    <th width="20%">아이디</th>
 	    <th width="10%">이름 </th>
 	    <th            >메일</th>
 	    <th width="12%">집전화번호</th>
@@ -227,7 +227,7 @@ function fn_aram_delete_user(userId){
 
 	var userIds = "";
 	for(var i = 0; i < checkId.length; i++){
-		if(userId != checkId[i]){
+		if(checkId[i] != "" && userId != checkId[i]) {
 			userIds += checkId[i] + ",";
 		}
 	}

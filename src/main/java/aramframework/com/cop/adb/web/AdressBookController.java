@@ -157,9 +157,12 @@ public class AdressBookController {
 		AdressBookUserVO adbkUser = null;
 		for (int i = 0; i < adressBookVO.getAdbkUserList().size(); i++) {
 			adbkUser = adressBookVO.getAdbkUserList().get(i);
-			if (adbkUser.getEmplyrId().equals("")) {
+			if (adbkUser.getEmplyrId().equals("") 
+					&& !adbkUser.getNcrdId().equals("")) {
 				userIds += adbkUser.getNcrdId() + ",";
-			} else {
+			} 
+			if (adbkUser.getNcrdId().equals("") 
+					&& !adbkUser.getEmplyrId().equals("")) {
 				userIds += adbkUser.getEmplyrId() + ",";
 			}
 		}
@@ -240,6 +243,39 @@ public class AdressBookController {
 	}
 
 	/**
+	 * 주소록의 구성원을 갱신한다.
+	 * 
+	 * @param adressBookVO
+	 * @param checkCnd
+	 */
+	@RequestMapping("/cop/adb/refreshAdressBookUser.do")
+	@Secured("ROLE_USER")
+	public String refreshAdressBookUser(
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute AdressBookVO adressBookVO, 
+			@RequestParam String source, 
+			ModelMap model) {
+
+		String[] tempId = adressBookVO.getUserIds().split(",");
+		List<AdressBookUserVO> userList = new ArrayList<AdressBookUserVO>();
+		for (int i = 0; i < tempId.length; i++) {
+			if (!tempId[i].equals("")) {
+				AdressBookUserVO adbkUser = adressBookService.selectAdbkUser(tempId[i]);
+				userList.add(adbkUser);
+			}
+		}
+		adressBookVO.setAdbkUserList(userList);
+
+		fill_common_code(model);
+		if (source.equals("regist"))
+			return "cop/adb/AdressBookRegist";
+		else {
+			model.addAttribute("writer", true);
+			return "cop/adb/AdressBookEdit";
+		}
+	}
+
+	/**
 	 * 주소록 등록가능한 구성원을 조회한다.
 	 * 
 	 * @param adressBookUserVO
@@ -275,39 +311,6 @@ public class AdressBookController {
 		model.addAttribute(paginationInfo);
 
 		return "cop/adb/AdressBookPopup";
-	}
-
-	/**
-	 * 주소록의 구성원을 갱신한다.
-	 * 
-	 * @param adressBookVO
-	 * @param checkCnd
-	 */
-	@RequestMapping("/cop/adb/refreshAdressBookUser.do")
-	@Secured("ROLE_USER")
-	public String refreshAdressBookUser(
-			@ModelAttribute("searchVO") SearchVO searchVO,
-			@ModelAttribute AdressBookVO adressBookVO, 
-			@RequestParam String source, 
-			ModelMap model) {
-
-		String[] tempId = adressBookVO.getUserIds().split(",");
-		List<AdressBookUserVO> userList = new ArrayList<AdressBookUserVO>();
-		for (int i = 0; i < tempId.length; i++) {
-			if (!tempId[i].equals("")) {
-				AdressBookUserVO adbkUser = adressBookService.selectAdbkUser(tempId[i]);
-				userList.add(adbkUser);
-			}
-		}
-		adressBookVO.setAdbkUserList(userList);
-
-		fill_common_code(model);
-		if (source.equals("regist"))
-			return "cop/adb/AdressBookRegist";
-		else {
-			model.addAttribute("writer", true);
-			return "cop/adb/AdressBookEdit";
-		}
 	}
 
 	/**

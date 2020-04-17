@@ -106,17 +106,18 @@ public class AdressBookService extends EgovAbstractServiceImpl {
 			for (int i = 0; i < adressBookVO.getAdbkUserList().size(); i++) {
 				newAdbkUserVO = adressBookVO.getAdbkUserList().get(i);
 	
-				boolean check = false;
+				boolean exist = false;
 				for (int j = 0; j < oldUserList.size(); j++) {
 					oldAdbkUserVO = oldUserList.get(j);
 					if (newAdbkUserVO.getEmplyrId().equals(oldAdbkUserVO.getEmplyrId())
 							&& newAdbkUserVO.getNcrdId().equals(oldAdbkUserVO.getNcrdId())) {
-						check = true;
+						exist = true;
 						break;
 					}
 				}
 				
-				if (!check) {
+				// old에는 없고 new에는 있는 경우 새로 추가
+				if (!exist) {
 					newAdbkUserVO.setAdbkUserId(adbkUserIdGnrService.getNextStringId());
 					newAdbkUserVO.setAdbkId(adressBookVO.getAdbkId());
 					adressBookMapper.insertAdressBookUser(newAdbkUserVO);
@@ -129,17 +130,18 @@ public class AdressBookService extends EgovAbstractServiceImpl {
 		for (int i = 0; i < oldUserList.size(); i++) {
 			oldAdbkUserVO = oldUserList.get(i);
 
-			boolean check = false;
+			boolean exist = false;
 			for (int j = 0; j < adressBookVO.getAdbkUserList().size(); j++) {
 				newAdbkUserVO = adressBookVO.getAdbkUserList().get(j);
 				if (oldAdbkUserVO.getEmplyrId().equals(newAdbkUserVO.getEmplyrId())
 						&& oldAdbkUserVO.getNcrdId().equals(newAdbkUserVO.getNcrdId())) {
-					check = true;
+					exist = true;
 					break;
 				}
 			}
 			
-			if (!check) {
+			// old에는 있고 new에는 없는 경우 삭제
+			if (!exist) {
 				adressBookMapper.deleteAdressBookUser(oldAdbkUserVO);
 			}
 		}

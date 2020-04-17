@@ -101,7 +101,7 @@
 	    <th>
 	    	주소
 	    </th>
-	    <td colspan="3"><c:out value="(${fn:substring(nameCardVO.zip,0,3)}-${fn:substring(nameCardVO.zip,3,6)}) ${nameCardVO.adres}" /></td>
+	    <td colspan="3">${nameCardVO.adres}" /></td>
 	</tr>   
 	<tr> 
 	    <th >

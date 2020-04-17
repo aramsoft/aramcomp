@@ -141,14 +141,9 @@
       	<![CDATA[
 			 SELECT ADBK_USER_ID 			As "adbkUserId"
 			 	  ,	ADBK_ID 				As "adbkId"
-			 	  ,	COALESCE(EMPLYR_ID,'') 		As "emplyrId"
-			 	  ,	COALESCE(NCRD_ID,'') 		As "ncrdId"
+			 	  ,	COALESCE(EMPLYR_ID,'') 	As "emplyrId"
+			 	  ,	COALESCE(NCRD_ID,'') 	As "ncrdId"
 			 	  , NM 						As "nm"
-			 	  ,	EMAIL_ADRES 			As "emailAdres"
-			 	  ,	HOUSE_TELNO 			As "homeTelno"
-			 	  ,	MBTLNUM 				As "moblphonNo"
-			 	  , OFFM_TELNO 				As "offmTelno"
-			 	  ,	FXNUM 					As "fxnum"
 			   FROM COMTN_ADBK_USER
 			  WHERE	ADBK_ID = #{adbkId}
 			  ORDER BY NM ASC					
@@ -164,22 +159,12 @@
 				  ,	EMPLYR_ID
 				  ,	NCRD_ID
 				  ,	NM 
-				  ,	EMAIL_ADRES
-				  ,	HOUSE_TELNO
-				  ,	MBTLNUM
-				  ,	OFFM_TELNO
-				  ,	FXNUM
 			) VALUES ( 
 					#{adbkUserId}
 				  ,	#{adbkId}
 				  ,	#{emplyrId}
 				  ,	#{ncrdId}
 				  ,	#{nm}
-				  ,	#{emailAdres}
-				  ,	#{homeTelno}
-				  ,	#{moblphonNo}
-				  ,	#{offmTelno}
-				  ,	#{fxnum}
 			)		
 		]]>
 	</insert>

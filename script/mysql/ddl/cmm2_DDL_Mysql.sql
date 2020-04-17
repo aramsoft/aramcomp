@@ -608,11 +608,6 @@ CREATE TABLE COMTN_ADBK_USER
 	EMPLYR_ID             	varchar(20) 	NULL,
 	NCRD_ID               	char(20)  		NULL,
 	NM                    	varchar(50)  	NULL,
-	EMAIL_ADRES           	varchar(50)  	NULL,
-	MBTLNUM               	varchar(20)  	NULL,
-	FXNUM                 	varchar(20)  	NULL,
-	OFFM_TELNO            	varchar(20) 	NULL,
-	HOUSE_TELNO           	varchar(20)  	NULL,
 	CONSTRAINT  COMTN_ADBK_USER_PK PRIMARY KEY (ADBK_ID, ADBK_USER_ID),
 	CONSTRAINT  COMTN_ADBK_USER_FK1 FOREIGN KEY (ADBK_ID) REFERENCES COMTN_ADBK(ADBK_ID) ON DELETE CASCADE
 );

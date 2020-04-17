@@ -154,19 +154,24 @@ public class AdressBookController {
 		adressBookVO = adressBookService.selectAdressBook(adressBookVO);
 
 		String userIds = "";
+		List<AdressBookUserVO> userList = new ArrayList<AdressBookUserVO>();
 		AdressBookUserVO adbkUser = null;
 		for (int i = 0; i < adressBookVO.getAdbkUserList().size(); i++) {
 			adbkUser = adressBookVO.getAdbkUserList().get(i);
 			if (adbkUser.getEmplyrId().equals("") 
 					&& !adbkUser.getNcrdId().equals("")) {
 				userIds += adbkUser.getNcrdId() + ",";
+				adbkUser = adressBookService.selectAdbkUser(adbkUser.getNcrdId());
 			} 
 			if (adbkUser.getNcrdId().equals("") 
 					&& !adbkUser.getEmplyrId().equals("")) {
 				userIds += adbkUser.getEmplyrId() + ",";
+				adbkUser = adressBookService.selectAdbkUser(adbkUser.getEmplyrId());
 			}
+			userList.add(adbkUser);
 		}
 		adressBookVO.setUserIds(userIds);
+		adressBookVO.setAdbkUserList(userList);
 
 		boolean writer = false;
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();

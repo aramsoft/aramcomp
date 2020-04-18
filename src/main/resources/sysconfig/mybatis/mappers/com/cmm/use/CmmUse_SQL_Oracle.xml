@@ -13,6 +13,7 @@
 			  FROM COMTC_CMMN_DETAIL_CODE
 			 WHERE USE_AT  = 'Y'
 			   AND CODE_ID = #{codeId}
+			 ORDER BY CODE ASC  
 		]]>
 	</select>
 

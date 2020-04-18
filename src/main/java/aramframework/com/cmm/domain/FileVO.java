@@ -60,7 +60,7 @@ public class FileVO extends BaseVO {
 	 */
 	public void setAtchFileId(String atchFileId) {
 		this.atchFileId = atchFileId;
-		if(atchFileId.length() != 0)
+		if(atchFileId != null && atchFileId.length() != 0)
 			this.setPathId(WebUtil.getPathId(atchFileId));
 	}
 

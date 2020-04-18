@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -139,6 +141,13 @@ public class SchdulManageController {
 			@ModelAttribute SchdulManageVO schdulManageVO, 
 			ModelMap model) {
 		
+		// 공통코드 일정종류
+		cmmUseService.populateCmmCodeList("COM030", "COM030_schdulSe");
+		// 공통코드 중요도 조회
+		cmmUseService.populateCmmCodeList("COM019", "COM019_schdulIpcr");
+		// 공통코드 반복구분 조회
+		cmmUseService.populateCmmCodeList("COM031", "COM031_reptitSe");
+
 		return "cop/smt/sim/SchdulList";
 	}
 
@@ -150,6 +159,7 @@ public class SchdulManageController {
 	@RequestMapping(value = "/cop/smt/sim/listSchdulDaily.do")
 	public String listSchdulDaily(
 			@ModelAttribute SchdulManageVO schdulManageVO, 
+			HttpServletRequest request,
 			ModelMap model) {
 
 		/* *****************************************************************
@@ -192,11 +202,9 @@ public class SchdulManageController {
 			loginVO = new LoginVO();
 		}
 		schdulManageVO.setUserId(loginVO.getUserId());
+		schdulManageVO.setTrgetId((String)request.getAttribute("curTrgetId"));
 
 		model.addAttribute("resultList", schdulManageService.selectSchdulManageRetrieve(schdulManageVO));
-
-		// 공통코드 일정종류
-		cmmUseService.populateCmmCodeList("COM030", "COM030_schdulSe");
 
 		return "cop/smt/sim/SchdulDailyList";
 	}
@@ -209,6 +217,7 @@ public class SchdulManageController {
 	@RequestMapping(value = "/cop/smt/sim/listSchdulWeek.do")
 	public String listSchdulWeek(
 			@ModelAttribute SchdulManageVO schdulManageVO, 
+			HttpServletRequest request,
 			ModelMap model) {
 
 		/* *****************************************************************
@@ -320,11 +329,9 @@ public class SchdulManageController {
 			loginVO = new LoginVO();
 		}
 		schdulManageVO.setUserId(loginVO.getUserId());
+		schdulManageVO.setTrgetId((String)request.getAttribute("curTrgetId"));
 
 		model.addAttribute("resultList", schdulManageService.selectSchdulManageRetrieve(schdulManageVO));
-
-		// 공통코드 일정종류
-		cmmUseService.populateCmmCodeList("COM030", "COM030_schdulSe");
 
 		return "cop/smt/sim/SchdulWeekList";
 	}
@@ -337,6 +344,7 @@ public class SchdulManageController {
 	@RequestMapping(value = "/cop/smt/sim/listSchdulMonth.do")
 	public String listSchdulMonth(
 			@ModelAttribute SchdulManageVO schdulManageVO, 
+			HttpServletRequest request,
 			ModelMap model) {
 
 		java.util.Calendar cal = java.util.Calendar.getInstance();
@@ -378,6 +386,7 @@ public class SchdulManageController {
 			loginVO = new LoginVO();
 		}
 		schdulManageVO.setUserId(loginVO.getUserId());
+		schdulManageVO.setTrgetId((String)request.getAttribute("curTrgetId"));
 
 		model.addAttribute("resultList", schdulManageService.selectSchdulManageRetrieve(schdulManageVO));
 
@@ -387,9 +396,6 @@ public class SchdulManageController {
 		restdeVO.setMonth(Integer.toString(iNowMonth+1));
 		
 		model.addAttribute("restdeList", restdeManageService.selectNormalMonthRestde(restdeVO));
-
-		// 공통코드 일정종류
-		cmmUseService.populateCmmCodeList("COM030", "COM030_schdulSe");
 
 		return "cop/smt/sim/SchdulMonthList";
 	}
@@ -415,13 +421,6 @@ public class SchdulManageController {
 			model.addAttribute("useDiaryManage", "true");
 		}
 
-		// 공통코드 중요도 조회
-		cmmUseService.populateCmmCodeList("COM019", "COM019_schdulIpcr");
-		// 공통코드 일정구분 조회
-		cmmUseService.populateCmmCodeList("COM030", "COM030_schdulSe");
-		// 공통코드 반복구분 조회
-		cmmUseService.populateCmmCodeList("COM031", "COM031_reptitSe");
-
 		return "cop/smt/sim/SchdulDetail";
 	}
 
@@ -443,11 +442,6 @@ public class SchdulManageController {
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SchdulManageVO schdulManageVO, 
 			ModelMap model) {
-
-		// 공통코드 중요도 조회
-		cmmUseService.populateCmmCodeList("COM019", "COM019_schdulIpcr");
-		// 공통코드 일정구분 조회
-		cmmUseService.populateCmmCodeList("COM030", "COM030_schdulSe");
 
 		return "cop/smt/sim/SchdulRegist";
 	}
@@ -520,11 +514,6 @@ public class SchdulManageController {
 		}
 		model.addAttribute("writer", writer);
 		model.addAttribute(schdulManageVO);
-
-		// 공통코드 중요도 조회
-		cmmUseService.populateCmmCodeList("COM019", "COM019_schdulIpcr");
-		// 공통코드 일정구분 조회
-		cmmUseService.populateCmmCodeList("COM030", "COM030_schdulSe");
 
 		return "cop/smt/sim/SchdulEdit";
 	}

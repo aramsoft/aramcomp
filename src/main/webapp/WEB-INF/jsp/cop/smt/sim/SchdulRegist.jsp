@@ -43,6 +43,7 @@
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
+<input type="hidden" name="trgetId" value="${curTrgetId}" />
 <table class="table-register">
 	<tr>
 	    <th width="20%">
@@ -225,16 +226,11 @@ window.onload = function() {
    	}
 };
 
-var gOpener = parent.document.all? parent.document.communityVO : parent.document.getElementById("communityVO") ;
-
 /* ********************************************************
  * 목록 으로 가기
  ******************************************************** */
 function fn_aram_list(){
     var varForm = document.getElementById("schdulManageVO");
-	if( gOpener != null) {
-		varForm.trgetId.value = gOpener.cmmntyId.value;
-	}
 	varForm.action = "${pageContext.request.contextPath}/cop/smt/sim/listSchdul.do";
     varForm.submit();
 }
@@ -247,15 +243,6 @@ function fn_aram_insert(){
 
     if(!validateSchdulManageVO(varForm)){
 		return;
-	}
-	
-	if( varForm.othbcScopeC.checked == true ) {
-		if( gOpener == null) {
-			alert("커뮤니티 ID를 얻을 수 없습니다. ");
-			return;
-		} else {	
-			varForm.trgetId.value = gOpener.cmmntyId.value;
-		}
 	}
 	
 	var schdulBgndeYYYMMDD = document.getElementById('schdulBgndeYYYMMDD').value;

@@ -1870,7 +1870,7 @@ CREATE TABLE COMTN_EVENT_MANAGE
 	EVENT_CN              	varchar(1000)   NULL,
 	CT_OCCRRNC_AT         	char(1)  		NULL,
 	PARTCPT_CT            	decimal(16)  	NULL,
-	GARDEN                	decimal(10)  	NOT NULL,
+	PSNCPA                	decimal(10)  	NOT NULL,
 	REFRN_URL             	varchar(1024)   NULL,
 	RCEPT_BGNDE           	char(8)  		NOT NULL,
 	RCEPT_ENDDE           	char(8)  		NOT NULL,

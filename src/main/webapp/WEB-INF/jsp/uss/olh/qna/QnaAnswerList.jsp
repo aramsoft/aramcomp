@@ -87,7 +87,7 @@
  	</c:if>
  	
  	<c:set var="startIndex" value="${(qnaManageVO.pageIndex-1) * qnaManageVO.recordPerPage}"/>
-	<c:forEach items="${resultList}" var="resultInfo" varStatus="status">
+	<c:forEach items="${resultList}" var="result" varStatus="status">
   	<tr>
   		<c:set var="index" value="${startIndex + status.count}"/>
 		<c:set var="reverseIndex" value="${qnaManageVO.totalRecordCount - index + 1}"/>
@@ -96,14 +96,14 @@
 		<td class="listLeft">
 			<span class="link">
     		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.qaId}"/>'); return false;">
-				<c:out value="${resultInfo.qestnSj}"/>
+				<c:out value="${result.qestnSj}"/>
     		</a>
 			</span>
 		</td>
-		<td class="lt_text3"><c:out value="${resultInfo.wrterNm}"/></td>
-		<td class="lt_text3"><c:out value="${resultInfo.qnaProcessSttusCodeNm}"/></td>
-		<td class="lt_text3"><c:out value="${resultInfo.inqireCo}"/></td>				
-		<td class="lt_text3"><c:out value='${fn:substring(resultInfo.writngDe, 0,4)}-${fn:substring(resultInfo.writngDe, 4,6)}-${fn:substring(resultInfo.writngDe, 6,8)}'/>		
+		<td class="lt_text3"><c:out value="${result.wrterNm}"/></td>
+		<td class="lt_text3"><c:out value="${result.qnaProcessSttusCodeNm}"/></td>
+		<td class="lt_text3"><c:out value="${result.inqireCo}"/></td>				
+		<td class="lt_text3"><c:out value='${fn:substring(result.writngDe, 0,4)}-${fn:substring(result.writngDe, 4,6)}-${fn:substring(result.writngDe, 6,8)}'/>		
   	</tr>   
 	</c:forEach>
 </tbody>  

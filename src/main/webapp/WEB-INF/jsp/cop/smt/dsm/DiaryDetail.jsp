@@ -135,7 +135,7 @@ function fn_aram_delete(){
     var varForm = document.getElementById("diaryManageVO");
     
 	if (confirm("<spring:message code='common.delete.msg' />")) {
-		varForm.action = "${pageContext.request.contextPath}/cop/smt/dsm/deleteDiary.do;
+		varForm.action = "${pageContext.request.contextPath}/cop/smt/dsm/deleteDiary.do";
 		varForm.submit();
 	}
 }

@@ -196,6 +196,7 @@ public class QnaManageController {
 	 */
 	@RequestMapping("/uss/olh/qna/QnaPasswordConfirm.do")
 	public String QnaPasswordConfirm(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QnaManageVO qnaManageVO, 
 			ModelMap model) 
 	throws Exception {
@@ -206,6 +207,7 @@ public class QnaManageController {
 		if (writngPassword == null || "".equals(writngPassword) ) { 
 			model.addAttribute("passwordConfirmAt", "N"); 	
 			// Q&A 상세조회 화면으로 이동.
+			model.addAttribute("message", "비밀번호가 비었습니다. 비밀번호를 입력하여 주시기 바랍니다!");
 			return "forward:/uss/olh/qna/detailQna.do";
 		}
 
@@ -217,9 +219,10 @@ public class QnaManageController {
 		if (searchCnt <= 0) { // 작성 비밀번호가 틀린 경우
 			model.addAttribute("passwordConfirmAt", "N"); 	
 			// Q&A 상세조회 화면으로 이동.
+			model.addAttribute("message", "입력하신 비밀번호가 틀렸습니다. 다시 입력하여 주시기 바랍니다!");
 			return "forward:/uss/olh/qna/detailQna.do";
 		}	
-		
+		 
 		qnaManageVO.setWritngPassword(writngPassword);
 		// Q&A를 수정할 수 있는 화면으로 이동.
 		return "forward:/uss/olh/qna/editQna.do";

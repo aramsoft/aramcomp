@@ -195,6 +195,10 @@
 <c:if test="${preview == null || preview !='true'}">
 <script type="text/javascript">
 
+window.onload = function() {
+	if("${message}" != ''){	alert("${message}");}
+};
+
 var cur_menuPos = "${curMenuPos}";
 var cur_menuNm = "${targetVO.curMenuNm}";
 

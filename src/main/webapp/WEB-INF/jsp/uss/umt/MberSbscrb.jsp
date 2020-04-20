@@ -92,7 +92,8 @@
     <tr>
         <th>
 			<span class="required_icon"></span>
-			비밀번호힌트
+			<label for="passwordHint">비밀번호힌트</label>
+        </th>
         </th>
         <td>
             <form:select path="passwordHint">
@@ -114,6 +115,29 @@
     </tr>
     <tr>
         <th>
+			<span class="required_icon"></span>
+			<label for="mberEmailAdres">이메일주소</label>
+        </th>
+        <td>
+            <form:input path="mberEmailAdres" size="40" maxlength="50" /> (추후 비빌번호찾기를 위해 반드시 필요합니다.)
+            <form:errors path="mberEmailAdres" cssClass="error" />
+        </td>
+    </tr>
+    <tr>
+        <th>
+			<span class="required_icon"></span>
+			<label for="moblphonNo">핸드폰번호</label>
+        </th>
+        <td>
+            <form:hidden path="moblphonNo" size="20" maxlength="15" value="" title="핸드폰번호"/>
+            <input type="text" name="moblphonNo1" id="moblphonNo1" size="4" maxlength="3" title="지역번호"/>
+            - <input type="text" name="moblphonNo2" id="moblphonNo2" size="5" maxlength="4" title="중간번호"/>
+            - <input type="text" name="moblphonNo3" id="moblphonNo3" size="5" maxlength="4" title="끝자리번호"/>
+            <form:errors path="moblphonNo" cssClass="error" />
+        </td>
+    </tr>
+    <tr>
+        <th>
  			<span class="norequired_icon"></span>
         	성별구분코드
         </th>
@@ -127,7 +151,7 @@
     <tr>
         <th>
 			<span class="norequired_icon"></span>
-			전화번호
+			집 전화번호
         </th>
         <td>
             <form:input path="areaNo" size="4" maxlength="3" value=""/>
@@ -154,29 +178,6 @@
     <tr>
         <th>
 			<span class="norequired_icon"></span>
-			<label for="moblphonNo">핸드폰번호</label>
-        </th>
-        <td>
-            <form:hidden path="moblphonNo" size="20" maxlength="15" value="" title="핸드폰번호"/>
-            <input type="text" name="moblphonNo1" id="moblphonNo1" size="4" maxlength="3" title="지역번호"/>
-            - <input type="text" name="moblphonNo2" id="moblphonNo2" size="5" maxlength="4" title="중간번호"/>
-            - <input type="text" name="moblphonNo3" id="moblphonNo3" size="5" maxlength="4" title="끝자리번호"/>
-            <form:errors path="moblphonNo" cssClass="error" />
-        </td>
-    </tr>
-    <tr>
-        <th>
-			<span class="required_icon"></span>
-			<label for="mberEmailAdres">이메일주소</label>
-        </th>
-        <td>
-            <form:input path="mberEmailAdres" size="40" maxlength="50" /> (추후 비빌번호찾기를 위해 반드시 필요합니다.)
-            <form:errors path="mberEmailAdres" cssClass="error" />
-        </td>
-    </tr>
-    <tr>
-        <th>
-			<span class="norequired_icon"></span>
 			우편번호
         </th>
         <td>
@@ -198,7 +199,7 @@
 			주소
         </th>
         <td>
-            <form:input path="adres" size="60" maxlength="60" readonly="true" />
+            <form:input path="adres" size="60" maxlength="60" />
             <form:errors path="adres" cssClass="error" />
         </td>
     </tr>
@@ -243,7 +244,6 @@ function fn_aram_sbscrb(){
 								 + varForm.moblphonNo2.value + "-" 
 								 + varForm.moblphonNo3.value;
 	}
-
 	if(!validateMberManageVO(varForm)){
  		return;
 	}

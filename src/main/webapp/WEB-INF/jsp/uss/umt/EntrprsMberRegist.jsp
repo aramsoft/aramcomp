@@ -47,7 +47,7 @@
     <tr>
         <th width="20%">
 			<span class="required_icon"></span>
-			기업회원아이디
+			<label for="entrprsmberId">기업회원아이디</label>
         </th>
         <td width="80%">
             <form:input path="entrprsmberId" size="20" readonly="true" maxlength="20"  onclick="javascript:fn_aram_idCheck_entrprsManage(); return false;" />
@@ -110,6 +110,50 @@
     </tr>
     <tr>
         <th>
+			<span class="required_icon"></span>
+			<label for="bizrno">사업자등록번호</label>
+        </th>
+        <td>
+            <form:input path="bizrno" size="20" maxlength="10" />
+            <form:errors path="bizrno" cssClass="error"/>
+        </td>
+    </tr>
+    <tr>
+        <th>
+			<span class="required_icon"></span>
+			회사전화번호
+        </th>
+        <td>
+        	<form:input path="areaNo" size="4" maxlength="3" />
+            - <form:input path="entrprsMiddleTelno" size="5" maxlength="4" />
+            - <form:input path="entrprsEndTelno" size="5" maxlength="4" />
+            <form:errors path="areaNo" cssClass="error"/>
+            <form:errors path="entrprsMiddleTelno" cssClass="error"/>
+            <form:errors path="entrprsEndTelno" cssClass="error"/>
+        </td>
+    </tr>
+    <tr>
+        <th>
+			<span class="required_icon"></span>
+			<label for="applcntNm">담당자이름</label>
+        </th>
+        <td>
+            <form:input path="applcntNm" size="20" maxlength="20" />
+            <form:errors path="applcntNm" cssClass="error"/>
+        </td>
+    </tr>
+    <tr>
+        <th>
+ 			<span class="required_icon"></span>
+ 			<label for="applcntEmailAdres">담당자이메일주소</label>
+         </th>
+        <td>
+            <form:input path="applcntEmailAdres" size="40" maxlength="50" />
+            <form:errors path="applcntEmailAdres" cssClass="error"/>
+        </td>
+    </tr>
+    <tr>
+        <th>
  			<span class="norequired_icon"></span>
         	업종코드
         </th>
@@ -146,36 +190,12 @@
     </tr>
     <tr>
         <th>
-			<span class="required_icon"></span>
-			<label for="bizrno">사업자등록번호</label>
-        </th>
-        <td>
-            <form:input path="bizrno" size="20" maxlength="10" />
-            <form:errors path="bizrno" cssClass="error"/>
-        </td>
-    </tr>
-    <tr>
-        <th>
  			<span class="norequired_icon"></span>
         	<label for="jurirno">법인등록번호</label>
         </th>
         <td>
             <form:input path="jurirno" size="20" maxlength="13" />
             <form:errors path="jurirno" cssClass="error"/>
-        </td>
-    </tr>
-    <tr>
-        <th>
-			<span class="required_icon"></span>
-			회사전화번호
-        </th>
-        <td>
-        	<form:input path="areaNo" size="4" maxlength="3" />
-            - <form:input path="entrprsMiddleTelno" size="5" maxlength="4" />
-            - <form:input path="entrprsEndTelno" size="5" maxlength="4" />
-            <form:errors path="areaNo" cssClass="error"/>
-            <form:errors path="entrprsMiddleTelno" cssClass="error"/>
-            <form:errors path="entrprsEndTelno" cssClass="error"/>
         </td>
     </tr>
     <tr>
@@ -193,7 +213,7 @@
     </tr>
     <tr>
         <th>
-			<span class="required_icon"></span>
+			<span class="norequired_icon"></span>
 			우편번호
         </th>
         <td>
@@ -211,11 +231,11 @@
     </tr>
     <tr>
         <th>
-            <span class="required_icon"></span>
+            <span class="norequired_icon"></span>
 			주소
         </th>
         <td>
-            <form:input path="adres" size="60" maxlength="60" readonly="true" />
+            <form:input path="adres" size="60" maxlength="60" />
             <form:errors path="adres" cssClass="error"/>
         </td>
     </tr>
@@ -226,26 +246,6 @@
         </th>
         <td>
             <form:input path="detailAdres" size="60"  maxlength="60" />
-        </td>
-    </tr>
-    <tr>
-        <th>
-			<span class="required_icon"></span>
-			<label for="applcntNm">신청자이름</label>
-        </th>
-        <td>
-            <form:input path="applcntNm" size="20" maxlength="20" />
-            <form:errors path="applcntNm" cssClass="error"/>
-        </td>
-    </tr>
-    <tr>
-        <th>
- 			<span class="required_icon"></span>
- 			<label for="applcntEmailAdres">신청자이메일주소</label>
-         </th>
-        <td>
-            <form:input path="applcntEmailAdres" size="40" maxlength="50" />
-            <form:errors path="applcntEmailAdres" cssClass="error"/>
         </td>
     </tr>
     <tr>

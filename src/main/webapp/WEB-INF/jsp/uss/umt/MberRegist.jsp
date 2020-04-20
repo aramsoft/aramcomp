@@ -87,7 +87,7 @@
     <tr>
         <th>
 			<span class="required_icon"></span>
-			비밀번호힌트
+			<label for="passwordHint">비밀번호힌트</label>
         </th>
         <td>
             <form:select path="passwordHint" title="비밀번호힌트">
@@ -109,6 +109,29 @@
     </tr>
     <tr>
         <th>
+			<span class="required_icon"></span>
+			<label for="mberEmailAdres">이메일주소</label>
+        </th>
+        <td>
+            <form:input path="mberEmailAdres" title="이메일주소" size="40" maxlength="50" />
+            <form:errors path="mberEmailAdres" cssClass="error" />
+        </td>
+    </tr>
+    <tr>
+        <th>
+			<span class="required_icon"></span>
+			<label for="moblphonNo">핸드폰번호</label>
+        </th>
+        <td>
+            <form:hidden path="moblphonNo" size="20" maxlength="15" title="핸드폰번호"/>
+            <input type="text" name="moblphonNo1" id="moblphonNo1" size="4" maxlength="3" title="지역번호"/>
+            - <input type="text" name="moblphonNo2" id="moblphonNo2" size="5" maxlength="4" title="중간번호"/>
+            - <input type="text" name="moblphonNo3" id="moblphonNo3" size="5" maxlength="4" title="끝자리번호"/>
+            <form:errors path="moblphonNo" cssClass="error" />
+        </td>
+    </tr>
+    <tr>
+        <th>
   			<span class="norequired_icon"></span>
         	성별구분코드
         </th>
@@ -121,7 +144,7 @@
     </tr>
     <tr>
         <th>
-			<span class="required_icon"></span>
+			<span class="norequired_icon"></span>
 			전화번호
         </th>
         <td>
@@ -148,29 +171,6 @@
     </tr>
     <tr>
         <th>
-			<span class="required_icon"></span>
-			<label for="moblphonNo">핸드폰번호</label>
-        </th>
-        <td>
-            <form:hidden path="moblphonNo" size="20" maxlength="15" title="핸드폰번호"/>
-            <input type="text" name="moblphonNo1" id="moblphonNo1" size="4" maxlength="3" title="지역번호"/>
-            - <input type="text" name="moblphonNo2" id="moblphonNo2" size="5" maxlength="4" title="중간번호"/>
-            - <input type="text" name="moblphonNo3" id="moblphonNo3" size="5" maxlength="4" title="끝자리번호"/>
-            <form:errors path="moblphonNo" cssClass="error" />
-        </td>
-    </tr>
-    <tr>
-        <th>
-			<span class="required_icon"></span>
-			<label for="mberEmailAdres">이메일주소</label>
-        </th>
-        <td>
-            <form:input path="mberEmailAdres" title="이메일주소" size="40" maxlength="50" />
-            <form:errors path="mberEmailAdres" cssClass="error" />
-        </td>
-    </tr>
-    <tr>
-        <th>
 			<span class="norequired_icon"></span>
 			우편번호
         </th>
@@ -190,7 +190,7 @@
     <tr>
         <th>
 			<span class="norequired_icon"></span>
-			주소
+			<label for="adres">주소</label>
         </th>
         <td>
             <form:input path="adres" title="주소" size="60" maxlength="60" />

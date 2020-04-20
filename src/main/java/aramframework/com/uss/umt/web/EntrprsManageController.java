@@ -160,10 +160,11 @@ public class EntrprsManageController {
 		groupAuthorService.insertGroupAuthor(groupAuthorVO);
 		
 		String message = MessageHelper.getMessage("success.common.insert")
-		   			   + "\n\n사용자 승인 후 사용하시기 바랍니다.";
+		   			   + "사용자 승인 후 사용하시기 바랍니다.";
 		model.addAttribute("message", message);
 		
-		return "uss/umt/SbscrbSuccess";
+		model.addAttribute("redirectURL", "/uss/umt/stplatEntrprsMberView.do");
+		return "cmm/redirect";
 	}
 
 	/**

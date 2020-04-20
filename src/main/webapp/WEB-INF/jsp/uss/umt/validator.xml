@@ -23,7 +23,7 @@
 	                <var-value>50</var-value>
                 </var>
             </field>
-            <field property="password" depends="required, password1, password2, password3, password4">
+            <field property="password" depends="required, password1, password3, password4">
                 <arg0 key="비밀번호" resource="false"/>
             </field>
             <field property="passwordHint" depends="required">
@@ -69,10 +69,7 @@
 	                <var-value>4</var-value>
                 </var>
             </field>
-            <field property="zip" depends="required">
-                <arg0 key="우편번호" resource="false"/>
-            </field>
-            <field property="adres" depends="required, maxlength">
+            <field property="adres" depends="maxlength">
                 <arg0 key="주소" resource="false"/>
                 <arg1 key="100" resource="false"/>
                 <var>
@@ -81,15 +78,15 @@
                 </var>
             </field>
             <field property="applcntNm" depends="required">
-                <arg0 key="신청자이름" resource="false"/>
+                <arg0 key="담당자이름" resource="false"/>
             </field>
             <!-- 
             <field property="applcntIhidnum" depends="required, ihidnum">
-                <arg0 key="신청자주민등록번호" resource="false"/>
+                <arg0 key="담당자주민등록번호" resource="false"/>
             </field>
              -->
             <field property="applcntEmailAdres" depends="required, email,maxlength">
-                <arg0 key="신청자이메일주소" resource="false"/>
+                <arg0 key="담당자이메일주소" resource="false"/>
                 <arg1 key="50" resource="false"/>
                 <var>
 	                <var-name>maxlength</var-name>
@@ -118,7 +115,7 @@
 	                <var-value>50</var-value>
                 </var>
             </field>
-            <field property="password" depends="required, password1, password2, password3, password4">
+            <field property="password" depends="required, password1, password3, password4">
                 <arg0 key="비밀번호" resource="false"/>
             </field>
             <field property="passwordHint" depends="required">
@@ -130,6 +127,22 @@
                 <var>
 	                <var-name>maxlength</var-name>
 	                <var-value>100</var-value>
+                </var> 
+            </field>
+            <field property="mberEmailAdres" depends="required, email, maxlength">
+                <arg0 key="이메일주소" resource="false"/>
+                <arg1 key="50" resource="false"/>
+                <var>
+	                <var-name>maxlength</var-name>
+	                <var-value>50</var-value>
+                </var>
+            </field>
+            <field property="moblphonNo" depends="required, maxlength">
+                <arg0 key="핸드폰번호" resource="false"/>
+                <arg1 key="15" resource="false"/>
+                <var>
+	                <var-name>maxlength</var-name>
+	                <var-value>15</var-value>
                 </var>
             </field>
             <field property="areaNo" depends="maxlength, integer">
@@ -164,22 +177,6 @@
 	                <var-value>15</var-value>
                 </var>
             </field>
-            <field property="moblphonNo" depends="maxlength">
-                <arg0 key="핸드폰번호" resource="false"/>
-                <arg1 key="15" resource="false"/>
-                <var>
-	                <var-name>maxlength</var-name>
-	                <var-value>15</var-value>
-                </var>
-            </field>
-            <field property="mberEmailAdres" depends="required, email, maxlength">
-                <arg0 key="이메일주소" resource="false"/>
-                <arg1 key="50" resource="false"/>
-                <var>
-	                <var-name>maxlength</var-name>
-	                <var-value>50</var-value>
-                </var>
-            </field>
             <field property="adres" depends="maxlength">
                 <arg0 key="주소" resource="false"/>
                 <arg1 key="100" resource="false"/>
@@ -207,7 +204,7 @@
 	                <var-value>50</var-value>
                 </var>
             </field>
-            <field property="password" depends="required, password1, password2, password3, password4">
+            <field property="password" depends="required, password1, password3, password4">
                 <arg0 key="비밀번호" resource="false"/>
             </field>
             <field property="passwordHint" depends="required">
@@ -226,7 +223,23 @@
                 <arg0 key="주민등록번호" resource="false"/>
             </field>
             -->   
-            <field property="areaNo" depends="required, maxlength, integer">
+            <field property="emailAdres" depends="required, email, maxlength">
+                <arg0 key="이메일주소" resource="false"/>
+                <arg1 key="50" resource="false"/>
+                <var>
+	                <var-name>maxlength</var-name>
+	                <var-value>50</var-value>
+                </var>
+            </field>
+            <field property="moblphonNo" depends="required, maxlength">
+                <arg0 key="핸드폰번호" resource="false"/>
+                <arg1 key="15" resource="false"/>
+                <var>
+	                <var-name>maxlength</var-name>
+	                <var-value>15</var-value>
+                </var>
+            </field>
+            <field property="areaNo" depends="maxlength, integer">
                 <arg0 key="집지역번호" resource="false"/>
                 <arg1 key="4" resource="false"/>
                 <var>
@@ -234,7 +247,7 @@
 	                <var-value>4</var-value>
                 </var>
             </field> 
-            <field property="homemiddleTelno" depends="required, maxlength, integer">
+            <field property="homemiddleTelno" depends="maxlength, integer">
                 <arg0 key="집중간전화번호" resource="false"/>
                 <arg1 key="4" resource="false"/>
                 <var>
@@ -242,7 +255,7 @@
 	                <var-value>4</var-value>
                 </var>
             </field>
-            <field property="homeendTelno" depends="required, maxlength, integer">
+            <field property="homeendTelno" depends="maxlength, integer">
                 <arg0 key="집마지막전화번호" resource="false"/>
                 <arg1 key="4" resource="false"/>
                 <var>
@@ -266,26 +279,7 @@
 	                <var-value>15</var-value>
                 </var>
             </field>
-            <field property="moblphonNo" depends="maxlength">
-                <arg0 key="핸드폰번호" resource="false"/>
-                <arg1 key="15" resource="false"/>
-                <var>
-	                <var-name>maxlength</var-name>
-	                <var-value>15</var-value>
-                </var>
-            </field>
-            <field property="emailAdres" depends="required, email, maxlength">
-                <arg0 key="이메일주소" resource="false"/>
-                <arg1 key="50" resource="false"/>
-                <var>
-	                <var-name>maxlength</var-name>
-	                <var-value>50</var-value>
-                </var>
-            </field>
-            <field property="zip" depends="required">
-                <arg0 key="우편번호" resource="false"/>
-            </field>
-            <field property="homeadres" depends="required, maxlength">
+            <field property="homeadres" depends="maxlength">
                 <arg0 key="주소" resource="false"/>
                 <arg1 key="100" resource="false"/>
                 <var>
@@ -307,7 +301,7 @@
         </form>
         
         <form name="passwordChgVO"> 
-            <field property="newPassword" depends="required, password1, password2, password3, password4">
+            <field property="newPassword" depends="required, password1, password3, password4">
                 <arg0 key="비밀번호" resource="false"/>
             </field>
             <field property="oldPassword" depends="required">

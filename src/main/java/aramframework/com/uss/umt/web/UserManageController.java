@@ -326,11 +326,11 @@ public class UserManageController {
 			HttpServletRequest request, 
 			ModelMap model) {
 
-    	String[] userIds = null;
-    	if(request.getParameterValues("userIds") != null) 
-    		userIds = request.getParameterValues("userIds");
+    	String[] uniqIds = null;
+    	if(request.getParameterValues("uniqIds") != null) 
+    		uniqIds = request.getParameterValues("uniqIds");
 
-		userManageService.deleteIdsAll(userIds);
+		userManageService.deleteIdsAll(uniqIds);
 	
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", returnUrl);

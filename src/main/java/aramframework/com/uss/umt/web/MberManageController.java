@@ -120,12 +120,6 @@ public class MberManageController {
 		if (!"".equals(request.getParameter("realname"))) {
 			model.addAttribute("mberNm", request.getParameter("realname")); 
 			// 실명인증된 이름 - 주민번호 인증
-			model.addAttribute("ihidnum", request.getParameter("ihidnum")); 
-			// 실명인증된 주민등록번호 - 주민번호 인증
-		}
-		if (!"".equals(request.getParameter("realName"))) {
-			model.addAttribute("mberNm", request.getParameter("realName")); 
-			// 실명인증된 이름 - ipin인증
 		}
 
 		fill_common_code();
@@ -143,6 +137,7 @@ public class MberManageController {
 	@RequestMapping("/uss/umt/sbscrbMber.do")
 	@Secured("ROLE_ANONYMOUS")
 	public String sbscrbMber(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MberManageVO mberManageVO,
 			ModelMap model) {
 
@@ -160,13 +155,14 @@ public class MberManageController {
 		groupAuthorService.insertGroupAuthor(groupAuthorVO);
 
 		String message = MessageHelper.getMessage("success.common.insert")
-					   + "\n\n로그인 후 사용하시기 바랍니다.";
+					   + " 로그인 후 사용하시기 바랍니다.";
 		model.addAttribute("message", message);
 		
-		return "uss/umt/SbscrbSuccess";
+		model.addAttribute("redirectURL", "/uss/umt/stplatMberView.do");
+	    return "cmm/redirect";
 	}
 
-	/**
+	/** 
 	 * 일반회원등록화면으로 이동한다.
 	 * 
 	 * @param mberManageVO

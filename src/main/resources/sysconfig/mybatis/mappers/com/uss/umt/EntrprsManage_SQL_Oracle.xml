@@ -186,9 +186,13 @@
 	<!-- 삭제 -->
     <delete id="deleteEntrprsMber">
         <![CDATA[
-            DELETE 
-              FROM COMTN_ENTRPRS_MBER 
-             WHERE ENTRPRS_MBER_ID = #{userId}
+             DELETE 
+               FROM COMTN_ENTRPRS_MBER 
+              WHERE ENTRPRS_MBER_ID = #{userId};
+              
+             DELETE 
+              FROM COMTN_EMPLYR_SCRTY_ESTBS 
+             WHERE SCRTY_DTRMN_TRGET_ID=#{userId};
         ]]>
     </delete>
     

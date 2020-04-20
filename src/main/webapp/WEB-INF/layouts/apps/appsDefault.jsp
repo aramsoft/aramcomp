@@ -256,13 +256,12 @@ function fn_aram_subscribe(){
 function fn_aram_updateUser(userSe){
    	var url = "";
    	if ( userSe == 'GNR' ) {
-		url = "${pageContext.request.contextPath}/uss/umt/editMber.do";
+		url = "${pageContext.request.contextPath}/uss/umt/editMber.do?mberId=${loginVO.userId}";
 	} else if ( userSe == 'ENT' ) {	
-		url = "${pageContext.request.contextPath}/uss/umt/editEntrprsMber.do";
+		url = "${pageContext.request.contextPath}/uss/umt/editEntrprsMber.do?entrprsmberId=${loginVO.userId}";
 	} else if ( userSe == 'USR' ) {
-		url = "${pageContext.request.contextPath}/uss/umt/editUser.do";
+		url = "${pageContext.request.contextPath}/uss/umt/editUser.do?emplyrId=${loginVO.userId}";
 	}	
-	url = url + "?userId=${loginVO.userId}";
 	url = url + "&curTrgetId=${targetVO.cmmntyId}&curMenuPos="+cur_menuPos;
 	fn_aram_load(url);
 }

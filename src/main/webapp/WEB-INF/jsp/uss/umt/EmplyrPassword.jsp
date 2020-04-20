@@ -40,7 +40,7 @@
 	</div>
 </div>
 
-<form:form modelAttribute="userManageVO" action="" method="post">
+<form:form modelAttribute="emplyrManageVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
@@ -102,25 +102,25 @@
 <script type="text/javascript">
 
 function fn_aram_list(){
-    var varForm = document.getElementById("userManageVO");
-    varForm.action = "${pageContext.request.contextPath}/uss/umt/listUser.do";
+    var varForm = document.getElementById("emplyrManageVO");
+    varForm.action = "${pageContext.request.contextPath}/uss/umt/listEmplyr.do";
     varForm.submit();
 }
 
 function fn_aram_update(){
-    var varForm = document.getElementById("userManageVO");
+    var varForm = document.getElementById("emplyrManageVO");
     if(validatePasswordChgVO(varForm)){
         if(varForm.newPassword.value != varForm.newPassword2.value){
             alert("<spring:message code="fail.user.passwordUpdate2" />");
             return;
         }
-        varForm.action = "${pageContext.request.contextPath}/uss/umt/updateUserPassword.do";
+        varForm.action = "${pageContext.request.contextPath}/uss/umt/updateEmplyrPassword.do";
         varForm.submit();
     }
 }
 
 function fn_aram_reset(){
-    var varForm = document.getElementById("userManageVO");
+    var varForm = document.getElementById("emplyrManageVO");
     varForm.reset();
 }
 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="aramframework.com.uss.umt.dao.UserManageMapper">
+<mapper namespace="aramframework.com.uss.umt.dao.EmplyrManageMapper">
 
 	<!-- 목록조회  -->
-    <select id="selectUserList" resultType="egovMap">
+    <select id="selectEmplyrList" resultType="egovMap">
         /* 구현 Sql */
 		<![CDATA[
 		    SELECT 'USR03'               	AS "userTy"
@@ -42,7 +42,7 @@
     </select>
     
 	<!-- 목록조회_게시물 총갯수  -->
-    <select id="selectUserListCnt" resultType="int">
+    <select id="selectEmplyrListCnt" resultType="int">
 		<![CDATA[
             SELECT COUNT(1) totcnt
               FROM COMTN_EMPLYR_INFO
@@ -64,7 +64,7 @@
     </select>
     
 	<!-- 상세보기 -->
-    <select id="selectUser" resultType="userManageVO">
+    <select id="selectEmplyr" resultType="emplyrManageVO">
         <![CDATA[
             SELECT 'USR03'           		AS "userTy"			  
                  , EMPLYR_ID         		AS "emplyrId"          
@@ -99,7 +99,7 @@
     </select>
     
 	<!-- 입력 -->
-    <insert id="insertUser">
+    <insert id="insertEmplyr">
         <![CDATA[
             INSERT INTO COMTN_EMPLYR_INFO (   
             		EMPLYR_ID           
@@ -151,14 +151,14 @@
                   , #{orgnztId, jdbcType=VARCHAR}          
                   , #{insttCode, jdbcType=VARCHAR}         
                   , #{emplyrSttusCode, jdbcType=VARCHAR}   
-                  , now()           	
+                  , sysdate()           	
                   , #{subDn, jdbcType=VARCHAR}             
             )
         ]]>
     </insert>
     
 	<!-- 수정 -->
-    <update id="updateUser">
+    <update id="updateEmplyr">
         <![CDATA[
             UPDATE COMTN_EMPLYR_INFO 
                SET USER_NM             	= #{emplyrNm, jdbcType=VARCHAR}        
@@ -188,7 +188,7 @@
     </update>
     
 	<!-- 삭제 -->
-    <delete id="deleteUser">
+    <delete id="deleteEmplyr">
         <![CDATA[
             DELETE 
               FROM COMTN_EMPLYR_INFO 
@@ -201,7 +201,7 @@
     </delete>
     
 	<!-- 사용자 이력 입력 -->
-    <insert id="insertUserHistory">
+    <insert id="insertEmplyrHistory">
         <![CDATA[
             INSERT INTO COMTN_EMPLYR_CHANGE_DTLS (   
             		EMPLYR_ID           
@@ -240,14 +240,14 @@
                   , ORGNZT_ID           
                   , PSTINST_CODE        
                   , EMPLYR_STTUS_CODE   
-                  , TO_CHAR(now(), 'YYYY-MM-DD HH24:MM:SS')
+                  , DATE_FORMAT(sysdate(), '%Y-%m-%d %H:%i:%S')
                FROM COMTN_EMPLYR_INFO
               WHERE EMPLYR_ID = #{emplyrId}
         ]]>
     </insert>
     
 	<!-- 사용자 이력 삭제 -->
-    <insert id="deleteUserHistory">
+    <insert id="deleteEmplyrHistory">
         <![CDATA[
              DELETE 
                FROM COMTN_EMPLYR_CHANGE_DTLS 
@@ -256,7 +256,7 @@
     </insert>
 
 	<!-- 비밀번호가져오기 -->
-    <select id="selectPassword" resultType="userManageVO">
+    <select id="selectPassword" resultType="emplyrManageVO">
         <![CDATA[
             SELECT PASSWORD        		password 
               FROM COMTN_EMPLYR_INFO
@@ -278,7 +278,7 @@
         <![CDATA[
             SELECT COUNT(1) usedCnt
               FROM (
-                    SELECT EMPLYR_ID    	userId
+                    SELECT EMPLYR_ID       userId
                       FROM COMTN_EMPLYR_INFO
                      UNION ALL
                     SELECT ENTRPRS_MBER_ID userId

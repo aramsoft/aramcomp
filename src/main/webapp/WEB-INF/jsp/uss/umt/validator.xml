@@ -187,7 +187,7 @@
             </field>
         </form>
         
-        <form name="userManageVO"> 
+        <form name="emplyrManageVO"> 
             <field property="emplyrId" depends="required, maxlength">
                 <arg0 key="사용자아이디" resource="false"/>
                 <arg1 key="20" resource="false"/>

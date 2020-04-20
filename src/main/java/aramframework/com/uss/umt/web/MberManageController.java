@@ -247,7 +247,7 @@ public class MberManageController {
 		mberManageService.updateMber(mberManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		model.addAttribute("redirectURL", "/uss/umt/editMber.do?userId="+mberManageVO.getMberId());
+		model.addAttribute("redirectURL", "/uss/umt/editMber.do?mberId="+mberManageVO.getMberId());
 	    return "cmm/redirect";
 	}
 
@@ -313,7 +313,7 @@ public class MberManageController {
 		} 
 		
 		model.addAttribute("message", MessageHelper.getMessage(message));
-		model.addAttribute("redirectURL", "/uss/umt/editMber.do?userId="+mberManageVO.getMberId());
+		model.addAttribute("redirectURL", "/uss/umt/editMber.do?mberId="+mberManageVO.getMberId());
 	    return "cmm/redirect";
 	}
 

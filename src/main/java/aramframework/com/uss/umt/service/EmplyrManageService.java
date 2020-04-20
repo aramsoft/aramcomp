@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.uss.umt.dao.EntrprsManageMapper;
 import aramframework.com.uss.umt.dao.MberManageMapper;
-import aramframework.com.uss.umt.dao.UserManageMapper;
-import aramframework.com.uss.umt.domain.UserManageVO;
+import aramframework.com.uss.umt.dao.EmplyrManageMapper;
+import aramframework.com.uss.umt.domain.EmplyrManageVO;
 import aramframework.com.utl.sim.service.FileScrty;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 
@@ -20,10 +20,10 @@ import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
  * @version 1.0
  */
 @Service
-public class UserManageService extends EgovAbstractServiceImpl {
+public class EmplyrManageService extends EgovAbstractServiceImpl {
 
 	@Autowired
-	private UserManageMapper userManageMapper;	
+	private EmplyrManageMapper emplyrManageMapper;	
 
 	@Autowired
 	private MberManageMapper mberManageMapper;	
@@ -34,62 +34,62 @@ public class UserManageService extends EgovAbstractServiceImpl {
 	/**
 	 * 기 등록된 특정 사용자의 정보를 데이터베이스에서 읽어와 화면에 출력
 	 * 
-	 * @param userManageVO
+	 * @param emplyrManageVO
 	 */
-	public List<UserManageVO> selectUserList(UserManageVO userManageVO) {
-		return  userManageMapper.selectUserList(userManageVO);
+	public List<EmplyrManageVO> selectEmplyrList(EmplyrManageVO emplyrManageVO) {
+		return  emplyrManageMapper.selectEmplyrList(emplyrManageVO);
 	}
 
 	/**
 	 * 기 등록된 특정 사용자목록의 전체수를 확인
 	 * 
-	 * @param userManageVO
+	 * @param emplyrManageVO
 	 */
-	public int selectUserListCnt(UserManageVO userManageVO) {
-		return userManageMapper.selectUserListCnt(userManageVO);
+	public int selectEmplyrListCnt(EmplyrManageVO emplyrManageVO) {
+		return emplyrManageMapper.selectEmplyrListCnt(emplyrManageVO);
 	}
 
 	/**
 	 * 기 등록된 사용자 중 검색조건에 맞는 사용자의 정보를 데이터베이스에서 읽어와 화면에 출력
 	 * 
-	 * @param userManageVO
+	 * @param emplyrManageVO
 	 */
-	public UserManageVO selectUser(UserManageVO userManageVO) {
-		return userManageMapper.selectUser(userManageVO);
+	public EmplyrManageVO selectEmplyr(EmplyrManageVO emplyrManageVO) {
+		return emplyrManageMapper.selectEmplyr(emplyrManageVO);
 	}
 
 	/**
 	 * 사용자의 기본정보를 화면에서 입력하여 항목의 정합성을 체크하고 데이터베이스에 저장
 	 * 
-	 * @param userManageVO
+	 * @param emplyrManageVO
 	 */
-	public void insertUser(UserManageVO userManageVO) {
+	public void insertEmplyr(EmplyrManageVO emplyrManageVO) {
 		// 패스워드 암호화
 		String pass;
 		try {
-			pass = FileScrty.encryptPassword(userManageVO.getPassword());
+			pass = FileScrty.encryptPassword(emplyrManageVO.getPassword());
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
-		userManageVO.setPassword(pass);
-		userManageMapper.insertUser(userManageVO);
+		emplyrManageVO.setPassword(pass);
+		emplyrManageMapper.insertEmplyr(emplyrManageVO);
 	}
 
 	/**
 	 * 화면에 조회된 사용자의 기본정보를 수정하여 항목의 정합성을 체크하고 수정된 데이터를 데이터베이스에 반영
 	 * 
-	 * @param userManageVO
+	 * @param emplyrManageVO
 	 */
-	public void updateUser(UserManageVO userManageVO) {
+	public void updateEmplyr(EmplyrManageVO emplyrManageVO) {
 		// 패스워드 암호화
 		String pass;
 		try {
-			pass = FileScrty.encryptPassword(userManageVO.getPassword());
+			pass = FileScrty.encryptPassword(emplyrManageVO.getPassword());
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
-		userManageVO.setPassword(pass);
-		userManageMapper.updateUser(userManageVO);
+		emplyrManageVO.setPassword(pass);
+		emplyrManageMapper.updateEmplyr(emplyrManageVO);
 	}
 
 	/**
@@ -97,9 +97,9 @@ public class UserManageService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param checkedIdForDel
 	 */
-	public void deleteUser(UserManageVO userManageVO) {
-		userManageMapper.deleteUserHistory(userManageVO.getEmplyrId());
-		userManageMapper.deleteUser(userManageVO.getEmplyrId());
+	public void deleteEmplyr(EmplyrManageVO emplyrManageVO) {
+		emplyrManageMapper.deleteEmplyrHistory(emplyrManageVO.getEmplyrId());
+		emplyrManageMapper.deleteEmplyr(emplyrManageVO.getEmplyrId());
 	}
 
 	/**
@@ -112,8 +112,8 @@ public class UserManageService extends EgovAbstractServiceImpl {
 			String[] id = ids[i].split("-");
 			if (id[0].equals("USR03")) {
 				// 업무사용자(직원)삭제
-				userManageMapper.deleteUserHistory(id[1]);
-				userManageMapper.deleteUser(id[1]);
+				emplyrManageMapper.deleteEmplyrHistory(id[1]);
+				emplyrManageMapper.deleteEmplyr(id[1]);
 			} else if (id[0].equals("USR01")) {
 				// 일반회원삭제
 				mberManageMapper.deleteMber(id[1]);
@@ -127,10 +127,10 @@ public class UserManageService extends EgovAbstractServiceImpl {
 	/**
 	 * 사용자정보 수정시 히스토리 정보를 추가
 	 * 
-	 * @param userManageVO
+	 * @param emplyrManageVO
 	 */
-	public void insertUserHistory(UserManageVO userManageVO) {
-		userManageMapper.insertUserHistory(userManageVO);
+	public void insertEmplyrHistory(EmplyrManageVO emplyrManageVO) {
+		emplyrManageMapper.insertEmplyrHistory(emplyrManageVO);
 	}
 
 	/**
@@ -139,25 +139,25 @@ public class UserManageService extends EgovAbstractServiceImpl {
 	 * @param checkId
 	 */
 	public int checkIdDplct(String checkId) {
-		return userManageMapper.checkIdDplct(checkId);
+		return emplyrManageMapper.checkIdDplct(checkId);
 	}
 
 	/**
 	 * 사용자가 비밀번호를 기억하지 못할 때 비밀번호를 찾을 수 있도록 함
 	 * 
-	 * @param userId
+	 * @param emplyrId
 	 */
-	public UserManageVO selectPassword(String userId) {
-		return userManageMapper.selectPassword(userId);
+	public EmplyrManageVO selectPassword(String emplyrId) {
+		return emplyrManageMapper.selectPassword(emplyrId);
 	}
 
 	/**
 	 * 업무사용자 암호 수정
 	 * 
-	 * @param userManageVO
+	 * @param emplyrManageVO
 	 */
-	public void updatePassword(UserManageVO userManageVO) {
-		userManageMapper.updatePassword(userManageVO);
+	public void updatePassword(EmplyrManageVO emplyrManageVO) {
+		emplyrManageMapper.updatePassword(emplyrManageVO);
 	}
 
 }

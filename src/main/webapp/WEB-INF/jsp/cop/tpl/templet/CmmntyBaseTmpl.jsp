@@ -260,7 +260,7 @@ function fn_aram_updateUser(userSe){
 	} else if ( userSe == 'ENT' ) {	
 		url = "${pageContext.request.contextPath}/uss/umt/editEntrprsMber.do?entrprsmberId=${loginVO.userId}";
 	} else if ( userSe == 'USR' ) {
-		url = "${pageContext.request.contextPath}/uss/umt/editUser.do?emplyrId=${loginVO.userId}";
+		url = "${pageContext.request.contextPath}/uss/umt/editEmplyr.do?emplyrId=${loginVO.userId}";
 	}	
 	url = url + "&curTrgetId=${targetVO.cmmntyId}&curMenuPos="+cur_menuPos;
 	fn_aram_load(url);

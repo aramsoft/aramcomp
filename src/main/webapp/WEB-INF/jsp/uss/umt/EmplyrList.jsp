@@ -7,7 +7,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%
  /**
-  * @Class Name : UserList.jsp
+  * @Class Name : EmplyrList.jsp
   * @Description : 업무사용자 목록
   * @Modification Information
   * @
@@ -32,7 +32,7 @@
 </div>
 
 <!-- content start -->
-<form:form modelAttribute="userManageVO" action="" method="post">
+<form:form modelAttribute="emplyrManageVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
@@ -41,7 +41,7 @@
 
 <div id="search_area">
 	<div class="search_left">
-	 	<strong>전체 : ${userManageVO.totalRecordCount} 건</strong>	
+	 	<strong>전체 : ${emplyrManageVO.totalRecordCount} 건</strong>	
 	</div>
 	<div class="search_right">
 		<span class="keyword_area">
@@ -96,11 +96,11 @@
 	</tr>
 	</c:if>
 	
- 	<c:set var="startIndex" value="${(userManageVO.pageIndex-1) * userManageVO.recordPerPage}"/>
+ 	<c:set var="startIndex" value="${(emplyrManageVO.pageIndex-1) * emplyrManageVO.recordPerPage}"/>
     <c:forEach var="result" items="${resultList}" varStatus="status">
     <tr>
  		<c:set var="index" value="${startIndex + status.count}"/>
-		<c:set var="reverseIndex" value="${userManageVO.totalRecordCount - index + 1}"/>
+		<c:set var="reverseIndex" value="${emplyrManageVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
         <td class="lt_text3">
@@ -157,30 +157,30 @@ function press(event) {
  * 페이징 처리 함수
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
-    var varForm = document.getElementById("userManageVO");
+    var varForm = document.getElementById("emplyrManageVO");
     varForm.pageIndex.value = pageNo;
-    varForm.action = "${pageContext.request.contextPath}/uss/umt/listUser.do";
+    varForm.action = "${pageContext.request.contextPath}/uss/umt/listEmplyr.do";
     varForm.submit();
 }
 
 function fn_aram_search(){
-    var varForm = document.getElementById("userManageVO");
+    var varForm = document.getElementById("emplyrManageVO");
     varForm.pageIndex.value = 1;
-    varForm.action = "${pageContext.request.contextPath}/uss/umt/listUser.do";
+    varForm.action = "${pageContext.request.contextPath}/uss/umt/listEmplyr.do";
     varForm.submit();
 }
 
 function fn_aram_detail(emplyrId) {
-    var varForm = document.getElementById("userManageVO");
+    var varForm = document.getElementById("emplyrManageVO");
     varForm.emplyrId.value = emplyrId;
-    varForm.action = "${pageContext.request.contextPath}/uss/umt/editUser.do";
+    varForm.action = "${pageContext.request.contextPath}/uss/umt/editEmplyr.do";
     varForm.submit();
 }
 
 function fn_aram_regist() {
-    var varForm = document.getElementById("userManageVO");
+    var varForm = document.getElementById("emplyrManageVO");
     varForm.emplyrId.value = "";
-    varForm.action = "${pageContext.request.contextPath}/uss/umt/registUser.do";
+    varForm.action = "${pageContext.request.contextPath}/uss/umt/registEmplyr.do";
     varForm.submit();
 }
 
@@ -198,9 +198,9 @@ function fn_aram_deleteList() {
 		return false;
 	}
     
-    var varForm = document.getElementById("userManageVO");
+    var varForm = document.getElementById("emplyrManageVO");
     if(confirm("<spring:message code="common.delete.msg" />")){
-       	varForm.returnUrl.value="/uss/umt/listUser.do";
+       	varForm.returnUrl.value="/uss/umt/listEmplyr.do";
        	varForm.action = "${pageContext.request.contextPath}/uss/umt/deleteIdsAll.do";
        	varForm.submit();
     }

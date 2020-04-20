@@ -9,7 +9,7 @@ import aramframework.com.cmm.domain.BaseVO;
  * @since 2014.11.11
  * @version 1.0
  */
-public class UserManageVO extends BaseVO {
+public class EmplyrManageVO extends BaseVO {
 
 	// domain
 	/** 사용자 ID */

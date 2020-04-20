@@ -65,24 +65,24 @@
     <put-attribute name="body" value="/WEB-INF/jsp/uss/umt/EntrprsPassword.jsp" />
   </definition>
   
-  <definition name="uss/umt/UserList" extends="default">
+  <definition name="uss/umt/EmplyrList" extends="default">
     <put-attribute name="title" value="업무사용자 목록" />
-    <put-attribute name="body" value="/WEB-INF/jsp/uss/umt/UserList.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/uss/umt/EmplyrList.jsp" />
   </definition>
   
-  <definition name="uss/umt/UserRegist" extends="default">
+  <definition name="uss/umt/EmplyrRegist" extends="default">
     <put-attribute name="title" value="업무사용자 등록" />
-    <put-attribute name="body" value="/WEB-INF/jsp/uss/umt/UserRegist.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/uss/umt/EmplyrRegist.jsp" />
   </definition>
   
-  <definition name="uss/umt/UserEdit" extends="default">
+  <definition name="uss/umt/EmplyrEdit" extends="default">
     <put-attribute name="title" value="업무사용자수정" />
-    <put-attribute name="body" value="/WEB-INF/jsp/uss/umt/UserEdit.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/uss/umt/EmplyrEdit.jsp" />
   </definition>
   
-  <definition name="uss/umt/UserPassword" extends="default">
+  <definition name="uss/umt/EmplyrPassword" extends="default">
     <put-attribute name="title" value="업무사용자 암호변경" />
-    <put-attribute name="body" value="/WEB-INF/jsp/uss/umt/UserPassword.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/uss/umt/EmplyrPassword.jsp" />
   </definition>
   
 </tiles-definitions>

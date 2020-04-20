@@ -256,7 +256,7 @@ public class EntrprsManageController {
 		entrprsManageService.updateEntrprsMber(entrprsManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		model.addAttribute("redirectURL", "/uss/umt/editEntrprsMber.do?userId="+entrprsManageVO.getEntrprsmberId());
+		model.addAttribute("redirectURL", "/uss/umt/editEntrprsMber.do?entrprsmberId="+entrprsManageVO.getEntrprsmberId());
 	    return "cmm/redirect";
 	}
 
@@ -322,7 +322,7 @@ public class EntrprsManageController {
 		} 
 		
 		model.addAttribute("message", MessageHelper.getMessage(message));
-		model.addAttribute("redirectURL", "/uss/umt/editEntrprsMber.do?userId="+entrprsManageVO.getEntrprsmberId());
+		model.addAttribute("redirectURL", "/uss/umt/editEntrprsMber.do?entrprsmberId="+entrprsManageVO.getEntrprsmberId());
 	    return "cmm/redirect";
 	}
 

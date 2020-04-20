@@ -76,7 +76,7 @@
 		
 		<typeAlias alias="entrprsManageVO" 		type="aramframework.com.uss.umt.domain.EntrprsManageVO"/>
 		<typeAlias alias="mberManageVO" 		type="aramframework.com.uss.umt.domain.MberManageVO"/>
-		<typeAlias alias="userManageVO" 		type="aramframework.com.uss.umt.domain.UserManageVO"/>
+		<typeAlias alias="emplyrManageVO" 		type="aramframework.com.uss.umt.domain.EmplyrManageVO"/>
 		<typeAlias alias="stplatVO" 			type="aramframework.com.uss.umt.domain.StplatVO"/>
 
 <!-- 

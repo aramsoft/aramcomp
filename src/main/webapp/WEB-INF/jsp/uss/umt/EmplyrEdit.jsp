@@ -7,7 +7,7 @@
 <%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator" %>
 <%
  /**
-  * @Class Name : UserEdit.jsp
+  * @Class Name : EmplyrEdit.jsp
   * @Description : 업무사용자 수정
   * @Modification Information
   * @
@@ -41,7 +41,7 @@
 	</div>
 </div>
 
-<form:form modelAttribute="userManageVO" action="" method="post">
+<form:form modelAttribute="emplyrManageVO" action="" method="post">
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
@@ -234,7 +234,7 @@
         	우편번호
         </th>
         <td>
-			<c:if test="${fn:length(userManageVO.zip) != 0}"><c:set var="zipValue" value="${fn:substring(userManageVO.zip,0,3)}-${fn:substring(userManageVO.zip,3,6)}"/></c:if>
+			<c:if test="${fn:length(emplyrManageVO.zip) != 0}"><c:set var="zipValue" value="${fn:substring(emplyrManageVO.zip,0,3)}-${fn:substring(emplyrManageVO.zip,3,6)}"/></c:if>
             <input name="zip_view" type="text" size="7" value="${zipValue}" maxlength="8" readonly title="우편번호입력">
             <form:hidden path="zip" />
             <a href="#" onclick="fn_aram_ZipSearch(document.forms[0].zip, document.forms[0].zip_view, document.forms[0].homeadres); return false;">
@@ -322,7 +322,7 @@
 </DIV>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/validator.do"></script>
-<validator:javascript formName="userManageVO" staticJavascript="false" xhtml="true" cdata="false"/>
+<validator:javascript formName="emplyrManageVO" staticJavascript="false" xhtml="true" cdata="false"/>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/sym/ccm/zip/ZipPopup.js"></script>
 
@@ -332,7 +332,7 @@
  * 초기화
  ******************************************************** */
 window.onload = function() {
-    var varForm = document.getElementById("userManageVO");
+    var varForm = document.getElementById("emplyrManageVO");
 	if( varForm.offmTelno.value != "" ) {
     	var offmTelno = varForm.offmTelno.value.split("-");
 		varForm.offmTelno1.value = offmTelno[0];
@@ -357,8 +357,8 @@ window.onload = function() {
  * 목록 으로 가기
  ******************************************************** */
 function fn_aram_list(){
-    var varForm = document.getElementById("userManageVO");
-    varForm.action = "${pageContext.request.contextPath}/uss/umt/listUser.do";
+    var varForm = document.getElementById("emplyrManageVO");
+    varForm.action = "${pageContext.request.contextPath}/uss/umt/listEmplyr.do";
     varForm.submit();
 }
 
@@ -366,7 +366,7 @@ function fn_aram_list(){
  * 저장처리
  ******************************************************** */
 function fn_aram_update(){
-    var varForm = document.getElementById("userManageVO");
+    var varForm = document.getElementById("emplyrManageVO");
 	
 	// 전화번호 조정
 	if( varForm.offmTelno1.value != "" ) {
@@ -385,28 +385,28 @@ function fn_aram_update(){
 								 + varForm.moblphonNo3.value;
 	}
 	
-	if(!validateUserManageVO(varForm)){
+	if(!validateEmplyrManageVO(varForm)){
         return;
     }
 
 	if(confirm("<spring:message code='common.update.msg'/>")){
-        varForm.action = "${pageContext.request.contextPath}/uss/umt/updateUser.do";
+        varForm.action = "${pageContext.request.contextPath}/uss/umt/updateEmplyr.do";
         varForm.submit();
     }
 }
 
 function fn_aram_delete() {
-    var varForm = document.getElementById("userManageVO");
+    var varForm = document.getElementById("emplyrManageVO");
     
 	if(confirm("<spring:message code='common.delete.msg' />")){
-		varForm.action = "${pageContext.request.contextPath}/uss/umt/deleteUser.do";
+		varForm.action = "${pageContext.request.contextPath}/uss/umt/deleteEmplyr.do";
 		varForm.submit();
 	}
 }
 
 function fn_aram_edit_password(){
-    var varForm = document.getElementById("userManageVO");
-    varForm.action = "${pageContext.request.contextPath}/uss/umt/editUserPassword.do";
+    var varForm = document.getElementById("emplyrManageVO");
+    varForm.action = "${pageContext.request.contextPath}/uss/umt/editEmplyrPassword.do";
     varForm.submit();
 }
 
@@ -426,7 +426,7 @@ function fn_aram_detail_cert() {
 }
 
 function fn_aram_dn_info_setting(dn) {
-	var vForm = document.userManageVO;
+	var vForm = document.emplyrManageVO;
 	vForm.subDn.value = dn;
 }
 

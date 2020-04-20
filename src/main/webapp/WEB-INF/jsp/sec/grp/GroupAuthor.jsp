@@ -100,14 +100,14 @@
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
     	<td class="lt_text3">
-			<input type="checkbox" class="check2" id="uniqIds" name="uniqIds" value="${result.uniqId}" />
+			<input type="checkbox" class="check2" id="uniqIds" name="uniqIds" value="${result.userId}" />
     	</td>
 
     	<td class="lt_text3"><c:out value="${result.userId}"/></td>
     	<td class="lt_text3"><c:out value="${result.userNm}"/></td>
     	<td class="lt_text3">
     		<c:out value="${result.mberTyNm}"/>
-    		<input type="hidden" id="mberTy${result.uniqId}" value="${result.mberTyCode}" disabled />
+    		<input type="hidden" id="mberTy${result.userId}" value="${result.mberTyCode}" disabled />
     	</td>
     	<td class="lt_text3">
     		<select id="author${result.uniqId}" title="권한">
@@ -118,7 +118,7 @@
 	    </td>
     	<td class="lt_text3">
     		<c:out value="${result.regYn}"/>
-    		<input type="hidden" id="regYn${result.uniqId}" value="<c:out value="${result.regYn}"/>">
+    		<input type="hidden" id="regYn${result.userId}" value="<c:out value="${result.regYn}"/>">
     	</td>
   	</tr>
  	</c:forEach>

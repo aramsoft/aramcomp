@@ -214,7 +214,7 @@ public class UserManageController {
 		updateUserSession(userManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		model.addAttribute("redirectURL", "/uss/umt/editUser.do?userId="+userManageVO.getEmplyrId());
+		model.addAttribute("redirectURL", "/uss/umt/editUser.do?emplyrId="+userManageVO.getEmplyrId());
 	    return "cmm/redirect";
 	}
 

@@ -94,13 +94,13 @@
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
 		<td class="lt_text3">
-			<input type="checkbox" class="check2" id="uniqIds" name="uniqIds" value="${result.uniqId}" />
+			<input type="checkbox" class="check2" id="uniqIds" name="uniqIds" value="${result.userId}" />
 		</td>
 
 	    <td class="lt_text3"><c:out value="${result.userId}"/></td>
 	    <td class="lt_text3"><c:out value="${result.userNm}"/></td>
 	    <td class="lt_text3">
-	    	<select id="author${result.uniqId}" title="등록여부">
+	    	<select id="author${result.userId}" title="등록여부">
 	        	<c:forEach var="author" items="${authorList}" varStatus="status">
 	            <option value="<c:out value="${author.authorCode}"/>" <c:if test="${author.authorCode == result.authorCode}">selected</c:if>><c:out value="${author.authorNm}"/></option>
 	        	</c:forEach>
@@ -108,7 +108,7 @@
 	    </td>
 	    <td class="lt_text3">
 	    	<c:out value="${result.regYn}"/>
-	    	<input type="hidden" id="regYn${result.uniqId}" value="<c:out value="${result.regYn}"/>">
+	    	<input type="hidden" id="regYn${result.userId}" value="<c:out value="${result.regYn}"/>">
 	    </td>
 	</tr>
 	</c:forEach>

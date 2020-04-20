@@ -144,6 +144,7 @@ public class EntrprsManageController {
 	@RequestMapping("/uss/umt/sbscrbEntrprsMber.do")
 	@Secured("ROLE_ANONYMOUS")
 	public String sbscrbEntrprsMber(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute EntrprsManageVO entrprsManageVO,
 			ModelMap model) {
 

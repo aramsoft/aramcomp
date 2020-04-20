@@ -36,7 +36,7 @@
 <input type="hidden" name="curTrgetId" value="${curTrgetId}" />
 <input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
-<input type="hidden" name="userId"/>
+<input type="hidden" name="emplyrId"/>
 <input type="hidden" name="returnUrl" />
 
 <div id="search_area">
@@ -170,16 +170,16 @@ function fn_aram_search(){
     varForm.submit();
 }
 
-function fn_aram_detail(userId) {
+function fn_aram_detail(emplyrId) {
     var varForm = document.getElementById("userManageVO");
-    varForm.userId.value = userId;
+    varForm.emplyrId.value = emplyrId;
     varForm.action = "${pageContext.request.contextPath}/uss/umt/editUser.do";
     varForm.submit();
 }
 
 function fn_aram_regist() {
     var varForm = document.getElementById("userManageVO");
-    varForm.userId.value = "";
+    varForm.emplyrId.value = "";
     varForm.action = "${pageContext.request.contextPath}/uss/umt/registUser.do";
     varForm.submit();
 }

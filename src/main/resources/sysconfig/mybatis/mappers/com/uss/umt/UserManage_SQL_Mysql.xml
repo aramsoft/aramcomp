@@ -94,7 +94,7 @@
                  , CRTFC_DN_VALUE       	AS "subDn"
                  , GOOGLE_ACCOUNT	        AS "googleAccount"
          	  FROM COMTN_EMPLYR_INFO
-             WHERE EMPLYR_ID = #{userId}
+             WHERE EMPLYR_ID = #{emplyrId}
         ]]>
     </select>
     
@@ -183,7 +183,7 @@
                  , PSTINST_CODE        	= #{insttCode, jdbcType=VARCHAR}       
                  , EMPLYR_STTUS_CODE   	= #{emplyrSttusCode, jdbcType=VARCHAR} 
                  , CRTFC_DN_VALUE      	= #{subDn, jdbcType=VARCHAR}
-             WHERE EMPLYR_ID = #{userId}
+             WHERE EMPLYR_ID = #{emplyrId}
         ]]>
     </update>
     
@@ -192,11 +192,11 @@
         <![CDATA[
             DELETE 
               FROM COMTN_EMPLYR_INFO 
-             WHERE EMPLYR_ID = #{userId};
+             WHERE EMPLYR_ID = #{emplyrId};
              
             DELETE 
               FROM COMTN_EMPLYR_SCRTY_ESTBS 
-             WHERE SCRTY_DTRMN_TRGET_ID=#{userId};
+             WHERE SCRTY_DTRMN_TRGET_ID=#{emplyrId};
         ]]>
     </delete>
     
@@ -242,7 +242,7 @@
                   , EMPLYR_STTUS_CODE   
                   , DATE_FORMAT(sysdate(), '%Y-%m-%d %H:%i:%S')
                FROM COMTN_EMPLYR_INFO
-              WHERE EMPLYR_ID = #{userId}
+              WHERE EMPLYR_ID = #{emplyrId}
         ]]>
     </insert>
     
@@ -251,7 +251,7 @@
         <![CDATA[
              DELETE 
                FROM COMTN_EMPLYR_CHANGE_DTLS 
-              WHERE EMPLYR_ID = #{userId}
+              WHERE EMPLYR_ID = #{emplyrId}
         ]]>
     </insert>
 
@@ -260,7 +260,7 @@
         <![CDATA[
             SELECT PASSWORD        		password 
               FROM COMTN_EMPLYR_INFO
-             WHERE EMPLYR_ID = #{userId}
+             WHERE EMPLYR_ID = #{emplyrId}
         ]]>
     </select>
     
@@ -269,7 +269,7 @@
         <![CDATA[
             UPDATE COMTN_EMPLYR_INFO 
                SET PASSWORD = #{password}
-             WHERE EMPLYR_ID = #{userId}
+             WHERE EMPLYR_ID = #{emplyrId}
         ]]>
     </update>
     

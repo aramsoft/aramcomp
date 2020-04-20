@@ -95,7 +95,7 @@
                  , SBSCRB_DE        		AS "sbscrbDe"
                  , GOOGLE_ACCOUNT	        AS "googleAccount"
               FROM COMTN_GNRL_MBER
-             WHERE MBER_ID = #{userId}
+             WHERE MBER_ID = #{mberId}
         ]]>
     </select>
     
@@ -163,7 +163,7 @@
                  , MBER_FXNUM       	= #{mberFxnum, jdbcType=VARCHAR}
                  , MBER_EMAIL_ADRES 	= #{mberEmailAdres, jdbcType=VARCHAR}
                  , MIDDLE_TELNO     	= #{middleTelno, jdbcType=VARCHAR}
-             WHERE MBER_ID = #{userId}
+             WHERE MBER_ID = #{mberId}
         ]]>
     </update>
     
@@ -172,11 +172,11 @@
         <![CDATA[
             DELETE 
               FROM COMTN_GNRL_MBER 
-             WHERE MBER_ID = #{userId};
+             WHERE MBER_ID = #{mberId};
             
             DELETE 
               FROM COMTN_EMPLYR_SCRTY_ESTBS 
-             WHERE SCRTY_DTRMN_TRGET_ID=#{userId};
+             WHERE SCRTY_DTRMN_TRGET_ID=#{mberId};
         ]]>
     </delete>
     
@@ -185,7 +185,7 @@
         <![CDATA[
             SELECT PASSWORD          		password 
               FROM COMTN_GNRL_MBER
-             WHERE MBER_ID = #{userId}
+             WHERE MBER_ID = #{mberId}
         ]]>
     </select>
     
@@ -194,7 +194,7 @@
         <![CDATA[
             UPDATE COMTN_GNRL_MBER 
                SET PASSWORD  = #{password}
-             WHERE MBER_ID  = #{userId}
+             WHERE MBER_ID  = #{mberId}
         ]]>
     </update>
     

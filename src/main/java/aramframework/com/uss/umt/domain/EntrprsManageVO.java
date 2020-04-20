@@ -82,9 +82,6 @@ public class EntrprsManageVO extends BaseVO {
 	private String googleAccount;
 
 	// helper
-	/** 사용자 ID */
-	private String userId;
-
 	/** 사용자 유형 */
 	private String userTy;
 	
@@ -511,24 +508,6 @@ public class EntrprsManageVO extends BaseVO {
 	}
 
 	// helper
-	/**
-	 * userId attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getUserId() {
-		return userId;
-	}
-	/**
-	 * userId attribute 값을 설정한다.
-	 * 
-	 * @param userId
-	 *            String
-	 */
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
 	/**
 	 * userTy attribute 값을 리턴한다.
 	 * 

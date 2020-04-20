@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.sec.arm.domain.AuthorVO;
 import aramframework.com.sec.arm.service.AuthorService;
@@ -74,10 +75,11 @@ public class GroupAuthorController {
 	@RequestMapping(value = "/sec/grp/insertListGroupAuthor.do")
 	@Secured("ROLE_ADMIN")
 	public String insertGroupAuthors(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute GroupAuthorVO groupAuthorVO,
-			@RequestParam String strAuthorCodes,
-			@RequestParam String strRegYns, 
-			@RequestParam String strMberTyCodes,// 2011.08.04 수정 부분
+			@RequestParam("authorCodes") String strAuthorCodes,
+			@RequestParam("regYns") String strRegYns, 
+			@RequestParam("mberTyCodes") String strMberTyCodes,// 2011.08.04 수정 부분
 			HttpServletRequest request, 
 			ModelMap model) {
 
@@ -104,6 +106,7 @@ public class GroupAuthorController {
 	@RequestMapping(value = "/sec/grp/deleteListGroupAuthor.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteGroupAuthors(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute GroupAuthorVO groupAuthorVO,
 			HttpServletRequest request, 
 			ModelMap model) {

@@ -102,7 +102,7 @@
                  , CRTFC_DN_VALUE       	AS "subDn"
                  , GOOGLE_ACCOUNT	        AS "googleAccount"
          	  FROM COMTN_EMPLYR_INFO
-             WHERE EMPLYR_ID = #{userId}
+             WHERE EMPLYR_ID = #{emplyrId}
         ]]>
     </select>
     
@@ -191,7 +191,7 @@
                  , PSTINST_CODE        	= #{insttCode, jdbcType=VARCHAR}       
                  , EMPLYR_STTUS_CODE   	= #{emplyrSttusCode, jdbcType=VARCHAR} 
                  , CRTFC_DN_VALUE      	= #{subDn, jdbcType=VARCHAR}
-             WHERE EMPLYR_ID = #{userId}
+             WHERE EMPLYR_ID = #{emplyrId}
         ]]>
     </update>
     
@@ -200,11 +200,11 @@
         <![CDATA[
             DELETE 
               FROM COMTN_EMPLYR_INFO 
-             WHERE EMPLYR_ID = #{userId};
+             WHERE EMPLYR_ID = #{emplyrId};
              
             DELETE 
               FROM COMTN_EMPLYR_SCRTY_ESTBS 
-             WHERE SCRTY_DTRMN_TRGET_ID=#{userId};
+             WHERE SCRTY_DTRMN_TRGET_ID=#{emplyrId};
         ]]>
     </delete>
     
@@ -250,7 +250,7 @@
                   , EMPLYR_STTUS_CODE   
                   , TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MM:SS')
                FROM COMTN_EMPLYR_INFO
-              WHERE EMPLYR_ID = #{userId}
+              WHERE EMPLYR_ID = #{emplyrId}
         ]]>
     </insert>
     
@@ -259,28 +259,10 @@
         <![CDATA[
             DELETE 
               FROM COMTN_EMPLYR_CHANGE_DTLS 
-              WHERE EMPLYR_ID = #{userId}
+              WHERE EMPLYR_ID = #{emplyrId}
         ]]>
     </insert>
 
-	<!-- ID중복체크 -->
-    <select id="checkIdDplct" resultType="int">
-        <![CDATA[
-            SELECT COUNT(1) usedCnt
-              FROM (
-                    SELECT EMPLYR_ID    	userId
-                      FROM COMTN_EMPLYR_INFO
-                     UNION ALL
-                    SELECT ENTRPRS_MBER_ID userId
-                      FROM COMTN_ENTRPRS_MBER
-                     UNION ALL
-                    SELECT MBER_ID         userId
-                      FROM COMTN_GNRL_MBER
-                   ) A
-             WHERE userId = #{checkId}
-        ]]>
-    </select>
-    
 	<!-- 비밀번호가져오기 -->
     <select id="selectPassword" resultType="userManageVO">
         <![CDATA[
@@ -298,5 +280,23 @@
               WHERE EMPLYR_ID = #{userId}
         ]]>
     </update>
+    
+	<!-- ID중복체크 -->
+    <select id="checkIdDplct" resultType="int">
+        <![CDATA[
+            SELECT COUNT(1) usedCnt
+              FROM (
+                    SELECT EMPLYR_ID    	userId
+                      FROM COMTN_EMPLYR_INFO
+                     UNION ALL
+                    SELECT ENTRPRS_MBER_ID userId
+                      FROM COMTN_ENTRPRS_MBER
+                     UNION ALL
+                    SELECT MBER_ID         userId
+                      FROM COMTN_GNRL_MBER
+                   ) A
+             WHERE userId = #{checkId}
+        ]]>
+    </select>
     
 </mapper>

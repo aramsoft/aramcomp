@@ -246,7 +246,7 @@ CREATE TABLE COMTN_ENTRPRS_MBER
 	ENTRPRS_MBER_PASSWORD  		varchar(200)  	NULL,
 	ENTRPRS_MBER_PASSWORD_HINT  varchar(100)  	NOT NULL,
 	ENTRPRS_MBER_PASSWORD_CNSR  varchar(100)  	NOT NULL,
-	BIZRNO                		varchar(10)  	NULL,
+	BIZRNO                		varchar(12)  	NULL,
 	JURIRNO               		varchar(13)  	NULL,
 	CMPNY_NM              		varchar(60)  	NOT NULL,
 	CXFC                  		varchar(50)  	NULL,

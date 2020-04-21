@@ -295,12 +295,11 @@ public class EntrprsManageController {
 		String oldPassword = request.getParameter("oldPassword");
 		String newPassword = request.getParameter("newPassword");
 		String newPassword2 = request.getParameter("newPassword2");
-		String userId = request.getParameter("userId");
 
 		boolean isCorrectPassword = false;
 		String message = "";
 
-		EntrprsManageVO resultVO = entrprsManageService.selectPassword(userId);
+		EntrprsManageVO resultVO = entrprsManageService.selectPassword(entrprsManageVO.getEntrprsmberId());
 		// 패스워드 암호화
 		String encryptPass = FileScrty.encryptPassword(oldPassword);
 		if (encryptPass.equals(resultVO.getPassword())) {

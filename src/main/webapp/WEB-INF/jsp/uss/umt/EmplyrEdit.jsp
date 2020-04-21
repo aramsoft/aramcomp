@@ -346,7 +346,7 @@ window.onload = function() {
 		varForm.fxnum3.value = fxnum[2];
 	}	
 	if( varForm.moblphonNo.value != "" ) {
-    	var moblphonNo = varForm.moblphonNo.value.split("-");
+		var moblphonNo = varForm.moblphonNo.value.split("-");
 		varForm.moblphonNo1.value = moblphonNo[0];
 		varForm.moblphonNo2.value = moblphonNo[1];
 		varForm.moblphonNo3.value = moblphonNo[2];

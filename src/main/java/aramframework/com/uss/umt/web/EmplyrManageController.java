@@ -260,12 +260,11 @@ public class EmplyrManageController {
 		String oldPassword = request.getParameter("oldPassword");
 		String newPassword = request.getParameter("newPassword");
 		String newPassword2 = request.getParameter("newPassword2");
-		String userId = request.getParameter("userId");
 
 		boolean isCorrectPassword = false;
 		String message = "";
 
-		EmplyrManageVO resultVO = emplyrManageService.selectPassword(userId);
+		EmplyrManageVO resultVO = emplyrManageService.selectPassword(emplyrManageVO.getEmplyrId());
 		// 패스워드 암호화
 		String encryptPass = FileScrty.encryptPassword(oldPassword);
 		if (encryptPass.equals(resultVO.getPassword())) {

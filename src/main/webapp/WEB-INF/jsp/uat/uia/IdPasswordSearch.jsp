@@ -34,21 +34,12 @@
 function fnCheckUsrId(userSe) {
 	// 일반회원
 	if (userSe == "GNR") {
-		document.idForm.rdoSlctUsr[0].checked = true;
-		document.idForm.rdoSlctUsr[1].checked = false;
-		document.idForm.rdoSlctUsr[2].checked = false;
 		document.idForm.userSe.value = "GNR";
 	// 기업회원
 	} else if (userSe == "ENT") {
-		document.idForm.rdoSlctUsr[0].checked = false;
-		document.idForm.rdoSlctUsr[1].checked = true;
-		document.idForm.rdoSlctUsr[2].checked = false;
 		document.idForm.userSe.value = "ENT";
 	// 업무사용자
 	} else if (userSe == "USR") {
-		document.idForm.rdoSlctUsr[0].checked = false;
-		document.idForm.rdoSlctUsr[1].checked = false;
-		document.idForm.rdoSlctUsr[2].checked = true;
 		document.idForm.userSe.value = "USR";
 	}
 }
@@ -56,21 +47,12 @@ function fnCheckUsrId(userSe) {
 function fnCheckUsrPassword(userSe) {
 	// 일반회원
 	if (userSe == "GNR") {
-		document.passwordForm.rdoSlctUsr[0].checked = true;
-		document.passwordForm.rdoSlctUsr[1].checked = false;
-		document.passwordForm.rdoSlctUsr[2].checked = false;
 		document.passwordForm.userSe.value = "GNR";
 	// 기업회원
 	} else if (userSe == "ENT") {
-		document.passwordForm.rdoSlctUsr[0].checked = false;
-		document.passwordForm.rdoSlctUsr[1].checked = true;
-		document.passwordForm.rdoSlctUsr[2].checked = false;
 		document.passwordForm.userSe.value = "ENT";
 	// 업무사용자
 	} else if (userSe == "USR") {
-		document.passwordForm.rdoSlctUsr[0].checked = false;
-		document.passwordForm.rdoSlctUsr[1].checked = false;
-		document.passwordForm.rdoSlctUsr[2].checked = true;
 		document.passwordForm.userSe.value = "USR";
 	}
 }
@@ -87,7 +69,7 @@ function fnSearchId() {
 }
 
 function fnSearchPassword() {
-	if (document.passwordForm.id.value =="") {
+	if (document.passwordForm.userId.value =="") {
 		alert("아이디를 입력하세요");
 	} else if (document.passwordForm.name.value =="") {
 		alert("이름을 입력하세요");
@@ -107,8 +89,7 @@ function fnSearchPassword() {
 <style type="text/css">
 
 #wrap {
-	text-align:center; 
-	width:100%; margin-top:100px; margin-left:100px; 
+	margin:100px auto; width:50%;
 }
 
 .content { 
@@ -150,11 +131,11 @@ function fnSearchPassword() {
                 <tr>
                     <td width="30"></td>
                     <td>
-                    	<input name="rdoSlctUsr" type="radio" value="radio" checked onClick="fnCheckUsrId('GNR');" style="border:0;background:#ffffff;" tabindex="1">일반
+                    	<input name="rdoSlctUsr" type="radio" value="GNR" checked onClick="fnCheckUsrId('GNR');" style="border:0;background:#ffffff;" tabindex="1">일반
                     	&nbsp;&nbsp;
-                    	<input name="rdoSlctUsr" type="radio" value="radio" onClick="fnCheckUsrId('ENT');" style="border:0;background:#ffffff;" tabindex="2">기업
+                    	<input name="rdoSlctUsr" type="radio" value="ENT" onClick="fnCheckUsrId('ENT');" style="border:0;background:#ffffff;" tabindex="2">기업
                     	&nbsp;&nbsp;
-                    	<input name="rdoSlctUsr" type="radio" value="radio" onClick="fnCheckUsrId('USR');" style="border:0;background:#ffffff;" tabindex="3">업무
+                    	<input name="rdoSlctUsr" type="radio" value="USR" onClick="fnCheckUsrId('USR');" style="border:0;background:#ffffff;" tabindex="3">업무
                     </td>
                 </tr>
                 <tr><td colspan="2" height="5"></td></tr>
@@ -201,11 +182,11 @@ function fnSearchPassword() {
                 <tr>
                     <td width="30"></td>
                     <td>
-                    	<input name="rdoSlctUsr" type="radio" value="radio" checked onClick="fnCheckUsrPassword('GNR');" style="border:0;background:#ffffff;" tabindex="1">일반
+                    	<input name="rdoSlctUsr" type="radio" value="GNR" checked onClick="fnCheckUsrPassword('GNR');" style="border:0;background:#ffffff;" tabindex="1">일반
                     	&nbsp;&nbsp;
-                    	<input name="rdoSlctUsr" type="radio" value="radio" onClick="fnCheckUsrPassword('ENT');" style="border:0;background:#ffffff;" tabindex="2">기업
+                    	<input name="rdoSlctUsr" type="radio" value="ENT" onClick="fnCheckUsrPassword('ENT');" style="border:0;background:#ffffff;" tabindex="2">기업
                     	&nbsp;&nbsp;
-                    	<input name="rdoSlctUsr" type="radio" value="radio" onClick="fnCheckUsrPassword('USR');" style="border:0;background:#ffffff;" tabindex="3">업무
+                    	<input name="rdoSlctUsr" type="radio" value="USR" onClick="fnCheckUsrPassword('USR');" style="border:0;background:#ffffff;" tabindex="3">업무
                     </td>
                 </tr>
                 <tr><td colspan="2" height="5"></td></tr>
@@ -214,7 +195,7 @@ function fnSearchPassword() {
                     <table border="0">
                         <tr>
                             <td><label for="id">아이디&nbsp;&nbsp;</label></td>
-                            <td align="left"><input type="text" name="id" id="id" value="" style="height: 16px; width: 85px; border: 1px solid #CCCCCC; margin: 0px; padding: 0px; ime-mode: disabled;" maxlength="12" tabindex="5" /></td>
+                            <td align="left"><input type="text" name="userId" id="userId" value="" style="height: 16px; width: 85px; border: 1px solid #CCCCCC; margin: 0px; padding: 0px; ime-mode: disabled;" maxlength="12" tabindex="5" /></td>
                         </tr>
                         <tr>
                             <td><label for="name">이름&nbsp;&nbsp;</label></td>

@@ -18,18 +18,21 @@ public class BatchOpertVO extends BaseVO {
 	/** 배치작업명 */
 	private String batchOpertNm;
 	
+	// batch type 1
 	/** 배치프로그램 */
 	private String batchProgrm;
 	
 	/** 파라미터 */
 	private String paramtr;
 	
+	// batch type 2
 	/** 배치클래스 */
 	private String batchObject;
 	
 	/** 배치메소드 */
 	private String batchMethod;
 	
+	// batch type 3
 	/** 배치빈 */
 	private String batchBean;
 	

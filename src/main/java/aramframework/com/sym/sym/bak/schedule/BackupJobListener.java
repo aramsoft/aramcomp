@@ -89,7 +89,6 @@ public class BackupJobListener implements JobListener {
 			executBeginTimeStr = formatter.format(executBeginTime);
 			backupResult.setExecutBeginTime(executBeginTimeStr);
 
-			backupResult.setLastUpdusrId("SYSTEM");
 			backupResult.setFrstRegisterId("SYSTEM");
 
 			egovBackupOpertService.insertBackupResult(backupResult);

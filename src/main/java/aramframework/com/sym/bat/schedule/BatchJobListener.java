@@ -88,8 +88,6 @@ public class BatchJobListener implements JobListener {
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault());
 			executBeginTimeStr = formatter.format(executBeginTime);
 			batchResult.setExecutBeginTime(executBeginTimeStr);
-
-			batchResult.setLastUpdusrId("SYSTEM");
 			batchResult.setFrstRegisterId("SYSTEM");
 
 			batchSchdulService.insertBatchResult(batchResult);
@@ -97,7 +95,9 @@ public class BatchJobListener implements JobListener {
 			// 저장이 이상없이 완료되면 datamap에 배치결과ID를 저장한다.
 			dataMap.put("batchResultId", batchResult.getBatchResultId());
 		} catch (Exception e) {
-			LOG.error("배치스케줄ID : " + batchResult.getBatchSchdulId() + ", 배치작업ID : " + batchResult.getBatchOpertId() + ", 배치결과저장(insert) 에러 : " + e.getMessage());
+			LOG.error("배치스케줄ID : " + batchResult.getBatchSchdulId() 
+			      + ", 배치작업ID : " + batchResult.getBatchOpertId() 
+			      + ", 배치결과저장(insert) 에러 : " + e.getMessage());
 			LOG.debug(e.getMessage(), e);
 		}
 
@@ -148,7 +148,6 @@ public class BatchJobListener implements JobListener {
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault());
 			executEndTimeStr = formatter.format(executEndTime);
 			batchResult.setExecutEndTime(executEndTimeStr);
-
 			batchResult.setLastUpdusrId("SYSTEM");
 
 			batchSchdulService.updateBatchResult(batchResult);
@@ -156,8 +155,10 @@ public class BatchJobListener implements JobListener {
 			// 저장이 이상없이 완료되면 datamap에 배치결과ID를 저장한다.
 			dataMap.put("batchResultId", batchResult.getBatchResultId());
 		} catch (Exception e) {
-			LOG.error("배치결과ID : " + batchResult.getBatchResultId() + ", 배치스케줄ID : " + batchResult.getBatchSchdulId() + ", 배치작업ID : "
-					+ batchResult.getBatchOpertId() + ", 배치결과저장(update) 에러 : " + e.getMessage());
+			LOG.error("배치결과ID : " + batchResult.getBatchResultId() 
+			      + ", 배치스케줄ID : " + batchResult.getBatchSchdulId() 
+			      + ", 배치작업ID : " + batchResult.getBatchOpertId() 
+			      + ", 배치결과저장(update) 에러 : " + e.getMessage());
 			LOG.debug(e.getMessage(), e);
 		}
 	}
@@ -190,7 +191,6 @@ public class BatchJobListener implements JobListener {
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault());
 			executEndTimeStr = formatter.format(executEndTime);
 			batchResult.setExecutEndTime(executEndTimeStr);
-
 			batchResult.setLastUpdusrId("SYSTEM");
 
 			batchSchdulService.updateBatchResult(batchResult);
@@ -198,8 +198,10 @@ public class BatchJobListener implements JobListener {
 			// 저장이 이상없이 완료되면 datamap에 배치결과ID를 저장한다.
 			dataMap.put("batchResultId", batchResult.getBatchResultId());
 		} catch (Exception e) {
-			LOG.error("배치결과ID : " + batchResult.getBatchResultId() + ", 배치스케줄ID : " + batchResult.getBatchSchdulId() + ", 배치작업ID : "
-					+ batchResult.getBatchOpertId() + ", 배치결과저장(update) 에러 : " + e.getMessage());
+			LOG.error("배치결과ID : " + batchResult.getBatchResultId() 
+				  + ", 배치스케줄ID : " + batchResult.getBatchSchdulId() 
+				  + ", 배치작업ID : "	+ batchResult.getBatchOpertId() 
+				  + ", 배치결과저장(update) 에러 : " + e.getMessage());
 			LOG.debug(e.getMessage(), e);
 		}
 

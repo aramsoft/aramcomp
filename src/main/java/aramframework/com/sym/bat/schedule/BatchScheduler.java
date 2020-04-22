@@ -3,14 +3,16 @@ package aramframework.com.sym.bat.schedule;
 import java.util.List;
 
 import org.quartz.CronScheduleBuilder;
-import org.quartz.CronTrigger;
 import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
 import org.quartz.JobKey;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 import org.quartz.SchedulerFactory;
+import org.quartz.SimpleScheduleBuilder;
+import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
+import org.quartz.impl.matchers.KeyMatcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanFactory;
@@ -62,12 +64,16 @@ public class BatchScheduler implements BeanFactoryAware {
 	 *                Exception
 	 */
 	public void insertBatchSchdul(BatchSchdulVO batchSchdulVO) throws Exception {
+		LOG.debug("배치스케줄을 등록합니다. 배치스케줄ID : " + batchSchdulVO.getBatchSchdulId());
+
 		// Job 만들기
 		JobDetail jobDetail = null;
+		JobKey jobKey = new JobKey(batchSchdulVO.getBatchSchdulId());
 		if(batchSchdulVO.getBatchProgrm() != null
 			&& !"".equals(batchSchdulVO.getBatchProgrm())) {
+			LOG.debug("배치스케줄을 등록합니다. getBatchProgrm " + batchSchdulVO.getBatchProgrm());
 			jobDetail = JobBuilder.newJob(BatchShellScriptJob.class)
-					.withIdentity(batchSchdulVO.getBatchSchdulId())
+					.withIdentity(jobKey)
 					.build();
 	
 			jobDetail.getJobDataMap().put("batchProgrm", batchSchdulVO.getBatchProgrm());
@@ -76,6 +82,7 @@ public class BatchScheduler implements BeanFactoryAware {
 		} else if(batchSchdulVO.getBatchBean() != null
 				&& !"".equals(batchSchdulVO.getBatchBean())) {
 			Assert.state(this.beanFactory != null, "BeanFactory must be set when using 'targetBeanName'");
+			LOG.debug("배치스케줄을 등록합니다. getBatchBean " + batchSchdulVO.getBatchBean());
 
 			try {
 				jobDetail = (JobDetail) this.beanFactory.getBean(batchSchdulVO.getBatchBean());
@@ -88,7 +95,9 @@ public class BatchScheduler implements BeanFactoryAware {
 
 		} else if(batchSchdulVO.getBatchObject() != null
 				&& !"".equals(batchSchdulVO.getBatchObject())) {
-			factory.setName(batchSchdulVO.getBatchSchdulId());
+			LOG.debug("배치스케줄을 등록합니다. getBatchObject " + batchSchdulVO.getBatchObject());
+
+			factory.setName(jobKey.getName());
 			factory.setTargetBeanName(batchSchdulVO.getBatchObject());
 			factory.setTargetMethod(batchSchdulVO.getBatchMethod());
 			factory.setConcurrent(false);
@@ -97,6 +106,7 @@ public class BatchScheduler implements BeanFactoryAware {
 			jobDetail = (JobDetail) factory.getObject();
 
 		} else {
+			LOG.debug("배치스케줄을 등록합니다. None ");
 			return;
 		}
 		
@@ -104,31 +114,34 @@ public class BatchScheduler implements BeanFactoryAware {
 		jobDetail.getJobDataMap().put("batchOpertId", batchSchdulVO.getBatchOpertId());
 		jobDetail.getJobDataMap().put("batchSchdulId", batchSchdulVO.getBatchSchdulId());
 
-		BatchJobListener listener = new BatchJobListener();
-		listener.setBatchSchdulService(batchSchdulService);
-		listener.setIdgenService(idgenService);
-
-		sched.getListenerManager().addJobListener(listener);
-
 		// Trigger 만들기
-		// Trigger trigger = TriggerUtils.makeImmediateTrigger(target.getBatchSchdulId(), 1, 1000000);
-		CronTrigger trigger = TriggerBuilder.newTrigger()
-				.withIdentity(batchSchdulVO.getBatchSchdulId())
-				.withSchedule(CronScheduleBuilder.cronSchedule(batchSchdulVO.toCronExpression()))
-				.forJob(jobDetail.getKey().getName()).build();
-/*
 		Trigger trigger = null;
 		if( batchSchdulVO.getRepeatInterval() != 0L ) {
-			trigger = new SimpleTrigger(batchSchdulVO.getBatchSchdulId()
-					, new Date(System.currentTimeMillis() + batchSchdulVO.getStartDelay())
-					, null, SimpleTrigger.REPEAT_INDEFINITELY, batchSchdulVO.getRepeatInterval());
+			LOG.debug("배치스케줄을 등록합니다. SimpleScheduleBuilder");
+			trigger = TriggerBuilder.newTrigger()
+					.withIdentity(jobKey.getName())
+					.withSchedule(SimpleScheduleBuilder.simpleSchedule()
+							.withIntervalInMilliseconds(batchSchdulVO.getRepeatInterval())
+			                .repeatForever())
+//			                .startAt(batchSchdulVO.getStartDelay())
+					.forJob(jobKey.getName())
+					.build();
+//					, new Date(System.currentTimeMillis() + batchSchdulVO.getStartDelay())
 		} else {
-			trigger = new CronTrigger(batchSchdulVO.getBatchSchdulId(), null, batchSchdulVO.toCronExpression());
-			LOG.debug(batchSchdulVO.getBatchSchdulId() + " - cronexpression : " + ((CronTrigger)trigger).getCronExpression());
+			LOG.debug("배치스케줄을 등록합니다. CronScheduleBuilder");
+			trigger = TriggerBuilder.newTrigger()
+				.withIdentity(jobKey.getName())
+				.withSchedule(CronScheduleBuilder.cronSchedule(batchSchdulVO.toCronExpression()))
+				.forJob(jobKey.getName())
+				.build();
 		}	
-		trigger.setJobName(jobDetail.getName());
-*/
-		LOG.debug("배치스케줄을 등록합니다. 배치스케줄ID : " + batchSchdulVO.getBatchSchdulId());
+
+		BatchJobListener listener = new BatchJobListener();
+        listener.setBatchSchdulService(batchSchdulService);
+        listener.setIdgenService(idgenService);
+
+		sched.getListenerManager().addJobListener(listener, KeyMatcher.keyEquals(jobKey));
+		
 		try {
 			// 스케줄러에 추가하기
 			sched.scheduleJob(jobDetail, trigger);
@@ -149,13 +162,16 @@ public class BatchScheduler implements BeanFactoryAware {
 	 *                Exception
 	 */
 	public void updateBatchSchdul(BatchSchdulVO batchSchdulVO) throws Exception {
+		LOG.debug("배치스케줄을 갱신합니다. 배치스케줄ID : " + batchSchdulVO.getBatchSchdulId());
+
 		// Job 만들기
 		JobDetail jobDetail = null;
-		
+		JobKey jobKey = new JobKey(batchSchdulVO.getBatchSchdulId());
 		if(batchSchdulVO.getBatchProgrm() != null
 			&& !"".equals(batchSchdulVO.getBatchProgrm())) {
+			LOG.debug("배치스케줄을 갱신합니다. getBatchProgrm " + batchSchdulVO.getBatchProgrm());
 			jobDetail = JobBuilder.newJob(BatchShellScriptJob.class)
-					.withIdentity(batchSchdulVO.getBatchSchdulId())
+					.withIdentity(jobKey)
 					.build();
 	
 			jobDetail.getJobDataMap().put("batchProgrm", batchSchdulVO.getBatchProgrm());
@@ -164,6 +180,7 @@ public class BatchScheduler implements BeanFactoryAware {
 		} else if(batchSchdulVO.getBatchBean() != null
 				&& !"".equals(batchSchdulVO.getBatchBean())) {
 			Assert.state(this.beanFactory != null, "BeanFactory must be set when using 'targetBeanName'");
+			LOG.debug("배치스케줄을 갱신합니다. getBatchBean " + batchSchdulVO.getBatchBean());
 
 			try {
 				jobDetail = (JobDetail) this.beanFactory.getBean(batchSchdulVO.getBatchBean());
@@ -176,7 +193,9 @@ public class BatchScheduler implements BeanFactoryAware {
 
 		} else if(batchSchdulVO.getBatchObject() != null
 				&& !"".equals(batchSchdulVO.getBatchObject())) {
-			factory.setName(batchSchdulVO.getBatchSchdulId());
+			LOG.debug("배치스케줄을 갱신합니다. getBatchObject " + batchSchdulVO.getBatchObject());
+
+			factory.setName(jobKey.getName());
 			factory.setTargetBeanName(batchSchdulVO.getBatchObject());
 			factory.setTargetMethod(batchSchdulVO.getBatchMethod());
 			factory.setConcurrent(false);
@@ -185,6 +204,7 @@ public class BatchScheduler implements BeanFactoryAware {
 			jobDetail = (JobDetail) factory.getObject();
 			
 		} else {
+			LOG.debug("배치스케줄을 갱신합니다. None ");
 			return;
 		}
 		
@@ -192,34 +212,37 @@ public class BatchScheduler implements BeanFactoryAware {
 		jobDetail.getJobDataMap().put("batchOpertId", batchSchdulVO.getBatchOpertId());
 		jobDetail.getJobDataMap().put("batchSchdulId", batchSchdulVO.getBatchSchdulId());
 
-		BatchJobListener listener = new BatchJobListener();
-		listener.setBatchSchdulService(batchSchdulService);
-		listener.setIdgenService(idgenService);
-
-		sched.getListenerManager().addJobListener(listener);
-
 		// Trigger 만들기
-		// Trigger trigger = TriggerUtils.makeImmediateTrigger(target.getBatchSchdulId(), 1, 1000000);
-		CronTrigger trigger = TriggerBuilder.newTrigger()
-				.withIdentity(batchSchdulVO.getBatchSchdulId())
-				.withSchedule(CronScheduleBuilder.cronSchedule(batchSchdulVO.toCronExpression()))
-				.forJob(jobDetail.getKey().getName()).build();
-/*
 		Trigger trigger = null;
 		if( batchSchdulVO.getRepeatInterval() != 0L ) {
-			trigger = new SimpleTrigger(batchSchdulVO.getBatchSchdulId()
-					, new Date(System.currentTimeMillis() + batchSchdulVO.getStartDelay())
-					, null, SimpleTrigger.REPEAT_INDEFINITELY, batchSchdulVO.getRepeatInterval());
+			LOG.debug("배치스케줄을 갱신합니다. SimpleScheduleBuilder");
+			trigger = TriggerBuilder.newTrigger()
+					.withIdentity(jobKey.getName())
+					.withSchedule(SimpleScheduleBuilder.simpleSchedule()
+							.withIntervalInMilliseconds(batchSchdulVO.getRepeatInterval())
+			                .repeatForever())
+//			                .startAt(batchSchdulVO.getStartDelay())
+					.forJob(jobKey.getName())
+					.build();
+//					, new Date(System.currentTimeMillis() + batchSchdulVO.getStartDelay())
 		} else {
-			trigger = new CronTrigger(batchSchdulVO.getBatchSchdulId(), null, batchSchdulVO.toCronExpression());
-			LOG.debug(batchSchdulVO.getBatchSchdulId() + " - cronexpression : " + ((CronTrigger)trigger).getCronExpression());
+			LOG.debug("배치스케줄을 갱신합니다. CronScheduleBuilder");
+			trigger = TriggerBuilder.newTrigger()
+					.withIdentity(jobKey.getName())
+					.withSchedule(CronScheduleBuilder.cronSchedule(batchSchdulVO.toCronExpression()))
+					.forJob(jobKey.getName())
+					.build();
 		}	
-		trigger.setJobName(jobDetail.getName());
-*/
-		LOG.debug("배치스케줄을 등록합니다. 배치스케줄ID : " + batchSchdulVO.getBatchSchdulId());
+
+		BatchJobListener listener = new BatchJobListener();
+        listener.setBatchSchdulService(batchSchdulService);
+        listener.setIdgenService(idgenService);
+
+		sched.getListenerManager().addJobListener(listener, KeyMatcher.keyEquals(jobKey));
+		
 		try {
 			// 스케줄러에서 기존Job, Trigger 삭제하기
-			sched.deleteJob(JobKey.jobKey(batchSchdulVO.getBatchSchdulId()));
+			sched.deleteJob(jobKey);
 			// 스케줄러에 추가하기
 			sched.scheduleJob(jobDetail, trigger);
 		} catch (SchedulerException e) {
@@ -239,11 +262,11 @@ public class BatchScheduler implements BeanFactoryAware {
 	 *                Exception
 	 */
 	public void deleteBatchSchdul(BatchSchdulVO batchSchdulVO) throws Exception {
-
+		JobKey jobKey = new JobKey(batchSchdulVO.getBatchSchdulId());
 		try {
 			// 스케줄러에서 기존Job, Trigger 삭제하기
 			LOG.debug("배치스케줄을 삭제합니다. 배치스케줄ID : " + batchSchdulVO.getBatchSchdulId());
-			sched.deleteJob(JobKey.jobKey(batchSchdulVO.getBatchSchdulId()));
+			sched.deleteJob(jobKey);
 		} catch (SchedulerException e) {
 			// SchedulerException 이 발생하면 로그를 출력하고 다음 배치작업으로 넘어간다.
 			// 트리거의 실행시각이 현재 시각보다 이전이면 SchedulerException이 발생한다.
@@ -273,13 +296,6 @@ public class BatchScheduler implements BeanFactoryAware {
 		// 스케줄러 생성하기
 		SchedulerFactory schedFact = new org.quartz.impl.StdSchedulerFactory();
 		sched = schedFact.getScheduler();
-
-		// Set up the listener
-		BatchJobListener listener = new BatchJobListener();
-		listener.setBatchSchdulService(batchSchdulService);
-		listener.setIdgenService(idgenService);
-		// sched.addGlobalJobListener(listener);
-		sched.getListenerManager().addJobListener(listener);
 
 		factory = new MethodInvokingJobDetailFactoryBean();
 		factory.setBeanFactory(beanFactory);

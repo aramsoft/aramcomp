@@ -27,7 +27,7 @@ public class BackupJobListener implements JobListener {
 	/**
 	 * egovBackupOpertService
 	 */
-	private BackupOpertService egovBackupOpertService;
+	private BackupOpertService backupOpertService;
 
 	/** ID Generation */
 	private EgovIdGnrService idgenService;
@@ -40,8 +40,8 @@ public class BackupJobListener implements JobListener {
 	 * @param egovBackupOpertService
 	 *            the egovBackupOpertService to set
 	 */
-	public void setEgovBackupOpertService(BackupOpertService egovBackupOpertService) {
-		this.egovBackupOpertService = egovBackupOpertService;
+	public void setBackupOpertService(BackupOpertService backupOpertService) {
+		this.backupOpertService = backupOpertService;
 	}
 
 	/**
@@ -73,7 +73,8 @@ public class BackupJobListener implements JobListener {
 	 */
 	public void jobToBeExecuted(JobExecutionContext jobContext) {
 		LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "jobToBeExecuted ");
-		BackupResultVO backupResult = new BackupResultVO();
+	
+ 		BackupResultVO backupResult = new BackupResultVO();
 		JobDataMap dataMap = jobContext.getJobDetail().getJobDataMap();
 		try {
 			// 결과 값 세팅.
@@ -88,15 +89,15 @@ public class BackupJobListener implements JobListener {
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault());
 			executBeginTimeStr = formatter.format(executBeginTime);
 			backupResult.setExecutBeginTime(executBeginTimeStr);
-
 			backupResult.setFrstRegisterId("SYSTEM");
 
-			egovBackupOpertService.insertBackupResult(backupResult);
+			backupOpertService.insertBackupResult(backupResult);
 
 			// 저장이 이상없이 완료되면 datamap에 배치결과ID를 저장한다.
 			dataMap.put("backupResultId", backupResult.getBackupResultId());
 		} catch (Exception e) {
-			LOG.error("백업작업ID : " + backupResult.getBackupOpertId() + ", 배치결과저장(insert) 에러 : " + e.getMessage());
+			LOG.error("백업작업ID : " + backupResult.getBackupOpertId() 
+			      + ", 백업결과저장(insert) 에러 : " + e.getMessage());
 			LOG.debug(e.getMessage(), e);
 		}
 
@@ -132,7 +133,8 @@ public class BackupJobListener implements JobListener {
 			} else {
 				// 백업작업이 true가 아닌값을 리턴하면 에러 상황임.
 				backupResult.setSttus("02");
-				backupResult.setErrorInfo("백업작업이 실패했습니다. \n" + "백업작업 [" + dataMap.getString("backupOpertId") + "]의 로그를 확인하세요");
+				backupResult.setErrorInfo("백업작업이 실패했습니다. \n" 
+										+ "백업작업 [" + dataMap.getString("backupOpertId") + "]의 로그를 확인하세요");
 			}
 			// 수행중 exception이 발생한 경우
 			if (jee != null) {
@@ -147,20 +149,20 @@ public class BackupJobListener implements JobListener {
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault());
 			executEndTimeStr = formatter.format(executEndTime);
 			backupResult.setExecutEndTime(executEndTimeStr);
-
 			backupResult.setLastUpdusrId("SYSTEM");
 
 			if (LOG.isDebugEnabled()) {
 				LOG.debug("insert BackupResult Data : " + backupResult);
 				LOG.debug("backupFile : " + dataMap.getString("backupFile"));
 			}
-			egovBackupOpertService.updateBackupResult(backupResult);
+			backupOpertService.updateBackupResult(backupResult);
 
 			// 저장이 이상없이 완료되면 datamap에 배치결과ID를 저장한다.
 			dataMap.put("backupResultId", backupResult.getBackupResultId());
 		} catch (Exception e) {
-			LOG.error("백업결과ID : " + backupResult.getBackupResultId() + ", 백업작업ID : " + backupResult.getBackupOpertId() + ", 배치결과저장(update) 에러 : "
-					+ e.getMessage());
+			LOG.error("백업결과ID : " + backupResult.getBackupResultId() 
+				  + ", 백업작업ID : " + backupResult.getBackupOpertId() 
+				  + ", 백업결과저장(update) 에러 : " + e.getMessage());
 			LOG.debug(e.getMessage(), e);
 		}
 	}
@@ -193,19 +195,18 @@ public class BackupJobListener implements JobListener {
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault());
 			executEndTimeStr = formatter.format(executEndTime);
 			backupResult.setExecutEndTime(executEndTimeStr);
-
 			backupResult.setLastUpdusrId("SYSTEM");
 
-			egovBackupOpertService.updateBackupResult(backupResult);
+			backupOpertService.updateBackupResult(backupResult);
 
 			// 저장이 이상없이 완료되면 datamap에 배치결과ID를 저장한다.
 			dataMap.put("backupResultId", backupResult.getBackupResultId());
 		} catch (Exception e) {
-			LOG.error("백업결과ID : " + backupResult.getBackupResultId() + ", 백업작업ID : " + backupResult.getBackupOpertId() + ", 배치결과저장(update) 에러 : "
-					+ e.getMessage());
+			LOG.error("백업결과ID : " + backupResult.getBackupResultId() 
+				  + ", 백업작업ID : " + backupResult.getBackupOpertId() 
+				  + ", 백업결과저장(update) 에러 : " + e.getMessage());
 			LOG.debug(e.getMessage(), e);
 		}
-
 	}
 
 }

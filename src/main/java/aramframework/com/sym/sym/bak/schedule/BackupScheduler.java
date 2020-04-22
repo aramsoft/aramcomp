@@ -3,14 +3,15 @@ package aramframework.com.sym.sym.bak.schedule;
 import java.util.List;
 
 import org.quartz.CronScheduleBuilder;
-import org.quartz.CronTrigger;
 import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
 import org.quartz.JobKey;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 import org.quartz.SchedulerFactory;
+import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
+import org.quartz.impl.matchers.KeyMatcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -49,25 +50,17 @@ public class BackupScheduler {
 	public void insertBackupOpert(BackupOpertVO backupOpertVO) throws Exception  {
 		LOG.debug("백업스케줄을 등록합니다. 백업작업ID : " + backupOpertVO.getBackupOpertId());
 		// Job 만들기
+		JobKey jobKey = new JobKey(backupOpertVO.getBackupOpertId());
 		JobDetail jobDetail = JobBuilder.newJob(BackupJob.class)
-				.withIdentity(backupOpertVO.getBackupOpertId())
+				.withIdentity(jobKey)
 				.build();
 
 		// Trigger 만들기
-		// Trigger trigger = TriggerUtils.makeImmediateTrigger(backupOpert.getBackupOpertId(), 1, 1000000);
-		CronTrigger trigger = TriggerBuilder.newTrigger()
-			    .withIdentity(backupOpertVO.getBackupOpertId())
+		Trigger trigger = TriggerBuilder.newTrigger()
+			    .withIdentity(jobKey.getName())
 			    .withSchedule(CronScheduleBuilder.cronSchedule(backupOpertVO.toCronExpression()))
-			    .forJob(jobDetail.getKey().getName())
+			    .forJob(jobKey.getName())
 			    .build();
-		
-		LOG.debug(backupOpertVO.getBackupOpertId() + " - cronexpression : " + trigger.getCronExpression());
-
-		BackupJobListener listener = new BackupJobListener();
-        listener.setEgovBackupOpertService(backupOpertService);
-        listener.setIdgenService(idgenService);
-
-		sched.getListenerManager().addJobListener(listener);
 		
 		// 데이터 전달
 		jobDetail.getJobDataMap().put("backupOpertId", backupOpertVO.getBackupOpertId());
@@ -75,6 +68,12 @@ public class BackupScheduler {
 		jobDetail.getJobDataMap().put("backupStreDrctry", backupOpertVO.getBackupStreDrctry());
 		jobDetail.getJobDataMap().put("cmprsSe", backupOpertVO.getCmprsSe());
 
+		BackupJobListener listener = new BackupJobListener();
+        listener.setBackupOpertService(backupOpertService);
+        listener.setIdgenService(idgenService);
+
+		sched.getListenerManager().addJobListener(listener, KeyMatcher.keyEquals(jobKey));
+		
 		try {
 			// 스케줄러에 추가하기
 			sched.scheduleJob(jobDetail, trigger);
@@ -92,27 +91,20 @@ public class BackupScheduler {
 	 * @param backupOpertVO
 	 */
 	public void updateBackupOpert(BackupOpertVO backupOpertVO) throws Exception {
+		LOG.debug("백업스케줄을 갱신합니다. 백업작업ID : " + backupOpertVO.getBackupOpertId());
+
 		// Job 만들기
+		JobKey jobKey = new JobKey(backupOpertVO.getBackupOpertId());
 		JobDetail jobDetail = JobBuilder.newJob(BackupJob.class)
-										.withIdentity(backupOpertVO.getBackupOpertId())
-										.build();
+				.withIdentity(jobKey)
+				.build();
 
 		// Trigger 만들기
-		// Trigger trigger = TriggerUtils.makeImmediateTrigger(backupOpert.getBackupOpertId(), 1, 1000000);
-		CronTrigger trigger = TriggerBuilder.newTrigger()
-			    .withIdentity(backupOpertVO.getBackupOpertId())
+		Trigger trigger = TriggerBuilder.newTrigger()
+			    .withIdentity(jobKey.getName())
 			    .withSchedule(CronScheduleBuilder.cronSchedule(backupOpertVO.toCronExpression()))
-			    .forJob(jobDetail.getKey().getName())
+			    .forJob(jobKey.getName())
 			    .build();
-		
-		LOG.debug("백업스케줄을 갱신합니다. 백업작업ID : " + backupOpertVO.getBackupOpertId());
-		LOG.debug(backupOpertVO.getBackupOpertId() + " - cronexpression : " + trigger.getCronExpression());
-
-		BackupJobListener listener = new BackupJobListener();
-        listener.setEgovBackupOpertService(backupOpertService);
-        listener.setIdgenService(idgenService);
-
-		sched.getListenerManager().addJobListener(listener);
 		
 		// 데이터 전달
 		jobDetail.getJobDataMap().put("backupOpertId", backupOpertVO.getBackupOpertId());
@@ -120,9 +112,15 @@ public class BackupScheduler {
 		jobDetail.getJobDataMap().put("backupStreDrctry", backupOpertVO.getBackupStreDrctry());
 		jobDetail.getJobDataMap().put("cmprsSe", backupOpertVO.getCmprsSe());
 
+		BackupJobListener listener = new BackupJobListener();
+        listener.setBackupOpertService(backupOpertService);
+        listener.setIdgenService(idgenService);
+
+		sched.getListenerManager().addJobListener(listener, KeyMatcher.keyEquals(jobKey));
+		
 		try {
 			// 스케줄러에서 기존Job, Trigger 삭제하기
-			sched.deleteJob(JobKey.jobKey(backupOpertVO.getBackupOpertId()));
+			sched.deleteJob(jobKey);
 			// 스케줄러에 추가하기
 			sched.scheduleJob(jobDetail, trigger);
 		} catch (SchedulerException e) {
@@ -139,11 +137,11 @@ public class BackupScheduler {
 	 * @param backupOpertVO
 	 */
 	public void deleteBackupOpert(BackupOpertVO backupOpertVO)  {
-
+		JobKey jobKey = new JobKey(backupOpertVO.getBackupOpertId());
 		try {
 			// 스케줄러에서 기존Job, Trigger 삭제하기
 			LOG.debug("백업작업을 삭제합니다. 백업작업ID : " + backupOpertVO.getBackupOpertId());
-			sched.deleteJob(JobKey.jobKey(backupOpertVO.getBackupOpertId()));
+			sched.deleteJob(jobKey);
 		} catch (SchedulerException e) {
 			// SchedulerException 이 발생하면 로그를 출력하고 다음 배치작업으로 넘어간다.
 			LOG.error("스케줄러에 백업작업을 삭제할때 에러가 발생했습니다. 배치스케줄ID : " + backupOpertVO.getBackupOpertId());
@@ -171,12 +169,6 @@ public class BackupScheduler {
 		// 스케줄러 생성하기
 		SchedulerFactory schedFact = new org.quartz.impl.StdSchedulerFactory();
 		sched = schedFact.getScheduler();
-		// Set up the listener
-		BackupJobListener listener = new BackupJobListener();
-		listener.setEgovBackupOpertService(backupOpertService);
-		listener.setIdgenService(idgenService);
-
-		sched.getListenerManager().addJobListener(listener);
 
 		// 스케줄러에 Job, Trigger 등록하기
 		BackupOpertVO target = null;

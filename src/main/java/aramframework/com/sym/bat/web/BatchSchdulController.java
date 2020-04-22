@@ -132,7 +132,7 @@ public class BatchSchdulController {
 		batchSchdulService.insertBatchSchdul(batchSchdulVO);
 
 		// 배치스케줄러에 스케줄정보반영
-		batchSchdulService.selectBatchSchdul(batchSchdulVO);
+		batchSchdulVO = batchSchdulService.selectBatchSchdul(batchSchdulVO);
 		batchScheduler.insertBatchSchdul(batchSchdulVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
@@ -186,7 +186,7 @@ public class BatchSchdulController {
 		batchSchdulService.updateBatchSchdul(batchSchdulVO);
 
 		// 배치스케줄러에 스케줄정보반영
-		batchSchdulService.selectBatchSchdul(batchSchdulVO);
+		batchSchdulVO = batchSchdulService.selectBatchSchdul(batchSchdulVO);
 		batchScheduler.updateBatchSchdul(batchSchdulVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));

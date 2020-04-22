@@ -81,15 +81,7 @@
   	</tr> 
     <tr> 
     	<th>
-    		2. 배치빈이름
-    	</th>
-    	<td>
-        	<c:out value="${batchOpertVO.batchBean}" escapeXml="false" /> 
-    	</td>
-  	</tr> 
-    <tr> 
-    	<th>
-    		3. 배치객체
+    		2. 배치객체
     	</th>
     	<td>
         	<c:out value="${batchOpertVO.batchObject}" escapeXml="false" /> 

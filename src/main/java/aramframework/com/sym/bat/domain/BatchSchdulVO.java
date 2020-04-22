@@ -66,9 +66,6 @@ public class BatchSchdulVO extends BaseVO {
 	/** 배치메소드 */
 	private String batchMethod;
 	
-	/** 배치빈이름 */
-	private String batchBean;
-	
 	// domain
 	/**
 	 * @return the batchSchdulId
@@ -320,20 +317,6 @@ public class BatchSchdulVO extends BaseVO {
 	 */
 	public void setBatchMethod(String batchMethod) {
 		this.batchMethod = batchMethod;
-	}
-
-	/**
-	 * @return the batchBean
-	 */
-	public String getBatchBean() {
-		return batchBean;
-	}
-	/**
-	 * @param batchBean
-	 *            the batchBean to set
-	 */
-	public void setBatchBean(String batchBean) {
-		this.batchBean = batchBean;
 	}
 
 	/**

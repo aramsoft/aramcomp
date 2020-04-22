@@ -27,7 +27,6 @@
            		 , B.PARAMTR
            		 , B.BATCH_OBJECT
            		 , B.BATCH_METHOD
-           		 , B.BATCH_BEAN
            		 , A.LAST_UPDT_PNTTM 		AS "lastUpdusrPnttm"
            		 , A.LAST_UPDUSR_ID
            		 , A.FRST_REGISTER_ID
@@ -103,7 +102,6 @@
             	 , B.PARAMTR
            		 , B.BATCH_OBJECT
            		 , B.BATCH_METHOD
-           		 , B.BATCH_BEAN
             	 , A.LAST_UPDT_PNTTM 		AS "lastUpdusrPnttm"
             	 , A.LAST_UPDUSR_ID
             	 , A.FRST_REGISTER_ID

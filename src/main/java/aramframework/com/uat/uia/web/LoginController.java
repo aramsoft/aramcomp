@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cop.ems.domain.SndngMailVO;
-import aramframework.com.cop.ems.service.SndngMailService;
 import aramframework.com.cmm.config.security.SimpleUrlAuthenticationSuccessHandler;
 import aramframework.com.cmm.constant.Globals;
 import aramframework.com.cmm.service.CmmUseService;
@@ -51,8 +50,8 @@ public class LoginController {
 	private CmmUseService cmmUseService;
 
 	/** EgovSndngMailService */
-	@Autowired
-	private SndngMailService sndngMailService;
+//	@Autowired
+//	private SndngMailService sndngMailService;
 
 	@Autowired
 	SessionRegistry sessionRegistry;

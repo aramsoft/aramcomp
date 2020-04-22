@@ -18,7 +18,6 @@
             	 , A.PARAMTR				AS "paramtr"
             	 , A.BATCH_OBJECT			AS "batchObject"
             	 , A.BATCH_METHOD			AS "batchMethod"
-            	 , A.BATCH_BEAN				AS "batchBean"
               FROM COMTN_BATCH_OPERT A
              WHERE USE_AT = 'Y'
         ]]>
@@ -69,7 +68,6 @@
             	 , A.PARAMTR
             	 , A.BATCH_OBJECT
             	 , A.BATCH_METHOD
-            	 , A.BATCH_BEAN
             	 , A.LAST_UPDT_PNTTM 		AS "lastUpdusrPnttm"
             	 , A.LAST_UPDUSR_ID
             	 , A.FRST_REGISTER_ID
@@ -88,7 +86,6 @@
 	              , PARAMTR
 	              , BATCH_OBJECT
 	              , BATCH_METHOD
-	              , BATCH_BEAN
 	              , USE_AT
 				  , FRST_REGISTER_ID 
 				  , FRST_REGIST_PNTTM 
@@ -101,7 +98,6 @@
 	              , #{paramtr}
 	              , #{batchObject}
 	              , #{batchMethod}
-	              , #{batchBean}
 	              , 'Y'
 				  , #{frstRegisterId}
 				  , SYSDATE
@@ -119,7 +115,6 @@
                  , PARAMTR 			= #{paramtr}
                  , BATCH_OBJECT 	= #{batchObject}
                  , BATCH_METHOD 	= #{batchMethod}
-                 , BATCH_BEAN 		= #{batchBean}
                  , LAST_UPDUSR_ID 	= #{lastUpdusrId}
                  , LAST_UPDT_PNTTM 	= SYSDATE
              WHERE BATCH_OPERT_ID 	= #{batchOpertId} 

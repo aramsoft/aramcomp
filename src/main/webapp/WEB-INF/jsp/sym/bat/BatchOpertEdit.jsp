@@ -90,17 +90,7 @@
 	<tr> 
   		<th>
     		<span class="norequired_icon"></span>
-  			<label for="batchBean">2. 배치빈이름</label>
-  		</th>
-  		<td>
-      		<form:input path="batchBean" size="60" maxlength="255"/>
-     		<form:errors path="batchBean" cssClass="error" />  
-  		</td>
-	</tr> 
-	<tr> 
-  		<th>
-    		<span class="norequired_icon"></span>
-  			<label for="batchObject">3. 배치객체</label>
+  			<label for="batchObject">2. 배치객체</label>
   		</th>
   		<td>
       		<form:input path="batchObject" size="60" maxlength="255"/>

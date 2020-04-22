@@ -79,7 +79,6 @@
 	    <th scope="col" width="15%">배치작업ID</th>
 	    <th scope="col" width="15%">배치작업명</th>
 	    <th scope="col" width="20%">배치프로그램</th>
-	    <th scope="col" width="20%">배치빈이름</th>
 	    <th scope="col"            >배치객체/메소드</th>
   	</tr>
 </thead>    
@@ -108,7 +107,6 @@
 			</span>
         </td>
         <td class="lt_text3">${result.batchProgrm}</td>
-        <td class="lt_text3">${result.batchBean}</td>
         <td class="lt_text3">${result.batchObject} - ${result.batchMethod}</td>
     </tr>   
     </c:forEach>

@@ -17,9 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
-import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean;
-import org.springframework.util.Assert;
 
 import aramframework.com.sym.bat.domain.BatchSchdulVO;
 import aramframework.com.sym.bat.service.BatchSchdulService;
@@ -78,20 +76,6 @@ public class BatchScheduler implements BeanFactoryAware {
 	
 			jobDetail.getJobDataMap().put("batchProgrm", batchSchdulVO.getBatchProgrm());
 			jobDetail.getJobDataMap().put("paramtr", batchSchdulVO.getParamtr());
-
-		} else if(batchSchdulVO.getBatchBean() != null
-				&& !"".equals(batchSchdulVO.getBatchBean())) {
-			Assert.state(this.beanFactory != null, "BeanFactory must be set when using 'targetBeanName'");
-			LOG.debug("배치스케줄을 등록합니다. getBatchBean " + batchSchdulVO.getBatchBean());
-
-			try {
-				jobDetail = (JobDetail) this.beanFactory.getBean(batchSchdulVO.getBatchBean());
-			} catch (NoSuchBeanDefinitionException ex) {
-				LOG.error(ex.getMessage());
-				return;
-			}
-			
-//			jobDetail.setName(batchSchdulVO.getBatchSchdulId());
 
 		} else if(batchSchdulVO.getBatchObject() != null
 				&& !"".equals(batchSchdulVO.getBatchObject())) {
@@ -176,20 +160,6 @@ public class BatchScheduler implements BeanFactoryAware {
 	
 			jobDetail.getJobDataMap().put("batchProgrm", batchSchdulVO.getBatchProgrm());
 			jobDetail.getJobDataMap().put("paramtr", batchSchdulVO.getParamtr());
-
-		} else if(batchSchdulVO.getBatchBean() != null
-				&& !"".equals(batchSchdulVO.getBatchBean())) {
-			Assert.state(this.beanFactory != null, "BeanFactory must be set when using 'targetBeanName'");
-			LOG.debug("배치스케줄을 갱신합니다. getBatchBean " + batchSchdulVO.getBatchBean());
-
-			try {
-				jobDetail = (JobDetail) this.beanFactory.getBean(batchSchdulVO.getBatchBean());
-			} catch (NoSuchBeanDefinitionException ex) {
-				LOG.error(ex.getMessage());
-				return;
-			}
-			
-//			jobDetail.setName(batchSchdulVO.getBatchSchdulId());
 
 		} else if(batchSchdulVO.getBatchObject() != null
 				&& !"".equals(batchSchdulVO.getBatchObject())) {

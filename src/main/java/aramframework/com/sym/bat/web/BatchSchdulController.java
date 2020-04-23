@@ -133,7 +133,7 @@ public class BatchSchdulController {
 
 		// 배치스케줄러에 스케줄정보반영
 		batchSchdulVO = batchSchdulService.selectBatchSchdul(batchSchdulVO);
-		batchScheduler.insertBatchSchdul(batchSchdulVO);
+		batchScheduler.insertBatchSchdul(batchSchdulVO, false);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sym/bat/listBatchSchdul.do");
@@ -187,7 +187,7 @@ public class BatchSchdulController {
 
 		// 배치스케줄러에 스케줄정보반영
 		batchSchdulVO = batchSchdulService.selectBatchSchdul(batchSchdulVO);
-		batchScheduler.updateBatchSchdul(batchSchdulVO);
+		batchScheduler.insertBatchSchdul(batchSchdulVO, true);		// 갱신시 true
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/sym/bat/listBatchSchdul.do");

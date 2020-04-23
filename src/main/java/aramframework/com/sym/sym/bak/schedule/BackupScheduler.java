@@ -99,7 +99,7 @@ public class BackupScheduler {
 		for (int i = 0; i < targetList.size(); i++) {
 			target = (BackupOpertVO) targetList.get(i);
 			if("Y".equals(target.getUseAt())) {
-				insertBackupOpert(target);
+				insertBackupOpert(target, false);
 			}	
 		}
 		sched.start();
@@ -118,8 +118,12 @@ public class BackupScheduler {
 	 * 
 	 * @param backupOpertVO
 	 */
-	public void insertBackupOpert(BackupOpertVO backupOpertVO) throws Exception  {
-		LOG.debug("백업스케줄을 등록합니다. 백업작업ID : " + backupOpertVO.getBackupOpertId());
+	public void insertBackupOpert(BackupOpertVO backupOpertVO, boolean updateMode) throws Exception  {
+		if (updateMode) {
+			LOG.debug("백업스케줄을 갱신합니다. 백업작업ID : " + backupOpertVO.getBackupOpertId());
+		} else {
+			LOG.debug("백업스케줄을 등록합니다. 백업작업ID : " + backupOpertVO.getBackupOpertId());
+		}
 		// Job 만들기
 		JobKey jobKey = new JobKey(backupOpertVO.getBackupOpertId());
 		JobDetail jobDetail = JobBuilder.newJob(BackupJob.class)
@@ -146,58 +150,20 @@ public class BackupScheduler {
 		sched.getListenerManager().addJobListener(listener, KeyMatcher.keyEquals(jobKey));
 		
 		try {
+			if (updateMode) {
+				// 스케줄러에서 기존Job, Trigger 삭제하기
+				sched.deleteJob(jobKey);
+			}	
 			// 스케줄러에 추가하기
 			sched.scheduleJob(jobDetail, trigger);
 		} catch (SchedulerException e) {
 			// SchedulerException 이 발생하면 로그를 출력하고 다음 백업작업으로 넘어간다.
 			// 트리거의 실행시각이 현재 시각보다 이전이면 SchedulerException이 발생한다.
-			LOG.error("스케줄러에 백업작업추가할때 에러가 발생했습니다. 백업작업ID : " + backupOpertVO.getBackupOpertId());
-			LOG.error("에러내용 : " + e.getMessage());
-		}
-	}
-
-	/**
-	 * 백업스케줄러에 backupOpert 파라미터를 이용하여 Job , Trigger를 갱신 한다.
-	 * 
-	 * @param backupOpertVO
-	 */
-	public void updateBackupOpert(BackupOpertVO backupOpertVO) throws Exception {
-		LOG.debug("백업스케줄을 갱신합니다. 백업작업ID : " + backupOpertVO.getBackupOpertId());
-
-		// Job 만들기
-		JobKey jobKey = new JobKey(backupOpertVO.getBackupOpertId());
-		JobDetail jobDetail = JobBuilder.newJob(BackupJob.class)
-				.withIdentity(jobKey)
-				.build();
-
-		// Trigger 만들기
-		Trigger trigger = TriggerBuilder.newTrigger()
-			    .withIdentity(jobKey.getName())
-			    .withSchedule(CronScheduleBuilder.cronSchedule(backupOpertVO.toCronExpression()))
-			    .forJob(jobKey.getName())
-			    .build();
-		
-		// 데이터 전달
-		jobDetail.getJobDataMap().put("backupOpertId", backupOpertVO.getBackupOpertId());
-		jobDetail.getJobDataMap().put("backupOrginlDrctry", backupOpertVO.getBackupOrginlDrctry());
-		jobDetail.getJobDataMap().put("backupStreDrctry", backupOpertVO.getBackupStreDrctry());
-		jobDetail.getJobDataMap().put("cmprsSe", backupOpertVO.getCmprsSe());
-
-		BackupJobListener listener = new BackupJobListener();
-        listener.setBackupOpertService(backupOpertService);
-        listener.setIdgenService(idgenService);
-
-		sched.getListenerManager().addJobListener(listener, KeyMatcher.keyEquals(jobKey));
-		
-		try {
-			// 스케줄러에서 기존Job, Trigger 삭제하기
-			sched.deleteJob(jobKey);
-			// 스케줄러에 추가하기
-			sched.scheduleJob(jobDetail, trigger);
-		} catch (SchedulerException e) {
-			// SchedulerException 이 발생하면 로그를 출력하고 다음 배치작업으로 넘어간다.
-			// 트리거의 실행시각이 현재 시각보다 이전이면 SchedulerException이 발생한다.
-			LOG.error("스케줄러에 백업작업갱신할때 에러가 발생했습니다. 백업작업ID : " + backupOpertVO.getBackupOpertId());
+			if (updateMode) {
+				LOG.error("스케줄러에 백업작업갱신할때 에러가 발생했습니다. 백업작업ID : " + backupOpertVO.getBackupOpertId());
+			} else {
+				LOG.error("스케줄러에 백업작업추가할때 에러가 발생했습니다. 백업작업ID : " + backupOpertVO.getBackupOpertId());
+			}
 			LOG.error("에러내용 : " + e.getMessage());
 		}
 	}

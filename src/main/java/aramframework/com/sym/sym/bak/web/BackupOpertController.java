@@ -141,7 +141,7 @@ public class BackupOpertController {
 
 		// 배치스케줄러에 스케줄정보반영
 		backupOpertService.selectBackupOpert(backupOpertVO);
-		backupScheduler.insertBackupOpert(backupOpertVO);
+		backupScheduler.insertBackupOpert(backupOpertVO, false);
 
 		// Exception 없이 진행시 등록성공메시지
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
@@ -197,7 +197,7 @@ public class BackupOpertController {
 
 		// 백업스케줄러에 스케줄정보반영
 		backupOpertService.selectBackupOpert(backupOpertVO);
-		backupScheduler.updateBackupOpert(backupOpertVO);
+		backupScheduler.insertBackupOpert(backupOpertVO, true);		// 갱신시 true
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/sym/sym/bak/listBackupOpert.do");

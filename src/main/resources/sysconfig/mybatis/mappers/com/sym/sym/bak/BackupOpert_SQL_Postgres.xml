@@ -161,20 +161,13 @@
                  , EXECUT_SCHDUL_HOUR 		= #{executSchdulHour}
                  , EXECUT_SCHDUL_MNT 		= #{executSchdulMnt}
                  , EXECUT_SCHDUL_SECND 		= #{executSchdulSecnd}
+                 , USE_AT					= #{useAt}
                  , LAST_UPDUSR_ID 			= #{lastUpdusrId}
                  , LAST_UPDT_PNTTM 			= now()
              WHERE BACKUP_OPERT_ID = #{backupOpertId}
         ]]>
     </update>
     
-    <update id="updateBackupOpertUse">
-        <![CDATA[
-            UPDATE COMTN_BACKUP_OPERT 
-               SET USE_AT = #{useAt}
-             WHERE BACKUP_OPERT_ID = #{backupOpertId} 
-        ]]>
-    </update>
-
     <delete id="deleteBackupOpert">
         <![CDATA[
             DELETE

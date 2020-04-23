@@ -84,15 +84,6 @@ public class BatchSchdulService extends EgovAbstractServiceImpl {
 	}
 
 	/**
-	 * 배치스케줄 사용정보를 수정한다.
-	 * 
-	 * @param batchSchdulVO
-	 */
-	public void updateBatchSchdulUse(BatchSchdulVO batchSchdulVO) {
-		batchSchdulMapper.updateBatchSchdulUse(batchSchdulVO);
-	}
-
-	/**
 	 * 배치스케줄을 삭제한다.
 	 * 
 	 * @param batchSchdulVO

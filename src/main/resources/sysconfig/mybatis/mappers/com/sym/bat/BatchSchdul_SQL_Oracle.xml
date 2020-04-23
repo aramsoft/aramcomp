@@ -166,17 +166,10 @@
                	 , EXECUT_SCHDUL_HOUR 	= #{executSchdulHour}
                	 , EXECUT_SCHDUL_MNT 	= #{executSchdulMnt}
                	 , EXECUT_SCHDUL_SECND 	= #{executSchdulSecnd}
+                 , USE_AT				= #{useAt}
                	 , LAST_UPDUSR_ID 		= #{lastUpdusrId}
                	 , LAST_UPDT_PNTTM 		= SYSDATE
              WHERE BATCH_SCHDUL_ID 		= #{batchSchdulId} 
-        ]]>
-    </update>
-
-    <update id="updateBatchSchdulUse">
-        <![CDATA[
-            UPDATE COMTN_BATCH_SCHDUL 
-               SET USE_AT = #{useAt}
-             WHERE BATCH_SCHDUL_ID = #{batchSchdulId} 
         ]]>
     </update>
 

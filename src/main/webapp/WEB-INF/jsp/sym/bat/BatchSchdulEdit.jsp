@@ -148,6 +148,17 @@
         	<form:errors path="repeatInterval" cssClass="error" />
     	</td>
   	</tr>
+	<tr>
+	    <th>
+	    	<span class="required_icon"></span>
+	    	사용여부
+	    </th>
+	    <td>
+	     	<label for="useAtY"><spring:message code="button.use" /></label> : <input type="radio" name="useAt" id="useAtY" class="radio2" value="Y"  <c:if test="${batchSchdulVO.useAt == 'Y'}"> checked="checked"</c:if>>&nbsp;
+	     	<label for="useAtN"><spring:message code="button.notUsed" /></label> : <input type="radio" name="useAt" id="useAtN" class="radio2" value="N" <c:if test="${batchSchdulVO.useAt == 'N'}"> checked="checked"</c:if>>
+	     	<form:errors path="useAt" cssClass="error"/>
+	    </td>
+	</tr>
   	
 </table>
 

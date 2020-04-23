@@ -107,7 +107,17 @@
      		<form:errors path="batchMethod" cssClass="error" />  
   		</td>
 	</tr> 
-    <form:hidden path="useAt" />
+	<tr>
+	    <th>
+	    	<span class="required_icon"></span>
+	    	사용여부
+	    </th>
+	    <td>
+	     	<label for="useAtY"><spring:message code="button.use" /></label> : <input type="radio" name="useAt" id="useAtY" class="radio2" value="Y"  <c:if test="${batchOpertVO.useAt == 'Y'}"> checked="checked"</c:if>>&nbsp;
+	     	<label for="useAtN"><spring:message code="button.notUsed" /></label> : <input type="radio" name="useAt" id="useAtN" class="radio2" value="N" <c:if test="${batchOpertVO.useAt == 'N'}"> checked="checked"</c:if>>
+	     	<form:errors path="useAt" cssClass="error"/>
+	    </td>
+	</tr>
 </table>
 
 <!-- 검색조건 유지 -->

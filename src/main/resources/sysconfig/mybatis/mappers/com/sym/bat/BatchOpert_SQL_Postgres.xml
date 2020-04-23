@@ -109,20 +109,13 @@
                  , PARAMTR 			= #{paramtr}
                  , BATCH_OBJECT 	= #{batchObject}
                  , BATCH_METHOD 	= #{batchMethod}
+                 , USE_AT			= #{useAt}
                  , LAST_UPDUSR_ID 	= #{lastUpdusrId}
                  , LAST_UPDT_PNTTM 	= now()
              WHERE BATCH_OPERT_ID 	= #{batchOpertId} 
         ]]>
     </update>
     
-    <update id="updateBatchOpertUse" >
-        <![CDATA[
-            UPDATE COMTN_BATCH_OPERT 
-               SET USE_AT = #{useAt}
-             WHERE BATCH_OPERT_ID = #{batchOpertId} 
-        ]]>
-    </update>
-
     <delete id="deleteBatchOpert" >
         <![CDATA[
             DELETE

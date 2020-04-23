@@ -52,13 +52,6 @@ public interface BatchOpertMapper {
 	public void updateBatchOpert(BatchOpertVO batchOpertVO);
 
 	/**
-	 * 배치작업 사용정보를 수정한다.
-	 * 
-	 * @param batchOpertVO
-	 */
-	public void updateBatchOpertUse(BatchOpertVO batchOpertVO);
-
-	/**
 	 * 배치작업을 삭제한다.
 	 * 
 	 * @param batchOpertVO

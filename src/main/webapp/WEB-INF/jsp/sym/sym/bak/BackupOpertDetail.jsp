@@ -96,6 +96,16 @@
         	<c:out value="${backupOpertVO.cmprsSeNm}" escapeXml="false" /> 
     	</td>
   	</tr> 
+	<tr>
+	    <th>
+	    	<span class="required_icon"></span>
+	    	사용여부
+	    </th>
+	    <td>
+    		<c:if test="${backupOpertVO.useAt == 'N'}"><spring:message code="button.notUsed" /></c:if>
+    		<c:if test="${backupOpertVO.useAt == 'Y'}"><spring:message code="button.use" /></c:if>
+	    </td>
+	</tr>
 </table>
 
 <!-- 검색조건 유지 -->

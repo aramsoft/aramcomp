@@ -116,6 +116,16 @@ public class BatchSchdulMapper extends EgovAbstractMapper {
 	}
 
 	/**
+	 * 배치스케쥴 사용여부를 갱신한다.
+	 * 
+	 * @param batchSchdulVO
+	 */
+	public void updateBatchSchdulUse(BatchSchdulVO batchSchdulVO) {
+		// master 테이블 삭제
+		update(NAMESPACE+".updateBatchSchdulUse", batchSchdulVO);
+	}
+
+	/**
 	 * 배치스케줄을 삭제한다.
 	 * 
 	 * @param batchSchdulVO

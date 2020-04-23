@@ -117,6 +117,16 @@ public class BackupOpertMapper extends EgovAbstractMapper {
 	}
 
 	/**
+	 * 백업작업을 사용여부를 갱신한다.
+	 * 
+	 * @param backupOpertVO
+	 */
+	public void updateBackupOpertUse(BackupOpertVO backupOpertVO) {
+		// master 테이블 삭제
+		update(NAMESPACE+".updateBackupOpertUse", backupOpertVO);
+	}
+
+	/**
 	 * 백업작업을 삭제한다.
 	 * 
 	 * @param backupOpertVO

@@ -22,6 +22,7 @@
            		 , A.EXECUT_SCHDUL_HOUR
            		 , A.EXECUT_SCHDUL_MNT
            		 , A.EXECUT_SCHDUL_SECND
+           		 , A.USE_AT
            		 , B.BATCH_OPERT_NM
            		 , B.BATCH_PROGRM
            		 , B.PARAMTR
@@ -97,6 +98,7 @@
             	 , A.EXECUT_SCHDUL_HOUR
             	 , A.EXECUT_SCHDUL_MNT
             	 , A.EXECUT_SCHDUL_SECND
+           		 , A.USE_AT
             	 , B.BATCH_OPERT_NM
             	 , B.BATCH_PROGRM
             	 , B.PARAMTR
@@ -129,6 +131,7 @@
                   ,	EXECUT_SCHDUL_HOUR
                   ,	EXECUT_SCHDUL_MNT
                   ,	EXECUT_SCHDUL_SECND
+           		  , USE_AT
 				  , FRST_REGISTER_ID 
 				  , FRST_REGIST_PNTTM 
 				  , LAST_UPDUSR_ID
@@ -143,6 +146,7 @@
                   , #{executSchdulHour}
                   , #{executSchdulMnt}
                   , #{executSchdulSecnd}
+                  , #{useAt}
 				  , #{frstRegisterId}
 				  , SYSDATE
 				  , #{frstRegisterId} 
@@ -165,6 +169,14 @@
                	 , LAST_UPDUSR_ID 		= #{lastUpdusrId}
                	 , LAST_UPDT_PNTTM 		= SYSDATE
              WHERE BATCH_SCHDUL_ID 		= #{batchSchdulId} 
+        ]]>
+    </update>
+
+    <update id="updateBatchSchdulUse">
+        <![CDATA[
+            UPDATE COMTN_BATCH_SCHDUL 
+               SET USE_AT = #{useAt}
+             WHERE BATCH_SCHDUL_ID = #{batchSchdulId} 
         ]]>
     </update>
 

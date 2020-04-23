@@ -43,6 +43,77 @@ public class BackupScheduler {
 	private static final int RECORD_COUNT_PER_PAGE = 10000;
 
 	/**
+	 * 백업작업서비스 리턴
+	 * 
+	 */
+	public BackupOpertService getBackupOpertService() {
+		return backupOpertService;
+	}
+	/**
+	 * 백업작업서비스 저장.
+	 * 
+	 * @param backupOpertService
+	 */
+	public void setBackupOpertService(BackupOpertService backupOpertService) {
+		this.backupOpertService = backupOpertService;
+	}
+
+	/**
+	 * 백업결과ID 생성서비스 리턴
+	 * 
+	 * @return the idgenService
+	 */
+	public EgovIdGnrService getIdgenService() {
+		return idgenService;
+	}
+	/**
+	 * 백업결과ID 생성서비스 저장.
+	 * 
+	 * @param idgenService
+	 */
+	public void setIdgenService(EgovIdGnrService idgenService) {
+		this.idgenService = idgenService;
+	}
+
+	/**
+	 * 클래스 초기화메소드. 배치스케줄테이블을 읽어서 Quartz 스케줄러를 초기화한다.
+	 * 
+	 */
+	public void init() throws Exception {
+
+		List<BackupOpertVO> targetList = null;
+		BackupOpertVO backupOpertVO = new BackupOpertVO();
+		
+		// 모니터링 대상 검색 조건 초기화
+		backupOpertVO.setPageIndex(1);
+		backupOpertVO.setFirstIndex(0);
+		backupOpertVO.setRecordPerPage(RECORD_COUNT_PER_PAGE);
+		targetList = backupOpertService.selectBackupOpertList(backupOpertVO);
+
+		// 스케줄러 생성하기
+		SchedulerFactory schedFact = new org.quartz.impl.StdSchedulerFactory();
+		sched = schedFact.getScheduler();
+
+		// 스케줄러에 Job, Trigger 등록하기
+		BackupOpertVO target = null;
+		for (int i = 0; i < targetList.size(); i++) {
+			target = (BackupOpertVO) targetList.get(i);
+			if("Y".equals(target.getUseAt())) {
+				insertBackupOpert(target);
+			}	
+		}
+		sched.start();
+	}
+
+	/**
+	 * 클래스 destroy메소드. Quartz 스케줄러를 shutdown한다.
+	 * 
+	 */
+	public void destroy() throws Exception {
+		sched.shutdown();
+	}
+
+	/**
 	 * 백업스케줄러에 backupOpert 파라미터를 이용하여 Job , Trigger를 Add 한다.
 	 * 
 	 * @param backupOpertVO
@@ -147,83 +218,6 @@ public class BackupScheduler {
 			LOG.error("스케줄러에 백업작업을 삭제할때 에러가 발생했습니다. 배치스케줄ID : " + backupOpertVO.getBackupOpertId());
 			LOG.error("에러내용 : " + e.getMessage());
 		}
-	}
-
-	/**
-	 * 클래스 초기화메소드. 배치스케줄테이블을 읽어서 Quartz 스케줄러를 초기화한다.
-	 * 
-	 */
-	public void init() throws Exception {
-		// 모니터링 대상 정보 읽어들이기~~~
-		List<BackupOpertVO> targetList = null;
-		BackupOpertVO backupOpertVO = new BackupOpertVO();
-		// 모니터링 대상 검색 조건 초기화
-		backupOpertVO.setPageIndex(1);
-		backupOpertVO.setFirstIndex(0);
-		backupOpertVO.setRecordPerPage(RECORD_COUNT_PER_PAGE);
-		targetList = backupOpertService.selectBackupOpertList(backupOpertVO);
-		if (LOG.isDebugEnabled()) {
-			LOG.debug("Result 건수 : " + targetList.size());
-		}
-
-		// 스케줄러 생성하기
-		SchedulerFactory schedFact = new org.quartz.impl.StdSchedulerFactory();
-		sched = schedFact.getScheduler();
-
-		// 스케줄러에 Job, Trigger 등록하기
-		BackupOpertVO target = null;
-		for (int i = 0; i < targetList.size(); i++) {
-			target = (BackupOpertVO) targetList.get(i);
-			if (LOG.isDebugEnabled()) {
-				LOG.debug("Data : " + target);
-			}
-
-			insertBackupOpert(target);
-		}
-		sched.start();
-	}
-
-	/**
-	 * 클래스 destroy메소드. Quartz 스케줄러를 shutdown한다.
-	 * 
-	 */
-	public void destroy() throws Exception {
-		sched.shutdown();
-	}
-
-	/**
-	 * 백업작업서비스 리턴
-	 * 
-	 */
-	public BackupOpertService getBackupOpertService() {
-		return backupOpertService;
-	}
-
-	/**
-	 * 백업작업서비스 저장.
-	 * 
-	 * @param backupOpertService
-	 */
-	public void setBackupOpertService(BackupOpertService backupOpertService) {
-		this.backupOpertService = backupOpertService;
-	}
-
-	/**
-	 * 백업결과ID 생성서비스 리턴
-	 * 
-	 * @return the idgenService
-	 */
-	public EgovIdGnrService getIdgenService() {
-		return idgenService;
-	}
-
-	/**
-	 * 백업결과ID 생성서비스 저장.
-	 * 
-	 * @param idgenService
-	 */
-	public void setIdgenService(EgovIdGnrService idgenService) {
-		this.idgenService = idgenService;
 	}
 
 }

@@ -66,13 +66,14 @@
 <caption>백업작업관리 목록</caption>
 <thead>
   	<tr>
-	    <th scope="col" width="7%" >No.</th>
-    	<th scope="col" width="12%">백업작업ID</th>
+	    <th scope="col" width="5%" >No.</th>
+    	<th scope="col" width="15%">백업작업ID</th>
 	    <th scope="col"            >백업작업명</th>
-	    <th scope="col" width="18%">백업원본디렉토리</th>
-	    <th scope="col" width="18%">백업저장디렉토리</th>
-	    <th scope="col" width="10%">실행주기</th>
+	    <th scope="col" width="15%">백업원본디렉토리</th>
+	    <th scope="col" width="15%">백업저장디렉토리</th>
+	    <th scope="col" width="5%">실행주기</th>
 	    <th scope="col" width="20%">실행스케줄</th>
+	    <th scope="col" width="5%">사용여부</th>
   	</tr>
 </thead>    
 <tbody>
@@ -103,6 +104,7 @@
         <td class="lt_text6">${result.backupStreDrctry}</td>
         <td class="lt_text3">${result.executCycleNm}</td>
         <td class="lt_text3">${result.executSchdul}</td>
+        <td class="lt_text3">${result.useAt}</td>
     </tr>   
     </c:forEach>
 </tbody>

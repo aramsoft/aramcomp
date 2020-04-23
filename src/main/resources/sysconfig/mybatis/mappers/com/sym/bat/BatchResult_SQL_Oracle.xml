@@ -20,7 +20,6 @@
                	 , B.PARAMTR
                  , B.BATCH_OBJECT
                  , B.BATCH_METHOD
-                 , B.BATCH_BEAN
                	 , A.STTUS
                	 , C.CODE_NM 			AS "sttusNm" 
                	 , A.ERROR_INFO

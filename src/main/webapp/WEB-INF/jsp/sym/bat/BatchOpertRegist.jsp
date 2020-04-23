@@ -45,18 +45,6 @@
 <!--  등록  폼 영역  -->
 <table class="table-register" summary="배치작업등록을 위한 테이블.">
 <caption>배치작업 등록</caption>  
-  	<!-- 
-  	<tr> 
-    	<th width="20%">
-    		<span class="required_icon"></span>
-    		<label for="batchOpertId">배치작업ID</label>
-    	</th>
-    	<td width="80%">
-        	<form:input path="batchOpertId" size="20" maxlength="20" disabled="true" cssClass="readOnlyClass"/>
-        	<form:errors path="batchOpertId" cssClass="error" />
-    	</td>
-  	</tr>
-   -->
   	<tr> 
     	<th width="20%">
     		<span class="required_icon"></span>
@@ -107,6 +95,8 @@
      		<form:errors path="batchMethod" cssClass="error" />  
   		</td>
 	</tr> 
+    <form:hidden path="useAt" value="Y"/>
+	
 </table>
 
 <!-- 검색조건 유지 -->

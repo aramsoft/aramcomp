@@ -24,9 +24,7 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
  */
 public class BatchJobListener implements JobListener {
 
-	/**
-	 * batchSchdulService
-	 */
+	/** batchSchdulService */
 	private BatchSchdulService batchSchdulService;
 
 	/** ID Generation */
@@ -204,7 +202,6 @@ public class BatchJobListener implements JobListener {
 				  + ", 배치결과저장(update) 에러 : " + e.getMessage());
 			LOG.debug(e.getMessage(), e);
 		}
-
 	}
 
 }

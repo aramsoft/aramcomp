@@ -32,6 +32,8 @@ import egovframework.rte.fdl.idgnr.EgovIdGnrService;
  */
 public class BatchScheduler implements BeanFactoryAware {
 
+	private MethodInvokingJobDetailFactoryBean factory;
+
 	private BeanFactory beanFactory;
 
 	/** egovBatchSchdulService	 */
@@ -39,8 +41,6 @@ public class BatchScheduler implements BeanFactoryAware {
 
 	/** ID Generation */
 	private EgovIdGnrService idgenService;
-
-	private MethodInvokingJobDetailFactoryBean factory;
 
 	/** Quartz 스케줄러 */
 	private Scheduler sched;
@@ -53,6 +53,83 @@ public class BatchScheduler implements BeanFactoryAware {
 	public void setBeanFactory(BeanFactory beanFactory) {
 		this.beanFactory = beanFactory;
 	}
+	
+	/**
+	 * 배치스케줄 서비스 리턴
+	 * 
+	 * @return the egovBatchSchdulService
+	 */
+	public BatchSchdulService getBatchSchdulService() {
+		return batchSchdulService;
+	}
+	/**
+	 * 배치스케줄 서비스 저장.
+	 * 
+	 * @param egovBatchSchdulService
+	 *            the egovBatchSchdulService to set
+	 */
+	public void setBatchSchdulService(BatchSchdulService egovBatchSchdulService) {
+		this.batchSchdulService = egovBatchSchdulService;
+	}
+
+	/**
+	 * 배치결과ID 생성서비스 리턴
+	 * 
+	 * @return the idgenService
+	 */
+	public EgovIdGnrService getIdgenService() {
+		return idgenService;
+	}
+	/**
+	 * 배치결과ID 생성서비스 저장.
+	 * 
+	 * @param idgenService
+	 *            the idgenService to set
+	 */
+	public void setIdgenService(EgovIdGnrService idgenService) {
+		this.idgenService = idgenService;
+	}
+	
+	/**
+	 * 클래스 초기화메소드. 배치스케줄테이블을 읽어서 Quartz 스케줄러를 초기화한다.
+	 * 
+	 */
+	public void init() throws Exception {
+
+		List<BatchSchdulVO> targetList = null;
+		BatchSchdulVO batchSchdulVO = new BatchSchdulVO();
+		// 모니터링 대상 검색 조건 초기화
+		batchSchdulVO.setPageIndex(1);
+		batchSchdulVO.setFirstIndex(0);
+		batchSchdulVO.setRecordPerPage(RECORD_COUNT_PER_PAGE);
+		targetList = batchSchdulService.selectBatchSchdulList(batchSchdulVO);
+
+		// 스케줄러 생성하기
+		SchedulerFactory schedFact = new org.quartz.impl.StdSchedulerFactory();
+		sched = schedFact.getScheduler();
+
+		factory = new MethodInvokingJobDetailFactoryBean();
+		factory.setBeanFactory(beanFactory);
+	
+		// 스케줄러에 Job, Trigger 등록하기
+		BatchSchdulVO target = null;
+		for (int i = 0; i < targetList.size(); i++) {
+			target = (BatchSchdulVO) targetList.get(i);
+			if("Y".equals(target.getUseAt())) {
+				insertBatchSchdul(target);
+			}	
+		}
+		sched.start();
+	}
+
+	/**
+	 * 클래스 destroy메소드. Quartz 스케줄러를 shutdown한다.
+	 * 
+	 */
+	public void destroy() throws Exception {
+		sched.shutdown();
+	}
+
 	/**
 	 * 배치스케줄러에 batchSchdul 파라미터를 이용하여 Job , Trigger를 Add 한다.
 	 * 
@@ -245,94 +322,4 @@ public class BatchScheduler implements BeanFactoryAware {
 		}
 	}
 
-	/**
-	 * 클래스 초기화메소드. 배치스케줄테이블을 읽어서 Quartz 스케줄러를 초기화한다.
-	 * 
-	 */
-	public void init() throws Exception {
-		// 모니터링 대상 정보 읽어들이기~~~
-		List<BatchSchdulVO> targetList = null;
-		BatchSchdulVO batchSchdulVO = new BatchSchdulVO();
-		// 모니터링 대상 검색 조건 초기화
-		batchSchdulVO.setPageIndex(1);
-		batchSchdulVO.setFirstIndex(0);
-		batchSchdulVO.setRecordPerPage(RECORD_COUNT_PER_PAGE);
-		targetList = batchSchdulService.selectBatchSchdulList(batchSchdulVO);
-//		log.debug("조회조건 " + batchSchdulVO);
-		if (LOG.isDebugEnabled()) {
-			LOG.debug("Result 건수 : " + targetList.size());
-		}
-
-		// 스케줄러 생성하기
-		SchedulerFactory schedFact = new org.quartz.impl.StdSchedulerFactory();
-		sched = schedFact.getScheduler();
-
-		factory = new MethodInvokingJobDetailFactoryBean();
-		factory.setBeanFactory(beanFactory);
-	
-		// 스케줄러에 Job, Trigger 등록하기
-		BatchSchdulVO target = null;
-		for (int i = 0; i < targetList.size(); i++) {
-			target = (BatchSchdulVO) targetList.get(i);
-			if (LOG.isDebugEnabled()) {
-				LOG.debug("Data : " + target);
-			}
-
-			insertBatchSchdul(target);
-		}
-
-		sched.start();
-	}
-
-	/**
-	 * 클래스 destroy메소드. Quartz 스케줄러를 shutdown한다.
-	 * 
-	 */
-	public void destroy() throws Exception {
-		LOG.debug("start batch shutdown!! ");
-		sched.shutdown(true);
-        do {
-            try {
-                Thread.sleep(500);
-            } catch (Exception ignore) {
-            }
-        } while (!sched.isShutdown());
-        LOG.debug("end batch shutdown!! ");
-	}
-
-	/**
-	 * 배치스케줄 서비스 리턴
-	 * 
-	 * @return the egovBatchSchdulService
-	 */
-	public BatchSchdulService getBatchSchdulService() {
-		return batchSchdulService;
-	}
-	/**
-	 * 배치스케줄 서비스 저장.
-	 * 
-	 * @param egovBatchSchdulService
-	 *            the egovBatchSchdulService to set
-	 */
-	public void setBatchSchdulService(BatchSchdulService egovBatchSchdulService) {
-		this.batchSchdulService = egovBatchSchdulService;
-	}
-
-	/**
-	 * 배치결과ID 생성서비스 리턴
-	 * 
-	 * @return the idgenService
-	 */
-	public EgovIdGnrService getIdgenService() {
-		return idgenService;
-	}
-	/**
-	 * 배치결과ID 생성서비스 저장.
-	 * 
-	 * @param idgenService
-	 *            the idgenService to set
-	 */
-	public void setIdgenService(EgovIdGnrService idgenService) {
-		this.idgenService = idgenService;
-	}
 }

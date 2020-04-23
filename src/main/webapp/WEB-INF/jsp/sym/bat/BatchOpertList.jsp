@@ -66,11 +66,12 @@
 <caption>배치작업관리 목록</caption>
 <thead>
   	<tr> 
-		<th scope="col" width="7%" >No.</th>
-	    <th scope="col" width="15%">배치작업ID</th>
-	    <th scope="col" width="15%">배치작업명</th>
+		<th scope="col" width="5%" >No.</th>
+	    <th scope="col" width="20%">배치작업ID</th>
+	    <th scope="col" width="20%">배치작업명</th>
 	    <th scope="col" width="20%">배치프로그램</th>
 	    <th scope="col"            >배치객체/메소드</th>
+	    <th scope="col" width="10%">사용여부</th>
   	</tr>
 </thead>
 <tbody>
@@ -99,6 +100,7 @@
         </td>
         <td class="lt_text3">${result.batchProgrm}</td>
         <td class="lt_text3">${result.batchObject} / ${result.batchMethod}</td>
+        <td class="lt_text3">${result.useAt}</td>
     </tr>
     </c:forEach>
 </tbody>

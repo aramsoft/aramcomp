@@ -12,8 +12,9 @@
             	 , A.PARAMTR				AS "paramtr"
             	 , A.BATCH_OBJECT			AS "batchObject"
             	 , A.BATCH_METHOD			AS "batchMethod"
+            	 , A.USE_AT					AS "useAt"
               FROM COMTN_BATCH_OPERT A
-             WHERE USE_AT = 'Y'
+             WHERE 1=1
         ]]>
        	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
@@ -38,7 +39,7 @@
         <![CDATA[
             SELECT COUNT(*) totcnt
               FROM COMTN_BATCH_OPERT A
-             WHERE USE_AT = 'Y'
+             WHERE 1=1
         ]]>
        	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
@@ -60,6 +61,7 @@
             	 , A.PARAMTR
             	 , A.BATCH_OBJECT
             	 , A.BATCH_METHOD
+            	 , A.USE_AT
             	 , A.LAST_UPDT_PNTTM 		AS "lastUpdusrPnttm"
             	 , A.LAST_UPDUSR_ID
             	 , A.FRST_REGISTER_ID
@@ -90,7 +92,7 @@
 	              , #{paramtr}
 	              , #{batchObject}
 	              , #{batchMethod}
-	              , 'Y'
+	              , #{useAt}
 				  , #{frstRegisterId}
 				  , sysdate()
 				  , #{frstRegisterId} 
@@ -113,12 +115,20 @@
         ]]>
     </update>
     
-    <delete id="deleteBatchOpert" >
+    <update id="updateBatchOpertUse" >
         <![CDATA[
             UPDATE COMTN_BATCH_OPERT 
-               SET USE_AT = 'N'
+               SET USE_AT = #{useAt}
+             WHERE BATCH_OPERT_ID = #{batchOpertId} 
+        ]]>
+    </update>
+
+    <delete id="deleteBatchOpert" >
+        <![CDATA[
+            DELETE
+              FROM COMTN_BATCH_OPERT 
              WHERE BATCH_OPERT_ID = #{batchOpertId} 
         ]]>
     </delete>
-
+    
 </mapper>            

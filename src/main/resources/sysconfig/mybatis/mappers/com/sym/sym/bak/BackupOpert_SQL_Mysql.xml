@@ -18,6 +18,7 @@
                  , A.BACKUP_STRE_DRCTRY
                  , A.CMPRS_SE
                  , B.CODE_NM 				AS "cmprsSeNm"
+				 , A.USE_AT	
                  , A.LAST_UPDT_PNTTM 		AS "lastUpdusrPnttm" 
                  , A.LAST_UPDUSR_ID
                  , A.FRST_REGISTER_ID
@@ -31,7 +32,7 @@
 					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
 					    	  		 WHERE CODE_ID = 'COM047') C
 					   	ON A.EXECUT_CYCLE = C.CODE
-             WHERE A.USE_AT = 'Y'
+             WHERE 1=1
         ]]>
        	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
@@ -64,7 +65,7 @@
 					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
 					    	  		 WHERE CODE_ID = 'COM047') C
 					   	ON A.EXECUT_CYCLE = C.CODE
-             WHERE A.USE_AT = 'Y'
+             WHERE 1=1
         ]]>
        	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
@@ -92,6 +93,7 @@
                  , A.BACKUP_STRE_DRCTRY
                  , A.CMPRS_SE
                  , B.CODE_NM 				AS "cmprsSeNm"
+				 , A.USE_AT	
                  , A.LAST_UPDT_PNTTM 		AS "lastUpdusrPnttm" 
                  , A.LAST_UPDUSR_ID
                  , A.FRST_REGISTER_ID
@@ -105,8 +107,7 @@
 					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
 					    	  		 WHERE CODE_ID = 'COM047') C
 					   	ON A.EXECUT_CYCLE = C.CODE
-             WHERE A.USE_AT = 'Y'
-               AND A.BACKUP_OPERT_ID = #{backupOpertId}
+             WHERE A.BACKUP_OPERT_ID = #{backupOpertId}
         ]]>
     </select>
 
@@ -139,7 +140,7 @@
                   , #{executSchdulHour}
                   , #{executSchdulMnt}
                   , #{executSchdulSecnd}
-                  , 'Y'
+                  , #{useAt}
 				  , #{frstRegisterId}
 				  , sysdate()
 				  , #{frstRegisterId} 
@@ -166,10 +167,18 @@
         ]]>
     </update>
     
-    <delete id="deleteBackupOpert">
+    <update id="updateBackupOpertUse">
         <![CDATA[
             UPDATE COMTN_BACKUP_OPERT 
-               SET USE_AT = 'N'
+               SET USE_AT = #{useAt}
+             WHERE BACKUP_OPERT_ID = #{backupOpertId} 
+        ]]>
+    </update>
+
+    <delete id="deleteBackupOpert">
+        <![CDATA[
+            DELETE
+              FROM COMTN_BACKUP_OPERT 
              WHERE BACKUP_OPERT_ID = #{backupOpertId} 
         ]]>
     </delete>

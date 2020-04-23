@@ -107,6 +107,7 @@
      		<form:errors path="batchMethod" cssClass="error" />  
   		</td>
 	</tr> 
+    <form:hidden path="useAt" />
 </table>
 
 <!-- 검색조건 유지 -->

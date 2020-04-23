@@ -41,6 +41,9 @@ public class BatchSchdulVO extends BaseVO {
 	/** 실행스케줄초 */
 	private String executSchdulSecnd;
 	
+	/** 사용여부 */
+	private String useAt;
+	
 	// helper
 	/** 실행주기명 */
 	private String executCycleNm;
@@ -191,6 +194,24 @@ public class BatchSchdulVO extends BaseVO {
 	 */
 	public void setExecutSchdulSecnd(String executSchdulSecnd) {
 		this.executSchdulSecnd = executSchdulSecnd;
+	}
+
+	/**
+	 * 사용여부를 리턴한다.
+	 * 
+	 * @return the useAt
+	 */
+	public String getUseAt() {
+		return useAt;
+	}
+	/**
+	 * 사용여부를 설정한다.
+	 * 
+	 * @param useAt
+	 *            설정할 사용여부
+	 */
+	public void setUseAt(String useAt) {
+		this.useAt = useAt;
 	}
 
 	// helper

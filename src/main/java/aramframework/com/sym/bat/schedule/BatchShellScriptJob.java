@@ -71,7 +71,6 @@ public class BatchShellScriptJob implements Job {
 			LOG.error("배치스크립트 실행 에러 : " + e.getMessage());
 			LOG.debug(e.getMessage(), e);
 		}
-
 		return result;
 	}
 

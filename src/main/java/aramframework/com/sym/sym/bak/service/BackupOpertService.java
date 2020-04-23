@@ -84,6 +84,15 @@ public class BackupOpertService extends EgovAbstractServiceImpl {
 	}
 
 	/**
+	 * 백업작업 사용정보를 수정한다.
+	 * 
+	 * @param backupOpertVO
+	 */
+	public void updateBackupOpertUse(BackupOpertVO backupOpertVO) {
+		backupOpertMapper.updateBackupOpertUse(backupOpertVO);
+	}
+
+	/**
 	 * 백업작업을 삭제한다.
 	 * 
 	 * @param backupOpertVO

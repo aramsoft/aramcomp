@@ -66,18 +66,21 @@
 <caption>배치스케줄관리 목록</caption>
 <thead>
   	<tr>
-		<th scope="col" width="7%" >No.</th>
-	    <th scope="col" width="25%">배치스케줄ID</th>
-	    <th scope="col" 	       >배치작업명</th>
-	    <th scope="col" width="10%">실행주기</th>
-	    <th scope="col" width="15%">실행스케줄</th>
+		<th scope="col" width="5%" >No.</th>
+	    <th scope="col" width="15%">배치스케줄ID</th>
+	    <th scope="col" width="15%">배치작업명</th>
+	    <th scope="col" width="20%">배치프로그램</th>
+	    <th scope="col"            >배치객체/메소드</th>
+	    <th scope="col" width="5%">실행주기</th>
+	    <th scope="col" width="20%">실행스케줄</th>
+	    <th scope="col" width="5%">사용여부</th>
   	</tr>
 </thead>    
 <tbody>
     <%-- 데이터를 없을때 화면에 메세지를 출력해준다 --%>
     <c:if test="${fn:length(resultList) == 0}">
     <tr> 
-        <td class="lt_text3" colspan="5"><spring:message code="common.nodata.msg" /></td>
+        <td class="lt_text3" colspan="8"><spring:message code="common.nodata.msg" /></td>
     </tr>                                              
     </c:if>
     
@@ -97,8 +100,11 @@
     		</a>
 			</span>
         </td>
+        <td class="lt_text3">${result.batchProgrm}</td>
+        <td class="lt_text3">${result.batchObject} / ${result.batchMethod}</td>
         <td class="lt_text3">${result.executCycleNm}</td>
         <td class="lt_text3">${result.executSchdul}</td>
+        <td class="lt_text3">${result.useAt}</td>
     </tr>   
     </c:forEach>
 </tbody>

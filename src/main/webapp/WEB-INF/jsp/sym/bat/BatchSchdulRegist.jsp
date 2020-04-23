@@ -150,6 +150,7 @@
         	<form:errors path="repeatInterval" cssClass="error" />
     	</td>
   	</tr>
+    <form:hidden path="useAt" value="Y"/>
   	
 </table>
 

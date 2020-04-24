@@ -17,6 +17,9 @@ public class FileVO extends BaseVO {
 	/** 첨부파일 아이디 */
 	private String atchFileId = "";
 
+	/** 참조 아이디 */
+	private String category = "";
+	
 	/** 생성일자	 */
 	private String creatDt = "";
 
@@ -62,6 +65,23 @@ public class FileVO extends BaseVO {
 		this.atchFileId = atchFileId;
 		if(atchFileId != null && atchFileId.length() != 0)
 			this.setPathId(WebUtil.getPathId(atchFileId));
+	}
+
+	/**
+	 * category attribute를 리턴한다.
+	 * 
+	 * @return 	the category
+	 */
+	public String getCategory() {
+		return category;
+	}
+	/**
+	 * category attribute 값을 설정한다.
+	 * 
+	 * @param 	category	the category to set
+	 */
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	/**

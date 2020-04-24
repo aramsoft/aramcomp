@@ -13,6 +13,7 @@ CREATE TABLE COMTE_COPSEQ
 CREATE TABLE COMTN_FILE
 (
 	ATCH_FILE_ID          	char(20)  		NOT NULL,
+	CATEGORY       			varchar(10)  	NULL,
 	CREAT_DT              	datetime		NOT NULL,
 	USE_AT                	char(1)  		NULL,
 	CONSTRAINT COMTN_FILE_PK PRIMARY KEY (ATCH_FILE_ID)

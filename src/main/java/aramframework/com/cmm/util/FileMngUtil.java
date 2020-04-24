@@ -171,6 +171,7 @@ public class FileMngUtil {
 			fvo.setOrignlFileNm(orginFileName);
 			fvo.setStreFileNm(newName);
 			fvo.setAtchFileId(atchFileId);
+			fvo.setCategory(category);
 			fvo.setFileSn(fileSn);
 
 			// writeFile(file, newName, storePathString);

@@ -115,7 +115,7 @@ public class SndngMailController {
 			ModelMap model) {
 
 		// 1. 발송메일을 상세 조회한다.
-		sndngMailService.selectSndngMail(sndngMailVO);
+		model.addAttribute(sndngMailService.selectSndngMail(sndngMailVO));
 
 		// 발송메일 상세조회 화면 이동
 		return "cop/ems/MailDetail";

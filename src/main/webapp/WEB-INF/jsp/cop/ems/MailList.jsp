@@ -191,9 +191,7 @@ function fn_aram_deleteList(){
 	}
 	var varForm = document.getElementById("sndngMailVO");
     
-   	var ret = confirm("삭제하시겠습니까?");
-    if (ret == true) {
-   		varForm.messageIds.value=checkedIds;
+    if (confirm("삭제하시겠습니까?")) {
     	varForm.action = "${pageContext.request.contextPath}/cop/ems/deleteSndngMailList.do";
     	varForm.submit();
     }

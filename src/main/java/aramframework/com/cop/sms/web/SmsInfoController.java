@@ -77,7 +77,7 @@ public class SmsInfoController {
 			ModelMap model) 
 	throws Exception {
 
-		smsInfoService.selectSmsInf(smsVO);
+		model.addAttribute(smsInfoService.selectSmsInf(smsVO));
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		model.addAttribute("sessionUserId", loginVO.getUserId());

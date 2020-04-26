@@ -161,7 +161,7 @@ public class QnaManageController {
 		if( loginVO != null ) {
 			qnaManageVO.setFrstRegisterId(loginVO.getUserId()); // 최초등록자ID
 		} else {
-			qnaManageVO.setFrstRegisterId("USRCNFRM_00000000000"); // guest
+			qnaManageVO.setFrstRegisterId("GUEST"); // guest
 		}
 		// 작성비밀번호를 암호화 하기 위해서 Get
 		String writngPassword = qnaManageVO.getWritngPassword();
@@ -241,7 +241,7 @@ public class QnaManageController {
 
 		qnaManageVO = qnaManageService.selectQnaListDetail(qnaManageVO);
 		
-		// 작성비밀번호 임시 저장
+		// 이전 작성비밀번호 다시 보여줌
 		String writngPassword = qnaManageVO.getWritngPassword();
 		qnaManageVO.setWritngPassword(writngPassword);
 

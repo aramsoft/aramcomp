@@ -62,7 +62,7 @@ public class NewsManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/ion/nws/NewsInfoList";
+		return "uss/ion/nws/NewsInfoList";
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class NewsManageController {
 
 		model.addAttribute(newsManageService.selectNewsDetail(newsManageVO));
 
-		return "/uss/ion/nws/NewsInfoDetail";
+		return "uss/ion/nws/NewsInfoDetail";
 	}
 
 	/**
@@ -92,7 +92,7 @@ public class NewsManageController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NewsManageVO newsManageVO) {
 
-		return "/uss/ion/nws/NewsInfoRegist";
+		return "uss/ion/nws/NewsInfoRegist";
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class NewsManageController {
 
 		beanValidator.validate(newsManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/nws/NewsInfoRegist";
+			return "uss/ion/nws/NewsInfoRegist";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
@@ -143,7 +143,7 @@ public class NewsManageController {
 
 		model.addAttribute(newsManageService.selectNewsDetail(newsManageVO));
 
-		return "/uss/ion/nws/NewsInfoEdit";
+		return "uss/ion/nws/NewsInfoEdit";
 	}
 	
 	/**
@@ -164,7 +164,7 @@ public class NewsManageController {
 		// Validation
 		beanValidator.validate(newsManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/nws/NewsInfoEdit";
+			return "uss/ion/nws/NewsInfoEdit";
 		}
 
 		// 첨부파일 관련 ID 생성 start....

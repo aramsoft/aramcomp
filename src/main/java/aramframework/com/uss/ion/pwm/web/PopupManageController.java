@@ -66,7 +66,7 @@ public class PopupManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/ion/pwm/PopupList";
+		return "uss/ion/pwm/PopupList";
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class PopupManageController {
 
 		model.addAttribute(popupManageService.selectPopupDetail(popupManageVO));
 
-		return "/uss/ion/pwm/PopupDetail";
+		return "uss/ion/pwm/PopupDetail";
 	}
 
 	// 팝업창시작일자(시)
@@ -108,7 +108,7 @@ public class PopupManageController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute PopupManageVO popupManageVO) {
 
-		return "/uss/ion/pwm/PopupRegist";
+		return "uss/ion/pwm/PopupRegist";
 	}
 
 	/**
@@ -126,7 +126,7 @@ public class PopupManageController {
 		// 서버 validate 체크
 		beanValidator.validate(popupManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/pwm/PopupRegist";
+			return "uss/ion/pwm/PopupRegist";
 		}
 
 		// 로그인 객체 선언
@@ -165,7 +165,7 @@ public class PopupManageController {
 		
 		model.addAttribute(popupManageVO);
 				
-		return "/uss/ion/pwm/PopupEdit";
+		return "uss/ion/pwm/PopupEdit";
 	}
 
 	/**
@@ -183,7 +183,7 @@ public class PopupManageController {
 		// 서버 validate 체크
 		beanValidator.validate(popupManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/pwm/PopupEdit";
+			return "uss/ion/pwm/PopupEdit";
 		}
 
 		// 로그인 객체 선언
@@ -265,7 +265,7 @@ public class PopupManageController {
 
 		model.addAttribute("resultList", popupManageService.selectPopupMainList(popupManageVO));
 
-		return "/uss/ion/pwm/PopupMainPage";
+		return "uss/ion/pwm/PopupMainPage";
 	}
 
 }

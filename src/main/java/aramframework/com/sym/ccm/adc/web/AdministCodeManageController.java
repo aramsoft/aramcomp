@@ -57,7 +57,7 @@ public class AdministCodeManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/sym/ccm/adc/AdministCodeList";
+		return "sym/ccm/adc/AdministCodeList";
 	}
 
 	/**
@@ -73,7 +73,7 @@ public class AdministCodeManageController {
 		
 		model.addAttribute(administCodeManageService.selectAdministCodeDetail(administCodeVO));
 
-		return "/sym/ccm/adc/AdministCodeDetail";
+		return "sym/ccm/adc/AdministCodeDetail";
 	}
 
 	/**
@@ -87,7 +87,7 @@ public class AdministCodeManageController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AdministCodeVO administCodeVO) {
 
-		return "/sym/ccm/adc/AdministCodeRegist";
+		return "sym/ccm/adc/AdministCodeRegist";
 	}
 
 	/**
@@ -105,13 +105,13 @@ public class AdministCodeManageController {
 
 		beanValidator.validate(administCodeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/sym/ccm/adc/AdministCodeRegist";
+			return "sym/ccm/adc/AdministCodeRegist";
 		}
 
 		AdministCodeVO vo = administCodeManageService.selectAdministCodeDetail(administCodeVO);
 		if (vo != null) {
 			model.addAttribute("message", "이미 등록된 행정구역코드가 존재합니다.");
-			return "/sym/ccm/adc/AdministCodeRegist";
+			return "sym/ccm/adc/AdministCodeRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -138,7 +138,7 @@ public class AdministCodeManageController {
 		
 		model.addAttribute(administCodeManageService.selectAdministCodeDetail(administCodeVO));
 
-		return "/sym/ccm/adc/AdministCodeEdit";
+		return "sym/ccm/adc/AdministCodeEdit";
 	}
 
 	/**
@@ -156,7 +156,7 @@ public class AdministCodeManageController {
 
 		beanValidator.validate(administCodeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/sym/ccm/adc/AdministCodeEdit";
+			return "sym/ccm/adc/AdministCodeEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -209,7 +209,7 @@ public class AdministCodeManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/sym/ccm/adc/AdministCodePopup";
+		return "sym/ccm/adc/AdministCodePopup";
 	}
 
 }

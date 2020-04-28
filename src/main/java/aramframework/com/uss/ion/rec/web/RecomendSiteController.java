@@ -56,7 +56,7 @@ public class RecomendSiteController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/ion/rec/RecomendSiteList";
+		return "uss/ion/rec/RecomendSiteList";
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class RecomendSiteController {
 
 		model.addAttribute(recomendSiteService.selectRecomendSiteDetail(recomendSiteVO));
 
-		return "/uss/ion/rec/RecomendSiteDetail";
+		return "uss/ion/rec/RecomendSiteDetail";
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class RecomendSiteController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RecomendSiteVO recomendSiteVO) {
 
-		return "/uss/ion/rec/RecomendSiteRegist";
+		return "uss/ion/rec/RecomendSiteRegist";
 	}
 
 	/**
@@ -104,7 +104,7 @@ public class RecomendSiteController {
 
 		beanValidator.validate(recomendSiteVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/rec/RecomendSiteRegist";
+			return "uss/ion/rec/RecomendSiteRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -132,7 +132,7 @@ public class RecomendSiteController {
 
 		model.addAttribute(recomendSiteService.selectRecomendSiteDetail(recomendSiteVO));
 
-		return "/uss/ion/rec/RecomendSiteEdit";
+		return "uss/ion/rec/RecomendSiteEdit";
 	}
 
 	/**
@@ -151,7 +151,7 @@ public class RecomendSiteController {
 		// Validation
 		beanValidator.validate(recomendSiteVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/rec/RecomendSiteEdit";
+			return "uss/ion/rec/RecomendSiteEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기

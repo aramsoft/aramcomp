@@ -78,7 +78,7 @@ public class EventManageController {
 		// 행사구분
 		cmmUseService.populateCmmCodeList("COM053", "COM053_eventSe");
 
-		return "/uss/ion/evt/EventReqstList";
+		return "uss/ion/evt/EventReqstList";
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class EventManageController {
 			model.addAttribute("check_popup", "Y");
 		}
 		
-		return "/uss/ion/evt/EventReqstDetail";
+		return "uss/ion/evt/EventReqstDetail";
 	}
 
 	/**
@@ -114,7 +114,7 @@ public class EventManageController {
 
 		cmmUseService.populateCmmCodeList("COM053", "COM053_eventSe");
 
-		return "/uss/ion/evt/EventReqstRegist";
+		return "uss/ion/evt/EventReqstRegist";
 	}
 
 	/**
@@ -131,7 +131,7 @@ public class EventManageController {
 
 		beanValidator.validate(eventManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/evt/EventReqstRegist";
+			return "uss/ion/evt/EventReqstRegist";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -157,7 +157,7 @@ public class EventManageController {
 
 		model.addAttribute(eventManageService.selectEventManage(eventManageVO));
 
-		return "/uss/ion/evt/EventReqstEdit";
+		return "uss/ion/evt/EventReqstEdit";
 	}
 
 	/**
@@ -174,7 +174,7 @@ public class EventManageController {
 
 		beanValidator.validate(eventManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/evt/EventReqstEdit";
+			return "uss/ion/evt/EventReqstEdit";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -244,7 +244,7 @@ public class EventManageController {
 		// 행사구분
 		cmmUseService.populateCmmCodeList("COM053", "COM053_eventSe");
 
-		return "/uss/ion/evt/EventRceptList";
+		return "uss/ion/evt/EventRceptList";
 	}
 
 	/**
@@ -262,7 +262,7 @@ public class EventManageController {
 		model.addAttribute(eventManageService.selectEventAtdrn(eventAtdrnVO));
 		model.addAttribute(eventManageService.selectEventManage(eventManageVO));
 
-		return "/uss/ion/evt/EventRceptDetail";
+		return "uss/ion/evt/EventRceptDetail";
 	}
 
 	/**
@@ -285,7 +285,7 @@ public class EventManageController {
 		eventAtdrnVO.setOrgnztNm(loginVO.getOrgnztNm());
 		eventAtdrnVO.setEventId(eventManageVO.getEventId());
 
-		return "/uss/ion/evt/EventRceptRegist";
+		return "uss/ion/evt/EventRceptRegist";
 	}
 
 	/**
@@ -304,14 +304,14 @@ public class EventManageController {
 
 		beanValidator.validate(eventAtdrnVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/evt/EventRceptRegist";
+			return "uss/ion/evt/EventRceptRegist";
 		} 
 		
 		eventManageService.selectEventManage(eventManageVO);
 
 		if (eventManageVO.getGarden() <= eventManageService.selectEventReqstAtdrnListCnt(eventAtdrnVO)) {
 			model.addAttribute("errMessage", "정원초과");
-			return "/uss/ion/evt/EventRceptRegist";
+			return "uss/ion/evt/EventRceptRegist";
 		}
 		
 		java.util.Calendar cal = java.util.Calendar.getInstance();
@@ -393,7 +393,7 @@ public class EventManageController {
 		// 행사구분
 		cmmUseService.populateCmmCodeList("COM053", "COM053_eventSe");
 
-		return "/uss/ion/evt/EventRceptConfm";
+		return "uss/ion/evt/EventRceptConfm";
 	}
 
 	/**
@@ -442,7 +442,7 @@ public class EventManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/ion/evt/EventReqstAtdrnList";
+		return "uss/ion/evt/EventReqstAtdrnList";
 	}
 
 }

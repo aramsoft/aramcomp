@@ -92,7 +92,7 @@ public class NoteManageController {
 			model.addAttribute("noteManageMap", mapNoteManage);
 		} 
 
-		return "/uss/ion/ntm/NoteManage";
+		return "uss/ion/ntm/NoteManage";
 	}
 
 	/**
@@ -116,7 +116,7 @@ public class NoteManageController {
 		// 서버 validate 체크
 		beanValidator.validate(noteManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/ntm/NoteManage";
+			return "uss/ion/ntm/NoteManage";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
@@ -155,7 +155,7 @@ public class NoteManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "/uss/ion/ntm/NoteEmpPopup";
+		return "uss/ion/ntm/NoteEmpPopup";
 	}
 
 }

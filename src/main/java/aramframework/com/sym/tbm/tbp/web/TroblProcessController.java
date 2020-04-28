@@ -73,7 +73,7 @@ public class TroblProcessController {
 		cmmUseService.populateCmmCodeList("COM065", "COM065_troblKnd");
 		cmmUseService.populateCmmCodeList("COM068", "COM068_processSttus");
 
-		return "/sym/tbm/tbp/TroblProcessList";
+		return "sym/tbm/tbp/TroblProcessList";
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class TroblProcessController {
 
 		troblProcessService.selectTroblProcess(troblProcessVO);
 		
-		return "/sym/tbm/tbp/TroblProcessRegist";
+		return "sym/tbm/tbp/TroblProcessRegist";
 	}
 
 	/**
@@ -107,7 +107,7 @@ public class TroblProcessController {
 
 		beanValidator.validate(troblProcessVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/sym/tbm/tbp/TroblProcessRegist";
+			return "sym/tbm/tbp/TroblProcessRegist";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();

@@ -66,7 +66,7 @@ public class DbMntrngController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/utl/sys/dbm/DbMntrngList";
+		return "utl/sys/dbm/DbMntrngList";
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class DbMntrngController {
 
 		model.addAttribute(dbMntrngService.selectDbMntrng(dbMntrngVO));
 
-		return "/utl/sys/dbm/DbMntrngDetail";
+		return "utl/sys/dbm/DbMntrngDetail";
 	}
 
 	/**
@@ -100,7 +100,7 @@ public class DbMntrngController {
 		// DBMS종류코드목록을 코드정보로부터 조회
 		cmmUseService.populateCmmCodeList("COM048", "COM048_dbmsKind");
 
-		return "/utl/sys/dbm/DbMntrngRegist";
+		return "utl/sys/dbm/DbMntrngRegist";
 	}
 
 	/**
@@ -119,7 +119,7 @@ public class DbMntrngController {
 		beanValidator.validate(dbMntrngVO, bindingResult);
 		checkDuplication(dbMntrngVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/utl/sys/dbm/DbMntrngRegist";
+			return "utl/sys/dbm/DbMntrngRegist";
 		}
 		
 		// 로그인 객체 선언
@@ -167,7 +167,7 @@ public class DbMntrngController {
 		// DBMS종류코드목록을 코드정보로부터 조회
 		cmmUseService.populateCmmCodeList("COM048", "COM048_dbmsKind");
 
-		return "/utl/sys/dbm/DbMntrngEdit";
+		return "utl/sys/dbm/DbMntrngEdit";
 	}
 
 	/**
@@ -186,7 +186,7 @@ public class DbMntrngController {
 
 		beanValidator.validate(dbMntrngVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/utl/sys/dbm/DbMntrngEdit";
+			return "utl/sys/dbm/DbMntrngEdit";
 		}
 
 		// 로그인 객체 선언
@@ -241,7 +241,7 @@ public class DbMntrngController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/utl/sys/dbm/DbMntrngLogList";
+		return "utl/sys/dbm/DbMntrngLogList";
 	}
 
 	/**
@@ -259,7 +259,7 @@ public class DbMntrngController {
 
 		model.addAttribute(dbMntrngService.selectDbMntrngLog(dbMntrngLogVO));
 
-		return "/utl/sys/dbm/DbMntrngLogDetail";
+		return "utl/sys/dbm/DbMntrngLogDetail";
 	}
 
 }

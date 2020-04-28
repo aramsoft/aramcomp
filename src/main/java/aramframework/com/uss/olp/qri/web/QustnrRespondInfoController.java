@@ -69,7 +69,7 @@ public class QustnrRespondInfoController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/olp/qri/QustnrRespondInfoUserList";
+		return "uss/olp/qri/QustnrRespondInfoUserList";
 	}
 
 	/**
@@ -110,7 +110,7 @@ public class QustnrRespondInfoController {
 		// 항목정보
 		model.addAttribute("comtnqustnriem", qustnrRespondInfoService.selectQustnrRespondQustnrIem(qestnrId));
 
-		return "/uss/olp/qri/QustnrRespondInfoUserRegist";
+		return "uss/olp/qri/QustnrRespondInfoUserRegist";
 	}
 
 	/**
@@ -281,7 +281,7 @@ public class QustnrRespondInfoController {
 		// 이전 주소
 		model.addAttribute("returnUrl", commandMap.get("returnUrl") == null ? "" : (String) commandMap.get("returnUrl"));
 
-		return "/uss/olp/qri/QustnrRespondInfoStatistics";
+		return "uss/olp/qri/QustnrRespondInfoStatistics";
 	}
 
 	/* 설문조사 (관리자 모드)*/
@@ -313,7 +313,7 @@ public class QustnrRespondInfoController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/olp/qri/QustnrRespondInfoList";
+		return "uss/olp/qri/QustnrRespondInfoList";
 	}
 
 	/**
@@ -330,7 +330,7 @@ public class QustnrRespondInfoController {
 
 		model.addAttribute(qustnrRespondInfoService.selectQustnrRespondInfoDetail(qustnrRespondInfoVO));
 
-		return "/uss/olp/qri/QustnrRespondInfoDetail";
+		return "uss/olp/qri/QustnrRespondInfoDetail";
 	}
 
 	/**
@@ -344,7 +344,7 @@ public class QustnrRespondInfoController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrRespondInfoVO qustnrRespondInfoVO) {
 
-		return "/uss/olp/qri/QustnrRespondInfoRegist";
+		return "uss/olp/qri/QustnrRespondInfoRegist";
 	}
 	
 	/**
@@ -363,7 +363,7 @@ public class QustnrRespondInfoController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrRespondInfoVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/olp/qri/QustnrRespondInfoRegist";
+			return "uss/olp/qri/QustnrRespondInfoRegist";
 		}
 
 		// 로그인 객체 선언
@@ -391,7 +391,7 @@ public class QustnrRespondInfoController {
 
 		model.addAttribute(qustnrRespondInfoService.selectQustnrRespondInfoDetail(qustnrRespondInfoVO));
 
-		return "/uss/olp/qri/QustnrRespondInfoEdit";
+		return "uss/olp/qri/QustnrRespondInfoEdit";
 	}
 
 	/**
@@ -410,7 +410,7 @@ public class QustnrRespondInfoController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrRespondInfoVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/olp/qri/QustnrRespondInfoEdit";
+			return "uss/olp/qri/QustnrRespondInfoEdit";
 		}
 
 		// 로그인 객체 선언

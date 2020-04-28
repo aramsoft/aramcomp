@@ -59,7 +59,7 @@ public class KnoManagementController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/dam/mgm/KnoManagementList";
+		return "dam/mgm/KnoManagementList";
 	}
 
 	/**
@@ -79,7 +79,7 @@ public class KnoManagementController {
 		
 		model.addAttribute(knoManagementService.selectKnoManagement(knoManagementVO));
 
-		return "/dam/mgm/KnoManagementDetail";
+		return "dam/mgm/KnoManagementDetail";
 	}
 
 	/**
@@ -95,7 +95,7 @@ public class KnoManagementController {
 
 		model.addAttribute(knoManagementService.selectKnoManagement(knoManagementVO));
 
-		return "/dam/mgm/KnoManagementEdit";
+		return "dam/mgm/KnoManagementEdit";
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class KnoManagementController {
 
 		beanValidator.validate(knoManagementVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/dam/mgm/KnoManagementEdit";
+			return "dam/mgm/KnoManagementEdit";
 		}
 
 		knoManagementService.updateKnoManagement(knoManagementVO);

@@ -55,7 +55,7 @@ public class QustnrItemManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/olp/qim/QustnrItemListPopup";
+		return "uss/olp/qim/QustnrItemListPopup";
 	}
 
 	/**
@@ -87,7 +87,7 @@ public class QustnrItemManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/olp/qim/QustnrItemList";
+		return "uss/olp/qim/QustnrItemList";
 	}
 
 	/**
@@ -104,7 +104,7 @@ public class QustnrItemManageController {
 
 		model.addAttribute(qustnrItemManageService.selectQustnrItemManageDetail(qustnrItemManageVO));
 
-		return "/uss/olp/qim/QustnrItemDetail";
+		return "uss/olp/qim/QustnrItemDetail";
 	}
 
 	/**
@@ -118,7 +118,7 @@ public class QustnrItemManageController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrItemManageVO qustnrItemManageVO) {
 
-		return "/uss/olp/qim/QustnrItemRegist";
+		return "uss/olp/qim/QustnrItemRegist";
 	}
 
 	/**
@@ -137,7 +137,7 @@ public class QustnrItemManageController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrItemManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/olp/qim/QustnrItemRegist";
+			return "uss/olp/qim/QustnrItemRegist";
 		}
 
 		// 로그인 객체 선언
@@ -165,7 +165,7 @@ public class QustnrItemManageController {
 
 		model.addAttribute(qustnrItemManageService.selectQustnrItemManageDetail(qustnrItemManageVO));
 
-		return "/uss/olp/qim/QustnrItemEdit";
+		return "uss/olp/qim/QustnrItemEdit";
 	}
 
 	/**
@@ -184,7 +184,7 @@ public class QustnrItemManageController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrItemManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/olp/qim/QustnrItemEdit";
+			return "uss/olp/qim/QustnrItemEdit";
 		}
 
 		// 로그인 객체 선언

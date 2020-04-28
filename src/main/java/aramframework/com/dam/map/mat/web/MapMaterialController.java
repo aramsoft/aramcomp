@@ -65,7 +65,7 @@ public class MapMaterialController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/dam/map/mat/MapMaterialList";
+		return "dam/map/mat/MapMaterialList";
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class MapMaterialController {
 
 		model.addAttribute(mapMaterialService.selectMapMaterial(mapMaterialVO));
 
-		return "/dam/map/mat/MapMaterialDetail";
+		return "dam/map/mat/MapMaterialDetail";
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class MapMaterialController {
 
 		populateMapTeam(model);
 		
-		return "/dam/map/mat/MapMaterialRegist";
+		return "dam/map/mat/MapMaterialRegist";
 	}
 
 	/**
@@ -117,7 +117,7 @@ public class MapMaterialController {
 
 			populateMapTeam(model);
 			
-			return "/dam/map/mat/MapMaterialRegist";
+			return "dam/map/mat/MapMaterialRegist";
 		}
 
 		// 로그인 객체 선언
@@ -156,7 +156,7 @@ public class MapMaterialController {
 
 		model.addAttribute(mapMaterialService.selectMapMaterial(mapMaterialVO));
 
-		return "/dam/map/mat/MapMaterialEdit";
+		return "dam/map/mat/MapMaterialEdit";
 	}
 
 	/**
@@ -173,7 +173,7 @@ public class MapMaterialController {
 
 		beanValidator.validate(mapMaterialVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/dam/map/mat/MapMaterialEdit";
+			return "dam/map/mat/MapMaterialEdit";
 		}
 
 		// 로그인 객체 선언

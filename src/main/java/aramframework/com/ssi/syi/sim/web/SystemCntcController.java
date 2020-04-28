@@ -65,7 +65,7 @@ public class SystemCntcController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "/ssi/syi/sim/SystemCntcList";
+		return "ssi/syi/sim/SystemCntcList";
 	}
 
 	/**
@@ -109,7 +109,7 @@ public class SystemCntcController {
 		cntcServiceVO.setSysId(systemCntcVO.getProvdSysId());
 		model.addAttribute("cntcProvdServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));
 
-		return "/ssi/syi/sim/SystemCntcDetail";
+		return "ssi/syi/sim/SystemCntcDetail";
 	}
 
 	/**
@@ -151,7 +151,7 @@ public class SystemCntcController {
 		cntcServiceVO.setSysId(systemCntcVO.getProvdSysId());
 		model.addAttribute("cntcProvdServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));
 
-		return "/ssi/syi/sim/SystemCntcRegist";
+		return "ssi/syi/sim/SystemCntcRegist";
 	}
 
 	/**
@@ -197,7 +197,7 @@ public class SystemCntcController {
 			cntcServiceVO.setSysId(systemCntcVO.getProvdSysId());
 			model.addAttribute("cntcProvdServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));
 
-			return "/ssi/syi/sim/SystemCntcRegist";
+			return "ssi/syi/sim/SystemCntcRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -253,7 +253,7 @@ public class SystemCntcController {
 		cntcServiceVO.setSysId(systemCntcVO.getProvdSysId());
 		model.addAttribute("cntcProvdServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));
 
-		return "/ssi/syi/sim/SystemCntcEdit";
+		return "ssi/syi/sim/SystemCntcEdit";
 	}
 
 	/**
@@ -299,7 +299,7 @@ public class SystemCntcController {
 			cntcServiceVO.setSysId(systemCntcVO.getProvdSysId());
 			model.addAttribute("cntcProvdServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));
 
-			return "/ssi/syi/sim/SystemCntcEdit";
+			return "ssi/syi/sim/SystemCntcEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -355,7 +355,7 @@ public class SystemCntcController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "/ssi/syi/sim/SystemCntcConfirmList";
+		return "ssi/syi/sim/SystemCntcConfirmList";
 	}
 
 	/**
@@ -399,7 +399,7 @@ public class SystemCntcController {
 		cntcServiceVO.setSysId(systemCntcVO.getProvdSysId());
 		model.addAttribute("cntcProvdServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));
 
-		return "/ssi/syi/sim/SystemCntcConfirmEdit";
+		return "ssi/syi/sim/SystemCntcConfirmEdit";
 	}
 
 	/**

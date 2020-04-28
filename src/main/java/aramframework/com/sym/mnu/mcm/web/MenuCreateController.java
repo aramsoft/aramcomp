@@ -65,7 +65,7 @@ public class MenuCreateController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/sym/mnu/mcm/MenuCreateList";
+		return "sym/mnu/mcm/MenuCreateList";
 	}
 
 	/* 메뉴생성 세부조회 */
@@ -83,7 +83,7 @@ public class MenuCreateController {
 		
 		model.addAttribute("list_menulist", menuCreateService.selectMenuCreateDetailList(menuCreateVO));
 
-		return "/sym/mnu/mcm/MenuCreateDetail";
+		return "sym/mnu/mcm/MenuCreateDetail";
 	}
 
 	/**
@@ -132,7 +132,7 @@ public class MenuCreateController {
 
 		model.addAttribute("list_menulist", menuCreateService.selectMenuCreateSiteMapList(menuSiteMapVO));
 
-		return "/sym/mnu/mcm/MenuCreateSiteMap";
+		return "sym/mnu/mcm/MenuCreateSiteMap";
 	}
 
 	/**

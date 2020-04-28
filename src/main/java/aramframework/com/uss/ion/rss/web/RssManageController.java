@@ -87,7 +87,7 @@ public class RssManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/ion/rss/RssManageList";
+		return "uss/ion/rss/RssManageList";
 	}
 
 	/**
@@ -150,7 +150,7 @@ public class RssManageController {
 
 		model.addAttribute(rssManageService.selectRssManageDetail(rssManageVO));
 
-		return "/uss/ion/rss/RssManageDetail";
+		return "uss/ion/rss/RssManageDetail";
 	}
 
 	/**
@@ -167,7 +167,7 @@ public class RssManageController {
 
 		model.addAttribute("trgetSvcTableList", rssManageService.selectRssManageTableList());
 
-		return "/uss/ion/rss/RssManageRegist";
+		return "uss/ion/rss/RssManageRegist";
 	}
 
 	/**
@@ -187,7 +187,7 @@ public class RssManageController {
 		beanValidator.validate(rssManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("trgetSvcTableList", rssManageService.selectRssManageTableList());
-			return "/uss/ion/rss/RssManageRegist";
+			return "uss/ion/rss/RssManageRegist";
 		}
 		
 		// 로그인 객체 선언
@@ -219,7 +219,7 @@ public class RssManageController {
 		// 테이블 목록 불러오기
 		model.addAttribute("trgetSvcTableList", rssManageService.selectRssManageTableList());
 
-		return "/uss/ion/rss/RssManageEdit";
+		return "uss/ion/rss/RssManageEdit";
 	}
 
 	/**
@@ -240,7 +240,7 @@ public class RssManageController {
 		if (bindingResult.hasErrors()) {
 			// 테이블 목록 불러오기
 			model.addAttribute("trgetSvcTableList", rssManageService.selectRssManageTableList());
-			return "/uss/ion/rss/RssManageEdit";
+			return "uss/ion/rss/RssManageEdit";
 		}
 		
 		// 로그인 객체 선언

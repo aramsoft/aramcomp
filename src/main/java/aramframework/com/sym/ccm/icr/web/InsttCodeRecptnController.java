@@ -45,7 +45,7 @@ public class InsttCodeRecptnController {
 
 		model.addAttribute("resultList", insttCodeManageService.selectInsttCodeRecptnList(insttCodeRecptnVO));
 
-		return "/sym/ccm/icr/InsttCodeRecptnMainPage";
+		return "sym/ccm/icr/InsttCodeRecptnMainPage";
 	}
 
 	/**
@@ -71,7 +71,7 @@ public class InsttCodeRecptnController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/sym/ccm/icr/InsttCodeRecptnList";
+		return "sym/ccm/icr/InsttCodeRecptnList";
 	}
 
 	/**
@@ -103,7 +103,7 @@ public class InsttCodeRecptnController {
 		/* 처리구분코드 */
 		cmmUseService.populateCmmCodeList("COM044", "COM044_processSe");
 
-		return "/sym/ccm/icr/InsttCodeRecptnDetail";
+		return "sym/ccm/icr/InsttCodeRecptnDetail";
 	}
 
 	/**
@@ -116,7 +116,7 @@ public class InsttCodeRecptnController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute InsttCodeRecptnVO insttCodeRecptnVO) {
 		
-		return "/sym/ccm/icr/InsttCodeRecptnRegist";
+		return "sym/ccm/icr/InsttCodeRecptnRegist";
 	}
 
 	/**

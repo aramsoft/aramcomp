@@ -59,7 +59,7 @@ public class QustnrManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/olp/qmc/QustnrListPopup";
+		return "uss/olp/qmc/QustnrListPopup";
 	}
 
 	/**
@@ -85,7 +85,7 @@ public class QustnrManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/olp/qmc/QustnrList";
+		return "uss/olp/qmc/QustnrList";
 	}
 
 	/**
@@ -104,7 +104,7 @@ public class QustnrManageController {
 		// 공통코드 직업유형 조회
 		cmmUseService.populateCmmCodeList("COM034", "COM034_occpType");
 
-		return "/uss/olp/qmc/QustnrDetail";
+		return "uss/olp/qmc/QustnrDetail";
 	}
 
 	/**
@@ -125,7 +125,7 @@ public class QustnrManageController {
 		// 설문템플릿 정보 불러오기
 		model.addAttribute("listQustnrTmplat", qustnrManageService.selectQustnrTmplatManageList(qustnrManageVO));
 
-		return "/uss/olp/qmc/QustnrRegist";
+		return "uss/olp/qmc/QustnrRegist";
 	}
 
 	/**
@@ -146,7 +146,7 @@ public class QustnrManageController {
 			// 설문템플릿 정보 불러오기
 			model.addAttribute("listQustnrTmplat", qustnrManageService.selectQustnrTmplatManageList(qustnrManageVO));
 
-			return "/uss/olp/qmc/QustnrRegist";
+			return "uss/olp/qmc/QustnrRegist";
 		}
 
 		// 로그인 객체 선언
@@ -181,7 +181,7 @@ public class QustnrManageController {
 		// 공통코드 직업유형 조회
 		cmmUseService.populateCmmCodeList("COM034", "COM034_occpType");
 
-		return "/uss/olp/qmc/QustnrEdit";
+		return "uss/olp/qmc/QustnrEdit";
 	}
 
 	/**
@@ -202,7 +202,7 @@ public class QustnrManageController {
 			// 설문템플릿 정보 불러오기
 			model.addAttribute("listQustnrTmplat", qustnrManageService.selectQustnrTmplatManageList(qustnrManageVO));
 
-			return "/uss/olp/qmc/QustnrEdit";
+			return "uss/olp/qmc/QustnrEdit";
 		}
 
 		// 로그인 객체 선언

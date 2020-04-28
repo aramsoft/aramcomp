@@ -56,7 +56,7 @@ public class WordDicaryController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/olh/wor/WordDicaryList";
+		return "uss/olh/wor/WordDicaryList";
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class WordDicaryController {
 
 		model.addAttribute(wordDicaryService.selectWordDicaryDetail(wordDicaryVO));
 
-		return "/uss/olh/wor/WordDicaryDetail";
+		return "uss/olh/wor/WordDicaryDetail";
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class WordDicaryController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute WordDicaryVO wordDicaryVO) {
 
-		return "/uss/olh/wor/WordDicaryRegist";
+		return "uss/olh/wor/WordDicaryRegist";
 	}
 
 	/**
@@ -104,7 +104,7 @@ public class WordDicaryController {
 
 		beanValidator.validate(wordDicaryVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/olh/wor/WordDicaryRegist";
+			return "uss/olh/wor/WordDicaryRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -132,7 +132,7 @@ public class WordDicaryController {
 
 		model.addAttribute(wordDicaryService.selectWordDicaryDetail(wordDicaryVO));
 
-		return "/uss/olh/wor/WordDicaryEdit";
+		return "uss/olh/wor/WordDicaryEdit";
 	}
 
 	/**
@@ -151,7 +151,7 @@ public class WordDicaryController {
 		// Validation
 		beanValidator.validate(wordDicaryVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/olh/wor/WordDicaryEdit";
+			return "uss/olh/wor/WordDicaryEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기

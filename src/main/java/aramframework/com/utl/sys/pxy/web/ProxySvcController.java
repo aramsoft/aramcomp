@@ -67,7 +67,7 @@ public class ProxySvcController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/utl/sys/pxy/ProxySvcList";
+		return "utl/sys/pxy/ProxySvcList";
 	}
 
 	/**
@@ -84,7 +84,7 @@ public class ProxySvcController {
 
 		model.addAttribute(proxySvcService.selectProxySvc(proxySvcVO));
 
-		return "/utl/sys/pxy/ProxySvcDetail";
+		return "utl/sys/pxy/ProxySvcDetail";
 	}
 
 	/**
@@ -100,7 +100,7 @@ public class ProxySvcController {
 
 		cmmUseService.populateCmmCodeList("COM072", "COM072_svcSttus");
 
-		return "/utl/sys/pxy/ProxySvcRegist";
+		return "utl/sys/pxy/ProxySvcRegist";
 	}
 
 	/**
@@ -118,7 +118,7 @@ public class ProxySvcController {
 
 		beanValidator.validate(proxySvcVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/utl/sys/pxy/ProxySvcRegist";
+			return "utl/sys/pxy/ProxySvcRegist";
 		}
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -147,7 +147,7 @@ public class ProxySvcController {
 
 		cmmUseService.populateCmmCodeList("COM072", "COM072_svcSttus");
 
-		return "/utl/sys/pxy/ProxySvcEdit";
+		return "utl/sys/pxy/ProxySvcEdit";
 	}
 
 	/**
@@ -165,7 +165,7 @@ public class ProxySvcController {
 
 		beanValidator.validate(proxySvcVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/utl/sys/pxy/ProxySvcEdit";
+			return "utl/sys/pxy/ProxySvcEdit";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -230,7 +230,7 @@ public class ProxySvcController {
 		proxySvcLogVO.setStrStartDate(StringUtil.addMinusChar(proxySvcLogVO.getStrStartDate()));
 		proxySvcLogVO.setStrEndDate(StringUtil.addMinusChar(proxySvcLogVO.getStrEndDate()));
 
-		return "/utl/sys/pxy/ProxyLogList";
+		return "utl/sys/pxy/ProxyLogList";
 	}
 
 }

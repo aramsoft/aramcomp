@@ -65,7 +65,7 @@ public class QustnrQestnManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/olp/qqm/QustnrQestnListPopup";
+		return "uss/olp/qqm/QustnrQestnListPopup";
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class QustnrQestnManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/olp/qqm/QustnrQestnList";
+		return "uss/olp/qqm/QustnrQestnList";
 	}
 
 	/**
@@ -117,7 +117,7 @@ public class QustnrQestnManageController {
 		// 공통코드 질문유형 조회
 		cmmUseService.populateCmmCodeList("COM018", "COM018_qestnType");
 
-		return "/uss/olp/qqm/QustnrQestnDetail";
+		return "uss/olp/qqm/QustnrQestnDetail";
 	}
 
 	/**
@@ -134,7 +134,7 @@ public class QustnrQestnManageController {
 		// 공통코드 질문유형 조회
 		cmmUseService.populateCmmCodeList("COM018", "COM018_qestnType");
 
-		return "/uss/olp/qqm/QustnrQestnRegist";
+		return "uss/olp/qqm/QustnrQestnRegist";
 	}
 	
 	/**
@@ -153,7 +153,7 @@ public class QustnrQestnManageController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrQestnManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/olp/qqm/QustnrQestnRegist";
+			return "uss/olp/qqm/QustnrQestnRegist";
 		}
 
 		// 로그인 객체 선언
@@ -184,7 +184,7 @@ public class QustnrQestnManageController {
 		// 공통코드 질문유형 조회
 		cmmUseService.populateCmmCodeList("COM018", "COM018_qestnType");
 
-		return "/uss/olp/qqm/QustnrQestnEdit";
+		return "uss/olp/qqm/QustnrQestnEdit";
 	}
 
 	/**
@@ -203,7 +203,7 @@ public class QustnrQestnManageController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrQestnManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/olp/qqm/QustnrQestnEdit";
+			return "uss/olp/qqm/QustnrQestnEdit";
 		}
 
 		// 로그인 객체 선언
@@ -255,7 +255,7 @@ public class QustnrQestnManageController {
 		// 주관식설문통계
 		model.addAttribute("statisticsList2", qustnrQestnManageService.selectQustnrManageStatistics2(qustnrQestnManageVO));
 
-		return "/uss/olp/qqm/QustnrQestnStatistics";
+		return "uss/olp/qqm/QustnrQestnStatistics";
 	}
 
 }

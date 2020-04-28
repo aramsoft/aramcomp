@@ -50,7 +50,7 @@ public class CntcSttusController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "/ssi/syi/ist/CntcSttusList";
+		return "ssi/syi/ist/CntcSttusList";
 	}
 
 	/**
@@ -66,7 +66,7 @@ public class CntcSttusController {
 		
 		cntcSttusService.selectCntcSttusDetail(cntcSttusVO);
 
-		return "/ssi/syi/ist/CntcSttusDetail";
+		return "ssi/syi/ist/CntcSttusDetail";
 	}
 
 }

@@ -64,7 +64,7 @@ public class MemoReprtController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/cop/smt/mrm/ReportrListPopup";
+		return "cop/smt/mrm/ReportrListPopup";
 	}
 
 	/**
@@ -94,7 +94,7 @@ public class MemoReprtController {
 	
 		model.addAttribute(paginationInfo);
 
-		return "/cop/smt/mrm/MemoReprtList";
+		return "cop/smt/mrm/MemoReprtList";
 	}
 
 	/**
@@ -120,7 +120,7 @@ public class MemoReprtController {
 		}
 		model.addAttribute(memoReprtVO);
 		
-		return "/cop/smt/mrm/MemoReprtDetail";
+		return "cop/smt/mrm/MemoReprtDetail";
 	}
 
 	/**
@@ -143,7 +143,7 @@ public class MemoReprtController {
 		memoReprtVO.setWrterNm(loginVO.getName());
 		memoReprtVO.setWrterClsfNm(memoReprtService.selectWrterClsfNm(loginVO.getUserId()));
 
-		return "/cop/smt/mrm/MemoReprtRegist";
+		return "cop/smt/mrm/MemoReprtRegist";
 	}
 
 	/**
@@ -164,7 +164,7 @@ public class MemoReprtController {
 		// 서버 validate 체크
 		beanValidator.validate(memoReprtVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/cop/smt/mrm/MemoReprtRegist";
+			return "cop/smt/mrm/MemoReprtRegist";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
@@ -195,7 +195,7 @@ public class MemoReprtController {
 
 		model.addAttribute(memoReprtService.selectMemoReprt(memoReprtVO));
 
-		return "/cop/smt/mrm/MemoReprtEdit";
+		return "cop/smt/mrm/MemoReprtEdit";
 	}
 
 	/**
@@ -215,7 +215,7 @@ public class MemoReprtController {
 
 		beanValidator.validate(memoReprtVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/cop/smt/mrm/MemoReprtEdit";
+			return "cop/smt/mrm/MemoReprtEdit";
 		}
 
 		// 첨부파일 관련 ID 생성 start....

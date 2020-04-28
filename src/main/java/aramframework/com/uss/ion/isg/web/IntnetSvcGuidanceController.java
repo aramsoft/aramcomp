@@ -66,7 +66,7 @@ public class IntnetSvcGuidanceController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/ion/isg/IntnetSvcGuidanceList";
+		return "uss/ion/isg/IntnetSvcGuidanceList";
 	}
 
 	/**
@@ -79,7 +79,7 @@ public class IntnetSvcGuidanceController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IntnetSvcGuidanceVO intnetSvcGuidanceVO) {
 
-		return "/uss/ion/isg/IntnetSvcGuidanceRegist";
+		return "uss/ion/isg/IntnetSvcGuidanceRegist";
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class IntnetSvcGuidanceController {
 
 		beanValidator.validate(intnetSvcGuidanceVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/isg/IntnetSvcGuidanceRegist";
+			return "uss/ion/isg/IntnetSvcGuidanceRegist";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -122,7 +122,7 @@ public class IntnetSvcGuidanceController {
 
 		model.addAttribute(intnetSvcGuidanceService.selectIntnetSvcGuidance(intnetSvcGuidanceVO));
 
-		return "/uss/ion/isg/IntnetSvcGuidanceEdit";
+		return "uss/ion/isg/IntnetSvcGuidanceEdit";
 	}
 
 	/**
@@ -139,7 +139,7 @@ public class IntnetSvcGuidanceController {
 
 		beanValidator.validate(intnetSvcGuidanceVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/isg/IntnetSvcGuidanceEdit";
+			return "uss/ion/isg/IntnetSvcGuidanceEdit";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -191,7 +191,7 @@ public class IntnetSvcGuidanceController {
 
 		model.addAttribute("resultList", resultList);
 
-		return "/uss/ion/isg/IntnetSvcGuidanceView";
+		return "uss/ion/isg/IntnetSvcGuidanceView";
 	}
 	
 }

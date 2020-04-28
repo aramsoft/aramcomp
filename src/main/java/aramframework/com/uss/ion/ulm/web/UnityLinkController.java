@@ -65,7 +65,7 @@ public class UnityLinkController {
 		// 통합링크구분설정
 		cmmUseService.populateCmmCodeList("COM039", "COM039_pollKind");
 
-		return "/uss/ion/ulm/UnityLinkList";
+		return "uss/ion/ulm/UnityLinkList";
 	}
 
 	/**
@@ -84,7 +84,7 @@ public class UnityLinkController {
 		// 통합링크구분설정
 		cmmUseService.populateCmmCodeList("COM039", "COM039_pollKind");
 
-		return "/uss/ion/ulm/UnityLinkDetail";
+		return "uss/ion/ulm/UnityLinkDetail";
 	}
 
 	/**
@@ -100,7 +100,7 @@ public class UnityLinkController {
 		// 통합링크구분설정
 		cmmUseService.populateCmmCodeList("COM039", "COM039_pollKind");
 
-		return "/uss/ion/ulm/UnityLinkRegist";
+		return "uss/ion/ulm/UnityLinkRegist";
 	}
 	
 	/**
@@ -118,7 +118,7 @@ public class UnityLinkController {
 		// 서버 validate 체크
 		beanValidator.validate(unityLinkVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/ulm/UnityLinkRegist";
+			return "uss/ion/ulm/UnityLinkRegist";
 		}
 
 		// 로그인 객체 선언
@@ -149,7 +149,7 @@ public class UnityLinkController {
 		// 통합링크구분설정
 		cmmUseService.populateCmmCodeList("COM039", "COM039_pollKind");
 
-		return "/uss/ion/ulm/UnityLinkEdit";
+		return "uss/ion/ulm/UnityLinkEdit";
 	}
 
 	/**
@@ -167,7 +167,7 @@ public class UnityLinkController {
 		// 서버 validate 체크
 		beanValidator.validate(unityLinkVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/ulm/UnityLinkEdit";
+			return "uss/ion/ulm/UnityLinkEdit";
 		}
 		
 		// 로그인 객체 선언
@@ -213,7 +213,7 @@ public class UnityLinkController {
 
 		model.addAttribute("resultList", unityLinkService.selectUnityLinkSample(unityLinkVO));
 
-		return "/uss/ion/ulm/UnityLinkSample";
+		return "uss/ion/ulm/UnityLinkSample";
 	}
 
 }

@@ -80,7 +80,7 @@ public class MtgPlaceManageController {
 	
 		model.addAttribute(paginationInfo);
 
-		return "/uss/ion/mtg/MtgPlaceList";
+		return "uss/ion/mtg/MtgPlaceList";
 	}
 
 	/**
@@ -101,7 +101,7 @@ public class MtgPlaceManageController {
 		mtgPlaceFxtrsVO.setMtgPlaceId(mtgPlaceManageVO.getMtgPlaceId());
 		model.addAttribute("mtgPlaceFxtrsList", mtgPlaceManageService.selectFxtrsManageList(mtgPlaceFxtrsVO));
 
-		return "/uss/ion/mtg/MtgPlaceDetail";
+		return "uss/ion/mtg/MtgPlaceDetail";
 	}
 
 	/**
@@ -122,7 +122,7 @@ public class MtgPlaceManageController {
 
 		cmmUseService.populateCmmCodeList("COM070", "COM070_lcSe");
 
-		return "/uss/ion/mtg/MtgPlaceRegist";
+		return "uss/ion/mtg/MtgPlaceRegist";
 	}
 
 	/**
@@ -147,7 +147,7 @@ public class MtgPlaceManageController {
 			mtgPlaceFxtrsVO.setMtgPlaceId(mtgPlaceManageVO.getMtgPlaceId());
 			model.addAttribute("mtgPlaceFxtrsList", mtgPlaceManageService.selectFxtrsManageList(mtgPlaceFxtrsVO));
 
-			return "/uss/ion/mtg/MtgPlaceRegist";
+			return "uss/ion/mtg/MtgPlaceRegist";
 		}
 		
 		// 첨부파일 관련 첨부파일ID 생성
@@ -180,7 +180,7 @@ public class MtgPlaceManageController {
 
 		cmmUseService.populateCmmCodeList("COM070", "COM070_lcSe");
 
-		return "/uss/ion/mtg/MtgPlaceEdit";
+		return "uss/ion/mtg/MtgPlaceEdit";
 	}
 
 	/**
@@ -202,7 +202,7 @@ public class MtgPlaceManageController {
 
 		beanValidator.validate(mtgPlaceManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/mtg/MtgPlaceEdit";
+			return "uss/ion/mtg/MtgPlaceEdit";
 		} 
 
 		// 첨부파일 관련 ID 생성 start....
@@ -257,7 +257,7 @@ public class MtgPlaceManageController {
 
 		model.addAttribute("fileList", result);
 
-		return "/uss/ion/mtg/MtgPlaceImageDetail";
+		return "uss/ion/mtg/MtgPlaceImageDetail";
 	}
 
 	/**** 회의실 예약 ****/
@@ -299,7 +299,7 @@ public class MtgPlaceManageController {
 		
 		model.addAttribute("resultList", mtgPlaceManageService.selectMtgPlaceResveManageList(mtgPlaceResveVO));
 
-		return "/uss/ion/mtg/MtgPlaceResveList";
+		return "uss/ion/mtg/MtgPlaceResveList";
 	}
 
 	/**
@@ -340,7 +340,7 @@ public class MtgPlaceManageController {
 		
 		model.addAttribute(mtgPlaceResveVO);
 		
-		return "/uss/ion/mtg/MtgPlaceResveDetail";
+		return "uss/ion/mtg/MtgPlaceResveDetail";
 	}
 
 	/**
@@ -365,7 +365,7 @@ public class MtgPlaceManageController {
 		mtgPlaceResveVO.setResveManNm(loginVO.getName());
 		mtgPlaceResveVO.setResevOrgnztNm(loginVO.getOrgnztNm());
 
-		return "/uss/ion/mtg/MtgPlaceResveRegist";
+		return "uss/ion/mtg/MtgPlaceResveRegist";
 	}
 
 	/**
@@ -383,7 +383,7 @@ public class MtgPlaceManageController {
 
 		beanValidator.validate(mtgPlaceResveVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/mtg/MtgPlaceResveRegist";
+			return "uss/ion/mtg/MtgPlaceResveRegist";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -415,7 +415,7 @@ public class MtgPlaceManageController {
 		model.addAttribute(mtgPlaceManageService.selectMtgPlaceManage(mtgPlaceManageVO));
 		model.addAttribute(mtgPlaceManageService.selectMtgPlaceResveDetail(mtgPlaceResveVO));
 
-		return "/uss/ion/mtg/MtgPlaceResveEdit";
+		return "uss/ion/mtg/MtgPlaceResveEdit";
 	}
 
 	/**
@@ -433,7 +433,7 @@ public class MtgPlaceManageController {
 
 		beanValidator.validate(mtgPlaceResveVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/mtg/MtgPlaceResveEdit";
+			return "uss/ion/mtg/MtgPlaceResveEdit";
 		} 
 		
 		mtgPlaceManageService.updateMtgPlaceResve(mtgPlaceResveVO);

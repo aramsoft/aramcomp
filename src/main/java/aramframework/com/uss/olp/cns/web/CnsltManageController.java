@@ -74,7 +74,7 @@ public class CnsltManageController {
 			model.addAttribute("certificationAt", "Y");
 		}
 
-		return "/uss/olp/cns/CnsltList";
+		return "uss/olp/cns/CnsltList";
 	}
 
 	/**
@@ -90,7 +90,7 @@ public class CnsltManageController {
 
 		model.addAttribute(cnsltManageService.selectCnsltListDetail(cnsltManageVO));
 
-		return "/uss/olp/cns/CnsltDetail";
+		return "uss/olp/cns/CnsltDetail";
 	}
 
 	/**
@@ -118,7 +118,7 @@ public class CnsltManageController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO) {
 
-		return "/uss/olp/cns/CnsltLoginRealnmChoice";
+		return "uss/olp/cns/CnsltLoginRealnmChoice";
 	}
 
 	/**
@@ -138,7 +138,7 @@ public class CnsltManageController {
 			cnsltManageVO.setEmailAdres(loginVO.getEmail()); // email 주소
 		}
 		
-		return "/uss/olp/cns/CnsltRegist";
+		return "uss/olp/cns/CnsltRegist";
 	}
 
 	/**
@@ -157,7 +157,7 @@ public class CnsltManageController {
 
 		beanValidator.validate(cnsltManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/olp/cns/CnsltRegist";
+			return "uss/olp/cns/CnsltRegist";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
@@ -194,7 +194,7 @@ public class CnsltManageController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO) { 
 		
-		return "/uss/olp/cns/CnsltPasswordPopup";
+		return "uss/olp/cns/CnsltPasswordPopup";
 	}
 
 	/**
@@ -255,7 +255,7 @@ public class CnsltManageController {
 		
 		model.addAttribute(cnsltManageVO);
 		
-		return "/uss/olp/cns/CnsltEdit";
+		return "uss/olp/cns/CnsltEdit";
 	}
 
 	/**
@@ -275,7 +275,7 @@ public class CnsltManageController {
 		// Validation
 		beanValidator.validate(cnsltManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/olp/cns/CnsltEdit";
+			return "uss/olp/cns/CnsltEdit";
 		}
 
 		// 첨부파일 관련 ID 생성 start....
@@ -378,7 +378,7 @@ public class CnsltManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/olp/cns/CnsltAnswerList";
+		return "uss/olp/cns/CnsltAnswerList";
 	}
 
 	/**
@@ -395,7 +395,7 @@ public class CnsltManageController {
 
 		model.addAttribute(cnsltManageService.selectCnsltListDetail(cnsltManageVO));
 
-		return "/uss/olp/cns/CnsltAnswerDetail";
+		return "uss/olp/cns/CnsltAnswerDetail";
 	}
 
 	/**
@@ -415,7 +415,7 @@ public class CnsltManageController {
 		// 공통코드를 가져오기 위한 Vo
 		cmmUseService.populateCmmCodeList("COM028", "COM028_qnaProcessSttus");
 
-		return "/uss/olp/cns/CnsltAnswerEdit";
+		return "uss/olp/cns/CnsltAnswerEdit";
 	}
 
 	/**

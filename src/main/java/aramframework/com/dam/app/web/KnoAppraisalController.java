@@ -64,7 +64,7 @@ public class KnoAppraisalController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/dam/app/KnoAppraisalList";
+		return "dam/app/KnoAppraisalList";
 	}
 
 	/**
@@ -80,7 +80,7 @@ public class KnoAppraisalController {
 
 		model.addAttribute(knoAppraisalService.selectKnoAppraisal(knoAppraisalVO));
 
-		return "/dam/app/KnoAppraisalDetail";
+		return "dam/app/KnoAppraisalDetail";
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class KnoAppraisalController {
 
 		model.addAttribute(knoAppraisalService.selectKnoAppraisal(knoAppraisalVO));
 
-		return "/dam/app/KnoAppraisalEdit";
+		return "dam/app/KnoAppraisalEdit";
 	}
 
 	/**
@@ -113,7 +113,7 @@ public class KnoAppraisalController {
 
 		beanValidator.validate(knoAppraisalVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/dam/app/KnoAppraisalEdit";
+			return "dam/app/KnoAppraisalEdit";
 		}
 
 		// 로그인 객체 선언

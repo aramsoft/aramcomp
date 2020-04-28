@@ -73,7 +73,7 @@ public class KnoSpecialistController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/dam/spe/spe/KnoSpecialistList";
+		return "dam/spe/spe/KnoSpecialistList";
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class KnoSpecialistController {
 
 		model.addAttribute(knoSpecialistService.selectKnoSpecialist(knoSpecialistVO));
 
-		return "/dam/spe/spe/KnoSpecialistDetail";
+		return "dam/spe/spe/KnoSpecialistDetail";
 	}
 
 	/**
@@ -105,7 +105,7 @@ public class KnoSpecialistController {
 
 		populateMapTeam(knoSpecialistVO, model);
 		
-		return "/dam/spe/spe/KnoSpecialistRegist";
+		return "dam/spe/spe/KnoSpecialistRegist";
 	}
 
 	/**
@@ -125,7 +125,7 @@ public class KnoSpecialistController {
 			
 			populateMapTeam(knoSpecialistVO, model);
 
-			return "/dam/spe/spe/KnoSpecialistRegist";
+			return "dam/spe/spe/KnoSpecialistRegist";
 		}
 
 		// 로그인 객체 선언
@@ -178,7 +178,7 @@ public class KnoSpecialistController {
 
 		model.addAttribute(knoSpecialistService.selectKnoSpecialist(knoSpecialistVO));
 
-		return "/dam/spe/spe/KnoSpecialistEdit";
+		return "dam/spe/spe/KnoSpecialistEdit";
 	}
 
 	/**
@@ -195,7 +195,7 @@ public class KnoSpecialistController {
 
 		beanValidator.validate(knoSpecialistVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/dam/spe/spe/KnoSpecialistEdit";
+			return "dam/spe/spe/KnoSpecialistEdit";
 		}
 
 		// 로그인 객체 선언

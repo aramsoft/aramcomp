@@ -65,7 +65,7 @@ public class QustnrTmplatManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/olp/qtm/QustnrTmplatList";
+		return "uss/olp/qtm/QustnrTmplatList";
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class QustnrTmplatManageController {
 
 		model.addAttribute(qustnrTmplatManageService.selectQustnrTmplatManageDetail(qustnrTmplatManageVO));
 
-		return "/uss/olp/qtm/QustnrTmplatDetail";
+		return "uss/olp/qtm/QustnrTmplatDetail";
 	}
 
 	/**
@@ -120,7 +120,7 @@ public class QustnrTmplatManageController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrTmplatManageVO qustnrTmplatManageVO) {
 
-		return "/uss/olp/qtm/QustnrTmplatRegist";
+		return "uss/olp/qtm/QustnrTmplatRegist";
 	}
 
 	/**
@@ -141,7 +141,7 @@ public class QustnrTmplatManageController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrTmplatManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/olp/qtm/QustnrTmplatRegist";
+			return "uss/olp/qtm/QustnrTmplatRegist";
 		}
 
 		for (MultipartFile file : multiRequest.getFileMap().values()) {
@@ -178,7 +178,7 @@ public class QustnrTmplatManageController {
 
 		model.addAttribute(qustnrTmplatManageService.selectQustnrTmplatManageDetail(qustnrTmplatManageVO));
 
-		return "/uss/olp/qtm/QustnrTmplatEdit";
+		return "uss/olp/qtm/QustnrTmplatEdit";
 	}
 
 	/**
@@ -200,7 +200,7 @@ public class QustnrTmplatManageController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrTmplatManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/olp/qtm/QustnrTmplatEdit";
+			return "uss/olp/qtm/QustnrTmplatEdit";
 		}
 
 		for (MultipartFile file : multiRequest.getFileMap().values()) {

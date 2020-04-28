@@ -58,7 +58,7 @@ public class IndvdlPgeController {
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		if (configurationProcessedYN(loginVO.getUserId()) == 0) {
 			model.addAttribute("message", "마이페이지 설정 후 마이페이지를 확인 가능합니다.");
-			return "/uss/mpe/IndvdlpgeConfRegist";
+			return "uss/mpe/IndvdlpgeConfRegist";
 		} 
 			
 		indvdlPgeConfVO.setUserId(loginVO.getUserId());
@@ -88,7 +88,7 @@ public class IndvdlPgeController {
 		int typeByCnt = (totDetailCnt % sideCnt) == 0 ? totDetailCnt / sideCnt : totDetailCnt / sideCnt + 1;
 		indvdlPgeConfVO.setSortLineCnt(typeByCnt);
 
-		return "/uss/mpe/IndvdlpgeDetail";
+		return "uss/mpe/IndvdlpgeDetail";
 	}
 
 	/**
@@ -110,7 +110,7 @@ public class IndvdlPgeController {
 		// 기존 생성한 정보가 있을 경우 화면에 보여준다.
 		indvdlPgeService.selectIndvdlpgeConfDetail(indvdlPgeConfVO);
 
-		return "/uss/mpe/IndvdlpgeConfRegist";
+		return "uss/mpe/IndvdlpgeConfRegist";
 	}
 
 	/**
@@ -128,7 +128,7 @@ public class IndvdlPgeController {
 
 		beanValidator.validate(indvdlPgeConfVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/mpe/IndvdlpgeConfRegist";
+			return "uss/mpe/IndvdlpgeConfRegist";
 		} 
 		
 		// ID를 받아서 VO에 설정한다.
@@ -186,7 +186,7 @@ public class IndvdlPgeController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/mpe/IndvdlpgeList";
+		return "uss/mpe/IndvdlpgeList";
 	}
 
 	/**
@@ -205,7 +205,7 @@ public class IndvdlPgeController {
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		if (this.configurationProcessedYN(loginVO.getUserId()) == 0) {
 			model.addAttribute("message", "마이페이지 환경 설정부터 하셔야 합니다.");
-			return "/uss/mpe/IndvdlpgeConfRegist";
+			return "uss/mpe/IndvdlpgeConfRegist";
 		} 
 		
 		indvdlPgeCntntsVO.setUserId(loginVO.getUserId());
@@ -265,7 +265,7 @@ public class IndvdlPgeController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/mpe/IndvdlpgeCntntsList";
+		return "uss/mpe/IndvdlpgeCntntsList";
 	}
 
 	/**
@@ -282,7 +282,7 @@ public class IndvdlPgeController {
 
 		model.addAttribute(indvdlPgeService.selectIndvdlpgeCntnts(indvdlPgeCntntsVO));
 
-		return "/uss/mpe/IndvdlpgeCntntsDetail";
+		return "uss/mpe/IndvdlpgeCntntsDetail";
 	}
 
 	/**
@@ -297,7 +297,7 @@ public class IndvdlPgeController {
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO, 
 			ModelMap model) {
 
-		return "/uss/mpe/IndvdlpgeCntntsRegist";
+		return "uss/mpe/IndvdlpgeCntntsRegist";
 	}
 
 	/**
@@ -316,7 +316,7 @@ public class IndvdlPgeController {
 		// validation 수행
 		beanValidator.validate(indvdlPgeCntntsVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/mpe/IndvdlpgeCntntsRegist";
+			return "uss/mpe/IndvdlpgeCntntsRegist";
 		} 
 		
 		// 디비 작업 성공여부에 따라 메세지 설정 및 이동 페이지를 결정한다.
@@ -341,7 +341,7 @@ public class IndvdlPgeController {
 
 		model.addAttribute(indvdlPgeService.selectIndvdlpgeCntnts(indvdlPgeCntntsVO));
 
-		return "/uss/mpe/IndvdlpgeCntntsEdit";
+		return "uss/mpe/IndvdlpgeCntntsEdit";
 	}
 
 	/**
@@ -359,7 +359,7 @@ public class IndvdlPgeController {
 
 		beanValidator.validate(indvdlPgeCntntsVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/mpe/IndvdlpgeCntntsEdit";
+			return "uss/mpe/IndvdlpgeCntntsEdit";
 		} 
 		
 		// 디비 작업 성공여부에 따라 메세지 설정 및 이동 페이지를 결정한다.
@@ -419,7 +419,7 @@ public class IndvdlPgeController {
 			ModelMap model) {
 		
 		model.addAttribute("linkto", indvdlPgeCntntsVO.getCntcUrl());
-		return "/uss/mpe/IndvdlpgeTmp";
+		return "uss/mpe/IndvdlpgeTmp";
 	}
 
 }

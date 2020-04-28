@@ -76,7 +76,7 @@ public class RequestOfferController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/dam/spe/req/RequestOfferList";
+		return "dam/spe/req/RequestOfferList";
 	}
 
 	/**
@@ -104,7 +104,7 @@ public class RequestOfferController {
 			model.addAttribute("IS_SPE", "N");
 		}
 
-		return "/dam/spe/req/RequestOfferDetail";
+		return "dam/spe/req/RequestOfferDetail";
 	}
 
 	/**
@@ -140,7 +140,7 @@ public class RequestOfferController {
 		model.addAttribute("mapMaterialList", mapMaterialService.selectMapMaterialList(mapMaterialVO));
 		model.addAttribute("cmd", cmd);
 
-		return "/dam/spe/req/RequestOfferRegist";
+		return "dam/spe/req/RequestOfferRegist";
 	}
 
 	/**
@@ -160,7 +160,7 @@ public class RequestOfferController {
 		// 서버 validate 체크
 		beanValidator.validate(requestOfferVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/dam/spe/req/RequestOfferRegist";
+			return "dam/spe/req/RequestOfferRegist";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
@@ -177,7 +177,7 @@ public class RequestOfferController {
 				requestOfferVO.setSpeId(loginVO.getUserId());
 				requestOfferService.replyRequestOffer(requestOfferVO);
 			} else {
-				return "/dam/spe/req/RequestOfferRegist";
+				return "dam/spe/req/RequestOfferRegist";
 			}
 		} else {
 			requestOfferVO.setEmplyrId(loginVO.getUserId());
@@ -222,7 +222,7 @@ public class RequestOfferController {
 		model.addAttribute("mapMaterialList", mapMaterialService.selectMapMaterialList(mapMaterialVO));
 		model.addAttribute(requestOfferVO);
 		
-		return "/dam/spe/req/RequestOfferEdit";
+		return "dam/spe/req/RequestOfferEdit";
 	}
 
 	/**
@@ -242,7 +242,7 @@ public class RequestOfferController {
 		// 서버 validate 체크
 		beanValidator.validate(requestOfferVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/dam/spe/req/RequestOfferEdit";
+			return "dam/spe/req/RequestOfferEdit";
 		}
 		
 		// 첨부파일 관련 ID 생성 start....
@@ -282,7 +282,7 @@ public class RequestOfferController {
 
 			model.addAttribute("reusltScript", ReusltScript);
 
-			return "/dam/spe/req/RequestOfferDetail";
+			return "dam/spe/req/RequestOfferDetail";
 		} 
 
 		requestOfferService.deleteRequestOffer(requestOfferVO);

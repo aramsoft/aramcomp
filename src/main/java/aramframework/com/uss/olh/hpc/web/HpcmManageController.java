@@ -60,7 +60,7 @@ public class HpcmManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/olh/hpc/HpcmList";
+		return "uss/olh/hpc/HpcmList";
 	}
 
 	/**
@@ -76,7 +76,7 @@ public class HpcmManageController {
 
 		model.addAttribute(hpcmManageService.selectHpcmDetail(hpcmManageVO));
 
-		return "/uss/olh/hpc/HpcmDetail";
+		return "uss/olh/hpc/HpcmDetail";
 	}
 
 	/**
@@ -93,7 +93,7 @@ public class HpcmManageController {
 		// 공통코드를 가져오기 위한 Vo
 		cmmUseService.populateCmmCodeList("COM021", "COM021_hpcmSe");
 
-		return "/uss/olh/hpc/HpcmRegist";
+		return "uss/olh/hpc/HpcmRegist";
 	}
 
 	/**
@@ -111,7 +111,7 @@ public class HpcmManageController {
 
 		beanValidator.validate(hpcmManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/olh/hpc/HpcmRegist";
+			return "uss/olh/hpc/HpcmRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -142,7 +142,7 @@ public class HpcmManageController {
 		// 공통코드를 가져오기 위한 Vo
 		cmmUseService.populateCmmCodeList("COM021", "COM021_hpcmSe");
 
-		return "/uss/olh/hpc/HpcmEdit";
+		return "uss/olh/hpc/HpcmEdit";
 	}
 
 	/**
@@ -161,7 +161,7 @@ public class HpcmManageController {
 		// Validation
 		beanValidator.validate(hpcmManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/olh/hpc/HpcmEdit";
+			return "uss/olh/hpc/HpcmEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기

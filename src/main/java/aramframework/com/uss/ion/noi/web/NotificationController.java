@@ -60,7 +60,7 @@ public class NotificationController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/ion/noi/NotificationList";
+		return "uss/ion/noi/NotificationList";
 	}
 
 	/**
@@ -79,7 +79,7 @@ public class NotificationController {
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		model.addAttribute("sessionUniqId", loginVO.getUserId());
 
-		return "/uss/ion/noi/NotificationDetail";
+		return "uss/ion/noi/NotificationDetail";
 	}
 
 	/**
@@ -92,7 +92,7 @@ public class NotificationController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NotificationVO notificationVO) {
 
-		return "/uss/ion/noi/NotificationRegist";
+		return "uss/ion/noi/NotificationRegist";
 	}
 
 	/**
@@ -109,12 +109,12 @@ public class NotificationController {
 
 		beanValidator.validate(notificationVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/noi/NotificationRegist";
+			return "uss/ion/noi/NotificationRegist";
 		}
 
 		if (!notificationService.checkNotification(notificationVO)) {
 			model.addAttribute("message", MessageHelper.getMessage("uss.ion.noi.alertNtfcTime"));
-			return "/uss/ion/noi/NotificationRegist";
+			return "uss/ion/noi/NotificationRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -140,7 +140,7 @@ public class NotificationController {
 
 		model.addAttribute(notificationService.selectNotificationInf(notificationVO));
 
-		return "/uss/ion/noi/NotificationEdit";
+		return "uss/ion/noi/NotificationEdit";
 	}
 
 	/**
@@ -157,12 +157,12 @@ public class NotificationController {
 
 		beanValidator.validate(notificationVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/noi/NotificationEdit";
+			return "uss/ion/noi/NotificationEdit";
 		}
 
 		if (!notificationService.checkNotification(notificationVO)) {
 			model.addAttribute("message", MessageHelper.getMessage("uss.ion.noi.alertNtfcTime"));
-			return "/uss/ion/noi/NotificationEdit";
+			return "uss/ion/noi/NotificationEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -209,7 +209,7 @@ public class NotificationController {
 		
 		model.addAttribute("resultList", notificationService.selectNotificationData());
 
-		return "/uss/ion/noi/NotificationData";
+		return "uss/ion/noi/NotificationData";
 	}
 	
 }

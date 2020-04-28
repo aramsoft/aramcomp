@@ -62,7 +62,7 @@ public class OnlinePollManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/olp/opm/OnlinePollList";
+		return "uss/olp/opm/OnlinePollList";
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class OnlinePollManageController {
 		// POLL종류 설정
 		cmmUseService.populateCmmCodeList("COM039", "COM039_pollKind");
 
-		return "/uss/olp/opm/OnlinePollDetail";
+		return "uss/olp/opm/OnlinePollDetail";
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class OnlinePollManageController {
 		// POLL종류 Select박스 설정
 		cmmUseService.populateCmmCodeList("COM039", "COM039_pollKind");
 
-		return "/uss/olp/opm/OnlinePollRegist";
+		return "uss/olp/opm/OnlinePollRegist";
 	}
 
 	/**
@@ -115,7 +115,7 @@ public class OnlinePollManageController {
 		// 서버 validate 체크
 		beanValidator.validate(onlinePollManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/olp/opm/OnlinePollRegist";
+			return "uss/olp/opm/OnlinePollRegist";
 		}
 
 		// 로그인 객체 선언
@@ -145,7 +145,7 @@ public class OnlinePollManageController {
 		// POLL종류 Select박스 설정
 		cmmUseService.populateCmmCodeList("COM039", "COM039_pollKind");
 
-		return "/uss/olp/opm/OnlinePollEdit";
+		return "uss/olp/opm/OnlinePollEdit";
 	}
 
 	/**
@@ -163,7 +163,7 @@ public class OnlinePollManageController {
 		// 서버 validate 체크
 		beanValidator.validate(onlinePollManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/olp/opm/OnlinePollEdit";
+			return "uss/olp/opm/OnlinePollEdit";
 		}
 
 		// 로그인 객체 선언
@@ -207,7 +207,7 @@ public class OnlinePollManageController {
 
 		model.addAttribute("resultList", onlinePollManageService.selectOnlinePollItemList(onlinePollItemVO));
 
-		return "/uss/olp/opm/OnlinePollItemList";
+		return "uss/olp/opm/OnlinePollItemList";
 	}
 
 	/**

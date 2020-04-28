@@ -78,7 +78,7 @@ public class OnlineManualController {
 		// 온라인메뉴얼 구분 설정
 		cmmUseService.populateCmmCodeList("COM041", "COM041_onlineMnlSe");
 
-		return "/uss/olh/omm/OnlineManualUserList";
+		return "uss/olh/omm/OnlineManualUserList";
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class OnlineManualController {
 		// 온라인메뉴얼 구분 설정
 		cmmUseService.populateCmmCodeList("COM041", "COM041_onlineMnlSe");
 
-		return "/uss/olh/omm/OnlineManualUserDetail";
+		return "uss/olh/omm/OnlineManualUserDetail";
 	}
 
 	/**
@@ -126,7 +126,7 @@ public class OnlineManualController {
 		// 온라인메뉴얼 구분 설정
 		cmmUseService.populateCmmCodeList("COM041", "COM041_onlineMnlSe");
 
-		return "/uss/olh/omm/OnlineManualList";
+		return "uss/olh/omm/OnlineManualList";
 	}
 
 	/**
@@ -145,7 +145,7 @@ public class OnlineManualController {
 		// 온라인메뉴얼 구분 설정
 		cmmUseService.populateCmmCodeList("COM041", "COM041_onlineMnlSe");
 
-		return "/uss/olh/omm/OnlineManualDetail";
+		return "uss/olh/omm/OnlineManualDetail";
 	}
 
 	/**
@@ -161,7 +161,7 @@ public class OnlineManualController {
 		// 온라인메뉴얼 구분 설정
 		cmmUseService.populateCmmCodeList("COM041", "COM041_onlineMnlSe");
 
-		return "/uss/olh/omm/OnlineManualRegist";
+		return "uss/olh/omm/OnlineManualRegist";
 	}
 
 	/**
@@ -179,7 +179,7 @@ public class OnlineManualController {
 		// 서버 validate 체크
 		beanValidator.validate(onlineManualVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/olh/omm/OnlineManualRegist";
+			return "uss/olh/omm/OnlineManualRegist";
 		}
 		
 		// 로그인 객체 선언
@@ -210,7 +210,7 @@ public class OnlineManualController {
 		// 온라인메뉴얼 구분 설정
 		cmmUseService.populateCmmCodeList("COM041", "COM041_onlineMnlSe");
 
-		return "/uss/olh/omm/OnlineManualEdit";
+		return "uss/olh/omm/OnlineManualEdit";
 	}
 
 	/**
@@ -228,7 +228,7 @@ public class OnlineManualController {
 		// 서버 validate 체크
 		beanValidator.validate(onlineManualVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/olh/omm/OnlineManualEdit";
+			return "uss/olh/omm/OnlineManualEdit";
 		}
 		
 		// 로그인 객체 선언

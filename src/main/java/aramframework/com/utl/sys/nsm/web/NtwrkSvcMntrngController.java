@@ -65,7 +65,7 @@ public class NtwrkSvcMntrngController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/utl/sys/nsm/NtwrkSvcMntrngList";
+		return "utl/sys/nsm/NtwrkSvcMntrngList";
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class NtwrkSvcMntrngController {
 		
 		model.addAttribute(ntwrkSvcMntrngVO);
 		
-		return "/utl/sys/nsm/NtwrkSvcMntrngDetail";
+		return "utl/sys/nsm/NtwrkSvcMntrngDetail";
 	}
 
 	/**
@@ -111,7 +111,7 @@ public class NtwrkSvcMntrngController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NtwrkSvcMntrngVO ntwrkSvcMntrngVO) {
 
-		return "/utl/sys/nsm/NtwrkSvcMntrngRegist";
+		return "utl/sys/nsm/NtwrkSvcMntrngRegist";
 	}
 
 	/**
@@ -130,7 +130,7 @@ public class NtwrkSvcMntrngController {
 		// 서버 validate 체크
 		beanValidator.validate(ntwrkSvcMntrngVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/utl/sys/nsm/NtwrkSvcMntrngRegist";
+			return "utl/sys/nsm/NtwrkSvcMntrngRegist";
 		}
 
 		// 시스템 IP 설정
@@ -189,7 +189,7 @@ public class NtwrkSvcMntrngController {
 		
 		model.addAttribute(ntwrkSvcMntrngVO);
 		
-		return "/utl/sys/nsm/NtwrkSvcMntrngEdit";
+		return "utl/sys/nsm/NtwrkSvcMntrngEdit";
 	}
 
 	/**
@@ -207,7 +207,7 @@ public class NtwrkSvcMntrngController {
 
 		beanValidator.validate(ntwrkSvcMntrngVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/utl/sys/nsm/NtwrkSvcMntrngEdit";
+			return "utl/sys/nsm/NtwrkSvcMntrngEdit";
 		}
 
 		// 시스템 IP 설정
@@ -293,7 +293,7 @@ public class NtwrkSvcMntrngController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/utl/sys/nsm/NtwrkSvcMntrngLogList";
+		return "utl/sys/nsm/NtwrkSvcMntrngLogList";
 	}
 
 	// 조회시작시
@@ -325,7 +325,7 @@ public class NtwrkSvcMntrngController {
 		
 		model.addAttribute(ntwrkSvcMntrngLogVO);
 		
-		return "/utl/sys/nsm/NtwrkSvcMntrngLogDetail";
+		return "utl/sys/nsm/NtwrkSvcMntrngLogDetail";
 	}
 
 }

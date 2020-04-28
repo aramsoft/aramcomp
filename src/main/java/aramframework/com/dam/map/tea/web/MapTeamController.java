@@ -60,7 +60,7 @@ public class MapTeamController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/dam/map/tea/MapTeamList";
+		return "dam/map/tea/MapTeamList";
 	}
 
 	/**
@@ -76,7 +76,7 @@ public class MapTeamController {
 
 		model.addAttribute(mapTeamService.selectMapTeamDetail(mapTeamVO));
 
-		return "/dam/map/tea/MapTeamDetail";
+		return "dam/map/tea/MapTeamDetail";
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class MapTeamController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MapTeamVO mapTeamVO) {
 		
-		return "/dam/map/tea/MapTeamRegist";
+		return "dam/map/tea/MapTeamRegist";
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class MapTeamController {
 		
 		beanValidator.validate(mapTeamVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/dam/map/tea/MapTeamRegist";
+			return "dam/map/tea/MapTeamRegist";
 		}
 
 		// 로그인 객체 선언
@@ -133,7 +133,7 @@ public class MapTeamController {
 
 		model.addAttribute(mapTeamService.selectMapTeamDetail(mapTeamVO));
 		
-		return "/dam/map/tea/MapTeamEdit";
+		return "dam/map/tea/MapTeamEdit";
 	}
 
 	/**
@@ -150,7 +150,7 @@ public class MapTeamController {
 
 		beanValidator.validate(mapTeamVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/dam/map/tea/MapTeamEdit";
+			return "dam/map/tea/MapTeamEdit";
 		}
 
 		// 로그인 객체 선언

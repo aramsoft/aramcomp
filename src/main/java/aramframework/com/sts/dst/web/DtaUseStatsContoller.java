@@ -87,7 +87,7 @@ public class DtaUseStatsContoller {
 			dtaUseStatsVO.setPmToDate(DateUtil.getToday());// 2011.09.19
 		}
 		
-		return "/sts/dst/DtaUseStatsList";
+		return "sts/dst/DtaUseStatsList";
 	}
 
 	/**
@@ -104,7 +104,7 @@ public class DtaUseStatsContoller {
 
 		model.addAttribute("dtaUseStatsList", dtaUseStatsService.selectDtaUseStats(dtaUseStatsVO));
 
-		return "/sts/dst/DtaUseStatsDetail";
+		return "sts/dst/DtaUseStatsDetail";
 	}
 
 }

@@ -57,7 +57,7 @@ public class AdministrationWordController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/olh/awm/AdministrationWordList";
+		return "uss/olh/awm/AdministrationWordList";
 	}
 
 	/**
@@ -73,7 +73,7 @@ public class AdministrationWordController {
 
 		model.addAttribute(administrationWordService.selectAdministrationWordDetail(administrationWordVO));
 
-		return "/uss/olh/awm/AdministrationWordDetail";
+		return "uss/olh/awm/AdministrationWordDetail";
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class AdministrationWordController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute AdministrationWordVO administrationWordVO) {
 
-		return "/uss/olh/awm/AdministrationWordRegist";
+		return "uss/olh/awm/AdministrationWordRegist";
 	}
 
 	/**
@@ -104,7 +104,7 @@ public class AdministrationWordController {
 		// 서버 validate 체크
 		beanValidator.validate(administrationWordVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/olh/awm/AdministrationWordRegist";
+			return "uss/olh/awm/AdministrationWordRegist";
 		}
 
 		// 로그인 객체 선언
@@ -131,7 +131,7 @@ public class AdministrationWordController {
 
 		model.addAttribute(administrationWordService.selectAdministrationWordDetail(administrationWordVO));
 
-		return "/uss/olh/awm/AdministrationWordEdit";
+		return "uss/olh/awm/AdministrationWordEdit";
 	}
 
 	/**
@@ -149,7 +149,7 @@ public class AdministrationWordController {
 		// 서버 validate 체크
 		beanValidator.validate(administrationWordVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/olh/awm/AdministrationWordEdit";
+			return "uss/olh/awm/AdministrationWordEdit";
 		}
 
 		// 로그인 객체 선언
@@ -203,7 +203,7 @@ public class AdministrationWordController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/olh/awm/AdministrationWordUserList";
+		return "uss/olh/awm/AdministrationWordUserList";
 	}
 
 	/**
@@ -219,7 +219,7 @@ public class AdministrationWordController {
 
 		model.addAttribute(administrationWordService.selectAdministrationWordDetail(administrationWordVO));
 
-		return "/uss/olh/awm/AdministrationWordUserDetail";
+		return "uss/olh/awm/AdministrationWordUserDetail";
 	}
 
 	/**
@@ -237,7 +237,7 @@ public class AdministrationWordController {
 
 		model.addAttribute("resultList", administrationWordService.selectAdministrationWordList(administrationWordVO));
 
-		return "/uss/olh/awm/AdministrationWordMainPage";
+		return "uss/olh/awm/AdministrationWordMainPage";
 	}
 	
 }

@@ -69,7 +69,7 @@ public class WikMnthngReprtController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "/cop/smt/wmr/ReportrListPopup";
+		return "cop/smt/wmr/ReportrListPopup";
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class WikMnthngReprtController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute(paginationInfo);
 
-		return "/cop/smt/wmr/WikMnthngReprtList";
+		return "cop/smt/wmr/WikMnthngReprtList";
 	}
 
 	/**
@@ -121,7 +121,7 @@ public class WikMnthngReprtController {
 		// 공통코드 우선순위 조회
 		cmmUseService.populateCmmCodeList("COM060", "COM060_reprtSe");
 
-		return "/cop/smt/wmr/WikMnthngReprtDetail";
+		return "cop/smt/wmr/WikMnthngReprtDetail";
 	}
 
 	/**
@@ -142,7 +142,7 @@ public class WikMnthngReprtController {
 		wikMnthngReprtVO.setWrterNm(loginVO.getName());
 		wikMnthngReprtVO.setWrterClsfNm(wikMnthngReprtService.selectWrterClsfNm(loginVO.getUserId()));
 
-		return "/cop/smt/wmr/WikMnthngReprtRegist";
+		return "cop/smt/wmr/WikMnthngReprtRegist";
 	}
 
 	/**
@@ -162,7 +162,7 @@ public class WikMnthngReprtController {
 		// 서버 validate 체크
 		beanValidator.validate(wikMnthngReprtVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/cop/smt/wmr/WikMnthngReprtRegist";
+			return "cop/smt/wmr/WikMnthngReprtRegist";
 		}
 		
 		// 첨부파일 관련 첨부파일ID 생성
@@ -192,7 +192,7 @@ public class WikMnthngReprtController {
 
 		model.addAttribute(wikMnthngReprtService.selectWikMnthngReprt(wikMnthngReprtVO));
 
-		return "/cop/smt/wmr/WikMnthngReprtEdit";
+		return "cop/smt/wmr/WikMnthngReprtEdit";
 	}
 
 	/**
@@ -211,7 +211,7 @@ public class WikMnthngReprtController {
 
 		beanValidator.validate(wikMnthngReprtVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/cop/smt/wmr/WikMnthngReprtEdit";
+			return "cop/smt/wmr/WikMnthngReprtEdit";
 		}
 
 		// 첨부파일 관련 ID 생성 start....

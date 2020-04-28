@@ -77,7 +77,7 @@ public class MainImageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/ion/msi/MainImageList";
+		return "uss/ion/msi/MainImageList";
 	}
 
 	/**
@@ -90,7 +90,7 @@ public class MainImageController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MainImageVO mainImageVO) {
 		
-		return "/uss/ion/msi/MainImageRegist";
+		return "uss/ion/msi/MainImageRegist";
 	}
 
 	/**
@@ -109,7 +109,7 @@ public class MainImageController {
 
 		beanValidator.validate(mainImageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/msi/MainImageRegist";
+			return "uss/ion/msi/MainImageRegist";
 		} 
 
 		String atchFileId = "";
@@ -150,7 +150,7 @@ public class MainImageController {
 
 		model.addAttribute(mainImageService.selectMainImage(mainImageVO));
 
-		return "/uss/ion/msi/MainImageEdit";
+		return "uss/ion/msi/MainImageEdit";
 	}
 
 	/**
@@ -169,7 +169,7 @@ public class MainImageController {
 
 		beanValidator.validate(mainImageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/msi/MainImageEdit";
+			return "uss/ion/msi/MainImageEdit";
 		}
 
 		String atchFileId = "";
@@ -255,7 +255,7 @@ public class MainImageController {
 
 		model.addAttribute("fileList", mainImageService.selectMainImageResult(mainImageVO));
 
-		return "/uss/ion/msi/MainImageView";
+		return "uss/ion/msi/MainImageView";
 	}
 	
 }

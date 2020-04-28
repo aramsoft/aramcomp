@@ -85,7 +85,7 @@ public class BndtManageController {
 
 		model.addAttribute("bndtManageList", bndtManageService.selectBndtManageList(bndtManageVO));
 
-		return "/uss/ion/bnt/BndtManageList";
+		return "uss/ion/bnt/BndtManageList";
 	}
 
 	/**
@@ -109,7 +109,7 @@ public class BndtManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/ion/bnt/BndtManageList";
+		return "uss/ion/bnt/BndtManageList";
 	}
 
 	/**
@@ -125,7 +125,7 @@ public class BndtManageController {
 
 		model.addAttribute(bndtManageService.selectBndtManage(bndtManageVO));
 
-		return "/uss/ion/bnt/BndtManageDetail";
+		return "uss/ion/bnt/BndtManageDetail";
 	}
 
 	/**
@@ -138,7 +138,7 @@ public class BndtManageController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BndtManageVO bndtManageVO) {
 		
-		return "/uss/ion/bnt/BndtManageRegist";
+		return "uss/ion/bnt/BndtManageRegist";
 	}
 
 	/**
@@ -155,7 +155,7 @@ public class BndtManageController {
 
 		beanValidator.validate(bndtManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/bnt/BndtManageRegist";
+			return "uss/ion/bnt/BndtManageRegist";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -181,7 +181,7 @@ public class BndtManageController {
 
 		model.addAttribute(bndtManageService.selectBndtManage(bndtManageVO));
 
-		return "/uss/ion/bnt/BndtManageEdit";
+		return "uss/ion/bnt/BndtManageEdit";
 	}
 
 	/**
@@ -198,7 +198,7 @@ public class BndtManageController {
 
 		beanValidator.validate(bndtManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/bnt/BndtManageEdit";
+			return "uss/ion/bnt/BndtManageEdit";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -225,7 +225,7 @@ public class BndtManageController {
 		int iDiaryTotCnt = bndtManageService.selectBndtDiaryTotCnt(bndtManageVO);
 		if (iDiaryTotCnt != 0) {
 			model.addAttribute("errorMessage", "당직일지를 삭제하신 후 당직정보를 삭제 하세요.");
-			return "/uss/ion/bnt/BndtManageEdit";
+			return "uss/ion/bnt/BndtManageEdit";
 		}
 		
 		bndtManageService.deleteBndtManage(bndtManageVO);
@@ -261,7 +261,7 @@ public class BndtManageController {
 
 		cmmUseService.populateCmmCodeList("COM071", "COM071_bndtCeckSe");
 
-		return "/uss/ion/bnt/BndtCeckManageList";
+		return "uss/ion/bnt/BndtCeckManageList";
 	}
 
 	/**
@@ -277,7 +277,7 @@ public class BndtManageController {
 
 		model.addAttribute(bndtManageService.selectBndtCeckManage(bndtCeckManageVO));
 
-		return "/uss/ion/bnt/BndtCeckManageDetail";
+		return "uss/ion/bnt/BndtCeckManageDetail";
 	}
 
 	/**
@@ -292,7 +292,7 @@ public class BndtManageController {
 
 		cmmUseService.populateCmmCodeList("COM071", "COM071_bndtCeckSe");
 
-		return "/uss/ion/bnt/BndtCeckManageRegist";
+		return "uss/ion/bnt/BndtCeckManageRegist";
 	}
 
 	/**
@@ -309,12 +309,12 @@ public class BndtManageController {
 
 		beanValidator.validate(bndtCeckManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/bnt/BndtCeckManageRegist";
+			return "uss/ion/bnt/BndtCeckManageRegist";
 		} 
 		
 		if (bndtManageService.selectBndtCeckManageDplctAt(bndtCeckManageVO) != 0) {
 			model.addAttribute("dplctMessage", "이미 등록된 데이타입니다. 해당 데이타를 확인해 주세요");
-			return "/uss/ion/bnt/BndtCeckManageRegist";
+			return "uss/ion/bnt/BndtCeckManageRegist";
 		}
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -340,7 +340,7 @@ public class BndtManageController {
 
 		model.addAttribute(bndtManageService.selectBndtCeckManage(bndtCeckManageVO));
 
-		return "/uss/ion/bnt/BndtCeckManageEdit";
+		return "uss/ion/bnt/BndtCeckManageEdit";
 	}
 
 	/**
@@ -357,7 +357,7 @@ public class BndtManageController {
 
 		beanValidator.validate(bndtCeckManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/bnt/BndtCeckManageEdit";
+			return "uss/ion/bnt/BndtCeckManageEdit";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -403,7 +403,7 @@ public class BndtManageController {
 
 		model.addAttribute("bndtDiaryList", bndtManageService.selectBndtDiary(bndtDiaryVO));
 
-		return "/uss/ion/bnt/BndtDiaryDetail";
+		return "uss/ion/bnt/BndtDiaryDetail";
 	}
 
 	/**
@@ -419,7 +419,7 @@ public class BndtManageController {
 
 		model.addAttribute("bndtDiaryList", bndtManageService.selectBndtDiary(bndtDiaryVO));
 
-		return "/uss/ion/bnt/BndtDiaryRegist";
+		return "uss/ion/bnt/BndtDiaryRegist";
 	}
 
 	/**
@@ -458,7 +458,7 @@ public class BndtManageController {
 
 		model.addAttribute("bndtDiaryList", bndtManageService.selectBndtDiary(bndtDiaryVO));
 
-		return "/uss/ion/bnt/BndtDiaryEdit";
+		return "uss/ion/bnt/BndtDiaryEdit";
 	}
 
 	/**
@@ -516,7 +516,7 @@ public class BndtManageController {
 		
 		String sCmd = request.getParameter("cmd") == null ? "" : request.getParameter("cmd"); // 상세정보 구분
 		if (!sCmd.equals("bnde")) {
-			return "/uss/ion/bnt/BndtManageBndeListPop";
+			return "uss/ion/bnt/BndtManageBndeListPop";
 		}
 		
 		String message = "";
@@ -532,7 +532,7 @@ public class BndtManageController {
 		}
 		model.addAttribute("message", message);
 		
-		return "/uss/ion/bnt/BndtManageBndeListPop";
+		return "uss/ion/bnt/BndtManageBndeListPop";
 	}
 
 	/**
@@ -552,7 +552,7 @@ public class BndtManageController {
 		if (iTemp != 0) {
 			String sTempMessage = bndtManageVO.getBndtDe().substring(0, 4) + "년" + bndtManageVO.getBndtDe().substring(4, 6) + "월 데이타가 존재합니다.";
 			model.addAttribute("message", sTempMessage);
-			return "/uss/ion/bnt/BndtManageBndeListPop";
+			return "uss/ion/bnt/BndtManageBndeListPop";
 		}
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -561,7 +561,7 @@ public class BndtManageController {
 		bndtManageService.insertBndtManageBnde(bndtManageVO, checkedBndtManageForInsert);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return "/uss/ion/bnt/BndtManageBndeListPop";
+		return "uss/ion/bnt/BndtManageBndeListPop";
 	}
 
 }

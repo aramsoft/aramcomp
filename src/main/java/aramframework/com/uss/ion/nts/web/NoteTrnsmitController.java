@@ -113,7 +113,7 @@ public class NoteTrnsmitController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "/uss/ion/nts/NoteTrnsmitList";
+		return "uss/ion/nts/NoteTrnsmitList";
 	}
 
 	/**
@@ -144,7 +144,7 @@ public class NoteTrnsmitController {
 		model.addAttribute("noteTrnsmit", noteTrnsmitService.selectNoteTrnsmitDetail(noteTrnsmitVO));
 		model.addAttribute("resultRecptnEmp", noteTrnsmitService.selectNoteTrnsmitCnfirm(noteTrnsmitVO));
 		
-		return "/uss/ion/nts/NoteTrnsmitDetail";
+		return "uss/ion/nts/NoteTrnsmitDetail";
 	}
 
 	/**
@@ -166,7 +166,7 @@ public class NoteTrnsmitController {
 
 		model.addAttribute("resultList", noteTrnsmitService.selectNoteTrnsmitCnfirm(noteTrnsmitVO));
 
-		return "/uss/ion/nts/NoteTrnsmitCnfirm";
+		return "uss/ion/nts/NoteTrnsmitCnfirm";
 	}
 
 }

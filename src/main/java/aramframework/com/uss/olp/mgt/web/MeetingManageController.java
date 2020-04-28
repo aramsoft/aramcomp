@@ -47,7 +47,7 @@ public class MeetingManageController {
 
 		model.addAttribute("resultList", meetingManageService.selectDeptListPopup(baseVO));
 
-		return "/uss/olp/mgt/MeetingDeptPopup";
+		return "uss/olp/mgt/MeetingDeptPopup";
 	}
 
 	/**
@@ -62,7 +62,7 @@ public class MeetingManageController {
 
 		model.addAttribute("resultList", meetingManageService.selectEmpLyrListPopup(baseVO));
 
-		return "/uss/olp/mgt/MeetingEmpLyrPopup";
+		return "uss/olp/mgt/MeetingEmpLyrPopup";
 	}
 
 	/**
@@ -87,7 +87,7 @@ public class MeetingManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/olp/mgt/MeetingList";
+		return "uss/olp/mgt/MeetingList";
 	}
 
 	/**
@@ -104,7 +104,7 @@ public class MeetingManageController {
 
 		model.addAttribute(meetingManageService.selectMeetingManageDetail(meetingManageVO));
 
-		return "/uss/olp/mgt/MeetingDetail";
+		return "uss/olp/mgt/MeetingDetail";
 	}
 
 	/**
@@ -118,7 +118,7 @@ public class MeetingManageController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MeetingManageVO meetingManageVO) {
 
-		return "/uss/olp/mgt/MeetingRegist";
+		return "uss/olp/mgt/MeetingRegist";
 	}
 
 	/**
@@ -137,7 +137,7 @@ public class MeetingManageController {
 		// 서버 validate 체크
 		beanValidator.validate(meetingManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/olp/mgt/MeetingRegist";
+			return "uss/olp/mgt/MeetingRegist";
 		}
 		
 		// 로그인 객체 선언
@@ -165,7 +165,7 @@ public class MeetingManageController {
 
 		model.addAttribute(meetingManageService.selectMeetingManageDetail(meetingManageVO));
 
-		return "/uss/olp/mgt/MeetingEdit";
+		return "uss/olp/mgt/MeetingEdit";
 	}
 
 	/**
@@ -184,7 +184,7 @@ public class MeetingManageController {
 		// 서버 validate 체크
 		beanValidator.validate(meetingManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/olp/mgt/MeetingEdit";
+			return "uss/olp/mgt/MeetingEdit";
 		}
 		
 		// 로그인 객체 선언

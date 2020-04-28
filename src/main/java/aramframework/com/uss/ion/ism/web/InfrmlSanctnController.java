@@ -49,7 +49,7 @@ public class InfrmlSanctnController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/ion/ism/SanctnerListPopup";
+		return "uss/ion/ism/SanctnerListPopup";
 	}
 
 	/**
@@ -65,7 +65,7 @@ public class InfrmlSanctnController {
 
 		model.addAttribute(infrmlSanctnService.selectInfrmlSanctn(infrmlSanctnVO));
 
-		return "/uss/ion/ism/InfrmlSanctnDetail";
+		return "uss/ion/ism/InfrmlSanctnDetail";
 	}
 
 	/**

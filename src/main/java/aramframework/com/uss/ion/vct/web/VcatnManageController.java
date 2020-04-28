@@ -76,7 +76,7 @@ public class VcatnManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/ion/vct/VcatnList";
+		return "uss/ion/vct/VcatnList";
 	}
 
 	/**
@@ -95,7 +95,7 @@ public class VcatnManageController {
 		model.addAttribute(vcatnManageService.selectIndvdlYrycManage(vcatnManageVO.getApplcntId()));
 		model.addAttribute(vcatnManageVO);
 
-		return "/uss/ion/vct/VcatnDetail";
+		return "uss/ion/vct/VcatnDetail";
 	}
 
 	/**
@@ -118,7 +118,7 @@ public class VcatnManageController {
 
 		model.addAttribute("indvdlYrycManageVO", vcatnManageService.selectIndvdlYrycManage(loginVO.getUserId()));
 
-		return "/uss/ion/vct/VcatnRegist";
+		return "uss/ion/vct/VcatnRegist";
 	}
 
 	/**
@@ -138,7 +138,7 @@ public class VcatnManageController {
 		beanValidator.validate(vcatnManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("indvdlYrycManageVO", vcatnManageService.selectIndvdlYrycManage(loginVO.getUserId()));
-			return "/uss/ion/vct/VcatnRegist";
+			return "uss/ion/vct/VcatnRegist";
 		} 
 		
 		if (vcatnManageVO.getSanctnerId() != null)
@@ -166,7 +166,7 @@ public class VcatnManageController {
 			vcatnManageVO.setBgnde(DateUtil.formatDate(vcatnManageVO.getBgnde(), "-"));
 			vcatnManageVO.setEndde(DateUtil.formatDate(vcatnManageVO.getEndde(), "-"));
 
-			return "/uss/ion/vct/VcatnRegist";
+			return "uss/ion/vct/VcatnRegist";
 		}
 		
 		result = vcatnManageService.insertVcatnManage(vcatnManageVO);
@@ -192,7 +192,7 @@ public class VcatnManageController {
 			vcatnManageVO.setBgnde(DateUtil.formatDate(vcatnManageVO.getBgnde(), "-"));
 			vcatnManageVO.setEndde(DateUtil.formatDate(vcatnManageVO.getEndde(), "-"));
 
-			return "/uss/ion/vct/VcatnRegist";
+			return "uss/ion/vct/VcatnRegist";
 		}
 	}
 
@@ -214,7 +214,7 @@ public class VcatnManageController {
 		
 		cmmUseService.populateCmmCodeList("COM056", "COM056_vcatnSe");
 
-		return "/uss/ion/vct/VcatnEdit";
+		return "uss/ion/vct/VcatnEdit";
 	}
 
 	/**
@@ -234,7 +234,7 @@ public class VcatnManageController {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("indvdlYrycManageVO", vcatnManageService.selectIndvdlYrycManage(vcatnManageVO.getApplcntId()));
 
-			return "/uss/ion/vct/VcatnEdit";
+			return "uss/ion/vct/VcatnEdit";
 		} 
 		  
 		vcatnManageService.updateVcatnManage(vcatnManageVO);
@@ -298,7 +298,7 @@ public class VcatnManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/ion/vct/VcatnConfmList";
+		return "uss/ion/vct/VcatnConfmList";
 	}
 
 	/**
@@ -317,7 +317,7 @@ public class VcatnManageController {
 		model.addAttribute(vcatnManageService.selectIndvdlYrycManage(vcatnManageVO.getApplcntId()));
 		model.addAttribute(vcatnManageVO);
 		
-		return "/uss/ion/vct/VcatnConfmEdit";
+		return "uss/ion/vct/VcatnConfmEdit";
 	}
 
 	/**
@@ -334,7 +334,7 @@ public class VcatnManageController {
 
 		beanValidator.validate(vcatnManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/vct/VcatnConfmEdit";
+			return "uss/ion/vct/VcatnConfmEdit";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();

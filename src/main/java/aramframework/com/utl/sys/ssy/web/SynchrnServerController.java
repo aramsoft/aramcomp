@@ -73,7 +73,7 @@ public class SynchrnServerController {
 
 //		model.addAttribute("fileList", synchrnServerService.getFileName(uploadDir));
 
-		return "/utl/sys/ssy/SynchrnServerList";
+		return "utl/sys/ssy/SynchrnServerList";
 	}
 
 	/**
@@ -92,7 +92,7 @@ public class SynchrnServerController {
 
 //		model.addAttribute("fileList", egovSynchrnServerService.selectSynchrnServerFiles(synchrnServerVO));
 
-		return "/utl/sys/ssy/SynchrnServerDetail";
+		return "utl/sys/ssy/SynchrnServerDetail";
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class SynchrnServerController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SynchrnServerVO synchrnServerVO) {
 
-		return "/utl/sys/ssy/SynchrnServerRegist";
+		return "utl/sys/ssy/SynchrnServerRegist";
 	}
 
 	/**
@@ -124,7 +124,7 @@ public class SynchrnServerController {
 
 		beanValidator.validate(synchrnServerVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/utl/sys/ssy/SynchrnServerRegist";
+			return "utl/sys/ssy/SynchrnServerRegist";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -155,7 +155,7 @@ public class SynchrnServerController {
 
 		model.addAttribute(synchrnServerService.selectSynchrnServer(synchrnServerVO));
 		
-		return "/utl/sys/ssy/SynchrnServerEdit";
+		return "utl/sys/ssy/SynchrnServerEdit";
 	}
 
 	/**
@@ -173,7 +173,7 @@ public class SynchrnServerController {
 
 		beanValidator.validate(synchrnServerVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/utl/sys/ssy/SynchrnServerEdit";
+			return "utl/sys/ssy/SynchrnServerEdit";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();

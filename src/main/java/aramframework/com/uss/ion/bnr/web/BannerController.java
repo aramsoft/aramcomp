@@ -77,7 +77,7 @@ public class BannerController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/ion/bnr/BannerList";
+		return "uss/ion/bnr/BannerList";
 	}
 
 	/**
@@ -90,7 +90,7 @@ public class BannerController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BannerVO bannerVO) {
 
-		return "/uss/ion/bnr/BannerRegist";
+		return "uss/ion/bnr/BannerRegist";
 	}
 
 	/**
@@ -109,7 +109,7 @@ public class BannerController {
 
 		beanValidator.validate(bannerVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/bnr/BannerRegist";
+			return "uss/ion/bnr/BannerRegist";
 		} 
 		
 		String atchFileId = "";
@@ -150,7 +150,7 @@ public class BannerController {
 
 		model.addAttribute(bannerService.selectBanner(bannerVO));
 		
-		return "/uss/ion/bnr/BannerEdit";
+		return "uss/ion/bnr/BannerEdit";
 	}
 
 	/**
@@ -169,7 +169,7 @@ public class BannerController {
 		
 		beanValidator.validate(bannerVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/bnr/BannerEdit";
+			return "uss/ion/bnr/BannerEdit";
 		} 
 
 		String atchFileId = "";
@@ -257,7 +257,7 @@ public class BannerController {
 		model.addAttribute("fileList", bannerService.selectBannerResult(bannerVO));
 		model.addAttribute("resultType", bannerVO.getResultType());
 
-		return "/uss/ion/bnr/BannerView";
+		return "uss/ion/bnr/BannerView";
 	}
 
 	/**
@@ -275,7 +275,7 @@ public class BannerController {
 
 		model.addAttribute("bannerList", bannerService.selectBannerList(bannerVO));
 
-		return "/uss/ion/bnr/BannerMainPage";
+		return "uss/ion/bnr/BannerMainPage";
 	}
 	
 }

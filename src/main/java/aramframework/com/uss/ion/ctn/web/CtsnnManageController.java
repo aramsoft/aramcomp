@@ -66,7 +66,7 @@ public class CtsnnManageController {
 
 		cmmUseService.populateCmmCodeList("COM054", "COM054_ctsnn");
 
-		return "/uss/ion/ctn/CtsnnList";
+		return "uss/ion/ctn/CtsnnList";
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class CtsnnManageController {
 
 		model.addAttribute(ctsnnManageService.selectCtsnnManage(ctsnnManageVO));
 
-		return "/uss/ion/ctn/CtsnnDetail";
+		return "uss/ion/ctn/CtsnnDetail";
 	}
 
 	/**
@@ -98,7 +98,7 @@ public class CtsnnManageController {
 		cmmUseService.populateCmmCodeList("COM054", "COM054_ctsnn");
 		cmmUseService.populateCmmCodeList("COM073", "COM073_relate");
 
-		return "/uss/ion/ctn/CtsnnRegist";
+		return "uss/ion/ctn/CtsnnRegist";
 	}
 
 	/**
@@ -115,7 +115,7 @@ public class CtsnnManageController {
 
 		beanValidator.validate(ctsnnManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/ctn/CtsnnRegist";
+			return "uss/ion/ctn/CtsnnRegist";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -144,7 +144,7 @@ public class CtsnnManageController {
 		cmmUseService.populateCmmCodeList("COM054", "COM054_ctsnn");
 		cmmUseService.populateCmmCodeList("COM073", "COM073_relate");
 
-		return "/uss/ion/ctn/CtsnnEdit";
+		return "uss/ion/ctn/CtsnnEdit";
 	}
 
 	/**
@@ -161,7 +161,7 @@ public class CtsnnManageController {
 
 		beanValidator.validate(ctsnnManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/ctn/CtsnnEdit";
+			return "uss/ion/ctn/CtsnnEdit";
 		} 
 
 		ctsnnManageService.updateCtsnnManage(ctsnnManageVO);
@@ -218,7 +218,7 @@ public class CtsnnManageController {
 
 		cmmUseService.populateCmmCodeList("COM054", "COM054_ctsnn");
 
-		return "/uss/ion/ctn/CtsnnConfmList";
+		return "uss/ion/ctn/CtsnnConfmList";
 	}
 
 	/**
@@ -234,7 +234,7 @@ public class CtsnnManageController {
 		
 		model.addAttribute(ctsnnManageService.selectCtsnnManage(ctsnnManageVO));
 
-		return "/uss/ion/ctn/CtsnnConfmEdit";
+		return "uss/ion/ctn/CtsnnConfmEdit";
 	}
 
 	/**
@@ -251,7 +251,7 @@ public class CtsnnManageController {
 
 		beanValidator.validate(ctsnnManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/ctn/CtsnnConfmEdit";
+			return "uss/ion/ctn/CtsnnConfmEdit";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();

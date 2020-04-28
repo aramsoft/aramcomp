@@ -73,7 +73,7 @@ public class TroblReqstController {
 		cmmUseService.populateCmmCodeList("COM065", "COM065_troblKnd");
 		cmmUseService.populateCmmCodeList("COM068", "COM068_processSttus");
 
-		return "/sym/tbm/tbr/TroblReqstList";
+		return "sym/tbm/tbr/TroblReqstList";
 	}
 
 	/**
@@ -90,7 +90,7 @@ public class TroblReqstController {
 
 		model.addAttribute(troblReqstService.selectTroblReqst(troblReqstVO));
 		
-		return "/sym/tbm/tbr/TroblReqstDetail";
+		return "sym/tbm/tbr/TroblReqstDetail";
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class TroblReqstController {
 
 		cmmUseService.populateCmmCodeList("COM065", "COM065_troblKnd");
 
-		return "/sym/tbm/tbr/TroblReqstRegist";
+		return "sym/tbm/tbr/TroblReqstRegist";
 	}
 
 	/**
@@ -124,7 +124,7 @@ public class TroblReqstController {
 
 		beanValidator.validate(troblReqstVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/sym/tbm/tbr/TroblReqstRegist";
+			return "sym/tbm/tbr/TroblReqstRegist";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -156,7 +156,7 @@ public class TroblReqstController {
 		
 		cmmUseService.populateCmmCodeList("COM065", "COM065_troblKnd");
 
-		return "/sym/tbm/tbr/TroblReqstEdit";
+		return "sym/tbm/tbr/TroblReqstEdit";
 	}
 
 	/**
@@ -174,7 +174,7 @@ public class TroblReqstController {
 
 		beanValidator.validate(troblReqstVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/sym/tbm/tbr/TroblReqstEdit";
+			return "sym/tbm/tbr/TroblReqstEdit";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();

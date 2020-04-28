@@ -77,7 +77,7 @@ public class LoginScrinImageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/ion/lsi/LoginScrinImageList";
+		return "uss/ion/lsi/LoginScrinImageList";
 	}
 
 	/**
@@ -90,7 +90,7 @@ public class LoginScrinImageController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute LoginScrinImageVO loginScrinImageVO) {
 
-		return "/uss/ion/lsi/LoginScrinImageRegist";
+		return "uss/ion/lsi/LoginScrinImageRegist";
 	}
 
 	/**
@@ -109,7 +109,7 @@ public class LoginScrinImageController {
 
 		beanValidator.validate(loginScrinImageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/lsi/LoginScrinImageRegist";
+			return "uss/ion/lsi/LoginScrinImageRegist";
 		} 
 
 		String atchFileId = "";
@@ -150,7 +150,7 @@ public class LoginScrinImageController {
 
 		model.addAttribute(loginScrinImageService.selectLoginScrinImage(loginScrinImageVO));
 
-		return "/uss/ion/lsi/LoginScrinImageEdit";
+		return "uss/ion/lsi/LoginScrinImageEdit";
 	}
 
 	/**
@@ -169,7 +169,7 @@ public class LoginScrinImageController {
 
 		beanValidator.validate(loginScrinImageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/lsi/LoginScrinImageEdit";
+			return "uss/ion/lsi/LoginScrinImageEdit";
 		} 
 
 		String atchFileId = "";
@@ -256,7 +256,7 @@ public class LoginScrinImageController {
 
 		model.addAttribute("fileList", loginScrinImageService.selectLoginScrinImageResult(loginScrinImageVO));
 
-		return "/uss/ion/lsi/LoginScrinImageView";
+		return "uss/ion/lsi/LoginScrinImageView";
 	}
 	
 }

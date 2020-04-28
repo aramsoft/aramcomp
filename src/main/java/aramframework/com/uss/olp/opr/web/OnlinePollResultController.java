@@ -36,7 +36,7 @@ public class OnlinePollResultController {
 
 		model.addAttribute("resultList", onlinePollResultService.selectOnlinePollResultList(onlinePollResultVO));
 
-		return "/uss/olp/opr/OnlinePollResultList";
+		return "uss/olp/opr/OnlinePollResultList";
 	}
 
 	/**

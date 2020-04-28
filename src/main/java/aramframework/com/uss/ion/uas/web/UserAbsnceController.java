@@ -58,7 +58,7 @@ public class UserAbsnceController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/ion/uas/UserAbsnceList";
+		return "uss/ion/uas/UserAbsnceList";
 	}
 
 	/**
@@ -73,7 +73,7 @@ public class UserAbsnceController {
 
 		userAbsnceService.selectUserAbsnce(userAbsnceVO);
 
-		return "/uss/ion/uas/UserAbsnceRegist";
+		return "uss/ion/uas/UserAbsnceRegist";
 	}
 
 	/**
@@ -110,7 +110,7 @@ public class UserAbsnceController {
 
 		model.addAttribute(userAbsnceService.selectUserAbsnce(userAbsnceVO));
 
-		return "/uss/ion/uas/UserAbsnceEdit";
+		return "uss/ion/uas/UserAbsnceEdit";
 	}
 
 	/**
@@ -187,7 +187,7 @@ public class UserAbsnceController {
 
 		model.addAttribute("resultList", userAbsnceService.selectUserAbsnceList(userAbsnceVO));
 
-		return "/uss/ion/uas/UserAbsnceMainPage";
+		return "uss/ion/uas/UserAbsnceMainPage";
 	}
 	
 }

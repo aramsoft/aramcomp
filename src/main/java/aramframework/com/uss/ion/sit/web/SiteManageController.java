@@ -61,7 +61,7 @@ public class SiteManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/ion/sit/SiteInfoList";
+		return "uss/ion/sit/SiteInfoList";
 	}
 
 	/**
@@ -77,7 +77,7 @@ public class SiteManageController {
 
 		model.addAttribute(siteManageService.selectSiteDetail(siteManageVO));
 
-		return "/uss/ion/sit/SiteInfoDetail";
+		return "uss/ion/sit/SiteInfoDetail";
 	}
 
 	/**
@@ -93,7 +93,7 @@ public class SiteManageController {
 		// 공통코드를 가져오기 위한 Vo
 		cmmUseService.populateCmmCodeList("COM023", "COM023_siteThema");
 
-		return "/uss/ion/sit/SiteInfoRegist";
+		return "uss/ion/sit/SiteInfoRegist";
 	}
 
 	/**
@@ -110,7 +110,7 @@ public class SiteManageController {
 
 		beanValidator.validate(siteManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/sit/SiteInfoRegist";
+			return "uss/ion/sit/SiteInfoRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -140,7 +140,7 @@ public class SiteManageController {
 		// 공통코드를 가져오기 위한 Vo
 		cmmUseService.populateCmmCodeList("COM023", "COM023_siteThema");
 
-		return "/uss/ion/sit/SiteInfoEdit";
+		return "uss/ion/sit/SiteInfoEdit";
 	}
 
 	/**
@@ -158,7 +158,7 @@ public class SiteManageController {
 		// Validation
 		beanValidator.validate(siteManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/sit/SiteInfoEdit";
+			return "uss/ion/sit/SiteInfoEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기

@@ -47,7 +47,7 @@ public class RssController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/ion/rsn/RssServiceList";
+		return "uss/ion/rsn/RssServiceList";
 	}
 
 	/**
@@ -69,7 +69,7 @@ public class RssController {
 
 		model.addAttribute("mapRssInfoList", rssService.selectRssServiceTable(rssInfoVO));
 
-		return "/uss/ion/rsn/RssService";
+		return "uss/ion/rsn/RssService";
 	}
 
 }

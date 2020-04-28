@@ -82,7 +82,7 @@ public class KnoPersonalController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/dam/per/KnoPersonalList";
+		return "dam/per/KnoPersonalList";
 	}
 
 	/**
@@ -98,7 +98,7 @@ public class KnoPersonalController {
 
 		model.addAttribute(knoPersonalService.selectKnoPersonal(knoPersonalVO));
 
-		return "/dam/per/KnoPersonalDetail";
+		return "dam/per/KnoPersonalDetail";
 	}
 
 	/**
@@ -114,7 +114,7 @@ public class KnoPersonalController {
 
 		populateMapTeam(knoPersonalVO, model);
 
-		return "/dam/per/KnoPersonalRegist";
+		return "dam/per/KnoPersonalRegist";
 	}
 
 	/**
@@ -136,7 +136,7 @@ public class KnoPersonalController {
 			
 			populateMapTeam(knoPersonalVO, model);
 
-			return "/dam/per/KnoPersonalRegist";
+			return "dam/per/KnoPersonalRegist";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
@@ -190,7 +190,7 @@ public class KnoPersonalController {
 
 		model.addAttribute(knoPersonalService.selectKnoPersonal(knoPersonalVO));
 
-		return "/dam/per/KnoPersonalEdit";
+		return "dam/per/KnoPersonalEdit";
 	}
 
 	/**
@@ -209,7 +209,7 @@ public class KnoPersonalController {
 
 		beanValidator.validate(knoPersonalVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/dam/per/KnoPersonalEdit";
+			return "dam/per/KnoPersonalEdit";
 		}
 
 		// 첨부파일 관련 ID 생성 start....

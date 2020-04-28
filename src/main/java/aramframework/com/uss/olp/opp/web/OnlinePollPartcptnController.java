@@ -50,7 +50,7 @@ public class OnlinePollPartcptnController {
 
 		model.addAttribute("resultList", onlinePollPartcptnService.selectOnlinePollManageList(onlinePollPartcptnVO));
 
-		return "/uss/olp/opp/OnlinePollPartcptnMainPage";
+		return "uss/olp/opp/OnlinePollPartcptnMainPage";
 	}
 
 	/**
@@ -75,7 +75,7 @@ public class OnlinePollPartcptnController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/olp/opp/OnlinePollPartcptnList";
+		return "uss/olp/opp/OnlinePollPartcptnList";
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class OnlinePollPartcptnController {
 	// 온라인POLL항목 정보 설정
 		model.addAttribute("pollItemList", onlinePollPartcptnService.selectOnlinePollItemList(onlinePollPartcptnVO));
 
-		return "/uss/olp/opp/OnlinePollPartcptnRegist";
+		return "uss/olp/opp/OnlinePollPartcptnRegist";
 	}
 
 	/**
@@ -157,7 +157,7 @@ public class OnlinePollPartcptnController {
 		// 이전 주소
 		model.addAttribute("returnUrl", request.getParameter("returnUrl") );
 
-		return "/uss/olp/opp/OnlinePollPartcptnStatistics";
+		return "uss/olp/opp/OnlinePollPartcptnStatistics";
 	}
 
 }

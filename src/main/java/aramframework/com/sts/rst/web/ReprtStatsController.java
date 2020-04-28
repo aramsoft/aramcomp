@@ -97,7 +97,7 @@ public class ReprtStatsController {
 			reprtStatsVO.setPmToDate(DateUtil.getToday());// 2011.09.19
 		}
 		
-		return "/sts/rst/ReprtStatsList";
+		return "sts/rst/ReprtStatsList";
 	}
 
 	/**
@@ -114,7 +114,7 @@ public class ReprtStatsController {
 
 		model.addAttribute("reprtStats", reprtStatsService.selectReprtStats(reprtStatsVO));
 
-		return "/sts/rst/ReprtStatsDetail";
+		return "sts/rst/ReprtStatsDetail";
 	}
 
 	/**
@@ -132,7 +132,7 @@ public class ReprtStatsController {
 		cmmUseService.populateCmmCodeList("COM036", "COM036_reprtSttus");
 		cmmUseService.populateCmmCodeList("COM040", "COM040_reprtType");
 
-		return "/sts/rst/ReprtStatsRegist";
+		return "sts/rst/ReprtStatsRegist";
 	}
 
 	/**
@@ -150,7 +150,7 @@ public class ReprtStatsController {
 
 		beanValidator.validate(reprtStatsVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/sts/rst/ReprtStatsRegist";
+			return "sts/rst/ReprtStatsRegist";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();

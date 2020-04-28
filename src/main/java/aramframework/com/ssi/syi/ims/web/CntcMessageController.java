@@ -59,7 +59,7 @@ public class CntcMessageController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "/ssi/syi/ims/CntcMessageList";
+		return "ssi/syi/ims/CntcMessageList";
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class CntcMessageController {
 
 		model.addAttribute("cntcMessageItemList", cntcMessageService.selectCntcMessageItemList(cntcMessageItemVO));
 
-		return "/ssi/syi/ims/CntcMessageDetail";
+		return "ssi/syi/ims/CntcMessageDetail";
 	}
 
 	/**
@@ -109,7 +109,7 @@ public class CntcMessageController {
 		
 		model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
-		return "/ssi/syi/ims/CntcMessageRegist";
+		return "ssi/syi/ims/CntcMessageRegist";
 	}
 
 	/**
@@ -136,7 +136,7 @@ public class CntcMessageController {
 			
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
-			return "/ssi/syi/ims/CntcMessageRegist";
+			return "ssi/syi/ims/CntcMessageRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -172,7 +172,7 @@ public class CntcMessageController {
 
 		cntcMessageService.selectCntcMessageDetail(cntcMessageVO);
 
-		return "/ssi/syi/ims/CntcMessageEdit";
+		return "ssi/syi/ims/CntcMessageEdit";
 	}
 
 	/**
@@ -199,7 +199,7 @@ public class CntcMessageController {
 
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
-			return "/ssi/syi/ims/CntcMessageEdit";
+			return "ssi/syi/ims/CntcMessageEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -252,7 +252,7 @@ public class CntcMessageController {
 		
 		model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
-		return "/ssi/syi/ims/CntcMessageItemRegist";
+		return "ssi/syi/ims/CntcMessageItemRegist";
 	}
 
 	/**
@@ -279,7 +279,7 @@ public class CntcMessageController {
 			
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
-			return "/ssi/syi/ims/CntcMessageItemRegist";
+			return "ssi/syi/ims/CntcMessageItemRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -314,7 +314,7 @@ public class CntcMessageController {
 
 		cntcMessageService.selectCntcMessageItemDetail(cntcMessageItemVO);
 
-		return "/ssi/syi/ims/CntcMessageItemEdit";
+		return "ssi/syi/ims/CntcMessageItemEdit";
 	}
 
 	/**
@@ -341,7 +341,7 @@ public class CntcMessageController {
 			
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
-			return "/ssi/syi/ims/CntcMessageItemEdit";
+			return "ssi/syi/ims/CntcMessageItemEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기

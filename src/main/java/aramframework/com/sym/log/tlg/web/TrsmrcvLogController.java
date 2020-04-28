@@ -52,7 +52,7 @@ public class TrsmrcvLogController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/sym/log/tlg/TrsmrcvLogList";
+		return "sym/log/tlg/TrsmrcvLogList";
 	}
 
 	/**
@@ -69,7 +69,7 @@ public class TrsmrcvLogController {
 
 		model.addAttribute(trsmrcvLogService.selectTrsmrcvLog(trsmrcvLogVO));
 
-		return "/sym/log/tlg/TrsmrcvLogDetail";
+		return "sym/log/tlg/TrsmrcvLogDetail";
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class TrsmrcvLogController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute TrsmrcvLogVO trsmrcvLogVO) {
 
-		return "/sym/log/tlg/TrsmrcvLogRegist";
+		return "sym/log/tlg/TrsmrcvLogRegist";
 	}
 
 	/**

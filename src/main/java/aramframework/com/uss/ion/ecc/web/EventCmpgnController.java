@@ -63,7 +63,7 @@ public class EventCmpgnController {
 		// 공통코드 행사유형 조회
 		cmmUseService.populateCmmCodeList("COM035", "COM035_eventTy");
 
-		return "/uss/ion/ecc/EventCmpgnListPopup";
+		return "uss/ion/ecc/EventCmpgnListPopup";
 	}
 
 	/**
@@ -92,7 +92,7 @@ public class EventCmpgnController {
 		// 공통코드 행사유형 조회
 		cmmUseService.populateCmmCodeList("COM035", "COM035_eventTy");
 
-		return "/uss/ion/ecc/EventCmpgnList";
+		return "uss/ion/ecc/EventCmpgnList";
 	}
 
 	/**
@@ -111,7 +111,7 @@ public class EventCmpgnController {
 		// 공통코드 행사유형 조회
 		cmmUseService.populateCmmCodeList("COM035", "COM035_eventTy");
 
-		return "/uss/ion/ecc/EventCmpgnDetail";
+		return "uss/ion/ecc/EventCmpgnDetail";
 	}
 
 	/**
@@ -132,7 +132,7 @@ public class EventCmpgnController {
 		// 공통코드 행사유형 조회
 		cmmUseService.populateCmmCodeList("COM035", "COM035_eventTy");
 
-		return "/uss/ion/ecc/EventCmpgnRegist";
+		return "uss/ion/ecc/EventCmpgnRegist";
 	}
 
 	/**
@@ -154,7 +154,7 @@ public class EventCmpgnController {
 		beanValidator.validate(eventCmpgnVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("SUserSe", (String) loginVO.getUserSe());
-			return "/uss/ion/ecc/EventCmpgnRegist";
+			return "uss/ion/ecc/EventCmpgnRegist";
 		}
 		// 아이디 설정
 		eventCmpgnVO.setFrstRegisterId(loginVO.getUserId());
@@ -186,7 +186,7 @@ public class EventCmpgnController {
 		// 공통코드 행사유형 조회
 		cmmUseService.populateCmmCodeList("COM035", "COM035_eventTy");
 
-		return "/uss/ion/ecc/EventCmpgnEdit";
+		return "uss/ion/ecc/EventCmpgnEdit";
 	}
 
 	/**
@@ -208,7 +208,7 @@ public class EventCmpgnController {
 		beanValidator.validate(eventCmpgnVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("SUserSe", (String) loginVO.getUserSe());
-			return "/uss/ion/ecc/EventCmpgnEdit";
+			return "uss/ion/ecc/EventCmpgnEdit";
 		}
 		// 아이디 설정
 		eventCmpgnVO.setLastUpdusrId(loginVO.getUserId());
@@ -270,7 +270,7 @@ public class EventCmpgnController {
 		// 성별코드조회
 		cmmUseService.populateCmmCodeList("COM014", "COM014_sexdstn");
 
-		return "/uss/ion/ecc/TnextrlHrInfoList";
+		return "uss/ion/ecc/TnextrlHrInfoList";
 	}
 
 	/**
@@ -291,7 +291,7 @@ public class EventCmpgnController {
 		// 직업코드조회
 		cmmUseService.populateCmmCodeList("COM034", "COM034_occpType");
 
-		return "/uss/ion/ecc/TnextrlHrInfoDetail";
+		return "uss/ion/ecc/TnextrlHrInfoDetail";
 	}
 
 	/**
@@ -309,7 +309,7 @@ public class EventCmpgnController {
 		// 직업코드조회
 		cmmUseService.populateCmmCodeList("COM034", "COM034_occpType");
 
-		return "/uss/ion/ecc/TnextrlHrInfoRegist";
+		return "uss/ion/ecc/TnextrlHrInfoRegist";
 	}
 
 	/**
@@ -327,7 +327,7 @@ public class EventCmpgnController {
 		// 서버 validate 체크
 		beanValidator.validate(tnextrlHrInfoVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/ecc/TnextrlHrInfoRegist";
+			return "uss/ion/ecc/TnextrlHrInfoRegist";
 		}
 
 		// 로그인 객체 선언
@@ -359,7 +359,7 @@ public class EventCmpgnController {
 		// 직업코드조회
 		cmmUseService.populateCmmCodeList("COM034", "COM034_occpType");
 
-		return "/uss/ion/ecc/TnextrlHrInfoEdit";
+		return "uss/ion/ecc/TnextrlHrInfoEdit";
 	}
 
 	/**
@@ -377,7 +377,7 @@ public class EventCmpgnController {
 		// 서버 validate 체크
 		beanValidator.validate(tnextrlHrInfoVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/ecc/TnextrlHrInfoEdit";
+			return "uss/ion/ecc/TnextrlHrInfoEdit";
 		}
 		
 		// 로그인 객체 선언

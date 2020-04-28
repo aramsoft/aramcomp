@@ -117,7 +117,7 @@ public class NoteRecptnController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/ion/ntr/NoteRecptnList";
+		return "uss/ion/ntr/NoteRecptnList";
 	}
 
 	/**
@@ -150,7 +150,7 @@ public class NoteRecptnController {
 
 		model.addAttribute("resultRecptnEmp", noteTrnsmitService.selectNoteTrnsmitCnfirm(noteTrnsmit));
 
-		return "/uss/ion/ntr/NoteRecptnDetail";
+		return "uss/ion/ntr/NoteRecptnDetail";
 	}
 
 }

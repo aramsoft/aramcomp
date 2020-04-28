@@ -67,7 +67,7 @@ public class QustnrRespondManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/olp/qrm/QustnrRespondList";
+		return "uss/olp/qrm/QustnrRespondList";
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class QustnrRespondManageController {
 		// 직업코드조회
 		cmmUseService.populateCmmCodeList("COM034", "COM034_occpType");
 
-		return "/uss/olp/qrm/QustnrRespondDetail";
+		return "uss/olp/qrm/QustnrRespondDetail";
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class QustnrRespondManageController {
 		// 직업코드조회
 		cmmUseService.populateCmmCodeList("COM034", "COM034_occpType");
 
-		return "/uss/olp/qrm/QustnrRespondRegist";
+		return "uss/olp/qrm/QustnrRespondRegist";
 	}
 
 	/**
@@ -127,7 +127,7 @@ public class QustnrRespondManageController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrRespondManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/olp/qrm/QustnrRespondRegist";
+			return "uss/olp/qrm/QustnrRespondRegist";
 		}
 		
 		// 로그인 객체 선언
@@ -160,7 +160,7 @@ public class QustnrRespondManageController {
 		// 직업코드조회
 		cmmUseService.populateCmmCodeList("COM034", "COM034_occpType");
 
-		return "/uss/olp/qrm/QustnrRespondEdit";
+		return "uss/olp/qrm/QustnrRespondEdit";
 	}
 
 	/**
@@ -179,7 +179,7 @@ public class QustnrRespondManageController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrRespondManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/uss/olp/qrm/QustnrRespondEdit";
+			return "uss/olp/qrm/QustnrRespondEdit";
 		}
 
 		// 로그인 객체 선언

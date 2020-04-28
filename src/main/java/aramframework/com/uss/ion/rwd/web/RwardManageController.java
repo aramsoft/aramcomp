@@ -72,7 +72,7 @@ public class RwardManageController {
 
 		cmmUseService.populateCmmCodeList("COM055", "COM055_rward");
 
-		return "/uss/ion/rwd/RwardList";
+		return "uss/ion/rwd/RwardList";
 	}
 
 	/**
@@ -90,7 +90,7 @@ public class RwardManageController {
 
 		model.addAttribute(rwardManageService.selectRwardManage(rwardManageVO));
 
-		return "/uss/ion/rwd/RwardDetail";
+		return "uss/ion/rwd/RwardDetail";
 	}
 
 	/**
@@ -105,7 +105,7 @@ public class RwardManageController {
 		
 		cmmUseService.populateCmmCodeList("COM055", "COM055_rward");
 
-		return "/uss/ion/rwd/RwardRegist";
+		return "uss/ion/rwd/RwardRegist";
 	}
 
 	/**
@@ -124,7 +124,7 @@ public class RwardManageController {
 
 		beanValidator.validate(rwardManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/rwd/RwardRegist";
+			return "uss/ion/rwd/RwardRegist";
 		} 
 		
 		// 첨부파일 관련 첨부파일ID 생성
@@ -157,7 +157,7 @@ public class RwardManageController {
 
 		cmmUseService.populateCmmCodeList("COM055", "COM055_rward");
 
-		return "/uss/ion/rwd/RwardEdit";
+		return "uss/ion/rwd/RwardEdit";
 	}
 
 	/**
@@ -176,7 +176,7 @@ public class RwardManageController {
 		
 		beanValidator.validate(rwardManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/rwd/RwardEdit";
+			return "uss/ion/rwd/RwardEdit";
 		} 
 		
 		// 첨부파일 관련 ID 생성 start....
@@ -242,7 +242,7 @@ public class RwardManageController {
 
 		cmmUseService.populateCmmCodeList("COM055", "COM055_rward");
 
-		return "/uss/ion/rwd/RwardConfmList";
+		return "uss/ion/rwd/RwardConfmList";
 	}
 
 	/**
@@ -260,7 +260,7 @@ public class RwardManageController {
 
 		model.addAttribute(rwardManageService.selectRwardManage(rwardManageVO));
 
-		return "/uss/ion/rwd/RwardConfmEdit";
+		return "uss/ion/rwd/RwardConfmEdit";
 	}
 
 	/**
@@ -279,7 +279,7 @@ public class RwardManageController {
 
 		beanValidator.validate(rwardManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/rwd/RwardConfmEdit";
+			return "uss/ion/rwd/RwardConfmEdit";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();

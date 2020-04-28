@@ -86,7 +86,7 @@ public class AnnvrsryManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/uss/ion/ans/AnnvrsryList";
+		return "uss/ion/ans/AnnvrsryList";
 	}
 
 	/**
@@ -119,7 +119,7 @@ public class AnnvrsryManageController {
 
 		model.addAttribute(annvrsryManageVO);
 		
-		return "/uss/ion/ans/AnnvrsryDetail";
+		return "uss/ion/ans/AnnvrsryDetail";
 	}
 
 	/**
@@ -142,7 +142,7 @@ public class AnnvrsryManageController {
 
 		cmmUseService.populateCmmCodeList("COM069", "COM069_annvrsrySe");
 
-		return "/uss/ion/ans/AnnvrsryRegist";
+		return "uss/ion/ans/AnnvrsryRegist";
 	}
 
 	/**
@@ -160,7 +160,7 @@ public class AnnvrsryManageController {
 		beanValidator.validate(annvrsryManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.insert"));
-			return "/uss/ion/ans/AnnvrsryRegist";
+			return "uss/ion/ans/AnnvrsryRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -168,7 +168,7 @@ public class AnnvrsryManageController {
 
 		if (annvrsryManageService.selectAnnvrsryManageDplctAt(annvrsryManageVO) != 0) {
 			model.addAttribute("message", "이미 등록된 데이타입니다. 해당 데이타를 확인해 주세요");
-			return "/uss/ion/ans/AnnvrsryRegist";
+			return "uss/ion/ans/AnnvrsryRegist";
 		}
 		
 		annvrsryManageService.insertAnnvrsryManage(annvrsryManageVO);
@@ -193,7 +193,7 @@ public class AnnvrsryManageController {
 
 		cmmUseService.populateCmmCodeList("COM069", "COM069_annvrsrySe");
 
-		return "/uss/ion/ans/AnnvrsryEdit";
+		return "uss/ion/ans/AnnvrsryEdit";
 	}
 
 	/**
@@ -210,7 +210,7 @@ public class AnnvrsryManageController {
 
 		beanValidator.validate(annvrsryManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "/uss/ion/ans/AnnvrsryEdit";
+			return "uss/ion/ans/AnnvrsryEdit";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -260,7 +260,7 @@ public class AnnvrsryManageController {
 
 		model.addAttribute("resultList", annvrsryManageService.selectAnnvrsryGdcc(annvrsryManageVO));
 
-		return "/uss/ion/ans/AnnvrsryMainPage";
+		return "uss/ion/ans/AnnvrsryMainPage";
 	}
 
 	/**
@@ -323,7 +323,7 @@ public class AnnvrsryManageController {
 
 		annvrsryManageVO.setAnnvrsryBeginDe(Long.toString(resultDay));
 
-		return "/uss/ion/ans/AnnvrsryGdcc";
+		return "uss/ion/ans/AnnvrsryGdcc";
 	}
 
 	/**
@@ -354,7 +354,7 @@ public class AnnvrsryManageController {
 			model.addAttribute("message", message);
 		}
 
-		return "/uss/ion/ans/AnnvrsryBndeListPopup";
+		return "uss/ion/ans/AnnvrsryBndeListPopup";
 	}
 
 	/**
@@ -380,7 +380,7 @@ public class AnnvrsryManageController {
 
 		model.addAttribute("message", "true");
 
-		return "/uss/ion/ans/AnnvrsryBndeListPopup";
+		return "uss/ion/ans/AnnvrsryBndeListPopup";
 
 		// }else{
 		// 		String sTempMessage =

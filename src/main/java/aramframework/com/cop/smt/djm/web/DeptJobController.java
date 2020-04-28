@@ -76,7 +76,7 @@ public class DeptJobController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/cop/smt/djm/ChargerListPopup";
+		return "cop/smt/djm/ChargerListPopup";
 	}
 
 	/**
@@ -100,7 +100,7 @@ public class DeptJobController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/cop/smt/djm/DeptListPopup";
+		return "cop/smt/djm/DeptListPopup";
 	}
 
 	/**
@@ -132,9 +132,9 @@ public class DeptJobController {
 
 		String returnUrl;
 		if ("Y".equals(popFlag)) {
-			returnUrl = "/cop/smt/djm/DeptJobBxListPopup";
+			returnUrl = "cop/smt/djm/DeptJobBxListPopup";
 		} else {
-			returnUrl = "/cop/smt/djm/DeptJobBxList";
+			returnUrl = "cop/smt/djm/DeptJobBxList";
 		}
 		return returnUrl;
 	}
@@ -152,7 +152,7 @@ public class DeptJobController {
 	
 		 model.addAttribute(deptJobService.selectDeptJobBx(deptJobBxVO));
 
-		return "/cop/smt/djm/DeptJobBxDetail";
+		return "cop/smt/djm/DeptJobBxDetail";
 	}
 
 	/**
@@ -166,7 +166,7 @@ public class DeptJobController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DeptJobBxVO deptJobBxVO) {
 		
-		return "/cop/smt/djm/DeptJobBxRegist";
+		return "cop/smt/djm/DeptJobBxRegist";
 	}
 
 	/**
@@ -186,9 +186,9 @@ public class DeptJobController {
 		model.addAttribute("indictOrdrValue", deptJobService.selectDeptJobBxOrdr(deptJobBxVO.getDeptId()) + 1);
 
 		if (request.getHeader("Referer").indexOf("insertDeptJobBx.do") == -1) {
-			return "/cop/smt/djm/DeptJobBxEdit";
+			return "cop/smt/djm/DeptJobBxEdit";
 		} else {
-			return "/cop/smt/djm/DeptJobBxRegist";
+			return "cop/smt/djm/DeptJobBxRegist";
 		}	
 	}
 
@@ -208,7 +208,7 @@ public class DeptJobController {
 		// 서버 validate 체크
 		beanValidator.validate(deptJobBxVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/cop/smt/djm/DeptJobBxRegist";
+			return "cop/smt/djm/DeptJobBxRegist";
 		}
 
 		// 로그인 객체 선언
@@ -218,7 +218,7 @@ public class DeptJobController {
 		// 부서내 부서업무함명 중복체크
 		if (deptJobService.selectDeptJobBxCheck(deptJobBxVO) > 0) {
 			model.addAttribute("deptJobBxNmDuplicated", "true");
-			return "/cop/smt/djm/DeptJobBxRegist";
+			return "cop/smt/djm/DeptJobBxRegist";
 		} 
 		
 		deptJobService.insertDeptJobBx(deptJobBxVO);
@@ -243,7 +243,7 @@ public class DeptJobController {
 		model.addAttribute(deptJobService.selectDeptJobBx(deptJobBxVO));
 		model.addAttribute("indictOrdrValue", deptJobBxVO.getIndictOrdr());
 
-		return "/cop/smt/djm/DeptJobBxEdit";
+		return "cop/smt/djm/DeptJobBxEdit";
 	}
 
 	/**
@@ -261,7 +261,7 @@ public class DeptJobController {
 
 		beanValidator.validate(deptJobBxVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/cop/smt/djm/DeptJobBxEdit";
+			return "cop/smt/djm/DeptJobBxEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -348,7 +348,7 @@ public class DeptJobController {
 		model.addAttribute(paginationInfo);
 		model.addAttribute("resultBxList", deptJobService.selectDeptJobBxListAll());
 
-		return "/cop/smt/djm/DeptJobList";
+		return "cop/smt/djm/DeptJobList";
 	}
 
 	/**
@@ -368,7 +368,7 @@ public class DeptJobController {
 		// 공통코드 우선순위 조회
 		model.addAttribute("priort", cmmUseService.selectCmmCodeList("COM059"));
 
-		return "/cop/smt/djm/DeptJobDetail";
+		return "cop/smt/djm/DeptJobDetail";
 	}
 
 	/**
@@ -386,7 +386,7 @@ public class DeptJobController {
 		deptJobVO.setDeptNm(deptJobService.selectDept(deptJobVO.getSearchDeptId()));
 		deptJobVO.setDeptJobBxId(deptJobVO.getSearchDeptJobBxId());
 
-		return "/cop/smt/djm/DeptJobRegist";
+		return "cop/smt/djm/DeptJobRegist";
 	}
 
 	/**
@@ -407,7 +407,7 @@ public class DeptJobController {
 		// 서버 validate 체크
 		beanValidator.validate(deptJobVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/cop/smt/djm/DeptJobRegist";
+			return "cop/smt/djm/DeptJobRegist";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
@@ -438,7 +438,7 @@ public class DeptJobController {
 
 		model.addAttribute(deptJobService.selectDeptJob(deptJobVO));
 
-		return "/cop/smt/djm/DeptJobEdit";
+		return "cop/smt/djm/DeptJobEdit";
 	}
 
 	/**
@@ -458,7 +458,7 @@ public class DeptJobController {
 
 		beanValidator.validate(deptJobVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/cop/smt/djm/DeptJobEdit";
+			return "cop/smt/djm/DeptJobEdit";
 		}
 
 		// 첨부파일 관련 ID 생성 start....

@@ -64,7 +64,7 @@ public class MemoTodoController {
 
 		model.addAttribute("resultList", memoTodoService.selectMemoTodoListToday(memoTodoVO));
 
-		return "/cop/smt/mtm/MemoTodoListToday";
+		return "cop/smt/mtm/MemoTodoListToday";
 	}
 
 	/**
@@ -94,7 +94,7 @@ public class MemoTodoController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute(paginationInfo);
 
-		return "/cop/smt/mtm/MemoTodoList";
+		return "cop/smt/mtm/MemoTodoList";
 	}
 
 	/**
@@ -119,7 +119,7 @@ public class MemoTodoController {
 
 		model.addAttribute(memoTodoVO);
 
-		return "/cop/smt/mtm/MemoTodoDetail";
+		return "cop/smt/mtm/MemoTodoDetail";
 	}
 
 	// 할일일자(시)
@@ -148,7 +148,7 @@ public class MemoTodoController {
 		memoTodoVO.setWrterId(loginVO.getUserId());
 		memoTodoVO.setWrterNm(loginVO.getName());
 
-		return "/cop/smt/mtm/MemoTodoRegist";
+		return "cop/smt/mtm/MemoTodoRegist";
 	}
 
 	/**
@@ -167,7 +167,7 @@ public class MemoTodoController {
 		// 서버 validate 체크
 		beanValidator.validate(memoTodoVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/cop/smt/mtm/MemoTodoRegist";
+			return "cop/smt/mtm/MemoTodoRegist";
 		}
 
 		// 로그인 객체 선언
@@ -206,7 +206,7 @@ public class MemoTodoController {
 
 		model.addAttribute(memoTodoVO);
 
-		return "/cop/smt/mtm/MemoTodoEdit";
+		return "cop/smt/mtm/MemoTodoEdit";
 	}
 
 	/**
@@ -224,7 +224,7 @@ public class MemoTodoController {
 		
 		beanValidator.validate(memoTodoVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/cop/smt/mtm/MemoTodoEdit";
+			return "cop/smt/mtm/MemoTodoEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();

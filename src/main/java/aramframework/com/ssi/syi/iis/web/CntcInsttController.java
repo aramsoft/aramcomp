@@ -67,7 +67,7 @@ public class CntcInsttController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "/ssi/syi/iis/CntcInsttList";
+		return "ssi/syi/iis/CntcInsttList";
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class CntcInsttController {
 		cntcServiceVO.setSearchCondition("CodeList_InsttId");
 		model.addAttribute("cntcServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));
 
-		return "/ssi/syi/iis/CntcInsttDetail";
+		return "ssi/syi/iis/CntcInsttDetail";
 	}
 
 	/**
@@ -122,7 +122,7 @@ public class CntcInsttController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcInsttVO cntcInsttVO) {
 		
-		return "/ssi/syi/iis/CntcInsttRegist";
+		return "ssi/syi/iis/CntcInsttRegist";
 	}
 
 	/**
@@ -140,7 +140,7 @@ public class CntcInsttController {
 
 		beanValidator.validate(cntcInsttVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/ssi/syi/iis/CntcInsttRegist";
+			return "ssi/syi/iis/CntcInsttRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -167,7 +167,7 @@ public class CntcInsttController {
 
 		cntcInsttService.selectCntcInsttDetail(cntcInsttVO);
 
-		return "/ssi/syi/iis/CntcInsttEdit";
+		return "ssi/syi/iis/CntcInsttEdit";
 	}
 
 	/**
@@ -185,7 +185,7 @@ public class CntcInsttController {
 		
 		beanValidator.validate(cntcInsttVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/ssi/syi/iis/CntcInsttEdit";
+			return "ssi/syi/iis/CntcInsttEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -237,7 +237,7 @@ public class CntcInsttController {
 		cntcInsttVO.setSearchCondition("CodeList");
 		model.addAttribute("cntcInsttList", cntcInsttService.selectCntcInsttList(cntcInsttVO));
 
-		return "/ssi/syi/iis/CntcSystemRegist";
+		return "ssi/syi/iis/CntcSystemRegist";
 	}
 
 	/**
@@ -263,7 +263,7 @@ public class CntcInsttController {
 			cntcInsttVO.setSearchCondition("CodeList");
 			model.addAttribute("cntcInsttList", cntcInsttService.selectCntcInsttList(cntcInsttVO));
 
-			return "/ssi/syi/iis/CntcSystemRegist";
+			return "ssi/syi/iis/CntcSystemRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -304,7 +304,7 @@ public class CntcInsttController {
 
 		cntcInsttService.selectCntcSystemDetail(cntcSystemVO);
 
-		return "/ssi/syi/iis/CntcSystemEdit";
+		return "ssi/syi/iis/CntcSystemEdit";
 	}
 
 	/**
@@ -337,7 +337,7 @@ public class CntcInsttController {
 			cntcMessageVO.setSearchCondition("CodeList");
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(cntcMessageVO));
 
-			return "/ssi/syi/iis/CntcSystemEdit";
+			return "ssi/syi/iis/CntcSystemEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -408,7 +408,7 @@ public class CntcInsttController {
 		searchCntcMessageVO.setSearchCondition("CodeList");
 		model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
-		return "/ssi/syi/iis/CntcServiceRegist";
+		return "ssi/syi/iis/CntcServiceRegist";
 	}
 
 	/**
@@ -456,7 +456,7 @@ public class CntcInsttController {
 			cntcMessageVO.setSearchCondition("CodeList");
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(cntcMessageVO));
 
-			return "/ssi/syi/iis/CntcServiceRegist";
+			return "ssi/syi/iis/CntcServiceRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -512,7 +512,7 @@ public class CntcInsttController {
 
 		cntcInsttService.selectCntcServiceDetail(cntcServiceVO);
 
-		return "/ssi/syi/iis/CntcServiceEdit";
+		return "ssi/syi/iis/CntcServiceEdit";
 	}
 
 	/**
@@ -560,7 +560,7 @@ public class CntcInsttController {
 			cntcMessageVO.setSearchCondition("CodeList");
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(cntcMessageVO));
 
-			return "/ssi/syi/iis/CntcServiceEdit";
+			return "ssi/syi/iis/CntcServiceEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기

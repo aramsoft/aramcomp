@@ -66,7 +66,7 @@ public class LeaderSchdulController {
 	public String listLeaderSchdul(
 			@ModelAttribute LeaderSchdulVO leaderSchdulVO) {
 		
-		return "/cop/smt/lsm/LeaderSchdulList";
+		return "cop/smt/lsm/LeaderSchdulList";
 	}
 
 	/**
@@ -120,7 +120,7 @@ public class LeaderSchdulController {
 		 */
 		cmmUseService.populateCmmCodeList("COM057", "COM057_schdulSeLeader");
 
-		return "/cop/smt/lsm/LeaderSchdulDailyList";
+		return "cop/smt/lsm/LeaderSchdulDailyList";
 	}
 
 	/**
@@ -238,7 +238,7 @@ public class LeaderSchdulController {
 		 */
 		cmmUseService.populateCmmCodeList("COM057", "COM057_schdulSeLeader");
 
-		return "/cop/smt/lsm/LeaderSchdulWeekList";
+		return "cop/smt/lsm/LeaderSchdulWeekList";
 	}
 
 	/**
@@ -297,7 +297,7 @@ public class LeaderSchdulController {
 		 */
 		cmmUseService.populateCmmCodeList("COM057", "COM057_schdulSeLeader");
 
-		return "/cop/smt/lsm/LeaderSchdulMonthList";
+		return "cop/smt/lsm/LeaderSchdulMonthList";
 	}
 	
 	/**
@@ -318,7 +318,7 @@ public class LeaderSchdulController {
 		// 공통코드 반복구분 조회
 		cmmUseService.populateCmmCodeList("COM058", "COM058_reptitSeLeader");
 
-		return "/cop/smt/lsm/LeaderSchdulDetail";
+		return "cop/smt/lsm/LeaderSchdulDetail";
 	}
 
 	// 일정시작일자(시)
@@ -354,7 +354,7 @@ public class LeaderSchdulController {
 		//  공통코드 간부일정구분
 		cmmUseService.populateCmmCodeList("COM057", "COM057_schdulSeLeader");
 
-		return "/cop/smt/lsm/LeaderSchdulRegist";
+		return "cop/smt/lsm/LeaderSchdulRegist";
 	}
 
 	/**
@@ -373,7 +373,7 @@ public class LeaderSchdulController {
 		// 서버 validate 체크
 		beanValidator.validate(leaderSchdulVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/cop/smt/lsm/LeaderSchdulRegist";
+			return "cop/smt/lsm/LeaderSchdulRegist";
 		}
 
 		// 로그인 객체 선언
@@ -416,7 +416,7 @@ public class LeaderSchdulController {
 
 		model.addAttribute(leaderSchdulVO);
 		
-		return "/cop/smt/lsm/LeaderSchdulEdit";
+		return "cop/smt/lsm/LeaderSchdulEdit";
 	}
 
 	/**
@@ -435,7 +435,7 @@ public class LeaderSchdulController {
 		// 서버 validate 체크
 		beanValidator.validate(leaderSchdulVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/cop/smt/lsm/LeaderSchdulEdit";
+			return "cop/smt/lsm/LeaderSchdulEdit";
 		}
 
 		// 로그인 객체 선언
@@ -494,7 +494,7 @@ public class LeaderSchdulController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/cop/smt/lsm/LeaderSttusListView";
+		return "cop/smt/lsm/LeaderSttusListView";
 	}
 
 	/**
@@ -518,7 +518,7 @@ public class LeaderSchdulController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/cop/smt/lsm/LeaderSttusList";
+		return "cop/smt/lsm/LeaderSttusList";
 	}
 
 	/**
@@ -535,7 +535,7 @@ public class LeaderSchdulController {
 		// 공통코드 간부상태
 		cmmUseService.populateCmmCodeList("COM061", "COM061_leaderSttus");
 
-		return "/cop/smt/lsm/LeaderSttusRegist";
+		return "cop/smt/lsm/LeaderSttusRegist";
 	}
 
 	/**
@@ -554,7 +554,7 @@ public class LeaderSchdulController {
 		// 서버 validate 체크
 		beanValidator.validate(leaderSttusVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/cop/smt/lsm/LeaderSttusRegist";
+			return "cop/smt/lsm/LeaderSttusRegist";
 		}
 
 		// 로그인 객체 선언
@@ -564,7 +564,7 @@ public class LeaderSchdulController {
 		// 간부상태 중복체크
 		if (leaderSchdulService.selectLeaderSttusCheck(leaderSttusVO) > 0) {
 			model.addAttribute("leaderIdDuplicated", "true");
-			return "/cop/smt/lsm/LeaderSttusRegist";
+			return "cop/smt/lsm/LeaderSttusRegist";
 		} 
 		
 		leaderSchdulService.insertLeaderSttus(leaderSttusVO);
@@ -591,7 +591,7 @@ public class LeaderSchdulController {
 		// 공통코드 간부상태
 		cmmUseService.populateCmmCodeList("COM061", "COM061_leaderSttus");
 
-		return "/cop/smt/lsm/LeaderSttusEdit";
+		return "cop/smt/lsm/LeaderSttusEdit";
 	}
 
 	/**
@@ -609,7 +609,7 @@ public class LeaderSchdulController {
 
 		beanValidator.validate(leaderSttusVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/cop/smt/lsm/LeaderSttusEdit";
+			return "cop/smt/lsm/LeaderSttusEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();

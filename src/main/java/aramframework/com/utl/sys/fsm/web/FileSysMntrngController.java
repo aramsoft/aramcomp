@@ -66,7 +66,7 @@ public class FileSysMntrngController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/utl/sys/fsm/FileSysMntrngList";
+		return "utl/sys/fsm/FileSysMntrngList";
 	}
 
 	/**
@@ -91,7 +91,7 @@ public class FileSysMntrngController {
 		
 		model.addAttribute(fileSysMntrngVO);
 		
-		return "/utl/sys/fsm/FileSysMntrngDetail";
+		return "utl/sys/fsm/FileSysMntrngDetail";
 	}
 
 	/**
@@ -105,7 +105,7 @@ public class FileSysMntrngController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute FileSysMntrngVO fileSysMntrngVO) {
 		
-		return "/utl/sys/fsm/FileSysMntrngRegist";
+		return "utl/sys/fsm/FileSysMntrngRegist";
 	}
 
 	/**
@@ -124,7 +124,7 @@ public class FileSysMntrngController {
 		// 서버 validate 체크
 		beanValidator.validate(fileSysMntrngVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/utl/sys/fsm/FileSysMntrngRegist";
+			return "utl/sys/fsm/FileSysMntrngRegist";
 		}
 
 		// 로그인 객체 선언
@@ -160,7 +160,7 @@ public class FileSysMntrngController {
 		
 		model.addAttribute(fileSysMntrngVO);
 		
-		return "/utl/sys/fsm/FileSysMntrngEdit";
+		return "utl/sys/fsm/FileSysMntrngEdit";
 	}
 
 	/**
@@ -178,7 +178,7 @@ public class FileSysMntrngController {
 
 		beanValidator.validate(fileSysMntrngVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/utl/sys/fsm/FileSysMntrngEdit";
+			return "utl/sys/fsm/FileSysMntrngEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -231,7 +231,7 @@ public class FileSysMntrngController {
 		}
 
 		model.addAttribute("fileSysMgValue", totalSpaceFileSys);
-		return "/utl/sys/fsm/FileSysMntrngRegist";
+		return "utl/sys/fsm/FileSysMntrngRegist";
 	}
 
 	/**
@@ -277,7 +277,7 @@ public class FileSysMntrngController {
 
 		model.addAttribute(paginationInfo);
 
-		return "/utl/sys/fsm/FileSysMntrngLogList";
+		return "utl/sys/fsm/FileSysMntrngLogList";
 	}
 
 	// 조회시작시
@@ -309,7 +309,7 @@ public class FileSysMntrngController {
 		
 		model.addAttribute(fileSysMntrngLogVO);
 		
-		return "/utl/sys/fsm/FileSysMntrngLogDetail";
+		return "utl/sys/fsm/FileSysMntrngLogDetail";
 	}
 
 }

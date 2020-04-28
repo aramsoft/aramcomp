@@ -6,12 +6,10 @@ import java.util.regex.Pattern;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
 import aramframework.com.cmm.domain.ComCodeVO;
-import aramframework.com.cmm.domain.SearchVO;
 
 /**
  * 교차접속 스크립트 공격 취약성 방지(파라미터 문자열 교체)
@@ -23,44 +21,18 @@ import aramframework.com.cmm.domain.SearchVO;
 public class WebUtil {
 
 	protected static final Logger LOG = LoggerFactory.getLogger(WebUtil.class);
-	
-	final static String comDefaultPath = "aramframework/com";
-	
-	public static String redirectJsp(ModelMap model, SearchVO searchVO, String redirectUrl) {
-		model.addAttribute("searchVO", searchVO);
-		model.addAttribute("redirectURL", redirectUrl);
-		return "aramframework/com/cmm/redirect";
-	}
 
-	public static String adjustViewName(String viewName) {
-		
-		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
-
-		String jspPrefix = (String) requestAttributes.getAttribute("jspPrefix", RequestAttributes.SCOPE_REQUEST);
-		if (jspPrefix == null || "".equals(jspPrefix)) jspPrefix = comDefaultPath;
-		String jspPage = jspPrefix + viewName;	
-		
-		// if tiles exist, forward tiles layout
-		String aTrgetId   = (String) requestAttributes.getAttribute("curTrgetId", RequestAttributes.SCOPE_REQUEST);
-		String aCurMenuNo = (String) requestAttributes.getAttribute("curMenuNo", RequestAttributes.SCOPE_REQUEST);
-		if( aTrgetId != null
-				&& aTrgetId.startsWith("CMMNTY_") 
-				&& aCurMenuNo != null
-				&& !"".equals(aCurMenuNo) )  {
-			
-			requestAttributes.setAttribute("jspPage", jspPage, RequestAttributes.SCOPE_REQUEST);
-			
-			return "forward:/cop/cmy/CmmntyTilesPage.do";
-		}
-		
-		return jspPage;
-	}
-	
 	public static String getCurTrgetId() {
 		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
 		return (String) requestAttributes.getAttribute("curTrgetId", RequestAttributes.SCOPE_REQUEST);
 	}
 	
+	/**
+	 * pathId로 부터 origId를 생성한다.
+	 * 
+	 * @param 	original		String
+	 * @return 					String
+	 */
 	public static String getOriginalId(String source, String prefix) {
 		if ( source.startsWith(prefix)  ) {
 			return source;
@@ -70,7 +42,6 @@ public class WebUtil {
 		try {
 			return String.format(format, Integer.parseInt(source));
 		} catch(Exception ex) {
-			LOG.error("fail to id conversion!!, format = " + format + ", source = " + source);
 			return source;
 		}
 	}	
@@ -174,11 +145,9 @@ public class WebUtil {
 		returnValue = clearXSSMinimum(returnValue);
 
 		returnValue = returnValue.replaceAll("%00", null);
-
 		returnValue = returnValue.replaceAll("%", "&#37;");
 
 		// \\. => .
-
 		returnValue = returnValue.replaceAll("\\.\\./", ""); // ../
 		returnValue = returnValue.replaceAll("\\.\\.\\\\", ""); // ..\
 		returnValue = returnValue.replaceAll("\\./", ""); // ./

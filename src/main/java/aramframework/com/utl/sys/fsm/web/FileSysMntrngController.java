@@ -66,7 +66,7 @@ public class FileSysMntrngController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/utl/sys/fsm/FileSysMntrngList");
+		return "/utl/sys/fsm/FileSysMntrngList";
 	}
 
 	/**
@@ -91,7 +91,7 @@ public class FileSysMntrngController {
 		
 		model.addAttribute(fileSysMntrngVO);
 		
-		return WebUtil.adjustViewName("/utl/sys/fsm/FileSysMntrngDetail");
+		return "/utl/sys/fsm/FileSysMntrngDetail";
 	}
 
 	/**
@@ -105,7 +105,7 @@ public class FileSysMntrngController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute FileSysMntrngVO fileSysMntrngVO) {
 		
-		return WebUtil.adjustViewName("/utl/sys/fsm/FileSysMntrngRegist");
+		return "/utl/sys/fsm/FileSysMntrngRegist";
 	}
 
 	/**
@@ -124,17 +124,18 @@ public class FileSysMntrngController {
 		// 서버 validate 체크
 		beanValidator.validate(fileSysMntrngVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/utl/sys/fsm/FileSysMntrngRegist");
+			return "/utl/sys/fsm/FileSysMntrngRegist";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		fileSysMntrngVO.setFrstRegisterId(loginVO.getUniqId());
+		fileSysMntrngVO.setFrstRegisterId(loginVO.getUserId());
 
 		fileSysMntrngService.insertFileSysMntrng(fileSysMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, fileSysMntrngVO, "/utl/sys/fsm/listFileSysMntrng.do");
+		model.addAttribute("redirectURL", "/utl/sys/fsm/listFileSysMntrng.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -159,7 +160,7 @@ public class FileSysMntrngController {
 		
 		model.addAttribute(fileSysMntrngVO);
 		
-		return WebUtil.adjustViewName("/utl/sys/fsm/FileSysMntrngEdit");
+		return "/utl/sys/fsm/FileSysMntrngEdit";
 	}
 
 	/**
@@ -177,16 +178,17 @@ public class FileSysMntrngController {
 
 		beanValidator.validate(fileSysMntrngVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/utl/sys/fsm/FileSysMntrngEdit");
+			return "/utl/sys/fsm/FileSysMntrngEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		fileSysMntrngVO.setLastUpdusrId(loginVO.getUniqId());
+		fileSysMntrngVO.setLastUpdusrId(loginVO.getUserId());
 
 		fileSysMntrngService.updateFileSysMntrng(fileSysMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, fileSysMntrngVO, "/utl/sys/fsm/listFileSysMntrng.do");
+		model.addAttribute("redirectURL", "/utl/sys/fsm/listFileSysMntrng.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -204,7 +206,8 @@ public class FileSysMntrngController {
 		fileSysMntrngService.deleteFileSysMntrng(fileSysMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, fileSysMntrngVO, "/utl/sys/fsm/listFileSysMntrng.do");
+		model.addAttribute("redirectURL", "/utl/sys/fsm/listFileSysMntrng.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -228,7 +231,7 @@ public class FileSysMntrngController {
 		}
 
 		model.addAttribute("fileSysMgValue", totalSpaceFileSys);
-		return WebUtil.adjustViewName("/utl/sys/fsm/FileSysMntrngRegist");
+		return "/utl/sys/fsm/FileSysMntrngRegist";
 	}
 
 	/**
@@ -274,7 +277,7 @@ public class FileSysMntrngController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/utl/sys/fsm/FileSysMntrngLogList");
+		return "/utl/sys/fsm/FileSysMntrngLogList";
 	}
 
 	// 조회시작시
@@ -306,7 +309,7 @@ public class FileSysMntrngController {
 		
 		model.addAttribute(fileSysMntrngLogVO);
 		
-		return WebUtil.adjustViewName("/utl/sys/fsm/FileSysMntrngLogDetail");
+		return "/utl/sys/fsm/FileSysMntrngLogDetail";
 	}
 
 }

@@ -75,7 +75,7 @@ public class SndngMailController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/ems/MailList");
+		return "cop/ems/MailList";
 	}
 
 	/**
@@ -86,6 +86,7 @@ public class SndngMailController {
 	@RequestMapping(value = "/cop/ems/deleteSndngMailList.do")
 	@Secured("ROLE_USER")
 	public String deleteSndngMailList(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SndngMailVO sndngMailVO, 
 			HttpServletRequest request, 
 			ModelMap model) {
@@ -97,7 +98,8 @@ public class SndngMailController {
 		sndngMailService.deleteSndngMails(mssageIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, sndngMailVO, "/cop/ems/listSndngMail.do");
+		model.addAttribute("redirectURL", "/cop/ems/listSndngMail.do");
+	    return "cmm/redirect";
 	}
 	
 	/**
@@ -113,10 +115,10 @@ public class SndngMailController {
 			ModelMap model) {
 
 		// 1. 발송메일을 상세 조회한다.
-		sndngMailService.selectSndngMail(sndngMailVO);
+		model.addAttribute(sndngMailService.selectSndngMail(sndngMailVO));
 
 		// 발송메일 상세조회 화면 이동
-		return WebUtil.adjustViewName("/cop/ems/MailDetail");
+		return "cop/ems/MailDetail";
 	}
 
 	/**
@@ -127,6 +129,7 @@ public class SndngMailController {
 	@RequestMapping(value = "/cop/ems/detailSndngMailXml.do")
 	@Secured("ROLE_USER")
 	public void detailSndngMailXml(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SndngMailVO sndngMailVO, 
 			HttpServletResponse response) 
 	throws Exception {
@@ -184,7 +187,7 @@ public class SndngMailController {
 			@ModelAttribute SndngMailVO sndngMailVO, 
 			ModelMap model) {
     	
-		return WebUtil.adjustViewName("/cop/ems/MailRegist");
+		return "cop/ems/MailRegist";
     }
     
     /**
@@ -210,23 +213,24 @@ public class SndngMailController {
     	}
     	
 		// 첨부파일 관련 첨부파일ID 생성
-    	sndngMailVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "MSG_"));
+    	sndngMailVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "EMS"));
     	
     	LoginVO loginVO = (LoginVO)UserDetailsHelper.getAuthenticatedUser();
-    	sndngMailVO.setDsptchPerson(loginVO.getId());
+    	sndngMailVO.setDsptchPerson(loginVO.getUserId());
     	
     	// 발송메일을 등록한다.
     	boolean result = sndngMailService.insertSndngMail(sndngMailVO);
     	if (!result) {
-			return WebUtil.adjustViewName("/cmm/error/egovError");
+			return "cmm/error/egovError";
     	}
     	
 		if (link.equals("N")) {
 			model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		    return WebUtil.redirectJsp(model, sndngMailVO, "/cop/ems/listSndngMail.do");
+			model.addAttribute("redirectURL", "/cop/ems/listSndngMail.do");
+		    return "cmm/redirect";
 		} else {
 			model.addAttribute("closeYn", "Y");
-			return WebUtil.adjustViewName("/cop/ems/MailRegist");
+			return "cop/ems/MailRegist";
 		}
 	}
     
@@ -238,13 +242,15 @@ public class SndngMailController {
 	@RequestMapping(value = "/cop/ems/deleteSndngMail.do")
 	@Secured("ROLE_USER")
 	public String deleteSndngMail(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SndngMailVO sndngMailVO, 
 			ModelMap model) {
 
 		sndngMailService.deleteSndngMail(sndngMailVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, sndngMailVO, "/cop/ems/listSndngMail.do");
+		model.addAttribute("redirectURL", "/cop/ems/listSndngMail.do");
+	    return "cmm/redirect";
 	}
 
 }

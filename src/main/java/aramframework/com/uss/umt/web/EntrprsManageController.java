@@ -19,7 +19,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sec.grp.domain.GroupAuthorVO;
 import aramframework.com.sec.grp.service.GroupAuthorService;
 import aramframework.com.uss.umt.domain.EntrprsManageVO;
@@ -79,7 +78,7 @@ public class EntrprsManageController {
 		// 기업회원상태코드목록
 		cmmUseService.populateCmmCodeList("COM013", "COM013_mberSttus");
 
-		return WebUtil.adjustViewName("/uss/umt/EntrprsMberList");
+		return "uss/umt/EntrprsMberList";
 	}
 
 	/**
@@ -104,7 +103,7 @@ public class EntrprsManageController {
 		model.addAttribute("stplatVO", entrprsManageService.selectStplat(stplatId)); // 약관정보포함
 		model.addAttribute("sbscrbTy", sbscrbTy); // 회원가입유형포함
 
-		return WebUtil.adjustViewName("/uss/umt/StplatCnfirm");
+		return "uss/umt/StplatCnfirm";
 	}
 
 	/**
@@ -134,7 +133,7 @@ public class EntrprsManageController {
 
 		entrprsManageVO.setEntrprsMberSttus("A");
 
-		return WebUtil.adjustViewName("/uss/umt/EntrprsMberSbscrb");
+		return "uss/umt/EntrprsMberSbscrb";
 	}
 
 	/**
@@ -145,6 +144,7 @@ public class EntrprsManageController {
 	@RequestMapping("/uss/umt/sbscrbEntrprsMber.do")
 	@Secured("ROLE_ANONYMOUS")
 	public String sbscrbEntrprsMber(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute EntrprsManageVO entrprsManageVO,
 			ModelMap model) {
 
@@ -155,16 +155,17 @@ public class EntrprsManageController {
 		entrprsManageService.insertEntrprsMber(entrprsManageVO);
 
 		GroupAuthorVO groupAuthorVO = new GroupAuthorVO();
-		groupAuthorVO.setUniqId(entrprsManageVO.getUniqId());
+		groupAuthorVO.setUserId(entrprsManageVO.getEntrprsmberId());
 		groupAuthorVO.setAuthorCode("ROLE_ANONYMOUS");
 		groupAuthorVO.setMberTyCode("USR02");// 2011.08.04 수정 부분
 		groupAuthorService.insertGroupAuthor(groupAuthorVO);
 		
 		String message = MessageHelper.getMessage("success.common.insert")
-		   			   + "\n\n사용자 승인 후 사용하시기 바랍니다.";
+		   			   + "사용자 승인 후 사용하시기 바랍니다.";
 		model.addAttribute("message", message);
 		
-		return WebUtil.adjustViewName("/uss/umt/SbscrbSuccess");
+		model.addAttribute("redirectURL", "/uss/umt/stplatEntrprsMberView.do");
+		return "cmm/redirect";
 	}
 
 	/**
@@ -181,7 +182,7 @@ public class EntrprsManageController {
 
 		fill_common_code();
 		
-		return WebUtil.adjustViewName("/uss/umt/EntrprsMberRegist");
+		return "uss/umt/EntrprsMberRegist";
 	}
 
 	/**
@@ -199,7 +200,7 @@ public class EntrprsManageController {
 
 		beanValidator.validate(entrprsManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/umt/EntrprsMberRegist");
+			return "uss/umt/EntrprsMberRegist";
 		} 
 		
 		entrprsManageService.insertEntrprsMber(entrprsManageVO);
@@ -207,7 +208,8 @@ public class EntrprsManageController {
 		model.addAttribute("resultMsg", "success.common.insert");
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, entrprsManageVO, "/uss/umt/listEntrprsMber.do");
+		model.addAttribute("redirectURL", "/uss/umt/listEntrprsMber.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -230,7 +232,7 @@ public class EntrprsManageController {
 			model.addAttribute("isAdmin", "true");
 		}
 		
-		return WebUtil.adjustViewName("/uss/umt/EntrprsMberEdit");
+		return "uss/umt/EntrprsMberEdit";
 	}
 
 	/**
@@ -248,13 +250,14 @@ public class EntrprsManageController {
 
 		beanValidator.validate(entrprsManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/umt/EntrprsMberEdit");
+			return "uss/umt/EntrprsMberEdit";
 		} 
 
 		entrprsManageService.updateEntrprsMber(entrprsManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, entrprsManageVO, "/uss/umt/editEntrprsMber.do?uniqId="+entrprsManageVO.getUniqId());
+		model.addAttribute("redirectURL", "/uss/umt/editEntrprsMber.do?entrprsmberId="+entrprsManageVO.getEntrprsmberId());
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -272,7 +275,7 @@ public class EntrprsManageController {
 		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
 			model.addAttribute("isAdmin", "true");
 		}
-		return WebUtil.adjustViewName("/uss/umt/EntrprsPassword");
+		return "uss/umt/EntrprsPassword";
 	}
 
 	/**
@@ -292,12 +295,11 @@ public class EntrprsManageController {
 		String oldPassword = request.getParameter("oldPassword");
 		String newPassword = request.getParameter("newPassword");
 		String newPassword2 = request.getParameter("newPassword2");
-		String uniqId = request.getParameter("uniqId");
 
 		boolean isCorrectPassword = false;
 		String message = "";
 
-		EntrprsManageVO resultVO = entrprsManageService.selectPassword(uniqId);
+		EntrprsManageVO resultVO = entrprsManageService.selectPassword(entrprsManageVO.getEntrprsmberId());
 		// 패스워드 암호화
 		String encryptPass = FileScrty.encryptPassword(oldPassword);
 		if (encryptPass.equals(resultVO.getPassword())) {
@@ -319,7 +321,8 @@ public class EntrprsManageController {
 		} 
 		
 		model.addAttribute("message", MessageHelper.getMessage(message));
-	    return WebUtil.redirectJsp(model, entrprsManageVO, "/uss/umt/editEntrprsMber.do?uniqId="+entrprsManageVO.getUniqId());
+		model.addAttribute("redirectURL", "/uss/umt/editEntrprsMber.do?entrprsmberId="+entrprsManageVO.getEntrprsmberId());
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -331,13 +334,15 @@ public class EntrprsManageController {
 	@RequestMapping("/uss/umt/deleteEntrprsMber.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteEntrprsMber( 
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute EntrprsManageVO entrprsManageVO, 
 			ModelMap model) {
 
 		entrprsManageService.deleteEntrprsMber(entrprsManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, entrprsManageVO, "/uss/umt/listEntrprsMber.do");
+		model.addAttribute("redirectURL", "/uss/umt/listEntrprsMber.do");
+	    return "cmm/redirect";
 	}
 
 	/**

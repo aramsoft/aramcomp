@@ -70,7 +70,7 @@
 			     , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
 			  FROM COMTN_SMS a				
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.FRST_REGISTER_ID = b.ESNTL_ID		
+						ON a.FRST_REGISTER_ID = b.USER_ID		
 			 WHERE a.SMS_ID = #{smsId}
 		]]>				
 	</select>

@@ -18,7 +18,6 @@ import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.ntm.domain.NoteManageVO;
 import aramframework.com.uss.ion.ntm.service.NoteManageService;
@@ -93,7 +92,7 @@ public class NoteManageController {
 			model.addAttribute("noteManageMap", mapNoteManage);
 		} 
 
-		return WebUtil.adjustViewName("/uss/ion/ntm/NoteManage");
+		return "/uss/ion/ntm/NoteManage";
 	}
 
 	/**
@@ -117,7 +116,7 @@ public class NoteManageController {
 		// 서버 validate 체크
 		beanValidator.validate(noteManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/ntm/NoteManage");
+			return "/uss/ion/ntm/NoteManage";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
@@ -125,13 +124,14 @@ public class NoteManageController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		noteManageVO.setFrstRegisterId(loginVO.getUniqId());
+		noteManageVO.setFrstRegisterId(loginVO.getUserId());
 
 		// 쪽지등록
 		noteManageService.insertNoteManage(noteManageVO, recptnEmpList, recptnSeList);
 
 		model.addAttribute("message", "작성된 쪽지를 전송하였습니다!");
-        return WebUtil.redirectJsp(model, noteManageVO, "/uss/ion/nts/listNoteTrnsmit.do");
+		model.addAttribute("redirectURL", "/uss/ion/nts/listNoteTrnsmit.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -155,7 +155,7 @@ public class NoteManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/ion/ntm/NoteEmpPopup");
+		return "/uss/ion/ntm/NoteEmpPopup";
 	}
 
 }

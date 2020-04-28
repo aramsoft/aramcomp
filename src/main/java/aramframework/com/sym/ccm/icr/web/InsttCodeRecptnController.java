@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.ccm.icr.domain.InsttCodeRecptnVO;
 import aramframework.com.sym.ccm.icr.service.InsttCodeRecptnService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -46,7 +45,7 @@ public class InsttCodeRecptnController {
 
 		model.addAttribute("resultList", insttCodeManageService.selectInsttCodeRecptnList(insttCodeRecptnVO));
 
-		return WebUtil.adjustViewName("/sym/ccm/icr/InsttCodeRecptnMainPage");
+		return "/sym/ccm/icr/InsttCodeRecptnMainPage";
 	}
 
 	/**
@@ -72,7 +71,7 @@ public class InsttCodeRecptnController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/ccm/icr/InsttCodeRecptnList");
+		return "/sym/ccm/icr/InsttCodeRecptnList";
 	}
 
 	/**
@@ -104,7 +103,7 @@ public class InsttCodeRecptnController {
 		/* 처리구분코드 */
 		cmmUseService.populateCmmCodeList("COM044", "COM044_processSe");
 
-		return WebUtil.adjustViewName("/sym/ccm/icr/InsttCodeRecptnDetail");
+		return "/sym/ccm/icr/InsttCodeRecptnDetail";
 	}
 
 	/**
@@ -117,7 +116,7 @@ public class InsttCodeRecptnController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute InsttCodeRecptnVO insttCodeRecptnVO) {
 		
-		return WebUtil.adjustViewName("/sym/ccm/icr/InsttCodeRecptnRegist");
+		return "/sym/ccm/icr/InsttCodeRecptnRegist";
 	}
 
 	/**
@@ -133,7 +132,8 @@ public class InsttCodeRecptnController {
 		
 		insttCodeManageService.insertInsttCodeRecptn();
 		
-        return WebUtil.redirectJsp(model, insttCodeRecptnVO, "/sym/ccm/icr/listInsttCodeRecptn.do");
+		model.addAttribute("redirectURL", "/sym/ccm/icr/listInsttCodeRecptn.do");
+	    return "cmm/redirect";
 	}
 
 }

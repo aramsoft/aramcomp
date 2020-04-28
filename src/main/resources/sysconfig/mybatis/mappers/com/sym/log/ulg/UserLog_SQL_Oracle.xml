@@ -23,7 +23,7 @@
 				 , a.DELETE_CO				AS "deleteCo"
 			  FROM COMTH_USER_LOG a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.RQESTER_ID = b.ESNTL_ID
+						ON a.RQESTER_ID = b.USER_ID
 			 WHERE 1 = 1
 		]]>
       	<if test='searchKeyword != null and searchKeyword != ""'>
@@ -49,7 +49,7 @@
 			SELECT COUNT(a.OCCRRNC_DE) as cnt
 			  FROM COMTH_USER_LOG a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.RQESTER_ID = b.ESNTL_ID
+						ON a.RQESTER_ID = b.USER_ID
 			 WHERE 1 = 1
 		]]>
       	<if test='searchKeyword != null and searchKeyword != ""'>
@@ -76,7 +76,7 @@
 				 , a.ERROR_CO
 			  FROM COMTH_USER_LOG a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.RQESTER_ID = b.ESNTL_ID
+						ON a.RQESTER_ID = b.USER_ID
 			 WHERE a.OCCRRNC_DE = #{occrrncDe}
 			   AND a.RQESTER_ID = #{rqesterId}
 			   AND a.SVC_NM = #{srvcNm}

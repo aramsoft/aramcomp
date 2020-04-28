@@ -14,7 +14,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.olh.qna.domain.QnaManageVO;
 import aramframework.com.uss.olh.qna.service.QnaManageService;
@@ -70,7 +69,7 @@ public class QnaManageController {
 			model.addAttribute("certificationAt", "Y");
 		}
 
-		return WebUtil.adjustViewName("/uss/olh/qna/QnaList");
+		return "uss/olh/qna/QnaList";
 	}
 
 	/**
@@ -86,7 +85,7 @@ public class QnaManageController {
 
 		model.addAttribute(qnaManageService.selectQnaListDetail(qnaManageVO));
 
-		return WebUtil.adjustViewName("/uss/olh/qna/QnaDetail");
+		return "uss/olh/qna/QnaDetail";
 	}
 
 	/**
@@ -115,7 +114,7 @@ public class QnaManageController {
 			@ModelAttribute QnaManageVO qnaManageVO, 
 			ModelMap model) {
 		
-		return WebUtil.adjustViewName("/uss/olh/qna/QnaLoginRealnmChoice");
+		return "uss/olh/qna/QnaLoginRealnmChoice";
 	}
 
 	/**
@@ -136,7 +135,7 @@ public class QnaManageController {
 			qnaManageVO.setEmailAdres(loginVO.getEmail()); // email 주소
 		}
 		
-		return WebUtil.adjustViewName("/uss/olh/qna/QnaRegist");
+		return "uss/olh/qna/QnaRegist";
 	}
 
 	/**
@@ -154,15 +153,15 @@ public class QnaManageController {
 
 		beanValidator.validate(qnaManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olh/qna/QnaRegist");
+			return "uss/olh/qna/QnaRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		if( loginVO != null ) {
-			qnaManageVO.setFrstRegisterId(loginVO.getUniqId()); // 최초등록자ID
+			qnaManageVO.setFrstRegisterId(loginVO.getUserId()); // 최초등록자ID
 		} else {
-			qnaManageVO.setFrstRegisterId("USRCNFRM_00000000000"); // guest
+			qnaManageVO.setFrstRegisterId("GUEST"); // guest
 		}
 		// 작성비밀번호를 암호화 하기 위해서 Get
 		String writngPassword = qnaManageVO.getWritngPassword();
@@ -173,7 +172,8 @@ public class QnaManageController {
 		qnaManageService.insertQnaCn(qnaManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, qnaManageVO, "/uss/olh/qna/listQna.do");
+		model.addAttribute("redirectURL", "/uss/olh/qna/listQna.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -186,7 +186,7 @@ public class QnaManageController {
 			@ModelAttribute QnaManageVO qnaManageVO, 
 			ModelMap model) {
 		
-		return WebUtil.adjustViewName("/uss/olh/qna/QnaPasswordPopup");
+		return "uss/olh/qna/QnaPasswordPopup";
 	}
 
 	/**
@@ -196,6 +196,7 @@ public class QnaManageController {
 	 */
 	@RequestMapping("/uss/olh/qna/QnaPasswordConfirm.do")
 	public String QnaPasswordConfirm(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QnaManageVO qnaManageVO, 
 			ModelMap model) 
 	throws Exception {
@@ -206,6 +207,7 @@ public class QnaManageController {
 		if (writngPassword == null || "".equals(writngPassword) ) { 
 			model.addAttribute("passwordConfirmAt", "N"); 	
 			// Q&A 상세조회 화면으로 이동.
+			model.addAttribute("message", "비밀번호가 비었습니다. 비밀번호를 입력하여 주시기 바랍니다!");
 			return "forward:/uss/olh/qna/detailQna.do";
 		}
 
@@ -217,9 +219,10 @@ public class QnaManageController {
 		if (searchCnt <= 0) { // 작성 비밀번호가 틀린 경우
 			model.addAttribute("passwordConfirmAt", "N"); 	
 			// Q&A 상세조회 화면으로 이동.
+			model.addAttribute("message", "입력하신 비밀번호가 틀렸습니다. 다시 입력하여 주시기 바랍니다!");
 			return "forward:/uss/olh/qna/detailQna.do";
 		}	
-		
+		 
 		qnaManageVO.setWritngPassword(writngPassword);
 		// Q&A를 수정할 수 있는 화면으로 이동.
 		return "forward:/uss/olh/qna/editQna.do";
@@ -238,13 +241,13 @@ public class QnaManageController {
 
 		qnaManageVO = qnaManageService.selectQnaListDetail(qnaManageVO);
 		
-		// 작성비밀번호 임시 저장
+		// 이전 작성비밀번호 다시 보여줌
 		String writngPassword = qnaManageVO.getWritngPassword();
 		qnaManageVO.setWritngPassword(writngPassword);
 
 		model.addAttribute(qnaManageVO);
 
-		return WebUtil.adjustViewName("/uss/olh/qna/QnaEdit");
+		return "uss/olh/qna/QnaEdit";
 	}
 
 	/**
@@ -263,13 +266,13 @@ public class QnaManageController {
 		// Validation
 		beanValidator.validate(qnaManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olh/qna/QnaEdit");
+			return "uss/olh/qna/QnaEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		if( loginVO != null ) {
-			qnaManageVO.setLastUpdusrId(loginVO.getUniqId()); // 최종수정자ID
+			qnaManageVO.setLastUpdusrId(loginVO.getUserId()); // 최종수정자ID
 		}
 
 		// 작성비밀번호를 암호화 하기 위해서 Get
@@ -281,7 +284,8 @@ public class QnaManageController {
 		qnaManageService.updateQnaCn(qnaManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, qnaManageVO, "/uss/olh/qna/listQna.do");
+		model.addAttribute("redirectURL", "/uss/olh/qna/listQna.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -291,6 +295,7 @@ public class QnaManageController {
 	 */
 	@RequestMapping("/uss/olh/qna/QnaPasswordConfirmDel.do")
 	public String QnaPasswordConfirmDel(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QnaManageVO qnaManageVO, 
 			ModelMap model) 
 	throws Exception {
@@ -326,13 +331,15 @@ public class QnaManageController {
 	 */
 	@RequestMapping("/uss/olh/qna/deleteQna.do")
 	public String deleteQna(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QnaManageVO qnaManageVO, 
 			ModelMap model) {
 
 		qnaManageService.deleteQnaCn(qnaManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, qnaManageVO, "/uss/olh/qna/listQna.do");
+		model.addAttribute("redirectURL", "/uss/olh/qna/listQna.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -358,7 +365,7 @@ public class QnaManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/olh/qna/QnaAnswerList");
+		return "uss/olh/qna/QnaAnswerList";
 	}
 
 	/**
@@ -375,7 +382,7 @@ public class QnaManageController {
 
 		model.addAttribute(qnaManageService.selectQnaAnswerDetail(qnaManageVO));
 
-		return WebUtil.adjustViewName("/uss/olh/qna/QnaAnswerDetail");
+		return "uss/olh/qna/QnaAnswerDetail";
 	}
 
 	/**
@@ -394,7 +401,7 @@ public class QnaManageController {
 		// 공통코드를 가져오기 위한 Vo
 		cmmUseService.populateCmmCodeList("COM028", "COM028_qnaProcessSttus");
 
-		return WebUtil.adjustViewName("/uss/olh/qna/QnaAnswerEdit");
+		return "uss/olh/qna/QnaAnswerEdit";
 	}
 
 	/**
@@ -410,12 +417,13 @@ public class QnaManageController {
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		qnaManageVO.setLastUpdusrId(loginVO.getUniqId()); // 최종수정자ID
+		qnaManageVO.setLastUpdusrId(loginVO.getUserId()); // 최종수정자ID
 
 		qnaManageService.updateQnaCnAnswer(qnaManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, qnaManageVO, "/uss/olh/qnm/listQnaAnswer.do");
+		model.addAttribute("redirectURL", "/uss/olh/qnm/listQnaAnswer.do");
+	    return "cmm/redirect";
 	}
 
 }

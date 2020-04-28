@@ -16,7 +16,6 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.prm.domain.ProgrmManageVO;
 import aramframework.com.sym.prm.service.ProgrmManageService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -60,7 +59,7 @@ public class ProgrmManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/prm/ProgramPopup");
+		return "sym/prm/ProgramPopup";
 	}
 	
 	/**
@@ -86,7 +85,7 @@ public class ProgrmManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/prm/ProgramList");
+		return "sym/prm/ProgramList";
 	}
 
 	/**
@@ -108,13 +107,15 @@ public class ProgrmManageController {
 
 		if (progrmFileNms == null || (progrmFileNms.length == 0)) {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.delete"));
-	        return WebUtil.redirectJsp(model, progrmManageVO, "/sym/prm/listProgram.do");
+			model.addAttribute("redirectURL", "/sym/prm/listProgram.do");
+		    return "cmm/redirect";
 		} 
 		
 		progrmManageService.deleteProgrmManageList(progrmFileNms);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, progrmManageVO, "/sym/prm/listProgram.do");
+		model.addAttribute("redirectURL", "/sym/prm/listProgram.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -129,7 +130,7 @@ public class ProgrmManageController {
 			@ModelAttribute ProgrmManageVO progrmManageVO,
 			ModelMap model) {
 
-		return WebUtil.adjustViewName("/sym/prm/ProgramRegist");
+		return "sym/prm/ProgramRegist";
 	}
 
 	/**
@@ -147,7 +148,7 @@ public class ProgrmManageController {
 
 		beanValidator.validate(progrmManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/prm/ProgramRegist");
+			return "sym/prm/ProgramRegist";
 		}
 		
 		if (progrmManageVO.getProgrmDc() == null || progrmManageVO.getProgrmDc().equals("")) {
@@ -157,7 +158,8 @@ public class ProgrmManageController {
 		progrmManageService.insertProgrm(progrmManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, progrmManageVO, "/sym/prm/listProgram.do");
+		model.addAttribute("redirectURL", "/sym/prm/listProgram.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -174,7 +176,7 @@ public class ProgrmManageController {
 		
 		model.addAttribute(progrmManageService.selectProgrm(progrmManageVO));
 
-		return WebUtil.adjustViewName("/sym/prm/ProgramEdit");
+		return "sym/prm/ProgramEdit";
 	}
 
 	/**
@@ -193,7 +195,7 @@ public class ProgrmManageController {
 
 		beanValidator.validate(progrmManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/prm/ProgramEdit");
+			return "sym/prm/ProgramEdit";
 		}
 		
 		if (progrmManageVO.getProgrmDc() == null || progrmManageVO.getProgrmDc().equals("")) {
@@ -203,7 +205,8 @@ public class ProgrmManageController {
 		progrmManageService.updateProgrm(progrmManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, progrmManageVO, "/sym/prm/listProgram.do");
+		model.addAttribute("redirectURL", "/sym/prm/listProgram.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -214,13 +217,15 @@ public class ProgrmManageController {
 	@RequestMapping(value = "/sym/prm/deleteProgram.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteProgrm(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ProgrmManageVO progrmManageVO, 
 			ModelMap model) {
 
 		progrmManageService.deleteProgrm(progrmManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, progrmManageVO, "/sym/prm/listProgram.do");
+		model.addAttribute("redirectURL", "/sym/prm/listProgram.do");
+	    return "cmm/redirect";
 	}
 
 }

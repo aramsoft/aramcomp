@@ -403,7 +403,7 @@ public class AdministCodeRecptnService extends EgovAbstractServiceImpl {
 
 						// 로그인VO에서 사용자 정보 가져오기
 						LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-						administCodeRecptnVO.setFrstRegisterId(loginVO.getUniqId());
+						administCodeRecptnVO.setFrstRegisterId(loginVO.getUserId());
 
 						// changeSeCode 변경구분코드
 						// '01' 코드생성

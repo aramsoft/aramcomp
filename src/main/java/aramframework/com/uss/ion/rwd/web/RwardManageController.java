@@ -16,7 +16,6 @@ import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.rwd.domain.RwardManageVO;
 import aramframework.com.uss.ion.rwd.service.RwardManageService;
@@ -73,7 +72,7 @@ public class RwardManageController {
 
 		cmmUseService.populateCmmCodeList("COM055", "COM055_rward");
 
-		return WebUtil.adjustViewName("/uss/ion/rwd/RwardList");
+		return "/uss/ion/rwd/RwardList";
 	}
 
 	/**
@@ -91,7 +90,7 @@ public class RwardManageController {
 
 		model.addAttribute(rwardManageService.selectRwardManage(rwardManageVO));
 
-		return WebUtil.adjustViewName("/uss/ion/rwd/RwardDetail");
+		return "/uss/ion/rwd/RwardDetail";
 	}
 
 	/**
@@ -106,7 +105,7 @@ public class RwardManageController {
 		
 		cmmUseService.populateCmmCodeList("COM055", "COM055_rward");
 
-		return WebUtil.adjustViewName("/uss/ion/rwd/RwardRegist");
+		return "/uss/ion/rwd/RwardRegist";
 	}
 
 	/**
@@ -125,19 +124,20 @@ public class RwardManageController {
 
 		beanValidator.validate(rwardManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/rwd/RwardRegist");
+			return "/uss/ion/rwd/RwardRegist";
 		} 
 		
 		// 첨부파일 관련 첨부파일ID 생성
 		rwardManageVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "RWD_"));
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		rwardManageVO.setFrstRegisterId(loginVO.getUniqId()); // 최초등록자ID
+		rwardManageVO.setFrstRegisterId(loginVO.getUserId()); // 최초등록자ID
 
 		rwardManageService.insertRwardManage(rwardManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, rwardManageVO, "/uss/ion/rwd/listRward.do");
+		model.addAttribute("redirectURL", "/uss/ion/rwd/listRward.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -157,7 +157,7 @@ public class RwardManageController {
 
 		cmmUseService.populateCmmCodeList("COM055", "COM055_rward");
 
-		return WebUtil.adjustViewName("/uss/ion/rwd/RwardEdit");
+		return "/uss/ion/rwd/RwardEdit";
 	}
 
 	/**
@@ -176,7 +176,7 @@ public class RwardManageController {
 		
 		beanValidator.validate(rwardManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/rwd/RwardEdit");
+			return "/uss/ion/rwd/RwardEdit";
 		} 
 		
 		// 첨부파일 관련 ID 생성 start....
@@ -188,8 +188,9 @@ public class RwardManageController {
 		rwardManageService.updtRwardManage(rwardManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, rwardManageVO, "/uss/ion/rwd/listRward.do");
-	}
+		model.addAttribute("redirectURL", "/uss/ion/rwd/listRward.do");
+	    return "cmm/redirect";
+ 	}
 
 	/**
 	 * 기 등록된 포상관리정보를 삭제한다.
@@ -208,7 +209,8 @@ public class RwardManageController {
 		rwardManageService.deleteRwardManage(rwardManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, rwardManageVO, "/uss/ion/rwd/listRward.do");
+		model.addAttribute("redirectURL", "/uss/ion/rwd/listRward.do");
+	    return "cmm/redirect";
 	}
 
 	/*** 승인관련 ***/
@@ -225,7 +227,7 @@ public class RwardManageController {
 			ModelMap model) {
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		rwardManageVO.setSanctnerId(loginVO.getUniqId()); // 사용자가 승인권자인지 조건값 setting selectRwardManageList
+		rwardManageVO.setSanctnerId(loginVO.getUserId()); // 사용자가 승인권자인지 조건값 setting selectRwardManageList
 
 		PaginationInfo paginationInfo = new PaginationInfo();
 		rwardManageVO.fillPageInfo(paginationInfo);
@@ -240,7 +242,7 @@ public class RwardManageController {
 
 		cmmUseService.populateCmmCodeList("COM055", "COM055_rward");
 
-		return WebUtil.adjustViewName("/uss/ion/rwd/RwardConfmList");
+		return "/uss/ion/rwd/RwardConfmList";
 	}
 
 	/**
@@ -258,7 +260,7 @@ public class RwardManageController {
 
 		model.addAttribute(rwardManageService.selectRwardManage(rwardManageVO));
 
-		return WebUtil.adjustViewName("/uss/ion/rwd/RwardConfmEdit");
+		return "/uss/ion/rwd/RwardConfmEdit";
 	}
 
 	/**
@@ -277,17 +279,18 @@ public class RwardManageController {
 
 		beanValidator.validate(rwardManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/rwd/RwardConfmEdit");
+			return "/uss/ion/rwd/RwardConfmEdit";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		rwardManageVO.setSanctnerId(loginVO.getUniqId());
-		rwardManageVO.setLastUpdusrId(loginVO.getUniqId());
+		rwardManageVO.setSanctnerId(loginVO.getUserId());
+		rwardManageVO.setLastUpdusrId(loginVO.getUserId());
 
 		rwardManageService.updtRwardManageConfm(rwardManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, rwardManageVO, "/uss/ion/rwd/listRward.do");
+		model.addAttribute("redirectURL", "/uss/ion/rwd/listRward.do");
+	    return "cmm/redirect";
 	}
 	
 }

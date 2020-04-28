@@ -15,7 +15,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.ssi.syi.iis.domain.CntcInsttVO;
 import aramframework.com.ssi.syi.iis.domain.CntcServiceVO;
 import aramframework.com.ssi.syi.iis.domain.CntcSystemVO;
@@ -68,7 +67,7 @@ public class CntcInsttController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return WebUtil.adjustViewName("/ssi/syi/iis/CntcInsttList");
+		return "/ssi/syi/iis/CntcInsttList";
 	}
 
 	/**
@@ -109,7 +108,7 @@ public class CntcInsttController {
 		cntcServiceVO.setSearchCondition("CodeList_InsttId");
 		model.addAttribute("cntcServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));
 
-		return WebUtil.adjustViewName("/ssi/syi/iis/CntcInsttDetail");
+		return "/ssi/syi/iis/CntcInsttDetail";
 	}
 
 	/**
@@ -123,7 +122,7 @@ public class CntcInsttController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CntcInsttVO cntcInsttVO) {
 		
-		return WebUtil.adjustViewName("/ssi/syi/iis/CntcInsttRegist");
+		return "/ssi/syi/iis/CntcInsttRegist";
 	}
 
 	/**
@@ -141,17 +140,18 @@ public class CntcInsttController {
 
 		beanValidator.validate(cntcInsttVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/ssi/syi/iis/CntcInsttRegist");
+			return "/ssi/syi/iis/CntcInsttRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		cntcInsttVO.setFrstRegisterId(loginVO.getUniqId());
+		cntcInsttVO.setFrstRegisterId(loginVO.getUserId());
 
 		cntcInsttService.insertCntcInstt(cntcInsttVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, cntcInsttVO, "/ssi/syi/iis/listCntcInstt.do");
+		model.addAttribute("redirectURL", "/ssi/syi/iis/listCntcInstt.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -167,7 +167,7 @@ public class CntcInsttController {
 
 		cntcInsttService.selectCntcInsttDetail(cntcInsttVO);
 
-		return WebUtil.adjustViewName("/ssi/syi/iis/CntcInsttEdit");
+		return "/ssi/syi/iis/CntcInsttEdit";
 	}
 
 	/**
@@ -185,17 +185,18 @@ public class CntcInsttController {
 		
 		beanValidator.validate(cntcInsttVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/ssi/syi/iis/CntcInsttEdit");
+			return "/ssi/syi/iis/CntcInsttEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		cntcInsttVO.setLastUpdusrId(loginVO.getUniqId());
+		cntcInsttVO.setLastUpdusrId(loginVO.getUserId());
 
 		cntcInsttService.updateCntcInstt(cntcInsttVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, cntcInsttVO, "/ssi/syi/iis/listCntcInstt.do");
+		model.addAttribute("redirectURL", "/ssi/syi/iis/listCntcInstt.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -213,8 +214,9 @@ public class CntcInsttController {
 		cntcInsttService.deleteCntcInstt(cntcInsttVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, cntcInsttVO, "/ssi/syi/iis/listCntcInstt.do");
-	}
+		model.addAttribute("redirectURL", "/ssi/syi/iis/listCntcInstt.do");
+	    return "cmm/redirect";
+ 	}
 
 	/**
 	 * 연계시스템  등록화면으로 이동한다.
@@ -235,7 +237,7 @@ public class CntcInsttController {
 		cntcInsttVO.setSearchCondition("CodeList");
 		model.addAttribute("cntcInsttList", cntcInsttService.selectCntcInsttList(cntcInsttVO));
 
-		return WebUtil.adjustViewName("/ssi/syi/iis/CntcSystemRegist");
+		return "/ssi/syi/iis/CntcSystemRegist";
 	}
 
 	/**
@@ -261,12 +263,12 @@ public class CntcInsttController {
 			cntcInsttVO.setSearchCondition("CodeList");
 			model.addAttribute("cntcInsttList", cntcInsttService.selectCntcInsttList(cntcInsttVO));
 
-			return WebUtil.adjustViewName("/ssi/syi/iis/CntcSystemRegist");
+			return "/ssi/syi/iis/CntcSystemRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		cntcSystemVO.setFrstRegisterId(loginVO.getUniqId());
+		cntcSystemVO.setFrstRegisterId(loginVO.getUserId());
 
 		cntcInsttService.insertCntcSystem(cntcSystemVO);
 
@@ -302,7 +304,7 @@ public class CntcInsttController {
 
 		cntcInsttService.selectCntcSystemDetail(cntcSystemVO);
 
-		return WebUtil.adjustViewName("/ssi/syi/iis/CntcSystemEdit");
+		return "/ssi/syi/iis/CntcSystemEdit";
 	}
 
 	/**
@@ -335,12 +337,12 @@ public class CntcInsttController {
 			cntcMessageVO.setSearchCondition("CodeList");
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(cntcMessageVO));
 
-			return WebUtil.adjustViewName("/ssi/syi/iis/CntcSystemEdit");
+			return "/ssi/syi/iis/CntcSystemEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		cntcSystemVO.setLastUpdusrId(loginVO.getUniqId());
+		cntcSystemVO.setLastUpdusrId(loginVO.getUserId());
 
 		cntcInsttService.updateCntcSystem(cntcSystemVO);
 
@@ -406,7 +408,7 @@ public class CntcInsttController {
 		searchCntcMessageVO.setSearchCondition("CodeList");
 		model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
-		return WebUtil.adjustViewName("/ssi/syi/iis/CntcServiceRegist");
+		return "/ssi/syi/iis/CntcServiceRegist";
 	}
 
 	/**
@@ -454,12 +456,12 @@ public class CntcInsttController {
 			cntcMessageVO.setSearchCondition("CodeList");
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(cntcMessageVO));
 
-			return WebUtil.adjustViewName("/ssi/syi/iis/CntcServiceRegist");
+			return "/ssi/syi/iis/CntcServiceRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		cntcServiceVO.setFrstRegisterId(loginVO.getUniqId());
+		cntcServiceVO.setFrstRegisterId(loginVO.getUserId());
 
 		cntcInsttService.insertCntcService(cntcServiceVO);
 		
@@ -510,7 +512,7 @@ public class CntcInsttController {
 
 		cntcInsttService.selectCntcServiceDetail(cntcServiceVO);
 
-		return WebUtil.adjustViewName("/ssi/syi/iis/CntcServiceEdit");
+		return "/ssi/syi/iis/CntcServiceEdit";
 	}
 
 	/**
@@ -558,12 +560,12 @@ public class CntcInsttController {
 			cntcMessageVO.setSearchCondition("CodeList");
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(cntcMessageVO));
 
-			return WebUtil.adjustViewName("/ssi/syi/iis/CntcServiceEdit");
+			return "/ssi/syi/iis/CntcServiceEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		cntcServiceVO.setLastUpdusrId(loginVO.getUniqId());
+		cntcServiceVO.setLastUpdusrId(loginVO.getUserId());
 
 		cntcInsttService.updateCntcService(cntcServiceVO);
 

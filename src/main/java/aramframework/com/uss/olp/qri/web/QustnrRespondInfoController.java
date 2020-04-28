@@ -17,7 +17,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.olp.qri.domain.QustnrRespondInfoVO;
 import aramframework.com.uss.olp.qri.service.QustnrRespondInfoService;
@@ -70,7 +69,7 @@ public class QustnrRespondInfoController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/olp/qri/QustnrRespondInfoUserList");
+		return "/uss/olp/qri/QustnrRespondInfoUserList";
 	}
 
 	/**
@@ -91,7 +90,7 @@ public class QustnrRespondInfoController {
 
 		String uniqId = "";
 		if (loginVO != null) {
-			uniqId = loginVO.getUniqId();	
+			uniqId = loginVO.getUserId();	
 		} 
 		
 		// 사용자정보
@@ -111,7 +110,7 @@ public class QustnrRespondInfoController {
 		// 항목정보
 		model.addAttribute("comtnqustnriem", qustnrRespondInfoService.selectQustnrRespondQustnrIem(qestnrId));
 
-		return WebUtil.adjustViewName("/uss/olp/qri/QustnrRespondInfoUserRegist");
+		return "/uss/olp/qri/QustnrRespondInfoUserRegist";
 	}
 
 	/**
@@ -246,7 +245,8 @@ public class QustnrRespondInfoController {
 		String ReusltScript = "설문참여에 응해주셔서 감사합니다";
 
 		model.addAttribute("message", ReusltScript);
-	    return WebUtil.redirectJsp(model, qustnrRespondInfoVO, "/uss/olp/qri/listQustnrRespondInfoUser.do");
+		model.addAttribute("redirectURL", "/uss/olp/qri/listQustnrRespondInfoUser.do");
+	    return "cmm/redirect";
 	}
 	
 	/**
@@ -281,7 +281,7 @@ public class QustnrRespondInfoController {
 		// 이전 주소
 		model.addAttribute("returnUrl", commandMap.get("returnUrl") == null ? "" : (String) commandMap.get("returnUrl"));
 
-		return WebUtil.adjustViewName("/uss/olp/qri/QustnrRespondInfoStatistics");
+		return "/uss/olp/qri/QustnrRespondInfoStatistics";
 	}
 
 	/* 설문조사 (관리자 모드)*/
@@ -313,7 +313,7 @@ public class QustnrRespondInfoController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/olp/qri/QustnrRespondInfoList");
+		return "/uss/olp/qri/QustnrRespondInfoList";
 	}
 
 	/**
@@ -330,7 +330,7 @@ public class QustnrRespondInfoController {
 
 		model.addAttribute(qustnrRespondInfoService.selectQustnrRespondInfoDetail(qustnrRespondInfoVO));
 
-		return WebUtil.adjustViewName("/uss/olp/qri/QustnrRespondInfoDetail");
+		return "/uss/olp/qri/QustnrRespondInfoDetail";
 	}
 
 	/**
@@ -344,7 +344,7 @@ public class QustnrRespondInfoController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrRespondInfoVO qustnrRespondInfoVO) {
 
-		return WebUtil.adjustViewName("/uss/olp/qri/QustnrRespondInfoRegist");
+		return "/uss/olp/qri/QustnrRespondInfoRegist";
 	}
 	
 	/**
@@ -363,17 +363,18 @@ public class QustnrRespondInfoController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrRespondInfoVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olp/qri/QustnrRespondInfoRegist");
+			return "/uss/olp/qri/QustnrRespondInfoRegist";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		qustnrRespondInfoVO.setFrstRegisterId(loginVO.getUniqId());
+		qustnrRespondInfoVO.setFrstRegisterId(loginVO.getUserId());
 
 		qustnrRespondInfoService.insertQustnrRespondInfo(qustnrRespondInfoVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, qustnrRespondInfoVO, "/uss/olp/qri/listQustnrRespondInfo.do");
+		model.addAttribute("redirectURL", "/uss/olp/qri/listQustnrRespondInfo.do");
+	    return "cmm/redirect";
 	}
 	
 	/**
@@ -390,7 +391,7 @@ public class QustnrRespondInfoController {
 
 		model.addAttribute(qustnrRespondInfoService.selectQustnrRespondInfoDetail(qustnrRespondInfoVO));
 
-		return WebUtil.adjustViewName("/uss/olp/qri/QustnrRespondInfoEdit");
+		return "/uss/olp/qri/QustnrRespondInfoEdit";
 	}
 
 	/**
@@ -409,17 +410,18 @@ public class QustnrRespondInfoController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrRespondInfoVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olp/qri/QustnrRespondInfoEdit");
+			return "/uss/olp/qri/QustnrRespondInfoEdit";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		qustnrRespondInfoVO.setLastUpdusrId(loginVO.getUniqId());
+		qustnrRespondInfoVO.setLastUpdusrId(loginVO.getUserId());
 
 		qustnrRespondInfoService.updateQustnrRespondInfo(qustnrRespondInfoVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, qustnrRespondInfoVO, "/uss/olp/qri/listQustnrRespondInfo.do");
+		model.addAttribute("redirectURL", "/uss/olp/qri/listQustnrRespondInfo.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -437,7 +439,8 @@ public class QustnrRespondInfoController {
 		qustnrRespondInfoService.deleteQustnrRespondInfo(qustnrRespondInfoVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, qustnrRespondInfoVO, "/uss/olp/qri/listQustnrRespondInfo.do");
+		model.addAttribute("redirectURL", "/uss/olp/qri/listQustnrRespondInfo.do");
+	    return "cmm/redirect";
 	}
 
 }

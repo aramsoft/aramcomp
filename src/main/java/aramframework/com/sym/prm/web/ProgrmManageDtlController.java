@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.ems.domain.SndngMailVO;
 import aramframework.com.cop.ems.service.SndngMailService;
 import aramframework.com.sym.prm.domain.ProgrmManageDtlVO;
@@ -63,7 +62,7 @@ public class ProgrmManageDtlController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/prm/ProgramChangeRequstList");
+		return "sym/prm/ProgramChangeRequstList";
 	}
 
 	/**
@@ -80,9 +79,9 @@ public class ProgrmManageDtlController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		progrmManageDtlVO.setRqestPersonId(loginVO.getId());
+		progrmManageDtlVO.setRqestPersonId(loginVO.getUserId());
 		
-		return WebUtil.adjustViewName("/sym/prm/ProgramChangeRequstRegist");
+		return "sym/prm/ProgramChangeRequstRegist";
 	}
 
 	/**
@@ -102,13 +101,14 @@ public class ProgrmManageDtlController {
 		// beanValidator 처리
 		beanValidator.validate(progrmManageDtlVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/prm/ProgramChangeRequstRegist");
+			return "sym/prm/ProgramChangeRequstRegist";
 		}
 		
 		progrmManageDtlService.insertProgrmChangeRequst(progrmManageDtlVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, progrmManageDtlVO, "/sym/prm/listProgramChangeRequst.do");
+		model.addAttribute("redirectURL", "/sym/prm/listProgramChangeRequst.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -125,7 +125,7 @@ public class ProgrmManageDtlController {
 
 		model.addAttribute(progrmManageDtlService.selectProgrmChangeRequst(progrmManageDtlVO));
 
-		return WebUtil.adjustViewName("/sym/prm/ProgramChangeRequstEdit");
+		return "sym/prm/ProgramChangeRequstEdit";
 	}
 
 	/**
@@ -144,20 +144,21 @@ public class ProgrmManageDtlController {
 		// beanValidator 처리
 		beanValidator.validate(progrmManageDtlVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/prm/ProgramChangeRequstEdit");
+			return "sym/prm/ProgramChangeRequstEdit";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		if (!progrmManageDtlVO.getRqestPersonId().equals(loginVO.getId())) {
+		if (!progrmManageDtlVO.getRqestPersonId().equals(loginVO.getUserId())) {
 			model.addAttribute("message", "수정이 실패하였습니다. 변경요청 수정은 변경요청자만 수정가능합니다.");
-			return WebUtil.adjustViewName("/sym/prm/ProgramChangeRequstEdit");
+			return "sym/prm/ProgramChangeRequstEdit";
 		}
 		
 		progrmManageDtlService.updateProgrmChangeRequst(progrmManageDtlVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, progrmManageDtlVO, "/sym/prm/listProgramChangeRequst.do");
+		model.addAttribute("redirectURL", "/sym/prm/listProgramChangeRequst.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -168,6 +169,7 @@ public class ProgrmManageDtlController {
 	@RequestMapping(value = "/sym/prm/deleteProgramChangeRequst.do")
 	@Secured("ROLE_USER")
 	public String deleteProgrmChangeRequst(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO, 
 			ModelMap model) {
 
@@ -175,7 +177,8 @@ public class ProgrmManageDtlController {
 		progrmManageDtlService.deleteProgrmChangeRequst(progrmManageDtlVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, progrmManageDtlVO, "/sym/prm/listProgramChangeRequst.do");
+		model.addAttribute("redirectURL", "/sym/prm/listProgramChangeRequst.do");
+	    return "cmm/redirect";
 	}
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -202,7 +205,7 @@ public class ProgrmManageDtlController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/prm/ProgramChangeProcessList");
+		return "sym/prm/ProgramChangeProcessList";
 	}
 
 	/**
@@ -221,12 +224,12 @@ public class ProgrmManageDtlController {
 
 		if (progrmManageDtlVO.getOpetrId() == null) {
 			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-			progrmManageDtlVO.setOpetrId(loginVO.getId());
+			progrmManageDtlVO.setOpetrId(loginVO.getUserId());
 		}
 
 		model.addAttribute(progrmManageDtlVO);
 		
-		return WebUtil.adjustViewName("/sym/prm/ProgramChangeProcessEdit");
+		return "sym/prm/ProgramChangeProcessEdit";
 	}
 
 	/**
@@ -244,7 +247,7 @@ public class ProgrmManageDtlController {
 
 		beanValidator.validate(progrmManageDtlVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/prm/ProgramChangeProcessEdit");
+			return "sym/prm/ProgramChangeProcessEdit";
 		}
 
 		progrmManageDtlService.updateProgrmChangeRequstProcess(progrmManageDtlVO);
@@ -267,7 +270,7 @@ public class ProgrmManageDtlController {
 			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 			// 프로그램 변경요청 사항을 이메일로 발송한다.(메일연동솔루션 활용)
 			SndngMailVO sndngMailVO = new SndngMailVO();
-			sndngMailVO.setDsptchPerson(loginVO.getId());
+			sndngMailVO.setDsptchPerson(loginVO.getUserId());
 			sndngMailVO.setRecptnPerson(tmpEmail);
 			sndngMailVO.setSj("프로그램변경요청  처리.");
 			sndngMailVO.setEmailCn("프로그램 변경요청 사항이  " + sTemp + "(으)로 처리 되었습니다.");
@@ -276,7 +279,8 @@ public class ProgrmManageDtlController {
 		}
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, progrmManageDtlVO, "/sym/prm/listProgramChangeProcess.do");
+		model.addAttribute("redirectURL", "/sym/prm/listProgramChangeProcess.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -288,13 +292,15 @@ public class ProgrmManageDtlController {
 	@RequestMapping(value = "/sym/prm/deleteProgramChangeProcess.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteProgramChangeProcess(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ProgrmManageDtlVO progrmManageDtlVO, 
 			ModelMap model) {
 
 		progrmManageDtlService.deleteProgrmChangeRequst(progrmManageDtlVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, progrmManageDtlVO, "/sym/prm/listProgramChangeProcess.do");
+		model.addAttribute("redirectURL", "/sym/prm/listProgramChangeProcess.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -320,7 +326,7 @@ public class ProgrmManageDtlController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/prm/ProgramChgHstList");
+		return "sym/prm/ProgramChgHstList";
 	}
 
 	/* 프로그램변경이력상세조회 */
@@ -338,7 +344,7 @@ public class ProgrmManageDtlController {
 
 		model.addAttribute(progrmManageDtlService.selectProgrmChangeRequst(progrmManageDtlVO));
 		
-		return WebUtil.adjustViewName("/sym/prm/ProgramChgHstDetail");
+		return "sym/prm/ProgramChgHstDetail";
 	}
 
 }

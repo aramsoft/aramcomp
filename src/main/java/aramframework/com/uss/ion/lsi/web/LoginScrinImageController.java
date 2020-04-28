@@ -22,7 +22,6 @@ import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.FileMngService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.lsi.domain.LoginScrinImageVO;
 import aramframework.com.uss.ion.lsi.service.LoginScrinImageService;
@@ -78,7 +77,7 @@ public class LoginScrinImageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/ion/lsi/LoginScrinImageList");
+		return "/uss/ion/lsi/LoginScrinImageList";
 	}
 
 	/**
@@ -91,7 +90,7 @@ public class LoginScrinImageController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute LoginScrinImageVO loginScrinImageVO) {
 
-		return WebUtil.adjustViewName("/uss/ion/lsi/LoginScrinImageRegist");
+		return "/uss/ion/lsi/LoginScrinImageRegist";
 	}
 
 	/**
@@ -110,7 +109,7 @@ public class LoginScrinImageController {
 
 		beanValidator.validate(loginScrinImageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/lsi/LoginScrinImageRegist");
+			return "/uss/ion/lsi/LoginScrinImageRegist";
 		} 
 
 		String atchFileId = "";
@@ -129,12 +128,13 @@ public class LoginScrinImageController {
 		loginScrinImageVO.setImage(image);
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		loginScrinImageVO.setUserId(loginVO.getId());
+		loginScrinImageVO.setUserId(loginVO.getUserId());
 
 		loginScrinImageService.insertLoginScrinImage(loginScrinImageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, loginScrinImageVO, "/uss/ion/lsi/listLoginScrinImage.do");
+		model.addAttribute("redirectURL", "/uss/ion/lsi/listLoginScrinImage.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -150,7 +150,7 @@ public class LoginScrinImageController {
 
 		model.addAttribute(loginScrinImageService.selectLoginScrinImage(loginScrinImageVO));
 
-		return WebUtil.adjustViewName("/uss/ion/lsi/LoginScrinImageEdit");
+		return "/uss/ion/lsi/LoginScrinImageEdit";
 	}
 
 	/**
@@ -169,7 +169,7 @@ public class LoginScrinImageController {
 
 		beanValidator.validate(loginScrinImageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/lsi/LoginScrinImageEdit");
+			return "/uss/ion/lsi/LoginScrinImageEdit";
 		} 
 
 		String atchFileId = "";
@@ -196,12 +196,13 @@ public class LoginScrinImageController {
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		loginScrinImageVO.setUserId(loginVO.getId());
+		loginScrinImageVO.setUserId(loginVO.getUserId());
 
 		loginScrinImageService.updateLoginScrinImage(loginScrinImageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, loginScrinImageVO, "/uss/ion/lsi/listLoginScrinImage.do");
+		model.addAttribute("redirectURL", "/uss/ion/lsi/listLoginScrinImage.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -218,7 +219,8 @@ public class LoginScrinImageController {
 		loginScrinImageService.deleteLoginScrinImage(loginScrinImageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, loginScrinImageVO, "/uss/ion/lsi/listLoginScrinImage.do");
+		model.addAttribute("redirectURL", "/uss/ion/lsi/listLoginScrinImage.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -237,7 +239,8 @@ public class LoginScrinImageController {
 		loginScrinImageService.deleteLoginScrinImages(imageIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, loginScrinImageVO, "/uss/ion/lsi/listLoginScrinImage.do");
+		model.addAttribute("redirectURL", "/uss/ion/lsi/listLoginScrinImage.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -253,7 +256,7 @@ public class LoginScrinImageController {
 
 		model.addAttribute("fileList", loginScrinImageService.selectLoginScrinImageResult(loginScrinImageVO));
 
-		return WebUtil.adjustViewName("/uss/ion/lsi/LoginScrinImageView");
+		return "/uss/ion/lsi/LoginScrinImageView";
 	}
 	
 }

@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.ssi.syi.iis.domain.CntcInsttVO;
 import aramframework.com.ssi.syi.iis.domain.CntcServiceVO;
 import aramframework.com.ssi.syi.iis.domain.CntcSystemVO;
@@ -66,7 +65,7 @@ public class SystemCntcController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return WebUtil.adjustViewName("/ssi/syi/sim/SystemCntcList");
+		return "/ssi/syi/sim/SystemCntcList";
 	}
 
 	/**
@@ -110,7 +109,7 @@ public class SystemCntcController {
 		cntcServiceVO.setSysId(systemCntcVO.getProvdSysId());
 		model.addAttribute("cntcProvdServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));
 
-		return WebUtil.adjustViewName("/ssi/syi/sim/SystemCntcDetail");
+		return "/ssi/syi/sim/SystemCntcDetail";
 	}
 
 	/**
@@ -152,7 +151,7 @@ public class SystemCntcController {
 		cntcServiceVO.setSysId(systemCntcVO.getProvdSysId());
 		model.addAttribute("cntcProvdServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));
 
-		return WebUtil.adjustViewName("/ssi/syi/sim/SystemCntcRegist");
+		return "/ssi/syi/sim/SystemCntcRegist";
 	}
 
 	/**
@@ -198,17 +197,18 @@ public class SystemCntcController {
 			cntcServiceVO.setSysId(systemCntcVO.getProvdSysId());
 			model.addAttribute("cntcProvdServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));
 
-			return WebUtil.adjustViewName("/ssi/syi/sim/SystemCntcRegist");
+			return "/ssi/syi/sim/SystemCntcRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		systemCntcVO.setFrstRegisterId(loginVO.getUniqId());
+		systemCntcVO.setFrstRegisterId(loginVO.getUserId());
 
 		systemCntcService.insertSystemCntc(systemCntcVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, systemCntcVO, "/ssi/syi/sim/listSystemCntc.do");
+		model.addAttribute("redirectURL", "/ssi/syi/sim/listSystemCntc.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -253,7 +253,7 @@ public class SystemCntcController {
 		cntcServiceVO.setSysId(systemCntcVO.getProvdSysId());
 		model.addAttribute("cntcProvdServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));
 
-		return WebUtil.adjustViewName("/ssi/syi/sim/SystemCntcEdit");
+		return "/ssi/syi/sim/SystemCntcEdit";
 	}
 
 	/**
@@ -299,17 +299,18 @@ public class SystemCntcController {
 			cntcServiceVO.setSysId(systemCntcVO.getProvdSysId());
 			model.addAttribute("cntcProvdServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));
 
-			return WebUtil.adjustViewName("/ssi/syi/sim/SystemCntcEdit");
+			return "/ssi/syi/sim/SystemCntcEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		systemCntcVO.setLastUpdusrId(loginVO.getUniqId());
+		systemCntcVO.setLastUpdusrId(loginVO.getUserId());
 
 		systemCntcService.updateSystemCntc(systemCntcVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, systemCntcVO, "/ssi/syi/sim/listSystemCntc.do");
+		model.addAttribute("redirectURL", "/ssi/syi/sim/listSystemCntc.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -327,7 +328,8 @@ public class SystemCntcController {
 		systemCntcService.deleteSystemCntc(systemCntcVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, systemCntcVO, "/ssi/syi/sim/listSystemCntc.do");
+		model.addAttribute("redirectURL", "/ssi/syi/sim/listSystemCntc.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -353,7 +355,7 @@ public class SystemCntcController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return WebUtil.adjustViewName("/ssi/syi/sim/SystemCntcConfirmList");
+		return "/ssi/syi/sim/SystemCntcConfirmList";
 	}
 
 	/**
@@ -397,7 +399,7 @@ public class SystemCntcController {
 		cntcServiceVO.setSysId(systemCntcVO.getProvdSysId());
 		model.addAttribute("cntcProvdServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));
 
-		return WebUtil.adjustViewName("/ssi/syi/sim/SystemCntcConfirmEdit");
+		return "/ssi/syi/sim/SystemCntcConfirmEdit";
 	}
 
 	/**
@@ -414,11 +416,12 @@ public class SystemCntcController {
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		systemCntcVO.setLastUpdusrId(loginVO.getUniqId());
+		systemCntcVO.setLastUpdusrId(loginVO.getUserId());
 
 		systemCntcService.confirmSystemCntc(systemCntcVO);
 
-        return WebUtil.redirectJsp(model, systemCntcVO, "/ssi/syi/sim/listSystemCntcConfirm.do");
+		model.addAttribute("redirectURL", "/ssi/syi/sim/listSystemCntcConfirm.do");
+	    return "cmm/redirect";
 	}
 
 }

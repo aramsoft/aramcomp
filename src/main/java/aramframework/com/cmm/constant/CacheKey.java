@@ -8,14 +8,9 @@ package aramframework.com.cmm.constant;
  * @version 1.0
  */
 public interface CacheKey {
-	String BBS_PREFIX    	= "BBS_";
+	public String BBS_PREFIX   	= "BBS_";
 
-	String CMY_PREFIX    	= "CMY_";
-	String CMY_HOME      	= "Home";
-	String CMY_LOGOIMAGE 	= "LogoImage";
-	String CMY_TEMPLET   	= "Templet";
-	String CMY_BBSLIST   	= "BbsList";
-	String CMY_TOPLIST   	= "TopList";
-	String CMY_MGRLIST   	= "MgrList";
-	String CMY_SUBLIST   	= "SubList";
+	public String CMY_PREFIX   	= "CMY_";
+	public String CMY_HOME     	= "Home";
+	public String CMY_SUBMENU  	= "SubMenu";
 }

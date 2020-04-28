@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.ccm.ccc.domain.CmmnClCodeVO;
 import aramframework.com.sym.ccm.ccc.service.CmmnClCodeManageService;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -58,7 +57,7 @@ public class CmmnClCodeManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/ccm/ccc/CmmnClCodeList");
+		return "sym/ccm/ccc/CmmnClCodeList";
 	}
 
 	/**
@@ -74,7 +73,7 @@ public class CmmnClCodeManageController {
 		
 		model.addAttribute(cmmnClCodeManageService.selectCmmnClCodeDetail(cmmnClCodeVO));
 
-		return WebUtil.adjustViewName("/sym/ccm/ccc/CmmnClCodeDetail");
+		return "sym/ccm/ccc/CmmnClCodeDetail";
 	}
 
 	/**
@@ -89,7 +88,7 @@ public class CmmnClCodeManageController {
 			@ModelAttribute CmmnClCodeVO cmmnClCodeVO, 
 			ModelMap model) {
 
-		return WebUtil.adjustViewName("/sym/ccm/ccc/CmmnClCodeRegist");
+		return "sym/ccm/ccc/CmmnClCodeRegist";
 	}
 
 	/**
@@ -107,22 +106,23 @@ public class CmmnClCodeManageController {
 
 		beanValidator.validate(cmmnClCodeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/ccm/ccc/CmmnClCodeRegist");
+			return "sym/ccm/ccc/CmmnClCodeRegist";
 		}
 
 		CmmnClCodeVO vo = cmmnClCodeManageService.selectCmmnClCodeDetail(cmmnClCodeVO);
 		if (vo != null) {
 			model.addAttribute("message", "이미 등록된 분류코드가 존재합니다.");
-			return WebUtil.adjustViewName("/sym/ccm/ccc/CmmnClCodeRegist");
+			return "sym/ccm/ccc/CmmnClCodeRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		cmmnClCodeVO.setFrstRegisterId(loginVO.getUniqId());
+		cmmnClCodeVO.setFrstRegisterId(loginVO.getUserId());
 
 		cmmnClCodeManageService.insertCmmnClCode(cmmnClCodeVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, cmmnClCodeVO, "/sym/ccm/ccc/listCmmnClCode.do");
+		model.addAttribute("redirectURL", "/sym/ccm/ccc/listCmmnClCode.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -139,7 +139,7 @@ public class CmmnClCodeManageController {
 		
 		model.addAttribute(cmmnClCodeManageService.selectCmmnClCodeDetail(cmmnClCodeVO));
 
-		return WebUtil.adjustViewName("/sym/ccm/ccc/CmmnClCodeEdit");
+		return "sym/ccm/ccc/CmmnClCodeEdit";
 	}
 
 	/**
@@ -157,17 +157,18 @@ public class CmmnClCodeManageController {
 
 		beanValidator.validate(cmmnClCodeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/ccm/ccc/CmmnClCodeEdit");
+			return "sym/ccm/ccc/CmmnClCodeEdit";
 		}
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		cmmnClCodeVO.setLastUpdusrId(loginVO.getUniqId());
+		cmmnClCodeVO.setLastUpdusrId(loginVO.getUserId());
 
 		cmmnClCodeManageService.updateCmmnClCode(cmmnClCodeVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, cmmnClCodeVO, "/sym/ccm/ccc/listCmmnClCode.do");
-	}
+		model.addAttribute("redirectURL", "/sym/ccm/ccc/listCmmnClCode.do");
+	    return "cmm/redirect";
+ 	}
 
 	/**
 	 * 공통분류코드를 삭제한다.
@@ -177,13 +178,15 @@ public class CmmnClCodeManageController {
 	@RequestMapping(value = "/sym/ccm/ccc/deleteCmmnClCode.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteCmmnClCode(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CmmnClCodeVO cmmnClCodeVO,
 			ModelMap model) {
 		
 		cmmnClCodeManageService.deleteCmmnClCode(cmmnClCodeVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, cmmnClCodeVO, "/sym/ccm/ccc/listCmmnClCode.do");
+		model.addAttribute("redirectURL", "/sym/ccm/ccc/listCmmnClCode.do");
+	    return "cmm/redirect";
 	}
 
 }

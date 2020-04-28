@@ -130,10 +130,12 @@
 		<![CDATA[
 			INSERT INTO COMTN_FILE (
 					ATCH_FILE_ID
+				  ,	CATEGORY
 				  , CREAT_DT
 				  ,	USE_AT
 			) VALUES ( 
 					#{atchFileId}
+				  ,	#{category}
 				  , sysdate()
 				  ,	'Y'
 			)			

@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.olp.qim.domain.QustnrItemManageVO;
 import aramframework.com.uss.olp.qim.service.QustnrItemManageService;
@@ -56,7 +55,7 @@ public class QustnrItemManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/olp/qim/QustnrItemListPopup");
+		return "/uss/olp/qim/QustnrItemListPopup";
 	}
 
 	/**
@@ -88,7 +87,7 @@ public class QustnrItemManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/olp/qim/QustnrItemList");
+		return "/uss/olp/qim/QustnrItemList";
 	}
 
 	/**
@@ -105,7 +104,7 @@ public class QustnrItemManageController {
 
 		model.addAttribute(qustnrItemManageService.selectQustnrItemManageDetail(qustnrItemManageVO));
 
-		return WebUtil.adjustViewName("/uss/olp/qim/QustnrItemDetail");
+		return "/uss/olp/qim/QustnrItemDetail";
 	}
 
 	/**
@@ -119,7 +118,7 @@ public class QustnrItemManageController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrItemManageVO qustnrItemManageVO) {
 
-		return WebUtil.adjustViewName("/uss/olp/qim/QustnrItemRegist");
+		return "/uss/olp/qim/QustnrItemRegist";
 	}
 
 	/**
@@ -138,17 +137,18 @@ public class QustnrItemManageController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrItemManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olp/qim/QustnrItemRegist");
+			return "/uss/olp/qim/QustnrItemRegist";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		qustnrItemManageVO.setFrstRegisterId(loginVO.getUniqId());
+		qustnrItemManageVO.setFrstRegisterId(loginVO.getUserId());
 
 		qustnrItemManageService.insertQustnrItemManage(qustnrItemManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, qustnrItemManageVO, "/uss/olp/qim/listQustnrItem.do");
+		model.addAttribute("redirectURL", "/uss/olp/qim/listQustnrItem.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -165,7 +165,7 @@ public class QustnrItemManageController {
 
 		model.addAttribute(qustnrItemManageService.selectQustnrItemManageDetail(qustnrItemManageVO));
 
-		return WebUtil.adjustViewName("/uss/olp/qim/QustnrItemEdit");
+		return "/uss/olp/qim/QustnrItemEdit";
 	}
 
 	/**
@@ -184,17 +184,18 @@ public class QustnrItemManageController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrItemManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olp/qim/QustnrItemEdit");
+			return "/uss/olp/qim/QustnrItemEdit";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		qustnrItemManageVO.setLastUpdusrId(loginVO.getUniqId());
+		qustnrItemManageVO.setLastUpdusrId(loginVO.getUserId());
 
 		qustnrItemManageService.updateQustnrItemManage(qustnrItemManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, qustnrItemManageVO, "/uss/olp/qim/listQustnrItem.do");
+		model.addAttribute("redirectURL", "/uss/olp/qim/listQustnrItem.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -212,7 +213,8 @@ public class QustnrItemManageController {
 		qustnrItemManageService.deleteQustnrItemManage(qustnrItemManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, qustnrItemManageVO, "/uss/olp/qim/listQustnrItem.do");
+		model.addAttribute("redirectURL", "/uss/olp/qim/listQustnrItem.do");
+	    return "cmm/redirect";
 	}
 
 }

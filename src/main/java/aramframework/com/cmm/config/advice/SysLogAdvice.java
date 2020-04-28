@@ -46,13 +46,13 @@ public class SysLogAdvice {
 			String methodName = joinPoint.getSignature().getName();
 			String processSeCode = "C";
 			String processTime = Long.toString(stopWatch.getTotalTimeMillis());
-			String uniqId = "";
+			String userId = "";
 			String ip = "";
 
 			/* Authenticated */
 			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 			if( loginVO != null ) {
-				uniqId = loginVO.getUniqId();
+				userId = loginVO.getUserId();
 				ip = loginVO.getIp();
 			}
 			
@@ -61,7 +61,7 @@ public class SysLogAdvice {
 				sysLogVO.setMethodNm(methodName);
 				sysLogVO.setProcessSeCode(processSeCode);
 				sysLogVO.setProcessTime(processTime);
-				sysLogVO.setRqesterId(uniqId);
+				sysLogVO.setRqesterId(userId);
 				sysLogVO.setRqesterIp(ip);
 	
 				sysLogService.logInsertSysLog(sysLogVO);
@@ -94,14 +94,14 @@ public class SysLogAdvice {
 			String methodName = joinPoint.getSignature().getName();
 			String processSeCode = "U";
 			String processTime = Long.toString(stopWatch.getTotalTimeMillis());
-			String uniqId = "";
+			String userId = "";
 			String ip = "";
 
 			/* Authenticated */
 			Boolean isAuthenticated = UserDetailsHelper.isAuthenticated();
 			if (isAuthenticated.booleanValue()) {
 				LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-				uniqId = loginVO.getUniqId();
+				userId = loginVO.getUserId();
 				ip = loginVO.getIp();
 			}
 			if( !"127.0.0.1".equals(ip)) {
@@ -109,7 +109,7 @@ public class SysLogAdvice {
 				sysLog.setMethodNm(methodName);
 				sysLog.setProcessSeCode(processSeCode);
 				sysLog.setProcessTime(processTime);
-				sysLog.setRqesterId(uniqId);
+				sysLog.setRqesterId(userId);
 				sysLog.setRqesterIp(ip);
 	
 				sysLogService.logInsertSysLog(sysLog);
@@ -142,14 +142,14 @@ public class SysLogAdvice {
 			String methodName = joinPoint.getSignature().getName();
 			String processSeCode = "D";
 			String processTime = Long.toString(stopWatch.getTotalTimeMillis());
-			String uniqId = "";
+			String userId = "";
 			String ip = "";
 
 			/* Authenticated */
 			Boolean isAuthenticated = UserDetailsHelper.isAuthenticated();
 			if (isAuthenticated.booleanValue()) {
 				LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-				uniqId = loginVO.getUniqId();
+				userId = loginVO.getUserId();
 				ip = loginVO.getIp();
 			}
 			if( !"127.0.0.1".equals(ip)) {
@@ -157,7 +157,7 @@ public class SysLogAdvice {
 				sysLog.setMethodNm(methodName);
 				sysLog.setProcessSeCode(processSeCode);
 				sysLog.setProcessTime(processTime);
-				sysLog.setRqesterId(uniqId);
+				sysLog.setRqesterId(userId);
 				sysLog.setRqesterIp(ip);
 	
 				sysLogService.logInsertSysLog(sysLog);
@@ -190,14 +190,14 @@ public class SysLogAdvice {
 			String methodName = joinPoint.getSignature().getName();
 			String processSeCode = "R";
 			String processTime = Long.toString(stopWatch.getTotalTimeMillis());
-			String uniqId = "";
+			String userId = "";
 			String ip = "";
 
 			/* Authenticated */
 			Boolean isAuthenticated = UserDetailsHelper.isAuthenticated();
 			if (isAuthenticated.booleanValue()) {
 				LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-				uniqId = loginVO.getUniqId();
+				userId = loginVO.getUserId();
 				ip = loginVO.getIp();
 			}
 			if( !"127.0.0.1".equals(ip)) {
@@ -205,7 +205,7 @@ public class SysLogAdvice {
 				sysLog.setMethodNm(methodName);
 				sysLog.setProcessSeCode(processSeCode);
 				sysLog.setProcessTime(processTime);
-				sysLog.setRqesterId(uniqId);
+				sysLog.setRqesterId(userId);
 				sysLog.setRqesterIp(ip);
 	
 				sysLogService.logInsertSysLog(sysLog);

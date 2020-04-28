@@ -1,11 +1,25 @@
 package aramframework.com.cmm.config.interceptor;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.tiles.Attribute;
+import org.apache.tiles.AttributeContext;
+import org.apache.tiles.access.TilesAccess;
+import org.apache.tiles.impl.BasicTilesContainer;
+import org.apache.tiles.request.ApplicationContext;
+import org.apache.tiles.request.Request;
+import org.apache.tiles.request.servlet.ServletRequest;
+import org.apache.tiles.request.servlet.ServletUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+import aramframework.com.cop.cmy.domain.CommunityVO;
+import aramframework.com.cop.cmy.service.CommunityManageService;
 
 /**
  * 타일스 생성을 위한 인터셉터 클래스
@@ -18,6 +32,9 @@ public class TilesInterceptor extends HandlerInterceptorAdapter {
 
 	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 	
+	@Autowired 
+	private CommunityManageService cmmntyService;
+
 	/**
 	 * 웹 로그정보를 생성한다.
 	 * 
@@ -39,9 +56,14 @@ public class TilesInterceptor extends HandlerInterceptorAdapter {
 			request.setAttribute("curTrgetId", curTrgetId);
 		}
 		
-		String curMenuNo = request.getParameter("curMenuNo");
-		if( curMenuNo != null && !"".equals(curMenuNo)) {
-			request.setAttribute("curMenuNo", curMenuNo);
+		String curMenuPos = request.getParameter("curMenuPos");
+		if( curMenuPos != null && !"".equals(curMenuPos)) {
+			request.setAttribute("curMenuPos", curMenuPos);
+		}
+		
+		String fullScrYn = request.getParameter("fullScrYn");
+		if( fullScrYn != null && !"".equals(fullScrYn)) {
+			request.setAttribute("fullScrYn", fullScrYn);
 		}
 		
 		String requestUrl = request.getRequestURL().toString();
@@ -49,6 +71,80 @@ public class TilesInterceptor extends HandlerInterceptorAdapter {
 		String contextUrl = requestUrl.substring(0, requestUrl.indexOf(requestUri));
 		request.setAttribute("contextUrl", contextUrl);
 		return true;
+	}
+	
+	/**
+	 * 웹 로그정보를 생성한다.
+	 * 
+	 * @param request		HttpServletRequest
+	 * @param response		HttpServletResponse
+	 * @param handler		Object
+	 * @param modelAndView	ModelAndView
+	 * @throws Exception
+	 */
+	@Override
+	public void postHandle(
+			HttpServletRequest request, 
+			HttpServletResponse response, 
+			Object handler, 
+			ModelAndView modelAndView) 
+	throws Exception {
+
+		if (modelAndView == null) return;	// for direct response output(modelandview is null)
+		
+		String jspPrefix = (String) request.getAttribute("jspPrefix");
+		String viewName = modelAndView.getViewName();
+		if (jspPrefix != null 
+				&& !"".equals(jspPrefix)
+				&& !viewName.startsWith("forward:/") 
+				&& !viewName.startsWith(jspPrefix)) {
+			modelAndView.setViewName(jspPrefix + viewName);
+		}
+
+//		LOG.debug("jspPrefix = " + jspPrefix + ", viewName = " + viewName);
+
+		String fullScrYn = (String) request.getAttribute("fullScrYn");
+		if( fullScrYn != null && "Y".equals(fullScrYn) ) return;
+
+		String cmmntyId = (String) request.getAttribute("curTrgetId");
+		String menuPos = (String) request.getAttribute("curMenuPos");
+		
+		if (cmmntyId == null || !cmmntyId.startsWith("CMMNTY_") || "".equals(menuPos)) {
+			return;
+		}
+		
+//		LOG.debug("cmmntyId = " + cmmntyId + ", menuPos = " + menuPos);
+		
+        CommunityVO communityVO = cmmntyService.getCommunityLayoutInfo(cmmntyId, menuPos);
+        modelAndView.addObject("targetVO", communityVO);
+	
+		// --------------------------------
+		// 커뮤니티 사용자 정보
+		// --------------------------------
+        modelAndView.addObject("targetUserVO", cmmntyService.getCommunityUserInfo(cmmntyId));
+		
+		// --------------------------------
+		// 커뮤니티 템플릿 정보
+		// --------------------------------
+		String tmplatCours = communityVO.getTmplatCours();
+    	if (tmplatCours == null || "".equals(tmplatCours) ) {
+    		return;
+    	}
+
+		ServletContext servletContext = request.getSession().getServletContext();
+		ApplicationContext tilesAppContext = ServletUtil.getApplicationContext(servletContext);
+		Request tilesRequest = new ServletRequest(tilesAppContext, request, response);
+		BasicTilesContainer container = (BasicTilesContainer) TilesAccess.getContainer(tilesAppContext);
+		AttributeContext attributeContext = container.getAttributeContext(tilesRequest);
+
+//		LOG.debug("tmplatCours = " + tmplatCours);
+
+		if (tmplatCours.indexOf("/WEB-INF/") != -1) {
+			attributeContext.setTemplateAttribute(new Attribute(tmplatCours+".jsp"));					// WEB-INF 포함 jsp 파일
+		} else {
+			attributeContext.setTemplateAttribute(new Attribute("/WEB-INF/jsp/"+tmplatCours+".jsp"));	// spring view name
+		}
+		
 	}
 	
 }

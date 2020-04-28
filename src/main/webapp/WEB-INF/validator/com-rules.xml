@@ -138,9 +138,9 @@
 				for (var i=0; i < str .length; i++) {
 				    ch_char = str .charAt(i);
 				    ch = ch_char.charCodeAt();
-				        if( (ch >= 33 && ch <= 47) || (ch >= 58 && ch <= 64) || (ch >= 91 && ch <= 96) || (ch >= 123 && ch <= 126) ) {
-				            return false;
-				        }
+				    if( (ch >= 33 && ch <= 47) || (ch >= 58 && ch <= 64) || (ch >= 91 && ch <= 96) || (ch >= 123 && ch <= 126) ) {
+				        return false;
+				    }
 				}
                 return pwd;
             }

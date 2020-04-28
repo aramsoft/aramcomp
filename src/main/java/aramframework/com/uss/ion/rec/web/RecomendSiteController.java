@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.rec.domain.RecomendSiteVO;
 import aramframework.com.uss.ion.rec.service.RecomendSiteService;
@@ -57,7 +56,7 @@ public class RecomendSiteController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/ion/rec/RecomendSiteList");
+		return "/uss/ion/rec/RecomendSiteList";
 	}
 
 	/**
@@ -73,7 +72,7 @@ public class RecomendSiteController {
 
 		model.addAttribute(recomendSiteService.selectRecomendSiteDetail(recomendSiteVO));
 
-		return WebUtil.adjustViewName("/uss/ion/rec/RecomendSiteDetail");
+		return "/uss/ion/rec/RecomendSiteDetail";
 	}
 
 	/**
@@ -87,7 +86,7 @@ public class RecomendSiteController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute RecomendSiteVO recomendSiteVO) {
 
-		return WebUtil.adjustViewName("/uss/ion/rec/RecomendSiteRegist");
+		return "/uss/ion/rec/RecomendSiteRegist";
 	}
 
 	/**
@@ -105,17 +104,18 @@ public class RecomendSiteController {
 
 		beanValidator.validate(recomendSiteVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/rec/RecomendSiteRegist");
+			return "/uss/ion/rec/RecomendSiteRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		recomendSiteVO.setFrstRegisterId(loginVO.getUniqId()); // 최초등록자ID
+		recomendSiteVO.setFrstRegisterId(loginVO.getUserId()); // 최초등록자ID
 
 		recomendSiteService.insertRecomendSiteInfo(recomendSiteVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, recomendSiteVO, "/uss/ion/rec/listRecomendSite.do");
+		model.addAttribute("redirectURL", "/uss/ion/rec/listRecomendSite.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -132,7 +132,7 @@ public class RecomendSiteController {
 
 		model.addAttribute(recomendSiteService.selectRecomendSiteDetail(recomendSiteVO));
 
-		return WebUtil.adjustViewName("/uss/ion/rec/RecomendSiteEdit");
+		return "/uss/ion/rec/RecomendSiteEdit";
 	}
 
 	/**
@@ -151,17 +151,18 @@ public class RecomendSiteController {
 		// Validation
 		beanValidator.validate(recomendSiteVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/rec/RecomendSiteEdit");
+			return "/uss/ion/rec/RecomendSiteEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		recomendSiteVO.setLastUpdusrId(loginVO.getUniqId()); // 최종수정자ID
+		recomendSiteVO.setLastUpdusrId(loginVO.getUserId()); // 최종수정자ID
 
 		recomendSiteService.updateRecomendSiteInfo(recomendSiteVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, recomendSiteVO, "/uss/ion/rec/listRecomendSite.do");
+		model.addAttribute("redirectURL", "/uss/ion/rec/listRecomendSite.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -179,7 +180,8 @@ public class RecomendSiteController {
 		recomendSiteService.deleteRecomendSiteInfo(recomendSiteVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, recomendSiteVO, "/uss/ion/rec/listRecomendSite.do");
+		model.addAttribute("redirectURL", "/uss/ion/rec/listRecomendSite.do");
+	    return "cmm/redirect";
 	}
 
 }

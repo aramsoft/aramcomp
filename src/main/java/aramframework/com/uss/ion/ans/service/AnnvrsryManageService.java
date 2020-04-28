@@ -4,20 +4,14 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.uss.ion.ans.dao.AnnvrsryManageMapper;
 import aramframework.com.uss.ion.ans.domain.AnnvrsryManageVO;
-import aramframework.com.utl.fcc.service.DateUtil;
 import aramframework.com.utl.fcc.service.StringUtil;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.cmmn.exception.FdlException;
-import egovframework.rte.fdl.excel.EgovExcelService;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
@@ -35,7 +29,7 @@ public class AnnvrsryManageService extends EgovAbstractServiceImpl {
 	private AnnvrsryManageMapper annvrsryManageMapper;	
 
 //	@Resource(name = "excelZipService")
-	private EgovExcelService excelZipService;
+//	private EgovExcelService excelZipService;
 
 	/** ID Generation */
 	@Autowired
@@ -178,6 +172,7 @@ public class AnnvrsryManageService extends EgovAbstractServiceImpl {
 		String sTempReptitSe = null; // 반복여부
 
 		List<AnnvrsryManageVO> list = new ArrayList<AnnvrsryManageVO>();
+		/*
 		try {
 			Workbook hssfWB = excelZipService.loadWorkbook(inputStream);
 			// 엑셀 파일 시트 갯수 확인 sheet = 1
@@ -241,6 +236,7 @@ public class AnnvrsryManageService extends EgovAbstractServiceImpl {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
+*/
 		return list;
 	}
 

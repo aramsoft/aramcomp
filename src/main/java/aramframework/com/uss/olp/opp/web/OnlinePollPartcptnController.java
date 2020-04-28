@@ -14,7 +14,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.olp.opp.domain.OnlinePollPartcptnVO;
 import aramframework.com.uss.olp.opp.service.OnlinePollPartcptnService;
@@ -51,7 +50,7 @@ public class OnlinePollPartcptnController {
 
 		model.addAttribute("resultList", onlinePollPartcptnService.selectOnlinePollManageList(onlinePollPartcptnVO));
 
-		return WebUtil.adjustViewName("/uss/olp/opp/OnlinePollPartcptnMainPage");
+		return "/uss/olp/opp/OnlinePollPartcptnMainPage";
 	}
 
 	/**
@@ -76,7 +75,7 @@ public class OnlinePollPartcptnController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/olp/opp/OnlinePollPartcptnList");
+		return "/uss/olp/opp/OnlinePollPartcptnList";
 	}
 
 	/**
@@ -98,7 +97,7 @@ public class OnlinePollPartcptnController {
 	// 온라인POLL항목 정보 설정
 		model.addAttribute("pollItemList", onlinePollPartcptnService.selectOnlinePollItemList(onlinePollPartcptnVO));
 
-		return WebUtil.adjustViewName("/uss/olp/opp/OnlinePollPartcptnRegist");
+		return "/uss/olp/opp/OnlinePollPartcptnRegist";
 	}
 
 	/**
@@ -116,7 +115,7 @@ public class OnlinePollPartcptnController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		onlinePollPartcptnVO.setFrstRegisterId(loginVO.getUniqId());
+		onlinePollPartcptnVO.setFrstRegisterId(loginVO.getUserId());
 
 		// 투표여부 체크
 		if (onlinePollPartcptnService.selectOnlinePollResult(onlinePollPartcptnVO) != 0) {
@@ -128,7 +127,8 @@ public class OnlinePollPartcptnController {
 		onlinePollPartcptnService.insertOnlinePollResult(onlinePollPartcptnVO);
 
 		model.addAttribute("message", "온라인POLL참여에 응해주셔서 감사합니다!");
-        return WebUtil.redirectJsp(model, onlinePollPartcptnVO, "/uss/olp/opp/listOnlinePollPartcptn.do");
+		model.addAttribute("redirectURL", "/uss/olp/opp/listOnlinePollPartcptn.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -157,7 +157,7 @@ public class OnlinePollPartcptnController {
 		// 이전 주소
 		model.addAttribute("returnUrl", request.getParameter("returnUrl") );
 
-		return WebUtil.adjustViewName("/uss/olp/opp/OnlinePollPartcptnStatistics");
+		return "/uss/olp/opp/OnlinePollPartcptnStatistics";
 	}
 
 }

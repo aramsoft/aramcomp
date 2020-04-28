@@ -14,7 +14,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.olp.qmc.domain.QustnrManageVO;
 import aramframework.com.uss.olp.qmc.service.QustnrManageService;
@@ -60,7 +59,7 @@ public class QustnrManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/olp/qmc/QustnrListPopup");
+		return "/uss/olp/qmc/QustnrListPopup";
 	}
 
 	/**
@@ -86,7 +85,7 @@ public class QustnrManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/olp/qmc/QustnrList");
+		return "/uss/olp/qmc/QustnrList";
 	}
 
 	/**
@@ -105,7 +104,7 @@ public class QustnrManageController {
 		// 공통코드 직업유형 조회
 		cmmUseService.populateCmmCodeList("COM034", "COM034_occpType");
 
-		return WebUtil.adjustViewName("/uss/olp/qmc/QustnrDetail");
+		return "/uss/olp/qmc/QustnrDetail";
 	}
 
 	/**
@@ -126,7 +125,7 @@ public class QustnrManageController {
 		// 설문템플릿 정보 불러오기
 		model.addAttribute("listQustnrTmplat", qustnrManageService.selectQustnrTmplatManageList(qustnrManageVO));
 
-		return WebUtil.adjustViewName("/uss/olp/qmc/QustnrRegist");
+		return "/uss/olp/qmc/QustnrRegist";
 	}
 
 	/**
@@ -147,17 +146,18 @@ public class QustnrManageController {
 			// 설문템플릿 정보 불러오기
 			model.addAttribute("listQustnrTmplat", qustnrManageService.selectQustnrTmplatManageList(qustnrManageVO));
 
-			return WebUtil.adjustViewName("/uss/olp/qmc/QustnrRegist");
+			return "/uss/olp/qmc/QustnrRegist";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		qustnrManageVO.setFrstRegisterId(loginVO.getUniqId());
+		qustnrManageVO.setFrstRegisterId(loginVO.getUserId());
 
 		qustnrManageService.insertQustnrManage(qustnrManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, qustnrManageVO, "/uss/olp/qmc/listQustnr.do");
+		model.addAttribute("redirectURL", "/uss/olp/qmc/listQustnr.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -181,7 +181,7 @@ public class QustnrManageController {
 		// 공통코드 직업유형 조회
 		cmmUseService.populateCmmCodeList("COM034", "COM034_occpType");
 
-		return WebUtil.adjustViewName("/uss/olp/qmc/QustnrEdit");
+		return "/uss/olp/qmc/QustnrEdit";
 	}
 
 	/**
@@ -202,17 +202,18 @@ public class QustnrManageController {
 			// 설문템플릿 정보 불러오기
 			model.addAttribute("listQustnrTmplat", qustnrManageService.selectQustnrTmplatManageList(qustnrManageVO));
 
-			return WebUtil.adjustViewName("/uss/olp/qmc/QustnrEdit");
+			return "/uss/olp/qmc/QustnrEdit";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		qustnrManageVO.setLastUpdusrId(loginVO.getUniqId());
+		qustnrManageVO.setLastUpdusrId(loginVO.getUserId());
 
 		qustnrManageService.updateQustnrManage(qustnrManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, qustnrManageVO, "/uss/olp/qmc/listQustnr.do");
+		model.addAttribute("redirectURL", "/uss/olp/qmc/listQustnr.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -230,7 +231,8 @@ public class QustnrManageController {
 		qustnrManageService.deleteQustnrManage(qustnrManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, qustnrManageVO, "/uss/olp/qmc/listQustnr.do");
+		model.addAttribute("redirectURL", "/uss/olp/qmc/listQustnr.do");
+	    return "cmm/redirect";
 	}
 
 }

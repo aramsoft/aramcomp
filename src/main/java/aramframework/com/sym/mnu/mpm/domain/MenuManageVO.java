@@ -46,8 +46,8 @@ public class MenuManageVO extends BaseVO {
 	private String authorCode;
 
 	/** Login 메뉴관련 VO변수 */
-	/** tmp_UniqId */
-	private String tmpUniqId;
+	/** tmpUserId */
+	private String tmpUserId;
 
 	/** tmp_Cmd */
 	private String tmpCmd;
@@ -235,21 +235,21 @@ public class MenuManageVO extends BaseVO {
 	}
 
 	/**
-	 * tmp_UniqId attribute를 리턴한다.
+	 * tmpUserId attribute를 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getTmpUniqId() {
-		return tmpUniqId;
+	public String getTmpUserId() {
+		return tmpUserId;
 	}
 	/**
-	 * tmp_UniqId attribute 값을 설정한다.
+	 * tmpUserId attribute 값을 설정한다.
 	 * 
-	 * @param tmp_UniqId
+	 * @param tmpUserId
 	 *            String
 	 */
-	public void setTmpUniqId(String tmpUniqId) {
-		this.tmpUniqId = tmpUniqId;
+	public void setTmpUserId(String tmpUserId) {
+		this.tmpUserId = tmpUserId;
 	}
 
 	/**

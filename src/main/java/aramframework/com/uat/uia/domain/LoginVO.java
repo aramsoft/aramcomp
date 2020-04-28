@@ -15,7 +15,7 @@ public class LoginVO implements Serializable{
 	private static final long serialVersionUID = 8845407526781637386L;
 
 	/** 아이디 */
-	private String id;
+	private String userId;
 
 	/** 이름 */
 	private String name;
@@ -44,9 +44,6 @@ public class LoginVO implements Serializable{
 	/** 조직(부서)명 */
 	private String orgnztNm;
 
-	/** 고유아이디 */
-	private String uniqId;
-
 	/** 로그인 후 이동할 페이지 */
 	private String url;
 
@@ -60,21 +57,21 @@ public class LoginVO implements Serializable{
 	private String mblTelNo;
 
 	/**
-	 * id attribute 를 리턴한다.
+	 * userId attribute 를 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getId() {
-		return id;
+	public String getUserId() {
+		return userId;
 	}
 	/**
-	 * id attribute 값을 설정한다.
+	 * userId attribute 값을 설정한다.
 	 * 
-	 * @param id
+	 * @param userId
 	 *            String
 	 */
-	public void setId(String id) {
-		this.id = id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	/**
@@ -219,24 +216,6 @@ public class LoginVO implements Serializable{
 	 */
 	public void setOrgnztId(String orgnztId) {
 		this.orgnztId = orgnztId;
-	}
-
-	/**
-	 * uniqId attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getUniqId() {
-		return uniqId;
-	}
-	/**
-	 * uniqId attribute 값을 설정한다.
-	 * 
-	 * @param uniqId
-	 *            String
-	 */
-	public void setUniqId(String uniqId) {
-		this.uniqId = uniqId;
 	}
 
 	/**

@@ -14,7 +14,6 @@ import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.olp.mgt.domain.MeetingManageVO;
 import aramframework.com.uss.olp.mgt.service.MeetingManageService;
@@ -48,7 +47,7 @@ public class MeetingManageController {
 
 		model.addAttribute("resultList", meetingManageService.selectDeptListPopup(baseVO));
 
-		return WebUtil.adjustViewName("/uss/olp/mgt/MeetingDeptPopup");
+		return "/uss/olp/mgt/MeetingDeptPopup";
 	}
 
 	/**
@@ -63,7 +62,7 @@ public class MeetingManageController {
 
 		model.addAttribute("resultList", meetingManageService.selectEmpLyrListPopup(baseVO));
 
-		return WebUtil.adjustViewName("/uss/olp/mgt/MeetingEmpLyrPopup");
+		return "/uss/olp/mgt/MeetingEmpLyrPopup";
 	}
 
 	/**
@@ -88,7 +87,7 @@ public class MeetingManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/olp/mgt/MeetingList");
+		return "/uss/olp/mgt/MeetingList";
 	}
 
 	/**
@@ -105,7 +104,7 @@ public class MeetingManageController {
 
 		model.addAttribute(meetingManageService.selectMeetingManageDetail(meetingManageVO));
 
-		return WebUtil.adjustViewName("/uss/olp/mgt/MeetingDetail");
+		return "/uss/olp/mgt/MeetingDetail";
 	}
 
 	/**
@@ -119,7 +118,7 @@ public class MeetingManageController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MeetingManageVO meetingManageVO) {
 
-		return WebUtil.adjustViewName("/uss/olp/mgt/MeetingRegist");
+		return "/uss/olp/mgt/MeetingRegist";
 	}
 
 	/**
@@ -138,17 +137,18 @@ public class MeetingManageController {
 		// 서버 validate 체크
 		beanValidator.validate(meetingManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olp/mgt/MeetingRegist");
+			return "/uss/olp/mgt/MeetingRegist";
 		}
 		
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		meetingManageVO.setFrstRegisterId(loginVO.getUniqId());
+		meetingManageVO.setFrstRegisterId(loginVO.getUserId());
 
 		meetingManageService.insertMeetingManage(meetingManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, meetingManageVO, "/uss/olp/mgt/listMeeting.do");
+		model.addAttribute("redirectURL", "/uss/olp/mgt/listMeeting.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -165,7 +165,7 @@ public class MeetingManageController {
 
 		model.addAttribute(meetingManageService.selectMeetingManageDetail(meetingManageVO));
 
-		return WebUtil.adjustViewName("/uss/olp/mgt/MeetingEdit");
+		return "/uss/olp/mgt/MeetingEdit";
 	}
 
 	/**
@@ -184,17 +184,18 @@ public class MeetingManageController {
 		// 서버 validate 체크
 		beanValidator.validate(meetingManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olp/mgt/MeetingEdit");
+			return "/uss/olp/mgt/MeetingEdit";
 		}
 		
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		meetingManageVO.setLastUpdusrId(loginVO.getUniqId());
+		meetingManageVO.setLastUpdusrId(loginVO.getUserId());
 
 		meetingManageService.updateMeetingManage(meetingManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, meetingManageVO, "/uss/olp/mgt/listMeeting.do");
+		model.addAttribute("redirectURL", "/uss/olp/mgt/listMeeting.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -212,7 +213,8 @@ public class MeetingManageController {
 		meetingManageService.deleteMeetingManage(meetingManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, meetingManageVO, "/uss/olp/mgt/listMeeting.do");
+		model.addAttribute("redirectURL", "/uss/olp/mgt/listMeeting.do");
+	    return "cmm/redirect";
 	}
 
 }

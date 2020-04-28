@@ -46,4 +46,21 @@ public class ComponentChecker implements ApplicationContextAware {
 		}
 	}
 	
+	/**
+	 * Spring MVC에서 설정한 빈이 아닌 서비스 빈(컴포넌트)만을 검색할 수 있음
+	 * 
+	 * @param 	componentName		String
+	 * @return 						true/false
+	 */
+	public static Object getComponent(String componentName) {
+
+		try {
+			return context.getBean(componentName);
+
+		} catch (NoSuchBeanDefinitionException ex) {// 해당 컴포넌트를 찾을 수없을 경우
+													// false반환
+			return null;
+		}
+	}
+	
 }

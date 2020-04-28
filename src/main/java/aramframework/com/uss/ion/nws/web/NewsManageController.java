@@ -62,7 +62,7 @@ public class NewsManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/ion/nws/NewsInfoList");
+		return "/uss/ion/nws/NewsInfoList";
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class NewsManageController {
 
 		model.addAttribute(newsManageService.selectNewsDetail(newsManageVO));
 
-		return WebUtil.adjustViewName("/uss/ion/nws/NewsInfoDetail");
+		return "/uss/ion/nws/NewsInfoDetail";
 	}
 
 	/**
@@ -92,7 +92,7 @@ public class NewsManageController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NewsManageVO newsManageVO) {
 
-		return WebUtil.adjustViewName("/uss/ion/nws/NewsInfoRegist");
+		return "/uss/ion/nws/NewsInfoRegist";
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class NewsManageController {
 
 		beanValidator.validate(newsManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/nws/NewsInfoRegist");
+			return "/uss/ion/nws/NewsInfoRegist";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
@@ -120,12 +120,13 @@ public class NewsManageController {
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		newsManageVO.setFrstRegisterId(loginVO.getUniqId()); // 최초등록자ID
+		newsManageVO.setFrstRegisterId(loginVO.getUserId()); // 최초등록자ID
 
 		newsManageService.insertNewsInfo(newsManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, newsManageVO, "/uss/ion/nws/listNewsInfo.do");
+		model.addAttribute("redirectURL", "/uss/ion/nws/listNewsInfo.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -142,9 +143,9 @@ public class NewsManageController {
 
 		model.addAttribute(newsManageService.selectNewsDetail(newsManageVO));
 
-		return WebUtil.adjustViewName("/uss/ion/nws/NewsInfoEdit");
+		return "/uss/ion/nws/NewsInfoEdit";
 	}
-
+	
 	/**
 	 * 뉴스정보를 수정 처리한다
 	 * 
@@ -163,7 +164,7 @@ public class NewsManageController {
 		// Validation
 		beanValidator.validate(newsManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/nws/NewsInfoEdit");
+			return "/uss/ion/nws/NewsInfoEdit";
 		}
 
 		// 첨부파일 관련 ID 생성 start....
@@ -172,12 +173,13 @@ public class NewsManageController {
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		newsManageVO.setLastUpdusrId(loginVO.getUniqId()); // 최종수정자ID
+		newsManageVO.setLastUpdusrId(loginVO.getUserId()); // 최종수정자ID
 
 		newsManageService.updateNewsInfo(newsManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, newsManageVO, "/uss/ion/nws/listNewsInfo.do");
+		model.addAttribute("redirectURL", "/uss/ion/nws/listNewsInfo.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -195,7 +197,8 @@ public class NewsManageController {
 		newsManageService.deleteNewsInfo(newsManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, newsManageVO, "/uss/ion/nws/listNewsInfo.do");
+		model.addAttribute("redirectURL", "/uss/ion/nws/listNewsInfo.do");
+	    return "cmm/redirect";
 	}
 
 }

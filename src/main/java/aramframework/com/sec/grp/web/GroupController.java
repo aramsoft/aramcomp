@@ -13,7 +13,6 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sec.grp.domain.GroupVO;
 import aramframework.com.sec.grp.service.GroupService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -57,7 +56,7 @@ public class GroupController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sec/grp/GroupList");
+		return "sec/grp/GroupList";
 	}
 
 	/**
@@ -72,7 +71,7 @@ public class GroupController {
 			@ModelAttribute GroupVO groupVO, 
 			ModelMap model) {
 
-		return WebUtil.adjustViewName("/sec/grp/GroupRegist");
+		return "sec/grp/GroupRegist";
 	}
 
 	/**
@@ -90,13 +89,14 @@ public class GroupController {
 
 		beanValidator.validate(groupVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sec/grp/GroupRegist");
+			return "sec/grp/GroupRegist";
 		} 
 
 		groupService.insertGroup(groupVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, groupVO, "/sec/grp/listGroup.do");
+		model.addAttribute("redirectURL", "/sec/grp/listGroup.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -113,7 +113,7 @@ public class GroupController {
 
 		model.addAttribute(groupService.selectGroup(groupVO));
 		
-		return WebUtil.adjustViewName("/sec/grp/GroupEdit");
+		return "sec/grp/GroupEdit";
 	}
 
 	/**
@@ -131,13 +131,14 @@ public class GroupController {
 
 		beanValidator.validate(groupVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sec/grp/GroupEdit");
+			return "sec/grp/GroupEdit";
 		} 
 
 		groupService.updateGroup(groupVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, groupVO, "/sec/grp/listGroup.do");
+		model.addAttribute("redirectURL", "/sec/grp/listGroup.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -148,13 +149,15 @@ public class GroupController {
 	@RequestMapping(value = "/sec/grp/deleteGroup.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteGroup(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute GroupVO groupVO, 
 			ModelMap model) {
 
 		groupService.deleteGroup(groupVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, groupVO, "/sec/grp/listGroup.do");
+		model.addAttribute("redirectURL", "/sec/grp/listGroup.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -165,6 +168,7 @@ public class GroupController {
 	@RequestMapping(value = "/sec/grp/deleteListGroup.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteListGroup(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute GroupVO groupVO, 
 			@RequestParam String groupIds, 
 			ModelMap model) {
@@ -172,7 +176,8 @@ public class GroupController {
 		groupService.deleteGroups(groupIds);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, groupVO, "/sec/grp/listGroup.do");
+		model.addAttribute("redirectURL", "/sec/grp/listGroup.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -196,7 +201,7 @@ public class GroupController {
 	
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sec/grp/GroupSearchPopup");
+		return "sec/grp/GroupSearchPopup";
 	}
 	
 }

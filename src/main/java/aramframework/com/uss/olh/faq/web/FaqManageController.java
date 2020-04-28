@@ -15,7 +15,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.olh.faq.domain.FaqManageVO;
 import aramframework.com.uss.olh.faq.service.FaqManageService;
@@ -62,7 +61,7 @@ public class FaqManageController {
 	
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/olh/faq/FaqList");
+		return "uss/olh/faq/FaqList";
 	}
 
 	/**
@@ -78,7 +77,7 @@ public class FaqManageController {
 
 		model.addAttribute(faqManageService.selectFaqListDetail(faqManageVO));
 
-		return WebUtil.adjustViewName("/uss/olh/faq/FaqDetail");
+		return "uss/olh/faq/FaqDetail";
 	}
 
 	/**
@@ -93,7 +92,7 @@ public class FaqManageController {
 			@ModelAttribute FaqManageVO faqManageVO, 
 			ModelMap model) {
 
-		return WebUtil.adjustViewName("/uss/olh/faq/FaqRegist");
+		return "uss/olh/faq/FaqRegist";
 	}
 
 	/**
@@ -113,20 +112,21 @@ public class FaqManageController {
 
 		beanValidator.validate(faqManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olh/faq/FaqRegist");
+			return "uss/olh/faq/FaqRegist";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
-		faqManageVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "FAQ_"));
+		faqManageVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "FAQ"));
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		faqManageVO.setFrstRegisterId(loginVO.getUniqId()); // 최초등록자ID
+		faqManageVO.setFrstRegisterId(loginVO.getUserId()); // 최초등록자ID
 
 		faqManageService.insertFaqCn(faqManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, faqManageVO, "/uss/olh/faq/listFaq.do");
+		model.addAttribute("redirectURL", "/uss/olh/faq/listFaq.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -143,7 +143,7 @@ public class FaqManageController {
 
 		model.addAttribute(faqManageService.selectFaqListDetail(faqManageVO));
 
-		return WebUtil.adjustViewName("/uss/olh/faq/FaqEdit");
+		return "uss/olh/faq/FaqEdit";
 	}
 
 	/**
@@ -164,21 +164,22 @@ public class FaqManageController {
 		// Validation
 		beanValidator.validate(faqManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olh/faq/FaqEdit");
+			return "uss/olh/faq/FaqEdit";
 		}
 
 		// 첨부파일 관련 ID 생성 start....
 		String atchFileId = faqManageVO.getAtchFileId();
-		faqManageVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "FAQ_", atchFileId));
+		faqManageVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "FAQ", atchFileId));
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		faqManageVO.setLastUpdusrId(loginVO.getUniqId()); // 최종수정자ID
+		faqManageVO.setLastUpdusrId(loginVO.getUserId()); // 최종수정자ID
 
 		faqManageService.updateFaqCn(faqManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, faqManageVO, "/uss/olh/faq/listFaq.do");
+		model.addAttribute("redirectURL", "/uss/olh/faq/listFaq.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -189,13 +190,15 @@ public class FaqManageController {
 	@RequestMapping(value="/uss/olh/faq/deleteFaq.do")
 	@Secured("ROLE_USER")
 	public String deleteFaqManage(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute FaqManageVO faqManageVO, 
 			ModelMap model) {
 
 		faqManageService.deleteFaqCn(faqManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, faqManageVO, "/uss/olh/faq/listFaq.do");
+		model.addAttribute("redirectURL", "/uss/olh/faq/listFaq.do");
+	    return "cmm/redirect";
 	}
 
 }

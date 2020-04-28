@@ -16,7 +16,6 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.mnu.mpm.domain.MenuManageVO;
 import aramframework.com.sym.mnu.mpm.service.MenuManageService;
 import aramframework.com.sym.prm.service.ProgrmManageService;
@@ -74,7 +73,7 @@ public class MenuManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/mnu/mpm/MenuList");
+		return "sym/mnu/mpm/MenuList";
 	}
 
 	/**
@@ -88,7 +87,7 @@ public class MenuManageController {
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MenuManageVO menuManageVO) {
 		
-		return WebUtil.adjustViewName("/sym/mnu/mpm/MenuRegist");
+		return "sym/mnu/mpm/MenuRegist";
 	}
 
 	/**
@@ -106,23 +105,24 @@ public class MenuManageController {
 
 		beanValidator.validate(menuManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/mnu/mpm/MenuRegist");
+			return "sym/mnu/mpm/MenuRegist";
 		}
 
 		if (menuManageService.selectMenuNoByPk(menuManageVO) != 0) {
 			model.addAttribute("message", MessageHelper.getMessage("common.isExist.msg"));
-			return WebUtil.adjustViewName("/sym/mnu/mpm/MenuRegist");
+			return "sym/mnu/mpm/MenuRegist";
 		}
 		
 		if (progrmManageService.selectProgrmNMTotCnt(menuManageVO.getProgrmFileNm()) == 0) {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.insert"));
-			return WebUtil.adjustViewName("/sym/mnu/mpm/MenuRegist");
+			return "sym/mnu/mpm/MenuRegist";
 		} 
 		
 		menuManageService.insertMenuManage(menuManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenu.do");
+		model.addAttribute("redirectURL", "/sym/mnu/mpm/listMenu.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -139,7 +139,7 @@ public class MenuManageController {
 
 		model.addAttribute(menuManageService.selectMenuManage(menuManageVO));
 
-		return WebUtil.adjustViewName("/sym/mnu/mpm/MenuEdit");
+		return "sym/mnu/mpm/MenuEdit";
 	}
 
 	/**
@@ -157,18 +157,19 @@ public class MenuManageController {
 
 		beanValidator.validate(menuManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/mnu/mpm/MenuEdit");
+			return "sym/mnu/mpm/MenuEdit";
 		}
 		
 		if (progrmManageService.selectProgrmNMTotCnt(menuManageVO.getProgrmFileNm()) == 0) {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.update"));
-			return WebUtil.adjustViewName("/sym/mnu/mpm/MenuEdit");
+			return "sym/mnu/mpm/MenuEdit";
 		} 
 		
 		menuManageService.updateMenuManage(menuManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenu.do");
+		model.addAttribute("redirectURL", "/sym/mnu/mpm/listMenu.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -184,7 +185,8 @@ public class MenuManageController {
 		
 		if (menuManageService.selectUpperMenuNoByPk(menuManageVO) != 0) {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.delete.upperMenuExist"));
-	        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenu.do");
+			model.addAttribute("redirectURL", "/sym/mnu/mpm/listMenu.do");
+		    return "cmm/redirect";
 		}
 
 		menuManageService.deleteMenuManage(menuManageVO);
@@ -193,7 +195,8 @@ public class MenuManageController {
 		menuManageVO.setMenuNm(_MenuNm);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenu.do");
+		model.addAttribute("redirectURL", "/sym/mnu/mpm/listMenu.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -216,18 +219,21 @@ public class MenuManageController {
 		menuManageVO.setMenuNo(Integer.parseInt(delMenuNos[0]));
 		if (menuManageService.selectUpperMenuNoByPk(menuManageVO) != 0) {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.delete.upperMenuExist"));
-	        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenu.do");
+			model.addAttribute("redirectURL", "/sym/mnu/mpm/listMenu.do");
+		    return "cmm/redirect";
 		} 
 		
 		if (delMenuNos == null || (delMenuNos.length == 0)) {
 			model.addAttribute("message",  MessageHelper.getMessage("fail.common.delete"));
-	        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenu.do");
+			model.addAttribute("redirectURL", "/sym/mnu/mpm/listMenu.do");
+		    return "cmm/redirect";
 		} 
 
 		menuManageService.deleteMenuManageList(delMenuNos);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenu.do");
+		model.addAttribute("redirectURL", "/sym/mnu/mpm/listMenu.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -244,7 +250,7 @@ public class MenuManageController {
 
 		model.addAttribute("list_menulist", menuManageService.selectMenuList());
 
-		return WebUtil.adjustViewName("/sym/mnu/mpm/MenuTreeList");
+		return "sym/mnu/mpm/MenuTreeList";
 	}
 
 	/**
@@ -261,22 +267,25 @@ public class MenuManageController {
 
 		beanValidator.validate(menuManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/mnu/mpm/MenuTreeList");
+			return "sym/mnu/mpm/MenuTreeList";
 		}
 
 		if (menuManageService.selectMenuNoByPk(menuManageVO) != 0) {
 			model.addAttribute("message", MessageHelper.getMessage("common.isExist.msg"));
-	        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenuTree.do");
+			model.addAttribute("redirectURL", "/sym/mnu/mpm/listMenuTree.do");
+		    return "cmm/redirect";
 		}
 		if (progrmManageService.selectProgrmNMTotCnt(menuManageVO.getProgrmFileNm()) == 0) {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.insert"));
-	        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenuTree.do");
+			model.addAttribute("redirectURL", "/sym/mnu/mpm/listMenuTree.do");
+		    return "cmm/redirect";
 		} 
 		
 		menuManageService.insertMenuManage(menuManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenuTree.do");
+		model.addAttribute("redirectURL", "/sym/mnu/mpm/listMenuTree.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -293,18 +302,21 @@ public class MenuManageController {
 
 		beanValidator.validate(menuManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-	        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenuTree.do");
+			model.addAttribute("redirectURL", "/sym/mnu/mpm/listMenuTree.do");
+		    return "cmm/redirect";
 		}
 		
 		if (progrmManageService.selectProgrmNMTotCnt(menuManageVO.getProgrmFileNm()) == 0) {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.update"));
-	        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenuTree.do");
+			model.addAttribute("redirectURL", "/sym/mnu/mpm/listMenuTree.do");
+		    return "cmm/redirect";
 		} 
 		
 		menuManageService.updateMenuManage(menuManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenuTree.do");
+		model.addAttribute("redirectURL", "/sym/mnu/mpm/listMenuTree.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -322,7 +334,8 @@ public class MenuManageController {
 		menuManageService.deleteMenuManage(menuManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, menuManageVO, "/sym/mnu/mpm/listMenuTree.do");
+		model.addAttribute("redirectURL", "/sym/mnu/mpm/listMenuTree.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -338,7 +351,7 @@ public class MenuManageController {
 
 		model.addAttribute("list_menulist", menuManageService.selectMenuList());
 
-		return WebUtil.adjustViewName("/sym/mnu/mpm/MenuMvmn");
+		return "sym/mnu/mpm/MenuMvmn";
 	}
 
 	/* ### 일괄처리 프로세스 ### */
@@ -357,7 +370,7 @@ public class MenuManageController {
 		menuManageService.menuBndeAllDelete();
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.adjustViewName("/sym/mnu/mpm/MenuBndeRegist");
+		return "sym/mnu/mpm/MenuBndeRegist";
 	}
 
 	/**
@@ -370,7 +383,7 @@ public class MenuManageController {
 	public String registMenuBnde(
 			@ModelAttribute MenuManageVO menuManageVO) {
 
-		return WebUtil.adjustViewName("/sym/mnu/mpm/MenuBndeRegist");
+		return "sym/mnu/mpm/MenuBndeRegist";
 	}
 	
 	/**
@@ -397,21 +410,23 @@ public class MenuManageController {
 						|| file.getOriginalFilename().endsWith(".XLS") 
 						|| file.getOriginalFilename().endsWith(".XLSX")) {
 
+/*
 					if (menuManageService.menuBndeAllDelete()) {
 						message = menuManageService.menuBndeRegist(menuManageVO, file.getInputStream());
 					} else {
 						message = MessageHelper.getMessage("fail.common.msg");
 						menuManageVO.setTmpCmd("EgovMenuBndeRegist Error!!");
 					}
+*/					
 				} else {
 					model.addAttribute("message", "xls, xlsx 파일 타입만 등록이 가능합니다.");
-					return WebUtil.adjustViewName("/sym/mnu/mpm/MenuBndeRegist");
+					return "sym/mnu/mpm/MenuBndeRegist";
 				}
 			} 
 		}
 		
 		model.addAttribute("message", message);
-		return WebUtil.adjustViewName("/sym/mnu/mpm/MenuBndeRegist");
+		return "sym/mnu/mpm/MenuBndeRegist";
 	}
 	
 }

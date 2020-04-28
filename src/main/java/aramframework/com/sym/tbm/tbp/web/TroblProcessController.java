@@ -14,7 +14,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.tbm.tbp.domain.TroblProcessVO;
 import aramframework.com.sym.tbm.tbp.service.TroblProcessService;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -74,7 +73,7 @@ public class TroblProcessController {
 		cmmUseService.populateCmmCodeList("COM065", "COM065_troblKnd");
 		cmmUseService.populateCmmCodeList("COM068", "COM068_processSttus");
 
-		return WebUtil.adjustViewName("/sym/tbm/tbp/TroblProcessList");
+		return "/sym/tbm/tbp/TroblProcessList";
 	}
 
 	/**
@@ -90,7 +89,7 @@ public class TroblProcessController {
 
 		troblProcessService.selectTroblProcess(troblProcessVO);
 		
-		return WebUtil.adjustViewName("/sym/tbm/tbp/TroblProcessRegist");
+		return "/sym/tbm/tbp/TroblProcessRegist";
 	}
 
 	/**
@@ -108,18 +107,19 @@ public class TroblProcessController {
 
 		beanValidator.validate(troblProcessVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/tbm/tbp/TroblProcessRegist");
+			return "/sym/tbm/tbp/TroblProcessRegist";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		troblProcessVO.setTroblProcessTime(StringUtil.removeMinusChar(troblProcessVO.getTroblProcessTime()));
-		troblProcessVO.setLastUpdusrId(loginVO.getId());
+		troblProcessVO.setLastUpdusrId(loginVO.getUserId());
 		troblProcessVO.setProcessSttus("C");
 
 		troblProcessService.insertTroblProcess(troblProcessVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, troblProcessVO, "/sym/tbm/tbp/listTroblProcess.do");
+		model.addAttribute("redirectURL", "/sym/tbm/tbp/listTroblProcess.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -139,7 +139,8 @@ public class TroblProcessController {
 		troblProcessService.deleteTroblProcess(troblProcessVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, troblProcessVO, "/sym/tbm/tbp/registTroblProcess.do");
-	}
+		model.addAttribute("redirectURL", "/sym/tbm/tbp/registTroblProcess.do");
+	    return "cmm/redirect";
+ 	}
 
 }

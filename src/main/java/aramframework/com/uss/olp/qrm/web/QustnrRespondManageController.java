@@ -14,7 +14,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.olp.qrm.domain.QustnrRespondManageVO;
 import aramframework.com.uss.olp.qrm.service.QustnrRespondManageService;
@@ -68,7 +67,7 @@ public class QustnrRespondManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/olp/qrm/QustnrRespondList");
+		return "/uss/olp/qrm/QustnrRespondList";
 	}
 
 	/**
@@ -90,7 +89,7 @@ public class QustnrRespondManageController {
 		// 직업코드조회
 		cmmUseService.populateCmmCodeList("COM034", "COM034_occpType");
 
-		return WebUtil.adjustViewName("/uss/olp/qrm/QustnrRespondDetail");
+		return "/uss/olp/qrm/QustnrRespondDetail";
 	}
 
 	/**
@@ -109,7 +108,7 @@ public class QustnrRespondManageController {
 		// 직업코드조회
 		cmmUseService.populateCmmCodeList("COM034", "COM034_occpType");
 
-		return WebUtil.adjustViewName("/uss/olp/qrm/QustnrRespondRegist");
+		return "/uss/olp/qrm/QustnrRespondRegist";
 	}
 
 	/**
@@ -128,17 +127,18 @@ public class QustnrRespondManageController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrRespondManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olp/qrm/QustnrRespondRegist");
+			return "/uss/olp/qrm/QustnrRespondRegist";
 		}
 		
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		qustnrRespondManageVO.setFrstRegisterId(loginVO.getUniqId());
+		qustnrRespondManageVO.setFrstRegisterId(loginVO.getUserId());
 
 		qustnrRespondManageService.insertQustnrRespondManage(qustnrRespondManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, qustnrRespondManageVO, "/uss/olp/qrm/listQustnrRespond.do");
+		model.addAttribute("redirectURL", "/uss/olp/qrm/listQustnrRespond.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -160,7 +160,7 @@ public class QustnrRespondManageController {
 		// 직업코드조회
 		cmmUseService.populateCmmCodeList("COM034", "COM034_occpType");
 
-		return WebUtil.adjustViewName("/uss/olp/qrm/QustnrRespondEdit");
+		return "/uss/olp/qrm/QustnrRespondEdit";
 	}
 
 	/**
@@ -179,17 +179,18 @@ public class QustnrRespondManageController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrRespondManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olp/qrm/QustnrRespondEdit");
+			return "/uss/olp/qrm/QustnrRespondEdit";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		qustnrRespondManageVO.setLastUpdusrId(loginVO.getUniqId());
+		qustnrRespondManageVO.setLastUpdusrId(loginVO.getUserId());
 
 		qustnrRespondManageService.updateQustnrRespondManage(qustnrRespondManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, qustnrRespondManageVO, "/uss/olp/qrm/listQustnrRespond.do");
+		model.addAttribute("redirectURL", "/uss/olp/qrm/listQustnrRespond.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -207,7 +208,8 @@ public class QustnrRespondManageController {
 		qustnrRespondManageService.deleteQustnrRespondManage(qustnrRespondManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, qustnrRespondManageVO, "/uss/olp/qrm/listQustnrRespond.do");
+		model.addAttribute("redirectURL", "/uss/olp/qrm/listQustnrRespond.do");
+	    return "cmm/redirect";
 	}
 
 }

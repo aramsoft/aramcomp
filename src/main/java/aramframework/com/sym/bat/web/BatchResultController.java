@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.bat.domain.BatchResultVO;
 import aramframework.com.sym.bat.service.BatchResultService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -51,7 +50,7 @@ public class BatchResultController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/bat/BatchResultList");
+		return "sym/bat/BatchResultList";
 	}
 
 	/**
@@ -68,7 +67,7 @@ public class BatchResultController {
 		
 		model.addAttribute(batchResultService.selectBatchResult(batchResultVO));
 
-		return WebUtil.adjustViewName("/sym/bat/BatchResultDetail");
+		return "sym/bat/BatchResultDetail";
 	}
 
 	/**
@@ -85,7 +84,8 @@ public class BatchResultController {
 		batchResultService.deleteBatchResult(batchResultVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, batchResultVO, "/sym/bat/listBatchResult.do");
+		model.addAttribute("redirectURL", "/sym/bat/listBatchResult.do");
+	    return "cmm/redirect";
 	}
 
 }

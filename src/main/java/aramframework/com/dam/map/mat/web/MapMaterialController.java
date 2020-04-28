@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.dam.map.mat.domain.MapMaterialVO;
 import aramframework.com.dam.map.mat.service.MapMaterialService;
 import aramframework.com.dam.map.tea.domain.MapTeamVO;
@@ -66,7 +65,7 @@ public class MapMaterialController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/dam/map/mat/MapMaterialList");
+		return "/dam/map/mat/MapMaterialList";
 	}
 
 	/**
@@ -82,7 +81,7 @@ public class MapMaterialController {
 
 		model.addAttribute(mapMaterialService.selectMapMaterial(mapMaterialVO));
 
-		return WebUtil.adjustViewName("/dam/map/mat/MapMaterialDetail");
+		return "/dam/map/mat/MapMaterialDetail";
 	}
 
 	/**
@@ -98,7 +97,7 @@ public class MapMaterialController {
 
 		populateMapTeam(model);
 		
-		return WebUtil.adjustViewName("/dam/map/mat/MapMaterialRegist");
+		return "/dam/map/mat/MapMaterialRegist";
 	}
 
 	/**
@@ -118,17 +117,18 @@ public class MapMaterialController {
 
 			populateMapTeam(model);
 			
-			return WebUtil.adjustViewName("/dam/map/mat/MapMaterialRegist");
+			return "/dam/map/mat/MapMaterialRegist";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		mapMaterialVO.setFrstRegisterId(loginVO.getUniqId());
+		mapMaterialVO.setFrstRegisterId(loginVO.getUserId());
 
 		mapMaterialService.insertMapMaterial(mapMaterialVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, mapMaterialVO, "/dam/map/mat/listMapMaterial.do");
+		model.addAttribute("redirectURL", "/dam/map/mat/listMapMaterial.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -156,7 +156,7 @@ public class MapMaterialController {
 
 		model.addAttribute(mapMaterialService.selectMapMaterial(mapMaterialVO));
 
-		return WebUtil.adjustViewName("/dam/map/mat/MapMaterialEdit");
+		return "/dam/map/mat/MapMaterialEdit";
 	}
 
 	/**
@@ -173,17 +173,18 @@ public class MapMaterialController {
 
 		beanValidator.validate(mapMaterialVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/dam/map/mat/MapMaterialEdit");
+			return "/dam/map/mat/MapMaterialEdit";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		mapMaterialVO.setLastUpdusrId(loginVO.getUniqId());
+		mapMaterialVO.setLastUpdusrId(loginVO.getUserId());
 
 		mapMaterialService.updateMapMaterial(mapMaterialVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, mapMaterialVO, "/dam/map/mat/listMapMaterial.do");
+		model.addAttribute("redirectURL", "/dam/map/mat/listMapMaterial.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -200,7 +201,8 @@ public class MapMaterialController {
 		mapMaterialService.deleteMapMaterial(mapMaterialVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, mapMaterialVO, "/dam/map/mat/listMapMaterial.do");
+		model.addAttribute("redirectURL", "/dam/map/mat/listMapMaterial.do");
+	    return "cmm/redirect";
 	}
 
 }

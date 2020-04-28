@@ -19,7 +19,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.olp.qtm.domain.QustnrTmplatManageVO;
 import aramframework.com.uss.olp.qtm.service.QustnrTmplatManageService;
@@ -66,7 +65,7 @@ public class QustnrTmplatManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/olp/qtm/QustnrTmplatList");
+		return "/uss/olp/qtm/QustnrTmplatList";
 	}
 
 	/**
@@ -107,7 +106,7 @@ public class QustnrTmplatManageController {
 
 		model.addAttribute(qustnrTmplatManageService.selectQustnrTmplatManageDetail(qustnrTmplatManageVO));
 
-		return WebUtil.adjustViewName("/uss/olp/qtm/QustnrTmplatDetail");
+		return "/uss/olp/qtm/QustnrTmplatDetail";
 	}
 
 	/**
@@ -121,7 +120,7 @@ public class QustnrTmplatManageController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute QustnrTmplatManageVO qustnrTmplatManageVO) {
 
-		return WebUtil.adjustViewName("/uss/olp/qtm/QustnrTmplatRegist");
+		return "/uss/olp/qtm/QustnrTmplatRegist";
 	}
 
 	/**
@@ -142,7 +141,7 @@ public class QustnrTmplatManageController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrTmplatManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olp/qtm/QustnrTmplatRegist");
+			return "/uss/olp/qtm/QustnrTmplatRegist";
 		}
 
 		for (MultipartFile file : multiRequest.getFileMap().values()) {
@@ -156,12 +155,13 @@ public class QustnrTmplatManageController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		qustnrTmplatManageVO.setFrstRegisterId(loginVO.getUniqId());
+		qustnrTmplatManageVO.setFrstRegisterId(loginVO.getUserId());
 
 		qustnrTmplatManageService.insertQustnrTmplatManage(qustnrTmplatManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, qustnrTmplatManageVO, "/uss/olp/qtm/listQustnrTmplat.do");
+		model.addAttribute("redirectURL", "/uss/olp/qtm/listQustnrTmplat.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -178,7 +178,7 @@ public class QustnrTmplatManageController {
 
 		model.addAttribute(qustnrTmplatManageService.selectQustnrTmplatManageDetail(qustnrTmplatManageVO));
 
-		return WebUtil.adjustViewName("/uss/olp/qtm/QustnrTmplatEdit");
+		return "/uss/olp/qtm/QustnrTmplatEdit";
 	}
 
 	/**
@@ -200,7 +200,7 @@ public class QustnrTmplatManageController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrTmplatManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olp/qtm/QustnrTmplatEdit");
+			return "/uss/olp/qtm/QustnrTmplatEdit";
 		}
 
 		for (MultipartFile file : multiRequest.getFileMap().values()) {
@@ -215,12 +215,13 @@ public class QustnrTmplatManageController {
 		
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		qustnrTmplatManageVO.setLastUpdusrId(loginVO.getUniqId());
+		qustnrTmplatManageVO.setLastUpdusrId(loginVO.getUserId());
 
 		qustnrTmplatManageService.updateQustnrTmplatManage(qustnrTmplatManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, qustnrTmplatManageVO, "/uss/olp/qtm/listQustnrTmplat.do");
+		model.addAttribute("redirectURL", "/uss/olp/qtm/listQustnrTmplat.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -238,7 +239,8 @@ public class QustnrTmplatManageController {
 		qustnrTmplatManageService.deleteQustnrTmplatManage(qustnrTmplatManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, qustnrTmplatManageVO, "/uss/olp/qtm/listQustnrTmplat.do");
+		model.addAttribute("redirectURL", "/uss/olp/qtm/listQustnrTmplat.do");
+	    return "cmm/redirect";
 	}
 
 }

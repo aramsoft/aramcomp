@@ -4,8 +4,6 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
 import aramframework.com.sym.ccm.zip.domain.ZipVO;
-import egovframework.rte.fdl.excel.EgovExcelMapping;
-import egovframework.rte.fdl.excel.util.EgovExcelUtil;
 
 /**
  * Excel 우편번호 매핑 클래스
@@ -14,36 +12,77 @@ import egovframework.rte.fdl.excel.util.EgovExcelUtil;
  * @since 2014.11.11
  * @version 1.0
  */
-public class ExcelZipMapping extends EgovExcelMapping {
+public class ExcelZipMapping {
 
+	private int cells = 0;	// column 수
+	
+	public void setCells(Row row) {
+		this.cells = row.getPhysicalNumberOfCells();
+	}
+	
 	/**
 	 * 우편번호 엑셀파일 맵핑
 	 */
-	@Override
 	public Object mappingColumn(Row row) {
-		Cell cell0 = row.getCell((int) 0);
-		Cell cell1 = row.getCell((int) 1);
-		Cell cell2 = row.getCell((int) 2);
-		Cell cell3 = row.getCell((int) 3);
-		Cell cell4 = row.getCell((int) 4);
-		Cell cell5 = row.getCell((int) 5);
-		Cell cell6 = row.getCell((int) 6);
-		Cell cell7 = row.getCell((int) 7);
-
+		
 		ZipVO vo = new ZipVO();
 
-		vo.setZip(EgovExcelUtil.getValue(cell0));
-		vo.setSn(Integer.parseInt(EgovExcelUtil.getValue(cell1)));
-		vo.setCtprvnNm(EgovExcelUtil.getValue(cell2));
-		vo.setSignguNm(EgovExcelUtil.getValue(cell3));
-		vo.setEmdNm(EgovExcelUtil.getValue(cell4));
-		vo.setFrstRegisterId(EgovExcelUtil.getValue(cell7));
+		String value = "";
+		for (short c = 0; c < cells; c = (short)(c + 1)) {
+			Cell cell = row.getCell(c);
+			if (cell != null) {
+				switch (cell.getCellType()) {
+					case 0:
+						value = String.valueOf(cell.getNumericCellValue());
+						break;
+					case 1:
+						value = cell.getStringCellValue();
+						break;
+					case 2:
+						value = cell.getCellFormula();
+						break;
+					case 3:
+						value = null;
+						break;
+					case 4:
+						value = String.valueOf(cell.getBooleanCellValue());
+						break;
+					case 5:
+						value = String.valueOf(cell.getErrorCellValue());
+					default:
+						break;
+				}
+			}
+			else {
+				value = "";
+			}
 
-		if (cell5 != null) {
-			vo.setLiBuldNm(EgovExcelUtil.getValue(cell5));
-		}
-		if (cell6 != null) {
-			vo.setLnbrDongHo(EgovExcelUtil.getValue(cell6));
+			switch (c) {
+				case 0:		
+					vo.setZip(value);
+					break;
+				case 1:		
+					vo.setSn(Integer.parseInt(value));
+					break;
+				case 2:		
+					vo.setCtprvnNm(value);
+					break;
+				case 3:		
+					vo.setSignguNm(value);
+					break;
+				case 4:		
+					vo.setEmdNm(value);
+					break;
+				case 5:		
+					vo.setLiBuldNm(value);
+					break;
+				case 6:		
+					vo.setLnbrDongHo(value);
+					break;
+				case 7:		
+					vo.setFrstRegisterId(value);
+					break;
+			}
 		}
 
 		return vo;

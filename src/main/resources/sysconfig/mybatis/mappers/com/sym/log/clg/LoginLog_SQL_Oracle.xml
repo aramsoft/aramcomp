@@ -20,7 +20,7 @@
 				 , b.USER_NM 				AS "loginNm" 
 			  FROM COMTH_LOGIN_LOG a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.CONECT_ID = b.ESNTL_ID
+						ON a.CONECT_ID = b.USER_ID
 			 WHERE 1 = 1
 		]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
@@ -46,7 +46,7 @@
 			SELECT COUNT(a.LOG_ID) 			as cnt
 			  FROM COMTH_LOGIN_LOG a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.CONECT_ID = b.ESNTL_ID
+						ON a.CONECT_ID = b.USER_ID
 			 WHERE 1 = 1
 		]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
@@ -68,7 +68,7 @@
 				 , b.USER_NM 	 			AS "loginNm"		
 			  FROM COMTH_LOGIN_LOG a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.CONECT_ID = b.ESNTL_ID
+						ON a.CONECT_ID = b.USER_ID
 			 WHERE a.LOG_ID = #{logId}
 		]]>
 	</select>

@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -116,10 +115,10 @@ public class FileDownloadController {
 	 * @param 	response	HttpServletResponse
 	 * @throws 				Exception
 	 */
-	@RequestMapping(value = "/content/files/{filePathId}/file/{fileSn}")
+	@RequestMapping(value = "/files/{filePathId}/id/{fileSn}")
 	public void cvplFileDownload(
 			@PathVariable String filePathId, 
-			@PathVariable String fileSn, 
+			@PathVariable int fileSn, 
 			HttpServletRequest request, 
 			HttpServletResponse response) 
 	throws Exception {
@@ -131,7 +130,8 @@ public class FileDownloadController {
 		fileVO.setFileSn(fileSn);
 		
 		fileVO = fileMngService.selectFileInf(fileVO);
-
+		LOG.debug("fileVO = " + fileVO);
+		
 		File uFile = new File(fileVO.getFileStreCours(), fileVO.getStreFileNm());
 		int fSize = (int) uFile.length();
 
@@ -188,25 +188,4 @@ public class FileDownloadController {
 		}
 	}
 	
-	/**
-	 * 첨부파일로 등록된 파일에 대하여 다운로드를 제공한다.
-	 * 
-	 * @param 	filePathId	String
-	 * @param 	fileSn		String
-	 * @param 	request		HttpServletRequest
-	 * @param 	response	HttpServletResponse
-	 * @throws 				Exception
-	 */
-	@RequestMapping(value = "/content/authfiles/{filePathId}/file/{fileSn}")
-	@Secured("ROLE_USER")
-	public void cvplFileDownloadAuth(
-			@PathVariable String filePathId, 
-			@PathVariable String fileSn, 
-			HttpServletRequest request, 
-			HttpServletResponse response) 
-	throws Exception {
-		
-		cvplFileDownload(filePathId, fileSn, request, response);  
-	}
-
 }

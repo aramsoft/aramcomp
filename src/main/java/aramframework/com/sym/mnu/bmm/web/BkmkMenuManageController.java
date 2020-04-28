@@ -15,7 +15,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.mnu.bmm.domain.BkmkMenuManageVO;
 import aramframework.com.sym.mnu.bmm.service.BkmkMenuManageService;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -53,7 +52,7 @@ public class BkmkMenuManageController {
 		bkmkMenuManageVO.fillPageInfo(paginationInfo);
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		bkmkMenuManageVO.setUserId(loginVO.getId());
+		bkmkMenuManageVO.setUserId(loginVO.getUserId());
 		
 		model.addAttribute("resultList", bkmkMenuManageService.selectBkmkMenuManageList(bkmkMenuManageVO));
 		int totCnt = bkmkMenuManageService.selectBkmkMenuManageListCnt(bkmkMenuManageVO);
@@ -62,9 +61,9 @@ public class BkmkMenuManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
-		model.addAttribute("uniqId", loginVO.getUniqId());
+		model.addAttribute("uniqId", loginVO.getUserId());
 
-		return WebUtil.adjustViewName("/sym/mnu/bmm/BkmkMenuList");
+		return "/sym/mnu/bmm/BkmkMenuList";
 	}
 
 	/**
@@ -89,12 +88,13 @@ public class BkmkMenuManageController {
 		BkmkMenuManageVO bmmVO = new BkmkMenuManageVO();
 		for (int i = 0; i < menuIds.length; i++) {
 			bmmVO.setMenuId(menuIds[i]);
-			bmmVO.setUserId(loginVO.getId());
+			bmmVO.setUserId(loginVO.getUserId());
 			bkmkMenuManageService.deleteBkmkMenuManage(bmmVO);
 		}
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, bkmkMenuManageVO, "/sym/mnu/bmm/listBkmkMenu.do");
+		model.addAttribute("redirectURL", "/sym/mnu/bmm/listBkmkMenu.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -113,7 +113,7 @@ public class BkmkMenuManageController {
 			bkmkMenuManageVO.setProgrmStrePath(bkmkMenuManageService.selectUrl(bkmkMenuManageVO));
 		}
 		
-		return WebUtil.adjustViewName("/sym/mnu/bmm/BkmkMenuRegist");
+		return "/sym/mnu/bmm/BkmkMenuRegist";
 	}
 
 	/**
@@ -131,16 +131,17 @@ public class BkmkMenuManageController {
 
 		beanValidator.validate(bkmkMenuManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/mnu/bmm/BkmkMenuRegist");
+			return "/sym/mnu/bmm/BkmkMenuRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		bkmkMenuManageVO.setUserId(loginVO.getId());
+		bkmkMenuManageVO.setUserId(loginVO.getUserId());
 		
 		bkmkMenuManageService.insertBkmkMenuManage(bkmkMenuManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, bkmkMenuManageVO, "/sym/mnu/bmm/listBkmkMenu.do");
+		model.addAttribute("redirectURL", "/sym/mnu/bmm/listBkmkMenu.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -155,7 +156,7 @@ public class BkmkMenuManageController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		bkmkMenuManageVO.setUserId(loginVO.getId());
+		bkmkMenuManageVO.setUserId(loginVO.getUserId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
 		bkmkMenuManageVO.fillPageInfo(paginationInfo);
@@ -168,7 +169,7 @@ public class BkmkMenuManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/mnu/bmm/BkmkMenuPopup");
+		return "/sym/mnu/bmm/BkmkMenuPopup";
 	}
 
 	/**
@@ -184,11 +185,11 @@ public class BkmkMenuManageController {
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 
 		bkmkMenuManageVO.setSizeAndOffset(10, 0);
-		bkmkMenuManageVO.setUserId(loginVO.getId());
+		bkmkMenuManageVO.setUserId(loginVO.getUserId());
 
 		model.addAttribute("list_menulist", bkmkMenuManageService.selectBkmkMenuManageList(bkmkMenuManageVO));
 
-		return WebUtil.adjustViewName("/sym/mnu/bmm/BkmkMenuPreview");
+		return "/sym/mnu/bmm/BkmkMenuPreview";
 	}
 	
 }

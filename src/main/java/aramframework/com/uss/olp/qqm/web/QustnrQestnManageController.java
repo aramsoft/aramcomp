@@ -14,7 +14,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.olp.qqm.domain.QustnrQestnManageVO;
 import aramframework.com.uss.olp.qqm.service.QustnrQestnManageService;
@@ -66,7 +65,7 @@ public class QustnrQestnManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/olp/qqm/QustnrQestnListPopup");
+		return "/uss/olp/qqm/QustnrQestnListPopup";
 	}
 
 	/**
@@ -98,7 +97,7 @@ public class QustnrQestnManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/olp/qqm/QustnrQestnList");
+		return "/uss/olp/qqm/QustnrQestnList";
 	}
 
 	/**
@@ -118,7 +117,7 @@ public class QustnrQestnManageController {
 		// 공통코드 질문유형 조회
 		cmmUseService.populateCmmCodeList("COM018", "COM018_qestnType");
 
-		return WebUtil.adjustViewName("/uss/olp/qqm/QustnrQestnDetail");
+		return "/uss/olp/qqm/QustnrQestnDetail";
 	}
 
 	/**
@@ -135,7 +134,7 @@ public class QustnrQestnManageController {
 		// 공통코드 질문유형 조회
 		cmmUseService.populateCmmCodeList("COM018", "COM018_qestnType");
 
-		return WebUtil.adjustViewName("/uss/olp/qqm/QustnrQestnRegist");
+		return "/uss/olp/qqm/QustnrQestnRegist";
 	}
 	
 	/**
@@ -154,17 +153,18 @@ public class QustnrQestnManageController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrQestnManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olp/qqm/QustnrQestnRegist");
+			return "/uss/olp/qqm/QustnrQestnRegist";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		qustnrQestnManageVO.setFrstRegisterId(loginVO.getUniqId());
+		qustnrQestnManageVO.setFrstRegisterId(loginVO.getUserId());
 
 		qustnrQestnManageService.insertQustnrQestnManage(qustnrQestnManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, qustnrQestnManageVO, "/uss/olp/qqm/listQustnrQestn.do");
+		model.addAttribute("redirectURL", "/uss/olp/qqm/listQustnrQestn.do");
+	    return "cmm/redirect";
 	}
 	
 	/**
@@ -184,7 +184,7 @@ public class QustnrQestnManageController {
 		// 공통코드 질문유형 조회
 		cmmUseService.populateCmmCodeList("COM018", "COM018_qestnType");
 
-		return WebUtil.adjustViewName("/uss/olp/qqm/QustnrQestnEdit");
+		return "/uss/olp/qqm/QustnrQestnEdit";
 	}
 
 	/**
@@ -203,17 +203,18 @@ public class QustnrQestnManageController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrQestnManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olp/qqm/QustnrQestnEdit");
+			return "/uss/olp/qqm/QustnrQestnEdit";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		qustnrQestnManageVO.setLastUpdusrId(loginVO.getUniqId());
+		qustnrQestnManageVO.setLastUpdusrId(loginVO.getUserId());
 
 		qustnrQestnManageService.updateQustnrQestnManage(qustnrQestnManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, qustnrQestnManageVO, "/uss/olp/qqm/listQustnrQestn.do");
+		model.addAttribute("redirectURL", "/uss/olp/qqm/listQustnrQestn.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -231,7 +232,8 @@ public class QustnrQestnManageController {
 		qustnrQestnManageService.deleteQustnrQestnManage(qustnrQestnManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, qustnrQestnManageVO, "/uss/olp/qqm/listQustnrQestn.do");
+		model.addAttribute("redirectURL", "/uss/olp/qqm/listQustnrQestn.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -253,7 +255,7 @@ public class QustnrQestnManageController {
 		// 주관식설문통계
 		model.addAttribute("statisticsList2", qustnrQestnManageService.selectQustnrManageStatistics2(qustnrQestnManageVO));
 
-		return WebUtil.adjustViewName("/uss/olp/qqm/QustnrQestnStatistics");
+		return "/uss/olp/qqm/QustnrQestnStatistics";
 	}
 
 }

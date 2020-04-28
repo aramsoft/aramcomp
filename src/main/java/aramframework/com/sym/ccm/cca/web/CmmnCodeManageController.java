@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.ccm.cca.domain.CmmnCodeVO;
 import aramframework.com.sym.ccm.cca.service.CmmnCodeManageService;
 import aramframework.com.sym.ccm.ccc.domain.CmmnClCodeVO;
@@ -63,7 +62,7 @@ public class CmmnCodeManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/ccm/cca/CmmnCodeList");
+		return "sym/ccm/cca/CmmnCodeList";
 	}
 
 	/**
@@ -79,7 +78,7 @@ public class CmmnCodeManageController {
 
 		model.addAttribute(cmmnCodeManageService.selectCmmnCodeDetail(cmmnCodeVO));
 
-		return WebUtil.adjustViewName("/sym/ccm/cca/CmmnCodeDetail");
+		return "sym/ccm/cca/CmmnCodeDetail";
 	}
 
 	/**
@@ -99,7 +98,7 @@ public class CmmnCodeManageController {
 
 		model.addAttribute("cmmnClCode", cmmnClCodeManageService.selectCmmnClCodeList(cmmnClCodeVO));
 
-		return WebUtil.adjustViewName("/sym/ccm/cca/CmmnCodeRegist");
+		return "sym/ccm/cca/CmmnCodeRegist";
 	}
 
 	/**
@@ -117,16 +116,17 @@ public class CmmnCodeManageController {
 
 		beanValidator.validate(cmmnCodeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/ccm/cca/CmmnCodeRegist");
+			return "sym/ccm/cca/CmmnCodeRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		cmmnCodeVO.setFrstRegisterId(loginVO.getUniqId());
+		cmmnCodeVO.setFrstRegisterId(loginVO.getUserId());
 
 		cmmnCodeManageService.insertCmmnCode(cmmnCodeVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, cmmnCodeVO, "/sym/ccm/cca/listCmmnCode.do");
+		model.addAttribute("redirectURL", "/sym/ccm/cca/listCmmnCode.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -143,7 +143,7 @@ public class CmmnCodeManageController {
 
 		model.addAttribute(cmmnCodeManageService.selectCmmnCodeDetail(cmmnCodeVO));
 
-		return WebUtil.adjustViewName("/sym/ccm/cca/CmmnCodeEdit");
+		return "sym/ccm/cca/CmmnCodeEdit";
 	}
 
 	/**
@@ -161,16 +161,17 @@ public class CmmnCodeManageController {
 
 		beanValidator.validate(cmmnCodeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/ccm/cca/CmmnCodeEdit");
+			return "sym/ccm/cca/CmmnCodeEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		cmmnCodeVO.setLastUpdusrId(loginVO.getUniqId());
+		cmmnCodeVO.setLastUpdusrId(loginVO.getUserId());
 
 		cmmnCodeManageService.updateCmmnCode(cmmnCodeVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, cmmnCodeVO, "/sym/ccm/cca/listCmmnCode.do");
+		model.addAttribute("redirectURL", "/sym/ccm/cca/listCmmnCode.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -181,13 +182,15 @@ public class CmmnCodeManageController {
 	@RequestMapping(value = "/sym/ccm/cca/deleteCmmnCode.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteCmmnCode(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CmmnCodeVO cmmnCodeVO, 
 			ModelMap model) {
 
 		cmmnCodeManageService.deleteCmmnCode(cmmnCodeVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, cmmnCodeVO, "/sym/ccm/cca/listCmmnCode.do");
+		model.addAttribute("redirectURL", "/sym/ccm/cca/listCmmnCode.do");
+	    return "cmm/redirect";
 	}
 
 }

@@ -54,7 +54,7 @@ public class MemoTodoController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		memoTodoVO.setSearchId(loginVO.getUniqId());
+		memoTodoVO.setSearchId(loginVO.getUserId());
 
 		java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyyMMdd", java.util.Locale.KOREA);
 		String strToday = formatter.format(new java.util.Date());
@@ -64,7 +64,7 @@ public class MemoTodoController {
 
 		model.addAttribute("resultList", memoTodoService.selectMemoTodoListToday(memoTodoVO));
 
-		return WebUtil.adjustViewName("/cop/smt/mtm/MemoTodoListToday");
+		return "/cop/smt/mtm/MemoTodoListToday";
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class MemoTodoController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		memoTodoVO.setSearchId(loginVO.getUniqId());
+		memoTodoVO.setSearchId(loginVO.getUserId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
 		memoTodoVO.fillPageInfo(paginationInfo);
@@ -94,7 +94,7 @@ public class MemoTodoController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/smt/mtm/MemoTodoList");
+		return "/cop/smt/mtm/MemoTodoList";
 	}
 
 	/**
@@ -119,7 +119,7 @@ public class MemoTodoController {
 
 		model.addAttribute(memoTodoVO);
 
-		return WebUtil.adjustViewName("/cop/smt/mtm/MemoTodoDetail");
+		return "/cop/smt/mtm/MemoTodoDetail";
 	}
 
 	// 할일일자(시)
@@ -145,10 +145,10 @@ public class MemoTodoController {
 
 		java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyyMMdd", java.util.Locale.KOREA);
 		memoTodoVO.setTodoDe(formatter.format(new java.util.Date()));
-		memoTodoVO.setWrterId(loginVO.getUniqId());
+		memoTodoVO.setWrterId(loginVO.getUserId());
 		memoTodoVO.setWrterNm(loginVO.getName());
 
-		return WebUtil.adjustViewName("/cop/smt/mtm/MemoTodoRegist");
+		return "/cop/smt/mtm/MemoTodoRegist";
 	}
 
 	/**
@@ -167,12 +167,12 @@ public class MemoTodoController {
 		// 서버 validate 체크
 		beanValidator.validate(memoTodoVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/smt/mtm/MemoTodoRegist");
+			return "/cop/smt/mtm/MemoTodoRegist";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		memoTodoVO.setFrstRegisterId(loginVO.getUniqId());
+		memoTodoVO.setFrstRegisterId(loginVO.getUserId());
 
 		memoTodoVO.setTodoBeginTime(memoTodoVO.getTodoDe() + memoTodoVO.getTodoBeginHour() + memoTodoVO.getTodoBeginMin());
 		memoTodoVO.setTodoEndTime(memoTodoVO.getTodoDe() + memoTodoVO.getTodoEndHour() + memoTodoVO.getTodoEndMin());
@@ -180,7 +180,8 @@ public class MemoTodoController {
 		memoTodoService.insertMemoTodo(memoTodoVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, memoTodoVO, "/cop/smt/mtm/listMemoTodo.do");
+		model.addAttribute("redirectURL", "/cop/smt/mtm/listMemoTodo.do");
+	    return "cmm/redirect";
 	}
 	
 	/**
@@ -205,7 +206,7 @@ public class MemoTodoController {
 
 		model.addAttribute(memoTodoVO);
 
-		return WebUtil.adjustViewName("/cop/smt/mtm/MemoTodoEdit");
+		return "/cop/smt/mtm/MemoTodoEdit";
 	}
 
 	/**
@@ -223,11 +224,11 @@ public class MemoTodoController {
 		
 		beanValidator.validate(memoTodoVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/smt/mtm/MemoTodoEdit");
+			return "/cop/smt/mtm/MemoTodoEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		memoTodoVO.setLastUpdusrId(loginVO.getUniqId());
+		memoTodoVO.setLastUpdusrId(loginVO.getUserId());
 
 		memoTodoVO.setTodoBeginTime(memoTodoVO.getTodoDe() + memoTodoVO.getTodoBeginHour() + memoTodoVO.getTodoBeginMin());
 		memoTodoVO.setTodoEndTime(memoTodoVO.getTodoDe() + memoTodoVO.getTodoEndHour() + memoTodoVO.getTodoEndMin());
@@ -235,7 +236,8 @@ public class MemoTodoController {
 		memoTodoService.updateMemoTodo(memoTodoVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, memoTodoVO, "/cop/smt/mtm/listMemoTodo.do");
+		model.addAttribute("redirectURL", "/cop/smt/mtm/listMemoTodo.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -253,7 +255,8 @@ public class MemoTodoController {
 		memoTodoService.deleteMemoTodo(memoTodoVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, memoTodoVO, "/cop/smt/mtm/listMemoTodo.do");
+		model.addAttribute("redirectURL", "/cop/smt/mtm/listMemoTodo.do");
+	    return "cmm/redirect";
 	}
 
 }

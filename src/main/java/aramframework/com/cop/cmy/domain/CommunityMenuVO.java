@@ -13,38 +13,38 @@ public class CommunityMenuVO extends BaseVO {
 
 	// domain
 	/** 대상 아이디 */
-	private String trgetId = "";
+	private String trgetId;
 
-	/** 메뉴번호 */
-	private int menuNo;
+	/** 메뉴명 */
+	private String menuNm;
 
 	/** 메뉴한글명 */
-	private String menuNm;
+	private String menuKnm;
+
+	/** 메뉴번호 */
+	private String menuPos;
 
 	/** 프로그램파일명 */
 	private String progrmFileNm;
 
-	/** 메뉴설명 */
-	private String menuDc;
-
-	/** 사용여부 */
-	private String useAt;
-
-	/** 관리자메뉴여부 */
-	private String mgrAt;
-
 	/** 바로가기 URL */
 	private String directUrl;
+
+	/** 메뉴설명 */
+	private String menuDc;
 
 	/** 상위메뉴여부 */
 	private String topMenuAt;
 
-	/** 메뉴별명 */
-	private String menuAlias;
+	/** 관리자메뉴여부 */
+	private String mgrAt;
+
+	/** 사용여부 */
+	private String useAt;
 
 	// helper
-	/** 새메뉴번호 */
-	private int newMenuNo;
+	/** 새메뉴명 */
+	private String newMenuNm;
 	
 	// domain
 	/**
@@ -59,28 +59,10 @@ public class CommunityMenuVO extends BaseVO {
 	 * trgetId attribute 값을 설정한다.
 	 * 
 	 * @param trgetId
-	 *            the trgetId to set
+	 *            
 	 */
 	public void setTrgetId(String trgetId) {
 		this.trgetId = trgetId;
-	}
-
-	/**
-	 * menuNo attribute를 리턴한다.
-	 * 
-	 * @return int
-	 */
-	public int getMenuNo() {
-		return menuNo;
-	}
-	/**
-	 * menuNo attribute 값을 설정한다.
-	 * 
-	 * @param menuNo
-	 *            int
-	 */
-	public void setMenuNo(int menuNo) {
-		this.menuNo = menuNo;
 	}
 
 	/**
@@ -95,10 +77,46 @@ public class CommunityMenuVO extends BaseVO {
 	 * menuNm attribute 값을 설정한다.
 	 * 
 	 * @param menuNm
-	 *            String
+	 *            
 	 */
 	public void setMenuNm(String menuNm) {
 		this.menuNm = menuNm;
+	}
+
+	/**
+	 * menuKnm attribute를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getMenuKnm() {
+		return menuKnm;
+	}
+	/**
+	 * menuKnm attribute 값을 설정한다.
+	 * 
+	 * @param menuKnm
+	 *            
+	 */
+	public void setMenuKnm(String menuKnm) {
+		this.menuKnm = menuKnm;
+	}
+
+	/**
+	 * menuPos attribute를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getMenuPos() {
+		return menuPos;
+	}
+	/**
+	 * menuPos attribute 값을 설정한다.
+	 * 
+	 * @param menuPos
+	 *            
+	 */
+	public void setMenuPos(String menuPos) {
+		this.menuPos = menuPos;
 	}
 
 	/**
@@ -120,60 +138,6 @@ public class CommunityMenuVO extends BaseVO {
 	}
 
 	/**
-	 * menuDc attribute를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getMenuDc() {
-		return menuDc;
-	}
-	/**
-	 * menuDc attribute 값을 설정한다.
-	 * 
-	 * @param menuDc
-	 *            String
-	 */
-	public void setMenuDc(String menuDc) {
-		this.menuDc = menuDc;
-	}
-
-	/**
-	 * useAt attribute를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getUseAt() {
-		return useAt;
-	}
-	/**
-	 * useAt attribute 값을 설정한다.
-	 * 
-	 * @param useAt
-	 *            String
-	 */
-	public void setUseAt(String useAt) {
-		this.useAt = useAt;
-	}
-
-	/**
-	 * mgrAt attribute를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getMgrAt() {
-		return mgrAt;
-	}
-	/**
-	 * mgrAt attribute 값을 설정한다.
-	 * 
-	 * @param mgrAt
-	 *            String
-	 */
-	public void setMgrAt(String mgrAt) {
-		this.mgrAt = mgrAt;
-	}
-
-	/**
 	 * directUrl attribute를 리턴한다.
 	 * 
 	 * @return String
@@ -189,6 +153,24 @@ public class CommunityMenuVO extends BaseVO {
 	 */
 	public void setDirectUrl(String directUrl) {
 		this.directUrl = directUrl;
+	}
+
+	/**
+	 * menuDc attribute를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getMenuDc() {
+		return menuDc;
+	}
+	/**
+	 * menuDc attribute 값을 설정한다.
+	 * 
+	 * @param menuDc
+	 *            String
+	 */
+	public void setMenuDc(String menuDc) {
+		this.menuDc = menuDc;
 	}
 
 	/**
@@ -210,40 +192,58 @@ public class CommunityMenuVO extends BaseVO {
 	}
 
 	/**
-	 * menuAlias attribute를 리턴한다.
+	 * mgrAt attribute를 리턴한다.
 	 * 
 	 * @return String
 	 */
-	public String getMenuAlias() {
-		return menuAlias;
+	public String getMgrAt() {
+		return mgrAt;
 	}
 	/**
-	 * menuAlias attribute 값을 설정한다.
+	 * mgrAt attribute 값을 설정한다.
 	 * 
-	 * @param menuAlias
+	 * @param mgrAt
 	 *            String
 	 */
-	public void setMenuAlias(String menuAlias) {
-		this.menuAlias = menuAlias;
+	public void setMgrAt(String mgrAt) {
+		this.mgrAt = mgrAt;
+	}
+
+	/**
+	 * useAt attribute를 리턴한다.
+	 * 
+	 * @return String
+	 */
+	public String getUseAt() {
+		return useAt;
+	}
+	/**
+	 * useAt attribute 값을 설정한다.
+	 * 
+	 * @param useAt
+	 *            String
+	 */
+	public void setUseAt(String useAt) {
+		this.useAt = useAt;
 	}
 
 	// helper
 	/**
-	 * newMenuNo attribute를 리턴한다.
+	 * newMenuNm attribute를 리턴한다.
 	 * 
-	 * @return int
+	 * @return String
 	 */
-	public int getNewMenuNo() {
-		return newMenuNo;
+	public String getNewMenuNm() {
+		return newMenuNm;
 	}
 	/**
 	 * newMenuNo attribute 값을 설정한다.
 	 * 
 	 * @param newMenuNo
-	 *            int
+	 *            String
 	 */
-	public void setNewMenuNo(int newMenuNo) {
-		this.newMenuNo = newMenuNo;
+	public void setNewMenuNm(String newMenuNm) {
+		this.newMenuNm = newMenuNm;
 	}
 
 }

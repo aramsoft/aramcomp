@@ -12,7 +12,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.uas.domain.UserAbsnceVO;
 import aramframework.com.uss.ion.uas.service.UserAbsnceService;
@@ -59,7 +58,7 @@ public class UserAbsnceController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/ion/uas/UserAbsnceList");
+		return "/uss/ion/uas/UserAbsnceList";
 	}
 
 	/**
@@ -74,7 +73,7 @@ public class UserAbsnceController {
 
 		userAbsnceService.selectUserAbsnce(userAbsnceVO);
 
-		return WebUtil.adjustViewName("/uss/ion/uas/UserAbsnceRegist");
+		return "/uss/ion/uas/UserAbsnceRegist";
 	}
 
 	/**
@@ -89,13 +88,14 @@ public class UserAbsnceController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		userAbsnceVO.setLastUpdusrId(loginVO.getId());
+		userAbsnceVO.setLastUpdusrId(loginVO.getUserId());
 
 		userAbsnceService.insertUserAbsnce(userAbsnceVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, userAbsnceVO, "/uss/ion/uas/listUserAbsnce.do");
-	}
+		model.addAttribute("redirectURL", "/uss/ion/uas/listUserAbsnce.do");
+	    return "cmm/redirect";
+ 	}
 
 	/**
 	 * 사용자부재정보를 수정화면으로 이동한다.
@@ -110,7 +110,7 @@ public class UserAbsnceController {
 
 		model.addAttribute(userAbsnceService.selectUserAbsnce(userAbsnceVO));
 
-		return WebUtil.adjustViewName("/uss/ion/uas/UserAbsnceEdit");
+		return "/uss/ion/uas/UserAbsnceEdit";
 	}
 
 	/**
@@ -125,12 +125,13 @@ public class UserAbsnceController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		userAbsnceVO.setLastUpdusrId(loginVO.getId());
+		userAbsnceVO.setLastUpdusrId(loginVO.getUserId());
 
 		userAbsnceService.updateUserAbsnce(userAbsnceVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, userAbsnceVO, "/uss/ion/uas/listUserAbsnce.do");
+		model.addAttribute("redirectURL", "/uss/ion/uas/listUserAbsnce.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -147,7 +148,8 @@ public class UserAbsnceController {
 		userAbsnceService.deleteUserAbsnce(userAbsnceVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, userAbsnceVO, "/uss/ion/uas/listUserAbsnce.do");
+		model.addAttribute("redirectURL", "/uss/ion/uas/listUserAbsnce.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -165,7 +167,8 @@ public class UserAbsnceController {
 		userAbsnceService.deleteUserAbsnces(userIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, userAbsnceVO, "/uss/ion/uas/listUserAbsnce.do");
+		model.addAttribute("redirectURL", "/uss/ion/uas/listUserAbsnce.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -184,7 +187,7 @@ public class UserAbsnceController {
 
 		model.addAttribute("resultList", userAbsnceService.selectUserAbsnceList(userAbsnceVO));
 
-		return WebUtil.adjustViewName("/uss/ion/uas/UserAbsnceMainPage");
+		return "/uss/ion/uas/UserAbsnceMainPage";
 	}
 	
 }

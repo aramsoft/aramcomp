@@ -16,7 +16,6 @@ import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.log.slg.domain.SysHistoryVO;
 import aramframework.com.sym.log.slg.service.SysHistoryService;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -67,7 +66,7 @@ public class SysHistoryController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/log/slg/SysHistList");
+		return "/sym/log/slg/SysHistList";
 	}
 
 	/**
@@ -84,7 +83,7 @@ public class SysHistoryController {
 
 		model.addAttribute(sysHistoryService.selectSysHistory(sysHistoryVO));
 
-		return WebUtil.adjustViewName("/sym/log/slg/SysHistDetail");
+		return "/sym/log/slg/SysHistDetail";
 	}
 
 	/**
@@ -101,7 +100,7 @@ public class SysHistoryController {
 
 		cmmUseService.populateCmmCodeList("COM002", "COM002_histSe");
 
-		return WebUtil.adjustViewName("/sym/log/slg/SysHistRegist");
+		return "/sym/log/slg/SysHistRegist";
 	}
 
 	/**
@@ -121,19 +120,20 @@ public class SysHistoryController {
 
 		beanValidator.validate(sysHistoryVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/log/slg/SysHistRegist");
+			return "/sym/log/slg/SysHistRegist";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
 		sysHistoryVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "SHF_"));
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		sysHistoryVO.setFrstRegisterId(loginVO.getUniqId());
+		sysHistoryVO.setFrstRegisterId(loginVO.getUserId());
 		
 		sysHistoryService.insertSysHistory(sysHistoryVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, sysHistoryVO, "/sym/log/slg/listSysHistory.do");
+		model.addAttribute("redirectURL", "/sym/log/slg/listSysHistory.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -152,7 +152,7 @@ public class SysHistoryController {
 
 		cmmUseService.populateCmmCodeList("COM002", "COM002_histSe");
 		
-		return WebUtil.adjustViewName("/sym/log/slg/SysHistEdit");
+		return "/sym/log/slg/SysHistEdit";
 	}
 
 	/**
@@ -172,7 +172,7 @@ public class SysHistoryController {
 
 		beanValidator.validate(sysHistoryVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/log/slg/SysHistEdit");
+			return "/sym/log/slg/SysHistEdit";
 		}
 
 		// 첨부파일 관련 ID 생성 start....
@@ -182,7 +182,8 @@ public class SysHistoryController {
 		sysHistoryService.updateSysHistory(sysHistoryVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, sysHistoryVO, "/sym/log/slg/listSysHistory.do");
+		model.addAttribute("redirectURL", "/sym/log/slg/listSysHistory.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -199,7 +200,8 @@ public class SysHistoryController {
 		sysHistoryService.deleteSysHistory(sysHistoryVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, sysHistoryVO, "/sym/log/slg/listSysHistory.do");
+		model.addAttribute("redirectURL", "/sym/log/slg/listSysHistory.do");
+	    return "cmm/redirect";
 	}
 
 }

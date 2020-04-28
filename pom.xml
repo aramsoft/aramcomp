@@ -9,9 +9,9 @@
 	<url>http://aramcomp.aramsoft.co.kr</url> 
 
 	<properties>
-	    <spring.version>5.2.1.RELEASE</spring.version>
+	    <spring.version>5.2.3.RELEASE</spring.version>
 	    <spring.security.version>5.2.1.RELEASE</spring.security.version>
-		<egovframework.rte.version>3.1.0</egovframework.rte.version>
+		<egovframework.rte.version>3.9.0</egovframework.rte.version>
 	</properties>
 
 	<dependencies>
@@ -120,11 +120,13 @@
 			<artifactId>egovframework.rte.ptl.mvc</artifactId>
 			<version>${egovframework.rte.version}</version>
 		</dependency>
+<!-- 
 		<dependency>
 			<groupId>egovframework.rte</groupId>
 			<artifactId>egovframework.rte.fdl.property</artifactId>
 			<version>${egovframework.rte.version}</version>
 		</dependency>
+-->
 		<dependency>
 			<groupId>egovframework.rte</groupId>
 			<artifactId>egovframework.rte.fdl.crypto</artifactId>
@@ -147,20 +149,19 @@
 			<artifactId>egovframework.rte.fdl.logging</artifactId>
 			<version>${egovframework.rte.version}</version>
 		</dependency>
+<!-- 
 		<dependency>
 			<groupId>egovframework.rte</groupId>
 			<artifactId>egovframework.rte.fdl.excel</artifactId>
 			<version>${egovframework.rte.version}</version>
-			<exclusions>
-		        <exclusion>
-		            <groupId>egovframework.rte</groupId>
-		            <artifactId>egovframework.rte.fdl.filehandling</artifactId>
-		        </exclusion>
-		    </exclusions> 
 		</dependency>
-		
+-->		
 		<!-- 실행환경 라이브러리 끝 -->
-
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.3</version>
+		</dependency>
 
 		<!-- common-annotations for JSE 5 -->
 		<dependency>
@@ -188,14 +189,6 @@
 			<version>1.19</version>
 		</dependency>
 
-		<!-- cache -->
-		<dependency>
-			<groupId>net.sf.ehcache</groupId>
-			<artifactId>ehcache-core</artifactId>
-			<version>2.4.1</version>
-		</dependency>
-		<!-- cache end -->
-				
 		<!-- Scheduling -->
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
@@ -211,29 +204,20 @@
  				
 		<!-- 공통컴포넌트 시작 -->
 
-		<!-- 우편번호를 위한 라이브러리(이메일 밸리데이션)  -->
-		<dependency>
-			<groupId>oro</groupId>
-			<artifactId>oro</artifactId>
-			<version>2.0.8</version>
-		</dependency>
-
-		<!-- 요소기술 달력을 위한 라이브러리 -->
-		<!-- 
-		<dependency>
-			<groupId>com.ibm.icu</groupId>
-			<artifactId>icu4j</artifactId>
-			<version>4.8</version>
-		</dependency>
-		-->
-				
 		<!-- FTP용 3rd party 라이브러리 -->
 		<dependency>
 			<groupId>commons-net</groupId>
 			<artifactId>commons-net</artifactId>
 			<version>3.0.1</version>
 		</dependency>
-				
+		
+		<!-- JDBC -->		
+		<dependency>
+		    <groupId>org.postgresql</groupId>
+		    <artifactId>postgresql</artifactId>
+		    <version>9.4.1208</version>
+		</dependency>
+		
 		<!-- Email -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -262,13 +246,6 @@
 			<scope>provided</scope>
 		</dependency>
 		
-		<!-- LDAP SDK -->
-		<dependency>
-			<groupId>ldapsdk</groupId>
-			<artifactId>ldapsdk</artifactId>
-			<version>4.1</version>
-		</dependency>
-
 		<!-- XML스키마를 자바클래스로 생성하는 라이브러리 -->
  		<dependency>
 			<groupId>org.apache.xmlbeans</groupId>
@@ -288,6 +265,18 @@
 			<version>1.3.3</version>
 		</dependency>
 
+		<!-- excel -->
+		<dependency>      
+			<groupId>org.apache.poi</groupId>    
+			<artifactId>poi</artifactId>      
+			<version>3.10.1</version> 
+		</dependency>   
+		<dependency>      
+			<groupId>org.apache.poi</groupId>      
+			<artifactId>poi-ooxml</artifactId>      
+		 	<version>3.10.1</version>  
+		</dependency> 
+		 
 		<!-- Tiles -->
     	<dependency>
             <groupId>org.apache.tiles</groupId>
@@ -295,6 +284,12 @@
             <version>3.0.8</version>
         </dependency>
         
+		<!-- KOMORAN -->
+		<dependency>
+		    <groupId>com.github.shin285</groupId>
+		    <artifactId>KOMORAN</artifactId>
+		    <version>3.3.8</version>
+		</dependency>
 		<!-- 공통컴포넌트 끝 -->
 
 		<!-- 모바일 신규공통컴포넌트  -->
@@ -305,9 +300,8 @@
 			<version>2.0.2</version>
 		</dependency>
 	
-		<!-- 모바일 신규공통컴포넌트  -->
-		
 		<!-- 3rd party 라이브러리로 별도의 설치 필요  -->
+
 		<dependency>
 			<groupId>egovframework.com.ems</groupId>
 			<artifactId>sndng-mail</artifactId>
@@ -316,7 +310,7 @@
 			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/sndng-mail-1.0.jar</systemPath>
 		</dependency>
 
-		<!--  M-Gov (SMS Service API) -->
+		<!--  M-Gov (SMS Service API) --> 
 		<dependency>
 			<groupId>kr.go.mgov</groupId>
 			<artifactId>smeapi</artifactId>
@@ -336,8 +330,8 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.6</source>
-                       <target>1.6</target>
+					<source>1.8</source>
+                       <target>1.8</target>
                        <encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
@@ -399,6 +393,10 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
-	</repositories>
+	    <repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>	
 
 </project>

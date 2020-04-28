@@ -21,7 +21,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.ans.domain.AnnvrsryManageVO;
 import aramframework.com.uss.ion.ans.service.AnnvrsryManageService;
@@ -74,7 +73,7 @@ public class AnnvrsryManageController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		annvrsryManageVO.setUsid(loginVO.getUniqId());
+		annvrsryManageVO.setUsid(loginVO.getUserId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
 		annvrsryManageVO.fillPageInfo(paginationInfo);
@@ -87,7 +86,7 @@ public class AnnvrsryManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/ion/ans/AnnvrsryList");
+		return "/uss/ion/ans/AnnvrsryList";
 	}
 
 	/**
@@ -120,7 +119,7 @@ public class AnnvrsryManageController {
 
 		model.addAttribute(annvrsryManageVO);
 		
-		return WebUtil.adjustViewName("/uss/ion/ans/AnnvrsryDetail");
+		return "/uss/ion/ans/AnnvrsryDetail";
 	}
 
 	/**
@@ -135,7 +134,7 @@ public class AnnvrsryManageController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		annvrsryManageVO.setUsid(loginVO.getUniqId());
+		annvrsryManageVO.setUsid(loginVO.getUserId());
 		annvrsryManageVO.setAnnvrsrySetup("Y");
 		annvrsryManageVO.setCldrSe("1"); // 1:양력 2:음력
 		annvrsryManageVO.setUsNm(loginVO.getName()); // 사용자명
@@ -143,7 +142,7 @@ public class AnnvrsryManageController {
 
 		cmmUseService.populateCmmCodeList("COM069", "COM069_annvrsrySe");
 
-		return WebUtil.adjustViewName("/uss/ion/ans/AnnvrsryRegist");
+		return "/uss/ion/ans/AnnvrsryRegist";
 	}
 
 	/**
@@ -161,21 +160,22 @@ public class AnnvrsryManageController {
 		beanValidator.validate(annvrsryManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.insert"));
-			return WebUtil.adjustViewName("/uss/ion/ans/AnnvrsryRegist");
+			return "/uss/ion/ans/AnnvrsryRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		annvrsryManageVO.setFrstRegisterId(loginVO.getUniqId());
+		annvrsryManageVO.setFrstRegisterId(loginVO.getUserId());
 
 		if (annvrsryManageService.selectAnnvrsryManageDplctAt(annvrsryManageVO) != 0) {
 			model.addAttribute("message", "이미 등록된 데이타입니다. 해당 데이타를 확인해 주세요");
-			return WebUtil.adjustViewName("/uss/ion/ans/AnnvrsryRegist");
+			return "/uss/ion/ans/AnnvrsryRegist";
 		}
 		
 		annvrsryManageService.insertAnnvrsryManage(annvrsryManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, annvrsryManageVO, "/uss/ion/ans/listAnnvrsry.do");
+		model.addAttribute("redirectURL", "/uss/ion/ans/listAnnvrsry.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -193,7 +193,7 @@ public class AnnvrsryManageController {
 
 		cmmUseService.populateCmmCodeList("COM069", "COM069_annvrsrySe");
 
-		return WebUtil.adjustViewName("/uss/ion/ans/AnnvrsryEdit");
+		return "/uss/ion/ans/AnnvrsryEdit";
 	}
 
 	/**
@@ -210,17 +210,18 @@ public class AnnvrsryManageController {
 
 		beanValidator.validate(annvrsryManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/ans/AnnvrsryEdit");
+			return "/uss/ion/ans/AnnvrsryEdit";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		annvrsryManageVO.setLastUpdusrId(loginVO.getUniqId());
+		annvrsryManageVO.setLastUpdusrId(loginVO.getUserId());
 
 		annvrsryManageService.updateAnnvrsryManage(annvrsryManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, annvrsryManageVO, "/uss/ion/ans/listAnnvrsry.do");
-	}
+		model.addAttribute("redirectURL", "/uss/ion/ans/listAnnvrsry.do");
+	    return "cmm/redirect";
+	}    
 
 	/**
 	 * 기 등록된 기념일관리정보를 삭제한다.
@@ -236,7 +237,8 @@ public class AnnvrsryManageController {
 		annvrsryManageService.deleteAnnvrsryManage(annvrsryManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, annvrsryManageVO, "/uss/ion/ans/listAnnvrsry.do");
+		model.addAttribute("redirectURL", "/uss/ion/ans/listAnnvrsry.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -253,12 +255,12 @@ public class AnnvrsryManageController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		annvrsryManageVO.setUsid(loginVO.getUniqId());
+		annvrsryManageVO.setUsid(loginVO.getUserId());
 		annvrsryManageVO.setSizeAndOffset(5, 0);
 
 		model.addAttribute("resultList", annvrsryManageService.selectAnnvrsryGdcc(annvrsryManageVO));
 
-		return WebUtil.adjustViewName("/uss/ion/ans/AnnvrsryMainPage");
+		return "/uss/ion/ans/AnnvrsryMainPage";
 	}
 
 	/**
@@ -321,7 +323,7 @@ public class AnnvrsryManageController {
 
 		annvrsryManageVO.setAnnvrsryBeginDe(Long.toString(resultDay));
 
-		return WebUtil.adjustViewName("/uss/ion/ans/AnnvrsryGdcc");
+		return "/uss/ion/ans/AnnvrsryGdcc";
 	}
 
 	/**
@@ -352,7 +354,7 @@ public class AnnvrsryManageController {
 			model.addAttribute("message", message);
 		}
 
-		return WebUtil.adjustViewName("/uss/ion/ans/AnnvrsryBndeListPopup");
+		return "/uss/ion/ans/AnnvrsryBndeListPopup";
 	}
 
 	/**
@@ -372,13 +374,13 @@ public class AnnvrsryManageController {
 		// if(iTemp == 0 ){
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		annvrsryManageVO.setFrstRegisterId(loginVO.getUniqId());
+		annvrsryManageVO.setFrstRegisterId(loginVO.getUserId());
 
 		annvrsryManageService.insertAnnvrsryManageBnde(annvrsryManageVO, checkedAnnvrsryManageForInsert);
 
 		model.addAttribute("message", "true");
 
-		return WebUtil.adjustViewName("/uss/ion/ans/AnnvrsryBndeListPopup");
+		return "/uss/ion/ans/AnnvrsryBndeListPopup";
 
 		// }else{
 		// 		String sTempMessage =

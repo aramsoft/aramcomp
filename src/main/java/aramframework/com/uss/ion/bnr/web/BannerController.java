@@ -22,7 +22,6 @@ import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.FileMngService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.bnr.domain.BannerVO;
 import aramframework.com.uss.ion.bnr.service.BannerService;
@@ -78,7 +77,7 @@ public class BannerController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/ion/bnr/BannerList");
+		return "/uss/ion/bnr/BannerList";
 	}
 
 	/**
@@ -91,7 +90,7 @@ public class BannerController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute BannerVO bannerVO) {
 
-		return WebUtil.adjustViewName("/uss/ion/bnr/BannerRegist");
+		return "/uss/ion/bnr/BannerRegist";
 	}
 
 	/**
@@ -110,7 +109,7 @@ public class BannerController {
 
 		beanValidator.validate(bannerVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/bnr/BannerRegist");
+			return "/uss/ion/bnr/BannerRegist";
 		} 
 		
 		String atchFileId = "";
@@ -129,13 +128,14 @@ public class BannerController {
 		bannerVO.setBannerImage(bannerImage);
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		bannerVO.setUserId(loginVO.getId());
+		bannerVO.setUserId(loginVO.getUserId());
 
 		bannerService.insertBanner(bannerVO);
 	
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, bannerVO, "/uss/ion/bnr/listBanner.do");
-	}
+		model.addAttribute("redirectURL", "/uss/ion/bnr/listBanner.do");
+	    return "cmm/redirect";
+ 	}
 
 	/**
 	 * 배너수정 화면으로 이동한다.
@@ -150,7 +150,7 @@ public class BannerController {
 
 		model.addAttribute(bannerService.selectBanner(bannerVO));
 		
-		return WebUtil.adjustViewName("/uss/ion/bnr/BannerEdit");
+		return "/uss/ion/bnr/BannerEdit";
 	}
 
 	/**
@@ -169,7 +169,7 @@ public class BannerController {
 		
 		beanValidator.validate(bannerVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/bnr/BannerEdit");
+			return "/uss/ion/bnr/BannerEdit";
 		} 
 
 		String atchFileId = "";
@@ -196,12 +196,13 @@ public class BannerController {
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		bannerVO.setUserId(loginVO.getId());
+		bannerVO.setUserId(loginVO.getUserId());
 
 		bannerService.updateBanner(bannerVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, bannerVO, "/uss/ion/bnr/listBanner.do");
+		model.addAttribute("redirectURL", "/uss/ion/bnr/listBanner.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -218,7 +219,8 @@ public class BannerController {
 		bannerService.deleteBanner(bannerVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, bannerVO, "/uss/ion/bnr/listBanner.do");
+		model.addAttribute("redirectURL", "/uss/ion/bnr/listBanner.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -237,7 +239,8 @@ public class BannerController {
 		bannerService.deleteBanners(bannerIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, bannerVO, "/uss/ion/bnr/listBanner.do");
+		model.addAttribute("redirectURL", "/uss/ion/bnr/listBanner.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -254,7 +257,7 @@ public class BannerController {
 		model.addAttribute("fileList", bannerService.selectBannerResult(bannerVO));
 		model.addAttribute("resultType", bannerVO.getResultType());
 
-		return WebUtil.adjustViewName("/uss/ion/bnr/BannerView");
+		return "/uss/ion/bnr/BannerView";
 	}
 
 	/**
@@ -272,7 +275,7 @@ public class BannerController {
 
 		model.addAttribute("bannerList", bannerService.selectBannerList(bannerVO));
 
-		return WebUtil.adjustViewName("/uss/ion/bnr/BannerMainPage");
+		return "/uss/ion/bnr/BannerMainPage";
 	}
 	
 }

@@ -2,6 +2,7 @@ package aramframework.com.sym.ccm.zip.dao;
 
 import java.util.List;
 
+import aramframework.com.sym.ccm.zip.domain.ZipAramVO;
 import aramframework.com.sym.ccm.zip.domain.ZipVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
@@ -45,20 +46,6 @@ public interface ZipManageMapper {
 	public void insertZip(ZipVO zipVO);
 
 	/**
-	 * 우편번호를 등록한다.
-	 * 
-	 * @param zipVO
-	 */
-	public void insertExcelZip(ZipVO zipVO);
-
-	/**
-	 * 우편번호를 등록한다.
-	 * 
-	 * @param zipVO
-	 */
-	public void insertExcelZipAram(ZipVO zipVO);
-
-	/**
 	 * 우편번호를 수정한다.
 	 * 
 	 * @param zipVO
@@ -73,15 +60,24 @@ public interface ZipManageMapper {
 	public void deleteZip(ZipVO zipVO);
 
 	/**
-	 * 우편번호 전체를 삭제한다.
+	 * 우편번호 상세항목을 조회한다.
 	 * 
+	 * @param zipAramVO
 	 */
-	public void deleteAllZip();
+	public ZipAramVO selectZipDetailAram(ZipAramVO zipAramVO);
 
 	/**
-	 * 우편번호 전체를 삭제한다.(아람)
+	 * 우편번호를 등록한다.
 	 * 
+	 * @param zipAramVO
 	 */
-	public void deleteAllZipAram();
+	public void insertZipAram(ZipAramVO zipAramVO);
+
+	/**
+	 * 우편번호를 수정한다.
+	 * 
+	 * @param zipAramVO
+	 */
+	public void updateZipAram(ZipAramVO zipAramVO);
 
 }

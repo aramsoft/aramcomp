@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.dam.mgm.domain.KnoManagementVO;
 import aramframework.com.dam.mgm.service.KnoManagementService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -60,7 +59,7 @@ public class KnoManagementController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/dam/mgm/KnoManagementList");
+		return "/dam/mgm/KnoManagementList";
 	}
 
 	/**
@@ -80,7 +79,7 @@ public class KnoManagementController {
 		
 		model.addAttribute(knoManagementService.selectKnoManagement(knoManagementVO));
 
-		return WebUtil.adjustViewName("/dam/mgm/KnoManagementDetail");
+		return "/dam/mgm/KnoManagementDetail";
 	}
 
 	/**
@@ -96,7 +95,7 @@ public class KnoManagementController {
 
 		model.addAttribute(knoManagementService.selectKnoManagement(knoManagementVO));
 
-		return WebUtil.adjustViewName("/dam/mgm/KnoManagementEdit");
+		return "/dam/mgm/KnoManagementEdit";
 	}
 
 	/**
@@ -113,13 +112,14 @@ public class KnoManagementController {
 
 		beanValidator.validate(knoManagementVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/dam/mgm/KnoManagementEdit");
+			return "/dam/mgm/KnoManagementEdit";
 		}
 
 		knoManagementService.updateKnoManagement(knoManagementVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, knoManagementVO, "/dam/mgm/listKnoManagement.do");
+		model.addAttribute("redirectURL", "/dam/mgm/listKnoManagement.do");
+	    return "cmm/redirect";
 	}
 	
 }

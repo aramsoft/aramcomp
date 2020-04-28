@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uss.olp.opr.domain.OnlinePollResultVO;
 import aramframework.com.uss.olp.opr.service.OnlinePollResultService;
 
@@ -37,7 +36,7 @@ public class OnlinePollResultController {
 
 		model.addAttribute("resultList", onlinePollResultService.selectOnlinePollResultList(onlinePollResultVO));
 
-		return WebUtil.adjustViewName("/uss/olp/opr/OnlinePollResultList");
+		return "/uss/olp/opr/OnlinePollResultList";
 	}
 
 	/**
@@ -54,7 +53,8 @@ public class OnlinePollResultController {
 		onlinePollResultService.deleteOnlinePollResult(onlinePollResultVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, onlinePollResultVO, "/uss/olp/opr/listOnlinePollResult.do?pollId="+onlinePollResultVO.getPollId());
+		model.addAttribute("redirectURL", "/uss/olp/opr/listOnlinePollResult.do?pollId="+onlinePollResultVO.getPollId());
+	    return "cmm/redirect";
 	}
 
 }

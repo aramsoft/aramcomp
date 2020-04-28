@@ -19,7 +19,6 @@ import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.constant.AramProperties;
 import aramframework.com.cmm.domain.SearchVO;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.utl.sys.ssy.domain.SynchrnServerVO;
 import aramframework.com.utl.sys.ssy.service.SynchrnServerService;
@@ -74,7 +73,7 @@ public class SynchrnServerController {
 
 //		model.addAttribute("fileList", synchrnServerService.getFileName(uploadDir));
 
-		return WebUtil.adjustViewName("/utl/sys/ssy/SynchrnServerList");
+		return "/utl/sys/ssy/SynchrnServerList";
 	}
 
 	/**
@@ -93,7 +92,7 @@ public class SynchrnServerController {
 
 //		model.addAttribute("fileList", egovSynchrnServerService.selectSynchrnServerFiles(synchrnServerVO));
 
-		return WebUtil.adjustViewName("/utl/sys/ssy/SynchrnServerDetail");
+		return "/utl/sys/ssy/SynchrnServerDetail";
 	}
 
 	/**
@@ -107,7 +106,7 @@ public class SynchrnServerController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute SynchrnServerVO synchrnServerVO) {
 
-		return WebUtil.adjustViewName("/utl/sys/ssy/SynchrnServerRegist");
+		return "/utl/sys/ssy/SynchrnServerRegist";
 	}
 
 	/**
@@ -125,11 +124,11 @@ public class SynchrnServerController {
 
 		beanValidator.validate(synchrnServerVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/utl/sys/ssy/SynchrnServerRegist");
+			return "/utl/sys/ssy/SynchrnServerRegist";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		synchrnServerVO.setFrstRegisterId(loginVO.getId());
+		synchrnServerVO.setFrstRegisterId(loginVO.getUserId());
 		if (!synchrnServerVO.getSynchrnLc().endsWith("/")) {
 			synchrnServerVO.setSynchrnLc(synchrnServerVO.getSynchrnLc().concat("/"));
 		}
@@ -138,7 +137,8 @@ public class SynchrnServerController {
 		synchrnServerService.insertSynchrnServer(synchrnServerVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, synchrnServerVO, "/utl/sys/ssy/listSynchrnServer.do");
+		model.addAttribute("redirectURL", "/utl/sys/ssy/listSynchrnServer.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -155,7 +155,7 @@ public class SynchrnServerController {
 
 		model.addAttribute(synchrnServerService.selectSynchrnServer(synchrnServerVO));
 		
-		return WebUtil.adjustViewName("/utl/sys/ssy/SynchrnServerEdit");
+		return "/utl/sys/ssy/SynchrnServerEdit";
 	}
 
 	/**
@@ -173,11 +173,11 @@ public class SynchrnServerController {
 
 		beanValidator.validate(synchrnServerVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/utl/sys/ssy/SynchrnServerEdit");
+			return "/utl/sys/ssy/SynchrnServerEdit";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		synchrnServerVO.setLastUpdusrId(loginVO.getId());
+		synchrnServerVO.setLastUpdusrId(loginVO.getUserId());
 		if (!synchrnServerVO.getSynchrnLc().endsWith("/")) {
 			synchrnServerVO.setSynchrnLc(synchrnServerVO.getSynchrnLc().concat("/"));
 		}
@@ -185,7 +185,8 @@ public class SynchrnServerController {
 		synchrnServerService.updateSynchrnServer(synchrnServerVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, synchrnServerVO, "/utl/sys/ssy/listSynchrnServer.do");
+		model.addAttribute("redirectURL", "/utl/sys/ssy/listSynchrnServer.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -203,7 +204,8 @@ public class SynchrnServerController {
 		synchrnServerService.deleteSynchrnServer(synchrnServerVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, synchrnServerVO, "/utl/sys/ssy/listSynchrnServer.do");
+		model.addAttribute("redirectURL", "/utl/sys/ssy/listSynchrnServer.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -233,7 +235,8 @@ public class SynchrnServerController {
 		 * }
 		 */
 
-	    return WebUtil.redirectJsp(model, synchrnServerVO, "/utl/sys/ssy/listSynchrnServer.do");
+		model.addAttribute("redirectURL", "/utl/sys/ssy/listSynchrnServer.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -253,7 +256,8 @@ public class SynchrnServerController {
 		synchrnServerService.deleteSynchrnServerFile(synchrnServerVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, synchrnServerVO, "/utl/sys/ssy/listSynchrnServer.do");
+		model.addAttribute("redirectURL", "/utl/sys/ssy/listSynchrnServer.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -275,7 +279,8 @@ public class SynchrnServerController {
 		synchrnServerVO.setFilePath(uploadDir);
 		synchrnServerService.downloadFtpFile(synchrnServerVO, fileNm);
 
-	    return WebUtil.redirectJsp(model, synchrnServerVO, "/utl/sys/ssy/listSynchrnServer.do");
+		model.addAttribute("redirectURL", "/utl/sys/ssy/listSynchrnServer.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -297,7 +302,8 @@ public class SynchrnServerController {
 
 		synchrnServerService.writeFile(multipartFile, fileName, uploadDir, synchrnServerVO);
 
-	    return WebUtil.redirectJsp(model, synchrnServerVO, "/utl/sys/ssy/listSynchrnServer.do");
+		model.addAttribute("redirectURL", "/utl/sys/ssy/listSynchrnServer.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -318,7 +324,8 @@ public class SynchrnServerController {
 		synchrnServerService.deleteFile(deleteFiles, uploadDir, synchrnServerVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, synchrnServerVO, "/utl/sys/ssy/listSynchrnServer.do");
+		model.addAttribute("redirectURL", "/utl/sys/ssy/listSynchrnServer.do");
+	    return "cmm/redirect";
 	}
 
 }

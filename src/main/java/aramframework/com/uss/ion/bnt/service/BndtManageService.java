@@ -20,7 +20,6 @@ import aramframework.com.uss.ion.bnt.domain.BndtManageVO;
 import aramframework.com.utl.fcc.service.DateUtil;
 import aramframework.com.utl.fcc.service.StringUtil;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.fdl.excel.EgovExcelService;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**
@@ -34,7 +33,7 @@ import egovframework.rte.psl.dataaccess.util.EgovMap;
 public class BndtManageService extends EgovAbstractServiceImpl {
 
 //	@Resource(name = "excelZipService")
-	private EgovExcelService excelZipService;
+//	private EgovExcelService excelZipService;
 
 	@Autowired
 	private BndtManageMapper bndtManageMapper;	
@@ -255,6 +254,7 @@ public class BndtManageService extends EgovAbstractServiceImpl {
 		String sTempId = null;
 
 		List<BndtManageVO> list = new ArrayList<BndtManageVO>();
+/*
 		try {
 			String sBndtDe = null;
 			Workbook hssfWB = excelZipService.loadWorkbook(inputStream);
@@ -296,6 +296,7 @@ public class BndtManageService extends EgovAbstractServiceImpl {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
+*/
 		return list;
 	}
 

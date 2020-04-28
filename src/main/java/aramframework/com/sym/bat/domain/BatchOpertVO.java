@@ -18,20 +18,19 @@ public class BatchOpertVO extends BaseVO {
 	/** 배치작업명 */
 	private String batchOpertNm;
 	
+	// batch type 1
 	/** 배치프로그램 */
 	private String batchProgrm;
 	
 	/** 파라미터 */
 	private String paramtr;
 	
+	// batch type 2
 	/** 배치클래스 */
 	private String batchObject;
 	
 	/** 배치메소드 */
 	private String batchMethod;
-	
-	/** 배치빈 */
-	private String batchBean;
 	
 	/** 사용여부 */
 	private String useAt;
@@ -143,24 +142,6 @@ public class BatchOpertVO extends BaseVO {
 	 */            
 	public void setBatchMethod(String batchMethod) {
 		this.batchMethod = batchMethod;
-	}
-
-	/**
-	 * 배치빈을 리턴한다.
-	 * 
-	 * @return the batchBean
-	 */
-	public String getBatchBean() {
-		return batchBean;
-	}
-	/**
-	 * 배치빈을 설정한다.
-	 * 
-	 * @param batchBean
-	 *            설정할 배치빈
-	 */            
-	public void setBatchBean(String batchBean) {
-		this.batchBean = batchBean;
 	}
 
 	/**

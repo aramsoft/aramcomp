@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="cop/ncm/NameCardList" extends="default">
+    <put-attribute name="title" value="나의 명함목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/cop/ncm/NameCardList.jsp" />
+  </definition>
+  
+  <definition name="cop/ncm/NameCardPublic" extends="default">
+    <put-attribute name="title" value="공개 명함목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/cop/ncm/NameCardPublic.jsp" />
+  </definition>
+  
+  <definition name="cop/ncm/NameCardRegist" extends="default">
+    <put-attribute name="title" value="명함 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/cop/ncm/NameCardRegist.jsp" />
+  </definition>
+  
+  <definition name="cop/ncm/NameCardEdit" extends="default">
+    <put-attribute name="title" value="명함 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/cop/ncm/NameCardEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

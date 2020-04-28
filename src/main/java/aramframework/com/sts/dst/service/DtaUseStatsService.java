@@ -107,7 +107,7 @@ public class DtaUseStatsService extends EgovAbstractServiceImpl {
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		String uniqId = "unknown";
 		if( loginVO != null ) {
-			uniqId = loginVO.getUniqId();
+			uniqId = loginVO.getUserId();
 		}
 
 		DtaUseStatsVO dtaUseStats = new DtaUseStatsVO(); // 2011.08.23 수정 부분

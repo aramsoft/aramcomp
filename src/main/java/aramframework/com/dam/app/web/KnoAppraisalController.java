@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.dam.app.domain.KnoAppraisalVO;
 import aramframework.com.dam.app.service.KnoAppraisalService;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -52,7 +51,7 @@ public class KnoAppraisalController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		knoAppraisalVO.setEmplyrId(loginVO.getUniqId());
+		knoAppraisalVO.setEmplyrId(loginVO.getUserId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
 		knoAppraisalVO.fillPageInfo(paginationInfo);
@@ -65,7 +64,7 @@ public class KnoAppraisalController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/dam/app/KnoAppraisalList");
+		return "/dam/app/KnoAppraisalList";
 	}
 
 	/**
@@ -81,7 +80,7 @@ public class KnoAppraisalController {
 
 		model.addAttribute(knoAppraisalService.selectKnoAppraisal(knoAppraisalVO));
 
-		return WebUtil.adjustViewName("/dam/app/KnoAppraisalDetail");
+		return "/dam/app/KnoAppraisalDetail";
 	}
 
 	/**
@@ -97,7 +96,7 @@ public class KnoAppraisalController {
 
 		model.addAttribute(knoAppraisalService.selectKnoAppraisal(knoAppraisalVO));
 
-		return WebUtil.adjustViewName("/dam/app/KnoAppraisalEdit");
+		return "/dam/app/KnoAppraisalEdit";
 	}
 
 	/**
@@ -114,18 +113,19 @@ public class KnoAppraisalController {
 
 		beanValidator.validate(knoAppraisalVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/dam/app/KnoAppraisalEdit");
+			return "/dam/app/KnoAppraisalEdit";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		knoAppraisalVO.setLastUpdusrId(loginVO.getUniqId());
-		knoAppraisalVO.setSpeId(loginVO.getUniqId());
+		knoAppraisalVO.setLastUpdusrId(loginVO.getUserId());
+		knoAppraisalVO.setSpeId(loginVO.getUserId());
 
 		knoAppraisalService.updateKnoAppraisal(knoAppraisalVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, knoAppraisalVO, "/dam/app/listKnoAppraisal.do");
+		model.addAttribute("redirectURL", "/dam/app/listKnoAppraisal.do");
+	    return "cmm/redirect";
 	}
 
 }

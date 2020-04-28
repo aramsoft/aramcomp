@@ -14,7 +14,7 @@
 			     , b.USER_NM 				AS "frstRegisterNm"
 			  FROM COMTN_CMMNTY a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON  a.FRST_REGISTER_ID = b.ESNTL_ID
+						ON  a.FRST_REGISTER_ID = b.USER_ID
 				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
 					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
 					    	  		 WHERE CODE_ID = 'COM001') c
@@ -45,7 +45,7 @@
 				 , b.USER_NM 				AS "frstRegisterNm"
 			  FROM COMTN_CMMNTY a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON  a.FRST_REGISTER_ID = b.ESNTL_ID
+						ON  a.FRST_REGISTER_ID = b.USER_ID
 				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
 					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
 					    	  		 WHERE CODE_ID = 'COM001') c
@@ -74,7 +74,7 @@
 			SELECT COUNT(a.CMMNTY_ID)
 			  FROM COMTN_CMMNTY a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON  a.FRST_REGISTER_ID = b.ESNTL_ID
+						ON  a.FRST_REGISTER_ID = b.USER_ID
 				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
 					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
 					    	  		 WHERE CODE_ID = 'COM001') c
@@ -101,6 +101,7 @@
 				 , a.HOME_URL
 				 , c.TMPLAT_ID
 				 , c.TMPLAT_NM
+				 , c.TMPLAT_COURS
 				 , a.FRST_REGISTER_ID	
 				 , b.USER_NM 				AS "frstRegisterNm"
 				 , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
@@ -108,7 +109,7 @@
 				 , a.ADDITIONAL_INFO
 			  FROM COMTN_CMMNTY a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.FRST_REGISTER_ID = b.ESNTL_ID
+						ON a.FRST_REGISTER_ID = b.USER_ID
 				   LEFT OUTER JOIN COMTN_TMPLAT_INFO c
 						ON a.TMPLAT_ID = c.TMPLAT_ID
 			 WHERE a.CMMNTY_ID = #{cmmntyId}	
@@ -194,37 +195,35 @@
 	</update>	
 	
 	<!-- 커뮤니티 메뉴 -->
-	<select id="selectCommunityTopMenuInfs" resultType="egovMap" >
+	<select id="selectCommunityTopMenuInfs" resultType="menuVO" >
 		<![CDATA[
-			SELECT A.MENU_NO				AS "menuNo"
-			     , A.MENU_ALIAS				AS "menuAlias"
-			     , A.MENU_NM				AS "menuNm"
-			     , IFNULL(A.DIRECT_URL, 
-			     		(SELECT B.URL 
-				          FROM COMTN_PROGRM_LIST B 
-				         WHERE A.PROGRM_FILE_NM = B.PROGRM_FILE_NM
-				        )
-				   )      					AS "chkURL"
+			SELECT A.MENU_NM				AS "menuNm"
+			     , A.MENU_KNM				AS "menuKnm"
+			     , A.MENU_POS				AS "menuPos"
+			     , A.DIRECT_URL				AS "directUrl" 
+			     , (SELECT B.URL 
+				      FROM COMTN_PROGRM_LIST B 
+				     WHERE A.PROGRM_FILE_NM = B.PROGRM_FILE_NM
+				   )      					AS "programURL"
 			  FROM COMTN_CMMNTY_MENU A
 			 WHERE A.TRGET_ID = #{cmmntyId}
 			   AND A.USE_AT = 'Y'
 			   AND A.MGR_AT = 'N'
 			   AND A.TOPMENU_AT = 'Y'
-			 ORDER BY A.MENU_NO ASC  	
+			 ORDER BY A.MENU_POS ASC  	
 		]]>	
 	</select>	 
 	
-	<select id="selectCommunityMgrMenuInfs" resultType="egovMap" >
+	<select id="selectCommunityMgrMenuInfs" resultType="menuVO" >
 		<![CDATA[
 			SELECT A.MENU_NO				AS "menuNo"
 			     , A.MENU_ALIAS				AS "menuAlias"
 			     , A.MENU_NM				AS "menuNm"
-			     , IFNULL(A.DIRECT_URL,			
-				        (SELECT B.URL 
-				          FROM COMTN_PROGRM_LIST B 
-				         WHERE A.PROGRM_FILE_NM = B.PROGRM_FILE_NM
-				        )
-				   )      					AS "chkURL"
+			     , A.DIRECT_URL				AS "directUrl" 
+			     , (SELECT B.URL 
+				      FROM COMTN_PROGRM_LIST B 
+				     WHERE A.PROGRM_FILE_NM = B.PROGRM_FILE_NM
+				   )      					AS "programURL"
 			  FROM COMTN_CMMNTY_MENU A
 			 WHERE A.TRGET_ID = #{cmmntyId}
 			   AND A.USE_AT = 'Y'
@@ -234,23 +233,21 @@
 		]]>	
 	</select>
 		
-	<select id="selectCommunitySubMenuInfs" resultType="egovMap" >
+	<select id="selectCommunitySubMenuInfs" resultType="menuVO" >
 		<![CDATA[
 			SELECT A.MENU_NO				AS "menuNo"
 			     , A.MENU_ALIAS				AS "menuAlias"
 			     , A.MENU_NM				AS "menuNm"
-			     , IFNULL(A.DIRECT_URL,			
-				       (SELECT B.URL 
-				          FROM COMTN_PROGRM_LIST B 
-				         WHERE A.PROGRM_FILE_NM = B.PROGRM_FILE_NM
-				        )
-				   )      					AS "chkURL"
+			     , A.DIRECT_URL				AS "directUrl" 
+			     , (SELECT B.URL 
+				      FROM COMTN_PROGRM_LIST B 
+				     WHERE A.PROGRM_FILE_NM = B.PROGRM_FILE_NM
+				   )      					AS "programURL"
 			  FROM COMTN_CMMNTY_MENU A
 			 WHERE A.TRGET_ID = #{trgetId}
 			   AND A.USE_AT = 'Y'
-			   AND A.MENU_NO >= #{menuNo}
-			   AND A.MENU_NO < #{menuNo} + 100000
-			 ORDER BY A.MENU_NO ASC  	
+			   AND A.MENU_POS LIKE  #{menuPos}||'%'
+			 ORDER BY A.MENU_POS ASC  	
 		]]>	
 	</select>
 		
@@ -272,7 +269,7 @@
 			     , b.USER_NM 				AS "emplyrNm" 
 			  FROM COMTN_CMMNTY_USER a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.EMPLYR_ID = b.ESNTL_ID
+						ON a.EMPLYR_ID = b.USER_ID
 			 WHERE a.CMMNTY_ID =  #{cmmntyId}
 			   AND a.USE_AT = 'Y' 
 			   AND a.MNGR_AT = 'Y'

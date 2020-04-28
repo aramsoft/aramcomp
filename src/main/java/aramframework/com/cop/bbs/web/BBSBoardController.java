@@ -135,7 +135,7 @@ public class BBSBoardController {
     		}
         	
 			if (boardMasterVO.getTmplatCours() == null || boardMasterVO.getTmplatCours().equals("")) {
-				boardMasterVO.setTmplatCours("/css/aramframework/com/cop/tpl/egovBaseTemplate.css");
+				boardMasterVO.setTmplatCours("/css/cop/tpl/egovBaseTemplate.css");
 			}
    		
 			cacheDictionary.put(CacheKey.BBS_PREFIX + bbsId, boardMasterVO);
@@ -149,8 +149,8 @@ public class BBSBoardController {
 	 * @param bbsPathId
 	 * @param boardVO
 	 */
-	@RequestMapping(value="/content/board/{bbsPathId}/articles")
-	public String listlBoardArticle(
+	@RequestMapping(value="/board/{bbsPathId}/list")
+	public String listBoardArticlePath(
 			@ModelAttribute BoardVO boardVO, 
 			@PathVariable String bbsPathId, 
 			ModelMap model) {
@@ -159,20 +159,41 @@ public class BBSBoardController {
 		if( boardVO.getBbsId() == null || boardVO.getBbsId().equals("") ) {
 			throw new RuntimeException("bbsId is not found !!!");
 		}
-		
+		return listBoardArticle(boardVO, model);
+	}	
+	/**
+	 * 게시물에 대한 목록을 조회한다.
+	 * 
+	 * @param bbsPathId
+	 * @param boardVO
+	 */
+	@RequestMapping(value="/cop/bbs/listBoardArticle.do")
+	public String listBoardArticle(
+			@ModelAttribute BoardVO boardVO, 
+			ModelMap model) {
+
 		// set boardMasterVO
 		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
-		model.addAttribute("editAuthFlag", getEditAuthFlag(boardVO));
-		
-		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
-			model.addAttribute("role", "ROLE_ADMIN");
-		}
-		
 		// -------------------------------
 		// 방명록이면 방명록 URL로 redirect
 		// -------------------------------
 		if (boardVO.getBoardMasterVO().getBbsTyCode().equals(BBSBoardService.BBS_TYPE_VISIT)) {
-			return WebUtil.redirectJsp(model, boardVO, "/cop/bbs/selectGuestList.do?bbsId="+boardVO.getBbsId());
+			return "redirect:/cop/bbs/selectGuestList.do?bbsId="+boardVO.getBbsId();
+		}
+
+		// -------------------------------
+		// 익명게시판 확인
+		// -------------------------------
+		if (boardVO.getBoardMasterVO().getBbsTyCode().equals(BBSBoardService.BBS_TYPE_ANONYMOUS)) {
+			model.addAttribute("anonymous", "true");
+			model.addAttribute("editAuthFlag", "Y");
+		} else {
+			model.addAttribute("anonymous", "false");
+			model.addAttribute("editAuthFlag", getEditAuthFlag(boardVO));
+		}
+
+		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
+			model.addAttribute("role", "ROLE_ADMIN");
 		}
 
 		PaginationInfo paginationInfo = new PaginationInfo();
@@ -186,7 +207,7 @@ public class BBSBoardController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/bbs/NoticeList");
+		return "cop/bbs/NoticeList";
 	}
 	
 	/**
@@ -196,8 +217,8 @@ public class BBSBoardController {
 	 * @param nttId
 	 * @param boardVO
 	 */
-	@RequestMapping(value="/content/board/{bbsPathId}/article/{nttId}")
-	public String detailBoardArticle(
+	@RequestMapping(value="/board/{bbsPathId}/id/{nttId}")
+	public String detailBoardArticleDirect(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
 			@PathVariable String bbsPathId, 
@@ -210,9 +231,41 @@ public class BBSBoardController {
 		}
 		
 		boardVO.setNttId(nttId);
+		return detailBoardArticle(searchVO, boardVO, model);
+	}
+	
+	/**
+	 * 게시물에 대한 상세 정보를 조회한다.
+	 * 
+	 * @param bbsPathId
+	 * @param nttId
+	 * @param boardVO
+	 */
+	@RequestMapping(value="/cop/bbs/detailBoardArticle.do")
+	public String detailBoardArticle(
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute BoardVO boardVO, 
+			ModelMap model) {
+
 		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
 
-		model.addAttribute("editAuthFlag", getEditAuthFlag(boardVO));
+		// -------------------------------
+		// 익명게시판 확인
+		// -------------------------------
+		if (boardVO.getBoardMasterVO().getBbsTyCode().equals(BBSBoardService.BBS_TYPE_ANONYMOUS)) {
+			model.addAttribute("anonymous", "true");
+			model.addAttribute("editAuthFlag", "Y");
+			
+			model.addAttribute("userId", "ANONYMOUS");
+		} else {
+			model.addAttribute("anonymous", "false");
+			model.addAttribute("editAuthFlag", getEditAuthFlag(boardVO));
+
+			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
+			if( loginVO != null ) {
+				model.addAttribute("userId", loginVO.getUserId());
+			} 
+		}
 
 		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
 			model.addAttribute("role", "ROLE_ADMIN");
@@ -245,17 +298,12 @@ public class BBSBoardController {
 			}
 		}
 		
-		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		if( loginVO != null ) {
-			model.addAttribute("uniqId", loginVO.getUniqId());
-		} 
-		
 		model.addAttribute("mainTitle", boardVO.getNttSj());
+
 		setDirectUrlToModel(boardVO, model);
-		
 		model.addAttribute(boardVO);
 		
-		return WebUtil.adjustViewName("/cop/bbs/NoticeDetail");
+		return "cop/bbs/NoticeDetail";
 	}
 	
 	/**
@@ -265,8 +313,9 @@ public class BBSBoardController {
 	 * @param nttId
 	 * @param boardVO
 	 */
-	@RequestMapping(value="/content/board/{bbsPathId}/view/{nttId}", method=RequestMethod.GET)
+	@RequestMapping(value="/board/{bbsPathId}/view/{nttId}", method=RequestMethod.GET)
 	public String viewlBoardArticle(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
 			@PathVariable String bbsPathId, 
 			@PathVariable int nttId,			
@@ -277,20 +326,20 @@ public class BBSBoardController {
 			throw new RuntimeException("bbsId not found");
 		}
 		
+		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
+		if( loginVO != null ) {
+			model.addAttribute("userId", loginVO.getUserId());
+		} 
+		
 		boardVO.setNttId(nttId);
 		
 		boardVO = boardService.selectBoardArticle(boardVO);
 
-		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		if( loginVO != null ) {
-			model.addAttribute("uniqId", loginVO.getUniqId());
-		} 
-		
 		setDirectUrlToModel(boardVO, model);
 
 		model.addAttribute(boardVO);
 
-		return WebUtil.adjustViewName("/cop/bbs/NoticeView");
+		return "cop/bbs/NoticeView";
 	}
 
 	private void setDirectUrlToModel(BoardVO boardVO, ModelMap model) {
@@ -304,9 +353,9 @@ public class BBSBoardController {
 				&& trgetId != "" 
 				&& trgetId.indexOf("CMMNTY_") != -1) {
 			String cmmntyId = WebUtil.getPathId(trgetId);
-			directUrl = contextUrl + "/content/apps/"+cmmntyId+"/board/"+boardVO.getPathId()+"/article/"+boardVO.getNttId();
+			directUrl = contextUrl + "/apps/id/"+cmmntyId+"/board/"+boardVO.getPathId()+"/id/"+boardVO.getNttId();
 		} else {
-			directUrl = contextUrl + "/content/board/"+boardVO.getPathId()+"/article/"+ boardVO.getNttId();
+			directUrl = contextUrl + "/board/"+boardVO.getPathId()+"/id/"+ boardVO.getNttId();
 		}
 		model.addAttribute("directUrl", directUrl);
 	}
@@ -316,7 +365,7 @@ public class BBSBoardController {
 	 * 
 	 * @param boardVO
 	 */
-	@RequestMapping("/cop/bbs/registBoardArticle.do")
+	@RequestMapping(value="/cop/bbs/registBoardArticle.do")
 	public String registBoardArticle(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
@@ -328,13 +377,22 @@ public class BBSBoardController {
 		
 		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
 		
-		String editAuthFlag = getEditAuthFlag(boardVO);
-		if( editAuthFlag.equals("N")) {
-			throw new AccessDeniedException("access denined!!!");
+		// -------------------------------
+		// 익명게시판 확인
+		// -------------------------------
+		if (boardVO.getBoardMasterVO().getBbsTyCode().equals(BBSBoardService.BBS_TYPE_ANONYMOUS)) {
+			model.addAttribute("anonymous", "true");
+			model.addAttribute("editAuthFlag", "Y");
+		} else {
+			model.addAttribute("anonymous", "false");
+			String editAuthFlag = getEditAuthFlag(boardVO);
+			if( editAuthFlag.equals("N")) {
+				throw new AccessDeniedException("access denined!!!");
+			}
+			model.addAttribute("editAuthFlag", editAuthFlag);
 		}
-		model.addAttribute("editAuthFlag", editAuthFlag);
 
-		return WebUtil.adjustViewName("/cop/bbs/NoticeRegist");
+		return "cop/bbs/NoticeRegist";
 	}
 
 	/**
@@ -343,8 +401,7 @@ public class BBSBoardController {
 	 * @param multiRequest
 	 * @param boardVO
 	 */
-	@RequestMapping("/cop/bbs/insertBoardArticle.do")
-	@Secured("ROLE_USER")
+	@RequestMapping(value="/cop/bbs/insertBoardArticle.do")
 	public String insertBoardArticle(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO,
@@ -355,34 +412,48 @@ public class BBSBoardController {
 
 		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
 		
-		String editAuthFlag = getEditAuthFlag(boardVO);
-		if( editAuthFlag.equals("N")) {
-			throw new AccessDeniedException("access denined!!!");
+		// -------------------------------
+		// 익명게시판 확인
+		// -------------------------------
+		if (boardVO.getBoardMasterVO().getBbsTyCode().equals(BBSBoardService.BBS_TYPE_ANONYMOUS)) {
+			model.addAttribute("anonymous", "true");
+			model.addAttribute("editAuthFlag", "Y");
+		} else {
+			model.addAttribute("anonymous", "false");
+			String editAuthFlag = getEditAuthFlag(boardVO);
+			if( editAuthFlag.equals("N")) {
+				throw new AccessDeniedException("access denined!!!");
+			}
+			model.addAttribute("editAuthFlag", editAuthFlag);
 		}
-		
+
 		beanValidator.validate(boardVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			model.addAttribute("editAuthFlag", editAuthFlag);
-
-			return WebUtil.adjustViewName("/cop/bbs/NoticeRegist");
+			return "cop/bbs/NoticeRegist";
 		}
 
-		boardVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "BBS_"));
+		boardVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "BBS"));
 
-		boardVO.setNtcrNm(""); // 익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨
-		boardVO.setPassword(""); // 익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨
-		
-		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		boardVO.setFrstRegisterId(loginVO.getUniqId());
-		boardVO.setNtcrId(loginVO.getId()); // 게시물 통계 집계를 위해 등록자 ID 저장
-		boardVO.setNtcrNm(loginVO.getName()); // 게시물 통계 집계를 위해 등록자 Name 저장
+		if (boardVO.getBoardMasterVO().getBbsTyCode().equals(BBSBoardService.BBS_TYPE_ANONYMOUS)) {
+			boardVO.setFrstRegisterId("ANONYMOUS");
+			boardVO.setPassword(FileScrty.encryptPassword(boardVO.getPassword()));
+		} else {
+			boardVO.setNtcrNm(""); // 익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨
+			boardVO.setPassword(""); // 익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨
+			
+			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
+			boardVO.setFrstRegisterId(loginVO.getUserId());
+			boardVO.setNtcrId(loginVO.getUserId()); // 게시물 통계 집계를 위해 등록자 ID 저장
+			boardVO.setNtcrNm(loginVO.getName()); // 게시물 통계 집계를 위해 등록자 Name 저장
+		}
 
 		boardVO.setNttCn(unscript(boardVO.getNttCn())); // XSS 방지
 
 		boardService.insertBoardArticle(boardVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, boardVO, "/content/board/"+boardVO.getPathId()+ "/articles");
+		model.addAttribute("redirectURL", "/board/"+boardVO.getPathId()+ "/list");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -390,7 +461,7 @@ public class BBSBoardController {
 	 * 
 	 * @param boardVO
 	 */
-	@RequestMapping("/cop/bbs/replyBoardArticle.do")
+	@RequestMapping(value="/cop/bbs/replyBoardArticle.do")
 	public String replyBoardArticle(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
@@ -402,15 +473,24 @@ public class BBSBoardController {
 		
 		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
 		
-		String editAuthFlag = getEditAuthFlag(boardVO);
-		if( editAuthFlag.equals("N")) {
-			throw new AccessDeniedException("access denined!!!");
+		// -------------------------------
+		// 익명게시판 확인
+		// -------------------------------
+		if (boardVO.getBoardMasterVO().getBbsTyCode().equals(BBSBoardService.BBS_TYPE_ANONYMOUS)) {
+			model.addAttribute("anonymous", "true");
+			model.addAttribute("editAuthFlag", "Y");
+		} else {
+			model.addAttribute("anonymous", "false");
+			String editAuthFlag = getEditAuthFlag(boardVO);
+			if( editAuthFlag.equals("N")) {
+				throw new AccessDeniedException("access denined!!!");
+			}
+			model.addAttribute("editAuthFlag", editAuthFlag);
 		}
-		model.addAttribute("editAuthFlag", editAuthFlag);
-		
+
 		boardService.selectBoardArticle(boardVO);
 
-		return WebUtil.adjustViewName("/cop/bbs/NoticeReply");
+		return "cop/bbs/NoticeReply";
 	}
 
 	/**
@@ -419,7 +499,7 @@ public class BBSBoardController {
 	 * @param multiRequest
 	 * @param boardVO
 	 */
-	@RequestMapping("/cop/bbs/insertReplyBoardArticle.do")
+	@RequestMapping(value="/cop/bbs/insertReplyBoardArticle.do")
 	public String addReplyBoardArticle(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO,
@@ -430,35 +510,51 @@ public class BBSBoardController {
 
 		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
 		
-		String editAuthFlag = getEditAuthFlag(boardVO);
-		if( editAuthFlag.equals("N")) {
-			throw new AccessDeniedException("access denined!!!");
+		// -------------------------------
+		// 익명게시판 확인
+		// -------------------------------
+		if (boardVO.getBoardMasterVO().getBbsTyCode().equals(BBSBoardService.BBS_TYPE_ANONYMOUS)) {
+			model.addAttribute("anonymous", "true");
+			model.addAttribute("editAuthFlag", "Y");
+		} else {
+			model.addAttribute("anonymous", "false");
+			String editAuthFlag = getEditAuthFlag(boardVO);
+			if( editAuthFlag.equals("N")) {
+				throw new AccessDeniedException("access denined!!!");
+			}
+			model.addAttribute("editAuthFlag", editAuthFlag);
 		}
-		
+
 		beanValidator.validate(boardVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			model.addAttribute("editAuthFlag", editAuthFlag);
-			return WebUtil.adjustViewName("/cop/bbs/NoticeReply");
+			return "cop/bbs/NoticeReply";
 		}
 
-		boardVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "BBS_"));
+		boardVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "BBS"));
 
-		boardVO.setNtcrNm(""); // 익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨
-		boardVO.setPassword(""); // 익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨
-		
-		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
+		if (boardVO.getBoardMasterVO().getBbsTyCode().equals(BBSBoardService.BBS_TYPE_ANONYMOUS)) {
+			boardVO.setFrstRegisterId("ANONYMOUS");
+			boardVO.setPassword(FileScrty.encryptPassword(boardVO.getPassword()));
+		} else {
+			boardVO.setNtcrNm(""); // 익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨
+			boardVO.setPassword(""); // 익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨
+			
+			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
+			boardVO.setFrstRegisterId(loginVO.getUserId());
+			boardVO.setNtcrId(loginVO.getUserId()); // 게시물 통계 집계를 위해 등록자 ID 저장
+			boardVO.setNtcrNm(loginVO.getName()); // 게시물 통계 집계를 위해 등록자 Name 저장
+		}
 
 		boardVO.setAnswerAt("Y");
-		boardVO.setFrstRegisterId(loginVO.getUniqId());
 		boardVO.setParntsNttId(boardVO.getNttId());
 		boardVO.setThreadDepth(boardVO.getThreadDepth() + 1);
-
 		boardVO.setNttCn(unscript(boardVO.getNttCn())); // XSS 방지
 
 		boardService.insertBoardArticle(boardVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, boardVO,"/content/board/"+boardVO.getPathId()+ "/articles");
+		model.addAttribute("redirectURL", "/board/"+boardVO.getPathId()+ "/list");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -466,7 +562,7 @@ public class BBSBoardController {
 	 * 
 	 * @param boardVO
 	 */
-	@RequestMapping("/cop/bbs/editBoardArticle.do")
+	@RequestMapping(value="/cop/bbs/editBoardArticle.do")
 	public String editBoardArticle(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
@@ -479,15 +575,35 @@ public class BBSBoardController {
 		
 		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
 		
-		String editAuthFlag = getEditAuthFlag(boardVO);
-		if( editAuthFlag.equals("N")) {
-			throw new AccessDeniedException("access denined!!!");
+		// -------------------------------
+		// 익명게시판 확인
+		// -------------------------------
+		if (boardVO.getBoardMasterVO().getBbsTyCode().equals(BBSBoardService.BBS_TYPE_ANONYMOUS)) {
+			model.addAttribute("anonymous", "true");
+			model.addAttribute("editAuthFlag", "Y");
+			
+			// -------------------------------
+			// 패스워드 비교
+			// -------------------------------
+			String dbpassword = boardService.getPasswordInf(boardVO);
+			String enpassword = FileScrty.encryptPassword(boardVO.getPassword());
+			if (!dbpassword.equals(enpassword)) {
+				model.addAttribute("message", MessageHelper.getMessage("cop.password.not.same.msg"));
+				return "cop/bbs/NoticeDetail";
+			}
+
+		} else {
+			model.addAttribute("anonymous", "false");
+			String editAuthFlag = getEditAuthFlag(boardVO);
+			if( editAuthFlag.equals("N")) {
+				throw new AccessDeniedException("access denined!!!");
+			}
+			model.addAttribute("editAuthFlag", editAuthFlag);
 		}
-		model.addAttribute("editAuthFlag", editAuthFlag);
-		
+
 		model.addAttribute(boardService.selectBoardArticle(boardVO));
 		
-		return WebUtil.adjustViewName("/cop/bbs/NoticeEdit");
+		return "cop/bbs/NoticeEdit";
 	}
 
 	/**
@@ -496,8 +612,9 @@ public class BBSBoardController {
 	 * @param multiRequest
 	 * @param boardVO
 	 */
-	@RequestMapping("/cop/bbs/updateBoardArticle.do")
+	@RequestMapping(value="/cop/bbs/updateBoardArticle.do")
 	public String updateBoardArticle(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO,
 			BindingResult bindingResult, 
 			MultipartHttpServletRequest multiRequest, 
@@ -506,33 +623,48 @@ public class BBSBoardController {
 
 		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
 		
-		String editAuthFlag = getEditAuthFlag(boardVO);
-		if( editAuthFlag.equals("N")) {
-			throw new AccessDeniedException("access denined!!!");
+		// -------------------------------
+		// 익명게시판 확인
+		// -------------------------------
+		if (boardVO.getBoardMasterVO().getBbsTyCode().equals(BBSBoardService.BBS_TYPE_ANONYMOUS)) {
+			model.addAttribute("anonymous", "true");
+			model.addAttribute("editAuthFlag", "Y");
+		} else {
+			model.addAttribute("anonymous", "false");
+			String editAuthFlag = getEditAuthFlag(boardVO);
+			if( editAuthFlag.equals("N")) {
+				throw new AccessDeniedException("access denined!!!");
+			}
+			model.addAttribute("editAuthFlag", editAuthFlag);
 		}
-		
+
 		beanValidator.validate(boardVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			model.addAttribute("editAuthFlag", editAuthFlag);
-			return WebUtil.adjustViewName("/cop/bbs/NoticeEdit");
+			return "cop/bbs/NoticeEdit";
 		}
 
 		// 첨부파일 관련 ID 생성 start....
 		String atchFileId = boardVO.getAtchFileId();
-		boardVO.setAtchFileId(fileMngUtil.updateMultiFile(multiRequest, "BBS_", atchFileId));
+		boardVO.setAtchFileId(fileMngUtil.updateMultiFile(multiRequest, "BBS", atchFileId));
 
-		boardVO.setNtcrNm(""); // 익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨
-		boardVO.setPassword(""); // 익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨
-		
-		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
+		if (boardVO.getBoardMasterVO().getBbsTyCode().equals(BBSBoardService.BBS_TYPE_ANONYMOUS)) {
+			boardVO.setLastUpdusrId("ANONYMOUS");
+			boardVO.setPassword(FileScrty.encryptPassword(boardVO.getPassword()));
+		} else {
+			boardVO.setNtcrNm(""); // 익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨
+			boardVO.setPassword(""); // 익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨
+			
+			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
+			boardVO.setLastUpdusrId(loginVO.getUserId());
+		}
 
-		boardVO.setLastUpdusrId(loginVO.getUniqId());
 		boardVO.setNttCn(unscript(boardVO.getNttCn())); // XSS 방지
 
 		boardService.updateBoardArticle(boardVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model,  boardVO, "/content/board/"+boardVO.getPathId()+ "/articles");
+		model.addAttribute("redirectURL", "/board/"+boardVO.getPathId()+ "/list");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -540,25 +672,50 @@ public class BBSBoardController {
 	 * 
 	 * @param boardVO
 	 */
-	@RequestMapping("/cop/bbs/deleteBoardArticle.do")
+	@RequestMapping(value="/cop/bbs/deleteBoardArticle.do")
 	public String deleteBoardArticle(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
-			ModelMap model) {
+			ModelMap model) 
+	throws Exception {
 
 		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
 		
-		String editAuthFlag = getEditAuthFlag(boardVO);
-		if( editAuthFlag.equals("N")) {
-			throw new AccessDeniedException("access denined!!!");
+		// -------------------------------
+		// 익명게시판 확인
+		// -------------------------------
+		if (boardVO.getBoardMasterVO().getBbsTyCode().equals(BBSBoardService.BBS_TYPE_ANONYMOUS)) {
+			model.addAttribute("anonymous", "true");
+			model.addAttribute("editAuthFlag", "Y");
+
+			// -------------------------------
+			// 패스워드 비교
+			// -------------------------------
+			String dbpassword = boardService.getPasswordInf(boardVO);
+			String enpassword = FileScrty.encryptPassword(boardVO.getPassword());
+			if (!dbpassword.equals(enpassword)) {
+				model.addAttribute("message", MessageHelper.getMessage("cop.password.not.same.msg"));
+				return "cop/bbs/NoticeDetail";
+			}
+
+			boardVO.setLastUpdusrId("ANONYMOUS");
+		} else {
+			model.addAttribute("anonymous", "false");
+			String editAuthFlag = getEditAuthFlag(boardVO);
+			if( editAuthFlag.equals("N")) {
+				throw new AccessDeniedException("access denined!!!");
+			}
+			model.addAttribute("editAuthFlag", editAuthFlag);
+			
+			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
+			boardVO.setLastUpdusrId(loginVO.getUserId());
 		}
-		
-		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		boardVO.setLastUpdusrId(loginVO.getUniqId());
 
 		boardService.deleteBoardArticle(boardVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, boardVO, "/content/board/"+boardVO.getPathId()+ "/articles");
+		model.addAttribute("redirectURL", "/board/"+boardVO.getPathId()+ "/list");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -569,6 +726,7 @@ public class BBSBoardController {
 	@RequestMapping("/cop/bbs/eraseBoardArticle.do")
 	@Secured("ROLE_ADMIN")
 	public String eraseBoardArticle(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
 			ModelMap model) {
 
@@ -577,396 +735,8 @@ public class BBSBoardController {
 		boardService.eraseBoardArticle(boardVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, boardVO, "/content/board/"+boardVO.getPathId()+ "/articles");
-	}
-
-	/**
-	 * 익명게시물에 대한 목록을 조회한다.
-	 * 
-	 * @param bbsPathId
-	 * @param boardVO
-	 */
-	@RequestMapping(value="/content/board/anonymous/{bbsPathId}/articles")
-	public String listAnonymousBoardArticle(
-			@ModelAttribute BoardVO boardVO, 
-			@PathVariable String bbsPathId, 
-			ModelMap model) {
-
-		boardVO.setBbsId(WebUtil.getOriginalId(bbsPathId, "BBSMSTR_"));
-		if( boardVO.getBbsId() == null || boardVO.getBbsId().equals("") ) {
-			throw new RuntimeException("bbsId not found");
-		}
-		
-		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
-			
-		// -------------------------------
-		// 익명게시판이 아니면.. 원래 게시판 URL로 forward
-		// -------------------------------
-		if (!boardVO.getBoardMasterVO().getBbsTyCode().equals(BBSBoardService.BBS_TYPE_ANONYMOUS)) {
-			return "forward:/content/board/"+boardVO.getPathId()+ "/articles";
-		}
-
-		PaginationInfo paginationInfo = new PaginationInfo();
-		boardVO.fillPageInfo(paginationInfo);
-
-		model.addAttribute("resultList", boardService.selectBoardArticleList(boardVO));
-
-		int totCnt = boardService.selectBoardArticleListCnt(boardVO);
-		boardVO.setTotalRecordCount(totCnt);
-
-		paginationInfo.setTotalRecordCount(totCnt);
-		model.addAttribute(paginationInfo);
-
-		model.addAttribute("anonymous", "true");
-		model.addAttribute("editAuthFlag", "Y");
-
-		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
-			model.addAttribute("role", "ROLE_ADMIN");
-		}
-
-		return WebUtil.adjustViewName("/cop/bbs/NoticeList");
-	}
-
-	/**
-	 * 익명게시물에 대한 상세 정보를 조회한다.
-	 * 
-	 * @param bbsPathId
-	 * @param nttId
-	 * @param boardVO
-	 */
-	@RequestMapping(value="/content/board/anonymous/{bbsPathId}/article/{nttId}")
-	public String detailAnonymousBoardArticle(
-			@ModelAttribute("searchVO") SearchVO searchVO,
-			@ModelAttribute BoardVO boardVO, 
-			@PathVariable String bbsPathId, 
-			@PathVariable int nttId,			
-			ModelMap model) {
-
-		boardVO.setBbsId(WebUtil.getOriginalId(bbsPathId, "BBSMSTR_"));
-		if( boardVO.getBbsId() == null || boardVO.getBbsId().equals("") ) {
-			throw new RuntimeException("bbsId not found");
-		}
-
-		boardVO.setNttId(nttId);
-		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
-			
-		// -------------------------------
-		// 익명게시판이 아니면.. 원래 게시판 URL로 forward
-		// -------------------------------
-		if (!boardVO.getBoardMasterVO().getBbsTyCode().equals(BBSBoardService.BBS_TYPE_ANONYMOUS)) {
-			return "forward:/cop/bbs/selectBoardArticle.do";
-		}
-
-		// 조회수 증가
-		// ---------------------------------
-		// 2009.06.29 : 2단계 기능 추가
-		// ---------------------------------
-		boardService.updateRdcnt(boardVO);
-		boardVO = boardService.selectBoardArticle(boardVO);
-
-		// ----------------------------
-		// 2009.06.29 : 2단계 기능 추가
-		// 2011.07.01 : 댓글, 스크랩, 만족도 조사 기능의 종속성 제거
-		// ----------------------------
-		if (bbsCommentService != null) {
-			if (bbsCommentService.canUseComment(boardVO.getBbsId())) {
-				model.addAttribute("useComment", "true");
-			}
-		}
-		if (bbsSatisfactionService != null) {
-			if (bbsSatisfactionService.canUseSatisfaction(boardVO.getBbsId())) {
-				model.addAttribute("useSatisfaction", "true");
-			}
-		}
-		if (bbsScrapService != null) {
-			if (bbsScrapService.canUseScrap()) {
-				model.addAttribute("useScrap", "true");
-			}
-		}
-
-		model.addAttribute("uniqId", "ANONYMOUS");
-		model.addAttribute("anonymous", "true");
-		model.addAttribute("editAuthFlag", "Y");
-		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
-			model.addAttribute("role", "ROLE_ADMIN");
-		}
-
-		setDirectUrlToModelAnonymous(boardVO, model);
-
-		model.addAttribute(boardVO);
-		
-		return WebUtil.adjustViewName("/cop/bbs/NoticeDetail");
-	}
-	
-	private void setDirectUrlToModelAnonymous(BoardVO boardVO, ModelMap model) {
-		
-		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
-
-		String trgetId = (String) requestAttributes.getAttribute("curTrgetId", RequestAttributes.SCOPE_REQUEST);
-		String contextUrl = (String) requestAttributes.getAttribute("contextUrl", RequestAttributes.SCOPE_REQUEST);
-		String directUrl = "";
-		if( trgetId != null 
-				&& trgetId != "" 
-				&& trgetId.indexOf("CMMNTY_") != -1) {
-			String cmmntyId = WebUtil.getPathId(trgetId);
-			directUrl = contextUrl + "/content/apps/"+cmmntyId+"/board/"+boardVO.getPathId()+"/article/"+boardVO.getNttId();
-		} else {
-			directUrl = contextUrl + "/content/board/anonymous/"+boardVO.getPathId()+ "/article/"+ boardVO.getNttId();
-		}
-		model.addAttribute("directUrl", directUrl);
-	}
-	
-	/**
-	 * 익명게시물 등록을 위한 등록페이지로 이동한다.
-	 * 
-	 * @param boardVO
-	 */
-	@RequestMapping("/cop/bbs/anonymous/registBoardArticle.do")
-	public String registAnonymousBoardArticle(
-			@ModelAttribute("searchVO") SearchVO searchVO,
-			@ModelAttribute BoardVO boardVO, 
-			ModelMap model) {
-
-		if( boardVO.getBbsId() == null || boardVO.getBbsId().equals("") ) {
-			throw new RuntimeException("bbsId not found");
-		}
-		
-		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
-
-		// -------------------------------
-		// 익명게시판이 아니면.. 원래 게시판 URL로 forward
-		// -------------------------------
-		if (!boardVO.getBoardMasterVO().getBbsTyCode().equals(BBSBoardService.BBS_TYPE_ANONYMOUS)) {
-			return "forward:/cop/bbs/registBoardArticle.do";
-		}
-
-		model.addAttribute("anonymous", "true");
-		model.addAttribute("editAuthFlag", "Y");
-
-		return WebUtil.adjustViewName("/cop/bbs/NoticeRegist");
-	}
-
-	/**
-	 * 익명게시물을 등록한다.
-	 * 
-	 * @param multiRequest
-	 * @param boardVO
-	 */
-	@RequestMapping("/cop/bbs/anonymous/insertBoardArticle.do")
-	public String insertAnonymousBoardArticle(
-			@ModelAttribute("searchVO") SearchVO searchVO,
-			@ModelAttribute BoardVO boardVO,
-			BindingResult bindingResult, 
-			MultipartHttpServletRequest multiRequest, 
-			ModelMap model) 
-	throws Exception {
-
-		beanValidator.validate(boardVO, bindingResult);
-		if (bindingResult.hasErrors()) {
-
-			model.addAttribute("anonymous", "true");
-			model.addAttribute("editAuthFlag", "Y");
-
-			return WebUtil.adjustViewName("/cop/bbs/NoticeRegist");
-		}
-
-		boardVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "BBS_"));
-		
-		boardVO.setFrstRegisterId("ANONYMOUS");
-		// 익명게시판 관련
-		boardVO.setPassword(FileScrty.encryptPassword(boardVO.getPassword()));
-		boardVO.setNttCn(unscript(boardVO.getNttCn())); // XSS 방지
-
-		boardService.insertBoardArticle(boardVO);
-
-		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, boardVO, "/content/board/anonymous/"+boardVO.getPathId()+ "/articles");
-	}
-
-	/**
-	 * 익명게시물에 대한 답변 등록을 위한 등록페이지로 이동한다.
-	 * 
-	 * @param boardVO
-	 */
-	@RequestMapping("/cop/bbs/anonymous/replyBoardArticle.do")
-	public String replyAnonymousBoardArticle(
-			@ModelAttribute("searchVO") SearchVO searchVO,
-			@ModelAttribute BoardVO boardVO, 
-			ModelMap model) {
-
-		if( boardVO.getBbsId() == null || boardVO.getBbsId().equals("") ) {
-			throw new RuntimeException("bbsId not found");
-		}
-		
-		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
-
-		// -------------------------------
-		// 익명게시판이 아니면.. 원래 게시판 URL로 forward
-		// -------------------------------
-		if (!boardVO.getBoardMasterVO().getBbsTyCode().equals(BBSBoardService.BBS_TYPE_ANONYMOUS)) {
-			return "forward:/cop/bbs/insertReplyBoardArticle.do";
-		}
-
-		model.addAttribute("anonymous", "true");
-		model.addAttribute("editAuthFlag", "Y");
-
-		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.adjustViewName("/cop/bbs/NoticeReply");
-	}
-
-	/**
-	 * 익명게시물에 대한 답변을 등록한다.
-	 * 
-	 * @param multiRequest
-	 * @param boardVO
-	 */
-	@RequestMapping("/cop/bbs/anonymous/insertReplyBoardArticle.do")
-	public String addReplyAnonymousBoardArticle(
-			@ModelAttribute("searchVO") SearchVO searchVO,
-			@ModelAttribute BoardVO boardVO,
-			BindingResult bindingResult, 
-			MultipartHttpServletRequest multiRequest, 
-			ModelMap model) 
-	throws Exception {
-
-		beanValidator.validate(boardVO, bindingResult);
-		if (bindingResult.hasErrors()) {
-			model.addAttribute("anonymous", "true");
-			model.addAttribute("editAuthFlag", "Y");
-
-			return WebUtil.adjustViewName("/cop/bbs/NoticeReply");
-		}
-
-		boardVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "BBS_"));
-
-		boardVO.setAnswerAt("Y");
-		boardVO.setFrstRegisterId("ANONYMOUS");
-		boardVO.setParntsNttId(boardVO.getNttId());
-		boardVO.setThreadDepth(boardVO.getThreadDepth() + 1);
-
-		// 익명게시판 관련
-		boardVO.setPassword(FileScrty.encryptPassword(boardVO.getPassword()));
-		boardVO.setNttCn(unscript(boardVO.getNttCn())); // XSS 방지
-
-		boardService.insertBoardArticle(boardVO);
-
-		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, boardVO, "/content/board/anonymous/"+boardVO.getPathId()+ "/articles");
-	}
-
-	/**
-	 * 익명게시물 수정을 위한 수정페이지로 이동한다.
-	 * 
-	 * @param boardVO
-	 */
-	@RequestMapping("/cop/bbs/anonymous/editBoardArticle.do")
-	public String editAnonymousBoardArticle(
-			@ModelAttribute("searchVO") SearchVO searchVO,
-			@ModelAttribute BoardVO boardVO,
-			ModelMap model)
-	throws Exception {
-
-		if( boardVO.getBbsId() == null || boardVO.getBbsId().equals("") ) {
-			throw new RuntimeException("bbsId not found");
-		}
-		
-		boardVO.setBoardMasterVO(getBoardMasterVO(boardVO.getBbsId()));
-
-		// -------------------------------
-		// 익명게시판이 아니면.. 원래 게시판 URL로 forward
-		// -------------------------------
-		if (!boardVO.getBoardMasterVO().getBbsTyCode().equals(BBSBoardService.BBS_TYPE_ANONYMOUS)) {
-			return "forward:/cop/bbs/editBoardArticle.do";
-		}
-
-		// -------------------------------
-		// 패스워드 비교
-		// -------------------------------
-		String dbpassword = boardService.getPasswordInf(boardVO);
-		String enpassword = FileScrty.encryptPassword(boardVO.getPassword());
-		
-		if (!dbpassword.equals(enpassword)) {
-			model.addAttribute("anonymous", "true");
-			model.addAttribute("message", MessageHelper.getMessage("cop.password.not.same.msg"));
-			return WebUtil.adjustViewName("/cop/bbs/NoticeDetail");
-		}
-
-		model.addAttribute(boardService.selectBoardArticle(boardVO));
-
-		model.addAttribute("anonymous", "true");
-		model.addAttribute("editAuthFlag", "Y");
-
-		return WebUtil.adjustViewName("/cop/bbs/NoticeEdit");
-	}
-
-	/**
-	 * 익명게시물에 대한 내용을 수정한다.
-	 * 
-	 * @param multiRequest
-	 * @param boardVO
-	 */
-	@RequestMapping("/cop/bbs/anonymous/updateBoardArticle.do")
-	public String updateAnonymousBoardArticle(
-			@ModelAttribute("searchVO") SearchVO searchVO,
-			@ModelAttribute BoardVO boardVO,
-			BindingResult bindingResult, 
-			MultipartHttpServletRequest multiRequest, 
-			ModelMap model) 
-	throws Exception {
-
-		beanValidator.validate(boardVO, bindingResult);
-		if (bindingResult.hasErrors()) {
-			model.addAttribute("anonymous", "true");
-			model.addAttribute("editAuthFlag", "Y");
-
-			return WebUtil.adjustViewName("/cop/bbs/NoticeEdit");
-		}
-
-		String atchFileId = boardVO.getAtchFileId();
-		boardVO.setAtchFileId(fileMngUtil.updateMultiFile(multiRequest, "BBS_", atchFileId));
-
-		boardVO.setLastUpdusrId("ANONYMOUS");
-
-		// 익명게시판 관련
-		boardVO.setPassword(FileScrty.encryptPassword(boardVO.getPassword()));
-		boardVO.setNttCn(unscript(boardVO.getNttCn())); // XSS 방지
-
-		boardService.updateBoardArticle(boardVO);
-
-		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, boardVO, "/content/board/anonymous/"+boardVO.getPathId()+ "/articles");
-	}
-
-	/**
-	 * 익명게시물에 대한 내용을 삭제한다.
-	 * 
-	 * @param boardVO
-	 */
-	@RequestMapping("/cop/bbs/anonymous/deleteBoardArticle.do")
-	public String deleteAnonymousBoardArticle(
-			@ModelAttribute BoardVO boardVO, 
-			ModelMap model) 
-	throws Exception {
-
-		// -------------------------------
-		// 패스워드 비교
-		// -------------------------------
-		String dbpassword = boardService.getPasswordInf(boardVO);
-		String enpassword = FileScrty.encryptPassword(boardVO.getPassword());
-
-		if (!dbpassword.equals(enpassword)) {
-			model.addAttribute("message", MessageHelper.getMessage("cop.password.not.same.msg"));
-			model.addAttribute("anonymous", "true");
-			return WebUtil.adjustViewName("/cop/bbs/NoticeDetail");
-		}
-		// //-----------------------------
-
-		boardVO.setLastUpdusrId("ANONYMOUS");
-
-		boardService.deleteBoardArticle(boardVO);
-
-		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, boardVO, "/content/board/anonymous/"+boardVO.getPathId()+ "/articles");
+		model.addAttribute("redirectURL", "/board/"+boardVO.getPathId()+ "/list");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -1004,8 +774,8 @@ public class BBSBoardController {
 
 		// 항상 설정
 		boardVO.setNtcrNm(loginVO.getName());
-		boardVO.setNtcrId(loginVO.getUniqId());
-		model.addAttribute("sessionUniqId", loginVO.getUniqId());
+		boardVO.setNtcrId(loginVO.getUserId());
+		model.addAttribute("sessionUserId", loginVO.getUserId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
 		boardVO.fillPageInfo(paginationInfo);
@@ -1018,7 +788,7 @@ public class BBSBoardController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/bbs/GuestList");
+		return "cop/bbs/GuestList";
 	}
 
 	/**
@@ -1027,6 +797,7 @@ public class BBSBoardController {
 	 * @param boardVO
 	 */
 	@RequestMapping("/cop/bbs/insertGuestList.do")
+	@Secured("ROLE_USER")
 	public String insertGuestList(
 			@ModelAttribute BoardVO boardVO, 
 			BindingResult bindingResult, 
@@ -1038,7 +809,7 @@ public class BBSBoardController {
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		boardVO.setFrstRegisterId(loginVO.getUniqId());
+		boardVO.setFrstRegisterId(loginVO.getUserId());
 
 		boardService.insertBoardArticle(boardVO);
 
@@ -1076,7 +847,7 @@ public class BBSBoardController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/bbs/GuestList");
+		return "cop/bbs/GuestList";
 	}
 
 	/**
@@ -1181,7 +952,7 @@ public class BBSBoardController {
 		
 		model.addAttribute(boardVO);
 				
-		return WebUtil.adjustViewName("/cop/bbs/NoticeList");
+		return "cop/bbs/NoticeList";
 	}
 	
 }

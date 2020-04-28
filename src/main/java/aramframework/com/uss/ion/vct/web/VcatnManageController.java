@@ -14,7 +14,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.vct.domain.VcatnManageVO;
 import aramframework.com.uss.ion.vct.service.VcatnManageService;
@@ -64,7 +63,7 @@ public class VcatnManageController {
 		model.addAttribute("yearList", yearList);
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		vcatnManageVO.setApplcntId(loginVO.getUniqId());
+		vcatnManageVO.setApplcntId(loginVO.getUserId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
 		vcatnManageVO.fillPageInfo(paginationInfo);
@@ -77,7 +76,7 @@ public class VcatnManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/ion/vct/VcatnList");
+		return "/uss/ion/vct/VcatnList";
 	}
 
 	/**
@@ -96,7 +95,7 @@ public class VcatnManageController {
 		model.addAttribute(vcatnManageService.selectIndvdlYrycManage(vcatnManageVO.getApplcntId()));
 		model.addAttribute(vcatnManageVO);
 
-		return WebUtil.adjustViewName("/uss/ion/vct/VcatnDetail");
+		return "/uss/ion/vct/VcatnDetail";
 	}
 
 	/**
@@ -111,15 +110,15 @@ public class VcatnManageController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		vcatnManageVO.setApplcntId(loginVO.getUniqId());
+		vcatnManageVO.setApplcntId(loginVO.getUserId());
 		vcatnManageVO.setApplcntNm(loginVO.getName());
 		vcatnManageVO.setOrgnztNm(loginVO.getOrgnztNm());
 
 		cmmUseService.populateCmmCodeList("COM056", "COM056_vcatnSe");
 
-		model.addAttribute("indvdlYrycManageVO", vcatnManageService.selectIndvdlYrycManage(loginVO.getUniqId()));
+		model.addAttribute("indvdlYrycManageVO", vcatnManageService.selectIndvdlYrycManage(loginVO.getUserId()));
 
-		return WebUtil.adjustViewName("/uss/ion/vct/VcatnRegist");
+		return "/uss/ion/vct/VcatnRegist";
 	}
 
 	/**
@@ -138,14 +137,14 @@ public class VcatnManageController {
 
 		beanValidator.validate(vcatnManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			model.addAttribute("indvdlYrycManageVO", vcatnManageService.selectIndvdlYrycManage(loginVO.getUniqId()));
-			return WebUtil.adjustViewName("/uss/ion/vct/VcatnRegist");
+			model.addAttribute("indvdlYrycManageVO", vcatnManageService.selectIndvdlYrycManage(loginVO.getUserId()));
+			return "/uss/ion/vct/VcatnRegist";
 		} 
 		
 		if (vcatnManageVO.getSanctnerId() != null)
 			vcatnManageVO.setConfmAt("A");
-		vcatnManageVO.setApplcntId(loginVO.getUniqId());
-		vcatnManageVO.setFrstRegisterId(loginVO.getUniqId());
+		vcatnManageVO.setApplcntId(loginVO.getUserId());
+		vcatnManageVO.setFrstRegisterId(loginVO.getUserId());
 
 		int iTemp = 0;
 		String result = null;
@@ -162,19 +161,20 @@ public class VcatnManageController {
 			resultMessage = "휴가일자가 중복되었습니다. 휴가일자를 확인해 주세요.";
 			model.addAttribute("errorMessage", resultMessage);
 
-			model.addAttribute("indvdlYrycManageVO", vcatnManageService.selectIndvdlYrycManage(loginVO.getUniqId()));
+			model.addAttribute("indvdlYrycManageVO", vcatnManageService.selectIndvdlYrycManage(loginVO.getUserId()));
 
 			vcatnManageVO.setBgnde(DateUtil.formatDate(vcatnManageVO.getBgnde(), "-"));
 			vcatnManageVO.setEndde(DateUtil.formatDate(vcatnManageVO.getEndde(), "-"));
 
-			return WebUtil.adjustViewName("/uss/ion/vct/VcatnRegist");
+			return "/uss/ion/vct/VcatnRegist";
 		}
 		
 		result = vcatnManageService.insertVcatnManage(vcatnManageVO);
 
 		if (result.equals("01")) {
 			model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	        return WebUtil.redirectJsp(model, vcatnManageVO, "/uss/ion/vct/listVcatn.do");
+			model.addAttribute("redirectURL", "/uss/ion/vct/listVcatn.do");
+		    return "cmm/redirect";
 		} else {
 
 			if (result.equals("99"))
@@ -187,12 +187,12 @@ public class VcatnManageController {
 				resultMessage = "반차휴가 등록실패(잔여연차 부족)";
 			model.addAttribute("errorMessage", resultMessage);
 
-			model.addAttribute("indvdlYrycManageVO", vcatnManageService.selectIndvdlYrycManage(loginVO.getUniqId()));
+			model.addAttribute("indvdlYrycManageVO", vcatnManageService.selectIndvdlYrycManage(loginVO.getUserId()));
 			
 			vcatnManageVO.setBgnde(DateUtil.formatDate(vcatnManageVO.getBgnde(), "-"));
 			vcatnManageVO.setEndde(DateUtil.formatDate(vcatnManageVO.getEndde(), "-"));
 
-			return WebUtil.adjustViewName("/uss/ion/vct/VcatnRegist");
+			return "/uss/ion/vct/VcatnRegist";
 		}
 	}
 
@@ -214,7 +214,7 @@ public class VcatnManageController {
 		
 		cmmUseService.populateCmmCodeList("COM056", "COM056_vcatnSe");
 
-		return WebUtil.adjustViewName("/uss/ion/vct/VcatnEdit");
+		return "/uss/ion/vct/VcatnEdit";
 	}
 
 	/**
@@ -234,13 +234,14 @@ public class VcatnManageController {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("indvdlYrycManageVO", vcatnManageService.selectIndvdlYrycManage(vcatnManageVO.getApplcntId()));
 
-			return WebUtil.adjustViewName("/uss/ion/vct/VcatnEdit");
+			return "/uss/ion/vct/VcatnEdit";
 		} 
 		  
 		vcatnManageService.updateVcatnManage(vcatnManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, vcatnManageVO, "/uss/ion/vct/listVcatn.do");
+		model.addAttribute("redirectURL", "/uss/ion/vct/listVcatn.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -257,7 +258,8 @@ public class VcatnManageController {
 		vcatnManageService.deleteVcatnManage(vcatnManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, vcatnManageVO, "/uss/ion/vct/listVcatn.do");
+		model.addAttribute("redirectURL", "/uss/ion/vct/listVcatn.do");
+	    return "cmm/redirect";
 	}
 
 	/*** 승인관련 ***/
@@ -281,7 +283,7 @@ public class VcatnManageController {
 		model.addAttribute("yearList", yearList);
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		vcatnManageVO.setSanctnerId(loginVO.getUniqId()); // 사용자가 승인권자인지 조건값  setting
+		vcatnManageVO.setSanctnerId(loginVO.getUserId()); // 사용자가 승인권자인지 조건값  setting
 
 		vcatnManageVO.setSearchKeyword(vcatnManageVO.getSearchYear() + vcatnManageVO.getSearchMonth());
 
@@ -296,7 +298,7 @@ public class VcatnManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/ion/vct/VcatnConfmList");
+		return "/uss/ion/vct/VcatnConfmList";
 	}
 
 	/**
@@ -315,7 +317,7 @@ public class VcatnManageController {
 		model.addAttribute(vcatnManageService.selectIndvdlYrycManage(vcatnManageVO.getApplcntId()));
 		model.addAttribute(vcatnManageVO);
 		
-		return WebUtil.adjustViewName("/uss/ion/vct/VcatnConfmEdit");
+		return "/uss/ion/vct/VcatnConfmEdit";
 	}
 
 	/**
@@ -332,17 +334,18 @@ public class VcatnManageController {
 
 		beanValidator.validate(vcatnManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/vct/VcatnConfmEdit");
+			return "/uss/ion/vct/VcatnConfmEdit";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		vcatnManageVO.setSanctnerId(loginVO.getUniqId());
-		vcatnManageVO.setLastUpdusrId(loginVO.getUniqId());
+		vcatnManageVO.setSanctnerId(loginVO.getUserId());
+		vcatnManageVO.setLastUpdusrId(loginVO.getUserId());
 
 		vcatnManageService.updateVcatnManageConfm(vcatnManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, vcatnManageVO, "/uss/ion/vct/listVcatnConfm.do");
+		model.addAttribute("redirectURL", "/uss/ion/vct/listVcatnConfm.do");
+	    return "cmm/redirect";
 	}
 
 }

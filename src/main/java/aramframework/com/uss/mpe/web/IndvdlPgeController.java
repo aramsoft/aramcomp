@@ -15,7 +15,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.mpe.domain.IndvdlPgeCntntsVO;
 import aramframework.com.uss.mpe.domain.IndvdlPgeConfVO;
@@ -57,12 +56,12 @@ public class IndvdlPgeController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		if (configurationProcessedYN(loginVO.getId()) == 0) {
+		if (configurationProcessedYN(loginVO.getUserId()) == 0) {
 			model.addAttribute("message", "마이페이지 설정 후 마이페이지를 확인 가능합니다.");
-			return WebUtil.adjustViewName("/uss/mpe/IndvdlpgeConfRegist");
+			return "/uss/mpe/IndvdlpgeConfRegist";
 		} 
 			
-		indvdlPgeConfVO.setUserId(loginVO.getId());
+		indvdlPgeConfVO.setUserId(loginVO.getUserId());
 
 		// 마이페이지 상세목록설정
 		List<EgovMap> resultList =  indvdlPgeService.selectIndvdlpgeResultDetail(indvdlPgeConfVO);
@@ -89,7 +88,7 @@ public class IndvdlPgeController {
 		int typeByCnt = (totDetailCnt % sideCnt) == 0 ? totDetailCnt / sideCnt : totDetailCnt / sideCnt + 1;
 		indvdlPgeConfVO.setSortLineCnt(typeByCnt);
 
-		return WebUtil.adjustViewName("/uss/mpe/IndvdlpgeDetail");
+		return "/uss/mpe/IndvdlpgeDetail";
 	}
 
 	/**
@@ -106,12 +105,12 @@ public class IndvdlPgeController {
 
 		// ID를 받아서 VO에 설정한다.
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		indvdlPgeConfVO.setUserId(loginVO.getId());
+		indvdlPgeConfVO.setUserId(loginVO.getUserId());
 
 		// 기존 생성한 정보가 있을 경우 화면에 보여준다.
 		indvdlPgeService.selectIndvdlpgeConfDetail(indvdlPgeConfVO);
 
-		return WebUtil.adjustViewName("/uss/mpe/IndvdlpgeConfRegist");
+		return "/uss/mpe/IndvdlpgeConfRegist";
 	}
 
 	/**
@@ -129,12 +128,12 @@ public class IndvdlPgeController {
 
 		beanValidator.validate(indvdlPgeConfVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/mpe/IndvdlpgeConfRegist");
+			return "/uss/mpe/IndvdlpgeConfRegist";
 		} 
 		
 		// ID를 받아서 VO에 설정한다.
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		indvdlPgeConfVO.setUserId(loginVO.getId());
+		indvdlPgeConfVO.setUserId(loginVO.getUserId());
 
 		// 기존에 설정한 정보가 있는지 확인한다.
 		int cnt = indvdlPgeService.selectIndvdlpgeConfCnt(indvdlPgeConfVO);
@@ -145,7 +144,8 @@ public class IndvdlPgeController {
 			indvdlPgeService.updateIndvdlpgeConf(indvdlPgeConfVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, indvdlPgeConfVO, "/uss/mpe/detailIndvdlpge.do");
+		model.addAttribute("redirectURL", "/uss/mpe/detailIndvdlpge.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -172,7 +172,7 @@ public class IndvdlPgeController {
 
 		// ID를 받아서 VO에 설정한다.
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		indvdlPgeCntntsVO.setUserId(loginVO.getId());
+		indvdlPgeCntntsVO.setUserId(loginVO.getUserId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
 		indvdlPgeCntntsVO.fillPageInfo(paginationInfo);
@@ -186,7 +186,7 @@ public class IndvdlPgeController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/mpe/IndvdlpgeList");
+		return "/uss/mpe/IndvdlpgeList";
 	}
 
 	/**
@@ -203,18 +203,19 @@ public class IndvdlPgeController {
 
 		// ID를 받아서 VO에 설정한다.
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		if (this.configurationProcessedYN(loginVO.getId()) == 0) {
+		if (this.configurationProcessedYN(loginVO.getUserId()) == 0) {
 			model.addAttribute("message", "마이페이지 환경 설정부터 하셔야 합니다.");
-			return WebUtil.adjustViewName("/uss/mpe/IndvdlpgeConfRegist");
+			return "/uss/mpe/IndvdlpgeConfRegist";
 		} 
 		
-		indvdlPgeCntntsVO.setUserId(loginVO.getId());
+		indvdlPgeCntntsVO.setUserId(loginVO.getUserId());
 
 		// 디비 작업 성공여부에 따라 메세지 설정 및 이동 페이지를 결정한다.
 		indvdlPgeService.addIndvdlpgeCntnts(indvdlPgeCntntsVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, indvdlPgeCntntsVO, "/uss/mpe/listIndvdlpgeCntntsMine.do");
+		model.addAttribute("redirectURL", "/uss/mpe/listIndvdlpgeCntntsMine.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -230,13 +231,14 @@ public class IndvdlPgeController {
 
 		// ID를 받아서 VO에 설정한다.
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		indvdlPgeCntntsVO.setUserId(loginVO.getId());
+		indvdlPgeCntntsVO.setUserId(loginVO.getUserId());
 
 		// 디비 작업 성공여부에 따라 메세지 설정 및 이동 페이지를 결정한다.
 		indvdlPgeService.delIndvdlpgeCntnts(indvdlPgeCntntsVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, indvdlPgeCntntsVO, "/uss/mpe/detailIndvdlpge.do?userId="+indvdlPgeCntntsVO.getUserId());
+		model.addAttribute("redirectURL", "/uss/mpe/detailIndvdlpge.do?userId="+indvdlPgeCntntsVO.getUserId());
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -263,7 +265,7 @@ public class IndvdlPgeController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/mpe/IndvdlpgeCntntsList");
+		return "/uss/mpe/IndvdlpgeCntntsList";
 	}
 
 	/**
@@ -280,7 +282,7 @@ public class IndvdlPgeController {
 
 		model.addAttribute(indvdlPgeService.selectIndvdlpgeCntnts(indvdlPgeCntntsVO));
 
-		return WebUtil.adjustViewName("/uss/mpe/IndvdlpgeCntntsDetail");
+		return "/uss/mpe/IndvdlpgeCntntsDetail";
 	}
 
 	/**
@@ -295,7 +297,7 @@ public class IndvdlPgeController {
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO, 
 			ModelMap model) {
 
-		return WebUtil.adjustViewName("/uss/mpe/IndvdlpgeCntntsRegist");
+		return "/uss/mpe/IndvdlpgeCntntsRegist";
 	}
 
 	/**
@@ -314,14 +316,15 @@ public class IndvdlPgeController {
 		// validation 수행
 		beanValidator.validate(indvdlPgeCntntsVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/mpe/IndvdlpgeCntntsRegist");
+			return "/uss/mpe/IndvdlpgeCntntsRegist";
 		} 
 		
 		// 디비 작업 성공여부에 따라 메세지 설정 및 이동 페이지를 결정한다.
 		indvdlPgeService.insertIndvdlpgeCntnts(indvdlPgeCntntsVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, indvdlPgeCntntsVO, "/uss/mpe/listIndvdlpgeCntnts.do");
+		model.addAttribute("redirectURL", "/uss/mpe/listIndvdlpgeCntnts.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -338,7 +341,7 @@ public class IndvdlPgeController {
 
 		model.addAttribute(indvdlPgeService.selectIndvdlpgeCntnts(indvdlPgeCntntsVO));
 
-		return WebUtil.adjustViewName("/uss/mpe/IndvdlpgeCntntsEdit");
+		return "/uss/mpe/IndvdlpgeCntntsEdit";
 	}
 
 	/**
@@ -356,14 +359,15 @@ public class IndvdlPgeController {
 
 		beanValidator.validate(indvdlPgeCntntsVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/mpe/IndvdlpgeCntntsEdit");
+			return "/uss/mpe/IndvdlpgeCntntsEdit";
 		} 
 		
 		// 디비 작업 성공여부에 따라 메세지 설정 및 이동 페이지를 결정한다.
 		indvdlPgeService.updateIndvdlpgeCntnts(indvdlPgeCntntsVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, indvdlPgeCntntsVO, "/uss/mpe/listIndvdlpgeCntnts.do");
+		model.addAttribute("redirectURL", "/uss/mpe/listIndvdlpgeCntnts.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -381,7 +385,8 @@ public class IndvdlPgeController {
 		indvdlPgeService.deleteIndvdlpgeCntnts(indvdlPgeCntntsVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, indvdlPgeCntntsVO, "/uss/mpe/listIndvdlpgeCntnts.do");
+		model.addAttribute("redirectURL", "/uss/mpe/listIndvdlpgeCntnts.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -399,7 +404,8 @@ public class IndvdlPgeController {
 		indvdlPgeService.deleteIndvdlpgeCntntsDB(indvdlPgeCntntsVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, indvdlPgeCntntsVO, "/uss/mpe/listIndvdlpgeCntnts.do");
+		model.addAttribute("redirectURL", "/uss/mpe/listIndvdlpgeCntnts.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -413,7 +419,7 @@ public class IndvdlPgeController {
 			ModelMap model) {
 		
 		model.addAttribute("linkto", indvdlPgeCntntsVO.getCntcUrl());
-		return WebUtil.adjustViewName("/uss/mpe/IndvdlpgeTmp");
+		return "/uss/mpe/IndvdlpgeTmp";
 	}
 
 }

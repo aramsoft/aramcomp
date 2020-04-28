@@ -18,7 +18,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.dam.map.mat.domain.MapMaterialVO;
 import aramframework.com.dam.map.mat.service.MapMaterialService;
 import aramframework.com.dam.map.tea.domain.MapTeamVO;
@@ -77,7 +76,7 @@ public class RequestOfferController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/dam/spe/req/RequestOfferList");
+		return "/dam/spe/req/RequestOfferList";
 	}
 
 	/**
@@ -96,16 +95,16 @@ public class RequestOfferController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		model.addAttribute("uniqId", (String) loginVO.getUniqId());
+		model.addAttribute("uniqId", (String) loginVO.getUserId());
 
 		// 지식전문가 일때
-		if (requestOfferService.selectRequestOfferSpeCheck(loginVO.getUniqId())) {
+		if (requestOfferService.selectRequestOfferSpeCheck(loginVO.getUserId())) {
 			model.addAttribute("IS_SPE", "Y");
 		} else {
 			model.addAttribute("IS_SPE", "N");
 		}
 
-		return WebUtil.adjustViewName("/dam/spe/req/RequestOfferDetail");
+		return "/dam/spe/req/RequestOfferDetail";
 	}
 
 	/**
@@ -141,7 +140,7 @@ public class RequestOfferController {
 		model.addAttribute("mapMaterialList", mapMaterialService.selectMapMaterialList(mapMaterialVO));
 		model.addAttribute("cmd", cmd);
 
-		return WebUtil.adjustViewName("/dam/spe/req/RequestOfferRegist");
+		return "/dam/spe/req/RequestOfferRegist";
 	}
 
 	/**
@@ -161,7 +160,7 @@ public class RequestOfferController {
 		// 서버 validate 체크
 		beanValidator.validate(requestOfferVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/dam/spe/req/RequestOfferRegist");
+			return "/dam/spe/req/RequestOfferRegist";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
@@ -169,24 +168,25 @@ public class RequestOfferController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		requestOfferVO.setFrstRegisterId(loginVO.getUniqId());
+		requestOfferVO.setFrstRegisterId(loginVO.getUserId());
 
 		// 지식전문가 일때
 		String sCmd = multiRequest.getParameter("cmd") == null ? "" : multiRequest.getParameter("cmd");
 		if (sCmd.equals("reply") ) {
-			if( requestOfferService.selectRequestOfferSpeCheck(loginVO.getUniqId())) {
-				requestOfferVO.setSpeId(loginVO.getUniqId());
+			if( requestOfferService.selectRequestOfferSpeCheck(loginVO.getUserId())) {
+				requestOfferVO.setSpeId(loginVO.getUserId());
 				requestOfferService.replyRequestOffer(requestOfferVO);
 			} else {
-				return WebUtil.adjustViewName("/dam/spe/req/RequestOfferRegist");
+				return "/dam/spe/req/RequestOfferRegist";
 			}
 		} else {
-			requestOfferVO.setEmplyrId(loginVO.getUniqId());
+			requestOfferVO.setEmplyrId(loginVO.getUserId());
 			requestOfferService.insertRequestOffer(requestOfferVO);
 		}
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, requestOfferVO, "/dam/spe/req/listRequestOffer.do");
+		model.addAttribute("redirectURL", "/dam/spe/req/listRequestOffer.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -222,7 +222,7 @@ public class RequestOfferController {
 		model.addAttribute("mapMaterialList", mapMaterialService.selectMapMaterialList(mapMaterialVO));
 		model.addAttribute(requestOfferVO);
 		
-		return WebUtil.adjustViewName("/dam/spe/req/RequestOfferEdit");
+		return "/dam/spe/req/RequestOfferEdit";
 	}
 
 	/**
@@ -242,7 +242,7 @@ public class RequestOfferController {
 		// 서버 validate 체크
 		beanValidator.validate(requestOfferVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/dam/spe/req/RequestOfferEdit");
+			return "/dam/spe/req/RequestOfferEdit";
 		}
 		
 		// 첨부파일 관련 ID 생성 start....
@@ -251,12 +251,13 @@ public class RequestOfferController {
 		
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		requestOfferVO.setLastUpdusrId(loginVO.getUniqId());
+		requestOfferVO.setLastUpdusrId(loginVO.getUserId());
 
 		requestOfferService.updateRequestOffer(requestOfferVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, requestOfferVO, "/dam/spe/req/listRequestOffer.do");
+		model.addAttribute("redirectURL", "/dam/spe/req/listRequestOffer.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -281,13 +282,14 @@ public class RequestOfferController {
 
 			model.addAttribute("reusltScript", ReusltScript);
 
-			return WebUtil.adjustViewName("/dam/spe/req/RequestOfferDetail");
+			return "/dam/spe/req/RequestOfferDetail";
 		} 
 
 		requestOfferService.deleteRequestOffer(requestOfferVO);
 	
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, requestOfferVO, "/dam/spe/req/listRequestOffer.do");
+		model.addAttribute("redirectURL", "/dam/spe/req/listRequestOffer.do");
+	    return "cmm/redirect";
 	}
 
 }

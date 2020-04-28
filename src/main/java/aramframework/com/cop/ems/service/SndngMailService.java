@@ -174,6 +174,63 @@ public class SndngMailService extends EgovAbstractServiceImpl {
     	return true;
     }
     
+	/**
+	 * 메일을 발송한다
+	 * 
+	 * @param sndngMailVO
+	 */
+	public boolean sndngMail(SndngMailVO sndngMailVO) {
+		
+		String recptnPerson = (sndngMailVO.getRecptnPerson() == null) ? "" : sndngMailVO.getRecptnPerson();		// 수신자
+		String subject = (sndngMailVO.getSj() == null) ? "" : sndngMailVO.getSj();								// 메일제목
+		String emailCn = (sndngMailVO.getEmailCn() == null) ? "" : sndngMailVO.getEmailCn();					// 메일내용
+    	
+    	List<AtchmnFileVO> atchmnFileList = sndngMailMapper.selectAtchmnFileList(sndngMailVO);
+    	try{
+          	
+        	// 기본 메일 정보를 생성합니다
+    		email.addTo(recptnPerson); 
+    		email.setSubject(subject);
+    		email.setMsg(emailCn);
+   
+	  		  // 첨부할 attachment 정보를 생성합니다
+        	for (int i = 0; i < atchmnFileList.size(); i++) {
+    			AtchmnFileVO fileVO = (AtchmnFileVO)atchmnFileList.get(i);
+    			String orignlFile = fileVO.getOrignlFileNm();
+    			String streFile = fileVO.getFileStreCours() + fileVO.getStreFileNm();
+
+    			EmailAttachment attachment = new EmailAttachment();
+  		  		attachment.setPath(streFile);	
+  		  		attachment.setDisposition(EmailAttachment.ATTACHMENT);
+  		  		attachment.setDescription("첨부파일입니다");
+//		  		attachment.setName(orignlFile); 
+//  		  	attachment.setName(new String(orignlFile.getBytes(), "EUC-KR")); 
+		  		attachment.setName(MimeUtility.encodeText(orignlFile, "EUC-KR", "B")); 
+
+  		  		// 생성한 attachment를 추가합니다
+  		  		email.attach(attachment);
+        	}	
+   
+  		  	// 메일을 전송합니다
+//        	email.send();
+        	
+        }catch(MailParseException ex){
+        	LOG.error("Sending Mail Exception : " +  ex.getCause() + " [failure when parsing the message]");
+        	return false;
+        }catch(MailAuthenticationException ex){
+        	LOG.error("Sending Mail Exception : " +  ex.getCause() + " [authentication failure]");
+        	return false;
+        }catch(MailSendException ex){
+        	LOG.error("Sending Mail Exception : " +  ex.getCause() + " [failure when sending the message]");
+        	return false;
+        }catch(Exception ex){
+        	LOG.error("Sending Mail Exception : " +  ex.getCause() + " [unknown Exception]");
+        	return false;
+        }
+		
+		return true;
+	}
+
     /**
 	 * 발송할 메일을 XML파일로 만들어 저장한다.
 	 * 
@@ -247,61 +304,4 @@ public class SndngMailService extends EgovAbstractServiceImpl {
     	return true;
     }
 	
-	/**
-	 * 메일을 발송한다
-	 * 
-	 * @param sndngMailVO
-	 */
-	public boolean sndngMail(SndngMailVO sndngMailVO) {
-		
-		String recptnPerson = (sndngMailVO.getRecptnPerson() == null) ? "" : sndngMailVO.getRecptnPerson();		// 수신자
-		String subject = (sndngMailVO.getSj() == null) ? "" : sndngMailVO.getSj();								// 메일제목
-		String emailCn = (sndngMailVO.getEmailCn() == null) ? "" : sndngMailVO.getEmailCn();					// 메일내용
-    	
-    	List<AtchmnFileVO> atchmnFileList = sndngMailMapper.selectAtchmnFileList(sndngMailVO);
-    	try{
-          	
-        	// 기본 메일 정보를 생성합니다
-    		email.addTo(recptnPerson); 
-    		email.setSubject(subject);
-    		email.setMsg(emailCn);
-   
-	  		  // 첨부할 attachment 정보를 생성합니다
-        	for (int i = 0; i < atchmnFileList.size(); i++) {
-    			AtchmnFileVO fileVO = (AtchmnFileVO)atchmnFileList.get(i);
-    			String orignlFile = fileVO.getOrignlFileNm();
-    			String streFile = fileVO.getFileStreCours() + fileVO.getStreFileNm();
-
-    			EmailAttachment attachment = new EmailAttachment();
-  		  		attachment.setPath(streFile);	
-  		  		attachment.setDisposition(EmailAttachment.ATTACHMENT);
-  		  		attachment.setDescription("첨부파일입니다");
-//		  		attachment.setName(orignlFile); 
-//  		  	attachment.setName(new String(orignlFile.getBytes(), "EUC-KR")); 
-		  		attachment.setName(MimeUtility.encodeText(orignlFile, "EUC-KR", "B")); 
-
-  		  		// 생성한 attachment를 추가합니다
-  		  		email.attach(attachment);
-        	}	
-   
-  		  	// 메일을 전송합니다
-        	email.send();
-        	
-        }catch(MailParseException ex){
-        	LOG.error("Sending Mail Exception : " +  ex.getCause() + " [failure when parsing the message]");
-        	return false;
-        }catch(MailAuthenticationException ex){
-        	LOG.error("Sending Mail Exception : " +  ex.getCause() + " [authentication failure]");
-        	return false;
-        }catch(MailSendException ex){
-        	LOG.error("Sending Mail Exception : " +  ex.getCause() + " [failure when sending the message]");
-        	return false;
-        }catch(Exception ex){
-        	LOG.error("Sending Mail Exception : " +  ex.getCause() + " [unknown Exception]");
-        	return false;
-        }
-		
-		return true;
-	}
-
 }

@@ -15,7 +15,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.evt.domain.EventAtdrnVO;
 import aramframework.com.uss.ion.evt.domain.EventManageVO;
@@ -79,7 +78,7 @@ public class EventManageController {
 		// 행사구분
 		cmmUseService.populateCmmCodeList("COM053", "COM053_eventSe");
 
-		return WebUtil.adjustViewName("/uss/ion/evt/EventReqstList");
+		return "/uss/ion/evt/EventReqstList";
 	}
 
 	/**
@@ -100,7 +99,7 @@ public class EventManageController {
 			model.addAttribute("check_popup", "Y");
 		}
 		
-		return WebUtil.adjustViewName("/uss/ion/evt/EventReqstDetail");
+		return "/uss/ion/evt/EventReqstDetail";
 	}
 
 	/**
@@ -115,7 +114,7 @@ public class EventManageController {
 
 		cmmUseService.populateCmmCodeList("COM053", "COM053_eventSe");
 
-		return WebUtil.adjustViewName("/uss/ion/evt/EventReqstRegist");
+		return "/uss/ion/evt/EventReqstRegist";
 	}
 
 	/**
@@ -132,16 +131,17 @@ public class EventManageController {
 
 		beanValidator.validate(eventManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/evt/EventReqstRegist");
+			return "/uss/ion/evt/EventReqstRegist";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		eventManageVO.setFrstRegisterId(loginVO.getUniqId());
+		eventManageVO.setFrstRegisterId(loginVO.getUserId());
 
 		eventManageService.insertEventManage(eventManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, eventManageVO, "/uss/ion/evt/listEventReqst.do");
+		model.addAttribute("redirectURL", "/uss/ion/evt/listEventReqst.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -157,7 +157,7 @@ public class EventManageController {
 
 		model.addAttribute(eventManageService.selectEventManage(eventManageVO));
 
-		return WebUtil.adjustViewName("/uss/ion/evt/EventReqstEdit");
+		return "/uss/ion/evt/EventReqstEdit";
 	}
 
 	/**
@@ -174,16 +174,17 @@ public class EventManageController {
 
 		beanValidator.validate(eventManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/evt/EventReqstEdit");
+			return "/uss/ion/evt/EventReqstEdit";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		eventManageVO.setLastUpdusrId(loginVO.getUniqId());
+		eventManageVO.setLastUpdusrId(loginVO.getUserId());
 
 		eventManageService.updateEventManage(eventManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, eventManageVO, "/uss/ion/evt/listEventReqst.do");
+		model.addAttribute("redirectURL", "/uss/ion/evt/listEventReqst.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -200,7 +201,8 @@ public class EventManageController {
 		eventManageService.deleteEventManage(eventManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, eventManageVO, "/uss/ion/evt/listEventReqst.do");
+		model.addAttribute("redirectURL", "/uss/ion/evt/listEventReqst.do");
+	    return "cmm/redirect";
 	}
 
 	/** 행사접수관리 **/
@@ -217,7 +219,7 @@ public class EventManageController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		eventAtdrnVO.setApplcntId(loginVO.getUniqId());// 사용자UniqID
+		eventAtdrnVO.setApplcntId(loginVO.getUserId());// 사용자UniqID
 		eventAtdrnVO.setSearchKeyword(eventAtdrnVO.getSearchYear() + eventAtdrnVO.getSearchMonth());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
@@ -242,7 +244,7 @@ public class EventManageController {
 		// 행사구분
 		cmmUseService.populateCmmCodeList("COM053", "COM053_eventSe");
 
-		return WebUtil.adjustViewName("/uss/ion/evt/EventRceptList");
+		return "/uss/ion/evt/EventRceptList";
 	}
 
 	/**
@@ -260,7 +262,7 @@ public class EventManageController {
 		model.addAttribute(eventManageService.selectEventAtdrn(eventAtdrnVO));
 		model.addAttribute(eventManageService.selectEventManage(eventManageVO));
 
-		return WebUtil.adjustViewName("/uss/ion/evt/EventRceptDetail");
+		return "/uss/ion/evt/EventRceptDetail";
 	}
 
 	/**
@@ -278,12 +280,12 @@ public class EventManageController {
 		eventManageService.selectEventManage(eventManageVO);
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		eventAtdrnVO.setApplcntId(loginVO.getUniqId());
+		eventAtdrnVO.setApplcntId(loginVO.getUserId());
 		eventAtdrnVO.setApplcntNm(loginVO.getName());
 		eventAtdrnVO.setOrgnztNm(loginVO.getOrgnztNm());
 		eventAtdrnVO.setEventId(eventManageVO.getEventId());
 
-		return WebUtil.adjustViewName("/uss/ion/evt/EventRceptRegist");
+		return "/uss/ion/evt/EventRceptRegist";
 	}
 
 	/**
@@ -302,14 +304,14 @@ public class EventManageController {
 
 		beanValidator.validate(eventAtdrnVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/evt/EventRceptRegist");
+			return "/uss/ion/evt/EventRceptRegist";
 		} 
 		
 		eventManageService.selectEventManage(eventManageVO);
 
 		if (eventManageVO.getGarden() <= eventManageService.selectEventReqstAtdrnListCnt(eventAtdrnVO)) {
 			model.addAttribute("errMessage", "정원초과");
-			return WebUtil.adjustViewName("/uss/ion/evt/EventRceptRegist");
+			return "/uss/ion/evt/EventRceptRegist";
 		}
 		
 		java.util.Calendar cal = java.util.Calendar.getInstance();
@@ -326,12 +328,13 @@ public class EventManageController {
 		eventAtdrnVO.setReqstDe(sSearchDate);// 신청일자
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		eventAtdrnVO.setFrstRegisterId(loginVO.getUniqId());
+		eventAtdrnVO.setFrstRegisterId(loginVO.getUserId());
 
 		eventManageService.insertEventAtdrn(eventAtdrnVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, eventAtdrnVO, "/uss/ion/evt/listEventRcrpt.do");
+		model.addAttribute("redirectURL", "/uss/ion/evt/listEventRcrpt.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -348,7 +351,8 @@ public class EventManageController {
 		eventManageService.deleteEventAtdrn(eventAtdrnVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, eventAtdrnVO, "/uss/ion/evt/listEventRcrpt.do");
+		model.addAttribute("redirectURL", "/uss/ion/evt/listEventRcrpt.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -364,7 +368,7 @@ public class EventManageController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		eventAtdrnVO.setSanctnerId(loginVO.getUniqId());// 승인권자UniqID
+		eventAtdrnVO.setSanctnerId(loginVO.getUserId());// 승인권자UniqID
 
 		eventAtdrnVO.setSearchKeyword(eventAtdrnVO.getSearchYear() + eventAtdrnVO.getSearchMonth());
 
@@ -389,7 +393,7 @@ public class EventManageController {
 		// 행사구분
 		cmmUseService.populateCmmCodeList("COM053", "COM053_eventSe");
 
-		return WebUtil.adjustViewName("/uss/ion/evt/EventRceptConfm");
+		return "/uss/ion/evt/EventRceptConfm";
 	}
 
 	/**
@@ -405,13 +409,14 @@ public class EventManageController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		eventAtdrnVO.setSanctnerId(loginVO.getUniqId());
-		eventAtdrnVO.setFrstRegisterId(loginVO.getUniqId());
+		eventAtdrnVO.setSanctnerId(loginVO.getUserId());
+		eventAtdrnVO.setFrstRegisterId(loginVO.getUserId());
 
 		eventManageService.updateEventAtdrn(eventAtdrnVO, checkedEventRceptForConfm);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, eventAtdrnVO, "/uss/ion/evt/listEventRceptConfm.do");
+		model.addAttribute("redirectURL", "/uss/ion/evt/listEventRceptConfm.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -437,7 +442,7 @@ public class EventManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/ion/evt/EventReqstAtdrnList");
+		return "/uss/ion/evt/EventReqstAtdrnList";
 	}
 
 }

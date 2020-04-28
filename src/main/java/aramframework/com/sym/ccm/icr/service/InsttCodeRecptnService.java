@@ -372,7 +372,7 @@ public class InsttCodeRecptnService extends EgovAbstractServiceImpl {
 
 						// 로그인VO에서 사용자 정보 가져오기
 						LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-						insttCodeRecptnVO.setFrstRegisterId(loginVO.getUniqId());
+						insttCodeRecptnVO.setFrstRegisterId(loginVO.getUserId());
 
 						// changeSeCode 변경구분코드
 						// '01' 기관생성

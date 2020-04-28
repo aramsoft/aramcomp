@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uap.domain.LoginPolicyVO;
 import aramframework.com.uat.uap.service.LoginPolicyService;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -63,7 +62,7 @@ public class LoginPolicyController {
 	
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uat/uap/LoginPolicyList");
+		return "uat/uap/LoginPolicyList";
 	}
 
 	/**
@@ -78,7 +77,7 @@ public class LoginPolicyController {
 			@ModelAttribute LoginPolicyVO loginPolicyVO, 
 			ModelMap model)	{
 
-		return WebUtil.adjustViewName("/uat/uap/LoginPolicyRegist");
+		return "uat/uap/LoginPolicyRegist";
 	}
 
 	/**
@@ -96,16 +95,17 @@ public class LoginPolicyController {
 
 		beanValidator.validate(loginPolicyVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uat/uap/LoginPolicyRegist");
+			return "uat/uap/LoginPolicyRegist";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		loginPolicyVO.setUserId(loginVO.getId());
+		loginPolicyVO.setUserId(loginVO.getUserId());
 
 		loginPolicyService.insertLoginPolicy(loginPolicyVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, loginPolicyVO, "/uat/uap/listLoginPolicy.do");
+		model.addAttribute("redirectURL", "/uat/uap/listLoginPolicy.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -122,7 +122,7 @@ public class LoginPolicyController {
 
 		model.addAttribute(loginPolicyService.selectLoginPolicy(loginPolicyVO));
 
-		return WebUtil.adjustViewName("/uat/uap/LoginPolicyEdit");
+		return "uat/uap/LoginPolicyEdit";
 	}
 
 	/**
@@ -140,11 +140,11 @@ public class LoginPolicyController {
 
 		beanValidator.validate(loginPolicyVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uat/uap/LoginPolicyEdit");
+			return "uat/uap/LoginPolicyEdit";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		loginPolicyVO.setUserId(loginVO.getId());
+		loginPolicyVO.setUserId(loginVO.getUserId());
 
 		if( loginPolicyVO.getRegDate() == null || loginPolicyVO.getRegDate().equals("") ) {
 			loginPolicyService.insertLoginPolicy(loginPolicyVO);
@@ -153,7 +153,8 @@ public class LoginPolicyController {
 		}
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, loginPolicyVO, "/uat/uap/listLoginPolicy.do");
+		model.addAttribute("redirectURL", "/uat/uap/listLoginPolicy.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -164,13 +165,15 @@ public class LoginPolicyController {
 	@RequestMapping("/uat/uap/deleteLoginPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteLoginPolicy(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute LoginPolicyVO loginPolicyVO, 
 			ModelMap model) {
 
 		loginPolicyService.deleteLoginPolicy(loginPolicyVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, loginPolicyVO, "/uat/uap/listLoginPolicy.do");
+		model.addAttribute("redirectURL", "/uat/uap/listLoginPolicy.do");
+	    return "cmm/redirect";
 	}
 
 }

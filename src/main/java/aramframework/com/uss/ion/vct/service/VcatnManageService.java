@@ -84,7 +84,7 @@ public class VcatnManageService extends EgovAbstractServiceImpl {
 		vcatnManageVO.setInfrmlSanctnId(infrmlSanctn.getInfrmlSanctnId());
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		IndvdlYrycManageVO indvdlYrycManageVO1 = selectIndvdlYrycManage(loginVO.getUniqId());
+		IndvdlYrycManageVO indvdlYrycManageVO1 = selectIndvdlYrycManage(loginVO.getUserId());
 		double iUseYrycCo = indvdlYrycManageVO1.getUseYrycCo(); // 연차테이블의 사용 연차갯수
 		double iRemndrYrycCo = indvdlYrycManageVO1.getRemndrYrycCo(); // 연차테이블의 잔여 연차갯수
 		double iCountYryc = 0.0;

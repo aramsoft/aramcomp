@@ -4,10 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
 
 import org.slf4j.Logger;
@@ -65,39 +61,6 @@ public class AramProperties {
 			+ "globals.properties";
 
 	/**
-	 * 인자로 주어진 문자열을 Key값으로 하는 상대경로 프로퍼티 값을 절대경로로 반환한다(Globals.java 전용)
-	 * 
-	 * @param 	keyName	String
-	 * @return 			String
-	 */
-	public static String getPathProperty(String keyName) {
-		String value = ERR_CODE;
-		value = "99";
-		FileInputStream fis = null;
-		try {
-			Properties props = new Properties();
-			fis = new FileInputStream(WebUtil.filePathBlackList(GLOBALS_PROPERTIES_FILE));
-			props.load(new java.io.BufferedInputStream(fis));
-			value = props.getProperty(keyName).trim();
-			value = SYSCONFIG_PATH_PREFIX + "egovProps" + System.getProperty("file.separator") + value;
-		} catch (FileNotFoundException fne) {
-			LOG.error(fne.getMessage());
-		} catch (IOException ioe) {
-			LOG.error(ioe.getMessage());
-		} catch (Exception e) {
-			LOG.error(e.getMessage());
-		} finally {
-			try {
-				if (fis != null)
-					fis.close();
-			} catch (Exception ex) {
-				LOG.error("IGNORED: " + ex.getMessage());
-			}
-		}
-		return value;
-	}
-
-	/**
 	 * 인자로 주어진 문자열을 Key값으로 하는 프로퍼티 값을 반환한다(Globals.java 전용)
 	 * 
 	 * @param keyName	String
@@ -111,6 +74,7 @@ public class AramProperties {
 			Properties props = new Properties();
 			fis = new FileInputStream(WebUtil.filePathBlackList(GLOBALS_PROPERTIES_FILE));
 			props.load(new java.io.BufferedInputStream(fis));
+			
 			value = props.getProperty(keyName).trim();
 		} catch (FileNotFoundException fne) {
 			LOG.error(fne.getMessage());
@@ -129,38 +93,10 @@ public class AramProperties {
 		return value;
 	}
 
-	/**
-	 * 주어진 파일에서 인자로 주어진 문자열을 Key값으로 하는 프로퍼티 상대 경로값을 절대 경로값으로 반환한다
-	 * 
-	 * @param 	fileName	String
-	 * @param 	key         String
-	 * @return 				String
-	 */
-	public static String getPathProperty(String fileName, String key) {
-		FileInputStream fis = null;
-		try {
-			java.util.Properties props = new java.util.Properties();
-			fis = new FileInputStream(WebUtil.filePathBlackList(fileName));
-			props.load(new java.io.BufferedInputStream(fis));
-			fis.close();
-
-			String value = props.getProperty(key);
-			value = SYSCONFIG_PATH_PREFIX + "egovProps" + System.getProperty("file.separator") + value;
-			return value;
-		} catch (java.io.FileNotFoundException fne) {
-			return ERR_CODE_FNFE;
-		} catch (java.io.IOException ioe) {
-			return ERR_CODE_IOE;
-		} finally {
-			try {
-				if (fis != null)
-					fis.close();
-			} catch (Exception ex) {
-				LOG.error("IGNORED: " + ex.getMessage());
-			}
-		}
+	public static String getSysPathProperty(String keyName) {
+		return SYSCONFIG_PATH_PREFIX + "egovProps" + System.getProperty("file.separator") + getProperty(keyName);
 	}
-
+	
 	/**
 	 * 주어진 파일에서 인자로 주어진 문자열을 Key값으로 하는 프로퍼티 값을 반환한다
 	 * 
@@ -169,18 +105,18 @@ public class AramProperties {
 	 * @return 				String
 	 */
 	public static String getProperty(String fileName, String key) {
+		String value = ERR_CODE;
+		value = "99";
 		FileInputStream fis = null;
 		try {
 			java.util.Properties props = new java.util.Properties();
 			fis = new FileInputStream(WebUtil.filePathBlackList(fileName));
 			props.load(new java.io.BufferedInputStream(fis));
-			fis.close();
 
-			String value = props.getProperty(key);
-			return value;
-		} catch (java.io.FileNotFoundException fne) {
+			value = props.getProperty(key);
+		} catch (FileNotFoundException fne) {
 			return ERR_CODE_FNFE;
-		} catch (java.io.IOException ioe) {
+		} catch (IOException ioe) {
 			return ERR_CODE_IOE;
 		} finally {
 			try {
@@ -190,52 +126,11 @@ public class AramProperties {
 				LOG.error("IGNORED: " + ex.getMessage());
 			}
 		}
+		return value;
 	}
 
-	/**
-	 * 주어진 프로파일의 내용을 파싱하여 (key-value) 형태의 구조체 배열을 반환한다.
-	 * 
-	 * @param 	property	String
-	 * @return 				ArrayList
-	 */
-	public static ArrayList<Map<String, String>> loadPropertyFile(String property) {
-
-		// key - value 형태로 된 배열 결과
-		ArrayList<Map<String, String>> keyList = new ArrayList<Map<String, String>>();
-
-		String src = property.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR);
-		FileInputStream fis = null;
-		try {
-			File srcFile = new File(WebUtil.filePathBlackList(src));
-			if (srcFile.exists()) {
-
-				java.util.Properties props = new java.util.Properties();
-				fis = new FileInputStream(src);
-				props.load(new java.io.BufferedInputStream(fis));
-				fis.close();
-
-				Enumeration<?> plist = props.propertyNames();
-				if (plist != null) {
-					while (plist.hasMoreElements()) {
-						Map<String, String> map = new HashMap<String, String>();
-						String key = (String) plist.nextElement();
-						map.put(key, props.getProperty(key));
-						keyList.add(map);
-					}
-				}
-			}
-		} catch (Exception ex) {
-			LOG.error(ex.getMessage()); 
-		} finally {
-			try {
-				if (fis != null)
-					fis.close();
-			} catch (Exception ex) {
-				LOG.error("IGNORED: " + ex.getMessage());
-			}
-		}
-
-		return keyList;
+	public static String getSysPathProperty(String fileName, String key) {
+		return SYSCONFIG_PATH_PREFIX + "egovProps" + System.getProperty("file.separator") + getProperty(fileName, key);
 	}
-
+	
 }

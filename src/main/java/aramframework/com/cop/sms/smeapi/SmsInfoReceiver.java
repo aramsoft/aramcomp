@@ -16,7 +16,7 @@ import x3.client.smeapi.SMESession;
 import x3.client.smeapi.impl.SMEConfig;
 import x3.client.smeapi.impl.SMEConnectionFactoryImpl;
 import x3.client.smeapi.impl.SMELogger;
-import aramframework.com.cmm.constant.AramProperties;
+import aramframework.com.cmm.constant.Globals;
 import aramframework.com.cop.sms.dao.SmsMapper;
 import aramframework.com.cop.sms.domain.SmsRecptnVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -349,13 +349,10 @@ public class SmsInfoReceiver extends EgovAbstractServiceImpl implements SMEListe
 	 * 참조
 	 */
 	public void execute() {
-		smeConfigPath = AramProperties.getPathProperty("Globals.SMEConfigPath");
-
 		LOG.debug("SmsInfoReceiver executed...");
-
 		try {
 			try {
-				SMEConfig.configSet(smeConfigPath);
+				SMEConfig.configSet(Globals.SME_CONFIG_PATH);
 				readPropertyFile();
 
 			} catch (Exception ex) {

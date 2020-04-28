@@ -12,9 +12,6 @@ import aramframework.com.cmm.domain.BaseVO;
 public class UserInfVO extends BaseVO {
 
 	// domain
-	/** 유일 아이디 */
-	private String uniqId = "";
-
 	/** 사용자 아이디 */
 	private String userId = "";
 
@@ -41,23 +38,6 @@ public class UserInfVO extends BaseVO {
 	private String trgetId = "";
 
 	// domain
-	/**
-	 * uniqId attribute를 리턴한다.
-	 * 
-	 * @return the uniqId
-	 */
-	public String getUniqId() {
-		return uniqId;
-	}
-	/**
-	 * uniqId attribute 값을 설정한다.
-	 * 
-	 * @param uniqId
-	 *            the uniqId to set
-	 */
-	public void setUniqId(String uniqId) {
-		this.uniqId = uniqId;
-	}
 
 	/**
 	 * userId attribute를 리턴한다.

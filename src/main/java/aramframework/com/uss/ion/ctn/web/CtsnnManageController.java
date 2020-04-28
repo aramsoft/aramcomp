@@ -14,7 +14,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.ctn.domain.CtsnnManageVO;
 import aramframework.com.uss.ion.ctn.service.CtsnnManageService;
@@ -67,7 +66,7 @@ public class CtsnnManageController {
 
 		cmmUseService.populateCmmCodeList("COM054", "COM054_ctsnn");
 
-		return WebUtil.adjustViewName("/uss/ion/ctn/CtsnnList");
+		return "/uss/ion/ctn/CtsnnList";
 	}
 
 	/**
@@ -83,7 +82,7 @@ public class CtsnnManageController {
 
 		model.addAttribute(ctsnnManageService.selectCtsnnManage(ctsnnManageVO));
 
-		return WebUtil.adjustViewName("/uss/ion/ctn/CtsnnDetail");
+		return "/uss/ion/ctn/CtsnnDetail";
 	}
 
 	/**
@@ -99,7 +98,7 @@ public class CtsnnManageController {
 		cmmUseService.populateCmmCodeList("COM054", "COM054_ctsnn");
 		cmmUseService.populateCmmCodeList("COM073", "COM073_relate");
 
-		return WebUtil.adjustViewName("/uss/ion/ctn/CtsnnRegist");
+		return "/uss/ion/ctn/CtsnnRegist";
 	}
 
 	/**
@@ -116,16 +115,17 @@ public class CtsnnManageController {
 
 		beanValidator.validate(ctsnnManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/ctn/CtsnnRegist");
+			return "/uss/ion/ctn/CtsnnRegist";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		ctsnnManageVO.setFrstRegisterId(loginVO.getUniqId());
+		ctsnnManageVO.setFrstRegisterId(loginVO.getUserId());
 
 		ctsnnManageService.insertCtsnnManage(ctsnnManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, ctsnnManageVO, "/uss/ion/ctn/listCtsnn.do");
+		model.addAttribute("redirectURL", "/uss/ion/ctn/listCtsnn.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -144,7 +144,7 @@ public class CtsnnManageController {
 		cmmUseService.populateCmmCodeList("COM054", "COM054_ctsnn");
 		cmmUseService.populateCmmCodeList("COM073", "COM073_relate");
 
-		return WebUtil.adjustViewName("/uss/ion/ctn/CtsnnEdit");
+		return "/uss/ion/ctn/CtsnnEdit";
 	}
 
 	/**
@@ -161,13 +161,14 @@ public class CtsnnManageController {
 
 		beanValidator.validate(ctsnnManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/ctn/CtsnnEdit");
+			return "/uss/ion/ctn/CtsnnEdit";
 		} 
 
 		ctsnnManageService.updateCtsnnManage(ctsnnManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, ctsnnManageVO, "/uss/ion/ctn/listCtsnn.do");
+		model.addAttribute("redirectURL", "/uss/ion/ctn/listCtsnn.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -184,7 +185,8 @@ public class CtsnnManageController {
 		ctsnnManageService.deleteCtsnnManage(ctsnnManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, ctsnnManageVO, "/uss/ion/ctn/listCtsnn.do");
+		model.addAttribute("redirectURL", "/uss/ion/ctn/listCtsnn.do");
+	    return "cmm/redirect";
 	}
 
 	/*** 승인관련 ***/
@@ -201,7 +203,7 @@ public class CtsnnManageController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		ctsnnManageVO.setSanctnerId(loginVO.getUniqId()); // 사용자가 승인권자인지 조건값 setting selectCtsnnManageList
+		ctsnnManageVO.setSanctnerId(loginVO.getUserId()); // 사용자가 승인권자인지 조건값 setting selectCtsnnManageList
 
 		PaginationInfo paginationInfo = new PaginationInfo();
 		ctsnnManageVO.fillPageInfo(paginationInfo);
@@ -216,7 +218,7 @@ public class CtsnnManageController {
 
 		cmmUseService.populateCmmCodeList("COM054", "COM054_ctsnn");
 
-		return WebUtil.adjustViewName("/uss/ion/ctn/CtsnnConfmList");
+		return "/uss/ion/ctn/CtsnnConfmList";
 	}
 
 	/**
@@ -232,7 +234,7 @@ public class CtsnnManageController {
 		
 		model.addAttribute(ctsnnManageService.selectCtsnnManage(ctsnnManageVO));
 
-		return WebUtil.adjustViewName("/uss/ion/ctn/CtsnnConfmEdit");
+		return "/uss/ion/ctn/CtsnnConfmEdit";
 	}
 
 	/**
@@ -249,17 +251,18 @@ public class CtsnnManageController {
 
 		beanValidator.validate(ctsnnManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/ctn/CtsnnConfmEdit");
+			return "/uss/ion/ctn/CtsnnConfmEdit";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		ctsnnManageVO.setSanctnerId(loginVO.getUniqId());
-		ctsnnManageVO.setLastUpdusrId(loginVO.getUniqId());
+		ctsnnManageVO.setSanctnerId(loginVO.getUserId());
+		ctsnnManageVO.setLastUpdusrId(loginVO.getUserId());
 
 		ctsnnManageService.updtCtsnnManageConfm(ctsnnManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, ctsnnManageVO, "/uss/ion/ctn/listCtsnnConfm.do");
+		model.addAttribute("redirectURL", "/uss/ion/ctn/listCtsnnConfm.do");
+	    return "cmm/redirect";
 	}
 
 }

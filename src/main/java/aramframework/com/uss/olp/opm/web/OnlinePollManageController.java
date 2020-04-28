@@ -14,7 +14,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.olp.opm.domain.OnlinePollItemVO;
 import aramframework.com.uss.olp.opm.domain.OnlinePollManageVO;
@@ -63,7 +62,7 @@ public class OnlinePollManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/olp/opm/OnlinePollList");
+		return "/uss/olp/opm/OnlinePollList";
 	}
 
 	/**
@@ -82,7 +81,7 @@ public class OnlinePollManageController {
 		// POLL종류 설정
 		cmmUseService.populateCmmCodeList("COM039", "COM039_pollKind");
 
-		return WebUtil.adjustViewName("/uss/olp/opm/OnlinePollDetail");
+		return "/uss/olp/opm/OnlinePollDetail";
 	}
 
 	/**
@@ -98,7 +97,7 @@ public class OnlinePollManageController {
 		// POLL종류 Select박스 설정
 		cmmUseService.populateCmmCodeList("COM039", "COM039_pollKind");
 
-		return WebUtil.adjustViewName("/uss/olp/opm/OnlinePollRegist");
+		return "/uss/olp/opm/OnlinePollRegist";
 	}
 
 	/**
@@ -116,17 +115,18 @@ public class OnlinePollManageController {
 		// 서버 validate 체크
 		beanValidator.validate(onlinePollManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olp/opm/OnlinePollRegist");
+			return "/uss/olp/opm/OnlinePollRegist";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		onlinePollManageVO.setFrstRegisterId(loginVO.getUniqId());
+		onlinePollManageVO.setFrstRegisterId(loginVO.getUserId());
 
 		onlinePollManageService.insertOnlinePollManage(onlinePollManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, onlinePollManageVO, "/uss/olp/opm/listOnlinePoll.do");
+		model.addAttribute("redirectURL", "/uss/olp/opm/listOnlinePoll.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -145,7 +145,7 @@ public class OnlinePollManageController {
 		// POLL종류 Select박스 설정
 		cmmUseService.populateCmmCodeList("COM039", "COM039_pollKind");
 
-		return WebUtil.adjustViewName("/uss/olp/opm/OnlinePollEdit");
+		return "/uss/olp/opm/OnlinePollEdit";
 	}
 
 	/**
@@ -163,17 +163,18 @@ public class OnlinePollManageController {
 		// 서버 validate 체크
 		beanValidator.validate(onlinePollManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olp/opm/OnlinePollEdit");
+			return "/uss/olp/opm/OnlinePollEdit";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		onlinePollManageVO.setLastUpdusrId(loginVO.getUniqId());
+		onlinePollManageVO.setLastUpdusrId(loginVO.getUserId());
 
 		onlinePollManageService.updateOnlinePollManage(onlinePollManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, onlinePollManageVO, "/uss/olp/opm/listOnlinePoll.do");
+		model.addAttribute("redirectURL", "/uss/olp/opm/listOnlinePoll.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -190,7 +191,8 @@ public class OnlinePollManageController {
 		onlinePollManageService.deleteOnlinePollManage(onlinePollManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, onlinePollManageVO, "/uss/olp/opm/listOnlinePoll.do");
+		model.addAttribute("redirectURL", "/uss/olp/opm/listOnlinePoll.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -205,7 +207,7 @@ public class OnlinePollManageController {
 
 		model.addAttribute("resultList", onlinePollManageService.selectOnlinePollItemList(onlinePollItemVO));
 
-		return WebUtil.adjustViewName("/uss/olp/opm/OnlinePollItemList");
+		return "/uss/olp/opm/OnlinePollItemList";
 	}
 
 	/**
@@ -222,12 +224,13 @@ public class OnlinePollManageController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		onlinePollItemVO.setFrstRegisterId(loginVO.getUniqId());
+		onlinePollItemVO.setFrstRegisterId(loginVO.getUserId());
 
 		onlinePollManageService.insertOnlinePollItem(onlinePollItemVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, onlinePollItemVO,  "/uss/olp/opm/listOnlinePollItem.do?pollId="+onlinePollItemVO.getPollId());
+		model.addAttribute("redirectURL", "/uss/olp/opm/listOnlinePollItem.do?pollId="+onlinePollItemVO.getPollId());
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -244,12 +247,13 @@ public class OnlinePollManageController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		onlinePollItemVO.setLastUpdusrId(loginVO.getUniqId());
+		onlinePollItemVO.setLastUpdusrId(loginVO.getUserId());
 
 		onlinePollManageService.updateOnlinePollItem(onlinePollItemVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, onlinePollItemVO, "/uss/olp/opm/listOnlinePollItem.do?pollId="+onlinePollItemVO.getPollId());
+		model.addAttribute("redirectURL", "/uss/olp/opm/listOnlinePollItem.do?pollId="+onlinePollItemVO.getPollId());
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -267,7 +271,8 @@ public class OnlinePollManageController {
 		onlinePollManageService.deleteOnlinePollItem(onlinePollItemVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, onlinePollItemVO, "/uss/olp/opm/listOnlinePollItem.do?pollId="+onlinePollItemVO.getPollId());
+		model.addAttribute("redirectURL", "/uss/olp/opm/listOnlinePollItem.do?pollId="+onlinePollItemVO.getPollId());
+	    return "cmm/redirect";
 	}
 
 }

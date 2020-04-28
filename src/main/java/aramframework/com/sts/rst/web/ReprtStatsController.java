@@ -14,7 +14,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sts.rst.domain.ReprtStatsVO;
 import aramframework.com.sts.rst.service.ReprtStatsService;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -98,7 +97,7 @@ public class ReprtStatsController {
 			reprtStatsVO.setPmToDate(DateUtil.getToday());// 2011.09.19
 		}
 		
-		return WebUtil.adjustViewName("/sts/rst/ReprtStatsList");
+		return "/sts/rst/ReprtStatsList";
 	}
 
 	/**
@@ -115,7 +114,7 @@ public class ReprtStatsController {
 
 		model.addAttribute("reprtStats", reprtStatsService.selectReprtStats(reprtStatsVO));
 
-		return WebUtil.adjustViewName("/sts/rst/ReprtStatsDetail");
+		return "/sts/rst/ReprtStatsDetail";
 	}
 
 	/**
@@ -133,7 +132,7 @@ public class ReprtStatsController {
 		cmmUseService.populateCmmCodeList("COM036", "COM036_reprtSttus");
 		cmmUseService.populateCmmCodeList("COM040", "COM040_reprtType");
 
-		return WebUtil.adjustViewName("/sts/rst/ReprtStatsRegist");
+		return "/sts/rst/ReprtStatsRegist";
 	}
 
 	/**
@@ -151,16 +150,17 @@ public class ReprtStatsController {
 
 		beanValidator.validate(reprtStatsVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sts/rst/ReprtStatsRegist");
+			return "/sts/rst/ReprtStatsRegist";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		reprtStatsVO.setUserId(loginVO.getId());
+		reprtStatsVO.setUserId(loginVO.getUserId());
 
 		reprtStatsService.insertReprtStats(reprtStatsVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, reprtStatsVO, "/sts/rst/listReprtStats.do");
+		model.addAttribute("redirectURL", "/sts/rst/listReprtStats.do");
+	    return "cmm/redirect";
 	}
 
 }

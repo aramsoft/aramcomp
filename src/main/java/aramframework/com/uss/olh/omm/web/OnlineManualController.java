@@ -16,7 +16,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.olh.omm.domain.OnlineManualVO;
 import aramframework.com.uss.olh.omm.service.OnlineManualService;
@@ -79,7 +78,7 @@ public class OnlineManualController {
 		// 온라인메뉴얼 구분 설정
 		cmmUseService.populateCmmCodeList("COM041", "COM041_onlineMnlSe");
 
-		return WebUtil.adjustViewName("/uss/olh/omm/OnlineManualUserList");
+		return "/uss/olh/omm/OnlineManualUserList";
 	}
 
 	/**
@@ -98,7 +97,7 @@ public class OnlineManualController {
 		// 온라인메뉴얼 구분 설정
 		cmmUseService.populateCmmCodeList("COM041", "COM041_onlineMnlSe");
 
-		return WebUtil.adjustViewName("/uss/olh/omm/OnlineManualUserDetail");
+		return "/uss/olh/omm/OnlineManualUserDetail";
 	}
 
 	/**
@@ -127,7 +126,7 @@ public class OnlineManualController {
 		// 온라인메뉴얼 구분 설정
 		cmmUseService.populateCmmCodeList("COM041", "COM041_onlineMnlSe");
 
-		return WebUtil.adjustViewName("/uss/olh/omm/OnlineManualList");
+		return "/uss/olh/omm/OnlineManualList";
 	}
 
 	/**
@@ -146,7 +145,7 @@ public class OnlineManualController {
 		// 온라인메뉴얼 구분 설정
 		cmmUseService.populateCmmCodeList("COM041", "COM041_onlineMnlSe");
 
-		return WebUtil.adjustViewName("/uss/olh/omm/OnlineManualDetail");
+		return "/uss/olh/omm/OnlineManualDetail";
 	}
 
 	/**
@@ -162,7 +161,7 @@ public class OnlineManualController {
 		// 온라인메뉴얼 구분 설정
 		cmmUseService.populateCmmCodeList("COM041", "COM041_onlineMnlSe");
 
-		return WebUtil.adjustViewName("/uss/olh/omm/OnlineManualRegist");
+		return "/uss/olh/omm/OnlineManualRegist";
 	}
 
 	/**
@@ -180,18 +179,19 @@ public class OnlineManualController {
 		// 서버 validate 체크
 		beanValidator.validate(onlineManualVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olh/omm/OnlineManualRegist");
+			return "/uss/olh/omm/OnlineManualRegist";
 		}
 		
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		onlineManualVO.setFrstRegisterId(loginVO.getUniqId());
+		onlineManualVO.setFrstRegisterId(loginVO.getUserId());
 
 		// 저장
 		onlineManualService.insertOnlineManual(onlineManualVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, onlineManualVO, "/uss/olh/omm/listOnlineManual.do");
+		model.addAttribute("redirectURL", "/uss/olh/omm/listOnlineManual.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -210,7 +210,7 @@ public class OnlineManualController {
 		// 온라인메뉴얼 구분 설정
 		cmmUseService.populateCmmCodeList("COM041", "COM041_onlineMnlSe");
 
-		return WebUtil.adjustViewName("/uss/olh/omm/OnlineManualEdit");
+		return "/uss/olh/omm/OnlineManualEdit";
 	}
 
 	/**
@@ -228,17 +228,18 @@ public class OnlineManualController {
 		// 서버 validate 체크
 		beanValidator.validate(onlineManualVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olh/omm/OnlineManualEdit");
+			return "/uss/olh/omm/OnlineManualEdit";
 		}
 		
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		onlineManualVO.setLastUpdusrId(loginVO.getUniqId());
+		onlineManualVO.setLastUpdusrId(loginVO.getUserId());
 
 		onlineManualService.updateOnlineManual(onlineManualVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, onlineManualVO, "/uss/olh/omm/listOnlineManual.do");
+		model.addAttribute("redirectURL", "/uss/olh/omm/listOnlineManual.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -255,7 +256,8 @@ public class OnlineManualController {
 		onlineManualService.deleteOnlineManual(onlineManualVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, onlineManualVO, "/uss/olh/omm/listOnlineManual.do");
+		model.addAttribute("redirectURL", "/uss/olh/omm/listOnlineManual.do");
+	    return "cmm/redirect";
 	}
 
 }

@@ -1,5 +1,6 @@
 package aramframework.com.cop.adb.web;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.adb.domain.AdressBookUserVO;
 import aramframework.com.cop.adb.domain.AdressBookVO;
 import aramframework.com.cop.adb.service.AdressBookService;
@@ -58,9 +58,9 @@ public class AdressBookController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		adressBookVO.setWrterId(loginVO.getId());
+		adressBookVO.setWrterId(loginVO.getUserId());
 		adressBookVO.setTrgetOrgnztId(loginVO.getOrgnztId());
-		model.addAttribute("userId", loginVO.getId());
+		model.addAttribute("userId", loginVO.getUserId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
 		adressBookVO.fillPageInfo(paginationInfo);
@@ -73,7 +73,7 @@ public class AdressBookController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/adb/AdressBookList");
+		return "cop/adb/AdressBookList";
 	}
 
 	private void fill_common_code(ModelMap model) {
@@ -96,7 +96,7 @@ public class AdressBookController {
 			ModelMap model) {
 		
 		fill_common_code(model);
-		return WebUtil.adjustViewName("/cop/adb/AdressBookRegist");
+		return "cop/adb/AdressBookRegist";
 	}
 
 	/**
@@ -114,27 +114,29 @@ public class AdressBookController {
 
 		beanValidator.validate(adressBookVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			fill_common_code(model);
-			return WebUtil.adjustViewName("/cop/adb/AdressBookRegist");
+			return "cop/adb/AdressBookRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		adressBookVO.setWrterId(loginVO.getId());
-		adressBookVO.setFrstRegisterId(loginVO.getId());
+		adressBookVO.setWrterId(loginVO.getUserId());
+		adressBookVO.setFrstRegisterId(loginVO.getUserId());
 
 		String[] tempId = adressBookVO.getUserIds().split(",");
+		List<AdressBookUserVO> userList = new ArrayList<AdressBookUserVO>();
 		for (int i = 0; i < tempId.length; i++) {
 			if (!tempId[i].equals("")) {
 				AdressBookUserVO adbkUser = adressBookService.selectAdbkUser(tempId[i]);
-				adressBookVO.getAdbkMan().add(adbkUser);
+				userList.add(adbkUser);
 			}
 		}
+		adressBookVO.setAdbkUserList(userList);
 		adressBookVO.setTrgetOrgnztId(loginVO.getOrgnztId());
 
 		adressBookService.insertAdressBook(adressBookVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, adressBookVO, "/cop/adb/listAdressBook.do");
+		model.addAttribute("redirectURL", "/cop/adb/editAdressBook.do?adbkId=" + adressBookVO.getAdbkId());
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -149,38 +151,38 @@ public class AdressBookController {
 			@ModelAttribute AdressBookVO adressBookVO, 
 			ModelMap model) {
 
-		adressBookService.selectAdressBook(adressBookVO);
+		adressBookVO = adressBookService.selectAdressBook(adressBookVO);
 
-		String id = "";
+		String userIds = "";
+		List<AdressBookUserVO> userList = new ArrayList<AdressBookUserVO>();
 		AdressBookUserVO adbkUser = null;
-		for (int i = 0; i < adressBookVO.getAdbkMan().size(); i++) {
-			adbkUser = adressBookVO.getAdbkMan().get(i);
-			if (adbkUser.getNcrdId() == null) {
-				adbkUser.setNcrdId("");
+		for (int i = 0; i < adressBookVO.getAdbkUserList().size(); i++) {
+			adbkUser = adressBookVO.getAdbkUserList().get(i);
+			if (adbkUser.getEmplyrId().equals("") 
+					&& !adbkUser.getNcrdId().equals("")) {
+				userIds += adbkUser.getNcrdId() + ",";
+				adbkUser = adressBookService.selectAdbkUser(adbkUser.getNcrdId());
+			} 
+			if (adbkUser.getNcrdId().equals("") 
+					&& !adbkUser.getEmplyrId().equals("")) {
+				userIds += adbkUser.getEmplyrId() + ",";
+				adbkUser = adressBookService.selectAdbkUser(adbkUser.getEmplyrId());
 			}
-			if (adbkUser.getEmplyrId() == null) {
-				adbkUser.setEmplyrId("");
-			}
+			userList.add(adbkUser);
 		}
-		for (int i = 0; i < adressBookVO.getAdbkMan().size(); i++) {
-			adbkUser = adressBookVO.getAdbkMan().get(i);
-			if (adbkUser.getEmplyrId().equals("")) {
-				id += adbkUser.getNcrdId() + ",";
-			} else {
-				id += adbkUser.getEmplyrId() + ",";
-			}
-		}
-		adressBookVO.setUserIds(id);
+		adressBookVO.setUserIds(userIds);
+		adressBookVO.setAdbkUserList(userList);
 
 		boolean writer = false;
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		if (adressBookVO.getWrterId().equals(loginVO.getId())) {
+		if (adressBookVO.getWrterId().equals(loginVO.getUserId())) {
 			writer = true;
 		}
 		model.addAttribute("writer", writer);
+		model.addAttribute("adressBookVO", adressBookVO);
 
 		fill_common_code(model);
-		return WebUtil.adjustViewName("/cop/adb/AdressBookEdit");
+		return "cop/adb/AdressBookEdit";
 	}
 
 	/**
@@ -198,27 +200,28 @@ public class AdressBookController {
 
 		beanValidator.validate(adressBookVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			fill_common_code(model);
-			return WebUtil.adjustViewName("/cop/adb/AdressBookEdit");
+			return "cop/adb/AdressBookEdit";
 		}
 
 		String[] tempId = adressBookVO.getUserIds().split(",");
-
+		List<AdressBookUserVO> userList = new ArrayList<AdressBookUserVO>();
 		for (int i = 0; i < tempId.length; i++) {
 			if (!tempId[i].equals("")) {
 				AdressBookUserVO adbkUser = adressBookService.selectAdbkUser(tempId[i]);
-				adressBookVO.getAdbkMan().add(adbkUser);
+				userList.add(adbkUser);
 			}
 		}
+		adressBookVO.setAdbkUserList(userList);
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		adressBookVO.setLastUpdusrId(loginVO.getId());
+		adressBookVO.setLastUpdusrId(loginVO.getUserId());
 		adressBookVO.setUseAt("Y");
 
 		adressBookService.updateAdressBook(adressBookVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, adressBookVO, "/cop/adb/listAdressBook.do");
+		model.addAttribute("redirectURL", "/cop/adb/editAdressBook.do?adbkId=" + adressBookVO.getAdbkId());
+	    return "cmm/redirect";
 	}
 	
 	/**
@@ -229,19 +232,52 @@ public class AdressBookController {
 	@RequestMapping("/cop/adb/deleteAdressBook.do")
 	@Secured("ROLE_USER")
 	public String deleteAdressBook(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AdressBookVO adressBookVO, 
 			ModelMap model) {
 
-		adressBookService.selectAdressBook(adressBookVO);
-
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		adressBookVO.setUseAt("N");
-		adressBookVO.setLastUpdusrId(loginVO.getId());
+		adressBookVO.setLastUpdusrId(loginVO.getUserId());
 
 		adressBookService.deleteAdressBook(adressBookVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, adressBookVO, "/cop/adb/listAdressBook.do");
+		model.addAttribute("redirectURL", "/cop/adb/listAdressBook.do");
+	    return "cmm/redirect";
+	}
+
+	/**
+	 * 주소록의 구성원을 갱신한다.
+	 * 
+	 * @param adressBookVO
+	 * @param checkCnd
+	 */
+	@RequestMapping("/cop/adb/refreshAdressBookUser.do")
+	@Secured("ROLE_USER")
+	public String refreshAdressBookUser(
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute AdressBookVO adressBookVO, 
+			@RequestParam String source, 
+			ModelMap model) {
+
+		String[] tempId = adressBookVO.getUserIds().split(",");
+		List<AdressBookUserVO> userList = new ArrayList<AdressBookUserVO>();
+		for (int i = 0; i < tempId.length; i++) {
+			if (!tempId[i].equals("")) {
+				AdressBookUserVO adbkUser = adressBookService.selectAdbkUser(tempId[i]);
+				userList.add(adbkUser);
+			}
+		}
+		adressBookVO.setAdbkUserList(userList);
+
+		fill_common_code(model);
+		if (source.equals("regist"))
+			return "cop/adb/AdressBookRegist";
+		else {
+			model.addAttribute("writer", true);
+			return "cop/adb/AdressBookEdit";
+		}
 	}
 
 	/**
@@ -279,80 +315,7 @@ public class AdressBookController {
 		
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/adb/AdressBookPopup");
-	}
-
-	/**
-	 * 주소록의 구성원을 추가한다.
-	 * 
-	 * @param adressBookVO
-	 * @param checkCnd
-	 */
-	@RequestMapping("/cop/adb/insertAdressBookUser.do")
-	@Secured("ROLE_USER")
-	public String insertAdressBookUser(
-			@ModelAttribute AdressBookVO adressBookVO, 
-			@RequestParam String checkCnd, 
-			ModelMap model) {
-
-		String[] tempId = adressBookVO.getUserIds().split(",");
-		for (int i = 0; i < tempId.length; i++) {
-			if (!tempId[i].equals("")) {
-				AdressBookUserVO adbkUser = adressBookService.selectAdbkUser(tempId[i]);
-				adressBookVO.getAdbkMan().add(adbkUser);
-			}
-		}
-
-		fill_common_code(model);
-
-		if (checkCnd.equals("regist"))
-			return WebUtil.adjustViewName("/cop/adb/AdressBookRegist");
-		else {
-			model.addAttribute("writer", true);
-			return WebUtil.adjustViewName("/cop/adb/AdressBookEdit");
-		}
-	}
-
-	/**
-	 * 주소록의 구성원을 삭제한다.
-	 * 
-	 * @param adressBookVO
-	 * @param checkWord
-	 * @param checkCnd
-	 */
-	@RequestMapping("/cop/adb/deleteAdressBookUser.do")
-	@Secured("ROLE_USER")
-	public String deleteAdressBookUser(
-			@ModelAttribute AdressBookVO adressBookVO, 
-			@RequestParam String checkWord, 
-			@RequestParam String checkCnd, 
-			ModelMap model) {
-
-		String[] tempId = adressBookVO.getUserIds().split(",");
-
-		String id = "";
-		for (int i = 0; i < tempId.length; i++) {
-
-			if (tempId[i].equals(checkWord)) {
-				continue;
-			}
-
-			if (!tempId[i].equals("")) {
-				AdressBookUserVO adbkUser = adressBookService.selectAdbkUser(tempId[i]);
-				adressBookVO.getAdbkMan().add(adbkUser);
-			}
-			id += tempId[i] + ",";
-		}
-		adressBookVO.setUserIds(id);
-
-		fill_common_code(model);
-
-		if (checkCnd.equals("regist"))
-			return WebUtil.adjustViewName("/cop/adb/AdressBookRegist");
-		else {
-			model.addAttribute("writer", true);
-			return WebUtil.adjustViewName("/cop/adb/AdressBookEdit");
-		}
+		return "cop/adb/AdressBookPopup";
 	}
 
 	/**
@@ -367,7 +330,7 @@ public class AdressBookController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		adressBookVO.setWrterId(loginVO.getId());
+		adressBookVO.setWrterId(loginVO.getUserId());
 		adressBookVO.setTrgetOrgnztId(loginVO.getOrgnztId());
 
 		adressBookVO.setFirstIndex(0);
@@ -378,7 +341,7 @@ public class AdressBookController {
 
 		model.addAttribute("resultList", adressBookService.selectAdressBookList(adressBookVO));
 
-		return WebUtil.adjustViewName("/cop/adb/AdressBookMainPage");
+		return "cop/adb/AdressBookMainPage";
 	}
 
 }

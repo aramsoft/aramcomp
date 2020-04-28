@@ -12,7 +12,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.mnu.mcm.domain.MenuCreateVO;
 import aramframework.com.sym.mnu.mcm.domain.MenuSiteMapVO;
 import aramframework.com.sym.mnu.mcm.service.MenuCreateService;
@@ -66,7 +65,7 @@ public class MenuCreateController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/mnu/mcm/MenuCreateList");
+		return "/sym/mnu/mcm/MenuCreateList";
 	}
 
 	/* 메뉴생성 세부조회 */
@@ -84,7 +83,7 @@ public class MenuCreateController {
 		
 		model.addAttribute("list_menulist", menuCreateService.selectMenuCreateDetailList(menuCreateVO));
 
-		return WebUtil.adjustViewName("/sym/mnu/mcm/MenuCreateDetail");
+		return "/sym/mnu/mcm/MenuCreateDetail";
 	}
 
 	/**
@@ -111,7 +110,8 @@ public class MenuCreateController {
 			model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		}
 
-        return WebUtil.redirectJsp(model, menuCreateVO, "/sym/mnu/mcm/detailMenuCreate.do?authorCode="+menuCreateVO.getAuthorCode());
+		model.addAttribute("redirectURL", "/sym/mnu/mcm/detailMenuCreate.do?authorCode="+menuCreateVO.getAuthorCode());
+	    return "cmm/redirect";
 	}
 
 	/* 메뉴사이트맵 생성조회 */
@@ -128,11 +128,11 @@ public class MenuCreateController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		menuSiteMapVO.setCreatPersonId(loginVO.getId());
+		menuSiteMapVO.setCreatPersonId(loginVO.getUserId());
 
 		model.addAttribute("list_menulist", menuCreateService.selectMenuCreateSiteMapList(menuSiteMapVO));
 
-		return WebUtil.adjustViewName("/sym/mnu/mcm/MenuCreateSiteMap");
+		return "/sym/mnu/mcm/MenuCreateSiteMap";
 	}
 
 	/**
@@ -163,7 +163,8 @@ public class MenuCreateController {
 			model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		}
 	
-        return WebUtil.redirectJsp(model, menuSiteMapVO, "/sym/mnu/mcm/detailMenuCreate.do?authorCode="+menuSiteMapVO.getAuthorCode());
+		model.addAttribute("redirectURL", "/sym/mnu/mcm/detailMenuCreate.do?authorCode="+menuSiteMapVO.getAuthorCode());
+	    return "cmm/redirect";
 	}
 
 }

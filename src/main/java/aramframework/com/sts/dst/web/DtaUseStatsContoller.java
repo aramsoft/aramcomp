@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sts.dst.domain.DtaUseStatsVO;
 import aramframework.com.sts.dst.service.DtaUseStatsService;
 import aramframework.com.utl.fcc.service.DateUtil;
@@ -88,7 +87,7 @@ public class DtaUseStatsContoller {
 			dtaUseStatsVO.setPmToDate(DateUtil.getToday());// 2011.09.19
 		}
 		
-		return WebUtil.adjustViewName("/sts/dst/DtaUseStatsList");
+		return "/sts/dst/DtaUseStatsList";
 	}
 
 	/**
@@ -105,7 +104,7 @@ public class DtaUseStatsContoller {
 
 		model.addAttribute("dtaUseStatsList", dtaUseStatsService.selectDtaUseStats(dtaUseStatsVO));
 
-		return WebUtil.adjustViewName("/sts/dst/DtaUseStatsDetail");
+		return "/sts/dst/DtaUseStatsDetail";
 	}
 
 }

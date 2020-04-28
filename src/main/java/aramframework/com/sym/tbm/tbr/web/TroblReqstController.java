@@ -14,7 +14,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.tbm.tbr.domain.TroblReqstVO;
 import aramframework.com.sym.tbm.tbr.service.TroblReqstService;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -74,7 +73,7 @@ public class TroblReqstController {
 		cmmUseService.populateCmmCodeList("COM065", "COM065_troblKnd");
 		cmmUseService.populateCmmCodeList("COM068", "COM068_processSttus");
 
-		return WebUtil.adjustViewName("/sym/tbm/tbr/TroblReqstList");
+		return "/sym/tbm/tbr/TroblReqstList";
 	}
 
 	/**
@@ -91,7 +90,7 @@ public class TroblReqstController {
 
 		model.addAttribute(troblReqstService.selectTroblReqst(troblReqstVO));
 		
-		return WebUtil.adjustViewName("/sym/tbm/tbr/TroblReqstDetail");
+		return "/sym/tbm/tbr/TroblReqstDetail";
 	}
 
 	/**
@@ -107,7 +106,7 @@ public class TroblReqstController {
 
 		cmmUseService.populateCmmCodeList("COM065", "COM065_troblKnd");
 
-		return WebUtil.adjustViewName("/sym/tbm/tbr/TroblReqstRegist");
+		return "/sym/tbm/tbr/TroblReqstRegist";
 	}
 
 	/**
@@ -125,19 +124,20 @@ public class TroblReqstController {
 
 		beanValidator.validate(troblReqstVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/tbm/tbr/TroblReqstRegist");
+			return "/sym/tbm/tbr/TroblReqstRegist";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		troblReqstVO.setTroblOccrrncTime(StringUtil.removeMinusChar(troblReqstVO.getTroblOccrrncTime()));
 		troblReqstVO.setTroblRequstTime(StringUtil.removeMinusChar(troblReqstVO.getTroblRequstTime()));
-		troblReqstVO.setFrstRegisterId(loginVO.getId());
+		troblReqstVO.setFrstRegisterId(loginVO.getUserId());
 		troblReqstVO.setProcessSttus("A");
 
 		troblReqstService.insertTroblReqst(troblReqstVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, troblReqstVO, "/sym/tbm/tbr/listTroblReqst.do");
+		model.addAttribute("redirectURL", "/sym/tbm/tbr/listTroblReqst.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -156,7 +156,7 @@ public class TroblReqstController {
 		
 		cmmUseService.populateCmmCodeList("COM065", "COM065_troblKnd");
 
-		return WebUtil.adjustViewName("/sym/tbm/tbr/TroblReqstEdit");
+		return "/sym/tbm/tbr/TroblReqstEdit";
 	}
 
 	/**
@@ -174,18 +174,19 @@ public class TroblReqstController {
 
 		beanValidator.validate(troblReqstVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/tbm/tbr/TroblReqstEdit");
+			return "/sym/tbm/tbr/TroblReqstEdit";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		troblReqstVO.setTroblOccrrncTime(StringUtil.removeMinusChar(troblReqstVO.getTroblOccrrncTime()));
 		troblReqstVO.setTroblRequstTime(StringUtil.removeMinusChar(troblReqstVO.getTroblRequstTime()));
-		troblReqstVO.setLastUpdusrId(loginVO.getId());
+		troblReqstVO.setLastUpdusrId(loginVO.getUserId());
 
 		troblReqstService.updateTroblReqst(troblReqstVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, troblReqstVO, "/sym/tbm/tbr/listTroblReqst.do");
+		model.addAttribute("redirectURL", "/sym/tbm/tbr/listTroblReqst.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -203,7 +204,8 @@ public class TroblReqstController {
 		troblReqstService.deleteTroblReqst(troblReqstVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, troblReqstVO, "/sym/tbm/tbr/listTroblReqst.do");
+		model.addAttribute("redirectURL", "/sym/tbm/tbr/listTroblReqst.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -219,13 +221,14 @@ public class TroblReqstController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		troblReqstVO.setLastUpdusrId(loginVO.getId());
+		troblReqstVO.setLastUpdusrId(loginVO.getUserId());
 		troblReqstVO.setProcessSttus("R");
 		
 		troblReqstService.requstTroblReqst(troblReqstVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, troblReqstVO, "/sym/tbm/tbr/listTroblReqst.do");
+		model.addAttribute("redirectURL", "/sym/tbm/tbr/listTroblReqst.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -241,13 +244,14 @@ public class TroblReqstController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		troblReqstVO.setLastUpdusrId(loginVO.getId());
+		troblReqstVO.setLastUpdusrId(loginVO.getUserId());
 		troblReqstVO.setProcessSttus("A");
 
 		troblReqstService.requstTroblReqst(troblReqstVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, troblReqstVO, "/sym/tbm/tbr/listTroblReqst.do");
+		model.addAttribute("redirectURL", "/sym/tbm/tbr/listTroblReqst.do");
+	    return "cmm/redirect";
 	}
 
 }

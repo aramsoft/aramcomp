@@ -13,12 +13,13 @@ CREATE TABLE COMTE_COPSEQ
 CREATE TABLE COMTN_FILE
 (
 	ATCH_FILE_ID          	char(20)  		NOT NULL,
+	CATEGORY       			varchar(10)  	NULL,
 	CREAT_DT              	datetime		NOT NULL,
 	USE_AT                	char(1)  		NULL,
 	CONSTRAINT COMTN_FILE_PK PRIMARY KEY (ATCH_FILE_ID)
 );
 
-INSERT INTO COMTE_COPSEQ ( TABLE_NAME, NEXT_ID ) VALUES ('FILE_ID', 1);
+INSERT INTO COMTE_COPSEQ ( TABLE_NAME, NEXT_ID ) VALUES ('ATCH_FILE_ID', 1);
 
 ------------------------------------------------------
 
@@ -89,29 +90,28 @@ CREATE TABLE COMTN_EMPLYR_INFO
 	ORGNZT_ID             	char(20)  		NULL,
 	USER_NM               	varchar(60) 	NOT NULL,
 	PASSWORD              	varchar(200)  	NOT NULL,
+	PASSWORD_HINT         	varchar(100)  	NOT NULL,
+	PASSWORD_CNSR         	varchar(100)  	NOT NULL,
 	EMPL_NO               	varchar(20)  	NULL,
+	PSTINST_CODE          	char(8)  		NULL,
+	OFCPS_NM              	varchar(60)  	NULL,
+	OFFM_TELNO            	varchar(20)  	NULL,
 	IHIDNUM               	varchar(200)  	NULL,
 	SEXDSTN_CODE          	char(1)  		NULL,
 	BRTHDY                	char(20)  		NULL,
 	FXNUM                 	varchar(20)  	NULL,
-	HOUSE_ADRES           	varchar(100)  	NOT NULL,
-	PASSWORD_HINT         	varchar(100)  	NOT NULL,
-	PASSWORD_CNSR         	varchar(100)  	NOT NULL,
-	HOUSE_END_TELNO       	varchar(4)  	NOT NULL,
-	AREA_NO               	varchar(4)  	NOT NULL,
-	DETAIL_ADRES          	varchar(100)  	NULL,
 	ZIP                   	varchar(6)  	NOT NULL,
-	OFFM_TELNO            	varchar(20)  	NULL,
+	HOUSE_ADRES           	varchar(100)  	NOT NULL,
+	DETAIL_ADRES          	varchar(100)  	NULL,
+	AREA_NO               	varchar(4)  	NOT NULL,
+	HOUSE_MIDDLE_TELNO    	varchar(4)  	NOT NULL,
+	HOUSE_END_TELNO       	varchar(4)  	NOT NULL,
 	MBTLNUM               	varchar(20)  	NULL,
 	EMAIL_ADRES           	varchar(50)  	NULL,
-	OFCPS_NM              	varchar(60)  	NULL,
-	HOUSE_MIDDLE_TELNO    	varchar(4)  	NOT NULL,
 	GROUP_ID              	char(20)  		NULL,
-	PSTINST_CODE          	char(8)  		NULL,
-	EMPLYR_STTUS_CODE     	char(1)  		NOT NULL,
-	ESNTL_ID              	char(20)  		NOT NULL,
-	CRTFC_DN_VALUE        	varchar(100)  	NULL,
 	SBSCRB_DE             	datetime  		NULL,
+	EMPLYR_STTUS_CODE     	char(1)  		NOT NULL,
+	CRTFC_DN_VALUE        	varchar(100)  	NULL,
 	GOOGLE_ACCOUNT        	varchar(50)  	NULL,
 	CONSTRAINT COMTN_EMPLYR_INFO_PK PRIMARY KEY (EMPLYR_ID),
 	CONSTRAINT COMTN_EMPLYR_INFO_FK1 FOREIGN KEY (GROUP_ID) REFERENCES COMTN_AUTHOR_GROUP_INFO(GROUP_ID) ON DELETE CASCADE,
@@ -127,23 +127,22 @@ CREATE TABLE COMTN_EMPLYR_CHANGE_DTLS
 	EMPLYR_ID             	varchar(20)  	NOT NULL,
 	CHANGE_DE             	char(20)  		NOT NULL,
 	ORGNZT_ID             	char(20)  		NULL,
-	GROUP_ID              	char(20)  		NULL,
 	EMPL_NO               	varchar(20)  	NULL,
+	PSTINST_CODE          	char(8)  		NULL,
+	OFFM_TELNO            	varchar(20)  	NULL,
 	SEXDSTN_CODE          	char(1)  		NULL,
 	BRTHDY                	char(20)  		NULL,
 	FXNUM                 	varchar(20)  	NULL,
-	HOUSE_ADRES           	varchar(100)  	NULL,
-	HOUSE_END_TELNO       	varchar(4)  	NULL,
-	AREA_NO               	varchar(4)  	NULL,
-	DETAIL_ADRES          	varchar(100)  	NULL,
 	ZIP                   	varchar(6)  	NULL,
-	OFFM_TELNO            	varchar(20)  	NULL,
+	HOUSE_ADRES           	varchar(100)  	NULL,
+	DETAIL_ADRES          	varchar(100)  	NULL,
+	AREA_NO               	varchar(4)  	NULL,
+	HOUSE_MIDDLE_TELNO    	varchar(4)  	NULL,
+	HOUSE_END_TELNO       	varchar(4)  	NULL,
 	MBTLNUM               	varchar(20)  	NULL,
 	EMAIL_ADRES           	varchar(50)  	NULL,
-	HOUSE_MIDDLE_TELNO    	varchar(4)  	NULL,
-	PSTINST_CODE          	char(8)  		NULL,
+	GROUP_ID              	char(20)  		NULL,
 	EMPLYR_STTUS_CODE     	char(1)  		NULL,
-	ESNTL_ID              	char(20)  		NULL,
 	CONSTRAINT COMTN_EMPLYR_CHANGE_DTLS_PK PRIMARY KEY (EMPLYR_ID, CHANGE_DE),
 	CONSTRAINT COMTN_EMPLYR_CHANGE_DTLS_FK1 FOREIGN KEY (EMPLYR_ID) REFERENCES COMTN_EMPLYR_INFO(EMPLYR_ID)
 );
@@ -155,28 +154,27 @@ CREATE TABLE COMTN_ENTRPRS_MBER
 (
 	ENTRPRS_MBER_ID       		varchar(20)  	NOT NULL,
 	ENTRPRS_SE_CODE       		char(8)  		NULL,
-	BIZRNO                		varchar(10)  	NULL,
-	JURIRNO               		varchar(13)  	NULL,
-	CMPNY_NM              		varchar(60)  	NOT NULL,
-	CXFC                  		varchar(50)  	NULL,
-	ZIP                   		varchar(6)  	NOT NULL,
-	ADRES                 		varchar(100)  	NOT NULL,
-	ENTRPRS_MIDDLE_TELNO  		varchar(4)  	NOT NULL,
-	FXNUM                 		varchar(20)  	NULL,
-	INDUTY_CODE           		char(1)  		NULL,
-	APPLCNT_NM            		varchar(50)  	NOT NULL,
-	APPLCNT_IHIDNUM       		varchar(200)  	NULL,
-	SBSCRB_DE             		datetime  		NULL,
-	ENTRPRS_MBER_STTUS    		varchar(15)  	NULL,
 	ENTRPRS_MBER_PASSWORD  		varchar(200)  	NULL,
 	ENTRPRS_MBER_PASSWORD_HINT  varchar(100)  	NOT NULL,
 	ENTRPRS_MBER_PASSWORD_CNSR  varchar(100)  	NOT NULL,
-	GROUP_ID              		char(20)  		NULL,
+	BIZRNO                		varchar(12)  	NULL,
+	JURIRNO               		varchar(13)  	NULL,
+	CMPNY_NM              		varchar(60)  	NOT NULL,
+	CXFC                  		varchar(50)  	NULL,
+	FXNUM                 		varchar(20)  	NULL,
+	ZIP                   		varchar(6)  	NOT NULL,
+	ADRES                 		varchar(100)  	NOT NULL,
 	DETAIL_ADRES          		varchar(100)  	NULL,
-	ENTRPRS_END_TELNO     		varchar(4)  	NOT NULL,
 	AREA_NO               		varchar(4)  	NOT NULL,
+	ENTRPRS_MIDDLE_TELNO  		varchar(4)  	NOT NULL,
+	ENTRPRS_END_TELNO     		varchar(4)  	NOT NULL,
+	INDUTY_CODE           		char(1)  		NULL,
+	APPLCNT_NM            		varchar(50)  	NOT NULL,
+	APPLCNT_IHIDNUM       		varchar(200)  	NULL,
 	APPLCNT_EMAIL_ADRES   		varchar(50)  	NOT NULL,
-	ESNTL_ID              		char(20)  		NOT NULL,
+	GROUP_ID              		char(20)  		NULL,
+	SBSCRB_DE             		datetime  		NULL,
+	ENTRPRS_MBER_STTUS    		varchar(15)  	NULL,
 	CONSTRAINT COMTN_ENTRPRS_MBER_PK PRIMARY KEY (ENTRPRS_MBER_ID),
 	CONSTRAINT COMTN_ENTRPRS_MBER_FK1 FOREIGN KEY (GROUP_ID) REFERENCES COMTN_AUTHOR_GROUP_INFO(GROUP_ID) ON DELETE CASCADE
 );
@@ -192,6 +190,8 @@ CREATE TABLE COMTN_GNRL_MBER
 	PASSWORD_CNSR         	varchar(100)  	NULL,
 	IHIDNUM               	varchar(200)  	NULL,
 	MBER_NM               	varchar(50)  	NOT NULL,
+	SEXDSTN_CODE          	char(1)  		NULL,
+	MBER_FXNUM            	varchar(20)  	NULL,
 	ZIP                   	varchar(6)  	NULL,
 	ADRES                 	varchar(100)  	NULL,
 	DETAIL_ADRES          	varchar(100)  	NULL,
@@ -199,13 +199,10 @@ CREATE TABLE COMTN_GNRL_MBER
 	MIDDLE_TELNO          	varchar(4)  	NULL,
 	END_TELNO             	varchar(4)  	NULL,
 	MBTLNUM               	varchar(20)  	NULL,
-	MBER_STTUS            	varchar(15)  	NULL,
-	GROUP_ID              	char(20)  		NULL,
-	MBER_FXNUM            	varchar(20)  	NULL,
 	MBER_EMAIL_ADRES      	varchar(50)  	NOT NULL,
+	GROUP_ID              	char(20)  		NULL,
 	SBSCRB_DE             	datetime  		NULL,
-	SEXDSTN_CODE          	char(1)  		NULL,
-	ESNTL_ID              	char(20)  		NOT NULL,
+	MBER_STTUS            	varchar(15)  	NULL,
 	GOOGLE_ACCOUNT        	varchar(50)  	NULL,
 	CONSTRAINT COMTN_GNRL_MBER_PK PRIMARY KEY (MBER_ID),
 	CONSTRAINT COMTN_GNRL_MBER_FK1 FOREIGN KEY (GROUP_ID) REFERENCES COMTN_AUTHOR_GROUP_INFO(GROUP_ID) ON DELETE CASCADE
@@ -215,16 +212,16 @@ CREATE INDEX COMTN_GNRL_MBER_i01 ON COMTN_GNRL_MBER (GROUP_ID ASC);
 ---------------------------------------------------
 
 CREATE OR REPLACE  
-  VIEW COMVN_USER_MASTER ( ESNTL_ID, USER_ID, PASSWORD, USER_NM, USER_ZIP, USER_ADRES, USER_EMAIL, GROUP_ID, USER_SE, ORGNZT_ID, MBTLNUM ) 
+  VIEW COMVN_USER_MASTER (USER_ID, PASSWORD, USER_NM, USER_ZIP, USER_ADRES, USER_EMAIL, GROUP_ID, USER_SE, ORGNZT_ID, MBTLNUM ) 
 AS  
-SELECT ESNTL_ID, MBER_ID, PASSWORD, MBER_NM, ZIP,ADRES, MBER_EMAIL_ADRES, ' ', 'GNR' AS USER_SE, ' ' ORGNZT_ID, MBTLNUM
+SELECT MBER_ID, PASSWORD, MBER_NM, ZIP,ADRES, MBER_EMAIL_ADRES, ' ', 'GNR' AS USER_SE, ' ' ORGNZT_ID, MBTLNUM
   FROM COMTN_GNRL_MBER
  UNION ALL
-SELECT ESNTL_ID, EMPLYR_ID, PASSWORD, USER_NM, ZIP, HOUSE_ADRES, EMAIL_ADRES, GROUP_ID , 'USR' AS USER_SE, ORGNZT_ID, MBTLNUM
+SELECT EMPLYR_ID, PASSWORD, USER_NM, ZIP, HOUSE_ADRES, EMAIL_ADRES, GROUP_ID , 'USR' AS USER_SE, ORGNZT_ID, MBTLNUM
   FROM COMTN_EMPLYR_INFO
  UNION ALL
-SELECT ESNTL_ID, ENTRPRS_MBER_ID, ENTRPRS_MBER_PASSWORD, CMPNY_NM, ZIP, ADRES, APPLCNT_EMAIL_ADRES, ' ' , 'ENT' AS USER_SE, ' ' ORGNZT_ID, ' ' MBTLNUM
-  FROM COMTN_ENTRPRS_MBER ORDER BY ESNTL_ID;
+SELECT ENTRPRS_MBER_ID, ENTRPRS_MBER_PASSWORD, CMPNY_NM, ZIP, ADRES, APPLCNT_EMAIL_ADRES, ' ' , 'ENT' AS USER_SE, ' ' ORGNZT_ID, ' ' MBTLNUM
+  FROM COMTN_ENTRPRS_MBER ;
 
 -- ===============================================
 -- AUTHOR
@@ -495,13 +492,13 @@ CREATE TABLE COMTN_PROGRM_CHANGE_DTLS
 	PROGRM_FILE_NM        	varchar(60)  	NOT NULL,
 	REQUST_NO             	decimal(10)  	NOT NULL,
 	REQUSTER_ID            	varchar(20)  	NOT NULL,
+	REQUST_DE              	char(8)  		NULL,
+	REQUST_SJ             	varchar(60)  	NOT NULL,
 	CHANGE_REQUST_CN      	varchar(1000)   NULL,
 	REQUST_PROCESS_CN     	mediumtext  	NULL,
 	OPETR_ID              	varchar(20)  	NULL,
 	PROCESS_STTUS_CODE    	varchar(15)  	NOT NULL,
 	PROCESS_DE            	char(8)  		NULL,
-	REQUST_DE              	char(8)  		NULL,
-	REQUST_SJ             	varchar(60)  	NOT NULL,
 	CONSTRAINT  COMTN_PROGRM_CHANGE_DTLS_PK PRIMARY KEY (PROGRM_FILE_NM, REQUST_NO),
 	CONSTRAINT  COMTN_PROGRM_CHANGE_DTLS_FK1 FOREIGN KEY (PROGRM_FILE_NM) REFERENCES COMTN_PROGRM_LIST(PROGRM_FILE_NM) ON DELETE CASCADE
 );
@@ -512,22 +509,19 @@ CREATE INDEX COMTN_PROGRM_CHANGE_DTLS_i01 ON COMTN_PROGRM_CHANGE_DTLS (PROGRM_FI
 CREATE TABLE COMTN_CMMNTY_MENU
 (
 	TRGET_ID              	char(20)  		NOT NULL,
-	MENU_NO               	decimal(20)  	NOT NULL,
 	MENU_NM               	varchar(60)  	NOT NULL,
+	MENU_KNM               	varchar(60)  	NOT NULL,
+	MENU_POS			  	char(6) 		NOT NULL,
 	PROGRM_FILE_NM        	varchar(60)  	NULL,
-	MENU_DC               	varchar(256)  	NULL,
-	USE_AT                	char(1)  		NULL,
-	MGR_AT                	char(1)  		NULL,
 	DIRECT_URL			  	varchar(256)  	NULL, 
+	MENU_DC               	varchar(256)  	NULL,
 	TOPMENU_AT			  	char(1)  		NULL,
-	MENU_ALIAS			  	varchar(60) 	NULL,
-	CONSTRAINT  COMTN_CMMNTY_MENU_PK PRIMARY KEY (TRGET_ID, MENU_NO),
-	CONSTRAINT  COMTN_CMMNTY_MENU_FK1 FOREIGN KEY (TRGET_ID) REFERENCES COMTN_CMMNTY(CMMNTY_ID),
-	CONSTRAINT  COMTN_CMMNTY_MENU_FK2 FOREIGN KEY (PROGRM_FILE_NM) REFERENCES COMTN_PROGRM_LIST(PROGRM_FILE_NM) ON DELETE CASCADE
+	MGR_AT                	char(1)  		NULL,
+	USE_AT                	char(1)  		NULL,
+	CONSTRAINT  COMTN_CMMNTY_MENU_PK PRIMARY KEY (TRGET_ID, MENU_NM),
+	CONSTRAINT  COMTN_CMMNTY_MENU_FK1 FOREIGN KEY (TRGET_ID) REFERENCES COMTN_CMMNTY(CMMNTY_ID)
 );
 CREATE INDEX COMTN_CMMNTY_MENU_i01 ON COMTN_CMMNTY_MENU (TRGET_ID ASC);
-CREATE INDEX COMTN_CMMNTY_MENU_i02 ON COMTN_CMMNTY_MENU (PROGRM_FILE_NM ASC);
-CREATE UNIQUE INDEX COMTN_CMMNTY_MENU_i03 ON COMTN_CMMNTY_MENU (TRGET_ID ASC, MENU_ALIAS ASC);
 
 -----------------------------------------------------
 
@@ -576,7 +570,7 @@ CREATE TABLE COMTN_EMAIL_DSPTCH_MANAGE
 	RCVER                 	varchar(50)  	NOT NULL,
 	SJ                    	varchar(60)  	NOT NULL,
 	SNDNG_RESULT_CODE     	char(1)  		NULL,
-	DSPTCH_DT             	char(20)  		NOT NULL,
+	DSPTCH_DT             	datetime  		NOT NULL,
 	ATCH_FILE_ID          	char(20)  		NULL,
 	CONSTRAINT  COMTN_EMAIL_DSPTCH_MANAGE_PK PRIMARY KEY (MSSAGE_ID),
 	CONSTRAINT  COMTN_EMAIL_DSPTCH_MANAGE_FK1 FOREIGN KEY (SNDR) REFERENCES COMTN_EMPLYR_INFO(EMPLYR_ID),
@@ -590,7 +584,7 @@ INSERT INTO COMTE_COPSEQ ( TABLE_NAME, NEXT_ID ) VALUES ('MAILMSG_ID', 1);
 -- ==============================================
 -- Address Book
 
-CREATE TABLE COMTN_ADBK_MANAGE
+CREATE TABLE COMTN_ADBK
 (
 	ADBK_ID               	char(20)  		NOT NULL,
 	ADBK_NM               	varchar(50)  	NOT NULL,
@@ -602,32 +596,23 @@ CREATE TABLE COMTN_ADBK_MANAGE
 	FRST_REGIST_PNTTM     	datetime  		NOT	NULL,
 	LAST_UPDUSR_ID        	varchar(20)  	NULL,
 	LAST_UPDT_PNTTM       	datetime  		NULL,
-	CONSTRAINT  COMTN_ADBK_MANAGE_PK PRIMARY KEY (ADBK_ID)
+	CONSTRAINT  COMTN_ADBK_PK PRIMARY KEY (ADBK_ID)
 );
 INSERT INTO COMTE_COPSEQ ( TABLE_NAME, NEXT_ID ) VALUES ('ADBK_ID', 1);
 
 -------------------------------------------------
 
-CREATE TABLE COMTN_ADBK
+CREATE TABLE COMTN_ADBK_USER
 (
 	ADBK_USER_ID		  	char(20)  		NOT NULL,
 	ADBK_ID               	char(20)  		NOT NULL,
 	EMPLYR_ID             	varchar(20) 	NULL,
 	NCRD_ID               	char(20)  		NULL,
 	NM                    	varchar(50)  	NULL,
-	EMAIL_ADRES           	varchar(50)  	NULL,
-	MBTLNUM               	varchar(20)  	NULL,
-	FXNUM                 	varchar(20)  	NULL,
-	OFFM_TELNO            	varchar(20) 	NULL,
-	HOUSE_TELNO           	varchar(20)  	NULL,
-	FRST_REGISTER_ID      	varchar(20)  	NOT NULL,
-	FRST_REGIST_PNTTM     	datetime  		NOT	NULL,
-	LAST_UPDUSR_ID        	varchar(20)  	NULL,
-	LAST_UPDT_PNTTM       	datetime  		NULL,
-	CONSTRAINT  COMTN_ADBK_PK PRIMARY KEY (ADBK_ID, ADBK_USER_ID),
-	CONSTRAINT  COMTN_ADBK_FK1 FOREIGN KEY (ADBK_ID) REFERENCES COMTN_ADBK_MANAGE(ADBK_ID) ON DELETE CASCADE
+	CONSTRAINT  COMTN_ADBK_USER_PK PRIMARY KEY (ADBK_ID, ADBK_USER_ID),
+	CONSTRAINT  COMTN_ADBK_USER_FK1 FOREIGN KEY (ADBK_ID) REFERENCES COMTN_ADBK(ADBK_ID) ON DELETE CASCADE
 );
-CREATE INDEX COMTN_ADBK_i01 ON COMTN_ADBK (ADBK_ID ASC);
+CREATE INDEX COMTN_ADBK_USER_i01 ON COMTN_ADBK_USER (ADBK_ID ASC);
 
 INSERT INTO COMTE_COPSEQ ( TABLE_NAME, NEXT_ID ) VALUES ('ADBKUSER_ID', 1);
 
@@ -650,7 +635,6 @@ CREATE TABLE COMTN_NCRD
 	EMAIL_ADRES           	varchar(50)  	NULL,
 	CMPNY_NM              	varchar(60)  	NULL,
 	DEPT_NM               	varchar(60)  	NULL,
-	ZIP                   	varchar(6)  	NULL,
 	ADRES                 	varchar(100)  	NULL,
 	DETAIL_ADRES          	varchar(100)  	NULL,
 	OFCPS_NM              	varchar(60)  	NULL,
@@ -670,12 +654,12 @@ INSERT INTO COMTE_COPSEQ ( TABLE_NAME, NEXT_ID ) VALUES ('NCRD_ID', 1);
 
 CREATE TABLE COMTN_NCRD_USER
 (
+	EMPLYR_ID             	varchar(20)  	NOT NULL,
 	NCRD_ID               	char(20)  		NOT NULL,
 	REGIST_SE_CODE        	char(6)  		NOT NULL,
-	EMPLYR_ID             	varchar(20)  	NOT NULL,
 	USE_AT                	char(1)  		NOT NULL,
 	CREAT_DT              	datetime  		NOT NULL,
-	CONSTRAINT  COMTN_NCRD_USER_PK PRIMARY KEY (NCRD_ID, EMPLYR_ID),
+	CONSTRAINT  COMTN_NCRD_USER_PK PRIMARY KEY (EMPLYR_ID, NCRD_ID),
 	CONSTRAINT  COMTN_NCRD_USER_FK1 FOREIGN KEY (NCRD_ID) REFERENCES COMTN_NCRD(NCRD_ID)
 );
 CREATE INDEX COMTN_NCRD_USER_i01 ON COMTN_NCRD_USER (NCRD_ID  ASC);
@@ -1152,7 +1136,6 @@ CREATE TABLE COMTN_BATCH_OPERT
 	PARAMTR               	varchar(250)  	NULL,
 	BATCH_OBJECT          	varchar(255)  	NULL,
 	BATCH_METHOD          	varchar(255)  	NULL,
-	BATCH_BEAN          	varchar(255)  	NULL,
 	USE_AT                	char(1)  		NULL,
 	FRST_REGISTER_ID      	varchar(20)  	NOT NULL,
 	FRST_REGIST_PNTTM     	datetime  		NOT	NULL,
@@ -1176,6 +1159,7 @@ CREATE TABLE COMTN_BATCH_SCHDUL
 	EXECUT_SCHDUL_HOUR    	char(2)  		NULL,
 	EXECUT_SCHDUL_MNT     	char(2)  		NULL,
 	EXECUT_SCHDUL_SECND   	char(2)  		NULL,
+	USE_AT                	char(1)  		NULL,
 	FRST_REGISTER_ID      	varchar(20)  	NOT NULL,
 	FRST_REGIST_PNTTM     	datetime  		NOT	NULL,
 	LAST_UPDUSR_ID        	varchar(20)  	NULL,
@@ -1887,7 +1871,7 @@ CREATE TABLE COMTN_EVENT_MANAGE
 	EVENT_CN              	varchar(1000)   NULL,
 	CT_OCCRRNC_AT         	char(1)  		NULL,
 	PARTCPT_CT            	decimal(16)  	NULL,
-	GARDEN                	decimal(10)  	NOT NULL,
+	PSNCPA                	decimal(10)  	NOT NULL,
 	REFRN_URL             	varchar(1024)   NULL,
 	RCEPT_BGNDE           	char(8)  		NOT NULL,
 	RCEPT_ENDDE           	char(8)  		NOT NULL,

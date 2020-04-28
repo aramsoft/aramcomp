@@ -27,7 +27,7 @@ public class LoginSesionCeckUtil {
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		loginVO.setUrl("");
 		loginVO.setUrl(url);
-		new EgovUserDetails(loginVO.getId(), loginVO.getPassword(), true, loginVO);
+		new EgovUserDetails(loginVO.getUserId(), loginVO.getPassword(), true, loginVO);
 	}
 
 	/**

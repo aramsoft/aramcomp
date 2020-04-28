@@ -14,7 +14,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.sit.domain.SiteManageVO;
 import aramframework.com.uss.ion.sit.service.SiteManageService;
@@ -62,7 +61,7 @@ public class SiteManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/ion/sit/SiteInfoList");
+		return "/uss/ion/sit/SiteInfoList";
 	}
 
 	/**
@@ -78,7 +77,7 @@ public class SiteManageController {
 
 		model.addAttribute(siteManageService.selectSiteDetail(siteManageVO));
 
-		return WebUtil.adjustViewName("/uss/ion/sit/SiteInfoDetail");
+		return "/uss/ion/sit/SiteInfoDetail";
 	}
 
 	/**
@@ -94,7 +93,7 @@ public class SiteManageController {
 		// 공통코드를 가져오기 위한 Vo
 		cmmUseService.populateCmmCodeList("COM023", "COM023_siteThema");
 
-		return WebUtil.adjustViewName("/uss/ion/sit/SiteInfoRegist");
+		return "/uss/ion/sit/SiteInfoRegist";
 	}
 
 	/**
@@ -111,17 +110,18 @@ public class SiteManageController {
 
 		beanValidator.validate(siteManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/sit/SiteInfoRegist");
+			return "/uss/ion/sit/SiteInfoRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		siteManageVO.setFrstRegisterId(loginVO.getUniqId()); // 최초등록자ID
+		siteManageVO.setFrstRegisterId(loginVO.getUserId()); // 최초등록자ID
 
 		siteManageService.insertSiteInfo(siteManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, siteManageVO, "/uss/ion/sit/listSiteInfo.do");
+		model.addAttribute("redirectURL", "/uss/ion/sit/listSiteInfo.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -140,7 +140,7 @@ public class SiteManageController {
 		// 공통코드를 가져오기 위한 Vo
 		cmmUseService.populateCmmCodeList("COM023", "COM023_siteThema");
 
-		return WebUtil.adjustViewName("/uss/ion/sit/SiteInfoEdit");
+		return "/uss/ion/sit/SiteInfoEdit";
 	}
 
 	/**
@@ -158,17 +158,18 @@ public class SiteManageController {
 		// Validation
 		beanValidator.validate(siteManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/sit/SiteInfoEdit");
+			return "/uss/ion/sit/SiteInfoEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		siteManageVO.setLastUpdusrId(loginVO.getUniqId()); // 최종수정자ID
+		siteManageVO.setLastUpdusrId(loginVO.getUserId()); // 최종수정자ID
 
 		siteManageService.updateSiteInfo(siteManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, siteManageVO, "/uss/ion/sit/listSiteInfo.do");
+		model.addAttribute("redirectURL", "/uss/ion/sit/listSiteInfo.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -186,7 +187,8 @@ public class SiteManageController {
 		siteManageService.deleteSiteInfo(siteManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, siteManageVO, "/uss/ion/sit/listSiteInfo.do");
-	}
+		model.addAttribute("redirectURL", "/uss/ion/sit/listSiteInfo.do");
+	    return "cmm/redirect";
+ 	}
 
 }

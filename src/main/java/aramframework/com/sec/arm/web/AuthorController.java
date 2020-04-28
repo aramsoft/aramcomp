@@ -15,7 +15,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.constant.AramProperties;
 import aramframework.com.cmm.domain.SearchVO;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sec.arm.domain.AuthorVO;
 import aramframework.com.sec.arm.service.AuthorService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -68,7 +67,7 @@ public class AuthorController {
         String authorResourceReload = AramProperties.getProperty("Globals.authorResourceReload");       
 		model.addAttribute("authorResourceReload", authorResourceReload);
 		
-		return WebUtil.adjustViewName("/sec/arm/AuthorList");
+		return "sec/arm/AuthorList";
 	}
 
 	/**
@@ -83,7 +82,7 @@ public class AuthorController {
 			@ModelAttribute AuthorVO authorVO, 
 			ModelMap model) {
 		
-		return WebUtil.adjustViewName("/sec/arm/AuthorRegist");
+		return "sec/arm/AuthorRegist";
 	}
 
 	/**
@@ -101,13 +100,14 @@ public class AuthorController {
 
 		beanValidator.validate(authorVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sec/arm/AuthorRegist");
+			return "sec/arm/AuthorRegist";
 		} 
 		
 		authorService.insertAuthor(authorVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, authorVO, "/sec/arm/listAuthor.do");
+		model.addAttribute("redirectURL", "/sec/arm/listAuthor.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -124,7 +124,7 @@ public class AuthorController {
 
 		model.addAttribute(authorService.selectAuthor(authorVO));
 		
-		return WebUtil.adjustViewName("/sec/arm/AuthorEdit");
+		return "sec/arm/AuthorEdit";
 	}
 
 	/**
@@ -142,13 +142,14 @@ public class AuthorController {
 
 		beanValidator.validate(authorVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sec/arm/AuthorEdit");
+			return "sec/arm/AuthorEdit";
 		} 
 		
 		authorService.updateAuthor(authorVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, authorVO, "/sec/arm/listAuthor.do");
+		model.addAttribute("redirectURL", "/sec/arm/listAuthor.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -159,13 +160,15 @@ public class AuthorController {
 	@RequestMapping(value = "/sec/arm/deleteAuthor.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteAuthorManage(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AuthorVO authorVO, 
 			ModelMap model) {
 
 		authorService.deleteAuthor(authorVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, authorVO, "/sec/arm/listAuthor.do");
+		model.addAttribute("redirectURL", "/sec/arm/listAuthor.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -176,6 +179,7 @@ public class AuthorController {
 	@RequestMapping(value = "/sec/arm/deleteListAuthor.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteListAuthor(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AuthorVO authorVO, 
 			HttpServletRequest request, 
 			ModelMap model) {
@@ -187,7 +191,8 @@ public class AuthorController {
 		authorService.deleteAuthors(authorCodes);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, authorVO, "/sec/arm/listAuthor.do");
+		model.addAttribute("redirectURL", "/sec/arm/listAuthor.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -198,6 +203,7 @@ public class AuthorController {
 	@RequestMapping(value = "/sec/arm/clearCacheAuthor.do")
 	@Secured("ROLE_ADMIN")
 	public String clearCacheAuthor(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AuthorVO authorVO, 
 			ModelMap model) {
 
@@ -211,8 +217,9 @@ public class AuthorController {
 			model.addAttribute("message", "캐쉬가 재설정되지 않았습니다.!!!");
         }
 
-        return WebUtil.redirectJsp(model,  authorVO, "/sec/arm/listAuthor.do");
-	}
+		model.addAttribute("redirectURL", "/sec/arm/listAuthor.do");
+	    return "cmm/redirect";
+ 	}
 
 	/**
 	 * 권한제한 화면 이동
@@ -221,8 +228,8 @@ public class AuthorController {
 	@RequestMapping("/sec/arm/accessDenied.do")
 	public String accessDenied() {
 //		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-//		LOG.error("Access Denied !!! " + loginVO.getId() + "@" + loginVO.getIp());
-		return "aramframework/com/sec/accessDenied";
+//		LOG.error("Access Denied !!! " + loginVO.getUserId() + "@" + loginVO.getIp());
+		return "sec/accessDenied";
 	}
 	
 }

@@ -66,7 +66,7 @@ public class PopupManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/ion/pwm/PopupList");
+		return "/uss/ion/pwm/PopupList";
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class PopupManageController {
 
 		model.addAttribute(popupManageService.selectPopupDetail(popupManageVO));
 
-		return WebUtil.adjustViewName("/uss/ion/pwm/PopupDetail");
+		return "/uss/ion/pwm/PopupDetail";
 	}
 
 	// 팝업창시작일자(시)
@@ -108,7 +108,7 @@ public class PopupManageController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute PopupManageVO popupManageVO) {
 
-		return WebUtil.adjustViewName("/uss/ion/pwm/PopupRegist");
+		return "/uss/ion/pwm/PopupRegist";
 	}
 
 	/**
@@ -126,18 +126,19 @@ public class PopupManageController {
 		// 서버 validate 체크
 		beanValidator.validate(popupManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/pwm/PopupRegist");
+			return "/uss/ion/pwm/PopupRegist";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		popupManageVO.setFrstRegisterId(loginVO.getUniqId());
+		popupManageVO.setFrstRegisterId(loginVO.getUserId());
 
 		// 저장
 		popupManageService.insertPopup(popupManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, popupManageVO, "/uss/ion/pwm/listPopup.do");
+		model.addAttribute("redirectURL", "/uss/ion/pwm/listPopup.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -164,7 +165,7 @@ public class PopupManageController {
 		
 		model.addAttribute(popupManageVO);
 				
-		return WebUtil.adjustViewName("/uss/ion/pwm/PopupEdit");
+		return "/uss/ion/pwm/PopupEdit";
 	}
 
 	/**
@@ -182,18 +183,19 @@ public class PopupManageController {
 		// 서버 validate 체크
 		beanValidator.validate(popupManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/pwm/PopupEdit");
+			return "/uss/ion/pwm/PopupEdit";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		popupManageVO.setLastUpdusrId(loginVO.getUniqId());
+		popupManageVO.setLastUpdusrId(loginVO.getUserId());
 
 		// 저장
 		popupManageService.updatePopup(popupManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, popupManageVO, "/uss/ion/pwm/listPopup.do");
+		model.addAttribute("redirectURL", "/uss/ion/pwm/listPopup.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -210,7 +212,8 @@ public class PopupManageController {
 		popupManageService.deletePopup(popupManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, popupManageVO, "/uss/ion/pwm/listPopup.do");
+		model.addAttribute("redirectURL", "/uss/ion/pwm/listPopup.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -262,7 +265,7 @@ public class PopupManageController {
 
 		model.addAttribute("resultList", popupManageService.selectPopupMainList(popupManageVO));
 
-		return WebUtil.adjustViewName("/uss/ion/pwm/PopupMainPage");
+		return "/uss/ion/pwm/PopupMainPage";
 	}
 
 }

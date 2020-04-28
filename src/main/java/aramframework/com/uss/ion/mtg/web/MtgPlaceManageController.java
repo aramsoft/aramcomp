@@ -22,7 +22,6 @@ import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.service.FileMngService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.mtg.domain.MtgPlaceFxtrsVO;
 import aramframework.com.uss.ion.mtg.domain.MtgPlaceManageVO;
@@ -81,7 +80,7 @@ public class MtgPlaceManageController {
 	
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/ion/mtg/MtgPlaceList");
+		return "/uss/ion/mtg/MtgPlaceList";
 	}
 
 	/**
@@ -102,7 +101,7 @@ public class MtgPlaceManageController {
 		mtgPlaceFxtrsVO.setMtgPlaceId(mtgPlaceManageVO.getMtgPlaceId());
 		model.addAttribute("mtgPlaceFxtrsList", mtgPlaceManageService.selectFxtrsManageList(mtgPlaceFxtrsVO));
 
-		return WebUtil.adjustViewName("/uss/ion/mtg/MtgPlaceDetail");
+		return "/uss/ion/mtg/MtgPlaceDetail";
 	}
 
 	/**
@@ -123,7 +122,7 @@ public class MtgPlaceManageController {
 
 		cmmUseService.populateCmmCodeList("COM070", "COM070_lcSe");
 
-		return WebUtil.adjustViewName("/uss/ion/mtg/MtgPlaceRegist");
+		return "/uss/ion/mtg/MtgPlaceRegist";
 	}
 
 	/**
@@ -148,7 +147,7 @@ public class MtgPlaceManageController {
 			mtgPlaceFxtrsVO.setMtgPlaceId(mtgPlaceManageVO.getMtgPlaceId());
 			model.addAttribute("mtgPlaceFxtrsList", mtgPlaceManageService.selectFxtrsManageList(mtgPlaceFxtrsVO));
 
-			return WebUtil.adjustViewName("/uss/ion/mtg/MtgPlaceRegist");
+			return "/uss/ion/mtg/MtgPlaceRegist";
 		}
 		
 		// 첨부파일 관련 첨부파일ID 생성
@@ -157,7 +156,8 @@ public class MtgPlaceManageController {
 		mtgPlaceManageService.insertMtgPlaceManage(mtgPlaceManageVO, checkedMtgPlacesForInsert);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, mtgPlaceManageVO, "/uss/ion/mtg/listMtgPlace.do");
+		model.addAttribute("redirectURL", "/uss/ion/mtg/listMtgPlace.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -180,7 +180,7 @@ public class MtgPlaceManageController {
 
 		cmmUseService.populateCmmCodeList("COM070", "COM070_lcSe");
 
-		return WebUtil.adjustViewName("/uss/ion/mtg/MtgPlaceEdit");
+		return "/uss/ion/mtg/MtgPlaceEdit";
 	}
 
 	/**
@@ -202,7 +202,7 @@ public class MtgPlaceManageController {
 
 		beanValidator.validate(mtgPlaceManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/mtg/MtgPlaceEdit");
+			return "/uss/ion/mtg/MtgPlaceEdit";
 		} 
 
 		// 첨부파일 관련 ID 생성 start....
@@ -212,7 +212,8 @@ public class MtgPlaceManageController {
 		mtgPlaceManageService.updateMtgPlaceManage(mtgPlaceManageVO, checkedMtgPlacesForInsert);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, mtgPlaceManageVO, "/uss/ion/mtg/listMtgPlace.do");
+		model.addAttribute("redirectURL", "/uss/ion/mtg/listMtgPlace.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -230,7 +231,8 @@ public class MtgPlaceManageController {
 		mtgPlaceManageService.deleteMtgPlaceManage(mtgPlaceManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, mtgPlaceManageVO, "/uss/ion/mtg/listMtgPlace.do");
+		model.addAttribute("redirectURL", "/uss/ion/mtg/listMtgPlace.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -255,7 +257,7 @@ public class MtgPlaceManageController {
 
 		model.addAttribute("fileList", result);
 
-		return "aramframework/com/uss/ion/mtg/MtgPlaceImageDetail";
+		return "/uss/ion/mtg/MtgPlaceImageDetail";
 	}
 
 	/**** 회의실 예약 ****/
@@ -297,7 +299,7 @@ public class MtgPlaceManageController {
 		
 		model.addAttribute("resultList", mtgPlaceManageService.selectMtgPlaceResveManageList(mtgPlaceResveVO));
 
-		return WebUtil.adjustViewName("/uss/ion/mtg/MtgPlaceResveList");
+		return "/uss/ion/mtg/MtgPlaceResveList";
 	}
 
 	/**
@@ -320,7 +322,7 @@ public class MtgPlaceManageController {
 		mtgPlaceResveVO = mtgPlaceManageService.selectMtgPlaceResveDetail(mtgPlaceResveVO);
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		mtgPlaceResveVO.setUsidTemp(loginVO.getUniqId());
+		mtgPlaceResveVO.setUsidTemp(loginVO.getUserId());
 
 		String resveBeginTm = mtgPlaceResveVO.getResveBeginTm();
 		String resveEndTm = mtgPlaceResveVO.getResveEndTm();
@@ -338,7 +340,7 @@ public class MtgPlaceManageController {
 		
 		model.addAttribute(mtgPlaceResveVO);
 		
-		return WebUtil.adjustViewName("/uss/ion/mtg/MtgPlaceResveDetail");
+		return "/uss/ion/mtg/MtgPlaceResveDetail";
 	}
 
 	/**
@@ -363,7 +365,7 @@ public class MtgPlaceManageController {
 		mtgPlaceResveVO.setResveManNm(loginVO.getName());
 		mtgPlaceResveVO.setResevOrgnztNm(loginVO.getOrgnztNm());
 
-		return WebUtil.adjustViewName("/uss/ion/mtg/MtgPlaceResveRegist");
+		return "/uss/ion/mtg/MtgPlaceResveRegist";
 	}
 
 	/**
@@ -381,17 +383,18 @@ public class MtgPlaceManageController {
 
 		beanValidator.validate(mtgPlaceResveVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/mtg/MtgPlaceResveRegist");
+			return "/uss/ion/mtg/MtgPlaceResveRegist";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		mtgPlaceResveVO.setResveManId(loginVO.getUniqId());
-		mtgPlaceResveVO.setFrstRegisterId(loginVO.getUniqId());
+		mtgPlaceResveVO.setResveManId(loginVO.getUserId());
+		mtgPlaceResveVO.setFrstRegisterId(loginVO.getUserId());
 
 		mtgPlaceManageService.insertMtgPlaceResve(mtgPlaceResveVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, mtgPlaceResveVO, "/uss/ion/mtg/listMtgPlaceResve.do");
+		model.addAttribute("redirectURL", "/uss/ion/mtg/listMtgPlaceResve.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -412,7 +415,7 @@ public class MtgPlaceManageController {
 		model.addAttribute(mtgPlaceManageService.selectMtgPlaceManage(mtgPlaceManageVO));
 		model.addAttribute(mtgPlaceManageService.selectMtgPlaceResveDetail(mtgPlaceResveVO));
 
-		return WebUtil.adjustViewName("/uss/ion/mtg/MtgPlaceResveEdit");
+		return "/uss/ion/mtg/MtgPlaceResveEdit";
 	}
 
 	/**
@@ -430,13 +433,14 @@ public class MtgPlaceManageController {
 
 		beanValidator.validate(mtgPlaceResveVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/mtg/MtgPlaceResveEdit");
+			return "/uss/ion/mtg/MtgPlaceResveEdit";
 		} 
 		
 		mtgPlaceManageService.updateMtgPlaceResve(mtgPlaceResveVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, mtgPlaceResveVO, "/uss/ion/mtg/listMtgPlaceResve.do");
+		model.addAttribute("redirectURL", "/uss/ion/mtg/listMtgPlaceResve.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -454,7 +458,8 @@ public class MtgPlaceManageController {
 		mtgPlaceManageService.deleteMtgPlaceResve(mtgPlaceResveVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, mtgPlaceResveVO, "/uss/ion/mtg/listMtgPlaceResve.do");
+		model.addAttribute("redirectURL", "/uss/ion/mtg/listMtgPlaceResve.do");
+	    return "cmm/redirect";
 	}
 
 	/**

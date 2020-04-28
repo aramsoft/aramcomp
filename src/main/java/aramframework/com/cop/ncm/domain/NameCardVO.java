@@ -57,9 +57,6 @@ public class NameCardVO extends BaseVO {
 	/** 부서명 */
 	private String deptNm = "";
 
-	/** 우편번호 */
-	private String zip = "";
-
 	/** 주소 */
 	private String adres = "";
 
@@ -354,24 +351,6 @@ public class NameCardVO extends BaseVO {
 	 */
 	public void setDeptNm(String deptNm) {
 		this.deptNm = deptNm;
-	}
-
-	/**
-	 * zip attribute를 리턴한다.
-	 * 
-	 * @return the zip
-	 */
-	public String getZip() {
-		return zip;
-	}
-	/**
-	 * zip attribute 값을 설정한다.
-	 * 
-	 * @param zip
-	 *            the zipCode to set
-	 */
-	public void setZip(String zip) {
-		this.zip = zip;
 	}
 
 	/**

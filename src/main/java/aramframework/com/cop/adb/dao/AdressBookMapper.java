@@ -56,6 +56,13 @@ public interface AdressBookMapper {
 	public void updateAdressBook(AdressBookVO adressBookVO);
 
 	/**
+	 * 주소록 정보를 삭제한다.
+	 * 
+	 * @param adressBookVO	AdressBookVO
+	 */
+	public void deleteAdressBook(AdressBookVO adressBookVO);
+
+	/**
 	 * 주어진 조건에 따라 주소록에 기등록된 구성원의 목록을 불러온다.
 	 * 
 	 * @param adressBookVO	AdressBookVO

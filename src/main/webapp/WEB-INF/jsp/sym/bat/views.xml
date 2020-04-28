@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="sym/bat/BatchOpertList" extends="default">
+    <put-attribute name="title" value="배치작업관리 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/sym/bat/BatchOpertList.jsp" />
+  </definition>
+  
+  <definition name="sym/bat/BatchOpertDetail" extends="default">
+    <put-attribute name="title" value="배치작업 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/sym/bat/BatchOpertDetail.jsp" />
+  </definition>
+  
+  <definition name="sym/bat/BatchOpertRegist" extends="default">
+    <put-attribute name="title" value="배치작업 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/sym/bat/BatchOpertRegist.jsp" />
+  </definition>
+  
+  <definition name="sym/bat/BatchOpertEdit" extends="default">
+    <put-attribute name="title" value="배치작업 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/sym/bat/BatchOpertEdit.jsp" />
+  </definition>
+
+  <definition name="sym/bat/BatchResultList" extends="default">
+    <put-attribute name="title" value="배치결과관리 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/sym/bat/BatchResultList.jsp" />
+  </definition>
+  
+  <definition name="sym/bat/BatchResultDetail" extends="default">
+    <put-attribute name="title" value="배치결과 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/sym/bat/BatchResultDetail.jsp" />
+  </definition>
+  
+  <definition name="sym/bat/BatchSchdulList" extends="default">
+    <put-attribute name="title" value="배치스케줄관리 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/sym/bat/BatchSchdulList.jsp" />
+  </definition>
+  
+  <definition name="sym/bat/BatchSchdulDetail" extends="default">
+    <put-attribute name="title" value="배치스케줄 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/sym/bat/BatchSchdulDetail.jsp" />
+  </definition>
+  
+  <definition name="sym/bat/BatchSchdulRegist" extends="default">
+    <put-attribute name="title" value="배치스케줄 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/sym/bat/BatchSchdulRegist.jsp" />
+  </definition>
+  
+  <definition name="sym/bat/BatchSchdulEdit" extends="default">
+    <put-attribute name="title" value="배치스케줄 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/sym/bat/BatchSchdulEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

@@ -17,10 +17,8 @@ import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.ComponentChecker;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.bbs.domain.BoardMasterVO;
 import aramframework.com.cop.bbs.domain.BoardUseInfVO;
-import aramframework.com.cop.bbs.service.BBSBoardService;
 import aramframework.com.cop.bbs.service.BBSMasterService;
 import aramframework.com.cop.bbs.service.BBSUseInfoService;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -69,7 +67,7 @@ public class BBSMasterController {
 		
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/bbs/BoardMasterPopup");
+		return "cop/bbs/BoardMasterPopup";
 	}
 
 	/**
@@ -99,7 +97,7 @@ public class BBSMasterController {
 			model.addAttribute("useCommunity", "true");
 		}
 
-		return WebUtil.adjustViewName("/cop/bbs/BoardMasterList");
+		return "cop/bbs/BoardMasterList";
 	}
 
 	/**
@@ -137,7 +135,7 @@ public class BBSMasterController {
 			model.addAttribute("useSatisfaction", "true");
 		}
 
-		return WebUtil.adjustViewName("/cop/bbs/BoardMasterRegist");
+		return "cop/bbs/BoardMasterRegist";
 	}
 
 	/**
@@ -155,18 +153,19 @@ public class BBSMasterController {
 
 		beanValidator.validate(boardMasterVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/bbs/BoardMasterRegist");
+			return "cop/bbs/BoardMasterRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		boardMasterVO.setFrstRegisterId(loginVO.getUniqId());
+		boardMasterVO.setFrstRegisterId(loginVO.getUserId());
 		boardMasterVO.setUseAt("Y");
 		boardMasterVO.setBbsUseFlag("N");	//not yet bbs 
 
 		bbsMasterService.insertBBSMastetInf(boardMasterVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, boardMasterVO, "/cop/bbs/listBoardMaster.do");
+		model.addAttribute("redirectURL", "/cop/bbs/listBoardMaster.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -201,18 +200,12 @@ public class BBSMasterController {
 	
 			// 시스템 사용 게시판의 경우 URL 표시
 			if ("SYSTEM_DEFAULT_BOARD".equals(boardUseInfVO.getTrgetId())) {
-				if (boardUseInfVO.getBbsTyCode().equals(BBSBoardService.BBS_TYPE_ANONYMOUS)) { // 익명게시판
-					boardUseInfVO.setProvdUrl2(request.getContextPath() 
-							+ "/content/board/anonymous/" + boardUseInfVO.getPathId() + "/articles");
-				} else {
-					boardUseInfVO.setProvdUrl2(request.getContextPath() 
-							+ "/content/board/" + boardUseInfVO.getPathId() + "/articles");
-				}
+				boardUseInfVO.setProvdUrl2(request.getContextPath() + "/board/" + boardUseInfVO.getPathId() + "/list");
 			}
 			model.addAttribute(boardUseInfVO);
 		}
 		
-		return WebUtil.adjustViewName("/cop/bbs/BoardMasterEdit");
+		return "cop/bbs/BoardMasterEdit";
 	}
 
 	/**
@@ -230,16 +223,17 @@ public class BBSMasterController {
 
 		beanValidator.validate(boardMasterVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/bbs/BoardMasterEdit");
+			return "cop/bbs/BoardMasterEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		boardMasterVO.setLastUpdusrId(loginVO.getUniqId());
+		boardMasterVO.setLastUpdusrId(loginVO.getUserId());
 
 		bbsMasterService.updateBBSMasterInf(boardMasterVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, boardMasterVO, "/cop/bbs/listBoardMaster.do");
+		model.addAttribute("redirectURL", "/cop/bbs/listBoardMaster.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -250,16 +244,18 @@ public class BBSMasterController {
 	@RequestMapping("/cop/bbs/deleteBoardMaster.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteBoardMaster(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardMasterVO boardMasterVO,
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		boardMasterVO.setLastUpdusrId(loginVO.getUniqId());
+		boardMasterVO.setLastUpdusrId(loginVO.getUserId());
 
 		bbsMasterService.deleteBBSMasterInf(boardMasterVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, boardMasterVO, "/cop/bbs/listBoardMaster.do");
+		model.addAttribute("redirectURL", "/cop/bbs/listBoardMaster.do");
+	    return "cmm/redirect";
 	}
 
 }

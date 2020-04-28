@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.cmm.domain.ComCodeVO;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.ComponentChecker;
@@ -77,7 +80,7 @@ public class SchdulManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/smt/sim/EmplyrListPopup");
+		return "cop/smt/sim/EmplyrListPopup";
 	}
 
 	/**
@@ -102,7 +105,7 @@ public class SchdulManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/smt/sim/SchdulListPopup");
+		return "cop/smt/sim/SchdulListPopup";
 	}
 
 	/**
@@ -120,11 +123,11 @@ public class SchdulManageController {
 		if (loginVO == null) {
 			loginVO = new LoginVO();
 		}
-		schdulManageVO.setUniqId(loginVO.getUniqId());
+		schdulManageVO.setUserId(loginVO.getUserId());
  
 		model.addAttribute("resultList", schdulManageService.selectSchdulManageMainList(schdulManageVO));
 
-		return WebUtil.adjustViewName("/cop/smt/sim/SchdulMainPage");
+		return "cop/smt/sim/SchdulMainPage";
 	}
 	
 	/**
@@ -138,7 +141,14 @@ public class SchdulManageController {
 			@ModelAttribute SchdulManageVO schdulManageVO, 
 			ModelMap model) {
 		
-		return WebUtil.adjustViewName("/cop/smt/sim/SchdulList");
+		// 공통코드 일정종류
+		cmmUseService.populateCmmCodeList("COM030", "COM030_schdulSe");
+		// 공통코드 중요도 조회
+		cmmUseService.populateCmmCodeList("COM019", "COM019_schdulIpcr");
+		// 공통코드 반복구분 조회
+		cmmUseService.populateCmmCodeList("COM031", "COM031_reptitSe");
+
+		return "cop/smt/sim/SchdulList";
 	}
 
 	/**
@@ -149,6 +159,7 @@ public class SchdulManageController {
 	@RequestMapping(value = "/cop/smt/sim/listSchdulDaily.do")
 	public String listSchdulDaily(
 			@ModelAttribute SchdulManageVO schdulManageVO, 
+			HttpServletRequest request,
 			ModelMap model) {
 
 		/* *****************************************************************
@@ -190,14 +201,12 @@ public class SchdulManageController {
 		if (loginVO == null) {
 			loginVO = new LoginVO();
 		}
-		schdulManageVO.setUniqId(loginVO.getUniqId());
+		schdulManageVO.setUserId(loginVO.getUserId());
+		schdulManageVO.setTrgetId((String)request.getAttribute("curTrgetId"));
 
 		model.addAttribute("resultList", schdulManageService.selectSchdulManageRetrieve(schdulManageVO));
 
-		// 공통코드 일정종류
-		cmmUseService.populateCmmCodeList("COM030", "COM030_schdulSe");
-
-		return WebUtil.adjustViewName("/cop/smt/sim/SchdulDailyList");
+		return "cop/smt/sim/SchdulDailyList";
 	}
 
 	/**
@@ -208,6 +217,7 @@ public class SchdulManageController {
 	@RequestMapping(value = "/cop/smt/sim/listSchdulWeek.do")
 	public String listSchdulWeek(
 			@ModelAttribute SchdulManageVO schdulManageVO, 
+			HttpServletRequest request,
 			ModelMap model) {
 
 		/* *****************************************************************
@@ -318,14 +328,12 @@ public class SchdulManageController {
 		if (loginVO == null) {
 			loginVO = new LoginVO();
 		}
-		schdulManageVO.setUniqId(loginVO.getUniqId());
+		schdulManageVO.setUserId(loginVO.getUserId());
+		schdulManageVO.setTrgetId((String)request.getAttribute("curTrgetId"));
 
 		model.addAttribute("resultList", schdulManageService.selectSchdulManageRetrieve(schdulManageVO));
 
-		// 공통코드 일정종류
-		cmmUseService.populateCmmCodeList("COM030", "COM030_schdulSe");
-
-		return WebUtil.adjustViewName("/cop/smt/sim/SchdulWeekList");
+		return "cop/smt/sim/SchdulWeekList";
 	}
 
 	/**
@@ -336,6 +344,7 @@ public class SchdulManageController {
 	@RequestMapping(value = "/cop/smt/sim/listSchdulMonth.do")
 	public String listSchdulMonth(
 			@ModelAttribute SchdulManageVO schdulManageVO, 
+			HttpServletRequest request,
 			ModelMap model) {
 
 		java.util.Calendar cal = java.util.Calendar.getInstance();
@@ -376,7 +385,8 @@ public class SchdulManageController {
 		if (loginVO == null) {
 			loginVO = new LoginVO();
 		}
-		schdulManageVO.setUniqId(loginVO.getUniqId());
+		schdulManageVO.setUserId(loginVO.getUserId());
+		schdulManageVO.setTrgetId((String)request.getAttribute("curTrgetId"));
 
 		model.addAttribute("resultList", schdulManageService.selectSchdulManageRetrieve(schdulManageVO));
 
@@ -387,10 +397,7 @@ public class SchdulManageController {
 		
 		model.addAttribute("restdeList", restdeManageService.selectNormalMonthRestde(restdeVO));
 
-		// 공통코드 일정종류
-		cmmUseService.populateCmmCodeList("COM030", "COM030_schdulSe");
-
-		return WebUtil.adjustViewName("/cop/smt/sim/SchdulMonthList");
+		return "cop/smt/sim/SchdulMonthList";
 	}
 
 	/**
@@ -400,6 +407,7 @@ public class SchdulManageController {
 	 */
 	@RequestMapping(value = "/cop/smt/sim/detailSchdul.do")
 	public String detailSchdul(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SchdulManageVO schdulManageVO, 
 			ModelMap model) {
 
@@ -413,14 +421,7 @@ public class SchdulManageController {
 			model.addAttribute("useDiaryManage", "true");
 		}
 
-		// 공통코드 중요도 조회
-		cmmUseService.populateCmmCodeList("COM019", "COM019_schdulIpcr");
-		// 공통코드 일정구분 조회
-		cmmUseService.populateCmmCodeList("COM030", "COM030_schdulSe");
-		// 공통코드 반복구분 조회
-		cmmUseService.populateCmmCodeList("COM031", "COM031_reptitSe");
-
-		return WebUtil.adjustViewName("/cop/smt/sim/SchdulDetail");
+		return "cop/smt/sim/SchdulDetail";
 	}
 
 	// 일정일자(시)
@@ -438,15 +439,11 @@ public class SchdulManageController {
 	@RequestMapping(value = "/cop/smt/sim/registSchdul.do")
 	@Secured("ROLE_USER")
 	public String registSchdul(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SchdulManageVO schdulManageVO, 
 			ModelMap model) {
 
-		// 공통코드 중요도 조회
-		cmmUseService.populateCmmCodeList("COM019", "COM019_schdulIpcr");
-		// 공통코드 일정구분 조회
-		cmmUseService.populateCmmCodeList("COM030", "COM030_schdulSe");
-
-		return WebUtil.adjustViewName("/cop/smt/sim/SchdulRegist");
+		return "cop/smt/sim/SchdulRegist";
 	}
 
 	/**
@@ -458,6 +455,7 @@ public class SchdulManageController {
 	@RequestMapping(value = "/cop/smt/sim/insertSchdul.do")
 	@Secured("ROLE_USER")
 	public String insertSchdul(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SchdulManageVO schdulManageVO, 
 			BindingResult bindingResult, 
 			MultipartHttpServletRequest multiRequest, 
@@ -467,20 +465,21 @@ public class SchdulManageController {
 		// 서버 validate 체크
 		beanValidator.validate(schdulManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/smt/sim/SchdulRegist");
+			return "cop/smt/sim/SchdulRegist";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
-		schdulManageVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "DSCH_"));
+		schdulManageVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "SIM"));
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		schdulManageVO.setFrstRegisterId(loginVO.getUniqId());
+		schdulManageVO.setFrstRegisterId(loginVO.getUserId());
 
 		schdulManageService.insertSchdulManage(schdulManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, schdulManageVO, "/cop/smt/sim/listSchdul.do");
+		model.addAttribute("redirectURL", "/cop/smt/sim/listSchdul.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -491,6 +490,7 @@ public class SchdulManageController {
 	@RequestMapping(value = "/cop/smt/sim/editSchdul.do")
 	@Secured("ROLE_USER")
 	public String editSchdul(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SchdulManageVO schdulManageVO, 
 			ModelMap model) {
 
@@ -509,18 +509,13 @@ public class SchdulManageController {
 
 		boolean writer = false;
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		if (schdulManageVO.getFrstRegisterId().equals(loginVO.getUniqId())) {
+		if (schdulManageVO.getFrstRegisterId().equals(loginVO.getUserId())) {
 			writer = true;
 		}
 		model.addAttribute("writer", writer);
 		model.addAttribute(schdulManageVO);
 
-		// 공통코드 중요도 조회
-		cmmUseService.populateCmmCodeList("COM019", "COM019_schdulIpcr");
-		// 공통코드 일정구분 조회
-		cmmUseService.populateCmmCodeList("COM030", "COM030_schdulSe");
-
-		return WebUtil.adjustViewName("/cop/smt/sim/SchdulEdit");
+		return "cop/smt/sim/SchdulEdit";
 	}
 
 	/**
@@ -532,6 +527,7 @@ public class SchdulManageController {
 	@RequestMapping(value = "/cop/smt/sim/updateSchdul.do")
 	@Secured("ROLE_USER")
 	public String updateSchdul(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SchdulManageVO schdulManageVO, 
 			BindingResult bindingResult, 
 			MultipartHttpServletRequest multiRequest, 
@@ -544,21 +540,21 @@ public class SchdulManageController {
 
 			boolean writer = false;
 			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-			if (schdulManageVO.getFrstRegisterId().equals(loginVO.getUniqId())) {
+			if (schdulManageVO.getFrstRegisterId().equals(loginVO.getUserId())) {
 				writer = true;
 			}
 			model.addAttribute("writer", writer);
 
-			return WebUtil.adjustViewName("/cop/smt/sim/SchdulEdit");
+			return "cop/smt/sim/SchdulEdit";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		schdulManageVO.setLastUpdusrId(loginVO.getUniqId());
+		schdulManageVO.setLastUpdusrId(loginVO.getUserId());
 
 		// 첨부파일 관련 ID 생성 start....
 		String atchFileId = schdulManageVO.getAtchFileId();
-		schdulManageVO.setAtchFileId(fileMngUtil.updateMultiFile(multiRequest, "DSCH_", atchFileId));
+		schdulManageVO.setAtchFileId(fileMngUtil.updateMultiFile(multiRequest, "SIM", atchFileId));
 
 		/* *****************************************************************
 		 * // 일정관리정보 업데이트 처리
@@ -567,7 +563,8 @@ public class SchdulManageController {
 		schdulManageService.updateSchdulManage(schdulManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, schdulManageVO, "/cop/smt/sim/listSchdul.do");
+		model.addAttribute("redirectURL", "/cop/smt/sim/listSchdul.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -578,13 +575,15 @@ public class SchdulManageController {
 	@RequestMapping(value = "/cop/smt/sim/deleteSchdul.do")
 	@Secured("ROLE_USER")
 	public String deleteSchdul(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SchdulManageVO schdulManageVO, 
 			ModelMap model) {
 
 		schdulManageService.deleteSchdulManage(schdulManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, schdulManageVO, "/cop/smt/sim/listSchdul.do");
+		model.addAttribute("redirectURL", "/cop/smt/sim/listSchdul.do");
+	    return "cmm/redirect";
 	}
 
 }

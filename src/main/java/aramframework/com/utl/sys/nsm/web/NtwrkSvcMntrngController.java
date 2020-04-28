@@ -65,7 +65,7 @@ public class NtwrkSvcMntrngController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/utl/sys/nsm/NtwrkSvcMntrngList");
+		return "/utl/sys/nsm/NtwrkSvcMntrngList";
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class NtwrkSvcMntrngController {
 		
 		model.addAttribute(ntwrkSvcMntrngVO);
 		
-		return WebUtil.adjustViewName("/utl/sys/nsm/NtwrkSvcMntrngDetail");
+		return "/utl/sys/nsm/NtwrkSvcMntrngDetail";
 	}
 
 	/**
@@ -111,7 +111,7 @@ public class NtwrkSvcMntrngController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NtwrkSvcMntrngVO ntwrkSvcMntrngVO) {
 
-		return WebUtil.adjustViewName("/utl/sys/nsm/NtwrkSvcMntrngRegist");
+		return "/utl/sys/nsm/NtwrkSvcMntrngRegist";
 	}
 
 	/**
@@ -130,7 +130,7 @@ public class NtwrkSvcMntrngController {
 		// 서버 validate 체크
 		beanValidator.validate(ntwrkSvcMntrngVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/utl/sys/nsm/NtwrkSvcMntrngRegist");
+			return "/utl/sys/nsm/NtwrkSvcMntrngRegist";
 		}
 
 		// 시스템 IP 설정
@@ -146,7 +146,7 @@ public class NtwrkSvcMntrngController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		ntwrkSvcMntrngVO.setFrstRegisterId(loginVO.getUniqId());
+		ntwrkSvcMntrngVO.setFrstRegisterId(loginVO.getUserId());
 
 		if (ntwrkSvcMntrngService.selectNtwrkSvcMntrngCheck(ntwrkSvcMntrngVO) > 0) {
 			model.addAttribute("ntwrkSvcMntrngDuplicated", "true");
@@ -156,7 +156,8 @@ public class NtwrkSvcMntrngController {
 		ntwrkSvcMntrngService.insertNtwrkSvcMntrng(ntwrkSvcMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, ntwrkSvcMntrngVO, "/utl/sys/nsm/listNtwrkSvcMntrng.do");
+		model.addAttribute("redirectURL", "/utl/sys/nsm/listNtwrkSvcMntrng.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -188,7 +189,7 @@ public class NtwrkSvcMntrngController {
 		
 		model.addAttribute(ntwrkSvcMntrngVO);
 		
-		return WebUtil.adjustViewName("/utl/sys/nsm/NtwrkSvcMntrngEdit");
+		return "/utl/sys/nsm/NtwrkSvcMntrngEdit";
 	}
 
 	/**
@@ -206,7 +207,7 @@ public class NtwrkSvcMntrngController {
 
 		beanValidator.validate(ntwrkSvcMntrngVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/utl/sys/nsm/NtwrkSvcMntrngEdit");
+			return "/utl/sys/nsm/NtwrkSvcMntrngEdit";
 		}
 
 		// 시스템 IP 설정
@@ -221,12 +222,13 @@ public class NtwrkSvcMntrngController {
 		ntwrkSvcMntrngVO.setSysIp(sysIp);
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		ntwrkSvcMntrngVO.setLastUpdusrId(loginVO.getUniqId());
+		ntwrkSvcMntrngVO.setLastUpdusrId(loginVO.getUserId());
 
 		ntwrkSvcMntrngService.updateNtwrkSvcMntrng(ntwrkSvcMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, ntwrkSvcMntrngVO, "/utl/sys/nsm/listNtwrkSvcMntrng.do");
+		model.addAttribute("redirectURL", "/utl/sys/nsm/listNtwrkSvcMntrng.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -244,7 +246,8 @@ public class NtwrkSvcMntrngController {
 		ntwrkSvcMntrngService.deleteNtwrkSvcMntrng(ntwrkSvcMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, ntwrkSvcMntrngVO, "/utl/sys/nsm/listNtwrkSvcMntrng.do");
+		model.addAttribute("redirectURL", "/utl/sys/nsm/listNtwrkSvcMntrng.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -290,7 +293,7 @@ public class NtwrkSvcMntrngController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/utl/sys/nsm/NtwrkSvcMntrngLogList");
+		return "/utl/sys/nsm/NtwrkSvcMntrngLogList";
 	}
 
 	// 조회시작시
@@ -322,7 +325,7 @@ public class NtwrkSvcMntrngController {
 		
 		model.addAttribute(ntwrkSvcMntrngLogVO);
 		
-		return WebUtil.adjustViewName("/utl/sys/nsm/NtwrkSvcMntrngLogDetail");
+		return "/utl/sys/nsm/NtwrkSvcMntrngLogDetail";
 	}
 
 }

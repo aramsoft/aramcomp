@@ -126,7 +126,7 @@
             SELECT  #{year}              AS YEAR
                  ,  #{month}             AS MONTH
                  ,  CASE ((DUMMY.ROWNUM + 1 - #{startWeekMonth})>0 AND (DUMMY.ROWNUM + 1 - #{startWeekMonth})<=#{lastDayMonth})
-                    WHEN true THEN CAST((DUMMY.ROWNUM + 1 - #{startWeekMonth}) AS CHAR)
+                    WHEN true THEN CAST((DUMMY.ROWNUM + 1 - #{startWeekMonth}) AS TEXT)
                     ELSE '' 
                     END                  AS DAY 
                  ,  DUMMY.ROWNUM         AS CELL_NUM
@@ -138,7 +138,7 @@
                      WHERE  RESTDE = CONCAT(#{year}
                                             ,LPAD(#{month},2,'0')
                                             ,LPAD(CASE((DUMMY.ROWNUM + 1 - #{startWeekMonth})>0 AND (DUMMY.ROWNUM + 1 - #{startWeekMonth})<=#{lastDayMonth})
-                                                  WHEN true THEN CAST((DUMMY.ROWNUM + 1 - #{startWeekMonth}) AS CHAR)
+                                                  WHEN true THEN CAST((DUMMY.ROWNUM + 1 - #{startWeekMonth}) AS TEXT)
                                                   ELSE '' 
                                                   END,2,'0'
                                              )
@@ -216,7 +216,7 @@
 		<![CDATA[
             SELECT  #{year}             AS   YEAR
                  ,  #{month}            AS   MONTH
-                 ,  CAST(CAST( SUBSTR(RESTDE,7,2) AS DECIMAL(2)) AS CHAR) AS DAY
+                 ,  CAST(CAST( SUBSTR(RESTDE,7,2) AS DECIMAL(2)) AS TEXT) AS DAY
                  ,  RESTDE
                  ,  RESTDE_NM
               FROM  COMTN_RESTDE 
@@ -230,7 +230,7 @@
             SELECT  #{year}               YEAR
                  ,  #{month}              MONTH
                  ,  CASE ((DUMMY.ROWNUM + 1 - #{startWeekMonth})>0 AND (DUMMY.ROWNUM + 1 - #{startWeekMonth})<=#{lastDayMonth})
-                    WHEN 1 THEN CAST((DUMMY.ROWNUM + 1 - #{startWeekMonth}) AS CHAR)
+                    WHEN 1 THEN CAST((DUMMY.ROWNUM + 1 - #{startWeekMonth}) AS TEXT)
                     ELSE '' 
                     END                  DAY 
                  ,  DUMMY.ROWNUM         CELL_NUM
@@ -242,7 +242,7 @@
                      WHERE  RESTDEE = CONCAT(#{year}
                                             ,LPAD(#{month},2,'0')
                                             ,LPAD(CASE((DUMMY.ROWNUM + 1 - #{startWeekMonth})>0 AND (DUMMY.ROWNUM + 1 - #{startWeekMonth})<=#{lastDayMonth})
-                                                  WHEN 1 THEN CAST((DUMMY.ROWNUM + 1 - #{startWeekMonth}) AS CHAR)
+                                                  WHEN 1 THEN CAST((DUMMY.ROWNUM + 1 - #{startWeekMonth}) AS TEXT)
                                                   ELSE '' 
                                                   END,2,'0'
                                              )
@@ -320,7 +320,7 @@
 		<![CDATA[
             SELECT  #{year}                AS YEAR
                  ,  #{month}               AS MONTH
-                 ,  CAST(CAST( SUBSTR(RESTDE,7,2) AS DECIMAL(2)) AS CHAR) AS DAY
+                 ,  CAST(CAST( SUBSTR(RESTDE,7,2) AS DECIMAL(2)) AS TEXT) AS DAY
                  ,  RESTDE
                  ,  RESTDE_NM
               FROM  COMTN_RESTDE 

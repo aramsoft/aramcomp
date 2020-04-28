@@ -26,7 +26,7 @@ public class SmsVO extends BaseVO {
 
 	// helper
 	/** 유일 아이디 */
-	private String uniqId = "";
+	private String userId = "";
 
 	/** 수신 전화번호 개수 */
 	private int recptnCnt = 0;
@@ -94,21 +94,21 @@ public class SmsVO extends BaseVO {
 
 	// helper
 	/**
-	 * uniqId attribute를 리턴한다.
+	 * userId attribute를 리턴한다.
 	 * 
-	 * @return the uniqId
+	 * @return the userId
 	 */
-	public String getUniqId() {
-		return uniqId;
+	public String getUserId() {
+		return userId;
 	}
 	/**
-	 * uniqId attribute 값을 설정한다.
+	 * userId attribute 값을 설정한다.
 	 * 
-	 * @param uniqId
-	 *            the uniqId to set
+	 * @param userId
+	 *            the userId to set
 	 */
-	public void setUniqId(String uniqId) {
-		this.uniqId = uniqId;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	/**

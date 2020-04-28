@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.utl.fcc.service.DateUtil;
 import aramframework.com.utl.fcc.service.StringUtil;
 import aramframework.com.utl.sys.srm.domain.ServerResrceMntrngVO;
@@ -54,7 +53,7 @@ public class ServerResrceMntrngController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/utl/sys/srm/MntrngServerList");
+		return "/utl/sys/srm/MntrngServerList";
 	}
 
 	/**
@@ -90,7 +89,7 @@ public class ServerResrceMntrngController {
 		serverResrceMntrngVO.setStrStartDt(StringUtil.addMinusChar(serverResrceMntrngVO.getStrStartDt()));
 		serverResrceMntrngVO.setStrEndDt(StringUtil.addMinusChar(serverResrceMntrngVO.getStrEndDt()));
 
-		return WebUtil.adjustViewName("/utl/sys/srm/ServerResrceMntrngList");
+		return "/utl/sys/srm/ServerResrceMntrngList";
 	}
 
 	/**
@@ -107,7 +106,7 @@ public class ServerResrceMntrngController {
 
 		model.addAttribute(serverResrceMntrngService.selectServerResrceMntrng(serverResrceMntrngVO));
 
-		return WebUtil.adjustViewName("/utl/sys/srm/ServerResrceMntrngDetail");
+		return "/utl/sys/srm/ServerResrceMntrngDetail";
 	}
 
 }

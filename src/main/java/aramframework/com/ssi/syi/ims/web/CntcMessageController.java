@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.ssi.syi.ims.domain.CntcMessageItemVO;
 import aramframework.com.ssi.syi.ims.domain.CntcMessageVO;
 import aramframework.com.ssi.syi.ims.service.CntcMessageService;
@@ -60,7 +59,7 @@ public class CntcMessageController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return WebUtil.adjustViewName("/ssi/syi/ims/CntcMessageList");
+		return "/ssi/syi/ims/CntcMessageList";
 	}
 
 	/**
@@ -87,7 +86,7 @@ public class CntcMessageController {
 
 		model.addAttribute("cntcMessageItemList", cntcMessageService.selectCntcMessageItemList(cntcMessageItemVO));
 
-		return WebUtil.adjustViewName("/ssi/syi/ims/CntcMessageDetail");
+		return "/ssi/syi/ims/CntcMessageDetail";
 	}
 
 	/**
@@ -110,7 +109,7 @@ public class CntcMessageController {
 		
 		model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
-		return WebUtil.adjustViewName("/ssi/syi/ims/CntcMessageRegist");
+		return "/ssi/syi/ims/CntcMessageRegist";
 	}
 
 	/**
@@ -137,17 +136,18 @@ public class CntcMessageController {
 			
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
-			return WebUtil.adjustViewName("/ssi/syi/ims/CntcMessageRegist");
+			return "/ssi/syi/ims/CntcMessageRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		cntcMessageVO.setFrstRegisterId(loginVO.getUniqId());
+		cntcMessageVO.setFrstRegisterId(loginVO.getUserId());
 
 		cntcMessageService.insertCntcMessage(cntcMessageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, cntcMessageVO, "/ssi/syi/ims/listCntcMessage.do");
+		model.addAttribute("redirectURL", "/ssi/syi/ims/listCntcMessage.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -172,7 +172,7 @@ public class CntcMessageController {
 
 		cntcMessageService.selectCntcMessageDetail(cntcMessageVO);
 
-		return WebUtil.adjustViewName("/ssi/syi/ims/CntcMessageEdit");
+		return "/ssi/syi/ims/CntcMessageEdit";
 	}
 
 	/**
@@ -199,17 +199,18 @@ public class CntcMessageController {
 
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
-			return WebUtil.adjustViewName("/ssi/syi/ims/CntcMessageEdit");
+			return "/ssi/syi/ims/CntcMessageEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		cntcMessageVO.setLastUpdusrId(loginVO.getUniqId());
+		cntcMessageVO.setLastUpdusrId(loginVO.getUserId());
 
 		cntcMessageService.updateCntcMessage(cntcMessageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, cntcMessageVO, "/ssi/syi/ims/listCntcMessage.do");
+		model.addAttribute("redirectURL", "/ssi/syi/ims/listCntcMessage.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -227,7 +228,8 @@ public class CntcMessageController {
 		cntcMessageService.deleteCntcMessage(cntcMessageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, cntcMessageVO, "/ssi/syi/ims/listCntcMessage.do");
+		model.addAttribute("redirectURL", "/ssi/syi/ims/listCntcMessage.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -250,7 +252,7 @@ public class CntcMessageController {
 		
 		model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
-		return WebUtil.adjustViewName("/ssi/syi/ims/CntcMessageItemRegist");
+		return "/ssi/syi/ims/CntcMessageItemRegist";
 	}
 
 	/**
@@ -277,12 +279,12 @@ public class CntcMessageController {
 			
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
-			return WebUtil.adjustViewName("/ssi/syi/ims/CntcMessageItemRegist");
+			return "/ssi/syi/ims/CntcMessageItemRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		cntcMessageItemVO.setFrstRegisterId(loginVO.getUniqId());
+		cntcMessageItemVO.setFrstRegisterId(loginVO.getUserId());
 
 		cntcMessageService.insertCntcMessageItem(cntcMessageItemVO);
 		
@@ -312,7 +314,7 @@ public class CntcMessageController {
 
 		cntcMessageService.selectCntcMessageItemDetail(cntcMessageItemVO);
 
-		return WebUtil.adjustViewName("/ssi/syi/ims/CntcMessageItemEdit");
+		return "/ssi/syi/ims/CntcMessageItemEdit";
 	}
 
 	/**
@@ -339,12 +341,12 @@ public class CntcMessageController {
 			
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
-			return WebUtil.adjustViewName("/ssi/syi/ims/CntcMessageItemEdit");
+			return "/ssi/syi/ims/CntcMessageItemEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		cntcMessageItemVO.setLastUpdusrId(loginVO.getUniqId());
+		cntcMessageItemVO.setLastUpdusrId(loginVO.getUserId());
 
 		cntcMessageService.updateCntcMessageItem(cntcMessageItemVO);
 

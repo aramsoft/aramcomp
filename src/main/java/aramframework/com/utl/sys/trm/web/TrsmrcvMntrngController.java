@@ -15,7 +15,6 @@ import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.utl.sys.trm.domain.TrsmrcvMntrngLogVO;
 import aramframework.com.utl.sys.trm.domain.TrsmrcvMntrngVO;
@@ -63,7 +62,7 @@ public class TrsmrcvMntrngController {
 		
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/utl/sys/trm/TrsmrcvMntrngList");
+		return "/utl/sys/trm/TrsmrcvMntrngList";
 	}
 
 	/**
@@ -80,7 +79,7 @@ public class TrsmrcvMntrngController {
 
 		model.addAttribute(trsmrcvMntrngService.selectTrsmrcvMntrng(trsmrcvMntrngVO));
 
-		return WebUtil.adjustViewName("/utl/sys/trm/TrsmrcvMntrngDetail");
+		return "/utl/sys/trm/TrsmrcvMntrngDetail";
 	}
 
 	/**
@@ -94,7 +93,7 @@ public class TrsmrcvMntrngController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute TrsmrcvMntrngVO trsmrcvMntrngVO) {
 
-		return WebUtil.adjustViewName("/utl/sys/trm/TrsmrcvMntrngRegist");
+		return "/utl/sys/trm/TrsmrcvMntrngRegist";
 	}
 
 	/**
@@ -113,17 +112,18 @@ public class TrsmrcvMntrngController {
 		beanValidator.validate(trsmrcvMntrngVO, bindingResult);
 		checkDuplication(trsmrcvMntrngVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/utl/sys/trm/TrsmrcvMntrngRegist");
+			return "/utl/sys/trm/TrsmrcvMntrngRegist";
 		} 
 		
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		trsmrcvMntrngVO.setFrstRegisterId(loginVO.getUniqId());
+		trsmrcvMntrngVO.setFrstRegisterId(loginVO.getUserId());
 
 		trsmrcvMntrngService.insertTrsmrcvMntrng(trsmrcvMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, trsmrcvMntrngVO, "/utl/sys/trm/listTrsmrcvMntrng.do");
+		model.addAttribute("redirectURL", "/utl/sys/trm/listTrsmrcvMntrng.do");
+	    return "cmm/redirect";
 	}
 
 	private void checkDuplication(TrsmrcvMntrngVO trsmrcvMntrngVO, Errors errors) {
@@ -157,7 +157,7 @@ public class TrsmrcvMntrngController {
 
 		model.addAttribute(trsmrcvMntrngService.selectTrsmrcvMntrng(trsmrcvMntrngVO));
 
-		return WebUtil.adjustViewName("/utl/sys/trm/TrsmrcvMntrngEdit");
+		return "/utl/sys/trm/TrsmrcvMntrngEdit";
 	}
 
 	/**
@@ -175,17 +175,18 @@ public class TrsmrcvMntrngController {
 
 		beanValidator.validate(trsmrcvMntrngVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/utl/sys/trm/TrsmrcvMntrngEdit");
+			return "/utl/sys/trm/TrsmrcvMntrngEdit";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		trsmrcvMntrngVO.setLastUpdusrId(loginVO.getUniqId());
+		trsmrcvMntrngVO.setLastUpdusrId(loginVO.getUserId());
 
 		trsmrcvMntrngService.updateTrsmrcvMntrng(trsmrcvMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, trsmrcvMntrngVO, "/utl/sys/trm/listTrsmrcvMntrng.do");
+		model.addAttribute("redirectURL", "/utl/sys/trm/listTrsmrcvMntrng.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -203,7 +204,8 @@ public class TrsmrcvMntrngController {
 		trsmrcvMntrngService.deleteTrsmrcvMntrng(trsmrcvMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, trsmrcvMntrngVO, "/utl/sys/trm/listTrsmrcvMntrng.do");
+		model.addAttribute("redirectURL", "/utl/sys/trm/listTrsmrcvMntrng.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -228,7 +230,7 @@ public class TrsmrcvMntrngController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/utl/sys/trm/TrsmrcvMntrngLogList");
+		return "/utl/sys/trm/TrsmrcvMntrngLogList";
 	}
 
 	/**
@@ -245,7 +247,7 @@ public class TrsmrcvMntrngController {
 		
 		model.addAttribute(trsmrcvMntrngService.selectTrsmrcvMntrngLog(trsmrcvMntrngLogVO));
 
-		return WebUtil.adjustViewName("/utl/sys/trm/TrsmrcvMntrngLogDetail");
+		return "/utl/sys/trm/TrsmrcvMntrngLogDetail";
 	}
 
 	/**
@@ -269,7 +271,7 @@ public class TrsmrcvMntrngController {
 	
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/utl/sys/trm/CntcListPopup");
+		return "/utl/sys/trm/CntcListPopup";
 	}
 
 }

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.ntr.domain.NoteRecptnVO;
 import aramframework.com.uss.ion.ntr.service.NoteRecptnService;
@@ -74,8 +73,8 @@ public class NoteRecptnController {
 				log.debug("sArrCheckListValue[0]>" + sArrCheckListValue[0]);
 				log.debug("sArrCheckListValue[1]>" + sArrCheckListValue[1]);
 
-				noteRecptnVO.setFrstRegisterId(loginVO.getUniqId());
-				noteRecptnVO.setLastUpdusrId(loginVO.getUniqId());
+				noteRecptnVO.setFrstRegisterId(loginVO.getUserId());
+				noteRecptnVO.setLastUpdusrId(loginVO.getUserId());
 				noteRecptnVO.setNoteId(sArrCheckListValue[0]);
 				noteRecptnVO.setNoteTrnsmitId(sArrCheckListValue[1]);
 				noteRecptnVO.setNoteRecptnId(sArrCheckListValue[2]);
@@ -91,8 +90,8 @@ public class NoteRecptnController {
 				for (int i = 0; i < sArrCheckList.length; i++) {
 					String[] sArrCheckListValue = sArrCheckList[i].split(",");
 
-					noteRecptnVO.setFrstRegisterId(loginVO.getUniqId());
-					noteRecptnVO.setLastUpdusrId(loginVO.getUniqId());
+					noteRecptnVO.setFrstRegisterId(loginVO.getUserId());
+					noteRecptnVO.setLastUpdusrId(loginVO.getUserId());
 					noteRecptnVO.setNoteId(sArrCheckListValue[0]);
 					noteRecptnVO.setNoteTrnsmitId(sArrCheckListValue[1]);
 					noteRecptnVO.setNoteRecptnId(sArrCheckListValue[2]);
@@ -105,7 +104,7 @@ public class NoteRecptnController {
 		}
 
 		// 수신자설정
-		noteRecptnVO.setRcverId(loginVO.getUniqId());
+		noteRecptnVO.setRcverId(loginVO.getUserId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
 		noteRecptnVO.fillPageInfo(paginationInfo);
@@ -118,7 +117,7 @@ public class NoteRecptnController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/ion/ntr/NoteRecptnList");
+		return "/uss/ion/ntr/NoteRecptnList";
 	}
 
 	/**
@@ -141,8 +140,8 @@ public class NoteRecptnController {
 
 		// 로그인 객체 선언/아이디설정
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		noteRecptnVO.setFrstRegisterId(loginVO.getUniqId());
-		noteRecptnVO.setLastUpdusrId(loginVO.getUniqId());
+		noteRecptnVO.setFrstRegisterId(loginVO.getUserId());
+		noteRecptnVO.setLastUpdusrId(loginVO.getUserId());
 
 		model.addAttribute("noteRecptn", noteRecptnService.selectNoteRecptnDetail(noteRecptnVO));
 
@@ -151,7 +150,7 @@ public class NoteRecptnController {
 
 		model.addAttribute("resultRecptnEmp", noteTrnsmitService.selectNoteTrnsmitCnfirm(noteTrnsmit));
 
-		return WebUtil.adjustViewName("/uss/ion/ntr/NoteRecptnDetail");
+		return "/uss/ion/ntr/NoteRecptnDetail";
 	}
 
 }

@@ -17,7 +17,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.dam.map.mat.domain.MapMaterialVO;
 import aramframework.com.dam.map.mat.service.MapMaterialService;
 import aramframework.com.dam.map.tea.domain.MapTeamVO;
@@ -70,7 +69,7 @@ public class KnoPersonalController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		knoPersonalVO.setFrstRegisterId(loginVO.getUniqId());
+		knoPersonalVO.setFrstRegisterId(loginVO.getUserId());
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
 		knoPersonalVO.fillPageInfo(paginationInfo);
@@ -83,7 +82,7 @@ public class KnoPersonalController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/dam/per/KnoPersonalList");
+		return "/dam/per/KnoPersonalList";
 	}
 
 	/**
@@ -99,7 +98,7 @@ public class KnoPersonalController {
 
 		model.addAttribute(knoPersonalService.selectKnoPersonal(knoPersonalVO));
 
-		return WebUtil.adjustViewName("/dam/per/KnoPersonalDetail");
+		return "/dam/per/KnoPersonalDetail";
 	}
 
 	/**
@@ -115,7 +114,7 @@ public class KnoPersonalController {
 
 		populateMapTeam(knoPersonalVO, model);
 
-		return WebUtil.adjustViewName("/dam/per/KnoPersonalRegist");
+		return "/dam/per/KnoPersonalRegist";
 	}
 
 	/**
@@ -137,7 +136,7 @@ public class KnoPersonalController {
 			
 			populateMapTeam(knoPersonalVO, model);
 
-			return WebUtil.adjustViewName("/dam/per/KnoPersonalRegist");
+			return "/dam/per/KnoPersonalRegist";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
@@ -145,12 +144,13 @@ public class KnoPersonalController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		knoPersonalVO.setFrstRegisterId(loginVO.getUniqId());
+		knoPersonalVO.setFrstRegisterId(loginVO.getUserId());
 
 		knoPersonalService.insertKnoPersonal(knoPersonalVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, knoPersonalVO, "/dam/per/listKnoPersonal.do");
+		model.addAttribute("redirectURL", "/dam/per/listKnoPersonal.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -190,7 +190,7 @@ public class KnoPersonalController {
 
 		model.addAttribute(knoPersonalService.selectKnoPersonal(knoPersonalVO));
 
-		return WebUtil.adjustViewName("/dam/per/KnoPersonalEdit");
+		return "/dam/per/KnoPersonalEdit";
 	}
 
 	/**
@@ -209,7 +209,7 @@ public class KnoPersonalController {
 
 		beanValidator.validate(knoPersonalVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/dam/per/KnoPersonalEdit");
+			return "/dam/per/KnoPersonalEdit";
 		}
 
 		// 첨부파일 관련 ID 생성 start....
@@ -218,12 +218,13 @@ public class KnoPersonalController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		knoPersonalVO.setLastUpdusrId(loginVO.getUniqId());
+		knoPersonalVO.setLastUpdusrId(loginVO.getUserId());
 
 		knoPersonalService.updateKnoPersonal(knoPersonalVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, knoPersonalVO, "/dam/per/listKnoPersonal.do");
+		model.addAttribute("redirectURL", "/dam/per/listKnoPersonal.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -240,7 +241,8 @@ public class KnoPersonalController {
 		knoPersonalService.deleteKnoPersonal(knoPersonalVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, knoPersonalVO, "/dam/per/listKnoPersonal.do");
+		model.addAttribute("redirectURL", "/dam/per/listKnoPersonal.do");
+	    return "cmm/redirect";
 	}
 
 }

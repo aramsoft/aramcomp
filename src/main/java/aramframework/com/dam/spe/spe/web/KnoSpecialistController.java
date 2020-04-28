@@ -15,7 +15,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.dam.map.mat.domain.MapMaterialVO;
 import aramframework.com.dam.map.mat.service.MapMaterialService;
 import aramframework.com.dam.map.tea.domain.MapTeamVO;
@@ -74,7 +73,7 @@ public class KnoSpecialistController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/dam/spe/spe/KnoSpecialistList");
+		return "/dam/spe/spe/KnoSpecialistList";
 	}
 
 	/**
@@ -90,7 +89,7 @@ public class KnoSpecialistController {
 
 		model.addAttribute(knoSpecialistService.selectKnoSpecialist(knoSpecialistVO));
 
-		return WebUtil.adjustViewName("/dam/spe/spe/KnoSpecialistDetail");
+		return "/dam/spe/spe/KnoSpecialistDetail";
 	}
 
 	/**
@@ -106,7 +105,7 @@ public class KnoSpecialistController {
 
 		populateMapTeam(knoSpecialistVO, model);
 		
-		return WebUtil.adjustViewName("/dam/spe/spe/KnoSpecialistRegist");
+		return "/dam/spe/spe/KnoSpecialistRegist";
 	}
 
 	/**
@@ -126,17 +125,18 @@ public class KnoSpecialistController {
 			
 			populateMapTeam(knoSpecialistVO, model);
 
-			return WebUtil.adjustViewName("/dam/spe/spe/KnoSpecialistRegist");
+			return "/dam/spe/spe/KnoSpecialistRegist";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		knoSpecialistVO.setFrstRegisterId(loginVO.getUniqId());
+		knoSpecialistVO.setFrstRegisterId(loginVO.getUserId());
 
 		knoSpecialistService.insertKnoSpecialist(knoSpecialistVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, knoSpecialistVO, "/dam/spe/spe/listKnoSpecialist.do");
+		model.addAttribute("redirectURL", "/dam/spe/spe/listKnoSpecialist.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -178,7 +178,7 @@ public class KnoSpecialistController {
 
 		model.addAttribute(knoSpecialistService.selectKnoSpecialist(knoSpecialistVO));
 
-		return WebUtil.adjustViewName("/dam/spe/spe/KnoSpecialistEdit");
+		return "/dam/spe/spe/KnoSpecialistEdit";
 	}
 
 	/**
@@ -195,17 +195,18 @@ public class KnoSpecialistController {
 
 		beanValidator.validate(knoSpecialistVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/dam/spe/spe/KnoSpecialistEdit");
+			return "/dam/spe/spe/KnoSpecialistEdit";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		knoSpecialistVO.setLastUpdusrId(loginVO.getUniqId());
+		knoSpecialistVO.setLastUpdusrId(loginVO.getUserId());
 
 		knoSpecialistService.updateKnoSpecialist(knoSpecialistVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, knoSpecialistVO, "/dam/spe/spe/listKnoSpecialist.do");
+		model.addAttribute("redirectURL", "/dam/spe/spe/listKnoSpecialist.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -222,7 +223,8 @@ public class KnoSpecialistController {
 		knoSpecialistService.deleteKnoSpecialist(knoSpecialistVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, knoSpecialistVO, "/dam/spe/spe/listKnoSpecialist.do");
+		model.addAttribute("redirectURL", "/dam/spe/spe/listKnoSpecialist.do");
+	    return "cmm/redirect";
 	}
 
 }

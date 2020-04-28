@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.sym.bak.domain.BackupResultVO;
 import aramframework.com.sym.sym.bak.service.BackupResultService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -54,7 +53,7 @@ public class BackupResultController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/sym/bak/BackupResultList");
+		return "sym/sym/bak/BackupResultList";
 	}
 
 	/**
@@ -71,7 +70,7 @@ public class BackupResultController {
 		
 		model.addAttribute(backupResultService.selectBackupResult(backupResultVO));
 
-		return WebUtil.adjustViewName("/sym/sym/bak/BackupResultDetail");
+		return "sym/sym/bak/BackupResultDetail";
 	}
 
 	/**
@@ -82,13 +81,15 @@ public class BackupResultController {
 	@RequestMapping("/sym/sym/bak/deleteBackupResult.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteBackupResult(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BackupResultVO backupResultVO, 
 			ModelMap model) {
 
 		backupResultService.deleteBackupResult(backupResultVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, backupResultVO, "/sym/sym/bak/listBackupResult.do");
+		model.addAttribute("redirectURL", "/sym/sym/bak/listBackupResult.do");
+	    return "cmm/redirect";
 	}
 
 }

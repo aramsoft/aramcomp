@@ -66,7 +66,7 @@ public class HttpMntrngController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/utl/sys/htm/HttpMntrngList");
+		return "/utl/sys/htm/HttpMntrngList";
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class HttpMntrngController {
 
 		model.addAttribute(httpMntrngService.selectHttpMntrngDetail(httpMntrngVO));
 
-		return WebUtil.adjustViewName("/utl/sys/htm/HttpMntrngDetail");
+		return "/utl/sys/htm/HttpMntrngDetail";
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class HttpMntrngController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute HttpMntrngVO httpMntrngVO) {
 
-		return WebUtil.adjustViewName("/utl/sys/htm/HttpMntrngRegist");
+		return "/utl/sys/htm/HttpMntrngRegist";
 	}
 
 	/**
@@ -115,17 +115,18 @@ public class HttpMntrngController {
 
 		beanValidator.validate(httpMntrngVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/utl/sys/htm/HttpMntrngRegist");
+			return "/utl/sys/htm/HttpMntrngRegist";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		httpMntrngVO.setFrstRegisterId(loginVO.getUniqId());
+		httpMntrngVO.setFrstRegisterId(loginVO.getUserId());
 
 		httpMntrngService.insertHttpMntrng(httpMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, httpMntrngVO, "/utl/sys/htm/listHttpMntrng.do");
+		model.addAttribute("redirectURL", "/utl/sys/htm/listHttpMntrng.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -142,7 +143,7 @@ public class HttpMntrngController {
 
 		model.addAttribute(httpMntrngService.selectHttpMntrngDetail(httpMntrngVO));
 
-		return WebUtil.adjustViewName("/utl/sys/htm/HttpMntrngEdit");
+		return "/utl/sys/htm/HttpMntrngEdit";
 	}
 
 	/**
@@ -160,17 +161,18 @@ public class HttpMntrngController {
 
 		beanValidator.validate(httpMntrngVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/utl/sys/htm/HttpMntrngEdit");
+			return "/utl/sys/htm/HttpMntrngEdit";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		httpMntrngVO.setLastUpdusrId(loginVO.getUniqId());
+		httpMntrngVO.setLastUpdusrId(loginVO.getUserId());
 
 		httpMntrngService.updateHttpMntrng(httpMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, httpMntrngVO, "/utl/sys/htm/listHttpMntrng.do");
+		model.addAttribute("redirectURL", "/utl/sys/htm/listHttpMntrng.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -188,7 +190,8 @@ public class HttpMntrngController {
 		httpMntrngService.deleteHttpMntrng(httpMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, httpMntrngVO, "/utl/sys/htm/listHttpMntrng.do");
+		model.addAttribute("redirectURL", "/utl/sys/htm/listHttpMntrng.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -204,7 +207,7 @@ public class HttpMntrngController {
 
 		model.addAttribute("httpSttusCd", HttpMntrngChecker.getPrductStatus(httpMntrngVO.getSiteUrl()));
 
-		return WebUtil.adjustViewName("/utl/sys/htm/HttpMntrngRegist");
+		return "/utl/sys/htm/HttpMntrngRegist";
 	}
 
 	/**
@@ -237,7 +240,7 @@ public class HttpMntrngController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/utl/sys/htm/HttpMntrngLogList");
+		return "/utl/sys/htm/HttpMntrngLogList";
 	}
 
 	// 조회시작시
@@ -261,7 +264,7 @@ public class HttpMntrngController {
 
 		model.addAttribute(httpMntrngService.selectHttpMntrngDetailLog(httpMntrngLogVO));
 
-		return WebUtil.adjustViewName("/utl/sys/htm/HttpMntrngLogDetail");
+		return "/utl/sys/htm/HttpMntrngLogDetail";
 	}
 
 }

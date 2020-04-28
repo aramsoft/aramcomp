@@ -70,8 +70,8 @@ public class NoteTrnsmitController {
 				log.debug("sArrCheckListValue[0]>" + sArrCheckListValue[0]);
 				log.debug("sArrCheckListValue[1]>" + sArrCheckListValue[1]);
 
-				noteTrnsmitVO.setFrstRegisterId(loginVO.getUniqId());
-				noteTrnsmitVO.setLastUpdusrId(loginVO.getUniqId());
+				noteTrnsmitVO.setFrstRegisterId(loginVO.getUserId());
+				noteTrnsmitVO.setLastUpdusrId(loginVO.getUserId());
 				noteTrnsmitVO.setNoteId(sArrCheckListValue[0]);
 				noteTrnsmitVO.setNoteTrnsmitId(sArrCheckListValue[1]);
 
@@ -86,8 +86,8 @@ public class NoteTrnsmitController {
 				for (int i = 0; i < sArrCheckList.length; i++) {
 					String[] sArrCheckListValue = sArrCheckList[i].split(",");
 
-					noteTrnsmitVO.setFrstRegisterId(loginVO.getUniqId());
-					noteTrnsmitVO.setLastUpdusrId(loginVO.getUniqId());
+					noteTrnsmitVO.setFrstRegisterId(loginVO.getUserId());
+					noteTrnsmitVO.setLastUpdusrId(loginVO.getUserId());
 					noteTrnsmitVO.setNoteId(sArrCheckListValue[0]);
 					noteTrnsmitVO.setNoteTrnsmitId(sArrCheckListValue[1]);
 
@@ -100,7 +100,7 @@ public class NoteTrnsmitController {
 		}
 
 		// 발신자설정
-		noteTrnsmitVO.setTrnsmiterId(loginVO.getUniqId());
+		noteTrnsmitVO.setTrnsmiterId(loginVO.getUserId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
 		noteTrnsmitVO.fillPageInfo(paginationInfo);
@@ -113,7 +113,7 @@ public class NoteTrnsmitController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/ion/nts/NoteTrnsmitList");
+		return "/uss/ion/nts/NoteTrnsmitList";
 	}
 
 	/**
@@ -133,8 +133,8 @@ public class NoteTrnsmitController {
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 
 		if (sCmd.equals("del")) {
-			noteTrnsmitVO.setFrstRegisterId(loginVO.getUniqId());
-			noteTrnsmitVO.setLastUpdusrId(loginVO.getUniqId());
+			noteTrnsmitVO.setFrstRegisterId(loginVO.getUserId());
+			noteTrnsmitVO.setLastUpdusrId(loginVO.getUserId());
 			// log.debug("EgovNoteTrnsmitDetail searchVO>"+searchVO);
 			noteTrnsmitService.deleteNoteTrnsmit(noteTrnsmitVO);
 
@@ -144,7 +144,7 @@ public class NoteTrnsmitController {
 		model.addAttribute("noteTrnsmit", noteTrnsmitService.selectNoteTrnsmitDetail(noteTrnsmitVO));
 		model.addAttribute("resultRecptnEmp", noteTrnsmitService.selectNoteTrnsmitCnfirm(noteTrnsmitVO));
 		
-		return WebUtil.adjustViewName("/uss/ion/nts/NoteTrnsmitDetail");
+		return "/uss/ion/nts/NoteTrnsmitDetail";
 	}
 
 	/**
@@ -166,7 +166,7 @@ public class NoteTrnsmitController {
 
 		model.addAttribute("resultList", noteTrnsmitService.selectNoteTrnsmitCnfirm(noteTrnsmitVO));
 
-		return WebUtil.adjustViewName("/uss/ion/nts/NoteTrnsmitCnfirm");
+		return "/uss/ion/nts/NoteTrnsmitCnfirm";
 	}
 
 }

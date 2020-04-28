@@ -15,7 +15,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.utl.sys.dbm.domain.DbMntrngLogVO;
 import aramframework.com.utl.sys.dbm.domain.DbMntrngVO;
@@ -67,7 +66,7 @@ public class DbMntrngController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/utl/sys/dbm/DbMntrngList");
+		return "/utl/sys/dbm/DbMntrngList";
 	}
 
 	/**
@@ -84,7 +83,7 @@ public class DbMntrngController {
 
 		model.addAttribute(dbMntrngService.selectDbMntrng(dbMntrngVO));
 
-		return WebUtil.adjustViewName("/utl/sys/dbm/DbMntrngDetail");
+		return "/utl/sys/dbm/DbMntrngDetail";
 	}
 
 	/**
@@ -101,7 +100,7 @@ public class DbMntrngController {
 		// DBMS종류코드목록을 코드정보로부터 조회
 		cmmUseService.populateCmmCodeList("COM048", "COM048_dbmsKind");
 
-		return WebUtil.adjustViewName("/utl/sys/dbm/DbMntrngRegist");
+		return "/utl/sys/dbm/DbMntrngRegist";
 	}
 
 	/**
@@ -120,17 +119,18 @@ public class DbMntrngController {
 		beanValidator.validate(dbMntrngVO, bindingResult);
 		checkDuplication(dbMntrngVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/utl/sys/dbm/DbMntrngRegist");
+			return "/utl/sys/dbm/DbMntrngRegist";
 		}
 		
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		dbMntrngVO.setFrstRegisterId(loginVO.getUniqId());
+		dbMntrngVO.setFrstRegisterId(loginVO.getUserId());
 
 		dbMntrngService.insertDbMntrng(dbMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, dbMntrngVO, "/utl/sys/dbm/listDbMntrng.do");
+		model.addAttribute("redirectURL", "/utl/sys/dbm/listDbMntrng.do");
+	    return "cmm/redirect";
 	}
 
 	private void checkDuplication(DbMntrngVO dbMntrngVO, Errors errors) {
@@ -167,7 +167,7 @@ public class DbMntrngController {
 		// DBMS종류코드목록을 코드정보로부터 조회
 		cmmUseService.populateCmmCodeList("COM048", "COM048_dbmsKind");
 
-		return WebUtil.adjustViewName("/utl/sys/dbm/DbMntrngEdit");
+		return "/utl/sys/dbm/DbMntrngEdit";
 	}
 
 	/**
@@ -186,17 +186,18 @@ public class DbMntrngController {
 
 		beanValidator.validate(dbMntrngVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/utl/sys/dbm/DbMntrngEdit");
+			return "/utl/sys/dbm/DbMntrngEdit";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		dbMntrngVO.setLastUpdusrId(loginVO.getUniqId());
+		dbMntrngVO.setLastUpdusrId(loginVO.getUserId());
 
 		dbMntrngService.updateDbMntrng(dbMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, dbMntrngVO, "/utl/sys/dbm/listDbMntrng.do");
+		model.addAttribute("redirectURL", "/utl/sys/dbm/listDbMntrng.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -214,7 +215,8 @@ public class DbMntrngController {
 		dbMntrngService.deleteDbMntrng(dbMntrngVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, dbMntrngVO, "/utl/sys/dbm/listDbMntrng.do");
+		model.addAttribute("redirectURL", "/utl/sys/dbm/listDbMntrng.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -239,7 +241,7 @@ public class DbMntrngController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/utl/sys/dbm/DbMntrngLogList");
+		return "/utl/sys/dbm/DbMntrngLogList";
 	}
 
 	/**
@@ -257,7 +259,7 @@ public class DbMntrngController {
 
 		model.addAttribute(dbMntrngService.selectDbMntrngLog(dbMntrngLogVO));
 
-		return WebUtil.adjustViewName("/utl/sys/dbm/DbMntrngLogDetail");
+		return "/utl/sys/dbm/DbMntrngLogDetail";
 	}
 
 }

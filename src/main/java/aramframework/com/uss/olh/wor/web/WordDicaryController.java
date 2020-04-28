@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.olh.wor.domain.WordDicaryVO;
 import aramframework.com.uss.olh.wor.service.WordDicaryService;
@@ -57,7 +56,7 @@ public class WordDicaryController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/olh/wor/WordDicaryList");
+		return "/uss/olh/wor/WordDicaryList";
 	}
 
 	/**
@@ -73,7 +72,7 @@ public class WordDicaryController {
 
 		model.addAttribute(wordDicaryService.selectWordDicaryDetail(wordDicaryVO));
 
-		return WebUtil.adjustViewName("/uss/olh/wor/WordDicaryDetail");
+		return "/uss/olh/wor/WordDicaryDetail";
 	}
 
 	/**
@@ -87,7 +86,7 @@ public class WordDicaryController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute WordDicaryVO wordDicaryVO) {
 
-		return WebUtil.adjustViewName("/uss/olh/wor/WordDicaryRegist");
+		return "/uss/olh/wor/WordDicaryRegist";
 	}
 
 	/**
@@ -105,17 +104,18 @@ public class WordDicaryController {
 
 		beanValidator.validate(wordDicaryVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olh/wor/WordDicaryRegist");
+			return "/uss/olh/wor/WordDicaryRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		wordDicaryVO.setFrstRegisterId(loginVO.getUniqId()); // 최초등록자ID
+		wordDicaryVO.setFrstRegisterId(loginVO.getUserId()); // 최초등록자ID
 
 		wordDicaryService.insertWordDicary(wordDicaryVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, wordDicaryVO, "/uss/olh/wor/listWordDicary.do");
+		model.addAttribute("redirectURL", "/uss/olh/wor/listWordDicary.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -132,7 +132,7 @@ public class WordDicaryController {
 
 		model.addAttribute(wordDicaryService.selectWordDicaryDetail(wordDicaryVO));
 
-		return WebUtil.adjustViewName("/uss/olh/wor/WordDicaryEdit");
+		return "/uss/olh/wor/WordDicaryEdit";
 	}
 
 	/**
@@ -151,17 +151,18 @@ public class WordDicaryController {
 		// Validation
 		beanValidator.validate(wordDicaryVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olh/wor/WordDicaryEdit");
+			return "/uss/olh/wor/WordDicaryEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		wordDicaryVO.setLastUpdusrId(loginVO.getUniqId()); // 최종수정자ID
+		wordDicaryVO.setLastUpdusrId(loginVO.getUserId()); // 최종수정자ID
 
 		wordDicaryService.updateWordDicary(wordDicaryVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, wordDicaryVO, "/uss/olh/wor/listWordDicary.do");
+		model.addAttribute("redirectURL", "/uss/olh/wor/listWordDicary.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -179,7 +180,8 @@ public class WordDicaryController {
 		wordDicaryService.deleteWordDicary(wordDicaryVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, wordDicaryVO, "/uss/olh/wor/listWordDicary.do");
+		model.addAttribute("redirectURL", "/uss/olh/wor/listWordDicary.do");
+	    return "cmm/redirect";
 	}
 
 }

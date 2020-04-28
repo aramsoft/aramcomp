@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
+import aramframework.com.cop.ems.domain.SndngMailVO;
 import aramframework.com.cmm.config.security.SimpleUrlAuthenticationSuccessHandler;
 import aramframework.com.cmm.constant.Globals;
 import aramframework.com.cmm.service.CmmUseService;
@@ -47,6 +48,10 @@ public class LoginController {
 
 	@Autowired
 	private CmmUseService cmmUseService;
+
+	/** EgovSndngMailService */
+//	@Autowired
+//	private SndngMailService sndngMailService;
 
 	@Autowired
 	SessionRegistry sessionRegistry;
@@ -91,13 +96,7 @@ public class LoginController {
         	requestUrl = request.getRequestURI();
         }
         
-		// 접속 기기에 따라서 모바일용/일반웹용 처음 페이지를 다르게 호출한다.
-		if( requestUrl.startsWith("http://m.aramsoft.co.kr") 
-			|| 	requestUrl.indexOf(".mdo") != -1 ) {
-    		return "aramframework/mbl/uat/uia/LoginUsr";
-    	} else {
-        	return "aramframework/com/uat/uia/LoginUsr";
-    	}
+       	return "uat/uia/LoginUsr";
 	}
 
 	/**
@@ -111,7 +110,7 @@ public class LoginController {
 			ModelMap model) {
 
 		LOG.debug("execute actionLogin !!!" );
-		if( loginVO.getId() == null || loginVO.getId().equals("") ) {
+		if( loginVO.getUserId() == null || loginVO.getUserId().equals("") ) {
 			throw new RuntimeException("userId not found");
 		}
 		if( loginVO.getPassword() == null || loginVO.getPassword().equals("") ) {
@@ -120,11 +119,11 @@ public class LoginController {
 		
 		// 1. 일반 로그인 처리
 		LoginVO resultVO = loginService.actionLogin(loginVO);
-		if (resultVO != null && resultVO.getId() != null && !resultVO.getId().equals("")) {
+		if (resultVO != null && resultVO.getUserId() != null && !resultVO.getUserId().equals("")) {
 			return "forward:/uat/uia/actionMain.do";
 		} else {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.login"));
-			return "aramframework/com/uat/uia/LoginUsr";
+			return "uat/uia/LoginUsr";
 		}
 	}
 
@@ -143,7 +142,7 @@ public class LoginController {
 		Boolean isAuthenticated = UserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.login"));
-			return "aramframework/com/uat/uia/LoginUsr";
+			return "uat/uia/LoginUsr";
 		}
 		
 		String requestUrl = null;
@@ -209,7 +208,7 @@ public class LoginController {
 		// 1. 비밀번호 힌트 공통코드 조회
 		cmmUseService.populateCmmCodeList("COM022", "COM022_passwordHint");
 
-		return "aramframework/com/uat/uia/IdPasswordSearch";
+		return "uat/uia/IdPasswordSearch";
 	}
 
 	/**
@@ -222,23 +221,16 @@ public class LoginController {
 			@ModelAttribute LoginVO loginVO, 
 			ModelMap model) {
 
-		if (loginVO == null 
-				|| loginVO.getName() == null || loginVO.getName().equals("") 
-				&& loginVO.getEmail() == null || loginVO.getEmail().equals("")
-				&& loginVO.getUserSe() == null || loginVO.getUserSe().equals("")) {
-			return "aramframework/com/cmm/egovError";
-		}
-
 		// 1. 아이디 찾기
 		loginVO.setName(loginVO.getName().replaceAll(" ", ""));
 		LoginVO resultVO = loginService.searchId(loginVO);
 
-		if (resultVO != null && resultVO.getId() != null && !resultVO.getId().equals("")) {
-			model.addAttribute("resultInfo", "아이디는 " + resultVO.getId() + " 입니다.");
+		if (resultVO != null && resultVO.getUserId() != null && !resultVO.getUserId().equals("")) {
+			model.addAttribute("resultInfo", "아이디는 " + resultVO.getUserId() + " 입니다.");
 		} else {
 			model.addAttribute("resultInfo", MessageHelper.getMessage("fail.common.idsearch"));
 		}
-		return "aramframework/com/uat/uia/IdPasswordResult";
+		return "uat/uia/IdPasswordResult";
 	}
 
 	/**
@@ -251,27 +243,28 @@ public class LoginController {
 			@ModelAttribute LoginVO loginVO, 
 			ModelMap model) {
 
-		if (loginVO == null 
-				|| loginVO.getId() == null 
-				|| loginVO.getId().equals("") 
-				&& loginVO.getName() == null || loginVO.getName().equals("")
-				&& loginVO.getEmail() == null || loginVO.getEmail().equals("") 
-				&& loginVO.getPasswordHint() == null || loginVO.getPasswordHint().equals("")
-				&& loginVO.getPasswordCnsr() == null || loginVO.getPasswordCnsr().equals("") 
-				&& loginVO.getUserSe() == null || loginVO.getUserSe().equals("")) {
-			return "aramframework/com/cmm/egovError";
-		}
-
 		// 1. 비밀번호 찾기
-		boolean result = loginService.searchPassword(loginVO);
+		String newpasswd = loginService.searchPassword(loginVO);
+
 
 		// 2. 결과 리턴
-		if (result) {
-			model.addAttribute("resultInfo", "임시 비밀번호를 발송하였습니다.");
+		if (!"".equals(newpasswd) ) {
+			// 2. 임시 비밀번호를 이메일 발송한다.(메일연동솔루션 활용)
+			SndngMailVO sndngMailVO = new SndngMailVO();
+			sndngMailVO.setDsptchPerson("admin");
+			sndngMailVO.setRecptnPerson(loginVO.getEmail());
+			sndngMailVO.setSj("[ARAM] 임시 비밀번호를 발송했습니다.");
+			sndngMailVO.setEmailCn("임시 비밀번호는 " + newpasswd + " 입니다. 로그인후 수정하여 주시기 바랍니다.");
+			sndngMailVO.setAtchFileId("");
+			// 메일 전송
+//			sndngMailService.insertSndngMail(sndngMailVO);
+//			sndngMailService.sndngMail(sndngMailVO);
+//			model.addAttribute("resultInfo", "임시 비밀번호를 등록하신 메일로 발송하였습니다.");
+			model.addAttribute("resultInfo", "임시 비밀번호는" + newpasswd + " 입니다. 로그인후 수정하여 주시기 바랍니다.");
 		} else {
 			model.addAttribute("resultInfo", MessageHelper.getMessage("fail.common.pwsearch"));
 		}
-		return "aramframework/com/uat/uia/IdPasswordResult";
+		return "uat/uia/IdPasswordResult";
 	}
 
 	/**
@@ -288,7 +281,7 @@ public class LoginController {
 			}
 		}
 		model.addAttribute("activeUsers", lastActivityDates);
-		return "aramframework/com/uat/uia/ListActiveUsers";
+		return "uat/uia/ListActiveUsers";
 	}
 	
 }

@@ -1,6 +1,5 @@
 package aramframework.com.cop.cmy.service;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -13,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.constant.CacheKey;
+import aramframework.com.cmm.domain.MenuVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cop.bbs.domain.BoardMasterVO;
 import aramframework.com.cop.bbs.domain.BoardUseInfVO;
@@ -185,13 +185,12 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 
 		CommunityMenuVO communityMenuVO = new CommunityMenuVO();
 		communityMenuVO.setTrgetId(communityVO.getCmmntyId());
-		communityMenuVO.setMenuNo(100000);
-		communityMenuVO.setMenuNm("게시판");
-		communityMenuVO.setUseAt("Y");
-		communityMenuVO.setMgrAt("N");
+		communityMenuVO.setMenuNm("board");
+		communityMenuVO.setMenuKnm("게시판");
 		communityMenuVO.setDirectUrl("/cop/cmy/CmmntyMainContents.do");
 		communityMenuVO.setTopMenuAt("Y");
-		communityMenuVO.setMenuAlias("100000");
+		communityMenuVO.setMgrAt("N");
+		communityMenuVO.setUseAt("Y");
 		cmyMenuManageMapper.insertMenuManage(communityMenuVO);
 		
 		List<BoardMasterVO> result = makeBdMstrListforCmmnty(communityVO);
@@ -206,44 +205,7 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 
 			@SuppressWarnings("unused")
 			String bbsId = bbsMasterService.insertBBSMastetInf(boardMasterVO);
-
-			/*
-			 * //게시판 이용정보 생성 
-			 * bdUseInf = new BoardUseInf();
-			 * bdUseInf.setBbsId(_bbsId);
-			 * bdUseInf.setTrgetId(cmmnty.getCmmntyId());
-			 * bdUseInf.setRegistSeCode("REGC06");  	// 커뮤니티 게시판 등록
-			 * bdUseInf.setUseAt("Y");
-			 * //커뮤니티 생성 시 기본 게시판을 이용정보로 등록하는 것이므로 생성시 사용으로 등록
-			 * bdUseInf.setFrstRegisterId(cmmnty.getFrstRegisterId());
-			 * 
-			 * bbsUseService.insertBBSUseInf(bdUseInf); //
-			 */
-
-			/*
-			 * 이미 bbsAttrbService.insertBBSMastetInf() 부분에서 REGC07을 등록함...
-			 * bdUseInf = new BoardUseInf(); 
-			 * bdUseInf.setBbsId(_bbsId);
-			 * bdUseInf.setTrgetId(cmmnty.getEmplyrId());
-			 * bdUseInf.setRegistSeCode("REGC07"); 		// 게시판 사용자 등록
-			 * bdUseInf.setUseAt("Y");
-			 * //커뮤니티 생성 시 생성된 기본 게시판을 최초등록 운영자에게 부여한다
-			 * bdUseInf.setFrstRegisterId(cmmnty.getFrstRegisterId());
-			 * 
-			 * bbsUseService.insertBBSUseInf(bdUseInf); //
-			 */
 		}
-	}
-
-	/**
-	 * 커뮤니티에 대한 게시판 사용정보를 등록한다.
-	 * 
-	 * @param boardUseInfVO
-	 */
-	public void insertCommunityBBSUseInf(BoardUseInfVO boardUseInfVO) {
-		// cmmntyDAO.insertCommunityBBSUseInf(bdUseInf);
-		// 커뮤니티에 게시판을 하나 추가하게 되면 - _- 해당 게시판이 등록된 커뮤니티의
-		// 모든 소속사용자에게 사용 권한을 줘야하나 - _-? 일단 그렇게 진행
 	}
 
 	/**
@@ -375,34 +337,6 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 		communityManageMapper.deleteCommunityInf(communityVO);
 	}
 	
-	// 메뉴 정보
-	/**
-	 * 커뮤니티에 대한 일반 메뉴 정보를 조회한다.
-	 * 
-	 * @param communityVO
-	 */
-	public List<EgovMap> selectCommunityTopMenuInfs(CommunityVO communityVO) {
-		return communityManageMapper.selectCommunityTopMenuInfs(communityVO);
-	}
-
-	/**
-	 * 커뮤니티에 대한 관리자 메뉴 정보를 조회한다.
-	 * 
-	 * @param communityVO
-	 */
-	public List<EgovMap> selectCommunityMgrMenuInfs(CommunityVO communityVO) {
-		return communityManageMapper.selectCommunityMgrMenuInfs(communityVO);
-	}
-
-	/**
-	 * 커뮤니티에 대한 서브  메뉴 정보를 조회한다.
-	 * 
-	 * @param communityMenuVO
-	 */
-	public List<EgovMap> selectCommunitySubMenuInfs(CommunityMenuVO communityMenuVO) {
-		return communityManageMapper.selectCommunitySubMenuInfs(communityMenuVO);
-	}
-
 	// 사용자 정보
 
 	/**
@@ -460,23 +394,6 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 		int cnt = communityManageMapper.checkExistUser(communityUserVO);
 		if (cnt == 0) {
 			communityManageMapper.insertCommunityUserInf(communityUserVO);
-/*			
-			List<CommunityVO> tmpList = cmmntyDAO.selectCommunityBBSUseInf(communityVO);
-			
-			BoardUseInfVO boardUseInfVO = new BoardUseInfVO();;
-
-			Iterator<CommunityVO> iter = tmpList.iterator();
-			while (iter.hasNext()) {
-
-				boardUseInfVO.setFrstRegisterId(communityUserVO.getFrstRegisterId());
-				boardUseInfVO.setBbsId(((CommunityVO) iter.next()).getBbsId());
-				boardUseInfVO.setTrgetId(communityUserVO.getEmplyrId());
-				boardUseInfVO.setRegistSeCode("REGC07");	// 게시판 사용자 등록
-				boardUseInfVO.setUseAt("Y");
-
-				bbsUseService.insertBBSUseInf(boardUseInfVO);
-			}
-*/
 		} else {
 			retVal = "EXIST";
 		}
@@ -511,6 +428,16 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 		communityManageMapper.eraseCommunityUserInf(communityUserVO);
 	}
 	
+	// 메뉴 정보
+	/**
+	 * 커뮤니티에 대한 서브  메뉴 정보를 조회한다.
+	 * 
+	 * @param communityMenuVO
+	 */
+	public List<MenuVO> selectCommunitySubMenuInfs(CommunityMenuVO communityMenuVO) {
+		return communityManageMapper.selectCommunitySubMenuInfs(communityMenuVO);
+	}
+
 	/**
 	 * 캐쉬로부터 커뮤니티 정보 및 메뉴정보를 가져온다.
 	 * 
@@ -518,7 +445,7 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 	 * @param menuId
 	 */
 	@SuppressWarnings("unchecked")
-	public CommunityVO getCommunityInfo(String cmmntyId, String menuId) {
+	public CommunityVO getCommunityLayoutInfo(String cmmntyId, String menuPos) {
 		HashMap<String, Object> cacheMap = null;
 		
 		cacheMap = (HashMap<String, Object>) cacheDictionary.get(CacheKey.CMY_PREFIX + cmmntyId);
@@ -543,16 +470,16 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 		// --------------------------------
 		// 메뉴 목록 정보
 		// --------------------------------
-		List<EgovMap> topMenuList = communityVO.getTopMenuList();
+		List<MenuVO> topMenuList = communityVO.getTopMenuList();
         if( topMenuList == null ) {
-    		topMenuList = selectCommunityTopMenuInfs(communityVO);
+    		topMenuList = communityManageMapper.selectCommunityTopMenuInfs(communityVO);
     		
     		communityVO.setTopMenuList(topMenuList);
         }
 
-		List<EgovMap> mgrMenuList = communityVO.getMgrMenuList();
+		List<MenuVO> mgrMenuList = communityVO.getMgrMenuList();
         if( mgrMenuList == null ) {
-        	mgrMenuList = selectCommunityMgrMenuInfs(communityVO);
+        	mgrMenuList = communityManageMapper.selectCommunityMgrMenuInfs(communityVO);
 
         	communityVO.setMgrMenuList(mgrMenuList);
         }
@@ -561,20 +488,25 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
         
 		CommunityMenuVO communityMenuVO = new CommunityMenuVO();
 		communityMenuVO.setTrgetId(communityVO.getCmmntyId());
-		if( "".equals(menuId) ) {
-			communityMenuVO.setMenuNo(((BigDecimal)topMenuList.get(0).get("menuNo")).intValue());
+		if( "".equals(menuPos) ) {
+			communityMenuVO.setMenuPos(topMenuList.get(0).getMenuPos().substring(0,2));
 		} else {
-			communityMenuVO.setMenuNo(Integer.parseInt(menuId.substring(0,1)+"00000"));
+			communityMenuVO.setMenuPos(menuPos.substring(0,2));
 		}
 		
-		String subMenuKey = CacheKey.CMY_SUBLIST+communityMenuVO.getMenuNo();
-		List<EgovMap> subMenuList = (List<EgovMap>) cacheMap.get(subMenuKey);
+		String subMenuKey = CacheKey.CMY_SUBMENU+communityMenuVO.getMenuPos()+"0000";
+		List<MenuVO> subMenuList = (List<MenuVO>) cacheMap.get(subMenuKey);
         if( subMenuList == null ) {
-    		subMenuList = selectCommunitySubMenuInfs(communityMenuVO);
+    		subMenuList = this.selectCommunitySubMenuInfs(communityMenuVO);
     		cacheMap.put(subMenuKey, subMenuList);
         }
+		// submenu는 cache에서 읽어와서 항상 교체함.
     	communityVO.setSubMenuList(subMenuList);
 
+		MenuVO menuVO = this.getMenuInfo(communityVO, menuPos);
+		if( menuVO != null ) {
+			communityVO.setCurMenuNm(menuVO.getMenuNm());
+		}	
 		return communityVO;
 	}
 
@@ -584,7 +516,7 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 	 * @param cmmntyId
 	 */
 	@SuppressWarnings("unchecked")
-	public CommunityVO getCommunityInfo(String cmmntyId) {
+	public CommunityVO getCommunityOnlyInfo(String cmmntyId) {
 		HashMap<String, Object> cacheMap = null;
 		
 		cacheMap = (HashMap<String, Object>) cacheDictionary.get(CacheKey.CMY_PREFIX + cmmntyId);
@@ -609,6 +541,49 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 	}
 
 	/**
+	 * 캐쉬로부터 메뉴 정보 를 가져온다.
+	 * 
+	 * @param cmmntyId
+	 */
+	public MenuVO getMenuInfo(CommunityVO communityVO, String menuPos) {
+		
+		if( menuPos == null || menuPos.equals("") ) return null;
+		
+		// check topMenuList
+		List<MenuVO> menuList = communityVO.getTopMenuList();
+		MenuVO menuVO = findMenu(menuPos, menuList);
+		if( menuVO != null ) {
+			return menuVO;
+		} 
+		
+		// check mgrMenuList
+		menuList = communityVO.getMgrMenuList();
+		menuVO = findMenu(menuPos, menuList);
+		if( menuVO != null ) {
+			return menuVO;
+		} 
+
+		// check subMenuList
+		menuList = communityVO.getSubMenuList();
+		menuVO = findMenu(menuPos, menuList);
+		if(  menuVO != null ) {
+			return menuVO;
+		} 
+		
+		return null;
+	}
+	
+	private MenuVO findMenu(String menuPos, List<MenuVO> menuList) {
+
+		for (MenuVO menuVO : menuList) {
+			if( menuPos.equals(menuVO.getMenuPos())) {
+				return menuVO;
+			}
+		}
+		return null;
+	}
+	
+	/**
 	 * 캐쉬로부터 커뮤니티 사용자정보를 가져온다.
 	 * 
 	 * @param cmmntyId
@@ -622,7 +597,7 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 			LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 			
 			communityUserVO.setCmmntyId(cmmntyId);
-			communityUserVO.setEmplyrId(loginVO.getUniqId());
+			communityUserVO.setEmplyrId(loginVO.getUserId());
 			
 			String result = checkCommunityUserInf(communityUserVO);
 			if( result.equals("EXIST")) {

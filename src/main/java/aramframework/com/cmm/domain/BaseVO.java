@@ -13,9 +13,9 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  */
 public class BaseVO extends SearchVO {
 
-	// rest 관련
-	// path id for rest
-	protected String pathId = "";
+	// 공통 변수 
+	/** pathId */
+	private String pathId = "";
 	
 	// DB 공통 field
 	/** 최초등록자 아이디 */
@@ -50,11 +50,10 @@ public class BaseVO extends SearchVO {
 	 * 
 	 * @param 	pathId	String
 	 */
-/*
 	public void setPathId(String pathId) {
 		this.pathId = pathId;
 	}
-*/
+
 	/**
 	 * frstRegisterId attribute를 리턴한다.
 	 * 

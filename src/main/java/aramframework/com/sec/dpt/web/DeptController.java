@@ -13,7 +13,6 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sec.dpt.domain.DeptVO;
 import aramframework.com.sec.dpt.service.DeptService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -43,6 +42,7 @@ public class DeptController {
 	@RequestMapping(value = "/sec/dpt/listDept.do")
 	@Secured("ROLE_ADMIN")
 	public String listDept(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptVO deptVO, 
 			ModelMap model) {
 
@@ -57,7 +57,7 @@ public class DeptController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sec/dpt/DeptList");
+		return "sec/dpt/DeptList";
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class DeptController {
 			@ModelAttribute DeptVO deptVO, 
 			ModelMap model) {
 
-		return WebUtil.adjustViewName("/sec/dpt/DeptRegist");
+		return "sec/dpt/DeptRegist";
 	}
 
 	/**
@@ -90,13 +90,14 @@ public class DeptController {
 
 		beanValidator.validate(deptVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sec/dpt/DeptRegist");
+			return "sec/dpt/DeptRegist";
 		} 
 		
 		deptService.insertDept(deptVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, deptVO, "/sec/dpt/listDept.do");
+		model.addAttribute("redirectURL", "/sec/dpt/listDept.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -113,7 +114,7 @@ public class DeptController {
 
 		model.addAttribute(deptService.selectDept(deptVO));
 		
-		return WebUtil.adjustViewName("/sec/dpt/DeptEdit");
+		return "sec/dpt/DeptEdit";
 	}
 
 	/**
@@ -131,13 +132,14 @@ public class DeptController {
 
 		beanValidator.validate(deptVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sec/dpt/DeptEdit");
+			return "sec/dpt/DeptEdit";
 		} 
 		
 		deptService.updateDept(deptVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, deptVO, "/sec/dpt/listDept.do");
+		model.addAttribute("redirectURL", "/sec/dpt/listDept.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -148,13 +150,15 @@ public class DeptController {
 	@RequestMapping(value = "/sec/dpt/deleteDept.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteDept(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptVO deptVO, 
 			ModelMap model) {
 
 		deptService.deleteDept(deptVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, deptVO, "/sec/dpt/listDept.do");
+		model.addAttribute("redirectURL", "/sec/dpt/listDept.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -165,14 +169,15 @@ public class DeptController {
 	@RequestMapping(value = "/sec/dpt/deleteListDept.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteListDept(
-			@ModelAttribute DeptVO deptVO, 
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@RequestParam String orgnztIds, 
 			ModelMap model) {
 
 		deptService.deleteDepts(orgnztIds);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, deptVO, "/sec/dpt/listDept.do");
+		model.addAttribute("redirectURL", "/sec/dpt/listDept.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -196,7 +201,7 @@ public class DeptController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return WebUtil.adjustViewName("/sec/dpt/DeptSearchPopup");
+		return "sec/dpt/DeptSearchPopup";
 	}
 	
 }

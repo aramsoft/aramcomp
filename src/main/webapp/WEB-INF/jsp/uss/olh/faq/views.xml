@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="uss/olh/faq/FaqList" extends="default">
+    <put-attribute name="title" value="FAQ 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/uss/olh/faq/FaqList.jsp" />
+  </definition>
+  
+  <definition name="uss/olh/faq/FaqDetail" extends="default">
+    <put-attribute name="title" value="FAQ 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/uss/olh/faq/FaqDetail.jsp" />
+  </definition>
+  
+  <definition name="uss/olh/faq/FaqRegist" extends="default">
+    <put-attribute name="title" value="FAQ 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/uss/olh/faq/FaqRegist.jsp" />
+  </definition>
+  
+  <definition name="uss/olh/faq/FaqEdit" extends="default">
+    <put-attribute name="title" value="FAQ 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/uss/olh/faq/FaqEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

@@ -10,8 +10,6 @@ import aramframework.com.uss.umt.domain.EntrprsManageVO;
 import aramframework.com.uss.umt.domain.StplatVO;
 import aramframework.com.utl.sim.service.FileScrty;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.fdl.cmmn.exception.FdlException;
-import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 
 /**
  * 기업회원관리에 관한 비지니스클래스를 정의한다.
@@ -26,10 +24,6 @@ public class EntrprsManageService extends EgovAbstractServiceImpl {
 	@Autowired
 	private EntrprsManageMapper entrprsManageMapper;
 	
-	/** egovUsrCnfrmIdGnrService */
-	@Autowired
-	private EgovIdGnrService usrCnfrmIdGnrService; 
-
 	/**
 	 * 기 등록된기업 회원 중 검색조건에 맞는 회원들의 정보를 데이터베이스에서 읽어와 화면에 출력
 	 * 
@@ -63,12 +57,6 @@ public class EntrprsManageService extends EgovAbstractServiceImpl {
 	 * @param entrprsManageVO
 	 */
 	public void insertEntrprsMber(EntrprsManageVO entrprsManageVO) {
-		// 고유아이디 셋팅
-		try {
-			entrprsManageVO.setUniqId(usrCnfrmIdGnrService.getNextStringId());
-		} catch (FdlException e) {
-			throw new RuntimeException(e);
-		}
 		// 패스워드 암호화
 		String pass;
 		try {
@@ -104,7 +92,7 @@ public class EntrprsManageService extends EgovAbstractServiceImpl {
 	 * @param checkedIdForDel
 	 */
 	public void deleteEntrprsMber(EntrprsManageVO entrprsManageVO) {
-		entrprsManageMapper.deleteEntrprsMber(entrprsManageVO.getUniqId());
+		entrprsManageMapper.deleteEntrprsMber(entrprsManageVO.getEntrprsmberId());
 	}
 
 	/**

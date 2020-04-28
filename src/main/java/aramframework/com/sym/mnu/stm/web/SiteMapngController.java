@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.mnu.stm.domain.SiteMapngVO;
 import aramframework.com.sym.mnu.stm.service.SiteMapngService;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -39,17 +38,17 @@ public class SiteMapngController {
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 
 		SearchVO searchVO = new SearchVO();
-		searchVO.setSearchKeyword(loginVO.getUniqId());
+		searchVO.setSearchKeyword(loginVO.getUserId());
 		SiteMapngVO siteMapngVO = siteMapngService.selectSiteMapng(searchVO);
 
 		if (siteMapngVO == null) {
 			model.addAttribute("message", "사이트맵을 생성해 주세요.");
-			return WebUtil.adjustViewName("/sym/mnu/stm/SiteMapng");
+			return "/sym/mnu/stm/SiteMapng";
 		}
 
 		model.addAttribute("siteMapngVO", siteMapngVO);
 
-		return WebUtil.adjustViewName("/sym/mnu/stm/SiteMapng");
+		return "/sym/mnu/stm/SiteMapng";
 	}
 	
 }

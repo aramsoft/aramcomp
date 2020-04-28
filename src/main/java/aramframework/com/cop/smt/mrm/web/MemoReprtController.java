@@ -16,7 +16,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.smt.mrm.domain.MemoReprtVO;
 import aramframework.com.cop.smt.mrm.service.MemoReprtService;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -65,7 +64,7 @@ public class MemoReprtController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/smt/mrm/ReportrListPopup");
+		return "/cop/smt/mrm/ReportrListPopup";
 	}
 
 	/**
@@ -82,7 +81,7 @@ public class MemoReprtController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		memoReprtVO.setSearchId(loginVO.getUniqId());
+		memoReprtVO.setSearchId(loginVO.getUserId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
 		memoReprtVO.fillPageInfo(paginationInfo);
@@ -95,7 +94,7 @@ public class MemoReprtController {
 	
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/smt/mrm/MemoReprtList");
+		return "/cop/smt/mrm/MemoReprtList";
 	}
 
 	/**
@@ -114,14 +113,14 @@ public class MemoReprtController {
 		
 		// 1. 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		model.addAttribute("uniqId", loginVO.getUniqId());
+		model.addAttribute("uniqId", loginVO.getUserId());
 
-		if (loginVO.getUniqId().equals(memoReprtVO.getReportrId())) {
+		if (loginVO.getUserId().equals(memoReprtVO.getReportrId())) {
 			memoReprtService.readMemoReprt(memoReprtVO);	// notice read status
 		}
 		model.addAttribute(memoReprtVO);
 		
-		return WebUtil.adjustViewName("/cop/smt/mrm/MemoReprtDetail");
+		return "/cop/smt/mrm/MemoReprtDetail";
 	}
 
 	/**
@@ -140,11 +139,11 @@ public class MemoReprtController {
 
 		java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyyMMdd", java.util.Locale.KOREA);
 		memoReprtVO.setReprtDe(formatter.format(new java.util.Date()));
-		memoReprtVO.setWrterId(loginVO.getUniqId());
+		memoReprtVO.setWrterId(loginVO.getUserId());
 		memoReprtVO.setWrterNm(loginVO.getName());
-		memoReprtVO.setWrterClsfNm(memoReprtService.selectWrterClsfNm(loginVO.getUniqId()));
+		memoReprtVO.setWrterClsfNm(memoReprtService.selectWrterClsfNm(loginVO.getUserId()));
 
-		return WebUtil.adjustViewName("/cop/smt/mrm/MemoReprtRegist");
+		return "/cop/smt/mrm/MemoReprtRegist";
 	}
 
 	/**
@@ -165,7 +164,7 @@ public class MemoReprtController {
 		// 서버 validate 체크
 		beanValidator.validate(memoReprtVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/smt/mrm/MemoReprtRegist");
+			return "/cop/smt/mrm/MemoReprtRegist";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
@@ -173,12 +172,13 @@ public class MemoReprtController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		memoReprtVO.setFrstRegisterId(loginVO.getUniqId());
+		memoReprtVO.setFrstRegisterId(loginVO.getUserId());
 
 		memoReprtService.insertMemoReprt(memoReprtVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, memoReprtVO, "/cop/smt/mrm/listMemoReprt.do");
+		model.addAttribute("redirectURL", "/cop/smt/mrm/listMemoReprt.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -195,7 +195,7 @@ public class MemoReprtController {
 
 		model.addAttribute(memoReprtService.selectMemoReprt(memoReprtVO));
 
-		return WebUtil.adjustViewName("/cop/smt/mrm/MemoReprtEdit");
+		return "/cop/smt/mrm/MemoReprtEdit";
 	}
 
 	/**
@@ -215,7 +215,7 @@ public class MemoReprtController {
 
 		beanValidator.validate(memoReprtVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/smt/mrm/MemoReprtEdit");
+			return "/cop/smt/mrm/MemoReprtEdit";
 		}
 
 		// 첨부파일 관련 ID 생성 start....
@@ -223,12 +223,13 @@ public class MemoReprtController {
 		memoReprtVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "DSCH_", atchFileId));
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		memoReprtVO.setLastUpdusrId(loginVO.getUniqId());
+		memoReprtVO.setLastUpdusrId(loginVO.getUserId());
 
 		memoReprtService.updateMemoReprt(memoReprtVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, memoReprtVO, "/cop/smt/mrm/listMemoReprt.do");
+		model.addAttribute("redirectURL", "/cop/smt/mrm/listMemoReprt.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -246,7 +247,8 @@ public class MemoReprtController {
 		memoReprtService.deleteMemoReprt(memoReprtVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, memoReprtVO, "/cop/smt/mrm/listMemoReprt.do");
+		model.addAttribute("redirectURL", "/cop/smt/mrm/listMemoReprt.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -264,7 +266,8 @@ public class MemoReprtController {
 		memoReprtService.updateMemoReprtDrctMatter(memoReprtVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, memoReprtVO, "/cop/smt/mrm/listMemoReprt.do");
+		model.addAttribute("redirectURL", "/cop/smt/mrm/listMemoReprt.do");
+	    return "cmm/redirect";
 	}
 
 }

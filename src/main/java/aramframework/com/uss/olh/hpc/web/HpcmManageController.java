@@ -14,7 +14,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.olh.hpc.domain.HpcmManageVO;
 import aramframework.com.uss.olh.hpc.service.HpcmManageService;
@@ -61,7 +60,7 @@ public class HpcmManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/olh/hpc/HpcmList");
+		return "/uss/olh/hpc/HpcmList";
 	}
 
 	/**
@@ -77,7 +76,7 @@ public class HpcmManageController {
 
 		model.addAttribute(hpcmManageService.selectHpcmDetail(hpcmManageVO));
 
-		return WebUtil.adjustViewName("/uss/olh/hpc/HpcmDetail");
+		return "/uss/olh/hpc/HpcmDetail";
 	}
 
 	/**
@@ -94,7 +93,7 @@ public class HpcmManageController {
 		// 공통코드를 가져오기 위한 Vo
 		cmmUseService.populateCmmCodeList("COM021", "COM021_hpcmSe");
 
-		return WebUtil.adjustViewName("/uss/olh/hpc/HpcmRegist");
+		return "/uss/olh/hpc/HpcmRegist";
 	}
 
 	/**
@@ -112,17 +111,18 @@ public class HpcmManageController {
 
 		beanValidator.validate(hpcmManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olh/hpc/HpcmRegist");
+			return "/uss/olh/hpc/HpcmRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		hpcmManageVO.setFrstRegisterId(loginVO.getUniqId()); // 최초등록자ID
+		hpcmManageVO.setFrstRegisterId(loginVO.getUserId()); // 최초등록자ID
 
 		hpcmManageService.insertHpcmCn(hpcmManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, hpcmManageVO, "/uss/olh/hpc/listHpcm.do");
+		model.addAttribute("redirectURL", "/uss/olh/hpc/listHpcm.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -142,7 +142,7 @@ public class HpcmManageController {
 		// 공통코드를 가져오기 위한 Vo
 		cmmUseService.populateCmmCodeList("COM021", "COM021_hpcmSe");
 
-		return WebUtil.adjustViewName("/uss/olh/hpc/HpcmEdit");
+		return "/uss/olh/hpc/HpcmEdit";
 	}
 
 	/**
@@ -161,17 +161,18 @@ public class HpcmManageController {
 		// Validation
 		beanValidator.validate(hpcmManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olh/hpc/HpcmEdit");
+			return "/uss/olh/hpc/HpcmEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		hpcmManageVO.setLastUpdusrId(loginVO.getUniqId()); // 최종수정자ID
+		hpcmManageVO.setLastUpdusrId(loginVO.getUserId()); // 최종수정자ID
 
 		hpcmManageService.updateHpcmCn(hpcmManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, hpcmManageVO, "/uss/olh/hpc/listHpcm.do");
+		model.addAttribute("redirectURL", "/uss/olh/hpc/listHpcm.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -189,7 +190,8 @@ public class HpcmManageController {
 		hpcmManageService.deleteHpcmCn(hpcmManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, hpcmManageVO, "/uss/olh/hpc/listHpcm.do");
+		model.addAttribute("redirectURL", "/uss/olh/hpc/listHpcm.do");
+	    return "cmm/redirect";
 	}
 
 }

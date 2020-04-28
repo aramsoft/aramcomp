@@ -17,7 +17,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.ccm.cca.domain.CmmnCodeVO;
 import aramframework.com.sym.ccm.cca.service.CmmnCodeManageService;
 import aramframework.com.sym.ccm.ccc.domain.CmmnClCodeVO;
@@ -74,7 +73,7 @@ public class CmmnDetailCodeManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/ccm/cde/CmmnDetailCodeList");
+		return "sym/ccm/cde/CmmnDetailCodeList";
 	}
 
 	/**
@@ -90,7 +89,7 @@ public class CmmnDetailCodeManageController {
 		
 		model.addAttribute(cmmnDetailCodeManageService.selectCmmnDetailCodeDetail(cmmnDetailCodeVO));
 
-		return WebUtil.adjustViewName("/sym/ccm/cde/CmmnDetailCodeDetail");
+		return "sym/ccm/cde/CmmnDetailCodeDetail";
 	}
 
 	/**
@@ -125,7 +124,7 @@ public class CmmnDetailCodeManageController {
 
 		model.addAttribute("cmmnCodeList", cmmnCodeManageService.selectCmmnCodeList(cmmnCodeVO));
 
-		return WebUtil.adjustViewName("/sym/ccm/cde/CmmnDetailCodeRegist");
+		return "sym/ccm/cde/CmmnDetailCodeRegist";
 	}
 
 	/**
@@ -143,22 +142,23 @@ public class CmmnDetailCodeManageController {
 
 		beanValidator.validate(cmmnDetailCodeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/ccm/cde/CmmnDetailCodeRegist");
+			return "sym/ccm/cde/CmmnDetailCodeRegist";
 		}
 
 		CmmnDetailCodeVO vo = cmmnDetailCodeManageService.selectCmmnDetailCodeDetail(cmmnDetailCodeVO);
 		if (vo != null) {
 			model.addAttribute("message", "이미 등록된 코드가 존재합니다.");
-			return WebUtil.adjustViewName("/sym/ccm/cde/CmmnDetailCodeRegist");
+			return "sym/ccm/cde/CmmnDetailCodeRegist";
 		}
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		cmmnDetailCodeVO.setFrstRegisterId(loginVO.getUniqId());
+		cmmnDetailCodeVO.setFrstRegisterId(loginVO.getUserId());
 
 		cmmnDetailCodeManageService.insertCmmnDetailCode(cmmnDetailCodeVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, cmmnDetailCodeVO, "/sym/ccm/cde/listCmmnDetailCode.do");
+		model.addAttribute("redirectURL", "/sym/ccm/cde/listCmmnDetailCode.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -175,7 +175,7 @@ public class CmmnDetailCodeManageController {
 		
 		model.addAttribute(cmmnDetailCodeManageService.selectCmmnDetailCodeDetail(cmmnDetailCodeVO));
 
-		return WebUtil.adjustViewName("/sym/ccm/cde/CmmnDetailCodeEdit");
+		return "sym/ccm/cde/CmmnDetailCodeEdit";
 	}
 
 	/**
@@ -193,16 +193,17 @@ public class CmmnDetailCodeManageController {
 		
 		beanValidator.validate(cmmnDetailCodeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/ccm/cde/CmmnDetailCodeEdit");
+			return "sym/ccm/cde/CmmnDetailCodeEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		cmmnDetailCodeVO.setLastUpdusrId(loginVO.getUniqId());
+		cmmnDetailCodeVO.setLastUpdusrId(loginVO.getUserId());
 
 		cmmnDetailCodeManageService.updateCmmnDetailCode(cmmnDetailCodeVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, cmmnDetailCodeVO, "/sym/ccm/cde/listCmmnDetailCode.do");
+		model.addAttribute("redirectURL", "/sym/ccm/cde/listCmmnDetailCode.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -213,13 +214,15 @@ public class CmmnDetailCodeManageController {
 	@RequestMapping(value = "/sym/ccm/cde/deleteCmmnDetailCode.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteCmmnDetailCode(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CmmnDetailCodeVO cmmnDetailCodeVO, 
 			ModelMap model) {
 		
 		cmmnDetailCodeManageService.deleteCmmnDetailCode(cmmnDetailCodeVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, cmmnDetailCodeVO, "/sym/ccm/cde/listCmmnDetailCode.do");
+		model.addAttribute("redirectURL", "/sym/ccm/cde/listCmmnDetailCode.do");
+	    return "cmm/redirect";
 	}
 
 	/**

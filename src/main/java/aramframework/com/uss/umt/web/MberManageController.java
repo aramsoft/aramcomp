@@ -19,7 +19,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sec.grp.domain.GroupAuthorVO;
 import aramframework.com.sec.grp.service.GroupAuthorService;
 import aramframework.com.uss.umt.domain.MberManageVO;
@@ -79,7 +78,7 @@ public class MberManageController {
 		// 일반회원 상태코드를 코드정보로부터 조회
 		cmmUseService.populateCmmCodeList("COM013", "COM013_mberSttus");
 
-		return WebUtil.adjustViewName("/uss/umt/MberList");
+		return "uss/umt/MberList";
 	}
 
 	/**
@@ -103,7 +102,7 @@ public class MberManageController {
 		model.addAttribute("stplatVO", mberManageService.selectStplat(stplatId)); // 약관정보 포함
 		model.addAttribute("sbscrbTy", sbscrbTy); // 회원가입유형 포함
 
-		return WebUtil.adjustViewName("/uss/umt/StplatCnfirm");
+		return "uss/umt/StplatCnfirm";
 	}
 
 	/**
@@ -121,19 +120,13 @@ public class MberManageController {
 		if (!"".equals(request.getParameter("realname"))) {
 			model.addAttribute("mberNm", request.getParameter("realname")); 
 			// 실명인증된 이름 - 주민번호 인증
-			model.addAttribute("ihidnum", request.getParameter("ihidnum")); 
-			// 실명인증된 주민등록번호 - 주민번호 인증
-		}
-		if (!"".equals(request.getParameter("realName"))) {
-			model.addAttribute("mberNm", request.getParameter("realName")); 
-			// 실명인증된 이름 - ipin인증
 		}
 
 		fill_common_code();
 
 		mberManageVO.setMberSttus("A");
 
-		return WebUtil.adjustViewName("/uss/umt/MberSbscrb");
+		return "uss/umt/MberSbscrb";
 	}
 
 	/**
@@ -144,6 +137,7 @@ public class MberManageController {
 	@RequestMapping("/uss/umt/sbscrbMber.do")
 	@Secured("ROLE_ANONYMOUS")
 	public String sbscrbMber(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MberManageVO mberManageVO,
 			ModelMap model) {
 
@@ -155,19 +149,20 @@ public class MberManageController {
 		mberManageService.insertMber(mberManageVO);
 
 		GroupAuthorVO groupAuthorVO = new GroupAuthorVO();
-		groupAuthorVO.setUniqId(mberManageVO.getUniqId());
+		groupAuthorVO.setUserId(mberManageVO.getMberId());
 		groupAuthorVO.setAuthorCode("ROLE_USER");
 		groupAuthorVO.setMberTyCode("USR01");// 2011.08.04 수정 부분
 		groupAuthorService.insertGroupAuthor(groupAuthorVO);
 
 		String message = MessageHelper.getMessage("success.common.insert")
-					   + "\n\n로그인 후 사용하시기 바랍니다.";
+					   + " 로그인 후 사용하시기 바랍니다.";
 		model.addAttribute("message", message);
 		
-		return WebUtil.adjustViewName("/uss/umt/SbscrbSuccess");
+		model.addAttribute("redirectURL", "/uss/umt/stplatMberView.do");
+	    return "cmm/redirect";
 	}
 
-	/**
+	/** 
 	 * 일반회원등록화면으로 이동한다.
 	 * 
 	 * @param mberManageVO
@@ -181,7 +176,7 @@ public class MberManageController {
 
 		fill_common_code();
 
-		return WebUtil.adjustViewName("/uss/umt/MberRegist");
+		return "uss/umt/MberRegist";
 	}
 
 	/**
@@ -199,13 +194,14 @@ public class MberManageController {
 
 		beanValidator.validate(mberManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/umt/MberRegist");
+			return "uss/umt/MberRegist";
 		} 
 		
 		mberManageService.insertMber(mberManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, mberManageVO, "/uss/umt/listMber.do");
+		model.addAttribute("redirectURL", "/uss/umt/listMber.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -227,7 +223,7 @@ public class MberManageController {
 		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
 			model.addAttribute("isAdmin", "true");
 		}
-		return WebUtil.adjustViewName("/uss/umt/MberEdit");
+		return "uss/umt/MberEdit";
 	}
 
 	/**
@@ -245,13 +241,14 @@ public class MberManageController {
 
 		beanValidator.validate(mberManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/umt/MberEdit");
+			return "uss/umt/MberEdit";
 		} 
 		
 		mberManageService.updateMber(mberManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, mberManageVO, "/uss/umt/editMber.do?uniqId="+mberManageVO.getUniqId());
+		model.addAttribute("redirectURL", "/uss/umt/editMber.do?mberId="+mberManageVO.getMberId());
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -269,7 +266,7 @@ public class MberManageController {
 		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
 			model.addAttribute("isAdmin", "true");
 		}
-		return WebUtil.adjustViewName("/uss/umt/MberPassword");
+		return "uss/umt/MberPassword";
 	}
 
 	/**
@@ -289,12 +286,11 @@ public class MberManageController {
 		String oldPassword = request.getParameter("oldPassword");
 		String newPassword = request.getParameter("newPassword");
 		String newPassword2 = request.getParameter("newPassword2");
-		String uniqId = request.getParameter("uniqId");
 
 		boolean isCorrectPassword = false;
 		String message = "";
 
-		MberManageVO resultVO = mberManageService.selectPassword(uniqId);
+		MberManageVO resultVO = mberManageService.selectPassword(mberManageVO.getMberId());
 		// 패스워드 암호화
 		String encryptPass = FileScrty.encryptPassword(oldPassword);
 		if (encryptPass.equals(resultVO.getPassword())) {
@@ -316,7 +312,8 @@ public class MberManageController {
 		} 
 		
 		model.addAttribute("message", MessageHelper.getMessage(message));
-	    return WebUtil.redirectJsp(model, mberManageVO, "/uss/umt/editMber.do?uniqId="+mberManageVO.getUniqId());
+		model.addAttribute("redirectURL", "/uss/umt/editMber.do?mberId="+mberManageVO.getMberId());
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -328,13 +325,15 @@ public class MberManageController {
 	@RequestMapping("/uss/umt/deleteMber.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteMber(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MberManageVO mberManageVO, 
 			ModelMap model) {
 
 		mberManageService.deleteMber(mberManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, mberManageVO, "/uss/umt/listMber.do");
+		model.addAttribute("redirectURL", "/uss/umt/listMber.do");
+	    return "cmm/redirect";
 	}
 
 	/**

@@ -18,7 +18,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.ccm.zip.domain.ZipVO;
 import aramframework.com.sym.ccm.zip.service.ZipManageService;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -64,7 +63,7 @@ public class ZipManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/ccm/zip/ZipList");
+		return "sym/ccm/zip/ZipList";
 	}
 
 	/**
@@ -80,7 +79,7 @@ public class ZipManageController {
 
 		model.addAttribute(zipManageService.selectZipDetail(zipVO));
 
-		return WebUtil.adjustViewName("/sym/ccm/zip/ZipDetail");
+		return "sym/ccm/zip/ZipDetail";
 	}
 
 	/**
@@ -95,7 +94,7 @@ public class ZipManageController {
 			@ModelAttribute ZipVO zipVO, 
 			ModelMap model) {
 
-		return WebUtil.adjustViewName("/sym/ccm/zip/ZipRegist");
+		return "sym/ccm/zip/ZipRegist";
 	}
 
 	/**
@@ -112,17 +111,18 @@ public class ZipManageController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		zipVO.setFrstRegisterId(loginVO.getUniqId());
+		zipVO.setFrstRegisterId(loginVO.getUserId());
 
 		beanValidator.validate(zipVO, bindingResult);
 		if (bindingResult.hasErrors()){
-			return WebUtil.adjustViewName("/sym/ccm/zip/ZipRegist");
+			return "sym/ccm/zip/ZipRegist";
 		}
 		
 		zipManageService.insertZip(zipVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, zipVO, "/sym/ccm/zip/listZip.do");
+		model.addAttribute("redirectURL", "/sym/ccm/zip/listZip.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -136,7 +136,7 @@ public class ZipManageController {
 			@ModelAttribute ZipVO zipVO, 
 			ModelMap model) {
 
-		return WebUtil.adjustViewName("/sym/ccm/zip/ZipExcelRegist");
+		return "sym/ccm/zip/ZipExcelRegist";
 	}
 
 	/**
@@ -157,33 +157,29 @@ public class ZipManageController {
 		for (MultipartFile file : multiRequest.getFileMap().values()) {
 			if (!"".equals(file.getOriginalFilename())) {
 				// 2011.10.07 업로드 파일에 대한 확장자를 체크
-				if (file.getOriginalFilename().endsWith(".xls") 
-						|| file.getOriginalFilename().endsWith(".xlsx") 
-						|| file.getOriginalFilename().endsWith(".XLS")
-						|| file.getOriginalFilename().endsWith(".XLSX")) {
-
-					// zipManageService.deleteAllZip();
-					// excelZipService.uploadExcel("ZipManageDAO.insertExcelZip", file.getInputStream(), 2);
-					// 2011.10.21 보안점검 후속조치
-					try {
+				if (file.getOriginalFilename().toUpperCase().endsWith(".XLSX")) {
+					try { 
 						fis = file.getInputStream();
-//						zipManageService.insertExcelZip(fis);
-						zipManageService.insertExcelZipAram(fis);
+//						zipManageService.syncExcelZip(fis);
+						zipManageService.syncExcelZipAram(fis);
 					} catch (Exception e) {
 						throw e;
 					} finally {
 						if (fis != null)	// 2011.11.1 보안점검 후속조치
-							fis.close();					}
+							fis.close();
+					}
+
 				} else {
-					model.addAttribute("message", "xls, xlsx 파일 타입만 등록이 가능합니다.");
-					return WebUtil.adjustViewName("/sym/ccm/zip/ZipExcelRegist");
+					model.addAttribute("message", "xlsx 파일 타입만 등록이 가능합니다.");
+					return "sym/ccm/zip/ZipExcelRegist";
 				}
 			}
 		}
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, zipVO, "/sym/ccm/zip/listZip.do");
-	}
+		model.addAttribute("redirectURL", "/sym/ccm/zip/listZip.do");
+	    return "cmm/redirect";
+ 	}
 
 	/**
 	 * 우편번호를 수정 전처리 화면으로 이동한다
@@ -199,7 +195,7 @@ public class ZipManageController {
 
 		model.addAttribute(zipManageService.selectZipDetail(zipVO));
 
-		return WebUtil.adjustViewName("/sym/ccm/zip/ZipEdit");
+		return "sym/ccm/zip/ZipEdit";
 	}
 
 	/**
@@ -216,17 +212,18 @@ public class ZipManageController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		zipVO.setLastUpdusrId(loginVO.getUniqId());
+		zipVO.setLastUpdusrId(loginVO.getUserId());
 
 		beanValidator.validate(zipVO, bindingResult);
 		if (bindingResult.hasErrors()){
-			return WebUtil.adjustViewName("/sym/ccm/zip/ZipEdit");
+			return "sym/ccm/zip/ZipEdit";
 		}
 		
 		zipManageService.updateZip(zipVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, zipVO, "/sym/ccm/zip/listZip.do");
+		model.addAttribute("redirectURL", "/sym/ccm/zip/listZip.do");
+	    return "cmm/redirect";
 	}
 	
 	/**
@@ -237,13 +234,15 @@ public class ZipManageController {
 	@RequestMapping(value = "/sym/ccm/zip/deleteZip.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteZip(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ZipVO zipVO, 
 			ModelMap model) {
 
 		zipManageService.deleteZip(zipVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, zipVO, "/sym/ccm/zip/listZip.do");
+		model.addAttribute("redirectURL", "/sym/ccm/zip/listZip.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -267,7 +266,7 @@ public class ZipManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/ccm/zip/ZipSearchPopup");
+		return "sym/ccm/zip/ZipSearchPopup";
 	}
 
 	/**
@@ -293,7 +292,7 @@ public class ZipManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/ccm/zip/RdNmSearchPopup");
+		return "sym/ccm/zip/RdNmSearchPopup";
 	}
 	
 }

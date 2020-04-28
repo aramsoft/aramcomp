@@ -107,7 +107,7 @@ public class NetworkState {
 				}
 				input.close();
 			} else if ("UNIX".equals(Globals.OS_TYPE)) {
-				String cmdStr = AramProperties.getPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getNetWorkInfo");
+				String cmdStr = AramProperties.getSysPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getNetWorkInfo");
 				String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), "SCAN" };
 				p = Runtime.getRuntime().exec(command);
 				p = rt.exec(command);
@@ -211,7 +211,7 @@ public class NetworkState {
 		String tmp = "";
 		String outValue = "";
 		try {
-			String cmdStr = AramProperties.getPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getNetWorkInfo");
+			String cmdStr = AramProperties.getSysPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getNetWorkInfo");
 			String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), stringOne };
 			p = Runtime.getRuntime().exec(command);
 			BufferedReader b_out = new BufferedReader(new InputStreamReader(p.getInputStream()));

@@ -22,7 +22,6 @@ import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.smt.djm.domain.DeptJobBxVO;
 import aramframework.com.cop.smt.djm.domain.DeptJobVO;
 import aramframework.com.cop.smt.djm.service.DeptJobService;
@@ -77,7 +76,7 @@ public class DeptJobController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/smt/djm/ChargerListPopup");
+		return "/cop/smt/djm/ChargerListPopup";
 	}
 
 	/**
@@ -101,7 +100,7 @@ public class DeptJobController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/smt/djm/DeptListPopup");
+		return "/cop/smt/djm/DeptListPopup";
 	}
 
 	/**
@@ -133,9 +132,9 @@ public class DeptJobController {
 
 		String returnUrl;
 		if ("Y".equals(popFlag)) {
-			returnUrl = WebUtil.adjustViewName("/cop/smt/djm/DeptJobBxListPopup");
+			returnUrl = "/cop/smt/djm/DeptJobBxListPopup";
 		} else {
-			returnUrl = WebUtil.adjustViewName("/cop/smt/djm/DeptJobBxList");
+			returnUrl = "/cop/smt/djm/DeptJobBxList";
 		}
 		return returnUrl;
 	}
@@ -153,7 +152,7 @@ public class DeptJobController {
 	
 		 model.addAttribute(deptJobService.selectDeptJobBx(deptJobBxVO));
 
-		return WebUtil.adjustViewName("/cop/smt/djm/DeptJobBxDetail");
+		return "/cop/smt/djm/DeptJobBxDetail";
 	}
 
 	/**
@@ -167,7 +166,7 @@ public class DeptJobController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute DeptJobBxVO deptJobBxVO) {
 		
-		return WebUtil.adjustViewName("/cop/smt/djm/DeptJobBxRegist");
+		return "/cop/smt/djm/DeptJobBxRegist";
 	}
 
 	/**
@@ -187,9 +186,9 @@ public class DeptJobController {
 		model.addAttribute("indictOrdrValue", deptJobService.selectDeptJobBxOrdr(deptJobBxVO.getDeptId()) + 1);
 
 		if (request.getHeader("Referer").indexOf("insertDeptJobBx.do") == -1) {
-			return WebUtil.adjustViewName("/cop/smt/djm/DeptJobBxEdit");
+			return "/cop/smt/djm/DeptJobBxEdit";
 		} else {
-			return WebUtil.adjustViewName("/cop/smt/djm/DeptJobBxRegist");
+			return "/cop/smt/djm/DeptJobBxRegist";
 		}	
 	}
 
@@ -209,23 +208,24 @@ public class DeptJobController {
 		// 서버 validate 체크
 		beanValidator.validate(deptJobBxVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/smt/djm/DeptJobBxRegist");
+			return "/cop/smt/djm/DeptJobBxRegist";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		deptJobBxVO.setFrstRegisterId(loginVO.getUniqId());
+		deptJobBxVO.setFrstRegisterId(loginVO.getUserId());
 
 		// 부서내 부서업무함명 중복체크
 		if (deptJobService.selectDeptJobBxCheck(deptJobBxVO) > 0) {
 			model.addAttribute("deptJobBxNmDuplicated", "true");
-			return WebUtil.adjustViewName("/cop/smt/djm/DeptJobBxRegist");
+			return "/cop/smt/djm/DeptJobBxRegist";
 		} 
 		
 		deptJobService.insertDeptJobBx(deptJobBxVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, deptJobBxVO, "/cop/smt/djm/listDeptJobBx.do");
+		model.addAttribute("redirectURL", "/cop/smt/djm/listDeptJobBx.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -243,7 +243,7 @@ public class DeptJobController {
 		model.addAttribute(deptJobService.selectDeptJobBx(deptJobBxVO));
 		model.addAttribute("indictOrdrValue", deptJobBxVO.getIndictOrdr());
 
-		return WebUtil.adjustViewName("/cop/smt/djm/DeptJobBxEdit");
+		return "/cop/smt/djm/DeptJobBxEdit";
 	}
 
 	/**
@@ -261,16 +261,17 @@ public class DeptJobController {
 
 		beanValidator.validate(deptJobBxVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/smt/djm/DeptJobBxEdit");
+			return "/cop/smt/djm/DeptJobBxEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		deptJobBxVO.setLastUpdusrId(loginVO.getUniqId());
+		deptJobBxVO.setLastUpdusrId(loginVO.getUserId());
 
 		deptJobService.updateDeptJobBx(deptJobBxVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, deptJobBxVO, "/cop/smt/djm/listDeptJobBx.do");
+		model.addAttribute("redirectURL", "/cop/smt/djm/listDeptJobBx.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -286,7 +287,7 @@ public class DeptJobController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		deptJobBxVO.setLastUpdusrId(loginVO.getUniqId());
+		deptJobBxVO.setLastUpdusrId(loginVO.getUserId());
 
 		boolean changed = deptJobService.updateDeptJobBxOrdr(deptJobBxVO);
 		if (!changed) {
@@ -294,7 +295,8 @@ public class DeptJobController {
 		}
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, deptJobBxVO, "/cop/smt/djm/listDeptJobBx.do");
+		model.addAttribute("redirectURL", "/cop/smt/djm/listDeptJobBx.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -312,7 +314,8 @@ public class DeptJobController {
 		deptJobService.deleteDeptJobBx(deptJobBxVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, deptJobBxVO, "/cop/smt/djm/listDeptJobBx.do");
+		model.addAttribute("redirectURL", "/cop/smt/djm/listDeptJobBx.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -345,7 +348,7 @@ public class DeptJobController {
 		model.addAttribute(paginationInfo);
 		model.addAttribute("resultBxList", deptJobService.selectDeptJobBxListAll());
 
-		return WebUtil.adjustViewName("/cop/smt/djm/DeptJobList");
+		return "/cop/smt/djm/DeptJobList";
 	}
 
 	/**
@@ -365,7 +368,7 @@ public class DeptJobController {
 		// 공통코드 우선순위 조회
 		model.addAttribute("priort", cmmUseService.selectCmmCodeList("COM059"));
 
-		return WebUtil.adjustViewName("/cop/smt/djm/DeptJobDetail");
+		return "/cop/smt/djm/DeptJobDetail";
 	}
 
 	/**
@@ -383,7 +386,7 @@ public class DeptJobController {
 		deptJobVO.setDeptNm(deptJobService.selectDept(deptJobVO.getSearchDeptId()));
 		deptJobVO.setDeptJobBxId(deptJobVO.getSearchDeptJobBxId());
 
-		return WebUtil.adjustViewName("/cop/smt/djm/DeptJobRegist");
+		return "/cop/smt/djm/DeptJobRegist";
 	}
 
 	/**
@@ -404,7 +407,7 @@ public class DeptJobController {
 		// 서버 validate 체크
 		beanValidator.validate(deptJobVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/smt/djm/DeptJobRegist");
+			return "/cop/smt/djm/DeptJobRegist";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
@@ -412,12 +415,13 @@ public class DeptJobController {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		deptJobVO.setFrstRegisterId(loginVO.getUniqId());
+		deptJobVO.setFrstRegisterId(loginVO.getUserId());
 
 		deptJobService.insertDeptJob(deptJobVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, deptJobVO, "/cop/smt/djm/listDeptJob.do");
+		model.addAttribute("redirectURL", "/cop/smt/djm/listDeptJob.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -434,7 +438,7 @@ public class DeptJobController {
 
 		model.addAttribute(deptJobService.selectDeptJob(deptJobVO));
 
-		return WebUtil.adjustViewName("/cop/smt/djm/DeptJobEdit");
+		return "/cop/smt/djm/DeptJobEdit";
 	}
 
 	/**
@@ -454,7 +458,7 @@ public class DeptJobController {
 
 		beanValidator.validate(deptJobVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/smt/djm/DeptJobEdit");
+			return "/cop/smt/djm/DeptJobEdit";
 		}
 
 		// 첨부파일 관련 ID 생성 start....
@@ -462,12 +466,13 @@ public class DeptJobController {
 		deptJobVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "DSCH_", atchFileId));
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		deptJobVO.setLastUpdusrId(loginVO.getUniqId());
+		deptJobVO.setLastUpdusrId(loginVO.getUserId());
 
 		deptJobService.updateDeptJob(deptJobVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, deptJobVO, "/cop/smt/djm/listDeptJob.do");
+		model.addAttribute("redirectURL", "/cop/smt/djm/listDeptJob.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -485,7 +490,8 @@ public class DeptJobController {
 		deptJobService.deleteDeptJob(deptJobVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, deptJobVO, "/cop/smt/djm/listDeptJob.do");
+		model.addAttribute("redirectURL", "/cop/smt/djm/listDeptJob.do");
+	    return "cmm/redirect";
 	}
 
 }

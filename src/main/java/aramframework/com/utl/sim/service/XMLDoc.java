@@ -78,7 +78,7 @@ public class XMLDoc {
 
 		// 3. scomp -src [소스생성위치] [xsd파일] : 입력받은 스키마를 컴파일하여 JAVA 소스파일로 생성
 		Process p = null;
-		String cmdStr = AramProperties.getPathProperty(Globals.SHELL_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".compileSchema");
+		String cmdStr = AramProperties.getSysPathProperty(Globals.SHELL_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".compileSchema");
 		String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), jar, file };
 		p = Runtime.getRuntime().exec(command);
 		// 프로세스가 처리될때까지 대기

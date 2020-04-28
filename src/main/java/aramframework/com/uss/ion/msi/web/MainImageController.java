@@ -22,7 +22,6 @@ import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.FileMngService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.msi.domain.MainImageVO;
 import aramframework.com.uss.ion.msi.service.MainImageService;
@@ -78,7 +77,7 @@ public class MainImageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/ion/msi/MainImageList");
+		return "/uss/ion/msi/MainImageList";
 	}
 
 	/**
@@ -91,7 +90,7 @@ public class MainImageController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MainImageVO mainImageVO) {
 		
-		return WebUtil.adjustViewName("/uss/ion/msi/MainImageRegist");
+		return "/uss/ion/msi/MainImageRegist";
 	}
 
 	/**
@@ -110,7 +109,7 @@ public class MainImageController {
 
 		beanValidator.validate(mainImageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/msi/MainImageRegist");
+			return "/uss/ion/msi/MainImageRegist";
 		} 
 
 		String atchFileId = "";
@@ -129,12 +128,13 @@ public class MainImageController {
 		mainImageVO.setImage(image);
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		mainImageVO.setUserId(loginVO.getId());
+		mainImageVO.setUserId(loginVO.getUserId());
 
 		mainImageService.insertMainImage(mainImageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, mainImageVO, "/uss/ion/msi/listMainImage.do");
+		model.addAttribute("redirectURL", "/uss/ion/msi/listMainImage.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -150,7 +150,7 @@ public class MainImageController {
 
 		model.addAttribute(mainImageService.selectMainImage(mainImageVO));
 
-		return WebUtil.adjustViewName("/uss/ion/msi/MainImageEdit");
+		return "/uss/ion/msi/MainImageEdit";
 	}
 
 	/**
@@ -169,7 +169,7 @@ public class MainImageController {
 
 		beanValidator.validate(mainImageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/msi/MainImageEdit");
+			return "/uss/ion/msi/MainImageEdit";
 		}
 
 		String atchFileId = "";
@@ -196,12 +196,13 @@ public class MainImageController {
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		mainImageVO.setUserId(loginVO.getId());
+		mainImageVO.setUserId(loginVO.getUserId());
 
 		mainImageService.updateMainImage(mainImageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, mainImageVO, "/uss/ion/msi/listMainImage.do");
+		model.addAttribute("redirectURL", "/uss/ion/msi/listMainImage.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -218,7 +219,8 @@ public class MainImageController {
 		mainImageService.deleteMainImage(mainImageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, mainImageVO, "/uss/ion/msi/listMainImage.do");
+		model.addAttribute("redirectURL", "/uss/ion/msi/listMainImage.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -235,7 +237,8 @@ public class MainImageController {
 		mainImageService.deleteMainImages(imageIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, searchVO, "/uss/ion/msi/listMainImage.do");
+		model.addAttribute("redirectURL", "/uss/ion/msi/listMainImage.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -252,7 +255,7 @@ public class MainImageController {
 
 		model.addAttribute("fileList", mainImageService.selectMainImageResult(mainImageVO));
 
-		return WebUtil.adjustViewName("/uss/ion/msi/MainImageView");
+		return "/uss/ion/msi/MainImageView";
 	}
 	
 }

@@ -16,7 +16,6 @@ import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.olp.cns.domain.CnsltManageVO;
 import aramframework.com.uss.olp.cns.service.CnsltManageService;
@@ -75,7 +74,7 @@ public class CnsltManageController {
 			model.addAttribute("certificationAt", "Y");
 		}
 
-		return WebUtil.adjustViewName("/uss/olp/cns/CnsltList");
+		return "/uss/olp/cns/CnsltList";
 	}
 
 	/**
@@ -91,7 +90,7 @@ public class CnsltManageController {
 
 		model.addAttribute(cnsltManageService.selectCnsltListDetail(cnsltManageVO));
 
-		return WebUtil.adjustViewName("/uss/olp/cns/CnsltDetail");
+		return "/uss/olp/cns/CnsltDetail";
 	}
 
 	/**
@@ -119,7 +118,7 @@ public class CnsltManageController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO) {
 
-		return WebUtil.adjustViewName("/uss/olp/cns/CnsltLoginRealnmChoice");
+		return "/uss/olp/cns/CnsltLoginRealnmChoice";
 	}
 
 	/**
@@ -139,7 +138,7 @@ public class CnsltManageController {
 			cnsltManageVO.setEmailAdres(loginVO.getEmail()); // email 주소
 		}
 		
-		return WebUtil.adjustViewName("/uss/olp/cns/CnsltRegist");
+		return "/uss/olp/cns/CnsltRegist";
 	}
 
 	/**
@@ -158,7 +157,7 @@ public class CnsltManageController {
 
 		beanValidator.validate(cnsltManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olp/cns/CnsltRegist");
+			return "/uss/olp/cns/CnsltRegist";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
@@ -167,7 +166,7 @@ public class CnsltManageController {
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		if( loginVO != null ) {
-			cnsltManageVO.setFrstRegisterId(loginVO.getUniqId()); // 최초등록자ID
+			cnsltManageVO.setFrstRegisterId(loginVO.getUserId()); // 최초등록자ID
 		} else {
 			cnsltManageVO.setFrstRegisterId("USRCNFRM_00000000000"); // guest
 		}
@@ -181,7 +180,8 @@ public class CnsltManageController {
 		cnsltManageService.insertCnsltDtls(cnsltManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, cnsltManageVO, "/uss/olp/cns/listCnslt.do");
+		model.addAttribute("redirectURL", "/uss/olp/cns/listCnslt.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -194,7 +194,7 @@ public class CnsltManageController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO) { 
 		
-		return WebUtil.adjustViewName("/uss/olp/cns/CnsltPasswordPopup");
+		return "/uss/olp/cns/CnsltPasswordPopup";
 	}
 
 	/**
@@ -255,7 +255,7 @@ public class CnsltManageController {
 		
 		model.addAttribute(cnsltManageVO);
 		
-		return WebUtil.adjustViewName("/uss/olp/cns/CnsltEdit");
+		return "/uss/olp/cns/CnsltEdit";
 	}
 
 	/**
@@ -275,7 +275,7 @@ public class CnsltManageController {
 		// Validation
 		beanValidator.validate(cnsltManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/olp/cns/CnsltEdit");
+			return "/uss/olp/cns/CnsltEdit";
 		}
 
 		// 첨부파일 관련 ID 생성 start....
@@ -285,7 +285,7 @@ public class CnsltManageController {
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		if( loginVO != null ) {
-			cnsltManageVO.setLastUpdusrId(loginVO.getUniqId()); // 최종수정자ID
+			cnsltManageVO.setLastUpdusrId(loginVO.getUserId()); // 최종수정자ID
 		}
 		
 		// 작성비밀번호를 암호화 하기 위해서 Get
@@ -297,7 +297,8 @@ public class CnsltManageController {
 		cnsltManageService.updateCnsltDtls(cnsltManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, cnsltManageVO, "/uss/olp/cns/listCnslt.do");
+		model.addAttribute("redirectURL", "/uss/olp/cns/listCnslt.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -350,7 +351,8 @@ public class CnsltManageController {
 		cnsltManageService.deleteCnsltDtls(cnsltManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, cnsltManageVO, "/uss/olp/cns/listCnslt.do");
+		model.addAttribute("redirectURL", "/uss/olp/cns/listCnslt.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -376,7 +378,7 @@ public class CnsltManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/olp/cns/CnsltAnswerList");
+		return "/uss/olp/cns/CnsltAnswerList";
 	}
 
 	/**
@@ -393,7 +395,7 @@ public class CnsltManageController {
 
 		model.addAttribute(cnsltManageService.selectCnsltListDetail(cnsltManageVO));
 
-		return WebUtil.adjustViewName("/uss/olp/cns/CnsltAnswerDetail");
+		return "/uss/olp/cns/CnsltAnswerDetail";
 	}
 
 	/**
@@ -413,7 +415,7 @@ public class CnsltManageController {
 		// 공통코드를 가져오기 위한 Vo
 		cmmUseService.populateCmmCodeList("COM028", "COM028_qnaProcessSttus");
 
-		return WebUtil.adjustViewName("/uss/olp/cns/CnsltAnswerEdit");
+		return "/uss/olp/cns/CnsltAnswerEdit";
 	}
 
 	/**
@@ -430,12 +432,13 @@ public class CnsltManageController {
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		cnsltManageVO.setLastUpdusrId(loginVO.getUniqId()); // 최종수정자ID
+		cnsltManageVO.setLastUpdusrId(loginVO.getUserId()); // 최종수정자ID
 
 		cnsltManageService.updateCnsltDtlsAnswer(cnsltManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, cnsltManageVO, "/uss/olp/cnm/listCnsltAnswer.do");
+		model.addAttribute("redirectURL", "/uss/olp/cnm/listCnsltAnswer.do");
+	    return "cmm/redirect";
 	}
 
 }

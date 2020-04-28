@@ -27,7 +27,7 @@
 			     , rtrim(a.NTCE_ENDDE) 		AS "ntceEndde" 
 			  FROM COMTN_BBS a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.FRST_REGISTER_ID = b.ESNTL_ID 
+						ON a.FRST_REGISTER_ID = b.USER_ID 
 			 WHERE a.BBS_ID = #{bbsId}
 		]]>
     	<if test='searchKeyword != null and searchKeyword != ""'>
@@ -60,7 +60,7 @@
 			SELECT COUNT(a.NTT_ID)
 			  FROM COMTN_BBS a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.FRST_REGISTER_ID = b.ESNTL_ID 
+						ON a.FRST_REGISTER_ID = b.USER_ID 
 			 WHERE a.BBS_ID = #{bbsId}
 		]]>
    	    <if test='searchKeyword != null and searchKeyword != ""'>
@@ -103,7 +103,7 @@
 			     , a.THREAD_GROUP_NO
 			  FROM COMTN_BBS a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.FRST_REGISTER_ID = b.ESNTL_ID 
+						ON a.FRST_REGISTER_ID = b.USER_ID 
 			 WHERE a.BBS_ID = #{bbsId}	
 			   AND a.NTT_ID = #{nttId}	
 		]]>				
@@ -347,7 +347,7 @@
 			     , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
 			  FROM COMTN_BBS a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
-						ON a.FRST_REGISTER_ID = b.ESNTL_ID 
+						ON a.FRST_REGISTER_ID = b.USER_ID 
 			 WHERE a.BBS_ID = #{bbsId}
 			   AND a.USE_AT = 'Y'
 			 ORDER BY a.SORT_ORDR DESC, a.NTT_NO ASC

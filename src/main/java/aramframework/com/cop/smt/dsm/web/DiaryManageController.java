@@ -15,7 +15,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.smt.dsm.domain.DiaryManageVO;
 import aramframework.com.cop.smt.dsm.service.DiaryManageService;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -63,7 +62,7 @@ public class DiaryManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/smt/dsm/DiaryList");
+		return "cop/smt/dsm/DiaryList";
 	}
 
 	/**
@@ -80,7 +79,7 @@ public class DiaryManageController {
 
 		model.addAttribute(diaryManageService.selectDiaryManageDetail(diaryManageVO));
 
-		return WebUtil.adjustViewName("/cop/smt/dsm/DiaryDetail");
+		return "cop/smt/dsm/DiaryDetail";
 	}
 
 	/**
@@ -95,7 +94,7 @@ public class DiaryManageController {
 			@ModelAttribute DiaryManageVO diaryManageVO, 
 			ModelMap model) {
 
-		return WebUtil.adjustViewName("/cop/smt/dsm/DiaryRegist");
+		return "cop/smt/dsm/DiaryRegist";
 	}
 
 	/**
@@ -117,20 +116,21 @@ public class DiaryManageController {
 		// 서버 validate 체크
 		beanValidator.validate(diaryManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/smt/dsm/DiaryRegist");
+			return "cop/smt/dsm/DiaryRegist";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
-		diaryManageVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "DIARY_"));
+		diaryManageVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "DSM"));
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		diaryManageVO.setFrstRegisterId(loginVO.getUniqId());
+		diaryManageVO.setFrstRegisterId(loginVO.getUserId());
 
 		diaryManageService.insertDiaryManage(diaryManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, diaryManageVO, "/cop/smt/dsm/listDiary.do");
+		model.addAttribute("redirectURL", "/cop/smt/dsm/listDiary.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -147,7 +147,7 @@ public class DiaryManageController {
 
 		model.addAttribute(diaryManageService.selectDiaryManageDetail(diaryManageVO));
 
-		return WebUtil.adjustViewName("/cop/smt/dsm/DiaryEdit");
+		return "cop/smt/dsm/DiaryEdit";
 	}
 
 	/**
@@ -169,21 +169,22 @@ public class DiaryManageController {
 		// 서버 validate 체크
 		beanValidator.validate(diaryManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/smt/dsm/DiaryEdit");
+			return "cop/smt/dsm/DiaryEdit";
 		}
 		
 		 // 첨부파일 관련 ID 생성 start....
 		String atchFileId = diaryManageVO.getAtchFileId();
-		diaryManageVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "DIARY_", atchFileId));
+		diaryManageVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "DSM", atchFileId));
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		diaryManageVO.setLastUpdusrId(loginVO.getUniqId());
+		diaryManageVO.setLastUpdusrId(loginVO.getUserId());
 
 		diaryManageService.updateDiaryManage(diaryManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, diaryManageVO, "/cop/smt/dsm/listDiary.do");
+		model.addAttribute("redirectURL", "/cop/smt/dsm/listDiary.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -194,13 +195,15 @@ public class DiaryManageController {
 	@RequestMapping(value = "/cop/smt/dsm/deleteDiary.do")
 	@Secured("ROLE_USER")
 	public String deleteDiary(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DiaryManageVO diaryManageVO, 
 			ModelMap model) {
 
 		diaryManageService.deleteDiaryManage(diaryManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, diaryManageVO, "/cop/smt/dsm/listDiary.do");
+		model.addAttribute("redirectURL", "/cop/smt/dsm/listDiary.do");
+	    return "cmm/redirect";
 	}
 
 }

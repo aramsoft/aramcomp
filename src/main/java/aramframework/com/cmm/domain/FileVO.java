@@ -1,5 +1,7 @@
 package aramframework.com.cmm.domain;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 import aramframework.com.cmm.util.WebUtil;
 
 /**
@@ -15,11 +17,14 @@ public class FileVO extends BaseVO {
 	/** 첨부파일 아이디 */
 	private String atchFileId = "";
 
+	/** 참조 아이디 */
+	private String category = "";
+	
 	/** 생성일자	 */
 	private String creatDt = "";
 
 	/** 파일연번  */
-	private String fileSn = "";
+	private int fileSn = 0;
 
 	/** 파일저장경로 */
 	private String fileStreCours = "";
@@ -40,7 +45,7 @@ public class FileVO extends BaseVO {
 	private String fileCn = "";
 
 	/** 파일크기	 */
-	private String fileSize = "";
+	private long fileSize = 0;
 
 	// domain
 	/**
@@ -58,8 +63,25 @@ public class FileVO extends BaseVO {
 	 */
 	public void setAtchFileId(String atchFileId) {
 		this.atchFileId = atchFileId;
-		if(atchFileId.length() != 0)
-			this.pathId = WebUtil.getPathId(atchFileId);
+		if(atchFileId != null && atchFileId.length() != 0)
+			this.setPathId(WebUtil.getPathId(atchFileId));
+	}
+
+	/**
+	 * category attribute를 리턴한다.
+	 * 
+	 * @return 	the category
+	 */
+	public String getCategory() {
+		return category;
+	}
+	/**
+	 * category attribute 값을 설정한다.
+	 * 
+	 * @param 	category	the category to set
+	 */
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	/**
@@ -84,7 +106,7 @@ public class FileVO extends BaseVO {
 	 * 
 	 * @return 	the fileSn
 	 */
-	public String getFileSn() {
+	public int getFileSn() {
 		return fileSn;
 	}
 	/**
@@ -92,7 +114,7 @@ public class FileVO extends BaseVO {
 	 * 
 	 * @param 	fileSn	the fileSn to set
 	 */
-	public void setFileSn(String fileSn) {
+	public void setFileSn(int fileSn) {
 		this.fileSn = fileSn;
 	}
 
@@ -203,7 +225,7 @@ public class FileVO extends BaseVO {
 	 * 
 	 * @return 	the fileSize
 	 */
-	public String getFileSize() {
+	public long getFileSize() {
 		return fileSize;
 	}
 	/**
@@ -211,8 +233,17 @@ public class FileVO extends BaseVO {
 	 * 
 	 * @param 	fileSize	the fileSize to set
 	 */
-	public void setFileSize(String fileSize) {
+	public void setFileSize(long fileSize) {
 		this.fileSize = fileSize;
 	}
 
+	/**
+	 * toString 메소드를 대치한다.
+	 * 
+	 * @return 	String 
+	 */
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this);
+	}
+	
 }

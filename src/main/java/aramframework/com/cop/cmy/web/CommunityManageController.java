@@ -82,7 +82,7 @@ public class CommunityManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/cmy/CmmntyListPopup");
+		return "cop/cmy/CmmntyListPopup";
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class CommunityManageController {
 
 		model.addAttribute("resultList", cmmntyService.selectCmmntyListPortlet(communityVO));
 
-		return WebUtil.adjustViewName("/cop/cmy/CmmntyListPortlet");
+		return "cop/cmy/CmmntyListPortlet";
 	}
 
 	/**
@@ -123,7 +123,7 @@ public class CommunityManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/cmy/CmmntyList");
+		return "cop/cmy/CmmntyList";
 	}
 
 	/**
@@ -153,8 +153,8 @@ public class CommunityManageController {
 		// -----------------------
 		// 제공 URL
 		// -----------------------
-		communityVO.setProvdUrl(request.getContextPath() + "/content/apps/" + communityVO.getCmmntyId());
-		communityVO.setProvdUrl2(request.getContextPath() + "/content/apps/" + communityVO.getPathId());
+//		communityVO.setProvdUrl(request.getContextPath() + "/apps/id/" + communityVO.getCmmntyId());
+		communityVO.setProvdUrl2(request.getContextPath() + "/apps/id/" + communityVO.getPathId());
   
 		model.addAttribute("bbsList", cmmntyService.selectCommunityBBSUseInf(communityVO));
 
@@ -163,7 +163,7 @@ public class CommunityManageController {
 		}
 		model.addAttribute(communityVO);
 		
-		return WebUtil.adjustViewName("/cop/cmy/CmmntyDetail");
+		return "cop/cmy/CmmntyDetail";
 	}
 
 	/**
@@ -178,7 +178,7 @@ public class CommunityManageController {
 			@ModelAttribute CommunityVO communityVO, 
 			ModelMap model) {
 		
-		return WebUtil.adjustViewName("/cop/cmy/CmmntyRegist");
+		return "cop/cmy/CmmntyRegist";
 	}
 
 	/**
@@ -199,7 +199,7 @@ public class CommunityManageController {
 
 		beanValidator.validate(communityVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/cmy/CmmntyRegist");
+			return "cop/cmy/CmmntyRegist";
 		}
 
 		for (MultipartFile file : multiRequest.getFileMap().values()) {
@@ -214,12 +214,13 @@ public class CommunityManageController {
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		communityVO.setUseAt("Y");
 		communityVO.setRegistSeCode("REGC02");	// 커뮤니티 등록 
-		communityVO.setFrstRegisterId(loginVO.getUniqId());
+		communityVO.setFrstRegisterId(loginVO.getUserId());
 
 		cmmntyService.insertCommunityInf(communityVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, communityVO, "/cop/cmy/listCommunity.do");
+		model.addAttribute("redirectURL", "/cop/cmy/listCommunity.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -246,7 +247,7 @@ public class CommunityManageController {
 		}
 		model.addAttribute(communityVO);
 		
-		return WebUtil.adjustViewName("/cop/cmy/CmmntyEdit");
+		return "cop/cmy/CmmntyEdit";
 	}
 
 	/**
@@ -270,7 +271,7 @@ public class CommunityManageController {
 			model.addAttribute("manager",cmmntyService.selectCommunityManagerInf(communityVO));
 			model.addAttribute("bbsList", cmmntyService.selectCommunityBBSUseInf(communityVO));
 
-			return WebUtil.adjustViewName("/cop/cmy/CmmntyEdit");
+			return "cop/cmy/CmmntyEdit";
 		}
 
 		for (MultipartFile file : multiRequest.getFileMap().values()) {
@@ -283,7 +284,7 @@ public class CommunityManageController {
 		}
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		communityVO.setLastUpdusrId(loginVO.getUniqId());
+		communityVO.setLastUpdusrId(loginVO.getUserId());
 
 		if ("Y".equals(communityVO.getUseAt())) {
 			cmmntyService.updateCommunityInf(communityVO);
@@ -292,7 +293,8 @@ public class CommunityManageController {
 		}
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, communityVO, "/cop/cmy/detailCommunity.do?cmmntyId="+communityVO.getCmmntyId());
+		model.addAttribute("redirectURL", "/cop/cmy/detailCommunity.do?cmmntyId="+communityVO.getCmmntyId());
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -315,8 +317,8 @@ public class CommunityManageController {
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		communityUserVO.setCmmntyId(trgetId);
 		communityUserVO.setUseAt("Y");
-		communityUserVO.setFrstRegisterId(loginVO.getUniqId());
-		communityUserVO.setEmplyrId(loginVO.getUniqId());
+		communityUserVO.setFrstRegisterId(loginVO.getUserId());
+		communityUserVO.setEmplyrId(loginVO.getUserId());
 
 		// ---------------------------------------------
 		// 승인요청 처리
@@ -332,7 +334,7 @@ public class CommunityManageController {
 			CommunityUserVO manager = cmmntyService.selectCommunityManagerInf(communityVO);
 
 			ConfirmHistoryVO confirmHistoryVO = new ConfirmHistoryVO();
-			confirmHistoryVO.setConfmRqesterId(loginVO.getUniqId()); // 요청자 ID
+			confirmHistoryVO.setConfmRqesterId(loginVO.getUserId()); // 요청자 ID
 			confirmHistoryVO.setConfmerId(manager.getEmplyrId()); // 관리자
 			confirmHistoryVO.setConfmTyCode("CF11"); // 커뮤니티사용자등록
 			confirmHistoryVO.setConfmSttusCode("AP01"); // 승인요청
@@ -351,7 +353,7 @@ public class CommunityManageController {
 		}
 
 		model.addAttribute("returnMsg", retVal);
-		return WebUtil.adjustViewName("/cop/cmy/CmmntyMsg");
+		return "cop/cmy/CmmntyMsg";
 	}
 
 	/**
@@ -369,14 +371,14 @@ public class CommunityManageController {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		communityUserVO.setUseAt("N");
-		communityUserVO.setLastUpdusrId(loginVO.getUniqId());
-		// cmmntyUser.setEmplyrId(user.getUniqId()); //커뮤니티 탈퇴 요청시 승인자를 선택하므로 탈퇴
+		communityUserVO.setLastUpdusrId(loginVO.getUserId());
+		// cmmntyUser.setEmplyrId(user.getUserId()); //커뮤니티 탈퇴 요청시 승인자를 선택하므로 탈퇴
 		// 승인자가 자신이 될 수 없음(2011.9.7 수정분)
 		communityUserVO.setSecsnDe(DateUtil.getToday());
 
 		ConfirmHistoryVO confirmHistoryVO = new ConfirmHistoryVO();
 
-		confirmHistoryVO.setConfmRqesterId(loginVO.getUniqId());
+		confirmHistoryVO.setConfmRqesterId(loginVO.getUserId());
 		confirmHistoryVO.setConfmerId(communityUserVO.getEmplyrId());
 		confirmHistoryVO.setConfmTyCode("CF12"); // 006
 		confirmHistoryVO.setConfmSttusCode("AP01"); // 007
@@ -390,7 +392,7 @@ public class CommunityManageController {
 		// cmmntyService.deleteCommunityUserInf(cmmntyUser);
 
 		model.addAttribute("returnMsg", retVal);
-		return WebUtil.adjustViewName("/cop/cmy/CmmntyMsg");
+		return "cop/cmy/CmmntyMsg";
 	}
 
 }

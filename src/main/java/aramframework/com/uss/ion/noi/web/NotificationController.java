@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.noi.domain.NotificationVO;
 import aramframework.com.uss.ion.noi.service.NotificationService;
@@ -51,7 +50,7 @@ public class NotificationController {
 		notificationVO.fillPageInfo(paginationInfo);
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		notificationVO.setUniqId(loginVO.getUniqId());
+		notificationVO.setUniqId(loginVO.getUserId());
 
 		model.addAttribute("resultList", notificationService.selectNotificationInfs(notificationVO));
 		int totCnt = notificationService.selectNotificationInfsCnt(notificationVO);
@@ -61,7 +60,7 @@ public class NotificationController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/ion/noi/NotificationList");
+		return "/uss/ion/noi/NotificationList";
 	}
 
 	/**
@@ -78,9 +77,9 @@ public class NotificationController {
 		model.addAttribute(notificationService.selectNotificationInf(notificationVO));
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		model.addAttribute("sessionUniqId", loginVO.getUniqId());
+		model.addAttribute("sessionUniqId", loginVO.getUserId());
 
-		return WebUtil.adjustViewName("/uss/ion/noi/NotificationDetail");
+		return "/uss/ion/noi/NotificationDetail";
 	}
 
 	/**
@@ -93,7 +92,7 @@ public class NotificationController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NotificationVO notificationVO) {
 
-		return WebUtil.adjustViewName("/uss/ion/noi/NotificationRegist");
+		return "/uss/ion/noi/NotificationRegist";
 	}
 
 	/**
@@ -110,21 +109,22 @@ public class NotificationController {
 
 		beanValidator.validate(notificationVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/noi/NotificationRegist");
+			return "/uss/ion/noi/NotificationRegist";
 		}
 
 		if (!notificationService.checkNotification(notificationVO)) {
 			model.addAttribute("message", MessageHelper.getMessage("uss.ion.noi.alertNtfcTime"));
-			return WebUtil.adjustViewName("/uss/ion/noi/NotificationRegist");
+			return "/uss/ion/noi/NotificationRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		notificationVO.setFrstRegisterId(loginVO.getUniqId());
+		notificationVO.setFrstRegisterId(loginVO.getUserId());
 
 		notificationService.insertNotificationInf(notificationVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, notificationVO, "/uss/ion/noi/listNotification.do");
+		model.addAttribute("redirectURL", "/uss/ion/noi/listNotification.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -140,7 +140,7 @@ public class NotificationController {
 
 		model.addAttribute(notificationService.selectNotificationInf(notificationVO));
 
-		return WebUtil.adjustViewName("/uss/ion/noi/NotificationEdit");
+		return "/uss/ion/noi/NotificationEdit";
 	}
 
 	/**
@@ -157,21 +157,22 @@ public class NotificationController {
 
 		beanValidator.validate(notificationVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/noi/NotificationEdit");
+			return "/uss/ion/noi/NotificationEdit";
 		}
 
 		if (!notificationService.checkNotification(notificationVO)) {
 			model.addAttribute("message", MessageHelper.getMessage("uss.ion.noi.alertNtfcTime"));
-			return WebUtil.adjustViewName("/uss/ion/noi/NotificationEdit");
+			return "/uss/ion/noi/NotificationEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		notificationVO.setLastUpdusrId(loginVO.getUniqId());
+		notificationVO.setLastUpdusrId(loginVO.getUserId());
 
 		notificationService.updateNotifictionInf(notificationVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, notificationVO, "/uss/ion/noi/listNotification.do");
+		model.addAttribute("redirectURL", "/uss/ion/noi/listNotification.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -186,12 +187,13 @@ public class NotificationController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		notificationVO.setLastUpdusrId(loginVO.getUniqId());
+		notificationVO.setLastUpdusrId(loginVO.getUserId());
 
 		notificationService.deleteNotifictionInf(notificationVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, notificationVO, "/uss/ion/noi/listNotification.do");
+		model.addAttribute("redirectURL", "/uss/ion/noi/listNotification.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -207,7 +209,7 @@ public class NotificationController {
 		
 		model.addAttribute("resultList", notificationService.selectNotificationData());
 
-		return WebUtil.adjustViewName("/uss/ion/noi/NotificationData");
+		return "/uss/ion/noi/NotificationData";
 	}
 	
 }

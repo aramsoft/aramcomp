@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.ncm.domain.NameCardUseVO;
 import aramframework.com.cop.ncm.domain.NameCardVO;
 import aramframework.com.cop.ncm.service.NcrdManageService;
@@ -48,7 +47,7 @@ public class NcrdManageController {
 
 		model.addAttribute(ncrdService.selectNcrdItem(nameCardVO));
 
-		return WebUtil.adjustViewName("/cop/ncm/NameCardPopup");
+		return "cop/ncm/NameCardPopup";
 	}
 
 	/**
@@ -64,8 +63,8 @@ public class NcrdManageController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		nameCardVO.setEmplyrId(loginVO.getUniqId());
-		model.addAttribute("uniqId", loginVO.getUniqId());
+		nameCardVO.setEmplyrId(loginVO.getUserId());
+		model.addAttribute("userId", loginVO.getUserId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
 		nameCardVO.fillPageInfo(paginationInfo);
@@ -78,7 +77,7 @@ public class NcrdManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/ncm/NameCardList");
+		return "cop/ncm/NameCardList";
 	}
 
 	/**
@@ -93,7 +92,7 @@ public class NcrdManageController {
 			@ModelAttribute NameCardVO nameCardVO, 
 			ModelMap model) {
 		
-		return WebUtil.adjustViewName("/cop/ncm/NameCardRegist");
+		return "cop/ncm/NameCardRegist";
 	}
 
 	/**
@@ -111,17 +110,18 @@ public class NcrdManageController {
 
 		beanValidator.validate(nameCardVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/ncm/NameCardRegist");
+			return "cop/ncm/NameCardRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		nameCardVO.setFrstRegisterId(loginVO.getUniqId());
+		nameCardVO.setFrstRegisterId(loginVO.getUserId());
 //		nameCardVO.setTrgetId(loginVO.getOrgnztId());
 
 		ncrdService.insertNcrdItem(nameCardVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, nameCardVO, "/cop/ncm/listNameCard.do");
+		model.addAttribute("redirectURL", "/cop/ncm/listNameCard.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -140,13 +140,13 @@ public class NcrdManageController {
 
 		boolean writer = false;
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		if (nameCardVO.getFrstRegisterId().equals(loginVO.getUniqId())) {
+		if (nameCardVO.getFrstRegisterId().equals(loginVO.getUserId())) {
 			writer = true;
 		}
 		model.addAttribute("writer", writer);
 		model.addAttribute(nameCardVO);
 
-		return WebUtil.adjustViewName("/cop/ncm/NameCardEdit");
+		return "cop/ncm/NameCardEdit";
 	}
 
 	/**
@@ -164,16 +164,17 @@ public class NcrdManageController {
 
 		beanValidator.validate(nameCardVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/cop/ncm/NameCardEdit");
+			return "cop/ncm/NameCardEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		nameCardVO.setLastUpdusrId(loginVO.getUniqId());
+		nameCardVO.setLastUpdusrId(loginVO.getUserId());
 
 		ncrdService.updateNcrdItem(nameCardVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, nameCardVO, "/cop/ncm/listNameCard.do");
+		model.addAttribute("redirectURL", "/cop/ncm/listNameCard.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -188,12 +189,13 @@ public class NcrdManageController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		nameCardVO.setLastUpdusrId(loginVO.getUniqId());
+		nameCardVO.setLastUpdusrId(loginVO.getUserId());
 
 		ncrdService.deleteNcrdItem(nameCardVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, nameCardVO, "/cop/ncm/listNameCard.do");
+		model.addAttribute("redirectURL", "/cop/ncm/listNameCard.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -209,8 +211,8 @@ public class NcrdManageController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		nameCardVO.setEmplyrId(loginVO.getUniqId());
-		model.addAttribute("uniqId", loginVO.getUniqId());
+		nameCardVO.setEmplyrId(loginVO.getUserId());
+		model.addAttribute("userId", loginVO.getUserId());
 
 		PaginationInfo paginationInfo = new PaginationInfo();
 		nameCardVO.fillPageInfo(paginationInfo);
@@ -223,7 +225,7 @@ public class NcrdManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/ncm/NameCardPublic");
+		return "cop/ncm/NameCardPublic";
 	}
 
 	/**
@@ -234,38 +236,19 @@ public class NcrdManageController {
 	@RequestMapping("/cop/ncm/insertNameCardUse.do")
 	@Secured("ROLE_USER")
 	public String insertNameCardUse(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute NameCardUseVO nameCardUseVO, 
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		nameCardUseVO.setEmplyrId(loginVO.getUniqId());
+		nameCardUseVO.setEmplyrId(loginVO.getUserId());
 		nameCardUseVO.setUseAt("Y");
 
 		ncrdService.insertNcrdUseInf(nameCardUseVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, nameCardUseVO, "/cop/ncm/listNameCardPublic.do");
-	}
-
-	/**
-	 * 명함사용자 정보를 수정한다.
-	 * 
-	 * @param nameCardUseVO
-	 */
-	@RequestMapping("/cop/ncm/updateNameCardUse.do")
-	@Secured("ROLE_USER")
-	public String updateNameCardUse(
-			@ModelAttribute NameCardUseVO nameCardUseVO, 
-			ModelMap model) {
-
-		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		nameCardUseVO.setEmplyrId(loginVO.getUniqId());
-		nameCardUseVO.setUseAt("N");
-
-		ncrdService.updateNcrdUseInf(nameCardUseVO);
-
-		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, nameCardUseVO, "/cop/ncm/listNameCardPublic.do");
+		model.addAttribute("redirectURL", "/cop/ncm/listNameCardPublic.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -276,16 +259,18 @@ public class NcrdManageController {
 	@RequestMapping("/cop/ncm/deleteNameCardUse.do")
 	@Secured("ROLE_USER")
 	public String deleteNameCardUse(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute NameCardUseVO nameCardUseVO, 
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		nameCardUseVO.setEmplyrId(loginVO.getUniqId());
+		nameCardUseVO.setEmplyrId(loginVO.getUserId());
 
 		ncrdService.deleteNcrdUseInf(nameCardUseVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, nameCardUseVO, "/cop/ncm/listNameCard.do");
+		model.addAttribute("redirectURL", "/cop/ncm/listNameCard.do");
+	    return "cmm/redirect";
 	}
 	
 }

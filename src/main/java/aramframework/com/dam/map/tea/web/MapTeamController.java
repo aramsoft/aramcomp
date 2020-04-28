@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.dam.map.tea.domain.MapTeamVO;
 import aramframework.com.dam.map.tea.service.MapTeamService;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -61,7 +60,7 @@ public class MapTeamController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/dam/map/tea/MapTeamList");
+		return "/dam/map/tea/MapTeamList";
 	}
 
 	/**
@@ -77,7 +76,7 @@ public class MapTeamController {
 
 		model.addAttribute(mapTeamService.selectMapTeamDetail(mapTeamVO));
 
-		return WebUtil.adjustViewName("/dam/map/tea/MapTeamDetail");
+		return "/dam/map/tea/MapTeamDetail";
 	}
 
 	/**
@@ -90,7 +89,7 @@ public class MapTeamController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute MapTeamVO mapTeamVO) {
 		
-		return WebUtil.adjustViewName("/dam/map/tea/MapTeamRegist");
+		return "/dam/map/tea/MapTeamRegist";
 	}
 
 	/**
@@ -107,17 +106,18 @@ public class MapTeamController {
 		
 		beanValidator.validate(mapTeamVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/dam/map/tea/MapTeamRegist");
+			return "/dam/map/tea/MapTeamRegist";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		mapTeamVO.setFrstRegisterId(loginVO.getUniqId());
+		mapTeamVO.setFrstRegisterId(loginVO.getUserId());
 
 		mapTeamService.insertMapTeam(mapTeamVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, mapTeamVO, "/dam/map/tea/listMapTeam.do");
+		model.addAttribute("redirectURL", "/dam/map/tea/listMapTeam.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -133,7 +133,7 @@ public class MapTeamController {
 
 		model.addAttribute(mapTeamService.selectMapTeamDetail(mapTeamVO));
 		
-		return WebUtil.adjustViewName("/dam/map/tea/MapTeamEdit");
+		return "/dam/map/tea/MapTeamEdit";
 	}
 
 	/**
@@ -150,17 +150,18 @@ public class MapTeamController {
 
 		beanValidator.validate(mapTeamVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/dam/map/tea/MapTeamEdit");
+			return "/dam/map/tea/MapTeamEdit";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		mapTeamVO.setLastUpdusrId(loginVO.getUniqId());
+		mapTeamVO.setLastUpdusrId(loginVO.getUserId());
 
 		mapTeamService.updateMapTeam(mapTeamVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, mapTeamVO, "/dam/map/tea/listMapTeam.do");
+		model.addAttribute("redirectURL", "/dam/map/tea/listMapTeam.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -177,7 +178,8 @@ public class MapTeamController {
 		mapTeamService.deleteMapTeam(mapTeamVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, mapTeamVO, "/dam/map/tea/listMapTeam.do");
+		model.addAttribute("redirectURL", "/dam/map/tea/listMapTeam.do");
+	    return "cmm/redirect";
 	}
 
 }

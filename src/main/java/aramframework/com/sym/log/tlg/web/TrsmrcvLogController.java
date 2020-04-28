@@ -11,7 +11,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.log.tlg.domain.TrsmrcvLogVO;
 import aramframework.com.sym.log.tlg.service.TrsmrcvLogService;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -53,7 +52,7 @@ public class TrsmrcvLogController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/log/tlg/TrsmrcvLogList");
+		return "/sym/log/tlg/TrsmrcvLogList";
 	}
 
 	/**
@@ -70,7 +69,7 @@ public class TrsmrcvLogController {
 
 		model.addAttribute(trsmrcvLogService.selectTrsmrcvLog(trsmrcvLogVO));
 
-		return WebUtil.adjustViewName("/sym/log/tlg/TrsmrcvLogDetail");
+		return "/sym/log/tlg/TrsmrcvLogDetail";
 	}
 
 	/**
@@ -84,7 +83,7 @@ public class TrsmrcvLogController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute TrsmrcvLogVO trsmrcvLogVO) {
 
-		return WebUtil.adjustViewName("/sym/log/tlg/TrsmrcvLogRegist");
+		return "/sym/log/tlg/TrsmrcvLogRegist";
 	}
 
 	/**
@@ -100,12 +99,13 @@ public class TrsmrcvLogController {
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		trsmrcvLogVO.setRqesterId(loginVO.getUniqId());
+		trsmrcvLogVO.setRqesterId(loginVO.getUserId());
 
 		trsmrcvLogService.logInsertTrsmrcvLog(trsmrcvLogVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, trsmrcvLogVO, "/sym/log/tlg/listTrsmrcvLog.do");
+		model.addAttribute("redirectURL", "/sym/log/tlg/listTrsmrcvLog.do");
+	    return "cmm/redirect";
 	}
 
 }

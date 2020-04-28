@@ -99,7 +99,7 @@ public class BoardMasterVO extends BaseVO {
 	public void setBbsId(String bbsId) {
 		this.bbsId = bbsId;
 		if(bbsId.length() != 0)
-			this.pathId = WebUtil.getPathId(bbsId);
+			this.setPathId(WebUtil.getPathId(bbsId));
 	}
 
 	/**

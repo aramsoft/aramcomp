@@ -66,7 +66,7 @@ public class ProcessMonController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/utl/sys/prm/ProcessMonList");
+		return "/utl/sys/prm/ProcessMonList";
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class ProcessMonController {
 
 		model.addAttribute(processMonService.selectProcessMon(processMonVO));
 
-		return WebUtil.adjustViewName("/utl/sys/prm/ProcessMonDetail");
+		return "/utl/sys/prm/ProcessMonDetail";
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class ProcessMonController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProcessMonVO processMonVO) {
 
-		return WebUtil.adjustViewName("/utl/sys/prm/ProcessMonRegist");
+		return "/utl/sys/prm/ProcessMonRegist";
 	}
 
 	/**
@@ -116,17 +116,18 @@ public class ProcessMonController {
 		// 서버 validate 체크
 		beanValidator.validate(processMonVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/utl/sys/prm/ProcessMonRegist");
+			return "/utl/sys/prm/ProcessMonRegist";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		processMonVO.setFrstRegisterId(loginVO.getUniqId());
+		processMonVO.setFrstRegisterId(loginVO.getUserId());
 
 		processMonService.insertProcessMon(processMonVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, processMonVO, "/utl/sys/prm/listProcessMon.do");
+		model.addAttribute("redirectURL", "/utl/sys/prm/listProcessMon.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -143,7 +144,7 @@ public class ProcessMonController {
 
 		model.addAttribute(processMonService.selectProcessMon(processMonVO));
 
-		return WebUtil.adjustViewName("/utl/sys/prm/ProcessMonEdit");
+		return "/utl/sys/prm/ProcessMonEdit";
 	}
 
 	/**
@@ -161,17 +162,18 @@ public class ProcessMonController {
 
 		beanValidator.validate(processMonVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/utl/sys/prm/ProcessMonEdit");
+			return "/utl/sys/prm/ProcessMonEdit";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		processMonVO.setLastUpdusrId(loginVO.getUniqId());
+		processMonVO.setLastUpdusrId(loginVO.getUserId());
 
 		processMonService.updateProcessMon(processMonVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, processMonVO, "/utl/sys/prm/listProcessMon.do");
+		model.addAttribute("redirectURL", "/utl/sys/prm/listProcessMon.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -189,7 +191,8 @@ public class ProcessMonController {
 		processMonService.deleteProcessMon(processMonVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, processMonVO, "/utl/sys/prm/listProcessMon.do");
+		model.addAttribute("redirectURL", "/utl/sys/prm/listProcessMon.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -206,7 +209,7 @@ public class ProcessMonController {
 		// System.out.println("FileSysNm" + fileSysMntrngVO.getFileSysNm());
 		model.addAttribute("processSttus", ProcessMonChecker.getProcessId(processMonVO.getProcessNm()));
 
-		return WebUtil.adjustViewName("/utl/sys/prm/ProcessMonRegist");
+		return "/utl/sys/prm/ProcessMonRegist";
 	}
 
 	/**
@@ -239,7 +242,7 @@ public class ProcessMonController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/utl/sys/prm/ProcessMonLogList");
+		return "/utl/sys/prm/ProcessMonLogList";
 	}
 
 	// 조회시작시
@@ -271,7 +274,7 @@ public class ProcessMonController {
 
 		model.addAttribute(processMonLogVO);
 		
-		return WebUtil.adjustViewName("/utl/sys/prm/ProcessMonLogDetail");
+		return "/utl/sys/prm/ProcessMonLogDetail";
 	}
 
 }

@@ -62,15 +62,15 @@ public class ExcelCmyMenuView extends AbstractXlsxView {
 
 		// set header information
 		Row row = sheet.createRow(0);
-		row.createCell(0).setCellValue("매뉴번호");
-		row.createCell(1).setCellValue("메뉴명");
-		row.createCell(2).setCellValue("프로그램명");
-		row.createCell(3).setCellValue("메뉴설명");
-		row.createCell(4).setCellValue("사용여부");
-		row.createCell(5).setCellValue("관리자여부");
-		row.createCell(6).setCellValue("바로가기url");
-		row.createCell(7).setCellValue("톱메뉴여부");
-		row.createCell(8).setCellValue("메뉴별명");
+		row.createCell(0).setCellValue("매뉴명");
+		row.createCell(1).setCellValue("메뉴한글명");
+		row.createCell(2).setCellValue("메뉴위치");
+		row.createCell(3).setCellValue("프로그램명");
+		row.createCell(4).setCellValue("바로가기url");
+		row.createCell(5).setCellValue("메뉴설명");
+		row.createCell(6).setCellValue("상위메뉴여부");
+		row.createCell(7).setCellValue("관리자여부");
+		row.createCell(8).setCellValue("사용여부");
 		
 		List<EgovMap> resultList = (List<EgovMap>) model.get("resultList");
 
@@ -78,15 +78,15 @@ public class ExcelCmyMenuView extends AbstractXlsxView {
 			EgovMap result = resultList.get(i);
 
 			row = sheet.createRow(i + 1);
-			row.createCell(0).setCellValue(String.valueOf(result.get("menuNo")));
-			row.createCell(1).setCellValue((String)result.get("menuNm"));
-			row.createCell(2).setCellValue((String)result.get("progrmFileNm"));
-			row.createCell(3).setCellValue((String)result.get("menuDc"));
-			row.createCell(4).setCellValue((String)result.get("useAt"));
-			row.createCell(5).setCellValue((String)result.get("mgrAt"));
-			row.createCell(6).setCellValue((String)result.get("directUrl"));
-			row.createCell(7).setCellValue((String)result.get("topMenuAt"));
-			row.createCell(8).setCellValue((String)result.get("menuAlias"));
+			row.createCell(0).setCellValue((String)result.get("menuNm"));
+			row.createCell(1).setCellValue((String)result.get("menuKnm"));
+			row.createCell(2).setCellValue((String)result.get("menuPos"));
+			row.createCell(3).setCellValue((String)result.get("progrmFileNm"));
+			row.createCell(4).setCellValue((String)result.get("directUrl"));
+			row.createCell(5).setCellValue((String)result.get("menuDc"));
+			row.createCell(6).setCellValue((String)result.get("topMenuAt"));
+			row.createCell(7).setCellValue((String)result.get("mgrAt"));
+			row.createCell(8).setCellValue((String)result.get("useAt"));
 		}
 	}
 }	

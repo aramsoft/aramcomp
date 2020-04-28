@@ -41,6 +41,9 @@ public class BatchSchdulVO extends BaseVO {
 	/** 실행스케줄초 */
 	private String executSchdulSecnd;
 	
+	/** 사용여부 */
+	private String useAt;
+	
 	// helper
 	/** 실행주기명 */
 	private String executCycleNm;
@@ -65,9 +68,6 @@ public class BatchSchdulVO extends BaseVO {
 	
 	/** 배치메소드 */
 	private String batchMethod;
-	
-	/** 배치빈이름 */
-	private String batchBean;
 	
 	// domain
 	/**
@@ -196,6 +196,24 @@ public class BatchSchdulVO extends BaseVO {
 		this.executSchdulSecnd = executSchdulSecnd;
 	}
 
+	/**
+	 * 사용여부를 리턴한다.
+	 * 
+	 * @return the useAt
+	 */
+	public String getUseAt() {
+		return useAt;
+	}
+	/**
+	 * 사용여부를 설정한다.
+	 * 
+	 * @param useAt
+	 *            설정할 사용여부
+	 */
+	public void setUseAt(String useAt) {
+		this.useAt = useAt;
+	}
+
 	// helper
 	/**
 	 * @return the executCycleNm
@@ -320,20 +338,6 @@ public class BatchSchdulVO extends BaseVO {
 	 */
 	public void setBatchMethod(String batchMethod) {
 		this.batchMethod = batchMethod;
-	}
-
-	/**
-	 * @return the batchBean
-	 */
-	public String getBatchBean() {
-		return batchBean;
-	}
-	/**
-	 * @param batchBean
-	 *            the batchBean to set
-	 */
-	public void setBatchBean(String batchBean) {
-		this.batchBean = batchBean;
 	}
 
 	/**

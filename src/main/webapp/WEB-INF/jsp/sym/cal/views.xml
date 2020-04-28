@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="sym/cal/RestdeList" extends="default">
+    <put-attribute name="title" value="휴일 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/sym/cal/RestdeList.jsp" />
+  </definition>
+  
+  <definition name="sym/cal/RestdeDetail" extends="default">
+    <put-attribute name="title" value="휴일 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/sym/cal/RestdeDetail.jsp" />
+  </definition>
+  
+  <definition name="sym/cal/RestdeRegist" extends="default">
+    <put-attribute name="title" value="휴일 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/sym/cal/RestdeRegist.jsp" />
+  </definition>
+  
+  <definition name="sym/cal/RestdeEdit" extends="default">
+    <put-attribute name="title" value="휴일 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/sym/cal/RestdeEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

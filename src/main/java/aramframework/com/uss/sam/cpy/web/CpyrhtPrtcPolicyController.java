@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.sam.cpy.domain.CpyrhtPrtcPolicyVO;
 import aramframework.com.uss.sam.cpy.service.CpyrhtPrtcPolicyService;
@@ -58,7 +57,7 @@ public class CpyrhtPrtcPolicyController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/sam/cpy/CpyrhtPrtcPolicyList");
+		return "uss/sam/cpy/CpyrhtPrtcPolicyList";
 	}
 
 	/**
@@ -75,7 +74,7 @@ public class CpyrhtPrtcPolicyController {
 
 		model.addAttribute(cpyrhtPrtcPolicyService.selectCpyrhtPrtcPolicyDetail(cpyrhtPrtcPolicyVO));
 
-		return WebUtil.adjustViewName("/uss/sam/cpy/CpyrhtPrtcPolicyDetail");
+		return "uss/sam/cpy/CpyrhtPrtcPolicyDetail";
 	}
 
 	/**
@@ -90,7 +89,7 @@ public class CpyrhtPrtcPolicyController {
 			@ModelAttribute CpyrhtPrtcPolicyVO cpyrhtPrtcPolicyVO, 
 			ModelMap model) {
 
-		return WebUtil.adjustViewName("/uss/sam/cpy/CpyrhtPrtcPolicyRegist");
+		return "uss/sam/cpy/CpyrhtPrtcPolicyRegist";
 	}
 
 	/**
@@ -108,17 +107,18 @@ public class CpyrhtPrtcPolicyController {
 
 		beanValidator.validate(cpyrhtPrtcPolicyVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/sam/cpy/CpyrhtPrtcPolicyRegist");
+			return "uss/sam/cpy/CpyrhtPrtcPolicyRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		cpyrhtPrtcPolicyVO.setFrstRegisterId(loginVO.getUniqId()); // 최초등록자ID
+		cpyrhtPrtcPolicyVO.setFrstRegisterId(loginVO.getUserId()); // 최초등록자ID
 
 		cpyrhtPrtcPolicyService.insertCpyrhtPrtcPolicy(cpyrhtPrtcPolicyVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, cpyrhtPrtcPolicyVO, "/uss/sam/cpy/listCpyrhtPrtcPolicy.do");
+		model.addAttribute("redirectURL", "/uss/sam/cpy/listCpyrhtPrtcPolicy.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -135,7 +135,7 @@ public class CpyrhtPrtcPolicyController {
 
 		model.addAttribute(cpyrhtPrtcPolicyService.selectCpyrhtPrtcPolicyDetail(cpyrhtPrtcPolicyVO));
 
-		return WebUtil.adjustViewName("/uss/sam/cpy/CpyrhtPrtcPolicyEdit");
+		return "uss/sam/cpy/CpyrhtPrtcPolicyEdit";
 	}
 
 	/**
@@ -154,17 +154,18 @@ public class CpyrhtPrtcPolicyController {
 		// Validation
 		beanValidator.validate(cpyrhtPrtcPolicyVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/sam/cpy/CpyrhtPrtcPolicyEdit");
+			return "uss/sam/cpy/CpyrhtPrtcPolicyEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		cpyrhtPrtcPolicyVO.setLastUpdusrId(loginVO.getUniqId()); // 최종수정자ID
+		cpyrhtPrtcPolicyVO.setLastUpdusrId(loginVO.getUserId()); // 최종수정자ID
 
 		cpyrhtPrtcPolicyService.updateCpyrhtPrtcPolicy(cpyrhtPrtcPolicyVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, cpyrhtPrtcPolicyVO, "/uss/sam/cpy/listCpyrhtPrtcPolicy.do");
+		model.addAttribute("redirectURL", "/uss/sam/cpy/listCpyrhtPrtcPolicy.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -175,13 +176,15 @@ public class CpyrhtPrtcPolicyController {
 	@RequestMapping("/uss/sam/cpy/deleteCpyrhtPrtcPolicy.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteCpyrhtPrtcPolicy(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CpyrhtPrtcPolicyVO cpyrhtPrtcPolicyVO, 
 			ModelMap model) {
 
 		cpyrhtPrtcPolicyService.deleteCpyrhtPrtcPolicy(cpyrhtPrtcPolicyVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, cpyrhtPrtcPolicyVO, "/uss/sam/cpy/listCpyrhtPrtcPolicy.do");
+		model.addAttribute("redirectURL", "/uss/sam/cpy/listCpyrhtPrtcPolicy.do");
+	    return "cmm/redirect";
 	}
 
 }

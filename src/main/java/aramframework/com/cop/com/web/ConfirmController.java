@@ -62,7 +62,7 @@ public class ConfirmController {
 		confirmHistoryVO.setTrgetJobId(WebUtil.getCurTrgetId());
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		confirmHistoryVO.setConfmerId(loginVO.getUniqId());
+		confirmHistoryVO.setConfmerId(loginVO.getUserId());
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
 		confirmHistoryVO.fillPageInfo(paginationInfo);
@@ -75,7 +75,7 @@ public class ConfirmController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/cop/com/ConfirmList");
+		return "cop/com/ConfirmList";
 	}
 
 	/**
@@ -93,13 +93,13 @@ public class ConfirmController {
 		checkAuthorityManager(); // server-side 권한 확인
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		confirmHistoryVO.setConfmerId(loginVO.getUniqId());
+		confirmHistoryVO.setConfmerId(loginVO.getUserId());
 
 		model.addAttribute(confirmService.selectSingleConfirmRequest(confirmHistoryVO));
 
 		cmmUseService.populateCmmCodeList("COM007", "COM007_confmSttus");
 
-		return WebUtil.adjustViewName("/cop/com/ConfirmEdit");
+		return "cop/com/ConfirmEdit";
 	}
 
 	/**
@@ -110,18 +110,20 @@ public class ConfirmController {
 	@RequestMapping("/cop/com/updateConfirm.do")
 	@Secured("ROLE_USER")
 	public String updateConfirm(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ConfirmHistoryVO confirmHistoryVO, 
 			ModelMap model) {
 
 		checkAuthorityManager(); // server-side 권한 확인
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		confirmHistoryVO.setConfmerId(loginVO.getUniqId());
+		confirmHistoryVO.setConfmerId(loginVO.getUserId());
 
 		confirmService.updateConfirmRequest(confirmHistoryVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return WebUtil.redirectJsp(model, confirmHistoryVO, "/cop/com/listConfirmByTrget.do");
+		model.addAttribute("redirectURL", "/cop/com/listConfirmByTrget.do");
+	    return "cmm/redirect";
 	}
 
 }

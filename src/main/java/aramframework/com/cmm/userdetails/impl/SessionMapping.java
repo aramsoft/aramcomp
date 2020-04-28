@@ -48,20 +48,18 @@ public class SessionMapping extends EgovUsersByUsernameMapping {
 		String strUserSe = rs.getString("user_se");
 		String strUserEmail = rs.getString("user_email");
 		String strOrgnztId = rs.getString("orgnzt_id");
-		String strUniqId = rs.getString("esntl_id");
 		/** 2010.06.30 *이용 *조직명 추가 */
 		String strOrgnztNm = rs.getString("orgnzt_nm");
 		String strMblTelNo = rs.getString("mbtlnum");
 
 		// 세션 항목 설정
 		LoginVO loginVO = new LoginVO();
-		loginVO.setId(strUserId);
+		loginVO.setUserId(strUserId);
 		loginVO.setPassword(strPassWord);
 		loginVO.setName(strUserNm);
 		loginVO.setUserSe(strUserSe);
 		loginVO.setEmail(strUserEmail);
 		loginVO.setOrgnztId(strOrgnztId);
-		loginVO.setUniqId(strUniqId);
 		/** 2010.06.30 *이용 *조직명 추가 */
 		loginVO.setOrgnztNm(strOrgnztNm);
 		loginVO.setMblTelNo(strMblTelNo);

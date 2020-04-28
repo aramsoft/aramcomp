@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uss.ion.rsn.domain.RssInfoVO;
 import aramframework.com.uss.ion.rsn.service.RssService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -48,7 +47,7 @@ public class RssController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/ion/rsn/RssServiceList");
+		return "/uss/ion/rsn/RssServiceList";
 	}
 
 	/**
@@ -70,7 +69,7 @@ public class RssController {
 
 		model.addAttribute("mapRssInfoList", rssService.selectRssServiceTable(rssInfoVO));
 
-		return WebUtil.adjustViewName("/uss/ion/rsn/RssService");
+		return "/uss/ion/rsn/RssService";
 	}
 
 }

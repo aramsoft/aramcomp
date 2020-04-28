@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.domain.SearchVO;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uss.ion.ism.domain.InfrmlSanctnVO;
 import aramframework.com.uss.ion.ism.domain.SanctnerVO;
 import aramframework.com.uss.ion.ism.service.InfrmlSanctnService;
@@ -50,7 +49,7 @@ public class InfrmlSanctnController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/ion/ism/SanctnerListPopup");
+		return "/uss/ion/ism/SanctnerListPopup";
 	}
 
 	/**
@@ -66,7 +65,7 @@ public class InfrmlSanctnController {
 
 		model.addAttribute(infrmlSanctnService.selectInfrmlSanctn(infrmlSanctnVO));
 
-		return WebUtil.adjustViewName("/uss/ion/ism/InfrmlSanctnDetail");
+		return "/uss/ion/ism/InfrmlSanctnDetail";
 	}
 
 	/**

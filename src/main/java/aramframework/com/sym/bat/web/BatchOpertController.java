@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.bat.domain.BatchOpertVO;
 import aramframework.com.sym.bat.service.BatchOpertService;
 import aramframework.com.sym.bat.validation.BatchOpertValidator;
@@ -63,7 +62,7 @@ public class BatchOpertController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/bat/BatchOpertPopup");
+		return "sym/bat/BatchOpertPopup";
 	}
 
 	/**
@@ -89,7 +88,7 @@ public class BatchOpertController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/bat/BatchOpertList");
+		return "sym/bat/BatchOpertList";
 	}
 
 	/**
@@ -106,7 +105,7 @@ public class BatchOpertController {
 		
 		model.addAttribute(batchOpertService.selectBatchOpert(batchOpertVO));
 
-		return WebUtil.adjustViewName("/sym/bat/BatchOpertDetail");
+		return "sym/bat/BatchOpertDetail";
 	}
 
 	/**
@@ -121,7 +120,7 @@ public class BatchOpertController {
 			@ModelAttribute BatchOpertVO batchOpertVO, 
 			ModelMap model) {
 	
-		return WebUtil.adjustViewName("/sym/bat/BatchOpertRegist");
+		return "sym/bat/BatchOpertRegist";
 	}
 
 	/**
@@ -142,17 +141,18 @@ public class BatchOpertController {
 			batchOpertValidator.validate(batchOpertVO, bindingResult);
 		}
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/bat/BatchOpertRegist");
+			return "sym/bat/BatchOpertRegist";
 		} 
 		
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		batchOpertVO.setFrstRegisterId(loginVO.getUniqId());
+		batchOpertVO.setFrstRegisterId(loginVO.getUserId());
 
 		batchOpertService.insertBatchOpert(batchOpertVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, batchOpertVO, "/sym/bat/listBatchOpert.do");
+		model.addAttribute("redirectURL", "/sym/bat/listBatchOpert.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -169,7 +169,7 @@ public class BatchOpertController {
 		
 		model.addAttribute(batchOpertService.selectBatchOpert(batchOpertVO));
 
-		return WebUtil.adjustViewName("/sym/bat/BatchOpertEdit");
+		return "sym/bat/BatchOpertEdit";
 	}
 
 	/**
@@ -190,17 +190,18 @@ public class BatchOpertController {
 			batchOpertValidator.validate(batchOpertVO, bindingResult);
 		}
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/bat/BatchOpertEdit");
+			return "sym/bat/BatchOpertEdit";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		batchOpertVO.setLastUpdusrId(loginVO.getUniqId());
+		batchOpertVO.setLastUpdusrId(loginVO.getUserId());
 
 		batchOpertService.updateBatchOpert(batchOpertVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, batchOpertVO, "/sym/bat/listBatchOpert.do");
+		model.addAttribute("redirectURL", "/sym/bat/listBatchOpert.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -211,13 +212,15 @@ public class BatchOpertController {
 	@RequestMapping("/sym/bat/deleteBatchOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteBatchOpert(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BatchOpertVO batchOpertVO, 
 			ModelMap model) {
 
 		batchOpertService.deleteBatchOpert(batchOpertVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, batchOpertVO, "/sym/bat/listBatchOpert.do");
+		model.addAttribute("redirectURL", "/sym/bat/listBatchOpert.do");
+	    return "cmm/redirect";
 	}
 
 }

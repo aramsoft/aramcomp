@@ -13,7 +13,7 @@ public class CommentVO extends BaseVO {
 
 	// domain
 	/** 댓글번호 */
-	private String commentNo = "";
+	private long commentNo = 0L;
 
 	/** 게시판 ID */
 	private String bbsId = "";
@@ -49,7 +49,7 @@ public class CommentVO extends BaseVO {
 	 * 
 	 * @return the commentNo
 	 */
-	public String getCommentNo() {
+	public long getCommentNo() {
 		return commentNo;
 	}
 	/**
@@ -58,7 +58,7 @@ public class CommentVO extends BaseVO {
 	 * @param commentNo
 	 *            the commentNo to set
 	 */
-	public void setCommentNo(String commentNo) {
+	public void setCommentNo(long commentNo) {
 		this.commentNo = commentNo;
 	}
 

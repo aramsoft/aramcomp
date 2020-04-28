@@ -14,7 +14,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.utl.fcc.service.DateUtil;
 import aramframework.com.utl.fcc.service.StringUtil;
@@ -68,7 +67,7 @@ public class ProxySvcController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/utl/sys/pxy/ProxySvcList");
+		return "/utl/sys/pxy/ProxySvcList";
 	}
 
 	/**
@@ -85,7 +84,7 @@ public class ProxySvcController {
 
 		model.addAttribute(proxySvcService.selectProxySvc(proxySvcVO));
 
-		return WebUtil.adjustViewName("/utl/sys/pxy/ProxySvcDetail");
+		return "/utl/sys/pxy/ProxySvcDetail";
 	}
 
 	/**
@@ -101,7 +100,7 @@ public class ProxySvcController {
 
 		cmmUseService.populateCmmCodeList("COM072", "COM072_svcSttus");
 
-		return WebUtil.adjustViewName("/utl/sys/pxy/ProxySvcRegist");
+		return "/utl/sys/pxy/ProxySvcRegist";
 	}
 
 	/**
@@ -119,16 +118,17 @@ public class ProxySvcController {
 
 		beanValidator.validate(proxySvcVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/utl/sys/pxy/ProxySvcRegist");
+			return "/utl/sys/pxy/ProxySvcRegist";
 		}
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		proxySvcVO.setFrstRegisterId(loginVO.getId());
+		proxySvcVO.setFrstRegisterId(loginVO.getUserId());
 
 		proxySvcService.insertProxySvc(proxySvcVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, proxySvcVO, "/utl/sys/pxy/listProxySvc.do");
+		model.addAttribute("redirectURL", "/utl/sys/pxy/listProxySvc.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -147,7 +147,7 @@ public class ProxySvcController {
 
 		cmmUseService.populateCmmCodeList("COM072", "COM072_svcSttus");
 
-		return WebUtil.adjustViewName("/utl/sys/pxy/ProxySvcEdit");
+		return "/utl/sys/pxy/ProxySvcEdit";
 	}
 
 	/**
@@ -165,16 +165,17 @@ public class ProxySvcController {
 
 		beanValidator.validate(proxySvcVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/utl/sys/pxy/ProxySvcEdit");
+			return "/utl/sys/pxy/ProxySvcEdit";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		proxySvcVO.setLastUpdusrId(loginVO.getId());
+		proxySvcVO.setLastUpdusrId(loginVO.getUserId());
 
 		proxySvcService.updateProxySvc(proxySvcVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, proxySvcVO, "/utl/sys/pxy/listProxySvc.do");
+		model.addAttribute("redirectURL", "/utl/sys/pxy/listProxySvc.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -192,7 +193,8 @@ public class ProxySvcController {
 		proxySvcService.deleteProxySvc(proxySvcVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, proxySvcVO, "/utl/sys/pxy/listProxySvc.do");
+		model.addAttribute("redirectURL", "/utl/sys/pxy/listProxySvc.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -228,7 +230,7 @@ public class ProxySvcController {
 		proxySvcLogVO.setStrStartDate(StringUtil.addMinusChar(proxySvcLogVO.getStrStartDate()));
 		proxySvcLogVO.setStrEndDate(StringUtil.addMinusChar(proxySvcLogVO.getStrEndDate()));
 
-		return WebUtil.adjustViewName("/utl/sys/pxy/ProxyLogList");
+		return "/utl/sys/pxy/ProxyLogList";
 	}
 
 }

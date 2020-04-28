@@ -17,7 +17,7 @@
 				   LEFT OUTER JOIN COMTN_NCRD b
 						ON a.NCRD_ID = b.NCRD_ID
 				   LEFT OUTER JOIN COMVN_USER_MASTER c
-						ON a.EMPLYR_ID = c.ESNTL_ID
+						ON a.EMPLYR_ID = c.USER_ID
 			 WHERE a.USE_AT = 'Y'
 			   AND a.EMPLYR_ID = #{emplyrId}
 		]]>
@@ -51,7 +51,7 @@
 				   LEFT OUTER JOIN COMTN_NCRD b
 						ON a.NCRD_ID = b.NCRD_ID
 				   LEFT OUTER JOIN COMVN_USER_MASTER c
-						ON a.EMPLYR_ID = c.ESNTL_ID
+						ON a.EMPLYR_ID = c.USER_ID
 			 WHERE a.USE_AT = 'Y'
 			   AND a.EMPLYR_ID = #{emplyrId}
 		]]>
@@ -92,7 +92,6 @@
 			     , END_MBTLNUM			AS "endMbtlNum"
 			     , ADRES				AS "adres"
 			     , DETAIL_ADRES			AS "detailAdres"
-			     , ZIP					AS "zip"
 			     , RM					AS "remark"
 			     , FRST_REGIST_PNTTM	AS "frstRegisterPnttm"
 			     , FRST_REGISTER_ID		AS "frstRegisterId"
@@ -124,7 +123,6 @@
 				  ,	END_MBTLNUM
 				  ,	ADRES
 				  ,	DETAIL_ADRES
-				  ,	ZIP
 				  , FRST_REGISTER_ID 
 				  , FRST_REGIST_PNTTM 
 				  , LAST_UPDUSR_ID
@@ -151,7 +149,6 @@
 				  ,	#{endMbtlNum}
 				  ,	#{adres}
 				  ,	#{detailAdres}
-				  ,	#{zip}
 				  , #{frstRegisterId}
 				  , now()
 				  , #{frstRegisterId} 
@@ -184,7 +181,6 @@
 			     , END_MBTLNUM 		= #{endMbtlNum}
 			     , ADRES 			= #{adres}
 			     , DETAIL_ADRES 	= #{detailAdres}
-			     , ZIP 				= #{zip}
 			     , RM 				= #{remark}
 			     , LAST_UPDUSR_ID 	= #{lastUpdusrId}
 			     , LAST_UPDT_PNTTM 	= now()

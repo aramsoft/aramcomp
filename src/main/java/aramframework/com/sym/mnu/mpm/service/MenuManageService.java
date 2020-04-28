@@ -1,12 +1,7 @@
 package aramframework.com.sym.mnu.mpm.service;
 
-import java.io.InputStream;
 import java.util.List;
 
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +9,8 @@ import aramframework.com.sym.mnu.mpm.dao.MenuManageMapper;
 import aramframework.com.sym.mnu.mpm.domain.MenuManageVO;
 import aramframework.com.sym.prm.dao.ProgrmManageDtlMapper;
 import aramframework.com.sym.prm.dao.ProgrmManageMapper;
-import aramframework.com.sym.prm.domain.ProgrmManageVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.fdl.excel.EgovExcelService;
+//import egovframework.rte.fdl.excel.EgovExcelService;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 /**
@@ -39,7 +33,7 @@ public class MenuManageService extends EgovAbstractServiceImpl {
 	private ProgrmManageDtlMapper progrmManageDtlMapper;
 	
 	//	@Resource(name = "excelZipService")
-	private EgovExcelService excelZipService;
+//	private EgovExcelService excelZipService;
 
 	/**
 	 * 메뉴 목록을 조회
@@ -158,6 +152,7 @@ public class MenuManageService extends EgovAbstractServiceImpl {
 	 * @param menuManageVO
 	 * @param inputStream
 	 */
+/*
 	public String menuBndeRegist(MenuManageVO menuManageVO, InputStream inputStream) {
 
 		String message = bndeRegist(inputStream);
@@ -200,30 +195,31 @@ public class MenuManageService extends EgovAbstractServiceImpl {
 		egovLogger.debug(message);
 		return sMessage;
 	}
-
+*/
 	/**
 	 * 메뉴목록_프로그램목록 일괄생성
 	 * 
 	 * @param inputStream
 	 */
+/*
 	private String bndeRegist(InputStream inputStream) {
 		boolean success = false;
 		String requestValue = null;
 		int progrmSheetRowCnt = 0;
 		int menuSheetRowCnt = 0;
 		try {
-			/*
-			 * 오류 메세지 정보 
-			 * message = "99"; //프로그램목록테이블 데이타 존재오류. 
-			 * message = "99"; //메뉴정보테이블 데이타 존재오류. 
-			 * message = "90"; //파일존재하지 않음. 
-			 * message = "91"; //프로그램시트의 cell 갯수 오류 
-			 * message = "92"; //메뉴정보시트의 cell 갯수 오류
-			 * message = "93"; //엑셀 시트갯수 오류 
-			 * message = "95"; //메뉴정보 입력시 에러 
-			 * message = "96"; //프로그램목록입력시 에러 
-			 * message = "0";  //일괄배치처리 완료
-			 */
+			//
+			// 오류 메세지 정보 
+			// message = "99"; //프로그램목록테이블 데이타 존재오류. 
+			// message = "99"; //메뉴정보테이블 데이타 존재오류. 
+			// message = "90"; //파일존재하지 않음. 
+			// message = "91"; //프로그램시트의 cell 갯수 오류 
+			// message = "92"; //메뉴정보시트의 cell 갯수 오류
+			// message = "93"; //엑셀 시트갯수 오류 
+			// message = "95"; //메뉴정보 입력시 에러 
+			// message = "96"; //프로그램목록입력시 에러 
+			// message = "0";  //일괄배치처리 완료
+			//
 
 			if (progrmManageMapper.selectProgrmListCntAll() > 0) {
 				return requestValue = "99";
@@ -253,7 +249,7 @@ public class MenuManageService extends EgovAbstractServiceImpl {
 					return requestValue = "92"; // 메뉴정보시트의 cell 갯수 오류
 				}
 
-				/* sheet1번 = 프로그램목록 , sheet2번 = 메뉴정보 */
+				// sheet1번 = 프로그램목록 , sheet2번 = 메뉴정보 
 				success = progrmRegist(progrmSheet);
 				if (success) {
 					success = menuRegist(menuSheet);
@@ -280,12 +276,13 @@ public class MenuManageService extends EgovAbstractServiceImpl {
 		}
 		return requestValue;
 	}
-
+*/
 	/**
 	 * 프로그램목록 일괄등록
 	 * 
 	 * @param progrmSheet
 	 */
+/*
 	private boolean progrmRegist(Sheet progrmSheet) {
 		int count = 0;
 		boolean success = false;
@@ -334,12 +331,13 @@ public class MenuManageService extends EgovAbstractServiceImpl {
 		}
 		return success;
 	}
-
+*/
 	/**
 	 * 메뉴정보 일괄등록
 	 * 
 	 * @param menuSheet
 	 */
+/*
 	private boolean menuRegist(Sheet menuSheet) {
 		boolean success = false;
 		int count = 0;
@@ -403,27 +401,29 @@ public class MenuManageService extends EgovAbstractServiceImpl {
 		}
 		return success;
 	}
-
+*/
 	/**
 	 * 프로그램 정보를 등록
 	 * 
 	 * @param progrmManageVO
 	 */
+/*
 	private boolean insertProgrm(ProgrmManageVO progrmManageVO) {
 		progrmManageMapper.insertProgrm(progrmManageVO);
 		return true;
 	}
-
+*/
 	/**
 	 * 메뉴정보를 일괄 등록
 	 * 
 	 * @param menuManageVO
 	 */
+/*
 	private boolean insertMenuManageBind(MenuManageVO menuManageVO) {
 		menuManageMapper.insertMenuManage(menuManageVO);
 		return true;
 	}
-
+*/
 	/**
 	 * 프로그램 정보 전체데이타 초기화
 	 * 

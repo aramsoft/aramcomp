@@ -10,48 +10,45 @@
 		<choose>
 		<when test='userSe == "GNR"'>
 			<![CDATA[
-			SELECT mber_id 					AS id
+			SELECT mber_id 					AS userId
 			     , mber_nm 					AS name
 			     , ihidNum 					AS ihidNum
 			     , password 				AS password
 			     , mber_email_adres 		AS email
 			     , 'GNR' 					AS userSe
 			     , '-' 						AS orgnztId
-			     , ESNTL_ID 				AS uniqId
 			  FROM COMTN_GNRL_MBER
-			 WHERE ESNTL_ID = #{uniqId}
+			 WHERE USER_ID = #{userId}
 			   AND mber_sttus = 'P'
 			]]>
 		</when>
 		<!-- 기업회원 -->
 		<when test='userSe == "ENT"'>
 			<![CDATA[
-			SELECT ENTRPRS_MBER_ID 			AS id
+			SELECT ENTRPRS_MBER_ID 			AS userId
 			     , cmpny_nm 				AS name
 			     , entrprs_mber_password 	AS password
 			     , bizrno 					AS ihidNum
 			     , applcnt_email_adres 		AS email
 			     , 'ENT' 					AS userSe
 			     , '-' 						AS orgnztId
-			     , esntl_id 				AS uniqId
 			  FROM COMTN_ENTRPRS_MBER
-			 WHERE ESNTL_ID = #{uniqId}
+			 WHERE USER_ID = #{userId}
 			   AND entrprs_mber_sttus = 'P'
 			]]>
 		</when>
 		<!-- 업무사용자 -->
 		<when test='userSe == "USR"'>
 			<![CDATA[
-			SELECT emplyr_id 				AS id
+			SELECT emplyr_id 				AS userId
 			     , user_nm 					AS name
 			     , password 				AS password
 			     , ihidnum 					AS ihidNum
 			     , email_adres 				AS email
 			     , 'USR' 					AS userSe
 			     , orgnzt_id 				AS orgnztId
-			     , esntl_id 				AS uniqId
 			  FROM COMTN_EMPLYR_INFO
-			 WHERE ESNTL_ID = #{uniqId}
+			 WHERE USER_ID = #{userId}
 			   AND emplyr_sttus_code = 'P'
 			]]>
 		</when>
@@ -64,16 +61,15 @@
 		<choose>
 		<when test='userSe == "GNR"'>
 			<![CDATA[
-			SELECT mber_id 					AS id
+			SELECT mber_id 					AS userId
 			     , mber_nm 					AS name
 			     , ihidNum 					AS ihidNum
 			     , password 				AS password
 			     , mber_email_adres 		AS email
 			     , 'GNR' 					AS userSe
 			     , '-' 						AS orgnztId
-			     , esntl_id 				AS uniqId
 			  FROM COMTN_GNRL_MBER
-			 WHERE mber_id = #{id}
+			 WHERE mber_id = #{userId}
 			   AND password = #{password}
 			   AND mber_sttus = 'P'
 			]]>
@@ -81,16 +77,15 @@
 		<!-- 기업회원 -->
 		<when test='userSe == "ENT"'>
 			<![CDATA[
-			SELECT ENTRPRS_MBER_ID 			AS id
+			SELECT ENTRPRS_MBER_ID 			AS userId
 			     , cmpny_nm 				AS name
 			     , entrprs_mber_password 	AS password
 			     , bizrno 					AS ihidNum
 			     , applcnt_email_adres 		AS email
 			     , 'ENT' 					AS userSe
 			     , '-' 						AS orgnztId
-			     , esntl_id 				AS uniqId
 			  FROM COMTN_ENTRPRS_MBER
-			 WHERE ENTRPRS_MBER_ID = #{id}
+			 WHERE ENTRPRS_MBER_ID = #{userId}
 			   AND entrprs_mber_password = #{password}
 			   AND entrprs_mber_sttus = 'P'
 			]]>
@@ -98,16 +93,15 @@
 		<!-- 업무사용자 -->
 		<when test='userSe == "USR"'>
 			<![CDATA[
-			SELECT emplyr_id 				AS id
+			SELECT emplyr_id 				AS userId
 			     , user_nm 					AS name
 			     , password 				AS password
 			     , ihidnum 					AS ihidNum
 			     , email_adres 				AS email
 			     , 'USR' 					AS userSe
 			     , orgnzt_id 				AS orgnztId
-			     , esntl_id 				AS uniqId
 			  FROM COMTN_EMPLYR_INFO
-			 WHERE emplyr_id = #{id}
+			 WHERE emplyr_id = #{userId}
 			   AND password = #{password}
 			   AND emplyr_sttus_code = 'P'
 			]]>
@@ -118,14 +112,13 @@
 	<!-- 인증서 로그인 -->
 	<select id="actionCrtfctLogin" resultType="loginVO">
 		<![CDATA[
-			SELECT emplyr_id 					AS id
+			SELECT emplyr_id 					AS userId
 			     , user_nm 						AS name
 			     , password 					AS password
 			     , ihidnum 						AS ihidNum
 			     , email_adres 					AS email
 			     , 'USR' 						AS userSe
 			     , orgnzt_id 					AS orgnztId
-			     , esntl_id 					AS uniqId
 			  FROM COMTN_EMPLYR_INFO
 			 WHERE CRTFC_DN_VALUE = #{dn}
 		]]>
@@ -136,7 +129,7 @@
 		<choose>
 		<when test='userSe == "GNR"'>
 			<![CDATA[
-			SELECT mber_id 					AS id
+			SELECT mber_id 					AS userId
 			  FROM COMTN_GNRL_MBER
 			 WHERE mber_nm = #{name}
 			   AND mber_email_adres = #{email}
@@ -146,7 +139,7 @@
 		<!-- 기업회원 -->
 		<when test='userSe == "ENT"'>
 			<![CDATA[
-			SELECT ENTRPRS_MBER_ID 			AS id
+			SELECT ENTRPRS_MBER_ID 			AS userId
 			  FROM COMTN_ENTRPRS_MBER
 			 WHERE cmpny_nm = #{name}
 			   AND applcnt_email_adres = #{email}
@@ -156,7 +149,7 @@
 		<!-- 업무사용자 -->
 		<when test='userSe == "USR"'>
 			<![CDATA[
-			SELECT emplyr_id 				AS id
+			SELECT emplyr_id 				AS userId
 			  FROM COMTN_EMPLYR_INFO
 			 WHERE user_nm = #{name}
 			   AND email_adres = #{email}
@@ -173,7 +166,7 @@
 			<![CDATA[
 			SELECT password 				AS password
 			  FROM COMTN_GNRL_MBER
-			 WHERE mber_id = #{id}
+			 WHERE mber_id = #{userId}
 			   AND mber_nm = #{name}
 			   AND mber_email_adres = #{email}
 			   AND password_hint = #{passwordHint}
@@ -186,7 +179,7 @@
 			<![CDATA[
 			SELECT entrprs_mber_password 	AS password
 			  FROM COMTN_ENTRPRS_MBER
-			 WHERE ENTRPRS_MBER_ID = #{id}
+			 WHERE ENTRPRS_MBER_ID = #{userId}
 			   AND cmpny_nm = #{name}
 			   AND applcnt_email_adres = #{email}
 			   AND entrprs_mber_password_hint = #{passwordHint}
@@ -199,7 +192,7 @@
 			<![CDATA[
 			SELECT password 				AS password
 			  FROM COMTN_EMPLYR_INFO
-			 WHERE emplyr_id = #{id}
+			 WHERE emplyr_id = #{userId}
 			   AND user_nm = #{name}
 			   AND email_adres = #{email}
 			   AND password_hint = #{passwordHint}
@@ -217,7 +210,7 @@
 			<![CDATA[
 			UPDATE COMTN_GNRL_MBER
 			   SET password = #{password}
-			 WHERE mber_id = #{id}
+			 WHERE mber_id = #{userId}
 			]]>
 		</when>
 		<!-- 기업회원 -->
@@ -225,7 +218,7 @@
 			<![CDATA[
 			UPDATE COMTN_ENTRPRS_MBER
 			   SET entrprs_mber_password = #{password}
-			 WHERE ENTRPRS_MBER_ID = #{id}
+			 WHERE ENTRPRS_MBER_ID = #{userId}
 			]]>
 		</when>
 		<!-- 업무사용자 -->
@@ -233,7 +226,7 @@
 			<![CDATA[
 			UPDATE COMTN_EMPLYR_INFO
 			   SET password = #{password}
-			 WHERE emplyr_id = #{id}
+			 WHERE emplyr_id = #{userId}
 			]]>
 		</when>
 		</choose>
@@ -247,7 +240,7 @@
 			<![CDATA[
 			UPDATE COMTN_GNRL_MBER
 			   SET google_account = #{googleAccount}
-			 WHERE mber_id = #{id}
+			 WHERE mber_id = #{userId}
 			]]>
 		</when>
 		<!-- 기업회원 -->
@@ -255,7 +248,7 @@
 			<![CDATA[
 			UPDATE COMTN_ENTRPRS_MBER
 			   SET google_account = #{googleAccount}
-			 WHERE ENTRPRS_MBER_ID = #{id}
+			 WHERE ENTRPRS_MBER_ID = #{userId}
 			]]>
 		</when>
 		<!-- 업무사용자 -->
@@ -263,7 +256,7 @@
 			<![CDATA[
 			UPDATE COMTN_EMPLYR_INFO
 			   SET google_account = #{googleAccount}
-			 WHERE emplyr_id = #{id}
+			 WHERE emplyr_id = #{userId}
 			]]>
 		</when>
 		</choose>
@@ -283,7 +276,7 @@
 		<![CDATA[
 			SELECT GOOGLE_ACCOUNT
 			  FROM COMVN_USER_MASTER
-			 WHERE ESNTL_ID = #{uniqId}
+			 WHERE USER_ID = #{userId}
 		]]>
 	</select>
 	

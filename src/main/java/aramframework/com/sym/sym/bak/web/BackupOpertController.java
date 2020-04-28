@@ -17,7 +17,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.sym.bak.domain.BackupOpertVO;
 import aramframework.com.sym.sym.bak.schedule.BackupScheduler;
 import aramframework.com.sym.sym.bak.service.BackupOpertService;
@@ -76,7 +75,7 @@ public class BackupOpertController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/sym/sym/bak/BackupOpertList");
+		return "sym/sym/bak/BackupOpertList";
 	}
 
 	/**
@@ -93,7 +92,7 @@ public class BackupOpertController {
 		
 		model.addAttribute(backupOpertService.selectBackupOpert(backupOpertVO));
 
-		return WebUtil.adjustViewName("/sym/sym/bak/BackupOpertDetail");
+		return "sym/sym/bak/BackupOpertDetail";
 	}
 
 	/**
@@ -110,7 +109,7 @@ public class BackupOpertController {
 
 		referenceData(model);
 
-		return WebUtil.adjustViewName("/sym/sym/bak/BackupOpertRegist");
+		return "sym/sym/bak/BackupOpertRegist";
 	}
 
 	/**
@@ -131,22 +130,23 @@ public class BackupOpertController {
 		backupOpertValidator.validate(backupOpertVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			referenceData(model);
-			return WebUtil.adjustViewName("/sym/sym/bak/BackupOpertRegist");
+			return "sym/sym/bak/BackupOpertRegist";
 		} 
 		
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		backupOpertVO.setFrstRegisterId(loginVO.getUniqId());
+		backupOpertVO.setFrstRegisterId(loginVO.getUserId());
 
 		backupOpertService.insertBackupOpert(backupOpertVO);
 
 		// 배치스케줄러에 스케줄정보반영
 		backupOpertService.selectBackupOpert(backupOpertVO);
-		backupScheduler.insertBackupOpert(backupOpertVO);
+		backupScheduler.insertBackupOpert(backupOpertVO, false);
 
 		// Exception 없이 진행시 등록성공메시지
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, backupOpertVO, "/sym/sym/bak/listBackupOpert.do");
+		model.addAttribute("redirectURL", "/sym/sym/bak/listBackupOpert.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -165,7 +165,7 @@ public class BackupOpertController {
 	
 		referenceData(model);
 
-		return WebUtil.adjustViewName("/sym/sym/bak/BackupOpertEdit");
+		return "sym/sym/bak/BackupOpertEdit";
 	}
 
 	/**
@@ -186,21 +186,22 @@ public class BackupOpertController {
 		backupOpertValidator.validate(backupOpertVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			referenceData(model);
-			return WebUtil.adjustViewName("/sym/sym/bak/BackupOpertEdit");
+			return "sym/sym/bak/BackupOpertEdit";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		backupOpertVO.setLastUpdusrId(loginVO.getUniqId());
+		backupOpertVO.setLastUpdusrId(loginVO.getUserId());
 
 		backupOpertService.updateBackupOpert(backupOpertVO);
 
 		// 백업스케줄러에 스케줄정보반영
 		backupOpertService.selectBackupOpert(backupOpertVO);
-		backupScheduler.updateBackupOpert(backupOpertVO);
+		backupScheduler.insertBackupOpert(backupOpertVO, true);		// 갱신시 true
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, backupOpertVO, "/sym/sym/bak/listBackupOpert.do");
+		model.addAttribute("redirectURL", "/sym/sym/bak/listBackupOpert.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -211,6 +212,7 @@ public class BackupOpertController {
 	@RequestMapping("/sym/sym/bak/deleteBackupOpert.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteBackupOpert(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BackupOpertVO backupOpertVO, 
 			ModelMap model) {
 
@@ -219,7 +221,8 @@ public class BackupOpertController {
 		backupOpertService.deleteBackupOpert(backupOpertVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, backupOpertVO, "/sym/sym/bak/listBackupOpert.do");
+		model.addAttribute("redirectURL", "/sym/sym/bak/listBackupOpert.do");
+	    return "cmm/redirect";
 	}
 
 	/**

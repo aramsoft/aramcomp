@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
@@ -72,9 +73,9 @@ public class UserInfController {
 
 		String returnUrl;
 		if ("Y".equals(popFlag)) {
-			returnUrl = "aramframework/com/cop/com/UserListPop";
+			returnUrl = "cop/com/UserListPop";
 		} else {
-			returnUrl = WebUtil.adjustViewName("/cop/com/UserList");
+			returnUrl = "cop/com/UserList";
 		}
 		return returnUrl;
 	}
@@ -118,9 +119,9 @@ public class UserInfController {
 
 		String returnUrl;
 		if ("Y".equals(popFlag)) {
-			returnUrl = "aramframework/com/cop/com/UserListPop";
+			returnUrl = "cop/com/UserListPop";
 		} else {
-			returnUrl = WebUtil.adjustViewName("/cop/com/UserList");
+			returnUrl = "cop/com/UserList";
 		}
 		return returnUrl;
 	}
@@ -164,11 +165,11 @@ public class UserInfController {
 
 		String returnUrl;
 		if ("Y".equals(popFlag)) {
-			returnUrl = "aramframework/com/cop/com/UserListPop";
+			returnUrl = "cop/com/UserListPop";
 		} else if ("S".equals(popFlag)) {
-			returnUrl = "aramframework/com/cop/com/CmmntyMngrListPop";
+			returnUrl = "cop/com/CmmntyMngrListPop";
 		} else {
-			returnUrl = WebUtil.adjustViewName("/cop/com/UserList");
+			returnUrl = "cop/com/UserList";
 		}
 		return returnUrl;
 	}
@@ -183,6 +184,7 @@ public class UserInfController {
 	@RequestMapping("/cop/com/registCmmntyManager.do")
 	@Secured("ROLE_USER")
 	public String registCmmntyManager(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute UserInfVO userInfVO, 
 			@RequestParam(value="param_cmmntyId", required=true) String cmmntyId,
 			@RequestParam(value="param_emplyrId", required=true) String emplyrId,
@@ -194,7 +196,7 @@ public class UserInfController {
 
 		CommunityUserVO communityUserVO = new CommunityUserVO();
 
-		communityUserVO.setLastUpdusrId(loginVO.getUniqId());
+		communityUserVO.setLastUpdusrId(loginVO.getUserId());
 		communityUserVO.setCmmntyId(cmmntyId);
 		communityUserVO.setEmplyrId(emplyrId);
 		communityUserVO.setUseAt("Y");
@@ -203,7 +205,8 @@ public class UserInfController {
 		cmmntyService.updateCommunityUserInf(communityUserVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, userInfVO, "/cop/com/listCmmntyUser.do");
+		model.addAttribute("redirectURL", "/cop/com/listCmmntyUser.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -216,6 +219,7 @@ public class UserInfController {
 	@RequestMapping("/cop/com/deleteCmmntyManager.do")
 	@Secured("ROLE_USER")
 	public String deleteCmmntyManager(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute UserInfVO userInfVO, 
 			@RequestParam(value="param_cmmntyId", required=true) String cmmntyId,
 			@RequestParam(value="param_emplyrId", required=true) String emplyrId,
@@ -227,7 +231,7 @@ public class UserInfController {
 
 		CommunityUserVO communityUserVO = new CommunityUserVO();
 
-		communityUserVO.setLastUpdusrId(loginVO.getUniqId());
+		communityUserVO.setLastUpdusrId(loginVO.getUserId());
 		communityUserVO.setCmmntyId(cmmntyId);
 		communityUserVO.setEmplyrId(emplyrId);
 		communityUserVO.setUseAt("Y");
@@ -236,7 +240,8 @@ public class UserInfController {
 		cmmntyService.updateCommunityUserInf(communityUserVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, userInfVO, "/cop/com/listCmmntyUser.do");
+		model.addAttribute("redirectURL", "/cop/com/listCmmntyUser.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -249,6 +254,7 @@ public class UserInfController {
 	@RequestMapping("/cop/com/reRegistCmmntyUser.do")
 	@Secured("ROLE_USER")
 	public String reRegisterCmmntyUser(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute UserInfVO userInfVO, 
 			@RequestParam(value="param_cmmntyId", required=true) String cmmntyId,
 			@RequestParam(value="param_emplyrId", required=true) String emplyrId,
@@ -260,7 +266,7 @@ public class UserInfController {
 
 		CommunityUserVO communityUserVO = new CommunityUserVO();
 
-		communityUserVO.setLastUpdusrId(loginVO.getUniqId());
+		communityUserVO.setLastUpdusrId(loginVO.getUserId());
 		communityUserVO.setCmmntyId(cmmntyId);
 		communityUserVO.setEmplyrId(emplyrId);
 		communityUserVO.setUseAt("Y");
@@ -271,7 +277,8 @@ public class UserInfController {
 		cmmntyService.updateCommunityUserInf(communityUserVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, userInfVO, "/cop/com/listCmmntyUser.do");
+		model.addAttribute("redirectURL", "/cop/com/listCmmntyUser.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -284,6 +291,7 @@ public class UserInfController {
 	@RequestMapping("/cop/com/deleteCmmntyUser.do")
 	@Secured("ROLE_USER")
 	public String deleteCmmntyUser(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute UserInfVO userInfVO, 
 			@RequestParam(value="param_cmmntyId", required=true) String cmmntyId,
 			@RequestParam(value="param_emplyrId", required=true) String emplyrId,
@@ -295,7 +303,7 @@ public class UserInfController {
 
 		CommunityUserVO communityUserVO = new CommunityUserVO();
 
-		communityUserVO.setLastUpdusrId(loginVO.getUniqId());
+		communityUserVO.setLastUpdusrId(loginVO.getUserId());
 		communityUserVO.setCmmntyId(cmmntyId);
 		communityUserVO.setEmplyrId(emplyrId);
 		communityUserVO.setSecsnDe(DateUtil.getToday());
@@ -303,7 +311,8 @@ public class UserInfController {
 		cmmntyService.deleteCommunityUserInf(communityUserVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, userInfVO, "/cop/com/listCmmntyUser.do");
+		model.addAttribute("redirectURL", "/cop/com/listCmmntyUser.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -316,6 +325,7 @@ public class UserInfController {
 	@RequestMapping("/cop/com/eraseCmmntyUser.do")
 	@Secured("ROLE_USER")
 	public String eraseCmmntyUser(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute UserInfVO userInfVO, 
 			@RequestParam(value="param_cmmntyId", required=true) String cmmntyId,
 			@RequestParam(value="param_emplyrId", required=true) String emplyrId,
@@ -327,7 +337,7 @@ public class UserInfController {
 
 		CommunityUserVO communityUserVO = new CommunityUserVO();
 
-		communityUserVO.setLastUpdusrId(loginVO.getUniqId());
+		communityUserVO.setLastUpdusrId(loginVO.getUserId());
 		communityUserVO.setCmmntyId(cmmntyId);
 		communityUserVO.setEmplyrId(emplyrId);
 		communityUserVO.setSecsnDe(DateUtil.getToday());
@@ -335,7 +345,8 @@ public class UserInfController {
 		cmmntyService.eraseCommunityUserInf(communityUserVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, userInfVO, "/cop/com/listCmmntyUser.do");
+		model.addAttribute("redirectURL", "/cop/com/listCmmntyUser.do");
+	    return "cmm/redirect";
 	}
 
 }

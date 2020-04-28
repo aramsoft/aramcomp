@@ -106,7 +106,7 @@ public class SysInfo {
 		String status = "CLOSE";
 		Process p = null;
 		try {
-			String cmdStr = AramProperties.getPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getPrductStatus");
+			String cmdStr = AramProperties.getSysPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getPrductStatus");
 			String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), port };
 			p = Runtime.getRuntime().exec(command);
 			// p.waitFor();
@@ -195,7 +195,7 @@ public class SysInfo {
 		String osname = "";
 		Process p = null;
 		try {
-			String cmdStr = AramProperties.getPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getOSInfo");
+			String cmdStr = AramProperties.getSysPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getOSInfo");
 			String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), "NAME" };
 			p = Runtime.getRuntime().exec(command);
 			// p.waitFor();
@@ -247,7 +247,7 @@ public class SysInfo {
 		String osversion = "";
 		Process p = null;
 		try {
-			String cmdStr = AramProperties.getPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getOSInfo");
+			String cmdStr = AramProperties.getSysPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getOSInfo");
 			String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), "VERSION" };
 			p = Runtime.getRuntime().exec(command);
 			// p.waitFor();
@@ -298,7 +298,7 @@ public class SysInfo {
 		String osprductor = "";
 		Process p = null;
 		try {
-			String cmdStr = AramProperties.getPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getOSInfo");
+			String cmdStr = AramProperties.getSysPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getOSInfo");
 			String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), "PRDUCTOR" };
 			p = Runtime.getRuntime().exec(command);
 			// p.waitFor();
@@ -350,7 +350,7 @@ public class SysInfo {
 		String processor = "";
 		Process p = null;
 		try {
-			String cmdStr = AramProperties.getPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getOSInfo");
+			String cmdStr = AramProperties.getSysPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getOSInfo");
 			String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), "PROCESSOR" };
 			p = Runtime.getRuntime().exec(command);
 			// p.waitFor();
@@ -403,7 +403,7 @@ public class SysInfo {
 
 		Process p = null;
 		try {
-			String cmdStr = AramProperties.getPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getDiskInfo");
+			String cmdStr = AramProperties.getSysPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getDiskInfo");
 			String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), "NAME" };
 			p = Runtime.getRuntime().exec(command);
 			// p.waitFor();
@@ -451,7 +451,7 @@ public class SysInfo {
 
 		Process p = null;
 		try {
-			String cmdStr = AramProperties.getPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getDiskInfo");
+			String cmdStr = AramProperties.getSysPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getDiskInfo");
 			String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), "FULL", disk };
 			p = Runtime.getRuntime().exec(command);
 			// p.waitFor();
@@ -499,7 +499,7 @@ public class SysInfo {
 
 		Process p = null;
 		try {
-			String cmdStr = AramProperties.getPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getDiskInfo");
+			String cmdStr = AramProperties.getSysPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getDiskInfo");
 			String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), "USED", disk };
 			p = Runtime.getRuntime().exec(command);
 			// p.waitFor();
@@ -547,7 +547,7 @@ public class SysInfo {
 
 		Process p = null;
 		try {
-			String cmdStr = AramProperties.getPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getDiskInfo");
+			String cmdStr = AramProperties.getSysPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getDiskInfo");
 			String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), "FREE", disk };
 			p = Runtime.getRuntime().exec(command);
 			// p.waitFor();
@@ -650,7 +650,7 @@ public class SysInfo {
 
 		Process p = null;
 		try {
-			String cmdStr = AramProperties.getPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getMoryInfo");
+			String cmdStr = AramProperties.getSysPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getMoryInfo");
 			String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), "USED" };
 			p = Runtime.getRuntime().exec(command);
 			// p.waitFor();
@@ -710,7 +710,7 @@ public class SysInfo {
 
 		Process p = null;
 		try {
-			String cmdStr = AramProperties.getPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getMoryInfo");
+			String cmdStr = AramProperties.getSysPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getMoryInfo");
 			String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), "FREE" };
 			p = Runtime.getRuntime().exec(command);
 			// p.waitFor();
@@ -856,7 +856,7 @@ public class SysInfo {
 		BufferedReader b_out = null;
 		try {
 			Process p = null;
-			String cmdStr = AramProperties.getPathProperty(Globals.SHELL_CONF_PATH, "SHELL." + Globals.OS_TYPE + "." + propertyKeyword);
+			String cmdStr = AramProperties.getSysPathProperty(Globals.SHELL_CONF_PATH, "SHELL." + Globals.OS_TYPE + "." + propertyKeyword);
 			command[0] = cmdStr;
 			p = Runtime.getRuntime().exec(command);
 			p.waitFor();

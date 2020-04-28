@@ -15,7 +15,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.isg.domain.IntnetSvcGuidanceVO;
 import aramframework.com.uss.ion.isg.service.IntnetSvcGuidanceService;
@@ -67,7 +66,7 @@ public class IntnetSvcGuidanceController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/ion/isg/IntnetSvcGuidanceList");
+		return "/uss/ion/isg/IntnetSvcGuidanceList";
 	}
 
 	/**
@@ -80,7 +79,7 @@ public class IntnetSvcGuidanceController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute IntnetSvcGuidanceVO intnetSvcGuidanceVO) {
 
-		return WebUtil.adjustViewName("/uss/ion/isg/IntnetSvcGuidanceRegist");
+		return "/uss/ion/isg/IntnetSvcGuidanceRegist";
 	}
 
 	/**
@@ -97,16 +96,17 @@ public class IntnetSvcGuidanceController {
 
 		beanValidator.validate(intnetSvcGuidanceVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/isg/IntnetSvcGuidanceRegist");
+			return "/uss/ion/isg/IntnetSvcGuidanceRegist";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		intnetSvcGuidanceVO.setUserId(loginVO.getId());
+		intnetSvcGuidanceVO.setUserId(loginVO.getUserId());
 
 		intnetSvcGuidanceService.insertIntnetSvcGuidance(intnetSvcGuidanceVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, intnetSvcGuidanceVO, "/uss/ion/isg/listIntnetSvcGuidance.do");
+		model.addAttribute("redirectURL", "/uss/ion/isg/listIntnetSvcGuidance.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -122,7 +122,7 @@ public class IntnetSvcGuidanceController {
 
 		model.addAttribute(intnetSvcGuidanceService.selectIntnetSvcGuidance(intnetSvcGuidanceVO));
 
-		return WebUtil.adjustViewName("/uss/ion/isg/IntnetSvcGuidanceEdit");
+		return "/uss/ion/isg/IntnetSvcGuidanceEdit";
 	}
 
 	/**
@@ -139,16 +139,17 @@ public class IntnetSvcGuidanceController {
 
 		beanValidator.validate(intnetSvcGuidanceVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/ion/isg/IntnetSvcGuidanceEdit");
+			return "/uss/ion/isg/IntnetSvcGuidanceEdit";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		intnetSvcGuidanceVO.setUserId(loginVO.getId());
+		intnetSvcGuidanceVO.setUserId(loginVO.getUserId());
 
 		intnetSvcGuidanceService.updateIntnetSvcGuidance(intnetSvcGuidanceVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, intnetSvcGuidanceVO, "/uss/ion/isg/listIntnetSvcGuidance.do");
+		model.addAttribute("redirectURL", "/uss/ion/isg/listIntnetSvcGuidance.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -165,7 +166,8 @@ public class IntnetSvcGuidanceController {
 		intnetSvcGuidanceService.deleteIntnetSvcGuidance(intnetSvcGuidanceVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, intnetSvcGuidanceVO, "/uss/ion/isg/listIntnetSvcGuidance.do");
+		model.addAttribute("redirectURL", "/uss/ion/isg/listIntnetSvcGuidance.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -189,7 +191,7 @@ public class IntnetSvcGuidanceController {
 
 		model.addAttribute("resultList", resultList);
 
-		return WebUtil.adjustViewName("/uss/ion/isg/IntnetSvcGuidanceView");
+		return "/uss/ion/isg/IntnetSvcGuidanceView";
 	}
 	
 }

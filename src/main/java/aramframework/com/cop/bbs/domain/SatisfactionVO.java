@@ -13,7 +13,7 @@ public class SatisfactionVO extends BaseVO {
 
 	// domain
 	/** 만족도 번호 */
-	private String stsfdgNo = "";
+	private long stsfdgNo = 0L;
 
 	/** 게시판 ID */
 	private String bbsId = "";
@@ -52,7 +52,7 @@ public class SatisfactionVO extends BaseVO {
 	 * 
 	 * @return the stsfdgNo
 	 */
-	public String getStsfdgNo() {
+	public long getStsfdgNo() {
 		return stsfdgNo;
 	}
 	/**
@@ -61,7 +61,7 @@ public class SatisfactionVO extends BaseVO {
 	 * @param stsfdgNo
 	 *            the stsfdgNo to set
 	 */
-	public void setStsfdgNo(String stsfdgNo) {
+	public void setStsfdgNo(long stsfdgNo) {
 		this.stsfdgNo = stsfdgNo;
 	}
 

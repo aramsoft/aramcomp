@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sec.arm.domain.AuthorVO;
 import aramframework.com.sec.arm.service.AuthorService;
 import aramframework.com.sec.dpt.domain.DeptAuthorVO;
@@ -61,7 +61,7 @@ public class DeptAuthorController {
 		AuthorVO authorVO = new AuthorVO();
 		model.addAttribute("authorList", authorService.selectAuthorAllList(authorVO));
 
-		return WebUtil.adjustViewName("/sec/dpt/DeptAuthor");
+		return "sec/dpt/DeptAuthor";
 	}
 
 	/**
@@ -74,9 +74,10 @@ public class DeptAuthorController {
 	@RequestMapping(value = "/sec/dpt/insertListDeptAuthor.do")
 	@Secured("ROLE_ADMIN")
 	public String insertDeptAuthor(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptAuthorVO deptAuthorVO,
-			@RequestParam String strAuthorCodes,
-			@RequestParam String strRegYns, 
+			@RequestParam("authorCodes") String strAuthorCodes,
+			@RequestParam("regYns") String strRegYns, 
 			HttpServletRequest request, 
 			ModelMap model) {
 
@@ -90,7 +91,8 @@ public class DeptAuthorController {
 		deptAuthorService.insertDeptAuthors(uniqIds, authorCodes, regYns);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, deptAuthorVO, "/sec/dpt/listDeptAuthor.do");
+		model.addAttribute("redirectURL", "/sec/dpt/listDeptAuthor.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -101,6 +103,7 @@ public class DeptAuthorController {
 	@RequestMapping(value = "/sec/dpt/deleteListDeptAuthor.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteDeptAuthor(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptAuthorVO deptAuthorVO,
 			HttpServletRequest request, 
 			ModelMap model) {
@@ -112,7 +115,8 @@ public class DeptAuthorController {
 		deptAuthorService.deleteDeptAuthors(uniqIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, deptAuthorVO, "/sec/dpt/listDeptAuthor.do");
+		model.addAttribute("redirectURL", "/sec/dpt/listDeptAuthor.do");
+	    return "cmm/redirect";
 	}
 
 }

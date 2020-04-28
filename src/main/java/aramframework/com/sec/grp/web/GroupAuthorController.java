@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sec.arm.domain.AuthorVO;
 import aramframework.com.sec.arm.service.AuthorService;
 import aramframework.com.sec.grp.domain.GroupAuthorVO;
@@ -61,7 +61,7 @@ public class GroupAuthorController {
 		AuthorVO authorVO = new AuthorVO();
 		model.addAttribute("authorList", authorService.selectAuthorAllList(authorVO));
 
-		return WebUtil.adjustViewName("/sec/grp/GroupAuthor");
+		return "sec/grp/GroupAuthor";
 	}
 
 	/**
@@ -75,10 +75,11 @@ public class GroupAuthorController {
 	@RequestMapping(value = "/sec/grp/insertListGroupAuthor.do")
 	@Secured("ROLE_ADMIN")
 	public String insertGroupAuthors(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute GroupAuthorVO groupAuthorVO,
-			@RequestParam String strAuthorCodes,
-			@RequestParam String strRegYns, 
-			@RequestParam String strMberTyCodes,// 2011.08.04 수정 부분
+			@RequestParam("authorCodes") String strAuthorCodes,
+			@RequestParam("regYns") String strRegYns, 
+			@RequestParam("mberTyCodes") String strMberTyCodes,// 2011.08.04 수정 부분
 			HttpServletRequest request, 
 			ModelMap model) {
 
@@ -93,7 +94,8 @@ public class GroupAuthorController {
 		groupAuthorService.insertGroupAuthors(uniqIds, authorCodes, regYns, mberTyCodes);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return WebUtil.redirectJsp(model, groupAuthorVO, "/sec/grp/listGroupAuthor.do");
+		model.addAttribute("redirectURL", "/sec/grp/listGroupAuthor.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -104,6 +106,7 @@ public class GroupAuthorController {
 	@RequestMapping(value = "/sec/grp/deleteListGroupAuthor.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteGroupAuthors(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute GroupAuthorVO groupAuthorVO,
 			HttpServletRequest request, 
 			ModelMap model) {
@@ -115,7 +118,8 @@ public class GroupAuthorController {
 		groupAuthorService.deleteGroupAuthors(uniqIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return WebUtil.redirectJsp(model, groupAuthorVO, "/sec/grp/listGroupAuthor.do");
+		model.addAttribute("redirectURL", "/sec/grp/listGroupAuthor.do");
+	    return "cmm/redirect";
 	}
 
 }

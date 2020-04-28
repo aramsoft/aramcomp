@@ -14,7 +14,6 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.sym.sym.nwk.domain.NtwrkVO;
 import aramframework.com.sym.sym.nwk.service.NtwrkService;
 import aramframework.com.uat.uia.domain.LoginVO;
@@ -71,7 +70,7 @@ public class NtwrkController {
 		// 관리항목코드
 		cmmUseService.populateCmmCodeList("COM067", "COM067_manageIem");
 
-		return WebUtil.adjustViewName("/sym/sym/nwk/NtwrkList");
+		return "/sym/sym/nwk/NtwrkList";
 	}
 
 	/**
@@ -88,7 +87,7 @@ public class NtwrkController {
 
 		model.addAttribute(ntwrkService.selectNtwrk(ntwrkVO));
 		
-		return WebUtil.adjustViewName("/sym/sym/nwk/NtwrkDetail");
+		return "/sym/sym/nwk/NtwrkDetail";
 	}
 
 	/**
@@ -105,7 +104,7 @@ public class NtwrkController {
 		// 관리항목코드
 		cmmUseService.populateCmmCodeList("COM067", "COM067_manageIem");
 
-		return WebUtil.adjustViewName("/sym/sym/nwk/NtwrkRegist");
+		return "/sym/sym/nwk/NtwrkRegist";
 	}
 
 	/**
@@ -123,16 +122,17 @@ public class NtwrkController {
 
 		beanValidator.validate(ntwrkVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/sym/nwk/NtwrkRegist");
+			return "/sym/sym/nwk/NtwrkRegist";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		ntwrkVO.setFrstRegisterId(loginVO.getId());
+		ntwrkVO.setFrstRegisterId(loginVO.getUserId());
 
 		ntwrkService.insertNtwrk(ntwrkVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, ntwrkVO, "/sym/sym/nwk/listNtwrk.do");
+		model.addAttribute("redirectURL", "/sym/sym/nwk/listNtwrk.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -152,7 +152,7 @@ public class NtwrkController {
 		// 관리항목코드
 		cmmUseService.populateCmmCodeList("COM067", "COM067_manageIem");
 
-		return WebUtil.adjustViewName("/sym/sym/nwk/NtwrkEdit");
+		return "/sym/sym/nwk/NtwrkEdit";
 	}
 
 	/**
@@ -170,16 +170,17 @@ public class NtwrkController {
 
 		beanValidator.validate(ntwrkVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/sym/sym/nwk/NtwrkEdit");
+			return "/sym/sym/nwk/NtwrkEdit";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		ntwrkVO.setLastUpdusrId(loginVO.getId());
+		ntwrkVO.setLastUpdusrId(loginVO.getUserId());
 
 		ntwrkService.updateNtwrk(ntwrkVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, ntwrkVO, "/sym/sym/nwk/listNtwrk.do");
+		model.addAttribute("redirectURL", "/sym/sym/nwk/listNtwrk.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -197,7 +198,8 @@ public class NtwrkController {
 		ntwrkService.deleteNtwrk(ntwrkVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, ntwrkVO, "/sym/sym/nwk/listNtwrk.do");
+		model.addAttribute("redirectURL", "/sym/sym/nwk/listNtwrk.do");
+	    return "cmm/redirect";
 	}
 
 }

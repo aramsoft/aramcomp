@@ -18,7 +18,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.rss.domain.RssManageVO;
 import aramframework.com.uss.ion.rss.service.RssManageService;
@@ -88,7 +87,7 @@ public class RssManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/ion/rss/RssManageList");
+		return "/uss/ion/rss/RssManageList";
 	}
 
 	/**
@@ -111,8 +110,8 @@ public class RssManageController {
 		if (commandMap.get("checkList") instanceof String) {
 			String sCheckList = (String) commandMap.get("checkList");
 
-			rssManageVO.setFrstRegisterId(loginVO.getUniqId());
-			rssManageVO.setLastUpdusrId(loginVO.getUniqId());
+			rssManageVO.setFrstRegisterId(loginVO.getUserId());
+			rssManageVO.setLastUpdusrId(loginVO.getUserId());
 			rssManageVO.setRssId(sCheckList);
 
 			rssManageService.deleteRssManage(rssManageVO);
@@ -124,8 +123,8 @@ public class RssManageController {
 
 			for (int i = 0; i < sArrCheckList.length; i++) {
 
-				rssManageVO.setFrstRegisterId(loginVO.getUniqId());
-				rssManageVO.setLastUpdusrId(loginVO.getUniqId());
+				rssManageVO.setFrstRegisterId(loginVO.getUserId());
+				rssManageVO.setLastUpdusrId(loginVO.getUserId());
 				rssManageVO.setRssId(sArrCheckList[i]);
 
 				rssManageService.deleteRssManage(rssManageVO);
@@ -133,7 +132,8 @@ public class RssManageController {
 		}
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, rssManageVO, "/uss/ion/rss/listRssManage.do");
+		model.addAttribute("redirectURL", "/uss/ion/rss/listRssManage.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -150,7 +150,7 @@ public class RssManageController {
 
 		model.addAttribute(rssManageService.selectRssManageDetail(rssManageVO));
 
-		return WebUtil.adjustViewName("/uss/ion/rss/RssManageDetail");
+		return "/uss/ion/rss/RssManageDetail";
 	}
 
 	/**
@@ -167,7 +167,7 @@ public class RssManageController {
 
 		model.addAttribute("trgetSvcTableList", rssManageService.selectRssManageTableList());
 
-		return WebUtil.adjustViewName("/uss/ion/rss/RssManageRegist");
+		return "/uss/ion/rss/RssManageRegist";
 	}
 
 	/**
@@ -187,19 +187,20 @@ public class RssManageController {
 		beanValidator.validate(rssManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("trgetSvcTableList", rssManageService.selectRssManageTableList());
-			return WebUtil.adjustViewName("/uss/ion/rss/RssManageRegist");
+			return "/uss/ion/rss/RssManageRegist";
 		}
 		
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		rssManageVO.setFrstRegisterId(loginVO.getUniqId());
+		rssManageVO.setFrstRegisterId(loginVO.getUserId());
 
 		// 저장
 		rssManageService.insertRssManage(rssManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-        return WebUtil.redirectJsp(model, rssManageVO, "/uss/ion/rss/listRssManage.do");
-	}
+		model.addAttribute("redirectURL", "/uss/ion/rss/listRssManage.do");
+	    return "cmm/redirect";
+ 	}
 
 	/**
 	 * RSS태그관리 수정화면으로 이동한다.
@@ -218,7 +219,7 @@ public class RssManageController {
 		// 테이블 목록 불러오기
 		model.addAttribute("trgetSvcTableList", rssManageService.selectRssManageTableList());
 
-		return WebUtil.adjustViewName("/uss/ion/rss/RssManageEdit");
+		return "/uss/ion/rss/RssManageEdit";
 	}
 
 	/**
@@ -239,18 +240,19 @@ public class RssManageController {
 		if (bindingResult.hasErrors()) {
 			// 테이블 목록 불러오기
 			model.addAttribute("trgetSvcTableList", rssManageService.selectRssManageTableList());
-			return WebUtil.adjustViewName("/uss/ion/rss/RssManageEdit");
+			return "/uss/ion/rss/RssManageEdit";
 		}
 		
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		rssManageVO.setLastUpdusrId(loginVO.getUniqId());
+		rssManageVO.setLastUpdusrId(loginVO.getUserId());
 
 		// 저장
 		rssManageService.updateRssManage(rssManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-        return WebUtil.redirectJsp(model, rssManageVO, "/uss/ion/rss/listRssManage.do");
+		model.addAttribute("redirectURL", "/uss/ion/rss/listRssManage.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -268,7 +270,8 @@ public class RssManageController {
 		rssManageService.deleteRssManage(rssManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-        return WebUtil.redirectJsp(model, rssManageVO, "/uss/ion/rss/listRssManage.do");
+		model.addAttribute("redirectURL", "/uss/ion/rss/listRssManage.do");
+	    return "cmm/redirect";
 	}
 
 }

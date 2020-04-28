@@ -13,7 +13,6 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.sam.stp.domain.StplatManageVO;
 import aramframework.com.uss.sam.stp.service.StplatManageService;
@@ -58,7 +57,7 @@ public class StplatManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return WebUtil.adjustViewName("/uss/sam/stp/StplatList");
+		return "uss/sam/stp/StplatList";
 	}
 
 	/**
@@ -75,7 +74,7 @@ public class StplatManageController {
 
 		model.addAttribute(stplatManageService.selectStplatDetail(stplatManageVO));
 
-		return WebUtil.adjustViewName("/uss/sam/stp/StplatDetail");
+		return "uss/sam/stp/StplatDetail";
 	}
 
 	/**
@@ -90,7 +89,7 @@ public class StplatManageController {
 			@ModelAttribute StplatManageVO stplatManageVO, 
 			ModelMap model) {
 
-		return WebUtil.adjustViewName("/uss/sam/stp/StplatRegist");
+		return "uss/sam/stp/StplatRegist";
 	}
 
 	/**
@@ -108,17 +107,18 @@ public class StplatManageController {
 
 		beanValidator.validate(stplatManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/sam/stp/StplatRegist");
+			return "uss/sam/stp/StplatRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		stplatManageVO.setFrstRegisterId(loginVO.getUniqId()); // 최초등록자ID
+		stplatManageVO.setFrstRegisterId(loginVO.getUserId()); // 최초등록자ID
 
 		stplatManageService.insertStplat(stplatManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-	    return WebUtil.redirectJsp(model, stplatManageVO, "/uss/sam/stp/listStplat.do");
+		model.addAttribute("redirectURL", "/uss/sam/stp/listStplat.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -135,7 +135,7 @@ public class StplatManageController {
 
 		model.addAttribute(stplatManageService.selectStplatDetail(stplatManageVO));
 
-		return WebUtil.adjustViewName("/uss/sam/stp/StplatEdit");
+		return "uss/sam/stp/StplatEdit";
 	}
 
 	/**
@@ -154,17 +154,18 @@ public class StplatManageController {
 		// Validation
 		beanValidator.validate(stplatManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return WebUtil.adjustViewName("/uss/sam/stp/StplatEdit");
+			return "uss/sam/stp/StplatEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		stplatManageVO.setLastUpdusrId(loginVO.getUniqId()); // 최종수정자ID
+		stplatManageVO.setLastUpdusrId(loginVO.getUserId()); // 최종수정자ID
 
 		stplatManageService.updateStplat(stplatManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-	    return WebUtil.redirectJsp(model, stplatManageVO, "/uss/sam/stp/listStplat.do");
+		model.addAttribute("redirectURL", "/uss/sam/stp/listStplat.do");
+	    return "cmm/redirect";
 	}
 
 	/**
@@ -175,13 +176,15 @@ public class StplatManageController {
 	@RequestMapping("/uss/sam/stp/deleteStplat.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteStplat(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute StplatManageVO stplatManageVO, 
 			ModelMap model) {
 
 		stplatManageService.deleteStplat(stplatManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-	    return WebUtil.redirectJsp(model, stplatManageVO, "/uss/sam/stp/listStplat.do");
+		model.addAttribute("redirectURL", "/uss/sam/stp/listStplat.do");
+	    return "cmm/redirect";
 	}
 
 }

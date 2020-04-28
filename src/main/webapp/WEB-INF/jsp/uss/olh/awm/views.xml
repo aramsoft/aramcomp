@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE tiles-definitions PUBLIC
 	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
-	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
 
-  <definition name="aramframework/com/uss/olh/awm/AdministrationWordList" extends="default">
+  <definition name="uss/olh/awm/AdministrationWordList" extends="default">
     <put-attribute name="title" value="행정전문용어사전 목록 " />
-    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olh/awm/AdministrationWordList.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/uss/olh/awm/AdministrationWordList.jsp" />
   </definition>
   
-  <definition name="aramframework/com/uss/olh/awm/AdministrationWordDetail" extends="default">
+  <definition name="uss/olh/awm/AdministrationWordDetail" extends="default">
     <put-attribute name="title" value="행정전문용어사전 조회" />
-    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olh/awm/AdministrationWordDetail.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/uss/olh/awm/AdministrationWordDetail.jsp" />
   </definition>
   
-  <definition name="aramframework/com/uss/olh/awm/AdministrationWordRegist" extends="default">
+  <definition name="uss/olh/awm/AdministrationWordRegist" extends="default">
     <put-attribute name="title" value="행정전문용어사전 등록" />
-    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olh/awm/AdministrationWordRegist.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/uss/olh/awm/AdministrationWordRegist.jsp" />
   </definition>
   
-  <definition name="aramframework/com/uss/olh/awm/AdministrationWordEdit" extends="default">
+  <definition name="uss/olh/awm/AdministrationWordEdit" extends="default">
     <put-attribute name="title" value="행정전문용어사전 수정" />
-    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olh/awm/AdministrationWordEdit.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/uss/olh/awm/AdministrationWordEdit.jsp" />
   </definition>
 
-  <definition name="aramframework/com/uss/olh/awm/AdministrationWordUserList" extends="default">
+  <definition name="uss/olh/awm/AdministrationWordUserList" extends="default">
     <put-attribute name="title" value="행정전문용어사전 목록 " />
-    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olh/awm/AdministrationWordUserList.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/uss/olh/awm/AdministrationWordUserList.jsp" />
   </definition>
   
-  <definition name="aramframework/com/uss/olh/awm/AdministrationWordUserDetail" extends="default">
+  <definition name="uss/olh/awm/AdministrationWordUserDetail" extends="default">
     <put-attribute name="title" value="행정전문용어사전 조회" />
-    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/olh/awm/AdministrationWordUserDetail.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/uss/olh/awm/AdministrationWordUserDetail.jsp" />
   </definition>
   
 </tiles-definitions>

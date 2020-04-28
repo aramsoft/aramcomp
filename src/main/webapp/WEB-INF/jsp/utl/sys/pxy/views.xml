@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE tiles-definitions PUBLIC
 	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
-	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
 
-  <definition name="aramframework/com/utl/sys/pxy/ProxySvcList" extends="default">
+  <definition name="utl/sys/pxy/ProxySvcList" extends="default">
     <put-attribute name="title" value="프록시설정 목록 " />
-    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/utl/sys/pxy/ProxySvcList.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/utl/sys/pxy/ProxySvcList.jsp" />
   </definition>
   
-  <definition name="aramframework/com/utl/sys/pxy/ProxySvcDetail" extends="default">
+  <definition name="utl/sys/pxy/ProxySvcDetail" extends="default">
     <put-attribute name="title" value="프록시설정 조회" />
-    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/utl/sys/pxy/ProxySvcDetail.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/utl/sys/pxy/ProxySvcDetail.jsp" />
   </definition>
   
-  <definition name="aramframework/com/utl/sys/pxy/ProxySvcRegist" extends="default">
+  <definition name="utl/sys/pxy/ProxySvcRegist" extends="default">
     <put-attribute name="title" value="프록시설정 등록" />
-    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/utl/sys/pxy/ProxySvcRegist.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/utl/sys/pxy/ProxySvcRegist.jsp" />
   </definition>
   
-  <definition name="aramframework/com/utl/sys/pxy/ProxySvcEdit" extends="default">
+  <definition name="utl/sys/pxy/ProxySvcEdit" extends="default">
     <put-attribute name="title" value="프록시설정 수정" />
-    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/utl/sys/pxy/ProxySvcEdit.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/utl/sys/pxy/ProxySvcEdit.jsp" />
   </definition>
 
-  <definition name="aramframework/com/utl/sys/pxy/ProxyLogList" extends="default">
+  <definition name="utl/sys/pxy/ProxyLogList" extends="default">
     <put-attribute name="title" value="프록시로그 목록 " />
-    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/utl/sys/pxy/ProxyLogList.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/utl/sys/pxy/ProxyLogList.jsp" />
   </definition>
   
 </tiles-definitions>

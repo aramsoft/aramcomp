@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE tiles-definitions PUBLIC
 	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
-	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
 
-  <definition name="aramframework/com/uss/ion/sit/SiteInfoList" extends="default">
+  <definition name="uss/ion/sit/SiteInfoList" extends="default">
     <put-attribute name="title" value="사이트목록" />
-    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/ion/sit/SiteInfoList.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/uss/ion/sit/SiteInfoList.jsp" />
   </definition>
   
-  <definition name="aramframework/com/uss/ion/sit/SiteInfoDetail" extends="default">
+  <definition name="uss/ion/sit/SiteInfoDetail" extends="default">
     <put-attribute name="title" value="사이트정보조회" />
-    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/ion/sit/SiteInfoDetail.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/uss/ion/sit/SiteInfoDetail.jsp" />
   </definition>
   
-  <definition name="aramframework/com/uss/ion/sit/SiteInfoRegist" extends="default">
+  <definition name="uss/ion/sit/SiteInfoRegist" extends="default">
     <put-attribute name="title" value="사이트정보등록" />
-    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/ion/sit/SiteInfoRegist.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/uss/ion/sit/SiteInfoRegist.jsp" />
   </definition>
   
-  <definition name="aramframework/com/uss/ion/sit/SiteInfoEdit" extends="default">
+  <definition name="uss/ion/sit/SiteInfoEdit" extends="default">
     <put-attribute name="title" value="사이트정보 수정" />
-    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/uss/ion/sit/SiteInfoEdit.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/uss/ion/sit/SiteInfoEdit.jsp" />
   </definition>
 
 </tiles-definitions>

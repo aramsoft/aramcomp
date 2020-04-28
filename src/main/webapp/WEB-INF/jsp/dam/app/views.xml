@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE tiles-definitions PUBLIC
 	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
-	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
 
-  <definition name="aramframework/com/dam/app/KnoAppraisalList" extends="default">
+  <definition name="dam/app/KnoAppraisalList" extends="default">
     <put-attribute name="title" value="지식평가관리 목록" />
-    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/dam/app/KnoAppraisalList.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/dam/app/KnoAppraisalList.jsp" />
   </definition>
   
-  <definition name="aramframework/com/dam/app/KnoAppraisalDetail" extends="default">
+  <definition name="dam/app/KnoAppraisalDetail" extends="default">
     <put-attribute name="title" value="지식평가관리 상세조회" />
-    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/dam/app/KnoAppraisalDetail.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/dam/app/KnoAppraisalDetail.jsp" />
   </definition>
   
-  <definition name="aramframework/com/dam/app/KnoAppraisalEdit" extends="default">
+  <definition name="dam/app/KnoAppraisalEdit" extends="default">
     <put-attribute name="title" value="지식평가관리 수정" />
-    <put-attribute name="body" value="/WEB-INF/jsp/aramframework/com/dam/app/KnoAppraisalEdit.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/dam/app/KnoAppraisalEdit.jsp" />
   </definition>
   
 </tiles-definitions>

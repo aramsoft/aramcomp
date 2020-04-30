@@ -62,7 +62,7 @@ public class CmmnCodeManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/ccm/cca/CmmnCodeList";
+		return "com/sym/ccm/cca/CmmnCodeList";
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class CmmnCodeManageController {
 
 		model.addAttribute(cmmnCodeManageService.selectCmmnCodeDetail(cmmnCodeVO));
 
-		return "sym/ccm/cca/CmmnCodeDetail";
+		return "com/sym/ccm/cca/CmmnCodeDetail";
 	}
 
 	/**
@@ -98,7 +98,7 @@ public class CmmnCodeManageController {
 
 		model.addAttribute("cmmnClCode", cmmnClCodeManageService.selectCmmnClCodeList(cmmnClCodeVO));
 
-		return "sym/ccm/cca/CmmnCodeRegist";
+		return "com/sym/ccm/cca/CmmnCodeRegist";
 	}
 
 	/**
@@ -116,7 +116,7 @@ public class CmmnCodeManageController {
 
 		beanValidator.validate(cmmnCodeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "sym/ccm/cca/CmmnCodeRegist";
+			return "com/sym/ccm/cca/CmmnCodeRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -126,7 +126,7 @@ public class CmmnCodeManageController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sym/ccm/cca/listCmmnCode.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -143,7 +143,7 @@ public class CmmnCodeManageController {
 
 		model.addAttribute(cmmnCodeManageService.selectCmmnCodeDetail(cmmnCodeVO));
 
-		return "sym/ccm/cca/CmmnCodeEdit";
+		return "com/sym/ccm/cca/CmmnCodeEdit";
 	}
 
 	/**
@@ -161,7 +161,7 @@ public class CmmnCodeManageController {
 
 		beanValidator.validate(cmmnCodeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "sym/ccm/cca/CmmnCodeEdit";
+			return "com/sym/ccm/cca/CmmnCodeEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -171,7 +171,7 @@ public class CmmnCodeManageController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/sym/ccm/cca/listCmmnCode.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -190,7 +190,7 @@ public class CmmnCodeManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sym/ccm/cca/listCmmnCode.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

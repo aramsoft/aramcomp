@@ -56,7 +56,7 @@ public class KomoranController {
 		model.addAttribute("inputText", inputText);
 		model.addAttribute("resultText", aramResultList.getPlainText());
 			
-		return "cmm/TestKomoran";
+		return "com/cmm/TestKomoran";
 	}
 	
 }

@@ -62,7 +62,7 @@ public class LoginPolicyController {
 	
 		model.addAttribute(paginationInfo);
 
-		return "uat/uap/LoginPolicyList";
+		return "com/uat/uap/LoginPolicyList";
 	}
 
 	/**
@@ -77,7 +77,7 @@ public class LoginPolicyController {
 			@ModelAttribute LoginPolicyVO loginPolicyVO, 
 			ModelMap model)	{
 
-		return "uat/uap/LoginPolicyRegist";
+		return "com/uat/uap/LoginPolicyRegist";
 	}
 
 	/**
@@ -95,7 +95,7 @@ public class LoginPolicyController {
 
 		beanValidator.validate(loginPolicyVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "uat/uap/LoginPolicyRegist";
+			return "com/uat/uap/LoginPolicyRegist";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -105,7 +105,7 @@ public class LoginPolicyController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uat/uap/listLoginPolicy.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -122,7 +122,7 @@ public class LoginPolicyController {
 
 		model.addAttribute(loginPolicyService.selectLoginPolicy(loginPolicyVO));
 
-		return "uat/uap/LoginPolicyEdit";
+		return "com/uat/uap/LoginPolicyEdit";
 	}
 
 	/**
@@ -140,7 +140,7 @@ public class LoginPolicyController {
 
 		beanValidator.validate(loginPolicyVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "uat/uap/LoginPolicyEdit";
+			return "com/uat/uap/LoginPolicyEdit";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -154,7 +154,7 @@ public class LoginPolicyController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uat/uap/listLoginPolicy.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -173,7 +173,7 @@ public class LoginPolicyController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uat/uap/listLoginPolicy.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

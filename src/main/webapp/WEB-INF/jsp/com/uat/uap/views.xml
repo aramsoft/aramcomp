@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="com/uat/uap/LoginPolicyList" extends="default">
+    <put-attribute name="title" value="로그인정책 목록조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uat/uap/LoginPolicyList.jsp" />
+  </definition>
+  
+  <definition name="com/uat/uap/LoginPolicyRegist" extends="default">
+    <put-attribute name="title" value="로그인정책 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uat/uap/LoginPolicyRegist.jsp" />
+  </definition>
+  
+  <definition name="com/uat/uap/LoginPolicyEdit" extends="default">
+    <put-attribute name="title" value="로그인정책 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uat/uap/LoginPolicyEdit.jsp" />
+  </definition>
+  
+</tiles-definitions>

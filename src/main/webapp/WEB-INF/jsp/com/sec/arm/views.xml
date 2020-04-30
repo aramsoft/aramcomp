@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="com/sec/arm/AuthorList" extends="default">
+    <put-attribute name="title" value="권한 목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/sec/arm/AuthorList.jsp" />
+  </definition>
+  
+  <definition name="com/sec/arm/AuthorRegist" extends="default">
+    <put-attribute name="title" value="권한 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/sec/arm/AuthorRegist.jsp" />
+  </definition>
+  
+  <definition name="com/sec/arm/AuthorEdit" extends="default">
+    <put-attribute name="title" value="권한 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/sec/arm/AuthorEdit.jsp" />
+  </definition>
+  
+  <definition name="com/sec/arm/AuthorResource" extends="default">
+    <put-attribute name="title" value="권함별 접근자원 목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/sec/arm/AuthorResource.jsp" />
+  </definition>
+  
+</tiles-definitions>

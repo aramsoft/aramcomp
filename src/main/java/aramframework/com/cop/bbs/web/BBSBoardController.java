@@ -135,7 +135,7 @@ public class BBSBoardController {
     		}
         	
 			if (boardMasterVO.getTmplatCours() == null || boardMasterVO.getTmplatCours().equals("")) {
-				boardMasterVO.setTmplatCours("/css/cop/tpl/egovBaseTemplate.css");
+				boardMasterVO.setTmplatCours("/css/com/cop/tpl/egovBaseTemplate.css");
 			}
    		
 			cacheDictionary.put(CacheKey.BBS_PREFIX + bbsId, boardMasterVO);
@@ -207,7 +207,7 @@ public class BBSBoardController {
 
 		model.addAttribute(paginationInfo);
 
-		return "cop/bbs/NoticeList";
+		return "com/cop/bbs/NoticeList";
 	}
 	
 	/**
@@ -303,7 +303,7 @@ public class BBSBoardController {
 		setDirectUrlToModel(boardVO, model);
 		model.addAttribute(boardVO);
 		
-		return "cop/bbs/NoticeDetail";
+		return "com/cop/bbs/NoticeDetail";
 	}
 	
 	/**
@@ -339,7 +339,7 @@ public class BBSBoardController {
 
 		model.addAttribute(boardVO);
 
-		return "cop/bbs/NoticeView";
+		return "com/cop/bbs/NoticeView";
 	}
 
 	private void setDirectUrlToModel(BoardVO boardVO, ModelMap model) {
@@ -392,7 +392,7 @@ public class BBSBoardController {
 			model.addAttribute("editAuthFlag", editAuthFlag);
 		}
 
-		return "cop/bbs/NoticeRegist";
+		return "com/cop/bbs/NoticeRegist";
 	}
 
 	/**
@@ -429,7 +429,7 @@ public class BBSBoardController {
 
 		beanValidator.validate(boardVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/bbs/NoticeRegist";
+			return "com/cop/bbs/NoticeRegist";
 		}
 
 		boardVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "BBS"));
@@ -453,7 +453,7 @@ public class BBSBoardController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/board/"+boardVO.getPathId()+ "/list");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -490,7 +490,7 @@ public class BBSBoardController {
 
 		boardService.selectBoardArticle(boardVO);
 
-		return "cop/bbs/NoticeReply";
+		return "com/cop/bbs/NoticeReply";
 	}
 
 	/**
@@ -527,7 +527,7 @@ public class BBSBoardController {
 
 		beanValidator.validate(boardVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/bbs/NoticeReply";
+			return "com/cop/bbs/NoticeReply";
 		}
 
 		boardVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "BBS"));
@@ -554,7 +554,7 @@ public class BBSBoardController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/board/"+boardVO.getPathId()+ "/list");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -589,7 +589,7 @@ public class BBSBoardController {
 			String enpassword = FileScrty.encryptPassword(boardVO.getPassword());
 			if (!dbpassword.equals(enpassword)) {
 				model.addAttribute("message", MessageHelper.getMessage("cop.password.not.same.msg"));
-				return "cop/bbs/NoticeDetail";
+				return "com/cop/bbs/NoticeDetail";
 			}
 
 		} else {
@@ -603,7 +603,7 @@ public class BBSBoardController {
 
 		model.addAttribute(boardService.selectBoardArticle(boardVO));
 		
-		return "cop/bbs/NoticeEdit";
+		return "com/cop/bbs/NoticeEdit";
 	}
 
 	/**
@@ -640,7 +640,7 @@ public class BBSBoardController {
 
 		beanValidator.validate(boardVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/bbs/NoticeEdit";
+			return "com/cop/bbs/NoticeEdit";
 		}
 
 		// 첨부파일 관련 ID 생성 start....
@@ -664,7 +664,7 @@ public class BBSBoardController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/board/"+boardVO.getPathId()+ "/list");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -695,7 +695,7 @@ public class BBSBoardController {
 			String enpassword = FileScrty.encryptPassword(boardVO.getPassword());
 			if (!dbpassword.equals(enpassword)) {
 				model.addAttribute("message", MessageHelper.getMessage("cop.password.not.same.msg"));
-				return "cop/bbs/NoticeDetail";
+				return "com/cop/bbs/NoticeDetail";
 			}
 
 			boardVO.setLastUpdusrId("ANONYMOUS");
@@ -715,7 +715,7 @@ public class BBSBoardController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/board/"+boardVO.getPathId()+ "/list");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -736,7 +736,7 @@ public class BBSBoardController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/board/"+boardVO.getPathId()+ "/list");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -788,7 +788,7 @@ public class BBSBoardController {
 
 		model.addAttribute(paginationInfo);
 
-		return "cop/bbs/GuestList";
+		return "com/cop/bbs/GuestList";
 	}
 
 	/**
@@ -847,7 +847,7 @@ public class BBSBoardController {
 
 		model.addAttribute(paginationInfo);
 
-		return "cop/bbs/GuestList";
+		return "com/cop/bbs/GuestList";
 	}
 
 	/**
@@ -952,7 +952,7 @@ public class BBSBoardController {
 		
 		model.addAttribute(boardVO);
 				
-		return "cop/bbs/NoticeList";
+		return "com/cop/bbs/NoticeList";
 	}
 	
 }

@@ -75,7 +75,7 @@ public class ConfirmController {
 
 		model.addAttribute(paginationInfo);
 
-		return "cop/com/ConfirmList";
+		return "com/cop/com/ConfirmList";
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class ConfirmController {
 
 		cmmUseService.populateCmmCodeList("COM007", "COM007_confmSttus");
 
-		return "cop/com/ConfirmEdit";
+		return "com/cop/com/ConfirmEdit";
 	}
 
 	/**
@@ -123,7 +123,7 @@ public class ConfirmController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/cop/com/listConfirmByTrget.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

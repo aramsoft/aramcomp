@@ -69,7 +69,7 @@ public class BBSScrapController {
 
 		model.addAttribute(paginationInfo);
 
-		return "cop/scp/ScrapList";
+		return "com/cop/scp/ScrapList";
 	}
 
 	/**
@@ -95,7 +95,7 @@ public class BBSScrapController {
 		model.addAttribute(getBoardInfo(scrapVO));
 		model.addAttribute(scrapVO);
 		
-		return "cop/scp/ScrapDetail";
+		return "com/cop/scp/ScrapDetail";
 	}
 
 	/**
@@ -130,7 +130,7 @@ public class BBSScrapController {
 		// -------------------------------------
 		model.addAttribute(getBoardInfo(scrapVO));
 
-		return "cop/scp/ScrapRegist";
+		return "com/cop/scp/ScrapRegist";
 	}
 
 	/**
@@ -154,7 +154,7 @@ public class BBSScrapController {
 			// -------------------------------------
 			model.addAttribute(getBoardInfo(scrapVO));
 
-			return "cop/scp/ScrapRegist";
+			return "com/cop/scp/ScrapRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -164,7 +164,7 @@ public class BBSScrapController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/cop/scp/listScrap.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -187,7 +187,7 @@ public class BBSScrapController {
 		model.addAttribute(getBoardInfo(scrapVO));
 		model.addAttribute(scrapVO);
 
-		return "cop/scp/ScrapEdit";
+		return "com/cop/scp/ScrapEdit";
 	}
 
 	/**
@@ -210,7 +210,7 @@ public class BBSScrapController {
 			// -------------------------------------
 			model.addAttribute(getBoardInfo(scrapVO));
 
-			return "cop/scp/ScrapEdit";
+			return "com/cop/scp/ScrapEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -220,7 +220,7 @@ public class BBSScrapController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/cop/scp/listScrap.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -239,7 +239,7 @@ public class BBSScrapController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/cop/scp/listScrap.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -260,7 +260,7 @@ public class BBSScrapController {
 
 		model.addAttribute("resultList", bbsScrapService.selectScrapList(scrapVO));
 
-		return "cop/scp/ScrapMainPage";
+		return "com/cop/scp/ScrapMainPage";
 	}
 	
 }

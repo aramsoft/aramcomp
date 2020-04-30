@@ -73,7 +73,7 @@ public class AdressBookController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "cop/adb/AdressBookList";
+		return "com/cop/adb/AdressBookList";
 	}
 
 	private void fill_common_code(ModelMap model) {
@@ -96,7 +96,7 @@ public class AdressBookController {
 			ModelMap model) {
 		
 		fill_common_code(model);
-		return "cop/adb/AdressBookRegist";
+		return "com/cop/adb/AdressBookRegist";
 	}
 
 	/**
@@ -114,7 +114,7 @@ public class AdressBookController {
 
 		beanValidator.validate(adressBookVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/adb/AdressBookRegist";
+			return "com/cop/adb/AdressBookRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -136,7 +136,7 @@ public class AdressBookController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/cop/adb/editAdressBook.do?adbkId=" + adressBookVO.getAdbkId());
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -182,7 +182,7 @@ public class AdressBookController {
 		model.addAttribute("adressBookVO", adressBookVO);
 
 		fill_common_code(model);
-		return "cop/adb/AdressBookEdit";
+		return "com/cop/adb/AdressBookEdit";
 	}
 
 	/**
@@ -200,7 +200,7 @@ public class AdressBookController {
 
 		beanValidator.validate(adressBookVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/adb/AdressBookEdit";
+			return "com/cop/adb/AdressBookEdit";
 		}
 
 		String[] tempId = adressBookVO.getUserIds().split(",");
@@ -221,7 +221,7 @@ public class AdressBookController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/cop/adb/editAdressBook.do?adbkId=" + adressBookVO.getAdbkId());
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 	
 	/**
@@ -244,7 +244,7 @@ public class AdressBookController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/cop/adb/listAdressBook.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -273,10 +273,10 @@ public class AdressBookController {
 
 		fill_common_code(model);
 		if (source.equals("regist"))
-			return "cop/adb/AdressBookRegist";
+			return "com/cop/adb/AdressBookRegist";
 		else {
 			model.addAttribute("writer", true);
-			return "cop/adb/AdressBookEdit";
+			return "com/cop/adb/AdressBookEdit";
 		}
 	}
 
@@ -315,7 +315,7 @@ public class AdressBookController {
 		
 		model.addAttribute(paginationInfo);
 
-		return "cop/adb/AdressBookPopup";
+		return "com/cop/adb/AdressBookPopup";
 	}
 
 	/**
@@ -341,7 +341,7 @@ public class AdressBookController {
 
 		model.addAttribute("resultList", adressBookService.selectAdressBookList(adressBookVO));
 
-		return "cop/adb/AdressBookMainPage";
+		return "com/cop/adb/AdressBookMainPage";
 	}
 
 }

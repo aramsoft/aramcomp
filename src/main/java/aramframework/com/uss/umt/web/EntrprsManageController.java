@@ -78,7 +78,7 @@ public class EntrprsManageController {
 		// 기업회원상태코드목록
 		cmmUseService.populateCmmCodeList("COM013", "COM013_mberSttus");
 
-		return "uss/umt/EntrprsMberList";
+		return "com/uss/umt/EntrprsMberList";
 	}
 
 	/**
@@ -103,7 +103,7 @@ public class EntrprsManageController {
 		model.addAttribute("stplatVO", entrprsManageService.selectStplat(stplatId)); // 약관정보포함
 		model.addAttribute("sbscrbTy", sbscrbTy); // 회원가입유형포함
 
-		return "uss/umt/StplatCnfirm";
+		return "com/uss/umt/StplatCnfirm";
 	}
 
 	/**
@@ -133,7 +133,7 @@ public class EntrprsManageController {
 
 		entrprsManageVO.setEntrprsMberSttus("A");
 
-		return "uss/umt/EntrprsMberSbscrb";
+		return "com/uss/umt/EntrprsMberSbscrb";
 	}
 
 	/**
@@ -165,7 +165,7 @@ public class EntrprsManageController {
 		model.addAttribute("message", message);
 		
 		model.addAttribute("redirectURL", "/uss/umt/stplatEntrprsMberView.do");
-		return "cmm/redirect";
+		return "com/cmm/redirect";
 	}
 
 	/**
@@ -182,7 +182,7 @@ public class EntrprsManageController {
 
 		fill_common_code();
 		
-		return "uss/umt/EntrprsMberRegist";
+		return "com/uss/umt/EntrprsMberRegist";
 	}
 
 	/**
@@ -200,7 +200,7 @@ public class EntrprsManageController {
 
 		beanValidator.validate(entrprsManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/umt/EntrprsMberRegist";
+			return "com/uss/umt/EntrprsMberRegist";
 		} 
 		
 		entrprsManageService.insertEntrprsMber(entrprsManageVO);
@@ -209,7 +209,7 @@ public class EntrprsManageController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/umt/listEntrprsMber.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -232,7 +232,7 @@ public class EntrprsManageController {
 			model.addAttribute("isAdmin", "true");
 		}
 		
-		return "uss/umt/EntrprsMberEdit";
+		return "com/uss/umt/EntrprsMberEdit";
 	}
 
 	/**
@@ -250,14 +250,14 @@ public class EntrprsManageController {
 
 		beanValidator.validate(entrprsManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/umt/EntrprsMberEdit";
+			return "com/uss/umt/EntrprsMberEdit";
 		} 
 
 		entrprsManageService.updateEntrprsMber(entrprsManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/umt/editEntrprsMber.do?entrprsmberId="+entrprsManageVO.getEntrprsmberId());
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -275,7 +275,7 @@ public class EntrprsManageController {
 		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
 			model.addAttribute("isAdmin", "true");
 		}
-		return "uss/umt/EntrprsPassword";
+		return "com/uss/umt/EntrprsPassword";
 	}
 
 	/**
@@ -322,7 +322,7 @@ public class EntrprsManageController {
 		
 		model.addAttribute("message", MessageHelper.getMessage(message));
 		model.addAttribute("redirectURL", "/uss/umt/editEntrprsMber.do?entrprsmberId="+entrprsManageVO.getEntrprsmberId());
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -342,7 +342,7 @@ public class EntrprsManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/umt/listEntrprsMber.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**

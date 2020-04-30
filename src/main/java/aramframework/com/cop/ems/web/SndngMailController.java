@@ -75,7 +75,7 @@ public class SndngMailController {
 
 		model.addAttribute(paginationInfo);
 
-		return "cop/ems/MailList";
+		return "com/cop/ems/MailList";
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class SndngMailController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/cop/ems/listSndngMail.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 	
 	/**
@@ -118,7 +118,7 @@ public class SndngMailController {
 		model.addAttribute(sndngMailService.selectSndngMail(sndngMailVO));
 
 		// 발송메일 상세조회 화면 이동
-		return "cop/ems/MailDetail";
+		return "com/cop/ems/MailDetail";
 	}
 
 	/**
@@ -187,7 +187,7 @@ public class SndngMailController {
 			@ModelAttribute SndngMailVO sndngMailVO, 
 			ModelMap model) {
     	
-		return "cop/ems/MailRegist";
+		return "com/cop/ems/MailRegist";
     }
     
     /**
@@ -221,16 +221,16 @@ public class SndngMailController {
     	// 발송메일을 등록한다.
     	boolean result = sndngMailService.insertSndngMail(sndngMailVO);
     	if (!result) {
-			return "cmm/error/egovError";
+			return "com/cmm/error/egovError";
     	}
     	
 		if (link.equals("N")) {
 			model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 			model.addAttribute("redirectURL", "/cop/ems/listSndngMail.do");
-		    return "cmm/redirect";
+		    return "com/cmm/redirect";
 		} else {
 			model.addAttribute("closeYn", "Y");
-			return "cop/ems/MailRegist";
+			return "com/cop/ems/MailRegist";
 		}
 	}
     
@@ -250,7 +250,7 @@ public class SndngMailController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/cop/ems/listSndngMail.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

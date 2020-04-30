@@ -71,7 +71,7 @@ public class RlnmManageController {
 		}
 		model.addAttribute("result", result); // 실명확인 결과
 
-		return "sec/rnc/RlnmCnfirm";
+		return "com/sec/rnc/RlnmCnfirm";
 	}
 
 	/**
@@ -113,7 +113,7 @@ public class RlnmManageController {
 			}
 		}
 		log.debug("result:" + result);
-		return "sec/rnc/RlnmPinCnfirm";
+		return "com/sec/rnc/RlnmPinCnfirm";
 	}
 
 	/**
@@ -138,7 +138,7 @@ public class RlnmManageController {
 		model.addAttribute("nextUrl", request.getParameter("nextUrl")); 
 		// 다음단계로 이동할 URL
 
-		return "sec/rnc/gpin/Sample-AuthRequest";
+		return "com/sec/rnc/gpin/Sample-AuthRequest";
 	}
 
 }

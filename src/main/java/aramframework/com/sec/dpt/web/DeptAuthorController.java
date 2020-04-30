@@ -61,7 +61,7 @@ public class DeptAuthorController {
 		AuthorVO authorVO = new AuthorVO();
 		model.addAttribute("authorList", authorService.selectAuthorAllList(authorVO));
 
-		return "sec/dpt/DeptAuthor";
+		return "com/sec/dpt/DeptAuthor";
 	}
 
 	/**
@@ -92,7 +92,7 @@ public class DeptAuthorController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sec/dpt/listDeptAuthor.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -116,7 +116,7 @@ public class DeptAuthorController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sec/dpt/listDeptAuthor.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

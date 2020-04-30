@@ -67,7 +67,7 @@ public class BBSMasterController {
 		
 		model.addAttribute(paginationInfo);
 
-		return "cop/bbs/BoardMasterPopup";
+		return "com/cop/bbs/BoardMasterPopup";
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class BBSMasterController {
 			model.addAttribute("useCommunity", "true");
 		}
 
-		return "cop/bbs/BoardMasterList";
+		return "com/cop/bbs/BoardMasterList";
 	}
 
 	/**
@@ -135,7 +135,7 @@ public class BBSMasterController {
 			model.addAttribute("useSatisfaction", "true");
 		}
 
-		return "cop/bbs/BoardMasterRegist";
+		return "com/cop/bbs/BoardMasterRegist";
 	}
 
 	/**
@@ -153,7 +153,7 @@ public class BBSMasterController {
 
 		beanValidator.validate(boardMasterVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/bbs/BoardMasterRegist";
+			return "com/cop/bbs/BoardMasterRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -165,7 +165,7 @@ public class BBSMasterController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/cop/bbs/listBoardMaster.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -205,7 +205,7 @@ public class BBSMasterController {
 			model.addAttribute(boardUseInfVO);
 		}
 		
-		return "cop/bbs/BoardMasterEdit";
+		return "com/cop/bbs/BoardMasterEdit";
 	}
 
 	/**
@@ -223,7 +223,7 @@ public class BBSMasterController {
 
 		beanValidator.validate(boardMasterVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/bbs/BoardMasterEdit";
+			return "com/cop/bbs/BoardMasterEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -233,7 +233,7 @@ public class BBSMasterController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/cop/bbs/listBoardMaster.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -255,7 +255,7 @@ public class BBSMasterController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/cop/bbs/listBoardMaster.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

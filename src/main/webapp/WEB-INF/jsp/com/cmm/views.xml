@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="com/cmm/UnitContent" extends="default">
+    <put-attribute name="title" value="▒▒▒ 아람소프트 컴포넌트   ▒▒▒" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/cmm/UnitContent.jsp" />
+  </definition>
+  
+  <definition name="com/cmm/TestKomoran" extends="default">
+    <put-attribute name="title" value="현태소 분석기 테스트" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/cmm/TestKomoran.jsp" />
+  </definition>
+  
+</tiles-definitions>

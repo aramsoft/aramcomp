@@ -63,7 +63,7 @@ public class TemplateController {
 
 		model.addAttribute(paginationInfo);
 
-		return "cop/tpl/TemplateList";
+		return "com/cop/tpl/TemplateList";
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class TemplateController {
 		// 템플릿구분
 		cmmUseService.populateCmmCodeList("COM005", "COM005_tmplatSe");
 
-		return "cop/tpl/TemplateRegist";
+		return "com/cop/tpl/TemplateRegist";
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class TemplateController {
 
 		beanValidator.validate(templateInfVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/tpl/TemplateRegist";
+			return "com/cop/tpl/TemplateRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -109,7 +109,7 @@ public class TemplateController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/cop/tpl/listTemplate.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -129,7 +129,7 @@ public class TemplateController {
 		// 템플릿구분
 		cmmUseService.populateCmmCodeList("COM005", "COM005_tmplatSe");
 
-		return "cop/tpl/TemplateEdit";
+		return "com/cop/tpl/TemplateEdit";
 	}
 
 	/**
@@ -147,7 +147,7 @@ public class TemplateController {
 
 		beanValidator.validate(templateInfVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/tpl/TemplateEdit";
+			return "com/cop/tpl/TemplateEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -157,7 +157,7 @@ public class TemplateController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/cop/tpl/listTemplate.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -179,7 +179,7 @@ public class TemplateController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/cop/tpl/listTemplate.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -215,7 +215,7 @@ public class TemplateController {
 
 		model.addAttribute(paginationInfo);
 
-		return "cop/tpl/TemplatePopup";
+		return "com/cop/tpl/TemplatePopup";
 	}
 	
 }

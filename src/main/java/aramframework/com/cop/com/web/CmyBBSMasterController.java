@@ -90,7 +90,7 @@ public class CmyBBSMasterController {
 
 		model.addAttribute(paginationInfo);
 
-		return "cop/com/BdMstrListByTrget";
+		return "com/cop/com/BdMstrListByTrget";
 	}
 
 	/**
@@ -121,7 +121,7 @@ public class CmyBBSMasterController {
 			model.addAttribute("useSatisfaction", "true");
 		}
 
-		return "cop/com/BdMstrRegistByTrget";
+		return "com/cop/com/BdMstrRegistByTrget";
 	}
 
 	/**
@@ -139,7 +139,7 @@ public class CmyBBSMasterController {
 
 		beanValidator.validate(boardMasterVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/com/BdMstrRegistByTrget";
+			return "com/cop/com/BdMstrRegistByTrget";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -159,7 +159,7 @@ public class CmyBBSMasterController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/cop/com/listBdMstrByTrget.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -199,7 +199,7 @@ public class CmyBBSMasterController {
 
 		model.addAttribute(boardUseInfVO);
 		
-		return "cop/com/BdMstrEditByTrget";
+		return "com/cop/com/BdMstrEditByTrget";
 	}
 
 	/**
@@ -217,7 +217,7 @@ public class CmyBBSMasterController {
 
 		beanValidator.validate(boardMasterVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/com/BdMstrEditByTrget";
+			return "com/cop/com/BdMstrEditByTrget";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -228,7 +228,7 @@ public class CmyBBSMasterController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/cop/com/listBdMstrByTrget.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -248,7 +248,7 @@ public class CmyBBSMasterController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/cop/com/listBdMstrByTrget.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -270,7 +270,7 @@ public class CmyBBSMasterController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/cop/com/listBdMstrByTrget.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

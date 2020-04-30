@@ -62,7 +62,7 @@ public class BatchOpertController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/bat/BatchOpertPopup";
+		return "com/sym/bat/BatchOpertPopup";
 	}
 
 	/**
@@ -88,7 +88,7 @@ public class BatchOpertController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/bat/BatchOpertList";
+		return "com/sym/bat/BatchOpertList";
 	}
 
 	/**
@@ -105,7 +105,7 @@ public class BatchOpertController {
 		
 		model.addAttribute(batchOpertService.selectBatchOpert(batchOpertVO));
 
-		return "sym/bat/BatchOpertDetail";
+		return "com/sym/bat/BatchOpertDetail";
 	}
 
 	/**
@@ -120,7 +120,7 @@ public class BatchOpertController {
 			@ModelAttribute BatchOpertVO batchOpertVO, 
 			ModelMap model) {
 	
-		return "sym/bat/BatchOpertRegist";
+		return "com/sym/bat/BatchOpertRegist";
 	}
 
 	/**
@@ -141,7 +141,7 @@ public class BatchOpertController {
 			batchOpertValidator.validate(batchOpertVO, bindingResult);
 		}
 		if (bindingResult.hasErrors()) {
-			return "sym/bat/BatchOpertRegist";
+			return "com/sym/bat/BatchOpertRegist";
 		} 
 		
 		// 로그인 객체 선언
@@ -152,7 +152,7 @@ public class BatchOpertController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sym/bat/listBatchOpert.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -169,7 +169,7 @@ public class BatchOpertController {
 		
 		model.addAttribute(batchOpertService.selectBatchOpert(batchOpertVO));
 
-		return "sym/bat/BatchOpertEdit";
+		return "com/sym/bat/BatchOpertEdit";
 	}
 
 	/**
@@ -190,7 +190,7 @@ public class BatchOpertController {
 			batchOpertValidator.validate(batchOpertVO, bindingResult);
 		}
 		if (bindingResult.hasErrors()) {
-			return "sym/bat/BatchOpertEdit";
+			return "com/sym/bat/BatchOpertEdit";
 		}
 
 		// 로그인 객체 선언
@@ -201,7 +201,7 @@ public class BatchOpertController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/sym/bat/listBatchOpert.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -220,7 +220,7 @@ public class BatchOpertController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sym/bat/listBatchOpert.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

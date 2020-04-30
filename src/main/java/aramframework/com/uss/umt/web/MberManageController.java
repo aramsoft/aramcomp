@@ -78,7 +78,7 @@ public class MberManageController {
 		// 일반회원 상태코드를 코드정보로부터 조회
 		cmmUseService.populateCmmCodeList("COM013", "COM013_mberSttus");
 
-		return "uss/umt/MberList";
+		return "com/uss/umt/MberList";
 	}
 
 	/**
@@ -102,7 +102,7 @@ public class MberManageController {
 		model.addAttribute("stplatVO", mberManageService.selectStplat(stplatId)); // 약관정보 포함
 		model.addAttribute("sbscrbTy", sbscrbTy); // 회원가입유형 포함
 
-		return "uss/umt/StplatCnfirm";
+		return "com/uss/umt/StplatCnfirm";
 	}
 
 	/**
@@ -126,7 +126,7 @@ public class MberManageController {
 
 		mberManageVO.setMberSttus("A");
 
-		return "uss/umt/MberSbscrb";
+		return "com/uss/umt/MberSbscrb";
 	}
 
 	/**
@@ -159,7 +159,7 @@ public class MberManageController {
 		model.addAttribute("message", message);
 		
 		model.addAttribute("redirectURL", "/uss/umt/stplatMberView.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/** 
@@ -176,7 +176,7 @@ public class MberManageController {
 
 		fill_common_code();
 
-		return "uss/umt/MberRegist";
+		return "com/uss/umt/MberRegist";
 	}
 
 	/**
@@ -194,14 +194,14 @@ public class MberManageController {
 
 		beanValidator.validate(mberManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/umt/MberRegist";
+			return "com/uss/umt/MberRegist";
 		} 
 		
 		mberManageService.insertMber(mberManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/umt/listMber.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -223,7 +223,7 @@ public class MberManageController {
 		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
 			model.addAttribute("isAdmin", "true");
 		}
-		return "uss/umt/MberEdit";
+		return "com/uss/umt/MberEdit";
 	}
 
 	/**
@@ -241,14 +241,14 @@ public class MberManageController {
 
 		beanValidator.validate(mberManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/umt/MberEdit";
+			return "com/uss/umt/MberEdit";
 		} 
 		
 		mberManageService.updateMber(mberManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/umt/editMber.do?mberId="+mberManageVO.getMberId());
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -266,7 +266,7 @@ public class MberManageController {
 		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
 			model.addAttribute("isAdmin", "true");
 		}
-		return "uss/umt/MberPassword";
+		return "com/uss/umt/MberPassword";
 	}
 
 	/**
@@ -313,7 +313,7 @@ public class MberManageController {
 		
 		model.addAttribute("message", MessageHelper.getMessage(message));
 		model.addAttribute("redirectURL", "/uss/umt/editMber.do?mberId="+mberManageVO.getMberId());
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -333,7 +333,7 @@ public class MberManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/umt/listMber.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**

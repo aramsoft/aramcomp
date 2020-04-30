@@ -49,7 +49,7 @@ public class UserLogController {
 		
 		model.addAttribute(paginationInfo);
 
-		return "sym/log/ulg/UserLogList";
+		return "com/sym/log/ulg/UserLogList";
 	}
 
 	/**
@@ -66,7 +66,7 @@ public class UserLogController {
 
 		model.addAttribute(userLogService.selectUserLog(userLogVO));
 
-		return "sym/log/ulg/UserLogDetail";
+		return "com/sym/log/ulg/UserLogDetail";
 	}
 
 }

@@ -96,7 +96,7 @@ public class LoginController {
         	requestUrl = request.getRequestURI();
         }
         
-       	return "uat/uia/LoginUsr";
+       	return "com/uat/uia/LoginUsr";
 	}
 
 	/**
@@ -123,7 +123,7 @@ public class LoginController {
 			return "forward:/uat/uia/actionMain.do";
 		} else {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.login"));
-			return "uat/uia/LoginUsr";
+			return "com/uat/uia/LoginUsr";
 		}
 	}
 
@@ -142,7 +142,7 @@ public class LoginController {
 		Boolean isAuthenticated = UserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.login"));
-			return "uat/uia/LoginUsr";
+			return "com/uat/uia/LoginUsr";
 		}
 		
 		String requestUrl = null;
@@ -208,7 +208,7 @@ public class LoginController {
 		// 1. 비밀번호 힌트 공통코드 조회
 		cmmUseService.populateCmmCodeList("COM022", "COM022_passwordHint");
 
-		return "uat/uia/IdPasswordSearch";
+		return "com/uat/uia/IdPasswordSearch";
 	}
 
 	/**
@@ -230,7 +230,7 @@ public class LoginController {
 		} else {
 			model.addAttribute("resultInfo", MessageHelper.getMessage("fail.common.idsearch"));
 		}
-		return "uat/uia/IdPasswordResult";
+		return "com/uat/uia/IdPasswordResult";
 	}
 
 	/**
@@ -264,7 +264,7 @@ public class LoginController {
 		} else {
 			model.addAttribute("resultInfo", MessageHelper.getMessage("fail.common.pwsearch"));
 		}
-		return "uat/uia/IdPasswordResult";
+		return "com/uat/uia/IdPasswordResult";
 	}
 
 	/**
@@ -281,7 +281,7 @@ public class LoginController {
 			}
 		}
 		model.addAttribute("activeUsers", lastActivityDates);
-		return "uat/uia/ListActiveUsers";
+		return "com/uat/uia/ListActiveUsers";
 	}
 	
 }

@@ -56,7 +56,7 @@ public class GroupController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sec/grp/GroupList";
+		return "com/sec/grp/GroupList";
 	}
 
 	/**
@@ -71,7 +71,7 @@ public class GroupController {
 			@ModelAttribute GroupVO groupVO, 
 			ModelMap model) {
 
-		return "sec/grp/GroupRegist";
+		return "com/sec/grp/GroupRegist";
 	}
 
 	/**
@@ -89,14 +89,14 @@ public class GroupController {
 
 		beanValidator.validate(groupVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "sec/grp/GroupRegist";
+			return "com/sec/grp/GroupRegist";
 		} 
 
 		groupService.insertGroup(groupVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sec/grp/listGroup.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -113,7 +113,7 @@ public class GroupController {
 
 		model.addAttribute(groupService.selectGroup(groupVO));
 		
-		return "sec/grp/GroupEdit";
+		return "com/sec/grp/GroupEdit";
 	}
 
 	/**
@@ -131,14 +131,14 @@ public class GroupController {
 
 		beanValidator.validate(groupVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "sec/grp/GroupEdit";
+			return "com/sec/grp/GroupEdit";
 		} 
 
 		groupService.updateGroup(groupVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/sec/grp/listGroup.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -157,7 +157,7 @@ public class GroupController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sec/grp/listGroup.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -177,7 +177,7 @@ public class GroupController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sec/grp/listGroup.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -201,7 +201,7 @@ public class GroupController {
 	
 		model.addAttribute(paginationInfo);
 
-		return "sec/grp/GroupSearchPopup";
+		return "com/sec/grp/GroupSearchPopup";
 	}
 	
 }

@@ -49,7 +49,7 @@ public class SysLogController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/log/lgm/SysLogList";
+		return "com/sym/log/lgm/SysLogList";
 	}
 
 	/**
@@ -66,7 +66,7 @@ public class SysLogController {
 
 		model.addAttribute(sysLogService.selectSysLog(sysLogVO));
 
-		return "sym/log/lgm/SysLogDetail";
+		return "com/sym/log/lgm/SysLogDetail";
 	}
 
 }

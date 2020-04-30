@@ -57,7 +57,7 @@ public class StplatManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/sam/stp/StplatList";
+		return "com/uss/sam/stp/StplatList";
 	}
 
 	/**
@@ -74,7 +74,7 @@ public class StplatManageController {
 
 		model.addAttribute(stplatManageService.selectStplatDetail(stplatManageVO));
 
-		return "uss/sam/stp/StplatDetail";
+		return "com/uss/sam/stp/StplatDetail";
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class StplatManageController {
 			@ModelAttribute StplatManageVO stplatManageVO, 
 			ModelMap model) {
 
-		return "uss/sam/stp/StplatRegist";
+		return "com/uss/sam/stp/StplatRegist";
 	}
 
 	/**
@@ -107,7 +107,7 @@ public class StplatManageController {
 
 		beanValidator.validate(stplatManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/sam/stp/StplatRegist";
+			return "com/uss/sam/stp/StplatRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -118,7 +118,7 @@ public class StplatManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/sam/stp/listStplat.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -135,7 +135,7 @@ public class StplatManageController {
 
 		model.addAttribute(stplatManageService.selectStplatDetail(stplatManageVO));
 
-		return "uss/sam/stp/StplatEdit";
+		return "com/uss/sam/stp/StplatEdit";
 	}
 
 	/**
@@ -154,7 +154,7 @@ public class StplatManageController {
 		// Validation
 		beanValidator.validate(stplatManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/sam/stp/StplatEdit";
+			return "com/uss/sam/stp/StplatEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -165,7 +165,7 @@ public class StplatManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/sam/stp/listStplat.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -184,7 +184,7 @@ public class StplatManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/sam/stp/listStplat.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

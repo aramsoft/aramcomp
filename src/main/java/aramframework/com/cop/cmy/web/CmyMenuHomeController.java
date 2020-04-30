@@ -288,7 +288,7 @@ public class CmyMenuHomeController  {
 
 		model.addAttribute("articleList", target);
 		
-		return "cop/cmy/CmmntyMainContents";
+		return "com/cop/cmy/CmmntyMainContents";
 	}
 
 	/**
@@ -408,7 +408,7 @@ public class CmyMenuHomeController  {
 
 		model.addAttribute(communityVO);
 
-		return "cop/cmy/CmmntyMainContents";
+		return "com/cop/cmy/CmmntyMainContents";
 	}
 
 }

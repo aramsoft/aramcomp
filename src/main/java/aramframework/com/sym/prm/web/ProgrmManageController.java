@@ -59,7 +59,7 @@ public class ProgrmManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/prm/ProgramPopup";
+		return "com/sym/prm/ProgramPopup";
 	}
 	
 	/**
@@ -85,7 +85,7 @@ public class ProgrmManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/prm/ProgramList";
+		return "com/sym/prm/ProgramList";
 	}
 
 	/**
@@ -108,14 +108,14 @@ public class ProgrmManageController {
 		if (progrmFileNms == null || (progrmFileNms.length == 0)) {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.delete"));
 			model.addAttribute("redirectURL", "/sym/prm/listProgram.do");
-		    return "cmm/redirect";
+		    return "com/cmm/redirect";
 		} 
 		
 		progrmManageService.deleteProgrmManageList(progrmFileNms);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sym/prm/listProgram.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -130,7 +130,7 @@ public class ProgrmManageController {
 			@ModelAttribute ProgrmManageVO progrmManageVO,
 			ModelMap model) {
 
-		return "sym/prm/ProgramRegist";
+		return "com/sym/prm/ProgramRegist";
 	}
 
 	/**
@@ -148,7 +148,7 @@ public class ProgrmManageController {
 
 		beanValidator.validate(progrmManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "sym/prm/ProgramRegist";
+			return "com/sym/prm/ProgramRegist";
 		}
 		
 		if (progrmManageVO.getProgrmDc() == null || progrmManageVO.getProgrmDc().equals("")) {
@@ -159,7 +159,7 @@ public class ProgrmManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sym/prm/listProgram.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -176,7 +176,7 @@ public class ProgrmManageController {
 		
 		model.addAttribute(progrmManageService.selectProgrm(progrmManageVO));
 
-		return "sym/prm/ProgramEdit";
+		return "com/sym/prm/ProgramEdit";
 	}
 
 	/**
@@ -195,7 +195,7 @@ public class ProgrmManageController {
 
 		beanValidator.validate(progrmManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "sym/prm/ProgramEdit";
+			return "com/sym/prm/ProgramEdit";
 		}
 		
 		if (progrmManageVO.getProgrmDc() == null || progrmManageVO.getProgrmDc().equals("")) {
@@ -206,7 +206,7 @@ public class ProgrmManageController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/sym/prm/listProgram.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -225,7 +225,7 @@ public class ProgrmManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sym/prm/listProgram.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

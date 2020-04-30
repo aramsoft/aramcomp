@@ -93,7 +93,7 @@ public class BBSSatisfactionController {
 
 		model.addAttribute(paginationInfo);
 
-		return "cop/bbs/SatisfactionList";
+		return "com/cop/bbs/SatisfactionList";
 	}
 
 	/**

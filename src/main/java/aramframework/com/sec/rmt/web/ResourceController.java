@@ -61,7 +61,7 @@ public class ResourceController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sec/rmt/ResourceList";
+		return "com/sec/rmt/ResourceList";
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class ResourceController {
 
 		cmmUseService.populateCmmCodeList("COM029", "COM029_resourceType");
 
-		return "sec/rmt/ResourceRegist";
+		return "com/sec/rmt/ResourceRegist";
 	}
 
 	/**
@@ -96,14 +96,14 @@ public class ResourceController {
 
 		beanValidator.validate(resourceVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "sec/rmt/ResourceRegist";
+			return "com/sec/rmt/ResourceRegist";
 		} 
 		
 		resourceService.insertResource(resourceVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sec/rmt/listResource.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -122,7 +122,7 @@ public class ResourceController {
 
 		cmmUseService.populateCmmCodeList("COM029", "COM029_resourceType");
 
-		return "sec/rmt/ResourceEdit";
+		return "com/sec/rmt/ResourceEdit";
 	}
 
 	/**
@@ -140,14 +140,14 @@ public class ResourceController {
 
 		beanValidator.validate(resourceVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "sec/rmt/ResourceEdit";
+			return "com/sec/rmt/ResourceEdit";
 		} 
 		
 		resourceService.updateResource(resourceVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/sec/rmt/listResource.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -166,7 +166,7 @@ public class ResourceController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sec/rmt/listResource.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -190,7 +190,7 @@ public class ResourceController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sec/rmt/listResource.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

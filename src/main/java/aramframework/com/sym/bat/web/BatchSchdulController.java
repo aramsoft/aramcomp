@@ -68,7 +68,7 @@ public class BatchSchdulController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/bat/BatchSchdulList";
+		return "com/sym/bat/BatchSchdulList";
 	}
 
 	/**
@@ -85,7 +85,7 @@ public class BatchSchdulController {
 
 		model.addAttribute(batchSchdulService.selectBatchSchdul(batchSchdulVO));
 
-		return "sym/bat/BatchSchdulDetail";
+		return "com/sym/bat/BatchSchdulDetail";
 	}
 
 	/**
@@ -102,7 +102,7 @@ public class BatchSchdulController {
 
 		referenceData(model);
 
-		return "sym/bat/BatchSchdulRegist";
+		return "com/sym/bat/BatchSchdulRegist";
 	}
 
 	/**
@@ -122,7 +122,7 @@ public class BatchSchdulController {
 		beanValidator.validate(batchSchdulVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			referenceData(model);
-			return "sym/bat/BatchSchdulRegist";
+			return "com/sym/bat/BatchSchdulRegist";
 		} 
 		
 		// 로그인 객체 선언
@@ -137,7 +137,7 @@ public class BatchSchdulController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sym/bat/listBatchSchdul.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -156,7 +156,7 @@ public class BatchSchdulController {
 
 		referenceData(model);
 
-		return "sym/bat/BatchSchdulEdit";
+		return "com/sym/bat/BatchSchdulEdit";
 	}
 
 	/**
@@ -176,7 +176,7 @@ public class BatchSchdulController {
 		beanValidator.validate(batchSchdulVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			referenceData(model);
-			return "sym/bat/BatchSchdulEdit";
+			return "com/sym/bat/BatchSchdulEdit";
 		}
 
 		// 로그인 객체 선언
@@ -191,7 +191,7 @@ public class BatchSchdulController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/sym/bat/listBatchSchdul.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -214,7 +214,7 @@ public class BatchSchdulController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sym/bat/listBatchSchdul.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**

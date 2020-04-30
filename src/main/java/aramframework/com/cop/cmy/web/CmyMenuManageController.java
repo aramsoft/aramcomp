@@ -96,7 +96,7 @@ public class CmyMenuManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "cop/cmy/CmyMenuList";
+		return "com/cop/cmy/CmyMenuList";
 	}
 
 	/**
@@ -113,7 +113,7 @@ public class CmyMenuManageController {
 
 		checkAuthorityManager(); // server-side 권한 확인
 
-		return "cop/cmy/CmyMenuRegist";
+		return "com/cop/cmy/CmyMenuRegist";
 	}
 
 	/**
@@ -131,26 +131,26 @@ public class CmyMenuManageController {
 
 		beanValidator.validate(communityMenuVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/cmy/CmyMenuRegist";
+			return "com/cop/cmy/CmyMenuRegist";
 		}
 
 		if (cmyMenuManageService.selectMenuNmByPk(communityMenuVO) != 0) {
 			model.addAttribute("message", MessageHelper.getMessage("common.isExist.msg"));
-			return "cop/cmy/CmyMenuRegist";
+			return "com/cop/cmy/CmyMenuRegist";
 		}
 		
 		if (communityMenuVO.getProgrmFileNm() != null
 			&& !communityMenuVO.getProgrmFileNm().equals("")	
 			&& progrmManageService.selectProgrmNMTotCnt(communityMenuVO.getProgrmFileNm()) == 0) {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.insert"));
-			return "cop/cmy/CmyMenuRegist";
+			return "com/cop/cmy/CmyMenuRegist";
 		} 
 		
 		cmyMenuManageService.insertMenuManage(communityMenuVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/cop/cmy/listMenu.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -175,7 +175,7 @@ public class CmyMenuManageController {
 		
 		model.addAttribute(cmyMenuManageService.selectMenuManage(communityMenuVO));
 
-		return "cop/cmy/CmyMenuEdit";
+		return "com/cop/cmy/CmyMenuEdit";
 	}
 
 	/**
@@ -193,7 +193,7 @@ public class CmyMenuManageController {
 
 		beanValidator.validate(communityMenuVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/cmy/CmyMenuEdit";
+			return "com/cop/cmy/CmyMenuEdit";
 		}
 		
 		if( !"".equals(communityMenuVO.getNewMenuNm()) ) {
@@ -202,7 +202,7 @@ public class CmyMenuManageController {
 			newCommunityMenuVO.setTrgetId(communityMenuVO.getTrgetId());
 			if (cmyMenuManageService.selectMenuNmByPk(newCommunityMenuVO) != 0) {
 				model.addAttribute("message", MessageHelper.getMessage("common.isExist.msg"));
-				return "cop/cmy/CmyMenuEdit";
+				return "com/cop/cmy/CmyMenuEdit";
 			}
 		}
 		
@@ -210,14 +210,14 @@ public class CmyMenuManageController {
 				&& !communityMenuVO.getProgrmFileNm().equals("")	
 				&& progrmManageService.selectProgrmNMTotCnt(communityMenuVO.getProgrmFileNm()) == 0) {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.update"));
-			return "cop/cmy/CmyMenuEdit";
+			return "com/cop/cmy/CmyMenuEdit";
 		} 
 		
 		cmyMenuManageService.updateMenuManage(communityMenuVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/cop/cmy/listMenu.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -239,7 +239,7 @@ public class CmyMenuManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/cop/cmy/listMenu.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -263,14 +263,14 @@ public class CmyMenuManageController {
 		if (delMenuNos == null || (delMenuNos.length == 0)) {
 			model.addAttribute("message",  MessageHelper.getMessage("fail.common.delete"));
 			model.addAttribute("redirectURL", "/cop/cmy/listMenu.do");
-		    return "cmm/redirect";
+		    return "com/cmm/redirect";
 		} 
 
 		cmyMenuManageService.deleteMenuManageList(communityMenuVO.getTrgetId(), delMenuNos);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/cop/cmy/listMenu.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 	
 	/**
@@ -303,7 +303,7 @@ public class CmyMenuManageController {
 			@ModelAttribute CommunityMenuVO communityMenuVO,
 			ModelMap model) {
 		
-		return "cop/cmy/CmyMenuExcelRegist";
+		return "com/cop/cmy/CmyMenuExcelRegist";
 	}
 
 	/**
@@ -339,14 +339,14 @@ public class CmyMenuManageController {
 
 				} else {
 					model.addAttribute("message", "xlsx 파일 타입만 등록이 가능합니다.");
-					return "cop/cmy/CmyMenuExcelRegist";
+					return "com/cop/cmy/CmyMenuExcelRegist";
 				}
 			}
 		}
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/cop/cmy/listMenu.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 	
     /**
@@ -367,7 +367,7 @@ public class CmyMenuManageController {
         if( cacheMap == null ) {
     		model.addAttribute("message", MessageHelper.getMessage("fail.common.delete"));
     		model.addAttribute("redirectURL", "/cop/cmy/listMenu.do");
-    	    return "cmm/redirect";
+    	    return "com/cmm/redirect";
         }
         
         // clear cache
@@ -377,7 +377,7 @@ public class CmyMenuManageController {
     	cacheMap = null;
 	    
 		model.addAttribute("redirectURL", "/cop/cmy/listMenu.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
     }
     
 }

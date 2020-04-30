@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="com/uss/sam/stp/StplatList" extends="default">
+    <put-attribute name="title" value="약관 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/sam/stp/StplatList.jsp" />
+  </definition>
+  
+  <definition name="com/uss/sam/stp/StplatDetail" extends="default">
+    <put-attribute name="title" value="약관 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/sam/stp/StplatDetail.jsp" />
+  </definition>
+  
+  <definition name="com/uss/sam/stp/StplatRegist" extends="default">
+    <put-attribute name="title" value="약관 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/sam/stp/StplatRegist.jsp" />
+  </definition>
+  
+  <definition name="com/uss/sam/stp/StplatEdit" extends="default">
+    <put-attribute name="title" value="약관 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/sam/stp/StplatEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

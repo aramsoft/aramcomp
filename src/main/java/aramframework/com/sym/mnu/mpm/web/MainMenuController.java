@@ -56,7 +56,7 @@ public class MainMenuController {
 			}
 		} else {
 			// 오류 페이지 이동
-			return "cmm/error/egovError";
+			return "com/cmm/error/egovError";
 		}
 	}
 
@@ -77,7 +77,7 @@ public class MainMenuController {
 			return "main_bottom"; 
 		} else {
 			// 오류 페이지 이동
-			return "cmm/error/egovError";
+			return "com/cmm/error/egovError";
 		}
 	}
 
@@ -157,7 +157,7 @@ public class MainMenuController {
 			}
 		} else {
 			// 오류 페이지 이동
-			return "cmm/error/egovError";
+			return "com/cmm/error/egovError";
 		}
 	}
 	

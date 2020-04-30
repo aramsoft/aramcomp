@@ -57,7 +57,7 @@ public class CpyrhtPrtcPolicyController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/sam/cpy/CpyrhtPrtcPolicyList";
+		return "com/uss/sam/cpy/CpyrhtPrtcPolicyList";
 	}
 
 	/**
@@ -74,7 +74,7 @@ public class CpyrhtPrtcPolicyController {
 
 		model.addAttribute(cpyrhtPrtcPolicyService.selectCpyrhtPrtcPolicyDetail(cpyrhtPrtcPolicyVO));
 
-		return "uss/sam/cpy/CpyrhtPrtcPolicyDetail";
+		return "com/uss/sam/cpy/CpyrhtPrtcPolicyDetail";
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class CpyrhtPrtcPolicyController {
 			@ModelAttribute CpyrhtPrtcPolicyVO cpyrhtPrtcPolicyVO, 
 			ModelMap model) {
 
-		return "uss/sam/cpy/CpyrhtPrtcPolicyRegist";
+		return "com/uss/sam/cpy/CpyrhtPrtcPolicyRegist";
 	}
 
 	/**
@@ -107,7 +107,7 @@ public class CpyrhtPrtcPolicyController {
 
 		beanValidator.validate(cpyrhtPrtcPolicyVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/sam/cpy/CpyrhtPrtcPolicyRegist";
+			return "com/uss/sam/cpy/CpyrhtPrtcPolicyRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -118,7 +118,7 @@ public class CpyrhtPrtcPolicyController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/sam/cpy/listCpyrhtPrtcPolicy.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -135,7 +135,7 @@ public class CpyrhtPrtcPolicyController {
 
 		model.addAttribute(cpyrhtPrtcPolicyService.selectCpyrhtPrtcPolicyDetail(cpyrhtPrtcPolicyVO));
 
-		return "uss/sam/cpy/CpyrhtPrtcPolicyEdit";
+		return "com/uss/sam/cpy/CpyrhtPrtcPolicyEdit";
 	}
 
 	/**
@@ -154,7 +154,7 @@ public class CpyrhtPrtcPolicyController {
 		// Validation
 		beanValidator.validate(cpyrhtPrtcPolicyVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/sam/cpy/CpyrhtPrtcPolicyEdit";
+			return "com/uss/sam/cpy/CpyrhtPrtcPolicyEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -165,7 +165,7 @@ public class CpyrhtPrtcPolicyController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/sam/cpy/listCpyrhtPrtcPolicy.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -184,7 +184,7 @@ public class CpyrhtPrtcPolicyController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/sam/cpy/listCpyrhtPrtcPolicy.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

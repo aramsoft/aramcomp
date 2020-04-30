@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="com/cop/adb/AdressBookList" extends="default">
+    <put-attribute name="title" value="나의 주소록목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/cop/adb/AdressBookList.jsp" />
+  </definition>
+  
+  <definition name="com/cop/adb/AdressBookRegist" extends="default">
+    <put-attribute name="title" value="주소록 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/cop/adb/AdressBookRegist.jsp" />
+  </definition>
+  
+  <definition name="com/cop/adb/AdressBookEdit" extends="default">
+    <put-attribute name="title" value="주소록 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/cop/adb/AdressBookEdit.jsp" />
+  </definition>
+  
+</tiles-definitions>

@@ -28,7 +28,7 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/home/sample/common.css" type="text/css">
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/cmm/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/cmm/jquery-1.7.1.min.js"></script>
 </head>
 
 <body> 

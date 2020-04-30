@@ -57,7 +57,7 @@ public class DeptController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sec/dpt/DeptList";
+		return "com/sec/dpt/DeptList";
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class DeptController {
 			@ModelAttribute DeptVO deptVO, 
 			ModelMap model) {
 
-		return "sec/dpt/DeptRegist";
+		return "com/sec/dpt/DeptRegist";
 	}
 
 	/**
@@ -90,14 +90,14 @@ public class DeptController {
 
 		beanValidator.validate(deptVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "sec/dpt/DeptRegist";
+			return "com/sec/dpt/DeptRegist";
 		} 
 		
 		deptService.insertDept(deptVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sec/dpt/listDept.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -114,7 +114,7 @@ public class DeptController {
 
 		model.addAttribute(deptService.selectDept(deptVO));
 		
-		return "sec/dpt/DeptEdit";
+		return "com/sec/dpt/DeptEdit";
 	}
 
 	/**
@@ -132,14 +132,14 @@ public class DeptController {
 
 		beanValidator.validate(deptVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "sec/dpt/DeptEdit";
+			return "com/sec/dpt/DeptEdit";
 		} 
 		
 		deptService.updateDept(deptVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/sec/dpt/listDept.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -158,7 +158,7 @@ public class DeptController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sec/dpt/listDept.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -177,7 +177,7 @@ public class DeptController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sec/dpt/listDept.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -201,7 +201,7 @@ public class DeptController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "sec/dpt/DeptSearchPopup";
+		return "com/sec/dpt/DeptSearchPopup";
 	}
 	
 }

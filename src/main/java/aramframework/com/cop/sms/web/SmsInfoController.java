@@ -61,7 +61,7 @@ public class SmsInfoController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "cop/sms/SmsInfoList";
+		return "com/cop/sms/SmsInfoList";
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class SmsInfoController {
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		model.addAttribute("sessionUserId", loginVO.getUserId());
 
-		return "cop/sms/SmsInfoDetail";
+		return "com/cop/sms/SmsInfoDetail";
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class SmsInfoController {
 			@ModelAttribute SmsVO smsVO, 
 			ModelMap model) {
 
-		return "cop/sms/SmsInfoRegist";
+		return "com/cop/sms/SmsInfoRegist";
 	}
 
 	/**
@@ -116,7 +116,7 @@ public class SmsInfoController {
 
 		beanValidator.validate(smsVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/sms/SmsInfoRegist";
+			return "com/cop/sms/SmsInfoRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -126,7 +126,7 @@ public class SmsInfoController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/cop/sms/listSms.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

@@ -38,7 +38,7 @@ public class WebEditorImageController {
 	 */
 	@RequestMapping(value = "/utl/wed/insertImage.do", method = RequestMethod.GET)
 	public String goInsertImage() {
-		return "utl/wed/InsertImage";
+		return "com/utl/wed/InsertImage";
 	}
 
 	/**
@@ -63,7 +63,7 @@ public class WebEditorImageController {
 			model.addAttribute("url", url);
 		}
 
-		return "utl/wed/InsertImage";
+		return "com/utl/wed/InsertImage";
 	}
 
 	/**

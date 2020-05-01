@@ -50,7 +50,7 @@
     <put-attribute name="body" value="/WEB-INF/jsp/com/uss/umt/EntrprsMberList.jsp" />
   </definition>
   
-  <definition name="com/com/uss/umt/EntrprsMberRegist" extends="default">
+  <definition name="com/uss/umt/EntrprsMberRegist" extends="default">
     <put-attribute name="title" value="기업회원 등록" />
     <put-attribute name="body" value="/WEB-INF/jsp/com/uss/umt/EntrprsMberRegist.jsp" />
   </definition>

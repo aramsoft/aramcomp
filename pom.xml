@@ -14,6 +14,36 @@
 		<egovframework.rte.version>3.9.0</egovframework.rte.version>
 	</properties>
 
+	<repositories> 
+
+		<repository>
+			<id>mvn2</id>
+			<url>http://repo1.maven.org/maven2/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>egovframe</id>
+			<url>http://www.egovframe.go.kr/maven/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+	    <repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
 				
 		<!-- spring 라이브러리 -->
@@ -310,7 +340,7 @@
 			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/sndng-mail-1.0.jar</systemPath>
 		</dependency>
 
-		<!--  M-Gov (SMS Service API) --> 
+		<!--  M-Gov (SMS Service API) -->
 		<dependency>
 			<groupId>kr.go.mgov</groupId>
 			<artifactId>smeapi</artifactId>
@@ -371,32 +401,5 @@
 			</plugin>
 		</plugins>
 	</reporting>  
-
-	<repositories> 
-		<repository>
-			<id>mvn2</id>
-			<url>http://repo1.maven.org/maven2/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>egovframe</id>
-			<url>http://www.egovframe.go.kr/maven/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	    <repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
-		</repository>
-	</repositories>	
-
+	
 </project>

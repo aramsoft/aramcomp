@@ -10,7 +10,7 @@ a:active	{ color:#86cd00; }
 
 /* -----------------TopMenuBg------------ */
 .TopMenuBg	{
-	background-image:url('/images/menu_bg.jpg');
+	background-image:url('/images/com/menu_bg.jpg');
 	background-repeat:no-repeat;
 }
 .TopMenuBg           { font-size:12px; font-family:Dotum; }
@@ -39,7 +39,7 @@ a:active	{ color:#86cd00; }
 
 /* -----------------LeftMenuBg------------ */
 .LeftMenuBg {
-	background-image:url("/images/left_menu_bg.gif");
+	background-image:url("/images/com/left_menu_bg.gif");
 	color:#8594a8;
 	font-family:Dotum;
 	font-size:12px;
@@ -62,7 +62,7 @@ a:active	{ color:#86cd00; }
 
 /* -----------------LeftMenuBgList------------ */
 .LeftMenuBgList {
-	background-image:url(/images/left_bg.gif);
+	background-image:url(/images/com/left_bg.gif);
 	color:#FFFFFF;
 	font-family:Dotum;
 	font-size:12px;

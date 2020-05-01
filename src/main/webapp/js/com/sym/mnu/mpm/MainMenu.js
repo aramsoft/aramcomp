@@ -17,7 +17,7 @@
 var treeNodes			= new Array();;
 var openTreeNodes	    = new Array();
 var treeIcons			= new Array(6);
-//var imgpath         = "./../../../../images/com/cmm/utl/";
+//var imgpath         = "/images/com/cmm/utl/";
 var treeYeobu       = false;
 var chkValue        = "";
 var vHtmlCode       = "";
@@ -52,7 +52,7 @@ function createTree(arrName, vYeobu, checkValue) {
 		preloadIcons();
 
 		vHtmlCode +="<table width='180' height='90' border='0' align='center' cellpadding='0' cellspacing='0'><tr>";
-		vHtmlCode +="<td valign='bottom' background='"+getContextPath+"/images/left_menu_top.gif' style='background-repeat:no-repeat'>";
+		vHtmlCode +="<td valign='bottom' background='"+getContextPath+"/images/com/left_menu_top.gif' style='background-repeat:no-repeat'>";
 
 		if (startNode == null) startNode = 0;
 		if (openNode != 0 || openNode != null) setOpenTreeNodes(openNode);
@@ -63,7 +63,7 @@ function createTree(arrName, vYeobu, checkValue) {
 		} else vHtmlCode +="<img src='"+imgpath+"menu_base.gif' border='0' align='absbottom' alt='' >메뉴목록<br></td></tr>";
 		var recursedNodes = new Array();
 		addTreeNode(startNode, recursedNodes);
-		vHtmlCode +="<tr><td height='30' valign='bottom' background='"+getContextPath+"/images/left_menu_btm.gif' style='background-repeat:no-repeat'>&nbsp;</td></tr></table>";
+		vHtmlCode +="<tr><td height='30' valign='bottom' background='"+getContextPath+"/images/com/left_menu_btm.gif' style='background-repeat:no-repeat'>&nbsp;</td></tr></table>";
 		document.write(vHtmlCode);
 	}
 }

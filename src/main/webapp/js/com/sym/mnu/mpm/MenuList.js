@@ -17,7 +17,7 @@
 var treeNodes			= new Array();
 var openTreeNodes	    = new Array();
 var treeIcons			= new Array(6);
-//var imgpath         = "./../../../../../../../images/com/cmm/utl/";
+//var imgpath         = "/images/com/cmm/utl/";
 var treeYeobu       = false;
 
 /*

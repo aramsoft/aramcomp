@@ -21,11 +21,11 @@ function fn_main_headPageMove(menuNo, url){
 </form>
 
 <div id="gnb">
-	<div id="top_logo"><a href="${pageContext.request.contextPath}/sym/mnu/mpm/MainMenuHome.do" target=_top><img src="${pageContext.request.contextPath}/images/logo_01.gif" alt="egovframe" /></a></div>
+	<div id="top_logo"><a href="${pageContext.request.contextPath}/sym/mnu/mpm/MainMenuHome.do" target=_top><img src="${pageContext.request.contextPath}/images/com/logo_01.gif" alt="egovframe" /></a></div>
  	<div id="use_descri">
         <ul>
             <li>공통서비스 테스트 사이트(업무사용자용)</li>
-            <li><a href="${pageContext.request.contextPath}/uat/uia/actionLogout.do?targetUrl=/sym/mnu/mpm/MainMenuHome.do"><img src="${pageContext.request.contextPath}/images/logout_btn.gif" alt="로그아웃" /></a></li>
+            <li><a href="${pageContext.request.contextPath}/uat/uia/actionLogout.do?targetUrl=/sym/mnu/mpm/MainMenuHome.do"><img src="${pageContext.request.contextPath}/images/com/logout_btn.gif" alt="로그아웃" /></a></li>
          </ul>
  	</div>
 </div>

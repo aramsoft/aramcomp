@@ -77,9 +77,9 @@ function fnEgovTabNavigation(objName){
 							<td>
 							<table border="0" >
 								<tr>
-									<td><img src="${pageContext.request.contextPath}/images/TAB_01.gif"  border="0" name="TAB_01" id="TAB_01" style="cursor:pointer;" onClick="fnEgovTabNavigation('DIV_01');"></td>
-									<td><img src="${pageContext.request.contextPath}/images/TAB_02.gif"   border="0" name="TAB_02" id="TAB_02" style="cursor:pointer;" onClick="fnEgovTabNavigation('DIV_02');"></td>
-									<td><img src="${pageContext.request.contextPath}/images/TAB_03.gif"   border="0" name="TAB_03" id="TAB_03" style="cursor:pointer;" onClick="fnEgovTabNavigation('DIV_03');"></td>
+									<td><img src="${pageContext.request.contextPath}/images/com/TAB_01.gif"  border="0" name="TAB_01" id="TAB_01" style="cursor:pointer;" onClick="fnEgovTabNavigation('DIV_01');"></td>
+									<td><img src="${pageContext.request.contextPath}/images/com/TAB_02.gif"   border="0" name="TAB_02" id="TAB_02" style="cursor:pointer;" onClick="fnEgovTabNavigation('DIV_02');"></td>
+									<td><img src="${pageContext.request.contextPath}/images/com/TAB_03.gif"   border="0" name="TAB_03" id="TAB_03" style="cursor:pointer;" onClick="fnEgovTabNavigation('DIV_03');"></td>
 								</tr>
 							</table>
 							</td>

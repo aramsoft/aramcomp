@@ -70,7 +70,7 @@ public class NtwrkController {
 		// 관리항목코드
 		cmmUseService.populateCmmCodeList("COM067", "COM067_manageIem");
 
-		return "sym/sym/nwk/NtwrkList";
+		return "com/sym/sym/nwk/NtwrkList";
 	}
 
 	/**
@@ -87,7 +87,7 @@ public class NtwrkController {
 
 		model.addAttribute(ntwrkService.selectNtwrk(ntwrkVO));
 		
-		return "sym/sym/nwk/NtwrkDetail";
+		return "com/sym/sym/nwk/NtwrkDetail";
 	}
 
 	/**
@@ -104,7 +104,7 @@ public class NtwrkController {
 		// 관리항목코드
 		cmmUseService.populateCmmCodeList("COM067", "COM067_manageIem");
 
-		return "sym/sym/nwk/NtwrkRegist";
+		return "com/sym/sym/nwk/NtwrkRegist";
 	}
 
 	/**
@@ -122,7 +122,7 @@ public class NtwrkController {
 
 		beanValidator.validate(ntwrkVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "sym/sym/nwk/NtwrkRegist";
+			return "com/sym/sym/nwk/NtwrkRegist";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -132,7 +132,7 @@ public class NtwrkController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sym/sym/nwk/listNtwrk.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -152,7 +152,7 @@ public class NtwrkController {
 		// 관리항목코드
 		cmmUseService.populateCmmCodeList("COM067", "COM067_manageIem");
 
-		return "sym/sym/nwk/NtwrkEdit";
+		return "com/sym/sym/nwk/NtwrkEdit";
 	}
 
 	/**
@@ -170,7 +170,7 @@ public class NtwrkController {
 
 		beanValidator.validate(ntwrkVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "sym/sym/nwk/NtwrkEdit";
+			return "com/sym/sym/nwk/NtwrkEdit";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -180,7 +180,7 @@ public class NtwrkController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/sym/sym/nwk/listNtwrk.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -199,7 +199,7 @@ public class NtwrkController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sym/sym/nwk/listNtwrk.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

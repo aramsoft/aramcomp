@@ -60,7 +60,7 @@ public class MapTeamController {
 
 		model.addAttribute(paginationInfo);
 
-		return "dam/map/tea/MapTeamList";
+		return "com/dam/map/tea/MapTeamList";
 	}
 
 	/**
@@ -70,13 +70,13 @@ public class MapTeamController {
 	 */
 	@RequestMapping(value = "/dam/map/tea/detailMapTeam.do")
 	public String detailMapTeam(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MapTeamVO mapTeamVO,
 			ModelMap model) {
 
 		model.addAttribute(mapTeamService.selectMapTeamDetail(mapTeamVO));
 
-		return "dam/map/tea/MapTeamDetail";
+		return "com/dam/map/tea/MapTeamDetail";
 	}
 
 	/**
@@ -86,10 +86,10 @@ public class MapTeamController {
 	 */
 	@RequestMapping(value = "/dam/map/tea/registMapTeam.do")
 	public String registMapTeam(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MapTeamVO mapTeamVO) {
 		
-		return "dam/map/tea/MapTeamRegist";
+		return "com/dam/map/tea/MapTeamRegist";
 	}
 
 	/**
@@ -99,14 +99,14 @@ public class MapTeamController {
 	 */
 	@RequestMapping(value = "/dam/map/tea/insertMapTeam.do")
 	public String insertMapTeam(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MapTeamVO mapTeamVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
 		
 		beanValidator.validate(mapTeamVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "dam/map/tea/MapTeamRegist";
+			return "com/dam/map/tea/MapTeamRegist";
 		}
 
 		// 로그인 객체 선언
@@ -117,7 +117,7 @@ public class MapTeamController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/dam/map/tea/listMapTeam.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -127,13 +127,13 @@ public class MapTeamController {
 	 */
 	@RequestMapping(value = "/dam/map/tea/editMapTeam.do")
 	public String editMapTeam(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MapTeamVO mapTeamVO,
 			ModelMap model) {
 
 		model.addAttribute(mapTeamService.selectMapTeamDetail(mapTeamVO));
 		
-		return "dam/map/tea/MapTeamEdit";
+		return "com/dam/map/tea/MapTeamEdit";
 	}
 
 	/**
@@ -143,14 +143,14 @@ public class MapTeamController {
 	 */
 	@RequestMapping(value = "/dam/map/tea/updateMapTeam.do")
 	public String updateMapTeam(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MapTeamVO mapTeamVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
 
 		beanValidator.validate(mapTeamVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "dam/map/tea/MapTeamEdit";
+			return "com/dam/map/tea/MapTeamEdit";
 		}
 
 		// 로그인 객체 선언
@@ -161,7 +161,7 @@ public class MapTeamController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/dam/map/tea/listMapTeam.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -171,7 +171,7 @@ public class MapTeamController {
 	 */
 	@RequestMapping(value = "/dam/map/tea/deleteMapTeam.do")
 	public String deleteMapTeam(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MapTeamVO mapTeamVO, 
 			ModelMap model) {
 
@@ -179,7 +179,7 @@ public class MapTeamController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/dam/map/tea/listMapTeam.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

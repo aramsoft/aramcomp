@@ -77,7 +77,7 @@ public class MainImageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/ion/msi/MainImageList";
+		return "com/uss/ion/msi/MainImageList";
 	}
 
 	/**
@@ -87,10 +87,10 @@ public class MainImageController {
 	 */
 	@RequestMapping(value = "/uss/ion/msi/registMainImage.do")
 	public String registMainImage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MainImageVO mainImageVO) {
 		
-		return "uss/ion/msi/MainImageRegist";
+		return "com/uss/ion/msi/MainImageRegist";
 	}
 
 	/**
@@ -100,16 +100,16 @@ public class MainImageController {
 	 */
 	@RequestMapping(value = "/uss/ion/msi/insertMainImage.do")
 	public String insertMainImage(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MainImageVO mainImageVO, 
 			BindingResult bindingResult, 
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception {
 
 		beanValidator.validate(mainImageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/msi/MainImageRegist";
+			return "com/uss/ion/msi/MainImageRegist";
 		} 
 
 		String atchFileId = "";
@@ -134,7 +134,7 @@ public class MainImageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/ion/msi/listMainImage.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -144,13 +144,13 @@ public class MainImageController {
 	 */
 	@RequestMapping(value = "/uss/ion/msi/editMainImage.do")
 	public String editMainImage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MainImageVO mainImageVO,
 			ModelMap model) {
 
 		model.addAttribute(mainImageService.selectMainImage(mainImageVO));
 
-		return "uss/ion/msi/MainImageEdit";
+		return "com/uss/ion/msi/MainImageEdit";
 	}
 
 	/**
@@ -160,16 +160,16 @@ public class MainImageController {
 	 */
 	@RequestMapping(value = "/uss/ion/msi/updateMainImage.do")
 	public String updateMainImage(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MainImageVO mainImageVO, 
 			BindingResult bindingResult, 
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception {
 
 		beanValidator.validate(mainImageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/msi/MainImageEdit";
+			return "com/uss/ion/msi/MainImageEdit";
 		}
 
 		String atchFileId = "";
@@ -202,7 +202,7 @@ public class MainImageController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/ion/msi/listMainImage.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -212,7 +212,7 @@ public class MainImageController {
 	 */
 	@RequestMapping(value = "/uss/ion/msi/deleteMainImage.do")
 	public String deleteMainImage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MainImageVO mainImageVO, 
 			ModelMap model) {
 
@@ -220,7 +220,7 @@ public class MainImageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/msi/listMainImage.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -230,15 +230,16 @@ public class MainImageController {
 	 */
 	@RequestMapping(value = "/uss/ion/msi/deleteListMainImage.do")
 	public String deleteListMainImage(
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute MainImageVO mainImageVO, 
 			@RequestParam String imageIds, 
-			@ModelAttribute SearchVO searchVO,
 			ModelMap model) {
 
 		mainImageService.deleteMainImages(imageIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/msi/listMainImage.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -249,13 +250,13 @@ public class MainImageController {
 	@IncludedInfo(name = "메인이미지 반영결과보기", order = 5251, gid = 50)
 	@RequestMapping(value = "/uss/ion/msi/viewMainImage.do")
 	public String viewMainImage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MainImageVO mainImageVO, 
 			ModelMap model) {
 
 		model.addAttribute("fileList", mainImageService.selectMainImageResult(mainImageVO));
 
-		return "uss/ion/msi/MainImageView";
+		return "com/uss/ion/msi/MainImageView";
 	}
 	
 }

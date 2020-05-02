@@ -50,7 +50,7 @@ public class CntcSttusController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "ssi/syi/ist/CntcSttusList";
+		return "com/ssi/syi/ist/CntcSttusList";
 	}
 
 	/**
@@ -61,12 +61,13 @@ public class CntcSttusController {
 	@RequestMapping(value = "/ssi/syi/ist/detailCntcSttus.do")
 	@Secured("ROLE_ADMIN")
 	public String selectCntcSttusLogDetail(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute CntcSttusVO cntcSttusVO) {
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute CntcSttusVO cntcSttusVO,
+			ModelMap model) {
 		
-		cntcSttusService.selectCntcSttusDetail(cntcSttusVO);
+		model.addAttribute(cntcSttusService.selectCntcSttusDetail(cntcSttusVO));
 
-		return "ssi/syi/ist/CntcSttusDetail";
+		return "com/ssi/syi/ist/CntcSttusDetail";
 	}
 
 }

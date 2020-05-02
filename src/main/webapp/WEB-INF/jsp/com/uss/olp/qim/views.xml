@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="com/uss/olp/qim/QustnrItemList" extends="default">
+    <put-attribute name="title" value="설문항목 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/olp/qim/QustnrItemList.jsp" />
+  </definition>
+  
+  <definition name="com/uss/olp/qim/QustnrItemDetail" extends="default">
+    <put-attribute name="title" value="설문항목 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/olp/qim/QustnrItemDetail.jsp" />
+  </definition>
+  
+  <definition name="com/uss/olp/qim/QustnrItemRegist" extends="default">
+    <put-attribute name="title" value="설문항목 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/olp/qim/QustnrItemRegist.jsp" />
+  </definition>
+  
+  <definition name="com/uss/olp/qim/QustnrItemEdit" extends="default">
+    <put-attribute name="title" value="설문항목 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/olp/qim/QustnrItemEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

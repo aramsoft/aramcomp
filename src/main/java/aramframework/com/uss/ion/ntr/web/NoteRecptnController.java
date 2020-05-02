@@ -117,7 +117,7 @@ public class NoteRecptnController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/ion/ntr/NoteRecptnList";
+		return "com/uss/ion/ntr/NoteRecptnList";
 	}
 
 	/**
@@ -128,9 +128,9 @@ public class NoteRecptnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ntr/detailNoteRecptn.do")
 	public String detailNoteRecptn(
-			@RequestParam(value="cmd", required=false) String sCmd,
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute("noteRecptnVO") NoteRecptnVO noteRecptnVO, 
+			@RequestParam(value="cmd", required=false) String sCmd,
 			ModelMap model) {
 
 		if (sCmd.equals("del")) {
@@ -150,7 +150,7 @@ public class NoteRecptnController {
 
 		model.addAttribute("resultRecptnEmp", noteTrnsmitService.selectNoteTrnsmitCnfirm(noteTrnsmit));
 
-		return "uss/ion/ntr/NoteRecptnDetail";
+		return "com/uss/ion/ntr/NoteRecptnDetail";
 	}
 
 }

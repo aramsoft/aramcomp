@@ -66,7 +66,7 @@ public class PopupManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/ion/pwm/PopupList";
+		return "com/uss/ion/pwm/PopupList";
 	}
 
 	/**
@@ -76,13 +76,13 @@ public class PopupManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/pwm/detailPopup.do")
 	public String detailPopup(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute PopupManageVO popupManageVO,
 			ModelMap model) {
 
 		model.addAttribute(popupManageService.selectPopupDetail(popupManageVO));
 
-		return "uss/ion/pwm/PopupDetail";
+		return "com/uss/ion/pwm/PopupDetail";
 	}
 
 	// 팝업창시작일자(시)
@@ -105,10 +105,10 @@ public class PopupManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/pwm/registPopup.do")
 	public String registPopup(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute PopupManageVO popupManageVO) {
 
-		return "uss/ion/pwm/PopupRegist";
+		return "com/uss/ion/pwm/PopupRegist";
 	}
 
 	/**
@@ -118,7 +118,7 @@ public class PopupManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/pwm/insertPopup.do")
 	public String insertPopup(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute PopupManageVO popupManageVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
@@ -126,7 +126,7 @@ public class PopupManageController {
 		// 서버 validate 체크
 		beanValidator.validate(popupManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/pwm/PopupRegist";
+			return "com/uss/ion/pwm/PopupRegist";
 		}
 
 		// 로그인 객체 선언
@@ -138,7 +138,7 @@ public class PopupManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/ion/pwm/listPopup.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -148,7 +148,7 @@ public class PopupManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/pwm/editPopup.do")
 	public String editPopup(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute PopupManageVO popupManageVO,
 			ModelMap model) {
 
@@ -165,7 +165,7 @@ public class PopupManageController {
 		
 		model.addAttribute(popupManageVO);
 				
-		return "uss/ion/pwm/PopupEdit";
+		return "com/uss/ion/pwm/PopupEdit";
 	}
 
 	/**
@@ -175,7 +175,7 @@ public class PopupManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/pwm/updatePopup.do")
 	public String updatePopup(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute PopupManageVO popupManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -183,7 +183,7 @@ public class PopupManageController {
 		// 서버 validate 체크
 		beanValidator.validate(popupManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/pwm/PopupEdit";
+			return "com/uss/ion/pwm/PopupEdit";
 		}
 
 		// 로그인 객체 선언
@@ -195,7 +195,7 @@ public class PopupManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/ion/pwm/listPopup.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -205,7 +205,7 @@ public class PopupManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/pwm/deletePopup.do")
 	public String deletePopup(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute PopupManageVO popupManageVO, 
 			ModelMap model) {
 
@@ -213,7 +213,7 @@ public class PopupManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/pwm/listPopup.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -223,10 +223,10 @@ public class PopupManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/pwm/openPopup.do")
 	public String openPopup(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@RequestParam String fileUrl, 
 			@RequestParam String stopVewAt,
 			@RequestParam String popupId, 
-			@ModelAttribute SearchVO searchVO,
 			ModelMap model) {
 
 		model.addAttribute("stopVewAt", stopVewAt);
@@ -265,7 +265,7 @@ public class PopupManageController {
 
 		model.addAttribute("resultList", popupManageService.selectPopupMainList(popupManageVO));
 
-		return "uss/ion/pwm/PopupMainPage";
+		return "com/uss/ion/pwm/PopupMainPage";
 	}
 
 }

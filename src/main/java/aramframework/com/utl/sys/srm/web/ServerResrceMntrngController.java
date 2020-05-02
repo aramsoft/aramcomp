@@ -53,7 +53,7 @@ public class ServerResrceMntrngController {
 
 		model.addAttribute(paginationInfo);
 
-		return "utl/sys/srm/MntrngServerList";
+		return "com/utl/sys/srm/MntrngServerList";
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class ServerResrceMntrngController {
 		serverResrceMntrngVO.setStrStartDt(StringUtil.addMinusChar(serverResrceMntrngVO.getStrStartDt()));
 		serverResrceMntrngVO.setStrEndDt(StringUtil.addMinusChar(serverResrceMntrngVO.getStrEndDt()));
 
-		return "utl/sys/srm/ServerResrceMntrngList";
+		return "com/utl/sys/srm/ServerResrceMntrngList";
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class ServerResrceMntrngController {
 
 		model.addAttribute(serverResrceMntrngService.selectServerResrceMntrng(serverResrceMntrngVO));
 
-		return "utl/sys/srm/ServerResrceMntrngDetail";
+		return "com/utl/sys/srm/ServerResrceMntrngDetail";
 	}
 
 }

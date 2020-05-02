@@ -18,7 +18,7 @@
 				   LEFT OUTER JOIN COMTN_DAM_MAP_TEAM C
 						ON B.ORGNZT_ID = C.ORGNZT_ID
 				   LEFT OUTER JOIN COMVN_USER_MASTER D
-						ON A.FRST_REGISTER_ID = D.ESNTL_ID
+						ON A.FRST_REGISTER_ID = D.USER_ID
 			 WHERE A.OTHBC_AT = 'Y'
 			   AND A.KNWLDG_EVL = '1'
 		]]>
@@ -47,7 +47,7 @@
 				   LEFT OUTER JOIN COMTN_DAM_MAP_TEAM C
 						ON B.ORGNZT_ID = C.ORGNZT_ID
 				   LEFT OUTER JOIN COMVN_USER_MASTER D
-						ON A.FRST_REGISTER_ID = D.ESNTL_ID
+						ON A.FRST_REGISTER_ID = D.USER_ID
 			 WHERE A.OTHBC_AT = 'Y'
 			   AND A.KNWLDG_EVL = '1'
 		]]>
@@ -79,7 +79,7 @@
                  , (select a.user_nm 
                       from COMVN_USER_MASTER a
                          , COMTN_DAM_KNOIFM b 
-                     where a.ESNTL_ID = b.EXPERT_ID 
+                     where a.USER_ID = b.EXPERT_ID 
                        and b.KNWLDG_ID = #{knoId})   AS "speNm"
 				 , A.DSUSE_DE				AS "junkYmd"
 			     , A.KNWLDG_EVL				AS "knoAps"
@@ -93,7 +93,7 @@
 				   LEFT OUTER JOIN COMTN_DAM_MAP_TEAM C
 						ON B.ORGNZT_ID = C.ORGNZT_ID
 				   LEFT OUTER JOIN COMVN_USER_MASTER D
-						ON A.FRST_REGISTER_ID = D.ESNTL_ID
+						ON A.FRST_REGISTER_ID = D.USER_ID
 			 WHERE A.OTHBC_AT = 'Y'				
      		   AND A.KNWLDG_ID = #{knoId}		
 		]]>

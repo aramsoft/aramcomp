@@ -64,7 +64,7 @@ public class KnoAppraisalController {
 
 		model.addAttribute(paginationInfo);
 
-		return "dam/app/KnoAppraisalList";
+		return "com/dam/app/KnoAppraisalList";
 	}
 
 	/**
@@ -74,13 +74,13 @@ public class KnoAppraisalController {
 	 */
 	@RequestMapping(value = "/dam/app/detailKnoAppraisal.do")
 	public String detailKnoAppraisal(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute KnoAppraisalVO knoAppraisalVO,
 			ModelMap model) {
 
 		model.addAttribute(knoAppraisalService.selectKnoAppraisal(knoAppraisalVO));
 
-		return "dam/app/KnoAppraisalDetail";
+		return "com/dam/app/KnoAppraisalDetail";
 	}
 
 	/**
@@ -90,13 +90,13 @@ public class KnoAppraisalController {
 	 */
 	@RequestMapping(value = "/dam/app/editKnoAppraisal.do")
 	public String editKnoAppraisal(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute KnoAppraisalVO knoAppraisalVO,
 			ModelMap model) {
 
 		model.addAttribute(knoAppraisalService.selectKnoAppraisal(knoAppraisalVO));
 
-		return "dam/app/KnoAppraisalEdit";
+		return "com/dam/app/KnoAppraisalEdit";
 	}
 
 	/**
@@ -106,14 +106,14 @@ public class KnoAppraisalController {
 	 */
 	@RequestMapping(value = "/dam/app/updateKnoAppraisal.do")
 	public String updateKnoAppraisal(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute KnoAppraisalVO knoAppraisalVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(knoAppraisalVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "dam/app/KnoAppraisalEdit";
+			return "com/dam/app/KnoAppraisalEdit";
 		}
 
 		// 로그인 객체 선언
@@ -125,7 +125,7 @@ public class KnoAppraisalController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/dam/app/listKnoAppraisal.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

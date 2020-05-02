@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="com/uss/ion/isg/IntnetSvcGuidanceList" extends="default">
+    <put-attribute name="title" value="인터넷서비스안내 목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/ion/isg/IntnetSvcGuidanceList.jsp" />
+  </definition>
+  
+  <definition name="com/uss/ion/isg/IntnetSvcGuidanceRegist" extends="default">
+    <put-attribute name="title" value="인터넷서비스안내 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/ion/isg/IntnetSvcGuidanceRegist.jsp" />
+  </definition>
+  
+  <definition name="com/uss/ion/isg/IntnetSvcGuidanceEdit" extends="default">
+    <put-attribute name="title" value="인터넷서비스안내 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/ion/isg/IntnetSvcGuidanceEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

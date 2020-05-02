@@ -49,7 +49,7 @@ public class WebLogController {
 	
 		model.addAttribute(paginationInfo);
 
-		return "sym/log/wlg/WebLogList";
+		return "com/sym/log/wlg/WebLogList";
 	}
 
 	/**
@@ -66,7 +66,7 @@ public class WebLogController {
 
 		model.addAttribute(webLogService.selectWebLog(webLogVO));
 
-		return "sym/log/wlg/WebLogDetail";
+		return "com/sym/log/wlg/WebLogDetail";
 	}
 
 }

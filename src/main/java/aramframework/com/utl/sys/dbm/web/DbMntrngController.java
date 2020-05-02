@@ -66,7 +66,7 @@ public class DbMntrngController {
 
 		model.addAttribute(paginationInfo);
 
-		return "utl/sys/dbm/DbMntrngList";
+		return "com/utl/sys/dbm/DbMntrngList";
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class DbMntrngController {
 
 		model.addAttribute(dbMntrngService.selectDbMntrng(dbMntrngVO));
 
-		return "utl/sys/dbm/DbMntrngDetail";
+		return "com/utl/sys/dbm/DbMntrngDetail";
 	}
 
 	/**
@@ -100,7 +100,7 @@ public class DbMntrngController {
 		// DBMS종류코드목록을 코드정보로부터 조회
 		cmmUseService.populateCmmCodeList("COM048", "COM048_dbmsKind");
 
-		return "utl/sys/dbm/DbMntrngRegist";
+		return "com/utl/sys/dbm/DbMntrngRegist";
 	}
 
 	/**
@@ -119,7 +119,7 @@ public class DbMntrngController {
 		beanValidator.validate(dbMntrngVO, bindingResult);
 		checkDuplication(dbMntrngVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "utl/sys/dbm/DbMntrngRegist";
+			return "com/utl/sys/dbm/DbMntrngRegist";
 		}
 		
 		// 로그인 객체 선언
@@ -130,7 +130,7 @@ public class DbMntrngController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/utl/sys/dbm/listDbMntrng.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	private void checkDuplication(DbMntrngVO dbMntrngVO, Errors errors) {
@@ -167,7 +167,7 @@ public class DbMntrngController {
 		// DBMS종류코드목록을 코드정보로부터 조회
 		cmmUseService.populateCmmCodeList("COM048", "COM048_dbmsKind");
 
-		return "utl/sys/dbm/DbMntrngEdit";
+		return "com/utl/sys/dbm/DbMntrngEdit";
 	}
 
 	/**
@@ -186,7 +186,7 @@ public class DbMntrngController {
 
 		beanValidator.validate(dbMntrngVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "utl/sys/dbm/DbMntrngEdit";
+			return "com/utl/sys/dbm/DbMntrngEdit";
 		}
 
 		// 로그인 객체 선언
@@ -197,7 +197,7 @@ public class DbMntrngController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/utl/sys/dbm/listDbMntrng.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -216,7 +216,7 @@ public class DbMntrngController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/utl/sys/dbm/listDbMntrng.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -241,7 +241,7 @@ public class DbMntrngController {
 
 		model.addAttribute(paginationInfo);
 
-		return "utl/sys/dbm/DbMntrngLogList";
+		return "com/utl/sys/dbm/DbMntrngLogList";
 	}
 
 	/**
@@ -259,7 +259,7 @@ public class DbMntrngController {
 
 		model.addAttribute(dbMntrngService.selectDbMntrngLog(dbMntrngLogVO));
 
-		return "utl/sys/dbm/DbMntrngLogDetail";
+		return "com/utl/sys/dbm/DbMntrngLogDetail";
 	}
 
 }

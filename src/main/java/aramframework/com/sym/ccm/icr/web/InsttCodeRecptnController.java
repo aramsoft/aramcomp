@@ -45,7 +45,7 @@ public class InsttCodeRecptnController {
 
 		model.addAttribute("resultList", insttCodeManageService.selectInsttCodeRecptnList(insttCodeRecptnVO));
 
-		return "sym/ccm/icr/InsttCodeRecptnMainPage";
+		return "com/sym/ccm/icr/InsttCodeRecptnMainPage";
 	}
 
 	/**
@@ -71,7 +71,7 @@ public class InsttCodeRecptnController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/ccm/icr/InsttCodeRecptnList";
+		return "com/sym/ccm/icr/InsttCodeRecptnList";
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class InsttCodeRecptnController {
 	 */
 	@RequestMapping(value = "/sym/ccm/icr/detailInsttCodeRecptn.do")
 	public String selectInsttCodeDetail(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute InsttCodeRecptnVO insttCodeRecptnVO, 
 			ModelMap model) {
 
@@ -103,7 +103,7 @@ public class InsttCodeRecptnController {
 		/* 처리구분코드 */
 		cmmUseService.populateCmmCodeList("COM044", "COM044_processSe");
 
-		return "sym/ccm/icr/InsttCodeRecptnDetail";
+		return "com/sym/ccm/icr/InsttCodeRecptnDetail";
 	}
 
 	/**
@@ -113,10 +113,10 @@ public class InsttCodeRecptnController {
 	 */
 	@RequestMapping(value = "/sym/ccm/icr/registInsttCodeRecptn.do")
 	public String registInsttCodeRecptn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute InsttCodeRecptnVO insttCodeRecptnVO) {
 		
-		return "sym/ccm/icr/InsttCodeRecptnRegist";
+		return "com/sym/ccm/icr/InsttCodeRecptnRegist";
 	}
 
 	/**
@@ -126,14 +126,14 @@ public class InsttCodeRecptnController {
 	 */
 	@RequestMapping(value = "/sym/ccm/icr/insertInsttCodeRecptn.do")
 	public String insertInsttCodeRecptn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute InsttCodeRecptnVO insttCodeRecptnVO, 
 			ModelMap model) {
 		
 		insttCodeManageService.insertInsttCodeRecptn();
 		
 		model.addAttribute("redirectURL", "/sym/ccm/icr/listInsttCodeRecptn.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

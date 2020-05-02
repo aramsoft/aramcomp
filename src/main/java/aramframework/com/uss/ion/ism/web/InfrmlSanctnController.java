@@ -49,7 +49,7 @@ public class InfrmlSanctnController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/ion/ism/SanctnerListPopup";
+		return "com/uss/ion/ism/SanctnerListPopup";
 	}
 
 	/**
@@ -59,13 +59,13 @@ public class InfrmlSanctnController {
 	 */
 	@RequestMapping("/uss/ion/ism/detailSanctner.do")
 	public String detailSanctner(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute InfrmlSanctnVO infrmlSanctnVO,
 			ModelMap model) {
 
 		model.addAttribute(infrmlSanctnService.selectInfrmlSanctn(infrmlSanctnVO));
 
-		return "uss/ion/ism/InfrmlSanctnDetail";
+		return "com/uss/ion/ism/InfrmlSanctnDetail";
 	}
 
 	/**

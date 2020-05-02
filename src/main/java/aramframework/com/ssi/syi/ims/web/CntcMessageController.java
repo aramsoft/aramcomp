@@ -59,7 +59,7 @@ public class CntcMessageController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "ssi/syi/ims/CntcMessageList";
+		return "com/ssi/syi/ims/CntcMessageList";
 	}
 
 	/**
@@ -71,13 +71,13 @@ public class CntcMessageController {
 	@RequestMapping(value = "/ssi/syi/ims/detailCntcMessage.do")
 	@Secured("ROLE_ADMIN")
 	public String detailCntcMessage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CntcMessageVO cntcMessageVO,
 			@ModelAttribute CntcMessageItemVO cntcMessageItemVO, 
 			ModelMap model) {
 
 		/* 연계메시지 상세 */
-		cntcMessageService.selectCntcMessageDetail(cntcMessageVO);
+		model.addAttribute(cntcMessageService.selectCntcMessageDetail(cntcMessageVO));
 
 		/* 연계메시지항목 리스트 */
 		cntcMessageItemVO.setRecordPerPage(9999999);
@@ -86,7 +86,7 @@ public class CntcMessageController {
 
 		model.addAttribute("cntcMessageItemList", cntcMessageService.selectCntcMessageItemList(cntcMessageItemVO));
 
-		return "ssi/syi/ims/CntcMessageDetail";
+		return "com/ssi/syi/ims/CntcMessageDetail";
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class CntcMessageController {
 	@RequestMapping(value = "/ssi/syi/ims/registCntcMessage.do")
 	@Secured("ROLE_ADMIN")
 	public String registCntcMessage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CntcMessageVO cntcMessageVO,
 			ModelMap model) {
 
@@ -109,7 +109,7 @@ public class CntcMessageController {
 		
 		model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
-		return "ssi/syi/ims/CntcMessageRegist";
+		return "com/ssi/syi/ims/CntcMessageRegist";
 	}
 
 	/**
@@ -120,7 +120,7 @@ public class CntcMessageController {
 	@RequestMapping(value = "/ssi/syi/ims/insertCntcMessage.do")
 	@Secured("ROLE_ADMIN")
 	public String insertCntcMessage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CntcMessageVO cntcMessageVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -136,7 +136,7 @@ public class CntcMessageController {
 			
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
-			return "ssi/syi/ims/CntcMessageRegist";
+			return "com/ssi/syi/ims/CntcMessageRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -147,7 +147,7 @@ public class CntcMessageController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/ssi/syi/ims/listCntcMessage.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -158,7 +158,7 @@ public class CntcMessageController {
 	@RequestMapping(value = "/ssi/syi/ims/editCntcMessage.do")
 	@Secured("ROLE_ADMIN")
 	public String editCntcMessage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CntcMessageVO cntcMessageVO,
 			ModelMap model) {
 
@@ -172,7 +172,7 @@ public class CntcMessageController {
 
 		cntcMessageService.selectCntcMessageDetail(cntcMessageVO);
 
-		return "ssi/syi/ims/CntcMessageEdit";
+		return "com/ssi/syi/ims/CntcMessageEdit";
 	}
 
 	/**
@@ -183,7 +183,7 @@ public class CntcMessageController {
 	@RequestMapping(value = "/ssi/syi/ims/updateCntcMessage.do")
 	@Secured("ROLE_ADMIN")
 	public String updateCntcMessage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CntcMessageVO cntcMessageVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -199,7 +199,7 @@ public class CntcMessageController {
 
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
-			return "ssi/syi/ims/CntcMessageEdit";
+			return "com/ssi/syi/ims/CntcMessageEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -210,7 +210,7 @@ public class CntcMessageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/ssi/syi/ims/listCntcMessage.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -221,7 +221,7 @@ public class CntcMessageController {
 	@RequestMapping(value = "/ssi/syi/ims/deleteCntcMessage.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteCntcMessage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CntcMessageVO cntcMessageVO,
 			ModelMap model) {
 
@@ -229,7 +229,7 @@ public class CntcMessageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/ssi/syi/ims/listCntcMessage.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -240,7 +240,7 @@ public class CntcMessageController {
 	@RequestMapping(value = "/ssi/syi/ims/registCntcMessageItem.do")
 	@Secured("ROLE_ADMIN")
 	public String registCntcMessageItem(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CntcMessageItemVO cntcMessageItemVO, 
 			ModelMap model) {
 
@@ -252,7 +252,7 @@ public class CntcMessageController {
 		
 		model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
-		return "ssi/syi/ims/CntcMessageItemRegist";
+		return "com/ssi/syi/ims/CntcMessageItemRegist";
 	}
 
 	/**
@@ -263,7 +263,7 @@ public class CntcMessageController {
 	@RequestMapping(value = "/ssi/syi/ims/insertCntcMessageItem.do")
 	@Secured("ROLE_ADMIN")
 	public String insertCntcMessageItem(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CntcMessageItemVO cntcMessageItemVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -279,7 +279,7 @@ public class CntcMessageController {
 			
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
-			return "ssi/syi/ims/CntcMessageItemRegist";
+			return "com/ssi/syi/ims/CntcMessageItemRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -300,7 +300,7 @@ public class CntcMessageController {
 	@RequestMapping(value = "/ssi/syi/ims/editCntcMessageItem.do")
 	@Secured("ROLE_ADMIN")
 	public String editCntcMessageItem(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CntcMessageItemVO cntcMessageItemVO, 
 			ModelMap model) {
 
@@ -312,9 +312,9 @@ public class CntcMessageController {
 		
 		model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
-		cntcMessageService.selectCntcMessageItemDetail(cntcMessageItemVO);
+		model.addAttribute(cntcMessageService.selectCntcMessageItemDetail(cntcMessageItemVO));
 
-		return "ssi/syi/ims/CntcMessageItemEdit";
+		return "com/ssi/syi/ims/CntcMessageItemEdit";
 	}
 
 	/**
@@ -325,7 +325,7 @@ public class CntcMessageController {
 	@RequestMapping(value = "/ssi/syi/ims/updateCntcMessageItem.do")
 	@Secured("ROLE_ADMIN")
 	public String updateCntcMessageItem(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CntcMessageItemVO cntcMessageItemVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -341,7 +341,7 @@ public class CntcMessageController {
 			
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
-			return "ssi/syi/ims/CntcMessageItemEdit";
+			return "com/ssi/syi/ims/CntcMessageItemEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -362,7 +362,7 @@ public class CntcMessageController {
 	@RequestMapping(value = "/ssi/syi/ims/deleteCntcMessageItem.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteCntcMessageItem(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CntcMessageItemVO cntcMessageItemVO) {
 
 		cntcMessageService.deleteCntcMessageItem(cntcMessageItemVO);

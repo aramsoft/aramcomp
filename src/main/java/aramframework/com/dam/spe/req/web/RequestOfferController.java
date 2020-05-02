@@ -69,14 +69,14 @@ public class RequestOfferController {
 		requestOfferVO.fillPageInfo(paginationInfo);
 
 		model.addAttribute("resultList", requestOfferService.selectRequestOfferList(requestOfferVO));
-		int totCnt = (Integer) requestOfferService.selectRequestOfferListCnt(requestOfferVO);
+		int totCnt = requestOfferService.selectRequestOfferListCnt(requestOfferVO);
 
 		requestOfferVO.setTotalRecordCount(totCnt);
 		paginationInfo.setTotalRecordCount(totCnt);
 
 		model.addAttribute(paginationInfo);
 
-		return "dam/spe/req/RequestOfferList";
+		return "com/dam/spe/req/RequestOfferList";
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class RequestOfferController {
 	 */
 	@RequestMapping(value = "/dam/spe/req/detailRequestOffer.do")
 	public String detailRequestOffer(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RequestOfferVO requestOfferVO, 
 			ModelMap model) {
 
@@ -104,7 +104,7 @@ public class RequestOfferController {
 			model.addAttribute("IS_SPE", "N");
 		}
 
-		return "dam/spe/req/RequestOfferDetail";
+		return "com/dam/spe/req/RequestOfferDetail";
 	}
 
 	/**
@@ -115,7 +115,7 @@ public class RequestOfferController {
 	@RequestMapping(value = "/dam/spe/req/registRequestOffer.do")
 	public String registRequestOffer(
 			@RequestParam(value="cmd", required=false) String cmd,
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RequestOfferVO requestOfferVO, 
 			ModelMap model) {
 
@@ -140,7 +140,7 @@ public class RequestOfferController {
 		model.addAttribute("mapMaterialList", mapMaterialService.selectMapMaterialList(mapMaterialVO));
 		model.addAttribute("cmd", cmd);
 
-		return "dam/spe/req/RequestOfferRegist";
+		return "com/dam/spe/req/RequestOfferRegist";
 	}
 
 	/**
@@ -150,21 +150,21 @@ public class RequestOfferController {
 	 */
 	@RequestMapping(value = "/dam/spe/req/insertRequestOffer.do")
 	public String insertRequestOffer(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RequestOfferVO requestOfferVO, 
 			BindingResult bindingResult, 
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception {
 
 		// 서버 validate 체크
 		beanValidator.validate(requestOfferVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "dam/spe/req/RequestOfferRegist";
+			return "com/dam/spe/req/RequestOfferRegist";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
-		requestOfferVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "DSCH_"));
+		requestOfferVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "REQ"));
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -177,7 +177,7 @@ public class RequestOfferController {
 				requestOfferVO.setSpeId(loginVO.getUserId());
 				requestOfferService.replyRequestOffer(requestOfferVO);
 			} else {
-				return "dam/spe/req/RequestOfferRegist";
+				return "com/dam/spe/req/RequestOfferRegist";
 			}
 		} else {
 			requestOfferVO.setEmplyrId(loginVO.getUserId());
@@ -186,7 +186,7 @@ public class RequestOfferController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/dam/spe/req/listRequestOffer.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -196,7 +196,7 @@ public class RequestOfferController {
 	 */
 	@RequestMapping(value = "/dam/spe/req/editRequestOffer.do")
 	public String editRequestOffer(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RequestOfferVO requestOfferVO, 
 			ModelMap model) {
 
@@ -222,7 +222,7 @@ public class RequestOfferController {
 		model.addAttribute("mapMaterialList", mapMaterialService.selectMapMaterialList(mapMaterialVO));
 		model.addAttribute(requestOfferVO);
 		
-		return "dam/spe/req/RequestOfferEdit";
+		return "com/dam/spe/req/RequestOfferEdit";
 	}
 
 	/**
@@ -232,22 +232,22 @@ public class RequestOfferController {
 	 */
 	@RequestMapping(value = "/dam/spe/req/updateRequestOffer.do")
 	public String updateRequestOffer(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RequestOfferVO requestOfferVO, 
 			BindingResult bindingResult, 
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception {
 
 		// 서버 validate 체크
 		beanValidator.validate(requestOfferVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "dam/spe/req/RequestOfferEdit";
+			return "com/dam/spe/req/RequestOfferEdit";
 		}
 		
 		// 첨부파일 관련 ID 생성 start....
 		String atchFileId = requestOfferVO.getAtchFileId();
-		requestOfferVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "DSCH_", atchFileId));
+		requestOfferVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "REQ", atchFileId));
 		
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -257,7 +257,7 @@ public class RequestOfferController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/dam/spe/req/listRequestOffer.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -267,7 +267,7 @@ public class RequestOfferController {
 	 */
 	@RequestMapping(value = "/dam/spe/req/deleteRequestOffer.do")
 	public String deleteRequestOffer(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RequestOfferVO requestOfferVO, 
 			ModelMap model) {
 
@@ -282,14 +282,14 @@ public class RequestOfferController {
 
 			model.addAttribute("reusltScript", ReusltScript);
 
-			return "dam/spe/req/RequestOfferDetail";
+			return "com/dam/spe/req/RequestOfferDetail";
 		} 
 
 		requestOfferService.deleteRequestOffer(requestOfferVO);
 	
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/dam/spe/req/listRequestOffer.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

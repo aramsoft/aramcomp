@@ -113,7 +113,7 @@ public class NoteTrnsmitController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "uss/ion/nts/NoteTrnsmitList";
+		return "com/uss/ion/nts/NoteTrnsmitList";
 	}
 
 	/**
@@ -124,9 +124,9 @@ public class NoteTrnsmitController {
 	 */
 	@RequestMapping(value = "/uss/ion/nts/detailNoteTrnsmit.do")
 	public String detailNoteTrnsmit(
-			@RequestParam(value="cmd", required=false) String sCmd,
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute NoteTrnsmitVO noteTrnsmitVO, 
+			@RequestParam(value="cmd", required=false) String sCmd,
 			ModelMap model)  {
 
 		// 로그인 객체 선언
@@ -144,7 +144,7 @@ public class NoteTrnsmitController {
 		model.addAttribute("noteTrnsmit", noteTrnsmitService.selectNoteTrnsmitDetail(noteTrnsmitVO));
 		model.addAttribute("resultRecptnEmp", noteTrnsmitService.selectNoteTrnsmitCnfirm(noteTrnsmitVO));
 		
-		return "uss/ion/nts/NoteTrnsmitDetail";
+		return "com/uss/ion/nts/NoteTrnsmitDetail";
 	}
 
 	/**
@@ -155,9 +155,9 @@ public class NoteTrnsmitController {
 	 */
 	@RequestMapping(value = "/uss/ion/nts/confirmNoteTrnsmit.do")
 	public String confirmNoteTrnsmit(
-			@RequestParam(value="cmd", required=false) String sCmd,
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute NoteTrnsmitVO noteTrnsmitVO, 
+			@RequestParam(value="cmd", required=false) String sCmd,
 			ModelMap model) {
 
 		if (sCmd.equals("del")) {
@@ -166,7 +166,7 @@ public class NoteTrnsmitController {
 
 		model.addAttribute("resultList", noteTrnsmitService.selectNoteTrnsmitCnfirm(noteTrnsmitVO));
 
-		return "uss/ion/nts/NoteTrnsmitCnfirm";
+		return "com/uss/ion/nts/NoteTrnsmitCnfirm";
 	}
 
 }

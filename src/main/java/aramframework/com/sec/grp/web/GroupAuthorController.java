@@ -61,7 +61,7 @@ public class GroupAuthorController {
 		AuthorVO authorVO = new AuthorVO();
 		model.addAttribute("authorList", authorService.selectAuthorAllList(authorVO));
 
-		return "sec/grp/GroupAuthor";
+		return "com/sec/grp/GroupAuthor";
 	}
 
 	/**
@@ -95,7 +95,7 @@ public class GroupAuthorController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sec/grp/listGroupAuthor.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -119,7 +119,7 @@ public class GroupAuthorController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sec/grp/listGroupAuthor.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

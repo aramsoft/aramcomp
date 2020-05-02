@@ -39,7 +39,7 @@ public class ConectStatsController {
 			ModelMap model) {
 
 		if (statsVO.getFromDate() == null || "".equals(statsVO.getFromDate())) 
-			return "aramframework/com/sts/cst/ConectStats";
+			return "com/sts/cst/ConectStats";
 		
 		List<StatsVO> conectStats = conectStatsService.selectConectStats(statsVO);
 
@@ -71,7 +71,7 @@ public class ConectStatsController {
 			model.addAttribute("conectStats", conectStats);
 		}
 		
-		return "aramframework/com/sts/cst/ConectStats";
+		return "com/sts/cst/ConectStats";
 	}
 	
 }

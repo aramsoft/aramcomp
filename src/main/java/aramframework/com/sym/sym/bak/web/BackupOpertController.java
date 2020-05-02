@@ -75,7 +75,7 @@ public class BackupOpertController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/sym/bak/BackupOpertList";
+		return "com/sym/sym/bak/BackupOpertList";
 	}
 
 	/**
@@ -92,7 +92,7 @@ public class BackupOpertController {
 		
 		model.addAttribute(backupOpertService.selectBackupOpert(backupOpertVO));
 
-		return "sym/sym/bak/BackupOpertDetail";
+		return "com/sym/sym/bak/BackupOpertDetail";
 	}
 
 	/**
@@ -109,7 +109,7 @@ public class BackupOpertController {
 
 		referenceData(model);
 
-		return "sym/sym/bak/BackupOpertRegist";
+		return "com/sym/sym/bak/BackupOpertRegist";
 	}
 
 	/**
@@ -130,7 +130,7 @@ public class BackupOpertController {
 		backupOpertValidator.validate(backupOpertVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			referenceData(model);
-			return "sym/sym/bak/BackupOpertRegist";
+			return "com/sym/sym/bak/BackupOpertRegist";
 		} 
 		
 		// 로그인 객체 선언
@@ -146,7 +146,7 @@ public class BackupOpertController {
 		// Exception 없이 진행시 등록성공메시지
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sym/sym/bak/listBackupOpert.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -165,7 +165,7 @@ public class BackupOpertController {
 	
 		referenceData(model);
 
-		return "sym/sym/bak/BackupOpertEdit";
+		return "com/sym/sym/bak/BackupOpertEdit";
 	}
 
 	/**
@@ -186,7 +186,7 @@ public class BackupOpertController {
 		backupOpertValidator.validate(backupOpertVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			referenceData(model);
-			return "sym/sym/bak/BackupOpertEdit";
+			return "com/sym/sym/bak/BackupOpertEdit";
 		}
 
 		// 로그인 객체 선언
@@ -201,7 +201,7 @@ public class BackupOpertController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/sym/sym/bak/listBackupOpert.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -222,7 +222,7 @@ public class BackupOpertController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sym/sym/bak/listBackupOpert.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**

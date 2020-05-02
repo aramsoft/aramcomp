@@ -73,7 +73,7 @@ public class CmmnDetailCodeManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/ccm/cde/CmmnDetailCodeList";
+		return "com/sym/ccm/cde/CmmnDetailCodeList";
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class CmmnDetailCodeManageController {
 		
 		model.addAttribute(cmmnDetailCodeManageService.selectCmmnDetailCodeDetail(cmmnDetailCodeVO));
 
-		return "sym/ccm/cde/CmmnDetailCodeDetail";
+		return "com/sym/ccm/cde/CmmnDetailCodeDetail";
 	}
 
 	/**
@@ -124,7 +124,7 @@ public class CmmnDetailCodeManageController {
 
 		model.addAttribute("cmmnCodeList", cmmnCodeManageService.selectCmmnCodeList(cmmnCodeVO));
 
-		return "sym/ccm/cde/CmmnDetailCodeRegist";
+		return "com/sym/ccm/cde/CmmnDetailCodeRegist";
 	}
 
 	/**
@@ -142,13 +142,13 @@ public class CmmnDetailCodeManageController {
 
 		beanValidator.validate(cmmnDetailCodeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "sym/ccm/cde/CmmnDetailCodeRegist";
+			return "com/sym/ccm/cde/CmmnDetailCodeRegist";
 		}
 
 		CmmnDetailCodeVO vo = cmmnDetailCodeManageService.selectCmmnDetailCodeDetail(cmmnDetailCodeVO);
 		if (vo != null) {
 			model.addAttribute("message", "이미 등록된 코드가 존재합니다.");
-			return "sym/ccm/cde/CmmnDetailCodeRegist";
+			return "com/sym/ccm/cde/CmmnDetailCodeRegist";
 		}
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -158,7 +158,7 @@ public class CmmnDetailCodeManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sym/ccm/cde/listCmmnDetailCode.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -175,7 +175,7 @@ public class CmmnDetailCodeManageController {
 		
 		model.addAttribute(cmmnDetailCodeManageService.selectCmmnDetailCodeDetail(cmmnDetailCodeVO));
 
-		return "sym/ccm/cde/CmmnDetailCodeEdit";
+		return "com/sym/ccm/cde/CmmnDetailCodeEdit";
 	}
 
 	/**
@@ -193,7 +193,7 @@ public class CmmnDetailCodeManageController {
 		
 		beanValidator.validate(cmmnDetailCodeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "sym/ccm/cde/CmmnDetailCodeEdit";
+			return "com/sym/ccm/cde/CmmnDetailCodeEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -203,7 +203,7 @@ public class CmmnDetailCodeManageController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/sym/ccm/cde/listCmmnDetailCode.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -222,7 +222,7 @@ public class CmmnDetailCodeManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sym/ccm/cde/listCmmnDetailCode.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**

@@ -55,7 +55,7 @@ public class NoteManageController {
 	@Secured("ROLE_USER")
 	public String registNote(
 			@CommandMap Map<String, Object> commandMap,
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute NoteManageVO noteManageVO, 
 			ModelMap model) {
 
@@ -92,7 +92,7 @@ public class NoteManageController {
 			model.addAttribute("noteManageMap", mapNoteManage);
 		} 
 
-		return "uss/ion/ntm/NoteManage";
+		return "com/uss/ion/ntm/NoteManage";
 	}
 
 	/**
@@ -104,23 +104,23 @@ public class NoteManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ntm/insertNote.do")
 	public String insertNote(
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute NoteManageVO noteManageVO, 
+			BindingResult bindingResult,
 			MultipartHttpServletRequest multiRequest, 
 			@RequestParam String recptnEmpList,
 			@RequestParam String recptnSeList,
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute NoteManageVO noteManageVO, 
-			BindingResult bindingResult,
 			ModelMap model) 
 	throws Exception {
 
 		// 서버 validate 체크
 		beanValidator.validate(noteManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/ntm/NoteManage";
+			return "com/uss/ion/ntm/NoteManage";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
-		noteManageVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "DSCH_"));
+		noteManageVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "NTM"));
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -131,7 +131,7 @@ public class NoteManageController {
 
 		model.addAttribute("message", "작성된 쪽지를 전송하였습니다!");
 		model.addAttribute("redirectURL", "/uss/ion/nts/listNoteTrnsmit.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -155,7 +155,7 @@ public class NoteManageController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "uss/ion/ntm/NoteEmpPopup";
+		return "com/uss/ion/ntm/NoteEmpPopup";
 	}
 
 }

@@ -66,7 +66,7 @@ public class ProcessMonController {
 
 		model.addAttribute(paginationInfo);
 
-		return "utl/sys/prm/ProcessMonList";
+		return "com/utl/sys/prm/ProcessMonList";
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class ProcessMonController {
 
 		model.addAttribute(processMonService.selectProcessMon(processMonVO));
 
-		return "utl/sys/prm/ProcessMonDetail";
+		return "com/utl/sys/prm/ProcessMonDetail";
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class ProcessMonController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ProcessMonVO processMonVO) {
 
-		return "utl/sys/prm/ProcessMonRegist";
+		return "com/utl/sys/prm/ProcessMonRegist";
 	}
 
 	/**
@@ -116,7 +116,7 @@ public class ProcessMonController {
 		// 서버 validate 체크
 		beanValidator.validate(processMonVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "utl/sys/prm/ProcessMonRegist";
+			return "com/utl/sys/prm/ProcessMonRegist";
 		}
 
 		// 로그인 객체 선언
@@ -127,7 +127,7 @@ public class ProcessMonController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/utl/sys/prm/listProcessMon.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -144,7 +144,7 @@ public class ProcessMonController {
 
 		model.addAttribute(processMonService.selectProcessMon(processMonVO));
 
-		return "utl/sys/prm/ProcessMonEdit";
+		return "com/utl/sys/prm/ProcessMonEdit";
 	}
 
 	/**
@@ -162,7 +162,7 @@ public class ProcessMonController {
 
 		beanValidator.validate(processMonVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "utl/sys/prm/ProcessMonEdit";
+			return "com/utl/sys/prm/ProcessMonEdit";
 		}
 
 		// 로그인 객체 선언
@@ -173,7 +173,7 @@ public class ProcessMonController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/utl/sys/prm/listProcessMon.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -192,7 +192,7 @@ public class ProcessMonController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/utl/sys/prm/listProcessMon.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -209,7 +209,7 @@ public class ProcessMonController {
 		// System.out.println("FileSysNm" + fileSysMntrngVO.getFileSysNm());
 		model.addAttribute("processSttus", ProcessMonChecker.getProcessId(processMonVO.getProcessNm()));
 
-		return "utl/sys/prm/ProcessMonRegist";
+		return "com/utl/sys/prm/ProcessMonRegist";
 	}
 
 	/**
@@ -242,7 +242,7 @@ public class ProcessMonController {
 
 		model.addAttribute(paginationInfo);
 
-		return "utl/sys/prm/ProcessMonLogList";
+		return "com/utl/sys/prm/ProcessMonLogList";
 	}
 
 	// 조회시작시
@@ -274,7 +274,7 @@ public class ProcessMonController {
 
 		model.addAttribute(processMonLogVO);
 		
-		return "utl/sys/prm/ProcessMonLogDetail";
+		return "com/utl/sys/prm/ProcessMonLogDetail";
 	}
 
 }

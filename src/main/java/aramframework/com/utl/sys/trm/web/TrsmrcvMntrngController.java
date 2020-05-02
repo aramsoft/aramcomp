@@ -62,7 +62,7 @@ public class TrsmrcvMntrngController {
 		
 		model.addAttribute(paginationInfo);
 
-		return "utl/sys/trm/TrsmrcvMntrngList";
+		return "com/utl/sys/trm/TrsmrcvMntrngList";
 	}
 
 	/**
@@ -79,7 +79,7 @@ public class TrsmrcvMntrngController {
 
 		model.addAttribute(trsmrcvMntrngService.selectTrsmrcvMntrng(trsmrcvMntrngVO));
 
-		return "utl/sys/trm/TrsmrcvMntrngDetail";
+		return "com/utl/sys/trm/TrsmrcvMntrngDetail";
 	}
 
 	/**
@@ -93,7 +93,7 @@ public class TrsmrcvMntrngController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute TrsmrcvMntrngVO trsmrcvMntrngVO) {
 
-		return "utl/sys/trm/TrsmrcvMntrngRegist";
+		return "com/utl/sys/trm/TrsmrcvMntrngRegist";
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class TrsmrcvMntrngController {
 		beanValidator.validate(trsmrcvMntrngVO, bindingResult);
 		checkDuplication(trsmrcvMntrngVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "utl/sys/trm/TrsmrcvMntrngRegist";
+			return "com/utl/sys/trm/TrsmrcvMntrngRegist";
 		} 
 		
 		// 로그인 객체 선언
@@ -123,7 +123,7 @@ public class TrsmrcvMntrngController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/utl/sys/trm/listTrsmrcvMntrng.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	private void checkDuplication(TrsmrcvMntrngVO trsmrcvMntrngVO, Errors errors) {
@@ -157,7 +157,7 @@ public class TrsmrcvMntrngController {
 
 		model.addAttribute(trsmrcvMntrngService.selectTrsmrcvMntrng(trsmrcvMntrngVO));
 
-		return "utl/sys/trm/TrsmrcvMntrngEdit";
+		return "com/utl/sys/trm/TrsmrcvMntrngEdit";
 	}
 
 	/**
@@ -175,7 +175,7 @@ public class TrsmrcvMntrngController {
 
 		beanValidator.validate(trsmrcvMntrngVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "utl/sys/trm/TrsmrcvMntrngEdit";
+			return "com/utl/sys/trm/TrsmrcvMntrngEdit";
 		}
 
 		// 로그인 객체 선언
@@ -186,7 +186,7 @@ public class TrsmrcvMntrngController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/utl/sys/trm/listTrsmrcvMntrng.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -205,7 +205,7 @@ public class TrsmrcvMntrngController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/utl/sys/trm/listTrsmrcvMntrng.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -230,7 +230,7 @@ public class TrsmrcvMntrngController {
 
 		model.addAttribute(paginationInfo);
 
-		return "utl/sys/trm/TrsmrcvMntrngLogList";
+		return "com/utl/sys/trm/TrsmrcvMntrngLogList";
 	}
 
 	/**
@@ -247,7 +247,7 @@ public class TrsmrcvMntrngController {
 		
 		model.addAttribute(trsmrcvMntrngService.selectTrsmrcvMntrngLog(trsmrcvMntrngLogVO));
 
-		return "utl/sys/trm/TrsmrcvMntrngLogDetail";
+		return "com/utl/sys/trm/TrsmrcvMntrngLogDetail";
 	}
 
 	/**
@@ -271,7 +271,7 @@ public class TrsmrcvMntrngController {
 	
 		model.addAttribute(paginationInfo);
 
-		return "utl/sys/trm/CntcListPopup";
+		return "com/utl/sys/trm/CntcListPopup";
 	}
 
 }

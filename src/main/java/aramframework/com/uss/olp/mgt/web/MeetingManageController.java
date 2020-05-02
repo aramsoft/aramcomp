@@ -47,7 +47,7 @@ public class MeetingManageController {
 
 		model.addAttribute("resultList", meetingManageService.selectDeptListPopup(baseVO));
 
-		return "uss/olp/mgt/MeetingDeptPopup";
+		return "com/uss/olp/mgt/MeetingDeptPopup";
 	}
 
 	/**
@@ -62,7 +62,7 @@ public class MeetingManageController {
 
 		model.addAttribute("resultList", meetingManageService.selectEmpLyrListPopup(baseVO));
 
-		return "uss/olp/mgt/MeetingEmpLyrPopup";
+		return "com/uss/olp/mgt/MeetingEmpLyrPopup";
 	}
 
 	/**
@@ -87,7 +87,7 @@ public class MeetingManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/olp/mgt/MeetingList";
+		return "com/uss/olp/mgt/MeetingList";
 	}
 
 	/**
@@ -98,13 +98,13 @@ public class MeetingManageController {
 	@RequestMapping(value = "/uss/olp/mgt/detailMeeting.do")
 	@Secured("ROLE_USER")
 	public String detailMeeting(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MeetingManageVO meetingManageVO,
 			ModelMap model) {
 
 		model.addAttribute(meetingManageService.selectMeetingManageDetail(meetingManageVO));
 
-		return "uss/olp/mgt/MeetingDetail";
+		return "com/uss/olp/mgt/MeetingDetail";
 	}
 
 	/**
@@ -115,10 +115,10 @@ public class MeetingManageController {
 	@RequestMapping(value = "/uss/olp/mgt/registMeeting.do")
 	@Secured("ROLE_USER")
 	public String registMeeting(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MeetingManageVO meetingManageVO) {
 
-		return "uss/olp/mgt/MeetingRegist";
+		return "com/uss/olp/mgt/MeetingRegist";
 	}
 
 	/**
@@ -129,7 +129,7 @@ public class MeetingManageController {
 	@RequestMapping(value = "/uss/olp/mgt/insertMeeting.do")
 	@Secured("ROLE_USER")
 	public String insertMeeting(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MeetingManageVO meetingManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -137,7 +137,7 @@ public class MeetingManageController {
 		// 서버 validate 체크
 		beanValidator.validate(meetingManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olp/mgt/MeetingRegist";
+			return "com/uss/olp/mgt/MeetingRegist";
 		}
 		
 		// 로그인 객체 선언
@@ -148,7 +148,7 @@ public class MeetingManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/olp/mgt/listMeeting.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -159,13 +159,13 @@ public class MeetingManageController {
 	@RequestMapping(value = "/uss/olp/mgt/editMeeting.do")
 	@Secured("ROLE_USER")
 	public String editMeeting(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MeetingManageVO meetingManageVO,
 			ModelMap model) {
 
 		model.addAttribute(meetingManageService.selectMeetingManageDetail(meetingManageVO));
 
-		return "uss/olp/mgt/MeetingEdit";
+		return "com/uss/olp/mgt/MeetingEdit";
 	}
 
 	/**
@@ -176,7 +176,7 @@ public class MeetingManageController {
 	@RequestMapping(value = "/uss/olp/mgt/updateMeeting.do")
 	@Secured("ROLE_USER")
 	public String updateMeeting(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MeetingManageVO meetingManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -184,7 +184,7 @@ public class MeetingManageController {
 		// 서버 validate 체크
 		beanValidator.validate(meetingManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olp/mgt/MeetingEdit";
+			return "com/uss/olp/mgt/MeetingEdit";
 		}
 		
 		// 로그인 객체 선언
@@ -195,7 +195,7 @@ public class MeetingManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/olp/mgt/listMeeting.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -206,7 +206,7 @@ public class MeetingManageController {
 	@RequestMapping(value = "/uss/olp/mgt/deleteMeeting.do")
 	@Secured("ROLE_USER")
 	public String deleteMeeting(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MeetingManageVO meetingManageVO, 
 			ModelMap model) {
 
@@ -214,7 +214,7 @@ public class MeetingManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/olp/mgt/listMeeting.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

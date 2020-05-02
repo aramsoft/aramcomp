@@ -80,7 +80,7 @@ public class MtgPlaceManageController {
 	
 		model.addAttribute(paginationInfo);
 
-		return "uss/ion/mtg/MtgPlaceList";
+		return "com/uss/ion/mtg/MtgPlaceList";
 	}
 
 	/**
@@ -91,7 +91,7 @@ public class MtgPlaceManageController {
 	@RequestMapping(value = "/uss/ion/mtg/detailMtgPlace.do")
 	@Secured("ROLE_USER")
 	public String detailMtgPlace(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MtgPlaceManageVO mtgPlaceManageVO,
 			ModelMap model) {
 
@@ -101,7 +101,7 @@ public class MtgPlaceManageController {
 		mtgPlaceFxtrsVO.setMtgPlaceId(mtgPlaceManageVO.getMtgPlaceId());
 		model.addAttribute("mtgPlaceFxtrsList", mtgPlaceManageService.selectFxtrsManageList(mtgPlaceFxtrsVO));
 
-		return "uss/ion/mtg/MtgPlaceDetail";
+		return "com/uss/ion/mtg/MtgPlaceDetail";
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class MtgPlaceManageController {
 	@RequestMapping(value = "/uss/ion/mtg/registMtgPlace.do")
 	@Secured("ROLE_USER")
 	public String registMtgPlace(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MtgPlaceManageVO mtgPlaceManageVO, 
 			ModelMap model) {
 
@@ -122,7 +122,7 @@ public class MtgPlaceManageController {
 
 		cmmUseService.populateCmmCodeList("COM070", "COM070_lcSe");
 
-		return "uss/ion/mtg/MtgPlaceRegist";
+		return "com/uss/ion/mtg/MtgPlaceRegist";
 	}
 
 	/**
@@ -133,11 +133,11 @@ public class MtgPlaceManageController {
 	@RequestMapping(value = "/uss/ion/mtg/insertMtgPlace.do")
 	@Secured("ROLE_USER")
 	public String insertMtgPlace(
-			MultipartHttpServletRequest multiRequest,
-			@RequestParam String checkedMtgPlacesForInsert, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MtgPlaceManageVO mtgPlaceManageVO,
 			BindingResult bindingResult, 
+			MultipartHttpServletRequest multiRequest,
+			@RequestParam String checkedMtgPlacesForInsert, 
 			ModelMap model) 
 	throws Exception {
 
@@ -147,7 +147,7 @@ public class MtgPlaceManageController {
 			mtgPlaceFxtrsVO.setMtgPlaceId(mtgPlaceManageVO.getMtgPlaceId());
 			model.addAttribute("mtgPlaceFxtrsList", mtgPlaceManageService.selectFxtrsManageList(mtgPlaceFxtrsVO));
 
-			return "uss/ion/mtg/MtgPlaceRegist";
+			return "com/uss/ion/mtg/MtgPlaceRegist";
 		}
 		
 		// 첨부파일 관련 첨부파일ID 생성
@@ -157,7 +157,7 @@ public class MtgPlaceManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/ion/mtg/listMtgPlace.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -168,7 +168,7 @@ public class MtgPlaceManageController {
 	@RequestMapping(value = "/uss/ion/mtg/editMtgPlace.do")
 	@Secured("ROLE_USER")
 	public String editMtgPlace(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MtgPlaceManageVO mtgPlaceManageVO,
 			ModelMap model) {
 
@@ -180,7 +180,7 @@ public class MtgPlaceManageController {
 
 		cmmUseService.populateCmmCodeList("COM070", "COM070_lcSe");
 
-		return "uss/ion/mtg/MtgPlaceEdit";
+		return "com/uss/ion/mtg/MtgPlaceEdit";
 	}
 
 	/**
@@ -192,17 +192,17 @@ public class MtgPlaceManageController {
 	@RequestMapping(value = "/uss/ion/mtg/updateMtgPlace.do")
 	@Secured("ROLE_USER")
 	public String updateMtgPlace(
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute MtgPlaceManageVO mtgPlaceManageVO,
 			MultipartHttpServletRequest multiRequest, 
 			@RequestParam String checkedMtgPlacesForInsert, 
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute MtgPlaceManageVO mtgPlaceManageVO,
 			BindingResult bindingResult, 
 			ModelMap model) 
 	throws Exception {
 
 		beanValidator.validate(mtgPlaceManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/mtg/MtgPlaceEdit";
+			return "com/uss/ion/mtg/MtgPlaceEdit";
 		} 
 
 		// 첨부파일 관련 ID 생성 start....
@@ -213,7 +213,7 @@ public class MtgPlaceManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/ion/mtg/listMtgPlace.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -224,7 +224,7 @@ public class MtgPlaceManageController {
 	@RequestMapping(value = "/uss/ion/mtg/deleteMtgPlace.do")
 	@Secured("ROLE_USER")
 	public String deleteMtgPlace(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MtgPlaceManageVO mtgPlaceManageVO,
 			ModelMap model) {
 		
@@ -232,7 +232,7 @@ public class MtgPlaceManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/mtg/listMtgPlace.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -242,8 +242,8 @@ public class MtgPlaceManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/mtg/detailMtgPlaceImage.do")
 	public String detailMtgPlaceImage(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@RequestParam String sTmMtgPlaceId, 
-			@ModelAttribute SearchVO searchVO,
 			ModelMap model) {
 		
 		MtgPlaceManageVO mtgPlaceManageVO = new MtgPlaceManageVO();
@@ -257,7 +257,7 @@ public class MtgPlaceManageController {
 
 		model.addAttribute("fileList", result);
 
-		return "uss/ion/mtg/MtgPlaceImageDetail";
+		return "com/uss/ion/mtg/MtgPlaceImageDetail";
 	}
 
 	/**** 회의실 예약 ****/
@@ -270,7 +270,7 @@ public class MtgPlaceManageController {
 	@IncludedInfo(name = "회의실예약관리", order = 5261, gid = 50)
 	@RequestMapping(value = "/uss/ion/mtg/listMtgPlaceResve.do")
 	public String listMtgPlaceResve(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MtgPlaceResveVO mtgPlaceResveVO, 
 			ModelMap model) {
 		
@@ -299,7 +299,7 @@ public class MtgPlaceManageController {
 		
 		model.addAttribute("resultList", mtgPlaceManageService.selectMtgPlaceResveManageList(mtgPlaceResveVO));
 
-		return "uss/ion/mtg/MtgPlaceResveList";
+		return "com/uss/ion/mtg/MtgPlaceResveList";
 	}
 
 	/**
@@ -310,7 +310,7 @@ public class MtgPlaceManageController {
 	@RequestMapping(value = "/uss/ion/mtg/detailMtgPlaceResve.do")
 	@Secured("ROLE_USER")
 	public String detailMtgPlaceResve(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MtgPlaceResveVO mtgPlaceResveVO, 
 			ModelMap model) {
 
@@ -340,7 +340,7 @@ public class MtgPlaceManageController {
 		
 		model.addAttribute(mtgPlaceResveVO);
 		
-		return "uss/ion/mtg/MtgPlaceResveDetail";
+		return "com/uss/ion/mtg/MtgPlaceResveDetail";
 	}
 
 	/**
@@ -351,7 +351,7 @@ public class MtgPlaceManageController {
 	@RequestMapping(value = "/uss/ion/mtg/registMtgPlaceResve.do")
 	@Secured("ROLE_USER")
 	public String registMtgPlaceResve(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MtgPlaceResveVO mtgPlaceResveVO, 
 			ModelMap model) {
 
@@ -365,7 +365,7 @@ public class MtgPlaceManageController {
 		mtgPlaceResveVO.setResveManNm(loginVO.getName());
 		mtgPlaceResveVO.setResevOrgnztNm(loginVO.getOrgnztNm());
 
-		return "uss/ion/mtg/MtgPlaceResveRegist";
+		return "com/uss/ion/mtg/MtgPlaceResveRegist";
 	}
 
 	/**
@@ -376,14 +376,14 @@ public class MtgPlaceManageController {
 	@RequestMapping(value = "/uss/ion/mtg/insertMtgPlaceResve.do")
 	@Secured("ROLE_USER")
 	public String insertMtgPlaceResve(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MtgPlaceResveVO mtgPlaceResveVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(mtgPlaceResveVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/mtg/MtgPlaceResveRegist";
+			return "com/uss/ion/mtg/MtgPlaceResveRegist";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -394,7 +394,7 @@ public class MtgPlaceManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/ion/mtg/listMtgPlaceResve.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -405,7 +405,7 @@ public class MtgPlaceManageController {
 	@RequestMapping(value = "/uss/ion/mtg/editMtgPlaceResve.do")
 	@Secured("ROLE_USER")
 	public String editMtgPlaceResve(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MtgPlaceResveVO mtgPlaceResveVO, 
 			ModelMap model) {
 
@@ -415,7 +415,7 @@ public class MtgPlaceManageController {
 		model.addAttribute(mtgPlaceManageService.selectMtgPlaceManage(mtgPlaceManageVO));
 		model.addAttribute(mtgPlaceManageService.selectMtgPlaceResveDetail(mtgPlaceResveVO));
 
-		return "uss/ion/mtg/MtgPlaceResveEdit";
+		return "com/uss/ion/mtg/MtgPlaceResveEdit";
 	}
 
 	/**
@@ -426,21 +426,21 @@ public class MtgPlaceManageController {
 	@RequestMapping(value = "/uss/ion/mtg/updateMtgPlaceResve.do")
 	@Secured("ROLE_USER")
 	public String updateMtgPlaceResve(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MtgPlaceResveVO mtgPlaceResveVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(mtgPlaceResveVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/mtg/MtgPlaceResveEdit";
+			return "com/uss/ion/mtg/MtgPlaceResveEdit";
 		} 
 		
 		mtgPlaceManageService.updateMtgPlaceResve(mtgPlaceResveVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/ion/mtg/listMtgPlaceResve.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -451,7 +451,7 @@ public class MtgPlaceManageController {
 	@RequestMapping(value = "/uss/ion/mtg/deleteMtgPlaceResve.do")
 	@Secured("ROLE_USER")
 	public String deleteMtgPlaceResve(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MtgPlaceResveVO mtgPlaceResveVO, 
 			ModelMap model) {
 
@@ -459,7 +459,7 @@ public class MtgPlaceManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/mtg/listMtgPlaceResve.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -473,12 +473,12 @@ public class MtgPlaceManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/mtg/checkMtgPlaceResveDplact.do")
 	public String checkMtgPlaceResveDplact(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@RequestParam String sTempResveDe, 
 			@RequestParam String sTempResveBeginTm,
 			@RequestParam String sTempResveEndTm, 
 			@RequestParam String sTempMtgPlaceId,
 			@RequestParam String sTempResveId, 
-			@ModelAttribute SearchVO searchVO,
 			ModelMap model) {
 		
 		MtgPlaceResveVO mtgPlaceResveVO = new MtgPlaceResveVO();

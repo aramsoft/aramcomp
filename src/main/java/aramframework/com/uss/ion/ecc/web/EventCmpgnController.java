@@ -63,7 +63,7 @@ public class EventCmpgnController {
 		// 공통코드 행사유형 조회
 		cmmUseService.populateCmmCodeList("COM035", "COM035_eventTy");
 
-		return "uss/ion/ecc/EventCmpgnListPopup";
+		return "com/uss/ion/ecc/EventCmpgnListPopup";
 	}
 
 	/**
@@ -92,7 +92,7 @@ public class EventCmpgnController {
 		// 공통코드 행사유형 조회
 		cmmUseService.populateCmmCodeList("COM035", "COM035_eventTy");
 
-		return "uss/ion/ecc/EventCmpgnList";
+		return "com/uss/ion/ecc/EventCmpgnList";
 	}
 
 	/**
@@ -102,7 +102,7 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/detailEventCmpgn.do")
 	public String detailEventCmpgn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute EventCmpgnVO eventCmpgnVO,
 			ModelMap model) {
 
@@ -111,7 +111,7 @@ public class EventCmpgnController {
 		// 공통코드 행사유형 조회
 		cmmUseService.populateCmmCodeList("COM035", "COM035_eventTy");
 
-		return "uss/ion/ecc/EventCmpgnDetail";
+		return "com/uss/ion/ecc/EventCmpgnDetail";
 	}
 
 	/**
@@ -121,7 +121,7 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/registEventCmpgn.do")
 	public String registEventCmpgn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute EventCmpgnVO eventCmpgnVO, 
 			ModelMap model) {
 
@@ -132,7 +132,7 @@ public class EventCmpgnController {
 		// 공통코드 행사유형 조회
 		cmmUseService.populateCmmCodeList("COM035", "COM035_eventTy");
 
-		return "uss/ion/ecc/EventCmpgnRegist";
+		return "com/uss/ion/ecc/EventCmpgnRegist";
 	}
 
 	/**
@@ -142,7 +142,7 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/insertEventCmpgn.do")
 	public String insertEventCmpgn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute EventCmpgnVO eventCmpgnVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -154,7 +154,7 @@ public class EventCmpgnController {
 		beanValidator.validate(eventCmpgnVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("SUserSe", (String) loginVO.getUserSe());
-			return "uss/ion/ecc/EventCmpgnRegist";
+			return "com/uss/ion/ecc/EventCmpgnRegist";
 		}
 		// 아이디 설정
 		eventCmpgnVO.setFrstRegisterId(loginVO.getUserId());
@@ -163,7 +163,7 @@ public class EventCmpgnController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/ion/ecc/listEventCmpgn.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -173,7 +173,7 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/editEventCmpgn.do")
 	public String editEventCmpgn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute EventCmpgnVO eventCmpgnVO,
 			ModelMap model) {
 
@@ -186,7 +186,7 @@ public class EventCmpgnController {
 		// 공통코드 행사유형 조회
 		cmmUseService.populateCmmCodeList("COM035", "COM035_eventTy");
 
-		return "uss/ion/ecc/EventCmpgnEdit";
+		return "com/uss/ion/ecc/EventCmpgnEdit";
 	}
 
 	/**
@@ -196,7 +196,7 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/updateEventCmpgn.do")
 	public String updateEventCmpgn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute EventCmpgnVO eventCmpgnVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -208,7 +208,7 @@ public class EventCmpgnController {
 		beanValidator.validate(eventCmpgnVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("SUserSe", (String) loginVO.getUserSe());
-			return "uss/ion/ecc/EventCmpgnEdit";
+			return "com/uss/ion/ecc/EventCmpgnEdit";
 		}
 		// 아이디 설정
 		eventCmpgnVO.setLastUpdusrId(loginVO.getUserId());
@@ -217,7 +217,7 @@ public class EventCmpgnController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/ion/ecc/listEventCmpgn.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -227,7 +227,7 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/deleteEventCmpgn.do")
 	public String deleteEventCmpgn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute EventCmpgnVO eventCmpgnVO, 
 			ModelMap model) {
 
@@ -235,7 +235,7 @@ public class EventCmpgnController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/ecc/listEventCmpgn.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -270,7 +270,7 @@ public class EventCmpgnController {
 		// 성별코드조회
 		cmmUseService.populateCmmCodeList("COM014", "COM014_sexdstn");
 
-		return "uss/ion/ecc/TnextrlHrInfoList";
+		return "com/uss/ion/ecc/TnextrlHrInfoList";
 	}
 
 	/**
@@ -280,7 +280,7 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/detailTnextrlHrInfo.do")
 	public String detailTnextrlHrInfo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute TnextrlHrInfoVO tnextrlHrInfoVO,
 			ModelMap model) {
 
@@ -291,7 +291,7 @@ public class EventCmpgnController {
 		// 직업코드조회
 		cmmUseService.populateCmmCodeList("COM034", "COM034_occpType");
 
-		return "uss/ion/ecc/TnextrlHrInfoDetail";
+		return "com/uss/ion/ecc/TnextrlHrInfoDetail";
 	}
 
 	/**
@@ -301,7 +301,7 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/registTnextrlHrInfo.do")
 	public String registTnextrlHrInfo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute TnextrlHrInfoVO tnextrlHrInfoVO) {
 
 		// 성별코드조회
@@ -309,7 +309,7 @@ public class EventCmpgnController {
 		// 직업코드조회
 		cmmUseService.populateCmmCodeList("COM034", "COM034_occpType");
 
-		return "uss/ion/ecc/TnextrlHrInfoRegist";
+		return "com/uss/ion/ecc/TnextrlHrInfoRegist";
 	}
 
 	/**
@@ -319,7 +319,7 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/insertTnextrlHrInfo.do")
 	public String insertTnextrlHrInfo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute TnextrlHrInfoVO tnextrlHrInfoVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -327,7 +327,7 @@ public class EventCmpgnController {
 		// 서버 validate 체크
 		beanValidator.validate(tnextrlHrInfoVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/ecc/TnextrlHrInfoRegist";
+			return "com/uss/ion/ecc/TnextrlHrInfoRegist";
 		}
 
 		// 로그인 객체 선언
@@ -338,7 +338,7 @@ public class EventCmpgnController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/ion/ecc/listTnextrlHrInfo.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -348,7 +348,7 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/editTnextrlHrInfo.do")
 	public String editTnextrlHrInfo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute TnextrlHrInfoVO tnextrlHrInfoVO,
 			ModelMap model) {
 
@@ -359,7 +359,7 @@ public class EventCmpgnController {
 		// 직업코드조회
 		cmmUseService.populateCmmCodeList("COM034", "COM034_occpType");
 
-		return "uss/ion/ecc/TnextrlHrInfoEdit";
+		return "com/uss/ion/ecc/TnextrlHrInfoEdit";
 	}
 
 	/**
@@ -369,7 +369,7 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/updateTnextrlHrInfo.do")
 	public String updateTnextrlHrInfo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute TnextrlHrInfoVO tnextrlHrInfoVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -377,7 +377,7 @@ public class EventCmpgnController {
 		// 서버 validate 체크
 		beanValidator.validate(tnextrlHrInfoVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/ecc/TnextrlHrInfoEdit";
+			return "com/uss/ion/ecc/TnextrlHrInfoEdit";
 		}
 		
 		// 로그인 객체 선언
@@ -388,7 +388,7 @@ public class EventCmpgnController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/ion/ecc/listTnextrlHrInfo.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -398,7 +398,7 @@ public class EventCmpgnController {
 	 */
 	@RequestMapping(value = "/uss/ion/ecc/deleteTnextrlHrInfo.do")
 	public String deleteTnextrlHrInfo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute TnextrlHrInfoVO tnextrlHrInfoVO, 
 			ModelMap model) {
 
@@ -406,7 +406,7 @@ public class EventCmpgnController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/ecc/listTnextrlHrInfo.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
  	}
 
 }

@@ -57,7 +57,7 @@ public class IndvdlInfoPolicyController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/sam/ipm/IndvdlInfoPolicyList";
+		return "com/uss/sam/ipm/IndvdlInfoPolicyList";
 	}
 
 	/**
@@ -74,7 +74,7 @@ public class IndvdlInfoPolicyController {
 
 		model.addAttribute(indvdlInfoPolicyService.selectIndvdlInfoPolicyDetail(indvdlInfoPolicyVO));
 
-		return "uss/sam/ipm/IndvdlInfoPolicyDetail";
+		return "com/uss/sam/ipm/IndvdlInfoPolicyDetail";
 	}
 
 	/**
@@ -88,7 +88,7 @@ public class IndvdlInfoPolicyController {
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IndvdlInfoPolicyVO indvdlInfoPolicyVO) {
 
-		return "uss/sam/ipm/IndvdlInfoPolicyRegist";
+		return "com/uss/sam/ipm/IndvdlInfoPolicyRegist";
 	}
 
 	/**
@@ -107,7 +107,7 @@ public class IndvdlInfoPolicyController {
 		// 서버 validate 체크
 		beanValidator.validate(indvdlInfoPolicyVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/sam/ipm/IndvdlInfoPolicyRegist";
+			return "com/uss/sam/ipm/IndvdlInfoPolicyRegist";
 		}
 		
 		// 아이디 설정
@@ -119,7 +119,7 @@ public class IndvdlInfoPolicyController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/sam/ipm/listIndvdlInfoPolicy.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -136,7 +136,7 @@ public class IndvdlInfoPolicyController {
 
 		model.addAttribute(indvdlInfoPolicyService.selectIndvdlInfoPolicyDetail(indvdlInfoPolicyVO));
 
-		return "uss/sam/ipm/IndvdlInfoPolicyEdit";
+		return "com/uss/sam/ipm/IndvdlInfoPolicyEdit";
 	}
 
 	/**
@@ -155,7 +155,7 @@ public class IndvdlInfoPolicyController {
 		// 서버 validate 체크
 		beanValidator.validate(indvdlInfoPolicyVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/sam/ipm/IndvdlInfoPolicyEdit";
+			return "com/uss/sam/ipm/IndvdlInfoPolicyEdit";
 		}
 			// 아이디 설정
 		// 로그인VO에서 사용자 정보 가져오기
@@ -166,7 +166,7 @@ public class IndvdlInfoPolicyController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/sam/ipm/listIndvdlInfoPolicy.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -185,7 +185,7 @@ public class IndvdlInfoPolicyController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/sam/ipm/listIndvdlInfoPolicy.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

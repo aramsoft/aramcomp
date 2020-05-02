@@ -68,7 +68,7 @@ public class ServerController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/sym/srv/ServerEqpmnList";
+		return "com/sym/sym/srv/ServerEqpmnList";
 	}
 
 	/**
@@ -85,7 +85,7 @@ public class ServerController {
 		
 		model.addAttribute(serverService.selectServerEqpmn(serverEqpmnVO));
 		
-		return "sym/sym/srv/ServerEqpmnDetail";
+		return "com/sym/sym/srv/ServerEqpmnDetail";
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class ServerController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute ServerEqpmnVO serverEqpmnVO) {
 
-		return "sym/sym/srv/ServerEqpmnRegist";
+		return "com/sym/sym/srv/ServerEqpmnRegist";
 	}
 
 	/**
@@ -117,7 +117,7 @@ public class ServerController {
 
 		beanValidator.validate(serverEqpmnVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "sym/sym/srv/ServerEqpmnRegist";
+			return "com/sym/sym/srv/ServerEqpmnRegist";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -127,7 +127,7 @@ public class ServerController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sym/sym/srv/listServerEqpmn.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -144,7 +144,7 @@ public class ServerController {
 		
 		model.addAttribute(serverService.selectServerEqpmn(serverEqpmnVO));
 		
-		return "sym/sym/srv/ServerEqpmnEdit";
+		return "com/sym/sym/srv/ServerEqpmnEdit";
 	}
 
 	/**
@@ -162,7 +162,7 @@ public class ServerController {
 
 		beanValidator.validate(serverEqpmnVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "sym/sym/srv/ServerEqpmnEdit";
+			return "com/sym/sym/srv/ServerEqpmnEdit";
 		}
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -172,7 +172,7 @@ public class ServerController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/sym/sym/srv/listServerEqpmn.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -191,7 +191,7 @@ public class ServerController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sym/sym/srv/listServerEqpmn.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -217,7 +217,7 @@ public class ServerController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/sym/srv/ServerList";
+		return "com/sym/sym/srv/ServerList";
 	}
 
 	/**
@@ -237,7 +237,7 @@ public class ServerController {
 		model.addAttribute("serverEqpmnRelateDetailList", serverService.selectServerEqpmnRelateDetail(serverVO));
 		model.addAttribute("serverEqpmnRelateDetailCount", serverService.selectServerEqpmnRelateDetailTotCnt(serverVO));
 
-		return "sym/sym/srv/ServerDetail";
+		return "com/sym/sym/srv/ServerDetail";
 	}
 
 	/**
@@ -253,7 +253,7 @@ public class ServerController {
 
 		cmmUseService.populateCmmCodeList("COM064", "COM064_serverKnd");
 
-		return "sym/sym/srv/ServerRegist";
+		return "com/sym/sym/srv/ServerRegist";
 	}
 
 	/**
@@ -271,7 +271,7 @@ public class ServerController {
 
 		beanValidator.validate(serverVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "sym/sym/srv/ServerRegist";
+			return "com/sym/sym/srv/ServerRegist";
 		}
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -281,7 +281,7 @@ public class ServerController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sym/sym/srv/listServer.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -300,7 +300,7 @@ public class ServerController {
 
 		cmmUseService.populateCmmCodeList("COM064", "COM064_serverKnd");
 
-		return "sym/sym/srv/ServerEdit";
+		return "com/sym/sym/srv/ServerEdit";
 	}
 
 	/**
@@ -318,7 +318,7 @@ public class ServerController {
 
 		beanValidator.validate(serverVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "sym/sym/srv/ServerEdit";
+			return "com/sym/sym/srv/ServerEdit";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -328,7 +328,7 @@ public class ServerController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/sym/sym/srv/listServer.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -347,7 +347,7 @@ public class ServerController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sym/sym/srv/listServer.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -376,7 +376,7 @@ public class ServerController {
 		serverVO.setServerId(serverEqpmnRelateVO.getServerId());
 		model.addAttribute("server", serverService.selectServer(serverVO));
 
-		return "sym/sym/srv/ServerEqpmnRelateRegist";
+		return "com/sym/sym/srv/ServerEqpmnRelateRegist";
 	}
 
 	/**
@@ -401,7 +401,7 @@ public class ServerController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sym/sym/srv/listServerEqpmnRelate.do?serverId="+serverId);
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

@@ -66,7 +66,7 @@ public class CtsnnManageController {
 
 		cmmUseService.populateCmmCodeList("COM054", "COM054_ctsnn");
 
-		return "uss/ion/ctn/CtsnnList";
+		return "com/uss/ion/ctn/CtsnnList";
 	}
 
 	/**
@@ -76,13 +76,13 @@ public class CtsnnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ctn/detailCtsnn.do")
 	public String detailCtsnn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CtsnnManageVO ctsnnManageVO,
 			ModelMap model) {
 
 		model.addAttribute(ctsnnManageService.selectCtsnnManage(ctsnnManageVO));
 
-		return "uss/ion/ctn/CtsnnDetail";
+		return "com/uss/ion/ctn/CtsnnDetail";
 	}
 
 	/**
@@ -92,13 +92,13 @@ public class CtsnnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ctn/registCtsnn.do")
 	public String registCtsnn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CtsnnManageVO ctsnnManageVO) {
 
 		cmmUseService.populateCmmCodeList("COM054", "COM054_ctsnn");
 		cmmUseService.populateCmmCodeList("COM073", "COM073_relate");
 
-		return "uss/ion/ctn/CtsnnRegist";
+		return "com/uss/ion/ctn/CtsnnRegist";
 	}
 
 	/**
@@ -108,14 +108,14 @@ public class CtsnnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ctn/insertCtsnn.do")
 	public String insertCtsnn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CtsnnManageVO ctsnnManageVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(ctsnnManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/ctn/CtsnnRegist";
+			return "com/uss/ion/ctn/CtsnnRegist";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -125,7 +125,7 @@ public class CtsnnManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/ion/ctn/listCtsnn.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -135,7 +135,7 @@ public class CtsnnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ctn/editCtsnn.do")
 	public String editCtsnn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CtsnnManageVO ctsnnManageVO,
 			ModelMap model) {
 
@@ -144,7 +144,7 @@ public class CtsnnManageController {
 		cmmUseService.populateCmmCodeList("COM054", "COM054_ctsnn");
 		cmmUseService.populateCmmCodeList("COM073", "COM073_relate");
 
-		return "uss/ion/ctn/CtsnnEdit";
+		return "com/uss/ion/ctn/CtsnnEdit";
 	}
 
 	/**
@@ -154,21 +154,21 @@ public class CtsnnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ctn/updateCtsnn.do")
 	public String updateCtsnn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CtsnnManageVO ctsnnManageVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(ctsnnManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/ctn/CtsnnEdit";
+			return "com/uss/ion/ctn/CtsnnEdit";
 		} 
 
 		ctsnnManageService.updateCtsnnManage(ctsnnManageVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/ion/ctn/listCtsnn.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -178,7 +178,7 @@ public class CtsnnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ctn/deleteCtsnn.do")
 	public String deleteCtsnn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CtsnnManageVO ctsnnManageVO,
 			ModelMap model) {
 
@@ -186,7 +186,7 @@ public class CtsnnManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/ctn/listCtsnn.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/*** 승인관련 ***/
@@ -218,7 +218,7 @@ public class CtsnnManageController {
 
 		cmmUseService.populateCmmCodeList("COM054", "COM054_ctsnn");
 
-		return "uss/ion/ctn/CtsnnConfmList";
+		return "com/uss/ion/ctn/CtsnnConfmList";
 	}
 
 	/**
@@ -228,13 +228,13 @@ public class CtsnnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ctn/editCtsnnConfm.do")
 	public String detailCtsnnConfm(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CtsnnManageVO ctsnnManageVO,
 			ModelMap model) {
 		
 		model.addAttribute(ctsnnManageService.selectCtsnnManage(ctsnnManageVO));
 
-		return "uss/ion/ctn/CtsnnConfmEdit";
+		return "com/uss/ion/ctn/CtsnnConfmEdit";
 	}
 
 	/**
@@ -244,14 +244,14 @@ public class CtsnnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ctn/updateCtsnnConfm.do")
 	public String updateCtsnnConfm(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CtsnnManageVO ctsnnManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(ctsnnManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/ctn/CtsnnConfmEdit";
+			return "com/uss/ion/ctn/CtsnnConfmEdit";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -262,7 +262,7 @@ public class CtsnnManageController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/ion/ctn/listCtsnnConfm.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

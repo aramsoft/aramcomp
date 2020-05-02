@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="com/uss/sam/cpy/CpyrhtPrtcPolicyList" extends="default">
+    <put-attribute name="title" value="저작권보호정책 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/sam/cpy/CpyrhtPrtcPolicyList.jsp" />
+  </definition>
+  
+  <definition name="com/uss/sam/cpy/CpyrhtPrtcPolicyDetail" extends="default">
+    <put-attribute name="title" value="저작권보호정책 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/sam/cpy/CpyrhtPrtcPolicyDetail.jsp" />
+  </definition>
+  
+  <definition name="com/uss/sam/cpy/CpyrhtPrtcPolicyRegist" extends="default">
+    <put-attribute name="title" value="저작권보호정책 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/sam/cpy/CpyrhtPrtcPolicyRegist.jsp" />
+  </definition>
+  
+  <definition name="com/uss/sam/cpy/CpyrhtPrtcPolicyEdit" extends="default">
+    <put-attribute name="title" value="저작권보호정책 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/sam/cpy/CpyrhtPrtcPolicyEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

@@ -69,7 +69,7 @@ public class QustnrRespondInfoController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/olp/qri/QustnrRespondInfoUserList";
+		return "com/uss/olp/qri/QustnrRespondInfoUserList";
 	}
 
 	/**
@@ -80,9 +80,9 @@ public class QustnrRespondInfoController {
 	 */
 	@RequestMapping(value = "/uss/olp/qri/registQustnrRespondInfoUser.do")
 	public String registQustnrRespondInfoUser(
-			@RequestParam(value="qestnrId", required=true) String qestnrId,
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrRespondInfoVO qustnrRespondInfoVO, 
+			@RequestParam(value="qestnrId", required=true) String qestnrId,
 			ModelMap model) {
 
 		// 로그인 객체 선언
@@ -110,7 +110,7 @@ public class QustnrRespondInfoController {
 		// 항목정보
 		model.addAttribute("comtnqustnriem", qustnrRespondInfoService.selectQustnrRespondQustnrIem(qestnrId));
 
-		return "uss/olp/qri/QustnrRespondInfoUserRegist";
+		return "com/uss/olp/qri/QustnrRespondInfoUserRegist";
 	}
 
 	/**
@@ -152,7 +152,7 @@ public class QustnrRespondInfoController {
 	@RequestMapping(value = "/uss/olp/qri/insertQustnrRespondInfoUser.do")
 	public String insertQustnrRespondInfoUser(
 			@CommandMap Map<String, Object> commandMap, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrRespondInfoVO qustnrRespondInfoVO, 
 			ModelMap model) {
 
@@ -246,7 +246,7 @@ public class QustnrRespondInfoController {
 
 		model.addAttribute("message", ReusltScript);
 		model.addAttribute("redirectURL", "/uss/olp/qri/listQustnrRespondInfoUser.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 	
 	/**
@@ -258,7 +258,7 @@ public class QustnrRespondInfoController {
 	@RequestMapping(value = "/uss/olp/qri/statisticsQustnrRespondInfo.do")
 	public String statisticsQustnrRespondInfo(
 			@CommandMap Map<String, Object> commandMap,
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrRespondInfoVO qustnrRespondInfoVO, 
 			ModelMap model) {
 
@@ -281,7 +281,7 @@ public class QustnrRespondInfoController {
 		// 이전 주소
 		model.addAttribute("returnUrl", commandMap.get("returnUrl") == null ? "" : (String) commandMap.get("returnUrl"));
 
-		return "uss/olp/qri/QustnrRespondInfoStatistics";
+		return "com/uss/olp/qri/QustnrRespondInfoStatistics";
 	}
 
 	/* 설문조사 (관리자 모드)*/
@@ -313,7 +313,7 @@ public class QustnrRespondInfoController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/olp/qri/QustnrRespondInfoList";
+		return "com/uss/olp/qri/QustnrRespondInfoList";
 	}
 
 	/**
@@ -324,13 +324,13 @@ public class QustnrRespondInfoController {
 	@RequestMapping(value = "/uss/olp/qri/detailQustnrRespondInfo.do")
 	@Secured("ROLE_USER")
 	public String detailQustnrRespondInfo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrRespondInfoVO qustnrRespondInfoVO,
 			ModelMap model) {
 
 		model.addAttribute(qustnrRespondInfoService.selectQustnrRespondInfoDetail(qustnrRespondInfoVO));
 
-		return "uss/olp/qri/QustnrRespondInfoDetail";
+		return "com/uss/olp/qri/QustnrRespondInfoDetail";
 	}
 
 	/**
@@ -341,10 +341,10 @@ public class QustnrRespondInfoController {
 	@RequestMapping(value = "/uss/olp/qri/registQustnrRespondInfo.do")
 	@Secured("ROLE_USER")
 	public String registQustnrRespondInfo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrRespondInfoVO qustnrRespondInfoVO) {
 
-		return "uss/olp/qri/QustnrRespondInfoRegist";
+		return "com/uss/olp/qri/QustnrRespondInfoRegist";
 	}
 	
 	/**
@@ -355,7 +355,7 @@ public class QustnrRespondInfoController {
 	@RequestMapping(value = "/uss/olp/qri/insertQustnrRespondInfo.do")
 	@Secured("ROLE_USER")
 	public String insertQustnrRespondInfo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrRespondInfoVO qustnrRespondInfoVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -363,7 +363,7 @@ public class QustnrRespondInfoController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrRespondInfoVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olp/qri/QustnrRespondInfoRegist";
+			return "com/uss/olp/qri/QustnrRespondInfoRegist";
 		}
 
 		// 로그인 객체 선언
@@ -374,7 +374,7 @@ public class QustnrRespondInfoController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/olp/qri/listQustnrRespondInfo.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 	
 	/**
@@ -385,13 +385,13 @@ public class QustnrRespondInfoController {
 	@RequestMapping(value = "/uss/olp/qri/editQustnrRespondInfo.do")
 	@Secured("ROLE_USER")
 	public String editQustnrRespondInfo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrRespondInfoVO qustnrRespondInfoVO,
 			ModelMap model) {
 
 		model.addAttribute(qustnrRespondInfoService.selectQustnrRespondInfoDetail(qustnrRespondInfoVO));
 
-		return "uss/olp/qri/QustnrRespondInfoEdit";
+		return "com/uss/olp/qri/QustnrRespondInfoEdit";
 	}
 
 	/**
@@ -402,7 +402,7 @@ public class QustnrRespondInfoController {
 	@RequestMapping(value = "/uss/olp/qri/updateQustnrRespondInfo.do")
 	@Secured("ROLE_USER")
 	public String updateQustnrRespondInfo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrRespondInfoVO qustnrRespondInfoVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -410,7 +410,7 @@ public class QustnrRespondInfoController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrRespondInfoVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olp/qri/QustnrRespondInfoEdit";
+			return "com/uss/olp/qri/QustnrRespondInfoEdit";
 		}
 
 		// 로그인 객체 선언
@@ -421,7 +421,7 @@ public class QustnrRespondInfoController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/olp/qri/listQustnrRespondInfo.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -432,7 +432,7 @@ public class QustnrRespondInfoController {
 	@RequestMapping(value = "/uss/olp/qri/deleteQustnrRespondInfo.do")
 	@Secured("ROLE_USER")
 	public String deleteQustnrRespondInfo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrRespondInfoVO qustnrRespondInfoVO, 
 			ModelMap model) {
 
@@ -440,7 +440,7 @@ public class QustnrRespondInfoController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/olp/qri/listQustnrRespondInfo.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

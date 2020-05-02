@@ -49,7 +49,7 @@ public class LoginLogController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/log/clg/LoginLogList";
+		return "com/sym/log/clg/LoginLogList";
 	}
 
 	/**
@@ -66,7 +66,7 @@ public class LoginLogController {
 
 		model.addAttribute(loginLogService.selectLoginLog(loginLogVO));
 
-		return "sym/log/clg/LoginLogDetail";
+		return "com/sym/log/clg/LoginLogDetail";
 	}
 
 }

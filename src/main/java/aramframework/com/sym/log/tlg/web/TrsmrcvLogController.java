@@ -52,7 +52,7 @@ public class TrsmrcvLogController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/log/tlg/TrsmrcvLogList";
+		return "com/sym/log/tlg/TrsmrcvLogList";
 	}
 
 	/**
@@ -63,13 +63,13 @@ public class TrsmrcvLogController {
 	@RequestMapping(value = "/sym/log/tlg/detailTrsmrcvLog.do")
 	@Secured("ROLE_ADMIN")
 	public String detailTrsmrcvLog(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute TrsmrcvLogVO trsmrcvLogVO,
 			ModelMap model) {
 
 		model.addAttribute(trsmrcvLogService.selectTrsmrcvLog(trsmrcvLogVO));
 
-		return "sym/log/tlg/TrsmrcvLogDetail";
+		return "com/sym/log/tlg/TrsmrcvLogDetail";
 	}
 
 	/**
@@ -80,10 +80,10 @@ public class TrsmrcvLogController {
 	@RequestMapping(value = "/sym/log/tlg/registTrsmrcvLog.do")
 	@Secured("ROLE_ADMIN")
 	public String registTrsmrcvLog(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute TrsmrcvLogVO trsmrcvLogVO) {
 
-		return "sym/log/tlg/TrsmrcvLogRegist";
+		return "com/sym/log/tlg/TrsmrcvLogRegist";
 	}
 
 	/**
@@ -94,7 +94,7 @@ public class TrsmrcvLogController {
 	@RequestMapping(value = "/sym/log/tlg/insertTrsmrcvLog.do")
 	@Secured("ROLE_ADMIN")
 	public String insertTrsmrcvLog(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute TrsmrcvLogVO trsmrcvLogVO, 
 			ModelMap model) {
 
@@ -105,7 +105,7 @@ public class TrsmrcvLogController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sym/log/tlg/listTrsmrcvLog.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

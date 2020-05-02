@@ -66,7 +66,7 @@ public class IntnetSvcGuidanceController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/ion/isg/IntnetSvcGuidanceList";
+		return "com/uss/ion/isg/IntnetSvcGuidanceList";
 	}
 
 	/**
@@ -76,10 +76,10 @@ public class IntnetSvcGuidanceController {
 	 */
 	@RequestMapping("/uss/ion/isg/registIntnetSvcGuidance.do")
 	public String registIntnetSvcGuidance(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IntnetSvcGuidanceVO intnetSvcGuidanceVO) {
 
-		return "uss/ion/isg/IntnetSvcGuidanceRegist";
+		return "com/uss/ion/isg/IntnetSvcGuidanceRegist";
 	}
 
 	/**
@@ -89,14 +89,14 @@ public class IntnetSvcGuidanceController {
 	 */
 	@RequestMapping("/uss/ion/isg/insertIntnetSvcGuidance.do")
 	public String insertIntnetSvcGuidance(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IntnetSvcGuidanceVO intnetSvcGuidanceVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(intnetSvcGuidanceVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/isg/IntnetSvcGuidanceRegist";
+			return "com/uss/ion/isg/IntnetSvcGuidanceRegist";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -106,7 +106,7 @@ public class IntnetSvcGuidanceController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/ion/isg/listIntnetSvcGuidance.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -116,13 +116,13 @@ public class IntnetSvcGuidanceController {
 	 */
 	@RequestMapping("/uss/ion/isg/editIntnetSvcGuidance.do")
 	public String editIntnetSvcGuidance(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IntnetSvcGuidanceVO intnetSvcGuidanceVO,
 			ModelMap model) {
 
 		model.addAttribute(intnetSvcGuidanceService.selectIntnetSvcGuidance(intnetSvcGuidanceVO));
 
-		return "uss/ion/isg/IntnetSvcGuidanceEdit";
+		return "com/uss/ion/isg/IntnetSvcGuidanceEdit";
 	}
 
 	/**
@@ -132,14 +132,14 @@ public class IntnetSvcGuidanceController {
 	 */
 	@RequestMapping("/uss/ion/isg/updateIntnetSvcGuidance.do")
 	public String updateIntnetSvcGuidance(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IntnetSvcGuidanceVO intnetSvcGuidanceVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(intnetSvcGuidanceVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/isg/IntnetSvcGuidanceEdit";
+			return "com/uss/ion/isg/IntnetSvcGuidanceEdit";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -149,7 +149,7 @@ public class IntnetSvcGuidanceController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/ion/isg/listIntnetSvcGuidance.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -159,7 +159,7 @@ public class IntnetSvcGuidanceController {
 	 */
 	@RequestMapping("/uss/ion/isg/deleteIntnetSvcGuidance.do")
 	public String deleteIntnetSvcGuidance(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IntnetSvcGuidanceVO intnetSvcGuidanceVO, 
 			ModelMap model) {
 
@@ -167,7 +167,7 @@ public class IntnetSvcGuidanceController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/isg/listIntnetSvcGuidance.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -178,7 +178,7 @@ public class IntnetSvcGuidanceController {
 	@IncludedInfo(name = "인터넷서비스안내 결과", order = 5291, gid = 50)
 	@RequestMapping("/uss/ion/isg/viewIntnetSvcGuidance.do")
 	public String viewIntnetSvcGuidance(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IntnetSvcGuidanceVO intnetSvcGuidanceVO, 
 			ModelMap model) {
 
@@ -191,7 +191,7 @@ public class IntnetSvcGuidanceController {
 
 		model.addAttribute("resultList", resultList);
 
-		return "uss/ion/isg/IntnetSvcGuidanceView";
+		return "com/uss/ion/isg/IntnetSvcGuidanceView";
 	}
 	
 }

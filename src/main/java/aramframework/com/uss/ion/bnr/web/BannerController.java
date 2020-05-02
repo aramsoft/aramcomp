@@ -77,7 +77,7 @@ public class BannerController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/ion/bnr/BannerList";
+		return "com/uss/ion/bnr/BannerList";
 	}
 
 	/**
@@ -87,10 +87,10 @@ public class BannerController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnr/registBanner.do")
 	public String registBanner(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BannerVO bannerVO) {
 
-		return "uss/ion/bnr/BannerRegist";
+		return "com/uss/ion/bnr/BannerRegist";
 	}
 
 	/**
@@ -100,16 +100,16 @@ public class BannerController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnr/insertBanner.do")
 	public String insertBanner(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BannerVO bannerVO, 
 			BindingResult bindingResult, 
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception {
 
 		beanValidator.validate(bannerVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/bnr/BannerRegist";
+			return "com/uss/ion/bnr/BannerRegist";
 		} 
 		
 		String atchFileId = "";
@@ -117,7 +117,7 @@ public class BannerController {
 
 		final Map<String, MultipartFile> files = multiRequest.getFileMap();
 		if (!files.isEmpty()) {
-			List<FileVO> result = fileUtil.parseFileInf(files, "BNR_", 0, "", "");
+			List<FileVO> result = fileUtil.parseFileInf(files, "BNR", 0, "", "");
 			atchFileId = fileMngService.insertFileInfs(result);
 
 			for(FileVO fileVo : result) {
@@ -134,7 +134,7 @@ public class BannerController {
 	
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/ion/bnr/listBanner.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
  	}
 
 	/**
@@ -144,13 +144,13 @@ public class BannerController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnr/editBanner.do")
 	public String editBanner(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BannerVO bannerVO,
 			ModelMap model) {
 
 		model.addAttribute(bannerService.selectBanner(bannerVO));
 		
-		return "uss/ion/bnr/BannerEdit";
+		return "com/uss/ion/bnr/BannerEdit";
 	}
 
 	/**
@@ -160,16 +160,16 @@ public class BannerController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnr/updateBanner.do")
 	public String updateBanne(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BannerVO bannerVO, 
 			BindingResult bindingResult,
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception {
 		
 		beanValidator.validate(bannerVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/bnr/BannerEdit";
+			return "com/uss/ion/bnr/BannerEdit";
 		} 
 
 		String atchFileId = "";
@@ -177,7 +177,7 @@ public class BannerController {
 		
 		final Map<String, MultipartFile> files = multiRequest.getFileMap();
 		if (!files.isEmpty()) {
-			List<FileVO> result = fileUtil.parseFileInf(files, "BNR_", 0, "", "");
+			List<FileVO> result = fileUtil.parseFileInf(files, "BNR", 0, "", "");
 			atchFileId = fileMngService.insertFileInfs(result);
 
 			for(FileVO fileVo : result) {
@@ -202,7 +202,7 @@ public class BannerController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/ion/bnr/listBanner.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -212,7 +212,7 @@ public class BannerController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnr/deleteBanner.do")
 	public String deleteBanner(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BannerVO bannerVO, 
 			ModelMap model) {
 
@@ -220,7 +220,7 @@ public class BannerController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/bnr/listBanner.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -231,16 +231,16 @@ public class BannerController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnr/deleteBannerList.do")
 	public String deleteBannerList(
-			@RequestParam String bannerIds, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BannerVO bannerVO, 
+			@RequestParam String bannerIds, 
 			ModelMap model) {
 
 		bannerService.deleteBanners(bannerIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/bnr/listBanner.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -250,14 +250,14 @@ public class BannerController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnr/getBannerImage.do")
 	public String getBannerImage(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BannerVO bannerVO, 
-			@ModelAttribute SearchVO searchVO,
 			ModelMap model) {
 
 		model.addAttribute("fileList", bannerService.selectBannerResult(bannerVO));
 		model.addAttribute("resultType", bannerVO.getResultType());
 
-		return "uss/ion/bnr/BannerView";
+		return "com/uss/ion/bnr/BannerView";
 	}
 
 	/**
@@ -275,7 +275,7 @@ public class BannerController {
 
 		model.addAttribute("bannerList", bannerService.selectBannerList(bannerVO));
 
-		return "uss/ion/bnr/BannerMainPage";
+		return "com/uss/ion/bnr/BannerMainPage";
 	}
 	
 }

@@ -73,7 +73,7 @@ public class KnoSpecialistController {
 
 		model.addAttribute(paginationInfo);
 
-		return "dam/spe/spe/KnoSpecialistList";
+		return "com/dam/spe/spe/KnoSpecialistList";
 	}
 
 	/**
@@ -83,13 +83,13 @@ public class KnoSpecialistController {
 	 */
 	@RequestMapping(value = "/dam/spe/spe/detailKnoSpecialist.do")
 	public String detailKnoSpecialist(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute KnoSpecialistVO knoSpecialistVO,
 			ModelMap model) {
 
 		model.addAttribute(knoSpecialistService.selectKnoSpecialist(knoSpecialistVO));
 
-		return "dam/spe/spe/KnoSpecialistDetail";
+		return "com/dam/spe/spe/KnoSpecialistDetail";
 	}
 
 	/**
@@ -99,13 +99,13 @@ public class KnoSpecialistController {
 	 */
 	@RequestMapping(value = "/dam/spe/spe/registKnoSpecialist.do")
 	public String registKnoSpecialist(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute KnoSpecialistVO knoSpecialistVO, 
 			ModelMap model) {
 
 		populateMapTeam(knoSpecialistVO, model);
 		
-		return "dam/spe/spe/KnoSpecialistRegist";
+		return "com/dam/spe/spe/KnoSpecialistRegist";
 	}
 
 	/**
@@ -115,17 +115,15 @@ public class KnoSpecialistController {
 	 */
 	@RequestMapping(value = "/dam/spe/spe/insertKnoSpecialist.do")
 	public String insertKnoSpecialist(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute KnoSpecialistVO knoSpecialistVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(knoSpecialistVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			
 			populateMapTeam(knoSpecialistVO, model);
-
-			return "dam/spe/spe/KnoSpecialistRegist";
+			return "com/dam/spe/spe/KnoSpecialistRegist";
 		}
 
 		// 로그인 객체 선언
@@ -136,7 +134,7 @@ public class KnoSpecialistController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/dam/spe/spe/listKnoSpecialist.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -172,13 +170,13 @@ public class KnoSpecialistController {
 	 */
 	@RequestMapping(value = "/dam/spe/spe/editKnoSpecialist.do")
 	public String editKnoSpecialist(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute KnoSpecialistVO knoSpecialistVO,
 			ModelMap model) {
 
 		model.addAttribute(knoSpecialistService.selectKnoSpecialist(knoSpecialistVO));
 
-		return "dam/spe/spe/KnoSpecialistEdit";
+		return "com/dam/spe/spe/KnoSpecialistEdit";
 	}
 
 	/**
@@ -188,14 +186,14 @@ public class KnoSpecialistController {
 	 */
 	@RequestMapping(value = "/dam/spe/spe/updateKnoSpecialist.do")
 	public String updateKnoSpecialist(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute KnoSpecialistVO knoSpecialistVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(knoSpecialistVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "dam/spe/spe/KnoSpecialistEdit";
+			return "com/dam/spe/spe/KnoSpecialistEdit";
 		}
 
 		// 로그인 객체 선언
@@ -206,7 +204,7 @@ public class KnoSpecialistController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/dam/spe/spe/listKnoSpecialist.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -216,7 +214,7 @@ public class KnoSpecialistController {
 	 */
 	@RequestMapping(value = "/dam/spe/spe/deleteKnoSpecialist.do")
 	public String deleteKnoSpecialist(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute KnoSpecialistVO knoSpecialistVO, 
 			ModelMap model) {
 
@@ -224,7 +222,7 @@ public class KnoSpecialistController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/dam/spe/spe/listKnoSpecialist.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

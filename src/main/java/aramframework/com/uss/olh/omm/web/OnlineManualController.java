@@ -78,7 +78,7 @@ public class OnlineManualController {
 		// 온라인메뉴얼 구분 설정
 		cmmUseService.populateCmmCodeList("COM041", "COM041_onlineMnlSe");
 
-		return "uss/olh/omm/OnlineManualUserList";
+		return "com/uss/olh/omm/OnlineManualUserList";
 	}
 
 	/**
@@ -88,7 +88,7 @@ public class OnlineManualController {
 	 */
 	@RequestMapping(value = "/uss/olh/omm/detailOnlineManualUser.do")
 	public String detailOnlineManualUser(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute OnlineManualVO onlineManualVO,
 			ModelMap model) {
 
@@ -97,7 +97,7 @@ public class OnlineManualController {
 		// 온라인메뉴얼 구분 설정
 		cmmUseService.populateCmmCodeList("COM041", "COM041_onlineMnlSe");
 
-		return "uss/olh/omm/OnlineManualUserDetail";
+		return "com/uss/olh/omm/OnlineManualUserDetail";
 	}
 
 	/**
@@ -126,7 +126,7 @@ public class OnlineManualController {
 		// 온라인메뉴얼 구분 설정
 		cmmUseService.populateCmmCodeList("COM041", "COM041_onlineMnlSe");
 
-		return "uss/olh/omm/OnlineManualList";
+		return "com/uss/olh/omm/OnlineManualList";
 	}
 
 	/**
@@ -136,7 +136,7 @@ public class OnlineManualController {
 	 */
 	@RequestMapping(value = "/uss/olh/omm/detailOnlineManual.do")
 	public String detailOnlineManual(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute OnlineManualVO onlineManualVO,
 			ModelMap model) {
 
@@ -145,7 +145,7 @@ public class OnlineManualController {
 		// 온라인메뉴얼 구분 설정
 		cmmUseService.populateCmmCodeList("COM041", "COM041_onlineMnlSe");
 
-		return "uss/olh/omm/OnlineManualDetail";
+		return "com/uss/olh/omm/OnlineManualDetail";
 	}
 
 	/**
@@ -155,13 +155,13 @@ public class OnlineManualController {
 	 */
 	@RequestMapping(value = "/uss/olh/omm/registOnlineManual.do")
 	public String registOnlineManual(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute OnlineManualVO onlineManualVO) {
 
 		// 온라인메뉴얼 구분 설정
 		cmmUseService.populateCmmCodeList("COM041", "COM041_onlineMnlSe");
 
-		return "uss/olh/omm/OnlineManualRegist";
+		return "com/uss/olh/omm/OnlineManualRegist";
 	}
 
 	/**
@@ -171,7 +171,7 @@ public class OnlineManualController {
 	 */
 	@RequestMapping(value = "/uss/olh/omm/insertOnlineManual.do")
 	public String insertOnlineManual(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute OnlineManualVO onlineManualVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -179,7 +179,7 @@ public class OnlineManualController {
 		// 서버 validate 체크
 		beanValidator.validate(onlineManualVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olh/omm/OnlineManualRegist";
+			return "com/uss/olh/omm/OnlineManualRegist";
 		}
 		
 		// 로그인 객체 선언
@@ -191,7 +191,7 @@ public class OnlineManualController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/olh/omm/listOnlineManual.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -201,7 +201,7 @@ public class OnlineManualController {
 	 */
 	@RequestMapping(value = "/uss/olh/omm/editOnlineManual.do")
 	public String editOnlineManual(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute OnlineManualVO onlineManualVO,
 			ModelMap model) {
 
@@ -210,7 +210,7 @@ public class OnlineManualController {
 		// 온라인메뉴얼 구분 설정
 		cmmUseService.populateCmmCodeList("COM041", "COM041_onlineMnlSe");
 
-		return "uss/olh/omm/OnlineManualEdit";
+		return "com/uss/olh/omm/OnlineManualEdit";
 	}
 
 	/**
@@ -220,7 +220,7 @@ public class OnlineManualController {
 	 */
 	@RequestMapping(value = "/uss/olh/omm/updateOnlineManual.do")
 	public String updateOnlineManual(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute OnlineManualVO onlineManualVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
@@ -228,7 +228,7 @@ public class OnlineManualController {
 		// 서버 validate 체크
 		beanValidator.validate(onlineManualVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olh/omm/OnlineManualEdit";
+			return "com/uss/olh/omm/OnlineManualEdit";
 		}
 		
 		// 로그인 객체 선언
@@ -239,7 +239,7 @@ public class OnlineManualController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/olh/omm/listOnlineManual.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -249,7 +249,7 @@ public class OnlineManualController {
 	 */
 	@RequestMapping(value = "/uss/olh/omm/deleteOnlineManual.do")
 	public String deleteOnlineManual(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute OnlineManualVO onlineManualVO, 
 			ModelMap model) {
 
@@ -257,7 +257,7 @@ public class OnlineManualController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/olh/omm/listOnlineManual.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

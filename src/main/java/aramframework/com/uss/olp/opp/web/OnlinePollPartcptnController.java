@@ -50,7 +50,7 @@ public class OnlinePollPartcptnController {
 
 		model.addAttribute("resultList", onlinePollPartcptnService.selectOnlinePollManageList(onlinePollPartcptnVO));
 
-		return "uss/olp/opp/OnlinePollPartcptnMainPage";
+		return "com/uss/olp/opp/OnlinePollPartcptnMainPage";
 	}
 
 	/**
@@ -75,7 +75,7 @@ public class OnlinePollPartcptnController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/olp/opp/OnlinePollPartcptnList";
+		return "com/uss/olp/opp/OnlinePollPartcptnList";
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class OnlinePollPartcptnController {
 	@RequestMapping(value = "/uss/olp/opp/registOnlinePollPartcptn.do")
 	@Secured("ROLE_USER")
 	public String registOnlinePollPartcptn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute OnlinePollPartcptnVO onlinePollPartcptnVO, 
 			ModelMap model) {
 
@@ -97,7 +97,7 @@ public class OnlinePollPartcptnController {
 	// 온라인POLL항목 정보 설정
 		model.addAttribute("pollItemList", onlinePollPartcptnService.selectOnlinePollItemList(onlinePollPartcptnVO));
 
-		return "uss/olp/opp/OnlinePollPartcptnRegist";
+		return "com/uss/olp/opp/OnlinePollPartcptnRegist";
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class OnlinePollPartcptnController {
 	@RequestMapping(value = "/uss/olp/opp/insertOnlinePollPartcptn.do")
 	@Secured("ROLE_USER")
 	public String insertOnlinePollPartcptn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute OnlinePollPartcptnVO onlinePollPartcptnVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -128,7 +128,7 @@ public class OnlinePollPartcptnController {
 
 		model.addAttribute("message", "온라인POLL참여에 응해주셔서 감사합니다!");
 		model.addAttribute("redirectURL", "/uss/olp/opp/listOnlinePollPartcptn.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -138,9 +138,9 @@ public class OnlinePollPartcptnController {
 	 */
 	@RequestMapping(value = "/uss/olp/opp/statisticsOnlinePollPartcptn.do")
 	public String statisticsOnlinePollPartcptn(
-			HttpServletRequest request, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute OnlinePollPartcptnVO onlinePollPartcptnVO, 
+			HttpServletRequest request, 
 			ModelMap model) {
 
 		// 온라인POLL관리 정보 설정
@@ -157,7 +157,7 @@ public class OnlinePollPartcptnController {
 		// 이전 주소
 		model.addAttribute("returnUrl", request.getParameter("returnUrl") );
 
-		return "uss/olp/opp/OnlinePollPartcptnStatistics";
+		return "com/uss/olp/opp/OnlinePollPartcptnStatistics";
 	}
 
 }

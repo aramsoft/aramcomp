@@ -76,7 +76,7 @@ public class DeptJobController {
 
 		model.addAttribute(paginationInfo);
 
-		return "cop/smt/djm/ChargerListPopup";
+		return "com/cop/smt/djm/ChargerListPopup";
 	}
 
 	/**
@@ -100,7 +100,7 @@ public class DeptJobController {
 
 		model.addAttribute(paginationInfo);
 
-		return "cop/smt/djm/DeptListPopup";
+		return "com/cop/smt/djm/DeptListPopup";
 	}
 
 	/**
@@ -112,9 +112,9 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/listDeptJobBx.do")
 	@Secured("ROLE_ADMIN")
 	public String listDeptJobBx(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptJobBxVO deptJobBxVO, 
-			@RequestParam(value="PopFlag", required=false) String popFlag,
+			@RequestParam(value="popFlag", required=false) String popFlag,
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
@@ -130,13 +130,11 @@ public class DeptJobController {
 
 		model.addAttribute(paginationInfo);
 
-		String returnUrl;
 		if ("Y".equals(popFlag)) {
-			returnUrl = "cop/smt/djm/DeptJobBxListPopup";
+			return "com/cop/smt/djm/DeptJobBxListPopup";
 		} else {
-			returnUrl = "cop/smt/djm/DeptJobBxList";
+			return "com/cop/smt/djm/DeptJobBxList";
 		}
-		return returnUrl;
 	}
 
 	/**
@@ -146,13 +144,13 @@ public class DeptJobController {
 	 */
 	 @RequestMapping("/cop/smt/djm/detailDeptJobBx.do")
 	 public String detailDeptJobBx(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptJobBxVO deptJobBxVO,
 			ModelMap model) {
 	
 		 model.addAttribute(deptJobService.selectDeptJobBx(deptJobBxVO));
 
-		return "cop/smt/djm/DeptJobBxDetail";
+		return "com/cop/smt/djm/DeptJobBxDetail";
 	}
 
 	/**
@@ -163,10 +161,10 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/registDeptJobBx.do")
 	@Secured("ROLE_ADMIN")
 	public String registDeptJobBx(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptJobBxVO deptJobBxVO) {
 		
-		return "cop/smt/djm/DeptJobBxRegist";
+		return "com/cop/smt/djm/DeptJobBxRegist";
 	}
 
 	/**
@@ -177,18 +175,18 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/getDeptJobBxOrdr.do")
 	@Secured("ROLE_ADMIN")
 	public String getDeptJobBxOrdr(
-			HttpServletRequest request, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptJobBxVO deptJobBxVO, 
+			HttpServletRequest request, 
 			ModelMap model) {
 
 		// deptJobBxVO.setIndictOrdr(deptJobService.selectDeptJobBxOrdr(deptJobBxVO.getDeptId()) + 1);
 		model.addAttribute("indictOrdrValue", deptJobService.selectDeptJobBxOrdr(deptJobBxVO.getDeptId()) + 1);
 
 		if (request.getHeader("Referer").indexOf("insertDeptJobBx.do") == -1) {
-			return "cop/smt/djm/DeptJobBxEdit";
+			return "com/cop/smt/djm/DeptJobBxEdit";
 		} else {
-			return "cop/smt/djm/DeptJobBxRegist";
+			return "com/cop/smt/djm/DeptJobBxRegist";
 		}	
 	}
 
@@ -200,7 +198,7 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/insertDeptJobBx.do")
 	@Secured("ROLE_ADMIN")
 	public String insertDeptJobBx(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptJobBxVO deptJobBxVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -208,7 +206,7 @@ public class DeptJobController {
 		// 서버 validate 체크
 		beanValidator.validate(deptJobBxVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/smt/djm/DeptJobBxRegist";
+			return "com/cop/smt/djm/DeptJobBxRegist";
 		}
 
 		// 로그인 객체 선언
@@ -218,14 +216,14 @@ public class DeptJobController {
 		// 부서내 부서업무함명 중복체크
 		if (deptJobService.selectDeptJobBxCheck(deptJobBxVO) > 0) {
 			model.addAttribute("deptJobBxNmDuplicated", "true");
-			return "cop/smt/djm/DeptJobBxRegist";
+			return "com/cop/smt/djm/DeptJobBxRegist";
 		} 
 		
 		deptJobService.insertDeptJobBx(deptJobBxVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/cop/smt/djm/listDeptJobBx.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -236,14 +234,14 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/editDeptJobBx.do")
 	@Secured("ROLE_ADMIN")
 	public String editDeptJobBx(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptJobBxVO deptJobBxVO, 
 			ModelMap model) {
 
 		model.addAttribute(deptJobService.selectDeptJobBx(deptJobBxVO));
 		model.addAttribute("indictOrdrValue", deptJobBxVO.getIndictOrdr());
 
-		return "cop/smt/djm/DeptJobBxEdit";
+		return "com/cop/smt/djm/DeptJobBxEdit";
 	}
 
 	/**
@@ -254,14 +252,14 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/updateDeptJobBx.do")
 	@Secured("ROLE_ADMIN")
 	public String updateDeptJobBx(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptJobBxVO deptJobBxVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(deptJobBxVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/smt/djm/DeptJobBxEdit";
+			return "com/cop/smt/djm/DeptJobBxEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -271,7 +269,7 @@ public class DeptJobController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/cop/smt/djm/listDeptJobBx.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -282,7 +280,7 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/updateDeptJobBxOrdr.do")
 	@Secured("ROLE_ADMIN")
 	public String updateDeptJobBxOrdr(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptJobBxVO deptJobBxVO, 
 			ModelMap model) {
 
@@ -296,7 +294,7 @@ public class DeptJobController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/cop/smt/djm/listDeptJobBx.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -307,7 +305,7 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/deleteDeptJobBx.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteDeptJobBx(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptJobBxVO deptJobBxVO, 
 			ModelMap model) {
 
@@ -315,7 +313,7 @@ public class DeptJobController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/cop/smt/djm/listDeptJobBx.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -348,7 +346,7 @@ public class DeptJobController {
 		model.addAttribute(paginationInfo);
 		model.addAttribute("resultBxList", deptJobService.selectDeptJobBxListAll());
 
-		return "cop/smt/djm/DeptJobList";
+		return "com/cop/smt/djm/DeptJobList";
 	}
 
 	/**
@@ -359,7 +357,7 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/detailDeptJob.do")
 	@Secured("ROLE_USER")
 	public String detailDeptJob(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptJobVO deptJobVO, 
 			ModelMap model) {
 		
@@ -368,7 +366,7 @@ public class DeptJobController {
 		// 공통코드 우선순위 조회
 		model.addAttribute("priort", cmmUseService.selectCmmCodeList("COM059"));
 
-		return "cop/smt/djm/DeptJobDetail";
+		return "com/cop/smt/djm/DeptJobDetail";
 	}
 
 	/**
@@ -379,14 +377,14 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/registDeptJob.do")
 	@Secured("ROLE_USER")
 	public String registDeptJob(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptJobVO deptJobVO) {
 
 		deptJobVO.setDeptId(deptJobVO.getSearchDeptId());
 		deptJobVO.setDeptNm(deptJobService.selectDept(deptJobVO.getSearchDeptId()));
 		deptJobVO.setDeptJobBxId(deptJobVO.getSearchDeptJobBxId());
 
-		return "cop/smt/djm/DeptJobRegist";
+		return "com/cop/smt/djm/DeptJobRegist";
 	}
 
 	/**
@@ -397,21 +395,21 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/insertDeptJob.do")
 	@Secured("ROLE_USER")
 	public String insertDeptJob(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptJobVO deptJobVO, 
 			BindingResult bindingResult,
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception {
 
 		// 서버 validate 체크
 		beanValidator.validate(deptJobVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/smt/djm/DeptJobRegist";
+			return "com/cop/smt/djm/DeptJobRegist";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
-		deptJobVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "DSCH_"));
+		deptJobVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "DJM"));
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -421,7 +419,7 @@ public class DeptJobController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/cop/smt/djm/listDeptJob.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -432,13 +430,13 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/editDeptJob.do")
 	@Secured("ROLE_USER")
 	public String editDeptJob(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptJobVO deptJobVO,
 			ModelMap model) {
 
 		model.addAttribute(deptJobService.selectDeptJob(deptJobVO));
 
-		return "cop/smt/djm/DeptJobEdit";
+		return "com/cop/smt/djm/DeptJobEdit";
 	}
 
 	/**
@@ -449,21 +447,21 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/updateDeptJob.do")
 	@Secured("ROLE_USER")
 	public String updateDeptJob(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptJobVO deptJobVO,
 			BindingResult bindingResult, 
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception {
 
 		beanValidator.validate(deptJobVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/smt/djm/DeptJobEdit";
+			return "com/cop/smt/djm/DeptJobEdit";
 		}
 
 		// 첨부파일 관련 ID 생성 start....
 		String atchFileId = deptJobVO.getAtchFileId();
-		deptJobVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "DSCH_", atchFileId));
+		deptJobVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "DJM", atchFileId));
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		deptJobVO.setLastUpdusrId(loginVO.getUserId());
@@ -472,7 +470,7 @@ public class DeptJobController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/cop/smt/djm/listDeptJob.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -483,7 +481,7 @@ public class DeptJobController {
 	@RequestMapping("/cop/smt/djm/deleteDeptJob.do")
 	@Secured("ROLE_USER")
 	public String deleteDeptJob(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DeptJobVO deptJobVO, 
 			ModelMap model) {
 
@@ -491,7 +489,7 @@ public class DeptJobController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/cop/smt/djm/listDeptJob.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

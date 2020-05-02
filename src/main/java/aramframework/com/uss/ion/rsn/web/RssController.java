@@ -47,7 +47,7 @@ public class RssController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/ion/rsn/RssServiceList";
+		return "com/uss/ion/rsn/RssServiceList";
 	}
 
 	/**
@@ -57,7 +57,7 @@ public class RssController {
 	 */
 	@RequestMapping(value = "/uss/ion/rsn/detailRssService.do")
 	public String detailRssService(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RssInfoVO rssInfoVO, 
 			ModelMap model) {
 		
@@ -69,7 +69,7 @@ public class RssController {
 
 		model.addAttribute("mapRssInfoList", rssService.selectRssServiceTable(rssInfoVO));
 
-		return "uss/ion/rsn/RssService";
+		return "com/uss/ion/rsn/RssService";
 	}
 
 }

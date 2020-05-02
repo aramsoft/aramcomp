@@ -61,7 +61,7 @@ public class FaqManageController {
 	
 		model.addAttribute(paginationInfo);
 
-		return "uss/olh/faq/FaqList";
+		return "com/uss/olh/faq/FaqList";
 	}
 
 	/**
@@ -77,7 +77,7 @@ public class FaqManageController {
 
 		model.addAttribute(faqManageService.selectFaqListDetail(faqManageVO));
 
-		return "uss/olh/faq/FaqDetail";
+		return "com/uss/olh/faq/FaqDetail";
 	}
 
 	/**
@@ -92,7 +92,7 @@ public class FaqManageController {
 			@ModelAttribute FaqManageVO faqManageVO, 
 			ModelMap model) {
 
-		return "uss/olh/faq/FaqRegist";
+		return "com/uss/olh/faq/FaqRegist";
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class FaqManageController {
 
 		beanValidator.validate(faqManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olh/faq/FaqRegist";
+			return "com/uss/olh/faq/FaqRegist";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
@@ -126,7 +126,7 @@ public class FaqManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/olh/faq/listFaq.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -143,7 +143,7 @@ public class FaqManageController {
 
 		model.addAttribute(faqManageService.selectFaqListDetail(faqManageVO));
 
-		return "uss/olh/faq/FaqEdit";
+		return "com/uss/olh/faq/FaqEdit";
 	}
 
 	/**
@@ -164,7 +164,7 @@ public class FaqManageController {
 		// Validation
 		beanValidator.validate(faqManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olh/faq/FaqEdit";
+			return "com/uss/olh/faq/FaqEdit";
 		}
 
 		// 첨부파일 관련 ID 생성 start....
@@ -179,7 +179,7 @@ public class FaqManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/olh/faq/listFaq.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -198,7 +198,7 @@ public class FaqManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/olh/faq/listFaq.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

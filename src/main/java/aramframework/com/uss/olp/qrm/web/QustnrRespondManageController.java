@@ -67,7 +67,7 @@ public class QustnrRespondManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/olp/qrm/QustnrRespondList";
+		return "com/uss/olp/qrm/QustnrRespondList";
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class QustnrRespondManageController {
 	@RequestMapping(value = "/uss/olp/qrm/detailQustnrRespond.do")
 	@Secured("ROLE_USER")
 	public String detailQustnrRespond(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrRespondManageVO qustnrRespondManageVO,
 			ModelMap model) {
 
@@ -89,7 +89,7 @@ public class QustnrRespondManageController {
 		// 직업코드조회
 		cmmUseService.populateCmmCodeList("COM034", "COM034_occpType");
 
-		return "uss/olp/qrm/QustnrRespondDetail";
+		return "com/uss/olp/qrm/QustnrRespondDetail";
 	}
 
 	/**
@@ -100,7 +100,7 @@ public class QustnrRespondManageController {
 	@RequestMapping(value = "/uss/olp/qrm/registQustnrRespond.do")
 	@Secured("ROLE_USER")
 	public String registQustnrRespond(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrRespondManageVO qustnrRespondManageVO) {
 
 		// 성별코드조회
@@ -108,7 +108,7 @@ public class QustnrRespondManageController {
 		// 직업코드조회
 		cmmUseService.populateCmmCodeList("COM034", "COM034_occpType");
 
-		return "uss/olp/qrm/QustnrRespondRegist";
+		return "com/uss/olp/qrm/QustnrRespondRegist";
 	}
 
 	/**
@@ -119,7 +119,7 @@ public class QustnrRespondManageController {
 	@RequestMapping(value = "/uss/olp/qrm/insertQustnrRespond.do")
 	@Secured("ROLE_USER")
 	public String insertQustnrRespond(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrRespondManageVO qustnrRespondManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -127,7 +127,7 @@ public class QustnrRespondManageController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrRespondManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olp/qrm/QustnrRespondRegist";
+			return "com/uss/olp/qrm/QustnrRespondRegist";
 		}
 		
 		// 로그인 객체 선언
@@ -138,7 +138,7 @@ public class QustnrRespondManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/olp/qrm/listQustnrRespond.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -149,7 +149,7 @@ public class QustnrRespondManageController {
 	@RequestMapping(value = "/uss/olp/qrm/editQustnrRespond.do")
 	@Secured("ROLE_USER")
 	public String editQustnrRespond(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrRespondManageVO qustnrRespondManageVO,
 			ModelMap model) {
 
@@ -160,7 +160,7 @@ public class QustnrRespondManageController {
 		// 직업코드조회
 		cmmUseService.populateCmmCodeList("COM034", "COM034_occpType");
 
-		return "uss/olp/qrm/QustnrRespondEdit";
+		return "com/uss/olp/qrm/QustnrRespondEdit";
 	}
 
 	/**
@@ -171,7 +171,7 @@ public class QustnrRespondManageController {
 	@RequestMapping(value = "/uss/olp/qrm/updateQustnrRespond.do")
 	@Secured("ROLE_USER")
 	public String updateQustnrRespond(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrRespondManageVO qustnrRespondManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -179,7 +179,7 @@ public class QustnrRespondManageController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrRespondManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olp/qrm/QustnrRespondEdit";
+			return "com/uss/olp/qrm/QustnrRespondEdit";
 		}
 
 		// 로그인 객체 선언
@@ -190,7 +190,7 @@ public class QustnrRespondManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/olp/qrm/listQustnrRespond.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -201,7 +201,7 @@ public class QustnrRespondManageController {
 	@RequestMapping(value = "/uss/olp/qrm/deleteQustnrRespond.do")
 	@Secured("ROLE_USER")
 	public String deleteQustnrRespond(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrRespondManageVO qustnrRespondManageVO, 
 			ModelMap model)  {
 
@@ -209,7 +209,7 @@ public class QustnrRespondManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/olp/qrm/listQustnrRespond.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

@@ -66,7 +66,7 @@ public class HttpMntrngController {
 
 		model.addAttribute(paginationInfo);
 
-		return "utl/sys/htm/HttpMntrngList";
+		return "com/utl/sys/htm/HttpMntrngList";
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class HttpMntrngController {
 
 		model.addAttribute(httpMntrngService.selectHttpMntrngDetail(httpMntrngVO));
 
-		return "utl/sys/htm/HttpMntrngDetail";
+		return "com/utl/sys/htm/HttpMntrngDetail";
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class HttpMntrngController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute HttpMntrngVO httpMntrngVO) {
 
-		return "utl/sys/htm/HttpMntrngRegist";
+		return "com/utl/sys/htm/HttpMntrngRegist";
 	}
 
 	/**
@@ -115,7 +115,7 @@ public class HttpMntrngController {
 
 		beanValidator.validate(httpMntrngVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "utl/sys/htm/HttpMntrngRegist";
+			return "com/utl/sys/htm/HttpMntrngRegist";
 		}
 
 		// 로그인 객체 선언
@@ -126,7 +126,7 @@ public class HttpMntrngController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/utl/sys/htm/listHttpMntrng.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -143,7 +143,7 @@ public class HttpMntrngController {
 
 		model.addAttribute(httpMntrngService.selectHttpMntrngDetail(httpMntrngVO));
 
-		return "utl/sys/htm/HttpMntrngEdit";
+		return "com/utl/sys/htm/HttpMntrngEdit";
 	}
 
 	/**
@@ -161,7 +161,7 @@ public class HttpMntrngController {
 
 		beanValidator.validate(httpMntrngVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "utl/sys/htm/HttpMntrngEdit";
+			return "com/utl/sys/htm/HttpMntrngEdit";
 		}
 
 		// 로그인 객체 선언
@@ -172,7 +172,7 @@ public class HttpMntrngController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/utl/sys/htm/listHttpMntrng.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -191,7 +191,7 @@ public class HttpMntrngController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/utl/sys/htm/listHttpMntrng.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -207,7 +207,7 @@ public class HttpMntrngController {
 
 		model.addAttribute("httpSttusCd", HttpMntrngChecker.getPrductStatus(httpMntrngVO.getSiteUrl()));
 
-		return "utl/sys/htm/HttpMntrngRegist";
+		return "com/utl/sys/htm/HttpMntrngRegist";
 	}
 
 	/**
@@ -240,7 +240,7 @@ public class HttpMntrngController {
 
 		model.addAttribute(paginationInfo);
 
-		return "utl/sys/htm/HttpMntrngLogList";
+		return "com/utl/sys/htm/HttpMntrngLogList";
 	}
 
 	// 조회시작시
@@ -264,7 +264,7 @@ public class HttpMntrngController {
 
 		model.addAttribute(httpMntrngService.selectHttpMntrngDetailLog(httpMntrngLogVO));
 
-		return "utl/sys/htm/HttpMntrngLogDetail";
+		return "com/utl/sys/htm/HttpMntrngLogDetail";
 	}
 
 }

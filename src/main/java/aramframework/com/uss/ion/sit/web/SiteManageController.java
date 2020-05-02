@@ -61,7 +61,7 @@ public class SiteManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/ion/sit/SiteInfoList";
+		return "com/uss/ion/sit/SiteInfoList";
 	}
 
 	/**
@@ -71,13 +71,13 @@ public class SiteManageController {
 	 */
 	@RequestMapping("/uss/ion/sit/detailSiteInfo.do")
 	public String detailSiteInfo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SiteManageVO siteManageVO,
 			ModelMap model) {
 
 		model.addAttribute(siteManageService.selectSiteDetail(siteManageVO));
 
-		return "uss/ion/sit/SiteInfoDetail";
+		return "com/uss/ion/sit/SiteInfoDetail";
 	}
 
 	/**
@@ -87,13 +87,13 @@ public class SiteManageController {
 	 */
 	@RequestMapping("/uss/ion/sit/registSiteInfo.do")
 	public String registSiteInfo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SiteManageVO siteManageVO) {
 
 		// 공통코드를 가져오기 위한 Vo
 		cmmUseService.populateCmmCodeList("COM023", "COM023_siteThema");
 
-		return "uss/ion/sit/SiteInfoRegist";
+		return "com/uss/ion/sit/SiteInfoRegist";
 	}
 
 	/**
@@ -103,14 +103,14 @@ public class SiteManageController {
 	 */
 	@RequestMapping("/uss/ion/sit/insertSiteInfo.do")
 	public String insertSiteInfo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SiteManageVO siteManageVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
 
 		beanValidator.validate(siteManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/sit/SiteInfoRegist";
+			return "com/uss/ion/sit/SiteInfoRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -121,7 +121,7 @@ public class SiteManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/ion/sit/listSiteInfo.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -131,7 +131,7 @@ public class SiteManageController {
 	 */
 	@RequestMapping("/uss/ion/sit/editSiteInfo.do")
 	public String editSiteInfo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SiteManageVO siteManageVO,
 			ModelMap model) {
 
@@ -140,7 +140,7 @@ public class SiteManageController {
 		// 공통코드를 가져오기 위한 Vo
 		cmmUseService.populateCmmCodeList("COM023", "COM023_siteThema");
 
-		return "uss/ion/sit/SiteInfoEdit";
+		return "com/uss/ion/sit/SiteInfoEdit";
 	}
 
 	/**
@@ -150,7 +150,7 @@ public class SiteManageController {
 	 */
 	@RequestMapping("/uss/ion/sit/updateSiteInfo.do")
 	public String updateSiteInfo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SiteManageVO siteManageVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
@@ -158,7 +158,7 @@ public class SiteManageController {
 		// Validation
 		beanValidator.validate(siteManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/sit/SiteInfoEdit";
+			return "com/uss/ion/sit/SiteInfoEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -169,7 +169,7 @@ public class SiteManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/ion/sit/listSiteInfo.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -179,7 +179,7 @@ public class SiteManageController {
 	 */
 	@RequestMapping("/uss/ion/sit/deleteSiteInfo.do")
 	public String deleteSiteInfo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SiteManageVO siteManageVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
@@ -188,7 +188,7 @@ public class SiteManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/sit/listSiteInfo.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
  	}
 
 }

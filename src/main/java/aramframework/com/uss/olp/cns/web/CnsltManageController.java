@@ -74,7 +74,7 @@ public class CnsltManageController {
 			model.addAttribute("certificationAt", "Y");
 		}
 
-		return "uss/olp/cns/CnsltList";
+		return "com/uss/olp/cns/CnsltList";
 	}
 
 	/**
@@ -84,13 +84,13 @@ public class CnsltManageController {
 	 */
 	@RequestMapping("/uss/olp/cns/detailCnslt.do")
 	public String detailCnslt(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO,
 			ModelMap model) {
 
 		model.addAttribute(cnsltManageService.selectCnsltListDetail(cnsltManageVO));
 
-		return "uss/olp/cns/CnsltDetail";
+		return "com/uss/olp/cns/CnsltDetail";
 	}
 
 	/**
@@ -100,7 +100,7 @@ public class CnsltManageController {
 	 */
 	@RequestMapping("/uss/olp/cns/updateCnsltInqireCo.do")
 	public String updateCnsltInqireCo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO) {
 
 		cnsltManageService.updateCnsltInqireCo(cnsltManageVO);
@@ -115,10 +115,10 @@ public class CnsltManageController {
 	 */
 	@RequestMapping("/uss/olp/cns/LoginRealnmChoice.do")
 	public String LoginRealnmChoice(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO) {
 
-		return "uss/olp/cns/CnsltLoginRealnmChoice";
+		return "com/uss/olp/cns/CnsltLoginRealnmChoice";
 	}
 
 	/**
@@ -128,7 +128,7 @@ public class CnsltManageController {
 	 */
 	@RequestMapping("/uss/olp/cns/registCnslt.do")
 	public String registCnslt(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO)  {
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -138,7 +138,7 @@ public class CnsltManageController {
 			cnsltManageVO.setEmailAdres(loginVO.getEmail()); // email 주소
 		}
 		
-		return "uss/olp/cns/CnsltRegist";
+		return "com/uss/olp/cns/CnsltRegist";
 	}
 
 	/**
@@ -148,20 +148,20 @@ public class CnsltManageController {
 	 */
 	@RequestMapping("/uss/olp/cns/insertCnslt.do")
 	public String insertCnslt(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO, 
 			BindingResult bindingResult, 
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception {
 
 		beanValidator.validate(cnsltManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olp/cns/CnsltRegist";
+			return "com/uss/olp/cns/CnsltRegist";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
-		cnsltManageVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "CNSLT_"));
+		cnsltManageVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "CNS"));
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -181,7 +181,7 @@ public class CnsltManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/olp/cns/listCnslt.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -191,10 +191,10 @@ public class CnsltManageController {
 	 */
 	@RequestMapping("/uss/olp/cns/CnsltPasswordPopup.do")
 	public String CnsltPasswordConfirmView(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO) { 
 		
-		return "uss/olp/cns/CnsltPasswordPopup";
+		return "com/uss/olp/cns/CnsltPasswordPopup";
 	}
 
 	/**
@@ -204,7 +204,7 @@ public class CnsltManageController {
 	 */
 	@RequestMapping("/uss/olp/cns/CnsltPasswordConfirm.do")
 	public String CnsltPasswordConfirm(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO, 
 			ModelMap model) 
 	throws Exception {
@@ -242,7 +242,7 @@ public class CnsltManageController {
 	 */
 	@RequestMapping("/uss/olp/cns/editCnslt.do")
 	public String editCnslt(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO,
 			ModelMap model) {
 
@@ -255,7 +255,7 @@ public class CnsltManageController {
 		
 		model.addAttribute(cnsltManageVO);
 		
-		return "uss/olp/cns/CnsltEdit";
+		return "com/uss/olp/cns/CnsltEdit";
 	}
 
 	/**
@@ -265,22 +265,22 @@ public class CnsltManageController {
 	 */
 	@RequestMapping("/uss/olp/cns/updateCnslt.do")
 	public String updateCnslt(
-			MultipartHttpServletRequest multiRequest,
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO, 
 			BindingResult bindingResult, 
+			MultipartHttpServletRequest multiRequest,
 			ModelMap model) 
 	throws Exception {
 
 		// Validation
 		beanValidator.validate(cnsltManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olp/cns/CnsltEdit";
+			return "com/uss/olp/cns/CnsltEdit";
 		}
 
 		// 첨부파일 관련 ID 생성 start....
 		String atchFileId = cnsltManageVO.getAtchFileId();
-		cnsltManageVO.setAtchFileId(fileMngUtil.updateMultiFile(multiRequest, "CNSLT_", atchFileId));
+		cnsltManageVO.setAtchFileId(fileMngUtil.updateMultiFile(multiRequest, "CNS", atchFileId));
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -298,7 +298,7 @@ public class CnsltManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/olp/cns/listCnslt.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -308,7 +308,7 @@ public class CnsltManageController {
 	 */
 	@RequestMapping("/uss/olp/cns/CnsltPasswordConfirmDel.do")
 	public String CnsltPasswordConfirmDel(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO, 
 			ModelMap model) 
 	throws Exception {
@@ -344,7 +344,7 @@ public class CnsltManageController {
 	 */
 	@RequestMapping("/uss/olp/cns/deleteCnslt.do")
 	public String deleteCnslt(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO, 
 			ModelMap model) {
 
@@ -352,7 +352,7 @@ public class CnsltManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/olp/cns/listCnslt.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -378,7 +378,7 @@ public class CnsltManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/olp/cns/CnsltAnswerList";
+		return "com/uss/olp/cns/CnsltAnswerList";
 	}
 
 	/**
@@ -389,13 +389,13 @@ public class CnsltManageController {
 	@RequestMapping("/uss/olp/cnm/detailCnsltAnswer.do")
 	@Secured("ROLE_USER")
 	public String detailCnsltAnswer(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO,
 			ModelMap model) {
 
 		model.addAttribute(cnsltManageService.selectCnsltListDetail(cnsltManageVO));
 
-		return "uss/olp/cns/CnsltAnswerDetail";
+		return "com/uss/olp/cns/CnsltAnswerDetail";
 	}
 
 	/**
@@ -406,7 +406,7 @@ public class CnsltManageController {
 	@RequestMapping("/uss/olp/cnm/editCnsltAnswer.do")
 	@Secured("ROLE_USER")
 	public String editCnsltAnswer(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO,
 			ModelMap model) {
 
@@ -415,7 +415,7 @@ public class CnsltManageController {
 		// 공통코드를 가져오기 위한 Vo
 		cmmUseService.populateCmmCodeList("COM028", "COM028_qnaProcessSttus");
 
-		return "uss/olp/cns/CnsltAnswerEdit";
+		return "com/uss/olp/cns/CnsltAnswerEdit";
 	}
 
 	/**
@@ -426,7 +426,7 @@ public class CnsltManageController {
 	@RequestMapping("/uss/olp/cnm/updateCnsltAnswer.do")
 	@Secured("ROLE_USER")
 	public String updateCnsltAnswer(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CnsltManageVO cnsltManageVO, 
 			ModelMap model) {
 
@@ -438,7 +438,7 @@ public class CnsltManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/olp/cnm/listCnsltAnswer.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

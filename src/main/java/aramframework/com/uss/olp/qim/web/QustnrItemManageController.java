@@ -55,7 +55,7 @@ public class QustnrItemManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/olp/qim/QustnrItemListPopup";
+		return "com/uss/olp/qim/QustnrItemListPopup";
 	}
 
 	/**
@@ -87,7 +87,7 @@ public class QustnrItemManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/olp/qim/QustnrItemList";
+		return "com/uss/olp/qim/QustnrItemList";
 	}
 
 	/**
@@ -98,13 +98,13 @@ public class QustnrItemManageController {
 	@RequestMapping(value = "/uss/olp/qim/detailQustnrItem.do")
 	@Secured("ROLE_USER")
 	public String detailQustnrItem(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrItemManageVO qustnrItemManageVO,
 			ModelMap model) {
 
 		model.addAttribute(qustnrItemManageService.selectQustnrItemManageDetail(qustnrItemManageVO));
 
-		return "uss/olp/qim/QustnrItemDetail";
+		return "com/uss/olp/qim/QustnrItemDetail";
 	}
 
 	/**
@@ -115,10 +115,10 @@ public class QustnrItemManageController {
 	@RequestMapping(value = "/uss/olp/qim/registQustnrItem.do")
 	@Secured("ROLE_USER")
 	public String registQustnrItem(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrItemManageVO qustnrItemManageVO) {
 
-		return "uss/olp/qim/QustnrItemRegist";
+		return "com/uss/olp/qim/QustnrItemRegist";
 	}
 
 	/**
@@ -129,7 +129,7 @@ public class QustnrItemManageController {
 	@RequestMapping(value = "/uss/olp/qim/insertQustnrItem.do")
 	@Secured("ROLE_USER")
 	public String insertQustnrItem(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrItemManageVO qustnrItemManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -137,7 +137,7 @@ public class QustnrItemManageController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrItemManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olp/qim/QustnrItemRegist";
+			return "com/uss/olp/qim/QustnrItemRegist";
 		}
 
 		// 로그인 객체 선언
@@ -148,7 +148,7 @@ public class QustnrItemManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/olp/qim/listQustnrItem.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -159,13 +159,13 @@ public class QustnrItemManageController {
 	@RequestMapping(value = "/uss/olp/qim/editQustnrItem.do")
 	@Secured("ROLE_USER")
 	public String editQustnrItem(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrItemManageVO qustnrItemManageVO,
 			ModelMap model) {
 
 		model.addAttribute(qustnrItemManageService.selectQustnrItemManageDetail(qustnrItemManageVO));
 
-		return "uss/olp/qim/QustnrItemEdit";
+		return "com/uss/olp/qim/QustnrItemEdit";
 	}
 
 	/**
@@ -176,7 +176,7 @@ public class QustnrItemManageController {
 	@RequestMapping(value = "/uss/olp/qim/updateQustnrItem.do")
 	@Secured("ROLE_USER")
 	public String updateQustnrItem(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrItemManageVO qustnrItemManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -184,7 +184,7 @@ public class QustnrItemManageController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrItemManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olp/qim/QustnrItemEdit";
+			return "com/uss/olp/qim/QustnrItemEdit";
 		}
 
 		// 로그인 객체 선언
@@ -195,7 +195,7 @@ public class QustnrItemManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/olp/qim/listQustnrItem.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -206,7 +206,7 @@ public class QustnrItemManageController {
 	@RequestMapping(value = "/uss/olp/qim/deleteQustnrItem.do")
 	@Secured("ROLE_USER")
 	public String deleteQustnrItem(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrItemManageVO qustnrItemManageVO, 
 			ModelMap model) {
 
@@ -214,7 +214,7 @@ public class QustnrItemManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/olp/qim/listQustnrItem.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

@@ -47,7 +47,7 @@ public class ComUtlController {
 	 */
 	@RequestMapping("/validator.do")
 	public String validate() {
-		return "cmm/validator";
+		return "com/cmm/validator";
 	}
 
 }

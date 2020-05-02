@@ -17,8 +17,7 @@
 		<![CDATA[
 			SELECT COUNT(KNWLDG_ID) CNT
 			  FROM COMTN_DAM_CALRES
-			 WHERE 1=1
-			   AND PARNTS_KNWLDG_ID = #{parentsKnoId}
+			 WHERE PARNTS_KNWLDG_ID = #{parentsKnoId}
         ]]>
 	</select>
 
@@ -47,7 +46,7 @@
 				 , A.FRST_REGIST_PNTTM	 	AS "frstRegisterPnttm" 
 				 , (SELECT USER_NM 
 				      FROM COMVN_USER_MASTER 
-				     WHERE ESNTL_ID = A.FRST_REGISTER_ID
+				     WHERE USER_ID = A.FRST_REGISTER_ID
 				   )       					AS "frstRegisterNm" 
 			  FROM COMTN_DAM_CALRES A
 			 WHERE 1=1
@@ -216,8 +215,7 @@
 		<![CDATA[
 			SELECT THREAD_NO
 			  FROM COMTN_DAM_CALRES
-			 WHERE 1=1
-			   AND KNWLDG_ID = #{parentsKnoId}			
+			 WHERE KNWLDG_ID = #{parentsKnoId}			
 		]]>
 	</select>
 	
@@ -225,8 +223,7 @@
  		<![CDATA[
 			UPDATE COMTN_DAM_CALRES 
 			   SET THREAD_NO = #{threadNo}
-			 WHERE 1=1
-			   AND KNWLDG_ID = #{knoId}
+			 WHERE KNWLDG_ID = #{knoId}
  		]]>
  	</update>
  	
@@ -234,8 +231,7 @@
  		<![CDATA[
 			UPDATE COMTN_DAM_CALRES 
 			   SET THREAD_NO = THREAD_NO + 1
-			 WHERE 1=1
-			   AND THREAD_GROUP_NO = #{threadGroupNo}
+			 WHERE THREAD_GROUP_NO = #{threadGroupNo}
 			   AND THREAD_NO > #{threadNo}
  		]]>
  	</update>

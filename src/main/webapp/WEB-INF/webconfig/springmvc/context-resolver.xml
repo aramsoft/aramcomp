@@ -47,7 +47,7 @@
 				<value>/WEB-INF/layouts/layouts.xml</value>
 				<!-- Scan views directory for Tiles configurations -->
 				<value>/WEB-INF/jsp/**/views.xml</value>
-			</list> 
+			</list>
 		</property>
 	</bean>
     <!--

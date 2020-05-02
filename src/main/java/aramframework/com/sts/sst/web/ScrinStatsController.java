@@ -46,7 +46,7 @@ public class ScrinStatsController {
 		model.addAttribute("list_menulist", menuManageService.selectMenuList());
 
 		if (statsVO.getFromDate() == null || "".equals(statsVO.getFromDate())) 
-			return "aramframework/com/sts/sst/ScrinStats";
+			return "com/sts/sst/ScrinStats";
 
 		List<StatsVO> scrinStats = scrinStatsService.selectScrinStats(statsVO);
 		// 그래프에 표시될 이미지 길이를 결정한다.
@@ -72,7 +72,7 @@ public class ScrinStatsController {
 
 		model.addAttribute("scrinStats", scrinStats);
 
-		return "aramframework/com/sts/sst/ScrinStats";
+		return "com/sts/sst/ScrinStats";
 	}
 	
 }

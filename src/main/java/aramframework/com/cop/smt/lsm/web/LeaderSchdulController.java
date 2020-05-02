@@ -66,7 +66,7 @@ public class LeaderSchdulController {
 	public String listLeaderSchdul(
 			@ModelAttribute LeaderSchdulVO leaderSchdulVO) {
 		
-		return "cop/smt/lsm/LeaderSchdulList";
+		return "com/cop/smt/lsm/LeaderSchdulList";
 	}
 
 	/**
@@ -120,7 +120,7 @@ public class LeaderSchdulController {
 		 */
 		cmmUseService.populateCmmCodeList("COM057", "COM057_schdulSeLeader");
 
-		return "cop/smt/lsm/LeaderSchdulDailyList";
+		return "com/cop/smt/lsm/LeaderSchdulDailyList";
 	}
 
 	/**
@@ -238,7 +238,7 @@ public class LeaderSchdulController {
 		 */
 		cmmUseService.populateCmmCodeList("COM057", "COM057_schdulSeLeader");
 
-		return "cop/smt/lsm/LeaderSchdulWeekList";
+		return "com/cop/smt/lsm/LeaderSchdulWeekList";
 	}
 
 	/**
@@ -297,7 +297,7 @@ public class LeaderSchdulController {
 		 */
 		cmmUseService.populateCmmCodeList("COM057", "COM057_schdulSeLeader");
 
-		return "cop/smt/lsm/LeaderSchdulMonthList";
+		return "com/cop/smt/lsm/LeaderSchdulMonthList";
 	}
 	
 	/**
@@ -307,18 +307,18 @@ public class LeaderSchdulController {
 	 */
 	@RequestMapping(value = "/cop/smt/lsm/detailLeaderSchdul.do")
 	public String detailLeaderSchdul(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute LeaderSchdulVO leaderSchdulVO,
 			ModelMap model) {
 
-		leaderSchdulService.selectLeaderSchdul(leaderSchdulVO);
+		model.addAttribute(leaderSchdulService.selectLeaderSchdul(leaderSchdulVO));
 
 		// 공통코드 간부일정구분
 		cmmUseService.populateCmmCodeList("COM057", "COM057_schdulSeLeader");
 		// 공통코드 반복구분 조회
 		cmmUseService.populateCmmCodeList("COM058", "COM058_reptitSeLeader");
 
-		return "cop/smt/lsm/LeaderSchdulDetail";
+		return "com/cop/smt/lsm/LeaderSchdulDetail";
 	}
 
 	// 일정시작일자(시)
@@ -342,7 +342,7 @@ public class LeaderSchdulController {
 	@RequestMapping(value = "/cop/smt/lsm/registLeaderSchdul.do")
 	@Secured("ROLE_USER")
 	public String registLeaderSchdul(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute LeaderSchdulVO leaderSchdulVO, 
 			ModelMap model) {
 
@@ -354,7 +354,7 @@ public class LeaderSchdulController {
 		//  공통코드 간부일정구분
 		cmmUseService.populateCmmCodeList("COM057", "COM057_schdulSeLeader");
 
-		return "cop/smt/lsm/LeaderSchdulRegist";
+		return "com/cop/smt/lsm/LeaderSchdulRegist";
 	}
 
 	/**
@@ -365,7 +365,7 @@ public class LeaderSchdulController {
 	@RequestMapping(value = "/cop/smt/lsm/insertLeaderSchdul.do")
 	@Secured("ROLE_USER")
 	public String insertLeaderSchdul(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute LeaderSchdulVO leaderSchdulVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -373,7 +373,7 @@ public class LeaderSchdulController {
 		// 서버 validate 체크
 		beanValidator.validate(leaderSchdulVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/smt/lsm/LeaderSchdulRegist";
+			return "com/cop/smt/lsm/LeaderSchdulRegist";
 		}
 
 		// 로그인 객체 선언
@@ -394,7 +394,7 @@ public class LeaderSchdulController {
 	@RequestMapping(value = "/cop/smt/lsm/editLeaderSchdul.do")
 	@Secured("ROLE_USER")
 	public String editLeaderSchdul(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute LeaderSchdulVO leaderSchdulVO,
 			ModelMap model) {
 
@@ -416,7 +416,7 @@ public class LeaderSchdulController {
 
 		model.addAttribute(leaderSchdulVO);
 		
-		return "cop/smt/lsm/LeaderSchdulEdit";
+		return "com/cop/smt/lsm/LeaderSchdulEdit";
 	}
 
 	/**
@@ -427,7 +427,7 @@ public class LeaderSchdulController {
 	@RequestMapping(value = "/cop/smt/lsm/updateLeaderSchdul.do")
 	@Secured("ROLE_USER")
 	public String updateLeaderSchdul(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute LeaderSchdulVO leaderSchdulVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -435,7 +435,7 @@ public class LeaderSchdulController {
 		// 서버 validate 체크
 		beanValidator.validate(leaderSchdulVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/smt/lsm/LeaderSchdulEdit";
+			return "com/cop/smt/lsm/LeaderSchdulEdit";
 		}
 
 		// 로그인 객체 선언
@@ -456,7 +456,7 @@ public class LeaderSchdulController {
 	@RequestMapping(value = "/cop/smt/lsm/deleteLeaderSchdul.do")
 	@Secured("ROLE_USER")
 	public String deleteLeaderSchdul(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute LeaderSchdulVO leaderSchdulVO, 
 			ModelMap model) {
 
@@ -494,7 +494,7 @@ public class LeaderSchdulController {
 
 		model.addAttribute(paginationInfo);
 
-		return "cop/smt/lsm/LeaderSttusListView";
+		return "com/cop/smt/lsm/LeaderSttusListView";
 	}
 
 	/**
@@ -518,7 +518,7 @@ public class LeaderSchdulController {
 
 		model.addAttribute(paginationInfo);
 
-		return "cop/smt/lsm/LeaderSttusList";
+		return "com/cop/smt/lsm/LeaderSttusList";
 	}
 
 	/**
@@ -529,13 +529,13 @@ public class LeaderSchdulController {
 	@RequestMapping("/cop/smt/lsm/registLeaderSttus.do")
 	@Secured("ROLE_USER")
 	public String registLeaderSttus(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute LeaderSttusVO leaderSttusVO) {
 		
 		// 공통코드 간부상태
 		cmmUseService.populateCmmCodeList("COM061", "COM061_leaderSttus");
 
-		return "cop/smt/lsm/LeaderSttusRegist";
+		return "com/cop/smt/lsm/LeaderSttusRegist";
 	}
 
 	/**
@@ -546,7 +546,7 @@ public class LeaderSchdulController {
 	@RequestMapping("/cop/smt/lsm/insertLeaderSttus.do")
 	@Secured("ROLE_USER")
 	public String insertLeaderSttus(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute LeaderSttusVO leaderSttusVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -554,7 +554,7 @@ public class LeaderSchdulController {
 		// 서버 validate 체크
 		beanValidator.validate(leaderSttusVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/smt/lsm/LeaderSttusRegist";
+			return "com/cop/smt/lsm/LeaderSttusRegist";
 		}
 
 		// 로그인 객체 선언
@@ -564,14 +564,14 @@ public class LeaderSchdulController {
 		// 간부상태 중복체크
 		if (leaderSchdulService.selectLeaderSttusCheck(leaderSttusVO) > 0) {
 			model.addAttribute("leaderIdDuplicated", "true");
-			return "cop/smt/lsm/LeaderSttusRegist";
+			return "com/cop/smt/lsm/LeaderSttusRegist";
 		} 
 		
 		leaderSchdulService.insertLeaderSttus(leaderSttusVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/cop/smt/lsm/listLeaderSttus.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -582,7 +582,7 @@ public class LeaderSchdulController {
 	@RequestMapping("/cop/smt/lsm/editLeaderSttus.do")
 	@Secured("ROLE_USER")
 	public String editLeaderSttus(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute LeaderSttusVO leaderSttusVO,
 			ModelMap model) {
 
@@ -591,7 +591,7 @@ public class LeaderSchdulController {
 		// 공통코드 간부상태
 		cmmUseService.populateCmmCodeList("COM061", "COM061_leaderSttus");
 
-		return "cop/smt/lsm/LeaderSttusEdit";
+		return "com/cop/smt/lsm/LeaderSttusEdit";
 	}
 
 	/**
@@ -602,14 +602,14 @@ public class LeaderSchdulController {
 	@RequestMapping("/cop/smt/lsm/updateLeaderSttus.do")
 	@Secured("ROLE_USER")
 	public String updateLeaderSttus(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute LeaderSttusVO leaderSttusVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(leaderSttusVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/smt/lsm/LeaderSttusEdit";
+			return "com/cop/smt/lsm/LeaderSttusEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -619,7 +619,7 @@ public class LeaderSchdulController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/cop/smt/lsm/listLeaderSttus.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -630,7 +630,7 @@ public class LeaderSchdulController {
 	@RequestMapping("/cop/smt/lsm/deleteLeaderSttus.do")
 	@Secured("ROLE_USER")
 	public String deleteLeaderSttus(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute LeaderSttusVO leaderSttusVO, 
 			ModelMap model) {
 
@@ -638,7 +638,7 @@ public class LeaderSchdulController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/cop/smt/lsm/listLeaderSttus.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

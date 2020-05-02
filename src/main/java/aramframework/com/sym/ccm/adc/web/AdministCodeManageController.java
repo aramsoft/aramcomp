@@ -57,7 +57,7 @@ public class AdministCodeManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/ccm/adc/AdministCodeList";
+		return "com/sym/ccm/adc/AdministCodeList";
 	}
 
 	/**
@@ -67,13 +67,13 @@ public class AdministCodeManageController {
 	 */
 	@RequestMapping(value = "/sym/ccm/adc/detailAdministCode.do")
 	public String detailAdministCode(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AdministCodeVO administCodeVO,
 			ModelMap model) {
 		
 		model.addAttribute(administCodeManageService.selectAdministCodeDetail(administCodeVO));
 
-		return "sym/ccm/adc/AdministCodeDetail";
+		return "com/sym/ccm/adc/AdministCodeDetail";
 	}
 
 	/**
@@ -84,10 +84,10 @@ public class AdministCodeManageController {
 	@RequestMapping(value = "/sym/ccm/adc/registAdministCode.do")
 	@Secured("ROLE_ADMIN")
 	public String registAdministCode(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AdministCodeVO administCodeVO) {
 
-		return "sym/ccm/adc/AdministCodeRegist";
+		return "com/sym/ccm/adc/AdministCodeRegist";
 	}
 
 	/**
@@ -98,20 +98,20 @@ public class AdministCodeManageController {
 	@RequestMapping(value = "/sym/ccm/adc/insertAdministCode.do")
 	@Secured("ROLE_ADMIN")
 	public String insertAdministCode(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AdministCodeVO administCodeVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(administCodeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "sym/ccm/adc/AdministCodeRegist";
+			return "com/sym/ccm/adc/AdministCodeRegist";
 		}
 
 		AdministCodeVO vo = administCodeManageService.selectAdministCodeDetail(administCodeVO);
 		if (vo != null) {
 			model.addAttribute("message", "이미 등록된 행정구역코드가 존재합니다.");
-			return "sym/ccm/adc/AdministCodeRegist";
+			return "com/sym/ccm/adc/AdministCodeRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -121,7 +121,7 @@ public class AdministCodeManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sym/ccm/adc/listAdministCode.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -132,13 +132,13 @@ public class AdministCodeManageController {
 	@RequestMapping(value = "/sym/ccm/adc/editAdministCode.do")
 	@Secured("ROLE_ADMIN")
 	public String editAdministCode(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AdministCodeVO administCodeVO,
 			ModelMap model) {
 		
 		model.addAttribute(administCodeManageService.selectAdministCodeDetail(administCodeVO));
 
-		return "sym/ccm/adc/AdministCodeEdit";
+		return "com/sym/ccm/adc/AdministCodeEdit";
 	}
 
 	/**
@@ -149,14 +149,14 @@ public class AdministCodeManageController {
 	@RequestMapping(value = "/sym/ccm/adc/updateAdministCode.do")
 	@Secured("ROLE_ADMIN")
 	public String updateAdministCode(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AdministCodeVO administCodeVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(administCodeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "sym/ccm/adc/AdministCodeEdit";
+			return "com/sym/ccm/adc/AdministCodeEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -166,7 +166,7 @@ public class AdministCodeManageController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/sym/ccm/adc/listAdministCode.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -177,7 +177,7 @@ public class AdministCodeManageController {
 	@RequestMapping(value = "/sym/ccm/adc/deleteAdministCode.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteAdministCode(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AdministCodeVO administCodeVO, 
 			ModelMap model) {
 
@@ -185,7 +185,7 @@ public class AdministCodeManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sym/ccm/adc/listAdministCode.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -209,7 +209,7 @@ public class AdministCodeManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/ccm/adc/AdministCodePopup";
+		return "com/sym/ccm/adc/AdministCodePopup";
 	}
 
 }

@@ -73,7 +73,7 @@ public class TroblReqstController {
 		cmmUseService.populateCmmCodeList("COM065", "COM065_troblKnd");
 		cmmUseService.populateCmmCodeList("COM068", "COM068_processSttus");
 
-		return "sym/tbm/tbr/TroblReqstList";
+		return "com/sym/tbm/tbr/TroblReqstList";
 	}
 
 	/**
@@ -84,13 +84,13 @@ public class TroblReqstController {
 	@RequestMapping(value = "/sym/tbm/tbr/detailTroblReqst.do")
 	@Secured("ROLE_USER")
 	public String detailTroblReqst(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute TroblReqstVO troblReqstVO,
 			ModelMap model) {
 
 		model.addAttribute(troblReqstService.selectTroblReqst(troblReqstVO));
 		
-		return "sym/tbm/tbr/TroblReqstDetail";
+		return "com/sym/tbm/tbr/TroblReqstDetail";
 	}
 
 	/**
@@ -101,12 +101,12 @@ public class TroblReqstController {
 	@RequestMapping(value = "/sym/tbm/tbr/registTroblReqst.do")
 	@Secured("ROLE_USER")
 	public String registTroblReqst(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute TroblReqstVO troblReqstVO) {
 
 		cmmUseService.populateCmmCodeList("COM065", "COM065_troblKnd");
 
-		return "sym/tbm/tbr/TroblReqstRegist";
+		return "com/sym/tbm/tbr/TroblReqstRegist";
 	}
 
 	/**
@@ -117,14 +117,14 @@ public class TroblReqstController {
 	@RequestMapping(value = "/sym/tbm/tbr/insertTroblReqst.do")
 	@Secured("ROLE_USER")
 	public String insertTroblReqst(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute TroblReqstVO troblReqstVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(troblReqstVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "sym/tbm/tbr/TroblReqstRegist";
+			return "com/sym/tbm/tbr/TroblReqstRegist";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -137,7 +137,7 @@ public class TroblReqstController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sym/tbm/tbr/listTroblReqst.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -148,7 +148,7 @@ public class TroblReqstController {
 	@RequestMapping(value = "/sym/tbm/tbr/editTroblReqst.do")
 	@Secured("ROLE_USER")
 	public String editTroblReqst(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute TroblReqstVO troblReqstVO,
 			ModelMap model) {
 
@@ -156,7 +156,7 @@ public class TroblReqstController {
 		
 		cmmUseService.populateCmmCodeList("COM065", "COM065_troblKnd");
 
-		return "sym/tbm/tbr/TroblReqstEdit";
+		return "com/sym/tbm/tbr/TroblReqstEdit";
 	}
 
 	/**
@@ -167,14 +167,14 @@ public class TroblReqstController {
 	@RequestMapping(value = "/sym/tbm/tbr/updateTroblReqst.do")
 	@Secured("ROLE_USER")
 	public String updateTroblReqst(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute TroblReqstVO troblReqstVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(troblReqstVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "sym/tbm/tbr/TroblReqstEdit";
+			return "com/sym/tbm/tbr/TroblReqstEdit";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -186,7 +186,7 @@ public class TroblReqstController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/sym/tbm/tbr/listTroblReqst.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -197,7 +197,7 @@ public class TroblReqstController {
 	@RequestMapping(value = "/sym/tbm/tbr/deleteTroblReqst.do")
 	@Secured("ROLE_USER")
 	public String deleteTroblReqst(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute TroblReqstVO troblReqstVO, 
 			ModelMap model) {
 
@@ -205,7 +205,7 @@ public class TroblReqstController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sym/tbm/tbr/listTroblReqst.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -216,7 +216,7 @@ public class TroblReqstController {
 	@RequestMapping(value = "/sym/tbm/tbr/requstTroblReqst.do")
 	@Secured("ROLE_USER")
 	public String requstTroblReqst(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute TroblReqstVO troblReqstVO, 
 			ModelMap model) {
 
@@ -228,7 +228,7 @@ public class TroblReqstController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/sym/tbm/tbr/listTroblReqst.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -239,7 +239,7 @@ public class TroblReqstController {
 	@RequestMapping(value = "/sym/tbm/tbr/cancelTroblReqst.do")
 	@Secured("ROLE_USER")
 	public String cancelTroblReqst(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute TroblReqstVO troblReqstVO, 
 			ModelMap model) {
 
@@ -251,7 +251,7 @@ public class TroblReqstController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/sym/tbm/tbr/listTroblReqst.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

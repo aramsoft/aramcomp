@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="com/uss/ion/uas/UserAbsnceList" extends="default">
+    <put-attribute name="title" value="사용자부재 목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/ion/uas/UserAbsnceList.jsp" />
+  </definition>
+  
+  <definition name="com/uss/ion/uas/UserAbsnceRegist" extends="default">
+    <put-attribute name="title" value="사용자부재 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/ion/uas/UserAbsnceRegist.jsp" />
+  </definition>
+  
+  <definition name="com/uss/ion/uas/UserAbsnceEdit" extends="default">
+    <put-attribute name="title" value="사용자부재 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/ion/uas/UserAbsnceEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

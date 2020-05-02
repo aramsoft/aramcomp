@@ -56,7 +56,7 @@ public class RecomendSiteController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/ion/rec/RecomendSiteList";
+		return "com/uss/ion/rec/RecomendSiteList";
 	}
 
 	/**
@@ -66,13 +66,13 @@ public class RecomendSiteController {
 	 */
 	@RequestMapping("/uss/ion/rec/detailRecomendSite.do")
 	public String detailRecomendSite(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RecomendSiteVO recomendSiteVO,
 			ModelMap model) {
 
 		model.addAttribute(recomendSiteService.selectRecomendSiteDetail(recomendSiteVO));
 
-		return "uss/ion/rec/RecomendSiteDetail";
+		return "com/uss/ion/rec/RecomendSiteDetail";
 	}
 
 	/**
@@ -83,10 +83,10 @@ public class RecomendSiteController {
 	@RequestMapping("/uss/ion/rec/registRecomendSite.do")
 	@Secured("ROLE_USER")
 	public String registRecomendSite(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RecomendSiteVO recomendSiteVO) {
 
-		return "uss/ion/rec/RecomendSiteRegist";
+		return "com/uss/ion/rec/RecomendSiteRegist";
 	}
 
 	/**
@@ -97,14 +97,14 @@ public class RecomendSiteController {
 	@RequestMapping("/uss/ion/rec/insertRecomendSite.do")
 	@Secured("ROLE_USER")
 	public String insertRecomendSite(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RecomendSiteVO recomendSiteVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
 
 		beanValidator.validate(recomendSiteVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/rec/RecomendSiteRegist";
+			return "com/uss/ion/rec/RecomendSiteRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -115,7 +115,7 @@ public class RecomendSiteController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/ion/rec/listRecomendSite.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -126,13 +126,13 @@ public class RecomendSiteController {
 	@RequestMapping("/uss/ion/rec/editRecomendSite.do")
 	@Secured("ROLE_USER")
 	public String editRecomendSite(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RecomendSiteVO recomendSiteVO,
 			ModelMap model) {
 
 		model.addAttribute(recomendSiteService.selectRecomendSiteDetail(recomendSiteVO));
 
-		return "uss/ion/rec/RecomendSiteEdit";
+		return "com/uss/ion/rec/RecomendSiteEdit";
 	}
 
 	/**
@@ -143,7 +143,7 @@ public class RecomendSiteController {
 	@RequestMapping("/uss/ion/rec/updateRecomendSite.do")
 	@Secured("ROLE_USER")
 	public String updateRecomendSite(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RecomendSiteVO recomendSiteVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
@@ -151,7 +151,7 @@ public class RecomendSiteController {
 		// Validation
 		beanValidator.validate(recomendSiteVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/rec/RecomendSiteEdit";
+			return "com/uss/ion/rec/RecomendSiteEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -162,7 +162,7 @@ public class RecomendSiteController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/ion/rec/listRecomendSite.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -173,7 +173,7 @@ public class RecomendSiteController {
 	@RequestMapping("/uss/ion/rec/deleteRecomendSite.do")
 	@Secured("ROLE_USER")
 	public String deleteRecomendSite(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RecomendSiteVO recomendSiteVO, 
 			ModelMap model) {
 
@@ -181,7 +181,7 @@ public class RecomendSiteController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/rec/listRecomendSite.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

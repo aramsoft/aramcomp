@@ -50,7 +50,7 @@ public class BatchResultController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/bat/BatchResultList";
+		return "com/sym/bat/BatchResultList";
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class BatchResultController {
 		
 		model.addAttribute(batchResultService.selectBatchResult(batchResultVO));
 
-		return "sym/bat/BatchResultDetail";
+		return "com/sym/bat/BatchResultDetail";
 	}
 
 	/**
@@ -85,7 +85,7 @@ public class BatchResultController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sym/bat/listBatchResult.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

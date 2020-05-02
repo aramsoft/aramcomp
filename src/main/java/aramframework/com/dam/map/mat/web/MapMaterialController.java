@@ -65,7 +65,7 @@ public class MapMaterialController {
 
 		model.addAttribute(paginationInfo);
 
-		return "dam/map/mat/MapMaterialList";
+		return "com/dam/map/mat/MapMaterialList";
 	}
 
 	/**
@@ -75,13 +75,13 @@ public class MapMaterialController {
 	 */
 	@RequestMapping(value = "/dam/map/mat/detailMapMaterial.do")
 	public String detailMapMaterial(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MapMaterialVO mapMaterialVO,
 			ModelMap model) {
 
 		model.addAttribute(mapMaterialService.selectMapMaterial(mapMaterialVO));
 
-		return "dam/map/mat/MapMaterialDetail";
+		return "com/dam/map/mat/MapMaterialDetail";
 	}
 
 	/**
@@ -91,13 +91,13 @@ public class MapMaterialController {
 	 */
 	@RequestMapping(value = "/dam/map/mat/registMapMaterial.do")
 	public String registMapMaterial(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MapMaterialVO mapMaterialVO, 
 			ModelMap model) {
 
 		populateMapTeam(model);
 		
-		return "dam/map/mat/MapMaterialRegist";
+		return "com/dam/map/mat/MapMaterialRegist";
 	}
 
 	/**
@@ -107,17 +107,15 @@ public class MapMaterialController {
 	 */
 	@RequestMapping(value = "/dam/map/mat/insertMapMaterial.do")
 	public String insertMapMaterial(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MapMaterialVO mapMaterialVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(mapMaterialVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-
 			populateMapTeam(model);
-			
-			return "dam/map/mat/MapMaterialRegist";
+			return "com/dam/map/mat/MapMaterialRegist";
 		}
 
 		// 로그인 객체 선언
@@ -128,7 +126,7 @@ public class MapMaterialController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/dam/map/mat/listMapMaterial.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -150,13 +148,13 @@ public class MapMaterialController {
 	 */
 	@RequestMapping(value = "/dam/map/mat/editMapMaterial.do")
 	public String editMapMaterial(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MapMaterialVO mapMaterialVO,
 			ModelMap model) {
 
 		model.addAttribute(mapMaterialService.selectMapMaterial(mapMaterialVO));
 
-		return "dam/map/mat/MapMaterialEdit";
+		return "com/dam/map/mat/MapMaterialEdit";
 	}
 
 	/**
@@ -166,14 +164,14 @@ public class MapMaterialController {
 	 */
 	@RequestMapping(value = "/dam/map/mat/updateMapMaterial.do")
 	public String updateMapMaterial(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MapMaterialVO mapMaterialVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(mapMaterialVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "dam/map/mat/MapMaterialEdit";
+			return "com/dam/map/mat/MapMaterialEdit";
 		}
 
 		// 로그인 객체 선언
@@ -184,7 +182,7 @@ public class MapMaterialController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/dam/map/mat/listMapMaterial.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -194,7 +192,7 @@ public class MapMaterialController {
 	 */
 	@RequestMapping(value = "/dam/map/mat/deleteMapMaterial.do")
 	public String deleteMapMaterial(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MapMaterialVO mapMaterialVO, 
 			ModelMap model) {
 
@@ -202,7 +200,7 @@ public class MapMaterialController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/dam/map/mat/listMapMaterial.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

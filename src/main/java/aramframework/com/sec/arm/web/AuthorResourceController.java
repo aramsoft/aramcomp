@@ -50,7 +50,7 @@ public class AuthorResourceController {
 		
 		model.addAttribute(paginationInfo);
 
-		return "sec/arm/AuthorResource";
+		return "com/sec/arm/AuthorResource";
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class AuthorResourceController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sec/arm/listAuthorResource.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 	
 }

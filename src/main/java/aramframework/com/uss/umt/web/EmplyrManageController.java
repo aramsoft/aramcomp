@@ -70,7 +70,7 @@ public class EmplyrManageController {
 		// 사용자상태코드를 코드정보로부터 조회
 		cmmUseService.populateCmmCodeList("COM013", "COM013_mberSttus");
 
-		return "uss/umt/EmplyrList";
+		return "com/uss/umt/EmplyrList";
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class EmplyrManageController {
 	public String checkIdDplctView(ModelMap model) {
 		model.addAttribute("checkId", "");
 		model.addAttribute("usedCnt", "-1");
-		return "uss/umt/IdDplctCheck";
+		return "com/uss/umt/IdDplctCheck";
 	}
 
 	/**
@@ -97,14 +97,14 @@ public class EmplyrManageController {
 		if (checkId == null || checkId.equals("")) {
 			model.addAttribute("checkId", "");
 			model.addAttribute("usedCnt", "-1");
-			return "uss/umt/IdDplctCheck";
+			return "com/uss/umt/IdDplctCheck";
 		}
 
 		int usedCnt = emplyrManageService.checkIdDplct(checkId);
 		model.addAttribute("usedCnt", usedCnt);
 		model.addAttribute("checkId", checkId);
 
-		return "uss/umt/IdDplctCheck";
+		return "com/uss/umt/IdDplctCheck";
 	}
 
 	/**
@@ -121,7 +121,7 @@ public class EmplyrManageController {
 
 		fill_common_code(model);
 		
-		return "uss/umt/EmplyrRegist";
+		return "com/uss/umt/EmplyrRegist";
 	}
 
 	/**
@@ -145,7 +145,7 @@ public class EmplyrManageController {
 			vo.setTableNm("COMTN_ORGNZT_INFO");
 			model.addAttribute("orgnztId_result", cmmUseService.selectOgrnztIdList(vo));
 
-			return "uss/umt/EmplyrRegist";
+			return "com/uss/umt/EmplyrRegist";
 		} 
 		
 		if (emplyrManageVO.getOrgnztId().equals("")) {
@@ -155,7 +155,7 @@ public class EmplyrManageController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/umt/listEmplyr.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -177,7 +177,7 @@ public class EmplyrManageController {
 		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
 			model.addAttribute("isAdmin", "true");
 		}
-		return "uss/umt/EmplyrEdit";
+		return "com/uss/umt/EmplyrEdit";
 	}
 
 	/**
@@ -200,7 +200,7 @@ public class EmplyrManageController {
 			vo.setTableNm("COMTN_ORGNZT_INFO");
 			model.addAttribute("orgnztId_result", cmmUseService.selectOgrnztIdList(vo));
 
-			return "uss/umt/EmplyrEdit";
+			return "com/uss/umt/EmplyrEdit";
 		} 
 
 		// 업무사용자 수정시 히스토리 정보를 등록한다.
@@ -215,7 +215,7 @@ public class EmplyrManageController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/umt/editEmplyr.do?emplyrId="+emplyrManageVO.getEmplyrId());
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	private void updateEmplyrSession(EmplyrManageVO emplyrManageVO) {
@@ -240,7 +240,7 @@ public class EmplyrManageController {
 		if( UserDetailsHelper.getAuthorities().contains("ROLE_ADMIN") ) {
 			model.addAttribute("isAdmin", "true");
 		}
-		return "uss/umt/EmplyrPassword";
+		return "com/uss/umt/EmplyrPassword";
 	}
 
 	/**
@@ -287,7 +287,7 @@ public class EmplyrManageController {
 		
 		model.addAttribute("message", MessageHelper.getMessage(message));
 		model.addAttribute("redirectURL", "/uss/umt/editEmplyr.do?emplyrId="+emplyrManageVO.getEmplyrId());
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -307,7 +307,7 @@ public class EmplyrManageController {
 	
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/umt/listEmplyr.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -333,7 +333,7 @@ public class EmplyrManageController {
 	
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", returnUrl);
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 	
 	private void fill_common_code(ModelMap model)  {

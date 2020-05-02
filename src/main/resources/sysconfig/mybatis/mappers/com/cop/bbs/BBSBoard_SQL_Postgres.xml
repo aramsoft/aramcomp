@@ -8,7 +8,7 @@
         /* 구현 Sql */
 		<![CDATA[
 			SELECT a.BBS_ID					AS "bbsId" 
-				 , a.NTT_ID					AS "nttId"  
+				 , a.NTT_ID					AS "nttId" 
 			     , a.NTT_SJ					AS "nttSj" 
 			     , a.FRST_REGISTER_ID		AS "frstRegisterId" 
 			     , COALESCE(b.USER_NM, a.NTCR_NM) 	AS "frstRegisterNm"

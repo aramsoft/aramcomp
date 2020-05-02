@@ -58,7 +58,7 @@ public class IndvdlPgeController {
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		if (configurationProcessedYN(loginVO.getUserId()) == 0) {
 			model.addAttribute("message", "마이페이지 설정 후 마이페이지를 확인 가능합니다.");
-			return "uss/mpe/IndvdlpgeConfRegist";
+			return "com/uss/mpe/IndvdlpgeConfRegist";
 		} 
 			
 		indvdlPgeConfVO.setUserId(loginVO.getUserId());
@@ -88,7 +88,7 @@ public class IndvdlPgeController {
 		int typeByCnt = (totDetailCnt % sideCnt) == 0 ? totDetailCnt / sideCnt : totDetailCnt / sideCnt + 1;
 		indvdlPgeConfVO.setSortLineCnt(typeByCnt);
 
-		return "uss/mpe/IndvdlpgeDetail";
+		return "com/uss/mpe/IndvdlpgeDetail";
 	}
 
 	/**
@@ -110,7 +110,7 @@ public class IndvdlPgeController {
 		// 기존 생성한 정보가 있을 경우 화면에 보여준다.
 		indvdlPgeService.selectIndvdlpgeConfDetail(indvdlPgeConfVO);
 
-		return "uss/mpe/IndvdlpgeConfRegist";
+		return "com/uss/mpe/IndvdlpgeConfRegist";
 	}
 
 	/**
@@ -128,7 +128,7 @@ public class IndvdlPgeController {
 
 		beanValidator.validate(indvdlPgeConfVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/mpe/IndvdlpgeConfRegist";
+			return "com/uss/mpe/IndvdlpgeConfRegist";
 		} 
 		
 		// ID를 받아서 VO에 설정한다.
@@ -145,7 +145,7 @@ public class IndvdlPgeController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/mpe/detailIndvdlpge.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -186,7 +186,7 @@ public class IndvdlPgeController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/mpe/IndvdlpgeList";
+		return "com/uss/mpe/IndvdlpgeList";
 	}
 
 	/**
@@ -205,7 +205,7 @@ public class IndvdlPgeController {
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		if (this.configurationProcessedYN(loginVO.getUserId()) == 0) {
 			model.addAttribute("message", "마이페이지 환경 설정부터 하셔야 합니다.");
-			return "uss/mpe/IndvdlpgeConfRegist";
+			return "com/uss/mpe/IndvdlpgeConfRegist";
 		} 
 		
 		indvdlPgeCntntsVO.setUserId(loginVO.getUserId());
@@ -215,7 +215,7 @@ public class IndvdlPgeController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/mpe/listIndvdlpgeCntntsMine.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -226,6 +226,7 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/deleteIndvdlpgeCntntsMine.do")
 	@Secured("ROLE_USER")
 	public String deleteIndvdlpgeCntntsMine(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO, 
 			ModelMap model) {
 
@@ -238,7 +239,7 @@ public class IndvdlPgeController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/mpe/detailIndvdlpge.do?userId="+indvdlPgeCntntsVO.getUserId());
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -265,7 +266,7 @@ public class IndvdlPgeController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/mpe/IndvdlpgeCntntsList";
+		return "com/uss/mpe/IndvdlpgeCntntsList";
 	}
 
 	/**
@@ -282,7 +283,7 @@ public class IndvdlPgeController {
 
 		model.addAttribute(indvdlPgeService.selectIndvdlpgeCntnts(indvdlPgeCntntsVO));
 
-		return "uss/mpe/IndvdlpgeCntntsDetail";
+		return "com/uss/mpe/IndvdlpgeCntntsDetail";
 	}
 
 	/**
@@ -297,7 +298,7 @@ public class IndvdlPgeController {
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO, 
 			ModelMap model) {
 
-		return "uss/mpe/IndvdlpgeCntntsRegist";
+		return "com/uss/mpe/IndvdlpgeCntntsRegist";
 	}
 
 	/**
@@ -316,7 +317,7 @@ public class IndvdlPgeController {
 		// validation 수행
 		beanValidator.validate(indvdlPgeCntntsVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/mpe/IndvdlpgeCntntsRegist";
+			return "com/uss/mpe/IndvdlpgeCntntsRegist";
 		} 
 		
 		// 디비 작업 성공여부에 따라 메세지 설정 및 이동 페이지를 결정한다.
@@ -324,7 +325,7 @@ public class IndvdlPgeController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/mpe/listIndvdlpgeCntnts.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -341,7 +342,7 @@ public class IndvdlPgeController {
 
 		model.addAttribute(indvdlPgeService.selectIndvdlpgeCntnts(indvdlPgeCntntsVO));
 
-		return "uss/mpe/IndvdlpgeCntntsEdit";
+		return "com/uss/mpe/IndvdlpgeCntntsEdit";
 	}
 
 	/**
@@ -359,7 +360,7 @@ public class IndvdlPgeController {
 
 		beanValidator.validate(indvdlPgeCntntsVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/mpe/IndvdlpgeCntntsEdit";
+			return "com/uss/mpe/IndvdlpgeCntntsEdit";
 		} 
 		
 		// 디비 작업 성공여부에 따라 메세지 설정 및 이동 페이지를 결정한다.
@@ -367,7 +368,7 @@ public class IndvdlPgeController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/mpe/listIndvdlpgeCntnts.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -378,6 +379,7 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/deleteIndvdlpgeCntnts.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteIndvdlpgeCntnts(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO, 
 			ModelMap model) {
 
@@ -386,7 +388,7 @@ public class IndvdlPgeController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/mpe/listIndvdlpgeCntnts.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -397,6 +399,7 @@ public class IndvdlPgeController {
 	@RequestMapping(value = "/uss/mpe/deleteIndvdlpgeCntntsDB.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteIndvdlpgeCntntsDB(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute IndvdlPgeCntntsVO indvdlPgeCntntsVO, 
 			ModelMap model) {
 
@@ -405,7 +408,7 @@ public class IndvdlPgeController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/mpe/listIndvdlpgeCntnts.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -419,7 +422,7 @@ public class IndvdlPgeController {
 			ModelMap model) {
 		
 		model.addAttribute("linkto", indvdlPgeCntntsVO.getCntcUrl());
-		return "uss/mpe/IndvdlpgeTmp";
+		return "com/uss/mpe/IndvdlpgeTmp";
 	}
 
 }

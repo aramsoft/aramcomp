@@ -65,7 +65,7 @@ public class NtwrkSvcMntrngController {
 
 		model.addAttribute(paginationInfo);
 
-		return "utl/sys/nsm/NtwrkSvcMntrngList";
+		return "com/utl/sys/nsm/NtwrkSvcMntrngList";
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class NtwrkSvcMntrngController {
 		
 		model.addAttribute(ntwrkSvcMntrngVO);
 		
-		return "utl/sys/nsm/NtwrkSvcMntrngDetail";
+		return "com/utl/sys/nsm/NtwrkSvcMntrngDetail";
 	}
 
 	/**
@@ -111,7 +111,7 @@ public class NtwrkSvcMntrngController {
 			@ModelAttribute SearchVO searchVO,
 			@ModelAttribute NtwrkSvcMntrngVO ntwrkSvcMntrngVO) {
 
-		return "utl/sys/nsm/NtwrkSvcMntrngRegist";
+		return "com/utl/sys/nsm/NtwrkSvcMntrngRegist";
 	}
 
 	/**
@@ -130,7 +130,7 @@ public class NtwrkSvcMntrngController {
 		// 서버 validate 체크
 		beanValidator.validate(ntwrkSvcMntrngVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "utl/sys/nsm/NtwrkSvcMntrngRegist";
+			return "com/utl/sys/nsm/NtwrkSvcMntrngRegist";
 		}
 
 		// 시스템 IP 설정
@@ -157,7 +157,7 @@ public class NtwrkSvcMntrngController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/utl/sys/nsm/listNtwrkSvcMntrng.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -189,7 +189,7 @@ public class NtwrkSvcMntrngController {
 		
 		model.addAttribute(ntwrkSvcMntrngVO);
 		
-		return "utl/sys/nsm/NtwrkSvcMntrngEdit";
+		return "com/utl/sys/nsm/NtwrkSvcMntrngEdit";
 	}
 
 	/**
@@ -207,7 +207,7 @@ public class NtwrkSvcMntrngController {
 
 		beanValidator.validate(ntwrkSvcMntrngVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "utl/sys/nsm/NtwrkSvcMntrngEdit";
+			return "com/utl/sys/nsm/NtwrkSvcMntrngEdit";
 		}
 
 		// 시스템 IP 설정
@@ -228,7 +228,7 @@ public class NtwrkSvcMntrngController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/utl/sys/nsm/listNtwrkSvcMntrng.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -247,7 +247,7 @@ public class NtwrkSvcMntrngController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/utl/sys/nsm/listNtwrkSvcMntrng.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -293,7 +293,7 @@ public class NtwrkSvcMntrngController {
 
 		model.addAttribute(paginationInfo);
 
-		return "utl/sys/nsm/NtwrkSvcMntrngLogList";
+		return "com/utl/sys/nsm/NtwrkSvcMntrngLogList";
 	}
 
 	// 조회시작시
@@ -325,7 +325,7 @@ public class NtwrkSvcMntrngController {
 		
 		model.addAttribute(ntwrkSvcMntrngLogVO);
 		
-		return "utl/sys/nsm/NtwrkSvcMntrngLogDetail";
+		return "com/utl/sys/nsm/NtwrkSvcMntrngLogDetail";
 	}
 
 }

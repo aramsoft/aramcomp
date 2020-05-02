@@ -87,7 +87,7 @@ public class DtaUseStatsContoller {
 			dtaUseStatsVO.setPmToDate(DateUtil.getToday());// 2011.09.19
 		}
 		
-		return "sts/dst/DtaUseStatsList";
+		return "com/sts/dst/DtaUseStatsList";
 	}
 
 	/**
@@ -98,13 +98,13 @@ public class DtaUseStatsContoller {
 	@RequestMapping("/sts/dst/detailDtaUseStats.do")
 	@Secured("ROLE_ADMIN")
 	public String detailDtaUseStats(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute DtaUseStatsVO dtaUseStatsVO, 
 			ModelMap model)  {
 
 		model.addAttribute("dtaUseStatsList", dtaUseStatsService.selectDtaUseStats(dtaUseStatsVO));
 
-		return "sts/dst/DtaUseStatsDetail";
+		return "com/sts/dst/DtaUseStatsDetail";
 	}
 
 }

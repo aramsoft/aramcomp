@@ -67,7 +67,7 @@ public class AuthorController {
         String authorResourceReload = AramProperties.getProperty("Globals.authorResourceReload");       
 		model.addAttribute("authorResourceReload", authorResourceReload);
 		
-		return "sec/arm/AuthorList";
+		return "com/sec/arm/AuthorList";
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class AuthorController {
 			@ModelAttribute AuthorVO authorVO, 
 			ModelMap model) {
 		
-		return "sec/arm/AuthorRegist";
+		return "com/sec/arm/AuthorRegist";
 	}
 
 	/**
@@ -100,14 +100,14 @@ public class AuthorController {
 
 		beanValidator.validate(authorVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "sec/arm/AuthorRegist";
+			return "com/sec/arm/AuthorRegist";
 		} 
 		
 		authorService.insertAuthor(authorVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sec/arm/listAuthor.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -124,7 +124,7 @@ public class AuthorController {
 
 		model.addAttribute(authorService.selectAuthor(authorVO));
 		
-		return "sec/arm/AuthorEdit";
+		return "com/sec/arm/AuthorEdit";
 	}
 
 	/**
@@ -142,14 +142,14 @@ public class AuthorController {
 
 		beanValidator.validate(authorVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "sec/arm/AuthorEdit";
+			return "com/sec/arm/AuthorEdit";
 		} 
 		
 		authorService.updateAuthor(authorVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/sec/arm/listAuthor.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -168,7 +168,7 @@ public class AuthorController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sec/arm/listAuthor.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -192,7 +192,7 @@ public class AuthorController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sec/arm/listAuthor.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -218,7 +218,7 @@ public class AuthorController {
         }
 
 		model.addAttribute("redirectURL", "/sec/arm/listAuthor.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
  	}
 
 	/**
@@ -229,7 +229,7 @@ public class AuthorController {
 	public String accessDenied() {
 //		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 //		LOG.error("Access Denied !!! " + loginVO.getUserId() + "@" + loginVO.getIp());
-		return "sec/accessDenied";
+		return "com/sec/accessDenied";
 	}
 	
 }

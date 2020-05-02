@@ -188,6 +188,6 @@
 <!-- 
  		<package name="aramframework"/>
 -->		
-    </typeAliases> 
+    </typeAliases>
     
 </configuration>

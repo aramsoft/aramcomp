@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="com/uss/ion/ecc/EventCmpgnList" extends="default">
+    <put-attribute name="title" value="행사/이벤트/캠페인 목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/ion/ecc/EventCmpgnList.jsp" />
+  </definition>
+  
+  <definition name="com/uss/ion/ecc/EventCmpgnDetail" extends="default">
+    <put-attribute name="title" value="행사/이벤트/캠페인 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/ion/ecc/EventCmpgnDetail.jsp" />
+  </definition>
+  
+  <definition name="com/uss/ion/ecc/EventCmpgnRegist" extends="default">
+    <put-attribute name="title" value="행사/이벤트/캠페인 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/ion/ecc/EventCmpgnRegist.jsp" />
+  </definition>
+  
+  <definition name="com/uss/ion/ecc/EventCmpgnEdit" extends="default">
+    <put-attribute name="title" value="행사/이벤트/캠페인 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/ion/ecc/EventCmpgnEdit.jsp" />
+  </definition>
+
+  <definition name="com/uss/ion/ecc/TnextrlHrInfoList" extends="default">
+    <put-attribute name="title" value="외부인사정보 목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/ion/ecc/TnextrlHrInfoList.jsp" />
+  </definition>
+  
+  <definition name="com/uss/ion/ecc/TnextrlHrInfoDetail" extends="default">
+    <put-attribute name="title" value="외부인사정보 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/ion/ecc/TnextrlHrInfoDetail.jsp" />
+  </definition>
+  
+  <definition name="com/uss/ion/ecc/TnextrlHrInfoRegist" extends="default">
+    <put-attribute name="title" value="외부인사정보 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/ion/ecc/TnextrlHrInfoRegist.jsp" />
+  </definition>
+  
+  <definition name="com/uss/ion/ecc/TnextrlHrInfoEdit" extends="default">
+    <put-attribute name="title" value="외부인사정보 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/ion/ecc/TnextrlHrInfoEdit.jsp" />
+  </definition>
+  
+</tiles-definitions>

@@ -65,7 +65,7 @@ public class MenuCreateController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/mnu/mcm/MenuCreateList";
+		return "com/sym/mnu/mcm/MenuCreateList";
 	}
 
 	/* 메뉴생성 세부조회 */
@@ -83,7 +83,7 @@ public class MenuCreateController {
 		
 		model.addAttribute("list_menulist", menuCreateService.selectMenuCreateDetailList(menuCreateVO));
 
-		return "sym/mnu/mcm/MenuCreateDetail";
+		return "com/sym/mnu/mcm/MenuCreateDetail";
 	}
 
 	/**
@@ -111,7 +111,7 @@ public class MenuCreateController {
 		}
 
 		model.addAttribute("redirectURL", "/sym/mnu/mcm/detailMenuCreate.do?authorCode="+menuCreateVO.getAuthorCode());
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/* 메뉴사이트맵 생성조회 */
@@ -132,7 +132,7 @@ public class MenuCreateController {
 
 		model.addAttribute("list_menulist", menuCreateService.selectMenuCreateSiteMapList(menuSiteMapVO));
 
-		return "sym/mnu/mcm/MenuCreateSiteMap";
+		return "com/sym/mnu/mcm/MenuCreateSiteMap";
 	}
 
 	/**
@@ -164,7 +164,7 @@ public class MenuCreateController {
 		}
 	
 		model.addAttribute("redirectURL", "/sym/mnu/mcm/detailMenuCreate.do?authorCode="+menuSiteMapVO.getAuthorCode());
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

@@ -49,7 +49,7 @@ public class BbsStatsController {
 
 		if (statsVO.getFromDate() == null || "".equals(statsVO.getFromDate())) {
 			statsVO.setTabKind("tab1");
-			return "aramframework/com/sts/bst/BbsStats";
+			return "com/sts/bst/BbsStats";
 		}
 		
 		// 탭구분 : 생성글수(tab1), 총조회수(tab2), 평균조회수(tab3), 최고/최소조회수(tab4),
@@ -159,7 +159,7 @@ public class BbsStatsController {
 			model.addAttribute("bbsMaxNtcrList", bbsMaxNtcrList);
 		}
 
-		return "aramframework/com/sts/bst/BbsStats";
+		return "com/sts/bst/BbsStats";
 	}
 	
 }

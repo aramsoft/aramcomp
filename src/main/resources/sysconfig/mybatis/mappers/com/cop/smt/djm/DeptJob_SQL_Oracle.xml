@@ -13,8 +13,8 @@
         /* 구현 Sql */
 		<![CDATA[
 			SELECT b.ORGNZT_NM				AS "orgnztNm"
-				 , a.ESNTL_ID  				AS "uniqId"
-				 , a.USER_NM				AS "emplyrNm"
+				 , a.EMPLYR_ID  			AS "userId"
+				 , a.USER_NM				AS "userNm"
 				 , a.EMPL_NO				AS "emplNo"
 				 , a.OFCPS_NM				AS "ofcpsNm"
 			  FROM COMTN_EMPLYR_INFO a
@@ -163,7 +163,7 @@
 				   LEFT OUTER JOIN COMTN_ORGNZT_INFO B
 						ON A.DEPT_ID = B.ORGNZT_ID 
 			 	   LEFT OUTER JOIN COMTN_EMPLYR_INFO C
-						ON A.LAST_UPDUSR_ID = C.ESNTL_ID 
+						ON A.LAST_UPDUSR_ID = C.EMPLYR_ID 
 			 WHERE 1=1
 		]]>
   	    <if test='popupCnd != null and popupCnd != ""'>
@@ -232,7 +232,7 @@
 				   LEFT OUTER JOIN COMTN_ORGNZT_INFO B
 						ON A.DEPT_ID = B.ORGNZT_ID
 				   LEFT OUTER JOIN COMTN_EMPLYR_INFO C
-						ON A.LAST_UPDUSR_ID = C.ESNTL_ID 
+						ON A.LAST_UPDUSR_ID = C.EMPLYR_ID 
 			 WHERE A.DEPT_JOBBX_ID = #{deptJobBxId}
 		]]>
 	</select>
@@ -383,7 +383,7 @@
 				   LEFT OUTER JOIN COMTN_DEPT_JOB_BX B
 						ON A.DEPT_JOBBX_ID = B.DEPT_JOBBX_ID 
 			  	   LEFT OUTER JOIN COMTN_EMPLYR_INFO C
-						ON A.CHARGER_ID = C.ESNTL_ID 
+						ON A.CHARGER_ID = C.EMPLYR_ID 
 			 WHERE 1=1			
 		]]>
   	    <if test='searchDeptJobBxId != null and searchDeptJobBxId != ""'>
@@ -424,7 +424,7 @@
 				   LEFT OUTER JOIN COMTN_DEPT_JOB_BX B
 						ON A.DEPT_JOBBX_ID = B.DEPT_JOBBX_ID 
 				   LEFT OUTER JOIN COMTN_EMPLYR_INFO C
-						ON A.CHARGER_ID = C.ESNTL_ID 
+						ON A.CHARGER_ID = C.EMPLYR_ID 
 			 WHERE 1=1			
 		]]>
   	    <if test='searchDeptJobBxId != null and searchDeptJobBxId != ""'>
@@ -472,7 +472,7 @@
 				   LEFT OUTER JOIN COMTN_ORGNZT_INFO C
 						ON B.DEPT_ID = C.ORGNZT_ID
 				   LEFT OUTER JOIN COMTN_EMPLYR_INFO D
-						ON A.CHARGER_ID = D.ESNTL_ID
+						ON A.CHARGER_ID = D.EMPLYR_ID
 			 WHERE A.DEPT_JOB_ID = #{deptJobId}
 		]]>
 	</select>

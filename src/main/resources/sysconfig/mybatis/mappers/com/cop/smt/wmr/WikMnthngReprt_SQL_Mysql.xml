@@ -7,8 +7,8 @@
         /* 구현 Sql */
 		<![CDATA[
 			SELECT b.ORGNZT_NM				AS "orgnztNm" 
-				 , a.ESNTL_ID 				AS "uniqId"
-				 , a.USER_NM  				AS "emplyrNm" 
+				 , a.EMPLYR_ID 				AS "userId"
+				 , a.USER_NM  				AS "userNm" 
 				 , a.EMPL_NO				AS "emplNo" 
 				 , a.OFCPS_NM				AS "ofcpsNm" 
 			  FROM COMTN_EMPLYR_INFO a
@@ -78,7 +78,7 @@
 				 , (CASE WHEN IFNULL(A.CONFM_DT, ' ') = ' ' THEN '미승인' ELSE '승인' END) AS "confmDt"
 			  FROM COMTN_WIKMNTHNG_REPRT A
 				   LEFT OUTER JOIN COMTN_EMPLYR_INFO B
-						ON  A.WRTER_ID = B.ESNTL_ID
+						ON  A.WRTER_ID = B.EMPLYR_ID
 				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
 					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
 					    	  		 WHERE CODE_ID = 'COM060') C
@@ -141,7 +141,7 @@
 			SELECT COUNT(A.REPRT_ID) as cnt
 			  FROM COMTN_WIKMNTHNG_REPRT A
 				   LEFT OUTER JOIN COMTN_EMPLYR_INFO B
-						ON  A.WRTER_ID = B.ESNTL_ID
+						ON  A.WRTER_ID = B.EMPLYR_ID
 				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
 					    	   		  FROM COMTC_CMMN_DETAIL_CODE  	
 					    	  		 WHERE CODE_ID = 'COM060') C
@@ -217,9 +217,9 @@
 				 , A.LAST_UPDUSR_ID 
 			  FROM COMTN_WIKMNTHNG_REPRT A
 				   LEFT OUTER JOIN COMTN_EMPLYR_INFO B
-						ON A.WRTER_ID = B.ESNTL_ID
+						ON A.WRTER_ID = B.EMPLYR_ID
 				   LEFT OUTER JOIN COMTN_EMPLYR_INFO C
-						ON A.REPORTR_ID = C.ESNTL_ID
+						ON A.REPORTR_ID = C.EMPLYR_ID
 			 WHERE A.REPRT_ID = #{reprtId}
 	 	]]>
 	</select>

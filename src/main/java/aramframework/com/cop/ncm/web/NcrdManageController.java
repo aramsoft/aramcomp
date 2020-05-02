@@ -47,7 +47,7 @@ public class NcrdManageController {
 
 		model.addAttribute(ncrdService.selectNcrdItem(nameCardVO));
 
-		return "cop/ncm/NameCardPopup";
+		return "com/cop/ncm/NameCardPopup";
 	}
 
 	/**
@@ -77,7 +77,7 @@ public class NcrdManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "cop/ncm/NameCardList";
+		return "com/cop/ncm/NameCardList";
 	}
 
 	/**
@@ -92,7 +92,7 @@ public class NcrdManageController {
 			@ModelAttribute NameCardVO nameCardVO, 
 			ModelMap model) {
 		
-		return "cop/ncm/NameCardRegist";
+		return "com/cop/ncm/NameCardRegist";
 	}
 
 	/**
@@ -110,7 +110,7 @@ public class NcrdManageController {
 
 		beanValidator.validate(nameCardVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/ncm/NameCardRegist";
+			return "com/cop/ncm/NameCardRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -121,7 +121,7 @@ public class NcrdManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/cop/ncm/listNameCard.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -146,7 +146,7 @@ public class NcrdManageController {
 		model.addAttribute("writer", writer);
 		model.addAttribute(nameCardVO);
 
-		return "cop/ncm/NameCardEdit";
+		return "com/cop/ncm/NameCardEdit";
 	}
 
 	/**
@@ -164,7 +164,7 @@ public class NcrdManageController {
 
 		beanValidator.validate(nameCardVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/ncm/NameCardEdit";
+			return "com/cop/ncm/NameCardEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -174,7 +174,7 @@ public class NcrdManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/cop/ncm/listNameCard.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -195,7 +195,7 @@ public class NcrdManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/cop/ncm/listNameCard.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -225,7 +225,7 @@ public class NcrdManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "cop/ncm/NameCardPublic";
+		return "com/cop/ncm/NameCardPublic";
 	}
 
 	/**
@@ -248,7 +248,7 @@ public class NcrdManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/cop/ncm/listNameCardPublic.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -270,7 +270,7 @@ public class NcrdManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/cop/ncm/listNameCard.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 	
 }

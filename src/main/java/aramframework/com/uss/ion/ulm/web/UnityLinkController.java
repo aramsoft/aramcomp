@@ -65,7 +65,7 @@ public class UnityLinkController {
 		// 통합링크구분설정
 		cmmUseService.populateCmmCodeList("COM039", "COM039_pollKind");
 
-		return "uss/ion/ulm/UnityLinkList";
+		return "com/uss/ion/ulm/UnityLinkList";
 	}
 
 	/**
@@ -75,7 +75,7 @@ public class UnityLinkController {
 	 */
 	@RequestMapping(value = "/uss/ion/ulm/detailUnityLink.do")
 	public String detailUnityLink(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute UnityLinkVO unityLinkVO,
 			ModelMap model) {
 
@@ -84,7 +84,7 @@ public class UnityLinkController {
 		// 통합링크구분설정
 		cmmUseService.populateCmmCodeList("COM039", "COM039_pollKind");
 
-		return "uss/ion/ulm/UnityLinkDetail";
+		return "com/uss/ion/ulm/UnityLinkDetail";
 	}
 
 	/**
@@ -94,13 +94,13 @@ public class UnityLinkController {
 	 */
 	@RequestMapping(value = "/uss/ion/ulm/registUnityLink.do")
 	public String registUnityLink(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute UnityLinkVO unityLinkVO) {
 
 		// 통합링크구분설정
 		cmmUseService.populateCmmCodeList("COM039", "COM039_pollKind");
 
-		return "uss/ion/ulm/UnityLinkRegist";
+		return "com/uss/ion/ulm/UnityLinkRegist";
 	}
 	
 	/**
@@ -110,7 +110,7 @@ public class UnityLinkController {
 	 */
 	@RequestMapping(value = "/uss/ion/ulm/insertUnityLink.do")
 	public String insertUnityLink(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute UnityLinkVO unityLinkVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -118,7 +118,7 @@ public class UnityLinkController {
 		// 서버 validate 체크
 		beanValidator.validate(unityLinkVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/ulm/UnityLinkRegist";
+			return "com/uss/ion/ulm/UnityLinkRegist";
 		}
 
 		// 로그인 객체 선언
@@ -130,7 +130,7 @@ public class UnityLinkController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/ion/ulm/listUnityLink.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 	
 	/**
@@ -140,7 +140,7 @@ public class UnityLinkController {
 	 */
 	@RequestMapping(value = "/uss/ion/ulm/editUnityLink.do")
 	public String editUnityLink(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute UnityLinkVO unityLinkVO,
 			ModelMap model) {
 
@@ -149,7 +149,7 @@ public class UnityLinkController {
 		// 통합링크구분설정
 		cmmUseService.populateCmmCodeList("COM039", "COM039_pollKind");
 
-		return "uss/ion/ulm/UnityLinkEdit";
+		return "com/uss/ion/ulm/UnityLinkEdit";
 	}
 
 	/**
@@ -159,7 +159,7 @@ public class UnityLinkController {
 	 */
 	@RequestMapping(value = "/uss/ion/ulm/updateUnityLink.do")
 	public String updateUnityLink(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute UnityLinkVO unityLinkVO, 
 			BindingResult bindingResult,
 			ModelMap model) {
@@ -167,7 +167,7 @@ public class UnityLinkController {
 		// 서버 validate 체크
 		beanValidator.validate(unityLinkVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/ulm/UnityLinkEdit";
+			return "com/uss/ion/ulm/UnityLinkEdit";
 		}
 		
 		// 로그인 객체 선언
@@ -179,7 +179,7 @@ public class UnityLinkController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/ion/ulm/listUnityLink.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -189,7 +189,7 @@ public class UnityLinkController {
 	 */
 	@RequestMapping(value = "/uss/ion/ulm/deleteUnityLink.do")
 	public String deleteUnityLink(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute UnityLinkVO unityLinkVO, 
 			ModelMap model) {
 
@@ -197,7 +197,7 @@ public class UnityLinkController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/ulm/listUnityLink.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -213,7 +213,7 @@ public class UnityLinkController {
 
 		model.addAttribute("resultList", unityLinkService.selectUnityLinkSample(unityLinkVO));
 
-		return "uss/ion/ulm/UnityLinkSample";
+		return "com/uss/ion/ulm/UnityLinkSample";
 	}
 
 }

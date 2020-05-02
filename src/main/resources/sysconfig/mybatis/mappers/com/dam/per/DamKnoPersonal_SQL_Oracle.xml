@@ -25,7 +25,7 @@
 				   LEFT OUTER JOIN COMTN_DAM_MAP_TEAM C
 						ON B.ORGNZT_ID = C.ORGNZT_ID
 				   LEFT OUTER JOIN COMVN_USER_MASTER D
-						ON A.FRST_REGISTER_ID = D.ESNTL_ID
+						ON A.FRST_REGISTER_ID = D.USER_ID
 			 WHERE A.FRST_REGISTER_ID = #{frstRegisterId}				
 		]]>
    	    <if test='searchKeyword != null and searchKeyword != ""'>
@@ -55,7 +55,7 @@
 				   LEFT OUTER JOIN COMTN_DAM_MAP_TEAM C
 						ON B.ORGNZT_ID = C.ORGNZT_ID
 				   LEFT OUTER JOIN COMVN_USER_MASTER D
-						ON A.FRST_REGISTER_ID = D.ESNTL_ID
+						ON A.FRST_REGISTER_ID = D.USER_ID
 			 WHERE A.FRST_REGISTER_ID = #{frstRegisterId}				
 		]]>
    	    <if test='searchKeyword != null and searchKeyword != ""'>

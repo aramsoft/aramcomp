@@ -60,7 +60,7 @@ public class NotificationController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/ion/noi/NotificationList";
+		return "com/uss/ion/noi/NotificationList";
 	}
 
 	/**
@@ -70,7 +70,7 @@ public class NotificationController {
 	 */
 	@RequestMapping("/uss/ion/noi/detailNotification.do")
 	public String detailNotification(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute NotificationVO notificationVO, 
 			ModelMap model) {
 
@@ -79,7 +79,7 @@ public class NotificationController {
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		model.addAttribute("sessionUniqId", loginVO.getUserId());
 
-		return "uss/ion/noi/NotificationDetail";
+		return "com/uss/ion/noi/NotificationDetail";
 	}
 
 	/**
@@ -89,10 +89,10 @@ public class NotificationController {
 	 */
 	@RequestMapping("/uss/ion/noi/registNotification.do")
 	public String registNotification(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute NotificationVO notificationVO) {
 
-		return "uss/ion/noi/NotificationRegist";
+		return "com/uss/ion/noi/NotificationRegist";
 	}
 
 	/**
@@ -102,19 +102,19 @@ public class NotificationController {
 	 */
 	@RequestMapping("/uss/ion/noi/insertNotification.do")
 	public String insertNotification(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute NotificationVO notificationVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(notificationVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/noi/NotificationRegist";
+			return "com/uss/ion/noi/NotificationRegist";
 		}
 
 		if (!notificationService.checkNotification(notificationVO)) {
 			model.addAttribute("message", MessageHelper.getMessage("uss.ion.noi.alertNtfcTime"));
-			return "uss/ion/noi/NotificationRegist";
+			return "com/uss/ion/noi/NotificationRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -124,7 +124,7 @@ public class NotificationController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/ion/noi/listNotification.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -134,13 +134,13 @@ public class NotificationController {
 	 */
 	@RequestMapping("/uss/ion/noi/editNotification.do")
 	public String editNotification(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute NotificationVO notificationVO, 
 			ModelMap model) {
 
 		model.addAttribute(notificationService.selectNotificationInf(notificationVO));
 
-		return "uss/ion/noi/NotificationEdit";
+		return "com/uss/ion/noi/NotificationEdit";
 	}
 
 	/**
@@ -150,19 +150,19 @@ public class NotificationController {
 	 */
 	@RequestMapping("/uss/ion/noi/updateNotification.do")
 	public String updateNotification(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute NotificationVO notificationVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(notificationVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/noi/NotificationEdit";
+			return "com/uss/ion/noi/NotificationEdit";
 		}
 
 		if (!notificationService.checkNotification(notificationVO)) {
 			model.addAttribute("message", MessageHelper.getMessage("uss.ion.noi.alertNtfcTime"));
-			return "uss/ion/noi/NotificationEdit";
+			return "com/uss/ion/noi/NotificationEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -172,7 +172,7 @@ public class NotificationController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/ion/noi/listNotification.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -182,7 +182,7 @@ public class NotificationController {
 	 */
 	@RequestMapping("/uss/ion/noi/deleteNotification.do")
 	public String deleteNotification(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute NotificationVO notificationVO, 
 			ModelMap model) {
 
@@ -193,7 +193,7 @@ public class NotificationController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/noi/listNotification.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -203,13 +203,13 @@ public class NotificationController {
 	 */
 	@RequestMapping("/uss/ion/noi/getNotifications.do")
 	public String getNotifications(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute NotificationVO notificationVO, 
 			ModelMap model) {
 		
 		model.addAttribute("resultList", notificationService.selectNotificationData());
 
-		return "uss/ion/noi/NotificationData";
+		return "com/uss/ion/noi/NotificationData";
 	}
 	
 }

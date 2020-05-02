@@ -56,7 +56,7 @@ public class WordDicaryController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/olh/wor/WordDicaryList";
+		return "com/uss/olh/wor/WordDicaryList";
 	}
 
 	/**
@@ -66,13 +66,13 @@ public class WordDicaryController {
 	 */
 	@RequestMapping("/uss/olh/wor/detailWordDicary.do")
 	public String detailWordDicary(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute WordDicaryVO wordDicaryVO,
 			ModelMap model) {
 
 		model.addAttribute(wordDicaryService.selectWordDicaryDetail(wordDicaryVO));
 
-		return "uss/olh/wor/WordDicaryDetail";
+		return "com/uss/olh/wor/WordDicaryDetail";
 	}
 
 	/**
@@ -83,10 +83,10 @@ public class WordDicaryController {
 	@RequestMapping("/uss/olh/wor/registWordDicary.do")
 	@Secured("ROLE_USER")
 	public String registWordDicary(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute WordDicaryVO wordDicaryVO) {
 
-		return "uss/olh/wor/WordDicaryRegist";
+		return "com/uss/olh/wor/WordDicaryRegist";
 	}
 
 	/**
@@ -97,14 +97,14 @@ public class WordDicaryController {
 	@RequestMapping("/uss/olh/wor/insertWordDicary.do")
 	@Secured("ROLE_USER")
 	public String insertWordDicary(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute WordDicaryVO wordDicaryVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(wordDicaryVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olh/wor/WordDicaryRegist";
+			return "com/uss/olh/wor/WordDicaryRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -115,7 +115,7 @@ public class WordDicaryController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/olh/wor/listWordDicary.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -126,13 +126,13 @@ public class WordDicaryController {
 	@RequestMapping("/uss/olh/wor/editWordDicary.do")
 	@Secured("ROLE_USER")
 	public String editWordDicary(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute WordDicaryVO wordDicaryVO,
 			ModelMap model) {
 
 		model.addAttribute(wordDicaryService.selectWordDicaryDetail(wordDicaryVO));
 
-		return "uss/olh/wor/WordDicaryEdit";
+		return "com/uss/olh/wor/WordDicaryEdit";
 	}
 
 	/**
@@ -143,7 +143,7 @@ public class WordDicaryController {
 	@RequestMapping("/uss/olh/wor/updateWordDicary.do")
 	@Secured("ROLE_USER")
 	public String updateWordDicary(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute WordDicaryVO wordDicaryVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -151,7 +151,7 @@ public class WordDicaryController {
 		// Validation
 		beanValidator.validate(wordDicaryVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olh/wor/WordDicaryEdit";
+			return "com/uss/olh/wor/WordDicaryEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -162,7 +162,7 @@ public class WordDicaryController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/olh/wor/listWordDicary.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -173,7 +173,7 @@ public class WordDicaryController {
 	@RequestMapping("/uss/olh/wor/deleteWordDicary.do")
 	@Secured("ROLE_USER")
 	public String deleteWordDicary(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute WordDicaryVO wordDicaryVO, 
 			ModelMap model) {
 
@@ -181,7 +181,7 @@ public class WordDicaryController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/olh/wor/listWordDicary.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

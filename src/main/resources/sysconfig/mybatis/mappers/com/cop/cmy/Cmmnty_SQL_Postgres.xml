@@ -106,8 +106,8 @@
 				 , b.USER_NM 				AS "frstRegisterNm"
 				 , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
 				 , a.CMMNTY_LOGO_IMAGE
-				 , a.ADDITIONAL_INFO 
-			  FROM COMTN_CMMNTY a 
+				 , a.ADDITIONAL_INFO
+			  FROM COMTN_CMMNTY a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
 						ON a.FRST_REGISTER_ID = b.USER_ID
 				   LEFT OUTER JOIN COMTN_TMPLAT_INFO c

@@ -25,7 +25,7 @@
 				   LEFT OUTER JOIN COMTN_DAM_MAP_TEAM C
 						ON B.ORGNZT_ID = C.ORGNZT_ID
 				   LEFT OUTER JOIN COMVN_USER_MASTER D
-						ON A.EXPERT_ID = D.ESNTL_ID
+						ON A.EXPERT_ID = D.USER_ID
 			 WHERE 1=1				
 		]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
@@ -55,7 +55,7 @@
 				   LEFT OUTER JOIN COMTN_DAM_MAP_TEAM C
 						ON B.ORGNZT_ID = C.ORGNZT_ID
 				   LEFT OUTER JOIN COMVN_USER_MASTER D
-						ON A.EXPERT_ID = D.ESNTL_ID
+						ON A.EXPERT_ID = D.USER_ID
 			 WHERE 1=1				
 		]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
@@ -91,7 +91,7 @@
 				   LEFT OUTER JOIN COMTN_DAM_MAP_TEAM C
 						ON B.ORGNZT_ID = C.ORGNZT_ID
 				   LEFT OUTER JOIN COMVN_USER_MASTER D
-						ON A.EXPERT_ID = D.ESNTL_ID
+						ON A.EXPERT_ID = D.USER_ID
 			 WHERE A.EXPERT_ID = #{speId}
                AND A.KNWLDG_TY_CODE = #{knoTypeCd}
                AND A.EXPERT_GRAD = #{appTypeCd}          

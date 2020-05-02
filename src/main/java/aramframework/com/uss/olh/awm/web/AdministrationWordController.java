@@ -57,7 +57,7 @@ public class AdministrationWordController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/olh/awm/AdministrationWordList";
+		return "com/uss/olh/awm/AdministrationWordList";
 	}
 
 	/**
@@ -67,13 +67,13 @@ public class AdministrationWordController {
 	 */
 	@RequestMapping(value = "/uss/olh/awm/detailAdministrationWord.do")
 	public String detailAdministrationWord(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AdministrationWordVO administrationWordVO,
 			ModelMap model) {
 
 		model.addAttribute(administrationWordService.selectAdministrationWordDetail(administrationWordVO));
 
-		return "uss/olh/awm/AdministrationWordDetail";
+		return "com/uss/olh/awm/AdministrationWordDetail";
 	}
 
 	/**
@@ -83,10 +83,10 @@ public class AdministrationWordController {
 	 */
 	@RequestMapping(value = "/uss/olh/awm/registAdministrationWord.do")
 	public String registAdministrationWord(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AdministrationWordVO administrationWordVO) {
 
-		return "uss/olh/awm/AdministrationWordRegist";
+		return "com/uss/olh/awm/AdministrationWordRegist";
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class AdministrationWordController {
 	 */
 	@RequestMapping(value = "/uss/olh/awm/insertAdministrationWord.do")
 	public String insertAdministrationWord(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AdministrationWordVO administrationWordVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -104,7 +104,7 @@ public class AdministrationWordController {
 		// 서버 validate 체크
 		beanValidator.validate(administrationWordVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olh/awm/AdministrationWordRegist";
+			return "com/uss/olh/awm/AdministrationWordRegist";
 		}
 
 		// 로그인 객체 선언
@@ -115,7 +115,7 @@ public class AdministrationWordController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/olh/awm/listAdministrationWord.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -125,13 +125,13 @@ public class AdministrationWordController {
 	 */
 	@RequestMapping(value = "/uss/olh/awm/editAdministrationWord.do")
 	public String editAdministrationWord(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AdministrationWordVO administrationWordVO,
 			ModelMap model) {
 
 		model.addAttribute(administrationWordService.selectAdministrationWordDetail(administrationWordVO));
 
-		return "uss/olh/awm/AdministrationWordEdit";
+		return "com/uss/olh/awm/AdministrationWordEdit";
 	}
 
 	/**
@@ -141,7 +141,7 @@ public class AdministrationWordController {
 	 */
 	@RequestMapping(value = "/uss/olh/awm/updateAdministrationWord.do")
 	public String updateAdministrationWord(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AdministrationWordVO administrationWordVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -149,7 +149,7 @@ public class AdministrationWordController {
 		// 서버 validate 체크
 		beanValidator.validate(administrationWordVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olh/awm/AdministrationWordEdit";
+			return "com/uss/olh/awm/AdministrationWordEdit";
 		}
 
 		// 로그인 객체 선언
@@ -160,7 +160,7 @@ public class AdministrationWordController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/olh/awm/listAdministrationWord.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -170,7 +170,7 @@ public class AdministrationWordController {
 	 */
 	@RequestMapping(value = "/uss/olh/awm/deleteAdministrationWord.do")
 	public String deleteAdministrationWord(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AdministrationWordVO administrationWordVO, 
 			ModelMap model) {
 
@@ -178,7 +178,7 @@ public class AdministrationWordController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/olh/awm/listAdministrationWord.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -203,7 +203,7 @@ public class AdministrationWordController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/olh/awm/AdministrationWordUserList";
+		return "com/uss/olh/awm/AdministrationWordUserList";
 	}
 
 	/**
@@ -213,13 +213,13 @@ public class AdministrationWordController {
 	 */
 	@RequestMapping(value = "/uss/olh/awm/detailAdministrationWordUser.do")
 	public String detailAdministrationUserWord(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AdministrationWordVO administrationWordVO,
 			ModelMap model) {
 
 		model.addAttribute(administrationWordService.selectAdministrationWordDetail(administrationWordVO));
 
-		return "uss/olh/awm/AdministrationWordUserDetail";
+		return "com/uss/olh/awm/AdministrationWordUserDetail";
 	}
 
 	/**
@@ -237,7 +237,7 @@ public class AdministrationWordController {
 
 		model.addAttribute("resultList", administrationWordService.selectAdministrationWordList(administrationWordVO));
 
-		return "uss/olh/awm/AdministrationWordMainPage";
+		return "com/uss/olh/awm/AdministrationWordMainPage";
 	}
 	
 }

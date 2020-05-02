@@ -64,7 +64,7 @@ public class MemoTodoController {
 
 		model.addAttribute("resultList", memoTodoService.selectMemoTodoListToday(memoTodoVO));
 
-		return "cop/smt/mtm/MemoTodoListToday";
+		return "com/cop/smt/mtm/MemoTodoListToday";
 	}
 
 	/**
@@ -94,7 +94,7 @@ public class MemoTodoController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute(paginationInfo);
 
-		return "cop/smt/mtm/MemoTodoList";
+		return "com/cop/smt/mtm/MemoTodoList";
 	}
 
 	/**
@@ -105,7 +105,7 @@ public class MemoTodoController {
 	@RequestMapping("/cop/smt/mtm/detailMemoTodo.do")
 	@Secured("ROLE_USER")
 	public String detailMemoTodo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MemoTodoVO memoTodoVO,
 			ModelMap model) {
 		
@@ -119,7 +119,7 @@ public class MemoTodoController {
 
 		model.addAttribute(memoTodoVO);
 
-		return "cop/smt/mtm/MemoTodoDetail";
+		return "com/cop/smt/mtm/MemoTodoDetail";
 	}
 
 	// 할일일자(시)
@@ -137,7 +137,7 @@ public class MemoTodoController {
 	@RequestMapping("/cop/smt/mtm/registMemoTodo.do")
 	@Secured("ROLE_USER")
 	public String registMemoTodo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MemoTodoVO memoTodoVO) {
 		
 		// 1. 로그인 객체 선언
@@ -148,7 +148,7 @@ public class MemoTodoController {
 		memoTodoVO.setWrterId(loginVO.getUserId());
 		memoTodoVO.setWrterNm(loginVO.getName());
 
-		return "cop/smt/mtm/MemoTodoRegist";
+		return "com/cop/smt/mtm/MemoTodoRegist";
 	}
 
 	/**
@@ -159,7 +159,7 @@ public class MemoTodoController {
 	@RequestMapping("/cop/smt/mtm/insertMemoTodo.do")
 	@Secured("ROLE_USER")
 	public String insertMemoTodo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MemoTodoVO memoTodoVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -167,7 +167,7 @@ public class MemoTodoController {
 		// 서버 validate 체크
 		beanValidator.validate(memoTodoVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/smt/mtm/MemoTodoRegist";
+			return "com/cop/smt/mtm/MemoTodoRegist";
 		}
 
 		// 로그인 객체 선언
@@ -181,7 +181,7 @@ public class MemoTodoController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/cop/smt/mtm/listMemoTodo.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 	
 	/**
@@ -192,7 +192,7 @@ public class MemoTodoController {
 	@RequestMapping("/cop/smt/mtm/editMemoTodo.do")
 	@Secured("ROLE_USER")
 	public String editMemoTodo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MemoTodoVO memoTodoVO,
 			ModelMap model) {
 
@@ -206,7 +206,7 @@ public class MemoTodoController {
 
 		model.addAttribute(memoTodoVO);
 
-		return "cop/smt/mtm/MemoTodoEdit";
+		return "com/cop/smt/mtm/MemoTodoEdit";
 	}
 
 	/**
@@ -217,14 +217,14 @@ public class MemoTodoController {
 	@RequestMapping("/cop/smt/mtm/updateMemoTodo.do")
 	@Secured("ROLE_USER")
 	public String updateMemoTodo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MemoTodoVO memoTodoVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 		
 		beanValidator.validate(memoTodoVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/smt/mtm/MemoTodoEdit";
+			return "com/cop/smt/mtm/MemoTodoEdit";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -237,7 +237,7 @@ public class MemoTodoController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/cop/smt/mtm/listMemoTodo.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -248,7 +248,7 @@ public class MemoTodoController {
 	@RequestMapping("/cop/smt/mtm/deleteMemoTodo.do")
 	@Secured("ROLE_USER")
 	public String deleteMemoTodo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MemoTodoVO memoTodoVO, 
 			ModelMap model) {
 
@@ -256,7 +256,7 @@ public class MemoTodoController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/cop/smt/mtm/listMemoTodo.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

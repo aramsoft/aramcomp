@@ -87,7 +87,7 @@ public class RssManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/ion/rss/RssManageList";
+		return "com/uss/ion/rss/RssManageList";
 	}
 
 	/**
@@ -100,7 +100,7 @@ public class RssManageController {
 	@Secured("ROLE_ADMIN")
 	public String deleteListRssManage(
 			@CommandMap Map<String, Object> commandMap, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RssManageVO rssManageVO, 
 			ModelMap model)  {
 
@@ -133,7 +133,7 @@ public class RssManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/rss/listRssManage.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -144,13 +144,13 @@ public class RssManageController {
 	@RequestMapping(value = "/uss/ion/rss/detailRssManage.do")
 	@Secured("ROLE_ADMIN")
 	public String detailRssManage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RssManageVO rssManageVO,
 			ModelMap model)  {
 
 		model.addAttribute(rssManageService.selectRssManageDetail(rssManageVO));
 
-		return "uss/ion/rss/RssManageDetail";
+		return "com/uss/ion/rss/RssManageDetail";
 	}
 
 	/**
@@ -161,13 +161,13 @@ public class RssManageController {
 	@RequestMapping(value = "/uss/ion/rss/registRssManage.do")
 	@Secured("ROLE_ADMIN")
 	public String registRssManage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RssManageVO rssManageVO, 
 			ModelMap model) {
 
 		model.addAttribute("trgetSvcTableList", rssManageService.selectRssManageTableList());
 
-		return "uss/ion/rss/RssManageRegist";
+		return "com/uss/ion/rss/RssManageRegist";
 	}
 
 	/**
@@ -178,7 +178,7 @@ public class RssManageController {
 	@RequestMapping(value = "/uss/ion/rss/insertRssManage.do")
 	@Secured("ROLE_ADMIN")
 	public String insertRssManage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RssManageVO rssManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -187,7 +187,7 @@ public class RssManageController {
 		beanValidator.validate(rssManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("trgetSvcTableList", rssManageService.selectRssManageTableList());
-			return "uss/ion/rss/RssManageRegist";
+			return "com/uss/ion/rss/RssManageRegist";
 		}
 		
 		// 로그인 객체 선언
@@ -199,7 +199,7 @@ public class RssManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/ion/rss/listRssManage.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
  	}
 
 	/**
@@ -210,7 +210,7 @@ public class RssManageController {
 	@RequestMapping(value = "/uss/ion/rss/editRssManage.do")
 	@Secured("ROLE_ADMIN")
 	public String editRssManage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RssManageVO rssManageVO,
 			ModelMap model)  {
 
@@ -219,7 +219,7 @@ public class RssManageController {
 		// 테이블 목록 불러오기
 		model.addAttribute("trgetSvcTableList", rssManageService.selectRssManageTableList());
 
-		return "uss/ion/rss/RssManageEdit";
+		return "com/uss/ion/rss/RssManageEdit";
 	}
 
 	/**
@@ -230,7 +230,7 @@ public class RssManageController {
 	@RequestMapping(value = "/uss/ion/rss/updateRssManage.do")
 	@Secured("ROLE_ADMIN")
 	public String updateRssManage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RssManageVO rssManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -240,7 +240,7 @@ public class RssManageController {
 		if (bindingResult.hasErrors()) {
 			// 테이블 목록 불러오기
 			model.addAttribute("trgetSvcTableList", rssManageService.selectRssManageTableList());
-			return "uss/ion/rss/RssManageEdit";
+			return "com/uss/ion/rss/RssManageEdit";
 		}
 		
 		// 로그인 객체 선언
@@ -252,7 +252,7 @@ public class RssManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/ion/rss/listRssManage.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -263,7 +263,7 @@ public class RssManageController {
 	@RequestMapping(value = "/uss/ion/rss/deleteRssManage.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteRssManage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RssManageVO rssManageVO, 
 			ModelMap model) {
 
@@ -271,7 +271,7 @@ public class RssManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/rss/listRssManage.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

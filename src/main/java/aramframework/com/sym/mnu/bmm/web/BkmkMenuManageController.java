@@ -63,7 +63,7 @@ public class BkmkMenuManageController {
 		model.addAttribute(paginationInfo);
 		model.addAttribute("uniqId", loginVO.getUserId());
 
-		return "sym/mnu/bmm/BkmkMenuList";
+		return "com/sym/mnu/bmm/BkmkMenuList";
 	}
 
 	/**
@@ -75,6 +75,7 @@ public class BkmkMenuManageController {
 	@RequestMapping("/sym/mnu/bmm/deleteListBkmkMenu.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteListBkmkMenu(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BkmkMenuManageVO bkmkMenuManageVO, 
 			HttpServletRequest request, 
 			ModelMap model) {
@@ -94,7 +95,7 @@ public class BkmkMenuManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sym/mnu/bmm/listBkmkMenu.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -113,7 +114,7 @@ public class BkmkMenuManageController {
 			bkmkMenuManageVO.setProgrmStrePath(bkmkMenuManageService.selectUrl(bkmkMenuManageVO));
 		}
 		
-		return "sym/mnu/bmm/BkmkMenuRegist";
+		return "com/sym/mnu/bmm/BkmkMenuRegist";
 	}
 
 	/**
@@ -131,7 +132,7 @@ public class BkmkMenuManageController {
 
 		beanValidator.validate(bkmkMenuManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "sym/mnu/bmm/BkmkMenuRegist";
+			return "com/sym/mnu/bmm/BkmkMenuRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -141,7 +142,7 @@ public class BkmkMenuManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sym/mnu/bmm/listBkmkMenu.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -169,7 +170,7 @@ public class BkmkMenuManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/mnu/bmm/BkmkMenuPopup";
+		return "com/sym/mnu/bmm/BkmkMenuPopup";
 	}
 
 	/**
@@ -189,7 +190,7 @@ public class BkmkMenuManageController {
 
 		model.addAttribute("list_menulist", bkmkMenuManageService.selectBkmkMenuManageList(bkmkMenuManageVO));
 
-		return "sym/mnu/bmm/BkmkMenuPreview";
+		return "com/sym/mnu/bmm/BkmkMenuPreview";
 	}
 	
 }

@@ -62,7 +62,7 @@ public class ProgrmManageDtlController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/prm/ProgramChangeRequstList";
+		return "com/sym/prm/ProgramChangeRequstList";
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class ProgrmManageDtlController {
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		progrmManageDtlVO.setRqestPersonId(loginVO.getUserId());
 		
-		return "sym/prm/ProgramChangeRequstRegist";
+		return "com/sym/prm/ProgramChangeRequstRegist";
 	}
 
 	/**
@@ -101,14 +101,14 @@ public class ProgrmManageDtlController {
 		// beanValidator 처리
 		beanValidator.validate(progrmManageDtlVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "sym/prm/ProgramChangeRequstRegist";
+			return "com/sym/prm/ProgramChangeRequstRegist";
 		}
 		
 		progrmManageDtlService.insertProgrmChangeRequst(progrmManageDtlVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sym/prm/listProgramChangeRequst.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -125,7 +125,7 @@ public class ProgrmManageDtlController {
 
 		model.addAttribute(progrmManageDtlService.selectProgrmChangeRequst(progrmManageDtlVO));
 
-		return "sym/prm/ProgramChangeRequstEdit";
+		return "com/sym/prm/ProgramChangeRequstEdit";
 	}
 
 	/**
@@ -144,21 +144,21 @@ public class ProgrmManageDtlController {
 		// beanValidator 처리
 		beanValidator.validate(progrmManageDtlVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "sym/prm/ProgramChangeRequstEdit";
+			return "com/sym/prm/ProgramChangeRequstEdit";
 		}
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		if (!progrmManageDtlVO.getRqestPersonId().equals(loginVO.getUserId())) {
 			model.addAttribute("message", "수정이 실패하였습니다. 변경요청 수정은 변경요청자만 수정가능합니다.");
-			return "sym/prm/ProgramChangeRequstEdit";
+			return "com/sym/prm/ProgramChangeRequstEdit";
 		}
 		
 		progrmManageDtlService.updateProgrmChangeRequst(progrmManageDtlVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/sym/prm/listProgramChangeRequst.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -178,7 +178,7 @@ public class ProgrmManageDtlController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sym/prm/listProgramChangeRequst.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -205,7 +205,7 @@ public class ProgrmManageDtlController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/prm/ProgramChangeProcessList";
+		return "com/sym/prm/ProgramChangeProcessList";
 	}
 
 	/**
@@ -229,7 +229,7 @@ public class ProgrmManageDtlController {
 
 		model.addAttribute(progrmManageDtlVO);
 		
-		return "sym/prm/ProgramChangeProcessEdit";
+		return "com/sym/prm/ProgramChangeProcessEdit";
 	}
 
 	/**
@@ -247,7 +247,7 @@ public class ProgrmManageDtlController {
 
 		beanValidator.validate(progrmManageDtlVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "sym/prm/ProgramChangeProcessEdit";
+			return "com/sym/prm/ProgramChangeProcessEdit";
 		}
 
 		progrmManageDtlService.updateProgrmChangeRequstProcess(progrmManageDtlVO);
@@ -280,7 +280,7 @@ public class ProgrmManageDtlController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/sym/prm/listProgramChangeProcess.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -300,7 +300,7 @@ public class ProgrmManageDtlController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sym/prm/listProgramChangeProcess.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -326,7 +326,7 @@ public class ProgrmManageDtlController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/prm/ProgramChgHstList";
+		return "com/sym/prm/ProgramChgHstList";
 	}
 
 	/* 프로그램변경이력상세조회 */
@@ -344,7 +344,7 @@ public class ProgrmManageDtlController {
 
 		model.addAttribute(progrmManageDtlService.selectProgrmChangeRequst(progrmManageDtlVO));
 		
-		return "sym/prm/ProgramChgHstDetail";
+		return "com/sym/prm/ProgramChgHstDetail";
 	}
 
 }

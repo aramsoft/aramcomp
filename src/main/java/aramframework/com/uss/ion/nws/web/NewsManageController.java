@@ -62,7 +62,7 @@ public class NewsManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/ion/nws/NewsInfoList";
+		return "com/uss/ion/nws/NewsInfoList";
 	}
 
 	/**
@@ -72,13 +72,13 @@ public class NewsManageController {
 	 */
 	@RequestMapping("/uss/ion/nws/detailNewsInfo.do")
 	public String detailNewsInfo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute NewsManageVO newsManageVO,
 			ModelMap model) {
 
 		model.addAttribute(newsManageService.selectNewsDetail(newsManageVO));
 
-		return "uss/ion/nws/NewsInfoDetail";
+		return "com/uss/ion/nws/NewsInfoDetail";
 	}
 
 	/**
@@ -89,10 +89,10 @@ public class NewsManageController {
 	@RequestMapping("/uss/ion/nws/registNewsInfo.do")
 	@Secured("ROLE_USER")
 	public String registNewsInfo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute NewsManageVO newsManageVO) {
 
-		return "uss/ion/nws/NewsInfoRegist";
+		return "com/uss/ion/nws/NewsInfoRegist";
 	}
 
 	/**
@@ -103,20 +103,20 @@ public class NewsManageController {
 	@RequestMapping("/uss/ion/nws/insertNewsInfo.do")
 	@Secured("ROLE_USER")
 	public String insertNewsInfo(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute NewsManageVO newsManageVO, 
 			BindingResult bindingResult,
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception {
 
 		beanValidator.validate(newsManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/nws/NewsInfoRegist";
+			return "com/uss/ion/nws/NewsInfoRegist";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
-		newsManageVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "NEWS_"));
+		newsManageVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "NWS"));
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -126,7 +126,7 @@ public class NewsManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/ion/nws/listNewsInfo.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -137,13 +137,13 @@ public class NewsManageController {
 	@RequestMapping("/uss/ion/nws/editNewsInfo.do")
 	@Secured("ROLE_USER")
 	public String editNewsInfo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute NewsManageVO newsManageVO,
 			ModelMap model) {
 
 		model.addAttribute(newsManageService.selectNewsDetail(newsManageVO));
 
-		return "uss/ion/nws/NewsInfoEdit";
+		return "com/uss/ion/nws/NewsInfoEdit";
 	}
 	
 	/**
@@ -154,22 +154,22 @@ public class NewsManageController {
 	@RequestMapping("/uss/ion/nws/updateNewsInfo.do")
 	@Secured("ROLE_USER")
 	public String updateNewsInfo(
-			MultipartHttpServletRequest multiRequest,
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute NewsManageVO newsManageVO, 
 			BindingResult bindingResult,
+			MultipartHttpServletRequest multiRequest,
 			ModelMap model) 
 	throws Exception {
 
 		// Validation
 		beanValidator.validate(newsManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/nws/NewsInfoEdit";
+			return "com/uss/ion/nws/NewsInfoEdit";
 		}
 
 		// 첨부파일 관련 ID 생성 start....
 		String atchFileId = newsManageVO.getAtchFileId();
-		newsManageVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "NEWS_", atchFileId));
+		newsManageVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "NWS", atchFileId));
 
 		// 로그인VO에서 사용자 정보 가져오기
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -179,7 +179,7 @@ public class NewsManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/ion/nws/listNewsInfo.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -190,7 +190,7 @@ public class NewsManageController {
 	@RequestMapping("/uss/ion/nws/deleteNewsInfo.do")
 	@Secured("ROLE_USER")
 	public String deleteNewsInfo(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute NewsManageVO newsManageVO, 
 			ModelMap model) {
 
@@ -198,7 +198,7 @@ public class NewsManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/nws/listNewsInfo.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

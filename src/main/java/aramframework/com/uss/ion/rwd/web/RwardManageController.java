@@ -72,7 +72,7 @@ public class RwardManageController {
 
 		cmmUseService.populateCmmCodeList("COM055", "COM055_rward");
 
-		return "uss/ion/rwd/RwardList";
+		return "com/uss/ion/rwd/RwardList";
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class RwardManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/rwd/detailRward.do")
 	public String detailRward(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RwardManageVO rwardManageVO,
 			ModelMap model) {
 
@@ -90,7 +90,7 @@ public class RwardManageController {
 
 		model.addAttribute(rwardManageService.selectRwardManage(rwardManageVO));
 
-		return "uss/ion/rwd/RwardDetail";
+		return "com/uss/ion/rwd/RwardDetail";
 	}
 
 	/**
@@ -100,12 +100,12 @@ public class RwardManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/rwd/registRward.do")
 	public String registRward(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RwardManageVO rwardManageVO) {
 		
 		cmmUseService.populateCmmCodeList("COM055", "COM055_rward");
 
-		return "uss/ion/rwd/RwardRegist";
+		return "com/uss/ion/rwd/RwardRegist";
 	}
 
 	/**
@@ -115,16 +115,16 @@ public class RwardManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/rwd/insertRward.do")
 	public String insertRward(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RwardManageVO rwardManageVO, 
 			BindingResult bindingResult, 
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception {
 
 		beanValidator.validate(rwardManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/rwd/RwardRegist";
+			return "com/uss/ion/rwd/RwardRegist";
 		} 
 		
 		// 첨부파일 관련 첨부파일ID 생성
@@ -137,7 +137,7 @@ public class RwardManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/ion/rwd/listRward.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -147,7 +147,7 @@ public class RwardManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/rwd/editRward.do")
 	public String editRward(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RwardManageVO rwardManageVO,
 			ModelMap model) {
 
@@ -157,7 +157,7 @@ public class RwardManageController {
 
 		cmmUseService.populateCmmCodeList("COM055", "COM055_rward");
 
-		return "uss/ion/rwd/RwardEdit";
+		return "com/uss/ion/rwd/RwardEdit";
 	}
 
 	/**
@@ -167,16 +167,16 @@ public class RwardManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/rwd/updateRward.do")
 	public String updateRward(
-			MultipartHttpServletRequest multiRequest,
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RwardManageVO rwardManageVO, 
 			BindingResult bindingResult,
+			MultipartHttpServletRequest multiRequest,
 			ModelMap model) 
 	throws Exception {
 		
 		beanValidator.validate(rwardManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/rwd/RwardEdit";
+			return "com/uss/ion/rwd/RwardEdit";
 		} 
 		
 		// 첨부파일 관련 ID 생성 start....
@@ -189,7 +189,7 @@ public class RwardManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/ion/rwd/listRward.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
  	}
 
 	/**
@@ -199,7 +199,7 @@ public class RwardManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/rwd/deleteRward.do")
 	public String deleteRward(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RwardManageVO rwardManageVO, 
 			ModelMap model) {
 
@@ -210,7 +210,7 @@ public class RwardManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/rwd/listRward.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/*** 승인관련 ***/
@@ -242,7 +242,7 @@ public class RwardManageController {
 
 		cmmUseService.populateCmmCodeList("COM055", "COM055_rward");
 
-		return "uss/ion/rwd/RwardConfmList";
+		return "com/uss/ion/rwd/RwardConfmList";
 	}
 
 	/**
@@ -252,7 +252,7 @@ public class RwardManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/rwd/editRwardConfm.do")
 	public String editRwardConfm(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RwardManageVO rwardManageVO,
 			ModelMap model) {
 
@@ -260,7 +260,7 @@ public class RwardManageController {
 
 		model.addAttribute(rwardManageService.selectRwardManage(rwardManageVO));
 
-		return "uss/ion/rwd/RwardConfmEdit";
+		return "com/uss/ion/rwd/RwardConfmEdit";
 	}
 
 	/**
@@ -270,7 +270,7 @@ public class RwardManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/rwd/updateRwardConfm.do")
 	public String updtRwardManageConfm(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute RwardManageVO rwardManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -279,7 +279,7 @@ public class RwardManageController {
 
 		beanValidator.validate(rwardManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/rwd/RwardConfmEdit";
+			return "com/uss/ion/rwd/RwardConfmEdit";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -290,7 +290,7 @@ public class RwardManageController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/ion/rwd/listRward.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 	
 }

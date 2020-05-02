@@ -77,7 +77,7 @@ public class LoginScrinImageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/ion/lsi/LoginScrinImageList";
+		return "com/uss/ion/lsi/LoginScrinImageList";
 	}
 
 	/**
@@ -87,10 +87,10 @@ public class LoginScrinImageController {
 	 */
 	@RequestMapping(value = "/uss/ion/lsi/registLoginScrinImage.do")
 	public String registLoginScrinImage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute LoginScrinImageVO loginScrinImageVO) {
 
-		return "uss/ion/lsi/LoginScrinImageRegist";
+		return "com/uss/ion/lsi/LoginScrinImageRegist";
 	}
 
 	/**
@@ -100,16 +100,16 @@ public class LoginScrinImageController {
 	 */
 	@RequestMapping(value = "/uss/ion/lsi/insertLoginScrinImage.do")
 	public String insertLoginScrinImage(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute LoginScrinImageVO loginScrinImageVO, 
+			MultipartHttpServletRequest multiRequest, 
 			BindingResult bindingResult, 
 			ModelMap model)
 	throws Exception {
 
 		beanValidator.validate(loginScrinImageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/lsi/LoginScrinImageRegist";
+			return "com/uss/ion/lsi/LoginScrinImageRegist";
 		} 
 
 		String atchFileId = "";
@@ -117,7 +117,7 @@ public class LoginScrinImageController {
 		
 		final Map<String, MultipartFile> files = multiRequest.getFileMap();
 		if (!files.isEmpty()) {
-			List<FileVO> result = fileUtil.parseFileInf(files, "LSI_", 0, "", "");
+			List<FileVO> result = fileUtil.parseFileInf(files, "LSI", 0, "", "");
 			atchFileId = fileMngService.insertFileInfs(result);
 
 			for(FileVO fileVo : result) {
@@ -134,7 +134,7 @@ public class LoginScrinImageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/ion/lsi/listLoginScrinImage.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -144,13 +144,13 @@ public class LoginScrinImageController {
 	 */
 	@RequestMapping(value = "/uss/ion/lsi/editLoginScrinImage.do")
 	public String editLoginScrinImage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute LoginScrinImageVO loginScrinImageVO,
 			ModelMap model) {
 
 		model.addAttribute(loginScrinImageService.selectLoginScrinImage(loginScrinImageVO));
 
-		return "uss/ion/lsi/LoginScrinImageEdit";
+		return "com/uss/ion/lsi/LoginScrinImageEdit";
 	}
 
 	/**
@@ -160,16 +160,16 @@ public class LoginScrinImageController {
 	 */
 	@RequestMapping(value = "/uss/ion/lsi/updateLoginScrinImage.do")
 	public String updateLoginScrinImage(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute LoginScrinImageVO loginScrinImageVO, 
 			BindingResult bindingResult, 
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception {
 
 		beanValidator.validate(loginScrinImageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/lsi/LoginScrinImageEdit";
+			return "com/uss/ion/lsi/LoginScrinImageEdit";
 		} 
 
 		String atchFileId = "";
@@ -177,7 +177,7 @@ public class LoginScrinImageController {
 
 		Map<String, MultipartFile> files = multiRequest.getFileMap();
 		if (!files.isEmpty()) {
-			List<FileVO> result = fileUtil.parseFileInf(files, "LSI_", 0, "", "");
+			List<FileVO> result = fileUtil.parseFileInf(files, "LSI", 0, "", "");
 			atchFileId = fileMngService.insertFileInfs(result);
 
 			for(FileVO fileVo : result) {
@@ -202,7 +202,7 @@ public class LoginScrinImageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/ion/lsi/listLoginScrinImage.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -212,7 +212,7 @@ public class LoginScrinImageController {
 	 */
 	@RequestMapping(value = "/uss/ion/lsi/deleteLoginScrinImage.do")
 	public String deleteLoginScrinImage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute LoginScrinImageVO loginScrinImageVO, 
 			ModelMap model) {
 
@@ -220,7 +220,7 @@ public class LoginScrinImageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/lsi/listLoginScrinImage.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -231,7 +231,7 @@ public class LoginScrinImageController {
 	 */
 	@RequestMapping(value = "/uss/ion/lsi/deleteListLoginScrinImage.do")
 	public String deleteListLoginScrinImage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute LoginScrinImageVO loginScrinImageVO, 
 			@RequestParam String imageIds,
 			ModelMap model) {
@@ -240,7 +240,7 @@ public class LoginScrinImageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/lsi/listLoginScrinImage.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -250,13 +250,13 @@ public class LoginScrinImageController {
 	 */
 	@RequestMapping(value = "/uss/ion/lsi/viewLoginScrinImage.do")
 	public String viewLoginScrinImage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute LoginScrinImageVO loginScrinImageVO, 
 			ModelMap model) {
 
 		model.addAttribute("fileList", loginScrinImageService.selectLoginScrinImageResult(loginScrinImageVO));
 
-		return "uss/ion/lsi/LoginScrinImageView";
+		return "com/uss/ion/lsi/LoginScrinImageView";
 	}
 	
 }

@@ -60,7 +60,7 @@ public class HpcmManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/olh/hpc/HpcmList";
+		return "com/uss/olh/hpc/HpcmList";
 	}
 
 	/**
@@ -70,13 +70,13 @@ public class HpcmManageController {
 	 */
 	@RequestMapping("/uss/olh/hpc/detailHpcm.do")
 	public String detailHpcm(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute HpcmManageVO hpcmManageVO,
 			ModelMap model) {
 
 		model.addAttribute(hpcmManageService.selectHpcmDetail(hpcmManageVO));
 
-		return "uss/olh/hpc/HpcmDetail";
+		return "com/uss/olh/hpc/HpcmDetail";
 	}
 
 	/**
@@ -87,13 +87,13 @@ public class HpcmManageController {
 	@RequestMapping("/uss/olh/hpc/registHpcm.do")
 	@Secured("ROLE_USER")
 	public String registHpcm(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute HpcmManageVO hpcmManageVO) {
 
 		// 공통코드를 가져오기 위한 Vo
 		cmmUseService.populateCmmCodeList("COM021", "COM021_hpcmSe");
 
-		return "uss/olh/hpc/HpcmRegist";
+		return "com/uss/olh/hpc/HpcmRegist";
 	}
 
 	/**
@@ -104,14 +104,14 @@ public class HpcmManageController {
 	@RequestMapping("/uss/olh/hpc/insertHpcm.do")
 	@Secured("ROLE_USER")
 	public String insertHpcm(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute HpcmManageVO hpcmManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(hpcmManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olh/hpc/HpcmRegist";
+			return "com/uss/olh/hpc/HpcmRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -122,7 +122,7 @@ public class HpcmManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/olh/hpc/listHpcm.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -133,7 +133,7 @@ public class HpcmManageController {
 	@RequestMapping("/uss/olh/hpc/editHpcm.do")
 	@Secured("ROLE_USER")
 	public String editHpcmManage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute HpcmManageVO hpcmManageVO,
 			ModelMap model) {
 
@@ -142,7 +142,7 @@ public class HpcmManageController {
 		// 공통코드를 가져오기 위한 Vo
 		cmmUseService.populateCmmCodeList("COM021", "COM021_hpcmSe");
 
-		return "uss/olh/hpc/HpcmEdit";
+		return "com/uss/olh/hpc/HpcmEdit";
 	}
 
 	/**
@@ -153,7 +153,7 @@ public class HpcmManageController {
 	@RequestMapping("/uss/olh/hpc/updateHpcm.do")
 	@Secured("ROLE_USER")
 	public String updateHpcmManage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute HpcmManageVO hpcmManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -161,7 +161,7 @@ public class HpcmManageController {
 		// Validation
 		beanValidator.validate(hpcmManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olh/hpc/HpcmEdit";
+			return "com/uss/olh/hpc/HpcmEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -172,7 +172,7 @@ public class HpcmManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/olh/hpc/listHpcm.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -183,7 +183,7 @@ public class HpcmManageController {
 	@RequestMapping(value="/uss/olh/hpc/deleteHpcm.do")
 	@Secured("ROLE_USER")
 	public String deleteHpcm(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute HpcmManageVO hpcmManageVO, 
 			ModelMap model) {
 
@@ -191,7 +191,7 @@ public class HpcmManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/olh/hpc/listHpcm.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

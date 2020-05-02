@@ -64,7 +64,7 @@ public class MemoReprtController {
 
 		model.addAttribute(paginationInfo);
 
-		return "cop/smt/mrm/ReportrListPopup";
+		return "com/cop/smt/mrm/ReportrListPopup";
 	}
 
 	/**
@@ -94,7 +94,7 @@ public class MemoReprtController {
 	
 		model.addAttribute(paginationInfo);
 
-		return "cop/smt/mrm/MemoReprtList";
+		return "com/cop/smt/mrm/MemoReprtList";
 	}
 
 	/**
@@ -105,7 +105,7 @@ public class MemoReprtController {
 	@RequestMapping("/cop/smt/mrm/detailMemoReprt.do")
 	@Secured("ROLE_USER")
 	public String detailMemoReprt(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MemoReprtVO memoReprtVO, 
 			ModelMap model) {
 	
@@ -113,14 +113,14 @@ public class MemoReprtController {
 		
 		// 1. 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		model.addAttribute("uniqId", loginVO.getUserId());
+		model.addAttribute("userId", loginVO.getUserId());
 
 		if (loginVO.getUserId().equals(memoReprtVO.getReportrId())) {
 			memoReprtService.readMemoReprt(memoReprtVO);	// notice read status
 		}
 		model.addAttribute(memoReprtVO);
 		
-		return "cop/smt/mrm/MemoReprtDetail";
+		return "com/cop/smt/mrm/MemoReprtDetail";
 	}
 
 	/**
@@ -131,7 +131,7 @@ public class MemoReprtController {
 	@RequestMapping("/cop/smt/mrm/registMemoReprt.do")
 	@Secured("ROLE_USER")
 	public String registMemoReprt(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MemoReprtVO memoReprtVO) {
 
 		// 1. 로그인 객체 선언
@@ -143,7 +143,7 @@ public class MemoReprtController {
 		memoReprtVO.setWrterNm(loginVO.getName());
 		memoReprtVO.setWrterClsfNm(memoReprtService.selectWrterClsfNm(loginVO.getUserId()));
 
-		return "cop/smt/mrm/MemoReprtRegist";
+		return "com/cop/smt/mrm/MemoReprtRegist";
 	}
 
 	/**
@@ -154,21 +154,21 @@ public class MemoReprtController {
 	@RequestMapping("/cop/smt/mrm/insertMemoReprt.do")
 	@Secured("ROLE_USER")
 	public String insertMemoReprt(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MemoReprtVO memoReprtVO,
 			BindingResult bindingResult, 
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception {
 
 		// 서버 validate 체크
 		beanValidator.validate(memoReprtVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/smt/mrm/MemoReprtRegist";
+			return "com/cop/smt/mrm/MemoReprtRegist";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
-		memoReprtVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "DSCH_"));
+		memoReprtVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "MRM"));
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -178,7 +178,7 @@ public class MemoReprtController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/cop/smt/mrm/listMemoReprt.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -189,13 +189,13 @@ public class MemoReprtController {
 	@RequestMapping("/cop/smt/mrm/editMemoReprt.do")
 	@Secured("ROLE_USER")
 	public String editMemoReprt(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MemoReprtVO memoReprtVO,
 			ModelMap model) {
 
 		model.addAttribute(memoReprtService.selectMemoReprt(memoReprtVO));
 
-		return "cop/smt/mrm/MemoReprtEdit";
+		return "com/cop/smt/mrm/MemoReprtEdit";
 	}
 
 	/**
@@ -206,21 +206,21 @@ public class MemoReprtController {
 	@RequestMapping("/cop/smt/mrm/updateMemoReprt.do")
 	@Secured("ROLE_USER")
 	public String updateMemoReprt(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MemoReprtVO memoReprtVO,
 			BindingResult bindingResult, 
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception {
 
 		beanValidator.validate(memoReprtVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/smt/mrm/MemoReprtEdit";
+			return "com/cop/smt/mrm/MemoReprtEdit";
 		}
 
 		// 첨부파일 관련 ID 생성 start....
 		String atchFileId = memoReprtVO.getAtchFileId();
-		memoReprtVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "DSCH_", atchFileId));
+		memoReprtVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "MRM", atchFileId));
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		memoReprtVO.setLastUpdusrId(loginVO.getUserId());
@@ -229,7 +229,7 @@ public class MemoReprtController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/cop/smt/mrm/listMemoReprt.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -240,7 +240,7 @@ public class MemoReprtController {
 	@RequestMapping("/cop/smt/mrm/deleteMemoReprt.do")
 	@Secured("ROLE_USER")
 	public String deleteMemoReprt(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MemoReprtVO memoReprtVO, 
 			ModelMap model) {
 
@@ -248,7 +248,7 @@ public class MemoReprtController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/cop/smt/mrm/listMemoReprt.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -259,7 +259,7 @@ public class MemoReprtController {
 	@RequestMapping("/cop/smt/mrm/updateMemoReprtDrctMatter.do")
 	@Secured("ROLE_USER")
 	public String updateMemoReprtDrctMatter(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute MemoReprtVO memoReprtVO, 
 			ModelMap model) {
 
@@ -267,7 +267,7 @@ public class MemoReprtController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/cop/smt/mrm/listMemoReprt.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

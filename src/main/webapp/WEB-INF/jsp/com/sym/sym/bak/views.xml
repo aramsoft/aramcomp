@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="com/sym/sym/bak/BackupOpertList" extends="default">
+    <put-attribute name="title" value="백업작업관리 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/sym/sym/bak/BackupOpertList.jsp" />
+  </definition>
+  
+  <definition name="com/sym/sym/bak/BackupOpertDetail" extends="default">
+    <put-attribute name="title" value="백업작업 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/sym/sym/bak/BackupOpertDetail.jsp" />
+  </definition>
+  
+  <definition name="com/sym/sym/bak/BackupOpertRegist" extends="default">
+    <put-attribute name="title" value="백업작업 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/sym/sym/bak/BackupOpertRegist.jsp" />
+  </definition>
+  
+  <definition name="com/sym/sym/bak/BackupOpertEdit" extends="default">
+    <put-attribute name="title" value="백업작업 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/sym/sym/bak/BackupOpertEdit.jsp" />
+  </definition>
+
+  <definition name="com/sym/sym/bak/BackupResultList" extends="default">
+    <put-attribute name="title" value="백업결과관리 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/sym/sym/bak/BackupResultList.jsp" />
+  </definition>
+  
+  <definition name="com/sym/sym/bak/BackupResultDetail" extends="default">
+    <put-attribute name="title" value="백업결과 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/sym/sym/bak/BackupResultDetail.jsp" />
+  </definition>
+  
+</tiles-definitions>

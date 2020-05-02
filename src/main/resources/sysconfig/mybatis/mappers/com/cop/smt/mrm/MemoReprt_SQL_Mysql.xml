@@ -7,8 +7,8 @@
         /* 구현 Sql */
 		<![CDATA[
 			SELECT b.ORGNZT_NM				AS "orgnztNm" 
-				 , a.ESNTL_ID 				AS "uniqId"
-				 , a.USER_NM  				AS "emplyrNm" 
+				 , a.EMPLYR_ID 				AS "userId"
+				 , a.USER_NM  				AS "userNm" 
 				 , a.EMPL_NO				AS "emplNo" 
 				 , a.OFCPS_NM				AS "ofcpsNm" 
 			  FROM COMTN_EMPLYR_INFO a
@@ -60,7 +60,7 @@
 		<![CDATA[
 			SELECT OFCPS_NM 
 			  FROM COMTN_EMPLYR_INFO
-			 WHERE ESNTL_ID = #{wrterId}
+			 WHERE EMPLYR_ID = #{wrterId}
 		]]>
 	</select>
 	
@@ -76,7 +76,7 @@
 				 , (CASE WHEN IFNULL(A.REPORTR_INQIRE_DT, ' ') = ' ' THEN '미확인' ELSE '확인' END) AS "reportrInqireDt" 
 			  FROM COMTN_MEMO_REPRT A
 				   LEFT OUTER JOIN COMTN_EMPLYR_INFO B
-						ON A.WRTER_ID = B.ESNTL_ID
+						ON A.WRTER_ID = B.EMPLYR_ID
 			 WHERE (A.WRTER_ID = #{searchId} OR A.REPORTR_ID = #{searchId})
 		]]>
    	    <if test='searchBgnDe != null and searchBgnDe != ""'>
@@ -126,7 +126,7 @@
 			SELECT COUNT(A.REPRT_ID) as cnt
 			  FROM COMTN_MEMO_REPRT A
 			 	   LEFT OUTER JOIN COMTN_EMPLYR_INFO B
-						ON A.WRTER_ID = B.ESNTL_ID
+						ON A.WRTER_ID = B.EMPLYR_ID
 			 WHERE (A.WRTER_ID = #{searchId} OR A.REPORTR_ID = #{searchId})
 	 	]]>
    	    <if test='searchBgnDe != null and searchBgnDe != ""'>
@@ -175,7 +175,7 @@
 				 , A.REPORTR_ID
 				 , C.USER_NM 				AS "reportrNm" 
 				 , C.OFCPS_NM 				AS "reportrClsfNm"  
-				 , A.REPORT_CN
+				 , A.REPORT_CN				AS "reprtCn"
 				 , A.ATCH_FILE_ID
 				 , A.DRCT_MATTER
 				 , A.DRCT_MATTER_REGIST_DT
@@ -186,9 +186,9 @@
 				 , A.LAST_UPDUSR_ID 
 			  FROM COMTN_MEMO_REPRT A
 				   LEFT OUTER JOIN COMTN_EMPLYR_INFO B
-						ON A.WRTER_ID = B.ESNTL_ID
+						ON A.WRTER_ID = B.EMPLYR_ID
 				   LEFT OUTER JOIN COMTN_EMPLYR_INFO C
-						ON A.REPORTR_ID = C.ESNTL_ID
+						ON A.REPORTR_ID = C.EMPLYR_ID
 			 WHERE A.REPRT_ID = #{reprtId}
 	 	]]>
 	</select>

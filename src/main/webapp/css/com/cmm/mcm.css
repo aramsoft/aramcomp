@@ -1,0 +1,75 @@
+@charset "utf-8";
+html { overflow-y:scroll; }
+
+/* layout */
+#wrap{ width:75%; margin:0px auto; overflow:hidden; }
+header{ width:100%; margin:0px 10px; }
+
+#middle { width:100%; margin:0px 10px; overflow:hidden; }
+aside { float:left; width:170px; height:550px; }
+section { margin-left:170px; }
+
+footer{ width:100%; margin:100px 10px 10px 10px; text-align:center; }
+
+/* header */
+#logo{ float:left; height:45px;}
+#login{ float:right; margin-top:10px;}
+
+#banner{ 
+	clear:both; float:left; width:100%; margin:0px 10px; 
+	height:74px; border:1px solid #d9dde1; 
+	background:#fff url('/images/com/cop/tpl/temple_top01.jpg') ;
+	font-size:9pt; font-family:Dotum; 	
+}
+#heading{ width:200px; padding:10px;  }
+#heading .cmmty_title {
+	font-size:12pt; font-weight:bold; font-family:Gulim; 
+	color:#3a5870; margin-bottom:10px; text-shadow:5px 5px 5px #A8A8A8; 
+}
+
+/* navigation */
+#topmenu{ 
+	clear:both; float:left; width:100%; height:40px; margin:10px;  
+	background:url('/images/com/cop/tpl/top_menu_bg.gif') repeat-x; 	
+}
+#topmenu ul{ padding:12px; margin:0; }
+#topmenu li{ display:inline; padding-right:5px; padding-left:5px;}
+#topmenu #leftbar{float:left; background: url('/images/com/cop/tpl/top_menu_left.gif') no-repeat scroll left top transparent; width:13px; height:40px;}	
+#topmenu #rightbar{float:right; background: url('/images/com/cop/tpl/top_menu_right.gif') no-repeat scroll right top transparent; width:13px; height:40px;}
+
+#user_menu{ float:left; }
+#user_menu a { font-size:9pt; font-family:Gulim; font-weight: bold; text-decoration:none; }
+#user_menu a:link 		{color:#ffffff; }
+#user_menu a:visited	{color:#ffffff; }
+#user_menu a:active  	{color:#ffffff; }
+#user_menu a:hover		{color:#ffcb2c; }
+
+#manager_menu{ float:right; }
+#manager_menu a { font-size:9pt; font-family:Gulim; font-weight: bold; text-decoration:none; }
+#manager_menu a:link 		{ color:#66FFFF; }
+#manager_menu a:visited		{ color:#ffffff; }
+#manager_menu a:active  	{ color:#ffffff; }
+#manager_menu a:hover		{ color:#ffcb2c; }
+
+/* aside */
+#leftmenu #topbar{background: url('/images/com/cop/tpl/left_menu_top.gif') no-repeat scroll left top transparent; width:169px; height:13px;}	
+#leftmenu #bottombar{background: url('/images/com/cop/tpl/left_menu_bottom.gif') no-repeat scroll left bottom transparent; width:169px; height:13px;}
+#leftmenu #middlebar{background: url("/images/com/cmm/left_menu_bg.gif") repeat-y scroll left top transparent; width:159px; padding-left:10px;}
+#leftmenu #additional{margin:20px; text-align:center; }
+
+#leftmenu ul{list-style-type:none; width:145px; padding:0px; margin:0px; }
+.leftmenu_dept01 {font-size:10pt; font-weight:bold; color:#ffffff; height:23px;}
+.leftmenu_dept01 .leftbar {float:left; background: url('/images/com/cop/tpl/1_step_left.gif') no-repeat scroll left top transparent; width:21px; height:23px; }	
+.leftmenu_dept01 .rightbar {float:right; background: url('/images/com/cop/tpl/1_step_right.gif') no-repeat scroll left top transparent; width:6px; height:23px; }	
+.leftmenu_dept01 .menubar {float:left; background:url('/images/com/cop/tpl/1_step_bg.gif') repeat-x; width:118px; padding-top:5px; padding-bottom:5px;}	
+
+.leftmenu_dept02 {padding-top:4px;}	
+.leftmenu_dept02 .menubar {float:left; background:url('/images/com/cop/tpl/bull.gif') no-repeat scroll left top transparent; width:21px; height:11px; margin-left:10px; margin-right:5px;}	
+
+#leftmenu .menubox { padding-bottom:10px; }
+
+/* footer */
+#copyright { font-size:12pt; font-weight:bold; font-family:Gulim; color:#3a5870; }
+
+/* CmmntyMainContents.jsp */
+

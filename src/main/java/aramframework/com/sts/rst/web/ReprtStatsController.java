@@ -97,7 +97,7 @@ public class ReprtStatsController {
 			reprtStatsVO.setPmToDate(DateUtil.getToday());// 2011.09.19
 		}
 		
-		return "sts/rst/ReprtStatsList";
+		return "com/sts/rst/ReprtStatsList";
 	}
 
 	/**
@@ -108,13 +108,13 @@ public class ReprtStatsController {
 	@RequestMapping("/sts/rst/detailReprtStats.do")
 	@Secured("ROLE_ADMIN")
 	public String detailReprtStats(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ReprtStatsVO reprtStatsVO, 
 			ModelMap model) {
 
 		model.addAttribute("reprtStats", reprtStatsService.selectReprtStats(reprtStatsVO));
 
-		return "sts/rst/ReprtStatsDetail";
+		return "com/sts/rst/ReprtStatsDetail";
 	}
 
 	/**
@@ -125,14 +125,14 @@ public class ReprtStatsController {
 	@RequestMapping("/sts/rst/registReprtStats.do")
 	@Secured("ROLE_ADMIN")
 	public String registReprtStats(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ReprtStatsVO reprtStatsVO,
 			ModelMap model) {
 
 		cmmUseService.populateCmmCodeList("COM036", "COM036_reprtSttus");
 		cmmUseService.populateCmmCodeList("COM040", "COM040_reprtType");
 
-		return "sts/rst/ReprtStatsRegist";
+		return "com/sts/rst/ReprtStatsRegist";
 	}
 
 	/**
@@ -143,14 +143,14 @@ public class ReprtStatsController {
 	@RequestMapping("/sts/rst/insertReprtStats.do")
 	@Secured("ROLE_ADMIN")
 	public String insertReprtStats(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute ReprtStatsVO reprtStatsVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(reprtStatsVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "sts/rst/ReprtStatsRegist";
+			return "com/sts/rst/ReprtStatsRegist";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -160,7 +160,7 @@ public class ReprtStatsController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sts/rst/listReprtStats.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

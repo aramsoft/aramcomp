@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="com/sym/ccm/cca/CmmnCodeList" extends="default">
+    <put-attribute name="title" value="공통코드 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/sym/ccm/cca/CmmnCodeList.jsp" />
+  </definition>
+  
+  <definition name="com/sym/ccm/cca/CmmnCodeDetail" extends="default">
+    <put-attribute name="title" value="공통코드 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/sym/ccm/cca/CmmnCodeDetail.jsp" />
+  </definition>
+  
+  <definition name="com/sym/ccm/cca/CmmnCodeRegist" extends="default">
+    <put-attribute name="title" value="공통코드  등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/sym/ccm/cca/CmmnCodeRegist.jsp" />
+  </definition>
+  
+  <definition name="com/sym/ccm/cca/CmmnCodeEdit" extends="default">
+    <put-attribute name="title" value="공통코드  수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/sym/ccm/cca/CmmnCodeEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

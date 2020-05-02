@@ -66,7 +66,7 @@ public class SysHistoryController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/log/slg/SysHistList";
+		return "com/sym/log/slg/SysHistList";
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class SysHistoryController {
 
 		model.addAttribute(sysHistoryService.selectSysHistory(sysHistoryVO));
 
-		return "sym/log/slg/SysHistDetail";
+		return "com/sym/log/slg/SysHistDetail";
 	}
 
 	/**
@@ -100,7 +100,7 @@ public class SysHistoryController {
 
 		cmmUseService.populateCmmCodeList("COM002", "COM002_histSe");
 
-		return "sym/log/slg/SysHistRegist";
+		return "com/sym/log/slg/SysHistRegist";
 	}
 
 	/**
@@ -120,11 +120,11 @@ public class SysHistoryController {
 
 		beanValidator.validate(sysHistoryVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "sym/log/slg/SysHistRegist";
+			return "com/sym/log/slg/SysHistRegist";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
-		sysHistoryVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "SHF_"));
+		sysHistoryVO.setAtchFileId(fileMngUtil.insertMultiFile(multiRequest, "SLG"));
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		sysHistoryVO.setFrstRegisterId(loginVO.getUserId());
@@ -133,7 +133,7 @@ public class SysHistoryController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sym/log/slg/listSysHistory.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -152,7 +152,7 @@ public class SysHistoryController {
 
 		cmmUseService.populateCmmCodeList("COM002", "COM002_histSe");
 		
-		return "sym/log/slg/SysHistEdit";
+		return "com/sym/log/slg/SysHistEdit";
 	}
 
 	/**
@@ -172,18 +172,18 @@ public class SysHistoryController {
 
 		beanValidator.validate(sysHistoryVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "sym/log/slg/SysHistEdit";
+			return "com/sym/log/slg/SysHistEdit";
 		}
 
 		// 첨부파일 관련 ID 생성 start....
 		String atchFileId = sysHistoryVO.getAtchFileId();
-		sysHistoryVO.setAtchFileId(fileMngUtil.updateMultiFile(multiRequest, "SHF_", atchFileId));
+		sysHistoryVO.setAtchFileId(fileMngUtil.updateMultiFile(multiRequest, "SLG", atchFileId));
 
 		sysHistoryService.updateSysHistory(sysHistoryVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/sym/log/slg/listSysHistory.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -194,6 +194,7 @@ public class SysHistoryController {
 	@RequestMapping(value = "/sym/log/slg/deleteSysHistory.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteSysHistory(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SysHistoryVO sysHistoryVO, 
 			ModelMap model) {
 
@@ -201,7 +202,7 @@ public class SysHistoryController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sym/log/slg/listSysHistory.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

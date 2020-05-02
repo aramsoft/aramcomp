@@ -48,7 +48,7 @@ public class UserStatsController {
 		cmmUseService.populateCmmCodeList("COM014", "COM014_sexdstn");
 
 		if (statsVO.getFromDate() == null || "".equals(statsVO.getFromDate())) 
-			return "aramframework/com/sts/ust/UserStats";
+			return "com/sts/ust/UserStats";
 
 		List<StatsVO> userStats = userStatsService.selectUserStats(statsVO);
 		// 그래프에 표시될 이미지 길이를 결정한다.
@@ -74,7 +74,7 @@ public class UserStatsController {
 
 		model.addAttribute("userStats", userStats);
 
-		return "aramframework/com/sts/ust/UserStats";
+		return "com/sts/ust/UserStats";
 	}
 	
 }

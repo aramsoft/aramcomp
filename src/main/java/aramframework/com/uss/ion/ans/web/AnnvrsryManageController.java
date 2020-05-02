@@ -86,7 +86,7 @@ public class AnnvrsryManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/ion/ans/AnnvrsryList";
+		return "com/uss/ion/ans/AnnvrsryList";
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class AnnvrsryManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ans/detailAnnvrsry.do")
 	public String detailAnnvrsry(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AnnvrsryManageVO annvrsryManageVO,
 			ModelMap model) {
 
@@ -119,7 +119,7 @@ public class AnnvrsryManageController {
 
 		model.addAttribute(annvrsryManageVO);
 		
-		return "uss/ion/ans/AnnvrsryDetail";
+		return "com/uss/ion/ans/AnnvrsryDetail";
 	}
 
 	/**
@@ -129,7 +129,7 @@ public class AnnvrsryManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ans/registAnnvrsry.do")
 	public String registAnnvrsry(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AnnvrsryManageVO annvrsryManageVO) {
 
 		// 로그인 객체 선언
@@ -142,7 +142,7 @@ public class AnnvrsryManageController {
 
 		cmmUseService.populateCmmCodeList("COM069", "COM069_annvrsrySe");
 
-		return "uss/ion/ans/AnnvrsryRegist";
+		return "com/uss/ion/ans/AnnvrsryRegist";
 	}
 
 	/**
@@ -152,7 +152,7 @@ public class AnnvrsryManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ans/insertAnnvrsry.do")
 	public String insertAnnvrsry(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AnnvrsryManageVO annvrsryManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -160,7 +160,7 @@ public class AnnvrsryManageController {
 		beanValidator.validate(annvrsryManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("message", MessageHelper.getMessage("fail.common.insert"));
-			return "uss/ion/ans/AnnvrsryRegist";
+			return "com/uss/ion/ans/AnnvrsryRegist";
 		}
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -168,14 +168,14 @@ public class AnnvrsryManageController {
 
 		if (annvrsryManageService.selectAnnvrsryManageDplctAt(annvrsryManageVO) != 0) {
 			model.addAttribute("message", "이미 등록된 데이타입니다. 해당 데이타를 확인해 주세요");
-			return "uss/ion/ans/AnnvrsryRegist";
+			return "com/uss/ion/ans/AnnvrsryRegist";
 		}
 		
 		annvrsryManageService.insertAnnvrsryManage(annvrsryManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/ion/ans/listAnnvrsry.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -185,7 +185,7 @@ public class AnnvrsryManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ans/editAnnvrsry.do")
 	public String editAnnvrsry(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AnnvrsryManageVO annvrsryManageVO,
 			ModelMap model) {
 
@@ -193,7 +193,7 @@ public class AnnvrsryManageController {
 
 		cmmUseService.populateCmmCodeList("COM069", "COM069_annvrsrySe");
 
-		return "uss/ion/ans/AnnvrsryEdit";
+		return "com/uss/ion/ans/AnnvrsryEdit";
 	}
 
 	/**
@@ -203,14 +203,14 @@ public class AnnvrsryManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ans/updateAnnvrsry.do")
 	public String updateAnnvrsry(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AnnvrsryManageVO annvrsryManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(annvrsryManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/ans/AnnvrsryEdit";
+			return "com/uss/ion/ans/AnnvrsryEdit";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -220,7 +220,7 @@ public class AnnvrsryManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/ion/ans/listAnnvrsry.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}    
 
 	/**
@@ -230,7 +230,7 @@ public class AnnvrsryManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ans/deleteAnnvrsry.do")
 	public String deleteAnnvrsry(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AnnvrsryManageVO annvrsryManageVO, 
 			ModelMap model) {
 
@@ -238,7 +238,7 @@ public class AnnvrsryManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/ans/listAnnvrsry.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -260,7 +260,7 @@ public class AnnvrsryManageController {
 
 		model.addAttribute("resultList", annvrsryManageService.selectAnnvrsryGdcc(annvrsryManageVO));
 
-		return "uss/ion/ans/AnnvrsryMainPage";
+		return "com/uss/ion/ans/AnnvrsryMainPage";
 	}
 
 	/**
@@ -270,7 +270,7 @@ public class AnnvrsryManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ans/detailAnnvrsryGdcc.do")
 	public String detailAnnvrsryGdcc(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AnnvrsryManageVO annvrsryManageVO) {
 
 		/*
@@ -323,7 +323,7 @@ public class AnnvrsryManageController {
 
 		annvrsryManageVO.setAnnvrsryBeginDe(Long.toString(resultDay));
 
-		return "uss/ion/ans/AnnvrsryGdcc";
+		return "com/uss/ion/ans/AnnvrsryGdcc";
 	}
 
 	/**
@@ -333,8 +333,8 @@ public class AnnvrsryManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ans/listAnnvrsryBndePopup.do")
 	public String listAnnvrsryBndePopup(
-			HttpServletRequest request, 
 			@ModelAttribute AnnvrsryManageVO annvrsryManageVO,
+			HttpServletRequest request, 
 			ModelMap model) 
 	throws Exception {
 
@@ -354,7 +354,7 @@ public class AnnvrsryManageController {
 			model.addAttribute("message", message);
 		}
 
-		return "uss/ion/ans/AnnvrsryBndeListPopup";
+		return "com/uss/ion/ans/AnnvrsryBndeListPopup";
 	}
 
 	/**
@@ -365,9 +365,9 @@ public class AnnvrsryManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/ans/insertAnnvrsryBnde.do")
 	public String insertAnnvrsryBnde(
-			@RequestParam String checkedAnnvrsryManageForInsert,
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AnnvrsryManageVO annvrsryManageVO, 
+			@RequestParam String checkedAnnvrsryManageForInsert,
 			ModelMap model) {
 
 		// int iTemp = egovAnnvrsryManageService.selectAnnvrsryManageMonthCnt(annvrsryManageVO);
@@ -380,7 +380,7 @@ public class AnnvrsryManageController {
 
 		model.addAttribute("message", "true");
 
-		return "uss/ion/ans/AnnvrsryBndeListPopup";
+		return "com/uss/ion/ans/AnnvrsryBndeListPopup";
 
 		// }else{
 		// 		String sTempMessage =

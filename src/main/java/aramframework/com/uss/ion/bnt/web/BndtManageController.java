@@ -85,7 +85,7 @@ public class BndtManageController {
 
 		model.addAttribute("bndtManageList", bndtManageService.selectBndtManageList(bndtManageVO));
 
-		return "uss/ion/bnt/BndtManageList";
+		return "com/uss/ion/bnt/BndtManageList";
 	}
 
 	/**
@@ -109,7 +109,7 @@ public class BndtManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/ion/bnt/BndtManageList";
+		return "com/uss/ion/bnt/BndtManageList";
 	}
 
 	/**
@@ -119,13 +119,13 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/detailBndtManage.do")
 	public String detailBndtManage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BndtManageVO bndtManageVO,
 			ModelMap model) {
 
 		model.addAttribute(bndtManageService.selectBndtManage(bndtManageVO));
 
-		return "uss/ion/bnt/BndtManageDetail";
+		return "com/uss/ion/bnt/BndtManageDetail";
 	}
 
 	/**
@@ -135,10 +135,10 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/registBndtManage.do")
 	public String registBndtManage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BndtManageVO bndtManageVO) {
 		
-		return "uss/ion/bnt/BndtManageRegist";
+		return "com/uss/ion/bnt/BndtManageRegist";
 	}
 
 	/**
@@ -148,14 +148,14 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/insertBndtManage.do")
 	public String insertBndtManage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BndtManageVO bndtManageVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(bndtManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/bnt/BndtManageRegist";
+			return "com/uss/ion/bnt/BndtManageRegist";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -165,7 +165,7 @@ public class BndtManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/ion/bnt/listBndtManage.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -175,13 +175,13 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/editBndtManage.do")
 	public String editBndtManage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BndtManageVO bndtManageVO,
 			ModelMap model) {
 
 		model.addAttribute(bndtManageService.selectBndtManage(bndtManageVO));
 
-		return "uss/ion/bnt/BndtManageEdit";
+		return "com/uss/ion/bnt/BndtManageEdit";
 	}
 
 	/**
@@ -191,14 +191,14 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/updateBndtManage.do")
 	public String updateBndtManage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BndtManageVO bndtManageVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(bndtManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/bnt/BndtManageEdit";
+			return "com/uss/ion/bnt/BndtManageEdit";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -208,7 +208,7 @@ public class BndtManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/ion/bnt/listBndtManage.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -218,21 +218,21 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/deleteBndtManage.do")
 	public String deleteBndtManage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BndtManageVO bndtManageVO,
 			ModelMap model) {
 
 		int iDiaryTotCnt = bndtManageService.selectBndtDiaryTotCnt(bndtManageVO);
 		if (iDiaryTotCnt != 0) {
 			model.addAttribute("errorMessage", "당직일지를 삭제하신 후 당직정보를 삭제 하세요.");
-			return "uss/ion/bnt/BndtManageEdit";
+			return "com/uss/ion/bnt/BndtManageEdit";
 		}
 		
 		bndtManageService.deleteBndtManage(bndtManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/bnt/listBndtManage.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/****** 당직체크 관리 ******/
@@ -261,7 +261,7 @@ public class BndtManageController {
 
 		cmmUseService.populateCmmCodeList("COM071", "COM071_bndtCeckSe");
 
-		return "uss/ion/bnt/BndtCeckManageList";
+		return "com/uss/ion/bnt/BndtCeckManageList";
 	}
 
 	/**
@@ -271,13 +271,13 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/detailBndtCeckManage.do")
 	public String detailBndtCeckManage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BndtCeckManageVO bndtCeckManageVO,
 			ModelMap model) {
 
 		model.addAttribute(bndtManageService.selectBndtCeckManage(bndtCeckManageVO));
 
-		return "uss/ion/bnt/BndtCeckManageDetail";
+		return "com/uss/ion/bnt/BndtCeckManageDetail";
 	}
 
 	/**
@@ -287,12 +287,12 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/registBndtCeckManage.do")
 	public String registBndtCeckManage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BndtCeckManageVO bndtCeckManageVO) {
 
 		cmmUseService.populateCmmCodeList("COM071", "COM071_bndtCeckSe");
 
-		return "uss/ion/bnt/BndtCeckManageRegist";
+		return "com/uss/ion/bnt/BndtCeckManageRegist";
 	}
 
 	/**
@@ -302,19 +302,19 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/insertBndtCeckManage.do")
 	public String insertBndtCeckManage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BndtCeckManageVO bndtCeckManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(bndtCeckManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/bnt/BndtCeckManageRegist";
+			return "com/uss/ion/bnt/BndtCeckManageRegist";
 		} 
 		
 		if (bndtManageService.selectBndtCeckManageDplctAt(bndtCeckManageVO) != 0) {
 			model.addAttribute("dplctMessage", "이미 등록된 데이타입니다. 해당 데이타를 확인해 주세요");
-			return "uss/ion/bnt/BndtCeckManageRegist";
+			return "com/uss/ion/bnt/BndtCeckManageRegist";
 		}
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -324,7 +324,7 @@ public class BndtManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/ion/bnt/listBndtCeckManage.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -334,13 +334,13 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/editBndtCeckManage.do")
 	public String editBndtCeckManage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BndtCeckManageVO bndtCeckManageVO,
 			ModelMap model) {
 
 		model.addAttribute(bndtManageService.selectBndtCeckManage(bndtCeckManageVO));
 
-		return "uss/ion/bnt/BndtCeckManageEdit";
+		return "com/uss/ion/bnt/BndtCeckManageEdit";
 	}
 
 	/**
@@ -350,14 +350,14 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/updateBndtCeckManage.do")
 	public String updateBndtCeckManage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BndtCeckManageVO bndtCeckManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(bndtCeckManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/bnt/BndtCeckManageEdit";
+			return "com/uss/ion/bnt/BndtCeckManageEdit";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -367,7 +367,7 @@ public class BndtManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/ion/bnt/listBndtCeckManage.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -377,7 +377,7 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/deleteBndtCeckManage.do")
 	public String deleteBndtCeckManage(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BndtCeckManageVO bndtCeckManageVO, 
 			ModelMap model) {
 
@@ -385,7 +385,7 @@ public class BndtManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/bnt/listBndtCeckManage.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/****** 당직일지 ******/
@@ -397,13 +397,13 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/detailBndtDiary.do")
 	public String detailBndtDiary(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BndtDiaryVO bndtDiaryVO, 
 			ModelMap model) {
 
 		model.addAttribute("bndtDiaryList", bndtManageService.selectBndtDiary(bndtDiaryVO));
 
-		return "uss/ion/bnt/BndtDiaryDetail";
+		return "com/uss/ion/bnt/BndtDiaryDetail";
 	}
 
 	/**
@@ -413,13 +413,13 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/registBndtDiary.do")
 	public String registBndtDiary(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BndtDiaryVO bndtDiaryVO, 
 			ModelMap model) {
 
 		model.addAttribute("bndtDiaryList", bndtManageService.selectBndtDiary(bndtDiaryVO));
 
-		return "uss/ion/bnt/BndtDiaryRegist";
+		return "com/uss/ion/bnt/BndtDiaryRegist";
 	}
 
 	/**
@@ -430,9 +430,9 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/insertBndtDiary.do")
 	public String insertBndtDiary(
-			@RequestParam String diaryForInsert, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BndtDiaryVO bndtDiaryVO, 
+			@RequestParam String diaryForInsert, 
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -442,7 +442,7 @@ public class BndtManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/ion/bnt/listBndtManage.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -452,13 +452,13 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/editBndtDiary.do")
 	public String editBndtDiary(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BndtDiaryVO bndtDiaryVO, 
 			ModelMap model) {
 
 		model.addAttribute("bndtDiaryList", bndtManageService.selectBndtDiary(bndtDiaryVO));
 
-		return "uss/ion/bnt/BndtDiaryEdit";
+		return "com/uss/ion/bnt/BndtDiaryEdit";
 	}
 
 	/**
@@ -469,9 +469,9 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/updateBndtDiary.do")
 	public String updateBndtDiary(
-			@RequestParam String diaryForUpdate, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BndtDiaryVO bndtDiaryVO, 
+			@RequestParam String diaryForUpdate, 
 			ModelMap model) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -481,7 +481,7 @@ public class BndtManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/ion/bnt/listBndtManage.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -491,7 +491,7 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/deleteBndtDiary.do")
 	public String deleteBndtDiary(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BndtDiaryVO bndtDiaryVO, 
 			ModelMap model) {
 
@@ -499,7 +499,7 @@ public class BndtManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/bnt/listBndtManage.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -509,14 +509,14 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/BndtManageListPop.do")
 	public String selectBndtManageBnde(
-			HttpServletRequest request, 
 			@ModelAttribute BndtManageVO bndtManageVO, 
+			HttpServletRequest request, 
 			ModelMap model) 
 	throws Exception {
 		
 		String sCmd = request.getParameter("cmd") == null ? "" : request.getParameter("cmd"); // 상세정보 구분
 		if (!sCmd.equals("bnde")) {
-			return "uss/ion/bnt/BndtManageBndeListPop";
+			return "com/uss/ion/bnt/BndtManageBndeListPop";
 		}
 		
 		String message = "";
@@ -532,7 +532,7 @@ public class BndtManageController {
 		}
 		model.addAttribute("message", message);
 		
-		return "uss/ion/bnt/BndtManageBndeListPop";
+		return "com/uss/ion/bnt/BndtManageBndeListPop";
 	}
 
 	/**
@@ -543,16 +543,16 @@ public class BndtManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/bnt/insertBndtManageBnde.do")
 	public String insertBndtManageBnde(
-			@RequestParam String checkedBndtManageForInsert,
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BndtManageVO bndtManageVO, 
+			@RequestParam String checkedBndtManageForInsert,
 			ModelMap model) {
 
 		int iTemp = bndtManageService.selectBndtManageMonthCnt(bndtManageVO);
 		if (iTemp != 0) {
 			String sTempMessage = bndtManageVO.getBndtDe().substring(0, 4) + "년" + bndtManageVO.getBndtDe().substring(4, 6) + "월 데이타가 존재합니다.";
 			model.addAttribute("message", sTempMessage);
-			return "uss/ion/bnt/BndtManageBndeListPop";
+			return "com/uss/ion/bnt/BndtManageBndeListPop";
 		}
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -561,7 +561,7 @@ public class BndtManageController {
 		bndtManageService.insertBndtManageBnde(bndtManageVO, checkedBndtManageForInsert);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return "uss/ion/bnt/BndtManageBndeListPop";
+		return "com/uss/ion/bnt/BndtManageBndeListPop";
 	}
 
 }

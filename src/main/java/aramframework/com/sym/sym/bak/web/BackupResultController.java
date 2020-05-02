@@ -53,7 +53,7 @@ public class BackupResultController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/sym/bak/BackupResultList";
+		return "com/sym/sym/bak/BackupResultList";
 	}
 
 	/**
@@ -70,7 +70,7 @@ public class BackupResultController {
 		
 		model.addAttribute(backupResultService.selectBackupResult(backupResultVO));
 
-		return "sym/sym/bak/BackupResultDetail";
+		return "com/sym/sym/bak/BackupResultDetail";
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class BackupResultController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sym/sym/bak/listBackupResult.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

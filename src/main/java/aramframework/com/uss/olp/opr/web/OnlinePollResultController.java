@@ -36,7 +36,7 @@ public class OnlinePollResultController {
 
 		model.addAttribute("resultList", onlinePollResultService.selectOnlinePollResultList(onlinePollResultVO));
 
-		return "uss/olp/opr/OnlinePollResultList";
+		return "com/uss/olp/opr/OnlinePollResultList";
 	}
 
 	/**
@@ -46,7 +46,7 @@ public class OnlinePollResultController {
 	 */
 	@RequestMapping(value = "/uss/olp/opr/deleteOnlinePollResult.do")
 	public String deleteOnlinePollResult(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute OnlinePollResultVO onlinePollResultVO, 
 			ModelMap model) {
 
@@ -54,7 +54,7 @@ public class OnlinePollResultController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/olp/opr/listOnlinePollResult.do?pollId="+onlinePollResultVO.getPollId());
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

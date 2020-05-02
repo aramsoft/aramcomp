@@ -69,7 +69,7 @@ public class QnaManageController {
 			model.addAttribute("certificationAt", "Y");
 		}
 
-		return "uss/olh/qna/QnaList";
+		return "com/uss/olh/qna/QnaList";
 	}
 
 	/**
@@ -85,7 +85,7 @@ public class QnaManageController {
 
 		model.addAttribute(qnaManageService.selectQnaListDetail(qnaManageVO));
 
-		return "uss/olh/qna/QnaDetail";
+		return "com/uss/olh/qna/QnaDetail";
 	}
 
 	/**
@@ -114,7 +114,7 @@ public class QnaManageController {
 			@ModelAttribute QnaManageVO qnaManageVO, 
 			ModelMap model) {
 		
-		return "uss/olh/qna/QnaLoginRealnmChoice";
+		return "com/uss/olh/qna/QnaLoginRealnmChoice";
 	}
 
 	/**
@@ -135,7 +135,7 @@ public class QnaManageController {
 			qnaManageVO.setEmailAdres(loginVO.getEmail()); // email 주소
 		}
 		
-		return "uss/olh/qna/QnaRegist";
+		return "com/uss/olh/qna/QnaRegist";
 	}
 
 	/**
@@ -153,7 +153,7 @@ public class QnaManageController {
 
 		beanValidator.validate(qnaManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olh/qna/QnaRegist";
+			return "com/uss/olh/qna/QnaRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -173,7 +173,7 @@ public class QnaManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/olh/qna/listQna.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -186,7 +186,7 @@ public class QnaManageController {
 			@ModelAttribute QnaManageVO qnaManageVO, 
 			ModelMap model) {
 		
-		return "uss/olh/qna/QnaPasswordPopup";
+		return "com/uss/olh/qna/QnaPasswordPopup";
 	}
 
 	/**
@@ -247,7 +247,7 @@ public class QnaManageController {
 
 		model.addAttribute(qnaManageVO);
 
-		return "uss/olh/qna/QnaEdit";
+		return "com/uss/olh/qna/QnaEdit";
 	}
 
 	/**
@@ -266,7 +266,7 @@ public class QnaManageController {
 		// Validation
 		beanValidator.validate(qnaManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olh/qna/QnaEdit";
+			return "com/uss/olh/qna/QnaEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -285,7 +285,7 @@ public class QnaManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/olh/qna/listQna.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -339,7 +339,7 @@ public class QnaManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/olh/qna/listQna.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -365,7 +365,7 @@ public class QnaManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/olh/qna/QnaAnswerList";
+		return "com/uss/olh/qna/QnaAnswerList";
 	}
 
 	/**
@@ -382,7 +382,7 @@ public class QnaManageController {
 
 		model.addAttribute(qnaManageService.selectQnaAnswerDetail(qnaManageVO));
 
-		return "uss/olh/qna/QnaAnswerDetail";
+		return "com/uss/olh/qna/QnaAnswerDetail";
 	}
 
 	/**
@@ -401,7 +401,7 @@ public class QnaManageController {
 		// 공통코드를 가져오기 위한 Vo
 		cmmUseService.populateCmmCodeList("COM028", "COM028_qnaProcessSttus");
 
-		return "uss/olh/qna/QnaAnswerEdit";
+		return "com/uss/olh/qna/QnaAnswerEdit";
 	}
 
 	/**
@@ -423,7 +423,7 @@ public class QnaManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/olh/qnm/listQnaAnswer.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

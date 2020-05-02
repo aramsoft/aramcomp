@@ -62,7 +62,7 @@ public class OnlinePollManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/olp/opm/OnlinePollList";
+		return "com/uss/olp/opm/OnlinePollList";
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class OnlinePollManageController {
 	 */
 	@RequestMapping(value = "/uss/olp/opm/detailOnlinePoll.do")
 	public String detailOnlinePoll(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute OnlinePollManageVO onlinePollManageVO,
 			ModelMap model) {
 
@@ -81,7 +81,7 @@ public class OnlinePollManageController {
 		// POLL종류 설정
 		cmmUseService.populateCmmCodeList("COM039", "COM039_pollKind");
 
-		return "uss/olp/opm/OnlinePollDetail";
+		return "com/uss/olp/opm/OnlinePollDetail";
 	}
 
 	/**
@@ -91,13 +91,13 @@ public class OnlinePollManageController {
 	 */
 	@RequestMapping(value = "/uss/olp/opm/registOnlinePoll.do")
 	public String registOnlinePoll(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute OnlinePollManageVO onlinePollManageVO) {
 
 		// POLL종류 Select박스 설정
 		cmmUseService.populateCmmCodeList("COM039", "COM039_pollKind");
 
-		return "uss/olp/opm/OnlinePollRegist";
+		return "com/uss/olp/opm/OnlinePollRegist";
 	}
 
 	/**
@@ -107,7 +107,7 @@ public class OnlinePollManageController {
 	 */
 	@RequestMapping(value = "/uss/olp/opm/insertOnlinePoll.do")
 	public String insertOnlinePoll(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute OnlinePollManageVO onlinePollManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -115,7 +115,7 @@ public class OnlinePollManageController {
 		// 서버 validate 체크
 		beanValidator.validate(onlinePollManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olp/opm/OnlinePollRegist";
+			return "com/uss/olp/opm/OnlinePollRegist";
 		}
 
 		// 로그인 객체 선언
@@ -126,7 +126,7 @@ public class OnlinePollManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/olp/opm/listOnlinePoll.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -136,7 +136,7 @@ public class OnlinePollManageController {
 	 */
 	@RequestMapping(value = "/uss/olp/opm/editOnlinePoll.do")
 	public String editOnlinePoll(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute OnlinePollManageVO onlinePollManageVO,
 			ModelMap model) {
 
@@ -145,7 +145,7 @@ public class OnlinePollManageController {
 		// POLL종류 Select박스 설정
 		cmmUseService.populateCmmCodeList("COM039", "COM039_pollKind");
 
-		return "uss/olp/opm/OnlinePollEdit";
+		return "com/uss/olp/opm/OnlinePollEdit";
 	}
 
 	/**
@@ -155,7 +155,7 @@ public class OnlinePollManageController {
 	 */
 	@RequestMapping(value = "/uss/olp/opm/updateOnlinePoll.do")
 	public String updateOnlinePoll(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute OnlinePollManageVO onlinePollManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -163,7 +163,7 @@ public class OnlinePollManageController {
 		// 서버 validate 체크
 		beanValidator.validate(onlinePollManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olp/opm/OnlinePollEdit";
+			return "com/uss/olp/opm/OnlinePollEdit";
 		}
 
 		// 로그인 객체 선언
@@ -174,7 +174,7 @@ public class OnlinePollManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/olp/opm/listOnlinePoll.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -184,7 +184,7 @@ public class OnlinePollManageController {
 	 */
 	@RequestMapping(value = "/uss/olp/opm/deleteOnlinePoll.do")
 	public String deleteOnlinePoll(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute OnlinePollManageVO onlinePollManageVO, 
 			ModelMap model) {
 
@@ -192,7 +192,7 @@ public class OnlinePollManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/olp/opm/listOnlinePoll.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -207,7 +207,7 @@ public class OnlinePollManageController {
 
 		model.addAttribute("resultList", onlinePollManageService.selectOnlinePollItemList(onlinePollItemVO));
 
-		return "uss/olp/opm/OnlinePollItemList";
+		return "com/uss/olp/opm/OnlinePollItemList";
 	}
 
 	/**
@@ -217,7 +217,7 @@ public class OnlinePollManageController {
 	 */
 	@RequestMapping(value = "/uss/olp/opm/insertOnlinePollItem.do")
 	public String insertOnlinePollItem(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute OnlinePollItemVO onlinePollItemVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -230,7 +230,7 @@ public class OnlinePollManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/olp/opm/listOnlinePollItem.do?pollId="+onlinePollItemVO.getPollId());
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -240,7 +240,7 @@ public class OnlinePollManageController {
 	 */
 	@RequestMapping(value = "/uss/olp/opm/updateOnlinePollItem.do")
 	public String updateOnlinePollItem(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute OnlinePollItemVO onlinePollItemVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -253,7 +253,7 @@ public class OnlinePollManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/olp/opm/listOnlinePollItem.do?pollId="+onlinePollItemVO.getPollId());
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -263,7 +263,7 @@ public class OnlinePollManageController {
 	 */
 	@RequestMapping(value = "/uss/olp/opm/deleteOnlinePollItem.do")
 	public String deleteOnlinePollItem(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute OnlinePollItemVO onlinePollItemVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -272,7 +272,7 @@ public class OnlinePollManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/olp/opm/listOnlinePollItem.do?pollId="+onlinePollItemVO.getPollId());
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

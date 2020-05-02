@@ -20,7 +20,7 @@
 				   LEFT OUTER JOIN COMTN_DAM_PRO E
 						ON A.KNWLDG_TY_CODE = E.KNWLDG_TY_CODE
 				   LEFT OUTER JOIN COMVN_USER_MASTER D  	
-				       	ON A.FRST_REGISTER_ID = D.ESNTL_ID
+				       	ON A.FRST_REGISTER_ID = D.USER_ID
 			 WHERE A.OTHBC_AT = 'Y'
 			   AND COALESCE(A.KNWLDG_EVL,'0') NOT IN ('3')
 		]]>
@@ -51,7 +51,7 @@
 				   LEFT OUTER JOIN COMTN_DAM_PRO E
 						ON  A.KNWLDG_TY_CODE = E.KNWLDG_TY_CODE
 				   LEFT OUTER JOIN COMVN_USER_MASTER D  	
-				       	ON A.FRST_REGISTER_ID = D.ESNTL_ID
+				       	ON A.FRST_REGISTER_ID = D.USER_ID
 			 WHERE A.OTHBC_AT = 'Y'
 			   AND COALESCE(A.KNWLDG_EVL,'0') NOT IN ('3')
 		]]>
@@ -95,7 +95,7 @@
 	</select>
 
 	<update id="updateKnoAppraisal">
-		<![CDATA[
+		<![CDATA[ 
             UPDATE COMTN_DAM_KNOIFM 
                SET EVL_DE			= #{appYmd}
 		         , KNWLDG_EVL       = #{knoAps}            

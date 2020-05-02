@@ -58,7 +58,7 @@ public class UserAbsnceController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/ion/uas/UserAbsnceList";
+		return "com/uss/ion/uas/UserAbsnceList";
 	}
 
 	/**
@@ -68,12 +68,12 @@ public class UserAbsnceController {
 	 */
 	@RequestMapping("/uss/ion/uas/registUserAbsnce.do")
 	public String registUserAbsnce(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute UserAbsnceVO userAbsnceVO) {
 
 		userAbsnceService.selectUserAbsnce(userAbsnceVO);
 
-		return "uss/ion/uas/UserAbsnceRegist";
+		return "com/uss/ion/uas/UserAbsnceRegist";
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class UserAbsnceController {
 	 */
 	@RequestMapping("/uss/ion/uas/insertUserAbsnce.do")
 	public String insertUserAbsnce(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute UserAbsnceVO userAbsnceVO,
 			ModelMap model) {
 
@@ -94,7 +94,7 @@ public class UserAbsnceController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/ion/uas/listUserAbsnce.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
  	}
 
 	/**
@@ -104,13 +104,13 @@ public class UserAbsnceController {
 	 */
 	@RequestMapping("/uss/ion/uas/editUserAbsnce.do")
 	public String editUserAbsnce(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute UserAbsnceVO userAbsnceVO,
 			ModelMap model) {
 
 		model.addAttribute(userAbsnceService.selectUserAbsnce(userAbsnceVO));
 
-		return "uss/ion/uas/UserAbsnceEdit";
+		return "com/uss/ion/uas/UserAbsnceEdit";
 	}
 
 	/**
@@ -120,7 +120,7 @@ public class UserAbsnceController {
 	 */
 	@RequestMapping("/uss/ion/uas/updateUserAbsnce.do")
 	public String updateUserAbsnce(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute UserAbsnceVO userAbsnceVO,
 			ModelMap model) {
 
@@ -131,7 +131,7 @@ public class UserAbsnceController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/ion/uas/listUserAbsnce.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -141,7 +141,7 @@ public class UserAbsnceController {
 	 */
 	@RequestMapping("/uss/ion/uas/deleteUserAbsnce.do")
 	public String deleteUserAbsnce(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute UserAbsnceVO userAbsnceVO,
 			ModelMap model) {
 
@@ -149,7 +149,7 @@ public class UserAbsnceController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/uas/listUserAbsnce.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -159,16 +159,16 @@ public class UserAbsnceController {
 	 */
 	@RequestMapping("/uss/ion/uas/deleteListUserAbsnce.do")
 	public String deleteListUserAbsnce(
-			@RequestParam String userIds, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute UserAbsnceVO userAbsnceVO,
+			@RequestParam String userIds, 
 			ModelMap model) {
 
 		userAbsnceService.deleteUserAbsnces(userIds);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/uas/listUserAbsnce.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -187,7 +187,7 @@ public class UserAbsnceController {
 
 		model.addAttribute("resultList", userAbsnceService.selectUserAbsnceList(userAbsnceVO));
 
-		return "uss/ion/uas/UserAbsnceMainPage";
+		return "com/uss/ion/uas/UserAbsnceMainPage";
 	}
 	
 }

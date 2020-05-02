@@ -82,7 +82,7 @@ public class KnoPersonalController {
 
 		model.addAttribute(paginationInfo);
 
-		return "dam/per/KnoPersonalList";
+		return "com/dam/per/KnoPersonalList";
 	}
 
 	/**
@@ -92,13 +92,13 @@ public class KnoPersonalController {
 	 */
 	@RequestMapping(value = "/dam/per/detailKnoPersonal.do")
 	public String detailKnoPersonal(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute KnoPersonalVO knoPersonalVO,
 			ModelMap model) {
 
 		model.addAttribute(knoPersonalService.selectKnoPersonal(knoPersonalVO));
 
-		return "dam/per/KnoPersonalDetail";
+		return "com/dam/per/KnoPersonalDetail";
 	}
 
 	/**
@@ -108,13 +108,13 @@ public class KnoPersonalController {
 	 */
 	@RequestMapping(value = "/dam/per/registKnoPersonal.do")
 	public String registKnoPersonal(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute KnoPersonalVO knoPersonalVO, 
 			ModelMap model) {
 
 		populateMapTeam(knoPersonalVO, model);
 
-		return "dam/per/KnoPersonalRegist";
+		return "com/dam/per/KnoPersonalRegist";
 	}
 
 	/**
@@ -124,23 +124,21 @@ public class KnoPersonalController {
 	 */
 	@RequestMapping(value = "/dam/per/insertKnoPersonal.do")
 	public String insertKnoPersonal(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute KnoPersonalVO knoPersonalVO, 
 			BindingResult bindingResult, 
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception{
 
 		beanValidator.validate(knoPersonalVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			
 			populateMapTeam(knoPersonalVO, model);
-
-			return "dam/per/KnoPersonalRegist";
+			return "com/dam/per/KnoPersonalRegist";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
-		knoPersonalVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "DSCH_"));
+		knoPersonalVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "PER"));
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -150,7 +148,7 @@ public class KnoPersonalController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/dam/per/listKnoPersonal.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -184,13 +182,13 @@ public class KnoPersonalController {
 	 */
 	@RequestMapping(value = "/dam/per/editKnoPersonal.do")
 	public String editKnoPersonal(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute KnoPersonalVO knoPersonalVO,
 			ModelMap model) {
 
 		model.addAttribute(knoPersonalService.selectKnoPersonal(knoPersonalVO));
 
-		return "dam/per/KnoPersonalEdit";
+		return "com/dam/per/KnoPersonalEdit";
 	}
 
 	/**
@@ -200,21 +198,21 @@ public class KnoPersonalController {
 	 */
 	@RequestMapping(value = "/dam/per/updateKnoPersonal.do")
 	public String updateKnoPersonal(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute KnoPersonalVO knoPersonalVO, 
 			BindingResult bindingResult, 
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception {
 
 		beanValidator.validate(knoPersonalVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "dam/per/KnoPersonalEdit";
+			return "com/dam/per/KnoPersonalEdit";
 		}
 
 		// 첨부파일 관련 ID 생성 start....
 		String atchFileId = knoPersonalVO.getAtchFileId();
-		knoPersonalVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "DSCH_", atchFileId));
+		knoPersonalVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "PER", atchFileId));
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -224,7 +222,7 @@ public class KnoPersonalController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/dam/per/listKnoPersonal.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -234,7 +232,7 @@ public class KnoPersonalController {
 	 */
 	@RequestMapping(value = "/dam/per/deleteKnoPersonal.do")
 	public String deleteKnoPersonal(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute KnoPersonalVO knoPersonalVO, 
 			ModelMap model) {
 
@@ -242,7 +240,7 @@ public class KnoPersonalController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/dam/per/listKnoPersonal.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

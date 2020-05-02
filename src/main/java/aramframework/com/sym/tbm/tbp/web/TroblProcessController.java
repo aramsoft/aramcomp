@@ -73,7 +73,7 @@ public class TroblProcessController {
 		cmmUseService.populateCmmCodeList("COM065", "COM065_troblKnd");
 		cmmUseService.populateCmmCodeList("COM068", "COM068_processSttus");
 
-		return "sym/tbm/tbp/TroblProcessList";
+		return "com/sym/tbm/tbp/TroblProcessList";
 	}
 
 	/**
@@ -84,12 +84,13 @@ public class TroblProcessController {
 	@RequestMapping(value = "/sym/tbm/tbp/registTroblProcess.do")
 	@Secured("ROLE_ADMIN")
 	public String registTroblProcess(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute TroblProcessVO troblProcessVO) {
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute TroblProcessVO troblProcessVO,
+			ModelMap model) {
 
-		troblProcessService.selectTroblProcess(troblProcessVO);
+		model.addAttribute(troblProcessService.selectTroblProcess(troblProcessVO));
 		
-		return "sym/tbm/tbp/TroblProcessRegist";
+		return "com/sym/tbm/tbp/TroblProcessRegist";
 	}
 
 	/**
@@ -100,14 +101,14 @@ public class TroblProcessController {
 	@RequestMapping(value = "/sym/tbm/tbp/insertTroblProcess.do")
 	@Secured("ROLE_ADMIN")
 	public String insertTroblProcess(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute TroblProcessVO troblProcessVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(troblProcessVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "sym/tbm/tbp/TroblProcessRegist";
+			return "com/sym/tbm/tbp/TroblProcessRegist";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -119,7 +120,7 @@ public class TroblProcessController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sym/tbm/tbp/listTroblProcess.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -130,7 +131,7 @@ public class TroblProcessController {
 	@RequestMapping(value = "/sym/tbm/tbp/deleteTroblProcess.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteTroblProcess(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute TroblProcessVO troblProcessVO, 
 			ModelMap model) {
 
@@ -140,7 +141,7 @@ public class TroblProcessController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sym/tbm/tbp/registTroblProcess.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
  	}
 
 }

@@ -20,7 +20,7 @@
            		 , B.BATCH_OPERT_NM
            		 , B.BATCH_PROGRM
            		 , B.PARAMTR
-           		 , B.BATCH_OBJECT 
+           		 , B.BATCH_OBJECT
            		 , B.BATCH_METHOD
            		 , A.LAST_UPDT_PNTTM 		AS "lastUpdusrPnttm"
            		 , A.LAST_UPDUSR_ID

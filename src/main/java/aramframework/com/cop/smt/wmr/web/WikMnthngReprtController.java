@@ -69,7 +69,7 @@ public class WikMnthngReprtController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "cop/smt/wmr/ReportrListPopup";
+		return "com/cop/smt/wmr/ReportrListPopup";
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class WikMnthngReprtController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute(paginationInfo);
 
-		return "cop/smt/wmr/WikMnthngReprtList";
+		return "com/cop/smt/wmr/WikMnthngReprtList";
 	}
 
 	/**
@@ -109,19 +109,19 @@ public class WikMnthngReprtController {
 	 */
 	@RequestMapping("/cop/smt/wmr/detailWikMnthngReprt.do")
 	public String detailWikMnthngReprt(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute WikMnthngReprtVO wikMnthngReprtVO, 
 			ModelMap model)  {
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-		model.addAttribute("uniqId", loginVO.getUserId());
+		model.addAttribute("userId", loginVO.getUserId());
 
 		model.addAttribute(wikMnthngReprtService.selectWikMnthngReprt(wikMnthngReprtVO));
 
 		// 공통코드 우선순위 조회
 		cmmUseService.populateCmmCodeList("COM060", "COM060_reprtSe");
 
-		return "cop/smt/wmr/WikMnthngReprtDetail";
+		return "com/cop/smt/wmr/WikMnthngReprtDetail";
 	}
 
 	/**
@@ -131,7 +131,7 @@ public class WikMnthngReprtController {
 	 */
 	@RequestMapping("/cop/smt/wmr/registWikMnthngReprt.do")
 	public String registWikMnthngReprt(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute WikMnthngReprtVO wikMnthngReprtVO) {
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -142,7 +142,7 @@ public class WikMnthngReprtController {
 		wikMnthngReprtVO.setWrterNm(loginVO.getName());
 		wikMnthngReprtVO.setWrterClsfNm(wikMnthngReprtService.selectWrterClsfNm(loginVO.getUserId()));
 
-		return "cop/smt/wmr/WikMnthngReprtRegist";
+		return "com/cop/smt/wmr/WikMnthngReprtRegist";
 	}
 
 	/**
@@ -152,21 +152,21 @@ public class WikMnthngReprtController {
 	 */
 	@RequestMapping("/cop/smt/wmr/insertWikMnthngReprt.do")
 	public String insertWikMnthngReprt(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute WikMnthngReprtVO wikMnthngReprtVO,
 			BindingResult bindingResult, 
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception {
 
 		// 서버 validate 체크
 		beanValidator.validate(wikMnthngReprtVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/smt/wmr/WikMnthngReprtRegist";
+			return "com/cop/smt/wmr/WikMnthngReprtRegist";
 		}
 		
 		// 첨부파일 관련 첨부파일ID 생성
-		wikMnthngReprtVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "DSCH_"));
+		wikMnthngReprtVO.setAtchFileId(fileUtil.insertMultiFile(multiRequest, "WMR"));
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -176,7 +176,7 @@ public class WikMnthngReprtController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/cop/smt/wmr/listWikMnthngReprt.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -186,13 +186,13 @@ public class WikMnthngReprtController {
 	 */
 	@RequestMapping("/cop/smt/wmr/editWikMnthngReprt.do")
 	public String editWikMnthngReprt(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute WikMnthngReprtVO wikMnthngReprtVO,
 			ModelMap model)  {
 
 		model.addAttribute(wikMnthngReprtService.selectWikMnthngReprt(wikMnthngReprtVO));
 
-		return "cop/smt/wmr/WikMnthngReprtEdit";
+		return "com/cop/smt/wmr/WikMnthngReprtEdit";
 	}
 
 	/**
@@ -202,21 +202,21 @@ public class WikMnthngReprtController {
 	 */
 	@RequestMapping("/cop/smt/wmr/updateWikMnthngReprt.do")
 	public String updateWikMnthngReprt(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute WikMnthngReprtVO wikMnthngReprtVO, 
 			BindingResult bindingResult, 
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception {
 
 		beanValidator.validate(wikMnthngReprtVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/smt/wmr/WikMnthngReprtEdit";
+			return "com/cop/smt/wmr/WikMnthngReprtEdit";
 		}
 
 		// 첨부파일 관련 ID 생성 start....
 		String atchFileId = wikMnthngReprtVO.getAtchFileId();
-		wikMnthngReprtVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "DSCH_", atchFileId));
+		wikMnthngReprtVO.setAtchFileId(fileUtil.updateMultiFile(multiRequest, "WMR", atchFileId));
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		wikMnthngReprtVO.setLastUpdusrId(loginVO.getUserId());
@@ -225,7 +225,7 @@ public class WikMnthngReprtController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/cop/smt/wmr/listWikMnthngReprt.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -235,7 +235,7 @@ public class WikMnthngReprtController {
 	 */
 	@RequestMapping("/cop/smt/wmr/deleteWikMnthngReprt.do")
 	public String deleteWikMnthngReprt(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute WikMnthngReprtVO wikMnthngReprtVO, 
 			ModelMap model) {
 
@@ -243,7 +243,7 @@ public class WikMnthngReprtController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/cop/smt/wmr/listWikMnthngReprt.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -253,7 +253,7 @@ public class WikMnthngReprtController {
 	 */
 	@RequestMapping("/cop/smt/wmr/confirmWikMnthngReprt.do")
 	public String confirmWikMnthngReprt(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute WikMnthngReprtVO wikMnthngReprtVO, 
 			ModelMap model) {
 
@@ -261,7 +261,7 @@ public class WikMnthngReprtController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/cop/smt/wmr/listWikMnthngReprt.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

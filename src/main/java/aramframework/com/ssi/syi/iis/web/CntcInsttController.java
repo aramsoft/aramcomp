@@ -67,7 +67,7 @@ public class CntcInsttController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "ssi/syi/iis/CntcInsttList";
+		return "com/ssi/syi/iis/CntcInsttList";
 	}
 
 	/**
@@ -80,7 +80,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/detailCntcInstt.do")
 	@Secured("ROLE_ADMIN")
 	public String detailCntcInstt(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CntcInsttVO cntcInsttVO, 
 			@ModelAttribute CntcSystemVO cntcSystemVO,
 			@ModelAttribute CntcServiceVO cntcServiceVO, 
@@ -94,7 +94,7 @@ public class CntcInsttController {
 		model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(cntcMessageVO));
 
 		/* 연계기관 상세 */
-		cntcInsttService.selectCntcInsttDetail(cntcInsttVO);
+		model.addAttribute(cntcInsttService.selectCntcInsttDetail(cntcInsttVO));
 
 		/* 연계시스템 리스트 */
 		cntcSystemVO.setRecordPerPage(999999);
@@ -108,7 +108,7 @@ public class CntcInsttController {
 		cntcServiceVO.setSearchCondition("CodeList_InsttId");
 		model.addAttribute("cntcServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));
 
-		return "ssi/syi/iis/CntcInsttDetail";
+		return "com/ssi/syi/iis/CntcInsttDetail";
 	}
 
 	/**
@@ -119,10 +119,10 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/registCntcInstt.do")
 	@Secured("ROLE_ADMIN")
 	public String registCntcInstt(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CntcInsttVO cntcInsttVO) {
 		
-		return "ssi/syi/iis/CntcInsttRegist";
+		return "com/ssi/syi/iis/CntcInsttRegist";
 	}
 
 	/**
@@ -133,14 +133,14 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/insertCntcInstt.do")
 	@Secured("ROLE_ADMIN")
 	public String insertCntcInstt(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CntcInsttVO cntcInsttVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(cntcInsttVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "ssi/syi/iis/CntcInsttRegist";
+			return "com/ssi/syi/iis/CntcInsttRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -151,7 +151,7 @@ public class CntcInsttController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/ssi/syi/iis/listCntcInstt.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -162,12 +162,13 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/editCntcInstt.do")
 	@Secured("ROLE_ADMIN")
 	public String editCntcInstt(
-			@ModelAttribute SearchVO searchVO,
-			@ModelAttribute CntcInsttVO cntcInsttVO) {
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute CntcInsttVO cntcInsttVO,
+			ModelMap model) {
 
-		cntcInsttService.selectCntcInsttDetail(cntcInsttVO);
+		model.addAttribute(cntcInsttService.selectCntcInsttDetail(cntcInsttVO));
 
-		return "ssi/syi/iis/CntcInsttEdit";
+		return "com/ssi/syi/iis/CntcInsttEdit";
 	}
 
 	/**
@@ -178,14 +179,14 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/updateCntcInstt.do")
 	@Secured("ROLE_ADMIN")
 	public String updateCntcInstt(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CntcInsttVO cntcInsttVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 		
 		beanValidator.validate(cntcInsttVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "ssi/syi/iis/CntcInsttEdit";
+			return "com/ssi/syi/iis/CntcInsttEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -196,7 +197,7 @@ public class CntcInsttController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/ssi/syi/iis/listCntcInstt.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -207,7 +208,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/deleteCntcInstt.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteCntcInstt(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CntcInsttVO cntcInsttVO, 
 			ModelMap model) {
 
@@ -215,7 +216,7 @@ public class CntcInsttController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/ssi/syi/iis/listCntcInstt.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
  	}
 
 	/**
@@ -226,7 +227,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/registCntcSystem.do")
 	@Secured("ROLE_ADMIN")
 	public String registCntcSystem(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CntcSystemVO cntcSystemVO, 
 			ModelMap model) {
 
@@ -237,7 +238,7 @@ public class CntcInsttController {
 		cntcInsttVO.setSearchCondition("CodeList");
 		model.addAttribute("cntcInsttList", cntcInsttService.selectCntcInsttList(cntcInsttVO));
 
-		return "ssi/syi/iis/CntcSystemRegist";
+		return "com/ssi/syi/iis/CntcSystemRegist";
 	}
 
 	/**
@@ -248,7 +249,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/insertCntcSystem.do")
 	@Secured("ROLE_ADMIN")
 	public String insertCntcSystem(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CntcSystemVO cntcSystemVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -263,7 +264,7 @@ public class CntcInsttController {
 			cntcInsttVO.setSearchCondition("CodeList");
 			model.addAttribute("cntcInsttList", cntcInsttService.selectCntcInsttList(cntcInsttVO));
 
-			return "ssi/syi/iis/CntcSystemRegist";
+			return "com/ssi/syi/iis/CntcSystemRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -284,7 +285,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/editCntcSystem.do")
 	@Secured("ROLE_ADMIN")
 	public String editCntcSystem(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CntcSystemVO cntcSystemVO, 
 			ModelMap model) {
 
@@ -302,9 +303,9 @@ public class CntcInsttController {
 		cntcMessageVO.setSearchCondition("CodeList");
 		model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(cntcMessageVO));
 
-		cntcInsttService.selectCntcSystemDetail(cntcSystemVO);
+		model.addAttribute(cntcInsttService.selectCntcSystemDetail(cntcSystemVO));
 
-		return "ssi/syi/iis/CntcSystemEdit";
+		return "com/ssi/syi/iis/CntcSystemEdit";
 	}
 
 	/**
@@ -315,7 +316,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/updateCntcSystem.do")
 	@Secured("ROLE_ADMIN")
 	public String updateCntcSystem(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CntcSystemVO cntcSystemVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -337,7 +338,7 @@ public class CntcInsttController {
 			cntcMessageVO.setSearchCondition("CodeList");
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(cntcMessageVO));
 
-			return "ssi/syi/iis/CntcSystemEdit";
+			return "com/ssi/syi/iis/CntcSystemEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -358,7 +359,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/deleteCntcSystem.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteCntcSystem(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CntcSystemVO cntcSystemVO) {
 
 		cntcInsttService.deleteCntcSystem(cntcSystemVO);
@@ -374,7 +375,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/registCntcService.do")
 	@Secured("ROLE_ADMIN")
 	public String registCntcService(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CntcServiceVO cntcServiceVO, 
 			ModelMap model) {
 
@@ -408,7 +409,7 @@ public class CntcInsttController {
 		searchCntcMessageVO.setSearchCondition("CodeList");
 		model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(searchCntcMessageVO));
 
-		return "ssi/syi/iis/CntcServiceRegist";
+		return "com/ssi/syi/iis/CntcServiceRegist";
 	}
 
 	/**
@@ -419,7 +420,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/insertCntcService.do")
 	@Secured("ROLE_ADMIN")
 	public String insertCntcService(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CntcServiceVO cntcServiceVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -456,7 +457,7 @@ public class CntcInsttController {
 			cntcMessageVO.setSearchCondition("CodeList");
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(cntcMessageVO));
 
-			return "ssi/syi/iis/CntcServiceRegist";
+			return "com/ssi/syi/iis/CntcServiceRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -477,7 +478,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/editCntcService.do")
 	@Secured("ROLE_ADMIN")
 	public String editCntcService(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CntcServiceVO cntcServiceVO, 
 			ModelMap model) {
 
@@ -512,7 +513,7 @@ public class CntcInsttController {
 
 		cntcInsttService.selectCntcServiceDetail(cntcServiceVO);
 
-		return "ssi/syi/iis/CntcServiceEdit";
+		return "com/ssi/syi/iis/CntcServiceEdit";
 	}
 
 	/**
@@ -523,7 +524,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/updateCntcService.do")
 	@Secured("ROLE_ADMIN")
 	public String updateCntcService(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CntcServiceVO cntcServiceVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -560,7 +561,7 @@ public class CntcInsttController {
 			cntcMessageVO.setSearchCondition("CodeList");
 			model.addAttribute("cntcMessageList", cntcMessageService.selectCntcMessageList(cntcMessageVO));
 
-			return "ssi/syi/iis/CntcServiceEdit";
+			return "com/ssi/syi/iis/CntcServiceEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -581,7 +582,7 @@ public class CntcInsttController {
 	@RequestMapping(value = "/ssi/syi/iis/deleteCntcService.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteCntcService(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CntcServiceVO cntcServiceVO) {
 
 		cntcInsttService.deleteCntcService(cntcServiceVO);

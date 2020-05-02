@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="com/sym/ccm/zip/ZipList" extends="default">
+    <put-attribute name="title" value="우편번호 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/sym/ccm/zip/ZipList.jsp" />
+  </definition>
+  
+  <definition name="com/sym/ccm/zip/ZipDetail" extends="default">
+    <put-attribute name="title" value="우편번호 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/sym/ccm/zip/ZipDetail.jsp" />
+  </definition>
+  
+  <definition name="com/sym/ccm/zip/ZipRegist" extends="default">
+    <put-attribute name="title" value="우편번호  등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/sym/ccm/zip/ZipRegist.jsp" />
+  </definition>
+  
+  <definition name="com/sym/ccm/zip/ZipEdit" extends="default">
+    <put-attribute name="title" value="우편번호  수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/sym/ccm/zip/ZipEdit.jsp" />
+  </definition>
+
+  <definition name="com/sym/ccm/zip/ZipExcelRegist" extends="default">
+    <put-attribute name="title" value="우편번호 엑셀 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/sym/ccm/zip/ZipExcelRegist.jsp" />
+  </definition>
+  
+</tiles-definitions>

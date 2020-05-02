@@ -65,7 +65,7 @@ public class QustnrQestnManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/olp/qqm/QustnrQestnListPopup";
+		return "com/uss/olp/qqm/QustnrQestnListPopup";
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class QustnrQestnManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/olp/qqm/QustnrQestnList";
+		return "com/uss/olp/qqm/QustnrQestnList";
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class QustnrQestnManageController {
 	@RequestMapping(value = "/uss/olp/qqm/detailQustnrQestn.do")
 	@Secured("ROLE_USER")
 	public String detailQustnrQestn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrQestnManageVO qustnrQestnManageVO,
 			ModelMap model) {
 
@@ -117,7 +117,7 @@ public class QustnrQestnManageController {
 		// 공통코드 질문유형 조회
 		cmmUseService.populateCmmCodeList("COM018", "COM018_qestnType");
 
-		return "uss/olp/qqm/QustnrQestnDetail";
+		return "com/uss/olp/qqm/QustnrQestnDetail";
 	}
 
 	/**
@@ -128,13 +128,13 @@ public class QustnrQestnManageController {
 	@RequestMapping(value = "/uss/olp/qqm/registQustnrQestn.do")
 	@Secured("ROLE_USER")
 	public String registQustnrQestn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrQestnManageVO qustnrQestnManageVO) {
 
 		// 공통코드 질문유형 조회
 		cmmUseService.populateCmmCodeList("COM018", "COM018_qestnType");
 
-		return "uss/olp/qqm/QustnrQestnRegist";
+		return "com/uss/olp/qqm/QustnrQestnRegist";
 	}
 	
 	/**
@@ -145,7 +145,7 @@ public class QustnrQestnManageController {
 	@RequestMapping(value = "/uss/olp/qqm/insertQustnrQestn.do")
 	@Secured("ROLE_USER")
 	public String insertQustnrQestn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrQestnManageVO qustnrQestnManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -153,7 +153,7 @@ public class QustnrQestnManageController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrQestnManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olp/qqm/QustnrQestnRegist";
+			return "com/uss/olp/qqm/QustnrQestnRegist";
 		}
 
 		// 로그인 객체 선언
@@ -164,7 +164,7 @@ public class QustnrQestnManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/olp/qqm/listQustnrQestn.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 	
 	/**
@@ -175,7 +175,7 @@ public class QustnrQestnManageController {
 	@RequestMapping(value = "/uss/olp/qqm/editQustnrQestn.do")
 	@Secured("ROLE_USER")
 	public String editQustnrQestn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrQestnManageVO qustnrQestnManageVO,
 			ModelMap model) {
 
@@ -184,7 +184,7 @@ public class QustnrQestnManageController {
 		// 공통코드 질문유형 조회
 		cmmUseService.populateCmmCodeList("COM018", "COM018_qestnType");
 
-		return "uss/olp/qqm/QustnrQestnEdit";
+		return "com/uss/olp/qqm/QustnrQestnEdit";
 	}
 
 	/**
@@ -195,7 +195,7 @@ public class QustnrQestnManageController {
 	@RequestMapping(value = "/uss/olp/qqm/updateQustnrQestn.do")
 	@Secured("ROLE_USER")
 	public String updateQustnrQestn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrQestnManageVO qustnrQestnManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -203,7 +203,7 @@ public class QustnrQestnManageController {
 		// 서버 validate 체크
 		beanValidator.validate(qustnrQestnManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olp/qqm/QustnrQestnEdit";
+			return "com/uss/olp/qqm/QustnrQestnEdit";
 		}
 
 		// 로그인 객체 선언
@@ -214,7 +214,7 @@ public class QustnrQestnManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/olp/qqm/listQustnrQestn.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -225,7 +225,7 @@ public class QustnrQestnManageController {
 	@RequestMapping(value = "/uss/olp/qqm/deleteQustnrQestn.do")
 	@Secured("ROLE_USER")
 	public String deleteQustnrQestn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrQestnManageVO qustnrQestnManageVO, 
 			ModelMap model) {
 
@@ -233,7 +233,7 @@ public class QustnrQestnManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/olp/qqm/listQustnrQestn.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -244,7 +244,7 @@ public class QustnrQestnManageController {
 	@RequestMapping(value = "/uss/olp/qqm/statisticsQustnrQestn.do")
 	@Secured("ROLE_USER")
 	public String statisticsQustnrQestn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrQestnManageVO qustnrQestnManageVO, 
 			ModelMap model) {
 
@@ -255,7 +255,7 @@ public class QustnrQestnManageController {
 		// 주관식설문통계
 		model.addAttribute("statisticsList2", qustnrQestnManageService.selectQustnrManageStatistics2(qustnrQestnManageVO));
 
-		return "uss/olp/qqm/QustnrQestnStatistics";
+		return "com/uss/olp/qqm/QustnrQestnStatistics";
 	}
 
 }

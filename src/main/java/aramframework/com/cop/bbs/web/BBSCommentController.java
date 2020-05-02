@@ -90,7 +90,7 @@ public class BBSCommentController {
 
 		model.addAttribute(paginationInfo);
 
-		return "cop/bbs/CommentList";
+		return "com/cop/bbs/CommentList";
 	}
 
 	/**

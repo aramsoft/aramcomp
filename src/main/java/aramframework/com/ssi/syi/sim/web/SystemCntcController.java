@@ -65,7 +65,7 @@ public class SystemCntcController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "ssi/syi/sim/SystemCntcList";
+		return "com/ssi/syi/sim/SystemCntcList";
 	}
 
 	/**
@@ -76,11 +76,11 @@ public class SystemCntcController {
 	@RequestMapping(value = "/ssi/syi/sim/detailSystemCntc.do")
 	@Secured("ROLE_ADMIN")
 	public String detailSystemCntc(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SystemCntcVO systemCntcVO, 
 			ModelMap model) {
 
-		systemCntcService.selectSystemCntcDetail(systemCntcVO);
+		model.addAttribute(systemCntcService.selectSystemCntcDetail(systemCntcVO));
 
 		// 연계기관 리스트박스 데이터
 		CntcInsttVO cntcInsttVO = new CntcInsttVO();
@@ -109,7 +109,7 @@ public class SystemCntcController {
 		cntcServiceVO.setSysId(systemCntcVO.getProvdSysId());
 		model.addAttribute("cntcProvdServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));
 
-		return "ssi/syi/sim/SystemCntcDetail";
+		return "com/ssi/syi/sim/SystemCntcDetail";
 	}
 
 	/**
@@ -120,7 +120,7 @@ public class SystemCntcController {
 	@RequestMapping(value = "/ssi/syi/sim/registSystemCntc.do")
 	@Secured("ROLE_ADMIN")
 	public String registSystemCntc(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SystemCntcVO systemCntcVO, 
 			ModelMap model) {
 
@@ -151,7 +151,7 @@ public class SystemCntcController {
 		cntcServiceVO.setSysId(systemCntcVO.getProvdSysId());
 		model.addAttribute("cntcProvdServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));
 
-		return "ssi/syi/sim/SystemCntcRegist";
+		return "com/ssi/syi/sim/SystemCntcRegist";
 	}
 
 	/**
@@ -162,7 +162,7 @@ public class SystemCntcController {
 	@RequestMapping(value = "/ssi/syi/sim/insertSystemCntc.do")
 	@Secured("ROLE_ADMIN")
 	public String insertSystemCntc(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SystemCntcVO systemCntcVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -197,7 +197,7 @@ public class SystemCntcController {
 			cntcServiceVO.setSysId(systemCntcVO.getProvdSysId());
 			model.addAttribute("cntcProvdServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));
 
-			return "ssi/syi/sim/SystemCntcRegist";
+			return "com/ssi/syi/sim/SystemCntcRegist";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -208,7 +208,7 @@ public class SystemCntcController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/ssi/syi/sim/listSystemCntc.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -219,11 +219,11 @@ public class SystemCntcController {
 	@RequestMapping(value = "/ssi/syi/sim/editSystemCntc.do")
 	@Secured("ROLE_ADMIN")
 	public String editSystemCntc(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SystemCntcVO systemCntcVO, 
 			ModelMap model) {
 
-		systemCntcService.selectSystemCntcDetail(systemCntcVO);
+		model.addAttribute(systemCntcService.selectSystemCntcDetail(systemCntcVO));
 
 		// 연계기관 리스트박스 데이터
 		CntcInsttVO cntcInsttVO = new CntcInsttVO();
@@ -253,7 +253,7 @@ public class SystemCntcController {
 		cntcServiceVO.setSysId(systemCntcVO.getProvdSysId());
 		model.addAttribute("cntcProvdServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));
 
-		return "ssi/syi/sim/SystemCntcEdit";
+		return "com/ssi/syi/sim/SystemCntcEdit";
 	}
 
 	/**
@@ -264,7 +264,7 @@ public class SystemCntcController {
 	@RequestMapping(value = "/ssi/syi/sim/updateSystemCntc.do")
 	@Secured("ROLE_ADMIN")
 	public String updateSystemCntc(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SystemCntcVO systemCntcVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -299,7 +299,7 @@ public class SystemCntcController {
 			cntcServiceVO.setSysId(systemCntcVO.getProvdSysId());
 			model.addAttribute("cntcProvdServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));
 
-			return "ssi/syi/sim/SystemCntcEdit";
+			return "com/ssi/syi/sim/SystemCntcEdit";
 		}
 
 		// 로그인VO에서 사용자 정보 가져오기
@@ -310,7 +310,7 @@ public class SystemCntcController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/ssi/syi/sim/listSystemCntc.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -321,7 +321,7 @@ public class SystemCntcController {
 	@RequestMapping(value = "/ssi/syi/sim/deleteSystemCntc.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteSystemCntc(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SystemCntcVO systemCntcVO, 
 			ModelMap model) {
 
@@ -329,7 +329,7 @@ public class SystemCntcController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/ssi/syi/sim/listSystemCntc.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -355,7 +355,7 @@ public class SystemCntcController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "ssi/syi/sim/SystemCntcConfirmList";
+		return "com/ssi/syi/sim/SystemCntcConfirmList";
 	}
 
 	/**
@@ -366,11 +366,11 @@ public class SystemCntcController {
 	@RequestMapping(value = "/ssi/syi/sim/editSystemCntcConfirm.do")
 	@Secured("ROLE_ADMIN")
 	public String editSystemCntcConfirm(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SystemCntcVO systemCntcVO, 
 			ModelMap model) {
 
-		systemCntcService.selectSystemCntcDetail(systemCntcVO);
+		model.addAttribute(systemCntcService.selectSystemCntcDetail(systemCntcVO));
 
 		// 연계기관 리스트박스 데이터
 		CntcInsttVO cntcInsttVO = new CntcInsttVO();
@@ -399,7 +399,7 @@ public class SystemCntcController {
 		cntcServiceVO.setSysId(systemCntcVO.getProvdSysId());
 		model.addAttribute("cntcProvdServiceList", cntcInsttService.selectCntcServiceList(cntcServiceVO));
 
-		return "ssi/syi/sim/SystemCntcConfirmEdit";
+		return "com/ssi/syi/sim/SystemCntcConfirmEdit";
 	}
 
 	/**
@@ -410,7 +410,7 @@ public class SystemCntcController {
 	@RequestMapping(value = "/ssi/syi/sim/confirmSystemCntcConfirm.do")
 	@Secured("ROLE_ADMIN")
 	public String confirmSystemCntcConfirm(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute SystemCntcVO systemCntcVO, 
 			ModelMap model) {
 
@@ -421,7 +421,7 @@ public class SystemCntcController {
 		systemCntcService.confirmSystemCntc(systemCntcVO);
 
 		model.addAttribute("redirectURL", "/ssi/syi/sim/listSystemCntcConfirm.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

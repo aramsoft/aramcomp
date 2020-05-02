@@ -65,7 +65,7 @@ public class QustnrTmplatManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/olp/qtm/QustnrTmplatList";
+		return "com/uss/olp/qtm/QustnrTmplatList";
 	}
 
 	/**
@@ -100,13 +100,13 @@ public class QustnrTmplatManageController {
 	@RequestMapping(value = "/uss/olp/qtm/detailQustnrTmplat.do")
 	@Secured("ROLE_ADMIN")
 	public String detailQustnrTmplat(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrTmplatManageVO qustnrTmplatManageVO,
 			ModelMap model) {
 
 		model.addAttribute(qustnrTmplatManageService.selectQustnrTmplatManageDetail(qustnrTmplatManageVO));
 
-		return "uss/olp/qtm/QustnrTmplatDetail";
+		return "com/uss/olp/qtm/QustnrTmplatDetail";
 	}
 
 	/**
@@ -117,10 +117,10 @@ public class QustnrTmplatManageController {
 	@RequestMapping(value = "/uss/olp/qtm/registQustnrTmplat.do")
 	@Secured("ROLE_ADMIN")
 	public String registQustnrTmplat(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrTmplatManageVO qustnrTmplatManageVO) {
 
-		return "uss/olp/qtm/QustnrTmplatRegist";
+		return "com/uss/olp/qtm/QustnrTmplatRegist";
 	}
 
 	/**
@@ -131,17 +131,17 @@ public class QustnrTmplatManageController {
 	@RequestMapping(value = "/uss/olp/qtm/insertQustnrTmplat.do")
 	@Secured("ROLE_ADMIN")
 	public String insertQustnrTmplat(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrTmplatManageVO qustnrTmplatManageVO, 
 			BindingResult bindingResult, 
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model) 
 	throws Exception {
 
 		// 서버 validate 체크
 		beanValidator.validate(qustnrTmplatManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olp/qtm/QustnrTmplatRegist";
+			return "com/uss/olp/qtm/QustnrTmplatRegist";
 		}
 
 		for (MultipartFile file : multiRequest.getFileMap().values()) {
@@ -161,7 +161,7 @@ public class QustnrTmplatManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/uss/olp/qtm/listQustnrTmplat.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -172,13 +172,13 @@ public class QustnrTmplatManageController {
 	@RequestMapping(value = "/uss/olp/qtm/editQustnrTmplat.do")
 	@Secured("ROLE_ADMIN")
 	public String editQustnrTmplat(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrTmplatManageVO qustnrTmplatManageVO,
 			ModelMap model) {
 
 		model.addAttribute(qustnrTmplatManageService.selectQustnrTmplatManageDetail(qustnrTmplatManageVO));
 
-		return "uss/olp/qtm/QustnrTmplatEdit";
+		return "com/uss/olp/qtm/QustnrTmplatEdit";
 	}
 
 	/**
@@ -190,17 +190,17 @@ public class QustnrTmplatManageController {
 	@RequestMapping(value = "/uss/olp/qtm/updateQustnrTmplat.do")
 	@Secured("ROLE_ADMIN")
 	public String updateQustnrTmplat(
-			MultipartHttpServletRequest multiRequest, 
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrTmplatManageVO qustnrTmplatManageVO, 
 			BindingResult bindingResult, 
+			MultipartHttpServletRequest multiRequest, 
 			ModelMap model)
 	throws Exception {
 
 		// 서버 validate 체크
 		beanValidator.validate(qustnrTmplatManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "uss/olp/qtm/QustnrTmplatEdit";
+			return "com/uss/olp/qtm/QustnrTmplatEdit";
 		}
 
 		for (MultipartFile file : multiRequest.getFileMap().values()) {
@@ -221,7 +221,7 @@ public class QustnrTmplatManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/olp/qtm/listQustnrTmplat.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -232,7 +232,7 @@ public class QustnrTmplatManageController {
 	@RequestMapping(value = "/uss/olp/qtm/deleteQustnrTmplat.do")
 	@Secured("ROLE_ADMIN")
 	public String deleteQustnrTmplat(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute QustnrTmplatManageVO qustnrTmplatManageVO, 
 			ModelMap model) {
 
@@ -240,7 +240,7 @@ public class QustnrTmplatManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/olp/qtm/listQustnrTmplat.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

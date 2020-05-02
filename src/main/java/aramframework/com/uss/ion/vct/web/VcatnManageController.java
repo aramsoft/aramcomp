@@ -76,7 +76,7 @@ public class VcatnManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/ion/vct/VcatnList";
+		return "com/uss/ion/vct/VcatnList";
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class VcatnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/vct/detailVcatn.do")
 	public String detailVcatn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute VcatnManageVO vcatnManageVO, 
 			ModelMap model) {
 
@@ -95,7 +95,7 @@ public class VcatnManageController {
 		model.addAttribute(vcatnManageService.selectIndvdlYrycManage(vcatnManageVO.getApplcntId()));
 		model.addAttribute(vcatnManageVO);
 
-		return "uss/ion/vct/VcatnDetail";
+		return "com/uss/ion/vct/VcatnDetail";
 	}
 
 	/**
@@ -105,7 +105,7 @@ public class VcatnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/vct/registVcatn.do")
 	public String registVcatn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute VcatnManageVO vcatnManageVO,
 			ModelMap model) {
 
@@ -118,7 +118,7 @@ public class VcatnManageController {
 
 		model.addAttribute("indvdlYrycManageVO", vcatnManageService.selectIndvdlYrycManage(loginVO.getUserId()));
 
-		return "uss/ion/vct/VcatnRegist";
+		return "com/uss/ion/vct/VcatnRegist";
 	}
 
 	/**
@@ -128,7 +128,7 @@ public class VcatnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/vct/insertVcatn.do")
 	public String insertVcatn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute VcatnManageVO vcatnManageVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -138,7 +138,7 @@ public class VcatnManageController {
 		beanValidator.validate(vcatnManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("indvdlYrycManageVO", vcatnManageService.selectIndvdlYrycManage(loginVO.getUserId()));
-			return "uss/ion/vct/VcatnRegist";
+			return "com/uss/ion/vct/VcatnRegist";
 		} 
 		
 		if (vcatnManageVO.getSanctnerId() != null)
@@ -166,7 +166,7 @@ public class VcatnManageController {
 			vcatnManageVO.setBgnde(DateUtil.formatDate(vcatnManageVO.getBgnde(), "-"));
 			vcatnManageVO.setEndde(DateUtil.formatDate(vcatnManageVO.getEndde(), "-"));
 
-			return "uss/ion/vct/VcatnRegist";
+			return "com/uss/ion/vct/VcatnRegist";
 		}
 		
 		result = vcatnManageService.insertVcatnManage(vcatnManageVO);
@@ -174,7 +174,7 @@ public class VcatnManageController {
 		if (result.equals("01")) {
 			model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 			model.addAttribute("redirectURL", "/uss/ion/vct/listVcatn.do");
-		    return "cmm/redirect";
+		    return "com/cmm/redirect";
 		} else {
 
 			if (result.equals("99"))
@@ -192,7 +192,7 @@ public class VcatnManageController {
 			vcatnManageVO.setBgnde(DateUtil.formatDate(vcatnManageVO.getBgnde(), "-"));
 			vcatnManageVO.setEndde(DateUtil.formatDate(vcatnManageVO.getEndde(), "-"));
 
-			return "uss/ion/vct/VcatnRegist";
+			return "com/uss/ion/vct/VcatnRegist";
 		}
 	}
 
@@ -203,7 +203,7 @@ public class VcatnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/vct/editVcatn.do")
 	public String editVcatn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute VcatnManageVO vcatnManageVO, 
 			ModelMap model) {
 
@@ -214,7 +214,7 @@ public class VcatnManageController {
 		
 		cmmUseService.populateCmmCodeList("COM056", "COM056_vcatnSe");
 
-		return "uss/ion/vct/VcatnEdit";
+		return "com/uss/ion/vct/VcatnEdit";
 	}
 
 	/**
@@ -224,7 +224,7 @@ public class VcatnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/vct/updateVcatn.do")
 	public String updateVcatn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute VcatnManageVO vcatnManageVO,
 			BindingResult bindingResult, 
 			ModelMap model) {
@@ -234,14 +234,14 @@ public class VcatnManageController {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("indvdlYrycManageVO", vcatnManageService.selectIndvdlYrycManage(vcatnManageVO.getApplcntId()));
 
-			return "uss/ion/vct/VcatnEdit";
+			return "com/uss/ion/vct/VcatnEdit";
 		} 
 		  
 		vcatnManageService.updateVcatnManage(vcatnManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/ion/vct/listVcatn.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -251,7 +251,7 @@ public class VcatnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/vct/deleteVcatn.do")
 	public String deleteVcatn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute VcatnManageVO vcatnManageVO, 
 			ModelMap model) {
 
@@ -259,7 +259,7 @@ public class VcatnManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/vct/listVcatn.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/*** 승인관련 ***/
@@ -298,7 +298,7 @@ public class VcatnManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "uss/ion/vct/VcatnConfmList";
+		return "com/uss/ion/vct/VcatnConfmList";
 	}
 
 	/**
@@ -308,7 +308,7 @@ public class VcatnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/vct/editVcatnConfm.do")
 	public String editVcatnConfm(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute VcatnManageVO vcatnManageVO, 
 			ModelMap model) {
 
@@ -317,7 +317,7 @@ public class VcatnManageController {
 		model.addAttribute(vcatnManageService.selectIndvdlYrycManage(vcatnManageVO.getApplcntId()));
 		model.addAttribute(vcatnManageVO);
 		
-		return "uss/ion/vct/VcatnConfmEdit";
+		return "com/uss/ion/vct/VcatnConfmEdit";
 	}
 
 	/**
@@ -327,14 +327,14 @@ public class VcatnManageController {
 	 */
 	@RequestMapping(value = "/uss/ion/vct/updateVcatnConfm.do")
 	public String updateVcatnConfm(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute VcatnManageVO vcatnManageVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(vcatnManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "uss/ion/vct/VcatnConfmEdit";
+			return "com/uss/ion/vct/VcatnConfmEdit";
 		} 
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -345,7 +345,7 @@ public class VcatnManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/uss/ion/vct/listVcatnConfm.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

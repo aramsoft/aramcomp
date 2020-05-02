@@ -43,12 +43,12 @@ public class ComIndexController {
 	@IncludedInfo(name = "초기화면", order = 1000, gid = 10)
 	@RequestMapping("/UnitContent.do")
 	public String unitContent() {
-		return "cmm/UnitContent";
+		return "com/cmm/UnitContent";
 	}
 	
 	@RequestMapping("/UnitMain.do")
 	public String index() {
-		return "cmm/UnitMain";
+		return "com/cmm/UnitMain";
 	}
 
 	@RequestMapping("/UnitLeft.do")
@@ -115,7 +115,7 @@ public class ComIndexController {
 		}
 
 		model.addAttribute("resultList", map.values());
-		return "cmm/UnitLeft";
+		return "com/cmm/UnitLeft";
 	}
 	
 }

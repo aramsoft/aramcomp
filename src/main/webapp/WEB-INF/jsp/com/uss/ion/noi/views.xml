@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="com/uss/ion/noi/NotificationList" extends="default">
+    <put-attribute name="title" value="정보알림이 목록 " />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/ion/noi/NotificationList.jsp" />
+  </definition>
+  
+  <definition name="com/uss/ion/noi/NotificationDetail" extends="default">
+    <put-attribute name="title" value="정보알림이 상세조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/ion/noi/NotificationDetail.jsp" />
+  </definition>
+  
+  <definition name="com/uss/ion/noi/NotificationRegist" extends="default">
+    <put-attribute name="title" value="정보알림이 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/ion/noi/NotificationRegist.jsp" />
+  </definition>
+  
+  <definition name="com/uss/ion/noi/NotificationEdit" extends="default">
+    <put-attribute name="title" value="정보알림이 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/uss/ion/noi/NotificationEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

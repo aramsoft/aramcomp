@@ -63,7 +63,7 @@ public class ZipManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/ccm/zip/ZipList";
+		return "com/sym/ccm/zip/ZipList";
 	}
 
 	/**
@@ -79,7 +79,7 @@ public class ZipManageController {
 
 		model.addAttribute(zipManageService.selectZipDetail(zipVO));
 
-		return "sym/ccm/zip/ZipDetail";
+		return "com/sym/ccm/zip/ZipDetail";
 	}
 
 	/**
@@ -94,7 +94,7 @@ public class ZipManageController {
 			@ModelAttribute ZipVO zipVO, 
 			ModelMap model) {
 
-		return "sym/ccm/zip/ZipRegist";
+		return "com/sym/ccm/zip/ZipRegist";
 	}
 
 	/**
@@ -115,14 +115,14 @@ public class ZipManageController {
 
 		beanValidator.validate(zipVO, bindingResult);
 		if (bindingResult.hasErrors()){
-			return "sym/ccm/zip/ZipRegist";
+			return "com/sym/ccm/zip/ZipRegist";
 		}
 		
 		zipManageService.insertZip(zipVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sym/ccm/zip/listZip.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -136,7 +136,7 @@ public class ZipManageController {
 			@ModelAttribute ZipVO zipVO, 
 			ModelMap model) {
 
-		return "sym/ccm/zip/ZipExcelRegist";
+		return "com/sym/ccm/zip/ZipExcelRegist";
 	}
 
 	/**
@@ -171,14 +171,14 @@ public class ZipManageController {
 
 				} else {
 					model.addAttribute("message", "xlsx 파일 타입만 등록이 가능합니다.");
-					return "sym/ccm/zip/ZipExcelRegist";
+					return "com/sym/ccm/zip/ZipExcelRegist";
 				}
 			}
 		}
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sym/ccm/zip/listZip.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
  	}
 
 	/**
@@ -195,7 +195,7 @@ public class ZipManageController {
 
 		model.addAttribute(zipManageService.selectZipDetail(zipVO));
 
-		return "sym/ccm/zip/ZipEdit";
+		return "com/sym/ccm/zip/ZipEdit";
 	}
 
 	/**
@@ -216,14 +216,14 @@ public class ZipManageController {
 
 		beanValidator.validate(zipVO, bindingResult);
 		if (bindingResult.hasErrors()){
-			return "sym/ccm/zip/ZipEdit";
+			return "com/sym/ccm/zip/ZipEdit";
 		}
 		
 		zipManageService.updateZip(zipVO);
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/sym/ccm/zip/listZip.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 	
 	/**
@@ -242,7 +242,7 @@ public class ZipManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/sym/ccm/zip/listZip.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -266,7 +266,7 @@ public class ZipManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/ccm/zip/ZipSearchPopup";
+		return "com/sym/ccm/zip/ZipSearchPopup";
 	}
 
 	/**
@@ -292,7 +292,7 @@ public class ZipManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/ccm/zip/RdNmSearchPopup";
+		return "com/sym/ccm/zip/RdNmSearchPopup";
 	}
 	
 }

@@ -45,7 +45,7 @@ public class AdministCodeRecptnController {
 
 		model.addAttribute("resultList", administCodeManageService.selectAdministCodeRecptnList(administCodeRecptnVO));
 
-		return "sym/ccm/acr/AdministCodeRecptnMainPage";
+		return "com/sym/ccm/acr/AdministCodeRecptnMainPage";
 	}
 
 	/**
@@ -71,7 +71,7 @@ public class AdministCodeRecptnController {
 
 		model.addAttribute(paginationInfo);
 
-		return "sym/ccm/acr/AdministCodeRecptnList";
+		return "com/sym/ccm/acr/AdministCodeRecptnList";
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class AdministCodeRecptnController {
 	 */
 	@RequestMapping(value = "/sym/ccm/acr/detailAdministCodeRecptn.do")
 	public String detailAdministCodeRecptn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AdministCodeRecptnVO administCodeRecptnVO, 
 			ModelMap model)  {
 
@@ -104,7 +104,7 @@ public class AdministCodeRecptnController {
 		/* 처리구분코드 */
 		cmmUseService.populateCmmCodeList("COM044", "COM044_processSe");
 
-		return "sym/ccm/acr/AdministCodeRecptnDetail";
+		return "com/sym/ccm/acr/AdministCodeRecptnDetail";
 	}
 
 	/**
@@ -114,10 +114,10 @@ public class AdministCodeRecptnController {
 	 */
 	@RequestMapping(value = "/sym/ccm/acr/registAdministCodeRecptn.do")
 	public String registAdministCodeRecptn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AdministCodeRecptnVO administCodeRecptnVO) {
 		
-		return "sym/ccm/acr/AdministCodeRecptnRegist";
+		return "com/sym/ccm/acr/AdministCodeRecptnRegist";
 	}
 
 	/**
@@ -127,14 +127,14 @@ public class AdministCodeRecptnController {
 	 */
 	@RequestMapping(value = "/sym/ccm/acr/insertAdministCodeRecptn.do")
 	public String insertAdministCodeRecptn(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute AdministCodeRecptnVO administCodeRecptnVO, 
 			ModelMap model) {
 		
 		administCodeManageService.insertAdministCodeRecptn();
 		
 		model.addAttribute("redirectURL", "/sym/ccm/acr/listAdministCodeRecptn.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 	
 }

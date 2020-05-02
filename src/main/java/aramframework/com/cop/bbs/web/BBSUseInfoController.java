@@ -64,7 +64,7 @@ public class BBSUseInfoController {
 			model.addAttribute("useCommunity", "true");
 		}
 
-		return "cop/bbs/BoardUseInfList";
+		return "com/cop/bbs/BoardUseInfList";
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class BBSUseInfoController {
 			model.addAttribute("useCommunity", "true");
 		}
 
-		return "cop/bbs/BoardUseInfRegist";
+		return "com/cop/bbs/BoardUseInfRegist";
 	}
 
 	/**
@@ -101,7 +101,7 @@ public class BBSUseInfoController {
 
 		beanValidator.validate(boardUseInfVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/bbs/BoardUseInfRegist";
+			return "com/cop/bbs/BoardUseInfRegist";
 		}
 
 		String registSeCode = "";
@@ -120,7 +120,7 @@ public class BBSUseInfoController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/cop/bbs/listBoardUseInf.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -141,7 +141,7 @@ public class BBSUseInfoController {
 			
 		model.addAttribute(boardUseInfVO);
 					
-		return "cop/bbs/BoardUseInfEdit";
+		return "com/cop/bbs/BoardUseInfEdit";
 	}
 
 	/**
@@ -159,14 +159,14 @@ public class BBSUseInfoController {
 
 		beanValidator.validate(boardUseInfVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/bbs/BoardUseInfEdit";
+			return "com/cop/bbs/BoardUseInfEdit";
 		}
 
 		bbsUseService.updateBBSUseInf(boardUseInfVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/cop/bbs/listBoardUseInf.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -185,7 +185,7 @@ public class BBSUseInfoController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/cop/bbs/listBoardUseInf.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

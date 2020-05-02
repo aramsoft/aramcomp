@@ -56,7 +56,7 @@ public class ModalFrameController {
 		model.addAttribute("requestUrl", requestUrl);
 		LOG.debug("requestUrl = " + requestUrl);
 		
-		return "utl/mdf/ModalPopupFrame";
+		return "com/utl/mdf/ModalPopupFrame";
 	}
 
 }

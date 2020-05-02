@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="com/cop/scp/ScrapList" extends="default">
+    <put-attribute name="title" value="스크랩 관리" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/cop/scp/ScrapList.jsp" />
+  </definition>
+  
+  <definition name="com/cop/scp/ScrapDetail" extends="default">
+    <put-attribute name="title" value="스크랩 조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/cop/scp/ScrapDetail.jsp" />
+  </definition>
+  
+  <definition name="com/cop/scp/ScrapRegist" extends="default">
+    <put-attribute name="title" value="스크랩 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/cop/scp/ScrapRegist.jsp" />
+  </definition>
+  
+  <definition name="com/cop/scp/ScrapEdit" extends="default">
+    <put-attribute name="title" value="스크랩 수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/cop/scp/ScrapEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

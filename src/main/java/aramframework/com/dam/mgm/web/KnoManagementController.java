@@ -59,7 +59,7 @@ public class KnoManagementController {
 
 		model.addAttribute(paginationInfo);
 
-		return "dam/mgm/KnoManagementList";
+		return "com/dam/mgm/KnoManagementList";
 	}
 
 	/**
@@ -69,7 +69,7 @@ public class KnoManagementController {
 	 */
 	@RequestMapping(value = "/dam/mgm/detailKnoManagement.do")
 	public String detailKnoManagement(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute KnoManagementVO knoManagementVO, 
 			ModelMap model) {
 
@@ -79,7 +79,7 @@ public class KnoManagementController {
 		
 		model.addAttribute(knoManagementService.selectKnoManagement(knoManagementVO));
 
-		return "dam/mgm/KnoManagementDetail";
+		return "com/dam/mgm/KnoManagementDetail";
 	}
 
 	/**
@@ -89,13 +89,13 @@ public class KnoManagementController {
 	 */
 	@RequestMapping(value = "/dam/mgm/editKnoManagement.do")
 	public String editKnoManagement(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute KnoManagementVO knoManagementVO, 
 			ModelMap model) {
 
 		model.addAttribute(knoManagementService.selectKnoManagement(knoManagementVO));
 
-		return "dam/mgm/KnoManagementEdit";
+		return "com/dam/mgm/KnoManagementEdit";
 	}
 
 	/**
@@ -105,21 +105,21 @@ public class KnoManagementController {
 	 */
 	@RequestMapping(value = "/dam/mgm/updateKnoManagement.do")
 	public String updateKnoManagement(
-			@ModelAttribute SearchVO searchVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute KnoManagementVO knoManagementVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(knoManagementVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "dam/mgm/KnoManagementEdit";
+			return "com/dam/mgm/KnoManagementEdit";
 		}
 
 		knoManagementService.updateKnoManagement(knoManagementVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/dam/mgm/listKnoManagement.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 	
 }

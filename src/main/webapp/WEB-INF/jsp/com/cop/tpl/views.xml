@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="com/cop/tpl/TemplateList" extends="default">
+    <put-attribute name="title" value="템플릿 목록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/cop/tpl/TemplateList.jsp" />
+  </definition>
+  
+  <definition name="com/cop/tpl/TemplateRegist" extends="default">
+    <put-attribute name="title" value="템플릿 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/cop/tpl/TemplateRegist.jsp" />
+  </definition>
+  
+  <definition name="com/cop/tpl/TemplateEdit" extends="default">
+    <put-attribute name="title" value="템플릿 정보수정" />
+    <put-attribute name="body" value="/WEB-INF/jsp/com/cop/tpl/TemplateEdit.jsp" />
+  </definition>
+
+</tiles-definitions>

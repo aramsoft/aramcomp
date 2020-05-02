@@ -62,7 +62,7 @@ public class DiaryManageController {
 
 		model.addAttribute(paginationInfo);
 
-		return "cop/smt/dsm/DiaryList";
+		return "com/cop/smt/dsm/DiaryList";
 	}
 
 	/**
@@ -79,7 +79,7 @@ public class DiaryManageController {
 
 		model.addAttribute(diaryManageService.selectDiaryManageDetail(diaryManageVO));
 
-		return "cop/smt/dsm/DiaryDetail";
+		return "com/cop/smt/dsm/DiaryDetail";
 	}
 
 	/**
@@ -94,7 +94,7 @@ public class DiaryManageController {
 			@ModelAttribute DiaryManageVO diaryManageVO, 
 			ModelMap model) {
 
-		return "cop/smt/dsm/DiaryRegist";
+		return "com/cop/smt/dsm/DiaryRegist";
 	}
 
 	/**
@@ -116,7 +116,7 @@ public class DiaryManageController {
 		// 서버 validate 체크
 		beanValidator.validate(diaryManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/smt/dsm/DiaryRegist";
+			return "com/cop/smt/dsm/DiaryRegist";
 		}
 
 		// 첨부파일 관련 첨부파일ID 생성
@@ -130,7 +130,7 @@ public class DiaryManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
 		model.addAttribute("redirectURL", "/cop/smt/dsm/listDiary.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -147,7 +147,7 @@ public class DiaryManageController {
 
 		model.addAttribute(diaryManageService.selectDiaryManageDetail(diaryManageVO));
 
-		return "cop/smt/dsm/DiaryEdit";
+		return "com/cop/smt/dsm/DiaryEdit";
 	}
 
 	/**
@@ -169,7 +169,7 @@ public class DiaryManageController {
 		// 서버 validate 체크
 		beanValidator.validate(diaryManageVO, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "cop/smt/dsm/DiaryEdit";
+			return "com/cop/smt/dsm/DiaryEdit";
 		}
 		
 		 // 첨부파일 관련 ID 생성 start....
@@ -184,7 +184,7 @@ public class DiaryManageController {
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
 		model.addAttribute("redirectURL", "/cop/smt/dsm/listDiary.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -203,7 +203,7 @@ public class DiaryManageController {
 		
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/cop/smt/dsm/listDiary.do");
-	    return "cmm/redirect";
+	    return "com/cmm/redirect";
 	}
 
 }

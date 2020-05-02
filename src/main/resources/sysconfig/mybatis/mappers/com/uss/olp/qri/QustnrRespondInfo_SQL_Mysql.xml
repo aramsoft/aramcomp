@@ -16,7 +16,7 @@
 				 , B.USER_NM 				AS "frstRegisterNm" 
 		      FROM COMTN_QESTNR_INFO A
 				   JOIN COMVN_USER_MASTER B  
-				   		ON B.ESNTL_ID = A.FRST_REGISTER_ID
+				   		ON B.USER_ID = A.FRST_REGISTER_ID
 			 WHERE 1=1
 		]]>
     	<if test='trgetId != null and trgetId != ""'>
@@ -47,7 +47,7 @@
 			SELECT COUNT(*) totcnt
 			  FROM COMTN_QESTNR_INFO A
 				   JOIN COMVN_USER_MASTER B  
-				   		ON B.ESNTL_ID = A.FRST_REGISTER_ID
+				   		ON B.USER_ID = A.FRST_REGISTER_ID
 			 WHERE 1=1
 		]]>
     	<if test='trgetId != null and trgetId != ""'>
@@ -70,9 +70,8 @@
         <![CDATA[
 			SELECT USER_ID
 			     , USER_NM
-			     , ESNTL_ID
 			  FROM COMVN_USER_MASTER
-			 WHERE ESNTL_ID = #{uniqId}
+			 WHERE USER_ID = #{uniqId}
 		]]>
 	</select>
 	

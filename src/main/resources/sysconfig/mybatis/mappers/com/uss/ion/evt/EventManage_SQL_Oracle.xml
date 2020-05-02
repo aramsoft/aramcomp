@@ -331,17 +331,17 @@
 			     , atdrn.SANCTNER_ID        AS "sanctnerId"      
 			     , (select USER_NM 
 			          from COMVN_USER_MASTER 
-			         where ESNTL_ID = atdrn.APPLCNT_ID
+			         where USER_ID = atdrn.APPLCNT_ID
 			       )  						AS "applcntNm"
 			     , (select info.ORGNZT_NM 
 			          from COMVN_USER_MASTER mast
 			             , COMTN_ORGNZT_INFO info 
-			         where mast.ESNTL_ID   = atdrn.APPLCNT_ID
+			         where mast.USER_ID   = atdrn.APPLCNT_ID
 			           AND mast.ORGNZT_ID = info.ORGNZT_ID
 			       )  						AS "orgnztNm"
 			     , (select USER_NM 
 			          from COMVN_USER_MASTER 
-			         where ESNTL_ID = atdrn.SANCTNER_ID
+			         where USER_ID = atdrn.SANCTNER_ID
 			       ) 						AS "sanctnerNm"
 			     , atdrn.CONFM_AT           AS "confmAt"         
 			     , atdrn.RETURN_RESN        AS "returnResn"      
@@ -430,7 +430,7 @@
 				 , atdrn.CONFM_AT           AS "confmAt"          
 				 , (select USER_NM 
 				      from COMVN_USER_MASTER 
-				     WHERE ESNTL_ID = atdrn.APPLCNT_ID
+				     WHERE USER_ID = atdrn.APPLCNT_ID
 				   )  						AS "applcntNm"
 				 , TO_CHAR(atdrn.SANCTN_DT, 'YYYY-MM-DD') AS "sanctnDt"  
 			  FROM COMTN_EVENT_MANAGE mge
@@ -509,7 +509,7 @@
 			     , atd.confm_at   			as "confmAt"
 			  from COMTN_EVENT_ATDRN atd
 			     , COMVN_USER_MASTER mas
-			 where atd.applcnt_ID = ESNTL_ID
+			 where atd.applcnt_ID = USER_ID
 			   and atd.EVENT_ID = #{eventId}
 			 ORDER BY atd.EVENT_ID DESC
 		]]>				
@@ -526,7 +526,7 @@
 	        SELECT COUNT(*) totcnt
 			  from COMTN_EVENT_ATDRN atd
 			     , COMVN_USER_MASTER mas
-			 where atd.applcnt_ID = ESNTL_ID
+			 where atd.applcnt_ID = USER_ID
 			   and atd.EVENT_ID = #{eventId} 
 	    ]]>
     </select>

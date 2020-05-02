@@ -52,26 +52,31 @@
 <input type="hidden" name="cntntsId" value="">
 
 <div id="search_area">
-	<div class="button_area">
-		<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_preview(); return false;"><spring:message code="button.preview" /></a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_deleteList(); return false;"><spring:message code="button.delete" /></a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;"><spring:message code="button.create" /></a></span>
+	<div class="search_left">
+	 	<strong>전체 : ${indvdlPgeCntntsVO.totalRecordCount} 건</strong>	
 	</div>
-	<div class="keyword_area">
-    	<form:select path="searchCondition" class="select" title="조회조건 선택">
-	   		<form:option value='' label="--선택하세요--" />
-	   		<form:option value="CNTNTS_NM" label="컨텐츠명" />			   
-	   		<form:option value="CNTNTS_USE_AT" label="사용상태" />			   
-   		</form:select>
-   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
-	   		<form:option value="10" label="10" />
-	   		<form:option value="20" label="20" />
-	   		<form:option value="30" label="30" />
-	   		<form:option value="50" label="50" />
-		</form:select>
-	</div>
+	<div class="search_right">
+		<span class="keyword_area">
+	    	<form:select path="searchCondition" class="select" title="조회조건 선택">
+		   		<form:option value='' label="--선택하세요--" />
+		   		<form:option value="CNTNTS_NM" label="컨텐츠명" />			   
+		   		<form:option value="CNTNTS_USE_AT" label="사용상태" />			   
+	   		</form:select>
+	   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+			<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
+		   		<form:option value="10" label="10" />
+		   		<form:option value="20" label="20" />
+		   		<form:option value="30" label="30" />
+		   		<form:option value="50" label="50" />
+			</form:select>
+		</span>
+		<span class="button_area">
+			<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_preview(); return false;"><spring:message code="button.preview" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_deleteList(); return false;"><spring:message code="button.delete" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;"><spring:message code="button.create" /></a></span>
+		</span>
+	</div>	
 </div>
 
 <table class="table-list" summary="마이페이지에 추가하기 위한 컨텐츠  목록을 제공한다.">

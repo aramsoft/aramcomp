@@ -14,7 +14,7 @@
 			  FROM COMTN_EMPLYR_INFO a
 				   LEFT OUTER JOIN COMTN_ORGNZT_INFO b
 						ON a.ORGNZT_ID = b.ORGNZT_ID
-			 WHERE 1=1
+			 WHERE 1=1 
 		]]>
    	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>

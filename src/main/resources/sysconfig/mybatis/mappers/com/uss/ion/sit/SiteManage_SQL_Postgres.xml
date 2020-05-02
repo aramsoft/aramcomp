@@ -20,7 +20,7 @@
 					    	  		 WHERE CODE_ID = 'COM023') B
 				       	ON A.SITE_THEMA_CL_CODE = B.CODE
 		   		   LEFT OUTER JOIN COMTN_EMPLYR_INFO C     
-		   		   		ON A.LAST_UPDUSR_ID = C.ESNTL_ID  									   
+		   		   		ON A.LAST_UPDUSR_ID = C.EMPLYR_ID  									   
 		     WHERE 1=1 								
 		]]>					
    	    <if test='searchKeyword != null and searchKeyword != ""'>
@@ -51,7 +51,7 @@
 					    	  		 WHERE CODE_ID = 'COM023') B
 				       	ON A.SITE_THEMA_CL_CODE = B.CODE
 		   		   LEFT OUTER JOIN COMTN_EMPLYR_INFO C     
-		   		   		ON A.LAST_UPDUSR_ID = C.ESNTL_ID  									   
+		   		   		ON A.LAST_UPDUSR_ID = C.EMPLYR_ID  									   
 		     WHERE 1=1 								
 		]]>					
    	    <if test='searchKeyword != null and searchKeyword != ""'>
@@ -95,7 +95,7 @@
 					    	  		 WHERE CODE_ID = 'COM023') B
 				       	ON A.SITE_THEMA_CL_CODE = B.CODE
 				   LEFT OUTER JOIN COMTN_EMPLYR_INFO C     	 
-				   		ON A.LAST_UPDUSR_ID = C.ESNTL_ID 	 		
+				   		ON A.LAST_UPDUSR_ID = C.EMPLYR_ID 	 		
 			 WHERE SITE_ID = #{siteId}								
 		]]>
 	</select>

@@ -15,7 +15,7 @@
 				 , A.REPTIT_SE_CODE 			AS "reptitSeCode"
 			  FROM COMTN_LEADER_SCHDUL A
 				   LEFT OUTER JOIN COMTN_EMPLYR_INFO C
-						ON A.LEADER_ID = C.EMPLYR_ID
+						ON A.LEADER_ID = C.EMPLYR_ID 
 			 WHERE 1=1 
 	 	]]>
     	<if test='searchMode != null and searchMode != ""'>

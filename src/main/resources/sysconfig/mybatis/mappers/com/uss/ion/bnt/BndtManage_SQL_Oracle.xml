@@ -9,7 +9,7 @@
 		        , manage.BNDT_DE 		as "bndtDe" 
 		        , (select user_nm 
 		             from COMVN_USER_MASTER
-                       where esntl_id = manage.BNDT_ID 
+                       where USER_ID = manage.BNDT_ID 
                      ) 					AS "bndtUserNm"
                    , (select count(diary.BNDT_ID) 
                         from COMTN_BNDT_DIARY diary
@@ -38,7 +38,7 @@
 		          ) 					AS "bndtOrgnztNm"
 			 FROM COMTN_BNDT_MANAGE ans
 				   LEFT OUTER JOIN COMVN_USER_MASTER mst
-			   		    ON ans.BNDT_ID = mst.ESNTL_ID
+			   		    ON ans.BNDT_ID = mst.USER_ID
 			WHERE BNDT_ID   = #{bndtId}
 			  AND BNDT_DE   = #{bndtDe}
         ]]>
@@ -309,7 +309,7 @@
         <![CDATA[
 			select * 
 			  from (
-					select A.ESNTL_ID 		as bndtId 
+					select A.USER_ID 		as bndtId 
 					     , A.USER_NM 		as tempBndtNm 
 					     , (select info.ORGNZT_NM 
 					          from COMTN_ORGNZT_INFO info 

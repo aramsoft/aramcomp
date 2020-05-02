@@ -86,7 +86,7 @@
 			 WHERE (A.WRTER_ID = #{searchId} OR A.REPORTR_ID = #{searchId})
 		]]>
   	    <if test='searchDe != null and searchDe != ""'>
-        <choose>
+        <choose> 
             <when test='searchDe == "0"'>
 	 			<![CDATA[ 
 	 				AND A.REPORT_DE  BETWEEN #{searchBgnDe} AND #{searchEndDe}		

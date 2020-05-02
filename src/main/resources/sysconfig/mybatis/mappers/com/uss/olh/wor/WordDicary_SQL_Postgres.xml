@@ -15,7 +15,7 @@
    				 , A.FRST_REGIST_PNTTM		AS "frstRegisterPnttm" 
 		      FROM COMTN_WORD_DICARY_INFO A
 				   LEFT OUTER JOIN COMVN_USER_MASTER B     
-				   		ON A.FRST_REGISTER_ID = B.ESNTL_ID
+				   		ON A.FRST_REGISTER_ID = B.USER_ID
 		     WHERE 1=1
 		]]>
     	<if test='searchKeyword != null and searchKeyword != ""'>
@@ -42,7 +42,7 @@
 			SELECT COUNT(*) totcnt
 		      FROM COMTN_WORD_DICARY_INFO A
 				   LEFT OUTER JOIN COMVN_USER_MASTER B     
-				   		ON A.FRST_REGISTER_ID = B.ESNTL_ID
+				   		ON A.FRST_REGISTER_ID = B.USER_ID
 		     WHERE 1=1
 		]]>
     	<if test='searchKeyword != null and searchKeyword != ""'>
@@ -72,7 +72,7 @@
 			     , A.LAST_UPDUSR_ID
 		      FROM COMTN_WORD_DICARY_INFO A
 				   LEFT OUTER JOIN COMVN_USER_MASTER B     
-				   		ON A.FRST_REGISTER_ID = B.ESNTL_ID
+				   		ON A.FRST_REGISTER_ID = B.USER_ID
 		     WHERE A.WORD_ID = #{wordId}	
 		]]>
 	</select>

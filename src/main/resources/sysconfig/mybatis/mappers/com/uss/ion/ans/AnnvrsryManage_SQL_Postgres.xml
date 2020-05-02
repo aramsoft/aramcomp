@@ -80,7 +80,7 @@
 			       ) 						as "annvrsrySeNm"
 			  FROM COMTN_ANNVRSRY_MANAGE A
 				   LEFT OUTER JOIN COMVN_USER_MASTER B
-			   		    ON A.USER_ID = B.esntl_id
+			   		    ON A.USER_ID = B.USER_ID
 			 WHERE A.ANNVRSRY_ID = #{annId}
         ]]>
     </select>
@@ -173,7 +173,7 @@
 <!-- 엑셀일괄 등록 처리  -->
     <select id="selectAnnvrsryManageBnde" resultType="annvrsryManageVO">
         <![CDATA[
-		   select A.ESNTL_ID 	as "usid" 
+		   select A.USER_ID 	as "usid" 
 		   	    , A.USER_NM 	as "usNm" 
 		   	    , (select info.ORGNZT_NM 
 		   	         from COMTN_ORGNZT_INFO info 

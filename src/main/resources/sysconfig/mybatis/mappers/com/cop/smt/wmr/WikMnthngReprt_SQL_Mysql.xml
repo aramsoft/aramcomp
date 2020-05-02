@@ -60,7 +60,7 @@
 	 	<![CDATA[
 			SELECT OFCPS_NM 
 			  FROM COMTN_EMPLYR_INFO
-			 WHERE ESNTL_ID = #{wrterId}
+			 WHERE EMPLYR_ID = #{wrterId}
 	 	]]>
 	</select>
 	

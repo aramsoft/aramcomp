@@ -14,14 +14,14 @@
 			 	    ) 						AS "trnsmiterOrgId" 
 			 	  ,	(SELECT USER_NM 
 			 	       FROM COMTN_EMPLYR_INFO 
-			 	      WHERE ESNTL_ID = (SELECT TRNSMITER_ID 
+			 	      WHERE EMPLYR_ID = (SELECT TRNSMITER_ID 
 			 	      		              FROM COMTN_NOTE_TRNSMIT 
 			 	      		             WHERE NOTE_ID = A.NOTE_ID 
 			 	      		               AND ROWNUM <= 1)
 			 	    ) 						AS "trnsmiterNm"	
 			 	  , (SELECT EMPLYR_ID 
 			 	       FROM COMTN_EMPLYR_INFO 
-			 	      WHERE ESNTL_ID = (SELECT TRNSMITER_ID 
+			 	      WHERE EMPLYR_ID = (SELECT TRNSMITER_ID 
 			 	      				      FROM COMTN_NOTE_TRNSMIT 
 			 	      				     WHERE NOTE_ID = A.NOTE_ID 
 			 	      				       AND ROWNUM <= 1)
@@ -128,7 +128,7 @@
        	<![CDATA[
 			SELECT EMPLYR_ID
 				 , USER_NM 					EMPLYR_NM
-				 , ESNTL_ID 				UNIQ_ID
+				 , EMPLYR_ID 				UNIQ_ID
 				 , SEXDSTN_CODE
 				 , BRTHDY
 				 , HOUSE_ADRES 				HOME_ADRES

@@ -19,7 +19,7 @@
                  , C.USER_NM             	AS "rwardManNm"       
                  , (select mst.USER_NM 
                       from COMVN_USER_MASTER mst 
-                     where mst.ESNTL_ID = SANCTNER_ID
+                     where mst.USER_ID = SANCTNER_ID
                    ) 						AS "sanctnerNm"  
                  , (select code_nm 
                       from COMTC_CMMN_DETAIL_CODE 
@@ -32,7 +32,7 @@
                    )  						AS "orgnztNm"
               FROM COMTN_RWARD_MANAGE A
 				   LEFT OUTER JOIN COMVN_USER_MASTER C
-				        ON A.RWARDWNR_ID = C.ESNTL_ID 
+				        ON A.RWARDWNR_ID = C.USER_ID 
              WHERE 1=1 
         ]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
@@ -60,7 +60,7 @@
             SELECT COUNT(*) totcnt
               FROM COMTN_RWARD_MANAGE A
 				   LEFT OUTER JOIN COMVN_USER_MASTER C
-				        ON A.RWARDWNR_ID = C.ESNTL_ID 
+				        ON A.RWARDWNR_ID = C.USER_ID 
              WHERE 1=1 
         ]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
@@ -95,7 +95,7 @@
                    )   						AS "orgnztNm"    
                  , (select mst1.USER_NM 
                       from COMVN_USER_MASTER mst1 
-                     where mst1.ESNTL_ID = SANCTNER_ID
+                     where mst1.USER_ID = SANCTNER_ID
                    )   						AS "sanctnerNm"  
                  , (select code_nm 
                       from COMTC_CMMN_DETAIL_CODE 
@@ -106,11 +106,11 @@
                       from COMVN_USER_MASTER mst_b
                          , COMTN_ORGNZT_INFO info 
                      where info.ORGNZT_ID = mst_b.ORGNZT_ID 
-                       and mst_b.esntl_id= rwd.SANCTNER_ID
+                       and mst_b.USER_ID= rwd.SANCTNER_ID
                    )  						AS "sanctnerOrgnztNm"
               FROM COMTN_RWARD_MANAGE rwd
 				   LEFT OUTER JOIN COMVN_USER_MASTER mst
-				        ON rwd.RWARDWNR_ID = mst.ESNTL_ID
+				        ON rwd.RWARDWNR_ID = mst.USER_ID
              WHERE rwd.RWARD_ID     = #{rwardId}
         ]]>
     </select>
@@ -202,7 +202,7 @@
                    )  						AS "orgnztNm"
               FROM COMTN_RWARD_MANAGE A
 				   LEFT OUTER JOIN COMVN_USER_MASTER C
-				        ON A.RWARDWNR_ID = C.ESNTL_ID 
+				        ON A.RWARDWNR_ID = C.USER_ID 
              WHERE A.SANCTNER_ID = #{sanctnerId}
         ]]>
    	    <if test='searchKeyword != null and searchKeyword != ""'>
@@ -233,7 +233,7 @@
             SELECT COUNT(*) totcnt
               FROM COMTN_RWARD_MANAGE A
 				   LEFT OUTER JOIN COMVN_USER_MASTER C
-				        ON A.RWARDWNR_ID = C.ESNTL_ID 
+				        ON A.RWARDWNR_ID = C.USER_ID 
              WHERE A.SANCTNER_ID = #{sanctnerId}
         ]]>
    	    <if test='searchKeyword != null and searchKeyword != ""'>

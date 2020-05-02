@@ -12,7 +12,7 @@
 			     , SANCTNER_ID         		AS "sanctnerId"       
 			     , (select mst.USER_NM 
 			          from COMVN_USER_MASTER mst 
-			         where mst.ESNTL_ID = SANCTNER_ID
+			         where mst.USER_ID = SANCTNER_ID
 			       )  						AS "sanctnerNm"
 			     , CONFM_AT            		AS "confmAt"          
 			     , BGNDE               		AS "bgnde"            
@@ -67,17 +67,17 @@
 			       ) 						as "vcatnSeNm"
 			     , (select mst_a.USER_NM 
 			          from COMVN_USER_MASTER mst_a 
-			         where mst_a.ESNTL_ID = vct.SANCTNER_ID
+			         where mst_a.USER_ID = vct.SANCTNER_ID
 			       )  						AS "sanctnerNm"
                  , (select info.ORGNZT_NM 
                       from COMVN_USER_MASTER mst_b
                          , COMTN_ORGNZT_INFO info 
                      where info.ORGNZT_ID = mst_b.ORGNZT_ID 
-                       and mst_b.esntl_id= vct.SANCTNER_ID
+                       and mst_b.USER_ID= vct.SANCTNER_ID
                    ) 						AS "sanctnerOrgnztNm"
 			  FROM COMTN_VCATN_MANAGE vct
 				   LEFT OUTER JOIN COMVN_USER_MASTER mst
-				        ON vct.APPLCNT_ID = mst.esntl_id
+				        ON vct.APPLCNT_ID = mst.USER_ID
 				   LEFT OUTER JOIN COMTN_ORGNZT_INFO org 
 				        ON mst.orgnzt_id  = org.orgnzt_id
 			 WHERE APPLCNT_ID     = #{applcntId}
@@ -182,7 +182,7 @@
 			     , A.INFRML_SANCTN_ID   	AS "infrmlSanctnId"   
 		      FROM COMTN_VCATN_MANAGE A
 				   LEFT OUTER JOIN COMVN_USER_MASTER mst
-				        ON A.APPLCNT_ID = mst.ESNTL_ID
+				        ON A.APPLCNT_ID = mst.USER_ID
 			 WHERE A.SANCTNER_ID = #{sanctnerId}
         ]]>
     	<if test='searchNm != null and searchNm != ""'>
@@ -215,7 +215,7 @@
             SELECT COUNT(*) totcnt
 		      FROM COMTN_VCATN_MANAGE A
 				   LEFT OUTER JOIN COMVN_USER_MASTER mst
-				        ON A.APPLCNT_ID = mst.ESNTL_ID
+				        ON A.APPLCNT_ID = mst.USER_ID
 			 WHERE A.SANCTNER_ID = #{sanctnerId}
         ]]>
     	<if test='searchNm != null and searchNm != ""'>

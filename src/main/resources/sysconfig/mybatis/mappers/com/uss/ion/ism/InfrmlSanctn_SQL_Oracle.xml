@@ -13,7 +13,7 @@
         /* 구현 Sql */
        	<![CDATA[
 			SELECT b.ORGNZT_NM				AS "orgnztNm"
-			     , a.ESNTL_ID				AS "uniqId"
+			     , a.EMPLYR_ID				AS "uniqId"
 			     , a.USER_NM				AS "emplyrNm"
 			     , a.EMPL_NO				AS "emplNo"
 			     , a.OFCPS_NM				AS "ofcpsNm"
@@ -84,9 +84,9 @@
 					    	  		 WHERE CODE_ID = 'COM075') B
 				       	ON A.JOB_SE_CODE = B.CODE
 				   LEFT OUTER JOIN COMTN_EMPLYR_INFO C
-						ON A.APPLCNT_ID = C.ESNTL_ID
+						ON A.APPLCNT_ID = C.EMPLYR_ID
 				   LEFT OUTER JOIN COMTN_EMPLYR_INFO D
-						ON A.SANCTNER_ID = D.ESNTL_ID
+						ON A.SANCTNER_ID = D.EMPLYR_ID
 				   LEFT OUTER JOIN COMTN_ORGNZT_INFO E
 					    ON D.ORGNZT_ID = E.ORGNZT_ID
 			 WHERE A.INFRML_SANCTN_ID = #{infrmlSanctnId}

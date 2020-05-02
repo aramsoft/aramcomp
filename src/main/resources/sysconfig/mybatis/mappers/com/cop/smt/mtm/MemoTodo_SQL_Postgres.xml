@@ -12,7 +12,7 @@
 				 , A.TODO_END_TIME			"todoEndTime" 
 				 , B.USER_NM 				"wrterNm" 	
 				 , A.FRST_REGIST_PNTTM		"frstRegisterPnttm"
-			  FROM COMTN_MEMO_TODO A
+			  FROM COMTN_MEMO_TODO A 
 				   LEFT OUTER JOIN COMTN_EMPLYR_INFO B
 						ON A.WRTER_ID = B.EMPLYR_ID
 			 WHERE A.WRTER_ID = #{searchId}

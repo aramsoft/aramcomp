@@ -254,7 +254,7 @@
                  , COMVN_USER_MASTER mst
              WHERE 1=1
                AND res.MTGRUM_ID = mtg.MTGRUM_ID
-               AND res.RSVCTM_ID = mst.ESNTL_ID
+               AND res.RSVCTM_ID = mst.USER_ID
                AND res.RESVE_ID  = #{resveId}
                AND mtg.MTGRUM_ID = #{mtgPlaceId}
         ]]>

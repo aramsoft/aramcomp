@@ -31,10 +31,12 @@
 </div>
 
 <div id="search_area">
-	<div class="button_area">
-		<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;" >마이페이지 설정 변경</a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_list(); return false;" >컨텐츠 추가</a></span>
- 	</div>
+	<div class="search_right">
+		<span class="button_area">
+			<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;" >마이페이지 설정 변경</a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_list(); return false;" >컨텐츠 추가</a></span>
+	 	</span>
+	 </div>	
 </div>
 
 <table style="clear:both;" summary="마이페이지를 조회한다.">

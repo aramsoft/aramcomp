@@ -34,13 +34,18 @@
 <input type="hidden" name="cntntsId" value="">
 
 <div id="search_area">
-	<div class="button_area">
-       	<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+	<div class="search_left">
+	 	<strong>전체 : ${indvdlPgeCntntsVO.totalRecordCount} 건</strong>	
 	</div>
-	<div class="keyword_area">
-		컨텐츠 명 
-   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-	</div>
+	<div class="search_right">
+		<span class="keyword_area">
+			컨텐츠 명 
+	   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+		</span>
+		<span class="button_area">
+	       	<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+		</span>
+	</div>	
 </div>
 
 <form:hidden path="searchCondition" />

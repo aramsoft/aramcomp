@@ -34,15 +34,20 @@
 <input type="hidden" name="proxyId"/>
 
 <div id="search_area">
-	<div class="button_area">
-		<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;"><spring:message code="button.create" /></a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_log(); return false;">로그</a></span>
+	<div class="search_left">
+	 	<strong>전체 : ${proxySvcVO.totalRecordCount} 건</strong>	
 	</div>
-	<div class="keyword_area">
-		프록시명 : 
-		<form:input path="strProxyNm" size="30" title="검색" onkeypress="press();" />
-	</div>
+	<div class="search_right">
+		<span class="keyword_area">
+			프록시명 : 
+			<form:input path="strProxyNm" size="30" title="검색" onkeypress="press();" />
+		</span>
+		<span class="button_area">
+			<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;"><spring:message code="button.create" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_log(); return false;">로그</a></span>
+		</span>
+	</div>	
 </div>
 
 <form:hidden path="pageIndex" />

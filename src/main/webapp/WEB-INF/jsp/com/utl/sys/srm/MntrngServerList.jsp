@@ -32,14 +32,19 @@
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
 <div id="search_area">
-	<div class="button_area">
-		<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_log(); return false;">로그</a></span>
+	<div class="search_left">
+	 	<strong>전체 : ${serverResrceMntrngVO.totalRecordCount} 건</strong>	
 	</div>
-	<div class="keyword_area">
-		<label for="strServerNm">서버H/W 명 : </label>
-		<form:input path="strServerNm" size="20" title="검색" onkeypress="press();" />
-	</div>
+	<div class="search_right">
+		<span class="keyword_area">
+			<label for="strServerNm">서버H/W 명 : </label>
+			<form:input path="strServerNm" size="20" title="검색" onkeypress="press();" />
+		</span>
+		<span class="button_area">
+			<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_log(); return false;">로그</a></span>
+		</span>
+	</div>	
 </div>
 
 <form:hidden path="pageIndex" />

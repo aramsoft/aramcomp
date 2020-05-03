@@ -35,15 +35,20 @@
 <input type="hidden" name="totalCount" value="${synchrnServerVO.totalRecordCount}" />
 
 <div id="search_area">
-	<div class="button_area">
-		<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;"><spring:message code="button.create" /></a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_process(); return false;">동기화</a></span>
+	<div class="search_left">
+	 	<strong>전체 : ${synchrnServerVO.totalRecordCount} 건</strong>	
 	</div>
-	<div class="keyword_area">
-  		<label for="strSynchrnServerNm">서버 명 : </label>
-  		<form:input path="strSynchrnServerNm" size="30" title="검색" onkeypress="press();" />
-	</div>
+	<div class="search_right">
+		<span class="keyword_area">
+	  		<label for="strSynchrnServerNm">서버 명 : </label>
+	  		<form:input path="strSynchrnServerNm" size="30" title="검색" onkeypress="press();" />
+		</span>
+		<span class="button_area">
+			<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;"><spring:message code="button.create" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_process(); return false;">동기화</a></span>
+		</span>
+	</div>	
 </div>
 
 <form:hidden path="pageIndex" />
@@ -121,13 +126,15 @@
  	<!-- 동기화대상파일 삭제-->   
     <form name="deleteForm" action="${pageContext.request.contextPath}/utl/sys/ssy/deleteFile.do" method="post">
 	<div id="search_area">
-		<div class="button_area">
-			<span class="button"><a href="#" onclick="javascript:fncFileListDelete(); return false;"><spring:message code="button.delete" /></a></span>
-		</div>
-		<div class="keyword_area">
- 			<label for="strSynchrnServerNm">서버 명 : </label>
- 			<input type="text" name="strSynchrnServerNm" id="strSynchrnServerNm" value="${synchrnServerVO.strSynchrnServerNm}" size="30" title="검색" onkeypress="press();" />
-		</div>
+		<div class="search_right">
+			<span class="keyword_area">
+	 			<label for="strSynchrnServerNm">서버 명 : </label>
+	 			<input type="text" name="strSynchrnServerNm" id="strSynchrnServerNm" value="${synchrnServerVO.strSynchrnServerNm}" size="30" title="검색" onkeypress="press();" />
+			</span>
+			<span class="button_area">
+				<span class="button"><a href="#" onclick="javascript:fncFileListDelete(); return false;"><spring:message code="button.delete" /></a></span>
+			</span>
+		</div>	
 	</div>
 
     <table class="table-list" summary="동기화대상 파일에 대한 목록을 제공한다.">

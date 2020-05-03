@@ -32,28 +32,33 @@
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
 <div id="search_area">
-	<div class="button_area">
-		<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_list_proxySvc(); return false;"><spring:message code="button.list" /></a></span>
+	<div class="search_left">
+	 	<strong>전체 : ${proxySvcLogVO.totalRecordCount} 건</strong>	
 	</div>
-	<div class="keyword_area">
- 		기간 : 
-        <input type="text" name="strStartDate" id="strStartDate" value="<c:out value='${proxyLogVO.strStartDate}'/>" size="10" maxlength="10" title="프록시로그 시작일자">
-        <a href="#" onClick="javascript:fn_aram_NormalCalendar('', document.forms[0].strStartDate); return false;" >
-           	<img src="/images/com/sym/cal/bu_icon_carlendar.gif" title="새창" alt="달력창팝업버튼이미지">
-        </a>
-        ~ 
-        <input type="text" name="strEndDate" id="strEndDate" value="<c:out value='${proxyLogVO.strEndDate}'/>" size="10" maxlength="10" title="프록시로그 종료일자">
-        <a href="#" onClick="javascript:fn_aram_NormalCalendar('', document.forms[0].strEndDate); return false;" >
-           	<img src="/images/com/sym/cal/bu_icon_carlendar.gif" title="새창" alt="달력창팝업버튼이미지">
-        </a>
-		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
-	   		<form:option value="10" label="10" />
-	   		<form:option value="20" label="20" />
-	   		<form:option value="30" label="30" />
-	   		<form:option value="50" label="50" />
-		</form:select>
-	</div>
+	<div class="search_right">
+		<span class="keyword_area">
+	 		기간 : 
+	        <input type="text" name="strStartDate" id="strStartDate" value="<c:out value='${proxyLogVO.strStartDate}'/>" size="10" maxlength="10" title="프록시로그 시작일자">
+	        <a href="#" onClick="javascript:fn_aram_NormalCalendar('', document.forms[0].strStartDate); return false;" >
+	           	<img src="/images/com/sym/cal/bu_icon_carlendar.gif" title="새창" alt="달력창팝업버튼이미지">
+	        </a>
+	        ~ 
+	        <input type="text" name="strEndDate" id="strEndDate" value="<c:out value='${proxyLogVO.strEndDate}'/>" size="10" maxlength="10" title="프록시로그 종료일자">
+	        <a href="#" onClick="javascript:fn_aram_NormalCalendar('', document.forms[0].strEndDate); return false;" >
+	           	<img src="/images/com/sym/cal/bu_icon_carlendar.gif" title="새창" alt="달력창팝업버튼이미지">
+	        </a>
+			<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
+		   		<form:option value="10" label="10" />
+		   		<form:option value="20" label="20" />
+		   		<form:option value="30" label="30" />
+		   		<form:option value="50" label="50" />
+			</form:select>
+		</span>
+		<span class="button_area">
+			<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_list_proxySvc(); return false;"><spring:message code="button.list" /></a></span>
+		</span>
+	</div>	
 </div>
 
 <form:hidden path="pageIndex" />

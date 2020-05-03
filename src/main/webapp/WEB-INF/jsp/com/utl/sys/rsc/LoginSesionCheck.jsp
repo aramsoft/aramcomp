@@ -53,11 +53,13 @@
 <form:form modelAttribute="loginSessionCheck" method="post" action="${pageContext.request.contextPath}/utl/sys/rsc/setLoginSession.do">
 
 <div id="search_area">
-	<div class="button_area">
-   		<span class="button"><a href="${pageContext.request.contextPath}/utl/sys/rsc/loginSessionView.do" onclick="fncSelectLoginSession(); return false;"><spring:message code="button.inquire" /></a></span>
-   		<span class="button"><input type="submit" value="설정" onclick="fncSetLoginSession(); return false;"></span>
-   		<span class="button"><a href="<%=user.getUrl() %>" target=“_blank” title="새창" onclick="fncgetLoginSessionView('<%=user.getUrl() %>'); return false;">이동</a></span>
-	</div>
+	<div class="search_right">
+		<span class="button_area">
+	   		<span class="button"><a href="${pageContext.request.contextPath}/utl/sys/rsc/loginSessionView.do" onclick="fncSelectLoginSession(); return false;"><spring:message code="button.inquire" /></a></span>
+	   		<span class="button"><input type="submit" value="설정" onclick="fncSetLoginSession(); return false;"></span>
+	   		<span class="button"><a href="<%=user.getUrl() %>" target=“_blank” title="새창" onclick="fncgetLoginSessionView('<%=user.getUrl() %>'); return false;">이동</a></span>
+		</span>
+	</div>	
 </div>
 
 <table class="table-list" summary="로그인 세션정보를 설정 및 체크한다.">

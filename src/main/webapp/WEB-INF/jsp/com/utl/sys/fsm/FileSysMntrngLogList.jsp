@@ -35,45 +35,50 @@
 <input type="hidden" name="logId"/>
 
 <div id="search_area">
-	<div class="button_area">
-		<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_list_fileSysMntrng(); return false;"><spring:message code="button.list" /></a></span>
+	<div class="search_left">
+	 	<strong>전체 : ${fileSysMntrngLogVO.totalRecordCount} 건</strong>	
 	</div>
-	<div class="keyword_area">
-		<form:input path="searchBgnDe" size="10" maxlength="10" title="조회시작일자 입력" />
-   		<a href="#" onClick="javascript:fn_aram_NormalCalendar('', document.forms[0].searchBgnDe); return false;">
-   			<img src="${pageContext.request.contextPath}/images/com/cmm/icon/bu_icon_carlendar.gif" style="border:0px;vertical-align: bottom" alt="달력창팝업버튼이미지">
-   		</a>
-   		<select name="searchBgnHour" class="select" title="조회시작 시 선택">
-   			<c:forEach var="bgnHour" items="${searchBgnHour}" varStatus="status">
-          		<option value="<c:out value="${bgnHour.code}"/>"><c:out value="${bgnHour.codeNm}"/></option>
-          	</c:forEach>
-      	</select>
-   		~
-   		<form:input path="searchEndDe" size="10" maxlength="10" title="조회종료일자 입력" />
-   		<a href="#" onClick="javascript:fn_aram_NormalCalendar('', document.forms[0].searchEndDe); return false;">
-   			<img src="${pageContext.request.contextPath}/images/com/cmm/icon/bu_icon_carlendar.gif" style="border:0px;vertical-align: bottom" alt="달력창팝업버튼이미지">
-   		</a>
- 		<select name="searchEndHour" class="select" title="조회종료 시 선택">
- 			<c:forEach var="endHour" items="${searchEndHour}" varStatus="status">
-          		<option value="<c:out value="${endHour.code}"/>"><c:out value="${endHour.codeNm}"/></option>
-          	</c:forEach>
-      	</select>
-  		<form:select path="searchCondition" title="조회조건 선택">
-	   		<form:option value='' label="--선택하세요--" />
-	   		<form:option value="FILE_SYS_NM" label="파일시스템명" />			   
-	   		<form:option value="FILE_SYS_MANAGE_NM" label="파일시스템관리명" />			   
-	   		<form:option value="MNGR_NM" label="관리자명" />			   
-	   		<form:option value="MNTRNG_STTUS" label="상태" />			   
-   		</form:select>
-   		<form:input path="searchKeyword" size="25" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
-	   		<form:option value="10" label="10" />
-	   		<form:option value="20" label="20" />
-	   		<form:option value="30" label="30" />
-	   		<form:option value="50" label="50" />
-		</form:select>
-	</div>
+	<div class="search_right">
+		<span class="keyword_area">
+			<form:input path="searchBgnDe" size="10" maxlength="10" title="조회시작일자 입력" />
+	   		<a href="#" onClick="javascript:fn_aram_NormalCalendar('', document.forms[0].searchBgnDe); return false;">
+	   			<img src="${pageContext.request.contextPath}/images/com/cmm/icon/bu_icon_carlendar.gif" style="border:0px;vertical-align: bottom" alt="달력창팝업버튼이미지">
+	   		</a>
+	   		<select name="searchBgnHour" class="select" title="조회시작 시 선택">
+	   			<c:forEach var="bgnHour" items="${searchBgnHour}" varStatus="status">
+	          		<option value="<c:out value="${bgnHour.code}"/>"><c:out value="${bgnHour.codeNm}"/></option>
+	          	</c:forEach>
+	      	</select>
+	   		~
+	   		<form:input path="searchEndDe" size="10" maxlength="10" title="조회종료일자 입력" />
+	   		<a href="#" onClick="javascript:fn_aram_NormalCalendar('', document.forms[0].searchEndDe); return false;">
+	   			<img src="${pageContext.request.contextPath}/images/com/cmm/icon/bu_icon_carlendar.gif" style="border:0px;vertical-align: bottom" alt="달력창팝업버튼이미지">
+	   		</a>
+	 		<select name="searchEndHour" class="select" title="조회종료 시 선택">
+	 			<c:forEach var="endHour" items="${searchEndHour}" varStatus="status">
+	          		<option value="<c:out value="${endHour.code}"/>"><c:out value="${endHour.codeNm}"/></option>
+	          	</c:forEach>
+	      	</select>
+	  		<form:select path="searchCondition" title="조회조건 선택">
+		   		<form:option value='' label="--선택하세요--" />
+		   		<form:option value="FILE_SYS_NM" label="파일시스템명" />			   
+		   		<form:option value="FILE_SYS_MANAGE_NM" label="파일시스템관리명" />			   
+		   		<form:option value="MNGR_NM" label="관리자명" />			   
+		   		<form:option value="MNTRNG_STTUS" label="상태" />			   
+	   		</form:select>
+	   		<form:input path="searchKeyword" size="25" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+			<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
+		   		<form:option value="10" label="10" />
+		   		<form:option value="20" label="20" />
+		   		<form:option value="30" label="30" />
+		   		<form:option value="50" label="50" />
+			</form:select>
+		</span>
+		<span class="button_area">
+			<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_list_fileSysMntrng(); return false;"><spring:message code="button.list" /></a></span>
+		</span>
+	</div>	
 </div>
 
 <form:hidden path="pageIndex" />

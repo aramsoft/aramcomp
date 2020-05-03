@@ -34,25 +34,30 @@
 <input type="hidden" name="logId">
 
 <div id="search_area">
-	<div class="button_area">
-		<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_list_mntrngServer(); return false;">목록</a></span>
+	<div class="search_left">
+	 	<strong>전체 : ${serverResrceMntrngVO.totalRecordCount} 건</strong>	
 	</div>
-	<div class="keyword_area">
-		<label for="strServerNm">서버H/W 명 : </label>
-		<form:input path="strServerNm" size="8" title="검색" onkeypress="press();" />
-        <label for="strStartDt">기간 : </label>
-        <form:input path="strStartDt" size="10" maxlength="10" title="서버자원 모니터링 시작일자" />
-        <a href="#" onClick="javascript:fn_aram_NormalCalendar(document.forms[0].strServerResrceMntrngDate, document.forms[0].strStartDt); return false;" style="selector-dummy:expression(this.hideFocus=false);">
-         	<img src="/images/com/sym/cal/bu_icon_carlendar.gif" title="새창" alt="달력창팝업버튼이미지">
-        </a>
-        ~ 
-        <form:input path="strEndDt" size="10" maxlength="10" title="서버자원 모니터링 종료일자" />
-        <a href="#" onClick="javascript:fn_aram_NormalCalendar(document.forms[0].strServerResrceMntrngDate, document.forms[0].strEndDt); return false;" style="selector-dummy:expression(this.hideFocus=false);">
-         	<img src="/images/com/sym/cal/bu_icon_carlendar.gif" title="새창" alt="달력창팝업버튼이미지">
-        </a>
-		<input type="hidden" name="strServerResrceMntrngDate" value=""/>
-	</div>
+	<div class="search_right">
+		<span class="keyword_area">
+			<label for="strServerNm">서버H/W 명 : </label>
+			<form:input path="strServerNm" size="8" title="검색" onkeypress="press();" />
+	        <label for="strStartDt">기간 : </label>
+	        <form:input path="strStartDt" size="10" maxlength="10" title="서버자원 모니터링 시작일자" />
+	        <a href="#" onClick="javascript:fn_aram_NormalCalendar(document.forms[0].strServerResrceMntrngDate, document.forms[0].strStartDt); return false;" style="selector-dummy:expression(this.hideFocus=false);">
+	         	<img src="/images/com/sym/cal/bu_icon_carlendar.gif" title="새창" alt="달력창팝업버튼이미지">
+	        </a>
+	        ~ 
+	        <form:input path="strEndDt" size="10" maxlength="10" title="서버자원 모니터링 종료일자" />
+	        <a href="#" onClick="javascript:fn_aram_NormalCalendar(document.forms[0].strServerResrceMntrngDate, document.forms[0].strEndDt); return false;" style="selector-dummy:expression(this.hideFocus=false);">
+	         	<img src="/images/com/sym/cal/bu_icon_carlendar.gif" title="새창" alt="달력창팝업버튼이미지">
+	        </a>
+			<input type="hidden" name="strServerResrceMntrngDate" value=""/>
+		</span>
+		<span class="button_area">
+			<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_list_mntrngServer(); return false;">목록</a></span>
+		</span>
+	</div>	
 </div>
 
 <form:hidden path="pageIndex" />

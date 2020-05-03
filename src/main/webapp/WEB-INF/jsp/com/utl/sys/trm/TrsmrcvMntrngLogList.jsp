@@ -35,62 +35,66 @@
 <input type="hidden" name="logId">
 
 <div id="search_area">
-	<div class="button_area">
-		<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_list_trsmrcvMntrng(); return false;"><spring:message code="button.list" /></a></span>
+	<div class="search_left">
+	 	<strong>전체 : ${trsmrcvMntrngLogVO.totalRecordCount} 건</strong>	
 	</div>
-	<div class="keyword_area1">
-                     기간:
-        <input type="text" name="searchStartDate" size="10" title="검색시작일자">
-        <a href="#" onClick="javascript:fn_aram_NormalCalendar('', document.forms[0].searchStartDate ); return false;">
-           	<img src="/images/com/sym/cal/bu_icon_carlendar.gif" alt="일자달력 (팝업으로 열림)">
-        </a>
-        <select name="searchStartHour" id="searchStartHour" title="검색시작시간">
-            <option value="">선택</option>
-            <c:forEach var="h" begin="1" end="24" step="1">
-               	<option value="<fmt:formatNumber value="${h}" pattern="00"/>"><fmt:formatNumber value="${h}" pattern="00"/></option>
-            </c:forEach>
-        </select>
-        :
-        <select name="searchStartMin" id="searchStartMin" title="검색시작분">
-            <option value="">선택</option>
-            <c:forEach var="h" begin="0" end="59" step="1">
-               	<option value="<fmt:formatNumber value="${h}" pattern="00"/>"><fmt:formatNumber value="${h}" pattern="00"/></option>
-            </c:forEach>
-        </select>
-       	~ 
-        <input type="text" name="searchEndDate" size="10" title="검색종료일자">
-        <a href="#" onClick="javascript:fn_aram_NormalCalendar('', document.forms[0].searchEndDate ); return false;">
-           	<img src="/images/com/sym/cal/bu_icon_carlendar.gif" alt="일자달력 (팝업으로 열림)">
-        </a>
-        <select name="searchEndHour" id="searchEndHour" title="검색종료시간">
-            <option value="">선택</option>
-            <c:forEach var="h" begin="1" end="24" step="1">
-               	<option value="<fmt:formatNumber value="${h}" pattern="00"/>"><fmt:formatNumber value="${h}" pattern="00"/></option>
-            </c:forEach>
-        </select>
-        :
-        <select name="searchEndMin" id="searchEndMin" title="검색종료분">
-            <option value="">선택</option>
-            <c:forEach var="h" begin="0" end="59" step="1">
-               	<option value="<fmt:formatNumber value="${h}" pattern="00"/>"><fmt:formatNumber value="${h}" pattern="00"/></option>
-            </c:forEach>
-        </select>
-	</div>
-	<div class="keyword_area2">
-  		<form:select path="searchCondition" title="조회조건 선택">
-	   		<form:option value='' label="--선택하세요--" />
-	   		<form:option value="CNTC_NM" label="연계명" />			   
-	   		<form:option value="MNGR_NM" label="관리자명" />			   
-   		</form:select>
-   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
- 		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
-	   		<form:option value="10" label="10" />
-	   		<form:option value="20" label="20" />
-	   		<form:option value="30" label="30" />
-	   		<form:option value="50" label="50" />
-		</form:select>
-	</div>
+	<div class="search_right">
+		<span class="keyword_area">
+	                     기간:
+	        <input type="text" name="searchStartDate" size="10" title="검색시작일자">
+	        <a href="#" onClick="javascript:fn_aram_NormalCalendar('', document.forms[0].searchStartDate ); return false;">
+	           	<img src="/images/com/sym/cal/bu_icon_carlendar.gif" alt="일자달력 (팝업으로 열림)">
+	        </a>
+	        <select name="searchStartHour" id="searchStartHour" title="검색시작시간">
+	            <option value="">선택</option>
+	            <c:forEach var="h" begin="1" end="24" step="1">
+	               	<option value="<fmt:formatNumber value="${h}" pattern="00"/>"><fmt:formatNumber value="${h}" pattern="00"/></option>
+	            </c:forEach>
+	        </select>
+	        :
+	        <select name="searchStartMin" id="searchStartMin" title="검색시작분">
+	            <option value="">선택</option>
+	            <c:forEach var="h" begin="0" end="59" step="1">
+	               	<option value="<fmt:formatNumber value="${h}" pattern="00"/>"><fmt:formatNumber value="${h}" pattern="00"/></option>
+	            </c:forEach>
+	        </select>
+	       	~ 
+	        <input type="text" name="searchEndDate" size="10" title="검색종료일자">
+	        <a href="#" onClick="javascript:fn_aram_NormalCalendar('', document.forms[0].searchEndDate ); return false;">
+	           	<img src="/images/com/sym/cal/bu_icon_carlendar.gif" alt="일자달력 (팝업으로 열림)">
+	        </a>
+	        <select name="searchEndHour" id="searchEndHour" title="검색종료시간">
+	            <option value="">선택</option>
+	            <c:forEach var="h" begin="1" end="24" step="1">
+	               	<option value="<fmt:formatNumber value="${h}" pattern="00"/>"><fmt:formatNumber value="${h}" pattern="00"/></option>
+	            </c:forEach>
+	        </select>
+	        :
+	        <select name="searchEndMin" id="searchEndMin" title="검색종료분">
+	            <option value="">선택</option>
+	            <c:forEach var="h" begin="0" end="59" step="1">
+	               	<option value="<fmt:formatNumber value="${h}" pattern="00"/>"><fmt:formatNumber value="${h}" pattern="00"/></option>
+	            </c:forEach>
+	        </select>
+			<br />
+	  		<form:select path="searchCondition" title="조회조건 선택">
+		   		<form:option value='' label="--선택하세요--" />
+		   		<form:option value="CNTC_NM" label="연계명" />			   
+		   		<form:option value="MNGR_NM" label="관리자명" />			   
+	   		</form:select>
+	   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+	 		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
+		   		<form:option value="10" label="10" />
+		   		<form:option value="20" label="20" />
+		   		<form:option value="30" label="30" />
+		   		<form:option value="50" label="50" />
+			</form:select>
+		</span>
+		<span class="button_area">
+			<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_list_trsmrcvMntrng(); return false;"><spring:message code="button.list" /></a></span>
+		</span>
+	</div>	
 </div>
 
 <form:hidden path="searchKeywordFrom" />

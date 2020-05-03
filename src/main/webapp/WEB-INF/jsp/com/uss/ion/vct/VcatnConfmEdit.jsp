@@ -32,13 +32,15 @@
 </div>
 
 <div id="search_area">
-	<div class="button_area">
-        <c:if test="${vcatnManageVO.confmAt eq 'A'}">
-			<span class="button"><a href="#" onclick="javascript:fn_aram_confirm(); return false;">승인</a></span>
-			<span class="button"><a href="#" onclick="javascript:fn_aram_reject(); return false;">반려</a></span>
-	  	</c:if>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_list(); return false;"><spring:message code="button.list" /></a></span>
-	</div>
+	<div class="search_right">
+		<span class="button_area">
+	        <c:if test="${vcatnManageVO.confmAt eq 'A'}">
+				<span class="button"><a href="#" onclick="javascript:fn_aram_confirm(); return false;">승인</a></span>
+				<span class="button"><a href="#" onclick="javascript:fn_aram_reject(); return false;">반려</a></span>
+		  	</c:if>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_list(); return false;"><spring:message code="button.list" /></a></span>
+		</span>
+	</div>	
 </div>
 
 <form:form modelAttribute="vcatnManageVO" method="post" action="#">

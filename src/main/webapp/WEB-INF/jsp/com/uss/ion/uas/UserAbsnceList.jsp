@@ -38,18 +38,23 @@
 <input name="userId" type="hidden" value="">
 
 <div id="search_area">
-	<div class="button_area">
-      	<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+	<div class="search_left">
+	 	<strong>전체 : ${userAbsnceVO.totalRecordCount} 건</strong>	
 	</div>
-	<div class="keyword_area">
-  		사용자 명 : 
-   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-  		<form:select path="selAbsnceAt" title="부재여부선택">
-        	<form:option value="A" label="전체" />
-            <form:option value="Y" label="Y" />
-            <form:option value="N" label="N" />
-        </form:select>
-	</div>
+	<div class="search_right">
+		<span class="keyword_area">
+	  		사용자 명 : 
+	   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+	  		<form:select path="selAbsnceAt" title="부재여부선택">
+	        	<form:option value="A" label="전체" />
+	            <form:option value="Y" label="Y" />
+	            <form:option value="N" label="N" />
+	        </form:select>
+		</span>
+		<span class="button_area">
+	      	<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+		</span>
+	</div>	
 </div>
 
 <form:hidden path="searchCondition" />

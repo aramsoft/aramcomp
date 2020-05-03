@@ -37,8 +37,6 @@
 <input type="hidden" name="regYns"/>
 
 <div id="search_area">
-	<div class="search_left">
-	</div>
 	<div class="search_right">
 		<span class="keyword_area">
 	 		권한코드 : 

@@ -66,7 +66,15 @@
 		
 		<typeAlias alias="loginPolicyVO"		type="aramframework.com.uat.uap.domain.LoginPolicyVO"/>
 		<typeAlias alias="loginVO"				type="aramframework.com.uat.uia.domain.LoginVO"/>
-		
+		<typeAlias alias="eventCmpgnVO"			type="aramframework.com.uss.ion.ecc.domain.EventCmpgnVO"/>
+		<typeAlias alias="tnextrlHrInfoVO"		type="aramframework.com.uss.ion.ecc.domain.TnextrlHrInfoVO"/>
+		<typeAlias alias="eventManageVO"		type="aramframework.com.uss.ion.evt.domain.EventManageVO"/>
+		<typeAlias alias="eventAtdrnVO"			type="aramframework.com.uss.ion.evt.domain.EventAtdrnVO"/>
+		<typeAlias alias="infrmlSanctnVO"		type="aramframework.com.uss.ion.ism.domain.InfrmlSanctnVO"/>
+		<typeAlias alias="noteManageVO"			type="aramframework.com.uss.ion.ntm.domain.NoteManageVO"/>
+		<typeAlias alias="noteRecptnVO"			type="aramframework.com.uss.ion.ntr.domain.NoteRecptnVO"/>
+		<typeAlias alias="noteTrnsmitVO"		type="aramframework.com.uss.ion.nts.domain.NoteTrnsmitVO"/>
+		 
 		<typeAlias alias="faqManageVO"			type="aramframework.com.uss.olh.faq.domain.FaqManageVO"/>
 		<typeAlias alias="qnaManageVO"			type="aramframework.com.uss.olh.qna.domain.QnaManageVO"/>
 		

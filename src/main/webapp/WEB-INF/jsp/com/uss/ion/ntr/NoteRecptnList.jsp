@@ -53,42 +53,47 @@
 <input name="cmd" type="hidden" value="">
 
 <div id="search_area">
-	<div class="button_area">
-		<span class="button"><a href="#" onclick="javascript:fn_aram_search_noteRecptn(); return false;"><spring:message code="button.inquire" /></a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_delete_noteRecptn(); return false;"><spring:message code="button.delete" /></a></span>
+	<div class="search_left">
+	 	<strong>전체 : ${noteRecptnVO.totalRecordCount} 건</strong>	
 	</div>
-	<div class="keyword_area">
-		보낸날짜:&nbsp;
-		<label for="searchFromDate"></label>
-      	<form:input path="searchFromDate" size="10" maxlength="10" title="보낸날짜 시작일자" readonly="true" />
-      	<a href="#" onClick="javascript:fn_aram_NormalCalendar('', document.forms[0].searchFromDate); return false;" style ="selector-dummy:expression(this.hideFocus=false);">
-      		<img src="${pageContext.request.contextPath}/images/com/cmm/icon/bu_icon_carlendar.gif" alt="달력창팝업버튼이미지" width ="15" height="15">
-      	</a> 
-	    ~
-	   	<label for="searchToDate"> </label>
-	   	<form:input path="searchToDate" size="10" maxlength="10" title="보낸날짜  종료일자" readonly="true" />
-       	<a href="#" onClick="javascript:fn_aram_NormalCalendar('', document.forms[0].searchToDate); return false;" style="selector-dummy:expression(this.hideFocus=false);">
-       		<img src="${pageContext.request.contextPath}/images/com/cmm/icon/bu_icon_carlendar.gif" alt="달력창팝업버튼이미지" width="15" height="15">
-       	</a>
-       	
-		<label for="searchCondition"> </label>
-    	<form:select path="searchCondition" title="조회조건 선택">
-	   		<form:option value='' label="--선택하세요--" />
-	   		<form:option value="NOTE_SJ" label="쪽지제목" />			   
-	   		<form:option value="NOTE_CN" label="쪽지내용" />			   
-	   		<form:option value="RCVER_NM" label="보낸사람" />			   
-   		</form:select>
-
-		<label for="searchKeyword"> </label>
-   		<form:input path="searchKeyword" size="25" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-
-		<form:select path="recordPerPage" class="select" onchange="fn_aram_search_noteRecptn();" title="recordPerPage">
-	   		<form:option value="10" label="10" />
-	   		<form:option value="20" label="20" />
-	   		<form:option value="30" label="30" />
-	   		<form:option value="50" label="50" />
-		</form:select>
-	</div>
+	<div class="search_right">
+		<span class="keyword_area">
+			보낸날짜:&nbsp;
+			<label for="searchFromDate"></label>
+	      	<form:input path="searchFromDate" size="10" maxlength="10" title="보낸날짜 시작일자" readonly="true" />
+	      	<a href="#" onClick="javascript:fn_aram_NormalCalendar('', document.forms[0].searchFromDate); return false;" style ="selector-dummy:expression(this.hideFocus=false);">
+	      		<img src="${pageContext.request.contextPath}/images/com/cmm/icon/bu_icon_carlendar.gif" alt="달력창팝업버튼이미지" width ="15" height="15">
+	      	</a> 
+		    ~
+		   	<label for="searchToDate"> </label>
+		   	<form:input path="searchToDate" size="10" maxlength="10" title="보낸날짜  종료일자" readonly="true" />
+	       	<a href="#" onClick="javascript:fn_aram_NormalCalendar('', document.forms[0].searchToDate); return false;" style="selector-dummy:expression(this.hideFocus=false);">
+	       		<img src="${pageContext.request.contextPath}/images/com/cmm/icon/bu_icon_carlendar.gif" alt="달력창팝업버튼이미지" width="15" height="15">
+	       	</a>
+	       	
+			<label for="searchCondition"> </label>
+	    	<form:select path="searchCondition" title="조회조건 선택">
+		   		<form:option value='' label="--선택하세요--" />
+		   		<form:option value="NOTE_SJ" label="쪽지제목" />			   
+		   		<form:option value="NOTE_CN" label="쪽지내용" />			   
+		   		<form:option value="RCVER_NM" label="보낸사람" />			   
+	   		</form:select>
+	
+			<label for="searchKeyword"> </label>
+	   		<form:input path="searchKeyword" size="25" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+	
+			<form:select path="recordPerPage" class="select" onchange="fn_aram_search_noteRecptn();" title="recordPerPage">
+		   		<form:option value="10" label="10" />
+		   		<form:option value="20" label="20" />
+		   		<form:option value="30" label="30" />
+		   		<form:option value="50" label="50" />
+			</form:select>
+		</span>
+		<span class="button_area">
+			<span class="button"><a href="#" onclick="javascript:fn_aram_search_noteRecptn(); return false;"><spring:message code="button.inquire" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_delete_noteRecptn(); return false;"><spring:message code="button.delete" /></a></span>
+		</span>
+	</div>	
 </div>
 
 <form:hidden path="pageIndex" />

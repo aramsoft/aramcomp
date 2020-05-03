@@ -51,9 +51,11 @@
 </div>
 
 <div id="search_area">
-	<div class="button_area">
-     	<span class="button"><input type="submit" value="<spring:message code="button.inquire" />" onclick="fn_aram_list(); return false;"></span>
-	</div>
+	<div class="search_right">
+		<span class="button_area">
+	     	<span class="button"><input type="submit" value="<spring:message code="button.inquire" />" onclick="fn_aram_list(); return false;"></span>
+		</span>
+	</div>	
 </div>
 
 <form:form modelAttribute="mtgPlaceResveVO" action="" method="post">

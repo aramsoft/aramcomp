@@ -43,11 +43,13 @@
 </div>
 
 <div id="search_area">
-	<div class="button_area">
-		<span class="button"><a href="#" onclick="javascript:fn_aram_reply_noteRecptn(); return false;">답장</a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_delete_noteRecptn(); return false;"><spring:message code="button.delete" /></a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_list_noteRecptn(); return false;"><spring:message code="button.list" /></a></span>
-	</div>
+	<div class="search_right">
+		<span class="button_area">
+			<span class="button"><a href="#" onclick="javascript:fn_aram_reply_noteRecptn(); return false;">답장</a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_delete_noteRecptn(); return false;"><spring:message code="button.delete" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_list_noteRecptn(); return false;"><spring:message code="button.list" /></a></span>
+		</span>
+	</div>	
 </div>
 
 <form:form modelAttribute="noteRecptnVO" action="" method="post">

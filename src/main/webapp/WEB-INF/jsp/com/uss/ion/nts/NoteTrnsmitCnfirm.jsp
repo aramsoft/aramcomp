@@ -42,9 +42,11 @@
 </div>
 
 <div id="search_area">
-	<div class="button_area">
-		<span class="button"><a href="#" onclick="javascript:fn_aram_close_trnsmitCnfirm(); return false;"><spring:message code="button.close" /></a></span>
-	</div>
+	<div class="search_right">
+		<span class="button_area">
+			<span class="button"><a href="#" onclick="javascript:fn_aram_close_trnsmitCnfirm(); return false;"><spring:message code="button.close" /></a></span>
+		</span>
+	</div>	
 </div>
 
 <!-- 보낸쪽지정보 -->

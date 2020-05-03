@@ -43,10 +43,12 @@
 </div>
 
 <div id="search_area">
-	<div class="button_area">
-   		<span class="button"><a href="#" onclick="javascript:fncPopUpConfm(); return false;">승인</a></span>     
-   		<span class="button"><a href="#" onclick="window.close(); return false;"><spring:message code="button.close" /></a></span>     
-	</div>
+	<div class="search_right">
+		<span class="button_area">
+	   		<span class="button"><a href="#" onclick="javascript:fncPopUpConfm(); return false;">승인</a></span>     
+	   		<span class="button"><a href="#" onclick="window.close(); return false;"><spring:message code="button.close" /></a></span>     
+		</span>
+	</div>	
 </div>
 
 <!-- ------------------------------------------------------------------ 등록  폼 영역  -->

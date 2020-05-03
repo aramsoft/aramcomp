@@ -30,9 +30,11 @@
 </div>
 
 <div id="search_area">
-	<div class="button_area">
-   		<span class="button"><a href="/uss/ion/ism/listSanctnerPopup.do" target="_blank"  title="새 창으로 이동"  onClick="fn_aram_sanctner('승인권자', 'sanctnerId', '', 'sanctnDtNm', 'orgnztNm');return false;">결재자지정</a></span>
-	</div>
+	<div class="search_right">
+		<span class="button_area">
+	   		<span class="button"><a href="/uss/ion/ism/listSanctnerPopup.do" target="_blank"  title="새 창으로 이동"  onClick="fn_aram_sanctner('승인권자', 'sanctnerId', '', 'sanctnDtNm', 'orgnztNm');return false;">결재자지정</a></span>
+		</span>
+	</div>	
 </div>
 
 <table class="table-register">

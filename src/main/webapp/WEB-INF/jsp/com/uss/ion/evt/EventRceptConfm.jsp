@@ -28,11 +28,13 @@
 </div>
 
 <div id="search_area">
-	<div class="button_area">
-		<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_confirm(); return false;">승인</a></span>
-		<span class="button"><a href="#" onclick="javascript:fn_aram_reject(); return false;">반려</a></span>
-	</div>
+	<div class="search_right">
+		<span class="button_area">
+			<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_confirm(); return false;">승인</a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_reject(); return false;">반려</a></span>
+		</span>
+	</div>	
 </div>
 
 <form:form modelAttribute="eventAtdrnVO" action="" method="post">

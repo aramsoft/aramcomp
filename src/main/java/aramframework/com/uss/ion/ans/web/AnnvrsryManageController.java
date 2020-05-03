@@ -386,7 +386,7 @@ public class AnnvrsryManageController {
 		// 		String sTempMessage =
 		// 		annvrsryManageVO.getBndtDe().substring(0,4)+"년"+bndtManageVO.getBndtDe().substring(4,6)+"월 데이타가 존재합니다.";
 		// 		model.addAttribute("message", sTempMessage);
-		// 		return "aramframework/com/uss/ion/bnt/AnnvrsryBndeListPopup";
+		// 		return "com/uss/ion/bnt/AnnvrsryBndeListPopup";
 		// }
 	}
 

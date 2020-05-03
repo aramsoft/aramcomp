@@ -32,7 +32,7 @@ public class LoginSesionController {
 	@RequestMapping(value = "/utl/sys/rsc/loginSessionView.do")
 	@Secured("ROLE_ADMIN")
 	public String checkLoginSessionView() {
-		return "aramframework/com/utl/sys/rsc/LoginSesionCheck";
+		return "com/utl/sys/rsc/LoginSesionCheck";
 	}
 
 	/**
@@ -55,7 +55,7 @@ public class LoginSesionController {
 	@Secured("ROLE_ADMIN")
 	public String checkLoginSession() {
 		egovLoginSesionCeckUtil.checkLoginSessionView();
-		return "aramframework/com/utl/sys/rsc/LoginSesionCheck";
+		return "com/utl/sys/rsc/LoginSesionCheck";
 	}
 
 }

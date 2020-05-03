@@ -491,7 +491,7 @@ public class MtgPlaceManageController {
 		int dplactCeckCnt = mtgPlaceManageService.mtgPlaceResveDplactCeck(mtgPlaceResveVO);
 
 		model.addAttribute("dplactCeck", dplactCeckCnt);
-		return "aramframework/com/uss/ion/mtg/MtgPlaceResveDplactCeck";
+		return "com/uss/ion/mtg/MtgPlaceResveDplactCeck";
 	}
 
 	/**

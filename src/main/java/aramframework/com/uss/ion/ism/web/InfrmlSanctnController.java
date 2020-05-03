@@ -74,7 +74,7 @@ public class InfrmlSanctnController {
 	 */
 	@RequestMapping("/uss/ion/ism/ReturnPopup.do")
 	public String selectReturnPopup() {
-		return "aramframework/com/uss/ion/ism/ReturnPopup";
+		return "com/uss/ion/ism/ReturnPopup";
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class InfrmlSanctnController {
 	 */
 	@RequestMapping("/uss/ion/ism/ConfmPopup.do")
 	public String selectConfmPopup() {
-		return "aramframework/com/uss/ion/ism/ConfmPopup";
+		return "com/uss/ion/ism/ConfmPopup";
 	}
 
 }

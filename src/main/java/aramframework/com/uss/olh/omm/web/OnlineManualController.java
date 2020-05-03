@@ -50,7 +50,7 @@ public class OnlineManualController {
 			ModelMap model) {
 		
 		model.addAttribute("onMnlId", request.getParameter("onMnlId"));
-		return "aramframework/com/uss/olh/omm/OnlineManual";
+		return "com/uss/olh/omm/OnlineManual";
 	}
 
 	/**

@@ -44,8 +44,6 @@
 <form:form modelAttribute="deptVO" method="post">
 
 <div id="search_area">
-	<div class="search_left">
-	</div>
 	<div class="search_right">
 		<span class="keyword_area">
 	 		부서 명 : 

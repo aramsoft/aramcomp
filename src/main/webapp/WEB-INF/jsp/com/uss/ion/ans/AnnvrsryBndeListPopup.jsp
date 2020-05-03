@@ -49,9 +49,11 @@
 <input type="hidden" name="cmd">
 
 <div id="search_area">
-	<div class="button_area">
-        <span class="button"><a href="#" onclick="fncAnnvrsryManageBndeRegist(); return false;"><spring:message code="button.create" /></a></span>     
-	</div>
+	<div class="search_right">
+		<span class="button_area">
+	        <span class="button"><a href="#" onclick="fncAnnvrsryManageBndeRegist(); return false;"><spring:message code="button.create" /></a></span>     
+		</span>
+	</div>	
 </div>
 
 <table class="table-register">

@@ -54,12 +54,17 @@
 <input name="registFormCmd" type="hidden" value="">
 
 <div id="search_area">
-	<div class="button_area">
-     	<span class="button"><a href="#" onclick="javascript:fn_aram_insert(); return false;"><spring:message code="button.create" /></a></span>
+	<div class="search_left">
+	 	<strong>전체 : ${onlinePollItemVO.totalRecordCount} 건</strong>	
 	</div>
-	<div class="keyword_area">
-	    <form:input path="pollIemNm" size="100" value="" maxlength="255" title="POLL 세부항목 입력" />
-	</div>
+	<div class="search_right">
+		<span class="keyword_area">
+		    <form:input path="pollIemNm" size="100" value="" maxlength="255" title="POLL 세부항목 입력" />
+		</span>
+		<span class="button_area">
+	     	<span class="button"><a href="#" onclick="javascript:fn_aram_insert(); return false;"><spring:message code="button.create" /></a></span>
+		</span>
+	</div>	
 </div>
 
 </form:form>

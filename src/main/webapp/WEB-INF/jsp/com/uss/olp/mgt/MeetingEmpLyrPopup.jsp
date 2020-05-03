@@ -45,24 +45,29 @@
 <form:form modelAttribute="baseVO" action="" method="post">
 
 <div id="search_area">
-	<div class="button_area">
-     	<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+	<div class="search_left">
+	 	<strong>전체 : ${baseVO.totalRecordCount} 건</strong>	
 	</div>
-	<div class="keyword_area">
-    	<form:select path="searchCondition" title="조회조건 선택">
-	   		<form:option value='' label="--선택하세요--" />
-	   		<form:option value="USER_NM" label="이름" />			   
-	   		<form:option value="EMPLYR_ID" label="아이디" />			   
-	   		<form:option value="OFFM_TELNO" label="전화번호" />			   
-   		</form:select>
-   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
-		<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
-	   		<form:option value="10" label="10" />
-	   		<form:option value="20" label="20" />
-	   		<form:option value="30" label="30" />
-	   		<form:option value="50" label="50" />
-		</form:select>
-	</div>
+	<div class="search_right">
+		<span class="keyword_area">
+	    	<form:select path="searchCondition" title="조회조건 선택">
+		   		<form:option value='' label="--선택하세요--" />
+		   		<form:option value="USER_NM" label="이름" />			   
+		   		<form:option value="EMPLYR_ID" label="아이디" />			   
+		   		<form:option value="OFFM_TELNO" label="전화번호" />			   
+	   		</form:select>
+	   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
+			<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" >
+		   		<form:option value="10" label="10" />
+		   		<form:option value="20" label="20" />
+		   		<form:option value="30" label="30" />
+		   		<form:option value="50" label="50" />
+			</form:select>
+		</span>
+		<span class="button_area">
+	     	<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+		</span>
+	</div>	
 </div>
 
 <form:hidden path="pageIndex" />

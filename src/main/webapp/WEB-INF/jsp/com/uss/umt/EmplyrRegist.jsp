@@ -380,7 +380,7 @@ function fn_aram_insert(){
 								 + varForm.moblphonNo3.value;
 	}
 	
-    if(!validateUserManageVO(varForm)){
+    if(!validateEmplyrManageVO(varForm)){
     	return;
     }
     

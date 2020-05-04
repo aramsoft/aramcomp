@@ -47,13 +47,7 @@ function checkLogin(userSe) {
         document.loginForm.rdoSlctUsr[1].checked = true;
         document.loginForm.rdoSlctUsr[2].checked = false;
         document.loginForm.userSe.value = "ENT";
-    // 업무사용자
-    } else if (userSe == "USR") {
-        document.loginForm.rdoSlctUsr[0].checked = false;
-        document.loginForm.rdoSlctUsr[1].checked = false;
-        document.loginForm.rdoSlctUsr[2].checked = true;
-        document.loginForm.userSe.value = "USR";
-    }
+    } 
 }
 
 function actionLogin() {
@@ -95,10 +89,7 @@ function goRegiUsr() {
     	url = url + "?trgetId=${trgetId}&curMenuPos=${curMenuPos}";
         document.loginForm.action=url;
         document.loginForm.submit();
-    // 업무사용자
-    } else if (userSe == "USR") {
-        alert("업무사용자는 별도의 회원가입이 필요하지 않습니다.");
-    }
+    } 
 }
 
 function setCookie (name, value, expires) {
@@ -200,8 +191,6 @@ window.onload = fnInit;
                     	<input name="rdoSlctUsr" type="radio" value="radio" checked onClick="checkLogin('GNR');" style="border:0;background:#ffffff;" tabindex="1">일반
                     	&nbsp;&nbsp;
                     	<input name="rdoSlctUsr" type="radio" value="radio" onClick="checkLogin('ENT');" style="border:0;background:#ffffff;" tabindex="2">기업
-                    	&nbsp;&nbsp;
-                    	<input name="rdoSlctUsr" type="radio" value="radio" onClick="checkLogin('USR');" style="border:0;background:#ffffff;" tabindex="3">업무
                     </td>
                 </tr>
                 <tr><td colspan="2" height="5"></td></tr>

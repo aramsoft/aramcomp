@@ -110,7 +110,7 @@
     		<input type="hidden" id="mberTy${result.userId}" value="${result.mberTyCode}" disabled />
     	</td>
     	<td class="lt_text3">
-    		<select id="author${result.uniqId}" title="권한">
+    		<select id="author${result.userId}" title="권한">
 	    		<c:forEach var="author" items="${authorList}" varStatus="status">
 	            <option value="<c:out value="${author.authorCode}"/>" <c:if test="${author.authorCode == result.authorCode}">selected</c:if>><c:out value="${author.authorNm}"/></option>
 	        	</c:forEach>

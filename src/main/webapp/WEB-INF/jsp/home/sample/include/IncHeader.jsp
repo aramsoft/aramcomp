@@ -33,7 +33,7 @@
 </div>
 <!-- 
 <div id="nia_logo">
-    <img src="${pageContext.request.contextPath}/images/header/limg_lt_nia_logo.gif" alt="NIA한국정보화진흥원" />
+    <img src="${pageContext.request.contextPath}/images/home/sample/header/limg_lt_nia_logo.gif" alt="NIA한국정보화진흥원" />
 </div>
  -->
 <div id="project_title">

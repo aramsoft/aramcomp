@@ -99,14 +99,14 @@
 
 <div style="margin-top:10px; width:100%"></div>
 
-<table class="table-list" summary="행사접수승인 목록으로 행사명, 행사장소, 행사구분, 행사일자, 기간, 신청자, 승인일자로 구성.">
+<table class="table-list" id="tblData" summary="행사접수승인 목록으로 행사명, 행사장소, 행사구분, 행사일자, 기간, 신청자, 승인일자로 구성.">
 <caption>행사접수승인 목록</caption>
 <thead>
 	<tr>  
      	<th scope="col" width="7%" >No.</th>
-		<th scope="col" width="5%" >
-			<input type="checkbox" name="checkAll" id="checkAll" class="check2" onClick="javascript:fn_aram_checkAll()" title="전체선택">
-		</th>
+        <th scope="col" width="5%" >
+    		<input type="checkbox" id="checkAll" class="check2" title="전체선택" />
+        </th>
 		<th scope="col"            >행사명</th>
 		<th scope="col" width="10%">행사장소</th>
 		<th scope="col" width="10%">행사구분</th>
@@ -133,11 +133,7 @@
 
 		<td class="lt_text3">
 			<c:if test="${result.confmAt eq 'A'}">
-		        <input type="checkbox" name="eventRceptCheck" style="border:0px;" value ="${status.count-1}">
-				<input type="hidden" name="pEventId"        value="${result.eventId}"/>
-				<input type="hidden" name="applcntId"       value="${result.applcntId}"/>
-				<input type="hidden" name="infrmlSanctnId"  value="${result.infrmlSanctnId}"/>
-				<input type="hidden" name="reqstDe"         value="${result.reqstDe}"/>
+				<input type="checkbox" class="check2" id="uniqIds" name="uniqIds" value="${result.eventId}-${result.applcntId}-${result.infrmlSanctnId}-${result.reqstDe}" />
 			</c:if>
 			<c:if test="${result.confmAt eq 'C'}">승인</c:if>
 			<c:if test="${result.confmAt eq 'R'}">반려</c:if>
@@ -176,6 +172,16 @@
 
 <script type="text/javascript">
 
+$(function() {
+	$("#checkAll").on("click", function(){
+		if( $(this).is(":checked") ){
+			$("#tblData input[name=uniqIds]").prop("checked", true);
+		}else{
+			$("#tblData input[name=uniqIds]").prop("checked", false); 
+		}
+	});
+});
+
 /*********************************************************
  * 페이징 처리 함수
  ******************************************************** */
@@ -199,7 +205,7 @@ function fn_aram_search(){
 		} 
 	}
 	varForm.pageIndex.value  = 1;
-	varForm.action           = "${pageContext.request.contextPath}/uss/ion/evt/listEventRceptConfm.do";
+	varForm.action = "${pageContext.request.contextPath}/uss/ion/evt/listEventRceptConfm.do";
 	varForm.submit();
 }
 
@@ -212,7 +218,8 @@ var gArguments = new Array();
  ******************************************************** */
 function fn_aram_confirm(){
     var varForm = document.getElementById("eventAtdrnVO");
-   	varForm.checkedEventRceptForConfm.value = fncEventConfmProcess();
+
+    varForm.checkedEventRceptForConfm.value = getEventRceptForConfm();
    	if(varForm.checkedEventRceptForConfm.value == "F"){
    	    alert("승인처리할 대상이 존재하지 않습니다. 승인처리할 대상을 선택하신 후 승인처리 가능합니다.");
        	return;
@@ -233,9 +240,10 @@ function fn_aram_confirm(){
  ******************************************************** */
 function fn_aram_reject(){
     var varForm = document.getElementById("eventAtdrnVO");
-   	varForm.checkedEventRceptForConfm.value = fncEventConfmProcess();
+
+    varForm.checkedEventRceptForConfm.value = getEventRceptForConfm();
    	if(varForm.checkedEventRceptForConfm.value == "F"){
-   	    alert("승인처리할 대상이 존재하지 않습니다. 승인처리할 대상을 선택하신 후 승인처리 가능합니다.");
+   	    alert("반려처리할 대상이 존재하지 않습니다. 승인처리할 대상을 선택하신 후 반려처리 가능합니다.");
        	return;
   	}
 
@@ -262,40 +270,20 @@ function fncConfm(confmAt, returnResn){
 
 /* ********************************************************
  * 멀티처리 프로세스
- * fncEventConfmProcess
+ * getEventRceptForConfm
  * param null
  ******************************************************** */
-function fncEventConfmProcess(){
-    var varForm = document.getElementById("eventAtdrnVO");
-    var checkField        = varForm.eventRceptCheck;
-    var eventId           = varForm.pEventId;
-    var applcntId         = varForm.applcntId;
-    var infrmlSanctnId    = varForm.infrmlSanctnId;
-    var reqstDe           = varForm.reqstDe;
-    var checkedEventRcept = "";
-    var checkedValue;
-    var checkedCount = 0;
-    if(checkField) {
-    	if(checkField.length> 1) {
-            for(var i=0; i < checkField.length; i++) {
-                if(checkField[i].checked) {
-               	  	checkedValue = checkField[i].value;
-               	  	checkedEventRcept += ((checkedCount==0? "" : "$")+eventId[checkedValue].value+","+applcntId[checkedValue].value+","+infrmlSanctnId[checkedValue].value+","+reqstDe[checkedValue].value);
-                    checkedCount++;
-                }
-            }
-            if(checkedCount == 0) checkedEventRcept = "F"; 
-        } else {
-			if(checkField.checked) {
-        	 	checkedValue = checkField.value;
-           	  	if(eventId.length> 1) checkedEventRcept = eventId[checkedValue].value+","+applcntId[checkedValue].value+","+infrmlSanctnId[checkedValue].value+","+reqstDe[checkedValue].value;
-           	  	else checkedEventRcept = eventId.value+","+applcntId.value+","+infrmlSanctnId.value+","+reqstDe.value;
-            }else{
-            	checkedEventRcept = "F"; 
-            }
-        }
-    }else checkedEventRcept = "F"; 
-    return checkedEventRcept;
+function getEventRceptForConfm(){
+    var eventRceptForConfm = "";
+ 	if( $("#tblData input[name=uniqIds]:checked").length == 0) {
+		eventRceptForConfm = "F";
+	} else {
+		$("#tblData input[name=uniqIds]:checked").each(function() {	
+			eventRceptForConfm += this.value+"$";
+		});
+		eventRceptForConfm = eventRceptForConfm.substring(0,eventRceptForConfm.length-1);
+	}
+    return eventRceptForConfm;
 }
  
 /* ********************************************************
@@ -306,31 +294,12 @@ function fn_aram_popup_eventManage(eventId){
  	var openParam            = "left=10, top=0, width=750, height=600";
  	varForm.eventId.value    = eventId;
  	varForm.popup.value      = "true";
- 	var myWin = window.open("about:blank","EventReqstDetailPop",openParam);
+ 	var myWin = window.open("about:blank","EventManageDetailPop",openParam);
  	
  	varForm.method = "post";
- 	varForm.action = "${pageContext.request.contextPath}/uss/ion/evt/detailEventReqst.do";
- 	varForm.target = "EventReqstDetailPop";
+ 	varForm.action = "${pageContext.request.contextPath}/uss/ion/evt/detailEventManage.do";
+ 	varForm.target = "EventManageDetailPop";
  	varForm.submit();
-}
-
-/* ********************************************************
- * 체크 박스 선택 함수
- ******************************************************** */
-function fn_aram_checkAll(){
-
- 	var FLength = document.getElementsByName("eventRceptCheck").length;
- 	var checkAllValue = document.getElementById('checkAll').checked;
-
- 	//undefined
- 	if( FLength == 1){
-	 	document.listForm.eventRceptCheck.checked = checkAllValue;
- 	}else if(FLength> 1){
-			for(var i=0; i < FLength; i++)
-			{
-				document.getElementsByName("eventRceptCheck")[i].checked = checkAllValue;	
-			}
- 	}
 }
 
 </script>

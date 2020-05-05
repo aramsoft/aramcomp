@@ -146,7 +146,7 @@
     		정원
     	</th>          
     	<td>
-    		<c:out value='${eventManageVO.garden}'/>
+    		<c:out value='${eventManageVO.psncpa}'/>
     	</td>    
   	</tr>
   	<tr>
@@ -178,7 +178,7 @@
  ******************************************************** */
 function fn_aram_list(pageNo){
 	var varForm = document.getElementById("eventManageVO");
-	varForm.action = "${pageContext.request.contextPath}/uss/ion/evt/listEventReqst.do";
+	varForm.action = "${pageContext.request.contextPath}/uss/ion/evt/listEventManage.do";
 	varForm.submit();
 }
 
@@ -187,7 +187,7 @@ function fn_aram_list(pageNo){
 ******************************************************** */
 function fn_aram_edit() {
 	var varForm = document.getElementById("eventManageVO");
-	varForm.action = "${pageContext.request.contextPath}/uss/ion/evt/editEventReqst.do";
+	varForm.action = "${pageContext.request.contextPath}/uss/ion/evt/editEventManage.do";
 	varForm.submit();   
 }
 
@@ -198,7 +198,7 @@ function fn_aram_delete() {
 	var varForm = document.getElementById("eventManageVO");
 	
 	if(confirm("<spring:message code='common.delete.msg'/>")){
-   	   	varForm.action = "${pageContext.request.contextPath}/uss/ion/evt/deleteEventReqst.do";
+   	   	varForm.action = "${pageContext.request.contextPath}/uss/ion/evt/deleteEventManage.do";
        	varForm.submit();
    	}
 }

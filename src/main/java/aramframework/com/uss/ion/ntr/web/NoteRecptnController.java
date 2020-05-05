@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.ntr.web;
 
-import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,17 +10,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
+import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.ntr.domain.NoteRecptnVO;
 import aramframework.com.uss.ion.ntr.service.NoteRecptnService;
 import aramframework.com.uss.ion.nts.domain.NoteTrnsmitVO;
 import aramframework.com.uss.ion.nts.service.NoteTrnsmitService;
-import egovframework.rte.ptl.mvc.bind.annotation.CommandMap;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
@@ -39,8 +38,8 @@ public class NoteRecptnController {
 	@Autowired
 	private NoteRecptnService noteRecptnService;
 
-	protected final Logger log = LoggerFactory.getLogger(this.getClass());
-
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
+	
 	/**
 	 * 받은쪽지함관리 목록을 조회한다.
 	 * 
@@ -51,57 +50,11 @@ public class NoteRecptnController {
 	@RequestMapping(value = "/uss/ion/ntr/listNoteRecptn.do")
 	@Secured("ROLE_USER")
 	public String listNoteRecptn(
-			@CommandMap Map<String, Object> commandMap,
 			@ModelAttribute("noteRecptnVO") NoteRecptnVO noteRecptnVO, 
 			ModelMap model) {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-
-		// 변수 설정
-		String sCmd = commandMap.get("cmd") == null ? "" : (String) commandMap.get("cmd");
-		// 삭제 모드로 실행시
-		if (sCmd.equals("del")) {
-			// 한개의 값으로 삭제가 넘어올때 처리
-			if (commandMap.get("checkList") instanceof String) {
-				String sCheckList = (String) commandMap.get("checkList");
-
-				String[] sArrCheckListValue = sCheckList.split(",");
-
-				log.debug("==================================EgovNoteRecptnList");
-				log.debug("checkList" + sCheckList);
-				log.debug("sArrCheckListValue[0]>" + sArrCheckListValue[0]);
-				log.debug("sArrCheckListValue[1]>" + sArrCheckListValue[1]);
-
-				noteRecptnVO.setFrstRegisterId(loginVO.getUserId());
-				noteRecptnVO.setLastUpdusrId(loginVO.getUserId());
-				noteRecptnVO.setNoteId(sArrCheckListValue[0]);
-				noteRecptnVO.setNoteTrnsmitId(sArrCheckListValue[1]);
-				noteRecptnVO.setNoteRecptnId(sArrCheckListValue[2]);
-
-				noteRecptnService.deleteNoteRecptn(noteRecptnVO);
-			}
-
-			// 여러개의 값으로 삭제가 넘어올때 처리
-			if (commandMap.get("checkList") instanceof String[]) {
-				String[] sArrCheckList = (String[]) commandMap.get("checkList");
-				// log.debug("sArrCheckList" + sArrCheckList);
-
-				for (int i = 0; i < sArrCheckList.length; i++) {
-					String[] sArrCheckListValue = sArrCheckList[i].split(",");
-
-					noteRecptnVO.setFrstRegisterId(loginVO.getUserId());
-					noteRecptnVO.setLastUpdusrId(loginVO.getUserId());
-					noteRecptnVO.setNoteId(sArrCheckListValue[0]);
-					noteRecptnVO.setNoteTrnsmitId(sArrCheckListValue[1]);
-					noteRecptnVO.setNoteRecptnId(sArrCheckListValue[2]);
-
-					noteRecptnService.deleteNoteRecptn(noteRecptnVO);
-				}
-			}
-			// 삭제후 페이지 인덱스 설정
-			noteRecptnVO.setPageIndex(1);
-		}
 
 		// 수신자설정
 		noteRecptnVO.setRcverId(loginVO.getUserId());
@@ -121,6 +74,41 @@ public class NoteRecptnController {
 	}
 
 	/**
+	 * 받은쪽지함관리 목록을 조회한다.
+	 * 
+	 * @param commandMap
+	 * @param noteRecptnVO
+	 */
+	@RequestMapping(value = "/uss/ion/ntr/deleteListNoteRecptn.do")
+	@Secured("ROLE_USER")
+	public String deleteListNoteRecptn(
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute("noteRecptnVO") NoteRecptnVO noteRecptnVO, 
+			HttpServletRequest request, 
+			ModelMap model) {
+
+		// 로그인 객체 선언
+		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
+
+    	String[] uniqIds = null;
+    	if(request.getParameterValues("uniqIds") != null) 
+    		uniqIds = request.getParameterValues("uniqIds");
+
+		for (int i = 0; i < uniqIds.length; i++) {
+			String[] id = uniqIds[i].split("-");
+			noteRecptnVO.setFrstRegisterId(loginVO.getUserId());
+			noteRecptnVO.setLastUpdusrId(loginVO.getUserId());
+			noteRecptnVO.setNoteId(id[0]);
+			noteRecptnVO.setNoteTrnsmitId(id[1]);
+			noteRecptnVO.setNoteRecptnId(id[2]);
+		}
+
+		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
+		model.addAttribute("redirectURL", "/uss/ion/ntr/listNoteRecptn.do");
+	    return "com/cmm/redirect";
+	}
+
+	/**
 	 * 받은쪽지함관리 목록을 상세조회 조회한다.
 	 * 
 	 * @param cmd
@@ -130,13 +118,7 @@ public class NoteRecptnController {
 	public String detailNoteRecptn(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute("noteRecptnVO") NoteRecptnVO noteRecptnVO, 
-			@RequestParam(value="cmd", required=false) String sCmd,
 			ModelMap model) {
-
-		if (sCmd.equals("del")) {
-			noteRecptnService.deleteNoteRecptn(noteRecptnVO);
-			return "redirect:/uss/ion/ntr/listNoteRecptn.do";
-		} 
 
 		// 로그인 객체 선언/아이디설정
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -151,6 +133,25 @@ public class NoteRecptnController {
 		model.addAttribute("resultRecptnEmp", noteTrnsmitService.selectNoteTrnsmitCnfirm(noteTrnsmit));
 
 		return "com/uss/ion/ntr/NoteRecptnDetail";
+	}
+
+	/**
+	 * 받은쪽지함관리 목록을 상세조회 조회한다.
+	 * 
+	 * @param cmd
+	 * @param noteRecptnVO
+	 */
+	@RequestMapping(value = "/uss/ion/ntr/deleteNoteRecptn.do")
+	public String deleteNoteRecptn(
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute("noteRecptnVO") NoteRecptnVO noteRecptnVO, 
+			ModelMap model) {
+
+		noteRecptnService.deleteNoteRecptn(noteRecptnVO);
+		
+		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
+		model.addAttribute("redirectURL", "/uss/ion/ntr/listNoteRecptn.do");
+	    return "com/cmm/redirect";
 	}
 
 }

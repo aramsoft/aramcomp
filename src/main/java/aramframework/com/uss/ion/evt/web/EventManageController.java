@@ -1,5 +1,7 @@
 package aramframework.com.uss.ion.evt.web;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -43,15 +45,17 @@ public class EventManageController {
 	@Autowired
 	private DefaultBeanValidator beanValidator;
 
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
+	
 	/**
 	 * 행사관리정보를 관리하기 위해 등록된 행사관리 목록을 조회한다.
 	 * 
 	 * @param eventManageVO
 	 */
 	@IncludedInfo(name = "행사신청관리", order = 5320, gid = 50)
-	@RequestMapping(value = "/uss/ion/evt/listEventReqst.do")
-	@Secured("ROLE_USER")
-	public String listEventReqst(
+	@RequestMapping(value = "/uss/ion/evt/listEventManage.do")
+	@Secured("ROLE_ADMIN")
+	public String listEventManage(
 			@ModelAttribute EventManageVO eventManageVO, 
 			ModelMap model) {
 
@@ -78,7 +82,7 @@ public class EventManageController {
 		// 행사구분
 		cmmUseService.populateCmmCodeList("COM053", "COM053_eventSe");
 
-		return "com/uss/ion/evt/EventReqstList";
+		return "com/uss/ion/evt/EventManageList";
 	}
 
 	/**
@@ -86,8 +90,8 @@ public class EventManageController {
 	 * 
 	 * @param eventManageVO
 	 */
-	@RequestMapping(value = "/uss/ion/evt/detailEventReqst.do")
-	public String detailEgovEventReqst(
+	@RequestMapping(value = "/uss/ion/evt/detailEventManage.do")
+	public String detailEventManage(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute EventManageVO eventManageVO, 
 			@RequestParam(value="popup", required=false) String popup,
@@ -99,7 +103,7 @@ public class EventManageController {
 			model.addAttribute("check_popup", "Y");
 		}
 		
-		return "com/uss/ion/evt/EventReqstDetail";
+		return "com/uss/ion/evt/EventManageDetail";
 	}
 
 	/**
@@ -107,14 +111,15 @@ public class EventManageController {
 	 * 
 	 * @param eventManageVO
 	 */
-	@RequestMapping(value = "/uss/ion/evt/registEventReqst.do")
-	public String registEventReqst(
+	@RequestMapping(value = "/uss/ion/evt/registEventManage.do")
+	@Secured("ROLE_ADMIN")
+	public String registEventManage(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute EventManageVO eventManageVO) {
 
 		cmmUseService.populateCmmCodeList("COM053", "COM053_eventSe");
 
-		return "com/uss/ion/evt/EventReqstRegist";
+		return "com/uss/ion/evt/EventManageRegist";
 	}
 
 	/**
@@ -122,8 +127,9 @@ public class EventManageController {
 	 * 
 	 * @param eventManageVO
 	 */
-	@RequestMapping(value = "/uss/ion/evt/insertEventReqst.do")
-	public String insertEventReqst(
+	@RequestMapping(value = "/uss/ion/evt/insertEventManage.do")
+	@Secured("ROLE_ADMIN")
+	public String insertEventManage(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute EventManageVO eventManageVO,
 			BindingResult bindingResult, 
@@ -131,7 +137,7 @@ public class EventManageController {
 
 		beanValidator.validate(eventManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "com/uss/ion/evt/EventReqstRegist";
+			return "com/uss/ion/evt/EventManageRegist";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -140,7 +146,7 @@ public class EventManageController {
 		eventManageService.insertEventManage(eventManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		model.addAttribute("redirectURL", "/uss/ion/evt/listEventReqst.do");
+		model.addAttribute("redirectURL", "/uss/ion/evt/listEventManage.do");
 	    return "com/cmm/redirect";
 	}
 
@@ -149,15 +155,16 @@ public class EventManageController {
 	 * 
 	 * @param eventManageVO
 	 */
-	@RequestMapping(value = "/uss/ion/evt/editEventReqst.do")
-	public String editEgovEventReqst(
+	@RequestMapping(value = "/uss/ion/evt/editEventManage.do")
+	@Secured("ROLE_ADMIN")
+	public String editEgovEventManage(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute EventManageVO eventManageVO, 
 			ModelMap model) {
 
 		model.addAttribute(eventManageService.selectEventManage(eventManageVO));
 
-		return "com/uss/ion/evt/EventReqstEdit";
+		return "com/uss/ion/evt/EventManageEdit";
 	}
 
 	/**
@@ -165,8 +172,9 @@ public class EventManageController {
 	 * 
 	 * @param eventManageVO
 	 */
-	@RequestMapping(value = "/uss/ion/evt/updateEventReqst.do")
-	public String updateEventReqst(
+	@RequestMapping(value = "/uss/ion/evt/updateEventManage.do")
+	@Secured("ROLE_ADMIN")
+	public String updateEventManage(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute EventManageVO eventManageVO,
 			BindingResult bindingResult, 
@@ -174,7 +182,7 @@ public class EventManageController {
 
 		beanValidator.validate(eventManageVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "com/uss/ion/evt/EventReqstEdit";
+			return "com/uss/ion/evt/EventManageEdit";
 		} 
 
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
@@ -183,8 +191,8 @@ public class EventManageController {
 		eventManageService.updateEventManage(eventManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		model.addAttribute("redirectURL", "/uss/ion/evt/listEventReqst.do");
-	    return "com/cmm/redirect";
+		model.addAttribute("redirectURL", "/uss/ion/evt/listEventManage.do");
+	    return "com/cmm/redirect"; 
 	}
 
 	/**
@@ -192,8 +200,9 @@ public class EventManageController {
 	 * 
 	 * @param eventManageVO
 	 */
-	@RequestMapping(value = "/uss/ion/evt/deleteEventReqst.do")
-	public String deleteEventReqst(
+	@RequestMapping(value = "/uss/ion/evt/deleteEventManage.do")
+	@Secured("ROLE_ADMIN")
+	public String deleteEventManage(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute EventManageVO eventManageVO, 
 			ModelMap model) {
@@ -201,7 +210,7 @@ public class EventManageController {
 		eventManageService.deleteEventManage(eventManageVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		model.addAttribute("redirectURL", "/uss/ion/evt/listEventReqst.do");
+		model.addAttribute("redirectURL", "/uss/ion/evt/listEventManage.do");
 	    return "com/cmm/redirect";
 	}
 
@@ -253,6 +262,7 @@ public class EventManageController {
 	 * @param eventAtdrnVO
 	 */
 	@RequestMapping(value = "/uss/ion/evt/detailEventRcrpt.do")
+	@Secured("ROLE_USER")
 	public String detailEventRcrpt(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute EventAtdrnVO eventAtdrnVO, 
@@ -272,12 +282,14 @@ public class EventManageController {
 	 * @param eventManageVO
 	 */
 	@RequestMapping(value = "/uss/ion/evt/registEventRcrpt.do")
+	@Secured("ROLE_USER")
 	public String registEventRcrpt(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute EventAtdrnVO eventAtdrnVO, 
-			@ModelAttribute EventManageVO eventManageVO) {
+			@ModelAttribute EventManageVO eventManageVO,
+			ModelMap model) {
 
-		eventManageService.selectEventManage(eventManageVO);
+		model.addAttribute(eventManageService.selectEventManage(eventManageVO));
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		eventAtdrnVO.setApplcntId(loginVO.getUserId());
@@ -295,23 +307,28 @@ public class EventManageController {
 	 * @param eventManageVO
 	 */
 	@RequestMapping(value = "/uss/ion/evt/insertEventRcrpt.do")
+	@Secured("ROLE_USER")
 	public String insertEventRcrpt(
 			@ModelAttribute("searchVO") SearchVO searchVO,
-			@ModelAttribute EventAtdrnVO eventAtdrnVO, 
 			@ModelAttribute EventManageVO eventManageVO, 
+			@ModelAttribute EventAtdrnVO eventAtdrnVO, 
 			BindingResult bindingResult, 
 			ModelMap model) {
 
 		beanValidator.validate(eventAtdrnVO, bindingResult); // validation 수행
 		if (bindingResult.hasErrors()) {
-			return "com/uss/ion/evt/EventRceptRegist";
+			LOG.debug("오류 발생");
+			LOG.debug(bindingResult.toString());
+			model.addAttribute("message", "오류발생");
+			return "redirect:/uss/ion/evt/registEventRcrpt.do";
 		} 
 		
-		eventManageService.selectEventManage(eventManageVO);
+		eventManageVO = eventManageService.selectEventManage(eventManageVO);
 
-		if (eventManageVO.getGarden() <= eventManageService.selectEventReqstAtdrnListCnt(eventAtdrnVO)) {
-			model.addAttribute("errMessage", "정원초과");
-			return "com/uss/ion/evt/EventRceptRegist";
+		if (eventManageVO.getPsncpa() <= eventManageService.selectEventReqstAtdrnListCnt(eventAtdrnVO)) {
+			LOG.debug("정원초과 발생");
+			model.addAttribute("message", "정원초과");
+			return "redirect:/uss/ion/evt/registEventRcrpt.do";
 		}
 		
 		java.util.Calendar cal = java.util.Calendar.getInstance();
@@ -343,6 +360,7 @@ public class EventManageController {
 	 * @param eventAtdrnVO
 	 */
 	@RequestMapping(value = "/uss/ion/evt/deleteEventRcrpt.do")
+	@Secured("ROLE_USER")
 	public String deleteEventRcrpt(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute EventAtdrnVO eventAtdrnVO, 
@@ -362,7 +380,7 @@ public class EventManageController {
 	 */
 	@IncludedInfo(name = "행사접수승인관리", order = 5322, gid = 50)
 	@RequestMapping(value = "/uss/ion/evt/listEventRceptConfm.do")
-	@Secured("ROLE_USER")
+	@Secured("ROLE_ADMIN")
 	public String listEventRceptConfm(
 			@ModelAttribute EventAtdrnVO eventAtdrnVO, 
 			ModelMap model) {
@@ -393,7 +411,7 @@ public class EventManageController {
 		// 행사구분
 		cmmUseService.populateCmmCodeList("COM053", "COM053_eventSe");
 
-		return "com/uss/ion/evt/EventRceptConfm";
+		return "com/uss/ion/evt/EventRceptConfmList";
 	}
 
 	/**

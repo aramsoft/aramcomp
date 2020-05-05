@@ -70,7 +70,7 @@
             <field property="partcptCt" depends="required">
                 <arg0 key="참가비용" resource="false"/>
             </field>
-            <field property="garden" depends="required">
+            <field property="psncpa" depends="required">
                 <arg0 key="정원" resource="false"/>
             </field>
             <field property="rceptBeginDe" depends="required">

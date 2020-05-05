@@ -120,9 +120,8 @@
 	<select id="selectNoteEmpList" resultType="egovMap">
         /* 구현 Sql */
        	<![CDATA[
-			SELECT EMPLYR_ID
-				 , USER_NM 					EMPLYR_NM
-				 , EMPLYR_ID 				UNIQ_ID
+			SELECT EMPLYR_ID				USER_ID
+				 , USER_NM 					USER_NM
 				 , SEXDSTN_CODE
 				 , BRTHDY
 				 , HOUSE_ADRES 				HOME_ADRES

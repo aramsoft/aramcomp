@@ -30,6 +30,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/com.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/button.css" type="text/css">
 
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/cmm/jquery-1.7.1.min.js"></script>
+
 </head>
 
 <body>
@@ -65,7 +67,7 @@
 		</span>
 		<span class="button_area">
 			<span class="button"><a href="#" onclick="javascript:fn_aram_search_noteEmp(); return false;"><spring:message code="button.inquire" /></a></span>
-			<span class="button"><a href="#" onclick="javascript:fn_aram_close_noteEmp(); return false;">전체선택</a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_close_noteEmp(); return false;">선택닫기</a></span>
 			<span class="button"><a href="#" onclick="javascript:window.close(); return false;"><spring:message code="button.close" /></a></span>
 		</span>
 	</div>	
@@ -75,16 +77,18 @@
 </form:form>
 
 <!--  목록  -->
-<table class="table-list" summary="목록 을 제공한다.">
+<table class="table-list" id="tblData" summary="목록 을 제공한다.">
 <caption>목록 을 제공한다</caption>
 <thead>
 	<tr>  
 	    <th scope="col" width="35px" >순번</th>
+        <th scope="col" width="30px" >
+    		<input type="checkbox" id="checkAll" class="check2" title="전체선택" />
+        </th>
 	    <th scope="col" width="100px">아이디</th>
 	    <th scope="col" width="100px">이름</th>
 	    <th scope="col" width="100px">전화번호</th>
 	    <th scope="col" class="title">주소</th>   
-	    <th scope="col" width="30px" align="center"><input type="checkbox" name="checkAll" title="전체선택" id="checkAll" value="1" onClick="fn_aram_checkAll();"></th>       
 	</tr>
 </thead>
 <tbody>
@@ -104,13 +108,13 @@
 		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
-		<td class="lt_text3L"><a href="#" onclick="fn_aram_close_noteEmpOne(${status.count-1}); return false;">${result.emplyrId}</a></td>
-		<td class="lt_text3L"><a href="#" onclick="fn_aram_close_noteEmpOne(${status.count-1}); return false;">${result.emplyrNm}</a></td>
-		<td class="lt_text3"><a href="#" onclick="fn_aram_close_noteEmpOne(${status.count-1}); return false;">${result.offmTelno}</a></td>
-		<td class="lt_text3L"><a href="#" onclick="fn_aram_close_noteEmpOne(${status.count-1}); return false;">${result.homeAdres} ${result.detailAdres}</a></td>
-		
-    	<td class="lt_text3"><input type="checkbox" name="checkList" title="선택" value="${result.uniqId}|${result.emplyrId}|${result.emplyrNm}"></td>
-    	<!--  <a href="#" onclick="JavaScript:fn_aram_open_Popup('${status.count}', '${resultInfo.uniqId}'); return false;">선택 </a> -->
+        <td class="lt_text3">
+			<input type="checkbox" class="check2" id="chkValue" name="chkValue" value="${result.userId}-${result.userNm}" />
+        </td>
+		<td class="lt_text3L"><a href="#" onclick="fn_aram_close_noteEmpSelect(${status.count-1}); return false;">${result.userId}</a></td>
+		<td class="lt_text3L"><a href="#" onclick="fn_aram_close_noteEmpSelect(${status.count-1}); return false;">${result.userNm}</a></td>
+		<td class="lt_text3"><a href="#" onclick="fn_aram_close_noteEmpSelect(${status.count-1}); return false;">${result.offmTelno}</a></td>
+		<td class="lt_text3L"><a href="#" onclick="fn_aram_close_noteEmpSelect(${status.count-1}); return false;">${result.homeAdres} ${result.detailAdres}</a></td>
 	</tr>   
 	</c:forEach>
 </tbody>  
@@ -123,6 +127,16 @@
 </DIV>
 
 <script type="text/javascript">
+
+$(function() {
+	$("#checkAll").on("click", function(){
+		if( $(this).is(":checked") ){
+			$("#tblData input[name=chkValue]").prop("checked", true);
+		}else{
+			$("#tblData input[name=chkValue]").prop("checked", false); 
+		}
+	});
+});
 
 function press(event) {
 	if (event.keyCode==13) {
@@ -151,74 +165,31 @@ function fn_aram_search_noteEmp(){
 }
 
 /* ********************************************************
- * 선택 처리 함수
- ******************************************************** */
-function fn_aram_open_Popup(cnt, uniqId){
-	
-	if(opener != null){
-		alert( opener.document.getElementById("noteCn").value );
-	}
-}
-
-/* ********************************************************
 * 화면 닫기 함수
 ******************************************************** */
-function fn_aram_close_NoteEmp(){
-
-	var FLength = document.getElementsByName("checkList").length;
+function fn_aram_close_noteEmp(){
 
 	var strSplit;
 	var arrSplit;
 	var strRecptnSe;
 	var strRecptnSeCode;
 	//select 박스 수신자 객체
-	var selRecptnEmp = opener.document.getElementById("recptnEmp");
 	
-	if( FLength == 1){
-		if(document.getElementsByName("checkList")[0].checked == true){
-			strSplit = document.getElementsByName("checkList")[0].value;
-			arrSplit = strSplit.split("|");
-			
-			//수신 체크시
-			if(opener.document.getElementsByName("recptnSe")[0].checked == true){
-				strRecptnSe = "수신";
-				strRecptnSeCode = "1";
-			}else{
-				strRecptnSe = "참조";
-				strRecptnSeCode = "2";
-			}
-			//추가할 option 객체 
-			var option = document.createElement("option");
-			option.appendChild(document.createTextNode(strRecptnSe+":"+arrSplit[1]+"("+arrSplit[2]+")"));
-			option.setAttribute("value", arrSplit[0]);
-	
-			opener.fn_aram_recptnEmpOption_noteManage(strRecptnSe+":"+arrSplit[1]+"("+arrSplit[2]+")",arrSplit[0],strRecptnSeCode);
-		}
+	if(opener.document.getElementsByName("recptnSe")[0].checked == true){
+		strRecptnSe = "수신";
+		strRecptnSeCode = "1";
 	}else{
-		for(var i=0; i < FLength; i++)
-		{
-			if(document.getElementsByName("checkList")[i].checked == true){
+		strRecptnSe = "참조";
+		strRecptnSeCode = "2";
+	}
+	
+	//select 박스 수신자 객체
+	var selRecptnEmp = opener.document.getElementById("recptnEmp");
 
-				strSplit = document.getElementsByName("checkList")[i].value;
-				arrSplit = strSplit.split("|");
-				
-				//수신 체크시
-				if(opener.document.getElementsByName("recptnSe")[0].checked == true){
-					strRecptnSe = "수신";
-					strRecptnSeCode = "1";
-				}else{
-					strRecptnSe = "참조";
-					strRecptnSeCode = "2";
-				}
-				//추가할 option 객체 
-				var option = document.createElement("option");
-				option.appendChild(document.createTextNode(strRecptnSe+":"+arrSplit[1]+"("+arrSplit[2]+")"));
-				option.setAttribute("value", arrSplit[0]);
-		
-				opener.fn_aram_recptnEmpOption_noteManage(strRecptnSe+":"+arrSplit[1]+"("+arrSplit[2]+")",arrSplit[0],strRecptnSeCode);
-			}	
-		}
-	}	
+	$("#tblData input[name=chkValue]:checked").each(function() {	
+		arrSplit = this.value.split("-");
+		opener.fn_aram_recptnEmpOption(strRecptnSe+":"+arrSplit[0]+"("+arrSplit[1]+")",arrSplit[0],strRecptnSeCode);
+	});
 	
 	window.close();
 }
@@ -226,56 +197,35 @@ function fn_aram_close_NoteEmp(){
 /* ********************************************************
 * 이름/이이디 클릭시 단건 입력
 ******************************************************** */
-function fn_aram_close_noteEmpOne(i){
+function fn_aram_close_noteEmpSelect(index){
 
 	var strSplit;
 	var arrSplit;
 	var strRecptnSe;
 	var strRecptnSeCode;
+
+	//수신 체크시
+	if(opener.document.getElementsByName("recptnSe")[0].checked == true){
+		strRecptnSe = "수신";
+		strRecptnSeCode = "1";
+	}else{
+		strRecptnSe = "참조";
+		strRecptnSeCode = "2";
+	}
+
 	//select 박스 수신자 객체
 	var selRecptnEmp = opener.document.getElementById("recptnEmp");
-	
-	if(document.getElementsByName("checkList")[i] != null && document.getElementsByName("checkList")[i] != undefined){
 
-		strSplit = document.getElementsByName("checkList")[i].value;
-		arrSplit = strSplit.split("|");
+	if(document.getElementsByName("chkValue")[index] != null 
+			&& document.getElementsByName("chkValue")[index] != undefined){
 		
-		//수신 체크시
-		if(opener.document.getElementsByName("recptnSe")[0].checked == true){
-			strRecptnSe = "수신";
-			strRecptnSeCode = "1";
-		}else{
-			strRecptnSe = "참조";
-			strRecptnSeCode = "2";
-		}
-		//추가할 option 객체 
-		var option = document.createElement("option");
-		option.appendChild(document.createTextNode(strRecptnSe+":"+arrSplit[1]+"("+arrSplit[2]+")"));
-		option.setAttribute("value", arrSplit[0]);
-
-		opener.fn_aram_recptnEmpOption_noteManage(strRecptnSe+":"+arrSplit[1]+"("+arrSplit[2]+")",arrSplit[0],strRecptnSeCode);
+		strSplit = document.getElementsByName("chkValue")[index].value;
+		arrSplit = strSplit.split("-");
+		
+		opener.fn_aram_recptnEmpOption(strRecptnSe+":"+arrSplit[0]+"("+arrSplit[1]+")",arrSplit[0],strRecptnSeCode);
 	}	
 	
 	window.close();
-}
-
-/* ********************************************************
-* 체크 박스 선택 함수
-******************************************************** */
-function fn_aram_checkAll(){
-
-	var FLength = document.getElementsByName("checkList").length;
-	var checkAllValue = document.getElementById('checkAll').checked;
-	
-	//undefined
-	if( FLength == 1){
-		document.getElementsByName("checkList")[0].checked = checkAllValue;
-	}else{
-		for(var i=0; i < FLength; i++)
-		{
-			document.getElementsByName("checkList")[i].checked = checkAllValue;	
-		}
-	}	
 }
 
 </script>

@@ -12,7 +12,7 @@
 		         , EVENT_BGNDE       		AS "eventBeginDe"     
 		         , EVENT_ENDDE         		AS "eventEndDe"       
 		         , EVENT_PLACE          	AS "eventPlace"       
-		         , GARDEN               	AS "garden"           
+		         , PSNCPA               	AS "psncpa"           
 		         , RCEPT_BGNDE       		AS "rceptBeginDe"     
 		         , RCEPT_ENDDE          	AS "rceptEndDe"       
 		         , STR_TO_DATE(EVENT_ENDDE, '%Y%m%d')-STR_TO_DATE(EVENT_BGNDE,'%Y%m%d')+1 as "eventDayCount" 
@@ -91,7 +91,7 @@
 			     , mge.EVENT_CN             AS "eventCn"          
 			     , mge.CT_OCCRRNC_AT        AS "ctOccrrncAt"      
 			     , mge.PARTCPT_CT           AS "partcptCt"        
-			     , mge.GARDEN               AS "garden"           
+			     , mge.PSNCPA               AS "psncpa"           
 			     , mge.REFRN_URL            AS "refrnUrl"         
 			     , mge.RCEPT_BGNDE       	AS "rceptBeginDe"     
 			     , mge.RCEPT_ENDDE         	AS "rceptEndDe"       
@@ -126,7 +126,7 @@
             	  , EVENT_CN            
             	  , CT_OCCRRNC_AT       
             	  , PARTCPT_CT          
-            	  , GARDEN              
+            	  , PSNCPA              
             	  , REFRN_URL           
             	  , RCEPT_BGNDE      
             	  , RCEPT_ENDDE        
@@ -147,7 +147,7 @@
             	  , #{eventCn}           
             	  , #{ctOccrrncAt}       
             	  , #{partcptCt}         
-            	  , #{garden}            
+            	  , #{psncpa}            
             	  , #{refrnUrl}          
             	  , #{rceptBeginDe}      
             	  , #{rceptEndDe}        
@@ -171,7 +171,7 @@
                  , EVENT_CN             = #{eventCn}          
                  , CT_OCCRRNC_AT        = #{ctOccrrncAt}      
                  , PARTCPT_CT           = #{partcptCt}        
-                 , GARDEN               = #{garden}           
+                 , PSNCPA               = #{psncpa}           
                  , REFRN_URL            = #{refrnUrl}         
                  , RCEPT_BGNDE       	= #{rceptBeginDe}     
                  , RCEPT_ENDDE         	= #{rceptEndDe}       
@@ -201,7 +201,7 @@
 			     , mge.EVENT_BGNDE       	AS "eventBeginDe"     
 			     , mge.EVENT_ENDDE         	AS "eventEndDe"       
 			     , mge.EVENT_PLACE          AS "eventPlace"       
-			     , mge.GARDEN               AS "garden"          
+			     , mge.PSNCPA               AS "psncpa"          
 			     , mge.RCEPT_BGNDE       	AS "rceptBeginDe"     
 			     , mge.RCEPT_ENDDE         	AS "rceptEndDe"       
 			     , STR_TO_DATE(mge.EVENT_ENDDE, '%Y%m%d')-STR_TO_DATE(mge.EVENT_BGNDE,'%Y%m%d')+1 as "eventDayCount" 
@@ -217,11 +217,11 @@
 				 , atdrn.APPLCNT_ID         AS "applcntId"        
 				 , atdrn.CONFM_AT           AS "confmAt"
 			  FROM COMTN_EVENT_MANAGE mge
-				   LEFT OUTER JOIN COMTN_EVENT_ATDRN atdrn
-				        ON  atdrn.EVENT_ID = mge.EVENT_ID
-			 WHERE atdrn.APPLCNT_ID = #{applcntId}
+			       LEFT OUTER JOIN COMTN_EVENT_ATDRN atdrn
+			         	        ON atdrn.EVENT_ID = mge.EVENT_ID
+						       AND atdrn.APPLCNT_ID = #{applcntId}
+			 WHERE 1=1
 			   AND (DATE_FORMAT(sysdate(), '%Y%m%d')  BETWEEN RCEPT_BGNDE  AND RCEPT_ENDDE 
-			        or atdrn.confm_At is not null)
         ]]>	 
     	<if test='searchSe != null and searchSe != ""'>
 		    	<![CDATA[ AND mge.EVENT_SE like '%'||#{searchSe}||'%'   ]]>
@@ -269,10 +269,10 @@
 			SELECT COUNT(*) totcnt
 			  FROM COMTN_EVENT_MANAGE mge
 			       LEFT OUTER JOIN COMTN_EVENT_ATDRN atdrn
-			         	ON 	atdrn.EVENT_ID = mge.EVENT_ID
-			 WHERE atdrn.APPLCNT_ID = #{applcntId}
-			   AND (DATE_FORMAT(sysdate(), '%Y%m%d') BETWEEN RCEPT_BGNDE AND RCEPT_ENDDE 
-		            or atdrn.confm_At is not null)
+			         	        ON atdrn.EVENT_ID = mge.EVENT_ID
+						       AND atdrn.APPLCNT_ID = #{applcntId}
+			 WHERE 1=1
+			   AND (DATE_FORMAT(sysdate(), '%Y%m%d')  BETWEEN RCEPT_BGNDE  AND RCEPT_ENDDE 
         ]]>	 
     	<if test='searchSe != null and searchSe != ""'>
 		    	<![CDATA[ AND mge.EVENT_SE like '%'||#{searchSe}||'%'   ]]>

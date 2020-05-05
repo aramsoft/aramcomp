@@ -166,11 +166,11 @@
   	<tr>
     	<th>
     		<span class="required_icon"></span>
-    		<label for="garden">정원</label>
+    		<label for="psncpa">정원</label>
     	</th>          
     	<td>
-      		<form:input  path="garden" size="10" maxlength="9" title="정원 "/>
-      		<form:errors path="garden" cssClass="error"/>
+      		<form:input  path="psncpa" size="10" maxlength="9" title="정원 "/>
+      		<form:errors path="psncpa" cssClass="error"/>
     	</td>    
   	</tr>
   	<tr>
@@ -233,7 +233,7 @@ function fn_aram_reset() {
 	varForm.eventCn.value           = "";
 	varForm.ctOccrrncAt[0].checked  = true;
 	varForm.partcptCt.value         = 0;
-	varForm.garden.value            = 0;
+	varForm.psncpa.value            = 0;
 	varForm.rceptBeginDe.value      = "";
 	varForm.rceptEndDe.value        = "";
 }
@@ -243,7 +243,7 @@ function fn_aram_reset() {
  ******************************************************** */
 function fn_aram_list(pageNo){
 	var varForm = document.getElementById("eventManageVO");
-	varForm.action = "${pageContext.request.contextPath}/uss/ion/evt/listEventReqst.do";
+	varForm.action = "${pageContext.request.contextPath}/uss/ion/evt/listEventManage.do";
 	varForm.submit();
 }
 
@@ -262,7 +262,7 @@ function fn_aram_insert() {
     vRceptBeginDe = varForm.rceptBeginDe.value;
     vRceptEndDe   = varForm.rceptEndDe.value  ;
     vRefrnUrl     = varForm.refrnUrl.value  ;
-    vGarden       = varForm.garden.value;
+    vPsncpa       = varForm.psncpa.value;
     vPartcptCt    = varForm.partcptCt.value;
     
     if(vEventBeginDe> vEventEndDe){
@@ -296,18 +296,18 @@ function fn_aram_insert() {
    		}
    	}
    	
-    if(isNaN(vGarden)){
+    if(isNaN(vPsncpa)){
 	    alert("정원은 숫자만 입력가능합니다.");
         return;
     }
     
-	if(vGarden <= 0){
+	if(vPsncpa <= 0){
 		alert("정원은  0명을 이상 입력하셔야 합니다. 확안해 주세요");
 		return;
 	}
        
 	if(confirm("<spring:message code='common.regist.msg'/>")){
-    	varForm.action = "${pageContext.request.contextPath}/uss/ion/evt/insertEventReqst.do";
+    	varForm.action = "${pageContext.request.contextPath}/uss/ion/evt/insertEventManage.do";
         varForm.submit();
     }
 }

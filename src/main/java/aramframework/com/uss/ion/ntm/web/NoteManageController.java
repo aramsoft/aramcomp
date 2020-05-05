@@ -1,7 +1,7 @@
 package aramframework.com.uss.ion.ntm.web;
 
-import java.util.Map;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -22,7 +22,6 @@ import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.ntm.domain.NoteManageVO;
 import aramframework.com.uss.ion.ntm.service.NoteManageService;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
-import egovframework.rte.ptl.mvc.bind.annotation.CommandMap;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
@@ -44,6 +43,8 @@ public class NoteManageController {
 	@Autowired
 	private DefaultBeanValidator beanValidator;
 
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
+	
 	/**
 	 * 쪽지 관리(보내기) 목록을 조회한다.
 	 * 
@@ -51,50 +52,59 @@ public class NoteManageController {
 	 * @param noteManageVO
 	 */
 	@IncludedInfo(name = "쪽지관리", order = 5250, gid = 50)
-	@RequestMapping(value = "/uss/ion/ntm/registNote.do")
+	@RequestMapping(value = "/uss/ion/ntm/writeNote.do")
 	@Secured("ROLE_USER")
-	public String registNote(
-			@CommandMap Map<String, Object> commandMap,
+	public String writeNote(
+			@ModelAttribute NoteManageVO noteManageVO, 
+			ModelMap model) {
+
+		return "com/uss/ion/ntm/NoteWrite";
+	}
+
+	/**
+	 * 쪽지 관리(보내기) 목록을 조회한다.
+	 * 
+	 * @param commandMap
+	 * @param noteManageVO
+	 */
+	@RequestMapping(value = "/uss/ion/ntm/replyNote.do")
+	@Secured("ROLE_USER")
+	public String replyNote(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute NoteManageVO noteManageVO, 
 			ModelMap model) {
 
-		// 변수 설정
-		String sCmd = commandMap.get("cmd") == null ? "" : (String) commandMap.get("cmd");
-		// 삭제 모드로 실행시
-		// 답변처리
-		if (sCmd.equals("reply")) {
-			model.addAttribute("cmd", sCmd);
+		EgovMap mapNoteManage = noteManageService.selectNoteManage(noteManageVO);
 
-			EgovMap mapNoteManage = noteManageService.selectNoteManage(noteManageVO);
+		noteManageVO.setNoteSj("RE : " + (String) mapNoteManage.get("noteSj"));
+		
+		//HTML EDIT 용 
+		noteManageVO.setNoteCn(
+		 		"<br><br><br><br><font color='green' size='2'>" 
+		 	  +	"[ 원 본 글 ]=================================================================<br>"
+		 	  + "* 발 신 자 : " + (String)mapNoteManage.get("trnsmiterNm") + "(" + (String)mapNoteManage.get("trnsmiterNm") +")<br>" 
+		      + "* 발신시각 : " + (String)mapNoteManage.get("trnsmiterPnttm") + "</font><br>" 
+		      + (String)mapNoteManage.get("noteCn") 
+		);
+		
+/*
+		noteManageVO.setNoteCn(
+				"\r\n" + "\r\n" + "\r\n" + "\r\n" + "\r\n" 
+			  + "[ 원 본 글 ]================================================================" + "\r\n" 
+			  + "* 발 신 자 : " + (String) mapNoteManage.get("trnsmiterId") + "(" + (String) mapNoteManage.get("trnsmiterNm") + ")" + "\r\n"
+			  + "* 발신시각 : " + (String) mapNoteManage.get("trnsmiterPnttm") + "\r\n" 
+			  + (String) mapNoteManage.get("noteCn")
+		);
+*/
 
-			noteManageVO.setNoteSj("RE : " + (String) mapNoteManage.get("noteSj"));
-			/*
-			 * HTML EDIT 용 
-			 * noteManage.setNoteCn(
-			 * 		"<br><br><br><br><font color='green' size='2'>" +
-			 * 		"[ 원 본 글 ]=================================================================<br>"
-			 * 		+ "* 발 신 자 : " + (String)mapNoteManage.get("trnsmiterNm") + "(" + (String)mapNoteManage.get("trnsmiterNm") +")<br>" 
-			 *      + "* 발신시각 : " + (String)mapNoteManage.get("trnsmiterPnttm") + "</font><br>" 
-			 *      + (String)mapNoteManage.get("noteCn") 
-			 * );
-			 */
-			noteManageVO.setNoteCn(
-					"\r\n" + "\r\n" + "\r\n" + "\r\n" + "\r\n" 
-				  + "[ 원 본 글 ]================================================================" + "\r\n" 
-				  + "* 발 신 자 : " + (String) mapNoteManage.get("trnsmiterId") + "(" + (String) mapNoteManage.get("trnsmiterNm") + ")" + "\r\n"
-				  + "* 발신시각 : " + (String) mapNoteManage.get("trnsmiterPnttm") + "\r\n" 
-				  + (String) mapNoteManage.get("noteCn")
-			);
+		noteManageVO.setAtchFileId((String) mapNoteManage.get("atchFileId"));
 
-			noteManageVO.setAtchFileId((String) mapNoteManage.get("atchFileId"));
+		model.addAttribute("noteManageMap", mapNoteManage);
+		model.addAttribute("cmd", "reply");
 
-			model.addAttribute("noteManageMap", mapNoteManage);
-		} 
-
-		return "com/uss/ion/ntm/NoteManage";
+		return "com/uss/ion/ntm/NoteWrite";
 	}
-
+	
 	/**
 	 * 쪽지 관리(보내기) 목록을 조회한다.(POST형식)
 	 * 
@@ -145,7 +155,7 @@ public class NoteManageController {
 			ModelMap model) {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		baseVO.fillPageInfo(paginationInfo);
+		baseVO.fillPageInfo(paginationInfo); 
 
 		model.addAttribute("resultList", noteManageService.selectNoteEmpList(baseVO));
 

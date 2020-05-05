@@ -31,6 +31,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/com.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/button.css" type="text/css">
 
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/cmm/jquery-1.7.1.min.js"></script>
+
 </head>
 
 <body>
@@ -48,8 +50,6 @@
 
 <input name="noteId" type="hidden" value="">
 <input name="noteTrnsmitId" type="hidden" value="">
-
-<input name="cmd" type="hidden" value="">
 
 <div id="search_area">
 	<div class="search_left">
@@ -80,7 +80,7 @@
 	 		<label for="searchKeyword"> </label>
 	   		<form:input path="searchKeyword" size="25" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
 			
-			<form:select path="recordPerPage" class="select" onchange="fn_aram_search_noteTrnsmit();" title="recordPerPage">
+			<form:select path="recordPerPage" class="select" onchange="fn_aram_search();" title="recordPerPage">
 		   		<form:option value="10" label="10" />
 		   		<form:option value="20" label="20" />
 		   		<form:option value="30" label="30" />
@@ -88,8 +88,8 @@
 			</form:select>
 		</span>
 		<span class="button_area">
-			<span class="button"><a href="#" onclick="javascript:fn_aram_search_noteTrnsmit(); return false;"><spring:message code="button.inquire" /></a></span>
-			<span class="button"><a href="#" onclick="javascript:fn_aram_delete_noteTrnsmit(); return false;"><spring:message code="button.delete" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_deleteList(); return false;"><spring:message code="button.delete" /></a></span>
 		</span>
 	</div>	
 </div>
@@ -98,14 +98,14 @@
 </form:form>
 
 <!-- 목록 -->
-<table class="table-list" summary="목록 을 제공한다.">
+<table class="table-list" id="tblData" summary="목록 을 제공한다.">
 <caption>목록 을 제공한다</caption>
 <thead>
   	<tr>
 	    <th scope="col" width="7%">No.</th>
-		<th scope="col" width="5%">
-			<input type="checkbox" name="checkAll" id="checkAll" title="전체선택" value="1" onClick="fn_aram_checkAll_NoteTrnsmit();">
-		</th>
+        <th scope="col" width="5%" >
+    		<input type="checkbox" id="checkAll" class="check2" title="전체선택" />
+        </th>
 	    <th scope="col"            >제목</th>
 	    <th scope="col" width="15%">받는사람</th>
 	    <th scope="col" width="10%">개봉/미개봉</th>
@@ -128,27 +128,27 @@
  		<c:set var="index" value="${startIndex + status.count}"/>
 		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
-		<td class="lt_text3">
-			<input type="checkbox" name="checkList" title="선택" value="${result.noteId},${result.noteTrnsmitId}">
-		</td>
 
+        <td class="lt_text3">
+			<input type="checkbox" class="check2" id="uniqIds" name="uniqIds" value="${result.noteId}-${result.noteTrnsmitId}" />
+        </td>
 		<td class="lt_text3L">
 			<span class="link">
-			<a href="#" onclick="javascript:fn_aram_detail_noteTrnsmit('${result.noteId}','${result.noteTrnsmitId}'); return false;">
+			<a href="#" onclick="javascript:fn_aram_detail('${result.noteId}','${result.noteTrnsmitId}'); return false;">
 				<c:out value="${result.noteSj}"/>
 			</a>
 			</span>
 	   	</td>
 		<td class="lt_text3">
 			<span class="link">
-			<a href="#" onclick="javascript:fn_aram_confirm_noteTrnsmit('${result.noteId}'); return false;" title="수신상태조회 새창으로">
+			<a href="#" onclick="javascript:fn_aram_confirm('${result.noteId}'); return false;" title="수신상태조회 새창으로">
 				<c:out value="${result.rcverNm}"/><c:if test="${result.rcverCnt ne '0'}">&nbsp;외&nbsp; ${result.rcverCnt}명</c:if>
 			</a>
 			</span>
 		</td>
 		<td class="lt_text3">
 			<span class="link">
-			<a href="#" onclick="javascript:fn_aram_confirm_noteTrnsmit('${result.noteId}'); return false;" title="수신상태조회 새창으로">
+			<a href="#" onclick="javascript:fn_aram_confirm('${result.noteId}'); return false;" title="수신상태조회 새창으로">
 				${result.openY}/${result.openN}
 			</a>
 			</span>
@@ -168,9 +168,19 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/com/sym/cal/CalPopup.js"></script>
 <script type="text/javascript">
 
+$(function() {
+	$("#checkAll").on("click", function(){
+		if( $(this).is(":checked") ){
+			$("#tblData input[name=uniqIds]").prop("checked", true);
+		}else{
+			$("#tblData input[name=uniqIds]").prop("checked", false); 
+		}
+	});
+});
+
 function press(event) {
 	if (event.keyCode==13) {
-		fn_aram_search_noteTrnsmit();
+		fn_aram_search();
 	}
 }
 
@@ -187,7 +197,7 @@ function fn_aram_linkPage(pageNo){
 /* ********************************************************
  * 검색 함수
  ******************************************************** */
-function fn_aram_search_noteTrnsmit(){
+function fn_aram_search(){
     var varForm = document.getElementById("noteTrnsmitVO");
     varForm.pageIndex.value = 1;
     varForm.action = "${pageContext.request.contextPath}/uss/ion/nts/listNoteTrnsmit.do";
@@ -197,7 +207,7 @@ function fn_aram_search_noteTrnsmit(){
 /* ********************************************************
  * 상세화면 처리 함수
  ******************************************************** */
-function fn_aram_detail_noteTrnsmit(noteId,noteTrnsmitId){
+function fn_aram_detail(noteId, noteTrnsmitId){
     var varForm = document.getElementById("noteTrnsmitVO");
     varForm.noteId.value = noteId;
     varForm.noteTrnsmitId.value = noteTrnsmitId;
@@ -208,13 +218,13 @@ function fn_aram_detail_noteTrnsmit(noteId,noteTrnsmitId){
 /* ********************************************************
 * 수신자 목록 팝업
 ******************************************************** */
-function fn_aram_confirm_noteTrnsmit(noteId){
-	var left = (screen.width-800)/2;
-	var top = (screen.height-500)/3;
+function fn_aram_confirm(noteId){
+	var width = 900;
+	var height = 500;
+	var left = (screen.width-width)/2;
+	var top = (screen.height-height)/3;
 	var url = "/uss/ion/nts/confirmNoteTrnsmit.do?noteId=" + noteId;
 	var name = "";
-	var width = 755;
-	var height = 500;
 
 	var openWindows = window.open(url,name,"width="+width+",height="+height+",top="+top+",left="+left+",toolbar=no,status=no,location=no,scrollbars=yes,menubar=no,resizable=yes");
 
@@ -224,56 +234,16 @@ function fn_aram_confirm_noteTrnsmit(noteId){
 /* ********************************************************
 * 목록 삭제
 ******************************************************** */
-function fn_aram_delete_noteTrnsmit(){
-	var vFrom = document.listForm;
+function fn_aram_deleteList(){
+	if( $("#tblData input[name=uniqIds]:checked").length == 0) {
+		alert("선택한 항목이 없습니다.");
+		return false;
+	}
 
-	if(fn_aram_delCnt_noteRecptn() == 0){alert("삭제할 목록을 선택해주세요!   "); document.getElementById('checkAll').focus();return;}
-
+    var varForm = document.getElementById("noteTrnsmitVO");
 	if(confirm("선택된 보낸쪽지함을 삭제 하시겠습니까?")){
-		vFrom.action = "/uss/ion/nts/listNoteTrnsmit.do";
-		vFrom.cmd.value = 'del';
+		vFrom.action = "/uss/ion/nts/deleteListNoteTrnsmit.do";
 		vFrom.submit();
-	}
-}
-
-/* ********************************************************
-* 체크 박스 선태 건수
-******************************************************** */
-var g_nDelCount  = 0;
-function fn_aram_delCnt_noteRecptn(){
-
-	g_nDelCount = 0;
-	var FLength = document.getElementsByName("checkList").length;
-
-	//undefined
-	if( FLength == 1){
-		if(document.listForm.checkList.checked == true){g_nDelCount++;}
-	} else {
-		for(var i=0; i < FLength; i++)
-		{
-			if(document.getElementsByName("checkList")[i].checked == true){g_nDelCount++;}
-		}
-	}
-
-	return g_nDelCount;
-}
-
-/* ********************************************************
-* 체크 박스 선택 함수
-******************************************************** */
-function fn_aram_checkAll(){
-
-	var FLength = document.getElementsByName("checkList").length;
-	var checkAllValue = document.getElementById('checkAll').checked;
-
-	//undefined
-	if( FLength == 1){
-		document.listForm.checkList.checked = checkAllValue;
-	} else {
-		for(var i=0; i < FLength; i++)
-		{
-			document.getElementsByName("checkList")[i].checked = checkAllValue;
-		}
 	}
 }
 

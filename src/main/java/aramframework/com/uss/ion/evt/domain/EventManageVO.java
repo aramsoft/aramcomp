@@ -49,7 +49,7 @@ public class EventManageVO extends BaseVO {
 	private int partcptCt;
 
 	/** 정원 */
-	private int garden;
+	private int psncpa;
 
 	/** 참조URL */
 	private String refrnUrl;
@@ -259,17 +259,17 @@ public class EventManageVO extends BaseVO {
 	}
 
 	/**
-	 * @return the garden
+	 * @return the psncpa
 	 */
-	public int getGarden() {
-		return garden;
+	public int getPsncpa() {
+		return psncpa;
 	}
 	/**
-	 * @param garden
-	 *            the garden to set
+	 * @param psncpa
+	 *            the psncpa to set
 	 */
-	public void setGarden(int garden) {
-		this.garden = garden;
+	public void setPsncpa(int psncpa) {
+		this.psncpa = psncpa;
 	}
 
 	/**

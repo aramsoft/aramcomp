@@ -166,11 +166,11 @@
   	<tr>
     	<th>
     		<span class="required_icon"></span>
-    		<label for="garden">정원</label>
+    		<label for="psncpa">정원</label>
     	</th>          
     	<td>
-      		<form:input  path="garden" size="10" maxlength="9" title="정원 "/>
-      		<form:errors path="garden" cssClass="error"/>
+      		<form:input  path="psncpa" size="10" maxlength="9" title="정원 "/>
+      		<form:errors path="psncpa" cssClass="error"/>
     	</td>    
   	</tr>
   	<tr>
@@ -221,7 +221,7 @@
  ******************************************************** */
 function fn_aram_list(pageNo){
 	var varForm = document.getElementById("eventManageVO");
-	varForm.action = "${pageContext.request.contextPath}/uss/ion/evt/listEventReqst.do";
+	varForm.action = "${pageContext.request.contextPath}/uss/ion/evt/listEventManage.do";
 	varForm.submit();
 }
 
@@ -240,7 +240,7 @@ function fn_aram_update() {
     vRceptBeginDe = varForm.rceptBeginDe.value.split("-").join("");
     vRceptEndDe   = varForm.rceptEndDe.value.split("-").join("");
     vRefrnUrl     = varForm.refrnUrl.value.split("-").join("");
-    vGarden       = varForm.garden.value;
+    vPsncpa       = varForm.psncpa.value;
     vPartcptCt    = varForm.partcptCt.value;
 
     if(vEventBeginDe> vEventEndDe){
@@ -273,17 +273,17 @@ function fn_aram_update() {
 			return;
 		}
 	}
-    if(isNaN(vGarden)){
+    if(isNaN(vPsncpa)){
         alert("정원은 숫자만 입력가능합니다.");
     	return;
 	}	
-	if(vGarden <= 0){
+	if(vPsncpa <= 0){
 		alert("정원은  0명을 이상 입력하셔야 합니다. 확안해 주세요");
 		return;
 	}
 	
 	if(confirm("<spring:message code='common.update.msg'/>")){
-    	varForm.action = "${pageContext.request.contextPath}/uss/ion/evt/updateEventReqst.do";
+    	varForm.action = "${pageContext.request.contextPath}/uss/ion/evt/updateEventManage.do";
         varForm.submit();
     }
 }

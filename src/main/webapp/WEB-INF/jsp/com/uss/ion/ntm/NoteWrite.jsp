@@ -46,7 +46,7 @@
 <div id="search_area">
 	<div class="search_right">
 		<span class="button_area">
-			<span class="button"><a href="#" onclick="javascript:fn_aram_insert_noteManage(); return false;"><spring:message code="button.save" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_insert(); return false;">전송</a></span>
 		</span>
 	</div>	
 </div>
@@ -87,13 +87,13 @@
 					<form:radiobutton path="recptnSe" value="1"/>수신
 					<form:radiobutton path="recptnSe" value="2"/>참조
 					<form:errors path="recptnSe" cssClass="error"/>
-					<a href="/uss/ion/ntm/listNoteEmpPopup.do" target="_blank" title="수신자/참조자 선택  팝업 새창으로" 
-						onclick="fn_aram_popupOpen_PopupManage('/uss/ion/ntm/listNoteEmpPopup.do','empPopup',760,400); return false;">
+					<a href="#" title="수신자/참조자 선택  팝업 새창으로" 
+						onclick="fn_aram_popup('/uss/ion/ntm/listNoteEmpPopup.do','empPopup',760,400); return false;">
 						<img src="${pageContext.request.contextPath}/images/com/cmm/icon/search.gif" alt="수신자찾기버튼" title="수신자찾기버튼">
 					</a>
 		   		</div>
 				<div class="button_area" style="clear:both;float:left;padding:10px;">
-					<span class="button"><a href="#" onclick="javascript:fn_aram_delete_noteManage(1); return false;"><spring:message code="button.delete" /></a></span>
+					<span class="button"><a href="#" onclick="javascript:fn_aram_delete(1); return false;"><spring:message code="button.delete" /></a></span>
 					<span class="button"><a href="#" onclick="javascript:fnMenuMoveUp(document.getElementById('recptnEmp')); return false;">&nbsp;▲&nbsp;</a></span>
 					<span class="button"><a href="#" onclick="javascript:fnMenuMoveDown(document.getElementById('recptnEmp')); return false;">&nbsp;▼&nbsp;</a></span>
 				</div>
@@ -138,20 +138,20 @@ _editor_lang = "kr";
 window.onload = function() {
 	HTMLArea.onload = initEditor;
 	HTMLArea.init(); 
-	fn_aram_init_noteManage();
+	fn_aram_init();
 };
 
 /* ********************************************************
 * 초기화
 ******************************************************** */
-function fn_aram_init_noteManage(){
+function fn_aram_init(){
 
 	//수신구분 초기화
 	document.getElementsByName("recptnSe")[0].checked = true;
 
    //초기 recptnEmp 삭제 0
    	document.getElementById("recptnEmp").options[0].selected = true;
-	fn_aram_delete_noteManage(0);
+	fn_aram_delete(0);
 
 	<c:if test="${cmd eq 'reply'}">
 	//답변 수신자 처리
@@ -166,29 +166,60 @@ function fn_aram_init_noteManage(){
 /* ********************************************************
 * 저장
 ******************************************************** */
-function fn_aram_insert_noteManage(){
+function fn_aram_insert(){
     var varForm = document.getElementById("noteManageVO");
 	varForm.onsubmit();		// for ending of htmleditor
 
 	//수신자 처리
-	fn_aram_empList_noteManage();
+	fn_aram_getRecptnEmpList();
 
 	if(!validateNoteManageVO(varForm)){
 		return;
 	}
 
-	if(confirm("<spring:message code="common.save.msg" />")){
+	if(confirm("전송하시겠습니까?")){
 		varForm.action = "/uss/ion/ntm/insertNote.do";
 		varForm.submit();
 	}
 }
 
 /* ********************************************************
+* 수신자 목록 / 참조목록
+******************************************************** */
+function fn_aram_getRecptnEmpList(){
+	var sRecptnEmpList = "";
+	var sRecptnSeList = "";
+	for(var i=0; i < document.getElementById("recptnEmp").length; i++) {
+		if(document.getElementById("recptnEmp").options[i].value != ""){
+			sRecptnEmpList = sRecptnEmpList + document.getElementById("recptnEmp").options[i].value + ",";
+			sRecptnSeList = sRecptnSeList + document.getElementById("recptnEmp").options[i].recptnSe + ",";
+		}
+	}
+	sRecptnEmpList = sRecptnEmpList.substring(0,sRecptnEmpList.length-1);
+	sRecptnSeList = sRecptnSeList.substring(0,sRecptnSeList.length-1);
+
+	document.getElementById("recptnEmpList").value = sRecptnEmpList;
+	document.getElementById("recptnSeList").value = sRecptnSeList;
+}
+
+/* ********************************************************
+* 팝업창  오픈
+******************************************************** */
+function fn_aram_popup(url,name,width,height){
+	var left = (screen.width-600)/2;
+	var top = (screen.height-500)/3;
+
+	var openWindows = window.open(url,name,"width="+width+",height="+height+",top="+top+",left="+left+",toolbar=no,status=no,location=no,scrollbars=yes,menubar=no,resizable=yes");
+
+	if (window.focus) {openWindows.focus();}
+}
+
+/* ********************************************************
 * 팝업창에서 수진자 목록에서 값받기
 ******************************************************** */
-function fn_aram_recptnEmpOption_noteManage(sText,sValue,sRecptnSe){
+function fn_aram_recptnEmpOption(sText,sValue,sRecptnSe){
 	//수신자가 중복 될때 빠져 나가기
-	if(fn_aram_recptnEmpSearch_noteManage(sValue)){return;};
+	if(fn_aram_recptnEmpSearch(sValue)){return;};
 
 	var option = document.createElement("option");
 	option.appendChild(document.createTextNode(sText));
@@ -198,89 +229,41 @@ function fn_aram_recptnEmpOption_noteManage(sText,sValue,sRecptnSe){
 }
 
 /* ********************************************************
-* 수신자 목록 / 참조목록
+* 수신자 찾기
 ******************************************************** */
-function fn_aram_empList_noteManage(){
-	var sbName = "recptnEmp";
-	var FValue = document.getElementById(sbName).length;
-	var sEmpList = "";
-	var sRecptnSeList = "";
-	var a = document.getElementById(sbName).options[0].value;
-	for(var i=0; i < FValue; i++)
-	{
-		if(document.getElementById(sbName).options[i].value != ""){
-			sEmpList = sEmpList + document.getElementById(sbName).options[i].value + ",";
-			sRecptnSeList = sRecptnSeList + document.getElementById(sbName).options[i].recptnSe + ",";
-		}
-
-		if(document.getElementById(sbName).value != ""){
-			sEmpList = sEmpList + document.getElementById(sbName).value;
+function fn_aram_recptnEmpSearch(sSearchName){
+	for(var i=0; i < document.getElementById("recptnEmp").length; i++) {
+		if(document.getElementById("recptnEmp").options[i].value == sSearchName){
+			return true;
 		}
 	}
-	sEmpList = sEmpList.substring(0,sEmpList.length-1);
-
-	sRecptnSeList = sRecptnSeList.substring(0,sRecptnSeList.length-1);
-
-	document.getElementById("recptnEmpList").value = sEmpList;
-	document.getElementById("recptnSeList").value = sRecptnSeList;
+	return false;
 }
 
 /* ********************************************************
 * 수신자 삭제
 ******************************************************** */
-function fn_aram_delete_noteManage(nChk){
-	var sbName = "recptnEmp";
-	var FValue = document.getElementById(sbName).length;
+function fn_aram_delete(nChk){
+	var FValue = document.getElementById("recptnEmp").length;
 	var DValue = 0;
 
 	//삭제시 삭제 갯수 체크
 	if(nChk){
-		if(FValue == 0 || document.getElementById(sbName).selectedIndex == -1){
+		if(FValue == 0 || document.getElementById("recptnEmp").selectedIndex == -1){
 			alert("삭제 가능한 수신자  목록이 없습니다!");
-			document.getElementById(sbName).focus();
+			document.getElementById("recptnEmp").focus();
 			return;
 		}
 	}
 
-	for(var i=FValue-1; i>= 0; i--)
-	{
-		if(document.getElementById(sbName).options[i].selected == true){
+	for(var i=FValue-1; i>= 0; i--) {
+		if(document.getElementById("recptnEmp").options[i].selected == true){
 			DValue++;
-			document.getElementById(sbName).options[i] = null;
+			document.getElementById("recptnEmp").options[i] = null;
 		}
 	}
 
-	document.getElementById(sbName).length = FValue-DValue;
-}
-
-/* ********************************************************
-* 수신자 찾기
-******************************************************** */
-function fn_aram_recptnEmpSearch_noteManage(sSearchName){
-	var sbName = "recptnEmp";
-	var FValue = document.getElementById(sbName).length;
-
-	for(var i=0; i < FValue; i++)
-	{
-		if(document.getElementById(sbName).options[i].value == sSearchName){
-
-			return true;
-		}
-	}
-
-	return false;
-}
-
-/* ********************************************************
-* 팝업창  오픈
-******************************************************** */
-function fn_aram_popupOpen_PopupManage(url,name,width,height){
-	var left = (screen.width-684)/2;
-	var top = (screen.height-500)/3;
-
-	var openWindows = window.open(url,name,"width="+width+",height="+height+",top="+top+",left="+left+",toolbar=no,status=no,location=no,scrollbars=yes,menubar=no,resizable=yes");
-
-	if (window.focus) {openWindows.focus();}
+	document.getElementById("recptnEmp").length = FValue-DValue;
 }
 
 /* ********************************************************

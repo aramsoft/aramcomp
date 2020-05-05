@@ -1,6 +1,6 @@
 package aramframework.com.uss.ion.nts.web;
 
-import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,16 +10,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.userdetails.UserDetailsHelper;
-import aramframework.com.cmm.util.WebUtil;
+import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.ion.nts.domain.NoteTrnsmitVO;
 import aramframework.com.uss.ion.nts.service.NoteTrnsmitService;
-import egovframework.rte.ptl.mvc.bind.annotation.CommandMap;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
@@ -35,8 +33,8 @@ public class NoteTrnsmitController {
 	@Autowired
 	private NoteTrnsmitService noteTrnsmitService;
 
-	protected final Logger log = LoggerFactory.getLogger(this.getClass());
-
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
+	
 	/**
 	 * 보낸쪽지함관리 목록을 조회한다.
 	 * 
@@ -47,57 +45,11 @@ public class NoteTrnsmitController {
 	@RequestMapping(value = "/uss/ion/nts/listNoteTrnsmit.do")
 	@Secured("ROLE_USER")
 	public String listNoteTrnsmit(
-			@CommandMap Map<String, Object> commandMap, 
 			@ModelAttribute NoteTrnsmitVO noteTrnsmitVO,
-			ModelMap model) 
-	throws Exception {
+			ModelMap model) {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-
-		// 변수 설정
-		String sCmd = commandMap.get("cmd") == null ? "" : (String) commandMap.get("cmd");
-		// 삭제 모드로 실행시
-		if (sCmd.equals("del")) {
-			// 한개의 값으로 삭제가 넘어올때 처리
-			if (commandMap.get("checkList") instanceof String) {
-				String sCheckList = (String) commandMap.get("checkList");
-
-				String[] sArrCheckListValue = sCheckList.split(",");
-
-				log.debug("==================================EgovNoteTrnsmitList");
-				log.debug("checkList" + sCheckList);
-				log.debug("sArrCheckListValue[0]>" + sArrCheckListValue[0]);
-				log.debug("sArrCheckListValue[1]>" + sArrCheckListValue[1]);
-
-				noteTrnsmitVO.setFrstRegisterId(loginVO.getUserId());
-				noteTrnsmitVO.setLastUpdusrId(loginVO.getUserId());
-				noteTrnsmitVO.setNoteId(sArrCheckListValue[0]);
-				noteTrnsmitVO.setNoteTrnsmitId(sArrCheckListValue[1]);
-
-				noteTrnsmitService.deleteNoteTrnsmit(noteTrnsmitVO);
-			}
-
-			// 여러개의 값으로 삭제가 넘어올때 처리
-			if (commandMap.get("checkList") instanceof String[]) {
-				String[] sArrCheckList = (String[]) commandMap.get("checkList");
-				log.debug("sArrCheckList" + sArrCheckList);
-
-				for (int i = 0; i < sArrCheckList.length; i++) {
-					String[] sArrCheckListValue = sArrCheckList[i].split(",");
-
-					noteTrnsmitVO.setFrstRegisterId(loginVO.getUserId());
-					noteTrnsmitVO.setLastUpdusrId(loginVO.getUserId());
-					noteTrnsmitVO.setNoteId(sArrCheckListValue[0]);
-					noteTrnsmitVO.setNoteTrnsmitId(sArrCheckListValue[1]);
-
-					noteTrnsmitService.deleteNoteTrnsmit(noteTrnsmitVO);
-				}
-			}
-
-			// 삭제후 페이지 인덱스 설정
-			noteTrnsmitVO.setPageIndex(1);
-		}
 
 		// 발신자설정
 		noteTrnsmitVO.setTrnsmiterId(loginVO.getUserId());
@@ -117,6 +69,40 @@ public class NoteTrnsmitController {
 	}
 
 	/**
+	 * 보낸쪽지함관리 목록을 조회한다.
+	 * 
+	 * @param commandMap
+	 * @param noteTrnsmitVO
+	 */
+	@RequestMapping(value = "/uss/ion/nts/deleteListNoteTrnsmit.do")
+	@Secured("ROLE_USER")
+	public String deleteListNoteTrnsmit(
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute NoteTrnsmitVO noteTrnsmitVO,
+			HttpServletRequest request, 
+			ModelMap model) {
+
+		// 로그인 객체 선언
+		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
+
+    	String[] uniqIds = null;
+    	if(request.getParameterValues("uniqIds") != null) 
+    		uniqIds = request.getParameterValues("uniqIds");
+
+		for (int i = 0; i < uniqIds.length; i++) {
+			String[] id = uniqIds[i].split("-");
+			noteTrnsmitVO.setFrstRegisterId(loginVO.getUserId());
+			noteTrnsmitVO.setLastUpdusrId(loginVO.getUserId());
+			noteTrnsmitVO.setNoteId(id[0]);
+			noteTrnsmitVO.setNoteTrnsmitId(id[1]);
+		}
+
+		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
+		model.addAttribute("redirectURL", "/uss/ion/nts/listNoteTrnsmit.do");
+	    return "com/cmm/redirect";
+	}
+
+	/**
 	 * 보낸쪽지함관리 목록을 상세조회 조회한다.
 	 * 
 	 * @param noteTrnsmitVO
@@ -126,25 +112,37 @@ public class NoteTrnsmitController {
 	public String detailNoteTrnsmit(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute NoteTrnsmitVO noteTrnsmitVO, 
-			@RequestParam(value="cmd", required=false) String sCmd,
+			ModelMap model)  {
+
+		model.addAttribute("noteTrnsmit", noteTrnsmitService.selectNoteTrnsmitDetail(noteTrnsmitVO));
+		model.addAttribute("resultRecptnEmp", noteTrnsmitService.selectNoteTrnsmitCnfirm(noteTrnsmitVO));
+		
+		return "com/uss/ion/nts/NoteTrnsmitDetail";
+	}
+
+	/**
+	 * 보낸쪽지함관리 목록을 상세조회 조회한다.
+	 * 
+	 * @param noteTrnsmitVO
+	 * @param sCmd
+	 */
+	@RequestMapping(value = "/uss/ion/nts/deleteNoteTrnsmit.do")
+	public String deleteNoteTrnsmit(
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute NoteTrnsmitVO noteTrnsmitVO, 
 			ModelMap model)  {
 
 		// 로그인 객체 선언
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 
-		if (sCmd.equals("del")) {
-			noteTrnsmitVO.setFrstRegisterId(loginVO.getUserId());
-			noteTrnsmitVO.setLastUpdusrId(loginVO.getUserId());
-			// log.debug("EgovNoteTrnsmitDetail searchVO>"+searchVO);
-			noteTrnsmitService.deleteNoteTrnsmit(noteTrnsmitVO);
+		noteTrnsmitVO.setFrstRegisterId(loginVO.getUserId());
+		noteTrnsmitVO.setLastUpdusrId(loginVO.getUserId());
 
-			return "redirect:/uss/ion/nts/listNoteTrnsmit.do";
-		} 
-		
-		model.addAttribute("noteTrnsmit", noteTrnsmitService.selectNoteTrnsmitDetail(noteTrnsmitVO));
-		model.addAttribute("resultRecptnEmp", noteTrnsmitService.selectNoteTrnsmitCnfirm(noteTrnsmitVO));
-		
-		return "com/uss/ion/nts/NoteTrnsmitDetail";
+		noteTrnsmitService.deleteNoteTrnsmit(noteTrnsmitVO);
+
+		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
+		model.addAttribute("redirectURL", "/uss/ion/nts/listNoteTrnsmit.do");
+	    return "com/cmm/redirect";
 	}
 
 	/**
@@ -157,12 +155,26 @@ public class NoteTrnsmitController {
 	public String confirmNoteTrnsmit(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute NoteTrnsmitVO noteTrnsmitVO, 
-			@RequestParam(value="cmd", required=false) String sCmd,
 			ModelMap model) {
 
-		if (sCmd.equals("del")) {
-			noteTrnsmitService.deleteNoteRecptn(noteTrnsmitVO);
-		}
+		model.addAttribute("resultList", noteTrnsmitService.selectNoteTrnsmitCnfirm(noteTrnsmitVO));
+
+		return "com/uss/ion/nts/NoteTrnsmitCnfirm";
+	}
+
+	/**
+	 * 수신자목록을 조회한다.
+	 * 
+	 * @param noteTrnsmitVO
+	 * @param sCmd
+	 */
+	@RequestMapping(value = "/uss/ion/nts/deleteNoteConfirm.do")
+	public String deleteNoteConfirm (
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute NoteTrnsmitVO noteTrnsmitVO, 
+			ModelMap model) {
+
+		noteTrnsmitService.deleteNoteRecptn(noteTrnsmitVO);
 
 		model.addAttribute("resultList", noteTrnsmitService.selectNoteTrnsmitCnfirm(noteTrnsmitVO));
 

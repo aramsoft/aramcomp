@@ -152,7 +152,7 @@
      		정원
     	</th>          
     	<td colspan="3">
-    		<c:out value='${eventManageVO.garden}'/>
+    		<c:out value='${eventManageVO.psncpa}'/>
     	</td>    
   	</tr>
   	<tr>

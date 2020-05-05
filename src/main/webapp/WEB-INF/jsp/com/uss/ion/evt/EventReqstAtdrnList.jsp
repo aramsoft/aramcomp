@@ -111,7 +111,7 @@
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("eventAtdmVO");
 	varForm.pageIndex.value    = pageNo;
-	varForm.action             = "${pageContext.request.contextPath}/uss/ion/evt/listEventReqst.do";
+	varForm.action             = "${pageContext.request.contextPath}/uss/ion/evt/listEventReqstAtdrn.do";
 	varForm.submit();
 }
 

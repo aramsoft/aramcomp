@@ -45,9 +45,9 @@
 <div id="search_area">
 	<div class="search_right">
 		<span class="button_area">
-			<span class="button"><a href="#" onclick="javascript:fn_aram_reply_noteRecptn(); return false;">답장</a></span>
-			<span class="button"><a href="#" onclick="javascript:fn_aram_delete_noteRecptn(); return false;"><spring:message code="button.delete" /></a></span>
-			<span class="button"><a href="#" onclick="javascript:fn_aram_list_noteRecptn(); return false;"><spring:message code="button.list" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_reply(); return false;">답장</a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_delete(); return false;"><spring:message code="button.delete" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_list(); return false;"><spring:message code="button.list" /></a></span>
 		</span>
 	</div>	
 </div>
@@ -59,8 +59,6 @@
 <form:hidden path="noteId" />
 <form:hidden path="noteTrnsmitId" />
 <form:hidden path="noteRecptnId" />
-
-<input name="cmd" type="hidden" value="<c:out value=''/>"/>
 
 <!--  상세조회  폼 영역  -->
 <table class="table-detail" summary="상세조회  목록을  제공한다.">
@@ -79,13 +77,13 @@
 		<th width="20%">
 			발신자
 		</th>
-		<td width="45%">
+		<td width="30%">
 			<c:out value="${noteRecptn.trnsmiterNm}" />
 		</td>
-		<th width="15%">
+		<th width="20%">
 			발신시각
 		</th>
-		<td width="20%">
+		<td width="30%">
 			<c:out value="${noteRecptn.trnsmiterPnttm}" />
 		</td>
 	</tr>
@@ -117,9 +115,7 @@
 		</th>
 		<td colspan="3">
 			<br>
-			<c:set var="noteRecptnNoteCn" value="${fn:escapeXml(noteRecptn.noteCn)}"/>
-			<c:set var="noteRecptnNoteCn" value="${fn:replace(noteRecptnNoteCn , crlf , '<br>')}"/>
-			<c:out value="${noteRecptnNoteCn}" escapeXml="false" />
+			<c:out value="${noteRecptn.noteCn}" escapeXml="false" />
 			<br>
 		</td>
 	</tr>
@@ -140,7 +136,7 @@
 /* ********************************************************
  * 목록 으로 가기
  ******************************************************** */
-function fn_aram_list_noteRecptn(){
+function fn_aram_list(){
     var varForm = document.getElementById("noteRecptnVO");
     varForm.action = "${pageContext.request.contextPath}/uss/ion/ntr/listNoteRecptn.do";
     varForm.submit();
@@ -149,22 +145,20 @@ function fn_aram_list_noteRecptn(){
 /* ********************************************************
  * 저장처리화면
  ******************************************************** */
-function fn_aram_reply_noteRecptn(){
+function fn_aram_reply(){
     var varForm = document.getElementById("noteRecptnVO");
-    varForm.cmd.value = 'reply';
-    varForm.action = "${pageContext.request.contextPath}/uss/ion/ntm/registNote.do";
+    varForm.action = "${pageContext.request.contextPath}/uss/ion/ntm/replyNote.do";
     varForm.submit();
 }
 
 /* ********************************************************
  * 삭제처리
  ******************************************************** */
-function fn_aram_delete_noteRecptn(){
+function fn_aram_delete(){
     var varForm = document.getElementById("noteRecptnVO");
     
 	if(confirm("<spring:message code='common.delete.msg'/>")){
-		varForm.cmd.value = 'del';
-	    varForm.action = "${pageContext.request.contextPath}/uss/ion/ntr/detailNoteRecptn.do";
+	    varForm.action = "${pageContext.request.contextPath}/uss/ion/ntr/deleteNoteRecptn.do";
 	    varForm.submit();
 	}
 }

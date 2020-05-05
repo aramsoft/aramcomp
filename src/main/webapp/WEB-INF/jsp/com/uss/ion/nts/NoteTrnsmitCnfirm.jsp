@@ -35,7 +35,7 @@
 <body>
 <noscript class="noScriptTitle">자바스크립트를 지원하지 않는 브라우저에서는 일부 기능을 사용하실 수 없습니다.</noscript>
 
-<DIV id="main" style="width:100%;">
+<DIV id="main" style="width:95%;">
 
 <div class="content_title">
 	<h2>수신상태 조회</h2>
@@ -44,7 +44,7 @@
 <div id="search_area">
 	<div class="search_right">
 		<span class="button_area">
-			<span class="button"><a href="#" onclick="javascript:fn_aram_close_trnsmitCnfirm(); return false;"><spring:message code="button.close" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_close(); return false;"><spring:message code="button.close" /></a></span>
 		</span>
 	</div>	
 </div>
@@ -91,13 +91,13 @@
 <caption>수신  목록을  제공한다</caption>
 <thead>
 	<tr>  
-	    <th scope="col" width="35px">순번</th>
-	    <th scope="col" width="100px">수신자ID</th>
-	    <th scope="col" width="100px">받는사람</th>
-	    <th scope="col" width="100px">개봉/미개봉</th>
-	    <th scope="col" width="100px">구분</th>
-	    <th scope="col" class="title">수신시각</th>   
-	    <th scope="col" width="40px"></th>
+	    <th scope="col" width="5%">순번</th>
+	    <th scope="col" width="10%">수신자ID</th>
+	    <th scope="col" width="20%">받는사람</th>
+	    <th scope="col" width="10%">개봉/미개봉</th>
+	    <th scope="col" width="10%">구분</th>
+	    <th scope="col"            class="title">수신시각</th>   
+	    <th scope="col" width="10%"></th>
 	</tr>
 </thead>
 <tbody>
@@ -110,7 +110,8 @@
 	<%-- 데이터를 화면에 출력해준다  --%>
 	<c:forEach items="${resultList}" var="result" varStatus="status">
 	<tr>
-		<td class="lt_text3"><c:out value="${(noteTrnsmitVO.searchVO.pageIndex-1) * noteTrnsmitVO.searchVO.pageSize + status.count}"/></td>
+ 		<c:set var="index" value="${status.count}"/>
+		<td class="lt_text3"><c:out value="${index}"/></td>
 		<td class="lt_text3"><c:out value="${result.rcverIds}"/></td>
 		<td class="lt_text3"><c:out value="${result.rcverNm}"/></td>
 		<td class="lt_text3">
@@ -126,7 +127,7 @@
 	    <%-- 미개봉만 삭제가능하게  --%>
 			<c:if test="${result.openYn eq 'N'}">
 			<span class="button">
-			<a href="#" onclick="javascript:fn_aram_delete_trnsmitCnfirm('${result.noteId}','${result.noteTrnsmitId}','${result.noteRecptnId}'); return false;">
+			<a href="#" onclick="javascript:fn_aram_delete('${result.noteId}','${result.noteTrnsmitId}','${result.noteRecptnId}'); return false;">
 				삭제
 			</a>
 			</span>
@@ -152,22 +153,21 @@
 /* ********************************************************
 * 화면 닫기 함수
 ******************************************************** */
-function fn_aram_close_trnsmitCnfirm(){
+function fn_aram_close(){
 	window.close();
 }
 
 /* ********************************************************
 * 보낸쪽지함 삭제
 ******************************************************** */
-function fn_aram_delete_trnsmitCnfirm(noteId,noteTrnsmitId,noteRecptnId){
-    var varForm = document.getElementById("searchVO");
+function fn_aram_delete(noteId,noteTrnsmitId,noteRecptnId){
+    var varForm = document.getElementById("noteTrnsmitVO");
 	
 	if(confirm("선택된 보낸쪽지 삭제 하시겠습니까?")){
 	    varForm.noteId.value = noteId;
 	    varForm.noteTrnsmitId.value = noteTrnsmitId;
 	    varForm.noteRecptnId.value = noteRecptnId;
-		varForm.cmd.value = 'del';
-	    varForm.action = "${pageContext.request.contextPath}/uss/ion/nts/confirmNoteTrnsmit.do";
+	    varForm.action = "${pageContext.request.contextPath}/uss/ion/nts/deleteNoteConfirm.do";
 	    varForm.submit();
 	}
 }

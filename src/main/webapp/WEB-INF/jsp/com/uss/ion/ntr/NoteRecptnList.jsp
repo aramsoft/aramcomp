@@ -31,6 +31,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/com.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/button.css" type="text/css">
 
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/cmm/jquery-1.7.1.min.js"></script>
+
 </head>
 
 <body>
@@ -49,8 +51,6 @@
 <input name="noteId" type="hidden" value="">
 <input name="noteTrnsmitId" type="hidden" value="">
 <input name="noteRecptnId" type="hidden" value="">
-
-<input name="cmd" type="hidden" value="">
 
 <div id="search_area">
 	<div class="search_left">
@@ -90,8 +90,8 @@
 			</form:select>
 		</span>
 		<span class="button_area">
-			<span class="button"><a href="#" onclick="javascript:fn_aram_search_noteRecptn(); return false;"><spring:message code="button.inquire" /></a></span>
-			<span class="button"><a href="#" onclick="javascript:fn_aram_delete_noteRecptn(); return false;"><spring:message code="button.delete" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_deleteList(); return false;"><spring:message code="button.delete" /></a></span>
 		</span>
 	</div>	
 </div>
@@ -100,14 +100,14 @@
 </form:form>
 
 <!-- 목록  -->
-<table class="table-list" summary="목록 을 제공한다.">
+<table class="table-list" id="tblData" summary="목록 을 제공한다.">
 <caption>목록 을 제공한다</caption>
 <thead>
   	<tr>
 	    <th scope="col" width="7%">No.</th>
-	  	<th scope="col" width="5%">
-	  		<input type="checkbox" name="checkAll" id="checkAll" title="전체선택" value="1" onClick="fn_aram_checkAll();">
-	  	</th>
+        <th scope="col" width="5%" >
+    		<input type="checkbox" id="checkAll" class="check2" title="전체선택" />
+        </th>
 	    <th scope="col"            >제목</th>
 	    <th scope="col" width="15%">보낸사람</th>
 	    <th scope="col" width="25%">보낸시각</th>
@@ -129,18 +129,18 @@
  		<c:set var="index" value="${startIndex + status.count}"/>
 		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
-		<td class="lt_text3">
-			<input type="checkbox" name="checkList" title="선택" value="${result.noteId},${result.noteTrnsmitId},${result.noteRecptnId}">
-		</td>
 		
+        <td class="lt_text3">
+			<input type="checkbox" class="check2" id="uniqIds" name="uniqIds" value="${result.noteId}-${result.noteTrnsmitId}-${result.noteRecptnId}" />
+        </td>
 		<td class="lt_text3L">
 			<span class="link">
-			<a href="#" onclick="javascript:fn_aram_detail_noteRecptn('${result.noteId}','${result.noteTrnsmitId}','${result.noteRecptnId}'); return false;">
+			<a href="#" onclick="javascript:fn_aram_detail('${result.noteId}','${result.noteTrnsmitId}','${result.noteRecptnId}'); return false;">
 				<c:out value="${result.noteSj}"/>
 			</a>
 			</span>
 		</td>
-		<td class="lt_text3"><c:out value="${result.rcverNm}"/></td>
+		<td class="lt_text3"><c:out value="${result.transmiterNm}"/></td>
 	    <td class="lt_text3"><fmt:formatDate value="${result.frstRegisterPnttm}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 	</tr>
 	</c:forEach>
@@ -156,9 +156,19 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/com/sym/cal/CalPopup.js"></script>
 <script type="text/javascript">
 
+$(function() {
+	$("#checkAll").on("click", function(){
+		if( $(this).is(":checked") ){
+			$("#tblData input[name=uniqIds]").prop("checked", true);
+		}else{
+			$("#tblData input[name=uniqIds]").prop("checked", false); 
+		}
+	});
+});
+
 function press(event) {
 	if (event.keyCode==13) {
-		fn_aram_search_noteRecptn();
+		fn_aram_search();
 	}
 }
 
@@ -175,7 +185,7 @@ function fn_aram_linkPage(pageNo){
 /* ********************************************************
  * 검색 함수
  ******************************************************** */
-function fn_aram_search_noteRecptn(){
+function fn_aram_search(){
     var varForm = document.getElementById("noteRecptnVO");
 
 	if(varForm.searchFromDate.value != ""){
@@ -195,13 +205,14 @@ function fn_aram_search_noteRecptn(){
 /* ********************************************************
 * 목록 삭제
 ******************************************************** */
-function fn_aram_delete_noteRecptn(){
+function fn_aram_deleteList(){
+	if( $("#tblData input[name=uniqIds]:checked").length == 0) {
+		alert("선택한 항목이 없습니다.");
+		return false;
+	}
+
     var varForm = document.getElementById("noteRecptnVO");
-
-	if(fn_aram_delCnt_noteRecptn() == 0){alert("삭제할 목록을 선택해주세요!   "); document.getElementById('checkAll').focus();return;}
-
 	if(confirm("선택된 받은쪽지함을 삭제 하시겠습니까?")){
-		varForm.cmd.value = 'del';
 	    varForm.action = "${pageContext.request.contextPath}/uss/ion/ntr/listNoteRecptn.do";
 		varForm.submit();
 	}
@@ -210,54 +221,13 @@ function fn_aram_delete_noteRecptn(){
 /* ********************************************************
  * 상세화면 처리 함수
  ******************************************************** */
-function fn_aram_detail_noteRecptn(noteId,noteTrnsmitId,noteRecptnId){
+function fn_aram_detail(noteId,noteTrnsmitId,noteRecptnId){
     var varForm = document.getElementById("noteRecptnVO");
     varForm.noteId.value = noteId;
     varForm.noteTrnsmitId.value = noteTrnsmitId;
     varForm.noteRecptnId.value = noteRecptnId;
     varForm.action = "${pageContext.request.contextPath}/uss/ion/ntr/detailNoteRecptn.do";
     varForm.submit();
-}
-
-/* ********************************************************
-* 체크 박스 선택 함수
-******************************************************** */
-function fn_aram_checkAll(){
-
-	var FLength = document.getElementsByName("checkList").length;
-	var checkAllValue = document.getElementById('checkAll').checked;
-
-	//undefined
-	if( FLength == 1){
-		document.listForm.checkList.checked = checkAllValue;
-	} else {
-		for(var i=0; i < FLength; i++)
-		{
-			document.getElementsByName("checkList")[i].checked = checkAllValue;
-		}
-	}
-}
-
-/* ********************************************************
-* 체크 박스 선태 건수
-******************************************************** */
-var g_nDelCount  = 0;
-function fn_aram_delCnt_noteRecptn(){
-
-	g_nDelCount = 0;
-	var FLength = document.getElementsByName("checkList").length;
-
-	//undefined
-	if( FLength == 1){
-		if(document.listForm.checkList.checked == true){g_nDelCount++;}
-	} else {
-		for(var i=0; i < FLength; i++)
-		{
-			if(document.getElementsByName("checkList")[i].checked == true){g_nDelCount++;}
-		}
-	}
-
-	return g_nDelCount;
 }
 
 </script>

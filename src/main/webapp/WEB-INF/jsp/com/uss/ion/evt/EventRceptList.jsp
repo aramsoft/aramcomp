@@ -158,7 +158,7 @@
 			<c:out value="${fn:substring(result.eventEndDe, 0,4)}-${fn:substring(result.eventEndDe, 4,6)}-${fn:substring(result.eventEndDe, 6,8)}" escapeXml="false" />
 		</td>
 		<td class="lt_text3"><c:out value="${result.eventDayCount}"/>일간</td>
-		<td class="lt_text3"><c:out value="${result.eventAtdrnCount}"/>/<c:out value="${result.garden}"/></td>
+		<td class="lt_text3"><c:out value="${result.eventAtdrnCount}"/>/<c:out value="${result.psncpa}"/></td>
 		<td class="lt_textL">
 			<c:out value="${fn:substring(result.rceptBeginDe, 0,4)}-${fn:substring(result.rceptBeginDe, 4,6)}-${fn:substring(result.rceptBeginDe, 6,8)}" escapeXml="false" />
 			 ~ <br>
@@ -241,7 +241,7 @@ function fn_aram_regist(eventId){
 	varForm.eventId.value  = eventId;
 	varForm.action         = "${pageContext.request.contextPath}/uss/ion/evt/registEventRcrpt.do";
 	varForm.submit();
-}
+} 
 
 /* ********************************************************
  * 행사 상세화면 팝업 호출함수
@@ -251,11 +251,11 @@ function fn_aram_popup_eventManage(eventId){
 	var openParam            = "left=10, top=0, width=750, height=600";
 	varForm.eventId.value    = eventId;
 	varForm.popup.value      = "true";
-	var myWin = window.open("about:blank","EventReqstDetailPop",openParam);
+	var myWin = window.open("about:blank","EventManageDetailPop",openParam);
 	
 	varForm.method = "post";
-	varForm.action = "${pageContext.request.contextPath}/uss/ion/evt/detailEventReqst.do";
-	varForm.target = "EventReqstDetailPop";
+	varForm.action = "${pageContext.request.contextPath}/uss/ion/evt/detailEventManage.do";
+	varForm.target = "EventManageDetailPop";
 	varForm.submit();
 }
 

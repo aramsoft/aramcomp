@@ -148,7 +148,7 @@
 			<a href="#" onclick="javascript:fn_aram_popup_eventAtdrn('${result.eventId}'); return false;">
 				<c:out value="${result.eventAtdrnCount}"/>
 			</a>
-			</span>/<c:out value="${result.garden}"/>
+			</span>/<c:out value="${result.psncpa}"/>
 	    </td>
 		<td class="lt_textL">
 			<c:out value="${fn:substring(result.rceptBeginDe, 0,4)}-${fn:substring(result.rceptBeginDe, 4,6)}-${fn:substring(result.rceptBeginDe, 6,8)}" escapeXml="false" />
@@ -173,8 +173,8 @@
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("eventManageVO");
-	varForm.pageIndex.value    = pageNo;
-	varForm.action             = "${pageContext.request.contextPath}/uss/ion/evt/listEventReqst.do";
+	varForm.pageIndex.value = pageNo;
+	varForm.action = "${pageContext.request.contextPath}/uss/ion/evt/listEventManage.do";
 	varForm.submit();
 }
 
@@ -191,7 +191,7 @@ function fn_aram_search(){
 		} 
 	}
 	varForm.pageIndex.value = 1;
-	varForm.action = "${pageContext.request.contextPath}/uss/ion/evt/listEventReqst.do";
+	varForm.action = "${pageContext.request.contextPath}/uss/ion/evt/listEventManage.do";
 	varForm.submit();
 }
 
@@ -201,7 +201,7 @@ function fn_aram_search(){
 function fn_aram_detail(eventId){
 	var varForm = document.getElementById("eventManageVO");
 	varForm.eventId.value    = eventId;
-	varForm.action           = "${pageContext.request.contextPath}/uss/ion/evt/detailEventReqst.do";
+	varForm.action           = "${pageContext.request.contextPath}/uss/ion/evt/detailEventManage.do";
 	varForm.submit();
 }
 
@@ -211,7 +211,7 @@ function fn_aram_detail(eventId){
 function fn_aram_regist(){
 	var varForm = document.getElementById("eventManageVO");
 	varForm.eventId.value    = "";
-	varForm.action           = "${pageContext.request.contextPath}/uss/ion/evt/registEventReqst.do";
+	varForm.action           = "${pageContext.request.contextPath}/uss/ion/evt/registEventManage.do";
 	varForm.submit();
 }
 

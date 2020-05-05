@@ -195,28 +195,22 @@ public class EventManageService extends EgovAbstractServiceImpl {
 		String sTemp = null;
 		for (int i = 0; i < eventRceptValues.length; i++) {
 			sTemp = eventRceptValues[i];
-			sTempEventRcept = sTemp.split(",");
+			sTempEventRcept = sTemp.split("-");
 			eventAtdrnVO.setEventId(sTempEventRcept[0]);
 			eventAtdrnVO.setApplcntId(sTempEventRcept[1]);
 			eventAtdrnVO.setInfrmlSanctnId(sTempEventRcept[2]);
 			eventAtdrnVO.setReqstDe(sTempEventRcept[3]);
-			InfrmlSanctnVO infrmlSanctn = new InfrmlSanctnVO();
 
+			InfrmlSanctnVO infrmlSanctnVO = new InfrmlSanctnVO();
 			if (eventAtdrnVO.getConfmAt().equals("C")) {
-				/*
-				 * 승인처리
-				 */
-				infrmlSanctn = infrmlSanctnService.updateInfrmlSanctnConfm(converToInfrmlSanctnObject(eventAtdrnVO)); // 승인
-				// infrmlSanctn = infrmlSanctnService.updateInfrmlSanctnConfm("004", eventAtdrn);
+				// 승인처리
+				infrmlSanctnVO = infrmlSanctnService.updateInfrmlSanctnConfm(converToInfrmlSanctnObject(eventAtdrnVO)); 
 			} else if (eventAtdrnVO.getConfmAt().equals("R")) {
-				/*
-				 * 반려처리
-				 */
-				infrmlSanctn = infrmlSanctnService.updateInfrmlSanctnReturn(converToInfrmlSanctnObject(eventAtdrnVO)); // 반려
-				// infrmlSanctn = infrmlSanctnService.updateInfrmlSanctnReturn("004", eventAtdrn);
+				// 반려처리
+				infrmlSanctnVO = infrmlSanctnService.updateInfrmlSanctnReturn(converToInfrmlSanctnObject(eventAtdrnVO)); 
 			}
-			eventAtdrnVO.setSanctnDt(infrmlSanctn.getSanctnDt());
-			eventAtdrnVO.setConfmAt(infrmlSanctn.getConfmAt());
+			eventAtdrnVO.setSanctnDt(infrmlSanctnVO.getSanctnDt());
+			eventAtdrnVO.setConfmAt(infrmlSanctnVO.getConfmAt());
 
 			eventManageMapper.updateEventAtdrn(eventAtdrnVO);
 		}

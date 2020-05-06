@@ -3,6 +3,8 @@ package aramframework.com.uss.ion.bnr.web;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -10,7 +12,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
@@ -61,7 +62,7 @@ public class BannerController {
 	 */
 	@IncludedInfo(name = "배너관리", order = 5230, gid = 50)
 	@RequestMapping(value = "/uss/ion/bnr/listBanner.do")
-	@Secured("ROLE_USER")
+	@Secured("ROLE_ADMIN")
 	public String listBanner(
 			@ModelAttribute BannerVO bannerVO, 
 			ModelMap model) {
@@ -81,11 +82,37 @@ public class BannerController {
 	}
 
 	/**
+	 * 기 등록된 배너정보목록을 일괄 삭제한다.
+	 * 
+	 * @param bannerIds
+	 * @param bannerVO
+	 */
+	@RequestMapping(value = "/uss/ion/bnr/deleteBannerList.do")
+	@Secured("ROLE_ADMIN")
+	public String deleteBannerList(
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute BannerVO bannerVO, 
+			HttpServletRequest request, 
+			ModelMap model) {
+
+    	String[] bannerIds = null;
+    	if(request.getParameterValues("uniqIds") != null) 
+    		bannerIds = request.getParameterValues("uniqIds");
+
+		bannerService.deleteBanners(bannerIds);
+
+		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
+		model.addAttribute("redirectURL", "/uss/ion/bnr/listBanner.do");
+	    return "com/cmm/redirect";
+	}
+
+	/**
 	 * 배너등록 화면으로 이동한다.
 	 * 
 	 * @param bannerVO
 	 */
 	@RequestMapping(value = "/uss/ion/bnr/registBanner.do")
+	@Secured("ROLE_ADMIN")
 	public String registBanner(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BannerVO bannerVO) {
@@ -99,6 +126,7 @@ public class BannerController {
 	 * @param bannerVO
 	 */
 	@RequestMapping(value = "/uss/ion/bnr/insertBanner.do")
+	@Secured("ROLE_ADMIN")
 	public String insertBanner(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BannerVO bannerVO, 
@@ -143,6 +171,7 @@ public class BannerController {
 	 * @param bannerVO
 	 */
 	@RequestMapping(value = "/uss/ion/bnr/editBanner.do")
+	@Secured("ROLE_ADMIN")
 	public String editBanner(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BannerVO bannerVO,
@@ -159,6 +188,7 @@ public class BannerController {
 	 * @param bannerVO
 	 */
 	@RequestMapping(value = "/uss/ion/bnr/updateBanner.do")
+	@Secured("ROLE_ADMIN")
 	public String updateBanne(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BannerVO bannerVO, 
@@ -211,6 +241,7 @@ public class BannerController {
 	 * @param bannerVO
 	 */
 	@RequestMapping(value = "/uss/ion/bnr/deleteBanner.do")
+	@Secured("ROLE_ADMIN")
 	public String deleteBanner(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BannerVO bannerVO, 
@@ -221,43 +252,6 @@ public class BannerController {
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/uss/ion/bnr/listBanner.do");
 	    return "com/cmm/redirect";
-	}
-
-	/**
-	 * 기 등록된 배너정보목록을 일괄 삭제한다.
-	 * 
-	 * @param bannerIds
-	 * @param bannerVO
-	 */
-	@RequestMapping(value = "/uss/ion/bnr/deleteBannerList.do")
-	public String deleteBannerList(
-			@ModelAttribute("searchVO") SearchVO searchVO,
-			@ModelAttribute BannerVO bannerVO, 
-			@RequestParam String bannerIds, 
-			ModelMap model) {
-
-		bannerService.deleteBanners(bannerIds);
-
-		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		model.addAttribute("redirectURL", "/uss/ion/bnr/listBanner.do");
-	    return "com/cmm/redirect";
-	}
-
-	/**
-	 * 배너가 특정화면에 반영된 결과를 조회한다.
-	 * 
-	 * @param bannerVO
-	 */
-	@RequestMapping(value = "/uss/ion/bnr/getBannerImage.do")
-	public String getBannerImage(
-			@ModelAttribute("searchVO") SearchVO searchVO,
-			@ModelAttribute BannerVO bannerVO, 
-			ModelMap model) {
-
-		model.addAttribute("fileList", bannerService.selectBannerResult(bannerVO));
-		model.addAttribute("resultType", bannerVO.getResultType());
-
-		return "com/uss/ion/bnr/BannerView";
 	}
 
 	/**
@@ -278,4 +272,21 @@ public class BannerController {
 		return "com/uss/ion/bnr/BannerMainPage";
 	}
 	
+	/**
+	 * 배너가 특정화면에 반영된 결과를 조회한다.
+	 * 
+	 * @param bannerVO
+	 */
+	@RequestMapping(value = "/uss/ion/bnr/getBannerImage.do")
+	public String getBannerImage(
+			@ModelAttribute("searchVO") SearchVO searchVO,
+			@ModelAttribute BannerVO bannerVO, 
+			ModelMap model) {
+
+		model.addAttribute("fileList", bannerService.selectBannerResult(bannerVO));
+		model.addAttribute("resultType", bannerVO.getResultType());
+
+		return "com/uss/ion/bnr/BannerView";
+	}
+
 }

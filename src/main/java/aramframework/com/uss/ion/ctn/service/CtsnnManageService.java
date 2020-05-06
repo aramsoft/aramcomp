@@ -147,17 +147,13 @@ public class CtsnnManageService extends EgovAbstractServiceImpl {
 	public void updtCtsnnManageConfm(CtsnnManageVO ctsnnManageVO) {
 		InfrmlSanctnVO infrmlSanctnVO = new InfrmlSanctnVO();
 		if (ctsnnManageVO.getConfmAt().equals("C")) {
-			/*
-			 * 승인처리
-			 */
+			// 승인처리
 			infrmlSanctnVO = infrmlSanctnService.updateInfrmlSanctnConfm(converToInfrmlSanctnObject(ctsnnManageVO)); // 승인
 			// infrmlSanctn = infrmlSanctnService.updateInfrmlSanctnConfm("001", ctsnnManage);
 		} else if (ctsnnManageVO.getConfmAt().equals("R")) {
-			/*
-			 * 반려처리
-			 */
-			// infrmlSanctn = infrmlSanctnService.updateInfrmlSanctnReturn("001", ctsnnManage);
+			// 반려처리
 			infrmlSanctnVO = infrmlSanctnService.updateInfrmlSanctnReturn(converToInfrmlSanctnObject(ctsnnManageVO));
+			// infrmlSanctn = infrmlSanctnService.updateInfrmlSanctnReturn("001", ctsnnManage);
 		}
 		ctsnnManageVO.setSanctnDt(infrmlSanctnVO.getSanctnDt());
 		ctsnnManageVO.setConfmAt(infrmlSanctnVO.getConfmAt());

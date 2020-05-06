@@ -53,6 +53,7 @@
 		</span>
 		<span class="button_area">
 			<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
+			<span class="button"><a href="#" onclick="javascript:fn_aram_deleteList(); return false;"><spring:message code="button.delete" /></a></span>
 			<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;"><spring:message code="button.create" /></a></span>
 		</span>
 	</div>	
@@ -60,15 +61,14 @@
 
 <form:hidden path="searchCondition" />
 <form:hidden path="pageIndex" />
-</form:form>
 
-<table class="table-list" summary="메인화면에서 배너에 대한 목록으로 배너명, 링크url,배너설명,반영여부를 제공한다.">
+<table class="table-list" id="tblData" summary="메인화면에서 배너에 대한 목록으로 배너명, 링크url,배너설명,반영여부를 제공한다.">
 <caption>배너 목록</caption>
 <thead>
   	<tr>
      	<th scope="col" width="7%" >No.</th>
-    	<th scope="col" width="5%" >
-    		<input type="checkbox" name="checkAll" class="check2" onchange="javascript:fnCheckAll(); return false;" title="전체선택" />
+    	<th scope="col" width="5%">
+    		<input type="checkbox" id="checkAll" class="check2" title="전체선택" />
     	</th>
 	    <th scope="col" width="20%">배너 명</th>
 	    <th scope="col"            >링크 URL</th>
@@ -91,10 +91,9 @@
 		<c:set var="reverseIndex" value="${searchVO.totalRecordCount - index + 1}"/>
 		<td class="lt_text3"><c:out value="${reverseIndex}"/></td>
 
-     	<td class="lt_text3">
-    		<input type="checkbox" name="delYn" class="check2" title="선택">
-    		<input type="hidden" name="checkId" value="<c:out value="${result.bannerId}"/>" disabled />
-    	</td>
+ 		<td class="lt_text3">
+			<input type="checkbox" class="check2" id="uniqIds" name="uniqIds" value="${result.bannerId}" />
+		</td>
     	<td class="lt_text3">
 			<span class="link">
 			<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.bannerId}"/>'); return false;">
@@ -108,6 +107,7 @@
 	</c:forEach>
 </tbody>
 </table>
+</form:form>
 
 <div id="page_navigation">
     <ui:pagination paginationInfo="${paginationInfo}" type="image" jsFunction="fn_aram_linkPage" />
@@ -116,6 +116,16 @@
 </DIV>
 
 <script type="text/javascript">
+
+$(function() {
+	$("#checkAll").on("click", function(){
+		if( $(this).is(":checked") ){
+			$("#tblData input[name=uniqIds]").prop("checked", true);
+		}else{
+			$("#tblData input[name=uniqIds]").prop("checked", false); 
+		}
+	});
+});
 
 function press() {
     if (event.keyCode==13) {
@@ -154,50 +164,17 @@ function fn_aram_regist() {
     varForm.submit();
 }
 
-function fnCheckAll() {
-    var varForm = document.getElementById("bannerVO");
-    var checkField = varForm.delYn;
+function fn_aram_deleteList() {
+	if( $("#tblData input[name=uniqIds]:checked").length == 0) {
+		alert("선택한 항목이 없습니다.");
+		return false;
+	}
     
-    if(checkField.length> 1) {
-        for(var i=0; i < checkField.length; i++) {
-            checkField[i].checked = varForm.checkAll.checked;
-        }
-    } else {
-        checkField.checked = varForm.checkAll.checked;
-    }
-}
-
-function fncManageChecked() {
     var varForm = document.getElementById("bannerVO");
-    var checkField = varForm.delYn;
-    var checkId = varForm.checkId;
-    var returnValue = "";
-    var returnBoolean = false;
-    var checkedCount = 0;
-
-    if(checkField) {
-        if(checkField.length> 1) {
-            for(var i=0; i<checkField.length; i++) {
-                if(checkField[i].checked) {
-                	returnValue += ((checkedCount==0? "" : ";") + checkId[i].value);
-                    checkedCount++;
-                }
-            }
-        } else {
-            if(checkField.checked) {
-                returnValue = checkId.value;
-            }
-        }
-    } 
-    if(returnValue.length> 0) {
-        varForm.bannerIds.value = returnValue;
-        returnBoolean = true;
-    } else {
-        alert("선택된 배너가 없습니다.");
-        returnBoolean = false;
+    if(confirm("<spring:message code="common.delete.msg" />")){
+       	varForm.action = "${pageContext.request.contextPath}/uss/ion/bnr/deleteBannerList.do";
+       	varForm.submit();
     }
-
-    return returnBoolean;
 }
 
 /*********************************************************

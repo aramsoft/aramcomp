@@ -35,7 +35,7 @@ public class BannerVO extends BaseVO {
 	private String bannerImageFile;
 	
 	/** 정렬 순서 */
-	private String sortOrdr;
+	private int sortOrdr;
 	
 	// helper
 	/** 사용자 ID */
@@ -152,14 +152,14 @@ public class BannerVO extends BaseVO {
 	/**
 	 * @return the sortOrdr
 	 */
-	public String getSortOrdr() {
+	public int getSortOrdr() {
 		return sortOrdr;
 	}
 	/**
 	 * @param sortOrdr
 	 *            the sortOrdr to set
 	 */
-	public void setSortOrdr(String sortOrdr) {
+	public void setSortOrdr(int sortOrdr) {
 		this.sortOrdr = sortOrdr;
 	}
 

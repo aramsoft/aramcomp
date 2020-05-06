@@ -154,7 +154,7 @@
     		<label for="emailAdres">이메일주소</label>
     	</th>
     	<td>
-       		<form:input path="emailAdres" size="73"maxlength="50" alt="이메일주소" title="이메일주소" />
+       		<form:input path="emailAdres" size="73" maxlength="50" alt="이메일주소" title="이메일주소" />
        		<form:errors path="endTelno" cssClass="error" />
     	</td>
   	</tr>

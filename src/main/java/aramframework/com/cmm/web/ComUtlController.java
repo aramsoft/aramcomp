@@ -28,7 +28,7 @@ public class ComUtlController {
 
 		// service 사용하여 리턴할 결과값 처리하는 부분은 생략하고 단순 페이지 링크만 처리함
 		if (link==null || link.equals("")){
-			link="cmm/error/egovError";
+			link="com/cmm/error/egovError";
 		}else{
 			if(link.indexOf(",")>-1){
 			    link=link.substring(0,link.indexOf(","));	// import access시 필요

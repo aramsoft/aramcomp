@@ -97,12 +97,10 @@ public class BannerService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param bannerVO
 	 */
-	public void deleteBanners(String bannerIds) {
-		String[] strBannerIds = bannerIds.split(";");
-
+	public void deleteBanners(String[] bannerIds) {
 		BannerVO bVO = new BannerVO();
-		for (int i = 0; i < strBannerIds.length; i++) {
-			bVO.setBannerId(strBannerIds[i]);
+		for (int i = 0; i < bannerIds.length; i++) {
+			bVO.setBannerId(bannerIds[i]);
 			deleteBanner(bVO);
 		}
 	}

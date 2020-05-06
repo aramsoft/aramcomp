@@ -154,12 +154,6 @@
   	</tr>
 </table>
 
-<!-- 결재권자 정보 Include -->
-<jsp:include page="/uss/ion/ism/detailSanctner.do" flush="true"> 
-	<jsp:param name="infrmlSanctnId" value="${ctsnnManageVO.infrmlSanctnId}"/>
-</jsp:include>
-<!-- //결재권자 정보 Include -->
-
 <!-- 검색조건 유지 -->
 <form:hidden path="searchFromDate" />
 <form:hidden path="searchToDate" />
@@ -169,6 +163,12 @@
 <input type="hidden" name="recordPerPage"   value="${searchVO.recordPerPage}" />
 <!-- 검색조건 유지 -->
 </form:form>
+
+<!-- 결재권자 정보 Include -->
+<jsp:include page="/uss/ion/ism/detailSanctner.do" flush="true"> 
+	<jsp:param name="infrmlSanctnId" value="${ctsnnManageVO.infrmlSanctnId}"/>
+</jsp:include>
+<!-- //결재권자 정보 Include -->
 
 </div>
 

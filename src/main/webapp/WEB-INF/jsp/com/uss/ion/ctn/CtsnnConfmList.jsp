@@ -41,7 +41,6 @@
 <input type="hidden" name="curMenuNo" value="${curMenuNo}" />
 
 <input type="hidden" name="ctsnnId" value="">
-<input type="hidden" name="infrmlSanctnId" value="">
 
 <table class="table-register" summary="경조승인 검색조건">
 <caption>경조승인 검색조건</caption>
@@ -51,7 +50,7 @@
     		<label for="searchKeyword">경조구분</label>
     	</th>
     	<td width="30%">
-        	<form:select path="searchVO.searchKeyword" title="경조구분">
+        	<form:select path="searchKeyword" title="경조구분">
                 <form:option value="" label="전체"/>
                 <form:options items="${COM054_ctsnn}" itemValue="code" itemLabel="codeNm"/>
       		</form:select>
@@ -154,7 +153,7 @@
 		<td class="lt_textL"><c:out value="${result.sanctnDt   }"/></td>
 		<td class="lt_text3">
 			<span class="button">
-			<a href="#" onclick="javascript:fn_aram_confirm('${result.ctsnnId}','${result.infrmlSanctnId}'); return false;">
+			<a href="#" onclick="javascript:fn_aram_confirm('${result.ctsnnId}'); return false;">
 				<c:if test="${result.confmAt eq 'A'}">승인처리 </c:if>
 				<c:if test="${result.confmAt ne 'A'}">상세보기 </c:if>
 			</a>
@@ -204,10 +203,9 @@ function fn_aram_search(){
 /* ********************************************************
  * 승인처리회면 호출함수
  ******************************************************** */
-function fn_aram_confirm(ctsnnId, infrmlSanctnId){
+function fn_aram_confirm(ctsnnId){
 	var varForm = document.getElementById("ctsnnManageVO");
 	varForm.ctsnnId.value        = ctsnnId;
-	varForm.infrmlSanctnId.value = infrmlSanctnId;
 	varForm.action  = "${pageContext.request.contextPath}/uss/ion/ctn/editCtsnnConfm.do";
 	varForm.submit();
 }

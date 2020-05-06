@@ -49,13 +49,13 @@
 <form:hidden  path="ctsnnCd"/>
 <form:hidden  path="reqstDe"/>
 <form:hidden  path="infrmlSanctnId"/>
-<form:hidden  path="confmAt"/>
 <form:hidden  path="sanctnerId"/>
 <form:hidden  path="ctsnnNm"/>
 <form:hidden  path="occrrDe"/>
 <form:hidden  path="brth"/>
 <form:hidden  path="relate"/>
 <form:hidden  path="trgterNm"/>
+<form:hidden  path="confmAt"/>
 <form:hidden  path="returnResn"/>
 
 <div style="margin-top:10px;"></div>
@@ -146,12 +146,6 @@
   	</tr>
 </table>
 
-<!-- 결재권자 정보 Include -->
-<jsp:include page="/uss/ion/ism/detailSanctner.do" flush="true"> 
-	<jsp:param name="infrmlSanctnId" value="${ctsnnManageVO.infrmlSanctnId}"/>
-</jsp:include>
-<!-- //결재권자 정보 Include -->
-
 <!-- 검색조건 유지 -->
 <form:hidden path="searchFromDate" />
 <form:hidden path="searchToDate" />
@@ -162,10 +156,16 @@
 <!-- 검색조건 유지 -->
 </form:form>
 
+<!-- 결재권자 정보 Include -->
+<jsp:include page="/uss/ion/ism/detailSanctner.do" flush="true"> 
+	<jsp:param name="infrmlSanctnId" value="${ctsnnManageVO.infrmlSanctnId}"/>
+</jsp:include>
+<!-- //결재권자 정보 Include -->
+
 </div>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/validator.do"></script>
-<validator:javascript formName="ctsnnManage" staticJavascript="false" xhtml="true" cdata="false"/>
+<validator:javascript formName="ctsnnManageVO" staticJavascript="false" xhtml="true" cdata="false"/>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/com/sym/cal/CalPopup.js"></script>
 <script type="text/javascript">
@@ -175,7 +175,7 @@
  ******************************************************** */
 function fn_aram_list(){
     var varForm = document.getElementById("ctsnnManageVO");
-	varForm.action = "${pageContext.request.contextPath}/uss/ion/ctn/listCtsnnConfm.do";
+ 	varForm.action = "${pageContext.request.contextPath}/uss/ion/ctn/listCtsnnConfm.do";
 	varForm.submit();
 }
 
@@ -222,11 +222,8 @@ function fncConfm(confmAt, returnResn) {
 	if(!validateCtsnnManageVO(varForm)){           
         return;
     }
-	
-	if(confirm("<spring:message code='common.save.msg'/>")){
-    	varForm.action = "${pageContext.request.contextPath}/uss/ion/ctn/updateCtsnnConfm.do";
-        varForm.submit();
-    } 
+   	varForm.action = "${pageContext.request.contextPath}/uss/ion/ctn/updateCtsnnConfm.do";
+    varForm.submit();
 }
 
 </c:if>	

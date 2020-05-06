@@ -53,8 +53,6 @@
 
 <!-- ------------------------------------------------------------------ 등록  폼 영역  -->
 <form id="targetForm" name="targetForm" method="post" action="#">
-<input type="hidden" name="cmd">
-<input type="hidden" name="checkedEventRceptForConfm">
 
 <table class="table-register">
   	<tr>

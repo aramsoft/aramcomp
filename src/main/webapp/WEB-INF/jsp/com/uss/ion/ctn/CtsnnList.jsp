@@ -51,7 +51,7 @@
     		<label for="searchKeyword">경조구분</label>
     	</th>
     	<td width="30%">
-        	<form:select path="searchVO.searchKeyword" title="경조구분">
+        	<form:select path="searchKeyword" title="경조구분">
                 <form:option value="" label="전체"/>
                 <form:options items="${COM054_ctsnn}" itemValue="code" itemLabel="codeNm"/>
       		</form:select>
@@ -201,8 +201,8 @@ function fn_aram_search(){
  ******************************************************** */
 function fn_aram_detail(ctsnnId){
 	var varForm = document.getElementById("ctsnnManageVO");
-	varForm.ctsnnId.value    = ctsnnId;
-	varForm.action           = "${pageContext.request.contextPath}/uss/ion/ctn/detailCtsnn.do";
+	varForm.ctsnnId.value = ctsnnId;
+	varForm.action = "${pageContext.request.contextPath}/uss/ion/ctn/detailCtsnn.do";
 	varForm.submit();
 }
 
@@ -211,8 +211,8 @@ function fn_aram_detail(ctsnnId){
  ******************************************************** */
 function fn_aram_regist(){
 	var varForm = document.getElementById("ctsnnManageVO");
-	varForm.ctsnnId.value    = "";
-	varForm.action           = "${pageContext.request.contextPath}/uss/ion/ctn/registCtsnn.do";
+	varForm.ctsnnId.value = "";
+	varForm.action = "${pageContext.request.contextPath}/uss/ion/ctn/registCtsnn.do";
 	varForm.submit();
 }
 

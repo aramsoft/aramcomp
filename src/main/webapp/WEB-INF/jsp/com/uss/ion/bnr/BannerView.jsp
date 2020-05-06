@@ -30,7 +30,7 @@
     <c:forEach var="result" items="${fileList}" varStatus="status">
     <tr>
     	<td>
-            <a href="<c:out value="${result.linkUrl}"/>" target="_blank"  title="새 창으로 이동"><img alt="배너 이미지" src='${pageContext.request.contextPath}/content/imagefiles/${result.bannerImageFile}/file/0'></a>
+            <a href="<c:out value="${result.linkUrl}"/>" target="_blank"  title="새 창으로 이동"><img alt="배너 이미지" src='${pageContext.request.contextPath}/files/image/${result.bannerImageFile}/id/0'></a>
        	</td>
     </tr>
     </c:forEach>
@@ -44,7 +44,7 @@
   	<tr>
     <c:forEach var="result" items="${fileList}" varStatus="status">
        	<td>
-       		<a href="<c:out value="${result.linkUrl}"/>" target="_blank"  title="새 창으로 이동"><img alt="배너 이미지" src='${pageContext.request.contextPath}/content/imagefiles/${result.bannerImageFile}/file/0'></a>
+       		<a href="<c:out value="${result.linkUrl}"/>" target="_blank"  title="새 창으로 이동"><img alt="배너 이미지" src='${pageContext.request.contextPath}/files/image/${result.bannerImageFile}/id/0'></a>
        	</td>
     </c:forEach>
   	</tr>

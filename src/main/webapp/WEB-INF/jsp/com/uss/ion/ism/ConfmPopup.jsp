@@ -53,8 +53,6 @@
 
 <!-- ------------------------------------------------------------------ 등록  폼 영역  -->
 <form id="targetForm" name="targetForm" method="post" action="#">
-<input type="hidden" name="cmd">
-<input type="hidden" name="checkedEventRceptForConfm">
 
 <table class="table-register">
   	<tr>
@@ -86,6 +84,7 @@ function fncPopUpConfm() {
     if(confirm("승인처리  하시겠습니까?")){
     	var retVal = document.getElementById("returnResn").value;
     	var retFunc = window.opener.gArguments["retFunc"];
+  		
     	if( retFunc != undefined ) {
     		retFunc('C', retVal);		
     	}

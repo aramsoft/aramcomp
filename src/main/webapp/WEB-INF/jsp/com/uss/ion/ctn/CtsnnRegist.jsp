@@ -157,7 +157,7 @@
 </table>
 
 <!-- 결재권자 지정 Include -->
-<jsp:include page="/WEB-INF/jsp/aramframework/com/uss/ion/ism/InfrmlSanctnRegist.jsp" flush="true"/> 
+<jsp:include page="/WEB-INF/jsp/com/uss/ion/ism/InfrmlSanctnRegist.jsp" flush="true"/> 
 <!-- //결재권자 지정 Include -->
 
 <!-- 검색조건 유지 -->

@@ -67,7 +67,7 @@
 		- here with all other types of exceptions.
 	-->
 	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-		<property name="defaultErrorView" value="cmm/error/egovError"/>
+		<property name="defaultErrorView" value="com/cmm/error/egovError"/>
 		<property name="excludedExceptions">
 			<list>
 				<value>org.springframework.security.access.AccessDeniedException</value>
@@ -75,10 +75,10 @@
 		</property>
 		<property name="exceptionMappings">
 			<props>
-				<prop key="org.springframework.dao.DataAccessException">cmm/error/dataAccessFailure</prop>
-				<prop key="org.springframework.transaction.TransactionException">cmm/error/dataAccessFailure</prop>
-				<prop key="egovframework.rte.fdl.cmmn.exception.EgovBizException">cmm/error/egovBizException</prop>
-				<prop key="org.springframework.web.HttpSessionRequiredException">cmm/error/egovHttpSessionException</prop>
+				<prop key="org.springframework.dao.DataAccessException">com/cmm/error/dataAccessFailure</prop>
+				<prop key="org.springframework.transaction.TransactionException">com/cmm/error/dataAccessFailure</prop>
+				<prop key="egovframework.rte.fdl.cmmn.exception.EgovBizException">com/cmm/error/egovBizException</prop>
+				<prop key="org.springframework.web.HttpSessionRequiredException">com/cmm/error/egovHttpSessionException</prop>
 			</props>
 		</property>
 	</bean>

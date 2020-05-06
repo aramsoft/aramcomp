@@ -268,7 +268,7 @@
         <![CDATA[
             SELECT PASSWORD        		password 
               FROM COMTN_EMPLYR_INFO
-              WHERE EMPLYR_ID = #{userId}
+              WHERE EMPLYR_ID = #{emplyrId}
         ]]>
     </select>
     
@@ -277,7 +277,7 @@
         <![CDATA[
             UPDATE COMTN_EMPLYR_INFO 
                SET PASSWORD = #{password}
-              WHERE EMPLYR_ID = #{userId}
+              WHERE EMPLYR_ID = #{emplyrId}
         ]]>
     </update>
     

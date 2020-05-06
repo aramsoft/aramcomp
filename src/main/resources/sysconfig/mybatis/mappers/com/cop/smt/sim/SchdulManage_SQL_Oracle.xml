@@ -74,8 +74,8 @@
 			 	 , A.OTHBC_SCOPE 			AS "othbcScope" 
 			  FROM COMTN_SCHDUL_INFO A
 			 WHERE (a.OTHBC_SCOPE = 'G'
-					OR (a.OTHBC_SCOPE = 'C' AND a.TRGET_ID = #{trgetId})			
-				    OR (a.OTHBC_SCOPE = 'P' AND (A.SCHDUL_CHARGER_ID = #{userId} OR A.FRST_REGISTER_ID = #{userId}))
+					OR (a.OTHBC_SCOPE = 'C' AND a.TRGET_ID = #{trgetId, jdbcType=VARCHAR})			
+				    OR (a.OTHBC_SCOPE = 'P' AND (A.SCHDUL_CHARGER_ID = #{userId, jdbcType=VARCHAR} OR A.FRST_REGISTER_ID = #{userId, jdbcType=VARCHAR}))
 				   )   
 			   AND ( 
 				 	( SUBSTR(A.SCHDUL_BGNDE,1,8) > TO_CHAR(sysdate, 'YYYYMMDD') AND SUBSTR(A.SCHDUL_ENDDE,1,8) <= TO_CHAR(sysdate, 'YYYYMMDD') )

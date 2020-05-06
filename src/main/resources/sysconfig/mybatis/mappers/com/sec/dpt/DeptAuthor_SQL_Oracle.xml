@@ -54,7 +54,6 @@
             SELECT A.USER_ID				AS "userId"
                  , A.USER_NM				AS "userNm"
                  , B.AUTHOR_CODE 			AS "authorCode"
-                 , A.USER_ID 				AS "userId" 
                  , (CASE WHEN B.SCRTY_DTRMN_TRGET_ID IS NULL THEN 'N' ELSE 'Y' END) AS "regYn"
               FROM (SELECT A.ORGNZT_ID 		DEPT_CODE 
                          , A.ORGNZT_NM 		DEPT_NM

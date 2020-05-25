@@ -21,7 +21,7 @@
 			  FROM COMTC_CMMN_DETAIL_CODE A
 				   LEFT OUTER JOIN COMTC_CMMN_CODE B 
 					    ON A.CODE_ID = B.CODE_ID
-			 WHERE A.USE_AT = 'Y'
+			 WHERE 1=1
 		]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
@@ -54,7 +54,7 @@
 			  FROM COMTC_CMMN_DETAIL_CODE A
 				   LEFT OUTER JOIN COMTC_CMMN_CODE B 
 					    ON A.CODE_ID = B.CODE_ID
-			 WHERE A.USE_AT = 'Y'
+			 WHERE 1=1
 		]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
@@ -163,8 +163,8 @@
 	<!-- 삭제 -->
 	<delete id="deleteCmmnDetailCode">
 		<![CDATA[
-            UPDATE COMTC_CMMN_DETAIL_CODE
-               SET USE_AT    = 'N'
+            DELETE 
+              FROM COMTC_CMMN_DETAIL_CODE
              WHERE CODE_ID   = #{codeId}
                AND CODE      = #{code}
 		]]>

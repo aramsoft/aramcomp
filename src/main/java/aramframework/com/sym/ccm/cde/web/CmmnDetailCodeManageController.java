@@ -9,8 +9,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
@@ -102,9 +102,14 @@ public class CmmnDetailCodeManageController {
 	public String registCmmnDetailCode(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CmmnDetailCodeVO cmmnDetailCodeVO, 
-			@RequestParam String clCode, 
 			ModelMap model) {
+		
+			setCodeSelect(model);
+			
+		return "com/sym/ccm/cde/CmmnDetailCodeRegist";
+	}
 
+	private void setCodeSelect(ModelMap model) {
 		// class code list
 		CmmnClCodeVO cmmnClCodeVO = new CmmnClCodeVO();
 		cmmnClCodeVO.setSizeAndOffset(999999, 0);
@@ -117,16 +122,12 @@ public class CmmnDetailCodeManageController {
 		cmmnCodeVO.setSizeAndOffset(999999, 0);
 
 		cmmnCodeVO.setSearchCondition("clCode");
-		if ( clCode.equals("") ) {
-			clCode = cmmnClCodeList.get(0).get("clCode").toString();
-		}	
+		String clCode = cmmnClCodeList.get(0).get("clCode").toString();
 		cmmnCodeVO.setSearchKeyword(clCode);
 
 		model.addAttribute("cmmnCodeList", cmmnCodeManageService.selectCmmnCodeList(cmmnCodeVO));
-
-		return "com/sym/ccm/cde/CmmnDetailCodeRegist";
 	}
-
+	
 	/**
 	 * 공통상세코드를 등록한다.
 	 * 
@@ -138,10 +139,12 @@ public class CmmnDetailCodeManageController {
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute CmmnDetailCodeVO cmmnDetailCodeVO, 
 			BindingResult bindingResult, 
+			RedirectAttributes redirectAttributes,
 			ModelMap model) {
 
 		beanValidator.validate(cmmnDetailCodeVO, bindingResult);
 		if (bindingResult.hasErrors()) {
+			setCodeSelect(model);
 			return "com/sym/ccm/cde/CmmnDetailCodeRegist";
 		}
 

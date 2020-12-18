@@ -21,7 +21,7 @@ public class KomoranController {
 	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	@RequestMapping("/testKomoran.do")
-	public String unitContent(
+	public String testKomoran(
 			@RequestParam(value="inputText", required=false) String inputText, 
 			ModelMap model) {
 

@@ -1,7 +1,5 @@
 package aramframework.com.cmm.domain;
 
-import aramframework.com.cmm.domain.BaseVO;
-
 /**
  * 커뮤니티 관리를 위한 VO 클래스
  * 
@@ -9,7 +7,7 @@ import aramframework.com.cmm.domain.BaseVO;
  * @since 2014.11.11
  * @version 1.0
  */
-public class ImageVO extends BaseVO {
+public class ImageVO {
 
 	/** image file name */
 	private String imageName = "";

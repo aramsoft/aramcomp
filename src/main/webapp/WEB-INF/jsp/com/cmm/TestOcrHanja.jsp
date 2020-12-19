@@ -43,6 +43,7 @@
 <div style="margin-top:10px; width:100%">${responseText}</div>
 
 <div style="margin-top:10px; width:100%">
+json_parsing_result:<br>
 image_id = ${resultWrapVO.image_id}<br>
 image = ${resultWrapVO.image}<br>
 owner = ${resultWrapVO.owner}<br>
@@ -50,7 +51,10 @@ meta = ${resultWrapVO.meta}<br>
 created_date = ${resultWrapVO.created_date}<br>
 status = ${resultWrapVO.status}<br>
 ocr_result.count = ${resultWrapVO.ocr_result.size()}<br>
-hanja_list = ${hanjaList}<br>
+sorted_hanja_list = ${hanjaList}<br>
+<br>
+hanja_text:<br>
+${hanjaText}<br>
 </div>
 </c:if>
 

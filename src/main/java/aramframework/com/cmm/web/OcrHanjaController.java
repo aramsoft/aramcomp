@@ -27,6 +27,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import aramframework.com.cmm.domain.ImageHanjaVO;
 import aramframework.com.cmm.domain.ImageVO;
 import aramframework.com.cmm.domain.ResultWrapVO;
 import aramframework.com.cmm.service.OcrHanjaService;
@@ -119,9 +120,11 @@ public class OcrHanjaController {
 		ArrayList<Object> hanjaList = (ArrayList<Object>)resultWrapVO.getOcr_result();
 
 		Map<Integer, Object> map = new HashMap<>();
+		int height = 30;
+		int max_width = 500;
 		for (Object object : hanjaList) {
-			Object[] pos = ((ArrayList<Object>)((ArrayList<Object>)object).toArray()[0]).toArray();;
-			int key = (int)pos[0] + (int)pos[1];	// x, y
+			Object[] pos = ((ArrayList<Object>)((ArrayList<Object>)object).toArray()[0]).toArray();
+			int key = (int)pos[0] + ((int)pos[1]/height+1)*max_width;	// x+(y/height+1)*height
 		    map.put(key, object);
 		}
 
@@ -131,12 +134,39 @@ public class OcrHanjaController {
 		                      .sorted(Map.Entry.comparingByKey())
 		                      .collect(Collectors.toList());
 		ArrayList<Object> newHanjaList = new ArrayList<Object>();
+		ArrayList<ImageHanjaVO> hanjaVOList = new ArrayList<ImageHanjaVO>();
 		for (Map.Entry<Integer, Object> entry : entries) {
 		    newHanjaList.add(entry.getValue());
+			hanjaVOList.add(getImageHanja(entry.getValue()));
 		}		
 		model.addAttribute("hanjaList", newHanjaList);
+
+		StringBuffer hanjaText = new StringBuffer();
+		int prev_row = 0;
+		for (ImageHanjaVO hanjaVO : hanjaVOList) {
+			int row = hanjaVO.getY() / height;
+			if( row != prev_row ) {
+				hanjaText.append("<br>");
+				prev_row = row;
+			}
+			hanjaText.append(hanjaVO.getHanja());
+		}		
+		model.addAttribute("hanjaText", hanjaText.toString());
 		
 		return "com/cmm/TestOcrHanja";
+	}
+	
+	private ImageHanjaVO getImageHanja(Object object) {
+		ImageHanjaVO hanjaVO = new ImageHanjaVO();
+		
+		Object[] pos = ((ArrayList<Object>)((ArrayList<Object>)object).toArray()[0]).toArray();
+		String hanja = (String)((ArrayList<Object>)object).toArray()[1];
+		hanjaVO.setX((int)pos[0]);
+		hanjaVO.setY((int)pos[1]);
+		hanjaVO.setW((int)pos[2]);
+		hanjaVO.setH((int)pos[3]);
+		hanjaVO.setHanja(hanja);
+		return hanjaVO;
 	}
 	
 	/**

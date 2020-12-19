@@ -39,9 +39,20 @@
 	이미지 파일 : <Strong>${orgFileName}</Strong><br><br>
 	<img style="border: 1px solid #ddd; padding: 5px;" src="${pageContext.request.contextPath}/getHanjaImage.do?imageId=${imageId}">
 </div>
-</c:if>
 
-<div style="margin-top:10px; width:100%">${resultText}</div>
+<div style="margin-top:10px; width:100%">${responseText}</div>
+
+<div style="margin-top:10px; width:100%">
+image_id = ${resultWrapVO.image_id}<br>
+image = ${resultWrapVO.image}<br>
+owner = ${resultWrapVO.owner}<br>
+meta = ${resultWrapVO.meta}<br>
+created_date = ${resultWrapVO.created_date}<br>
+status = ${resultWrapVO.status}<br>
+ocr_result.count = ${resultWrapVO.ocr_result.size()}<br>
+hanja_list = ${hanjaList}<br>
+</div>
+</c:if>
 
 </DIV>
 

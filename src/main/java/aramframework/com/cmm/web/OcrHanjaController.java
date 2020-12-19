@@ -5,7 +5,12 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,7 +25,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import aramframework.com.cmm.domain.ImageVO;
+import aramframework.com.cmm.domain.ResultWrapVO;
 import aramframework.com.cmm.service.OcrHanjaService;
 
 @Controller
@@ -87,6 +95,7 @@ public class OcrHanjaController {
             os.write(input, 0, input.length);			
         }
         
+        String responseText = "";
         try(BufferedReader br = new BufferedReader(
           new InputStreamReader(con.getInputStream(), "utf-8"))) {
             StringBuilder response = new StringBuilder();
@@ -94,10 +103,39 @@ public class OcrHanjaController {
             while ((responseLine = br.readLine()) != null) {
                 response.append(responseLine.trim());
             }
-            
-    		model.addAttribute("resultText", response.toString());
+            responseText = response.toString();
+    		model.addAttribute("responseText", responseText);
         }
 
+        ResultWrapVO resultWrapVO = new ResultWrapVO();
+    	ObjectMapper mapper = new ObjectMapper();
+       	try {
+       		resultWrapVO = mapper.readValue(responseText, ResultWrapVO.class);    
+   		} catch (Exception e) {
+   			LOG.error(e.getMessage());
+   		} 
+		model.addAttribute("resultWrapVO", resultWrapVO);
+
+		ArrayList<Object> hanjaList = (ArrayList<Object>)resultWrapVO.getOcr_result();
+
+		Map<Integer, Object> map = new HashMap<>();
+		for (Object object : hanjaList) {
+			Object[] pos = ((ArrayList<Object>)((ArrayList<Object>)object).toArray()[0]).toArray();;
+			int key = (int)pos[0] + (int)pos[1];	// x, y
+		    map.put(key, object);
+		}
+
+		// sort by key
+		List<Map.Entry<Integer, Object>> entries =
+		        map.entrySet().stream()
+		                      .sorted(Map.Entry.comparingByKey())
+		                      .collect(Collectors.toList());
+		ArrayList<Object> newHanjaList = new ArrayList<Object>();
+		for (Map.Entry<Integer, Object> entry : entries) {
+		    newHanjaList.add(entry.getValue());
+		}		
+		model.addAttribute("hanjaList", newHanjaList);
+		
 		return "com/cmm/TestOcrHanja";
 	}
 	

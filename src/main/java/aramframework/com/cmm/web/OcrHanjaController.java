@@ -120,11 +120,11 @@ public class OcrHanjaController {
 		ArrayList<Object> hanjaList = (ArrayList<Object>)resultWrapVO.getOcr_result();
 
 		Map<Integer, Object> map = new HashMap<>();
-		int height = 30;
-		int max_width = 500;
+		int row_height = 30;
+		int image_width = 500;
 		for (Object object : hanjaList) {
 			Object[] pos = ((ArrayList<Object>)((ArrayList<Object>)object).toArray()[0]).toArray();
-			int key = (int)pos[0] + ((int)pos[1]/height+1)*max_width;	// x+(y/height+1)*height
+			int key = (int)pos[0] + ((int)pos[1]/row_height+1)*image_width;	// x+(y/height+1)*image_width
 		    map.put(key, object);
 		}
 
@@ -144,7 +144,7 @@ public class OcrHanjaController {
 		StringBuffer hanjaText = new StringBuffer();
 		int prev_row = 0;
 		for (ImageHanjaVO hanjaVO : hanjaVOList) {
-			int row = hanjaVO.getY() / height;
+			int row = hanjaVO.getY() / row_height;
 			if( row != prev_row ) {
 				hanjaText.append("<br>");
 				prev_row = row;

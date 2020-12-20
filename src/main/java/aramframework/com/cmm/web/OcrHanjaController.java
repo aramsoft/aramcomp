@@ -124,7 +124,7 @@ public class OcrHanjaController {
 		int image_width = 500;
 		for (Object object : hanjaList) {
 			Object[] pos = ((ArrayList<Object>)((ArrayList<Object>)object).toArray()[0]).toArray();
-			int key = (int)pos[0] + ((int)pos[1]/row_height+1)*image_width;	// x+(y/height+1)*image_width
+			int key = (int)pos[0] + ((int)pos[1]/row_height)*image_width;	// x+(y/height)*image_width
 		    map.put(key, object);
 		}
 

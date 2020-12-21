@@ -118,44 +118,11 @@ public class OcrHanjaController {
 		model.addAttribute("resultWrapVO", resultWrapVO);
 
 		ArrayList<Object> hanjaList = (ArrayList<Object>)resultWrapVO.getOcr_result();
-/*		
-		Map<Integer, Object> map = new HashMap<>();
-		int row_height = 30;
-		int image_width = 500;
-		for (Object object : hanjaList) {
-			Object[] pos = ((ArrayList<Object>)((ArrayList<Object>)object).toArray()[0]).toArray();
-			int key = (int)pos[0] + ((int)pos[1]/row_height)*image_width;	// x+(y/height)*image_width
-		    map.put(key, object);
-		}
-
-		// sort by key
-		List<Map.Entry<Integer, Object>> entries =
-		        map.entrySet().stream()
-		                      .sorted(Map.Entry.comparingByKey())
-		                      .collect(Collectors.toList());
-		ArrayList<Object> newHanjaList = new ArrayList<Object>();
-		ArrayList<ImageHanjaVO> hanjaVOList = new ArrayList<ImageHanjaVO>();
-		for (Map.Entry<Integer, Object> entry : entries) {
-		    newHanjaList.add(entry.getValue());
-			hanjaVOList.add(getImageHanja(entry.getValue()));
-		}		
-		model.addAttribute("hanjaList", newHanjaList);
-
-		StringBuffer hanjaText = new StringBuffer();
-		int prev_row = 0;
-		for (ImageHanjaVO hanjaVO : hanjaVOList) {
-			int row = hanjaVO.getY() / row_height;
-			if( row != prev_row ) {
-				hanjaText.append("<br>");
-				prev_row = row;
-			}
-			hanjaText.append(hanjaVO.getHanja());
-		}		
-*/		
 
 		StringBuffer hanjaText = new StringBuffer();
 		for (Object rowList : hanjaList) {
-			for (Object object : (ArrayList<Object>)rowList) {
+			ArrayList<Object> sortedList = getSortedList((ArrayList<Object>)rowList); 
+			for (Object object : sortedList) {
 				ImageHanjaVO hanjaVO = getImageHanja(object);
 				hanjaText.append(hanjaVO.getHanja());
 			}
@@ -165,15 +132,35 @@ public class OcrHanjaController {
 		return "com/cmm/TestOcrHanja";
 	}
 	
+	private ArrayList<Object> getSortedList(ArrayList<Object> original) {
+		Map<Double, Object> map = new HashMap<>();
+		for (Object object : original) {
+			Object[] pos = ((ArrayList<Object>)((ArrayList<Object>)object).toArray()[0]).toArray();
+			double key = Double.parseDouble(pos[1].toString());	// y
+//			int key = (int)pos[0] + ((int)pos[1]/row_height)*image_width;	// x+(y/height)*image_width
+			map.put(key, object);
+		}
+
+		// sort by key
+		List<Map.Entry<Double, Object>> entries =
+	        map.entrySet().stream()
+	                      .sorted(Map.Entry.comparingByKey())
+	                      .collect(Collectors.toList());
+		ArrayList<Object> newList = new ArrayList<Object>();
+		for (Map.Entry<Double, Object> entry : entries) {
+			newList.add(entry.getValue()); 
+		}
+		return newList;
+	}
+	
 	private ImageHanjaVO getImageHanja(Object object) {
 		ImageHanjaVO hanjaVO = new ImageHanjaVO();
-		
-		Object[] pos = ((ArrayList<Object>)((ArrayList<Object>)object).toArray()[0]).toArray();
+//		Object[] pos = ((ArrayList<Object>)((ArrayList<Object>)object).toArray()[0]).toArray();
 		String hanja = (String)((ArrayList<Object>)object).toArray()[1];
-//		hanjaVO.setX((double)pos[0]);
-//		hanjaVO.setY((double)pos[1]); 
-//		hanjaVO.setW((double)pos[2]);
-//		hanjaVO.setH((double)pos[3]);
+//		hanjaVO.setX(Double.parseDouble(pos[0].toString()));
+//		hanjaVO.setY(Double.parseDouble(pos[1].toString())); 
+//		hanjaVO.setW(Double.parseDouble(pos[2].toString()));
+//		hanjaVO.setH(Double.parseDouble(pos[3].toString()));
 		hanjaVO.setHanja(hanja);
 		return hanjaVO;
 	}

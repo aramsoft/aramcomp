@@ -9,43 +9,43 @@ package aramframework.com.cmm.domain;
  */
 public class ImageHanjaVO {
 
-	private int x;
-	private int y;
-	private int w;
-	private int h;
+	private double x;
+	private double y;
+	private double w;
+	private double h;
 	
 	private String hanja = "";
 
 	// domain
-	public int getX() {
+	public double getX() {
 		return x;
 	}
 
-	public void setX(int x) {
+	public void setX(double x) {
 		this.x = x;
 	}
 
-	public int getY() {
+	public double getY() {
 		return y;
 	}
 
-	public void setY(int y) {
+	public void setY(double y) {
 		this.y = y;
 	}
 
-	public int getW() {
+	public double getW() {
 		return w;
 	}
 
-	public void setW(int w) {
+	public void setW(double w) {
 		this.w = w;
 	}
 
-	public int getH() {
+	public double getH() {
 		return h;
 	}
 
-	public void setH(int h) {
+	public void setH(double h) {
 		this.h = h;
 	}
 

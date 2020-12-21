@@ -89,7 +89,7 @@ public class OcrHanjaController {
         con.setRequestProperty("Accept", "application/json");
         con.setDoOutput(true);
         
-        String jsonInputString = "{\"api_key\": \""+api_key+"\",\"image\": \""+base64Image+"\"}";
+        String jsonInputString = "{\"api_key\": \""+api_key+"\",\"image\": \""+base64Image+"\", \"column_info\": \"True\"}";
         
         try(OutputStream os = con.getOutputStream()) {
             byte[] input = jsonInputString.getBytes("utf-8");
@@ -118,7 +118,7 @@ public class OcrHanjaController {
 		model.addAttribute("resultWrapVO", resultWrapVO);
 
 		ArrayList<Object> hanjaList = (ArrayList<Object>)resultWrapVO.getOcr_result();
-
+/*		
 		Map<Integer, Object> map = new HashMap<>();
 		int row_height = 30;
 		int image_width = 500;
@@ -151,8 +151,17 @@ public class OcrHanjaController {
 			}
 			hanjaText.append(hanjaVO.getHanja());
 		}		
+*/		
+
+		StringBuffer hanjaText = new StringBuffer();
+		for (Object rowList : hanjaList) {
+			for (Object object : (ArrayList<Object>)rowList) {
+				ImageHanjaVO hanjaVO = getImageHanja(object);
+				hanjaText.append(hanjaVO.getHanja());
+			}
+			hanjaText.append("<br>");
+		}
 		model.addAttribute("hanjaText", hanjaText.toString());
-		
 		return "com/cmm/TestOcrHanja";
 	}
 	
@@ -161,10 +170,10 @@ public class OcrHanjaController {
 		
 		Object[] pos = ((ArrayList<Object>)((ArrayList<Object>)object).toArray()[0]).toArray();
 		String hanja = (String)((ArrayList<Object>)object).toArray()[1];
-		hanjaVO.setX((int)pos[0]);
-		hanjaVO.setY((int)pos[1]);
-		hanjaVO.setW((int)pos[2]);
-		hanjaVO.setH((int)pos[3]);
+//		hanjaVO.setX((double)pos[0]);
+//		hanjaVO.setY((double)pos[1]); 
+//		hanjaVO.setW((double)pos[2]);
+//		hanjaVO.setH((double)pos[3]);
 		hanjaVO.setHanja(hanja);
 		return hanjaVO;
 	}

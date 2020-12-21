@@ -35,14 +35,12 @@
 </form>
 
 <c:if test="${orgFileName ne null}">
-<div style="margin-top:10px; width:100%">
+<div style="margin-top:10px; width:45%; float:left;">
 	이미지 파일 : <Strong>${orgFileName}</Strong><br><br>
-	<img style="border: 1px solid #ddd; padding: 5px;" src="${pageContext.request.contextPath}/getHanjaImage.do?imageId=${imageId}">
+	<img style="border: 1px solid #ddd; padding: 5px; width:100%" src="${pageContext.request.contextPath}/getHanjaImage.do?imageId=${imageId}">
 </div>
 
-<div style="margin-top:10px; width:100%">${responseText}</div>
-
-<div style="margin-top:10px; width:100%">
+<div style="margin-top:10px; width:50%; float:right;">
 json_parsing_result:<br>
 image_id = ${resultWrapVO.image_id}<br>
 image = ${resultWrapVO.image}<br>
@@ -51,10 +49,14 @@ meta = ${resultWrapVO.meta}<br>
 created_date = ${resultWrapVO.created_date}<br>
 status = ${resultWrapVO.status}<br>
 ocr_result.count = ${resultWrapVO.ocr_result.size()}<br>
-sorted_hanja_list = ${hanjaList}<br>
 <br>
 hanja_text:<br>
 ${hanjaText}<br>
+</div>
+
+<div style="margin-top:10px; width:100%; float:right;">
+json_result:<br>
+${responseText}<br>
 </div>
 </c:if>
 

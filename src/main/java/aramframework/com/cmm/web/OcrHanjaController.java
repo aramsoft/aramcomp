@@ -121,8 +121,9 @@ public class OcrHanjaController {
 
 		StringBuffer hanjaText = new StringBuffer();
 		for (Object rowList : hanjaList) {
-			ArrayList<Object> sortedList = getSortedList((ArrayList<Object>)rowList); 
-			for (Object object : sortedList) {
+//			ArrayList<Object> sortedList = getSortedList((ArrayList<Object>)rowList); 
+//			for (Object object : sortedList) {
+			for (Object object : (ArrayList<Object>)rowList) {
 				ImageHanjaVO hanjaVO = getImageHanja(object);
 				hanjaText.append(hanjaVO.getHanja());
 			}

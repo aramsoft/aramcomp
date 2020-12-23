@@ -27,7 +27,7 @@
   	</colgroup>
 	<tr>
       	<td class="title_left"> &nbsp;&nbsp;</td>
-		<td><input type="file" name="cmmntyImageName" id="cmmntyImageName" title="커뮤니티로고이미지 첨부"></td>
+		<td><input type="file" name="uploadFile" id="uploadFile" accept="image/jpeg"></td>
       	<td class="title_left"> &nbsp;&nbsp;</td>
 	  	<td><input id="btnTest" type="submit" value="제출" /></td>
  	</tr>   
@@ -52,6 +52,7 @@ ocr_result.count = ${resultWrapVO.ocr_result.size()}<br>
 <br>
 hanja_text:<br>
 ${hanjaText}<br>
+<a href="${pageContext.request.contextPath}/getHanjaText.do?imageId=${imageId}">텍스트 다운로드</a>
 </div>
 
 <div style="margin-top:10px; width:100%; float:right;">

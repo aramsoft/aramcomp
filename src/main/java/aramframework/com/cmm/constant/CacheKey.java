@@ -8,7 +8,8 @@ package aramframework.com.cmm.constant;
  * @version 1.0
  */
 public interface CacheKey {
-	public String IMG_CACHE   	= "IMG_CACHE";
+	public String OCR_IMG_CACHE = "OCR_IMG_CACHE";
+	public String OCR_TXT_CACHE = "OCR_TXT_CACHE";
 	public String BBS_PREFIX   	= "BBS_";
 
 	public String CMY_PREFIX   	= "CMY_";

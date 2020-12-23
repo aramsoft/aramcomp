@@ -34,10 +34,10 @@ public class OcrHanjaService extends EgovAbstractServiceImpl {
 	public ImageVO getImageInfo(String imageId) {
 		HashMap<String, Object> cacheMap = null;
 		
-		cacheMap = (HashMap<String, Object>) cacheDictionary.get(CacheKey.IMG_CACHE);
+		cacheMap = (HashMap<String, Object>) cacheDictionary.get(CacheKey.OCR_IMG_CACHE);
         if( cacheMap == null ) {
         	cacheMap = new HashMap<String, Object>();
-        	cacheDictionary.put(CacheKey.IMG_CACHE, cacheMap);
+        	cacheDictionary.put(CacheKey.OCR_IMG_CACHE, cacheMap);
         }
         
         ImageVO imageVO = (ImageVO) cacheMap.get(imageId);
@@ -49,10 +49,10 @@ public class OcrHanjaService extends EgovAbstractServiceImpl {
 	public ImageVO setImageInfo(String imageId, ImageVO imageVO) {
 		HashMap<String, Object> cacheMap = null;
 		
-		cacheMap = (HashMap<String, Object>) cacheDictionary.get(CacheKey.IMG_CACHE);
+		cacheMap = (HashMap<String, Object>) cacheDictionary.get(CacheKey.OCR_IMG_CACHE);
         if( cacheMap == null ) {
         	cacheMap = new HashMap<String, Object>();
-        	cacheDictionary.put(CacheKey.IMG_CACHE, cacheMap);
+        	cacheDictionary.put(CacheKey.OCR_IMG_CACHE, cacheMap);
         }
         
         // --------------------------------
@@ -61,6 +61,45 @@ public class OcrHanjaService extends EgovAbstractServiceImpl {
        	cacheMap.put(imageId, imageVO);
 
        	return imageVO;
+	}
+
+
+	/**
+	 * 캐쉬로부터 커뮤니티 정보 를 가져온다.
+	 * 
+	 * @param cmmntyId
+	 */
+	@SuppressWarnings("unchecked")
+	public String getHanjaText(String imageId) {
+		HashMap<String, Object> cacheMap = null;
+		
+		cacheMap = (HashMap<String, Object>) cacheDictionary.get(CacheKey.OCR_TXT_CACHE);
+        if( cacheMap == null ) {
+        	cacheMap = new HashMap<String, Object>();
+        	cacheDictionary.put(CacheKey.OCR_TXT_CACHE, cacheMap);
+        }
+        
+        String hanjaText = (String) cacheMap.get(imageId);
+
+		return hanjaText;
+	}
+
+	@SuppressWarnings("unchecked")
+	public String setHanjaText(String imageId, String hanjaText) {
+		HashMap<String, Object> cacheMap = null;
+		
+		cacheMap = (HashMap<String, Object>) cacheDictionary.get(CacheKey.OCR_TXT_CACHE);
+        if( cacheMap == null ) {
+        	cacheMap = new HashMap<String, Object>();
+        	cacheDictionary.put(CacheKey.OCR_TXT_CACHE, cacheMap);
+        }
+        
+        // --------------------------------
+		// 커뮤니티 메인
+		// --------------------------------
+       	cacheMap.put(imageId, hanjaText);
+
+       	return hanjaText;
 	}
 
 

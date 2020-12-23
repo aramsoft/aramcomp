@@ -3,8 +3,10 @@ package aramframework.com.cmm.web;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HashMap;
@@ -62,7 +64,7 @@ public class OcrHanjaController {
 			// 파일 수정여부 확인
 			orgFileName = file.getOriginalFilename(); 
 			if (orgFileName != "") {
-				if (file.getName().equals("cmmntyImageName")) {
+				if (file.getName().equals("uploadFile")) { 
 					bytes = file.getBytes();
 					encodedBase64 = new String(Base64.getEncoder().encodeToString(bytes));
 					
@@ -129,6 +131,7 @@ public class OcrHanjaController {
 			}
 			hanjaText.append("<br>");
 		}
+		ocrHanjaService.setHanjaText(imageId, hanjaText.toString());
 		model.addAttribute("hanjaText", hanjaText.toString());
 		return "com/cmm/TestOcrHanja";
 	}
@@ -187,5 +190,29 @@ public class OcrHanjaController {
 		response.getOutputStream().flush();
 		response.getOutputStream().close();
 	}
+
+	/**
+	 * 커뮤니티 이미지 를 가져온다.
+	 * 
+	 * @param cmmntyId
+	 */
+	@RequestMapping(value="/getHanjaText.do", method=RequestMethod.GET)
+	public void getHanjaText(
+			@RequestParam String imageId,			
+			HttpServletResponse response) 
+	throws Exception {
+		
+		String hanjaText = ocrHanjaService.getHanjaText(imageId);
+
+		// 1. 다운로드 페이지 설정
+	    String docName = URLEncoder.encode("hanjaText.txt","UTF-8").replaceAll("\\+", "%20"); 
+	    response.setHeader("Content-Disposition", "attachment;filename=" + docName + ";");
+	    response.setContentType("text/plain");
+
+	    // 2. 소스코드 출력
+		response.getOutputStream().write(hanjaText.replaceAll("<br>", "\n").getBytes("UTF-8"));
+		response.getOutputStream().flush();
+		response.getOutputStream().close();
+	}    
 
 }

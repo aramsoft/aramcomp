@@ -3,16 +3,13 @@ package aramframework.com.cmm.web;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -98,6 +95,7 @@ public class OcrHanjaController {
             os.write(input, 0, input.length);			
         }
         
+        // get json response
         String responseText = "";
         try(BufferedReader br = new BufferedReader(
           new InputStreamReader(con.getInputStream(), "utf-8"))) {
@@ -110,6 +108,7 @@ public class OcrHanjaController {
     		model.addAttribute("responseText", responseText);
         }
 
+        // parse json data
         ResultWrapVO resultWrapVO = new ResultWrapVO();
     	ObjectMapper mapper = new ObjectMapper();
        	try {
@@ -119,42 +118,44 @@ public class OcrHanjaController {
    		} 
 		model.addAttribute("resultWrapVO", resultWrapVO);
 
+		// get hanja & homogenous text
 		ArrayList<Object> hanjaList = (ArrayList<Object>)resultWrapVO.getOcr_result();
 
 		StringBuffer hanjaText = new StringBuffer();
+		StringBuffer homogenText = new StringBuffer();
+
+		String foundHanjaList = "";
+		String homogenDicList = "中";
+		HashMap<String, String> homogenDicMap = new HashMap<String,String>();
+		homogenDicMap.put("中", "1.가운데 중, 2.아닐 종");
+		
 		for (Object rowList : hanjaList) {
-//			ArrayList<Object> sortedList = getSortedList((ArrayList<Object>)rowList); 
-//			for (Object object : sortedList) {
 			for (Object object : (ArrayList<Object>)rowList) {
 				ImageHanjaVO hanjaVO = getImageHanja(object);
-				hanjaText.append(hanjaVO.getHanja());
+				String hanja = hanjaVO.getHanja();
+				hanjaText.append(hanja);
+				
+				if( foundHanjaList.indexOf(hanja) == -1			// 이미 검출되지 않았고
+					&& homogenDicList.indexOf(hanja) != -1) {	// 동형이음 대상인 경우
+					for(Map.Entry<String, String> entry : homogenDicMap.entrySet()) {
+						if(entry.getKey().indexOf(hanja) != -1) {
+							foundHanjaList += entry.getKey();
+							
+							homogenText.append(entry.getKey().substring(0,1));
+							homogenText.append(" : ");
+							homogenText.append(entry.getValue());
+							homogenText.append("<br>");
+						}
+					}
+				}
 			}
 			hanjaText.append("<br>");
 		}
 		ocrHanjaService.setHanjaText(imageId, hanjaText.toString());
 		model.addAttribute("hanjaText", hanjaText.toString());
+		model.addAttribute("homogenText", homogenText.toString());
+				
 		return "com/cmm/TestOcrHanja";
-	}
-	
-	private ArrayList<Object> getSortedList(ArrayList<Object> original) {
-		Map<Double, Object> map = new HashMap<>();
-		for (Object object : original) {
-			Object[] pos = ((ArrayList<Object>)((ArrayList<Object>)object).toArray()[0]).toArray();
-			double key = Double.parseDouble(pos[1].toString());	// y
-//			int key = (int)pos[0] + ((int)pos[1]/row_height)*image_width;	// x+(y/height)*image_width
-			map.put(key, object);
-		}
-
-		// sort by key
-		List<Map.Entry<Double, Object>> entries =
-	        map.entrySet().stream()
-	                      .sorted(Map.Entry.comparingByKey())
-	                      .collect(Collectors.toList());
-		ArrayList<Object> newList = new ArrayList<Object>();
-		for (Map.Entry<Double, Object> entry : entries) {
-			newList.add(entry.getValue()); 
-		}
-		return newList;
 	}
 	
 	private ImageHanjaVO getImageHanja(Object object) {
@@ -205,7 +206,7 @@ public class OcrHanjaController {
 		String hanjaText = ocrHanjaService.getHanjaText(imageId);
 
 		// 1. 다운로드 페이지 설정
-	    String docName = URLEncoder.encode("hanjaText.txt","UTF-8").replaceAll("\\+", "%20"); 
+	    String docName = URLEncoder.encode(imageId + ".txt","UTF-8").replaceAll("\\+", "%20"); 
 	    response.setHeader("Content-Disposition", "attachment;filename=" + docName + ";");
 	    response.setContentType("text/plain");
 

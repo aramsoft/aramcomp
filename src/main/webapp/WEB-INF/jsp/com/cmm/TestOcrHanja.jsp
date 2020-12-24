@@ -52,7 +52,10 @@ ocr_result.count = ${resultWrapVO.ocr_result.size()}<br>
 <br>
 hanja_text:<br>
 ${hanjaText}<br>
-<a href="${pageContext.request.contextPath}/getHanjaText.do?imageId=${imageId}">텍스트 다운로드</a>
+<a href="${pageContext.request.contextPath}/getHanjaText.do?imageId=${imageId}">텍스트 다운로드</a><br>
+<br>
+동형이음리스트:<br>
+${homogenText}<br>
 </div>
 
 <div style="margin-top:10px; width:100%; float:right;">

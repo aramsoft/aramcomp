@@ -1,6 +1,7 @@
 package aramframework.com.cmm.web;
 
 import java.io.BufferedReader;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -30,6 +31,7 @@ import aramframework.com.cmm.domain.ImageHanjaVO;
 import aramframework.com.cmm.domain.ImageVO;
 import aramframework.com.cmm.domain.ResultWrapVO;
 import aramframework.com.cmm.service.OcrHanjaService;
+import aramframework.com.cmm.util.MessageHelper;
 
 @Controller
 public class OcrHanjaController {
@@ -122,12 +124,18 @@ public class OcrHanjaController {
 		ArrayList<Object> hanjaList = (ArrayList<Object>)resultWrapVO.getOcr_result();
 
 		StringBuffer hanjaText = new StringBuffer();
-		StringBuffer homogenText = new StringBuffer();
+		StringBuffer hanjaDicText = new StringBuffer();
 
+		String hanjaDicList = null;
+		HashMap<String, String> hanjaDicMap = null;
+		hanjaDicList = ocrHanjaService.getHanjaDicList();
+		hanjaDicMap = ocrHanjaService.getHanjaDicMap();
+		if( hanjaDicList == null ) {
+			hanjaDicMap = new HashMap<String,String>();
+			hanjaDicMap.put("中", "1.가운데 중, 2.아닐 종");
+			hanjaDicList = "中";
+		}
 		String foundHanjaList = "";
-		String homogenDicList = "中";
-		HashMap<String, String> homogenDicMap = new HashMap<String,String>();
-		homogenDicMap.put("中", "1.가운데 중, 2.아닐 종");
 		
 		for (Object rowList : hanjaList) {
 			for (Object object : (ArrayList<Object>)rowList) {
@@ -136,15 +144,15 @@ public class OcrHanjaController {
 				hanjaText.append(hanja);
 				
 				if( foundHanjaList.indexOf(hanja) == -1			// 이미 검출되지 않았고
-					&& homogenDicList.indexOf(hanja) != -1) {	// 동형이음 대상인 경우
-					for(Map.Entry<String, String> entry : homogenDicMap.entrySet()) {
+					&& hanjaDicList.indexOf(hanja) != -1) {	// 동형이음 대상인 경우
+					for(Map.Entry<String, String> entry : hanjaDicMap.entrySet()) {
 						if(entry.getKey().indexOf(hanja) != -1) {
 							foundHanjaList += entry.getKey();
 							
-							homogenText.append(entry.getKey().substring(0,1));
-							homogenText.append(" : ");
-							homogenText.append(entry.getValue());
-							homogenText.append("<br>");
+							hanjaDicText.append(entry.getKey().substring(0,1));
+							hanjaDicText.append(" : ");
+							hanjaDicText.append(entry.getValue());
+							hanjaDicText.append("<br>");
 						}
 					}
 				}
@@ -153,7 +161,7 @@ public class OcrHanjaController {
 		}
 		ocrHanjaService.setHanjaText(imageId, hanjaText.toString());
 		model.addAttribute("hanjaText", hanjaText.toString());
-		model.addAttribute("homogenText", homogenText.toString());
+		model.addAttribute("hanjaDicText", hanjaDicText.toString());
 				
 		return "com/cmm/TestOcrHanja";
 	}
@@ -215,5 +223,46 @@ public class OcrHanjaController {
 		response.getOutputStream().flush();
 		response.getOutputStream().close();
 	}    
+
+	@RequestMapping(value="/uploadHanjaDic.do", method=RequestMethod.GET)
+	public String uploadHanjaDic1() {
+
+		return "com/cmm/UploadHanjaDic";
+	}
+	
+	@RequestMapping(value="/uploadHanjaDic.do", method=RequestMethod.POST)
+	public String uploadHanjaDic2(
+			MultipartHttpServletRequest multiRequest, 
+			ModelMap model) 
+	throws Exception {
+				
+		InputStream fis = null; // 2011.11.1 보안점검 후속조치
+
+		for (MultipartFile file : multiRequest.getFileMap().values()) {
+			if (!"".equals(file.getOriginalFilename())) {
+				if (file.getName().equals("uploadFile")) { 
+					// 2011.10.07 업로드 파일에 대한 확장자를 체크
+					if (file.getOriginalFilename().toUpperCase().endsWith(".XLSX")) {
+						try { 
+							fis = file.getInputStream();
+							ocrHanjaService.setHanjaDic(fis);
+						} catch (Exception e) {
+							throw e;
+						} finally {
+							if (fis != null)	// 2011.11.1 보안점검 후속조치
+								fis.close();
+						}
+	
+					} else {
+						model.addAttribute("message", "xlsx 파일 타입만 등록이 가능합니다.");
+						return "com/cmm/UploadHanjaDic";
+					}
+				}	
+			}
+		}
+
+		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
+		return "com/cmm/UploadHanjaDic";
+	}
 
 }

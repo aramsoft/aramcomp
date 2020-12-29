@@ -1,5 +1,7 @@
 package aramframework.com.cmm.service;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,8 +12,11 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import aramframework.com.cmm.constant.AramProperties;
 import aramframework.com.cmm.constant.CacheKey;
 import aramframework.com.cmm.domain.HanjaDicVO;
 import aramframework.com.cmm.domain.ImageVO;
@@ -29,8 +34,26 @@ import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 @Service
 public class OcrHanjaService extends EgovAbstractServiceImpl {
 
+	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
+	
+	public static final String HANJA_DIC_FILE 
+		= AramProperties.SYSCONFIG_PATH_PREFIX 
+		+ "egovProps" + System.getProperty("file.separator")
+		+ "conf" + System.getProperty("file.separator")
+		+ "HanjaDic.xlsx";
+
 	@Resource(name = "cacheDictionary")
 	private Map<String, Object> cacheDictionary;
+
+	public void init() {
+        File originalFile = new File(HANJA_DIC_FILE);
+        try {
+            FileInputStream fis = new FileInputStream(originalFile);
+			setHanjaDic(fis);
+        } catch (Exception e) {
+            LOG.error(e.getMessage());
+        } 
+	}
 
 	/**
 	 * 캐쉬로부터 이미지 정보 를 가져온다.

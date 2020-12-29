@@ -126,15 +126,8 @@ public class OcrHanjaController {
 		StringBuffer hanjaText = new StringBuffer();
 		StringBuffer hanjaDicText = new StringBuffer();
 
-		String hanjaDicList = null;
-		HashMap<String, String> hanjaDicMap = null;
-		hanjaDicList = ocrHanjaService.getHanjaDicList();
-		hanjaDicMap = ocrHanjaService.getHanjaDicMap();
-		if( hanjaDicList == null ) {
-			hanjaDicMap = new HashMap<String,String>();
-			hanjaDicMap.put("中", "1.가운데 중, 2.아닐 종");
-			hanjaDicList = "中";
-		}
+		String hanjaDicList = ocrHanjaService.getHanjaDicList();
+		HashMap<String, String> hanjaDicMap = ocrHanjaService.getHanjaDicMap();
 		String foundHanjaList = "";
 		
 		for (Object rowList : hanjaList) {

@@ -142,7 +142,8 @@ public class OcrHanjaService extends EgovAbstractServiceImpl {
         }
         
         String hanjaDicList = (String) cacheMap.get("hanjaDicList");
-
+        if (hanjaDicList == null ) hanjaDicList = "";
+        
 		return hanjaDicList;
 	}
 
@@ -162,6 +163,7 @@ public class OcrHanjaService extends EgovAbstractServiceImpl {
         }
         
         HashMap<String, String> hanjaDicMap = (HashMap<String, String>) cacheMap.get("hanjaDicMap");
+        if (hanjaDicMap == null ) hanjaDicMap = new HashMap<String, String>();
 
 		return hanjaDicMap;
 	}

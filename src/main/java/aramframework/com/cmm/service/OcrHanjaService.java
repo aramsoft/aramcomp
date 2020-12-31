@@ -127,27 +127,6 @@ public class OcrHanjaService extends EgovAbstractServiceImpl {
 	}
 
 	/**
-	 * 캐쉬로부터 HanjaDicList 정보 를 가져온다.
-	 * 
-	 * @param cmmntyId
-	 */
-	@SuppressWarnings("unchecked")
-	public String getHanjaDicList() {
-		
-		HashMap<String, Object> cacheMap = null;
-		cacheMap = (HashMap<String, Object>) cacheDictionary.get(CacheKey.HANJA_DIC_CACHE);
-        if( cacheMap == null ) {
-        	cacheMap = new HashMap<String, Object>();
-        	cacheDictionary.put(CacheKey.HANJA_DIC_CACHE, cacheMap);
-        }
-        
-        String hanjaDicList = (String) cacheMap.get("hanjaDicList");
-        if (hanjaDicList == null ) hanjaDicList = "";
-        
-		return hanjaDicList;
-	}
-
-	/**
 	 * 캐쉬로부터 HanjaDicMap 정보 를 가져온다.
 	 * 
 	 * @param cmmntyId
@@ -178,7 +157,6 @@ public class OcrHanjaService extends EgovAbstractServiceImpl {
 
 		ExcelHanjaDicMapping mapping = new ExcelHanjaDicMapping();
 
-		StringBuffer hanjaDicList = new StringBuffer();
 		HashMap<String, String> hanjaDicMap = new HashMap<String,String>();
 		
 		Workbook workbook = new XSSFWorkbook(fis);
@@ -193,8 +171,10 @@ public class OcrHanjaService extends EgovAbstractServiceImpl {
     			Row row = sheet.getRow(r);
     			if (row != null) {
      				HanjaDicVO vo = (HanjaDicVO)mapping.mappingColumn(row);
-     				hanjaDicList.append(vo.getHanja());
-     				hanjaDicMap.put(vo.getHanja(), vo.getHanjaDic());
+     				String hanja = vo.getHanja();
+     				for(int i=0; i < hanja.length(); i++) {
+     					hanjaDicMap.put(hanja.substring(i, i+1), hanja + ":" + vo.getHanjaDic());
+     				}	
     			}
 			}
 		}
@@ -206,7 +186,6 @@ public class OcrHanjaService extends EgovAbstractServiceImpl {
         	cacheDictionary.put(CacheKey.HANJA_DIC_CACHE, cacheMap);
         }
         
-       	cacheMap.put("hanjaDicList", hanjaDicList.toString());
        	cacheMap.put("hanjaDicMap", hanjaDicMap);
 	}
 

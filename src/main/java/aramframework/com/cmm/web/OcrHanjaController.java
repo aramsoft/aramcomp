@@ -10,7 +10,6 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -126,7 +125,6 @@ public class OcrHanjaController {
 		StringBuffer hanjaText = new StringBuffer();
 		StringBuffer hanjaDicText = new StringBuffer();
 
-		String hanjaDicList = ocrHanjaService.getHanjaDicList();
 		HashMap<String, String> hanjaDicMap = ocrHanjaService.getHanjaDicMap();
 		String foundHanjaList = "";
 		
@@ -136,17 +134,19 @@ public class OcrHanjaController {
 				String hanja = hanjaVO.getHanja();
 				hanjaText.append(hanja);
 				
-				if( foundHanjaList.indexOf(hanja) == -1			// 이미 검출되지 않았고
-					&& hanjaDicList.indexOf(hanja) != -1) {	// 동형이음 대상인 경우
-					for(Map.Entry<String, String> entry : hanjaDicMap.entrySet()) {
-						if(entry.getKey().indexOf(hanja) != -1) {
-							foundHanjaList += entry.getKey();
+				if( foundHanjaList.indexOf(hanja) == -1 ) {	
+					String hanjaDic = hanjaDicMap.get(hanja);
+					if( hanjaDic != null ) {
+						String[] hanjaDicArr = hanjaDic.split(":");
 							
-							hanjaDicText.append(entry.getKey().substring(0,1));
-							hanjaDicText.append(" : ");
-							hanjaDicText.append(entry.getValue());
-							hanjaDicText.append("<br>");
-						}
+						hanjaDicText.append(hanjaDicArr[0].substring(0,1));
+						hanjaDicText.append(" : ");
+						hanjaDicText.append(hanjaDicArr[1]);
+						hanjaDicText.append("<br>");
+
+						foundHanjaList += hanjaDicArr[0];
+					} else {
+						foundHanjaList += hanja;
 					}
 				}
 			}

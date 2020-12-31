@@ -59,7 +59,7 @@ ${hanjaDicText}<br>
 </div>
 
 <div style="margin-top:10px; width:100%; float:right;">
-json_result:<br>
+json_result(for debugging):<br>
 ${responseText}<br>
 </div>
 </c:if>

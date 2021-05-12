@@ -10,7 +10,7 @@
 
 	<properties>
 	    <spring.version>5.2.6.RELEASE</spring.version>
-	    <spring.security.version>5.3.3.RELEASE</spring.security.version>
+	    <spring.security.version>5.3.9.RELEASE</spring.security.version>
 		<egovframework.rte.version>3.9.0</egovframework.rte.version>
 	</properties>
 

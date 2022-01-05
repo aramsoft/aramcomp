@@ -10,7 +10,7 @@
   
    	<typeAliases>
  		<typeAlias alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
- 
+<!--  
   		<typeAlias alias="comCodeVO" 			type="aramframework.com.cmm.domain.ComCodeVO"/>
   		<typeAlias alias="fileVO" 				type="aramframework.com.cmm.domain.FileVO"/>
   		<typeAlias alias="menuVO" 				type="aramframework.com.cmm.domain.MenuVO"/>
@@ -78,10 +78,9 @@
 		<typeAlias alias="mberManageVO" 		type="aramframework.com.uss.umt.domain.MberManageVO"/>
 		<typeAlias alias="emplyrManageVO" 		type="aramframework.com.uss.umt.domain.EmplyrManageVO"/>
 		<typeAlias alias="stplatVO" 			type="aramframework.com.uss.umt.domain.StplatVO"/>
-
-<!-- 
- 		<package name="aramframework"/>
--->		
+-->
+		<package name="aramframework"/>
+		
     </typeAliases>
     
 </configuration>

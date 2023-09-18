@@ -307,7 +307,7 @@
 		<dependency>      
 			<groupId>org.apache.poi</groupId>    
 			<artifactId>poi</artifactId>      
-			<version>4.1.1</version> 
+			<version>3.10.1</version> 
 		</dependency>   
 		<dependency>      
 			<groupId>org.apache.poi</groupId>      
@@ -344,23 +344,6 @@
 		    <version>2.12.7.1</version>
 		</dependency>		
 		<!-- 3rd party 라이브러리로 별도의 설치 필요  -->
-
-		<dependency>
-			<groupId>egovframework.com.ems</groupId>
-			<artifactId>sndng-mail</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/sndng-mail-1.0.jar</systemPath>
-		</dependency>
-
-		<!--  M-Gov (SMS Service API) -->
-		<dependency>
-			<groupId>kr.go.mgov</groupId>
-			<artifactId>smeapi</artifactId>
-			<version>2.3</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/smeapi-2.3.jar</systemPath>
-		</dependency>
 
 	</dependencies>
 	

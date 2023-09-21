@@ -144,7 +144,7 @@
     	<td class="lt_text3"><c:out value="${result.frstRegisterNm}"/></td>
     	</c:if>
     	
-    	<td class="lt_text3"><fmt:formatDate value="${result.frstRegisterPnttm}" pattern="yyyy-MM-dd"/></td>
+    	<td class="lt_text3"><c:out value="${result.frstRegisterPnttm}"/></td>
     	<td class="lt_text3"><c:out value="${result.rdcnt}"/></td>
   	</tr>
  	</c:forEach>

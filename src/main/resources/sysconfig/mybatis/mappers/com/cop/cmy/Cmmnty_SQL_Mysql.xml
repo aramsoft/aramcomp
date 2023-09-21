@@ -216,9 +216,9 @@
 	
 	<select id="selectCommunityMgrMenuInfs" resultType="menuVO" >
 		<![CDATA[
-			SELECT A.MENU_NO				AS "menuNo"
-			     , A.MENU_ALIAS				AS "menuAlias"
-			     , A.MENU_NM				AS "menuNm"
+			SELECT A.MENU_NM				AS "menuNm"
+			     , A.MENU_KNM				AS "menuKnm"
+			     , A.MENU_POS				AS "menuPos"
 			     , A.DIRECT_URL				AS "directUrl" 
 			     , (SELECT B.URL 
 				      FROM COMTN_PROGRM_LIST B 
@@ -229,15 +229,15 @@
 			   AND A.USE_AT = 'Y'
 			   AND A.MGR_AT = 'Y'	
 			   AND A.TOPMENU_AT = 'Y'
-			 ORDER BY A.MENU_NO ASC  	
+			 ORDER BY A.MENU_POS ASC  	
 		]]>	
 	</select>
 		
 	<select id="selectCommunitySubMenuInfs" resultType="menuVO" >
 		<![CDATA[
-			SELECT A.MENU_NO				AS "menuNo"
-			     , A.MENU_ALIAS				AS "menuAlias"
-			     , A.MENU_NM				AS "menuNm"
+			SELECT A.MENU_NM				AS "menuNm"
+			     , A.MENU_KNM				AS "menuKnm"
+			     , A.MENU_POS				AS "menuPos"
 			     , A.DIRECT_URL				AS "directUrl" 
 			     , (SELECT B.URL 
 				      FROM COMTN_PROGRM_LIST B 

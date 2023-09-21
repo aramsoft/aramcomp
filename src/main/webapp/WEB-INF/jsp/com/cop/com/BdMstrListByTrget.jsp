@@ -102,7 +102,7 @@
 		</td>
 		<td class="lt_text3"><c:out value="${result.bbsTyCodeNm}"/></td>
 		<td class="lt_text3"><c:out value="${result.bbsAttrbCodeNm}"/></td>
-		<td class="lt_text3"><fmt:formatDate value="${result.frstRegisterPnttm}" pattern="yyyy-MM-dd"/></td>
+		<td class="lt_text3"><c:out value="${result.frstRegisterPnttm}"/></td>
     	<c:choose>
     	<c:when test="${result.useAt=='Y'}">
 			<td class="lt_text3">

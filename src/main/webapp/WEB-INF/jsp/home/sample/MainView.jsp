@@ -83,7 +83,7 @@
                             </c:choose>
                             </a>
 					    </div>
-					    <div class="notice_righttext"><fmt:formatDate value="${result.frstRegisterPnttm}" pattern="yyyy-MM-dd"/></div>
+					    <div class="notice_righttext"><c:out value="${result.frstRegisterPnttm}"/></div>
 					</li>
 					</c:forEach>
 					</ul>
@@ -118,7 +118,7 @@
                             </c:choose>
                             </a>
                         </div>
-                        <div class="notice_righttext"><fmt:formatDate value="${result.frstRegisterPnttm}" pattern="yyyy-MM-dd"/></div>
+                        <div class="notice_righttext"><c:out value="${result.frstRegisterPnttm}"/></div>
                     </li>
                     </c:forEach>
 					</ul>

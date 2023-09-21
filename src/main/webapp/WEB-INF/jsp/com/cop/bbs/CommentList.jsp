@@ -81,7 +81,7 @@
 			  		<b><c:out value="${result.frstRegisterNm}" /></b>&nbsp;
 			  	</c:otherwise>
 			 	</c:choose>
-				<fmt:formatDate value="${result.frstRegisterPnttm}" pattern="yyyy-MM-dd HH:mm:ss"/><br>
+				<c:out value="${result.frstRegisterPnttm}"/><br>
 				<c:out value="${fn:replace(result.commentCn , crlf , '<br />')}" escapeXml="false" />
 			</div>
 		</td>

@@ -101,7 +101,7 @@
 	   	</td>
 	    <td class="lt_text3"><c:out value="${result.othbcScope}"/></td>
 	    <td class="lt_text3"><c:out value="${result.wrterId}"/></td>
-		<td class="lt_text3"><fmt:formatDate value="${result.frstRegisterPnttm}" pattern="yyyy-MM-dd"/></td>
+		<td class="lt_text3"><c:out value="${result.frstRegisterPnttm}"/></td>
 		<td>
 		<c:if test="${result.wrterId == userId}">
     		<span class="button">

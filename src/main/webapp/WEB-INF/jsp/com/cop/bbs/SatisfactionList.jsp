@@ -90,7 +90,7 @@
 	    			<b><c:out value="${result.frstRegisterNm}" /></b>&nbsp;
 	    		</c:otherwise>
 	    		</c:choose>
-	     		<fmt:formatDate value="${result.frstRegisterPnttm}" pattern="yyyy-MM-dd HH:mm:ss"/><br>
+	     		<c:out value="${result.frstRegisterPnttm}"/><br>
 	     		<c:choose>
 	     		<c:when test="${result.stsfdg == '5'}"><span title="매우만족">★★★★★</span></c:when>
 	     		<c:when test="${result.stsfdg == '4'}"><span title="만족">★★★★☆</span></c:when>

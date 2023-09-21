@@ -92,7 +92,7 @@
     	<td class="lt_text3">
 	   		<span class="link">
 	   		<a href="#" onclick="javascript:fn_aram_detail('<c:out value="${result.smsId}"/>'); return false;">
-    			<fmt:formatDate value="${result.frstRegisterPnttm}" pattern="yyyy-MM-dd HH:mm:ss"/>
+    			<c:out value="${result.frstRegisterPnttm}"/>
 	   		</a>
 	   		</span>
     	</td>

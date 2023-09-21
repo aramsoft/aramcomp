@@ -116,7 +116,7 @@
         <td class="lt_text3"><c:out value="${result.userNm}"/></td>
         <td class="lt_text3"><c:out value="${result.emailAdres}"/></td>
         <td class="lt_text3"><c:out value="${result.areaNo}"/>-<c:out value="${result.middleTelno}"/>-<c:out value="${result.endTelno}"/></td>
-        <td class="lt_text3"><fmt:formatDate value="${result.sbscrbDe}" pattern="yyyy-MM-dd"/></td>
+        <td class="lt_text3"><c:out value="${result.sbscrbDe}"/></td>
         <td class="lt_text3">
             <c:forEach var="mberSttus" items="${COM013_mberSttus}" varStatus="status">
             <c:if test="${result.sttus == mberSttus.code}"><c:out value="${mberSttus.codeNm}"/></c:if>

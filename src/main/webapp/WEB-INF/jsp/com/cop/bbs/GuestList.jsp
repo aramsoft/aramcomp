@@ -74,7 +74,7 @@
 		    </c:otherwise>
 		    </c:choose>
 		    
-		    <fmt:formatDate value="${result.frstRegisterPnttm}" pattern="yyyy-MM-dd HH:mm:ss"/><br>
+		    <c:out value="${result.frstRegisterPnttm}"/><br>
 		    <c:out value="${result.nttCn}" />
 		</td>
 		<td class="lt_text">

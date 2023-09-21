@@ -172,7 +172,7 @@
 				        <c:if test="${anonymous != 'true'}">
 				            <td><c:out value="${result.frstRegisterNm}"/></td>
 				        </c:if>
-				        <td><fmt:formatDate value="${result.frstRegisterPnttm}" pattern="yyyy-MM-dd"/></td>
+				        <td><c:out value="${result.frstRegisterPnttm}"/></td>
 				        <td><c:out value="${result.rdcnt}"/></td>
 				    </tr>
 					</c:forEach> 

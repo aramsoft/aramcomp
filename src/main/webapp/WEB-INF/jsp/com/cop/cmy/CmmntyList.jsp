@@ -98,7 +98,7 @@
 	    </td>
 
 	    <td class="lt_text3"><c:out value="${result.frstRegisterNm}"/></td>
-	    <td class="lt_text3"><fmt:formatDate value="${result.frstRegisterPnttm}" pattern="yyyy-MM-dd"/></td>
+	    <td class="lt_text3"><c:out value="${result.frstRegisterPnttm}"/></td>
 	    <td class="lt_text3">
 	    	<c:if test="${result.useAt == 'N'}"><spring:message code="button.notUsed" /></c:if>
 	    	<c:if test="${result.useAt == 'Y'}"><spring:message code="button.use" /></c:if>

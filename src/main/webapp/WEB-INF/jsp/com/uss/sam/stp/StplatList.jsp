@@ -97,7 +97,7 @@
 			</span>
 		</td>
     	<td class="lt_text3"><c:out value="${result.frstRegisterNm}"/></td>
-		<td class="lt_text3"><fmt:formatDate value="${result.frstRegisterPnttm}" pattern="yyyy-MM-dd"/></td>	
+		<td class="lt_text3"><c:out value="${result.frstRegisterPnttm}"/></td>	
   	</tr>
 	</c:forEach>
 </tbody>

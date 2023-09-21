@@ -28,8 +28,8 @@ public class KomoranService extends EgovAbstractServiceImpl {
      */
     @PostConstruct
     public void init() {
-    	komoran = new Komoran("/home/komoran/models_full");
-//      komoran = new Komoran(DEFAULT_MODEL.LIGHT);
+//    	komoran = new Komoran("/home/komoran/models_full");
+        komoran = new Komoran(DEFAULT_MODEL.LIGHT);
 //		komoran.setFWDic("user_data/fwd.user");
 //		komoran.setUserDic("user_data/dic.user"); 
     }

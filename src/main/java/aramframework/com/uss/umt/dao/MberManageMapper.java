@@ -2,7 +2,7 @@ package aramframework.com.uss.umt.dao;
 
 import java.util.List;
 
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
 import aramframework.com.uss.umt.domain.MberManageVO;
 import aramframework.com.uss.umt.domain.StplatVO;
 

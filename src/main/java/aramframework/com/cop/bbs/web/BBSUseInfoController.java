@@ -19,7 +19,7 @@ import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cop.bbs.domain.BoardUseInfVO;
 import aramframework.com.cop.bbs.service.BBSUseInfoService;
 import aramframework.com.uat.uia.domain.LoginVO;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 게시판의 이용정보를 관리하기 위한 컨트롤러 클래스

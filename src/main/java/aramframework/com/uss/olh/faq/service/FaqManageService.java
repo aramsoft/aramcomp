@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.uss.olh.faq.dao.FaqManageMapper;
 import aramframework.com.uss.olh.faq.domain.FaqManageVO;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.fdl.cmmn.exception.FdlException;
-import egovframework.rte.fdl.idgnr.EgovIdGnrService;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.fdl.cmmn.exception.FdlException;
+import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * FAQ를 처리하는 비즈니스 구현 클래스

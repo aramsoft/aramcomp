@@ -18,7 +18,7 @@
 
 	<!-- MySQL -->
  
-	<bean id="dataSource-Mysql" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	<bean id="dataSource-Mysql" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${Globals.DriverClassName}"/>
 		<property name="url" value="${Globals.Url}" />
 		<property name="username" value="${Globals.UserName}"/>
@@ -28,7 +28,7 @@
 	
 	<!-- Oracle -->
 	<!-- 
-	<bean id="dataSource-Oracle" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	<bean id="dataSource-Oracle" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${Globals.DriverClassName}"/>
 		<property name="url" value="${Globals.Url}" />
 		<property name="username" value="${Globals.UserName}"/>
@@ -38,7 +38,7 @@
 	
 	<!-- Postgres -->
 <!-- 	 
-	<bean id="dataSource-Postgres" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	<bean id="dataSource-Postgres" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${Globals.DriverClassName}"/>
 		<property name="url" value="${Globals.Url}" />
 		<property name="username" value="${Globals.UserName}"/>

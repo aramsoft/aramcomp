@@ -16,7 +16,7 @@ import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.sym.ccm.ccc.domain.CmmnClCodeVO;
 import aramframework.com.sym.ccm.ccc.service.CmmnClCodeManageService;
 import aramframework.com.uat.uia.domain.LoginVO;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 공통분류코드에 관한 요청을 받아 서비스 클래스로 요청을 전달하고 

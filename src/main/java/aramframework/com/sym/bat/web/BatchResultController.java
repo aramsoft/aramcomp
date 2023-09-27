@@ -12,7 +12,7 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.sym.bat.domain.BatchResultVO;
 import aramframework.com.sym.bat.service.BatchResultService;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 배치결과관리에 대한 controller 클래스

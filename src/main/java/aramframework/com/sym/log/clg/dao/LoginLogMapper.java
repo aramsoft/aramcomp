@@ -3,8 +3,8 @@ package aramframework.com.sym.log.clg.dao;
 import java.util.List;
 
 import aramframework.com.sym.log.clg.domain.LoginLogVO;
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 로그인 로그관리를 위한 데이터 접근 클래스

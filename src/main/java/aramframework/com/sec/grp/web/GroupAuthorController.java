@@ -17,7 +17,7 @@ import aramframework.com.sec.arm.domain.AuthorVO;
 import aramframework.com.sec.arm.service.AuthorService;
 import aramframework.com.sec.grp.domain.GroupAuthorVO;
 import aramframework.com.sec.grp.service.GroupAuthorService;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 권한그룹에 관한 controller 클래스를 정의한다.

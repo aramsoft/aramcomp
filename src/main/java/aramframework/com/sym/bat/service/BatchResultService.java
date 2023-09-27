@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.sym.bat.dao.BatchResultMapper;
 import aramframework.com.sym.bat.domain.BatchResultVO;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
 
 /**
  * 배치결과관리에 대한 ServiceImpl 클래스를 정의한다.

@@ -3,8 +3,8 @@ package aramframework.com.uss.sam.stp.dao;
 import java.util.List;
 
 import aramframework.com.uss.sam.stp.domain.StplatManageVO;
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 약관내용을 처리하는 DAO 클래스

@@ -2,7 +2,7 @@ package aramframework.com.cmm.dao;
 
 import java.util.List;
 
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
 import aramframework.com.cmm.domain.ComCodeVO;
 import aramframework.com.cmm.domain.SearchCodeVO;
 

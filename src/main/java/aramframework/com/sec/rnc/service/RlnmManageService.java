@@ -3,7 +3,7 @@ package aramframework.com.sec.rnc.service;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.sec.rnc.socket.EgovSocketClient;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
 
 /**
  * 실명인증관리에 관한비지니스클래스를 정의한다.

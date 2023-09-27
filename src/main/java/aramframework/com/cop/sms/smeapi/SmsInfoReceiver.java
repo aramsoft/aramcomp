@@ -19,7 +19,7 @@ import x3.client.smeapi.impl.SMELogger;
 import aramframework.com.cmm.constant.Globals;
 import aramframework.com.cop.sms.dao.SmsMapper;
 import aramframework.com.cop.sms.domain.SmsRecptnVO;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
 
 /**
  * 문자메시지 연동 결과 수신 처리를 위한 클래스

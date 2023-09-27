@@ -18,7 +18,7 @@ import aramframework.com.cop.ems.service.SndngMailService;
 import aramframework.com.sym.prm.domain.ProgrmManageDtlVO;
 import aramframework.com.sym.prm.service.ProgrmManageDtlService;
 import aramframework.com.uat.uia.domain.LoginVO;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 프로그램목록 관리및 변경을 처리하는 비즈니스 구현 클래스

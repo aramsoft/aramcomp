@@ -3,7 +3,7 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.HashMap"%>
 <%@ page import="java.util.ArrayList"%>
-<%@ page import="egovframework.rte.psl.dataaccess.util.EgovMap"%>
+<%@ page import="org.egovframe.rte.psl.dataaccess.util.EgovMap"%>
 <%@ page import="aramframework.com.cop.smt.sim.domain.SchdulManageVO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>

@@ -2,7 +2,7 @@ package aramframework.com.sym.bat.dao;
 
 import java.util.List;
 
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
 import aramframework.com.sym.bat.domain.BatchResultVO;
 
 /**

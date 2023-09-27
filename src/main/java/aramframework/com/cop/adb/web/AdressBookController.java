@@ -23,8 +23,8 @@ import aramframework.com.cop.adb.domain.AdressBookUserVO;
 import aramframework.com.cop.adb.domain.AdressBookVO;
 import aramframework.com.cop.adb.service.AdressBookService;
 import aramframework.com.uat.uia.domain.LoginVO;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 주소록정보를 관리하기 위한 컨트롤러 클래스

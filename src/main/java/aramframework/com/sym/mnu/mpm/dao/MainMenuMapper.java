@@ -3,8 +3,8 @@ package aramframework.com.sym.mnu.mpm.dao;
 import java.util.List;
 
 import aramframework.com.sym.mnu.mpm.domain.MenuManageVO;
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 메뉴관리, 메뉴생성, 사이트맵 생성에 대한 DAO 클래스를 정의한다.

@@ -1,6 +1,6 @@
 package aramframework.com.uat.uia.dao;
 
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
 import aramframework.com.uat.uia.domain.LoginVO;
 
 /**

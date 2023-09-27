@@ -18,7 +18,7 @@ import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cop.smt.dsm.domain.DiaryManageVO;
 import aramframework.com.cop.smt.dsm.service.DiaryManageService;
 import aramframework.com.uat.uia.domain.LoginVO;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 일지관리를 처리하는 Controller Class 구현

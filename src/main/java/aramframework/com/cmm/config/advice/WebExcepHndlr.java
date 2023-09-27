@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import aramframework.com.cmm.util.LogUtil;
-import egovframework.rte.fdl.cmmn.exception.handler.ExceptionHandler;
+import org.egovframe.rte.fdl.cmmn.exception.handler.ExceptionHandler;
 
 /**
  * 공통서비스의 Web exception 처리 클래스

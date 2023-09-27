@@ -3,8 +3,8 @@ package aramframework.com.uss.olh.faq.dao;
 import java.util.List;
 
 import aramframework.com.uss.olh.faq.domain.FaqManageVO;
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * FAQ를 처리하는 DAO 클래스

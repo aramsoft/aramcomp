@@ -12,7 +12,7 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.sym.sym.bak.domain.BackupResultVO;
 import aramframework.com.sym.sym.bak.service.BackupResultService;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 백업결과관리에 대한 controller 클래스

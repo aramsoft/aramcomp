@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.uss.sam.ipm.dao.IndvdlInfoPolicyMapper;
 import aramframework.com.uss.sam.ipm.domain.IndvdlInfoPolicyVO;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.fdl.cmmn.exception.FdlException;
-import egovframework.rte.fdl.idgnr.EgovIdGnrService;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.fdl.cmmn.exception.FdlException;
+import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 개인정보보호정책를 처리하는 ServiceImpl Class 구현

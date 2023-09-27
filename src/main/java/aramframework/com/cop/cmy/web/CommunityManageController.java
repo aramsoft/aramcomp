@@ -27,7 +27,7 @@ import aramframework.com.cop.com.service.ConfirmService;
 import aramframework.com.cop.com.service.UserInfService;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.utl.fcc.service.DateUtil;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 커뮤니티 정보를 관리하기 위한 컨트롤러 클래스

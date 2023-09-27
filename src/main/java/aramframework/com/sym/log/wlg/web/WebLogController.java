@@ -11,7 +11,7 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.sym.log.wlg.domain.WebLogVO;
 import aramframework.com.sym.log.wlg.service.WebLogService;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 웹 로그정보를 관리하기 위한 컨트롤러 클래스

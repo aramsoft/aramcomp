@@ -17,7 +17,7 @@ import aramframework.com.cop.bbs.domain.SatisfactionVO;
 import aramframework.com.cop.bbs.service.BBSSatisfactionService;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.utl.sim.service.FileScrty;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 만족도 서비스 컨트롤러 클래스

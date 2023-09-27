@@ -22,7 +22,7 @@ import aramframework.com.sym.sym.bak.schedule.BackupScheduler;
 import aramframework.com.sym.sym.bak.service.BackupOpertService;
 import aramframework.com.sym.sym.bak.validation.BackupOpertValidator;
 import aramframework.com.uat.uia.domain.LoginVO;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 백업작업관리에 대한 controller 클래스를 정의한다.

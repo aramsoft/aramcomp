@@ -20,8 +20,8 @@ import aramframework.com.sym.ccm.zip.domain.ZipAramVO;
 import aramframework.com.sym.ccm.zip.domain.ZipVO;
 import aramframework.com.sym.ccm.zip.excel.ExcelZipAramMapping;
 import aramframework.com.sym.ccm.zip.excel.ExcelZipMapping;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 우편번호에 대한 서비스 구현클래스를 정의한다

@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.cop.bbs.dao.BBSUseInfoMapper;
 import aramframework.com.cop.bbs.domain.BoardUseInfVO;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 게시판 이용정보를 관리하기 위한 서비스 구현 클래스

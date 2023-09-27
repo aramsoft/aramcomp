@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.sec.arm.dao.AuthorResourceMapper;
 import aramframework.com.sec.arm.domain.AuthorResourceVO;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 권한별 롤관리에 대한 DAO 클래스를 정의한다.

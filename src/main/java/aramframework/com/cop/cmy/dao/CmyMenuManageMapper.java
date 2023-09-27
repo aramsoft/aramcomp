@@ -3,8 +3,8 @@ package aramframework.com.cop.cmy.dao;
 import java.util.List;
 
 import aramframework.com.cop.cmy.domain.CommunityMenuVO;
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 커뮤니티 메뉴를 관리에 관한 DAO 클래스를 정의한다.

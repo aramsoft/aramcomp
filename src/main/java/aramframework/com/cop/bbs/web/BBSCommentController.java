@@ -17,7 +17,7 @@ import aramframework.com.cop.bbs.domain.CommentVO;
 import aramframework.com.cop.bbs.service.BBSCommentService;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.utl.sim.service.FileScrty;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 댓글관리 서비스 컨트롤러 클래스

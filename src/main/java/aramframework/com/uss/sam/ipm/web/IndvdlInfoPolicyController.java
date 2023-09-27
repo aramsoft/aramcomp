@@ -16,7 +16,7 @@ import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.sam.ipm.domain.IndvdlInfoPolicyVO;
 import aramframework.com.uss.sam.ipm.service.IndvdlInfoPolicyService;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 개인정보보호정책를 처리하는 Controller Class 구현

@@ -17,7 +17,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import aramframework.com.cmm.constant.AramProperties;
 import aramframework.com.cmm.domain.FileVO;
 import aramframework.com.cmm.service.FileMngService;
-import egovframework.rte.fdl.idgnr.EgovIdGnrService;
+import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
 
 /**
  * 파일 업로드/다운로드 유틸리티 컴포넌트 

@@ -1,6 +1,6 @@
 package aramframework.com.cmm.domain;
 
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 조회 base VO 클래스

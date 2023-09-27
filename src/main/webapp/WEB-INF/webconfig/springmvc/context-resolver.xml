@@ -21,7 +21,7 @@
     <alias name="spring.RegularCommonsMultipartResolver" alias="multipartResolver" />
 
 	<!-- For Pagination Tag -->
-	<bean id="paginationManager" class="egovframework.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationManager">
+	<bean id="paginationManager" class="org.egovframe.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationManager">
 		<property name="rendererType">
 			<map>
 				<entry key="image" value-ref="imageRenderer"/>
@@ -77,7 +77,7 @@
 			<props>
 				<prop key="org.springframework.dao.DataAccessException">com/cmm/error/dataAccessFailure</prop>
 				<prop key="org.springframework.transaction.TransactionException">com/cmm/error/dataAccessFailure</prop>
-				<prop key="egovframework.rte.fdl.cmmn.exception.EgovBizException">com/cmm/error/egovBizException</prop>
+				<prop key="org.egovframe.rte.fdl.cmmn.exception.EgovBizException">com/cmm/error/egovBizException</prop>
 				<prop key="org.springframework.web.HttpSessionRequiredException">com/cmm/error/egovHttpSessionException</prop>
 			</props>
 		</property>

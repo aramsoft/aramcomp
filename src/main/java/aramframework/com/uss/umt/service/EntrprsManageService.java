@@ -9,7 +9,7 @@ import aramframework.com.uss.umt.dao.EntrprsManageMapper;
 import aramframework.com.uss.umt.domain.EntrprsManageVO;
 import aramframework.com.uss.umt.domain.StplatVO;
 import aramframework.com.utl.sim.service.FileScrty;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
 
 /**
  * 기업회원관리에 관한 비지니스클래스를 정의한다.

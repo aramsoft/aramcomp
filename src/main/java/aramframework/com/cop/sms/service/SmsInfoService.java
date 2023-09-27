@@ -13,9 +13,9 @@ import aramframework.com.cop.sms.domain.SmsMessageVO;
 import aramframework.com.cop.sms.domain.SmsRecptnVO;
 import aramframework.com.cop.sms.domain.SmsVO;
 import aramframework.com.cop.sms.smeapi.SmsInfoSender;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.fdl.idgnr.EgovIdGnrService;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 문자메시지를 위한 서비스 구현 클래스

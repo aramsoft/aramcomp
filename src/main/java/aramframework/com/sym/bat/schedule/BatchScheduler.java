@@ -22,7 +22,7 @@ import org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean;
 
 import aramframework.com.sym.bat.domain.BatchSchdulVO;
 import aramframework.com.sym.bat.service.BatchSchdulService;
-import egovframework.rte.fdl.idgnr.EgovIdGnrService;
+import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
 
 /**
  * Quartz Scheduler를 실행하는 스케줄러 클래스를 정의한다.

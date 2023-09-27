@@ -4,8 +4,8 @@ import java.util.List;
 
 import aramframework.com.cop.ems.domain.AtchmnFileVO;
 import aramframework.com.cop.ems.domain.SndngMailVO;
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 발송메일 내역을 조회하는 DAO 클래스

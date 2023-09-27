@@ -25,8 +25,8 @@ import aramframework.com.sym.ccm.cde.domain.CmmnDetailCodeVO;
 import aramframework.com.sym.ccm.cde.excel.ExcelCmmnDetailView;
 import aramframework.com.sym.ccm.cde.service.CmmnDetailCodeManageService;
 import aramframework.com.uat.uia.domain.LoginVO;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 공통상세코드에 관한 요청을 받아 서비스 클래스로 요청을 전달하고 

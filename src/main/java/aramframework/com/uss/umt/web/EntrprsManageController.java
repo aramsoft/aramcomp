@@ -24,7 +24,7 @@ import aramframework.com.sec.grp.service.GroupAuthorService;
 import aramframework.com.uss.umt.domain.EntrprsManageVO;
 import aramframework.com.uss.umt.service.EntrprsManageService;
 import aramframework.com.utl.sim.service.FileScrty;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 기업회원관련 요청을 비지니스 클래스로 전달하고 

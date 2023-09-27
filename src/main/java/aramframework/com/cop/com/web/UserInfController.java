@@ -18,7 +18,7 @@ import aramframework.com.cop.com.domain.UserInfVO;
 import aramframework.com.cop.com.service.UserInfService;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.utl.fcc.service.DateUtil;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 협업기능에서 활용하는 사용자 정보 조회용 컨트롤러 클래스

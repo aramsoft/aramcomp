@@ -9,7 +9,7 @@
 
 	<!-- 실행환경에서 빈 이름 참조(AbstractServiceImpl) -->
 	<!-- leaveatrace -->
-	<bean id="leaveaTrace" class="egovframework.rte.fdl.cmmn.trace.LeaveaTrace">
+	<bean id="leaveaTrace" class="org.egovframe.rte.fdl.cmmn.trace.LeaveaTrace">
 		<property name="traceHandlerServices">
 			<list>
 				<ref bean="traceHandlerService" />
@@ -17,7 +17,7 @@
 		</property>
 	</bean>
 
-	<bean id="traceHandlerService" class="egovframework.rte.fdl.cmmn.trace.manager.DefaultTraceHandleManager">
+	<bean id="traceHandlerService" class="org.egovframe.rte.fdl.cmmn.trace.manager.DefaultTraceHandleManager">
 		<property name="reqExpMatcher">
 			<ref bean="antPathMatcher" />
 		</property>
@@ -32,7 +32,7 @@
 			</list>
 		</property>
 	</bean>
-	<bean id="defaultTraceHandler" class="egovframework.rte.fdl.cmmn.trace.handler.DefaultTraceHandler" />
+	<bean id="defaultTraceHandler" class="org.egovframe.rte.fdl.cmmn.trace.handler.DefaultTraceHandler" />
 	
 	<bean id="antPathMatcher" class="org.springframework.util.AntPathMatcher" />
 	

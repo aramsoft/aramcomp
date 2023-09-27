@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.sym.log.ulg.dao.UserLogMapper;
 import aramframework.com.sym.log.ulg.domain.UserLogVO;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 사용자 로그관리를 위한 서비스 구현 클래스

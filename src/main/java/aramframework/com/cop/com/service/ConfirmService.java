@@ -11,8 +11,8 @@ import aramframework.com.cop.cmy.service.CommunityManageService;
 import aramframework.com.cop.com.dao.ConfirmMapper;
 import aramframework.com.cop.com.domain.ConfirmHistoryVO;
 import aramframework.com.utl.fcc.service.DateUtil;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 승인정보를 관리하기 위한 서비스 구현 클래스

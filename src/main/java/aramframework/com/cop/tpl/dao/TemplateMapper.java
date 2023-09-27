@@ -3,8 +3,8 @@ package aramframework.com.cop.tpl.dao;
 import java.util.List;
 
 import aramframework.com.cop.tpl.domain.TemplateInfVO;
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 템플릿 정보관리를 위한 데이터 접근 클래스

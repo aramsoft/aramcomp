@@ -18,7 +18,7 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.sym.prm.domain.ProgrmManageVO;
 import aramframework.com.sym.prm.service.ProgrmManageService;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 프로그램목록 관리및 변경을 처리하는 비즈니스 구현 클래스

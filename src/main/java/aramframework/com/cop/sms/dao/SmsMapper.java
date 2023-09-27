@@ -4,8 +4,8 @@ import java.util.List;
 
 import aramframework.com.cop.sms.domain.SmsRecptnVO;
 import aramframework.com.cop.sms.domain.SmsVO;
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 문자메시지를 위한 데이터 접근 클래스

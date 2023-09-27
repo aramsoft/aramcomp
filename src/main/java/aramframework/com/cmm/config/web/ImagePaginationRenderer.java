@@ -4,7 +4,7 @@ import javax.servlet.ServletContext;
 
 import org.springframework.web.context.ServletContextAware;
 
-import egovframework.rte.ptl.mvc.tags.ui.pagination.AbstractPaginationRenderer;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.AbstractPaginationRenderer;
 
 /**
  * 페이지 정보 네비게이션 표시 라이브러리

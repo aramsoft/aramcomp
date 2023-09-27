@@ -1,9 +1,9 @@
-package egovframework.rte.ptl.mvc.tags.ui;
+package org.egovframe.rte.ptl.mvc.tags.ui;
 
-import egovframework.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationManager;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationManager;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationRenderer;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationManager;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationManager;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationRenderer;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;

@@ -3,8 +3,8 @@ package aramframework.com.uat.uap.dao;
 import java.util.List;
 
 import aramframework.com.uat.uap.domain.LoginPolicyVO;
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 개요

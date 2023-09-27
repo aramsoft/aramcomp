@@ -3,8 +3,8 @@ package aramframework.com.uss.sam.cpy.dao;
 import java.util.List;
 
 import aramframework.com.uss.sam.cpy.domain.CpyrhtPrtcPolicyVO;
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 저작권보호정책내용을 처리하는 비즈니스 구현 클래스

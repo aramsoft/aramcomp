@@ -21,7 +21,7 @@ import aramframework.com.cmm.constant.CacheKey;
 import aramframework.com.cmm.domain.HanjaDicVO;
 import aramframework.com.cmm.domain.ImageVO;
 import aramframework.com.cmm.excel.ExcelHanjaDicMapping;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
 
 
 /**

@@ -3,8 +3,8 @@ package aramframework.com.sym.prm.dao;
 import java.util.List;
 
 import aramframework.com.sym.prm.domain.ProgrmManageVO;
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 프로그램 목록관리및 프로그램변경관리에 대한 DAO 클래스를 정의한다.

@@ -9,9 +9,9 @@ import aramframework.com.sym.mnu.mpm.dao.MenuManageMapper;
 import aramframework.com.sym.mnu.mpm.domain.MenuManageVO;
 import aramframework.com.sym.prm.dao.ProgrmManageDtlMapper;
 import aramframework.com.sym.prm.dao.ProgrmManageMapper;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-//import egovframework.rte.fdl.excel.EgovExcelService;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
+//import org.egovframe.rte.fdl.excel.EgovExcelService;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 메뉴목록관리, 생성, 사이트맵을 처리하는 비즈니스 구현 클래스를 정의한다.

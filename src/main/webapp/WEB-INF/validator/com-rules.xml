@@ -49,7 +49,7 @@
 		3. password3 : 연속된 문자나 순차적인 문자 4개이상 사용금지
 		4. password4 : 반복문자나 숫자 연속 4개이상 사용금지 -->
 		<validator name="password1"
-			classname="egovframework.rte.ptl.mvc.validation.RteFieldChecks"
+			classname="org.egovframe.rte.ptl.mvc.validation.RteFieldChecks"
 			method="validatePassword1"
 			methodParams="java.lang.Object,
                        org.apache.commons.validator.ValidatorAction,
@@ -99,7 +99,7 @@
 		</validator>
 
 		<validator name="password2"
-			classname="egovframework.rte.ptl.mvc.validation.RteFieldChecks"
+			classname="org.egovframe.rte.ptl.mvc.validation.RteFieldChecks"
 			method="validatePassword2"
 			methodParams="java.lang.Object,
                        org.apache.commons.validator.ValidatorAction,
@@ -149,7 +149,7 @@
 		</validator>
 
 		<validator name="password3"
-			classname="egovframework.rte.ptl.mvc.validation.RteFieldChecks"
+			classname="org.egovframe.rte.ptl.mvc.validation.RteFieldChecks"
 			method="validatePassword3"
 			methodParams="java.lang.Object,
                        org.apache.commons.validator.ValidatorAction,
@@ -216,7 +216,7 @@
 		</validator>
 
 		<validator name="password4"
-			classname="egovframework.rte.ptl.mvc.validation.RteFieldChecks"
+			classname="org.egovframe.rte.ptl.mvc.validation.RteFieldChecks"
 			method="validatePassword4"
 			methodParams="java.lang.Object,
                        org.apache.commons.validator.ValidatorAction,
@@ -283,7 +283,7 @@
 		</validator>
 		
 		<validator name="minInteger"
-			classname="egovframework.rte.ptl.mvc.validation.RteFieldChecks"
+			classname="org.egovframe.rte.ptl.mvc.validation.RteFieldChecks"
 			method="validateMinInteger"
 			methodParams="java.lang.Object,
                        org.apache.commons.validator.ValidatorAction,
@@ -353,7 +353,7 @@
 			</javascript>
 		</validator>
 		<validator name="english"
-			classname="egovframework.rte.ptl.mvc.validation.RteFieldChecks"
+			classname="org.egovframe.rte.ptl.mvc.validation.RteFieldChecks"
 			method="validateEnglish"
 			methodParams="java.lang.Object,
                        org.apache.commons.validator.ValidatorAction,

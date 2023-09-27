@@ -15,7 +15,7 @@ import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.sec.grp.domain.GroupVO;
 import aramframework.com.sec.grp.service.GroupService;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 그룹관리에 관한 controller 클래스를 정의한다.

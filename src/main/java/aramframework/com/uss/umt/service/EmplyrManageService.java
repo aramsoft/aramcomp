@@ -10,7 +10,7 @@ import aramframework.com.uss.umt.dao.MberManageMapper;
 import aramframework.com.uss.umt.dao.EmplyrManageMapper;
 import aramframework.com.uss.umt.domain.EmplyrManageVO;
 import aramframework.com.utl.sim.service.FileScrty;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
 
 /**
  * 사용자관리에 관한 비지니스 클래스를 정의한다.

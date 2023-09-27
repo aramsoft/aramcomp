@@ -19,7 +19,7 @@ import aramframework.com.cop.bbs.service.BBSMasterService;
 import aramframework.com.cop.scp.domain.ScrapVO;
 import aramframework.com.cop.scp.service.BBSScrapService;
 import aramframework.com.uat.uia.domain.LoginVO;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 스크랩관리 서비스 컨트롤러 클래스

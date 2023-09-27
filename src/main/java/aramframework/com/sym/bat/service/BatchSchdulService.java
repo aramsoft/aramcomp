@@ -9,9 +9,9 @@ import aramframework.com.sym.bat.dao.BatchResultMapper;
 import aramframework.com.sym.bat.dao.BatchSchdulMapper;
 import aramframework.com.sym.bat.domain.BatchResultVO;
 import aramframework.com.sym.bat.domain.BatchSchdulVO;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.fdl.cmmn.exception.FdlException;
-import egovframework.rte.fdl.idgnr.EgovIdGnrService;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.fdl.cmmn.exception.FdlException;
+import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
 
 /**
  * 배치스케줄관리에 대한 ServiceImpl 클래스를 정의한다.

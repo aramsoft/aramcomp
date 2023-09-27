@@ -3,8 +3,8 @@ package aramframework.com.cop.com.dao;
 import java.util.List;
 
 import aramframework.com.cop.com.domain.UserInfVO;
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 협업 활용 사용자 정보 조회를 위한 데이터 접근 클래스

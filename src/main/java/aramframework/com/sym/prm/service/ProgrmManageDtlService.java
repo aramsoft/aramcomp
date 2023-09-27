@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.sym.prm.dao.ProgrmManageDtlMapper;
 import aramframework.com.sym.prm.domain.ProgrmManageDtlVO;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 프로그램목록관리 및 프로그램변경관리에 관한 비즈니스 구현 클래스를 정의한다.

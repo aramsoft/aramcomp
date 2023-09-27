@@ -21,7 +21,7 @@ import aramframework.com.sym.bat.domain.BatchSchdulVO;
 import aramframework.com.sym.bat.schedule.BatchScheduler;
 import aramframework.com.sym.bat.service.BatchSchdulService;
 import aramframework.com.uat.uia.domain.LoginVO;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 배치스케줄관리에 대한 controller 클래스

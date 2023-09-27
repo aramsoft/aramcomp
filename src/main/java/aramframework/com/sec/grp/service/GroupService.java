@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.sec.grp.dao.GroupMapper;
 import aramframework.com.sec.grp.domain.GroupVO;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.fdl.cmmn.exception.FdlException;
-import egovframework.rte.fdl.idgnr.EgovIdGnrService;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.fdl.cmmn.exception.FdlException;
+import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 그룹관리에 관한 ServiceImpl 클래스를 정의한다.

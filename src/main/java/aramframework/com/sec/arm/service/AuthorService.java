@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.sec.arm.dao.AuthorMapper;
 import aramframework.com.sec.arm.domain.AuthorVO;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 권한관리에 관한 ServiceImpl 클래스를 정의한다.

@@ -5,8 +5,8 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
-import egovframework.rte.fdl.security.userdetails.EgovUserDetails;
-import egovframework.rte.fdl.security.userdetails.jdbc.EgovUsersByUsernameMapping;
+import org.egovframe.rte.fdl.security.userdetails.EgovUserDetails;
+import org.egovframe.rte.fdl.security.userdetails.jdbc.EgovUsersByUsernameMapping;
 import aramframework.com.uat.uia.domain.LoginVO;
 
 /**

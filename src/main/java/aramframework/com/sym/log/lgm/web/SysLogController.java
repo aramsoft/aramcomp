@@ -11,7 +11,7 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.sym.log.lgm.domain.SysLogVO;
 import aramframework.com.sym.log.lgm.service.SysLogService;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 시스템 로그정보를 관리하기 위한 컨트롤러 클래스

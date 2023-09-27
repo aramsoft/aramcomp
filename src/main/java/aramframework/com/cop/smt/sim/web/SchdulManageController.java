@@ -32,7 +32,7 @@ import aramframework.com.sym.cal.domain.RestdeVO;
 import aramframework.com.sym.cal.service.RestdeManageService;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.utl.fcc.service.StringUtil;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 일정관리를 처리하는 Controller Class 구현

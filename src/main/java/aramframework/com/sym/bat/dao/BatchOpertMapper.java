@@ -3,8 +3,8 @@ package aramframework.com.sym.bat.dao;
 import java.util.List;
 
 import aramframework.com.sym.bat.domain.BatchOpertVO;
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 배치작업관리에 대한 DAO 클래스를 정의한다.

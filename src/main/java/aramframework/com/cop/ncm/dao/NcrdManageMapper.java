@@ -4,8 +4,8 @@ import java.util.List;
 
 import aramframework.com.cop.ncm.domain.NameCardUseVO;
 import aramframework.com.cop.ncm.domain.NameCardVO;
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 명함정보를 관리하기 위한 데이터 접근 클래스

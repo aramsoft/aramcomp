@@ -3,8 +3,8 @@ package aramframework.com.sec.dpt.dao;
 import java.util.List;
 
 import aramframework.com.sec.dpt.domain.DeptVO;
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 부서관리에 관한 데이터 접근 클래스를 정의한다.

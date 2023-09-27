@@ -4,8 +4,8 @@ import java.util.List;
 
 import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.cop.smt.sim.domain.SchdulManageVO;
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 일정관리를 처리하는 Dao Class 구현

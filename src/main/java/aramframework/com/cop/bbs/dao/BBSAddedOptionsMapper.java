@@ -1,6 +1,6 @@
 package aramframework.com.cop.bbs.dao;
 
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
 import aramframework.com.cop.bbs.domain.BoardMasterVO;
 
 /**

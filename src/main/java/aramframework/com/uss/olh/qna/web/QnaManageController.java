@@ -18,7 +18,7 @@ import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.olh.qna.domain.QnaManageVO;
 import aramframework.com.uss.olh.qna.service.QnaManageService;
 import aramframework.com.utl.sim.service.FileScrty;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * Q&A를 처리하는 Controller 클래스

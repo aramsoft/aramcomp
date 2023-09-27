@@ -16,7 +16,7 @@ import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.uat.uap.domain.LoginPolicyVO;
 import aramframework.com.uat.uap.service.LoginPolicyService;
 import aramframework.com.uat.uia.domain.LoginVO;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 개요

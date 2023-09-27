@@ -3,8 +3,8 @@ package aramframework.com.sym.log.wlg.dao;
 import java.util.List;
 
 import aramframework.com.sym.log.wlg.domain.WebLogVO;
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 웹 로그관리를 위한 데이터 접근 클래스

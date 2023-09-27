@@ -9,9 +9,9 @@ import aramframework.com.sym.sym.bak.dao.BackupOpertMapper;
 import aramframework.com.sym.sym.bak.dao.BackupResultMapper;
 import aramframework.com.sym.sym.bak.domain.BackupOpertVO;
 import aramframework.com.sym.sym.bak.domain.BackupResultVO;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.fdl.cmmn.exception.FdlException;
-import egovframework.rte.fdl.idgnr.EgovIdGnrService;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.fdl.cmmn.exception.FdlException;
+import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
 
 /**
  * 백업작업관리에 대한 ServiceImpl 클래스를 정의한다.

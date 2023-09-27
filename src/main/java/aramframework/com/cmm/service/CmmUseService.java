@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import aramframework.com.cmm.dao.CmmUseMapper;
 import aramframework.com.cmm.domain.ComCodeVO;
 import aramframework.com.cmm.domain.SearchCodeVO;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
 
 /**
  * 공통코드등 전체 업무에서 공용해서 사용해야 하는 서비스를 정의하기위한 서비스 구현 클래스

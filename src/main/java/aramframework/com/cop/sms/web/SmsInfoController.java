@@ -16,7 +16,7 @@ import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cop.sms.domain.SmsVO;
 import aramframework.com.cop.sms.service.SmsInfoService;
 import aramframework.com.uat.uia.domain.LoginVO;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 문자메시지 서비스 컨트롤러 클래스

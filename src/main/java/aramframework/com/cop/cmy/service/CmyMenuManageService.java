@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 import aramframework.com.cop.cmy.dao.CmyMenuManageMapper;
 import aramframework.com.cop.cmy.domain.CommunityMenuVO;
 import aramframework.com.cop.cmy.excel.ExcelCmyMenuMapping;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 커뮤니티 메뉴를 처리하는 비즈니스 구현 클래스를 정의한다.

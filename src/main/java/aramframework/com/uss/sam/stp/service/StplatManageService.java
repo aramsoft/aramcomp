@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.uss.sam.stp.dao.StplatManageMapper;
 import aramframework.com.uss.sam.stp.domain.StplatManageVO;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.fdl.cmmn.exception.FdlException;
-import egovframework.rte.fdl.idgnr.EgovIdGnrService;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.fdl.cmmn.exception.FdlException;
+import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 약관내용을 처리하는 서비스 구현 클래스

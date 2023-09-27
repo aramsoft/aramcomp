@@ -22,8 +22,8 @@ import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.sym.cal.domain.RestdeVO;
 import aramframework.com.sym.cal.service.RestdeManageService;
 import aramframework.com.uat.uia.domain.LoginVO;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 공휴일에 관한 요청을 받아 서비스 클래스로 요청을 전달하고 

@@ -17,7 +17,7 @@ import aramframework.com.cop.ncm.domain.NameCardUseVO;
 import aramframework.com.cop.ncm.domain.NameCardVO;
 import aramframework.com.cop.ncm.service.NcrdManageService;
 import aramframework.com.uat.uia.domain.LoginVO;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 명함정보를 관리하기 위한 컨트롤러 클래스

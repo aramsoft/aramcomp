@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
 
 import aramframework.com.sym.sym.bak.domain.BackupOpertVO;
 import aramframework.com.sym.sym.bak.service.BackupOpertService;
-import egovframework.rte.fdl.idgnr.EgovIdGnrService;
+import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
 
 /**
  * Quartz Scheduler를 실행하는 스케줄러 클래스를 정의한다.

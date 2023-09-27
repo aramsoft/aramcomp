@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.sym.ccm.ccc.dao.CmmnClCodeManageMapper;
 import aramframework.com.sym.ccm.ccc.domain.CmmnClCodeVO;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 공통분류코드에 대한 서비스 구현클래스를 정의한다

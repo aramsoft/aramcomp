@@ -81,13 +81,13 @@
         </property>
     </bean>
 <!--     
-	<bean class="egovframework.rte.ptl.mvc.bind.annotation.EgovRequestMappingHandlerAdapter">
+	<bean class="org.egovframe.rte.ptl.mvc.bind.annotation.EgovRequestMappingHandlerAdapter">
 		<property name="webBindingInitializer">
 			<bean class="aramframework.com.cmm.config.web.BindingInitializer"/>
 		</property>
 		<property name="customArgumentResolvers">
 			<list>
-                <bean class="egovframework.rte.ptl.mvc.bind.AnnotationCommandMapArgumentResolver" />
+                <bean class="org.egovframe.rte.ptl.mvc.bind.AnnotationCommandMapArgumentResolver" />
 			</list>
 		</property>
         <property name="messageConverters">

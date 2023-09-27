@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import aramframework.com.sym.bat.domain.BatchResultVO;
 import aramframework.com.sym.bat.service.BatchSchdulService;
-import egovframework.rte.fdl.idgnr.EgovIdGnrService;
+import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
 
 /**
  * 배치작업의 실행시작, 완료를 저장하는 Quartz JobListener 클래스를 정의한다.

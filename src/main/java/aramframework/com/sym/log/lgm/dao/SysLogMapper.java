@@ -3,8 +3,8 @@ package aramframework.com.sym.log.lgm.dao;
 import java.util.List;
 
 import aramframework.com.sym.log.lgm.domain.SysLogVO;
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 시스템 로그를 위한 데이터 접근 클래스

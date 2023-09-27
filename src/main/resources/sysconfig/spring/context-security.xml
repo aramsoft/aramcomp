@@ -96,7 +96,7 @@
 	</beans:bean>
 
     <beans:bean id="jdbcUserService"
-        class="egovframework.rte.fdl.security.userdetails.jdbc.EgovJdbcUserDetailsManager" >
+        class="org.egovframe.rte.fdl.security.userdetails.jdbc.EgovJdbcUserDetailsManager" >
 
         <beans:property name="usersByUsernameQuery" value=
         		"SELECT USER_ID, PASSWORD, 1 ENABLED, USER_NM, USER_ZIP,  
@@ -118,19 +118,19 @@
     </beans:bean>
 
     <beans:bean id="hierarchyStrings"
-        class="egovframework.rte.fdl.security.userdetails.hierarchicalroles.HierarchyStringsFactoryBean"
+        class="org.egovframe.rte.fdl.security.userdetails.hierarchicalroles.HierarchyStringsFactoryBean"
         init-method="init">
         <beans:property name="securedObjectService" ref="securedObjectService"/>
     </beans:bean>
 
 	<!-- sql string provider -->
     <beans:bean id="securedObjectService"
-        class="egovframework.rte.fdl.security.securedobject.impl.SecuredObjectServiceImpl">
+        class="org.egovframe.rte.fdl.security.securedobject.impl.SecuredObjectServiceImpl">
         <beans:property name="securedObjectDAO" ref="securedObjectDAO"/>
     </beans:bean>
 
     <beans:bean id="securedObjectDAO" 
-    	class="egovframework.rte.fdl.security.securedobject.impl.SecuredObjectDAO" >
+    	class="org.egovframe.rte.fdl.security.securedobject.impl.SecuredObjectDAO" >
         <beans:property name="dataSource" ref="dataSource"/>
        	<beans:property name="sqlHierarchicalRoles" value=
 				"SELECT a.CHLDRN_ROLE child, a.PARNTS_ROLE parent 
@@ -174,13 +174,13 @@
     </beans:bean>
 
     <beans:bean id="databaseSecurityMetadataSource"
-        class="egovframework.rte.fdl.security.intercept.EgovReloadableFilterInvocationSecurityMetadataSource">
+        class="org.egovframe.rte.fdl.security.intercept.EgovReloadableFilterInvocationSecurityMetadataSource">
         <beans:constructor-arg ref="requestMap" />      
         <beans:property name="securedObjectService" ref="securedObjectService"/>
     </beans:bean>
 
     <beans:bean id="requestMap"
-        class="egovframework.rte.fdl.security.intercept.UrlResourcesMapFactoryBean" init-method="init">
+        class="org.egovframe.rte.fdl.security.intercept.UrlResourcesMapFactoryBean" init-method="init">
         <beans:property name="securedObjectService" ref="securedObjectService"/>
     </beans:bean>
   
@@ -219,7 +219,7 @@
     </beans:bean>
     
     <beans:bean id="methodMap"
-        class="egovframework.rte.fdl.security.intercept.MethodResourcesMapFactoryBean"
+        class="org.egovframe.rte.fdl.security.intercept.MethodResourcesMapFactoryBean"
         init-method="init">
         <beans:property name="securedObjectService" ref="securedObjectService"/>
         <beans:property name="resourceType" value="method"/>
@@ -234,7 +234,7 @@
     </beans:bean>
 
     <beans:bean id="pointcutMap"
-        class="egovframework.rte.fdl.security.intercept.MethodResourcesMapFactoryBean"
+        class="org.egovframe.rte.fdl.security.intercept.MethodResourcesMapFactoryBean"
         init-method="init">
         <beans:property name="securedObjectService" ref="securedObjectService"/>
         <beans:property name="resourceType" value="pointcut"/>

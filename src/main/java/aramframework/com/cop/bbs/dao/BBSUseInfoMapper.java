@@ -3,8 +3,8 @@ package aramframework.com.cop.bbs.dao;
 import java.util.List;
 
 import aramframework.com.cop.bbs.domain.BoardUseInfVO;
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 게시판 이용정보를 관리하기 위한 데이터 접근 클래스

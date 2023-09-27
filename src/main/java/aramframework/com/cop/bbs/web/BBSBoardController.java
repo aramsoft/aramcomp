@@ -37,8 +37,8 @@ import aramframework.com.cop.com.service.UserInfService;
 import aramframework.com.cop.scp.service.BBSScrapService;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.utl.sim.service.FileScrty;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 게시물 관리를 위한 컨트롤러 클래스

@@ -3,8 +3,8 @@ package aramframework.com.uss.sam.ipm.dao;
 import java.util.List;
 
 import aramframework.com.uss.sam.ipm.domain.IndvdlInfoPolicyVO;
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 개인정보보호정책를 처리하는 Dao Class 구현

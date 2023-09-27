@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.uat.uap.dao.LoginPolicyMapper;
 import aramframework.com.uat.uap.domain.LoginPolicyVO;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 개요

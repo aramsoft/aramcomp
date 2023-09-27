@@ -16,7 +16,7 @@
 	</bean>
 	
 	<!-- MapperConfigurer setup for MyBatis Database Layer with @Mapper-->	
- 	<bean class="egovframework.rte.psl.dataaccess.mapper.MapperConfigurer">
+ 	<bean class="org.egovframe.rte.psl.dataaccess.mapper.MapperConfigurer">
 		<property name="basePackage" value="aramframework" />
 	</bean>  
 	

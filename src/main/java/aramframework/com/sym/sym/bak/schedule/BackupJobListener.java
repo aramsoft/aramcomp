@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import aramframework.com.sym.sym.bak.domain.BackupResultVO;
 import aramframework.com.sym.sym.bak.service.BackupOpertService;
-import egovframework.rte.fdl.idgnr.EgovIdGnrService;
+import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
 
 /**
  * 백업작업의 실행시작, 완료를 저장하는 Quartz JobListener 클래스를 정의한다.

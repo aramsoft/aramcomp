@@ -3,8 +3,8 @@ package aramframework.com.sec.rmt.dao;
 import java.util.List;
 
 import aramframework.com.sec.rmt.domain.ResourceVO;
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 자원관리에 대한 DAO 클래스를 정의한다.

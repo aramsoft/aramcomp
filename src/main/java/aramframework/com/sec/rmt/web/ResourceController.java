@@ -17,7 +17,7 @@ import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.service.CmmUseService;
 import aramframework.com.sec.rmt.domain.ResourceVO;
 import aramframework.com.sec.rmt.service.ResourceService;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 자원관리에 관한 controller 클래스를 정의한다.

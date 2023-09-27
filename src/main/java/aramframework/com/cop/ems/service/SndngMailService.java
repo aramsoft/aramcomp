@@ -24,10 +24,10 @@ import aramframework.com.cop.ems.domain.AtchmnFileVO;
 import aramframework.com.cop.ems.domain.SndngMailVO;
 import aramframework.com.utl.sim.service.FileTool;
 import aramframework.com.utl.sim.service.XMLDoc;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.fdl.cmmn.exception.FdlException;
-import egovframework.rte.fdl.idgnr.EgovIdGnrService;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.fdl.cmmn.exception.FdlException;
+import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 메일 솔루션과 연동해서 이용해서 메일을 보내는 서비스 구현 클래스

@@ -17,7 +17,7 @@ import aramframework.com.sym.bat.domain.BatchOpertVO;
 import aramframework.com.sym.bat.service.BatchOpertService;
 import aramframework.com.sym.bat.validation.BatchOpertValidator;
 import aramframework.com.uat.uia.domain.LoginVO;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 배치작업관리에 대한 controller 클래스를 정의한다.

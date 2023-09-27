@@ -16,7 +16,7 @@ import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.sam.cpy.domain.CpyrhtPrtcPolicyVO;
 import aramframework.com.uss.sam.cpy.service.CpyrhtPrtcPolicyService;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 저작권보호정책내용을 처리하는 컨트롤러 클래스

@@ -13,8 +13,8 @@ import aramframework.com.cop.cmy.service.CommunityManageService;
 import aramframework.com.cop.com.dao.UserInfMapper;
 import aramframework.com.cop.com.domain.UserInfVO;
 import aramframework.com.uat.uia.domain.LoginVO;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 협업에서 사용할 사용자 조회 서비스 기능 구현 클래스

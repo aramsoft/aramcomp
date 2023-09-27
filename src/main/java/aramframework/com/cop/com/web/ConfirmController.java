@@ -16,7 +16,7 @@ import aramframework.com.cop.com.domain.ConfirmHistoryVO;
 import aramframework.com.cop.com.service.ConfirmService;
 import aramframework.com.cop.com.service.UserInfService;
 import aramframework.com.uat.uia.domain.LoginVO;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 승인정보 관리를 위한 컨트롤러 클래스

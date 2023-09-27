@@ -28,7 +28,7 @@ import aramframework.com.cop.cmy.excel.ExcelCmyMenuView;
 import aramframework.com.cop.cmy.service.CmyMenuManageService;
 import aramframework.com.cop.com.service.UserInfService;
 import aramframework.com.sym.prm.service.ProgrmManageService;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 커뮤니티메뉴정보를 관리하기 위한 컨트롤러 클래스

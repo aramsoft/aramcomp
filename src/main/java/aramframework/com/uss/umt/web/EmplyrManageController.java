@@ -22,7 +22,7 @@ import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.umt.domain.EmplyrManageVO;
 import aramframework.com.uss.umt.service.EmplyrManageService;
 import aramframework.com.utl.sim.service.FileScrty;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 업무사용자관련 요청을 비지니스 클래스로 전달하고 

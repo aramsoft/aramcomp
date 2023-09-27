@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 
 import aramframework.com.sym.bat.dao.BatchOpertMapper;
 import aramframework.com.sym.bat.domain.BatchOpertVO;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.fdl.cmmn.exception.FdlException;
-import egovframework.rte.fdl.idgnr.EgovIdGnrService;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.fdl.cmmn.exception.FdlException;
+import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 배치작업관리에 대한 ServiceImpl 클래스를 정의한다.

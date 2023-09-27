@@ -3,8 +3,8 @@ package aramframework.com.sym.ccm.cca.dao;
 import java.util.List;
 
 import aramframework.com.sym.ccm.cca.domain.CmmnCodeVO;
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * 공통코드에 대한 데이터 접근 클래스를 정의한다

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.sec.arm.domain.AuthorResourceVO;
 import aramframework.com.sec.arm.service.AuthorResourceService;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 권한별 롤관리에 관한 controller 클래스를 정의한다.

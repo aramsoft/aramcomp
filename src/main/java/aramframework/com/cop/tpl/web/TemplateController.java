@@ -19,7 +19,7 @@ import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cop.tpl.domain.TemplateInfVO;
 import aramframework.com.cop.tpl.service.TemplateService;
 import aramframework.com.uat.uia.domain.LoginVO;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 템플릿 관리를 위한 컨트롤러 클래스

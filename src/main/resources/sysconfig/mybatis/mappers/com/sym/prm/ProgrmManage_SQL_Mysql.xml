@@ -10,11 +10,11 @@
 			 	 , PROGRM_KOREAN_NM  		AS "progrmKoreanNm"
 				 , URL           			AS "URL"   
 			  FROM COMTN_PROGRM_LIST
-			 WHERE (PROGRM_FILE_NM like  '%'|| #{searchKeyword}||'%'
-			 	    OR PROGRM_KOREAN_NM like  '%'|| #{searchKeyword}||'%')
+			 WHERE (PROGRM_FILE_NM like  CONCAT('%',#{searchKeyword},'%')
+			 	    OR PROGRM_KOREAN_NM like  CONCAT('%',#{searchKeyword},'%'))
         ]]>
      	<if test='searchUseAt != null and searchUseAt != ""'>
-				<![CDATA[ AND CMMNTY_USE_AT = #{searchUseAt} ]]>
+			   AND CMMNTY_USE_AT = #{searchUseAt}
 		</if>
 		<![CDATA[
 			 ORDER BY URL ASC
@@ -30,11 +30,11 @@
 		<![CDATA[
 			SELECT COUNT(*) AS "totcnt"
 			  FROM COMTN_PROGRM_LIST
-			 WHERE (PROGRM_FILE_NM like  '%'|| #{searchKeyword}||'%'
-			 	    OR PROGRM_KOREAN_NM like  '%'|| #{searchKeyword}||'%')
+			 WHERE (PROGRM_FILE_NM like  CONCAT('%',#{searchKeyword},'%')
+			 	    OR PROGRM_KOREAN_NM like  CONCAT('%',#{searchKeyword},'%'))
         ]]>
       	<if test='searchUseAt != null and searchUseAt != ""'>
-				<![CDATA[ AND CMMNTY_USE_AT = #{searchUseAt} ]]>
+			   AND CMMNTY_USE_AT = #{searchUseAt}
 		</if>
 	</select>
 

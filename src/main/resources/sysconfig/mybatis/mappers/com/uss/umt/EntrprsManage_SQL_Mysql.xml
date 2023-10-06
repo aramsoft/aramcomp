@@ -21,15 +21,15 @@
 	         WHERE 1=1
         ]]>
      	<if test='sbscrbSttus != 0 '>
-               	<![CDATA[ AND ENTRPRS_MBER_STTUS LIKE  #{sbscrbSttus} ]]>
+               	AND ENTRPRS_MBER_STTUS LIKE  #{sbscrbSttus}
 		</if>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "ENTRPRS_MBER_ID"'>
-                <![CDATA[ AND ENTRPRS_MBER_ID LIKE #{searchKeyword} ]]> 
+                AND ENTRPRS_MBER_ID LIKE #{searchKeyword}  
             </when>
             <when test='searchCondition == "APPLCNT_NM"'>
-                <![CDATA[ AND APPLCNT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND APPLCNT_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>
@@ -50,15 +50,15 @@
 	         WHERE 1=1
         ]]>			
      	<if test='sbscrbSttus != 0 '>
-               	<![CDATA[ AND ENTRPRS_MBER_STTUS LIKE  #{sbscrbSttus} ]]>
+               	AND ENTRPRS_MBER_STTUS LIKE  #{sbscrbSttus}
 		</if>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "ENTRPRS_MBER_ID"'>
-                <![CDATA[ AND ENTRPRS_MBER_ID LIKE #{searchKeyword} ]]> 
+                AND ENTRPRS_MBER_ID LIKE #{searchKeyword}  
             </when>
             <when test='searchCondition == "APPLCNT_NM"'>
-                <![CDATA[ AND APPLCNT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND APPLCNT_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>

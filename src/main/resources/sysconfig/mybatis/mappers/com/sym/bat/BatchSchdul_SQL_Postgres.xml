@@ -38,10 +38,10 @@
        	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "BATCH_OPERT_NM"'>
-                 <![CDATA[ AND B.BATCH_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                 AND B.BATCH_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "BATCH_PROGRM"'>
-                 <![CDATA[ AND B.BATCH_PROGRM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                 AND B.BATCH_PROGRM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
@@ -69,10 +69,10 @@
        	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "BATCH_OPERT_NM"'>
-                 <![CDATA[ AND B.BATCH_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                 AND B.BATCH_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "BATCH_PROGRM"'>
-                 <![CDATA[ AND B.BATCH_PROGRM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                 AND B.BATCH_PROGRM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>

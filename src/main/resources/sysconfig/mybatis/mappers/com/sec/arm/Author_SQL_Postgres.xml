@@ -26,7 +26,7 @@
              WHERE 1=1
         ]]>              
      	<if test='searchKeyword != null and searchKeyword != ""'>
-        		<![CDATA[ AND AUTHOR_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>    
+        		AND AUTHOR_NM LIKE '%'|| #{searchKeyword} ||'%'
 		</if>
         <![CDATA[            
             ORDER BY AUTHOR_CREAT_DE DESC
@@ -45,7 +45,7 @@
              WHERE 1=1
         ]]>			
      	<if test='searchKeyword != null and searchKeyword != ""'>
-        		<![CDATA[ AND AUTHOR_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>    
+        		AND AUTHOR_NM LIKE '%'|| #{searchKeyword} ||'%'   
 		</if>
     </select>
     

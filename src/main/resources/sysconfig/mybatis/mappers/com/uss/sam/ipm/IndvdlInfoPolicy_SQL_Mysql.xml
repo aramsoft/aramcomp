@@ -21,10 +21,10 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "INDVDL_INFO_POLICY_NM"'>
-                <![CDATA[ AND INDVDL_INFO_POLICY_NM  LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND INDVDL_INFO_POLICY_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "INDVDL_INFO_POLICY_CN"'>
-                <![CDATA[ AND INDVDL_INFO_POLICY_CN  LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND INDVDL_INFO_POLICY_CN LIKE CONCAT('%',#{searchKeyword},'%') 
             </when>
         </choose>
 		</if>
@@ -47,10 +47,10 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "INDVDL_INFO_POLICY_NM"'>
-                <![CDATA[ AND INDVDL_INFO_POLICY_NM  LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND INDVDL_INFO_POLICY_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "INDVDL_INFO_POLICY_CN"'>
-                <![CDATA[ AND INDVDL_INFO_POLICY_CN  LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND INDVDL_INFO_POLICY_CN LIKE CONCAT('%',#{searchKeyword},'%') 
             </when>
         </choose>
 		</if>

@@ -20,15 +20,15 @@
 	         WHERE 1=1
         ]]>
     	<if test='sbscrbSttus != 0 '>
-               	<![CDATA[ AND EMPLYR_STTUS_CODE LIKE  #{sbscrbSttus} ]]>
+               	AND EMPLYR_STTUS_CODE LIKE  #{sbscrbSttus}
 		</if>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "EMPLYR_ID"'>
-                <![CDATA[ AND EMPLYR_ID LIKE #{searchKeyword} ]]> 
+                AND EMPLYR_ID LIKE #{searchKeyword} 
             </when>
             <when test='searchCondition == "USER_NM"'>
-                <![CDATA[ AND USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND USER_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
@@ -49,15 +49,15 @@
              WHERE 1=1
         ]]>			
     	<if test='sbscrbSttus != 0 '>
-               	<![CDATA[ AND EMPLYR_STTUS_CODE LIKE  #{sbscrbSttus} ]]>
+               	AND EMPLYR_STTUS_CODE LIKE  #{sbscrbSttus} 
 		</if>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "EMPLYR_ID"'>
-                <![CDATA[ AND EMPLYR_ID LIKE #{searchKeyword} ]]> 
+                AND EMPLYR_ID LIKE #{searchKeyword} 
             </when>
             <when test='searchCondition == "USER_NM"'>
-                <![CDATA[ AND USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND USER_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>

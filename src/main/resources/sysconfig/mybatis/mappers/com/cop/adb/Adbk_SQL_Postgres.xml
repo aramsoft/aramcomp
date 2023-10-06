@@ -23,13 +23,13 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "ADBK_NM"'>
-             	<![CDATA[ AND ADBK_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND ADBK_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "OTHBC_SCOPE"'>
-             	<![CDATA[ AND OTHBC_SCOPE LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND OTHBC_SCOPE LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "WRTER_ID"'>
-             	<![CDATA[ AND WRTER_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND WRTER_ID LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
@@ -56,13 +56,13 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "ADBK_NM"'>
-             	<![CDATA[ AND ADBK_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND ADBK_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "OTHBC_SCOPE"'>
-             	<![CDATA[ AND OTHBC_SCOPE LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND OTHBC_SCOPE LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "WRTER_ID"'>
-             	<![CDATA[ AND WRTER_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND WRTER_ID LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>

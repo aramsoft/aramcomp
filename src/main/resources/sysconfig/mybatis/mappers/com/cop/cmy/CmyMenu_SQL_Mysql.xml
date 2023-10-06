@@ -14,7 +14,7 @@
 				 , TOPMENU_AT    			AS "topMenuAt"
 		 	  FROM COMTN_CMMNTY_MENU 
 			 WHERE TRGET_ID = #{trgetId}
-			   AND MENU_NM like '%'|| #{searchKeyword}||'%'
+			   AND MENU_NM like CONCAT('%',#{searchKeyword},'%')
 			 ORDER BY MENU_POS ASC 
 		 ]]>
         /* 구현 Sql */
@@ -29,7 +29,7 @@
 			SELECT COUNT(MENU_NM) AS "totcnt"
 			  FROM COMTN_CMMNTY_MENU
 			 WHERE TRGET_ID = #{trgetId}
-			   AND MENU_NM like '%'|| #{searchKeyword}||'%'
+			   AND MENU_NM like CONCAT('%',#{searchKeyword},'%')
 		]]>
 	</select>
 

@@ -26,13 +26,13 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "CODE_ID"'>
-				<![CDATA[ AND A.CODE_ID = #{searchKeyword} ]]>
+				AND A.CODE_ID = #{searchKeyword} 
             </when>
             <when test='searchCondition == "CODE"'>
-				<![CDATA[ AND A.CODE = #{searchKeyword} ]]>
+				AND A.CODE = #{searchKeyword} 
             </when>
             <when test='searchCondition == "CODE_NM"'>
-				<![CDATA[ AND A.CODE_NM LIKE '%'||#{searchKeyword}||'%']]>
+				AND A.CODE_NM LIKE '%'||#{searchKeyword}||'%'
             </when>
         </choose>
 		</if>
@@ -59,13 +59,13 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "CODE_ID"'>
-				<![CDATA[ AND A.CODE_ID = #{searchKeyword} ]]>
+				AND A.CODE_ID = #{searchKeyword}
             </when>
             <when test='searchCondition == "CODE"'>
-				<![CDATA[ AND A.CODE = #{searchKeyword} ]]>
+				AND A.CODE = #{searchKeyword}
             </when>
             <when test='searchCondition == "CODE_NM"'>
-				<![CDATA[ AND A.CODE_NM LIKE '%'||#{searchKeyword}||'%']]>
+				AND A.CODE_NM LIKE '%'||#{searchKeyword}||'%'
             </when>
         </choose>
 		</if>
@@ -87,13 +87,13 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "CODE_ID"'>
-				<![CDATA[ AND A.CODE_ID = #{searchKeyword} ]]>
+				AND A.CODE_ID = #{searchKeyword} 
             </when>
             <when test='searchCondition == "CODE"'>
-				<![CDATA[ AND A.CODE = #{searchKeyword} ]]>
+				AND A.CODE = #{searchKeyword} 
             </when>
             <when test='searchCondition == "CODE_NM"'>
-				<![CDATA[ AND A.CODE_NM LIKE '%'||#{searchKeyword}||'%']]>
+				AND A.CODE_NM LIKE '%'||#{searchKeyword}||'%'
             </when>
         </choose>
 		</if>

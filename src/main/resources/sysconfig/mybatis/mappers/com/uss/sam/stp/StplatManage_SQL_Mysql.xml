@@ -19,10 +19,10 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "USE_STPLAT_NM"'>
-                <![CDATA[ AND USE_STPLAT_NM  LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND USE_STPLAT_NM  LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "USE_STPLAT_CN"'>
-                <![CDATA[ AND USE_STPLAT_CN  LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND USE_STPLAT_CN  LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>
@@ -44,10 +44,10 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "USE_STPLAT_NM"'>
-                <![CDATA[ AND USE_STPLAT_NM  LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND USE_STPLAT_NM  LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "USE_STPLAT_CN"'>
-                <![CDATA[ AND USE_STPLAT_CN  LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND USE_STPLAT_CN  LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>

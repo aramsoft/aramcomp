@@ -26,10 +26,10 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "ENTRPRS_MBER_ID"'>
-                <![CDATA[ AND ENTRPRS_MBER_ID LIKE #{searchKeyword} ]]> 
+                AND ENTRPRS_MBER_ID LIKE #{searchKeyword} 
             </when>
             <when test='searchCondition == "APPLCNT_NM"'>
-                <![CDATA[ AND APPLCNT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND APPLCNT_NM LIKE '%'|| #{searchKeyword} ||'%' 
             </when>
         </choose>
 		</if>

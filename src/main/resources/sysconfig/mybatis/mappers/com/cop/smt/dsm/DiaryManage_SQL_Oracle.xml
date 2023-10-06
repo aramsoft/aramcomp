@@ -31,13 +31,13 @@
   	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "DIARY_NM"'>
-             	<![CDATA[ AND A.DIARY_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND A.DIARY_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "DRCT_MATTER"'>
-             	<![CDATA[ AND A.DRCT_MATTER LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND A.DRCT_MATTER LIKE '%'|| #{searchKeyword} ||'%' 
             </when>
             <when test='searchCondition == "PARTCLR_MATTER"'>
-             	<![CDATA[ AND A.PARTCLR_MATTER LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND A.PARTCLR_MATTER LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
@@ -62,13 +62,13 @@
   	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "DIARY_NM"'>
-             	<![CDATA[ AND A.DIARY_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND A.DIARY_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "DRCT_MATTER"'>
-             	<![CDATA[ AND A.DRCT_MATTER LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND A.DRCT_MATTER LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "PARTCLR_MATTER"'>
-             	<![CDATA[ AND A.PARTCLR_MATTER LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND A.PARTCLR_MATTER LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>

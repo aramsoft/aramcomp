@@ -20,12 +20,12 @@
 		     WHERE 1=1   			
 		]]>					
   	    <if test='trgetId != null and trgetId != ""'>
-		   		<![CDATA[ AND TRGET_ID = #{trgetId} ]]>
+		   	   AND TRGET_ID = #{trgetId}
 		</if>
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "QESTN_SJ"'>
-                <![CDATA[ AND QESTN_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
+               AND QESTN_SJ LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
@@ -47,12 +47,12 @@
 			 WHERE 1=1
 		]]>			
   	    <if test='trgetId != null and trgetId != ""'>
-		   		<![CDATA[ AND TRGET_ID = #{trgetId} ]]>
+		   	   AND TRGET_ID = #{trgetId}
 		</if>
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "QESTN_SJ"'>
-                <![CDATA[ AND QESTN_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
+               AND QESTN_SJ LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>

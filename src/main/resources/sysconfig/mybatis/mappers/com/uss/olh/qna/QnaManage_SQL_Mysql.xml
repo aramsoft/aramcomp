@@ -20,15 +20,15 @@
 		     WHERE 1=1
 		]]>
 	    <if test='trgetId != null and trgetId != ""'>
-		   		<![CDATA[ AND A.TRGET_ID = #{trgetId} ]]>
+		   	   AND A.TRGET_ID = #{trgetId} 
 		</if>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "WRTER_NM"'>
-                <![CDATA[ AND A.WRTER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+               AND A.WRTER_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "QESTN_SJ"'>
-                <![CDATA[ AND A.QESTN_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
+               AND A.QESTN_SJ LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>
@@ -54,13 +54,16 @@
 	    <if test='trgetId != null and trgetId != ""'>
 		   		<![CDATA[ AND A.TRGET_ID = #{trgetId} ]]>
 		</if>
+	    <if test='trgetId != null and trgetId != ""'>
+		   	   AND A.TRGET_ID = #{trgetId} 
+		</if>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "WRTER_NM"'>
-                <![CDATA[ AND A.WRTER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+               AND A.WRTER_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "QESTN_SJ"'>
-                <![CDATA[ AND A.QESTN_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
+               AND A.QESTN_SJ LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>
@@ -210,15 +213,15 @@
 		     WHERE 1=1
 		]]>
  	    <if test='trgetId != null and trgetId != ""'>
-		   		<![CDATA[ AND A.TRGET_ID = #{trgetId} ]]>
+		   		AND A.TRGET_ID = #{trgetId} 
 		</if>
      	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "WRTER_NM"'>
-                <![CDATA[ AND A.WRTER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND A.WRTER_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "QNA_PROCESS_STTUS"'>
-                <![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND B.CODE_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>
@@ -242,15 +245,15 @@
 			 WHERE 1=1
 		]]>
  	    <if test='trgetId != null and trgetId != ""'>
-		   		<![CDATA[ AND A.TRGET_ID = #{trgetId} ]]>
+		   		AND A.TRGET_ID = #{trgetId} 
 		</if>
      	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "WRTER_NM"'>
-                <![CDATA[ AND A.WRTER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND A.WRTER_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "QNA_PROCESS_STTUS"'>
-                <![CDATA[ AND B.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND B.CODE_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>

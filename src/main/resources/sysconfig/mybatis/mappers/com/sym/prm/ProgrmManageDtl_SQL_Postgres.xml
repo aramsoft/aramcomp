@@ -141,18 +141,18 @@
       	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "1"'>
-				<![CDATA[ AND PROCESS_STTUS_CODE like '%'||#{searchKeyword}||'%' ]]>
+				AND PROCESS_STTUS_CODE like '%'||#{searchKeyword}||'%'
             </when>
             <when test='searchCondition == "2"'>
-				<![CDATA[ AND PROCESS_STTUS_CODE = #{searchKeyword}]]>
+				AND PROCESS_STTUS_CODE = #{searchKeyword}
             </when>
             <when test='searchCondition == "4"'>
-				<![CDATA[ AND REQUSTER_ID like  '%'||#{searchKeyword}||'%']]>
+				AND REQUSTER_ID like  '%'||#{searchKeyword}||'%'
             </when>
         </choose>
 		</if>
 	    <if test='searchCondition == "3"'>
-				<![CDATA[ AND REQUST_DE between #{searchKeywordFrom} and #{searchKeywordTo} ]]>
+				AND REQUST_DE between #{searchKeywordFrom} and #{searchKeywordTo}
         </if>
         <![CDATA[   
              ORDER BY REQUST_NO ASC

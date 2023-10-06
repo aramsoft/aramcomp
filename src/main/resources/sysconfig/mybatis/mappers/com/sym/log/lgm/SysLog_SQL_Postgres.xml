@@ -23,10 +23,10 @@
 			 WHERE 1=1
 		]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
-            <![CDATA[ AND a.CODE_NM LIKE '%'||#{searchKeyword}||'%' ]]>
+               AND a.CODE_NM LIKE '%'||#{searchKeyword}||'%' 
 		</if>
      	<if test='searchBgnDe != null and searchBgnDe != ""'>
-			<![CDATA[ AND a.OCCRRNC_DE BETWEEN #{searchBgnDe} AND #{searchEndDe} ]]>
+			   AND a.OCCRRNC_DE BETWEEN #{searchBgnDe} AND #{searchEndDe}
 		</if>
 		<![CDATA[
 			 ORDER BY a.OCCRRNC_DE DESC

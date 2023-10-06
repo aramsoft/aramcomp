@@ -20,19 +20,19 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "ZIP"'>
-                 <![CDATA[ AND ZIP LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                 AND ZIP LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "CTPRVN_NM"'>
-                 <![CDATA[ AND CTPRVN_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                 AND CTPRVN_NM LIKE CONCAT('%',#{searchKeyword},'%') 
             </when>
             <when test='searchCondition == "SIGNGU_NM"'>
-                 <![CDATA[ AND SIGNGU_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                 AND SIGNGU_NM LIKE CONCAT('%',#{searchKeyword},'%') 
             </when>
             <when test='searchCondition == "EMD_NM"'>
-                 <![CDATA[ AND EMD_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                 AND EMD_NM LIKE CONCAT('%',#{searchKeyword},'%') 
             </when>
             <when test='searchCondition == "LI_BULD_NM"'>
-                 <![CDATA[ AND LI_BULD_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                 AND LI_BULD_NM LIKE CONCAT('%',#{searchKeyword},'%') 
             </when>
         </choose>
         </if>
@@ -52,19 +52,19 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "ZIP"'>
-                 <![CDATA[ AND ZIP LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                 AND ZIP LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "CTPRVN_NM"'>
-                 <![CDATA[ AND CTPRVN_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                 AND CTPRVN_NM LIKE CONCAT('%',#{searchKeyword},'%') 
             </when>
             <when test='searchCondition == "SIGNGU_NM"'>
-                 <![CDATA[ AND SIGNGU_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                 AND SIGNGU_NM LIKE CONCAT('%',#{searchKeyword},'%') 
             </when>
             <when test='searchCondition == "EMD_NM"'>
-                 <![CDATA[ AND EMD_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                 AND EMD_NM LIKE CONCAT('%',#{searchKeyword},'%') 
             </when>
             <when test='searchCondition == "LI_BULD_NM"'>
-                 <![CDATA[ AND LI_BULD_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                 AND LI_BULD_NM LIKE CONCAT('%',#{searchKeyword},'%') 
             </when>
         </choose>
         </if>

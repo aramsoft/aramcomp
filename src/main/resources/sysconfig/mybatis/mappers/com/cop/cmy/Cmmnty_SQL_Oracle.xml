@@ -61,7 +61,7 @@
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "CMMNTY_NM"'>
-             	<![CDATA[ AND a.CMMNTY_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND a.CMMNTY_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
@@ -92,7 +92,7 @@
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "CMMNTY_NM"'>
-             	<![CDATA[ AND a.CMMNTY_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND a.CMMNTY_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>

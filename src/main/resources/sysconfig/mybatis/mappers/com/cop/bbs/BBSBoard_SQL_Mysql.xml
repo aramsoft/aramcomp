@@ -27,13 +27,13 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "NTT_SJ"'>
-             	<![CDATA[ AND a.NTT_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND a.NTT_SJ LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "NTT_CN"'>
-             	<![CDATA[ AND a.NTT_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND a.NTT_CN LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "USER_NM"'>
-             	<![CDATA[ AND b.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND b.USER_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>
@@ -55,16 +55,16 @@
 						ON a.FRST_REGISTER_ID = b.USER_ID 
 			 WHERE a.BBS_ID = #{bbsId}
 		]]>
-    	<if test='searchKeyword != null and searchKeyword != ""'>
+     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "NTT_SJ"'>
-             	<![CDATA[ AND a.NTT_SJ LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND a.NTT_SJ LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "NTT_CN"'>
-             	<![CDATA[ AND a.NTT_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND a.NTT_CN LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "USER_NM"'>
-             	<![CDATA[ AND b.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND b.USER_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>

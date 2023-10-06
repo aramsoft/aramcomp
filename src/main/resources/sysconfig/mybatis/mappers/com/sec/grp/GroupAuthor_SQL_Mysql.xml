@@ -42,13 +42,13 @@
       	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "USER_ID"'>
-                 <![CDATA[ AND A.USER_ID LIKE '%'|| #{searchKeyword} ||'%' ]]> 
+                 AND A.USER_ID LIKE CONCAT('%',#{searchKeyword},'%')  
             </when>
             <when test='searchCondition == "USER_NM"'>
-                 <![CDATA[ AND A.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]> 
+                 AND A.USER_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "GROUP_ID"'>
-                 <![CDATA[ AND A.GROUP_ID = #{searchKeyword} ]]> 
+                 AND A.GROUP_ID = #{searchKeyword} 
             </when>
         </choose>
 		</if>
@@ -87,13 +87,13 @@
       	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "USER_ID"'>
-                 <![CDATA[ AND A.USER_ID LIKE '%'|| #{searchKeyword} ||'%' ]]> 
+                 AND A.USER_ID LIKE CONCAT('%',#{searchKeyword},'%')  
             </when>
             <when test='searchCondition == "USER_NM"'>
-                 <![CDATA[ AND A.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]> 
+                 AND A.USER_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "GROUP_ID"'>
-                 <![CDATA[ AND A.GROUP_ID = #{searchKeyword} ]]> 
+                 AND A.GROUP_ID = #{searchKeyword} 
             </when>
         </choose>
 		</if>

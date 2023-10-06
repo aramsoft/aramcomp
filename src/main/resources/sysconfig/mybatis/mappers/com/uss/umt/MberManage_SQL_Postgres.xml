@@ -25,10 +25,10 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "MBER_ID"'>
-                <![CDATA[ AND MBER_ID LIKE #{searchKeyword} ]]>	 
+                AND MBER_ID LIKE #{searchKeyword} 	 
             </when>
             <when test='searchCondition == "MBER_NM"'>
-                <![CDATA[ AND MBER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>	
+                AND MBER_NM LIKE '%'|| #{searchKeyword} ||'%' 	
             </when>
         </choose>
 		</if>
@@ -49,15 +49,15 @@
              WHERE 1=1
         ]]>			
     	<if test='sbscrbSttus != 0 '>
-                <![CDATA[ AND MBER_STTUS LIKE  #{sbscrbSttus} ]]>	
+                AND MBER_STTUS LIKE  #{sbscrbSttus}
 		</if>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "MBER_ID"'>
-                <![CDATA[ AND MBER_ID LIKE #{searchKeyword} ]]>	 
+                AND MBER_ID LIKE #{searchKeyword} 	 
             </when>
             <when test='searchCondition == "MBER_NM"'>
-                <![CDATA[ AND MBER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>	
+                AND MBER_NM LIKE '%'|| #{searchKeyword} ||'%'	
             </when>
         </choose>
 		</if>

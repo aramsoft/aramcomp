@@ -12,7 +12,7 @@
 				 , MENU_DC           		AS "menuDc"
 				 , PROGRM_FILE_NM    		AS "progrmFileNm"
 		 	  FROM COMTN_MENU_INFO 
-			 WHERE MENU_NM like '%'||#{searchKeyword}||'%'
+			 WHERE MENU_NM like CONCAT('%',#{searchKeyword},'%')
 		 ]]>
         /* 구현 Sql */
         <![CDATA[
@@ -25,7 +25,7 @@
 		<![CDATA[
 			SELECT COUNT(MENU_NO) AS "totcnt"
 			  FROM COMTN_MENU_INFO
-			 WHERE MENU_NM like '%'||#{searchKeyword}||'%'
+			 WHERE MENU_NM like CONCAT('%',#{searchKeyword},'%')
 		]]>
 	</select>
 

@@ -24,10 +24,10 @@
 			 WHERE 1 = 1
 		]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
-            <![CDATA[ AND a.CONECT_MTHD LIKE '%'||#{searchKeyword}||'%' ]]>
+               AND a.CONECT_MTHD LIKE '%'||#{searchKeyword}||'%'
 		</if>
      	<if test='searchBgnDe != null and searchBgnDe != ""'>
-			<![CDATA[ AND TO_CHAR(a.CREAT_DT, 'YYYYMMDD') BETWEEN #{searchBgnDe} AND #{searchEndDe} ]]>
+			   AND TO_CHAR(a.CREAT_DT, 'YYYYMMDD') BETWEEN #{searchBgnDe} AND #{searchEndDe} 
 		</if>
 		<![CDATA[
 			 ORDER BY a.CREAT_DT DESC
@@ -50,10 +50,10 @@
 			 WHERE 1 = 1
 		]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
-            <![CDATA[ AND a.CONECT_MTHD LIKE '%'||#{searchKeyword}||'%' ]]>
+               AND a.CONECT_MTHD LIKE '%'||#{searchKeyword}||'%'
 		</if>
      	<if test='searchBgnDe != null and searchBgnDe != ""'>
-			<![CDATA[ AND TO_CHAR(a.CREAT_DT, 'YYYYMMDD') BETWEEN #{searchBgnDe} AND #{searchEndDe} ]]>
+			   AND TO_CHAR(a.CREAT_DT, 'YYYYMMDD') BETWEEN #{searchBgnDe} AND #{searchEndDe}
 		</if>
 	</select>
 

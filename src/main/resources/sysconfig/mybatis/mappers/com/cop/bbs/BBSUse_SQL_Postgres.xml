@@ -24,13 +24,13 @@
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "BBS_NM"'>
-             	<![CDATA[ AND f.BBS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND f.BBS_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "CMMNTY_NM"'>
-             	<![CDATA[ AND c.CMMNTY_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND c.CMMNTY_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "CLB_NM"'>
-             	<![CDATA[ AND d.CLB_NM  LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND d.CLB_NM  LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
@@ -57,13 +57,13 @@
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "BBS_NM"'>
-             	<![CDATA[ AND f.BBS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND f.BBS_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "CMMNTY_NM"'>
-             	<![CDATA[ AND c.CMMNTY_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND c.CMMNTY_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "CLB_NM"'>
-             	<![CDATA[ AND d.CLB_NM  LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND d.CLB_NM  LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>

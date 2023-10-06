@@ -20,10 +20,10 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "RESTDE"'>
-				<![CDATA[ AND A.RESTDE = #{searchKeyword}]]>
+				AND A.RESTDE = #{searchKeyword}
             </when>
             <when test='searchCondition == "RESTDE_NM"'>
-				<![CDATA[ AND A.RESTDE_NM LIKE '%' || #{searchKeyword} || '%']]>
+				AND A.RESTDE_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>
@@ -49,10 +49,10 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "RESTDE"'>
-				<![CDATA[ AND A.RESTDE = #{searchKeyword}]]>
+				AND A.RESTDE = #{searchKeyword}
             </when>
             <when test='searchCondition == "RESTDE_NM"'>
-				<![CDATA[ AND A.RESTDE_NM LIKE '%' || #{searchKeyword} || '%']]>
+				AND A.RESTDE_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>

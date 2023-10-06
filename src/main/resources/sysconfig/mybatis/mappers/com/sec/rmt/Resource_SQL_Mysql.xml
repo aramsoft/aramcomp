@@ -34,7 +34,7 @@
              WHERE 1=1
         ]]>             
     	<if test='searchKeyword != null and searchKeyword != ""'>
-                <![CDATA[ AND RESOURCE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND RESOURCE_NM LIKE CONCAT('%',#{searchKeyword},'%')
 		</if>
         <![CDATA[            
             ORDER BY RESOURCE_CREAT_DE DESC 
@@ -53,7 +53,7 @@
              WHERE 1=1
         ]]> 
     	<if test='searchKeyword != null and searchKeyword != ""'>
-                <![CDATA[ AND RESOURCE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND RESOURCE_NM LIKE CONCAT('%',#{searchKeyword},'%')
 		</if>
     </select>
 

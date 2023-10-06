@@ -24,13 +24,13 @@
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "NM"'>
-                <![CDATA[ AND NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "CMPNY_NM"'>
-                <![CDATA[ AND CMPNY_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND CMPNY_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "DEPT_NM"'>
-                <![CDATA[ AND DEPT_NM LIKE '%'|| #{searchKeyword} ||'%'  ]]>
+                AND DEPT_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
@@ -58,13 +58,13 @@
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "NM"'>
-                <![CDATA[ AND NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "CMPNY_NM"'>
-                <![CDATA[ AND CMPNY_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND CMPNY_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "DEPT_NM"'>
-                <![CDATA[ AND DEPT_NM LIKE '%'|| #{searchKeyword} ||'%'  ]]>
+                AND DEPT_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
@@ -219,13 +219,13 @@
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "NM"'>
-                <![CDATA[ AND a.NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND a.NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "CMPNY_NM"'>
-                <![CDATA[ AND a.CMPNY_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND a.CMPNY_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "DEPT_NM"'>
-                <![CDATA[ AND a.DEPT_NM LIKE '%'|| #{searchKeyword} ||'%'  ]]>
+                AND a.DEPT_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
@@ -254,13 +254,13 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "NM"'>
-                <![CDATA[ AND a.NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND a.NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "CMPNY_NM"'>
-                <![CDATA[ AND a.CMPNY_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND a.CMPNY_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "DEPT_NM"'>
-                <![CDATA[ AND a.DEPT_NM LIKE '%'|| #{searchKeyword} ||'%'  ]]>
+                AND a.DEPT_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>

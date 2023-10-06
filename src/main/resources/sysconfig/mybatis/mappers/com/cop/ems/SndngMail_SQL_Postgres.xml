@@ -23,13 +23,13 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "SJ"'>
-                <![CDATA[ AND sj '%'|| #{searchKeyword} ||'%' ]]>
+                AND sj '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "EMAIL_CN"'>
-                <![CDATA[ AND email_cn LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND email_cn LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "SNDR"'>
-                <![CDATA[ AND sndr LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND sndr LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
@@ -52,13 +52,13 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "SJ"'>
-                <![CDATA[ AND sj '%'|| #{searchKeyword} ||'%' ]]>
+                AND sj '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "EMAIL_CN"'>
-                <![CDATA[ AND email_cn LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND email_cn LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "SNDR"'>
-                <![CDATA[ AND sndr LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND sndr LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>

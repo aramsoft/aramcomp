@@ -18,14 +18,12 @@
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "SMS_ID"'>
-				<![CDATA[
-					AND a.SMS_ID in (SELECT SMS_ID 
+				AND a.SMS_ID in (SELECT SMS_ID 
 					               FROM COMTN_SMS_RECPTN 
-					              WHERE RECPTN_TELNO LIKE '%' || #{searchKeyword} || '%')
-		 		]]>
+					              WHERE RECPTN_TELNO LIKE CONCAT('%',#{searchKeyword},'%') )
             </when>
             <when test='searchCondition == "TRNSMIS_CN"'>
-                <![CDATA[ AND a.TRNSMIS_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND a.TRNSMIS_CN LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>
@@ -47,14 +45,12 @@
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "SMS_ID"'>
-				<![CDATA[
-					AND a.SMS_ID in (SELECT SMS_ID 
-						               FROM COMTN_SMS_RECPTN 
-						              WHERE RECPTN_TELNO LIKE '%' || #{searchKeyword} || '%')
-		 		]]>
+				AND a.SMS_ID in (SELECT SMS_ID 
+					               FROM COMTN_SMS_RECPTN 
+					              WHERE RECPTN_TELNO LIKE CONCAT('%',#{searchKeyword},'%') )
             </when>
             <when test='searchCondition == "TRNSMIS_CN"'>
-                <![CDATA[ AND a.TRNSMIS_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                AND a.TRNSMIS_CN LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>

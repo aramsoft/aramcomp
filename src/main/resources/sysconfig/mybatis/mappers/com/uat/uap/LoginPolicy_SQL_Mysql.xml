@@ -19,7 +19,7 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "USER_NM"'>
-                 <![CDATA[ AND A.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>   
+                 AND A.USER_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>
@@ -41,7 +41,7 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "USER_NM"'>
-                 <![CDATA[ AND A.USER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>   
+                 AND A.USER_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>

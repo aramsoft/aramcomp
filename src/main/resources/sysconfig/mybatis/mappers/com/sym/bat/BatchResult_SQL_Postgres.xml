@@ -44,10 +44,10 @@
        	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "BATCH_OPERT_NM"'>
-                 <![CDATA[ AND B.BATCH_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                 AND B.BATCH_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "BATCH_SCHDUL_ID"'>
-                 <![CDATA[ AND A.BATCH_SCHDUL_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                 AND A.BATCH_SCHDUL_ID LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
@@ -84,10 +84,10 @@
        	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "BATCH_OPERT_NM"'>
-                 <![CDATA[ AND B.BATCH_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                 AND B.BATCH_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "BATCH_SCHDUL_ID"'>
-                 <![CDATA[ AND A.BATCH_SCHDUL_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                 AND A.BATCH_SCHDUL_ID LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>

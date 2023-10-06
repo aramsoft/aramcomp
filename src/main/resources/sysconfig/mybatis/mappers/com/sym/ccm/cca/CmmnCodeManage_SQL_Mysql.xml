@@ -19,13 +19,13 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "CODE_ID"'>
-				<![CDATA[ AND A.CODE_ID LIKE '%' || #{searchKeyword} || '%']]>
+				AND A.CODE_ID LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "CODE_ID_NM"'>
-				<![CDATA[ AND A.CODE_ID_NM LIKE '%' || #{searchKeyword} || '%']]>
+				AND A.CODE_ID_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "clCode"'>
-				<![CDATA[ AND A.CL_CODE LIKE '%' || #{searchKeyword} || '%']]>
+				AND A.CL_CODE LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>
@@ -51,13 +51,13 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "CODE_ID"'>
-				<![CDATA[ AND A.CODE_ID LIKE '%' || #{searchKeyword} || '%']]>
+				AND A.CODE_ID LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "CODE_ID_NM"'>
-				<![CDATA[ AND A.CODE_ID_NM LIKE '%' || #{searchKeyword} || '%']]>
+				AND A.CODE_ID_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "clCode"'>
-				<![CDATA[ AND A.CL_CODE LIKE '%' || #{searchKeyword} || '%']]>
+				AND A.CL_CODE LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>

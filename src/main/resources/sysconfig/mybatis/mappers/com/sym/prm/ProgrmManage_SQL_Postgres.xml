@@ -14,7 +14,7 @@
 			 	    OR PROGRM_KOREAN_NM like  '%'|| #{searchKeyword}||'%')
         ]]>
      	<if test='searchUseAt != null and searchUseAt != ""'>
-				<![CDATA[ AND CMMNTY_USE_AT = #{searchUseAt} ]]>
+			   AND CMMNTY_USE_AT = #{searchUseAt}
 		</if>
 		<![CDATA[
 			 ORDER BY URL ASC
@@ -34,7 +34,7 @@
 			 	    OR PROGRM_KOREAN_NM like  '%'|| #{searchKeyword}||'%')
         ]]>
       	<if test='searchUseAt != null and searchUseAt != ""'>
-				<![CDATA[ AND CMMNTY_USE_AT = #{searchUseAt} ]]>
+			   AND CMMNTY_USE_AT = #{searchUseAt}
 		</if>
 	</select>
 

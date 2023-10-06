@@ -22,10 +22,10 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "CL_CODE"'>
-				<![CDATA[ AND CL_CODE LIKE '%' || #{searchKeyword} || '%']]>
+				AND CL_CODE LIKE '%' || #{searchKeyword} || '%'
             </when>
             <when test='searchCondition == "CL_CODE_NM"'>
-				<![CDATA[ AND CL_CODE_NM LIKE '%' || #{searchKeyword} || '%']]>
+				AND CL_CODE_NM LIKE '%' || #{searchKeyword} || '%'
             </when>
         </choose>
 		</if>
@@ -47,10 +47,10 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "CL_CODE"'>
-				<![CDATA[ AND CL_CODE LIKE '%' || #{searchKeyword} || '%']]>
+				AND CL_CODE LIKE '%' || #{searchKeyword} || '%'
             </when>
             <when test='searchCondition == "CL_CODE_NM"'>
-				<![CDATA[ AND CL_CODE_NM LIKE '%' || #{searchKeyword} || '%']]>
+				AND CL_CODE_NM LIKE '%' || #{searchKeyword} || '%'
             </when>
         </choose>
 		</if>

@@ -20,7 +20,7 @@
              WHERE 1=1
         ]]>                     
      	<if test='searchKeyword != null and searchKeyword != ""'>
-        		<![CDATA[ AND ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>  
+        		AND ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%'
 		</if>
         <![CDATA[                  
              ORDER BY ORGNZT_ID DESC
@@ -41,7 +41,7 @@
              WHERE 1=1
         ]]>			
      	<if test='searchKeyword != null and searchKeyword != ""'>
-        		<![CDATA[ AND ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>  
+        		AND ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%'
 		</if>
     </select>
     

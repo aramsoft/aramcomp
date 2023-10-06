@@ -15,7 +15,7 @@
              WHERE 1=1
         ]]>                
      	<if test='searchKeyword != null and searchKeyword != ""'>
-           		<![CDATA[ AND GROUP_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>   
+           		AND GROUP_NM LIKE CONCAT('%',#{searchKeyword},'%')   
 		</if>
         <![CDATA[            
              ORDER BY GROUP_CREAT_DE DESC
@@ -34,7 +34,7 @@
              WHERE 1=1
         ]]>			
      	<if test='searchKeyword != null and searchKeyword != ""'>
-           		<![CDATA[ AND GROUP_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>   
+           		AND GROUP_NM LIKE CONCAT('%',#{searchKeyword},'%')   
 		</if>
     </select>
 

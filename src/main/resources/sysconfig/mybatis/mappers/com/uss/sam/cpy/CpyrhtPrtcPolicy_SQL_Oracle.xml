@@ -21,7 +21,7 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "CPYRHT_PRTC_POLICY_CN"'>
-                <![CDATA[ AND CPYRHT_PRTC_POLICY_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>		
+                AND CPYRHT_PRTC_POLICY_CN LIKE '%'|| #{searchKeyword} ||'%'		
             </when>
         </choose>
 		</if>
@@ -45,7 +45,7 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "CPYRHT_PRTC_POLICY_CN"'>
-                <![CDATA[ AND CPYRHT_PRTC_POLICY_CN LIKE '%'|| #{searchKeyword} ||'%' ]]>		
+                AND CPYRHT_PRTC_POLICY_CN LIKE '%'|| #{searchKeyword} ||'%'	
             </when>
         </choose>
 		</if>

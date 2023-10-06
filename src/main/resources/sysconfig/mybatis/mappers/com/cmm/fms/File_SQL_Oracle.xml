@@ -31,10 +31,10 @@
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "STRE_FILE_NM"'>
-             	<![CDATA[ AND b.STRE_FILE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND b.STRE_FILE_NM LIKE '%'|| #{searchKeyword} ||'%' 
             </when>
             <when test='searchCondition == "ORIGNL_FILE_NM"'>
-             	<![CDATA[ AND b.ORIGNL_FILE_NM  LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND b.ORIGNL_FILE_NM  LIKE '%'|| #{searchKeyword} ||'%' 
             </when>
         </choose>
 		</if>
@@ -61,10 +61,10 @@
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "STRE_FILE_NM"'>
-             	<![CDATA[ AND b.STRE_FILE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND b.STRE_FILE_NM LIKE '%'|| #{searchKeyword} ||'%' 
             </when>
             <when test='searchCondition == "ORIGNL_FILE_NM"'>
-             	<![CDATA[ AND b.ORIGNL_FILE_NM  LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND b.ORIGNL_FILE_NM  LIKE '%'|| #{searchKeyword} ||'%' 
             </when>
         </choose>
 		</if>

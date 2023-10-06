@@ -19,7 +19,7 @@
              WHERE 1 = 1 
         ]]>        
      	<if test='searchKeyword != null and searchKeyword != ""'>
-        		<![CDATA[ AND ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>   
+        		AND ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%'
 		</if>
         /* 구현 Sql */
         <![CDATA[
@@ -37,7 +37,7 @@
              WHERE 1 = 1 
          ]]>			
      	<if test='searchKeyword != null and searchKeyword != ""'>
-        		<![CDATA[ AND ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>   
+        		AND ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%'
 		</if>
     </select>
 

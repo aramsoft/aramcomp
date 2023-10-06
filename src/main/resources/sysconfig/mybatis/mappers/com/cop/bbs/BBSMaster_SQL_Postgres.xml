@@ -36,10 +36,10 @@
    	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "BBS_NM"'>
-             	<![CDATA[ AND a.BBS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND a.BBS_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "BBS_TY_CODE"'>
-             	<![CDATA[ AND b.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND b.CODE_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
@@ -74,10 +74,10 @@
    	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "BBS_NM"'>
-             	<![CDATA[ AND a.BBS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND a.BBS_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "BBS_TY_CODE"'>
-             	<![CDATA[ AND b.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND b.CODE_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
@@ -238,10 +238,10 @@
  	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "BBS_NM"'>
-             	<![CDATA[ AND b.BBS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND b.BBS_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "BBS_TY_CODE"'>
-             	<![CDATA[ AND c.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND c.CODE_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
@@ -274,10 +274,10 @@
  	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "BBS_NM"'>
-             	<![CDATA[ AND b.BBS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND b.BBS_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "BBS_TY_CODE"'>
-             	<![CDATA[ AND c.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND c.CODE_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
@@ -311,10 +311,10 @@
    	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "BBS_NM"'>
-             	<![CDATA[ AND a.BBS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND a.BBS_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "BBS_TY_CODE"'>
-             	<![CDATA[ AND b.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND b.CODE_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
@@ -346,10 +346,10 @@
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "BBS_NM"'>
-             	<![CDATA[ AND a.BBS_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND a.BBS_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "BBS_TY_CODE"'>
-             	<![CDATA[ AND b.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+             	AND b.CODE_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>

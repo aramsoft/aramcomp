@@ -33,15 +33,15 @@
 			 WHERE a.CONFMER_ID = #{confmerId}
 		]]>
      	<if test='trgetJobId != null and trgetJobId != ""'>
-				<![CDATA[ AND a.TRGET_JOB_ID = #{trgetJobId}		]]>
+				AND a.TRGET_JOB_ID = #{trgetJobId}
 		</if>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "CONFM_TY_CODE"'>
-                 <![CDATA[ AND d.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                 AND d.CODE_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "CONFM_STTUS_CODE"'>
-                 <![CDATA[ AND e.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                 AND e.CODE_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>
@@ -76,15 +76,15 @@
 			 WHERE a.CONFMER_ID = #{confmerId}
 		]]>
      	<if test='trgetJobId != null and trgetJobId != ""'>
-				<![CDATA[ AND a.TRGET_JOB_ID = #{trgetJobId}		]]>
+				AND a.TRGET_JOB_ID = #{trgetJobId}
 		</if>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "CONFM_TY_CODE"'>
-                 <![CDATA[ AND d.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                 AND d.CODE_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "CONFM_STTUS_CODE"'>
-                 <![CDATA[ AND e.CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                 AND e.CODE_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>

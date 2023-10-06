@@ -246,7 +246,7 @@
 			  FROM COMTN_CMMNTY_MENU A
 			 WHERE A.TRGET_ID = #{trgetId}
 			   AND A.USE_AT = 'Y'
-			   AND A.MENU_POS LIKE  #{menuPos}||'%'
+			   AND A.MENU_POS LIKE CONCAT(#{menuPos},'%')
 			 ORDER BY A.MENU_POS ASC  	
 		]]>	
 	</select>

@@ -4,81 +4,14 @@
 <configuration>
     
 	<settings>
+<!-- 
    		<setting name="logImpl" value="NO_LOGGING"/>
+-->
      	<setting name="mapUnderscoreToCamelCase" value="true"/>
   	</settings>
   
    	<typeAliases>
  		<typeAlias alias="egovMap" type="org.egovframe.rte.psl.dataaccess.util.EgovMap"/>
-<!--  
-  		<typeAlias alias="comCodeVO" 			type="aramframework.com.cmm.domain.ComCodeVO"/>
-  		<typeAlias alias="fileVO" 				type="aramframework.com.cmm.domain.FileVO"/>
-  		<typeAlias alias="menuVO" 				type="aramframework.com.cmm.domain.MenuVO"/>
-
- 		<typeAlias alias="adressBookVO" 		type="aramframework.com.cop.adb.domain.AdressBookVO"/>
-  		<typeAlias alias="adressBookUserVO" 	type="aramframework.com.cop.adb.domain.AdressBookUserVO"/>
-  		<typeAlias alias="boardVO" 				type="aramframework.com.cop.bbs.domain.BoardVO"/>
-  		<typeAlias alias="boardMasterVO" 		type="aramframework.com.cop.bbs.domain.BoardMasterVO"/>
-  		<typeAlias alias="boardUseInfVO" 		type="aramframework.com.cop.bbs.domain.BoardUseInfVO"/>
-  		<typeAlias alias="commentVO" 			type="aramframework.com.cop.bbs.domain.CommentVO"/>
-  		<typeAlias alias="satisfactionVO" 		type="aramframework.com.cop.bbs.domain.SatisfactionVO"/>
-   		<typeAlias alias="communityVO" 			type="aramframework.com.cop.cmy.domain.CommunityVO"/>
-  		<typeAlias alias="communityUserVO"		type="aramframework.com.cop.cmy.domain.CommunityUserVO"/>
-  		<typeAlias alias="communityMenuVO"		type="aramframework.com.cop.cmy.domain.CommunityMenuVO"/>
-  		<typeAlias alias="confirmHistoryVO"		type="aramframework.com.cop.com.domain.ConfirmHistoryVO"/>
-   		<typeAlias alias="sndngMailVO"			type="aramframework.com.cop.ems.domain.SndngMailVO"/>
-  		<typeAlias alias="atchmnFileVO"			type="aramframework.com.cop.ems.domain.AtchmnFileVO"/>
-  		<typeAlias alias="nameCardVO"			type="aramframework.com.cop.ncm.domain.NameCardVO"/>
-  		<typeAlias alias="nameCardUseVO"		type="aramframework.com.cop.ncm.domain.NameCardUseVO"/>
- 		<typeAlias alias="scrapVO"				type="aramframework.com.cop.scp.domain.ScrapVO"/>
- 		<typeAlias alias="smsVO"				type="aramframework.com.cop.sms.domain.SmsVO"/>
- 		<typeAlias alias="diaryManageVO"		type="aramframework.com.cop.smt.dsm.domain.DiaryManageVO"/>
- 		<typeAlias alias="schdulManageVO"		type="aramframework.com.cop.smt.sim.domain.SchdulManageVO"/>
- 		<typeAlias alias="templateInfVO"		type="aramframework.com.cop.tpl.domain.TemplateInfVO"/>
-
- 		<typeAlias alias="authorVO"				type="aramframework.com.sec.arm.domain.AuthorVO"/>
- 		<typeAlias alias="authorResourceVO"		type="aramframework.com.sec.arm.domain.AuthorResourceVO"/>
- 		<typeAlias alias="deptVO"				type="aramframework.com.sec.dpt.domain.DeptVO"/>
- 		<typeAlias alias="deptAuthorVO"			type="aramframework.com.sec.dpt.domain.DeptAuthorVO"/>
- 		<typeAlias alias="groupVO"				type="aramframework.com.sec.grp.domain.GroupVO"/>
- 		<typeAlias alias="groupAuthorVO"		type="aramframework.com.sec.grp.domain.GroupAuthorVO"/>
- 		<typeAlias alias="resourceVO"			type="aramframework.com.sec.rmt.domain.ResourceVO"/>
-
-		<typeAlias alias="batchOpertVO"			type="aramframework.com.sym.bat.domain.BatchOpertVO"/>
-		<typeAlias alias="batchSchdulVO"		type="aramframework.com.sym.bat.domain.BatchSchdulVO"/>
-		<typeAlias alias="batchSchdulDfkVO"		type="aramframework.com.sym.bat.domain.BatchSchdulDfkVO"/>
-		<typeAlias alias="batchResultVO"		type="aramframework.com.sym.bat.domain.BatchResultVO"/>
- 		<typeAlias alias="restdeVO"				type="aramframework.com.sym.cal.domain.RestdeVO"/>
-		<typeAlias alias="cmmnCodeVO"			type="aramframework.com.sym.ccm.cca.domain.CmmnCodeVO"/>
-		<typeAlias alias="cmmnClCodeVO"			type="aramframework.com.sym.ccm.ccc.domain.CmmnClCodeVO"/>
-		<typeAlias alias="cmmnDetailCodeVO"		type="aramframework.com.sym.ccm.cde.domain.CmmnDetailCodeVO"/>
-		<typeAlias alias="zipVO"				type="aramframework.com.sym.ccm.zip.domain.ZipVO"/>
-		<typeAlias alias="loginLogVO"			type="aramframework.com.sym.log.clg.domain.LoginLogVO"/>
-		<typeAlias alias="sysLogVO"				type="aramframework.com.sym.log.lgm.domain.SysLogVO"/>
-		<typeAlias alias="userLogVO"			type="aramframework.com.sym.log.ulg.domain.UserLogVO"/>
-		<typeAlias alias="webLogVO"				type="aramframework.com.sym.log.wlg.domain.WebLogVO"/>
-		<typeAlias alias="menuManageVO"			type="aramframework.com.sym.mnu.mpm.domain.MenuManageVO"/>
-		<typeAlias alias="progrmManageVO"		type="aramframework.com.sym.prm.domain.ProgrmManageVO"/>
-		<typeAlias alias="progrmManageDtlVO"	type="aramframework.com.sym.prm.domain.ProgrmManageDtlVO"/>
-		<typeAlias alias="backupOpertVO"		type="aramframework.com.sym.sym.bak.domain.BackupOpertVO"/>
-		<typeAlias alias="backupSchdulDfkVO"	type="aramframework.com.sym.sym.bak.domain.BackupSchdulDfkVO"/>
-		<typeAlias alias="backupResultVO"		type="aramframework.com.sym.sym.bak.domain.BackupResultVO"/>
-		
-		<typeAlias alias="loginPolicyVO"		type="aramframework.com.uat.uap.domain.LoginPolicyVO"/>
-		<typeAlias alias="loginVO"				type="aramframework.com.uat.uia.domain.LoginVO"/>
-		 
-		<typeAlias alias="faqManageVO"			type="aramframework.com.uss.olh.faq.domain.FaqManageVO"/>
-		<typeAlias alias="qnaManageVO"			type="aramframework.com.uss.olh.qna.domain.QnaManageVO"/>
-		
-		<typeAlias alias="cpyrhtPrtcPolicyVO" 	type="aramframework.com.uss.sam.cpy.domain.CpyrhtPrtcPolicyVO"/>
-		<typeAlias alias="indvdlInfoPolicyVO" 	type="aramframework.com.uss.sam.ipm.domain.IndvdlInfoPolicyVO"/>
-		<typeAlias alias="stplatManageVO" 		type="aramframework.com.uss.sam.stp.domain.StplatManageVO"/>
-		
-		<typeAlias alias="entrprsManageVO" 		type="aramframework.com.uss.umt.domain.EntrprsManageVO"/>
-		<typeAlias alias="mberManageVO" 		type="aramframework.com.uss.umt.domain.MberManageVO"/>
-		<typeAlias alias="emplyrManageVO" 		type="aramframework.com.uss.umt.domain.EmplyrManageVO"/>
-		<typeAlias alias="stplatVO" 			type="aramframework.com.uss.umt.domain.StplatVO"/>
--->
 		<package name="aramframework"/>
 		
     </typeAliases>

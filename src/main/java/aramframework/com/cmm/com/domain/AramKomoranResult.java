@@ -1,4 +1,4 @@
-package aramframework.com.cmm.domain;
+package aramframework.com.cmm.com.domain;
 
 import kr.co.shineware.nlp.komoran.constant.SYMBOL;
 import kr.co.shineware.nlp.komoran.core.model.LatticeNode;

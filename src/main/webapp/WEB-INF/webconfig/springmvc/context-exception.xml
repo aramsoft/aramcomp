@@ -10,7 +10,7 @@
 	<aop:config>
 		<aop:pointcut id="web.controlMethod" 
 			expression="execution(* aramframework..web.*Controller.*(..))
-						and !execution(* aramframework.com.cmm.web.ComIndexController.*(..))" />
+						and !execution(* aramframework.com.cmm.com.web.ComIndexController.*(..))" />
 
 		<aop:aspect ref="web.exceptionTransfer">
 			<aop:after-throwing throwing="exception"

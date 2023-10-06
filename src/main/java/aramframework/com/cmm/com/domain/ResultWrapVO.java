@@ -1,4 +1,4 @@
-package aramframework.com.cmm.domain;
+package aramframework.com.cmm.com.domain;
 
 /**
  * Result Wrap VO클래스.

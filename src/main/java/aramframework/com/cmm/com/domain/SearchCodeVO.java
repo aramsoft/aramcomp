@@ -1,4 +1,4 @@
-package aramframework.com.cmm.domain;
+package aramframework.com.cmm.com.domain;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 

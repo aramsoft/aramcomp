@@ -14,9 +14,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import aramframework.com.cmm.com.domain.FileVO;
+import aramframework.com.cmm.com.service.FileMngService;
 import aramframework.com.cmm.constant.AramProperties;
-import aramframework.com.cmm.domain.FileVO;
-import aramframework.com.cmm.service.FileMngService;
+
 import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
 
 /**

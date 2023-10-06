@@ -1,4 +1,4 @@
-package aramframework.com.cmm.domain;
+package aramframework.com.cmm.com.domain;
 
 /**
  * 공통상세코드 모델 클래스

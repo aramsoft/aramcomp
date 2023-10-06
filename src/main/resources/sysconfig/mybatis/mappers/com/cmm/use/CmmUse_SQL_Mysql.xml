@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="aramframework.com.cmm.dao.CmmUseMapper">
+<mapper namespace="aramframework.com.cmm.com.dao.CmmUseMapper">
 
 	<!-- 상세보기 -->
 	<select id="selectCmmCodeList" resultType="comCodeVO">

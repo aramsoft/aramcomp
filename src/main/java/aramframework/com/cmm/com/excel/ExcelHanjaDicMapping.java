@@ -1,9 +1,9 @@
-package aramframework.com.cmm.excel;
+package aramframework.com.cmm.com.excel;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
-import aramframework.com.cmm.domain.HanjaDicVO;
+import aramframework.com.cmm.com.domain.HanjaDicVO;
 
 /**
  * Excel 매핑 클래스

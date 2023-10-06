@@ -1,11 +1,12 @@
-package aramframework.com.cmm.dao;
+package aramframework.com.cmm.com.dao;
 
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import aramframework.com.cmm.com.domain.FileVO;
+
 import org.egovframe.rte.psl.dataaccess.EgovAbstractMapper;
-import aramframework.com.cmm.domain.FileVO;
 
 /**
  * 파일정보 관리를 위한 데이터 처리 클래스

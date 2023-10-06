@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
-import aramframework.com.cmm.domain.ComCodeVO;
+import aramframework.com.cmm.com.domain.ComCodeVO;
 
 /**
  * 교차접속 스크립트 공격 취약성 방지(파라미터 문자열 교체)

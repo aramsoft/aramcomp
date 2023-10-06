@@ -39,6 +39,6 @@
     </bean>
      
 	<!-- 한자사전 초기화 프로그램 -->
-	<bean id="ocrHanjaService" class="aramframework.com.cmm.service.OcrHanjaService" init-method="init" />
+	<bean id="ocrHanjaService" class="aramframework.com.cmm.com.service.OcrHanjaService" init-method="init" />
 
 </beans>

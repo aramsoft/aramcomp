@@ -1,4 +1,4 @@
-package aramframework.com.cmm.web;
+package aramframework.com.cmm.com.web;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -26,10 +26,10 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import aramframework.com.cmm.domain.ImageHanjaVO;
-import aramframework.com.cmm.domain.ImageVO;
-import aramframework.com.cmm.domain.ResultWrapVO;
-import aramframework.com.cmm.service.OcrHanjaService;
+import aramframework.com.cmm.com.domain.ImageHanjaVO;
+import aramframework.com.cmm.com.domain.ImageVO;
+import aramframework.com.cmm.com.domain.ResultWrapVO;
+import aramframework.com.cmm.com.service.OcrHanjaService;
 import aramframework.com.cmm.util.MessageHelper;
 
 @Controller

@@ -128,7 +128,7 @@
     </beans:bean>
 
     <beans:bean id="hierarchyStrings"
-        class="aramframework.com.cmm.security.userdetails.hierarchicalroles.HierarchyStringsFactoryBean"
+        class="org.egovframe.rte.fdl.security.userdetails.hierarchicalroles.HierarchyStringsFactoryBean"
         init-method="init">
         <beans:property name="securedObjectService" ref="securedObjectService"/>
     </beans:bean>
@@ -154,13 +154,13 @@
     </beans:bean>
 
     <beans:bean id="databaseSecurityMetadataSource"
-        class="aramframework.com.cmm.security.intercept.EgovReloadableFilterInvocationSecurityMetadataSource">
+        class="org.egovframe.rte.fdl.security.intercept.EgovReloadableFilterInvocationSecurityMetadataSource">
         <beans:constructor-arg ref="requestMap" />      
         <beans:property name="securedObjectService" ref="securedObjectService"/>
     </beans:bean>
 
     <beans:bean id="requestMap"
-        class="aramframework.com.cmm.security.intercept.UrlResourcesMapFactoryBean" init-method="init">
+        class="org.egovframe.rte.fdl.security.intercept.UrlResourcesMapFactoryBean" init-method="init">
         <beans:property name="securedObjectService" ref="securedObjectService"/>
     </beans:bean>
   
@@ -199,7 +199,7 @@
     </beans:bean>
     
     <beans:bean id="methodMap"
-        class="aramframework.com.cmm.security.intercept.MethodResourcesMapFactoryBean"
+        class="org.egovframe.rte.fdl.security.intercept.MethodResourcesMapFactoryBean"
         init-method="init">
         <beans:property name="securedObjectService" ref="securedObjectService"/>
         <beans:property name="resourceType" value="method"/>
@@ -214,7 +214,7 @@
     </beans:bean>
 
     <beans:bean id="pointcutMap"
-        class="aramframework.com.cmm.security.intercept.MethodResourcesMapFactoryBean"
+        class="org.egovframe.rte.fdl.security.intercept.MethodResourcesMapFactoryBean"
         init-method="init">
         <beans:property name="securedObjectService" ref="securedObjectService"/>
         <beans:property name="resourceType" value="pointcut"/>

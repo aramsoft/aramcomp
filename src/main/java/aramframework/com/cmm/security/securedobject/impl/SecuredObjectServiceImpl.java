@@ -23,6 +23,8 @@ import java.util.Map;
 import java.util.Set;
 
 import org.egovframe.rte.fdl.security.config.SecurityConfig;
+import org.egovframe.rte.fdl.security.securedobject.EgovSecuredObjectService;
+import org.egovframe.rte.fdl.security.securedobject.impl.SelfRegexRequestMatcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -32,7 +34,6 @@ import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
-import aramframework.com.cmm.security.securedobject.EgovSecuredObjectService;
 import aramframework.com.cmm.security.securedobject.dao.SecuredObjectMapper;
 
 /**

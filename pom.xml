@@ -257,13 +257,6 @@
 			<version>3.9.0</version>
 		</dependency>
 		
-		<!-- JDBC -->		
-		<dependency>
-		    <groupId>org.postgresql</groupId>
-		    <artifactId>postgresql</artifactId>
-		    <version>42.3.8</version>
-		</dependency>
-		
 		<!-- Email -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>

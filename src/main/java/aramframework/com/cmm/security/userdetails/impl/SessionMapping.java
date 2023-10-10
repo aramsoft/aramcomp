@@ -1,12 +1,12 @@
-package aramframework.com.cmm.userdetails.impl;
+package aramframework.com.cmm.security.userdetails.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
-import org.egovframe.rte.fdl.security.userdetails.EgovUserDetails;
-import org.egovframe.rte.fdl.security.userdetails.jdbc.EgovUsersByUsernameMapping;
+import aramframework.com.cmm.security.userdetails.EgovUserDetails;
+import aramframework.com.cmm.security.userdetails.jdbc.EgovUsersByUsernameMapping;
 import aramframework.com.uat.uia.domain.LoginVO;
 
 /**

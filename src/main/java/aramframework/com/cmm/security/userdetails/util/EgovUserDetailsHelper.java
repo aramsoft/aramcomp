@@ -13,14 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.egovframe.rte.fdl.security.userdetails.util;
+package aramframework.com.cmm.security.userdetails.util;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import org.egovframe.rte.fdl.security.userdetails.EgovUserDetails;
 import org.egovframe.rte.fdl.string.EgovObjectUtil;
 
 import org.slf4j.Logger;
@@ -32,6 +31,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
 import org.springframework.security.crypto.password.MessageDigestPasswordEncoder;
+
+import aramframework.com.cmm.security.userdetails.EgovUserDetails;
 
 /**
  * 사용자 계정 정보를 처리하는 유틸 클래스

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.egovframe.rte.fdl.security.userdetails.jdbc;
+package aramframework.com.cmm.security.userdetails.jdbc;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -23,7 +23,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.egovframe.rte.fdl.security.userdetails.EgovUserDetails;
 import org.egovframe.rte.fdl.string.EgovObjectUtil;
 
 import javax.sql.DataSource;
@@ -38,6 +37,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
+
+import aramframework.com.cmm.security.userdetails.EgovUserDetails;
 
 /**
  * 사용자계정 정보를 DB에서 관리할수 있도록 구현한 클래스

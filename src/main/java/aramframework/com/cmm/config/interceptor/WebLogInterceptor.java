@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import aramframework.com.cmm.userdetails.UserDetailsHelper;
+import aramframework.com.cmm.security.userdetails.UserDetailsHelper;
 import aramframework.com.sym.log.wlg.domain.WebLogVO;
 import aramframework.com.sym.log.wlg.service.WebLogService;
 import aramframework.com.uat.uia.domain.LoginVO;

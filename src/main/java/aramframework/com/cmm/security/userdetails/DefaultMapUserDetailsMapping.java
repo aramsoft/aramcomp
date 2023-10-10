@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.egovframe.rte.fdl.security.userdetails;
+package aramframework.com.cmm.security.userdetails;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -21,8 +21,8 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.egovframe.rte.fdl.security.userdetails.jdbc.EgovUsersByUsernameMapping;
-import org.egovframe.rte.fdl.security.userdetails.util.CamelCaseUtil;
+import aramframework.com.cmm.security.userdetails.jdbc.EgovUsersByUsernameMapping;
+import aramframework.com.cmm.security.userdetails.util.CamelCaseUtil;
 
 import javax.sql.DataSource;
 

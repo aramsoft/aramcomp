@@ -17,7 +17,7 @@ import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.com.domain.SearchCodeVO;
 import aramframework.com.cmm.com.service.CmmUseService;
 import aramframework.com.cmm.domain.SearchVO;
-import aramframework.com.cmm.userdetails.UserDetailsHelper;
+import aramframework.com.cmm.security.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cop.adb.domain.AdressBookUserVO;
 import aramframework.com.cop.adb.domain.AdressBookVO;

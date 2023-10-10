@@ -12,7 +12,7 @@ import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.AbstractAuthenticationTargetUrlRequestHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
-import aramframework.com.cmm.userdetails.UserDetailsHelper;
+import aramframework.com.cmm.security.userdetails.UserDetailsHelper;
 import aramframework.com.uat.uia.domain.LoginVO;
 
 /**

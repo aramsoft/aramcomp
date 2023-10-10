@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.com.service.CmmUseService;
 import aramframework.com.cmm.domain.SearchVO;
-import aramframework.com.cmm.userdetails.UserDetailsHelper;
+import aramframework.com.cmm.security.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.com.domain.ConfirmHistoryVO;

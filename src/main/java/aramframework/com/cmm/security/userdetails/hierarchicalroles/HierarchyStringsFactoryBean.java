@@ -13,16 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.egovframe.rte.fdl.security.userdetails.hierarchicalroles;
+package aramframework.com.cmm.security.userdetails.hierarchicalroles;
 
 import org.egovframe.rte.fdl.security.config.SecuredObjectConfig;
-import org.egovframe.rte.fdl.security.securedobject.EgovSecuredObjectService;
-
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.util.StringUtils;
+
+import aramframework.com.cmm.security.securedobject.EgovSecuredObjectService;
 
 /**
  * DB기반의 롤 계층정보를 지원하는 비즈니스 구현 클래스

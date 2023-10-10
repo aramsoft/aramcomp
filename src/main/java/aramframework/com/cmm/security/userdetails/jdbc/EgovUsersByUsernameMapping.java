@@ -13,18 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.egovframe.rte.fdl.security.userdetails.jdbc;
+package aramframework.com.cmm.security.userdetails.jdbc;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 
-import org.egovframe.rte.fdl.security.userdetails.EgovUserDetails;
-
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.SqlParameter;
 import org.springframework.jdbc.object.MappingSqlQuery;
+
+import aramframework.com.cmm.security.userdetails.EgovUserDetails;
 
 /**
  * 사용자 계정 정보를 DB에서 관리할 수 있도록 구현한 클래스

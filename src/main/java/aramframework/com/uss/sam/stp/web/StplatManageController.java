@@ -11,7 +11,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.domain.SearchVO;
-import aramframework.com.cmm.userdetails.UserDetailsHelper;
+import aramframework.com.cmm.security.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.sam.stp.domain.StplatManageVO;

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.egovframe.rte.fdl.security.userdetails.util;
+package aramframework.com.cmm.security.userdetails.util;
 
 /**
  * camel case 방식으로 변환하는 util 클래스

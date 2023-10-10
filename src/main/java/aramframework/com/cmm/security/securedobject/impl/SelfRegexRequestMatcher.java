@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.egovframe.rte.fdl.security.securedobject.impl;
+package aramframework.com.cmm.security.securedobject.impl;
 
 import javax.servlet.http.HttpServletRequest;
 

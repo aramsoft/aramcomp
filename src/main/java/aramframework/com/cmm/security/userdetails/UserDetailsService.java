@@ -1,4 +1,4 @@
-package aramframework.com.cmm.userdetails;
+package aramframework.com.cmm.security.userdetails;
 
 import java.util.List;
 

@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.authentication.event.AuthenticationSuccessEvent;
 
-import org.egovframe.rte.fdl.security.userdetails.EgovUserDetails;
+import aramframework.com.cmm.security.userdetails.EgovUserDetails;
 import aramframework.com.sym.log.clg.domain.LoginLogVO;
 import aramframework.com.sym.log.clg.service.LoginLogService;
 import aramframework.com.uat.uia.domain.LoginVO;

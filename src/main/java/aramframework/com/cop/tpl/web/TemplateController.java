@@ -14,7 +14,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.com.service.CmmUseService;
 import aramframework.com.cmm.domain.SearchVO;
-import aramframework.com.cmm.userdetails.UserDetailsHelper;
+import aramframework.com.cmm.security.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cop.tpl.domain.TemplateInfVO;
 import aramframework.com.cop.tpl.service.TemplateService;

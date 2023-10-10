@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import aramframework.com.cmm.userdetails.UserDetailsHelper;
+import aramframework.com.cmm.security.userdetails.UserDetailsHelper;
 import aramframework.com.sym.mnu.mpm.domain.MenuManageVO;
 import aramframework.com.sym.mnu.mpm.service.MainMenuService;
 import aramframework.com.uat.uia.domain.LoginVO;

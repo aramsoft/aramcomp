@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aramframework.com.cmm.security.securedobject.dao.impl.SecuredObjectMapper">
+
+	<!-- 상세보기 -->
+	<select id="getHierarchicalRoles" resultType="java.util.Map">
+			SELECT a.CHLDRN_ROLE child
+				 , a.PARNTS_ROLE parent 
+			  FROM COMTN_ROLES_HIERARCHY a 
+				   LEFT JOIN COMTN_ROLES_HIERARCHY b 
+				   		  ON a.CHLDRN_ROLE = b.PARNTS_ROLE		
+	</select>
+
+	<select id="sqlRolesAndUrl" resultType="java.util.Map">
+			SELECT a.RESOURCE_PTTRN AS url
+				 , b.AUTHOR_CODE AS authority 
+			  FROM COMTN_RESOURCE_INFO a
+			     , COMTN_AUTHOR_RESOURCE b     
+		     WHERE a.RESOURCE_CODE = b.RESOURCE_CODE                   
+			   AND a.RESOURCE_TY = 'url'  
+		     ORDER BY a.RESOURCE_SORT 	
+	</select>
+
+	<select id="sqlRolesAndMethod" resultType="java.util.Map">
+			SELECT a.RESOURCE_PTTRN AS method
+			     , b.AUTHOR_CODE AS authority   
+			  FROM COMTN_RESOURCE_INFO a
+			     , COMTN_AUTHOR_RESOURCE b     
+			 WHERE a.RESOURCE_CODE = b.RESOURCE_CODE                   
+			   AND a.RESOURCE_TY = 'method'  
+			 ORDER BY a.RESOURCE_SORT	
+	</select>
+
+	<select id="sqlRolesAndPointcut" resultType="java.util.Map">
+			SELECT a.RESOURCE_PTTRN AS pointcut
+			     , b.AUTHOR_CODE AS authority   
+			  FROM COMTN_RESOURCE_INFO a
+			     , COMTN_AUTHOR_RESOURCE b     
+			 WHERE a.RESOURCE_CODE = b.RESOURCE_CODE                   
+			   AND a.RESOURCE_TY = 'pointcut'  
+			 ORDER BY a.RESOURCE_SORT
+	</select>
+
+	<select id="getRegexMatchedRequestMapping" parameterType="String" resultType="java.util.Map">
+        	SELECT a.resource_pattern uri
+        		 , b.authority authority 
+              FROM secured_resources a
+                 , secured_resources_role b 
+             WHERE a.resource_id = b.resource_id 
+               AND a.resource_id =  
+            		( SELECT resource_id 
+            			FROM ( SELECT resource_id, ROW_NUMBER() OVER (ORDER BY sort_order) resource_order 
+            				     FROM secured_resources c 
+            		            WHERE REGEXP_LIKE ( #{url}, c.resource_pattern ) 
+            					  AND c.resource_type = 'url' 
+            				    ORDER BY c.sort_order ) 
+            	       WHERE resource_order = 1 ) 
+	</select>
+
+</mapper>            

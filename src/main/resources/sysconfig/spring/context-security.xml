@@ -95,6 +95,16 @@
 		class="aramframework.com.cmm.config.filter.AramPasswordEncoder">
 	</beans:bean>
 
+	<!-- sql string provider -->
+    <beans:bean id="securedObjectService"
+        class="aramframework.com.cmm.security.securedobject.impl.SecuredObjectServiceImpl">
+        <beans:property name="securedObjectMapper" ref="securedObjectMapper"/>
+    </beans:bean>
+ 
+    <beans:bean id="securedObjectMapper" 
+    	class="aramframework.com.cmm.security.securedobject.dao.impl.SecuredObjectDAOImpl" >
+    </beans:bean>
+    
     <beans:bean id="jdbcUserService"
         class="aramframework.com.cmm.security.userdetails.jdbc.EgovJdbcUserDetailsManager" >
 
@@ -123,36 +133,6 @@
         <beans:property name="securedObjectService" ref="securedObjectService"/>
     </beans:bean>
 
-	<!-- sql string provider -->
-    <beans:bean id="securedObjectService"
-        class="aramframework.com.cmm.security.securedobject.impl.SecuredObjectServiceImpl">
-        <beans:property name="securedObjectDAO" ref="securedObjectDAO"/>
-    </beans:bean>
-
-    <beans:bean id="securedObjectDAO" 
-    	class="aramframework.com.cmm.security.securedobject.impl.SecuredObjectDAO" >
-        <beans:property name="dataSource" ref="dataSource"/>
-       	<beans:property name="sqlHierarchicalRoles" value=
-				"SELECT a.CHLDRN_ROLE child, a.PARNTS_ROLE parent 
-				   FROM COMTN_ROLES_HIERARCHY a 
-				        LEFT JOIN COMTN_ROLES_HIERARCHY b on (a.CHLDRN_ROLE = b.PARNTS_ROLE) " />
-       	<beans:property name="sqlRolesAndUrl" value=
-	       		"SELECT a.RESOURCE_PTTRN AS url, b.AUTHOR_CODE AS authority 
-				   FROM COMTN_RESOURCE_INFO a, COMTN_AUTHOR_RESOURCE b     
-				  WHERE a.RESOURCE_CODE = b.RESOURCE_CODE                   
-				    AND a.RESOURCE_TY = 'url'  ORDER BY a.RESOURCE_SORT    " />
-		<beans:property name="sqlRolesAndMethod" value=
-	 			"SELECT a.RESOURCE_PTTRN AS method, b.AUTHOR_CODE AS authority   
-				   FROM COMTN_RESOURCE_INFO a, COMTN_AUTHOR_RESOURCE b     
-				  WHERE a.RESOURCE_CODE = b.RESOURCE_CODE                   
-				    AND a.RESOURCE_TY = 'method'  ORDER BY a.RESOURCE_SORT  " />
-       	<beans:property name="sqlRolesAndPointcut" value=
-	       		"SELECT a.RESOURCE_PTTRN AS pointcut, b.AUTHOR_CODE AS authority   
-				   FROM COMTN_RESOURCE_INFO a, COMTN_AUTHOR_RESOURCE b     
-				  WHERE a.RESOURCE_CODE = b.RESOURCE_CODE                   
-				    AND a.RESOURCE_TY = 'pointcut'  ORDER BY a.RESOURCE_SORT " />
-    </beans:bean>
-    
  	<!-- authorization -->
     <beans:bean id="accessDecisionManager" 
     	class="org.springframework.security.access.vote.AffirmativeBased">

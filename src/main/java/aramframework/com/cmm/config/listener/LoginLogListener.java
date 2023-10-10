@@ -1,5 +1,6 @@
 package aramframework.com.cmm.config.listener;
 
+import org.egovframe.rte.fdl.security.userdetails.EgovUserDetails;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,6 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.authentication.event.AuthenticationSuccessEvent;
 
-import aramframework.com.cmm.security.userdetails.EgovUserDetails;
 import aramframework.com.sym.log.clg.domain.LoginLogVO;
 import aramframework.com.sym.log.clg.service.LoginLogService;
 import aramframework.com.uat.uia.domain.LoginVO;

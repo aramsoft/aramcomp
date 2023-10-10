@@ -10,10 +10,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import aramframework.com.cmm.security.userdetails.EgovUserDetails;
 import aramframework.com.cmm.security.userdetails.UserDetailsService;
 
 import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.fdl.security.userdetails.EgovUserDetails;
 import org.egovframe.rte.fdl.string.EgovObjectUtil;
 
 /**

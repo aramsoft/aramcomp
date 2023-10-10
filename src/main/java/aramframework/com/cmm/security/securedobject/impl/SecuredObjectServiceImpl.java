@@ -34,7 +34,7 @@ import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
-import aramframework.com.cmm.security.securedobject.dao.SecuredObjectMapper;
+import aramframework.com.cmm.security.securedobject.SecuredObjectMapper;
 
 /**
  * 보호객체 관리를 지원하는 구현 클래스

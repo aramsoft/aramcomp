@@ -95,18 +95,18 @@
 		class="aramframework.com.cmm.config.filter.AramPasswordEncoder">
 	</beans:bean>
 
-	<!-- sql string provider -->
+	<!-- secure object service -->
     <beans:bean id="securedObjectService"
         class="aramframework.com.cmm.security.securedobject.impl.SecuredObjectServiceImpl">
         <beans:property name="securedObjectMapper" ref="securedObjectMapper"/>
     </beans:bean>
  
     <beans:bean id="securedObjectMapper" 
-    	class="aramframework.com.cmm.security.securedobject.dao.impl.SecuredObjectDAOImpl" >
+    	class="aramframework.com.cmm.security.securedobject.impl.SecuredObjectDAOImpl" >
     </beans:bean>
     
     <beans:bean id="jdbcUserService"
-        class="aramframework.com.cmm.security.userdetails.jdbc.EgovJdbcUserDetailsManager" >
+        class="org.egovframe.rte.fdl.security.userdetails.jdbc.EgovJdbcUserDetailsManager" >
 
         <beans:property name="usersByUsernameQuery" value=
         		"SELECT USER_ID, PASSWORD, 1 ENABLED, USER_NM, USER_ZIP,  

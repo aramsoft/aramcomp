@@ -1,12 +1,13 @@
-package aramframework.com.cmm.security.securedobject.dao.impl;
+package aramframework.com.cmm.security.securedobject.impl;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.apache.ibatis.session.SqlSession;
 
-import aramframework.com.cmm.security.securedobject.dao.SecuredObjectMapper;
+import aramframework.com.cmm.security.securedobject.SecuredObjectMapper;
+
+import org.apache.ibatis.session.SqlSession;
 
 @Repository
 public class  SecuredObjectDAOImpl implements SecuredObjectMapper {

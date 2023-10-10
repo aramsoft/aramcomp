@@ -1,4 +1,4 @@
-package aramframework.com.cmm.security.securedobject.dao;
+package aramframework.com.cmm.security.securedobject;
 
 import java.util.List;
 import java.util.Map;

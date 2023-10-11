@@ -5,7 +5,6 @@
 
 	<select id="selectMenuManageList" resultType="egovMap">
         /* 구현 Sql */
-		<![CDATA[
 			SELECT MENU_NM           		AS "menuNm"
 				 , MENU_KNM          		AS "menuKnm"
 				 , MENU_POS           		AS "menuPos"
@@ -16,26 +15,20 @@
 			 WHERE TRGET_ID = #{trgetId}
 			   AND MENU_NM like '%'|| #{searchKeyword}||'%'
 			 ORDER BY MENU_POS ASC 
-		 ]]>
         /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
 	</select> 
 
 	<!-- 총건수 조회 -->
 	<select id="selectMenuManageListCnt" resultType="int">
-		<![CDATA[
 			SELECT COUNT(MENU_NM) AS "totcnt"
 			  FROM COMTN_CMMNTY_MENU
 			 WHERE TRGET_ID = #{trgetId}
 			   AND MENU_NM like '%'|| #{searchKeyword}||'%'
-		]]>
 	</select>
 
 	<select id="selectMenuListExcel" resultType="egovMap">
         /* 구현 Sql */
-		<![CDATA[
 			SELECT MENU_NM           		AS "menuNm"
 				 , MENU_KNM           		AS "menuKnm"
 				 , MENU_POS          		AS "menuPos"
@@ -48,12 +41,10 @@
 		 	  FROM COMTN_CMMNTY_MENU 
 			 WHERE TRGET_ID = #{trgetId}
 			 ORDER BY MENU_POS ASC 
-		 ]]>
         /* 구현 Sql */
 	</select> 
 		
 	<select id="selectMenuManage" resultType="communityMenuVO">
-		<![CDATA[
 			SELECT MENU_NM           		AS "menuNm"
 				 , MENU_KNM           		AS "menuKnm"
 				 , MENU_POS           		AS "menuPos"
@@ -66,7 +57,6 @@
 		 	  FROM COMTN_CMMNTY_MENU 
 			 WHERE TRGET_ID = #{trgetId}
 			   AND MENU_NM = #{menuNm}
-		]]>
 	</select>
 	
 	<insert id="insertMenuManage">
@@ -108,47 +98,37 @@
 		<if test='newMenuNm != null and newMenuNm != ""'>
 			     , MENU_NM 				= #{newMenuNm}
 		</if>
-		<![CDATA[
 			 WHERE TRGET_ID = #{trgetId}
 			   AND MENU_NM = #{menuNm}
-		]]>
 	</update>
 
 	<delete id="deleteMenuManage">
-		<![CDATA[                          
 			DELETE 
 			  FROM COMTN_CMMNTY_MENU               
 			 WHERE TRGET_ID = #{trgetId}
 			   AND MENU_NM = #{menuNm}
-		]]>                                
 	</delete> 
 	
 	<delete id="deleteMenuManageTrget">
-		<![CDATA[                          
 			DELETE 
 			  FROM COMTN_CMMNTY_MENU               
 			 WHERE TRGET_ID = #{trgetId}
-		]]>                                
 	</delete> 
 	
 	<!-- 메뉴번호 존재여부 조회 -->
 	<select id="selectMenuNmByPk" resultType="int">
-		<![CDATA[
 			SELECT COUNT(MENU_NM) 			AS "totcnt"
 			  FROM COMTN_CMMNTY_MENU 
 			 WHERE TRGET_ID = #{trgetId}
 			   AND MENU_NM = #{menuNm}
-		]]> 
 	</select>
 	
 	<!-- 메뉴별명으로 부터 메뉴번호 조회 -->
 	<select id="selectMenuPosByMenuNm" resultType="String">
-		<![CDATA[
 			SELECT MENU_POS
 			  FROM COMTN_CMMNTY_MENU 
 			 WHERE TRGET_ID = #{trgetId}
 			   AND MENU_NM = #{menuNm}
-		]]>
 	</select>
 	
 </mapper>                            

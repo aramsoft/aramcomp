@@ -6,7 +6,6 @@
 	<!-- 목록조회  -->
 	<select id="selectBBSUseInfs" resultType="egovMap" >
         /* 구현 Sql */
-		<![CDATA[
 			SELECT a.BBS_ID					AS "bbsId"
 				 , f.BBS_NM					AS "bbsNm"
 				 , a.TRGET_ID				AS "trgetId"
@@ -20,32 +19,26 @@
 				   LEFT OUTER JOIN COMTN_BBS_MASTER f
 						ON a.BBS_ID = f.BBS_ID
 			 WHERE a.REGIST_SE_CODE != 'REGC07'
-		]]>
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "BBS_NM"'>
-             	AND f.BBS_NM LIKE '%'|| #{searchKeyword} ||'%'
+               AND f.BBS_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "CMMNTY_NM"'>
-             	AND c.CMMNTY_NM LIKE '%'|| #{searchKeyword} ||'%'
+               AND c.CMMNTY_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "CLB_NM"'>
-             	AND d.CLB_NM  LIKE '%'|| #{searchKeyword} ||'%'
+               AND d.CLB_NM  LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
-		<![CDATA[			
 			 ORDER BY a.TRGET_ID DESC, a.BBS_ID ASC 
-		]]>				
         /* 구현 Sql */
-        <![CDATA[
  			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
 	</select>	
 	
 	<!-- 목록조회_게시물 총갯수  -->
  	<select id="selectBBSUseInfsCnt" resultType="int" >
-		<![CDATA[
 			SELECT COUNT(a.BBS_ID)
 			  FROM COMTN_BBS_USE a
 				   LEFT OUTER JOIN COMTN_CMMNTY c
@@ -53,33 +46,29 @@
 				   LEFT OUTER JOIN COMTN_BBS_MASTER f
 						ON a.BBS_ID = f.BBS_ID
 			 WHERE a.REGIST_SE_CODE != 'REGC07'
-		]]>
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "BBS_NM"'>
-             	AND f.BBS_NM LIKE '%'|| #{searchKeyword} ||'%'
+               AND f.BBS_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "CMMNTY_NM"'>
-             	AND c.CMMNTY_NM LIKE '%'|| #{searchKeyword} ||'%'
+               AND c.CMMNTY_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "CLB_NM"'>
-             	AND d.CLB_NM  LIKE '%'|| #{searchKeyword} ||'%'
+               AND d.CLB_NM  LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
 	</select>	
  
 	<select id="selectBBSUseInfByCmmnty" resultType="egovMap" >
-		<![CDATA[
 			SELECT BBS_ID					AS "bbsId" 
 			  FROM COMTN_BBS_USE
 			 WHERE TRGET_ID = #{cmmntyId} 
-		]]>
 	</select>
 
 	<!-- 상세보기 -->
  	<select id="selectBBSUseInf" resultType="boardUseInfVO" >
- 		<![CDATA[
  			SELECT a.BBS_ID
  			     , f.BBS_NM
  			     , a.TRGET_ID
@@ -101,21 +90,17 @@
 				   LEFT OUTER JOIN COMTN_BBS_MASTER f
 						ON a.BBS_ID = f.BBS_ID
 			 WHERE a.BBS_ID = #{bbsId}
- 		]]>
  	</select>
  
 	<!-- 찾기 -->
  	<select id="existBBSUseInf" resultType="int" >
- 		<![CDATA[
  			SELECT COUNT(BBS_ID)
  			  FROM COMTN_BBS_USE 
  			 WHERE BBS_ID = #{bbsId}
- 		]]>
  	</select>
  	
 	<!-- 입력 -->
 	<insert id="insertBBSUseInf"  >
-		<![CDATA[
 			INSERT INTO COMTN_BBS_USE (
 					BBS_ID
 				  ,	TRGET_ID
@@ -137,40 +122,33 @@
 				  , #{frstRegisterId} 
 				  , now()
 			)
-		]]>
 	</insert>
 	
 	<!-- 수정 -->
  	<update id="updateBBSUseInf" >
- 		<![CDATA[
 			UPDATE COMTN_BBS_USE 
 			   SET LAST_UPDUSR_ID = #{lastUpdusrId}
 			     , LAST_UPDT_PNTTM = now()
- 		]]>
     	<if test='useAt != null and useAt != ""'>
 		   	 	 , USE_AT = #{useAt}
 		</if>
    	    <if test='publicAt != null and publicAt != ""'>
 		   	 	 , PUBLIC_AT = #{publicAt}
 		</if>
-		<![CDATA[
 			 WHERE BBS_ID = #{bbsId}
- 		]]>
  	</update>
 
 	<!-- 삭제 -->
 	<update id="deleteBBSUseInf"  >
-		<![CDATA[
 			UPDATE COMTN_BBS_USE 
 			   SET USE_AT = 'N'
 			     , LAST_UPDUSR_ID = #{lastUpdusrId}
 			     , LAST_UPDT_PNTTM = now()
 			 WHERE BBS_ID = #{bbsId}
-		]]>
 	</update>
 
 	<update id="deleteAllBBSUseInfByCmmnty" >
-		<!-- [CDATA[
+		<!--
 			UPDATE COMTN_BBS_USE 
 			   SET USE_AT = 'N'
 			     , LAST_UPDUSR_ID = #{lastUpdusrId}
@@ -178,14 +156,12 @@
 			WHERE BBS_ID IN 
 				  (SELECT BBS_ID FROM COMTN_BBS_USE
 					WHERE TRGET_ID = #{cmmntyId} )
-		]]-->
-		<![CDATA[
+		-->
 			UPDATE COMTN_BBS_USE 
 			   SET USE_AT = 'N'
 			     , LAST_UPDUSR_ID = #{lastUpdusrId}
 			     , LAST_UPDT_PNTTM = now()
 			 WHERE TRGET_ID = #{cmmntyId}
-		]]>
 	</update>
 
 </mapper>

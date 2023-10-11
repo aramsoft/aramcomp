@@ -6,7 +6,6 @@
 	<!-- 목록조회  -->
 	<select id="selectCommentList" resultType="egovMap" >
         /* 구현 Sql */
-		<![CDATA[
 			SELECT a.COMMENT_NO 			AS "commentNo"
 			     , a.NTT_ID					AS "nttId"
 			     , a.BBS_ID					AS "bbsId"
@@ -23,16 +22,12 @@
 			   AND a.NTT_ID = #{nttId}
 			   AND a.USE_AT = 'Y'
 			 ORDER BY a.FRST_REGIST_PNTTM ASC
-		]]>				
         /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
 	</select>	
 	
 	<!-- 목록조회_게시물 총갯수  -->
 	<select id="selectCommentListCnt" resultType="int" >
-		<![CDATA[
 			SELECT COUNT(COMMENT_NO)
 			  FROM COMTN_COMMENT a
 			  	   LEFT OUTER JOIN COMVN_USER_MASTER b
@@ -40,12 +35,10 @@
 			 WHERE a.BBS_ID = #{bbsId} 
 			   AND a.NTT_ID = #{nttId}
 			   AND a.USE_AT = 'Y'
-		]]>			
 	</select>
 	
 	<!-- 상세보기 -->
 	<select id="selectComment"  resultType="commentVO" >
-		<![CDATA[
 			SELECT a.COMMENT_NO
 				 , a.NTT_ID
 				 , a.BBS_ID
@@ -61,12 +54,10 @@
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
 						ON a.FRST_REGISTER_ID = b.USER_ID
 			 WHERE a.COMMENT_NO = #{commentNo}
-		]]>				
 	</select> 
 
 	<!-- 입력 -->
 	<insert id="insertComment" >
-		<![CDATA[
 		    INSERT INTO COMTN_COMMENT (
 					COMMENT_NO
 				  ,	NTT_ID
@@ -94,12 +85,10 @@
 				  , #{frstRegisterId} 
 				  , sysdate()
 			)
-		]]>
 	</insert>
 	
 	<!-- 수정 -->
  	<update id="updateComment" >
- 		<![CDATA[
 			UPDATE COMTN_COMMENT 
 			   SET WRTER_NM = #{wrterNm}
 			     , PASSWORD = #{commentPassword}
@@ -107,25 +96,20 @@
 			     , LAST_UPDUSR_ID = #{lastUpdusrId}
 			     , LAST_UPDT_PNTTM = sysdate()
 			 WHERE COMMENT_NO = #{commentNo} 
- 		]]>
  	</update>
  	
 	<!-- 삭제 -->
 	<update id="deleteComment">
-		<![CDATA[
 			UPDATE COMTN_COMMENT
 			   SET USE_AT = 'N'
 			 WHERE COMMENT_NO = #{commentNo}
-		]]>			
 	</update>
 	
 	<!-- 패스워드 가져오기 -->
  	<select id="getCommentPassword" resultType="String">
-		<![CDATA[
 			SELECT PASSWORD
 			  FROM COMTN_COMMENT	
 			 WHERE COMMENT_NO = #{commentNo} 		
-		]]>
 	</select>
 	
 </mapper>

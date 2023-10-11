@@ -6,7 +6,6 @@
 	<!-- 목록조회  -->
 	<select id="selectAdressBookList" resultType="egovMap" >
         /* 구현 Sql */
-       <![CDATA[
 			SELECT ADBK_ID					AS "adbkId"
 				 , ADBK_NM					AS "adbkNm"
 				 , OTHBC_SCOPE				AS "othbcScope"
@@ -19,32 +18,26 @@
 					OR (OTHBC_SCOPE = '부서' AND TRGET_ORGNZT_ID = #{trgetOrgnztId})			
 					OR (OTHBC_SCOPE = '개인' AND WRTER_ID = #{wrterId})	
 				   )		
-		]]>		
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "ADBK_NM"'>
-             	AND ADBK_NM LIKE CONCAT('%',#{searchKeyword},'%')
+               AND ADBK_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "OTHBC_SCOPE"'>
-             	AND OTHBC_SCOPE LIKE CONCAT('%',#{searchKeyword},'%')
+               AND OTHBC_SCOPE LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "WRTER_ID"'>
-             	AND WRTER_ID LIKE CONCAT('%',#{searchKeyword},'%') 
+               AND WRTER_ID LIKE CONCAT('%',#{searchKeyword},'%') 
             </when>
         </choose>
 		</if>
-		<![CDATA[			
-			ORDER BY ADBK_NM 
-		]]>				
+			 ORDER BY ADBK_NM 
         /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
 	</select>	
 
 	<!-- 목록조회_게시물 총갯수  -->
 	<select id="selectAdressBookListCnt" resultType="int">
-		<![CDATA[
 			SELECT COUNT(ADBK_ID)
 			  FROM COMTN_ADBK		
 			 WHERE USE_AT = 'Y'
@@ -52,17 +45,16 @@
 					OR (OTHBC_SCOPE = '부서' AND TRGET_ORGNZT_ID = #{trgetOrgnztId})			
 					OR (OTHBC_SCOPE = '개인' AND WRTER_ID = #{wrterId})	
 				   )		
-		]]>	
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "ADBK_NM"'>
-             	AND ADBK_NM LIKE CONCAT('%',#{searchKeyword},'%') 
+               AND ADBK_NM LIKE CONCAT('%',#{searchKeyword},'%') 
             </when>
             <when test='searchCondition == "OTHBC_SCOPE"'>
-             	AND OTHBC_SCOPE LIKE ('%',#{searchKeyword},'%') 
+               AND OTHBC_SCOPE LIKE ('%',#{searchKeyword},'%') 
             </when>
             <when test='searchCondition == "WRTER_ID"'>
-             	AND WRTER_ID LIKE ('%',#{searchKeyword},'%') 
+               AND WRTER_ID LIKE ('%',#{searchKeyword},'%') 
             </when>
         </choose>
 		</if>
@@ -70,7 +62,6 @@
 	
 	<!-- 상세보기 -->
 	<select id="selectAdressBook" resultType="adressBookVO">
-		<![CDATA[
 			SELECT ADBK_ID
 				 , ADBK_NM
 				 , USE_AT
@@ -79,12 +70,10 @@
 				 , TRGET_ORGNZT_ID
 			  FROM COMTN_ADBK
 			 WHERE ADBK_ID = #{adbkId}
-		]]>
 	</select>	
 	
 	<!-- 입력 -->
 	<insert id="insertAdressBook" >
-		<![CDATA[
 			INSERT INTO COMTN_ADBK (
 					ADBK_ID
 				  ,	ADBK_NM
@@ -108,12 +97,10 @@
 				  , #{frstRegisterId} 
 				  , sysdate()
 			)		
-		]]>
 	</insert>
 	
 	<!-- 수정 -->
 	<update id="updateAdressBook" >
-		<![CDATA[
 			UPDATE COMTN_ADBK 
 			   SET ADBK_NM = #{adbkNm}
 			     , USE_AT = #{useAt}
@@ -122,23 +109,19 @@
 			     , LAST_UPDUSR_ID = #{lastUpdusrId}
 			     , LAST_UPDT_PNTTM = sysdate()
 			 WHERE ADBK_ID = #{adbkId}			
-		]]>
 	</update>
 
 	<!-- 삭제 -->
 	<update id="deleteAdressBook" >
-		<![CDATA[
 			UPDATE COMTN_ADBK 
 			   SET USE_AT = #{useAt}
 			     , LAST_UPDUSR_ID = #{lastUpdusrId}
 			     , LAST_UPDT_PNTTM = sysdate()
 			 WHERE ADBK_ID = #{adbkId}			
-		]]>
 	</update>
 
 	<!-- 목록조회(주소록 대상자)  -->
  	<select id="selectUserList" resultType ="adressBookUserVO" >
-      	<![CDATA[
 			 SELECT ADBK_USER_ID 			As "adbkUserId"
 			 	  ,	ADBK_ID 				As "adbkId"
 			 	  ,	IFNULL(EMPLYR_ID,'') 	As "emplyrId"
@@ -147,12 +130,10 @@
 			   FROM COMTN_ADBK_USER
 			  WHERE	ADBK_ID = #{adbkId}
 			  ORDER BY NM ASC					
- 		]]>					
  	</select>
  	
 	<!-- 입력 -->
 	<insert id="insertAdressBookUser" >
-		<![CDATA[
 			INSERT INTO COMTN_ADBK_USER (
 					ADBK_USER_ID
 				  , ADBK_ID
@@ -166,24 +147,20 @@
 				  ,	#{ncrdId}
 				  ,	#{nm}
 			)		
-		]]>
 	</insert>
 	
 	<!-- 삭제 -->
 	<delete id="deleteAdressBookUser" >
-		<![CDATA[
 			DELETE 
 			  FROM COMTN_ADBK_USER 
 			 WHERE ((EMPLYR_ID IS NULL OR EMPLYR_ID = #{emplyrId}) 
 			        AND (NCRD_ID IS NULL OR NCRD_ID = #{ncrdId}))
 			   AND ADBK_ID = #{adbkId} 
-		]]>
 	</delete>	
 	
 	<!-- 목록조회(사용자)  -->
 	<select id="selectManList" resultType="egovMap"  >
         /* 구현 Sql */
-         <![CDATA[
 			SELECT EMPLYR_ID				AS "emplyrId"
 			     , USER_NM					AS "nm"
 			     , EMAIL_ADRES				AS "emailAdres"
@@ -213,19 +190,13 @@
 			     , MBER_FXNUM 				AS "fxnum" 
 			  FROM COMTN_GNRL_MBER			
 			 WHERE MBER_ID LIKE CONCAT('%',#{searchKeyword},'%')
- 		]]>
-		<![CDATA[			
 			 ORDER BY "nm" 
-		]]>						
         /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
  	</select>
  	
 	<!-- 목록조회(사용자)_게시물 총갯수  -->
 	<select id="selectManListCnt" resultType="int" >
-		<![CDATA[
 			SELECT (
 				SELECT COUNT(USER_NM)
 				  FROM COMTN_EMPLYR_INFO
@@ -239,12 +210,10 @@
 				  FROM COMTN_GNRL_MBER
 				 WHERE MBER_NM LIKE CONCAT('%',#{searchKeyword},'%') )
 			FROM DUAL
-		]]>
 	</select>	
 	
 	<!-- 상세보기(사용자) -->
 	<select id="selectManUser" resultType="adressBookUserVO">
-		<![CDATA[
 			SELECT EMPLYR_ID				AS "emplyrId"
 			     , USER_NM					AS "nm"
 			     , EMAIL_ADRES				AS "emailAdres"
@@ -274,13 +243,11 @@
 			     , MBER_FXNUM 				AS "fxnum"
 			  FROM COMTN_GNRL_MBER			
 			 WHERE MBER_ID = #{id}
-		]]>
 	</select>	
 	
 	<!-- 목록조회(명함)  -->
  	<select id="selectCardList" resultType="egovMap"  >
         /* 구현 Sql */
-     	<![CDATA[
 			SELECT NCRD_ID					AS "ncrdId" 
 				 , NM						AS "nm"
 				 , EMAIL_ADRES				AS "emailAdres"
@@ -289,29 +256,21 @@
 			  FROM COMTN_NCRD
 			 WHERE 1=1 
 			   AND NM LIKE CONCAT('%',#{searchKeyword},'%')
- 		]]>
-		<![CDATA[			
 			 ORDER BY NM 
-		]]>							
         /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
  	</select>
  	
 	<!-- 목록조회(명함)_게시물 총갯수  -->
 	<select id="selectCardListCnt" resultType="int" >
-		<![CDATA[
 			SELECT COUNT(NM)
 			  FROM COMTN_NCRD
 			 WHERE 1=1 
 			   AND NM LIKE CONCAT('%',#{searchKeyword},'%') 
-		]]>
 	</select>
 
 	<!-- 상세보기(명함) -->
 	<select id="selectCardUser" resultType="adressBookUserVO">
-		<![CDATA[
 			SELECT NCRD_ID				AS "ncrdId"
 				 , NM					AS "nm"
 				 , EMAIL_ADRES			AS "emailAdres"
@@ -319,7 +278,6 @@
 				 , MBTLNUM     			AS "moblphonNo"   
 			  FROM COMTN_NCRD
 			 WHERE NCRD_ID = #{id}
-		]]>
 	</select>	
 
 </mapper>

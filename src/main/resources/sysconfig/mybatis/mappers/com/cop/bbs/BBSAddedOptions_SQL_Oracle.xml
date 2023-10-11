@@ -5,7 +5,6 @@
 
 	<!-- 상세보기 -->
 	<select id="selectAddedOptionsInf" resultType="boardMasterVO" >
-		<![CDATA[
 			SELECT a.BBS_ID					AS "bbsId"
 				 , a.ANSWER_AT				AS "commentAt"
 				 , a.STSFDG_AT				AS "stsfdgAt"
@@ -16,12 +15,10 @@
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
 						ON a.FRST_REGISTER_ID = b.USER_ID		
 			 WHERE a.BBS_ID = #{bbsId}
-		]]>				
 	</select> 
 	
 	<!-- 입력 -->
 	<insert id="insertAddedOptionsInf" >
-		<![CDATA[
 			INSERT INTO COMTN_BBS_MASTER_OPTN (
 					BBS_ID
 				  ,	ANSWER_AT
@@ -32,49 +29,42 @@
 				  , LAST_UPDT_PNTTM 
 			 ) VALUES ( 
 			 		#{bbsId} 
-		]]>
         <choose>
             <when test='option == "comment"'>
-				<![CDATA[ , 'Y', 'N' ]]>
+				  , 'Y', 'N' 
             </when>
             <when test='option == "stsfdg"'>
-				<![CDATA[ , 'N', 'Y' ]]>
+				  , 'N', 'Y' 
             </when>
             <otherwise>
-				<![CDATA[ , 'N', 'N' ]]>
+				  , 'N', 'N' 
             </otherwise>
         </choose>
-		<![CDATA[
 				  , #{frstRegisterId}
 				  , SYSDATE
 				  , #{frstRegisterId} 
 				  , SYSDATE
 			 )			
-		]]>
 	</insert>
 
 	<!-- 수정 -->
  	<update id="updateAddedOptionsInf" >
- 		<![CDATA[
 			UPDATE COMTN_BBS_MASTER_OPTN 
 			   SET 
-		]]>
         <choose>
             <when test='option == "comment"'>
-				<![CDATA[ ANSWER_AT = 'Y', STSFDG_AT = 'N' ]]>
+				   ANSWER_AT = 'Y', STSFDG_AT = 'N'
             </when>
             <when test='option == "stsfdg"'>
-				<![CDATA[ ANSWER_AT = 'N', STSFDG_AT = 'Y' ]]>
+				   ANSWER_AT = 'N', STSFDG_AT = 'Y' 
             </when>
             <otherwise>
-				<![CDATA[ ANSWER_AT = 'N', STSFDG_AT = 'N' ]]>
+				   ANSWER_AT = 'N', STSFDG_AT = 'N' 
             </otherwise>
         </choose>
-		<![CDATA[
-				, LAST_UPDUSR_ID = #{lastUpdusrId}
-				, LAST_UPDT_PNTTM = SYSDATE
-			WHERE BBS_ID = #{bbsId}
- 		]]>
+				 , LAST_UPDUSR_ID = #{lastUpdusrId}
+				 , LAST_UPDT_PNTTM = SYSDATE
+			 WHERE BBS_ID = #{bbsId}
  	</update>
  	
 </mapper>

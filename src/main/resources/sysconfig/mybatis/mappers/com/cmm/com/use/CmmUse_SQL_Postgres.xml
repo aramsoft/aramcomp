@@ -5,7 +5,6 @@
 
 	<!-- 상세보기 -->
 	<select id="selectCmmCodeList" resultType="comCodeVO">
-		<![CDATA[ 
 			SELECT CODE_ID
 				 , CODE
 				 , CODE_NM
@@ -14,11 +13,9 @@
 			 WHERE USE_AT  = 'Y'
 			   AND CODE_ID = #{codeId}
 			 ORDER BY CODE ASC  
-		]]>
 	</select>
 
 	<select id="selectCmmCode" resultType="comCodeVO" >
-		<![CDATA[ 
 			SELECT CODE_ID
 				 , CODE
 				 , CODE_NM
@@ -27,21 +24,18 @@
 			 WHERE USE_AT  = 'Y'
 			   AND CODE_ID = #{codeId}
 			   AND CODE    = #{code}
-		]]>
 	</select>
 	
 	<!-- 상세보기 -->
     <select id="selectOgrnztIdList" resultType="comCodeVO">
-        <![CDATA[ 
             SELECT #{tableNm}     			CODE_ID
             	 , ORGNZT_ID     			CODE
             	 , ORGNZT_NM     			CODE_NM
             	 , ORGNZT_DC     			CODE_DC
               FROM COMTN_ORGNZT_INFO
              WHERE 1=1
-        ]]>
       	<if test='haveDetailCondition != null and haveDetailCondition == "Y"'>
-        	<![CDATA[ AND ORGNZT_ID  LIKE  #{detailConditionValue} ]]>
+        	   AND ORGNZT_ID  LIKE  #{detailConditionValue} 
 		</if>
      </select>
     

@@ -6,7 +6,6 @@
 	<!-- 목록조회  -->
 	<select id="selectSatisfactionList" resultType="egovMap" >
         /* 구현 Sql */
-		<![CDATA[
 			SELECT a.STSFDG_NO				AS "stsfdgNo"
 			     , a.NTT_ID					AS "nttId"
 			     , a.BBS_ID					AS "bbsId"
@@ -24,16 +23,12 @@
 			   AND a.NTT_ID = #{nttId}
 			   AND a.USE_AT = 'Y'
 			 ORDER BY a.FRST_REGIST_PNTTM ASC
-		]]>				
         /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
 	</select>	
 	
 	<!-- 목록조회_게시물 총갯수  -->
 	<select id="selectSatisfactionListCnt" resultType="int" >
-		<![CDATA[
 			SELECT COUNT(STSFDG_NO)
 			  FROM COMTN_STSFDG a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
@@ -41,12 +36,10 @@
 			 WHERE a.BBS_ID = #{bbsId} 
 			   AND a.NTT_ID = #{nttId}
 			   AND a.USE_AT = 'Y'
-		]]>			
 	</select>
 	
 	<!-- 상세보기 -->
 	<select id="selectSatisfaction" resultType="satisfactionVO" >
-		<![CDATA[
 			SELECT a.STSFDG_NO
 			     , a.NTT_ID
 			     , a.BBS_ID
@@ -63,13 +56,10 @@
 			 	   LEFT OUTER JOIN COMVN_USER_MASTER b
 						ON a.FRST_REGISTER_ID = b.USER_ID
 			 WHERE a.STSFDG_NO = #{stsfdgNo}
-		]]>				
 	</select> 
 
 	<!-- 입력 -->
 	<insert id="insertSatisfaction" >
-		
-		<![CDATA[
 			INSERT INTO COMTN_STSFDG (
 					STSFDG_NO
 				  ,	NTT_ID
@@ -99,12 +89,10 @@
 				  , #{frstRegisterId} 
 				  , sysdate()
 			 )
-		]]>
 	</insert>
 	
 	<!-- 수정 -->
  	<update id="updateSatisfaction" >
- 		<![CDATA[
 			UPDATE COMTN_STSFDG 
 			   SET WRTER_NM = #{wrterNm}
 			     , PASSWORD = #{stsfdgPassword}
@@ -113,36 +101,29 @@
 			     , LAST_UPDUSR_ID = #{lastUpdusrId}
 			     , LAST_UPDT_PNTTM = sysdate()
 			 WHERE STSFDG_NO = #{stsfdgNo} 
- 		]]>
  	</update>
  	
 	<!-- 삭제 -->
 	<update id="deleteSatisfaction" >
-		<![CDATA[
 			UPDATE COMTN_STSFDG
 			   SET USE_AT = 'N'
 			 WHERE STSFDG_NO = #{stsfdgNo}
-		]]>			
 	</update>
 	
 	<!-- 패스워드 가져오기 -->
  	<select id="getSatisfactionPassword" resultType="String">
-		<![CDATA[
 			SELECT PASSWORD
 			  FROM COMTN_STSFDG	
 			 WHERE STSFDG_NO = #{stsfdgNo}		
-		]]>
 	</select>
 	
 	<!-- 평균값 -->
 	<select id="getSummary" resultType="float" >
-		<![CDATA[
 			SELECT IFNULL(AVG(STSFDG), 0)
 			  FROM COMTN_STSFDG 
 			 WHERE BBS_ID = #{bbsId} 
 			   AND NTT_ID = #{nttId}
 			   AND USE_AT = 'Y'
-		]]>			
 	</select>
 	
 </mapper>

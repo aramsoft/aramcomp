@@ -6,7 +6,6 @@
 	<!-- 목록조회  -->
 	<select id="selectBoardArticleList" resultType="egovMap" >
         /* 구현 Sql */
-		<![CDATA[
 			SELECT a.BBS_ID					AS "bbsId" 
 				 , a.NTT_ID					AS "nttId" 
 			     , a.NTT_SJ					AS "nttSj" 
@@ -23,48 +22,41 @@
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
 						ON a.FRST_REGISTER_ID = b.USER_ID 
 			 WHERE a.BBS_ID = #{bbsId}
-		]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "NTT_SJ"'>
-             	AND a.NTT_SJ LIKE '%'|| #{searchKeyword} ||'%'
+               AND a.NTT_SJ LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "NTT_CN"'>
-             	AND a.NTT_CN LIKE '%'|| #{searchKeyword} ||'%'
+               AND a.NTT_CN LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "USER_NM"'>
-             	AND b.USER_NM LIKE '%'|| #{searchKeyword} ||'%'
+               AND b.USER_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
-		<![CDATA[			
 			 ORDER BY a.THREAD_GROUP_NO DESC, a.THREAD_NO ASC
-        ]]>			
         /* 구현 Sql */
-        <![CDATA[
  			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
 	</select>	
 	
 	<!-- 목록조회_게시물 총갯수  -->
 	<select id="selectBoardArticleListCnt" resultType="int" >
-		<![CDATA[
 			SELECT COUNT(a.NTT_ID)
 			  FROM COMTN_BBS a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
 						ON a.FRST_REGISTER_ID = b.USER_ID 
 			 WHERE a.BBS_ID = #{bbsId}
-		]]>
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "NTT_SJ"'>
-             	AND a.NTT_SJ LIKE '%'|| #{searchKeyword} ||'%'
+               AND a.NTT_SJ LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "NTT_CN"'>
-             	AND a.NTT_CN LIKE '%'|| #{searchKeyword} ||'%'
+               AND a.NTT_CN LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "USER_NM"'>
-             	AND b.USER_NM LIKE '%'|| #{searchKeyword} ||'%'
+               AND b.USER_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
@@ -72,7 +64,6 @@
  
 	<!-- 상세보기 -->
 	<select id="selectBoardArticle" resultType="boardVO" >
-		<![CDATA[
 			SELECT a.BBS_ID
 			     , a.NTT_ID
 				 , a.NTT_SJ
@@ -98,7 +89,6 @@
 						ON a.FRST_REGISTER_ID = b.USER_ID 
 			 WHERE a.BBS_ID = #{bbsId}	
 			   AND a.NTT_ID = #{nttId}	
-		]]>				
 	</select> 
 
 	<!-- 입력 -->
@@ -108,7 +98,6 @@
 			  FROM COMTN_BBS
 			 WHERE BBS_ID = #{bbsId}
 		</selectKey>
-		<![CDATA[
 			INSERT INTO COMTN_BBS (
 					NTT_ID
 				  ,	BBS_ID
@@ -154,12 +143,10 @@
 				  , now()
 			 	  ,	'Y'
 			 )			
-		]]>
 	</insert>
 	
 	<!-- 답글 입력 -->
 	<insert id="replyBoardArticle" >
-		<![CDATA[
 			INSERT INTO COMTN_BBS (
 					NTT_ID
 				  , BBS_ID
@@ -205,40 +192,32 @@
 				  , now()
 			 	  ,	'Y'
 			 )			
-		]]>
 	</insert>	
 	
 	<select id="getParentThreadNo" resultType="int">
-		<![CDATA[
 			SELECT THREAD_NO 
 			  FROM COMTN_BBS
 			 WHERE BBS_ID = #{bbsId} 
 			   AND NTT_ID = #{parntsNttId}			
-		]]>
 	</select>
 	
  	<update id="updateThreadNo" >
- 		<![CDATA[
 			UPDATE COMTN_BBS 
 			   SET THREAD_NO = #{threadNo}
 			 WHERE BBS_ID = #{bbsId} 
 			   AND NTT_ID = #{nttId}
- 		]]>
  	</update>
  	
  	<update id="updateOtherThreadNo" >
- 		<![CDATA[
 			UPDATE COMTN_BBS 
 			   SET THREAD_NO = THREAD_NO + 1
 			 WHERE BBS_ID = #{bbsId} 
 			   AND THREAD_GROUP_NO = #{threadGroupNo}
 			   AND THREAD_NO > #{threadNo}
- 		]]>
  	</update>
  	
 	<!-- 수정 -->
  	<update id="updateBoardArticle" >
- 		<![CDATA[
 			UPDATE COMTN_BBS 
 			   SET NTT_SJ = #{nttSj}
 			     , NTT_CN = #{nttCn, jdbcType=CLOB}
@@ -252,21 +231,17 @@
 			     , LAST_UPDT_PNTTM = now()
 			 WHERE BBS_ID = #{bbsId}
 			   AND NTT_ID = #{nttId}
- 		]]>
  	</update>
 
  	<update id="updateRdcnt" >
- 		<![CDATA[
 			UPDATE COMTN_BBS 
 			   SET RDCNT = RDCNT+1
 			 WHERE BBS_ID = #{bbsId}
 			   AND NTT_ID = #{nttId}
- 		]]>
  	</update>
 
 	<!-- 삭제 -->
  	<update id="deleteBoardArticle" >
- 		<![CDATA[
 			UPDATE COMTN_BBS 
 			   SET NTT_SJ = #{nttSj}
 			     , USE_AT = 'N'
@@ -274,57 +249,45 @@
 			     , LAST_UPDT_PNTTM = now()
 			 WHERE BBS_ID = #{bbsId}
 			   AND NTT_ID = #{nttId}
- 		]]>
  	</update>
 
 	<!-- 완전삭제 -->
 	<delete id="eraseBoardArticle" > 
-		<![CDATA[
 			DELETE 
 			  FROM COMTN_BBS 
 			 WHERE BBS_ID = #{bbsId}
 			   AND NTT_ID = #{nttId}
-		]]>
 	</delete>
 	<delete id="eraseComment" > 
-		<![CDATA[
 			DELETE 
 			  FROM COMTN_COMMENT 
 			 WHERE BBS_ID = #{bbsId}
 			   AND NTT_ID = #{nttId}
-		]]>
 	</delete>
 	<delete id="eraseSatisfaction" > 
-		<![CDATA[
 			DELETE 
 			  FROM COMTN_STSFDG 
 			 WHERE BBS_ID = #{bbsId}
 			   AND NTT_ID = #{nttId}
-		]]>
 	</delete>
 	<delete id="eraseScrap" > 
-		<![CDATA[
 			DELETE 
 			  FROM COMTN_SCRAP 
 			 WHERE BBS_ID = #{bbsId}
 			   AND NTT_ID = #{nttId}
-		]]>
 	</delete>
 	<!-- 완전삭제 -->
 
 	<select id="getPasswordInf" resultType="String">
-		<![CDATA[
 			SELECT PASSWORD
 			  FROM COMTN_BBS	
 			 WHERE BBS_ID = #{bbsId}
 			   AND NTT_ID = #{nttId}				
-		]]>
 	</select>
 
 	<!-- 목록조회(방명록)  -->
 	<select id="selectGuestList" resultType="boardVO" >
         /* 구현 Sql */
-		<![CDATA[
 			SELECT a.NTT_ID					AS "nttId"
 			     , a.NTCR_NM				AS "ntcrNm"
 			     , a.NTT_CN					AS "nttCn"
@@ -337,31 +300,24 @@
 			 WHERE a.BBS_ID = #{bbsId}
 			   AND a.USE_AT = 'Y'
 			 ORDER BY a.SORT_ORDR DESC, a.NTT_NO ASC
-		]]>				
         /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
 	</select>	
 	
 	<!-- 목록조회(방명록)_게시물 총갯수  -->
 	<select id="selectGuestListCnt" resultType="int" >
-		<![CDATA[
 			SELECT COUNT(NTT_ID)
 			  FROM COMTN_BBS 
 			 WHERE BBS_ID = #{bbsId}	
 			   AND USE_AT = 'Y'
-		]]>			
 	</select>	
  	
 	<!-- 삭제 -->
 	<update id="deleteGuestList" >
-		<![CDATA[
 			UPDATE COMTN_BBS
 			   SET USE_AT = 'N'
 			 WHERE BBS_ID = #{bbsId}
 			   AND NTT_ID = #{nttId}
-		]]>			
 	</update>	
 	
 </mapper>

@@ -15,30 +15,40 @@ public class  SecuredObjectDAOImpl implements SecuredObjectMapper {
 	@Autowired
 	private SqlSession sqlSession;
  
-	private static final String NS = "aramframework.com.cmm.security.securedobject.dao.impl.SecuredObjectMapper.";
+	private static final String namespace = "aramframework.com.cmm.security.securedobject.dao.impl.SecuredObjectMapper.";
  
 	@Override
+	public List<Map<String, Object>> loadUsersByUsername(String username){
+		return sqlSession.selectList(namespace+"loadUsersByUsername", username);
+	}
+	
+	@Override
+	public List<Map<String, Object>> loadUserAuthorities(String username) {
+		return sqlSession.selectList(namespace+"loadUserAuthorities", username);
+	}
+	
+	@Override
 	public List<Map<String, Object>> getHierarchicalRoles() {
-		return sqlSession.selectList(NS+"getHierarchicalRoles");
+		return sqlSession.selectList(namespace+"getHierarchicalRoles");
 	}
 	
 	@Override
 	public List<Map<String, Object>> getRolesAndUrl() {
-		return sqlSession.selectList(NS+"getRolesAndUrl");
+		return sqlSession.selectList(namespace+"getRolesAndUrl");
 	}
 	
 	@Override
 	public List<Map<String, Object>> getRolesAndMethod() {
-		return sqlSession.selectList(NS+"getRolesAndMethod");
+		return sqlSession.selectList(namespace+"getRolesAndMethod");
 	}
 	
 	@Override
 	public List<Map<String, Object>> getRolesAndPointcut() {
-		return sqlSession.selectList(NS+"getRolesAndPointcut");
+		return sqlSession.selectList(namespace+"getRolesAndPointcut");
 	}
 	
 	public List<Map<String, Object>> getRegexMatchedRequestMapping(String url) {
-		return sqlSession.selectList(NS+"getRegexMatchedRequestMapping", url);
+		return sqlSession.selectList(namespace+"getRegexMatchedRequestMapping", url);
 	}	
 	
 }	

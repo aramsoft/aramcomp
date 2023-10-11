@@ -86,7 +86,7 @@
 	</beans:bean>
 
 	<authentication-manager alias="authenticationManager">
-		<authentication-provider user-service-ref="jdbcUserService" >
+		<authentication-provider user-service-ref="daoUserService" >
 			<password-encoder ref="passwordEncoder"></password-encoder>
 		</authentication-provider>
 	</authentication-manager>
@@ -105,24 +105,30 @@
     	class="aramframework.com.cmm.security.securedobject.impl.SecuredObjectDAOImpl" >
     </beans:bean>
     
+    <beans:bean id="daoUserService"
+        class="aramframework.com.cmm.security.userdetails.dao.DaoUserDetailsManager" >
+        <beans:property name="securedObjectMapper" ref="securedObjectMapper"/>
+        <beans:property name="roleHierarchy" ref="roleHierarchy"/>
+    </beans:bean>
+
+<!--      
     <beans:bean id="jdbcUserService"
-        class="org.egovframe.rte.fdl.security.userdetails.jdbc.EgovJdbcUserDetailsManager" >
+        class="egovframework.rte.fdl.security.userdetails.jdbc.EgovJdbcUserDetailsManager" >
 
         <beans:property name="usersByUsernameQuery" value=
-        		"SELECT USER_ID, PASSWORD, 1 ENABLED, 
-        		        USER_NM, USER_ZIP, USER_ADRES, USER_EMAIL, USER_SE, ORGNZT_ID, MBTLNUM,
-                        (select a.ORGNZT_NM from COMTN_ORGNZT_INFO a where a.ORGNZT_ID = m.ORGNZT_ID) ORGNZT_NM 
-                   FROM COMVN_USER_MASTER m 
-                  WHERE USER_ID = ? "/>
+        		"SELECT USER_ID, PASSWORD, 1 ENABLED, USER_NM, USER_ZIP,  
+                        USER_ADRES, USER_EMAIL, USER_SE, ORGNZT_ID, ESNTL_ID,
+                        (select a.ORGNZT_NM from COMTN_ORGNZT_INFO a where a.ORGNZT_ID = m.ORGNZT_ID) ORGNZT_NM, MBTLNUM
+                   FROM COMVN_USER_MASTER m WHERE USER_ID = ? "/>
         <beans:property name="authoritiesByUsernameQuery" value=
         		"SELECT A.SCRTY_DTRMN_TRGET_ID USER_ID, A.AUTHOR_CODE AUTHORITY 
                    FROM COMTN_EMPLYR_SCRTY_ESTBS A, COMVN_USER_MASTER B 
-                  WHERE A.SCRTY_DTRMN_TRGET_ID = B.USER_ID 
-                    AND B.USER_ID = ? "/>
+                  WHERE A.SCRTY_DTRMN_TRGET_ID = B.ESNTL_ID AND B.USER_ID = ? "/>
         <beans:property name="roleHierarchy" ref="roleHierarchy"/>
         <beans:property name="dataSource" ref="dataSource"/>
-        <beans:property name="mapClass" value="aramframework.com.cmm.security.userdetails.impl.SessionMapping"/> 
+        <beans:property name="mapClass" value="aramframework.com.cmm.userdetails.impl.SessionMapping"/> 
     </beans:bean>
+-->
     
     <beans:bean id="roleHierarchy" 
         class="org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl" >

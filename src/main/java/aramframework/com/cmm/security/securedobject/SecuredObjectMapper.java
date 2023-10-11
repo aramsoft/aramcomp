@@ -12,6 +12,9 @@ import java.util.Map;
  */
 public interface SecuredObjectMapper {
 
+	public List<Map<String, Object>> loadUsersByUsername(String username);
+	public List<Map<String, Object>> loadUserAuthorities(String username);
+	
 	public List<Map<String, Object>> getHierarchicalRoles();
 	public List<Map<String, Object>> getRolesAndUrl();
 	public List<Map<String, Object>> getRolesAndMethod();

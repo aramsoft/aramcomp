@@ -6,7 +6,6 @@
 	<!-- 목록조회  -->
 	<select id="selectScrapList" resultType="egovMap" >
         /* 구현 Sql */
-		<![CDATA[
 			SELECT a.SCRAP_ID				AS "scrapId"
 			     , a.SCRAP_NM				AS "scrapNm"
 			     , b.USER_NM 				AS "frstRegisterNm"
@@ -16,37 +15,30 @@
 						ON a.FRST_REGISTER_ID = b.USER_ID
 			 WHERE a.USE_AT = 'Y'
 			   AND a.FRST_REGISTER_ID = #{userId}
-		]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "SCRAP_NM"'>
-                AND a.SCRAP_NM LIKE '%'|| #{searchKeyword} ||'%'
+               AND a.SCRAP_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
         </if>
-		<![CDATA[
 			 ORDER BY a.FRST_REGIST_PNTTM DESC
-		]]>				
         /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
 	</select>	
 	
 	<!-- 목록조회_게시물 총갯수  -->
 	<select id="selectScrapListCnt" resultType="int" >
-		<![CDATA[
 			SELECT COUNT(SCRAP_ID)
 			  FROM COMTN_SCRAP a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
 						ON a.FRST_REGISTER_ID = b.USER_ID
 			 WHERE a.USE_AT = 'Y'
 			   AND a.FRST_REGISTER_ID = #{userId}
-		]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "SCRAP_NM"'>
-                AND a.SCRAP_NM LIKE '%'|| #{searchKeyword} ||'%'
+               AND a.SCRAP_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
         </if>
@@ -54,7 +46,6 @@
 	
 	<!-- 상세보기 -->
 	<select id="selectScrap" resultType="scrapVO" >
-		<![CDATA[
 			SELECT a.SCRAP_ID				 
 			     , a.NTT_ID
 			     , a.BBS_ID
@@ -67,12 +58,10 @@
 			       LEFT OUTER JOIN COMVN_USER_MASTER b
 						ON a.FRST_REGISTER_ID = b.USER_ID
 			 WHERE a.SCRAP_ID = #{scrapId}
-		]]>				
 	</select> 
 
 	<!-- 입력 -->
 	<insert id="insertScrap" >
-		<![CDATA[
 			INSERT INTO COMTN_SCRAP (
 					SCRAP_ID
 				  ,	NTT_ID
@@ -94,27 +83,22 @@
 				  , #{frstRegisterId} 
 				  , now()
 			 )
-		]]>
 	</insert>
 	
 	<!-- 수정 -->
  	<update id="updateScrap" >
- 		<![CDATA[
 			UPDATE COMTN_SCRAP 
 			   SET SCRAP_NM 		= #{scrapNm}
 			     , LAST_UPDUSR_ID 	= #{lastUpdusrId}
 			     , LAST_UPDT_PNTTM 	= now()
 			 WHERE SCRAP_ID = #{scrapId} 
- 		]]>
  	</update>
  	
 	<!-- 삭제 -->
 	<update id="deleteScrap" >
-		<![CDATA[
 			UPDATE COMTN_SCRAP
 			   SET USE_AT = 'N'
 			 WHERE SCRAP_ID = #{scrapId}
-		]]>			
 	</update>
 	
 </mapper>

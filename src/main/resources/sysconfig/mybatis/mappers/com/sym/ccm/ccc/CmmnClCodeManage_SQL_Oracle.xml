@@ -5,52 +5,44 @@
 
 	<!-- 목록조회  -->
 	<select id="selectCmmnClCodeList" resultType="egovMap">
-		<![CDATA[
             SELECT *
               FROM (
             SELECT ROWNUM RNUM, ALL_LIST.*
               FROM (
-        ]]>
         /* 구현 Sql */
-		<![CDATA[
 			SELECT CL_CODE					AS "clCode"
 			     , CL_CODE_NM				AS "clCodeNm"
 			     , USE_AT					AS "useAt"
 			  FROM COMTC_CMMN_CL_CODE
 			 WHERE USE_AT = 'Y'
-		]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "CL_CODE"'>
-				AND CL_CODE LIKE '%' || #{searchKeyword} || '%'
+			   AND CL_CODE LIKE '%' || #{searchKeyword} || '%'
             </when>
             <when test='searchCondition == "CL_CODE_NM"'>
-				AND CL_CODE_NM LIKE '%' || #{searchKeyword} || '%'
+			   AND CL_CODE_NM LIKE '%' || #{searchKeyword} || '%'
             </when>
         </choose>
 		</if>
         /* 구현 Sql */
-        <![CDATA[
                    ) ALL_LIST
                    )
              WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
-        ]]>			
 	</select>
 
 	<!-- 목록조회_게시물 총갯수  -->
 	<select id="selectCmmnClCodeListCnt" resultType="int">
-		<![CDATA[
 			SELECT COUNT(*) totcnt
 			  FROM COMTC_CMMN_CL_CODE
 			 WHERE USE_AT = 'Y'
-		]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "CL_CODE"'>
-				AND CL_CODE LIKE '%' || #{searchKeyword} || '%'
+			   AND CL_CODE LIKE '%' || #{searchKeyword} || '%'
             </when>
             <when test='searchCondition == "CL_CODE_NM"'>
-				AND CL_CODE_NM LIKE '%' || #{searchKeyword} || '%'
+			   AND CL_CODE_NM LIKE '%' || #{searchKeyword} || '%'
             </when>
         </choose>
 		</if>
@@ -58,19 +50,16 @@
 
 	<!-- 상세보기 -->
 	<select id="selectCmmnClCodeDetail" resultType="cmmnClCodeVO">
-		<![CDATA[
             SELECT CL_CODE    				AS "clCode"
 			     , CL_CODE_NM 				AS "clCodeNm"
                  , CL_CODE_DC 				AS "clCodeDc"
                  , USE_AT     				AS "useAt"
               FROM COMTC_CMMN_CL_CODE
              WHERE CL_CODE    = #{clCode}
-		]]>
 	</select>
 
 	<!-- 입력 -->
 	<insert id="insertCmmnClCode">
-		<![CDATA[
 		    INSERT INTO  COMTC_CMMN_CL_CODE (  
 		    	   CL_CODE
 		         , CL_CODE_NM
@@ -90,12 +79,10 @@
 				 , #{frstRegisterId} 
 				 , SYSDATE
 		    )
-		]]>
 	</insert>
 
 	<!-- 수정 -->
 	<update id="updateCmmnClCode">
-		<![CDATA[
             UPDATE COMTC_CMMN_CL_CODE
                SET CL_CODE_NM        = #{clCodeNm}
                  , CL_CODE_DC        = #{clCodeDc}
@@ -103,16 +90,13 @@
                  , LAST_UPDUSR_ID    = #{lastUpdusrId}
                  , LAST_UPDT_PNTTM 	 = SYSDATE
              WHERE CL_CODE           = #{clCode}
-		]]>
 	</update>
 
 	<!-- 삭제 -->
 	<delete id="deleteCmmnClCode">
-		<![CDATA[
             UPDATE COMTC_CMMN_CL_CODE
                SET USE_AT  = 'N'
              WHERE CL_CODE = #{clCode}
-		]]>
 	</delete>
 
 </mapper>

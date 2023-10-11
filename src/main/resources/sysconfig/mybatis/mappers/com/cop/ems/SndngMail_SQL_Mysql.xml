@@ -6,7 +6,6 @@
 	<!-- 발송메일 내역조회 -->
 	<select id="selectSndngMailList" resultType="egovMap">
         /* 구현 Sql */
-		<![CDATA[
 			SELECT mssage_id 				AS "mssageId"
 			     , (SELECT code_nm 
 			          FROM COMTC_CMMN_DETAIL_CODE 
@@ -19,46 +18,39 @@
 			     , atch_file_id 			AS "atchFileId"
 			  FROM COMTN_EMAIL_DSPTCH_MANAGE
 			 WHERE 1=1
-		]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "SJ"'>
-                AND sj CONCAT('%',#{searchKeyword},'%')
+               AND sj CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "EMAIL_CN"'>
-                AND email_cn LIKE CONCAT('%',#{searchKeyword},'%')
+               AND email_cn LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "SNDR"'>
-                AND sndr LIKE CONCAT('%',#{searchKeyword},'%')
+               AND sndr LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>
-		<![CDATA[		
 			 ORDER BY mssage_id DESC
-		]]>   
         /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
 	</select>
 
 	<!-- 발송메일 내역 총건수 조회 -->
 	<select id="selectSndngMailListCnt" resultType="int">
-		<![CDATA[
 			SELECT COUNT(*) AS totcnt
 			  FROM COMTN_EMAIL_DSPTCH_MANAGE
 			 WHERE 1=1
-		]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "SJ"'>
-                AND sj CONCAT('%',#{searchKeyword},'%')
+               AND sj CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "EMAIL_CN"'>
-                AND email_cn LIKE CONCAT('%',#{searchKeyword},'%')
+               AND email_cn LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "SNDR"'>
-                AND sndr LIKE CONCAT('%',#{searchKeyword},'%')
+               AND sndr LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>
@@ -66,7 +58,6 @@
 	
 	<!-- 발송메일 상세 조회 -->
 	<select id="selectSndngMail" resultType="sndngMailVO">
-		<![CDATA[
 			SELECT mssage_id 		AS "mssageId"		
 			     , sndr 			AS "dsptchPerson"
 			     , rcver 			AS "recptnPerson"
@@ -79,12 +70,10 @@
 			     , atch_file_id 	AS "atchFileId"
 			  FROM COMTN_EMAIL_DSPTCH_MANAGE
 			 WHERE mssage_id = #{mssageId}
-		]]>
 	</select>
 
 	<!-- 발송메일 등록 -->
 	<insert id="insertSndngMail" >
-		<![CDATA[
 			INSERT INTO COMTN_EMAIL_DSPTCH_MANAGE (	
 					MSSAGE_ID
 				  ,	SNDR
@@ -104,30 +93,24 @@
 				  ,	sysdate()
 				  ,	#{atchFileId}
 			)
-		]]>
 	</insert>
 	
 	<!-- 발송메일 결과 수정 -->
 	<update id="updateSndngMail" >
-		<![CDATA[
 			UPDATE COMTN_EMAIL_DSPTCH_MANAGE 
 			   SET SNDNG_RESULT_CODE = #{sndngResultCode}
 			 WHERE MSSAGE_ID = #{mssageId}
-		]]>
 	</update>
 	
 	<!--  발송메일 삭제 -->
 	<delete id="deleteSndngMail" >
-		<![CDATA[
 			DELETE 
 			  FROM COMTN_EMAIL_DSPTCH_MANAGE
 			 WHERE mssage_id = #{mssageId}
-		]]>
 	</delete>
 	
 	<!-- 첨부파일 목록 조회 -->
 	<select id="selectAtchmnFileList" resultType="atchmnFileVO">
-		<![CDATA[
 			SELECT ATCH_FILE_ID
 				 , FILE_SN
 				 , FILE_STRE_COURS
@@ -138,7 +121,6 @@
 				 , FILE_SIZE				
 			  FROM COMTN_FILE_DETAIL
 			 WHERE atch_file_id = #{atchFileId}
-		]]>
 	</select>
 	
 </mapper>

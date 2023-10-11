@@ -4,14 +4,11 @@
 <mapper namespace="aramframework.com.sym.bat.dao.BatchOpertMapper">
 
     <select id="selectBatchOpertList" resultType="egovMap" >
-		<![CDATA[
             SELECT *
               FROM (
             SELECT ROWNUM RNUM, ALL_LIST.*
               FROM (
-        ]]>
         /* 구현 Sql */
-        <![CDATA[ 
             SELECT A.BATCH_OPERT_ID			AS "batchOpertId"
             	 , A.BATCH_OPERT_NM			AS "batchOpertNm"
             	 , A.BATCH_PROGRM			AS "batchProgrm"
@@ -21,48 +18,40 @@
             	 , A.USE_AT					AS "useAt"
               FROM COMTN_BATCH_OPERT A
              WHERE 1=1
-        ]]>
        	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "BATCH_OPERT_NM"'>
-                 AND A.BATCH_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%'
+               AND A.BATCH_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "BATCH_PROGRM"'>
-                 AND A.BATCH_PROGRM LIKE '%'|| #{searchKeyword} ||'%'
+               AND A.BATCH_PROGRM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
-        <![CDATA[
              ORDER BY A.BATCH_OPERT_ID ASC
-        ]]>             
         /* 구현 Sql */
-        <![CDATA[
                    ) ALL_LIST
                    )
              WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
-        ]]>			
     </select>
 
     <select id="selectBatchOpertListCnt" resultType="int" >
-        <![CDATA[
             SELECT COUNT(*) totcnt
               FROM COMTN_BATCH_OPERT A
              WHERE 1=1
-        ]]>
        	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "BATCH_OPERT_NM"'>
-                 AND A.BATCH_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%'
+               AND A.BATCH_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "BATCH_PROGRM"'>
-                 AND A.BATCH_PROGRM LIKE '%'|| #{searchKeyword} ||'%'
+               AND A.BATCH_PROGRM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
     </select>
     
     <select id="selectBatchOpert" resultType="batchOpertVO">
-        <![CDATA[
             SELECT A.BATCH_OPERT_ID
             	 , A.BATCH_OPERT_NM
             	 , A.BATCH_PROGRM
@@ -76,11 +65,9 @@
             	 , A.FRST_REGIST_PNTTM	 	AS "frstRegisterPnttm"
               FROM COMTN_BATCH_OPERT A
              WHERE A.BATCH_OPERT_ID = #{batchOpertId}
-        ]]>
     </select>
 
     <insert id="insertBatchOpert" >
-        <![CDATA[
             INSERT INTO COMTN_BATCH_OPERT (
 	                BATCH_OPERT_ID 
 	              , BATCH_OPERT_NM
@@ -106,11 +93,9 @@
 				  , #{frstRegisterId} 
 				  , SYSDATE
             ) 
-        ]]>
     </insert>
 
      <update id="updateBatchOpert" >
-        <![CDATA[
             UPDATE COMTN_BATCH_OPERT 
                SET BATCH_OPERT_NM 	= #{batchOpertNm}
                  , BATCH_PROGRM 	= #{batchProgrm}
@@ -121,15 +106,12 @@
                  , LAST_UPDUSR_ID 	= #{lastUpdusrId}
                  , LAST_UPDT_PNTTM 	= SYSDATE
              WHERE BATCH_OPERT_ID 	= #{batchOpertId} 
-        ]]>
     </update>
     
     <delete id="deleteBatchOpert" >
-        <![CDATA[
             DELETE
               FROM COMTN_BATCH_OPERT 
              WHERE BATCH_OPERT_ID = #{batchOpertId} 
-        ]]>
     </delete>
     
 </mapper>            

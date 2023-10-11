@@ -5,7 +5,6 @@
 
 	<select id="selectSmsInfs" resultType="egovMap">
         /* 구현 Sql */
-		<![CDATA[
 			SELECT a.SMS_ID					AS "smsId"
 				 , a.TRNSMIS_TELNO 			AS "trnsmitTelno"
 				 , (SELECT COUNT(*) 
@@ -14,50 +13,42 @@
 				 , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
 			  FROM COMTN_SMS a
 			 WHERE 1=1	
-		]]>
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "SMS_ID"'>
-				AND a.SMS_ID in (SELECT SMS_ID 
-					               FROM COMTN_SMS_RECPTN 
-					              WHERE RECPTN_TELNO LIKE '%' || #{searchKeyword} || '%')
+			   AND a.SMS_ID in (SELECT SMS_ID 
+					              FROM COMTN_SMS_RECPTN 
+					             WHERE RECPTN_TELNO LIKE '%' || #{searchKeyword} || '%')
             </when>
             <when test='searchCondition == "TRNSMIS_CN"'>
-                AND a.TRNSMIS_CN LIKE '%'|| #{searchKeyword} ||'%'
+               AND a.TRNSMIS_CN LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
-		<![CDATA[			
 			 ORDER BY a.FRST_REGIST_PNTTM DESC 
-		]]>				
         /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
 	</select>	
 	
 	<select id="selectSmsInfsCnt" resultType="int" >
-		<![CDATA[
 			SELECT COUNT(a.SMS_ID)
 			  FROM COMTN_SMS a
 			 WHERE 1=1 
-		]]>
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "SMS_ID"'>
-				AND a.SMS_ID in (SELECT SMS_ID 
-					               FROM COMTN_SMS_RECPTN 
-					              WHERE RECPTN_TELNO LIKE '%' || #{searchKeyword} || '%')
+			   AND a.SMS_ID in (SELECT SMS_ID 
+					              FROM COMTN_SMS_RECPTN 
+					             WHERE RECPTN_TELNO LIKE '%' || #{searchKeyword} || '%')
             </when>
             <when test='searchCondition == "TRNSMIS_CN"'>
-                AND a.TRNSMIS_CN LIKE '%'|| #{searchKeyword} ||'%'
+               AND a.TRNSMIS_CN LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
 	</select>
 	
 	<select id="selectSmsInf" resultType="smsVO" >
-		<![CDATA[
 			SELECT a.SMS_ID					AS "smsId"
 			     , a.TRNSMIS_TELNO			AS "trnsmitTelno"
 			     , a.TRNSMIS_CN				AS "trnsmitCn"
@@ -68,22 +59,18 @@
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
 						ON a.FRST_REGISTER_ID = b.USER_ID		
 			 WHERE a.SMS_ID = #{smsId}
-		]]>				
 	</select>
 	
 	<select id="selectSmsRecptnInfs" resultType="egovMap" >
-		<![CDATA[
 			SELECT a.SMS_ID					AS "smsId"
 				 , a.RECPTN_TELNO			AS "recptnTelno"
 				 , a.RESULT_CODE			AS "resultCode"
 				 , a.RESULT_MSSAGE			AS "resultMssage"
 			  FROM COMTN_SMS_RECPTN a
 			 WHERE a.SMS_ID = #{smsId}
-		]]>				
 	</select> 
 	
 	<insert id="insertSmsInf" >
-		<![CDATA[
 			INSERT INTO COMTN_SMS (
 					SMS_ID
 				  ,	TRNSMIS_TELNO
@@ -97,11 +84,9 @@
 				  , #{frstRegisterId}
 				  , now()
 			)			
-		]]>
 	</insert>
 	
 	<insert id="insertSmsRecptnInf" >
-		<![CDATA[
 			INSERT INTO COMTN_SMS_RECPTN (
 					SMS_ID
 				  ,	RECPTN_TELNO
@@ -113,17 +98,14 @@
 				  , #{resultCode}
 				  ,	#{resultMssage}
 			)		
-		]]>
 	</insert>
 	
 	<insert id="updateSmsRecptnInf" >
-		<![CDATA[
 			UPDATE COMTN_SMS_RECPTN 
 			   SET RESULT_CODE = #{resultCode}
 			     , RESULT_MSSAGE = #{resultMssage}
 			 WHERE SMS_ID = #{smsId} 
 			   AND RECPTN_TELNO = #{recptnTelno}
-		]]>
 	</insert>
 
 </mapper>

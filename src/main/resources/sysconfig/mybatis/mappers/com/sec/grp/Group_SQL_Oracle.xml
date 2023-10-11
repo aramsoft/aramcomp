@@ -5,62 +5,49 @@
 
 	<!-- 목록조회  -->
     <select id="selectGroupList" resultType="egovMap">
-		<![CDATA[
             SELECT *
               FROM (
             SELECT ROWNUM RNUM, ALL_LIST.*
               FROM (
-        ]]>
         /* 구현 Sql */
-        <![CDATA[            
             SELECT GROUP_ID					
             	 , GROUP_NM					
             	 , GROUP_DC					
             	 , GROUP_CREAT_DE			
               FROM COMTN_AUTHOR_GROUP_INFO
              WHERE 1=1
-        ]]>                
      	<if test='searchKeyword != null and searchKeyword != ""'>
-            	 AND GROUP_NM LIKE '%'|| #{searchKeyword} ||'%'   
+               AND GROUP_NM LIKE '%'|| #{searchKeyword} ||'%'   
 		</if>
-        <![CDATA[            
              ORDER BY GROUP_CREAT_DE DESC
-        ]]>                  
         /* 구현 Sql */
-        <![CDATA[
                    ) ALL_LIST
                    )
              WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
-        ]]>			
     </select>
 
 	<!-- 목록조회_게시물 총갯수  -->
     <select id="selectGroupListCnt" resultType="int">
-        <![CDATA[
             SELECT COUNT(*) totcnt
               FROM COMTN_AUTHOR_GROUP_INFO
              WHERE 1=1
-        ]]>			
-     	<if test='searchKeyword != null and searchKeyword != ""'>
-            	 AND GROUP_NM LIKE '%'|| #{searchKeyword} ||'%'   
+      	<if test='searchKeyword != null and searchKeyword != ""'>
+               AND GROUP_NM LIKE '%'|| #{searchKeyword} ||'%'   
 		</if>
     </select>
 
 	<!-- 상세보기 -->
     <select id="selectGroup" resultType="groupVO">
-        <![CDATA[
             SELECT GROUP_ID					
             	 , GROUP_NM					
             	 , GROUP_DC					
             	 , GROUP_CREAT_DE			
               FROM COMTN_AUTHOR_GROUP_INFO 
              WHERE GROUP_ID=#{groupId}
-        ]]>
     </select>
 
 	<!-- 입력 -->
     <insert id="insertGroup">
-        <![CDATA[
             INSERT INTO COMTN_AUTHOR_GROUP_INFO ( 
             		GROUP_ID
             	  ,	GROUP_NM
@@ -72,26 +59,21 @@
            		  ,	#{groupDc}
            		  ,	SYSDATE
            	)
-        ]]>
     </insert>
     
 	<!-- 수정 -->
     <update id="updateGroup" >
-        <![CDATA[
             UPDATE COMTN_AUTHOR_GROUP_INFO 
                SET GROUP_NM=#{groupNm}
                  , GROUP_DC=#{groupDc}
              WHERE GROUP_ID=#{groupId}
-        ]]>
     </update>
     
 	<!-- 삭제 -->
     <delete id="deleteGroup">
-        <![CDATA[
             DELETE 
               FROM COMTN_AUTHOR_GROUP_INFO 
              WHERE GROUP_ID=#{groupId}
-        ]]>
     </delete>
     
 </mapper>

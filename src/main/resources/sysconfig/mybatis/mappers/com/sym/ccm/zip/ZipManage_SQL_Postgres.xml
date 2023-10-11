@@ -6,7 +6,6 @@
 	<!-- 목록조회  -->
 	<select id="selectZipList" resultType="egovMap">
         /* 구현 Sql */
-		<![CDATA[
 			SELECT ZIP						AS "zip"
 			     , SN						AS "sn"
 			     , CTPRVN_NM				AS "ctprvnNm"
@@ -16,55 +15,50 @@
 			     , LNBR_DONG_HO				AS "lnbrDongHo"
 			  FROM COMTC_ZIP
 			 WHERE 1 = 1
-		]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "ZIP"'>
-                 AND ZIP LIKE '%'|| #{searchKeyword} ||'%'
+               AND ZIP LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "CTPRVN_NM"'>
-                 AND CTPRVN_NM LIKE '%'|| #{searchKeyword} ||'%' 
+               AND CTPRVN_NM LIKE '%'|| #{searchKeyword} ||'%' 
             </when>
             <when test='searchCondition == "SIGNGU_NM"'>
-                 AND SIGNGU_NM LIKE '%'|| #{searchKeyword} ||'%' 
+               AND SIGNGU_NM LIKE '%'|| #{searchKeyword} ||'%' 
             </when>
             <when test='searchCondition == "EMD_NM"'>
-                 AND EMD_NM LIKE '%'|| #{searchKeyword} ||'%'
+               AND EMD_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "LI_BULD_NM"'>
-                 AND LI_BULD_NM LIKE '%'|| #{searchKeyword} ||'%'
+               AND LI_BULD_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
         </if>
         /* 구현 Sql */
-        <![CDATA[
  			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
 	</select>
 
 	<!-- 목록조회_게시물 총갯수  -->
 	<select id="selectZipListCnt" resultType="int">
-		<![CDATA[
 			SELECT COUNT(*) totcnt
 			  FROM COMTC_ZIP
 			 WHERE 1 = 1
-		]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "ZIP"'>
-                 AND ZIP LIKE '%'|| #{searchKeyword} ||'%'
+               AND ZIP LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "CTPRVN_NM"'>
-                 AND CTPRVN_NM LIKE '%'|| #{searchKeyword} ||'%'
+               AND CTPRVN_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "SIGNGU_NM"'>
                  AND SIGNGU_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "EMD_NM"'>
-                 AND EMD_NM LIKE '%'|| #{searchKeyword} ||'%'
+               AND EMD_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "LI_BULD_NM"'>
-                 AND LI_BULD_NM LIKE '%'|| #{searchKeyword} ||'%'
+               AND LI_BULD_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
         </if>
@@ -72,7 +66,6 @@
 
 	<!-- 상세보기 -->
 	<select id="selectZipDetail" resultType="zipVO">
-		<![CDATA[
 			SELECT ZIP           			AS "zip"
 			     , SN            			AS "sn"
 			     , CTPRVN_NM     			AS "ctprvnNm"
@@ -83,7 +76,6 @@
 			  FROM COMTC_ZIP
              WHERE ZIP = #{zip}
                AND SN  = #{sn}
-		]]>
 	</select>
 
 	<!-- 입력 -->
@@ -93,7 +85,6 @@
 			  FROM COMTC_ZIP
 	    </selectKey>
 
-		<![CDATA[
 			INSERT INTO  COMTC_ZIP (  
 				   ZIP
 			     , SN
@@ -119,12 +110,10 @@
 				 , #{frstRegisterId} 
 				 , now()
 			)
-		]]>
 	</insert>
 
 	<!-- 수정 -->
 	<update id="updateZip">
-		<![CDATA[
             UPDATE COMTC_ZIP
                SET CTPRVN_NM         = #{ctprvnNm}
                  , SIGNGU_NM         = #{signguNm}
@@ -135,21 +124,17 @@
                  , LAST_UPDT_PNTTM   = now()
              WHERE ZIP               = #{zip}
                AND SN                = #{sn}
-		]]>
 	</update>
 
 	<!-- 삭제 -->
 	<delete id="deleteZip">
-		<![CDATA[
             DELETE
               FROM COMTC_ZIP
              WHERE ZIP = #{zip}
-		]]>
 	</delete>
 
 	<!-- 엑셀입력 -->
 	<insert id="insertExcelZip">
-		<![CDATA[
 			INSERT INTO  COMTC_ZIP (  
 				   ZIP
 			     , SN
@@ -175,20 +160,16 @@
 				 , #{frstRegisterId} 
 				 , now()
 			)
-		]]>
 	</insert>
 
 	<!-- 전체삭제 -->
 	<delete id="deleteAllZip">
-		<![CDATA[
             DELETE
               FROM COMTC_ZIP
-		]]>
 	</delete>
 
 	<!-- 엑셀입력(아람) -->
 	<insert id="insertExcelZipAram">
-		<![CDATA[
 			INSERT INTO  COMTC_ZIP_ARAM (  
 				   ZIP
 			     , SN
@@ -226,15 +207,12 @@
 			     , #{fixDate}
 			     , #{address}
 			)
-		]]>
 	</insert>
 
 	<!-- 전체삭제(아람) -->
 	<delete id="deleteAllZipAram">
-		<![CDATA[
             DELETE
               FROM COMTC_ZIP_ARAM
-		]]>
 	</delete>
 
 </mapper>

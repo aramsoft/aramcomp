@@ -5,65 +5,52 @@
 
 	<!-- 전체조회  -->
     <select id="selectAuthorAllList" resultType="egovMap">
-        <![CDATA[
             SELECT AUTHOR_CODE				
             	 , AUTHOR_NM				
             	 , AUTHOR_DC				
             	 , AUTHOR_CREAT_DE			
               FROM COMTN_AUTHOR_INFO
-        ]]>              
     </select>
     
 	<!-- 목록조회  -->
     <select id="selectAuthorList" resultType="egovMap">
         /* 구현 Sql */
-        <![CDATA[
             SELECT AUTHOR_CODE				
             	 , AUTHOR_NM				
             	 , AUTHOR_DC				
             	 , AUTHOR_CREAT_DE			
               FROM COMTN_AUTHOR_INFO
              WHERE 1=1
-        ]]>              
      	<if test='searchKeyword != null and searchKeyword != ""'>
-        		AND AUTHOR_NM LIKE CONCAT('%',#{searchKeyword},'%')    
+        	   AND AUTHOR_NM LIKE CONCAT('%',#{searchKeyword},'%')    
 		</if>
-        <![CDATA[            
-            ORDER BY AUTHOR_CREAT_DE DESC
-        ]]>                 
+             ORDER BY AUTHOR_CREAT_DE DESC
         /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
     </select>
 
 	<!-- 목록조회_게시물 총갯수  -->
     <select id="selectAuthorListCnt" resultType="int">
-        <![CDATA[
             SELECT COUNT(*) totcnt
               FROM COMTN_AUTHOR_INFO
              WHERE 1=1
-        ]]>			
      	<if test='searchKeyword != null and searchKeyword != ""'>
-        		AND AUTHOR_NM LIKE CONCAT('%',#{searchKeyword},'%')    
+        	   AND AUTHOR_NM LIKE CONCAT('%',#{searchKeyword},'%')    
 		</if>
     </select>
     
 	<!-- 상세보기 -->
     <select id="selectAuthor" resultType="authorVO">
-        <![CDATA[
             SELECT AUTHOR_CODE				
             	 , AUTHOR_NM				
             	 , AUTHOR_DC				
             	 , AUTHOR_CREAT_DE			
               FROM COMTN_AUTHOR_INFO 
              WHERE AUTHOR_CODE=#{authorCode}
-        ]]>
     </select>
     
 	<!-- 입력 -->
     <insert id="insertAuthor" >
-        <![CDATA[
             INSERT INTO COMTN_AUTHOR_INFO ( 
             		AUTHOR_CODE
             	  ,	AUTHOR_NM
@@ -75,26 +62,21 @@
             	  ,	#{authorDc}
             	  ,	sysdate()
             )
-        ]]>  
     </insert>
 
 	<!-- 수정 -->
     <update id="updateAuthor" >
-        <![CDATA[
             UPDATE COMTN_AUTHOR_INFO 
                SET AUTHOR_NM=#{authorNm}
                  , AUTHOR_DC=#{authorDc}
              WHERE AUTHOR_CODE=#{authorCode}
-        ]]>
     </update>
     
 	<!-- 삭제 -->
     <delete id="deleteAuthor">
-        <![CDATA[
             DELETE 
               FROM COMTN_AUTHOR_INFO 
              WHERE AUTHOR_CODE=#{authorCode}
-        ]]>
     </delete>
     
 </mapper>

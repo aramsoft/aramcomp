@@ -5,60 +5,47 @@
 
 	<!-- 목록조회  -->
     <select id="selectDeptList" resultType="egovMap">
-		<![CDATA[
             SELECT *
               FROM (
             SELECT ROWNUM RNUM, ALL_LIST.*
               FROM (
-        ]]>
         /* 구현 Sql */
-       <![CDATA[
             SELECT ORGNZT_ID				
                  , ORGNZT_NM				
                  , ORGNZT_DC				
               FROM COMTN_ORGNZT_INFO 
              WHERE 1=1
-        ]]>                     
      	<if test='searchKeyword != null and searchKeyword != ""'>
-        		AND ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%'
+        	   AND ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%'
 		</if>
-        <![CDATA[                  
              ORDER BY ORGNZT_ID DESC
-		]]>				
         /* 구현 Sql */
-        <![CDATA[
                    ) ALL_LIST
                    )
              WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
-        ]]>			
     </select>
 
 	<!-- 목록조회_게시물 총갯수  -->
     <select id="selectDeptListCnt" resultType="int">
-       <![CDATA[
             SELECT COUNT(*) totcnt
               FROM COMTN_ORGNZT_INFO
              WHERE 1=1
-        ]]>			
      	<if test='searchKeyword != null and searchKeyword != ""'>
-        		AND ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%'
+        	   AND ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%'
 		</if>
     </select>
     
 	<!-- 상세보기 -->
     <select id="selectDept" resultType="deptVO" >
-        <![CDATA[
             SELECT ORGNZT_ID				
                  , ORGNZT_NM				
                  , ORGNZT_DC				
               FROM COMTN_ORGNZT_INFO
              WHERE ORGNZT_ID = #{orgnztId}    
-        ]]>
     </select>
 
 	<!-- 입력 -->
     <insert id="insertDept" >
-        <![CDATA[
             INSERT INTO COMTN_ORGNZT_INFO (
             		ORGNZT_ID
             	  , ORGNZT_NM
@@ -68,26 +55,21 @@
             	  , #{orgnztNm}
             	  , #{orgnztDc}
             )   
-        ]]>
     </insert>     
 
 	<!-- 수정 -->
     <update id="updateDept" >
-        <![CDATA[
             UPDATE COMTN_ORGNZT_INFO
                SET ORGNZT_NM = #{orgnztNm}
                  , ORGNZT_DC = #{orgnztDc}  
              WHERE ORGNZT_ID = #{orgnztId}      
-        ]]>
     </update>    
     
 	<!-- 삭제 -->
     <delete id="deleteDept" >
-        <![CDATA[
             DELETE 
               FROM COMTN_ORGNZT_INFO
              WHERE ORGNZT_ID = #{orgnztId}    
-        ]]>
     </delete>  
 
 </mapper>

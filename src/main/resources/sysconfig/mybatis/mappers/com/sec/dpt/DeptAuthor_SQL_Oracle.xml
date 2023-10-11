@@ -5,52 +5,41 @@
 
 	<!-- 부서조회  -->
     <select id="selectDeptList" resultType="egovMap">
-		<![CDATA[
             SELECT *
               FROM (
             SELECT ROWNUM RNUM, ALL_LIST.*
               FROM (
-        ]]>
         /* 구현 Sql */
-        <![CDATA[
             SELECT ORGNZT_ID 				AS "deptCode" 
                  , ORGNZT_NM 				AS "deptNm" 
               FROM COMTN_ORGNZT_INFO             
              WHERE 1 = 1 
-        ]]>        
      	<if test='searchKeyword != null and searchKeyword != ""'>
-        		AND ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%'
+        	   AND ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%'
 		</if>
         /* 구현 Sql */
-        <![CDATA[
                    ) ALL_LIST
                    )
              WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
-        ]]>			
     </select>
 
 	<!-- 부서조회_게시물 총갯수  -->
    <select id="selectDeptListCnt" resultType="int">
-        <![CDATA[
             SELECT COUNT(*) AS totcnt
               FROM COMTN_ORGNZT_INFO             
              WHERE 1 = 1 
-         ]]>			
      	<if test='searchKeyword != null and searchKeyword != ""'>
-        		AND ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%'
+        	   AND ORGNZT_NM LIKE '%'|| #{searchKeyword} ||'%'
 		</if>
     </select>
 
 	<!-- 목록조회  -->
     <select id="selectDeptAuthorList" resultType="egovMap">
-		<![CDATA[
             SELECT *
               FROM (
             SELECT ROWNUM RNUM, ALL_LIST.*
               FROM (
-        ]]>
         /* 구현 Sql */
-    	<![CDATA[
             SELECT A.USER_ID				AS "userId"
                  , A.USER_NM				AS "userNm"
                  , B.AUTHOR_CODE 			AS "authorCode"
@@ -66,21 +55,17 @@
            		   LEFT OUTER JOIN COMTN_EMPLYR_SCRTY_ESTBS B
            				ON A.USER_ID = B.SCRTY_DTRMN_TRGET_ID 
              WHERE 1 = 1    
-        ]]> 
      	<if test='deptCode != null and deptCode neq ""'>
-            	<![CDATA[ AND A.DEPT_CODE = #{deptCode} ]]>
+               AND A.DEPT_CODE = #{deptCode} 
 		</if>
         /* 구현 Sql */
-        <![CDATA[
                    ) ALL_LIST
                    )
              WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
-        ]]>			
     </select>
 
 	<!-- 목록조회_게시물 총갯수  -->
     <select id="selectDeptAuthorListCnt" resultType="int">
-   		<![CDATA[
         	  SELECT COUNT(*) AS totcnt
               FROM (SELECT A.ORGNZT_ID 		DEPT_CODE 
                          , A.ORGNZT_NM 		DEPT_NM
@@ -93,15 +78,13 @@
                    LEFT OUTER JOIN COMTN_EMPLYR_SCRTY_ESTBS B
                 		ON A.USER_ID = B.SCRTY_DTRMN_TRGET_ID 
              WHERE 1 = 1    
-        ]]>			
      	<if test='deptCode != null and deptCode neq ""'>
-            	<![CDATA[ AND A.DEPT_CODE = #{deptCode} ]]>
+               AND A.DEPT_CODE = #{deptCode} 
 		</if>
     </select>
 
 	<!-- 입력 -->
     <insert id="insertDeptAuthor" >
-        <![CDATA[
             INSERT INTO COMTN_EMPLYR_SCRTY_ESTBS ( 
             		SCRTY_DTRMN_TRGET_ID
             	  ,	AUTHOR_CODE
@@ -109,25 +92,20 @@
             		#{userId}
             	  ,	#{authorCode}
             )
-        ]]>
     </insert>
 
 	<!-- 수정 -->
     <update id="updateDeptAuthor" >
-        <![CDATA[
             UPDATE COMTN_EMPLYR_SCRTY_ESTBS 
                SET AUTHOR_CODE=#{authorCode}
              WHERE SCRTY_DTRMN_TRGET_ID=#{userId}
-        ]]>
     </update>
 
 	<!-- 삭제 -->
     <delete id="deleteDeptAuthor">
-        <![CDATA[
             DELETE 
               FROM COMTN_EMPLYR_SCRTY_ESTBS 
              WHERE SCRTY_DTRMN_TRGET_ID=#{userId}
-        ]]>
     </delete>
 
 </mapper>

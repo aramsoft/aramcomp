@@ -5,7 +5,6 @@
 
     <select id="selectBatchResultList" resultType="batchResultVO">
         /* 구현 Sql */
-        <![CDATA[ 
             SELECT A.BATCH_RESULT_ID
                	 , A.BATCH_SCHDUL_ID
               	 , A.BATCH_OPERT_ID
@@ -31,7 +30,6 @@
 					    	  		 WHERE CODE_ID = 'COM076') C
 					   	ON A.STTUS = C.CODE
             WHERE 1=1
-        ]]>
       	<if test='sttus != null and sttus != "00"'>
 				<![CDATA[ AND A.STTUS = #{sttus} ]]>
 		</if>
@@ -61,7 +59,6 @@
     </select>
 
     <select id="selectBatchResultListCnt" resultType="int" >
-        <![CDATA[
             SELECT COUNT(*) totcnt
               FROM COMTN_BATCH_RESULT A
 			       LEFT OUTER JOIN COMTN_BATCH_OPERT B
@@ -71,7 +68,6 @@
 					    	  		 WHERE CODE_ID = 'COM076') C
 					   	ON A.STTUS = C.CODE
            	 WHERE 1=1
-        ]]>
       	<if test='sttus != null and sttus != "00"'>
 				<![CDATA[ AND A.STTUS = #{sttus} ]]>
 		</if>
@@ -94,7 +90,6 @@
     </select>
     
     <select id="selectBatchResult" resultType="batchResultVO">
-        <![CDATA[
             SELECT A.BATCH_RESULT_ID
             	 , A.BATCH_SCHDUL_ID
             	 , A.BATCH_OPERT_ID
@@ -121,11 +116,9 @@
 					    	  		 WHERE CODE_ID = 'COM076') C
 					   	ON A.STTUS = C.CODE
              WHERE A.BATCH_RESULT_ID = #{batchResultId}
-        ]]>
     </select>
 
     <insert id="insertBatchResult" >
-        <![CDATA[
             INSERT INTO COMTN_BATCH_RESULT (
                 	BATCH_RESULT_ID
                   ,	BATCH_SCHDUL_ID
@@ -151,11 +144,9 @@
 				  , #{frstRegisterId} 
 				  , now()
             ) 
-        ]]>
     </insert>
 
     <update id="updateBatchResult" >
-        <![CDATA[
             UPDATE COMTN_BATCH_RESULT 
                SET ERROR_INFO 		= #{errorInfo, jdbcType=VARCHAR}
                	 , STTUS 			= #{sttus, jdbcType=VARCHAR}
@@ -163,15 +154,12 @@
                	 , LAST_UPDUSR_ID 	= #{lastUpdusrId}
                	 , LAST_UPDT_PNTTM 	= now()
              WHERE BATCH_RESULT_ID 	= #{batchResultId} 
-        ]]>
     </update>
 
     <delete id="deleteBatchResult" >
-        <![CDATA[
             DELETE 
               FROM COMTN_BATCH_RESULT 
              WHERE BATCH_RESULT_ID = #{batchResultId} 
-        ]]>
     </delete>
 
 </mapper>            

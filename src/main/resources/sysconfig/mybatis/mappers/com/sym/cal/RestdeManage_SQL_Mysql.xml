@@ -5,7 +5,6 @@
 
 	<select id="selectRestdeList" resultType="egovMap">
         /* 구현 Sql */
-		<![CDATA[
 			SELECT A.RESTDE_NO				AS "restdeNo"
 				 , A.RESTDE 				AS "restdeDe" 
 				 , A.RESTDE_NM				AS "restdeNm"
@@ -16,28 +15,22 @@
 					    	  		 WHERE CODE_ID = 'COM017') B
 					   	ON A.RESTDE_SE_CODE = B.CODE
 			 WHERE 1=1
-		]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "RESTDE"'>
-				AND A.RESTDE = #{searchKeyword}
+			   AND A.RESTDE = #{searchKeyword}
             </when>
             <when test='searchCondition == "RESTDE_NM"'>
-				AND A.RESTDE_NM LIKE CONCAT('%',#{searchKeyword},'%')
+			   AND A.RESTDE_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>
-		<![CDATA[
 			 ORDER BY RESTDE DESC
-		]]>
         /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
 	</select>
 
 	<select id="selectRestdeListCnt" resultType="int">
-		<![CDATA[
 			SELECT COUNT(*) totcnt 
 			  FROM COMTN_RESTDE A
 				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
@@ -45,21 +38,19 @@
 					    	  		 WHERE CODE_ID = 'COM017') B
 					   	ON A.RESTDE_SE_CODE = B.CODE
 			 WHERE 1=1
-		]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "RESTDE"'>
-				AND A.RESTDE = #{searchKeyword}
+			   AND A.RESTDE = #{searchKeyword}
             </when>
             <when test='searchCondition == "RESTDE_NM"'>
-				AND A.RESTDE_NM LIKE CONCAT('%',#{searchKeyword},'%')
+			   AND A.RESTDE_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>
 	</select>
 
 	<select id="selectRestdeDetail" resultType="restdeVO">
-		<![CDATA[
 			SELECT A.RESTDE_NO      			"restdeNo"
 			     , A.RESTDE      				"restdeDe"
 				 , A.RESTDE_NM      			"restdeNm"
@@ -72,11 +63,9 @@
 					    	  		 WHERE CODE_ID = 'COM017') B
 					   	ON A.RESTDE_SE_CODE = B.CODE
 			 WHERE A.RESTDE_NO      = #{restdeNo}
-		]]>
 	</select>
 
 	<insert id="insertRestde">
-		<![CDATA[
 			INSERT INTO  COMTN_RESTDE (  
 				   RESTDE_NO
 				 , RESTDE
@@ -98,11 +87,9 @@
 				 , #{frstRegisterId} 
 				 , sysdate()
 			) 
-		]]>
 	</insert>
 
 	<update id="updateRestde">
-		<![CDATA[
             UPDATE COMTN_RESTDE 
                SET RESTDE_NM        = #{restdeNm}
 				 , RESTDE_DC        = #{restdeDc}
@@ -110,15 +97,12 @@
                  , LAST_UPDUSR_ID   = #{lastUpdusrId}
                  , LAST_UPDT_PNTTM 	= sysdate()
              WHERE RESTDE_NO        = #{restdeNo}
-		]]>
 	</update>
 
 	<delete id="deleteRestde">
-		<![CDATA[
             DELETE 
               FROM COMTN_RESTDE     
              WHERE RESTDE_NO = #{restdeNo}
-		]]>
 	</delete>
 
 	<select id="selectNormalRestdePopup" resultType="egovMap">
@@ -183,7 +167,6 @@
 	</select>
 
 	<select id="selectNormalDayCal" resultType="egovMap">
-		<![CDATA[
 			SELECT  #{year}               YEAR
 			     ,  #{month}              MONTH
 				 ,  #{day}                DAY
@@ -196,11 +179,9 @@
 			             WHERE  RESTDE = CONCAT(#{year},LPAD(#{month},2,'0'),LPAD(#{day},2,'0'))
 			               AND  RESTDE_SE_CODE IN ('01','02')                                   
 			        ) REST_AT
-		]]>
 	</select>
 	
 	<select id="selectNormalDayRestde" resultType="egovMap">
-		<![CDATA[
             SELECT  #{year}     YEAR
                  ,  #{month}    MONTH
                  ,  #{day}      DAY
@@ -209,11 +190,9 @@
               FROM  COMTN_RESTDE 
              WHERE  RESTDE = CONCAT(#{year},LPAD(#{month},2,'0'),LPAD(#{day},2,'0'))
                AND  RESTDE_SE_CODE   IN ('01','02')       
-		]]>
 	</select>
 
 	<select id="selectNormalMonthRestde" resultType="egovMap">
-		<![CDATA[
             SELECT  #{year}                AS YEAR
                  ,  #{month}               AS MONTH
                  ,  CAST(CAST( SUBSTR(RESTDE,7,2) AS DECIMAL(2)) AS CHAR) AS DAY
@@ -222,7 +201,6 @@
               FROM  COMTN_RESTDE 
              WHERE  RESTDE LIKE CONCAT(#{year},LPAD(#{month},2,'0'),'%')
                AND  RESTDE_SE_CODE   IN ('01','02')       
-		]]>
 	</select>
 
 	<select id="selectAdministRestdePopup" resultType="egovMap">
@@ -287,7 +265,6 @@
 	</select>
 
 	<select id="selectAdministDayCal" resultType="egovMap">
-		<![CDATA[
 			SELECT  #{year}               YEAR
 			     ,  #{month}              MONTH
 				 ,  #{day}                DAY
@@ -300,11 +277,9 @@
 			             WHERE  RESTDE = CONCAT(#{year},LPAD(#{month},2,'0'),LPAD(#{day},2,'0'))
 			               AND  RESTDE_SE_CODE IN ('02','03')                                   
 			        ) REST_AT
-		]]>
 	</select>
 	
 	<select id="selectAdministDayRestde" resultType="egovMap">
-		<![CDATA[
             SELECT  #{year}     YEAR
                  ,  #{month}    MONTH
                  ,  #{day}      DAY
@@ -313,11 +288,9 @@
               FROM  COMTN_RESTDE 
              WHERE  RESTDE = CONCAT(#{year},LPAD(#{month},2,'0'),LPAD(#{day},2,'0'))
                AND  RESTDE_SE_CODE   IN ('02','03')       
-		]]>
 	</select>
 
 	<select id="selectAdministMonthRestde" resultType="egovMap">
-		<![CDATA[
             SELECT  #{year}                AS YEAR
                  ,  #{month}               AS MONTH
                  ,  CAST(CAST( SUBSTR(RESTDE,7,2) AS DECIMAL(2)) AS CHAR) AS DAY
@@ -326,7 +299,6 @@
               FROM  COMTN_RESTDE 
              WHERE  RESTDE LIKE CONCAT(#{year},LPAD(#{month},2,'0'),'%')
                AND  RESTDE_SE_CODE   IN ('02','03')       
-		]]>
 	</select>
 	
 </mapper>            

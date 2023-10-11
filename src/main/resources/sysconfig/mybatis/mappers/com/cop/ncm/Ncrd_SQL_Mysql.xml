@@ -6,7 +6,6 @@
 	<!-- 내명함목록 조회 -->
 	<select id="selectNcrdListMine"  resultType="egovMap">
         /* 구현 Sql */
-		<![CDATA[
 			SELECT a.NCRD_ID				AS "ncrdId"
 			     , b.NM 					AS "ncrdNm"
 			     , b.CMPNY_NM				AS "cmpnyNm"
@@ -20,32 +19,26 @@
 						ON a.EMPLYR_ID = c.USER_ID
 			 WHERE a.USE_AT = 'Y'
 			   AND a.EMPLYR_ID = #{emplyrId}
-		]]>
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "NM"'>
-                AND NM LIKE CONCAT('%',#{searchKeyword},'%')
+               AND NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "CMPNY_NM"'>
-                AND CMPNY_NM LIKE CONCAT('%',#{searchKeyword},'%')
+               AND CMPNY_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "DEPT_NM"'>
-                AND DEPT_NM LIKE CONCAT('%',#{searchKeyword},'%') 
+               AND DEPT_NM LIKE CONCAT('%',#{searchKeyword},'%') 
             </when>
         </choose>
 		</if>
-		<![CDATA[			
 			 ORDER BY NM 
-		]]>			
         /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
 	</select>
 
 	<!-- 내명함목록 총건수 조회 -->
 	<select id="selectNcrdListMineCnt" resultType="int">
-		<![CDATA[
 			SELECT COUNT(a.NCRD_ID)
 			  FROM COMTN_NCRD_USER a 
 				   LEFT OUTER JOIN COMTN_NCRD b
@@ -54,17 +47,16 @@
 						ON a.EMPLYR_ID = c.USER_ID
 			 WHERE a.USE_AT = 'Y'
 			   AND a.EMPLYR_ID = #{emplyrId}
-		]]>
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "NM"'>
-                AND NM LIKE CONCAT('%',#{searchKeyword},'%')
+               AND NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "CMPNY_NM"'>
-                AND CMPNY_NM LIKE CONCAT('%',#{searchKeyword},'%')
+               AND CMPNY_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "DEPT_NM"'>
-                AND DEPT_NM LIKE CONCAT('%',#{searchKeyword},'%') 
+               AND DEPT_NM LIKE CONCAT('%',#{searchKeyword},'%') 
             </when>
         </choose>
 		</if>
@@ -72,7 +64,6 @@
 
 	<!-- 상세 보기 -->
 	<select id="selectNcrdItem" resultType="nameCardVO">
-		<![CDATA[
 			SELECT NCRD_ID				AS "ncrdId"
 			     , NM					AS "ncrdNm"
 			     , OTHBC_SCOPE			AS "othbcScope"
@@ -97,12 +88,10 @@
 			     , FRST_REGISTER_ID		AS "frstRegisterId"
 			  FROM COMTN_NCRD
 			 WHERE NCRD_ID = #{ncrdId}
-		]]>
 	</select>
 		
 	<!-- 입력 -->
 	<insert id="insertNcrdItem" >
-		<![CDATA[
 			INSERT INTO COMTN_NCRD (
 					NCRD_ID
 				  ,	NM
@@ -156,12 +145,10 @@
 				  ,	#{remark}
 				  ,	#{trgetId}
 			)		
-		]]>
 	</insert>
 
 	<!-- 수정 -->
 	<update id="updateNcrdItem" >
-		<![CDATA[
 			UPDATE COMTN_NCRD 
 			   SET NM 				= #{ncrdNm}
 			     , OTHBC_SCOPE 		= #{othbcScope}
@@ -185,22 +172,18 @@
 			     , LAST_UPDUSR_ID 	= #{lastUpdusrId}
 			     , LAST_UPDT_PNTTM 	= sysdate()
 			 WHERE NCRD_ID = #{ncrdId}
-		]]>
 	</update>
 	
 	<!-- 삭제 -->
 	<delete id="deleteNcrdItem" >
-		<![CDATA[
 			DELETE 
 			  FROM COMTN_NCRD 
 			 WHERE NCRD_ID = #{ncrdId}
-		]]>
 	</delete>	
 	
 	<!-- 공개명함목록 조회 -->
 	<select id="selectNcrdListPublic" resultType="egovMap">
         /* 구현 Sql */
-		<![CDATA[
 			SELECT a.NCRD_ID				AS "ncrdId"
 			     , a.NM 					AS "ncrdNm"
 			     , a.CMPNY_NM				AS "cmpnyNm"
@@ -215,32 +198,26 @@
 			 WHERE (a.OTHBC_SCOPE = 'G'
 					OR (a.OTHBC_SCOPE = 'C' AND a.TRGET_ID = #{trgetId})			
 				   )
-		]]>	
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "NM"'>
-                AND a.NM LIKE CONCAT('%',#{searchKeyword},'%')
+               AND a.NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "CMPNY_NM"'>
-                AND a.CMPNY_NM LIKE CONCAT('%',#{searchKeyword},'%')
+               AND a.CMPNY_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "DEPT_NM"'>
-                AND a.DEPT_NM LIKE CONCAT('%',#{searchKeyword},'%')
+               AND a.DEPT_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>
-		<![CDATA[			
 			 ORDER BY NM 
-		]]>			
         /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
 	</select>	
 
 	<!-- 공개명함목록 총건수 조회 -->
 	<select id="selectNcrdListPublicCnt" resultType="int">
-		<![CDATA[
 			SELECT COUNT(a.NCRD_ID)
 			  FROM COMTN_NCRD a
 				   LEFT OUTER JOIN (SELECT NCRD_ID, EMPLYR_ID
@@ -250,17 +227,16 @@
 			 WHERE (a.OTHBC_SCOPE = 'G'
 					OR (a.OTHBC_SCOPE = 'C' AND a.TRGET_ID = #{trgetId})			
 				   )
-		]]>	
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "NM"'>
-                AND a.NM LIKE CONCAT('%',#{searchKeyword},'%')
+               AND a.NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "CMPNY_NM"'>
-                AND a.CMPNY_NM LIKE CONCAT('%',#{searchKeyword},'%')
+               AND a.CMPNY_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "DEPT_NM"'>
-                AND a.DEPT_NM LIKE CONCAT('%',#{searchKeyword},'%')
+               AND a.DEPT_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>
@@ -268,7 +244,6 @@
 
 	<!-- 입력(명함사용정보) -->
 	<insert id="insertNcrdUseInf" >
-		<![CDATA[
 			INSERT INTO COMTN_NCRD_USER	(
 					NCRD_ID
 				  ,	EMPLYR_ID
@@ -282,17 +257,14 @@
 				  ,	#{registSeCode}
 				  , #{useAt}
 			)
-		]]>
 	</insert>
 	
 	<!-- 삭제 -->
 	<delete id="deleteNcrdUseInf" >
-		<![CDATA[
 			DELETE 
 			  FROM COMTN_NCRD_USER 
 			 WHERE NCRD_ID = #{ncrdId}
 			   AND EMPLYR_ID = #{emplyrId}
-		]]>
 	</delete>
 		
 </mapper>

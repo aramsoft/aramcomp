@@ -6,7 +6,6 @@
 	<!-- 목록조회  -->
      <select id="selectAuthorResourceList" resultType="egovMap">
         /* 구현 Sql */
-		<![CDATA[
             SELECT A.RESOURCE_CODE				AS "resourceCode" 
                  , A.RESOURCE_NM				AS "resourceNm" 
                  , A.RESOURCE_DC				AS "resourceDc" 
@@ -19,28 +18,22 @@
                    				      FROM COMTN_AUTHOR_RESOURCE 
                    					 WHERE AUTHOR_CODE = #{authorCode}) B
                 		ON A.RESOURCE_CODE = B.RESOURCE_CODE        
-        ]]>
         /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
     </select>
 
 	<!-- 목록조회_게시물 총갯수  -->
     <select id="selectAuthorResourceListCnt" resultType="int">
-		<![CDATA[
             SELECT COUNT(*) totcnt
               FROM COMTN_RESOURCE_INFO A 
                    LEFT OUTER JOIN (SELECT RESOURCE_CODE, CREAT_DT 
                    					  FROM COMTN_AUTHOR_RESOURCE 
                    					 WHERE AUTHOR_CODE = #{authorCode}) B
                 		ON A.RESOURCE_CODE = B.RESOURCE_CODE
-        ]]>			
     </select>
 
 	<!-- 입력 -->
     <insert id="insertAuthorResource" >
-        <![CDATA[
             INSERT INTO COMTN_AUTHOR_RESOURCE ( 
             		AUTHOR_CODE
             	  ,	RESOURCE_CODE
@@ -50,17 +43,14 @@
             	  ,	#{resourceCode}
             	  ,	now()
             )
-        ]]>
     </insert>
 
 	<!-- 삭제 -->
     <delete id="deleteAuthorResource">
-        <![CDATA[
             DELETE 
               FROM COMTN_AUTHOR_RESOURCE 
              WHERE AUTHOR_CODE=#{authorCode}
                AND RESOURCE_CODE=#{resourceCode}
-        ]]>
     </delete>
     
 </mapper>

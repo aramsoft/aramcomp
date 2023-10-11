@@ -5,14 +5,11 @@
 
 	<!-- 일지정보::목록조회_게시물정보 -->
 	<select id="selectDiaryManageList" resultType="egovMap">
-		<![CDATA[
             SELECT *
               FROM (
             SELECT ROWNUM RNUM, ALL_LIST.*
               FROM (
-        ]]>
         /* 구현 Sql */
-		 <![CDATA[
 			SELECT A.DIARY_ID				AS "diaryId"
 			     , A.DIARY_NM				AS "diaryNm"
 			     , (SELECT SCHDUL_NM 
@@ -27,48 +24,41 @@
 			       ) 						AS "frstRegisterNm"
 			  FROM COMTN_DIARY_INFO A 
 			 WHERE 1=1
-		]]>
   	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "DIARY_NM"'>
-             	AND A.DIARY_NM LIKE '%'|| #{searchKeyword} ||'%'
+               AND A.DIARY_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "DRCT_MATTER"'>
-             	AND A.DRCT_MATTER LIKE '%'|| #{searchKeyword} ||'%' 
+               AND A.DRCT_MATTER LIKE '%'|| #{searchKeyword} ||'%' 
             </when>
             <when test='searchCondition == "PARTCLR_MATTER"'>
-             	AND A.PARTCLR_MATTER LIKE '%'|| #{searchKeyword} ||'%'
+               AND A.PARTCLR_MATTER LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
-		<![CDATA[
 			 ORDER BY A.FRST_REGIST_PNTTM DESC
-		]]>
         /* 구현 Sql */
-        <![CDATA[
                    ) ALL_LIST
                    )
              WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
-        ]]>			
 	</select>
 	
 	<!-- 일지정보::목록조회_게시물 총갯수  -->
 	<select id="selectDiaryManageListCnt" resultType="int">
-		<![CDATA[
 			SELECT COUNT(*) totcnt
 			  FROM COMTN_DIARY_INFO A
 			 WHERE 1=1
- 		]]>
   	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "DIARY_NM"'>
-             	AND A.DIARY_NM LIKE '%'|| #{searchKeyword} ||'%'
+               AND A.DIARY_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "DRCT_MATTER"'>
-             	AND A.DRCT_MATTER LIKE '%'|| #{searchKeyword} ||'%'
+               AND A.DRCT_MATTER LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "PARTCLR_MATTER"'>
-             	AND A.PARTCLR_MATTER LIKE '%'|| #{searchKeyword} ||'%'
+               AND A.PARTCLR_MATTER LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
@@ -76,7 +66,6 @@
 	
 	<!-- 일지정보::상세보기 -->
 	<select id="selectDiaryManageDetail" resultType="diaryManageVO">
-		<![CDATA[
 			SELECT A.DIARY_ID
 			     , A.SCHDUL_ID
 			     , (SELECT SCHDUL_NM 
@@ -93,12 +82,10 @@
 			     , A.LAST_UPDUSR_ID
 			  FROM COMTN_DIARY_INFO A 
 			 WHERE A.DIARY_ID = #{diaryId}  
- 		]]>
 	</select>
 	
 	<!-- 일지정보::입력  -->
 	<insert id="insertDiaryManage">
-	 	<![CDATA[
 			INSERT INTO COMTN_DIARY_INFO ( 
 					DIARY_ID
 				  , SCHDUL_ID
@@ -124,12 +111,10 @@
 				  , #{frstRegisterId} 
 				  , SYSDATE
 			)
-	 	]]>
 	</insert>
 
 	<!-- 일지정보::수정  -->
 	<update id="updateDiaryManage">
-		<![CDATA[
 			UPDATE COMTN_DIARY_INFO 
 			   SET DIARY_PROGRSRT	= #{diaryProcsPte}
 			     , DIARY_NM			= #{diaryNm}
@@ -139,16 +124,13 @@
 			     , LAST_UPDUSR_ID 	= #{lastUpdusrId}
 			     , LAST_UPDT_PNTTM = SYSDATE
 			 WHERE DIARY_ID = #{diaryId} 
-	 	]]>
 	</update>
 	
 	<!-- 일지정보::삭제  -->
 	<delete id="deleteDiaryManage">
-		<![CDATA[
 			DELETE 
 			  FROM COMTN_DIARY_INFO 
 			 WHERE DIARY_ID = #{diaryId}
-		]]>
 	</delete>
 
 </mapper>

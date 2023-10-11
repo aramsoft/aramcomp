@@ -5,7 +5,6 @@
 
     <select id="selectBatchSchdulList" resultType="batchSchdulVO">
         /* 구현 Sql */
-        <![CDATA[ 
            	SELECT A.BATCH_SCHDUL_ID
            		 , A.BATCH_OPERT_ID
            		 , A.START_DELAY
@@ -34,28 +33,22 @@
 					    	  		 WHERE CODE_ID = 'COM047') C
 					   	ON A.EXECUT_CYCLE = C.CODE
              WHERE 1=1
-        ]]>
        	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "BATCH_OPERT_NM"'>
-                 AND B.BATCH_OPERT_NM LIKE CONCAT('%',#{searchKeyword},'%')
+               AND B.BATCH_OPERT_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "BATCH_PROGRM"'>
-                 AND B.BATCH_PROGRM LIKE CONCAT('%',#{searchKeyword},'%')
+               AND B.BATCH_PROGRM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>
-        <![CDATA[
-           	ORDER BY A.BATCH_SCHDUL_ID ASC
-        ]]>             
+           	 ORDER BY A.BATCH_SCHDUL_ID ASC
         /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
     </select>
 
     <select id="selectBatchSchdulListCnt" resultType="int" >
-        <![CDATA[
             SELECT COUNT(*) totcnt
               FROM COMTN_BATCH_SCHDUL A
 		 	   	   LEFT OUTER JOIN COMTN_BATCH_OPERT B
@@ -65,21 +58,19 @@
 					    	  		 WHERE CODE_ID = 'COM047') C
 					   	ON A.EXECUT_CYCLE = C.CODE
              WHERE 1=1
-        ]]>
        	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "BATCH_OPERT_NM"'>
-                 AND B.BATCH_OPERT_NM LIKE CONCAT('%',#{searchKeyword},'%')
+               AND B.BATCH_OPERT_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "BATCH_PROGRM"'>
-                 AND B.BATCH_PROGRM LIKE CONCAT('%',#{searchKeyword},'%')
+               AND B.BATCH_PROGRM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>
     </select>
 
     <select id="selectBatchSchdul" resultType="batchSchdulVO">
-        <![CDATA[
             SELECT A.BATCH_SCHDUL_ID
             	 , A.BATCH_OPERT_ID
            		 , A.START_DELAY
@@ -108,11 +99,9 @@
 					    	  		 WHERE CODE_ID = 'COM047') C
 					   	ON A.EXECUT_CYCLE = C.CODE
              WHERE A.BATCH_SCHDUL_ID = #{batchSchdulId}
-        ]]>
     </select>
 
     <insert id="insertBatchSchdul" >
-        <![CDATA[
             INSERT INTO COMTN_BATCH_SCHDUL (
                 	BATCH_SCHDUL_ID
                   ,	BATCH_OPERT_ID
@@ -144,11 +133,9 @@
 				  , #{frstRegisterId} 
 				  , sysdate()
              ) 
-        ]]>
     </insert>
 
     <update id="updateBatchSchdul" >
-        <![CDATA[
             UPDATE COMTN_BATCH_SCHDUL 
                SET BATCH_OPERT_ID 		= #{batchOpertId}
            		 , START_DELAY			= #{startDelay}
@@ -162,19 +149,15 @@
                	 , LAST_UPDUSR_ID 		= #{lastUpdusrId}
                	 , LAST_UPDT_PNTTM 		= sysdate()
              WHERE BATCH_SCHDUL_ID = #{batchSchdulId} 
-        ]]>
     </update>
 
     <delete id="deleteBatchSchdul" >
-        <![CDATA[
             DELETE 
               FROM COMTN_BATCH_SCHDUL
              WHERE BATCH_SCHDUL_ID = #{batchSchdulId} 
-        ]]>
     </delete>
     
     <select id="selectBatchSchdulDfkList" resultType="batchSchdulDfkVO">
-        <![CDATA[
             SELECT A.BATCH_SCHDUL_ID
             	 , A.EXECUT_SCHDUL_DFK_SE
             	 , B.CODE_NM 				AS "executSchdulDfkSeNm"
@@ -184,11 +167,9 @@
 					    	  		 WHERE CODE_ID = 'COM074') B
 					   	ON A.EXECUT_SCHDUL_DFK_SE = B.CODE
              WHERE A.BATCH_SCHDUL_ID = #{batchSchdulId}
-        ]]>
     </select>
 
     <insert id="insertBatchSchdulDfk" >
-        <![CDATA[
             INSERT INTO COMTN_BATCH_SCHDUL_DFK (
                 	BATCH_SCHDUL_ID
                   ,	EXECUT_SCHDUL_DFK_SE
@@ -196,15 +177,12 @@
                     #{batchSchdulId}
                   , #{executSchdulDfkSe}
             ) 
-        ]]>
     </insert>
 
     <delete id="deleteBatchSchdulDfk" >
-        <![CDATA[
             DELETE 
               FROM COMTN_BATCH_SCHDUL_DFK
              WHERE BATCH_SCHDUL_ID = #{batchSchdulId} 
-        ]]>
     </delete>
     
  </mapper>            

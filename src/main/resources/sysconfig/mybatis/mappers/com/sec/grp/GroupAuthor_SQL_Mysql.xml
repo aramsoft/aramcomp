@@ -6,7 +6,6 @@
 	<!-- 목록조회  -->
     <select id="selectGroupAuthorList" resultType="egovMap">
         /* 구현 Sql */
-        <![CDATA[ 
             SELECT A.USER_ID 				AS "userId"
                  , A.USER_NM 				AS "userNm"
                  , A.MBER_TY_CODE			AS "mberTyCode"
@@ -38,29 +37,25 @@
                    LEFT OUTER JOIN COMTN_EMPLYR_SCRTY_ESTBS B
                 		ON A.USER_ID = B.SCRTY_DTRMN_TRGET_ID
              WHERE 1 = 1    
-        ]]> 
       	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "USER_ID"'>
-                 AND A.USER_ID LIKE CONCAT('%',#{searchKeyword},'%')  
+               AND A.USER_ID LIKE CONCAT('%',#{searchKeyword},'%')  
             </when>
             <when test='searchCondition == "USER_NM"'>
-                 AND A.USER_NM LIKE CONCAT('%',#{searchKeyword},'%')
+               AND A.USER_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "GROUP_ID"'>
-                 AND A.GROUP_ID = #{searchKeyword} 
+               AND A.GROUP_ID = #{searchKeyword} 
             </when>
         </choose>
 		</if>
         /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 		 	 LIMIT #{recordPerPage} OFFSET #{firstIndex}
     </select>
 
 	<!-- 목록조회_게시물 총갯수  -->
     <select id="selectGroupAuthorListCnt" resultType="int">
-        <![CDATA[ 
             SELECT COUNT(*) AS totcnt
               FROM (SELECT MBER_ID 			USER_ID
               	         , MBER_NM 			USER_NM
@@ -83,17 +78,16 @@
                    LEFT OUTER JOIN COMTN_EMPLYR_SCRTY_ESTBS B
                 		ON A.USER_ID = B.SCRTY_DTRMN_TRGET_ID
              WHERE 1 = 1   
-        ]]>			
       	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "USER_ID"'>
-                 AND A.USER_ID LIKE CONCAT('%',#{searchKeyword},'%')  
+               AND A.USER_ID LIKE CONCAT('%',#{searchKeyword},'%')  
             </when>
             <when test='searchCondition == "USER_NM"'>
-                 AND A.USER_NM LIKE CONCAT('%',#{searchKeyword},'%')
+               AND A.USER_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "GROUP_ID"'>
-                 AND A.GROUP_ID = #{searchKeyword} 
+               AND A.GROUP_ID = #{searchKeyword} 
             </when>
         </choose>
 		</if>
@@ -101,7 +95,6 @@
 
 	<!-- 입력 -->
     <insert id="insertGroupAuthor" >
-        <![CDATA[
             INSERT INTO COMTN_EMPLYR_SCRTY_ESTBS ( 
             		SCRTY_DTRMN_TRGET_ID
             	  ,	MBER_TY_CODE
@@ -111,26 +104,21 @@
             	  ,	#{mberTyCode}
             	  , #{authorCode}
             )
-        ]]>
     </insert>
 
 	<!-- 수정 -->
     <update id="updateGroupAuthor" >
-        <![CDATA[
             UPDATE COMTN_EMPLYR_SCRTY_ESTBS 
                SET MBER_TY_CODE=#{mberTyCode}
                  , AUTHOR_CODE=#{authorCode}
              WHERE SCRTY_DTRMN_TRGET_ID=#{userId}
-        ]]>
     </update>
 
 	<!-- 삭제 -->
     <delete id="deleteGroupAuthor">
-        <![CDATA[
             DELETE 
               FROM COMTN_EMPLYR_SCRTY_ESTBS 
              WHERE SCRTY_DTRMN_TRGET_ID=#{userId}
-        ]]>
     </delete>
 
 </mapper>

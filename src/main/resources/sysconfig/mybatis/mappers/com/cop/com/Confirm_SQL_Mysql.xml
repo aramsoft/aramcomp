@@ -6,7 +6,6 @@
 	<!-- 목록조회  -->
 	<select id="selectConfirmRequestList" resultType="egovMap" >
         /* 구현 Sql */
-		<![CDATA[
 			SELECT a.CONFM_NO				AS "confmNumber"
 			     , a.CONFM_RQESTER_ID		AS "confmRqesterId"
 			     , b.USER_NM 				AS "confmRqesterNm"
@@ -31,32 +30,27 @@
 					    	  		 WHERE CODE_ID = 'COM032') g
 				       	ON a.OPERT_TY_CODE = g.CODE
 			 WHERE a.CONFMER_ID = #{confmerId}
-		]]>
+
      	<if test='trgetJobId != null and trgetJobId != ""'>
-				AND a.TRGET_JOB_ID = #{trgetJobId}
+			   AND a.TRGET_JOB_ID = #{trgetJobId}
 		</if>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "CONFM_TY_CODE"'>
-                 AND d.CODE_NM LIKE CONCAT('%',#{searchKeyword},'%')
+               AND d.CODE_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "CONFM_STTUS_CODE"'>
-                 AND e.CODE_NM LIKE CONCAT('%',#{searchKeyword},'%')
+               AND e.CODE_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>
-		<![CDATA[
 			 ORDER BY a.CONFM_NO DESC
-		]]>				
         /* 구현 Sql */
-        <![CDATA[
  			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
 	</select>	
 	
 	<!-- 목록조회_게시물 총갯수  -->
 	<select id="selectConfirmRequestListCnt" resultType="int" >
-		<![CDATA[
 			SELECT COUNT(a.CONFM_NO)
 			  FROM COMTN_CONFM_HISTORY a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
@@ -74,17 +68,16 @@
 					    	  		 WHERE CODE_ID = 'COM032') g
 				       	ON a.OPERT_TY_CODE = g.CODE
 			 WHERE a.CONFMER_ID = #{confmerId}
-		]]>
      	<if test='trgetJobId != null and trgetJobId != ""'>
-				AND a.TRGET_JOB_ID = #{trgetJobId}
+			   AND a.TRGET_JOB_ID = #{trgetJobId}
 		</if>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "CONFM_TY_CODE"'>
-                 AND d.CODE_NM LIKE CONCAT('%',#{searchKeyword},'%')
+               AND d.CODE_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "CONFM_STTUS_CODE"'>
-                 AND e.CODE_NM LIKE CONCAT('%',#{searchKeyword},'%')
+               AND e.CODE_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>
@@ -92,7 +85,6 @@
  
 	<!-- 상세보기 -->
 	<select id="selectSingleConfirmRequest" resultType="confirmHistoryVO" >
-		<![CDATA[
 			SELECT a.CONFM_NO				AS "confmNumber"
 				 , a.CONFM_RQESTER_ID		AS "confmRqesterId" 
 				 , b.USER_NM 				AS "confmRqesterNm"
@@ -128,11 +120,9 @@
 				       	ON a.OPERT_TY_CODE = g.CODE
 				  WHERE a.CONFMER_ID = #{confmerId}
 				    AND a.CONFM_NO = #{confmNumber}
-		]]>
 	</select>
 	
 	<select id="countConfirmRequest" resultType="int" >
-		<![CDATA[
 			SELECT COUNT(a.CONFM_NO)
 			  FROM COMTN_CONFM_HISTORY a	
 			 WHERE a.CONFM_RQESTER_ID 	= #{confmRqesterId}
@@ -141,7 +131,6 @@
 			   AND a.OPERT_TY_CODE 		= #{opertTyCode}
 			   AND a.TRGET_JOB_TY_CODE 	= #{trgetJobTyCode}
 			   AND a.TRGET_JOB_ID 		= #{trgetJobId}
-		]]>		
 	</select>	
 
 	<!-- 입력 -->
@@ -150,7 +139,6 @@
 			SELECT  IFNULL(MAX(CONFM_NO),0)+1 AS CONFM_NO  
 			  FROM COMTN_CONFM_HISTORY
 	    </selectKey>
-		<![CDATA[
 			INSERT INTO COMTN_CONFM_HISTORY (
 					CONFM_NO
 				  ,	CONFM_RQESTER_ID
@@ -172,17 +160,14 @@
 				  ,	#{trgetJobTyCode}
 				  ,	#{trgetJobId} 
 			)
-		]]>
 	</insert>
 	
 	<!-- 수정 -->
  	<update id="updateConfirmRequest" >
- 		<![CDATA[
 			UPDATE COMTN_CONFM_HISTORY 
 			   SET CONFM_DE 		= #{confmDe}
 			     , CONFM_STTUS_CODE = #{confmSttusCode}
 			 WHERE CONFM_NO = #{confmNumber}
- 		]]>
  	</update>
 
 </mapper>

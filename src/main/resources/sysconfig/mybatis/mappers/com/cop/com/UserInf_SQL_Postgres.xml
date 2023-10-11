@@ -6,7 +6,6 @@
 	<!-- 목록조회  -->
  	<select id="selectUserList" resultType="egovMap" >
         /* 구현 Sql */
- 		<![CDATA[
 			SELECT USER_ID					AS "userId"
 			     , USER_NM					AS "userNm"
 			     , USER_ADRES				AS "userAdres"
@@ -14,34 +13,27 @@
 			     , 'Y'						AS "useAt"
 			  FROM COMVN_USER_MASTER
 			 WHERE 1=1 
- 		]]>
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "USER_NM"'>
-				AND USER_NM LIKE '%' || #{searchKeyword} || '%'
+			   AND USER_NM LIKE '%' || #{searchKeyword} || '%'
             </when>
         </choose>
 		</if>
-		<![CDATA[			
 			 ORDER BY USER_NM 
-		]]>					
         /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
  	</select>
  	
 	<!-- 목록조회_게시물 총갯수  -->
 	<select id="selectUserListCnt" resultType="int" >
-		<![CDATA[
 			SELECT COUNT(USER_ID)
 			  FROM COMVN_USER_MASTER
 			 WHERE 1=1 
-		]]>
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "USER_NM"'>
-				AND USER_NM LIKE '%' || #{searchKeyword} || '%'
+			   AND USER_NM LIKE '%' || #{searchKeyword} || '%'
             </when>
         </choose>
 		</if>
@@ -49,19 +41,16 @@
  
 	<!-- 전체조회(커뮤니티 사용자)  -->
 	<select id="selectAllCmmntyUser" resultType="egovMap" >
-		<![CDATA[
 			SELECT EMPLYR_ID 				AS "userId"
 			     , CMMNTY_ID 				AS "trgetId" 
 			  FROM COMTN_CMMNTY_USER 
 			 WHERE USE_AT = 'Y'
 			   AND CMMNTY_ID =  #{trgetId}	
-		]]>
 	</select>	
 
 	<!-- 목록조회(커뮤니티 사용자)  -->
 	<select id="selectCmmntyUserList" resultType="egovMap" >
         /* 구현 Sql */
- 		<![CDATA[
 			SELECT b.USER_ID				AS "userId"
 			     , b.USER_NM				AS "userNm"
 			     , b.USER_ADRES				AS "userAdres"
@@ -73,36 +62,29 @@
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
 				   		ON  a.EMPLYR_ID	= b.USER_ID  	
 			 WHERE a.CMMNTY_ID = #{trgetId}
- 		]]>
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "USER_NM"'>
-				AND b.USER_NM LIKE '%' || #{searchKeyword} || '%'
+			   AND b.USER_NM LIKE '%' || #{searchKeyword} || '%'
             </when>
         </choose>
 		</if>
-		<![CDATA[			
 			 ORDER BY b.USER_NM 
-		]]>				
         /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 		 	 LIMIT #{recordPerPage} OFFSET #{firstIndex}
  	</select>
  	
 	<!-- 목록조회(커뮤니티 사용자)_게시물 총갯수  -->
 	<select id="selectCmmntyUserListCnt" resultType="int" >
-		<![CDATA[
 			SELECT COUNT(a.EMPLYR_ID)
 			  FROM COMTN_CMMNTY_USER a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
 				   		ON  a.EMPLYR_ID	= b.USER_ID  	
 			 WHERE a.CMMNTY_ID = #{trgetId}
-		]]>
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "USER_NM"'>
-				AND b.USER_NM LIKE '%' || #{searchKeyword} || '%'
+			   AND b.USER_NM LIKE '%' || #{searchKeyword} || '%'
             </when>
         </choose>
 		</if>
@@ -111,7 +93,6 @@
 	<!-- 목록조회(커뮤니티 관리자)  -->
 	<select id="selectCmmntyMngrList" resultType="egovMap" >
         /* 구현 Sql */
- 		<![CDATA[
 			SELECT b.USER_ID				AS "userId"
 			     , b.USER_NM				AS "userNm"
 			     , b.USER_ADRES				AS "userAdres"
@@ -123,37 +104,30 @@
 				   		ON  a.EMPLYR_ID	= b.USER_ID  	
 			 WHERE a.CMMNTY_ID = #{trgetId}
   			   AND a.MNGR_AT = 'Y'
- 		]]>
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "USER_NM"'>
-				AND b.USER_NM LIKE '%' || #{searchKeyword} || '%'
+			   AND b.USER_NM LIKE '%' || #{searchKeyword} || '%'
             </when>
         </choose>
 		</if>
-		<![CDATA[			
 			 ORDER BY b.USER_NM 
-		]]>				
         /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
  	</select>
  	
 	<!-- 목록조회(커뮤니티  관리자)_게시물 총갯수  -->
 	<select id="selectCmmntyMngrListCnt" resultType="int" >
-		<![CDATA[
 			SELECT COUNT(a.EMPLYR_ID)
 			  FROM COMTN_CMMNTY_USER a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
 				   		ON  a.EMPLYR_ID	= b.USER_ID  	
 			 WHERE a.CMMNTY_ID = #{trgetId}
   			   AND a.MNGR_AT = 'Y'
-		]]>
     	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "USER_NM"'>
-				AND b.USER_NM LIKE '%' || #{searchKeyword} || '%'
+			   AND b.USER_NM LIKE '%' || #{searchKeyword} || '%'
             </when>
         </choose>
 		</if>

@@ -5,14 +5,11 @@
 
 	<!-- 목록조회  -->
 	<select id="selectCmmnCodeList" resultType="egovMap">
-		<![CDATA[
             SELECT *
               FROM (
             SELECT ROWNUM RNUM, ALL_LIST.*
               FROM (
-        ]]>
         /* 구현 Sql */
-		<![CDATA[
 			SELECT B.CL_CODE_NM				AS "clCodeNm"
 			     , A.CODE_ID				AS "codeId"
 			     , A.CODE_ID_NM				AS "codeIdNm"
@@ -21,51 +18,43 @@
 			       LEFT OUTER JOIN COMTC_CMMN_CL_CODE B
 					   	ON A.CL_CODE = B.CL_CODE
 			 WHERE A.USE_AT = 'Y'
-		]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "CODE_ID"'>
-				AND A.CODE_ID LIKE '%' || #{searchKeyword} || '%'
+			   AND A.CODE_ID LIKE '%' || #{searchKeyword} || '%'
             </when>
             <when test='searchCondition == "CODE_ID_NM"'>
-				AND A.CODE_ID_NM LIKE '%' || #{searchKeyword} || '%'
+			   AND A.CODE_ID_NM LIKE '%' || #{searchKeyword} || '%'
             </when>
             <when test='searchCondition == "clCode"'>
-				AND A.CL_CODE LIKE '%' || #{searchKeyword} || '%'
+			   AND A.CL_CODE LIKE '%' || #{searchKeyword} || '%'
             </when>
         </choose>
 		</if>
-		<![CDATA[			
 			 ORDER BY A.CODE_ID ASC
-        ]]>			
         /* 구현 Sql */
-        <![CDATA[
                    ) ALL_LIST
                    )
              WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
-        ]]>			
-
 	</select>
 
 	<!-- 목록조회_게시물 총갯수  -->
 	<select id="selectCmmnCodeListCnt" resultType="int">
-		<![CDATA[
 			SELECT COUNT(*) totcnt
 			  FROM COMTC_CMMN_CODE   A
 			       LEFT OUTER JOIN COMTC_CMMN_CL_CODE B
 					   	ON A.CL_CODE = B.CL_CODE
 			 WHERE A.USE_AT = 'Y'
-		]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "CODE_ID"'>
-				AND A.CODE_ID LIKE '%' || #{searchKeyword} || '%'
+			   AND A.CODE_ID LIKE '%' || #{searchKeyword} || '%'
             </when>
             <when test='searchCondition == "CODE_ID_NM"'>
-				AND A.CODE_ID_NM LIKE '%' || #{searchKeyword} || '%'
+			   AND A.CODE_ID_NM LIKE '%' || #{searchKeyword} || '%'
             </when>
             <when test='searchCondition == "clCode"'>
-				AND A.CL_CODE LIKE '%' || #{searchKeyword} || '%'
+			   AND A.CL_CODE LIKE '%' || #{searchKeyword} || '%'
             </when>
         </choose>
 		</if>
@@ -73,7 +62,6 @@
 
 	<!-- 상세보기 -->
 	<select id="selectCmmnCodeDetail" resultType="cmmnCodeVO">
-		<![CDATA[
             SELECT B.CL_CODE_NM 			AS "clCodeNm"
                  , A.CL_CODE    			AS "clCode"
                  , A.CODE_ID    			AS "codeId"
@@ -84,12 +72,10 @@
 			       LEFT OUTER JOIN COMTC_CMMN_CL_CODE B
 					   	ON A.CL_CODE = B.CL_CODE
 			 WHERE A.CODE_ID = #{codeId}
-		]]>
 	</select>
 
 	<!-- 입력 -->
 	<insert id="insertCmmnCode">
-		<![CDATA[
 		    INSERT INTO  COMTC_CMMN_CODE (  
 		    	   CODE_ID
 		         , CODE_ID_NM
@@ -111,12 +97,10 @@
 				 , #{frstRegisterId}
 				 , SYSDATE
 		    )
-		]]>
 	</insert>
 
 	<!-- 수정 -->
 	<update id="updateCmmnCode">
-		<![CDATA[
             UPDATE COMTC_CMMN_CODE
                SET CODE_ID_NM        = #{codeIdNm}
                  , CODE_ID_DC        = #{codeIdDc}
@@ -124,16 +108,13 @@
                  , LAST_UPDUSR_ID    = #{lastUpdusrId}
                  , LAST_UPDT_PNTTM 	 = SYSDATE
              WHERE CODE_ID           = #{codeId}
-		]]>
 	</update>
 
 	<!-- 삭제 -->
 	<delete id="deleteCmmnCode">
-		<![CDATA[
             UPDATE COMTC_CMMN_CODE
                SET USE_AT  = 'N'
              WHERE CODE_ID = #{codeId}
-		]]>
 	</delete>
 
 </mapper>

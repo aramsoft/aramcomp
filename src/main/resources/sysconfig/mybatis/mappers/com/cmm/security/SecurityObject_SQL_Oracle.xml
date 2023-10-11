@@ -3,7 +3,31 @@
 
 <mapper namespace="aramframework.com.cmm.security.securedobject.dao.impl.SecuredObjectMapper">
 
-	<!-- 상세보기 -->
+	<select id="loadUsersByUsername" parameterType="String" resultType="java.util.Map">
+			SELECT USER_ID			 
+				 , PASSWORD			
+				 , 1 				AS ENABLED
+				 , USER_NM			
+				 , USER_ZIP			
+				 , USER_ADRES		
+				 , USER_EMAIL		
+				 , USER_SE			
+				 , ORGNZT_ID		
+				 , MBTLNUM
+				 , (select a.ORGNZT_NM from COMTN_ORGNZT_INFO a where a.ORGNZT_ID = m.ORGNZT_ID) AS ORGNZT_NM 
+              FROM COMVN_USER_MASTER m 
+             WHERE USER_ID = #{value}	
+    </select>
+
+	<select id="loadUserAuthorities" parameterType="String" resultType="java.util.Map">
+			SELECT A.SCRTY_DTRMN_TRGET_ID 	AS USER_ID
+				 , A.AUTHOR_CODE 			AS AUTHORITY 
+              FROM COMTN_EMPLYR_SCRTY_ESTBS A
+                 , COMVN_USER_MASTER B 
+             WHERE A.SCRTY_DTRMN_TRGET_ID = B.USER_ID 
+               AND B.USER_ID = #{value}	
+    </select>
+
 	<select id="getHierarchicalRoles" resultType="java.util.Map">
 			SELECT a.CHLDRN_ROLE child
 				 , a.PARNTS_ROLE parent 

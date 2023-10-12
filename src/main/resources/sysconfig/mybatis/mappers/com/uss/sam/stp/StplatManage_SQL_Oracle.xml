@@ -4,14 +4,11 @@
 <mapper namespace="aramframework.com.uss.sam.stp.dao.StplatManageMapper">
 
 	<select id="selectStplatList" resultType="egovMap">
-		<![CDATA[
             SELECT *
               FROM (
             SELECT ROWNUM RNUM, ALL_LIST.*
               FROM (
-        ]]>
         /* 구현 Sql */
-       	<![CDATA[
 			SELECT A.USE_STPLAT_ID			AS "useStplatId"
 			     , A.USE_STPLAT_NM			AS "useStplatNm"
 			     , (SELECT USER_NM 
@@ -21,48 +18,40 @@
 			     , A.FRST_REGIST_PNTTM		AS "frstRegisterPnttm" 
 		      FROM COMTN_STPLAT_INFO A                              			
 		     WHERE 1=1   			
-		]]>					
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "USE_STPLAT_NM"'>
-                AND USE_STPLAT_NM  LIKE '%'|| #{searchKeyword} ||'%'	
+               AND USE_STPLAT_NM  LIKE '%'|| #{searchKeyword} ||'%'	
             </when>
             <when test='searchCondition == "USE_STPLAT_CN"'>
-                AND USE_STPLAT_CN  LIKE '%'|| #{searchKeyword} ||'%'	
+               AND USE_STPLAT_CN  LIKE '%'|| #{searchKeyword} ||'%'	
             </when>
         </choose>
 		</if>
-		<![CDATA[		
 			 ORDER BY USE_STPLAT_NM DESC								   
-		]]>				
         /* 구현 Sql */
-        <![CDATA[
                    ) ALL_LIST
                    )
              WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
-        ]]>			
 	</select>
 	
 	<select id="selectStplatListCnt" resultType="int">
-		<![CDATA[
 			SELECT COUNT(*) totcnt
 			  FROM COMTN_STPLAT_INFO
 			 WHERE 1=1
-		]]>			
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "USE_STPLAT_NM"'>
-                AND USE_STPLAT_NM  LIKE '%'|| #{searchKeyword} ||'%'	
+               AND USE_STPLAT_NM  LIKE '%'|| #{searchKeyword} ||'%'	
             </when>
             <when test='searchCondition == "USE_STPLAT_CN"'>
-                AND USE_STPLAT_CN  LIKE '%'|| #{searchKeyword} ||'%'	
+               AND USE_STPLAT_CN  LIKE '%'|| #{searchKeyword} ||'%'	
             </when>
         </choose>
 		</if>
 	</select>
 	
 	<select id="selectStplatDetail" resultType="stplatManageVO">
-		<![CDATA[		
 			SELECT USE_STPLAT_ID			AS "useStplatId"
 			     , USE_STPLAT_NM			AS "useStplatNm"
 			     , USE_STPLAT_CN			AS "useStplatCn"
@@ -73,11 +62,9 @@
 			     , LAST_UPDUSR_ID			AS "lastUpdusrId"		 			  			 			  
 			  FROM COMTN_STPLAT_INFO		
 			 WHERE USE_STPLAT_ID = #{useStplatId}					
-		]]>
 	</select>
 	
 	<insert id="insertStplat">	
-		<![CDATA[	
 			INSERT INTO COMTN_STPLAT_INFO (
 					USE_STPLAT_ID
 				  , USE_STPLAT_NM				   
@@ -97,11 +84,9 @@
 				  , #{frstRegisterId} 
 				  , SYSDATE
 			)
-		]]>
 	</insert>
 	
 	<update id="updateStplat">
-		<![CDATA[
 			UPDATE COMTN_STPLAT_INFO	
 			   SET USE_STPLAT_NM		= #{useStplatNm}
 				 , USE_STPLAT_CN		= #{useStplatCn}				  
@@ -109,15 +94,12 @@
 				 , LAST_UPDUSR_ID		= #{lastUpdusrId}
 				 , LAST_UPDT_PNTTM		= SYSDATE
  			 WHERE USE_STPLAT_ID = #{useStplatId}
-		]]>
 	</update>
 	
 	<delete id="deleteStplat">
-		<![CDATA[
 			DELETE 
 			  FROM COMTN_STPLAT_INFO 
 			 WHERE USE_STPLAT_ID = #{useStplatId}
-		]]>
 	</delete>
 	
 </mapper>

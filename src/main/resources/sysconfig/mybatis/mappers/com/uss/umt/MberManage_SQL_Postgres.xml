@@ -6,7 +6,6 @@
 	<!-- 목록조회  -->
  	<select id="selectMberList" resultType="egovMap">
         /* 구현 Sql */
-		<![CDATA[
 		    SELECT 'USR01'               	AS "userTy"
 		         , MBER_ID               	AS "userId"
 		         , MBER_NM               	AS "userNm"
@@ -18,46 +17,39 @@
 		         , SBSCRB_DE             	AS "sbscrbDe"
 		      FROM COMTN_GNRL_MBER
 		     WHERE 1=1
-        ]]>			
     	<if test='sbscrbSttus != 0 '>
-                <![CDATA[ AND MBER_STTUS LIKE  #{sbscrbSttus} ]]>	
+               AND MBER_STTUS LIKE  #{sbscrbSttus}	
 		</if>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "MBER_ID"'>
-                AND MBER_ID LIKE #{searchKeyword} 	 
+               AND MBER_ID LIKE #{searchKeyword} 	 
             </when>
             <when test='searchCondition == "MBER_NM"'>
-                AND MBER_NM LIKE '%'|| #{searchKeyword} ||'%' 	
+               AND MBER_NM LIKE '%'|| #{searchKeyword} ||'%' 	
             </when>
         </choose>
 		</if>
-		<![CDATA[
 	         ORDER BY SBSCRB_DE DESC
-        ]]>			
         /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
     </select>
      
 	<!-- 목록조회_게시물 총갯수  -->
     <select id="selectMberListCnt" resultType="int">
-        <![CDATA[
             SELECT COUNT(1) totcnt
               FROM COMTN_GNRL_MBER
              WHERE 1=1
-        ]]>			
     	<if test='sbscrbSttus != 0 '>
-                AND MBER_STTUS LIKE  #{sbscrbSttus}
+               AND MBER_STTUS LIKE  #{sbscrbSttus}
 		</if>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "MBER_ID"'>
-                AND MBER_ID LIKE #{searchKeyword} 	 
+               AND MBER_ID LIKE #{searchKeyword} 	 
             </when>
             <when test='searchCondition == "MBER_NM"'>
-                AND MBER_NM LIKE '%'|| #{searchKeyword} ||'%'	
+               AND MBER_NM LIKE '%'|| #{searchKeyword} ||'%'	
             </when>
         </choose>
 		</if>
@@ -65,7 +57,6 @@
     
 	<!-- 상세보기 -->
     <select id="selectMber" resultType="mberManageVO">
-        <![CDATA[
             SELECT 'USR01'          		AS "userTy"
                  , MBER_ID          		AS "mberId"
                  , MBER_NM          		AS "mberNm"
@@ -88,12 +79,10 @@
                  , GOOGLE_ACCOUNT	        AS "googleAccount"
               FROM COMTN_GNRL_MBER
              WHERE MBER_ID = #{mberId}
-        ]]>
     </select>
     
 	<!-- 입력 -->
     <insert id="insertMber">
-        <![CDATA[
             INSERT INTO COMTN_GNRL_MBER (   
                     MBER_ID          
                   , MBER_NM          
@@ -133,12 +122,10 @@
                   , #{middleTelno, jdbcType=VARCHAR}
                   , now()  
             )              
-        ]]>
     </insert>
     
 	<!-- 수정 -->
     <update id="updateMber">
-        <![CDATA[
             UPDATE COMTN_GNRL_MBER 
                SET MBER_NM          	= #{mberNm, jdbcType=VARCHAR}
                  , PASSWORD_HINT    	= #{passwordHint, jdbcType=VARCHAR}
@@ -156,12 +143,10 @@
                  , MBER_EMAIL_ADRES 	= #{mberEmailAdres, jdbcType=VARCHAR}
                  , MIDDLE_TELNO     	= #{middleTelno, jdbcType=VARCHAR}
              WHERE MBER_ID = #{mberId}
-        ]]>
     </update>
     
 	<!-- 삭제 -->
     <delete id="deleteMber">
-        <![CDATA[
             DELETE 
               FROM COMTN_GNRL_MBER 
              WHERE MBER_ID = #{mberId};
@@ -169,36 +154,29 @@
             DELETE 
               FROM COMTN_EMPLYR_SCRTY_ESTBS 
              WHERE SCRTY_DTRMN_TRGET_ID=#{mberId};
-        ]]>
     </delete>
     
 	<!-- 비밀번호가져오기 -->
     <select id="selectPassword" resultType="mberManageVO">
-        <![CDATA[
             SELECT PASSWORD          		password 
               FROM COMTN_GNRL_MBER
              WHERE MBER_ID = #{mberId}
-        ]]>
     </select>
     
 	<!-- 비밀번호수정 -->
     <update id="updatePassword">
-        <![CDATA[
             UPDATE COMTN_GNRL_MBER 
                SET PASSWORD  = #{password}
              WHERE MBER_ID  = #{mberId}
-        ]]>
     </update>
     
 	<!-- 약관 상세 조회 -->
     <select id="selectStplat" resultType="stplatVO">
-        <![CDATA[
             SELECT USE_STPLAT_ID           
                  , USE_STPLAT_CN           
                  , INFO_PROVD_AGRE_CN      
               FROM COMTN_STPLAT_INFO
              WHERE USE_STPLAT_ID = #{stplatId}
-        ]]>
     </select>
     
 </mapper>

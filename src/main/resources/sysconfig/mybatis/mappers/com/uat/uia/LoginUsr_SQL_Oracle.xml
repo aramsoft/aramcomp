@@ -8,7 +8,6 @@
 	<select id="actionLoginByEsntlId" resultType="loginVO">
 		<choose>
 		<when test='userSe eq "GNR"'>
-			<![CDATA[
 			SELECT mber_id 					AS userId
 			     , mber_nm 					AS name
 			     , ihidNum 					AS ihidNum
@@ -19,11 +18,9 @@
 			  FROM COMTN_GNRL_MBER
 			 WHERE USER_ID = #{userId}
 			   AND mber_sttus = 'P'
-			]]>
 		</when>
 		<!-- 기업회원 -->
 		<when test='userSe == "ENT"'>
-			<![CDATA[
 			SELECT ENTRPRS_MBER_ID 			AS userId
 			     , cmpny_nm 				AS name
 			     , entrprs_mber_password 	AS password
@@ -34,11 +31,9 @@
 			  FROM COMTN_ENTRPRS_MBER
 			 WHERE USER_ID = #{userId}
 			   AND entrprs_mber_sttus = 'P'
-			]]>
 		</when>
 		<!--  업무사용자 -->
 		<when test='userSe == "USR"'>
-			<![CDATA[
 			SELECT emplyr_id 				AS userId
 			     , user_nm 					AS name
 			     , password 				AS password
@@ -49,7 +44,6 @@
 			  FROM COMTN_EMPLYR_INFO
 			 WHERE USER_ID = #{userId}
 			   AND emplyr_sttus_code = 'P'
-			]]>
 		</when>
 		</choose>
 	</select>
@@ -59,7 +53,6 @@
 		<!-- 일반회원 -->
 		<choose>
 		<when test='userSe == "GNR"'>
-			<![CDATA[
 			SELECT mber_id 					AS userId
 			     , mber_nm 					AS name
 			     , ihidNum 					AS ihidNum
@@ -71,11 +64,9 @@
 			 WHERE mber_id = #{userId}
 			   AND password = #{password}
 			   AND mber_sttus = 'P'
-			]]>
 		</when>
 		<!-- 기업회원 -->
 		<when test='userSe == "ENT"'>
-			<![CDATA[
 			SELECT ENTRPRS_MBER_ID 			AS userId
 			     , cmpny_nm 				AS name
 			     , entrprs_mber_password 	AS password
@@ -87,11 +78,9 @@
 			 WHERE ENTRPRS_MBER_ID = #{userId}
 			   AND entrprs_mber_password = #{password}
 			   AND entrprs_mber_sttus = 'P'
-			]]>
 		</when>
 		<!-- 업무사용자 -->
 		<when test='userSe == "USR"'>
-			<![CDATA[
 			SELECT emplyr_id 				AS userId
 			     , user_nm 					AS name
 			     , password 				AS password
@@ -103,14 +92,12 @@
 			 WHERE emplyr_id = #{userId}
 			   AND password = #{password}
 			   AND emplyr_sttus_code = 'P'
-			]]>
 		</when>
 		</choose>
 	</select>
 	
 	<!-- 인증서 로그인 -->
 	<select id="actionCrtfctLogin" resultType="loginVO">
-		<![CDATA[
 		SELECT emplyr_id 					AS userId
 		     , user_nm 						AS name
 		     , password 					AS password
@@ -120,7 +107,6 @@
 		     , orgnzt_id 					AS orgnztId
 		  FROM COMTN_EMPLYR_INFO
 		 WHERE CRTFC_DN_VALUE = #{dn}
-		]]>
 	</select>
 	
 	<!-- 아이디 찾기 -->
@@ -128,33 +114,27 @@
 		<!-- 일반회원 -->
 		<choose>
 		<when test='userSe == "GNR"'>
-			<![CDATA[
 			SELECT mber_id 					AS userId
 			  FROM COMTN_GNRL_MBER
 			 WHERE mber_nm = #{name}
 			   AND mber_email_adres = #{email}
 			   AND mber_sttus = 'P'
-			]]>
 		</when>
 		<!-- 기업회원 -->
 		<when test='userSe == "ENT"'>
-			<![CDATA[
 			SELECT ENTRPRS_MBER_ID 			AS userId
 			  FROM COMTN_ENTRPRS_MBER
 			 WHERE cmpny_nm = #{name}
 			   AND applcnt_email_adres = #{email}
 			   AND entrprs_mber_sttus = 'P'
-			]]>
 		</when>
 		<!-- 업무사용자 -->
 		<when test='userSe == "USR"'>
-			<![CDATA[
 			SELECT emplyr_id 				AS userId
 			  FROM COMTN_EMPLYR_INFO
 			 WHERE user_nm = #{name}
 			   AND email_adres = #{email}
 			   AND emplyr_sttus_code = 'P'
-			]]>
 		</when>
 		</choose>
 	</select>
@@ -164,7 +144,6 @@
 		<!-- 일반회원 -->
 		<choose>
 		<when test='userSe == "GNR"'>
-			<![CDATA[
 			SELECT password 				AS password
 			  FROM COMTN_GNRL_MBER
 			 WHERE mber_id = #{userId}
@@ -173,11 +152,9 @@
 			   AND password_hint = #{passwordHint}
 			   AND password_cnsr = #{passwordCnsr}
 			   AND mber_sttus = 'P'
-			]]>
 		</when>
 		<!-- 기업회원 -->
 		<when test='userSe == "ENT"'>
-			<![CDATA[
 			SELECT entrprs_mber_password 	AS password
 			  FROM COMTN_ENTRPRS_MBER
 			 WHERE ENTRPRS_MBER_ID = #{userId}
@@ -186,11 +163,9 @@
 			   AND entrprs_mber_password_hint = #{passwordHint}
 			   AND entrprs_mber_password_cnsr = #{passwordCnsr}
 			   AND entrprs_mber_sttus = 'P'
-			]]>
 		</when>
 		<!-- 업무사용자 -->
 		<when test='userSe == "USR"'>
-			<![CDATA[
 			SELECT password 				AS password
 			  FROM COMTN_EMPLYR_INFO
 			 WHERE emplyr_id = #{userId}
@@ -199,7 +174,6 @@
 			   AND password_hint = #{passwordHint}
 			   AND password_cnsr = #{passwordCnsr}
 			   AND emplyr_sttus_code = 'P'
-			]]>
 		</when>
 		</choose>
 	</select>
@@ -209,27 +183,21 @@
 		<!-- 일반회원 -->
 		<choose>
 		<when test='userSe == "GNR"'>
-			<![CDATA[
 			UPDATE COMTN_GNRL_MBER
 			   SET password = #{password}
 			 WHERE mber_id = #{userId}
-			]]>
 		</when>
 		<!-- 기업회원 -->
 		<when test='userSe == "ENT"'>
-			<![CDATA[
 			UPDATE COMTN_ENTRPRS_MBER
 			   SET entrprs_mber_password = #{password}
 			 WHERE ENTRPRS_MBER_ID = #{userId}
-			]]>
 		</when>
 		<!-- 업무사용자 -->
 		<when test='userSe == "USR"'>
-			<![CDATA[
 			UPDATE COMTN_EMPLYR_INFO
 			   SET password = #{password}
 			 WHERE emplyr_id = #{userId}
-			]]>
 		</when>
 		</choose>
 	</update>
@@ -239,38 +207,30 @@
 		<!-- 일반회원 -->
 		<choose>
 		<when test='userSe == "GNR"'>
-			<![CDATA[
 			UPDATE COMTN_GNRL_MBER
 			   SET google_account = #{googleAccount}
 			 WHERE mber_id = #{userId}
-			]]>
 		</when>
 		<!-- 기업회원 -->
 		<when test='userSe == "ENT"'>
-			<![CDATA[
 			UPDATE COMTN_ENTRPRS_MBER
 			   SET google_account = #{googleAccount}
 			 WHERE ENTRPRS_MBER_ID = #{userId}
-			]]>
 		</when>
 		<!-- 업무사용자 -->
 		<when test='userSe == "USR"'>
-			<![CDATA[
 			UPDATE COMTN_EMPLYR_INFO
 			   SET google_account = #{googleAccount}
 			 WHERE emplyr_id = #{userId}
-			]]>
 		</when>
 		</choose>
 	</update>
 	
 	<!-- 핸드폰 주인 찾기 -->
 	<select id="searchMblTelNo" resultType="int">
-		<![CDATA[
 			SELECT Count(USER_ID)
 			  FROM COMVN_USER_MASTER
 			 WHERE mbtlnum = #{mblTelNo}
-		]]>
 	</select>
 	
 </mapper>

@@ -5,14 +5,11 @@
 
 	<!-- 개인정보보호정책확인::목록조회 게시물정보 -->
 	<select id="selectIndvdlInfoPolicyList" resultType="egovMap">
-		<![CDATA[
             SELECT *
               FROM (
             SELECT ROWNUM RNUM, ALL_LIST.*
               FROM (
-        ]]>
         /* 구현 Sql */
-       	<![CDATA[
 			SELECT A.INDVDL_INFO_POLICY_ID			AS "indvdlInfoId"
 			     , A.INDVDL_INFO_POLICY_NM			AS "indvdlInfoNm"
 			     , A.INDVDL_INFO_POLICY_AGRE_AT		AS "indvdlInfoYn"
@@ -23,42 +20,35 @@
 			     , A.FRST_REGIST_PNTTM		AS "frstRegisterPnttm" 
 			  FROM COMTN_INDVDL_INFO_POLICY A
 			 WHERE 1=1
-	 	]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "INDVDL_INFO_POLICY_NM"'>
-                AND INDVDL_INFO_POLICY_NM  LIKE '%'|| #{searchKeyword} ||'%'
+               AND INDVDL_INFO_POLICY_NM  LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "INDVDL_INFO_POLICY_CN"'>
-                AND INDVDL_INFO_POLICY_CN  LIKE '%'|| #{searchKeyword} ||'%' 
+               AND INDVDL_INFO_POLICY_CN  LIKE '%'|| #{searchKeyword} ||'%' 
             </when>
         </choose>
 		</if>
-	 	<![CDATA[
 			 ORDER BY A.FRST_REGIST_PNTTM DESC
-		]]>				
         /* 구현 Sql */
-        <![CDATA[
                    ) ALL_LIST
                    )
              WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
-        ]]>			
 	</select>
 
 	<!-- 개인정보보호정책확인::목록조회_게시물 총갯수  -->
 	<select id="selectIndvdlInfoPolicyListCnt" resultType="int">
-	 	<![CDATA[
 			SELECT COUNT(*) totcnt
 			  FROM COMTN_INDVDL_INFO_POLICY
 			 WHERE 1=1
-        ]]>			
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "INDVDL_INFO_POLICY_NM"'>
-                AND INDVDL_INFO_POLICY_NM  LIKE '%'|| #{searchKeyword} ||'%' 
+               AND INDVDL_INFO_POLICY_NM  LIKE '%'|| #{searchKeyword} ||'%' 
             </when>
             <when test='searchCondition == "INDVDL_INFO_POLICY_CN"'>
-                AND INDVDL_INFO_POLICY_CN  LIKE '%'|| #{searchKeyword} ||'%' 
+               AND INDVDL_INFO_POLICY_CN  LIKE '%'|| #{searchKeyword} ||'%' 
             </when>
         </choose>
 		</if>
@@ -66,7 +56,6 @@
 	
 	<!-- 개인정보보호정책확인::상세보기 -->
 	<select id="selectIndvdlInfoPolicyDetail" resultType="indvdlInfoPolicyVO">
-	 	<![CDATA[
 			SELECT A.INDVDL_INFO_POLICY_ID			AS "indvdlInfoId"
 			     , A.INDVDL_INFO_POLICY_NM			AS "indvdlInfoNm"
 			     , A.INDVDL_INFO_POLICY_CN			AS "indvdlInfoDc"
@@ -78,12 +67,10 @@
 			  FROM COMTN_INDVDL_INFO_POLICY A
 			 WHERE 1=1
 			   AND A.INDVDL_INFO_POLICY_ID = #{indvdlInfoId}
-	 	]]>
 	</select>
 
 	<!-- 개인정보보호정책확인::입력  -->
 	<insert id="insertIndvdlInfoPolicy">	     
-	 	<![CDATA[
 			INSERT INTO COMTN_INDVDL_INFO_POLICY ( 
 					INDVDL_INFO_POLICY_ID
 				  ,	INDVDL_INFO_POLICY_NM
@@ -103,12 +90,10 @@
 				  , #{frstRegisterId} 
 				  , SYSDATE
 			)
-	 	]]>
 	</insert>
 	
 	<!-- 개인정보보호정책확인::수정  -->
 	<update id="updateIndvdlInfoPolicy">
-		<![CDATA[
 			UPDATE COMTN_INDVDL_INFO_POLICY 
 			   SET INDVDL_INFO_POLICY_NM 		= #{indvdlInfoNm}
 			     , INDVDL_INFO_POLICY_CN 		= #{indvdlInfoDc}
@@ -116,16 +101,13 @@
 			     , LAST_UPDUSR_ID 				= #{lastUpdusrId}
 			     , LAST_UPDT_PNTTM 				= SYSDATE
 			 WHERE INDVDL_INFO_POLICY_ID = #{indvdlInfoId}
-		]]>
 	</update>
 	
     <!-- 개인정보보호정책확인::삭제  -->
 	<delete id="deleteIndvdlInfoPolicy">
-		<![CDATA[
 			DELETE 
 			  FROM COMTN_INDVDL_INFO_POLICY 
 			 WHERE INDVDL_INFO_POLICY_ID = #{indvdlInfoId}
-		]]>
 	</delete>
 
 </mapper>

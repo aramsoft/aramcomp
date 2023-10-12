@@ -6,7 +6,6 @@
 	<!-- 목록조회  -->
     <select id="selectEmplyrList" resultType="egovMap">
         /* 구현 Sql */
-		<![CDATA[
 		    SELECT 'USR03'               	AS "userTy"
 		         , EMPLYR_ID             	AS "userId"
 		         , USER_NM             	    AS "userNm"
@@ -18,46 +17,39 @@
 		         , SBSCRB_DE             	AS "sbscrbDe"
 		      FROM COMTN_EMPLYR_INFO
 	         WHERE 1=1
-        ]]>
     	<if test='sbscrbSttus != 0 '>
-               	AND EMPLYR_STTUS_CODE LIKE  #{sbscrbSttus}
+               AND EMPLYR_STTUS_CODE LIKE  #{sbscrbSttus}
 		</if>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "EMPLYR_ID"'>
-                AND EMPLYR_ID LIKE #{searchKeyword} 
+               AND EMPLYR_ID LIKE #{searchKeyword} 
             </when>
             <when test='searchCondition == "USER_NM"'>
-                AND USER_NM LIKE CONCAT('%',#{searchKeyword},'%')
+               AND USER_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>
-		<![CDATA[
 	         ORDER BY SBSCRB_DE DESC
-        ]]>
         /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
     </select>
     
 	<!-- 목록조회_게시물 총갯수  -->
     <select id="selectEmplyrListCnt" resultType="int">
-		<![CDATA[
             SELECT COUNT(1) totcnt
               FROM COMTN_EMPLYR_INFO
              WHERE 1=1
-        ]]>			
     	<if test='sbscrbSttus != 0 '>
-               	AND EMPLYR_STTUS_CODE LIKE  #{sbscrbSttus}
+               AND EMPLYR_STTUS_CODE LIKE  #{sbscrbSttus}
 		</if>
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "EMPLYR_ID"'>
-                AND EMPLYR_ID LIKE #{searchKeyword} 
+               AND EMPLYR_ID LIKE #{searchKeyword} 
             </when>
             <when test='searchCondition == "USER_NM"'>
-                AND USER_NM LIKE CONCAT('%',#{searchKeyword},'%')
+               AND USER_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>
@@ -65,7 +57,6 @@
     
 	<!-- 상세보기 -->
     <select id="selectEmplyr" resultType="emplyrManageVO">
-        <![CDATA[
             SELECT 'USR03'           		AS "userTy"			  
                  , EMPLYR_ID         		AS "emplyrId"          
                  , USER_NM         	    	AS "emplyrNm"          
@@ -95,12 +86,10 @@
                  , GOOGLE_ACCOUNT	        AS "googleAccount"
          	  FROM COMTN_EMPLYR_INFO
              WHERE EMPLYR_ID = #{emplyrId}
-        ]]>
     </select>
     
 	<!-- 입력 -->
     <insert id="insertEmplyr">
-        <![CDATA[
             INSERT INTO COMTN_EMPLYR_INFO (   
             		EMPLYR_ID           
             	  , USER_NM           	
@@ -154,12 +143,10 @@
                   , sysdate()           	
                   , #{subDn, jdbcType=VARCHAR}             
             )
-        ]]>
     </insert>
     
 	<!-- 수정 -->
     <update id="updateEmplyr">
-        <![CDATA[
             UPDATE COMTN_EMPLYR_INFO 
                SET USER_NM             	= #{emplyrNm, jdbcType=VARCHAR}        
                  , PASSWORD_HINT       	= #{passwordHint, jdbcType=VARCHAR}    
@@ -184,12 +171,10 @@
                  , EMPLYR_STTUS_CODE   	= #{emplyrSttusCode, jdbcType=VARCHAR} 
                  , CRTFC_DN_VALUE      	= #{subDn, jdbcType=VARCHAR}
              WHERE EMPLYR_ID = #{emplyrId}
-        ]]>
     </update>
     
 	<!-- 삭제 -->
     <delete id="deleteEmplyr">
-        <![CDATA[
             DELETE 
               FROM COMTN_EMPLYR_INFO 
              WHERE EMPLYR_ID = #{emplyrId};
@@ -197,12 +182,10 @@
             DELETE 
               FROM COMTN_EMPLYR_SCRTY_ESTBS 
              WHERE SCRTY_DTRMN_TRGET_ID=#{emplyrId};
-        ]]>
     </delete>
     
 	<!-- 사용자 이력 입력 -->
     <insert id="insertEmplyrHistory">
-        <![CDATA[
             INSERT INTO COMTN_EMPLYR_CHANGE_DTLS (   
             		EMPLYR_ID           
             	  , EMPL_NO             
@@ -243,39 +226,31 @@
                   , DATE_FORMAT(sysdate(), '%Y-%m-%d %H:%i:%S')
                FROM COMTN_EMPLYR_INFO
               WHERE EMPLYR_ID = #{emplyrId}
-        ]]>
     </insert>
     
 	<!-- 사용자 이력 삭제 -->
     <insert id="deleteEmplyrHistory">
-        <![CDATA[
              DELETE 
                FROM COMTN_EMPLYR_CHANGE_DTLS 
               WHERE EMPLYR_ID = #{emplyrId}
-        ]]>
     </insert>
 
 	<!-- 비밀번호가져오기 -->
     <select id="selectPassword" resultType="emplyrManageVO">
-        <![CDATA[
             SELECT PASSWORD        		password 
               FROM COMTN_EMPLYR_INFO
              WHERE EMPLYR_ID = #{emplyrId}
-        ]]>
     </select>
     
 	<!-- 비밀번호수정 -->
     <update id="updatePassword">
-        <![CDATA[
-            UPDATE COMTN_EMPLYR_INFO 
+             UPDATE COMTN_EMPLYR_INFO 
                SET PASSWORD = #{password}
              WHERE EMPLYR_ID = #{emplyrId}
-        ]]>
     </update>
     
 	<!-- ID중복체크 -->
     <select id="checkIdDplct" resultType="int">
-        <![CDATA[
             SELECT COUNT(1) usedCnt
               FROM (
                     SELECT EMPLYR_ID       userId
@@ -288,7 +263,6 @@
                       FROM COMTN_GNRL_MBER
                    ) A
              WHERE userId = #{checkId}
-        ]]>
     </select>
     
 </mapper>

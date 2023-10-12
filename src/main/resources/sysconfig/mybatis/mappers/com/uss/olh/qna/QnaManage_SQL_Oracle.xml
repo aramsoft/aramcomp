@@ -4,14 +4,11 @@
 <mapper namespace="aramframework.com.uss.olh.qna.dao.QnaManageMapper">
 
 	<select id="selectQnaList" resultType="egovMap">
-		<![CDATA[
             SELECT *
               FROM (
             SELECT ROWNUM RNUM, ALL_LIST.*
               FROM (
-        ]]>
         /* 구현 Sql */
-       	<![CDATA[
    		    SELECT A.QA_ID					AS "qaId"
    		         , A.QESTN_SJ				AS "qestnSj"
    		         , A.WRTER_NM				AS "wrterNm"
@@ -24,7 +21,6 @@
 					    	  		 WHERE CODE_ID = 'COM028') B
 				       	ON A.QNA_PROCESS_STTUS_CODE = B.CODE
 		     WHERE 1=1
-		]]>
     	<if test='trgetId != null and trgetId != ""'>
 		   	   AND A.TRGET_ID = #{trgetId}
 		</if>
@@ -38,19 +34,14 @@
             </when>
         </choose>
 		</if>
-		<![CDATA[
 			 ORDER BY A.QA_ID DESC
-		]]>				
         /* 구현 Sql */
-        <![CDATA[
                    ) ALL_LIST
                    )
              WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
-        ]]>			
 	</select>
 
 	<select id="selectQnaListCnt" resultType="int">
-		<![CDATA[
 			SELECT COUNT(*) totcnt
 		      FROM COMTN_QA_INFO A
 				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
@@ -58,7 +49,6 @@
 					    	  		 WHERE CODE_ID = 'COM028') B
 				       	ON A.QNA_PROCESS_STTUS_CODE = B.CODE
 			 WHERE 1=1
-		]]>
     	<if test='trgetId != null and trgetId != ""'>
 		   	   AND A.TRGET_ID = #{trgetId}
 		</if>
@@ -75,7 +65,6 @@
 	</select>
 
 	<select id="selectQnaListDetail" resultType="qnaManageVO">
-		<![CDATA[
 			SELECT C.QA_ID
 			     , C.QESTN_SJ
 			     , C.QESTN_CN
@@ -110,11 +99,9 @@
 				   LEFT OUTER JOIN COMTN_ORGNZT_INFO B     
 				   		ON A.ORGNZT_ID = B.ORGNZT_ID
 			 WHERE QA_ID = #{qaId}
-		]]>
 	</select>
 
 	<insert id="insertQnaCn">
-		<![CDATA[
 			INSERT INTO COMTN_QA_INFO (
 					QA_ID
 				  , QESTN_SJ
@@ -154,28 +141,22 @@
 				  , SYSDATE
 			  	  ,	#{trgetId}
 			)
-		]]>
 	</insert>
 
 	<update id="updateQnaInqireCo">
-		<![CDATA[
 			UPDATE COMTN_QA_INFO	
 			   SET RDCNT= NVL(RDCNT,0) + 1
  			 WHERE QA_ID = #{qaId}
-		]]>
 	</update>
 
 	<select id="selectQnaPasswordConfirmCnt" resultType="int">
-		<![CDATA[
 			SELECT COUNT(*) totcnt
 			  FROM COMTN_QA_INFO
 			 WHERE QA_ID = #{qaId}
 			   AND WRITNG_PASSWORD = #{writngPassword}
-		]]>
 	</select>
 
 	<update id="updateQnaCn">
-		<![CDATA[
 			UPDATE COMTN_QA_INFO	
 			   SET QESTN_SJ			= #{qestnSj}
 				 , QESTN_CN			= #{qestnCn}
@@ -190,26 +171,20 @@
                  , LAST_UPDUSR_ID   = #{lastUpdusrId}    
                  , LAST_UPDT_PNTTM  = SYSDATE    
 			 WHERE QA_ID = #{qaId}
-		]]>
 	</update>
 
 	<delete id="deleteQnaCn">
-		<![CDATA[
 			DELETE 
 			  FROM COMTN_QA_INFO
 			 WHERE QA_ID = #{qaId}
-		]]>
 	</delete>
 
 	<select id="selectQnaAnswerList" resultType="egovMap">
-		<![CDATA[
             SELECT *
               FROM (
             SELECT ROWNUM RNUM, ALL_LIST.*
               FROM (
-        ]]>
-        /* 구현 Sql */
-       	<![CDATA[
+         /* 구현 Sql */
    		    SELECT A.QA_ID					AS "qaId"
    		         , A.QESTN_SJ				AS "qestnSj"
    		         , A.WRTER_NM				AS "wrterNm"
@@ -222,33 +197,27 @@
 					    	  		 WHERE CODE_ID = 'COM028') B
 				       	ON A.QNA_PROCESS_STTUS_CODE = B.CODE
 		     WHERE 1=1
-		]]>
 	    <if test='trgetId != null and trgetId != ""'>
-		   		AND A.TRGET_ID = #{trgetId} 
+		       AND A.TRGET_ID = #{trgetId} 
 		</if>
      	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "WRTER_NM"'>
-                AND A.WRTER_NM LIKE '%'|| #{searchKeyword} ||'%'
+               AND A.WRTER_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
             <when test='searchCondition == "QNA_PROCESS_STTUS"'>
-                AND A.QNA_PROCESS_STTUS_CODE_NM LIKE '%'|| #{searchKeyword} ||'%'
+               AND A.QNA_PROCESS_STTUS_CODE_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
-		<![CDATA[
 			 ORDER BY A.QESTN_SJ DESC
-		]]>				
         /* 구현 Sql */
-        <![CDATA[
                    ) ALL_LIST
                    )
              WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
-        ]]>			
 	</select>
 
 	<select id="selectQnaAnswerListCnt" resultType="int">
-		<![CDATA[
 			SELECT COUNT(*) totcnt
 		      FROM COMTN_QA_INFO A
 				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
@@ -256,24 +225,22 @@
 					    	  		 WHERE CODE_ID = 'COM028') B
 				       	ON A.QNA_PROCESS_STTUS_CODE = B.CODE
 			 WHERE 1=1
-		]]>
 	    <if test='trgetId != null and trgetId != ""'>
-		   		<![CDATA[ AND A.TRGET_ID = #{trgetId} ]]>
+		   	   AND A.TRGET_ID = #{trgetId} 
 		</if>
      	    <if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "WRTER_NM"'>
-                <![CDATA[ AND A.WRTER_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+               AND A.WRTER_NM LIKE '%'|| #{searchKeyword} ||'%' 
             </when>
             <when test='searchCondition == "QNA_PROCESS_STTUS"'>
-                <![CDATA[ AND A.QNA_PROCESS_STTUS_CODE_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+               AND A.QNA_PROCESS_STTUS_CODE_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
 	</select>
 
 	<select id="selectQnaAnswerDetail" resultType="qnaManageVO">
-		<![CDATA[
 			SELECT C.QA_ID
 			     , C.QESTN_SJ
 			     , C.QESTN_CN
@@ -308,11 +275,9 @@
 				   LEFT OUTER JOIN COMTN_ORGNZT_INFO B     
 						ON A.ORGNZT_ID = B.ORGNZT_ID
 			 WHERE QA_ID = #{qaId}
-		]]>
 	</select>
 
 	<update id="updateQnaCnAnswer">
-		<![CDATA[
 			UPDATE COMTN_QA_INFO	
 			   SET QNA_PROCESS_STTUS_CODE	= #{qnaProcessSttusCode}
 				 , ANSWER_CN				= #{answerCn}
@@ -320,15 +285,12 @@
 				 , LAST_UPDUSR_ID			= #{lastUpdusrId}
 				 , LAST_UPDT_PNTTM			= SYSDATE
 			 WHERE QA_ID = #{qaId}
-		]]>
 	</update>
 
 	<delete id="deleteQnaCnAnswer">
-		<![CDATA[
 			DELETE 
 			  FROM COMTN_QA_INFO
 			 WHERE QA_ID = #{qaId}
-		]]>
 	</delete>
 
 </mapper>

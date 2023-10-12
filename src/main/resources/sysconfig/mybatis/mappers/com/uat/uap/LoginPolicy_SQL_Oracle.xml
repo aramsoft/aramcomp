@@ -5,14 +5,11 @@
 
 	<!-- 목록조회  -->
     <select id="selectLoginPolicyList" resultType="EgovMap">
-		<![CDATA[
             SELECT *
               FROM (
             SELECT ROWNUM RNUM, ALL_LIST.*
               FROM (
-        ]]>
         /* 구현 Sql */
-       	<![CDATA[
             SELECT A.USER_ID				AS "emplyrId"
                  , A.USER_NM				AS "emplyrNm"	
                  , B.IP_INFO				AS "ipInfo"
@@ -21,35 +18,30 @@
               	   LEFT OUTER JOIN COMTN_LOGIN_POLICY B
                 		ON A.USER_ID = B.EMPLYR_ID   
              WHERE 1 = 1
-        ]]>               
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "USER_NM"'>
-                 AND A.USER_NM LIKE '%'|| #{searchKeyword} ||'%'
+               AND A.USER_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
         /* 구현 Sql */
-        <![CDATA[
                    ) ALL_LIST
                    )
              WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
-        ]]>			
     </select>
 
 	<!-- 목록조회_게시물 총갯수  -->
     <select id="selectLoginPolicyListCnt" resultType="int">
-        <![CDATA[
             SELECT COUNT(*) AS totcnt                  
               FROM COMVN_USER_MASTER A 
               	   LEFT OUTER JOIN COMTN_LOGIN_POLICY B
                 		ON A.USER_ID = B.EMPLYR_ID   
              WHERE 1 = 1
-        ]]>			
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "USER_NM"'>
-                 AND A.USER_NM LIKE '%'|| #{searchKeyword} ||'%'
+               AND A.USER_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>
@@ -57,7 +49,6 @@
     
 	<!-- 상세보기 -->
     <select id="selectLoginPolicy" resultType="loginPolicyVO">
-        <![CDATA[
             SELECT A.USER_ID					AS "emplyrId" 
                  , A.USER_NM					AS "emplyrNm" 
                  , A.USER_SE					AS "emplyrSe" 
@@ -71,12 +62,10 @@
                    LEFT OUTER JOIN COMTN_LOGIN_POLICY B
                 		ON A.USER_ID = B.EMPLYR_ID   
              WHERE A.USER_ID = #{emplyrId}
-        ]]>			
     </select>
     
 	<!-- 입력 -->
     <insert id="insertLoginPolicy" >
-        <![CDATA[
             INSERT INTO COMTN_LOGIN_POLICY (
             		EMPLYR_ID
                   , IP_INFO
@@ -96,12 +85,10 @@
                   , #{userId}
                   , SYSDATE
             )
-        ]]>
     </insert>
 
 	<!-- 수정 -->
     <update id="updateLoginPolicy" >
-        <![CDATA[
             UPDATE COMTN_LOGIN_POLICY 
                SET IP_INFO = #{ipInfo}
                  , DPLCT_PERM_AT = #{dplctPermAt}
@@ -109,16 +96,13 @@
                  , LAST_UPDUSR_ID = #{userId}
                  , LAST_UPDT_PNTTM = SYSDATE
              WHERE EMPLYR_ID = #{emplyrId}
-        ]]>
     </update>
 
 	<!-- 삭제 -->
     <delete id="deleteLoginPolicy">
-        <![CDATA[
             DELETE 
               FROM COMTN_LOGIN_POLICY 
              WHERE EMPLYR_ID = #{emplyrId}
-        ]]>
     </delete>
 
 </mapper>

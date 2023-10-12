@@ -5,14 +5,12 @@
 
 	<select id="selectFaqList" resultType="egovMap">
         /* 구현 Sql */
-       	<![CDATA[
 			SELECT FAQ_ID					AS "faqId"
 			     , QESTN_SJ					AS "qestnSj"
 			     , RDCNT					AS "inqireCo" 
 			     , LAST_UPDT_PNTTM			AS "lastUpdusrPnttm" 
 		      FROM COMTN_FAQ_INFO
 		     WHERE 1=1   			
-		]]>					
    	    <if test='trgetId != null and trgetId != ""'>
 		   	   AND TRGET_ID = #{trgetId} 	
 		</if>
@@ -23,21 +21,15 @@
             </when>
         </choose>
 		</if>
-		<![CDATA[			
 		     ORDER BY FAQ_ID DESC								   
-		]]>				
         /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 		 	 LIMIT #{recordPerPage} OFFSET #{firstIndex}
 	</select>
 	
 	<select id="selectFaqListCnt" resultType="int">
-		<![CDATA[
 			SELECT COUNT(*) totcnt
 			  FROM COMTN_FAQ_INFO
 			 WHERE 1=1
-		]]>			
    	    <if test='trgetId != null and trgetId != ""'>
 		   	   AND TRGET_ID = #{trgetId}
 		</if>
@@ -51,7 +43,6 @@
  	</select>
 	
 	<select id="selectFaqListDetail" resultType="faqManageVO">
-		<![CDATA[		
 			SELECT FAQ_ID
 			     , QESTN_SJ
 			     , QESTN_CN
@@ -64,11 +55,9 @@
 			     , LAST_UPDUSR_ID			 			  			 			  
 			  FROM COMTN_FAQ_INFO				
 			 WHERE FAQ_ID = #{faqId}				
-		]]>
 	</select>
 	
 	<insert id="insertFaqCn">	
-		<![CDATA[	
 			INSERT INTO COMTN_FAQ_INFO (
 			   		FAQ_ID
 				  , QESTN_SJ
@@ -94,19 +83,15 @@
 				  , sysdate()
 			  	  ,	#{trgetId}
 			)
-		]]>
 	</insert>
 	
 	<update id="updateFaqInqireCo">
-		<![CDATA[		
 			UPDATE COMTN_FAQ_INFO	
 			   SET RDCNT= IFNULL(RDCNT,0) + 1				  			
  			 WHERE FAQ_ID = #{faqId}
-		]]>
 	</update>
 
 	<update id="updateFaqCn">
-		<![CDATA[
 			UPDATE COMTN_FAQ_INFO	
 			   SET FAQ_ID			= #{faqId} 
 				 , QESTN_SJ			= #{qestnSj}
@@ -116,15 +101,12 @@
 				 , LAST_UPDUSR_ID	= #{lastUpdusrId}
 				 , LAST_UPDT_PNTTM	=sysdate()
  			 WHERE FAQ_ID = #{faqId}
-		]]>
 	</update>
 	
 	<delete id="deleteFaqCn">
-		<![CDATA[
 			DELETE 
 			  FROM COMTN_FAQ_INFO 
 			 WHERE FAQ_ID = #{faqId}
-		]]>
 	</delete>
 	
 </mapper>

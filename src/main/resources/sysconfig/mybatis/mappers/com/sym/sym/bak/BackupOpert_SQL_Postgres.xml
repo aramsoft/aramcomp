@@ -5,7 +5,6 @@
 
     <select id="selectBackupOpertList" resultType="backupOpertVO">
         /* 구현 Sql */
-        <![CDATA[ 
             SELECT A.BACKUP_OPERT_ID
                  , A.EXECUT_CYCLE
                  , C.CODE_NM 				AS "executCycleNm"
@@ -33,28 +32,22 @@
 					    	  		 WHERE CODE_ID = 'COM047') C
 					   	ON A.EXECUT_CYCLE = C.CODE
              WHERE 1=1
-        ]]>
        	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "BACKUP_OPERT_NM"'>
-                 <![CDATA[ AND A.BACKUP_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+               AND A.BACKUP_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%' 
             </when>
             <when test='searchCondition == "BACKUP_ORGINL_DRCTRY"'>
-                 <![CDATA[ AND A.BACKUP_ORGINL_DRCTRY LIKE '%'|| #{searchKeyword} ||'%' ]]>
+               AND A.BACKUP_ORGINL_DRCTRY LIKE '%'|| #{searchKeyword} ||'%' 
             </when>
         </choose>
 		</if>
-        <![CDATA[
              ORDER BY A.BACKUP_OPERT_ID ASC
-        ]]>             
          /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
     </select>
 
     <select id="selectBackupOpertListCnt"  resultType="int" >
-        <![CDATA[
             SELECT COUNT(*) totcnt
               FROM COMTN_BACKUP_OPERT A
 				   LEFT OUTER JOIN (SELECT CODE, CODE_NM
@@ -66,21 +59,19 @@
 					    	  		 WHERE CODE_ID = 'COM047') C
 					   	ON A.EXECUT_CYCLE = C.CODE
              WHERE 1=1
-        ]]>
        	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "BACKUP_OPERT_NM"'>
-                 <![CDATA[ AND A.BACKUP_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+               AND A.BACKUP_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%' 
             </when>
             <when test='searchCondition == "BACKUP_ORGINL_DRCTRY"'>
-                 <![CDATA[ AND A.BACKUP_ORGINL_DRCTRY LIKE '%'|| #{searchKeyword} ||'%' ]]>
+               AND A.BACKUP_ORGINL_DRCTRY LIKE '%'|| #{searchKeyword} ||'%' 
             </when>
         </choose>
 		</if>
     </select>
     
     <select id="selectBackupOpert" resultType="backupOpertVO">
-        <![CDATA[
             SELECT A.BACKUP_OPERT_ID
                  , A.EXECUT_CYCLE
                  , C.CODE_NM 				AS "executCycleNm"
@@ -108,11 +99,9 @@
 					    	  		 WHERE CODE_ID = 'COM047') C
 					   	ON A.EXECUT_CYCLE = C.CODE
              WHERE A.BACKUP_OPERT_ID = #{backupOpertId}
-        ]]>
     </select>
 
     <insert id="insertBackupOpert">
-        <![CDATA[
             INSERT INTO COMTN_BACKUP_OPERT (
                 	BACKUP_OPERT_ID
                   , BACKUP_OPERT_NM
@@ -146,11 +135,9 @@
 				  , #{frstRegisterId} 
 				  , now()
             ) 
-        ]]>
     </insert>
 
     <update id="updateBackupOpert">
-        <![CDATA[
             UPDATE COMTN_BACKUP_OPERT 
                SET BACKUP_OPERT_NM 			= #{backupOpertNm}
                  , BACKUP_ORGINL_DRCTRY 	= #{backupOrginlDrctry}
@@ -165,19 +152,15 @@
                  , LAST_UPDUSR_ID 			= #{lastUpdusrId}
                  , LAST_UPDT_PNTTM 			= now()
              WHERE BACKUP_OPERT_ID = #{backupOpertId}
-        ]]>
     </update>
     
     <delete id="deleteBackupOpert">
-        <![CDATA[
             DELETE
               FROM COMTN_BACKUP_OPERT 
              WHERE BACKUP_OPERT_ID = #{backupOpertId} 
-        ]]>
     </delete>
 
     <select id="selectBackupSchdulDfkList" resultType="backupSchdulDfkVO">
-        <![CDATA[
             SELECT A.BACKUP_OPERT_ID
                  , A.EXECUT_SCHDUL_DFK_SE
                  , B.CODE_NM 				AS "executSchdulDfkSeNm"
@@ -187,11 +170,9 @@
 					    	  		 WHERE CODE_ID = 'COM074') B
 					   	ON A.EXECUT_SCHDUL_DFK_SE = B.CODE
              WHERE A.BACKUP_OPERT_ID = #{backupOpertId}
-        ]]>
     </select>
 
     <insert id="insertBackupSchdulDfk">
-        <![CDATA[
             INSERT INTO COMTN_BACKUP_SCHDUL_DFK (
                 	BACKUP_OPERT_ID
                   , EXECUT_SCHDUL_DFK_SE
@@ -199,15 +180,12 @@
                     #{backupOpertId}
                   , #{executSchdulDfkSe}
             ) 
-        ]]>
     </insert>
 
     <delete id="deleteBackupSchdulDfk">
-        <![CDATA[
             DELETE 
               FROM COMTN_BACKUP_SCHDUL_DFK
              WHERE BACKUP_OPERT_ID = #{backupOpertId} 
-        ]]>
     </delete>
 
 </mapper>            

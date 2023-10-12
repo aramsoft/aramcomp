@@ -6,7 +6,6 @@
 	<!-- 프로그램 변경요청 검색 조회 -->
 	<select id="selectProgrmChangeRequstList" resultType="egovMap">
         /* 구현 Sql */
-		<![CDATA[
 			SELECT REQUST_NO 				AS "rqestNo"
 				 , PROGRM_FILE_NM 		 	AS "progrmFileNm"
 				 , REQUSTER_ID 				AS "rqestPersonId"
@@ -15,33 +14,25 @@
 				 , REQUST_SJ 				AS "rqestSj"
 			  FROM COMTN_PROGRM_CHANGE_DTLS
 			 WHERE PROGRM_FILE_NM like '%'||#{searchKeyword}||'%'
-		 ]]>
         /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
 	</select>
 
 	<!-- 총건수 조회 -->
 	<select id="selectProgrmChangeRequstListCnt" resultType="int">
-		<![CDATA[
 			SELECT COUNT(*) AS "totcnt"
 			  FROM COMTN_PROGRM_CHANGE_DTLS
 			 WHERE PROGRM_FILE_NM like '%'||#{searchKeyword}||'%'
-		]]>
 	</select>
 
 	<!-- 변경요청 번호채번 -->
 	<select id="selectProgrmChangeRequstNo" resultType="int">
-		<![CDATA[
 		    select nvl(max(REQUST_NO),0)+1 AS "rqestNo"
 			  from COMTN_PROGRM_CHANGE_DTLS
-		 ]]>
 	</select>
 
 	<!-- 변경요청 상세조회 -->
 	<select id="selectProgrmChangeRequst" resultType="progrmManageDtlVO">
-		<![CDATA[
 		   SELECT PROGRM_FILE_NM 			AS "progrmFileNm"		
 				, REQUST_NO 				AS "rqestNo"			 
 				, REQUSTER_ID 				AS "rqestPersonId"			 
@@ -55,12 +46,10 @@
 			 FROM COMTN_PROGRM_CHANGE_DTLS
 			WHERE PROGRM_FILE_NM = #{progrmFileNm}
 			  AND REQUST_NO      = #{rqestNo}
-		]]>
 	</select> 
 
 	<!-- 변경요청 등록 -->
 	<insert id="insertProgrmChangeRequst">
-		<![CDATA[
 			INSERT INTO COMTN_PROGRM_CHANGE_DTLS (  
 				   PROGRM_FILE_NM
              	 , REQUST_NO
@@ -78,12 +67,10 @@
                  , #{rqestSj} 
                  , 'A'
             )
-		]]>
 	</insert>
 
 	<!-- 변경요청 수정 -->
 	<update id="updateProgrmChangeRequst">
-		<![CDATA[
 			UPDATE COMTN_PROGRM_CHANGE_DTLS
 			   SET REQUSTER_ID        	= #{rqestPersonId} 
 			     , CHANGE_REQUST_CN  	= #{changeRqestCn}
@@ -91,30 +78,24 @@
                  , REQUST_SJ        	= #{rqestSj} 
 			 WHERE PROGRM_FILE_NM		= #{progrmFileNm}
 			   AND REQUST_NO    		= #{rqestNo}
-		]]>
 	</update>
 
 	<!-- 변경요청 삭제 -->
 	<delete id="deleteProgrmChangeRequst">
-		<![CDATA[
 		    DELETE 
 		      FROM COMTN_PROGRM_CHANGE_DTLS
 			 WHERE PROGRM_FILE_NM		= #{progrmFileNm}
 			   AND REQUST_NO    		= #{rqestNo}
-		]]>
 	</delete>  
 
 	<!-- 변경요청 전체 삭제 -->
 	<delete id="deleteAllProgrmDtls">
-		<![CDATA[                          
 			DELETE 
 			  FROM COMTN_PROGRM_CHANGE_DTLS              
-		]]>                                
 	</delete> 
 
 	<!-- 변경요청 처리 -->
 	<update id="updateProgrmChangeRequstProcess">
-		<![CDATA[
 			UPDATE COMTN_PROGRM_CHANGE_DTLS
 			   SET REQUST_PROCESS_CN 	= #{rqestProcessCn} 
                  , OPETR_ID           	= #{opetrId}         
@@ -122,13 +103,11 @@
                  , PROCESS_DE         	= #{processDe}      
 			 WHERE PROGRM_FILE_NM		= #{progrmFileNm}
 			   AND REQUST_NO    		= #{rqestNo}  
-		]]>
 	</update>
 
 	<!-- 변경요청 처리  검색-->
 	<select id="selectChangeRequstProcessList" resultType="egovMap">
         /* 구현 Sql */
-		<![CDATA[
 		    SELECT REQUST_NO 				AS "rqestNo"
 				 , PROGRM_FILE_NM 		 	AS "progrmFileNm"
 				 , REQUSTER_ID 				AS "rqestPersonId"
@@ -137,69 +116,59 @@
 				 , REQUST_SJ 				AS "rqestSj"
 			  FROM COMTN_PROGRM_CHANGE_DTLS
 			 WHERE 1=1
-		]]>
       	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "1"'>
-				AND PROCESS_STTUS_CODE like '%'||#{searchKeyword}||'%'
+			   AND PROCESS_STTUS_CODE like '%'||#{searchKeyword}||'%'
             </when>
             <when test='searchCondition == "2"'>
-				AND PROCESS_STTUS_CODE = #{searchKeyword}
+			   AND PROCESS_STTUS_CODE = #{searchKeyword}
             </when>
             <when test='searchCondition == "4"'>
-				AND REQUSTER_ID like  '%'||#{searchKeyword}||'%'
+			   AND REQUSTER_ID like  '%'||#{searchKeyword}||'%'
             </when>
         </choose>
 		</if>
 	    <if test='searchCondition == "3"'>
-				AND REQUST_DE between #{searchKeywordFrom} and #{searchKeywordTo}
+			   AND REQUST_DE between #{searchKeywordFrom} and #{searchKeywordTo}
         </if>
-        <![CDATA[   
              ORDER BY REQUST_NO ASC
-        ]]>
         /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
 	</select>
 
 	<!-- 총건수 조회   binary(PROCESS_DE) >= #searchKeywordFrom#  and  binary(PROCESS_DE) =<  #searchKeywordTo#  -->
 	<select id="selectChangeRequstProcessListCnt" resultType="int">
-		<![CDATA[
 			SELECT COUNT(REQUST_NO) 		AS "totcnt"
 		  	  FROM COMTN_PROGRM_CHANGE_DTLS
 			 WHERE 1=1
-		]]>
       	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "1"'>
-				<![CDATA[ AND PROCESS_STTUS_CODE like '%'||#{searchKeyword}||'%' ]]>
+			   AND PROCESS_STTUS_CODE like '%'||#{searchKeyword}||'%' 
             </when>
             <when test='searchCondition == "2"'>
-				<![CDATA[ AND PROCESS_STTUS_CODE = #{searchKeyword}]]>
+			   AND PROCESS_STTUS_CODE = #{searchKeyword}
             </when>
             <when test='searchCondition == "4"'>
-				<![CDATA[ AND REQUSTER_ID like  '%'||#{searchKeyword}||'%']]>
+			   AND REQUSTER_ID like  '%'||#{searchKeyword}||'%'
             </when>
         </choose>
 		</if>
 	    <if test='searchCondition == "3"'>
-				<![CDATA[ AND REQUST_DE between #{searchKeywordFrom} and #{searchKeywordTo} ]]>
+			   AND REQUST_DE between #{searchKeywordFrom} and #{searchKeywordTo} 
         </if>
 	</select>
 
 	<select id="selectRqesterEmail" resultType="String">
-		<![CDATA[
 			SELECT user_email AS tmpEmail 
 			  FROM COMVN_USER_MASTER
 			 WHERE user_id = #{rqestPersonId}
-		 ]]>
 	</select>
 
 	<!-- 프로그램 변경이력 검색 조회 -->
 	<select id="selectProgrmChangeHistoryList" resultType="egovMap">
         /* 구현 Sql */
-		<![CDATA[
 		    SELECT REQUST_NO 				AS "rqestNo"
 				 , PROGRM_FILE_NM 		 	AS "progrmFileNm"
 				 , REQUSTER_ID 				AS "rqestPersonId"
@@ -208,20 +177,15 @@
 				 , PROCESS_DE 				AS "processDe"				 
 			  FROM COMTN_PROGRM_CHANGE_DTLS
 			 WHERE PROGRM_FILE_NM like '%'||#{searchKeyword}||'%'
-		 ]]>
         /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
 	</select>
 
 	<!-- 총건수 조회 -->
 	<select id="selectProgrmChangeHistoryListCnt" resultType="int">
-		<![CDATA[
 			SELECT COUNT(*) AS "totcnt"
 			  FROM COMTN_PROGRM_CHANGE_DTLS
 			 WHERE PROGRM_FILE_NM like '%'||#{searchKeyword}||'%'
-		]]>
 	</select>
 
 </mapper>                            

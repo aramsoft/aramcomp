@@ -30,7 +30,6 @@
 	</select>
 
 	<select id="selectMainMenuLeft" resultType="egovMap">
-		<![CDATA[ 
 			SELECT B.MENU_NO           		AS "menuNo"
 				 , B.MENU_ORDR         		AS "menuOrdr"
 				 , B.MENU_NM           		AS "menuNm"
@@ -48,21 +47,17 @@
 			                          from COMTN_EMPLYR_SCRTY_ESTBS
 	                                 WHERE SCRTY_DTRMN_TRGET_ID = #{tmpUserId})
 			 ORDER BY B.MENU_ORDR
-		]]> 
 	</select>
 
 	<select id="selectLastMenuURL" resultType="String">
-		<![CDATA[ 
 			SELECT URL 
 			  FROM COMTN_PROGRM_LIST
 			 WHERE PROGRM_FILE_NM = (SELECT PROGRM_FILE_NM 
 			          			       FROM COMTN_MENU_INFO
 				     			      WHERE MENU_NO = #{menuNo})
-		]]> 
 	</select>
 
 	<select id="selectLastMenuNo" resultType="int">
-		<![CDATA[ 
 			SELECT MIN(MENU_NO) 
 			  FROM COMTN_MENU_INFO
 			 WHERE UPPER_MENU_NO = #{menuNo}
@@ -75,11 +70,9 @@
 			                                 FROM COMTN_EMPLYR_SCRTY_ESTBS
 	                                        WHERE SCRTY_DTRMN_TRGET_ID = #{tmpUserId})
 			          AND B.UPPER_MENU_NO = #{menuNo})
-		]]> 
 	</select>
 
 	<select id="selectLastMenuNoCnt" resultType="int">
-		<![CDATA[ 
 			SELECT count(MENU_NO) 
 			  FROM COMTN_MENU_INFO
 			 WHERE UPPER_MENU_NO = #{menuNo}
@@ -92,7 +85,6 @@
 			                                  FROM COMTN_EMPLYR_SCRTY_ESTBS
 	                                         WHERE SCRTY_DTRMN_TRGET_ID = #{tmpUserId})
 			           AND B.UPPER_MENU_NO = #{menuNo})
-		]]> 
 	</select>
 	
 </mapper>                            

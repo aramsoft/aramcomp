@@ -6,7 +6,6 @@
 	<!-- 시스템 로그 목록 조회 -->
 	<select id="selectSysLogInf" resultType="egovMap">
         /* 구현 Sql */
-		<![CDATA[
 			SELECT a.REQUST_ID				AS "requstId"
 				 , a.OCCRRNC_DE				AS "occrrncDe" 
 				 , a.METHOD_NM				AS "methodNm" 
@@ -21,25 +20,19 @@
 					    	  		 WHERE CODE_ID = 'COM033') c
 					   	ON a.PROCESS_SE_CODE = c.CODE
 			 WHERE 1=1
-		]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
                AND a.CODE_NM LIKE '%'||#{searchKeyword}||'%' 
 		</if>
      	<if test='searchBgnDe != null and searchBgnDe != ""'>
 			   AND a.OCCRRNC_DE BETWEEN #{searchBgnDe} AND #{searchEndDe}
 		</if>
-		<![CDATA[
 			 ORDER BY a.OCCRRNC_DE DESC
-		]]>
         /* 구현 Sql */
-        <![CDATA[
- 			LIMIT  #{recordPerPage} OFFSET #{firstIndex}
-        ]]>			
+ 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
 	</select>
 
 	<!-- 시스템 로그 총건수 -->
 	<select id="selectSysLogInfCnt" resultType="int">
-		<![CDATA[
 			SELECT COUNT(a.REQUST_ID) as cnt
 			  FROM COMTH_SYS_LOG a
 				   LEFT OUTER JOIN COMVN_USER_MASTER b
@@ -49,18 +42,16 @@
 					    	  		 WHERE CODE_ID = 'COM033') c
 					   	ON a.PROCESS_SE_CODE = c.CODE
 			 WHERE 1=1
-		]]>
      	<if test='searchKeyword != null and searchKeyword != ""'>
-            <![CDATA[ AND a.CODE_NM LIKE '%'||#{searchKeyword}||'%' ]]>
+               AND a.CODE_NM LIKE '%'||#{searchKeyword}||'%' 
 		</if>
      	<if test='searchBgnDe != null and searchBgnDe != ""'>
-			<![CDATA[ AND a.OCCRRNC_DE BETWEEN #{searchBgnDe} AND #{searchEndDe} ]]>
+			   AND a.OCCRRNC_DE BETWEEN #{searchBgnDe} AND #{searchEndDe} 
 		</if>
 	</select>
 
 	<!-- 시스템 로그 상세 조회 -->
 	<select id="selectSysLog" resultType="sysLogVO">
-		<![CDATA[
 			SELECT a.REQUST_ID				
 				 , a.OCCRRNC_DE				
 				 , a.SVC_NM					AS "srvcNm"
@@ -79,12 +70,10 @@
 					    	  		 WHERE CODE_ID = 'COM033') c
 					   	ON a.PROCESS_SE_CODE = c.CODE
 			 WHERE a.REQUST_ID = #{requstId}
-		]]>
 	</select>
 
 	<!-- 시스템 로그 등록 -->
 	<insert id="logInsertSysLog" >
-		<![CDATA[
 			INSERT INTO COMTH_SYS_LOG ( 
 					REQUST_ID
 				  , SVC_NM
@@ -104,12 +93,10 @@
 				  , #{rqesterIp}
 				  , now()
 			)
-		]]>
 	</insert>
 
 	<!-- 시스템 로그 전날 로그 요약  등록 -->
 	<insert id="logInsertSysLogSummary">
-		<![CDATA[
 			INSERT INTO COMTS_SYS_LOG_SUMMARY
 			SELECT b.OCCRRNC_DE
 			     , b.SVC_NM
@@ -130,7 +117,6 @@
 				    , b.SVC_NM
 				    , b.METHOD_NM
 
-		]]>
 	</insert>
 
 	<!-- 시스템 로그 일주일전 로그 삭제 -->

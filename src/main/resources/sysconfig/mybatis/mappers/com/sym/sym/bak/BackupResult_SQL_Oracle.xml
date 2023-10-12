@@ -4,14 +4,11 @@
 <mapper namespace="aramframework.com.sym.sym.bak.dao.BackupResultMapper">
 
     <select id="selectBackupResultList" resultType="backupResultVO">
-		<![CDATA[
             SELECT *
               FROM (
             SELECT ROWNUM RNUM, ALL_LIST.*
               FROM (
-        ]]>
         /* 구현 Sql */
-        <![CDATA[ 
             SELECT A.BACKUP_RESULT_ID
                  , A.BACKUP_OPERT_ID
                  , B.BACKUP_OPERT_NM
@@ -35,7 +32,6 @@
 					    	  		 WHERE CODE_ID = 'COM076') C
 					   	ON A.STTUS = C.CODE
              WHERE 1=1
-        ]]>
       	<if test='sttus != null and sttus != "00"'>
 				<![CDATA[ AND A.STTUS = #{sttus} ]]>
 		</if>
@@ -55,19 +51,14 @@
             </when>
         </choose>
 		</if>
-        <![CDATA[
              ORDER BY A.BACKUP_RESULT_ID DESC
-        ]]>             
         /* 구현 Sql */
-        <![CDATA[
                    ) ALL_LIST
                    )
              WHERE RNUM BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordPerPage}
-        ]]>			
     </select>
 
     <select id="selectBackupResultListCnt" resultType="int" >
-        <![CDATA[
             SELECT COUNT(*) totcnt
               FROM COMTN_BACKUP_RESULT A
 				   LEFT OUTER JOIN COMTN_BACKUP_OPERT B
@@ -77,7 +68,6 @@
 					    	  		 WHERE CODE_ID = 'COM076') C
 					   	ON A.STTUS = C.CODE
              WHERE 1=1
-        ]]>
       	<if test='sttus != null and sttus != "00"'>
 				<![CDATA[ AND A.STTUS = #{sttus} ]]>
 		</if>
@@ -100,7 +90,6 @@
      </select>
     
     <select id="selectBackupResult" resultType="backupResultVO">
-        <![CDATA[
             SELECT A.BACKUP_RESULT_ID
                  , A.BACKUP_OPERT_ID
                  , B.BACKUP_OPERT_NM
@@ -124,11 +113,9 @@
 					    	  		 WHERE CODE_ID = 'COM076') C
 					   	ON A.STTUS = C.CODE
              WHERE A.BACKUP_RESULT_ID = #{backupResultId}
-        ]]>
     </select>
 
     <insert id="insertBackupResult" >
-        <![CDATA[
             INSERT INTO COMTN_BACKUP_RESULT (
                 	BACKUP_RESULT_ID
                   , BACKUP_OPERT_ID
@@ -154,11 +141,9 @@
 				  , #{frstRegisterId} 
 				  , SYSDATE
             ) 
-        ]]>
     </insert>
 
     <update id="updateBackupResult" >
-        <![CDATA[
             UPDATE COMTN_BACKUP_RESULT 
                SET BACKUP_FILE 			= #{backupFile, jdbcType=VARCHAR}
                  , ERROR_INFO 			= #{errorInfo, jdbcType=VARCHAR}
@@ -167,15 +152,12 @@
                  , LAST_UPDUSR_ID 		= #{lastUpdusrId}
                  , LAST_UPDT_PNTTM 		= SYSDATE
              WHERE BACKUP_RESULT_ID = #{backupResultId} 
-        ]]>
     </update>
 
     <delete id="deleteBackupResult" >
-        <![CDATA[
             DELETE 
               FROM COMTN_BACKUP_RESULT 
              WHERE BACKUP_RESULT_ID = #{backupResultId} 
-        ]]>
     </delete>
 
 </mapper>            

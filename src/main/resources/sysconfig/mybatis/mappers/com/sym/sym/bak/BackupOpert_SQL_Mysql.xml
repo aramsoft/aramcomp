@@ -35,10 +35,10 @@
        	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "BACKUP_OPERT_NM"'>
-               AND A.BACKUP_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%'
+               AND A.BACKUP_OPERT_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "BACKUP_ORGINL_DRCTRY"'>
-               AND A.BACKUP_ORGINL_DRCTRY LIKE '%'|| #{searchKeyword} ||'%' 
+               AND A.BACKUP_ORGINL_DRCTRY LIKE CONCAT('%',#{searchKeyword},'%') 
             </when>
         </choose>
 		</if>
@@ -62,10 +62,10 @@
        	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "BACKUP_OPERT_NM"'>
-               AND A.BACKUP_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%' 
+               AND A.BACKUP_OPERT_NM LIKE CONCAT('%',#{searchKeyword},'%') 
             </when>
             <when test='searchCondition == "BACKUP_ORGINL_DRCTRY"'>
-               AND A.BACKUP_ORGINL_DRCTRY LIKE '%'|| #{searchKeyword} ||'%'
+               AND A.BACKUP_ORGINL_DRCTRY LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>

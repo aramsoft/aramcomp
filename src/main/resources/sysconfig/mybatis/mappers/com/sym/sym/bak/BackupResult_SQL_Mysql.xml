@@ -40,10 +40,10 @@
        	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "BACKUP_OPERT_NM"'>
-                 <![CDATA[ AND A.BACKUP_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                 <![CDATA[ AND A.BACKUP_OPERT_NM LIKE CONCAT('%',#{searchKeyword},'%') ]]>
             </when>
             <when test='searchCondition == "BACKUP_OPERT_ID"'>
-                 <![CDATA[ AND A.BACKUP_OPERT_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                 <![CDATA[ AND A.BACKUP_OPERT_ID LIKE CONCAT('%',#{searchKeyword},'%') ]]>
             </when>
         </choose>
 		</if>
@@ -74,10 +74,10 @@
        	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "BACKUP_OPERT_NM"'>
-                 <![CDATA[ AND A.BACKUP_OPERT_NM LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                 <![CDATA[ AND A.BACKUP_OPERT_NM LIKE CONCAT('%',#{searchKeyword},'%') ]]>
             </when>
             <when test='searchCondition == "BACKUP_OPERT_ID"'>
-                 <![CDATA[ AND A.BACKUP_OPERT_ID LIKE '%'|| #{searchKeyword} ||'%' ]]>
+                 <![CDATA[ AND A.BACKUP_OPERT_ID LIKE CONCAT('%',#{searchKeyword},'%') ]]>
             </when>
         </choose>
 		</if>

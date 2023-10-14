@@ -1067,7 +1067,7 @@
       <!--
       	주민등록번호 validation.
       	Commons Validator가 제공하는 validator가 아니라 추가된 validator이므로
-      	실행을 위해서는 반드시  egovframework.rte.ptl.mvcXXXXX.jar가 필요하다.
+      	실행을 위해서는 반드시  org.egovframe.rte.ptl.mvcXXXXX.jar가 필요하다.
       -->
       <validator name="ihidnum"
             classname="org.egovframe.rte.ptl.mvc.validation.RteFieldChecks"

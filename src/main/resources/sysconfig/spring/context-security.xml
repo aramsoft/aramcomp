@@ -113,7 +113,7 @@
 
 <!--      
     <beans:bean id="jdbcUserService"
-        class="egovframework.rte.fdl.security.userdetails.jdbc.EgovJdbcUserDetailsManager" >
+        class="org.egovframe.rte.fdl.security.userdetails.jdbc.EgovJdbcUserDetailsManager" >
 
         <beans:property name="usersByUsernameQuery" value=
         		"SELECT USER_ID, PASSWORD, 1 ENABLED, USER_NM, USER_ZIP,  

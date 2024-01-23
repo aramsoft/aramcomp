@@ -9,7 +9,7 @@
 	<url>http://aramcomp.aramsoft.co.kr</url> 
 
 	<properties>
-	    <org.springframework.version>5.2.24.RELEASE</org.springframework.version>
+	    <org.springframework.version>6.0.15</org.springframework.version>
 	    <org.spring.security.version>5.3.3.RELEASE</org.spring.security.version>
 		<org.egovframe.rte.version>4.1.0</org.egovframe.rte.version>
 		<org.apache.log4j-version>2.17.1</org.apache.log4j-version>

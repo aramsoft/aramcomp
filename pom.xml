@@ -203,12 +203,20 @@
 		</dependency>
 
         <!-- mysql driver -->
+<!--
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.29</version>
         </dependency>
-        
+-->        
+		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+		<dependency>
+		    <groupId>org.postgresql</groupId>
+		    <artifactId>postgresql</artifactId>
+		    <version>9.4.1212</version>
+		</dependency>
+
 		<!-- common-annotations for JSE 5 -->
 		<dependency>
 			<groupId>commons-lang</groupId>

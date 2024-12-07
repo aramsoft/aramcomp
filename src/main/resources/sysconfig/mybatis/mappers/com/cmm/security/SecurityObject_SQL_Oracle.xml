@@ -36,7 +36,7 @@
 				   		  ON a.CHLDRN_ROLE = b.PARNTS_ROLE		
 	</select>
 
-	<select id="sqlRolesAndUrl" resultType="java.util.Map">
+	<select id="getRolesAndUrl" resultType="java.util.Map">
 			SELECT a.RESOURCE_PTTRN AS url
 				 , b.AUTHOR_CODE AS authority 
 			  FROM COMTN_RESOURCE_INFO a
@@ -46,7 +46,7 @@
 		     ORDER BY a.RESOURCE_SORT 	
 	</select>
 
-	<select id="sqlRolesAndMethod" resultType="java.util.Map">
+	<select id="getRolesAndMethod" resultType="java.util.Map">
 			SELECT a.RESOURCE_PTTRN AS method
 			     , b.AUTHOR_CODE AS authority   
 			  FROM COMTN_RESOURCE_INFO a
@@ -56,7 +56,7 @@
 			 ORDER BY a.RESOURCE_SORT	
 	</select>
 
-	<select id="sqlRolesAndPointcut" resultType="java.util.Map">
+	<select id="getRolesAndPointcut" resultType="java.util.Map">
 			SELECT a.RESOURCE_PTTRN AS pointcut
 			     , b.AUTHOR_CODE AS authority   
 			  FROM COMTN_RESOURCE_INFO a

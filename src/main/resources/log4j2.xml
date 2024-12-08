@@ -16,21 +16,21 @@
     </Appenders>
     <Loggers>
         <Logger name="aramframework" level="DEBUG" additivity="false">
-            <AppenderRef ref="file" />
+            <AppenderRef ref="console" />
         </Logger>
         
 		<!-- log SQL with timing information, post execution -->
         <Logger name="java.sql" level="ERROR" additivity="false">
-            <AppenderRef ref="file" />
+            <AppenderRef ref="console" />
         </Logger>
 	    <logger name="org.springframework.security" level="ERROR" additivity="false">
-	        <AppenderRef ref="file" />
+	        <AppenderRef ref="console" />
 	    </logger>
 	    <logger name="org.springframework" level="ERROR" additivity="false">
-	        <AppenderRef ref="file" />
+	        <AppenderRef ref="console" />
 	    </logger>
         <Logger name="egovframework" level="ERROR" additivity="false">
-            <AppenderRef ref="file" />
+            <AppenderRef ref="console" />
         </Logger>
         
         <Root level="ERROR">

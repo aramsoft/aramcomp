@@ -39,8 +39,8 @@ public class OcrHanjaService extends EgovAbstractServiceImpl {
 	
 	public static final String HANJA_DIC_FILE 
 		= AramProperties.SYSCONFIG_PATH_PREFIX 
-		+ "egovProps" + System.getProperty("file.separator")
-		+ "conf" + System.getProperty("file.separator")
+		+ "properties" + System.getProperty("file.separator")
+		+ "hanja" + System.getProperty("file.separator")
 		+ "HanjaDic.xlsx";
 
 	@Resource(name = "cacheDictionary")

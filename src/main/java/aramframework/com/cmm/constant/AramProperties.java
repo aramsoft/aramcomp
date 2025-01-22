@@ -130,7 +130,7 @@ public class AramProperties {
 	}
 
 	public static String getSysPathProperty(String fileName, String key) {
-		return SYSCONFIG_PATH_PREFIX + "egovProps" + System.getProperty("file.separator") + getProperty(fileName, key);
+		return SYSCONFIG_PATH_PREFIX + "properties" + System.getProperty("file.separator") + getProperty(fileName, key);
 	}
 	
 }

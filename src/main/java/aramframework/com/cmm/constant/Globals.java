@@ -1,5 +1,7 @@
 package aramframework.com.cmm.constant;
 
+import org.springframework.beans.factory.annotation.Value;
+
 /**
  * 시스템 구동 시 프로퍼티를 통해 사용될 전역변수를 정의한다.
  * 
@@ -9,33 +11,51 @@ package aramframework.com.cmm.constant;
  */
 public interface Globals {
 	// OS 유형
-	String OS_TYPE = AramProperties.getProperty("Globals.OsType");
+	@Value("${Globals.OsType}")
+	String OS_TYPE = "";
 	// DB 유형
-	String DB_TYPE = AramProperties.getProperty("Globals.DbType");
+	@Value("${Globals.DbType}")
+	String DB_TYPE = "";
 	
 	// 메인 페이지
-	String MAIN_PAGE   = AramProperties.getProperty("Globals.MainPage");
+	@Value("${Globals.MainPage}")
+	String MAIN_PAGE   = "";
 	
-	// 프로퍼티 파일 위치
-	String CONF_PATH        = AramProperties.getSysPathProperty("Globals.ConfPath");
-	// ShellFile 경로
-	String SHELL_CONF_PATH  = AramProperties.getSysPathProperty("Globals.ShellConfPath");
-	// Server정보 프로퍼티 위치
-	String SERVER_CONF_PATH = AramProperties.getSysPathProperty("Globals.ServerConfPath");
-	// Client정보 프로퍼티 위치
-	String CLIENT_CONF_PATH = AramProperties.getSysPathProperty("Globals.ClientConfPath");
-	// 파일포맷 정보 프로퍼티 위치
-	String FILE_FORMAT_PATH = AramProperties.getSysPathProperty("Globals.FileFormatPath");
-	// sms 정보 프로퍼티 위치
-	String SME_CONFIG_PATH    = AramProperties.getSysPathProperty("Globals.SMEConfigPath");
-
 	// 메일발송요청 XML파일경로
-	String MAIL_REQUEST_PATH  = AramProperties.getProperty("Globals.MailRequestPath");
+	@Value("${Globals.MailRequestPath}")
+	String MAIL_REQUEST_PATH  = "";
+
 	// 메일발송응답 XML파일경로
-	String MAIL_RESPONSE_PATH = AramProperties.getProperty("Globals.MailResponsePath");
+	@Value("${Globals.MailResponsePath}")
+	String MAIL_RESPONSE_PATH = "";
 
 	// G4C 연결용 IP (localhost)
-	String LOCAL_IP = AramProperties.getProperty("Globals.LocalIp");
+	@Value("${Globals.LocalIp}")
+	String LOCAL_IP = "";
 
-	String FILE_UPLOAD_DIR = AramProperties.getProperty("Globals.fileStorePath");
+	@Value("${Globals.fileStorePath}")
+	String FILE_UPLOAD_DIR = "";
+	
+	@Value("${Globals.authorResourceReload}")
+	String AUTHOR_RESOURCE_RELOAD = "";
+	
+	// 프로퍼티 파일 위치
+	@Value("${Globals.ConfPath}")
+	String CONF_PATH        = "";
+	// ShellFile 경로
+	@Value("${Globals.ShellConfPath}")
+	String SHELL_CONF_PATH  = "";
+	// Server정보 프로퍼티 위치
+	@Value("${Globals.ServerConfPath}")
+	String SERVER_CONF_PATH = "";
+	// Client정보 프로퍼티 위치
+	@Value("${Globals.ClientConfPath}")
+	String CLIENT_CONF_PATH = "";
+	// 파일포맷 정보 프로퍼티 위치
+	@Value("${Globals.FileFormatPath}")
+	String FILE_FORMAT_PATH = "";
+	// sms 정보 프로퍼티 위치
+	@Value("${Globals.SMEConfigPath}")
+	String SME_CONFIG_PATH    = "";
+
 }

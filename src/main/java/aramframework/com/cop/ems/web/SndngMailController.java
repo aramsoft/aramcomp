@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.constant.AramProperties;
+import aramframework.com.cmm.constant.Globals;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.security.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.FileMngUtil;
@@ -133,8 +133,7 @@ public class SndngMailController {
 			@ModelAttribute SndngMailVO sndngMailVO, 
 			HttpServletResponse response) 
 	throws Exception {
-//		String xmlFile = Globals.MAIL_REQUEST_PATH + sndngMailVO.getMssageId() + ".xml";
-		String xmlFile = AramProperties.getProperty("Globals.MailRequestPath") + sndngMailVO.getMssageId() + ".xml";
+		String xmlFile = Globals.MAIL_REQUEST_PATH + sndngMailVO.getMssageId() + ".xml";
 		File uFile = new File(xmlFile);
 		int fSize = (int) uFile.length();
 

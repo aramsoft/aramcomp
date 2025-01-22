@@ -16,7 +16,6 @@ import org.springframework.mail.MailParseException;
 import org.springframework.mail.MailSendException;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.constant.AramProperties;
 import aramframework.com.cmm.constant.Globals;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cop.ems.dao.SndngMailMapper;
@@ -265,8 +264,7 @@ public class SndngMailService extends EgovAbstractServiceImpl {
     	mailElement.setStreFileList(streFileList);
 
     	// 3. XML파일로 저장한다.
-//    	String xmlFile = Globals.MAIL_REQUEST_PATH + sndngMailVO.getMssageId() + ".xml";
-    	String xmlFile = AramProperties.getProperty("Globals.MailRequestPath") + sndngMailVO.getMssageId() + ".xml";
+    	String xmlFile = Globals.MAIL_REQUEST_PATH + sndngMailVO.getMssageId() + ".xml";
         boolean result = false;
 		try {
 			result = XMLDoc.getClassToXML(mailDoc, xmlFile);

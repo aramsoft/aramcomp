@@ -13,7 +13,7 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.util.MessageHelper;
-import aramframework.com.cmm.constant.AramProperties;
+import aramframework.com.cmm.constant.Globals;
 import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.sec.arm.domain.AuthorVO;
 import aramframework.com.sec.arm.service.AuthorService;
@@ -64,7 +64,7 @@ public class AuthorController {
 
 		model.addAttribute(paginationInfo);
 
-        String authorResourceReload = AramProperties.getProperty("Globals.authorResourceReload");       
+        String authorResourceReload = Globals.AUTHOR_RESOURCE_RELOAD;       
 		model.addAttribute("authorResourceReload", authorResourceReload);
 		
 		return "com/sec/arm/AuthorList";
@@ -207,7 +207,7 @@ public class AuthorController {
 			@ModelAttribute AuthorVO authorVO, 
 			ModelMap model) {
 
-        String authorResourceReload = AramProperties.getProperty("Globals.authorResourceReload");       
+        String authorResourceReload = Globals.AUTHOR_RESOURCE_RELOAD;       
         if( "true".equals(authorResourceReload) ) {
 //        	filterSource.reloadRequestMap();
 //       	methodSource.reloadMethodMap();

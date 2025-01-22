@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import aramframework.com.cmm.com.domain.FileVO;
 import aramframework.com.cmm.com.service.FileMngService;
-import aramframework.com.cmm.constant.AramProperties;
+import aramframework.com.cmm.constant.Globals;
 
 import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
 
@@ -53,7 +53,7 @@ public class FileMngUtil {
 		String atchFileId = "";
 		Map<String, MultipartFile> files = multiRequest.getFileMap();
 		if (!files.isEmpty()) {
-			List<FileVO> result = parseFileInf(files, category, 0, "", "");
+			List<FileVO> result = parseFileInf(files, category, 0, "");
 			atchFileId = fileMngService.insertFileInfs(result);
 		}
 		return atchFileId;
@@ -73,13 +73,13 @@ public class FileMngUtil {
 		final Map<String, MultipartFile> files = multiRequest.getFileMap();
 		if (!files.isEmpty()) {
 			if ("".equals(atchFileId)) {
-				List<FileVO> result = parseFileInf(files, category, 0, atchFileId, "");
+				List<FileVO> result = parseFileInf(files, category, 0, atchFileId);
 				atchFileId = fileMngService.insertFileInfs(result);
 			} else {
 				FileVO fvo = new FileVO();
 				fvo.setAtchFileId(atchFileId);
 				int fileSn = fileMngService.getMaxFileSN(fvo);
-				List<FileVO> result = parseFileInf(files, category, fileSn, atchFileId, "");
+				List<FileVO> result = parseFileInf(files, category, fileSn, atchFileId);
 				fileMngService.addFileInfs(result);
 			}
 		}
@@ -111,16 +111,11 @@ public class FileMngUtil {
 	 * @throws Exception
 	 */
 	public List<FileVO> parseFileInf(Map<String, MultipartFile> files, String category, 
-			int fileSn, String atchFileId, String storePath) 
+			int fileSn, String atchFileId) 
 	throws Exception {
 		
-		String storePathString = "";
+		String storePathString = Globals.FILE_UPLOAD_DIR;
 
-		if (storePath == null || "".equals(storePath) ) {
-			storePathString = AramProperties.getProperty("Globals.fileStorePath");
-		} else {
-			storePathString = AramProperties.getProperty(storePath);
-		}
 
 		if (atchFileId == null || "".equals(atchFileId) ) {
 			atchFileId = fileIdGnrService.getNextStringId();

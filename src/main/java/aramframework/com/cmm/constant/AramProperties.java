@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Properties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,23 +30,6 @@ public class AramProperties {
 
 	protected static final Logger LOG = LoggerFactory.getLogger(AramProperties.class);
 
-	// 프로퍼티 파일의 물리적 위치
-	/*
-	 * public static final String GLOBALS_PROPERTIES_FILE =
-	 * 		  System.getProperty("user.home") 
-	 * 		+ System.getProperty("file.separator") 
-	 * 		+ "egovProps" 
-	 * 		+ System.getProperty("file.separator") 
-	 * 		+ "globals.properties";
-	 */
-
-	// public static final String RELATIVE_PATH_PREFIX = 
-	//    	  AramProperties.class.getResource("").getPath()
-	// 		+ System.getProperty("file.separator") 
-	//		+ ".." + System.getProperty("file.separator")
-	// 		+ ".." + System.getProperty("file.separator") 
-	//		+ ".." + System.getProperty("file.separator");
-
 	public static final String AramProperties_PATH  
 			= AramProperties.class.getResource("").getPath();
 
@@ -55,48 +37,6 @@ public class AramProperties {
 			= AramProperties_PATH.substring(0, AramProperties_PATH.lastIndexOf("aramframework")) 
 			+ "sysconfig" + System.getProperty("file.separator");
 
-	public static final String GLOBALS_PROPERTIES_FILE 
-			= SYSCONFIG_PATH_PREFIX 
-			+ "egovProps" + System.getProperty("file.separator")
-			+ "globals.properties";
-
-	/**
-	 * 인자로 주어진 문자열을 Key값으로 하는 프로퍼티 값을 반환한다(Globals.java 전용)
-	 * 
-	 * @param keyName	String
-	 * @return 			String
-	 */
-	public static String getProperty(String keyName) {
-		String value = ERR_CODE;
-		value = "99";
-		FileInputStream fis = null;
-		try {
-			Properties props = new Properties();
-			fis = new FileInputStream(WebUtil.filePathBlackList(GLOBALS_PROPERTIES_FILE));
-			props.load(new java.io.BufferedInputStream(fis));
-			
-			value = props.getProperty(keyName).trim();
-		} catch (FileNotFoundException fne) {
-			LOG.error(fne.getMessage());
-		} catch (IOException ioe) {
-			LOG.error(ioe.getMessage());
-		} catch (Exception e) {
-			LOG.error(e.getMessage());
-		} finally {
-			try {
-				if (fis != null)
-					fis.close();
-			} catch (Exception ex) {
-				LOG.error("IGNORED: " + ex.getMessage());
-			}
-		}
-		return value;
-	}
-
-	public static String getSysPathProperty(String keyName) {
-		return SYSCONFIG_PATH_PREFIX + "egovProps" + System.getProperty("file.separator") + getProperty(keyName);
-	}
-	
 	/**
 	 * 주어진 파일에서 인자로 주어진 문자열을 Key값으로 하는 프로퍼티 값을 반환한다
 	 * 

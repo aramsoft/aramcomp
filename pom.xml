@@ -150,19 +150,19 @@
 
 		<dependency>
 			<groupId>org.egovframe.rte</groupId>
-			<artifactId>org.egovframe.rte.fdl.string</artifactId>
-			<version>${org.egovframe.rte.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.egovframe.rte</groupId>
 			<artifactId>org.egovframe.rte.ptl.mvc</artifactId>
 			<version>${org.egovframe.rte.version}</version>
 		</dependency>
-
+<!--
 		<dependency>
 			<groupId>org.egovframe.rte</groupId>
 			<artifactId>org.egovframe.rte.fdl.property</artifactId>
+			<version>${org.egovframe.rte.version}</version>
+		</dependency>
+-->
+		<dependency>
+			<groupId>org.egovframe.rte</groupId>
+			<artifactId>org.egovframe.rte.fdl.string</artifactId>
 			<version>${org.egovframe.rte.version}</version>
 		</dependency>
 

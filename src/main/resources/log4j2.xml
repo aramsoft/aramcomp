@@ -29,7 +29,7 @@
 	    <logger name="org.springframework" level="ERROR" additivity="false">
 	        <AppenderRef ref="console" />
 	    </logger>
-        <Logger name="egovframework" level="ERROR" additivity="false">
+        <Logger name="org.egovframe" level="ERROR" additivity="false">
             <AppenderRef ref="console" />
         </Logger>
         

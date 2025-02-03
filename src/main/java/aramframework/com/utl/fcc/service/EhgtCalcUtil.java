@@ -3,6 +3,7 @@ package aramframework.com.utl.fcc.service;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -241,10 +242,12 @@ public class EhgtCalcUtil {
 					sCnvrAmount = bSrcAmount.toString();
 				else if (cnvrChr == 'J')
 					// 변환금액 = (변환대상금액 / 변환매매비율) * 100;
-					sCnvrAmount = (bSrcAmount.divide(bCnvrStdrRt, 4, 4)).multiply(bStdr).setScale(2, 4).toString();
+					sCnvrAmount = (bSrcAmount.divide(bCnvrStdrRt, 4, RoundingMode.HALF_UP))
+									.multiply(bStdr)
+									.setScale(2, RoundingMode.HALF_UP).toString();
 				else
 					// 변환금액 = (변환대상금액 / 변환매매비율);
-					sCnvrAmount = bSrcAmount.divide(bCnvrStdrRt, 2, 4).toString();
+					sCnvrAmount = bSrcAmount.divide(bCnvrStdrRt, 2, RoundingMode.HALF_UP).toString();
 				break;
 
 			case EGHT_USD: // 미국
@@ -253,13 +256,15 @@ public class EhgtCalcUtil {
 					sCnvrAmount = bSrcAmount.toString();
 				else if (cnvrChr == 'K')
 					// 변환금액 = 변환대상금액 * 원래 매매 비율;
-					sCnvrAmount = bSrcAmount.multiply(bSrcStdrRt).setScale(2, 4).toString();
+					sCnvrAmount = bSrcAmount.multiply(bSrcStdrRt).setScale(2, RoundingMode.HALF_UP).toString();
 				else if (cnvrChr == 'J')
 					// cnvrAmount = ((변환대상금액 * 원래 매매 비율) / 변환 매매 비율) * 100;
-					sCnvrAmount = ((bSrcAmount.multiply(bSrcStdrRt).setScale(4, 4)).divide(bCnvrStdrRt, 2, 4)).multiply(bStdr).setScale(2, 4).toString();
+					sCnvrAmount = ((bSrcAmount.multiply(bSrcStdrRt).setScale(4, RoundingMode.HALF_UP)).divide(bCnvrStdrRt, 2, RoundingMode.HALF_UP))
+									.multiply(bStdr)
+									.setScale(2, RoundingMode.HALF_UP).toString();
 				else
 					// cnvrAmount = (변환대상금액 * 원래 매매 비율) / 변환 매매 비율;
-					sCnvrAmount = (bSrcAmount.multiply(bSrcStdrRt).setScale(4, 4)).divide(bCnvrStdrRt, 2, 4).toString();
+					sCnvrAmount = (bSrcAmount.multiply(bSrcStdrRt).setScale(4, RoundingMode.HALF_UP)).divide(bCnvrStdrRt, 2, RoundingMode.HALF_UP).toString();
 				break;
 
 			case EGHT_EUR: // 유럽연합
@@ -268,13 +273,15 @@ public class EhgtCalcUtil {
 					sCnvrAmount = bSrcAmount.toString();
 				else if (cnvrChr == 'K')
 					// cnvrAmount = 변환대상금액 * 원래 매매 비율;
-					sCnvrAmount = bSrcAmount.multiply(bSrcStdrRt).setScale(2, 4).toString();
+					sCnvrAmount = bSrcAmount.multiply(bSrcStdrRt).setScale(2, RoundingMode.HALF_UP).toString();
 				else if (cnvrChr == 'J')
 					// cnvrAmount = ((변환대상금액 * 원래 매매 비율) / 변환 매매 비율) * 100;
-					sCnvrAmount = ((bSrcAmount.multiply(bSrcStdrRt).setScale(4, 4)).divide(bCnvrStdrRt, 2, 4)).multiply(bStdr).setScale(2, 4).toString();
+					sCnvrAmount = ((bSrcAmount.multiply(bSrcStdrRt).setScale(4, RoundingMode.HALF_UP)).divide(bCnvrStdrRt, 2, RoundingMode.HALF_UP))
+									.multiply(bStdr)
+									.setScale(2, RoundingMode.HALF_UP).toString();
 				else
 					// cnvrAmount = (변환대상금액 * 원래 매매 비율) / 변환 매매 비율;
-					sCnvrAmount = (bSrcAmount.multiply(bSrcStdrRt).setScale(4, 4)).divide(bCnvrStdrRt, 2, 4).toString();
+					sCnvrAmount = (bSrcAmount.multiply(bSrcStdrRt).setScale(4, RoundingMode.HALF_UP)).divide(bCnvrStdrRt, 2, RoundingMode.HALF_UP).toString();
 				break;
 
 			case EGHT_JPY: // 일본
@@ -283,10 +290,10 @@ public class EhgtCalcUtil {
 					sCnvrAmount = bSrcAmount.toString();
 				else if (cnvrChr == 'K')
 					// cnvrAmount = (변환대상금액 * 원래 매매 비율) / 100;
-					sCnvrAmount = (bSrcAmount.multiply(bSrcStdrRt).setScale(4, 4)).divide(bStdr, 2, 4).toString();
+					sCnvrAmount = (bSrcAmount.multiply(bSrcStdrRt).setScale(4, RoundingMode.HALF_UP)).divide(bStdr, 2, RoundingMode.HALF_UP).toString();
 				else
 					// cnvrAmount = ((변환대상금액 * 원래 매매 비율) / 100) / 변환 매매 비율;
-					sCnvrAmount = ((bSrcAmount.multiply(bSrcStdrRt).setScale(4, 4)).divide(bStdr, 2, 4)).divide(bCnvrStdrRt, 2, 4).toString();
+					sCnvrAmount = ((bSrcAmount.multiply(bSrcStdrRt).setScale(4, RoundingMode.HALF_UP)).divide(bStdr, 2, RoundingMode.HALF_UP)).divide(bCnvrStdrRt, 2, RoundingMode.HALF_UP).toString();
 				break;
 
 			case EGHT_CNY: // 중국연합
@@ -295,18 +302,20 @@ public class EhgtCalcUtil {
 					sCnvrAmount = bSrcAmount.toString();
 				else if (cnvrChr == 'K')
 					// cnvrAmount = 변환대상금액 * 원래 매매 비율;
-					sCnvrAmount = bSrcAmount.multiply(bSrcStdrRt).setScale(2, 4).toString();
+					sCnvrAmount = bSrcAmount.multiply(bSrcStdrRt).setScale(2, RoundingMode.HALF_UP).toString();
 				else if (cnvrChr == 'J')
 					// cnvrAmount = ((변환대상금액 * 원래 매매 비율) / 변환 매매 비율) * 100;
-					sCnvrAmount = ((bSrcAmount.multiply(bSrcStdrRt).setScale(4, 4)).divide(bCnvrStdrRt, 2, 4)).multiply(bStdr).setScale(2, 4).toString();
+					sCnvrAmount = ((bSrcAmount.multiply(bSrcStdrRt).setScale(4, RoundingMode.HALF_UP)).divide(bCnvrStdrRt, 2, RoundingMode.HALF_UP))
+									.multiply(bStdr)
+									.setScale(2, RoundingMode.HALF_UP).toString();
 				else
 					// cnvrAmount = (변환대상금액 * 원래 매매 비율) / 변환 매매 비율;
-					sCnvrAmount = (bSrcAmount.multiply(bSrcStdrRt).setScale(4, 4)).divide(bCnvrStdrRt, 2, 4).toString();
+					sCnvrAmount = (bSrcAmount.multiply(bSrcStdrRt).setScale(4, RoundingMode.HALF_UP)).divide(bCnvrStdrRt, 2, RoundingMode.HALF_UP).toString();
 				break;
 
 			default:
 				// 변환금액 = (변환대상금액 / 변환매매비율);
-				sCnvrAmount = bSrcAmount.divide(bCnvrStdrRt, 2, 4).toString();
+				sCnvrAmount = bSrcAmount.divide(bCnvrStdrRt, 2, RoundingMode.HALF_UP).toString();
 				break;
 			}
 

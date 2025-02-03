@@ -366,22 +366,23 @@
 	
 	<build>
 		<defaultGoal>install</defaultGoal>
-		<finalName>aramcomp-webapp</finalName>
+		<finalName>aramcomp</finalName>
 		<directory>${basedir}/target</directory>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
 				<configuration>
 					<source>1.8</source>
-                       <target>1.8</target>
-                       <encoding>UTF-8</encoding>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
 			<plugin>
-			  <groupId>org.apache.maven.plugins</groupId>
-			  <artifactId>maven-war-plugin</artifactId>
-			  <version>3.3.2</version>
+			  	<groupId>org.apache.maven.plugins</groupId>
+			  	<artifactId>maven-war-plugin</artifactId>
+			  	<version>3.3.2</version>
 			</plugin>	
 		</plugins>
 	</build>

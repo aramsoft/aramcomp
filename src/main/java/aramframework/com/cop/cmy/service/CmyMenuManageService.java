@@ -163,6 +163,7 @@ public class CmyMenuManageService extends EgovAbstractServiceImpl {
     			}
 			}
 		}
+		workbook.close();
 	}
 
 }

@@ -106,6 +106,7 @@ public class ZipManageService extends EgovAbstractServiceImpl {
     			}
 			}
 		}
+		workbook.close();
 	}
 
 
@@ -141,6 +142,7 @@ public class ZipManageService extends EgovAbstractServiceImpl {
     			}
 			}
 		}
+		workbook.close();
 	}
 
 	/**

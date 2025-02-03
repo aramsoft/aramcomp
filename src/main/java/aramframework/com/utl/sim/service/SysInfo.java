@@ -980,12 +980,6 @@ public class SysInfo {
 
 			Process p = null;
 
-			// 2011.10.10 보안점검 후속조치
-			if (Globals.OS_TYPE == null) {
-				throw new RuntimeException("Globals.OS_TYPE property value is needed!!!");
-			}
-			// 2011.10.10 보안점검 후속조치 끝
-
 			// log.debug("Globals.OS_TYPE:"+Globals.OS_TYPE);
 			if ("WINDOWS".equals(Globals.OS_TYPE)) {
 				p = Runtime.getRuntime().exec("tasklist /fo csv /nh /fi \"imagename eq " + processName + "*\"");

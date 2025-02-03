@@ -28,23 +28,23 @@ public class ExcelCmyMenuMapping {
 		for (short c = 0; c < cells; c = (short)(c + 1)) {
 			Cell cell = row.getCell(c);
 			if (cell != null) {
-				switch (cell.getCellType()) {
-					case 0:
+				switch (cell.getCellTypeEnum()) {
+					case NUMERIC:
 						value = String.valueOf(cell.getNumericCellValue());
 						break;
-					case 1:
+					case STRING:
 						value = cell.getStringCellValue();
 						break;
-					case 2:
+					case FORMULA:
 						value = cell.getCellFormula();
 						break;
-					case 3:
+					case BLANK:
 						value = null;
 						break;
-					case 4:
+					case BOOLEAN:
 						value = String.valueOf(cell.getBooleanCellValue());
 						break;
-					case 5:
+					case ERROR:
 						value = String.valueOf(cell.getErrorCellValue());
 					default:
 						break;

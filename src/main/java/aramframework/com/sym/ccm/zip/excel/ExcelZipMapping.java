@@ -31,26 +31,26 @@ public class ExcelZipMapping {
 		for (short c = 0; c < cells; c = (short)(c + 1)) {
 			Cell cell = row.getCell(c);
 			if (cell != null) {
-				switch (cell.getCellType()) {
-					case 0:
-						value = String.valueOf(cell.getNumericCellValue());
-						break;
-					case 1:
-						value = cell.getStringCellValue();
-						break;
-					case 2:
-						value = cell.getCellFormula();
-						break;
-					case 3:
-						value = null;
-						break;
-					case 4:
-						value = String.valueOf(cell.getBooleanCellValue());
-						break;
-					case 5:
-						value = String.valueOf(cell.getErrorCellValue());
-					default:
-						break;
+				switch (cell.getCellTypeEnum()) {
+				case NUMERIC:
+					value = String.valueOf(cell.getNumericCellValue());
+					break;
+				case STRING:
+					value = cell.getStringCellValue();
+					break;
+				case FORMULA:
+					value = cell.getCellFormula();
+					break;
+				case BLANK:
+					value = null;
+					break;
+				case BOOLEAN:
+					value = String.valueOf(cell.getBooleanCellValue());
+					break;
+				case ERROR:
+					value = String.valueOf(cell.getErrorCellValue());
+				default:
+					break;
 				}
 			}
 			else {

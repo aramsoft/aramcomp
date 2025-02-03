@@ -54,7 +54,7 @@ public class NetworkState {
 				String out = null;
 				int c;
 				while ((c = in.read()) != -1) {
-					out = out + new String(new Character((char) c).toString());
+					out = out + new String(Character.valueOf((char) c).toString());
 				}
 				in.close();
 				if (out == null || out.indexOf("MAC Address = ") == -1) {
@@ -271,7 +271,7 @@ public class NetworkState {
 			char c = str.charAt(i);
 
 			if (c > 45 && c < 59) {
-				Character cr = new Character(c);
+				Character cr = Character.valueOf(c);
 				outValue += cr.toString();
 			}
 		}

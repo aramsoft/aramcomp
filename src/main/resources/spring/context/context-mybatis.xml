@@ -11,8 +11,8 @@
  	<!-- SqlSession setup for MyBatis Database Layer -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:/sysconfig/mybatis/config/sql-mybatis-config.xml" />
-		<property name="mapperLocations" value="classpath:/sysconfig/mybatis/mappers/**/*_${Globals.DbType}.xml" />
+		<property name="configLocation" value="classpath:/mybatis/config/mybatis-config.xml" />
+		<property name="mapperLocations" value="classpath:/mybatis/mapper/**/*_${Globals.DbType}.xml" />
 	</bean>
 	
 	<!-- MapperConfigurer setup for MyBatis Database Layer with @Mapper-->	

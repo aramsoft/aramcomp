@@ -39,25 +39,5 @@
 		c:mailName	="#{mailProperties.mailName}"
 		c:emailAddress="#{mailProperties.emailAddress}" />
 	  
-    <!-- 모니터링 서비스에서 사용 gmail, hanmail 용 -->
-    <bean id="mntrngMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl" 
-        p:host		="#{mailProperties.host}" 
-        p:port		="#{mailProperties.port}"  
-        p:protocol	="smtps" 
-        p:username	="#{mailProperties.mailId}" 
-        p:password	="#{mailProperties.mailPass}"> 
-        <property name="javaMailProperties"> 
-            <props> 
-                <prop key="mail.smtps.auth">true</prop> 
-                <prop key="mail.smtps.startls.enable">true</prop> 
-                <prop key="mail.smtps.debug">true</prop> 
-            </props> 
-        </property> 
-    </bean>
-    
-    <bean id="mntrngMessage" class="org.springframework.mail.SimpleMailMessage" 
-        p:from="SYSTEM &lt; hnccho@gmail.com &gt;"   
-        p:subject="{MonitorType} status report." 
-        p:text="* {MonitorType} status report.&#13;{content}"/> 
 
 </beans> 

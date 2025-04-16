@@ -21,10 +21,9 @@
 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basenames">
 			<list>
-				<value>classpath:/sysconfig/message/message-common</value>
+				<value>classpath:/message/message-common</value>
 				<value>classpath:/org/egovframe/rte/fdl/idgnr/messages/idgnr</value>
 				<value>classpath:/org/egovframe/rte/fdl/property/messages/properties</value>
-				<value>classpath:/sysconfig/egovProps/globals</value>
 			</list>
 		</property>
 		<property name="cacheSeconds">

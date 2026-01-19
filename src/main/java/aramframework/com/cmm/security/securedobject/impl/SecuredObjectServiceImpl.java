@@ -210,7 +210,7 @@ public class SecuredObjectServiceImpl implements EgovSecuredObjectService, Appli
         }
 
         if (configList.size() > 0) {
-        	LOGGER.debug("Request Uri : {}, matched Uri : {}, mapping Roles : {}", url, resultList.get(0).get("uri"), configList);
+//        	LOGGER.debug("Request Uri : {}, matched Uri : {}, mapping Roles : {}", url, resultList.get(0).get("uri"), configList);
         }
 
         return configList;

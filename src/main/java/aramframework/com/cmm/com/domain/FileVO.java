@@ -2,7 +2,6 @@ package aramframework.com.cmm.com.domain;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-import aramframework.com.cmm.domain.BaseVO;
 import aramframework.com.cmm.util.WebUtil;
 
 /**

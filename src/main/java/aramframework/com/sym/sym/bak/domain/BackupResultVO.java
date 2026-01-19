@@ -1,6 +1,6 @@
 package aramframework.com.sym.sym.bak.domain;
 
-import aramframework.com.cmm.domain.BaseVO;
+import aramframework.com.cmm.com.domain.BaseVO;
 
 /**
  * 백업결과관리에 대한 model 클래스

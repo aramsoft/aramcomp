@@ -1,6 +1,6 @@
 package aramframework.com.sym.prm.domain;
 
-import aramframework.com.cmm.domain.BaseVO;
+import aramframework.com.cmm.com.domain.BaseVO;
 
 /**
  * 프로그램변경관리 처리를 위한 VO 클래스르를 정의한다

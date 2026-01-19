@@ -1,6 +1,6 @@
 package aramframework.com.cop.ems.domain;
 
-import aramframework.com.cmm.domain.BaseVO;
+import aramframework.com.cmm.com.domain.BaseVO;
 
 /**
  * 발송메일 VO 클래스

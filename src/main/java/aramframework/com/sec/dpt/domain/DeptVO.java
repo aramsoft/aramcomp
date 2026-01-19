@@ -1,6 +1,6 @@
 package aramframework.com.sec.dpt.domain;
 
-import aramframework.com.cmm.domain.BaseVO;
+import aramframework.com.cmm.com.domain.BaseVO;
 
 /**
  * 부서관리VO클래스.

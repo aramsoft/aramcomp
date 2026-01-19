@@ -3,7 +3,7 @@ package aramframework.com.cop.adb.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import aramframework.com.cmm.domain.BaseVO;
+import aramframework.com.cmm.com.domain.BaseVO;
 
 /**
  * 주소록관리를 위한 VO 모델 클래스

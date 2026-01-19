@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.com.cmm.com.domain.SearchVO;
 import aramframework.com.cmm.com.service.CmmUseService;
-import aramframework.com.cmm.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.sec.rmt.domain.ResourceVO;
 import aramframework.com.sec.rmt.service.ResourceService;

@@ -1,6 +1,6 @@
 package aramframework.com.sym.log.clg.domain;
 
-import aramframework.com.cmm.domain.BaseVO;
+import aramframework.com.cmm.com.domain.BaseVO;
 
 /**
  * 로그인 로그관리를 위한 VO 클래스

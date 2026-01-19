@@ -1,6 +1,6 @@
 package aramframework.com.sym.bat.domain;
 
-import aramframework.com.cmm.domain.BaseVO;
+import aramframework.com.cmm.com.domain.BaseVO;
 
 /**
  * 배치결과관리에 대한 model 클래스

@@ -1,6 +1,6 @@
 package aramframework.com.cop.com.domain;
 
-import aramframework.com.cmm.domain.BaseVO;
+import aramframework.com.cmm.com.domain.BaseVO;
 
 /**
  * 승인정보를 관리하기 위한 VO 클래스

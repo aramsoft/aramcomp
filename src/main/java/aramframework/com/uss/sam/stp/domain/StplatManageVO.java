@@ -1,6 +1,6 @@
 package aramframework.com.uss.sam.stp.domain;
 
-import aramframework.com.cmm.domain.BaseVO;
+import aramframework.com.cmm.com.domain.BaseVO;
 
 /**
  * 약관내용을 처리하는 VO 클래스

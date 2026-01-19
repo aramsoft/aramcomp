@@ -1,6 +1,6 @@
 package aramframework.com.uss.umt.domain;
 
-import aramframework.com.cmm.domain.BaseVO;
+import aramframework.com.cmm.com.domain.BaseVO;
 
 /**
  * 가입약관VO클래스로서가입약관확인시 비지니스로직 처리용 항목을 구성한다.

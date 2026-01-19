@@ -2,7 +2,7 @@ package aramframework.com.sym.log.lgm.domain;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-import aramframework.com.cmm.domain.BaseVO;
+import aramframework.com.cmm.com.domain.BaseVO;
 
 /**
  * 시스템 로그를 위한 VO 클래스를 정의한다.

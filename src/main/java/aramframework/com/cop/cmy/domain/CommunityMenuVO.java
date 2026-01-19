@@ -1,6 +1,6 @@
 package aramframework.com.cop.cmy.domain;
 
-import aramframework.com.cmm.domain.BaseVO;
+import aramframework.com.cmm.com.domain.BaseVO;
 
 /**
  * 커뮤니티 메뉴 처리를 위한 VO 클래스르를 정의한다

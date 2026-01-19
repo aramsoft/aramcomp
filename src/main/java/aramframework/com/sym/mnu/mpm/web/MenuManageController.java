@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.com.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.sym.mnu.mpm.domain.MenuManageVO;
 import aramframework.com.sym.mnu.mpm.service.MenuManageService;

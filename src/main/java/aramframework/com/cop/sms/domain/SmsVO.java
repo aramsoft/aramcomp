@@ -2,8 +2,9 @@ package aramframework.com.cop.sms.domain;
 
 import java.util.List;
 
-import aramframework.com.cmm.domain.BaseVO;
 import org.egovframe.rte.psl.dataaccess.util.EgovMap;
+
+import aramframework.com.cmm.com.domain.BaseVO;
 
 /**
  * 문자메시지 서비스를 위한 VO 클래스

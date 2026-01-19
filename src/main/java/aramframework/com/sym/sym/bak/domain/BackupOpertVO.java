@@ -2,7 +2,7 @@ package aramframework.com.sym.sym.bak.domain;
 
 import java.util.List;
 
-import aramframework.com.cmm.domain.BaseVO;
+import aramframework.com.cmm.com.domain.BaseVO;
 
 /**
  * 백업작업관리에 대한 model 클래스

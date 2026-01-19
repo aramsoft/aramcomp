@@ -1,4 +1,4 @@
-package aramframework.com.cmm.domain;
+package aramframework.com.cmm.com.domain;
 
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 

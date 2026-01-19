@@ -1,7 +1,7 @@
 package aramframework.com.cop.bbs.domain;
 
 
-import aramframework.com.cmm.domain.BaseVO;
+import aramframework.com.cmm.com.domain.BaseVO;
 import aramframework.com.cmm.util.WebUtil;
 
 /**

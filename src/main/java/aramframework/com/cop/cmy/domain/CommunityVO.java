@@ -2,8 +2,8 @@ package aramframework.com.cop.cmy.domain;
 
 import java.util.List;
 
-import aramframework.com.cmm.domain.BaseVO;
-import aramframework.com.cmm.domain.MenuVO;
+import aramframework.com.cmm.com.domain.BaseVO;
+import aramframework.com.cmm.com.domain.MenuVO;
 import aramframework.com.cmm.util.WebUtil;
 
 /**

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.domain.SearchVO;
+import aramframework.com.cmm.com.domain.SearchVO;
 import aramframework.com.sym.log.lgm.domain.SysLogVO;
 import aramframework.com.sym.log.lgm.service.SysLogService;
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;

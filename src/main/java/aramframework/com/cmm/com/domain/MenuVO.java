@@ -1,4 +1,4 @@
-package aramframework.com.cmm.domain;
+package aramframework.com.cmm.com.domain;
 
 /**
  * 커뮤니티 메뉴 처리를 위한 VO 클래스르를 정의한다

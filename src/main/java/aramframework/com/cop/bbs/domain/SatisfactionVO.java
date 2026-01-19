@@ -1,6 +1,6 @@
 package aramframework.com.cop.bbs.domain;
 
-import aramframework.com.cmm.domain.BaseVO;
+import aramframework.com.cmm.com.domain.BaseVO;
 
 /**
  * 만족도조사 서비스를 위한 VO 클래스

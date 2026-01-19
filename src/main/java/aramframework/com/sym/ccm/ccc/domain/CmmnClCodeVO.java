@@ -1,6 +1,6 @@
 package aramframework.com.sym.ccm.ccc.domain;
 
-import aramframework.com.cmm.domain.BaseVO;
+import aramframework.com.cmm.com.domain.BaseVO;
 
 /**
  * 공통분류코드 모델 클래스

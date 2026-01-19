@@ -1,6 +1,6 @@
 package aramframework.com.sec.grp.domain;
 
-import aramframework.com.cmm.domain.BaseVO;
+import aramframework.com.cmm.com.domain.BaseVO;
 
 /**
  * 그룹관리에 대한 model 클래스를 정의한다.

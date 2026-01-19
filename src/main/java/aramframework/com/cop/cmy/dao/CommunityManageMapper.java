@@ -2,7 +2,7 @@ package aramframework.com.cop.cmy.dao;
 
 import java.util.List;
 
-import aramframework.com.cmm.domain.MenuVO;
+import aramframework.com.cmm.com.domain.MenuVO;
 import aramframework.com.cop.bbs.domain.BoardUseInfVO;
 import aramframework.com.cop.cmy.domain.CommunityMenuVO;
 import aramframework.com.cop.cmy.domain.CommunityUserVO;

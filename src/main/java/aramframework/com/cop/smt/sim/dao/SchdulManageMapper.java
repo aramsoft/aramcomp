@@ -2,7 +2,7 @@ package aramframework.com.cop.smt.sim.dao;
 
 import java.util.List;
 
-import aramframework.com.cmm.domain.BaseVO;
+import aramframework.com.cmm.com.domain.BaseVO;
 import aramframework.com.cop.smt.sim.domain.SchdulManageVO;
 import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
 import org.egovframe.rte.psl.dataaccess.util.EgovMap;

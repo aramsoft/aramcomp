@@ -73,9 +73,9 @@ public class UserInfController {
 
 		String returnUrl;
 		if ("Y".equals(popFlag)) {
-			returnUrl = "cop/com/UserListPop";
+			returnUrl = "com/cop/com/UserListPop";
 		} else {
-			returnUrl = "cop/com/UserList";
+			returnUrl = "com/cop/com/UserList";
 		}
 		return returnUrl;
 	}
@@ -119,9 +119,9 @@ public class UserInfController {
 
 		String returnUrl;
 		if ("Y".equals(popFlag)) {
-			returnUrl = "cop/com/UserListPop";
+			returnUrl = "com/cop/com/UserListPop";
 		} else {
-			returnUrl = "cop/com/UserList";
+			returnUrl = "com/cop/com/UserList";
 		}
 		return returnUrl;
 	}
@@ -165,11 +165,11 @@ public class UserInfController {
 
 		String returnUrl;
 		if ("Y".equals(popFlag)) {
-			returnUrl = "cop/com/UserListPop";
+			returnUrl = "com/cop/com/UserListPop";
 		} else if ("S".equals(popFlag)) {
-			returnUrl = "cop/com/CmmntyMngrListPop";
+			returnUrl = "com/cop/com/CmmntyMngrListPop";
 		} else {
-			returnUrl = "cop/com/UserList";
+			returnUrl = "com/cop/com/UserList";
 		}
 		return returnUrl;
 	}

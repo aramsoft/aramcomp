@@ -24,7 +24,7 @@
 				   INNER JOIN COMTN_FILE_DETAIL b
 						 ON a.ATCH_FILE_ID = b.ATCH_FILE_ID		
 			 WHERE a.USE_AT = 'Y'
-     	<if test='searchKeyword != null and searchKeyword != ""'>
+    	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "STRE_FILE_NM"'>
                AND b.STRE_FILE_NM LIKE '%'|| #{searchKeyword} ||'%' 
@@ -54,7 +54,7 @@
                AND b.STRE_FILE_NM LIKE '%'|| #{searchKeyword} ||'%' 
             </when>
             <when test='searchCondition == "ORIGNL_FILE_NM"'>
-               AND b.ORIGNL_FILE_NM  LIKE '%'|| #{searchKeyword} ||'%' 
+               AND b.ORIGNL_FILE_NM LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>

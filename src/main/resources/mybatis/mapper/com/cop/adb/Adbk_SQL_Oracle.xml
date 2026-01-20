@@ -272,7 +272,7 @@
 			  FROM COMTN_NCRD
 			 WHERE 1=1 
 			   AND NM LIKE '%' || #{searchKeyword} || '%'
- 			 ORDER BY NM 
+			 ORDER BY NM 
         /* 구현 Sql */
                    ) ALL_LIST
                    )

@@ -32,7 +32,7 @@
 		</if>
 			 ORDER BY a.ATCH_FILE_ID, b.FILE_SN	
         /* 구현 Sql */
- 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT #{recordPerPage} OFFSET #{firstIndex}
  	</select>
 
 	<!-- 목록조회_게시물 총갯수  -->
@@ -48,7 +48,7 @@
                AND b.STRE_FILE_NM LIKE '%'|| #{searchKeyword} ||'%' 
             </when>
             <when test='searchCondition == "ORIGNL_FILE_NM"'>
-               AND b.ORIGNL_FILE_NM  LIKE '%'|| #{searchKeyword} ||'%' 
+               AND b.ORIGNL_FILE_NM  LIKE '%'|| #{searchKeyword} ||'%'
             </when>
         </choose>
 		</if>

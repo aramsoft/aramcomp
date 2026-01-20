@@ -31,9 +31,9 @@
             </when>
         </choose>
 		</if>
-			 ORDER BY ADBK_NM 
+			ORDER BY ADBK_NM 
         /* 구현 Sql */
- 			 LIMIT #{recordPerPage} OFFSET #{firstIndex}
+ 			LIMIT #{recordPerPage} OFFSET #{firstIndex}
 	</select>	
 
 	<!-- 목록조회_게시물 총갯수  -->
@@ -48,7 +48,7 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "ADBK_NM"'>
-               AND ADBK_NM LIKE CONCAT('%',#{searchKeyword},'%') 
+               AND ADBK_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "OTHBC_SCOPE"'>
                AND OTHBC_SCOPE LIKE ('%',#{searchKeyword},'%') 

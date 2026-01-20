@@ -10,9 +10,11 @@ import org.springframework.beans.factory.annotation.Value;
  * @version 1.0
  */
 public interface Globals {
+
 	// OS 유형
 	@Value("${Globals.OsType}")
 	String OS_TYPE = "";
+	
 	// DB 유형
 	@Value("${Globals.DbType}")
 	String DB_TYPE = "";
@@ -56,6 +58,6 @@ public interface Globals {
 	String FILE_FORMAT_PATH = "";
 	// sms 정보 프로퍼티 위치
 	@Value("${Globals.SMEConfigPath}")
-	String SME_CONFIG_PATH    = "";
+	String SME_CONFIG_PATH  = "";
 
 }

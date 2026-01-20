@@ -118,7 +118,7 @@
 	    	<c:if test="${result.useAt == 'N'}"><spring:message code="button.notUsed" /></c:if>
 	    	<c:if test="${result.useAt == 'Y'}"><spring:message code="button.use" /></c:if>
 	    </td>
-		<td class="lt_text3"><c:out value="${result.frstRegisterPnttm}"/></td	>
+		<td class="lt_text3"><c:out value="${result.frstRegisterPnttm}"/></td>
 	</tr>
 	</c:forEach>
 </tbody>

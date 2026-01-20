@@ -32,7 +32,6 @@
 		<property name="password" value="${Globals.Password}"/>
 	</bean>
 	
-	
 	<!-- Postgres -->
 	<bean id="dataSource-Postgres" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${Globals.DriverClassName}"/>

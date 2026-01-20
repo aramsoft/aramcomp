@@ -23,10 +23,10 @@
      	<if test='searchKeyword != null and searchKeyword != ""'>
         <choose>
             <when test='searchCondition == "STRE_FILE_NM"'>
-               AND b.STRE_FILE_NM LIKE CONCAT('%',#{searchKeyword},'%') 
+               AND b.STRE_FILE_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
             <when test='searchCondition == "ORIGNL_FILE_NM"'>
-               AND b.ORIGNL_FILE_NM LIKE CONCAT('%',#{searchKeyword},'%') 
+               AND b.ORIGNL_FILE_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>
@@ -48,7 +48,7 @@
                AND b.STRE_FILE_NM LIKE CONCAT('%',#{searchKeyword},'%') 
             </when>
             <when test='searchCondition == "ORIGNL_FILE_NM"'>
-               AND b.ORIGNL_FILE_NM LIKE CONCAT('%',#{searchKeyword},'%') 
+               AND b.ORIGNL_FILE_NM LIKE CONCAT('%',#{searchKeyword},'%')
             </when>
         </choose>
 		</if>
@@ -72,7 +72,7 @@
 			 WHERE a.ATCH_FILE_ID = #{atchFileId}
 			   AND a.USE_AT = 'Y'				
 			 ORDER BY b.FILE_SN	
-  	</select>
+ 	</select>
  	
 	<!-- 이미지리스트  -->
   	<select id="selectImageFileList" resultType="fileVO" >

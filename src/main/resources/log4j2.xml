@@ -35,7 +35,6 @@
         
         <Root level="ERROR">
             <AppenderRef ref="console" />
-	        <AppenderRef ref="file" />
         </Root>
     </Loggers>
 </Configuration>

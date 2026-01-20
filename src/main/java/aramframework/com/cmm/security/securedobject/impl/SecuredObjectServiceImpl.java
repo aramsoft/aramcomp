@@ -25,8 +25,6 @@ import java.util.Set;
 import org.egovframe.rte.fdl.security.config.SecurityConfig;
 import org.egovframe.rte.fdl.security.securedobject.EgovSecuredObjectService;
 import org.egovframe.rte.fdl.security.securedobject.impl.SelfRegexRequestMatcher;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -56,8 +54,6 @@ import aramframework.com.cmm.security.securedobject.SecuredObjectMapper;
  */
 public class SecuredObjectServiceImpl implements EgovSecuredObjectService, ApplicationContextAware {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(SecuredObjectServiceImpl.class);
-	
 	private SecuredObjectMapper securedObjectMapper;
 	
     private String requestMatcherType = "ant";	// default
@@ -207,10 +203,6 @@ public class SecuredObjectServiceImpl implements EgovSecuredObjectService, Appli
         while (itr.hasNext()) {
             tempMap = itr.next();
 			configList.add(new org.springframework.security.access.SecurityConfig ((String) tempMap.get("authority")));
-        }
-
-        if (configList.size() > 0) {
-//        	LOGGER.debug("Request Uri : {}, matched Uri : {}, mapping Roles : {}", url, resultList.get(0).get("uri"), configList);
         }
 
         return configList;

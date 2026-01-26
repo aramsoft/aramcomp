@@ -19,7 +19,7 @@
     <http auto-config="true" request-matcher="regex">
         <form-login login-page="/uat/uia/loginUsr.do" 
         			login-processing-url="/j_spring_security_check"
-                    authentication-failure-url="/uat/uia/loginUsr.do?login_error=1"
+                    authentication-failure-handler-ref="simpleUrlAuthenticationFailureHandler" 
                     authentication-success-handler-ref="simpleUrlAuthenticationSuccessHandler" />
         <logout logout-url="/j_spring_security_logout"
         		success-handler-ref="simpleUrlLogoutSuccessHandler" />
@@ -69,6 +69,11 @@
 	    class="aramframework.com.cmm.config.security.TargetRedirectStrategy">
     	<beans:property name="contextRelative" value="true" />
 	</beans:bean>    
+	
+	<beans:bean id="simpleUrlAuthenticationFailureHandler"
+	    class="aramframework.com.cmm.config.security.SimpleUrlAuthenticationFailureHandler">
+	    <beans:property name="defaultFailureUrl" value="/uat/uia/loginUsr.do?login_error=1"/>
+	</beans:bean>
 	
 	<beans:bean id="simpleUrlAuthenticationSuccessHandler"
 	    class="aramframework.com.cmm.config.security.SimpleUrlAuthenticationSuccessHandler">

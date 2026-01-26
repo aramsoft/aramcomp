@@ -126,7 +126,7 @@
                                                   ELSE '' 
                                                   END,2,'0'
                                              )
-                                        )
+                                        ) COLLATE utf8mb4_0900_ai_ci
                        AND  RESTDE_SE_CODE IN ('01','02')                                   
                     ) REST_AT
               FROM  (

@@ -302,6 +302,9 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 			communityUserVO.setFrstRegisterId(communityVO.getLastUpdusrId());
 			communityManageMapper.insertCommunityUserInf(communityUserVO);
 		}	
+		
+		// cache clear
+		clearCommunityCacheInfo(communityVO.getCmmntyId());
 	}
 
 	/**
@@ -335,6 +338,9 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 		communityManageMapper.deleteAllCommunityUserInf(communityUserVO);
 	
 		communityManageMapper.deleteCommunityInf(communityVO);
+		
+		// cache clear
+		clearCommunityCacheInfo(communityVO.getCmmntyId());
 	}
 	
 	// 사용자 정보
@@ -438,6 +444,20 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 		return communityManageMapper.selectCommunitySubMenuInfs(communityMenuVO);
 	}
 
+	/**
+	 * 캐쉬로부터 커뮤니티 정보 및 메뉴정보를 가져온다.
+	 * 
+	 * @param cmmntyId
+	 * @param menuId
+	 */
+	@SuppressWarnings("unchecked")
+	private void clearCommunityCacheInfo(String cmmntyId) {
+		HashMap<String, Object> cacheMap = null;
+		cacheMap = (HashMap<String, Object>) cacheDictionary.get(CacheKey.CMY_PREFIX + cmmntyId);
+        if( cacheMap != null ) {
+        	cacheDictionary.remove(CacheKey.CMY_PREFIX + cmmntyId);
+        }
+	}	
 	/**
 	 * 캐쉬로부터 커뮤니티 정보 및 메뉴정보를 가져온다.
 	 * 

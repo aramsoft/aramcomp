@@ -9,7 +9,7 @@
 
 	<!--  System Log Aspect -->
 <!-- 
-	<bean id="sysLogAdvice" class="aramframework.com.cmm.advice.SysLogAspect" />
+	<bean id="sysLogAdvice" class="aramframework.cmm.advice.SysLogAspect" />
  
 	<aop:config>
 		<aop:aspect id="sysLogAspect" ref="sysLogAdvice">

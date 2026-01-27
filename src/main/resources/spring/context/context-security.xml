@@ -131,7 +131,7 @@
                   WHERE A.SCRTY_DTRMN_TRGET_ID = B.ESNTL_ID AND B.USER_ID = ? "/>
         <beans:property name="roleHierarchy" ref="roleHierarchy"/>
         <beans:property name="dataSource" ref="dataSource"/>
-        <beans:property name="mapClass" value="aramframework.com.cmm.userdetails.impl.SessionMapping"/> 
+        <beans:property name="mapClass" value="aramframework.cmm.userdetails.impl.SessionMapping"/> 
     </beans:bean>
 -->
     

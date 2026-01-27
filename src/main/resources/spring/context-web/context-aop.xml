@@ -17,7 +17,7 @@
 		</aop:aspect>
 	</aop:config>
 <!-- 
-	<bean id="login.listener" class="aramframework.com.cmm.listener.LoginLogListener" />
+	<bean id="login.listener" class="aramframework.cmm.listener.LoginLogListener" />
 -->
 
 </beans>

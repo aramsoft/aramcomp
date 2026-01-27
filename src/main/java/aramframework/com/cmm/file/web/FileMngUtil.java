@@ -1,4 +1,4 @@
-package aramframework.cmm.util;
+package aramframework.com.cmm.file.web;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -15,8 +15,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import aramframework.cmm.constant.Globals;
-import aramframework.com.cmm.com.domain.FileVO;
-import aramframework.com.cmm.com.service.FileMngService;
+import aramframework.cmm.util.WebUtil;
+import aramframework.com.cmm.file.domain.FileVO;
+import aramframework.com.cmm.file.service.FileMngService;
 
 import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
 

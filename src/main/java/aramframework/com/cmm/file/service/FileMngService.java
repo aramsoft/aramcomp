@@ -1,4 +1,4 @@
-package aramframework.com.cmm.com.service;
+package aramframework.com.cmm.file.service;
 
 import java.io.File;
 import java.util.List;
@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
 
-import aramframework.com.cmm.com.dao.FileMngMapper;
-import aramframework.com.cmm.com.domain.FileVO;
+import aramframework.com.cmm.file.dao.FileMngMapper;
+import aramframework.com.cmm.file.domain.FileVO;
 
 /**
  * 파일정보의 관리를 위한 구현 클래스

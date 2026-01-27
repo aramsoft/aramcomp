@@ -1,4 +1,4 @@
-package aramframework.com.cmm.com.service;
+package aramframework.com.cmm.code.service;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -10,9 +10,9 @@ import javax.servlet.ServletContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.com.dao.CmmUseMapper;
-import aramframework.com.cmm.com.domain.ComCodeVO;
-import aramframework.com.cmm.com.domain.SearchCodeVO;
+import aramframework.com.cmm.code.dao.CmmUseMapper;
+import aramframework.com.cmm.code.domain.ComCodeVO;
+import aramframework.com.cmm.code.domain.SearchCodeVO;
 
 import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
 

@@ -1,8 +1,9 @@
-package aramframework.com.cmm.com.domain;
+package aramframework.com.cmm.file.domain;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 import aramframework.cmm.util.WebUtil;
+import aramframework.com.cmm.com.domain.BaseVO;
 
 /**
  * 파일정보 처리를 위한 VO 클래스

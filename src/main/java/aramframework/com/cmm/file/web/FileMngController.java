@@ -1,4 +1,4 @@
-package aramframework.com.cmm.com.web;
+package aramframework.com.cmm.file.web;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import aramframework.com.cmm.com.domain.FileVO;
-import aramframework.com.cmm.com.service.FileMngService;
+import aramframework.com.cmm.file.domain.FileVO;
+import aramframework.com.cmm.file.service.FileMngService;
 
 /**
  * 파일 조회, 삭제처리를 위한 컨트롤러 클래스

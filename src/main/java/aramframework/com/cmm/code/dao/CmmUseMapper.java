@@ -1,11 +1,11 @@
-package aramframework.com.cmm.com.dao;
+package aramframework.com.cmm.code.dao;
 
 import java.util.List;
 
 import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
 
-import aramframework.com.cmm.com.domain.ComCodeVO;
-import aramframework.com.cmm.com.domain.SearchCodeVO;
+import aramframework.com.cmm.code.domain.ComCodeVO;
+import aramframework.com.cmm.code.domain.SearchCodeVO;
 
 /**
  * 공통코드등 전체 업무에서 공용해서 사용해야 하는 서비스를 정의하기위한 데이터 접근 클래스

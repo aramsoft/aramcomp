@@ -11,10 +11,10 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.cmm.security.userdetails.UserDetailsHelper;
-import aramframework.cmm.util.FileMngUtil;
 import aramframework.cmm.util.MessageHelper;
 import aramframework.com.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.com.domain.SearchVO;
+import aramframework.com.cmm.file.web.FileMngUtil;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uss.olh.faq.domain.FaqManageVO;
 import aramframework.com.uss.olh.faq.service.FaqManageService;

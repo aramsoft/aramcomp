@@ -1,10 +1,10 @@
-package aramframework.com.cmm.com.dao;
+package aramframework.com.cmm.file.dao;
 
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import aramframework.com.cmm.com.domain.FileVO;
+import aramframework.com.cmm.file.domain.FileVO;
 
 import org.egovframe.rte.psl.dataaccess.EgovAbstractMapper;
 

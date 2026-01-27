@@ -1,4 +1,4 @@
-package aramframework.com.cmm.com.web;
+package aramframework.com.cmm.file.web;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import aramframework.cmm.util.WebUtil;
-import aramframework.com.cmm.com.domain.FileVO;
-import aramframework.com.cmm.com.service.FileMngService;
+import aramframework.com.cmm.file.domain.FileVO;
+import aramframework.com.cmm.file.service.FileMngService;
 
 /**
  * 파일 다운로드를 위한 컨트롤러 클래스

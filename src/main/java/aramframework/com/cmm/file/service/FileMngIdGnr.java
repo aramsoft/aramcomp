@@ -1,4 +1,4 @@
-package aramframework.com.cmm.com.service;
+package aramframework.com.cmm.file.service;
 
 import javax.sql.DataSource;
 

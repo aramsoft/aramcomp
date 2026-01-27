@@ -1,4 +1,4 @@
-package aramframework.com.cmm.com.web;
+package aramframework.com.cmm.file.web;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import aramframework.cmm.util.WebUtil;
-import aramframework.com.cmm.com.domain.FileVO;
-import aramframework.com.cmm.com.service.FileMngService;
+import aramframework.com.cmm.file.domain.FileVO;
+import aramframework.com.cmm.file.service.FileMngService;
 import aramframework.com.utl.sim.service.FileCmprs;
 
 /**

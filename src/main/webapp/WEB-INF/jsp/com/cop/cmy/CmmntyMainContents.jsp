@@ -74,7 +74,8 @@
 			<c:forEach var="article" items="${articleList[bstatus.count-1]}" varStatus="status">
 			<tr>
 				<td height="22" align="left">
-					<span class="right_board_date"><img src="${pageContext.request.contextPath}/images/com/cop/tpl/dot.gif" width="12" height="4" alt="도트이미지">[<fmt:formatDate value="${article.frstRegisterPnttm}" pattern="yyyy-MM-dd"/>]</span> 
+					<fmt:parseDate value='${article.frstRegisterPnttm}' pattern="yyyy-MM-dd" var='parsedDate'/>
+					<span class="right_board_date"><img src="${pageContext.request.contextPath}/images/com/cop/tpl/dot.gif" width="12" height="4" alt="도트이미지">[<fmt:formatDate value="${parsedDate}" pattern="yyyy-MM-dd"/>]</span> 
 	    		<c:choose>
 		    	<c:when test="${article.isExpired=='Y' || article.useAt == 'N'}">
 		    		<span class="bbs_useless"><c:out value="${article.nttSj}" /></span>

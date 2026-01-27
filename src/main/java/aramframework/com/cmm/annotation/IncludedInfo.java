@@ -1,4 +1,4 @@
-package aramframework.cmm.annotation;
+package aramframework.com.cmm.annotation;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

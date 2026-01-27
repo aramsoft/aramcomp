@@ -1,6 +1,6 @@
 package aramframework.com.sec.rmt.domain;
 
-import aramframework.com.cmm.com.domain.BaseVO;
+import aramframework.cmm.domain.BaseVO;
 
 /**
  * 자원관리에 대한 model 클래스를 정의한다.

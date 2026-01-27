@@ -14,11 +14,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
+import aramframework.cmm.domain.SearchVO;
 import aramframework.cmm.security.userdetails.UserDetailsHelper;
 import aramframework.cmm.util.MessageHelper;
 import aramframework.cmm.util.WebUtil;
-import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.com.domain.SearchVO;
+import aramframework.com.cmm.com.annotation.IncludedInfo;
 import aramframework.com.cop.cmy.domain.CommunityUserVO;
 import aramframework.com.cop.cmy.domain.CommunityVO;
 import aramframework.com.cop.cmy.service.CommunityManageService;

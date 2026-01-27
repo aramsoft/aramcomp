@@ -1,4 +1,4 @@
-package aramframework.com.cmm.annotation;
+package aramframework.com.cmm.com.domain;
 
 /**
  * IncludedInfo annotation을 바탕으로 화면에 표시할 정보를 구성하기 위한 VO 클래스

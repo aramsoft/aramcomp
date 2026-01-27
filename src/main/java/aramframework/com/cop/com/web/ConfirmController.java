@@ -7,11 +7,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import aramframework.cmm.domain.SearchVO;
 import aramframework.cmm.security.userdetails.UserDetailsHelper;
 import aramframework.cmm.util.MessageHelper;
 import aramframework.cmm.util.WebUtil;
 import aramframework.com.cmm.code.service.CmmUseService;
-import aramframework.com.cmm.com.domain.SearchVO;
 import aramframework.com.cop.com.domain.ConfirmHistoryVO;
 import aramframework.com.cop.com.service.ConfirmService;
 import aramframework.com.cop.com.service.UserInfService;

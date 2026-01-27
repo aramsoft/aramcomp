@@ -1,6 +1,6 @@
 package aramframework.com.cop.com.domain;
 
-import aramframework.com.cmm.com.domain.BaseVO;
+import aramframework.cmm.domain.BaseVO;
 
 /**
  * 사용자 정보 조회를 위한 VO 클래스

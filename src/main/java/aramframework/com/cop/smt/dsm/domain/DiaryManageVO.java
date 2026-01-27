@@ -1,6 +1,6 @@
 package aramframework.com.cop.smt.dsm.domain;
 
-import aramframework.com.cmm.com.domain.BaseVO;
+import aramframework.cmm.domain.BaseVO;
 
 /**
  * 일지관리 VO Class 구현

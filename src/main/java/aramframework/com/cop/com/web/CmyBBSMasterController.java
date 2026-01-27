@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
+import aramframework.cmm.domain.SearchVO;
 import aramframework.cmm.security.userdetails.UserDetailsHelper;
 import aramframework.cmm.util.ComponentChecker;
 import aramframework.cmm.util.MessageHelper;
 import aramframework.cmm.util.WebUtil;
 import aramframework.com.cmm.code.service.CmmUseService;
-import aramframework.com.cmm.com.domain.SearchVO;
 import aramframework.com.cop.bbs.domain.BoardMasterVO;
 import aramframework.com.cop.bbs.domain.BoardUseInfVO;
 import aramframework.com.cop.bbs.service.BBSMasterService;

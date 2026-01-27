@@ -13,10 +13,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
+import aramframework.cmm.domain.SearchVO;
 import aramframework.cmm.security.userdetails.UserDetailsHelper;
 import aramframework.cmm.util.MessageHelper;
-import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.com.domain.SearchVO;
+import aramframework.com.cmm.com.annotation.IncludedInfo;
 import aramframework.com.sym.ccm.cca.domain.CmmnCodeVO;
 import aramframework.com.sym.ccm.cca.service.CmmnCodeManageService;
 import aramframework.com.sym.ccm.ccc.domain.CmmnClCodeVO;

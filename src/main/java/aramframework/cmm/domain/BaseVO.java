@@ -1,4 +1,4 @@
-package aramframework.com.cmm.com.domain;
+package aramframework.cmm.domain;
 
 import java.util.Date;
 

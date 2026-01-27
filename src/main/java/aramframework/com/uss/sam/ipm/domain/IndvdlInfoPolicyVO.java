@@ -1,6 +1,6 @@
 package aramframework.com.uss.sam.ipm.domain;
 
-import aramframework.com.cmm.com.domain.BaseVO;
+import aramframework.cmm.domain.BaseVO;
 
 /**
  * 개인정보보호정책 VO Class 구현

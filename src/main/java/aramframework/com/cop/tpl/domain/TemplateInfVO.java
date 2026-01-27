@@ -1,7 +1,7 @@
 package aramframework.com.cop.tpl.domain;
 
 
-import aramframework.com.cmm.com.domain.BaseVO;
+import aramframework.cmm.domain.BaseVO;
 
 /**
  * 템플릿 정보 관리를 위한 VO 클래스

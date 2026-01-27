@@ -12,8 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.annotation.IncludedInfoVO;
+import aramframework.com.cmm.com.annotation.IncludedInfo;
+import aramframework.com.cmm.com.domain.IncludedInfoVO;
 
 /**
  * 컴포넌트 설치 후 설치된 컴포넌트들을 IncludedInfo annotation을 통해 찾아낸 후

@@ -1,6 +1,6 @@
 package aramframework.com.uss.sam.cpy.domain;
 
-import aramframework.com.cmm.com.domain.BaseVO;
+import aramframework.cmm.domain.BaseVO;
 
 /**
  * 저작권보호정책내용을 처리하는 VO 클래스

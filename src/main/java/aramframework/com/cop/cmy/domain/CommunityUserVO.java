@@ -1,6 +1,6 @@
 package aramframework.com.cop.cmy.domain;
 
-import aramframework.com.cmm.com.domain.BaseVO;
+import aramframework.cmm.domain.BaseVO;
 
 /**
  * 커뮤티니 사용자 관리를 위한 VO 클래스

@@ -2,7 +2,7 @@ package aramframework.com.sym.bat.domain;
 
 import java.util.List;
 
-import aramframework.com.cmm.com.domain.BaseVO;
+import aramframework.cmm.domain.BaseVO;
 
 /**
  * 배치스케줄관리에 대한 model 클래스

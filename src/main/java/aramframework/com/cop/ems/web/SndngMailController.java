@@ -20,11 +20,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import aramframework.cmm.constant.Globals;
+import aramframework.cmm.domain.SearchVO;
 import aramframework.cmm.security.userdetails.UserDetailsHelper;
 import aramframework.cmm.util.MessageHelper;
 import aramframework.cmm.util.WebUtil;
-import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.com.domain.SearchVO;
+import aramframework.com.cmm.com.annotation.IncludedInfo;
 import aramframework.com.cmm.file.web.FileMngUtil;
 import aramframework.com.cop.ems.domain.SndngMailVO;
 import aramframework.com.cop.ems.service.SndngMailService;

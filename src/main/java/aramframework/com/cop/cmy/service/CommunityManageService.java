@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import aramframework.cmm.constant.CacheKey;
 import aramframework.cmm.security.userdetails.UserDetailsHelper;
-import aramframework.com.cmm.com.domain.MenuVO;
 import aramframework.com.cop.bbs.domain.BoardMasterVO;
 import aramframework.com.cop.bbs.domain.BoardUseInfVO;
 import aramframework.com.cop.bbs.service.BBSMasterService;
@@ -24,6 +23,7 @@ import aramframework.com.cop.cmy.dao.CommunityManageMapper;
 import aramframework.com.cop.cmy.domain.CommunityMenuVO;
 import aramframework.com.cop.cmy.domain.CommunityUserVO;
 import aramframework.com.cop.cmy.domain.CommunityVO;
+import aramframework.com.cop.cmy.domain.MenuVO;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.utl.fcc.service.DateUtil;
 import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;

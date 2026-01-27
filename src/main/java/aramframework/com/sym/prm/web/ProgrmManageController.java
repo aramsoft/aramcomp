@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
+import aramframework.cmm.domain.SearchVO;
 import aramframework.cmm.util.MessageHelper;
-import aramframework.com.cmm.annotation.IncludedInfo;
-import aramframework.com.cmm.com.domain.SearchVO;
+import aramframework.com.cmm.com.annotation.IncludedInfo;
 import aramframework.com.sym.prm.domain.ProgrmManageVO;
 import aramframework.com.sym.prm.service.ProgrmManageService;
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;

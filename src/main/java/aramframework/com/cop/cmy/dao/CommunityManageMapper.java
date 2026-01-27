@@ -2,11 +2,12 @@ package aramframework.com.cop.cmy.dao;
 
 import java.util.List;
 
-import aramframework.com.cmm.com.domain.MenuVO;
 import aramframework.com.cop.bbs.domain.BoardUseInfVO;
 import aramframework.com.cop.cmy.domain.CommunityMenuVO;
 import aramframework.com.cop.cmy.domain.CommunityUserVO;
 import aramframework.com.cop.cmy.domain.CommunityVO;
+import aramframework.com.cop.cmy.domain.MenuVO;
+
 import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
 import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 

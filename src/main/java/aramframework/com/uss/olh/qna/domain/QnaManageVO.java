@@ -1,6 +1,6 @@
 package aramframework.com.uss.olh.qna.domain;
 
-import aramframework.com.cmm.com.domain.BaseVO;
+import aramframework.cmm.domain.BaseVO;
 
 /**
  * Q&A를 처리하는 VO 클래스

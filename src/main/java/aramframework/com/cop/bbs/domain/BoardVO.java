@@ -1,7 +1,7 @@
 package aramframework.com.cop.bbs.domain;
 
+import aramframework.cmm.domain.BaseVO;
 import aramframework.cmm.util.WebUtil;
-import aramframework.com.cmm.com.domain.BaseVO;
 
 /**
  * 게시물 관리를 위한 VO 클래스

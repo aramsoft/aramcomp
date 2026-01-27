@@ -1,6 +1,6 @@
 package aramframework.com.uat.uap.domain;
 
-import aramframework.com.cmm.com.domain.BaseVO;
+import aramframework.cmm.domain.BaseVO;
 
 /**
  * 개요

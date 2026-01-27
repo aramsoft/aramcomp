@@ -20,9 +20,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.cmm.constant.CacheKey;
+import aramframework.cmm.domain.SearchVO;
 import aramframework.cmm.util.MessageHelper;
 import aramframework.cmm.util.WebUtil;
-import aramframework.com.cmm.com.domain.SearchVO;
 import aramframework.com.cop.cmy.domain.CommunityMenuVO;
 import aramframework.com.cop.cmy.excel.ExcelCmyMenuView;
 import aramframework.com.cop.cmy.service.CmyMenuManageService;

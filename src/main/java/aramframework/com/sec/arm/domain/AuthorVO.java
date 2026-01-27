@@ -1,6 +1,6 @@
 package aramframework.com.sec.arm.domain;
 
-import aramframework.com.cmm.com.domain.BaseVO;
+import aramframework.cmm.domain.BaseVO;
 
 /**
  * 권한관리에 대한 model 클래스를 정의한다.

@@ -22,10 +22,10 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import aramframework.cmm.constant.CacheKey;
+import aramframework.cmm.domain.SearchVO;
 import aramframework.cmm.security.userdetails.UserDetailsHelper;
 import aramframework.cmm.util.MessageHelper;
 import aramframework.cmm.util.WebUtil;
-import aramframework.com.cmm.com.domain.SearchVO;
 import aramframework.com.cmm.file.web.FileMngUtil;
 import aramframework.com.cop.bbs.domain.BoardMasterVO;
 import aramframework.com.cop.bbs.domain.BoardVO;

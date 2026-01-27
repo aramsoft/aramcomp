@@ -1,6 +1,6 @@
 package aramframework.com.cop.ncm.domain;
 
-import aramframework.com.cmm.com.domain.BaseVO;
+import aramframework.cmm.domain.BaseVO;
 
 /**
  * 명함사용자 정보를 관리하기 위한 모델 클래스

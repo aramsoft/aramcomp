@@ -5,7 +5,7 @@
  * Date      : 2005.2.23
  * Author    : 조헌철
  */
-package aramframework.com.cmm.util; 
+package aramframework.cmm.util; 
   
 /**
  * Number Utility : Number 처리 관련 Utility.<br>

@@ -19,8 +19,8 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
 import aramframework.cmm.security.userdetails.UserDetailsHelper;
+import aramframework.cmm.util.WebUtil;
 import aramframework.com.cmm.com.domain.MenuVO;
-import aramframework.com.cmm.util.WebUtil;
 import aramframework.com.cop.bbs.domain.BoardMasterVO;
 import aramframework.com.cop.bbs.domain.BoardVO;
 import aramframework.com.cop.bbs.service.BBSMasterService;

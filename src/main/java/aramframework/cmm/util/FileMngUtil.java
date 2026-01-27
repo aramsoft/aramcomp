@@ -1,4 +1,4 @@
-package aramframework.com.cmm.util;
+package aramframework.cmm.util;
 
 import java.io.File;
 import java.util.ArrayList;

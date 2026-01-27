@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.FileMngUtil;
+import aramframework.cmm.util.FileMngUtil;
 import aramframework.com.cop.smt.dsm.dao.DiaryManageMapper;
 import aramframework.com.cop.smt.dsm.domain.DiaryManageVO;
 import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;

@@ -15,7 +15,7 @@ import java.util.Vector;
 
 import aramframework.cmm.constant.AramProperties;
 import aramframework.cmm.constant.Globals;
-import aramframework.com.cmm.util.WebUtil;
+import aramframework.cmm.util.WebUtil;
 import aramframework.com.utl.fcc.service.StringUtil;
 
 /**

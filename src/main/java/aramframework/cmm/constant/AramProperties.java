@@ -8,7 +8,7 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import aramframework.com.cmm.util.WebUtil;
+import aramframework.cmm.util.WebUtil;
 
 /**
  * properties값들을 파일로부터 읽어와 Globals클래스의 정적변수로 로드시켜주는 클래스로

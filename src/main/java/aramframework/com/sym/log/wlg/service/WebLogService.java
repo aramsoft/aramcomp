@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.util.LogUtil;
+import aramframework.cmm.util.LogUtil;
 import aramframework.com.sym.log.wlg.dao.WebLogMapper;
 import aramframework.com.sym.log.wlg.domain.WebLogVO;
 import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;

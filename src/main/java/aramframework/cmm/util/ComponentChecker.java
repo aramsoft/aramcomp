@@ -1,4 +1,4 @@
-package aramframework.com.cmm.util;
+package aramframework.cmm.util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;

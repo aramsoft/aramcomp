@@ -25,7 +25,7 @@ import org.apache.commons.fileupload.util.Streams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import aramframework.com.cmm.util.WebUtil;
+import aramframework.cmm.util.WebUtil;
 
 /**
  * Form-based File Upload 유틸리티

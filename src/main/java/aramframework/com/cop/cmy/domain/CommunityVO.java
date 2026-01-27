@@ -2,9 +2,9 @@ package aramframework.com.cop.cmy.domain;
 
 import java.util.List;
 
+import aramframework.cmm.util.WebUtil;
 import aramframework.com.cmm.com.domain.BaseVO;
 import aramframework.com.cmm.com.domain.MenuVO;
-import aramframework.com.cmm.util.WebUtil;
 
 /**
  * 커뮤니티 관리를 위한 VO 클래스

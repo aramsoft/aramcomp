@@ -31,7 +31,7 @@
 		</property>
 	</bean>
 
-    <bean id="aramMessageHelper" class="aramframework.com.cmm.util.MessageHelper">
+    <bean id="aramMessageHelper" class="aramframework.cmm.util.MessageHelper">
         <property name="messageSource">
             <ref bean="messageSource" />
         </property>

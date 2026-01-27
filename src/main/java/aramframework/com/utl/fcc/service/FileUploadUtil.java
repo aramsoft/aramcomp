@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import aramframework.com.cmm.util.WebUtil;
+import aramframework.cmm.util.WebUtil;
 
 /**
  * Spring 기반 File Upload 유틸리티

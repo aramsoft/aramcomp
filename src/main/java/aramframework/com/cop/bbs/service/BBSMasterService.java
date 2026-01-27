@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.cmm.constant.CacheKey;
-import aramframework.com.cmm.util.ComponentChecker;
+import aramframework.cmm.util.ComponentChecker;
 import aramframework.com.cop.bbs.dao.BBSAddedOptionsMapper;
 import aramframework.com.cop.bbs.dao.BBSMasterMapper;
 import aramframework.com.cop.bbs.dao.BBSUseInfoMapper;

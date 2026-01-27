@@ -27,7 +27,7 @@ import org.w3c.dom.Text;
 
 import aramframework.cmm.constant.AramProperties;
 import aramframework.cmm.constant.Globals;
-import aramframework.com.cmm.util.WebUtil;
+import aramframework.cmm.util.WebUtil;
 
 /**
  * XML파일을 파싱하여 구조체 형태로 반환 또는 구조체 형태의 데이터를 XML파일로 저장하는 Business Interface class

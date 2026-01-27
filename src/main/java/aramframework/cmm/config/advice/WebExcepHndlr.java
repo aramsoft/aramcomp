@@ -3,7 +3,8 @@ package aramframework.cmm.config.advice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import aramframework.com.cmm.util.LogUtil;
+import aramframework.cmm.util.LogUtil;
+
 import org.egovframe.rte.fdl.cmmn.exception.handler.ExceptionHandler;
 
 /**

@@ -10,7 +10,7 @@ import java.util.List;
 
 import aramframework.cmm.constant.AramProperties;
 import aramframework.cmm.constant.Globals;
-import aramframework.com.cmm.util.WebUtil;
+import aramframework.cmm.util.WebUtil;
 
 /**
  * 네트워크(Network)상태 체크 Business Interface class

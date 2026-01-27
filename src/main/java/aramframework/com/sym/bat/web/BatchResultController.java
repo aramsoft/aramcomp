@@ -7,7 +7,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.com.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.sym.bat.domain.BatchResultVO;

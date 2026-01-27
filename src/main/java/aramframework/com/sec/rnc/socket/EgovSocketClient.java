@@ -8,7 +8,7 @@ import java.net.Socket;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import aramframework.com.cmm.constant.Globals;
+import aramframework.cmm.constant.Globals;
 
 /**
  * G4C 연계용 배포파일- SocketClient.java

@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.constant.Globals;
+import aramframework.cmm.constant.Globals;
 import aramframework.com.cop.sms.dao.SmsMapper;
 import aramframework.com.cop.sms.domain.SmsMessageVO;
 import aramframework.com.cop.sms.domain.SmsRecptnVO;

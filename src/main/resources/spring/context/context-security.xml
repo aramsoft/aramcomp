@@ -49,34 +49,34 @@
     </http>
     
 	<beans:bean id="logAuditFilter"
-	    class="aramframework.com.cmm.config.filter.LogAuditFilter">
+	    class="aramframework.cmm.config.filter.LogAuditFilter">
 	</beans:bean>
 <!-- 	
 	<beans:bean id="htmlTagFilter"
-	    class="aramframework.com.cmm.config.filter.HTMLTagFilter">
+	    class="aramframework.cmm.config.filter.HTMLTagFilter">
 	</beans:bean>
 
 	<beans:bean id="loginPolicyFilter"
-	    class="aramframework.com.cmm.config.filter.LoginPolicyFilter">
+	    class="aramframework.cmm.config.filter.LoginPolicyFilter">
 	</beans:bean>
 	
 	<beans:bean id="httpsSessionFilter"
-	    class="aramframework.com.cmm.config.filter.HttpsSessionFilter">
+	    class="aramframework.cmm.config.filter.HttpsSessionFilter">
 	</beans:bean>
 -->	
 	
 	<beans:bean id="targetRedirectStrategy"
-	    class="aramframework.com.cmm.config.security.TargetRedirectStrategy">
+	    class="aramframework.cmm.config.security.TargetRedirectStrategy">
     	<beans:property name="contextRelative" value="true" />
 	</beans:bean>    
 	
 	<beans:bean id="simpleUrlAuthenticationFailureHandler"
-	    class="aramframework.com.cmm.config.security.SimpleUrlAuthenticationFailureHandler">
+	    class="aramframework.cmm.config.security.SimpleUrlAuthenticationFailureHandler">
 	    <beans:property name="defaultFailureUrl" value="/uat/uia/loginUsr.do?login_error=1"/>
 	</beans:bean>
 	
 	<beans:bean id="simpleUrlAuthenticationSuccessHandler"
-	    class="aramframework.com.cmm.config.security.SimpleUrlAuthenticationSuccessHandler">
+	    class="aramframework.cmm.config.security.SimpleUrlAuthenticationSuccessHandler">
     	<beans:property name="alwaysUseDefaultTargetUrl" value="true" />
 	    <beans:property name="defaultTargetUrl" value="/uat/uia/actionMain.do"/>
 	    <beans:property name="targetUrlParameter" value="targetUrl"/>
@@ -97,22 +97,22 @@
 	</authentication-manager>
 
 	<beans:bean id="passwordEncoder" 
-		class="aramframework.com.cmm.config.filter.AramPasswordEncoder">
+		class="aramframework.cmm.config.filter.AramPasswordEncoder">
 	</beans:bean>
 
 	<!-- secure object service -->
-    <beans:bean id="securedObjectService"
-        class="aramframework.com.cmm.security.securedobject.impl.SecuredObjectServiceImpl">
-        <beans:property name="securedObjectMapper" ref="securedObjectMapper"/>
-    </beans:bean>
- 
-    <beans:bean id="securedObjectMapper" 
-    	class="aramframework.com.cmm.security.securedobject.impl.SecuredObjectDAOImpl" >
+    <beans:bean id="securedObjectDAO" 
+    	class="aramframework.cmm.security.securedobject.impl.SecuredObjectDAOImpl" >
     </beans:bean>
     
+    <beans:bean id="securedObjectService"
+        class="aramframework.cmm.security.securedobject.impl.SecuredObjectServiceImpl">
+        <beans:property name="securedObjectDAO" ref="securedObjectDAO"/>
+    </beans:bean>
+ 
     <beans:bean id="daoUserService"
-        class="aramframework.com.cmm.security.userdetails.dao.DaoUserDetailsManager" >
-        <beans:property name="securedObjectMapper" ref="securedObjectMapper"/>
+        class="aramframework.cmm.security.userdetails.dao.DaoUserDetailsManager" >
+        <beans:property name="securedObjectDAO" ref="securedObjectDAO"/>
         <beans:property name="roleHierarchy" ref="roleHierarchy"/>
     </beans:bean>
 

@@ -4,9 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-
-import aramframework.com.cmm.constant.AramProperties;
-import aramframework.com.cmm.constant.Globals;
+import aramframework.cmm.constant.AramProperties;
+import aramframework.cmm.constant.Globals;
 
 /**
  * 시스템 네트워크 정보를 확인하여 제공하는  Business class

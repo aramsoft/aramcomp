@@ -10,8 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
-import aramframework.com.cmm.constant.Globals;
+import aramframework.cmm.constant.Globals;
 import aramframework.com.utl.fcc.service.FileUploadUtil;
 import aramframework.com.utl.fcc.service.FormBasedFileUtil;
 import aramframework.com.utl.fcc.service.FormBasedFileVo;

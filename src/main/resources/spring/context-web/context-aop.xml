@@ -9,7 +9,7 @@
 						http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 	<!--  login Log Aspect -->
-	<bean id="loginlogAdvice" class="aramframework.com.cmm.config.advice.LoginLogAdvice" />
+	<bean id="loginlogAdvice" class="aramframework.cmm.config.advice.LoginLogAdvice" />
 	<aop:config>
 		<aop:aspect id="loginLogAspect" ref="loginlogAdvice">
 			<aop:after  pointcut="execution(public * aramframework.com.uat.uia.web.LoginController.actionMain(..))"   method="logLogin" />

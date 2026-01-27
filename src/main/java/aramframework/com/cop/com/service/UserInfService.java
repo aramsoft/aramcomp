@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
-import aramframework.com.cmm.security.userdetails.UserDetailsHelper;
+import aramframework.cmm.security.userdetails.UserDetailsHelper;
 import aramframework.com.cop.cmy.domain.CommunityUserVO;
 import aramframework.com.cop.cmy.service.CommunityManageService;
 import aramframework.com.cop.com.dao.UserInfMapper;

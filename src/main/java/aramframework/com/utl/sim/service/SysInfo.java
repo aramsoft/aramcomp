@@ -8,9 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 
-
-import aramframework.com.cmm.constant.AramProperties;
-import aramframework.com.cmm.constant.Globals;
+import aramframework.cmm.constant.AramProperties;
+import aramframework.cmm.constant.Globals;
 
 /**
  * 시스템정보를 조회하는 Business Interface class

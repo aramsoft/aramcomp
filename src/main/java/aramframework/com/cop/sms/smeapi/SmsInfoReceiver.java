@@ -16,7 +16,7 @@ import x3.client.smeapi.SMESession;
 import x3.client.smeapi.impl.SMEConfig;
 import x3.client.smeapi.impl.SMEConnectionFactoryImpl;
 import x3.client.smeapi.impl.SMELogger;
-import aramframework.com.cmm.constant.Globals;
+import aramframework.cmm.constant.Globals;
 import aramframework.com.cop.sms.dao.SmsMapper;
 import aramframework.com.cop.sms.domain.SmsRecptnVO;
 import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;

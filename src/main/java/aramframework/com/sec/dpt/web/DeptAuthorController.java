@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.cmm.annotation.IncludedInfo;
 import aramframework.com.cmm.com.domain.SearchVO;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.sec.arm.domain.AuthorVO;

@@ -28,7 +28,7 @@
 			</map>
 		</property>
 	</bean>
-	<bean id="imageRenderer"    class="aramframework.com.cmm.config.web.ImagePaginationRenderer"/>
+	<bean id="imageRenderer"  class="aramframework.cmm.config.web.ImagePaginationRenderer"/>
 
 	<!--
         View resolver that delegates to other view resolvers based on the content type

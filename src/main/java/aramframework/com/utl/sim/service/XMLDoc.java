@@ -25,9 +25,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.Text;
 
-
-import aramframework.com.cmm.constant.AramProperties;
-import aramframework.com.cmm.constant.Globals;
+import aramframework.cmm.constant.AramProperties;
+import aramframework.cmm.constant.Globals;
 import aramframework.com.cmm.util.WebUtil;
 
 /**

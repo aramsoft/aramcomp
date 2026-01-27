@@ -62,10 +62,10 @@
 	</bean>
 
 	<!-- Tiles 인터셉터 -->
-	<bean id="tilesInterceptor" class="aramframework.com.cmm.config.interceptor.TilesInterceptor" /> 
+	<bean id="tilesInterceptor" class="aramframework.cmm.config.interceptor.TilesInterceptor" /> 
 
 	<!-- 웹로그 인터셉터 -->
-	<bean id="webLogInterceptor" class="aramframework.com.cmm.config.interceptor.WebLogInterceptor"> 
+	<bean id="webLogInterceptor" class="aramframework.cmm.config.interceptor.WebLogInterceptor"> 
  		<property name="passURL">
 			<set> 
 				<value>/index.do</value>
@@ -86,13 +86,13 @@
 	-->
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
         <property name="webBindingInitializer">
-            <bean class="aramframework.com.cmm.config.web.BindingInitializer"/>
+            <bean class="aramframework.cmm.config.web.BindingInitializer"/>
         </property>
     </bean>
 <!--     
 	<bean class="org.egovframe.rte.ptl.mvc.bind.annotation.EgovRequestMappingHandlerAdapter">
 		<property name="webBindingInitializer">
-			<bean class="aramframework.com.cmm.config.web.BindingInitializer"/>
+			<bean class="aramframework.cmm.config.web.BindingInitializer"/>
 		</property>
 		<property name="customArgumentResolvers">
 			<list>

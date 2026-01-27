@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
-import aramframework.com.cmm.annotation.IncludedInfo;
+import aramframework.cmm.annotation.IncludedInfo;
+import aramframework.cmm.security.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.com.domain.SearchVO;
-import aramframework.com.cmm.security.userdetails.UserDetailsHelper;
 import aramframework.com.cmm.util.MessageHelper;
 import aramframework.com.cop.bbs.domain.BoardVO;
 import aramframework.com.cop.bbs.service.BBSBoardService;

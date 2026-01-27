@@ -16,7 +16,7 @@ import org.springframework.mail.MailParseException;
 import org.springframework.mail.MailSendException;
 import org.springframework.stereotype.Service;
 
-import aramframework.com.cmm.constant.Globals;
+import aramframework.cmm.constant.Globals;
 import aramframework.com.cmm.util.FileMngUtil;
 import aramframework.com.cop.ems.dao.SndngMailMapper;
 import aramframework.com.cop.ems.domain.AtchmnFileVO;

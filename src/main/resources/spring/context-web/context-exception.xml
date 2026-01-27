@@ -44,6 +44,6 @@
 		</property>
 	</bean>
 
-	<bean id="web.exceptionHandler" class="aramframework.com.cmm.config.advice.WebExcepHndlr" />
+	<bean id="web.exceptionHandler" class="aramframework.cmm.config.advice.WebExcepHndlr" />
 	
 </beans>

@@ -1,6 +1,6 @@
 package aramframework.com.utl.cas.service;
 
-import aramframework.com.cmm.constant.AramProperties;
+import aramframework.cmm.constant.AramProperties;
 import aramframework.com.utl.fcc.service.StringUtil;
 
 /**

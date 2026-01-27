@@ -8,9 +8,8 @@ import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.List;
 
-
-import aramframework.com.cmm.constant.AramProperties;
-import aramframework.com.cmm.constant.Globals;
+import aramframework.cmm.constant.AramProperties;
+import aramframework.cmm.constant.Globals;
 import aramframework.com.cmm.util.WebUtil;
 
 /**

@@ -2,9 +2,8 @@ package aramframework.com.utl.sim.service;
 
 import javax.servlet.http.HttpServletRequest;
 
-
-import aramframework.com.cmm.constant.AramProperties;
-import aramframework.com.cmm.constant.Globals;
+import aramframework.cmm.constant.AramProperties;
+import aramframework.cmm.constant.Globals;
 
 /**
  * 클라이언트(Client)의 IP주소, OS정보, 웹브라우저정보를 조회하는 Business Interface class

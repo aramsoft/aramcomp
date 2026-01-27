@@ -111,7 +111,7 @@
     </beans:bean>
  
     <beans:bean id="daoUserService"
-        class="aramframework.cmm.security.userdetails.dao.DaoUserDetailsManager" >
+        class="aramframework.cmm.security.userdetails.manager.DaoUserDetailsManager" >
         <beans:property name="securedObjectDAO" ref="securedObjectDAO"/>
         <beans:property name="roleHierarchy" ref="roleHierarchy"/>
     </beans:bean>

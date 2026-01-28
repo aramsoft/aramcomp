@@ -5,14 +5,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.ServletContext;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aramframework.com.cmm.code.dao.CmmUseMapper;
 import aramframework.com.cmm.code.domain.ComCodeVO;
 import aramframework.com.cmm.code.domain.SearchCodeVO;
+import jakarta.servlet.ServletContext;
 
 import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
 

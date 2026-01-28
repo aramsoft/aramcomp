@@ -1,9 +1,5 @@
 package aramframework.cmm.config.interceptor;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.tiles.Attribute;
 import org.apache.tiles.AttributeContext;
 import org.apache.tiles.access.TilesAccess;
@@ -15,11 +11,14 @@ import org.apache.tiles.request.servlet.ServletUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import aramframework.com.cop.cmy.domain.CommunityVO;
 import aramframework.com.cop.cmy.service.CommunityManageService;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * 타일스 생성을 위한 인터셉터 클래스
@@ -28,7 +27,7 @@ import aramframework.com.cop.cmy.service.CommunityManageService;
  * @since 2014.11.11
  * @version 1.0
  */
-public class TilesInterceptor extends HandlerInterceptorAdapter {
+public class TilesInterceptor implements HandlerInterceptor {
 
 	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 	
@@ -44,7 +43,6 @@ public class TilesInterceptor extends HandlerInterceptorAdapter {
 	 * @return			true/false
 	 * @throws Exception
 	 */
-	@Override
 	public boolean preHandle(
 			HttpServletRequest request, 
 			HttpServletResponse response, 
@@ -82,7 +80,6 @@ public class TilesInterceptor extends HandlerInterceptorAdapter {
 	 * @param modelAndView	ModelAndView
 	 * @throws Exception
 	 */
-	@Override
 	public void postHandle(
 			HttpServletRequest request, 
 			HttpServletResponse response, 
@@ -132,8 +129,8 @@ public class TilesInterceptor extends HandlerInterceptorAdapter {
     	}
 
 		ServletContext servletContext = request.getSession().getServletContext();
-		ApplicationContext tilesAppContext = ServletUtil.getApplicationContext(servletContext);
-		Request tilesRequest = new ServletRequest(tilesAppContext, request, response);
+		ApplicationContext tilesAppContext = ServletUtil.getApplicationContext((javax.servlet.ServletContext) servletContext);
+		Request tilesRequest = new ServletRequest(tilesAppContext, (javax.servlet.http.HttpServletRequest)request, (javax.servlet.http.HttpServletResponse)response);
 		BasicTilesContainer container = (BasicTilesContainer) TilesAccess.getContainer(tilesAppContext);
 		AttributeContext attributeContext = container.getAttributeContext(tilesRequest);
 

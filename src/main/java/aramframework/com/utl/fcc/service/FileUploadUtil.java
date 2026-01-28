@@ -4,12 +4,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import aramframework.cmm.util.WebUtil;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * Spring 기반 File Upload 유틸리티

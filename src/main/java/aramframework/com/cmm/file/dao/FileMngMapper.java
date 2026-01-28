@@ -2,11 +2,12 @@ package aramframework.com.cmm.file.dao;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import aramframework.com.cmm.file.domain.FileVO;
 
-import org.egovframe.rte.psl.dataaccess.EgovAbstractMapper;
+import org.apache.ibatis.session.SqlSession;
 
 /**
  * 파일정보 관리를 위한 데이터 처리 클래스
@@ -16,8 +17,11 @@ import org.egovframe.rte.psl.dataaccess.EgovAbstractMapper;
  * @version 1.0
  */
 @Repository
-public class FileMngMapper extends EgovAbstractMapper {
+public class FileMngMapper  {
 
+	@Autowired
+	private SqlSession sqlSession;
+ 
 	final static String NAMESPACE = FileMngMapper.class.getName();
 	/**
 	 * 파일명 검색에 대한 목록을 조회한다.
@@ -26,7 +30,7 @@ public class FileMngMapper extends EgovAbstractMapper {
 	 * @return 			List
 	 */
 	public List<FileVO> selectFileListByFileNm(FileVO fileVO) {
-		return selectList(NAMESPACE+".selectFileListByFileNm", fileVO);
+		return sqlSession.selectList(NAMESPACE+".selectFileListByFileNm", fileVO);
 	}
 
 	/**
@@ -36,7 +40,7 @@ public class FileMngMapper extends EgovAbstractMapper {
 	 * @return 			건수
 	 */
 	public int selectFileListCntByFileNm(FileVO fileVO) {
-		return (Integer) getSqlSession().selectOne(NAMESPACE+".selectFileListCntByFileNm", fileVO);
+		return (Integer) sqlSession.selectOne(NAMESPACE+".selectFileListCntByFileNm", fileVO);
 	}
 
 	/**
@@ -46,7 +50,7 @@ public class FileMngMapper extends EgovAbstractMapper {
 	 * @return 			List
 	 */
 	public List<FileVO> selectFileList(FileVO fileVO) {
-		return selectList(NAMESPACE+".selectFileList", fileVO);
+		return sqlSession.selectList(NAMESPACE+".selectFileList", fileVO);
 	}
 
 	/**
@@ -56,7 +60,7 @@ public class FileMngMapper extends EgovAbstractMapper {
 	 * @return 			List
 	 */
 	public List<FileVO> selectImageFileList(FileVO fileVO) {
-		return selectList(NAMESPACE+".selectImageFileList", fileVO);
+		return sqlSession.selectList(NAMESPACE+".selectImageFileList", fileVO);
 	}
 	
 	/**
@@ -66,7 +70,7 @@ public class FileMngMapper extends EgovAbstractMapper {
 	 * @return 			FileVO
 	 */
 	public FileVO selectFileInf(FileVO fileVO) {
-		return (FileVO) selectOne(NAMESPACE+".selectFileInf", fileVO);
+		return (FileVO) sqlSession.selectOne(NAMESPACE+".selectFileInf", fileVO);
 	}
 
 	/**
@@ -76,7 +80,7 @@ public class FileMngMapper extends EgovAbstractMapper {
 	 * @return 			최대값
 	 */
 	public int getMaxFileSN(FileVO fileVO) {
-		return (Integer) getSqlSession().selectOne(NAMESPACE+".getMaxFileSN", fileVO);
+		return (Integer) sqlSession.selectOne(NAMESPACE+".getMaxFileSN", fileVO);
 	}
 
 	/**
@@ -85,8 +89,8 @@ public class FileMngMapper extends EgovAbstractMapper {
 	 * @param 	fileVO	FileVO
 	 */
 	public void insertFileInf(FileVO fileVO) {
-		insert(NAMESPACE+".insertFileMaster", fileVO);
-		insert(NAMESPACE+".insertFileDetail", fileVO);
+		sqlSession.insert(NAMESPACE+".insertFileMaster", fileVO);
+		sqlSession.insert(NAMESPACE+".insertFileDetail", fileVO);
 	}
 
 	/**
@@ -98,10 +102,10 @@ public class FileMngMapper extends EgovAbstractMapper {
 	public String insertFileInfs(List<FileVO> fileList) {
 		FileVO fileVO = fileList.get(0);
 		String atchFileId = fileVO.getAtchFileId();		// FileUtil에서 구해짐
-		insert(NAMESPACE+".insertFileMaster", fileVO);
+		sqlSession.insert(NAMESPACE+".insertFileMaster", fileVO);
 
 		for(FileVO fVO : fileList) {
-			insert(NAMESPACE+".insertFileDetail", fVO);
+			sqlSession.insert(NAMESPACE+".insertFileDetail", fVO);
 		}
 
 		return atchFileId;
@@ -114,7 +118,7 @@ public class FileMngMapper extends EgovAbstractMapper {
 	 */
 	public void addFileInfs(List<FileVO> fileList) {
 		for(FileVO fileVO : fileList) {
-			insert(NAMESPACE+".insertFileDetail", fileVO);
+			sqlSession.insert(NAMESPACE+".insertFileDetail", fileVO);
 		}
 	}
 
@@ -124,9 +128,9 @@ public class FileMngMapper extends EgovAbstractMapper {
 	 * @param 	fileVO	FileVO
 	 */
 	public void deleteAllFileInf(FileVO fileVO) {
-		delete(NAMESPACE+".deleteFileDetails", fileVO);
-		delete(NAMESPACE+".deleteFile", fileVO);
-//		update(NAMESPACE+".deleteUpdateFile", fileVO);
+		sqlSession.delete(NAMESPACE+".deleteFileDetails", fileVO);
+		sqlSession.delete(NAMESPACE+".deleteFile", fileVO);
+//		sqlSession.update(NAMESPACE+".deleteUpdateFile", fileVO);
 	}
 
 	/**
@@ -135,7 +139,7 @@ public class FileMngMapper extends EgovAbstractMapper {
 	 * @param 	fileVO	FileVO
 	 */
 	public void deleteFileInf(FileVO fileVO) {
-		delete(NAMESPACE+".deleteFileDetail", fileVO);
+		sqlSession.delete(NAMESPACE+".deleteFileDetail", fileVO);
 	}
 
 	/**
@@ -144,7 +148,7 @@ public class FileMngMapper extends EgovAbstractMapper {
 	 * @param 	fileVO	FileVO
 	 */
 	public void deleteFileList(FileVO fileVO) {
-		delete(NAMESPACE+".deleteFileDetails", fileVO);
+		sqlSession.delete(NAMESPACE+".deleteFileDetails", fileVO);
 	}
 	
 	/**
@@ -154,7 +158,7 @@ public class FileMngMapper extends EgovAbstractMapper {
 	 */
 	public void deleteFileInfs(List<FileVO> fileList) {
 		for(FileVO fileVO : fileList) {
-			delete(NAMESPACE+".deleteFileDetail", fileVO);
+			sqlSession.delete(NAMESPACE+".deleteFileDetail", fileVO);
 		}
 	}
 

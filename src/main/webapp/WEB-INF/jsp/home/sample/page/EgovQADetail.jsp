@@ -94,7 +94,7 @@
 				<div class="qa_1st_wrap">
 					<p>안녕하세요 웹호스팅에 올렸더니 jsp파일에서 이런에러로그가 남았는데요 jsp파일을 못찾는것같습니다? xml을 수정해야하나요?</p>
 					<p>심각: Servlet.service() for servlet action threw exception</p>
-					<p>javax.servlet.ServletException: Could not get RequestDispatcher for [/WEB-INF/jsp/aramframework//main/main.jsp]: check that this file exists within
+					<p>jakarta.servlet.ServletException: Could not get RequestDispatcher for [/WEB-INF/jsp/aramframework//main/main.jsp]: check that this file exists within
 						your WAR at org.springframework.web.servlet.view.InternalResourceView.renderMergedOutputModel(InternalResourceView.java:217)</p>
 				</div>	
 				
@@ -107,7 +107,7 @@
 						<li>2011-08-08 12:33:33</li>
 						<li>
 							<p>심각: Servlet.service() for servlet action threw exception은 jsp파일을 열어서 보셔야합니다.</p>
-							<p>javax.servlet.ServletException: Could not get RequestDispatcher for [/WEB-INF/jsp/aramframework//main/main.jsp]: check that this file exists within your WAR</p>
+							<p>jakarta.servlet.ServletException: Could not get RequestDispatcher for [/WEB-INF/jsp/aramframework//main/main.jsp]: check that this file exists within your WAR</p>
 						</li>
 						<li><div class="qa_btn_delete">삭제하기</div></li>
 					</ul>

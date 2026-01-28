@@ -5,9 +5,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.PrintWriter;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +26,9 @@ import aramframework.com.cmm.file.web.FileMngUtil;
 import aramframework.com.cop.ems.domain.SndngMailVO;
 import aramframework.com.cop.ems.service.SndngMailService;
 import aramframework.com.uat.uia.domain.LoginVO;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**

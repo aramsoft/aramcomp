@@ -1,7 +1,5 @@
 package aramframework.com.cop.com.web;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -23,6 +21,8 @@ import aramframework.com.cop.bbs.service.BBSMasterService;
 import aramframework.com.cop.bbs.service.BBSUseInfoService;
 import aramframework.com.cop.com.service.UserInfService;
 import aramframework.com.uat.uia.domain.LoginVO;
+import jakarta.servlet.http.HttpServletRequest;
+
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**

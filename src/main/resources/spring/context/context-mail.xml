@@ -15,6 +15,7 @@
 	-->
 	
     <!-- 메일 연동 인터페이스에서 첨부파일 미사용 -->
+<!-- 
     <bean id="EMSMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl" 
         p:host		="#{mailProperties.host}" 
         p:port		="#{mailProperties.port}"  
@@ -29,8 +30,9 @@
             </props> 
         </property> 
     </bean>
-      
+-->      
     <!-- 메일 연동 인터페이스에서 첨부파일 사용 -->
+<!-- 
 	<bean id="egovMultiPartEmail" class="aramframework.com.cop.ems.service.EgovMultiPartEmail" 
 		c:host		="#{mailProperties.host}"
 		c:port		="#{mailProperties.port}" 
@@ -38,6 +40,6 @@
 		c:mailPass	="#{mailProperties.mailPass}"
 		c:mailName	="#{mailProperties.mailName}"
 		c:emailAddress="#{mailProperties.emailAddress}" />
-	  
+-->	  
 
 </beans> 

@@ -8,9 +8,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import aramframework.cmm.util.WebUtil;
 import aramframework.com.cmm.file.domain.FileVO;
 import aramframework.com.cmm.file.service.FileMngService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * 파일 다운로드를 위한 컨트롤러 클래스

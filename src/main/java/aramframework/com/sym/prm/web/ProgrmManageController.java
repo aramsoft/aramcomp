@@ -1,7 +1,5 @@
 package aramframework.com.sym.prm.web;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +16,8 @@ import aramframework.cmm.util.MessageHelper;
 import aramframework.com.cmm.com.annotation.IncludedInfo;
 import aramframework.com.sym.prm.domain.ProgrmManageVO;
 import aramframework.com.sym.prm.service.ProgrmManageService;
+import jakarta.servlet.http.HttpServletRequest;
+
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**

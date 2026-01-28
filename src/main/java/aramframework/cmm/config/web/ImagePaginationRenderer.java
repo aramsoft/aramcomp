@@ -1,8 +1,8 @@
 package aramframework.cmm.config.web;
 
-import javax.servlet.ServletContext;
-
 import org.springframework.web.context.ServletContextAware;
+
+import jakarta.servlet.ServletContext;
 
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.AbstractPaginationRenderer;
 

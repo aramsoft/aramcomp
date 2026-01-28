@@ -2,9 +2,9 @@ package aramframework.com.sym.sym.bak.dao;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import org.egovframe.rte.psl.dataaccess.EgovAbstractMapper;
+import org.apache.ibatis.session.SqlSession;
 import aramframework.com.sym.sym.bak.domain.BackupOpertVO;
 import aramframework.com.sym.sym.bak.domain.BackupSchdulDfkVO;
 
@@ -16,8 +16,11 @@ import aramframework.com.sym.sym.bak.domain.BackupSchdulDfkVO;
  * @version 1.0
  */
 @Repository
-public class BackupOpertMapper extends EgovAbstractMapper {
+public class BackupOpertMapper {
 
+	@Autowired
+	private SqlSession sqlSession;
+ 
 	final static String NAMESPACE = BackupOpertMapper.class.getName();
 
 	/**
@@ -26,12 +29,12 @@ public class BackupOpertMapper extends EgovAbstractMapper {
 	 * @param backupOpertVO
 	 */
 	public List<BackupOpertVO> selectBackupOpertList(BackupOpertVO backupOpertVO) {
-		List<BackupOpertVO> resultList = selectList(NAMESPACE+".selectBackupOpertList", backupOpertVO);
+		List<BackupOpertVO> resultList = sqlSession.selectList(NAMESPACE+".selectBackupOpertList", backupOpertVO);
 
 		for (int i = 0; i < resultList.size(); i++) {
 			BackupOpertVO result = (BackupOpertVO) resultList.get(i);
 			// 스케줄요일정보를 가져온다.
-			List<BackupSchdulDfkVO> dfkSeList = selectList(NAMESPACE+".selectBackupSchdulDfkList", result.getBackupOpertId());
+			List<BackupSchdulDfkVO> dfkSeList = sqlSession.selectList(NAMESPACE+".selectBackupSchdulDfkList", result.getBackupOpertId());
 			String[] dfkSes = new String[dfkSeList.size()];
 			for (int j = 0; j < dfkSeList.size(); j++) {
 				dfkSes[j] = dfkSeList.get(j).getExecutSchdulDfkSe();
@@ -49,7 +52,7 @@ public class BackupOpertMapper extends EgovAbstractMapper {
 	 * @param backupOpertVO
 	 */
 	public int selectBackupOpertListCnt(BackupOpertVO backupOpertVO) {
-		return (Integer) getSqlSession().selectOne(NAMESPACE+".selectBackupOpertListCnt", backupOpertVO);
+		return (Integer) sqlSession.selectOne(NAMESPACE+".selectBackupOpertListCnt", backupOpertVO);
 	}
 
 	/**
@@ -58,10 +61,10 @@ public class BackupOpertMapper extends EgovAbstractMapper {
 	 * @param backupOpertVO
 	 */
 	public BackupOpertVO selectBackupOpert(BackupOpertVO backupOpertVO) {
-		BackupOpertVO result = (BackupOpertVO) selectOne(NAMESPACE+".selectBackupOpert", backupOpertVO);
+		BackupOpertVO result = (BackupOpertVO) sqlSession.selectOne(NAMESPACE+".selectBackupOpert", backupOpertVO);
 
 		// 스케줄요일정보를 가져온다.
-		List<BackupSchdulDfkVO> dfkSeList = selectList(NAMESPACE+".selectBackupSchdulDfkList", backupOpertVO.getBackupOpertId());
+		List<BackupSchdulDfkVO> dfkSeList = sqlSession.selectList(NAMESPACE+".selectBackupSchdulDfkList", backupOpertVO.getBackupOpertId());
 		String[] dfkSes = new String[dfkSeList.size()];
 		for (int j = 0; j < dfkSeList.size(); j++) {
 			dfkSes[j] = dfkSeList.get(j).getExecutSchdulDfkSe();
@@ -80,7 +83,7 @@ public class BackupOpertMapper extends EgovAbstractMapper {
 	 */
 	public void insertBackupOpert(BackupOpertVO backupOpertVO) {
 		// master 테이블 인서트
-		insert(NAMESPACE+".insertBackupOpert", backupOpertVO);
+		sqlSession.insert(NAMESPACE+".insertBackupOpert", backupOpertVO);
 		// slave 테이블 인서트
 		if (backupOpertVO.getExecutSchdulDfkSes() != null && backupOpertVO.getExecutSchdulDfkSes().length != 0) {
 			String backupOpertId = backupOpertVO.getBackupOpertId();
@@ -89,7 +92,7 @@ public class BackupOpertMapper extends EgovAbstractMapper {
 				BackupSchdulDfkVO backupSchdulDfkVO = new BackupSchdulDfkVO();
 				backupSchdulDfkVO.setBackupOpertId(backupOpertId);
 				backupSchdulDfkVO.setExecutSchdulDfkSe(dfkSes[i]);
-				insert(NAMESPACE+".insertBackupSchdulDfk", backupSchdulDfkVO);
+				sqlSession.insert(NAMESPACE+".insertBackupSchdulDfk", backupSchdulDfkVO);
 			}
 		}
 	}
@@ -100,9 +103,9 @@ public class BackupOpertMapper extends EgovAbstractMapper {
 	 * @param backupOpertVO
 	 */
 	public void updateBackupOpert(BackupOpertVO backupOpertVO) {
-		update(NAMESPACE+".updateBackupOpert", backupOpertVO);
+		sqlSession.update(NAMESPACE+".updateBackupOpert", backupOpertVO);
 		// slave 테이블 삭제
-		delete(NAMESPACE+".deleteBackupSchdulDfk", backupOpertVO.getBackupOpertId());
+		sqlSession.delete(NAMESPACE+".deleteBackupSchdulDfk", backupOpertVO.getBackupOpertId());
 		// slave 테이블 인서트
 		if (backupOpertVO.getExecutSchdulDfkSes() != null && backupOpertVO.getExecutSchdulDfkSes().length != 0) {
 			String backupOpertId = backupOpertVO.getBackupOpertId();
@@ -111,7 +114,7 @@ public class BackupOpertMapper extends EgovAbstractMapper {
 				BackupSchdulDfkVO backupSchdulDfkVO = new BackupSchdulDfkVO();
 				backupSchdulDfkVO.setBackupOpertId(backupOpertId);
 				backupSchdulDfkVO.setExecutSchdulDfkSe(dfkSes[i]);
-				insert(NAMESPACE+".insertBackupSchdulDfk", backupSchdulDfkVO);
+				sqlSession.insert(NAMESPACE+".insertBackupSchdulDfk", backupSchdulDfkVO);
 			}
 		}
 	}
@@ -123,9 +126,9 @@ public class BackupOpertMapper extends EgovAbstractMapper {
 	 */
 	public void deleteBackupOpert(BackupOpertVO backupOpertVO) {
 		// slave 테이블 삭제
-		delete(NAMESPACE+".deleteBackupSchdulDfk", backupOpertVO.getBackupOpertId());
+		sqlSession.delete(NAMESPACE+".deleteBackupSchdulDfk", backupOpertVO.getBackupOpertId());
 		// master 테이블 삭제
-		delete(NAMESPACE+".deleteBackupOpert", backupOpertVO);
+		sqlSession.delete(NAMESPACE+".deleteBackupOpert", backupOpertVO);
 	}
 
 }

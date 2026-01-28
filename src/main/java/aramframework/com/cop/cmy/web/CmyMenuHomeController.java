@@ -3,9 +3,6 @@ package aramframework.com.cop.cmy.web;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +27,8 @@ import aramframework.com.cop.cmy.domain.MenuVO;
 import aramframework.com.cop.cmy.service.CmyMenuManageService;
 import aramframework.com.cop.cmy.service.CommunityManageService;
 import aramframework.com.uat.uia.domain.LoginVO;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * 커뮤니티 정보를 관리하기 위한 컨트롤러 클래스

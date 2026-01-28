@@ -1,7 +1,5 @@
 package aramframework.com.sec.dpt.web;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -17,6 +15,8 @@ import aramframework.com.sec.arm.domain.AuthorVO;
 import aramframework.com.sec.arm.service.AuthorService;
 import aramframework.com.sec.dpt.domain.DeptAuthorVO;
 import aramframework.com.sec.dpt.service.DeptAuthorService;
+import jakarta.servlet.http.HttpServletRequest;
+
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**

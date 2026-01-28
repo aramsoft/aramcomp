@@ -8,7 +8,6 @@ import java.io.File;
 import java.io.FileInputStream;
 
 import javax.imageio.ImageIO;
-import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +21,7 @@ import aramframework.cmm.util.WebUtil;
 import aramframework.com.cmm.file.domain.FileVO;
 import aramframework.com.cmm.file.service.FileMngService;
 import aramframework.com.utl.sim.service.FileCmprs;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * 이미지 파일 처리를 위한 컨트롤러 클래스

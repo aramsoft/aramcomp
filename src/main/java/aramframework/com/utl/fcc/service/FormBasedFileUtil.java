@@ -15,9 +15,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.commons.fileupload.FileItemIterator;
 import org.apache.commons.fileupload.FileItemStream;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -26,6 +23,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import aramframework.cmm.util.WebUtil;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * Form-based File Upload 유틸리티
@@ -128,7 +127,7 @@ public class FormBasedFileUtil {
 		List<FormBasedFileVo> list = new ArrayList<FormBasedFileVo>();
 
 		// Check that we have a file upload request
-		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
+		boolean isMultipart = ServletFileUpload.isMultipartContent((javax.servlet.http.HttpServletRequest) request);
 
 		if (isMultipart) {
 			// Create a new file upload handler
@@ -136,7 +135,7 @@ public class FormBasedFileUtil {
 			upload.setFileSizeMax(maxFileSize); // SizeLimitExceededException
 
 			// Parse the request
-			FileItemIterator iter = upload.getItemIterator(request);
+			FileItemIterator iter = upload.getItemIterator((javax.servlet.http.HttpServletRequest)request);
 			while (iter.hasNext()) {
 				FileItemStream item = iter.next();
 				String name = item.getFieldName();

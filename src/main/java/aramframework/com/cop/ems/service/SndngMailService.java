@@ -45,8 +45,8 @@ public class SndngMailService extends EgovAbstractServiceImpl {
 //	@Autowired 
 //    private MailSender emsMailSender;
 	
-	@Autowired 
-    private EgovMultiPartEmail email;
+//	@Autowired 
+//    private EgovMultiPartEmail email;
 	
 	@Autowired 
 	private SndngMailMapper sndngMailMapper;
@@ -188,9 +188,9 @@ public class SndngMailService extends EgovAbstractServiceImpl {
     	try{
           	
         	// 기본 메일 정보를 생성합니다
-    		email.addTo(recptnPerson); 
-    		email.setSubject(subject);
-    		email.setMsg(emailCn);
+//    		email.addTo(recptnPerson); 
+//    		email.setSubject(subject);
+//    		email.setMsg(emailCn);
    
 	  		  // 첨부할 attachment 정보를 생성합니다
         	for (int i = 0; i < atchmnFileList.size(); i++) {
@@ -207,7 +207,7 @@ public class SndngMailService extends EgovAbstractServiceImpl {
 		  		attachment.setName(MimeUtility.encodeText(orignlFile, "EUC-KR", "B")); 
 
   		  		// 생성한 attachment를 추가합니다
-  		  		email.attach(attachment);
+//  		  		email.attach(attachment);
         	}	
    
   		  	// 메일을 전송합니다

@@ -2,8 +2,6 @@ package aramframework.com.sec.rnc.web;
 
 import java.net.URLDecoder;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.egovframe.rte.fdl.cmmn.exception.EgovBizException;
 import aramframework.com.sec.rnc.service.RlnmManageService;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * 실명인증관련 요청을 비지니스 클래스로 전달하고 처리된결과를 해당 웹 화면으로 전달하는 Controller를 정의한다

@@ -2,9 +2,9 @@ package aramframework.com.sym.bat.dao;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import org.egovframe.rte.psl.dataaccess.EgovAbstractMapper;
+import org.apache.ibatis.session.SqlSession;
 import aramframework.com.sym.bat.domain.BatchSchdulDfkVO;
 import aramframework.com.sym.bat.domain.BatchSchdulVO;
 
@@ -16,8 +16,11 @@ import aramframework.com.sym.bat.domain.BatchSchdulVO;
  * @version 1.0
  */
 @Repository
-public class BatchSchdulMapper extends EgovAbstractMapper {
+public class BatchSchdulMapper {
 
+	@Autowired
+	private SqlSession sqlSession;
+ 
 	final static String NAMESPACE = BatchSchdulMapper.class.getName();
 	/**
 	 * 배치스케줄정보목록을 조회한다.
@@ -25,12 +28,12 @@ public class BatchSchdulMapper extends EgovAbstractMapper {
 	 * @param batchSchdulVO
 	 */
 	public List<BatchSchdulVO> selectBatchSchdulList(BatchSchdulVO batchSchdulVO) {
-		List<BatchSchdulVO> resultList = selectList(NAMESPACE+".selectBatchSchdulList", batchSchdulVO);
+		List<BatchSchdulVO> resultList = sqlSession.selectList(NAMESPACE+".selectBatchSchdulList", batchSchdulVO);
 
 		for (int i = 0; i < resultList.size(); i++) {
 			BatchSchdulVO result = (BatchSchdulVO) resultList.get(i);
 			// 스케줄요일정보를 가져온다.
-			List<BatchSchdulDfkVO> dfkSeList = selectList(NAMESPACE+".selectBatchSchdulDfkList", result.getBatchSchdulId());
+			List<BatchSchdulDfkVO> dfkSeList = sqlSession.selectList(NAMESPACE+".selectBatchSchdulDfkList", result.getBatchSchdulId());
 			String[] dfkSes = new String[dfkSeList.size()];
 			for (int j = 0; j < dfkSeList.size(); j++) {
 				dfkSes[j] = dfkSeList.get(j).getExecutSchdulDfkSe();
@@ -48,7 +51,7 @@ public class BatchSchdulMapper extends EgovAbstractMapper {
 	 * @param batchSchdulVO
 	 */
 	public int selectBatchSchdulListCnt(BatchSchdulVO batchSchdulVO) {
-		return (Integer) getSqlSession().selectOne(NAMESPACE+".selectBatchSchdulListCnt", batchSchdulVO);
+		return (Integer) sqlSession.selectOne(NAMESPACE+".selectBatchSchdulListCnt", batchSchdulVO);
 	}
 
 	/**
@@ -57,10 +60,10 @@ public class BatchSchdulMapper extends EgovAbstractMapper {
 	 * @param batchSchdulVO
 	 */
 	public BatchSchdulVO selectBatchSchdul(BatchSchdulVO batchSchdulVO) {
-		BatchSchdulVO result = (BatchSchdulVO) selectOne(NAMESPACE+".selectBatchSchdul", batchSchdulVO);
+		BatchSchdulVO result = (BatchSchdulVO) sqlSession.selectOne(NAMESPACE+".selectBatchSchdul", batchSchdulVO);
 
 		// 스케줄요일정보를 가져온다.
-		List<BatchSchdulDfkVO> dfkSeList = selectList(NAMESPACE+".selectBatchSchdulDfkList", batchSchdulVO.getBatchSchdulId());
+		List<BatchSchdulDfkVO> dfkSeList = sqlSession.selectList(NAMESPACE+".selectBatchSchdulDfkList", batchSchdulVO.getBatchSchdulId());
 		String[] dfkSes = new String[dfkSeList.size()];
 		for (int j = 0; j < dfkSeList.size(); j++) {
 			dfkSes[j] = dfkSeList.get(j).getExecutSchdulDfkSe();
@@ -79,7 +82,7 @@ public class BatchSchdulMapper extends EgovAbstractMapper {
 	 */
 	public void insertBatchSchdul(BatchSchdulVO batchSchdulVO) {
 		// master 테이블 인서트
-		insert(NAMESPACE+".insertBatchSchdul", batchSchdulVO);
+		sqlSession.insert(NAMESPACE+".insertBatchSchdul", batchSchdulVO);
 		// slave 테이블 인서트
 		if (batchSchdulVO.getExecutSchdulDfkSes() != null && batchSchdulVO.getExecutSchdulDfkSes().length != 0) {
 			String batchSchdulId = batchSchdulVO.getBatchSchdulId();
@@ -88,7 +91,7 @@ public class BatchSchdulMapper extends EgovAbstractMapper {
 				BatchSchdulDfkVO batchSchdulDfkVO = new BatchSchdulDfkVO();
 				batchSchdulDfkVO.setBatchSchdulId(batchSchdulId);
 				batchSchdulDfkVO.setExecutSchdulDfkSe(dfkSes[i]);
-				insert(NAMESPACE+".insertBatchSchdulDfk", batchSchdulDfkVO);
+				sqlSession.insert(NAMESPACE+".insertBatchSchdulDfk", batchSchdulDfkVO);
 			}
 		}
 	}
@@ -99,9 +102,9 @@ public class BatchSchdulMapper extends EgovAbstractMapper {
 	 * @param batchSchdulVO
 	 */
 	public void updateBatchSchdul(BatchSchdulVO batchSchdulVO) {
-		update(NAMESPACE+".updateBatchSchdul", batchSchdulVO);
+		sqlSession.update(NAMESPACE+".updateBatchSchdul", batchSchdulVO);
 		// slave 테이블 삭제
-		delete(NAMESPACE+".deleteBatchSchdulDfk", batchSchdulVO.getBatchSchdulId());
+		sqlSession.delete(NAMESPACE+".deleteBatchSchdulDfk", batchSchdulVO.getBatchSchdulId());
 		// slave 테이블 인서트
 		if (batchSchdulVO.getExecutSchdulDfkSes() != null && batchSchdulVO.getExecutSchdulDfkSes().length != 0) {
 			String batchSchdulId = batchSchdulVO.getBatchSchdulId();
@@ -110,7 +113,7 @@ public class BatchSchdulMapper extends EgovAbstractMapper {
 				BatchSchdulDfkVO batchSchdulDfkVO = new BatchSchdulDfkVO();
 				batchSchdulDfkVO.setBatchSchdulId(batchSchdulId);
 				batchSchdulDfkVO.setExecutSchdulDfkSe(dfkSes[i]);
-				insert(NAMESPACE+".insertBatchSchdulDfk", batchSchdulDfkVO);
+				sqlSession.insert(NAMESPACE+".insertBatchSchdulDfk", batchSchdulDfkVO);
 			}
 		}
 	}
@@ -122,9 +125,9 @@ public class BatchSchdulMapper extends EgovAbstractMapper {
 	 */
 	public void deleteBatchSchdul(BatchSchdulVO batchSchdulVO) {
 		// slave 테이블 삭제
-		delete(NAMESPACE+".deleteBatchSchdulDfk", batchSchdulVO.getBatchSchdulId());
+		sqlSession.delete(NAMESPACE+".deleteBatchSchdulDfk", batchSchdulVO.getBatchSchdulId());
 		// master 테이블 삭제
-		delete(NAMESPACE+".deleteBatchSchdul", batchSchdulVO);
+		sqlSession.delete(NAMESPACE+".deleteBatchSchdul", batchSchdulVO);
 	}
 
 }

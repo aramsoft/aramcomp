@@ -3,7 +3,6 @@ package aramframework.home.sample.main.web;
 import java.util.HashMap;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +17,7 @@ import aramframework.cmm.security.userdetails.UserDetailsHelper;
 import aramframework.com.cop.bbs.domain.BoardMasterVO;
 import aramframework.com.cop.bbs.domain.BoardVO;
 import aramframework.com.cop.bbs.service.BBSBoardService;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * 템플릿 메인 페이지 컨트롤러 클래스(Sample 소스)

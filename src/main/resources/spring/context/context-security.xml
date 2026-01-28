@@ -35,6 +35,8 @@
 		<session-management>
 			<concurrency-control max-sessions="1" expired-url="/uat/uia/loginUsr.do?login_error=5" />
 		</session-management> 
+    
+    	<intercept-url pattern="/**" access="permitAll" />
 <!-- 
  		<intercept-url pattern="\A/uat/uia/loginUsr.do.*\Z" requires-channel="https" />
  		<intercept-url pattern="\A/uss/umt/.*\.do.*\Z" requires-channel="https" />

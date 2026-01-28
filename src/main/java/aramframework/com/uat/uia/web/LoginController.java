@@ -4,9 +4,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +29,8 @@ import aramframework.cmm.util.ComponentChecker;
 import aramframework.cmm.util.MessageHelper;
 import aramframework.com.uat.uia.domain.LoginVO;
 import aramframework.com.uat.uia.service.LoginService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * 일반 로그인, 인증서 로그인을 처리하는 컨트롤러 클래스

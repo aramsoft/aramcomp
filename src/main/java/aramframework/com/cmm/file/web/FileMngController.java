@@ -2,8 +2,6 @@ package aramframework.com.cmm.file.web;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -15,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import aramframework.com.cmm.file.domain.FileVO;
 import aramframework.com.cmm.file.service.FileMngService;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * 파일 조회, 삭제처리를 위한 컨트롤러 클래스

@@ -2,9 +2,6 @@ package aramframework.com.utl.wed.web;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +11,8 @@ import aramframework.cmm.constant.Globals;
 import aramframework.com.utl.fcc.service.FileUploadUtil;
 import aramframework.com.utl.fcc.service.FormBasedFileUtil;
 import aramframework.com.utl.fcc.service.FormBasedFileVo;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * 웹에디터 이미지 upload 처리 Controller

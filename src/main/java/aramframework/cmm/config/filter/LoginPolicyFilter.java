@@ -2,21 +2,22 @@ package aramframework.cmm.config.filter;
 
 import java.io.IOException;
 
-import javax.servlet.FilterChain;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.filter.OncePerRequestFilter;
 
 import aramframework.cmm.util.MessageHelper;
 import aramframework.com.uat.uap.domain.LoginPolicyVO;
 import aramframework.com.uat.uap.service.LoginPolicyService;
 import aramframework.com.utl.sim.service.ClntInfo;
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.FilterConfig;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * 로그인 정책 체크 필터
@@ -25,7 +26,7 @@ import aramframework.com.utl.sim.service.ClntInfo;
  * @since 2014.11.11
  * @version 1.0
  */
-public class LoginPolicyFilter extends OncePerRequestFilter {
+public class LoginPolicyFilter implements Filter  {
 
 	@Autowired 
 	private LoginPolicyService loginPolicyService;
@@ -50,12 +51,11 @@ public class LoginPolicyFilter extends OncePerRequestFilter {
 	 * @param 	chain		FilterChain
 	 * @exception 			IOException, ServletException
 	 */
-	@Override
-	public void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) 
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) 
 	throws IOException, ServletException {
 
 		// get access Information
-		String requestURL = request.getRequestURI();
+		String requestURL = ((HttpServletRequest) request).getRequestURI();
 		if (requestURL.contains("/j_spring_security_check")) {
 
 			String id = request.getParameter("id");
@@ -108,6 +108,18 @@ public class LoginPolicyFilter extends OncePerRequestFilter {
 			}
 		}
 		chain.doFilter(request, response);
+	}
+
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void destroy() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

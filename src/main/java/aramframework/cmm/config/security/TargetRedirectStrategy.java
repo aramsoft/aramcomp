@@ -21,7 +21,7 @@ import org.springframework.util.StringUtils;
 public class TargetRedirectStrategy implements RedirectStrategy {
 
 	@Autowired
-	SimpleUrlAuthenticationSuccessHandler authenticationSuccessHandler;
+	CustomUrlAuthenticationSuccessHandler authenticationSuccessHandler;
 	
     protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 

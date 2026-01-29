@@ -16,25 +16,22 @@ import aramframework.cmm.security.userdetails.UserDetailsHelper;
 import aramframework.com.uat.uia.domain.LoginVO;
 
 /**
- * <tt>AuthenticationSuccessHandler</tt> which can be configured with a default URL which users should be
- * sent to upon successful authentication.
- * <p>
- * The logic used is that of the {@link AbstractAuthenticationTargetUrlRequestHandler parent class}.
- *
- * @author Luke Taylor
- * @since 3.0
+ * 로그인 실패시 처리하는 함수(SimpleUrlAuthenticationSuccessHandler 코드 수정)
+ * 
+ * @author 아람컴포넌트 조헌철
+ * @since 2014.11.11
+ * @version 1.0
  */
-public class SimpleUrlAuthenticationSuccessHandler extends AbstractAuthenticationTargetUrlRequestHandler 
+public class CustomUrlAuthenticationSuccessHandler extends AbstractAuthenticationTargetUrlRequestHandler 
 	implements AuthenticationSuccessHandler {
 
-    public SimpleUrlAuthenticationSuccessHandler() {
-    }
+    public CustomUrlAuthenticationSuccessHandler() {}
 
     /**
      * Constructor which sets the <tt>defaultTargetUrl</tt> property of the base class.
      * @param defaultTargetUrl the URL to which the user should be redirected on successful authentication.
      */
-    public SimpleUrlAuthenticationSuccessHandler(String defaultTargetUrl) {
+    public CustomUrlAuthenticationSuccessHandler(String defaultTargetUrl) {
         setDefaultTargetUrl(defaultTargetUrl);
     }
 
@@ -62,11 +59,7 @@ public class SimpleUrlAuthenticationSuccessHandler extends AbstractAuthenticatio
      */
     protected final void clearAuthenticationAttributes(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
-
-        if (session == null) {
-            return;
-        }
-
+        if (session == null) return;
         session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
     }
     

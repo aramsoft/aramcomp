@@ -20,7 +20,7 @@
   *  @version 1.0
   *  @see
   *
-  */
+  */ 
 %>
 <html lang="ko">
 <head>
@@ -187,7 +187,7 @@
 </div> <!-- middle -->
 
 <footer id="footer">
-	<div id="copyright">Copyright(c) 2012-2016 Aram High-Tech.</div>
+	<div id="copyright">Copyright(c) 2012-2026 Aram High-Tech.</div>
 </footer>
 
 </div> <!-- wrap -->

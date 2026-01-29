@@ -19,8 +19,8 @@
     <http auto-config="true" request-matcher="regex">
         <form-login login-page="/uat/uia/loginUsr.do" 
         			login-processing-url="/j_spring_security_check"
-                    authentication-failure-handler-ref="simpleUrlAuthenticationFailureHandler" 
-                    authentication-success-handler-ref="simpleUrlAuthenticationSuccessHandler" />
+                    authentication-failure-handler-ref="customUrlAuthenticationFailureHandler" 
+                    authentication-success-handler-ref="customUrlAuthenticationSuccessHandler" />
         <logout logout-url="/j_spring_security_logout"
         		success-handler-ref="simpleUrlLogoutSuccessHandler" />
 		<access-denied-handler error-page="/sec/arm/accessDenied.do"/>
@@ -70,13 +70,13 @@
     	<beans:property name="contextRelative" value="true" />
 	</beans:bean>    
 	
-	<beans:bean id="simpleUrlAuthenticationFailureHandler"
-	    class="aramframework.cmm.config.security.SimpleUrlAuthenticationFailureHandler">
+	<beans:bean id="customUrlAuthenticationFailureHandler"
+	    class="aramframework.cmm.config.security.CustomUrlAuthenticationFailureHandler">
 	    <beans:property name="defaultFailureUrl" value="/uat/uia/loginUsr.do?login_error=1"/>
 	</beans:bean>
 	
-	<beans:bean id="simpleUrlAuthenticationSuccessHandler"
-	    class="aramframework.cmm.config.security.SimpleUrlAuthenticationSuccessHandler">
+	<beans:bean id="customUrlAuthenticationSuccessHandler"
+	    class="aramframework.cmm.config.security.CustomUrlAuthenticationSuccessHandler">
     	<beans:property name="alwaysUseDefaultTargetUrl" value="true" />
 	    <beans:property name="defaultTargetUrl" value="/uat/uia/actionMain.do"/>
 	    <beans:property name="targetUrlParameter" value="targetUrl"/>

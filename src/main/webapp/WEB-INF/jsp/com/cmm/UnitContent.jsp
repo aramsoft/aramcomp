@@ -133,21 +133,4 @@
     </tr>
 </table>
 
-<div style="margin-top:10px; width:100%"></div>
-
-<table>
-    <tr>
-      <td class="title_left">
-      	<img src="${pageContext.request.contextPath}/images/com/cmm/icon/tit_icon.gif" width="16" height="16" hspace="3" align="middle" alt="gpki_icon">
-      	KOMORAN 
-      </td>
-    </tr>
-    <tr>
-      <td valign="top">&nbsp;-&nbsp;
-		<a href="${pageContext.request.contextPath}/testKomoran.do">
-      	한글 형태소 분석기 테스트
-      	</a>
-      </td>
-    </tr>
-</table>
 </DIV>

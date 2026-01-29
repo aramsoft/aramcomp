@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import aramframework.com.cmm.code.service.CmmUseService;
 import aramframework.com.cop.ems.domain.SndngMailVO;
-import aramframework.cmm.config.security.SimpleUrlAuthenticationSuccessHandler;
+import aramframework.cmm.config.security.CustomUrlAuthenticationSuccessHandler;
 import aramframework.cmm.constant.Globals;
 import aramframework.cmm.security.userdetails.UserDetailsHelper;
 import aramframework.cmm.util.ComponentChecker;
@@ -57,7 +57,7 @@ public class LoginController {
 	SessionRegistry sessionRegistry;
 	
 	@Autowired
-	SimpleUrlAuthenticationSuccessHandler authenticationSuccessHandler;
+	CustomUrlAuthenticationSuccessHandler authenticationSuccessHandler;
 	
     /** log */
 	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());

@@ -5,7 +5,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%
+<% 
  /**
   * @Class Name : CmmntyBaseTmpl.jsp
   * @Description : 커뮤니티 기본 템플릿
@@ -187,7 +187,7 @@
 </div> <!-- middle -->
 
 <footer id="footer">
-	<div id="copyright">Copyright(c) 2012-2016 Aram High-Tech.</div>
+	<div id="copyright">Copyright(c) 2012-2026 Aram High-Tech.</div>
 </footer>
 
 </div> <!-- wrap -->

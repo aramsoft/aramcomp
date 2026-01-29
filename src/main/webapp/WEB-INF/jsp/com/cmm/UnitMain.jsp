@@ -48,7 +48,7 @@ function resize() {
 		</div>
 	</div>
 	<footer>
-		<p>Copyright(c)2012-2020 Aram High-Tech.</p>
+		<p>Copyright(c)2012-2026 Aram High-Tech.</p>
 	</footer>
 </div>
 </body>

@@ -342,20 +342,11 @@
         
 		<!-- 공통컴포넌트 끝 -->
 
-		<!-- 모바일 신규공통컴포넌트  -->
-		<!-- Mobile mdi, mlt XML 파일 처리 -->
-        <dependency>
-			<groupId>org.jdom</groupId>
-			<artifactId>jdom</artifactId>
-			<version>2.0.2</version>
-		</dependency>
-	
 		<dependency>
 		    <groupId>com.fasterxml.jackson.core</groupId>
 		    <artifactId>jackson-databind</artifactId>
 		    <version>2.12.7.1</version>
 		</dependency>		
-		<!-- 3rd party 라이브러리로 별도의 설치 필요  -->
 
 	</dependencies>
 	

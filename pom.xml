@@ -9,17 +9,15 @@
 	<url>http://aramcomp.aramsoft.co.kr</url> 
 
 	<properties>
-	    <org.springframework.version>5.2.24.RELEASE</org.springframework.version>
-	    <org.spring.security.version>5.3.3.RELEASE</org.spring.security.version>
-		<org.egovframe.rte.version>4.1.0</org.egovframe.rte.version>
+		<org.egovframe.rte.version>4.3.0</org.egovframe.rte.version>
 		<org.apache.log4j-version>2.17.1</org.apache.log4j-version>
 	</properties>
 
 	<repositories> 
 
 		<repository>
-			<id>mvn2</id>
-			<url>http://repo1.maven.org/maven2/</url>
+			<id>mvn2s</id>
+			<url>https://repo1.maven.org/maven2/</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
@@ -27,10 +25,9 @@
 				<enabled>true</enabled>
 			</snapshots>
 		</repository>
-
 		<repository>
 			<id>egovframe</id>
-			<url>http://www.egovframe.go.kr/maven/</url>
+			<url>https://maven.egovframe.go.kr/maven/</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
@@ -38,94 +35,15 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
-
-	    <repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
+		<repository>
+			<id>projectRepository</id>
+			<name>Project Repository</name>
+			<url>file://${project.basedir}/src/main/webapp/WEB-INF/lib</url>
 		</repository>
 	</repositories>
 
 	<dependencies>
 				
-		<!-- spring 라이브러리 -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-aop</artifactId>
-			<version>${org.springframework.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-beans</artifactId>
-			<version>${org.springframework.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>${org.springframework.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context-support</artifactId>
-			<version>${org.springframework.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
-			<version>${org.springframework.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-jdbc</artifactId>
-			<version>${org.springframework.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-tx</artifactId>
-			<version>${org.springframework.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-			<version>${org.springframework.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<version>${org.springframework.version}</version>
-		</dependency>
-
-		<!-- spring 라이브러리 끝 -->
-		
-		<!-- spring security 라이브러리 시작 -->
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-config</artifactId>
-			<version>${org.spring.security.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-core</artifactId>
-			<version>${org.spring.security.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-web</artifactId>
-			<version>${org.spring.security.version}</version>
-		</dependency>
-<!--
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-acl</artifactId>
-			<version>${org.spring.security.version}</version>
-		</dependency>
--->		
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-taglibs</artifactId>
-			<version>${org.spring.security.version}</version>
-		</dependency>
-		<!-- spring security 라이브러리 끝 -->
-
 		<!-- 실행환경 라이브러리 -->
 		<!-- aramframework.rte -->
 		<!--
@@ -274,12 +192,17 @@
 		</dependency>
 		
 		<!-- Email -->
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-email</artifactId>
-			<version>1.5</version>
-		</dependency>
-		
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-email</artifactId>
+            <version>1.6.0</version>
+        </dependency>
+        <dependency>
+            <groupId>egovframework.com.ems</groupId>
+            <artifactId>sndng-mail</artifactId>
+            <version>1.0</version>
+        </dependency>
+
 		<!-- Cross-Site Scripting -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -307,7 +230,7 @@
 			<artifactId>xmlbeans</artifactId>
 			<version>3.0.0</version>
 		</dependency>
-
+		
 		<!-- fileupload -->
 		<dependency>
 			<groupId>commons-io</groupId>
@@ -341,6 +264,21 @@
         </dependency>
         
 		<!-- 공통컴포넌트 끝 -->
+		
+		<!-- Source: https://mvnrepository.com/artifact/org.eclipse/yasson -->
+		<dependency>
+		    <groupId>org.eclipse</groupId>
+		    <artifactId>yasson</artifactId>
+		    <version>1.0.11</version>
+		</dependency>
+				
+        <!--  M-Gov (SMS Service API) -->
+         <dependency>
+            <groupId>project</groupId>
+            <artifactId>smeapi</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+    	   
 
 	</dependencies>
 	

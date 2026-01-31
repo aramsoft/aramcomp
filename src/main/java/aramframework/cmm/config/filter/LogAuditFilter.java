@@ -40,9 +40,10 @@ import aramframework.com.uat.uia.domain.LoginVO;
  */
 public class LogAuditFilter implements Filter {
 
+	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	@SuppressWarnings("unused")
 	private FilterConfig config;
-	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) 
 	throws IOException, ServletException {
@@ -53,7 +54,7 @@ public class LogAuditFilter implements Filter {
 
 		LoginVO loginVO = (LoginVO) httpRequest.getSession().getAttribute("loginVO");
 		String userid = (loginVO == null) ? "": loginVO.getUserId();
-		LOG.debug("[" + userid + "@" + httpRequest.getRemoteAddr() 
+		logger.debug("[" + userid + "@" + httpRequest.getRemoteAddr() 
 				+ "] METHOD = " + httpRequest.getMethod()
 				+ ", URL = " + requestURL 
 				+ ", parameter : " + getParameters(httpRequest));

@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
@@ -19,8 +17,6 @@ import aramframework.com.cmm.code.domain.ComCodeVO;
  * @version 1.0
  */
 public class WebUtil {
-
-	protected static final Logger LOG = LoggerFactory.getLogger(WebUtil.class);
 
 	public static String getCurTrgetId() {
 		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();

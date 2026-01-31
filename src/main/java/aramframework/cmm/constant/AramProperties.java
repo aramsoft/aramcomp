@@ -20,6 +20,8 @@ import aramframework.cmm.util.WebUtil;
  */
 public class AramProperties {
 
+	protected static final Logger logger = LoggerFactory.getLogger(AramProperties.class);
+
 	// 프로퍼티값 로드시 에러발생하면 반환되는 에러문자열
 	public static final String ERR_CODE = " EXCEPTION OCCURRED";
 	public static final String ERR_CODE_FNFE = " EXCEPTION(FNFE) OCCURRED";
@@ -27,8 +29,6 @@ public class AramProperties {
 
 	// 파일구분자
 	static final char FILE_SEPARATOR = File.separatorChar;
-
-	protected static final Logger LOG = LoggerFactory.getLogger(AramProperties.class);
 
 	public static final String AramProperties_PATH  
 			= AramProperties.class.getResource("").getPath();
@@ -63,7 +63,7 @@ public class AramProperties {
 				if (fis != null)
 					fis.close();
 			} catch (Exception ex) {
-				LOG.error("IGNORED: " + ex.getMessage());
+				logger.error("IGNORED: " + ex.getMessage());
 			}
 		}
 		return value;

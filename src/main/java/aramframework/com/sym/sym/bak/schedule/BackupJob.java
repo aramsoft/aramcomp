@@ -34,7 +34,7 @@ import aramframework.com.utl.sim.service.FileTool;
  */
 public class BackupJob implements Job {
 
-	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
+	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * (non-Javadoc)
@@ -46,12 +46,12 @@ public class BackupJob implements Job {
 		boolean result = false;
 		JobDataMap dataMap = jobContext.getJobDetail().getJobDataMap();
 
-		if (LOG.isDebugEnabled()) {
-			LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "Trigger이름 : " + jobContext.getTrigger().getKey().getName());
-			LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "BackupOpert ID : " + dataMap.getString("backupOpertId"));
-			LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "백업원본디렉토리 : " + dataMap.getString("backupOrginlDrctry"));
-			LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "백업저장디렉토리 : " + dataMap.getString("backupStreDrctry"));
-			LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "압축구분 : " + dataMap.getString("cmprsSe"));
+		if (logger.isDebugEnabled()) {
+			logger.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "Trigger이름 : " + jobContext.getTrigger().getKey().getName());
+			logger.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "BackupOpert ID : " + dataMap.getString("backupOpertId"));
+			logger.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "백업원본디렉토리 : " + dataMap.getString("backupOrginlDrctry"));
+			logger.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "백업저장디렉토리 : " + dataMap.getString("backupStreDrctry"));
+			logger.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "압축구분 : " + dataMap.getString("cmprsSe"));
 		}
 		String backupOpertId = dataMap.getString("backupOpertId");
 		String backupOrginlDrctry = dataMap.getString("backupOrginlDrctry");
@@ -64,10 +64,10 @@ public class BackupJob implements Job {
 		} else if ("02".equals(cmprsSe)) {
 			backupFileNm = backupStreDrctry + File.separator + generateBackupFileNm(backupOpertId) + "." + "zip";
 		} else {
-			LOG.error("압축구분값[" + cmprsSe + "]이 잘못지정되었습니다.");
+			logger.error("압축구분값[" + cmprsSe + "]이 잘못지정되었습니다.");
 			throw new JobExecutionException("압축구분값[" + cmprsSe + "]이 잘못지정되었습니다.");
 		}
-		LOG.debug("백업화일명 : " + backupFileNm);
+		logger.debug("백업화일명 : " + backupFileNm);
 		dataMap.put("backupFile", backupFileNm);
 
 		if ("01".equals(cmprsSe)) {
@@ -114,14 +114,14 @@ public class BackupJob implements Job {
 		File srcFile = new File(backupOrginlDrctry);
 
 		if (!srcFile.exists()) {
-			LOG.error("백업원본디렉토리[" + srcFile.getAbsolutePath() + "]가 존재하지 않습니다.");
+			logger.error("백업원본디렉토리[" + srcFile.getAbsolutePath() + "]가 존재하지 않습니다.");
 			throw new JobExecutionException("백업원본디렉토리[" + srcFile.getAbsolutePath() + "]가 존재하지 않습니다.");
 		}
 
 		// 1. 파일인 경우
 		if (srcFile.isFile()) {
 			// 에러처리할 것 ...
-			LOG.error("백업원본디렉토리[" + srcFile.getAbsolutePath() + "]가 파일입니다. 디렉토리명을 지정해야 합니다. ");
+			logger.error("백업원본디렉토리[" + srcFile.getAbsolutePath() + "]가 파일입니다. 디렉토리명을 지정해야 합니다. ");
 			throw new JobExecutionException("백업원본디렉토리[" + srcFile.getAbsolutePath() + "]가 파일입니다. 디렉토리명을 지정해야 합니다. ");
 		}
 
@@ -135,7 +135,7 @@ public class BackupJob implements Job {
 
 		// 2. 디렉토리인 경우 만 처리한다.
 		try {
-			LOG.debug("charter set : " + Charset.defaultCharset().name());
+			logger.debug("charter set : " + Charset.defaultCharset().name());
 			fosOutput = new FileOutputStream(targetFile);
 			aosOutput = new ArchiveStreamFactory().createArchiveOutputStream(archiveFormat, fosOutput);
 
@@ -172,8 +172,8 @@ public class BackupJob implements Job {
 			}
 			aosOutput.close();
 		} catch (Exception e) {
-			LOG.error("백업화일생성중 에러가 발생했습니다. 에러 : " + e.getMessage());
-			LOG.debug(e.getMessage());
+			logger.error("백업화일생성중 에러가 발생했습니다. 에러 : " + e.getMessage());
+			logger.debug(e.getMessage());
 			result = false;
 			throw new JobExecutionException("백업화일생성중 에러가 발생했습니다.", e);
 		} finally {
@@ -181,25 +181,25 @@ public class BackupJob implements Job {
 				if (finput != null)
 					finput.close();
 			} catch (Exception ex) { 
-				LOG.error("IGNORE:", ex);
+				logger.error("IGNORE:", ex);
 			} // 2011.10.10 보안점검 후속조치
 			try {
 				if (aosOutput != null)
 					aosOutput.close();
 			} catch (Exception ex) { 
-				LOG.error("IGNORE:", ex);
+				logger.error("IGNORE:", ex);
 			} // 2011.10.10 보안점검 후속조치
 			try {
 				if (fosOutput != null)
 					fosOutput.close();
 			} catch (Exception ex) { 
-				LOG.error("IGNORE:", ex);
+				logger.error("IGNORE:", ex);
 			} // 2011.10.10 보안점검 후속조치
 			try {
 				if (result == false)
 					targetFile.delete();
 			} catch (Exception ex) { 
-				LOG.error("IGNORE:", ex);
+				logger.error("IGNORE:", ex);
 			} // 2011.10.10 보안점검 후속조치
 		}
 

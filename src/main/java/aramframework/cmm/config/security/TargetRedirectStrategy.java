@@ -20,11 +20,11 @@ import org.springframework.util.StringUtils;
  */
 public class TargetRedirectStrategy implements RedirectStrategy {
 
+    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	@Autowired
 	CustomUrlAuthenticationSuccessHandler authenticationSuccessHandler;
 	
-    protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
-
     private boolean contextRelative;
 
     /**
@@ -52,8 +52,8 @@ public class TargetRedirectStrategy implements RedirectStrategy {
             }
         }
         
-       if (LOG.isDebugEnabled()) {
-            LOG.debug("Redirecting to '" + redirectUrl + "'");
+       if (logger.isDebugEnabled()) {
+    	   logger.debug("Redirecting to '" + redirectUrl + "'");
         }
 
         response.sendRedirect(redirectUrl);

@@ -41,6 +41,8 @@ import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class SndngMailController {
 
+	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	@Autowired 
 	private SndngMailService sndngMailService;
 
@@ -49,8 +51,6 @@ public class SndngMailController {
 
     /** 파일구분자 */
     static final char FILE_SEPARATOR = File.separatorChar;
-
-	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * 발송메일 내역을 조회한다
@@ -155,7 +155,7 @@ public class SndngMailController {
 					try {
 						in.close();
 					} catch (Exception ignore) {
-						LOG.debug("IGNORED: " + ignore.getMessage());
+						logger.debug("IGNORED: " + ignore.getMessage());
 					}
 				}
 			}

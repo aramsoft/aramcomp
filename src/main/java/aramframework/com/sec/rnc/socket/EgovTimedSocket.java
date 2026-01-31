@@ -19,7 +19,7 @@ import aramframework.cmm.util.WebUtil;
  */
 public class EgovTimedSocket {
 	
-	protected static final Logger LOG = LoggerFactory.getLogger(EgovTimedSocket.class);
+	protected static final Logger logger = LoggerFactory.getLogger(EgovTimedSocket.class);
 
 	/**
 	 * 특정주소로 연결시도한다.(InetAdress로 연결)
@@ -52,8 +52,8 @@ public class EgovTimedSocket {
 					Thread.sleep(TIME_DELAY);
 				} catch (InterruptedException ine) {
 					// 2011.10.10 보안점검 후속조치
-					LOG.error("Exception:  " + ine.getClass().getName());
-					LOG.error("Exception  Message:  " + ine.getMessage());
+					logger.error("Exception:  " + ine.getClass().getName());
+					logger.error("Exception  Message:  " + ine.getMessage());
 				}
 
 				timeCheck += TIME_DELAY;
@@ -98,8 +98,8 @@ public class EgovTimedSocket {
 	 * 	        s.close();
 	 * 		} catch (IOException ioe) { 
 	 * 			//ioe.printStackTrace();
-	 * 			LOG.error("Exception:  " + ioe.getClass().getName());
-	 * 			LOG.error("Exception  Message:  " + ioe.getMessage()); 
+	 * 			logger.error("Exception:  " + ioe.getClass().getName());
+	 * 			logger.error("Exception  Message:  " + ioe.getMessage()); 
 	 * 		}
 	 * }
 	 */

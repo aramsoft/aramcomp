@@ -24,13 +24,13 @@ import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
  */
 public class BatchJobListener implements JobListener {
 
+	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	/** batchSchdulService */
 	private BatchSchdulService batchSchdulService;
 
 	/** ID Generation */
 	private EgovIdGnrService idgenService;
-
-	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * 배치스케줄 서비스를 설정한다.
@@ -70,7 +70,7 @@ public class BatchJobListener implements JobListener {
 	 *      jobContext)
 	 */
 	public void jobToBeExecuted(JobExecutionContext jobContext) {
-		LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "jobToBeExecuted ");
+		logger.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "jobToBeExecuted ");
 		BatchResultVO batchResult = new BatchResultVO();
 		JobDataMap dataMap = jobContext.getJobDetail().getJobDataMap();
 		try {
@@ -93,10 +93,10 @@ public class BatchJobListener implements JobListener {
 			// 저장이 이상없이 완료되면 datamap에 배치결과ID를 저장한다.
 			dataMap.put("batchResultId", batchResult.getBatchResultId());
 		} catch (Exception e) {
-			LOG.error("배치스케줄ID : " + batchResult.getBatchSchdulId() 
+			logger.error("배치스케줄ID : " + batchResult.getBatchSchdulId() 
 			      + ", 배치작업ID : " + batchResult.getBatchOpertId() 
 			      + ", 배치결과저장(insert) 에러 : " + e.getMessage());
-			LOG.debug(e.getMessage(), e);
+			logger.debug(e.getMessage(), e);
 		}
 
 	}
@@ -110,8 +110,8 @@ public class BatchJobListener implements JobListener {
 	 *      jobContext)
 	 */
 	public void jobWasExecuted(JobExecutionContext jobContext, JobExecutionException jee) {
-		LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "jobWasExecuted ");
-		LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "수행시간 : " + jobContext.getFireTime() + ", " + jobContext.getJobRunTime());
+		logger.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "jobWasExecuted ");
+		logger.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "수행시간 : " + jobContext.getFireTime() + ", " + jobContext.getJobRunTime());
 
 		int jobResult = 99;
 		BatchResultVO batchResult = new BatchResultVO();
@@ -135,7 +135,7 @@ public class BatchJobListener implements JobListener {
 			}
 			// 수행중 exception이 발생한 경우
 			if (jee != null) {
-				LOG.error("JobExecutionException 발생 : " + jee);
+				logger.error("JobExecutionException 발생 : " + jee);
 				batchResult.setSttus("02");
 				String errorInfo = batchResult.getErrorInfo();
 				batchResult.setErrorInfo(errorInfo + "\n" + "JobExecutionException 발생 : " + jee);
@@ -153,11 +153,11 @@ public class BatchJobListener implements JobListener {
 			// 저장이 이상없이 완료되면 datamap에 배치결과ID를 저장한다.
 			dataMap.put("batchResultId", batchResult.getBatchResultId());
 		} catch (Exception e) {
-			LOG.error("배치결과ID : " + batchResult.getBatchResultId() 
+			logger.error("배치결과ID : " + batchResult.getBatchResultId() 
 			      + ", 배치스케줄ID : " + batchResult.getBatchSchdulId() 
 			      + ", 배치작업ID : " + batchResult.getBatchOpertId() 
 			      + ", 배치결과저장(update) 에러 : " + e.getMessage());
-			LOG.debug(e.getMessage(), e);
+			logger.debug(e.getMessage(), e);
 		}
 	}
 
@@ -171,7 +171,7 @@ public class BatchJobListener implements JobListener {
 	 *      jobContext)
 	 */
 	public void jobExecutionVetoed(JobExecutionContext jobContext) {
-		LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "jobExecutionVetoed ");
+		logger.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "jobExecutionVetoed ");
 
 		BatchResultVO batchResult = new BatchResultVO();
 		JobDataMap dataMap = jobContext.getJobDetail().getJobDataMap();
@@ -196,11 +196,11 @@ public class BatchJobListener implements JobListener {
 			// 저장이 이상없이 완료되면 datamap에 배치결과ID를 저장한다.
 			dataMap.put("batchResultId", batchResult.getBatchResultId());
 		} catch (Exception e) {
-			LOG.error("배치결과ID : " + batchResult.getBatchResultId() 
+			logger.error("배치결과ID : " + batchResult.getBatchResultId() 
 				  + ", 배치스케줄ID : " + batchResult.getBatchSchdulId() 
 				  + ", 배치작업ID : "	+ batchResult.getBatchOpertId() 
 				  + ", 배치결과저장(update) 에러 : " + e.getMessage());
-			LOG.debug(e.getMessage(), e);
+			logger.debug(e.getMessage(), e);
 		}
 	}
 

@@ -18,14 +18,12 @@ import aramframework.cmm.constant.Globals;
  * @version 1.0
  */
 public class EgovSocketClient {
+	
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	private static final int MAX_SIZE_OF_MESSAGE = 1024 * 1024;
 	private BufferedInputStream inStream = null;
 	private BufferedOutputStream outStream = null;
-
-	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
-
-	/** log */
-//  protected static final Log log = LogFactory.getLog(EgovSocketClient.class);
 
 	public EgovSocketClient() {
 	}
@@ -44,8 +42,8 @@ public class EgovSocketClient {
 			lm_bRecvData = new byte[lm_iRecvDataLength];
 			readAllByte(lm_bRecvData, 0, lm_iRecvDataLength, inStream);
 		} catch (Exception e) {
-			LOG.error("Exception:  " + e.getClass().getName());
-			LOG.error("Exception  Message:  " + e.getMessage());
+			logger.error("Exception:  " + e.getClass().getName());
+			logger.error("Exception  Message:  " + e.getMessage());
 		} finally {
 			try {
 				if (outStream != null)
@@ -58,8 +56,8 @@ public class EgovSocketClient {
 				inStream = null;
 				socket = null;
 			} catch (Exception e) {
-				LOG.error("Exception:  " + e.getClass().getName());
-				LOG.error("Exception  Message:  " + e.getMessage());
+				logger.error("Exception:  " + e.getClass().getName());
+				logger.error("Exception  Message:  " + e.getMessage());
 			}
 		}
 		return lm_bRecvData;

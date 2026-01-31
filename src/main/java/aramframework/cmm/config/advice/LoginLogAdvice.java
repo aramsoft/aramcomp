@@ -18,7 +18,7 @@ import aramframework.com.uat.uia.domain.LoginVO;
  */
 public class LoginLogAdvice {
 
-	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
+	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private LoginLogService loginLogService;
@@ -40,8 +40,8 @@ public class LoginLogAdvice {
 
 		if( "127.0.0.1".equals(ip) || "".equals(ip)) return;
 		
-		if (LOG.isDebugEnabled()) {
-			LOG.debug("Execute login log!!");
+		if (logger.isDebugEnabled()) {
+			logger.debug("Execute login log!!");
 		}
 		
 		LoginLogVO loginLogVO = new LoginLogVO();
@@ -70,8 +70,8 @@ public class LoginLogAdvice {
 
 		if( "127.0.0.1".equals(ip) || "".equals(ip)) return;
 
-		if (LOG.isDebugEnabled()) {
-			LOG.debug("Execute logout log!!");
+		if (logger.isDebugEnabled()) {
+			logger.debug("Execute logout log!!");
 		}
 		
 		LoginLogVO loginLogVO = new LoginLogVO();

@@ -31,6 +31,8 @@ import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
 @Component("fileMngUtil")
 public class FileMngUtil {
 
+	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	public static final int BUFF_SIZE = 2048;
 
 	@Autowired
@@ -38,8 +40,6 @@ public class FileMngUtil {
 
 	@Autowired
 	private FileMngService fileMngService;
-
-	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * 첨부파일을 새로 저장한다.
@@ -139,7 +139,7 @@ public class FileMngUtil {
 
 			file = entry.getValue();
 			String orginFileName = file.getOriginalFilename();
-			LOG.debug("origin file name => " + orginFileName);
+			logger.debug("origin file name => " + orginFileName);
 			
 			// --------------------------------------
 			// 원 파일명이 없는 경우 처리
@@ -201,7 +201,7 @@ public class FileMngUtil {
 
 			rtnStr = sdfCurrent.format(ts.getTime());
 		} catch (Exception e) {
-			LOG.error("IGNORED: " + e.getMessage());
+			logger.error("IGNORED: " + e.getMessage());
 		}
 
 		return rtnStr;

@@ -43,6 +43,8 @@ import aramframework.com.uat.uia.service.LoginService;
 @Controller
 public class LoginController {
 
+	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	@Autowired
 	private LoginService loginService;
 
@@ -59,8 +61,6 @@ public class LoginController {
 	@Autowired
 	CustomUrlAuthenticationSuccessHandler authenticationSuccessHandler;
 	
-    /** log */
-	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
     private RequestCache requestCache = new HttpSessionRequestCache();
 
 	/**
@@ -85,12 +85,12 @@ public class LoginController {
 		SavedRequest savedRequest = requestCache.getRequest(request, response);
 		if ( targetUrl != null ) {
     		model.addAttribute("targetUrl", targetUrl);
-    		LOG.debug("targetUrl = " + targetUrl);
+    		logger.debug("targetUrl = " + targetUrl);
     		
         	requestUrl = targetUrl;
         } else if( savedRequest != null ) {
         	requestUrl = savedRequest.getRedirectUrl();
-        	LOG.debug("savedRequestUrl = " + requestUrl);
+        	logger.debug("savedRequestUrl = " + requestUrl);
 
         } else  {
         	requestUrl = request.getRequestURI();
@@ -109,7 +109,7 @@ public class LoginController {
 			@ModelAttribute LoginVO loginVO, 
 			ModelMap model) {
 
-		LOG.debug("execute actionLogin !!!" );
+		logger.debug("execute actionLogin !!!" );
 		if( loginVO.getUserId() == null || loginVO.getUserId().equals("") ) {
 			throw new RuntimeException("userId not found");
 		}
@@ -137,7 +137,7 @@ public class LoginController {
 			HttpServletResponse response,
 			ModelMap model) {
 
-		LOG.debug("start action Main");
+		logger.debug("start action Main");
         // 1. Spring Security 사용자권한 처리
 		Boolean isAuthenticated = UserDetailsHelper.isAuthenticated();
 		if (!isAuthenticated) {
@@ -152,7 +152,7 @@ public class LoginController {
         	requestUrl = request.getParameter(targetUrlParameter);
 
             if (StringUtils.hasText(requestUrl)) {
-            	LOG.debug("Found targetUrlParameter in request: " + requestUrl);
+            	logger.debug("Found targetUrlParameter in request: " + requestUrl);
                	return "redirect:" + requestUrl;
             }
         }
@@ -161,7 +161,7 @@ public class LoginController {
         if( savedRequest != null ) {
         	requestUrl = savedRequest.getRedirectUrl();
             if (StringUtils.hasText(requestUrl)) {
-            	LOG.debug("savedRequestUrl = " + requestUrl);
+            	logger.debug("savedRequestUrl = " + requestUrl);
             	return "redirect:" + requestUrl;
             }
         } 

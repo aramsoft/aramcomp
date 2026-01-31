@@ -33,10 +33,10 @@ import aramframework.com.utl.sim.service.FileCmprs;
 @Controller
 public class ImageProcessController {
 
+	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	@Autowired
 	private FileMngService fileMngService;
-
-	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * 첨부된 이미지에 대한 미리보기 기능을 제공한다.
@@ -109,7 +109,7 @@ public class ImageProcessController {
 				type = "image/" + fileVO.getFileExtsn().toLowerCase();
 
 			} else {
-				LOG.debug("Image fileType is null.");
+				logger.debug("Image fileType is null.");
 			}
 
 			response.setHeader("Content-Type", type);
@@ -126,21 +126,21 @@ public class ImageProcessController {
 				try {
 					bStream.close();
 				} catch (Exception ignore) {
-					LOG.error("IGNORE: " + ignore.getMessage());
+					logger.error("IGNORE: " + ignore.getMessage());
 				}
 			}
 			if (in != null) {
 				try {
 					in.close();
 				} catch (Exception ignore) {
-					LOG.error("IGNORE: " + ignore.getMessage());
+					logger.error("IGNORE: " + ignore.getMessage());
 				}
 			}
 			if (fis != null) {
 				try {
 					fis.close();
 				} catch (Exception ignore) {
-					LOG.error("IGNORE: " + ignore.getMessage());
+					logger.error("IGNORE: " + ignore.getMessage());
 				}
 			}
 		}

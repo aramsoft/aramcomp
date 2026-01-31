@@ -34,9 +34,9 @@ import aramframework.com.cmm.com.domain.IncludedInfoVO;
 @Controller
 public class ComIndexController {
 
-	@Autowired ApplicationContext applicationContext;
+	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
+	@Autowired ApplicationContext applicationContext;
 
 	private Map<Integer, Object> map;
 
@@ -63,21 +63,21 @@ public class ComIndexController {
 
 			/* @Controller Annotation 처리된 클래스를 모두 찾는다. */
 			Map<String, Object> myZoos = applicationContext.getBeansWithAnnotation(Controller.class);
-			LOG.debug("How many Controllers : " + myZoos.size());
+			logger.debug("How many Controllers : " + myZoos.size());
 			for (final Object myZoo : myZoos.values()) {
 				Class<? extends Object> zooClass = myZoo.getClass();
-//				LOG.debug("Controller Detected " + zooClass);
+//				logger.debug("Controller Detected " + zooClass);
 
 				String className = zooClass.getName();
 //				int endIndex = className.indexOf("$$EnhancerByCGLIB$$", 0);
 				int endIndex = className.indexOf("$$EnhancerBySpringCGLIB$$", 0);
 				if( endIndex != -1 ) {
 					className = className.substring(0, endIndex);
-//					LOG.debug("Controller ClassName " + className);
+//					logger.debug("Controller ClassName " + className);
 					try {
 						zooClass = Class.forName(className);
 					}catch (Exception e) {
-						LOG.error("Cannot find class !! -- " + className);
+						logger.error("Cannot find class !! -- " + className);
 					}
 				}
 				
@@ -85,15 +85,15 @@ public class ComIndexController {
 				for (int i = 0; i < methods.length; i++) {
 /*
 					if( methods[i].getAnnotation(RequestMapping.class) != null ) {
-						LOG.debug("Found @RequestMapping Method : " +  methods[i].getAnnotation(RequestMapping.class).toString() );
+						logger.debug("Found @RequestMapping Method : " +  methods[i].getAnnotation(RequestMapping.class).toString() );
 					}
 					if( methods[i].getAnnotation(Secured.class) != null ) {
-						LOG.debug("Found @Secured Method : " +  methods[i].getAnnotation(Secured.class).toString() );
+						logger.debug("Found @Secured Method : " +  methods[i].getAnnotation(Secured.class).toString() );
 					}
 */
 					annotation = methods[i].getAnnotation(IncludedInfo.class);
 					if (annotation != null) {
-//						LOG.debug("Found @IncludedInfo Method : " + methods[i] );
+//						logger.debug("Found @IncludedInfo Method : " + methods[i] );
 						zooVO = new IncludedInfoVO();
 						zooVO.setName(annotation.name());
 						zooVO.setOrder(annotation.order());

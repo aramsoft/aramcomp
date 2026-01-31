@@ -15,8 +15,8 @@ import org.apache.tiles.request.servlet.ServletUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import aramframework.com.cop.cmy.domain.CommunityVO;
 import aramframework.com.cop.cmy.service.CommunityManageService;
@@ -28,9 +28,9 @@ import aramframework.com.cop.cmy.service.CommunityManageService;
  * @since 2014.11.11
  * @version 1.0
  */
-public class TilesInterceptor extends HandlerInterceptorAdapter {
+public class TilesInterceptor implements HandlerInterceptor {
 
-	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
+	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired 
 	private CommunityManageService cmmntyService;
@@ -101,7 +101,7 @@ public class TilesInterceptor extends HandlerInterceptorAdapter {
 			modelAndView.setViewName(jspPrefix + viewName);
 		}
 
-//		LOG.debug("jspPrefix = " + jspPrefix + ", viewName = " + viewName);
+//		Logger.debug("jspPrefix = " + jspPrefix + ", viewName = " + viewName);
 
 		String fullScrYn = (String) request.getAttribute("fullScrYn");
 		if( fullScrYn != null && "Y".equals(fullScrYn) ) return;
@@ -113,7 +113,7 @@ public class TilesInterceptor extends HandlerInterceptorAdapter {
 			return;
 		}
 		
-//		LOG.debug("cmmntyId = " + cmmntyId + ", menuPos = " + menuPos);
+//		Logger.debug("cmmntyId = " + cmmntyId + ", menuPos = " + menuPos);
 		
         CommunityVO communityVO = cmmntyService.getCommunityLayoutInfo(cmmntyId, menuPos);
         modelAndView.addObject("targetVO", communityVO);
@@ -137,7 +137,7 @@ public class TilesInterceptor extends HandlerInterceptorAdapter {
 		BasicTilesContainer container = (BasicTilesContainer) TilesAccess.getContainer(tilesAppContext);
 		AttributeContext attributeContext = container.getAttributeContext(tilesRequest);
 
-//		LOG.debug("tmplatCours = " + tmplatCours);
+//		Logger.debug("tmplatCours = " + tmplatCours);
 
 		if (tmplatCours.indexOf("/WEB-INF/") != -1) {
 			attributeContext.setTemplateAttribute(new Attribute(tmplatCours+".jsp"));					// WEB-INF 포함 jsp 파일

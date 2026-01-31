@@ -23,7 +23,7 @@ import aramframework.com.uat.uia.domain.LoginVO;
  */
 public class LoginLogListener implements ApplicationListener<ApplicationEvent> {
 
-	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
+	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private LoginLogService loginLogService;
@@ -33,7 +33,7 @@ public class LoginLogListener implements ApplicationListener<ApplicationEvent> {
 			try { 
 				AuthenticationSuccessEvent success = (AuthenticationSuccessEvent) event; 
 				Authentication auth = success.getAuthentication(); 
-//				LOG.debug("LoginLog auth = " + auth.toString());
+//				logger.debug("LoginLog auth = " + auth.toString());
 
 				Object principal = auth.getPrincipal();
 				if (!(principal instanceof EgovUserDetails) ) {
@@ -52,8 +52,8 @@ public class LoginLogListener implements ApplicationListener<ApplicationEvent> {
 
 				if( "127.0.0.1".equals(ip)) return;
 				
-				if (LOG.isDebugEnabled()) {
-					LOG.debug("Execute login log!!");
+				if (logger.isDebugEnabled()) {
+					logger.debug("Execute login log!!");
 				}
 				
 				LoginLogVO loginLogVO = new LoginLogVO();
@@ -65,7 +65,7 @@ public class LoginLogListener implements ApplicationListener<ApplicationEvent> {
 				loginLogService.logInsertLoginLog(loginLogVO);
 
 			} catch(Exception Ex) {
-				LOG.error("Error !! " + Ex.getMessage());
+				logger.error("Error !! " + Ex.getMessage());
 			}
 		}
 	}

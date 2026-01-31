@@ -18,6 +18,8 @@ import aramframework.com.cmm.com.annotation.IncludedInfo;
 import aramframework.com.sec.arm.domain.AuthorVO;
 import aramframework.com.sec.arm.service.AuthorService;
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 권한관리에 관한 controller 클래스를 정의한다.
@@ -28,6 +30,8 @@ import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
  */
 @Controller
 public class AuthorController {
+
+	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private AuthorService authorService;
@@ -228,7 +232,7 @@ public class AuthorController {
 	@RequestMapping("/sec/arm/accessDenied.do")
 	public String accessDenied() {
 //		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
-//		LOG.error("Access Denied !!! " + loginVO.getUserId() + "@" + loginVO.getIp());
+//		logger.error("Access Denied !!! " + loginVO.getUserId() + "@" + loginVO.getIp());
 		return "com/sec/accessDenied";
 	}
 	

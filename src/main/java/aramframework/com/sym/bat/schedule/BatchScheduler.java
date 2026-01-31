@@ -33,6 +33,8 @@ import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
  */
 public class BatchScheduler implements BeanFactoryAware {
 
+	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	private MethodInvokingJobDetailFactoryBean factory;
 
 	private BeanFactory beanFactory;
@@ -45,8 +47,6 @@ public class BatchScheduler implements BeanFactoryAware {
 
 	/** Quartz 스케줄러 */
 	private Scheduler sched;
-
-	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	// 실행 대상을 읽기위한 페이지 크기
 	private static final int RECORD_COUNT_PER_PAGE = 10000;
@@ -141,9 +141,9 @@ public class BatchScheduler implements BeanFactoryAware {
 	 */
 	public void insertBatchSchdul(BatchSchdulVO batchSchdulVO, boolean updateMode) throws Exception {
 		if (updateMode) {
-			LOG.debug("배치스케줄을 갱신합니다. 배치스케줄ID : " + batchSchdulVO.getBatchSchdulId());
+			logger.debug("배치스케줄을 갱신합니다. 배치스케줄ID : " + batchSchdulVO.getBatchSchdulId());
 		} else {
-			LOG.debug("배치스케줄을 등록합니다. 배치스케줄ID : " + batchSchdulVO.getBatchSchdulId());
+			logger.debug("배치스케줄을 등록합니다. 배치스케줄ID : " + batchSchdulVO.getBatchSchdulId());
 		}
 
 		// Job 만들기
@@ -151,7 +151,7 @@ public class BatchScheduler implements BeanFactoryAware {
 		JobKey jobKey = new JobKey(batchSchdulVO.getBatchSchdulId());
 		if(batchSchdulVO.getBatchProgrm() != null
 			&& !"".equals(batchSchdulVO.getBatchProgrm())) {
-			LOG.debug("배치대상. getBatchProgrm " + batchSchdulVO.getBatchProgrm());
+			logger.debug("배치대상. getBatchProgrm " + batchSchdulVO.getBatchProgrm());
 			jobDetail = JobBuilder.newJob(BatchShellScriptJob.class)
 					.withIdentity(jobKey)
 					.build();
@@ -161,7 +161,7 @@ public class BatchScheduler implements BeanFactoryAware {
 
 		} else if(batchSchdulVO.getBatchObject() != null
 				&& !"".equals(batchSchdulVO.getBatchObject())) {
-			LOG.debug("배치대상. getBatchObject " + batchSchdulVO.getBatchObject());
+			logger.debug("배치대상. getBatchObject " + batchSchdulVO.getBatchObject());
 
 			factory.setName(jobKey.getName());
 			factory.setTargetBeanName(batchSchdulVO.getBatchObject());
@@ -172,7 +172,7 @@ public class BatchScheduler implements BeanFactoryAware {
 			jobDetail = (JobDetail) factory.getObject();
 
 		} else {
-			LOG.debug("배치대상. None ");
+			logger.debug("배치대상. None ");
 			return;
 		}
 		
@@ -183,7 +183,7 @@ public class BatchScheduler implements BeanFactoryAware {
 		// Trigger 만들기
 		Trigger trigger = null;
 		if( batchSchdulVO.getRepeatInterval() != 0L ) {
-			LOG.debug("배치스케줄. SimpleScheduleBuilder");
+			logger.debug("배치스케줄. SimpleScheduleBuilder");
 			trigger = TriggerBuilder.newTrigger()
 				.withIdentity(jobKey.getName())
 				.withSchedule(SimpleScheduleBuilder.simpleSchedule()
@@ -193,7 +193,7 @@ public class BatchScheduler implements BeanFactoryAware {
 			    .forJob(jobKey.getName())
 				.build();
 		} else {
-			LOG.debug("배치스케줄. CronScheduleBuilder");
+			logger.debug("배치스케줄. CronScheduleBuilder");
 			trigger = TriggerBuilder.newTrigger()
 				.withIdentity(jobKey.getName())
 				.withSchedule(CronScheduleBuilder.cronSchedule(batchSchdulVO.toCronExpression()))
@@ -217,11 +217,11 @@ public class BatchScheduler implements BeanFactoryAware {
 			// SchedulerException 이 발생하면 로그를 출력하고 다음 배치작업으로 넘어간다.
 			// 트리거의 실행시각이 현재 시각보다 이전이면 SchedulerException이 발생한다.
 			if (updateMode) {
-				LOG.error("스케줄러에 배치작업갱신할때 에러가 발생했습니다. 배치스케줄ID : " + batchSchdulVO.getBatchSchdulId() + ", 배치작업ID : " + batchSchdulVO.getBatchOpertId());
+				logger.error("스케줄러에 배치작업갱신할때 에러가 발생했습니다. 배치스케줄ID : " + batchSchdulVO.getBatchSchdulId() + ", 배치작업ID : " + batchSchdulVO.getBatchOpertId());
 			} else {
-				LOG.error("스케줄러에 배치작업추가할때 에러가 발생했습니다. 배치스케줄ID : " + batchSchdulVO.getBatchSchdulId() + ", 배치작업ID : " + batchSchdulVO.getBatchOpertId());
+				logger.error("스케줄러에 배치작업추가할때 에러가 발생했습니다. 배치스케줄ID : " + batchSchdulVO.getBatchSchdulId() + ", 배치작업ID : " + batchSchdulVO.getBatchOpertId());
 			}
-			LOG.error("에러내용 : " + e.getMessage());
+			logger.error("에러내용 : " + e.getMessage());
 		}
 	}
 
@@ -237,13 +237,13 @@ public class BatchScheduler implements BeanFactoryAware {
 		JobKey jobKey = new JobKey(batchSchdulVO.getBatchSchdulId());
 		try {
 			// 스케줄러에서 기존Job, Trigger 삭제하기
-			LOG.debug("배치스케줄을 삭제합니다. 배치스케줄ID : " + batchSchdulVO.getBatchSchdulId());
+			logger.debug("배치스케줄을 삭제합니다. 배치스케줄ID : " + batchSchdulVO.getBatchSchdulId());
 			sched.deleteJob(jobKey);
 		} catch (SchedulerException e) {
 			// SchedulerException 이 발생하면 로그를 출력하고 다음 배치작업으로 넘어간다.
 			// 트리거의 실행시각이 현재 시각보다 이전이면 SchedulerException이 발생한다.
-			LOG.error("스케줄러에 배치작업을 삭제할때 에러가 발생했습니다. 배치스케줄ID : " + batchSchdulVO.getBatchSchdulId() + ", 배치작업ID : " + batchSchdulVO.getBatchOpertId());
-			LOG.error("에러내용 : " + e.getMessage());
+			logger.error("스케줄러에 배치작업을 삭제할때 에러가 발생했습니다. 배치스케줄ID : " + batchSchdulVO.getBatchSchdulId() + ", 배치작업ID : " + batchSchdulVO.getBatchOpertId());
+			logger.error("에러내용 : " + e.getMessage());
 		}
 	}
 

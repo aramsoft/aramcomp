@@ -19,7 +19,7 @@ import org.slf4j.LoggerFactory;
  */
 public class LogUtil {
 
-	protected static final Logger LOG = LoggerFactory.getLogger(LogUtil.class);
+	protected static final Logger logger = LoggerFactory.getLogger(LogUtil.class);
 
 	/**
 	 * 에러 메시지와 스택트레이스를  로그에 저장한다. 
@@ -39,24 +39,24 @@ public class LogUtil {
             printstream.close();
 
             String str;
-            LOG.error("====================================================");
-            LOG.error("Error message => " + e.getMessage());
+            logger.error("====================================================");
+            logger.error("Error message => " + e.getMessage());
             for(int count = 0; (str = bf.readLine()) != null && count < depth; count++)
-            	LOG.error(str);
+            	logger.error(str);
             
         } catch(IOException ex) {
-        	LOG.error("logger error");
+        	logger.error("logger error");
         }
 	}
 	
 	/**
 	 * 에러 메시지와 스택트레이스를  로그에 저장한다. 
 	 * 
-	 * @param LOG  		Logger
+	 * @param logger	Logger
 	 * @param e  		Exception 변수
 	 * @param depth  	라인수
 	 */
-	public static void logErrorMessage(Logger LOG, Exception e, int depth) {
+	public static void logErrorMessage(Logger logger, Exception e, int depth) {
 
 		try {
             ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
@@ -68,13 +68,13 @@ public class LogUtil {
             printstream.close();
 
             String str;
-            LOG.error("====================================================");
-            LOG.error("Error message => " + e.getMessage());
+            logger.error("====================================================");
+            logger.error("Error message => " + e.getMessage());
             for(int count = 0; (str = bf.readLine()) != null && count < depth; count++)
-            	LOG.error(str);
+            	logger.error(str);
             
         } catch(IOException ex) {
-        	LOG.error("logger error");
+        	logger.error("logger error");
         } 
 		
 	}

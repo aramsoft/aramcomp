@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
  */
 public class BatchShellScriptJob implements Job {
 
-	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
+	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * (non-Javadoc)
@@ -27,11 +27,11 @@ public class BatchShellScriptJob implements Job {
 
 		JobDataMap dataMap = jobContext.getJobDetail().getJobDataMap();
 
-		if (LOG.isDebugEnabled()) {
-			LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "Trigger이름 : " + jobContext.getTrigger().getKey().getName());
-			LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "BatchOpert이름 : " + dataMap.getString("batchOpertId"));
-			LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "BatchProgram이름 : " + dataMap.getString("batchProgrm"));
-			LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "Parameter이름 : " + dataMap.getString("paramtr"));
+		if (logger.isDebugEnabled()) {
+			logger.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "Trigger이름 : " + jobContext.getTrigger().getKey().getName());
+			logger.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "BatchOpert이름 : " + dataMap.getString("batchOpertId"));
+			logger.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "BatchProgram이름 : " + dataMap.getString("batchProgrm"));
+			logger.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "Parameter이름 : " + dataMap.getString("paramtr"));
 		}
 
 		int result = executeProgram(dataMap.getString("batchProgrm"), dataMap.getString("paramtr"));
@@ -59,7 +59,7 @@ public class BatchShellScriptJob implements Job {
 			p = Runtime.getRuntime().exec(cmdStr);
 			p.waitFor();
 			result = p.exitValue();
-			LOG.debug("배치실행화일 - " + cmdStr + "실행완료, 결과값:" + result);
+			logger.debug("배치실행화일 - " + cmdStr + "실행완료, 결과값:" + result);
 			// //프로세스 에러시 종료
 			// if (p.exitValue() != 0) {
 			//
@@ -68,8 +68,8 @@ public class BatchShellScriptJob implements Job {
 			// else {
 			// }
 		} catch (Exception e) {
-			LOG.error("배치스크립트 실행 에러 : " + e.getMessage());
-			LOG.debug(e.getMessage(), e);
+			logger.error("배치스크립트 실행 에러 : " + e.getMessage());
+			logger.debug(e.getMessage(), e);
 		}
 		return result;
 	}

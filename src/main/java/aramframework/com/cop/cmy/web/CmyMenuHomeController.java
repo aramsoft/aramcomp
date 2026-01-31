@@ -41,6 +41,8 @@ import aramframework.com.uat.uia.domain.LoginVO;
 @Controller
 public class CmyMenuHomeController  {
  
+	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	@Autowired 
 	private CommunityManageService cmmntyService;
 
@@ -53,8 +55,6 @@ public class CmyMenuHomeController  {
 	@Autowired 
 	private BBSBoardService boardService;
 
-	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
-	
 	/**
 	 * 커뮤니티 홈페이지를 조회한다.
 	 * 
@@ -183,7 +183,7 @@ public class CmyMenuHomeController  {
 			menuPos = communityVO.getTopMenuList().get(0).getMenuPos();
 		}
 		
-//		LOG.debug("menuPos = " + menuPos);
+//		logger.debug("menuPos = " + menuPos);
 
 		if( "".equals(contentUrl) ) {
 			MenuVO menuVO = cmmntyService.getMenuInfo(communityVO, menuPos);

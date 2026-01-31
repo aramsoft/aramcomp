@@ -38,6 +38,8 @@ import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 @Service
 public class SndngMailService extends EgovAbstractServiceImpl {
 	
+	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	// 파일구분자
 	static final char FILE_SEPARATOR = File.separatorChar;
 
@@ -57,8 +59,6 @@ public class SndngMailService extends EgovAbstractServiceImpl {
     
 	@Autowired 
 	private FileMngUtil fileMngUtil; 
-
-	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * 발송메일 목록을 조회한다.
@@ -214,16 +214,16 @@ public class SndngMailService extends EgovAbstractServiceImpl {
 //        	email.send();
         	
         }catch(MailParseException ex){
-        	LOG.error("Sending Mail Exception : " +  ex.getCause() + " [failure when parsing the message]");
+        	logger.error("Sending Mail Exception : " +  ex.getCause() + " [failure when parsing the message]");
         	return false;
         }catch(MailAuthenticationException ex){
-        	LOG.error("Sending Mail Exception : " +  ex.getCause() + " [authentication failure]");
+        	logger.error("Sending Mail Exception : " +  ex.getCause() + " [authentication failure]");
         	return false;
         }catch(MailSendException ex){
-        	LOG.error("Sending Mail Exception : " +  ex.getCause() + " [failure when sending the message]");
+        	logger.error("Sending Mail Exception : " +  ex.getCause() + " [failure when sending the message]");
         	return false;
         }catch(Exception ex){
-        	LOG.error("Sending Mail Exception : " +  ex.getCause() + " [unknown Exception]");
+        	logger.error("Sending Mail Exception : " +  ex.getCause() + " [unknown Exception]");
         	return false;
         }
 		

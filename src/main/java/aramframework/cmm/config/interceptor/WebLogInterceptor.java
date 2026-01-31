@@ -8,10 +8,8 @@ import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.servlet.HandlerInterceptor;
 
 import aramframework.cmm.security.userdetails.UserDetailsHelper;
 import aramframework.com.sym.log.wlg.domain.WebLogVO;
@@ -25,10 +23,8 @@ import aramframework.com.uat.uia.domain.LoginVO;
  * @since 2014.11.11
  * @version 1.0
  */
-public class WebLogInterceptor extends HandlerInterceptorAdapter {
+public class WebLogInterceptor implements HandlerInterceptor {
 
-	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
-	
 	@Autowired
 	private WebLogService webLogService;
 

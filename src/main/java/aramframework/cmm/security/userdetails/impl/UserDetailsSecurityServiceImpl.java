@@ -15,6 +15,8 @@ import aramframework.cmm.security.userdetails.UserDetailsService;
 import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import org.egovframe.rte.fdl.security.userdetails.EgovUserDetails;
 import org.egovframe.rte.fdl.string.EgovObjectUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * UserDetails Object를 스프링 시큐리티 컨텍스트에서 가져온다.
@@ -25,6 +27,8 @@ import org.egovframe.rte.fdl.string.EgovObjectUtil;
  */
 public class UserDetailsSecurityServiceImpl extends EgovAbstractServiceImpl implements UserDetailsService {
 
+    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
 	/**
 	 * 인증된 사용자객체를 VO형식으로 가져온다.
 	 * 
@@ -35,13 +39,13 @@ public class UserDetailsSecurityServiceImpl extends EgovAbstractServiceImpl impl
         Authentication authentication = context.getAuthentication();
 
         if (EgovObjectUtil.isNull(authentication)) {
-//       	LOG.debug("## authentication object is null!!");
+//       	logger.debug("## authentication object is null!!");
             return null;
         }
 
         if (authentication.getPrincipal() instanceof EgovUserDetails) {
         	EgovUserDetails details = (EgovUserDetails) authentication.getPrincipal();
-//       	LOG.debug("## EgovUserDetailsHelper.getAuthenticatedUser : AuthenticatedUser is {}", details.getUsername());
+//       	logger.debug("## EgovUserDetailsHelper.getAuthenticatedUser : AuthenticatedUser is {}", details.getUsername());
 	        return details.getEgovUserVO();
         } else {
         	return null;
@@ -62,7 +66,7 @@ public class UserDetailsSecurityServiceImpl extends EgovAbstractServiceImpl impl
         Authentication authentication = context.getAuthentication();
 
         if (EgovObjectUtil.isNull(authentication)) {
-//        	LOG.debug("## authentication object is null!!");
+//        	logger.debug("## authentication object is null!!");
             return null;
         }
 
@@ -71,7 +75,7 @@ public class UserDetailsSecurityServiceImpl extends EgovAbstractServiceImpl impl
         while(iter.hasNext()) {
         	GrantedAuthority auth = iter.next();
         	listAuth.add(auth.getAuthority());
-//       	LOG.debug("## EgovUserDetailsHelper.getAuthorities : Authority is {}", auth.getAuthority());
+//       	logger.debug("## EgovUserDetailsHelper.getAuthorities : Authority is {}", auth.getAuthority());
         }
 
         return listAuth;
@@ -88,13 +92,13 @@ public class UserDetailsSecurityServiceImpl extends EgovAbstractServiceImpl impl
         Authentication authentication = context.getAuthentication();
 
         if (EgovObjectUtil.isNull(authentication)) {
-//        	LOG.debug("## authentication object is null!!");
+//        	logger.debug("## authentication object is null!!");
             return Boolean.FALSE;
         }
 
         String username = authentication.getName();
         if (username.equals("anonymousUser")) {		// 기존 2.0.8의 경우 'roleAnonymous'
-//        	LOG.debug("## username is {}", username);
+//        	logger.debug("## username is {}", username);
             return Boolean.FALSE;
         }
 

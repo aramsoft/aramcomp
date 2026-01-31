@@ -16,7 +16,7 @@ import org.egovframe.rte.fdl.cmmn.exception.handler.ExceptionHandler;
  */
 public class WebExcepHndlr implements ExceptionHandler {
 
-	protected Logger LOG = LoggerFactory.getLogger(this.getClass());
+	protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * 발생된 Exception을 처리한다.
@@ -25,12 +25,12 @@ public class WebExcepHndlr implements ExceptionHandler {
 	 * @param 	packageName	패키지 이름
 	 */
 	public void occur(Exception ex, String packageName) {
-		// LOG.debug(" ServiceExceptionHandler run...............");
+		// logger.debug(" ServiceExceptionHandler run...............");
 		if ( ex instanceof org.springframework.security.access.AccessDeniedException ) { 
-			LOG.error(ex.getMessage());
+			logger.error(ex.getMessage());
 		} else {	
-			LOG.error(packageName);
-			LogUtil.logErrorMessage(LOG, ex, 10);
+			logger.error(packageName);
+			LogUtil.logErrorMessage(logger, ex, 10);
 		}	
 	}
 	

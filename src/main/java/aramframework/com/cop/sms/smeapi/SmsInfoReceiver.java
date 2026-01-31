@@ -31,6 +31,8 @@ import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
 @Component("smsInfoReceiver")
 public class SmsInfoReceiver extends EgovAbstractServiceImpl implements SMEListener {
 
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	@Autowired
 	private SmsMapper smsMapper;
 	
@@ -54,8 +56,6 @@ public class SmsInfoReceiver extends EgovAbstractServiceImpl implements SMEListe
 
 	/** 연결 여부 */
 	private boolean isConnected = false;
-
-	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * SMS 결과 수신을 위한 Connection 및 Session 생성한다.
@@ -243,11 +243,11 @@ public class SmsInfoReceiver extends EgovAbstractServiceImpl implements SMEListe
 					 * System.out.println("Done Time   : " + doneTime);
 					 * System.out.println("Net Code    : " + netCode);
 					 */
-					LOG.info("MessageId   : " + msgId);
-					LOG.info("Result      : " + nRes);
-					LOG.info("Result Msg. : " + resultMsg);
-					LOG.info("Done Time   : " + doneTime);
-					LOG.info("Net Code    : " + netCode);
+					logger.info("MessageId   : " + msgId);
+					logger.info("Result      : " + nRes);
+					logger.info("Result Msg. : " + resultMsg);
+					logger.info("Done Time   : " + doneTime);
+					logger.info("Net Code    : " + netCode);
 				} else {
 					/*
 					 * System.out.println("MessageId   : " + msgId);
@@ -257,11 +257,11 @@ public class SmsInfoReceiver extends EgovAbstractServiceImpl implements SMEListe
 					 * System.out.println("Net Code    : " + netCode);
 					 */
 					// System.out.println("SMEMessage (msgId = " + msgId + ") report = " + rpt.getResult());
-					LOG.info("MessageId   : " + msgId);
-					LOG.info("Result      : " + nRes);
-					LOG.info("Result Msg. : " + resultMsg);
-					LOG.info("Done Time   : " + doneTime);
-					LOG.info("Net Code    : " + netCode);
+					logger.info("MessageId   : " + msgId);
+					logger.info("Result      : " + nRes);
+					logger.info("Result Msg. : " + resultMsg);
+					logger.info("Done Time   : " + doneTime);
+					logger.info("Net Code    : " + netCode);
 				}
 
 				// Spring context에서 호출된 경우만 DB를 처리함
@@ -277,13 +277,13 @@ public class SmsInfoReceiver extends EgovAbstractServiceImpl implements SMEListe
 					try {
 						smsMapper.updateSmsRecptnInf(recptn);
 					} catch (Exception ex) {
-						LOG.error("Exception:  " + ex.getClass().getName());
-						LOG.error("Exception  Message:  " + ex.getMessage());
+						logger.error("Exception:  " + ex.getClass().getName());
+						logger.error("Exception  Message:  " + ex.getMessage());
 					}
 				}
 			} else {
 				// System.out.println("SMEReceiver Disconnected!!"); // 주석처리
-				LOG.debug("SMEReceiver Disconnected!!");
+				logger.debug("SMEReceiver Disconnected!!");
 				isConnected = false;
 			}
 		}
@@ -298,8 +298,8 @@ public class SmsInfoReceiver extends EgovAbstractServiceImpl implements SMEListe
 	public static void main(String[] args) {
 
 		if (args.length < 1) {
-			LOG.error("SMEConfig.conf file full path needed.");
-			LOG.error("ex) java [JVM Options] [className] /home/egov/conf/SMEConfig.conf");
+			logger.error("SMEConfig.conf file full path needed.");
+			logger.error("ex) java [JVM Options] [className] /home/egov/conf/SMEConfig.conf");
 			System.exit(-1);
 		}
 
@@ -312,7 +312,7 @@ public class SmsInfoReceiver extends EgovAbstractServiceImpl implements SMEListe
 
 			} catch (Exception ex) {
 				// ex.printStackTrace();
-				LOG.error("DEBUG: " + ex.getMessage());
+				logger.error("DEBUG: " + ex.getMessage());
 				return;
 			}
 
@@ -337,7 +337,7 @@ public class SmsInfoReceiver extends EgovAbstractServiceImpl implements SMEListe
 
 		} catch (Exception ex) {
 			// ex.printStackTrace();
-			LOG.error("DEBUG: " + ex.getMessage());
+			logger.error("DEBUG: " + ex.getMessage());
 		} finally {
 			receiver.close();
 		}
@@ -349,15 +349,15 @@ public class SmsInfoReceiver extends EgovAbstractServiceImpl implements SMEListe
 	 * 참조
 	 */
 	public void execute() {
-		LOG.debug("SmsInfoReceiver executed...");
+		logger.debug("SmsInfoReceiver executed...");
 		try {
 			try {
 				SMEConfig.configSet(Globals.SME_CONFIG_PATH);
 				readPropertyFile();
 
 			} catch (Exception ex) {
-				LOG.error("Exception:  " + ex.getClass().getName());
-				LOG.error("Exception  Message:  " + ex.getMessage());
+				logger.error("Exception:  " + ex.getClass().getName());
+				logger.error("Exception  Message:  " + ex.getMessage());
 				return;
 			}
 
@@ -387,10 +387,11 @@ public class SmsInfoReceiver extends EgovAbstractServiceImpl implements SMEListe
 			// //--------------------------------
 
 		} catch (Exception ex) {
-			LOG.error("Exception:  " + ex.getClass().getName());
-			LOG.error("Exception  Message:  " + ex.getMessage());
+			logger.error("Exception:  " + ex.getClass().getName());
+			logger.error("Exception  Message:  " + ex.getMessage());
 		} finally {
 			close();
 		}
 	}
+	
 }

@@ -33,10 +33,10 @@ import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 @Service
 public class ZipManageService extends EgovAbstractServiceImpl {
 
+	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	@Autowired
 	private ZipManageMapper zipManageMapper;	
-
-	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * 우편번호 목록을 조회한다.
@@ -176,7 +176,7 @@ public class ZipManageService extends EgovAbstractServiceImpl {
 	            IndexReader reader = IndexReader.open(FSDirectory.open(new File(indexName)), true); // only searching, so read-only=true
 	            searcher = new IndexSearcher(reader); 
 	        } catch (Exception e) {
-	        	LOG.error(e.getMessage());
+	        	logger.error(e.getMessage());
 				throw new RuntimeException(e);
 	        }	  
 
@@ -188,7 +188,7 @@ public class ZipManageService extends EgovAbstractServiceImpl {
             	qp.setDefaultOperator(QueryParser.AND_OPERATOR);
 				query = qp.parse(queryString); 				  
             } catch (ParseException e) {                           
-	        	LOG.error(e.getMessage());
+	        	logger.error(e.getMessage());
 				throw new RuntimeException(e);
             }
             try {
@@ -196,7 +196,7 @@ public class ZipManageService extends EgovAbstractServiceImpl {
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}   // run the query 
-            LOG.debug("totalRecord = " + hits.totalHits);
+            logger.debug("totalRecord = " + hits.totalHits);
 
 //        	PhraseQuery pquery = new PhraseQuery();
 //        	pquery.setSlop(0);
@@ -206,11 +206,11 @@ public class ZipManageService extends EgovAbstractServiceImpl {
 //            		pquery.add(new Term("keywards", pharse[i]));
 //            	}
 //          } catch (Exception e) {                           
-//	        	LOG.error(e.getMessage());
+//	        	logger.error(e.getMessage());
 //	        	throw e;
 //          }
 //          hits = searcher.search(pquery, zipVO.getRecordPerPage() + zipVO.getFirstIndex());   // run the query 
-//          LOG.debug("totalRecord = " + hits.totalHits);
+//          logger.debug("totalRecord = " + hits.totalHits);
             
     		EgovMap target = null;
     		int lastIndex = zipVO.getLastIndex();

@@ -17,10 +17,11 @@ import aramframework.com.sym.log.ulg.service.UserLogService;
 @Component("userLogScheduling")
 public class UserLogScheduling {
 
+	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	@Autowired
 	private UserLogService userLogService;
 
-	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 	/**
 	 * 사용자 로그정보를 생성한다.
 	 * 
@@ -34,7 +35,7 @@ public class UserLogScheduling {
 			userLogService.logInsertUserLog();
 			result = 0;
 		} catch(Exception ex) {
-			LOG.error("IGNORE:", ex);
+			logger.error("IGNORE:", ex);
 		}
 		return result;
 	}

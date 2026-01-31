@@ -24,6 +24,8 @@ import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
  */
 public class BackupJobListener implements JobListener {
 
+	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	/**
 	 * egovBackupOpertService
 	 */
@@ -31,8 +33,6 @@ public class BackupJobListener implements JobListener {
 
 	/** ID Generation */
 	private EgovIdGnrService idgenService;
-
-	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * 백업작업 서비스를 설정한다.
@@ -72,7 +72,7 @@ public class BackupJobListener implements JobListener {
 	 *      jobContext)
 	 */
 	public void jobToBeExecuted(JobExecutionContext jobContext) {
-		LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "jobToBeExecuted ");
+		logger.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "jobToBeExecuted ");
 	
  		BackupResultVO backupResult = new BackupResultVO();
 		JobDataMap dataMap = jobContext.getJobDetail().getJobDataMap();
@@ -96,9 +96,9 @@ public class BackupJobListener implements JobListener {
 			// 저장이 이상없이 완료되면 datamap에 배치결과ID를 저장한다.
 			dataMap.put("backupResultId", backupResult.getBackupResultId());
 		} catch (Exception e) {
-			LOG.error("백업작업ID : " + backupResult.getBackupOpertId() 
+			logger.error("백업작업ID : " + backupResult.getBackupOpertId() 
 			      + ", 백업결과저장(insert) 에러 : " + e.getMessage());
-			LOG.debug(e.getMessage(), e);
+			logger.debug(e.getMessage(), e);
 		}
 
 	}
@@ -112,8 +112,8 @@ public class BackupJobListener implements JobListener {
 	 *      jobContext)
 	 */
 	public void jobWasExecuted(JobExecutionContext jobContext, JobExecutionException jee) {
-		LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "jobWasExecuted ");
-		LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "수행시간 : " + jobContext.getFireTime() + "," + jobContext.getJobRunTime());
+		logger.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "jobWasExecuted ");
+		logger.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "수행시간 : " + jobContext.getFireTime() + "," + jobContext.getJobRunTime());
 
 		boolean jobResult = false;
 		BackupResultVO backupResult = new BackupResultVO();
@@ -138,7 +138,7 @@ public class BackupJobListener implements JobListener {
 			}
 			// 수행중 exception이 발생한 경우
 			if (jee != null) {
-				LOG.error("JobExecutionException 발생 : " + jee);
+				logger.error("JobExecutionException 발생 : " + jee);
 				backupResult.setSttus("02");
 				String errorInfo = backupResult.getErrorInfo();
 				backupResult.setErrorInfo(errorInfo + "\n" + "JobExecutionException 발생 : " + jee);
@@ -151,19 +151,19 @@ public class BackupJobListener implements JobListener {
 			backupResult.setExecutEndTime(executEndTimeStr);
 			backupResult.setLastUpdusrId("SYSTEM");
 
-			if (LOG.isDebugEnabled()) {
-				LOG.debug("insert BackupResult Data : " + backupResult);
-				LOG.debug("backupFile : " + dataMap.getString("backupFile"));
+			if (logger.isDebugEnabled()) {
+				logger.debug("insert BackupResult Data : " + backupResult);
+				logger.debug("backupFile : " + dataMap.getString("backupFile"));
 			}
 			backupOpertService.updateBackupResult(backupResult);
 
 			// 저장이 이상없이 완료되면 datamap에 배치결과ID를 저장한다.
 			dataMap.put("backupResultId", backupResult.getBackupResultId());
 		} catch (Exception e) {
-			LOG.error("백업결과ID : " + backupResult.getBackupResultId() 
+			logger.error("백업결과ID : " + backupResult.getBackupResultId() 
 				  + ", 백업작업ID : " + backupResult.getBackupOpertId() 
 				  + ", 백업결과저장(update) 에러 : " + e.getMessage());
-			LOG.debug(e.getMessage(), e);
+			logger.debug(e.getMessage(), e);
 		}
 	}
 
@@ -177,7 +177,7 @@ public class BackupJobListener implements JobListener {
 	 *      jobContext)
 	 */
 	public void jobExecutionVetoed(JobExecutionContext jobContext) {
-		LOG.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "jobExecutionVetoed ");
+		logger.debug("job[" + jobContext.getJobDetail().getKey().getName() + "] " + "jobExecutionVetoed ");
 
 		BackupResultVO backupResult = new BackupResultVO();
 		JobDataMap dataMap = jobContext.getJobDetail().getJobDataMap();
@@ -202,10 +202,10 @@ public class BackupJobListener implements JobListener {
 			// 저장이 이상없이 완료되면 datamap에 배치결과ID를 저장한다.
 			dataMap.put("backupResultId", backupResult.getBackupResultId());
 		} catch (Exception e) {
-			LOG.error("백업결과ID : " + backupResult.getBackupResultId() 
+			logger.error("백업결과ID : " + backupResult.getBackupResultId() 
 				  + ", 백업작업ID : " + backupResult.getBackupOpertId() 
 				  + ", 백업결과저장(update) 에러 : " + e.getMessage());
-			LOG.debug(e.getMessage(), e);
+			logger.debug(e.getMessage(), e);
 		}
 	}
 

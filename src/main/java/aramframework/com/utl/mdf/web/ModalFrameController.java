@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ModalFrameController {
 
-	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
+	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * 팝업 페이지를 호출한다.
@@ -54,7 +54,7 @@ public class ModalFrameController {
 		}
 		
 		model.addAttribute("requestUrl", requestUrl);
-		LOG.debug("requestUrl = " + requestUrl);
+		logger.debug("requestUrl = " + requestUrl);
 		
 		return "com/utl/mdf/ModalPopupFrame";
 	}

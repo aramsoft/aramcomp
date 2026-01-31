@@ -41,13 +41,13 @@ import aramframework.com.cop.bbs.service.BBSBoardService;
 @Controller
 public class MainController {
 
+	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	@Autowired
     private BBSBoardService bbsBoardService; 
 	
 	@Resource(name = "forwardMap")
 	private HashMap<String, String> forwardMap;
-
-	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * 메인 페이지 조회
@@ -132,7 +132,7 @@ public class MainController {
 		String pagelink = requestUri.substring("/home/sample/board/".length());
 		String forward = "/board/" + pagelink;
 
-		LOG.debug("forward = "+ forward);
+		logger.debug("forward = "+ forward);
 		request.setAttribute("jspPrefix",  "home/sample/");
 		return "forward:" + forward;
 	}
@@ -154,7 +154,7 @@ public class MainController {
 		request.setAttribute("jspPrefix",  "home/sample/");
 		String forward = forwardMap.get(command);
 		if( forward != null && !"".equals(forward) ) {
-			LOG.debug("forward = "+ forward);
+			logger.debug("forward = "+ forward);
 			return "forward:" + forward; 
 		}
 		return "forward:" + "/" + command + ".do";	// content 

@@ -25,7 +25,7 @@ import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 @Service
 public class WebLogService extends EgovAbstractServiceImpl {
 
-	protected static final Logger LOG = LoggerFactory.getLogger(WebLogService.class);
+	protected static final Logger logger = LoggerFactory.getLogger(WebLogService.class);
 	
 	@Autowired
 	private WebLogMapper webLogMapper;	
@@ -70,7 +70,7 @@ public class WebLogService extends EgovAbstractServiceImpl {
 		try {
 			webLogVO.setRequstId(webLogIdGnrService.getNextStringId());
 		} catch (FdlException e) {
-			LogUtil.logErrorMessage(LOG, e, 20);
+			LogUtil.logErrorMessage(logger, e, 20);
 			throw new RuntimeException(e);
 		}
 		webLogMapper.logInsertWebLog(webLogVO);

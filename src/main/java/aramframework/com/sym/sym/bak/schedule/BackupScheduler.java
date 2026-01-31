@@ -28,6 +28,8 @@ import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
  */
 public class BackupScheduler {
 
+	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	/** BackupOpertService	 */
 	private BackupOpertService backupOpertService;
 
@@ -36,8 +38,6 @@ public class BackupScheduler {
 
 	/** Quartz 스케줄러 */
 	private Scheduler sched;
-
-	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	// 실행 대상을 읽기위한 페이지 크기
 	private static final int RECORD_COUNT_PER_PAGE = 10000;
@@ -120,9 +120,9 @@ public class BackupScheduler {
 	 */
 	public void insertBackupOpert(BackupOpertVO backupOpertVO, boolean updateMode) throws Exception  {
 		if (updateMode) {
-			LOG.debug("백업스케줄을 갱신합니다. 백업작업ID : " + backupOpertVO.getBackupOpertId());
+			logger.debug("백업스케줄을 갱신합니다. 백업작업ID : " + backupOpertVO.getBackupOpertId());
 		} else {
-			LOG.debug("백업스케줄을 등록합니다. 백업작업ID : " + backupOpertVO.getBackupOpertId());
+			logger.debug("백업스케줄을 등록합니다. 백업작업ID : " + backupOpertVO.getBackupOpertId());
 		}
 		// Job 만들기
 		JobKey jobKey = new JobKey(backupOpertVO.getBackupOpertId());
@@ -160,11 +160,11 @@ public class BackupScheduler {
 			// SchedulerException 이 발생하면 로그를 출력하고 다음 백업작업으로 넘어간다.
 			// 트리거의 실행시각이 현재 시각보다 이전이면 SchedulerException이 발생한다.
 			if (updateMode) {
-				LOG.error("스케줄러에 백업작업갱신할때 에러가 발생했습니다. 백업작업ID : " + backupOpertVO.getBackupOpertId());
+				logger.error("스케줄러에 백업작업갱신할때 에러가 발생했습니다. 백업작업ID : " + backupOpertVO.getBackupOpertId());
 			} else {
-				LOG.error("스케줄러에 백업작업추가할때 에러가 발생했습니다. 백업작업ID : " + backupOpertVO.getBackupOpertId());
+				logger.error("스케줄러에 백업작업추가할때 에러가 발생했습니다. 백업작업ID : " + backupOpertVO.getBackupOpertId());
 			}
-			LOG.error("에러내용 : " + e.getMessage());
+			logger.error("에러내용 : " + e.getMessage());
 		}
 	}
 
@@ -177,12 +177,12 @@ public class BackupScheduler {
 		JobKey jobKey = new JobKey(backupOpertVO.getBackupOpertId());
 		try {
 			// 스케줄러에서 기존Job, Trigger 삭제하기
-			LOG.debug("백업작업을 삭제합니다. 백업작업ID : " + backupOpertVO.getBackupOpertId());
+			logger.debug("백업작업을 삭제합니다. 백업작업ID : " + backupOpertVO.getBackupOpertId());
 			sched.deleteJob(jobKey);
 		} catch (SchedulerException e) {
 			// SchedulerException 이 발생하면 로그를 출력하고 다음 배치작업으로 넘어간다.
-			LOG.error("스케줄러에 백업작업을 삭제할때 에러가 발생했습니다. 배치스케줄ID : " + backupOpertVO.getBackupOpertId());
-			LOG.error("에러내용 : " + e.getMessage());
+			logger.error("스케줄러에 백업작업을 삭제할때 에러가 발생했습니다. 배치스케줄ID : " + backupOpertVO.getBackupOpertId());
+			logger.error("에러내용 : " + e.getMessage());
 		}
 	}
 

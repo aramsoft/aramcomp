@@ -33,10 +33,10 @@ import aramframework.com.cmm.file.service.FileMngService;
 @Controller
 public class FileDownloadController {
 
+	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	@Autowired
 	private FileMngService fileMngService;
-
-	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * 브라우저 구분 얻기.
@@ -130,7 +130,7 @@ public class FileDownloadController {
 		fileVO.setFileSn(fileSn);
 		
 		fileVO = fileMngService.selectFileInf(fileVO);
-		LOG.debug("fileVO = " + fileVO);
+		logger.debug("fileVO = " + fileVO);
 		
 		File uFile = new File(fileVO.getFileStreCours(), fileVO.getStreFileNm());
 		int fSize = (int) uFile.length();
@@ -156,20 +156,20 @@ public class FileDownloadController {
 			} catch (Exception ex) {
 				// 다음 Exception 무시 처리
 				// Connection reset by peer: socket write error
-				LOG.error("IGNORED: " + ex.getMessage());
+				logger.error("IGNORED: " + ex.getMessage());
 			} finally {
 				if (in != null) {
 					try {
 						in.close();
 					} catch (Exception ignore) {
-						LOG.error("IGNORED: " + ignore.getMessage());
+						logger.error("IGNORED: " + ignore.getMessage());
 					}
 				}
 				if (out != null) {
 					try {
 						out.close();
 					} catch (Exception ignore) {
-						LOG.error("IGNORED: " + ignore.getMessage());
+						logger.error("IGNORED: " + ignore.getMessage());
 					}
 				}
 			}

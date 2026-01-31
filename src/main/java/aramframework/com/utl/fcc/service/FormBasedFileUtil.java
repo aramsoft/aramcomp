@@ -35,11 +35,13 @@ import aramframework.cmm.util.WebUtil;
  * @version 1.0
  */
 public class FormBasedFileUtil {
+
+	protected static final Logger logger = LoggerFactory.getLogger(FormBasedFileUtil.class);
+
 	/** Buffer size */
 	public static final int BUFFER_SIZE = 8192;
 
 	public static final String SEPERATOR = File.separator;
-	protected static final Logger LOG = LoggerFactory.getLogger(FormBasedFileUtil.class);
 
 	/**
 	 * 오늘 날짜 문자열 취득. ex) 20090101
@@ -144,10 +146,10 @@ public class FormBasedFileUtil {
 				if (item.isFormField()) {
 					// System.out.println("Form field '" + name + "' with value '" + Streams.asString(stream) +
 					// "' detected.");
-					LOG.info("Form field '" + name + "' with value '" + Streams.asString(stream) + "' detected.");
+					logger.info("Form field '" + name + "' with value '" + Streams.asString(stream) + "' detected.");
 				} else {
 					// System.out.println("File field '" + name + "' with file name '" + item.getName() + "' detected.");
-					LOG.info("File field '" + name + "' with file name '" + item.getName() + "' detected.");
+					logger.info("File field '" + name + "' with file name '" + item.getName() + "' detected.");
 
 					if ("".equals(item.getName())) {
 						continue;

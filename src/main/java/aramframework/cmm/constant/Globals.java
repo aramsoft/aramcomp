@@ -37,8 +37,6 @@ public interface Globals {
 	String AUTHOR_RESOURCE_RELOAD = "";
 	
 	// 프로퍼티 파일 위치
-	@Value("${Globals.ConfPath}")
-	String CONF_PATH        = "";
 	// ShellFile 경로
 	@Value("${Globals.ShellConfPath}")
 	String SHELL_CONF_PATH  = "";

@@ -36,7 +36,7 @@ public class FileTool {
 	static final char ACCESS_HIDE = 'H'; // 숨김
 	// 최대 문자길이
 	static final int MAX_STR_LEN = 1024;
-
+	static final String CONF_PATH = "conf";
 	/**
 	 * <pre>
 	 * Comment : 디렉토리 존재여부를 확인한다. (단일디렉토리 확인용)
@@ -3068,7 +3068,7 @@ public class FileTool {
 			// 로그파일을 생성한다. 만약 로그파일이 존재하면 이미 감시 프로세스가 동작중이므로 새로 시작하지 않는다.
 
 			File targetF = new File(WebUtil.filePathBlackList(targetDirPath));
-			File logF = new File(WebUtil.filePathBlackList(Globals.CONF_PATH) + "/" + targetF.getName() + ".log");
+			File logF = new File(WebUtil.filePathBlackList(CONF_PATH) + "/" + targetF.getName() + ".log");
 
 			if (targetF.exists() && targetF.isDirectory()) {
 
@@ -3136,7 +3136,7 @@ public class FileTool {
 		BufferedWriter bWriter = null;
 		try {
 			File targetF = new File(WebUtil.filePathBlackList(targetDirPath));
-			File logF = new File(WebUtil.filePathBlackList(Globals.CONF_PATH) + "/" + targetF.getName() + ".log");
+			File logF = new File(WebUtil.filePathBlackList(CONF_PATH) + "/" + targetF.getName() + ".log");
 			if (logF.exists()) {
 
 				// 로그파일 최종라인 확인 : END 여부 확인
@@ -3227,7 +3227,7 @@ public class FileTool {
 		FileReader fr = null;
 		try {
 			File targetF = new File(WebUtil.filePathBlackList(targetDirPath));
-			File logF = new File(WebUtil.filePathBlackList(Globals.CONF_PATH) + "/" + targetF.getName() + ".log");
+			File logF = new File(WebUtil.filePathBlackList(CONF_PATH) + "/" + targetF.getName() + ".log");
 			if (!logF.exists()) {
 				result = new StringBuffer();
 			}

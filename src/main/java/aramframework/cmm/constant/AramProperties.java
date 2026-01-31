@@ -34,7 +34,8 @@ public class AramProperties {
 
 	public static final String SYSCONFIG_PATH_PREFIX 		
 			= AramProperties_PATH.substring(0, AramProperties_PATH.lastIndexOf("aramframework")) 
-			+ "sysconfig" + System.getProperty("file.separator");
+			+ "spring" + System.getProperty("file.separator")
+			+ "conf" + System.getProperty("file.separator");
 
 	/**
 	 * 주어진 파일에서 인자로 주어진 문자열을 Key값으로 하는 프로퍼티 값을 반환한다
@@ -69,7 +70,7 @@ public class AramProperties {
 	}
 
 	public static String getSysPathProperty(String fileName, String key) {
-		return SYSCONFIG_PATH_PREFIX + "properties" + System.getProperty("file.separator") + getProperty(fileName, key);
+		return getProperty(SYSCONFIG_PATH_PREFIX + fileName, key);
 	}
 	
 }

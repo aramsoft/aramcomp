@@ -10,11 +10,11 @@ import java.util.Map.Entry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import aramframework.cmm.constant.Globals;
 import aramframework.cmm.util.WebUtil;
 import aramframework.com.cmm.file.domain.FileVO;
 import aramframework.com.cmm.file.service.FileMngService;
@@ -32,6 +32,9 @@ public class FileMngUtil {
 
 	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+	@Value("${Globals.fileStorePath}")
+	private String FILE_UPLOAD_DIR = "";
+	
 	public static final int BUFF_SIZE = 2048;
 
 	@Autowired
@@ -114,14 +117,11 @@ public class FileMngUtil {
 			int fileSn, String atchFileId) 
 	throws Exception {
 		
-		String storePathString = Globals.FILE_UPLOAD_DIR;
-
-
 		if (atchFileId == null || "".equals(atchFileId) ) {
 			atchFileId = fileIdGnrService.getNextStringId();
 		} 
 
-		File saveFolder = new File(WebUtil.filePathBlackList(storePathString));
+		File saveFolder = new File(WebUtil.filePathBlackList(FILE_UPLOAD_DIR));
 
 		if (!saveFolder.exists() || saveFolder.isFile()) {
 			saveFolder.mkdirs();
@@ -156,13 +156,13 @@ public class FileMngUtil {
 			long _size = file.getSize();
 
 			if (!"".equals(orginFileName)) {
-				filePath = storePathString + File.separator + newName;
+				filePath = FILE_UPLOAD_DIR + File.separator + newName;
 				file.transferTo(new File(WebUtil.filePathBlackList(filePath)));
 			}
 			fvo = new FileVO();
 			fvo.setFileExtsn(fileExt);
 			fvo.setFileType(file.getContentType());
-			fvo.setFileStreCours(storePathString);
+			fvo.setFileStreCours(FILE_UPLOAD_DIR);
 			fvo.setFileSize(_size);
 			fvo.setOrignlFileNm(orginFileName);
 			fvo.setStreFileNm(newName);

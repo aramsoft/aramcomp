@@ -7,8 +7,7 @@ import java.net.Socket;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import aramframework.cmm.constant.Globals;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
  * G4C 연계용 배포파일- SocketClient.java
@@ -19,6 +18,10 @@ import aramframework.cmm.constant.Globals;
 public class EgovSocketClient {
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+	// G4C 연결용 IP (localhost)
+	@Value("${Globals.LocalIp}")
+	private String LOCAL_IP = "";
 
 	private static final int MAX_SIZE_OF_MESSAGE = 1024 * 1024;
 	private BufferedInputStream inStream = null;
@@ -31,7 +34,7 @@ public class EgovSocketClient {
 		Socket socket = null;
 		byte[] lm_bRecvData = null;
 		try {
-			socket = EgovTimedSocket.getSocketClient(Globals.LOCAL_IP, 1235, 5000);
+			socket = EgovTimedSocket.getSocketClient(LOCAL_IP, 1235, 5000);
 			socket.setSoTimeout(5000);
 			inStream = new BufferedInputStream(socket.getInputStream(), 512);
 			outStream = new BufferedOutputStream(socket.getOutputStream(), 512);

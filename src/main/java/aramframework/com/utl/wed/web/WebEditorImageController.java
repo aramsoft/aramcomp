@@ -5,12 +5,12 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import aramframework.cmm.constant.Globals;
 import aramframework.com.utl.fcc.service.FileUploadUtil;
 import aramframework.com.utl.fcc.service.FormBasedFileUtil;
 import aramframework.com.utl.fcc.service.FormBasedFileVo;
@@ -24,8 +24,8 @@ import aramframework.com.utl.fcc.service.FormBasedFileVo;
 @Controller
 public class WebEditorImageController {
 
-	/** 첨부파일 위치 지정 */
-	private final String uploadDir = Globals.FILE_UPLOAD_DIR;
+	@Value("${Globals.fileStorePath}")
+	private String FILE_UPLOAD_DIR = "";
 
 	/** 첨부 최대 파일 크기 지정 */
 	private final long maxFileSize = 1024 * 1024 * 100; // 업로드 최대 사이즈 설정 (100M)
@@ -50,7 +50,7 @@ public class WebEditorImageController {
 		// List<EgovFormBasedFileVo> list = EgovFormBasedFileUtil.uploadFiles(request, uploadDir, maxFileSize);
 
 		// Spring multipartResolver 사용시
-		List<FormBasedFileVo> list = FileUploadUtil.uploadFiles(request, uploadDir, maxFileSize);
+		List<FormBasedFileVo> list = FileUploadUtil.uploadFiles(request, FILE_UPLOAD_DIR, maxFileSize);
 
 		if (list.size() > 0) {
 			FormBasedFileVo vo = list.get(0); // 첫번째 이미지
@@ -75,6 +75,6 @@ public class WebEditorImageController {
 		String physical = request.getParameter("physical");
 		String mimeType = request.getParameter("contentType");
 
-		FormBasedFileUtil.viewFile(response, uploadDir, subPath, physical, mimeType);
+		FormBasedFileUtil.viewFile(response, FILE_UPLOAD_DIR, subPath, physical, mimeType);
 	}
 }

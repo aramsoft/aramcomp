@@ -2,8 +2,9 @@ package aramframework.com.utl.sim.service;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import aramframework.cmm.constant.AramProperties;
-import aramframework.cmm.constant.Globals;
 
 /**
  * 클라이언트(Client)의 IP주소, OS정보, 웹브라우저정보를 조회하는 Business Interface class
@@ -13,6 +14,10 @@ import aramframework.cmm.constant.Globals;
  */
 public class ClntInfo {
 
+	// Client정보 프로퍼티 위치
+	@Value("${Globals.ClientConfPath}")
+	private static String CLIENT_CONF_PATH = "";
+	
 	/**
 	 * 클라이언트(Client)의 IP주소를 조회하는 기능
 	 * 
@@ -40,7 +45,7 @@ public class ClntInfo {
 
 		String user_agent = request.getHeader("user-agent");
 		String os_info = user_agent.toUpperCase().split(";")[2].split("\\)")[0];
-		String os_conf = AramProperties.getProperty(Globals.CLIENT_CONF_PATH, os_info.replaceAll(" ", ""));
+		String os_conf = AramProperties.getSysPathProperty(CLIENT_CONF_PATH, os_info.replaceAll(" ", ""));
 		String osInfo = "";
 		if (os_conf != null && !"".equals(os_conf)) {
 			osInfo = os_conf;

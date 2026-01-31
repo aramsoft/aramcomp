@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,7 +20,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import aramframework.cmm.constant.Globals;
 import aramframework.cmm.domain.SearchVO;
 import aramframework.cmm.security.userdetails.UserDetailsHelper;
 import aramframework.cmm.util.MessageHelper;
@@ -41,6 +41,14 @@ import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 public class SndngMailController {
 
 	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+	// 메일발송요청 XML파일경로
+	@Value("${Globals.MailRequestPath}")
+	private String MAIL_REQUEST_PATH  = "";
+
+	// 메일발송응답 XML파일경로
+	@Value("${Globals.MailResponsePath}")
+	private String MAIL_RESPONSE_PATH = "";
 
 	@Autowired 
 	private SndngMailService sndngMailService;
@@ -132,7 +140,7 @@ public class SndngMailController {
 			@ModelAttribute SndngMailVO sndngMailVO, 
 			HttpServletResponse response) 
 	throws Exception {
-		String xmlFile = Globals.MAIL_REQUEST_PATH + sndngMailVO.getMssageId() + ".xml";
+		String xmlFile = MAIL_REQUEST_PATH + sndngMailVO.getMssageId() + ".xml";
 		File uFile = new File(xmlFile);
 		int fSize = (int) uFile.length();
 

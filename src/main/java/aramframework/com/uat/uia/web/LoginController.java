@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.session.SessionInformation;
 import org.springframework.security.core.session.SessionRegistry;
@@ -26,7 +27,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import aramframework.com.cmm.code.service.CmmUseService;
 import aramframework.com.cop.ems.domain.SndngMailVO;
 import aramframework.cmm.config.security.CustomUrlAuthenticationSuccessHandler;
-import aramframework.cmm.constant.Globals;
 import aramframework.cmm.security.userdetails.UserDetailsHelper;
 import aramframework.cmm.util.ComponentChecker;
 import aramframework.cmm.util.MessageHelper;
@@ -44,6 +44,10 @@ public class LoginController {
 
 	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+	// 메인 페이지
+	@Value("${Globals.MainPage}")
+	private String MAIN_PAGE   = "";
+	
 	@Autowired
 	private LoginService loginService;
 
@@ -165,7 +169,7 @@ public class LoginController {
             }
         } 
 
-        return Globals.MAIN_PAGE;
+        return MAIN_PAGE;
 	}
 
 	/**

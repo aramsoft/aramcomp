@@ -19,6 +19,7 @@ import javax.xml.transform.stream.StreamResult;
 import noNamespace.SndngMailDocument;
  
 import org.apache.xmlbeans.XmlOptions;
+import org.springframework.beans.factory.annotation.Value;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -26,7 +27,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.Text;
 
 import aramframework.cmm.constant.AramProperties;
-import aramframework.cmm.constant.Globals;
 import aramframework.cmm.util.WebUtil;
 
 /**
@@ -36,6 +36,14 @@ import aramframework.cmm.util.WebUtil;
  * @version 1.0
  */
 public class XMLDoc {
+
+	// OS 유형
+	@Value("${Globals.OsType}")
+	private static String OS_TYPE = "";
+	
+	// ShellFile 경로
+	@Value("${Globals.ShellConfPath}")
+	private static String SHELL_CONF_PATH  = "";
 
 	// 파일구분자
 	static final char FILE_SEPARATOR = File.separatorChar;
@@ -76,7 +84,7 @@ public class XMLDoc {
 
 		// 3. scomp -src [소스생성위치] [xsd파일] : 입력받은 스키마를 컴파일하여 JAVA 소스파일로 생성
 		Process p = null;
-		String cmdStr = AramProperties.getSysPathProperty(Globals.SHELL_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".compileSchema");
+		String cmdStr = AramProperties.getSysPathProperty(SHELL_CONF_PATH, "SHELL." + OS_TYPE + ".compileSchema");
 		String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), jar, file };
 		p = Runtime.getRuntime().exec(command);
 		// 프로세스가 처리될때까지 대기

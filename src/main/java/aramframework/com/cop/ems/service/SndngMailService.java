@@ -11,12 +11,12 @@ import org.apache.commons.mail.EmailAttachment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailAuthenticationException;
 import org.springframework.mail.MailParseException;
 import org.springframework.mail.MailSendException;
 import org.springframework.stereotype.Service;
 
-import aramframework.cmm.constant.Globals;
 import aramframework.com.cmm.file.web.FileMngUtil;
 import aramframework.com.cop.ems.dao.SndngMailMapper;
 import aramframework.com.cop.ems.domain.AtchmnFileVO;
@@ -38,6 +38,10 @@ import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 public class SndngMailService extends EgovAbstractServiceImpl {
 	
 	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+	// 메일발송요청 XML파일경로
+	@Value("${Globals.MailRequestPath}")
+	private String MAIL_REQUEST_PATH  = "";
 
 	// 파일구분자
 	static final char FILE_SEPARATOR = File.separatorChar;
@@ -97,7 +101,7 @@ public class SndngMailService extends EgovAbstractServiceImpl {
 		sndngMailMapper.deleteSndngMail(sndngMailVO);
 
 		// 2. 발송요청XML파일을 삭제한다.
-		String xmlFile = Globals.MAIL_REQUEST_PATH + sndngMailVO.getMssageId() + ".xml";
+		String xmlFile = MAIL_REQUEST_PATH + sndngMailVO.getMssageId() + ".xml";
 		FileTool.deleteFile(xmlFile);
 
 		// 3. 첨부파일 삭제 ....
@@ -263,7 +267,7 @@ public class SndngMailService extends EgovAbstractServiceImpl {
     	mailElement.setStreFileList(streFileList);
 
     	// 3. XML파일로 저장한다.
-    	String xmlFile = Globals.MAIL_REQUEST_PATH + sndngMailVO.getMssageId() + ".xml";
+    	String xmlFile = MAIL_REQUEST_PATH + sndngMailVO.getMssageId() + ".xml";
         boolean result = false;
 		try {
 			result = XMLDoc.getClassToXML(mailDoc, xmlFile);

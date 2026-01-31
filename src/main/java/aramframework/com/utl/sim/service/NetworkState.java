@@ -8,8 +8,9 @@ import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import aramframework.cmm.constant.AramProperties;
-import aramframework.cmm.constant.Globals;
 import aramframework.cmm.util.WebUtil;
 
 /**
@@ -19,6 +20,15 @@ import aramframework.cmm.util.WebUtil;
  * @version 1.0
  */
 public class NetworkState {
+
+	// OS 유형
+	@Value("${Globals.OsType}")
+	private static String OS_TYPE = "";
+
+	// Server정보 프로퍼티 위치
+	@Value("${Globals.ServerConfPath}")
+	private static String SERVER_CONF_PATH = "";
+	
 	public static String addrIP = "";
 	static final char FILE_SEPARATOR = File.separatorChar;
 	// 최대 문자길이
@@ -42,7 +52,7 @@ public class NetworkState {
 		// log.debug("getMyMACAddress Start!! : ");
 		String mac = null;
 		try {
-			if ("WINDOWS".equals(Globals.OS_TYPE)) {
+			if ("WINDOWS".equals(OS_TYPE)) {
 				Process p = null;
 				Runtime rt = Runtime.getRuntime();
 				String[] execStr = { "nbtstat", "-A", localIP };
@@ -60,7 +70,7 @@ public class NetworkState {
 				}
 				mac = out.substring(out.indexOf("MAC Address = ") + 14, out.indexOf("MAC Address = ") + 31);
 
-			} else if ("UNIX".equals(Globals.OS_TYPE)) {
+			} else if ("UNIX".equals(OS_TYPE)) {
 				// log.debug("getMyMACAddress IP : " + localIP);
 				mac = getNetWorkInfo("MAC");
 			}
@@ -87,7 +97,7 @@ public class NetworkState {
 
 			Process p = null;
 			Runtime rt = Runtime.getRuntime();
-			if ("WINDOWS".equals(Globals.OS_TYPE)) {
+			if ("WINDOWS".equals(OS_TYPE)) {
 				String[] execStr = { "netstat", "-an" };
 				p = rt.exec(execStr);
 				BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
@@ -104,8 +114,8 @@ public class NetworkState {
 					}
 				}
 				input.close();
-			} else if ("UNIX".equals(Globals.OS_TYPE)) {
-				String cmdStr = AramProperties.getSysPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getNetWorkInfo");
+			} else if ("UNIX".equals(OS_TYPE)) {
+				String cmdStr = AramProperties.getSysPathProperty(SERVER_CONF_PATH, "SHELL." + OS_TYPE + ".getNetWorkInfo");
 				String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), "SCAN" };
 				p = Runtime.getRuntime().exec(command);
 				p = rt.exec(command);
@@ -209,7 +219,7 @@ public class NetworkState {
 		String tmp = "";
 		String outValue = "";
 		try {
-			String cmdStr = AramProperties.getSysPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getNetWorkInfo");
+			String cmdStr = AramProperties.getSysPathProperty(SERVER_CONF_PATH, "SHELL." + OS_TYPE + ".getNetWorkInfo");
 			String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), stringOne };
 			p = Runtime.getRuntime().exec(command);
 			BufferedReader b_out = new BufferedReader(new InputStreamReader(p.getInputStream()));

@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import aramframework.cmm.constant.Globals;
 import aramframework.com.cop.sms.dao.SmsMapper;
 import aramframework.com.cop.sms.domain.SmsMessageVO;
 import aramframework.com.cop.sms.domain.SmsRecptnVO;
@@ -25,6 +25,10 @@ import org.egovframe.rte.psl.dataaccess.util.EgovMap;
  */
 @Service
 public class SmsInfoService extends EgovAbstractServiceImpl {
+
+	// sms 정보 프로퍼티 위치
+	@Value("${Globals.SMEConfigPath}")
+	private String SME_CONFIG_PATH  = "";
 
 	@Autowired 
 	private SmsMapper smsMapper;	
@@ -181,7 +185,7 @@ public class SmsInfoService extends EgovAbstractServiceImpl {
 			SmsInfoSender sender = null;
 			SmsMessageVO result = null;
 			try {
-				sender = new SmsInfoSender(Globals.SME_CONFIG_PATH);
+				sender = new SmsInfoSender(SME_CONFIG_PATH);
 				sender.open();
 				result = sender.send(smsMsg);
 			} finally {
@@ -256,7 +260,7 @@ public class SmsInfoService extends EgovAbstractServiceImpl {
 		SmsInfoSender sender = null;
 		SmsMessageVO result = null;
 		try {
-			sender = new SmsInfoSender(Globals.SME_CONFIG_PATH);
+			sender = new SmsInfoSender(SME_CONFIG_PATH);
 
 			sender.open();
 			result = sender.send(smsMessageVO);
@@ -286,7 +290,7 @@ public class SmsInfoService extends EgovAbstractServiceImpl {
 		SmsInfoSender sender = null;
 
 		try {
-			sender = new SmsInfoSender(Globals.SME_CONFIG_PATH);
+			sender = new SmsInfoSender(SME_CONFIG_PATH);
 
 			sender.open();
 

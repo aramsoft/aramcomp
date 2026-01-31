@@ -92,7 +92,6 @@ public class BBSMasterService extends EgovAbstractServiceImpl {
 
 		BoardMasterVO resultVo = bbsMasterMapper.selectBBSMasterInf(boardMasterVO);
 
-		// String flag = AramProperties.getProperty("Globals.addedOptions");
 		// if (flag != null && flag.trim().equalsIgnoreCase("true")) {
 		if (ComponentChecker.hasComponent("bbsCommentService") 
 				|| ComponentChecker.hasComponent("bbsSatisfactionService")) {// 2011.09.15

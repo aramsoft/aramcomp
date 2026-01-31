@@ -115,15 +115,6 @@ public class BBSMasterController {
 		cmmUseService.populateCmmCodeList("COM009", "COM009_bbsAttrb");
 
 		// ---------------------------------
-		// 2009.06.26 : 2단계 기능 추가
-		// ---------------------------------
-		// String flag = AramProperties.getProperty("Globals.addedOptions");
-		// if (flag != null && flag.trim().equalsIgnoreCase("true")) {
-		// 		model.addAttribute("addedOptions", "true");
-		// }
-		// //-------------------------------
-
-		// ---------------------------------
 		// 2011.09.15 : 2단계 기능 추가 반영 방법 변경
 		// ---------------------------------
 

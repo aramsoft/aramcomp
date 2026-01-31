@@ -8,8 +8,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import aramframework.cmm.constant.AramProperties;
-import aramframework.cmm.constant.Globals;
 
 /**
  * 시스템정보를 조회하는 Business Interface class
@@ -20,6 +21,18 @@ import aramframework.cmm.constant.Globals;
 @SuppressWarnings("rawtypes")
 public class SysInfo {
 
+	// OS 유형
+	@Value("${Globals.OsType}")
+	private static String OS_TYPE = "";
+
+	// ShellFile 경로
+	@Value("${Globals.ShellConfPath}")
+	private static String SHELL_CONF_PATH  = "";
+
+	// Server정보 프로퍼티 위치
+	@Value("${Globals.ServerConfPath}")
+	private static String SERVER_CONF_PATH = "";
+	
 	// 파일구분자
 	static final char FILE_SEPARATOR = File.separatorChar;
 
@@ -37,7 +50,7 @@ public class SysInfo {
 	@SuppressWarnings("unchecked")
 	public static Vector getPrductList() throws Exception {
 
-		String strlist = AramProperties.getProperty(Globals.SERVER_CONF_PATH, "SERVER_LIST");
+		String strlist = AramProperties.getSysPathProperty(SERVER_CONF_PATH, "SERVER_LIST");
 		String[] list = strlist.split("\\$");
 
 		Vector server_list = new Vector();
@@ -73,7 +86,7 @@ public class SysInfo {
 	 */
 	public static String getPrductVersion(String server) throws Exception {
 
-		String version = AramProperties.getProperty(Globals.SERVER_CONF_PATH, server.toUpperCase() + ".VERSION");
+		String version = AramProperties.getSysPathProperty(SERVER_CONF_PATH, server.toUpperCase() + ".VERSION");
 		return version;
 	}
 
@@ -87,7 +100,7 @@ public class SysInfo {
 	 */
 	public static String getPrductPort(String server) throws Exception {
 
-		String port = AramProperties.getProperty(Globals.SERVER_CONF_PATH, server.toUpperCase() + ".PORT");
+		String port = AramProperties.getSysPathProperty(SERVER_CONF_PATH, server.toUpperCase() + ".PORT");
 		return port;
 	}
 
@@ -104,13 +117,13 @@ public class SysInfo {
 		String status = "CLOSE";
 		Process p = null;
 		try {
-			String cmdStr = AramProperties.getSysPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getPrductStatus");
+			String cmdStr = AramProperties.getSysPathProperty(SERVER_CONF_PATH, "SHELL." + OS_TYPE + ".getPrductStatus");
 			String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), port };
 			p = Runtime.getRuntime().exec(command);
 			// p.waitFor();
 
 			BufferedReader b_out = new BufferedReader(new InputStreamReader(p.getInputStream()));
-			if ("UNIX".equals(Globals.OS_TYPE)) {
+			if ("UNIX".equals(OS_TYPE)) {
 				while (true) {
 					String str = b_out.readLine();
 					if (str == null)
@@ -119,7 +132,7 @@ public class SysInfo {
 						status = "LISTENING";
 					}
 				}
-			} else if ("WINDOWS".equals(Globals.OS_TYPE)) {
+			} else if ("WINDOWS".equals(OS_TYPE)) {
 				while (true) {
 					String str = b_out.readLine();
 					if (str == null)
@@ -193,14 +206,14 @@ public class SysInfo {
 		String osname = "";
 		Process p = null;
 		try {
-			String cmdStr = AramProperties.getSysPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getOSInfo");
+			String cmdStr = AramProperties.getSysPathProperty(SERVER_CONF_PATH, "SHELL." + OS_TYPE + ".getOSInfo");
 			String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), "NAME" };
 			p = Runtime.getRuntime().exec(command);
 			// p.waitFor();
 
 			BufferedReader b_out = new BufferedReader(new InputStreamReader(p.getInputStream()));
 
-			if ("UNIX".equals(Globals.OS_TYPE)) {
+			if ("UNIX".equals(OS_TYPE)) {
 				while (true) {
 					String str = b_out.readLine();
 					if (str == null)
@@ -209,7 +222,7 @@ public class SysInfo {
 						osname = str;
 					}
 				}
-			} else if ("WINDOWS".equals(Globals.OS_TYPE)) {
+			} else if ("WINDOWS".equals(OS_TYPE)) {
 				while (true) {
 					String str = b_out.readLine();
 					if (str == null)
@@ -245,13 +258,13 @@ public class SysInfo {
 		String osversion = "";
 		Process p = null;
 		try {
-			String cmdStr = AramProperties.getSysPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getOSInfo");
+			String cmdStr = AramProperties.getSysPathProperty(SERVER_CONF_PATH, "SHELL." + OS_TYPE + ".getOSInfo");
 			String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), "VERSION" };
 			p = Runtime.getRuntime().exec(command);
 			// p.waitFor();
 
 			BufferedReader b_out = new BufferedReader(new InputStreamReader(p.getInputStream()));
-			if ("UNIX".equals(Globals.OS_TYPE)) {
+			if ("UNIX".equals(OS_TYPE)) {
 				while (true) {
 					String str = b_out.readLine();
 					if (str == null)
@@ -260,7 +273,7 @@ public class SysInfo {
 						osversion = str;
 					}
 				}
-			} else if ("WINDOWS".equals(Globals.OS_TYPE)) {
+			} else if ("WINDOWS".equals(OS_TYPE)) {
 				while (true) {
 					String str = b_out.readLine();
 					if (str == null)
@@ -296,14 +309,14 @@ public class SysInfo {
 		String osprductor = "";
 		Process p = null;
 		try {
-			String cmdStr = AramProperties.getSysPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getOSInfo");
+			String cmdStr = AramProperties.getSysPathProperty(SERVER_CONF_PATH, "SHELL." + OS_TYPE + ".getOSInfo");
 			String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), "PRDUCTOR" };
 			p = Runtime.getRuntime().exec(command);
 			// p.waitFor();
 
 			BufferedReader b_out = new BufferedReader(new InputStreamReader(p.getInputStream()));
 
-			if ("UNIX".equals(Globals.OS_TYPE)) {
+			if ("UNIX".equals(OS_TYPE)) {
 				while (true) {
 					String str = b_out.readLine();
 					if (str == null)
@@ -312,7 +325,7 @@ public class SysInfo {
 						osprductor = str;
 					}
 				}
-			} else if ("WINDOWS".equals(Globals.OS_TYPE)) {
+			} else if ("WINDOWS".equals(OS_TYPE)) {
 				while (true) {
 					String str = b_out.readLine();
 					if (str == null)
@@ -348,13 +361,13 @@ public class SysInfo {
 		String processor = "";
 		Process p = null;
 		try {
-			String cmdStr = AramProperties.getSysPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getOSInfo");
+			String cmdStr = AramProperties.getSysPathProperty(SERVER_CONF_PATH, "SHELL." + OS_TYPE + ".getOSInfo");
 			String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), "PROCESSOR" };
 			p = Runtime.getRuntime().exec(command);
 			// p.waitFor();
 
 			BufferedReader b_out = new BufferedReader(new InputStreamReader(p.getInputStream()));
-			if ("UNIX".equals(Globals.OS_TYPE)) {
+			if ("UNIX".equals(OS_TYPE)) {
 				while (true) {
 					String str = b_out.readLine();
 					if (str == null)
@@ -363,7 +376,7 @@ public class SysInfo {
 						processor = str;
 					}
 				}
-			} else if ("WINDOWS".equals(Globals.OS_TYPE)) {
+			} else if ("WINDOWS".equals(OS_TYPE)) {
 				while (true) {
 					String str = b_out.readLine();
 					if (str == null)
@@ -401,13 +414,13 @@ public class SysInfo {
 
 		Process p = null;
 		try {
-			String cmdStr = AramProperties.getSysPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getDiskInfo");
+			String cmdStr = AramProperties.getSysPathProperty(SERVER_CONF_PATH, "SHELL." + OS_TYPE + ".getDiskInfo");
 			String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), "NAME" };
 			p = Runtime.getRuntime().exec(command);
 			// p.waitFor();
 
 			BufferedReader b_out = new BufferedReader(new InputStreamReader(p.getInputStream()));
-			if ("UNIX".equals(Globals.OS_TYPE)) {
+			if ("UNIX".equals(OS_TYPE)) {
 				while (true) {
 					String str = b_out.readLine();
 					if (str == null)
@@ -449,13 +462,13 @@ public class SysInfo {
 
 		Process p = null;
 		try {
-			String cmdStr = AramProperties.getSysPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getDiskInfo");
+			String cmdStr = AramProperties.getSysPathProperty(SERVER_CONF_PATH, "SHELL." + OS_TYPE + ".getDiskInfo");
 			String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), "FULL", disk };
 			p = Runtime.getRuntime().exec(command);
 			// p.waitFor();
 
 			BufferedReader b_out = new BufferedReader(new InputStreamReader(p.getInputStream()));
-			if ("UNIX".equals(Globals.OS_TYPE)) {
+			if ("UNIX".equals(OS_TYPE)) {
 				while (true) {
 					String str = b_out.readLine();
 					if (str == null)
@@ -497,13 +510,13 @@ public class SysInfo {
 
 		Process p = null;
 		try {
-			String cmdStr = AramProperties.getSysPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getDiskInfo");
+			String cmdStr = AramProperties.getSysPathProperty(SERVER_CONF_PATH, "SHELL." + OS_TYPE + ".getDiskInfo");
 			String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), "USED", disk };
 			p = Runtime.getRuntime().exec(command);
 			// p.waitFor();
 
 			BufferedReader b_out = new BufferedReader(new InputStreamReader(p.getInputStream()));
-			if ("UNIX".equals(Globals.OS_TYPE)) {
+			if ("UNIX".equals(OS_TYPE)) {
 				while (true) {
 					String str = b_out.readLine();
 					if (str == null)
@@ -545,13 +558,13 @@ public class SysInfo {
 
 		Process p = null;
 		try {
-			String cmdStr = AramProperties.getSysPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getDiskInfo");
+			String cmdStr = AramProperties.getSysPathProperty(SERVER_CONF_PATH, "SHELL." + OS_TYPE + ".getDiskInfo");
 			String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), "FREE", disk };
 			p = Runtime.getRuntime().exec(command);
 			// p.waitFor();
 
 			BufferedReader b_out = new BufferedReader(new InputStreamReader(p.getInputStream()));
-			if ("UNIX".equals(Globals.OS_TYPE)) {
+			if ("UNIX".equals(OS_TYPE)) {
 				while (true) {
 					String str = b_out.readLine();
 					if (str == null)
@@ -648,13 +661,13 @@ public class SysInfo {
 
 		Process p = null;
 		try {
-			String cmdStr = AramProperties.getSysPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getMoryInfo");
+			String cmdStr = AramProperties.getSysPathProperty(SERVER_CONF_PATH, "SHELL." + OS_TYPE + ".getMoryInfo");
 			String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), "USED" };
 			p = Runtime.getRuntime().exec(command);
 			// p.waitFor();
 
 			BufferedReader b_out = new BufferedReader(new InputStreamReader(p.getInputStream()));
-			if ("UNIX".equals(Globals.OS_TYPE)) {
+			if ("UNIX".equals(OS_TYPE)) {
 				while (true) {
 					String str = b_out.readLine();
 					if (str == null)
@@ -663,7 +676,7 @@ public class SysInfo {
 						cpcty = Float.parseFloat(str);
 					}
 				}
-			} else if ("WINDOWS".equals(Globals.OS_TYPE)) {
+			} else if ("WINDOWS".equals(OS_TYPE)) {
 				long fullcpcty = 0;
 				long usedcpcty = 0;
 				while (true) {
@@ -708,13 +721,13 @@ public class SysInfo {
 
 		Process p = null;
 		try {
-			String cmdStr = AramProperties.getSysPathProperty(Globals.SERVER_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getMoryInfo");
+			String cmdStr = AramProperties.getSysPathProperty(SERVER_CONF_PATH, "SHELL." + OS_TYPE + ".getMoryInfo");
 			String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), "FREE" };
 			p = Runtime.getRuntime().exec(command);
 			// p.waitFor();
 
 			BufferedReader b_out = new BufferedReader(new InputStreamReader(p.getInputStream()));
-			if ("UNIX".equals(Globals.OS_TYPE)) {
+			if ("UNIX".equals(OS_TYPE)) {
 				while (true) {
 					String str = b_out.readLine();
 					if (str == null)
@@ -723,7 +736,7 @@ public class SysInfo {
 						cpcty = Float.parseFloat(str);
 					}
 				}
-			} else if ("WINDOWS".equals(Globals.OS_TYPE)) {
+			} else if ("WINDOWS".equals(OS_TYPE)) {
 				while (true) {
 					String str = b_out.readLine();
 					if (str == null)
@@ -854,7 +867,7 @@ public class SysInfo {
 		BufferedReader b_out = null;
 		try {
 			Process p = null;
-			String cmdStr = AramProperties.getSysPathProperty(Globals.SHELL_CONF_PATH, "SHELL." + Globals.OS_TYPE + "." + propertyKeyword);
+			String cmdStr = AramProperties.getSysPathProperty(SHELL_CONF_PATH, "SHELL." + OS_TYPE + "." + propertyKeyword);
 			command[0] = cmdStr;
 			p = Runtime.getRuntime().exec(command);
 			p.waitFor();
@@ -916,10 +929,10 @@ public class SysInfo {
 
 			Process p = null;
 
-			if ("WINDOWS".equals(Globals.OS_TYPE)) {
+			if ("WINDOWS".equals(OS_TYPE)) {
 				p = Runtime.getRuntime().exec("tasklist.exe /fo csv /nh");
 				separator = "\",\"";
-			} else if ("UNIX".equals(Globals.OS_TYPE)) {
+			} else if ("UNIX".equals(OS_TYPE)) {
 				/*
 				 * String tmp = "ps -eo \"%p %G %U %c %a\"|awk -F\" \" '{print $1,$2,$3,$4,$5}'" ; 
 				 * log.debug(tmp); 
@@ -979,10 +992,10 @@ public class SysInfo {
 			Process p = null;
 
 			// log.debug("Globals.OS_TYPE:"+Globals.OS_TYPE);
-			if ("WINDOWS".equals(Globals.OS_TYPE)) {
+			if ("WINDOWS".equals(OS_TYPE)) {
 				p = Runtime.getRuntime().exec("tasklist /fo csv /nh /fi \"imagename eq " + processName + "*\"");
 				separator = "\",\"";
-			} else if ("UNIX".equals(Globals.OS_TYPE)) {
+			} else if ("UNIX".equals(OS_TYPE)) {
 				// tmp = "ps -eo \"%p %G %U %c %a\"|awk -F\" \" '{print $1,$2,$3,$4,$5}'|grep "+processName;
 				// command [0] = tmp;
 				// p = Runtime.getRuntime().exec(tmp);
@@ -995,7 +1008,7 @@ public class SysInfo {
 
 			}
 
-			if ("WINDOWS".equals(Globals.OS_TYPE)) {
+			if ("WINDOWS".equals(OS_TYPE)) {
 
 				input = new BufferedReader(new InputStreamReader(p.getInputStream()));
 				if (input != null) {

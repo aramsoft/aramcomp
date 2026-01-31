@@ -3,6 +3,7 @@ package aramframework.com.sec.arm.web;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
-import aramframework.cmm.constant.Globals;
 import aramframework.cmm.domain.SearchVO;
 import aramframework.cmm.util.MessageHelper;
 import aramframework.com.cmm.com.annotation.IncludedInfo;
@@ -32,6 +32,9 @@ public class AuthorController {
 
 	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+	@Value("${Globals.authorResourceReload}")
+	String AUTHOR_RESOURCE_RELOAD = "";
+	
 	@Autowired
 	private AuthorService authorService;
 		
@@ -67,8 +70,7 @@ public class AuthorController {
 
 		model.addAttribute(paginationInfo);
 
-        String authorResourceReload = Globals.AUTHOR_RESOURCE_RELOAD;       
-		model.addAttribute("authorResourceReload", authorResourceReload);
+		model.addAttribute("authorResourceReload", AUTHOR_RESOURCE_RELOAD);
 		
 		return "com/sec/arm/AuthorList";
 	}
@@ -210,8 +212,7 @@ public class AuthorController {
 			@ModelAttribute AuthorVO authorVO, 
 			ModelMap model) {
 
-        String authorResourceReload = Globals.AUTHOR_RESOURCE_RELOAD;       
-        if( "true".equals(authorResourceReload) ) {
+        if( "true".equals(AUTHOR_RESOURCE_RELOAD) ) {
 //        	filterSource.reloadRequestMap();
 //       	methodSource.reloadMethodMap();
 			model.addAttribute("message", "캐쉬가 재설정되었습니다!!!");

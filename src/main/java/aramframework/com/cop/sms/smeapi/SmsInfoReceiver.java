@@ -3,6 +3,7 @@ package aramframework.com.cop.sms.smeapi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import x3.client.smeapi.SMEConnection;
@@ -16,7 +17,6 @@ import x3.client.smeapi.SMESession;
 import x3.client.smeapi.impl.SMEConfig;
 import x3.client.smeapi.impl.SMEConnectionFactoryImpl;
 import x3.client.smeapi.impl.SMELogger;
-import aramframework.cmm.constant.Globals;
 import aramframework.com.cop.sms.dao.SmsMapper;
 import aramframework.com.cop.sms.domain.SmsRecptnVO;
 import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -31,6 +31,10 @@ import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
 public class SmsInfoReceiver extends EgovAbstractServiceImpl implements SMEListener {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+	// sms 정보 프로퍼티 위치
+	@Value("${Globals.SMEConfigPath}")
+	private String SME_CONFIG_PATH  = "";
 
 	@Autowired
 	private SmsMapper smsMapper;
@@ -351,7 +355,7 @@ public class SmsInfoReceiver extends EgovAbstractServiceImpl implements SMEListe
 		logger.debug("SmsInfoReceiver executed...");
 		try {
 			try {
-				SMEConfig.configSet(Globals.SME_CONFIG_PATH);
+				SMEConfig.configSet(SME_CONFIG_PATH);
 				readPropertyFile();
 
 			} catch (Exception ex) {

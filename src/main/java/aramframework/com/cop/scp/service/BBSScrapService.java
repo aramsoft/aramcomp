@@ -50,12 +50,7 @@ public class BBSScrapService extends EgovAbstractServiceImpl {
 	 * 
 	 */
 	public boolean canUseScrap() {
-		// String flag = AramProperties.getProperty("Globals.addedOptions");
-		// if (flag != null && flag.trim().equalsIgnoreCase("true"))
-		// {//2011.09.15
 		return true;
-		// }
-		// return false;
 	}
 
 	/**

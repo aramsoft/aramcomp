@@ -4,8 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import aramframework.cmm.constant.AramProperties;
-import aramframework.cmm.constant.Globals;
 
 /**
  * 시스템 네트워크 정보를 확인하여 제공하는  Business class
@@ -14,6 +15,15 @@ import aramframework.cmm.constant.Globals;
  * @version 1.0
  */
 public class NetInfo {
+
+	// OS 유형
+	@Value("${Globals.OsType}")
+	private static String OS_TYPE = "";
+	
+	// ShellFile 경로
+	@Value("${Globals.ShellConfPath}")
+	private static String SHELL_CONF_PATH  = "";
+
 	// 최대 문자길이
 	static final int MAX_STR_LEN = 1024;
 
@@ -28,7 +38,7 @@ public class NetInfo {
 	 */
 	public static String getHostName() throws Exception {
 		// 실행할 명령을 프로퍼티 파일에서 확인한다.
-		String command = AramProperties.getSysPathProperty(Globals.SHELL_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getHostName");
+		String command = AramProperties.getSysPathProperty(SHELL_CONF_PATH, "SHELL." + OS_TYPE + ".getHostName");
 
 		// 출력할 결과 (파싱대상)
 		String hostStr = "";

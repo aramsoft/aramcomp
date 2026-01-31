@@ -13,8 +13,9 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import aramframework.cmm.constant.AramProperties;
-import aramframework.cmm.constant.Globals;
 import aramframework.cmm.util.WebUtil;
 import aramframework.com.utl.fcc.service.StringUtil;
 
@@ -26,6 +27,18 @@ import aramframework.com.utl.fcc.service.StringUtil;
  */
 public class FileTool {
 
+	// OS 유형
+	@Value("${Globals.OsType}")
+	private static String OS_TYPE = "";
+	
+	// ShellFile 경로
+	@Value("${Globals.ShellConfPath}")
+	private static String SHELL_CONF_PATH  = "";
+
+	// 파일포맷 정보 프로퍼티 위치
+	@Value("${Globals.FileFormatPath}")
+	private static String FILE_FORMAT_PATH = "";
+	
 	// 파일사이즈 1K
 	static final long BUFFER_SIZE = 1024L;
 	// 파일구분자
@@ -856,13 +869,13 @@ public class FileTool {
 				// 파일 생성자 조회
 				String fullpath = WebUtil.filePathBlackList(fileArray[i].getAbsolutePath());
 				Process p = null;
-				if (Globals.OS_TYPE.equals("UNIX")) {
-					String[] command = { AramProperties.getProperty(Globals.SHELL_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getDrctryByOwner"),
+				if (OS_TYPE.equals("UNIX")) {
+					String[] command = { AramProperties.getSysPathProperty(SHELL_CONF_PATH, "SHELL." + OS_TYPE + ".getDrctryByOwner"),
 							fullpath.substring(0, fullpath.lastIndexOf("/")), fullpath.substring(fullpath.lastIndexOf("/"), fullpath.length()), owner };
 					p = Runtime.getRuntime().exec(command);
 					p.waitFor();
-				} else if (Globals.OS_TYPE.equals("WINDOWS")) {
-					String command = AramProperties.getProperty(Globals.SHELL_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getDrctryByOwner");
+				} else if (OS_TYPE.equals("WINDOWS")) {
+					String command = AramProperties.getSysPathProperty(SHELL_CONF_PATH, "SHELL." + OS_TYPE + ".getDrctryByOwner");
 					p = Runtime.getRuntime().exec(command);
 					p.waitFor();
 				}
@@ -2104,9 +2117,9 @@ public class FileTool {
 			if (srcFile.exists()) {
 
 				// 유닉스 파일시스템명 조회 (df -k $1 | grep $2 | awk -F" " '{print $7}')
-				if (Globals.OS_TYPE.equals("UNIX")) {
+				if (OS_TYPE.equals("UNIX")) {
 					Process p = null;
-					String[] command = { AramProperties.getProperty(Globals.SHELL_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getMountLc"), src, "/" };
+					String[] command = { AramProperties.getSysPathProperty(SHELL_CONF_PATH, "SHELL." + OS_TYPE + ".getMountLc"), src, "/" };
 					p = Runtime.getRuntime().exec(command);
 					// p.waitFor();
 
@@ -2133,7 +2146,7 @@ public class FileTool {
 						p.destroy();
 
 					// 윈도우 파일시스템명 조회
-				} else if (Globals.OS_TYPE.equals("WINDOWS")) {
+				} else if (OS_TYPE.equals("WINDOWS")) {
 
 					diskName = src.substring(0, 1).toUpperCase();
 					// log.debug(diskName);
@@ -2262,7 +2275,7 @@ public class FileTool {
 				String fname = srcFile.getName();
 
 				Process p = null;
-				String cmdStr = AramProperties.getProperty(Globals.SHELL_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getDrctryOwner");
+				String cmdStr = AramProperties.getSysPathProperty(SHELL_CONF_PATH, "SHELL." + OS_TYPE + ".getDrctryOwner");
 				String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR),
 						parentPath.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR), fname };
 				p = Runtime.getRuntime().exec(command);
@@ -2336,8 +2349,8 @@ public class FileTool {
 				String fname = WebUtil.filePathBlackList(srcFile.getName());
 
 				Process p = null;
-				if (Globals.OS_TYPE.equals("UNIX")) {
-					String[] command = { AramProperties.getProperty(Globals.SHELL_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".getDrctryAccess"), parentPath,
+				if (OS_TYPE.equals("UNIX")) {
+					String[] command = { AramProperties.getSysPathProperty(SHELL_CONF_PATH, "SHELL." + OS_TYPE + ".getDrctryAccess"), parentPath,
 							fname };
 					p = Runtime.getRuntime().exec(command);
 					p.waitFor();
@@ -2366,7 +2379,7 @@ public class FileTool {
 						}
 						b_out.close();
 					}
-				} else if (Globals.OS_TYPE.equals("WINDOWS")) {
+				} else if (OS_TYPE.equals("WINDOWS")) {
 					String[] command = { "cmd", "/c", "attrib", src };
 					p = Runtime.getRuntime().exec(command);
 					p.waitFor();
@@ -2512,7 +2525,7 @@ public class FileTool {
 				String[] strArr = src.split("\\.");
 				if (strArr.length >= 2) {
 					format = strArr[strArr.length - 1].toLowerCase();
-					type = AramProperties.getProperty(Globals.FILE_FORMAT_PATH, format);
+					type = AramProperties.getSysPathProperty(FILE_FORMAT_PATH, format);
 				}
 
 			}// else {
@@ -2804,7 +2817,7 @@ public class FileTool {
 					result = false;
 				} else {
 					// 새로 생성되는 경우만 진행한다. (이동쉘을 실행시킨다.)
-					String cmdStr = AramProperties.getProperty(Globals.SHELL_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".moveDrctry");
+					String cmdStr = AramProperties.getSysPathProperty(SHELL_CONF_PATH, "SHELL." + OS_TYPE + ".moveDrctry");
 					String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR),
 							WebUtil.filePathBlackList(originalDirPath.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR)),
 							WebUtil.filePathBlackList(targetDirPath.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR)) };
@@ -2889,7 +2902,7 @@ public class FileTool {
 					}
 
 					if (isInCondition) {
-						String cmdStr = AramProperties.getProperty(Globals.SHELL_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".moveDrctry");
+						String cmdStr = AramProperties.getSysPathProperty(SHELL_CONF_PATH, "SHELL." + OS_TYPE + ".moveDrctry");
 						String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR),
 								WebUtil.filePathBlackList(originalDirPath.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR)),
 								WebUtil.filePathBlackList(targetDirPath.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR)) };
@@ -2985,7 +2998,7 @@ public class FileTool {
 					}
 
 					if (isInCondition) {
-						String cmdStr = AramProperties.getProperty(Globals.SHELL_CONF_PATH, "SHELL." + Globals.OS_TYPE + ".moveDrctry");
+						String cmdStr = AramProperties.getSysPathProperty(SHELL_CONF_PATH, "SHELL." + OS_TYPE + ".moveDrctry");
 						String[] command = { cmdStr.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR),
 								WebUtil.filePathBlackList(originalDirPath.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR)),
 								WebUtil.filePathBlackList(targetDirPath.replace('\\', FILE_SEPARATOR).replace('/', FILE_SEPARATOR)) };

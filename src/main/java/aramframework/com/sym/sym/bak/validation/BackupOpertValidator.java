@@ -11,7 +11,6 @@ import aramframework.com.sym.sym.bak.domain.BackupOpertVO;
 /**
  * BackupOpert클래스에대한 validator 클래스. common validator가 처리하지 못하는 부분 검사.
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

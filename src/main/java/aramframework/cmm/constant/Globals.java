@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Value;
 /**
  * 시스템 구동 시 프로퍼티를 통해 사용될 전역변수를 정의한다.
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */
@@ -14,10 +13,6 @@ public interface Globals {
 	// OS 유형
 	@Value("${Globals.OsType}")
 	String OS_TYPE = "";
-	
-	// DB 유형
-	@Value("${Globals.DbType}")
-	String DB_TYPE = "";
 	
 	// 메인 페이지
 	@Value("${Globals.MainPage}")

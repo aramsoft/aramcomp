@@ -27,7 +27,6 @@ import aramframework.com.cmm.com.domain.IncludedInfoVO;
  * 		운영시에 본 컨트롤을 사용하여 메뉴를 구성하는 경우 성능 문제를 일으키거나
  * 		사용자별 메뉴 구성에 오류를 발생할 수 있음
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

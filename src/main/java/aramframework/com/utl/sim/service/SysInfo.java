@@ -14,7 +14,6 @@ import aramframework.cmm.constant.Globals;
 /**
  * 시스템정보를 조회하는 Business Interface class
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

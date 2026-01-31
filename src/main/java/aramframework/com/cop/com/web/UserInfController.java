@@ -23,7 +23,6 @@ import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 /**
  * 협업기능에서 활용하는 사용자 정보 조회용 컨트롤러 클래스
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

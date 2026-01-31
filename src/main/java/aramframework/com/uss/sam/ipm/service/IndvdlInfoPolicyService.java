@@ -15,7 +15,6 @@ import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 /**
  * 개인정보보호정책를 처리하는 ServiceImpl Class 구현
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

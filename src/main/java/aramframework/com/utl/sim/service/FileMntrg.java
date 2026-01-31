@@ -12,7 +12,6 @@ import java.util.ArrayList;
 /**
  * 시스템 네트워크 정보를 확인하여 제공하는  Business class
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

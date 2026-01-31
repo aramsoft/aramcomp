@@ -5,7 +5,6 @@ import aramframework.cmm.domain.BaseVO;
 /**
  * 기업회원VO클래스로서 기업회원관리 비지니스로직 처리용 항목을 구성한다.
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

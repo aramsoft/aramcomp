@@ -9,7 +9,6 @@ import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 /**
  * 그룹관리에 대한 DAO 클래스를 정의한다.
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

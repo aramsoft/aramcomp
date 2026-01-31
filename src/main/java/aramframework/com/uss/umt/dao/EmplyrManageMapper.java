@@ -8,7 +8,6 @@ import aramframework.com.uss.umt.domain.EmplyrManageVO;
 /**
  * 사용자관리에 관한 데이터 접근 클래스를 정의한다.
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

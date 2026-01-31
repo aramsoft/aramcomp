@@ -29,7 +29,6 @@ import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
  * 공휴일에 관한 요청을 받아 서비스 클래스로 요청을 전달하고 
  * 서비스클래스에서 처리한 결과를 웹 화면으로 전달을 위한 Controller를  정의한다
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

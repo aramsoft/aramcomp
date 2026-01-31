@@ -19,7 +19,6 @@ import aramframework.com.utl.sim.service.ClntInfo;
 /**
  * 로그인 정책 체크 필터
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

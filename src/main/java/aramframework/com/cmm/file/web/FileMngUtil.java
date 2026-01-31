@@ -24,7 +24,6 @@ import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
 /**
  * 파일 업로드/다운로드 유틸리티 컴포넌트 
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

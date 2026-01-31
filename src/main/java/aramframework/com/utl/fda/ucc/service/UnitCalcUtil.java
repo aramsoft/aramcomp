@@ -5,7 +5,6 @@ import java.util.HashMap;
 /**
  * 길이, 부피, 넓이, 무게 환산 데이터를 생성하는 Service Class 구현
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

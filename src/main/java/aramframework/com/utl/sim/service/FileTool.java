@@ -21,7 +21,6 @@ import aramframework.com.utl.fcc.service.StringUtil;
 /**
  * 시스템 디렉토리 정보를 확인하여 제공하는  Business class
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */
@@ -37,9 +36,6 @@ public class FileTool {
 	static final char ACCESS_HIDE = 'H'; // 숨김
 	// 최대 문자길이
 	static final int MAX_STR_LEN = 1024;
-
-	// Log
-	// protected static final Log log = LogFactory.getLog(EgovFileTool.class);
 
 	/**
 	 * <pre>

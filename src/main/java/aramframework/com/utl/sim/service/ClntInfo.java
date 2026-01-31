@@ -8,7 +8,6 @@ import aramframework.cmm.constant.Globals;
 /**
  * 클라이언트(Client)의 IP주소, OS정보, 웹브라우저정보를 조회하는 Business Interface class
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

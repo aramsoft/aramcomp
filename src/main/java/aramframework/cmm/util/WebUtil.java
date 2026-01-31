@@ -12,7 +12,6 @@ import aramframework.com.cmm.code.domain.ComCodeVO;
 /**
  * 교차접속 스크립트 공격 취약성 방지(파라미터 문자열 교체)
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

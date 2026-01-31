@@ -24,7 +24,6 @@ import aramframework.com.cop.cmy.service.CommunityManageService;
 /**
  * 타일스 생성을 위한 인터셉터 클래스
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

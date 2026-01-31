@@ -13,7 +13,6 @@ import aramframework.cmm.constant.Globals;
 /**
  * G4C 연계용 배포파일- SocketClient.java
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

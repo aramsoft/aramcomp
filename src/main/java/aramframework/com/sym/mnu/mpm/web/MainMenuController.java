@@ -18,7 +18,6 @@ import aramframework.com.uat.uia.domain.LoginVO;
 /**
  * 메인메뉴 해당링크 처리를 하는 비즈니스 구현 클래스
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

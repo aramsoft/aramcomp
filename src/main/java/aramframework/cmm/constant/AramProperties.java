@@ -14,7 +14,6 @@ import aramframework.cmm.util.WebUtil;
  * properties값들을 파일로부터 읽어와 Globals클래스의 정적변수로 로드시켜주는 클래스로
  * 문자열 정보 기준으로 사용할 전역변수를 시스템 재시작으로 반영할 수 있도록 한다.
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

@@ -17,7 +17,6 @@ import javax.servlet.http.HttpSession;
 /**
  * 일반 세션 정보를 Https 세션 정보로 이관 
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

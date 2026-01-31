@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * 공통유틸리티성 작업을 위한 Controller
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

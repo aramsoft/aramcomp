@@ -14,7 +14,6 @@ import aramframework.com.cmm.file.domain.FileVO;
 /**
  * 파일정보의 관리를 위한 구현 클래스
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

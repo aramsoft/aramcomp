@@ -14,7 +14,6 @@ import javax.swing.text.html.parser.ParserDelegator;
  * 대한민국, 미국,유럽연합, 일본, 중국연합 사이의 환율계산기능을
  * 제공하는  Business Interface class
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

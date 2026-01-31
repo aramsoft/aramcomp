@@ -8,7 +8,6 @@ import aramframework.com.sym.ccm.zip.domain.ZipVO;
 /**
  * Excel 우편번호 매핑 클래스
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

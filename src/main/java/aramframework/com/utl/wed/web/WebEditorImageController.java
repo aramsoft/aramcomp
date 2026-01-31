@@ -18,7 +18,6 @@ import aramframework.com.utl.fcc.service.FormBasedFileVo;
 /**
  * 웹에디터 이미지 upload 처리 Controller
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

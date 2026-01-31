@@ -30,7 +30,6 @@ import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
  * 기업회원관련 요청을 비지니스 클래스로 전달하고 
  * 처리된결과를 해당 웹 화면으로 전달하는 Controller를 정의한다
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

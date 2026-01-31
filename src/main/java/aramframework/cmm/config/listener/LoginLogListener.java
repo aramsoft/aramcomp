@@ -17,7 +17,6 @@ import aramframework.com.uat.uia.domain.LoginVO;
  * 로그인 로그를 기록하기 위한 스프링 이벤트 리스너 클래스
  * (사용안함 대신 AOP에서 처리됨)
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

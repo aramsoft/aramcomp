@@ -13,7 +13,6 @@ import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 /**
  * 메뉴목록관리, 생성, 사이트맵을 처리하는 비즈니스 구현 클래스를 정의한다.
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

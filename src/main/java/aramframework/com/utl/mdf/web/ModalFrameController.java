@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 /**
  * 모달프레임 생성 콘트롤러
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

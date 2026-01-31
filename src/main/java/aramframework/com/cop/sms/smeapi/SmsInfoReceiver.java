@@ -24,7 +24,6 @@ import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
 /**
  * 문자메시지 연동 결과 수신 처리를 위한 클래스
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

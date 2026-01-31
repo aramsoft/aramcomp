@@ -6,7 +6,6 @@ import aramframework.com.utl.fcc.service.StringUtil;
 /**
  * 메시지 처리 관련 유틸리티
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

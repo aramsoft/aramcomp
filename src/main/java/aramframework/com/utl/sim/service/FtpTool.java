@@ -14,7 +14,6 @@ import org.apache.commons.net.ftp.FTPReply;
 /**
  * FTP Client - Server간 파일 송수신 기능을 제공하는 Business class
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

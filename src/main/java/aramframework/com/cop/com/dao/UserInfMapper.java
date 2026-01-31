@@ -9,7 +9,6 @@ import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 /**
  * 협업 활용 사용자 정보 조회를 위한 데이터 접근 클래스
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

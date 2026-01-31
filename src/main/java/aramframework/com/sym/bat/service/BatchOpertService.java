@@ -15,7 +15,6 @@ import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 /**
  * 배치작업관리에 대한 ServiceImpl 클래스를 정의한다.
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

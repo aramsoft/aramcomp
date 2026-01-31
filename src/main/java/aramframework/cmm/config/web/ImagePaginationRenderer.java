@@ -9,7 +9,6 @@ import org.egovframe.rte.ptl.mvc.tags.ui.pagination.AbstractPaginationRenderer;
 /**
  * 페이지 정보 네비게이션 표시 라이브러리
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

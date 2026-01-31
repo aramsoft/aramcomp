@@ -30,7 +30,6 @@ import aramframework.cmm.util.WebUtil;
 /**
  * Form-based File Upload 유틸리티
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

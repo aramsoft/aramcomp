@@ -36,7 +36,6 @@ import org.springframework.util.Assert;
 /**
  * 로그인 실패시 처리하는 함수(SimpleUrlAuthenticationFailureHandler 코드 수정)
  * 
- * @author 아람컴포넌트 조헌철
  * @since 2014.11.11
  * @version 1.0
  */

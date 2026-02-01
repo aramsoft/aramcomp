@@ -49,9 +49,6 @@ public class BoardUseInfVO extends BaseVO {
 	/** 제공 URL */
 	private String provdUrl = "";
 
-	/** 제공 URL2 */
-	private String provdUrl2 = "";
-	
 	// domain
 	/**
 	 * bbsId attribute를 리턴한다.
@@ -270,24 +267,6 @@ public class BoardUseInfVO extends BaseVO {
 	 */
 	public void setProvdUrl(String provdUrl) {
 		this.provdUrl = provdUrl;
-	}
-
-	/**
-	 * provdUrl2 attribute를 리턴한다.
-	 * 
-	 * @return the provdUrl2
-	 */
-	public String getProvdUrl2() {
-		return provdUrl2;
-	}
-	/**
-	 * provdUrl2 attribute 값을 설정한다.
-	 * 
-	 * @param provdUrl2
-	 *            the provdUrl2 to set
-	 */
-	public void setProvdUrl2(String provdUrl2) {
-		this.provdUrl2 = provdUrl2;
 	}
 
 }

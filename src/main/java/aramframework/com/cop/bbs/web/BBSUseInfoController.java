@@ -136,7 +136,7 @@ public class BBSUseInfoController {
 			ModelMap model) {
 		
 		boardUseInfVO = bbsUseService.selectBBSUseInf(boardUseInfVO);
-		boardUseInfVO.setProvdUrl2(request.getContextPath() + "/board/" + boardUseInfVO.getPathId() + "/list");
+		boardUseInfVO.setProvdUrl(request.getContextPath() + "/board/" + boardUseInfVO.getPathId() + "/list");
 			
 		model.addAttribute(boardUseInfVO);
 					

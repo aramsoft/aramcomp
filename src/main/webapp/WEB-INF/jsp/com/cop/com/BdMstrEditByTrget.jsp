@@ -195,19 +195,6 @@
 	    </td>
 	</tr>
 	</c:if>
-	<c:if test="${not empty boardUseInfVO.provdUrl2}">
-	<tr>
-	    <th>
-	    	<span class="norequired_icon"></span>
-	    	제공 URL2
-	    </th>
-	    <td colspan="3">
-	    	<a href="<c:out value="${boardUseInfVO.provdUrl2}" />" target="_new">
-	    	   	<c:out value="${boardUseInfVO.provdUrl2}" />
-			</a>
-	    </td>
-	</tr>
-	</c:if>
 </table>
 
 <!-- 검색조건 유지 -->

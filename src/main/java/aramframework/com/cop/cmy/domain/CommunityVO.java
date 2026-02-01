@@ -57,9 +57,6 @@ public class CommunityVO extends BaseVO {
 	/** 제공 URL */
 	private String provdUrl = "";
 
-	/** 제공 URL2 */
-	private String provdUrl2 = "";
-
 	/* temp */
 	private String emplyrId = "";
 	
@@ -183,14 +180,6 @@ public class CommunityVO extends BaseVO {
 	}
 	public void setProvdUrl(String provdUrl) {
 		this.provdUrl = provdUrl;
-	}
-
-	/** provdUrl2 	 */ 
-	public String getProvdUrl2() {
-		return provdUrl2;
-	}
-	public void setProvdUrl2(String provdUrl2) {
-		this.provdUrl2 = provdUrl2;
 	}
 
 	/** EmplyrId 	 */ 

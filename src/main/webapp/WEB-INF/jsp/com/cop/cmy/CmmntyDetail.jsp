@@ -126,8 +126,8 @@
 	    	제공 URL
 	    </th>
 	    <td colspan="3">
-			<a href="<c:out value="${communityVO.provdUrl2}" />" target="_new">
-	    	   	<c:out value="${communityVO.provdUrl2}" />
+			<a href="<c:out value="${communityVO.provdUrl}" />" target="_new">
+	    	   	<c:out value="${communityVO.provdUrl}" />
 			</a>
 	    </td>
 	</tr>

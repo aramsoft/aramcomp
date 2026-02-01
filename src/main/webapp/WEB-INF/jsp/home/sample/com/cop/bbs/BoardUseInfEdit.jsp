@@ -83,16 +83,6 @@
 				        	</td>
 				      	</tr>
 				      	</c:if>
-				      	<c:if test="${not empty boardUseInfVO.provdUrl2}">
-				      	<tr> 
-				        	<th width="20%"  class="">제공 URL2</th>
-				        	<td width="80%"  colspan="3">
-				            	<a href="<c:url value="${boardUseInfVO.provdUrl2}" />" target="_new">
-				                	<c:url value="${boardUseInfVO.provdUrl2}" />
-				            	</a>
-				        	</td>
-				      	</tr>
-				      	</c:if>
                    	</table>
                	</div>
 

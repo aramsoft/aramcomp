@@ -134,7 +134,7 @@ public class CmyMenuHomeController  {
 	 * @param bbsId
 	 * @param nttId
 	 */
-	@RequestMapping(value="/apps/id/{cmmntyId}/board/{bbsId}/id/{nttId}")
+	@RequestMapping(value="/apps/id/{cmmntyId}/board/{bbsId}/article/{nttId}")
 	public String directCmmntyBbsPage(
 			@PathVariable String cmmntyId,			
 			@PathVariable String bbsId, 
@@ -142,7 +142,7 @@ public class CmyMenuHomeController  {
 
 		cmmntyId = WebUtil.getOriginalId(cmmntyId, "CMMNTY_");
 
-		String contentUrl = "/board/"+bbsId+"/id/"+nttId;
+		String contentUrl = "/board/"+bbsId+"/article/"+nttId;
 
 		return cmmntyMainPageHandler(cmmntyId, "", contentUrl);
 	}

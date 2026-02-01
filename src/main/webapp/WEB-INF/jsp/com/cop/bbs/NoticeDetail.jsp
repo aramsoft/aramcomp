@@ -139,11 +139,11 @@
 
 <!-- 2009.06.29 : 2단계 기능 추가  -->
 <c:if test="${useComment == 'true'}">
-<iframe id="commentFrame" onload="javascript:changeFrameSize(); return false;" src="/board/${boardVO.bbsId}/id/${boardVO.nttId}/comments?anonymous=${anonymous}" seamless="seamless" width="100%" height="0" title="컨텐츠영역"></iframe>
+<iframe id="commentFrame" onload="javascript:changeFrameSize(); return false;" src="/board/${boardVO.bbsId}/article/${boardVO.nttId}/comments?anonymous=${anonymous}" seamless="seamless" width="100%" height="0" title="컨텐츠영역"></iframe>
 </c:if>
 
 <c:if test="${useSatisfaction == 'true'}">
-<iframe id="commentFrame" onload="javascript:changeFrameSize(); return false;" src="/board/${boardVO.bbsId}/id/${boardVO.nttId}/satisfactions?anonymous=${anonymous}" seamless="seamless" width="100%" height="0" title="컨텐츠영역"></iframe>
+<iframe id="commentFrame" onload="javascript:changeFrameSize(); return false;" src="/board/${boardVO.bbsId}/article/${boardVO.nttId}/satisfactions?anonymous=${anonymous}" seamless="seamless" width="100%" height="0" title="컨텐츠영역"></iframe>
 </c:if>
 <!-- 2009.06.29 : 2단계 기능 추가  -->
 

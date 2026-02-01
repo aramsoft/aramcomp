@@ -41,7 +41,7 @@ public class BBSCommentController {
 	 * @param nttId
 	 * @param commentVO
 	 */
-	@RequestMapping(value="/board/{bbsId}/id/{nttId}/comments")
+	@RequestMapping(value="/board/{bbsId}/article/{nttId}/comments")
 	public String listComment(
 			CommentVO commentVO, 
 			@PathVariable String bbsId, 
@@ -131,7 +131,7 @@ public class BBSCommentController {
 		bbsCommentService.insertComment(commentVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return "forward:/board/"+commentVO.getBbsId()+"/id/"+commentVO.getNttId()+"/comments";
+		return "forward:/board/"+commentVO.getBbsId()+"/article/"+commentVO.getNttId()+"/comments";
 	}
 
 	/**
@@ -150,7 +150,7 @@ public class BBSCommentController {
 		beanValidator.validate(commentVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("msg", "댓글 작성자 및  내용은 필수 입력값입니다.");
-			return "forward:/board/"+commentVO.getBbsId()+"/id/"+commentVO.getNttId()+"/comments";
+			return "forward:/board/"+commentVO.getBbsId()+"/article/"+commentVO.getNttId()+"/comments";
 		}
 
 		if( "true".equals(anonymous)) {
@@ -163,7 +163,7 @@ public class BBSCommentController {
 			String enpassword = FileScrty.encryptPassword(commentVO.getConfirmPassword());
 			if (!dbpassword.equals(enpassword)) {
 				model.addAttribute("subMsg", MessageHelper.getMessage("cop.password.not.same.msg"));
-				return "forward:/board/"+commentVO.getBbsId()+"/id/"+commentVO.getNttId()+"/comments";
+				return "forward:/board/"+commentVO.getBbsId()+"/article/"+commentVO.getNttId()+"/comments";
 			}
 
 			commentVO.setLastUpdusrId("ANONYMOUS");
@@ -183,7 +183,7 @@ public class BBSCommentController {
 		bbsCommentService.updateComment(commentVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return "forward:/board/"+commentVO.getBbsId()+"/id/"+commentVO.getNttId()+"/comments";
+		return "forward:/board/"+commentVO.getBbsId()+"/article/"+commentVO.getNttId()+"/comments";
 	}
 
 	/**
@@ -208,7 +208,7 @@ public class BBSCommentController {
 			String enpassword = FileScrty.encryptPassword(commentVO.getConfirmPassword());
 			if (!dbpassword.equals(enpassword)) {
 				model.addAttribute("subMsg", MessageHelper.getMessage("cop.password.not.same.msg"));
-				return "forward:/board/"+commentVO.getBbsId()+"/id/"+commentVO.getNttId()+"/comments";
+				return "forward:/board/"+commentVO.getBbsId()+"/article/"+commentVO.getNttId()+"/comments";
 			}
 		} else {
 			model.addAttribute("anonymous", "false");
@@ -221,7 +221,7 @@ public class BBSCommentController {
 		bbsCommentService.deleteComment(commentVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return "forward:/board/"+commentVO.getBbsId()+"/id/"+commentVO.getNttId()+"/comments";
+		return "forward:/board/"+commentVO.getBbsId()+"/article/"+commentVO.getNttId()+"/comments";
 	}
 
 }

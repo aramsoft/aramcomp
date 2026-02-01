@@ -216,7 +216,7 @@ public class BBSBoardController {
 	 * @param nttId
 	 * @param boardVO
 	 */
-	@RequestMapping(value="/board/{bbsPathId}/id/{nttId}")
+	@RequestMapping(value="/board/{bbsPathId}/article/{nttId}")
 	public String detailBoardArticleDirect(
 			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardVO boardVO, 
@@ -352,9 +352,9 @@ public class BBSBoardController {
 				&& trgetId != "" 
 				&& trgetId.indexOf("CMMNTY_") != -1) {
 			String cmmntyId = WebUtil.getPathId(trgetId);
-			directUrl = contextUrl + "/apps/id/"+cmmntyId+"/board/"+boardVO.getPathId()+"/id/"+boardVO.getNttId();
+			directUrl = contextUrl + "/apps/id/"+cmmntyId+"/board/"+boardVO.getPathId()+"/article/"+boardVO.getNttId();
 		} else {
-			directUrl = contextUrl + "/board/"+boardVO.getPathId()+"/id/"+ boardVO.getNttId();
+			directUrl = contextUrl + "/board/"+boardVO.getPathId()+"/article/"+ boardVO.getNttId();
 		}
 		model.addAttribute("directUrl", directUrl);
 	}

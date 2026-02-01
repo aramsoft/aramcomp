@@ -41,7 +41,7 @@ public class BBSSatisfactionController {
 	 * @param nttId
 	 * @param satisfactionVO
 	 */
-	@RequestMapping(value="/board/{bbsId}/id/{nttId}/satisfactions")
+	@RequestMapping(value="/board/{bbsId}/article/{nttId}/satisfactions")
 	public String listSatisfaction(
 			SatisfactionVO satisfactionVO, 
 			@PathVariable String bbsId, 
@@ -111,7 +111,7 @@ public class BBSSatisfactionController {
 		beanValidator.validate(satisfactionVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("msg", "작성자 및 만족도는 필수 입력값입니다.");
-			return "forward:/board/"+satisfactionVO.getBbsId()+"/id/"+satisfactionVO.getNttId()+"/satisfactions";
+			return "forward:/board/"+satisfactionVO.getBbsId()+"/article/"+satisfactionVO.getNttId()+"/satisfactions";
 		}
 
 		if( "true".equals(anonymous)) {
@@ -134,7 +134,7 @@ public class BBSSatisfactionController {
 		bbsSatisfactionService.insertSatisfaction(satisfactionVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		return "forward:/board/"+satisfactionVO.getBbsId()+"/id/"+satisfactionVO.getNttId()+"/satisfactions";
+		return "forward:/board/"+satisfactionVO.getBbsId()+"/article/"+satisfactionVO.getNttId()+"/satisfactions";
 	}
 
 	/**
@@ -153,7 +153,7 @@ public class BBSSatisfactionController {
 		beanValidator.validate(satisfactionVO, bindingResult);
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("msg", "작성자 및 만족도는 필수 입력값입니다.");
-			return "forward:/board/"+satisfactionVO.getBbsId()+"/id/"+satisfactionVO.getNttId()+"/satisfactions";
+			return "forward:/board/"+satisfactionVO.getBbsId()+"/article/"+satisfactionVO.getNttId()+"/satisfactions";
 		}
 
 		if( "true".equals(anonymous)) {
@@ -166,7 +166,7 @@ public class BBSSatisfactionController {
 			String enpassword = FileScrty.encryptPassword(satisfactionVO.getConfirmPassword());
 			if (!dbpassword.equals(enpassword)) {
 				model.addAttribute("subMsg", MessageHelper.getMessage("cop.password.not.same.msg"));
-				return "forward:/board/"+satisfactionVO.getBbsId()+"/id/"+satisfactionVO.getNttId()+"/satisfactions";
+				return "forward:/board/"+satisfactionVO.getBbsId()+"/article/"+satisfactionVO.getNttId()+"/satisfactions";
 			}
 
 			satisfactionVO.setLastUpdusrId("ANONYMOUS");
@@ -186,7 +186,7 @@ public class BBSSatisfactionController {
 		bbsSatisfactionService.updateSatisfaction(satisfactionVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		return "forward:/board/"+satisfactionVO.getBbsId()+"/id/"+satisfactionVO.getNttId()+"/satisfactions";
+		return "forward:/board/"+satisfactionVO.getBbsId()+"/article/"+satisfactionVO.getNttId()+"/satisfactions";
 	}
 
 	/**
@@ -212,7 +212,7 @@ public class BBSSatisfactionController {
 
 			if (!dbpassword.equals(enpassword)) {
 				model.addAttribute("message", MessageHelper.getMessage("cop.password.not.same.msg"));
-				return "forward:/board/"+satisfactionVO.getBbsId()+"/id/"+satisfactionVO.getNttId()+"/satisfactions";
+				return "forward:/board/"+satisfactionVO.getBbsId()+"/article/"+satisfactionVO.getNttId()+"/satisfactions";
 			}
 		} else {
 			model.addAttribute("anonymous", "false");
@@ -225,7 +225,7 @@ public class BBSSatisfactionController {
 		bbsSatisfactionService.deleteSatisfaction(satisfactionVO);
 
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		return "forward:/board/"+satisfactionVO.getBbsId()+"/id/"+satisfactionVO.getNttId()+"/satisfactions";
+		return "forward:/board/"+satisfactionVO.getBbsId()+"/article/"+satisfactionVO.getNttId()+"/satisfactions";
 	}
 
 }

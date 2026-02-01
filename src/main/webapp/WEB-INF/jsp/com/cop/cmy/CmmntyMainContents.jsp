@@ -119,7 +119,7 @@ function fn_aram_loadArticleList(bbsId) {
 
 function fn_aram_loadArticle(bbsId, nttId) {
 	bbsId = fn_aram_get_idString(bbsId);
-	location.href = "/apps/id/${targetVO.pathId}/board/"+bbsId+"/id/"+nttId;
+	location.href = "/apps/id/${targetVO.pathId}/board/"+bbsId+"/article/"+nttId;
 }
 
 </script>

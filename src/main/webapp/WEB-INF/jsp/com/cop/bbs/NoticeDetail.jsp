@@ -27,22 +27,6 @@
 </div>
 
 <div id="search_area">
-	<div class="search_left">
-		<span class="sns_area">
-			<a href="#" onclick="javascript:fn_aram_scrap_sns('twitter'); return false;">
-				<img src="${pageContext.request.contextPath}/images/com/cmm/icon/icon_twitter.gif" alt="트위터" />
-			</a>
-			<a href="#" onclick="javascript:fn_aram_scrap_sns('facebook'); return false;">
-				<img src="${pageContext.request.contextPath}/images/com/cmm/icon/icon_facebook.gif" alt="페이스북" />
-			</a>
-			<a href="#" onclick="javascript:fn_aram_scrap_sns('me2day'); return false;">
-				<img src="${pageContext.request.contextPath}/images/com/cmm/icon/icon_me2day.gif" alt="미투데이" />
-			</a>
-			<a href="#" onclick="javascript:fn_aram_scrap_sns('yozm'); return false;">
-				<img src="${pageContext.request.contextPath}/images/com/cmm/icon/icon_yozm.gif" alt="요즘" />
-			</a>
-		</span>
-	</div>
 	<div class="search_right">
 		<span class="button_area">
 	 	  	<c:if test="${editAuthFlag == 'Y'}">
@@ -62,10 +46,10 @@
 	  	  	</c:if>
 	     	<span class="button"><a href="#" onclick="javascript:fn_aram_list(); return false;"><spring:message code="button.list" /></a></span>
 	      	<c:if test="${fullScrYn == 'Y'}">
-	    		<span class="button"><a href="#" onclick="javascript:fn_aram_screen('N'); return false;">화면축소</a></span>
+	    		<span class="button"><a href="#" onclick="javascript:fn_aram_screen('N'); return false;">원래화면</a></span>
 	        </c:if>
 	      	<c:if test="${fullScrYn != 'Y'}">
-	    		<span class="button"><a href="#" onclick="javascript:fn_aram_screen('Y'); return false;">화면확대</a></span>
+	    		<span class="button"><a href="#" onclick="javascript:fn_aram_screen('Y'); return false;">전체화면</a></span>
 	        </c:if>
 		</span>
 	</div>	
@@ -173,28 +157,6 @@ function changeFrameSize(){
 	var childWindow = document.getElementById('commentFrame').contentWindow; 
 	var the_height = childWindow.document.body.scrollHeight;
 	document.getElementById('commentFrame').height = the_height + 20;
-}
-
-function fn_aram_scrap_sns(sns) {
-
-	var trget_url = document.getElementById("directurl").innerHTML;
-	
-	var target = encodeURIComponent(trget_url);
-	var msg = encodeURIComponent("${boardVO.nttSj}");
-	var tags = encodeURIComponent("");
-	var url = "";
-//	alert(target);
-
-	if ( sns == 'twitter' ) {
-		url = "http://twitter.com/home?status=" + msg + " " + target;
-	} else if( sns == 'facebook' ) {
-		url = "http://www.facebook.com/sharer.php?u=" + target + "&t=" + msg;
-	} else if( sns == 'me2day' ) {
-	   	url = "http://me2day.net/posts/new?new_post[body]=" + msg + " " + target + "&new_post[tags]=" + tags;
-	} else if( sns == 'yozm' ) {
-		url = "http://yozm.daum.net/api/popup/prePost?link=" + target + "&prefix=" + msg;
-	}
-	window.open(url, "scrap", "width=640px, height=400px;");
 }
 
 function fn_aram_list() {

@@ -7,6 +7,7 @@
 	<select id="selectAllCmmnty" resultType="egovMap"  >
 			SELECT a.CMMNTY_ID				AS "cmmntyId"
 			     , a.CMMNTY_NM				AS "cmmntyNm"
+			     , a.CMMNTY_ALIAS			AS "cmmntyAlias"
 			     , a.USE_AT					AS "useAt"
 			     , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
 			     , a.FRST_REGISTER_ID		AS "frstRegisterId"
@@ -25,6 +26,7 @@
 	<select id="selectCmmntyListPortlet" resultType="egovMap"  >
 			SELECT CMMNTY_ID				AS "cmmntyId"
 			     , CMMNTY_NM				AS "cmmntyNm"
+			     , CMMNTY_ALIAS				AS "cmmntyAlias"
 			  FROM COMTN_CMMNTY
 			 WHERE USE_AT = 'Y' 
 	</select>	
@@ -34,6 +36,7 @@
         /* 구현 Sql */
 			SELECT a.CMMNTY_ID				AS "cmmntyId"
 				 , a.CMMNTY_NM				AS "cmmntyNm"
+			     , a.CMMNTY_ALIAS			AS "cmmntyAlias"
 				 , a.USE_AT					AS "useAt"
 				 , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
 				 , a.FRST_REGISTER_ID		AS "frstRegisterId"
@@ -82,10 +85,10 @@
 	<select id="selectCommunityInf" resultType="communityVO">
 			SELECT a.CMMNTY_ID
 				 , a.CMMNTY_NM
+			     , a.CMMNTY_ALIAS				
 				 , a.CMMNTY_INTRCN
 				 , a.USE_AT
 				 , a.MEMBER_AT
-				 , a.HOME_URL
 				 , c.TMPLAT_ID
 				 , c.TMPLAT_NM
 				 , c.TMPLAT_COURS
@@ -102,10 +105,10 @@
 			 WHERE a.CMMNTY_ID = #{cmmntyId}	
 	</select>
 	
-	<select id="selectCommntyHomeUrl" resultType="String">
+	<select id="getCommntyIdFromAlias" resultType="String">
 			SELECT CMMNTY_ID	
 			  FROM COMTN_CMMNTY
-			 WHERE HOME_URL = #{homeUrl}	
+			 WHERE CMMNTY_ALIAS = #{cmmntyAlis}	
 	</select>
 	
 	<!-- 입력 -->
@@ -113,12 +116,12 @@
 			INSERT INTO COMTN_CMMNTY (
 					CMMNTY_ID
 				  ,	CMMNTY_NM
+				  ,	CMMNTY_ALIAS
 				  ,	CMMNTY_INTRCN
 				  ,	REGIST_SE_CODE
 				  ,	TMPLAT_ID
 				  ,	USE_AT
 				  , MEMBER_AT
-				  , HOME_URL
 				  , FRST_REGISTER_ID 
 				  , FRST_REGIST_PNTTM 
 				  , LAST_UPDUSR_ID
@@ -128,12 +131,12 @@
 			) VALUES (
 					#{cmmntyId}
 				  , #{cmmntyNm}
+				  , #{cmmntyAlias}
 				  ,	#{cmmntyIntrcn}
 				  ,	#{registSeCode}
 				  ,	#{tmplatId}
 				  ,	#{useAt}
 				  , #{memberAt}
-				  , #{homeUrl}
 				  , #{frstRegisterId}
 				  , sysdate()
 				  , #{frstRegisterId} 
@@ -147,11 +150,11 @@
 	<update id="updateCommunityInf" >
 			UPDATE COMTN_CMMNTY
 			   SET CMMNTY_NM = #{cmmntyNm}
+			     , CMMNTY_ALIAS = #{cmmntyAlias}
 			     , CMMNTY_INTRCN = #{cmmntyIntrcn}
 			     , TMPLAT_ID = #{tmplatId}
 			     , USE_AT = #{useAt}
 			     , MEMBER_AT = #{memberAt}
-			     , HOME_URL = #{homeUrl}
 			     , LAST_UPDUSR_ID = #{lastUpdusrId}
 			     , LAST_UPDT_PNTTM = sysdate()
 			     , ADDITIONAL_INFO = #{additionalInfo}

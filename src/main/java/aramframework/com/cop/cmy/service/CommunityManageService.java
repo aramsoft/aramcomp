@@ -104,12 +104,12 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 	}
 	
 	/**
-	 * HomeUrl로 부터 커뮤니티 ID를 조회한다.
+	 * 커뮤니티 영문명으로 부터 커뮤니티 ID를 조회한다.
 	 * 
-	 * @param homeUrl
+	 * @param alias
 	 */
-	public String selectCommntyHomeUrl(String homeUrl) {
-		return communityManageMapper.selectCommntyHomeUrl(homeUrl);
+	public String getCommntyIdFromAlias(String alias) {
+		return communityManageMapper.getCommntyIdFromAlias(alias);
 	}
 
 	/**

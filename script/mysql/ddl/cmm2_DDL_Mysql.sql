@@ -454,6 +454,7 @@ CREATE TABLE COMTN_CMMNTY
 (
 	CMMNTY_ID             	char(20) 		NOT NULL,
 	CMMNTY_NM             	varchar(255)  	NOT NULL,
+  	CMMNTY_ALIAS           	varchar(255)    NOT NULL,
 	CMMNTY_INTRCN         	varchar(2400)   NULL,
 	USE_AT                	char(1)  		NOT NULL,
 	REGIST_SE_CODE        	char(6)  		NULL,
@@ -463,7 +464,6 @@ CREATE TABLE COMTN_CMMNTY
 	LAST_UPDUSR_ID        	varchar(20)  	NULL,
 	LAST_UPDT_PNTTM       	datetime  		NULL,
 	MEMBER_AT             	char(1)  		NOT NULL,
-  	HOME_URL           		varchar(255)    NULL,
   	CMMNTY_LOGO_IMAGE  		BLOB            NULL,
   	ADDITIONAL_INFO    		varchar(4000)   NULL,
 	CONSTRAINT  COMTN_CMMNTY_PK PRIMARY KEY (CMMNTY_ID)

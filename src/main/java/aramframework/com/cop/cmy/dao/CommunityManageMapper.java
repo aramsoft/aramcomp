@@ -49,11 +49,11 @@ public interface CommunityManageMapper {
 	public int selectCommunityListCnt(CommunityVO communityVO);
 
 	/**
-	 * HomeUrl로 부터 커뮤니티 ID를 조회한다.
+	 * community alias로 부터 커뮤니티 ID를 조회한다.
 	 * 
-	 * @param homeUrl
+	 * @param alias
 	 */
-	public String selectCommntyHomeUrl(String homeUrl);
+	public String getCommntyIdFromAlias(String alias);
 
 	/**
 	 * 커뮤니티에 대한 상세정보를 조회한다.

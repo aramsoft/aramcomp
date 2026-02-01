@@ -59,6 +59,16 @@
 	<tr>
 	    <th>
 	    	<span class="required_icon"></span>
+	    	<label for="cmmntyAlias">커뮤니티 Alias</label>
+	    </th>
+	    <td colspan="3">
+	    	<form:input path="cmmntyAlias" size="60"  maxlength="255"  style="width:100%" title="커뮤니티이명수정"/>
+	    	<form:errors path="cmmntyAlias" cssClass="error"/>
+	    </td>
+	</tr>
+	<tr>
+	    <th>
+	    	<span class="required_icon"></span>
 	  		<label for="cmmntyIntrcn">커뮤니티 소개</label>
 	    </th>
 	    <td colspan="3">
@@ -139,16 +149,6 @@
 	    </th>
 	    <td>
 	    	<fmt:formatDate value="${communityVO.frstRegisterPnttm}" pattern="yyyy-MM-dd"/>
-	    </td>
-	</tr>
-	<tr>
-	    <th>
-	    	<span class="norequired_icon"></span>
-	    	<label for="cmmntyNm">Home URL</label>
-	    </th>
-	    <td colspan="3">
-	    	<form:input path="homeUrl" size="60"  maxlength="255"  style="width:100%" title="Home URL"/>
-	    	<form:errors path="homeUrl" cssClass="error"/>
 	    </td>
 	</tr>
   	<tr>

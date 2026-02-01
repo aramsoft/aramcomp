@@ -200,8 +200,8 @@ var cur_menuPos = "${curMenuPos}";
 var cur_menuNm = "${targetVO.curMenuNm}";
 
 function fn_aram_goCmmntyHome(){
-	var url = "${pageContext.request.contextPath}${targetVO.homeUrl}";
-	fn_aram_load(url);
+	var alias = "${pageContext.request.contextPath}${targetVO.cmmntyAlias}";
+	fn_aram_load("/apps/" + alias);
 }
 
 function fn_aram_login(){
@@ -213,12 +213,12 @@ function fn_aram_login(){
 
 function fn_aram_logout(){
 	var url = "${pageContext.request.contextPath}/uat/uia/actionLogout.do";
-	url = url + "?targetUrl=${pageContext.request.contextPath}${targetVO.homeUrl}";
+	url = url + "?targetUrl=${pageContext.request.contextPath}/apps/${targetVO.cmmntyAlias}";
 	fn_aram_load(url);
 }
 
 function fn_aram_loadMenu(menuNm){
-	url = "${pageContext.request.contextPath}${targetVO.homeUrl}/" + menuNm;
+	url = "${pageContext.request.contextPath}/apps/${targetVO.cmmntyAlias}/" + menuNm;
 	fn_aram_load(url);
 }
 
@@ -232,7 +232,7 @@ function fn_aram_loadMenuUrl(url, menuPos){
 }
 
 function get_curmenu_url() {
-	return "${pageContext.request.contextPath}${targetVO.homeUrl}/" + cur_menuNm;
+	return "${pageContext.request.contextPath}/apps/${targetVO.cmmntyAlias}/" + cur_menuNm;
 }
 
 function fn_aram_load(url) {

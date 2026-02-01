@@ -55,6 +55,16 @@
 	</tr>
 	<tr>
 	    <th>
+	    	커뮤니티 ID명
+	    </th>
+	    <td colspan="3">
+			<a href="<c:out value="${communityVO.cmmntyAlias}" />" target="_new">
+	    	   	<c:out value="${communityVO.cmmntyAlias}" />
+			</a>
+	    </td>
+	</tr>
+	<tr>
+	    <th>
 	    	커뮤니티 소개
 	    </th>
 	    <td colspan="3">
@@ -109,16 +119,6 @@
 	    </th>
 	    <td width="30%">
 	     	<fmt:formatDate value="${communityVO.frstRegisterPnttm}" pattern="yyyy-MM-dd"/>
-	    </td>
-	</tr>
-	<tr>
-	    <th>
-	    	Home URL
-	    </th>
-	    <td colspan="3">
-			<a href="<c:out value="${communityVO.homeUrl}" />" target="_new">
-	    	   	<c:out value="${communityVO.homeUrl}" />
-			</a>
 	    </td>
 	</tr>
 	<tr>

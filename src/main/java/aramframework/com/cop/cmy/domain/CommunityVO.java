@@ -20,6 +20,9 @@ public class CommunityVO extends BaseVO {
 	/** 커뮤니티 명 */
 	private String cmmntyNm = "";
 
+	/** 커뮤니티 영문명 */
+	private String cmmntyAlias = "";
+
 	/** 커뮤니티 소개 */
 	private String cmmntyIntrcn = "";
 
@@ -34,9 +37,6 @@ public class CommunityVO extends BaseVO {
 
 	/** 회원인증 여부 */
 	private String memberAt = "";
-
-	/** Home URL */
-	private String homeUrl = "";
 
 	/** 커뮤니티 로고 이미지 */
 	private byte[] cmmntyLogoImage;
@@ -88,6 +88,14 @@ public class CommunityVO extends BaseVO {
 		this.cmmntyNm = cmmntyNm;
 	}
 
+	/** cmmntyAlias 	 */ 
+	public String getCmmntyAlias() {
+		return cmmntyAlias;
+	}
+	public void setCmmntyAlias(String cmmntyAlias) {
+		this.cmmntyAlias = cmmntyAlias;
+	}
+
 	/** cmmntyIntrcn 	 */ 
 	public String getCmmntyIntrcn() {
 		return cmmntyIntrcn;
@@ -126,14 +134,6 @@ public class CommunityVO extends BaseVO {
 	}
 	public void setMemberAt(String memberAt) {
 		this.memberAt = memberAt;
-	}
-
-	/** homeUrl 	 */ 
-	public String getHomeUrl() {
-		return homeUrl;
-	}
-	public void setHomeUrl(String homeUrl) {
-		this.homeUrl = homeUrl;
 	}
 
 	/** cmmntyLogoImage 	 */ 

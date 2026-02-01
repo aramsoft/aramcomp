@@ -59,11 +59,10 @@ public class CmyMenuHomeController  {
 	 * 
 	 * @param appId
 	 */
-	@RequestMapping(value="/apps/{appNm}", method=RequestMethod.GET)
-	public String directCmmntyHomePage(@PathVariable String appNm) {
+	@RequestMapping(value="/apps/{alias}", method=RequestMethod.GET)
+	public String directCmmntyHomePage(@PathVariable String alias) {
 
-//		String cmmntyId = WebUtil.getOriginalId(appId, "CMMNTY_");
-		String cmmntyId = cmmntyService.selectCommntyHomeUrl("/apps/"+appNm);
+		String cmmntyId = cmmntyService.getCommntyIdFromAlias(alias);
 		if( cmmntyId == null ) {
 			throw new RuntimeException("cmmntyId is not found !!!");
 		}
@@ -77,13 +76,13 @@ public class CmyMenuHomeController  {
 	 * @param appId
 	 * @param menuAlias
 	 */
-	@RequestMapping(value="/apps/{appNm}/{menuNm}", method=RequestMethod.GET)
+	@RequestMapping(value="/apps/{alias}/{menuNm}", method=RequestMethod.GET)
 	public String directCmmntyHomeMenuPage(
-			@PathVariable String appNm,			
+			@PathVariable String alias,			
 			@PathVariable String menuNm) { 
 
 //		String cmmntyId = WebUtil.getOriginalId(appId, "CMMNTY_");
-		String cmmntyId = cmmntyService.selectCommntyHomeUrl("/apps/"+appNm);
+		String cmmntyId = cmmntyService.getCommntyIdFromAlias(alias);
 		if( cmmntyId == null ) {
 			throw new RuntimeException("cmmntyId is not found !!!");
 		}

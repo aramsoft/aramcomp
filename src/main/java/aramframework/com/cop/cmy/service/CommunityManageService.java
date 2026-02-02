@@ -506,26 +506,25 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 
         if( topMenuList.size() == 0 ) return communityVO;
         
-		CommunityMenuVO communityMenuVO = new CommunityMenuVO();
-		communityMenuVO.setTrgetId(communityVO.getCmmntyId());
-		if( "".equals(menuPos) ) {
-			communityMenuVO.setMenuPos(topMenuList.get(0).getMenuPos().substring(0,2));
-		} else {
-			communityMenuVO.setMenuPos(menuPos.substring(0,2));
-		}
+		if( !"".equals(menuPos) ) {
+			String menuGroup = menuPos.substring(0,2);
 		
-		String subMenuKey = CacheKey.CMY_SUBMENU+communityMenuVO.getMenuPos()+"0000";
-		List<MenuVO> subMenuList = (List<MenuVO>) cacheMap.get(subMenuKey);
-        if( subMenuList == null ) {
-    		subMenuList = this.selectCommunitySubMenuInfs(communityMenuVO);
-    		cacheMap.put(subMenuKey, subMenuList);
-        }
-		// submenu는 cache에서 읽어와서 항상 교체함.
-    	communityVO.setSubMenuList(subMenuList);
+			String subMenuKey = CacheKey.CMY_SUBMENU+menuGroup+"0000";
+			List<MenuVO> subMenuList = (List<MenuVO>) cacheMap.get(subMenuKey);
+			if( subMenuList == null ) {
+				CommunityMenuVO communityMenuVO = new CommunityMenuVO();
+				communityMenuVO.setTrgetId(communityVO.getCmmntyId());
+				communityMenuVO.setMenuPos(menuGroup);
+				subMenuList = this.selectCommunitySubMenuInfs(communityMenuVO);
+				cacheMap.put(subMenuKey, subMenuList);
+			}
+			// submenu는 cache에서 읽어와서 항상 교체함.
+			communityVO.setSubMenuList(subMenuList);
 
-		MenuVO menuVO = this.getMenuInfo(communityVO, menuPos);
-		if( menuVO != null ) {
-			communityVO.setCurMenuNm(menuVO.getMenuNm());
+			MenuVO menuVO = this.getMenuInfo(communityVO, menuPos);
+			if( menuVO != null ) {
+				communityVO.setCurMenuNm(menuVO.getMenuNm());
+			}
 		}	
 		return communityVO;
 	}

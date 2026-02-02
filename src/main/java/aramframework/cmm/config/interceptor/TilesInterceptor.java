@@ -108,11 +108,11 @@ public class TilesInterceptor implements HandlerInterceptor {
 		String cmmntyId = (String) request.getAttribute("curTrgetId");
 		String menuPos = (String) request.getAttribute("curMenuPos");
 		
-		if (cmmntyId == null || !cmmntyId.startsWith("CMMNTY_") || "".equals(menuPos)) {
+		if (cmmntyId == null || !cmmntyId.startsWith("CMMNTY_") ) {
 			return;
 		}
 		
-//		Logger.debug("cmmntyId = " + cmmntyId + ", menuPos = " + menuPos);
+		logger.debug("cmmntyId = " + cmmntyId + ", menuPos = " + menuPos);
 		
         CommunityVO communityVO = cmmntyService.getCommunityLayoutInfo(cmmntyId, menuPos);
         modelAndView.addObject("targetVO", communityVO);

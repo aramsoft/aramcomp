@@ -66,8 +66,9 @@ public class CmyMenuHomeController  {
 		if( cmmntyId == null ) {
 			throw new RuntimeException("cmmntyId is not found !!!");
 		}
-
-		return cmmntyMainPageHandler(cmmntyId, "", "");
+		
+		String directUrl =  "/cop/cmy/CmmntyMainContents.do";
+		return cmmntyMainPageHandler(cmmntyId, "", directUrl);
 	}
 
 	/**
@@ -105,7 +106,8 @@ public class CmyMenuHomeController  {
 
 		cmmntyId = WebUtil.getOriginalId(cmmntyId, "CMMNTY_");
 
-		return cmmntyMainPageHandler(cmmntyId, "", "");
+		String directUrl =  "/cop/cmy/CmmntyMainContents.do";
+		return cmmntyMainPageHandler(cmmntyId, "", directUrl);
 	}
 
 	/**
@@ -121,9 +123,8 @@ public class CmyMenuHomeController  {
 
 		cmmntyId = WebUtil.getOriginalId(cmmntyId, "CMMNTY_");
 
-		String contentUrl = "/board/"+bbsId+"/list";
-
-		return cmmntyMainPageHandler(cmmntyId, "", contentUrl);
+		String directUrl = "/board/"+bbsId+"/list";
+		return cmmntyMainPageHandler(cmmntyId, "", directUrl);
 	}
 	
 	/**
@@ -141,9 +142,8 @@ public class CmyMenuHomeController  {
 
 		cmmntyId = WebUtil.getOriginalId(cmmntyId, "CMMNTY_");
 
-		String contentUrl = "/board/"+bbsId+"/article/"+nttId;
-
-		return cmmntyMainPageHandler(cmmntyId, "", contentUrl);
+		String directUrl = "/board/"+bbsId+"/article/"+nttId;
+		return cmmntyMainPageHandler(cmmntyId, "", directUrl);
 	}
 	
 	/**
@@ -186,9 +186,6 @@ public class CmyMenuHomeController  {
 		if( "".equals(contentUrl) ) {
 			MenuVO menuVO = cmmntyService.getMenuInfo(communityVO, menuPos);
 			contentUrl = menuVO.getContentUrl();
-			if( "".equals(contentUrl) ) {
-				contentUrl =  "/cop/cmy/CmmntyMainContents.do";
-			}
 		}
 		
 		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();

@@ -114,12 +114,12 @@ function fn_aram_get_idString(original) {
 
 function fn_aram_loadArticleList(bbsId) {
 	bbsId = fn_aram_get_idString(bbsId);
-	location.href = "/apps/id/${targetVO.pathId}/board/"+bbsId+"/list";
+	location.href = "/apps/${targetVO.cmmntyAlias}/board/"+bbsId+"/list";
 }
 
 function fn_aram_loadArticle(bbsId, nttId) {
 	bbsId = fn_aram_get_idString(bbsId);
-	location.href = "/apps/id/${targetVO.pathId}/board/"+bbsId+"/article/"+nttId;
+	location.href = "/apps/${targetVO.cmmntyAlias}/board/"+bbsId+"/article/"+nttId;
 }
 
 </script>

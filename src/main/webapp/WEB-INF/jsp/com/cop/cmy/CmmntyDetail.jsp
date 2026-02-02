@@ -137,7 +137,7 @@
     	</th>
     	<td colspan="3">
      		<c:if test="${communityVO.cmmntyLogoImage ne null}">
-    		<img src="${pageContext.request.contextPath}/apps/id/${communityVO.pathId}/logo" alt="커뮤니티로고이미지" title="커뮤니티로고이미지">
+    		<img src="${pageContext.request.contextPath}/apps/${communityVO.cmmntyAlias}/logo" alt="커뮤니티로고이미지" title="커뮤니티로고이미지">
     		</c:if>
     	</td>
   	</tr>

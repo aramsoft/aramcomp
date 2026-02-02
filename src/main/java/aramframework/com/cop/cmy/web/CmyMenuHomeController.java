@@ -3,7 +3,6 @@ package aramframework.com.cop.cmy.web;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -62,14 +61,8 @@ public class CmyMenuHomeController  {
 	@RequestMapping(value="/apps/{alias}", method=RequestMethod.GET)
 	public String directCmmntyHomePage(@PathVariable String alias) {
 
-		CommunityVO  communityVO = cmmntyService.selectCommunityInfByAlias(alias);
-		if( communityVO == null ) {
-			throw new RuntimeException("community is not found !!!");
-		}
-		String cmmntyId = communityVO.getCmmntyId();
-		
 		String directUrl =  "/cop/cmy/CmmntyMainContents.do";
-		return cmmntyMainPageHandler(cmmntyId, "", directUrl);
+		return cmmntyMainPageHandler(alias, "", directUrl);
 	}
 
 	/**
@@ -83,32 +76,18 @@ public class CmyMenuHomeController  {
 			@PathVariable String alias,			
 			@PathVariable String menuNm) { 
 
-		CommunityVO  communityVO = cmmntyService.selectCommunityInfByAlias(alias);
+		CommunityVO  communityVO = cmmntyService.getCommunityOnlyInfo(alias);
 		if( communityVO == null ) {
 			throw new RuntimeException("community is not found !!!");
 		}
-		String cmmntyId = communityVO.getCmmntyId();
 		
+		String cmmntyId = communityVO.getCmmntyId();
 		String menuPos = cmyMeunService.selectMenuPosByMenuNm(cmmntyId, menuNm);
 		if( menuPos == null ) {
 			throw new RuntimeException("menuPos is not found !!!");
 		}
 		
-		return cmmntyMainPageHandler(cmmntyId, menuPos, "");
-	}
-
-	/**
-	 * 커뮤니티 메인페이지를 조회한다.
-	 * 
-	 * @param cmmntyId
-	 */
-	@RequestMapping(value="/apps/id/{cmmntyId}", method=RequestMethod.GET)
-	public String directCmmntyMainPage(@PathVariable String cmmntyId) {
-
-		cmmntyId = WebUtil.getOriginalId(cmmntyId, "CMMNTY_");
-
-		String directUrl =  "/cop/cmy/CmmntyMainContents.do";
-		return cmmntyMainPageHandler(cmmntyId, "", directUrl);
+		return cmmntyMainPageHandler(alias, menuPos, "");
 	}
 
 	/**
@@ -117,15 +96,13 @@ public class CmyMenuHomeController  {
 	 * @param bbsId
 	 * @param cmmntyId
 	 */
-	@RequestMapping(value="/apps/id/{cmmntyId}/board/{bbsId}/list")
+	@RequestMapping(value="/apps/{alias}/board/{bbsId}/list")
 	public String directCmmntyBoard(
-			@PathVariable String cmmntyId,
+			@PathVariable String alias,
 			@PathVariable String bbsId) {
 
-		cmmntyId = WebUtil.getOriginalId(cmmntyId, "CMMNTY_");
-
 		String directUrl = "/board/"+bbsId+"/list";
-		return cmmntyMainPageHandler(cmmntyId, "", directUrl);
+		return cmmntyMainPageHandler(alias, "", directUrl);
 	}
 	
 	/**
@@ -135,56 +112,36 @@ public class CmyMenuHomeController  {
 	 * @param bbsId
 	 * @param nttId
 	 */
-	@RequestMapping(value="/apps/id/{cmmntyId}/board/{bbsId}/article/{nttId}")
+	@RequestMapping(value="/apps/{alias}/board/{bbsId}/article/{nttId}")
 	public String directCmmntyBbsPage(
-			@PathVariable String cmmntyId,			
+			@PathVariable String alias,			
 			@PathVariable String bbsId, 
 			@PathVariable String nttId) {
 
-		cmmntyId = WebUtil.getOriginalId(cmmntyId, "CMMNTY_");
-
 		String directUrl = "/board/"+bbsId+"/article/"+nttId;
-		return cmmntyMainPageHandler(cmmntyId, "", directUrl);
+		return cmmntyMainPageHandler(alias, "", directUrl);
 	}
 	
-	/**
-	 * 커뮤니티 메뉴페이지를 조회한다.
-	 * 
-	 * @param cmmntyId
-	 * @param menuId
-	 */
-	@RequestMapping(value="/apps/id/{cmmntyId}/menu/{menuId}")
-	public String directCmmntyMainPage(
-			HttpServletRequest request, 
-			@PathVariable String cmmntyId,			
-			@PathVariable String menuId) {
-
-		cmmntyId = WebUtil.getOriginalId(cmmntyId, "CMMNTY_");
-
-		return cmmntyMainPageHandler(cmmntyId, menuId, "");
-	}
-
 	private String cmmntyMainPageHandler(
-			String cmmntyId, 
+			String alias, 
 			String menuPos, 
 			String contentUrl) {
 
-		if( cmmntyId == null || cmmntyId.equals("") ) {
-			throw new RuntimeException("cmmntyId not found");
+        CommunityVO communityVO = cmmntyService.getCommunityLayoutInfo(alias, menuPos);
+		if( communityVO == null ) {
+			throw new RuntimeException("community is not found !!!");
 		}
-		
-        CommunityVO communityVO = cmmntyService.getCommunityLayoutInfo(cmmntyId, menuPos);
 
         // --------------------------------
 		// 컨텐트 URL 정보
 		// --------------------------------
-		if( "".equals(menuPos) && communityVO.getTopMenuList().size() != 0 ) {
+		if( "".equals(menuPos) && communityVO.getTopMenuList().size() != 0 ) { // 초기 화면을 위해 필요
 			menuPos = communityVO.getTopMenuList().get(0).getMenuPos();
 		}
-		
 //		logger.debug("menuPos = " + menuPos);
 
 		if( "".equals(contentUrl) ) {
+			
 			MenuVO menuVO = cmmntyService.getMenuInfo(communityVO, menuPos);
 			contentUrl = menuVO.getContentUrl();
 		}
@@ -201,15 +158,13 @@ public class CmyMenuHomeController  {
 	 * 
 	 * @param cmmntyId
 	 */
-	@RequestMapping(value="/apps/id/{cmmntyId}/logo", method=RequestMethod.GET)
+	@RequestMapping(value="/apps/{alias}/logo", method=RequestMethod.GET)
 	public void directCmmntyLogo(
-			@PathVariable String cmmntyId,			
+			@PathVariable String alias,			
 			HttpServletResponse response) 
 	throws Exception {
-
-		cmmntyId = WebUtil.getOriginalId(cmmntyId, "CMMNTY_");
-
-		CommunityVO communityVO = cmmntyService.getCommunityOnlyInfo(cmmntyId);
+		
+		CommunityVO communityVO = cmmntyService.getCommunityOnlyInfo(alias);
 		byte[] img = communityVO.getCmmntyLogoImage();
 
 		String type = "image/jpeg";

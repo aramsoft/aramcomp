@@ -114,7 +114,8 @@ public class TilesInterceptor implements HandlerInterceptor {
 		
 		logger.debug("cmmntyId = " + cmmntyId + ", menuPos = " + menuPos);
 		
-        CommunityVO communityVO = cmmntyService.getCommunityLayoutInfo(cmmntyId, menuPos);
+		String alias = cmmntyService.selectCommunityInfById(cmmntyId).getCmmntyAlias();
+        CommunityVO communityVO = cmmntyService.getCommunityLayoutInfo(alias, menuPos);
         modelAndView.addObject("targetVO", communityVO);
 	
 		// --------------------------------

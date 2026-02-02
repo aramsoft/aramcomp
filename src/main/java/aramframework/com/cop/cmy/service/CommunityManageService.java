@@ -450,11 +450,11 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 	 * @param menuId
 	 */
 	@SuppressWarnings("unchecked")
-	private void removeCommunityCacheInfo(String cmmntyId) {
+	private void removeCommunityCacheInfo(String cmmntyAlias) {
 		HashMap<String, Object> cacheMap = null;
-		cacheMap = (HashMap<String, Object>) cacheDictionary.get(CacheKey.CMY_PREFIX + cmmntyId);
+		cacheMap = (HashMap<String, Object>) cacheDictionary.get(CacheKey.CMY_PREFIX + cmmntyAlias);
         if( cacheMap != null ) {
-        	cacheDictionary.remove(CacheKey.CMY_PREFIX + cmmntyId);
+        	cacheDictionary.remove(CacheKey.CMY_PREFIX + cmmntyAlias);
         }
 	}	
 	
@@ -465,13 +465,13 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 	 * @param menuId
 	 */
 	@SuppressWarnings("unchecked")
-	public CommunityVO getCommunityLayoutInfo(String cmmntyId, String menuPos) {
+	public CommunityVO getCommunityLayoutInfo(String cmmntyAlias, String menuPos) {
 		HashMap<String, Object> cacheMap = null;
 		
-		cacheMap = (HashMap<String, Object>) cacheDictionary.get(CacheKey.CMY_PREFIX + cmmntyId);
+		cacheMap = (HashMap<String, Object>) cacheDictionary.get(CacheKey.CMY_PREFIX + cmmntyAlias);
         if( cacheMap == null ) {
         	cacheMap = new HashMap<String, Object>();
-        	cacheDictionary.put(CacheKey.CMY_PREFIX + cmmntyId, cacheMap);
+        	cacheDictionary.put(CacheKey.CMY_PREFIX + cmmntyAlias, cacheMap);
         }
         
         // --------------------------------
@@ -479,7 +479,7 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 		// --------------------------------
         CommunityVO communityVO = (CommunityVO) cacheMap.get(CacheKey.CMY_HOME);
         if( communityVO == null ) {
-        	communityVO = selectCommunityInfById(cmmntyId);
+        	communityVO = selectCommunityInfByAlias(cmmntyAlias);
         	cacheMap.put(CacheKey.CMY_HOME, communityVO);
         }
 
@@ -529,13 +529,13 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 	 * @param cmmntyId
 	 */
 	@SuppressWarnings("unchecked")
-	public CommunityVO getCommunityOnlyInfo(String cmmntyId) {
+	public CommunityVO getCommunityOnlyInfo(String cmmntyAlias) {
 		HashMap<String, Object> cacheMap = null;
 		
-		cacheMap = (HashMap<String, Object>) cacheDictionary.get(CacheKey.CMY_PREFIX + cmmntyId);
+		cacheMap = (HashMap<String, Object>) cacheDictionary.get(CacheKey.CMY_PREFIX + cmmntyAlias);
         if( cacheMap == null ) {
         	cacheMap = new HashMap<String, Object>();
-        	cacheDictionary.put(CacheKey.CMY_PREFIX + cmmntyId, cacheMap);
+        	cacheDictionary.put(CacheKey.CMY_PREFIX + cmmntyAlias, cacheMap);
         }
         
         // --------------------------------
@@ -543,7 +543,7 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 		// --------------------------------
         CommunityVO communityVO = (CommunityVO) cacheMap.get(CacheKey.CMY_HOME);
         if( communityVO == null ) {
-        	communityVO = selectCommunityInfById(cmmntyId);
+        	communityVO = selectCommunityInfByAlias(cmmntyAlias);
         	cacheMap.put(CacheKey.CMY_HOME, communityVO);
         }
 

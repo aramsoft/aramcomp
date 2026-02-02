@@ -22,7 +22,7 @@
 <ul>
 <c:forEach var="result" items="${resultList}" varStatus="status">
    	<li style="padding-top:5px">
-		<form name="cmmntyForm" method="get"  action="${pageContext.request.contextPath}/apps/id/${result.cmmntyId}">
+		<form name="cmmntyForm" method="get"  action="${pageContext.request.contextPath}/apps/${result.cmmntyAlias}">
 		<input type="submit" value="<c:out value="${result.cmmntyNm}"/>"/>
 		</form>
 	</li>

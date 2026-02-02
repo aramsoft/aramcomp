@@ -46,8 +46,8 @@ public class EgovMultiPartEmail extends MultiPartEmail{
 		super.setSmtpPort(this.port);
 		super.setSSLOnConnect(true);
 		super.setAuthenticator(new DefaultAuthenticator(this.mailId, this.mailPass));
-		super.setSocketConnectionTimeout(60000);
-		super.setSocketTimeout(60000);
+//		super.setSocketConnectionTimeout(60000);
+//		super.setSocketTimeout(60000);
 		super.setFrom(this.emailAddress, this.mailName);
 		return super.send();
 	}

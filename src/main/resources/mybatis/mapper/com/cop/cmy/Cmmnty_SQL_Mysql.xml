@@ -82,7 +82,7 @@
 	</select>	
 
 	<!-- 상세보기 -->
-	<select id="selectCommunityInf" resultType="communityVO">
+	<select id="selectCommunityInfById" resultType="communityVO">
 			SELECT a.CMMNTY_ID
 				 , a.CMMNTY_NM
 			     , a.CMMNTY_ALIAS				
@@ -105,10 +105,27 @@
 			 WHERE a.CMMNTY_ID = #{cmmntyId}	
 	</select>
 	
-	<select id="getCommntyIdFromAlias" resultType="String">
-			SELECT CMMNTY_ID	
-			  FROM COMTN_CMMNTY
-			 WHERE CMMNTY_ALIAS = #{cmmntyAlis}	
+	<select id="selectCommunityInfByAlias" resultType="communityVO">
+			SELECT a.CMMNTY_ID
+				 , a.CMMNTY_NM
+			     , a.CMMNTY_ALIAS				
+				 , a.CMMNTY_INTRCN
+				 , a.USE_AT
+				 , a.MEMBER_AT
+				 , c.TMPLAT_ID
+				 , c.TMPLAT_NM
+				 , c.TMPLAT_COURS
+				 , a.FRST_REGISTER_ID	
+				 , b.USER_NM 				AS "frstRegisterNm"
+				 , a.FRST_REGIST_PNTTM		AS "frstRegisterPnttm"
+				 , a.CMMNTY_LOGO_IMAGE
+				 , a.ADDITIONAL_INFO
+			  FROM COMTN_CMMNTY a
+				   LEFT OUTER JOIN COMVN_USER_MASTER b
+						ON a.FRST_REGISTER_ID = b.USER_ID
+				   LEFT OUTER JOIN COMTN_TMPLAT_INFO c
+						ON a.TMPLAT_ID = c.TMPLAT_ID
+			 WHERE a.CMMNTY_ALIAS = #{cmmntyAlias}	
 	</select>
 	
 	<!-- 입력 -->

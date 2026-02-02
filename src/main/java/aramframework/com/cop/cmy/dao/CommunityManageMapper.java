@@ -49,18 +49,18 @@ public interface CommunityManageMapper {
 	public int selectCommunityListCnt(CommunityVO communityVO);
 
 	/**
-	 * community alias로 부터 커뮤니티 ID를 조회한다.
+	 * 커뮤니티에 대한 상세정보를 조회한다.
 	 * 
-	 * @param alias
+	 * @param communityVO
 	 */
-	public String getCommntyIdFromAlias(String alias);
+	public CommunityVO selectCommunityInfById(String cmmntyId);
 
 	/**
 	 * 커뮤니티에 대한 상세정보를 조회한다.
 	 * 
 	 * @param communityVO
 	 */
-	public CommunityVO selectCommunityInf(CommunityVO communityVO);
+	public CommunityVO selectCommunityInfByAlias(String cmmntyAlias);
 
 	/**
 	 * 커뮤니티 정보를 등록한다.

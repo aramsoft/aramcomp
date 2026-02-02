@@ -147,7 +147,7 @@ public class CommunityManageController {
 			communityVO.setCmmntyId(trgetId);
 		}
 		
-		communityVO = cmmntyService.selectCommunityInf(communityVO);
+		communityVO = cmmntyService.selectCommunityInfById(communityVO.getCmmntyId());
 
 		// -----------------------
 		// 제공 URL
@@ -235,7 +235,7 @@ public class CommunityManageController {
 
 		checkAuthorityManager(); // server-side 권한 확인
 
-		communityVO = cmmntyService.selectCommunityInf(communityVO);
+		communityVO = cmmntyService.selectCommunityInfById(communityVO.getCmmntyId());
 
 		model.addAttribute("manager", cmmntyService.selectCommunityManagerInf(communityVO));
 		model.addAttribute("bbsList", cmmntyService.selectCommunityBBSUseInf(communityVO));

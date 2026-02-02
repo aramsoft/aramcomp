@@ -99,19 +99,19 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param communityVO
 	 */
-	public CommunityVO selectCommunityInf(CommunityVO communityVO) {
-		return communityManageMapper.selectCommunityInf(communityVO);
+	public CommunityVO selectCommunityInfById(String cmmntyId) {
+		return communityManageMapper.selectCommunityInfById(cmmntyId);
 	}
 	
 	/**
-	 * 커뮤니티 영문명으로 부터 커뮤니티 ID를 조회한다.
+	 * 커뮤니티에 대한  정보를 조회한다.
 	 * 
-	 * @param alias
+	 * @param communityVO
 	 */
-	public String getCommntyIdFromAlias(String alias) {
-		return communityManageMapper.getCommntyIdFromAlias(alias);
+	public CommunityVO selectCommunityInfByAlias(String cmmntyAlias) {
+		return communityManageMapper.selectCommunityInfByAlias(cmmntyAlias);
 	}
-
+	
 	/**
 	 * 커뮤니티 관리자 정보를 조회한다.
 	 * 
@@ -479,11 +479,7 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 		// --------------------------------
         CommunityVO communityVO = (CommunityVO) cacheMap.get(CacheKey.CMY_HOME);
         if( communityVO == null ) {
-        	communityVO = new CommunityVO();
-    		communityVO.setCmmntyId(cmmntyId);
-    		
-    		communityVO = selectCommunityInf(communityVO);
-    		
+        	communityVO = selectCommunityInfById(cmmntyId);
         	cacheMap.put(CacheKey.CMY_HOME, communityVO);
         }
 
@@ -493,14 +489,12 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 		List<MenuVO> topMenuList = communityVO.getTopMenuList();
         if( topMenuList == null ) {
     		topMenuList = communityManageMapper.selectCommunityTopMenuInfs(communityVO);
-    		
     		communityVO.setTopMenuList(topMenuList);
         }
 
 		List<MenuVO> mgrMenuList = communityVO.getMgrMenuList();
         if( mgrMenuList == null ) {
         	mgrMenuList = communityManageMapper.selectCommunityMgrMenuInfs(communityVO);
-
         	communityVO.setMgrMenuList(mgrMenuList);
         }
 
@@ -549,10 +543,7 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 		// --------------------------------
         CommunityVO communityVO = (CommunityVO) cacheMap.get(CacheKey.CMY_HOME);
         if( communityVO == null ) {
-        	communityVO = new CommunityVO();
-    		communityVO.setCmmntyId(cmmntyId);
-    		selectCommunityInf(communityVO);
-    		
+        	communityVO = selectCommunityInfById(cmmntyId);
         	cacheMap.put(CacheKey.CMY_HOME, communityVO);
         }
 

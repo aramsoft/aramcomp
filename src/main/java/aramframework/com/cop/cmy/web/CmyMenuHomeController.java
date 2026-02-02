@@ -62,10 +62,11 @@ public class CmyMenuHomeController  {
 	@RequestMapping(value="/apps/{alias}", method=RequestMethod.GET)
 	public String directCmmntyHomePage(@PathVariable String alias) {
 
-		String cmmntyId = cmmntyService.getCommntyIdFromAlias(alias);
-		if( cmmntyId == null ) {
-			throw new RuntimeException("cmmntyId is not found !!!");
+		CommunityVO  communityVO = cmmntyService.selectCommunityInfByAlias(alias);
+		if( communityVO == null ) {
+			throw new RuntimeException("community is not found !!!");
 		}
+		String cmmntyId = communityVO.getCmmntyId();
 		
 		String directUrl =  "/cop/cmy/CmmntyMainContents.do";
 		return cmmntyMainPageHandler(cmmntyId, "", directUrl);
@@ -82,11 +83,11 @@ public class CmyMenuHomeController  {
 			@PathVariable String alias,			
 			@PathVariable String menuNm) { 
 
-//		String cmmntyId = WebUtil.getOriginalId(appId, "CMMNTY_");
-		String cmmntyId = cmmntyService.getCommntyIdFromAlias(alias);
-		if( cmmntyId == null ) {
-			throw new RuntimeException("cmmntyId is not found !!!");
+		CommunityVO  communityVO = cmmntyService.selectCommunityInfByAlias(alias);
+		if( communityVO == null ) {
+			throw new RuntimeException("community is not found !!!");
 		}
+		String cmmntyId = communityVO.getCmmntyId();
 		
 		String menuPos = cmyMeunService.selectMenuPosByMenuNm(cmmntyId, menuNm);
 		if( menuPos == null ) {

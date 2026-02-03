@@ -196,7 +196,7 @@
 
 if("${message}" != ''){	alert("${message}");}
 
-var cur_menuPos = "${curMenuPos}";
+var cur_menuPos = "${curMenuNm}";
 var cur_menuNm = "${targetVO.curMenuNm}";
 
 function fn_aram_goCmmntyHome(){
@@ -207,7 +207,7 @@ function fn_aram_goCmmntyHome(){
 function fn_aram_login(){
 	var url = "${pageContext.request.contextPath}/uat/uia/loginUsr.do";
 	url = url + "?targetUrl=" + get_curmenu_url();
-	url = url + "&curTarget=${targetVO.cmmntyId}&curMenuPos="+cur_menuPos;
+	url = url + "&curTarget=${targetVO.cmmntyId}&curMenuNm="+cur_menuPos;
 	fn_aram_load(url);
 }
 
@@ -224,9 +224,9 @@ function fn_aram_loadMenu(menuNm){
 
 function fn_aram_loadMenuUrl(url, menuPos){
   	if( url.indexOf('?') != -1 ) {
-		url = url+"&curTarget=${targetVO.cmmntyId}&curMenuPos="+menuPos;
+		url = url+"&curTarget=${targetVO.cmmntyId}&curMenuNm="+menuPos;
 	} else {
-		url = url+"?curTarget=${targetVO.cmmntyId}&curMenuPos="+menuPos;
+		url = url+"?curTarget=${targetVO.cmmntyId}&curMenuNm="+menuPos;
 	}
 	fn_aram_load(url);
 }
@@ -241,7 +241,7 @@ function fn_aram_load(url) {
 
 function fn_aram_subscribe(){
 	var url = "${pageContext.request.contextPath}/uss/umt/stplatMberView.do";
-	url = url + "?curTarget=${targetVO.cmmntyId}&curMenuPos="+cur_menuPos;
+	url = url + "?curTarget=${targetVO.cmmntyId}&curMenuNm="+cur_menuPos;
 	fn_aram_load(url);
 }
 
@@ -259,7 +259,7 @@ function fn_aram_updateUser(userSe){
 	} else if ( userSe == 'USR' ) {
 		url = "${pageContext.request.contextPath}/uss/umt/editEmplyr.do?emplyrId=${loginVO.userId}";
 	}	
-	url = url + "&curTarget=${targetVO.cmmntyId}&curMenuPos="+cur_menuPos;
+	url = url + "&curTarget=${targetVO.cmmntyId}&curMenuNm="+cur_menuPos;
 	fn_aram_load(url);
 }
 

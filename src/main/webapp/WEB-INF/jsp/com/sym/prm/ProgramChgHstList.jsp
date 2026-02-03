@@ -31,7 +31,7 @@
 
 <form:form modelAttribute="progrmManageDtlVO" action="" method="post">
 <input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuPos" value="${curMenuPos}" />
+<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <input type="hidden" name="progrmFileNm"/>
 <input type="hidden" name="rqestNo" value="0"/>

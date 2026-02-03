@@ -38,7 +38,7 @@
 
 <form:form modelAttribute="smsVO" method="post" action="">
 <input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuPos" value="${curMenuPos}" />
+<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 
 <table class="table-register" summary="문자메시지에 대한 정보를  등록 및 전송합니다.">

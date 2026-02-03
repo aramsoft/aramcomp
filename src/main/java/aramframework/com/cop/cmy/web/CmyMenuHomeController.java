@@ -26,7 +26,6 @@ import aramframework.com.cop.bbs.service.BBSBoardService;
 import aramframework.com.cop.cmy.domain.CommunityUserVO;
 import aramframework.com.cop.cmy.domain.CommunityVO;
 import aramframework.com.cop.cmy.domain.MenuVO;
-import aramframework.com.cop.cmy.service.CmyMenuManageService;
 import aramframework.com.cop.cmy.service.CommunityManageService;
 import aramframework.com.uat.uia.domain.LoginVO;
 
@@ -43,9 +42,6 @@ public class CmyMenuHomeController  {
 	
 	@Autowired 
 	private CommunityManageService cmmntyService;
-
-	@Autowired 
-	private CmyMenuManageService cmyMeunService;
 
 	@Autowired 
 	private BBSMasterService bbsMasterService;
@@ -76,18 +72,7 @@ public class CmyMenuHomeController  {
 			@PathVariable String alias,			
 			@PathVariable String menuNm) { 
 
-		CommunityVO  communityVO = cmmntyService.getCommunityOnlyInfo(alias);
-		if( communityVO == null ) {
-			throw new RuntimeException("community is not found !!!");
-		}
-		
-		String cmmntyId = communityVO.getCmmntyId();
-		String menuPos = cmyMeunService.selectMenuPosByMenuNm(cmmntyId, menuNm);
-		if( menuPos == null ) {
-			throw new RuntimeException("menuPos is not found !!!");
-		}
-		
-		return cmmntyMainPageHandler(alias, menuPos, "");
+		return cmmntyMainPageHandler(alias, menuNm, "");
 	}
 
 	/**
@@ -124,10 +109,10 @@ public class CmyMenuHomeController  {
 	
 	private String cmmntyMainPageHandler(
 			String alias, 
-			String menuPos, 
+			String menuNm, 
 			String contentUrl) {
 
-        CommunityVO communityVO = cmmntyService.getCommunityLayoutInfo(alias, menuPos);
+        CommunityVO communityVO = cmmntyService.getCommunityLayoutInfo(alias, menuNm);
 		if( communityVO == null ) {
 			throw new RuntimeException("community is not found !!!");
 		}
@@ -135,20 +120,19 @@ public class CmyMenuHomeController  {
         // --------------------------------
 		// 컨텐트 URL 정보
 		// --------------------------------
-		if( "".equals(menuPos) && communityVO.getTopMenuList().size() != 0 ) { // 초기 화면을 위해 필요
-			menuPos = communityVO.getTopMenuList().get(0).getMenuPos();
+		if( "".equals(menuNm) && communityVO.getTopMenuList().size() != 0 ) { // 초기 화면을 위해 필요
+			menuNm = communityVO.getTopMenuList().get(0).getMenuNm();
 		}
-//		logger.debug("menuPos = " + menuPos);
+//		logger.debug("menuNm = " + menuNm);
 
 		if( "".equals(contentUrl) ) {
-			
-			MenuVO menuVO = cmmntyService.getMenuInfo(communityVO, menuPos);
+			MenuVO menuVO = cmmntyService.getMenuInfo(communityVO, menuNm);
 			contentUrl = menuVO.getContentUrl();
 		}
 		
 		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
 		requestAttributes.setAttribute("curTarget", alias, RequestAttributes.SCOPE_REQUEST);
-		requestAttributes.setAttribute("curMenuPos", menuPos, RequestAttributes.SCOPE_REQUEST);
+		requestAttributes.setAttribute("curMenuNm", menuNm, RequestAttributes.SCOPE_REQUEST);
 
 	   	return "forward:"+contentUrl;
 	}

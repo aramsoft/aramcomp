@@ -40,7 +40,7 @@
 
 <form:form modelAttribute="progrmManageVO" action="" method="post">
 <input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuPos" value="${curMenuPos}" />
+<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <table class="table-register" summary="프로그램목록 상세조회 /수정">
 <caption>프로그램목록 상세조회 /수정</caption>

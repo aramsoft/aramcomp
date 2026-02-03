@@ -465,7 +465,7 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 	 * @param menuId
 	 */
 	@SuppressWarnings("unchecked")
-	public CommunityVO getCommunityLayoutInfo(String cmmntyAlias, String menuPos) {
+	public CommunityVO getCommunityLayoutInfo(String cmmntyAlias, String menuName) {
 		HashMap<String, Object> cacheMap = null;
 		
 		cacheMap = (HashMap<String, Object>) cacheDictionary.get(CacheKey.CMY_PREFIX + cmmntyAlias);
@@ -500,15 +500,18 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 
         if( topMenuList.size() == 0 ) return communityVO;
         
-		if( !"".equals(menuPos) ) {
-			String menuGroup = menuPos.substring(0,2);
-		
-			String subMenuKey = CacheKey.CMY_SUBMENU+menuGroup+"0000";
+		if( !"".equals(menuName) ) {
+			CommunityMenuVO communityMenuVO = new CommunityMenuVO();
+			communityMenuVO.setTrgetId(communityVO.getCmmntyId());
+			communityMenuVO.setMenuNm(menuName);
+			String menuPos = cmyMenuManageMapper.selectMenuPosByMenuNm(communityMenuVO);
+
+			String subGroup = menuPos.substring(0,2); // Top Menu의 subgroup 을 검색해서 저장
+			String subMenuKey = CacheKey.CMY_SUBMENU+subGroup+"0000";
 			List<MenuVO> subMenuList = (List<MenuVO>) cacheMap.get(subMenuKey);
 			if( subMenuList == null ) {
-				CommunityMenuVO communityMenuVO = new CommunityMenuVO();
 				communityMenuVO.setTrgetId(communityVO.getCmmntyId());
-				communityMenuVO.setMenuPos(menuGroup);
+				communityMenuVO.setMenuPos(subGroup);
 				subMenuList = this.selectCommunitySubMenuInfs(communityMenuVO);
 				cacheMap.put(subMenuKey, subMenuList);
 			}
@@ -555,27 +558,27 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 	 * 
 	 * @param cmmntyId
 	 */
-	public MenuVO getMenuInfo(CommunityVO communityVO, String menuPos) {
+	public MenuVO getMenuInfo(CommunityVO communityVO, String menuNm) {
 		
-		if( menuPos == null || menuPos.equals("") ) return null;
+		if( menuNm == null || menuNm.equals("") ) return null;
 		
 		// check topMenuList
 		List<MenuVO> menuList = communityVO.getTopMenuList();
-		MenuVO menuVO = findMenu(menuPos, menuList);
+		MenuVO menuVO = findMenu(menuNm, menuList);
 		if( menuVO != null ) {
 			return menuVO;
 		} 
 		
 		// check mgrMenuList
 		menuList = communityVO.getMgrMenuList();
-		menuVO = findMenu(menuPos, menuList);
+		menuVO = findMenu(menuNm, menuList);
 		if( menuVO != null ) {
 			return menuVO;
 		} 
 
 		// check subMenuList
 		menuList = communityVO.getSubMenuList();
-		menuVO = findMenu(menuPos, menuList);
+		menuVO = findMenu(menuNm, menuList);
 		if(  menuVO != null ) {
 			return menuVO;
 		} 
@@ -583,10 +586,10 @@ public class CommunityManageService extends EgovAbstractServiceImpl {
 		return null;
 	}
 	
-	private MenuVO findMenu(String menuPos, List<MenuVO> menuList) {
+	private MenuVO findMenu(String menuNm, List<MenuVO> menuList) {
 
 		for (MenuVO menuVO : menuList) {
-			if( menuPos.equals(menuVO.getMenuPos())) {
+			if( menuNm.equals(menuVO.getMenuNm())) {
 				return menuVO;
 			}
 		}

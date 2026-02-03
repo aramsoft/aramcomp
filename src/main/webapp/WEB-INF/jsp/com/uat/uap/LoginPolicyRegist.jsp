@@ -39,7 +39,7 @@
 
 <form:form modelAttribute="loginPolicyVO" method="post" action="">
 <input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuPos" value="${curMenuPos}" />
+<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <table class="table-register" summary="로그인정책을 등록한다.">
 <caption>로그인정책 등록</caption>

@@ -40,7 +40,7 @@
 <!-- 등록  폼 영역  -->
 <form:form modelAttribute="cpyrhtPrtcPolicyVO" action="" method="post">
 <input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuPos" value="${curMenuPos}" />
+<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <form:hidden path="cpyrhtId" />
 

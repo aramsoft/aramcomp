@@ -29,7 +29,7 @@
 	
 <form name="stplatForm" action="${pageContext.request.contextPath}/sec/rnc/confirmRlnm.do" method="post">
 <input type=hidden name="curTarget" value="${curTarget}" />
-<input type=hidden name="curMenuPos" value="${curMenuPos}" />
+<input type=hidden name="curMenuNm" value="${curMenuNm}" />
 
 <input type="hidden" name="sbscrbTy" value="${sbscrbTy}"/>
 <!-- 실명인증의 기본옵션은 주민번호 실명확인임 : 주민번호 실명인증 으로 가기위한 초기화값 -->

@@ -38,7 +38,7 @@
 
 <form:form modelAttribute="restdeVO" method="post" action="">
 <input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuPos" value="${curMenuPos}" />
+<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <!-- 등록  폼 영역  -->
 <table class="table-register" summary="휴일 일자, 휴일명, 휴일설명, 휴일구분을 입력하여 휴일을 등록한다.">

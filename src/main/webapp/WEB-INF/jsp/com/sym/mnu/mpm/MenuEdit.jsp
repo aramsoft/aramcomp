@@ -55,7 +55,7 @@
 
 <form:form modelAttribute="menuManageVO" action="" method="post">
 <input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuPos" value="${curMenuPos}" />
+<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <table class="table-register" summary="메뉴상세정보">
 <caption>메뉴상세정보 </caption>

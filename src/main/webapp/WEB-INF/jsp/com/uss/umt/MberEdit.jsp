@@ -41,7 +41,7 @@
 
 <form:form modelAttribute="mberManageVO" action="" method="post">
 <input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuPos" value="${curMenuPos}" />
+<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <!-- 상세정보 사용자 삭제시 prameter 전달용 input -->
 <input name="checkedIdForDel" type="hidden" />

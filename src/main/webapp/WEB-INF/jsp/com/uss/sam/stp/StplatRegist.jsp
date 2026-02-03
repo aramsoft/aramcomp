@@ -39,7 +39,7 @@
 <!-- 등록  폼 영역  -->
 <form:form modelAttribute="stplatManageVO" action="" method="post"> 
 <input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuPos" value="${curMenuPos}" />
+<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <table class="table-register" summary="이 표는 약관내용 대상 정보를 제공하며, 이용약관명, 이용약관내용, 정보제공동의내용 정보로 구성되어 있습니다 .">
   	<tr> 

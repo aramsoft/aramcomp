@@ -39,7 +39,7 @@
 
 <form:form modelAttribute="progrmManageVO" method="post" action="">
 <input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuPos" value="${curMenuPos}" />
+<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <table class="table-register" summary="프로그램목록 등록">
 <caption>프로그램목록 등록</caption>

@@ -55,9 +55,9 @@ public class TilesInterceptor implements HandlerInterceptor {
 			request.setAttribute("curTarget", curTarget);
 		}
 		
-		String curMenuPos = request.getParameter("curMenuPos");
-		if( curMenuPos != null && !"".equals(curMenuPos)) {
-			request.setAttribute("curMenuPos", curMenuPos);
+		String curMenuNm = request.getParameter("curMenuNm");
+		if( curMenuNm != null && !"".equals(curMenuNm)) {
+			request.setAttribute("curMenuNm", curMenuNm);
 		}
 		
 		String fullScrYn = request.getParameter("fullScrYn");
@@ -106,15 +106,15 @@ public class TilesInterceptor implements HandlerInterceptor {
 		if( fullScrYn != null && "Y".equals(fullScrYn) ) return;
 
 		String curTarget = (String) request.getAttribute("curTarget");
-		String menuPos = (String) request.getAttribute("curMenuPos");
+		String curMenuNm = (String) request.getAttribute("curMenuNm");
 		
 		if (curTarget == null) {
 			return;
 		}
 		
-		logger.debug("curTarget = " + curTarget + ", menuPos = " + menuPos);
+		logger.debug("curTarget = " + curTarget + ", curMenuNm = " + curMenuNm);
 		
-        CommunityVO communityVO = cmmntyService.getCommunityLayoutInfo(curTarget, menuPos);
+        CommunityVO communityVO = cmmntyService.getCommunityLayoutInfo(curTarget, curMenuNm);
         modelAndView.addObject("targetVO", communityVO);
 	
 		// --------------------------------

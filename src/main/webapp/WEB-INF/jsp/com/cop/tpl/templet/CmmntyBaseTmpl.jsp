@@ -96,7 +96,7 @@
 			<c:forEach var="menu" items="${targetVO.mgrMenuList}" varStatus="status">
 		        <li><a href="#" onclick="javascript:fn_aram_loadMenu('<c:out value="${menu.menuNm}"/>'); return false;"><c:out value="${menu.menuKnm}"/></a></li>
 			</c:forEach>
-		    <li><a href="#" onclick="javascript:fn_aram_loadMenuUrl('<c:url value="/cop/cmy/listMenu.do"/>', '000000'); return false;">메뉴관리</a></li>
+		    <li><a href="#" onclick="javascript:fn_aram_loadMenuUrl('<c:url value="/cop/cmy/listMenu.do"/>', 'manage'); return false;">메뉴관리</a></li>
 			</ul>
 	    </nav>    
 	    <!-- 관리자 메뉴 부분 End -->
@@ -196,8 +196,7 @@
 
 if("${message}" != ''){	alert("${message}");}
 
-var cur_menuPos = "${curMenuPos}";
-var cur_menuNm = "${targetVO.curMenuNm}";
+var curMenuNm = "${curMenuNm}";
 
 function fn_aram_goCmmntyHome(){
 	var alias = "${pageContext.request.contextPath}${targetVO.cmmntyAlias}";
@@ -207,7 +206,7 @@ function fn_aram_goCmmntyHome(){
 function fn_aram_login(){
 	var url = "${pageContext.request.contextPath}/uat/uia/loginUsr.do";
 	url = url + "?targetUrl=" + get_curmenu_url();
-	url = url + "&curTarget=${targetVO.cmmntyAlias}&curMenuPos="+cur_menuPos;
+	url = url + "&curTarget=${targetVO.cmmntyAlias}&curMenuNm="+curMenuNm;
 	fn_aram_load(url);
 }
 
@@ -222,17 +221,17 @@ function fn_aram_loadMenu(menuNm){
 	fn_aram_load(url);
 }
 
-function fn_aram_loadMenuUrl(url, menuPos){
+function fn_aram_loadMenuUrl(url, menuNm){
   	if( url.indexOf('?') != -1 ) {
-		url = url+"&curTarget=${targetVO.cmmntyId}&curMenuPos="+menuPos;
+		url = url+"&curTarget=${targetVO.cmmntyAlias}&curMenuNm="+menuNm;
 	} else {
-		url = url+"?curTarget=${targetVO.cmmntyId}&curMenuPos="+menuPos;
+		url = url+"?curTarget=${targetVO.cmmntyAlias}&curMenuNm="+menuNm;
 	}
 	fn_aram_load(url);
 }
 
 function get_curmenu_url() {
-	return "${pageContext.request.contextPath}/apps/${targetVO.cmmntyAlias}/" + cur_menuNm;
+	return "${pageContext.request.contextPath}/apps/${targetVO.cmmntyAlias}/" + curMenuNm;
 }
 
 function fn_aram_load(url) {
@@ -241,7 +240,7 @@ function fn_aram_load(url) {
 
 function fn_aram_subscribe(){
 	var url = "${pageContext.request.contextPath}/uss/umt/stplatMberView.do";
-	url = url + "?curTarget=${targetVO.cmmntyId}&curMenuPos="+cur_menuPos;
+	url = url + "?curTarget=${targetVO.cmmntyAlias}&curMenuNm="+curMenuNm;
 	fn_aram_load(url);
 }
 
@@ -259,7 +258,7 @@ function fn_aram_updateUser(userSe){
 	} else if ( userSe == 'USR' ) {
 		url = "${pageContext.request.contextPath}/uss/umt/editEmplyr.do?emplyrId=${loginVO.userId}";
 	}	
-	url = url + "&curTarget=${targetVO.cmmntyId}&curMenuPos="+cur_menuPos;
+	url = url + "&curTarget=${targetVO.cmmntyAlias}&curMenuNm="+curMenuNm;
 	fn_aram_load(url);
 }
 

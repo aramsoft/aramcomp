@@ -39,7 +39,7 @@
 
 <form:form modelAttribute="batchSchdulVO"  action="" method="post">
 <input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuPos" value="${curMenuPos}" />
+<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <table class="table-register" summary="배치스케줄 수정기능을 제공한다.">
 <caption>배치스케줄 수정</caption>

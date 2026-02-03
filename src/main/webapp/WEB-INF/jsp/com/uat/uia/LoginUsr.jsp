@@ -79,13 +79,13 @@ function goRegiUsr() {
     // 일반회원
     if (userSe == "GNR") {
     	var url = "${pageContext.request.contextPath}/uss/umt/stplatMberView.do";
-    	url = url + "?trgetId=${trgetId}&curMenuPos=${curMenuPos}";
+    	url = url + "?trgetId=${trgetId}&curMenuNm=${curMenuNm}";
         document.loginForm.action=url;
         document.loginForm.submit();
     // 기업회원
     } else if (userSe == "ENT") {
     	var url = "${pageContext.request.contextPath}/uss/umt/stplatEntrprsMberView.do";
-    	url = url + "?trgetId=${trgetId}&curMenuPos=${curMenuPos}";
+    	url = url + "?trgetId=${trgetId}&curMenuNm=${curMenuNm}";
         document.loginForm.action=url;
         document.loginForm.submit();
     } 

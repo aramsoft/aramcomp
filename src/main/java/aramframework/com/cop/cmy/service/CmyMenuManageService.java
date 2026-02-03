@@ -122,10 +122,7 @@ public class CmyMenuManageService extends EgovAbstractServiceImpl {
 	 * @param cmmntyId
 	 * @param menuAlias
 	 */
-	public String selectMenuPosByMenuNm(String cmmntyId, String menuNm) {
-		CommunityMenuVO communityMenuVO = new CommunityMenuVO();
-		communityMenuVO.setTrgetId(cmmntyId);
-		communityMenuVO.setMenuNm(menuNm);
+	public String selectMenuPosByMenuNm(CommunityMenuVO communityMenuVO) {
 		return cmyMenuManageMapper.selectMenuPosByMenuNm(communityMenuVO);
 	}
 	

@@ -31,7 +31,6 @@
 <input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <input type="hidden" name="menuNm" value=""/>
-<input type="hidden" name="trgetId" value="${curTarget}">
 
 <div id="search_area">
 	<div class="search_left">

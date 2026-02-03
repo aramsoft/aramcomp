@@ -108,8 +108,8 @@
     </tr>
     <tr>
       <td valign="top">&nbsp;-&nbsp;
-      	<a href="${pageContext.request.contextPath}/apps/opensource" target="_new">
-      		오픈소스모임
+      	<a href="${pageContext.request.contextPath}/apps/aramcomp" target="_new">
+      		아람컴포넌트
       	</a>
       </td>
     </tr>

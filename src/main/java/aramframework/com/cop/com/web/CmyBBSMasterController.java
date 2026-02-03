@@ -21,6 +21,7 @@ import aramframework.com.cop.bbs.domain.BoardMasterVO;
 import aramframework.com.cop.bbs.domain.BoardUseInfVO;
 import aramframework.com.cop.bbs.service.BBSMasterService;
 import aramframework.com.cop.bbs.service.BBSUseInfoService;
+import aramframework.com.cop.cmy.service.CommunityManageService;
 import aramframework.com.cop.com.service.UserInfService;
 import aramframework.com.uat.uia.domain.LoginVO;
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -33,6 +34,9 @@ import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
  */
 @Controller
 public class CmyBBSMasterController {
+
+	@Autowired 
+	private CommunityManageService cmmntyService;
 
 	@Autowired
 	private BBSMasterService bbsMasterService;
@@ -71,11 +75,11 @@ public class CmyBBSMasterController {
 
 		checkAuthorityManager(); // server-side 권한 확인
 
-		String trgetId = WebUtil.getCurTrgetId();
-		
 		if( boardMasterVO.getTrgetId() == null 
 			|| boardMasterVO.getTrgetId().equals("") ) {
-			boardMasterVO.setTrgetId(trgetId);
+			String target = WebUtil.getCurTarget();
+	        String cmmntyId = cmmntyService.getCommunityOnlyInfo(target).getCmmntyId();
+			boardMasterVO.setTrgetId(cmmntyId);
 		}
 		
 		PaginationInfo paginationInfo = new PaginationInfo();

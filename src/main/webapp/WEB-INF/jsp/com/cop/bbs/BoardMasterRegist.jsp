@@ -37,7 +37,7 @@
 </div>
 
 <form:form modelAttribute="boardMasterVO" method="post" action="">
-<input type="hidden" name="curTrgetId" value="${curTrgetId}" />
+<input type="hidden" name="curTarget" value="${curTarget}" />
 <input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
 <table class="table-register" summary="게시판명,게시판소개,게시판 유형,게시판 속성,답장가능여부,파일첨부가능여부, ..  입니다">

@@ -39,7 +39,7 @@
 </div>
 
 <form:form modelAttribute="progrmManageDtlVO" method="post">
-<input type="hidden" name="curTrgetId" value="${curTrgetId}" />
+<input type="hidden" name="curTarget" value="${curTarget}" />
 <input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
 <div style="margin-top:10px; width:100%"></div>

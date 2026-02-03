@@ -32,7 +32,7 @@
 	<div class="search_right">
 		<span class="button_area">
 	    	<span class="button"><a href="#" onclick="javascript:fn_aram_update(); return false;"><spring:message code="button.save" /></a></span>
-			<c:if test="${isAdmin=='true' and curTrgetId == ''}">
+			<c:if test="${isAdmin=='true' and curTarget == ''}">
 	    		<span class="button"><a href="#" onclick="javascript:fn_aram_list(); return false;"><spring:message code="button.list" /></a></span>
 	   		</c:if>
 		</span>
@@ -40,7 +40,7 @@
 </div>
 
 <form:form modelAttribute="communityVO" action="" method="post"  enctype="multipart/form-data">
-<input type="hidden" name="curTrgetId" value="${curTrgetId}" />
+<input type="hidden" name="curTarget" value="${curTarget}" />
 <input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
 <form:hidden path="cmmntyId" />

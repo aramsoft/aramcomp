@@ -140,11 +140,11 @@ public class CommunityManageController {
 		
 		checkAuthorityManager(); // server-side 권한 확인
 
-		String trgetId = WebUtil.getCurTrgetId();
-		
 		if( communityVO.getCmmntyId() == null 
 			|| communityVO.getCmmntyId().equals("") ) {
-			communityVO.setCmmntyId(trgetId);
+			String target = WebUtil.getCurTarget();
+	        String cmmntyId = cmmntyService.getCommunityOnlyInfo(target).getCmmntyId();
+			communityVO.setCmmntyId(cmmntyId);
 		}
 		
 		communityVO = cmmntyService.selectCommunityInfById(communityVO.getCmmntyId());
@@ -306,8 +306,10 @@ public class CommunityManageController {
 			@RequestParam(value="trgetId", required=false) String trgetId,
 			ModelMap model) {
 
-		if( trgetId == null || "".equals(trgetId)) 
-			trgetId = WebUtil.getCurTrgetId();
+		if( trgetId == null || "".equals(trgetId)) {
+			String target = WebUtil.getCurTarget();
+			trgetId = cmmntyService.getCommunityOnlyInfo(target).getCmmntyId();
+		}
 		
 		String retVal = "";
 

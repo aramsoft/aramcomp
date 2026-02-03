@@ -50,9 +50,9 @@ public class TilesInterceptor implements HandlerInterceptor {
 			Object handler) 
 	throws Exception {
 
-		String curTrgetId = request.getParameter("curTrgetId");
-		if( curTrgetId != null && !"".equals(curTrgetId) ) {
-			request.setAttribute("curTrgetId", curTrgetId);
+		String curTarget = request.getParameter("curTarget");
+		if( curTarget != null && !"".equals(curTarget) ) {
+			request.setAttribute("curTarget", curTarget);
 		}
 		
 		String curMenuPos = request.getParameter("curMenuPos");
@@ -105,23 +105,22 @@ public class TilesInterceptor implements HandlerInterceptor {
 		String fullScrYn = (String) request.getAttribute("fullScrYn");
 		if( fullScrYn != null && "Y".equals(fullScrYn) ) return;
 
-		String cmmntyId = (String) request.getAttribute("curTrgetId");
+		String curTarget = (String) request.getAttribute("curTarget");
 		String menuPos = (String) request.getAttribute("curMenuPos");
 		
-		if (cmmntyId == null || !cmmntyId.startsWith("CMMNTY_") ) {
+		if (curTarget == null) {
 			return;
 		}
 		
-		logger.debug("cmmntyId = " + cmmntyId + ", menuPos = " + menuPos);
+		logger.debug("curTarget = " + curTarget + ", menuPos = " + menuPos);
 		
-		String alias = cmmntyService.selectCommunityInfById(cmmntyId).getCmmntyAlias();
-        CommunityVO communityVO = cmmntyService.getCommunityLayoutInfo(alias, menuPos);
+        CommunityVO communityVO = cmmntyService.getCommunityLayoutInfo(curTarget, menuPos);
         modelAndView.addObject("targetVO", communityVO);
 	
 		// --------------------------------
 		// 커뮤니티 사용자 정보
 		// --------------------------------
-        modelAndView.addObject("targetUserVO", cmmntyService.getCommunityUserInfo(cmmntyId));
+        modelAndView.addObject("targetUserVO", cmmntyService.getCommunityUserInfo(communityVO.getCmmntyId()));
 		
 		// --------------------------------
 		// 커뮤니티 템플릿 정보

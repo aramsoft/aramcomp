@@ -39,10 +39,10 @@
 
 <!-- 등록  폼 영역  -->
 <form:form modelAttribute="communityMenuVO" method="post" enctype="multipart/form-data">
-<input type="hidden" name="curTrgetId" value="${curTrgetId}" />
+<input type="hidden" name="curTarget" value="${curTarget}" />
 <input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
-<input type="hidden" name="trgetId" value="${curTrgetId}" />
+<input type="hidden" name="trgetId" value="${curTarget}" />
 
 <table class="table-register" summary="메뉴 엑셀파일을 첨부할 수 있는 등록 테이블이다.">
 <CAPTION>메뉴 엑셀파일 등록</CAPTION>

@@ -17,9 +17,9 @@ import aramframework.com.cmm.code.domain.ComCodeVO;
  */
 public class WebUtil {
 
-	public static String getCurTrgetId() {
+	public static String getCurTarget() {
 		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
-		return (String) requestAttributes.getAttribute("curTrgetId", RequestAttributes.SCOPE_REQUEST);
+		return (String) requestAttributes.getAttribute("curTarget", RequestAttributes.SCOPE_REQUEST);
 	}
 	
 	/**

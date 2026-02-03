@@ -147,7 +147,7 @@ public class CmyMenuHomeController  {
 		}
 		
 		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
-		requestAttributes.setAttribute("curTrgetId", communityVO.getCmmntyId(), RequestAttributes.SCOPE_REQUEST);
+		requestAttributes.setAttribute("curTarget", alias, RequestAttributes.SCOPE_REQUEST);
 		requestAttributes.setAttribute("curMenuPos", menuPos, RequestAttributes.SCOPE_REQUEST);
 
 	   	return "forward:"+contentUrl;
@@ -184,17 +184,18 @@ public class CmyMenuHomeController  {
 	 */
 	@RequestMapping("/cop/cmy/CmmntyMainContents.do")
 	public String CmmntyMainContents(
-			@RequestParam(value="trgetId", required=false) String trgetId,
+			@RequestParam(value="target", required=false) String target,
 			ModelMap model) {
 
-		if( trgetId == null || "".equals(trgetId)) 
-			trgetId = WebUtil.getCurTrgetId();
+		if( target == null || "".equals(target)) 
+			target = WebUtil.getCurTarget();
 		
+        String cmmntyId = cmmntyService.getCommunityOnlyInfo(target).getCmmntyId();
 		// --------------------------------
 		// 게시판 목록 정보 처리
 		// --------------------------------
 		BoardMasterVO boardMasterVO = new BoardMasterVO();
-		boardMasterVO.setTrgetId(trgetId);
+		boardMasterVO.setTrgetId(cmmntyId);
 
 		List<BoardMasterVO> bbsList = bbsMasterService.selectAllBdMstrByTrget(boardMasterVO);
 		BoardMasterVO bMasterVO[] = new BoardMasterVO[6];
@@ -222,7 +223,7 @@ public class CmyMenuHomeController  {
 		// 게시물 목록 정보 처리
 		// --------------------------------
 		BoardVO boardVO = null;
-		ArrayList<Object> target = new ArrayList<Object>(); // Object => List<BoardVO>
+		ArrayList<Object> articleList = new ArrayList<Object>(); // Object => List<BoardVO>
 		for (int i = 0; i < bbsList.size() && i < 5; i++) {
 			boardMasterVO = bbsList.get(i);
 			boardVO = new BoardVO();
@@ -234,10 +235,10 @@ public class CmyMenuHomeController  {
 			boardVO.setFirstIndex(0);
 			boardVO.setRecordPerPage(5);
 
-			target.add(boardService.selectBoardArticleList(boardVO));
+			articleList.add(boardService.selectBoardArticleList(boardVO));
 		}
 
-		model.addAttribute("articleList", target);
+		model.addAttribute("articleList", articleList);
 		
 		return "com/cop/cmy/CmmntyMainContents";
 	}

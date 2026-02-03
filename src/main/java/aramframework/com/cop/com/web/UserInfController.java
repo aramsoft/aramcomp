@@ -96,11 +96,11 @@ public class UserInfController {
 			checkAuthorityManager(); // server-side 권한 확인
 		}
 
-		String trgetId = WebUtil.getCurTrgetId();
-		
 		if( userInfVO.getTrgetId() == null 
 			|| userInfVO.getTrgetId().equals("") ) {
-			userInfVO.setTrgetId(trgetId);
+			String target = WebUtil.getCurTarget();
+	        String cmmntyId = cmmntyService.getCommunityOnlyInfo(target).getCmmntyId();
+			userInfVO.setTrgetId(cmmntyId);
 		}
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
@@ -142,11 +142,11 @@ public class UserInfController {
 			checkAuthorityManager(); // server-side 권한 확인
 		}
 
-		String trgetId = WebUtil.getCurTrgetId();
-		
 		if( userInfVO.getTrgetId() == null 
 			|| userInfVO.getTrgetId().equals("") ) {
-			userInfVO.setTrgetId(trgetId);
+			String target = WebUtil.getCurTarget();
+	        String cmmntyId = cmmntyService.getCommunityOnlyInfo(target).getCmmntyId();
+			userInfVO.setTrgetId(cmmntyId);
 		}
 		
 		PaginationInfo paginationInfo = new PaginationInfo();

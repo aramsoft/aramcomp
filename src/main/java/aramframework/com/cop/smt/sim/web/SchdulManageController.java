@@ -26,6 +26,7 @@ import aramframework.com.cmm.code.domain.ComCodeVO;
 import aramframework.com.cmm.code.service.CmmUseService;
 import aramframework.com.cmm.com.annotation.IncludedInfo;
 import aramframework.com.cmm.file.web.FileMngUtil;
+import aramframework.com.cop.cmy.service.CommunityManageService;
 import aramframework.com.cop.smt.sim.domain.SchdulManageVO;
 import aramframework.com.cop.smt.sim.service.SchdulManageService;
 import aramframework.com.sym.cal.domain.RestdeVO;
@@ -42,6 +43,9 @@ import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
  */
 @Controller
 public class SchdulManageController {
+
+	@Autowired 
+	private CommunityManageService cmmntyService;
 
 	@Autowired 
 	private RestdeManageService restdeManageService;
@@ -201,7 +205,9 @@ public class SchdulManageController {
 			loginVO = new LoginVO();
 		}
 		schdulManageVO.setUserId(loginVO.getUserId());
-		schdulManageVO.setTrgetId((String)request.getAttribute("curTrgetId"));
+		String target = WebUtil.getCurTarget();
+        String cmmntyId = cmmntyService.getCommunityOnlyInfo(target).getCmmntyId();
+		schdulManageVO.setTrgetId(cmmntyId);
 
 		model.addAttribute("resultList", schdulManageService.selectSchdulManageRetrieve(schdulManageVO));
 
@@ -328,7 +334,9 @@ public class SchdulManageController {
 			loginVO = new LoginVO();
 		}
 		schdulManageVO.setUserId(loginVO.getUserId());
-		schdulManageVO.setTrgetId((String)request.getAttribute("curTrgetId"));
+		String target = WebUtil.getCurTarget();
+        String cmmntyId = cmmntyService.getCommunityOnlyInfo(target).getCmmntyId();
+		schdulManageVO.setTrgetId(cmmntyId);
 
 		model.addAttribute("resultList", schdulManageService.selectSchdulManageRetrieve(schdulManageVO));
 
@@ -385,7 +393,9 @@ public class SchdulManageController {
 			loginVO = new LoginVO();
 		}
 		schdulManageVO.setUserId(loginVO.getUserId());
-		schdulManageVO.setTrgetId((String)request.getAttribute("curTrgetId"));
+		String target = WebUtil.getCurTarget();
+        String cmmntyId = cmmntyService.getCommunityOnlyInfo(target).getCmmntyId();
+		schdulManageVO.setTrgetId(cmmntyId);
 
 		model.addAttribute("resultList", schdulManageService.selectSchdulManageRetrieve(schdulManageVO));
 

@@ -47,12 +47,13 @@ public class UserInfService extends EgovAbstractServiceImpl {
 		}
 		
 		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
-		String trgetId = (String) requestAttributes.getAttribute("curTrgetId", RequestAttributes.SCOPE_REQUEST);
-		
-		if (trgetId.startsWith("CMMNTY_")) {
+		String target = (String) requestAttributes.getAttribute("curTarget", RequestAttributes.SCOPE_REQUEST);
+        String cmmntyId = cmmntyService.getCommunityOnlyInfo(target).getCmmntyId();
+
+        if (cmmntyId.startsWith("CMMNTY_")) {
 			CommunityUserVO communityUserVO = new CommunityUserVO();
 
-			communityUserVO.setCmmntyId(trgetId);
+			communityUserVO.setCmmntyId(cmmntyId);
 			communityUserVO.setEmplyrId(loginVO.getUserId());
 
 			if (cmmntyService.checkCommunityUserInf(communityUserVO).equals("EXIST")) {
@@ -80,12 +81,13 @@ public class UserInfService extends EgovAbstractServiceImpl {
 		}
 		
 		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
-		String trgetId = (String) requestAttributes.getAttribute("curTrgetId", RequestAttributes.SCOPE_REQUEST);
+		String target = (String) requestAttributes.getAttribute("curTarget", RequestAttributes.SCOPE_REQUEST);
+        String cmmntyId = cmmntyService.getCommunityOnlyInfo(target).getCmmntyId();
 		
-		if (trgetId.startsWith("CMMNTY_")) {
+		if (cmmntyId.startsWith("CMMNTY_")) {
 			CommunityUserVO communityUserVO = new CommunityUserVO();
 
-			communityUserVO.setCmmntyId(trgetId);
+			communityUserVO.setCmmntyId(cmmntyId);
 			communityUserVO.setEmplyrId(loginVO.getUserId());
 
 			if (cmmntyService.isManager(communityUserVO)) {

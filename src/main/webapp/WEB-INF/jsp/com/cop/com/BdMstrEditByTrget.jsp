@@ -38,7 +38,7 @@
 </div>
 
 <form:form modelAttribute="boardMasterVO" action="" method="post">
-<input type="hidden" name="curTrgetId" value="${curTrgetId}" />
+<input type="hidden" name="curTarget" value="${curTarget}" />
 <input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
 <form:hidden path="bbsId" />

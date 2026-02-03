@@ -32,7 +32,6 @@ import aramframework.com.cop.bbs.domain.BoardVO;
 import aramframework.com.cop.bbs.service.BBSCommentService;
 import aramframework.com.cop.bbs.service.BBSMasterService;
 import aramframework.com.cop.bbs.service.BBSSatisfactionService;
-import aramframework.com.cop.cmy.service.CommunityManageService;
 import aramframework.com.cop.bbs.service.BBSBoardService;
 import aramframework.com.cop.com.service.UserInfService;
 import aramframework.com.cop.scp.service.BBSScrapService;
@@ -52,9 +51,6 @@ public class BBSBoardController {
 
 	@Resource(name = "cacheDictionary")
 	private Map<String, Object> cacheDictionary;
-
-	@Autowired 
-	private CommunityManageService cmmntyService;
 
 	@Autowired
 	private BBSBoardService boardService;
@@ -348,15 +344,13 @@ public class BBSBoardController {
 	private void setDirectUrlToModel(BoardVO boardVO, ModelMap model) {
 		
 		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
-		String trgetId = (String) requestAttributes.getAttribute("curTrgetId", RequestAttributes.SCOPE_REQUEST);
+		String target = (String) requestAttributes.getAttribute("curTarget", RequestAttributes.SCOPE_REQUEST);
 		String contextUrl = (String) requestAttributes.getAttribute("contextUrl", RequestAttributes.SCOPE_REQUEST);
 
 		String directUrl = "";
-		if( trgetId != null 
-				&& trgetId != "" 
-				&& trgetId.indexOf("CMMNTY_") != -1) {
-			String alias = cmmntyService.selectCommunityInfById(trgetId).getCmmntyAlias();
-			directUrl = contextUrl + "/apps/"+alias+"/board/"+boardVO.getPathId()+"/article/"+boardVO.getNttId();
+		if( target != null 
+				&& target != "" ) {
+			directUrl = contextUrl + "/apps/"+target+"/board/"+boardVO.getPathId()+"/article/"+boardVO.getNttId();
 		} else {
 			directUrl = contextUrl + "/board/"+boardVO.getPathId()+"/article/"+ boardVO.getNttId();
 		}

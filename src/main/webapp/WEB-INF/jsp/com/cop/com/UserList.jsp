@@ -27,11 +27,11 @@
 </div>
 
 <form:form modelAttribute="userInfVO" action="" method="post">
-<input type="hidden" name="curTrgetId" value="${curTrgetId}" />
+<input type="hidden" name="curTarget" value="${curTarget}" />
 <input type="hidden" name="curMenuPos" value="${curMenuPos}" />
 
 <input type="hidden" name="targetMethod" value="${targetMethod}" />
-<input type="hidden" name="trgetId" value="${curTrgetId}" />
+<input type="hidden" name="trgetId" value="${curTarget}" />
 
 <input type="hidden" name="param_emplyrId" />
 <input type="hidden" name="param_cmmntyId" />

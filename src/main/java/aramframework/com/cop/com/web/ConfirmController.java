@@ -12,6 +12,7 @@ import aramframework.cmm.security.userdetails.UserDetailsHelper;
 import aramframework.cmm.util.MessageHelper;
 import aramframework.cmm.util.WebUtil;
 import aramframework.com.cmm.code.service.CmmUseService;
+import aramframework.com.cop.cmy.service.CommunityManageService;
 import aramframework.com.cop.com.domain.ConfirmHistoryVO;
 import aramframework.com.cop.com.service.ConfirmService;
 import aramframework.com.cop.com.service.UserInfService;
@@ -26,6 +27,9 @@ import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
  */
 @Controller
 public class ConfirmController {
+
+	@Autowired 
+	private CommunityManageService cmmntyService;
 
 	@Autowired 
 	private ConfirmService confirmService;
@@ -58,7 +62,9 @@ public class ConfirmController {
 
 		checkAuthorityManager(); // server-side 권한 확인
 
-		confirmHistoryVO.setTrgetJobId(WebUtil.getCurTrgetId());
+		String target = WebUtil.getCurTarget();
+        String cmmntyId = cmmntyService.getCommunityOnlyInfo(target).getCmmntyId();
+		confirmHistoryVO.setTrgetJobId(cmmntyId);
 		
 		LoginVO loginVO = (LoginVO) UserDetailsHelper.getAuthenticatedUser();
 		confirmHistoryVO.setConfmerId(loginVO.getUserId());

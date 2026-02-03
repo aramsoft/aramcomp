@@ -26,6 +26,7 @@ import aramframework.cmm.util.WebUtil;
 import aramframework.com.cop.cmy.domain.CommunityMenuVO;
 import aramframework.com.cop.cmy.excel.ExcelCmyMenuView;
 import aramframework.com.cop.cmy.service.CmyMenuManageService;
+import aramframework.com.cop.cmy.service.CommunityManageService;
 import aramframework.com.cop.com.service.UserInfService;
 import aramframework.com.sym.prm.service.ProgrmManageService;
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -41,6 +42,9 @@ public class CmyMenuManageController {
 
 	@Resource(name = "cacheDictionary")
 	private Map<String, Object> cacheDictionary;
+
+	@Autowired 
+	private CommunityManageService cmmntyService;
 
 	@Autowired 
 	private CmyMenuManageService cmyMenuManageService;
@@ -80,7 +84,9 @@ public class CmyMenuManageController {
 		// check trgetId empty
 		if( communityMenuVO.getTrgetId() == null 
 			|| communityMenuVO.getTrgetId().equals("") ) {
-			communityMenuVO.setTrgetId(WebUtil.getCurTrgetId());
+			String target = WebUtil.getCurTarget();
+	        String cmmntyId = cmmntyService.getCommunityOnlyInfo(target).getCmmntyId();
+			communityMenuVO.setTrgetId(cmmntyId);
 		}
 		
 		// 내역 조회
@@ -169,7 +175,9 @@ public class CmyMenuManageController {
 		// check trgetId empty
 		if( communityMenuVO.getTrgetId() == null 
 				|| communityMenuVO.getTrgetId().equals("") ) {
-			communityMenuVO.setTrgetId(WebUtil.getCurTrgetId());
+			String target = WebUtil.getCurTarget();
+	        String cmmntyId = cmmntyService.getCommunityOnlyInfo(target).getCmmntyId();
+			communityMenuVO.setTrgetId(cmmntyId);
 		}
 		
 		model.addAttribute(cmyMenuManageService.selectMenuManage(communityMenuVO));

@@ -41,7 +41,7 @@
 <input type="hidden" name="curTarget" value="${curTarget}" />
 <input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
-<input type="hidden" name="trgetId" value="${curTarget}" />
+<form:hidden path="trgetId" />
 
 <table class="table-register" summary="메뉴상세정보">
 <caption>메뉴상세정보 </caption>

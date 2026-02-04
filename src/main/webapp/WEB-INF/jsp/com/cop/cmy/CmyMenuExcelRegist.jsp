@@ -42,7 +42,7 @@
 <input type="hidden" name="curTarget" value="${curTarget}" />
 <input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
-<input type="hidden" name="trgetId" value="${curTarget}" />
+<form:hidden path="trgetId" />
 
 <table class="table-register" summary="메뉴 엑셀파일을 첨부할 수 있는 등록 테이블이다.">
 <CAPTION>메뉴 엑셀파일 등록</CAPTION>

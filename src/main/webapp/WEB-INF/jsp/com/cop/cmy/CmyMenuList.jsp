@@ -29,8 +29,9 @@
 <form:form modelAttribute="communityMenuVO" action="" method="post">
 <input type="hidden" name="curTarget" value="${curTarget}" />
 <input type="hidden" name="curMenuNm" value="${curMenuNm}" />
-
 <input type="hidden" name="menuNm" value=""/>
+
+<form:hidden path="trgetId" />
 
 <div id="search_area">
 	<div class="search_left">

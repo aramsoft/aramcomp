@@ -368,9 +368,9 @@ public class CmyMenuManageController {
 			@ModelAttribute CommunityMenuVO communityMenuVO, 
 			ModelMap model) {
 
+		String target = WebUtil.getCurTarget();
 		HashMap<String, Object> cacheMap = null;
-		
-		cacheMap = (HashMap<String, Object>) cacheDictionary.get(CacheKey.CMY_PREFIX + communityMenuVO.getTrgetId());
+		cacheMap = (HashMap<String, Object>) cacheDictionary.get(CacheKey.CMY_PREFIX + target);
         if( cacheMap == null ) {
     		model.addAttribute("message", MessageHelper.getMessage("fail.common.delete"));
     		model.addAttribute("redirectURL", "/cop/cmy/listMenu.do");
@@ -383,6 +383,7 @@ public class CmyMenuManageController {
 	    }
     	cacheMap = null;
 	    
+		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
 		model.addAttribute("redirectURL", "/cop/cmy/listMenu.do");
 	    return "com/cmm/redirect";
     }

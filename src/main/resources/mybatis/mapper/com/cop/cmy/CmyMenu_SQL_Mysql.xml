@@ -45,7 +45,8 @@
 	</select> 
 		
 	<select id="selectMenuManage" resultType="communityMenuVO">
-			SELECT MENU_NM           		AS "menuNm"
+			SELECT TRGET_ID					AS "trgetId"
+				 , MENU_NM           		AS "menuNm"
 				 , MENU_KNM           		AS "menuKnm"
 				 , MENU_POS           		AS "menuPos"
 				 , PROGRM_FILE_NM    		AS "progrmFileNm"

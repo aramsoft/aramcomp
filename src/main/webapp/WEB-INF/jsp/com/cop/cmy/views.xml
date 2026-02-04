@@ -26,7 +26,7 @@
   </definition>
 
   <definition name="com/cop/cmy/CmmntyMainContents" extends="default">
-    <put-attribute name="title" value="커뮤니티 기본  컨텐츠" />
+    <put-attribute name="title" value="커뮤니티" />
     <put-attribute name="body" value="/WEB-INF/jsp/com/cop/cmy/CmmntyMainContents.jsp" />
   </definition>
   

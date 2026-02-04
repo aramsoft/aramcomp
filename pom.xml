@@ -34,11 +34,6 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
-		<repository>
-			<id>projectRepository</id>
-			<name>Project Repository</name>
-			<url>file://${project.basedir}/src/main/webapp/WEB-INF/lib</url>
-		</repository>
 	</repositories>
 
 	<dependencies>
@@ -271,14 +266,6 @@
 		    <version>1.0.11</version>
 		</dependency>
 				
-        <!--  M-Gov (SMS Service API) -->
-         <dependency>
-            <groupId>project</groupId>
-            <artifactId>smeapi</artifactId>
-            <version>2.7.0</version>
-        </dependency>
-    	   
-
 	</dependencies>
 	
 	<build>

@@ -47,7 +47,6 @@
 			<version>${org.egovframe.rte.version}</version>
 		</dependency>
 -->
- 
 		<dependency>
 			<groupId>org.egovframe.rte</groupId>
 			<artifactId>org.egovframe.rte.psl.dataaccess</artifactId>
@@ -112,6 +111,14 @@
 		
 		<!-- 공통컴포넌트 시작 -->
 
+		<!-- Source: https://mvnrepository.com/artifact/org.eclipse/yasson -->
+		<!-- RequestMappingHandlerAdapter 에서 필요 -->
+		<dependency>
+		    <groupId>org.eclipse</groupId>
+		    <artifactId>yasson</artifactId>
+		    <version>1.0.11</version>
+		</dependency>
+				
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
@@ -123,20 +130,6 @@
 		    <groupId>org.apache.commons</groupId>
 		    <artifactId>commons-dbcp2</artifactId>
 		    <version>2.9.0</version>
-		</dependency>
-
-        <!-- mysql driver -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.29</version>
-        </dependency>
-        
-		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
-		<dependency>
-		    <groupId>org.postgresql</groupId>
-		    <artifactId>postgresql</artifactId>
-		    <version>9.4.1212</version>
 		</dependency>
 
 		<!-- common-annotations for JSE 5 -->
@@ -159,44 +152,6 @@
 			</exclusions>
 		</dependency>
 
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-compress</artifactId>
-			<version>1.21</version>
-		</dependency>
-
-		<!-- Scheduling -->
-        <dependency>
-            <groupId>org.quartz-scheduler</groupId>
-            <artifactId>quartz</artifactId>
-            <version>2.3.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.quartz-scheduler</groupId>
-            <artifactId>quartz-jobs</artifactId>
-            <version>2.3.2</version>
-        </dependency>
-		<!-- Scheduling end-->
- 				
-		<!-- FTP용 3rd party 라이브러리 -->
-		<dependency>
-			<groupId>commons-net</groupId>
-			<artifactId>commons-net</artifactId>
-			<version>3.9.0</version>
-		</dependency>
-		
-		<!-- Email -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-email</artifactId>
-            <version>1.6.0</version>
-        </dependency>
-        <dependency>
-            <groupId>egovframework.com.ems</groupId>
-            <artifactId>sndng-mail</artifactId>
-            <version>1.0</version>
-        </dependency>
-
 		<!-- Cross-Site Scripting -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -218,13 +173,6 @@
 			<scope>provided</scope>
 		</dependency>
 		
-		<!-- XML스키마를 자바클래스로 생성하는 라이브러리 -->
- 		<dependency>
-			<groupId>org.apache.xmlbeans</groupId>
-			<artifactId>xmlbeans</artifactId>
-			<version>3.0.0</version>
-		</dependency>
-		
 		<!-- fileupload -->
 		<dependency>
 			<groupId>commons-io</groupId>
@@ -237,7 +185,61 @@
 			<version>1.5</version>
 		</dependency>
 
-		<!-- excel -->
+		<!-- Email -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-email</artifactId>
+            <version>1.6.0</version>
+        </dependency>
+        <dependency>
+            <groupId>egovframework.com.ems</groupId>
+            <artifactId>sndng-mail</artifactId>
+            <version>1.0</version>
+        </dependency>
+		<!-- Email -->
+
+		<!-- Scheduling -->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>2.3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz-jobs</artifactId>
+            <version>2.3.2</version>
+        </dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-compress</artifactId>
+			<version>1.21</version>
+		</dependency>
+		<!-- Scheduling end-->
+ 				
+		<!-- 공통컴포넌트 끝 -->
+		
+		<!-- Tiles -->
+    	<dependency>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-jsp</artifactId>
+            <version>3.0.8</version>
+        </dependency>
+        
+        <!-- database driver start-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.29</version>
+        </dependency>
+        
+		<dependency>
+		    <groupId>org.postgresql</groupId>
+		    <artifactId>postgresql</artifactId>
+		    <version>9.4.1212</version>
+		</dependency>
+        <!-- database driver end-->
+
+		<!-- excel start -->
 		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
 		<dependency>
 		    <groupId>org.apache.poi</groupId>
@@ -249,23 +251,15 @@
 			<artifactId>poi-ooxml</artifactId>      
 		 	<version>3.17</version>  
 		</dependency> 
+		<!-- excel end-->
 		 
-		<!-- 공통컴포넌트 끝 -->
-		
-		<!-- Tiles -->
-    	<dependency>
-            <groupId>org.apache.tiles</groupId>
-            <artifactId>tiles-jsp</artifactId>
-            <version>3.0.8</version>
-        </dependency>
-        
-		<!-- Source: https://mvnrepository.com/artifact/org.eclipse/yasson -->
+		<!-- FTP용 3rd party 라이브러리 -->
 		<dependency>
-		    <groupId>org.eclipse</groupId>
-		    <artifactId>yasson</artifactId>
-		    <version>1.0.11</version>
+			<groupId>commons-net</groupId>
+			<artifactId>commons-net</artifactId>
+			<version>3.9.0</version>
 		</dependency>
-				
+		
 	</dependencies>
 	
 	<build>

@@ -29,7 +29,7 @@
 <form:form modelAttribute="userInfVO" action="" method="post">
 
 <input type="hidden" name="targetMethod" value="${targetMethod}" />
-<input type="hidden" name="trgetId" value="${curTarget}" />
+<input type="hidden" name="trgetId" value="${trgetId}" />
 
 <input type="hidden" name="param_emplyrId" />
 <input type="hidden" name="param_cmmntyId" />

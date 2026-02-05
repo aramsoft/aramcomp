@@ -3,6 +3,7 @@ package aramframework.cmm.config.interceptor;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.tiles.Attribute;
 import org.apache.tiles.AttributeContext;
@@ -50,19 +51,10 @@ public class TilesInterceptor implements HandlerInterceptor {
 			Object handler) 
 	throws Exception {
 
-		String curTarget = request.getParameter("curTarget");
-		if( curTarget != null && !"".equals(curTarget) ) {
-			request.setAttribute("curTarget", curTarget);
-		}
-		
-		String curMenuNm = request.getParameter("curMenuNm");
-		if( curMenuNm != null && !"".equals(curMenuNm)) {
-			request.setAttribute("curMenuNm", curMenuNm);
-		}
-		
 		String fullScrYn = request.getParameter("fullScrYn");
 		if( fullScrYn != null && !"".equals(fullScrYn)) {
-			request.setAttribute("fullScrYn", fullScrYn);
+			HttpSession session = request.getSession();
+			session.setAttribute("fullScrYn", fullScrYn);
 		}
 		
 		String requestUrl = request.getRequestURL().toString();
@@ -102,15 +94,14 @@ public class TilesInterceptor implements HandlerInterceptor {
 
 //		Logger.debug("jspPrefix = " + jspPrefix + ", viewName = " + viewName);
 
-		String fullScrYn = (String) request.getAttribute("fullScrYn");
+		HttpSession session = request.getSession();
+		String fullScrYn = (String) session.getAttribute("fullScrYn");
 		if( fullScrYn != null && "Y".equals(fullScrYn) ) return;
 
-		String curTarget = (String) request.getAttribute("curTarget");
-		String curMenuNm = (String) request.getAttribute("curMenuNm");
+		String curTarget = (String) session.getAttribute("curTarget");
+		String curMenuNm = (String) session.getAttribute("curMenuNm");
 		
-		if (curTarget == null) {
-			return;
-		}
+		if (curTarget == null) return;
 		
 		logger.debug("curTarget = " + curTarget + ", curMenuNm = " + curMenuNm);
 		

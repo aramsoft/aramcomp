@@ -344,7 +344,7 @@ public class BBSBoardController {
 	private void setDirectUrlToModel(BoardVO boardVO, ModelMap model) {
 		
 		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
-		String target = (String) requestAttributes.getAttribute("curTarget", RequestAttributes.SCOPE_REQUEST);
+		String target = (String) requestAttributes.getAttribute("curTarget", RequestAttributes.SCOPE_SESSION);
 		String contextUrl = (String) requestAttributes.getAttribute("contextUrl", RequestAttributes.SCOPE_REQUEST);
 
 		String directUrl = "";

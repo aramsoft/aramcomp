@@ -141,8 +141,8 @@ public class CmyMenuHomeController  {
 		}
 		
 		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
-		requestAttributes.setAttribute("curTarget", alias, RequestAttributes.SCOPE_REQUEST);
-		requestAttributes.setAttribute("curMenuNm", menuNm, RequestAttributes.SCOPE_REQUEST);
+		requestAttributes.setAttribute("curTarget", alias, RequestAttributes.SCOPE_SESSION);
+		requestAttributes.setAttribute("curMenuNm", menuNm, RequestAttributes.SCOPE_SESSION);
 
 	   	return "forward:"+directUrl;
 	}

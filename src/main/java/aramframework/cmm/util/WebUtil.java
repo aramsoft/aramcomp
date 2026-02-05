@@ -19,7 +19,7 @@ public class WebUtil {
 
 	public static String getCurTarget() {
 		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
-		return (String) requestAttributes.getAttribute("curTarget", RequestAttributes.SCOPE_REQUEST);
+		return (String) requestAttributes.getAttribute("curTarget", RequestAttributes.SCOPE_SESSION);
 	}
 	
 	/**

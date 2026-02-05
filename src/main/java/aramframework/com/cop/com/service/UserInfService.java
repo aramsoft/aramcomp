@@ -47,7 +47,7 @@ public class UserInfService extends EgovAbstractServiceImpl {
 		}
 		
 		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
-		String target = (String) requestAttributes.getAttribute("curTarget", RequestAttributes.SCOPE_REQUEST);
+		String target = (String) requestAttributes.getAttribute("curTarget", RequestAttributes.SCOPE_SESSION);
         String cmmntyId = cmmntyService.getCommunityOnlyInfo(target).getCmmntyId();
 
         if (cmmntyId.startsWith("CMMNTY_")) {
@@ -81,7 +81,7 @@ public class UserInfService extends EgovAbstractServiceImpl {
 		}
 		
 		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
-		String target = (String) requestAttributes.getAttribute("curTarget", RequestAttributes.SCOPE_REQUEST);
+		String target = (String) requestAttributes.getAttribute("curTarget", RequestAttributes.SCOPE_SESSION);
         String cmmntyId = cmmntyService.getCommunityOnlyInfo(target).getCmmntyId();
 		
 		if (cmmntyId.startsWith("CMMNTY_")) {

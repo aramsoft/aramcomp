@@ -40,7 +40,6 @@
 <!--  등록  폼 영역  -->
 <form:form modelAttribute="schdulManageVO" action="" method="post" enctype="multipart/form-data">
 
-<input type="hidden" name="trgetId" value="${curTarget}" />
 <table class="table-register">
 	<tr>
 	    <th width="20%">

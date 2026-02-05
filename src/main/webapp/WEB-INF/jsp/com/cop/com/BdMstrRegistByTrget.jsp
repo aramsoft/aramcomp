@@ -38,8 +38,6 @@
 
 <form:form modelAttribute="boardMasterVO" method="post" action="">
 
-<input type="hidden" name="trgetId" value="${curTarget}" />
-
 <table class="table-register">
 	<tr>
 	    <th width="20%">

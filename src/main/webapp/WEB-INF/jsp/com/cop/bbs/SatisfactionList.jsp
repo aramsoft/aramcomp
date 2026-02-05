@@ -57,6 +57,10 @@
 <div style="margin-top:10px; width:100%"></div>
 
 <form:form modelAttribute="satisfactionVO"  method="post" action="">
+<input type="hidden" name="curTarget" value="${curTarget}" />
+<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
+<input type="hidden" name="fullScrYn" value="${fullScrYn}" />
+
 <form:hidden path="bbsId" />
 <form:hidden path="nttId" />
 <form:hidden path="stsfdgNo" />

@@ -11,6 +11,8 @@
 
 <body>
 <form:form modelAttribute="searchVO" action="" method="post">
+<input type="hidden" name="curTarget" value="${curTarget}" />
+<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 <input type="hidden" name="fullScrYn" value="${fullScrYn}" />
 
 <!-- 검색조건 유지 -->

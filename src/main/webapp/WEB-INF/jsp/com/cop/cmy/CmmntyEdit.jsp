@@ -40,6 +40,9 @@
 </div>
 
 <form:form modelAttribute="communityVO" action="" method="post"  enctype="multipart/form-data">
+<input type="hidden" name="curTarget" value="${curTarget}" />
+<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
+<input type="hidden" name="fullScrYn" value="${fullScrYn}" />
 
 <form:hidden path="cmmntyId" />
 

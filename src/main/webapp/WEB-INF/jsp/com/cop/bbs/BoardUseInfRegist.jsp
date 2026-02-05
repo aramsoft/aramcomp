@@ -36,6 +36,9 @@
 </div>
 
 <form:form modelAttribute="boardUseInfVO"  method="post">
+<input type="hidden" name="curTarget" value="${curTarget}" />
+<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
+<input type="hidden" name="fullScrYn" value="${fullScrYn}" />
 
 <table class="table-register">
 	<tr>

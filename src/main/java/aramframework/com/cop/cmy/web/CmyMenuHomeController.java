@@ -3,6 +3,7 @@ package aramframework.com.cop.cmy.web;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -55,9 +56,14 @@ public class CmyMenuHomeController  {
 	 * @param appId
 	 */
 	@RequestMapping(value="/apps/{alias}", method=RequestMethod.GET)
-	public String directCmmntyHomePage(@PathVariable String alias) {
+	public String directCmmntyHomePage(
+			@PathVariable String alias,
+			HttpServletRequest request) {
 
-		String directUrl =  "/cop/cmy/CmmntyMainContents.do";
+		String directUrl = request.getParameter("directUrl");
+		if( directUrl == null || "".equals(directUrl)) {
+			directUrl =  "/cop/cmy/CmmntyMainContents.do";
+		}
 		return cmmntyMainPageHandler(alias, "", directUrl);
 	}
 
@@ -70,9 +76,13 @@ public class CmyMenuHomeController  {
 	@RequestMapping(value="/apps/{alias}/{menuNm}", method=RequestMethod.GET)
 	public String directCmmntyHomeMenuPage(
 			@PathVariable String alias,			
-			@PathVariable String menuNm) { 
+			@PathVariable String menuNm,
+			HttpServletRequest request) {
 
-		return cmmntyMainPageHandler(alias, menuNm, "");
+		String directUrl = request.getParameter("directUrl");
+		if( directUrl == null ) directUrl =  "";
+		
+		return cmmntyMainPageHandler(alias, menuNm, directUrl);
 	}
 
 	/**
@@ -110,7 +120,7 @@ public class CmyMenuHomeController  {
 	private String cmmntyMainPageHandler(
 			String alias, 
 			String menuNm, 
-			String contentUrl) {
+			String directUrl) {
 
         CommunityVO communityVO = cmmntyService.getCommunityLayoutInfo(alias, menuNm);
 		if( communityVO == null ) {
@@ -125,16 +135,16 @@ public class CmyMenuHomeController  {
 		}
 //		logger.debug("menuNm = " + menuNm);
 
-		if( "".equals(contentUrl) ) {
+		if( "".equals(directUrl) ) {
 			MenuVO menuVO = cmmntyService.getMenuInfo(communityVO, menuNm);
-			contentUrl = menuVO.getContentUrl();
+			directUrl = menuVO.getContentUrl();
 		}
 		
 		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
 		requestAttributes.setAttribute("curTarget", alias, RequestAttributes.SCOPE_REQUEST);
 		requestAttributes.setAttribute("curMenuNm", menuNm, RequestAttributes.SCOPE_REQUEST);
 
-	   	return "forward:"+contentUrl;
+	   	return "forward:"+directUrl;
 	}
 
 	/**

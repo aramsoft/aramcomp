@@ -41,8 +41,6 @@
 </div>
 
 <form:form modelAttribute="userInfVO" action="" method="post">
-<input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="targetMethod" value="${targetMethod}" />
 
 <input type="hidden" name="PopFlag" value="Y" />
 

@@ -30,8 +30,6 @@
 </div>
 
 <form:form modelAttribute="authorResourceVO" action="${pageContext.request.contextPath}/sec/arm/listAuthorResource.do" method="post">
-<input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <input type="hidden" name="regYns"/>
 

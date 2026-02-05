@@ -30,8 +30,6 @@
 
 <!-- 등록  폼 영역  -->
 <form:form modelAttribute="zipVO" method="post" enctype="multipart/form-data">
-<input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <div id="search_area">
 	<div class="search_right">

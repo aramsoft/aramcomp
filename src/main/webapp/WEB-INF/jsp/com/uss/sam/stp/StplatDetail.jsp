@@ -39,8 +39,6 @@
 
 <!-- 등록  폼 영역  -->
 <form:form modelAttribute="stplatManageVO" action="${pageContext.request.contextPath}/uss/sam/stp/StplatDetailInqire.do" method="post">
-<input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <form:hidden path="useStplatId" />
 

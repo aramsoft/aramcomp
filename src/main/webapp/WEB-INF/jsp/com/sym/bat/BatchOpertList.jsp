@@ -27,8 +27,6 @@
 </div>
 
 <form:form modelAttribute="batchOpertVO" action="" method="post">
-<input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <input name="batchOpertId" type="hidden" />
 

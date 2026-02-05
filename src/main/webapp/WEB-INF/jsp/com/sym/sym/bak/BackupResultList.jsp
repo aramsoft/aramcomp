@@ -30,8 +30,6 @@
 </div>
 
 <form:form modelAttribute="backupResultVO" action="" method="post">
-<input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <input name="backupResultId" type="hidden" />
 

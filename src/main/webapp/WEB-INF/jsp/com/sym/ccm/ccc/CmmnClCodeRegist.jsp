@@ -37,8 +37,6 @@
 
 <!-- 등록  폼 영역  -->
 <form:form modelAttribute="cmmnClCodeVO" action="" method="post">
-<input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <table class="table-register" summary="분류코드, 분류코드명, 분류코드설명, 사용여부를 입력하는 공통분류코드 등록 테이블이다.">
 <CAPTION>공통분류코드 등록</CAPTION>

@@ -38,11 +38,8 @@
 
 <!-- 등록  폼 영역  -->
 <form:form modelAttribute="qnaManageVO" name="qnaManageVO" action="" method="post">
-<input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <form:hidden path="qaId" />
-
 <input name="writngPassword" 	type="hidden" value="">
 
 <table class="table-detail" summary="Q&amp;A에 대한 정보를 조회합니다.">

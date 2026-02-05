@@ -38,8 +38,6 @@
 </div>
 
 <form:form modelAttribute="progrmManageDtlVO" method="post">
-<input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <div style="margin-top:10px; width:100%"></div>
 

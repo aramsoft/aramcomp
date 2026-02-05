@@ -42,8 +42,6 @@
 </div>
 
 <form:form modelAttribute="schdulManageVO" action="" method="post">
-<input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <form:hidden path="schdulId" />
 <form:hidden path="schdulNm" />

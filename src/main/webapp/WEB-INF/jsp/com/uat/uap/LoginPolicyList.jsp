@@ -30,8 +30,6 @@
 </div>
 
 <form:form modelAttribute="loginPolicyVO" action="${pageContext.request.contextPath}/uat/uap/listLoginPolicy.do" method="post">
-<input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <input type="hidden" name="emplyrId"/>
 

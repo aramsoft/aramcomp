@@ -38,8 +38,6 @@
 </div>
 
 <form:form modelAttribute="batchOpertVO"  action="" method="post">
-<input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <!--  등록  폼 영역  -->
 <table class="table-register" summary="배치작업등록을 위한 테이블.">

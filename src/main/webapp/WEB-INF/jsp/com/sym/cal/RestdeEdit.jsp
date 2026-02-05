@@ -37,8 +37,6 @@
 </div>
 
 <form:form modelAttribute="restdeVO" method="post" action="">
-<input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <form:hidden path="restdeNo"/>
 <form:hidden path="restdeDe"/>

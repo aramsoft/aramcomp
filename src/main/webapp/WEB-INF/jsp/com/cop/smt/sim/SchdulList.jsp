@@ -49,8 +49,6 @@
 </iframe>
 
 <form:form modelAttribute="schdulManageVO" name="schdulManageVO" action="?" method="post">
-<input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <form:hidden path="schdulId" />
 <form:hidden path="schdulBgnde" />
@@ -61,6 +59,8 @@
 <form:hidden path="month" />
 <form:hidden path="week" />
 <form:hidden path="day" />
+
+<form:hidden path="trgetId" />
 </form:form>
 
 </DIV>

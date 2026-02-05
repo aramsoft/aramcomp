@@ -37,11 +37,8 @@
 
 <!-- 등록  폼 영역  -->
 <form:form modelAttribute="qnaManageVO" action="" method="post">
-<input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <form:hidden path="qaId" />
-
 <input name="answerCn" type="hidden" value="Testing...">
 
 <table class="table-register" summary="Q&amp;A에 대한 정보를 수정합니다.">

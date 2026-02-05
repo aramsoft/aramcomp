@@ -90,8 +90,6 @@
 <DIV id="main" style="width:100%;">
 
 <form:form modelAttribute="schdulManageVO" action="" method="post">
-<input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <form:hidden path="year" />
 <form:hidden path="month" />

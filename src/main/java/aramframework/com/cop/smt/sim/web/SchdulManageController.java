@@ -151,6 +151,10 @@ public class SchdulManageController {
 		// 공통코드 반복구분 조회
 		cmmUseService.populateCmmCodeList("COM031", "COM031_reptitSe");
 
+		String target = WebUtil.getCurTarget();
+        String cmmntyId = cmmntyService.getCommunityOnlyInfo(target).getCmmntyId();
+		schdulManageVO.setTrgetId(cmmntyId);
+		
 		return "com/cop/smt/sim/SchdulList";
 	}
 
@@ -205,9 +209,6 @@ public class SchdulManageController {
 			loginVO = new LoginVO();
 		}
 		schdulManageVO.setUserId(loginVO.getUserId());
-		String target = WebUtil.getCurTarget();
-        String cmmntyId = cmmntyService.getCommunityOnlyInfo(target).getCmmntyId();
-		schdulManageVO.setTrgetId(cmmntyId);
 
 		model.addAttribute("resultList", schdulManageService.selectSchdulManageRetrieve(schdulManageVO));
 
@@ -334,9 +335,6 @@ public class SchdulManageController {
 			loginVO = new LoginVO();
 		}
 		schdulManageVO.setUserId(loginVO.getUserId());
-		String target = WebUtil.getCurTarget();
-        String cmmntyId = cmmntyService.getCommunityOnlyInfo(target).getCmmntyId();
-		schdulManageVO.setTrgetId(cmmntyId);
 
 		model.addAttribute("resultList", schdulManageService.selectSchdulManageRetrieve(schdulManageVO));
 
@@ -393,9 +391,6 @@ public class SchdulManageController {
 			loginVO = new LoginVO();
 		}
 		schdulManageVO.setUserId(loginVO.getUserId());
-		String target = WebUtil.getCurTarget();
-        String cmmntyId = cmmntyService.getCommunityOnlyInfo(target).getCmmntyId();
-		schdulManageVO.setTrgetId(cmmntyId);
 
 		model.addAttribute("resultList", schdulManageService.selectSchdulManageRetrieve(schdulManageVO));
 

@@ -44,8 +44,6 @@ var imgpath = "${pageContext.request.contextPath}/images/com/cmm/utl/";
 </div>
 
 <form:form modelAttribute="menuManageVO"  action ="" method="post">
-<input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <input type="hidden" name="req_RetrunPath" value="/sym/mnu/mpm/MenuMvmn">
 <c:forEach var="result" items="${list_menulist}" varStatus="status">

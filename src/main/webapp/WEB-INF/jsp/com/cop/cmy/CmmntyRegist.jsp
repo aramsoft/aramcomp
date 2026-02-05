@@ -37,8 +37,6 @@
 </div>
 
 <form:form modelAttribute="communityVO" action="" method="post" enctype="multipart/form-data">
-<input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <table class="table-register" summary="커뮤니티명, 커뮤니티 소개, 템플릿 정보, 커뮤니티 관리자 입니다">
 	<tr>

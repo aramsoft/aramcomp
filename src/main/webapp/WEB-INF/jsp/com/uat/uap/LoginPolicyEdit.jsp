@@ -39,8 +39,6 @@
 </div>
 
 <form:form modelAttribute="loginPolicyVO" method="post" action="">
-<input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <table class="table-register" summary="로그인정책을 수정한다.">
 <caption>로그인정책 수정</caption>

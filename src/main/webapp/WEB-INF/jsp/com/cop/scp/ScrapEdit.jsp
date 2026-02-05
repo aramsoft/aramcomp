@@ -38,8 +38,6 @@
 </div>
 
 <form:form modelAttribute="scrapVO" action ="" method="post">
-<input type="hidden" name="curTarget" value="${curTarget}" />
-<input type="hidden" name="curMenuNm" value="${curMenuNm}" />
 
 <form:hidden path="bbsId" />
 <form:hidden path="nttId" />

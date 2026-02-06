@@ -62,7 +62,18 @@
 	</bean>
 
 	<!-- Tiles 인터셉터 -->
-	<bean id="tilesInterceptor" class="aramframework.cmm.config.interceptor.TilesInterceptor" /> 
+	<bean id="tilesInterceptor" class="aramframework.cmm.config.interceptor.TilesInterceptor" > 
+ 		<property name="passURL">
+			<set> 
+				<value>/index.do</value>
+				<value>/UnitMain.do</value>
+				<value>/UnitLeft.do</value>
+				<value>/UnitContent.do</value>
+				<value>/PageLink.do</value>
+				<value>/validator.do</value>
+			</set>
+		</property>
+	</bean>
 
 	<!-- 웹로그 인터셉터 -->
 	<bean id="webLogInterceptor" class="aramframework.cmm.config.interceptor.WebLogInterceptor"> 

@@ -1,5 +1,10 @@
 package aramframework.cmm.config.interceptor;
 
+import java.net.URLDecoder;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.regex.Pattern;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,6 +39,12 @@ public class TilesInterceptor implements HandlerInterceptor {
 	
 	@Autowired 
 	private CommunityManageService cmmntyService;
+
+	private Set<String> passURL;
+
+	public void setPassURL(Set<String> passURL) {
+		this.passURL = passURL;
+	}
 
 	/**
 	 * 웹 로그정보를 생성한다.
@@ -77,6 +88,14 @@ public class TilesInterceptor implements HandlerInterceptor {
 			ModelAndView modelAndView) 
 	throws Exception {
 
+		String requestURI = URLDecoder.decode(request.getRequestURI(), "UTF-8"); // 요청 URI
+		for (Iterator<String> it = this.passURL.iterator(); it.hasNext();) {
+			String urlPattern = request.getContextPath() + (String) it.next();
+			if (Pattern.matches(urlPattern, requestURI)) {	// URI가 허용된 URL에  맞는지 점검함.
+				return;
+			}
+		}
+		
 		if (modelAndView == null) return;	// for direct response output(modelandview is null)
 		
 		String jspPrefix = (String) request.getAttribute("jspPrefix");

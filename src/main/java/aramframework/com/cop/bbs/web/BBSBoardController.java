@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
@@ -345,7 +347,11 @@ public class BBSBoardController {
 		
 		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
 		String target = (String) requestAttributes.getAttribute("curTarget", RequestAttributes.SCOPE_SESSION);
-		String contextUrl = (String) requestAttributes.getAttribute("contextUrl", RequestAttributes.SCOPE_REQUEST);
+
+		HttpServletRequest request = ((ServletRequestAttributes)requestAttributes).getRequest();
+	    String requestUrl = request.getRequestURL().toString();
+		String requestUri = request.getRequestURI();
+		String contextUrl = requestUrl.substring(0, requestUrl.indexOf(requestUri));
 
 		String directUrl = "";
 		if( target != null 

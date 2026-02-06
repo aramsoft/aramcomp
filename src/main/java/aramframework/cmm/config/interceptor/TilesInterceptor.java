@@ -56,11 +56,7 @@ public class TilesInterceptor implements HandlerInterceptor {
 			HttpSession session = request.getSession();
 			session.setAttribute("fullScrYn", fullScrYn);
 		}
-		
-		String requestUrl = request.getRequestURL().toString();
-		String requestUri = request.getRequestURI();
-		String contextUrl = requestUrl.substring(0, requestUrl.indexOf(requestUri));
-		request.setAttribute("contextUrl", contextUrl);
+
 		return true;
 	}
 	

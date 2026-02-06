@@ -31,7 +31,6 @@
 </div>
 
 <form:form modelAttribute="boardVO" action ="" method="post">
-<input type="hidden" name="fullScrYn" value="${fullScrYn}" />
 
 <form:hidden path="bbsId" />
 <input type="hidden" name="nttId" value="0"/>

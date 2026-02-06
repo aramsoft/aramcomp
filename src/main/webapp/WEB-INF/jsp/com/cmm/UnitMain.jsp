@@ -43,7 +43,7 @@ function resize() {
 	    </div>
 		<div id="content">
 			<!--  컨텐츠 영역 : Start -->
-			<iframe id="contentFrame" name="contentFrame" src="/UnitContent.do" width="100%" height="400" seamless="seamless" ></iframe>
+			<iframe id="contentFrame" name="contentFrame" src="/ClearSession.do?url=/UnitContent.do" width="100%" height="400" seamless="seamless" ></iframe>
 	   		<!--  컨텐츠 영역 : End -->
 		</div>
 	</div>

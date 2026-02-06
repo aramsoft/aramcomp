@@ -4,6 +4,9 @@ import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.TreeMap;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +51,19 @@ public class ComIndexController {
 	@RequestMapping("/UnitMain.do")
 	public String index() {
 		return "com/cmm/UnitMain";
+	}
+
+	@RequestMapping("/ClearSession.do")
+	public String clearSession(HttpServletRequest request, HttpSession session) {
+		
+		String directUrl = request.getParameter("url");
+		if( directUrl == null ) directUrl =  "";
+		
+		session.removeAttribute("curTarget");
+		session.removeAttribute("curMenuNm");
+		session.removeAttribute("fullScrYn");
+
+	   	return "forward:"+directUrl;
 	}
 
 	@RequestMapping("/UnitLeft.do")

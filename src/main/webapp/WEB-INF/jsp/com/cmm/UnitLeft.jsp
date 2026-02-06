@@ -112,7 +112,7 @@
 		</c:if>
 		<tr height = "16">
 		    <td align="left" valign="middle" width="100%">
-		    	<a href="<c:out value="${result.listUrl}"/>" target="contentFrame" class="link"> <c:out value="${result.order}"/>. <c:out value="${result.name}"/></a>
+		    	<a href="/ClearSession.do?url=<c:out value="${result.listUrl}"/>" target="contentFrame" class="link"> <c:out value="${result.order}"/>. <c:out value="${result.name}"/></a>
 			</td>
 		</tr>
 	</c:forEach>

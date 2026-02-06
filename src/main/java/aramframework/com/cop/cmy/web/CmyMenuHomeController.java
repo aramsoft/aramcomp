@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,7 +59,10 @@ public class CmyMenuHomeController  {
 	@RequestMapping(value="/apps/{alias}", method=RequestMethod.GET)
 	public String directCmmntyHomePage(
 			@PathVariable String alias,
-			HttpServletRequest request) {
+			HttpServletRequest request, 
+			HttpSession session) {
+
+		session.removeAttribute("fullScrYn");
 
 		String directUrl = request.getParameter("directUrl");
 		if( directUrl == null || "".equals(directUrl)) {
@@ -77,7 +81,10 @@ public class CmyMenuHomeController  {
 	public String directCmmntyHomeMenuPage(
 			@PathVariable String alias,			
 			@PathVariable String menuNm,
-			HttpServletRequest request) {
+			HttpServletRequest request, 
+			HttpSession session) {
+
+		session.removeAttribute("fullScrYn");
 
 		String directUrl = request.getParameter("directUrl");
 		if( directUrl == null ) directUrl =  "";

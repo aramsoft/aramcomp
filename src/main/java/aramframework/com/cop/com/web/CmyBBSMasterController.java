@@ -241,6 +241,7 @@ public class CmyBBSMasterController {
 	 */
 	@RequestMapping("/cop/com/deleteBdMstrByTrget.do")
 	public String deleteBdMstrByTrget(
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardMasterVO boardMasterVO,
 			ModelMap model) {
 
@@ -262,7 +263,7 @@ public class CmyBBSMasterController {
 	 */
 	@RequestMapping("/cop/com/updateBoardUseInfByTrget.do")
 	public String updateBoardUseInfByTrget(
-			@ModelAttribute BoardMasterVO boardMasterVO,
+			@ModelAttribute("searchVO") SearchVO searchVO,
 			@ModelAttribute BoardUseInfVO boardUseInfVO,
 			ModelMap model) {
 

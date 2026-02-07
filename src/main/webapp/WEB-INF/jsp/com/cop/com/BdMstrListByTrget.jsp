@@ -71,9 +71,9 @@
 	    <th scope="col" width="8%">게시판속성</th>
 	    <th scope="col" width="8%">생성일</th>
 	    <th scope="col" width="8%">사용여부</th>
-	    <th scope="col" width="8%">상태변경</th>
+	    <th scope="col" width="8%"></th>
 	    <th scope="col" width="8%">공개여부</th>
-	    <th scope="col" width="8%">상태변경</th>
+	    <th scope="col" width="8%"></th>
 	</tr>
 </thead>
 <tbody>

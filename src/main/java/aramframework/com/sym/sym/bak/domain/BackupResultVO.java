@@ -1,6 +1,8 @@
 package aramframework.com.sym.sym.bak.domain;
 
 import aramframework.cmm.domain.BaseVO;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * 백업결과관리에 대한 model 클래스
@@ -8,6 +10,8 @@ import aramframework.cmm.domain.BaseVO;
  * @since 2014.11.11
  * @version 1.0
  */
+@Data
+@EqualsAndHashCode(callSuper=false)
 public class BackupResultVO extends BaseVO {
 
 	// domain
@@ -44,161 +48,5 @@ public class BackupResultVO extends BaseVO {
 	
 	/** 백업저장디렉토리 */
 	private String backupStreDrctry;
-
-	// domain
-	/**
-	 * @return the backupResultId
-	 */
-	public String getBackupResultId() {
-		return backupResultId;
-	}
-	/**
-	 * @param backupResultId
-	 *            the backupResultId to set
-	 */
-	public void setBackupResultId(String backupResultId) {
-		this.backupResultId = backupResultId;
-	}
-	
-	/**
-	 * @return the backupOpertId
-	 */
-	public String getBackupOpertId() {
-		return backupOpertId;
-	}
-	/**
-	 * @param backupOpertId
-	 *            the backupOpertId to set
-	 */
-	public void setBackupOpertId(String backupOpertId) {
-		this.backupOpertId = backupOpertId;
-	}
-
-	/**
-	 * @return the backupFile
-	 */
-	public String getBackupFile() {
-		return backupFile;
-	}
-	/**
-	 * @param backupFile
-	 *            the backupFile to set
-	 */
-	public void setBackupFile(String backupFile) {
-		this.backupFile = backupFile;
-	}
-	
-	/**
-	 * @return the sttus
-	 */
-	public String getSttus() {
-		return sttus;
-	}
-	/**
-	 * @param sttus
-	 *            the sttus to set
-	 */
-	public void setSttus(String sttus) {
-		this.sttus = sttus;
-	}
-
-	/**
-	 * @return the errorInfo
-	 */
-	public String getErrorInfo() {
-		return errorInfo;
-	}
-	/**
-	 * @param errorInfo
-	 *            the errorInfo to set
-	 */
-	public void setErrorInfo(String errorInfo) {
-		this.errorInfo = errorInfo;
-	}
-
-	/**
-	 * @return the executBeginTime
-	 */
-	public String getExecutBeginTime() {
-		return executBeginTime;
-	}
-	/**
-	 * @param executBeginTime
-	 *            the executBeginTime to set
-	 */
-	public void setExecutBeginTime(String executBeginTime) {
-		this.executBeginTime = executBeginTime;
-	}
-
-	/**
-	 * @return the executEndTime
-	 */
-	public String getExecutEndTime() {
-		return executEndTime;
-	}
-	/**
-	 * @param executEndTime
-	 *            the executEndTime to set
-	 */
-	public void setExecutEndTime(String executEndTime) {
-		this.executEndTime = executEndTime;
-	}
-
-	// helper
-	/**
-	 * @return the backupOpertNm
-	 */
-	public String getBackupOpertNm() {
-		return backupOpertNm;
-	}
-	/**
-	 * @param backupOpertNm
-	 *            the backupOpertNm to set
-	 */
-	public void setBackupOpertNm(String backupOpertNm) {
-		this.backupOpertNm = backupOpertNm;
-	}
-
-	/**
-	 * @return the sttusNm
-	 */
-	public String getSttusNm() {
-		return sttusNm;
-	}
-	/**
-	 * @param sttusNm
-	 *            the sttusNm to set
-	 */
-	public void setSttusNm(String sttusNm) {
-		this.sttusNm = sttusNm;
-	}
-
-	/**
-	 * @return the backupOrginlDrctry
-	 */
-	public String getBackupOrginlDrctry() {
-		return backupOrginlDrctry;
-	}
-	/**
-	 * @param backupOrginlDrctry
-	 *            the backupOrginlDrctry to set
-	 */
-	public void setBackupOrginlDrctry(String backupOrginlDrctry) {
-		this.backupOrginlDrctry = backupOrginlDrctry;
-	}
-
-	/**
-	 * @return the backupStreDrctry
-	 */
-	public String getBackupStreDrctry() {
-		return backupStreDrctry;
-	}
-	/**
-	 * @param backupStreDrctry
-	 *            the backupStreDrctry to set
-	 */
-	public void setBackupStreDrctry(String backupStreDrctry) {
-		this.backupStreDrctry = backupStreDrctry;
-	}
 
 }

@@ -1,6 +1,8 @@
 package aramframework.com.sym.log.wlg.domain;
 
 import aramframework.cmm.domain.BaseVO;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * 웹 로그관리를 위한 VO 클래스
@@ -8,6 +10,8 @@ import aramframework.cmm.domain.BaseVO;
  * @since 2014.11.11
  * @version 1.0
  */
+@Data
+@EqualsAndHashCode(callSuper=false)
 public class WebLogVO extends BaseVO {
 
 	// domain
@@ -35,63 +39,5 @@ public class WebLogVO extends BaseVO {
 
 	/** 검색종료일 */
 	private String searchEndDe = "";
-
-	// domain
-	public String getRequstId() {
-		return requstId;
-	}
-	public void setRequstId(String requstId) {
-		this.requstId = requstId;
-	}
-
-	public String getOccrrncDe() {
-		return occrrncDe;
-	}
-	public void setOccrrncDe(String occrrncDe) {
-		this.occrrncDe = occrrncDe;
-	}
-
-	public String getUrl() {
-		return url;
-	}
-	public void setUrl(String url) {
-		this.url = url;
-	}
-
-	public String getRqesterId() {
-		return rqesterId;
-	}
-	public void setRqesterId(String rqesterId) {
-		this.rqesterId = rqesterId;
-	}
-
-	public String getRqesterIp() {
-		return rqesterIp;
-	}
-	public void setRqesterIp(String rqesterIp) {
-		this.rqesterIp = rqesterIp;
-	}
-
-	// helper
-	public String getRqesterNm() {
-		return rqesterNm;
-	}
-	public void setRqesterNm(String rqesterNm) {
-		this.rqesterNm = rqesterNm;
-	}
-
-	public String getSearchBgnDe() {
-		return searchBgnDe;
-	}
-	public void setSearchBgnDe(String searchBgnDe) {
-		this.searchBgnDe = searchBgnDe;
-	}
-	
-	public String getSearchEndDe() {
-		return searchEndDe;
-	}
-	public void setSearchEndDe(String searchEndDe) {
-		this.searchEndDe = searchEndDe;
-	}
 
 }

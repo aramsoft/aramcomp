@@ -2,12 +2,15 @@ package aramframework.cmm.domain;
 
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
+import lombok.Data;
+
 /**
  * 조회 base VO 클래스
  * 
  * @since 2014.11.11
  * @version 1.0
  */
+@Data
 public class SearchVO {
 
 	// search 관련
@@ -58,184 +61,4 @@ public class SearchVO {
 		this.firstIndex = offset;
 	}
 	
-	/**
-	 * searchCondition attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getSearchCondition() {
-		return searchCondition;
-	}
-	/**
-	 * searchCondition attribute 값을 설정한다.
-	 * 
-	 * @param searchCondition
-	 *            String
-	 */
-	public void setSearchCondition(String searchCondition) {
-		this.searchCondition = searchCondition;
-	}
-
-	/**
-	 * searchKeyword attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getSearchKeyword() {
-		return searchKeyword;
-	}
-	/**
-	 * searchKeyword attribute 값을 설정한다.
-	 * 
-	 * @param searchKeyword
-	 *            String
-	 */
-	public void setSearchKeyword(String searchKeyword) {
-		this.searchKeyword = searchKeyword;
-	}
-
-	/**
-	 * searchKeywordFrom attribute를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getSearchKeywordFrom() {
-		return searchKeywordFrom;
-	}
-	/**
-	 * searchKeywordFrom attribute 값을 설정한다.
-	 * 
-	 * @param searchKeywordFrom
-	 *            String
-	 */
-	public void setSearchKeywordFrom(String searchKeywordFrom) {
-		this.searchKeywordFrom = searchKeywordFrom;
-	}
-
-	/**
-	 * searchKeywordTo attribute를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getSearchKeywordTo() {
-		return searchKeywordTo;
-	}
-	/**
-	 * searchKeywordTo attribute 값을 설정한다.
-	 * 
-	 * @param searchKeywordTo
-	 *            String
-	 */
-	public void setSearchKeywordTo(String searchKeywordTo) {
-		this.searchKeywordTo = searchKeywordTo;
-	}
-
-	/**
-	 * pageIndex attribute 값을 리턴한다.
-	 * 
-	 * @return int
-	 */
-	public int getPageIndex() {
-		return pageIndex;
-	}
-	/**
-	 * pageIndex attribute 값을 설정한다.
-	 * 
-	 * @param pageIndex
-	 *            int
-	 */
-	public void setPageIndex(int pageIndex) {
-		this.pageIndex = pageIndex;
-	}
-
-	/**
-	 * pageSize attribute 값을 리턴한다.
-	 * 
-	 * @return int
-	 */
-	public int getPageSize() {
-		return pageSize;
-	}
-	/**
-	 * pageSize attribute 값을 설정한다.
-	 * 
-	 * @param pageSize
-	 *            int
-	 */
-	public void setPageSize(int pageSize) {
-		this.pageSize = pageSize;
-	}
-
-	/**
-	 * firstIndex attribute 값을 리턴한다.
-	 * 
-	 * @return int
-	 */
-	public int getFirstIndex() {
-		return firstIndex;
-	}
-	/**
-	 * firstIndex attribute 값을 설정한다.
-	 * 
-	 * @param firstIndex
-	 *            int
-	 */
-	public void setFirstIndex(int firstIndex) {
-		this.firstIndex = firstIndex;
-	}
-
-	/**
-	 * lastIndex attribute 값을 리턴한다.
-	 * 
-	 * @return int
-	 */
-	public int getLastIndex() {
-		return lastIndex;
-	}
-	/**
-	 * lastIndex attribute 값을 설정한다.
-	 * 
-	 * @param lastIndex
-	 *            int
-	 */
-	public void setLastIndex(int lastIndex) {
-		this.lastIndex = lastIndex;
-	}
-
-	/**
-	 * recordPerPage attribute 값을 리턴한다.
-	 * 
-	 * @return int
-	 */
-	public int getRecordPerPage() {
-		return recordPerPage;
-	}
-	/**
-	 * recordPerPage attribute 값을 설정한다.
-	 * 
-	 * @param recordPerPage
-	 *            int
-	 */
-	public void setRecordPerPage(int recordPerPage) {
-		this.recordPerPage = recordPerPage;
-	}
-	
-	/**
-	 * totalRecordCount attribute 값을 리턴한다.
-	 * 
-	 * @return int
-	 */
-	public int getTotalRecordCount() {
-		return totalRecordCount;
-	}
-	/**
-	 * totalRecordCount attribute 값을 설정한다.
-	 * 
-	 * @param totalRecordCount
-	 *            int
-	 */
-	public void setTotalRecordCount(int totalRecordCount) {
-		this.totalRecordCount = totalRecordCount;
-	}
-
 }

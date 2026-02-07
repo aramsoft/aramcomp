@@ -1,6 +1,8 @@
 package aramframework.com.sym.ccm.ccc.domain;
 
 import aramframework.cmm.domain.BaseVO;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * 공통분류코드 모델 클래스
@@ -8,6 +10,8 @@ import aramframework.cmm.domain.BaseVO;
  * @since 2014.11.11
  * @version 1.0
  */
+@Data
+@EqualsAndHashCode(callSuper=false)
 public class CmmnClCodeVO extends BaseVO {
 
 	// domain
@@ -22,78 +26,5 @@ public class CmmnClCodeVO extends BaseVO {
 
 	/** 사용여부 */
 	private String useAt = "";
-
-	// domain
-	/**
-	 * clCode attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getClCode() {
-		return clCode;
-	}
-	/**
-	 * clCode attribute 값을 설정한다.
-	 * 
-	 * @param clCode
-	 *            String
-	 */
-	public void setClCode(String clCode) {
-		this.clCode = clCode;
-	}
-
-	/**
-	 * clCodeNm attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getClCodeNm() {
-		return clCodeNm;
-	}
-	/**
-	 * clCodeNm attribute 값을 설정한다.
-	 * 
-	 * @param clCodeNm
-	 *            String
-	 */
-	public void setClCodeNm(String clCodeNm) {
-		this.clCodeNm = clCodeNm;
-	}
-
-	/**
-	 * clCodeDc attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getClCodeDc() {
-		return clCodeDc;
-	}
-	/**
-	 * clCodeDc attribute 값을 설정한다.
-	 * 
-	 * @param clCodeDc
-	 *            String
-	 */
-	public void setClCodeDc(String clCodeDc) {
-		this.clCodeDc = clCodeDc;
-	}
-
-	/**
-	 * useAt attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getUseAt() {
-		return useAt;
-	}
-	/**
-	 * useAt attribute 값을 설정한다.
-	 * 
-	 * @param useAt
-	 *            String
-	 */
-	public void setUseAt(String useAt) {
-		this.useAt = useAt;
-	}
 
 }

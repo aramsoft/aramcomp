@@ -1,6 +1,8 @@
 package aramframework.com.sym.log.ulg.domain;
 
 import aramframework.cmm.domain.BaseVO;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * 사용자 로그관리를 위한 VO 클래스
@@ -8,6 +10,8 @@ import aramframework.cmm.domain.BaseVO;
  * @since 2014.11.11
  * @version 1.0
  */
+@Data
+@EqualsAndHashCode(callSuper=false)
 public class UserLogVO extends BaseVO {
 
 	// domain
@@ -50,98 +54,5 @@ public class UserLogVO extends BaseVO {
 	
 	/** 검색종료일 */
 	private String searchEndDe = "";
-
-	// domain
-	public String getOccrrncDe() {
-		return occrrncDe;
-	}
-	public void setOccrrncDe(String occrrncDe) {
-		this.occrrncDe = occrrncDe;
-	}
-
-	public String getRqesterId() {
-		return rqesterId;
-	}
-	public void setRqesterId(String rqesterId) {
-		this.rqesterId = rqesterId;
-	}
-
-	public String getSrvcNm() {
-		return srvcNm;
-	}
-	public void setSrvcNm(String srvcNm) {
-		this.srvcNm = srvcNm;
-	}
-
-	public String getMethodNm() {
-		return methodNm;
-	}
-	public void setMethodNm(String methodNm) {
-		this.methodNm = methodNm;
-	}
-	
-	public String getCreatCo() {
-		return creatCo;
-	}
-	public void setCreatCo(String creatCo) {
-		this.creatCo = creatCo;
-	}
-
-	public String getUpdtCo() {
-		return updtCo;
-	}
-	public void setUpdtCo(String updtCo) {
-		this.updtCo = updtCo;
-	}
-
-	public String getRdCnt() {
-		return rdCnt;
-	}
-	public void setRdCnt(String rdCnt) {
-		this.rdCnt = rdCnt;
-	}
-
-	public String getDeleteCo() {
-		return deleteCo;
-	}
-	public void setDeleteCo(String deleteCo) {
-		this.deleteCo = deleteCo;
-	}
-
-	public String getOutptCo() {
-		return outptCo;
-	}
-	public void setOutptCo(String outptCo) {
-		this.outptCo = outptCo;
-	}
-
-	public String getErrorCo() {
-		return errorCo;
-	}
-	public void setErrorCo(String errorCo) {
-		this.errorCo = errorCo;
-	}
-
-	// helper
-	public String getRqesterNm() {
-		return rqesterNm;
-	}
-	public void setRqesterNm(String rqesterNm) {
-		this.rqesterNm = rqesterNm;
-	}
-
-	public String getSearchBgnDe() {
-		return searchBgnDe;
-	}
-	public void setSearchBgnDe(String searchBgnDe) {
-		this.searchBgnDe = searchBgnDe;
-	}
-
-	public String getSearchEndDe() {
-		return searchEndDe;
-	}
-	public void setSearchEndDe(String searchEndDe) {
-		this.searchEndDe = searchEndDe;
-	}
 
 }

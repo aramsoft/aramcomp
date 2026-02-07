@@ -1,6 +1,8 @@
 package aramframework.com.sym.ccm.cde.domain;
 
 import aramframework.cmm.domain.BaseVO;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * 공통상세코드 모델 클래스
@@ -8,6 +10,8 @@ import aramframework.cmm.domain.BaseVO;
  * @since 2014.11.11
  * @version 1.0
  */
+@Data
+@EqualsAndHashCode(callSuper=false)
 public class CmmnDetailCodeVO extends BaseVO {
 
 	// domain
@@ -30,113 +34,4 @@ public class CmmnDetailCodeVO extends BaseVO {
 	/** 코드ID명 */
 	private String codeIdNm = "";
 
-	// domain
-	/**
-	 * codeId attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getCodeId() {
-		return codeId;
-	}
-	/**
-	 * codeId attribute 값을 설정한다.
-	 * 
-	 * @param codeId
-	 *            String
-	 */
-	public void setCodeId(String codeId) {
-		this.codeId = codeId;
-	}
-
-	/**
-	 * code attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getCode() {
-		return code;
-	}
-	/**
-	 * code attribute 값을 설정한다.
-	 * 
-	 * @param code
-	 *            String
-	 */
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-	/**
-	 * codeNm attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getCodeNm() {
-		return codeNm;
-	}
-	/**
-	 * codeNm attribute 값을 설정한다.
-	 * 
-	 * @param codeNm
-	 *            String
-	 */
-	public void setCodeNm(String codeNm) {
-		this.codeNm = codeNm;
-	}
-
-	/**
-	 * codeDc attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getCodeDc() {
-		return codeDc;
-	}
-	/**
-	 * codeDc attribute 값을 설정한다.
-	 * 
-	 * @param codeDc
-	 *            String
-	 */
-	public void setCodeDc(String codeDc) {
-		this.codeDc = codeDc;
-	}
-
-	/**
-	 * useAt attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getUseAt() {
-		return useAt;
-	}
-	/**
-	 * useAt attribute 값을 설정한다.
-	 * 
-	 * @param useAt
-	 *            String
-	 */
-	public void setUseAt(String useAt) {
-		this.useAt = useAt;
-	}
-
-	// helper
-	/**
-	 * codeIdNm attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getCodeIdNm() {
-		return codeIdNm;
-	}
-	/**
-	 * codeIdNm attribute 값을 설정한다.
-	 * 
-	 * @param codeIdNm
-	 *            String
-	 */
-	public void setCodeIdNm(String codeIdNm) {
-		this.codeIdNm = codeIdNm;
-	}
 }

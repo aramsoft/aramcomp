@@ -3,6 +3,8 @@ package aramframework.com.sym.sym.bak.domain;
 import java.util.List;
 
 import aramframework.cmm.domain.BaseVO;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * 백업작업관리에 대한 model 클래스
@@ -10,6 +12,8 @@ import aramframework.cmm.domain.BaseVO;
  * @since 2014.11.11
  * @version 1.0
  */
+@Data
+@EqualsAndHashCode(callSuper=false)
 public class BackupOpertVO extends BaseVO {
 
 	// domain
@@ -59,162 +63,6 @@ public class BackupOpertVO extends BaseVO {
 	/** 압축구분명 */
 	private String cmprsSeNm;
 
-	// domain
-	/**
-	 * @return the backupOpertId
-	 */
-	public String getBackupOpertId() {
-		return backupOpertId;
-	}
-	/**
-	 * @param backupOpertId
-	 *            the backupOpertId to set
-	 */
-	public void setBackupOpertId(String backupOpertId) {
-		this.backupOpertId = backupOpertId;
-	}
-	
-	/**
-	 * @return the backupOpertNm
-	 */
-	public String getBackupOpertNm() {
-		return backupOpertNm;
-	}
-	/**
-	 * @param backupOpertNm
-	 *            the backupOpertNm to set
-	 */
-	public void setBackupOpertNm(String backupOpertNm) {
-		this.backupOpertNm = backupOpertNm;
-	}
-
-	/**
-	 * @return the backupOrginlDrctry
-	 */
-	public String getBackupOrginlDrctry() {
-		return backupOrginlDrctry;
-	}
-	/**
-	 * @param backupOrginlDrctry
-	 *            the backupOrginlDrctry to set
-	 */
-	public void setBackupOrginlDrctry(String backupOrginlDrctry) {
-		this.backupOrginlDrctry = backupOrginlDrctry;
-	}
-
-	/**
-	 * @return the backupStreDrctry
-	 */
-	public String getBackupStreDrctry() {
-		return backupStreDrctry;
-	}
-	/**
-	 * @param backupStreDrctry
-	 *            the backupStreDrctry to set
-	 */
-	public void setBackupStreDrctry(String backupStreDrctry) {
-		this.backupStreDrctry = backupStreDrctry;
-	}
-
-	/**
-	 * @return the cmprsSe
-	 */
-	public String getCmprsSe() {
-		return cmprsSe;
-	}
-	/**
-	 * @param cmprsSe
-	 *            the cmprsSe to set
-	 */
-	public void setCmprsSe(String cmprsSe) {
-		this.cmprsSe = cmprsSe;
-	}
-
-	/**
-	 * @return the executCycle
-	 */
-	public String getExecutCycle() {
-		return executCycle;
-	}
-	/**
-	 * @param executCycle
-	 *            the executCycle to set
-	 */
-	public void setExecutCycle(String executCycle) {
-		this.executCycle = executCycle;
-	}
-
-	/**
-	 * @return the executSchdulDe
-	 */
-	public String getExecutSchdulDe() {
-		return executSchdulDe;
-	}
-	/**
-	 * @param executSchdulDe
-	 *            the executSchdulDe to set
-	 */
-	public void setExecutSchdulDe(String executSchdulDe) {
-		this.executSchdulDe = executSchdulDe;
-	}
-
-	/**
-	 * @return the executSchdulOur
-	 */
-	public String getExecutSchdulHour() {
-		return executSchdulHour;
-	}
-	/**
-	 * @param executSchdulOur
-	 *            the executSchdulOur to set
-	 */
-	public void setExecutSchdulHour(String executSchdulHour) {
-		this.executSchdulHour = executSchdulHour;
-	}
-
-	/**
-	 * @return the executSchdulMnt
-	 */
-	public String getExecutSchdulMnt() {
-		return executSchdulMnt;
-	}
-	/**
-	 * @param executSchdulMnt
-	 *            the executSchdulMnt to set
-	 */
-	public void setExecutSchdulMnt(String executSchdulMnt) {
-		this.executSchdulMnt = executSchdulMnt;
-	}
-
-	/**
-	 * @return the executSchdulSecnd
-	 */
-	public String getExecutSchdulSecnd() {
-		return executSchdulSecnd;
-	}
-	/**
-	 * @param executSchdulSecnd
-	 *            the executSchdulSecnd to set
-	 */
-	public void setExecutSchdulSecnd(String executSchdulSecnd) {
-		this.executSchdulSecnd = executSchdulSecnd;
-	}
-
-	/**
-	 * @return the useAt
-	 */
-	public String getUseAt() {
-		return useAt;
-	}
-	/**
-	 * @param useAt
-	 *            the useAt to set
-	 */
-	public void setUseAt(String useAt) {
-		this.useAt = useAt;
-	}
-
-	// helper
 	/**
 	 * @return the executSchdulDfkSes
 	 */
@@ -240,48 +88,6 @@ public class BackupOpertVO extends BaseVO {
 		for (int i = 0; i < executSchdulDfkSes.length; ++i) {
 			this.executSchdulDfkSes[i] = executSchdulDfkSes[i];
 		}
-	}
-
-	/**
-	 * @return the executCycleNm
-	 */
-	public String getExecutCycleNm() {
-		return executCycleNm;
-	}
-	/**
-	 * @param executCycleNm
-	 *            the executCycleNm to set
-	 */
-	public void setExecutCycleNm(String executCycleNm) {
-		this.executCycleNm = executCycleNm;
-	}
-
-	/**
-	 * @return the executSchdul
-	 */
-	public String getExecutSchdul() {
-		return executSchdul;
-	}
-	/**
-	 * @param executSchdul
-	 *            the executSchdul to set
-	 */
-	public void setExecutSchdul(String executSchdul) {
-		this.executSchdul = executSchdul;
-	}
-
-	/**
-	 * @return the cmprsSeNm
-	 */
-	public String getCmprsSeNm() {
-		return cmprsSeNm;
-	}
-	/**
-	 * @param cmprsSeNm
-	 *            the cmprsSeNm to set
-	 */
-	public void setCmprsSeNm(String cmprsSeNm) {
-		this.cmprsSeNm = cmprsSeNm;
 	}
 
 	/**

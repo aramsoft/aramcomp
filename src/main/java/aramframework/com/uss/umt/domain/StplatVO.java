@@ -1,6 +1,8 @@
 package aramframework.com.uss.umt.domain;
 
 import aramframework.cmm.domain.BaseVO;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * 가입약관VO클래스로서가입약관확인시 비지니스로직 처리용 항목을 구성한다.
@@ -8,6 +10,8 @@ import aramframework.cmm.domain.BaseVO;
  * @since 2014.11.11
  * @version 1.0
  */
+@Data
+@EqualsAndHashCode(callSuper=false)
 public class StplatVO extends BaseVO {
 
 	/** 약관아이디 */
@@ -18,62 +22,5 @@ public class StplatVO extends BaseVO {
 
 	/** 정보동의안내 */
 	private String infoProvdAgreCn;
-
-	/**
-	 * useStplatId attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getUseStplatId() {
-		return useStplatId;
-	}
-
-	/**
-	 * useStplatId attribute 값을 설정한다.
-	 * 
-	 * @param useStplatId
-	 *            String
-	 */
-	public void setUseStplatId(String useStplatId) {
-		this.useStplatId = useStplatId;
-	}
-
-	/**
-	 * useStplatCn attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getUseStplatCn() {
-		return useStplatCn;
-	}
-
-	/**
-	 * useStplatCn attribute 값을 설정한다.
-	 * 
-	 * @param useStplatCn
-	 *            String
-	 */
-	public void setUseStplatCn(String useStplatCn) {
-		this.useStplatCn = useStplatCn;
-	}
-
-	/**
-	 * infoProvdAgreCn attribute 값을 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getInfoProvdAgreCn() {
-		return infoProvdAgreCn;
-	}
-
-	/**
-	 * infoProvdAgreCn attribute 값을 설정한다.
-	 * 
-	 * @param infoProvdAgreCn
-	 *            String
-	 */
-	public void setInfoProvdAgreCn(String infoProvdAgreCn) {
-		this.infoProvdAgreCn = infoProvdAgreCn;
-	}
 
 }

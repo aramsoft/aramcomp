@@ -1,6 +1,8 @@
 package aramframework.com.sym.ccm.zip.domain;
 
 import aramframework.cmm.domain.BaseVO;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * 우편번호 모델 클래스
@@ -8,6 +10,8 @@ import aramframework.cmm.domain.BaseVO;
  * @since 2014.11.11
  * @version 1.0
  */
+@Data
+@EqualsAndHashCode(callSuper=false)
 public class ZipVO extends BaseVO {
 
 	// domain
@@ -31,132 +35,5 @@ public class ZipVO extends BaseVO {
 
     /** 번지동호 */
 	private String lnbrDongHo = "";
-
-	// domain
-	/**
-	 * zip attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getZip() {
-		return zip;
-	}
-	/**
-	 * zip attribute 값을 설정한다.
-	 * 
-	 * @param zip
-	 *            String
-	 */
-	public void setZip(String zip) {
-		this.zip = zip;
-	}
-
-	/**
-	 * sn attribute 를 리턴한다.
-	 * 
-	 * @return int
-	 */
-	public int getSn() {
-		return sn;
-	}
-	/**
-	 * sn attribute 값을 설정한다.
-	 * 
-	 * @param sn
-	 *            int
-	 */
-	public void setSn(int sn) {
-		this.sn = sn;
-	}
-
-	/**
-	 * ctprvnNm attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getCtprvnNm() {
-		return ctprvnNm;
-	}
-	/**
-	 * ctprvnNm attribute 값을 설정한다.
-	 * 
-	 * @param ctprvnNm
-	 *            String
-	 */
-	public void setCtprvnNm(String ctprvnNm) {
-		this.ctprvnNm = ctprvnNm;
-	}
-
-	/**
-	 * signguNm attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getSignguNm() {
-		return signguNm;
-	}
-	/**
-	 * signguNm attribute 값을 설정한다.
-	 * 
-	 * @param signguNm
-	 *            String
-	 */
-	public void setSignguNm(String signguNm) {
-		this.signguNm = signguNm;
-	}
-
-	/**
-	 * emdNm attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getEmdNm() {
-		return emdNm;
-	}
-	/**
-	 * emdNm attribute 값을 설정한다.
-	 * 
-	 * @param emdNm
-	 *            String
-	 */
-	public void setEmdNm(String emdNm) {
-		this.emdNm = emdNm;
-	}
-
-	/**
-	 * liBuldNm attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getLiBuldNm() {
-		return liBuldNm;
-	}
-	/**
-	 * liBuldNm attribute 값을 설정한다.
-	 * 
-	 * @param liBuldNm
-	 *            String
-	 */
-	public void setLiBuldNm(String liBuldNm) {
-		this.liBuldNm = liBuldNm;
-	}
-
-	/**
-	 * lnbrDongHo attribute 를 리턴한다.
-	 * 
-	 * @return String
-	 */
-	public String getLnbrDongHo() {
-		return lnbrDongHo;
-	}
-	/**
-	 * lnbrDongHo attribute 값을 설정한다.
-	 * 
-	 * @param lnbrDongHo
-	 *            String
-	 */
-	public void setLnbrDongHo(String lnbrDongHo) {
-		this.lnbrDongHo = lnbrDongHo;
-	}
 
 }

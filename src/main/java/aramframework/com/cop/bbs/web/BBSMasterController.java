@@ -15,6 +15,7 @@ import aramframework.cmm.domain.SearchVO;
 import aramframework.cmm.security.userdetails.UserDetailsHelper;
 import aramframework.cmm.util.ComponentChecker;
 import aramframework.cmm.util.MessageHelper;
+import aramframework.cmm.util.WebUtil;
 import aramframework.com.cmm.code.service.CmmUseService;
 import aramframework.com.cmm.com.annotation.IncludedInfo;
 import aramframework.com.cop.bbs.domain.BoardMasterVO;
@@ -190,7 +191,8 @@ public class BBSMasterController {
 	
 			// 시스템 사용 게시판의 경우 URL 표시
 			if ("SYSTEM_DEFAULT_BOARD".equals(boardUseInfVO.getTrgetId())) {
-				boardUseInfVO.setProvdUrl(request.getContextPath() + "/board/" + boardUseInfVO.getPathId() + "/list");
+				String pathId = WebUtil.getPathId(boardUseInfVO.getBbsId());
+				boardUseInfVO.setProvdUrl(request.getContextPath() + "/board/"+pathId+"/list");
 			}
 			model.addAttribute(boardUseInfVO);
 		}

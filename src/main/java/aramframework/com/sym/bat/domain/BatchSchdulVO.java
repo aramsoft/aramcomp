@@ -3,6 +3,8 @@ package aramframework.com.sym.bat.domain;
 import java.util.List;
 
 import aramframework.cmm.domain.BaseVO;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * 배치스케줄관리에 대한 model 클래스
@@ -10,6 +12,8 @@ import aramframework.cmm.domain.BaseVO;
  * @since 2014.11.11
  * @version 1.0
  */
+@Data
+@EqualsAndHashCode(callSuper=false)
 public class BatchSchdulVO extends BaseVO {
 
 	// domain
@@ -68,180 +72,6 @@ public class BatchSchdulVO extends BaseVO {
 	/** 배치메소드 */
 	private String batchMethod;
 	
-	// domain
-	/**
-	 * @return the batchSchdulId
-	 */
-	public String getBatchSchdulId() {
-		return batchSchdulId;
-	}
-	/**
-	 * @param batchSchdulId
-	 *            the batchSchdulId to set
-	 */
-	public void setBatchSchdulId(String batchSchdulId) {
-		this.batchSchdulId = batchSchdulId;
-	}
-
-	/**
-	 * @return the batchOpertId
-	 */
-	public String getBatchOpertId() {
-		return batchOpertId;
-	}
-	/**
-	 * @param batchOpertId
-	 *            the batchOpertId to set
-	 */
-	public void setBatchOpertId(String batchOpertId) {
-		this.batchOpertId = batchOpertId;
-	}
-
-	/**
-	 * @return the startDelay
-	 */
-	public long getStartDelay() {
-		return startDelay;
-	}
-	/**
-	 * @param startDelay
-	 *            the startDelay to set
-	 */
-	public void setStartDelay(long startDelay) {
-		this.startDelay = startDelay;
-	}
-
-	/**
-	 * @return the repeatInterval
-	 */
-	public long getRepeatInterval() {
-		return repeatInterval;
-	}
-	/**
-	 * @param repeatInterval
-	 *            the repeatInterval to set
-	 */
-	public void setRepeatInterval(long repeatInterval) {
-		this.repeatInterval = repeatInterval;
-	}
-
-	/**
-	 * @return the executCycle
-	 */
-	public String getExecutCycle() {
-		return executCycle;
-	}
-	/**
-	 * @param executCycle
-	 *            the executCycle to set
-	 */
-	public void setExecutCycle(String executCycle) {
-		this.executCycle = executCycle;
-	}
-
-	/**
-	 * @return the executSchdulDe
-	 */
-	public String getExecutSchdulDe() {
-		return executSchdulDe;
-	}
-	/**
-	 * @param executSchdulDe
-	 *            the executSchdulDe to set
-	 */
-	public void setExecutSchdulDe(String executSchdulDe) {
-		this.executSchdulDe = executSchdulDe;
-	}
-
-	/**
-	 * @return the executSchdulHour
-	 */
-	public String getExecutSchdulHour() {
-		return executSchdulHour;
-	}
-	/**
-	 * @param executSchdulHour
-	 *            the executSchdulHour to set
-	 */
-	public void setExecutSchdulHour(String executSchdulHour) {
-		this.executSchdulHour = executSchdulHour;
-	}
-
-	/**
-	 * @return the executSchdulMnt
-	 */
-	public String getExecutSchdulMnt() {
-		return executSchdulMnt;
-	}
-	/**
-	 * @param executSchdulMnt
-	 *            the executSchdulMnt to set
-	 */
-	public void setExecutSchdulMnt(String executSchdulMnt) {
-		this.executSchdulMnt = executSchdulMnt;
-	}
-
-	/**
-	 * @return the executSchdulSecnd
-	 */
-	public String getExecutSchdulSecnd() {
-		return executSchdulSecnd;
-	}
-	/**
-	 * @param executSchdulSecnd
-	 *            the executSchdulSecnd to set
-	 */
-	public void setExecutSchdulSecnd(String executSchdulSecnd) {
-		this.executSchdulSecnd = executSchdulSecnd;
-	}
-
-	/**
-	 * 사용여부를 리턴한다.
-	 * 
-	 * @return the useAt
-	 */
-	public String getUseAt() {
-		return useAt;
-	}
-	/**
-	 * 사용여부를 설정한다.
-	 * 
-	 * @param useAt
-	 *            설정할 사용여부
-	 */
-	public void setUseAt(String useAt) {
-		this.useAt = useAt;
-	}
-
-	// helper
-	/**
-	 * @return the executCycleNm
-	 */
-	public String getExecutCycleNm() {
-		return executCycleNm;
-	}
-	/**
-	 * @param executCycleNm
-	 *            the executCycleNm to set
-	 */
-	public void setExecutCycleNm(String executCycleNm) {
-		this.executCycleNm = executCycleNm;
-	}
-
-	/**
-	 * @return the executSchdul
-	 */
-	public String getExecutSchdul() {
-		return executSchdul;
-	}
-	/**
-	 * @param executSchdul
-	 *            the executSchdul to set
-	 */
-	public void setExecutSchdul(String executSchdul) {
-		this.executSchdul = executSchdul;
-	}
-
 	/**
 	 * @return the executSchdulDfkSes
 	 */
@@ -254,9 +84,9 @@ public class BatchSchdulVO extends BaseVO {
 				ret[i] = this.executSchdulDfkSes[i];
 			}
 		}
-
 		return ret;
 	}
+	
 	/**
 	 * @param executSchdulDfkSes
 	 *            the executSchdulDfkSes to set
@@ -267,76 +97,6 @@ public class BatchSchdulVO extends BaseVO {
 		for (int i = 0; i < executSchdulDfkSes.length; ++i) {
 			this.executSchdulDfkSes[i] = executSchdulDfkSes[i];
 		}
-	}
-
-	/**
-	 * @return the batchOpertNm
-	 */
-	public String getBatchOpertNm() {
-		return batchOpertNm;
-	}
-	/**
-	 * @param batchOpertNm
-	 *            the batchOpertNm to set
-	 */
-	public void setBatchOpertNm(String batchOpertNm) {
-		this.batchOpertNm = batchOpertNm;
-	}
-
-	/**
-	 * @return the batchProgrm
-	 */
-	public String getBatchProgrm() {
-		return batchProgrm;
-	}
-	/**
-	 * @param batchProgrm
-	 *            the batchProgrm to set
-	 */
-	public void setBatchProgrm(String batchProgrm) {
-		this.batchProgrm = batchProgrm;
-	}
-
-	/**
-	 * @return the paramtr
-	 */
-	public String getParamtr() {
-		return paramtr;
-	}
-	/**
-	 * @param paramtr
-	 *            the paramtr to set
-	 */
-	public void setParamtr(String paramtr) {
-		this.paramtr = paramtr;
-	}
-
-	/**
-	 * @return the batchObject
-	 */
-	public String getBatchObject() {
-		return batchObject;
-	}
-	/**
-	 * @param batchObject
-	 *            the batchObject to set
-	 */
-	public void setBatchObject(String batchObject) {
-		this.batchObject = batchObject;
-	}
-
-	/**
-	 * @return the batchMethod
-	 */
-	public String getBatchMethod() {
-		return batchMethod;
-	}
-	/**
-	 * @param batchMethod
-	 *            the batchMethod to set
-	 */
-	public void setBatchMethod(String batchMethod) {
-		this.batchMethod = batchMethod;
 	}
 
 	/**

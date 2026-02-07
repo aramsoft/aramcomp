@@ -1,6 +1,8 @@
 package aramframework.com.sym.log.clg.domain;
 
 import aramframework.cmm.domain.BaseVO;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * 로그인 로그관리를 위한 VO 클래스
@@ -8,6 +10,8 @@ import aramframework.cmm.domain.BaseVO;
  * @since 2014.11.11
  * @version 1.0
  */
+@Data
+@EqualsAndHashCode(callSuper=false)
 public class LoginLogVO extends BaseVO {
 
 	// domain
@@ -41,77 +45,5 @@ public class LoginLogVO extends BaseVO {
 	
 	/** 검색종료일 */
 	private String searchEndDe = "";
-
-	// domain
-	public String getLogId() {
-		return logId;
-	}
-	public void setLogId(String logId) {
-		this.logId = logId;
-	}
-
-	public String getLoginId() {
-		return loginId;
-	}
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
-	}
-
-	public String getLoginIp() {
-		return loginIp;
-	}
-	public void setLoginIp(String loginIp) {
-		this.loginIp = loginIp;
-	}
-	
-	public String getLoginMthd() {
-		return loginMthd;
-	}
-	public void setLoginMthd(String loginMthd) {
-		this.loginMthd = loginMthd;
-	}
-
-	public String getErrOccrrAt() {
-		return errOccrrAt;
-	}
-	public void setErrOccrrAt(String errOccrrAt) {
-		this.errOccrrAt = errOccrrAt;
-	}
-
-	public String getErrorCode() {
-		return errorCode;
-	}
-	public void setErrorCode(String errorCode) {
-		this.errorCode = errorCode;
-	}
-
-	public String getCreatDt() {
-		return creatDt;
-	}
-	public void setCreatDt(String creatDt) {
-		this.creatDt = creatDt;
-	}
-
-	// helper
-	public String getLoginNm() {
-		return loginNm;
-	}
-	public void setLoginNm(String loginNm) {
-		this.loginNm = loginNm;
-	}
-
-	public String getSearchBgnDe() {
-		return searchBgnDe;
-	}
-	public void setSearchBgnDe(String searchBgnDe) {
-		this.searchBgnDe = searchBgnDe;
-	}
-
-	public String getSearchEndDe() {
-		return searchEndDe;
-	}
-	public void setSearchEndDe(String searchEndDe) {
-		this.searchEndDe = searchEndDe;
-	}
 
 }

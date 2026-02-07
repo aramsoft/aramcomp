@@ -1,6 +1,6 @@
 package aramframework.com.cmm.code.domain;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
+import lombok.Data;
 
 /**
  * 공통코드 조회 클래스
@@ -8,6 +8,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  * @since 2014.11.11
  * @version 1.0
  */
+@Data
 public class SearchCodeVO {
 
 	/** 코드 ID */
@@ -25,98 +26,4 @@ public class SearchCodeVO {
 	/** 상세 조건 */
 	private String detailCondition = "";
 
-	/**
-	 * codeId attribute를 리턴한다.
-	 * 
-	 * @return 	the codeId
-	 */
-	public String getCodeId() {
-		return codeId;
-	}
-	/**
-	 * codeId attribute 값을 설정한다.
-	 * 
-	 * @param 	codeId	the codeId to set
-	 */
-	public void setCodeId(String codeId) {
-		this.codeId = codeId;
-	}
-
-	/**
-	 * code attribute를 리턴한다.
-	 * 
-	 * @return 	the code
-	 */
-	public String getCode() {
-		return code;
-	}
-	/**
-	 * code attribute 값을 설정한다.
-	 * 
-	 * @param 	code	the code to set
-	 */
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-	/**
-	 * tableNm attribute를 리턴한다.
-	 * 
-	 * @return 	the tableNm
-	 */
-	public String getTableNm() {
-		return tableNm;
-	}
-	/**
-	 * tableNm attribute 값을 설정한다.
-	 * 
-	 * @param 	tableNm	the tableNm to set
-	 */
-	public void setTableNm(String tableNm) {
-		this.tableNm = tableNm;
-	}
-
-	/**
-	 * haveDetailCondition attribute를 리턴한다.
-	 * 
-	 * @return 	the haveDetailCondition
-	 */
-	public String getHaveDetailCondition() {
-		return haveDetailCondition;
-	}
-	/**
-	 * haveDetailCondition attribute 값을 설정한다.
-	 * 
-	 * @param 	haveDetailCondition	the haveDetailCondition to set
-	 */
-	public void setHaveDetailCondition(String haveDetailCondition) {
-		this.haveDetailCondition = haveDetailCondition;
-	}
-
-	/**
-	 * detailCondition attribute를 리턴한다.
-	 * 
-	 * @return 	the detailCondition
-	 */
-	public String getDetailCondition() {
-		return detailCondition;
-	}
-	/**
-	 * detailCondition attribute 값을 설정한다.
-	 * 
-	 * @param 	detailCondition	the detailCondition to set
-	 */
-	public void setDetailCondition(String detailCondition) {
-		this.detailCondition = detailCondition;
-	}
-
-	/**
-	 * toString 메소드를 대치한다.
-	 * 
-	 * @return 	String 
-	 */
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
-	}
-	
 }

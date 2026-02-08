@@ -60,12 +60,14 @@
 		<span class="button_area">
 			<span class="button"><a href="#" onclick="javascript:fn_aram_search(); return false;"><spring:message code="button.inquire" /></a></span>
 			<span class="button"><a href="#" onclick="javascript:fn_aram_regist(); return false;"><spring:message code="button.create" /></a></span>
+<!-- 
 	      	<c:if test="${fullScrYn == 'Y'}">
 	    		<span class="button"><a href="#" onclick="javascript:fn_aram_screen('N'); return false;">원래화면</a></span>
 	        </c:if>
 	      	<c:if test="${fullScrYn != 'Y'}">
 	    		<span class="button"><a href="#" onclick="javascript:fn_aram_screen('Y'); return false;">전체화면</a></span>
 	        </c:if>
+-->
 		</span>
 	</div>
 </div>

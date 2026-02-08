@@ -45,12 +45,14 @@
 	        </c:if>
 	  	  	</c:if>
 	     	<span class="button"><a href="#" onclick="javascript:fn_aram_list(); return false;"><spring:message code="button.list" /></a></span>
+<!-- 
 	      	<c:if test="${fullScrYn == 'Y'}">
 	    		<span class="button"><a href="#" onclick="javascript:fn_aram_screen('N'); return false;">원래화면</a></span>
 	        </c:if>
 	      	<c:if test="${fullScrYn != 'Y'}">
 	    		<span class="button"><a href="#" onclick="javascript:fn_aram_screen('Y'); return false;">전체화면</a></span>
 	        </c:if>
+-->
 		</span>
 	</div>	
 </div>

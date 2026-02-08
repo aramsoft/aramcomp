@@ -126,7 +126,7 @@ function fnSearchPassword() {
  
         <div style="height:15px;"></div>
         <div style="width:250px;margin-left:20px;">
-            <table border="0" >
+            <table style="border:0;">
                 <tr>
                     <td width="30"></td>
                     <td>
@@ -140,7 +140,7 @@ function fnSearchPassword() {
                 <tr><td colspan="2" height="5"></td></tr>
                	<tr>
                     <td colspan="2">
-                    <table border="0">
+                    <table style="border:0;">
                         <tr>
                             <td><label for="id">이름&nbsp;&nbsp;</label></td>
                             <td align="left"><input type="text" name="name" id="name" style="height:16px; width:85px; border:1px solid #CCCCCC; margin:0px; padding:0px;" tabindex="4" maxlength="10"/></td>
@@ -177,7 +177,7 @@ function fnSearchPassword() {
  
         <div style="height:15px;"></div>
         <div style="width:250px;margin-left:20px;">
-            <table border="0" >
+            <table style="border:0;" >
                 <tr>
                     <td width="30"></td>
                     <td>
@@ -191,7 +191,7 @@ function fnSearchPassword() {
                 <tr><td colspan="2" height="5"></td></tr>
                	<tr>
                     <td colspan="2">
-                    <table border="0">
+                    <table style="border:0;">
                         <tr>
                             <td><label for="id">아이디&nbsp;&nbsp;</label></td>
                             <td align="left"><input type="text" name="userId" id="userId" value="" style="height: 16px; width: 85px; border: 1px solid #CCCCCC; margin: 0px; padding: 0px; ime-mode: disabled;" maxlength="12" tabindex="5" /></td>

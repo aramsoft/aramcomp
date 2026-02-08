@@ -11,7 +11,7 @@ var path = "http://" + "${pageContext.request.serverName}" + ":" + "${pageContex
 
 <form name="menuListForm" action ="${pageContext.request.contextPath}/sym/mnu/mpm/listMenuTree.do" method="post">
 
-<table border="0">
+<table style="border:0;">
 <tr>
     <td>
         <div style="width:0px; height:0px;">

@@ -181,7 +181,7 @@ window.onload = fnInit;
  
         <div style="height:70px;"></div>
         <div style="width:250px;margin-left:20px;">
-            <table border="0" >
+            <table style="border:0;" >
                 <tr>
                     <td width="30"></td>
                     <td>
@@ -192,7 +192,7 @@ window.onload = fnInit;
                 </tr>
                	<tr>
                     <td colspan="2">
-                    <table border="0">
+                    <table style="border:0;">
                         <tr>
                             <td><label for="username">아이디&nbsp;&nbsp;</label></td>
                             <td><input type="text" name="username" id="username"  style="height:16px; width:85px; border:1px solid #CCCCCC; margin:0px; padding:0px; ime-mode:disabled;" tabindex="4" maxlength="10"/></td>

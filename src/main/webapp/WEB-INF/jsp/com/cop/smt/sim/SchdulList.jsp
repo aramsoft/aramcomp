@@ -32,7 +32,7 @@
 
 <div style="margin-top:10px; width:100%"></div>
 
-<table border="0" summary="월별일정보기, 주간별일정보기, 일별일정보기 입니다.">
+<table style="border:0;" summary="월별일정보기, 주간별일정보기, 일별일정보기 입니다.">
 	<tr>
   		<td height="20px" width="100px" bgcolor="#DDDDDD" style="cursor:hand;cursor:pointer;" align="center" id="tabMenu0" onClick="fnTabMenuSelect(0);"><b>월별일정보기</b></td>
   		<td height="20px" width="1x" bgcolor="#FFFFFF"></td>

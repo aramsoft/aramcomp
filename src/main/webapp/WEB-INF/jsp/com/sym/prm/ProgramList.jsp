@@ -95,7 +95,7 @@
             </span>
     	</td>
     	<td class="lt_text"><c:out value="${result.progrmKoreanNm}"/></td>
-    	<td class="lt_text"><a href='<c:out value="${result.url}"/>'><c:out value="${result.url}"/></</a></td>
+    	<td class="lt_text"><a href='<c:out value="${result.url}"/>'><c:out value="${result.url}"/></a></td>
   	</tr>
  	</c:forEach>
 </tbody>

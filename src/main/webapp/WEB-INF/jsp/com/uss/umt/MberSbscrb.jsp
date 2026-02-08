@@ -91,7 +91,6 @@
 			<span class="required_icon"></span>
 			<label for="passwordHint">비밀번호힌트</label>
         </th>
-        </th>
         <td>
             <form:select path="passwordHint">
                 <form:option value="" label="--선택하세요--"/>

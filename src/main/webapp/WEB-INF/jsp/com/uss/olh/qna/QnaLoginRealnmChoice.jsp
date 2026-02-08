@@ -43,7 +43,7 @@
 <form name="LoginRealnmForm"  method="post">
 
 <!-- 등록  폼 영역  -->
-<table border="0" class="table-register">
+<table style="border:0;" class="table-register">
 <caption>로그인 &amp; 실명확인 선택</caption>
   	<tr> 
     	<th width="100%">

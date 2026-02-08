@@ -45,7 +45,7 @@
 <!-- 작성 비밀번호를 확인하기 위한. ---------------------------->
 	  	  
 <!-- 등록  폼 영역  -->
-<table border="0" class="table-register">
+<table style="border:0;" class="table-register">
 <caption>작성 비밀번호 확인</caption>
   	<tr> 
     	<th width="50%">

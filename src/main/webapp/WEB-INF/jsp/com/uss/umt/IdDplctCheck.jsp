@@ -42,7 +42,7 @@
 
 <form name="checkForm" action ="${pageContext.request.contextPath}/uss/umt/checkIdDplct.do">
 
-<table border="0" class="table-register">
+<table style="border:0;" class="table-register">
     <tr>
         <td width="40%">사용할아이디&nbsp;&nbsp;</td>
         <td>

@@ -23,7 +23,7 @@
 %>
 <!-- 일정관리정보 시작 height="80" -->
 <div style="width:430px;">
-	<table border="0">
+	<table style="border:0;">
 	<c:forEach items="${resultList}" var="resultInfo" varStatus="status">
 	<tr>
 		<td><a href="#" onClick="fn_aram_schdulManage('${resultInfo.schdulId}'); return false;">${resultInfo.toDay}  ${resultInfo.schdulNm}</a></td>

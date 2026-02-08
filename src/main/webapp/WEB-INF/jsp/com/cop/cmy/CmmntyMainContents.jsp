@@ -64,7 +64,7 @@
 	</div>
 	
 	<div class="comun_board_content">
-		<table border="0">
+		<table style="border:0;">
 			<c:if test="${fn:length(articleList[bstatus.count-1]) == 0}">
 			<tr>
 				<td height="22" align="left">등록된 내용이 없습니다.</td>

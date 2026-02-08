@@ -158,7 +158,7 @@
 			<span class="required_icon"></span>
 		</th>
 	    <td>
-    	<table border="0" >
+    	<table style="border:0;" >
     		<tr>
        			<td width="20%" align="center">
        				<input type="radio" name="stsfdg" value="5" <c:if test="${satisfactionVO.stsfdg == '5'}"> checked="checked"</c:if>>

@@ -72,10 +72,10 @@ function fnEgovTabNavigation(objName){
 		<div class="side">	
 			<section class="section">   
 			 			
-					<table border="0" >
+					<table style="border:0;" >
 						<tr>
 							<td>
-							<table border="0" >
+							<table style="border:0;">
 								<tr>
 									<td><img src="${pageContext.request.contextPath}/images/com/TAB_01.gif"  border="0" name="TAB_01" id="TAB_01" style="cursor:pointer;" onClick="fnEgovTabNavigation('DIV_01');"></td>
 									<td><img src="${pageContext.request.contextPath}/images/com/TAB_02.gif"   border="0" name="TAB_02" id="TAB_02" style="cursor:pointer;" onClick="fnEgovTabNavigation('DIV_02');"></td>

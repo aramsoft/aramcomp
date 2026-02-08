@@ -56,7 +56,7 @@
  			일괄파일
  		</th>
  		<td width="80%">
-   		<table border="0" >
+   		<table style="border:0;" >
      		<tr>
        			<td>&nbsp;<input type = "file" name="file" size="40" title="일괄파일"/></td>
        			<td width="5%"></td>

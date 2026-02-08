@@ -254,7 +254,7 @@ form { padding: 0px; margin: 0px; }
 <div class="title">Insert Image</div>
 <!--- new stuff --->
 <form action="" method="post" enctype="multipart/form-data">
-<table border="0" style="padding:0px; margin:0px;">
+<table style="border:0;" style="padding:0px; margin:0px;">
   <tbody>
   <tr>
     <td style="width: 7em; text-align: right">Image Upload:</td>

@@ -23,22 +23,6 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
 	</context:component-scan>
  	
-	<bean id="cnManager"
-		  class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
-		<property name="favorPathExtension" value="true"/>
-		<property name="ignoreAcceptHeader" value="true" />
-		<property name="defaultContentType" value="text/html" />
-		<property name="useJaf" value="false"/>
-
-		<property name="mediaTypes">
-		  <map>
-			<entry key="html" value="text/html" />
-			<entry key="json" value="application/json" />
-			<entry key="xml" value="application/xml" />
-		  </map>
-		</property>
-	</bean>
-
 	<!--
 		- The form-based controllers within this application provide @RequestMapping
 		- annotations at the type level for path mapping URLs and @RequestMapping
@@ -52,8 +36,7 @@
 
     <bean id="handlerMapping" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" >
    		<property name="alwaysUseFullPath" value="true" />
-   		<property name="contentNegotiationManager" ref="cnManager" />
-		<property name="interceptors">
+ 		<property name="interceptors">
 			<list>
 				<ref bean="tilesInterceptor" />
 		 		<ref bean="webLogInterceptor" /> 
@@ -100,22 +83,4 @@
             <bean class="aramframework.cmm.config.web.BindingInitializer"/>
         </property>
     </bean>
-<!--     
-	<bean class="org.egovframe.rte.ptl.mvc.bind.annotation.EgovRequestMappingHandlerAdapter">
-		<property name="webBindingInitializer">
-			<bean class="aramframework.cmm.config.web.BindingInitializer"/>
-		</property>
-		<property name="customArgumentResolvers">
-			<list>
-                <bean class="org.egovframe.rte.ptl.mvc.bind.AnnotationCommandMapArgumentResolver" />
-			</list>
-		</property>
-        <property name="messageConverters">
-			<list>
-				<bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
-				<bean class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter" />
-			</list>
-		</property>
-	</bean>
--->
 </beans>

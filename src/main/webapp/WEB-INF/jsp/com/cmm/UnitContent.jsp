@@ -126,7 +126,7 @@
     </tr>
     <tr>
       <td valign="top">&nbsp;-&nbsp;
-      	<a href="${pageContext.request.contextPath}/home/sample/main.do" target="_new">
+      	<a href="${pageContext.request.contextPath}/home/main.do" target="_new">
       		샘플 홈페이지
       	</a>
       </td>

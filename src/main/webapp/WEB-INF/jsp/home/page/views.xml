@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="home/page/EgovAboutSite" extends="home">
+    <put-attribute name="title" value="사이트소개" />
+    <put-attribute name="body" value="/WEB-INF/jsp/home/page/EgovAboutSite.jsp" />
+  </definition>
+  
+  <definition name="home/page/EgovDownload" extends="home">
+    <put-attribute name="title" value="자료실목록조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/home/page/EgovDownload.jsp" />
+  </definition>
+  
+  <definition name="home/page/EgovDownloadDetail" extends="home">
+    <put-attribute name="title" value="자료실 상세조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/home/page/EgovDownloadDetail.jsp" />
+  </definition>
+  
+  <definition name="home/page/EgovDownloadModify" extends="home">
+    <put-attribute name="title" value="자료실 등록" />
+    <put-attribute name="body" value="/WEB-INF/jsp/home/page/EgovDownloadModify.jsp" />
+  </definition>
+  
+  <definition name="home/page/EgovHistory" extends="home">
+    <put-attribute name="title" value="사이트 연혁" />
+    <put-attribute name="body" value="/WEB-INF/jsp/home/page/EgovHistory.jsp" />
+  </definition>
+  
+  <definition name="home/page/EgovLocation" extends="home">
+    <put-attribute name="title" value="찾아오시는길" />
+    <put-attribute name="body" value="/WEB-INF/jsp/home/page/EgovLocation.jsp" />
+  </definition>
+  
+  <definition name="home/page/EgovOrganization" extends="home">
+    <put-attribute name="title" value="조직도" />
+    <put-attribute name="body" value="/WEB-INF/jsp/home/page/EgovOrganization.jsp" />
+  </definition>
+  
+  <definition name="home/page/EgovProductInfo" extends="home">
+    <put-attribute name="title" value="대표제품 소개페이지" />
+    <put-attribute name="body" value="/WEB-INF/jsp/home/page/EgovProductInfo.jsp" />
+  </definition>
+  
+  <definition name="home/page/EgovQA" extends="home">
+    <put-attribute name="title" value="묻고답하기 목록조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/home/page/EgovQA.jsp" />
+  </definition>
+  
+  <definition name="home/page/EgovQADetail" extends="home">
+    <put-attribute name="title" value="묻고답하기 상세조회" />
+    <put-attribute name="body" value="/WEB-INF/jsp/home/page/EgovQADetail.jsp" />
+  </definition>
+  
+  <definition name="home/page/EgovService" extends="home">
+    <put-attribute name="title" value="대표서비스 조회화면" />
+    <put-attribute name="body" value="/WEB-INF/jsp/home/page/EgovService.jsp" />
+  </definition>
+  
+  <definition name="home/page/EgovServiceInfo" extends="home">
+    <put-attribute name="title" value="대표서비스 상세조회화면" />
+    <put-attribute name="body" value="/WEB-INF/jsp/home/page/EgovServiceInfo.jsp" />
+  </definition>
+  
+</tiles-definitions>

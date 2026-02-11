@@ -6,6 +6,7 @@
 <tiles-definitions>
 
   	<definition name="default" template="/WEB-INF/layouts/default.jsp" />
-  	<definition name="home.sample" template="/WEB-INF/layouts/home/sample.jsp" />
+  	<definition name="home" template="/WEB-INF/layouts/home/homeDefault.jsp" />
+  	<definition name="apps" template="/WEB-INF/layouts/apps/appsDefault.jsp" />
   		
 </tiles-definitions>

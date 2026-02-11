@@ -3,6 +3,7 @@ package aramframework.com.cop.cmy.domain;
 import java.util.List;
 
 import aramframework.cmm.domain.BaseVO;
+import aramframework.cmm.util.WebUtil;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -69,4 +70,8 @@ public class CommunityVO extends BaseVO {
 	private List<MenuVO> subMenuList = null;
 	private String curMenuNm = "";
 
+	public String getPathId() {
+		return WebUtil.getPathId(this.cmmntyId);
+	}
+	
 }

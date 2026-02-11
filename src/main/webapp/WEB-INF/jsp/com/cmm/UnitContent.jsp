@@ -60,28 +60,28 @@
     </tr>
     <tr> 
       <td valign="top">&nbsp;-&nbsp;
-      	<a href="${pageContext.request.contextPath}/board/11/list">
+      	<a href="${pageContext.request.contextPath}/board/2/list">
       		일반게시판 
       	</a>
       </td>
     </tr>
     <tr> 
       <td valign="top">&nbsp;-&nbsp;
-      	<a href="${pageContext.request.contextPath}/board/21/list">
+      	<a href="${pageContext.request.contextPath}/board/3/list">
       		유효게시판 
       	</a>
       </td>
     </tr>
     <tr> 
       <td valign="top">&nbsp;-&nbsp;
-      	<a href="${pageContext.request.contextPath}/board/31/list">
+      	<a href="${pageContext.request.contextPath}/board/4/list">
       		익명게시판 
       	</a>
       </td>
     </tr>
     <tr> 
       <td valign="top">&nbsp;-&nbsp;
-      	<a href="${pageContext.request.contextPath}/board/41/list">
+      	<a href="${pageContext.request.contextPath}/board/5/list">
       		프로그램팁 
       	</a>
       </td>
@@ -89,7 +89,7 @@
 <!-- 
     <tr> 
       <td valign="top">&nbsp;-&nbsp;
-      	<a href="${pageContext.request.contextPath}/board/51/list">
+      	<a href="${pageContext.request.contextPath}/board/6/list">
       		버그리포트
       	</a>
       </td>

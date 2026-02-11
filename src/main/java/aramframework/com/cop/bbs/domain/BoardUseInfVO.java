@@ -1,6 +1,7 @@
 package aramframework.com.cop.bbs.domain;
 
 import aramframework.cmm.domain.BaseVO;
+import aramframework.cmm.util.WebUtil;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -52,4 +53,9 @@ public class BoardUseInfVO extends BaseVO {
 	/** 제공 URL */
 	private String provdUrl = "";
 
+	/** 게시판 단축 아이디	 */
+	public String getPathId() {
+		return WebUtil.getPathId(this.bbsId);
+	}
+	
 }

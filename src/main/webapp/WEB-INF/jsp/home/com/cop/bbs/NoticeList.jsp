@@ -43,7 +43,7 @@
             <!-- 검색 필드 박스 시작 -->
             <div id="search_field">
 				<form:form modelAttribute="boardVO" action ="" method="post">
-					<form:hidden path="bbsId" />
+					<form:hidden path="pathId" />
 					<input type="hidden" name="nttId" value="0"/>
 					<input type="hidden" name="menuNo" value="${menuNo}"/>
 					
@@ -202,27 +202,27 @@ function press(event) {
  ******************************************************** */
 function fn_aram_linkPage(pageNo) {
     var varForm = document.getElementById("boardVO");
-	var bbsId = varForm.bbsId.value;
+	var pathId = varForm.pathId.value;
 	
     varForm.pageIndex.value = pageNo;
-    varForm.action = "${pageContext.request.contextPath}/home/board/"+bbsId+"/list";
+    varForm.action = "${pageContext.request.contextPath}/home/board/"+pathId+"/list";
     varForm.submit();
 }
 
 function fn_aram_search() {
     var varForm = document.getElementById("boardVO");
-	var bbsId = varForm.bbsId.value;
+	var pathId = varForm.pathId.value;
 	
     varForm.pageIndex.value = '1';
-    varForm.action = "${pageContext.request.contextPath}/home/board/"+bbsId+"/list";
+    varForm.action = "${pageContext.request.contextPath}/home/board/"+pathId+"/list";
     varForm.submit();
 }
 
 function fn_aram_detail(nttId) {
     var varForm = document.getElementById("boardVO");
-	var bbsId = varForm.bbsId.value;
+	var pathId = varForm.pathId.value;
    
-    varForm.action = "${pageContext.request.contextPath}/home/board/"+bbsId+"/id/" + nttId;
+    varForm.action = "${pageContext.request.contextPath}/home/board/"+pathId+"/article/" + nttId;
     varForm.submit();
 }
 

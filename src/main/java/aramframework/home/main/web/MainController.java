@@ -64,10 +64,10 @@ public class MainController {
 		
 		boardVO.setBoardMasterVO(boardMasterVO);
 		
-		boardVO.setBbsId("BBSMSTR_AAAAAAAAAAAA");
+		boardVO.setBbsId("BBSMSTR_000000000007");
 		model.addAttribute("notiList", bbsBoardService.selectBoardArticleList(boardVO));
 		
-		boardVO.setBbsId("BBSMSTR_BBBBBBBBBBBB");
+		boardVO.setBbsId("BBSMSTR_000000000008");
 		model.addAttribute("galList", bbsBoardService.selectBoardArticleList(boardVO));
 		
 		// 공지사항 메인컨텐츠 조회 끝 -----------------------------------

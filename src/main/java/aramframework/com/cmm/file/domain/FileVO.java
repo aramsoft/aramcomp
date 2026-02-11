@@ -1,6 +1,7 @@
 package aramframework.com.cmm.file.domain;
 
 import aramframework.cmm.domain.BaseVO;
+import aramframework.cmm.util.WebUtil;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -48,4 +49,8 @@ public class FileVO extends BaseVO {
 	/** 파일크기	 */
 	private long fileSize = 0;
 
+	public String getPathId() {
+		return WebUtil.getPathId(this.atchFileId);
+	}
+	
 }

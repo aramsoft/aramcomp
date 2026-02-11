@@ -15,7 +15,6 @@ import aramframework.cmm.domain.SearchVO;
 import aramframework.cmm.security.userdetails.UserDetailsHelper;
 import aramframework.cmm.util.ComponentChecker;
 import aramframework.cmm.util.MessageHelper;
-import aramframework.cmm.util.WebUtil;
 import aramframework.com.cmm.com.annotation.IncludedInfo;
 import aramframework.com.cop.bbs.domain.BoardUseInfVO;
 import aramframework.com.cop.bbs.service.BBSUseInfoService;
@@ -137,8 +136,7 @@ public class BBSUseInfoController {
 			ModelMap model) {
 		
 		boardUseInfVO = bbsUseService.selectBBSUseInf(boardUseInfVO);
-		String pathId = WebUtil.getPathId(boardUseInfVO.getBbsId());
-		boardUseInfVO.setProvdUrl(request.getContextPath() + "/board/"+pathId+"/list");
+		boardUseInfVO.setProvdUrl(request.getContextPath() + "/board/"+boardUseInfVO.getPathId()+"/list");
 			
 		model.addAttribute(boardUseInfVO);
 					

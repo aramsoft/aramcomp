@@ -197,8 +197,7 @@ public class CmyBBSMasterController {
 		boardUseInfVO = bbsUseInfoService.selectBBSUseInf(boardUseInfVO);
 
 		// 시스템 사용 게시판의 경우 URL 표시
-	    String bbsId = boardUseInfVO.getBbsId();
-		boardUseInfVO.setProvdUrl(request.getContextPath() + "/board/" + WebUtil.getPathId(bbsId) + "/list"); 
+		boardUseInfVO.setProvdUrl(request.getContextPath() + "/board/" + boardUseInfVO.getPathId() + "/list"); 
 
 		model.addAttribute(boardUseInfVO);
 		

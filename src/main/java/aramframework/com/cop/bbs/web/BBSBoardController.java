@@ -353,13 +353,12 @@ public class BBSBoardController {
 		String requestUri = request.getRequestURI();
 		String contextUrl = requestUrl.substring(0, requestUrl.indexOf(requestUri));
 
-		String pathId = WebUtil.getPathId(boardVO.getBbsId());
 		String directUrl = "";
 		if( target != null 
 				&& target != "" ) {
-			directUrl = contextUrl + "/apps/"+target+"/board/"+pathId+"/article/"+boardVO.getNttId();
+			directUrl = contextUrl + "/apps/"+target+"/board/"+boardVO.getPathId()+"/article/"+boardVO.getNttId();
 		} else {
-			directUrl = contextUrl + "/board/"+pathId+"/article/"+ boardVO.getNttId();
+			directUrl = contextUrl + "/board/"+boardVO.getPathId()+"/article/"+ boardVO.getNttId();
 		}
 		model.addAttribute("directUrl", directUrl);
 	}
@@ -455,9 +454,8 @@ public class BBSBoardController {
 
 		boardService.insertBoardArticle(boardVO);
 
-		String pathId = WebUtil.getPathId(boardVO.getBbsId());
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		model.addAttribute("redirectURL", "/board/"+pathId+ "/list");
+		model.addAttribute("redirectURL", "/board/"+boardVO.getPathId()+ "/list");
 	    return "com/cmm/redirect";
 	}
 
@@ -557,9 +555,8 @@ public class BBSBoardController {
 
 		boardService.insertBoardArticle(boardVO);
 
-		String pathId = WebUtil.getPathId(boardVO.getBbsId());
 		model.addAttribute("message", MessageHelper.getMessage("success.common.insert"));
-		model.addAttribute("redirectURL", "/board/"+pathId+ "/list");
+		model.addAttribute("redirectURL", "/board/"+boardVO.getPathId()+ "/list");
 	    return "com/cmm/redirect";
 	}
 
@@ -668,9 +665,8 @@ public class BBSBoardController {
 
 		boardService.updateBoardArticle(boardVO);
 
-		String pathId = WebUtil.getPathId(boardVO.getBbsId());
 		model.addAttribute("message", MessageHelper.getMessage("success.common.update"));
-		model.addAttribute("redirectURL", "/board/"+pathId+ "/list");
+		model.addAttribute("redirectURL", "/board/"+boardVO.getPathId()+ "/list");
 	    return "com/cmm/redirect";
 	}
 
@@ -720,9 +716,8 @@ public class BBSBoardController {
 
 		boardService.deleteBoardArticle(boardVO);
 
-		String pathId = WebUtil.getPathId(boardVO.getBbsId());
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		model.addAttribute("redirectURL", "/board/"+pathId+ "/list");
+		model.addAttribute("redirectURL", "/board/"+boardVO.getPathId()+ "/list");
 	    return "com/cmm/redirect";
 	}
 
@@ -742,9 +737,8 @@ public class BBSBoardController {
 		
 		boardService.eraseBoardArticle(boardVO);
 
-		String pathId = WebUtil.getPathId(boardVO.getBbsId());
 		model.addAttribute("message", MessageHelper.getMessage("success.common.delete"));
-		model.addAttribute("redirectURL", "/board/"+pathId+ "/list");
+		model.addAttribute("redirectURL", "/board/"+boardVO.getPathId()+ "/list");
 	    return "com/cmm/redirect";
 	}
 

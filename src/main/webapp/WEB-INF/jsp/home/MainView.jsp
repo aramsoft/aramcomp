@@ -58,14 +58,14 @@
 					<h3 class="notice_title">
 						<img src="${pageContext.request.contextPath}/images/home/index/img_subtitle01.gif" alt="공지사항">
 					</h3>
-					<a href="#" onclick="javascript:fn_main_headPageAction('43','board/BBSMSTR_AAAAAAAAAAAA/list'); return false;" class="more">
+					<a href="#" onclick="javascript:fn_main_headPageAction('43','board/7/list'); return false;" class="more">
 						<img src="${pageContext.request.contextPath}/images/home/index/btn_more.gif" alt="more">
 					</a>
 					<ul>
 					<c:forEach var="result" items="${notiList}" varStatus="status">
 					<li>
 						<div class="notice_lefttext">
-							<a href="#" onclick="javascript:fn_main_headPageAction('43','board/BBSMSTR_AAAAAAAAAAAA/id/${result.nttId}'); return false;">
+							<a href="#" onclick="javascript:fn_main_headPageAction('43','board/7/article/${result.nttId}'); return false;">
 					        <c:if test="${result.replyLc!=0}">
                                 <c:forEach begin="0" end="${result.replyLc}" step="1">
                                     &nbsp;
@@ -93,14 +93,14 @@
 					<h3 class="notice_title">
 						<img src="${pageContext.request.contextPath}/images/home/index/img_subtitle02.gif" alt="묻고 답하기">
 					</h3> 
-					<a href="#" onclick="javascript:fn_main_headPageAction('44','board/BBSMSTR_BBBBBBBBBBBB/list'); return false;" class="more">
+					<a href="#" onclick="javascript:fn_main_headPageAction('44','board/8/list'); return false;" class="more">
 						<img src="${pageContext.request.contextPath}/images/home/index/btn_more.gif" alt="more">
 					</a>
 					<ul>
 					<c:forEach var="result" items="${galList}" varStatus="status">
                     <li> 
                     	<div class="notice_lefttext">
-							<a href="#" onclick="javascript:fn_main_headPageAction('44','board/BBSMSTR_BBBBBBBBBBBB/id/${result.nttId}'); return false;">
+							<a href="#" onclick="javascript:fn_main_headPageAction('44','board/8/article/${result.nttId}'); return false;">
                             <c:if test="${result.replyLc!=0}">
                                 <c:forEach begin="0" end="${result.replyLc}" step="1">
                                     &nbsp;

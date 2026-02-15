@@ -147,7 +147,7 @@ function fn_aram_list() {
     var varForm = document.getElementById("boardVO");
 	var bbsId = varForm.bbsId.value;
 	
-    varForm.action = "${pageContext.request.contextPath}/home/board/"+bbsId+"/list";
+    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/board/"+bbsId+"/list";
     varForm.submit();
 }
 
@@ -159,7 +159,7 @@ function fn_aram_edit() {
 		return;
 	}
 
-	varForm.action = "${pageContext.request.contextPath}/home/editBoardArticle.do";
+	varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/editBoardArticle.do";
 	varForm.submit();
 }
 
@@ -172,14 +172,14 @@ function fn_aram_delete() {
 	}
 
 	if (confirm("<spring:message code='common.delete.msg' />")) {
-		varForm.action = "${pageContext.request.contextPath}/home/deleteBoardArticle.do";
+		varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/deleteBoardArticle.do";
 		varForm.submit();
 	}
 }
 
 function fn_aram_reply() {
     var varForm = document.getElementById("boardVO");
-    varForm.action = "${pageContext.request.contextPath}/home/replyBoardArticle.do";
+    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/replyBoardArticle.do";
     varForm.submit();
 }
 

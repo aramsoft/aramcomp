@@ -205,7 +205,7 @@ function fn_aram_linkPage(pageNo) {
 	var pathId = varForm.pathId.value;
 	
     varForm.pageIndex.value = pageNo;
-    varForm.action = "${pageContext.request.contextPath}/home/board/"+pathId+"/list";
+    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/board/"+pathId+"/list";
     varForm.submit();
 }
 
@@ -214,7 +214,7 @@ function fn_aram_search() {
 	var pathId = varForm.pathId.value;
 	
     varForm.pageIndex.value = '1';
-    varForm.action = "${pageContext.request.contextPath}/home/board/"+pathId+"/list";
+    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/board/"+pathId+"/list";
     varForm.submit();
 }
 
@@ -222,14 +222,14 @@ function fn_aram_detail(nttId) {
     var varForm = document.getElementById("boardVO");
 	var pathId = varForm.pathId.value;
    
-    varForm.action = "${pageContext.request.contextPath}/home/board/"+pathId+"/article/" + nttId;
+    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/board/"+pathId+"/article/" + nttId;
     varForm.submit();
 }
 
 function fn_aram_regist() {
     var varForm = document.getElementById("boardVO");
     varForm.nttId.value = 0;
-    varForm.action = "${pageContext.request.contextPath}/home/registBoardArticle.do";
+    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/registBoardArticle.do";
     varForm.submit();
 }
 

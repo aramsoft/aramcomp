@@ -209,7 +209,7 @@
  ******************************************************** */
 function fn_aram_list(){
     var varForm = document.getElementById("schdulManageVO");
-	varForm.action = "${pageContext.request.contextPath}/cop/smt/sim/listSchdulMonth.do";
+	varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/smt/sim/listSchdulMonth.do";
     varForm.submit();
 }
 
@@ -232,7 +232,7 @@ function fn_aram_update(){
     form.schdulEndde.value = schdulEnddeYYYMMDD.replaceAll('-','') + fn_aram_SelectBoxValue('schdulEnddeHH') +  fn_aram_SelectBoxValue('schdulEnddeMM') +'00';
 
 	if (confirm("<spring:message code='common.update.msg' />"))    {  
-        form.action="${pageContext.request.contextPath}/cop/smt/sim/updateSchdul.do";
+        form.action="${pageContext.request.contextPath}/${jspPrefix}/cop/smt/sim/updateSchdul.do";
         form.submit();
     }
 }

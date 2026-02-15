@@ -56,9 +56,9 @@
 		<li class="leftmenu_dept01">
 			<a href="javascript:fn_main_headPageAction('40','listSchdulMonth.do')">알림마당</a>
 			<ul>
-				<li class="leftmenu_dept02"><a href="javascript:fn_main_headPageAction('41','listSchdulMonth.do')">이번달 행사</a></li>
-				<li class="leftmenu_dept02"><a href="javascript:fn_main_headPageAction('42','listSchdulWeek.do')">금주의 행사</a></li>
-			    <li class="leftmenu_dept02"><a href="javascript:fn_main_headPageAction('43','listSchdulDaily.do')">오늘의 행사</a></li>	
+				<li class="leftmenu_dept02"><a href="javascript:fn_main_headPageAction('41','cop/smt/sim/listSchdulMonth.do')">이번달 행사</a></li>
+				<li class="leftmenu_dept02"><a href="javascript:fn_main_headPageAction('42','cop/smt/sim/listSchdulWeek.do')">금주의 행사</a></li>
+			    <li class="leftmenu_dept02"><a href="javascript:fn_main_headPageAction('43','cop/smt/sim/listSchdulDaily.do')">오늘의 행사</a></li>	
 				<li class="leftmenu_dept02"><a href="javascript:fn_main_headPageAction('44','board/7/list')">공지사항</a></li>
 				<li class="leftmenu_dept02"><a href="javascript:fn_main_headPageAction('45','board/8/list')">사이트갤러리</a></li>
 			</ul> 
@@ -68,10 +68,10 @@
 		<li class="leftmenu_dept01">
 			<a href="javascript:fn_main_headPageAction('50','listSchdulMonth.do')">사이트관리</a>
 			<ul>	
-				<li class="leftmenu_dept02"><a href="javascript:fn_main_headPageAction('51','listSchdulMonth.do')">일정관리</a></li>
-				<li class="leftmenu_dept02"><a href="javascript:fn_main_headPageAction('52','listTemplate.do')">게시판템플릿관리</a></li>
-				<li class="leftmenu_dept02"><a href="javascript:fn_main_headPageAction('53','listBoardMaster.do')">게시판생성관리</a></li>
-				<li class="leftmenu_dept02"><a href="javascript:fn_main_headPageAction('54','listBoardUseInf.do')">게시판사용관리</a></li> 
+				<li class="leftmenu_dept02"><a href="javascript:fn_main_headPageAction('51','cop/smt/sim/listSchdulMonth.do')">일정관리</a></li>
+				<li class="leftmenu_dept02"><a href="javascript:fn_main_headPageAction('52','cop/tpl/listTemplate.do')">게시판템플릿관리</a></li>
+				<li class="leftmenu_dept02"><a href="javascript:fn_main_headPageAction('53','cop/bbs/listBoardMaster.do')">게시판생성관리</a></li>
+				<li class="leftmenu_dept02"><a href="javascript:fn_main_headPageAction('54','cop/bbs/listBoardUseInf.do')">게시판사용관리</a></li> 
 				<li class="leftmenu_dept02"><a href="javascript:fn_main_headPageAction('55','board/7/list')">공지사항관리</a></li>
                 <li class="leftmenu_dept02"><a href="javascript:fn_main_headPageAction('56','board/8/list')">사이트갤러리관리</a></li>
 			</ul> 

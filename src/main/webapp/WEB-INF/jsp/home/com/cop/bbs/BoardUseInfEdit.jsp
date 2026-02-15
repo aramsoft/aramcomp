@@ -112,7 +112,7 @@
 
 function fn_aram_list(){
     var varForm = document.getElementById("boardUseInfVO");
-    varForm.action = "${pageContext.request.contextPath}/cop/bbs/listBoardUseInf.do";
+    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/listBoardUseInf.do";
     varForm.submit();      
 }
     
@@ -124,7 +124,7 @@ function fn_aram_update(){
     }
     
 	if (confirm("<spring:message code='common.update.msg' />"))    {  
-    	varForm.action = "${pageContext.request.contextPath}/cop/bbs/updateBoardUseInf.do";
+    	varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/updateBoardUseInf.do";
     	varForm.submit();
 	}	
 }

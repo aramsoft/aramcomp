@@ -145,13 +145,13 @@ function press(event) {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
 	document.frm.pageIndex.value = pageNo;
-	document.frm.action = "${pageContext.request.contextPath}/cop/tpl/listTemplatePopup.do";
+	document.frm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/tpl/listTemplatePopup.do";
 	document.frm.submit();	
 }
 
 function fn_aram_search(){
 	document.frm.pageIndex.value = '1';
-	document.frm.action = "${pageContext.request.contextPath}/cop/tpl/listTemplatePopup.do";
+	document.frm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/tpl/listTemplatePopup.do";
 	document.frm.submit();	
 }
 

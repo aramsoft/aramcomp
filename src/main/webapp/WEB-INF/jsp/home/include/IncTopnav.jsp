@@ -48,9 +48,9 @@
 	<li><a href="javascript:fn_main_headPageMove('10','page/EgovAboutSite.do')">사이트소개</a></li>
     <li><a href="javascript:fn_main_headPageMove('20','page/EgovProductInfo.do')">정보마당</a></li>
     <li><a href="javascript:fn_main_headPageMove('30','page/EgovDownload.do')">고객지원</a></li>
-    <li><a href="javascript:fn_main_headPageAction('40','listSchdulMonth.do')">알림마당</a></li>
+    <li><a href="javascript:fn_main_headPageAction('40','cop/smt/sim/listSchdulMonth.do')">알림마당</a></li>
     <c:if test="${role == 'ROLE_ADMIN'}">
-    <li><a href="javascript:fn_main_headPageAction('50','listSchdulMonth.do')">사이트관리(관리자)</a></li>
+    <li><a href="javascript:fn_main_headPageAction('50','cop/smt/sim/listSchdulMonth.do')">사이트관리(관리자)</a></li>
 	</c:if>
 </ul>
 

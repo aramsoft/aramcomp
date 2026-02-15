@@ -145,14 +145,14 @@ function press(event) {
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("boardUseInfVO");
     varForm.pageIndex.value = pageNo;
-    varForm.action = "${pageContext.request.contextPath}/cop/bbs/listBoardUseInf.do";
+    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/listBoardUseInf.do";
     varForm.submit();
 }
 
 function fn_aram_search(){
     var varForm = document.getElementById("boardUseInfVO");
     varForm.pageIndex.value = '1';
-    varForm.action = "${pageContext.request.contextPath}/cop/bbs/listBoardUseInf.do";
+    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/listBoardUseInf.do";
     varForm.submit();
 }
 
@@ -160,7 +160,7 @@ function fn_aram_detail(bbsId, trgetId){
     var varForm = document.getElementById("boardUseInfVO");
     varForm.bbsId.value = bbsId;
     varForm.trgetId.value = trgetId;
-    varForm.action = "${pageContext.request.contextPath}/cop/bbs/editBoardUseInf.do";
+    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/editBoardUseInf.do";
     varForm.submit();
 }
 
@@ -168,7 +168,7 @@ function fn_aram_regist(){
     var varForm = document.getElementById("boardUseInfVO");
     varForm.bbsId.value = "";
     varForm.trgetId.value = "";
-    varForm.action = "${pageContext.request.contextPath}/cop/bbs/registBoardUseInf.do";
+    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/registBoardUseInf.do";
     varForm.submit();      
 }
 

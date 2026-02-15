@@ -179,7 +179,7 @@
 
 function fn_aram_list(){
     var varForm = document.getElementById("boardMasterVO");
-    varForm.action = "${pageContext.request.contextPath}/cop/bbs/listBoardMaster.do";
+    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/listBoardMaster.do";
     varForm.submit();  
 }   
 
@@ -191,7 +191,7 @@ function fn_aram_update(){
     }
     
     if(confirm("<spring:message code='common.update.msg' />")){
-    	varForm.action = "${pageContext.request.contextPath}/cop/bbs/updateBoardMaster.do";
+    	varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/updateBoardMaster.do";
     	varForm.submit();                  
     }
 }   
@@ -200,7 +200,7 @@ function fn_aram_delete(){
     var varForm = document.getElementById("boardMasterVO");
     
     if(confirm("<spring:message code='common.delete.msg' />")){
-    	varForm.action = "${pageContext.request.contextPath}/cop/bbs/deleteBoardMaster.do";
+    	varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/deleteBoardMaster.do";
     	varForm.submit();  
     }       
 }

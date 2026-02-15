@@ -149,28 +149,28 @@ function press(event) {
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("templateInfVO");
     varForm.pageIndex.value = pageNo;
-    varForm.action = "${pageContext.request.contextPath}/cop/tpl/listTemplate.do";
+    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/tpl/listTemplate.do";
     varForm.submit();  
 }
 
 function fn_aram_search(){
     var varForm = document.getElementById("templateInfVO");
     varForm.pageIndex.value = '1';
-    varForm.action = "${pageContext.request.contextPath}/cop/tpl/listTemplate.do";
+    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/tpl/listTemplate.do";
     varForm.submit();  
 }
 
 function fn_aram_detail(tmplatId){
     var varForm = document.getElementById("templateInfVO");
     varForm.tmplatId.value = tmplatId;
-    varForm.action = "${pageContext.request.contextPath}/cop/tpl/editTemplate.do";
+    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/tpl/editTemplate.do";
     varForm.submit();          
 }
 
 function fn_aram_regist(){    
     var varForm = document.getElementById("templateInfVO");
     varForm.tmplatId.value = "";
-    varForm.action = "${pageContext.request.contextPath}/cop/tpl/registTemplate.do";
+    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/tpl/registTemplate.do";
     varForm.submit();
 }
 

@@ -1,8 +1,5 @@
 package aramframework.home.main.web;
 
-import java.util.HashMap;
-
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -45,14 +42,13 @@ public class MainController {
 	@Autowired
     private BBSBoardService bbsBoardService; 
 	
-	@Resource(name = "forwardMap")
-	private HashMap<String, String> forwardMap;
-
 	/**
 	 * 메인 페이지 조회
 	 */
 	@RequestMapping(value = "/home/main.do")
-	public String getMgtMainPage(ModelMap model) {
+	public String getMgtMainPage(
+			ModelMap model,
+			HttpServletRequest request) {
 		
 		// 공지사항 메인 컨텐츠 조회 시작 ---------------------------------
 		BoardVO boardVO = new BoardVO();
@@ -72,6 +68,7 @@ public class MainController {
 		
 		// 공지사항 메인컨텐츠 조회 끝 -----------------------------------
 		
+		request.setAttribute("jspPrefix",  "home");
 		return "home/MainView";
 	}
 
@@ -89,6 +86,7 @@ public class MainController {
 			request.setAttribute("menuNo",menuNo);
 		}
 		
+		request.setAttribute("jspPrefix",  "home");
 		return "home/page/" + pagelink;	// content 
 	}
 
@@ -111,13 +109,14 @@ public class MainController {
 			request.setAttribute("menuNo",menuNo);
 		}
 		
+		request.setAttribute("jspPrefix",  "home");
 		return "home/include/" + pagelink;	// content 
 	}
 
     /**
 	 * home 게시판
 	 */
-	@RequestMapping(value="/home/board/**")
+	@RequestMapping(value="/home/**")
 	public String moveToBoardDirect(
 			HttpServletRequest request, 
 			@RequestParam(value="menuNo", required=false) String menuNo) {
@@ -128,32 +127,16 @@ public class MainController {
 		}
 		
 		String requestUri = request.getRequestURI();
-		String realContent = requestUri.substring("/home".length());
-
-		request.setAttribute("jspPrefix",  "home");
-		return "forward:" + realContent;
-	}
-
-    /**
-	 * component forward
-	 */
-	@RequestMapping(value="/home/{command}.do")
-	public String moveToCommandDirect(
-			HttpServletRequest request, 
-			@PathVariable String command,
-			@RequestParam(value="menuNo", required=false) String menuNo) {
-	
-		// 선택된 메뉴정보를 세션으로 등록한다.
-		if (menuNo!=null && !menuNo.equals("")){
-			request.setAttribute("menuNo",menuNo);
+		String realContent = requestUri.substring("/home/".length());
+/*
+		String queryString = request.getQueryString();
+		if( queryString != null && !"".equals(queryString)) {
+			realContent += "?" + queryString;
 		}
-		
+*/
+		logger.debug("realContent = " + realContent);
 		request.setAttribute("jspPrefix",  "home");
-		String realContent = forwardMap.get(command);
-		if( realContent != null && !"".equals(realContent) ) {
-			return "forward:" + realContent; 
-		}
-		return "forward:" + "/" + command + ".do";	// realContent 
+		return "forward:/" + realContent;
 	}
 
 }

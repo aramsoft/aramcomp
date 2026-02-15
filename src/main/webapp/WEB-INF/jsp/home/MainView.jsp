@@ -171,7 +171,7 @@
 					<img src="${pageContext.request.contextPath}/images/home/index/img_vline.gif" alt="">
 				</li> 
 				<li class="img_div">
-			    	<a href="#" onclick="javascript:fn_main_headPageAction('40','listSchdulMonth.do'); return false;">
+			    	<a href="#" onclick="javascript:fn_main_headPageAction('40','cop/smt/sim/listSchdulMonth.do'); return false;">
 			    		<img src="${pageContext.request.contextPath}/images/home/index/img_schedule.gif" alt="일정 현황">
 			    	</a>
 				</li>

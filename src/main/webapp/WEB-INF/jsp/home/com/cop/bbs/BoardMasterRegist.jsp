@@ -172,7 +172,7 @@
 
 function fn_aram_list(){
     var varForm = document.getElementById("boardMasterVO");
-    varForm.action = "${pageContext.request.contextPath}/cop/bbs/listBoardMaster.do";
+    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/listBoardMaster.do";
     varForm.submit();  
 }
 
@@ -184,7 +184,7 @@ function fn_aram_insert(){
     }
 
     if (confirm("<spring:message code='common.regist.msg' />")) {
-    	varForm.action = "${pageContext.request.contextPath}/cop/bbs/insertBoardMaster.do";
+    	varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/insertBoardMaster.do";
     	varForm.submit();
     }
 }

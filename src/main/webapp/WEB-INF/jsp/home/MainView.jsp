@@ -58,14 +58,14 @@
 					<h3 class="notice_title">
 						<img src="${pageContext.request.contextPath}/images/home/index/img_subtitle01.gif" alt="공지사항">
 					</h3>
-					<a href="#" onclick="javascript:fn_main_headPageAction('43','board/7/list'); return false;" class="more">
+					<a href="#" onclick="javascript:fn_main_headPageAction('43','/home/board/7/list'); return false;" class="more">
 						<img src="${pageContext.request.contextPath}/images/home/index/btn_more.gif" alt="more">
 					</a>
 					<ul>
 					<c:forEach var="result" items="${notiList}" varStatus="status">
 					<li>
 						<div class="notice_lefttext">
-							<a href="#" onclick="javascript:fn_main_headPageAction('43','board/7/article/${result.nttId}'); return false;">
+							<a href="#" onclick="javascript:fn_main_headPageAction('43','/home/board/7/article/${result.nttId}'); return false;">
 					        <c:if test="${result.replyLc!=0}">
                                 <c:forEach begin="0" end="${result.replyLc}" step="1">
                                     &nbsp;
@@ -93,14 +93,14 @@
 					<h3 class="notice_title">
 						<img src="${pageContext.request.contextPath}/images/home/index/img_subtitle02.gif" alt="묻고 답하기">
 					</h3> 
-					<a href="#" onclick="javascript:fn_main_headPageAction('44','board/8/list'); return false;" class="more">
+					<a href="#" onclick="javascript:fn_main_headPageAction('44','/home/board/8/list'); return false;" class="more">
 						<img src="${pageContext.request.contextPath}/images/home/index/btn_more.gif" alt="more">
 					</a>
 					<ul>
 					<c:forEach var="result" items="${galList}" varStatus="status">
                     <li> 
                     	<div class="notice_lefttext">
-							<a href="#" onclick="javascript:fn_main_headPageAction('44','board/8/article/${result.nttId}'); return false;">
+							<a href="#" onclick="javascript:fn_main_headPageAction('44','/home/board/8/article/${result.nttId}'); return false;">
                             <c:if test="${result.replyLc!=0}">
                                 <c:forEach begin="0" end="${result.replyLc}" step="1">
                                     &nbsp;
@@ -128,12 +128,12 @@
 				<div class="righttop_banner"> 
 					<ul>
 						<li>
-							<a href="#" onclick="javascript:fn_main_headPageMove('21','page/EgovProductInfo.do'); return false;">
+							<a href="#" onclick="javascript:fn_main_headPageMove('21','/home/page/EgovProductInfo.do'); return false;">
 								<img src="${pageContext.request.contextPath}/images/home/index/img_product.gif" alt="주요사업 소개" title="샘플화면으로 이동합니다.(주요사업 소개)">
 							</a>
 						</li>
 						<li>
-							<a href="#" onclick="javascript:fn_main_headPageMove('22','page/EgovServiceInfo.do'); return false;">
+							<a href="#" onclick="javascript:fn_main_headPageMove('22','/home/page/EgovServiceInfo.do'); return false;">
 								<img src="${pageContext.request.contextPath}/images/home/index/img_service.gif" alt="대표서비스 소개" title="샘플화면으로 이동합니다.(대표서비스 소개)">
 							</a>
 						</li>
@@ -142,12 +142,12 @@
 				<div class="middle_banner" style="">
 					<ul>
 						<li class="li_btm">
-							<a href="#" onclick="javascript:fn_main_headPageMove('31','page/EgovDownload.do'); return false;">
+							<a href="#" onclick="javascript:fn_main_headPageMove('31','/home/page/EgovDownload.do'); return false;">
 								<img src="${pageContext.request.contextPath}/images/home/index/img_download.gif" alt="자료실:다양한자료를 다운로드 받으실 수 있습니다." title="샘플화면으로 이동합니다.(자료실)">
 							</a>
 						</li>
 						<li>
-							<a href="#" onclick="javascript:fn_main_headPageMove('14','page/EgovLocation.do'); return false;">
+							<a href="#" onclick="javascript:fn_main_headPageMove('14','/home/page/EgovLocation.do'); return false;">
 								<img src="${pageContext.request.contextPath}/images/home/index/img_location.gif" alt="표준프레임워크센터:찾아오시는 길" title="샘플화면으로 이동합니다.(찾아오시는길)">
 							</a>
 						</li>
@@ -160,7 +160,7 @@
 		<div id="main_btm_area">
 			<ul>
 				<li class="img_div">
-					<a href="#" onclick="javascript:fn_main_headPageMove('33','page/EgovService.do'); return false;">
+					<a href="#" onclick="javascript:fn_main_headPageMove('33','/home/page/EgovService.do'); return false;">
 				    	<img src="${pageContext.request.contextPath}/images/home/index/img_service_btm.gif" alt="서비스 신청" title="샘플화면으로 이동합니다.(서비스 신청)">
 				    </a>
 				</li>
@@ -171,7 +171,7 @@
 					<img src="${pageContext.request.contextPath}/images/home/index/img_vline.gif" alt="">
 				</li> 
 				<li class="img_div">
-			    	<a href="#" onclick="javascript:fn_main_headPageAction('40','cop/smt/sim/listSchdulMonth.do'); return false;">
+			    	<a href="#" onclick="javascript:fn_main_headPageAction('40','/home/cop/smt/sim/listSchdulMonth.do'); return false;">
 			    		<img src="${pageContext.request.contextPath}/images/home/index/img_schedule.gif" alt="일정 현황">
 			    	</a>
 				</li>

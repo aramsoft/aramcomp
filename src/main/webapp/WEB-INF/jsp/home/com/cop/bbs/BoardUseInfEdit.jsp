@@ -37,6 +37,7 @@
 		    </div>
 		    
 			<form:form modelAttribute="boardUseInfVO" method="post" action="">
+				<input type="hidden" name="menuNo" value="${menuNo}" />
 				<form:hidden path="bbsId" />
 				<form:hidden path="trgetId" />
 
@@ -112,7 +113,7 @@
 
 function fn_aram_list(){
     var varForm = document.getElementById("boardUseInfVO");
-    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/listBoardUseInf.do";
+    varForm.action = "${pageContext.request.contextPath}/home/cop/bbs/listBoardUseInf.do";
     varForm.submit();      
 }
     
@@ -124,7 +125,7 @@ function fn_aram_update(){
     }
     
 	if (confirm("<spring:message code='common.update.msg' />"))    {  
-    	varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/updateBoardUseInf.do";
+    	varForm.action = "${pageContext.request.contextPath}/home/cop/bbs/updateBoardUseInf.do";
     	varForm.submit();
 	}	
 }

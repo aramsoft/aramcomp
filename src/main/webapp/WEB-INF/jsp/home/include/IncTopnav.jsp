@@ -18,8 +18,7 @@
 <script type="text/javascript">
 
 	function fn_main_headPageMove(menuNo, url){
-		var pageUrl = "${pageContext.request.contextPath}"
-            		+ "/home/"+url;
+		var pageUrl = "${pageContext.request.contextPath}" + url;
 		document.formMove.menuNo.value=menuNo;
 		document.formMove.action = pageUrl;
 		document.formMove.method = "get";
@@ -27,8 +26,7 @@
     }
     
     function fn_main_headPageAction(menuNo, url){
-		var pageUrl = "${pageContext.request.contextPath}"
-    			    + "/home/"+url;
+		var pageUrl = "${pageContext.request.contextPath}" + url;
 		if( pageUrl.indexOf("?") != -1 ) {
 			pageUrl = pageUrl + "&menuNo="+menuNo;
 		} else {
@@ -45,12 +43,12 @@
 </form>
 
 <ul>
-	<li><a href="javascript:fn_main_headPageMove('10','page/EgovAboutSite.do')">사이트소개</a></li>
-    <li><a href="javascript:fn_main_headPageMove('20','page/EgovProductInfo.do')">정보마당</a></li>
-    <li><a href="javascript:fn_main_headPageMove('30','page/EgovDownload.do')">고객지원</a></li>
-    <li><a href="javascript:fn_main_headPageAction('40','cop/smt/sim/listSchdulMonth.do')">알림마당</a></li>
+	<li><a href="javascript:fn_main_headPageMove('10','/home/page/EgovAboutSite.do')">사이트소개</a></li>
+    <li><a href="javascript:fn_main_headPageMove('20','/home/page/EgovProductInfo.do')">정보마당</a></li>
+    <li><a href="javascript:fn_main_headPageMove('30','/home/page/EgovDownload.do')">고객지원</a></li>
+    <li><a href="javascript:fn_main_headPageAction('40','/home/cop/smt/sim/listSchdulMonth.do')">알림마당</a></li>
     <c:if test="${role == 'ROLE_ADMIN'}">
-    <li><a href="javascript:fn_main_headPageAction('50','cop/smt/sim/listSchdulMonth.do')">사이트관리(관리자)</a></li>
+    <li><a href="javascript:fn_main_headPageAction('50','/home/cop/smt/sim/listSchdulMonth.do')">사이트관리(관리자)</a></li>
 	</c:if>
 </ul>
 

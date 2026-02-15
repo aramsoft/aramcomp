@@ -38,7 +38,8 @@
             </div>
 
             <form:form modelAttribute="schdulManageVO" action="" method="post" enctype="multipart/form-data">
-            <form:hidden path="othbcScope" value="2" />
+				<input type="hidden" name="menuNo" value="${menuNo}" />
+            	<form:hidden path="othbcScope" value="2" />
 
                 <div class="modify_user">
                     <table>
@@ -198,7 +199,7 @@ window.onload = function() {
 ******************************************************** */
 function fn_aram_list(){
     var varForm = document.getElementById("schdulManageVO");
-	varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/smt/sim/listSchdulMonth.do";
+	varForm.action = "${pageContext.request.contextPath}/home/cop/smt/sim/listSchdulMonth.do";
     varForm.submit();
 }
 
@@ -221,7 +222,7 @@ function fn_aram_insert(){
   	form.schdulEndde.value = schdulEnddeYYYMMDD.replaceAll('-','') + fn_aram_SelectBoxValue('schdulEnddeHH') +  fn_aram_SelectBoxValue('schdulEnddeMM') + '00';
 
 	if (confirm("<spring:message code='common.regist.msg' />"))    {  
-		varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/smt/sim/insertSchdul.do";
+		varForm.action = "${pageContext.request.contextPath}/home/cop/smt/sim/insertSchdul.do";
         form.submit();
   	}
 }

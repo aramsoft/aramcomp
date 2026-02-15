@@ -36,6 +36,7 @@
                 <div id="search_field_loc"><h2><strong>게시판 생성</strong></h2></div>
             </div>
 			<form:form modelAttribute="boardMasterVO" method="post" action="">
+				<input type="hidden" name="menuNo" value="${menuNo}" />
 				
                 <div id="border" class="modify_user">
                     <table summary="게시판명,게시판소개,게시판 유형,게시판 속성,답장가능여부,파일첨부가능여부, ..  입니다">
@@ -172,7 +173,7 @@
 
 function fn_aram_list(){
     var varForm = document.getElementById("boardMasterVO");
-    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/listBoardMaster.do";
+    varForm.action = "${pageContext.request.contextPath}/home/cop/bbs/listBoardMaster.do";
     varForm.submit();  
 }
 
@@ -184,7 +185,7 @@ function fn_aram_insert(){
     }
 
     if (confirm("<spring:message code='common.regist.msg' />")) {
-    	varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/insertBoardMaster.do";
+    	varForm.action = "${pageContext.request.contextPath}/home/cop/bbs/insertBoardMaster.do";
     	varForm.submit();
     }
 }
@@ -199,7 +200,7 @@ function fn_aram_get_tmplat(){
 	gArguments["tmplatId"] = varForm.tmplatId;
 	gArguments["tmplatNm"] = varForm.tmplatNm;
 	
-	var url = "/cop/tpl/listTemplatePopup.do?typeFlag=BBS";
+	var url = "/home/cop/tpl/listTemplatePopup.do?typeFlag=BBS";
 
 	window.open(url, "p_tmplatInqire", "width=850px,height=480px,top=100px,left=100px,location=no");
 }

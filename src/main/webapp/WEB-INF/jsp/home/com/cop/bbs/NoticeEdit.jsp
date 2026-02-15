@@ -182,14 +182,14 @@ function fn_aram_update(){
     }
     
     if (confirm("<spring:message code='common.update.msg' />")) {
-    	varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/updateBoardArticle.do";
+    	varForm.action = "${pageContext.request.contextPath}/home/cop/bbs/updateBoardArticle.do";
     	varForm.submit();                    
     }
 }   
 
 function fn_aram_list() {
     var varForm = document.getElementById("boardVO");
-    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/listBoardArticle.do";
+    varForm.action = "${pageContext.request.contextPath}/home/cop/bbs/listBoardArticle.do";
     varForm.submit();    
 }
 

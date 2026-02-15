@@ -36,6 +36,7 @@
                 <div id="search_field_loc"><h2><strong>템플릿 등록</strong></h2></div>
             </div>
 			<form:form modelAttribute="templateInfVO" action ="" method="post">
+				<input type="hidden" name="menuNo" value="${menuNo}" />
 
                 <div class="modify_user">
                     <table>
@@ -119,7 +120,7 @@
 
 function fn_aram_list(){
     var varForm = document.getElementById("templateInfVO");
-    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/tpl/listTemplate.do";
+    varForm.action = "${pageContext.request.contextPath}/home/cop/tpl/listTemplate.do";
     varForm.submit();  
 }
 
@@ -131,7 +132,7 @@ function fn_aram_insert(){
     }
     
     if (confirm("<spring:message code='common.regist.msg' />")) {
-    	varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/tpl/insertTemplate.do";
+    	varForm.action = "${pageContext.request.contextPath}/home/cop/tpl/insertTemplate.do";
     	varForm.submit();
     }
 }
@@ -155,7 +156,7 @@ function fn_aram_preview() {
     var target = "";
 
     if (varForm.tmplatSeCode.value == 'TMPT01') {
-        target = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/previewBoardList.do";
+        target = "${pageContext.request.contextPath}/home/cop/bbs/previewBoardList.do";
         width = "1024";
     } else {
     	alert('<spring:message code="cop.tmplatCours" /> 지정 후 선택해 주세요.');

@@ -43,14 +43,14 @@ function press(event) {
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("baseVO");
     varForm.pageIndex.value = pageNo;
-    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/listBoardMasterPopup.do";
+    varForm.action = "${pageContext.request.contextPath}/home/cop/bbs/listBoardMasterPopup.do";
     varForm.submit();                  
 }
 
 function fn_aram_search(){
     var varForm = document.getElementById("baseVO");
     varForm.pageIndex.value = '1';
-    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/listBoardMasterPopup.do";
+    varForm.action = "${pageContext.request.contextPath}/home/cop/bbs/listBoardMasterPopup.do";
     varForm.submit();                  
 }
 
@@ -67,6 +67,7 @@ function fn_aram_choose(bbsId, bbsNm){
 <body>
 
 <form:form modelAttribute="baseVO" action ="" method="post">
+	<input type="hidden" name="menuNo" value="${menuNo}" />
     <input type="submit" value="실행" onclick="fn_aram_search(); return false;" id="invisible" class="invisible" />
 
     <!-- 검색 필드 박스 시작 -->

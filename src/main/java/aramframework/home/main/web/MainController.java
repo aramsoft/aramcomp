@@ -75,10 +75,10 @@ public class MainController {
     /**
 	 * content page
 	 */
-	@RequestMapping(value="/home/page/{pagelink}.do")
+	@RequestMapping(value="/home/page/{pageName}.do")
 	public String moveToPageDirect(
 			HttpServletRequest request, 
-			@PathVariable String pagelink,
+			@PathVariable String pageName,
 			@RequestParam(value="menuNo", required=false) String menuNo) {
 	
 		// 선택된 메뉴정보를 세션으로 등록한다.
@@ -87,16 +87,16 @@ public class MainController {
 		}
 		
 		request.setAttribute("jspPrefix",  "home");
-		return "home/page/" + pagelink;	// content 
+		return "home/page/" + pageName;	// content 
 	}
 
     /**
 	 * content page
 	 */
-	@RequestMapping(value="/home/include/{pagelink}.do")
+	@RequestMapping(value="/home/include/{pageName}.do")
 	public String moveToIncludeDirect(
 			HttpServletRequest request, 
-			@PathVariable String pagelink,
+			@PathVariable String pageName,
 			@RequestParam(value="menuNo", required=false) String menuNo, 
 			ModelMap model) {
 	
@@ -110,14 +110,14 @@ public class MainController {
 		}
 		
 		request.setAttribute("jspPrefix",  "home");
-		return "home/include/" + pagelink;	// content 
+		return "home/include/" + pageName;	// content 
 	}
 
     /**
-	 * home 게시판
+	 * home action
 	 */
 	@RequestMapping(value="/home/**")
-	public String moveToBoardDirect(
+	public String moveToActionDirect(
 			HttpServletRequest request, 
 			@RequestParam(value="menuNo", required=false) String menuNo) {
 	
@@ -127,16 +127,10 @@ public class MainController {
 		}
 		
 		String requestUri = request.getRequestURI();
-		String realContent = requestUri.substring("/home/".length());
-/*
-		String queryString = request.getQueryString();
-		if( queryString != null && !"".equals(queryString)) {
-			realContent += "?" + queryString;
-		}
-*/
-		logger.debug("realContent = " + realContent);
+		String realAction = requestUri.substring("/home/".length());
+
 		request.setAttribute("jspPrefix",  "home");
-		return "forward:/" + realContent;
+		return "forward:/" + realAction;
 	}
 
 }

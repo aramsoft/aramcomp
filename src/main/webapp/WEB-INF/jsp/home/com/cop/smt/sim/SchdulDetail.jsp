@@ -38,7 +38,8 @@
 			</div>
 			
 			<form:form modelAttribute="schdulManageVO" action="" method="post">
-			<form:hidden path="schdulId" />
+				<input type="hidden" name="menuNo" value="${menuNo}" />
+				<form:hidden path="schdulId" />
 			
 				<div class="modify_user">
 				<table>
@@ -128,7 +129,7 @@
  ******************************************************** */
 function fn_aram_list(){
     var varForm = document.getElementById("schdulManageVO");
-	varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/smt/sim/listSchdulMonth.do";
+	varForm.action = "${pageContext.request.contextPath}/home/cop/smt/sim/listSchdulMonth.do";
     varForm.submit();
 }
 
@@ -137,7 +138,7 @@ function fn_aram_list(){
  ******************************************************** */
 function fn_aram_edit(){
     var varForm = document.getElementById("schdulManageVO");
-	varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/smt/sim/editSchdul.do";
+	varForm.action = "${pageContext.request.contextPath}/home/cop/smt/sim/editSchdul.do";
     varForm.submit();
 }
 
@@ -148,7 +149,7 @@ function fn_aram_delete(){
     var varForm = document.getElementById("schdulManageVO");
     
 	if (confirm("<spring:message code='common.delete.msg' />"))    {  
-    	varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/smt/sim/deleteSchdul.do";
+    	varForm.action = "${pageContext.request.contextPath}/home/cop/smt/sim/deleteSchdul.do";
     	varForm.submit();
     }
 }

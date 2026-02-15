@@ -90,6 +90,7 @@
             </div>
                 
 			<form:form modelAttribute="schdulManageVO" action="" method="post">
+				<input type="hidden" name="menuNo" value="${menuNo}" />
 				<form:hidden path="schdulId" />
 				<form:hidden path="schdulBgnde" />
 				<form:hidden path="schdulEndde" />
@@ -280,7 +281,7 @@ function fn_aram_regist_indvdlSchdulManage(sDate){
 	varForm.schdulBgnde.value = sDate;
 	varForm.schdulEndde.value = sDate;
 	varForm.target = "";
-	varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/smt/sim/registSchdul.do";
+	varForm.action = "${pageContext.request.contextPath}/home/cop/smt/sim/registSchdul.do";
 	varForm.submit();
 }
 
@@ -291,7 +292,7 @@ function fn_aram_detail_indvdlSchdulManage(schdulId){
 	var varForm = document.getElementById("schdulManageVO");
 	varForm.schdulId.value = schdulId;
 	varForm.target = "";
-	varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/smt/sim/detailSchdul.do";
+	varForm.action = "${pageContext.request.contextPath}/home/cop/smt/sim/detailSchdul.do";
 	varForm.submit();
 }
  
@@ -322,28 +323,28 @@ function resizeFrame(re) {
 
 function fn_aram_select_schdulSe() {
 	var varForm = document.getElementById("schdulManageVO");
-	varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/smt/sim/listSchdulWeek.do";
+	varForm.action = "${pageContext.request.contextPath}/home/cop/smt/sim/listSchdulWeek.do";
 	varForm.submit();
 }
 
 function fn_aram_move_year(value) {
 	var varForm = document.getElementById("schdulManageVO");
 	varForm.year.value = value;
-	varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/smt/sim/listSchdulWeek.do";
+	varForm.action = "${pageContext.request.contextPath}/home/cop/smt/sim/listSchdulWeek.do";
 	varForm.submit();
 }
 
 function fn_aram_move_month(value) {
 	var varForm = document.getElementById("schdulManageVO");
 	varForm.month.value = value;
-	varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/smt/sim/listSchdulWeek.do";
+	varForm.action = "${pageContext.request.contextPath}/home/cop/smt/sim/listSchdulWeek.do";
 	varForm.submit();
 }
 
 function fn_aram_move_week(value) {
 	var varForm = document.getElementById("schdulManageVO");
 	varForm.week.value = value;
-	varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/smt/sim/listSchdulWeek.do";
+	varForm.action = "${pageContext.request.contextPath}/home/cop/smt/sim/listSchdulWeek.do";
 	varForm.submit();
 }
 

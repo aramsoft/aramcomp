@@ -37,6 +37,8 @@
 			</div>
 			
 			<form:form modelAttribute="boardMasterVO" action="" method="post">
+				<input type="hidden" name="menuNo" value="${menuNo}" />
+				
 				<form:hidden path="bbsId" />
 				<form:hidden path="bbsTyCode" />
 				<form:hidden path="bbsAttrbCode" />
@@ -179,7 +181,7 @@
 
 function fn_aram_list(){
     var varForm = document.getElementById("boardMasterVO");
-    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/listBoardMaster.do";
+    varForm.action = "${pageContext.request.contextPath}/home/cop/bbs/listBoardMaster.do";
     varForm.submit();  
 }   
 
@@ -191,7 +193,7 @@ function fn_aram_update(){
     }
     
     if(confirm("<spring:message code='common.update.msg' />")){
-    	varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/updateBoardMaster.do";
+    	varForm.action = "${pageContext.request.contextPath}/home/cop/bbs/updateBoardMaster.do";
     	varForm.submit();                  
     }
 }   
@@ -200,7 +202,7 @@ function fn_aram_delete(){
     var varForm = document.getElementById("boardMasterVO");
     
     if(confirm("<spring:message code='common.delete.msg' />")){
-    	varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/deleteBoardMaster.do";
+    	varForm.action = "${pageContext.request.contextPath}/home/cop/bbs/deleteBoardMaster.do";
     	varForm.submit();  
     }       
 }
@@ -215,7 +217,7 @@ function fn_aram_get_tmplat(){
 	gArguments["tmplatId"] = varForm.tmplatId;
 	gArguments["tmplatNm"] = varForm.tmplatNm;
 	
-	var url = "/cop/tpl/listTemplatePopup.do?typeFlag=BBS";
+	var url = "/home/cop/tpl/listTemplatePopup.do?typeFlag=BBS";
 
 	window.open(url, "p_tmplatInqire", "width=850px,height=480px,top=100px,left=100px,location=no");
 } 

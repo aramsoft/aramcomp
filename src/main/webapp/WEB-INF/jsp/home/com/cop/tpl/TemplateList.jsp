@@ -35,6 +35,7 @@
                 <div id="search_field_loc"><h2><strong>템플릿 목록</strong></h2></div>
 
 				<form:form modelAttribute="templateInfVO" action ="" method="post">
+					<input type="hidden" name="menuNo" value="${menuNo}" />
 					<input type="hidden" name="tmplatId" value="" />
                        
                     <fieldset><legend>조건정보 영역</legend>    
@@ -149,28 +150,28 @@ function press(event) {
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("templateInfVO");
     varForm.pageIndex.value = pageNo;
-    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/tpl/listTemplate.do";
+    varForm.action = "${pageContext.request.contextPath}/home/cop/tpl/listTemplate.do";
     varForm.submit();  
 }
 
 function fn_aram_search(){
     var varForm = document.getElementById("templateInfVO");
     varForm.pageIndex.value = '1';
-    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/tpl/listTemplate.do";
+    varForm.action = "${pageContext.request.contextPath}/home/cop/tpl/listTemplate.do";
     varForm.submit();  
 }
 
 function fn_aram_detail(tmplatId){
     var varForm = document.getElementById("templateInfVO");
     varForm.tmplatId.value = tmplatId;
-    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/tpl/editTemplate.do";
+    varForm.action = "${pageContext.request.contextPath}/home/cop/tpl/editTemplate.do";
     varForm.submit();          
 }
 
 function fn_aram_regist(){    
     var varForm = document.getElementById("templateInfVO");
     varForm.tmplatId.value = "";
-    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/tpl/registTemplate.do";
+    varForm.action = "${pageContext.request.contextPath}/home/cop/tpl/registTemplate.do";
     varForm.submit();
 }
 

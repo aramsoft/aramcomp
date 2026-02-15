@@ -36,6 +36,7 @@
             </div>
             
 			<form:form modelAttribute="boardUseInfVO" method="post">
+				<input type="hidden" name="menuNo" value="${menuNo}" />
 
                 <div class="modify_user">
                     <table summary="게시판명, 커뮤니티 동호회 정보  입니다">
@@ -93,7 +94,7 @@
 
 function fn_aram_list(){
     var varForm = document.getElementById("boardUseInfVO");
-    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/listBoardUseInf.do";
+    varForm.action = "${pageContext.request.contextPath}/home/cop/bbs/listBoardUseInf.do";
     varForm.submit();
 }
 
@@ -105,7 +106,7 @@ function fn_aram_insert(){
     }
     
     if (confirm("<spring:message code='common.regist.msg' />")) {
-    	varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/insertBoardUseInf.do";
+    	varForm.action = "${pageContext.request.contextPath}/home/cop/bbs/insertBoardUseInf.do";
     	varForm.submit();      
     }
 }
@@ -134,7 +135,7 @@ function fn_aram_get_board(){
 	gArguments["bbsId"] = varForm.bbsId;
 	gArguments["bbsNm"] = varForm.bbsNm;
 	
-	var url = "/cop/bbs/listBoardMasterPopup.do";
+	var url = "/home/cop/bbs/listBoardMasterPopup.do";
 
 	window.open(url, "p_boardInqire", "width=850px,height=480px,top=100px,left=100px,location=no");
 }
@@ -144,7 +145,7 @@ function fn_aram_get_cmmnty(){
 	gArguments["trgetId"] = varForm.trgetId;
 	gArguments["trgetNm"] = varForm.trgetNm;
 	
-	var url = "/cop/cmy/listCommunityPopup.do";
+	var url = "/home/cop/cmy/listCommunityPopup.do";
 
 	window.open(url, "p_cmmntyInqire", "width=850px,height=480px,top=100px,left=100px,location=no");
 }
@@ -154,7 +155,7 @@ function fn_aram_get_club(){
 	gArguments["trgetId"] = varForm.trgetId;
 	gArguments["trgetNm"] = varForm.trgetNm;
 	
-	var url = "/cop/clb/listClubPopup.do";
+	var url = "/home/cop/clb/listClubPopup.do";
 
 	window.open(url, "p_clubInqire", "width=850px,height=480px,top=100px,left=100px,location=no");
 }

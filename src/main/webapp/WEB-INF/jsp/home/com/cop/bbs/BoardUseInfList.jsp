@@ -36,6 +36,7 @@
                 <div id="search_field_loc"><h2><strong>게시판 사용정보 조회</strong></h2></div>
 
 				<form:form modelAttribute="boardUseInfVO" action="" method="post">
+					<input type="hidden" name="menuNo" value="${menuNo}" />
 					<input type="hidden" name="bbsId">
 					<input type="hidden" name="trgetId">
                       
@@ -145,14 +146,14 @@ function press(event) {
 function fn_aram_linkPage(pageNo){
     var varForm = document.getElementById("boardUseInfVO");
     varForm.pageIndex.value = pageNo;
-    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/listBoardUseInf.do";
+    varForm.action = "${pageContext.request.contextPath}/home/cop/bbs/listBoardUseInf.do";
     varForm.submit();
 }
 
 function fn_aram_search(){
     var varForm = document.getElementById("boardUseInfVO");
     varForm.pageIndex.value = '1';
-    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/listBoardUseInf.do";
+    varForm.action = "${pageContext.request.contextPath}/home/cop/bbs/listBoardUseInf.do";
     varForm.submit();
 }
 
@@ -160,7 +161,7 @@ function fn_aram_detail(bbsId, trgetId){
     var varForm = document.getElementById("boardUseInfVO");
     varForm.bbsId.value = bbsId;
     varForm.trgetId.value = trgetId;
-    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/editBoardUseInf.do";
+    varForm.action = "${pageContext.request.contextPath}/home/cop/bbs/editBoardUseInf.do";
     varForm.submit();
 }
 
@@ -168,7 +169,7 @@ function fn_aram_regist(){
     var varForm = document.getElementById("boardUseInfVO");
     varForm.bbsId.value = "";
     varForm.trgetId.value = "";
-    varForm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/bbs/registBoardUseInf.do";
+    varForm.action = "${pageContext.request.contextPath}/home/cop/bbs/registBoardUseInf.do";
     varForm.submit();      
 }
 

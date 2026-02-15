@@ -32,6 +32,7 @@
 
 <body>
 <form name="frm" action ="${pageContext.request.contextPath}/cop/com/selectTemplateInfsPop.do" method="post">
+	<input type="hidden" name="menuNo" value="${menuNo}" />
     <input type="hidden" name="tmplatId" value="" />
     <input type="submit" id="invisible" class="invisible"/>
 
@@ -145,13 +146,13 @@ function press(event) {
  ******************************************************** */
 function fn_aram_linkPage(pageNo){
 	document.frm.pageIndex.value = pageNo;
-	document.frm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/tpl/listTemplatePopup.do";
+	document.frm.action = "${pageContext.request.contextPath}/home/cop/tpl/listTemplatePopup.do";
 	document.frm.submit();	
 }
 
 function fn_aram_search(){
 	document.frm.pageIndex.value = '1';
-	document.frm.action = "${pageContext.request.contextPath}/${jspPrefix}/cop/tpl/listTemplatePopup.do";
+	document.frm.action = "${pageContext.request.contextPath}/home/cop/tpl/listTemplatePopup.do";
 	document.frm.submit();	
 }
 

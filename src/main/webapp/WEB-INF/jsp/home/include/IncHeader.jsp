@@ -58,6 +58,7 @@
     </div>
     <div class="header_loginconnection"> 님으로 로그인하셨습니다.</div>
     <ul class="login_bg_area">
+<!-- 
 		<c:if test="${loginVO.userSe == 'GNR' }">
 	        <li class="righttop_bgleft">&nbsp;</li>
 		 	<li class="righttop_bgmiddle"><a href="${pageContext.request.contextPath}/uss/umt/editMber.do?userId=${loginVO.userId}">회원수정</a></li>
@@ -73,6 +74,7 @@
 			<li class="righttop_bgmiddle"><a href="${pageContext.request.contextPath}/uss/umt/editEmplyr.do?userId=${loginVO.userId}">회원수정</a></li>
         	<li class="righttop_bgright">&nbsp;</li>
 		</c:if>
+-->
         <li class="righttop_bgleft">&nbsp;</li>
         <li class="righttop_bgmiddle"><a href="${pageContext.request.contextPath}/uat/uia/actionLogout.do?targetUrl=/home/main.do">로그아웃</a></li>
         <li class="righttop_bgright">&nbsp;</li>

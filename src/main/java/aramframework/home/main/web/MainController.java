@@ -128,12 +128,10 @@ public class MainController {
 		}
 		
 		String requestUri = request.getRequestURI();
-		String pagelink = requestUri.substring("/home/board/".length());
-		String forward = "/board/" + pagelink;
+		String realContent = requestUri.substring("/home".length());
 
-		logger.debug("forward = "+ forward);
-		request.setAttribute("jspPrefix",  "home/");
-		return "forward:" + forward;
+		request.setAttribute("jspPrefix",  "home");
+		return "forward:" + realContent;
 	}
 
     /**
@@ -150,13 +148,12 @@ public class MainController {
 			request.setAttribute("menuNo",menuNo);
 		}
 		
-		request.setAttribute("jspPrefix",  "home/");
-		String forward = forwardMap.get(command);
-		if( forward != null && !"".equals(forward) ) {
-			logger.debug("forward = "+ forward);
-			return "forward:" + forward; 
+		request.setAttribute("jspPrefix",  "home");
+		String realContent = forwardMap.get(command);
+		if( realContent != null && !"".equals(realContent) ) {
+			return "forward:" + realContent; 
 		}
-		return "forward:" + "/" + command + ".do";	// content 
+		return "forward:" + "/" + command + ".do";	// realContent 
 	}
 
 }

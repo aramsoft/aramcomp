@@ -104,10 +104,10 @@ public class TilesInterceptor implements HandlerInterceptor {
 				&& !"".equals(jspPrefix)
 				&& !viewName.startsWith("forward:/") 
 				&& !viewName.startsWith(jspPrefix)) {
-			modelAndView.setViewName(jspPrefix + viewName);
+//			logger.debug("jspPrefix = " + jspPrefix + ", viewName = " + viewName);
+			modelAndView.setViewName(jspPrefix + "/" + viewName);
+			return;
 		}
-
-//		Logger.debug("jspPrefix = " + jspPrefix + ", viewName = " + viewName);
 
 		HttpSession session = request.getSession();
 		String fullScrYn = (String) session.getAttribute("fullScrYn");
@@ -142,13 +142,8 @@ public class TilesInterceptor implements HandlerInterceptor {
 		BasicTilesContainer container = (BasicTilesContainer) TilesAccess.getContainer(tilesAppContext);
 		AttributeContext attributeContext = container.getAttributeContext(tilesRequest);
 
-//		Logger.debug("tmplatCours = " + tmplatCours);
-
-		if (tmplatCours.indexOf("/WEB-INF/") != -1) {
-			attributeContext.setTemplateAttribute(new Attribute(tmplatCours+".jsp"));					// WEB-INF 포함 jsp 파일
-		} else {
-			attributeContext.setTemplateAttribute(new Attribute("/WEB-INF/jsp/"+tmplatCours+".jsp"));	// spring view name
-		}
+//		logger.debug("tmplatCours = " + tmplatCours);
+		attributeContext.setTemplateAttribute(new Attribute("/WEB-INF/jsp/"+tmplatCours+".jsp"));	// spring view name
 		
 	}
 	

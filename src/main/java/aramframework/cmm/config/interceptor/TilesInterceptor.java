@@ -5,10 +5,10 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import org.apache.tiles.Attribute;
 import org.apache.tiles.AttributeContext;
@@ -55,7 +55,6 @@ public class TilesInterceptor implements HandlerInterceptor {
 	 * @return			true/false
 	 * @throws Exception
 	 */
-	@Override
 	public boolean preHandle(
 			HttpServletRequest request, 
 			HttpServletResponse response, 
@@ -80,7 +79,6 @@ public class TilesInterceptor implements HandlerInterceptor {
 	 * @param modelAndView	ModelAndView
 	 * @throws Exception
 	 */
-	@Override
 	public void postHandle(
 			HttpServletRequest request, 
 			HttpServletResponse response, 

@@ -5,8 +5,8 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -42,7 +42,6 @@ public class WebLogInterceptor implements HandlerInterceptor {
 	 * @param modelAndView	ModelAndView
 	 * @throws Exception
 	 */
-	@Override
 	public boolean preHandle(
 			HttpServletRequest request, 
 			HttpServletResponse response, 

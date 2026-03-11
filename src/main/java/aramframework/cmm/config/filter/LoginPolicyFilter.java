@@ -2,14 +2,15 @@ package aramframework.cmm.config.filter;
 
 import java.io.IOException;
 
-import javax.servlet.FilterChain;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.filter.OncePerRequestFilter;
 
 import aramframework.cmm.util.MessageHelper;
 import aramframework.com.uat.uap.domain.LoginPolicyVO;
@@ -22,7 +23,7 @@ import aramframework.com.utl.sim.service.ClntInfo;
  * @since 2014.11.11
  * @version 1.0
  */
-public class LoginPolicyFilter extends OncePerRequestFilter {
+public class LoginPolicyFilter implements Filter {
 
 	@Autowired 
 	private LoginPolicyService loginPolicyService;
@@ -46,11 +47,12 @@ public class LoginPolicyFilter extends OncePerRequestFilter {
 	 * @exception 			IOException, ServletException
 	 */
 	@Override
-	public void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) 
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) 
 	throws IOException, ServletException {
 
 		// get access Information
-		String requestURL = request.getRequestURI();
+		HttpServletRequest httpRequest = (HttpServletRequest) request;
+		String requestURL = httpRequest.getRequestURI();
 		if (requestURL.contains("/j_spring_security_check")) {
 
 			String id = request.getParameter("id");

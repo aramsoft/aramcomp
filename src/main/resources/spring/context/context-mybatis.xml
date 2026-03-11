@@ -7,16 +7,17 @@
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
    		<constructor-arg ref="sqlSession" />
  	</bean>
- 
- 	<!-- SqlSession setup for MyBatis Database Layer -->
+ 	
+	<!-- define the SqlSessionFactory -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:/mybatis/config/mybatis-config.xml" />
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation" value="classpath:/mybatis/config/mybatis-config.xml"></property>
 		<property name="mapperLocations" value="classpath:/mybatis/mapper/**/*_${Globals.DbType}.xml" />
 	</bean>
-	
+ 
 	<!-- MapperConfigurer setup for MyBatis Database Layer with @Mapper-->	
  	<bean class="org.egovframe.rte.psl.dataaccess.mapper.MapperConfigurer">
+		<property name="sqlSessionFactoryBeanName" value="sqlSession" />	
 		<property name="basePackage" value="aramframework" />
 	</bean>  
 	

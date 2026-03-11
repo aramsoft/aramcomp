@@ -14,7 +14,7 @@
     <http pattern="/js/**" security="none"/>
   	<http pattern="/validator.do" security="none" />
   	<http pattern="/favicon.ico" security="none" />
-	
+  	
 	<!-- authentication -->
     <http auto-config="true" request-matcher="regex">
         <form-login login-page="/uat/uia/loginUsr.do" 
@@ -35,6 +35,8 @@
 		<session-management>
 			<concurrency-control max-sessions="1" expired-url="/uat/uia/loginUsr.do?login_error=5" />
 		</session-management> 
+		
+		<intercept-url pattern="/**" access="permitAll" />
 <!-- 
  		<intercept-url pattern="\A/uat/uia/loginUsr.do.*\Z" requires-channel="https" />
  		<intercept-url pattern="\A/uss/umt/.*\.do.*\Z" requires-channel="https" />
@@ -48,21 +50,12 @@
 		<custom-filter ref="logAuditFilter" position="FIRST"/>
     </http>
     
-	<beans:bean id="logAuditFilter"
-	    class="aramframework.cmm.config.filter.LogAuditFilter">
-	</beans:bean>
+	<beans:bean id="mvcHandlerMappingIntrospector" class="org.springframework.web.servlet.handler.HandlerMappingIntrospector"/>
+	<beans:bean id="logAuditFilter" class="aramframework.cmm.config.filter.LogAuditFilter" />
 <!-- 	
-	<beans:bean id="htmlTagFilter"
-	    class="aramframework.cmm.config.filter.HTMLTagFilter">
-	</beans:bean>
-
-	<beans:bean id="loginPolicyFilter"
-	    class="aramframework.cmm.config.filter.LoginPolicyFilter">
-	</beans:bean>
-	
-	<beans:bean id="httpsSessionFilter"
-	    class="aramframework.cmm.config.filter.HttpsSessionFilter">
-	</beans:bean>
+	<beans:bean id="htmlTagFilter" class="aramframework.cmm.config.filter.HTMLTagFilter" />
+	<beans:bean id="loginPolicyFilter" class="aramframework.cmm.config.filter.LoginPolicyFilter" />
+	<beans:bean id="httpsSessionFilter" class="aramframework.cmm.config.filter.HttpsSessionFilter" />
 -->	
 	
 	<beans:bean id="targetRedirectStrategy"

@@ -25,7 +25,6 @@ import jakarta.servlet.ServletContext;
 
 import org.apache.tiles.factory.AbstractTilesContainerFactory;
 import org.apache.tiles.request.ApplicationContext;
-import org.apache.tiles.request.servlet.wildcard.WildcardServletApplicationContext;
 import org.apache.tiles.startup.AbstractTilesInitializer;
 
 /**
@@ -43,8 +42,7 @@ public class CompleteAutoloadTilesInitializer extends AbstractTilesInitializer {
     @Override
     protected ApplicationContext createTilesApplicationContext(
             ApplicationContext preliminaryContext) {
-        return new WildcardServletApplicationContext(
-                (ServletContext) preliminaryContext.getContext());
+        return null;
     }
 
     /** {@inheritDoc} */

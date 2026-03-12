@@ -7,6 +7,17 @@
 						http://www.springframework.org/schema/aop 
 						http://www.springframework.org/schema/aop/spring-aop.xsd">
  
+	<!--  login Log Aspect -->
+	<bean id="loginlogAdvice" class="aramframework.cmm.config.advice.LoginLogAdvice" />
+	<aop:config>
+		<aop:aspect id="loginLogAspect" ref="loginlogAdvice">
+			<aop:after  pointcut="execution(public * aramframework.com.uat.uia.web.LoginController.actionMain(..))"   method="logLogin" />
+			<aop:before pointcut="execution(public * aramframework.com.uat.uia.web.LoginController.actionLogout(..))" method="logLogout" />
+		</aop:aspect>
+	</aop:config>
+<!-- 
+	<bean id="login.listener" class="aramframework.cmm.listener.LoginLogListener" />
+-->
 	<aop:config>
 		<aop:pointcut id="web.controlMethod" 
 			expression="execution(* aramframework..web.*Controller.*(..))

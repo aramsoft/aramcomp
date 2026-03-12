@@ -35,7 +35,7 @@
 	-->
 
     <bean id="handlerMapping" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" >
-   		<property name="alwaysUseFullPath" value="true" />
+ 	 	<property name="alwaysUseFullPath" value="true" /> 
  		<property name="interceptors">
 			<list>
 				<ref bean="tilesInterceptor" />

@@ -71,7 +71,7 @@
                            <li>
 		                        <div class="buttons" >
 		                           	<div class="buttons_center">
-		                                <a href="#" onclick="javascript:fn_aram_search(); return false;"><img src="${pageContext.request.contextPath}/images/home/img_search.gif" alt="search" />조회 </a>
+		                                <a href="#" onclick="javascript:fn_aram_search(); return false;"><img src="${pageContext.request.contextPath}/resources/images/home/img_search.gif" alt="search" />조회 </a>
 		                            	<a href="#" onclick="javascript:fn_aram_regist(); return false;">등록</a>
 		                        	</div>
 		                        </div>                              
@@ -149,7 +149,7 @@
 				                <c:forEach begin="0" end="${result.threadDepth}" step="1">
 				                    &nbsp;
 				                </c:forEach>
-				                <img src="${pageContext.request.contextPath}/images/home/reply_arrow.gif" alt="reply arrow"/>
+				                <img src="${pageContext.request.contextPath}/resources/images/home/reply_arrow.gif" alt="reply arrow"/>
 				            </c:if>
 				            <c:choose>
 				                <c:when test="${result.isExpired=='Y' || result.useAt == 'N'}">

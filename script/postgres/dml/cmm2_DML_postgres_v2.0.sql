@@ -1693,7 +1693,7 @@ VALUES ('발송메일등록', 'MailRegist', 7020000, 7000000, 2, '발송메일�
 
 -- 기본템플릿
 INSERT INTO COMTN_TMPLAT_INFO(TMPLAT_ID, TMPLAT_NM, TMPLAT_SE_CODE, TMPLAT_COURS, USE_AT, FRST_REGISTER_ID, FRST_REGIST_PNTTM ) 
-VALUES('TMPLAT_BOARD_DEFAULT', '게시판 기본템플릿', 'TMPT01', '/css/com/cop/tpl/bbsTemplate.css', 'Y', 'SYSTEM', now());
+VALUES('TMPLAT_BOARD_DEFAULT', '게시판 기본템플릿', 'TMPT01', '/resources/css/com/cop/tpl/bbsTemplate.css', 'Y', 'SYSTEM', now());
 INSERT INTO COMTN_TMPLAT_INFO(TMPLAT_ID, TMPLAT_NM, TMPLAT_SE_CODE, TMPLAT_COURS, USE_AT, FRST_REGISTER_ID, FRST_REGIST_PNTTM ) 
 VALUES('TMPLAT_CMNTY_DEFAULT', '커뮤니티 기본템플릿', 'TMPT02', 'com/cop/tpl/templet/CmmntyBaseTmpl', 'Y', 'SYSTEM', now());
 

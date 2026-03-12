@@ -24,13 +24,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>메뉴 이동</title>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/com.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/button.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/com/cmm/com.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/com/cmm/button.css" type="text/css">
 
 <script type="text/javascript">
-var imgpath = "${pageContext.request.contextPath}/images/com/cmm/utl/";
+var imgpath = "${pageContext.request.contextPath}/resources/images/com/cmm/utl/";
 </script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/sym/mnu/mpm/MenuList.js" /></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/sym/mnu/mpm/MenuList.js" /></script>
 
 </head>
 

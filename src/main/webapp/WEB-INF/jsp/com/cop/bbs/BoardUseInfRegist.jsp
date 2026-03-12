@@ -47,7 +47,7 @@
 	      	<form:hidden path="bbsId" />
 	      	<input name="bbsNm" type="text" size="40" value=""  maxlength="40" title="게시판명" readonly />&nbsp;
 	      	<a href="#" onclick="fn_aram_get_board(); return false;" style="selector-dummy: expression(this.hideFocus=false);">
-	      		<img src="${pageContext.request.contextPath}/images/com/cmm/icon/search.gif" width="15" height="15" align="middle" alt="새창" />
+	      		<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/search.gif" width="15" height="15" align="middle" alt="새창" />
 	      	</a>
  			<form:errors path="bbsId" cssClass="error"/>
 	    </td>

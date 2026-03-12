@@ -51,7 +51,7 @@ import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class BBSBoardController {
 
-	@Resource(name = "cacheDictionary")
+	@Autowired
 	private Map<String, Object> cacheDictionary;
 
 	@Autowired
@@ -136,7 +136,7 @@ public class BBSBoardController {
     		}
         	
 			if (boardMasterVO.getTmplatCours() == null || boardMasterVO.getTmplatCours().equals("")) {
-				boardMasterVO.setTmplatCours("/css/com/cop/tpl/egovBaseTemplate.css");
+				boardMasterVO.setTmplatCours("/resources/css/com/cop/tpl/egovBaseTemplate.css");
 			}
    		
 			cacheDictionary.put(CacheKey.BBS_PREFIX + bbsId, boardMasterVO);

@@ -29,7 +29,7 @@
 			<!-- //현재위치 네비게이션 끝 -->
 			<!-- 타이틀 이미지 -->			
 			<div id="content_img_div">
-				<img src="${pageContext.request.contextPath}/images/home/subtitle/img_subtitle03-02.gif" width="776" height="230" alt="">					
+				<img src="${pageContext.request.contextPath}/resources/images/home/subtitle/img_subtitle03-02.gif" width="776" height="230" alt="">					
 			</div>
 			
 			<!-- main content 시작 -->
@@ -135,7 +135,7 @@
 					<div class="qa_write_label">
 						<label><strong>답변달기</strong></label>
 						<textarea rows="2" cols="80" class="qa_write_txtarea"></textarea>					
-						<input type="image" src="${pageContext.request.contextPath}/images/home/btn/btn_regist.gif" alt="등록">
+						<input type="image" src="${pageContext.request.contextPath}/resources/images/home/btn/btn_regist.gif" alt="등록">
 					</div>
 				</div>
 			</div>

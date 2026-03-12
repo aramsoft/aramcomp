@@ -33,7 +33,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>행정달력 월간</title>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/com.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/com/cmm/com.css" type="text/css">
 
 </head>
 

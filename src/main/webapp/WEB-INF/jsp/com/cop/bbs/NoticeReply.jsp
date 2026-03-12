@@ -112,7 +112,7 @@
       		</c:if>
 		    <input name="ntceBgndeView" type="text" size="10" value="${ntceBgndeVal}"  readOnly title="게시시작일자수정"
 		    	onClick="javascript:fn_aram_NormalCalendar(document.forms[0].ntceBgnde, document.forms[0].ntceBgndeView); return false;" title="게시시작일자입력">
-		    <img src="${pageContext.request.contextPath}/images/com/cmm/icon/bu_icon_carlendar.gif" 
+		    <img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/bu_icon_carlendar.gif" 
 		    	onClick="javascript:fn_aram_NormalCalendar(document.forms[0].ntceBgnde, document.forms[0].ntceBgndeView); return false;" width="15" height="15" alt="달력창팝업버튼이미지">
 		    ~
 		    <form:hidden path="ntceEndde" />
@@ -121,7 +121,7 @@
       		</c:if>
 		    <input name="ntceEnddeView" type="text" size="10" value="${ntceEnddeVal}"  readOnly title="게시종료일자수정"
 		      	onClick="javascript:fn_aram_NormalCalendar(document.forms[0].ntceEndde, document.forms[0].ntceEnddeView); return false;" title="게시종료일자입력">
-		    <img src="${pageContext.request.contextPath}/images/com/cmm/icon/bu_icon_carlendar.gif"
+		    <img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/bu_icon_carlendar.gif"
 		      	onClick="javascript:fn_aram_NormalCalendar(document.forms[0].ntceEndde, document.forms[0].ntceEnddeView); return false;" width="15" height="15" alt="달력창팝업버튼이미지">
 			<form:errors path="ntceBgndeView" cssClass="error"/>
 			<form:errors path="ntceEnddeView" cssClass="error"/>
@@ -172,16 +172,16 @@
 <validator:javascript formName="boardVO" staticJavascript="false" xhtml="true" cdata="false"/>
 
 <script type="text/javascript">
-_editor_url = "${pageContext.request.contextPath}/html/htmlarea4.0/";
+_editor_url = "${pageContext.request.contextPath}/resources/html/htmlarea4.0/";
 _editor_area = "nttCn";
 _editor_lang = "kr";
 </script>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/html/htmlarea4.0/htmlarea.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/cmm/utl/HtmlEditor.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/html/htmlarea4.0/htmlarea.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/cmm/utl/HtmlEditor.js"></script>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/cmm/fms/MultiFile.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/sym/cal/CalPopup.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/cmm/fms/MultiFile.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/sym/cal/CalPopup.js"></script>
 
 <!-- 첨부파일 업로드 가능화일 설정 Start..-->
 <c:if test="${boardVO.boardMasterVO.fileAtchPosblAt == 'Y'}"> 

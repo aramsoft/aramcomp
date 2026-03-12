@@ -165,10 +165,10 @@
             <input name="zip_view" type="text" size="7" value="${zipValue}" maxlength="8" readonly title="우편번호입력">
             <form:hidden path="zip" />
             <a href="#" onclick="fn_aram_ZipSearch(document.forms[0].zip, document.forms[0].zip_view, document.forms[0].adres); return false;">
-                <img src="${pageContext.request.contextPath}/images/com/cmm/icon/search.gif" alt="" />(지번 검색)
+                <img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/search.gif" alt="" />(지번 검색)
             </a>
             <a href="#" onclick="fn_aram_RdNmSearch(document.forms[0].zip, document.forms[0].zip_view, document.forms[0].adres); return false;">
-                <img src="${pageContext.request.contextPath}/images/com/cmm/icon/search.gif" alt="" />(도로명 검색)
+                <img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/search.gif" alt="" />(도로명 검색)
             </a>
             <form:errors path="zip" cssClass="error" />
         </td>
@@ -238,7 +238,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/validator.do"></script>
 <validator:javascript formName="mberManageVO" staticJavascript="false" xhtml="true" cdata="false"/>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/sym/ccm/zip/ZipPopup.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/sym/ccm/zip/ZipPopup.js"></script>
 
 <script type="text/javascript">
 

@@ -26,7 +26,7 @@
 <div class="content_title">
 	<h2>저작권보호정책 목록</h2>
 	<a href="#" onclick="javascript:fn_aram_help(); return false;">
-		<img src="${pageContext.request.contextPath}/images/com/cmm/icon/icon_help.gif" width="16" height="16" hspace="3" style="vertical-align:middle; ;" alt="도움말아이콘이미지">
+		<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/icon_help.gif" width="16" height="16" hspace="3" style="vertical-align:middle; ;" alt="도움말아이콘이미지">
 	</a>
 </div>
 

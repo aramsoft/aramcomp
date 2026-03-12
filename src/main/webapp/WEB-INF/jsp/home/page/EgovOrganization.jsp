@@ -27,7 +27,7 @@
 				</ul>
 			</div>				
 			<div id="content_img_div">
-				<img src="${pageContext.request.contextPath}/images/home/subtitle/img_subtitle01.gif" width="776" height="230" alt="">
+				<img src="${pageContext.request.contextPath}/resources/images/home/subtitle/img_subtitle01.gif" width="776" height="230" alt="">
 			</div>
 			   
 			<!-- main content 시작 -->

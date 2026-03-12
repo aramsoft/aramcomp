@@ -25,7 +25,7 @@
 <div class="content_title">
 	<h2>프로그램변경요청처리 목록</h2>
 	<a href="#" onclick="javascript:fn_aram_help(); return false;">
-		<img src="${pageContext.request.contextPath}/images/com/cmm/icon/icon_help.gif" width="16" height="16" style="vertical-align:middle;" alt="">
+		<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/icon_help.gif" width="16" height="16" style="vertical-align:middle;" alt="">
 	</a>
 </div>
 
@@ -122,8 +122,8 @@
 
 </div>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/sts/calendar.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/sym/cal/CalPopup.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/sts/calendar.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/sym/cal/CalPopup.js"></script>
 <script type="text/javascript">
 
 /* ********************************************************
@@ -169,9 +169,9 @@ function fncSearchSpan(vSearch) {
 	}else if(vSearch == "3"){
         searchSpan.innerHTML += "요청일자&nbsp;"
             + "<input name='searchKeywordFrom' type='text' size='8' value=''  maxlength='8'>"
-            + " <a href=\"#\" onClick=\"javascript:fn_aram_NormalCalendar(document.forms[0].searchKeywordFrom,''); return false;\" style=\"selector-dummy:expression(this.hideFocus=false);\"><img src=\"${pageContext.request.contextPath}/images/com/cmm/icon/bu_icon_carlendar.gif\" name=\"cal_img1\" id=\"cal_img1\" border=\"0\" title=\"달력\" alt=\"달력\"><//a> ~ "
+            + " <a href=\"#\" onClick=\"javascript:fn_aram_NormalCalendar(document.forms[0].searchKeywordFrom,''); return false;\" style=\"selector-dummy:expression(this.hideFocus=false);\"><img src=\"${pageContext.request.contextPath}/resources/images/com/cmm/icon/bu_icon_carlendar.gif\" name=\"cal_img1\" id=\"cal_img1\" border=\"0\" title=\"달력\" alt=\"달력\"><//a> ~ "
             + "<input name='searchKeywordTo'   type='text' size='8' value=''  maxlength='8'>"
-            + " <a href=\"#\" onClick=\"javascript:fn_aram_NormalCalendar(document.forms[0].searchKeywordTo,''); return false;\" style=\"selector-dummy:expression(this.hideFocus=false);\"><img src=\"${pageContext.request.contextPath}/images/com/cmm/icon/bu_icon_carlendar.gif\" name=\"cal_img2\" id=\"cal_img2\" border=\"0\" title=\"달력\" alt=\"달력\"><//a>";
+            + " <a href=\"#\" onClick=\"javascript:fn_aram_NormalCalendar(document.forms[0].searchKeywordTo,''); return false;\" style=\"selector-dummy:expression(this.hideFocus=false);\"><img src=\"${pageContext.request.contextPath}/resources/images/com/cmm/icon/bu_icon_carlendar.gif\" name=\"cal_img2\" id=\"cal_img2\" border=\"0\" title=\"달력\" alt=\"달력\"><//a>";
 	}else if(vSearch == "4"){
         searchSpan.innerHTML += "요청자  &nbsp;<input name='searchKeyword' type='text' size='10' value=''  maxlength='20'>";
 	}

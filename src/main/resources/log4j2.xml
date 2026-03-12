@@ -14,13 +14,10 @@
         <Logger name="java.sql" level="ERROR" additivity="false">
             <AppenderRef ref="console" />
         </Logger>
-	    <logger name="org.springframework.security" level="DEBUG" additivity="false">
+	    <logger name="org.springframework" level="INFO" additivity="false">
 	        <AppenderRef ref="console" />
 	    </logger>
-	    <logger name="org.springframework" level="DEBUG" additivity="false">
-	        <AppenderRef ref="console" />
-	    </logger>
-        <Logger name="org.egovframe" level="DEBUG" additivity="false">
+        <Logger name="org.egovframe" level="INFO" additivity="false">
             <AppenderRef ref="console" />
         </Logger>
         

@@ -59,7 +59,7 @@
       		</c:if>
       		<input name="processDeView" id="processDeView" type="text" size="10" title="변경처리일자" value="${processDeVal}"  readonly />
       		<a href="#" onClick="javascript:fn_aram_NormalCalendar(document.forms[0].processDe, document.forms[0].processDeView); return false;">
-      			<img name="calendarImg" src="${pageContext.request.contextPath}/images/com/cmm/icon/bu_icon_carlendar.gif"  align="middle" style="border:0px" alt="달력창팝업버튼이미지">
+      			<img name="calendarImg" src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/bu_icon_carlendar.gif"  align="middle" style="border:0px" alt="달력창팝업버튼이미지">
       		</a>
   	  		<form:errors path="processDe" cssClass="error"/>
     	</td>
@@ -184,7 +184,7 @@
 <script type="text/javascript" src="<c:url value="/validator.do" />"></script>
 <validator:javascript formName="progrmManageDtlVO" staticJavascript="false" xhtml="true" cdata="false"/>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/sym/cal/CalPopup.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/sym/cal/CalPopup.js"></script>
 <script type="text/javascript">
 
 /* ********************************************************

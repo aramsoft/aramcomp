@@ -45,7 +45,7 @@
 				            	<label for="tmplatNm">
 				                <spring:message code="cop.tmplatNm" />
 				            	</label>    
-				            	<img src="${pageContext.request.contextPath}/images/home/required.gif" width="15" height="15" alt="required"/>
+				            	<img src="${pageContext.request.contextPath}/resources/images/home/required.gif" width="15" height="15" alt="required"/>
 				        	</th>
 				        	<td width="80%">
 				          		<form:input path="tmplatNm" size="60" value="" maxlength="60" style="width:90%" title="템플릿명" />
@@ -58,7 +58,7 @@
 				            	<label for="tmplatSeCode">  
 				                	<spring:message code="cop.tmplatSeCode" />
 				            	</label>    
-                               	<img src="${pageContext.request.contextPath}/images/home/required.gif" width="15" height="15" alt="required"/>
+                               	<img src="${pageContext.request.contextPath}/resources/images/home/required.gif" width="15" height="15" alt="required"/>
 				        	</th>
 				        	<td>
 				        		<select name="tmplatSeCode" class="select" onchange="fn_aram_select_tmplatType(this)" id="tmplatSeCode" title="템플릿구분">
@@ -75,7 +75,7 @@
 				            	<label for="tmplatCours">   
 				                <spring:message code="cop.tmplatCours" />
 				            	</label>    
-                               <img src="${pageContext.request.contextPath}/images/home/required.gif" width="15" height="15" alt="required"/>
+                               <img src="${pageContext.request.contextPath}/resources/images/home/required.gif" width="15" height="15" alt="required"/>
 				        	</th>
 				        	<td width="80%">
 				          		<form:input path="tmplatCours" size="60" value="" maxlength="60" style="width:90%" title="템플릿경로" />
@@ -87,7 +87,7 @@
 				            	<label for="useAt"> 
 				                <spring:message code="cop.useAt" />
 				            	</label>    
-                               <img src="${pageContext.request.contextPath}/images/home/required.gif" width="15" height="15" alt="required"/>
+                               <img src="${pageContext.request.contextPath}/resources/images/home/required.gif" width="15" height="15" alt="required"/>
 				        	</th>
 				        	<td width="80%">
 				           	 	Y : <input type="radio" name="useAt" class="radio2" value="Y"  checked>&nbsp;

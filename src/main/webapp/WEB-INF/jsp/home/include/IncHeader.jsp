@@ -26,18 +26,18 @@
 <div id="logoarea">
     <h1>
     <a href="${pageContext.request.contextPath}/home/main.do">
-    	<img src="${pageContext.request.contextPath}/images/home/header/logo.jpg" alt="템플릿 샘플 홈페이지" height="30">
+    	<img src="${pageContext.request.contextPath}/resources/images/home/header/logo.jpg" alt="템플릿 샘플 홈페이지" height="30">
     </a>
     </h1>
 </div>
 <!-- 
 <div id="nia_logo">
-    <img src="${pageContext.request.contextPath}/images/home/header/limg_lt_nia_logo.gif" alt="NIA한국정보화진흥원" />
+    <img src="${pageContext.request.contextPath}/resources/images/home/header/limg_lt_nia_logo.gif" alt="NIA한국정보화진흥원" />
 </div>
  -->
 <div id="project_title">
 <span class="maintitle">표준프레임워크 </span><strong>샘플 홈페이지 </strong>
-<a href="${pageContext.request.contextPath}/pageLink.do?link=home/page/Intro" target="_blank"><img width="20" height="20" src="${pageContext.request.contextPath}/images/home/header/question.jpg" alt="메뉴구성 설명" title="메뉴구성 설명"></a>
+<a href="${pageContext.request.contextPath}/pageLink.do?link=home/page/Intro" target="_blank"><img width="20" height="20" src="${pageContext.request.contextPath}/resources/images/home/header/question.jpg" alt="메뉴구성 설명" title="메뉴구성 설명"></a>
 </div>
 <!-- //행정안전부 로고 및 타이틀 끝 -->
 <div class="header_login">

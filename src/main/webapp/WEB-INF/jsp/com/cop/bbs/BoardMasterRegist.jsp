@@ -128,7 +128,7 @@
 	     	<form:hidden path="tmplatId"  />
 	     	&nbsp;
 	     	<a href="#" onclick="javascript:fn_aram_get_tmplat(); return false;" style="selector-dummy: expression(this.hideFocus=false);">
-	     		<img src="${pageContext.request.contextPath}/images/com/cmm/icon/search.gif"	width="15" height="15" align="middle" alt="새창" />
+	     		<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/search.gif"	width="15" height="15" align="middle" alt="새창" />
 	     	</a>
 		 	<form:errors path="tmplatId" cssClass="error"/>
 	    </td>

@@ -3,11 +3,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <script type="text/javascript">
-var imgpath = "${pageContext.request.contextPath}/images/com/cmm/utl/";
+var imgpath = "${pageContext.request.contextPath}/resources/images/com/cmm/utl/";
 var getContextPath = "${pageContext.request.contextPath}";
 var path = "http://" + "${pageContext.request.serverName}" + ":" + "${pageContext.request.serverPort}";
 </script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/sym/mnu/mpm/MainMenu.js" /></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/sym/mnu/mpm/MainMenu.js" /></script>
 
 <form name="menuListForm" action ="${pageContext.request.contextPath}/sym/mnu/mpm/listMenuTree.do" method="post">
 

@@ -54,7 +54,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <TITLE>월별 일정 조회</TITLE>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/com.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/com/cmm/com.css" type="text/css">
 <style TYPE="text/css">
 
 #date_navigation {
@@ -95,22 +95,22 @@
 	
 	<div class="select_area" style="width:200px;" >
 		<a href="javascript:fn_aram_move_year('<%=year-1%>');">
-			<img src="${pageContext.request.contextPath}/images/com/cmm/icon/icoPrev.gif" style="margin-right:4px;border:0px;" alt="이전으로가기아이콘표시">
+			<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/icoPrev.gif" style="margin-right:4px;border:0px;" alt="이전으로가기아이콘표시">
 		</a>
 		<%=year%>년
 		<a href="javascript:fn_aram_move_year('<%=year+1%>');">
-			<img src="${pageContext.request.contextPath}/images/com/cmm/icon/icoNxt.gif" style="margin-left:4px;border:0px;" alt="다음으로가기아이콘표시">
+			<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/icoNxt.gif" style="margin-left:4px;border:0px;" alt="다음으로가기아이콘표시">
 		</a>
 		
 		<%if(month> 0 ){ %>
 		<a href="javascript:fn_aram_move_month('<%=month-1%>');">
-			<img src="${pageContext.request.contextPath}/images/com/cmm/icon/icoPrev.gif" style="margin-right:4px;border:0px;" alt="이전으로가기아이콘표시">
+			<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/icoPrev.gif" style="margin-right:4px;border:0px;" alt="이전으로가기아이콘표시">
 		</a>
 		<%}%>
 		<%=month+1%>월
 		<%if(month < 11 ){ %>
 		<a href="javascript:fn_aram_move_month('<%=month+1%>')">
-			<img src="${pageContext.request.contextPath}/images/com/cmm/icon/icoNxt.gif" style="margin-left:4px;border:0px;" alt="다음으로가기아이콘표시">
+			<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/icoNxt.gif" style="margin-left:4px;border:0px;" alt="다음으로가기아이콘표시">
 		</a>
 		<%}%>
 	</div>	

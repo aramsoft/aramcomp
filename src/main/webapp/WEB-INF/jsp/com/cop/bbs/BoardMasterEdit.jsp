@@ -132,7 +132,7 @@
 	     	<form:input path="tmplatNm" title="템플릿정보입력" size="20" maxlength="20" readonly="true" />
 	     	<form:hidden path="tmplatId" />
 	     	<a href="#" onclick="javascript:fn_aram_get_tmplat(); return false;">
-	     		<img src="${pageContext.request.contextPath}/images/com/cmm/icon/search.gif" width="15" height="15" align="middle" alt="새창">
+	     		<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/search.gif" width="15" height="15" align="middle" alt="새창">
 	     	</a>
          	<form:errors path="tmplatId" cssClass="error"/>
 	    </td>

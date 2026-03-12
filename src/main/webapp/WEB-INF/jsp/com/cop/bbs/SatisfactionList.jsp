@@ -28,8 +28,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/com.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/button.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/com/cmm/com.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/com/cmm/button.css" type="text/css">
 
 </head>
 
@@ -50,7 +50,7 @@
 	<c:otherwise></c:otherwise>
  	</c:choose>)
 	<a href="#" onclick="javascript:fn_aram_help(); return false;">
-		<img src="${pageContext.request.contextPath}/images/com/cmm/icon/icon_help.gif" width="16" height="16" style="vertical-align:middle;" alt="">
+		<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/icon_help.gif" width="16" height="16" style="vertical-align:middle;" alt="">
 	</a>
 </div>
 

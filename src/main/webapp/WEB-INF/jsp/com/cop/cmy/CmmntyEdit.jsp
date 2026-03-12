@@ -95,7 +95,7 @@
 	     	<form:hidden path="tmplatId" size="20" />
 	     	&nbsp;
 	     	<a href="#" onclick="javascript:fn_aram_get_tmplat(); return false;" style="selector-dummy: expression(this.hideFocus=false);">
-	     		<img src="${pageContext.request.contextPath}/images/com/cmm/icon/search.gif" width="15" height="15" align="middle" alt="search">
+	     		<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/search.gif" width="15" height="15" align="middle" alt="search">
 	     	</a>
 	     	<form:errors path="tmplatId" cssClass="error"/>
 	    </td>
@@ -108,7 +108,7 @@
 	     	<input name="emplyrId" type="hidden" size="20" value='<c:out value="${manager.emplyrId}"/>'>
 	     	&nbsp;
 	     	<a href="#" onclick="javascript:fn_aram_get_cmmntyAdmin('<c:out value="${communityVO.cmmntyId}"/>'); return false;" style="selector-dummy: expression(this.hideFocus=false);">
-	     		<img src="${pageContext.request.contextPath}/images/com/cmm/icon/search.gif" width="15" height="15" align="middle" alt="required">
+	     		<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/search.gif" width="15" height="15" align="middle" alt="required">
 	     	</a>
 	    	<form:errors path="emplyrId" cssClass="error"/>
 	    </td>

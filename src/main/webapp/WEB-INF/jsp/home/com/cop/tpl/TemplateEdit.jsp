@@ -55,7 +55,7 @@
 					            <label for="tmplatSeCode">
 					                <spring:message code="cop.tmplatSeCode" />
 					            </label>    
-                                <img src="${pageContext.request.contextPath}/images/home/required.gif" width="15" height="15" alt="required"/>
+                                <img src="${pageContext.request.contextPath}/resources/images/home/required.gif" width="15" height="15" alt="required"/>
 					        </th>
 					        <td>
 					        	<select id="tmplatSeCode" name="tmplatSeCode" class="select" onchange="fn_aram_select_tmplatType()">
@@ -72,7 +72,7 @@
 					            <label for="tmplatCours">
 					                <spring:message code="cop.tmplatCours" />
 					            </label>    
-                                <img src="${pageContext.request.contextPath}/images/home/required.gif" width="15" height="15" alt="required"/>
+                                <img src="${pageContext.request.contextPath}/resources/images/home/required.gif" width="15" height="15" alt="required"/>
 					        </th>
 					        <td width="80%">
 					          	<form:input path="tmplatCours"  size="80"  maxlength="80"  />
@@ -84,7 +84,7 @@
 					            <label for="useAt"> 
 					                <spring:message code="cop.useAt" />
 					            </label>    
-                                <img src="${pageContext.request.contextPath}/images/home/required.gif" width="15" height="15" alt="required"/>
+                                <img src="${pageContext.request.contextPath}/resources/images/home/required.gif" width="15" height="15" alt="required"/>
 					        </th>
 					        <td width="80%">
 					            Y : <input type="radio" name="useAt" class="radio2" value="Y"  <c:if test="${templateInfVO.useAt == 'Y'}"> checked="checked"</c:if>>&nbsp;

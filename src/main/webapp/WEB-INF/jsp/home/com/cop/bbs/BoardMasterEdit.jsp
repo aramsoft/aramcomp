@@ -49,7 +49,7 @@
                        	<tr>
                            	<th width="20%"  class="required_text">
             					<label for="bbsNm">게시판명</label>    
-					        	<img src="${pageContext.request.contextPath}/images/home/required.gif" width="15" height="15" alt="required" />
+					        	<img src="${pageContext.request.contextPath}/resources/images/home/required.gif" width="15" height="15" alt="required" />
                            	</th>
                            	<td width="80%"  colspan="3">
 	         				 	<form:input title="게시판명입력" path="bbsNm" size="60" maxlength="60" style="width:100%" /> 
@@ -59,7 +59,7 @@
                        	<tr> 
                            	<th  class="required_text">
                                	<label for="bbsIntrcn">게시판 소개</label>    
-					        	<img src="${pageContext.request.contextPath}/images/home/required.gif" width="15" height="15" alt="required" />
+					        	<img src="${pageContext.request.contextPath}/resources/images/home/required.gif" width="15" height="15" alt="required" />
                            	</th>
                            	<td colspan="3">
 			           			<form:textarea title="게시판소개입력" path="bbsIntrcn" cols="75" rows="4" cssStyle="width:100%" />
@@ -98,7 +98,7 @@
 				        	</td>
 				        	<th width="20%"  class="required_text">
 				            	<label for="fileAtchPosblAt">파일첨부가능여부</label>    
-					        	<img src="${pageContext.request.contextPath}/images/home/required.gif" width="15" height="15" alt="required" />
+					        	<img src="${pageContext.request.contextPath}/resources/images/home/required.gif" width="15" height="15" alt="required" />
 				        	</th>    
 				        	<td width="30%">
 				            	<spring:message code="button.possible" /> : <form:radiobutton path="fileAtchPosblAt"  value="Y" id="fileAtchPosblAtY" />&nbsp;
@@ -124,13 +124,13 @@
                        	<tr> 
 				        	<th width="20%"  class="required_text">
 				            	<label for="tmplatNm">템플릿 정보</label>    
-					        	<img src="${pageContext.request.contextPath}/images/home/required.gif" width="15" height="15" alt="required" />
+					        	<img src="${pageContext.request.contextPath}/resources/images/home/required.gif" width="15" height="15" alt="required" />
                            	</th>
                            	<td width="30%"  colspan="3">
 			         			<form:input path="tmplatNm" size="20" readonly="true" title="템플릿정보입력"/>
 			         			<form:hidden path="tmplatId"  />&nbsp;
 			         			<a href="#" onclick="fn_aram_get_tmplat(); return false;">
-			         				<img src="${pageContext.request.contextPath}/images/home/img_search.gif" width="15" height="15" align="middle" alt="새창">
+			         				<img src="${pageContext.request.contextPath}/resources/images/home/img_search.gif" width="15" height="15" align="middle" alt="새창">
 			         			</a>
 					         	<form:errors path="tmplatId" cssClass="error"/>
                            	</td>

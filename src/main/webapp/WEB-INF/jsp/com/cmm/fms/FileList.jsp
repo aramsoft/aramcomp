@@ -35,7 +35,7 @@
 			<c:choose>
 			<c:when test="${updateFlag=='Y'}">
 				<c:out value="${fileVO.orignlFileNm}"/>&nbsp;[<c:out value="${fileVO.fileSize}"/>&nbsp;byte]
-				<img src="${pageContext.request.contextPath}/images/com/cmm/icon/bu5_close.gif" 
+				<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/bu5_close.gif" 
 						width="19" height="18" onClick="fn_aram_deleteFile('<c:out value="${fileVO.atchFileId}"/>','<c:out value="${fileVO.fileSn}"/>');" alt="파일삭제">
 			</c:when>
 			<c:otherwise>

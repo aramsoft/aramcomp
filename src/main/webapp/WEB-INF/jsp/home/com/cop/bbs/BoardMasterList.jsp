@@ -53,7 +53,7 @@
                          <ul id="search_second_ul">
                              <li>
                                  <div class="buttons" >
-                                    <a href="#" onclick="fn_aram_search(); return false;"><img src="${pageContext.request.contextPath}/images/home/img_search.gif" alt="search" />조회 </a>
+                                    <a href="#" onclick="fn_aram_search(); return false;"><img src="${pageContext.request.contextPath}/resources/images/home/img_search.gif" alt="search" />조회 </a>
                                     <a href="#" onclick="fn_aram_regist(); return false;"><spring:message code="button.create"/></a>
                                  </div>                              
                              </li>

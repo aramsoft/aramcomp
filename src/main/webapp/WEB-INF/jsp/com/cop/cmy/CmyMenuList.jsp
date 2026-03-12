@@ -92,7 +92,7 @@
 	    
 	    <td class="lt_text">
 		    <c:if test="${result.topMenuAt == 'N'}">
-		    	<img src="${pageContext.request.contextPath}/images/com/cop/tpl/bull.gif" width="21" height="11" alt="bull" />
+		    	<img src="${pageContext.request.contextPath}/resources/images/com/cop/tpl/bull.gif" width="21" height="11" alt="bull" />
 		    </c:if>
 		    <c:out value="${result.menuNm}"/>
 	    </td>

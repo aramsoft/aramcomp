@@ -26,7 +26,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>템플릿 목록</title>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/home/common.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home/common.css" type="text/css">
 
 </head>
 
@@ -56,7 +56,7 @@
             <ul id="search_second_ul">
                 <li>
                     <div class="buttons">
-                        <a href="${pageContext.request.contextPath}/cop/com/selectTemplateInfsPop.do" onclick="javascript:fn_aram_search(); return false;"><img src="/images/home/img_search.gif" alt="search" />조회 </a>
+                        <a href="${pageContext.request.contextPath}/cop/com/selectTemplateInfsPop.do" onclick="javascript:fn_aram_search(); return false;"><img src="/resources/images/home/img_search.gif" alt="search" />조회 </a>
  						<a href="#" onclick="javascript:parent.close(); return false;">닫기</a>
                     </div>                              
                 </li>

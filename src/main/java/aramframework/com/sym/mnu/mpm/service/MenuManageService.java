@@ -31,7 +31,7 @@ public class MenuManageService extends EgovAbstractServiceImpl {
 	@Autowired
 	private ProgrmManageDtlMapper progrmManageDtlMapper;
 	
-	//	@Resource(name = "excelZipService")
+//	@Autowired
 //	private EgovExcelService excelZipService;
 
 	/**

@@ -12,10 +12,10 @@ import org.apache.ibatis.session.SqlSession;
 @Repository
 public class  SecuredObjectDAOImpl implements SecuredObjectDAO {
 	
+	private static final String namespace = "aramframework.cmm.security.securedobject.dao.impl.SecuredObjectMapper.";
+ 
 	@Autowired
 	private SqlSession sqlSession;
- 
-	private static final String namespace = "aramframework.cmm.security.securedobject.dao.impl.SecuredObjectMapper.";
  
 	@Override
 	public List<Map<String, Object>> loadUsersByUsername(String username){

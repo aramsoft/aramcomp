@@ -29,7 +29,7 @@ import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 @Service
 public class BBSMasterService extends EgovAbstractServiceImpl {
 
-	@Resource(name = "cacheDictionary")
+	@Autowired
 	private Map<String, Object> cacheDictionary;
 
 	@Autowired

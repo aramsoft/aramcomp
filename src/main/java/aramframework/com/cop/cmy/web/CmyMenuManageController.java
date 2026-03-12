@@ -4,7 +4,6 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +39,7 @@ import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class CmyMenuManageController {
 
-	@Resource(name = "cacheDictionary")
+	@Autowired
 	private Map<String, Object> cacheDictionary;
 
 	@Autowired 

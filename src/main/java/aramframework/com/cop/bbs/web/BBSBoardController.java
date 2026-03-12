@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +50,7 @@ import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class BBSBoardController {
 
-	@Resource(name = "cacheDictionary")
+	@Autowired
 	private Map<String, Object> cacheDictionary;
 
 	@Autowired

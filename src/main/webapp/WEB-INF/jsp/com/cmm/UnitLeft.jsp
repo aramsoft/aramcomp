@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="isUat" value="false"/>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<c:set var="isUat" value="false"/> 
 <c:set var="isSec" value="false"/>
 <c:set var="isSts" value="false"/>
 <c:set var="isCop" value="false"/>

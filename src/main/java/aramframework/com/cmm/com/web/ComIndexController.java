@@ -85,7 +85,8 @@ public class ComIndexController {
 
 				String className = zooClass.getName();
 //				int endIndex = className.indexOf("$$EnhancerByCGLIB$$", 0);
-				int endIndex = className.indexOf("$$EnhancerBySpringCGLIB$$", 0);
+//				int endIndex = className.indexOf("$$EnhancerBySpringCGLIB$$", 0);
+				int endIndex = className.indexOf("$$SpringCGLIB$$", 0);
 				if( endIndex != -1 ) {
 					className = className.substring(0, endIndex);
 //					logger.debug("Controller ClassName " + className);
@@ -102,6 +103,7 @@ public class ComIndexController {
 					if( methods[i].getAnnotation(RequestMapping.class) != null ) {
 						logger.debug("Found @RequestMapping Method : " +  methods[i].getAnnotation(RequestMapping.class).toString() );
 					}
+
 					if( methods[i].getAnnotation(Secured.class) != null ) {
 						logger.debug("Found @Secured Method : " +  methods[i].getAnnotation(Secured.class).toString() );
 					}

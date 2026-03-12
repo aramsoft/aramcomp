@@ -10,7 +10,6 @@
     <http pattern="/resources/**" security="none"/>
   	<http pattern="/validator.do" security="none" />
   	<http pattern="/favicon.ico" security="none" />
-  	<http pattern="/check-url.do" security="none" />
   	
 	<!-- authentication -->
     <http auto-config="true" request-matcher="regex">

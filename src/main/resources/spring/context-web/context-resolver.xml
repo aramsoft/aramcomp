@@ -12,7 +12,6 @@
 						http://www.springframework.org/schema/beans/spring-beans.xsd">
  
     <!-- MULTIPART RESOLVERS -->
-    <!-- MULTIPART RESOLVERS -->
     <!-- regular spring resolver -->    
     <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
 

@@ -105,6 +105,12 @@
 			<groupId>org.egovframe.rte</groupId>
 			<artifactId>org.egovframe.rte.ptl.mvc</artifactId>
 			<version>${org.egovframe.rte.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.egovframe.rte</groupId>
+					<artifactId>spring-modules-validation</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 <!--
 		<dependency>
@@ -123,12 +129,6 @@
 			<groupId>org.egovframe.rte</groupId>
 			<artifactId>org.egovframe.rte.fdl.crypto</artifactId>
 			<version>${org.egovframe.rte.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>com.ibm.icu</groupId>
-					<artifactId>icu4j</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		
 		<dependency>

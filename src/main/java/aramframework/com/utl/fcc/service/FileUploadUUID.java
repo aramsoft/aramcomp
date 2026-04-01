@@ -59,7 +59,7 @@ import java.security.SecureRandom;
  */
 
 @SuppressWarnings("serial")
-public class FormBasedUUID implements Serializable {
+public class FileUploadUUID implements Serializable {
 	/*
 	 * The most significant 64 bits of this UUID.
 	 * 
@@ -115,7 +115,7 @@ public class FormBasedUUID implements Serializable {
 	/*
 	 * Private constructor which uses a byte array to construct the new UUID.
 	 */
-	private FormBasedUUID(byte[] data) {
+	private FileUploadUUID(byte[] data) {
 		long msb = 0;
 		long lsb = 0;
 		for (int i = 0; i < 8; i++)
@@ -135,7 +135,7 @@ public class FormBasedUUID implements Serializable {
 	 * @param mostSigBits
 	 * @param leastSigBits
 	 */
-	public FormBasedUUID(long mostSigBits, long leastSigBits) {
+	public FileUploadUUID(long mostSigBits, long leastSigBits) {
 		this.mostSigBits = mostSigBits;
 		this.leastSigBits = leastSigBits;
 	}
@@ -148,7 +148,7 @@ public class FormBasedUUID implements Serializable {
 	 * 
 	 * @return a randomly generated <tt>UUID</tt>.
 	 */
-	public static FormBasedUUID randomUUID() {
+	public static FileUploadUUID randomUUID() {
 		SecureRandom ng = numberGenerator;
 		if (ng == null) {
 			numberGenerator = ng = new SecureRandom();
@@ -161,7 +161,7 @@ public class FormBasedUUID implements Serializable {
 		randomBytes[8] &= 0x3f; /* clear variant */
 		randomBytes[8] |= 0x80; /* set to IETF variant */
 
-		return new FormBasedUUID(randomBytes);
+		return new FileUploadUUID(randomBytes);
 	}
 
 	/**
@@ -172,7 +172,7 @@ public class FormBasedUUID implements Serializable {
 	 *            a byte array to be used to construct a <tt>UUID</tt>.
 	 * @return a <tt>UUID</tt> generated from the specified array.
 	 */
-	public static FormBasedUUID nameUUIDFromBytes(byte[] name) {
+	public static FileUploadUUID nameUUIDFromBytes(byte[] name) {
 		MessageDigest md;
 		try {
 			// 2011.10.10 보안점검 후속조치 암호화 알고리즘 변경(MD5 -> SHA-256)
@@ -196,7 +196,7 @@ public class FormBasedUUID implements Serializable {
 		md5Bytes[8] &= 0x3f; /* clear variant */
 		md5Bytes[8] |= 0x80; /* set to IETF variant */
 
-		return new FormBasedUUID(md5Bytes);
+		return new FileUploadUUID(md5Bytes);
 	}
 
 	/**
@@ -210,7 +210,7 @@ public class FormBasedUUID implements Serializable {
 	 *             if name does not conform to the string representation as
 	 *             described in {@link #toString}.
 	 */
-	public static FormBasedUUID fromString(String name) {
+	public static FileUploadUUID fromString(String name) {
 		String[] components = name.split("-");
 		if (components.length != 5)
 			throw new IllegalArgumentException("Invalid UUID string: " + name);
@@ -227,7 +227,7 @@ public class FormBasedUUID implements Serializable {
 		leastSigBits <<= 48;
 		leastSigBits |= Long.decode(components[4]).longValue();
 
-		return new FormBasedUUID(mostSigBits, leastSigBits);
+		return new FileUploadUUID(mostSigBits, leastSigBits);
 	}
 
 	// Field Accessor Methods
@@ -452,11 +452,11 @@ public class FormBasedUUID implements Serializable {
 		if (obj == null)
 			return false;
 		// 보안 취약점 점검 지적사항 반영 시작 끝
-		if (!(obj instanceof FormBasedUUID))
+		if (!(obj instanceof FileUploadUUID))
 			return false;
-		if (((FormBasedUUID) obj).variant() != this.variant())
+		if (((FileUploadUUID) obj).variant() != this.variant())
 			return false;
-		FormBasedUUID id = (FormBasedUUID) obj;
+		FileUploadUUID id = (FileUploadUUID) obj;
 		return (mostSigBits == id.mostSigBits && leastSigBits == id.leastSigBits);
 	}
 
@@ -474,7 +474,7 @@ public class FormBasedUUID implements Serializable {
 	 * @return -1, 0 or 1 as this <tt>UUID</tt> is less than, equal to, or
 	 *         greater than <tt>val</tt>.
 	 */
-	public int compareTo(FormBasedUUID val) {
+	public int compareTo(FileUploadUUID val) {
 		// The ordering is intentionally set up so that the UUIDs
 		// can simply be numerically compared as two numbers
 		return (this.mostSigBits < val.mostSigBits ? -1 : (this.mostSigBits > val.mostSigBits ? 1 : (this.leastSigBits < val.leastSigBits ? -1

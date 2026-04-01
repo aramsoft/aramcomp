@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import aramframework.com.utl.fcc.service.FileUploadUtil;
-import aramframework.com.utl.fcc.service.FormBasedFileUtil;
-import aramframework.com.utl.fcc.service.FormBasedFileVo;
+import aramframework.com.utl.fcc.service.FileUploadFileVo;
 
 /**
  * 웹에디터 이미지 upload 처리 Controller
@@ -50,10 +49,10 @@ public class WebEditorImageController {
 		// List<EgovFormBasedFileVo> list = EgovFormBasedFileUtil.uploadFiles(request, uploadDir, maxFileSize);
 
 		// Spring multipartResolver 사용시
-		List<FormBasedFileVo> list = FileUploadUtil.uploadFiles(request, FILE_UPLOAD_DIR, maxFileSize);
+		List<FileUploadFileVo> list = FileUploadUtil.uploadFiles(request, FILE_UPLOAD_DIR, maxFileSize);
 
 		if (list.size() > 0) {
-			FormBasedFileVo vo = list.get(0); // 첫번째 이미지
+			FileUploadFileVo vo = list.get(0); // 첫번째 이미지
 
 			String url = request.getContextPath() + "/utl/wed/imageSrc.do?" + "path=" + vo.getServerSubPath() + "&physical=" + vo.getPhysicalName()
 					+ "&contentType=" + vo.getContentType();
@@ -75,6 +74,6 @@ public class WebEditorImageController {
 		String physical = request.getParameter("physical");
 		String mimeType = request.getParameter("contentType");
 
-		FormBasedFileUtil.viewFile(response, FILE_UPLOAD_DIR, subPath, physical, mimeType);
+		FileUploadUtil.viewFile(response, FILE_UPLOAD_DIR, subPath, physical, mimeType);
 	}
 }

@@ -79,28 +79,21 @@
 		    <version>${org.spring.security.version}</version>
 		</dependency>		
 		
-				
 		<!-- 실행환경 라이브러리 -->
 		<!-- aramframework.rte -->
-<!--
-		<dependency>
-			<groupId>org.egovframe.rte</groupId>
-			<artifactId>org.egovframe.rte.fdl.filehandling</artifactId>
-			<version>${org.egovframe.rte.version}</version>
-		</dependency>
--->
 		<dependency>
 			<groupId>org.egovframe.rte</groupId>
 			<artifactId>org.egovframe.rte.psl.dataaccess</artifactId>
 			<version>${org.egovframe.rte.version}</version>
 		</dependency>
-
+		
 		<dependency>
 			<groupId>org.egovframe.rte</groupId>
 			<artifactId>org.egovframe.rte.fdl.idgnr</artifactId>
 			<version>${org.egovframe.rte.version}</version>
 		</dependency>
 
+		
 		<dependency>
 			<groupId>org.egovframe.rte</groupId>
 			<artifactId>org.egovframe.rte.ptl.mvc</artifactId>
@@ -111,18 +104,6 @@
 					<artifactId>spring-modules-validation</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
-<!--
-		<dependency>
-			<groupId>org.egovframe.rte</groupId>
-			<artifactId>org.egovframe.rte.fdl.property</artifactId>
-			<version>${org.egovframe.rte.version}</version>
-		</dependency>
--->
-		<dependency>
-			<groupId>org.egovframe.rte</groupId>
-			<artifactId>org.egovframe.rte.fdl.string</artifactId>
-			<version>${org.egovframe.rte.version}</version>
 		</dependency>
 
 		<dependency>
@@ -137,29 +118,10 @@
 			<version>${org.egovframe.rte.version}</version>
 		</dependency>
 		
-		<dependency>
-			<groupId>org.egovframe.rte</groupId>
-			<artifactId>org.egovframe.rte.fdl.logging</artifactId>
-			<version>${org.egovframe.rte.version}</version>
-		</dependency>
-<!-- 
-		<dependency>
-			<groupId>org.egovframe.rte</groupId>
-			<artifactId>org.egovframe.rte.fdl.excel</artifactId>
-			<version>${org.egovframe.rte.version}</version>
-		</dependency>
--->		
 		<!-- 실행환경 라이브러리 끝 -->
 		
 		<!-- 공통컴포넌트 시작 -->
 
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.18.34</version>
-			<scope>provided</scope>
-		</dependency>
-		
 		<!-- Source: https://mvnrepository.com/artifact/org.eclipse/yasson -->
 		<!-- RequestMappingHandlerAdapter 에서 필요 -->
 		<dependency>
@@ -168,19 +130,6 @@
 		    <version>1.0.11</version>
 		</dependency>
 				
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-			<version>${org.apache.log4j-version}</version>
-		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
-		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-dbcp2</artifactId>
-		    <version>2.9.0</version>
-		</dependency>
-
 		<!-- common-annotations for JSE 5 -->
 		<dependency>
 			<groupId>commons-lang</groupId>
@@ -201,26 +150,6 @@
 			</exclusions>
 		</dependency>
 
-		<!-- Cross-Site Scripting -->
-		<dependency>
-            <groupId>jakarta.servlet</groupId>
-            <artifactId>jakarta.servlet-api</artifactId>
-            <version>6.0.0</version>
-            <scope>provided</scope>
-        </dependency>
-        
-        <dependency>
-            <groupId>jakarta.servlet.jsp.jstl</groupId>
-            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-            <version>3.0.0</version>
-        </dependency>		
-		
-        <dependency>
-            <groupId>org.glassfish.web</groupId>
-            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-            <version>3.0.1</version>
-        </dependency> 
- 		
 		<!-- Email -->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -254,7 +183,34 @@
  				
 		<!-- 공통컴포넌트 끝 -->
 		
+		<!-- Servlet -->
+		<dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>jakarta.servlet.jsp.jstl</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+            <version>3.0.0</version>
+        </dependency>		
+		
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+            <version>3.0.1</version>
+        </dependency> 
+ 		
         <!-- database driver start-->
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-dbcp2</artifactId>
+		    <version>2.9.0</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
 		<dependency>
 		    <groupId>org.mybatis</groupId>
@@ -284,11 +240,6 @@
 
 		<!-- excel start -->
 		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
-		<dependency>
-		    <groupId>org.apache.poi</groupId>
-		    <artifactId>poi</artifactId>
-		    <version>3.17</version>
-		</dependency>
 		<dependency>      
 			<groupId>org.apache.poi</groupId>      
 			<artifactId>poi-ooxml</artifactId>      
@@ -296,6 +247,13 @@
 		</dependency> 
 		<!-- excel end-->
 		 
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.34</version>
+			<scope>provided</scope>
+		</dependency>
+		
 		<!-- FTP용 3rd party 라이브러리 -->
 		<dependency>
 			<groupId>commons-net</groupId>

@@ -17,8 +17,7 @@
         			login-processing-url="/j_spring_security_check"
                     authentication-failure-handler-ref="customUrlAuthenticationFailureHandler" 
                     authentication-success-handler-ref="customUrlAuthenticationSuccessHandler" />
-        <logout logout-url="/j_spring_security_logout"
-        		success-handler-ref="simpleUrlLogoutSuccessHandler" />
+        <logout logout-url="/j_spring_security_logout" success-handler-ref="simpleUrlLogoutSuccessHandler" />
 		<access-denied-handler error-page="/sec/arm/accessDenied.do"/>
 		
         <anonymous/>
@@ -85,8 +84,7 @@
 		</authentication-provider>
 	</authentication-manager>
 
-	<beans:bean id="passwordEncoder" 
-		class="aramframework.cmm.config.filter.AramPasswordEncoder">
+	<beans:bean id="passwordEncoder" class="aramframework.cmm.config.filter.AramPasswordEncoder">
 	</beans:bean>
 
 	<!-- secure object service -->

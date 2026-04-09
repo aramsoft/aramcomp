@@ -84,8 +84,7 @@
 		</authentication-provider>
 	</authentication-manager>
 
-	<beans:bean id="passwordEncoder" class="aramframework.cmm.config.filter.AramPasswordEncoder">
-	</beans:bean>
+	<beans:bean id="passwordEncoder" class="aramframework.cmm.config.filter.AramPasswordEncoder" />
 
 	<!-- secure object service -->
     <beans:bean id="securedObjectDAO" 

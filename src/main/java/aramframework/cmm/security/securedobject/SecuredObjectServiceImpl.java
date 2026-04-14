@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package aramframework.cmm.security.securedobject.impl;
+package aramframework.cmm.security.securedobject;
 
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -26,13 +26,12 @@ import org.egovframe.rte.fdl.security.config.SecurityConfig;
 import org.egovframe.rte.fdl.security.securedobject.EgovSecuredObjectService;
 import org.egovframe.rte.fdl.security.securedobject.impl.SelfRegexRequestMatcher;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
-
-import aramframework.cmm.security.securedobject.SecuredObjectDAO;
 
 /**
  * 보호객체 관리를 지원하는 구현 클래스
@@ -54,6 +53,7 @@ import aramframework.cmm.security.securedobject.SecuredObjectDAO;
  */
 public class SecuredObjectServiceImpl implements EgovSecuredObjectService, ApplicationContextAware {
 
+	@Autowired 
 	private SecuredObjectDAO securedObjectDAO;
 	
     private String requestMatcherType = "ant";	// default
@@ -67,10 +67,6 @@ public class SecuredObjectServiceImpl implements EgovSecuredObjectService, Appli
 		}
 	}
 
-    public void setSecuredObjectDAO(SecuredObjectDAO securedObjectDAO) {
-        this.securedObjectDAO = securedObjectDAO;
-    }
-    
     public void setRequestMatcherType(String requestMatcherType) {
     	this.requestMatcherType = requestMatcherType;
     }

@@ -87,15 +87,9 @@
 	<beans:bean id="passwordEncoder" class="aramframework.cmm.config.filter.AramPasswordEncoder" />
 
 	<!-- secure object service -->
-    <beans:bean id="securedObjectDAO" 
-    	class="aramframework.cmm.security.securedobject.impl.SecuredObjectDAOImpl" >
-    </beans:bean>
-    
-    <beans:bean id="securedObjectService"
-        class="aramframework.cmm.security.securedobject.impl.SecuredObjectServiceImpl">
-        <beans:property name="securedObjectDAO" ref="securedObjectDAO"/>
-    </beans:bean>
- 
+    <beans:bean id="securedObjectDAO" class="aramframework.cmm.security.securedobject.SecuredObjectDAO" />
+    <beans:bean id="securedObjectService" class="aramframework.cmm.security.securedobject.SecuredObjectServiceImpl"/>
+  
     <beans:bean id="daoUserService"
         class="aramframework.cmm.security.userdetails.manager.DaoUserDetailsManager" >
         <beans:property name="securedObjectDAO" ref="securedObjectDAO"/>

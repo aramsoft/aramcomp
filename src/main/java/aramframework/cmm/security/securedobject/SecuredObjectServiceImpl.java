@@ -22,13 +22,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.egovframe.rte.fdl.security.config.SecurityConfig;
 import org.egovframe.rte.fdl.security.securedobject.EgovSecuredObjectService;
 import org.egovframe.rte.fdl.security.securedobject.impl.SelfRegexRequestMatcher;
-import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
@@ -51,21 +47,12 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
  * 2014.01.22	한성곤				Spring Security 3.2.X 업그레이드 적용
  * </pre>
  */
-public class SecuredObjectServiceImpl implements EgovSecuredObjectService, ApplicationContextAware {
+public class SecuredObjectServiceImpl implements EgovSecuredObjectService {
 
 	@Autowired 
 	private SecuredObjectDAO securedObjectDAO;
 	
     private String requestMatcherType = "ant";	// default
-
-	public void setApplicationContext(ApplicationContext context) throws BeansException {
-		if (context.getBeanNamesForType(SecurityConfig.class).length > 0) {
-			SecurityConfig config = context.getBean(SecurityConfig.class);
-			if (config != null) {
-				requestMatcherType = config.getRequestMatcherType();
-			}
-		}
-	}
 
     public void setRequestMatcherType(String requestMatcherType) {
     	this.requestMatcherType = requestMatcherType;

@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.egovframe.rte.fdl.security.securedobject.impl.SelfRegexRequestMatcher;
+import org.egovframe.rte.fdl.security.secureobject.impl.SelfRegexRequestMatcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;

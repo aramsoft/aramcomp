@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <beans xmlns="http://www.springframework.org/schema/beans" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xmlns:p="http://www.springframework.org/schema/p"  
-    xmlns:c="http://www.springframework.org/schema/c"  
-    xsi:schemaLocation="http://www.springframework.org/schema/beans 
-      					http://www.springframework.org/schema/beans/spring-beans.xsd"> 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd">
      
 	<!-- 
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"
-	  	p:host="#{mailProperties.host}"
+	  	p:host="${mail.host}"
 	   	p:port="465" 
 	   	p:username="horanghi@gmail.com" 
 	   	p:password="*" />
 	-->
 	
     <!-- 메일 연동 인터페이스에서 첨부파일 미사용 -->
+ <!--
     <bean id="EMSMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl" 
-        p:host		="#{mailProperties.host}" 
-        p:port		="#{mailProperties.port}"  
+        p:host		="${mail.host}" 
+        p:port		="${mail.port}"  
         p:protocol	="smtps" 
-        p:username	="#{mailProperties.mailId}" 
-        p:password	="#{mailProperties.mailPass}"> 
+        p:username	="${mail.id}" 
+        p:password	="${mail.pass}"> 
         <property name="javaMailProperties"> 
             <props> 
                 <prop key="mail.smtps.auth">true</prop> 
@@ -29,15 +28,16 @@
             </props> 
         </property> 
     </bean>
+-->
       
     <!-- 메일 연동 인터페이스에서 첨부파일 사용 -->
-	<bean id="egovMultiPartEmail" class="aramframework.com.cop.ems.service.EgovMultiPartEmail" 
-		c:host		="#{mailProperties.host}"
-		c:port		="#{mailProperties.port}" 
-		c:mailId	="#{mailProperties.mailId}" 
-		c:mailPass	="#{mailProperties.mailPass}"
-		c:mailName	="#{mailProperties.mailName}"
-		c:emailAddress="#{mailProperties.emailAddress}" />
-	  
+	<bean id="egovMultiPartEmail" class="aramframework.com.cop.ems.service.EgovMultiPartEmail"> 
+		<constructor-arg  name="host" 			value="${mail.host}" />
+		<constructor-arg  name="port" 			value="${mail.port}" />
+		<constructor-arg  name="mailId" 		value="${mail.id}" />
+		<constructor-arg  name="mailPass" 		value="${mail.pass}" />
+		<constructor-arg  name="mailName" 		value="${mail.name}" />
+		<constructor-arg  name="emailAddress" 	value="${mail.address}" />
+	</bean>
 
 </beans> 

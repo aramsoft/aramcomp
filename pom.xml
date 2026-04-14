@@ -9,8 +9,8 @@
 	<url>http://www.aramsoft.co.kr/aramcomp</url> 
 
 	<properties>
-		<org.springframework.version>6.0.9</org.springframework.version>
-		<org.spring.security.version>6.1.0</org.spring.security.version>
+		<org.springframework.version>6.2.11</org.springframework.version>
+		<org.spring.security.version>6.5.5</org.spring.security.version>
 		<org.egovframe.rte.version>4.3.0</org.egovframe.rte.version>
 	</properties>
 
@@ -214,14 +214,14 @@
 		<dependency>
 		    <groupId>org.mybatis</groupId>
 		    <artifactId>mybatis</artifactId>
-		    <version>3.5.13</version>
+		    <version>3.5.19</version>
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
 		<dependency>
 		    <groupId>org.mybatis</groupId>
 		    <artifactId>mybatis-spring</artifactId>
-		    <version>3.0.2</version>
+		    <version>3.0.5</version>
 		</dependency>
 		
         <dependency>

@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.egovframe.rte.fdl.security.securedobject.EgovSecuredObjectService;
 import org.egovframe.rte.fdl.security.securedobject.impl.SelfRegexRequestMatcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;
@@ -47,7 +46,7 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
  * 2014.01.22	한성곤				Spring Security 3.2.X 업그레이드 적용
  * </pre>
  */
-public class SecuredObjectServiceImpl implements EgovSecuredObjectService {
+public class SecuredObjectService {
 
 	@Autowired 
 	private SecuredObjectDAO securedObjectDAO;

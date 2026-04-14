@@ -88,23 +88,19 @@
 
 	<!-- secure object service -->
     <beans:bean id="securedObjectDAO" class="aramframework.cmm.security.securedobject.SecuredObjectDAO" />
-    <beans:bean id="securedObjectService" class="aramframework.cmm.security.securedobject.SecuredObjectServiceImpl"/>
+    <beans:bean id="securedObjectService" class="aramframework.cmm.security.securedobject.SecuredObjectService"/>
   
-    <beans:bean id="daoUserService"
-        class="aramframework.cmm.security.userdetails.manager.DaoUserDetailsManager" >
-        <beans:property name="securedObjectDAO" ref="securedObjectDAO"/>
+    <beans:bean id="daoUserService" class="aramframework.cmm.security.userdetails.manager.DaoUserDetailsManager" >
         <beans:property name="roleHierarchy" ref="roleHierarchy"/>
     </beans:bean>
 
-    <beans:bean id="roleHierarchy" 
-        class="org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl" >
+    <beans:bean id="roleHierarchy" class="org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl" >
         <beans:property name="hierarchy" ref="hierarchyStrings"/>
     </beans:bean>
 
     <beans:bean id="hierarchyStrings"
-        class="org.egovframe.rte.fdl.security.userdetails.hierarchicalroles.HierarchyStringsFactoryBean"
+        class="aramframework.cmm.security.userdetails.hierarchicalroles.HierarchyStringsFactoryBean"
         init-method="init">
-        <beans:property name="securedObjectService" ref="securedObjectService"/>
     </beans:bean>
 
  	<!-- authorization -->
@@ -128,14 +124,12 @@
     </beans:bean>
 
     <beans:bean id="databaseSecurityMetadataSource"
-        class="org.egovframe.rte.fdl.security.intercept.EgovReloadableFilterInvocationSecurityMetadataSource">
+        class="aramframework.cmm.security.bean.ReloadableFilterInvocationSecurityMetadataSource">
         <beans:constructor-arg ref="requestMap" />      
-        <beans:property name="securedObjectService" ref="securedObjectService"/>
     </beans:bean>
 
     <beans:bean id="requestMap"
-        class="org.egovframe.rte.fdl.security.intercept.UrlResourcesMapFactoryBean" init-method="init">
-        <beans:property name="securedObjectService" ref="securedObjectService"/>
+        class="aramframework.cmm.security.bean.UrlResourcesMapFactoryBean" init-method="init">
     </beans:bean>
   
     <!--  method  -->
@@ -172,10 +166,9 @@
         <beans:constructor-arg ref="methodMap" />
     </beans:bean>
     
-    <beans:bean id="methodMap"
-        class="org.egovframe.rte.fdl.security.intercept.MethodResourcesMapFactoryBean"
+    <beans:bean id="methodMap" 
+        class="aramframework.cmm.security.bean.MethodResourcesMapFactoryBean"
         init-method="init">
-        <beans:property name="securedObjectService" ref="securedObjectService"/>
         <beans:property name="resourceType" value="method"/>
     </beans:bean>
    

@@ -26,6 +26,7 @@ import org.egovframe.rte.fdl.security.userdetails.EgovUserDetails;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
 import org.springframework.security.core.GrantedAuthority;
@@ -60,18 +61,11 @@ public class DaoUserDetailsManager implements UserDetailsManager {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(DaoUserDetailsManager.class);
 
+	@Autowired 
 	private SecuredObjectDAO securedObjectDAO;
+	
     private RoleHierarchy roleHierarchy = null;
 
-    /**
-     * Role Hierarchy를 지원한다.
-     * 
-     * @param roleHierarchy
-     */
-    public void setSecuredObjectDAO(SecuredObjectDAO securedObjectDAO) {
-        this.securedObjectDAO = securedObjectDAO;
-    }
-    
    /**
      * Role Hierarchy를 지원한다.
      * 

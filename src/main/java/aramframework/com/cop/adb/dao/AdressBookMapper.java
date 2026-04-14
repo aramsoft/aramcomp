@@ -4,8 +4,8 @@ import java.util.List;
 
 import aramframework.com.cop.adb.domain.AdressBookUserVO;
 import aramframework.com.cop.adb.domain.AdressBookVO;
-import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
 import org.egovframe.rte.psl.dataaccess.util.EgovMap;
+import org.mybatis.spring.annotation.MapperScan;
 
 /**
  * 주소록을 관리하는 서비스를 정의하기위한 데이터 접근 클래스
@@ -13,7 +13,7 @@ import org.egovframe.rte.psl.dataaccess.util.EgovMap;
  * @since 2014.11.11
  * @version 1.0
  */
-@Mapper
+@MapperScan
 public interface AdressBookMapper {
 
 	/**

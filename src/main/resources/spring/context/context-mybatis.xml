@@ -15,10 +15,10 @@
 		<property name="mapperLocations" value="classpath:/mybatis/mapper/**/*_${Globals.DbType}.xml" />
 	</bean>
  
-	<!-- MapperConfigurer setup for MyBatis Database Layer with @Mapper-->	
- 	<bean class="org.egovframe.rte.psl.dataaccess.mapper.MapperConfigurer">
-		<property name="sqlSessionFactoryBeanName" value="sqlSession" />	
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    	<property name="sqlSessionFactoryBeanName" value="sqlSession" />
 		<property name="basePackage" value="aramframework" />
-	</bean>  
+    </bean>
+
 	
 </beans>

@@ -4,8 +4,8 @@ import java.util.List;
 
 import aramframework.com.cop.ncm.domain.NameCardUseVO;
 import aramframework.com.cop.ncm.domain.NameCardVO;
-import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
 import org.egovframe.rte.psl.dataaccess.util.EgovMap;
+import org.mybatis.spring.annotation.MapperScan;
 
 /**
  * 명함정보를 관리하기 위한 데이터 접근 클래스
@@ -13,7 +13,7 @@ import org.egovframe.rte.psl.dataaccess.util.EgovMap;
  * @since 2014.11.11
  * @version 1.0
  */
-@Mapper
+@MapperScan
 public interface NcrdManageMapper {
 
 	/**

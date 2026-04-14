@@ -8,8 +8,8 @@ import aramframework.com.cop.cmy.domain.CommunityUserVO;
 import aramframework.com.cop.cmy.domain.CommunityVO;
 import aramframework.com.cop.cmy.domain.MenuVO;
 
-import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
 import org.egovframe.rte.psl.dataaccess.util.EgovMap;
+import org.mybatis.spring.annotation.MapperScan;
 
 /**
  * 커뮤니티 정보를 관리하기 위한 데이터 접근 클래스
@@ -17,7 +17,7 @@ import org.egovframe.rte.psl.dataaccess.util.EgovMap;
  * @since 2014.11.11
  * @version 1.0
  */
-@Mapper
+@MapperScan
 public interface CommunityManageMapper {
 
 	/**

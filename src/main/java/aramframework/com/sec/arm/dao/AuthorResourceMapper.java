@@ -3,8 +3,8 @@ package aramframework.com.sec.arm.dao;
 import java.util.List;
 
 import aramframework.com.sec.arm.domain.AuthorResourceVO;
-import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
 import org.egovframe.rte.psl.dataaccess.util.EgovMap;
+import org.mybatis.spring.annotation.MapperScan;
 
 /**
  * 권한별 롤관리에 대한 DAO 클래스를 정의한다.
@@ -12,7 +12,7 @@ import org.egovframe.rte.psl.dataaccess.util.EgovMap;
  * @since 2014.11.11
  * @version 1.0
  */
-@Mapper
+@MapperScan
 public interface AuthorResourceMapper {
 
 	/**

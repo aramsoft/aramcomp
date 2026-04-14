@@ -2,7 +2,8 @@ package aramframework.com.sym.sym.bak.dao;
 
 import java.util.List;
 
-import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
+import org.mybatis.spring.annotation.MapperScan;
+
 import aramframework.com.sym.sym.bak.domain.BackupResultVO;
 
 /**
@@ -11,7 +12,7 @@ import aramframework.com.sym.sym.bak.domain.BackupResultVO;
  * @since 2014.11.11
  * @version 1.0
  */
-@Mapper
+@MapperScan
 public interface BackupResultMapper {
 
 	/**

@@ -3,8 +3,8 @@ package aramframework.com.sym.log.wlg.dao;
 import java.util.List;
 
 import aramframework.com.sym.log.wlg.domain.WebLogVO;
-import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
 import org.egovframe.rte.psl.dataaccess.util.EgovMap;
+import org.mybatis.spring.annotation.MapperScan;
 
 /**
  * 웹 로그관리를 위한 데이터 접근 클래스
@@ -12,7 +12,7 @@ import org.egovframe.rte.psl.dataaccess.util.EgovMap;
  * @since 2014.11.11
  * @version 1.0
  */
-@Mapper
+@MapperScan
 public interface WebLogMapper {
 
 	/**

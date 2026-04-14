@@ -4,8 +4,8 @@ import java.util.List;
 
 import aramframework.com.sym.ccm.zip.domain.ZipAramVO;
 import aramframework.com.sym.ccm.zip.domain.ZipVO;
-import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
 import org.egovframe.rte.psl.dataaccess.util.EgovMap;
+import org.mybatis.spring.annotation.MapperScan;
 
 /**
  * 우편번호에 대한 데이터 접근 클래스를 정의한다
@@ -13,7 +13,7 @@ import org.egovframe.rte.psl.dataaccess.util.EgovMap;
  * @since 2014.11.11
  * @version 1.0
  */
-@Mapper
+@MapperScan
 public interface ZipManageMapper {
 
 	/**

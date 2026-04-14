@@ -3,8 +3,8 @@ package aramframework.com.uss.sam.stp.dao;
 import java.util.List;
 
 import aramframework.com.uss.sam.stp.domain.StplatManageVO;
-import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
 import org.egovframe.rte.psl.dataaccess.util.EgovMap;
+import org.mybatis.spring.annotation.MapperScan;
 
 /**
  * 약관내용을 처리하는 DAO 클래스
@@ -12,7 +12,7 @@ import org.egovframe.rte.psl.dataaccess.util.EgovMap;
  * @since 2014.11.11
  * @version 1.0
  */
-@Mapper
+@MapperScan
 public interface StplatManageMapper {
 
 	/**

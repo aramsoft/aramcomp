@@ -3,8 +3,8 @@ package aramframework.com.uss.olh.qna.dao;
 import java.util.List;
 
 import aramframework.com.uss.olh.qna.domain.QnaManageVO;
-import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
 import org.egovframe.rte.psl.dataaccess.util.EgovMap;
+import org.mybatis.spring.annotation.MapperScan;
 
 /**
  * Q&A정보를 처리하는 DAO 클래스
@@ -12,7 +12,7 @@ import org.egovframe.rte.psl.dataaccess.util.EgovMap;
  * @since 2014.11.11
  * @version 1.0
  */
-@Mapper
+@MapperScan
 public interface QnaManageMapper {
 
 	/**

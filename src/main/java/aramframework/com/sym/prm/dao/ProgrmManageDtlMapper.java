@@ -3,8 +3,8 @@ package aramframework.com.sym.prm.dao;
 import java.util.List;
 
 import aramframework.com.sym.prm.domain.ProgrmManageDtlVO;
-import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
 import org.egovframe.rte.psl.dataaccess.util.EgovMap;
+import org.mybatis.spring.annotation.MapperScan;
 
 /**
  * 프로그램 목록관리및 프로그램변경관리에 대한 DAO 클래스를 정의한다.
@@ -12,7 +12,7 @@ import org.egovframe.rte.psl.dataaccess.util.EgovMap;
  * @since 2014.11.11
  * @version 1.0
  */
-@Mapper
+@MapperScan
 public interface ProgrmManageDtlMapper {
 
 	/**

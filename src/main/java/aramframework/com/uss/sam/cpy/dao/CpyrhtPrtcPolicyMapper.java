@@ -3,8 +3,8 @@ package aramframework.com.uss.sam.cpy.dao;
 import java.util.List;
 
 import aramframework.com.uss.sam.cpy.domain.CpyrhtPrtcPolicyVO;
-import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
 import org.egovframe.rte.psl.dataaccess.util.EgovMap;
+import org.mybatis.spring.annotation.MapperScan;
 
 /**
  * 저작권보호정책내용을 처리하는 비즈니스 구현 클래스
@@ -12,7 +12,7 @@ import org.egovframe.rte.psl.dataaccess.util.EgovMap;
  * @since 2014.11.11
  * @version 1.0
  */
-@Mapper
+@MapperScan
 public interface CpyrhtPrtcPolicyMapper {
 
 	/**

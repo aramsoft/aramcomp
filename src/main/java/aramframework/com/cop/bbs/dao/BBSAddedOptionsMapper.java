@@ -1,6 +1,7 @@
 package aramframework.com.cop.bbs.dao;
 
-import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
+import org.mybatis.spring.annotation.MapperScan;
+
 import aramframework.com.cop.bbs.domain.BoardMasterVO;
 
 /**
@@ -9,7 +10,7 @@ import aramframework.com.cop.bbs.domain.BoardMasterVO;
  * @since 2014.11.11
  * @version 1.0
  */
-@Mapper
+@MapperScan
 public interface BBSAddedOptionsMapper  {
 
 	/**

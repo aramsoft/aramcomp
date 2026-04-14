@@ -4,8 +4,8 @@ import java.util.List;
 
 import aramframework.cmm.domain.BaseVO;
 import aramframework.com.cop.smt.sim.domain.SchdulManageVO;
-import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
 import org.egovframe.rte.psl.dataaccess.util.EgovMap;
+import org.mybatis.spring.annotation.MapperScan;
 
 /**
  * 일정관리를 처리하는 Dao Class 구현
@@ -13,7 +13,7 @@ import org.egovframe.rte.psl.dataaccess.util.EgovMap;
  * @since 2014.11.11
  * @version 1.0
  */
-@Mapper
+@MapperScan
 public interface SchdulManageMapper {
 
 	/**

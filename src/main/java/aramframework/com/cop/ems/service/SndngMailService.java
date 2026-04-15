@@ -255,7 +255,7 @@ public class SndngMailService extends EgovAbstractServiceImpl {
     	// 2. XML데이터를 만든다.
     	SndngMailDocument mailDoc;
     	SndngMailDocument.SndngMail mailElement;
-    	mailDoc = SndngMailDocument.Factory.newInstance();
+    	mailDoc = (SndngMailDocument) SndngMailDocument.Factory.newInstance();
     	mailElement = mailDoc.addNewSndngMail();
     	mailElement.setMssageId(sndngMailVO.getMssageId());
     	mailElement.setDsptchPerson(sndngMailVO.getDsptchPerson());

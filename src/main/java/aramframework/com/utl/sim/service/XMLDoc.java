@@ -126,7 +126,7 @@ public class XMLDoc {
 			xmlFile = new File(WebUtil.filePathBlackList(file1));
 			if (xmlFile.exists() && xmlFile.isFile()) {
 				fis = new FileInputStream(xmlFile);
-				mailDoc = SndngMailDocument.Factory.parse(xmlFile);
+				mailDoc = (SndngMailDocument) SndngMailDocument.Factory.parse(xmlFile);
 
 			}// else {
 				// log.debug("+++ File Not Found or Not File..");

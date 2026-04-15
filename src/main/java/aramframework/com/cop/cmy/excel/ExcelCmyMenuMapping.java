@@ -1,6 +1,7 @@
 package aramframework.com.cop.cmy.excel;
 
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 
 import aramframework.com.cop.cmy.domain.CommunityMenuVO;
@@ -27,7 +28,7 @@ public class ExcelCmyMenuMapping {
 		for (short c = 0; c < cells; c = (short)(c + 1)) {
 			Cell cell = row.getCell(c);
 			if (cell != null) {
-				switch (cell.getCellTypeEnum()) {
+				switch (cell.getCellType()) {
 					case NUMERIC:
 						value = String.valueOf(cell.getNumericCellValue());
 						break;

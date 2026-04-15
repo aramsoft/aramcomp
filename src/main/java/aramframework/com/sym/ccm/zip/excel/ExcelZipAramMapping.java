@@ -30,7 +30,7 @@ public class ExcelZipAramMapping {
 		for (short c = 0; c < cells; c = (short)(c + 1)) {
 			Cell cell = row.getCell(c);
 			if (cell != null) {
-				switch (cell.getCellTypeEnum()) {
+				switch (cell.getCellType()) {
 				case NUMERIC:
 					value = String.valueOf(cell.getNumericCellValue());
 					break;

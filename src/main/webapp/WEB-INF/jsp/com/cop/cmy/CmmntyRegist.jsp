@@ -79,7 +79,7 @@
 	     	<form:hidden path="tmplatId" size="20" />
 	     	&nbsp;
 	     	<a href="#" onClick="javascript:fn_aram_get_tmplat(); return false;" style="selector-dummy: expression(this.hideFocus=false);">
-	     		<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/search.gif" width="15" height="15" align="middle" alt="search">
+	     		<img src="${pageContext.request.contextPath}/images/com/cmm/icon/search.gif" width="15" height="15" align="middle" alt="search">
 	     	</a>
 			<form:errors path="tmplatId" cssClass="error"/>
 	    </td>
@@ -104,7 +104,7 @@
 	     	<input name="emplyrNm" type="text" size="20" value=""  maxlength="20" readonly title="커뮤니티 관리자">
 	     	&nbsp;
 	     	<a href="#" onClick="javascript:fn_aram_get_cmmntyAdmin(); return false;" style="selector-dummy: expression(this.hideFocus=false);">
-	     		<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/search.gif" width="15" height="15" align="middle" alt="새창">
+	     		<img src="${pageContext.request.contextPath}/images/com/cmm/icon/search.gif" width="15" height="15" align="middle" alt="새창">
 	     	</a>
 			<form:errors path="emplyrId" cssClass="error"/>
 	    </td>

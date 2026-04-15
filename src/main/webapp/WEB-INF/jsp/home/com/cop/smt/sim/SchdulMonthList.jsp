@@ -88,21 +88,21 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;					
 				            <%--<a href="#" onClick="location.href='/cop/smt/sim/listSchdulMonth.do?year=<%=year-1%>&amp;month=<%=month%>'; return false;"> << </a>--%>
 				            <a href="javascript:fn_aram_move_year('<%=year-1%>');"> 
-				            <img alt="이전년도로 이동" src="${pageContext.request.contextPath}/resources/images/home/btn/btn_prev.gif" align="middle" style="margin-right:4px;border:0px;">
+				            <img alt="이전년도로 이동" src="${pageContext.request.contextPath}/images/home/btn/btn_prev.gif" align="middle" style="margin-right:4px;border:0px;">
 				            </a>
 				            <%=year%>년
 							<a href="javascript:fn_aram_move_year('<%=year+1%>');">
-				            <img alt="다음년도로 이동" src="${pageContext.request.contextPath}/resources/images/home/btn/btn_next.gif" align="middle" style="margin-left:4px;border:0px;">
+				            <img alt="다음년도로 이동" src="${pageContext.request.contextPath}/images/home/btn/btn_next.gif" align="middle" style="margin-left:4px;border:0px;">
 				            </a>
 				            <%if(month> 0 ){ %>
 							<a href="javascript:fn_aram_move_month('<%=month-1%>');">
-                                        <img alt="이전월로 이동" src="${pageContext.request.contextPath}/resources/images/home/btn/btn_prev.gif" align="middle" style="margin-right:4px;border:0px;">
+                                        <img alt="이전월로 이동" src="${pageContext.request.contextPath}/images/home/btn/btn_prev.gif" align="middle" style="margin-right:4px;border:0px;">
                                      </a>
 				            <%}%>
 				            <%=month+1%>월
 				            <%if(month < 11 ){ %>
 							<a href="javascript:fn_aram_move_month('<%=month+1%>')">
-                                        <img alt="다음월로 이동" src="${pageContext.request.contextPath}/resources/images/home/btn/btn_next.gif" align="middle" style="margin-left:4px;border:0px;">
+                                        <img alt="다음월로 이동" src="${pageContext.request.contextPath}/images/home/btn/btn_next.gif" align="middle" style="margin-left:4px;border:0px;">
                                   </a>
 					        <%}%>
 						</div>

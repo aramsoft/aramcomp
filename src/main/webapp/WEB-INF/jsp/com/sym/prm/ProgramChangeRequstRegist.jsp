@@ -55,7 +55,7 @@
     		<input id="progrmFileNm" name="progrmFileNm" size="50"  maxlength="50"  title="프로그램파일명" readonly/>
 	    	<form:errors path="progrmFileNm" cssClass="error"/>
         	<a href="#" target="_blank" onclick="javascript:searchFileNm(); return false;" style="selector-dummy:expression(this.hideFocus=false);"  title="새 창으로 이동">
-        		<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/search.gif" alt='(프로그램파일명 검색)' width="15" height="15" />(프로그램파일명 검색)
+        		<img src="${pageContext.request.contextPath}/images/com/cmm/icon/search.gif" alt='(프로그램파일명 검색)' width="15" height="15" />(프로그램파일명 검색)
         	</a>
     	</td>
   	</tr>
@@ -81,7 +81,7 @@
       		</c:if>
       		<input name="rqestDeView" id="rqestDeView" type="text" size="10" title="요청일자" value="${rqestDeVal}"  readonly />
       		<a href="#" onClick="javascript:fn_aram_NormalCalendar(document.forms[0].rqestDe, document.forms[0].rqestDeView); return false;">
-      			<img name="calendarImg" src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/bu_icon_carlendar.gif"  align="middle" style="border:0px" alt="달력창팝업버튼이미지">
+      			<img name="calendarImg" src="${pageContext.request.contextPath}/images/com/cmm/icon/bu_icon_carlendar.gif"  align="middle" style="border:0px" alt="달력창팝업버튼이미지">
       		</a>
    	  		<form:errors path="rqestDe" cssClass="error"/>
     	</td>
@@ -121,7 +121,7 @@
 <script type="text/javascript" src="<c:url value="/validator.do" />"></script>
 <validator:javascript formName="progrmManageDtlVO" staticJavascript="false" xhtml="true" cdata="false"/>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/sym/cal/CalPopup.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/sym/cal/CalPopup.js"></script>
 <script type="text/javascript">
 
 var gArguments = new Array();

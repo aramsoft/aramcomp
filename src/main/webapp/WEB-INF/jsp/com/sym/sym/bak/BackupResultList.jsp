@@ -48,12 +48,12 @@
 	                      실행시작일자:
 	        <input type="text" name="searchStartDate" size="10" title="검색시작일자">
 	        <a href="#" onClick="javascript:fn_aram_NormalCalendar('',  frm.searchStartDate ); return false;">
-	        	<img src="/resources/images/com/sym/cal/bu_icon_carlendar.gif" alt="달력창팝업버튼이미지">
+	        	<img src="/images/com/sym/cal/bu_icon_carlendar.gif" alt="달력창팝업버튼이미지">
 	        </a>
 	    	~
 	        <input type="text" name="searchEndDate" size="10" title="검색종료일자">
 	        <a href="#" onClick="javascript:fn_aram_NormalCalendar('', frm.searchEndDate ); return false;">
-	        	<img src="/resources/images/com/sym/cal/bu_icon_carlendar.gif" alt="달력창팝업버튼이미지">
+	        	<img src="/images/com/sym/cal/bu_icon_carlendar.gif" alt="달력창팝업버튼이미지">
 	        </a>
 			<form:select path="sttus" class="select" title="검색조건구분">
 		   		<form:option value="00" label="전체" />
@@ -137,8 +137,8 @@
 
 </div>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/sym/cal/CalPopup.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/cmm/utl/CmmUtl.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/sym/cal/CalPopup.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/cmm/utl/CmmUtl.js"></script>
 <script type="text/javascript">
 
 window.onload = function() {

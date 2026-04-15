@@ -90,15 +90,15 @@
 <validator:javascript formName="indvdlInfoPolicyVO" staticJavascript="false" xhtml="true" cdata="false"/>
 
 <script type="text/javascript">
-_editor_url = "${pageContext.request.contextPath}/resources/html/htmlarea4.0/";
+_editor_url = "${pageContext.request.contextPath}/html/htmlarea4.0/";
 _editor_area = "indvdlInfoDc";
 _editor_lang = "kr";
 </script>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/html/htmlarea4.0/htmlarea.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/cmm/utl/HtmlEditor.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/html/htmlarea4.0/htmlarea.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/cmm/utl/HtmlEditor.js"></script>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/sym/cal/CalPopup.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/sym/cal/CalPopup.js"></script>
 <script type="text/javascript">
 
 window.onload = function() {

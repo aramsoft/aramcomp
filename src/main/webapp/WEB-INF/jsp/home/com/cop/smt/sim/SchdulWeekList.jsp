@@ -113,32 +113,32 @@
 							</form:select>
 							&nbsp;&nbsp;&nbsp;&nbsp;					
 							<a href="javascript:fn_aram_move_year('<%=iNowYear-1%>');">
-				            	<img alt="이전년도로 이동" src="${pageContext.request.contextPath}/resources/images/home/btn/btn_prev.gif" align="middle" style="margin-right:4px;border:0px;">
+				            	<img alt="이전년도로 이동" src="${pageContext.request.contextPath}/images/home/btn/btn_prev.gif" align="middle" style="margin-right:4px;border:0px;">
 				            </a>
 				            <%=iNowYear%>년
 							<a href="javascript:fn_aram_move_year('<%=iNowYear+1%>');">
-				            	<img alt="다음년도로 이동" src="${pageContext.request.contextPath}/resources/images/home/btn/btn_next.gif" align="middle" style="margin-left:4px;border:0px;">
+				            	<img alt="다음년도로 이동" src="${pageContext.request.contextPath}/images/home/btn/btn_next.gif" align="middle" style="margin-left:4px;border:0px;">
 				            </a>&nbsp;&nbsp;&nbsp;
 				            <%if(iNowMonth> 0 ){ %>
 							<a href="javascript:fn_aram_move_month('<%=iNowMonth-1%>');">
-				            	<img alt="이전월로 이동"src="${pageContext.request.contextPath}/resources/images/home/btn/btn_prev.gif" align="middle" style="margin-right:4px;border:0px;">
+				            	<img alt="이전월로 이동"src="${pageContext.request.contextPath}/images/home/btn/btn_prev.gif" align="middle" style="margin-right:4px;border:0px;">
 				            </a>
 				            <%}%>
 				            <%=iNowMonth+1%>월
 				            <%if(iNowMonth < 11 ){ %>
 							<a href="javascript:fn_aram_move_month('<%=iNowMonth+1%>');">
-				            	<img alt="다음월로 이동"src="${pageContext.request.contextPath}/resources/images/home/btn/btn_next.gif" align="middle" style="margin-left:4px;border:0px;">
+				            	<img alt="다음월로 이동"src="${pageContext.request.contextPath}/images/home/btn/btn_next.gif" align="middle" style="margin-left:4px;border:0px;">
 				            </a> 
 				            <%}%>&nbsp;&nbsp;&nbsp;
 				            <%if(iNowWeek> 0 ){ %>
 							<a href="javascript:fn_aram_move_week('<%=iNowWeek-1%>');">
-				            	<img alt="이전주로 이동" src="${pageContext.request.contextPath}/resources/images/home/btn/btn_prev.gif" align="middle" style="margin-right:4px;border:0px;">
+				            	<img alt="이전주로 이동" src="${pageContext.request.contextPath}/images/home/btn/btn_prev.gif" align="middle" style="margin-right:4px;border:0px;">
 				            </a>
 				            <%}%>
 				            <%=iNowWeek+1%>주
 				            <%if(iNowWeek < listWeekGrop.size()-1 ){ %>
 							<a href="javascript:fn_aram_move_week('<%=iNowWeek+1%>');">
-				            	<img alt="다음주로 이동" src="${pageContext.request.contextPath}/resources/images/home/btn/btn_next.gif" align="middle" style="margin-left:4px;border:0px;">
+				            	<img alt="다음주로 이동" src="${pageContext.request.contextPath}/images/home/btn/btn_next.gif" align="middle" style="margin-left:4px;border:0px;">
 				            </a> 
 				            <%}%>
                         </div>          

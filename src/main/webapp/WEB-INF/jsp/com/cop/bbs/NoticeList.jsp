@@ -26,7 +26,7 @@
 <div class="content_title">
 	<h2><c:out value="${boardVO.boardMasterVO.bbsNm}"/></h2>
 	<a href="#" onclick="javascript:fn_aram_help(); return false;">
-		<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/icon_help.gif" width="16" height="16" hspace="3" style="vertical-align:middle;" alt="도움말아이콘이미지">
+		<img src="${pageContext.request.contextPath}/images/com/cmm/icon/icon_help.gif" width="16" height="16" hspace="3" style="vertical-align:middle;" alt="도움말아이콘이미지">
 	</a>
 </div>
 
@@ -119,7 +119,7 @@
 		    		<c:forEach begin="0" end="${result.threadDepth}" step="1">
 		   			&nbsp;
 		    		</c:forEach>
-		    		<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/reply_arrow.gif" alt="reply arrow">
+		    		<img src="${pageContext.request.contextPath}/images/com/cmm/icon/reply_arrow.gif" alt="reply arrow">
 		    	</c:if>
 		    	<c:choose>
 		    	<c:when test="${(editAuthFlag != 'Y' && result.isExpired=='Y') || result.useAt == 'N'}">

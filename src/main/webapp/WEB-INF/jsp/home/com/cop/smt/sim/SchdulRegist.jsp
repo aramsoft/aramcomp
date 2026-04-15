@@ -46,7 +46,7 @@
                         <tr>
                             <th width="20%"  class="required_text">
                             	일정구분	
-						        <img src="${pageContext.request.contextPath}/resources/images/home/required.gif" width="15" height="15" alt="required" />
+						        <img src="${pageContext.request.contextPath}/images/home/required.gif" width="15" height="15" alt="required" />
                             </th>
                             <td width="80%">
                                 <form:select path="schdulSe">
@@ -59,7 +59,7 @@
                         <tr>
                             <th width="20%"  class="required_text">
                             	중요도
-						        <img src="${pageContext.request.contextPath}/resources/images/home/required.gif" width="15" height="15" alt="required" />
+						        <img src="${pageContext.request.contextPath}/images/home/required.gif" width="15" height="15" alt="required" />
                             </th>
                             <td width="80%">
                                 <form:select path="schdulIpcrCode">
@@ -72,7 +72,7 @@
                         <tr>
                             <th width="20%"  class="required_text">
                             	일정명
-						        <img src="${pageContext.request.contextPath}/resources/images/home/required.gif" width="15" height="15" alt="required" />
+						        <img src="${pageContext.request.contextPath}/images/home/required.gif" width="15" height="15" alt="required" />
                             </th>
                             <td width="80%">
                                 <form:input path="schdulNm" size="73" cssClass="txInput"  />
@@ -82,7 +82,7 @@
                         <tr>
                             <th  class="required_text">
                             	일정 내용
-						        <img src="${pageContext.request.contextPath}/resources/images/home/required.gif" width="15" height="15" alt="required" />
+						        <img src="${pageContext.request.contextPath}/images/home/required.gif" width="15" height="15" alt="required" />
                             </th>
                             <td>
                                 <form:textarea path="schdulCn" rows="3" cols="80" />
@@ -92,7 +92,7 @@
                         <tr> 
                           	<th width="20%"  class="required_text">
                           		반복구분
-						        <img src="${pageContext.request.contextPath}/resources/images/home/required.gif" width="15" height="15" alt="required" />
+						        <img src="${pageContext.request.contextPath}/images/home/required.gif" width="15" height="15" alt="required" />
                           	</th>
                           	<td width="80%">
                               	<form:radiobutton path="reptitSeCode" value="1" />당일
@@ -105,19 +105,19 @@
                         <tr> 
                             <th width="20%"  class="required_text">
                             	날짜/시간
-						        <img src="${pageContext.request.contextPath}/resources/images/home/required.gif" width="15" height="15" alt="required" />
+						        <img src="${pageContext.request.contextPath}/images/home/required.gif" width="15" height="15" alt="required" />
                             </th>
                             <td width="80%">
                 				<input type="hidden" name="schdulBgnde" id="schdulBgnde" value="" />  
                                 <form:input path="schdulBgndeYYYMMDD" size="10" readonly="true" maxlength="10" />
                                 <a href="#" onClick="javascript:fn_aram_NormalCalendar('', document.forms[0].schdulBgndeYYYMMDD); return false;">
-                                	<img src="${pageContext.request.contextPath}/resources/images/home/calendar.gif"  align="middle" style="border:0px" alt="일정시작달력" title="일정시작달력">
+                                	<img src="${pageContext.request.contextPath}/images/home/calendar.gif"  align="middle" style="border:0px" alt="일정시작달력" title="일정시작달력">
                                 </a>
                                 &nbsp;&nbsp;~&nbsp;&nbsp;
                 				<input type="hidden" name="schdulEndde" id="schdulEndde" value="" /> 
                                 <form:input path="schdulEnddeYYYMMDD" size="10" readonly="true" maxlength="10" />
                                 <a href="#" onClick="javascript:fn_aram_NormalCalendar('', document.forms[0].schdulEnddeYYYMMDD); return false;">
-                                	<img src="${pageContext.request.contextPath}/resources/images/home/calendar.gif" align="middle" style="border:0px" alt="일정종료달력" title="일정종료달력">
+                                	<img src="${pageContext.request.contextPath}/images/home/calendar.gif" align="middle" style="border:0px" alt="일정종료달력" title="일정종료달력">
                                 </a>&nbsp;&nbsp;
                                     
                                 <form:select path="schdulBgndeHH">
@@ -173,9 +173,9 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/validator.do"></script>
 <validator:javascript formName="schdulManageVO" staticJavascript="false" xhtml="true" cdata="false"/>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/sym/cal/CalPopup.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/cmm/fms/MultiFile.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/cmm/utl/CmmUtl.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/sym/cal/CalPopup.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/cmm/fms/MultiFile.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/cmm/utl/CmmUtl.js"></script>
 <script type="text/javascript">
 
 /* ********************************************************

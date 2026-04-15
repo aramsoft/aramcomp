@@ -25,9 +25,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>표준프레임워크 경량환경 홈페이지 템플릿</title>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home/common.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/home/common.css" type="text/css">
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/cmm/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/cmm/jquery-1.7.1.min.js"></script>
 </head>
 
 <body> 
@@ -45,7 +45,7 @@
 	<!-- container 시작 -->
 	<div id="main_container">
 		<div class="lefttitle_image">
-		    <img src="${pageContext.request.contextPath}/resources/images/home/index/main_titleimage.gif" width="200px"
+		    <img src="${pageContext.request.contextPath}/images/home/index/main_titleimage.gif" width="200px"
 		         alt="경량환경 내부업무 홈페이지/전자정부 표준프레임워크의 경량환경 내부 업무에 대한 최신정보와 기술을 제공하고 있습니다.">
 			<br><br><br><br><br>
 		</div>
@@ -56,10 +56,10 @@
 				<!-- 공지사항 시작 -->
 				<div class="notice_area">
 					<h3 class="notice_title">
-						<img src="${pageContext.request.contextPath}/resources/images/home/index/img_subtitle01.gif" alt="공지사항">
+						<img src="${pageContext.request.contextPath}/images/home/index/img_subtitle01.gif" alt="공지사항">
 					</h3>
 					<a href="#" onclick="javascript:fn_main_headPageAction('43','/home/board/7/list'); return false;" class="more">
-						<img src="${pageContext.request.contextPath}/resources/images/home/index/btn_more.gif" alt="more">
+						<img src="${pageContext.request.contextPath}/images/home/index/btn_more.gif" alt="more">
 					</a>
 					<ul>
 					<c:forEach var="result" items="${notiList}" varStatus="status">
@@ -70,7 +70,7 @@
                                 <c:forEach begin="0" end="${result.replyLc}" step="1">
                                     &nbsp;
                                 </c:forEach>
-                                <img src="${pageContext.request.contextPath}/resources/images/home/reply_arrow.gif" alt="reply arrow">
+                                <img src="${pageContext.request.contextPath}/images/home/reply_arrow.gif" alt="reply arrow">
                             </c:if>
                             <c:choose>
                                 <c:when test="${result.isExpired=='Y' || result.useAt == 'N'}">
@@ -91,10 +91,10 @@
 				<!--  QA시작 -->
 				<div class="notice_area">
 					<h3 class="notice_title">
-						<img src="${pageContext.request.contextPath}/resources/images/home/index/img_subtitle02.gif" alt="묻고 답하기">
+						<img src="${pageContext.request.contextPath}/images/home/index/img_subtitle02.gif" alt="묻고 답하기">
 					</h3> 
 					<a href="#" onclick="javascript:fn_main_headPageAction('44','/home/board/8/list'); return false;" class="more">
-						<img src="${pageContext.request.contextPath}/resources/images/home/index/btn_more.gif" alt="more">
+						<img src="${pageContext.request.contextPath}/images/home/index/btn_more.gif" alt="more">
 					</a>
 					<ul>
 					<c:forEach var="result" items="${galList}" varStatus="status">
@@ -105,7 +105,7 @@
                                 <c:forEach begin="0" end="${result.replyLc}" step="1">
                                     &nbsp;
                                 </c:forEach>
-                                <img src="${pageContext.request.contextPath}/resources/images/home/reply_arrow.gif" alt="reply arrow">
+                                <img src="${pageContext.request.contextPath}/images/home/reply_arrow.gif" alt="reply arrow">
                             </c:if>
                             <c:choose>
                                 <c:when test="${result.isExpired=='Y' || result.useAt == 'N'}">
@@ -129,12 +129,12 @@
 					<ul>
 						<li>
 							<a href="#" onclick="javascript:fn_main_headPageMove('21','/home/page/EgovProductInfo.do'); return false;">
-								<img src="${pageContext.request.contextPath}/resources/images/home/index/img_product.gif" alt="주요사업 소개" title="샘플화면으로 이동합니다.(주요사업 소개)">
+								<img src="${pageContext.request.contextPath}/images/home/index/img_product.gif" alt="주요사업 소개" title="샘플화면으로 이동합니다.(주요사업 소개)">
 							</a>
 						</li>
 						<li>
 							<a href="#" onclick="javascript:fn_main_headPageMove('22','/home/page/EgovServiceInfo.do'); return false;">
-								<img src="${pageContext.request.contextPath}/resources/images/home/index/img_service.gif" alt="대표서비스 소개" title="샘플화면으로 이동합니다.(대표서비스 소개)">
+								<img src="${pageContext.request.contextPath}/images/home/index/img_service.gif" alt="대표서비스 소개" title="샘플화면으로 이동합니다.(대표서비스 소개)">
 							</a>
 						</li>
 					</ul>
@@ -143,12 +143,12 @@
 					<ul>
 						<li class="li_btm">
 							<a href="#" onclick="javascript:fn_main_headPageMove('31','/home/page/EgovDownload.do'); return false;">
-								<img src="${pageContext.request.contextPath}/resources/images/home/index/img_download.gif" alt="자료실:다양한자료를 다운로드 받으실 수 있습니다." title="샘플화면으로 이동합니다.(자료실)">
+								<img src="${pageContext.request.contextPath}/images/home/index/img_download.gif" alt="자료실:다양한자료를 다운로드 받으실 수 있습니다." title="샘플화면으로 이동합니다.(자료실)">
 							</a>
 						</li>
 						<li>
 							<a href="#" onclick="javascript:fn_main_headPageMove('14','/home/page/EgovLocation.do'); return false;">
-								<img src="${pageContext.request.contextPath}/resources/images/home/index/img_location.gif" alt="표준프레임워크센터:찾아오시는 길" title="샘플화면으로 이동합니다.(찾아오시는길)">
+								<img src="${pageContext.request.contextPath}/images/home/index/img_location.gif" alt="표준프레임워크센터:찾아오시는 길" title="샘플화면으로 이동합니다.(찾아오시는길)">
 							</a>
 						</li>
 					</ul>
@@ -161,18 +161,18 @@
 			<ul>
 				<li class="img_div">
 					<a href="#" onclick="javascript:fn_main_headPageMove('33','/home/page/EgovService.do'); return false;">
-				    	<img src="${pageContext.request.contextPath}/resources/images/home/index/img_service_btm.gif" alt="서비스 신청" title="샘플화면으로 이동합니다.(서비스 신청)">
+				    	<img src="${pageContext.request.contextPath}/images/home/index/img_service_btm.gif" alt="서비스 신청" title="샘플화면으로 이동합니다.(서비스 신청)">
 				    </a>
 				</li>
 				<li class="text_div">
 					표준프레임워크 경량환경 홈페이지의 다양한 서비스를 신청 하실 수 있습니다.
 				</li>  
 				<li>
-					<img src="${pageContext.request.contextPath}/resources/images/home/index/img_vline.gif" alt="">
+					<img src="${pageContext.request.contextPath}/images/home/index/img_vline.gif" alt="">
 				</li> 
 				<li class="img_div">
 			    	<a href="#" onclick="javascript:fn_main_headPageAction('40','/home/cop/smt/sim/listSchdulMonth.do'); return false;">
-			    		<img src="${pageContext.request.contextPath}/resources/images/home/index/img_schedule.gif" alt="일정 현황">
+			    		<img src="${pageContext.request.contextPath}/images/home/index/img_schedule.gif" alt="일정 현황">
 			    	</a>
 				</li>
 				<li class="text_div">

@@ -29,7 +29,7 @@
 			<!-- //현재위치 네비게이션 끝 -->
 			<!-- 타이틀 이미지 -->			
 			<div id="content_img_div">
-				<img src="${pageContext.request.contextPath}/resources/images/home/subtitle/img_subtitle03-01.gif" width="776" height="230" alt="">
+				<img src="${pageContext.request.contextPath}/images/home/subtitle/img_subtitle03-01.gif" width="776" height="230" alt="">
 			</div>
 
  			<div class="content_header">
@@ -56,7 +56,7 @@
                          <ul id="search_second_ul">
                             <li>
 				  				<div class="buttons">
-									<a href="#"><img src="${pageContext.request.contextPath}/resources/images/home/img_search.gif" alt="search">검색 </a>
+									<a href="#"><img src="${pageContext.request.contextPath}/images/home/img_search.gif" alt="search">검색 </a>
 								</div>
                              </li>
                          </ul>           
@@ -72,7 +72,7 @@
 				<div class="download_loc">
 					<div class="download_content_wrap">
 						<div class="download_img_loc">
-							<img src="${pageContext.request.contextPath}/resources/images/home/img_content/img_download.gif" alt="">
+							<img src="${pageContext.request.contextPath}/images/home/img_content/img_download.gif" alt="">
 						</div>
 						<div class="download_text_loc">
 							<ul>
@@ -83,7 +83,7 @@
 					</div>
 					<div class="download_content_wrap">
 						<div class="download_img_loc">
-							<img src="${pageContext.request.contextPath}/resources/images/home/img_content/img_download.gif" alt="">
+							<img src="${pageContext.request.contextPath}/images/home/img_content/img_download.gif" alt="">
 						</div>
 						<div class="download_text_loc">
 							<ul>
@@ -94,7 +94,7 @@
 					</div>
 					<div class="download_content_wrap" style="clear:both;">
 						<div class="download_img_loc">
-							<img src="${pageContext.request.contextPath}/resources/images/home/img_content/img_download.gif" alt="">
+							<img src="${pageContext.request.contextPath}/images/home/img_content/img_download.gif" alt="">
 						</div>
 						<div class="download_text_loc">
 							<ul>
@@ -105,7 +105,7 @@
 					</div>
 					<div class="download_content_wrap">
 						<div class="download_img_loc">
-							<img src="${pageContext.request.contextPath}/resources/images/home/img_content/img_download.gif" alt="">
+							<img src="${pageContext.request.contextPath}/images/home/img_content/img_download.gif" alt="">
 						</div>
 						<div class="download_text_loc">
 							<ul>
@@ -124,35 +124,35 @@
 				<div class="top10_loc">
 					<ol>
 				 		<li>
-				 			<img src="${pageContext.request.contextPath}/resources/images/home/num/ico_number01.gif" alt="">
+				 			<img src="${pageContext.request.contextPath}/images/home/num/ico_number01.gif" alt="">
 				 			<a class="top10_name" href="${pageContext.request.contextPath}/home/EgovDownloadDetail.do">2011년도 표준프레임워크 기술지원 안내</a>
 				 			<span class="top10_date">2011-06-03</span>
 				 		</li>
 				 	</ol>
 				 	<ol>
 				 		<li>
-				 			<img src="${pageContext.request.contextPath}/resources/images/home/num/ico_number01.gif" alt="">
+				 			<img src="${pageContext.request.contextPath}/images/home/num/ico_number01.gif" alt="">
 				 			<a class="top10_name" href="${pageContext.request.contextPath}/home/EgovDownloadDetail.do">2011년도 표준프레임워크 기술지원 안내</a>
 				 			<span class="top10_date">2011-06-03</span>
 				 		</li>
 				 	</ol>	
 				 	<ol>
 				 		<li>
-				 			<img src="${pageContext.request.contextPath}/resources/images/home/num/ico_number01.gif" alt="">
+				 			<img src="${pageContext.request.contextPath}/images/home/num/ico_number01.gif" alt="">
 				 			<a class="top10_name" href="${pageContext.request.contextPath}/home/EgovDownloadDetail.do">2011년도 표준프레임워크 기술지원 안내</a>
 				 			<span class="top10_date">2011-06-03</span>
 				 		</li>
 				 	</ol>
 				 	<ol>
 				 		<li>
-				 			<img src="${pageContext.request.contextPath}/resources/images/home/num/ico_number01.gif" alt="">
+				 			<img src="${pageContext.request.contextPath}/images/home/num/ico_number01.gif" alt="">
 				 			<a class="top10_name" href="${pageContext.request.contextPath}/home/EgovDownloadDetail.do">2011년도 표준프레임워크 기술지원 안내</a>
 				 			<span class="top10_date">2011-06-03</span>
 				 		</li>
 				 	</ol>	
 				 	<ol>
 				 		<li>
-				 			<img src="${pageContext.request.contextPath}/resources/images/home/num/ico_number01.gif" alt="">
+				 			<img src="${pageContext.request.contextPath}/images/home/num/ico_number01.gif" alt="">
 				 			<a class="top10_name" href="${pageContext.request.contextPath}/home/EgovDownloadDetail.do">2011년도 표준프레임워크 기술지원 안내</a>
 				 			<span class="top10_date">2011-06-03</span>
 				 		</li>
@@ -161,35 +161,35 @@
 				<div class="top10_loc">						
 				 	<ol>
 				 		<li>
-				 			<img src="${pageContext.request.contextPath}/resources/images/home/num/ico_number01.gif" alt="">
+				 			<img src="${pageContext.request.contextPath}/images/home/num/ico_number01.gif" alt="">
 				 			<a class="top10_name" href="${pageContext.request.contextPath}/home/EgovDownloadDetail.do">2011년도 표준프레임워크 기술지원 안내</a>
 				 			<span class="top10_date">2011-06-03</span>
 				 		</li>
 				 	</ol>	
 				 	<ol>
 				 		<li>
-				 			<img src="${pageContext.request.contextPath}/resources/images/home/num/ico_number01.gif" alt="">
+				 			<img src="${pageContext.request.contextPath}/images/home/num/ico_number01.gif" alt="">
 				 			<a class="top10_name" href="${pageContext.request.contextPath}/home/EgovDownloadDetail.do">2011년도 표준프레임워크 기술지원 안내</a>
 				 			<span class="top10_date">2011-06-03</span>
 				 		</li>
 				 	</ol>
 				 	<ol>
 				 		<li>
-				 			<img src="${pageContext.request.contextPath}/resources/images/home/num/ico_number01.gif" alt="">
+				 			<img src="${pageContext.request.contextPath}/images/home/num/ico_number01.gif" alt="">
 				 			<a class="top10_name" href="${pageContext.request.contextPath}/home/EgovDownloadDetail.do">2011년도 표준프레임워크 기술지원 안내</a>
 				 			<span class="top10_date">2011-06-03</span>
 				 		</li>
 				 	</ol>	
 				 	<ol>
 				 		<li>
-				 			<img src="${pageContext.request.contextPath}/resources/images/home/num/ico_number01.gif" alt="">
+				 			<img src="${pageContext.request.contextPath}/images/home/num/ico_number01.gif" alt="">
 				 			<a class="top10_name" href="${pageContext.request.contextPath}/home/EgovDownloadDetail.do">2011년도 표준프레임워크 기술지원 안내</a>
 				 			<span class="top10_date">2011-06-03</span>
 				 		</li>
 				 	</ol>	
 				 	<ol>
 				 		<li>
-				 			<img src="${pageContext.request.contextPath}/resources/images/home/num/ico_number01.gif" alt="">
+				 			<img src="${pageContext.request.contextPath}/images/home/num/ico_number01.gif" alt="">
 				 			<a class="top10_name" href="${pageContext.request.contextPath}/home/EgovDownloadDetail.do">2011년도 표준프레임워크 기술지원 안내</a>
 				 			<span class="top10_date">2011-06-03</span>
 				 		</li>
@@ -264,13 +264,13 @@
 			<!-- 페이지 네비게이션 시작 -->
 			<div id="paging_div">
 				<ul class="paging_align">
-					<li class="first"><img src="${pageContext.request.contextPath}/resources/images/home/btn/btn_prev.gif" alt="prev"></li>
+					<li class="first"><img src="${pageContext.request.contextPath}/images/home/btn/btn_prev.gif" alt="prev"></li>
 					<li><a href="#">1</a></li>
 					<li>2</li>
 					<li>3</li>
 					<li>4</li>
 					<li>5</li>
-					<li class="first"><img src="${pageContext.request.contextPath}/resources/images/home/btn/btn_next.gif" alt="next"></li>
+					<li class="first"><img src="${pageContext.request.contextPath}/images/home/btn/btn_next.gif" alt="next"></li>
 				</ul>
 			</div>	
 			<!-- //페이지 네비게이션 끝 -->

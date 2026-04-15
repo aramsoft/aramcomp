@@ -11,10 +11,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 						http://www.springframework.org/schema/beans/spring-beans.xsd">
  
-    <!-- MULTIPART RESOLVERS -->
-    <!-- regular spring resolver -->    
-    <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
-
 	<!-- For Pagination Tag -->
 	<bean id="paginationManager" class="org.egovframe.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationManager">
 		<property name="rendererType">

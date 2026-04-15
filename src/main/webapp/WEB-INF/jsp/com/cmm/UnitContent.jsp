@@ -26,7 +26,7 @@
 <table>
     <tr>
       <td class="title_left">
-      	<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/tit_icon.gif" width="16" height="16" hspace="3" align="middle" alt="gpki_icon">
+      	<img src="${pageContext.request.contextPath}/images/com/cmm/icon/tit_icon.gif" width="16" height="16" hspace="3" align="middle" alt="gpki_icon">
       	사용자  메인화면
       </td>
     </tr>
@@ -47,7 +47,7 @@
 <table>
     <tr>
       <td class="title_left">
-      	<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/tit_icon.gif" width="16" height="16" hspace="3" align="middle" alt="gpki_icon">
+      	<img src="${pageContext.request.contextPath}/images/com/cmm/icon/tit_icon.gif" width="16" height="16" hspace="3" align="middle" alt="gpki_icon">
       	게시판 목록
       </td>
     </tr>
@@ -102,7 +102,7 @@
 <table>
     <tr>
       <td class="title_left">
-      	<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/tit_icon.gif" width="16" height="16" hspace="3" align="middle" alt="gpki_icon">
+      	<img src="${pageContext.request.contextPath}/images/com/cmm/icon/tit_icon.gif" width="16" height="16" hspace="3" align="middle" alt="gpki_icon">
       	커뮤니티 목록
       </td>
     </tr>
@@ -120,7 +120,7 @@
 <table>
     <tr>
       <td class="title_left">
-      	<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/tit_icon.gif" width="16" height="16" hspace="3" align="middle" alt="gpki_icon">
+      	<img src="${pageContext.request.contextPath}/images/com/cmm/icon/tit_icon.gif" width="16" height="16" hspace="3" align="middle" alt="gpki_icon">
       	홈페이지 목록
       </td>
     </tr>

@@ -29,7 +29,7 @@
 			<!-- //현재위치 네비게이션 끝 -->
 			<!-- 타이틀 이미지 -->			
 			<div id="content_img_div">
-				<img src="${pageContext.request.contextPath}/resources/images/home/subtitle/img_subtitle03-01.gif" width="776" height="230" alt="">
+				<img src="${pageContext.request.contextPath}/images/home/subtitle/img_subtitle03-01.gif" width="776" height="230" alt="">
 			</div>
 
  			<div class="content_header">
@@ -44,10 +44,10 @@
 				</div>
 				<div class="sum_img_div_wrap">
 					<div class="sum_img_div_loc"> 
-						<img src="${pageContext.request.contextPath}/resources/images/home/img_content/img_download.gif">						
+						<img src="${pageContext.request.contextPath}/images/home/img_content/img_download.gif">						
 					</div> 
 					<div class="download_btn_area">
-						<a href="#"><img src="${pageContext.request.contextPath}/resources/images/home/btn/btn_download.gif"  alt="download"></a>
+						<a href="#"><img src="${pageContext.request.contextPath}/images/home/btn/btn_download.gif"  alt="download"></a>
 					</div>
 				</div>				
 				<div id="download_detailtable" style="display:inline;">

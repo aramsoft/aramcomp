@@ -94,32 +94,32 @@
 						</form:select>
 						&nbsp;&nbsp;&nbsp;&nbsp;					
 						<a href="javascript:fn_aram_move_year('<%=iNowYear-1%>');">
-			            	<img alt="이전년도로 이동" src="${pageContext.request.contextPath}/resources/images/home/btn/btn_prev.gif" align="middle" style="margin-right:4px;border:0px;">
+			            	<img alt="이전년도로 이동" src="${pageContext.request.contextPath}/images/home/btn/btn_prev.gif" align="middle" style="margin-right:4px;border:0px;">
 			            </a>
 			            <%=iNowYear%>년
 						<a href="javascript:fn_aram_move_year('<%=iNowYear+1%>');">
-			            	<img alt="다음년도로 이동" src="${pageContext.request.contextPath}/resources/images/home/btn/btn_next.gif" align="middle" style="margin-left:4px;border:0px;">
+			            	<img alt="다음년도로 이동" src="${pageContext.request.contextPath}/images/home/btn/btn_next.gif" align="middle" style="margin-left:4px;border:0px;">
 			            </a>&nbsp;&nbsp;&nbsp;
 			            <%if(iNowMonth> 0 ){ %>
 						<a href="javascript:fn_aram_move_Momnth('<%=iNowMonth-1%>');">
-			            	<img alt="이전월로 이동" src="${pageContext.request.contextPath}/resources/images/home/btn/btn_prev.gif" align="middle" style="margin-right:4px;border:0px;">
+			            	<img alt="이전월로 이동" src="${pageContext.request.contextPath}/images/home/btn/btn_prev.gif" align="middle" style="margin-right:4px;border:0px;">
 			            </a>
 			            <%}%>
 			            <%=iNowMonth+1%>월
 			            <%if(iNowMonth < 11 ){ %>
 						<a href="javascript:fn_aram_move_month('<%=iNowMonth+1%>');">
-			            	<img alt="다음월로 이동" src="${pageContext.request.contextPath}/resources/images/home/btn/btn_next.gif" align="middle" style="margin-left:4px;border:0px;">
+			            	<img alt="다음월로 이동" src="${pageContext.request.contextPath}/images/home/btn/btn_next.gif" align="middle" style="margin-left:4px;border:0px;">
 			            </a> 
 			            <%}%>&nbsp;&nbsp;&nbsp;
 			            <%if(iNowDay> 0 ){ %>
 						<a href="javascript:fn_aram_move_day('<%=iNowDay-1%>');">
-			            	<img alt="이전날짜로 이동" src="${pageContext.request.contextPath}/resources/images/home/btn/btn_prev.gif" align="middle" style="margin-right:4px;border:0px;">
+			            	<img alt="이전날짜로 이동" src="${pageContext.request.contextPath}/images/home/btn/btn_prev.gif" align="middle" style="margin-right:4px;border:0px;">
 			            </a>
 			            <%}%>
 			            <%=iNowDay%>일
 			            <%if(iNowDay < iEndDay-1 ){ %>
 						<a href="javascript:fn_aram_move_day('<%=iNowDay+1%>');">
-			            	<img alt="다음날짜로 이동" src="${pageContext.request.contextPath}/resources/images/home/btn/btn_next.gif" align="middle" style="margin-left:4px;border:0px;">
+			            	<img alt="다음날짜로 이동" src="${pageContext.request.contextPath}/images/home/btn/btn_next.gif" align="middle" style="margin-left:4px;border:0px;">
 			            </a> 
 			            <%}%>
 	                </div>          

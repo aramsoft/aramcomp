@@ -56,7 +56,7 @@
 				</td>
 				<td>
 					<a href="#" onClick="fn_aram_get_Schdule(); return false;">
-						<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/search.gif"  align="middle" style="border:0px" alt="일정정보" title="일정정보">
+						<img src="${pageContext.request.contextPath}/images/com/cmm/icon/search.gif"  align="middle" style="border:0px" alt="일정정보" title="일정정보">
 					</a>
 				</td>
 			</tr>
@@ -140,7 +140,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/validator.do"></script>
 <validator:javascript formName="diaryManageVO" staticJavascript="false" xhtml="true" cdata="false"/>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/cmm/fms/MultiFile.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/cmm/fms/MultiFile.js"></script>
 
 <!-- 첨부파일 업로드 가능화일 설정 Start..-->
 <script type="text/javascript">

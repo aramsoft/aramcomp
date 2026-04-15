@@ -25,7 +25,7 @@
 <div class="content_title">
 	<h2>권한 목록</h2>
 	<a href="#" onclick="javascript:fn_aram_help(); return false;">
-		<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/icon_help.gif" width="16" height="16" style="vertical-align:middle;" alt="">
+		<img src="${pageContext.request.contextPath}/images/com/cmm/icon/icon_help.gif" width="16" height="16" style="vertical-align:middle;" alt="">
 	</a>
 </div>
 
@@ -112,7 +112,7 @@
     	<td class="lt_text3">
 			<span class="link">
     		<a href="#" onclick="javascript:fn_aram_get_authorResource('<c:out value="${result.authorCode}"/>'); return false;">
-    			<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/search.gif" width="15" height="15" align="middle" alt="롤 정보">
+    			<img src="${pageContext.request.contextPath}/images/com/cmm/icon/search.gif" width="15" height="15" align="middle" alt="롤 정보">
     		</a>
 			</span>
     	</td>

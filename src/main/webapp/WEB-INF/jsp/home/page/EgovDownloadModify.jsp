@@ -29,7 +29,7 @@
 			<!-- //현재위치 네비게이션 끝 -->
 			<!-- 타이틀 이미지 -->			
 			<div id="content_img_div">
-				<img src="${pageContext.request.contextPath}/resources/images/home/subtitle/img_subtitle03-01.gif" width="776" height="230" alt="">
+				<img src="${pageContext.request.contextPath}/images/home/subtitle/img_subtitle03-01.gif" width="776" height="230" alt="">
 			</div>
 
 			<div class="content_header">
@@ -46,7 +46,7 @@
 				</div>
 				<div class="download_reg_loc">
 					<div class="download_reg_img"> 
-						<img src="${pageContext.request.contextPath}/resources/images/home/img_content/img_download.gif" alt="">							
+						<img src="${pageContext.request.contextPath}/images/home/img_content/img_download.gif" alt="">							
 					</div> 					
 					<div class="download_reg_imgtext"><p>썸네일 이미지는 width:160px, height:109px 크기의 이미지를 올려주세요</p></div>
 				</div>

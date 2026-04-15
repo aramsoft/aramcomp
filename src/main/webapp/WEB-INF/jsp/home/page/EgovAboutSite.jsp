@@ -28,7 +28,7 @@
 			</div>
 			<!-- //현재위치 네비게이션 끝 -->				
 			<div id="content_img_div">
-				<img src="${pageContext.request.contextPath}/resources/images/home/subtitle/img_subtitle01.gif" width="776" height="230" alt="사이트소개:표준프레임워크 경량환경의 개요와 연혁,조직소개,약도등의 정보를 제공합니다.">
+				<img src="${pageContext.request.contextPath}/images/home/subtitle/img_subtitle01.gif" width="776" height="230" alt="사이트소개:표준프레임워크 경량환경의 개요와 연혁,조직소개,약도등의 정보를 제공합니다.">
 			</div>
 			
 			<!-- main content 시작 -->
@@ -43,7 +43,7 @@
 					<p>전자정부 표준 프레임워크는 응용SW의 구성기반이 되며 응용SW실행 시 필요한 기본 기능을 제공하는 환경이다. 전자정부 표준 프레임워크는 ‘전자정부 서비스의 품질향상 및 정보화 투자 효율성 향상’을 위해 개발 프레임워크 표준을 정립하고, 개발 프레임워크 표준 적용을 통한 응용 SW의 표준화 및 품질과 재사용성 향상을 목표로 한다.</p>
 				</fieldset>	
 
-				<p><img src="${pageContext.request.contextPath}/resources/images/home/img_content/temp01.gif" alt="그림 테스트"></p> 
+				<p><img src="${pageContext.request.contextPath}/images/home/img_content/temp01.gif" alt="그림 테스트"></p> 
 
 				<h3>배경</h3>
 				<fieldset>

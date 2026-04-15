@@ -62,7 +62,7 @@ caption { visibility:hidden; font-size:0; height:0; line-height:0; }
 .content_title { 
 	color:#000000;  
 	vertical-align:middle; text-align:left; height:16px; padding-left:20px;  
-	background:url('/resources/images/com/cmm/icon/tit_icon.gif') no-repeat left center transparent; 
+	background:url('/images/com/cmm/icon/tit_icon.gif') no-repeat left center transparent; 
 }
 .content_title h2 {
 	vertical-align:middle; text-align:left; display:inline; 
@@ -71,15 +71,15 @@ caption { visibility:hidden; font-size:0; height:0; line-height:0; }
 
 .help_icon{ 
 	width:16px; height:16px; vertical-align:middle; display:inline; 
-	background:url('/resources/images/com/cmm/icon/icon_help.gif') no-repeat transparent; 
+	background:url('/images/com/cmm/icon/icon_help.gif') no-repeat transparent; 
 }	
 .required_icon{ 
 	float:right; width:15px; height:15px; vertical-align:middle; display:inline; 
-	background:url('/resources/images/com/cmm/icon/required.gif') no-repeat transparent; 
+	background:url('/images/com/cmm/icon/required.gif') no-repeat transparent; 
 }
 .norequired_icon{ 
 	float:right; width:15px; height:15px; vertical-align:middle; display:inline; 
-	background:url('/resources/images/com/cmm/icon/no_required.gif') no-repeat transparent; 
+	background:url('/images/com/cmm/icon/no_required.gif') no-repeat transparent; 
 }	
 .required:after {
 	content:"\a0*\a0"; color:red;

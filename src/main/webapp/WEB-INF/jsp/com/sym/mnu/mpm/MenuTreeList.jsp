@@ -28,8 +28,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>메뉴 트리 목록</title>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/com/cmm/com.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/com/cmm/button.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/com.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/button.css" type="text/css">
 
 </head>
 
@@ -41,7 +41,7 @@
 <div class="content_title">
 	<h2>메뉴 트리 목록</h2>
 	<a href="#" onclick="javascript:fn_aram_help(); return false;">
-		<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/icon_help.gif" width="16" height="16" style="vertical-align:middle;" alt="">
+		<img src="${pageContext.request.contextPath}/images/com/cmm/icon/icon_help.gif" width="16" height="16" style="vertical-align:middle;" alt="">
 	</a>
 </div>
 
@@ -68,9 +68,9 @@
 <div class="tree" style="position:absolute; left:50px; top:100px; width:240px; height:500px; z-index:10;">
 
 <script type="text/javascript">
-var imgpath = "${pageContext.request.contextPath}/resources/images/com/cmm/utl/";
+var imgpath = "${pageContext.request.contextPath}/images/com/cmm/utl/";
 </script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/sym/mnu/mpm/MenuList.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/sym/mnu/mpm/MenuList.js"></script>
 
 <script type="text/javaScript">
   	var varForm = document.getElementById("menuManageVO");
@@ -142,7 +142,7 @@ var imgpath = "${pageContext.request.contextPath}/resources/images/com/cmm/utl/"
     	</th>
     	<td width="70%">&nbsp;
     		<input name="upperMenuId" type="text" size="10" value=""  maxlength="10" title="상위메뉴No">
-       		<a href="#" title="새창으로" onClick="mvmnMenuList();return false;"  style="selector-dummy:expression(this.hideFocus=false);"><img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/search.gif"
+       		<a href="#" title="새창으로" onClick="mvmnMenuList();return false;"  style="selector-dummy:expression(this.hideFocus=false);"><img src="${pageContext.request.contextPath}/images/com/cmm/icon/search.gif"
         			alt='' width="15" height="15" />(메뉴선택 검색)</a>
     	</td>
   	</tr>
@@ -154,7 +154,7 @@ var imgpath = "${pageContext.request.contextPath}/resources/images/com/cmm/utl/"
     	<td width="70%">
        		&nbsp;
        		<input name="progrmFileNm" type="text" size="30" value=""  maxlength="60" title="파일명">
-       		<a href="#" title="새창으로" onClick="searchFileNm();return false;"  style="selector-dummy:expression(this.hideFocus=false);"><img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/search.gif"
+       		<a href="#" title="새창으로" onClick="searchFileNm();return false;"  style="selector-dummy:expression(this.hideFocus=false);"><img src="${pageContext.request.contextPath}/images/com/cmm/icon/search.gif"
         			alt='' width="15" height="15" />(프로그램파일명 검색)</a>
     	</td>
   	</tr>

@@ -22,9 +22,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title><tiles:insertAttribute name="title"/></title>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home/common.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/home/common.css" type="text/css">
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/cmm/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/cmm/jquery-1.7.1.min.js"></script>
 
 </head>
 <body>

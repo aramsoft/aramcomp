@@ -101,7 +101,7 @@
         	&nbsp;
     		<form:input path="progrmFileNm" size="60" maxlength="60" onkeypress="press();" title="파일명"/>
         	<a href="#" target="_blank" title="새창으로 이동" onclick="searchFileNm(); return false;"  style="selector-dummy:expression(this.hideFocus=false);">
-        		<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/search.gif" alt='' width="15" height="15" />(프로그램파일명 검색)
+        		<img src="${pageContext.request.contextPath}/images/com/cmm/icon/search.gif" alt='' width="15" height="15" />(프로그램파일명 검색)
         	</a>
  	    	<form:errors path="progrmFileNm" cssClass="error"/>
     	</td>

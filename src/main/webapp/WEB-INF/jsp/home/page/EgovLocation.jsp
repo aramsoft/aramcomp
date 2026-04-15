@@ -27,7 +27,7 @@
 				</ul>
 			</div>				
 			<div id="content_img_div">
-				<img src="${pageContext.request.contextPath}/resources/images/home/subtitle/img_subtitle01.gif" width="776" height="230" alt="">
+				<img src="${pageContext.request.contextPath}/images/home/subtitle/img_subtitle01.gif" width="776" height="230" alt="">
 			</div>  
 			
 			<!-- main content 시작 -->
@@ -36,7 +36,7 @@
 			</div>
 			<div class="content_field">
 				<h3>무교청사 찾아 오시는 길 </h3>
-				<p><img src="${pageContext.request.contextPath}/resources/images/home/img_content/img_egovframelocation.gif" width="656" height="402" alt="무교청사 약도"></p>
+				<p><img src="${pageContext.request.contextPath}/images/home/img_content/img_egovframelocation.gif" width="656" height="402" alt="무교청사 약도"></p>
 
 				<h3>상세안내 </h3>
 				<fieldset>

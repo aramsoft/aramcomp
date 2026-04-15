@@ -9,8 +9,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>행정안전부 공통서비스 테스트 사이트(업무사용자)</title>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/com/cmm/com.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/com/cmm/main.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/com.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/main.css" type="text/css">
 
 <script type="text/javascript">
 
@@ -77,9 +77,9 @@ function fnEgovTabNavigation(objName){
 							<td>
 							<table style="border:0;">
 								<tr>
-									<td><img src="${pageContext.request.contextPath}/resources/images/com/TAB_01.gif"  border="0" name="TAB_01" id="TAB_01" style="cursor:pointer;" onClick="fnEgovTabNavigation('DIV_01');"></td>
-									<td><img src="${pageContext.request.contextPath}/resources/images/com/TAB_02.gif"   border="0" name="TAB_02" id="TAB_02" style="cursor:pointer;" onClick="fnEgovTabNavigation('DIV_02');"></td>
-									<td><img src="${pageContext.request.contextPath}/resources/images/com/TAB_03.gif"   border="0" name="TAB_03" id="TAB_03" style="cursor:pointer;" onClick="fnEgovTabNavigation('DIV_03');"></td>
+									<td><img src="${pageContext.request.contextPath}/images/com/TAB_01.gif"  border="0" name="TAB_01" id="TAB_01" style="cursor:pointer;" onClick="fnEgovTabNavigation('DIV_01');"></td>
+									<td><img src="${pageContext.request.contextPath}/images/com/TAB_02.gif"   border="0" name="TAB_02" id="TAB_02" style="cursor:pointer;" onClick="fnEgovTabNavigation('DIV_02');"></td>
+									<td><img src="${pageContext.request.contextPath}/images/com/TAB_03.gif"   border="0" name="TAB_03" id="TAB_03" style="cursor:pointer;" onClick="fnEgovTabNavigation('DIV_03');"></td>
 								</tr>
 							</table>
 							</td>

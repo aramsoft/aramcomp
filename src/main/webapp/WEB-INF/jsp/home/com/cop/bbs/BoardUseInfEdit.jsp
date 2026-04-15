@@ -66,7 +66,7 @@
 			      		<tr> 
 				        	<th scope="col" width="20%"  class="required_text">
 				            	<label for="useAt">사용여부</label>    
-						        <img src="${pageContext.request.contextPath}/resources/images/home/required.gif" width="15" height="15" alt="required" />
+						        <img src="${pageContext.request.contextPath}/images/home/required.gif" width="15" height="15" alt="required" />
 				        	</th>
 				        	<td width="80%"  colspan="3">
 				            	<spring:message code="button.use" /> : <input type="radio" name="useAt" class="radio2" value="Y" <c:if test="${boardUseInfVO.useAt == 'Y'}"> checked="checked"</c:if>>&nbsp;

@@ -20,7 +20,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>표준프레임워크 경량환경 홈페이지템플릿 소개</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home/common.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/home/common.css" type="text/css">
 </head>
 <body style="margin-left:10px">
 <!-- 전체 레이어 시작 -->
@@ -35,7 +35,7 @@
 	- 기울임체로 표시된 메뉴는 구성을 위한 샘플페이지가 제공되며 기능은 구현되지 않은 상태입니다.
 	</pre>
 	<br>
-	<img src="${pageContext.request.contextPath}/resources/images/home/menu_sht.jpg" alt="단순 홈페이지 메뉴구성">
+	<img src="${pageContext.request.contextPath}/images/home/menu_sht.jpg" alt="단순 홈페이지 메뉴구성">
 	
 	<br>
 	<a href="http://www.egovframe.org/wiki/doku.php?id=aramframework:let" target="_blank">

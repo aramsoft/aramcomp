@@ -95,7 +95,7 @@
         	<form:hidden path="executSchdulDe" />
         	<input name="executSchdulDeNm" id="executSchdulDeNm" type="text" size="10" maxlength="10" title="실행스케줄일자" readonly="readonly">
         	<a href="#" onClick="javascript:fn_aram_NormalCalendar('',  document.forms[0].executSchdulDeNm ); return false;">
-        		<img src="/resources/images/com/sym/cal/bu_icon_carlendar.gif" alt="달력창팝업버튼이미지">
+        		<img src="/images/com/sym/cal/bu_icon_carlendar.gif" alt="달력창팝업버튼이미지">
         	</a>
         	</span>
         	<span id="spnMonth">
@@ -174,8 +174,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/validator.do"></script>
 <validator:javascript formName="backupOpertVO" staticJavascript="false" xhtml="true" cdata="false"/>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/sym/cal/CalPopup.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/cmm/utl/CmmUtl.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/sym/cal/CalPopup.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/cmm/utl/CmmUtl.js"></script>
 <script type="text/javascript">
 
 /* ********************************************************

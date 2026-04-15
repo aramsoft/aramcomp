@@ -29,11 +29,11 @@
 <c:if test="${fn:length(mainTitle) != 0}"><c:out value="${boardVO.nttSj}" /></c:if>
 </title>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/com/cmm/mcm.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/com/cmm/com.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/com/cmm/button.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/mcm.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/com.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/button.css" type="text/css">
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/cmm/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/cmm/jquery-1.7.1.min.js"></script>
 
 </head>
 

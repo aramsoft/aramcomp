@@ -29,7 +29,7 @@
 			<!-- //현재위치 네비게이션 끝 -->
 			<!-- 타이틀 이미지 -->			
 			<div id="content_img_div">
-				<img src="${pageContext.request.contextPath}/resources/images/home/subtitle/img_subtitle03-02.gif" width="776" height="230" alt="">
+				<img src="${pageContext.request.contextPath}/images/home/subtitle/img_subtitle03-02.gif" width="776" height="230" alt="">
 			</div>
 			
 			<!-- main content 시작 -->
@@ -57,7 +57,7 @@
                          <ul id="search_second_ul">
                             <li>
 				  				<div class="buttons">
-									<a href="#"><img src="${pageContext.request.contextPath}/resources/images/home/img_search.gif" alt="search">검색 </a>
+									<a href="#"><img src="${pageContext.request.contextPath}/images/home/img_search.gif" alt="search">검색 </a>
 								</div>	  		
                              </li>
                          </ul>           
@@ -167,13 +167,13 @@
 			<!-- 페이지 네비게이션 시작 -->
 			<div id="paging_div">
 				<ul class="paging_align">
-					<li class="first"><img src="${pageContext.request.contextPath}/resources/images/home/btn/btn_prev.gif" alt="prev"></li>
+					<li class="first"><img src="${pageContext.request.contextPath}/images/home/btn/btn_prev.gif" alt="prev"></li>
 					<li><a href="#">1</a></li>
 					<li>2</li>
 					<li>3</li>
 					<li>4</li>
 					<li>5</li>
-					<li class="first"><img src="${pageContext.request.contextPath}/resources/images/home/btn/btn_next.gif" alt="next"></li>
+					<li class="first"><img src="${pageContext.request.contextPath}/images/home/btn/btn_next.gif" alt="next"></li>
 				</ul>
 			</div>							
 			<!-- //페이지 네비게이션 끝 -->

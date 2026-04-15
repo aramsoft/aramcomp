@@ -53,7 +53,7 @@
 					    <tr> 
 					        <th width="20%">
 					        	<spring:message code="cop.nttSj" />
-					        	<img src="${pageContext.request.contextPath}/resources/images/home/required.gif" width="15" height="15" alt="required" />
+					        	<img src="${pageContext.request.contextPath}/images/home/required.gif" width="15" height="15" alt="required" />
 					        </th>
 					        <td width="80%"  colspan="3">
 					          	<form:input path="nttSj" title="<spring:message code='cop.nttSj' />" size="60" maxlength="60" />
@@ -63,7 +63,7 @@
 					    <tr> 
 					        <th>
 					        	<spring:message code="cop.nttCn" />
-					        	<img src="${pageContext.request.contextPath}/resources/images/home/required.gif" width="15" height="15" alt="required" />
+					        	<img src="${pageContext.request.contextPath}/images/home/required.gif" width="15" height="15" alt="required" />
 					        </th>
 					        <td colspan="3">
 					          	<textarea id="nttCn" name="nttCn"  cols="75" rows="20"  style="width:99%;" title="<spring:message code="cop.nttCn" />"><c:out value="${boardVO.nttCn}" escapeXml="false" /></textarea> 
@@ -75,7 +75,7 @@
 					    <tr> 
 					        <th>
 					        	<spring:message code="cop.noticeTerm" />
-						        <img src="${pageContext.request.contextPath}/resources/images/home/required.gif" width="15" height="15" alt="required" />
+						        <img src="${pageContext.request.contextPath}/images/home/required.gif" width="15" height="15" alt="required" />
 						    </th>
 					        <td colspan="3">
 								<form:hidden path="ntceBgnde" />
@@ -84,7 +84,7 @@
 					      		</c:if>
 							    <input name="ntceBgndeView" type="text" size="10" value="${ntceBgndeVal}"  readOnly title="게시시작일자"
 							      	onClick="javascript:fn_aram_NormalCalendar(document.forms[0].ntceBgnde, document.forms[0].ntceBgndeView); return false;">
-							    <img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/bu_icon_carlendar.gif"
+							    <img src="${pageContext.request.contextPath}/images/com/cmm/icon/bu_icon_carlendar.gif"
 							      	onClick="javascript:fn_aram_NormalCalendar(document.forms[0].ntceBgnde, document.forms[0].ntceBgndeView); return false;" width="15" height="15" alt="달력창팝업버튼이미지">
 					              ~
 		    					<form:hidden path="ntceEndde" />
@@ -93,7 +93,7 @@
 					      		</c:if>
 							    <input name="ntceEnddeView" type="text" size="10" value="${ntceEnddeVal}"  readOnly title="게시종료일자"
 							      	onClick="javascript:fn_aram_NormalCalendar(document.forms[0].ntceEndde, document.forms[0].ntceEnddeView); return false;">
-							    <img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/bu_icon_carlendar.gif"
+							    <img src="${pageContext.request.contextPath}/images/com/cmm/icon/bu_icon_carlendar.gif"
 							      	onClick="javascript:fn_aram_NormalCalendar(document.forms[0].ntceEndde, document.forms[0].ntceEnddeView); return false;" width="15" height="15" alt="달력창팝업버튼이미지">
 					            <form:errors path="ntceBgnde" cssClass="error"/>    
 					            <form:errors path="ntceEndde" cssClass="error"/>                  
@@ -170,8 +170,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/validator.do"></script>
 <validator:javascript formName="boardVO" staticJavascript="false" xhtml="true" cdata="false"/>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/cmm/fms/MultiFile.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/sym/cal/CalPopup.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/cmm/fms/MultiFile.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/sym/cal/CalPopup.js"></script>
 <script type="text/javascript">
 
 function fn_aram_update(){

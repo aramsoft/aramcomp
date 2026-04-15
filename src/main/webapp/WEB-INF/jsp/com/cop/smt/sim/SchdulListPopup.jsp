@@ -27,8 +27,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>일정 목록 팝업</title>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/com/cmm/com.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/com/cmm/button.css" type="text/css"> 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/com.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/button.css" type="text/css"> 
 <base target="_self" />
 
 </head>

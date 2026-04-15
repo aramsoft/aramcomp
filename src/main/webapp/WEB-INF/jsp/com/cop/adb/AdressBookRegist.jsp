@@ -83,7 +83,7 @@
 	    <td>
 	      	<input name="adbkUser" type="text" size="90" value=""  maxlength="90" style="width: 181px" readonly class="readOnlyClass" title="주소록구성원입력">
 	      	<a href="#" onclick="javascript:fn_aram_get_user(); return false;" style="selector-dummy: expression(this.hideFocus=false);">
-	      		<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/search.gif" width="15" height="15" style="vertical-align: middle" alt="주소록구성원찾기조회팝업 제공">
+	      		<img src="${pageContext.request.contextPath}/images/com/cmm/icon/search.gif" width="15" height="15" style="vertical-align: middle" alt="주소록구성원찾기조회팝업 제공">
 	      	</a>
 	    </td>
 	</tr>

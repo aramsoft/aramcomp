@@ -25,8 +25,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>아람컴포넌트 아이디/비밀번호 찾기 결과</title>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/com/cmm/com.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/com/cmm/button.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/com.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/button.css" type="text/css">
 
 <script type="text/javascript">
 
@@ -53,7 +53,7 @@ function fnBack(){
 
 .content_main {
 	width:303px; height: 210px; margin-top:5px;
-	background:url('/resources/images/com/uat/uia/login_bg01.gif') no-repeat;	
+	background:url('/images/com/uat/uia/login_bg01.gif') no-repeat;	
 }
 
 .buttons {

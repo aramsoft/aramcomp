@@ -26,7 +26,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>MOPAS 발송요청 XML파일 내용 조회</title>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/com/cmm/com.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/com.css" type="text/css">
 
 </head>
 

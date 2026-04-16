@@ -24,7 +24,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>행정달력</title>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/cal.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/com/cmm/cal.css" type="text/css">
 
 </head>
 
@@ -42,17 +42,17 @@
 <thead>
 <tr>
     <th width="36"  colspan=1>
-    	<a href="javascript:fnChangeCalendar(${resultList[0].year-1},${resultList[0].month});"  style="selector-dummy:expression(this.hideFocus=false);cursor:pointer;cursor:hand;"><img src="${pageContext.request.contextPath}/images/com/sym/cal/icon_pre_year.gif" alt="이전년도"></a>
+    	<a href="javascript:fnChangeCalendar(${resultList[0].year-1},${resultList[0].month});"  style="selector-dummy:expression(this.hideFocus=false);cursor:pointer;cursor:hand;"><img src="${pageContext.request.contextPath}/resources/images/com/sym/cal/icon_pre_year.gif" alt="이전년도"></a>
     </th>
     <th width="36"  colspan=1>
-    	<a href="javascript:fnChangeCalendar(${resultList[0].year},${resultList[0].month-1});"  style="selector-dummy:expression(this.hideFocus=false);cursor:pointer;cursor:hand;"><img src="${pageContext.request.contextPath}/images/com/sym/cal/icon_pre_month.gif" alt="이전달"></a>
+    	<a href="javascript:fnChangeCalendar(${resultList[0].year},${resultList[0].month-1});"  style="selector-dummy:expression(this.hideFocus=false);cursor:pointer;cursor:hand;"><img src="${pageContext.request.contextPath}/resources/images/com/sym/cal/icon_pre_month.gif" alt="이전달"></a>
     </th>
     <th width="108"  colspan=3>${resultList[0].year}년${resultList[0].month}월</th>
     <th width="36"  colspan=1>
-    	<a href="javascript:fnChangeCalendar(${resultList[0].year},${resultList[0].month+1});"  style="selector-dummy:expression(this.hideFocus=false);cursor:pointer;cursor:hand;"><img src="${pageContext.request.contextPath}/images/com/sym/cal/icon_aft_month.gif" alt="다음달"></a>
+    	<a href="javascript:fnChangeCalendar(${resultList[0].year},${resultList[0].month+1});"  style="selector-dummy:expression(this.hideFocus=false);cursor:pointer;cursor:hand;"><img src="${pageContext.request.contextPath}/resources/images/com/sym/cal/icon_aft_month.gif" alt="다음달"></a>
     </th>
     <th width="36"  colspan=1>
-    	<a href="javascript:fnChangeCalendar(${resultList[0].year+1},${resultList[0].month});"  style="selector-dummy:expression(this.hideFocus=false);cursor:pointer;cursor:hand;"><img src="${pageContext.request.contextPath}/images/com/sym/cal/icon_aft_year.gif" alt="다음년도"></a>
+    	<a href="javascript:fnChangeCalendar(${resultList[0].year+1},${resultList[0].month});"  style="selector-dummy:expression(this.hideFocus=false);cursor:pointer;cursor:hand;"><img src="${pageContext.request.contextPath}/resources/images/com/sym/cal/icon_aft_year.gif" alt="다음년도"></a>
 	</th>
 </tr>
 <tr>

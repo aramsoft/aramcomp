@@ -26,8 +26,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>시스템 로그 상세조회</title>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/com.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/button.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/com/cmm/com.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/com/cmm/button.css" type="text/css">
 
 </head>
 

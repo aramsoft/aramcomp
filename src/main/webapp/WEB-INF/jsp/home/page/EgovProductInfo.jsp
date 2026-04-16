@@ -27,7 +27,7 @@
 				</ul>
 			</div>				
 			<div id="content_img_div">
-				<img src="${pageContext.request.contextPath}/images/home/subtitle/img_subtitle02.gif" width="776" height="230" alt="">
+				<img src="${pageContext.request.contextPath}/resources/images/home/subtitle/img_subtitle02.gif" width="776" height="230" alt="">
 			</div>   
 			
 			<!-- main content 시작 -->
@@ -52,7 +52,7 @@
 				</fieldset>	
 
 				<div style="padding-left:110px;">
-					<img src="${pageContext.request.contextPath}/images/home/img_content/egov_intro.jpg" alt="그림테스트">	
+					<img src="${pageContext.request.contextPath}/resources/images/home/img_content/egov_intro.jpg" alt="그림테스트">	
 				</div>
 			</div>
 			<!-- //main content 끝 -->	

@@ -132,7 +132,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/validator.do"></script>
 <validator:javascript formName="scrapVO" staticJavascript="false" xhtml="true" cdata="false"/>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/cmm/fms/MultiFile.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/cmm/fms/MultiFile.js"></script>
 
 <script type="text/javascript">
 

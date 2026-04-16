@@ -121,7 +121,7 @@
 			<input type="hidden" name="schdulBgnde" id="schdulBgnde" value="" />
 	    	<form:input path="schdulBgndeYYYMMDD" size="10" readonly="true" maxlength="10" />
 	        <a href="#" onclick="javascript:fn_aram_NormalCalendar('', document.forms[0].schdulBgndeYYYMMDD); return false;">
-	    		<img src="${pageContext.request.contextPath}/images/com/cmm/icon/bu_icon_carlendar.gif"  align="middle" style="border:0px" alt="달력창팝업버튼이미지">
+	    		<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/bu_icon_carlendar.gif"  align="middle" style="border:0px" alt="달력창팝업버튼이미지">
 	    	</a>
 	        <form:select path="schdulBgndeHH">
 	            <form:options items="${schdulListHH}" itemValue="code" itemLabel="codeNm"/>
@@ -135,7 +135,7 @@
 			<input type="hidden" name="schdulEndde" id="schdulEndde" value="" />
 		    <form:input path="schdulEnddeYYYMMDD" size="10" readonly="true" maxlength="10" />
 		    <a href="#" onclick="javascript:fn_aram_NormalCalendar('', document.forms[0].schdulEnddeYYYMMDD); return false;">
-		    	<img src="${pageContext.request.contextPath}/images/com/cmm/icon/bu_icon_carlendar.gif" align="middle" style="border:0px" alt="달력창팝업버튼이미지">
+		    	<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/bu_icon_carlendar.gif" align="middle" style="border:0px" alt="달력창팝업버튼이미지">
 		    </a>&nbsp;
 	        <form:select path="schdulEnddeHH">
 	            <form:options items="${schdulListHH}" itemValue="code" itemLabel="codeNm"/>
@@ -153,7 +153,7 @@
 	    <td>
 			<form:input path="schdulChargerName" size="73" cssClass="txInput" readonly="true" maxlength="10" />
 			<a href="#" title="새 창으로 이동"  onClick="fn_aram_get_schdulCharger('담당자', 'schdulChargerId', 'schdulChargerName'); return false;">
-				<img src="${pageContext.request.contextPath}/images/com/cmm/icon/search.gif" align="middle" style="border:0px" alt="담당자" title="담당자">
+				<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/search.gif" align="middle" style="border:0px" alt="담당자" title="담당자">
 			</a>
 		    <form:hidden path="schdulChargerId" />
 			<form:errors path="schdulChargerName" cssClass="error"/>
@@ -221,9 +221,9 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/validator.do"></script>
 <validator:javascript formName="schdulManageVO" staticJavascript="false" xhtml="true" cdata="false"/>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/cmm/utl/CmmUtl.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/sym/cal/CalPopup.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/cmm/fms/MultiFile.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/cmm/utl/CmmUtl.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/sym/cal/CalPopup.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/cmm/fms/MultiFile.js"></script>
 
 <!--  첨부파일 업로드 가능화일 설정 Start.. -->  
 <script type="text/javascript">

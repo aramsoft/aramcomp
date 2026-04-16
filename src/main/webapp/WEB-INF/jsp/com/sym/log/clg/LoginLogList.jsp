@@ -26,8 +26,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>로그인 로그 목록</title>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/com.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/com/cmm/button.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/com/cmm/com.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/com/cmm/button.css" type="text/css">
 
 </head>
 
@@ -39,7 +39,7 @@
 <div class="content_title">
 	<h2>로그인 로그조회</h2> 
 	<a href="#" onclick="javascript:fn_aram_help(); return false;">
-		<img src="${pageContext.request.contextPath}/images/com/cmm/icon/icon_help.gif" width="16" height="16" style="vertical-align:middle;" alt="">
+		<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/icon_help.gif" width="16" height="16" style="vertical-align:middle;" alt="">
 	</a>
 </div>
 
@@ -60,7 +60,7 @@
 	     	</c:if>
 	     	<input name="searchBgnDeView" id="searchBgnDeView" type="text" size="10" title="조회시작일자" value="${searchBgnDeVal}"  readonly />
 	     	<a href="#" onClick="javascript:fn_aram_NormalCalendar(document.forms[0].searchBgnDe, document.forms[0].searchBgnDeView); return false;">
-	     		<img name="calendarImg" src="${pageContext.request.contextPath}/images/com/cmm/icon/bu_icon_carlendar.gif"  align="middle" style="border:0px" alt="달력창팝업버튼이미지">
+	     		<img name="calendarImg" src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/bu_icon_carlendar.gif"  align="middle" style="border:0px" alt="달력창팝업버튼이미지">
 	     	</a>
 	   		~
 	     	<form:hidden path="searchEndDe" />
@@ -69,7 +69,7 @@
 	     	</c:if>
 	     	<input name="searchEndDeView" id="searchEndDeView" type="text" size="10" title="조회종료일자" value="${searchEndDeVal}"  readonly />
 	     	<a href="#" onClick="javascript:fn_aram_NormalCalendar(document.forms[0].searchEndDe, document.forms[0].searchEndDeView); return false;">
-	     		<img name="calendarImg" src="${pageContext.request.contextPath}/images/com/cmm/icon/bu_icon_carlendar.gif"  align="middle" style="border:0px" alt="달력창팝업버튼이미지">
+	     		<img name="calendarImg" src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/bu_icon_carlendar.gif"  align="middle" style="border:0px" alt="달력창팝업버튼이미지">
 	     	</a>
 	  		&nbsp;로그유형 : &nbsp;
 	   		<form:input path="searchKeyword" size="35" maxlength="35" onkeypress="javascript:press(event);" title="검색어 입력" />
@@ -137,8 +137,8 @@
 
 </DIV>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/sym/cal/CalPopup.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/cmm/utl/CmmUtl.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/sym/cal/CalPopup.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/cmm/utl/CmmUtl.js"></script>
 <script type="text/javascript">
 
 function press() {

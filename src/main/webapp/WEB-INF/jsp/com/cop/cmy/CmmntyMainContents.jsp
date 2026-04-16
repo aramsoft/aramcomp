@@ -60,7 +60,7 @@
 
 	<div class="comun_board_title"><c:out value="${board.bbsNm}" /></div>
 	<div class="comun_board_more"> 
-		<a href="#" onclick="javascript:fn_aram_loadArticleList('<c:out value="${board.bbsId}" />'); return false;"><img src="${pageContext.request.contextPath}/images/com/cop/tpl/more_08.gif" width="36" height="12" alt="더보기이미지아이콘" ></a>
+		<a href="#" onclick="javascript:fn_aram_loadArticleList('<c:out value="${board.bbsId}" />'); return false;"><img src="${pageContext.request.contextPath}/resources/images/com/cop/tpl/more_08.gif" width="36" height="12" alt="더보기이미지아이콘" ></a>
 	</div>
 	
 	<div class="comun_board_content">
@@ -74,7 +74,7 @@
 			<tr>
 				<td height="22" align="left">
 					<fmt:parseDate value='${article.frstRegisterPnttm}' pattern="yyyy-MM-dd" var='parsedDate'/>
-					<span class="right_board_date"><img src="${pageContext.request.contextPath}/images/com/cop/tpl/dot.gif" width="12" height="4" alt="도트이미지">[<fmt:formatDate value="${parsedDate}" pattern="yyyy-MM-dd"/>]</span> 
+					<span class="right_board_date"><img src="${pageContext.request.contextPath}/resources/images/com/cop/tpl/dot.gif" width="12" height="4" alt="도트이미지">[<fmt:formatDate value="${parsedDate}" pattern="yyyy-MM-dd"/>]</span> 
 	    		<c:choose>
 		    	<c:when test="${article.isExpired=='Y' || article.useAt == 'N'}">
 		    		<span class="bbs_useless"><c:out value="${article.nttSj}" /></span>

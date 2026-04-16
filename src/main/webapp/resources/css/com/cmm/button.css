@@ -22,7 +22,7 @@
 	vertical-align:middle;
 	overflow:visible;
 	color:black;
-	background-image:url(/images/com/cmm/btn/bu2.jpg);
+	background-image:url(/resources/images/com/cmm/btn/bu2.jpg);
 }
 .button {
 	border-style:none;
@@ -49,13 +49,13 @@
 }
 /* 버튼 이미지 */
 .btnBackground { 
-	background-image:url('/images/com/cmm/btn/bu2_bg.gif');
+	background-image:url('/resources/images/com/cmm/btn/bu2_bg.gif');
 }
 .btnNew {
 	border:0 solid #000;
 	color:#000000;
 	cursor:pointer;
-	background-image:url('/images/com/cmm/btn/bu2_bg.gif');
+	background-image:url('/resources/images/com/cmm/btn/bu2_bg.gif');
 }
 .link, .link a, .link button, .link input {
 	border-style:none;

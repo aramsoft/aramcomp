@@ -53,7 +53,7 @@
       		</c:if>
       		<input name="restdeDeView" id="restdeDeView" type="text" size="10" title="<spring:message code="sym.cal.restDay" />(새창)" value="${restdeDeVal}"  readonly />
       		<a href="#" onClick="javascript:fn_aram_NormalCalendar(document.forms[0].restdeDe, document.forms[0].restdeDeView); return false;">
-      			<img name="calendarImg" src="${pageContext.request.contextPath}/images/com/cmm/icon/bu_icon_carlendar.gif"  align="middle" style="border:0px" alt="달력창팝업버튼이미지">
+      			<img name="calendarImg" src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/bu_icon_carlendar.gif"  align="middle" style="border:0px" alt="달력창팝업버튼이미지">
       		</a>
    		</td>
   	</tr>
@@ -103,7 +103,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/validator.do"></script>
 <validator:javascript formName="restdeVO" staticJavascript="false" xhtml="true" cdata="false"/>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/sym/cal/CalPopup.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/sym/cal/CalPopup.js"></script>
 <script type="text/javascript">
 
 /* ********************************************************

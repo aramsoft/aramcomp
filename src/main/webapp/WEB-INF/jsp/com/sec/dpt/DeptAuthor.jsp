@@ -25,7 +25,7 @@
 <div class="content_title">
 	<h2>부서 권한 관리</h2>
 	<a href="#" onclick="javascript:fn_aram_help(); return false;">
-		<img src="${pageContext.request.contextPath}/images/com/cmm/icon/icon_help.gif" width="16" height="16" hspace="3" style="vertical-align:middle;" >
+		<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/icon_help.gif" width="16" height="16" hspace="3" style="vertical-align:middle;" >
 	</a>
 </div>
 

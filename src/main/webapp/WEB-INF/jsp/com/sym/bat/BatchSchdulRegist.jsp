@@ -61,7 +61,7 @@
     	<td width="80%">
         	<form:input path="batchOpertId" size="20" maxlength="20" readonly="true" />
         	<a href="#" onClick="javascript:fn_aram_get_batchOpert(); return false;" style="selector-dummy: expression(this.hideFocus=false);">
-        		<img src="${pageContext.request.contextPath}/images/com/cmm/icon/search.gif" width="15" height="15" style="vertical-align: middle" alt="배치작업조회팝업 제공">
+        		<img src="${pageContext.request.contextPath}/resources/images/com/cmm/icon/search.gif" width="15" height="15" style="vertical-align: middle" alt="배치작업조회팝업 제공">
         	</a>
         	<form:errors path="batchOpertId" cssClass="error" />
     	</td>
@@ -91,7 +91,7 @@
 			<input type="hidden" name="executSchdulDe" />
         	<input name="executSchdulDeNm" id="executSchdulDeNm" type="text" size="10" maxlength="10" title="실행스케줄일자" readonly="readonly">
         	<a href="#" onClick="javascript:fn_aram_NormalCalendar('',  document.forms[0].executSchdulDeNm ); return false;">
-        		<img src="/images/com/sym/cal/bu_icon_carlendar.gif" alt="달력창팝업버튼이미지">
+        		<img src="/resources/images/com/sym/cal/bu_icon_carlendar.gif" alt="달력창팝업버튼이미지">
         	</a>
         	</span>
  
@@ -174,8 +174,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/validator.do"></script>
 <validator:javascript formName="batchSchdulVO" staticJavascript="false" xhtml="true" cdata="false"/>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/sym/cal/CalPopup.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/com/cmm/utl/CmmUtl.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/sym/cal/CalPopup.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/com/cmm/utl/CmmUtl.js"></script>
 <script type="text/javascript">
 
 /* ********************************************************

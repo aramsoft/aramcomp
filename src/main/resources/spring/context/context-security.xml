@@ -152,7 +152,6 @@
     	class="org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource">
          <beans:constructor-arg>
             <beans:list>
-                <beans:ref bean="methodDefinitionSources"/>
                 <beans:bean class="org.springframework.security.access.annotation.SecuredAnnotationSecurityMetadataSource" />
 <!-- 
                 <beans:bean class="org.springframework.security.access.annotation.Jsr250MethodSecurityMetadataSource" />
@@ -161,30 +160,4 @@
         </beans:constructor-arg>
     </beans:bean>
 
-    <beans:bean id="methodDefinitionSources"  
-        class="org.springframework.security.access.method.MapBasedMethodSecurityMetadataSource">
-        <beans:constructor-arg ref="methodMap" />
-    </beans:bean>
-    
-    <beans:bean id="methodMap" 
-        class="aramframework.cmm.security.bean.MethodResourcesMapFactoryBean"
-        init-method="init">
-        <beans:property name="resourceType" value="method"/>
-    </beans:bean>
-   
-    <!--  pointcut -->
-<!-- 
-    <beans:bean id="protectPointcutPostProcessor" 
-    	class="org.springframework.security.config.method.ProtectPointcutPostProcessor">
-        <beans:constructor-arg ref="methodDefinitionSources" />
-        <beans:property name="pointcutMap" ref="pointcutMap"/>
-    </beans:bean>
-
-    <beans:bean id="pointcutMap"
-        class="org.egovframe.rte.fdl.security.intercept.MethodResourcesMapFactoryBean"
-        init-method="init">
-        <beans:property name="securedObjectService" ref="securedObjectService"/>
-        <beans:property name="resourceType" value="pointcut"/>
-    </beans:bean>
--->
 </beans:beans>

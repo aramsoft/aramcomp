@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <Configuration>
+
     <Appenders>
         <Console name="console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d %5p %c{1.} %m%n" />
         </Console>
     </Appenders>
+
     <Loggers>
-        <Logger name="aramframework" level="DEBUG" additivity="false">
-            <AppenderRef ref="console" />
-        </Logger>
-        
+<!-- 
+	    <logger name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" level="TRACE" additivity="false">
+	        <AppenderRef ref="console" />
+	    </logger>
+-->
 		<!-- log SQL with timing information, post execution -->
         <Logger name="java.sql" level="ERROR" additivity="false">
             <AppenderRef ref="console" />
@@ -21,8 +25,13 @@
             <AppenderRef ref="console" />
         </Logger>
         
+        <Logger name="aramframework" level="DEBUG" additivity="false">
+            <AppenderRef ref="console" />
+        </Logger>
+        
         <Root level="ERROR">
             <AppenderRef ref="console" />
         </Root>
     </Loggers>
+
 </Configuration>
